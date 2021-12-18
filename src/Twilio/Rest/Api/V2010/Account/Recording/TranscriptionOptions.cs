@@ -11,120 +11,120 @@ using Twilio.Converters;
 namespace Twilio.Rest.Api.V2010.Account.Recording
 {
 
+  /// <summary>
+  /// FetchTranscriptionOptions
+  /// </summary>
+  public class FetchTranscriptionOptions : IOptions<TranscriptionResource>
+  {
     /// <summary>
-    /// FetchTranscriptionOptions
+    /// The SID of the Account that created the resource to fetch
     /// </summary>
-    public class FetchTranscriptionOptions : IOptions<TranscriptionResource>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The SID of the recording that created the transcriptions to fetch
+    /// </summary>
+    public string PathRecordingSid { get; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchTranscriptionOptions
+    /// </summary>
+    /// <param name="pathRecordingSid"> The SID of the recording that created the transcriptions to fetch </param>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public FetchTranscriptionOptions(string pathRecordingSid, string pathSid)
     {
-        /// <summary>
-        /// The SID of the Account that created the resource to fetch
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The SID of the recording that created the transcriptions to fetch
-        /// </summary>
-        public string PathRecordingSid { get; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchTranscriptionOptions
-        /// </summary>
-        /// <param name="pathRecordingSid"> The SID of the recording that created the transcriptions to fetch </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public FetchTranscriptionOptions(string pathRecordingSid, string pathSid)
-        {
-            PathRecordingSid = pathRecordingSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathRecordingSid = pathRecordingSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// DeleteTranscriptionOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteTranscriptionOptions : IOptions<TranscriptionResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Account that created the resources to delete
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The SID of the recording that created the transcription to delete
-        /// </summary>
-        public string PathRecordingSid { get; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new DeleteTranscriptionOptions
-        /// </summary>
-        /// <param name="pathRecordingSid"> The SID of the recording that created the transcription to delete </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public DeleteTranscriptionOptions(string pathRecordingSid, string pathSid)
-        {
-            PathRecordingSid = pathRecordingSid;
-            PathSid = pathSid;
-        }
+  /// <summary>
+  /// DeleteTranscriptionOptions
+  /// </summary>
+  public class DeleteTranscriptionOptions : IOptions<TranscriptionResource>
+  {
+    /// <summary>
+    /// The SID of the Account that created the resources to delete
+    /// </summary>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The SID of the recording that created the transcription to delete
+    /// </summary>
+    public string PathRecordingSid { get; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+    /// <summary>
+    /// Construct a new DeleteTranscriptionOptions
+    /// </summary>
+    /// <param name="pathRecordingSid"> The SID of the recording that created the transcription to delete </param>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public DeleteTranscriptionOptions(string pathRecordingSid, string pathSid)
+    {
+      PathRecordingSid = pathRecordingSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// ReadTranscriptionOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadTranscriptionOptions : ReadOptions<TranscriptionResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Account that created the resources to read
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The SID of the recording that created the transcriptions to read
-        /// </summary>
-        public string PathRecordingSid { get; }
-
-        /// <summary>
-        /// Construct a new ReadTranscriptionOptions
-        /// </summary>
-        /// <param name="pathRecordingSid"> The SID of the recording that created the transcriptions to read </param>
-        public ReadTranscriptionOptions(string pathRecordingSid)
-        {
-            PathRecordingSid = pathRecordingSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
+
+  /// <summary>
+  /// ReadTranscriptionOptions
+  /// </summary>
+  public class ReadTranscriptionOptions : ReadOptions<TranscriptionResource>
+  {
+    /// <summary>
+    /// The SID of the Account that created the resources to read
+    /// </summary>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The SID of the recording that created the transcriptions to read
+    /// </summary>
+    public string PathRecordingSid { get; }
+
+    /// <summary>
+    /// Construct a new ReadTranscriptionOptions
+    /// </summary>
+    /// <param name="pathRecordingSid"> The SID of the recording that created the transcriptions to read </param>
+    public ReadTranscriptionOptions(string pathRecordingSid)
+    {
+      PathRecordingSid = pathRecordingSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
 
 }

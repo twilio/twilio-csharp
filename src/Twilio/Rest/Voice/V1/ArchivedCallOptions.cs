@@ -11,41 +11,41 @@ using Twilio.Converters;
 namespace Twilio.Rest.Voice.V1
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Delete an archived call record from Bulk Export. Note: this does not also delete the record from the Voice API.
+  /// </summary>
+  public class DeleteArchivedCallOptions : IOptions<ArchivedCallResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Delete an archived call record from Bulk Export. Note: this does not also delete the record from the Voice API.
+    /// The date of the Call in UTC.
     /// </summary>
-    public class DeleteArchivedCallOptions : IOptions<ArchivedCallResource>
+    public DateTime? PathDate { get; }
+    /// <summary>
+    /// The unique string that identifies this resource
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new DeleteArchivedCallOptions
+    /// </summary>
+    /// <param name="pathDate"> The date of the Call in UTC. </param>
+    /// <param name="pathSid"> The unique string that identifies this resource </param>
+    public DeleteArchivedCallOptions(DateTime? pathDate, string pathSid)
     {
-        /// <summary>
-        /// The date of the Call in UTC.
-        /// </summary>
-        public DateTime? PathDate { get; }
-        /// <summary>
-        /// The unique string that identifies this resource
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new DeleteArchivedCallOptions
-        /// </summary>
-        /// <param name="pathDate"> The date of the Call in UTC. </param>
-        /// <param name="pathSid"> The unique string that identifies this resource </param>
-        public DeleteArchivedCallOptions(DateTime? pathDate, string pathSid)
-        {
-            PathDate = pathDate;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathDate = pathDate;
+      PathSid = pathSid;
     }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
 }

@@ -11,225 +11,225 @@ using Twilio.Converters;
 namespace Twilio.Rest.Preview.DeployedDevices.Fleet
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// Fetch information about a specific Deployment in the Fleet.
+  /// </summary>
+  public class FetchDeploymentOptions : IOptions<DeploymentResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// Fetch information about a specific Deployment in the Fleet.
+    /// The fleet_sid
     /// </summary>
-    public class FetchDeploymentOptions : IOptions<DeploymentResource>
+    public string PathFleetSid { get; }
+    /// <summary>
+    /// A string that uniquely identifies the Deployment.
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchDeploymentOptions
+    /// </summary>
+    /// <param name="pathFleetSid"> The fleet_sid </param>
+    /// <param name="pathSid"> A string that uniquely identifies the Deployment. </param>
+    public FetchDeploymentOptions(string pathFleetSid, string pathSid)
     {
-        /// <summary>
-        /// The fleet_sid
-        /// </summary>
-        public string PathFleetSid { get; }
-        /// <summary>
-        /// A string that uniquely identifies the Deployment.
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchDeploymentOptions
-        /// </summary>
-        /// <param name="pathFleetSid"> The fleet_sid </param>
-        /// <param name="pathSid"> A string that uniquely identifies the Deployment. </param>
-        public FetchDeploymentOptions(string pathFleetSid, string pathSid)
-        {
-            PathFleetSid = pathFleetSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathFleetSid = pathFleetSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// Delete a specific Deployment from the Fleet, leaving associated devices effectively undeployed.
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteDeploymentOptions : IOptions<DeploymentResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The fleet_sid
-        /// </summary>
-        public string PathFleetSid { get; }
-        /// <summary>
-        /// A string that uniquely identifies the Deployment.
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new DeleteDeploymentOptions
-        /// </summary>
-        /// <param name="pathFleetSid"> The fleet_sid </param>
-        /// <param name="pathSid"> A string that uniquely identifies the Deployment. </param>
-        public DeleteDeploymentOptions(string pathFleetSid, string pathSid)
-        {
-            PathFleetSid = pathFleetSid;
-            PathSid = pathSid;
-        }
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// Delete a specific Deployment from the Fleet, leaving associated devices effectively undeployed.
+  /// </summary>
+  public class DeleteDeploymentOptions : IOptions<DeploymentResource>
+  {
+    /// <summary>
+    /// The fleet_sid
+    /// </summary>
+    public string PathFleetSid { get; }
+    /// <summary>
+    /// A string that uniquely identifies the Deployment.
+    /// </summary>
+    public string PathSid { get; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+    /// <summary>
+    /// Construct a new DeleteDeploymentOptions
+    /// </summary>
+    /// <param name="pathFleetSid"> The fleet_sid </param>
+    /// <param name="pathSid"> A string that uniquely identifies the Deployment. </param>
+    public DeleteDeploymentOptions(string pathFleetSid, string pathSid)
+    {
+      PathFleetSid = pathFleetSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// Create a new Deployment in the Fleet, optionally giving it a friendly name and linking to a specific Twilio Sync
-    /// service instance.
+    /// Generate the necessary parameters
     /// </summary>
-    public class CreateDeploymentOptions : IOptions<DeploymentResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The fleet_sid
-        /// </summary>
-        public string PathFleetSid { get; }
-        /// <summary>
-        /// A human readable description for this Deployment.
-        /// </summary>
-        public string FriendlyName { get; set; }
-        /// <summary>
-        /// The unique identifier of the Sync service instance.
-        /// </summary>
-        public string SyncServiceSid { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new CreateDeploymentOptions
-        /// </summary>
-        /// <param name="pathFleetSid"> The fleet_sid </param>
-        public CreateDeploymentOptions(string pathFleetSid)
-        {
-            PathFleetSid = pathFleetSid;
-        }
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// Create a new Deployment in the Fleet, optionally giving it a friendly name and linking to a specific Twilio Sync
+  /// service instance.
+  /// </summary>
+  public class CreateDeploymentOptions : IOptions<DeploymentResource>
+  {
+    /// <summary>
+    /// The fleet_sid
+    /// </summary>
+    public string PathFleetSid { get; }
+    /// <summary>
+    /// A human readable description for this Deployment.
+    /// </summary>
+    public string FriendlyName { get; set; }
+    /// <summary>
+    /// The unique identifier of the Sync service instance.
+    /// </summary>
+    public string SyncServiceSid { get; set; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
-
-            if (SyncServiceSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("SyncServiceSid", SyncServiceSid.ToString()));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new CreateDeploymentOptions
+    /// </summary>
+    /// <param name="pathFleetSid"> The fleet_sid </param>
+    public CreateDeploymentOptions(string pathFleetSid)
+    {
+      PathFleetSid = pathFleetSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// Retrieve a list of all Deployments belonging to the Fleet.
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadDeploymentOptions : ReadOptions<DeploymentResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The fleet_sid
-        /// </summary>
-        public string PathFleetSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
 
-        /// <summary>
-        /// Construct a new ReadDeploymentOptions
-        /// </summary>
-        /// <param name="pathFleetSid"> The fleet_sid </param>
-        public ReadDeploymentOptions(string pathFleetSid)
-        {
-            PathFleetSid = pathFleetSid;
-        }
+      if (SyncServiceSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("SyncServiceSid", SyncServiceSid.ToString()));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
+      return p;
+    }
+  }
 
-            return p;
-        }
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// Retrieve a list of all Deployments belonging to the Fleet.
+  /// </summary>
+  public class ReadDeploymentOptions : ReadOptions<DeploymentResource>
+  {
+    /// <summary>
+    /// The fleet_sid
+    /// </summary>
+    public string PathFleetSid { get; }
+
+    /// <summary>
+    /// Construct a new ReadDeploymentOptions
+    /// </summary>
+    /// <param name="pathFleetSid"> The fleet_sid </param>
+    public ReadDeploymentOptions(string pathFleetSid)
+    {
+      PathFleetSid = pathFleetSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// Update the given properties of a specific Deployment credential in the Fleet, giving it a friendly name or linking
-    /// to a specific Twilio Sync service instance.
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateDeploymentOptions : IOptions<DeploymentResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The fleet_sid
-        /// </summary>
-        public string PathFleetSid { get; }
-        /// <summary>
-        /// A string that uniquely identifies the Deployment.
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// A human readable description for this Deployment.
-        /// </summary>
-        public string FriendlyName { get; set; }
-        /// <summary>
-        /// The unique identifier of the Sync service instance.
-        /// </summary>
-        public string SyncServiceSid { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new UpdateDeploymentOptions
-        /// </summary>
-        /// <param name="pathFleetSid"> The fleet_sid </param>
-        /// <param name="pathSid"> A string that uniquely identifies the Deployment. </param>
-        public UpdateDeploymentOptions(string pathFleetSid, string pathSid)
-        {
-            PathFleetSid = pathFleetSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
-
-            if (SyncServiceSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("SyncServiceSid", SyncServiceSid.ToString()));
-            }
-
-            return p;
-        }
+      return p;
     }
+  }
+
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// Update the given properties of a specific Deployment credential in the Fleet, giving it a friendly name or linking
+  /// to a specific Twilio Sync service instance.
+  /// </summary>
+  public class UpdateDeploymentOptions : IOptions<DeploymentResource>
+  {
+    /// <summary>
+    /// The fleet_sid
+    /// </summary>
+    public string PathFleetSid { get; }
+    /// <summary>
+    /// A string that uniquely identifies the Deployment.
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// A human readable description for this Deployment.
+    /// </summary>
+    public string FriendlyName { get; set; }
+    /// <summary>
+    /// The unique identifier of the Sync service instance.
+    /// </summary>
+    public string SyncServiceSid { get; set; }
+
+    /// <summary>
+    /// Construct a new UpdateDeploymentOptions
+    /// </summary>
+    /// <param name="pathFleetSid"> The fleet_sid </param>
+    /// <param name="pathSid"> A string that uniquely identifies the Deployment. </param>
+    public UpdateDeploymentOptions(string pathFleetSid, string pathSid)
+    {
+      PathFleetSid = pathFleetSid;
+      PathSid = pathSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
+
+      if (SyncServiceSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("SyncServiceSid", SyncServiceSid.ToString()));
+      }
+
+      return p;
+    }
+  }
 
 }

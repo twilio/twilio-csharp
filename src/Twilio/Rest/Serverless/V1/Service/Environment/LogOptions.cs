@@ -11,116 +11,116 @@ using Twilio.Converters;
 namespace Twilio.Rest.Serverless.V1.Service.Environment
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Retrieve a list of all logs.
+  /// </summary>
+  public class ReadLogOptions : ReadOptions<LogResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Retrieve a list of all logs.
+    /// The SID of the Service to read the Log resource from
     /// </summary>
-    public class ReadLogOptions : ReadOptions<LogResource>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The SID of the environment with the Log resources to read
+    /// </summary>
+    public string PathEnvironmentSid { get; }
+    /// <summary>
+    /// The SID of the function whose invocation produced the Log resources to read
+    /// </summary>
+    public string FunctionSid { get; set; }
+    /// <summary>
+    /// The date and time after which the Log resources must have been created.
+    /// </summary>
+    public DateTime? StartDate { get; set; }
+    /// <summary>
+    /// The date and time before which the Log resource must have been created.
+    /// </summary>
+    public DateTime? EndDate { get; set; }
+
+    /// <summary>
+    /// Construct a new ReadLogOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to read the Log resource from </param>
+    /// <param name="pathEnvironmentSid"> The SID of the environment with the Log resources to read </param>
+    public ReadLogOptions(string pathServiceSid, string pathEnvironmentSid)
     {
-        /// <summary>
-        /// The SID of the Service to read the Log resource from
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The SID of the environment with the Log resources to read
-        /// </summary>
-        public string PathEnvironmentSid { get; }
-        /// <summary>
-        /// The SID of the function whose invocation produced the Log resources to read
-        /// </summary>
-        public string FunctionSid { get; set; }
-        /// <summary>
-        /// The date and time after which the Log resources must have been created.
-        /// </summary>
-        public DateTime? StartDate { get; set; }
-        /// <summary>
-        /// The date and time before which the Log resource must have been created.
-        /// </summary>
-        public DateTime? EndDate { get; set; }
-
-        /// <summary>
-        /// Construct a new ReadLogOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to read the Log resource from </param>
-        /// <param name="pathEnvironmentSid"> The SID of the environment with the Log resources to read </param>
-        public ReadLogOptions(string pathServiceSid, string pathEnvironmentSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathEnvironmentSid = pathEnvironmentSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (FunctionSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FunctionSid", FunctionSid.ToString()));
-            }
-
-            if (StartDate != null)
-            {
-                p.Add(new KeyValuePair<string, string>("StartDate", Serializers.DateTimeIso8601(StartDate)));
-            }
-
-            if (EndDate != null)
-            {
-                p.Add(new KeyValuePair<string, string>("EndDate", Serializers.DateTimeIso8601(EndDate)));
-            }
-
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+      PathServiceSid = pathServiceSid;
+      PathEnvironmentSid = pathEnvironmentSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Retrieve a specific log.
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchLogOptions : IOptions<LogResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Service to fetch the Log resource from
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The SID of the environment with the Log resource to fetch
-        /// </summary>
-        public string PathEnvironmentSid { get; }
-        /// <summary>
-        /// The SID that identifies the Log resource to fetch
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (FunctionSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FunctionSid", FunctionSid.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new FetchLogOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to fetch the Log resource from </param>
-        /// <param name="pathEnvironmentSid"> The SID of the environment with the Log resource to fetch </param>
-        /// <param name="pathSid"> The SID that identifies the Log resource to fetch </param>
-        public FetchLogOptions(string pathServiceSid, string pathEnvironmentSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathEnvironmentSid = pathEnvironmentSid;
-            PathSid = pathSid;
-        }
+      if (StartDate != null)
+      {
+        p.Add(new KeyValuePair<string, string>("StartDate", Serializers.DateTimeIso8601(StartDate)));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      if (EndDate != null)
+      {
+        p.Add(new KeyValuePair<string, string>("EndDate", Serializers.DateTimeIso8601(EndDate)));
+      }
+
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
     }
+  }
+
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Retrieve a specific log.
+  /// </summary>
+  public class FetchLogOptions : IOptions<LogResource>
+  {
+    /// <summary>
+    /// The SID of the Service to fetch the Log resource from
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The SID of the environment with the Log resource to fetch
+    /// </summary>
+    public string PathEnvironmentSid { get; }
+    /// <summary>
+    /// The SID that identifies the Log resource to fetch
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchLogOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to fetch the Log resource from </param>
+    /// <param name="pathEnvironmentSid"> The SID of the environment with the Log resource to fetch </param>
+    /// <param name="pathSid"> The SID that identifies the Log resource to fetch </param>
+    public FetchLogOptions(string pathServiceSid, string pathEnvironmentSid, string pathSid)
+    {
+      PathServiceSid = pathServiceSid;
+      PathEnvironmentSid = pathEnvironmentSid;
+      PathSid = pathSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
 }

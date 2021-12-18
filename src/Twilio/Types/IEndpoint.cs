@@ -1,15 +1,15 @@
 ﻿namespace Twilio.Types
 {
+  /// <summary>
+  /// Endpoint of a call
+  /// </summary>
+  public interface IEndpoint
+  {
     /// <summary>
-    /// Endpoint of a call
+    /// Generate string representation
     /// </summary>
-    public interface IEndpoint
-    {
-        /// <summary>
-        /// Generate string representation
-        /// </summary>
-        /// <returns>String representation</returns>
-        string ToString();
-    }
+    /// <returns>String representation</returns>
+    string ToString();
+  }
 }
 

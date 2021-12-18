@@ -21,128 +21,128 @@ using Twilio.Http;
 namespace Twilio.Rest.Preview.TrustedComms
 {
 
-    public class BrandedChannelResource : Resource
+  public class BrandedChannelResource : Resource
+  {
+    private static Request BuildFetchRequest(FetchBrandedChannelOptions options, ITwilioRestClient client)
     {
-        private static Request BuildFetchRequest(FetchBrandedChannelOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Get,
-                Rest.Domain.Preview,
-                "/TrustedComms/BrandedChannels/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// Fetch a specific Branded Channel.
-        /// </summary>
-        /// <param name="options"> Fetch BrandedChannel parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of BrandedChannel </returns>
-        public static BrandedChannelResource Fetch(FetchBrandedChannelOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Fetch a specific Branded Channel.
-        /// </summary>
-        /// <param name="options"> Fetch BrandedChannel parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of BrandedChannel </returns>
-        public static async System.Threading.Tasks.Task<BrandedChannelResource> FetchAsync(FetchBrandedChannelOptions options,
-                                                                                           ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// Fetch a specific Branded Channel.
-        /// </summary>
-        /// <param name="pathSid"> Branded Channel Sid. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of BrandedChannel </returns>
-        public static BrandedChannelResource Fetch(string pathSid, ITwilioRestClient client = null)
-        {
-            var options = new FetchBrandedChannelOptions(pathSid);
-            return Fetch(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Fetch a specific Branded Channel.
-        /// </summary>
-        /// <param name="pathSid"> Branded Channel Sid. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of BrandedChannel </returns>
-        public static async System.Threading.Tasks.Task<BrandedChannelResource> FetchAsync(string pathSid,
-                                                                                           ITwilioRestClient client = null)
-        {
-            var options = new FetchBrandedChannelOptions(pathSid);
-            return await FetchAsync(options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Converts a JSON string into a BrandedChannelResource object
-        /// </summary>
-        /// <param name="json"> Raw JSON string </param>
-        /// <returns> BrandedChannelResource object represented by the provided JSON </returns>
-        public static BrandedChannelResource FromJson(string json)
-        {
-            // Convert all checked exceptions to Runtime
-            try
-            {
-                return JsonConvert.DeserializeObject<BrandedChannelResource>(json);
-            }
-            catch (JsonException e)
-            {
-                throw new ApiException(e.Message, e);
-            }
-        }
-
-        /// <summary>
-        /// Account Sid.
-        /// </summary>
-        [JsonProperty("account_sid")]
-        public string AccountSid { get; private set; }
-        /// <summary>
-        /// Business Sid.
-        /// </summary>
-        [JsonProperty("business_sid")]
-        public string BusinessSid { get; private set; }
-        /// <summary>
-        /// Brand Sid.
-        /// </summary>
-        [JsonProperty("brand_sid")]
-        public string BrandSid { get; private set; }
-        /// <summary>
-        /// Branded Channel Sid.
-        /// </summary>
-        [JsonProperty("sid")]
-        public string Sid { get; private set; }
-        /// <summary>
-        /// Nested resource URLs.
-        /// </summary>
-        [JsonProperty("links")]
-        public Dictionary<string, string> Links { get; private set; }
-        /// <summary>
-        /// The URL of this resource.
-        /// </summary>
-        [JsonProperty("url")]
-        public Uri Url { get; private set; }
-
-        private BrandedChannelResource()
-        {
-
-        }
+      return new Request(
+          HttpMethod.Get,
+          Rest.Domain.Preview,
+          "/TrustedComms/BrandedChannels/" + options.PathSid + "",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
     }
+
+    /// <summary>
+    /// Fetch a specific Branded Channel.
+    /// </summary>
+    /// <param name="options"> Fetch BrandedChannel parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of BrandedChannel </returns>
+    public static BrandedChannelResource Fetch(FetchBrandedChannelOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Fetch a specific Branded Channel.
+    /// </summary>
+    /// <param name="options"> Fetch BrandedChannel parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of BrandedChannel </returns>
+    public static async System.Threading.Tasks.Task<BrandedChannelResource> FetchAsync(FetchBrandedChannelOptions options,
+                                                                                       ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// Fetch a specific Branded Channel.
+    /// </summary>
+    /// <param name="pathSid"> Branded Channel Sid. </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of BrandedChannel </returns>
+    public static BrandedChannelResource Fetch(string pathSid, ITwilioRestClient client = null)
+    {
+      var options = new FetchBrandedChannelOptions(pathSid);
+      return Fetch(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Fetch a specific Branded Channel.
+    /// </summary>
+    /// <param name="pathSid"> Branded Channel Sid. </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of BrandedChannel </returns>
+    public static async System.Threading.Tasks.Task<BrandedChannelResource> FetchAsync(string pathSid,
+                                                                                       ITwilioRestClient client = null)
+    {
+      var options = new FetchBrandedChannelOptions(pathSid);
+      return await FetchAsync(options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Converts a JSON string into a BrandedChannelResource object
+    /// </summary>
+    /// <param name="json"> Raw JSON string </param>
+    /// <returns> BrandedChannelResource object represented by the provided JSON </returns>
+    public static BrandedChannelResource FromJson(string json)
+    {
+      // Convert all checked exceptions to Runtime
+      try
+      {
+        return JsonConvert.DeserializeObject<BrandedChannelResource>(json);
+      }
+      catch (JsonException e)
+      {
+        throw new ApiException(e.Message, e);
+      }
+    }
+
+    /// <summary>
+    /// Account Sid.
+    /// </summary>
+    [JsonProperty("account_sid")]
+    public string AccountSid { get; private set; }
+    /// <summary>
+    /// Business Sid.
+    /// </summary>
+    [JsonProperty("business_sid")]
+    public string BusinessSid { get; private set; }
+    /// <summary>
+    /// Brand Sid.
+    /// </summary>
+    [JsonProperty("brand_sid")]
+    public string BrandSid { get; private set; }
+    /// <summary>
+    /// Branded Channel Sid.
+    /// </summary>
+    [JsonProperty("sid")]
+    public string Sid { get; private set; }
+    /// <summary>
+    /// Nested resource URLs.
+    /// </summary>
+    [JsonProperty("links")]
+    public Dictionary<string, string> Links { get; private set; }
+    /// <summary>
+    /// The URL of this resource.
+    /// </summary>
+    [JsonProperty("url")]
+    public Uri Url { get; private set; }
+
+    private BrandedChannelResource()
+    {
+
+    }
+  }
 
 }

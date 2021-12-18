@@ -21,192 +21,192 @@ using Twilio.Http;
 namespace Twilio.Rest.Preview.Understand.Assistant
 {
 
-    public class AssistantInitiationActionsResource : Resource
+  public class AssistantInitiationActionsResource : Resource
+  {
+    private static Request BuildFetchRequest(FetchAssistantInitiationActionsOptions options, ITwilioRestClient client)
     {
-        private static Request BuildFetchRequest(FetchAssistantInitiationActionsOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Get,
-                Rest.Domain.Preview,
-                "/understand/Assistants/" + options.PathAssistantSid + "/InitiationActions",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="options"> Fetch AssistantInitiationActions parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of AssistantInitiationActions </returns>
-        public static AssistantInitiationActionsResource Fetch(FetchAssistantInitiationActionsOptions options,
-                                                               ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="options"> Fetch AssistantInitiationActions parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of AssistantInitiationActions </returns>
-        public static async System.Threading.Tasks.Task<AssistantInitiationActionsResource> FetchAsync(FetchAssistantInitiationActionsOptions options,
-                                                                                                       ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of AssistantInitiationActions </returns>
-        public static AssistantInitiationActionsResource Fetch(string pathAssistantSid, ITwilioRestClient client = null)
-        {
-            var options = new FetchAssistantInitiationActionsOptions(pathAssistantSid);
-            return Fetch(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of AssistantInitiationActions </returns>
-        public static async System.Threading.Tasks.Task<AssistantInitiationActionsResource> FetchAsync(string pathAssistantSid,
-                                                                                                       ITwilioRestClient client = null)
-        {
-            var options = new FetchAssistantInitiationActionsOptions(pathAssistantSid);
-            return await FetchAsync(options, client);
-        }
-        #endif
-
-        private static Request BuildUpdateRequest(UpdateAssistantInitiationActionsOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Post,
-                Rest.Domain.Preview,
-                "/understand/Assistants/" + options.PathAssistantSid + "/InitiationActions",
-                postParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// update
-        /// </summary>
-        /// <param name="options"> Update AssistantInitiationActions parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of AssistantInitiationActions </returns>
-        public static AssistantInitiationActionsResource Update(UpdateAssistantInitiationActionsOptions options,
-                                                                ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildUpdateRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// update
-        /// </summary>
-        /// <param name="options"> Update AssistantInitiationActions parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of AssistantInitiationActions </returns>
-        public static async System.Threading.Tasks.Task<AssistantInitiationActionsResource> UpdateAsync(UpdateAssistantInitiationActionsOptions options,
-                                                                                                        ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// update
-        /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
-        /// <param name="initiationActions"> The initiation_actions </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of AssistantInitiationActions </returns>
-        public static AssistantInitiationActionsResource Update(string pathAssistantSid,
-                                                                object initiationActions = null,
-                                                                ITwilioRestClient client = null)
-        {
-            var options = new UpdateAssistantInitiationActionsOptions(pathAssistantSid){InitiationActions = initiationActions};
-            return Update(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// update
-        /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
-        /// <param name="initiationActions"> The initiation_actions </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of AssistantInitiationActions </returns>
-        public static async System.Threading.Tasks.Task<AssistantInitiationActionsResource> UpdateAsync(string pathAssistantSid,
-                                                                                                        object initiationActions = null,
-                                                                                                        ITwilioRestClient client = null)
-        {
-            var options = new UpdateAssistantInitiationActionsOptions(pathAssistantSid){InitiationActions = initiationActions};
-            return await UpdateAsync(options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Converts a JSON string into a AssistantInitiationActionsResource object
-        /// </summary>
-        /// <param name="json"> Raw JSON string </param>
-        /// <returns> AssistantInitiationActionsResource object represented by the provided JSON </returns>
-        public static AssistantInitiationActionsResource FromJson(string json)
-        {
-            // Convert all checked exceptions to Runtime
-            try
-            {
-                return JsonConvert.DeserializeObject<AssistantInitiationActionsResource>(json);
-            }
-            catch (JsonException e)
-            {
-                throw new ApiException(e.Message, e);
-            }
-        }
-
-        /// <summary>
-        /// The account_sid
-        /// </summary>
-        [JsonProperty("account_sid")]
-        public string AccountSid { get; private set; }
-        /// <summary>
-        /// The assistant_sid
-        /// </summary>
-        [JsonProperty("assistant_sid")]
-        public string AssistantSid { get; private set; }
-        /// <summary>
-        /// The url
-        /// </summary>
-        [JsonProperty("url")]
-        public Uri Url { get; private set; }
-        /// <summary>
-        /// The data
-        /// </summary>
-        [JsonProperty("data")]
-        public object Data { get; private set; }
-
-        private AssistantInitiationActionsResource()
-        {
-
-        }
+      return new Request(
+          HttpMethod.Get,
+          Rest.Domain.Preview,
+          "/understand/Assistants/" + options.PathAssistantSid + "/InitiationActions",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
     }
+
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="options"> Fetch AssistantInitiationActions parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of AssistantInitiationActions </returns>
+    public static AssistantInitiationActionsResource Fetch(FetchAssistantInitiationActionsOptions options,
+                                                           ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="options"> Fetch AssistantInitiationActions parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of AssistantInitiationActions </returns>
+    public static async System.Threading.Tasks.Task<AssistantInitiationActionsResource> FetchAsync(FetchAssistantInitiationActionsOptions options,
+                                                                                                   ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="pathAssistantSid"> The assistant_sid </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of AssistantInitiationActions </returns>
+    public static AssistantInitiationActionsResource Fetch(string pathAssistantSid, ITwilioRestClient client = null)
+    {
+      var options = new FetchAssistantInitiationActionsOptions(pathAssistantSid);
+      return Fetch(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="pathAssistantSid"> The assistant_sid </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of AssistantInitiationActions </returns>
+    public static async System.Threading.Tasks.Task<AssistantInitiationActionsResource> FetchAsync(string pathAssistantSid,
+                                                                                                   ITwilioRestClient client = null)
+    {
+      var options = new FetchAssistantInitiationActionsOptions(pathAssistantSid);
+      return await FetchAsync(options, client);
+    }
+#endif
+
+    private static Request BuildUpdateRequest(UpdateAssistantInitiationActionsOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Post,
+          Rest.Domain.Preview,
+          "/understand/Assistants/" + options.PathAssistantSid + "/InitiationActions",
+          postParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// update
+    /// </summary>
+    /// <param name="options"> Update AssistantInitiationActions parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of AssistantInitiationActions </returns>
+    public static AssistantInitiationActionsResource Update(UpdateAssistantInitiationActionsOptions options,
+                                                            ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildUpdateRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// update
+    /// </summary>
+    /// <param name="options"> Update AssistantInitiationActions parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of AssistantInitiationActions </returns>
+    public static async System.Threading.Tasks.Task<AssistantInitiationActionsResource> UpdateAsync(UpdateAssistantInitiationActionsOptions options,
+                                                                                                    ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// update
+    /// </summary>
+    /// <param name="pathAssistantSid"> The assistant_sid </param>
+    /// <param name="initiationActions"> The initiation_actions </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of AssistantInitiationActions </returns>
+    public static AssistantInitiationActionsResource Update(string pathAssistantSid,
+                                                            object initiationActions = null,
+                                                            ITwilioRestClient client = null)
+    {
+      var options = new UpdateAssistantInitiationActionsOptions(pathAssistantSid) { InitiationActions = initiationActions };
+      return Update(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// update
+    /// </summary>
+    /// <param name="pathAssistantSid"> The assistant_sid </param>
+    /// <param name="initiationActions"> The initiation_actions </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of AssistantInitiationActions </returns>
+    public static async System.Threading.Tasks.Task<AssistantInitiationActionsResource> UpdateAsync(string pathAssistantSid,
+                                                                                                    object initiationActions = null,
+                                                                                                    ITwilioRestClient client = null)
+    {
+      var options = new UpdateAssistantInitiationActionsOptions(pathAssistantSid) { InitiationActions = initiationActions };
+      return await UpdateAsync(options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Converts a JSON string into a AssistantInitiationActionsResource object
+    /// </summary>
+    /// <param name="json"> Raw JSON string </param>
+    /// <returns> AssistantInitiationActionsResource object represented by the provided JSON </returns>
+    public static AssistantInitiationActionsResource FromJson(string json)
+    {
+      // Convert all checked exceptions to Runtime
+      try
+      {
+        return JsonConvert.DeserializeObject<AssistantInitiationActionsResource>(json);
+      }
+      catch (JsonException e)
+      {
+        throw new ApiException(e.Message, e);
+      }
+    }
+
+    /// <summary>
+    /// The account_sid
+    /// </summary>
+    [JsonProperty("account_sid")]
+    public string AccountSid { get; private set; }
+    /// <summary>
+    /// The assistant_sid
+    /// </summary>
+    [JsonProperty("assistant_sid")]
+    public string AssistantSid { get; private set; }
+    /// <summary>
+    /// The url
+    /// </summary>
+    [JsonProperty("url")]
+    public Uri Url { get; private set; }
+    /// <summary>
+    /// The data
+    /// </summary>
+    [JsonProperty("data")]
+    public object Data { get; private set; }
+
+    private AssistantInitiationActionsResource()
+    {
+
+    }
+  }
 
 }

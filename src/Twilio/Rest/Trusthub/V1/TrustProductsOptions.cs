@@ -11,240 +11,240 @@ using Twilio.Converters;
 namespace Twilio.Rest.Trusthub.V1
 {
 
+  /// <summary>
+  /// Create a new Customer-Profile.
+  /// </summary>
+  public class CreateTrustProductsOptions : IOptions<TrustProductsResource>
+  {
     /// <summary>
-    /// Create a new Customer-Profile.
+    /// The string that you assigned to describe the resource
     /// </summary>
-    public class CreateTrustProductsOptions : IOptions<TrustProductsResource>
+    public string FriendlyName { get; }
+    /// <summary>
+    /// The email address
+    /// </summary>
+    public string Email { get; }
+    /// <summary>
+    /// The unique string of a policy.
+    /// </summary>
+    public string PolicySid { get; }
+    /// <summary>
+    /// The URL we call to inform your application of status changes.
+    /// </summary>
+    public Uri StatusCallback { get; set; }
+
+    /// <summary>
+    /// Construct a new CreateTrustProductsOptions
+    /// </summary>
+    /// <param name="friendlyName"> The string that you assigned to describe the resource </param>
+    /// <param name="email"> The email address </param>
+    /// <param name="policySid"> The unique string of a policy. </param>
+    public CreateTrustProductsOptions(string friendlyName, string email, string policySid)
     {
-        /// <summary>
-        /// The string that you assigned to describe the resource
-        /// </summary>
-        public string FriendlyName { get; }
-        /// <summary>
-        /// The email address
-        /// </summary>
-        public string Email { get; }
-        /// <summary>
-        /// The unique string of a policy.
-        /// </summary>
-        public string PolicySid { get; }
-        /// <summary>
-        /// The URL we call to inform your application of status changes.
-        /// </summary>
-        public Uri StatusCallback { get; set; }
-
-        /// <summary>
-        /// Construct a new CreateTrustProductsOptions
-        /// </summary>
-        /// <param name="friendlyName"> The string that you assigned to describe the resource </param>
-        /// <param name="email"> The email address </param>
-        /// <param name="policySid"> The unique string of a policy. </param>
-        public CreateTrustProductsOptions(string friendlyName, string email, string policySid)
-        {
-            FriendlyName = friendlyName;
-            Email = email;
-            PolicySid = policySid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
-
-            if (Email != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Email", Email));
-            }
-
-            if (PolicySid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PolicySid", PolicySid.ToString()));
-            }
-
-            if (StatusCallback != null)
-            {
-                p.Add(new KeyValuePair<string, string>("StatusCallback", Serializers.Url(StatusCallback)));
-            }
-
-            return p;
-        }
+      FriendlyName = friendlyName;
+      Email = email;
+      PolicySid = policySid;
     }
 
     /// <summary>
-    /// Retrieve a list of all Customer-Profiles for an account.
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadTrustProductsOptions : ReadOptions<TrustProductsResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The verification status of the Customer-Profile resource
-        /// </summary>
-        public TrustProductsResource.StatusEnum Status { get; set; }
-        /// <summary>
-        /// The string that you assigned to describe the resource
-        /// </summary>
-        public string FriendlyName { get; set; }
-        /// <summary>
-        /// The unique string of a policy.
-        /// </summary>
-        public string PolicySid { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Status != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
-            }
+      if (Email != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Email", Email));
+      }
 
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
+      if (PolicySid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PolicySid", PolicySid.ToString()));
+      }
 
-            if (PolicySid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PolicySid", PolicySid.ToString()));
-            }
+      if (StatusCallback != null)
+      {
+        p.Add(new KeyValuePair<string, string>("StatusCallback", Serializers.Url(StatusCallback)));
+      }
 
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
+      return p;
+    }
+  }
 
-            return p;
-        }
+  /// <summary>
+  /// Retrieve a list of all Customer-Profiles for an account.
+  /// </summary>
+  public class ReadTrustProductsOptions : ReadOptions<TrustProductsResource>
+  {
+    /// <summary>
+    /// The verification status of the Customer-Profile resource
+    /// </summary>
+    public TrustProductsResource.StatusEnum Status { get; set; }
+    /// <summary>
+    /// The string that you assigned to describe the resource
+    /// </summary>
+    public string FriendlyName { get; set; }
+    /// <summary>
+    /// The unique string of a policy.
+    /// </summary>
+    public string PolicySid { get; set; }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (Status != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
+      }
+
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
+
+      if (PolicySid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PolicySid", PolicySid.ToString()));
+      }
+
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// Fetch a specific Customer-Profile instance.
+  /// </summary>
+  public class FetchTrustProductsOptions : IOptions<TrustProductsResource>
+  {
+    /// <summary>
+    /// The unique string that identifies the resource.
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchTrustProductsOptions
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource. </param>
+    public FetchTrustProductsOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Fetch a specific Customer-Profile instance.
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchTrustProductsOptions : IOptions<TrustProductsResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique string that identifies the resource.
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new FetchTrustProductsOptions
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource. </param>
-        public FetchTrustProductsOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
+  /// <summary>
+  /// Updates a Customer-Profile in an account.
+  /// </summary>
+  public class UpdateTrustProductsOptions : IOptions<TrustProductsResource>
+  {
+    /// <summary>
+    /// The unique string that identifies the resource.
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// The verification status of the Customer-Profile resource
+    /// </summary>
+    public TrustProductsResource.StatusEnum Status { get; set; }
+    /// <summary>
+    /// The URL we call to inform your application of status changes.
+    /// </summary>
+    public Uri StatusCallback { get; set; }
+    /// <summary>
+    /// The string that you assigned to describe the resource
+    /// </summary>
+    public string FriendlyName { get; set; }
+    /// <summary>
+    /// The email address
+    /// </summary>
+    public string Email { get; set; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+    /// <summary>
+    /// Construct a new UpdateTrustProductsOptions
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource. </param>
+    public UpdateTrustProductsOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Updates a Customer-Profile in an account.
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateTrustProductsOptions : IOptions<TrustProductsResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique string that identifies the resource.
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// The verification status of the Customer-Profile resource
-        /// </summary>
-        public TrustProductsResource.StatusEnum Status { get; set; }
-        /// <summary>
-        /// The URL we call to inform your application of status changes.
-        /// </summary>
-        public Uri StatusCallback { get; set; }
-        /// <summary>
-        /// The string that you assigned to describe the resource
-        /// </summary>
-        public string FriendlyName { get; set; }
-        /// <summary>
-        /// The email address
-        /// </summary>
-        public string Email { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (Status != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new UpdateTrustProductsOptions
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource. </param>
-        public UpdateTrustProductsOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
+      if (StatusCallback != null)
+      {
+        p.Add(new KeyValuePair<string, string>("StatusCallback", Serializers.Url(StatusCallback)));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Status != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
-            }
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
 
-            if (StatusCallback != null)
-            {
-                p.Add(new KeyValuePair<string, string>("StatusCallback", Serializers.Url(StatusCallback)));
-            }
+      if (Email != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Email", Email));
+      }
 
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
+      return p;
+    }
+  }
 
-            if (Email != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Email", Email));
-            }
+  /// <summary>
+  /// Delete a specific Customer-Profile.
+  /// </summary>
+  public class DeleteTrustProductsOptions : IOptions<TrustProductsResource>
+  {
+    /// <summary>
+    /// The unique string that identifies the resource.
+    /// </summary>
+    public string PathSid { get; }
 
-            return p;
-        }
+    /// <summary>
+    /// Construct a new DeleteTrustProductsOptions
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource. </param>
+    public DeleteTrustProductsOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Delete a specific Customer-Profile.
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteTrustProductsOptions : IOptions<TrustProductsResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique string that identifies the resource.
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new DeleteTrustProductsOptions
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource. </param>
-        public DeleteTrustProductsOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
 
 }

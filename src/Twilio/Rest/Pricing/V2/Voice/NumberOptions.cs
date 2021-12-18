@@ -11,42 +11,42 @@ using Twilio.Converters;
 namespace Twilio.Rest.Pricing.V2.Voice
 {
 
+  /// <summary>
+  /// Fetch pricing information for a specific destination and, optionally, origination phone number.
+  /// </summary>
+  public class FetchNumberOptions : IOptions<NumberResource>
+  {
     /// <summary>
-    /// Fetch pricing information for a specific destination and, optionally, origination phone number.
+    /// The destination number for which to fetch pricing information
     /// </summary>
-    public class FetchNumberOptions : IOptions<NumberResource>
+    public Types.PhoneNumber PathDestinationNumber { get; }
+    /// <summary>
+    /// The origination number for which to fetch pricing information
+    /// </summary>
+    public Types.PhoneNumber OriginationNumber { get; set; }
+
+    /// <summary>
+    /// Construct a new FetchNumberOptions
+    /// </summary>
+    /// <param name="pathDestinationNumber"> The destination number for which to fetch pricing information </param>
+    public FetchNumberOptions(Types.PhoneNumber pathDestinationNumber)
     {
-        /// <summary>
-        /// The destination number for which to fetch pricing information
-        /// </summary>
-        public Types.PhoneNumber PathDestinationNumber { get; }
-        /// <summary>
-        /// The origination number for which to fetch pricing information
-        /// </summary>
-        public Types.PhoneNumber OriginationNumber { get; set; }
-
-        /// <summary>
-        /// Construct a new FetchNumberOptions
-        /// </summary>
-        /// <param name="pathDestinationNumber"> The destination number for which to fetch pricing information </param>
-        public FetchNumberOptions(Types.PhoneNumber pathDestinationNumber)
-        {
-            PathDestinationNumber = pathDestinationNumber;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (OriginationNumber != null)
-            {
-                p.Add(new KeyValuePair<string, string>("OriginationNumber", OriginationNumber.ToString()));
-            }
-
-            return p;
-        }
+      PathDestinationNumber = pathDestinationNumber;
     }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (OriginationNumber != null)
+      {
+        p.Add(new KeyValuePair<string, string>("OriginationNumber", OriginationNumber.ToString()));
+      }
+
+      return p;
+    }
+  }
 
 }

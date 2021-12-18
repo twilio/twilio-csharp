@@ -11,207 +11,207 @@ using Twilio.Converters;
 namespace Twilio.Rest.Preview.Marketplace
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// Install an Add-on for the Account specified.
+  /// </summary>
+  public class CreateInstalledAddOnOptions : IOptions<InstalledAddOnResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// Install an Add-on for the Account specified.
+    /// The SID of the AvaliableAddOn to install
     /// </summary>
-    public class CreateInstalledAddOnOptions : IOptions<InstalledAddOnResource>
+    public string AvailableAddOnSid { get; }
+    /// <summary>
+    /// Whether the Terms of Service were accepted
+    /// </summary>
+    public bool? AcceptTermsOfService { get; }
+    /// <summary>
+    /// The JSON object representing the configuration
+    /// </summary>
+    public object Configuration { get; set; }
+    /// <summary>
+    /// An application-defined string that uniquely identifies the resource
+    /// </summary>
+    public string UniqueName { get; set; }
+
+    /// <summary>
+    /// Construct a new CreateInstalledAddOnOptions
+    /// </summary>
+    /// <param name="availableAddOnSid"> The SID of the AvaliableAddOn to install </param>
+    /// <param name="acceptTermsOfService"> Whether the Terms of Service were accepted </param>
+    public CreateInstalledAddOnOptions(string availableAddOnSid, bool? acceptTermsOfService)
     {
-        /// <summary>
-        /// The SID of the AvaliableAddOn to install
-        /// </summary>
-        public string AvailableAddOnSid { get; }
-        /// <summary>
-        /// Whether the Terms of Service were accepted
-        /// </summary>
-        public bool? AcceptTermsOfService { get; }
-        /// <summary>
-        /// The JSON object representing the configuration
-        /// </summary>
-        public object Configuration { get; set; }
-        /// <summary>
-        /// An application-defined string that uniquely identifies the resource
-        /// </summary>
-        public string UniqueName { get; set; }
-
-        /// <summary>
-        /// Construct a new CreateInstalledAddOnOptions
-        /// </summary>
-        /// <param name="availableAddOnSid"> The SID of the AvaliableAddOn to install </param>
-        /// <param name="acceptTermsOfService"> Whether the Terms of Service were accepted </param>
-        public CreateInstalledAddOnOptions(string availableAddOnSid, bool? acceptTermsOfService)
-        {
-            AvailableAddOnSid = availableAddOnSid;
-            AcceptTermsOfService = acceptTermsOfService;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (AvailableAddOnSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("AvailableAddOnSid", AvailableAddOnSid.ToString()));
-            }
-
-            if (AcceptTermsOfService != null)
-            {
-                p.Add(new KeyValuePair<string, string>("AcceptTermsOfService", AcceptTermsOfService.Value.ToString().ToLower()));
-            }
-
-            if (Configuration != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Configuration", Serializers.JsonObject(Configuration)));
-            }
-
-            if (UniqueName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
-            }
-
-            return p;
-        }
+      AvailableAddOnSid = availableAddOnSid;
+      AcceptTermsOfService = acceptTermsOfService;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// Remove an Add-on installation from your account
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteInstalledAddOnOptions : IOptions<InstalledAddOnResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the InstalledAddOn resource to delete
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (AvailableAddOnSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("AvailableAddOnSid", AvailableAddOnSid.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new DeleteInstalledAddOnOptions
-        /// </summary>
-        /// <param name="pathSid"> The SID of the InstalledAddOn resource to delete </param>
-        public DeleteInstalledAddOnOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
+      if (AcceptTermsOfService != null)
+      {
+        p.Add(new KeyValuePair<string, string>("AcceptTermsOfService", AcceptTermsOfService.Value.ToString().ToLower()));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      if (Configuration != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Configuration", Serializers.JsonObject(Configuration)));
+      }
+
+      if (UniqueName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
+      }
+
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// Remove an Add-on installation from your account
+  /// </summary>
+  public class DeleteInstalledAddOnOptions : IOptions<InstalledAddOnResource>
+  {
+    /// <summary>
+    /// The SID of the InstalledAddOn resource to delete
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new DeleteInstalledAddOnOptions
+    /// </summary>
+    /// <param name="pathSid"> The SID of the InstalledAddOn resource to delete </param>
+    public DeleteInstalledAddOnOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// Fetch an instance of an Add-on currently installed on this Account.
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchInstalledAddOnOptions : IOptions<InstalledAddOnResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the InstalledAddOn resource to fetch
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new FetchInstalledAddOnOptions
-        /// </summary>
-        /// <param name="pathSid"> The SID of the InstalledAddOn resource to fetch </param>
-        public FetchInstalledAddOnOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// Fetch an instance of an Add-on currently installed on this Account.
+  /// </summary>
+  public class FetchInstalledAddOnOptions : IOptions<InstalledAddOnResource>
+  {
+    /// <summary>
+    /// The SID of the InstalledAddOn resource to fetch
+    /// </summary>
+    public string PathSid { get; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+    /// <summary>
+    /// Construct a new FetchInstalledAddOnOptions
+    /// </summary>
+    /// <param name="pathSid"> The SID of the InstalledAddOn resource to fetch </param>
+    public FetchInstalledAddOnOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// Update an Add-on installation for the Account specified.
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateInstalledAddOnOptions : IOptions<InstalledAddOnResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the InstalledAddOn resource to update
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// The JSON object representing the configuration
-        /// </summary>
-        public object Configuration { get; set; }
-        /// <summary>
-        /// An application-defined string that uniquely identifies the resource
-        /// </summary>
-        public string UniqueName { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new UpdateInstalledAddOnOptions
-        /// </summary>
-        /// <param name="pathSid"> The SID of the InstalledAddOn resource to update </param>
-        public UpdateInstalledAddOnOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// Update an Add-on installation for the Account specified.
+  /// </summary>
+  public class UpdateInstalledAddOnOptions : IOptions<InstalledAddOnResource>
+  {
+    /// <summary>
+    /// The SID of the InstalledAddOn resource to update
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// The JSON object representing the configuration
+    /// </summary>
+    public object Configuration { get; set; }
+    /// <summary>
+    /// An application-defined string that uniquely identifies the resource
+    /// </summary>
+    public string UniqueName { get; set; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Configuration != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Configuration", Serializers.JsonObject(Configuration)));
-            }
-
-            if (UniqueName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new UpdateInstalledAddOnOptions
+    /// </summary>
+    /// <param name="pathSid"> The SID of the InstalledAddOn resource to update </param>
+    public UpdateInstalledAddOnOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// Retrieve a list of Add-ons currently installed on this Account.
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadInstalledAddOnOptions : ReadOptions<InstalledAddOnResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
+      var p = new List<KeyValuePair<string, string>>();
+      if (Configuration != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Configuration", Serializers.JsonObject(Configuration)));
+      }
 
-            return p;
-        }
+      if (UniqueName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
+      }
+
+      return p;
     }
+  }
+
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// Retrieve a list of Add-ons currently installed on this Account.
+  /// </summary>
+  public class ReadInstalledAddOnOptions : ReadOptions<InstalledAddOnResource>
+  {
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
 
 }

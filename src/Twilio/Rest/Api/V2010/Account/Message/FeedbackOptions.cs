@@ -11,46 +11,46 @@ using Twilio.Converters;
 namespace Twilio.Rest.Api.V2010.Account.Message
 {
 
+  /// <summary>
+  /// CreateFeedbackOptions
+  /// </summary>
+  public class CreateFeedbackOptions : IOptions<FeedbackResource>
+  {
     /// <summary>
-    /// CreateFeedbackOptions
+    /// The SID of the Account that will create the resource
     /// </summary>
-    public class CreateFeedbackOptions : IOptions<FeedbackResource>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The SID of the Message resource for which the feedback was provided
+    /// </summary>
+    public string PathMessageSid { get; }
+    /// <summary>
+    /// Whether the feedback has arrived
+    /// </summary>
+    public FeedbackResource.OutcomeEnum Outcome { get; set; }
+
+    /// <summary>
+    /// Construct a new CreateFeedbackOptions
+    /// </summary>
+    /// <param name="pathMessageSid"> The SID of the Message resource for which the feedback was provided </param>
+    public CreateFeedbackOptions(string pathMessageSid)
     {
-        /// <summary>
-        /// The SID of the Account that will create the resource
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The SID of the Message resource for which the feedback was provided
-        /// </summary>
-        public string PathMessageSid { get; }
-        /// <summary>
-        /// Whether the feedback has arrived
-        /// </summary>
-        public FeedbackResource.OutcomeEnum Outcome { get; set; }
-
-        /// <summary>
-        /// Construct a new CreateFeedbackOptions
-        /// </summary>
-        /// <param name="pathMessageSid"> The SID of the Message resource for which the feedback was provided </param>
-        public CreateFeedbackOptions(string pathMessageSid)
-        {
-            PathMessageSid = pathMessageSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Outcome != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Outcome", Outcome.ToString()));
-            }
-
-            return p;
-        }
+      PathMessageSid = pathMessageSid;
     }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (Outcome != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Outcome", Outcome.ToString()));
+      }
+
+      return p;
+    }
+  }
 
 }

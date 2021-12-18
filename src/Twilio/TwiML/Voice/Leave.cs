@@ -10,36 +10,36 @@ using System.Xml.Linq;
 namespace Twilio.TwiML.Voice
 {
 
+  /// <summary>
+  /// Leave TwiML Verb
+  /// </summary>
+  public class Leave : TwiML
+  {
     /// <summary>
-    /// Leave TwiML Verb
+    /// Create a new Leave
     /// </summary>
-    public class Leave : TwiML
+    public Leave() : base("Leave")
     {
-        /// <summary>
-        /// Create a new Leave
-        /// </summary>
-        public Leave() : base("Leave")
-        {
-        }
-
-        /// <summary>
-        /// Append a child TwiML element to this element returning this element to allow chaining.
-        /// </summary>
-        /// <param name="childElem"> Child TwiML element to add </param>
-        public new Leave Append(TwiML childElem)
-        {
-            return (Leave) base.Append(childElem);
-        }
-
-        /// <summary>
-        /// Add freeform key-value attributes to the generated xml
-        /// </summary>
-        /// <param name="key"> Option key </param>
-        /// <param name="value"> Option value </param>
-        public new Leave SetOption(string key, object value)
-        {
-            return (Leave) base.SetOption(key, value);
-        }
     }
+
+    /// <summary>
+    /// Append a child TwiML element to this element returning this element to allow chaining.
+    /// </summary>
+    /// <param name="childElem"> Child TwiML element to add </param>
+    public new Leave Append(TwiML childElem)
+    {
+      return (Leave)base.Append(childElem);
+    }
+
+    /// <summary>
+    /// Add freeform key-value attributes to the generated xml
+    /// </summary>
+    /// <param name="key"> Option key </param>
+    /// <param name="value"> Option value </param>
+    public new Leave SetOption(string key, object value)
+    {
+      return (Leave)base.SetOption(key, value);
+    }
+  }
 
 }

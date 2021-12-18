@@ -11,156 +11,156 @@ using Twilio.Converters;
 namespace Twilio.Rest.Messaging.V1.Service
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// CreateAlphaSenderOptions
+  /// </summary>
+  public class CreateAlphaSenderOptions : IOptions<AlphaSenderResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// CreateAlphaSenderOptions
+    /// The SID of the Service to create the resource under
     /// </summary>
-    public class CreateAlphaSenderOptions : IOptions<AlphaSenderResource>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The Alphanumeric Sender ID string
+    /// </summary>
+    public string AlphaSender { get; }
+
+    /// <summary>
+    /// Construct a new CreateAlphaSenderOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to create the resource under </param>
+    /// <param name="alphaSender"> The Alphanumeric Sender ID string </param>
+    public CreateAlphaSenderOptions(string pathServiceSid, string alphaSender)
     {
-        /// <summary>
-        /// The SID of the Service to create the resource under
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The Alphanumeric Sender ID string
-        /// </summary>
-        public string AlphaSender { get; }
-
-        /// <summary>
-        /// Construct a new CreateAlphaSenderOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to create the resource under </param>
-        /// <param name="alphaSender"> The Alphanumeric Sender ID string </param>
-        public CreateAlphaSenderOptions(string pathServiceSid, string alphaSender)
-        {
-            PathServiceSid = pathServiceSid;
-            AlphaSender = alphaSender;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (AlphaSender != null)
-            {
-                p.Add(new KeyValuePair<string, string>("AlphaSender", AlphaSender));
-            }
-
-            return p;
-        }
+      PathServiceSid = pathServiceSid;
+      AlphaSender = alphaSender;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// ReadAlphaSenderOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadAlphaSenderOptions : ReadOptions<AlphaSenderResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Service to read the resources from
-        /// </summary>
-        public string PathServiceSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (AlphaSender != null)
+      {
+        p.Add(new KeyValuePair<string, string>("AlphaSender", AlphaSender));
+      }
 
-        /// <summary>
-        /// Construct a new ReadAlphaSenderOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to read the resources from </param>
-        public ReadAlphaSenderOptions(string pathServiceSid)
-        {
-            PathServiceSid = pathServiceSid;
-        }
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// ReadAlphaSenderOptions
+  /// </summary>
+  public class ReadAlphaSenderOptions : ReadOptions<AlphaSenderResource>
+  {
+    /// <summary>
+    /// The SID of the Service to read the resources from
+    /// </summary>
+    public string PathServiceSid { get; }
 
-            return p;
-        }
+    /// <summary>
+    /// Construct a new ReadAlphaSenderOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to read the resources from </param>
+    public ReadAlphaSenderOptions(string pathServiceSid)
+    {
+      PathServiceSid = pathServiceSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// FetchAlphaSenderOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchAlphaSenderOptions : IOptions<AlphaSenderResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Messaging Service to fetch the resource from
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The SID that identifies the resource to fetch
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new FetchAlphaSenderOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Messaging Service to fetch the resource from </param>
-        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
-        public FetchAlphaSenderOptions(string pathServiceSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathSid = pathSid;
-        }
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// FetchAlphaSenderOptions
+  /// </summary>
+  public class FetchAlphaSenderOptions : IOptions<AlphaSenderResource>
+  {
+    /// <summary>
+    /// The SID of the Messaging Service to fetch the resource from
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The SID that identifies the resource to fetch
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchAlphaSenderOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Messaging Service to fetch the resource from </param>
+    /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
+    public FetchAlphaSenderOptions(string pathServiceSid, string pathSid)
+    {
+      PathServiceSid = pathServiceSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// DeleteAlphaSenderOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteAlphaSenderOptions : IOptions<AlphaSenderResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Service to delete the resource from
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The SID that identifies the resource to delete
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new DeleteAlphaSenderOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
-        /// <param name="pathSid"> The SID that identifies the resource to delete </param>
-        public DeleteAlphaSenderOptions(string pathServiceSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
+
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// DeleteAlphaSenderOptions
+  /// </summary>
+  public class DeleteAlphaSenderOptions : IOptions<AlphaSenderResource>
+  {
+    /// <summary>
+    /// The SID of the Service to delete the resource from
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The SID that identifies the resource to delete
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new DeleteAlphaSenderOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
+    /// <param name="pathSid"> The SID that identifies the resource to delete </param>
+    public DeleteAlphaSenderOptions(string pathServiceSid, string pathSid)
+    {
+      PathServiceSid = pathServiceSid;
+      PathSid = pathSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
 }

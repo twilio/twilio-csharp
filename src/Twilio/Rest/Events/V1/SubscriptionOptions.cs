@@ -12,205 +12,205 @@ using Twilio.Converters;
 namespace Twilio.Rest.Events.V1
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Retrieve a paginated list of Subscriptions belonging to the account used to make the request.
+  /// </summary>
+  public class ReadSubscriptionOptions : ReadOptions<SubscriptionResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Retrieve a paginated list of Subscriptions belonging to the account used to make the request.
+    /// Sink SID.
     /// </summary>
-    public class ReadSubscriptionOptions : ReadOptions<SubscriptionResource>
+    public string SinkSid { get; set; }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// Sink SID.
-        /// </summary>
-        public string SinkSid { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (SinkSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("SinkSid", SinkSid.ToString()));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (SinkSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("SinkSid", SinkSid.ToString()));
-            }
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
+      return p;
+    }
+  }
 
-            return p;
-        }
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Fetch a specific Subscription.
+  /// </summary>
+  public class FetchSubscriptionOptions : IOptions<SubscriptionResource>
+  {
+    /// <summary>
+    /// A string that uniquely identifies this Subscription.
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchSubscriptionOptions
+    /// </summary>
+    /// <param name="pathSid"> A string that uniquely identifies this Subscription. </param>
+    public FetchSubscriptionOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Fetch a specific Subscription.
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchSubscriptionOptions : IOptions<SubscriptionResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// A string that uniquely identifies this Subscription.
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new FetchSubscriptionOptions
-        /// </summary>
-        /// <param name="pathSid"> A string that uniquely identifies this Subscription. </param>
-        public FetchSubscriptionOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Create a new Subscription.
+  /// </summary>
+  public class CreateSubscriptionOptions : IOptions<SubscriptionResource>
+  {
+    /// <summary>
+    /// Subscription description
+    /// </summary>
+    public string Description { get; }
+    /// <summary>
+    /// Sink SID.
+    /// </summary>
+    public string SinkSid { get; }
+    /// <summary>
+    /// Subscribed Event Types
+    /// </summary>
+    public List<object> Types { get; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+    /// <summary>
+    /// Construct a new CreateSubscriptionOptions
+    /// </summary>
+    /// <param name="description"> Subscription description </param>
+    /// <param name="sinkSid"> Sink SID. </param>
+    /// <param name="types"> Subscribed Event Types </param>
+    public CreateSubscriptionOptions(string description, string sinkSid, List<object> types)
+    {
+      Description = description;
+      SinkSid = sinkSid;
+      Types = types;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Create a new Subscription.
+    /// Generate the necessary parameters
     /// </summary>
-    public class CreateSubscriptionOptions : IOptions<SubscriptionResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// Subscription description
-        /// </summary>
-        public string Description { get; }
-        /// <summary>
-        /// Sink SID.
-        /// </summary>
-        public string SinkSid { get; }
-        /// <summary>
-        /// Subscribed Event Types
-        /// </summary>
-        public List<object> Types { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (Description != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Description", Description));
+      }
 
-        /// <summary>
-        /// Construct a new CreateSubscriptionOptions
-        /// </summary>
-        /// <param name="description"> Subscription description </param>
-        /// <param name="sinkSid"> Sink SID. </param>
-        /// <param name="types"> Subscribed Event Types </param>
-        public CreateSubscriptionOptions(string description, string sinkSid, List<object> types)
-        {
-            Description = description;
-            SinkSid = sinkSid;
-            Types = types;
-        }
+      if (SinkSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("SinkSid", SinkSid.ToString()));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Description != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Description", Description));
-            }
+      if (Types != null)
+      {
+        p.AddRange(Types.Select(prop => new KeyValuePair<string, string>("Types", Serializers.JsonObject(prop))));
+      }
 
-            if (SinkSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("SinkSid", SinkSid.ToString()));
-            }
+      return p;
+    }
+  }
 
-            if (Types != null)
-            {
-                p.AddRange(Types.Select(prop => new KeyValuePair<string, string>("Types", Serializers.JsonObject(prop))));
-            }
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Update a Subscription.
+  /// </summary>
+  public class UpdateSubscriptionOptions : IOptions<SubscriptionResource>
+  {
+    /// <summary>
+    /// A string that uniquely identifies this Subscription.
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// Subscription description.
+    /// </summary>
+    public string Description { get; set; }
+    /// <summary>
+    /// Sink SID.
+    /// </summary>
+    public string SinkSid { get; set; }
 
-            return p;
-        }
+    /// <summary>
+    /// Construct a new UpdateSubscriptionOptions
+    /// </summary>
+    /// <param name="pathSid"> A string that uniquely identifies this Subscription. </param>
+    public UpdateSubscriptionOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Update a Subscription.
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateSubscriptionOptions : IOptions<SubscriptionResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// A string that uniquely identifies this Subscription.
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// Subscription description.
-        /// </summary>
-        public string Description { get; set; }
-        /// <summary>
-        /// Sink SID.
-        /// </summary>
-        public string SinkSid { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (Description != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Description", Description));
+      }
 
-        /// <summary>
-        /// Construct a new UpdateSubscriptionOptions
-        /// </summary>
-        /// <param name="pathSid"> A string that uniquely identifies this Subscription. </param>
-        public UpdateSubscriptionOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
+      if (SinkSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("SinkSid", SinkSid.ToString()));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Description != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Description", Description));
-            }
+      return p;
+    }
+  }
 
-            if (SinkSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("SinkSid", SinkSid.ToString()));
-            }
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Delete a specific Subscription.
+  /// </summary>
+  public class DeleteSubscriptionOptions : IOptions<SubscriptionResource>
+  {
+    /// <summary>
+    /// A string that uniquely identifies this Subscription.
+    /// </summary>
+    public string PathSid { get; }
 
-            return p;
-        }
+    /// <summary>
+    /// Construct a new DeleteSubscriptionOptions
+    /// </summary>
+    /// <param name="pathSid"> A string that uniquely identifies this Subscription. </param>
+    public DeleteSubscriptionOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Delete a specific Subscription.
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteSubscriptionOptions : IOptions<SubscriptionResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// A string that uniquely identifies this Subscription.
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new DeleteSubscriptionOptions
-        /// </summary>
-        /// <param name="pathSid"> A string that uniquely identifies this Subscription. </param>
-        public DeleteSubscriptionOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
 
 }

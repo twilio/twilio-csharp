@@ -18,225 +18,225 @@ using Twilio.Http;
 namespace Twilio.Rest.Video.V1
 {
 
-    public class CompositionSettingsResource : Resource
+  public class CompositionSettingsResource : Resource
+  {
+    private static Request BuildFetchRequest(FetchCompositionSettingsOptions options, ITwilioRestClient client)
     {
-        private static Request BuildFetchRequest(FetchCompositionSettingsOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Get,
-                Rest.Domain.Video,
-                "/v1/CompositionSettings/Default",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="options"> Fetch CompositionSettings parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of CompositionSettings </returns>
-        public static CompositionSettingsResource Fetch(FetchCompositionSettingsOptions options,
-                                                        ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="options"> Fetch CompositionSettings parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of CompositionSettings </returns>
-        public static async System.Threading.Tasks.Task<CompositionSettingsResource> FetchAsync(FetchCompositionSettingsOptions options,
-                                                                                                ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of CompositionSettings </returns>
-        public static CompositionSettingsResource Fetch(ITwilioRestClient client = null)
-        {
-            var options = new FetchCompositionSettingsOptions();
-            return Fetch(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of CompositionSettings </returns>
-        public static async System.Threading.Tasks.Task<CompositionSettingsResource> FetchAsync(ITwilioRestClient client = null)
-        {
-            var options = new FetchCompositionSettingsOptions();
-            return await FetchAsync(options, client);
-        }
-        #endif
-
-        private static Request BuildCreateRequest(CreateCompositionSettingsOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Post,
-                Rest.Domain.Video,
-                "/v1/CompositionSettings/Default",
-                postParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// create
-        /// </summary>
-        /// <param name="options"> Create CompositionSettings parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of CompositionSettings </returns>
-        public static CompositionSettingsResource Create(CreateCompositionSettingsOptions options,
-                                                         ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildCreateRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// create
-        /// </summary>
-        /// <param name="options"> Create CompositionSettings parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of CompositionSettings </returns>
-        public static async System.Threading.Tasks.Task<CompositionSettingsResource> CreateAsync(CreateCompositionSettingsOptions options,
-                                                                                                 ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// create
-        /// </summary>
-        /// <param name="friendlyName"> A descriptive string that you create to describe the resource </param>
-        /// <param name="awsCredentialsSid"> The SID of the stored Credential resource </param>
-        /// <param name="encryptionKeySid"> The SID of the Public Key resource to use for encryption </param>
-        /// <param name="awsS3Url"> The URL of the AWS S3 bucket where the compositions should be stored </param>
-        /// <param name="awsStorageEnabled"> Whether all compositions should be written to the aws_s3_url </param>
-        /// <param name="encryptionEnabled"> Whether all compositions should be stored in an encrypted form </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of CompositionSettings </returns>
-        public static CompositionSettingsResource Create(string friendlyName,
-                                                         string awsCredentialsSid = null,
-                                                         string encryptionKeySid = null,
-                                                         Uri awsS3Url = null,
-                                                         bool? awsStorageEnabled = null,
-                                                         bool? encryptionEnabled = null,
-                                                         ITwilioRestClient client = null)
-        {
-            var options = new CreateCompositionSettingsOptions(friendlyName){AwsCredentialsSid = awsCredentialsSid, EncryptionKeySid = encryptionKeySid, AwsS3Url = awsS3Url, AwsStorageEnabled = awsStorageEnabled, EncryptionEnabled = encryptionEnabled};
-            return Create(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// create
-        /// </summary>
-        /// <param name="friendlyName"> A descriptive string that you create to describe the resource </param>
-        /// <param name="awsCredentialsSid"> The SID of the stored Credential resource </param>
-        /// <param name="encryptionKeySid"> The SID of the Public Key resource to use for encryption </param>
-        /// <param name="awsS3Url"> The URL of the AWS S3 bucket where the compositions should be stored </param>
-        /// <param name="awsStorageEnabled"> Whether all compositions should be written to the aws_s3_url </param>
-        /// <param name="encryptionEnabled"> Whether all compositions should be stored in an encrypted form </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of CompositionSettings </returns>
-        public static async System.Threading.Tasks.Task<CompositionSettingsResource> CreateAsync(string friendlyName,
-                                                                                                 string awsCredentialsSid = null,
-                                                                                                 string encryptionKeySid = null,
-                                                                                                 Uri awsS3Url = null,
-                                                                                                 bool? awsStorageEnabled = null,
-                                                                                                 bool? encryptionEnabled = null,
-                                                                                                 ITwilioRestClient client = null)
-        {
-            var options = new CreateCompositionSettingsOptions(friendlyName){AwsCredentialsSid = awsCredentialsSid, EncryptionKeySid = encryptionKeySid, AwsS3Url = awsS3Url, AwsStorageEnabled = awsStorageEnabled, EncryptionEnabled = encryptionEnabled};
-            return await CreateAsync(options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Converts a JSON string into a CompositionSettingsResource object
-        /// </summary>
-        /// <param name="json"> Raw JSON string </param>
-        /// <returns> CompositionSettingsResource object represented by the provided JSON </returns>
-        public static CompositionSettingsResource FromJson(string json)
-        {
-            // Convert all checked exceptions to Runtime
-            try
-            {
-                return JsonConvert.DeserializeObject<CompositionSettingsResource>(json);
-            }
-            catch (JsonException e)
-            {
-                throw new ApiException(e.Message, e);
-            }
-        }
-
-        /// <summary>
-        /// The SID of the Account that created the resource
-        /// </summary>
-        [JsonProperty("account_sid")]
-        public string AccountSid { get; private set; }
-        /// <summary>
-        /// The string that you assigned to describe the resource
-        /// </summary>
-        [JsonProperty("friendly_name")]
-        public string FriendlyName { get; private set; }
-        /// <summary>
-        /// The SID of the stored Credential resource
-        /// </summary>
-        [JsonProperty("aws_credentials_sid")]
-        public string AwsCredentialsSid { get; private set; }
-        /// <summary>
-        /// The URL of the AWS S3 bucket where the compositions are stored
-        /// </summary>
-        [JsonProperty("aws_s3_url")]
-        public Uri AwsS3Url { get; private set; }
-        /// <summary>
-        /// Whether all compositions are written to the aws_s3_url
-        /// </summary>
-        [JsonProperty("aws_storage_enabled")]
-        public bool? AwsStorageEnabled { get; private set; }
-        /// <summary>
-        /// The SID of the Public Key resource used for encryption
-        /// </summary>
-        [JsonProperty("encryption_key_sid")]
-        public string EncryptionKeySid { get; private set; }
-        /// <summary>
-        /// Whether all compositions are stored in an encrypted form
-        /// </summary>
-        [JsonProperty("encryption_enabled")]
-        public bool? EncryptionEnabled { get; private set; }
-        /// <summary>
-        /// The absolute URL of the resource
-        /// </summary>
-        [JsonProperty("url")]
-        public Uri Url { get; private set; }
-
-        private CompositionSettingsResource()
-        {
-
-        }
+      return new Request(
+          HttpMethod.Get,
+          Rest.Domain.Video,
+          "/v1/CompositionSettings/Default",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
     }
+
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="options"> Fetch CompositionSettings parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of CompositionSettings </returns>
+    public static CompositionSettingsResource Fetch(FetchCompositionSettingsOptions options,
+                                                    ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="options"> Fetch CompositionSettings parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of CompositionSettings </returns>
+    public static async System.Threading.Tasks.Task<CompositionSettingsResource> FetchAsync(FetchCompositionSettingsOptions options,
+                                                                                            ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of CompositionSettings </returns>
+    public static CompositionSettingsResource Fetch(ITwilioRestClient client = null)
+    {
+      var options = new FetchCompositionSettingsOptions();
+      return Fetch(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of CompositionSettings </returns>
+    public static async System.Threading.Tasks.Task<CompositionSettingsResource> FetchAsync(ITwilioRestClient client = null)
+    {
+      var options = new FetchCompositionSettingsOptions();
+      return await FetchAsync(options, client);
+    }
+#endif
+
+    private static Request BuildCreateRequest(CreateCompositionSettingsOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Post,
+          Rest.Domain.Video,
+          "/v1/CompositionSettings/Default",
+          postParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// create
+    /// </summary>
+    /// <param name="options"> Create CompositionSettings parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of CompositionSettings </returns>
+    public static CompositionSettingsResource Create(CreateCompositionSettingsOptions options,
+                                                     ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildCreateRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// create
+    /// </summary>
+    /// <param name="options"> Create CompositionSettings parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of CompositionSettings </returns>
+    public static async System.Threading.Tasks.Task<CompositionSettingsResource> CreateAsync(CreateCompositionSettingsOptions options,
+                                                                                             ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildCreateRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// create
+    /// </summary>
+    /// <param name="friendlyName"> A descriptive string that you create to describe the resource </param>
+    /// <param name="awsCredentialsSid"> The SID of the stored Credential resource </param>
+    /// <param name="encryptionKeySid"> The SID of the Public Key resource to use for encryption </param>
+    /// <param name="awsS3Url"> The URL of the AWS S3 bucket where the compositions should be stored </param>
+    /// <param name="awsStorageEnabled"> Whether all compositions should be written to the aws_s3_url </param>
+    /// <param name="encryptionEnabled"> Whether all compositions should be stored in an encrypted form </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of CompositionSettings </returns>
+    public static CompositionSettingsResource Create(string friendlyName,
+                                                     string awsCredentialsSid = null,
+                                                     string encryptionKeySid = null,
+                                                     Uri awsS3Url = null,
+                                                     bool? awsStorageEnabled = null,
+                                                     bool? encryptionEnabled = null,
+                                                     ITwilioRestClient client = null)
+    {
+      var options = new CreateCompositionSettingsOptions(friendlyName) { AwsCredentialsSid = awsCredentialsSid, EncryptionKeySid = encryptionKeySid, AwsS3Url = awsS3Url, AwsStorageEnabled = awsStorageEnabled, EncryptionEnabled = encryptionEnabled };
+      return Create(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// create
+    /// </summary>
+    /// <param name="friendlyName"> A descriptive string that you create to describe the resource </param>
+    /// <param name="awsCredentialsSid"> The SID of the stored Credential resource </param>
+    /// <param name="encryptionKeySid"> The SID of the Public Key resource to use for encryption </param>
+    /// <param name="awsS3Url"> The URL of the AWS S3 bucket where the compositions should be stored </param>
+    /// <param name="awsStorageEnabled"> Whether all compositions should be written to the aws_s3_url </param>
+    /// <param name="encryptionEnabled"> Whether all compositions should be stored in an encrypted form </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of CompositionSettings </returns>
+    public static async System.Threading.Tasks.Task<CompositionSettingsResource> CreateAsync(string friendlyName,
+                                                                                             string awsCredentialsSid = null,
+                                                                                             string encryptionKeySid = null,
+                                                                                             Uri awsS3Url = null,
+                                                                                             bool? awsStorageEnabled = null,
+                                                                                             bool? encryptionEnabled = null,
+                                                                                             ITwilioRestClient client = null)
+    {
+      var options = new CreateCompositionSettingsOptions(friendlyName) { AwsCredentialsSid = awsCredentialsSid, EncryptionKeySid = encryptionKeySid, AwsS3Url = awsS3Url, AwsStorageEnabled = awsStorageEnabled, EncryptionEnabled = encryptionEnabled };
+      return await CreateAsync(options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Converts a JSON string into a CompositionSettingsResource object
+    /// </summary>
+    /// <param name="json"> Raw JSON string </param>
+    /// <returns> CompositionSettingsResource object represented by the provided JSON </returns>
+    public static CompositionSettingsResource FromJson(string json)
+    {
+      // Convert all checked exceptions to Runtime
+      try
+      {
+        return JsonConvert.DeserializeObject<CompositionSettingsResource>(json);
+      }
+      catch (JsonException e)
+      {
+        throw new ApiException(e.Message, e);
+      }
+    }
+
+    /// <summary>
+    /// The SID of the Account that created the resource
+    /// </summary>
+    [JsonProperty("account_sid")]
+    public string AccountSid { get; private set; }
+    /// <summary>
+    /// The string that you assigned to describe the resource
+    /// </summary>
+    [JsonProperty("friendly_name")]
+    public string FriendlyName { get; private set; }
+    /// <summary>
+    /// The SID of the stored Credential resource
+    /// </summary>
+    [JsonProperty("aws_credentials_sid")]
+    public string AwsCredentialsSid { get; private set; }
+    /// <summary>
+    /// The URL of the AWS S3 bucket where the compositions are stored
+    /// </summary>
+    [JsonProperty("aws_s3_url")]
+    public Uri AwsS3Url { get; private set; }
+    /// <summary>
+    /// Whether all compositions are written to the aws_s3_url
+    /// </summary>
+    [JsonProperty("aws_storage_enabled")]
+    public bool? AwsStorageEnabled { get; private set; }
+    /// <summary>
+    /// The SID of the Public Key resource used for encryption
+    /// </summary>
+    [JsonProperty("encryption_key_sid")]
+    public string EncryptionKeySid { get; private set; }
+    /// <summary>
+    /// Whether all compositions are stored in an encrypted form
+    /// </summary>
+    [JsonProperty("encryption_enabled")]
+    public bool? EncryptionEnabled { get; private set; }
+    /// <summary>
+    /// The absolute URL of the resource
+    /// </summary>
+    [JsonProperty("url")]
+    public Uri Url { get; private set; }
+
+    private CompositionSettingsResource()
+    {
+
+    }
+  }
 
 }

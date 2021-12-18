@@ -12,262 +12,262 @@ using Twilio.Converters;
 namespace Twilio.Rest.Verify.V2.Service.Entity
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Create a new Challenge for the Factor
+  /// </summary>
+  public class CreateChallengeOptions : IOptions<ChallengeResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Create a new Challenge for the Factor
+    /// Service Sid.
     /// </summary>
-    public class CreateChallengeOptions : IOptions<ChallengeResource>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// Unique external identifier of the Entity
+    /// </summary>
+    public string PathIdentity { get; }
+    /// <summary>
+    /// Factor Sid.
+    /// </summary>
+    public string FactorSid { get; }
+    /// <summary>
+    /// The date-time when this Challenge expires
+    /// </summary>
+    public DateTime? ExpirationDate { get; set; }
+    /// <summary>
+    /// Shown to the user when the push notification arrives
+    /// </summary>
+    public string DetailsMessage { get; set; }
+    /// <summary>
+    /// A list of objects that describe the Fields included in the Challenge
+    /// </summary>
+    public List<object> DetailsFields { get; set; }
+    /// <summary>
+    /// Hidden details provided to contextualize the Challenge
+    /// </summary>
+    public object HiddenDetails { get; set; }
+    /// <summary>
+    /// Optional payload to verify the Challenge
+    /// </summary>
+    public string AuthPayload { get; set; }
+
+    /// <summary>
+    /// Construct a new CreateChallengeOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> Service Sid. </param>
+    /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
+    /// <param name="factorSid"> Factor Sid. </param>
+    public CreateChallengeOptions(string pathServiceSid, string pathIdentity, string factorSid)
     {
-        /// <summary>
-        /// Service Sid.
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// Unique external identifier of the Entity
-        /// </summary>
-        public string PathIdentity { get; }
-        /// <summary>
-        /// Factor Sid.
-        /// </summary>
-        public string FactorSid { get; }
-        /// <summary>
-        /// The date-time when this Challenge expires
-        /// </summary>
-        public DateTime? ExpirationDate { get; set; }
-        /// <summary>
-        /// Shown to the user when the push notification arrives
-        /// </summary>
-        public string DetailsMessage { get; set; }
-        /// <summary>
-        /// A list of objects that describe the Fields included in the Challenge
-        /// </summary>
-        public List<object> DetailsFields { get; set; }
-        /// <summary>
-        /// Hidden details provided to contextualize the Challenge
-        /// </summary>
-        public object HiddenDetails { get; set; }
-        /// <summary>
-        /// Optional payload to verify the Challenge
-        /// </summary>
-        public string AuthPayload { get; set; }
-
-        /// <summary>
-        /// Construct a new CreateChallengeOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
-        /// <param name="factorSid"> Factor Sid. </param>
-        public CreateChallengeOptions(string pathServiceSid, string pathIdentity, string factorSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathIdentity = pathIdentity;
-            FactorSid = factorSid;
-            DetailsFields = new List<object>();
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (FactorSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FactorSid", FactorSid.ToString()));
-            }
-
-            if (ExpirationDate != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ExpirationDate", Serializers.DateTimeIso8601(ExpirationDate)));
-            }
-
-            if (DetailsMessage != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Details.Message", DetailsMessage));
-            }
-
-            if (DetailsFields != null)
-            {
-                p.AddRange(DetailsFields.Select(prop => new KeyValuePair<string, string>("Details.Fields", Serializers.JsonObject(prop))));
-            }
-
-            if (HiddenDetails != null)
-            {
-                p.Add(new KeyValuePair<string, string>("HiddenDetails", Serializers.JsonObject(HiddenDetails)));
-            }
-
-            if (AuthPayload != null)
-            {
-                p.Add(new KeyValuePair<string, string>("AuthPayload", AuthPayload));
-            }
-
-            return p;
-        }
+      PathServiceSid = pathServiceSid;
+      PathIdentity = pathIdentity;
+      FactorSid = factorSid;
+      DetailsFields = new List<object>();
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Fetch a specific Challenge.
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchChallengeOptions : IOptions<ChallengeResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// Service Sid.
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// Unique external identifier of the Entity
-        /// </summary>
-        public string PathIdentity { get; }
-        /// <summary>
-        /// A string that uniquely identifies this Challenge.
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (FactorSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FactorSid", FactorSid.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new FetchChallengeOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
-        /// <param name="pathSid"> A string that uniquely identifies this Challenge. </param>
-        public FetchChallengeOptions(string pathServiceSid, string pathIdentity, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathIdentity = pathIdentity;
-            PathSid = pathSid;
-        }
+      if (ExpirationDate != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ExpirationDate", Serializers.DateTimeIso8601(ExpirationDate)));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      if (DetailsMessage != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Details.Message", DetailsMessage));
+      }
+
+      if (DetailsFields != null)
+      {
+        p.AddRange(DetailsFields.Select(prop => new KeyValuePair<string, string>("Details.Fields", Serializers.JsonObject(prop))));
+      }
+
+      if (HiddenDetails != null)
+      {
+        p.Add(new KeyValuePair<string, string>("HiddenDetails", Serializers.JsonObject(HiddenDetails)));
+      }
+
+      if (AuthPayload != null)
+      {
+        p.Add(new KeyValuePair<string, string>("AuthPayload", AuthPayload));
+      }
+
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Fetch a specific Challenge.
+  /// </summary>
+  public class FetchChallengeOptions : IOptions<ChallengeResource>
+  {
+    /// <summary>
+    /// Service Sid.
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// Unique external identifier of the Entity
+    /// </summary>
+    public string PathIdentity { get; }
+    /// <summary>
+    /// A string that uniquely identifies this Challenge.
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchChallengeOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> Service Sid. </param>
+    /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
+    /// <param name="pathSid"> A string that uniquely identifies this Challenge. </param>
+    public FetchChallengeOptions(string pathServiceSid, string pathIdentity, string pathSid)
+    {
+      PathServiceSid = pathServiceSid;
+      PathIdentity = pathIdentity;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Retrieve a list of all Challenges for a Factor.
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadChallengeOptions : ReadOptions<ChallengeResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// Service Sid.
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// Unique external identifier of the Entity
-        /// </summary>
-        public string PathIdentity { get; }
-        /// <summary>
-        /// Factor Sid.
-        /// </summary>
-        public string FactorSid { get; set; }
-        /// <summary>
-        /// The Status of theChallenges to fetch
-        /// </summary>
-        public ChallengeResource.ChallengeStatusesEnum Status { get; set; }
-        /// <summary>
-        /// The sort order of the Challenges list
-        /// </summary>
-        public ChallengeResource.ListOrdersEnum Order { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new ReadChallengeOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
-        public ReadChallengeOptions(string pathServiceSid, string pathIdentity)
-        {
-            PathServiceSid = pathServiceSid;
-            PathIdentity = pathIdentity;
-        }
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Retrieve a list of all Challenges for a Factor.
+  /// </summary>
+  public class ReadChallengeOptions : ReadOptions<ChallengeResource>
+  {
+    /// <summary>
+    /// Service Sid.
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// Unique external identifier of the Entity
+    /// </summary>
+    public string PathIdentity { get; }
+    /// <summary>
+    /// Factor Sid.
+    /// </summary>
+    public string FactorSid { get; set; }
+    /// <summary>
+    /// The Status of theChallenges to fetch
+    /// </summary>
+    public ChallengeResource.ChallengeStatusesEnum Status { get; set; }
+    /// <summary>
+    /// The sort order of the Challenges list
+    /// </summary>
+    public ChallengeResource.ListOrdersEnum Order { get; set; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (FactorSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FactorSid", FactorSid.ToString()));
-            }
-
-            if (Status != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
-            }
-
-            if (Order != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Order", Order.ToString()));
-            }
-
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new ReadChallengeOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> Service Sid. </param>
+    /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
+    public ReadChallengeOptions(string pathServiceSid, string pathIdentity)
+    {
+      PathServiceSid = pathServiceSid;
+      PathIdentity = pathIdentity;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Verify a specific Challenge.
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateChallengeOptions : IOptions<ChallengeResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// Service Sid.
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// Unique external identifier of the Entity
-        /// </summary>
-        public string PathIdentity { get; }
-        /// <summary>
-        /// A string that uniquely identifies this Challenge.
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// Optional payload to verify the Challenge
-        /// </summary>
-        public string AuthPayload { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (FactorSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FactorSid", FactorSid.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new UpdateChallengeOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
-        /// <param name="pathSid"> A string that uniquely identifies this Challenge. </param>
-        public UpdateChallengeOptions(string pathServiceSid, string pathIdentity, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathIdentity = pathIdentity;
-            PathSid = pathSid;
-        }
+      if (Status != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (AuthPayload != null)
-            {
-                p.Add(new KeyValuePair<string, string>("AuthPayload", AuthPayload));
-            }
+      if (Order != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Order", Order.ToString()));
+      }
 
-            return p;
-        }
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
     }
+  }
+
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Verify a specific Challenge.
+  /// </summary>
+  public class UpdateChallengeOptions : IOptions<ChallengeResource>
+  {
+    /// <summary>
+    /// Service Sid.
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// Unique external identifier of the Entity
+    /// </summary>
+    public string PathIdentity { get; }
+    /// <summary>
+    /// A string that uniquely identifies this Challenge.
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// Optional payload to verify the Challenge
+    /// </summary>
+    public string AuthPayload { get; set; }
+
+    /// <summary>
+    /// Construct a new UpdateChallengeOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> Service Sid. </param>
+    /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
+    /// <param name="pathSid"> A string that uniquely identifies this Challenge. </param>
+    public UpdateChallengeOptions(string pathServiceSid, string pathIdentity, string pathSid)
+    {
+      PathServiceSid = pathServiceSid;
+      PathIdentity = pathIdentity;
+      PathSid = pathSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (AuthPayload != null)
+      {
+        p.Add(new KeyValuePair<string, string>("AuthPayload", AuthPayload));
+      }
+
+      return p;
+    }
+  }
 
 }

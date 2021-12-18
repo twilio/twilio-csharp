@@ -11,62 +11,62 @@ using Twilio.Converters;
 namespace Twilio.Rest.Api.V2010.Account
 {
 
+  /// <summary>
+  /// Fetch an instance of an authorized-connect-app
+  /// </summary>
+  public class FetchAuthorizedConnectAppOptions : IOptions<AuthorizedConnectAppResource>
+  {
     /// <summary>
-    /// Fetch an instance of an authorized-connect-app
+    /// The SID of the Account that created the resource to fetch
     /// </summary>
-    public class FetchAuthorizedConnectAppOptions : IOptions<AuthorizedConnectAppResource>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The SID of the Connect App to fetch
+    /// </summary>
+    public string PathConnectAppSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchAuthorizedConnectAppOptions
+    /// </summary>
+    /// <param name="pathConnectAppSid"> The SID of the Connect App to fetch </param>
+    public FetchAuthorizedConnectAppOptions(string pathConnectAppSid)
     {
-        /// <summary>
-        /// The SID of the Account that created the resource to fetch
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The SID of the Connect App to fetch
-        /// </summary>
-        public string PathConnectAppSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchAuthorizedConnectAppOptions
-        /// </summary>
-        /// <param name="pathConnectAppSid"> The SID of the Connect App to fetch </param>
-        public FetchAuthorizedConnectAppOptions(string pathConnectAppSid)
-        {
-            PathConnectAppSid = pathConnectAppSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathConnectAppSid = pathConnectAppSid;
     }
 
     /// <summary>
-    /// Retrieve a list of authorized-connect-apps belonging to the account used to make the request
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadAuthorizedConnectAppOptions : ReadOptions<AuthorizedConnectAppResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Account that created the resources to read
-        /// </summary>
-        public string PathAccountSid { get; set; }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
+
+  /// <summary>
+  /// Retrieve a list of authorized-connect-apps belonging to the account used to make the request
+  /// </summary>
+  public class ReadAuthorizedConnectAppOptions : ReadOptions<AuthorizedConnectAppResource>
+  {
+    /// <summary>
+    /// The SID of the Account that created the resources to read
+    /// </summary>
+    public string PathAccountSid { get; set; }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
 
 }

@@ -11,85 +11,85 @@ using Twilio.Converters;
 namespace Twilio.Rest.Studio.V1.Flow.Engagement
 {
 
+  /// <summary>
+  /// Retrieve a list of all Steps for an Engagement.
+  /// </summary>
+  public class ReadStepOptions : ReadOptions<StepResource>
+  {
     /// <summary>
-    /// Retrieve a list of all Steps for an Engagement.
+    /// The SID of the Flow
     /// </summary>
-    public class ReadStepOptions : ReadOptions<StepResource>
+    public string PathFlowSid { get; }
+    /// <summary>
+    /// The SID of the Engagement
+    /// </summary>
+    public string PathEngagementSid { get; }
+
+    /// <summary>
+    /// Construct a new ReadStepOptions
+    /// </summary>
+    /// <param name="pathFlowSid"> The SID of the Flow </param>
+    /// <param name="pathEngagementSid"> The SID of the Engagement </param>
+    public ReadStepOptions(string pathFlowSid, string pathEngagementSid)
     {
-        /// <summary>
-        /// The SID of the Flow
-        /// </summary>
-        public string PathFlowSid { get; }
-        /// <summary>
-        /// The SID of the Engagement
-        /// </summary>
-        public string PathEngagementSid { get; }
-
-        /// <summary>
-        /// Construct a new ReadStepOptions
-        /// </summary>
-        /// <param name="pathFlowSid"> The SID of the Flow </param>
-        /// <param name="pathEngagementSid"> The SID of the Engagement </param>
-        public ReadStepOptions(string pathFlowSid, string pathEngagementSid)
-        {
-            PathFlowSid = pathFlowSid;
-            PathEngagementSid = pathEngagementSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+      PathFlowSid = pathFlowSid;
+      PathEngagementSid = pathEngagementSid;
     }
 
     /// <summary>
-    /// Retrieve a Step.
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchStepOptions : IOptions<StepResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Flow
-        /// </summary>
-        public string PathFlowSid { get; }
-        /// <summary>
-        /// The SID of the Engagement
-        /// </summary>
-        public string PathEngagementSid { get; }
-        /// <summary>
-        /// The SID that identifies the resource to fetch
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new FetchStepOptions
-        /// </summary>
-        /// <param name="pathFlowSid"> The SID of the Flow </param>
-        /// <param name="pathEngagementSid"> The SID of the Engagement </param>
-        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
-        public FetchStepOptions(string pathFlowSid, string pathEngagementSid, string pathSid)
-        {
-            PathFlowSid = pathFlowSid;
-            PathEngagementSid = pathEngagementSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      return p;
     }
+  }
+
+  /// <summary>
+  /// Retrieve a Step.
+  /// </summary>
+  public class FetchStepOptions : IOptions<StepResource>
+  {
+    /// <summary>
+    /// The SID of the Flow
+    /// </summary>
+    public string PathFlowSid { get; }
+    /// <summary>
+    /// The SID of the Engagement
+    /// </summary>
+    public string PathEngagementSid { get; }
+    /// <summary>
+    /// The SID that identifies the resource to fetch
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchStepOptions
+    /// </summary>
+    /// <param name="pathFlowSid"> The SID of the Flow </param>
+    /// <param name="pathEngagementSid"> The SID of the Engagement </param>
+    /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
+    public FetchStepOptions(string pathFlowSid, string pathEngagementSid, string pathSid)
+    {
+      PathFlowSid = pathFlowSid;
+      PathEngagementSid = pathEngagementSid;
+      PathSid = pathSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
 }

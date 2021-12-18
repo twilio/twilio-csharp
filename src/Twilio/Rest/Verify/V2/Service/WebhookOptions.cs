@@ -12,279 +12,279 @@ using Twilio.Converters;
 namespace Twilio.Rest.Verify.V2.Service
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Create a new Webhook for the Service
+  /// </summary>
+  public class CreateWebhookOptions : IOptions<WebhookResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Create a new Webhook for the Service
+    /// Service Sid.
     /// </summary>
-    public class CreateWebhookOptions : IOptions<WebhookResource>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The string that you assigned to describe the webhook
+    /// </summary>
+    public string FriendlyName { get; }
+    /// <summary>
+    /// The array of events that this Webhook is subscribed to.
+    /// </summary>
+    public List<string> EventTypes { get; }
+    /// <summary>
+    /// The URL associated with this Webhook.
+    /// </summary>
+    public string WebhookUrl { get; }
+    /// <summary>
+    /// The webhook status
+    /// </summary>
+    public WebhookResource.StatusEnum Status { get; set; }
+    /// <summary>
+    /// The webhook version
+    /// </summary>
+    public WebhookResource.VersionEnum Version { get; set; }
+
+    /// <summary>
+    /// Construct a new CreateWebhookOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> Service Sid. </param>
+    /// <param name="friendlyName"> The string that you assigned to describe the webhook </param>
+    /// <param name="eventTypes"> The array of events that this Webhook is subscribed to. </param>
+    /// <param name="webhookUrl"> The URL associated with this Webhook. </param>
+    public CreateWebhookOptions(string pathServiceSid, string friendlyName, List<string> eventTypes, string webhookUrl)
     {
-        /// <summary>
-        /// Service Sid.
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The string that you assigned to describe the webhook
-        /// </summary>
-        public string FriendlyName { get; }
-        /// <summary>
-        /// The array of events that this Webhook is subscribed to.
-        /// </summary>
-        public List<string> EventTypes { get; }
-        /// <summary>
-        /// The URL associated with this Webhook.
-        /// </summary>
-        public string WebhookUrl { get; }
-        /// <summary>
-        /// The webhook status
-        /// </summary>
-        public WebhookResource.StatusEnum Status { get; set; }
-        /// <summary>
-        /// The webhook version
-        /// </summary>
-        public WebhookResource.VersionEnum Version { get; set; }
-
-        /// <summary>
-        /// Construct a new CreateWebhookOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="friendlyName"> The string that you assigned to describe the webhook </param>
-        /// <param name="eventTypes"> The array of events that this Webhook is subscribed to. </param>
-        /// <param name="webhookUrl"> The URL associated with this Webhook. </param>
-        public CreateWebhookOptions(string pathServiceSid, string friendlyName, List<string> eventTypes, string webhookUrl)
-        {
-            PathServiceSid = pathServiceSid;
-            FriendlyName = friendlyName;
-            EventTypes = eventTypes;
-            WebhookUrl = webhookUrl;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
-
-            if (EventTypes != null)
-            {
-                p.AddRange(EventTypes.Select(prop => new KeyValuePair<string, string>("EventTypes", prop)));
-            }
-
-            if (WebhookUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("WebhookUrl", WebhookUrl));
-            }
-
-            if (Status != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
-            }
-
-            if (Version != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Version", Version.ToString()));
-            }
-
-            return p;
-        }
+      PathServiceSid = pathServiceSid;
+      FriendlyName = friendlyName;
+      EventTypes = eventTypes;
+      WebhookUrl = webhookUrl;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// UpdateWebhookOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateWebhookOptions : IOptions<WebhookResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// Service Sid.
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// The string that you assigned to describe the webhook
-        /// </summary>
-        public string FriendlyName { get; set; }
-        /// <summary>
-        /// The array of events that this Webhook is subscribed to.
-        /// </summary>
-        public List<string> EventTypes { get; set; }
-        /// <summary>
-        /// The URL associated with this Webhook.
-        /// </summary>
-        public string WebhookUrl { get; set; }
-        /// <summary>
-        /// The webhook status
-        /// </summary>
-        public WebhookResource.StatusEnum Status { get; set; }
-        /// <summary>
-        /// The webhook version
-        /// </summary>
-        public WebhookResource.VersionEnum Version { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
 
-        /// <summary>
-        /// Construct a new UpdateWebhookOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public UpdateWebhookOptions(string pathServiceSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathSid = pathSid;
-            EventTypes = new List<string>();
-        }
+      if (EventTypes != null)
+      {
+        p.AddRange(EventTypes.Select(prop => new KeyValuePair<string, string>("EventTypes", prop)));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
+      if (WebhookUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("WebhookUrl", WebhookUrl));
+      }
 
-            if (EventTypes != null)
-            {
-                p.AddRange(EventTypes.Select(prop => new KeyValuePair<string, string>("EventTypes", prop)));
-            }
+      if (Status != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
+      }
 
-            if (WebhookUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("WebhookUrl", WebhookUrl));
-            }
+      if (Version != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Version", Version.ToString()));
+      }
 
-            if (Status != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
-            }
+      return p;
+    }
+  }
 
-            if (Version != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Version", Version.ToString()));
-            }
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// UpdateWebhookOptions
+  /// </summary>
+  public class UpdateWebhookOptions : IOptions<WebhookResource>
+  {
+    /// <summary>
+    /// Service Sid.
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// The string that you assigned to describe the webhook
+    /// </summary>
+    public string FriendlyName { get; set; }
+    /// <summary>
+    /// The array of events that this Webhook is subscribed to.
+    /// </summary>
+    public List<string> EventTypes { get; set; }
+    /// <summary>
+    /// The URL associated with this Webhook.
+    /// </summary>
+    public string WebhookUrl { get; set; }
+    /// <summary>
+    /// The webhook status
+    /// </summary>
+    public WebhookResource.StatusEnum Status { get; set; }
+    /// <summary>
+    /// The webhook version
+    /// </summary>
+    public WebhookResource.VersionEnum Version { get; set; }
 
-            return p;
-        }
+    /// <summary>
+    /// Construct a new UpdateWebhookOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> Service Sid. </param>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public UpdateWebhookOptions(string pathServiceSid, string pathSid)
+    {
+      PathServiceSid = pathServiceSid;
+      PathSid = pathSid;
+      EventTypes = new List<string>();
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Delete a specific Webhook.
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteWebhookOptions : IOptions<WebhookResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// Service Sid.
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The unique string that identifies the resource to delete
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
 
-        /// <summary>
-        /// Construct a new DeleteWebhookOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSid"> The unique string that identifies the resource to delete </param>
-        public DeleteWebhookOptions(string pathServiceSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathSid = pathSid;
-        }
+      if (EventTypes != null)
+      {
+        p.AddRange(EventTypes.Select(prop => new KeyValuePair<string, string>("EventTypes", prop)));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      if (WebhookUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("WebhookUrl", WebhookUrl));
+      }
+
+      if (Status != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
+      }
+
+      if (Version != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Version", Version.ToString()));
+      }
+
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Delete a specific Webhook.
+  /// </summary>
+  public class DeleteWebhookOptions : IOptions<WebhookResource>
+  {
+    /// <summary>
+    /// Service Sid.
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The unique string that identifies the resource to delete
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new DeleteWebhookOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> Service Sid. </param>
+    /// <param name="pathSid"> The unique string that identifies the resource to delete </param>
+    public DeleteWebhookOptions(string pathServiceSid, string pathSid)
+    {
+      PathServiceSid = pathServiceSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Fetch a specific Webhook.
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchWebhookOptions : IOptions<WebhookResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// Service Sid.
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The unique string that identifies the resource to fetch
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new FetchWebhookOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSid"> The unique string that identifies the resource to fetch </param>
-        public FetchWebhookOptions(string pathServiceSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathSid = pathSid;
-        }
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Fetch a specific Webhook.
+  /// </summary>
+  public class FetchWebhookOptions : IOptions<WebhookResource>
+  {
+    /// <summary>
+    /// Service Sid.
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The unique string that identifies the resource to fetch
+    /// </summary>
+    public string PathSid { get; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+    /// <summary>
+    /// Construct a new FetchWebhookOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> Service Sid. </param>
+    /// <param name="pathSid"> The unique string that identifies the resource to fetch </param>
+    public FetchWebhookOptions(string pathServiceSid, string pathSid)
+    {
+      PathServiceSid = pathServiceSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Retrieve a list of all Webhooks for a Service.
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadWebhookOptions : ReadOptions<WebhookResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// Service Sid.
-        /// </summary>
-        public string PathServiceSid { get; }
-
-        /// <summary>
-        /// Construct a new ReadWebhookOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        public ReadWebhookOptions(string pathServiceSid)
-        {
-            PathServiceSid = pathServiceSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
+
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Retrieve a list of all Webhooks for a Service.
+  /// </summary>
+  public class ReadWebhookOptions : ReadOptions<WebhookResource>
+  {
+    /// <summary>
+    /// Service Sid.
+    /// </summary>
+    public string PathServiceSid { get; }
+
+    /// <summary>
+    /// Construct a new ReadWebhookOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> Service Sid. </param>
+    public ReadWebhookOptions(string pathServiceSid)
+    {
+      PathServiceSid = pathServiceSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
 
 }

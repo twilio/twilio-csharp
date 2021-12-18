@@ -12,252 +12,252 @@ using Twilio.Converters;
 namespace Twilio.Rest.Wireless.V1
 {
 
+  /// <summary>
+  /// ReadRatePlanOptions
+  /// </summary>
+  public class ReadRatePlanOptions : ReadOptions<RatePlanResource>
+  {
     /// <summary>
-    /// ReadRatePlanOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadRatePlanOptions : ReadOptions<RatePlanResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-            return p;
-        }
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// FetchRatePlanOptions
+  /// </summary>
+  public class FetchRatePlanOptions : IOptions<RatePlanResource>
+  {
+    /// <summary>
+    /// The SID that identifies the resource to fetch
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchRatePlanOptions
+    /// </summary>
+    /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
+    public FetchRatePlanOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// FetchRatePlanOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchRatePlanOptions : IOptions<RatePlanResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID that identifies the resource to fetch
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new FetchRatePlanOptions
-        /// </summary>
-        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
-        public FetchRatePlanOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
+  /// <summary>
+  /// CreateRatePlanOptions
+  /// </summary>
+  public class CreateRatePlanOptions : IOptions<RatePlanResource>
+  {
+    /// <summary>
+    /// An application-defined string that uniquely identifies the resource
+    /// </summary>
+    public string UniqueName { get; set; }
+    /// <summary>
+    /// A string to describe the resource
+    /// </summary>
+    public string FriendlyName { get; set; }
+    /// <summary>
+    /// Whether SIMs can use GPRS/3G/4G/LTE data connectivity
+    /// </summary>
+    public bool? DataEnabled { get; set; }
+    /// <summary>
+    /// The total data usage in Megabytes that the Network allows during one month on the home network
+    /// </summary>
+    public int? DataLimit { get; set; }
+    /// <summary>
+    /// The model used to meter data usage
+    /// </summary>
+    public string DataMetering { get; set; }
+    /// <summary>
+    /// Whether SIMs can make, send, and receive SMS using Commands
+    /// </summary>
+    public bool? MessagingEnabled { get; set; }
+    /// <summary>
+    /// Deprecated
+    /// </summary>
+    public bool? VoiceEnabled { get; set; }
+    /// <summary>
+    /// Whether SIMs can roam on networks other than the home network in the United States
+    /// </summary>
+    public bool? NationalRoamingEnabled { get; set; }
+    /// <summary>
+    /// The services that SIMs capable of using GPRS/3G/4G/LTE data connectivity can use outside of the United States
+    /// </summary>
+    public List<string> InternationalRoaming { get; set; }
+    /// <summary>
+    /// The total data usage in Megabytes that the Network allows during one month on non-home networks in the United States
+    /// </summary>
+    public int? NationalRoamingDataLimit { get; set; }
+    /// <summary>
+    /// The total data usage (download and upload combined) in Megabytes that the Network allows during one month when roaming outside the United States
+    /// </summary>
+    public int? InternationalRoamingDataLimit { get; set; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+    /// <summary>
+    /// Construct a new CreateRatePlanOptions
+    /// </summary>
+    public CreateRatePlanOptions()
+    {
+      InternationalRoaming = new List<string>();
     }
 
     /// <summary>
-    /// CreateRatePlanOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class CreateRatePlanOptions : IOptions<RatePlanResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// An application-defined string that uniquely identifies the resource
-        /// </summary>
-        public string UniqueName { get; set; }
-        /// <summary>
-        /// A string to describe the resource
-        /// </summary>
-        public string FriendlyName { get; set; }
-        /// <summary>
-        /// Whether SIMs can use GPRS/3G/4G/LTE data connectivity
-        /// </summary>
-        public bool? DataEnabled { get; set; }
-        /// <summary>
-        /// The total data usage in Megabytes that the Network allows during one month on the home network
-        /// </summary>
-        public int? DataLimit { get; set; }
-        /// <summary>
-        /// The model used to meter data usage
-        /// </summary>
-        public string DataMetering { get; set; }
-        /// <summary>
-        /// Whether SIMs can make, send, and receive SMS using Commands
-        /// </summary>
-        public bool? MessagingEnabled { get; set; }
-        /// <summary>
-        /// Deprecated
-        /// </summary>
-        public bool? VoiceEnabled { get; set; }
-        /// <summary>
-        /// Whether SIMs can roam on networks other than the home network in the United States
-        /// </summary>
-        public bool? NationalRoamingEnabled { get; set; }
-        /// <summary>
-        /// The services that SIMs capable of using GPRS/3G/4G/LTE data connectivity can use outside of the United States
-        /// </summary>
-        public List<string> InternationalRoaming { get; set; }
-        /// <summary>
-        /// The total data usage in Megabytes that the Network allows during one month on non-home networks in the United States
-        /// </summary>
-        public int? NationalRoamingDataLimit { get; set; }
-        /// <summary>
-        /// The total data usage (download and upload combined) in Megabytes that the Network allows during one month when roaming outside the United States
-        /// </summary>
-        public int? InternationalRoamingDataLimit { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (UniqueName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
+      }
 
-        /// <summary>
-        /// Construct a new CreateRatePlanOptions
-        /// </summary>
-        public CreateRatePlanOptions()
-        {
-            InternationalRoaming = new List<string>();
-        }
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (UniqueName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
-            }
+      if (DataEnabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("DataEnabled", DataEnabled.Value.ToString().ToLower()));
+      }
 
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
+      if (DataLimit != null)
+      {
+        p.Add(new KeyValuePair<string, string>("DataLimit", DataLimit.ToString()));
+      }
 
-            if (DataEnabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DataEnabled", DataEnabled.Value.ToString().ToLower()));
-            }
+      if (DataMetering != null)
+      {
+        p.Add(new KeyValuePair<string, string>("DataMetering", DataMetering));
+      }
 
-            if (DataLimit != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DataLimit", DataLimit.ToString()));
-            }
+      if (MessagingEnabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("MessagingEnabled", MessagingEnabled.Value.ToString().ToLower()));
+      }
 
-            if (DataMetering != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DataMetering", DataMetering));
-            }
+      if (VoiceEnabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("VoiceEnabled", VoiceEnabled.Value.ToString().ToLower()));
+      }
 
-            if (MessagingEnabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("MessagingEnabled", MessagingEnabled.Value.ToString().ToLower()));
-            }
+      if (NationalRoamingEnabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("NationalRoamingEnabled", NationalRoamingEnabled.Value.ToString().ToLower()));
+      }
 
-            if (VoiceEnabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("VoiceEnabled", VoiceEnabled.Value.ToString().ToLower()));
-            }
+      if (InternationalRoaming != null)
+      {
+        p.AddRange(InternationalRoaming.Select(prop => new KeyValuePair<string, string>("InternationalRoaming", prop)));
+      }
 
-            if (NationalRoamingEnabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("NationalRoamingEnabled", NationalRoamingEnabled.Value.ToString().ToLower()));
-            }
+      if (NationalRoamingDataLimit != null)
+      {
+        p.Add(new KeyValuePair<string, string>("NationalRoamingDataLimit", NationalRoamingDataLimit.ToString()));
+      }
 
-            if (InternationalRoaming != null)
-            {
-                p.AddRange(InternationalRoaming.Select(prop => new KeyValuePair<string, string>("InternationalRoaming", prop)));
-            }
+      if (InternationalRoamingDataLimit != null)
+      {
+        p.Add(new KeyValuePair<string, string>("InternationalRoamingDataLimit", InternationalRoamingDataLimit.ToString()));
+      }
 
-            if (NationalRoamingDataLimit != null)
-            {
-                p.Add(new KeyValuePair<string, string>("NationalRoamingDataLimit", NationalRoamingDataLimit.ToString()));
-            }
+      return p;
+    }
+  }
 
-            if (InternationalRoamingDataLimit != null)
-            {
-                p.Add(new KeyValuePair<string, string>("InternationalRoamingDataLimit", InternationalRoamingDataLimit.ToString()));
-            }
+  /// <summary>
+  /// UpdateRatePlanOptions
+  /// </summary>
+  public class UpdateRatePlanOptions : IOptions<RatePlanResource>
+  {
+    /// <summary>
+    /// The SID that identifies the resource to update
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// An application-defined string that uniquely identifies the resource
+    /// </summary>
+    public string UniqueName { get; set; }
+    /// <summary>
+    /// A string to describe the resource
+    /// </summary>
+    public string FriendlyName { get; set; }
 
-            return p;
-        }
+    /// <summary>
+    /// Construct a new UpdateRatePlanOptions
+    /// </summary>
+    /// <param name="pathSid"> The SID that identifies the resource to update </param>
+    public UpdateRatePlanOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// UpdateRatePlanOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateRatePlanOptions : IOptions<RatePlanResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID that identifies the resource to update
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// An application-defined string that uniquely identifies the resource
-        /// </summary>
-        public string UniqueName { get; set; }
-        /// <summary>
-        /// A string to describe the resource
-        /// </summary>
-        public string FriendlyName { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (UniqueName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
+      }
 
-        /// <summary>
-        /// Construct a new UpdateRatePlanOptions
-        /// </summary>
-        /// <param name="pathSid"> The SID that identifies the resource to update </param>
-        public UpdateRatePlanOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (UniqueName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
-            }
+      return p;
+    }
+  }
 
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
+  /// <summary>
+  /// DeleteRatePlanOptions
+  /// </summary>
+  public class DeleteRatePlanOptions : IOptions<RatePlanResource>
+  {
+    /// <summary>
+    /// The SID that identifies the resource to delete
+    /// </summary>
+    public string PathSid { get; }
 
-            return p;
-        }
+    /// <summary>
+    /// Construct a new DeleteRatePlanOptions
+    /// </summary>
+    /// <param name="pathSid"> The SID that identifies the resource to delete </param>
+    public DeleteRatePlanOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// DeleteRatePlanOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteRatePlanOptions : IOptions<RatePlanResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID that identifies the resource to delete
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new DeleteRatePlanOptions
-        /// </summary>
-        /// <param name="pathSid"> The SID that identifies the resource to delete </param>
-        public DeleteRatePlanOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
 
 }

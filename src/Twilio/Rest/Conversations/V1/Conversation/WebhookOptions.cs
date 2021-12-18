@@ -12,286 +12,286 @@ using Twilio.Converters;
 namespace Twilio.Rest.Conversations.V1.Conversation
 {
 
+  /// <summary>
+  /// Retrieve a list of all webhooks scoped to the conversation
+  /// </summary>
+  public class ReadWebhookOptions : ReadOptions<WebhookResource>
+  {
     /// <summary>
-    /// Retrieve a list of all webhooks scoped to the conversation
+    /// The unique ID of the Conversation for this webhook.
     /// </summary>
-    public class ReadWebhookOptions : ReadOptions<WebhookResource>
+    public string PathConversationSid { get; }
+
+    /// <summary>
+    /// Construct a new ReadWebhookOptions
+    /// </summary>
+    /// <param name="pathConversationSid"> The unique ID of the Conversation for this webhook. </param>
+    public ReadWebhookOptions(string pathConversationSid)
     {
-        /// <summary>
-        /// The unique ID of the Conversation for this webhook.
-        /// </summary>
-        public string PathConversationSid { get; }
-
-        /// <summary>
-        /// Construct a new ReadWebhookOptions
-        /// </summary>
-        /// <param name="pathConversationSid"> The unique ID of the Conversation for this webhook. </param>
-        public ReadWebhookOptions(string pathConversationSid)
-        {
-            PathConversationSid = pathConversationSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+      PathConversationSid = pathConversationSid;
     }
 
     /// <summary>
-    /// Fetch the configuration of a conversation-scoped webhook
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchWebhookOptions : IOptions<WebhookResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique ID of the Conversation for this webhook.
-        /// </summary>
-        public string PathConversationSid { get; }
-        /// <summary>
-        /// A 34 character string that uniquely identifies this resource.
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new FetchWebhookOptions
-        /// </summary>
-        /// <param name="pathConversationSid"> The unique ID of the Conversation for this webhook. </param>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
-        public FetchWebhookOptions(string pathConversationSid, string pathSid)
-        {
-            PathConversationSid = pathConversationSid;
-            PathSid = pathSid;
-        }
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+  /// <summary>
+  /// Fetch the configuration of a conversation-scoped webhook
+  /// </summary>
+  public class FetchWebhookOptions : IOptions<WebhookResource>
+  {
+    /// <summary>
+    /// The unique ID of the Conversation for this webhook.
+    /// </summary>
+    public string PathConversationSid { get; }
+    /// <summary>
+    /// A 34 character string that uniquely identifies this resource.
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchWebhookOptions
+    /// </summary>
+    /// <param name="pathConversationSid"> The unique ID of the Conversation for this webhook. </param>
+    /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+    public FetchWebhookOptions(string pathConversationSid, string pathSid)
+    {
+      PathConversationSid = pathConversationSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Create a new webhook scoped to the conversation
+    /// Generate the necessary parameters
     /// </summary>
-    public class CreateWebhookOptions : IOptions<WebhookResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique ID of the Conversation for this webhook.
-        /// </summary>
-        public string PathConversationSid { get; }
-        /// <summary>
-        /// The target of this webhook.
-        /// </summary>
-        public WebhookResource.TargetEnum Target { get; }
-        /// <summary>
-        /// The absolute url the webhook request should be sent to.
-        /// </summary>
-        public string ConfigurationUrl { get; set; }
-        /// <summary>
-        /// The HTTP method to be used when sending a webhook request.
-        /// </summary>
-        public WebhookResource.MethodEnum ConfigurationMethod { get; set; }
-        /// <summary>
-        /// The list of events, firing webhook event for this Conversation.
-        /// </summary>
-        public List<string> ConfigurationFilters { get; set; }
-        /// <summary>
-        /// The list of keywords, firing webhook event for this Conversation.
-        /// </summary>
-        public List<string> ConfigurationTriggers { get; set; }
-        /// <summary>
-        /// The studio flow SID, where the webhook should be sent to.
-        /// </summary>
-        public string ConfigurationFlowSid { get; set; }
-        /// <summary>
-        /// The message index for which and it's successors the webhook will be replayed.
-        /// </summary>
-        public int? ConfigurationReplayAfter { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new CreateWebhookOptions
-        /// </summary>
-        /// <param name="pathConversationSid"> The unique ID of the Conversation for this webhook. </param>
-        /// <param name="target"> The target of this webhook. </param>
-        public CreateWebhookOptions(string pathConversationSid, WebhookResource.TargetEnum target)
-        {
-            PathConversationSid = pathConversationSid;
-            Target = target;
-            ConfigurationFilters = new List<string>();
-            ConfigurationTriggers = new List<string>();
-        }
+  /// <summary>
+  /// Create a new webhook scoped to the conversation
+  /// </summary>
+  public class CreateWebhookOptions : IOptions<WebhookResource>
+  {
+    /// <summary>
+    /// The unique ID of the Conversation for this webhook.
+    /// </summary>
+    public string PathConversationSid { get; }
+    /// <summary>
+    /// The target of this webhook.
+    /// </summary>
+    public WebhookResource.TargetEnum Target { get; }
+    /// <summary>
+    /// The absolute url the webhook request should be sent to.
+    /// </summary>
+    public string ConfigurationUrl { get; set; }
+    /// <summary>
+    /// The HTTP method to be used when sending a webhook request.
+    /// </summary>
+    public WebhookResource.MethodEnum ConfigurationMethod { get; set; }
+    /// <summary>
+    /// The list of events, firing webhook event for this Conversation.
+    /// </summary>
+    public List<string> ConfigurationFilters { get; set; }
+    /// <summary>
+    /// The list of keywords, firing webhook event for this Conversation.
+    /// </summary>
+    public List<string> ConfigurationTriggers { get; set; }
+    /// <summary>
+    /// The studio flow SID, where the webhook should be sent to.
+    /// </summary>
+    public string ConfigurationFlowSid { get; set; }
+    /// <summary>
+    /// The message index for which and it's successors the webhook will be replayed.
+    /// </summary>
+    public int? ConfigurationReplayAfter { get; set; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Target != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Target", Target.ToString()));
-            }
-
-            if (ConfigurationUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Configuration.Url", ConfigurationUrl));
-            }
-
-            if (ConfigurationMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Configuration.Method", ConfigurationMethod.ToString()));
-            }
-
-            if (ConfigurationFilters != null)
-            {
-                p.AddRange(ConfigurationFilters.Select(prop => new KeyValuePair<string, string>("Configuration.Filters", prop)));
-            }
-
-            if (ConfigurationTriggers != null)
-            {
-                p.AddRange(ConfigurationTriggers.Select(prop => new KeyValuePair<string, string>("Configuration.Triggers", prop)));
-            }
-
-            if (ConfigurationFlowSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Configuration.FlowSid", ConfigurationFlowSid.ToString()));
-            }
-
-            if (ConfigurationReplayAfter != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Configuration.ReplayAfter", ConfigurationReplayAfter.ToString()));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new CreateWebhookOptions
+    /// </summary>
+    /// <param name="pathConversationSid"> The unique ID of the Conversation for this webhook. </param>
+    /// <param name="target"> The target of this webhook. </param>
+    public CreateWebhookOptions(string pathConversationSid, WebhookResource.TargetEnum target)
+    {
+      PathConversationSid = pathConversationSid;
+      Target = target;
+      ConfigurationFilters = new List<string>();
+      ConfigurationTriggers = new List<string>();
     }
 
     /// <summary>
-    /// Update an existing conversation-scoped webhook
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateWebhookOptions : IOptions<WebhookResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique ID of the Conversation for this webhook.
-        /// </summary>
-        public string PathConversationSid { get; }
-        /// <summary>
-        /// A 34 character string that uniquely identifies this resource.
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// The absolute url the webhook request should be sent to.
-        /// </summary>
-        public string ConfigurationUrl { get; set; }
-        /// <summary>
-        /// The HTTP method to be used when sending a webhook request.
-        /// </summary>
-        public WebhookResource.MethodEnum ConfigurationMethod { get; set; }
-        /// <summary>
-        /// The list of events, firing webhook event for this Conversation.
-        /// </summary>
-        public List<string> ConfigurationFilters { get; set; }
-        /// <summary>
-        /// The list of keywords, firing webhook event for this Conversation.
-        /// </summary>
-        public List<string> ConfigurationTriggers { get; set; }
-        /// <summary>
-        /// The studio flow SID, where the webhook should be sent to.
-        /// </summary>
-        public string ConfigurationFlowSid { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (Target != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Target", Target.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new UpdateWebhookOptions
-        /// </summary>
-        /// <param name="pathConversationSid"> The unique ID of the Conversation for this webhook. </param>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
-        public UpdateWebhookOptions(string pathConversationSid, string pathSid)
-        {
-            PathConversationSid = pathConversationSid;
-            PathSid = pathSid;
-            ConfigurationFilters = new List<string>();
-            ConfigurationTriggers = new List<string>();
-        }
+      if (ConfigurationUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Configuration.Url", ConfigurationUrl));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (ConfigurationUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Configuration.Url", ConfigurationUrl));
-            }
+      if (ConfigurationMethod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Configuration.Method", ConfigurationMethod.ToString()));
+      }
 
-            if (ConfigurationMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Configuration.Method", ConfigurationMethod.ToString()));
-            }
+      if (ConfigurationFilters != null)
+      {
+        p.AddRange(ConfigurationFilters.Select(prop => new KeyValuePair<string, string>("Configuration.Filters", prop)));
+      }
 
-            if (ConfigurationFilters != null)
-            {
-                p.AddRange(ConfigurationFilters.Select(prop => new KeyValuePair<string, string>("Configuration.Filters", prop)));
-            }
+      if (ConfigurationTriggers != null)
+      {
+        p.AddRange(ConfigurationTriggers.Select(prop => new KeyValuePair<string, string>("Configuration.Triggers", prop)));
+      }
 
-            if (ConfigurationTriggers != null)
-            {
-                p.AddRange(ConfigurationTriggers.Select(prop => new KeyValuePair<string, string>("Configuration.Triggers", prop)));
-            }
+      if (ConfigurationFlowSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Configuration.FlowSid", ConfigurationFlowSid.ToString()));
+      }
 
-            if (ConfigurationFlowSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Configuration.FlowSid", ConfigurationFlowSid.ToString()));
-            }
+      if (ConfigurationReplayAfter != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Configuration.ReplayAfter", ConfigurationReplayAfter.ToString()));
+      }
 
-            return p;
-        }
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// Update an existing conversation-scoped webhook
+  /// </summary>
+  public class UpdateWebhookOptions : IOptions<WebhookResource>
+  {
+    /// <summary>
+    /// The unique ID of the Conversation for this webhook.
+    /// </summary>
+    public string PathConversationSid { get; }
+    /// <summary>
+    /// A 34 character string that uniquely identifies this resource.
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// The absolute url the webhook request should be sent to.
+    /// </summary>
+    public string ConfigurationUrl { get; set; }
+    /// <summary>
+    /// The HTTP method to be used when sending a webhook request.
+    /// </summary>
+    public WebhookResource.MethodEnum ConfigurationMethod { get; set; }
+    /// <summary>
+    /// The list of events, firing webhook event for this Conversation.
+    /// </summary>
+    public List<string> ConfigurationFilters { get; set; }
+    /// <summary>
+    /// The list of keywords, firing webhook event for this Conversation.
+    /// </summary>
+    public List<string> ConfigurationTriggers { get; set; }
+    /// <summary>
+    /// The studio flow SID, where the webhook should be sent to.
+    /// </summary>
+    public string ConfigurationFlowSid { get; set; }
+
+    /// <summary>
+    /// Construct a new UpdateWebhookOptions
+    /// </summary>
+    /// <param name="pathConversationSid"> The unique ID of the Conversation for this webhook. </param>
+    /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+    public UpdateWebhookOptions(string pathConversationSid, string pathSid)
+    {
+      PathConversationSid = pathConversationSid;
+      PathSid = pathSid;
+      ConfigurationFilters = new List<string>();
+      ConfigurationTriggers = new List<string>();
     }
 
     /// <summary>
-    /// Remove an existing webhook scoped to the conversation
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteWebhookOptions : IOptions<WebhookResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique ID of the Conversation for this webhook.
-        /// </summary>
-        public string PathConversationSid { get; }
-        /// <summary>
-        /// A 34 character string that uniquely identifies this resource.
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (ConfigurationUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Configuration.Url", ConfigurationUrl));
+      }
 
-        /// <summary>
-        /// Construct a new DeleteWebhookOptions
-        /// </summary>
-        /// <param name="pathConversationSid"> The unique ID of the Conversation for this webhook. </param>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
-        public DeleteWebhookOptions(string pathConversationSid, string pathSid)
-        {
-            PathConversationSid = pathConversationSid;
-            PathSid = pathSid;
-        }
+      if (ConfigurationMethod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Configuration.Method", ConfigurationMethod.ToString()));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      if (ConfigurationFilters != null)
+      {
+        p.AddRange(ConfigurationFilters.Select(prop => new KeyValuePair<string, string>("Configuration.Filters", prop)));
+      }
+
+      if (ConfigurationTriggers != null)
+      {
+        p.AddRange(ConfigurationTriggers.Select(prop => new KeyValuePair<string, string>("Configuration.Triggers", prop)));
+      }
+
+      if (ConfigurationFlowSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Configuration.FlowSid", ConfigurationFlowSid.ToString()));
+      }
+
+      return p;
     }
+  }
+
+  /// <summary>
+  /// Remove an existing webhook scoped to the conversation
+  /// </summary>
+  public class DeleteWebhookOptions : IOptions<WebhookResource>
+  {
+    /// <summary>
+    /// The unique ID of the Conversation for this webhook.
+    /// </summary>
+    public string PathConversationSid { get; }
+    /// <summary>
+    /// A 34 character string that uniquely identifies this resource.
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new DeleteWebhookOptions
+    /// </summary>
+    /// <param name="pathConversationSid"> The unique ID of the Conversation for this webhook. </param>
+    /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+    public DeleteWebhookOptions(string pathConversationSid, string pathSid)
+    {
+      PathConversationSid = pathConversationSid;
+      PathSid = pathSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
 }

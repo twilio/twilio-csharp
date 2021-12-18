@@ -11,80 +11,80 @@ using Twilio.Converters;
 namespace Twilio.Rest.Trunking.V1.Trunk
 {
 
+  /// <summary>
+  /// FetchRecordingOptions
+  /// </summary>
+  public class FetchRecordingOptions : IOptions<RecordingResource>
+  {
     /// <summary>
-    /// FetchRecordingOptions
+    /// The SID of the Trunk from which to fetch the recording settings.
     /// </summary>
-    public class FetchRecordingOptions : IOptions<RecordingResource>
+    public string PathTrunkSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchRecordingOptions
+    /// </summary>
+    /// <param name="pathTrunkSid"> The SID of the Trunk from which to fetch the recording settings. </param>
+    public FetchRecordingOptions(string pathTrunkSid)
     {
-        /// <summary>
-        /// The SID of the Trunk from which to fetch the recording settings.
-        /// </summary>
-        public string PathTrunkSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchRecordingOptions
-        /// </summary>
-        /// <param name="pathTrunkSid"> The SID of the Trunk from which to fetch the recording settings. </param>
-        public FetchRecordingOptions(string pathTrunkSid)
-        {
-            PathTrunkSid = pathTrunkSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathTrunkSid = pathTrunkSid;
     }
 
     /// <summary>
-    /// UpdateRecordingOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateRecordingOptions : IOptions<RecordingResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Trunk.
-        /// </summary>
-        public string PathTrunkSid { get; }
-        /// <summary>
-        /// The recording mode for the trunk.
-        /// </summary>
-        public RecordingResource.RecordingModeEnum Mode { get; set; }
-        /// <summary>
-        /// The recording trim setting for the trunk.
-        /// </summary>
-        public RecordingResource.RecordingTrimEnum Trim { get; set; }
-
-        /// <summary>
-        /// Construct a new UpdateRecordingOptions
-        /// </summary>
-        /// <param name="pathTrunkSid"> The SID of the Trunk. </param>
-        public UpdateRecordingOptions(string pathTrunkSid)
-        {
-            PathTrunkSid = pathTrunkSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Mode != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Mode", Mode.ToString()));
-            }
-
-            if (Trim != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Trim", Trim.ToString()));
-            }
-
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
+
+  /// <summary>
+  /// UpdateRecordingOptions
+  /// </summary>
+  public class UpdateRecordingOptions : IOptions<RecordingResource>
+  {
+    /// <summary>
+    /// The SID of the Trunk.
+    /// </summary>
+    public string PathTrunkSid { get; }
+    /// <summary>
+    /// The recording mode for the trunk.
+    /// </summary>
+    public RecordingResource.RecordingModeEnum Mode { get; set; }
+    /// <summary>
+    /// The recording trim setting for the trunk.
+    /// </summary>
+    public RecordingResource.RecordingTrimEnum Trim { get; set; }
+
+    /// <summary>
+    /// Construct a new UpdateRecordingOptions
+    /// </summary>
+    /// <param name="pathTrunkSid"> The SID of the Trunk. </param>
+    public UpdateRecordingOptions(string pathTrunkSid)
+    {
+      PathTrunkSid = pathTrunkSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (Mode != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Mode", Mode.ToString()));
+      }
+
+      if (Trim != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Trim", Trim.ToString()));
+      }
+
+      return p;
+    }
+  }
 
 }

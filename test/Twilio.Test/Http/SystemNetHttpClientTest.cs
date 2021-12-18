@@ -53,7 +53,7 @@ namespace Twilio.Tests.Http
             var route = request.RequestUri.ToString().Split('?')[0];
             MockResponse response = responseMap[route];
 
-            Assert.AreEqual(response.requestUri.ToString(), route);
+            Assert.AreEqual(response.requestUri.ToString(), route.ToString());
             if (response.error != null)
             {
                 throw response.error;

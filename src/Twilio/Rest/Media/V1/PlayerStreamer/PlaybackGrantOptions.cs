@@ -11,81 +11,81 @@ using Twilio.Converters;
 namespace Twilio.Rest.Media.V1.PlayerStreamer
 {
 
+  /// <summary>
+  /// CreatePlaybackGrantOptions
+  /// </summary>
+  public class CreatePlaybackGrantOptions : IOptions<PlaybackGrantResource>
+  {
     /// <summary>
-    /// CreatePlaybackGrantOptions
+    /// The unique string that identifies the PlayerStreamer associated with this PlaybackGrant.
     /// </summary>
-    public class CreatePlaybackGrantOptions : IOptions<PlaybackGrantResource>
+    public string PathSid { get; }
+    /// <summary>
+    /// The time to live of the PlaybackGrant
+    /// </summary>
+    public int? Ttl { get; set; }
+    /// <summary>
+    /// The full URL that is authorized to play back the livestream
+    /// </summary>
+    public string AccessControlAllowOrigin { get; set; }
+
+    /// <summary>
+    /// Construct a new CreatePlaybackGrantOptions
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the PlayerStreamer associated with this PlaybackGrant.
+    ///               </param>
+    public CreatePlaybackGrantOptions(string pathSid)
     {
-        /// <summary>
-        /// The unique string that identifies the PlayerStreamer associated with this PlaybackGrant.
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// The time to live of the PlaybackGrant
-        /// </summary>
-        public int? Ttl { get; set; }
-        /// <summary>
-        /// The full URL that is authorized to play back the livestream
-        /// </summary>
-        public string AccessControlAllowOrigin { get; set; }
-
-        /// <summary>
-        /// Construct a new CreatePlaybackGrantOptions
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the PlayerStreamer associated with this PlaybackGrant.
-        ///               </param>
-        public CreatePlaybackGrantOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Ttl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Ttl", Ttl.ToString()));
-            }
-
-            if (AccessControlAllowOrigin != null)
-            {
-                p.Add(new KeyValuePair<string, string>("AccessControlAllowOrigin", AccessControlAllowOrigin));
-            }
-
-            return p;
-        }
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// **This method is not enabled.** Returns a single PlaybackGrant resource identified by a SID.
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchPlaybackGrantOptions : IOptions<PlaybackGrantResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID that identifies the resource to fetch
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (Ttl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Ttl", Ttl.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new FetchPlaybackGrantOptions
-        /// </summary>
-        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
-        public FetchPlaybackGrantOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
+      if (AccessControlAllowOrigin != null)
+      {
+        p.Add(new KeyValuePair<string, string>("AccessControlAllowOrigin", AccessControlAllowOrigin));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      return p;
     }
+  }
+
+  /// <summary>
+  /// **This method is not enabled.** Returns a single PlaybackGrant resource identified by a SID.
+  /// </summary>
+  public class FetchPlaybackGrantOptions : IOptions<PlaybackGrantResource>
+  {
+    /// <summary>
+    /// The SID that identifies the resource to fetch
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchPlaybackGrantOptions
+    /// </summary>
+    /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
+    public FetchPlaybackGrantOptions(string pathSid)
+    {
+      PathSid = pathSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
 }

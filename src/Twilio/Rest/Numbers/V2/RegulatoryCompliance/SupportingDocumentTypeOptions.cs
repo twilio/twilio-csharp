@@ -11,53 +11,53 @@ using Twilio.Converters;
 namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
 {
 
+  /// <summary>
+  /// Retrieve a list of all Supporting Document Types.
+  /// </summary>
+  public class ReadSupportingDocumentTypeOptions : ReadOptions<SupportingDocumentTypeResource>
+  {
     /// <summary>
-    /// Retrieve a list of all Supporting Document Types.
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadSupportingDocumentTypeOptions : ReadOptions<SupportingDocumentTypeResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-            return p;
-        }
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// Fetch a specific Supporting Document Type Instance.
+  /// </summary>
+  public class FetchSupportingDocumentTypeOptions : IOptions<SupportingDocumentTypeResource>
+  {
+    /// <summary>
+    /// The unique string that identifies the Supporting Document Type resource
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchSupportingDocumentTypeOptions
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the Supporting Document Type resource </param>
+    public FetchSupportingDocumentTypeOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Fetch a specific Supporting Document Type Instance.
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchSupportingDocumentTypeOptions : IOptions<SupportingDocumentTypeResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique string that identifies the Supporting Document Type resource
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchSupportingDocumentTypeOptions
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the Supporting Document Type resource </param>
-        public FetchSupportingDocumentTypeOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
 
 }

@@ -11,167 +11,167 @@ using Twilio.Converters;
 namespace Twilio.Rest.Api.V2010.Account
 {
 
+  /// <summary>
+  /// Fetch an instance of a short code
+  /// </summary>
+  public class FetchShortCodeOptions : IOptions<ShortCodeResource>
+  {
     /// <summary>
-    /// Fetch an instance of a short code
+    /// The SID of the Account that created the resource(s) to fetch
     /// </summary>
-    public class FetchShortCodeOptions : IOptions<ShortCodeResource>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The unique string that identifies this resource
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchShortCodeOptions
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies this resource </param>
+    public FetchShortCodeOptions(string pathSid)
     {
-        /// <summary>
-        /// The SID of the Account that created the resource(s) to fetch
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The unique string that identifies this resource
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchShortCodeOptions
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies this resource </param>
-        public FetchShortCodeOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Update a short code with the following parameters
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateShortCodeOptions : IOptions<ShortCodeResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Account that created the resource(s) to update
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The unique string that identifies this resource
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// A string to describe this resource
-        /// </summary>
-        public string FriendlyName { get; set; }
-        /// <summary>
-        /// The API version to use to start a new TwiML session
-        /// </summary>
-        public string ApiVersion { get; set; }
-        /// <summary>
-        /// URL Twilio will request when receiving an SMS
-        /// </summary>
-        public Uri SmsUrl { get; set; }
-        /// <summary>
-        /// HTTP method to use when requesting the sms url
-        /// </summary>
-        public Twilio.Http.HttpMethod SmsMethod { get; set; }
-        /// <summary>
-        /// URL Twilio will request if an error occurs in executing TwiML
-        /// </summary>
-        public Uri SmsFallbackUrl { get; set; }
-        /// <summary>
-        /// HTTP method Twilio will use with sms_fallback_url
-        /// </summary>
-        public Twilio.Http.HttpMethod SmsFallbackMethod { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new UpdateShortCodeOptions
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies this resource </param>
-        public UpdateShortCodeOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
+  /// <summary>
+  /// Update a short code with the following parameters
+  /// </summary>
+  public class UpdateShortCodeOptions : IOptions<ShortCodeResource>
+  {
+    /// <summary>
+    /// The SID of the Account that created the resource(s) to update
+    /// </summary>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The unique string that identifies this resource
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// A string to describe this resource
+    /// </summary>
+    public string FriendlyName { get; set; }
+    /// <summary>
+    /// The API version to use to start a new TwiML session
+    /// </summary>
+    public string ApiVersion { get; set; }
+    /// <summary>
+    /// URL Twilio will request when receiving an SMS
+    /// </summary>
+    public Uri SmsUrl { get; set; }
+    /// <summary>
+    /// HTTP method to use when requesting the sms url
+    /// </summary>
+    public Twilio.Http.HttpMethod SmsMethod { get; set; }
+    /// <summary>
+    /// URL Twilio will request if an error occurs in executing TwiML
+    /// </summary>
+    public Uri SmsFallbackUrl { get; set; }
+    /// <summary>
+    /// HTTP method Twilio will use with sms_fallback_url
+    /// </summary>
+    public Twilio.Http.HttpMethod SmsFallbackMethod { get; set; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
-
-            if (ApiVersion != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ApiVersion", ApiVersion));
-            }
-
-            if (SmsUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("SmsUrl", Serializers.Url(SmsUrl)));
-            }
-
-            if (SmsMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("SmsMethod", SmsMethod.ToString()));
-            }
-
-            if (SmsFallbackUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("SmsFallbackUrl", Serializers.Url(SmsFallbackUrl)));
-            }
-
-            if (SmsFallbackMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("SmsFallbackMethod", SmsFallbackMethod.ToString()));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new UpdateShortCodeOptions
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies this resource </param>
+    public UpdateShortCodeOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Retrieve a list of short-codes belonging to the account used to make the request
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadShortCodeOptions : ReadOptions<ShortCodeResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Account that created the resource(s) to read
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The string that identifies the ShortCode resources to read
-        /// </summary>
-        public string FriendlyName { get; set; }
-        /// <summary>
-        /// Filter by ShortCode
-        /// </summary>
-        public string ShortCode { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
+      if (ApiVersion != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ApiVersion", ApiVersion));
+      }
 
-            if (ShortCode != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ShortCode", ShortCode));
-            }
+      if (SmsUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("SmsUrl", Serializers.Url(SmsUrl)));
+      }
 
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
+      if (SmsMethod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("SmsMethod", SmsMethod.ToString()));
+      }
 
-            return p;
-        }
+      if (SmsFallbackUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("SmsFallbackUrl", Serializers.Url(SmsFallbackUrl)));
+      }
+
+      if (SmsFallbackMethod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("SmsFallbackMethod", SmsFallbackMethod.ToString()));
+      }
+
+      return p;
     }
+  }
+
+  /// <summary>
+  /// Retrieve a list of short-codes belonging to the account used to make the request
+  /// </summary>
+  public class ReadShortCodeOptions : ReadOptions<ShortCodeResource>
+  {
+    /// <summary>
+    /// The SID of the Account that created the resource(s) to read
+    /// </summary>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The string that identifies the ShortCode resources to read
+    /// </summary>
+    public string FriendlyName { get; set; }
+    /// <summary>
+    /// Filter by ShortCode
+    /// </summary>
+    public string ShortCode { get; set; }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
+
+      if (ShortCode != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ShortCode", ShortCode));
+      }
+
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
 
 }

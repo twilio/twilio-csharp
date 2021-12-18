@@ -11,336 +11,336 @@ using Twilio.Converters;
 namespace Twilio.Rest.Taskrouter.V1.Workspace
 {
 
+  /// <summary>
+  /// ReadWorkerOptions
+  /// </summary>
+  public class ReadWorkerOptions : ReadOptions<WorkerResource>
+  {
     /// <summary>
-    /// ReadWorkerOptions
+    /// The SID of the Workspace with the Workers to read
     /// </summary>
-    public class ReadWorkerOptions : ReadOptions<WorkerResource>
+    public string PathWorkspaceSid { get; }
+    /// <summary>
+    /// The activity_name of the Worker resources to read
+    /// </summary>
+    public string ActivityName { get; set; }
+    /// <summary>
+    /// The activity_sid of the Worker resources to read
+    /// </summary>
+    public string ActivitySid { get; set; }
+    /// <summary>
+    /// Whether to return Worker resources that are available or unavailable
+    /// </summary>
+    public string Available { get; set; }
+    /// <summary>
+    /// The friendly_name of the Worker resources to read
+    /// </summary>
+    public string FriendlyName { get; set; }
+    /// <summary>
+    /// Filter by Workers that would match an expression on a TaskQueue
+    /// </summary>
+    public string TargetWorkersExpression { get; set; }
+    /// <summary>
+    /// The friendly_name of the TaskQueue that the Workers to read are eligible for
+    /// </summary>
+    public string TaskQueueName { get; set; }
+    /// <summary>
+    /// The SID of the TaskQueue that the Workers to read are eligible for
+    /// </summary>
+    public string TaskQueueSid { get; set; }
+
+    /// <summary>
+    /// Construct a new ReadWorkerOptions
+    /// </summary>
+    /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Workers to read </param>
+    public ReadWorkerOptions(string pathWorkspaceSid)
     {
-        /// <summary>
-        /// The SID of the Workspace with the Workers to read
-        /// </summary>
-        public string PathWorkspaceSid { get; }
-        /// <summary>
-        /// The activity_name of the Worker resources to read
-        /// </summary>
-        public string ActivityName { get; set; }
-        /// <summary>
-        /// The activity_sid of the Worker resources to read
-        /// </summary>
-        public string ActivitySid { get; set; }
-        /// <summary>
-        /// Whether to return Worker resources that are available or unavailable
-        /// </summary>
-        public string Available { get; set; }
-        /// <summary>
-        /// The friendly_name of the Worker resources to read
-        /// </summary>
-        public string FriendlyName { get; set; }
-        /// <summary>
-        /// Filter by Workers that would match an expression on a TaskQueue
-        /// </summary>
-        public string TargetWorkersExpression { get; set; }
-        /// <summary>
-        /// The friendly_name of the TaskQueue that the Workers to read are eligible for
-        /// </summary>
-        public string TaskQueueName { get; set; }
-        /// <summary>
-        /// The SID of the TaskQueue that the Workers to read are eligible for
-        /// </summary>
-        public string TaskQueueSid { get; set; }
-
-        /// <summary>
-        /// Construct a new ReadWorkerOptions
-        /// </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Workers to read </param>
-        public ReadWorkerOptions(string pathWorkspaceSid)
-        {
-            PathWorkspaceSid = pathWorkspaceSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (ActivityName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ActivityName", ActivityName));
-            }
-
-            if (ActivitySid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ActivitySid", ActivitySid.ToString()));
-            }
-
-            if (Available != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Available", Available));
-            }
-
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
-
-            if (TargetWorkersExpression != null)
-            {
-                p.Add(new KeyValuePair<string, string>("TargetWorkersExpression", TargetWorkersExpression));
-            }
-
-            if (TaskQueueName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("TaskQueueName", TaskQueueName));
-            }
-
-            if (TaskQueueSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("TaskQueueSid", TaskQueueSid.ToString()));
-            }
-
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+      PathWorkspaceSid = pathWorkspaceSid;
     }
 
     /// <summary>
-    /// CreateWorkerOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class CreateWorkerOptions : IOptions<WorkerResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Workspace that the new Worker belongs to
-        /// </summary>
-        public string PathWorkspaceSid { get; }
-        /// <summary>
-        /// A string to describe the resource
-        /// </summary>
-        public string FriendlyName { get; }
-        /// <summary>
-        /// The SID of a valid Activity that describes the new Worker's initial state
-        /// </summary>
-        public string ActivitySid { get; set; }
-        /// <summary>
-        /// A valid JSON string that describes the new Worker
-        /// </summary>
-        public string Attributes { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (ActivityName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ActivityName", ActivityName));
+      }
 
-        /// <summary>
-        /// Construct a new CreateWorkerOptions
-        /// </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace that the new Worker belongs to </param>
-        /// <param name="friendlyName"> A string to describe the resource </param>
-        public CreateWorkerOptions(string pathWorkspaceSid, string friendlyName)
-        {
-            PathWorkspaceSid = pathWorkspaceSid;
-            FriendlyName = friendlyName;
-        }
+      if (ActivitySid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ActivitySid", ActivitySid.ToString()));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
+      if (Available != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Available", Available));
+      }
 
-            if (ActivitySid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ActivitySid", ActivitySid.ToString()));
-            }
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
 
-            if (Attributes != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Attributes", Attributes));
-            }
+      if (TargetWorkersExpression != null)
+      {
+        p.Add(new KeyValuePair<string, string>("TargetWorkersExpression", TargetWorkersExpression));
+      }
 
-            return p;
-        }
+      if (TaskQueueName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("TaskQueueName", TaskQueueName));
+      }
+
+      if (TaskQueueSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("TaskQueueSid", TaskQueueSid.ToString()));
+      }
+
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// CreateWorkerOptions
+  /// </summary>
+  public class CreateWorkerOptions : IOptions<WorkerResource>
+  {
+    /// <summary>
+    /// The SID of the Workspace that the new Worker belongs to
+    /// </summary>
+    public string PathWorkspaceSid { get; }
+    /// <summary>
+    /// A string to describe the resource
+    /// </summary>
+    public string FriendlyName { get; }
+    /// <summary>
+    /// The SID of a valid Activity that describes the new Worker's initial state
+    /// </summary>
+    public string ActivitySid { get; set; }
+    /// <summary>
+    /// A valid JSON string that describes the new Worker
+    /// </summary>
+    public string Attributes { get; set; }
+
+    /// <summary>
+    /// Construct a new CreateWorkerOptions
+    /// </summary>
+    /// <param name="pathWorkspaceSid"> The SID of the Workspace that the new Worker belongs to </param>
+    /// <param name="friendlyName"> A string to describe the resource </param>
+    public CreateWorkerOptions(string pathWorkspaceSid, string friendlyName)
+    {
+      PathWorkspaceSid = pathWorkspaceSid;
+      FriendlyName = friendlyName;
     }
 
     /// <summary>
-    /// FetchWorkerOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchWorkerOptions : IOptions<WorkerResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Workspace with the Worker to fetch
-        /// </summary>
-        public string PathWorkspaceSid { get; }
-        /// <summary>
-        /// The SID of the resource to fetch
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
 
-        /// <summary>
-        /// Construct a new FetchWorkerOptions
-        /// </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Worker to fetch </param>
-        /// <param name="pathSid"> The SID of the resource to fetch </param>
-        public FetchWorkerOptions(string pathWorkspaceSid, string pathSid)
-        {
-            PathWorkspaceSid = pathWorkspaceSid;
-            PathSid = pathSid;
-        }
+      if (ActivitySid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ActivitySid", ActivitySid.ToString()));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      if (Attributes != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Attributes", Attributes));
+      }
+
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// FetchWorkerOptions
+  /// </summary>
+  public class FetchWorkerOptions : IOptions<WorkerResource>
+  {
+    /// <summary>
+    /// The SID of the Workspace with the Worker to fetch
+    /// </summary>
+    public string PathWorkspaceSid { get; }
+    /// <summary>
+    /// The SID of the resource to fetch
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchWorkerOptions
+    /// </summary>
+    /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Worker to fetch </param>
+    /// <param name="pathSid"> The SID of the resource to fetch </param>
+    public FetchWorkerOptions(string pathWorkspaceSid, string pathSid)
+    {
+      PathWorkspaceSid = pathWorkspaceSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// UpdateWorkerOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateWorkerOptions : IOptions<WorkerResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Workspace with the Worker to update
-        /// </summary>
-        public string PathWorkspaceSid { get; }
-        /// <summary>
-        /// The SID of the resource to update
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// The SID of the Activity that describes the Worker's initial state
-        /// </summary>
-        public string ActivitySid { get; set; }
-        /// <summary>
-        /// The JSON string that describes the Worker
-        /// </summary>
-        public string Attributes { get; set; }
-        /// <summary>
-        /// A string to describe the Worker
-        /// </summary>
-        public string FriendlyName { get; set; }
-        /// <summary>
-        /// Whether to reject the Worker's pending reservations
-        /// </summary>
-        public bool? RejectPendingReservations { get; set; }
-        /// <summary>
-        /// The If-Match HTTP request header
-        /// </summary>
-        public string IfMatch { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new UpdateWorkerOptions
-        /// </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Worker to update </param>
-        /// <param name="pathSid"> The SID of the resource to update </param>
-        public UpdateWorkerOptions(string pathWorkspaceSid, string pathSid)
-        {
-            PathWorkspaceSid = pathWorkspaceSid;
-            PathSid = pathSid;
-        }
+  /// <summary>
+  /// UpdateWorkerOptions
+  /// </summary>
+  public class UpdateWorkerOptions : IOptions<WorkerResource>
+  {
+    /// <summary>
+    /// The SID of the Workspace with the Worker to update
+    /// </summary>
+    public string PathWorkspaceSid { get; }
+    /// <summary>
+    /// The SID of the resource to update
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// The SID of the Activity that describes the Worker's initial state
+    /// </summary>
+    public string ActivitySid { get; set; }
+    /// <summary>
+    /// The JSON string that describes the Worker
+    /// </summary>
+    public string Attributes { get; set; }
+    /// <summary>
+    /// A string to describe the Worker
+    /// </summary>
+    public string FriendlyName { get; set; }
+    /// <summary>
+    /// Whether to reject the Worker's pending reservations
+    /// </summary>
+    public bool? RejectPendingReservations { get; set; }
+    /// <summary>
+    /// The If-Match HTTP request header
+    /// </summary>
+    public string IfMatch { get; set; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (ActivitySid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ActivitySid", ActivitySid.ToString()));
-            }
-
-            if (Attributes != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Attributes", Attributes));
-            }
-
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
-
-            if (RejectPendingReservations != null)
-            {
-                p.Add(new KeyValuePair<string, string>("RejectPendingReservations", RejectPendingReservations.Value.ToString().ToLower()));
-            }
-
-            return p;
-        }
-
-        /// <summary>
-        /// Generate the necessary header parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetHeaderParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (IfMatch != null)
-            {
-                p.Add(new KeyValuePair<string, string>("If-Match", IfMatch));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new UpdateWorkerOptions
+    /// </summary>
+    /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Worker to update </param>
+    /// <param name="pathSid"> The SID of the resource to update </param>
+    public UpdateWorkerOptions(string pathWorkspaceSid, string pathSid)
+    {
+      PathWorkspaceSid = pathWorkspaceSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// DeleteWorkerOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteWorkerOptions : IOptions<WorkerResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Workspace with the Worker to delete
-        /// </summary>
-        public string PathWorkspaceSid { get; }
-        /// <summary>
-        /// The SID of the resource to delete
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// The If-Match HTTP request header
-        /// </summary>
-        public string IfMatch { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (ActivitySid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ActivitySid", ActivitySid.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new DeleteWorkerOptions
-        /// </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Worker to delete </param>
-        /// <param name="pathSid"> The SID of the resource to delete </param>
-        public DeleteWorkerOptions(string pathWorkspaceSid, string pathSid)
-        {
-            PathWorkspaceSid = pathWorkspaceSid;
-            PathSid = pathSid;
-        }
+      if (Attributes != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Attributes", Attributes));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
 
-        /// <summary>
-        /// Generate the necessary header parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetHeaderParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (IfMatch != null)
-            {
-                p.Add(new KeyValuePair<string, string>("If-Match", IfMatch));
-            }
+      if (RejectPendingReservations != null)
+      {
+        p.Add(new KeyValuePair<string, string>("RejectPendingReservations", RejectPendingReservations.Value.ToString().ToLower()));
+      }
 
-            return p;
-        }
+      return p;
     }
+
+    /// <summary>
+    /// Generate the necessary header parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetHeaderParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (IfMatch != null)
+      {
+        p.Add(new KeyValuePair<string, string>("If-Match", IfMatch));
+      }
+
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// DeleteWorkerOptions
+  /// </summary>
+  public class DeleteWorkerOptions : IOptions<WorkerResource>
+  {
+    /// <summary>
+    /// The SID of the Workspace with the Worker to delete
+    /// </summary>
+    public string PathWorkspaceSid { get; }
+    /// <summary>
+    /// The SID of the resource to delete
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// The If-Match HTTP request header
+    /// </summary>
+    public string IfMatch { get; set; }
+
+    /// <summary>
+    /// Construct a new DeleteWorkerOptions
+    /// </summary>
+    /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Worker to delete </param>
+    /// <param name="pathSid"> The SID of the resource to delete </param>
+    public DeleteWorkerOptions(string pathWorkspaceSid, string pathSid)
+    {
+      PathWorkspaceSid = pathWorkspaceSid;
+      PathSid = pathSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+
+    /// <summary>
+    /// Generate the necessary header parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetHeaderParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (IfMatch != null)
+      {
+        p.Add(new KeyValuePair<string, string>("If-Match", IfMatch));
+      }
+
+      return p;
+    }
+  }
 
 }

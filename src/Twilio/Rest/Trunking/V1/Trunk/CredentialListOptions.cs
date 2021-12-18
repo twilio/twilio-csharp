@@ -11,148 +11,148 @@ using Twilio.Converters;
 namespace Twilio.Rest.Trunking.V1.Trunk
 {
 
+  /// <summary>
+  /// FetchCredentialListOptions
+  /// </summary>
+  public class FetchCredentialListOptions : IOptions<CredentialListResource>
+  {
     /// <summary>
-    /// FetchCredentialListOptions
+    /// The SID of the Trunk from which to fetch the credential list
     /// </summary>
-    public class FetchCredentialListOptions : IOptions<CredentialListResource>
+    public string PathTrunkSid { get; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchCredentialListOptions
+    /// </summary>
+    /// <param name="pathTrunkSid"> The SID of the Trunk from which to fetch the credential list </param>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public FetchCredentialListOptions(string pathTrunkSid, string pathSid)
     {
-        /// <summary>
-        /// The SID of the Trunk from which to fetch the credential list
-        /// </summary>
-        public string PathTrunkSid { get; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchCredentialListOptions
-        /// </summary>
-        /// <param name="pathTrunkSid"> The SID of the Trunk from which to fetch the credential list </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public FetchCredentialListOptions(string pathTrunkSid, string pathSid)
-        {
-            PathTrunkSid = pathTrunkSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathTrunkSid = pathTrunkSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// DeleteCredentialListOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteCredentialListOptions : IOptions<CredentialListResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Trunk from which to delete the credential list
-        /// </summary>
-        public string PathTrunkSid { get; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new DeleteCredentialListOptions
-        /// </summary>
-        /// <param name="pathTrunkSid"> The SID of the Trunk from which to delete the credential list </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public DeleteCredentialListOptions(string pathTrunkSid, string pathSid)
-        {
-            PathTrunkSid = pathTrunkSid;
-            PathSid = pathSid;
-        }
+  /// <summary>
+  /// DeleteCredentialListOptions
+  /// </summary>
+  public class DeleteCredentialListOptions : IOptions<CredentialListResource>
+  {
+    /// <summary>
+    /// The SID of the Trunk from which to delete the credential list
+    /// </summary>
+    public string PathTrunkSid { get; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+    /// <summary>
+    /// Construct a new DeleteCredentialListOptions
+    /// </summary>
+    /// <param name="pathTrunkSid"> The SID of the Trunk from which to delete the credential list </param>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public DeleteCredentialListOptions(string pathTrunkSid, string pathSid)
+    {
+      PathTrunkSid = pathTrunkSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// CreateCredentialListOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class CreateCredentialListOptions : IOptions<CredentialListResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Trunk to associate the credential list with
-        /// </summary>
-        public string PathTrunkSid { get; }
-        /// <summary>
-        /// The SID of the Credential List that you want to associate with the trunk
-        /// </summary>
-        public string CredentialListSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new CreateCredentialListOptions
-        /// </summary>
-        /// <param name="pathTrunkSid"> The SID of the Trunk to associate the credential list with </param>
-        /// <param name="credentialListSid"> The SID of the Credential List that you want to associate with the trunk </param>
-        public CreateCredentialListOptions(string pathTrunkSid, string credentialListSid)
-        {
-            PathTrunkSid = pathTrunkSid;
-            CredentialListSid = credentialListSid;
-        }
+  /// <summary>
+  /// CreateCredentialListOptions
+  /// </summary>
+  public class CreateCredentialListOptions : IOptions<CredentialListResource>
+  {
+    /// <summary>
+    /// The SID of the Trunk to associate the credential list with
+    /// </summary>
+    public string PathTrunkSid { get; }
+    /// <summary>
+    /// The SID of the Credential List that you want to associate with the trunk
+    /// </summary>
+    public string CredentialListSid { get; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (CredentialListSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("CredentialListSid", CredentialListSid.ToString()));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new CreateCredentialListOptions
+    /// </summary>
+    /// <param name="pathTrunkSid"> The SID of the Trunk to associate the credential list with </param>
+    /// <param name="credentialListSid"> The SID of the Credential List that you want to associate with the trunk </param>
+    public CreateCredentialListOptions(string pathTrunkSid, string credentialListSid)
+    {
+      PathTrunkSid = pathTrunkSid;
+      CredentialListSid = credentialListSid;
     }
 
     /// <summary>
-    /// ReadCredentialListOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadCredentialListOptions : ReadOptions<CredentialListResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Trunk from which to read the credential lists
-        /// </summary>
-        public string PathTrunkSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (CredentialListSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("CredentialListSid", CredentialListSid.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new ReadCredentialListOptions
-        /// </summary>
-        /// <param name="pathTrunkSid"> The SID of the Trunk from which to read the credential lists </param>
-        public ReadCredentialListOptions(string pathTrunkSid)
-        {
-            PathTrunkSid = pathTrunkSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+      return p;
     }
+  }
+
+  /// <summary>
+  /// ReadCredentialListOptions
+  /// </summary>
+  public class ReadCredentialListOptions : ReadOptions<CredentialListResource>
+  {
+    /// <summary>
+    /// The SID of the Trunk from which to read the credential lists
+    /// </summary>
+    public string PathTrunkSid { get; }
+
+    /// <summary>
+    /// Construct a new ReadCredentialListOptions
+    /// </summary>
+    /// <param name="pathTrunkSid"> The SID of the Trunk from which to read the credential lists </param>
+    public ReadCredentialListOptions(string pathTrunkSid)
+    {
+      PathTrunkSid = pathTrunkSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
 
 }

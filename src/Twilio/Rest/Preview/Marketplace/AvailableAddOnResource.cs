@@ -21,263 +21,263 @@ using Twilio.Http;
 namespace Twilio.Rest.Preview.Marketplace
 {
 
-    public class AvailableAddOnResource : Resource
+  public class AvailableAddOnResource : Resource
+  {
+    private static Request BuildFetchRequest(FetchAvailableAddOnOptions options, ITwilioRestClient client)
     {
-        private static Request BuildFetchRequest(FetchAvailableAddOnOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Get,
-                Rest.Domain.Preview,
-                "/marketplace/AvailableAddOns/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// Fetch an instance of an Add-on currently available to be installed.
-        /// </summary>
-        /// <param name="options"> Fetch AvailableAddOn parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of AvailableAddOn </returns>
-        public static AvailableAddOnResource Fetch(FetchAvailableAddOnOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Fetch an instance of an Add-on currently available to be installed.
-        /// </summary>
-        /// <param name="options"> Fetch AvailableAddOn parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of AvailableAddOn </returns>
-        public static async System.Threading.Tasks.Task<AvailableAddOnResource> FetchAsync(FetchAvailableAddOnOptions options,
-                                                                                           ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// Fetch an instance of an Add-on currently available to be installed.
-        /// </summary>
-        /// <param name="pathSid"> The SID of the AvailableAddOn resource to fetch </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of AvailableAddOn </returns>
-        public static AvailableAddOnResource Fetch(string pathSid, ITwilioRestClient client = null)
-        {
-            var options = new FetchAvailableAddOnOptions(pathSid);
-            return Fetch(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Fetch an instance of an Add-on currently available to be installed.
-        /// </summary>
-        /// <param name="pathSid"> The SID of the AvailableAddOn resource to fetch </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of AvailableAddOn </returns>
-        public static async System.Threading.Tasks.Task<AvailableAddOnResource> FetchAsync(string pathSid,
-                                                                                           ITwilioRestClient client = null)
-        {
-            var options = new FetchAvailableAddOnOptions(pathSid);
-            return await FetchAsync(options, client);
-        }
-        #endif
-
-        private static Request BuildReadRequest(ReadAvailableAddOnOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Get,
-                Rest.Domain.Preview,
-                "/marketplace/AvailableAddOns",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// Retrieve a list of Add-ons currently available to be installed.
-        /// </summary>
-        /// <param name="options"> Read AvailableAddOn parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of AvailableAddOn </returns>
-        public static ResourceSet<AvailableAddOnResource> Read(ReadAvailableAddOnOptions options,
-                                                               ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildReadRequest(options, client));
-
-            var page = Page<AvailableAddOnResource>.FromJson("available_add_ons", response.Content);
-            return new ResourceSet<AvailableAddOnResource>(page, options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Retrieve a list of Add-ons currently available to be installed.
-        /// </summary>
-        /// <param name="options"> Read AvailableAddOn parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of AvailableAddOn </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<AvailableAddOnResource>> ReadAsync(ReadAvailableAddOnOptions options,
-                                                                                                       ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
-
-            var page = Page<AvailableAddOnResource>.FromJson("available_add_ons", response.Content);
-            return new ResourceSet<AvailableAddOnResource>(page, options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Retrieve a list of Add-ons currently available to be installed.
-        /// </summary>
-        /// <param name="pageSize"> Page size </param>
-        /// <param name="limit"> Record limit </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of AvailableAddOn </returns>
-        public static ResourceSet<AvailableAddOnResource> Read(int? pageSize = null,
-                                                               long? limit = null,
-                                                               ITwilioRestClient client = null)
-        {
-            var options = new ReadAvailableAddOnOptions(){PageSize = pageSize, Limit = limit};
-            return Read(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Retrieve a list of Add-ons currently available to be installed.
-        /// </summary>
-        /// <param name="pageSize"> Page size </param>
-        /// <param name="limit"> Record limit </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of AvailableAddOn </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<AvailableAddOnResource>> ReadAsync(int? pageSize = null,
-                                                                                                       long? limit = null,
-                                                                                                       ITwilioRestClient client = null)
-        {
-            var options = new ReadAvailableAddOnOptions(){PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Fetch the target page of records
-        /// </summary>
-        /// <param name="targetUrl"> API-generated URL for the requested results page </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns>
-        public static Page<AvailableAddOnResource> GetPage(string targetUrl, ITwilioRestClient client)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-
-            var request = new Request(
-                HttpMethod.Get,
-                targetUrl
-            );
-
-            var response = client.Request(request);
-            return Page<AvailableAddOnResource>.FromJson("available_add_ons", response.Content);
-        }
-
-        /// <summary>
-        /// Fetch the next page of records
-        /// </summary>
-        /// <param name="page"> current page of records </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns>
-        public static Page<AvailableAddOnResource> NextPage(Page<AvailableAddOnResource> page, ITwilioRestClient client)
-        {
-            var request = new Request(
-                HttpMethod.Get,
-                page.GetNextPageUrl(Rest.Domain.Preview)
-            );
-
-            var response = client.Request(request);
-            return Page<AvailableAddOnResource>.FromJson("available_add_ons", response.Content);
-        }
-
-        /// <summary>
-        /// Fetch the previous page of records
-        /// </summary>
-        /// <param name="page"> current page of records </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns>
-        public static Page<AvailableAddOnResource> PreviousPage(Page<AvailableAddOnResource> page, ITwilioRestClient client)
-        {
-            var request = new Request(
-                HttpMethod.Get,
-                page.GetPreviousPageUrl(Rest.Domain.Preview)
-            );
-
-            var response = client.Request(request);
-            return Page<AvailableAddOnResource>.FromJson("available_add_ons", response.Content);
-        }
-
-        /// <summary>
-        /// Converts a JSON string into a AvailableAddOnResource object
-        /// </summary>
-        /// <param name="json"> Raw JSON string </param>
-        /// <returns> AvailableAddOnResource object represented by the provided JSON </returns>
-        public static AvailableAddOnResource FromJson(string json)
-        {
-            // Convert all checked exceptions to Runtime
-            try
-            {
-                return JsonConvert.DeserializeObject<AvailableAddOnResource>(json);
-            }
-            catch (JsonException e)
-            {
-                throw new ApiException(e.Message, e);
-            }
-        }
-
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        [JsonProperty("sid")]
-        public string Sid { get; private set; }
-        /// <summary>
-        /// The string that you assigned to describe the resource
-        /// </summary>
-        [JsonProperty("friendly_name")]
-        public string FriendlyName { get; private set; }
-        /// <summary>
-        /// A short description of the Add-on's functionality
-        /// </summary>
-        [JsonProperty("description")]
-        public string Description { get; private set; }
-        /// <summary>
-        /// How customers are charged for using this Add-on
-        /// </summary>
-        [JsonProperty("pricing_type")]
-        public string PricingType { get; private set; }
-        /// <summary>
-        /// The JSON object with the configuration that must be provided when installing a given Add-on
-        /// </summary>
-        [JsonProperty("configuration_schema")]
-        public object ConfigurationSchema { get; private set; }
-        /// <summary>
-        /// The absolute URL of the resource
-        /// </summary>
-        [JsonProperty("url")]
-        public Uri Url { get; private set; }
-        /// <summary>
-        /// The URLs of related resources
-        /// </summary>
-        [JsonProperty("links")]
-        public Dictionary<string, string> Links { get; private set; }
-
-        private AvailableAddOnResource()
-        {
-
-        }
+      return new Request(
+          HttpMethod.Get,
+          Rest.Domain.Preview,
+          "/marketplace/AvailableAddOns/" + options.PathSid + "",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
     }
+
+    /// <summary>
+    /// Fetch an instance of an Add-on currently available to be installed.
+    /// </summary>
+    /// <param name="options"> Fetch AvailableAddOn parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of AvailableAddOn </returns>
+    public static AvailableAddOnResource Fetch(FetchAvailableAddOnOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Fetch an instance of an Add-on currently available to be installed.
+    /// </summary>
+    /// <param name="options"> Fetch AvailableAddOn parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of AvailableAddOn </returns>
+    public static async System.Threading.Tasks.Task<AvailableAddOnResource> FetchAsync(FetchAvailableAddOnOptions options,
+                                                                                       ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// Fetch an instance of an Add-on currently available to be installed.
+    /// </summary>
+    /// <param name="pathSid"> The SID of the AvailableAddOn resource to fetch </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of AvailableAddOn </returns>
+    public static AvailableAddOnResource Fetch(string pathSid, ITwilioRestClient client = null)
+    {
+      var options = new FetchAvailableAddOnOptions(pathSid);
+      return Fetch(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Fetch an instance of an Add-on currently available to be installed.
+    /// </summary>
+    /// <param name="pathSid"> The SID of the AvailableAddOn resource to fetch </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of AvailableAddOn </returns>
+    public static async System.Threading.Tasks.Task<AvailableAddOnResource> FetchAsync(string pathSid,
+                                                                                       ITwilioRestClient client = null)
+    {
+      var options = new FetchAvailableAddOnOptions(pathSid);
+      return await FetchAsync(options, client);
+    }
+#endif
+
+    private static Request BuildReadRequest(ReadAvailableAddOnOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Get,
+          Rest.Domain.Preview,
+          "/marketplace/AvailableAddOns",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// Retrieve a list of Add-ons currently available to be installed.
+    /// </summary>
+    /// <param name="options"> Read AvailableAddOn parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of AvailableAddOn </returns>
+    public static ResourceSet<AvailableAddOnResource> Read(ReadAvailableAddOnOptions options,
+                                                           ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildReadRequest(options, client));
+
+      var page = Page<AvailableAddOnResource>.FromJson("available_add_ons", response.Content);
+      return new ResourceSet<AvailableAddOnResource>(page, options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Retrieve a list of Add-ons currently available to be installed.
+    /// </summary>
+    /// <param name="options"> Read AvailableAddOn parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of AvailableAddOn </returns>
+    public static async System.Threading.Tasks.Task<ResourceSet<AvailableAddOnResource>> ReadAsync(ReadAvailableAddOnOptions options,
+                                                                                                   ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+      var page = Page<AvailableAddOnResource>.FromJson("available_add_ons", response.Content);
+      return new ResourceSet<AvailableAddOnResource>(page, options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Retrieve a list of Add-ons currently available to be installed.
+    /// </summary>
+    /// <param name="pageSize"> Page size </param>
+    /// <param name="limit"> Record limit </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of AvailableAddOn </returns>
+    public static ResourceSet<AvailableAddOnResource> Read(int? pageSize = null,
+                                                           long? limit = null,
+                                                           ITwilioRestClient client = null)
+    {
+      var options = new ReadAvailableAddOnOptions() { PageSize = pageSize, Limit = limit };
+      return Read(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Retrieve a list of Add-ons currently available to be installed.
+    /// </summary>
+    /// <param name="pageSize"> Page size </param>
+    /// <param name="limit"> Record limit </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of AvailableAddOn </returns>
+    public static async System.Threading.Tasks.Task<ResourceSet<AvailableAddOnResource>> ReadAsync(int? pageSize = null,
+                                                                                                   long? limit = null,
+                                                                                                   ITwilioRestClient client = null)
+    {
+      var options = new ReadAvailableAddOnOptions() { PageSize = pageSize, Limit = limit };
+      return await ReadAsync(options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Fetch the target page of records
+    /// </summary>
+    /// <param name="targetUrl"> API-generated URL for the requested results page </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> The target page of records </returns>
+    public static Page<AvailableAddOnResource> GetPage(string targetUrl, ITwilioRestClient client)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+
+      var request = new Request(
+          HttpMethod.Get,
+          targetUrl
+      );
+
+      var response = client.Request(request);
+      return Page<AvailableAddOnResource>.FromJson("available_add_ons", response.Content);
+    }
+
+    /// <summary>
+    /// Fetch the next page of records
+    /// </summary>
+    /// <param name="page"> current page of records </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> The next page of records </returns>
+    public static Page<AvailableAddOnResource> NextPage(Page<AvailableAddOnResource> page, ITwilioRestClient client)
+    {
+      var request = new Request(
+          HttpMethod.Get,
+          page.GetNextPageUrl(Rest.Domain.Preview)
+      );
+
+      var response = client.Request(request);
+      return Page<AvailableAddOnResource>.FromJson("available_add_ons", response.Content);
+    }
+
+    /// <summary>
+    /// Fetch the previous page of records
+    /// </summary>
+    /// <param name="page"> current page of records </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> The previous page of records </returns>
+    public static Page<AvailableAddOnResource> PreviousPage(Page<AvailableAddOnResource> page, ITwilioRestClient client)
+    {
+      var request = new Request(
+          HttpMethod.Get,
+          page.GetPreviousPageUrl(Rest.Domain.Preview)
+      );
+
+      var response = client.Request(request);
+      return Page<AvailableAddOnResource>.FromJson("available_add_ons", response.Content);
+    }
+
+    /// <summary>
+    /// Converts a JSON string into a AvailableAddOnResource object
+    /// </summary>
+    /// <param name="json"> Raw JSON string </param>
+    /// <returns> AvailableAddOnResource object represented by the provided JSON </returns>
+    public static AvailableAddOnResource FromJson(string json)
+    {
+      // Convert all checked exceptions to Runtime
+      try
+      {
+        return JsonConvert.DeserializeObject<AvailableAddOnResource>(json);
+      }
+      catch (JsonException e)
+      {
+        throw new ApiException(e.Message, e);
+      }
+    }
+
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    [JsonProperty("sid")]
+    public string Sid { get; private set; }
+    /// <summary>
+    /// The string that you assigned to describe the resource
+    /// </summary>
+    [JsonProperty("friendly_name")]
+    public string FriendlyName { get; private set; }
+    /// <summary>
+    /// A short description of the Add-on's functionality
+    /// </summary>
+    [JsonProperty("description")]
+    public string Description { get; private set; }
+    /// <summary>
+    /// How customers are charged for using this Add-on
+    /// </summary>
+    [JsonProperty("pricing_type")]
+    public string PricingType { get; private set; }
+    /// <summary>
+    /// The JSON object with the configuration that must be provided when installing a given Add-on
+    /// </summary>
+    [JsonProperty("configuration_schema")]
+    public object ConfigurationSchema { get; private set; }
+    /// <summary>
+    /// The absolute URL of the resource
+    /// </summary>
+    [JsonProperty("url")]
+    public Uri Url { get; private set; }
+    /// <summary>
+    /// The URLs of related resources
+    /// </summary>
+    [JsonProperty("links")]
+    public Dictionary<string, string> Links { get; private set; }
+
+    private AvailableAddOnResource()
+    {
+
+    }
+  }
 
 }

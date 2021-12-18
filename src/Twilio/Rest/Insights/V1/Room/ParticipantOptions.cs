@@ -11,77 +11,77 @@ using Twilio.Converters;
 namespace Twilio.Rest.Insights.V1.Room
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Get Video Log Analyzer data for a Room Participant.
+  /// </summary>
+  public class FetchParticipantOptions : IOptions<ParticipantResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Get Video Log Analyzer data for a Room Participant.
+    /// The SID of the Room resource.
     /// </summary>
-    public class FetchParticipantOptions : IOptions<ParticipantResource>
+    public string PathRoomSid { get; }
+    /// <summary>
+    /// The SID of the Participant resource.
+    /// </summary>
+    public string PathParticipantSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchParticipantOptions
+    /// </summary>
+    /// <param name="pathRoomSid"> The SID of the Room resource. </param>
+    /// <param name="pathParticipantSid"> The SID of the Participant resource. </param>
+    public FetchParticipantOptions(string pathRoomSid, string pathParticipantSid)
     {
-        /// <summary>
-        /// The SID of the Room resource.
-        /// </summary>
-        public string PathRoomSid { get; }
-        /// <summary>
-        /// The SID of the Participant resource.
-        /// </summary>
-        public string PathParticipantSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchParticipantOptions
-        /// </summary>
-        /// <param name="pathRoomSid"> The SID of the Room resource. </param>
-        /// <param name="pathParticipantSid"> The SID of the Participant resource. </param>
-        public FetchParticipantOptions(string pathRoomSid, string pathParticipantSid)
-        {
-            PathRoomSid = pathRoomSid;
-            PathParticipantSid = pathParticipantSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathRoomSid = pathRoomSid;
+      PathParticipantSid = pathParticipantSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Get a list of room participants.
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadParticipantOptions : ReadOptions<ParticipantResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Room resource.
-        /// </summary>
-        public string PathRoomSid { get; }
-
-        /// <summary>
-        /// Construct a new ReadParticipantOptions
-        /// </summary>
-        /// <param name="pathRoomSid"> The SID of the Room resource. </param>
-        public ReadParticipantOptions(string pathRoomSid)
-        {
-            PathRoomSid = pathRoomSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
+
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Get a list of room participants.
+  /// </summary>
+  public class ReadParticipantOptions : ReadOptions<ParticipantResource>
+  {
+    /// <summary>
+    /// The SID of the Room resource.
+    /// </summary>
+    public string PathRoomSid { get; }
+
+    /// <summary>
+    /// Construct a new ReadParticipantOptions
+    /// </summary>
+    /// <param name="pathRoomSid"> The SID of the Room resource. </param>
+    public ReadParticipantOptions(string pathRoomSid)
+    {
+      PathRoomSid = pathRoomSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
 
 }

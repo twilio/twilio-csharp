@@ -11,130 +11,130 @@ using Twilio.Converters;
 namespace Twilio.Rest.Bulkexports.V1.Export
 {
 
+  /// <summary>
+  /// ReadExportCustomJobOptions
+  /// </summary>
+  public class ReadExportCustomJobOptions : ReadOptions<ExportCustomJobResource>
+  {
     /// <summary>
-    /// ReadExportCustomJobOptions
+    /// The type of communication – Messages, Calls, Conferences, and Participants
     /// </summary>
-    public class ReadExportCustomJobOptions : ReadOptions<ExportCustomJobResource>
+    public string PathResourceType { get; }
+
+    /// <summary>
+    /// Construct a new ReadExportCustomJobOptions
+    /// </summary>
+    /// <param name="pathResourceType"> The type of communication – Messages, Calls, Conferences, and Participants </param>
+    public ReadExportCustomJobOptions(string pathResourceType)
     {
-        /// <summary>
-        /// The type of communication – Messages, Calls, Conferences, and Participants
-        /// </summary>
-        public string PathResourceType { get; }
-
-        /// <summary>
-        /// Construct a new ReadExportCustomJobOptions
-        /// </summary>
-        /// <param name="pathResourceType"> The type of communication – Messages, Calls, Conferences, and Participants </param>
-        public ReadExportCustomJobOptions(string pathResourceType)
-        {
-            PathResourceType = pathResourceType;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+      PathResourceType = pathResourceType;
     }
 
     /// <summary>
-    /// CreateExportCustomJobOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class CreateExportCustomJobOptions : IOptions<ExportCustomJobResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The type of communication – Messages or Calls, Conferences, and Participants
-        /// </summary>
-        public string PathResourceType { get; }
-        /// <summary>
-        /// The start day for the custom export specified as a string in the format of yyyy-mm-dd
-        /// </summary>
-        public string StartDay { get; }
-        /// <summary>
-        /// The end day for the custom export specified as a string in the format of yyyy-mm-dd. End day is inclusive and must be 2 days earlier than the current UTC day.
-        /// </summary>
-        public string EndDay { get; }
-        /// <summary>
-        /// The friendly name specified when creating the job
-        /// </summary>
-        public string FriendlyName { get; }
-        /// <summary>
-        /// The optional webhook url called on completion of the job. If this is supplied, `WebhookMethod` must also be supplied.
-        /// </summary>
-        public string WebhookUrl { get; set; }
-        /// <summary>
-        /// This is the method used to call the webhook on completion of the job. If this is supplied, `WebhookUrl` must also be supplied.
-        /// </summary>
-        public string WebhookMethod { get; set; }
-        /// <summary>
-        /// The optional email to send the completion notification to
-        /// </summary>
-        public string Email { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new CreateExportCustomJobOptions
-        /// </summary>
-        /// <param name="pathResourceType"> The type of communication – Messages or Calls, Conferences, and Participants
-        ///                        </param>
-        /// <param name="startDay"> The start day for the custom export specified as a string in the format of yyyy-mm-dd
-        ///                </param>
-        /// <param name="endDay"> The end day for the custom export specified as a string in the format of yyyy-mm-dd. End day
-        ///              is inclusive and must be 2 days earlier than the current UTC day. </param>
-        /// <param name="friendlyName"> The friendly name specified when creating the job </param>
-        public CreateExportCustomJobOptions(string pathResourceType, string startDay, string endDay, string friendlyName)
-        {
-            PathResourceType = pathResourceType;
-            StartDay = startDay;
-            EndDay = endDay;
-            FriendlyName = friendlyName;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (StartDay != null)
-            {
-                p.Add(new KeyValuePair<string, string>("StartDay", StartDay));
-            }
-
-            if (EndDay != null)
-            {
-                p.Add(new KeyValuePair<string, string>("EndDay", EndDay));
-            }
-
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
-
-            if (WebhookUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("WebhookUrl", WebhookUrl));
-            }
-
-            if (WebhookMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("WebhookMethod", WebhookMethod));
-            }
-
-            if (Email != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Email", Email));
-            }
-
-            return p;
-        }
+      return p;
     }
+  }
+
+  /// <summary>
+  /// CreateExportCustomJobOptions
+  /// </summary>
+  public class CreateExportCustomJobOptions : IOptions<ExportCustomJobResource>
+  {
+    /// <summary>
+    /// The type of communication – Messages or Calls, Conferences, and Participants
+    /// </summary>
+    public string PathResourceType { get; }
+    /// <summary>
+    /// The start day for the custom export specified as a string in the format of yyyy-mm-dd
+    /// </summary>
+    public string StartDay { get; }
+    /// <summary>
+    /// The end day for the custom export specified as a string in the format of yyyy-mm-dd. End day is inclusive and must be 2 days earlier than the current UTC day.
+    /// </summary>
+    public string EndDay { get; }
+    /// <summary>
+    /// The friendly name specified when creating the job
+    /// </summary>
+    public string FriendlyName { get; }
+    /// <summary>
+    /// The optional webhook url called on completion of the job. If this is supplied, `WebhookMethod` must also be supplied.
+    /// </summary>
+    public string WebhookUrl { get; set; }
+    /// <summary>
+    /// This is the method used to call the webhook on completion of the job. If this is supplied, `WebhookUrl` must also be supplied.
+    /// </summary>
+    public string WebhookMethod { get; set; }
+    /// <summary>
+    /// The optional email to send the completion notification to
+    /// </summary>
+    public string Email { get; set; }
+
+    /// <summary>
+    /// Construct a new CreateExportCustomJobOptions
+    /// </summary>
+    /// <param name="pathResourceType"> The type of communication – Messages or Calls, Conferences, and Participants
+    ///                        </param>
+    /// <param name="startDay"> The start day for the custom export specified as a string in the format of yyyy-mm-dd
+    ///                </param>
+    /// <param name="endDay"> The end day for the custom export specified as a string in the format of yyyy-mm-dd. End day
+    ///              is inclusive and must be 2 days earlier than the current UTC day. </param>
+    /// <param name="friendlyName"> The friendly name specified when creating the job </param>
+    public CreateExportCustomJobOptions(string pathResourceType, string startDay, string endDay, string friendlyName)
+    {
+      PathResourceType = pathResourceType;
+      StartDay = startDay;
+      EndDay = endDay;
+      FriendlyName = friendlyName;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (StartDay != null)
+      {
+        p.Add(new KeyValuePair<string, string>("StartDay", StartDay));
+      }
+
+      if (EndDay != null)
+      {
+        p.Add(new KeyValuePair<string, string>("EndDay", EndDay));
+      }
+
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
+
+      if (WebhookUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("WebhookUrl", WebhookUrl));
+      }
+
+      if (WebhookMethod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("WebhookMethod", WebhookMethod));
+      }
+
+      if (Email != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Email", Email));
+      }
+
+      return p;
+    }
+  }
 
 }

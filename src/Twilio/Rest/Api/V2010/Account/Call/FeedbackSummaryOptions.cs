@@ -11,146 +11,146 @@ using Twilio.Converters;
 namespace Twilio.Rest.Api.V2010.Account.Call
 {
 
+  /// <summary>
+  /// Create a FeedbackSummary resource for a call
+  /// </summary>
+  public class CreateFeedbackSummaryOptions : IOptions<FeedbackSummaryResource>
+  {
     /// <summary>
-    /// Create a FeedbackSummary resource for a call
+    /// The unique sid that identifies this account
     /// </summary>
-    public class CreateFeedbackSummaryOptions : IOptions<FeedbackSummaryResource>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// Only include feedback given on or after this date
+    /// </summary>
+    public DateTime? StartDate { get; }
+    /// <summary>
+    /// Only include feedback given on or before this date
+    /// </summary>
+    public DateTime? EndDate { get; }
+    /// <summary>
+    /// `true` includes feedback from the specified account and its subaccounts
+    /// </summary>
+    public bool? IncludeSubaccounts { get; set; }
+    /// <summary>
+    /// The URL that we will request when the feedback summary is complete
+    /// </summary>
+    public Uri StatusCallback { get; set; }
+    /// <summary>
+    /// The HTTP method we use to make requests to the StatusCallback URL
+    /// </summary>
+    public Twilio.Http.HttpMethod StatusCallbackMethod { get; set; }
+
+    /// <summary>
+    /// Construct a new CreateFeedbackSummaryOptions
+    /// </summary>
+    /// <param name="startDate"> Only include feedback given on or after this date </param>
+    /// <param name="endDate"> Only include feedback given on or before this date </param>
+    public CreateFeedbackSummaryOptions(DateTime? startDate, DateTime? endDate)
     {
-        /// <summary>
-        /// The unique sid that identifies this account
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// Only include feedback given on or after this date
-        /// </summary>
-        public DateTime? StartDate { get; }
-        /// <summary>
-        /// Only include feedback given on or before this date
-        /// </summary>
-        public DateTime? EndDate { get; }
-        /// <summary>
-        /// `true` includes feedback from the specified account and its subaccounts
-        /// </summary>
-        public bool? IncludeSubaccounts { get; set; }
-        /// <summary>
-        /// The URL that we will request when the feedback summary is complete
-        /// </summary>
-        public Uri StatusCallback { get; set; }
-        /// <summary>
-        /// The HTTP method we use to make requests to the StatusCallback URL
-        /// </summary>
-        public Twilio.Http.HttpMethod StatusCallbackMethod { get; set; }
-
-        /// <summary>
-        /// Construct a new CreateFeedbackSummaryOptions
-        /// </summary>
-        /// <param name="startDate"> Only include feedback given on or after this date </param>
-        /// <param name="endDate"> Only include feedback given on or before this date </param>
-        public CreateFeedbackSummaryOptions(DateTime? startDate, DateTime? endDate)
-        {
-            StartDate = startDate;
-            EndDate = endDate;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (StartDate != null)
-            {
-                p.Add(new KeyValuePair<string, string>("StartDate", StartDate.Value.ToString("yyyy-MM-dd")));
-            }
-
-            if (EndDate != null)
-            {
-                p.Add(new KeyValuePair<string, string>("EndDate", EndDate.Value.ToString("yyyy-MM-dd")));
-            }
-
-            if (IncludeSubaccounts != null)
-            {
-                p.Add(new KeyValuePair<string, string>("IncludeSubaccounts", IncludeSubaccounts.Value.ToString().ToLower()));
-            }
-
-            if (StatusCallback != null)
-            {
-                p.Add(new KeyValuePair<string, string>("StatusCallback", Serializers.Url(StatusCallback)));
-            }
-
-            if (StatusCallbackMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("StatusCallbackMethod", StatusCallbackMethod.ToString()));
-            }
-
-            return p;
-        }
+      StartDate = startDate;
+      EndDate = endDate;
     }
 
     /// <summary>
-    /// Fetch a FeedbackSummary resource from a call
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchFeedbackSummaryOptions : IOptions<FeedbackSummaryResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique sid that identifies this account
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// A string that uniquely identifies this feedback summary resource
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (StartDate != null)
+      {
+        p.Add(new KeyValuePair<string, string>("StartDate", StartDate.Value.ToString("yyyy-MM-dd")));
+      }
 
-        /// <summary>
-        /// Construct a new FetchFeedbackSummaryOptions
-        /// </summary>
-        /// <param name="pathSid"> A string that uniquely identifies this feedback summary resource </param>
-        public FetchFeedbackSummaryOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
+      if (EndDate != null)
+      {
+        p.Add(new KeyValuePair<string, string>("EndDate", EndDate.Value.ToString("yyyy-MM-dd")));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      if (IncludeSubaccounts != null)
+      {
+        p.Add(new KeyValuePair<string, string>("IncludeSubaccounts", IncludeSubaccounts.Value.ToString().ToLower()));
+      }
+
+      if (StatusCallback != null)
+      {
+        p.Add(new KeyValuePair<string, string>("StatusCallback", Serializers.Url(StatusCallback)));
+      }
+
+      if (StatusCallbackMethod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("StatusCallbackMethod", StatusCallbackMethod.ToString()));
+      }
+
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// Fetch a FeedbackSummary resource from a call
+  /// </summary>
+  public class FetchFeedbackSummaryOptions : IOptions<FeedbackSummaryResource>
+  {
+    /// <summary>
+    /// The unique sid that identifies this account
+    /// </summary>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// A string that uniquely identifies this feedback summary resource
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchFeedbackSummaryOptions
+    /// </summary>
+    /// <param name="pathSid"> A string that uniquely identifies this feedback summary resource </param>
+    public FetchFeedbackSummaryOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Delete a FeedbackSummary resource from a call
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteFeedbackSummaryOptions : IOptions<FeedbackSummaryResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique sid that identifies this account
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// A string that uniquely identifies this feedback summary resource
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new DeleteFeedbackSummaryOptions
-        /// </summary>
-        /// <param name="pathSid"> A string that uniquely identifies this feedback summary resource </param>
-        public DeleteFeedbackSummaryOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
+
+  /// <summary>
+  /// Delete a FeedbackSummary resource from a call
+  /// </summary>
+  public class DeleteFeedbackSummaryOptions : IOptions<FeedbackSummaryResource>
+  {
+    /// <summary>
+    /// The unique sid that identifies this account
+    /// </summary>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// A string that uniquely identifies this feedback summary resource
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new DeleteFeedbackSummaryOptions
+    /// </summary>
+    /// <param name="pathSid"> A string that uniquely identifies this feedback summary resource </param>
+    public DeleteFeedbackSummaryOptions(string pathSid)
+    {
+      PathSid = pathSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
 }

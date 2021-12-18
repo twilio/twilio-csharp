@@ -11,204 +11,204 @@ using Twilio.Converters;
 namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
 {
 
+  /// <summary>
+  /// ReadLocalOptions
+  /// </summary>
+  public class ReadLocalOptions : ReadOptions<LocalResource>
+  {
     /// <summary>
-    /// ReadLocalOptions
+    /// The SID of the Account requesting the AvailablePhoneNumber resources
     /// </summary>
-    public class ReadLocalOptions : ReadOptions<LocalResource>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The ISO Country code of the country from which to read phone numbers
+    /// </summary>
+    public string PathCountryCode { get; }
+    /// <summary>
+    /// The area code of the phone numbers to read
+    /// </summary>
+    public int? AreaCode { get; set; }
+    /// <summary>
+    /// The pattern on which to match phone numbers
+    /// </summary>
+    public string Contains { get; set; }
+    /// <summary>
+    /// Whether the phone numbers can receive text messages
+    /// </summary>
+    public bool? SmsEnabled { get; set; }
+    /// <summary>
+    /// Whether the phone numbers can receive MMS messages
+    /// </summary>
+    public bool? MmsEnabled { get; set; }
+    /// <summary>
+    /// Whether the phone numbers can receive calls.
+    /// </summary>
+    public bool? VoiceEnabled { get; set; }
+    /// <summary>
+    /// Whether to exclude phone numbers that require an Address
+    /// </summary>
+    public bool? ExcludeAllAddressRequired { get; set; }
+    /// <summary>
+    /// Whether to exclude phone numbers that require a local address
+    /// </summary>
+    public bool? ExcludeLocalAddressRequired { get; set; }
+    /// <summary>
+    /// Whether to exclude phone numbers that require a foreign address
+    /// </summary>
+    public bool? ExcludeForeignAddressRequired { get; set; }
+    /// <summary>
+    /// Whether to read phone numbers new to the Twilio platform
+    /// </summary>
+    public bool? Beta { get; set; }
+    /// <summary>
+    /// Given a phone number, find a geographically close number within distance miles. (US/Canada only)
+    /// </summary>
+    public Types.PhoneNumber NearNumber { get; set; }
+    /// <summary>
+    /// Given a latitude/longitude pair lat,long find geographically close numbers within distance miles. (US/Canada only)
+    /// </summary>
+    public string NearLatLong { get; set; }
+    /// <summary>
+    /// The search radius, in miles, for a near_ query. (US/Canada only)
+    /// </summary>
+    public int? Distance { get; set; }
+    /// <summary>
+    /// Limit results to a particular postal code. (US/Canada only)
+    /// </summary>
+    public string InPostalCode { get; set; }
+    /// <summary>
+    /// Limit results to a particular region. (US/Canada only)
+    /// </summary>
+    public string InRegion { get; set; }
+    /// <summary>
+    /// Limit results to a specific rate center, or given a phone number search within the same rate center as that number. (US/Canada only)
+    /// </summary>
+    public string InRateCenter { get; set; }
+    /// <summary>
+    /// Limit results to a specific local access and transport area. (US/Canada only)
+    /// </summary>
+    public string InLata { get; set; }
+    /// <summary>
+    /// Limit results to a particular locality
+    /// </summary>
+    public string InLocality { get; set; }
+    /// <summary>
+    /// Whether the phone numbers can receive faxes
+    /// </summary>
+    public bool? FaxEnabled { get; set; }
+
+    /// <summary>
+    /// Construct a new ReadLocalOptions
+    /// </summary>
+    /// <param name="pathCountryCode"> The ISO Country code of the country from which to read phone numbers </param>
+    public ReadLocalOptions(string pathCountryCode)
     {
-        /// <summary>
-        /// The SID of the Account requesting the AvailablePhoneNumber resources
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The ISO Country code of the country from which to read phone numbers
-        /// </summary>
-        public string PathCountryCode { get; }
-        /// <summary>
-        /// The area code of the phone numbers to read
-        /// </summary>
-        public int? AreaCode { get; set; }
-        /// <summary>
-        /// The pattern on which to match phone numbers
-        /// </summary>
-        public string Contains { get; set; }
-        /// <summary>
-        /// Whether the phone numbers can receive text messages
-        /// </summary>
-        public bool? SmsEnabled { get; set; }
-        /// <summary>
-        /// Whether the phone numbers can receive MMS messages
-        /// </summary>
-        public bool? MmsEnabled { get; set; }
-        /// <summary>
-        /// Whether the phone numbers can receive calls.
-        /// </summary>
-        public bool? VoiceEnabled { get; set; }
-        /// <summary>
-        /// Whether to exclude phone numbers that require an Address
-        /// </summary>
-        public bool? ExcludeAllAddressRequired { get; set; }
-        /// <summary>
-        /// Whether to exclude phone numbers that require a local address
-        /// </summary>
-        public bool? ExcludeLocalAddressRequired { get; set; }
-        /// <summary>
-        /// Whether to exclude phone numbers that require a foreign address
-        /// </summary>
-        public bool? ExcludeForeignAddressRequired { get; set; }
-        /// <summary>
-        /// Whether to read phone numbers new to the Twilio platform
-        /// </summary>
-        public bool? Beta { get; set; }
-        /// <summary>
-        /// Given a phone number, find a geographically close number within distance miles. (US/Canada only)
-        /// </summary>
-        public Types.PhoneNumber NearNumber { get; set; }
-        /// <summary>
-        /// Given a latitude/longitude pair lat,long find geographically close numbers within distance miles. (US/Canada only)
-        /// </summary>
-        public string NearLatLong { get; set; }
-        /// <summary>
-        /// The search radius, in miles, for a near_ query. (US/Canada only)
-        /// </summary>
-        public int? Distance { get; set; }
-        /// <summary>
-        /// Limit results to a particular postal code. (US/Canada only)
-        /// </summary>
-        public string InPostalCode { get; set; }
-        /// <summary>
-        /// Limit results to a particular region. (US/Canada only)
-        /// </summary>
-        public string InRegion { get; set; }
-        /// <summary>
-        /// Limit results to a specific rate center, or given a phone number search within the same rate center as that number. (US/Canada only)
-        /// </summary>
-        public string InRateCenter { get; set; }
-        /// <summary>
-        /// Limit results to a specific local access and transport area. (US/Canada only)
-        /// </summary>
-        public string InLata { get; set; }
-        /// <summary>
-        /// Limit results to a particular locality
-        /// </summary>
-        public string InLocality { get; set; }
-        /// <summary>
-        /// Whether the phone numbers can receive faxes
-        /// </summary>
-        public bool? FaxEnabled { get; set; }
-
-        /// <summary>
-        /// Construct a new ReadLocalOptions
-        /// </summary>
-        /// <param name="pathCountryCode"> The ISO Country code of the country from which to read phone numbers </param>
-        public ReadLocalOptions(string pathCountryCode)
-        {
-            PathCountryCode = pathCountryCode;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (AreaCode != null)
-            {
-                p.Add(new KeyValuePair<string, string>("AreaCode", AreaCode.ToString()));
-            }
-
-            if (Contains != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Contains", Contains));
-            }
-
-            if (SmsEnabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("SmsEnabled", SmsEnabled.Value.ToString().ToLower()));
-            }
-
-            if (MmsEnabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("MmsEnabled", MmsEnabled.Value.ToString().ToLower()));
-            }
-
-            if (VoiceEnabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("VoiceEnabled", VoiceEnabled.Value.ToString().ToLower()));
-            }
-
-            if (ExcludeAllAddressRequired != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ExcludeAllAddressRequired", ExcludeAllAddressRequired.Value.ToString().ToLower()));
-            }
-
-            if (ExcludeLocalAddressRequired != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ExcludeLocalAddressRequired", ExcludeLocalAddressRequired.Value.ToString().ToLower()));
-            }
-
-            if (ExcludeForeignAddressRequired != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ExcludeForeignAddressRequired", ExcludeForeignAddressRequired.Value.ToString().ToLower()));
-            }
-
-            if (Beta != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Beta", Beta.Value.ToString().ToLower()));
-            }
-
-            if (NearNumber != null)
-            {
-                p.Add(new KeyValuePair<string, string>("NearNumber", NearNumber.ToString()));
-            }
-
-            if (NearLatLong != null)
-            {
-                p.Add(new KeyValuePair<string, string>("NearLatLong", NearLatLong));
-            }
-
-            if (Distance != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Distance", Distance.ToString()));
-            }
-
-            if (InPostalCode != null)
-            {
-                p.Add(new KeyValuePair<string, string>("InPostalCode", InPostalCode));
-            }
-
-            if (InRegion != null)
-            {
-                p.Add(new KeyValuePair<string, string>("InRegion", InRegion));
-            }
-
-            if (InRateCenter != null)
-            {
-                p.Add(new KeyValuePair<string, string>("InRateCenter", InRateCenter));
-            }
-
-            if (InLata != null)
-            {
-                p.Add(new KeyValuePair<string, string>("InLata", InLata));
-            }
-
-            if (InLocality != null)
-            {
-                p.Add(new KeyValuePair<string, string>("InLocality", InLocality));
-            }
-
-            if (FaxEnabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FaxEnabled", FaxEnabled.Value.ToString().ToLower()));
-            }
-
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+      PathCountryCode = pathCountryCode;
     }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (AreaCode != null)
+      {
+        p.Add(new KeyValuePair<string, string>("AreaCode", AreaCode.ToString()));
+      }
+
+      if (Contains != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Contains", Contains));
+      }
+
+      if (SmsEnabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("SmsEnabled", SmsEnabled.Value.ToString().ToLower()));
+      }
+
+      if (MmsEnabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("MmsEnabled", MmsEnabled.Value.ToString().ToLower()));
+      }
+
+      if (VoiceEnabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("VoiceEnabled", VoiceEnabled.Value.ToString().ToLower()));
+      }
+
+      if (ExcludeAllAddressRequired != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ExcludeAllAddressRequired", ExcludeAllAddressRequired.Value.ToString().ToLower()));
+      }
+
+      if (ExcludeLocalAddressRequired != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ExcludeLocalAddressRequired", ExcludeLocalAddressRequired.Value.ToString().ToLower()));
+      }
+
+      if (ExcludeForeignAddressRequired != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ExcludeForeignAddressRequired", ExcludeForeignAddressRequired.Value.ToString().ToLower()));
+      }
+
+      if (Beta != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Beta", Beta.Value.ToString().ToLower()));
+      }
+
+      if (NearNumber != null)
+      {
+        p.Add(new KeyValuePair<string, string>("NearNumber", NearNumber.ToString()));
+      }
+
+      if (NearLatLong != null)
+      {
+        p.Add(new KeyValuePair<string, string>("NearLatLong", NearLatLong));
+      }
+
+      if (Distance != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Distance", Distance.ToString()));
+      }
+
+      if (InPostalCode != null)
+      {
+        p.Add(new KeyValuePair<string, string>("InPostalCode", InPostalCode));
+      }
+
+      if (InRegion != null)
+      {
+        p.Add(new KeyValuePair<string, string>("InRegion", InRegion));
+      }
+
+      if (InRateCenter != null)
+      {
+        p.Add(new KeyValuePair<string, string>("InRateCenter", InRateCenter));
+      }
+
+      if (InLata != null)
+      {
+        p.Add(new KeyValuePair<string, string>("InLata", InLata));
+      }
+
+      if (InLocality != null)
+      {
+        p.Add(new KeyValuePair<string, string>("InLocality", InLocality));
+      }
+
+      if (FaxEnabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FaxEnabled", FaxEnabled.Value.ToString().ToLower()));
+      }
+
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
 
 }

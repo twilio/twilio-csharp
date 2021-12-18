@@ -11,207 +11,207 @@ using Twilio.Converters;
 namespace Twilio.Rest.Wireless.V1
 {
 
+  /// <summary>
+  /// Fetch a Command instance from your account.
+  /// </summary>
+  public class FetchCommandOptions : IOptions<CommandResource>
+  {
     /// <summary>
-    /// Fetch a Command instance from your account.
+    /// The SID that identifies the resource to fetch
     /// </summary>
-    public class FetchCommandOptions : IOptions<CommandResource>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchCommandOptions
+    /// </summary>
+    /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
+    public FetchCommandOptions(string pathSid)
     {
-        /// <summary>
-        /// The SID that identifies the resource to fetch
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchCommandOptions
-        /// </summary>
-        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
-        public FetchCommandOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Retrieve a list of Commands from your account.
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadCommandOptions : ReadOptions<CommandResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The sid or unique_name of the Sim resources to read
-        /// </summary>
-        public string Sim { get; set; }
-        /// <summary>
-        /// The status of the resources to read
-        /// </summary>
-        public CommandResource.StatusEnum Status { get; set; }
-        /// <summary>
-        /// Only return Commands with this direction value
-        /// </summary>
-        public CommandResource.DirectionEnum Direction { get; set; }
-        /// <summary>
-        /// Only return Commands with this transport value
-        /// </summary>
-        public CommandResource.TransportEnum Transport { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Sim != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Sim", Sim));
-            }
+  /// <summary>
+  /// Retrieve a list of Commands from your account.
+  /// </summary>
+  public class ReadCommandOptions : ReadOptions<CommandResource>
+  {
+    /// <summary>
+    /// The sid or unique_name of the Sim resources to read
+    /// </summary>
+    public string Sim { get; set; }
+    /// <summary>
+    /// The status of the resources to read
+    /// </summary>
+    public CommandResource.StatusEnum Status { get; set; }
+    /// <summary>
+    /// Only return Commands with this direction value
+    /// </summary>
+    public CommandResource.DirectionEnum Direction { get; set; }
+    /// <summary>
+    /// Only return Commands with this transport value
+    /// </summary>
+    public CommandResource.TransportEnum Transport { get; set; }
 
-            if (Status != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
-            }
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (Sim != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Sim", Sim));
+      }
 
-            if (Direction != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Direction", Direction.ToString()));
-            }
+      if (Status != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
+      }
 
-            if (Transport != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Transport", Transport.ToString()));
-            }
+      if (Direction != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Direction", Direction.ToString()));
+      }
 
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
+      if (Transport != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Transport", Transport.ToString()));
+      }
 
-            return p;
-        }
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// Send a Command to a Sim.
+  /// </summary>
+  public class CreateCommandOptions : IOptions<CommandResource>
+  {
+    /// <summary>
+    /// The message body of the Command or a Base64 encoded byte string in binary mode
+    /// </summary>
+    public string Command { get; }
+    /// <summary>
+    /// The sid or unique_name of the SIM to send the Command to
+    /// </summary>
+    public string Sim { get; set; }
+    /// <summary>
+    /// The HTTP method we use to call callback_url
+    /// </summary>
+    public Twilio.Http.HttpMethod CallbackMethod { get; set; }
+    /// <summary>
+    /// he URL we call when the Command has finished sending
+    /// </summary>
+    public Uri CallbackUrl { get; set; }
+    /// <summary>
+    /// The mode to use when sending the SMS message
+    /// </summary>
+    public CommandResource.CommandModeEnum CommandMode { get; set; }
+    /// <summary>
+    /// Whether to include the SID of the command in the message body
+    /// </summary>
+    public string IncludeSid { get; set; }
+    /// <summary>
+    /// Whether to request delivery receipt from the recipient
+    /// </summary>
+    public bool? DeliveryReceiptRequested { get; set; }
+
+    /// <summary>
+    /// Construct a new CreateCommandOptions
+    /// </summary>
+    /// <param name="command"> The message body of the Command or a Base64 encoded byte string in binary mode </param>
+    public CreateCommandOptions(string command)
+    {
+      Command = command;
     }
 
     /// <summary>
-    /// Send a Command to a Sim.
+    /// Generate the necessary parameters
     /// </summary>
-    public class CreateCommandOptions : IOptions<CommandResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The message body of the Command or a Base64 encoded byte string in binary mode
-        /// </summary>
-        public string Command { get; }
-        /// <summary>
-        /// The sid or unique_name of the SIM to send the Command to
-        /// </summary>
-        public string Sim { get; set; }
-        /// <summary>
-        /// The HTTP method we use to call callback_url
-        /// </summary>
-        public Twilio.Http.HttpMethod CallbackMethod { get; set; }
-        /// <summary>
-        /// he URL we call when the Command has finished sending
-        /// </summary>
-        public Uri CallbackUrl { get; set; }
-        /// <summary>
-        /// The mode to use when sending the SMS message
-        /// </summary>
-        public CommandResource.CommandModeEnum CommandMode { get; set; }
-        /// <summary>
-        /// Whether to include the SID of the command in the message body
-        /// </summary>
-        public string IncludeSid { get; set; }
-        /// <summary>
-        /// Whether to request delivery receipt from the recipient
-        /// </summary>
-        public bool? DeliveryReceiptRequested { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (Command != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Command", Command));
+      }
 
-        /// <summary>
-        /// Construct a new CreateCommandOptions
-        /// </summary>
-        /// <param name="command"> The message body of the Command or a Base64 encoded byte string in binary mode </param>
-        public CreateCommandOptions(string command)
-        {
-            Command = command;
-        }
+      if (Sim != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Sim", Sim));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Command != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Command", Command));
-            }
+      if (CallbackMethod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("CallbackMethod", CallbackMethod.ToString()));
+      }
 
-            if (Sim != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Sim", Sim));
-            }
+      if (CallbackUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("CallbackUrl", Serializers.Url(CallbackUrl)));
+      }
 
-            if (CallbackMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("CallbackMethod", CallbackMethod.ToString()));
-            }
+      if (CommandMode != null)
+      {
+        p.Add(new KeyValuePair<string, string>("CommandMode", CommandMode.ToString()));
+      }
 
-            if (CallbackUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("CallbackUrl", Serializers.Url(CallbackUrl)));
-            }
+      if (IncludeSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("IncludeSid", IncludeSid));
+      }
 
-            if (CommandMode != null)
-            {
-                p.Add(new KeyValuePair<string, string>("CommandMode", CommandMode.ToString()));
-            }
+      if (DeliveryReceiptRequested != null)
+      {
+        p.Add(new KeyValuePair<string, string>("DeliveryReceiptRequested", DeliveryReceiptRequested.Value.ToString().ToLower()));
+      }
 
-            if (IncludeSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("IncludeSid", IncludeSid));
-            }
+      return p;
+    }
+  }
 
-            if (DeliveryReceiptRequested != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DeliveryReceiptRequested", DeliveryReceiptRequested.Value.ToString().ToLower()));
-            }
+  /// <summary>
+  /// Delete a Command instance from your account.
+  /// </summary>
+  public class DeleteCommandOptions : IOptions<CommandResource>
+  {
+    /// <summary>
+    /// The SID that identifies the resource to delete
+    /// </summary>
+    public string PathSid { get; }
 
-            return p;
-        }
+    /// <summary>
+    /// Construct a new DeleteCommandOptions
+    /// </summary>
+    /// <param name="pathSid"> The SID that identifies the resource to delete </param>
+    public DeleteCommandOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Delete a Command instance from your account.
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteCommandOptions : IOptions<CommandResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID that identifies the resource to delete
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new DeleteCommandOptions
-        /// </summary>
-        /// <param name="pathSid"> The SID that identifies the resource to delete </param>
-        public DeleteCommandOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
 
 }

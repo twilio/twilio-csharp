@@ -11,291 +11,291 @@ using Twilio.Converters;
 namespace Twilio.Rest.Conversations.V1.Service
 {
 
+  /// <summary>
+  /// Add a new conversation user to your service
+  /// </summary>
+  public class CreateUserOptions : IOptions<UserResource>
+  {
     /// <summary>
-    /// Add a new conversation user to your service
+    /// The SID of the Conversation Service that the resource is associated with
     /// </summary>
-    public class CreateUserOptions : IOptions<UserResource>
+    public string PathChatServiceSid { get; }
+    /// <summary>
+    /// The string that identifies the resource's User
+    /// </summary>
+    public string Identity { get; }
+    /// <summary>
+    /// The string that you assigned to describe the resource
+    /// </summary>
+    public string FriendlyName { get; set; }
+    /// <summary>
+    /// The JSON Object string that stores application-specific data
+    /// </summary>
+    public string Attributes { get; set; }
+    /// <summary>
+    /// The SID of a service-level Role to assign to the user
+    /// </summary>
+    public string RoleSid { get; set; }
+    /// <summary>
+    /// The X-Twilio-Webhook-Enabled HTTP request header
+    /// </summary>
+    public UserResource.WebhookEnabledTypeEnum XTwilioWebhookEnabled { get; set; }
+
+    /// <summary>
+    /// Construct a new CreateUserOptions
+    /// </summary>
+    /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with </param>
+    /// <param name="identity"> The string that identifies the resource's User </param>
+    public CreateUserOptions(string pathChatServiceSid, string identity)
     {
-        /// <summary>
-        /// The SID of the Conversation Service that the resource is associated with
-        /// </summary>
-        public string PathChatServiceSid { get; }
-        /// <summary>
-        /// The string that identifies the resource's User
-        /// </summary>
-        public string Identity { get; }
-        /// <summary>
-        /// The string that you assigned to describe the resource
-        /// </summary>
-        public string FriendlyName { get; set; }
-        /// <summary>
-        /// The JSON Object string that stores application-specific data
-        /// </summary>
-        public string Attributes { get; set; }
-        /// <summary>
-        /// The SID of a service-level Role to assign to the user
-        /// </summary>
-        public string RoleSid { get; set; }
-        /// <summary>
-        /// The X-Twilio-Webhook-Enabled HTTP request header
-        /// </summary>
-        public UserResource.WebhookEnabledTypeEnum XTwilioWebhookEnabled { get; set; }
-
-        /// <summary>
-        /// Construct a new CreateUserOptions
-        /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with </param>
-        /// <param name="identity"> The string that identifies the resource's User </param>
-        public CreateUserOptions(string pathChatServiceSid, string identity)
-        {
-            PathChatServiceSid = pathChatServiceSid;
-            Identity = identity;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Identity != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Identity", Identity));
-            }
-
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
-
-            if (Attributes != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Attributes", Attributes));
-            }
-
-            if (RoleSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("RoleSid", RoleSid.ToString()));
-            }
-
-            return p;
-        }
-
-        /// <summary>
-        /// Generate the necessary header parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetHeaderParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (XTwilioWebhookEnabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("X-Twilio-Webhook-Enabled", XTwilioWebhookEnabled.ToString()));
-            }
-
-            return p;
-        }
+      PathChatServiceSid = pathChatServiceSid;
+      Identity = identity;
     }
 
     /// <summary>
-    /// Update an existing conversation user in your service
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateUserOptions : IOptions<UserResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Conversation Service that the resource is associated with
-        /// </summary>
-        public string PathChatServiceSid { get; }
-        /// <summary>
-        /// The SID of the User resource to update
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// The string that you assigned to describe the resource
-        /// </summary>
-        public string FriendlyName { get; set; }
-        /// <summary>
-        /// The JSON Object string that stores application-specific data
-        /// </summary>
-        public string Attributes { get; set; }
-        /// <summary>
-        /// The SID of a service-level Role to assign to the user
-        /// </summary>
-        public string RoleSid { get; set; }
-        /// <summary>
-        /// The X-Twilio-Webhook-Enabled HTTP request header
-        /// </summary>
-        public UserResource.WebhookEnabledTypeEnum XTwilioWebhookEnabled { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (Identity != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Identity", Identity));
+      }
 
-        /// <summary>
-        /// Construct a new UpdateUserOptions
-        /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with </param>
-        /// <param name="pathSid"> The SID of the User resource to update </param>
-        public UpdateUserOptions(string pathChatServiceSid, string pathSid)
-        {
-            PathChatServiceSid = pathChatServiceSid;
-            PathSid = pathSid;
-        }
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
+      if (Attributes != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Attributes", Attributes));
+      }
 
-            if (Attributes != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Attributes", Attributes));
-            }
+      if (RoleSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("RoleSid", RoleSid.ToString()));
+      }
 
-            if (RoleSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("RoleSid", RoleSid.ToString()));
-            }
-
-            return p;
-        }
-
-        /// <summary>
-        /// Generate the necessary header parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetHeaderParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (XTwilioWebhookEnabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("X-Twilio-Webhook-Enabled", XTwilioWebhookEnabled.ToString()));
-            }
-
-            return p;
-        }
+      return p;
     }
 
     /// <summary>
-    /// Remove a conversation user from your service
+    /// Generate the necessary header parameters
     /// </summary>
-    public class DeleteUserOptions : IOptions<UserResource>
+    public List<KeyValuePair<string, string>> GetHeaderParams()
     {
-        /// <summary>
-        /// The SID of the Conversation Service to delete the resource from
-        /// </summary>
-        public string PathChatServiceSid { get; }
-        /// <summary>
-        /// The SID of  the User resource to delete
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// The X-Twilio-Webhook-Enabled HTTP request header
-        /// </summary>
-        public UserResource.WebhookEnabledTypeEnum XTwilioWebhookEnabled { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (XTwilioWebhookEnabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("X-Twilio-Webhook-Enabled", XTwilioWebhookEnabled.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new DeleteUserOptions
-        /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Conversation Service to delete the resource from </param>
-        /// <param name="pathSid"> The SID of  the User resource to delete </param>
-        public DeleteUserOptions(string pathChatServiceSid, string pathSid)
-        {
-            PathChatServiceSid = pathChatServiceSid;
-            PathSid = pathSid;
-        }
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+  /// <summary>
+  /// Update an existing conversation user in your service
+  /// </summary>
+  public class UpdateUserOptions : IOptions<UserResource>
+  {
+    /// <summary>
+    /// The SID of the Conversation Service that the resource is associated with
+    /// </summary>
+    public string PathChatServiceSid { get; }
+    /// <summary>
+    /// The SID of the User resource to update
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// The string that you assigned to describe the resource
+    /// </summary>
+    public string FriendlyName { get; set; }
+    /// <summary>
+    /// The JSON Object string that stores application-specific data
+    /// </summary>
+    public string Attributes { get; set; }
+    /// <summary>
+    /// The SID of a service-level Role to assign to the user
+    /// </summary>
+    public string RoleSid { get; set; }
+    /// <summary>
+    /// The X-Twilio-Webhook-Enabled HTTP request header
+    /// </summary>
+    public UserResource.WebhookEnabledTypeEnum XTwilioWebhookEnabled { get; set; }
 
-        /// <summary>
-        /// Generate the necessary header parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetHeaderParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (XTwilioWebhookEnabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("X-Twilio-Webhook-Enabled", XTwilioWebhookEnabled.ToString()));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new UpdateUserOptions
+    /// </summary>
+    /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with </param>
+    /// <param name="pathSid"> The SID of the User resource to update </param>
+    public UpdateUserOptions(string pathChatServiceSid, string pathSid)
+    {
+      PathChatServiceSid = pathChatServiceSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Fetch a conversation user from your service
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchUserOptions : IOptions<UserResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Conversation Service to fetch the resource from
-        /// </summary>
-        public string PathChatServiceSid { get; }
-        /// <summary>
-        /// The SID of the User resource to fetch
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
 
-        /// <summary>
-        /// Construct a new FetchUserOptions
-        /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Conversation Service to fetch the resource from </param>
-        /// <param name="pathSid"> The SID of the User resource to fetch </param>
-        public FetchUserOptions(string pathChatServiceSid, string pathSid)
-        {
-            PathChatServiceSid = pathChatServiceSid;
-            PathSid = pathSid;
-        }
+      if (Attributes != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Attributes", Attributes));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      if (RoleSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("RoleSid", RoleSid.ToString()));
+      }
+
+      return p;
     }
 
     /// <summary>
-    /// Retrieve a list of all conversation users in your service
+    /// Generate the necessary header parameters
     /// </summary>
-    public class ReadUserOptions : ReadOptions<UserResource>
+    public List<KeyValuePair<string, string>> GetHeaderParams()
     {
-        /// <summary>
-        /// The SID of the Conversation Service to read the User resources from
-        /// </summary>
-        public string PathChatServiceSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (XTwilioWebhookEnabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("X-Twilio-Webhook-Enabled", XTwilioWebhookEnabled.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new ReadUserOptions
-        /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Conversation Service to read the User resources from </param>
-        public ReadUserOptions(string pathChatServiceSid)
-        {
-            PathChatServiceSid = pathChatServiceSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+      return p;
     }
+  }
+
+  /// <summary>
+  /// Remove a conversation user from your service
+  /// </summary>
+  public class DeleteUserOptions : IOptions<UserResource>
+  {
+    /// <summary>
+    /// The SID of the Conversation Service to delete the resource from
+    /// </summary>
+    public string PathChatServiceSid { get; }
+    /// <summary>
+    /// The SID of  the User resource to delete
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// The X-Twilio-Webhook-Enabled HTTP request header
+    /// </summary>
+    public UserResource.WebhookEnabledTypeEnum XTwilioWebhookEnabled { get; set; }
+
+    /// <summary>
+    /// Construct a new DeleteUserOptions
+    /// </summary>
+    /// <param name="pathChatServiceSid"> The SID of the Conversation Service to delete the resource from </param>
+    /// <param name="pathSid"> The SID of  the User resource to delete </param>
+    public DeleteUserOptions(string pathChatServiceSid, string pathSid)
+    {
+      PathChatServiceSid = pathChatServiceSid;
+      PathSid = pathSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+
+    /// <summary>
+    /// Generate the necessary header parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetHeaderParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (XTwilioWebhookEnabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("X-Twilio-Webhook-Enabled", XTwilioWebhookEnabled.ToString()));
+      }
+
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// Fetch a conversation user from your service
+  /// </summary>
+  public class FetchUserOptions : IOptions<UserResource>
+  {
+    /// <summary>
+    /// The SID of the Conversation Service to fetch the resource from
+    /// </summary>
+    public string PathChatServiceSid { get; }
+    /// <summary>
+    /// The SID of the User resource to fetch
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchUserOptions
+    /// </summary>
+    /// <param name="pathChatServiceSid"> The SID of the Conversation Service to fetch the resource from </param>
+    /// <param name="pathSid"> The SID of the User resource to fetch </param>
+    public FetchUserOptions(string pathChatServiceSid, string pathSid)
+    {
+      PathChatServiceSid = pathChatServiceSid;
+      PathSid = pathSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// Retrieve a list of all conversation users in your service
+  /// </summary>
+  public class ReadUserOptions : ReadOptions<UserResource>
+  {
+    /// <summary>
+    /// The SID of the Conversation Service to read the User resources from
+    /// </summary>
+    public string PathChatServiceSid { get; }
+
+    /// <summary>
+    /// Construct a new ReadUserOptions
+    /// </summary>
+    /// <param name="pathChatServiceSid"> The SID of the Conversation Service to read the User resources from </param>
+    public ReadUserOptions(string pathChatServiceSid)
+    {
+      PathChatServiceSid = pathChatServiceSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
 
 }

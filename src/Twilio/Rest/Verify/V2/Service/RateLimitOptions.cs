@@ -11,201 +11,201 @@ using Twilio.Converters;
 namespace Twilio.Rest.Verify.V2.Service
 {
 
+  /// <summary>
+  /// Create a new Rate Limit for a Service
+  /// </summary>
+  public class CreateRateLimitOptions : IOptions<RateLimitResource>
+  {
     /// <summary>
-    /// Create a new Rate Limit for a Service
+    /// The SID of the Service that the resource is associated with
     /// </summary>
-    public class CreateRateLimitOptions : IOptions<RateLimitResource>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// A unique, developer assigned name of this Rate Limit.
+    /// </summary>
+    public string UniqueName { get; }
+    /// <summary>
+    /// Description of this Rate Limit
+    /// </summary>
+    public string Description { get; set; }
+
+    /// <summary>
+    /// Construct a new CreateRateLimitOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service that the resource is associated with </param>
+    /// <param name="uniqueName"> A unique, developer assigned name of this Rate Limit. </param>
+    public CreateRateLimitOptions(string pathServiceSid, string uniqueName)
     {
-        /// <summary>
-        /// The SID of the Service that the resource is associated with
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// A unique, developer assigned name of this Rate Limit.
-        /// </summary>
-        public string UniqueName { get; }
-        /// <summary>
-        /// Description of this Rate Limit
-        /// </summary>
-        public string Description { get; set; }
-
-        /// <summary>
-        /// Construct a new CreateRateLimitOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service that the resource is associated with </param>
-        /// <param name="uniqueName"> A unique, developer assigned name of this Rate Limit. </param>
-        public CreateRateLimitOptions(string pathServiceSid, string uniqueName)
-        {
-            PathServiceSid = pathServiceSid;
-            UniqueName = uniqueName;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (UniqueName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
-            }
-
-            if (Description != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Description", Description));
-            }
-
-            return p;
-        }
+      PathServiceSid = pathServiceSid;
+      UniqueName = uniqueName;
     }
 
     /// <summary>
-    /// Update a specific Rate Limit.
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateRateLimitOptions : IOptions<RateLimitResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Service that the resource is associated with
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// Description of this Rate Limit
-        /// </summary>
-        public string Description { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (UniqueName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
+      }
 
-        /// <summary>
-        /// Construct a new UpdateRateLimitOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service that the resource is associated with </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public UpdateRateLimitOptions(string pathServiceSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathSid = pathSid;
-        }
+      if (Description != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Description", Description));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Description != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Description", Description));
-            }
+      return p;
+    }
+  }
 
-            return p;
-        }
+  /// <summary>
+  /// Update a specific Rate Limit.
+  /// </summary>
+  public class UpdateRateLimitOptions : IOptions<RateLimitResource>
+  {
+    /// <summary>
+    /// The SID of the Service that the resource is associated with
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// Description of this Rate Limit
+    /// </summary>
+    public string Description { get; set; }
+
+    /// <summary>
+    /// Construct a new UpdateRateLimitOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service that the resource is associated with </param>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public UpdateRateLimitOptions(string pathServiceSid, string pathSid)
+    {
+      PathServiceSid = pathServiceSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Fetch a specific Rate Limit.
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchRateLimitOptions : IOptions<RateLimitResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Service that the resource is associated with
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (Description != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Description", Description));
+      }
 
-        /// <summary>
-        /// Construct a new FetchRateLimitOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service that the resource is associated with </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public FetchRateLimitOptions(string pathServiceSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathSid = pathSid;
-        }
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+  /// <summary>
+  /// Fetch a specific Rate Limit.
+  /// </summary>
+  public class FetchRateLimitOptions : IOptions<RateLimitResource>
+  {
+    /// <summary>
+    /// The SID of the Service that the resource is associated with
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchRateLimitOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service that the resource is associated with </param>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public FetchRateLimitOptions(string pathServiceSid, string pathSid)
+    {
+      PathServiceSid = pathServiceSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Retrieve a list of all Rate Limits for a service.
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadRateLimitOptions : ReadOptions<RateLimitResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Service that the resource is associated with
-        /// </summary>
-        public string PathServiceSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new ReadRateLimitOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service that the resource is associated with </param>
-        public ReadRateLimitOptions(string pathServiceSid)
-        {
-            PathServiceSid = pathServiceSid;
-        }
+  /// <summary>
+  /// Retrieve a list of all Rate Limits for a service.
+  /// </summary>
+  public class ReadRateLimitOptions : ReadOptions<RateLimitResource>
+  {
+    /// <summary>
+    /// The SID of the Service that the resource is associated with
+    /// </summary>
+    public string PathServiceSid { get; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new ReadRateLimitOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service that the resource is associated with </param>
+    public ReadRateLimitOptions(string pathServiceSid)
+    {
+      PathServiceSid = pathServiceSid;
     }
 
     /// <summary>
-    /// Delete a specific Rate Limit.
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteRateLimitOptions : IOptions<RateLimitResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Service that the resource is associated with
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new DeleteRateLimitOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service that the resource is associated with </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public DeleteRateLimitOptions(string pathServiceSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      return p;
     }
+  }
+
+  /// <summary>
+  /// Delete a specific Rate Limit.
+  /// </summary>
+  public class DeleteRateLimitOptions : IOptions<RateLimitResource>
+  {
+    /// <summary>
+    /// The SID of the Service that the resource is associated with
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new DeleteRateLimitOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service that the resource is associated with </param>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public DeleteRateLimitOptions(string pathServiceSid, string pathSid)
+    {
+      PathServiceSid = pathServiceSid;
+      PathSid = pathSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
 }

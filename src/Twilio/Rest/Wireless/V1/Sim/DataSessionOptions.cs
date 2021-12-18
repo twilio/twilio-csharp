@@ -11,38 +11,38 @@ using Twilio.Converters;
 namespace Twilio.Rest.Wireless.V1.Sim
 {
 
+  /// <summary>
+  /// ReadDataSessionOptions
+  /// </summary>
+  public class ReadDataSessionOptions : ReadOptions<DataSessionResource>
+  {
     /// <summary>
-    /// ReadDataSessionOptions
+    /// The SID of the Sim resource with the Data Sessions to read
     /// </summary>
-    public class ReadDataSessionOptions : ReadOptions<DataSessionResource>
+    public string PathSimSid { get; }
+
+    /// <summary>
+    /// Construct a new ReadDataSessionOptions
+    /// </summary>
+    /// <param name="pathSimSid"> The SID of the Sim resource with the Data Sessions to read </param>
+    public ReadDataSessionOptions(string pathSimSid)
     {
-        /// <summary>
-        /// The SID of the Sim resource with the Data Sessions to read
-        /// </summary>
-        public string PathSimSid { get; }
-
-        /// <summary>
-        /// Construct a new ReadDataSessionOptions
-        /// </summary>
-        /// <param name="pathSimSid"> The SID of the Sim resource with the Data Sessions to read </param>
-        public ReadDataSessionOptions(string pathSimSid)
-        {
-            PathSimSid = pathSimSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+      PathSimSid = pathSimSid;
     }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
 
 }

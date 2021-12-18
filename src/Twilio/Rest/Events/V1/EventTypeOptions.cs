@@ -11,67 +11,67 @@ using Twilio.Converters;
 namespace Twilio.Rest.Events.V1
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Retrieve a paginated list of all the available Event Types.
+  /// </summary>
+  public class ReadEventTypeOptions : ReadOptions<EventTypeResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Retrieve a paginated list of all the available Event Types.
+    /// A string to filter Event Types by schema.
     /// </summary>
-    public class ReadEventTypeOptions : ReadOptions<EventTypeResource>
+    public string SchemaId { get; set; }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// A string to filter Event Types by schema.
-        /// </summary>
-        public string SchemaId { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (SchemaId != null)
+      {
+        p.Add(new KeyValuePair<string, string>("SchemaId", SchemaId));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (SchemaId != null)
-            {
-                p.Add(new KeyValuePair<string, string>("SchemaId", SchemaId));
-            }
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
+      return p;
+    }
+  }
 
-            return p;
-        }
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Fetch a specific Event Type.
+  /// </summary>
+  public class FetchEventTypeOptions : IOptions<EventTypeResource>
+  {
+    /// <summary>
+    /// A string that uniquely identifies this Event Type.
+    /// </summary>
+    public string PathType { get; }
+
+    /// <summary>
+    /// Construct a new FetchEventTypeOptions
+    /// </summary>
+    /// <param name="pathType"> A string that uniquely identifies this Event Type. </param>
+    public FetchEventTypeOptions(string pathType)
+    {
+      PathType = pathType;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Fetch a specific Event Type.
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchEventTypeOptions : IOptions<EventTypeResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// A string that uniquely identifies this Event Type.
-        /// </summary>
-        public string PathType { get; }
-
-        /// <summary>
-        /// Construct a new FetchEventTypeOptions
-        /// </summary>
-        /// <param name="pathType"> A string that uniquely identifies this Event Type. </param>
-        public FetchEventTypeOptions(string pathType)
-        {
-            PathType = pathType;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
 
 }

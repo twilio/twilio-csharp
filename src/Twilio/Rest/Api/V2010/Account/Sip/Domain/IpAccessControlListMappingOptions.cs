@@ -11,164 +11,164 @@ using Twilio.Converters;
 namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
 {
 
+  /// <summary>
+  /// Fetch an IpAccessControlListMapping resource.
+  /// </summary>
+  public class FetchIpAccessControlListMappingOptions : IOptions<IpAccessControlListMappingResource>
+  {
     /// <summary>
-    /// Fetch an IpAccessControlListMapping resource.
+    /// The unique id of the Account that is responsible for this resource.
     /// </summary>
-    public class FetchIpAccessControlListMappingOptions : IOptions<IpAccessControlListMappingResource>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// A string that uniquely identifies the SIP Domain
+    /// </summary>
+    public string PathDomainSid { get; }
+    /// <summary>
+    /// A 34 character string that uniquely identifies the resource to fetch.
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchIpAccessControlListMappingOptions
+    /// </summary>
+    /// <param name="pathDomainSid"> A string that uniquely identifies the SIP Domain </param>
+    /// <param name="pathSid"> A 34 character string that uniquely identifies the resource to fetch. </param>
+    public FetchIpAccessControlListMappingOptions(string pathDomainSid, string pathSid)
     {
-        /// <summary>
-        /// The unique id of the Account that is responsible for this resource.
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// A string that uniquely identifies the SIP Domain
-        /// </summary>
-        public string PathDomainSid { get; }
-        /// <summary>
-        /// A 34 character string that uniquely identifies the resource to fetch.
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchIpAccessControlListMappingOptions
-        /// </summary>
-        /// <param name="pathDomainSid"> A string that uniquely identifies the SIP Domain </param>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies the resource to fetch. </param>
-        public FetchIpAccessControlListMappingOptions(string pathDomainSid, string pathSid)
-        {
-            PathDomainSid = pathDomainSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathDomainSid = pathDomainSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Create a new IpAccessControlListMapping resource.
+    /// Generate the necessary parameters
     /// </summary>
-    public class CreateIpAccessControlListMappingOptions : IOptions<IpAccessControlListMappingResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique id of the Account that is responsible for this resource.
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// A string that uniquely identifies the SIP Domain
-        /// </summary>
-        public string PathDomainSid { get; }
-        /// <summary>
-        /// The unique id of the IP access control list to map to the SIP domain
-        /// </summary>
-        public string IpAccessControlListSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new CreateIpAccessControlListMappingOptions
-        /// </summary>
-        /// <param name="pathDomainSid"> A string that uniquely identifies the SIP Domain </param>
-        /// <param name="ipAccessControlListSid"> The unique id of the IP access control list to map to the SIP domain </param>
-        public CreateIpAccessControlListMappingOptions(string pathDomainSid, string ipAccessControlListSid)
-        {
-            PathDomainSid = pathDomainSid;
-            IpAccessControlListSid = ipAccessControlListSid;
-        }
+  /// <summary>
+  /// Create a new IpAccessControlListMapping resource.
+  /// </summary>
+  public class CreateIpAccessControlListMappingOptions : IOptions<IpAccessControlListMappingResource>
+  {
+    /// <summary>
+    /// The unique id of the Account that is responsible for this resource.
+    /// </summary>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// A string that uniquely identifies the SIP Domain
+    /// </summary>
+    public string PathDomainSid { get; }
+    /// <summary>
+    /// The unique id of the IP access control list to map to the SIP domain
+    /// </summary>
+    public string IpAccessControlListSid { get; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (IpAccessControlListSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("IpAccessControlListSid", IpAccessControlListSid.ToString()));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new CreateIpAccessControlListMappingOptions
+    /// </summary>
+    /// <param name="pathDomainSid"> A string that uniquely identifies the SIP Domain </param>
+    /// <param name="ipAccessControlListSid"> The unique id of the IP access control list to map to the SIP domain </param>
+    public CreateIpAccessControlListMappingOptions(string pathDomainSid, string ipAccessControlListSid)
+    {
+      PathDomainSid = pathDomainSid;
+      IpAccessControlListSid = ipAccessControlListSid;
     }
 
     /// <summary>
-    /// Retrieve a list of IpAccessControlListMapping resources.
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadIpAccessControlListMappingOptions : ReadOptions<IpAccessControlListMappingResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique id of the Account that is responsible for this resource.
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// A string that uniquely identifies the SIP Domain
-        /// </summary>
-        public string PathDomainSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (IpAccessControlListSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("IpAccessControlListSid", IpAccessControlListSid.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new ReadIpAccessControlListMappingOptions
-        /// </summary>
-        /// <param name="pathDomainSid"> A string that uniquely identifies the SIP Domain </param>
-        public ReadIpAccessControlListMappingOptions(string pathDomainSid)
-        {
-            PathDomainSid = pathDomainSid;
-        }
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
+  /// <summary>
+  /// Retrieve a list of IpAccessControlListMapping resources.
+  /// </summary>
+  public class ReadIpAccessControlListMappingOptions : ReadOptions<IpAccessControlListMappingResource>
+  {
+    /// <summary>
+    /// The unique id of the Account that is responsible for this resource.
+    /// </summary>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// A string that uniquely identifies the SIP Domain
+    /// </summary>
+    public string PathDomainSid { get; }
 
-            return p;
-        }
+    /// <summary>
+    /// Construct a new ReadIpAccessControlListMappingOptions
+    /// </summary>
+    /// <param name="pathDomainSid"> A string that uniquely identifies the SIP Domain </param>
+    public ReadIpAccessControlListMappingOptions(string pathDomainSid)
+    {
+      PathDomainSid = pathDomainSid;
     }
 
     /// <summary>
-    /// Delete an IpAccessControlListMapping resource.
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteIpAccessControlListMappingOptions : IOptions<IpAccessControlListMappingResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique id of the Account that is responsible for this resource.
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// A string that uniquely identifies the SIP Domain
-        /// </summary>
-        public string PathDomainSid { get; }
-        /// <summary>
-        /// A 34 character string that uniquely identifies the resource to delete.
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new DeleteIpAccessControlListMappingOptions
-        /// </summary>
-        /// <param name="pathDomainSid"> A string that uniquely identifies the SIP Domain </param>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies the resource to delete. </param>
-        public DeleteIpAccessControlListMappingOptions(string pathDomainSid, string pathSid)
-        {
-            PathDomainSid = pathDomainSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      return p;
     }
+  }
+
+  /// <summary>
+  /// Delete an IpAccessControlListMapping resource.
+  /// </summary>
+  public class DeleteIpAccessControlListMappingOptions : IOptions<IpAccessControlListMappingResource>
+  {
+    /// <summary>
+    /// The unique id of the Account that is responsible for this resource.
+    /// </summary>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// A string that uniquely identifies the SIP Domain
+    /// </summary>
+    public string PathDomainSid { get; }
+    /// <summary>
+    /// A 34 character string that uniquely identifies the resource to delete.
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new DeleteIpAccessControlListMappingOptions
+    /// </summary>
+    /// <param name="pathDomainSid"> A string that uniquely identifies the SIP Domain </param>
+    /// <param name="pathSid"> A 34 character string that uniquely identifies the resource to delete. </param>
+    public DeleteIpAccessControlListMappingOptions(string pathDomainSid, string pathSid)
+    {
+      PathDomainSid = pathDomainSid;
+      PathSid = pathSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
 }

@@ -11,217 +11,217 @@ using Twilio.Converters;
 namespace Twilio.Rest.FlexApi.V1
 {
 
+  /// <summary>
+  /// ReadWebChannelOptions
+  /// </summary>
+  public class ReadWebChannelOptions : ReadOptions<WebChannelResource>
+  {
     /// <summary>
-    /// ReadWebChannelOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadWebChannelOptions : ReadOptions<WebChannelResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-            return p;
-        }
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// FetchWebChannelOptions
+  /// </summary>
+  public class FetchWebChannelOptions : IOptions<WebChannelResource>
+  {
+    /// <summary>
+    /// The SID of the WebChannel resource to fetch
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchWebChannelOptions
+    /// </summary>
+    /// <param name="pathSid"> The SID of the WebChannel resource to fetch </param>
+    public FetchWebChannelOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// FetchWebChannelOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchWebChannelOptions : IOptions<WebChannelResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the WebChannel resource to fetch
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new FetchWebChannelOptions
-        /// </summary>
-        /// <param name="pathSid"> The SID of the WebChannel resource to fetch </param>
-        public FetchWebChannelOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
+  /// <summary>
+  /// CreateWebChannelOptions
+  /// </summary>
+  public class CreateWebChannelOptions : IOptions<WebChannelResource>
+  {
+    /// <summary>
+    /// The SID of the Flex Flow
+    /// </summary>
+    public string FlexFlowSid { get; }
+    /// <summary>
+    /// The chat identity
+    /// </summary>
+    public string Identity { get; }
+    /// <summary>
+    /// The chat participant's friendly name
+    /// </summary>
+    public string CustomerFriendlyName { get; }
+    /// <summary>
+    /// The chat channel's friendly name
+    /// </summary>
+    public string ChatFriendlyName { get; }
+    /// <summary>
+    /// The chat channel's unique name
+    /// </summary>
+    public string ChatUniqueName { get; set; }
+    /// <summary>
+    /// The pre-engagement data
+    /// </summary>
+    public string PreEngagementData { get; set; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+    /// <summary>
+    /// Construct a new CreateWebChannelOptions
+    /// </summary>
+    /// <param name="flexFlowSid"> The SID of the Flex Flow </param>
+    /// <param name="identity"> The chat identity </param>
+    /// <param name="customerFriendlyName"> The chat participant's friendly name </param>
+    /// <param name="chatFriendlyName"> The chat channel's friendly name </param>
+    public CreateWebChannelOptions(string flexFlowSid,
+                                   string identity,
+                                   string customerFriendlyName,
+                                   string chatFriendlyName)
+    {
+      FlexFlowSid = flexFlowSid;
+      Identity = identity;
+      CustomerFriendlyName = customerFriendlyName;
+      ChatFriendlyName = chatFriendlyName;
     }
 
     /// <summary>
-    /// CreateWebChannelOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class CreateWebChannelOptions : IOptions<WebChannelResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Flex Flow
-        /// </summary>
-        public string FlexFlowSid { get; }
-        /// <summary>
-        /// The chat identity
-        /// </summary>
-        public string Identity { get; }
-        /// <summary>
-        /// The chat participant's friendly name
-        /// </summary>
-        public string CustomerFriendlyName { get; }
-        /// <summary>
-        /// The chat channel's friendly name
-        /// </summary>
-        public string ChatFriendlyName { get; }
-        /// <summary>
-        /// The chat channel's unique name
-        /// </summary>
-        public string ChatUniqueName { get; set; }
-        /// <summary>
-        /// The pre-engagement data
-        /// </summary>
-        public string PreEngagementData { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (FlexFlowSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FlexFlowSid", FlexFlowSid.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new CreateWebChannelOptions
-        /// </summary>
-        /// <param name="flexFlowSid"> The SID of the Flex Flow </param>
-        /// <param name="identity"> The chat identity </param>
-        /// <param name="customerFriendlyName"> The chat participant's friendly name </param>
-        /// <param name="chatFriendlyName"> The chat channel's friendly name </param>
-        public CreateWebChannelOptions(string flexFlowSid,
-                                       string identity,
-                                       string customerFriendlyName,
-                                       string chatFriendlyName)
-        {
-            FlexFlowSid = flexFlowSid;
-            Identity = identity;
-            CustomerFriendlyName = customerFriendlyName;
-            ChatFriendlyName = chatFriendlyName;
-        }
+      if (Identity != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Identity", Identity));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (FlexFlowSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FlexFlowSid", FlexFlowSid.ToString()));
-            }
+      if (CustomerFriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("CustomerFriendlyName", CustomerFriendlyName));
+      }
 
-            if (Identity != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Identity", Identity));
-            }
+      if (ChatFriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ChatFriendlyName", ChatFriendlyName));
+      }
 
-            if (CustomerFriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("CustomerFriendlyName", CustomerFriendlyName));
-            }
+      if (ChatUniqueName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ChatUniqueName", ChatUniqueName));
+      }
 
-            if (ChatFriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ChatFriendlyName", ChatFriendlyName));
-            }
+      if (PreEngagementData != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PreEngagementData", PreEngagementData));
+      }
 
-            if (ChatUniqueName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ChatUniqueName", ChatUniqueName));
-            }
+      return p;
+    }
+  }
 
-            if (PreEngagementData != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PreEngagementData", PreEngagementData));
-            }
+  /// <summary>
+  /// UpdateWebChannelOptions
+  /// </summary>
+  public class UpdateWebChannelOptions : IOptions<WebChannelResource>
+  {
+    /// <summary>
+    /// The SID that identifies the resource to update
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// The chat status
+    /// </summary>
+    public WebChannelResource.ChatStatusEnum ChatStatus { get; set; }
+    /// <summary>
+    /// The post-engagement data
+    /// </summary>
+    public string PostEngagementData { get; set; }
 
-            return p;
-        }
+    /// <summary>
+    /// Construct a new UpdateWebChannelOptions
+    /// </summary>
+    /// <param name="pathSid"> The SID that identifies the resource to update </param>
+    public UpdateWebChannelOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// UpdateWebChannelOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateWebChannelOptions : IOptions<WebChannelResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID that identifies the resource to update
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// The chat status
-        /// </summary>
-        public WebChannelResource.ChatStatusEnum ChatStatus { get; set; }
-        /// <summary>
-        /// The post-engagement data
-        /// </summary>
-        public string PostEngagementData { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (ChatStatus != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ChatStatus", ChatStatus.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new UpdateWebChannelOptions
-        /// </summary>
-        /// <param name="pathSid"> The SID that identifies the resource to update </param>
-        public UpdateWebChannelOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
+      if (PostEngagementData != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PostEngagementData", PostEngagementData));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (ChatStatus != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ChatStatus", ChatStatus.ToString()));
-            }
+      return p;
+    }
+  }
 
-            if (PostEngagementData != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PostEngagementData", PostEngagementData));
-            }
+  /// <summary>
+  /// DeleteWebChannelOptions
+  /// </summary>
+  public class DeleteWebChannelOptions : IOptions<WebChannelResource>
+  {
+    /// <summary>
+    /// The SID that identifies the resource to delete
+    /// </summary>
+    public string PathSid { get; }
 
-            return p;
-        }
+    /// <summary>
+    /// Construct a new DeleteWebChannelOptions
+    /// </summary>
+    /// <param name="pathSid"> The SID that identifies the resource to delete </param>
+    public DeleteWebChannelOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// DeleteWebChannelOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteWebChannelOptions : IOptions<WebChannelResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID that identifies the resource to delete
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new DeleteWebChannelOptions
-        /// </summary>
-        /// <param name="pathSid"> The SID that identifies the resource to delete </param>
-        public DeleteWebChannelOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
 
 }

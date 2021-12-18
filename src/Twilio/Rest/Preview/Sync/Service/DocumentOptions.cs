@@ -11,234 +11,234 @@ using Twilio.Converters;
 namespace Twilio.Rest.Preview.Sync.Service
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// FetchDocumentOptions
+  /// </summary>
+  public class FetchDocumentOptions : IOptions<DocumentResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// FetchDocumentOptions
+    /// The service_sid
     /// </summary>
-    public class FetchDocumentOptions : IOptions<DocumentResource>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The sid
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchDocumentOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The service_sid </param>
+    /// <param name="pathSid"> The sid </param>
+    public FetchDocumentOptions(string pathServiceSid, string pathSid)
     {
-        /// <summary>
-        /// The service_sid
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The sid
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchDocumentOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        public FetchDocumentOptions(string pathServiceSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathServiceSid = pathServiceSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// DeleteDocumentOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteDocumentOptions : IOptions<DocumentResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The service_sid
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The sid
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new DeleteDocumentOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        public DeleteDocumentOptions(string pathServiceSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathSid = pathSid;
-        }
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// DeleteDocumentOptions
+  /// </summary>
+  public class DeleteDocumentOptions : IOptions<DocumentResource>
+  {
+    /// <summary>
+    /// The service_sid
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The sid
+    /// </summary>
+    public string PathSid { get; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+    /// <summary>
+    /// Construct a new DeleteDocumentOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The service_sid </param>
+    /// <param name="pathSid"> The sid </param>
+    public DeleteDocumentOptions(string pathServiceSid, string pathSid)
+    {
+      PathServiceSid = pathServiceSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// CreateDocumentOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class CreateDocumentOptions : IOptions<DocumentResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The service_sid
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The unique_name
-        /// </summary>
-        public string UniqueName { get; set; }
-        /// <summary>
-        /// The data
-        /// </summary>
-        public object Data { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new CreateDocumentOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        public CreateDocumentOptions(string pathServiceSid)
-        {
-            PathServiceSid = pathServiceSid;
-        }
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// CreateDocumentOptions
+  /// </summary>
+  public class CreateDocumentOptions : IOptions<DocumentResource>
+  {
+    /// <summary>
+    /// The service_sid
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The unique_name
+    /// </summary>
+    public string UniqueName { get; set; }
+    /// <summary>
+    /// The data
+    /// </summary>
+    public object Data { get; set; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (UniqueName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
-            }
-
-            if (Data != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Data", Serializers.JsonObject(Data)));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new CreateDocumentOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The service_sid </param>
+    public CreateDocumentOptions(string pathServiceSid)
+    {
+      PathServiceSid = pathServiceSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// ReadDocumentOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadDocumentOptions : ReadOptions<DocumentResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The service_sid
-        /// </summary>
-        public string PathServiceSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (UniqueName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
+      }
 
-        /// <summary>
-        /// Construct a new ReadDocumentOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        public ReadDocumentOptions(string pathServiceSid)
-        {
-            PathServiceSid = pathServiceSid;
-        }
+      if (Data != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Data", Serializers.JsonObject(Data)));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
+      return p;
+    }
+  }
 
-            return p;
-        }
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// ReadDocumentOptions
+  /// </summary>
+  public class ReadDocumentOptions : ReadOptions<DocumentResource>
+  {
+    /// <summary>
+    /// The service_sid
+    /// </summary>
+    public string PathServiceSid { get; }
+
+    /// <summary>
+    /// Construct a new ReadDocumentOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The service_sid </param>
+    public ReadDocumentOptions(string pathServiceSid)
+    {
+      PathServiceSid = pathServiceSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// UpdateDocumentOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateDocumentOptions : IOptions<DocumentResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The service_sid
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The sid
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// The data
-        /// </summary>
-        public object Data { get; }
-        /// <summary>
-        /// The If-Match HTTP request header
-        /// </summary>
-        public string IfMatch { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new UpdateDocumentOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="data"> The data </param>
-        public UpdateDocumentOptions(string pathServiceSid, string pathSid, object data)
-        {
-            PathServiceSid = pathServiceSid;
-            PathSid = pathSid;
-            Data = data;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Data != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Data", Serializers.JsonObject(Data)));
-            }
-
-            return p;
-        }
-
-        /// <summary>
-        /// Generate the necessary header parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetHeaderParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (IfMatch != null)
-            {
-                p.Add(new KeyValuePair<string, string>("If-Match", IfMatch));
-            }
-
-            return p;
-        }
+      return p;
     }
+  }
+
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// UpdateDocumentOptions
+  /// </summary>
+  public class UpdateDocumentOptions : IOptions<DocumentResource>
+  {
+    /// <summary>
+    /// The service_sid
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The sid
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// The data
+    /// </summary>
+    public object Data { get; }
+    /// <summary>
+    /// The If-Match HTTP request header
+    /// </summary>
+    public string IfMatch { get; set; }
+
+    /// <summary>
+    /// Construct a new UpdateDocumentOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The service_sid </param>
+    /// <param name="pathSid"> The sid </param>
+    /// <param name="data"> The data </param>
+    public UpdateDocumentOptions(string pathServiceSid, string pathSid, object data)
+    {
+      PathServiceSid = pathServiceSid;
+      PathSid = pathSid;
+      Data = data;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (Data != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Data", Serializers.JsonObject(Data)));
+      }
+
+      return p;
+    }
+
+    /// <summary>
+    /// Generate the necessary header parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetHeaderParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (IfMatch != null)
+      {
+        p.Add(new KeyValuePair<string, string>("If-Match", IfMatch));
+      }
+
+      return p;
+    }
+  }
 
 }

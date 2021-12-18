@@ -10,36 +10,36 @@ using System.Xml.Linq;
 namespace Twilio.TwiML.Voice
 {
 
+  /// <summary>
+  /// Hangup TwiML Verb
+  /// </summary>
+  public class Hangup : TwiML
+  {
     /// <summary>
-    /// Hangup TwiML Verb
+    /// Create a new Hangup
     /// </summary>
-    public class Hangup : TwiML
+    public Hangup() : base("Hangup")
     {
-        /// <summary>
-        /// Create a new Hangup
-        /// </summary>
-        public Hangup() : base("Hangup")
-        {
-        }
-
-        /// <summary>
-        /// Append a child TwiML element to this element returning this element to allow chaining.
-        /// </summary>
-        /// <param name="childElem"> Child TwiML element to add </param>
-        public new Hangup Append(TwiML childElem)
-        {
-            return (Hangup) base.Append(childElem);
-        }
-
-        /// <summary>
-        /// Add freeform key-value attributes to the generated xml
-        /// </summary>
-        /// <param name="key"> Option key </param>
-        /// <param name="value"> Option value </param>
-        public new Hangup SetOption(string key, object value)
-        {
-            return (Hangup) base.SetOption(key, value);
-        }
     }
+
+    /// <summary>
+    /// Append a child TwiML element to this element returning this element to allow chaining.
+    /// </summary>
+    /// <param name="childElem"> Child TwiML element to add </param>
+    public new Hangup Append(TwiML childElem)
+    {
+      return (Hangup)base.Append(childElem);
+    }
+
+    /// <summary>
+    /// Add freeform key-value attributes to the generated xml
+    /// </summary>
+    /// <param name="key"> Option key </param>
+    /// <param name="value"> Option value </param>
+    public new Hangup SetOption(string key, object value)
+    {
+      return (Hangup)base.SetOption(key, value);
+    }
+  }
 
 }

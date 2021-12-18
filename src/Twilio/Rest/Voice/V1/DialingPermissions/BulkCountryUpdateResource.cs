@@ -21,113 +21,113 @@ using Twilio.Http;
 namespace Twilio.Rest.Voice.V1.DialingPermissions
 {
 
-    public class BulkCountryUpdateResource : Resource
+  public class BulkCountryUpdateResource : Resource
+  {
+    private static Request BuildCreateRequest(CreateBulkCountryUpdateOptions options, ITwilioRestClient client)
     {
-        private static Request BuildCreateRequest(CreateBulkCountryUpdateOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Post,
-                Rest.Domain.Voice,
-                "/v1/DialingPermissions/BulkCountryUpdates",
-                postParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// Create a bulk update request to change voice dialing country permissions of one or more countries identified by the
-        /// corresponding [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
-        /// </summary>
-        /// <param name="options"> Create BulkCountryUpdate parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of BulkCountryUpdate </returns>
-        public static BulkCountryUpdateResource Create(CreateBulkCountryUpdateOptions options,
-                                                       ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildCreateRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Create a bulk update request to change voice dialing country permissions of one or more countries identified by the
-        /// corresponding [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
-        /// </summary>
-        /// <param name="options"> Create BulkCountryUpdate parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of BulkCountryUpdate </returns>
-        public static async System.Threading.Tasks.Task<BulkCountryUpdateResource> CreateAsync(CreateBulkCountryUpdateOptions options,
-                                                                                               ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// Create a bulk update request to change voice dialing country permissions of one or more countries identified by the
-        /// corresponding [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
-        /// </summary>
-        /// <param name="updateRequest"> URL encoded JSON array of update objects </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of BulkCountryUpdate </returns>
-        public static BulkCountryUpdateResource Create(string updateRequest, ITwilioRestClient client = null)
-        {
-            var options = new CreateBulkCountryUpdateOptions(updateRequest);
-            return Create(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Create a bulk update request to change voice dialing country permissions of one or more countries identified by the
-        /// corresponding [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
-        /// </summary>
-        /// <param name="updateRequest"> URL encoded JSON array of update objects </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of BulkCountryUpdate </returns>
-        public static async System.Threading.Tasks.Task<BulkCountryUpdateResource> CreateAsync(string updateRequest,
-                                                                                               ITwilioRestClient client = null)
-        {
-            var options = new CreateBulkCountryUpdateOptions(updateRequest);
-            return await CreateAsync(options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Converts a JSON string into a BulkCountryUpdateResource object
-        /// </summary>
-        /// <param name="json"> Raw JSON string </param>
-        /// <returns> BulkCountryUpdateResource object represented by the provided JSON </returns>
-        public static BulkCountryUpdateResource FromJson(string json)
-        {
-            // Convert all checked exceptions to Runtime
-            try
-            {
-                return JsonConvert.DeserializeObject<BulkCountryUpdateResource>(json);
-            }
-            catch (JsonException e)
-            {
-                throw new ApiException(e.Message, e);
-            }
-        }
-
-        /// <summary>
-        /// The number of countries updated
-        /// </summary>
-        [JsonProperty("update_count")]
-        public int? UpdateCount { get; private set; }
-        /// <summary>
-        /// A URL encoded JSON array of update objects
-        /// </summary>
-        [JsonProperty("update_request")]
-        public string UpdateRequest { get; private set; }
-
-        private BulkCountryUpdateResource()
-        {
-
-        }
+      return new Request(
+          HttpMethod.Post,
+          Rest.Domain.Voice,
+          "/v1/DialingPermissions/BulkCountryUpdates",
+          postParams: options.GetParams(),
+          headerParams: null
+      );
     }
+
+    /// <summary>
+    /// Create a bulk update request to change voice dialing country permissions of one or more countries identified by the
+    /// corresponding [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
+    /// </summary>
+    /// <param name="options"> Create BulkCountryUpdate parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of BulkCountryUpdate </returns>
+    public static BulkCountryUpdateResource Create(CreateBulkCountryUpdateOptions options,
+                                                   ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildCreateRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Create a bulk update request to change voice dialing country permissions of one or more countries identified by the
+    /// corresponding [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
+    /// </summary>
+    /// <param name="options"> Create BulkCountryUpdate parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of BulkCountryUpdate </returns>
+    public static async System.Threading.Tasks.Task<BulkCountryUpdateResource> CreateAsync(CreateBulkCountryUpdateOptions options,
+                                                                                           ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildCreateRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// Create a bulk update request to change voice dialing country permissions of one or more countries identified by the
+    /// corresponding [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
+    /// </summary>
+    /// <param name="updateRequest"> URL encoded JSON array of update objects </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of BulkCountryUpdate </returns>
+    public static BulkCountryUpdateResource Create(string updateRequest, ITwilioRestClient client = null)
+    {
+      var options = new CreateBulkCountryUpdateOptions(updateRequest);
+      return Create(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Create a bulk update request to change voice dialing country permissions of one or more countries identified by the
+    /// corresponding [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
+    /// </summary>
+    /// <param name="updateRequest"> URL encoded JSON array of update objects </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of BulkCountryUpdate </returns>
+    public static async System.Threading.Tasks.Task<BulkCountryUpdateResource> CreateAsync(string updateRequest,
+                                                                                           ITwilioRestClient client = null)
+    {
+      var options = new CreateBulkCountryUpdateOptions(updateRequest);
+      return await CreateAsync(options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Converts a JSON string into a BulkCountryUpdateResource object
+    /// </summary>
+    /// <param name="json"> Raw JSON string </param>
+    /// <returns> BulkCountryUpdateResource object represented by the provided JSON </returns>
+    public static BulkCountryUpdateResource FromJson(string json)
+    {
+      // Convert all checked exceptions to Runtime
+      try
+      {
+        return JsonConvert.DeserializeObject<BulkCountryUpdateResource>(json);
+      }
+      catch (JsonException e)
+      {
+        throw new ApiException(e.Message, e);
+      }
+    }
+
+    /// <summary>
+    /// The number of countries updated
+    /// </summary>
+    [JsonProperty("update_count")]
+    public int? UpdateCount { get; private set; }
+    /// <summary>
+    /// A URL encoded JSON array of update objects
+    /// </summary>
+    [JsonProperty("update_request")]
+    public string UpdateRequest { get; private set; }
+
+    private BulkCountryUpdateResource()
+    {
+
+    }
+  }
 
 }

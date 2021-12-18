@@ -11,208 +11,208 @@ using Twilio.Converters;
 namespace Twilio.Rest.Sync.V1.Service.SyncMap
 {
 
+  /// <summary>
+  /// Fetch a specific Sync Map Permission.
+  /// </summary>
+  public class FetchSyncMapPermissionOptions : IOptions<SyncMapPermissionResource>
+  {
     /// <summary>
-    /// Fetch a specific Sync Map Permission.
+    /// The SID of the Sync Service with the Sync Map Permission resource to fetch
     /// </summary>
-    public class FetchSyncMapPermissionOptions : IOptions<SyncMapPermissionResource>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The SID of the Sync Map with the Sync Map Permission resource to fetch
+    /// </summary>
+    public string PathMapSid { get; }
+    /// <summary>
+    /// The application-defined string that uniquely identifies the User's Sync Map Permission resource to fetch
+    /// </summary>
+    public string PathIdentity { get; }
+
+    /// <summary>
+    /// Construct a new FetchSyncMapPermissionOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Map Permission resource to fetch </param>
+    /// <param name="pathMapSid"> The SID of the Sync Map with the Sync Map Permission resource to fetch </param>
+    /// <param name="pathIdentity"> The application-defined string that uniquely identifies the User's Sync Map Permission
+    ///                    resource to fetch </param>
+    public FetchSyncMapPermissionOptions(string pathServiceSid, string pathMapSid, string pathIdentity)
     {
-        /// <summary>
-        /// The SID of the Sync Service with the Sync Map Permission resource to fetch
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The SID of the Sync Map with the Sync Map Permission resource to fetch
-        /// </summary>
-        public string PathMapSid { get; }
-        /// <summary>
-        /// The application-defined string that uniquely identifies the User's Sync Map Permission resource to fetch
-        /// </summary>
-        public string PathIdentity { get; }
-
-        /// <summary>
-        /// Construct a new FetchSyncMapPermissionOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Map Permission resource to fetch </param>
-        /// <param name="pathMapSid"> The SID of the Sync Map with the Sync Map Permission resource to fetch </param>
-        /// <param name="pathIdentity"> The application-defined string that uniquely identifies the User's Sync Map Permission
-        ///                    resource to fetch </param>
-        public FetchSyncMapPermissionOptions(string pathServiceSid, string pathMapSid, string pathIdentity)
-        {
-            PathServiceSid = pathServiceSid;
-            PathMapSid = pathMapSid;
-            PathIdentity = pathIdentity;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathServiceSid = pathServiceSid;
+      PathMapSid = pathMapSid;
+      PathIdentity = pathIdentity;
     }
 
     /// <summary>
-    /// Delete a specific Sync Map Permission.
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteSyncMapPermissionOptions : IOptions<SyncMapPermissionResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Sync Service with the Sync Map Permission resource to delete
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The SID of the Sync Map with the Sync Map Permission resource to delete
-        /// </summary>
-        public string PathMapSid { get; }
-        /// <summary>
-        /// The application-defined string that uniquely identifies the User's Sync Map Permission resource to delete
-        /// </summary>
-        public string PathIdentity { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new DeleteSyncMapPermissionOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Map Permission resource to delete </param>
-        /// <param name="pathMapSid"> The SID of the Sync Map with the Sync Map Permission resource to delete </param>
-        /// <param name="pathIdentity"> The application-defined string that uniquely identifies the User's Sync Map Permission
-        ///                    resource to delete </param>
-        public DeleteSyncMapPermissionOptions(string pathServiceSid, string pathMapSid, string pathIdentity)
-        {
-            PathServiceSid = pathServiceSid;
-            PathMapSid = pathMapSid;
-            PathIdentity = pathIdentity;
-        }
+  /// <summary>
+  /// Delete a specific Sync Map Permission.
+  /// </summary>
+  public class DeleteSyncMapPermissionOptions : IOptions<SyncMapPermissionResource>
+  {
+    /// <summary>
+    /// The SID of the Sync Service with the Sync Map Permission resource to delete
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The SID of the Sync Map with the Sync Map Permission resource to delete
+    /// </summary>
+    public string PathMapSid { get; }
+    /// <summary>
+    /// The application-defined string that uniquely identifies the User's Sync Map Permission resource to delete
+    /// </summary>
+    public string PathIdentity { get; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+    /// <summary>
+    /// Construct a new DeleteSyncMapPermissionOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Map Permission resource to delete </param>
+    /// <param name="pathMapSid"> The SID of the Sync Map with the Sync Map Permission resource to delete </param>
+    /// <param name="pathIdentity"> The application-defined string that uniquely identifies the User's Sync Map Permission
+    ///                    resource to delete </param>
+    public DeleteSyncMapPermissionOptions(string pathServiceSid, string pathMapSid, string pathIdentity)
+    {
+      PathServiceSid = pathServiceSid;
+      PathMapSid = pathMapSid;
+      PathIdentity = pathIdentity;
     }
 
     /// <summary>
-    /// Retrieve a list of all Permissions applying to a Sync Map.
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadSyncMapPermissionOptions : ReadOptions<SyncMapPermissionResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Sync Service with the Sync Map Permission resources to read
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The SID of the Sync Map with the Permission resources to read
-        /// </summary>
-        public string PathMapSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new ReadSyncMapPermissionOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Map Permission resources to read </param>
-        /// <param name="pathMapSid"> The SID of the Sync Map with the Permission resources to read </param>
-        public ReadSyncMapPermissionOptions(string pathServiceSid, string pathMapSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathMapSid = pathMapSid;
-        }
+  /// <summary>
+  /// Retrieve a list of all Permissions applying to a Sync Map.
+  /// </summary>
+  public class ReadSyncMapPermissionOptions : ReadOptions<SyncMapPermissionResource>
+  {
+    /// <summary>
+    /// The SID of the Sync Service with the Sync Map Permission resources to read
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The SID of the Sync Map with the Permission resources to read
+    /// </summary>
+    public string PathMapSid { get; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new ReadSyncMapPermissionOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Map Permission resources to read </param>
+    /// <param name="pathMapSid"> The SID of the Sync Map with the Permission resources to read </param>
+    public ReadSyncMapPermissionOptions(string pathServiceSid, string pathMapSid)
+    {
+      PathServiceSid = pathServiceSid;
+      PathMapSid = pathMapSid;
     }
 
     /// <summary>
-    /// Update an identity's access to a specific Sync Map.
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateSyncMapPermissionOptions : IOptions<SyncMapPermissionResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Sync Service with the Sync Map Permission resource to update
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The SID of the Sync Map with the Sync Map Permission resource to update
-        /// </summary>
-        public string PathMapSid { get; }
-        /// <summary>
-        /// The application-defined string that uniquely identifies the User's Sync Map Permission resource to update
-        /// </summary>
-        public string PathIdentity { get; }
-        /// <summary>
-        /// Read access
-        /// </summary>
-        public bool? Read { get; }
-        /// <summary>
-        /// Write access
-        /// </summary>
-        public bool? Write { get; }
-        /// <summary>
-        /// Manage access
-        /// </summary>
-        public bool? Manage { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new UpdateSyncMapPermissionOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Map Permission resource to update </param>
-        /// <param name="pathMapSid"> The SID of the Sync Map with the Sync Map Permission resource to update </param>
-        /// <param name="pathIdentity"> The application-defined string that uniquely identifies the User's Sync Map Permission
-        ///                    resource to update </param>
-        /// <param name="read"> Read access </param>
-        /// <param name="write"> Write access </param>
-        /// <param name="manage"> Manage access </param>
-        public UpdateSyncMapPermissionOptions(string pathServiceSid,
-                                              string pathMapSid,
-                                              string pathIdentity,
-                                              bool? read,
-                                              bool? write,
-                                              bool? manage)
-        {
-            PathServiceSid = pathServiceSid;
-            PathMapSid = pathMapSid;
-            PathIdentity = pathIdentity;
-            Read = read;
-            Write = write;
-            Manage = manage;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Read != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Read", Read.Value.ToString().ToLower()));
-            }
-
-            if (Write != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Write", Write.Value.ToString().ToLower()));
-            }
-
-            if (Manage != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Manage", Manage.Value.ToString().ToLower()));
-            }
-
-            return p;
-        }
+      return p;
     }
+  }
+
+  /// <summary>
+  /// Update an identity's access to a specific Sync Map.
+  /// </summary>
+  public class UpdateSyncMapPermissionOptions : IOptions<SyncMapPermissionResource>
+  {
+    /// <summary>
+    /// The SID of the Sync Service with the Sync Map Permission resource to update
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The SID of the Sync Map with the Sync Map Permission resource to update
+    /// </summary>
+    public string PathMapSid { get; }
+    /// <summary>
+    /// The application-defined string that uniquely identifies the User's Sync Map Permission resource to update
+    /// </summary>
+    public string PathIdentity { get; }
+    /// <summary>
+    /// Read access
+    /// </summary>
+    public bool? Read { get; }
+    /// <summary>
+    /// Write access
+    /// </summary>
+    public bool? Write { get; }
+    /// <summary>
+    /// Manage access
+    /// </summary>
+    public bool? Manage { get; }
+
+    /// <summary>
+    /// Construct a new UpdateSyncMapPermissionOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Map Permission resource to update </param>
+    /// <param name="pathMapSid"> The SID of the Sync Map with the Sync Map Permission resource to update </param>
+    /// <param name="pathIdentity"> The application-defined string that uniquely identifies the User's Sync Map Permission
+    ///                    resource to update </param>
+    /// <param name="read"> Read access </param>
+    /// <param name="write"> Write access </param>
+    /// <param name="manage"> Manage access </param>
+    public UpdateSyncMapPermissionOptions(string pathServiceSid,
+                                          string pathMapSid,
+                                          string pathIdentity,
+                                          bool? read,
+                                          bool? write,
+                                          bool? manage)
+    {
+      PathServiceSid = pathServiceSid;
+      PathMapSid = pathMapSid;
+      PathIdentity = pathIdentity;
+      Read = read;
+      Write = write;
+      Manage = manage;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (Read != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Read", Read.Value.ToString().ToLower()));
+      }
+
+      if (Write != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Write", Write.Value.ToString().ToLower()));
+      }
+
+      if (Manage != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Manage", Manage.Value.ToString().ToLower()));
+      }
+
+      return p;
+    }
+  }
 
 }

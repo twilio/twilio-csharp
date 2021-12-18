@@ -11,69 +11,69 @@ using Twilio.Converters;
 namespace Twilio.Rest.Studio.V2
 {
 
+  /// <summary>
+  /// Validate flow JSON definition
+  /// </summary>
+  public class UpdateFlowValidateOptions : IOptions<FlowValidateResource>
+  {
     /// <summary>
-    /// Validate flow JSON definition
+    /// The string that you assigned to describe the Flow
     /// </summary>
-    public class UpdateFlowValidateOptions : IOptions<FlowValidateResource>
+    public string FriendlyName { get; }
+    /// <summary>
+    /// The status of the Flow
+    /// </summary>
+    public FlowValidateResource.StatusEnum Status { get; }
+    /// <summary>
+    /// JSON representation of flow definition
+    /// </summary>
+    public object Definition { get; }
+    /// <summary>
+    /// Description of change made in the revision
+    /// </summary>
+    public string CommitMessage { get; set; }
+
+    /// <summary>
+    /// Construct a new UpdateFlowValidateOptions
+    /// </summary>
+    /// <param name="friendlyName"> The string that you assigned to describe the Flow </param>
+    /// <param name="status"> The status of the Flow </param>
+    /// <param name="definition"> JSON representation of flow definition </param>
+    public UpdateFlowValidateOptions(string friendlyName, FlowValidateResource.StatusEnum status, object definition)
     {
-        /// <summary>
-        /// The string that you assigned to describe the Flow
-        /// </summary>
-        public string FriendlyName { get; }
-        /// <summary>
-        /// The status of the Flow
-        /// </summary>
-        public FlowValidateResource.StatusEnum Status { get; }
-        /// <summary>
-        /// JSON representation of flow definition
-        /// </summary>
-        public object Definition { get; }
-        /// <summary>
-        /// Description of change made in the revision
-        /// </summary>
-        public string CommitMessage { get; set; }
-
-        /// <summary>
-        /// Construct a new UpdateFlowValidateOptions
-        /// </summary>
-        /// <param name="friendlyName"> The string that you assigned to describe the Flow </param>
-        /// <param name="status"> The status of the Flow </param>
-        /// <param name="definition"> JSON representation of flow definition </param>
-        public UpdateFlowValidateOptions(string friendlyName, FlowValidateResource.StatusEnum status, object definition)
-        {
-            FriendlyName = friendlyName;
-            Status = status;
-            Definition = definition;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
-
-            if (Status != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
-            }
-
-            if (Definition != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Definition", Serializers.JsonObject(Definition)));
-            }
-
-            if (CommitMessage != null)
-            {
-                p.Add(new KeyValuePair<string, string>("CommitMessage", CommitMessage));
-            }
-
-            return p;
-        }
+      FriendlyName = friendlyName;
+      Status = status;
+      Definition = definition;
     }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
+
+      if (Status != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
+      }
+
+      if (Definition != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Definition", Serializers.JsonObject(Definition)));
+      }
+
+      if (CommitMessage != null)
+      {
+        p.Add(new KeyValuePair<string, string>("CommitMessage", CommitMessage));
+      }
+
+      return p;
+    }
+  }
 
 }

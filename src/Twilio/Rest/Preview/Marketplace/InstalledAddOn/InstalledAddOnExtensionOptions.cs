@@ -11,128 +11,128 @@ using Twilio.Converters;
 namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// Fetch an instance of an Extension for the Installed Add-on.
+  /// </summary>
+  public class FetchInstalledAddOnExtensionOptions : IOptions<InstalledAddOnExtensionResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// Fetch an instance of an Extension for the Installed Add-on.
+    /// The SID of the InstalledAddOn resource with the extension to fetch
     /// </summary>
-    public class FetchInstalledAddOnExtensionOptions : IOptions<InstalledAddOnExtensionResource>
+    public string PathInstalledAddOnSid { get; }
+    /// <summary>
+    /// The SID of the InstalledAddOn Extension resource to fetch
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchInstalledAddOnExtensionOptions
+    /// </summary>
+    /// <param name="pathInstalledAddOnSid"> The SID of the InstalledAddOn resource with the extension to fetch </param>
+    /// <param name="pathSid"> The SID of the InstalledAddOn Extension resource to fetch </param>
+    public FetchInstalledAddOnExtensionOptions(string pathInstalledAddOnSid, string pathSid)
     {
-        /// <summary>
-        /// The SID of the InstalledAddOn resource with the extension to fetch
-        /// </summary>
-        public string PathInstalledAddOnSid { get; }
-        /// <summary>
-        /// The SID of the InstalledAddOn Extension resource to fetch
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchInstalledAddOnExtensionOptions
-        /// </summary>
-        /// <param name="pathInstalledAddOnSid"> The SID of the InstalledAddOn resource with the extension to fetch </param>
-        /// <param name="pathSid"> The SID of the InstalledAddOn Extension resource to fetch </param>
-        public FetchInstalledAddOnExtensionOptions(string pathInstalledAddOnSid, string pathSid)
-        {
-            PathInstalledAddOnSid = pathInstalledAddOnSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathInstalledAddOnSid = pathInstalledAddOnSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// Update an Extension for an Add-on installation.
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateInstalledAddOnExtensionOptions : IOptions<InstalledAddOnExtensionResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the InstalledAddOn resource with the extension to update
-        /// </summary>
-        public string PathInstalledAddOnSid { get; }
-        /// <summary>
-        /// The SID of the InstalledAddOn Extension resource to update
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// Whether the Extension should be invoked
-        /// </summary>
-        public bool? Enabled { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new UpdateInstalledAddOnExtensionOptions
-        /// </summary>
-        /// <param name="pathInstalledAddOnSid"> The SID of the InstalledAddOn resource with the extension to update </param>
-        /// <param name="pathSid"> The SID of the InstalledAddOn Extension resource to update </param>
-        /// <param name="enabled"> Whether the Extension should be invoked </param>
-        public UpdateInstalledAddOnExtensionOptions(string pathInstalledAddOnSid, string pathSid, bool? enabled)
-        {
-            PathInstalledAddOnSid = pathInstalledAddOnSid;
-            PathSid = pathSid;
-            Enabled = enabled;
-        }
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// Update an Extension for an Add-on installation.
+  /// </summary>
+  public class UpdateInstalledAddOnExtensionOptions : IOptions<InstalledAddOnExtensionResource>
+  {
+    /// <summary>
+    /// The SID of the InstalledAddOn resource with the extension to update
+    /// </summary>
+    public string PathInstalledAddOnSid { get; }
+    /// <summary>
+    /// The SID of the InstalledAddOn Extension resource to update
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// Whether the Extension should be invoked
+    /// </summary>
+    public bool? Enabled { get; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Enabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Enabled", Enabled.Value.ToString().ToLower()));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new UpdateInstalledAddOnExtensionOptions
+    /// </summary>
+    /// <param name="pathInstalledAddOnSid"> The SID of the InstalledAddOn resource with the extension to update </param>
+    /// <param name="pathSid"> The SID of the InstalledAddOn Extension resource to update </param>
+    /// <param name="enabled"> Whether the Extension should be invoked </param>
+    public UpdateInstalledAddOnExtensionOptions(string pathInstalledAddOnSid, string pathSid, bool? enabled)
+    {
+      PathInstalledAddOnSid = pathInstalledAddOnSid;
+      PathSid = pathSid;
+      Enabled = enabled;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// Retrieve a list of Extensions for the Installed Add-on.
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadInstalledAddOnExtensionOptions : ReadOptions<InstalledAddOnExtensionResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the InstalledAddOn resource with the extensions to read
-        /// </summary>
-        public string PathInstalledAddOnSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (Enabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Enabled", Enabled.Value.ToString().ToLower()));
+      }
 
-        /// <summary>
-        /// Construct a new ReadInstalledAddOnExtensionOptions
-        /// </summary>
-        /// <param name="pathInstalledAddOnSid"> The SID of the InstalledAddOn resource with the extensions to read </param>
-        public ReadInstalledAddOnExtensionOptions(string pathInstalledAddOnSid)
-        {
-            PathInstalledAddOnSid = pathInstalledAddOnSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+      return p;
     }
+  }
+
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// Retrieve a list of Extensions for the Installed Add-on.
+  /// </summary>
+  public class ReadInstalledAddOnExtensionOptions : ReadOptions<InstalledAddOnExtensionResource>
+  {
+    /// <summary>
+    /// The SID of the InstalledAddOn resource with the extensions to read
+    /// </summary>
+    public string PathInstalledAddOnSid { get; }
+
+    /// <summary>
+    /// Construct a new ReadInstalledAddOnExtensionOptions
+    /// </summary>
+    /// <param name="pathInstalledAddOnSid"> The SID of the InstalledAddOn resource with the extensions to read </param>
+    public ReadInstalledAddOnExtensionOptions(string pathInstalledAddOnSid)
+    {
+      PathInstalledAddOnSid = pathInstalledAddOnSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
 
 }

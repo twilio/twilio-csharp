@@ -20,156 +20,156 @@ using Twilio.Http;
 namespace Twilio.Rest.Verify.V2.Service.Entity.Challenge
 {
 
-    public class NotificationResource : Resource
+  public class NotificationResource : Resource
+  {
+    private static Request BuildCreateRequest(CreateNotificationOptions options, ITwilioRestClient client)
     {
-        private static Request BuildCreateRequest(CreateNotificationOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Post,
-                Rest.Domain.Verify,
-                "/v2/Services/" + options.PathServiceSid + "/Entities/" + options.PathIdentity + "/Challenges/" + options.PathChallengeSid + "/Notifications",
-                postParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// Create a new Notification for the corresponding Challenge
-        /// </summary>
-        /// <param name="options"> Create Notification parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Notification </returns>
-        public static NotificationResource Create(CreateNotificationOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildCreateRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Create a new Notification for the corresponding Challenge
-        /// </summary>
-        /// <param name="options"> Create Notification parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Notification </returns>
-        public static async System.Threading.Tasks.Task<NotificationResource> CreateAsync(CreateNotificationOptions options,
-                                                                                          ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// Create a new Notification for the corresponding Challenge
-        /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
-        /// <param name="pathChallengeSid"> Challenge Sid. </param>
-        /// <param name="ttl"> How long, in seconds, the notification is valid. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Notification </returns>
-        public static NotificationResource Create(string pathServiceSid,
-                                                  string pathIdentity,
-                                                  string pathChallengeSid,
-                                                  int? ttl = null,
-                                                  ITwilioRestClient client = null)
-        {
-            var options = new CreateNotificationOptions(pathServiceSid, pathIdentity, pathChallengeSid){Ttl = ttl};
-            return Create(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Create a new Notification for the corresponding Challenge
-        /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
-        /// <param name="pathChallengeSid"> Challenge Sid. </param>
-        /// <param name="ttl"> How long, in seconds, the notification is valid. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Notification </returns>
-        public static async System.Threading.Tasks.Task<NotificationResource> CreateAsync(string pathServiceSid,
-                                                                                          string pathIdentity,
-                                                                                          string pathChallengeSid,
-                                                                                          int? ttl = null,
-                                                                                          ITwilioRestClient client = null)
-        {
-            var options = new CreateNotificationOptions(pathServiceSid, pathIdentity, pathChallengeSid){Ttl = ttl};
-            return await CreateAsync(options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Converts a JSON string into a NotificationResource object
-        /// </summary>
-        /// <param name="json"> Raw JSON string </param>
-        /// <returns> NotificationResource object represented by the provided JSON </returns>
-        public static NotificationResource FromJson(string json)
-        {
-            // Convert all checked exceptions to Runtime
-            try
-            {
-                return JsonConvert.DeserializeObject<NotificationResource>(json);
-            }
-            catch (JsonException e)
-            {
-                throw new ApiException(e.Message, e);
-            }
-        }
-
-        /// <summary>
-        /// A string that uniquely identifies this Notification.
-        /// </summary>
-        [JsonProperty("sid")]
-        public string Sid { get; private set; }
-        /// <summary>
-        /// Account Sid.
-        /// </summary>
-        [JsonProperty("account_sid")]
-        public string AccountSid { get; private set; }
-        /// <summary>
-        /// Service Sid.
-        /// </summary>
-        [JsonProperty("service_sid")]
-        public string ServiceSid { get; private set; }
-        /// <summary>
-        /// Entity Sid.
-        /// </summary>
-        [JsonProperty("entity_sid")]
-        public string EntitySid { get; private set; }
-        /// <summary>
-        /// Unique external identifier of the Entity
-        /// </summary>
-        [JsonProperty("identity")]
-        public string Identity { get; private set; }
-        /// <summary>
-        /// Challenge Sid.
-        /// </summary>
-        [JsonProperty("challenge_sid")]
-        public string ChallengeSid { get; private set; }
-        /// <summary>
-        /// The priority of the notification.
-        /// </summary>
-        [JsonProperty("priority")]
-        public string Priority { get; private set; }
-        /// <summary>
-        /// How long, in seconds, the notification is valid.
-        /// </summary>
-        [JsonProperty("ttl")]
-        public int? Ttl { get; private set; }
-        /// <summary>
-        /// The date this Notification was created
-        /// </summary>
-        [JsonProperty("date_created")]
-        public DateTime? DateCreated { get; private set; }
-
-        private NotificationResource()
-        {
-
-        }
+      return new Request(
+          HttpMethod.Post,
+          Rest.Domain.Verify,
+          "/v2/Services/" + options.PathServiceSid + "/Entities/" + options.PathIdentity + "/Challenges/" + options.PathChallengeSid + "/Notifications",
+          postParams: options.GetParams(),
+          headerParams: null
+      );
     }
+
+    /// <summary>
+    /// Create a new Notification for the corresponding Challenge
+    /// </summary>
+    /// <param name="options"> Create Notification parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Notification </returns>
+    public static NotificationResource Create(CreateNotificationOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildCreateRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Create a new Notification for the corresponding Challenge
+    /// </summary>
+    /// <param name="options"> Create Notification parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Notification </returns>
+    public static async System.Threading.Tasks.Task<NotificationResource> CreateAsync(CreateNotificationOptions options,
+                                                                                      ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildCreateRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// Create a new Notification for the corresponding Challenge
+    /// </summary>
+    /// <param name="pathServiceSid"> Service Sid. </param>
+    /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
+    /// <param name="pathChallengeSid"> Challenge Sid. </param>
+    /// <param name="ttl"> How long, in seconds, the notification is valid. </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Notification </returns>
+    public static NotificationResource Create(string pathServiceSid,
+                                              string pathIdentity,
+                                              string pathChallengeSid,
+                                              int? ttl = null,
+                                              ITwilioRestClient client = null)
+    {
+      var options = new CreateNotificationOptions(pathServiceSid, pathIdentity, pathChallengeSid) { Ttl = ttl };
+      return Create(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Create a new Notification for the corresponding Challenge
+    /// </summary>
+    /// <param name="pathServiceSid"> Service Sid. </param>
+    /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
+    /// <param name="pathChallengeSid"> Challenge Sid. </param>
+    /// <param name="ttl"> How long, in seconds, the notification is valid. </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Notification </returns>
+    public static async System.Threading.Tasks.Task<NotificationResource> CreateAsync(string pathServiceSid,
+                                                                                      string pathIdentity,
+                                                                                      string pathChallengeSid,
+                                                                                      int? ttl = null,
+                                                                                      ITwilioRestClient client = null)
+    {
+      var options = new CreateNotificationOptions(pathServiceSid, pathIdentity, pathChallengeSid) { Ttl = ttl };
+      return await CreateAsync(options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Converts a JSON string into a NotificationResource object
+    /// </summary>
+    /// <param name="json"> Raw JSON string </param>
+    /// <returns> NotificationResource object represented by the provided JSON </returns>
+    public static NotificationResource FromJson(string json)
+    {
+      // Convert all checked exceptions to Runtime
+      try
+      {
+        return JsonConvert.DeserializeObject<NotificationResource>(json);
+      }
+      catch (JsonException e)
+      {
+        throw new ApiException(e.Message, e);
+      }
+    }
+
+    /// <summary>
+    /// A string that uniquely identifies this Notification.
+    /// </summary>
+    [JsonProperty("sid")]
+    public string Sid { get; private set; }
+    /// <summary>
+    /// Account Sid.
+    /// </summary>
+    [JsonProperty("account_sid")]
+    public string AccountSid { get; private set; }
+    /// <summary>
+    /// Service Sid.
+    /// </summary>
+    [JsonProperty("service_sid")]
+    public string ServiceSid { get; private set; }
+    /// <summary>
+    /// Entity Sid.
+    /// </summary>
+    [JsonProperty("entity_sid")]
+    public string EntitySid { get; private set; }
+    /// <summary>
+    /// Unique external identifier of the Entity
+    /// </summary>
+    [JsonProperty("identity")]
+    public string Identity { get; private set; }
+    /// <summary>
+    /// Challenge Sid.
+    /// </summary>
+    [JsonProperty("challenge_sid")]
+    public string ChallengeSid { get; private set; }
+    /// <summary>
+    /// The priority of the notification.
+    /// </summary>
+    [JsonProperty("priority")]
+    public string Priority { get; private set; }
+    /// <summary>
+    /// How long, in seconds, the notification is valid.
+    /// </summary>
+    [JsonProperty("ttl")]
+    public int? Ttl { get; private set; }
+    /// <summary>
+    /// The date this Notification was created
+    /// </summary>
+    [JsonProperty("date_created")]
+    public DateTime? DateCreated { get; private set; }
+
+    private NotificationResource()
+    {
+
+    }
+  }
 
 }

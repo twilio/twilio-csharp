@@ -8,156 +8,159 @@ using Newtonsoft.Json;
 
 namespace Twilio.Tests.Jwt.AccessToken
 {
-    class TestToken : Token
+  class TestToken : Token
+  {
+    public TestToken(
+        string accountSid,
+        string signingKeySid,
+        string secret,
+        string identity = null,
+        DateTime? expiration = null,
+        DateTime? nbf = null,
+        HashSet<IGrant> grants = null,
+        string region = null
+    ) : base(accountSid, signingKeySid, secret, identity, expiration, nbf, grants, region) { }
+  }
+
+  [TestFixture]
+  public class AccessTokenTests
+  {
+    private static readonly string Secret = "superdupersecretsecret";
+
+    private Dictionary<string, object> ToDict(object o)
     {
-        public TestToken(
-            string accountSid,
-            string signingKeySid,
-            string secret,
-            string identity = null,
-            DateTime? expiration = null,
-            DateTime? nbf = null,
-            HashSet<IGrant> grants = null,
-            string region = null
-        ) : base(accountSid, signingKeySid, secret, identity, expiration, nbf, grants, region) {}
+      return JsonConvert.DeserializeObject<Dictionary<string, object>>(o.ToString());
     }
 
-    [TestFixture]
-    public class AccessTokenTests
+    [Test]
+    public void TestBuildToken()
     {
-        private static readonly string Secret = "superdupersecretsecret";
+      var jwt = new TestToken("AC456", "SK123", Secret).ToJwt();
 
-        private Dictionary<string, object> ToDict(object o)
-        {
-            return JsonConvert.DeserializeObject<Dictionary<string, object>>(o.ToString());
-        }
+      var decoded = new DecodedJwt(jwt, Secret);
+      var payload = decoded.Payload;
+      Assert.IsNotNull(payload);
 
-        [Test]
-        public void TestBuildToken()
-        {
-            var jwt = new TestToken("AC456", "SK123", Secret).ToJwt();
+      Assert.AreEqual("SK123", payload["iss"]);
+      Assert.AreEqual("AC456", payload["sub"]);
 
-            var decoded = new DecodedJwt(jwt, Secret);
-            var payload = decoded.Payload;
-            Assert.IsNotNull(payload);
+      Assert.Greater(Convert.ToInt64(payload["exp"]), BaseJwt.ConvertToUnixTimestamp(DateTime.UtcNow));
+      Assert.AreEqual("{}", payload["grants"].ToString());
+    }
 
-            Assert.AreEqual("SK123", payload["iss"]);
-            Assert.AreEqual("AC456", payload["sub"]);
+    [Test]
+    public void TestHaveRegion()
+    {
+      var now = DateTime.UtcNow;
+      var token = new TestToken("AC456", "SK123", Secret, region: "foo").ToJwt();
+      Assert.IsNotNull(token);
+      Assert.IsNotEmpty(token);
 
-            Assert.Greater(Convert.ToInt64(payload["exp"]), BaseJwt.ConvertToUnixTimestamp(DateTime.UtcNow));
-            Assert.AreEqual("{}", payload["grants"].ToString());
-        }
+      var decoded = new DecodedJwt(token, Secret);
+      var header = decoded.Header;
+      Assert.IsNotNull(header);
+      Assert.AreEqual("twilio-fpa;v=1", header["cty"]);
+      Assert.AreEqual("foo", header["twr"]);
+    }
 
-        [Test]
-        public void TestHaveRegion()
-        {
-            var now = DateTime.UtcNow;
-            var token = new TestToken("AC456", "SK123", Secret, region: "foo").ToJwt();
-            Assert.IsNotNull(token);
-            Assert.IsNotEmpty(token);
+    [Test]
+    public void TestEmptyRegion()
+    {
+      var now = DateTime.UtcNow;
+      var token = new TestToken("AC456", "SK123", Secret).ToJwt();
+      Assert.IsNotNull(token);
+      Assert.IsNotEmpty(token);
 
-            var decoded = new DecodedJwt(token, Secret);
-            var header = decoded.Header;
-            Assert.IsNotNull(header);
-            Assert.AreEqual("twilio-fpa;v=1", header["cty"]);
-            Assert.AreEqual("foo", header["twr"]);
-        }
+      var decoded = new DecodedJwt(token, Secret);
+      var header = decoded.Header;
+      Assert.IsNotNull(header);
+      Assert.AreEqual("twilio-fpa;v=1", header["cty"]);
 
-        [Test]
-        public void TestEmptyRegion()
-        {
-            var now = DateTime.UtcNow;
-            var token = new TestToken("AC456", "SK123", Secret).ToJwt();
-            Assert.IsNotNull(token);
-            Assert.IsNotEmpty(token);
+      try
+      {
+        var twr = header["twr"];
+        Assert.Fail();
+      }
+      catch (KeyNotFoundException)
+      {
+        // Pass
+      }
+    }
 
-            var decoded = new DecodedJwt(token, Secret);
-            var header = decoded.Header;
-            Assert.IsNotNull(header);
-            Assert.AreEqual("twilio-fpa;v=1", header["cty"]);
-            
-            try {
-                var twr = header["twr"];
-                Assert.Fail();
-            } catch (KeyNotFoundException) {
-                // Pass
-            }
-        }
+    [Test]
+    public void TestHaveNbf()
+    {
+      var now = DateTime.UtcNow;
+      var token = new TestToken("AC456", "SK123", Secret, nbf: now).ToJwt();
+      Assert.IsNotNull(token);
+      Assert.IsNotEmpty(token);
 
-        [Test]
-        public void TestHaveNbf()
-        {
-            var now = DateTime.UtcNow;
-            var token = new TestToken("AC456", "SK123", Secret, nbf: now).ToJwt();
-            Assert.IsNotNull(token);
-            Assert.IsNotEmpty(token);
+      var decoded = new DecodedJwt(token, Secret);
+      var payload = decoded.Payload;
+      Assert.IsNotNull(payload);
 
-            var decoded = new DecodedJwt(token, Secret);
-            var payload = decoded.Payload;
-            Assert.IsNotNull(payload);
+      Assert.AreEqual("SK123", payload["iss"]);
+      Assert.AreEqual("AC456", payload["sub"]);
+      Assert.AreEqual(BaseJwt.ConvertToUnixTimestamp(now), Convert.ToInt64(payload["nbf"]));
+      Assert.Greater(Convert.ToInt64(payload["exp"]), BaseJwt.ConvertToUnixTimestamp(DateTime.UtcNow));
 
-            Assert.AreEqual("SK123", payload["iss"]);
-            Assert.AreEqual("AC456", payload["sub"]);
-            Assert.AreEqual(BaseJwt.ConvertToUnixTimestamp(now), Convert.ToInt64(payload["nbf"]));
-            Assert.Greater(Convert.ToInt64(payload["exp"]), BaseJwt.ConvertToUnixTimestamp(DateTime.UtcNow));
+      Assert.AreEqual("{}", payload["grants"].ToString());
+    }
 
-            Assert.AreEqual("{}", payload["grants"].ToString());
-        }
-
-        [Test]
-        public void TestAddGrant()
-        {
-            var grants = new HashSet<IGrant>
+    [Test]
+    public void TestAddGrant()
+    {
+      var grants = new HashSet<IGrant>
             {
-                { new ConversationsGrant() }
+                { new VideoGrant() }
             };
-            var token = new TestToken("AC456", "SK123", Secret, grants: grants).ToJwt();
-            Assert.IsNotNull(token);
-            Assert.IsNotEmpty(token);
+      var token = new TestToken("AC456", "SK123", Secret, grants: grants).ToJwt();
+      Assert.IsNotNull(token);
+      Assert.IsNotEmpty(token);
 
-            var decoded = new DecodedJwt(token, Secret);
-            var payload = decoded.Payload;
-            Assert.IsNotNull(payload);
+      var decoded = new DecodedJwt(token, Secret);
+      var payload = decoded.Payload;
+      Assert.IsNotNull(payload);
 
-            Assert.AreEqual("SK123", payload["iss"]);
-            Assert.AreEqual("AC456", payload["sub"]);
-            Assert.Greater(Convert.ToInt64(payload["exp"]), BaseJwt.ConvertToUnixTimestamp(DateTime.UtcNow));
+      Assert.AreEqual("SK123", payload["iss"]);
+      Assert.AreEqual("AC456", payload["sub"]);
+      Assert.Greater(Convert.ToInt64(payload["exp"]), BaseJwt.ConvertToUnixTimestamp(DateTime.UtcNow));
 
-            var decodedGrants = ToDict(payload["grants"]);
-            Assert.AreEqual(1, decodedGrants.Count);
-            Assert.IsNotNull(decodedGrants["rtc"]);
-        }
+      var decodedGrants = ToDict(payload["grants"]);
+      Assert.AreEqual(1, decodedGrants.Count);
+      Assert.IsNotNull(decodedGrants["video"]); //rfr: update to refect video grant, rather than RTC
+    }
 
-        [Test]
-        public void TestAddGrants()
-        {
-            var grants = new HashSet<IGrant>
+    [Test]
+    public void TestAddGrants()
+    {
+      var grants = new HashSet<IGrant>
             {
-                { new ConversationsGrant() },
-                { new IpMessagingGrant() }
+                { new VideoGrant() },
+                { new ChatGrant() }
             };
-            var token = new TestToken("AC456", "SK123", Secret, grants: grants).ToJwt();
-            Assert.IsNotNull(token);
-            Assert.IsNotEmpty(token);
+      var token = new TestToken("AC456", "SK123", Secret, grants: grants).ToJwt();
+      Assert.IsNotNull(token);
+      Assert.IsNotEmpty(token);
 
-            var decoded = new DecodedJwt(token, Secret);
-            var payload = decoded.Payload;
-            Assert.IsNotNull(payload);
+      var decoded = new DecodedJwt(token, Secret);
+      var payload = decoded.Payload;
+      Assert.IsNotNull(payload);
 
-            Assert.AreEqual("SK123", payload["iss"]);
-            Assert.AreEqual("AC456", payload["sub"]);
-            Assert.Greater(Convert.ToInt64(payload["exp"]), BaseJwt.ConvertToUnixTimestamp(DateTime.UtcNow));
+      Assert.AreEqual("SK123", payload["iss"]);
+      Assert.AreEqual("AC456", payload["sub"]);
+      Assert.Greater(Convert.ToInt64(payload["exp"]), BaseJwt.ConvertToUnixTimestamp(DateTime.UtcNow));
 
-            var decodedGrants = ToDict(payload["grants"]);
-            Assert.AreEqual(2, decodedGrants.Count);
-            Assert.IsNotNull(decodedGrants["rtc"]);
-            Assert.IsNotNull(decodedGrants["ip_messaging"]);
-        }
+      var decodedGrants = ToDict(payload["grants"]);
+      Assert.AreEqual(2, decodedGrants.Count);
+      Assert.IsNotNull(decodedGrants["video"]);
+      Assert.IsNotNull(decodedGrants["chat"]);
+    }
 
-        [Test]
-        public void TestCreateVoiceGrant()
-        {
-            var grants = new HashSet<IGrant>
+    [Test]
+    public void TestCreateVoiceGrant()
+    {
+      var grants = new HashSet<IGrant>
             {
                 {
                     new VoiceGrant
@@ -168,36 +171,36 @@ namespace Twilio.Tests.Jwt.AccessToken
                     }
                 }
             };
-            var token = new TestToken("AC456", "SK123", Secret, grants: grants).ToJwt();
-            Assert.IsNotNull(token);
-            Assert.IsNotEmpty(token);
+      var token = new TestToken("AC456", "SK123", Secret, grants: grants).ToJwt();
+      Assert.IsNotNull(token);
+      Assert.IsNotEmpty(token);
 
-            var decoded = new DecodedJwt(token, Secret);
-            var payload = decoded.Payload;
-            Assert.IsNotNull(payload);
+      var decoded = new DecodedJwt(token, Secret);
+      var payload = decoded.Payload;
+      Assert.IsNotNull(payload);
 
-            Assert.AreEqual("SK123", payload["iss"]);
-            Assert.AreEqual("AC456", payload["sub"]);
-            Assert.Greater(Convert.ToInt64(payload["exp"]), BaseJwt.ConvertToUnixTimestamp(DateTime.UtcNow));
+      Assert.AreEqual("SK123", payload["iss"]);
+      Assert.AreEqual("AC456", payload["sub"]);
+      Assert.Greater(Convert.ToInt64(payload["exp"]), BaseJwt.ConvertToUnixTimestamp(DateTime.UtcNow));
 
-            var decodedGrants = ToDict(payload["grants"]);
-            Assert.AreEqual(1, decodedGrants.Count);
+      var decodedGrants = ToDict(payload["grants"]);
+      Assert.AreEqual(1, decodedGrants.Count);
 
-            var decodedPvg = decodedGrants["voice"];
-            var incoming = ToDict(decodedPvg.ToString())["incoming"];
-            Assert.AreEqual(true, ToDict(incoming)["allow"]);
+      var decodedPvg = decodedGrants["voice"];
+      var incoming = ToDict(decodedPvg.ToString())["incoming"];
+      Assert.AreEqual(true, ToDict(incoming)["allow"]);
 
-            var outgoing = ToDict(decodedPvg.ToString())["outgoing"];
-            Assert.AreEqual("AP123", ToDict(outgoing)["application_sid"]);
+      var outgoing = ToDict(decodedPvg.ToString())["outgoing"];
+      Assert.AreEqual("AP123", ToDict(outgoing)["application_sid"]);
 
-            var decodedParams = ToDict(outgoing)["params"];
-            Assert.AreEqual("bar", ToDict(decodedParams)["foo"]);
-        }
+      var decodedParams = ToDict(outgoing)["params"];
+      Assert.AreEqual("bar", ToDict(decodedParams)["foo"]);
+    }
 
-        [Test]
-        public void TestCreateChatGrant()
-        {
-            var grants = new HashSet<IGrant>
+    [Test]
+    public void TestCreateChatGrant()
+    {
+      var grants = new HashSet<IGrant>
             {
                 {
                     new ChatGrant
@@ -207,30 +210,30 @@ namespace Twilio.Tests.Jwt.AccessToken
                     }
                 }
             };
-            var token = new TestToken("AC456", "SK123", Secret, grants: grants).ToJwt();
-            Assert.IsNotNull(token);
-            Assert.IsNotEmpty(token);
+      var token = new TestToken("AC456", "SK123", Secret, grants: grants).ToJwt();
+      Assert.IsNotNull(token);
+      Assert.IsNotEmpty(token);
 
-            var decoded = new DecodedJwt(token, Secret);
-            var payload = decoded.Payload;
-            Assert.IsNotNull(payload);
+      var decoded = new DecodedJwt(token, Secret);
+      var payload = decoded.Payload;
+      Assert.IsNotNull(payload);
 
-            Assert.AreEqual("SK123", payload["iss"]);
-            Assert.AreEqual("AC456", payload["sub"]);
-            Assert.Greater(Convert.ToInt64(payload["exp"]), BaseJwt.ConvertToUnixTimestamp(DateTime.UtcNow));
+      Assert.AreEqual("SK123", payload["iss"]);
+      Assert.AreEqual("AC456", payload["sub"]);
+      Assert.Greater(Convert.ToInt64(payload["exp"]), BaseJwt.ConvertToUnixTimestamp(DateTime.UtcNow));
 
-            var decodedGrants = ToDict(payload["grants"]);
-            Assert.AreEqual(1, decodedGrants.Count);
+      var decodedGrants = ToDict(payload["grants"]);
+      Assert.AreEqual(1, decodedGrants.Count);
 
-            var decodedCg = ToDict(decodedGrants["chat"]);
-            Assert.AreEqual("IS123", decodedCg["service_sid"]);
-            Assert.AreEqual("foobar", decodedCg["endpoint_id"]);
-        }
+      var decodedCg = ToDict(decodedGrants["chat"]);
+      Assert.AreEqual("IS123", decodedCg["service_sid"]);
+      Assert.AreEqual("foobar", decodedCg["endpoint_id"]);
+    }
 
-        [Test]
-        public void TestCreateSyncGrant()
-        {
-            var grants = new HashSet<IGrant>
+    [Test]
+    public void TestCreateSyncGrant()
+    {
+      var grants = new HashSet<IGrant>
             {
                 {
                     new SyncGrant
@@ -240,57 +243,57 @@ namespace Twilio.Tests.Jwt.AccessToken
                     }
                 }
             };
-            var token = new TestToken("AC456", "SK123", Secret, grants: grants).ToJwt();
-            Assert.IsNotNull(token);
-            Assert.IsNotEmpty(token);
+      var token = new TestToken("AC456", "SK123", Secret, grants: grants).ToJwt();
+      Assert.IsNotNull(token);
+      Assert.IsNotEmpty(token);
 
-            var decoded = new DecodedJwt(token, Secret);
-            var payload = decoded.Payload;
-            Assert.IsNotNull(payload);
+      var decoded = new DecodedJwt(token, Secret);
+      var payload = decoded.Payload;
+      Assert.IsNotNull(payload);
 
-            Assert.AreEqual("SK123", payload["iss"]);
-            Assert.AreEqual("AC456", payload["sub"]);
-            Assert.Greater(Convert.ToInt64(payload["exp"]), BaseJwt.ConvertToUnixTimestamp(DateTime.UtcNow));
+      Assert.AreEqual("SK123", payload["iss"]);
+      Assert.AreEqual("AC456", payload["sub"]);
+      Assert.Greater(Convert.ToInt64(payload["exp"]), BaseJwt.ConvertToUnixTimestamp(DateTime.UtcNow));
 
-            var decodedGrants = ToDict(payload["grants"]);
-            Assert.AreEqual(1, decodedGrants.Count);
+      var decodedGrants = ToDict(payload["grants"]);
+      Assert.AreEqual(1, decodedGrants.Count);
 
-            var decodedSg = ToDict(decodedGrants["data_sync"]);
-            Assert.AreEqual("IS123", decodedSg["service_sid"]);
-            Assert.AreEqual("foobar", decodedSg["endpoint_id"]);
+      var decodedSg = ToDict(decodedGrants["data_sync"]);
+      Assert.AreEqual("IS123", decodedSg["service_sid"]);
+      Assert.AreEqual("foobar", decodedSg["endpoint_id"]);
 
-        }
+    }
 
-        [Test]
-        public void TestCreateVideoGrant()
-        {
-            var grants = new HashSet<IGrant>
+    [Test]
+    public void TestCreateVideoGrant()
+    {
+      var grants = new HashSet<IGrant>
             {
                 { new VideoGrant { Room = "RM123" } }
             };
-            var token = new TestToken("AC456", "SK123", Secret, grants: grants).ToJwt();
-            Assert.IsNotNull(token);
-            Assert.IsNotEmpty(token);
+      var token = new TestToken("AC456", "SK123", Secret, grants: grants).ToJwt();
+      Assert.IsNotNull(token);
+      Assert.IsNotEmpty(token);
 
-            var decoded = new DecodedJwt(token, Secret);
-            var payload = decoded.Payload;
-            Assert.IsNotNull(payload);
+      var decoded = new DecodedJwt(token, Secret);
+      var payload = decoded.Payload;
+      Assert.IsNotNull(payload);
 
-            Assert.AreEqual("SK123", payload["iss"]);
-            Assert.AreEqual("AC456", payload["sub"]);
-            Assert.Greater(Convert.ToInt64(payload["exp"]), BaseJwt.ConvertToUnixTimestamp(DateTime.UtcNow));
+      Assert.AreEqual("SK123", payload["iss"]);
+      Assert.AreEqual("AC456", payload["sub"]);
+      Assert.Greater(Convert.ToInt64(payload["exp"]), BaseJwt.ConvertToUnixTimestamp(DateTime.UtcNow));
 
-            var decodedGrants = ToDict(payload["grants"]);
-            Assert.AreEqual(1, decodedGrants.Count);
+      var decodedGrants = ToDict(payload["grants"]);
+      Assert.AreEqual(1, decodedGrants.Count);
 
-            var decodedVg = ToDict(decodedGrants["video"]);
-            Assert.AreEqual("RM123", decodedVg["room"]);
-        }
+      var decodedVg = ToDict(decodedGrants["video"]);
+      Assert.AreEqual("RM123", decodedVg["room"]);
+    }
 
-        [Test]
-        public void TestCreatePlaybackGrant()
-        {
-            var grants = new HashSet<IGrant>
+    [Test]
+    public void TestCreatePlaybackGrant()
+    {
+      var grants = new HashSet<IGrant>
             {
                 {
                     new PlaybackGrant {
@@ -302,26 +305,26 @@ namespace Twilio.Tests.Jwt.AccessToken
                     }
                 }
             };
-            var token = new TestToken("AC456", "SK123", Secret, grants: grants).ToJwt();
-            Assert.IsNotNull(token);
-            Assert.IsNotEmpty(token);
+      var token = new TestToken("AC456", "SK123", Secret, grants: grants).ToJwt();
+      Assert.IsNotNull(token);
+      Assert.IsNotEmpty(token);
 
-            var decoded = new DecodedJwt(token, Secret);
-            var payload = decoded.Payload;
-            Assert.IsNotNull(payload);
+      var decoded = new DecodedJwt(token, Secret);
+      var payload = decoded.Payload;
+      Assert.IsNotNull(payload);
 
-            Assert.AreEqual("SK123", payload["iss"]);
-            Assert.AreEqual("AC456", payload["sub"]);
-            Assert.Greater(Convert.ToInt64(payload["exp"]), BaseJwt.ConvertToUnixTimestamp(DateTime.UtcNow));
+      Assert.AreEqual("SK123", payload["iss"]);
+      Assert.AreEqual("AC456", payload["sub"]);
+      Assert.Greater(Convert.ToInt64(payload["exp"]), BaseJwt.ConvertToUnixTimestamp(DateTime.UtcNow));
 
-            var decodedGrants = ToDict(payload["grants"]);
-            Assert.AreEqual(1, decodedGrants.Count);
+      var decodedGrants = ToDict(payload["grants"]);
+      Assert.AreEqual(1, decodedGrants.Count);
 
-            var decodedVg = ToDict(decodedGrants["player"]);
-            Assert.AreEqual(null, decodedVg["requestCredentials"]);
-            Assert.AreEqual("https://000.us-east-1.playback.live-video.net/api/video/v1/us-east-000.channel.000?token=xxxxx", decodedVg["playbackUrl"]);
-            Assert.AreEqual("VJXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", decodedVg["playerStreamerSid"]);
-        }
-
+      var decodedVg = ToDict(decodedGrants["player"]);
+      Assert.AreEqual(null, decodedVg["requestCredentials"]);
+      Assert.AreEqual("https://000.us-east-1.playback.live-video.net/api/video/v1/us-east-000.channel.000?token=xxxxx", decodedVg["playbackUrl"]);
+      Assert.AreEqual("VJXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", decodedVg["playerStreamerSid"]);
     }
+
+  }
 }

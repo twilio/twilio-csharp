@@ -11,132 +11,132 @@ using Twilio.Converters;
 namespace Twilio.Rest.Proxy.V1.Service.Session
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Retrieve a list of Interactions for a given [Session](https://www.twilio.com/docs/proxy/api/session).
+  /// </summary>
+  public class FetchInteractionOptions : IOptions<InteractionResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Retrieve a list of Interactions for a given [Session](https://www.twilio.com/docs/proxy/api/session).
+    /// The SID of the parent Service of the resource to fetch
     /// </summary>
-    public class FetchInteractionOptions : IOptions<InteractionResource>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// he SID of the parent Session of the resource to fetch
+    /// </summary>
+    public string PathSessionSid { get; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchInteractionOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the parent Service of the resource to fetch </param>
+    /// <param name="pathSessionSid"> he SID of the parent Session of the resource to fetch </param>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public FetchInteractionOptions(string pathServiceSid, string pathSessionSid, string pathSid)
     {
-        /// <summary>
-        /// The SID of the parent Service of the resource to fetch
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// he SID of the parent Session of the resource to fetch
-        /// </summary>
-        public string PathSessionSid { get; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchInteractionOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the parent Service of the resource to fetch </param>
-        /// <param name="pathSessionSid"> he SID of the parent Session of the resource to fetch </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public FetchInteractionOptions(string pathServiceSid, string pathSessionSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathSessionSid = pathSessionSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathServiceSid = pathServiceSid;
+      PathSessionSid = pathSessionSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Retrieve a list of all Interactions for a Session. A maximum of 100 records will be returned per page.
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadInteractionOptions : ReadOptions<InteractionResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the parent Service to read the resource from
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The SID of the parent Session to read the resource from
-        /// </summary>
-        public string PathSessionSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new ReadInteractionOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the parent Service to read the resource from </param>
-        /// <param name="pathSessionSid"> The SID of the parent Session to read the resource from </param>
-        public ReadInteractionOptions(string pathServiceSid, string pathSessionSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathSessionSid = pathSessionSid;
-        }
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Retrieve a list of all Interactions for a Session. A maximum of 100 records will be returned per page.
+  /// </summary>
+  public class ReadInteractionOptions : ReadOptions<InteractionResource>
+  {
+    /// <summary>
+    /// The SID of the parent Service to read the resource from
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The SID of the parent Session to read the resource from
+    /// </summary>
+    public string PathSessionSid { get; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new ReadInteractionOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the parent Service to read the resource from </param>
+    /// <param name="pathSessionSid"> The SID of the parent Session to read the resource from </param>
+    public ReadInteractionOptions(string pathServiceSid, string pathSessionSid)
+    {
+      PathServiceSid = pathServiceSid;
+      PathSessionSid = pathSessionSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Delete a specific Interaction.
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteInteractionOptions : IOptions<InteractionResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the parent Service of the resource to delete
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// he SID of the parent Session of the resource to delete
-        /// </summary>
-        public string PathSessionSid { get; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new DeleteInteractionOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the parent Service of the resource to delete </param>
-        /// <param name="pathSessionSid"> he SID of the parent Session of the resource to delete </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public DeleteInteractionOptions(string pathServiceSid, string pathSessionSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathSessionSid = pathSessionSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      return p;
     }
+  }
+
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Delete a specific Interaction.
+  /// </summary>
+  public class DeleteInteractionOptions : IOptions<InteractionResource>
+  {
+    /// <summary>
+    /// The SID of the parent Service of the resource to delete
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// he SID of the parent Session of the resource to delete
+    /// </summary>
+    public string PathSessionSid { get; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new DeleteInteractionOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the parent Service of the resource to delete </param>
+    /// <param name="pathSessionSid"> he SID of the parent Session of the resource to delete </param>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public DeleteInteractionOptions(string pathServiceSid, string pathSessionSid, string pathSid)
+    {
+      PathServiceSid = pathServiceSid;
+      PathSessionSid = pathSessionSid;
+      PathSid = pathSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
 }

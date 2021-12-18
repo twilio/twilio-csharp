@@ -19,607 +19,607 @@ using Twilio.Types;
 namespace Twilio.Rest.Conversations.V1.Conversation
 {
 
-    public class ParticipantResource : Resource
+  public class ParticipantResource : Resource
+  {
+    public sealed class WebhookEnabledTypeEnum : StringEnum
     {
-        public sealed class WebhookEnabledTypeEnum : StringEnum
-        {
-            private WebhookEnabledTypeEnum(string value) : base(value) {}
-            public WebhookEnabledTypeEnum() {}
-            public static implicit operator WebhookEnabledTypeEnum(string value)
-            {
-                return new WebhookEnabledTypeEnum(value);
-            }
+      private WebhookEnabledTypeEnum(string value) : base(value) { }
+      public WebhookEnabledTypeEnum() { }
+      public static implicit operator WebhookEnabledTypeEnum(string value)
+      {
+        return new WebhookEnabledTypeEnum(value);
+      }
 
-            public static readonly WebhookEnabledTypeEnum True = new WebhookEnabledTypeEnum("true");
-            public static readonly WebhookEnabledTypeEnum False = new WebhookEnabledTypeEnum("false");
-        }
-
-        private static Request BuildCreateRequest(CreateParticipantOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Post,
-                Rest.Domain.Conversations,
-                "/v1/Conversations/" + options.PathConversationSid + "/Participants",
-                postParams: options.GetParams(),
-                headerParams: options.GetHeaderParams()
-            );
-        }
-
-        /// <summary>
-        /// Add a new participant to the conversation
-        /// </summary>
-        /// <param name="options"> Create Participant parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Participant </returns>
-        public static ParticipantResource Create(CreateParticipantOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildCreateRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Add a new participant to the conversation
-        /// </summary>
-        /// <param name="options"> Create Participant parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Participant </returns>
-        public static async System.Threading.Tasks.Task<ParticipantResource> CreateAsync(CreateParticipantOptions options,
-                                                                                         ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// Add a new participant to the conversation
-        /// </summary>
-        /// <param name="pathConversationSid"> The unique ID of the Conversation for this participant. </param>
-        /// <param name="identity"> A unique string identifier for the conversation participant as Conversation User. </param>
-        /// <param name="messagingBindingAddress"> The address of the participant's device. </param>
-        /// <param name="messagingBindingProxyAddress"> The address of the Twilio phone number that the participant is in
-        ///                                    contact with. </param>
-        /// <param name="dateCreated"> The date that this resource was created. </param>
-        /// <param name="dateUpdated"> The date that this resource was last updated. </param>
-        /// <param name="attributes"> An optional string metadata field you can use to store any data you wish. </param>
-        /// <param name="messagingBindingProjectedAddress"> The address of the Twilio phone number that is used in Group MMS.
-        ///                                        </param>
-        /// <param name="roleSid"> The SID of a conversation-level Role to assign to the participant </param>
-        /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Participant </returns>
-        public static ParticipantResource Create(string pathConversationSid,
-                                                 string identity = null,
-                                                 string messagingBindingAddress = null,
-                                                 string messagingBindingProxyAddress = null,
-                                                 DateTime? dateCreated = null,
-                                                 DateTime? dateUpdated = null,
-                                                 string attributes = null,
-                                                 string messagingBindingProjectedAddress = null,
-                                                 string roleSid = null,
-                                                 ParticipantResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
-                                                 ITwilioRestClient client = null)
-        {
-            var options = new CreateParticipantOptions(pathConversationSid){Identity = identity, MessagingBindingAddress = messagingBindingAddress, MessagingBindingProxyAddress = messagingBindingProxyAddress, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes, MessagingBindingProjectedAddress = messagingBindingProjectedAddress, RoleSid = roleSid, XTwilioWebhookEnabled = xTwilioWebhookEnabled};
-            return Create(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Add a new participant to the conversation
-        /// </summary>
-        /// <param name="pathConversationSid"> The unique ID of the Conversation for this participant. </param>
-        /// <param name="identity"> A unique string identifier for the conversation participant as Conversation User. </param>
-        /// <param name="messagingBindingAddress"> The address of the participant's device. </param>
-        /// <param name="messagingBindingProxyAddress"> The address of the Twilio phone number that the participant is in
-        ///                                    contact with. </param>
-        /// <param name="dateCreated"> The date that this resource was created. </param>
-        /// <param name="dateUpdated"> The date that this resource was last updated. </param>
-        /// <param name="attributes"> An optional string metadata field you can use to store any data you wish. </param>
-        /// <param name="messagingBindingProjectedAddress"> The address of the Twilio phone number that is used in Group MMS.
-        ///                                        </param>
-        /// <param name="roleSid"> The SID of a conversation-level Role to assign to the participant </param>
-        /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Participant </returns>
-        public static async System.Threading.Tasks.Task<ParticipantResource> CreateAsync(string pathConversationSid,
-                                                                                         string identity = null,
-                                                                                         string messagingBindingAddress = null,
-                                                                                         string messagingBindingProxyAddress = null,
-                                                                                         DateTime? dateCreated = null,
-                                                                                         DateTime? dateUpdated = null,
-                                                                                         string attributes = null,
-                                                                                         string messagingBindingProjectedAddress = null,
-                                                                                         string roleSid = null,
-                                                                                         ParticipantResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
-                                                                                         ITwilioRestClient client = null)
-        {
-            var options = new CreateParticipantOptions(pathConversationSid){Identity = identity, MessagingBindingAddress = messagingBindingAddress, MessagingBindingProxyAddress = messagingBindingProxyAddress, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes, MessagingBindingProjectedAddress = messagingBindingProjectedAddress, RoleSid = roleSid, XTwilioWebhookEnabled = xTwilioWebhookEnabled};
-            return await CreateAsync(options, client);
-        }
-        #endif
-
-        private static Request BuildUpdateRequest(UpdateParticipantOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Post,
-                Rest.Domain.Conversations,
-                "/v1/Conversations/" + options.PathConversationSid + "/Participants/" + options.PathSid + "",
-                postParams: options.GetParams(),
-                headerParams: options.GetHeaderParams()
-            );
-        }
-
-        /// <summary>
-        /// Update an existing participant in the conversation
-        /// </summary>
-        /// <param name="options"> Update Participant parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Participant </returns>
-        public static ParticipantResource Update(UpdateParticipantOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildUpdateRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Update an existing participant in the conversation
-        /// </summary>
-        /// <param name="options"> Update Participant parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Participant </returns>
-        public static async System.Threading.Tasks.Task<ParticipantResource> UpdateAsync(UpdateParticipantOptions options,
-                                                                                         ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// Update an existing participant in the conversation
-        /// </summary>
-        /// <param name="pathConversationSid"> The unique ID of the Conversation for this participant. </param>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
-        /// <param name="dateCreated"> The date that this resource was created. </param>
-        /// <param name="dateUpdated"> The date that this resource was last updated. </param>
-        /// <param name="attributes"> An optional string metadata field you can use to store any data you wish. </param>
-        /// <param name="roleSid"> The SID of a conversation-level Role to assign to the participant </param>
-        /// <param name="messagingBindingProxyAddress"> The address of the Twilio phone number that the participant is in
-        ///                                    contact with. </param>
-        /// <param name="messagingBindingProjectedAddress"> The address of the Twilio phone number that is used in Group MMS.
-        ///                                        </param>
-        /// <param name="identity"> A unique string identifier for the conversation participant as Conversation User. </param>
-        /// <param name="lastReadMessageIndex"> Index of last “read” message in the Conversation for the Participant. </param>
-        /// <param name="lastReadTimestamp"> Timestamp of last “read” message in the Conversation for the Participant. </param>
-        /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Participant </returns>
-        public static ParticipantResource Update(string pathConversationSid,
-                                                 string pathSid,
-                                                 DateTime? dateCreated = null,
-                                                 DateTime? dateUpdated = null,
-                                                 string attributes = null,
-                                                 string roleSid = null,
-                                                 string messagingBindingProxyAddress = null,
-                                                 string messagingBindingProjectedAddress = null,
-                                                 string identity = null,
-                                                 int? lastReadMessageIndex = null,
-                                                 string lastReadTimestamp = null,
-                                                 ParticipantResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
-                                                 ITwilioRestClient client = null)
-        {
-            var options = new UpdateParticipantOptions(pathConversationSid, pathSid){DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes, RoleSid = roleSid, MessagingBindingProxyAddress = messagingBindingProxyAddress, MessagingBindingProjectedAddress = messagingBindingProjectedAddress, Identity = identity, LastReadMessageIndex = lastReadMessageIndex, LastReadTimestamp = lastReadTimestamp, XTwilioWebhookEnabled = xTwilioWebhookEnabled};
-            return Update(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Update an existing participant in the conversation
-        /// </summary>
-        /// <param name="pathConversationSid"> The unique ID of the Conversation for this participant. </param>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
-        /// <param name="dateCreated"> The date that this resource was created. </param>
-        /// <param name="dateUpdated"> The date that this resource was last updated. </param>
-        /// <param name="attributes"> An optional string metadata field you can use to store any data you wish. </param>
-        /// <param name="roleSid"> The SID of a conversation-level Role to assign to the participant </param>
-        /// <param name="messagingBindingProxyAddress"> The address of the Twilio phone number that the participant is in
-        ///                                    contact with. </param>
-        /// <param name="messagingBindingProjectedAddress"> The address of the Twilio phone number that is used in Group MMS.
-        ///                                        </param>
-        /// <param name="identity"> A unique string identifier for the conversation participant as Conversation User. </param>
-        /// <param name="lastReadMessageIndex"> Index of last “read” message in the Conversation for the Participant. </param>
-        /// <param name="lastReadTimestamp"> Timestamp of last “read” message in the Conversation for the Participant. </param>
-        /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Participant </returns>
-        public static async System.Threading.Tasks.Task<ParticipantResource> UpdateAsync(string pathConversationSid,
-                                                                                         string pathSid,
-                                                                                         DateTime? dateCreated = null,
-                                                                                         DateTime? dateUpdated = null,
-                                                                                         string attributes = null,
-                                                                                         string roleSid = null,
-                                                                                         string messagingBindingProxyAddress = null,
-                                                                                         string messagingBindingProjectedAddress = null,
-                                                                                         string identity = null,
-                                                                                         int? lastReadMessageIndex = null,
-                                                                                         string lastReadTimestamp = null,
-                                                                                         ParticipantResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
-                                                                                         ITwilioRestClient client = null)
-        {
-            var options = new UpdateParticipantOptions(pathConversationSid, pathSid){DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes, RoleSid = roleSid, MessagingBindingProxyAddress = messagingBindingProxyAddress, MessagingBindingProjectedAddress = messagingBindingProjectedAddress, Identity = identity, LastReadMessageIndex = lastReadMessageIndex, LastReadTimestamp = lastReadTimestamp, XTwilioWebhookEnabled = xTwilioWebhookEnabled};
-            return await UpdateAsync(options, client);
-        }
-        #endif
-
-        private static Request BuildDeleteRequest(DeleteParticipantOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Delete,
-                Rest.Domain.Conversations,
-                "/v1/Conversations/" + options.PathConversationSid + "/Participants/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: options.GetHeaderParams()
-            );
-        }
-
-        /// <summary>
-        /// Remove a participant from the conversation
-        /// </summary>
-        /// <param name="options"> Delete Participant parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Participant </returns>
-        public static bool Delete(DeleteParticipantOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Remove a participant from the conversation
-        /// </summary>
-        /// <param name="options"> Delete Participant parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Participant </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteParticipantOptions options,
-                                                                          ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
-        }
-        #endif
-
-        /// <summary>
-        /// Remove a participant from the conversation
-        /// </summary>
-        /// <param name="pathConversationSid"> The unique ID of the Conversation for this participant. </param>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
-        /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Participant </returns>
-        public static bool Delete(string pathConversationSid,
-                                  string pathSid,
-                                  ParticipantResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
-                                  ITwilioRestClient client = null)
-        {
-            var options = new DeleteParticipantOptions(pathConversationSid, pathSid){XTwilioWebhookEnabled = xTwilioWebhookEnabled};
-            return Delete(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Remove a participant from the conversation
-        /// </summary>
-        /// <param name="pathConversationSid"> The unique ID of the Conversation for this participant. </param>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
-        /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Participant </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathConversationSid,
-                                                                          string pathSid,
-                                                                          ParticipantResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
-                                                                          ITwilioRestClient client = null)
-        {
-            var options = new DeleteParticipantOptions(pathConversationSid, pathSid){XTwilioWebhookEnabled = xTwilioWebhookEnabled};
-            return await DeleteAsync(options, client);
-        }
-        #endif
-
-        private static Request BuildFetchRequest(FetchParticipantOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Get,
-                Rest.Domain.Conversations,
-                "/v1/Conversations/" + options.PathConversationSid + "/Participants/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// Fetch a participant of the conversation
-        /// </summary>
-        /// <param name="options"> Fetch Participant parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Participant </returns>
-        public static ParticipantResource Fetch(FetchParticipantOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Fetch a participant of the conversation
-        /// </summary>
-        /// <param name="options"> Fetch Participant parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Participant </returns>
-        public static async System.Threading.Tasks.Task<ParticipantResource> FetchAsync(FetchParticipantOptions options,
-                                                                                        ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// Fetch a participant of the conversation
-        /// </summary>
-        /// <param name="pathConversationSid"> The unique ID of the Conversation for this participant. </param>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Participant </returns>
-        public static ParticipantResource Fetch(string pathConversationSid, string pathSid, ITwilioRestClient client = null)
-        {
-            var options = new FetchParticipantOptions(pathConversationSid, pathSid);
-            return Fetch(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Fetch a participant of the conversation
-        /// </summary>
-        /// <param name="pathConversationSid"> The unique ID of the Conversation for this participant. </param>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Participant </returns>
-        public static async System.Threading.Tasks.Task<ParticipantResource> FetchAsync(string pathConversationSid,
-                                                                                        string pathSid,
-                                                                                        ITwilioRestClient client = null)
-        {
-            var options = new FetchParticipantOptions(pathConversationSid, pathSid);
-            return await FetchAsync(options, client);
-        }
-        #endif
-
-        private static Request BuildReadRequest(ReadParticipantOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Get,
-                Rest.Domain.Conversations,
-                "/v1/Conversations/" + options.PathConversationSid + "/Participants",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// Retrieve a list of all participants of the conversation
-        /// </summary>
-        /// <param name="options"> Read Participant parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Participant </returns>
-        public static ResourceSet<ParticipantResource> Read(ReadParticipantOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildReadRequest(options, client));
-
-            var page = Page<ParticipantResource>.FromJson("participants", response.Content);
-            return new ResourceSet<ParticipantResource>(page, options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Retrieve a list of all participants of the conversation
-        /// </summary>
-        /// <param name="options"> Read Participant parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Participant </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<ParticipantResource>> ReadAsync(ReadParticipantOptions options,
-                                                                                                    ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
-
-            var page = Page<ParticipantResource>.FromJson("participants", response.Content);
-            return new ResourceSet<ParticipantResource>(page, options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Retrieve a list of all participants of the conversation
-        /// </summary>
-        /// <param name="pathConversationSid"> The unique ID of the Conversation for participants. </param>
-        /// <param name="pageSize"> Page size </param>
-        /// <param name="limit"> Record limit </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Participant </returns>
-        public static ResourceSet<ParticipantResource> Read(string pathConversationSid,
-                                                            int? pageSize = null,
-                                                            long? limit = null,
-                                                            ITwilioRestClient client = null)
-        {
-            var options = new ReadParticipantOptions(pathConversationSid){PageSize = pageSize, Limit = limit};
-            return Read(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Retrieve a list of all participants of the conversation
-        /// </summary>
-        /// <param name="pathConversationSid"> The unique ID of the Conversation for participants. </param>
-        /// <param name="pageSize"> Page size </param>
-        /// <param name="limit"> Record limit </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Participant </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<ParticipantResource>> ReadAsync(string pathConversationSid,
-                                                                                                    int? pageSize = null,
-                                                                                                    long? limit = null,
-                                                                                                    ITwilioRestClient client = null)
-        {
-            var options = new ReadParticipantOptions(pathConversationSid){PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Fetch the target page of records
-        /// </summary>
-        /// <param name="targetUrl"> API-generated URL for the requested results page </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns>
-        public static Page<ParticipantResource> GetPage(string targetUrl, ITwilioRestClient client)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-
-            var request = new Request(
-                HttpMethod.Get,
-                targetUrl
-            );
-
-            var response = client.Request(request);
-            return Page<ParticipantResource>.FromJson("participants", response.Content);
-        }
-
-        /// <summary>
-        /// Fetch the next page of records
-        /// </summary>
-        /// <param name="page"> current page of records </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns>
-        public static Page<ParticipantResource> NextPage(Page<ParticipantResource> page, ITwilioRestClient client)
-        {
-            var request = new Request(
-                HttpMethod.Get,
-                page.GetNextPageUrl(Rest.Domain.Conversations)
-            );
-
-            var response = client.Request(request);
-            return Page<ParticipantResource>.FromJson("participants", response.Content);
-        }
-
-        /// <summary>
-        /// Fetch the previous page of records
-        /// </summary>
-        /// <param name="page"> current page of records </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns>
-        public static Page<ParticipantResource> PreviousPage(Page<ParticipantResource> page, ITwilioRestClient client)
-        {
-            var request = new Request(
-                HttpMethod.Get,
-                page.GetPreviousPageUrl(Rest.Domain.Conversations)
-            );
-
-            var response = client.Request(request);
-            return Page<ParticipantResource>.FromJson("participants", response.Content);
-        }
-
-        /// <summary>
-        /// Converts a JSON string into a ParticipantResource object
-        /// </summary>
-        /// <param name="json"> Raw JSON string </param>
-        /// <returns> ParticipantResource object represented by the provided JSON </returns>
-        public static ParticipantResource FromJson(string json)
-        {
-            // Convert all checked exceptions to Runtime
-            try
-            {
-                return JsonConvert.DeserializeObject<ParticipantResource>(json);
-            }
-            catch (JsonException e)
-            {
-                throw new ApiException(e.Message, e);
-            }
-        }
-
-        /// <summary>
-        /// The unique ID of the Account responsible for this participant.
-        /// </summary>
-        [JsonProperty("account_sid")]
-        public string AccountSid { get; private set; }
-        /// <summary>
-        /// The unique ID of the Conversation for this participant.
-        /// </summary>
-        [JsonProperty("conversation_sid")]
-        public string ConversationSid { get; private set; }
-        /// <summary>
-        /// A 34 character string that uniquely identifies this resource.
-        /// </summary>
-        [JsonProperty("sid")]
-        public string Sid { get; private set; }
-        /// <summary>
-        /// A unique string identifier for the conversation participant as Conversation User.
-        /// </summary>
-        [JsonProperty("identity")]
-        public string Identity { get; private set; }
-        /// <summary>
-        /// An optional string metadata field you can use to store any data you wish.
-        /// </summary>
-        [JsonProperty("attributes")]
-        public string Attributes { get; private set; }
-        /// <summary>
-        /// Information about how this participant exchanges messages with the conversation.
-        /// </summary>
-        [JsonProperty("messaging_binding")]
-        public object MessagingBinding { get; private set; }
-        /// <summary>
-        /// The SID of a conversation-level Role to assign to the participant
-        /// </summary>
-        [JsonProperty("role_sid")]
-        public string RoleSid { get; private set; }
-        /// <summary>
-        /// The date that this resource was created.
-        /// </summary>
-        [JsonProperty("date_created")]
-        public DateTime? DateCreated { get; private set; }
-        /// <summary>
-        /// The date that this resource was last updated.
-        /// </summary>
-        [JsonProperty("date_updated")]
-        public DateTime? DateUpdated { get; private set; }
-        /// <summary>
-        /// An absolute URL for this participant.
-        /// </summary>
-        [JsonProperty("url")]
-        public Uri Url { get; private set; }
-        /// <summary>
-        /// Index of last “read” message in the Conversation for the Participant.
-        /// </summary>
-        [JsonProperty("last_read_message_index")]
-        public int? LastReadMessageIndex { get; private set; }
-        /// <summary>
-        /// Timestamp of last “read” message in the Conversation for the Participant.
-        /// </summary>
-        [JsonProperty("last_read_timestamp")]
-        public string LastReadTimestamp { get; private set; }
-
-        private ParticipantResource()
-        {
-
-        }
+      public static readonly WebhookEnabledTypeEnum True = new WebhookEnabledTypeEnum("true");
+      public static readonly WebhookEnabledTypeEnum False = new WebhookEnabledTypeEnum("false");
     }
+
+    private static Request BuildCreateRequest(CreateParticipantOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Post,
+          Rest.Domain.Conversations,
+          "/v1/Conversations/" + options.PathConversationSid + "/Participants",
+          postParams: options.GetParams(),
+          headerParams: options.GetHeaderParams()
+      );
+    }
+
+    /// <summary>
+    /// Add a new participant to the conversation
+    /// </summary>
+    /// <param name="options"> Create Participant parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Participant </returns>
+    public static ParticipantResource Create(CreateParticipantOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildCreateRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Add a new participant to the conversation
+    /// </summary>
+    /// <param name="options"> Create Participant parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Participant </returns>
+    public static async System.Threading.Tasks.Task<ParticipantResource> CreateAsync(CreateParticipantOptions options,
+                                                                                     ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildCreateRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// Add a new participant to the conversation
+    /// </summary>
+    /// <param name="pathConversationSid"> The unique ID of the Conversation for this participant. </param>
+    /// <param name="identity"> A unique string identifier for the conversation participant as Conversation User. </param>
+    /// <param name="messagingBindingAddress"> The address of the participant's device. </param>
+    /// <param name="messagingBindingProxyAddress"> The address of the Twilio phone number that the participant is in
+    ///                                    contact with. </param>
+    /// <param name="dateCreated"> The date that this resource was created. </param>
+    /// <param name="dateUpdated"> The date that this resource was last updated. </param>
+    /// <param name="attributes"> An optional string metadata field you can use to store any data you wish. </param>
+    /// <param name="messagingBindingProjectedAddress"> The address of the Twilio phone number that is used in Group MMS.
+    ///                                        </param>
+    /// <param name="roleSid"> The SID of a conversation-level Role to assign to the participant </param>
+    /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Participant </returns>
+    public static ParticipantResource Create(string pathConversationSid,
+                                             string identity = null,
+                                             string messagingBindingAddress = null,
+                                             string messagingBindingProxyAddress = null,
+                                             DateTime? dateCreated = null,
+                                             DateTime? dateUpdated = null,
+                                             string attributes = null,
+                                             string messagingBindingProjectedAddress = null,
+                                             string roleSid = null,
+                                             ParticipantResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
+                                             ITwilioRestClient client = null)
+    {
+      var options = new CreateParticipantOptions(pathConversationSid) { Identity = identity, MessagingBindingAddress = messagingBindingAddress, MessagingBindingProxyAddress = messagingBindingProxyAddress, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes, MessagingBindingProjectedAddress = messagingBindingProjectedAddress, RoleSid = roleSid, XTwilioWebhookEnabled = xTwilioWebhookEnabled };
+      return Create(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Add a new participant to the conversation
+    /// </summary>
+    /// <param name="pathConversationSid"> The unique ID of the Conversation for this participant. </param>
+    /// <param name="identity"> A unique string identifier for the conversation participant as Conversation User. </param>
+    /// <param name="messagingBindingAddress"> The address of the participant's device. </param>
+    /// <param name="messagingBindingProxyAddress"> The address of the Twilio phone number that the participant is in
+    ///                                    contact with. </param>
+    /// <param name="dateCreated"> The date that this resource was created. </param>
+    /// <param name="dateUpdated"> The date that this resource was last updated. </param>
+    /// <param name="attributes"> An optional string metadata field you can use to store any data you wish. </param>
+    /// <param name="messagingBindingProjectedAddress"> The address of the Twilio phone number that is used in Group MMS.
+    ///                                        </param>
+    /// <param name="roleSid"> The SID of a conversation-level Role to assign to the participant </param>
+    /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Participant </returns>
+    public static async System.Threading.Tasks.Task<ParticipantResource> CreateAsync(string pathConversationSid,
+                                                                                     string identity = null,
+                                                                                     string messagingBindingAddress = null,
+                                                                                     string messagingBindingProxyAddress = null,
+                                                                                     DateTime? dateCreated = null,
+                                                                                     DateTime? dateUpdated = null,
+                                                                                     string attributes = null,
+                                                                                     string messagingBindingProjectedAddress = null,
+                                                                                     string roleSid = null,
+                                                                                     ParticipantResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
+                                                                                     ITwilioRestClient client = null)
+    {
+      var options = new CreateParticipantOptions(pathConversationSid) { Identity = identity, MessagingBindingAddress = messagingBindingAddress, MessagingBindingProxyAddress = messagingBindingProxyAddress, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes, MessagingBindingProjectedAddress = messagingBindingProjectedAddress, RoleSid = roleSid, XTwilioWebhookEnabled = xTwilioWebhookEnabled };
+      return await CreateAsync(options, client);
+    }
+#endif
+
+    private static Request BuildUpdateRequest(UpdateParticipantOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Post,
+          Rest.Domain.Conversations,
+          "/v1/Conversations/" + options.PathConversationSid + "/Participants/" + options.PathSid + "",
+          postParams: options.GetParams(),
+          headerParams: options.GetHeaderParams()
+      );
+    }
+
+    /// <summary>
+    /// Update an existing participant in the conversation
+    /// </summary>
+    /// <param name="options"> Update Participant parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Participant </returns>
+    public static ParticipantResource Update(UpdateParticipantOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildUpdateRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Update an existing participant in the conversation
+    /// </summary>
+    /// <param name="options"> Update Participant parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Participant </returns>
+    public static async System.Threading.Tasks.Task<ParticipantResource> UpdateAsync(UpdateParticipantOptions options,
+                                                                                     ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// Update an existing participant in the conversation
+    /// </summary>
+    /// <param name="pathConversationSid"> The unique ID of the Conversation for this participant. </param>
+    /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+    /// <param name="dateCreated"> The date that this resource was created. </param>
+    /// <param name="dateUpdated"> The date that this resource was last updated. </param>
+    /// <param name="attributes"> An optional string metadata field you can use to store any data you wish. </param>
+    /// <param name="roleSid"> The SID of a conversation-level Role to assign to the participant </param>
+    /// <param name="messagingBindingProxyAddress"> The address of the Twilio phone number that the participant is in
+    ///                                    contact with. </param>
+    /// <param name="messagingBindingProjectedAddress"> The address of the Twilio phone number that is used in Group MMS.
+    ///                                        </param>
+    /// <param name="identity"> A unique string identifier for the conversation participant as Conversation User. </param>
+    /// <param name="lastReadMessageIndex"> Index of last “read” message in the Conversation for the Participant. </param>
+    /// <param name="lastReadTimestamp"> Timestamp of last “read” message in the Conversation for the Participant. </param>
+    /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Participant </returns>
+    public static ParticipantResource Update(string pathConversationSid,
+                                             string pathSid,
+                                             DateTime? dateCreated = null,
+                                             DateTime? dateUpdated = null,
+                                             string attributes = null,
+                                             string roleSid = null,
+                                             string messagingBindingProxyAddress = null,
+                                             string messagingBindingProjectedAddress = null,
+                                             string identity = null,
+                                             int? lastReadMessageIndex = null,
+                                             string lastReadTimestamp = null,
+                                             ParticipantResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
+                                             ITwilioRestClient client = null)
+    {
+      var options = new UpdateParticipantOptions(pathConversationSid, pathSid) { DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes, RoleSid = roleSid, MessagingBindingProxyAddress = messagingBindingProxyAddress, MessagingBindingProjectedAddress = messagingBindingProjectedAddress, Identity = identity, LastReadMessageIndex = lastReadMessageIndex, LastReadTimestamp = lastReadTimestamp, XTwilioWebhookEnabled = xTwilioWebhookEnabled };
+      return Update(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Update an existing participant in the conversation
+    /// </summary>
+    /// <param name="pathConversationSid"> The unique ID of the Conversation for this participant. </param>
+    /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+    /// <param name="dateCreated"> The date that this resource was created. </param>
+    /// <param name="dateUpdated"> The date that this resource was last updated. </param>
+    /// <param name="attributes"> An optional string metadata field you can use to store any data you wish. </param>
+    /// <param name="roleSid"> The SID of a conversation-level Role to assign to the participant </param>
+    /// <param name="messagingBindingProxyAddress"> The address of the Twilio phone number that the participant is in
+    ///                                    contact with. </param>
+    /// <param name="messagingBindingProjectedAddress"> The address of the Twilio phone number that is used in Group MMS.
+    ///                                        </param>
+    /// <param name="identity"> A unique string identifier for the conversation participant as Conversation User. </param>
+    /// <param name="lastReadMessageIndex"> Index of last “read” message in the Conversation for the Participant. </param>
+    /// <param name="lastReadTimestamp"> Timestamp of last “read” message in the Conversation for the Participant. </param>
+    /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Participant </returns>
+    public static async System.Threading.Tasks.Task<ParticipantResource> UpdateAsync(string pathConversationSid,
+                                                                                     string pathSid,
+                                                                                     DateTime? dateCreated = null,
+                                                                                     DateTime? dateUpdated = null,
+                                                                                     string attributes = null,
+                                                                                     string roleSid = null,
+                                                                                     string messagingBindingProxyAddress = null,
+                                                                                     string messagingBindingProjectedAddress = null,
+                                                                                     string identity = null,
+                                                                                     int? lastReadMessageIndex = null,
+                                                                                     string lastReadTimestamp = null,
+                                                                                     ParticipantResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
+                                                                                     ITwilioRestClient client = null)
+    {
+      var options = new UpdateParticipantOptions(pathConversationSid, pathSid) { DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes, RoleSid = roleSid, MessagingBindingProxyAddress = messagingBindingProxyAddress, MessagingBindingProjectedAddress = messagingBindingProjectedAddress, Identity = identity, LastReadMessageIndex = lastReadMessageIndex, LastReadTimestamp = lastReadTimestamp, XTwilioWebhookEnabled = xTwilioWebhookEnabled };
+      return await UpdateAsync(options, client);
+    }
+#endif
+
+    private static Request BuildDeleteRequest(DeleteParticipantOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Delete,
+          Rest.Domain.Conversations,
+          "/v1/Conversations/" + options.PathConversationSid + "/Participants/" + options.PathSid + "",
+          queryParams: options.GetParams(),
+          headerParams: options.GetHeaderParams()
+      );
+    }
+
+    /// <summary>
+    /// Remove a participant from the conversation
+    /// </summary>
+    /// <param name="options"> Delete Participant parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Participant </returns>
+    public static bool Delete(DeleteParticipantOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildDeleteRequest(options, client));
+      return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+    }
+
+#if !NET35
+    /// <summary>
+    /// Remove a participant from the conversation
+    /// </summary>
+    /// <param name="options"> Delete Participant parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Participant </returns>
+    public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteParticipantOptions options,
+                                                                      ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+      return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+    }
+#endif
+
+    /// <summary>
+    /// Remove a participant from the conversation
+    /// </summary>
+    /// <param name="pathConversationSid"> The unique ID of the Conversation for this participant. </param>
+    /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+    /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Participant </returns>
+    public static bool Delete(string pathConversationSid,
+                              string pathSid,
+                              ParticipantResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
+                              ITwilioRestClient client = null)
+    {
+      var options = new DeleteParticipantOptions(pathConversationSid, pathSid) { XTwilioWebhookEnabled = xTwilioWebhookEnabled };
+      return Delete(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Remove a participant from the conversation
+    /// </summary>
+    /// <param name="pathConversationSid"> The unique ID of the Conversation for this participant. </param>
+    /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+    /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Participant </returns>
+    public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathConversationSid,
+                                                                      string pathSid,
+                                                                      ParticipantResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
+                                                                      ITwilioRestClient client = null)
+    {
+      var options = new DeleteParticipantOptions(pathConversationSid, pathSid) { XTwilioWebhookEnabled = xTwilioWebhookEnabled };
+      return await DeleteAsync(options, client);
+    }
+#endif
+
+    private static Request BuildFetchRequest(FetchParticipantOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Get,
+          Rest.Domain.Conversations,
+          "/v1/Conversations/" + options.PathConversationSid + "/Participants/" + options.PathSid + "",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// Fetch a participant of the conversation
+    /// </summary>
+    /// <param name="options"> Fetch Participant parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Participant </returns>
+    public static ParticipantResource Fetch(FetchParticipantOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Fetch a participant of the conversation
+    /// </summary>
+    /// <param name="options"> Fetch Participant parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Participant </returns>
+    public static async System.Threading.Tasks.Task<ParticipantResource> FetchAsync(FetchParticipantOptions options,
+                                                                                    ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// Fetch a participant of the conversation
+    /// </summary>
+    /// <param name="pathConversationSid"> The unique ID of the Conversation for this participant. </param>
+    /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Participant </returns>
+    public static ParticipantResource Fetch(string pathConversationSid, string pathSid, ITwilioRestClient client = null)
+    {
+      var options = new FetchParticipantOptions(pathConversationSid, pathSid);
+      return Fetch(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Fetch a participant of the conversation
+    /// </summary>
+    /// <param name="pathConversationSid"> The unique ID of the Conversation for this participant. </param>
+    /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Participant </returns>
+    public static async System.Threading.Tasks.Task<ParticipantResource> FetchAsync(string pathConversationSid,
+                                                                                    string pathSid,
+                                                                                    ITwilioRestClient client = null)
+    {
+      var options = new FetchParticipantOptions(pathConversationSid, pathSid);
+      return await FetchAsync(options, client);
+    }
+#endif
+
+    private static Request BuildReadRequest(ReadParticipantOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Get,
+          Rest.Domain.Conversations,
+          "/v1/Conversations/" + options.PathConversationSid + "/Participants",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// Retrieve a list of all participants of the conversation
+    /// </summary>
+    /// <param name="options"> Read Participant parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Participant </returns>
+    public static ResourceSet<ParticipantResource> Read(ReadParticipantOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildReadRequest(options, client));
+
+      var page = Page<ParticipantResource>.FromJson("participants", response.Content);
+      return new ResourceSet<ParticipantResource>(page, options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Retrieve a list of all participants of the conversation
+    /// </summary>
+    /// <param name="options"> Read Participant parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Participant </returns>
+    public static async System.Threading.Tasks.Task<ResourceSet<ParticipantResource>> ReadAsync(ReadParticipantOptions options,
+                                                                                                ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+      var page = Page<ParticipantResource>.FromJson("participants", response.Content);
+      return new ResourceSet<ParticipantResource>(page, options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Retrieve a list of all participants of the conversation
+    /// </summary>
+    /// <param name="pathConversationSid"> The unique ID of the Conversation for participants. </param>
+    /// <param name="pageSize"> Page size </param>
+    /// <param name="limit"> Record limit </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Participant </returns>
+    public static ResourceSet<ParticipantResource> Read(string pathConversationSid,
+                                                        int? pageSize = null,
+                                                        long? limit = null,
+                                                        ITwilioRestClient client = null)
+    {
+      var options = new ReadParticipantOptions(pathConversationSid) { PageSize = pageSize, Limit = limit };
+      return Read(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Retrieve a list of all participants of the conversation
+    /// </summary>
+    /// <param name="pathConversationSid"> The unique ID of the Conversation for participants. </param>
+    /// <param name="pageSize"> Page size </param>
+    /// <param name="limit"> Record limit </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Participant </returns>
+    public static async System.Threading.Tasks.Task<ResourceSet<ParticipantResource>> ReadAsync(string pathConversationSid,
+                                                                                                int? pageSize = null,
+                                                                                                long? limit = null,
+                                                                                                ITwilioRestClient client = null)
+    {
+      var options = new ReadParticipantOptions(pathConversationSid) { PageSize = pageSize, Limit = limit };
+      return await ReadAsync(options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Fetch the target page of records
+    /// </summary>
+    /// <param name="targetUrl"> API-generated URL for the requested results page </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> The target page of records </returns>
+    public static Page<ParticipantResource> GetPage(string targetUrl, ITwilioRestClient client)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+
+      var request = new Request(
+          HttpMethod.Get,
+          targetUrl
+      );
+
+      var response = client.Request(request);
+      return Page<ParticipantResource>.FromJson("participants", response.Content);
+    }
+
+    /// <summary>
+    /// Fetch the next page of records
+    /// </summary>
+    /// <param name="page"> current page of records </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> The next page of records </returns>
+    public static Page<ParticipantResource> NextPage(Page<ParticipantResource> page, ITwilioRestClient client)
+    {
+      var request = new Request(
+          HttpMethod.Get,
+          page.GetNextPageUrl(Rest.Domain.Conversations)
+      );
+
+      var response = client.Request(request);
+      return Page<ParticipantResource>.FromJson("participants", response.Content);
+    }
+
+    /// <summary>
+    /// Fetch the previous page of records
+    /// </summary>
+    /// <param name="page"> current page of records </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> The previous page of records </returns>
+    public static Page<ParticipantResource> PreviousPage(Page<ParticipantResource> page, ITwilioRestClient client)
+    {
+      var request = new Request(
+          HttpMethod.Get,
+          page.GetPreviousPageUrl(Rest.Domain.Conversations)
+      );
+
+      var response = client.Request(request);
+      return Page<ParticipantResource>.FromJson("participants", response.Content);
+    }
+
+    /// <summary>
+    /// Converts a JSON string into a ParticipantResource object
+    /// </summary>
+    /// <param name="json"> Raw JSON string </param>
+    /// <returns> ParticipantResource object represented by the provided JSON </returns>
+    public static ParticipantResource FromJson(string json)
+    {
+      // Convert all checked exceptions to Runtime
+      try
+      {
+        return JsonConvert.DeserializeObject<ParticipantResource>(json);
+      }
+      catch (JsonException e)
+      {
+        throw new ApiException(e.Message, e);
+      }
+    }
+
+    /// <summary>
+    /// The unique ID of the Account responsible for this participant.
+    /// </summary>
+    [JsonProperty("account_sid")]
+    public string AccountSid { get; private set; }
+    /// <summary>
+    /// The unique ID of the Conversation for this participant.
+    /// </summary>
+    [JsonProperty("conversation_sid")]
+    public string ConversationSid { get; private set; }
+    /// <summary>
+    /// A 34 character string that uniquely identifies this resource.
+    /// </summary>
+    [JsonProperty("sid")]
+    public string Sid { get; private set; }
+    /// <summary>
+    /// A unique string identifier for the conversation participant as Conversation User.
+    /// </summary>
+    [JsonProperty("identity")]
+    public string Identity { get; private set; }
+    /// <summary>
+    /// An optional string metadata field you can use to store any data you wish.
+    /// </summary>
+    [JsonProperty("attributes")]
+    public string Attributes { get; private set; }
+    /// <summary>
+    /// Information about how this participant exchanges messages with the conversation.
+    /// </summary>
+    [JsonProperty("messaging_binding")]
+    public object MessagingBinding { get; private set; }
+    /// <summary>
+    /// The SID of a conversation-level Role to assign to the participant
+    /// </summary>
+    [JsonProperty("role_sid")]
+    public string RoleSid { get; private set; }
+    /// <summary>
+    /// The date that this resource was created.
+    /// </summary>
+    [JsonProperty("date_created")]
+    public DateTime? DateCreated { get; private set; }
+    /// <summary>
+    /// The date that this resource was last updated.
+    /// </summary>
+    [JsonProperty("date_updated")]
+    public DateTime? DateUpdated { get; private set; }
+    /// <summary>
+    /// An absolute URL for this participant.
+    /// </summary>
+    [JsonProperty("url")]
+    public Uri Url { get; private set; }
+    /// <summary>
+    /// Index of last “read” message in the Conversation for the Participant.
+    /// </summary>
+    [JsonProperty("last_read_message_index")]
+    public int? LastReadMessageIndex { get; private set; }
+    /// <summary>
+    /// Timestamp of last “read” message in the Conversation for the Participant.
+    /// </summary>
+    [JsonProperty("last_read_timestamp")]
+    public string LastReadTimestamp { get; private set; }
+
+    private ParticipantResource()
+    {
+
+    }
+  }
 
 }

@@ -12,245 +12,245 @@ using Twilio.Converters;
 namespace Twilio.Rest.Chat.V1.Service
 {
 
+  /// <summary>
+  /// FetchChannelOptions
+  /// </summary>
+  public class FetchChannelOptions : IOptions<ChannelResource>
+  {
     /// <summary>
-    /// FetchChannelOptions
+    /// The SID of the Service to fetch the resource from
     /// </summary>
-    public class FetchChannelOptions : IOptions<ChannelResource>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchChannelOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public FetchChannelOptions(string pathServiceSid, string pathSid)
     {
-        /// <summary>
-        /// The SID of the Service to fetch the resource from
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchChannelOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public FetchChannelOptions(string pathServiceSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathServiceSid = pathServiceSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// DeleteChannelOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteChannelOptions : IOptions<ChannelResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Service to delete the resource from
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new DeleteChannelOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public DeleteChannelOptions(string pathServiceSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathSid = pathSid;
-        }
+  /// <summary>
+  /// DeleteChannelOptions
+  /// </summary>
+  public class DeleteChannelOptions : IOptions<ChannelResource>
+  {
+    /// <summary>
+    /// The SID of the Service to delete the resource from
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+    /// <summary>
+    /// Construct a new DeleteChannelOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public DeleteChannelOptions(string pathServiceSid, string pathSid)
+    {
+      PathServiceSid = pathServiceSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// CreateChannelOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class CreateChannelOptions : IOptions<ChannelResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Service to create the resource under
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// A string to describe the new resource
-        /// </summary>
-        public string FriendlyName { get; set; }
-        /// <summary>
-        /// An application-defined string that uniquely identifies the resource
-        /// </summary>
-        public string UniqueName { get; set; }
-        /// <summary>
-        /// A valid JSON string that contains application-specific data
-        /// </summary>
-        public string Attributes { get; set; }
-        /// <summary>
-        /// The visibility of the channel
-        /// </summary>
-        public ChannelResource.ChannelTypeEnum Type { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new CreateChannelOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to create the resource under </param>
-        public CreateChannelOptions(string pathServiceSid)
-        {
-            PathServiceSid = pathServiceSid;
-        }
+  /// <summary>
+  /// CreateChannelOptions
+  /// </summary>
+  public class CreateChannelOptions : IOptions<ChannelResource>
+  {
+    /// <summary>
+    /// The SID of the Service to create the resource under
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// A string to describe the new resource
+    /// </summary>
+    public string FriendlyName { get; set; }
+    /// <summary>
+    /// An application-defined string that uniquely identifies the resource
+    /// </summary>
+    public string UniqueName { get; set; }
+    /// <summary>
+    /// A valid JSON string that contains application-specific data
+    /// </summary>
+    public string Attributes { get; set; }
+    /// <summary>
+    /// The visibility of the channel
+    /// </summary>
+    public ChannelResource.ChannelTypeEnum Type { get; set; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
-
-            if (UniqueName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
-            }
-
-            if (Attributes != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Attributes", Attributes));
-            }
-
-            if (Type != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Type", Type.ToString()));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new CreateChannelOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to create the resource under </param>
+    public CreateChannelOptions(string pathServiceSid)
+    {
+      PathServiceSid = pathServiceSid;
     }
 
     /// <summary>
-    /// ReadChannelOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadChannelOptions : ReadOptions<ChannelResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Service to read the resources from
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The visibility of the channel to read
-        /// </summary>
-        public List<ChannelResource.ChannelTypeEnum> Type { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
 
-        /// <summary>
-        /// Construct a new ReadChannelOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to read the resources from </param>
-        public ReadChannelOptions(string pathServiceSid)
-        {
-            PathServiceSid = pathServiceSid;
-            Type = new List<ChannelResource.ChannelTypeEnum>();
-        }
+      if (UniqueName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Type != null)
-            {
-                p.AddRange(Type.Select(prop => new KeyValuePair<string, string>("Type", prop.ToString())));
-            }
+      if (Attributes != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Attributes", Attributes));
+      }
 
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
+      if (Type != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Type", Type.ToString()));
+      }
 
-            return p;
-        }
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// ReadChannelOptions
+  /// </summary>
+  public class ReadChannelOptions : ReadOptions<ChannelResource>
+  {
+    /// <summary>
+    /// The SID of the Service to read the resources from
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The visibility of the channel to read
+    /// </summary>
+    public List<ChannelResource.ChannelTypeEnum> Type { get; set; }
+
+    /// <summary>
+    /// Construct a new ReadChannelOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to read the resources from </param>
+    public ReadChannelOptions(string pathServiceSid)
+    {
+      PathServiceSid = pathServiceSid;
+      Type = new List<ChannelResource.ChannelTypeEnum>();
     }
 
     /// <summary>
-    /// UpdateChannelOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateChannelOptions : IOptions<ChannelResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Service to update the resource from
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// A string to describe the resource
-        /// </summary>
-        public string FriendlyName { get; set; }
-        /// <summary>
-        /// An application-defined string that uniquely identifies the resource
-        /// </summary>
-        public string UniqueName { get; set; }
-        /// <summary>
-        /// A valid JSON string that contains application-specific data
-        /// </summary>
-        public string Attributes { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (Type != null)
+      {
+        p.AddRange(Type.Select(prop => new KeyValuePair<string, string>("Type", prop.ToString())));
+      }
 
-        /// <summary>
-        /// Construct a new UpdateChannelOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to update the resource from </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public UpdateChannelOptions(string pathServiceSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathSid = pathSid;
-        }
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
-
-            if (UniqueName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
-            }
-
-            if (Attributes != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Attributes", Attributes));
-            }
-
-            return p;
-        }
+      return p;
     }
+  }
+
+  /// <summary>
+  /// UpdateChannelOptions
+  /// </summary>
+  public class UpdateChannelOptions : IOptions<ChannelResource>
+  {
+    /// <summary>
+    /// The SID of the Service to update the resource from
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// A string to describe the resource
+    /// </summary>
+    public string FriendlyName { get; set; }
+    /// <summary>
+    /// An application-defined string that uniquely identifies the resource
+    /// </summary>
+    public string UniqueName { get; set; }
+    /// <summary>
+    /// A valid JSON string that contains application-specific data
+    /// </summary>
+    public string Attributes { get; set; }
+
+    /// <summary>
+    /// Construct a new UpdateChannelOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to update the resource from </param>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public UpdateChannelOptions(string pathServiceSid, string pathSid)
+    {
+      PathServiceSid = pathServiceSid;
+      PathSid = pathSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
+
+      if (UniqueName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
+      }
+
+      if (Attributes != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Attributes", Attributes));
+      }
+
+      return p;
+    }
+  }
 
 }

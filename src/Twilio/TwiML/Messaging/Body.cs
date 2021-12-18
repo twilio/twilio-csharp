@@ -10,51 +10,51 @@ using System.Xml.Linq;
 namespace Twilio.TwiML.Messaging
 {
 
+  /// <summary>
+  /// Body TwiML Noun
+  /// </summary>
+  public class Body : TwiML
+  {
     /// <summary>
-    /// Body TwiML Noun
+    /// Message Body
     /// </summary>
-    public class Body : TwiML
+    public string Message { get; set; }
+
+    /// <summary>
+    /// Create a new Body
+    /// </summary>
+    /// <param name="message"> Message Body, the body of the TwiML Element. </param>
+    public Body(string message = null) : base("Body")
     {
-        /// <summary>
-        /// Message Body
-        /// </summary>
-        public string Message { get; set; }
-
-        /// <summary>
-        /// Create a new Body
-        /// </summary>
-        /// <param name="message"> Message Body, the body of the TwiML Element. </param>
-        public Body(string message = null) : base("Body")
-        {
-            this.Message = message;
-        }
-
-        /// <summary>
-        /// Return the body of the TwiML tag
-        /// </summary>
-        protected override string GetElementBody()
-        {
-            return this.Message != null ? this.Message : string.Empty;
-        }
-
-        /// <summary>
-        /// Append a child TwiML element to this element returning this element to allow chaining.
-        /// </summary>
-        /// <param name="childElem"> Child TwiML element to add </param>
-        public new Body Append(TwiML childElem)
-        {
-            return (Body) base.Append(childElem);
-        }
-
-        /// <summary>
-        /// Add freeform key-value attributes to the generated xml
-        /// </summary>
-        /// <param name="key"> Option key </param>
-        /// <param name="value"> Option value </param>
-        public new Body SetOption(string key, object value)
-        {
-            return (Body) base.SetOption(key, value);
-        }
+      this.Message = message;
     }
+
+    /// <summary>
+    /// Return the body of the TwiML tag
+    /// </summary>
+    protected override string GetElementBody()
+    {
+      return this.Message != null ? this.Message : string.Empty;
+    }
+
+    /// <summary>
+    /// Append a child TwiML element to this element returning this element to allow chaining.
+    /// </summary>
+    /// <param name="childElem"> Child TwiML element to add </param>
+    public new Body Append(TwiML childElem)
+    {
+      return (Body)base.Append(childElem);
+    }
+
+    /// <summary>
+    /// Add freeform key-value attributes to the generated xml
+    /// </summary>
+    /// <param name="key"> Option key </param>
+    /// <param name="value"> Option value </param>
+    public new Body SetOption(string key, object value)
+    {
+      return (Body)base.SetOption(key, value);
+    }
+  }
 
 }

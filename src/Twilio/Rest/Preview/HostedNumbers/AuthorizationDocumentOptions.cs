@@ -12,270 +12,270 @@ using Twilio.Converters;
 namespace Twilio.Rest.Preview.HostedNumbers
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// Fetch a specific AuthorizationDocument.
+  /// </summary>
+  public class FetchAuthorizationDocumentOptions : IOptions<AuthorizationDocumentResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// Fetch a specific AuthorizationDocument.
+    /// AuthorizationDocument sid.
     /// </summary>
-    public class FetchAuthorizationDocumentOptions : IOptions<AuthorizationDocumentResource>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchAuthorizationDocumentOptions
+    /// </summary>
+    /// <param name="pathSid"> AuthorizationDocument sid. </param>
+    public FetchAuthorizationDocumentOptions(string pathSid)
     {
-        /// <summary>
-        /// AuthorizationDocument sid.
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchAuthorizationDocumentOptions
-        /// </summary>
-        /// <param name="pathSid"> AuthorizationDocument sid. </param>
-        public FetchAuthorizationDocumentOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// Updates a specific AuthorizationDocument.
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateAuthorizationDocumentOptions : IOptions<AuthorizationDocumentResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The sid
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// A list of HostedNumberOrder sids.
-        /// </summary>
-        public List<string> HostedNumberOrderSids { get; set; }
-        /// <summary>
-        /// Address sid.
-        /// </summary>
-        public string AddressSid { get; set; }
-        /// <summary>
-        /// Email.
-        /// </summary>
-        public string Email { get; set; }
-        /// <summary>
-        /// A list of emails.
-        /// </summary>
-        public List<string> CcEmails { get; set; }
-        /// <summary>
-        /// The Status of this AuthorizationDocument.
-        /// </summary>
-        public AuthorizationDocumentResource.StatusEnum Status { get; set; }
-        /// <summary>
-        /// Title of signee of this Authorization Document.
-        /// </summary>
-        public string ContactTitle { get; set; }
-        /// <summary>
-        /// Authorization Document's signee's phone number.
-        /// </summary>
-        public string ContactPhoneNumber { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new UpdateAuthorizationDocumentOptions
-        /// </summary>
-        /// <param name="pathSid"> The sid </param>
-        public UpdateAuthorizationDocumentOptions(string pathSid)
-        {
-            PathSid = pathSid;
-            HostedNumberOrderSids = new List<string>();
-            CcEmails = new List<string>();
-        }
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// Updates a specific AuthorizationDocument.
+  /// </summary>
+  public class UpdateAuthorizationDocumentOptions : IOptions<AuthorizationDocumentResource>
+  {
+    /// <summary>
+    /// The sid
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// A list of HostedNumberOrder sids.
+    /// </summary>
+    public List<string> HostedNumberOrderSids { get; set; }
+    /// <summary>
+    /// Address sid.
+    /// </summary>
+    public string AddressSid { get; set; }
+    /// <summary>
+    /// Email.
+    /// </summary>
+    public string Email { get; set; }
+    /// <summary>
+    /// A list of emails.
+    /// </summary>
+    public List<string> CcEmails { get; set; }
+    /// <summary>
+    /// The Status of this AuthorizationDocument.
+    /// </summary>
+    public AuthorizationDocumentResource.StatusEnum Status { get; set; }
+    /// <summary>
+    /// Title of signee of this Authorization Document.
+    /// </summary>
+    public string ContactTitle { get; set; }
+    /// <summary>
+    /// Authorization Document's signee's phone number.
+    /// </summary>
+    public string ContactPhoneNumber { get; set; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (HostedNumberOrderSids != null)
-            {
-                p.AddRange(HostedNumberOrderSids.Select(prop => new KeyValuePair<string, string>("HostedNumberOrderSids", prop)));
-            }
-
-            if (AddressSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("AddressSid", AddressSid.ToString()));
-            }
-
-            if (Email != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Email", Email));
-            }
-
-            if (CcEmails != null)
-            {
-                p.AddRange(CcEmails.Select(prop => new KeyValuePair<string, string>("CcEmails", prop)));
-            }
-
-            if (Status != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
-            }
-
-            if (ContactTitle != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ContactTitle", ContactTitle));
-            }
-
-            if (ContactPhoneNumber != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ContactPhoneNumber", ContactPhoneNumber));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new UpdateAuthorizationDocumentOptions
+    /// </summary>
+    /// <param name="pathSid"> The sid </param>
+    public UpdateAuthorizationDocumentOptions(string pathSid)
+    {
+      PathSid = pathSid;
+      HostedNumberOrderSids = new List<string>();
+      CcEmails = new List<string>();
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// Retrieve a list of AuthorizationDocuments belonging to the account initiating the request.
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadAuthorizationDocumentOptions : ReadOptions<AuthorizationDocumentResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// Email.
-        /// </summary>
-        public string Email { get; set; }
-        /// <summary>
-        /// The Status of this AuthorizationDocument.
-        /// </summary>
-        public AuthorizationDocumentResource.StatusEnum Status { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (HostedNumberOrderSids != null)
+      {
+        p.AddRange(HostedNumberOrderSids.Select(prop => new KeyValuePair<string, string>("HostedNumberOrderSids", prop)));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Email != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Email", Email));
-            }
+      if (AddressSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("AddressSid", AddressSid.ToString()));
+      }
 
-            if (Status != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
-            }
+      if (Email != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Email", Email));
+      }
 
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
+      if (CcEmails != null)
+      {
+        p.AddRange(CcEmails.Select(prop => new KeyValuePair<string, string>("CcEmails", prop)));
+      }
 
-            return p;
-        }
+      if (Status != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
+      }
+
+      if (ContactTitle != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ContactTitle", ContactTitle));
+      }
+
+      if (ContactPhoneNumber != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ContactPhoneNumber", ContactPhoneNumber));
+      }
+
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// Retrieve a list of AuthorizationDocuments belonging to the account initiating the request.
+  /// </summary>
+  public class ReadAuthorizationDocumentOptions : ReadOptions<AuthorizationDocumentResource>
+  {
+    /// <summary>
+    /// Email.
+    /// </summary>
+    public string Email { get; set; }
+    /// <summary>
+    /// The Status of this AuthorizationDocument.
+    /// </summary>
+    public AuthorizationDocumentResource.StatusEnum Status { get; set; }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (Email != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Email", Email));
+      }
+
+      if (Status != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
+      }
+
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// Create an AuthorizationDocument for authorizing the hosting of phone number capabilities on Twilio's platform.
+  /// </summary>
+  public class CreateAuthorizationDocumentOptions : IOptions<AuthorizationDocumentResource>
+  {
+    /// <summary>
+    /// A list of HostedNumberOrder sids.
+    /// </summary>
+    public List<string> HostedNumberOrderSids { get; }
+    /// <summary>
+    /// Address sid.
+    /// </summary>
+    public string AddressSid { get; }
+    /// <summary>
+    /// Email.
+    /// </summary>
+    public string Email { get; }
+    /// <summary>
+    /// Title of signee of this Authorization Document.
+    /// </summary>
+    public string ContactTitle { get; }
+    /// <summary>
+    /// Authorization Document's signee's phone number.
+    /// </summary>
+    public string ContactPhoneNumber { get; }
+    /// <summary>
+    /// A list of emails.
+    /// </summary>
+    public List<string> CcEmails { get; set; }
+
+    /// <summary>
+    /// Construct a new CreateAuthorizationDocumentOptions
+    /// </summary>
+    /// <param name="hostedNumberOrderSids"> A list of HostedNumberOrder sids. </param>
+    /// <param name="addressSid"> Address sid. </param>
+    /// <param name="email"> Email. </param>
+    /// <param name="contactTitle"> Title of signee of this Authorization Document. </param>
+    /// <param name="contactPhoneNumber"> Authorization Document's signee's phone number. </param>
+    public CreateAuthorizationDocumentOptions(List<string> hostedNumberOrderSids,
+                                              string addressSid,
+                                              string email,
+                                              string contactTitle,
+                                              string contactPhoneNumber)
+    {
+      HostedNumberOrderSids = hostedNumberOrderSids;
+      AddressSid = addressSid;
+      Email = email;
+      ContactTitle = contactTitle;
+      ContactPhoneNumber = contactPhoneNumber;
+      CcEmails = new List<string>();
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// Create an AuthorizationDocument for authorizing the hosting of phone number capabilities on Twilio's platform.
+    /// Generate the necessary parameters
     /// </summary>
-    public class CreateAuthorizationDocumentOptions : IOptions<AuthorizationDocumentResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// A list of HostedNumberOrder sids.
-        /// </summary>
-        public List<string> HostedNumberOrderSids { get; }
-        /// <summary>
-        /// Address sid.
-        /// </summary>
-        public string AddressSid { get; }
-        /// <summary>
-        /// Email.
-        /// </summary>
-        public string Email { get; }
-        /// <summary>
-        /// Title of signee of this Authorization Document.
-        /// </summary>
-        public string ContactTitle { get; }
-        /// <summary>
-        /// Authorization Document's signee's phone number.
-        /// </summary>
-        public string ContactPhoneNumber { get; }
-        /// <summary>
-        /// A list of emails.
-        /// </summary>
-        public List<string> CcEmails { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (HostedNumberOrderSids != null)
+      {
+        p.AddRange(HostedNumberOrderSids.Select(prop => new KeyValuePair<string, string>("HostedNumberOrderSids", prop)));
+      }
 
-        /// <summary>
-        /// Construct a new CreateAuthorizationDocumentOptions
-        /// </summary>
-        /// <param name="hostedNumberOrderSids"> A list of HostedNumberOrder sids. </param>
-        /// <param name="addressSid"> Address sid. </param>
-        /// <param name="email"> Email. </param>
-        /// <param name="contactTitle"> Title of signee of this Authorization Document. </param>
-        /// <param name="contactPhoneNumber"> Authorization Document's signee's phone number. </param>
-        public CreateAuthorizationDocumentOptions(List<string> hostedNumberOrderSids,
-                                                  string addressSid,
-                                                  string email,
-                                                  string contactTitle,
-                                                  string contactPhoneNumber)
-        {
-            HostedNumberOrderSids = hostedNumberOrderSids;
-            AddressSid = addressSid;
-            Email = email;
-            ContactTitle = contactTitle;
-            ContactPhoneNumber = contactPhoneNumber;
-            CcEmails = new List<string>();
-        }
+      if (AddressSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("AddressSid", AddressSid.ToString()));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (HostedNumberOrderSids != null)
-            {
-                p.AddRange(HostedNumberOrderSids.Select(prop => new KeyValuePair<string, string>("HostedNumberOrderSids", prop)));
-            }
+      if (Email != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Email", Email));
+      }
 
-            if (AddressSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("AddressSid", AddressSid.ToString()));
-            }
+      if (ContactTitle != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ContactTitle", ContactTitle));
+      }
 
-            if (Email != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Email", Email));
-            }
+      if (ContactPhoneNumber != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ContactPhoneNumber", ContactPhoneNumber));
+      }
 
-            if (ContactTitle != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ContactTitle", ContactTitle));
-            }
+      if (CcEmails != null)
+      {
+        p.AddRange(CcEmails.Select(prop => new KeyValuePair<string, string>("CcEmails", prop)));
+      }
 
-            if (ContactPhoneNumber != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ContactPhoneNumber", ContactPhoneNumber));
-            }
-
-            if (CcEmails != null)
-            {
-                p.AddRange(CcEmails.Select(prop => new KeyValuePair<string, string>("CcEmails", prop)));
-            }
-
-            return p;
-        }
+      return p;
     }
+  }
 
 }

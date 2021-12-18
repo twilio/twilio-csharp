@@ -18,655 +18,655 @@ using Twilio.Http;
 namespace Twilio.Rest.Verify.V2
 {
 
-    public class ServiceResource : Resource
+  public class ServiceResource : Resource
+  {
+    private static Request BuildCreateRequest(CreateServiceOptions options, ITwilioRestClient client)
     {
-        private static Request BuildCreateRequest(CreateServiceOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Post,
-                Rest.Domain.Verify,
-                "/v2/Services",
-                postParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// Create a new Verification Service.
-        /// </summary>
-        /// <param name="options"> Create Service parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Service </returns>
-        public static ServiceResource Create(CreateServiceOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildCreateRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Create a new Verification Service.
-        /// </summary>
-        /// <param name="options"> Create Service parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Service </returns>
-        public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(CreateServiceOptions options,
-                                                                                     ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// Create a new Verification Service.
-        /// </summary>
-        /// <param name="friendlyName"> A string to describe the verification service </param>
-        /// <param name="codeLength"> The length of the verification code to generate </param>
-        /// <param name="lookupEnabled"> Whether to perform a lookup with each verification </param>
-        /// <param name="skipSmsToLandlines"> Whether to skip sending SMS verifications to landlines </param>
-        /// <param name="dtmfInputRequired"> Whether to ask the user to press a number before delivering the verify code in a
-        ///                         phone call </param>
-        /// <param name="ttsName"> The name of an alternative text-to-speech service to use in phone calls </param>
-        /// <param name="psd2Enabled"> Whether to pass PSD2 transaction parameters when starting a verification </param>
-        /// <param name="doNotShareWarningEnabled"> Whether to add a security warning at the end of an SMS. </param>
-        /// <param name="customCodeEnabled"> Whether to allow sending verifications with a custom code. </param>
-        /// <param name="pushIncludeDate"> Optional. Include the date in the Challenge's reponse. Default: true </param>
-        /// <param name="pushApnCredentialSid"> Optional. Set APN Credential for this service. </param>
-        /// <param name="pushFcmCredentialSid"> Optional. Set FCM Credential for this service. </param>
-        /// <param name="totpIssuer"> Optional. Set TOTP Issuer for this service. </param>
-        /// <param name="totpTimeStep"> Optional. How often, in seconds, are TOTP codes generated </param>
-        /// <param name="totpCodeLength"> Optional. Number of digits for generated TOTP codes </param>
-        /// <param name="totpSkew"> Optional. The number of past and future time-steps valid at a given time </param>
-        /// <param name="defaultTemplateSid"> The verification template SMS messages. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Service </returns>
-        public static ServiceResource Create(string friendlyName,
-                                             int? codeLength = null,
-                                             bool? lookupEnabled = null,
-                                             bool? skipSmsToLandlines = null,
-                                             bool? dtmfInputRequired = null,
-                                             string ttsName = null,
-                                             bool? psd2Enabled = null,
-                                             bool? doNotShareWarningEnabled = null,
-                                             bool? customCodeEnabled = null,
-                                             bool? pushIncludeDate = null,
-                                             string pushApnCredentialSid = null,
-                                             string pushFcmCredentialSid = null,
-                                             string totpIssuer = null,
-                                             int? totpTimeStep = null,
-                                             int? totpCodeLength = null,
-                                             int? totpSkew = null,
-                                             string defaultTemplateSid = null,
-                                             ITwilioRestClient client = null)
-        {
-            var options = new CreateServiceOptions(friendlyName){CodeLength = codeLength, LookupEnabled = lookupEnabled, SkipSmsToLandlines = skipSmsToLandlines, DtmfInputRequired = dtmfInputRequired, TtsName = ttsName, Psd2Enabled = psd2Enabled, DoNotShareWarningEnabled = doNotShareWarningEnabled, CustomCodeEnabled = customCodeEnabled, PushIncludeDate = pushIncludeDate, PushApnCredentialSid = pushApnCredentialSid, PushFcmCredentialSid = pushFcmCredentialSid, TotpIssuer = totpIssuer, TotpTimeStep = totpTimeStep, TotpCodeLength = totpCodeLength, TotpSkew = totpSkew, DefaultTemplateSid = defaultTemplateSid};
-            return Create(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Create a new Verification Service.
-        /// </summary>
-        /// <param name="friendlyName"> A string to describe the verification service </param>
-        /// <param name="codeLength"> The length of the verification code to generate </param>
-        /// <param name="lookupEnabled"> Whether to perform a lookup with each verification </param>
-        /// <param name="skipSmsToLandlines"> Whether to skip sending SMS verifications to landlines </param>
-        /// <param name="dtmfInputRequired"> Whether to ask the user to press a number before delivering the verify code in a
-        ///                         phone call </param>
-        /// <param name="ttsName"> The name of an alternative text-to-speech service to use in phone calls </param>
-        /// <param name="psd2Enabled"> Whether to pass PSD2 transaction parameters when starting a verification </param>
-        /// <param name="doNotShareWarningEnabled"> Whether to add a security warning at the end of an SMS. </param>
-        /// <param name="customCodeEnabled"> Whether to allow sending verifications with a custom code. </param>
-        /// <param name="pushIncludeDate"> Optional. Include the date in the Challenge's reponse. Default: true </param>
-        /// <param name="pushApnCredentialSid"> Optional. Set APN Credential for this service. </param>
-        /// <param name="pushFcmCredentialSid"> Optional. Set FCM Credential for this service. </param>
-        /// <param name="totpIssuer"> Optional. Set TOTP Issuer for this service. </param>
-        /// <param name="totpTimeStep"> Optional. How often, in seconds, are TOTP codes generated </param>
-        /// <param name="totpCodeLength"> Optional. Number of digits for generated TOTP codes </param>
-        /// <param name="totpSkew"> Optional. The number of past and future time-steps valid at a given time </param>
-        /// <param name="defaultTemplateSid"> The verification template SMS messages. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Service </returns>
-        public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(string friendlyName,
-                                                                                     int? codeLength = null,
-                                                                                     bool? lookupEnabled = null,
-                                                                                     bool? skipSmsToLandlines = null,
-                                                                                     bool? dtmfInputRequired = null,
-                                                                                     string ttsName = null,
-                                                                                     bool? psd2Enabled = null,
-                                                                                     bool? doNotShareWarningEnabled = null,
-                                                                                     bool? customCodeEnabled = null,
-                                                                                     bool? pushIncludeDate = null,
-                                                                                     string pushApnCredentialSid = null,
-                                                                                     string pushFcmCredentialSid = null,
-                                                                                     string totpIssuer = null,
-                                                                                     int? totpTimeStep = null,
-                                                                                     int? totpCodeLength = null,
-                                                                                     int? totpSkew = null,
-                                                                                     string defaultTemplateSid = null,
-                                                                                     ITwilioRestClient client = null)
-        {
-            var options = new CreateServiceOptions(friendlyName){CodeLength = codeLength, LookupEnabled = lookupEnabled, SkipSmsToLandlines = skipSmsToLandlines, DtmfInputRequired = dtmfInputRequired, TtsName = ttsName, Psd2Enabled = psd2Enabled, DoNotShareWarningEnabled = doNotShareWarningEnabled, CustomCodeEnabled = customCodeEnabled, PushIncludeDate = pushIncludeDate, PushApnCredentialSid = pushApnCredentialSid, PushFcmCredentialSid = pushFcmCredentialSid, TotpIssuer = totpIssuer, TotpTimeStep = totpTimeStep, TotpCodeLength = totpCodeLength, TotpSkew = totpSkew, DefaultTemplateSid = defaultTemplateSid};
-            return await CreateAsync(options, client);
-        }
-        #endif
-
-        private static Request BuildFetchRequest(FetchServiceOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Get,
-                Rest.Domain.Verify,
-                "/v2/Services/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// Fetch specific Verification Service Instance.
-        /// </summary>
-        /// <param name="options"> Fetch Service parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Service </returns>
-        public static ServiceResource Fetch(FetchServiceOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Fetch specific Verification Service Instance.
-        /// </summary>
-        /// <param name="options"> Fetch Service parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Service </returns>
-        public static async System.Threading.Tasks.Task<ServiceResource> FetchAsync(FetchServiceOptions options,
-                                                                                    ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// Fetch specific Verification Service Instance.
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Service </returns>
-        public static ServiceResource Fetch(string pathSid, ITwilioRestClient client = null)
-        {
-            var options = new FetchServiceOptions(pathSid);
-            return Fetch(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Fetch specific Verification Service Instance.
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Service </returns>
-        public static async System.Threading.Tasks.Task<ServiceResource> FetchAsync(string pathSid,
-                                                                                    ITwilioRestClient client = null)
-        {
-            var options = new FetchServiceOptions(pathSid);
-            return await FetchAsync(options, client);
-        }
-        #endif
-
-        private static Request BuildDeleteRequest(DeleteServiceOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Delete,
-                Rest.Domain.Verify,
-                "/v2/Services/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// Delete a specific Verification Service Instance.
-        /// </summary>
-        /// <param name="options"> Delete Service parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Service </returns>
-        public static bool Delete(DeleteServiceOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Delete a specific Verification Service Instance.
-        /// </summary>
-        /// <param name="options"> Delete Service parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Service </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteServiceOptions options,
-                                                                          ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
-        }
-        #endif
-
-        /// <summary>
-        /// Delete a specific Verification Service Instance.
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Service </returns>
-        public static bool Delete(string pathSid, ITwilioRestClient client = null)
-        {
-            var options = new DeleteServiceOptions(pathSid);
-            return Delete(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Delete a specific Verification Service Instance.
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Service </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
-        {
-            var options = new DeleteServiceOptions(pathSid);
-            return await DeleteAsync(options, client);
-        }
-        #endif
-
-        private static Request BuildReadRequest(ReadServiceOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Get,
-                Rest.Domain.Verify,
-                "/v2/Services",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// Retrieve a list of all Verification Services for an account.
-        /// </summary>
-        /// <param name="options"> Read Service parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Service </returns>
-        public static ResourceSet<ServiceResource> Read(ReadServiceOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildReadRequest(options, client));
-
-            var page = Page<ServiceResource>.FromJson("services", response.Content);
-            return new ResourceSet<ServiceResource>(page, options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Retrieve a list of all Verification Services for an account.
-        /// </summary>
-        /// <param name="options"> Read Service parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Service </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<ServiceResource>> ReadAsync(ReadServiceOptions options,
-                                                                                                ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
-
-            var page = Page<ServiceResource>.FromJson("services", response.Content);
-            return new ResourceSet<ServiceResource>(page, options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Retrieve a list of all Verification Services for an account.
-        /// </summary>
-        /// <param name="pageSize"> Page size </param>
-        /// <param name="limit"> Record limit </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Service </returns>
-        public static ResourceSet<ServiceResource> Read(int? pageSize = null,
-                                                        long? limit = null,
-                                                        ITwilioRestClient client = null)
-        {
-            var options = new ReadServiceOptions(){PageSize = pageSize, Limit = limit};
-            return Read(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Retrieve a list of all Verification Services for an account.
-        /// </summary>
-        /// <param name="pageSize"> Page size </param>
-        /// <param name="limit"> Record limit </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Service </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<ServiceResource>> ReadAsync(int? pageSize = null,
-                                                                                                long? limit = null,
-                                                                                                ITwilioRestClient client = null)
-        {
-            var options = new ReadServiceOptions(){PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Fetch the target page of records
-        /// </summary>
-        /// <param name="targetUrl"> API-generated URL for the requested results page </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns>
-        public static Page<ServiceResource> GetPage(string targetUrl, ITwilioRestClient client)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-
-            var request = new Request(
-                HttpMethod.Get,
-                targetUrl
-            );
-
-            var response = client.Request(request);
-            return Page<ServiceResource>.FromJson("services", response.Content);
-        }
-
-        /// <summary>
-        /// Fetch the next page of records
-        /// </summary>
-        /// <param name="page"> current page of records </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns>
-        public static Page<ServiceResource> NextPage(Page<ServiceResource> page, ITwilioRestClient client)
-        {
-            var request = new Request(
-                HttpMethod.Get,
-                page.GetNextPageUrl(Rest.Domain.Verify)
-            );
-
-            var response = client.Request(request);
-            return Page<ServiceResource>.FromJson("services", response.Content);
-        }
-
-        /// <summary>
-        /// Fetch the previous page of records
-        /// </summary>
-        /// <param name="page"> current page of records </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns>
-        public static Page<ServiceResource> PreviousPage(Page<ServiceResource> page, ITwilioRestClient client)
-        {
-            var request = new Request(
-                HttpMethod.Get,
-                page.GetPreviousPageUrl(Rest.Domain.Verify)
-            );
-
-            var response = client.Request(request);
-            return Page<ServiceResource>.FromJson("services", response.Content);
-        }
-
-        private static Request BuildUpdateRequest(UpdateServiceOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Post,
-                Rest.Domain.Verify,
-                "/v2/Services/" + options.PathSid + "",
-                postParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// Update a specific Verification Service.
-        /// </summary>
-        /// <param name="options"> Update Service parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Service </returns>
-        public static ServiceResource Update(UpdateServiceOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildUpdateRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Update a specific Verification Service.
-        /// </summary>
-        /// <param name="options"> Update Service parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Service </returns>
-        public static async System.Threading.Tasks.Task<ServiceResource> UpdateAsync(UpdateServiceOptions options,
-                                                                                     ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// Update a specific Verification Service.
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        /// <param name="friendlyName"> A string to describe the verification service </param>
-        /// <param name="codeLength"> The length of the verification code to generate </param>
-        /// <param name="lookupEnabled"> Whether to perform a lookup with each verification </param>
-        /// <param name="skipSmsToLandlines"> Whether to skip sending SMS verifications to landlines </param>
-        /// <param name="dtmfInputRequired"> Whether to ask the user to press a number before delivering the verify code in a
-        ///                         phone call </param>
-        /// <param name="ttsName"> The name of an alternative text-to-speech service to use in phone calls </param>
-        /// <param name="psd2Enabled"> Whether to pass PSD2 transaction parameters when starting a verification </param>
-        /// <param name="doNotShareWarningEnabled"> Whether to add a privacy warning at the end of an SMS. </param>
-        /// <param name="customCodeEnabled"> Whether to allow sending verifications with a custom code. </param>
-        /// <param name="pushIncludeDate"> Optional. Include the date in the Challenge's reponse. Default: true </param>
-        /// <param name="pushApnCredentialSid"> Optional. Set APN Credential for this service. </param>
-        /// <param name="pushFcmCredentialSid"> Optional. Set FCM Credential for this service. </param>
-        /// <param name="totpIssuer"> Optional. Set TOTP Issuer for this service. </param>
-        /// <param name="totpTimeStep"> Optional. How often, in seconds, are TOTP codes generated </param>
-        /// <param name="totpCodeLength"> Optional. Number of digits for generated TOTP codes </param>
-        /// <param name="totpSkew"> Optional. The number of past and future time-steps valid at a given time </param>
-        /// <param name="defaultTemplateSid"> The verification template SMS messages. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Service </returns>
-        public static ServiceResource Update(string pathSid,
-                                             string friendlyName = null,
-                                             int? codeLength = null,
-                                             bool? lookupEnabled = null,
-                                             bool? skipSmsToLandlines = null,
-                                             bool? dtmfInputRequired = null,
-                                             string ttsName = null,
-                                             bool? psd2Enabled = null,
-                                             bool? doNotShareWarningEnabled = null,
-                                             bool? customCodeEnabled = null,
-                                             bool? pushIncludeDate = null,
-                                             string pushApnCredentialSid = null,
-                                             string pushFcmCredentialSid = null,
-                                             string totpIssuer = null,
-                                             int? totpTimeStep = null,
-                                             int? totpCodeLength = null,
-                                             int? totpSkew = null,
-                                             string defaultTemplateSid = null,
-                                             ITwilioRestClient client = null)
-        {
-            var options = new UpdateServiceOptions(pathSid){FriendlyName = friendlyName, CodeLength = codeLength, LookupEnabled = lookupEnabled, SkipSmsToLandlines = skipSmsToLandlines, DtmfInputRequired = dtmfInputRequired, TtsName = ttsName, Psd2Enabled = psd2Enabled, DoNotShareWarningEnabled = doNotShareWarningEnabled, CustomCodeEnabled = customCodeEnabled, PushIncludeDate = pushIncludeDate, PushApnCredentialSid = pushApnCredentialSid, PushFcmCredentialSid = pushFcmCredentialSid, TotpIssuer = totpIssuer, TotpTimeStep = totpTimeStep, TotpCodeLength = totpCodeLength, TotpSkew = totpSkew, DefaultTemplateSid = defaultTemplateSid};
-            return Update(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Update a specific Verification Service.
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        /// <param name="friendlyName"> A string to describe the verification service </param>
-        /// <param name="codeLength"> The length of the verification code to generate </param>
-        /// <param name="lookupEnabled"> Whether to perform a lookup with each verification </param>
-        /// <param name="skipSmsToLandlines"> Whether to skip sending SMS verifications to landlines </param>
-        /// <param name="dtmfInputRequired"> Whether to ask the user to press a number before delivering the verify code in a
-        ///                         phone call </param>
-        /// <param name="ttsName"> The name of an alternative text-to-speech service to use in phone calls </param>
-        /// <param name="psd2Enabled"> Whether to pass PSD2 transaction parameters when starting a verification </param>
-        /// <param name="doNotShareWarningEnabled"> Whether to add a privacy warning at the end of an SMS. </param>
-        /// <param name="customCodeEnabled"> Whether to allow sending verifications with a custom code. </param>
-        /// <param name="pushIncludeDate"> Optional. Include the date in the Challenge's reponse. Default: true </param>
-        /// <param name="pushApnCredentialSid"> Optional. Set APN Credential for this service. </param>
-        /// <param name="pushFcmCredentialSid"> Optional. Set FCM Credential for this service. </param>
-        /// <param name="totpIssuer"> Optional. Set TOTP Issuer for this service. </param>
-        /// <param name="totpTimeStep"> Optional. How often, in seconds, are TOTP codes generated </param>
-        /// <param name="totpCodeLength"> Optional. Number of digits for generated TOTP codes </param>
-        /// <param name="totpSkew"> Optional. The number of past and future time-steps valid at a given time </param>
-        /// <param name="defaultTemplateSid"> The verification template SMS messages. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Service </returns>
-        public static async System.Threading.Tasks.Task<ServiceResource> UpdateAsync(string pathSid,
-                                                                                     string friendlyName = null,
-                                                                                     int? codeLength = null,
-                                                                                     bool? lookupEnabled = null,
-                                                                                     bool? skipSmsToLandlines = null,
-                                                                                     bool? dtmfInputRequired = null,
-                                                                                     string ttsName = null,
-                                                                                     bool? psd2Enabled = null,
-                                                                                     bool? doNotShareWarningEnabled = null,
-                                                                                     bool? customCodeEnabled = null,
-                                                                                     bool? pushIncludeDate = null,
-                                                                                     string pushApnCredentialSid = null,
-                                                                                     string pushFcmCredentialSid = null,
-                                                                                     string totpIssuer = null,
-                                                                                     int? totpTimeStep = null,
-                                                                                     int? totpCodeLength = null,
-                                                                                     int? totpSkew = null,
-                                                                                     string defaultTemplateSid = null,
-                                                                                     ITwilioRestClient client = null)
-        {
-            var options = new UpdateServiceOptions(pathSid){FriendlyName = friendlyName, CodeLength = codeLength, LookupEnabled = lookupEnabled, SkipSmsToLandlines = skipSmsToLandlines, DtmfInputRequired = dtmfInputRequired, TtsName = ttsName, Psd2Enabled = psd2Enabled, DoNotShareWarningEnabled = doNotShareWarningEnabled, CustomCodeEnabled = customCodeEnabled, PushIncludeDate = pushIncludeDate, PushApnCredentialSid = pushApnCredentialSid, PushFcmCredentialSid = pushFcmCredentialSid, TotpIssuer = totpIssuer, TotpTimeStep = totpTimeStep, TotpCodeLength = totpCodeLength, TotpSkew = totpSkew, DefaultTemplateSid = defaultTemplateSid};
-            return await UpdateAsync(options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Converts a JSON string into a ServiceResource object
-        /// </summary>
-        /// <param name="json"> Raw JSON string </param>
-        /// <returns> ServiceResource object represented by the provided JSON </returns>
-        public static ServiceResource FromJson(string json)
-        {
-            // Convert all checked exceptions to Runtime
-            try
-            {
-                return JsonConvert.DeserializeObject<ServiceResource>(json);
-            }
-            catch (JsonException e)
-            {
-                throw new ApiException(e.Message, e);
-            }
-        }
-
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        [JsonProperty("sid")]
-        public string Sid { get; private set; }
-        /// <summary>
-        /// The SID of the Account that created the resource
-        /// </summary>
-        [JsonProperty("account_sid")]
-        public string AccountSid { get; private set; }
-        /// <summary>
-        /// The string that you assigned to describe the verification service
-        /// </summary>
-        [JsonProperty("friendly_name")]
-        public string FriendlyName { get; private set; }
-        /// <summary>
-        /// The length of the verification code
-        /// </summary>
-        [JsonProperty("code_length")]
-        public int? CodeLength { get; private set; }
-        /// <summary>
-        /// Whether to perform a lookup with each verification
-        /// </summary>
-        [JsonProperty("lookup_enabled")]
-        public bool? LookupEnabled { get; private set; }
-        /// <summary>
-        /// Whether to pass PSD2 transaction parameters when starting a verification
-        /// </summary>
-        [JsonProperty("psd2_enabled")]
-        public bool? Psd2Enabled { get; private set; }
-        /// <summary>
-        /// Whether to skip sending SMS verifications to landlines
-        /// </summary>
-        [JsonProperty("skip_sms_to_landlines")]
-        public bool? SkipSmsToLandlines { get; private set; }
-        /// <summary>
-        /// Whether to ask the user to press a number before delivering the verify code in a phone call
-        /// </summary>
-        [JsonProperty("dtmf_input_required")]
-        public bool? DtmfInputRequired { get; private set; }
-        /// <summary>
-        /// The name of an alternative text-to-speech service to use in phone calls
-        /// </summary>
-        [JsonProperty("tts_name")]
-        public string TtsName { get; private set; }
-        /// <summary>
-        /// Whether to add a security warning at the end of an SMS.
-        /// </summary>
-        [JsonProperty("do_not_share_warning_enabled")]
-        public bool? DoNotShareWarningEnabled { get; private set; }
-        /// <summary>
-        /// Whether to allow sending verifications with a custom code.
-        /// </summary>
-        [JsonProperty("custom_code_enabled")]
-        public bool? CustomCodeEnabled { get; private set; }
-        /// <summary>
-        /// The service level configuration of factor push type.
-        /// </summary>
-        [JsonProperty("push")]
-        public object Push { get; private set; }
-        /// <summary>
-        /// The service level configuration of factor TOTP type.
-        /// </summary>
-        [JsonProperty("totp")]
-        public object Totp { get; private set; }
-        /// <summary>
-        /// The default_template_sid
-        /// </summary>
-        [JsonProperty("default_template_sid")]
-        public string DefaultTemplateSid { get; private set; }
-        /// <summary>
-        /// The RFC 2822 date and time in GMT when the resource was created
-        /// </summary>
-        [JsonProperty("date_created")]
-        public DateTime? DateCreated { get; private set; }
-        /// <summary>
-        /// The RFC 2822 date and time in GMT when the resource was last updated
-        /// </summary>
-        [JsonProperty("date_updated")]
-        public DateTime? DateUpdated { get; private set; }
-        /// <summary>
-        /// The absolute URL of the resource
-        /// </summary>
-        [JsonProperty("url")]
-        public Uri Url { get; private set; }
-        /// <summary>
-        /// The URLs of related resources
-        /// </summary>
-        [JsonProperty("links")]
-        public Dictionary<string, string> Links { get; private set; }
-
-        private ServiceResource()
-        {
-
-        }
+      return new Request(
+          HttpMethod.Post,
+          Rest.Domain.Verify,
+          "/v2/Services",
+          postParams: options.GetParams(),
+          headerParams: null
+      );
     }
+
+    /// <summary>
+    /// Create a new Verification Service.
+    /// </summary>
+    /// <param name="options"> Create Service parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Service </returns>
+    public static ServiceResource Create(CreateServiceOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildCreateRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Create a new Verification Service.
+    /// </summary>
+    /// <param name="options"> Create Service parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Service </returns>
+    public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(CreateServiceOptions options,
+                                                                                 ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildCreateRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// Create a new Verification Service.
+    /// </summary>
+    /// <param name="friendlyName"> A string to describe the verification service </param>
+    /// <param name="codeLength"> The length of the verification code to generate </param>
+    /// <param name="lookupEnabled"> Whether to perform a lookup with each verification </param>
+    /// <param name="skipSmsToLandlines"> Whether to skip sending SMS verifications to landlines </param>
+    /// <param name="dtmfInputRequired"> Whether to ask the user to press a number before delivering the verify code in a
+    ///                         phone call </param>
+    /// <param name="ttsName"> The name of an alternative text-to-speech service to use in phone calls </param>
+    /// <param name="psd2Enabled"> Whether to pass PSD2 transaction parameters when starting a verification </param>
+    /// <param name="doNotShareWarningEnabled"> Whether to add a security warning at the end of an SMS. </param>
+    /// <param name="customCodeEnabled"> Whether to allow sending verifications with a custom code. </param>
+    /// <param name="pushIncludeDate"> Optional. Include the date in the Challenge's reponse. Default: true </param>
+    /// <param name="pushApnCredentialSid"> Optional. Set APN Credential for this service. </param>
+    /// <param name="pushFcmCredentialSid"> Optional. Set FCM Credential for this service. </param>
+    /// <param name="totpIssuer"> Optional. Set TOTP Issuer for this service. </param>
+    /// <param name="totpTimeStep"> Optional. How often, in seconds, are TOTP codes generated </param>
+    /// <param name="totpCodeLength"> Optional. Number of digits for generated TOTP codes </param>
+    /// <param name="totpSkew"> Optional. The number of past and future time-steps valid at a given time </param>
+    /// <param name="defaultTemplateSid"> The verification template SMS messages. </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Service </returns>
+    public static ServiceResource Create(string friendlyName,
+                                         int? codeLength = null,
+                                         bool? lookupEnabled = null,
+                                         bool? skipSmsToLandlines = null,
+                                         bool? dtmfInputRequired = null,
+                                         string ttsName = null,
+                                         bool? psd2Enabled = null,
+                                         bool? doNotShareWarningEnabled = null,
+                                         bool? customCodeEnabled = null,
+                                         bool? pushIncludeDate = null,
+                                         string pushApnCredentialSid = null,
+                                         string pushFcmCredentialSid = null,
+                                         string totpIssuer = null,
+                                         int? totpTimeStep = null,
+                                         int? totpCodeLength = null,
+                                         int? totpSkew = null,
+                                         string defaultTemplateSid = null,
+                                         ITwilioRestClient client = null)
+    {
+      var options = new CreateServiceOptions(friendlyName) { CodeLength = codeLength, LookupEnabled = lookupEnabled, SkipSmsToLandlines = skipSmsToLandlines, DtmfInputRequired = dtmfInputRequired, TtsName = ttsName, Psd2Enabled = psd2Enabled, DoNotShareWarningEnabled = doNotShareWarningEnabled, CustomCodeEnabled = customCodeEnabled, PushIncludeDate = pushIncludeDate, PushApnCredentialSid = pushApnCredentialSid, PushFcmCredentialSid = pushFcmCredentialSid, TotpIssuer = totpIssuer, TotpTimeStep = totpTimeStep, TotpCodeLength = totpCodeLength, TotpSkew = totpSkew, DefaultTemplateSid = defaultTemplateSid };
+      return Create(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Create a new Verification Service.
+    /// </summary>
+    /// <param name="friendlyName"> A string to describe the verification service </param>
+    /// <param name="codeLength"> The length of the verification code to generate </param>
+    /// <param name="lookupEnabled"> Whether to perform a lookup with each verification </param>
+    /// <param name="skipSmsToLandlines"> Whether to skip sending SMS verifications to landlines </param>
+    /// <param name="dtmfInputRequired"> Whether to ask the user to press a number before delivering the verify code in a
+    ///                         phone call </param>
+    /// <param name="ttsName"> The name of an alternative text-to-speech service to use in phone calls </param>
+    /// <param name="psd2Enabled"> Whether to pass PSD2 transaction parameters when starting a verification </param>
+    /// <param name="doNotShareWarningEnabled"> Whether to add a security warning at the end of an SMS. </param>
+    /// <param name="customCodeEnabled"> Whether to allow sending verifications with a custom code. </param>
+    /// <param name="pushIncludeDate"> Optional. Include the date in the Challenge's reponse. Default: true </param>
+    /// <param name="pushApnCredentialSid"> Optional. Set APN Credential for this service. </param>
+    /// <param name="pushFcmCredentialSid"> Optional. Set FCM Credential for this service. </param>
+    /// <param name="totpIssuer"> Optional. Set TOTP Issuer for this service. </param>
+    /// <param name="totpTimeStep"> Optional. How often, in seconds, are TOTP codes generated </param>
+    /// <param name="totpCodeLength"> Optional. Number of digits for generated TOTP codes </param>
+    /// <param name="totpSkew"> Optional. The number of past and future time-steps valid at a given time </param>
+    /// <param name="defaultTemplateSid"> The verification template SMS messages. </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Service </returns>
+    public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(string friendlyName,
+                                                                                 int? codeLength = null,
+                                                                                 bool? lookupEnabled = null,
+                                                                                 bool? skipSmsToLandlines = null,
+                                                                                 bool? dtmfInputRequired = null,
+                                                                                 string ttsName = null,
+                                                                                 bool? psd2Enabled = null,
+                                                                                 bool? doNotShareWarningEnabled = null,
+                                                                                 bool? customCodeEnabled = null,
+                                                                                 bool? pushIncludeDate = null,
+                                                                                 string pushApnCredentialSid = null,
+                                                                                 string pushFcmCredentialSid = null,
+                                                                                 string totpIssuer = null,
+                                                                                 int? totpTimeStep = null,
+                                                                                 int? totpCodeLength = null,
+                                                                                 int? totpSkew = null,
+                                                                                 string defaultTemplateSid = null,
+                                                                                 ITwilioRestClient client = null)
+    {
+      var options = new CreateServiceOptions(friendlyName) { CodeLength = codeLength, LookupEnabled = lookupEnabled, SkipSmsToLandlines = skipSmsToLandlines, DtmfInputRequired = dtmfInputRequired, TtsName = ttsName, Psd2Enabled = psd2Enabled, DoNotShareWarningEnabled = doNotShareWarningEnabled, CustomCodeEnabled = customCodeEnabled, PushIncludeDate = pushIncludeDate, PushApnCredentialSid = pushApnCredentialSid, PushFcmCredentialSid = pushFcmCredentialSid, TotpIssuer = totpIssuer, TotpTimeStep = totpTimeStep, TotpCodeLength = totpCodeLength, TotpSkew = totpSkew, DefaultTemplateSid = defaultTemplateSid };
+      return await CreateAsync(options, client);
+    }
+#endif
+
+    private static Request BuildFetchRequest(FetchServiceOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Get,
+          Rest.Domain.Verify,
+          "/v2/Services/" + options.PathSid + "",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// Fetch specific Verification Service Instance.
+    /// </summary>
+    /// <param name="options"> Fetch Service parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Service </returns>
+    public static ServiceResource Fetch(FetchServiceOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Fetch specific Verification Service Instance.
+    /// </summary>
+    /// <param name="options"> Fetch Service parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Service </returns>
+    public static async System.Threading.Tasks.Task<ServiceResource> FetchAsync(FetchServiceOptions options,
+                                                                                ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// Fetch specific Verification Service Instance.
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Service </returns>
+    public static ServiceResource Fetch(string pathSid, ITwilioRestClient client = null)
+    {
+      var options = new FetchServiceOptions(pathSid);
+      return Fetch(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Fetch specific Verification Service Instance.
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Service </returns>
+    public static async System.Threading.Tasks.Task<ServiceResource> FetchAsync(string pathSid,
+                                                                                ITwilioRestClient client = null)
+    {
+      var options = new FetchServiceOptions(pathSid);
+      return await FetchAsync(options, client);
+    }
+#endif
+
+    private static Request BuildDeleteRequest(DeleteServiceOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Delete,
+          Rest.Domain.Verify,
+          "/v2/Services/" + options.PathSid + "",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// Delete a specific Verification Service Instance.
+    /// </summary>
+    /// <param name="options"> Delete Service parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Service </returns>
+    public static bool Delete(DeleteServiceOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildDeleteRequest(options, client));
+      return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+    }
+
+#if !NET35
+    /// <summary>
+    /// Delete a specific Verification Service Instance.
+    /// </summary>
+    /// <param name="options"> Delete Service parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Service </returns>
+    public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteServiceOptions options,
+                                                                      ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+      return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+    }
+#endif
+
+    /// <summary>
+    /// Delete a specific Verification Service Instance.
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Service </returns>
+    public static bool Delete(string pathSid, ITwilioRestClient client = null)
+    {
+      var options = new DeleteServiceOptions(pathSid);
+      return Delete(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Delete a specific Verification Service Instance.
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Service </returns>
+    public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
+    {
+      var options = new DeleteServiceOptions(pathSid);
+      return await DeleteAsync(options, client);
+    }
+#endif
+
+    private static Request BuildReadRequest(ReadServiceOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Get,
+          Rest.Domain.Verify,
+          "/v2/Services",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// Retrieve a list of all Verification Services for an account.
+    /// </summary>
+    /// <param name="options"> Read Service parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Service </returns>
+    public static ResourceSet<ServiceResource> Read(ReadServiceOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildReadRequest(options, client));
+
+      var page = Page<ServiceResource>.FromJson("services", response.Content);
+      return new ResourceSet<ServiceResource>(page, options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Retrieve a list of all Verification Services for an account.
+    /// </summary>
+    /// <param name="options"> Read Service parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Service </returns>
+    public static async System.Threading.Tasks.Task<ResourceSet<ServiceResource>> ReadAsync(ReadServiceOptions options,
+                                                                                            ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+      var page = Page<ServiceResource>.FromJson("services", response.Content);
+      return new ResourceSet<ServiceResource>(page, options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Retrieve a list of all Verification Services for an account.
+    /// </summary>
+    /// <param name="pageSize"> Page size </param>
+    /// <param name="limit"> Record limit </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Service </returns>
+    public static ResourceSet<ServiceResource> Read(int? pageSize = null,
+                                                    long? limit = null,
+                                                    ITwilioRestClient client = null)
+    {
+      var options = new ReadServiceOptions() { PageSize = pageSize, Limit = limit };
+      return Read(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Retrieve a list of all Verification Services for an account.
+    /// </summary>
+    /// <param name="pageSize"> Page size </param>
+    /// <param name="limit"> Record limit </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Service </returns>
+    public static async System.Threading.Tasks.Task<ResourceSet<ServiceResource>> ReadAsync(int? pageSize = null,
+                                                                                            long? limit = null,
+                                                                                            ITwilioRestClient client = null)
+    {
+      var options = new ReadServiceOptions() { PageSize = pageSize, Limit = limit };
+      return await ReadAsync(options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Fetch the target page of records
+    /// </summary>
+    /// <param name="targetUrl"> API-generated URL for the requested results page </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> The target page of records </returns>
+    public static Page<ServiceResource> GetPage(string targetUrl, ITwilioRestClient client)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+
+      var request = new Request(
+          HttpMethod.Get,
+          targetUrl
+      );
+
+      var response = client.Request(request);
+      return Page<ServiceResource>.FromJson("services", response.Content);
+    }
+
+    /// <summary>
+    /// Fetch the next page of records
+    /// </summary>
+    /// <param name="page"> current page of records </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> The next page of records </returns>
+    public static Page<ServiceResource> NextPage(Page<ServiceResource> page, ITwilioRestClient client)
+    {
+      var request = new Request(
+          HttpMethod.Get,
+          page.GetNextPageUrl(Rest.Domain.Verify)
+      );
+
+      var response = client.Request(request);
+      return Page<ServiceResource>.FromJson("services", response.Content);
+    }
+
+    /// <summary>
+    /// Fetch the previous page of records
+    /// </summary>
+    /// <param name="page"> current page of records </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> The previous page of records </returns>
+    public static Page<ServiceResource> PreviousPage(Page<ServiceResource> page, ITwilioRestClient client)
+    {
+      var request = new Request(
+          HttpMethod.Get,
+          page.GetPreviousPageUrl(Rest.Domain.Verify)
+      );
+
+      var response = client.Request(request);
+      return Page<ServiceResource>.FromJson("services", response.Content);
+    }
+
+    private static Request BuildUpdateRequest(UpdateServiceOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Post,
+          Rest.Domain.Verify,
+          "/v2/Services/" + options.PathSid + "",
+          postParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// Update a specific Verification Service.
+    /// </summary>
+    /// <param name="options"> Update Service parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Service </returns>
+    public static ServiceResource Update(UpdateServiceOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildUpdateRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Update a specific Verification Service.
+    /// </summary>
+    /// <param name="options"> Update Service parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Service </returns>
+    public static async System.Threading.Tasks.Task<ServiceResource> UpdateAsync(UpdateServiceOptions options,
+                                                                                 ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// Update a specific Verification Service.
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    /// <param name="friendlyName"> A string to describe the verification service </param>
+    /// <param name="codeLength"> The length of the verification code to generate </param>
+    /// <param name="lookupEnabled"> Whether to perform a lookup with each verification </param>
+    /// <param name="skipSmsToLandlines"> Whether to skip sending SMS verifications to landlines </param>
+    /// <param name="dtmfInputRequired"> Whether to ask the user to press a number before delivering the verify code in a
+    ///                         phone call </param>
+    /// <param name="ttsName"> The name of an alternative text-to-speech service to use in phone calls </param>
+    /// <param name="psd2Enabled"> Whether to pass PSD2 transaction parameters when starting a verification </param>
+    /// <param name="doNotShareWarningEnabled"> Whether to add a privacy warning at the end of an SMS. </param>
+    /// <param name="customCodeEnabled"> Whether to allow sending verifications with a custom code. </param>
+    /// <param name="pushIncludeDate"> Optional. Include the date in the Challenge's reponse. Default: true </param>
+    /// <param name="pushApnCredentialSid"> Optional. Set APN Credential for this service. </param>
+    /// <param name="pushFcmCredentialSid"> Optional. Set FCM Credential for this service. </param>
+    /// <param name="totpIssuer"> Optional. Set TOTP Issuer for this service. </param>
+    /// <param name="totpTimeStep"> Optional. How often, in seconds, are TOTP codes generated </param>
+    /// <param name="totpCodeLength"> Optional. Number of digits for generated TOTP codes </param>
+    /// <param name="totpSkew"> Optional. The number of past and future time-steps valid at a given time </param>
+    /// <param name="defaultTemplateSid"> The verification template SMS messages. </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Service </returns>
+    public static ServiceResource Update(string pathSid,
+                                         string friendlyName = null,
+                                         int? codeLength = null,
+                                         bool? lookupEnabled = null,
+                                         bool? skipSmsToLandlines = null,
+                                         bool? dtmfInputRequired = null,
+                                         string ttsName = null,
+                                         bool? psd2Enabled = null,
+                                         bool? doNotShareWarningEnabled = null,
+                                         bool? customCodeEnabled = null,
+                                         bool? pushIncludeDate = null,
+                                         string pushApnCredentialSid = null,
+                                         string pushFcmCredentialSid = null,
+                                         string totpIssuer = null,
+                                         int? totpTimeStep = null,
+                                         int? totpCodeLength = null,
+                                         int? totpSkew = null,
+                                         string defaultTemplateSid = null,
+                                         ITwilioRestClient client = null)
+    {
+      var options = new UpdateServiceOptions(pathSid) { FriendlyName = friendlyName, CodeLength = codeLength, LookupEnabled = lookupEnabled, SkipSmsToLandlines = skipSmsToLandlines, DtmfInputRequired = dtmfInputRequired, TtsName = ttsName, Psd2Enabled = psd2Enabled, DoNotShareWarningEnabled = doNotShareWarningEnabled, CustomCodeEnabled = customCodeEnabled, PushIncludeDate = pushIncludeDate, PushApnCredentialSid = pushApnCredentialSid, PushFcmCredentialSid = pushFcmCredentialSid, TotpIssuer = totpIssuer, TotpTimeStep = totpTimeStep, TotpCodeLength = totpCodeLength, TotpSkew = totpSkew, DefaultTemplateSid = defaultTemplateSid };
+      return Update(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Update a specific Verification Service.
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    /// <param name="friendlyName"> A string to describe the verification service </param>
+    /// <param name="codeLength"> The length of the verification code to generate </param>
+    /// <param name="lookupEnabled"> Whether to perform a lookup with each verification </param>
+    /// <param name="skipSmsToLandlines"> Whether to skip sending SMS verifications to landlines </param>
+    /// <param name="dtmfInputRequired"> Whether to ask the user to press a number before delivering the verify code in a
+    ///                         phone call </param>
+    /// <param name="ttsName"> The name of an alternative text-to-speech service to use in phone calls </param>
+    /// <param name="psd2Enabled"> Whether to pass PSD2 transaction parameters when starting a verification </param>
+    /// <param name="doNotShareWarningEnabled"> Whether to add a privacy warning at the end of an SMS. </param>
+    /// <param name="customCodeEnabled"> Whether to allow sending verifications with a custom code. </param>
+    /// <param name="pushIncludeDate"> Optional. Include the date in the Challenge's reponse. Default: true </param>
+    /// <param name="pushApnCredentialSid"> Optional. Set APN Credential for this service. </param>
+    /// <param name="pushFcmCredentialSid"> Optional. Set FCM Credential for this service. </param>
+    /// <param name="totpIssuer"> Optional. Set TOTP Issuer for this service. </param>
+    /// <param name="totpTimeStep"> Optional. How often, in seconds, are TOTP codes generated </param>
+    /// <param name="totpCodeLength"> Optional. Number of digits for generated TOTP codes </param>
+    /// <param name="totpSkew"> Optional. The number of past and future time-steps valid at a given time </param>
+    /// <param name="defaultTemplateSid"> The verification template SMS messages. </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Service </returns>
+    public static async System.Threading.Tasks.Task<ServiceResource> UpdateAsync(string pathSid,
+                                                                                 string friendlyName = null,
+                                                                                 int? codeLength = null,
+                                                                                 bool? lookupEnabled = null,
+                                                                                 bool? skipSmsToLandlines = null,
+                                                                                 bool? dtmfInputRequired = null,
+                                                                                 string ttsName = null,
+                                                                                 bool? psd2Enabled = null,
+                                                                                 bool? doNotShareWarningEnabled = null,
+                                                                                 bool? customCodeEnabled = null,
+                                                                                 bool? pushIncludeDate = null,
+                                                                                 string pushApnCredentialSid = null,
+                                                                                 string pushFcmCredentialSid = null,
+                                                                                 string totpIssuer = null,
+                                                                                 int? totpTimeStep = null,
+                                                                                 int? totpCodeLength = null,
+                                                                                 int? totpSkew = null,
+                                                                                 string defaultTemplateSid = null,
+                                                                                 ITwilioRestClient client = null)
+    {
+      var options = new UpdateServiceOptions(pathSid) { FriendlyName = friendlyName, CodeLength = codeLength, LookupEnabled = lookupEnabled, SkipSmsToLandlines = skipSmsToLandlines, DtmfInputRequired = dtmfInputRequired, TtsName = ttsName, Psd2Enabled = psd2Enabled, DoNotShareWarningEnabled = doNotShareWarningEnabled, CustomCodeEnabled = customCodeEnabled, PushIncludeDate = pushIncludeDate, PushApnCredentialSid = pushApnCredentialSid, PushFcmCredentialSid = pushFcmCredentialSid, TotpIssuer = totpIssuer, TotpTimeStep = totpTimeStep, TotpCodeLength = totpCodeLength, TotpSkew = totpSkew, DefaultTemplateSid = defaultTemplateSid };
+      return await UpdateAsync(options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Converts a JSON string into a ServiceResource object
+    /// </summary>
+    /// <param name="json"> Raw JSON string </param>
+    /// <returns> ServiceResource object represented by the provided JSON </returns>
+    public static ServiceResource FromJson(string json)
+    {
+      // Convert all checked exceptions to Runtime
+      try
+      {
+        return JsonConvert.DeserializeObject<ServiceResource>(json);
+      }
+      catch (JsonException e)
+      {
+        throw new ApiException(e.Message, e);
+      }
+    }
+
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    [JsonProperty("sid")]
+    public string Sid { get; private set; }
+    /// <summary>
+    /// The SID of the Account that created the resource
+    /// </summary>
+    [JsonProperty("account_sid")]
+    public string AccountSid { get; private set; }
+    /// <summary>
+    /// The string that you assigned to describe the verification service
+    /// </summary>
+    [JsonProperty("friendly_name")]
+    public string FriendlyName { get; private set; }
+    /// <summary>
+    /// The length of the verification code
+    /// </summary>
+    [JsonProperty("code_length")]
+    public int? CodeLength { get; private set; }
+    /// <summary>
+    /// Whether to perform a lookup with each verification
+    /// </summary>
+    [JsonProperty("lookup_enabled")]
+    public bool? LookupEnabled { get; private set; }
+    /// <summary>
+    /// Whether to pass PSD2 transaction parameters when starting a verification
+    /// </summary>
+    [JsonProperty("psd2_enabled")]
+    public bool? Psd2Enabled { get; private set; }
+    /// <summary>
+    /// Whether to skip sending SMS verifications to landlines
+    /// </summary>
+    [JsonProperty("skip_sms_to_landlines")]
+    public bool? SkipSmsToLandlines { get; private set; }
+    /// <summary>
+    /// Whether to ask the user to press a number before delivering the verify code in a phone call
+    /// </summary>
+    [JsonProperty("dtmf_input_required")]
+    public bool? DtmfInputRequired { get; private set; }
+    /// <summary>
+    /// The name of an alternative text-to-speech service to use in phone calls
+    /// </summary>
+    [JsonProperty("tts_name")]
+    public string TtsName { get; private set; }
+    /// <summary>
+    /// Whether to add a security warning at the end of an SMS.
+    /// </summary>
+    [JsonProperty("do_not_share_warning_enabled")]
+    public bool? DoNotShareWarningEnabled { get; private set; }
+    /// <summary>
+    /// Whether to allow sending verifications with a custom code.
+    /// </summary>
+    [JsonProperty("custom_code_enabled")]
+    public bool? CustomCodeEnabled { get; private set; }
+    /// <summary>
+    /// The service level configuration of factor push type.
+    /// </summary>
+    [JsonProperty("push")]
+    public object Push { get; private set; }
+    /// <summary>
+    /// The service level configuration of factor TOTP type.
+    /// </summary>
+    [JsonProperty("totp")]
+    public object Totp { get; private set; }
+    /// <summary>
+    /// The default_template_sid
+    /// </summary>
+    [JsonProperty("default_template_sid")]
+    public string DefaultTemplateSid { get; private set; }
+    /// <summary>
+    /// The RFC 2822 date and time in GMT when the resource was created
+    /// </summary>
+    [JsonProperty("date_created")]
+    public DateTime? DateCreated { get; private set; }
+    /// <summary>
+    /// The RFC 2822 date and time in GMT when the resource was last updated
+    /// </summary>
+    [JsonProperty("date_updated")]
+    public DateTime? DateUpdated { get; private set; }
+    /// <summary>
+    /// The absolute URL of the resource
+    /// </summary>
+    [JsonProperty("url")]
+    public Uri Url { get; private set; }
+    /// <summary>
+    /// The URLs of related resources
+    /// </summary>
+    [JsonProperty("links")]
+    public Dictionary<string, string> Links { get; private set; }
+
+    private ServiceResource()
+    {
+
+    }
+  }
 
 }

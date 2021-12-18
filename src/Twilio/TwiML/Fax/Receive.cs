@@ -14,127 +14,127 @@ using Twilio.Types;
 namespace Twilio.TwiML.Fax
 {
 
-    /// <summary>
-    /// Receive TwiML Verb
-    /// </summary>
-    public class Receive : TwiML
+  /// <summary>
+  /// Receive TwiML Verb
+  /// </summary>
+  public class Receive : TwiML
+  {
+    public sealed class MediaTypeEnum : StringEnum
     {
-        public sealed class MediaTypeEnum : StringEnum
-        {
-            private MediaTypeEnum(string value) : base(value) {}
-            public MediaTypeEnum() {}
-            public static implicit operator MediaTypeEnum(string value)
-            {
-                return new MediaTypeEnum(value);
-            }
+      private MediaTypeEnum(string value) : base(value) { }
+      public MediaTypeEnum() { }
+      public static implicit operator MediaTypeEnum(string value)
+      {
+        return new MediaTypeEnum(value);
+      }
 
-            public static readonly MediaTypeEnum ApplicationPdf = new MediaTypeEnum("application/pdf");
-            public static readonly MediaTypeEnum ImageTiff = new MediaTypeEnum("image/tiff");
-        }
-
-        public sealed class PageSizeEnum : StringEnum
-        {
-            private PageSizeEnum(string value) : base(value) {}
-            public PageSizeEnum() {}
-            public static implicit operator PageSizeEnum(string value)
-            {
-                return new PageSizeEnum(value);
-            }
-
-            public static readonly PageSizeEnum Letter = new PageSizeEnum("letter");
-            public static readonly PageSizeEnum Legal = new PageSizeEnum("legal");
-            public static readonly PageSizeEnum A4 = new PageSizeEnum("a4");
-        }
-
-        /// <summary>
-        /// Receive action URL
-        /// </summary>
-        public Uri Action { get; set; }
-        /// <summary>
-        /// Receive action URL method
-        /// </summary>
-        public Twilio.Http.HttpMethod Method { get; set; }
-        /// <summary>
-        /// The media type used to store media in the fax media store
-        /// </summary>
-        public Receive.MediaTypeEnum MediaType { get; set; }
-        /// <summary>
-        /// What size to interpret received pages as
-        /// </summary>
-        public Receive.PageSizeEnum PageSize { get; set; }
-        /// <summary>
-        /// Whether or not to store received media in the fax media store
-        /// </summary>
-        public bool? StoreMedia { get; set; }
-
-        /// <summary>
-        /// Create a new Receive
-        /// </summary>
-        /// <param name="action"> Receive action URL </param>
-        /// <param name="method"> Receive action URL method </param>
-        /// <param name="mediaType"> The media type used to store media in the fax media store </param>
-        /// <param name="pageSize"> What size to interpret received pages as </param>
-        /// <param name="storeMedia"> Whether or not to store received media in the fax media store </param>
-        public Receive(Uri action = null,
-                       Twilio.Http.HttpMethod method = null,
-                       Receive.MediaTypeEnum mediaType = null,
-                       Receive.PageSizeEnum pageSize = null,
-                       bool? storeMedia = null) : base("Receive")
-        {
-            this.Action = action;
-            this.Method = method;
-            this.MediaType = mediaType;
-            this.PageSize = pageSize;
-            this.StoreMedia = storeMedia;
-        }
-
-        /// <summary>
-        /// Return the attributes of the TwiML tag
-        /// </summary>
-        protected override List<XAttribute> GetElementAttributes()
-        {
-            var attributes = new List<XAttribute>();
-            if (this.Action != null)
-            {
-                attributes.Add(new XAttribute("action", Serializers.Url(this.Action)));
-            }
-            if (this.Method != null)
-            {
-                attributes.Add(new XAttribute("method", this.Method.ToString()));
-            }
-            if (this.MediaType != null)
-            {
-                attributes.Add(new XAttribute("mediaType", this.MediaType.ToString()));
-            }
-            if (this.PageSize != null)
-            {
-                attributes.Add(new XAttribute("pageSize", this.PageSize.ToString()));
-            }
-            if (this.StoreMedia != null)
-            {
-                attributes.Add(new XAttribute("storeMedia", this.StoreMedia.Value.ToString().ToLower()));
-            }
-            return attributes;
-        }
-
-        /// <summary>
-        /// Append a child TwiML element to this element returning this element to allow chaining.
-        /// </summary>
-        /// <param name="childElem"> Child TwiML element to add </param>
-        public new Receive Append(TwiML childElem)
-        {
-            return (Receive) base.Append(childElem);
-        }
-
-        /// <summary>
-        /// Add freeform key-value attributes to the generated xml
-        /// </summary>
-        /// <param name="key"> Option key </param>
-        /// <param name="value"> Option value </param>
-        public new Receive SetOption(string key, object value)
-        {
-            return (Receive) base.SetOption(key, value);
-        }
+      public static readonly MediaTypeEnum ApplicationPdf = new MediaTypeEnum("application/pdf");
+      public static readonly MediaTypeEnum ImageTiff = new MediaTypeEnum("image/tiff");
     }
+
+    public sealed class PageSizeEnum : StringEnum
+    {
+      private PageSizeEnum(string value) : base(value) { }
+      public PageSizeEnum() { }
+      public static implicit operator PageSizeEnum(string value)
+      {
+        return new PageSizeEnum(value);
+      }
+
+      public static readonly PageSizeEnum Letter = new PageSizeEnum("letter");
+      public static readonly PageSizeEnum Legal = new PageSizeEnum("legal");
+      public static readonly PageSizeEnum A4 = new PageSizeEnum("a4");
+    }
+
+    /// <summary>
+    /// Receive action URL
+    /// </summary>
+    public Uri Action { get; set; }
+    /// <summary>
+    /// Receive action URL method
+    /// </summary>
+    public Twilio.Http.HttpMethod Method { get; set; }
+    /// <summary>
+    /// The media type used to store media in the fax media store
+    /// </summary>
+    public Receive.MediaTypeEnum MediaType { get; set; }
+    /// <summary>
+    /// What size to interpret received pages as
+    /// </summary>
+    public Receive.PageSizeEnum PageSize { get; set; }
+    /// <summary>
+    /// Whether or not to store received media in the fax media store
+    /// </summary>
+    public bool? StoreMedia { get; set; }
+
+    /// <summary>
+    /// Create a new Receive
+    /// </summary>
+    /// <param name="action"> Receive action URL </param>
+    /// <param name="method"> Receive action URL method </param>
+    /// <param name="mediaType"> The media type used to store media in the fax media store </param>
+    /// <param name="pageSize"> What size to interpret received pages as </param>
+    /// <param name="storeMedia"> Whether or not to store received media in the fax media store </param>
+    public Receive(Uri action = null,
+                   Twilio.Http.HttpMethod method = null,
+                   Receive.MediaTypeEnum mediaType = null,
+                   Receive.PageSizeEnum pageSize = null,
+                   bool? storeMedia = null) : base("Receive")
+    {
+      this.Action = action;
+      this.Method = method;
+      this.MediaType = mediaType;
+      this.PageSize = pageSize;
+      this.StoreMedia = storeMedia;
+    }
+
+    /// <summary>
+    /// Return the attributes of the TwiML tag
+    /// </summary>
+    protected override List<XAttribute> GetElementAttributes()
+    {
+      var attributes = new List<XAttribute>();
+      if (this.Action != null)
+      {
+        attributes.Add(new XAttribute("action", Serializers.Url(this.Action)));
+      }
+      if (this.Method != null)
+      {
+        attributes.Add(new XAttribute("method", this.Method.ToString()));
+      }
+      if (this.MediaType != null)
+      {
+        attributes.Add(new XAttribute("mediaType", this.MediaType.ToString()));
+      }
+      if (this.PageSize != null)
+      {
+        attributes.Add(new XAttribute("pageSize", this.PageSize.ToString()));
+      }
+      if (this.StoreMedia != null)
+      {
+        attributes.Add(new XAttribute("storeMedia", this.StoreMedia.Value.ToString().ToLower()));
+      }
+      return attributes;
+    }
+
+    /// <summary>
+    /// Append a child TwiML element to this element returning this element to allow chaining.
+    /// </summary>
+    /// <param name="childElem"> Child TwiML element to add </param>
+    public new Receive Append(TwiML childElem)
+    {
+      return (Receive)base.Append(childElem);
+    }
+
+    /// <summary>
+    /// Add freeform key-value attributes to the generated xml
+    /// </summary>
+    /// <param name="key"> Option key </param>
+    /// <param name="value"> Option value </param>
+    public new Receive SetOption(string key, object value)
+    {
+      return (Receive)base.SetOption(key, value);
+    }
+  }
 
 }

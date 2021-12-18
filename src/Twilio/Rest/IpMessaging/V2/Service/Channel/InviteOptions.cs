@@ -12,191 +12,191 @@ using Twilio.Converters;
 namespace Twilio.Rest.IpMessaging.V2.Service.Channel
 {
 
+  /// <summary>
+  /// FetchInviteOptions
+  /// </summary>
+  public class FetchInviteOptions : IOptions<InviteResource>
+  {
     /// <summary>
-    /// FetchInviteOptions
+    /// The service_sid
     /// </summary>
-    public class FetchInviteOptions : IOptions<InviteResource>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The channel_sid
+    /// </summary>
+    public string PathChannelSid { get; }
+    /// <summary>
+    /// The sid
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchInviteOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The service_sid </param>
+    /// <param name="pathChannelSid"> The channel_sid </param>
+    /// <param name="pathSid"> The sid </param>
+    public FetchInviteOptions(string pathServiceSid, string pathChannelSid, string pathSid)
     {
-        /// <summary>
-        /// The service_sid
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The channel_sid
-        /// </summary>
-        public string PathChannelSid { get; }
-        /// <summary>
-        /// The sid
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchInviteOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathChannelSid"> The channel_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        public FetchInviteOptions(string pathServiceSid, string pathChannelSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathChannelSid = pathChannelSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathServiceSid = pathServiceSid;
+      PathChannelSid = pathChannelSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// CreateInviteOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class CreateInviteOptions : IOptions<InviteResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The service_sid
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The channel_sid
-        /// </summary>
-        public string PathChannelSid { get; }
-        /// <summary>
-        /// The identity
-        /// </summary>
-        public string Identity { get; }
-        /// <summary>
-        /// The role_sid
-        /// </summary>
-        public string RoleSid { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new CreateInviteOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathChannelSid"> The channel_sid </param>
-        /// <param name="identity"> The identity </param>
-        public CreateInviteOptions(string pathServiceSid, string pathChannelSid, string identity)
-        {
-            PathServiceSid = pathServiceSid;
-            PathChannelSid = pathChannelSid;
-            Identity = identity;
-        }
+  /// <summary>
+  /// CreateInviteOptions
+  /// </summary>
+  public class CreateInviteOptions : IOptions<InviteResource>
+  {
+    /// <summary>
+    /// The service_sid
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The channel_sid
+    /// </summary>
+    public string PathChannelSid { get; }
+    /// <summary>
+    /// The identity
+    /// </summary>
+    public string Identity { get; }
+    /// <summary>
+    /// The role_sid
+    /// </summary>
+    public string RoleSid { get; set; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Identity != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Identity", Identity));
-            }
-
-            if (RoleSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("RoleSid", RoleSid.ToString()));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new CreateInviteOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The service_sid </param>
+    /// <param name="pathChannelSid"> The channel_sid </param>
+    /// <param name="identity"> The identity </param>
+    public CreateInviteOptions(string pathServiceSid, string pathChannelSid, string identity)
+    {
+      PathServiceSid = pathServiceSid;
+      PathChannelSid = pathChannelSid;
+      Identity = identity;
     }
 
     /// <summary>
-    /// ReadInviteOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadInviteOptions : ReadOptions<InviteResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The service_sid
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The channel_sid
-        /// </summary>
-        public string PathChannelSid { get; }
-        /// <summary>
-        /// The identity
-        /// </summary>
-        public List<string> Identity { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (Identity != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Identity", Identity));
+      }
 
-        /// <summary>
-        /// Construct a new ReadInviteOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathChannelSid"> The channel_sid </param>
-        public ReadInviteOptions(string pathServiceSid, string pathChannelSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathChannelSid = pathChannelSid;
-            Identity = new List<string>();
-        }
+      if (RoleSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("RoleSid", RoleSid.ToString()));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Identity != null)
-            {
-                p.AddRange(Identity.Select(prop => new KeyValuePair<string, string>("Identity", prop)));
-            }
+      return p;
+    }
+  }
 
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
+  /// <summary>
+  /// ReadInviteOptions
+  /// </summary>
+  public class ReadInviteOptions : ReadOptions<InviteResource>
+  {
+    /// <summary>
+    /// The service_sid
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The channel_sid
+    /// </summary>
+    public string PathChannelSid { get; }
+    /// <summary>
+    /// The identity
+    /// </summary>
+    public List<string> Identity { get; set; }
 
-            return p;
-        }
+    /// <summary>
+    /// Construct a new ReadInviteOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The service_sid </param>
+    /// <param name="pathChannelSid"> The channel_sid </param>
+    public ReadInviteOptions(string pathServiceSid, string pathChannelSid)
+    {
+      PathServiceSid = pathServiceSid;
+      PathChannelSid = pathChannelSid;
+      Identity = new List<string>();
     }
 
     /// <summary>
-    /// DeleteInviteOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteInviteOptions : IOptions<InviteResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The service_sid
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The channel_sid
-        /// </summary>
-        public string PathChannelSid { get; }
-        /// <summary>
-        /// The sid
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (Identity != null)
+      {
+        p.AddRange(Identity.Select(prop => new KeyValuePair<string, string>("Identity", prop)));
+      }
 
-        /// <summary>
-        /// Construct a new DeleteInviteOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathChannelSid"> The channel_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        public DeleteInviteOptions(string pathServiceSid, string pathChannelSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathChannelSid = pathChannelSid;
-            PathSid = pathSid;
-        }
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      return p;
     }
+  }
+
+  /// <summary>
+  /// DeleteInviteOptions
+  /// </summary>
+  public class DeleteInviteOptions : IOptions<InviteResource>
+  {
+    /// <summary>
+    /// The service_sid
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The channel_sid
+    /// </summary>
+    public string PathChannelSid { get; }
+    /// <summary>
+    /// The sid
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new DeleteInviteOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The service_sid </param>
+    /// <param name="pathChannelSid"> The channel_sid </param>
+    /// <param name="pathSid"> The sid </param>
+    public DeleteInviteOptions(string pathServiceSid, string pathChannelSid, string pathSid)
+    {
+      PathServiceSid = pathServiceSid;
+      PathChannelSid = pathChannelSid;
+      PathSid = pathSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
 }

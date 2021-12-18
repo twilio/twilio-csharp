@@ -11,82 +11,82 @@ using Twilio.Converters;
 namespace Twilio.Rest.Studio.V1
 {
 
+  /// <summary>
+  /// Retrieve a list of all Flows.
+  /// </summary>
+  public class ReadFlowOptions : ReadOptions<FlowResource>
+  {
     /// <summary>
-    /// Retrieve a list of all Flows.
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadFlowOptions : ReadOptions<FlowResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-            return p;
-        }
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// Retrieve a specific Flow.
+  /// </summary>
+  public class FetchFlowOptions : IOptions<FlowResource>
+  {
+    /// <summary>
+    /// The SID that identifies the resource to fetch
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchFlowOptions
+    /// </summary>
+    /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
+    public FetchFlowOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Retrieve a specific Flow.
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchFlowOptions : IOptions<FlowResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID that identifies the resource to fetch
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new FetchFlowOptions
-        /// </summary>
-        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
-        public FetchFlowOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
+  /// <summary>
+  /// Delete a specific Flow.
+  /// </summary>
+  public class DeleteFlowOptions : IOptions<FlowResource>
+  {
+    /// <summary>
+    /// The SID that identifies the resource to delete
+    /// </summary>
+    public string PathSid { get; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+    /// <summary>
+    /// Construct a new DeleteFlowOptions
+    /// </summary>
+    /// <param name="pathSid"> The SID that identifies the resource to delete </param>
+    public DeleteFlowOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Delete a specific Flow.
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteFlowOptions : IOptions<FlowResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID that identifies the resource to delete
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new DeleteFlowOptions
-        /// </summary>
-        /// <param name="pathSid"> The SID that identifies the resource to delete </param>
-        public DeleteFlowOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
 
 }

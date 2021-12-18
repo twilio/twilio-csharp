@@ -13,98 +13,98 @@ using Twilio.Converters;
 namespace Twilio.TwiML.Voice
 {
 
+  /// <summary>
+  /// Refer TwiML Verb
+  /// </summary>
+  public class Refer : TwiML
+  {
     /// <summary>
-    /// Refer TwiML Verb
+    /// Action URL
     /// </summary>
-    public class Refer : TwiML
+    public Uri Action { get; set; }
+    /// <summary>
+    /// Action URL method
+    /// </summary>
+    public Twilio.Http.HttpMethod Method { get; set; }
+
+    /// <summary>
+    /// Create a new Refer
+    /// </summary>
+    /// <param name="action"> Action URL </param>
+    /// <param name="method"> Action URL method </param>
+    public Refer(Uri action = null, Twilio.Http.HttpMethod method = null) : base("Refer")
     {
-        /// <summary>
-        /// Action URL
-        /// </summary>
-        public Uri Action { get; set; }
-        /// <summary>
-        /// Action URL method
-        /// </summary>
-        public Twilio.Http.HttpMethod Method { get; set; }
-
-        /// <summary>
-        /// Create a new Refer
-        /// </summary>
-        /// <param name="action"> Action URL </param>
-        /// <param name="method"> Action URL method </param>
-        public Refer(Uri action = null, Twilio.Http.HttpMethod method = null) : base("Refer")
-        {
-            this.Action = action;
-            this.Method = method;
-        }
-
-        /// <summary>
-        /// Return the attributes of the TwiML tag
-        /// </summary>
-        protected override List<XAttribute> GetElementAttributes()
-        {
-            var attributes = new List<XAttribute>();
-            if (this.Action != null)
-            {
-                attributes.Add(new XAttribute("action", Serializers.Url(this.Action)));
-            }
-            if (this.Method != null)
-            {
-                attributes.Add(new XAttribute("method", this.Method.ToString()));
-            }
-            return attributes;
-        }
-
-        /// <summary>
-        /// Create a new <Sip/> element and append it as a child of this element.
-        /// </summary>
-        /// <param name="sipUrl"> SIP URL, the body of the TwiML Element. </param>
-        public Refer Sip(Uri sipUrl = null)
-        {
-            var newChild = new ReferSip(sipUrl);
-            this.Append(newChild);
-            return this;
-        }
-
-        /// <summary>
-        /// Append a <Sip/> element as a child of this element
-        /// </summary>
-        /// <param name="referSip"> A ReferSip instance. </param>
-        [System.Obsolete("This method is deprecated, use .Append() instead.")]
-        public Refer ReferSip(ReferSip referSip)
-        {
-            this.Append(referSip);
-            return this;
-        }
-
-        /// <summary>
-        /// Create a new <Sip/> element and append it as a child of this element.
-        /// </summary>
-        /// <param name="sipUrl"> SIP URL, the body of the TwiML Element. </param>
-        [System.Obsolete("This method is deprecated, use .Sip() instead.")]
-        public Refer ReferSip(Uri sipUrl = null)
-        {
-            return Sip(sipUrl);
-        }
-
-        /// <summary>
-        /// Append a child TwiML element to this element returning this element to allow chaining.
-        /// </summary>
-        /// <param name="childElem"> Child TwiML element to add </param>
-        public new Refer Append(TwiML childElem)
-        {
-            return (Refer) base.Append(childElem);
-        }
-
-        /// <summary>
-        /// Add freeform key-value attributes to the generated xml
-        /// </summary>
-        /// <param name="key"> Option key </param>
-        /// <param name="value"> Option value </param>
-        public new Refer SetOption(string key, object value)
-        {
-            return (Refer) base.SetOption(key, value);
-        }
+      this.Action = action;
+      this.Method = method;
     }
+
+    /// <summary>
+    /// Return the attributes of the TwiML tag
+    /// </summary>
+    protected override List<XAttribute> GetElementAttributes()
+    {
+      var attributes = new List<XAttribute>();
+      if (this.Action != null)
+      {
+        attributes.Add(new XAttribute("action", Serializers.Url(this.Action)));
+      }
+      if (this.Method != null)
+      {
+        attributes.Add(new XAttribute("method", this.Method.ToString()));
+      }
+      return attributes;
+    }
+
+    /// <summary>
+    /// Create a new <Sip/> element and append it as a child of this element.
+    /// </summary>
+    /// <param name="sipUrl"> SIP URL, the body of the TwiML Element. </param>
+    public Refer Sip(Uri sipUrl = null)
+    {
+      var newChild = new ReferSip(sipUrl);
+      this.Append(newChild);
+      return this;
+    }
+
+    /// <summary>
+    /// Append a <Sip/> element as a child of this element
+    /// </summary>
+    /// <param name="referSip"> A ReferSip instance. </param>
+    [System.Obsolete("This method is deprecated, use .Append() instead.")]
+    public Refer ReferSip(ReferSip referSip)
+    {
+      this.Append(referSip);
+      return this;
+    }
+
+    /// <summary>
+    /// Create a new <Sip/> element and append it as a child of this element.
+    /// </summary>
+    /// <param name="sipUrl"> SIP URL, the body of the TwiML Element. </param>
+    [System.Obsolete("This method is deprecated, use .Sip() instead.")]
+    public Refer ReferSip(Uri sipUrl = null)
+    {
+      return Sip(sipUrl);
+    }
+
+    /// <summary>
+    /// Append a child TwiML element to this element returning this element to allow chaining.
+    /// </summary>
+    /// <param name="childElem"> Child TwiML element to add </param>
+    public new Refer Append(TwiML childElem)
+    {
+      return (Refer)base.Append(childElem);
+    }
+
+    /// <summary>
+    /// Add freeform key-value attributes to the generated xml
+    /// </summary>
+    /// <param name="key"> Option key </param>
+    /// <param name="value"> Option value </param>
+    public new Refer SetOption(string key, object value)
+    {
+      return (Refer)base.SetOption(key, value);
+    }
+  }
 
 }

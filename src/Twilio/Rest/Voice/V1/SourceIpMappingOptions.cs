@@ -11,167 +11,167 @@ using Twilio.Converters;
 namespace Twilio.Rest.Voice.V1
 {
 
+  /// <summary>
+  /// CreateSourceIpMappingOptions
+  /// </summary>
+  public class CreateSourceIpMappingOptions : IOptions<SourceIpMappingResource>
+  {
     /// <summary>
-    /// CreateSourceIpMappingOptions
+    /// The unique string that identifies an IP Record
     /// </summary>
-    public class CreateSourceIpMappingOptions : IOptions<SourceIpMappingResource>
+    public string IpRecordSid { get; }
+    /// <summary>
+    /// The unique string that identifies a SIP Domain
+    /// </summary>
+    public string SipDomainSid { get; }
+
+    /// <summary>
+    /// Construct a new CreateSourceIpMappingOptions
+    /// </summary>
+    /// <param name="ipRecordSid"> The unique string that identifies an IP Record </param>
+    /// <param name="sipDomainSid"> The unique string that identifies a SIP Domain </param>
+    public CreateSourceIpMappingOptions(string ipRecordSid, string sipDomainSid)
     {
-        /// <summary>
-        /// The unique string that identifies an IP Record
-        /// </summary>
-        public string IpRecordSid { get; }
-        /// <summary>
-        /// The unique string that identifies a SIP Domain
-        /// </summary>
-        public string SipDomainSid { get; }
-
-        /// <summary>
-        /// Construct a new CreateSourceIpMappingOptions
-        /// </summary>
-        /// <param name="ipRecordSid"> The unique string that identifies an IP Record </param>
-        /// <param name="sipDomainSid"> The unique string that identifies a SIP Domain </param>
-        public CreateSourceIpMappingOptions(string ipRecordSid, string sipDomainSid)
-        {
-            IpRecordSid = ipRecordSid;
-            SipDomainSid = sipDomainSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (IpRecordSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("IpRecordSid", IpRecordSid.ToString()));
-            }
-
-            if (SipDomainSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("SipDomainSid", SipDomainSid.ToString()));
-            }
-
-            return p;
-        }
+      IpRecordSid = ipRecordSid;
+      SipDomainSid = sipDomainSid;
     }
 
     /// <summary>
-    /// FetchSourceIpMappingOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchSourceIpMappingOptions : IOptions<SourceIpMappingResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (IpRecordSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("IpRecordSid", IpRecordSid.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new FetchSourceIpMappingOptions
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public FetchSourceIpMappingOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
+      if (SipDomainSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("SipDomainSid", SipDomainSid.ToString()));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// FetchSourceIpMappingOptions
+  /// </summary>
+  public class FetchSourceIpMappingOptions : IOptions<SourceIpMappingResource>
+  {
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchSourceIpMappingOptions
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public FetchSourceIpMappingOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// ReadSourceIpMappingOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadSourceIpMappingOptions : ReadOptions<SourceIpMappingResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-            return p;
-        }
+  /// <summary>
+  /// ReadSourceIpMappingOptions
+  /// </summary>
+  public class ReadSourceIpMappingOptions : ReadOptions<SourceIpMappingResource>
+  {
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// UpdateSourceIpMappingOptions
+  /// </summary>
+  public class UpdateSourceIpMappingOptions : IOptions<SourceIpMappingResource>
+  {
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// The unique string that identifies a SIP Domain
+    /// </summary>
+    public string SipDomainSid { get; }
+
+    /// <summary>
+    /// Construct a new UpdateSourceIpMappingOptions
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    /// <param name="sipDomainSid"> The unique string that identifies a SIP Domain </param>
+    public UpdateSourceIpMappingOptions(string pathSid, string sipDomainSid)
+    {
+      PathSid = pathSid;
+      SipDomainSid = sipDomainSid;
     }
 
     /// <summary>
-    /// UpdateSourceIpMappingOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateSourceIpMappingOptions : IOptions<SourceIpMappingResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// The unique string that identifies a SIP Domain
-        /// </summary>
-        public string SipDomainSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (SipDomainSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("SipDomainSid", SipDomainSid.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new UpdateSourceIpMappingOptions
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        /// <param name="sipDomainSid"> The unique string that identifies a SIP Domain </param>
-        public UpdateSourceIpMappingOptions(string pathSid, string sipDomainSid)
-        {
-            PathSid = pathSid;
-            SipDomainSid = sipDomainSid;
-        }
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (SipDomainSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("SipDomainSid", SipDomainSid.ToString()));
-            }
+  /// <summary>
+  /// DeleteSourceIpMappingOptions
+  /// </summary>
+  public class DeleteSourceIpMappingOptions : IOptions<SourceIpMappingResource>
+  {
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
 
-            return p;
-        }
+    /// <summary>
+    /// Construct a new DeleteSourceIpMappingOptions
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public DeleteSourceIpMappingOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// DeleteSourceIpMappingOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteSourceIpMappingOptions : IOptions<SourceIpMappingResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new DeleteSourceIpMappingOptions
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public DeleteSourceIpMappingOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
 
 }

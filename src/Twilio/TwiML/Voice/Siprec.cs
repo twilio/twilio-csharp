@@ -12,113 +12,113 @@ using Twilio.Types;
 namespace Twilio.TwiML.Voice
 {
 
-    /// <summary>
-    /// Siprec TwiML Noun
-    /// </summary>
-    public class Siprec : TwiML
+  /// <summary>
+  /// Siprec TwiML Noun
+  /// </summary>
+  public class Siprec : TwiML
+  {
+    public sealed class TrackEnum : StringEnum
     {
-        public sealed class TrackEnum : StringEnum
-        {
-            private TrackEnum(string value) : base(value) {}
-            public TrackEnum() {}
-            public static implicit operator TrackEnum(string value)
-            {
-                return new TrackEnum(value);
-            }
+      private TrackEnum(string value) : base(value) { }
+      public TrackEnum() { }
+      public static implicit operator TrackEnum(string value)
+      {
+        return new TrackEnum(value);
+      }
 
-            public static readonly TrackEnum InboundTrack = new TrackEnum("inbound_track");
-            public static readonly TrackEnum OutboundTrack = new TrackEnum("outbound_track");
-            public static readonly TrackEnum BothTracks = new TrackEnum("both_tracks");
-        }
-
-        /// <summary>
-        /// Friendly name given to SIPREC
-        /// </summary>
-        public string Name { get; set; }
-        /// <summary>
-        /// Unique name for Connector
-        /// </summary>
-        public string ConnectorName { get; set; }
-        /// <summary>
-        /// Track to be streamed to remote service
-        /// </summary>
-        public Siprec.TrackEnum Track { get; set; }
-
-        /// <summary>
-        /// Create a new Siprec
-        /// </summary>
-        /// <param name="name"> Friendly name given to SIPREC </param>
-        /// <param name="connectorName"> Unique name for Connector </param>
-        /// <param name="track"> Track to be streamed to remote service </param>
-        public Siprec(string name = null, string connectorName = null, Siprec.TrackEnum track = null) : base("Siprec")
-        {
-            this.Name = name;
-            this.ConnectorName = connectorName;
-            this.Track = track;
-        }
-
-        /// <summary>
-        /// Return the attributes of the TwiML tag
-        /// </summary>
-        protected override List<XAttribute> GetElementAttributes()
-        {
-            var attributes = new List<XAttribute>();
-            if (this.Name != null)
-            {
-                attributes.Add(new XAttribute("name", this.Name));
-            }
-            if (this.ConnectorName != null)
-            {
-                attributes.Add(new XAttribute("connectorName", this.ConnectorName));
-            }
-            if (this.Track != null)
-            {
-                attributes.Add(new XAttribute("track", this.Track.ToString()));
-            }
-            return attributes;
-        }
-
-        /// <summary>
-        /// Create a new <Parameter/> element and append it as a child of this element.
-        /// </summary>
-        /// <param name="name"> The name of the custom parameter </param>
-        /// <param name="value"> The value of the custom parameter </param>
-        public Siprec Parameter(string name = null, string value = null)
-        {
-            var newChild = new Parameter(name, value);
-            this.Append(newChild);
-            return this;
-        }
-
-        /// <summary>
-        /// Append a <Parameter/> element as a child of this element
-        /// </summary>
-        /// <param name="parameter"> A Parameter instance. </param>
-        [System.Obsolete("This method is deprecated, use .Append() instead.")]
-        public Siprec Parameter(Parameter parameter)
-        {
-            this.Append(parameter);
-            return this;
-        }
-
-        /// <summary>
-        /// Append a child TwiML element to this element returning this element to allow chaining.
-        /// </summary>
-        /// <param name="childElem"> Child TwiML element to add </param>
-        public new Siprec Append(TwiML childElem)
-        {
-            return (Siprec) base.Append(childElem);
-        }
-
-        /// <summary>
-        /// Add freeform key-value attributes to the generated xml
-        /// </summary>
-        /// <param name="key"> Option key </param>
-        /// <param name="value"> Option value </param>
-        public new Siprec SetOption(string key, object value)
-        {
-            return (Siprec) base.SetOption(key, value);
-        }
+      public static readonly TrackEnum InboundTrack = new TrackEnum("inbound_track");
+      public static readonly TrackEnum OutboundTrack = new TrackEnum("outbound_track");
+      public static readonly TrackEnum BothTracks = new TrackEnum("both_tracks");
     }
+
+    /// <summary>
+    /// Friendly name given to SIPREC
+    /// </summary>
+    public string Name { get; set; }
+    /// <summary>
+    /// Unique name for Connector
+    /// </summary>
+    public string ConnectorName { get; set; }
+    /// <summary>
+    /// Track to be streamed to remote service
+    /// </summary>
+    public Siprec.TrackEnum Track { get; set; }
+
+    /// <summary>
+    /// Create a new Siprec
+    /// </summary>
+    /// <param name="name"> Friendly name given to SIPREC </param>
+    /// <param name="connectorName"> Unique name for Connector </param>
+    /// <param name="track"> Track to be streamed to remote service </param>
+    public Siprec(string name = null, string connectorName = null, Siprec.TrackEnum track = null) : base("Siprec")
+    {
+      this.Name = name;
+      this.ConnectorName = connectorName;
+      this.Track = track;
+    }
+
+    /// <summary>
+    /// Return the attributes of the TwiML tag
+    /// </summary>
+    protected override List<XAttribute> GetElementAttributes()
+    {
+      var attributes = new List<XAttribute>();
+      if (this.Name != null)
+      {
+        attributes.Add(new XAttribute("name", this.Name));
+      }
+      if (this.ConnectorName != null)
+      {
+        attributes.Add(new XAttribute("connectorName", this.ConnectorName));
+      }
+      if (this.Track != null)
+      {
+        attributes.Add(new XAttribute("track", this.Track.ToString()));
+      }
+      return attributes;
+    }
+
+    /// <summary>
+    /// Create a new <Parameter/> element and append it as a child of this element.
+    /// </summary>
+    /// <param name="name"> The name of the custom parameter </param>
+    /// <param name="value"> The value of the custom parameter </param>
+    public Siprec Parameter(string name = null, string value = null)
+    {
+      var newChild = new Parameter(name, value);
+      this.Append(newChild);
+      return this;
+    }
+
+    /// <summary>
+    /// Append a <Parameter/> element as a child of this element
+    /// </summary>
+    /// <param name="parameter"> A Parameter instance. </param>
+    [System.Obsolete("This method is deprecated, use .Append() instead.")]
+    public Siprec Parameter(Parameter parameter)
+    {
+      this.Append(parameter);
+      return this;
+    }
+
+    /// <summary>
+    /// Append a child TwiML element to this element returning this element to allow chaining.
+    /// </summary>
+    /// <param name="childElem"> Child TwiML element to add </param>
+    public new Siprec Append(TwiML childElem)
+    {
+      return (Siprec)base.Append(childElem);
+    }
+
+    /// <summary>
+    /// Add freeform key-value attributes to the generated xml
+    /// </summary>
+    /// <param name="key"> Option key </param>
+    /// <param name="value"> Option value </param>
+    public new Siprec SetOption(string key, object value)
+    {
+      return (Siprec)base.SetOption(key, value);
+    }
+  }
 
 }

@@ -11,211 +11,211 @@ using Twilio.Converters;
 namespace Twilio.Rest.Serverless.V1
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Retrieve a list of all Services.
+  /// </summary>
+  public class ReadServiceOptions : ReadOptions<ServiceResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Retrieve a list of all Services.
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadServiceOptions : ReadOptions<ServiceResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-            return p;
-        }
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Retrieve a specific Service resource.
+  /// </summary>
+  public class FetchServiceOptions : IOptions<ServiceResource>
+  {
+    /// <summary>
+    /// The SID of the Service resource to fetch
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchServiceOptions
+    /// </summary>
+    /// <param name="pathSid"> The SID of the Service resource to fetch </param>
+    public FetchServiceOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Retrieve a specific Service resource.
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchServiceOptions : IOptions<ServiceResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Service resource to fetch
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new FetchServiceOptions
-        /// </summary>
-        /// <param name="pathSid"> The SID of the Service resource to fetch </param>
-        public FetchServiceOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Delete a Service resource.
+  /// </summary>
+  public class DeleteServiceOptions : IOptions<ServiceResource>
+  {
+    /// <summary>
+    /// The SID of the Service resource to delete
+    /// </summary>
+    public string PathSid { get; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+    /// <summary>
+    /// Construct a new DeleteServiceOptions
+    /// </summary>
+    /// <param name="pathSid"> The SID of the Service resource to delete </param>
+    public DeleteServiceOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Delete a Service resource.
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteServiceOptions : IOptions<ServiceResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Service resource to delete
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new DeleteServiceOptions
-        /// </summary>
-        /// <param name="pathSid"> The SID of the Service resource to delete </param>
-        public DeleteServiceOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Create a new Service resource.
+  /// </summary>
+  public class CreateServiceOptions : IOptions<ServiceResource>
+  {
+    /// <summary>
+    /// A user-defined string that uniquely identifies the Service resource
+    /// </summary>
+    public string UniqueName { get; }
+    /// <summary>
+    /// A string to describe the Service resource
+    /// </summary>
+    public string FriendlyName { get; }
+    /// <summary>
+    /// Whether to inject Account credentials into a function invocation context
+    /// </summary>
+    public bool? IncludeCredentials { get; set; }
+    /// <summary>
+    /// Whether the Service's properties and subresources can be edited via the UI
+    /// </summary>
+    public bool? UiEditable { get; set; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+    /// <summary>
+    /// Construct a new CreateServiceOptions
+    /// </summary>
+    /// <param name="uniqueName"> A user-defined string that uniquely identifies the Service resource </param>
+    /// <param name="friendlyName"> A string to describe the Service resource </param>
+    public CreateServiceOptions(string uniqueName, string friendlyName)
+    {
+      UniqueName = uniqueName;
+      FriendlyName = friendlyName;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Create a new Service resource.
+    /// Generate the necessary parameters
     /// </summary>
-    public class CreateServiceOptions : IOptions<ServiceResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// A user-defined string that uniquely identifies the Service resource
-        /// </summary>
-        public string UniqueName { get; }
-        /// <summary>
-        /// A string to describe the Service resource
-        /// </summary>
-        public string FriendlyName { get; }
-        /// <summary>
-        /// Whether to inject Account credentials into a function invocation context
-        /// </summary>
-        public bool? IncludeCredentials { get; set; }
-        /// <summary>
-        /// Whether the Service's properties and subresources can be edited via the UI
-        /// </summary>
-        public bool? UiEditable { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (UniqueName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
+      }
 
-        /// <summary>
-        /// Construct a new CreateServiceOptions
-        /// </summary>
-        /// <param name="uniqueName"> A user-defined string that uniquely identifies the Service resource </param>
-        /// <param name="friendlyName"> A string to describe the Service resource </param>
-        public CreateServiceOptions(string uniqueName, string friendlyName)
-        {
-            UniqueName = uniqueName;
-            FriendlyName = friendlyName;
-        }
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (UniqueName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
-            }
+      if (IncludeCredentials != null)
+      {
+        p.Add(new KeyValuePair<string, string>("IncludeCredentials", IncludeCredentials.Value.ToString().ToLower()));
+      }
 
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
+      if (UiEditable != null)
+      {
+        p.Add(new KeyValuePair<string, string>("UiEditable", UiEditable.Value.ToString().ToLower()));
+      }
 
-            if (IncludeCredentials != null)
-            {
-                p.Add(new KeyValuePair<string, string>("IncludeCredentials", IncludeCredentials.Value.ToString().ToLower()));
-            }
+      return p;
+    }
+  }
 
-            if (UiEditable != null)
-            {
-                p.Add(new KeyValuePair<string, string>("UiEditable", UiEditable.Value.ToString().ToLower()));
-            }
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Update a specific Service resource.
+  /// </summary>
+  public class UpdateServiceOptions : IOptions<ServiceResource>
+  {
+    /// <summary>
+    /// The SID of the Service resource to update
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// Whether to inject Account credentials into a function invocation context
+    /// </summary>
+    public bool? IncludeCredentials { get; set; }
+    /// <summary>
+    /// A string to describe the Service resource
+    /// </summary>
+    public string FriendlyName { get; set; }
+    /// <summary>
+    /// Whether the Service resource's properties and subresources can be edited via the UI
+    /// </summary>
+    public bool? UiEditable { get; set; }
 
-            return p;
-        }
+    /// <summary>
+    /// Construct a new UpdateServiceOptions
+    /// </summary>
+    /// <param name="pathSid"> The SID of the Service resource to update </param>
+    public UpdateServiceOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Update a specific Service resource.
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateServiceOptions : IOptions<ServiceResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Service resource to update
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// Whether to inject Account credentials into a function invocation context
-        /// </summary>
-        public bool? IncludeCredentials { get; set; }
-        /// <summary>
-        /// A string to describe the Service resource
-        /// </summary>
-        public string FriendlyName { get; set; }
-        /// <summary>
-        /// Whether the Service resource's properties and subresources can be edited via the UI
-        /// </summary>
-        public bool? UiEditable { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (IncludeCredentials != null)
+      {
+        p.Add(new KeyValuePair<string, string>("IncludeCredentials", IncludeCredentials.Value.ToString().ToLower()));
+      }
 
-        /// <summary>
-        /// Construct a new UpdateServiceOptions
-        /// </summary>
-        /// <param name="pathSid"> The SID of the Service resource to update </param>
-        public UpdateServiceOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (IncludeCredentials != null)
-            {
-                p.Add(new KeyValuePair<string, string>("IncludeCredentials", IncludeCredentials.Value.ToString().ToLower()));
-            }
+      if (UiEditable != null)
+      {
+        p.Add(new KeyValuePair<string, string>("UiEditable", UiEditable.Value.ToString().ToLower()));
+      }
 
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
-
-            if (UiEditable != null)
-            {
-                p.Add(new KeyValuePair<string, string>("UiEditable", UiEditable.Value.ToString().ToLower()));
-            }
-
-            return p;
-        }
+      return p;
     }
+  }
 
 }

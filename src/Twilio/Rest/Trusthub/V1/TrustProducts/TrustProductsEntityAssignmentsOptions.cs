@@ -11,148 +11,148 @@ using Twilio.Converters;
 namespace Twilio.Rest.Trusthub.V1.TrustProducts
 {
 
+  /// <summary>
+  /// Create a new Assigned Item.
+  /// </summary>
+  public class CreateTrustProductsEntityAssignmentsOptions : IOptions<TrustProductsEntityAssignmentsResource>
+  {
     /// <summary>
-    /// Create a new Assigned Item.
+    /// The unique string that identifies the resource.
     /// </summary>
-    public class CreateTrustProductsEntityAssignmentsOptions : IOptions<TrustProductsEntityAssignmentsResource>
+    public string PathTrustProductSid { get; }
+    /// <summary>
+    /// The sid of an object bag
+    /// </summary>
+    public string ObjectSid { get; }
+
+    /// <summary>
+    /// Construct a new CreateTrustProductsEntityAssignmentsOptions
+    /// </summary>
+    /// <param name="pathTrustProductSid"> The unique string that identifies the resource. </param>
+    /// <param name="objectSid"> The sid of an object bag </param>
+    public CreateTrustProductsEntityAssignmentsOptions(string pathTrustProductSid, string objectSid)
     {
-        /// <summary>
-        /// The unique string that identifies the resource.
-        /// </summary>
-        public string PathTrustProductSid { get; }
-        /// <summary>
-        /// The sid of an object bag
-        /// </summary>
-        public string ObjectSid { get; }
-
-        /// <summary>
-        /// Construct a new CreateTrustProductsEntityAssignmentsOptions
-        /// </summary>
-        /// <param name="pathTrustProductSid"> The unique string that identifies the resource. </param>
-        /// <param name="objectSid"> The sid of an object bag </param>
-        public CreateTrustProductsEntityAssignmentsOptions(string pathTrustProductSid, string objectSid)
-        {
-            PathTrustProductSid = pathTrustProductSid;
-            ObjectSid = objectSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (ObjectSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ObjectSid", ObjectSid.ToString()));
-            }
-
-            return p;
-        }
+      PathTrustProductSid = pathTrustProductSid;
+      ObjectSid = objectSid;
     }
 
     /// <summary>
-    /// Retrieve a list of all Assigned Items for an account.
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadTrustProductsEntityAssignmentsOptions : ReadOptions<TrustProductsEntityAssignmentsResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique string that identifies the resource.
-        /// </summary>
-        public string PathTrustProductSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (ObjectSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ObjectSid", ObjectSid.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new ReadTrustProductsEntityAssignmentsOptions
-        /// </summary>
-        /// <param name="pathTrustProductSid"> The unique string that identifies the resource. </param>
-        public ReadTrustProductsEntityAssignmentsOptions(string pathTrustProductSid)
-        {
-            PathTrustProductSid = pathTrustProductSid;
-        }
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
+  /// <summary>
+  /// Retrieve a list of all Assigned Items for an account.
+  /// </summary>
+  public class ReadTrustProductsEntityAssignmentsOptions : ReadOptions<TrustProductsEntityAssignmentsResource>
+  {
+    /// <summary>
+    /// The unique string that identifies the resource.
+    /// </summary>
+    public string PathTrustProductSid { get; }
 
-            return p;
-        }
+    /// <summary>
+    /// Construct a new ReadTrustProductsEntityAssignmentsOptions
+    /// </summary>
+    /// <param name="pathTrustProductSid"> The unique string that identifies the resource. </param>
+    public ReadTrustProductsEntityAssignmentsOptions(string pathTrustProductSid)
+    {
+      PathTrustProductSid = pathTrustProductSid;
     }
 
     /// <summary>
-    /// Fetch specific Assigned Item Instance.
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchTrustProductsEntityAssignmentsOptions : IOptions<TrustProductsEntityAssignmentsResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique string that identifies the resource.
-        /// </summary>
-        public string PathTrustProductSid { get; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new FetchTrustProductsEntityAssignmentsOptions
-        /// </summary>
-        /// <param name="pathTrustProductSid"> The unique string that identifies the resource. </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public FetchTrustProductsEntityAssignmentsOptions(string pathTrustProductSid, string pathSid)
-        {
-            PathTrustProductSid = pathTrustProductSid;
-            PathSid = pathSid;
-        }
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+  /// <summary>
+  /// Fetch specific Assigned Item Instance.
+  /// </summary>
+  public class FetchTrustProductsEntityAssignmentsOptions : IOptions<TrustProductsEntityAssignmentsResource>
+  {
+    /// <summary>
+    /// The unique string that identifies the resource.
+    /// </summary>
+    public string PathTrustProductSid { get; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchTrustProductsEntityAssignmentsOptions
+    /// </summary>
+    /// <param name="pathTrustProductSid"> The unique string that identifies the resource. </param>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public FetchTrustProductsEntityAssignmentsOptions(string pathTrustProductSid, string pathSid)
+    {
+      PathTrustProductSid = pathTrustProductSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Remove an Assignment Item Instance.
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteTrustProductsEntityAssignmentsOptions : IOptions<TrustProductsEntityAssignmentsResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique string that identifies the resource.
-        /// </summary>
-        public string PathTrustProductSid { get; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new DeleteTrustProductsEntityAssignmentsOptions
-        /// </summary>
-        /// <param name="pathTrustProductSid"> The unique string that identifies the resource. </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public DeleteTrustProductsEntityAssignmentsOptions(string pathTrustProductSid, string pathSid)
-        {
-            PathTrustProductSid = pathTrustProductSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
+
+  /// <summary>
+  /// Remove an Assignment Item Instance.
+  /// </summary>
+  public class DeleteTrustProductsEntityAssignmentsOptions : IOptions<TrustProductsEntityAssignmentsResource>
+  {
+    /// <summary>
+    /// The unique string that identifies the resource.
+    /// </summary>
+    public string PathTrustProductSid { get; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new DeleteTrustProductsEntityAssignmentsOptions
+    /// </summary>
+    /// <param name="pathTrustProductSid"> The unique string that identifies the resource. </param>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public DeleteTrustProductsEntityAssignmentsOptions(string pathTrustProductSid, string pathSid)
+    {
+      PathTrustProductSid = pathTrustProductSid;
+      PathSid = pathSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
 }

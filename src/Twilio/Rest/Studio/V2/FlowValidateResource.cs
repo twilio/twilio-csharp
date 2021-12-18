@@ -19,129 +19,129 @@ using Twilio.Types;
 namespace Twilio.Rest.Studio.V2
 {
 
-    public class FlowValidateResource : Resource
+  public class FlowValidateResource : Resource
+  {
+    public sealed class StatusEnum : StringEnum
     {
-        public sealed class StatusEnum : StringEnum
-        {
-            private StatusEnum(string value) : base(value) {}
-            public StatusEnum() {}
-            public static implicit operator StatusEnum(string value)
-            {
-                return new StatusEnum(value);
-            }
+      private StatusEnum(string value) : base(value) { }
+      public StatusEnum() { }
+      public static implicit operator StatusEnum(string value)
+      {
+        return new StatusEnum(value);
+      }
 
-            public static readonly StatusEnum Draft = new StatusEnum("draft");
-            public static readonly StatusEnum Published = new StatusEnum("published");
-        }
-
-        private static Request BuildUpdateRequest(UpdateFlowValidateOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Post,
-                Rest.Domain.Studio,
-                "/v2/Flows/Validate",
-                postParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// Validate flow JSON definition
-        /// </summary>
-        /// <param name="options"> Update FlowValidate parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of FlowValidate </returns>
-        public static FlowValidateResource Update(UpdateFlowValidateOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildUpdateRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Validate flow JSON definition
-        /// </summary>
-        /// <param name="options"> Update FlowValidate parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of FlowValidate </returns>
-        public static async System.Threading.Tasks.Task<FlowValidateResource> UpdateAsync(UpdateFlowValidateOptions options,
-                                                                                          ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// Validate flow JSON definition
-        /// </summary>
-        /// <param name="friendlyName"> The string that you assigned to describe the Flow </param>
-        /// <param name="status"> The status of the Flow </param>
-        /// <param name="definition"> JSON representation of flow definition </param>
-        /// <param name="commitMessage"> Description of change made in the revision </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of FlowValidate </returns>
-        public static FlowValidateResource Update(string friendlyName,
-                                                  FlowValidateResource.StatusEnum status,
-                                                  object definition,
-                                                  string commitMessage = null,
-                                                  ITwilioRestClient client = null)
-        {
-            var options = new UpdateFlowValidateOptions(friendlyName, status, definition){CommitMessage = commitMessage};
-            return Update(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Validate flow JSON definition
-        /// </summary>
-        /// <param name="friendlyName"> The string that you assigned to describe the Flow </param>
-        /// <param name="status"> The status of the Flow </param>
-        /// <param name="definition"> JSON representation of flow definition </param>
-        /// <param name="commitMessage"> Description of change made in the revision </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of FlowValidate </returns>
-        public static async System.Threading.Tasks.Task<FlowValidateResource> UpdateAsync(string friendlyName,
-                                                                                          FlowValidateResource.StatusEnum status,
-                                                                                          object definition,
-                                                                                          string commitMessage = null,
-                                                                                          ITwilioRestClient client = null)
-        {
-            var options = new UpdateFlowValidateOptions(friendlyName, status, definition){CommitMessage = commitMessage};
-            return await UpdateAsync(options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Converts a JSON string into a FlowValidateResource object
-        /// </summary>
-        /// <param name="json"> Raw JSON string </param>
-        /// <returns> FlowValidateResource object represented by the provided JSON </returns>
-        public static FlowValidateResource FromJson(string json)
-        {
-            // Convert all checked exceptions to Runtime
-            try
-            {
-                return JsonConvert.DeserializeObject<FlowValidateResource>(json);
-            }
-            catch (JsonException e)
-            {
-                throw new ApiException(e.Message, e);
-            }
-        }
-
-        /// <summary>
-        /// Boolean if the flow definition is valid
-        /// </summary>
-        [JsonProperty("valid")]
-        public bool? Valid { get; private set; }
-
-        private FlowValidateResource()
-        {
-
-        }
+      public static readonly StatusEnum Draft = new StatusEnum("draft");
+      public static readonly StatusEnum Published = new StatusEnum("published");
     }
+
+    private static Request BuildUpdateRequest(UpdateFlowValidateOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Post,
+          Rest.Domain.Studio,
+          "/v2/Flows/Validate",
+          postParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// Validate flow JSON definition
+    /// </summary>
+    /// <param name="options"> Update FlowValidate parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of FlowValidate </returns>
+    public static FlowValidateResource Update(UpdateFlowValidateOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildUpdateRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Validate flow JSON definition
+    /// </summary>
+    /// <param name="options"> Update FlowValidate parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of FlowValidate </returns>
+    public static async System.Threading.Tasks.Task<FlowValidateResource> UpdateAsync(UpdateFlowValidateOptions options,
+                                                                                      ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// Validate flow JSON definition
+    /// </summary>
+    /// <param name="friendlyName"> The string that you assigned to describe the Flow </param>
+    /// <param name="status"> The status of the Flow </param>
+    /// <param name="definition"> JSON representation of flow definition </param>
+    /// <param name="commitMessage"> Description of change made in the revision </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of FlowValidate </returns>
+    public static FlowValidateResource Update(string friendlyName,
+                                              FlowValidateResource.StatusEnum status,
+                                              object definition,
+                                              string commitMessage = null,
+                                              ITwilioRestClient client = null)
+    {
+      var options = new UpdateFlowValidateOptions(friendlyName, status, definition) { CommitMessage = commitMessage };
+      return Update(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Validate flow JSON definition
+    /// </summary>
+    /// <param name="friendlyName"> The string that you assigned to describe the Flow </param>
+    /// <param name="status"> The status of the Flow </param>
+    /// <param name="definition"> JSON representation of flow definition </param>
+    /// <param name="commitMessage"> Description of change made in the revision </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of FlowValidate </returns>
+    public static async System.Threading.Tasks.Task<FlowValidateResource> UpdateAsync(string friendlyName,
+                                                                                      FlowValidateResource.StatusEnum status,
+                                                                                      object definition,
+                                                                                      string commitMessage = null,
+                                                                                      ITwilioRestClient client = null)
+    {
+      var options = new UpdateFlowValidateOptions(friendlyName, status, definition) { CommitMessage = commitMessage };
+      return await UpdateAsync(options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Converts a JSON string into a FlowValidateResource object
+    /// </summary>
+    /// <param name="json"> Raw JSON string </param>
+    /// <returns> FlowValidateResource object represented by the provided JSON </returns>
+    public static FlowValidateResource FromJson(string json)
+    {
+      // Convert all checked exceptions to Runtime
+      try
+      {
+        return JsonConvert.DeserializeObject<FlowValidateResource>(json);
+      }
+      catch (JsonException e)
+      {
+        throw new ApiException(e.Message, e);
+      }
+    }
+
+    /// <summary>
+    /// Boolean if the flow definition is valid
+    /// </summary>
+    [JsonProperty("valid")]
+    public bool? Valid { get; private set; }
+
+    private FlowValidateResource()
+    {
+
+    }
+  }
 
 }

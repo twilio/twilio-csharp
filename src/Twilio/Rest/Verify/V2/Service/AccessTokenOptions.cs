@@ -11,68 +11,68 @@ using Twilio.Converters;
 namespace Twilio.Rest.Verify.V2.Service
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Create a new enrollment Access Token for the Entity
+  /// </summary>
+  public class CreateAccessTokenOptions : IOptions<AccessTokenResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Create a new enrollment Access Token for the Entity
+    /// Service Sid.
     /// </summary>
-    public class CreateAccessTokenOptions : IOptions<AccessTokenResource>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// Unique external identifier of the Entity
+    /// </summary>
+    public string Identity { get; }
+    /// <summary>
+    /// The Type of this Factor
+    /// </summary>
+    public AccessTokenResource.FactorTypesEnum FactorType { get; }
+    /// <summary>
+    /// The factor friendly name
+    /// </summary>
+    public string FactorFriendlyName { get; set; }
+
+    /// <summary>
+    /// Construct a new CreateAccessTokenOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> Service Sid. </param>
+    /// <param name="identity"> Unique external identifier of the Entity </param>
+    /// <param name="factorType"> The Type of this Factor </param>
+    public CreateAccessTokenOptions(string pathServiceSid,
+                                    string identity,
+                                    AccessTokenResource.FactorTypesEnum factorType)
     {
-        /// <summary>
-        /// Service Sid.
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// Unique external identifier of the Entity
-        /// </summary>
-        public string Identity { get; }
-        /// <summary>
-        /// The Type of this Factor
-        /// </summary>
-        public AccessTokenResource.FactorTypesEnum FactorType { get; }
-        /// <summary>
-        /// The factor friendly name
-        /// </summary>
-        public string FactorFriendlyName { get; set; }
-
-        /// <summary>
-        /// Construct a new CreateAccessTokenOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="identity"> Unique external identifier of the Entity </param>
-        /// <param name="factorType"> The Type of this Factor </param>
-        public CreateAccessTokenOptions(string pathServiceSid,
-                                        string identity,
-                                        AccessTokenResource.FactorTypesEnum factorType)
-        {
-            PathServiceSid = pathServiceSid;
-            Identity = identity;
-            FactorType = factorType;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Identity != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Identity", Identity));
-            }
-
-            if (FactorType != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FactorType", FactorType.ToString()));
-            }
-
-            if (FactorFriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FactorFriendlyName", FactorFriendlyName));
-            }
-
-            return p;
-        }
+      PathServiceSid = pathServiceSid;
+      Identity = identity;
+      FactorType = factorType;
     }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (Identity != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Identity", Identity));
+      }
+
+      if (FactorType != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FactorType", FactorType.ToString()));
+      }
+
+      if (FactorFriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FactorFriendlyName", FactorFriendlyName));
+      }
+
+      return p;
+    }
+  }
 
 }

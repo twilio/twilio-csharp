@@ -11,173 +11,176 @@ using Twilio.Converters;
 namespace Twilio.Rest.Accounts.V1.Credential
 {
 
+  /// <summary>
+  /// Retrieves a collection of AWS Credentials belonging to the account used to make the request
+  /// </summary>
+  public class ReadAwsOptions : ReadOptions<AwsResource>
+  {
     /// <summary>
-    /// Retrieves a collection of AWS Credentials belonging to the account used to make the request
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadAwsOptions : ReadOptions<AwsResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-            return p;
-        }
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// Create a new AWS Credential
+  /// </summary>
+  public class CreateAwsOptions : IOptions<AwsResource>
+  {
+
+#pragma warning disable CS1570 // XML comment has badly formed XML
+    /// <summary>
+    /// A string that contains the AWS access credentials in the format <AWS_ACCESS_KEY_ID>:<AWS_SECRET_ACCESS_KEY>
+    /// </summary>
+    public string Credentials { get; }
+#pragma warning restore CS1570 // XML comment has badly formed XML
+    /// <summary>
+    /// A string to describe the resource
+    /// </summary>
+    public string FriendlyName { get; set; }
+    /// <summary>
+    /// The Subaccount this Credential should be associated with.
+    /// </summary>
+    public string AccountSid { get; set; }
+
+    /// <summary>
+    /// Construct a new CreateAwsOptions
+    /// </summary>
+    /// <param name="credentials"> A string that contains the AWS access credentials in the format
+    ///                   <AWS_ACCESS_KEY_ID>:<AWS_SECRET_ACCESS_KEY> </param>
+    public CreateAwsOptions(string credentials)
+    {
+      Credentials = credentials;
     }
 
     /// <summary>
-    /// Create a new AWS Credential
+    /// Generate the necessary parameters
     /// </summary>
-    public class CreateAwsOptions : IOptions<AwsResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// A string that contains the AWS access credentials in the format <AWS_ACCESS_KEY_ID>:<AWS_SECRET_ACCESS_KEY>
-        /// </summary>
-        public string Credentials { get; }
-        /// <summary>
-        /// A string to describe the resource
-        /// </summary>
-        public string FriendlyName { get; set; }
-        /// <summary>
-        /// The Subaccount this Credential should be associated with.
-        /// </summary>
-        public string AccountSid { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (Credentials != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Credentials", Credentials.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new CreateAwsOptions
-        /// </summary>
-        /// <param name="credentials"> A string that contains the AWS access credentials in the format
-        ///                   <AWS_ACCESS_KEY_ID>:<AWS_SECRET_ACCESS_KEY> </param>
-        public CreateAwsOptions(string credentials)
-        {
-            Credentials = credentials;
-        }
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Credentials != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Credentials", Credentials.ToString()));
-            }
+      if (AccountSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("AccountSid", AccountSid.ToString()));
+      }
 
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
+      return p;
+    }
+  }
 
-            if (AccountSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("AccountSid", AccountSid.ToString()));
-            }
+  /// <summary>
+  /// Fetch the AWS credentials specified by the provided Credential Sid
+  /// </summary>
+  public class FetchAwsOptions : IOptions<AwsResource>
+  {
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
 
-            return p;
-        }
+    /// <summary>
+    /// Construct a new FetchAwsOptions
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public FetchAwsOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Fetch the AWS credentials specified by the provided Credential Sid
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchAwsOptions : IOptions<AwsResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new FetchAwsOptions
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public FetchAwsOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
+  /// <summary>
+  /// Modify the properties of a given Account
+  /// </summary>
+  public class UpdateAwsOptions : IOptions<AwsResource>
+  {
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// A string to describe the resource
+    /// </summary>
+    public string FriendlyName { get; set; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+    /// <summary>
+    /// Construct a new UpdateAwsOptions
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public UpdateAwsOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Modify the properties of a given Account
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateAwsOptions : IOptions<AwsResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// A string to describe the resource
-        /// </summary>
-        public string FriendlyName { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
 
-        /// <summary>
-        /// Construct a new UpdateAwsOptions
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public UpdateAwsOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
+  /// <summary>
+  /// Delete a Credential from your account
+  /// </summary>
+  public class DeleteAwsOptions : IOptions<AwsResource>
+  {
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
 
-            return p;
-        }
+    /// <summary>
+    /// Construct a new DeleteAwsOptions
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public DeleteAwsOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Delete a Credential from your account
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteAwsOptions : IOptions<AwsResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new DeleteAwsOptions
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public DeleteAwsOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
 
 }

@@ -11,273 +11,273 @@ using Twilio.Converters;
 namespace Twilio.Rest.IpMessaging.V2.Service
 {
 
+  /// <summary>
+  /// FetchUserOptions
+  /// </summary>
+  public class FetchUserOptions : IOptions<UserResource>
+  {
     /// <summary>
-    /// FetchUserOptions
+    /// The service_sid
     /// </summary>
-    public class FetchUserOptions : IOptions<UserResource>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The sid
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchUserOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The service_sid </param>
+    /// <param name="pathSid"> The sid </param>
+    public FetchUserOptions(string pathServiceSid, string pathSid)
     {
-        /// <summary>
-        /// The service_sid
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The sid
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchUserOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        public FetchUserOptions(string pathServiceSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathServiceSid = pathServiceSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// DeleteUserOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteUserOptions : IOptions<UserResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The service_sid
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The sid
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new DeleteUserOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        public DeleteUserOptions(string pathServiceSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathSid = pathSid;
-        }
+  /// <summary>
+  /// DeleteUserOptions
+  /// </summary>
+  public class DeleteUserOptions : IOptions<UserResource>
+  {
+    /// <summary>
+    /// The service_sid
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The sid
+    /// </summary>
+    public string PathSid { get; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+    /// <summary>
+    /// Construct a new DeleteUserOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The service_sid </param>
+    /// <param name="pathSid"> The sid </param>
+    public DeleteUserOptions(string pathServiceSid, string pathSid)
+    {
+      PathServiceSid = pathServiceSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// CreateUserOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class CreateUserOptions : IOptions<UserResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The service_sid
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The identity
-        /// </summary>
-        public string Identity { get; }
-        /// <summary>
-        /// The role_sid
-        /// </summary>
-        public string RoleSid { get; set; }
-        /// <summary>
-        /// The attributes
-        /// </summary>
-        public string Attributes { get; set; }
-        /// <summary>
-        /// The friendly_name
-        /// </summary>
-        public string FriendlyName { get; set; }
-        /// <summary>
-        /// The X-Twilio-Webhook-Enabled HTTP request header
-        /// </summary>
-        public UserResource.WebhookEnabledTypeEnum XTwilioWebhookEnabled { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new CreateUserOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="identity"> The identity </param>
-        public CreateUserOptions(string pathServiceSid, string identity)
-        {
-            PathServiceSid = pathServiceSid;
-            Identity = identity;
-        }
+  /// <summary>
+  /// CreateUserOptions
+  /// </summary>
+  public class CreateUserOptions : IOptions<UserResource>
+  {
+    /// <summary>
+    /// The service_sid
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The identity
+    /// </summary>
+    public string Identity { get; }
+    /// <summary>
+    /// The role_sid
+    /// </summary>
+    public string RoleSid { get; set; }
+    /// <summary>
+    /// The attributes
+    /// </summary>
+    public string Attributes { get; set; }
+    /// <summary>
+    /// The friendly_name
+    /// </summary>
+    public string FriendlyName { get; set; }
+    /// <summary>
+    /// The X-Twilio-Webhook-Enabled HTTP request header
+    /// </summary>
+    public UserResource.WebhookEnabledTypeEnum XTwilioWebhookEnabled { get; set; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Identity != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Identity", Identity));
-            }
-
-            if (RoleSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("RoleSid", RoleSid.ToString()));
-            }
-
-            if (Attributes != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Attributes", Attributes));
-            }
-
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
-
-            return p;
-        }
-
-        /// <summary>
-        /// Generate the necessary header parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetHeaderParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (XTwilioWebhookEnabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("X-Twilio-Webhook-Enabled", XTwilioWebhookEnabled.ToString()));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new CreateUserOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The service_sid </param>
+    /// <param name="identity"> The identity </param>
+    public CreateUserOptions(string pathServiceSid, string identity)
+    {
+      PathServiceSid = pathServiceSid;
+      Identity = identity;
     }
 
     /// <summary>
-    /// ReadUserOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadUserOptions : ReadOptions<UserResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The service_sid
-        /// </summary>
-        public string PathServiceSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (Identity != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Identity", Identity));
+      }
 
-        /// <summary>
-        /// Construct a new ReadUserOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        public ReadUserOptions(string pathServiceSid)
-        {
-            PathServiceSid = pathServiceSid;
-        }
+      if (RoleSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("RoleSid", RoleSid.ToString()));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
+      if (Attributes != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Attributes", Attributes));
+      }
 
-            return p;
-        }
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
+
+      return p;
     }
 
     /// <summary>
-    /// UpdateUserOptions
+    /// Generate the necessary header parameters
     /// </summary>
-    public class UpdateUserOptions : IOptions<UserResource>
+    public List<KeyValuePair<string, string>> GetHeaderParams()
     {
-        /// <summary>
-        /// The service_sid
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The sid
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// The role_sid
-        /// </summary>
-        public string RoleSid { get; set; }
-        /// <summary>
-        /// The attributes
-        /// </summary>
-        public string Attributes { get; set; }
-        /// <summary>
-        /// The friendly_name
-        /// </summary>
-        public string FriendlyName { get; set; }
-        /// <summary>
-        /// The X-Twilio-Webhook-Enabled HTTP request header
-        /// </summary>
-        public UserResource.WebhookEnabledTypeEnum XTwilioWebhookEnabled { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (XTwilioWebhookEnabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("X-Twilio-Webhook-Enabled", XTwilioWebhookEnabled.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new UpdateUserOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        public UpdateUserOptions(string pathServiceSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (RoleSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("RoleSid", RoleSid.ToString()));
-            }
-
-            if (Attributes != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Attributes", Attributes));
-            }
-
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
-
-            return p;
-        }
-
-        /// <summary>
-        /// Generate the necessary header parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetHeaderParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (XTwilioWebhookEnabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("X-Twilio-Webhook-Enabled", XTwilioWebhookEnabled.ToString()));
-            }
-
-            return p;
-        }
+      return p;
     }
+  }
+
+  /// <summary>
+  /// ReadUserOptions
+  /// </summary>
+  public class ReadUserOptions : ReadOptions<UserResource>
+  {
+    /// <summary>
+    /// The service_sid
+    /// </summary>
+    public string PathServiceSid { get; }
+
+    /// <summary>
+    /// Construct a new ReadUserOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The service_sid </param>
+    public ReadUserOptions(string pathServiceSid)
+    {
+      PathServiceSid = pathServiceSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// UpdateUserOptions
+  /// </summary>
+  public class UpdateUserOptions : IOptions<UserResource>
+  {
+    /// <summary>
+    /// The service_sid
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The sid
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// The role_sid
+    /// </summary>
+    public string RoleSid { get; set; }
+    /// <summary>
+    /// The attributes
+    /// </summary>
+    public string Attributes { get; set; }
+    /// <summary>
+    /// The friendly_name
+    /// </summary>
+    public string FriendlyName { get; set; }
+    /// <summary>
+    /// The X-Twilio-Webhook-Enabled HTTP request header
+    /// </summary>
+    public UserResource.WebhookEnabledTypeEnum XTwilioWebhookEnabled { get; set; }
+
+    /// <summary>
+    /// Construct a new UpdateUserOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The service_sid </param>
+    /// <param name="pathSid"> The sid </param>
+    public UpdateUserOptions(string pathServiceSid, string pathSid)
+    {
+      PathServiceSid = pathServiceSid;
+      PathSid = pathSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (RoleSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("RoleSid", RoleSid.ToString()));
+      }
+
+      if (Attributes != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Attributes", Attributes));
+      }
+
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
+
+      return p;
+    }
+
+    /// <summary>
+    /// Generate the necessary header parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetHeaderParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (XTwilioWebhookEnabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("X-Twilio-Webhook-Enabled", XTwilioWebhookEnabled.ToString()));
+      }
+
+      return p;
+    }
+  }
 
 }

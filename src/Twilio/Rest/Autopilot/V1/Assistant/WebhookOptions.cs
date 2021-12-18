@@ -11,265 +11,265 @@ using Twilio.Converters;
 namespace Twilio.Rest.Autopilot.V1.Assistant
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// FetchWebhookOptions
+  /// </summary>
+  public class FetchWebhookOptions : IOptions<WebhookResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// FetchWebhookOptions
+    /// The SID of the Assistant that is the parent of the resource to fetch
     /// </summary>
-    public class FetchWebhookOptions : IOptions<WebhookResource>
+    public string PathAssistantSid { get; }
+    /// <summary>
+    /// The unique string that identifies the resource to fetch
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchWebhookOptions
+    /// </summary>
+    /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resource to fetch </param>
+    /// <param name="pathSid"> The unique string that identifies the resource to fetch </param>
+    public FetchWebhookOptions(string pathAssistantSid, string pathSid)
     {
-        /// <summary>
-        /// The SID of the Assistant that is the parent of the resource to fetch
-        /// </summary>
-        public string PathAssistantSid { get; }
-        /// <summary>
-        /// The unique string that identifies the resource to fetch
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchWebhookOptions
-        /// </summary>
-        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resource to fetch </param>
-        /// <param name="pathSid"> The unique string that identifies the resource to fetch </param>
-        public FetchWebhookOptions(string pathAssistantSid, string pathSid)
-        {
-            PathAssistantSid = pathAssistantSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathAssistantSid = pathAssistantSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// ReadWebhookOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadWebhookOptions : ReadOptions<WebhookResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Assistant that is the parent of the resources to read
-        /// </summary>
-        public string PathAssistantSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new ReadWebhookOptions
-        /// </summary>
-        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resources to read </param>
-        public ReadWebhookOptions(string pathAssistantSid)
-        {
-            PathAssistantSid = pathAssistantSid;
-        }
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// ReadWebhookOptions
+  /// </summary>
+  public class ReadWebhookOptions : ReadOptions<WebhookResource>
+  {
+    /// <summary>
+    /// The SID of the Assistant that is the parent of the resources to read
+    /// </summary>
+    public string PathAssistantSid { get; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new ReadWebhookOptions
+    /// </summary>
+    /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resources to read </param>
+    public ReadWebhookOptions(string pathAssistantSid)
+    {
+      PathAssistantSid = pathAssistantSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// CreateWebhookOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class CreateWebhookOptions : IOptions<WebhookResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Assistant that is the parent of the new resource
-        /// </summary>
-        public string PathAssistantSid { get; }
-        /// <summary>
-        /// An application-defined string that uniquely identifies the resource
-        /// </summary>
-        public string UniqueName { get; }
-        /// <summary>
-        /// The list of space-separated events that this Webhook will subscribe to.
-        /// </summary>
-        public string Events { get; }
-        /// <summary>
-        /// The URL associated with this Webhook.
-        /// </summary>
-        public Uri WebhookUrl { get; }
-        /// <summary>
-        /// The method to be used when calling the webhook's URL.
-        /// </summary>
-        public string WebhookMethod { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new CreateWebhookOptions
-        /// </summary>
-        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the new resource </param>
-        /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
-        /// <param name="events"> The list of space-separated events that this Webhook will subscribe to. </param>
-        /// <param name="webhookUrl"> The URL associated with this Webhook. </param>
-        public CreateWebhookOptions(string pathAssistantSid, string uniqueName, string events, Uri webhookUrl)
-        {
-            PathAssistantSid = pathAssistantSid;
-            UniqueName = uniqueName;
-            Events = events;
-            WebhookUrl = webhookUrl;
-        }
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (UniqueName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
-            }
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// CreateWebhookOptions
+  /// </summary>
+  public class CreateWebhookOptions : IOptions<WebhookResource>
+  {
+    /// <summary>
+    /// The SID of the Assistant that is the parent of the new resource
+    /// </summary>
+    public string PathAssistantSid { get; }
+    /// <summary>
+    /// An application-defined string that uniquely identifies the resource
+    /// </summary>
+    public string UniqueName { get; }
+    /// <summary>
+    /// The list of space-separated events that this Webhook will subscribe to.
+    /// </summary>
+    public string Events { get; }
+    /// <summary>
+    /// The URL associated with this Webhook.
+    /// </summary>
+    public Uri WebhookUrl { get; }
+    /// <summary>
+    /// The method to be used when calling the webhook's URL.
+    /// </summary>
+    public string WebhookMethod { get; set; }
 
-            if (Events != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Events", Events));
-            }
-
-            if (WebhookUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("WebhookUrl", Serializers.Url(WebhookUrl)));
-            }
-
-            if (WebhookMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("WebhookMethod", WebhookMethod));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new CreateWebhookOptions
+    /// </summary>
+    /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the new resource </param>
+    /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
+    /// <param name="events"> The list of space-separated events that this Webhook will subscribe to. </param>
+    /// <param name="webhookUrl"> The URL associated with this Webhook. </param>
+    public CreateWebhookOptions(string pathAssistantSid, string uniqueName, string events, Uri webhookUrl)
+    {
+      PathAssistantSid = pathAssistantSid;
+      UniqueName = uniqueName;
+      Events = events;
+      WebhookUrl = webhookUrl;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// UpdateWebhookOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateWebhookOptions : IOptions<WebhookResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Assistant that is the parent of the resource to update
-        /// </summary>
-        public string PathAssistantSid { get; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// An application-defined string that uniquely identifies the resource
-        /// </summary>
-        public string UniqueName { get; set; }
-        /// <summary>
-        /// The list of space-separated events that this Webhook will subscribe to.
-        /// </summary>
-        public string Events { get; set; }
-        /// <summary>
-        /// The URL associated with this Webhook.
-        /// </summary>
-        public Uri WebhookUrl { get; set; }
-        /// <summary>
-        /// The method to be used when calling the webhook's URL.
-        /// </summary>
-        public string WebhookMethod { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (UniqueName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
+      }
 
-        /// <summary>
-        /// Construct a new UpdateWebhookOptions
-        /// </summary>
-        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resource to update </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public UpdateWebhookOptions(string pathAssistantSid, string pathSid)
-        {
-            PathAssistantSid = pathAssistantSid;
-            PathSid = pathSid;
-        }
+      if (Events != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Events", Events));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (UniqueName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
-            }
+      if (WebhookUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("WebhookUrl", Serializers.Url(WebhookUrl)));
+      }
 
-            if (Events != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Events", Events));
-            }
+      if (WebhookMethod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("WebhookMethod", WebhookMethod));
+      }
 
-            if (WebhookUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("WebhookUrl", Serializers.Url(WebhookUrl)));
-            }
+      return p;
+    }
+  }
 
-            if (WebhookMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("WebhookMethod", WebhookMethod));
-            }
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// UpdateWebhookOptions
+  /// </summary>
+  public class UpdateWebhookOptions : IOptions<WebhookResource>
+  {
+    /// <summary>
+    /// The SID of the Assistant that is the parent of the resource to update
+    /// </summary>
+    public string PathAssistantSid { get; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// An application-defined string that uniquely identifies the resource
+    /// </summary>
+    public string UniqueName { get; set; }
+    /// <summary>
+    /// The list of space-separated events that this Webhook will subscribe to.
+    /// </summary>
+    public string Events { get; set; }
+    /// <summary>
+    /// The URL associated with this Webhook.
+    /// </summary>
+    public Uri WebhookUrl { get; set; }
+    /// <summary>
+    /// The method to be used when calling the webhook's URL.
+    /// </summary>
+    public string WebhookMethod { get; set; }
 
-            return p;
-        }
+    /// <summary>
+    /// Construct a new UpdateWebhookOptions
+    /// </summary>
+    /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resource to update </param>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public UpdateWebhookOptions(string pathAssistantSid, string pathSid)
+    {
+      PathAssistantSid = pathAssistantSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// DeleteWebhookOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteWebhookOptions : IOptions<WebhookResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Assistant that is the parent of the resources to delete
-        /// </summary>
-        public string PathAssistantSid { get; }
-        /// <summary>
-        /// The unique string that identifies the resource to delete
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (UniqueName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
+      }
 
-        /// <summary>
-        /// Construct a new DeleteWebhookOptions
-        /// </summary>
-        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resources to delete </param>
-        /// <param name="pathSid"> The unique string that identifies the resource to delete </param>
-        public DeleteWebhookOptions(string pathAssistantSid, string pathSid)
-        {
-            PathAssistantSid = pathAssistantSid;
-            PathSid = pathSid;
-        }
+      if (Events != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Events", Events));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      if (WebhookUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("WebhookUrl", Serializers.Url(WebhookUrl)));
+      }
+
+      if (WebhookMethod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("WebhookMethod", WebhookMethod));
+      }
+
+      return p;
     }
+  }
+
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// DeleteWebhookOptions
+  /// </summary>
+  public class DeleteWebhookOptions : IOptions<WebhookResource>
+  {
+    /// <summary>
+    /// The SID of the Assistant that is the parent of the resources to delete
+    /// </summary>
+    public string PathAssistantSid { get; }
+    /// <summary>
+    /// The unique string that identifies the resource to delete
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new DeleteWebhookOptions
+    /// </summary>
+    /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resources to delete </param>
+    /// <param name="pathSid"> The unique string that identifies the resource to delete </param>
+    public DeleteWebhookOptions(string pathAssistantSid, string pathSid)
+    {
+      PathAssistantSid = pathAssistantSid;
+      PathSid = pathSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
 }

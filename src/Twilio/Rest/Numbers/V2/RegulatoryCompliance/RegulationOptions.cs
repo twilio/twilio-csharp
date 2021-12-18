@@ -11,81 +11,81 @@ using Twilio.Converters;
 namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
 {
 
+  /// <summary>
+  /// Retrieve a list of all Regulations.
+  /// </summary>
+  public class ReadRegulationOptions : ReadOptions<RegulationResource>
+  {
     /// <summary>
-    /// Retrieve a list of all Regulations.
+    /// The type of End User of the Regulation resource
     /// </summary>
-    public class ReadRegulationOptions : ReadOptions<RegulationResource>
+    public RegulationResource.EndUserTypeEnum EndUserType { get; set; }
+    /// <summary>
+    /// The ISO country code of the phone number's country
+    /// </summary>
+    public string IsoCountry { get; set; }
+    /// <summary>
+    /// The type of phone number being regulated
+    /// </summary>
+    public string NumberType { get; set; }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The type of End User of the Regulation resource
-        /// </summary>
-        public RegulationResource.EndUserTypeEnum EndUserType { get; set; }
-        /// <summary>
-        /// The ISO country code of the phone number's country
-        /// </summary>
-        public string IsoCountry { get; set; }
-        /// <summary>
-        /// The type of phone number being regulated
-        /// </summary>
-        public string NumberType { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (EndUserType != null)
+      {
+        p.Add(new KeyValuePair<string, string>("EndUserType", EndUserType.ToString()));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (EndUserType != null)
-            {
-                p.Add(new KeyValuePair<string, string>("EndUserType", EndUserType.ToString()));
-            }
+      if (IsoCountry != null)
+      {
+        p.Add(new KeyValuePair<string, string>("IsoCountry", IsoCountry));
+      }
 
-            if (IsoCountry != null)
-            {
-                p.Add(new KeyValuePair<string, string>("IsoCountry", IsoCountry));
-            }
+      if (NumberType != null)
+      {
+        p.Add(new KeyValuePair<string, string>("NumberType", NumberType));
+      }
 
-            if (NumberType != null)
-            {
-                p.Add(new KeyValuePair<string, string>("NumberType", NumberType));
-            }
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
+      return p;
+    }
+  }
 
-            return p;
-        }
+  /// <summary>
+  /// Fetch specific Regulation Instance.
+  /// </summary>
+  public class FetchRegulationOptions : IOptions<RegulationResource>
+  {
+    /// <summary>
+    /// The unique string that identifies the Regulation resource
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchRegulationOptions
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the Regulation resource </param>
+    public FetchRegulationOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Fetch specific Regulation Instance.
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchRegulationOptions : IOptions<RegulationResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique string that identifies the Regulation resource
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchRegulationOptions
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the Regulation resource </param>
-        public FetchRegulationOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
 
 }

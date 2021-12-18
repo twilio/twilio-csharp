@@ -11,42 +11,42 @@ using Twilio.Converters;
 namespace Twilio.Rest.Api.V2010.Account.Address
 {
 
+  /// <summary>
+  /// ReadDependentPhoneNumberOptions
+  /// </summary>
+  public class ReadDependentPhoneNumberOptions : ReadOptions<DependentPhoneNumberResource>
+  {
     /// <summary>
-    /// ReadDependentPhoneNumberOptions
+    /// The SID of the Account that created the resources to read
     /// </summary>
-    public class ReadDependentPhoneNumberOptions : ReadOptions<DependentPhoneNumberResource>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The SID of the Address resource associated with the phone number
+    /// </summary>
+    public string PathAddressSid { get; }
+
+    /// <summary>
+    /// Construct a new ReadDependentPhoneNumberOptions
+    /// </summary>
+    /// <param name="pathAddressSid"> The SID of the Address resource associated with the phone number </param>
+    public ReadDependentPhoneNumberOptions(string pathAddressSid)
     {
-        /// <summary>
-        /// The SID of the Account that created the resources to read
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The SID of the Address resource associated with the phone number
-        /// </summary>
-        public string PathAddressSid { get; }
-
-        /// <summary>
-        /// Construct a new ReadDependentPhoneNumberOptions
-        /// </summary>
-        /// <param name="pathAddressSid"> The SID of the Address resource associated with the phone number </param>
-        public ReadDependentPhoneNumberOptions(string pathAddressSid)
-        {
-            PathAddressSid = pathAddressSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+      PathAddressSid = pathAddressSid;
     }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
 
 }

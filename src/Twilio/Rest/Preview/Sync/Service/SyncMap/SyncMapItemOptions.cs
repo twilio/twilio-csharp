@@ -11,313 +11,313 @@ using Twilio.Converters;
 namespace Twilio.Rest.Preview.Sync.Service.SyncMap
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// FetchSyncMapItemOptions
+  /// </summary>
+  public class FetchSyncMapItemOptions : IOptions<SyncMapItemResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// FetchSyncMapItemOptions
+    /// The service_sid
     /// </summary>
-    public class FetchSyncMapItemOptions : IOptions<SyncMapItemResource>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The map_sid
+    /// </summary>
+    public string PathMapSid { get; }
+    /// <summary>
+    /// The key
+    /// </summary>
+    public string PathKey { get; }
+
+    /// <summary>
+    /// Construct a new FetchSyncMapItemOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The service_sid </param>
+    /// <param name="pathMapSid"> The map_sid </param>
+    /// <param name="pathKey"> The key </param>
+    public FetchSyncMapItemOptions(string pathServiceSid, string pathMapSid, string pathKey)
     {
-        /// <summary>
-        /// The service_sid
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The map_sid
-        /// </summary>
-        public string PathMapSid { get; }
-        /// <summary>
-        /// The key
-        /// </summary>
-        public string PathKey { get; }
-
-        /// <summary>
-        /// Construct a new FetchSyncMapItemOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathMapSid"> The map_sid </param>
-        /// <param name="pathKey"> The key </param>
-        public FetchSyncMapItemOptions(string pathServiceSid, string pathMapSid, string pathKey)
-        {
-            PathServiceSid = pathServiceSid;
-            PathMapSid = pathMapSid;
-            PathKey = pathKey;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathServiceSid = pathServiceSid;
+      PathMapSid = pathMapSid;
+      PathKey = pathKey;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// DeleteSyncMapItemOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteSyncMapItemOptions : IOptions<SyncMapItemResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The service_sid
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The map_sid
-        /// </summary>
-        public string PathMapSid { get; }
-        /// <summary>
-        /// The key
-        /// </summary>
-        public string PathKey { get; }
-        /// <summary>
-        /// The If-Match HTTP request header
-        /// </summary>
-        public string IfMatch { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new DeleteSyncMapItemOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathMapSid"> The map_sid </param>
-        /// <param name="pathKey"> The key </param>
-        public DeleteSyncMapItemOptions(string pathServiceSid, string pathMapSid, string pathKey)
-        {
-            PathServiceSid = pathServiceSid;
-            PathMapSid = pathMapSid;
-            PathKey = pathKey;
-        }
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// DeleteSyncMapItemOptions
+  /// </summary>
+  public class DeleteSyncMapItemOptions : IOptions<SyncMapItemResource>
+  {
+    /// <summary>
+    /// The service_sid
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The map_sid
+    /// </summary>
+    public string PathMapSid { get; }
+    /// <summary>
+    /// The key
+    /// </summary>
+    public string PathKey { get; }
+    /// <summary>
+    /// The If-Match HTTP request header
+    /// </summary>
+    public string IfMatch { get; set; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
-
-        /// <summary>
-        /// Generate the necessary header parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetHeaderParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (IfMatch != null)
-            {
-                p.Add(new KeyValuePair<string, string>("If-Match", IfMatch));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new DeleteSyncMapItemOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The service_sid </param>
+    /// <param name="pathMapSid"> The map_sid </param>
+    /// <param name="pathKey"> The key </param>
+    public DeleteSyncMapItemOptions(string pathServiceSid, string pathMapSid, string pathKey)
+    {
+      PathServiceSid = pathServiceSid;
+      PathMapSid = pathMapSid;
+      PathKey = pathKey;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// CreateSyncMapItemOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class CreateSyncMapItemOptions : IOptions<SyncMapItemResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The service_sid
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The map_sid
-        /// </summary>
-        public string PathMapSid { get; }
-        /// <summary>
-        /// The key
-        /// </summary>
-        public string Key { get; }
-        /// <summary>
-        /// The data
-        /// </summary>
-        public object Data { get; }
-
-        /// <summary>
-        /// Construct a new CreateSyncMapItemOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathMapSid"> The map_sid </param>
-        /// <param name="key"> The key </param>
-        /// <param name="data"> The data </param>
-        public CreateSyncMapItemOptions(string pathServiceSid, string pathMapSid, string key, object data)
-        {
-            PathServiceSid = pathServiceSid;
-            PathMapSid = pathMapSid;
-            Key = key;
-            Data = data;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Key != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Key", Key));
-            }
-
-            if (Data != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Data", Serializers.JsonObject(Data)));
-            }
-
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// ReadSyncMapItemOptions
+    /// Generate the necessary header parameters
     /// </summary>
-    public class ReadSyncMapItemOptions : ReadOptions<SyncMapItemResource>
+    public List<KeyValuePair<string, string>> GetHeaderParams()
     {
-        /// <summary>
-        /// The service_sid
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The map_sid
-        /// </summary>
-        public string PathMapSid { get; }
-        /// <summary>
-        /// The order
-        /// </summary>
-        public SyncMapItemResource.QueryResultOrderEnum Order { get; set; }
-        /// <summary>
-        /// The from
-        /// </summary>
-        public string From { get; set; }
-        /// <summary>
-        /// The bounds
-        /// </summary>
-        public SyncMapItemResource.QueryFromBoundTypeEnum Bounds { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (IfMatch != null)
+      {
+        p.Add(new KeyValuePair<string, string>("If-Match", IfMatch));
+      }
 
-        /// <summary>
-        /// Construct a new ReadSyncMapItemOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathMapSid"> The map_sid </param>
-        public ReadSyncMapItemOptions(string pathServiceSid, string pathMapSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathMapSid = pathMapSid;
-        }
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Order != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Order", Order.ToString()));
-            }
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// CreateSyncMapItemOptions
+  /// </summary>
+  public class CreateSyncMapItemOptions : IOptions<SyncMapItemResource>
+  {
+    /// <summary>
+    /// The service_sid
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The map_sid
+    /// </summary>
+    public string PathMapSid { get; }
+    /// <summary>
+    /// The key
+    /// </summary>
+    public string Key { get; }
+    /// <summary>
+    /// The data
+    /// </summary>
+    public object Data { get; }
 
-            if (From != null)
-            {
-                p.Add(new KeyValuePair<string, string>("From", From));
-            }
-
-            if (Bounds != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Bounds", Bounds.ToString()));
-            }
-
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new CreateSyncMapItemOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The service_sid </param>
+    /// <param name="pathMapSid"> The map_sid </param>
+    /// <param name="key"> The key </param>
+    /// <param name="data"> The data </param>
+    public CreateSyncMapItemOptions(string pathServiceSid, string pathMapSid, string key, object data)
+    {
+      PathServiceSid = pathServiceSid;
+      PathMapSid = pathMapSid;
+      Key = key;
+      Data = data;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// UpdateSyncMapItemOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateSyncMapItemOptions : IOptions<SyncMapItemResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The service_sid
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The map_sid
-        /// </summary>
-        public string PathMapSid { get; }
-        /// <summary>
-        /// The key
-        /// </summary>
-        public string PathKey { get; }
-        /// <summary>
-        /// The data
-        /// </summary>
-        public object Data { get; }
-        /// <summary>
-        /// The If-Match HTTP request header
-        /// </summary>
-        public string IfMatch { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (Key != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Key", Key));
+      }
 
-        /// <summary>
-        /// Construct a new UpdateSyncMapItemOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathMapSid"> The map_sid </param>
-        /// <param name="pathKey"> The key </param>
-        /// <param name="data"> The data </param>
-        public UpdateSyncMapItemOptions(string pathServiceSid, string pathMapSid, string pathKey, object data)
-        {
-            PathServiceSid = pathServiceSid;
-            PathMapSid = pathMapSid;
-            PathKey = pathKey;
-            Data = data;
-        }
+      if (Data != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Data", Serializers.JsonObject(Data)));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Data != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Data", Serializers.JsonObject(Data)));
-            }
-
-            return p;
-        }
-
-        /// <summary>
-        /// Generate the necessary header parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetHeaderParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (IfMatch != null)
-            {
-                p.Add(new KeyValuePair<string, string>("If-Match", IfMatch));
-            }
-
-            return p;
-        }
+      return p;
     }
+  }
+
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// ReadSyncMapItemOptions
+  /// </summary>
+  public class ReadSyncMapItemOptions : ReadOptions<SyncMapItemResource>
+  {
+    /// <summary>
+    /// The service_sid
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The map_sid
+    /// </summary>
+    public string PathMapSid { get; }
+    /// <summary>
+    /// The order
+    /// </summary>
+    public SyncMapItemResource.QueryResultOrderEnum Order { get; set; }
+    /// <summary>
+    /// The from
+    /// </summary>
+    public string From { get; set; }
+    /// <summary>
+    /// The bounds
+    /// </summary>
+    public SyncMapItemResource.QueryFromBoundTypeEnum Bounds { get; set; }
+
+    /// <summary>
+    /// Construct a new ReadSyncMapItemOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The service_sid </param>
+    /// <param name="pathMapSid"> The map_sid </param>
+    public ReadSyncMapItemOptions(string pathServiceSid, string pathMapSid)
+    {
+      PathServiceSid = pathServiceSid;
+      PathMapSid = pathMapSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (Order != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Order", Order.ToString()));
+      }
+
+      if (From != null)
+      {
+        p.Add(new KeyValuePair<string, string>("From", From));
+      }
+
+      if (Bounds != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Bounds", Bounds.ToString()));
+      }
+
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// UpdateSyncMapItemOptions
+  /// </summary>
+  public class UpdateSyncMapItemOptions : IOptions<SyncMapItemResource>
+  {
+    /// <summary>
+    /// The service_sid
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The map_sid
+    /// </summary>
+    public string PathMapSid { get; }
+    /// <summary>
+    /// The key
+    /// </summary>
+    public string PathKey { get; }
+    /// <summary>
+    /// The data
+    /// </summary>
+    public object Data { get; }
+    /// <summary>
+    /// The If-Match HTTP request header
+    /// </summary>
+    public string IfMatch { get; set; }
+
+    /// <summary>
+    /// Construct a new UpdateSyncMapItemOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The service_sid </param>
+    /// <param name="pathMapSid"> The map_sid </param>
+    /// <param name="pathKey"> The key </param>
+    /// <param name="data"> The data </param>
+    public UpdateSyncMapItemOptions(string pathServiceSid, string pathMapSid, string pathKey, object data)
+    {
+      PathServiceSid = pathServiceSid;
+      PathMapSid = pathMapSid;
+      PathKey = pathKey;
+      Data = data;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (Data != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Data", Serializers.JsonObject(Data)));
+      }
+
+      return p;
+    }
+
+    /// <summary>
+    /// Generate the necessary header parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetHeaderParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (IfMatch != null)
+      {
+        p.Add(new KeyValuePair<string, string>("If-Match", IfMatch));
+      }
+
+      return p;
+    }
+  }
 
 }

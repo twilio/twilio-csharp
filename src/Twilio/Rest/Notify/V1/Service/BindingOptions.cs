@@ -12,256 +12,256 @@ using Twilio.Converters;
 namespace Twilio.Rest.Notify.V1.Service
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// FetchBindingOptions
+  /// </summary>
+  public class FetchBindingOptions : IOptions<BindingResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// FetchBindingOptions
+    /// The SID of the Service to fetch the resource from
     /// </summary>
-    public class FetchBindingOptions : IOptions<BindingResource>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchBindingOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public FetchBindingOptions(string pathServiceSid, string pathSid)
     {
-        /// <summary>
-        /// The SID of the Service to fetch the resource from
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchBindingOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public FetchBindingOptions(string pathServiceSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathServiceSid = pathServiceSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// DeleteBindingOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteBindingOptions : IOptions<BindingResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Service to delete the resource from
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new DeleteBindingOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public DeleteBindingOptions(string pathServiceSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathSid = pathSid;
-        }
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// DeleteBindingOptions
+  /// </summary>
+  public class DeleteBindingOptions : IOptions<BindingResource>
+  {
+    /// <summary>
+    /// The SID of the Service to delete the resource from
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+    /// <summary>
+    /// Construct a new DeleteBindingOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public DeleteBindingOptions(string pathServiceSid, string pathSid)
+    {
+      PathServiceSid = pathServiceSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// CreateBindingOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class CreateBindingOptions : IOptions<BindingResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Service to create the resource under
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The `identity` value that identifies the new resource's User
-        /// </summary>
-        public string Identity { get; }
-        /// <summary>
-        /// The type of the Binding
-        /// </summary>
-        public BindingResource.BindingTypeEnum BindingType { get; }
-        /// <summary>
-        /// The channel-specific address
-        /// </summary>
-        public string Address { get; }
-        /// <summary>
-        /// A tag that can be used to select the Bindings to notify
-        /// </summary>
-        public List<string> Tag { get; set; }
-        /// <summary>
-        /// The protocol version to use to send the notification
-        /// </summary>
-        public string NotificationProtocolVersion { get; set; }
-        /// <summary>
-        /// The SID of the Credential resource to be used to send notifications to this Binding
-        /// </summary>
-        public string CredentialSid { get; set; }
-        /// <summary>
-        /// Deprecated
-        /// </summary>
-        public string Endpoint { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new CreateBindingOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to create the resource under </param>
-        /// <param name="identity"> The `identity` value that identifies the new resource's User </param>
-        /// <param name="bindingType"> The type of the Binding </param>
-        /// <param name="address"> The channel-specific address </param>
-        public CreateBindingOptions(string pathServiceSid,
-                                    string identity,
-                                    BindingResource.BindingTypeEnum bindingType,
-                                    string address)
-        {
-            PathServiceSid = pathServiceSid;
-            Identity = identity;
-            BindingType = bindingType;
-            Address = address;
-            Tag = new List<string>();
-        }
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// CreateBindingOptions
+  /// </summary>
+  public class CreateBindingOptions : IOptions<BindingResource>
+  {
+    /// <summary>
+    /// The SID of the Service to create the resource under
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The `identity` value that identifies the new resource's User
+    /// </summary>
+    public string Identity { get; }
+    /// <summary>
+    /// The type of the Binding
+    /// </summary>
+    public BindingResource.BindingTypeEnum BindingType { get; }
+    /// <summary>
+    /// The channel-specific address
+    /// </summary>
+    public string Address { get; }
+    /// <summary>
+    /// A tag that can be used to select the Bindings to notify
+    /// </summary>
+    public List<string> Tag { get; set; }
+    /// <summary>
+    /// The protocol version to use to send the notification
+    /// </summary>
+    public string NotificationProtocolVersion { get; set; }
+    /// <summary>
+    /// The SID of the Credential resource to be used to send notifications to this Binding
+    /// </summary>
+    public string CredentialSid { get; set; }
+    /// <summary>
+    /// Deprecated
+    /// </summary>
+    public string Endpoint { get; set; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Identity != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Identity", Identity));
-            }
-
-            if (BindingType != null)
-            {
-                p.Add(new KeyValuePair<string, string>("BindingType", BindingType.ToString()));
-            }
-
-            if (Address != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Address", Address));
-            }
-
-            if (Tag != null)
-            {
-                p.AddRange(Tag.Select(prop => new KeyValuePair<string, string>("Tag", prop)));
-            }
-
-            if (NotificationProtocolVersion != null)
-            {
-                p.Add(new KeyValuePair<string, string>("NotificationProtocolVersion", NotificationProtocolVersion));
-            }
-
-            if (CredentialSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("CredentialSid", CredentialSid.ToString()));
-            }
-
-            if (Endpoint != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Endpoint", Endpoint));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new CreateBindingOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to create the resource under </param>
+    /// <param name="identity"> The `identity` value that identifies the new resource's User </param>
+    /// <param name="bindingType"> The type of the Binding </param>
+    /// <param name="address"> The channel-specific address </param>
+    public CreateBindingOptions(string pathServiceSid,
+                                string identity,
+                                BindingResource.BindingTypeEnum bindingType,
+                                string address)
+    {
+      PathServiceSid = pathServiceSid;
+      Identity = identity;
+      BindingType = bindingType;
+      Address = address;
+      Tag = new List<string>();
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// ReadBindingOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadBindingOptions : ReadOptions<BindingResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Service to read the resource from
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// Only include usage that has occurred on or after this date
-        /// </summary>
-        public DateTime? StartDate { get; set; }
-        /// <summary>
-        /// Only include usage that occurred on or before this date
-        /// </summary>
-        public DateTime? EndDate { get; set; }
-        /// <summary>
-        /// The `identity` value of the resources to read
-        /// </summary>
-        public List<string> Identity { get; set; }
-        /// <summary>
-        /// Only list Bindings that have all of the specified Tags
-        /// </summary>
-        public List<string> Tag { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (Identity != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Identity", Identity));
+      }
 
-        /// <summary>
-        /// Construct a new ReadBindingOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to read the resource from </param>
-        public ReadBindingOptions(string pathServiceSid)
-        {
-            PathServiceSid = pathServiceSid;
-            Identity = new List<string>();
-            Tag = new List<string>();
-        }
+      if (BindingType != null)
+      {
+        p.Add(new KeyValuePair<string, string>("BindingType", BindingType.ToString()));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (StartDate != null)
-            {
-                p.Add(new KeyValuePair<string, string>("StartDate", StartDate.Value.ToString("yyyy-MM-dd")));
-            }
+      if (Address != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Address", Address));
+      }
 
-            if (EndDate != null)
-            {
-                p.Add(new KeyValuePair<string, string>("EndDate", EndDate.Value.ToString("yyyy-MM-dd")));
-            }
+      if (Tag != null)
+      {
+        p.AddRange(Tag.Select(prop => new KeyValuePair<string, string>("Tag", prop)));
+      }
 
-            if (Identity != null)
-            {
-                p.AddRange(Identity.Select(prop => new KeyValuePair<string, string>("Identity", prop)));
-            }
+      if (NotificationProtocolVersion != null)
+      {
+        p.Add(new KeyValuePair<string, string>("NotificationProtocolVersion", NotificationProtocolVersion));
+      }
 
-            if (Tag != null)
-            {
-                p.AddRange(Tag.Select(prop => new KeyValuePair<string, string>("Tag", prop)));
-            }
+      if (CredentialSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("CredentialSid", CredentialSid.ToString()));
+      }
 
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
+      if (Endpoint != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Endpoint", Endpoint));
+      }
 
-            return p;
-        }
+      return p;
     }
+  }
+
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// ReadBindingOptions
+  /// </summary>
+  public class ReadBindingOptions : ReadOptions<BindingResource>
+  {
+    /// <summary>
+    /// The SID of the Service to read the resource from
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// Only include usage that has occurred on or after this date
+    /// </summary>
+    public DateTime? StartDate { get; set; }
+    /// <summary>
+    /// Only include usage that occurred on or before this date
+    /// </summary>
+    public DateTime? EndDate { get; set; }
+    /// <summary>
+    /// The `identity` value of the resources to read
+    /// </summary>
+    public List<string> Identity { get; set; }
+    /// <summary>
+    /// Only list Bindings that have all of the specified Tags
+    /// </summary>
+    public List<string> Tag { get; set; }
+
+    /// <summary>
+    /// Construct a new ReadBindingOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to read the resource from </param>
+    public ReadBindingOptions(string pathServiceSid)
+    {
+      PathServiceSid = pathServiceSid;
+      Identity = new List<string>();
+      Tag = new List<string>();
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (StartDate != null)
+      {
+        p.Add(new KeyValuePair<string, string>("StartDate", StartDate.Value.ToString("yyyy-MM-dd")));
+      }
+
+      if (EndDate != null)
+      {
+        p.Add(new KeyValuePair<string, string>("EndDate", EndDate.Value.ToString("yyyy-MM-dd")));
+      }
+
+      if (Identity != null)
+      {
+        p.AddRange(Identity.Select(prop => new KeyValuePair<string, string>("Identity", prop)));
+      }
+
+      if (Tag != null)
+      {
+        p.AddRange(Tag.Select(prop => new KeyValuePair<string, string>("Tag", prop)));
+      }
+
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
 
 }

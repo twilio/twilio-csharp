@@ -11,86 +11,86 @@ using Twilio.Converters;
 namespace Twilio.Rest.Preview.HostedNumbers.AuthorizationDocument
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// Retrieve a list of dependent HostedNumberOrders belonging to the AuthorizationDocument.
+  /// </summary>
+  public class ReadDependentHostedNumberOrderOptions : ReadOptions<DependentHostedNumberOrderResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// Retrieve a list of dependent HostedNumberOrders belonging to the AuthorizationDocument.
+    /// The signing_document_sid
     /// </summary>
-    public class ReadDependentHostedNumberOrderOptions : ReadOptions<DependentHostedNumberOrderResource>
+    public string PathSigningDocumentSid { get; }
+    /// <summary>
+    /// The Status of this HostedNumberOrder.
+    /// </summary>
+    public DependentHostedNumberOrderResource.StatusEnum Status { get; set; }
+    /// <summary>
+    /// An E164 formatted phone number.
+    /// </summary>
+    public Types.PhoneNumber PhoneNumber { get; set; }
+    /// <summary>
+    /// IncomingPhoneNumber sid.
+    /// </summary>
+    public string IncomingPhoneNumberSid { get; set; }
+    /// <summary>
+    /// A human readable description of this resource.
+    /// </summary>
+    public string FriendlyName { get; set; }
+    /// <summary>
+    /// A unique, developer assigned name of this HostedNumberOrder.
+    /// </summary>
+    public string UniqueName { get; set; }
+
+    /// <summary>
+    /// Construct a new ReadDependentHostedNumberOrderOptions
+    /// </summary>
+    /// <param name="pathSigningDocumentSid"> The signing_document_sid </param>
+    public ReadDependentHostedNumberOrderOptions(string pathSigningDocumentSid)
     {
-        /// <summary>
-        /// The signing_document_sid
-        /// </summary>
-        public string PathSigningDocumentSid { get; }
-        /// <summary>
-        /// The Status of this HostedNumberOrder.
-        /// </summary>
-        public DependentHostedNumberOrderResource.StatusEnum Status { get; set; }
-        /// <summary>
-        /// An E164 formatted phone number.
-        /// </summary>
-        public Types.PhoneNumber PhoneNumber { get; set; }
-        /// <summary>
-        /// IncomingPhoneNumber sid.
-        /// </summary>
-        public string IncomingPhoneNumberSid { get; set; }
-        /// <summary>
-        /// A human readable description of this resource.
-        /// </summary>
-        public string FriendlyName { get; set; }
-        /// <summary>
-        /// A unique, developer assigned name of this HostedNumberOrder.
-        /// </summary>
-        public string UniqueName { get; set; }
-
-        /// <summary>
-        /// Construct a new ReadDependentHostedNumberOrderOptions
-        /// </summary>
-        /// <param name="pathSigningDocumentSid"> The signing_document_sid </param>
-        public ReadDependentHostedNumberOrderOptions(string pathSigningDocumentSid)
-        {
-            PathSigningDocumentSid = pathSigningDocumentSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Status != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
-            }
-
-            if (PhoneNumber != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PhoneNumber", PhoneNumber.ToString()));
-            }
-
-            if (IncomingPhoneNumberSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("IncomingPhoneNumberSid", IncomingPhoneNumberSid.ToString()));
-            }
-
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
-
-            if (UniqueName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
-            }
-
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+      PathSigningDocumentSid = pathSigningDocumentSid;
     }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (Status != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
+      }
+
+      if (PhoneNumber != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PhoneNumber", PhoneNumber.ToString()));
+      }
+
+      if (IncomingPhoneNumberSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("IncomingPhoneNumberSid", IncomingPhoneNumberSid.ToString()));
+      }
+
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
+
+      if (UniqueName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
+      }
+
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
 
 }

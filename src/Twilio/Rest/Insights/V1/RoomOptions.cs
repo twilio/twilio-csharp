@@ -12,112 +12,112 @@ using Twilio.Converters;
 namespace Twilio.Rest.Insights.V1
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Get Video Log Analyzer data for a Room.
+  /// </summary>
+  public class FetchRoomOptions : IOptions<RoomResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Get Video Log Analyzer data for a Room.
+    /// The SID of the Room resource.
     /// </summary>
-    public class FetchRoomOptions : IOptions<RoomResource>
+    public string PathRoomSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchRoomOptions
+    /// </summary>
+    /// <param name="pathRoomSid"> The SID of the Room resource. </param>
+    public FetchRoomOptions(string pathRoomSid)
     {
-        /// <summary>
-        /// The SID of the Room resource.
-        /// </summary>
-        public string PathRoomSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchRoomOptions
-        /// </summary>
-        /// <param name="pathRoomSid"> The SID of the Room resource. </param>
-        public FetchRoomOptions(string pathRoomSid)
-        {
-            PathRoomSid = pathRoomSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathRoomSid = pathRoomSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Get a list of Programmable Video Rooms.
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadRoomOptions : ReadOptions<RoomResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// Type of room.
-        /// </summary>
-        public List<RoomResource.RoomTypeEnum> RoomType { get; set; }
-        /// <summary>
-        /// Codecs used by participants in the room.
-        /// </summary>
-        public List<RoomResource.CodecEnum> Codec { get; set; }
-        /// <summary>
-        /// Room friendly name.
-        /// </summary>
-        public string RoomName { get; set; }
-        /// <summary>
-        /// Only read rooms that started on or after this ISO 8601 timestamp.
-        /// </summary>
-        public DateTime? CreatedAfter { get; set; }
-        /// <summary>
-        /// Only read rooms that started before this ISO 8601 timestamp.
-        /// </summary>
-        public DateTime? CreatedBefore { get; set; }
-
-        /// <summary>
-        /// Construct a new ReadRoomOptions
-        /// </summary>
-        public ReadRoomOptions()
-        {
-            RoomType = new List<RoomResource.RoomTypeEnum>();
-            Codec = new List<RoomResource.CodecEnum>();
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (RoomType != null)
-            {
-                p.AddRange(RoomType.Select(prop => new KeyValuePair<string, string>("RoomType", prop.ToString())));
-            }
-
-            if (Codec != null)
-            {
-                p.AddRange(Codec.Select(prop => new KeyValuePair<string, string>("Codec", prop.ToString())));
-            }
-
-            if (RoomName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("RoomName", RoomName));
-            }
-
-            if (CreatedAfter != null)
-            {
-                p.Add(new KeyValuePair<string, string>("CreatedAfter", Serializers.DateTimeIso8601(CreatedAfter)));
-            }
-
-            if (CreatedBefore != null)
-            {
-                p.Add(new KeyValuePair<string, string>("CreatedBefore", Serializers.DateTimeIso8601(CreatedBefore)));
-            }
-
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
+
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Get a list of Programmable Video Rooms.
+  /// </summary>
+  public class ReadRoomOptions : ReadOptions<RoomResource>
+  {
+    /// <summary>
+    /// Type of room.
+    /// </summary>
+    public List<RoomResource.RoomTypeEnum> RoomType { get; set; }
+    /// <summary>
+    /// Codecs used by participants in the room.
+    /// </summary>
+    public List<RoomResource.CodecEnum> Codec { get; set; }
+    /// <summary>
+    /// Room friendly name.
+    /// </summary>
+    public string RoomName { get; set; }
+    /// <summary>
+    /// Only read rooms that started on or after this ISO 8601 timestamp.
+    /// </summary>
+    public DateTime? CreatedAfter { get; set; }
+    /// <summary>
+    /// Only read rooms that started before this ISO 8601 timestamp.
+    /// </summary>
+    public DateTime? CreatedBefore { get; set; }
+
+    /// <summary>
+    /// Construct a new ReadRoomOptions
+    /// </summary>
+    public ReadRoomOptions()
+    {
+      RoomType = new List<RoomResource.RoomTypeEnum>();
+      Codec = new List<RoomResource.CodecEnum>();
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (RoomType != null)
+      {
+        p.AddRange(RoomType.Select(prop => new KeyValuePair<string, string>("RoomType", prop.ToString())));
+      }
+
+      if (Codec != null)
+      {
+        p.AddRange(Codec.Select(prop => new KeyValuePair<string, string>("Codec", prop.ToString())));
+      }
+
+      if (RoomName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("RoomName", RoomName));
+      }
+
+      if (CreatedAfter != null)
+      {
+        p.Add(new KeyValuePair<string, string>("CreatedAfter", Serializers.DateTimeIso8601(CreatedAfter)));
+      }
+
+      if (CreatedBefore != null)
+      {
+        p.Add(new KeyValuePair<string, string>("CreatedBefore", Serializers.DateTimeIso8601(CreatedBefore)));
+      }
+
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
 
 }

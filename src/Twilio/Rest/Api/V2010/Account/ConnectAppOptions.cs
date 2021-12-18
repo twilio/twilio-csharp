@@ -12,201 +12,201 @@ using Twilio.Converters;
 namespace Twilio.Rest.Api.V2010.Account
 {
 
+  /// <summary>
+  /// Fetch an instance of a connect-app
+  /// </summary>
+  public class FetchConnectAppOptions : IOptions<ConnectAppResource>
+  {
     /// <summary>
-    /// Fetch an instance of a connect-app
+    /// The SID of the Account that created the resource to fetch
     /// </summary>
-    public class FetchConnectAppOptions : IOptions<ConnectAppResource>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchConnectAppOptions
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public FetchConnectAppOptions(string pathSid)
     {
-        /// <summary>
-        /// The SID of the Account that created the resource to fetch
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchConnectAppOptions
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public FetchConnectAppOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Update a connect-app with the specified parameters
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateConnectAppOptions : IOptions<ConnectAppResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Account that created the resources to update
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// The URL to redirect the user to after authorization
-        /// </summary>
-        public Uri AuthorizeRedirectUrl { get; set; }
-        /// <summary>
-        /// The company name to set for the Connect App
-        /// </summary>
-        public string CompanyName { get; set; }
-        /// <summary>
-        /// The HTTP method to use when calling deauthorize_callback_url
-        /// </summary>
-        public Twilio.Http.HttpMethod DeauthorizeCallbackMethod { get; set; }
-        /// <summary>
-        /// The URL to call to de-authorize the Connect App
-        /// </summary>
-        public Uri DeauthorizeCallbackUrl { get; set; }
-        /// <summary>
-        /// A description of the Connect App
-        /// </summary>
-        public string Description { get; set; }
-        /// <summary>
-        /// A string to describe the resource
-        /// </summary>
-        public string FriendlyName { get; set; }
-        /// <summary>
-        /// A public URL where users can obtain more information
-        /// </summary>
-        public Uri HomepageUrl { get; set; }
-        /// <summary>
-        /// The set of permissions that your ConnectApp will request
-        /// </summary>
-        public List<ConnectAppResource.PermissionEnum> Permissions { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new UpdateConnectAppOptions
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public UpdateConnectAppOptions(string pathSid)
-        {
-            PathSid = pathSid;
-            Permissions = new List<ConnectAppResource.PermissionEnum>();
-        }
+  /// <summary>
+  /// Update a connect-app with the specified parameters
+  /// </summary>
+  public class UpdateConnectAppOptions : IOptions<ConnectAppResource>
+  {
+    /// <summary>
+    /// The SID of the Account that created the resources to update
+    /// </summary>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// The URL to redirect the user to after authorization
+    /// </summary>
+    public Uri AuthorizeRedirectUrl { get; set; }
+    /// <summary>
+    /// The company name to set for the Connect App
+    /// </summary>
+    public string CompanyName { get; set; }
+    /// <summary>
+    /// The HTTP method to use when calling deauthorize_callback_url
+    /// </summary>
+    public Twilio.Http.HttpMethod DeauthorizeCallbackMethod { get; set; }
+    /// <summary>
+    /// The URL to call to de-authorize the Connect App
+    /// </summary>
+    public Uri DeauthorizeCallbackUrl { get; set; }
+    /// <summary>
+    /// A description of the Connect App
+    /// </summary>
+    public string Description { get; set; }
+    /// <summary>
+    /// A string to describe the resource
+    /// </summary>
+    public string FriendlyName { get; set; }
+    /// <summary>
+    /// A public URL where users can obtain more information
+    /// </summary>
+    public Uri HomepageUrl { get; set; }
+    /// <summary>
+    /// The set of permissions that your ConnectApp will request
+    /// </summary>
+    public List<ConnectAppResource.PermissionEnum> Permissions { get; set; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (AuthorizeRedirectUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("AuthorizeRedirectUrl", Serializers.Url(AuthorizeRedirectUrl)));
-            }
-
-            if (CompanyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("CompanyName", CompanyName));
-            }
-
-            if (DeauthorizeCallbackMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DeauthorizeCallbackMethod", DeauthorizeCallbackMethod.ToString()));
-            }
-
-            if (DeauthorizeCallbackUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DeauthorizeCallbackUrl", Serializers.Url(DeauthorizeCallbackUrl)));
-            }
-
-            if (Description != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Description", Description));
-            }
-
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
-
-            if (HomepageUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("HomepageUrl", Serializers.Url(HomepageUrl)));
-            }
-
-            if (Permissions != null)
-            {
-                p.AddRange(Permissions.Select(prop => new KeyValuePair<string, string>("Permissions", prop.ToString())));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new UpdateConnectAppOptions
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public UpdateConnectAppOptions(string pathSid)
+    {
+      PathSid = pathSid;
+      Permissions = new List<ConnectAppResource.PermissionEnum>();
     }
 
     /// <summary>
-    /// Retrieve a list of connect-apps belonging to the account used to make the request
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadConnectAppOptions : ReadOptions<ConnectAppResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Account that created the resources to read
-        /// </summary>
-        public string PathAccountSid { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (AuthorizeRedirectUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("AuthorizeRedirectUrl", Serializers.Url(AuthorizeRedirectUrl)));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
+      if (CompanyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("CompanyName", CompanyName));
+      }
 
-            return p;
-        }
+      if (DeauthorizeCallbackMethod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("DeauthorizeCallbackMethod", DeauthorizeCallbackMethod.ToString()));
+      }
+
+      if (DeauthorizeCallbackUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("DeauthorizeCallbackUrl", Serializers.Url(DeauthorizeCallbackUrl)));
+      }
+
+      if (Description != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Description", Description));
+      }
+
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
+
+      if (HomepageUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("HomepageUrl", Serializers.Url(HomepageUrl)));
+      }
+
+      if (Permissions != null)
+      {
+        p.AddRange(Permissions.Select(prop => new KeyValuePair<string, string>("Permissions", prop.ToString())));
+      }
+
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// Retrieve a list of connect-apps belonging to the account used to make the request
+  /// </summary>
+  public class ReadConnectAppOptions : ReadOptions<ConnectAppResource>
+  {
+    /// <summary>
+    /// The SID of the Account that created the resources to read
+    /// </summary>
+    public string PathAccountSid { get; set; }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// Delete an instance of a connect-app
+  /// </summary>
+  public class DeleteConnectAppOptions : IOptions<ConnectAppResource>
+  {
+    /// <summary>
+    /// The SID of the Account that created the resource to fetch
+    /// </summary>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new DeleteConnectAppOptions
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public DeleteConnectAppOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Delete an instance of a connect-app
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteConnectAppOptions : IOptions<ConnectAppResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Account that created the resource to fetch
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new DeleteConnectAppOptions
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public DeleteConnectAppOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
 
 }

@@ -18,113 +18,113 @@ using Twilio.Http;
 namespace Twilio.Rest.Bulkexports.V1
 {
 
-    public class ExportResource : Resource
+  public class ExportResource : Resource
+  {
+    private static Request BuildFetchRequest(FetchExportOptions options, ITwilioRestClient client)
     {
-        private static Request BuildFetchRequest(FetchExportOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Get,
-                Rest.Domain.Bulkexports,
-                "/v1/Exports/" + options.PathResourceType + "",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// Fetch a specific Export.
-        /// </summary>
-        /// <param name="options"> Fetch Export parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Export </returns>
-        public static ExportResource Fetch(FetchExportOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Fetch a specific Export.
-        /// </summary>
-        /// <param name="options"> Fetch Export parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Export </returns>
-        public static async System.Threading.Tasks.Task<ExportResource> FetchAsync(FetchExportOptions options,
-                                                                                   ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// Fetch a specific Export.
-        /// </summary>
-        /// <param name="pathResourceType"> The type of communication – Messages, Calls, Conferences, and Participants </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Export </returns>
-        public static ExportResource Fetch(string pathResourceType, ITwilioRestClient client = null)
-        {
-            var options = new FetchExportOptions(pathResourceType);
-            return Fetch(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Fetch a specific Export.
-        /// </summary>
-        /// <param name="pathResourceType"> The type of communication – Messages, Calls, Conferences, and Participants </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Export </returns>
-        public static async System.Threading.Tasks.Task<ExportResource> FetchAsync(string pathResourceType,
-                                                                                   ITwilioRestClient client = null)
-        {
-            var options = new FetchExportOptions(pathResourceType);
-            return await FetchAsync(options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Converts a JSON string into a ExportResource object
-        /// </summary>
-        /// <param name="json"> Raw JSON string </param>
-        /// <returns> ExportResource object represented by the provided JSON </returns>
-        public static ExportResource FromJson(string json)
-        {
-            // Convert all checked exceptions to Runtime
-            try
-            {
-                return JsonConvert.DeserializeObject<ExportResource>(json);
-            }
-            catch (JsonException e)
-            {
-                throw new ApiException(e.Message, e);
-            }
-        }
-
-        /// <summary>
-        /// The type of communication – Messages, Calls, Conferences, and Participants
-        /// </summary>
-        [JsonProperty("resource_type")]
-        public string ResourceType { get; private set; }
-        /// <summary>
-        /// The URL of this resource.
-        /// </summary>
-        [JsonProperty("url")]
-        public Uri Url { get; private set; }
-        /// <summary>
-        /// Nested resource URLs.
-        /// </summary>
-        [JsonProperty("links")]
-        public Dictionary<string, string> Links { get; private set; }
-
-        private ExportResource()
-        {
-
-        }
+      return new Request(
+          HttpMethod.Get,
+          Rest.Domain.Bulkexports,
+          "/v1/Exports/" + options.PathResourceType + "",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
     }
+
+    /// <summary>
+    /// Fetch a specific Export.
+    /// </summary>
+    /// <param name="options"> Fetch Export parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Export </returns>
+    public static ExportResource Fetch(FetchExportOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Fetch a specific Export.
+    /// </summary>
+    /// <param name="options"> Fetch Export parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Export </returns>
+    public static async System.Threading.Tasks.Task<ExportResource> FetchAsync(FetchExportOptions options,
+                                                                               ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// Fetch a specific Export.
+    /// </summary>
+    /// <param name="pathResourceType"> The type of communication – Messages, Calls, Conferences, and Participants </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Export </returns>
+    public static ExportResource Fetch(string pathResourceType, ITwilioRestClient client = null)
+    {
+      var options = new FetchExportOptions(pathResourceType);
+      return Fetch(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Fetch a specific Export.
+    /// </summary>
+    /// <param name="pathResourceType"> The type of communication – Messages, Calls, Conferences, and Participants </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Export </returns>
+    public static async System.Threading.Tasks.Task<ExportResource> FetchAsync(string pathResourceType,
+                                                                               ITwilioRestClient client = null)
+    {
+      var options = new FetchExportOptions(pathResourceType);
+      return await FetchAsync(options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Converts a JSON string into a ExportResource object
+    /// </summary>
+    /// <param name="json"> Raw JSON string </param>
+    /// <returns> ExportResource object represented by the provided JSON </returns>
+    public static ExportResource FromJson(string json)
+    {
+      // Convert all checked exceptions to Runtime
+      try
+      {
+        return JsonConvert.DeserializeObject<ExportResource>(json);
+      }
+      catch (JsonException e)
+      {
+        throw new ApiException(e.Message, e);
+      }
+    }
+
+    /// <summary>
+    /// The type of communication – Messages, Calls, Conferences, and Participants
+    /// </summary>
+    [JsonProperty("resource_type")]
+    public string ResourceType { get; private set; }
+    /// <summary>
+    /// The URL of this resource.
+    /// </summary>
+    [JsonProperty("url")]
+    public Uri Url { get; private set; }
+    /// <summary>
+    /// Nested resource URLs.
+    /// </summary>
+    [JsonProperty("links")]
+    public Dictionary<string, string> Links { get; private set; }
+
+    private ExportResource()
+    {
+
+    }
+  }
 
 }

@@ -21,331 +21,331 @@ using Twilio.Types;
 namespace Twilio.Rest.Serverless.V1.Service.Environment
 {
 
-    public class LogResource : Resource
+  public class LogResource : Resource
+  {
+    public sealed class LevelEnum : StringEnum
     {
-        public sealed class LevelEnum : StringEnum
-        {
-            private LevelEnum(string value) : base(value) {}
-            public LevelEnum() {}
-            public static implicit operator LevelEnum(string value)
-            {
-                return new LevelEnum(value);
-            }
+      private LevelEnum(string value) : base(value) { }
+      public LevelEnum() { }
+      public static implicit operator LevelEnum(string value)
+      {
+        return new LevelEnum(value);
+      }
 
-            public static readonly LevelEnum Info = new LevelEnum("info");
-            public static readonly LevelEnum Warn = new LevelEnum("warn");
-            public static readonly LevelEnum Error = new LevelEnum("error");
-        }
-
-        private static Request BuildReadRequest(ReadLogOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Get,
-                Rest.Domain.Serverless,
-                "/v1/Services/" + options.PathServiceSid + "/Environments/" + options.PathEnvironmentSid + "/Logs",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// Retrieve a list of all logs.
-        /// </summary>
-        /// <param name="options"> Read Log parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Log </returns>
-        public static ResourceSet<LogResource> Read(ReadLogOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildReadRequest(options, client));
-
-            var page = Page<LogResource>.FromJson("logs", response.Content);
-            return new ResourceSet<LogResource>(page, options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Retrieve a list of all logs.
-        /// </summary>
-        /// <param name="options"> Read Log parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Log </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<LogResource>> ReadAsync(ReadLogOptions options,
-                                                                                            ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
-
-            var page = Page<LogResource>.FromJson("logs", response.Content);
-            return new ResourceSet<LogResource>(page, options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Retrieve a list of all logs.
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to read the Log resource from </param>
-        /// <param name="pathEnvironmentSid"> The SID of the environment with the Log resources to read </param>
-        /// <param name="functionSid"> The SID of the function whose invocation produced the Log resources to read </param>
-        /// <param name="startDate"> The date and time after which the Log resources must have been created. </param>
-        /// <param name="endDate"> The date and time before which the Log resource must have been created. </param>
-        /// <param name="pageSize"> Page size </param>
-        /// <param name="limit"> Record limit </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Log </returns>
-        public static ResourceSet<LogResource> Read(string pathServiceSid,
-                                                    string pathEnvironmentSid,
-                                                    string functionSid = null,
-                                                    DateTime? startDate = null,
-                                                    DateTime? endDate = null,
-                                                    int? pageSize = null,
-                                                    long? limit = null,
-                                                    ITwilioRestClient client = null)
-        {
-            var options = new ReadLogOptions(pathServiceSid, pathEnvironmentSid){FunctionSid = functionSid, StartDate = startDate, EndDate = endDate, PageSize = pageSize, Limit = limit};
-            return Read(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Retrieve a list of all logs.
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to read the Log resource from </param>
-        /// <param name="pathEnvironmentSid"> The SID of the environment with the Log resources to read </param>
-        /// <param name="functionSid"> The SID of the function whose invocation produced the Log resources to read </param>
-        /// <param name="startDate"> The date and time after which the Log resources must have been created. </param>
-        /// <param name="endDate"> The date and time before which the Log resource must have been created. </param>
-        /// <param name="pageSize"> Page size </param>
-        /// <param name="limit"> Record limit </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Log </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<LogResource>> ReadAsync(string pathServiceSid,
-                                                                                            string pathEnvironmentSid,
-                                                                                            string functionSid = null,
-                                                                                            DateTime? startDate = null,
-                                                                                            DateTime? endDate = null,
-                                                                                            int? pageSize = null,
-                                                                                            long? limit = null,
-                                                                                            ITwilioRestClient client = null)
-        {
-            var options = new ReadLogOptions(pathServiceSid, pathEnvironmentSid){FunctionSid = functionSid, StartDate = startDate, EndDate = endDate, PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Fetch the target page of records
-        /// </summary>
-        /// <param name="targetUrl"> API-generated URL for the requested results page </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns>
-        public static Page<LogResource> GetPage(string targetUrl, ITwilioRestClient client)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-
-            var request = new Request(
-                HttpMethod.Get,
-                targetUrl
-            );
-
-            var response = client.Request(request);
-            return Page<LogResource>.FromJson("logs", response.Content);
-        }
-
-        /// <summary>
-        /// Fetch the next page of records
-        /// </summary>
-        /// <param name="page"> current page of records </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns>
-        public static Page<LogResource> NextPage(Page<LogResource> page, ITwilioRestClient client)
-        {
-            var request = new Request(
-                HttpMethod.Get,
-                page.GetNextPageUrl(Rest.Domain.Serverless)
-            );
-
-            var response = client.Request(request);
-            return Page<LogResource>.FromJson("logs", response.Content);
-        }
-
-        /// <summary>
-        /// Fetch the previous page of records
-        /// </summary>
-        /// <param name="page"> current page of records </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns>
-        public static Page<LogResource> PreviousPage(Page<LogResource> page, ITwilioRestClient client)
-        {
-            var request = new Request(
-                HttpMethod.Get,
-                page.GetPreviousPageUrl(Rest.Domain.Serverless)
-            );
-
-            var response = client.Request(request);
-            return Page<LogResource>.FromJson("logs", response.Content);
-        }
-
-        private static Request BuildFetchRequest(FetchLogOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Get,
-                Rest.Domain.Serverless,
-                "/v1/Services/" + options.PathServiceSid + "/Environments/" + options.PathEnvironmentSid + "/Logs/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// Retrieve a specific log.
-        /// </summary>
-        /// <param name="options"> Fetch Log parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Log </returns>
-        public static LogResource Fetch(FetchLogOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Retrieve a specific log.
-        /// </summary>
-        /// <param name="options"> Fetch Log parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Log </returns>
-        public static async System.Threading.Tasks.Task<LogResource> FetchAsync(FetchLogOptions options,
-                                                                                ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// Retrieve a specific log.
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to fetch the Log resource from </param>
-        /// <param name="pathEnvironmentSid"> The SID of the environment with the Log resource to fetch </param>
-        /// <param name="pathSid"> The SID that identifies the Log resource to fetch </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Log </returns>
-        public static LogResource Fetch(string pathServiceSid,
-                                        string pathEnvironmentSid,
-                                        string pathSid,
-                                        ITwilioRestClient client = null)
-        {
-            var options = new FetchLogOptions(pathServiceSid, pathEnvironmentSid, pathSid);
-            return Fetch(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Retrieve a specific log.
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to fetch the Log resource from </param>
-        /// <param name="pathEnvironmentSid"> The SID of the environment with the Log resource to fetch </param>
-        /// <param name="pathSid"> The SID that identifies the Log resource to fetch </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Log </returns>
-        public static async System.Threading.Tasks.Task<LogResource> FetchAsync(string pathServiceSid,
-                                                                                string pathEnvironmentSid,
-                                                                                string pathSid,
-                                                                                ITwilioRestClient client = null)
-        {
-            var options = new FetchLogOptions(pathServiceSid, pathEnvironmentSid, pathSid);
-            return await FetchAsync(options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Converts a JSON string into a LogResource object
-        /// </summary>
-        /// <param name="json"> Raw JSON string </param>
-        /// <returns> LogResource object represented by the provided JSON </returns>
-        public static LogResource FromJson(string json)
-        {
-            // Convert all checked exceptions to Runtime
-            try
-            {
-                return JsonConvert.DeserializeObject<LogResource>(json);
-            }
-            catch (JsonException e)
-            {
-                throw new ApiException(e.Message, e);
-            }
-        }
-
-        /// <summary>
-        /// The unique string that identifies the Log resource
-        /// </summary>
-        [JsonProperty("sid")]
-        public string Sid { get; private set; }
-        /// <summary>
-        /// The SID of the Account that created the Log resource
-        /// </summary>
-        [JsonProperty("account_sid")]
-        public string AccountSid { get; private set; }
-        /// <summary>
-        /// The SID of the Service that the Log resource is associated with
-        /// </summary>
-        [JsonProperty("service_sid")]
-        public string ServiceSid { get; private set; }
-        /// <summary>
-        /// The SID of the environment in which the log occurred
-        /// </summary>
-        [JsonProperty("environment_sid")]
-        public string EnvironmentSid { get; private set; }
-        /// <summary>
-        /// The SID of the build that corresponds to the log
-        /// </summary>
-        [JsonProperty("build_sid")]
-        public string BuildSid { get; private set; }
-        /// <summary>
-        /// The SID of the deployment that corresponds to the log
-        /// </summary>
-        [JsonProperty("deployment_sid")]
-        public string DeploymentSid { get; private set; }
-        /// <summary>
-        /// The SID of the function whose invocation produced the log
-        /// </summary>
-        [JsonProperty("function_sid")]
-        public string FunctionSid { get; private set; }
-        /// <summary>
-        /// The SID of the request associated with the log
-        /// </summary>
-        [JsonProperty("request_sid")]
-        public string RequestSid { get; private set; }
-        /// <summary>
-        /// The log level
-        /// </summary>
-        [JsonProperty("level")]
-        [JsonConverter(typeof(StringEnumConverter))]
-        public LogResource.LevelEnum Level { get; private set; }
-        /// <summary>
-        /// The log message
-        /// </summary>
-        [JsonProperty("message")]
-        public string Message { get; private set; }
-        /// <summary>
-        /// The ISO 8601 date and time in GMT when the Log resource was created
-        /// </summary>
-        [JsonProperty("date_created")]
-        public DateTime? DateCreated { get; private set; }
-        /// <summary>
-        /// The absolute URL of the Log resource
-        /// </summary>
-        [JsonProperty("url")]
-        public Uri Url { get; private set; }
-
-        private LogResource()
-        {
-
-        }
+      public static readonly LevelEnum Info = new LevelEnum("info");
+      public static readonly LevelEnum Warn = new LevelEnum("warn");
+      public static readonly LevelEnum Error = new LevelEnum("error");
     }
+
+    private static Request BuildReadRequest(ReadLogOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Get,
+          Rest.Domain.Serverless,
+          "/v1/Services/" + options.PathServiceSid + "/Environments/" + options.PathEnvironmentSid + "/Logs",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// Retrieve a list of all logs.
+    /// </summary>
+    /// <param name="options"> Read Log parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Log </returns>
+    public static ResourceSet<LogResource> Read(ReadLogOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildReadRequest(options, client));
+
+      var page = Page<LogResource>.FromJson("logs", response.Content);
+      return new ResourceSet<LogResource>(page, options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Retrieve a list of all logs.
+    /// </summary>
+    /// <param name="options"> Read Log parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Log </returns>
+    public static async System.Threading.Tasks.Task<ResourceSet<LogResource>> ReadAsync(ReadLogOptions options,
+                                                                                        ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+      var page = Page<LogResource>.FromJson("logs", response.Content);
+      return new ResourceSet<LogResource>(page, options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Retrieve a list of all logs.
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to read the Log resource from </param>
+    /// <param name="pathEnvironmentSid"> The SID of the environment with the Log resources to read </param>
+    /// <param name="functionSid"> The SID of the function whose invocation produced the Log resources to read </param>
+    /// <param name="startDate"> The date and time after which the Log resources must have been created. </param>
+    /// <param name="endDate"> The date and time before which the Log resource must have been created. </param>
+    /// <param name="pageSize"> Page size </param>
+    /// <param name="limit"> Record limit </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Log </returns>
+    public static ResourceSet<LogResource> Read(string pathServiceSid,
+                                                string pathEnvironmentSid,
+                                                string functionSid = null,
+                                                DateTime? startDate = null,
+                                                DateTime? endDate = null,
+                                                int? pageSize = null,
+                                                long? limit = null,
+                                                ITwilioRestClient client = null)
+    {
+      var options = new ReadLogOptions(pathServiceSid, pathEnvironmentSid) { FunctionSid = functionSid, StartDate = startDate, EndDate = endDate, PageSize = pageSize, Limit = limit };
+      return Read(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Retrieve a list of all logs.
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to read the Log resource from </param>
+    /// <param name="pathEnvironmentSid"> The SID of the environment with the Log resources to read </param>
+    /// <param name="functionSid"> The SID of the function whose invocation produced the Log resources to read </param>
+    /// <param name="startDate"> The date and time after which the Log resources must have been created. </param>
+    /// <param name="endDate"> The date and time before which the Log resource must have been created. </param>
+    /// <param name="pageSize"> Page size </param>
+    /// <param name="limit"> Record limit </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Log </returns>
+    public static async System.Threading.Tasks.Task<ResourceSet<LogResource>> ReadAsync(string pathServiceSid,
+                                                                                        string pathEnvironmentSid,
+                                                                                        string functionSid = null,
+                                                                                        DateTime? startDate = null,
+                                                                                        DateTime? endDate = null,
+                                                                                        int? pageSize = null,
+                                                                                        long? limit = null,
+                                                                                        ITwilioRestClient client = null)
+    {
+      var options = new ReadLogOptions(pathServiceSid, pathEnvironmentSid) { FunctionSid = functionSid, StartDate = startDate, EndDate = endDate, PageSize = pageSize, Limit = limit };
+      return await ReadAsync(options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Fetch the target page of records
+    /// </summary>
+    /// <param name="targetUrl"> API-generated URL for the requested results page </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> The target page of records </returns>
+    public static Page<LogResource> GetPage(string targetUrl, ITwilioRestClient client)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+
+      var request = new Request(
+          HttpMethod.Get,
+          targetUrl
+      );
+
+      var response = client.Request(request);
+      return Page<LogResource>.FromJson("logs", response.Content);
+    }
+
+    /// <summary>
+    /// Fetch the next page of records
+    /// </summary>
+    /// <param name="page"> current page of records </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> The next page of records </returns>
+    public static Page<LogResource> NextPage(Page<LogResource> page, ITwilioRestClient client)
+    {
+      var request = new Request(
+          HttpMethod.Get,
+          page.GetNextPageUrl(Rest.Domain.Serverless)
+      );
+
+      var response = client.Request(request);
+      return Page<LogResource>.FromJson("logs", response.Content);
+    }
+
+    /// <summary>
+    /// Fetch the previous page of records
+    /// </summary>
+    /// <param name="page"> current page of records </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> The previous page of records </returns>
+    public static Page<LogResource> PreviousPage(Page<LogResource> page, ITwilioRestClient client)
+    {
+      var request = new Request(
+          HttpMethod.Get,
+          page.GetPreviousPageUrl(Rest.Domain.Serverless)
+      );
+
+      var response = client.Request(request);
+      return Page<LogResource>.FromJson("logs", response.Content);
+    }
+
+    private static Request BuildFetchRequest(FetchLogOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Get,
+          Rest.Domain.Serverless,
+          "/v1/Services/" + options.PathServiceSid + "/Environments/" + options.PathEnvironmentSid + "/Logs/" + options.PathSid + "",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// Retrieve a specific log.
+    /// </summary>
+    /// <param name="options"> Fetch Log parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Log </returns>
+    public static LogResource Fetch(FetchLogOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Retrieve a specific log.
+    /// </summary>
+    /// <param name="options"> Fetch Log parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Log </returns>
+    public static async System.Threading.Tasks.Task<LogResource> FetchAsync(FetchLogOptions options,
+                                                                            ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// Retrieve a specific log.
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to fetch the Log resource from </param>
+    /// <param name="pathEnvironmentSid"> The SID of the environment with the Log resource to fetch </param>
+    /// <param name="pathSid"> The SID that identifies the Log resource to fetch </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Log </returns>
+    public static LogResource Fetch(string pathServiceSid,
+                                    string pathEnvironmentSid,
+                                    string pathSid,
+                                    ITwilioRestClient client = null)
+    {
+      var options = new FetchLogOptions(pathServiceSid, pathEnvironmentSid, pathSid);
+      return Fetch(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Retrieve a specific log.
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to fetch the Log resource from </param>
+    /// <param name="pathEnvironmentSid"> The SID of the environment with the Log resource to fetch </param>
+    /// <param name="pathSid"> The SID that identifies the Log resource to fetch </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Log </returns>
+    public static async System.Threading.Tasks.Task<LogResource> FetchAsync(string pathServiceSid,
+                                                                            string pathEnvironmentSid,
+                                                                            string pathSid,
+                                                                            ITwilioRestClient client = null)
+    {
+      var options = new FetchLogOptions(pathServiceSid, pathEnvironmentSid, pathSid);
+      return await FetchAsync(options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Converts a JSON string into a LogResource object
+    /// </summary>
+    /// <param name="json"> Raw JSON string </param>
+    /// <returns> LogResource object represented by the provided JSON </returns>
+    public static LogResource FromJson(string json)
+    {
+      // Convert all checked exceptions to Runtime
+      try
+      {
+        return JsonConvert.DeserializeObject<LogResource>(json);
+      }
+      catch (JsonException e)
+      {
+        throw new ApiException(e.Message, e);
+      }
+    }
+
+    /// <summary>
+    /// The unique string that identifies the Log resource
+    /// </summary>
+    [JsonProperty("sid")]
+    public string Sid { get; private set; }
+    /// <summary>
+    /// The SID of the Account that created the Log resource
+    /// </summary>
+    [JsonProperty("account_sid")]
+    public string AccountSid { get; private set; }
+    /// <summary>
+    /// The SID of the Service that the Log resource is associated with
+    /// </summary>
+    [JsonProperty("service_sid")]
+    public string ServiceSid { get; private set; }
+    /// <summary>
+    /// The SID of the environment in which the log occurred
+    /// </summary>
+    [JsonProperty("environment_sid")]
+    public string EnvironmentSid { get; private set; }
+    /// <summary>
+    /// The SID of the build that corresponds to the log
+    /// </summary>
+    [JsonProperty("build_sid")]
+    public string BuildSid { get; private set; }
+    /// <summary>
+    /// The SID of the deployment that corresponds to the log
+    /// </summary>
+    [JsonProperty("deployment_sid")]
+    public string DeploymentSid { get; private set; }
+    /// <summary>
+    /// The SID of the function whose invocation produced the log
+    /// </summary>
+    [JsonProperty("function_sid")]
+    public string FunctionSid { get; private set; }
+    /// <summary>
+    /// The SID of the request associated with the log
+    /// </summary>
+    [JsonProperty("request_sid")]
+    public string RequestSid { get; private set; }
+    /// <summary>
+    /// The log level
+    /// </summary>
+    [JsonProperty("level")]
+    [JsonConverter(typeof(StringEnumConverter))]
+    public LogResource.LevelEnum Level { get; private set; }
+    /// <summary>
+    /// The log message
+    /// </summary>
+    [JsonProperty("message")]
+    public string Message { get; private set; }
+    /// <summary>
+    /// The ISO 8601 date and time in GMT when the Log resource was created
+    /// </summary>
+    [JsonProperty("date_created")]
+    public DateTime? DateCreated { get; private set; }
+    /// <summary>
+    /// The absolute URL of the Log resource
+    /// </summary>
+    [JsonProperty("url")]
+    public Uri Url { get; private set; }
+
+    private LogResource()
+    {
+
+    }
+  }
 
 }

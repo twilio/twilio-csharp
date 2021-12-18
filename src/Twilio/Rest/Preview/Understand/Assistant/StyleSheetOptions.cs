@@ -11,77 +11,77 @@ using Twilio.Converters;
 namespace Twilio.Rest.Preview.Understand.Assistant
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// Returns Style sheet JSON object for this Assistant
+  /// </summary>
+  public class FetchStyleSheetOptions : IOptions<StyleSheetResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// Returns Style sheet JSON object for this Assistant
+    /// The unique ID of the Assistant
     /// </summary>
-    public class FetchStyleSheetOptions : IOptions<StyleSheetResource>
+    public string PathAssistantSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchStyleSheetOptions
+    /// </summary>
+    /// <param name="pathAssistantSid"> The unique ID of the Assistant </param>
+    public FetchStyleSheetOptions(string pathAssistantSid)
     {
-        /// <summary>
-        /// The unique ID of the Assistant
-        /// </summary>
-        public string PathAssistantSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchStyleSheetOptions
-        /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the Assistant </param>
-        public FetchStyleSheetOptions(string pathAssistantSid)
-        {
-            PathAssistantSid = pathAssistantSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathAssistantSid = pathAssistantSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// Updates the style sheet for an assistant identified by {AssistantSid} or {AssistantUniqueName}.
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateStyleSheetOptions : IOptions<StyleSheetResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique ID of the Assistant
-        /// </summary>
-        public string PathAssistantSid { get; }
-        /// <summary>
-        /// The JSON Style sheet string
-        /// </summary>
-        public object StyleSheet { get; set; }
-
-        /// <summary>
-        /// Construct a new UpdateStyleSheetOptions
-        /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the Assistant </param>
-        public UpdateStyleSheetOptions(string pathAssistantSid)
-        {
-            PathAssistantSid = pathAssistantSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (StyleSheet != null)
-            {
-                p.Add(new KeyValuePair<string, string>("StyleSheet", Serializers.JsonObject(StyleSheet)));
-            }
-
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
+
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// Updates the style sheet for an assistant identified by {AssistantSid} or {AssistantUniqueName}.
+  /// </summary>
+  public class UpdateStyleSheetOptions : IOptions<StyleSheetResource>
+  {
+    /// <summary>
+    /// The unique ID of the Assistant
+    /// </summary>
+    public string PathAssistantSid { get; }
+    /// <summary>
+    /// The JSON Style sheet string
+    /// </summary>
+    public object StyleSheet { get; set; }
+
+    /// <summary>
+    /// Construct a new UpdateStyleSheetOptions
+    /// </summary>
+    /// <param name="pathAssistantSid"> The unique ID of the Assistant </param>
+    public UpdateStyleSheetOptions(string pathAssistantSid)
+    {
+      PathAssistantSid = pathAssistantSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (StyleSheet != null)
+      {
+        p.Add(new KeyValuePair<string, string>("StyleSheet", Serializers.JsonObject(StyleSheet)));
+      }
+
+      return p;
+    }
+  }
 
 }

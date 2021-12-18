@@ -11,172 +11,172 @@ using Twilio.Converters;
 namespace Twilio.Rest.Accounts.V1.Credential
 {
 
+  /// <summary>
+  /// Retrieves a collection of Public Key Credentials belonging to the account used to make the request
+  /// </summary>
+  public class ReadPublicKeyOptions : ReadOptions<PublicKeyResource>
+  {
     /// <summary>
-    /// Retrieves a collection of Public Key Credentials belonging to the account used to make the request
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadPublicKeyOptions : ReadOptions<PublicKeyResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-            return p;
-        }
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// Create a new Public Key Credential
+  /// </summary>
+  public class CreatePublicKeyOptions : IOptions<PublicKeyResource>
+  {
+    /// <summary>
+    /// A URL encoded representation of the public key
+    /// </summary>
+    public string PublicKey { get; }
+    /// <summary>
+    /// A string to describe the resource
+    /// </summary>
+    public string FriendlyName { get; set; }
+    /// <summary>
+    /// The Subaccount this Credential should be associated with.
+    /// </summary>
+    public string AccountSid { get; set; }
+
+    /// <summary>
+    /// Construct a new CreatePublicKeyOptions
+    /// </summary>
+    /// <param name="publicKey"> A URL encoded representation of the public key </param>
+    public CreatePublicKeyOptions(string publicKey)
+    {
+      PublicKey = publicKey;
     }
 
     /// <summary>
-    /// Create a new Public Key Credential
+    /// Generate the necessary parameters
     /// </summary>
-    public class CreatePublicKeyOptions : IOptions<PublicKeyResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// A URL encoded representation of the public key
-        /// </summary>
-        public string PublicKey { get; }
-        /// <summary>
-        /// A string to describe the resource
-        /// </summary>
-        public string FriendlyName { get; set; }
-        /// <summary>
-        /// The Subaccount this Credential should be associated with.
-        /// </summary>
-        public string AccountSid { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (PublicKey != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PublicKey", PublicKey.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new CreatePublicKeyOptions
-        /// </summary>
-        /// <param name="publicKey"> A URL encoded representation of the public key </param>
-        public CreatePublicKeyOptions(string publicKey)
-        {
-            PublicKey = publicKey;
-        }
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PublicKey != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PublicKey", PublicKey.ToString()));
-            }
+      if (AccountSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("AccountSid", AccountSid.ToString()));
+      }
 
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
+      return p;
+    }
+  }
 
-            if (AccountSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("AccountSid", AccountSid.ToString()));
-            }
+  /// <summary>
+  /// Fetch the public key specified by the provided Credential Sid
+  /// </summary>
+  public class FetchPublicKeyOptions : IOptions<PublicKeyResource>
+  {
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
 
-            return p;
-        }
+    /// <summary>
+    /// Construct a new FetchPublicKeyOptions
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public FetchPublicKeyOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Fetch the public key specified by the provided Credential Sid
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchPublicKeyOptions : IOptions<PublicKeyResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new FetchPublicKeyOptions
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public FetchPublicKeyOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
+  /// <summary>
+  /// Modify the properties of a given Account
+  /// </summary>
+  public class UpdatePublicKeyOptions : IOptions<PublicKeyResource>
+  {
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// A string to describe the resource
+    /// </summary>
+    public string FriendlyName { get; set; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+    /// <summary>
+    /// Construct a new UpdatePublicKeyOptions
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public UpdatePublicKeyOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Modify the properties of a given Account
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdatePublicKeyOptions : IOptions<PublicKeyResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// A string to describe the resource
-        /// </summary>
-        public string FriendlyName { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
 
-        /// <summary>
-        /// Construct a new UpdatePublicKeyOptions
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public UpdatePublicKeyOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
+  /// <summary>
+  /// Delete a Credential from your account
+  /// </summary>
+  public class DeletePublicKeyOptions : IOptions<PublicKeyResource>
+  {
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
 
-            return p;
-        }
+    /// <summary>
+    /// Construct a new DeletePublicKeyOptions
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public DeletePublicKeyOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Delete a Credential from your account
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeletePublicKeyOptions : IOptions<PublicKeyResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new DeletePublicKeyOptions
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public DeletePublicKeyOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
 
 }

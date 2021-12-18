@@ -11,86 +11,86 @@ using Twilio.Converters;
 namespace Twilio.Rest.Video.V1.Room.Participant
 {
 
+  /// <summary>
+  /// Returns a single Track resource represented by TrackName or SID.
+  /// </summary>
+  public class FetchPublishedTrackOptions : IOptions<PublishedTrackResource>
+  {
     /// <summary>
-    /// Returns a single Track resource represented by TrackName or SID.
+    /// The SID of the Room resource where the Track resource to fetch is published
     /// </summary>
-    public class FetchPublishedTrackOptions : IOptions<PublishedTrackResource>
+    public string PathRoomSid { get; }
+    /// <summary>
+    /// The SID of the Participant resource with the published track to fetch
+    /// </summary>
+    public string PathParticipantSid { get; }
+    /// <summary>
+    /// The SID that identifies the resource to fetch
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchPublishedTrackOptions
+    /// </summary>
+    /// <param name="pathRoomSid"> The SID of the Room resource where the Track resource to fetch is published </param>
+    /// <param name="pathParticipantSid"> The SID of the Participant resource with the published track to fetch </param>
+    /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
+    public FetchPublishedTrackOptions(string pathRoomSid, string pathParticipantSid, string pathSid)
     {
-        /// <summary>
-        /// The SID of the Room resource where the Track resource to fetch is published
-        /// </summary>
-        public string PathRoomSid { get; }
-        /// <summary>
-        /// The SID of the Participant resource with the published track to fetch
-        /// </summary>
-        public string PathParticipantSid { get; }
-        /// <summary>
-        /// The SID that identifies the resource to fetch
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchPublishedTrackOptions
-        /// </summary>
-        /// <param name="pathRoomSid"> The SID of the Room resource where the Track resource to fetch is published </param>
-        /// <param name="pathParticipantSid"> The SID of the Participant resource with the published track to fetch </param>
-        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
-        public FetchPublishedTrackOptions(string pathRoomSid, string pathParticipantSid, string pathSid)
-        {
-            PathRoomSid = pathRoomSid;
-            PathParticipantSid = pathParticipantSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathRoomSid = pathRoomSid;
+      PathParticipantSid = pathParticipantSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Returns a list of tracks associated with a given Participant. Only `currently` Published Tracks are in the list
-    /// resource.
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadPublishedTrackOptions : ReadOptions<PublishedTrackResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Room resource where the Track resources to read are published
-        /// </summary>
-        public string PathRoomSid { get; }
-        /// <summary>
-        /// The SID of the Participant resource with the published tracks to read
-        /// </summary>
-        public string PathParticipantSid { get; }
-
-        /// <summary>
-        /// Construct a new ReadPublishedTrackOptions
-        /// </summary>
-        /// <param name="pathRoomSid"> The SID of the Room resource where the Track resources to read are published </param>
-        /// <param name="pathParticipantSid"> The SID of the Participant resource with the published tracks to read </param>
-        public ReadPublishedTrackOptions(string pathRoomSid, string pathParticipantSid)
-        {
-            PathRoomSid = pathRoomSid;
-            PathParticipantSid = pathParticipantSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
+
+  /// <summary>
+  /// Returns a list of tracks associated with a given Participant. Only `currently` Published Tracks are in the list
+  /// resource.
+  /// </summary>
+  public class ReadPublishedTrackOptions : ReadOptions<PublishedTrackResource>
+  {
+    /// <summary>
+    /// The SID of the Room resource where the Track resources to read are published
+    /// </summary>
+    public string PathRoomSid { get; }
+    /// <summary>
+    /// The SID of the Participant resource with the published tracks to read
+    /// </summary>
+    public string PathParticipantSid { get; }
+
+    /// <summary>
+    /// Construct a new ReadPublishedTrackOptions
+    /// </summary>
+    /// <param name="pathRoomSid"> The SID of the Room resource where the Track resources to read are published </param>
+    /// <param name="pathParticipantSid"> The SID of the Participant resource with the published tracks to read </param>
+    public ReadPublishedTrackOptions(string pathRoomSid, string pathParticipantSid)
+    {
+      PathRoomSid = pathRoomSid;
+      PathParticipantSid = pathParticipantSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
 
 }

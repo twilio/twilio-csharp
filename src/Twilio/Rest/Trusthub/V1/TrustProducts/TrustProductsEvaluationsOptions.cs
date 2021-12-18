@@ -11,113 +11,113 @@ using Twilio.Converters;
 namespace Twilio.Rest.Trusthub.V1.TrustProducts
 {
 
+  /// <summary>
+  /// Create a new Evaluation
+  /// </summary>
+  public class CreateTrustProductsEvaluationsOptions : IOptions<TrustProductsEvaluationsResource>
+  {
     /// <summary>
-    /// Create a new Evaluation
+    /// The unique string that identifies the resource
     /// </summary>
-    public class CreateTrustProductsEvaluationsOptions : IOptions<TrustProductsEvaluationsResource>
+    public string PathTrustProductSid { get; }
+    /// <summary>
+    /// The unique string of a policy
+    /// </summary>
+    public string PolicySid { get; }
+
+    /// <summary>
+    /// Construct a new CreateTrustProductsEvaluationsOptions
+    /// </summary>
+    /// <param name="pathTrustProductSid"> The unique string that identifies the resource </param>
+    /// <param name="policySid"> The unique string of a policy </param>
+    public CreateTrustProductsEvaluationsOptions(string pathTrustProductSid, string policySid)
     {
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathTrustProductSid { get; }
-        /// <summary>
-        /// The unique string of a policy
-        /// </summary>
-        public string PolicySid { get; }
-
-        /// <summary>
-        /// Construct a new CreateTrustProductsEvaluationsOptions
-        /// </summary>
-        /// <param name="pathTrustProductSid"> The unique string that identifies the resource </param>
-        /// <param name="policySid"> The unique string of a policy </param>
-        public CreateTrustProductsEvaluationsOptions(string pathTrustProductSid, string policySid)
-        {
-            PathTrustProductSid = pathTrustProductSid;
-            PolicySid = policySid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PolicySid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PolicySid", PolicySid.ToString()));
-            }
-
-            return p;
-        }
+      PathTrustProductSid = pathTrustProductSid;
+      PolicySid = policySid;
     }
 
     /// <summary>
-    /// Retrieve a list of Evaluations associated to the trust_product resource.
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadTrustProductsEvaluationsOptions : ReadOptions<TrustProductsEvaluationsResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathTrustProductSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (PolicySid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PolicySid", PolicySid.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new ReadTrustProductsEvaluationsOptions
-        /// </summary>
-        /// <param name="pathTrustProductSid"> The unique string that identifies the resource </param>
-        public ReadTrustProductsEvaluationsOptions(string pathTrustProductSid)
-        {
-            PathTrustProductSid = pathTrustProductSid;
-        }
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
+  /// <summary>
+  /// Retrieve a list of Evaluations associated to the trust_product resource.
+  /// </summary>
+  public class ReadTrustProductsEvaluationsOptions : ReadOptions<TrustProductsEvaluationsResource>
+  {
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathTrustProductSid { get; }
 
-            return p;
-        }
+    /// <summary>
+    /// Construct a new ReadTrustProductsEvaluationsOptions
+    /// </summary>
+    /// <param name="pathTrustProductSid"> The unique string that identifies the resource </param>
+    public ReadTrustProductsEvaluationsOptions(string pathTrustProductSid)
+    {
+      PathTrustProductSid = pathTrustProductSid;
     }
 
     /// <summary>
-    /// Fetch specific Evaluation Instance.
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchTrustProductsEvaluationsOptions : IOptions<TrustProductsEvaluationsResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathTrustProductSid { get; }
-        /// <summary>
-        /// The unique string that identifies the Evaluation resource
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new FetchTrustProductsEvaluationsOptions
-        /// </summary>
-        /// <param name="pathTrustProductSid"> The unique string that identifies the resource </param>
-        /// <param name="pathSid"> The unique string that identifies the Evaluation resource </param>
-        public FetchTrustProductsEvaluationsOptions(string pathTrustProductSid, string pathSid)
-        {
-            PathTrustProductSid = pathTrustProductSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      return p;
     }
+  }
+
+  /// <summary>
+  /// Fetch specific Evaluation Instance.
+  /// </summary>
+  public class FetchTrustProductsEvaluationsOptions : IOptions<TrustProductsEvaluationsResource>
+  {
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathTrustProductSid { get; }
+    /// <summary>
+    /// The unique string that identifies the Evaluation resource
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchTrustProductsEvaluationsOptions
+    /// </summary>
+    /// <param name="pathTrustProductSid"> The unique string that identifies the resource </param>
+    /// <param name="pathSid"> The unique string that identifies the Evaluation resource </param>
+    public FetchTrustProductsEvaluationsOptions(string pathTrustProductSid, string pathSid)
+    {
+      PathTrustProductSid = pathTrustProductSid;
+      PathSid = pathSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
 }

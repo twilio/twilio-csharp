@@ -18,128 +18,128 @@ using Twilio.Http;
 namespace Twilio.Rest.Studio.V1.Flow.Engagement
 {
 
-    public class EngagementContextResource : Resource
+  public class EngagementContextResource : Resource
+  {
+    private static Request BuildFetchRequest(FetchEngagementContextOptions options, ITwilioRestClient client)
     {
-        private static Request BuildFetchRequest(FetchEngagementContextOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Get,
-                Rest.Domain.Studio,
-                "/v1/Flows/" + options.PathFlowSid + "/Engagements/" + options.PathEngagementSid + "/Context",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// Retrieve the most recent context for an Engagement.
-        /// </summary>
-        /// <param name="options"> Fetch EngagementContext parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of EngagementContext </returns>
-        public static EngagementContextResource Fetch(FetchEngagementContextOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Retrieve the most recent context for an Engagement.
-        /// </summary>
-        /// <param name="options"> Fetch EngagementContext parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of EngagementContext </returns>
-        public static async System.Threading.Tasks.Task<EngagementContextResource> FetchAsync(FetchEngagementContextOptions options,
-                                                                                              ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// Retrieve the most recent context for an Engagement.
-        /// </summary>
-        /// <param name="pathFlowSid"> Flow SID </param>
-        /// <param name="pathEngagementSid"> Engagement SID </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of EngagementContext </returns>
-        public static EngagementContextResource Fetch(string pathFlowSid,
-                                                      string pathEngagementSid,
-                                                      ITwilioRestClient client = null)
-        {
-            var options = new FetchEngagementContextOptions(pathFlowSid, pathEngagementSid);
-            return Fetch(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Retrieve the most recent context for an Engagement.
-        /// </summary>
-        /// <param name="pathFlowSid"> Flow SID </param>
-        /// <param name="pathEngagementSid"> Engagement SID </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of EngagementContext </returns>
-        public static async System.Threading.Tasks.Task<EngagementContextResource> FetchAsync(string pathFlowSid,
-                                                                                              string pathEngagementSid,
-                                                                                              ITwilioRestClient client = null)
-        {
-            var options = new FetchEngagementContextOptions(pathFlowSid, pathEngagementSid);
-            return await FetchAsync(options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Converts a JSON string into a EngagementContextResource object
-        /// </summary>
-        /// <param name="json"> Raw JSON string </param>
-        /// <returns> EngagementContextResource object represented by the provided JSON </returns>
-        public static EngagementContextResource FromJson(string json)
-        {
-            // Convert all checked exceptions to Runtime
-            try
-            {
-                return JsonConvert.DeserializeObject<EngagementContextResource>(json);
-            }
-            catch (JsonException e)
-            {
-                throw new ApiException(e.Message, e);
-            }
-        }
-
-        /// <summary>
-        /// Account SID
-        /// </summary>
-        [JsonProperty("account_sid")]
-        public string AccountSid { get; private set; }
-        /// <summary>
-        /// Flow state
-        /// </summary>
-        [JsonProperty("context")]
-        public object Context { get; private set; }
-        /// <summary>
-        /// Engagement SID
-        /// </summary>
-        [JsonProperty("engagement_sid")]
-        public string EngagementSid { get; private set; }
-        /// <summary>
-        /// Flow SID
-        /// </summary>
-        [JsonProperty("flow_sid")]
-        public string FlowSid { get; private set; }
-        /// <summary>
-        /// The URL of the resource
-        /// </summary>
-        [JsonProperty("url")]
-        public Uri Url { get; private set; }
-
-        private EngagementContextResource()
-        {
-
-        }
+      return new Request(
+          HttpMethod.Get,
+          Rest.Domain.Studio,
+          "/v1/Flows/" + options.PathFlowSid + "/Engagements/" + options.PathEngagementSid + "/Context",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
     }
+
+    /// <summary>
+    /// Retrieve the most recent context for an Engagement.
+    /// </summary>
+    /// <param name="options"> Fetch EngagementContext parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of EngagementContext </returns>
+    public static EngagementContextResource Fetch(FetchEngagementContextOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Retrieve the most recent context for an Engagement.
+    /// </summary>
+    /// <param name="options"> Fetch EngagementContext parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of EngagementContext </returns>
+    public static async System.Threading.Tasks.Task<EngagementContextResource> FetchAsync(FetchEngagementContextOptions options,
+                                                                                          ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// Retrieve the most recent context for an Engagement.
+    /// </summary>
+    /// <param name="pathFlowSid"> Flow SID </param>
+    /// <param name="pathEngagementSid"> Engagement SID </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of EngagementContext </returns>
+    public static EngagementContextResource Fetch(string pathFlowSid,
+                                                  string pathEngagementSid,
+                                                  ITwilioRestClient client = null)
+    {
+      var options = new FetchEngagementContextOptions(pathFlowSid, pathEngagementSid);
+      return Fetch(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Retrieve the most recent context for an Engagement.
+    /// </summary>
+    /// <param name="pathFlowSid"> Flow SID </param>
+    /// <param name="pathEngagementSid"> Engagement SID </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of EngagementContext </returns>
+    public static async System.Threading.Tasks.Task<EngagementContextResource> FetchAsync(string pathFlowSid,
+                                                                                          string pathEngagementSid,
+                                                                                          ITwilioRestClient client = null)
+    {
+      var options = new FetchEngagementContextOptions(pathFlowSid, pathEngagementSid);
+      return await FetchAsync(options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Converts a JSON string into a EngagementContextResource object
+    /// </summary>
+    /// <param name="json"> Raw JSON string </param>
+    /// <returns> EngagementContextResource object represented by the provided JSON </returns>
+    public static EngagementContextResource FromJson(string json)
+    {
+      // Convert all checked exceptions to Runtime
+      try
+      {
+        return JsonConvert.DeserializeObject<EngagementContextResource>(json);
+      }
+      catch (JsonException e)
+      {
+        throw new ApiException(e.Message, e);
+      }
+    }
+
+    /// <summary>
+    /// Account SID
+    /// </summary>
+    [JsonProperty("account_sid")]
+    public string AccountSid { get; private set; }
+    /// <summary>
+    /// Flow state
+    /// </summary>
+    [JsonProperty("context")]
+    public object Context { get; private set; }
+    /// <summary>
+    /// Engagement SID
+    /// </summary>
+    [JsonProperty("engagement_sid")]
+    public string EngagementSid { get; private set; }
+    /// <summary>
+    /// Flow SID
+    /// </summary>
+    [JsonProperty("flow_sid")]
+    public string FlowSid { get; private set; }
+    /// <summary>
+    /// The URL of the resource
+    /// </summary>
+    [JsonProperty("url")]
+    public Uri Url { get; private set; }
+
+    private EngagementContextResource()
+    {
+
+    }
+  }
 
 }

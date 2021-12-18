@@ -11,141 +11,141 @@ using Twilio.Converters;
 namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
 {
 
+  /// <summary>
+  /// Fetch an instance of a result payload
+  /// </summary>
+  public class FetchPayloadOptions : IOptions<PayloadResource>
+  {
     /// <summary>
-    /// Fetch an instance of a result payload
+    /// The SID of the Account that created the resource to fetch
     /// </summary>
-    public class FetchPayloadOptions : IOptions<PayloadResource>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The SID of the recording to which the AddOnResult resource that contains the payload to fetch belongs
+    /// </summary>
+    public string PathReferenceSid { get; }
+    /// <summary>
+    /// The SID of the AddOnResult to which the payload to fetch belongs
+    /// </summary>
+    public string PathAddOnResultSid { get; }
+    /// <summary>
+    /// The unique string that identifies the resource to fetch
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchPayloadOptions
+    /// </summary>
+    /// <param name="pathReferenceSid"> The SID of the recording to which the AddOnResult resource that contains the
+    ///                        payload to fetch belongs </param>
+    /// <param name="pathAddOnResultSid"> The SID of the AddOnResult to which the payload to fetch belongs </param>
+    /// <param name="pathSid"> The unique string that identifies the resource to fetch </param>
+    public FetchPayloadOptions(string pathReferenceSid, string pathAddOnResultSid, string pathSid)
     {
-        /// <summary>
-        /// The SID of the Account that created the resource to fetch
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The SID of the recording to which the AddOnResult resource that contains the payload to fetch belongs
-        /// </summary>
-        public string PathReferenceSid { get; }
-        /// <summary>
-        /// The SID of the AddOnResult to which the payload to fetch belongs
-        /// </summary>
-        public string PathAddOnResultSid { get; }
-        /// <summary>
-        /// The unique string that identifies the resource to fetch
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchPayloadOptions
-        /// </summary>
-        /// <param name="pathReferenceSid"> The SID of the recording to which the AddOnResult resource that contains the
-        ///                        payload to fetch belongs </param>
-        /// <param name="pathAddOnResultSid"> The SID of the AddOnResult to which the payload to fetch belongs </param>
-        /// <param name="pathSid"> The unique string that identifies the resource to fetch </param>
-        public FetchPayloadOptions(string pathReferenceSid, string pathAddOnResultSid, string pathSid)
-        {
-            PathReferenceSid = pathReferenceSid;
-            PathAddOnResultSid = pathAddOnResultSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathReferenceSid = pathReferenceSid;
+      PathAddOnResultSid = pathAddOnResultSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Retrieve a list of payloads belonging to the AddOnResult
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadPayloadOptions : ReadOptions<PayloadResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Account that created the resources to read
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The SID of the recording to which the AddOnResult resource that contains the payloads to read belongs
-        /// </summary>
-        public string PathReferenceSid { get; }
-        /// <summary>
-        /// The SID of the AddOnResult to which the payloads to read belongs
-        /// </summary>
-        public string PathAddOnResultSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new ReadPayloadOptions
-        /// </summary>
-        /// <param name="pathReferenceSid"> The SID of the recording to which the AddOnResult resource that contains the
-        ///                        payloads to read belongs </param>
-        /// <param name="pathAddOnResultSid"> The SID of the AddOnResult to which the payloads to read belongs </param>
-        public ReadPayloadOptions(string pathReferenceSid, string pathAddOnResultSid)
-        {
-            PathReferenceSid = pathReferenceSid;
-            PathAddOnResultSid = pathAddOnResultSid;
-        }
+  /// <summary>
+  /// Retrieve a list of payloads belonging to the AddOnResult
+  /// </summary>
+  public class ReadPayloadOptions : ReadOptions<PayloadResource>
+  {
+    /// <summary>
+    /// The SID of the Account that created the resources to read
+    /// </summary>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The SID of the recording to which the AddOnResult resource that contains the payloads to read belongs
+    /// </summary>
+    public string PathReferenceSid { get; }
+    /// <summary>
+    /// The SID of the AddOnResult to which the payloads to read belongs
+    /// </summary>
+    public string PathAddOnResultSid { get; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new ReadPayloadOptions
+    /// </summary>
+    /// <param name="pathReferenceSid"> The SID of the recording to which the AddOnResult resource that contains the
+    ///                        payloads to read belongs </param>
+    /// <param name="pathAddOnResultSid"> The SID of the AddOnResult to which the payloads to read belongs </param>
+    public ReadPayloadOptions(string pathReferenceSid, string pathAddOnResultSid)
+    {
+      PathReferenceSid = pathReferenceSid;
+      PathAddOnResultSid = pathAddOnResultSid;
     }
 
     /// <summary>
-    /// Delete a payload from the result along with all associated Data
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeletePayloadOptions : IOptions<PayloadResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Account that created the resources to delete
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The SID of the recording to which the AddOnResult resource that contains the payloads to delete belongs
-        /// </summary>
-        public string PathReferenceSid { get; }
-        /// <summary>
-        /// The SID of the AddOnResult to which the payloads to delete belongs
-        /// </summary>
-        public string PathAddOnResultSid { get; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new DeletePayloadOptions
-        /// </summary>
-        /// <param name="pathReferenceSid"> The SID of the recording to which the AddOnResult resource that contains the
-        ///                        payloads to delete belongs </param>
-        /// <param name="pathAddOnResultSid"> The SID of the AddOnResult to which the payloads to delete belongs </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public DeletePayloadOptions(string pathReferenceSid, string pathAddOnResultSid, string pathSid)
-        {
-            PathReferenceSid = pathReferenceSid;
-            PathAddOnResultSid = pathAddOnResultSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      return p;
     }
+  }
+
+  /// <summary>
+  /// Delete a payload from the result along with all associated Data
+  /// </summary>
+  public class DeletePayloadOptions : IOptions<PayloadResource>
+  {
+    /// <summary>
+    /// The SID of the Account that created the resources to delete
+    /// </summary>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The SID of the recording to which the AddOnResult resource that contains the payloads to delete belongs
+    /// </summary>
+    public string PathReferenceSid { get; }
+    /// <summary>
+    /// The SID of the AddOnResult to which the payloads to delete belongs
+    /// </summary>
+    public string PathAddOnResultSid { get; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new DeletePayloadOptions
+    /// </summary>
+    /// <param name="pathReferenceSid"> The SID of the recording to which the AddOnResult resource that contains the
+    ///                        payloads to delete belongs </param>
+    /// <param name="pathAddOnResultSid"> The SID of the AddOnResult to which the payloads to delete belongs </param>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public DeletePayloadOptions(string pathReferenceSid, string pathAddOnResultSid, string pathSid)
+    {
+      PathReferenceSid = pathReferenceSid;
+      PathAddOnResultSid = pathAddOnResultSid;
+      PathSid = pathSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
 }

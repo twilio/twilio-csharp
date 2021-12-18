@@ -18,575 +18,575 @@ using Twilio.Http;
 namespace Twilio.Rest.Taskrouter.V1.Workspace
 {
 
-    public class WorkerResource : Resource
+  public class WorkerResource : Resource
+  {
+    private static Request BuildReadRequest(ReadWorkerOptions options, ITwilioRestClient client)
     {
-        private static Request BuildReadRequest(ReadWorkerOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Get,
-                Rest.Domain.Taskrouter,
-                "/v1/Workspaces/" + options.PathWorkspaceSid + "/Workers",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// read
-        /// </summary>
-        /// <param name="options"> Read Worker parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Worker </returns>
-        public static ResourceSet<WorkerResource> Read(ReadWorkerOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildReadRequest(options, client));
-
-            var page = Page<WorkerResource>.FromJson("workers", response.Content);
-            return new ResourceSet<WorkerResource>(page, options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// read
-        /// </summary>
-        /// <param name="options"> Read Worker parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Worker </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<WorkerResource>> ReadAsync(ReadWorkerOptions options,
-                                                                                               ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
-
-            var page = Page<WorkerResource>.FromJson("workers", response.Content);
-            return new ResourceSet<WorkerResource>(page, options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// read
-        /// </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Workers to read </param>
-        /// <param name="activityName"> The activity_name of the Worker resources to read </param>
-        /// <param name="activitySid"> The activity_sid of the Worker resources to read </param>
-        /// <param name="available"> Whether to return Worker resources that are available or unavailable </param>
-        /// <param name="friendlyName"> The friendly_name of the Worker resources to read </param>
-        /// <param name="targetWorkersExpression"> Filter by Workers that would match an expression on a TaskQueue </param>
-        /// <param name="taskQueueName"> The friendly_name of the TaskQueue that the Workers to read are eligible for </param>
-        /// <param name="taskQueueSid"> The SID of the TaskQueue that the Workers to read are eligible for </param>
-        /// <param name="pageSize"> Page size </param>
-        /// <param name="limit"> Record limit </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Worker </returns>
-        public static ResourceSet<WorkerResource> Read(string pathWorkspaceSid,
-                                                       string activityName = null,
-                                                       string activitySid = null,
-                                                       string available = null,
-                                                       string friendlyName = null,
-                                                       string targetWorkersExpression = null,
-                                                       string taskQueueName = null,
-                                                       string taskQueueSid = null,
-                                                       int? pageSize = null,
-                                                       long? limit = null,
-                                                       ITwilioRestClient client = null)
-        {
-            var options = new ReadWorkerOptions(pathWorkspaceSid){ActivityName = activityName, ActivitySid = activitySid, Available = available, FriendlyName = friendlyName, TargetWorkersExpression = targetWorkersExpression, TaskQueueName = taskQueueName, TaskQueueSid = taskQueueSid, PageSize = pageSize, Limit = limit};
-            return Read(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// read
-        /// </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Workers to read </param>
-        /// <param name="activityName"> The activity_name of the Worker resources to read </param>
-        /// <param name="activitySid"> The activity_sid of the Worker resources to read </param>
-        /// <param name="available"> Whether to return Worker resources that are available or unavailable </param>
-        /// <param name="friendlyName"> The friendly_name of the Worker resources to read </param>
-        /// <param name="targetWorkersExpression"> Filter by Workers that would match an expression on a TaskQueue </param>
-        /// <param name="taskQueueName"> The friendly_name of the TaskQueue that the Workers to read are eligible for </param>
-        /// <param name="taskQueueSid"> The SID of the TaskQueue that the Workers to read are eligible for </param>
-        /// <param name="pageSize"> Page size </param>
-        /// <param name="limit"> Record limit </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Worker </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<WorkerResource>> ReadAsync(string pathWorkspaceSid,
-                                                                                               string activityName = null,
-                                                                                               string activitySid = null,
-                                                                                               string available = null,
-                                                                                               string friendlyName = null,
-                                                                                               string targetWorkersExpression = null,
-                                                                                               string taskQueueName = null,
-                                                                                               string taskQueueSid = null,
-                                                                                               int? pageSize = null,
-                                                                                               long? limit = null,
-                                                                                               ITwilioRestClient client = null)
-        {
-            var options = new ReadWorkerOptions(pathWorkspaceSid){ActivityName = activityName, ActivitySid = activitySid, Available = available, FriendlyName = friendlyName, TargetWorkersExpression = targetWorkersExpression, TaskQueueName = taskQueueName, TaskQueueSid = taskQueueSid, PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Fetch the target page of records
-        /// </summary>
-        /// <param name="targetUrl"> API-generated URL for the requested results page </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns>
-        public static Page<WorkerResource> GetPage(string targetUrl, ITwilioRestClient client)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-
-            var request = new Request(
-                HttpMethod.Get,
-                targetUrl
-            );
-
-            var response = client.Request(request);
-            return Page<WorkerResource>.FromJson("workers", response.Content);
-        }
-
-        /// <summary>
-        /// Fetch the next page of records
-        /// </summary>
-        /// <param name="page"> current page of records </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns>
-        public static Page<WorkerResource> NextPage(Page<WorkerResource> page, ITwilioRestClient client)
-        {
-            var request = new Request(
-                HttpMethod.Get,
-                page.GetNextPageUrl(Rest.Domain.Taskrouter)
-            );
-
-            var response = client.Request(request);
-            return Page<WorkerResource>.FromJson("workers", response.Content);
-        }
-
-        /// <summary>
-        /// Fetch the previous page of records
-        /// </summary>
-        /// <param name="page"> current page of records </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns>
-        public static Page<WorkerResource> PreviousPage(Page<WorkerResource> page, ITwilioRestClient client)
-        {
-            var request = new Request(
-                HttpMethod.Get,
-                page.GetPreviousPageUrl(Rest.Domain.Taskrouter)
-            );
-
-            var response = client.Request(request);
-            return Page<WorkerResource>.FromJson("workers", response.Content);
-        }
-
-        private static Request BuildCreateRequest(CreateWorkerOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Post,
-                Rest.Domain.Taskrouter,
-                "/v1/Workspaces/" + options.PathWorkspaceSid + "/Workers",
-                postParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// create
-        /// </summary>
-        /// <param name="options"> Create Worker parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Worker </returns>
-        public static WorkerResource Create(CreateWorkerOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildCreateRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// create
-        /// </summary>
-        /// <param name="options"> Create Worker parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Worker </returns>
-        public static async System.Threading.Tasks.Task<WorkerResource> CreateAsync(CreateWorkerOptions options,
-                                                                                    ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// create
-        /// </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace that the new Worker belongs to </param>
-        /// <param name="friendlyName"> A string to describe the resource </param>
-        /// <param name="activitySid"> The SID of a valid Activity that describes the new Worker's initial state </param>
-        /// <param name="attributes"> A valid JSON string that describes the new Worker </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Worker </returns>
-        public static WorkerResource Create(string pathWorkspaceSid,
-                                            string friendlyName,
-                                            string activitySid = null,
-                                            string attributes = null,
-                                            ITwilioRestClient client = null)
-        {
-            var options = new CreateWorkerOptions(pathWorkspaceSid, friendlyName){ActivitySid = activitySid, Attributes = attributes};
-            return Create(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// create
-        /// </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace that the new Worker belongs to </param>
-        /// <param name="friendlyName"> A string to describe the resource </param>
-        /// <param name="activitySid"> The SID of a valid Activity that describes the new Worker's initial state </param>
-        /// <param name="attributes"> A valid JSON string that describes the new Worker </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Worker </returns>
-        public static async System.Threading.Tasks.Task<WorkerResource> CreateAsync(string pathWorkspaceSid,
-                                                                                    string friendlyName,
-                                                                                    string activitySid = null,
-                                                                                    string attributes = null,
-                                                                                    ITwilioRestClient client = null)
-        {
-            var options = new CreateWorkerOptions(pathWorkspaceSid, friendlyName){ActivitySid = activitySid, Attributes = attributes};
-            return await CreateAsync(options, client);
-        }
-        #endif
-
-        private static Request BuildFetchRequest(FetchWorkerOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Get,
-                Rest.Domain.Taskrouter,
-                "/v1/Workspaces/" + options.PathWorkspaceSid + "/Workers/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="options"> Fetch Worker parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Worker </returns>
-        public static WorkerResource Fetch(FetchWorkerOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="options"> Fetch Worker parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Worker </returns>
-        public static async System.Threading.Tasks.Task<WorkerResource> FetchAsync(FetchWorkerOptions options,
-                                                                                   ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Worker to fetch </param>
-        /// <param name="pathSid"> The SID of the resource to fetch </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Worker </returns>
-        public static WorkerResource Fetch(string pathWorkspaceSid, string pathSid, ITwilioRestClient client = null)
-        {
-            var options = new FetchWorkerOptions(pathWorkspaceSid, pathSid);
-            return Fetch(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Worker to fetch </param>
-        /// <param name="pathSid"> The SID of the resource to fetch </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Worker </returns>
-        public static async System.Threading.Tasks.Task<WorkerResource> FetchAsync(string pathWorkspaceSid,
-                                                                                   string pathSid,
-                                                                                   ITwilioRestClient client = null)
-        {
-            var options = new FetchWorkerOptions(pathWorkspaceSid, pathSid);
-            return await FetchAsync(options, client);
-        }
-        #endif
-
-        private static Request BuildUpdateRequest(UpdateWorkerOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Post,
-                Rest.Domain.Taskrouter,
-                "/v1/Workspaces/" + options.PathWorkspaceSid + "/Workers/" + options.PathSid + "",
-                postParams: options.GetParams(),
-                headerParams: options.GetHeaderParams()
-            );
-        }
-
-        /// <summary>
-        /// update
-        /// </summary>
-        /// <param name="options"> Update Worker parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Worker </returns>
-        public static WorkerResource Update(UpdateWorkerOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildUpdateRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// update
-        /// </summary>
-        /// <param name="options"> Update Worker parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Worker </returns>
-        public static async System.Threading.Tasks.Task<WorkerResource> UpdateAsync(UpdateWorkerOptions options,
-                                                                                    ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// update
-        /// </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Worker to update </param>
-        /// <param name="pathSid"> The SID of the resource to update </param>
-        /// <param name="activitySid"> The SID of the Activity that describes the Worker's initial state </param>
-        /// <param name="attributes"> The JSON string that describes the Worker </param>
-        /// <param name="friendlyName"> A string to describe the Worker </param>
-        /// <param name="rejectPendingReservations"> Whether to reject the Worker's pending reservations </param>
-        /// <param name="ifMatch"> The If-Match HTTP request header </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Worker </returns>
-        public static WorkerResource Update(string pathWorkspaceSid,
-                                            string pathSid,
-                                            string activitySid = null,
-                                            string attributes = null,
-                                            string friendlyName = null,
-                                            bool? rejectPendingReservations = null,
-                                            string ifMatch = null,
-                                            ITwilioRestClient client = null)
-        {
-            var options = new UpdateWorkerOptions(pathWorkspaceSid, pathSid){ActivitySid = activitySid, Attributes = attributes, FriendlyName = friendlyName, RejectPendingReservations = rejectPendingReservations, IfMatch = ifMatch};
-            return Update(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// update
-        /// </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Worker to update </param>
-        /// <param name="pathSid"> The SID of the resource to update </param>
-        /// <param name="activitySid"> The SID of the Activity that describes the Worker's initial state </param>
-        /// <param name="attributes"> The JSON string that describes the Worker </param>
-        /// <param name="friendlyName"> A string to describe the Worker </param>
-        /// <param name="rejectPendingReservations"> Whether to reject the Worker's pending reservations </param>
-        /// <param name="ifMatch"> The If-Match HTTP request header </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Worker </returns>
-        public static async System.Threading.Tasks.Task<WorkerResource> UpdateAsync(string pathWorkspaceSid,
-                                                                                    string pathSid,
-                                                                                    string activitySid = null,
-                                                                                    string attributes = null,
-                                                                                    string friendlyName = null,
-                                                                                    bool? rejectPendingReservations = null,
-                                                                                    string ifMatch = null,
-                                                                                    ITwilioRestClient client = null)
-        {
-            var options = new UpdateWorkerOptions(pathWorkspaceSid, pathSid){ActivitySid = activitySid, Attributes = attributes, FriendlyName = friendlyName, RejectPendingReservations = rejectPendingReservations, IfMatch = ifMatch};
-            return await UpdateAsync(options, client);
-        }
-        #endif
-
-        private static Request BuildDeleteRequest(DeleteWorkerOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Delete,
-                Rest.Domain.Taskrouter,
-                "/v1/Workspaces/" + options.PathWorkspaceSid + "/Workers/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: options.GetHeaderParams()
-            );
-        }
-
-        /// <summary>
-        /// delete
-        /// </summary>
-        /// <param name="options"> Delete Worker parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Worker </returns>
-        public static bool Delete(DeleteWorkerOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
-        }
-
-        #if !NET35
-        /// <summary>
-        /// delete
-        /// </summary>
-        /// <param name="options"> Delete Worker parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Worker </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteWorkerOptions options,
-                                                                          ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
-        }
-        #endif
-
-        /// <summary>
-        /// delete
-        /// </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Worker to delete </param>
-        /// <param name="pathSid"> The SID of the resource to delete </param>
-        /// <param name="ifMatch"> The If-Match HTTP request header </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Worker </returns>
-        public static bool Delete(string pathWorkspaceSid,
-                                  string pathSid,
-                                  string ifMatch = null,
-                                  ITwilioRestClient client = null)
-        {
-            var options = new DeleteWorkerOptions(pathWorkspaceSid, pathSid){IfMatch = ifMatch};
-            return Delete(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// delete
-        /// </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Worker to delete </param>
-        /// <param name="pathSid"> The SID of the resource to delete </param>
-        /// <param name="ifMatch"> The If-Match HTTP request header </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Worker </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathWorkspaceSid,
-                                                                          string pathSid,
-                                                                          string ifMatch = null,
-                                                                          ITwilioRestClient client = null)
-        {
-            var options = new DeleteWorkerOptions(pathWorkspaceSid, pathSid){IfMatch = ifMatch};
-            return await DeleteAsync(options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Converts a JSON string into a WorkerResource object
-        /// </summary>
-        /// <param name="json"> Raw JSON string </param>
-        /// <returns> WorkerResource object represented by the provided JSON </returns>
-        public static WorkerResource FromJson(string json)
-        {
-            // Convert all checked exceptions to Runtime
-            try
-            {
-                return JsonConvert.DeserializeObject<WorkerResource>(json);
-            }
-            catch (JsonException e)
-            {
-                throw new ApiException(e.Message, e);
-            }
-        }
-
-        /// <summary>
-        /// The SID of the Account that created the resource
-        /// </summary>
-        [JsonProperty("account_sid")]
-        public string AccountSid { get; private set; }
-        /// <summary>
-        /// The friendly_name of the Worker's current Activity
-        /// </summary>
-        [JsonProperty("activity_name")]
-        public string ActivityName { get; private set; }
-        /// <summary>
-        /// The SID of the Worker's current Activity
-        /// </summary>
-        [JsonProperty("activity_sid")]
-        public string ActivitySid { get; private set; }
-        /// <summary>
-        /// The JSON string that describes the Worker
-        /// </summary>
-        [JsonProperty("attributes")]
-        public string Attributes { get; private set; }
-        /// <summary>
-        /// Whether the Worker is available to perform tasks
-        /// </summary>
-        [JsonProperty("available")]
-        public bool? Available { get; private set; }
-        /// <summary>
-        /// The ISO 8601 date and time in GMT when the resource was created
-        /// </summary>
-        [JsonProperty("date_created")]
-        public DateTime? DateCreated { get; private set; }
-        /// <summary>
-        /// The date and time in GMT of the last change to the Worker's activity
-        /// </summary>
-        [JsonProperty("date_status_changed")]
-        public DateTime? DateStatusChanged { get; private set; }
-        /// <summary>
-        /// The ISO 8601 date and time in GMT when the resource was last updated
-        /// </summary>
-        [JsonProperty("date_updated")]
-        public DateTime? DateUpdated { get; private set; }
-        /// <summary>
-        /// The string that you assigned to describe the resource
-        /// </summary>
-        [JsonProperty("friendly_name")]
-        public string FriendlyName { get; private set; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        [JsonProperty("sid")]
-        public string Sid { get; private set; }
-        /// <summary>
-        /// The SID of the Workspace that contains the Worker
-        /// </summary>
-        [JsonProperty("workspace_sid")]
-        public string WorkspaceSid { get; private set; }
-        /// <summary>
-        /// The absolute URL of the Worker resource
-        /// </summary>
-        [JsonProperty("url")]
-        public Uri Url { get; private set; }
-        /// <summary>
-        /// The URLs of related resources
-        /// </summary>
-        [JsonProperty("links")]
-        public Dictionary<string, string> Links { get; private set; }
-
-        private WorkerResource()
-        {
-
-        }
+      return new Request(
+          HttpMethod.Get,
+          Rest.Domain.Taskrouter,
+          "/v1/Workspaces/" + options.PathWorkspaceSid + "/Workers",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
     }
+
+    /// <summary>
+    /// read
+    /// </summary>
+    /// <param name="options"> Read Worker parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Worker </returns>
+    public static ResourceSet<WorkerResource> Read(ReadWorkerOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildReadRequest(options, client));
+
+      var page = Page<WorkerResource>.FromJson("workers", response.Content);
+      return new ResourceSet<WorkerResource>(page, options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// read
+    /// </summary>
+    /// <param name="options"> Read Worker parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Worker </returns>
+    public static async System.Threading.Tasks.Task<ResourceSet<WorkerResource>> ReadAsync(ReadWorkerOptions options,
+                                                                                           ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+      var page = Page<WorkerResource>.FromJson("workers", response.Content);
+      return new ResourceSet<WorkerResource>(page, options, client);
+    }
+#endif
+
+    /// <summary>
+    /// read
+    /// </summary>
+    /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Workers to read </param>
+    /// <param name="activityName"> The activity_name of the Worker resources to read </param>
+    /// <param name="activitySid"> The activity_sid of the Worker resources to read </param>
+    /// <param name="available"> Whether to return Worker resources that are available or unavailable </param>
+    /// <param name="friendlyName"> The friendly_name of the Worker resources to read </param>
+    /// <param name="targetWorkersExpression"> Filter by Workers that would match an expression on a TaskQueue </param>
+    /// <param name="taskQueueName"> The friendly_name of the TaskQueue that the Workers to read are eligible for </param>
+    /// <param name="taskQueueSid"> The SID of the TaskQueue that the Workers to read are eligible for </param>
+    /// <param name="pageSize"> Page size </param>
+    /// <param name="limit"> Record limit </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Worker </returns>
+    public static ResourceSet<WorkerResource> Read(string pathWorkspaceSid,
+                                                   string activityName = null,
+                                                   string activitySid = null,
+                                                   string available = null,
+                                                   string friendlyName = null,
+                                                   string targetWorkersExpression = null,
+                                                   string taskQueueName = null,
+                                                   string taskQueueSid = null,
+                                                   int? pageSize = null,
+                                                   long? limit = null,
+                                                   ITwilioRestClient client = null)
+    {
+      var options = new ReadWorkerOptions(pathWorkspaceSid) { ActivityName = activityName, ActivitySid = activitySid, Available = available, FriendlyName = friendlyName, TargetWorkersExpression = targetWorkersExpression, TaskQueueName = taskQueueName, TaskQueueSid = taskQueueSid, PageSize = pageSize, Limit = limit };
+      return Read(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// read
+    /// </summary>
+    /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Workers to read </param>
+    /// <param name="activityName"> The activity_name of the Worker resources to read </param>
+    /// <param name="activitySid"> The activity_sid of the Worker resources to read </param>
+    /// <param name="available"> Whether to return Worker resources that are available or unavailable </param>
+    /// <param name="friendlyName"> The friendly_name of the Worker resources to read </param>
+    /// <param name="targetWorkersExpression"> Filter by Workers that would match an expression on a TaskQueue </param>
+    /// <param name="taskQueueName"> The friendly_name of the TaskQueue that the Workers to read are eligible for </param>
+    /// <param name="taskQueueSid"> The SID of the TaskQueue that the Workers to read are eligible for </param>
+    /// <param name="pageSize"> Page size </param>
+    /// <param name="limit"> Record limit </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Worker </returns>
+    public static async System.Threading.Tasks.Task<ResourceSet<WorkerResource>> ReadAsync(string pathWorkspaceSid,
+                                                                                           string activityName = null,
+                                                                                           string activitySid = null,
+                                                                                           string available = null,
+                                                                                           string friendlyName = null,
+                                                                                           string targetWorkersExpression = null,
+                                                                                           string taskQueueName = null,
+                                                                                           string taskQueueSid = null,
+                                                                                           int? pageSize = null,
+                                                                                           long? limit = null,
+                                                                                           ITwilioRestClient client = null)
+    {
+      var options = new ReadWorkerOptions(pathWorkspaceSid) { ActivityName = activityName, ActivitySid = activitySid, Available = available, FriendlyName = friendlyName, TargetWorkersExpression = targetWorkersExpression, TaskQueueName = taskQueueName, TaskQueueSid = taskQueueSid, PageSize = pageSize, Limit = limit };
+      return await ReadAsync(options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Fetch the target page of records
+    /// </summary>
+    /// <param name="targetUrl"> API-generated URL for the requested results page </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> The target page of records </returns>
+    public static Page<WorkerResource> GetPage(string targetUrl, ITwilioRestClient client)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+
+      var request = new Request(
+          HttpMethod.Get,
+          targetUrl
+      );
+
+      var response = client.Request(request);
+      return Page<WorkerResource>.FromJson("workers", response.Content);
+    }
+
+    /// <summary>
+    /// Fetch the next page of records
+    /// </summary>
+    /// <param name="page"> current page of records </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> The next page of records </returns>
+    public static Page<WorkerResource> NextPage(Page<WorkerResource> page, ITwilioRestClient client)
+    {
+      var request = new Request(
+          HttpMethod.Get,
+          page.GetNextPageUrl(Rest.Domain.Taskrouter)
+      );
+
+      var response = client.Request(request);
+      return Page<WorkerResource>.FromJson("workers", response.Content);
+    }
+
+    /// <summary>
+    /// Fetch the previous page of records
+    /// </summary>
+    /// <param name="page"> current page of records </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> The previous page of records </returns>
+    public static Page<WorkerResource> PreviousPage(Page<WorkerResource> page, ITwilioRestClient client)
+    {
+      var request = new Request(
+          HttpMethod.Get,
+          page.GetPreviousPageUrl(Rest.Domain.Taskrouter)
+      );
+
+      var response = client.Request(request);
+      return Page<WorkerResource>.FromJson("workers", response.Content);
+    }
+
+    private static Request BuildCreateRequest(CreateWorkerOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Post,
+          Rest.Domain.Taskrouter,
+          "/v1/Workspaces/" + options.PathWorkspaceSid + "/Workers",
+          postParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// create
+    /// </summary>
+    /// <param name="options"> Create Worker parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Worker </returns>
+    public static WorkerResource Create(CreateWorkerOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildCreateRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// create
+    /// </summary>
+    /// <param name="options"> Create Worker parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Worker </returns>
+    public static async System.Threading.Tasks.Task<WorkerResource> CreateAsync(CreateWorkerOptions options,
+                                                                                ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildCreateRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// create
+    /// </summary>
+    /// <param name="pathWorkspaceSid"> The SID of the Workspace that the new Worker belongs to </param>
+    /// <param name="friendlyName"> A string to describe the resource </param>
+    /// <param name="activitySid"> The SID of a valid Activity that describes the new Worker's initial state </param>
+    /// <param name="attributes"> A valid JSON string that describes the new Worker </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Worker </returns>
+    public static WorkerResource Create(string pathWorkspaceSid,
+                                        string friendlyName,
+                                        string activitySid = null,
+                                        string attributes = null,
+                                        ITwilioRestClient client = null)
+    {
+      var options = new CreateWorkerOptions(pathWorkspaceSid, friendlyName) { ActivitySid = activitySid, Attributes = attributes };
+      return Create(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// create
+    /// </summary>
+    /// <param name="pathWorkspaceSid"> The SID of the Workspace that the new Worker belongs to </param>
+    /// <param name="friendlyName"> A string to describe the resource </param>
+    /// <param name="activitySid"> The SID of a valid Activity that describes the new Worker's initial state </param>
+    /// <param name="attributes"> A valid JSON string that describes the new Worker </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Worker </returns>
+    public static async System.Threading.Tasks.Task<WorkerResource> CreateAsync(string pathWorkspaceSid,
+                                                                                string friendlyName,
+                                                                                string activitySid = null,
+                                                                                string attributes = null,
+                                                                                ITwilioRestClient client = null)
+    {
+      var options = new CreateWorkerOptions(pathWorkspaceSid, friendlyName) { ActivitySid = activitySid, Attributes = attributes };
+      return await CreateAsync(options, client);
+    }
+#endif
+
+    private static Request BuildFetchRequest(FetchWorkerOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Get,
+          Rest.Domain.Taskrouter,
+          "/v1/Workspaces/" + options.PathWorkspaceSid + "/Workers/" + options.PathSid + "",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="options"> Fetch Worker parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Worker </returns>
+    public static WorkerResource Fetch(FetchWorkerOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="options"> Fetch Worker parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Worker </returns>
+    public static async System.Threading.Tasks.Task<WorkerResource> FetchAsync(FetchWorkerOptions options,
+                                                                               ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Worker to fetch </param>
+    /// <param name="pathSid"> The SID of the resource to fetch </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Worker </returns>
+    public static WorkerResource Fetch(string pathWorkspaceSid, string pathSid, ITwilioRestClient client = null)
+    {
+      var options = new FetchWorkerOptions(pathWorkspaceSid, pathSid);
+      return Fetch(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Worker to fetch </param>
+    /// <param name="pathSid"> The SID of the resource to fetch </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Worker </returns>
+    public static async System.Threading.Tasks.Task<WorkerResource> FetchAsync(string pathWorkspaceSid,
+                                                                               string pathSid,
+                                                                               ITwilioRestClient client = null)
+    {
+      var options = new FetchWorkerOptions(pathWorkspaceSid, pathSid);
+      return await FetchAsync(options, client);
+    }
+#endif
+
+    private static Request BuildUpdateRequest(UpdateWorkerOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Post,
+          Rest.Domain.Taskrouter,
+          "/v1/Workspaces/" + options.PathWorkspaceSid + "/Workers/" + options.PathSid + "",
+          postParams: options.GetParams(),
+          headerParams: options.GetHeaderParams()
+      );
+    }
+
+    /// <summary>
+    /// update
+    /// </summary>
+    /// <param name="options"> Update Worker parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Worker </returns>
+    public static WorkerResource Update(UpdateWorkerOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildUpdateRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// update
+    /// </summary>
+    /// <param name="options"> Update Worker parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Worker </returns>
+    public static async System.Threading.Tasks.Task<WorkerResource> UpdateAsync(UpdateWorkerOptions options,
+                                                                                ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// update
+    /// </summary>
+    /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Worker to update </param>
+    /// <param name="pathSid"> The SID of the resource to update </param>
+    /// <param name="activitySid"> The SID of the Activity that describes the Worker's initial state </param>
+    /// <param name="attributes"> The JSON string that describes the Worker </param>
+    /// <param name="friendlyName"> A string to describe the Worker </param>
+    /// <param name="rejectPendingReservations"> Whether to reject the Worker's pending reservations </param>
+    /// <param name="ifMatch"> The If-Match HTTP request header </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Worker </returns>
+    public static WorkerResource Update(string pathWorkspaceSid,
+                                        string pathSid,
+                                        string activitySid = null,
+                                        string attributes = null,
+                                        string friendlyName = null,
+                                        bool? rejectPendingReservations = null,
+                                        string ifMatch = null,
+                                        ITwilioRestClient client = null)
+    {
+      var options = new UpdateWorkerOptions(pathWorkspaceSid, pathSid) { ActivitySid = activitySid, Attributes = attributes, FriendlyName = friendlyName, RejectPendingReservations = rejectPendingReservations, IfMatch = ifMatch };
+      return Update(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// update
+    /// </summary>
+    /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Worker to update </param>
+    /// <param name="pathSid"> The SID of the resource to update </param>
+    /// <param name="activitySid"> The SID of the Activity that describes the Worker's initial state </param>
+    /// <param name="attributes"> The JSON string that describes the Worker </param>
+    /// <param name="friendlyName"> A string to describe the Worker </param>
+    /// <param name="rejectPendingReservations"> Whether to reject the Worker's pending reservations </param>
+    /// <param name="ifMatch"> The If-Match HTTP request header </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Worker </returns>
+    public static async System.Threading.Tasks.Task<WorkerResource> UpdateAsync(string pathWorkspaceSid,
+                                                                                string pathSid,
+                                                                                string activitySid = null,
+                                                                                string attributes = null,
+                                                                                string friendlyName = null,
+                                                                                bool? rejectPendingReservations = null,
+                                                                                string ifMatch = null,
+                                                                                ITwilioRestClient client = null)
+    {
+      var options = new UpdateWorkerOptions(pathWorkspaceSid, pathSid) { ActivitySid = activitySid, Attributes = attributes, FriendlyName = friendlyName, RejectPendingReservations = rejectPendingReservations, IfMatch = ifMatch };
+      return await UpdateAsync(options, client);
+    }
+#endif
+
+    private static Request BuildDeleteRequest(DeleteWorkerOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Delete,
+          Rest.Domain.Taskrouter,
+          "/v1/Workspaces/" + options.PathWorkspaceSid + "/Workers/" + options.PathSid + "",
+          queryParams: options.GetParams(),
+          headerParams: options.GetHeaderParams()
+      );
+    }
+
+    /// <summary>
+    /// delete
+    /// </summary>
+    /// <param name="options"> Delete Worker parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Worker </returns>
+    public static bool Delete(DeleteWorkerOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildDeleteRequest(options, client));
+      return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+    }
+
+#if !NET35
+    /// <summary>
+    /// delete
+    /// </summary>
+    /// <param name="options"> Delete Worker parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Worker </returns>
+    public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteWorkerOptions options,
+                                                                      ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+      return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+    }
+#endif
+
+    /// <summary>
+    /// delete
+    /// </summary>
+    /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Worker to delete </param>
+    /// <param name="pathSid"> The SID of the resource to delete </param>
+    /// <param name="ifMatch"> The If-Match HTTP request header </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Worker </returns>
+    public static bool Delete(string pathWorkspaceSid,
+                              string pathSid,
+                              string ifMatch = null,
+                              ITwilioRestClient client = null)
+    {
+      var options = new DeleteWorkerOptions(pathWorkspaceSid, pathSid) { IfMatch = ifMatch };
+      return Delete(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// delete
+    /// </summary>
+    /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Worker to delete </param>
+    /// <param name="pathSid"> The SID of the resource to delete </param>
+    /// <param name="ifMatch"> The If-Match HTTP request header </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Worker </returns>
+    public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathWorkspaceSid,
+                                                                      string pathSid,
+                                                                      string ifMatch = null,
+                                                                      ITwilioRestClient client = null)
+    {
+      var options = new DeleteWorkerOptions(pathWorkspaceSid, pathSid) { IfMatch = ifMatch };
+      return await DeleteAsync(options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Converts a JSON string into a WorkerResource object
+    /// </summary>
+    /// <param name="json"> Raw JSON string </param>
+    /// <returns> WorkerResource object represented by the provided JSON </returns>
+    public static WorkerResource FromJson(string json)
+    {
+      // Convert all checked exceptions to Runtime
+      try
+      {
+        return JsonConvert.DeserializeObject<WorkerResource>(json);
+      }
+      catch (JsonException e)
+      {
+        throw new ApiException(e.Message, e);
+      }
+    }
+
+    /// <summary>
+    /// The SID of the Account that created the resource
+    /// </summary>
+    [JsonProperty("account_sid")]
+    public string AccountSid { get; private set; }
+    /// <summary>
+    /// The friendly_name of the Worker's current Activity
+    /// </summary>
+    [JsonProperty("activity_name")]
+    public string ActivityName { get; private set; }
+    /// <summary>
+    /// The SID of the Worker's current Activity
+    /// </summary>
+    [JsonProperty("activity_sid")]
+    public string ActivitySid { get; private set; }
+    /// <summary>
+    /// The JSON string that describes the Worker
+    /// </summary>
+    [JsonProperty("attributes")]
+    public string Attributes { get; private set; }
+    /// <summary>
+    /// Whether the Worker is available to perform tasks
+    /// </summary>
+    [JsonProperty("available")]
+    public bool? Available { get; private set; }
+    /// <summary>
+    /// The ISO 8601 date and time in GMT when the resource was created
+    /// </summary>
+    [JsonProperty("date_created")]
+    public DateTime? DateCreated { get; private set; }
+    /// <summary>
+    /// The date and time in GMT of the last change to the Worker's activity
+    /// </summary>
+    [JsonProperty("date_status_changed")]
+    public DateTime? DateStatusChanged { get; private set; }
+    /// <summary>
+    /// The ISO 8601 date and time in GMT when the resource was last updated
+    /// </summary>
+    [JsonProperty("date_updated")]
+    public DateTime? DateUpdated { get; private set; }
+    /// <summary>
+    /// The string that you assigned to describe the resource
+    /// </summary>
+    [JsonProperty("friendly_name")]
+    public string FriendlyName { get; private set; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    [JsonProperty("sid")]
+    public string Sid { get; private set; }
+    /// <summary>
+    /// The SID of the Workspace that contains the Worker
+    /// </summary>
+    [JsonProperty("workspace_sid")]
+    public string WorkspaceSid { get; private set; }
+    /// <summary>
+    /// The absolute URL of the Worker resource
+    /// </summary>
+    [JsonProperty("url")]
+    public Uri Url { get; private set; }
+    /// <summary>
+    /// The URLs of related resources
+    /// </summary>
+    [JsonProperty("links")]
+    public Dictionary<string, string> Links { get; private set; }
+
+    private WorkerResource()
+    {
+
+    }
+  }
 
 }

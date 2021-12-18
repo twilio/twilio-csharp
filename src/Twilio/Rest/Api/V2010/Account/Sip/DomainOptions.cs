@@ -11,391 +11,391 @@ using Twilio.Converters;
 namespace Twilio.Rest.Api.V2010.Account.Sip
 {
 
+  /// <summary>
+  /// Retrieve a list of domains belonging to the account used to make the request
+  /// </summary>
+  public class ReadDomainOptions : ReadOptions<DomainResource>
+  {
     /// <summary>
-    /// Retrieve a list of domains belonging to the account used to make the request
+    /// The SID of the Account that created the resources to read
     /// </summary>
-    public class ReadDomainOptions : ReadOptions<DomainResource>
+    public string PathAccountSid { get; set; }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Account that created the resources to read
-        /// </summary>
-        public string PathAccountSid { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
+      return p;
+    }
+  }
 
-            return p;
-        }
+  /// <summary>
+  /// Create a new Domain
+  /// </summary>
+  public class CreateDomainOptions : IOptions<DomainResource>
+  {
+    /// <summary>
+    /// The SID of the Account that will create the resource
+    /// </summary>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The unique address on Twilio to route SIP traffic
+    /// </summary>
+    public string DomainName { get; }
+    /// <summary>
+    /// A string to describe the resource
+    /// </summary>
+    public string FriendlyName { get; set; }
+    /// <summary>
+    /// The URL we should call when receiving a call
+    /// </summary>
+    public Uri VoiceUrl { get; set; }
+    /// <summary>
+    /// The HTTP method to use with voice_url
+    /// </summary>
+    public Twilio.Http.HttpMethod VoiceMethod { get; set; }
+    /// <summary>
+    /// The URL we should call when an error occurs in executing TwiML
+    /// </summary>
+    public Uri VoiceFallbackUrl { get; set; }
+    /// <summary>
+    /// The HTTP method to use with voice_fallback_url
+    /// </summary>
+    public Twilio.Http.HttpMethod VoiceFallbackMethod { get; set; }
+    /// <summary>
+    /// The URL that we should call to pass status updates
+    /// </summary>
+    public Uri VoiceStatusCallbackUrl { get; set; }
+    /// <summary>
+    /// The HTTP method we should use to call `voice_status_callback_url`
+    /// </summary>
+    public Twilio.Http.HttpMethod VoiceStatusCallbackMethod { get; set; }
+    /// <summary>
+    /// Whether SIP registration is allowed
+    /// </summary>
+    public bool? SipRegistration { get; set; }
+    /// <summary>
+    /// Whether emergency calling is enabled for the domain.
+    /// </summary>
+    public bool? EmergencyCallingEnabled { get; set; }
+    /// <summary>
+    /// Whether secure SIP is enabled for the domain
+    /// </summary>
+    public bool? Secure { get; set; }
+    /// <summary>
+    /// The SID of the BYOC Trunk resource.
+    /// </summary>
+    public string ByocTrunkSid { get; set; }
+    /// <summary>
+    /// Whether an emergency caller sid is configured for the domain.
+    /// </summary>
+    public string EmergencyCallerSid { get; set; }
+
+    /// <summary>
+    /// Construct a new CreateDomainOptions
+    /// </summary>
+    /// <param name="domainName"> The unique address on Twilio to route SIP traffic </param>
+    public CreateDomainOptions(string domainName)
+    {
+      DomainName = domainName;
     }
 
     /// <summary>
-    /// Create a new Domain
+    /// Generate the necessary parameters
     /// </summary>
-    public class CreateDomainOptions : IOptions<DomainResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Account that will create the resource
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The unique address on Twilio to route SIP traffic
-        /// </summary>
-        public string DomainName { get; }
-        /// <summary>
-        /// A string to describe the resource
-        /// </summary>
-        public string FriendlyName { get; set; }
-        /// <summary>
-        /// The URL we should call when receiving a call
-        /// </summary>
-        public Uri VoiceUrl { get; set; }
-        /// <summary>
-        /// The HTTP method to use with voice_url
-        /// </summary>
-        public Twilio.Http.HttpMethod VoiceMethod { get; set; }
-        /// <summary>
-        /// The URL we should call when an error occurs in executing TwiML
-        /// </summary>
-        public Uri VoiceFallbackUrl { get; set; }
-        /// <summary>
-        /// The HTTP method to use with voice_fallback_url
-        /// </summary>
-        public Twilio.Http.HttpMethod VoiceFallbackMethod { get; set; }
-        /// <summary>
-        /// The URL that we should call to pass status updates
-        /// </summary>
-        public Uri VoiceStatusCallbackUrl { get; set; }
-        /// <summary>
-        /// The HTTP method we should use to call `voice_status_callback_url`
-        /// </summary>
-        public Twilio.Http.HttpMethod VoiceStatusCallbackMethod { get; set; }
-        /// <summary>
-        /// Whether SIP registration is allowed
-        /// </summary>
-        public bool? SipRegistration { get; set; }
-        /// <summary>
-        /// Whether emergency calling is enabled for the domain.
-        /// </summary>
-        public bool? EmergencyCallingEnabled { get; set; }
-        /// <summary>
-        /// Whether secure SIP is enabled for the domain
-        /// </summary>
-        public bool? Secure { get; set; }
-        /// <summary>
-        /// The SID of the BYOC Trunk resource.
-        /// </summary>
-        public string ByocTrunkSid { get; set; }
-        /// <summary>
-        /// Whether an emergency caller sid is configured for the domain.
-        /// </summary>
-        public string EmergencyCallerSid { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (DomainName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("DomainName", DomainName));
+      }
 
-        /// <summary>
-        /// Construct a new CreateDomainOptions
-        /// </summary>
-        /// <param name="domainName"> The unique address on Twilio to route SIP traffic </param>
-        public CreateDomainOptions(string domainName)
-        {
-            DomainName = domainName;
-        }
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (DomainName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DomainName", DomainName));
-            }
+      if (VoiceUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("VoiceUrl", Serializers.Url(VoiceUrl)));
+      }
 
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
+      if (VoiceMethod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("VoiceMethod", VoiceMethod.ToString()));
+      }
 
-            if (VoiceUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("VoiceUrl", Serializers.Url(VoiceUrl)));
-            }
+      if (VoiceFallbackUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("VoiceFallbackUrl", Serializers.Url(VoiceFallbackUrl)));
+      }
 
-            if (VoiceMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("VoiceMethod", VoiceMethod.ToString()));
-            }
+      if (VoiceFallbackMethod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("VoiceFallbackMethod", VoiceFallbackMethod.ToString()));
+      }
 
-            if (VoiceFallbackUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("VoiceFallbackUrl", Serializers.Url(VoiceFallbackUrl)));
-            }
+      if (VoiceStatusCallbackUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("VoiceStatusCallbackUrl", Serializers.Url(VoiceStatusCallbackUrl)));
+      }
 
-            if (VoiceFallbackMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("VoiceFallbackMethod", VoiceFallbackMethod.ToString()));
-            }
+      if (VoiceStatusCallbackMethod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("VoiceStatusCallbackMethod", VoiceStatusCallbackMethod.ToString()));
+      }
 
-            if (VoiceStatusCallbackUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("VoiceStatusCallbackUrl", Serializers.Url(VoiceStatusCallbackUrl)));
-            }
+      if (SipRegistration != null)
+      {
+        p.Add(new KeyValuePair<string, string>("SipRegistration", SipRegistration.Value.ToString().ToLower()));
+      }
 
-            if (VoiceStatusCallbackMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("VoiceStatusCallbackMethod", VoiceStatusCallbackMethod.ToString()));
-            }
+      if (EmergencyCallingEnabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("EmergencyCallingEnabled", EmergencyCallingEnabled.Value.ToString().ToLower()));
+      }
 
-            if (SipRegistration != null)
-            {
-                p.Add(new KeyValuePair<string, string>("SipRegistration", SipRegistration.Value.ToString().ToLower()));
-            }
+      if (Secure != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Secure", Secure.Value.ToString().ToLower()));
+      }
 
-            if (EmergencyCallingEnabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("EmergencyCallingEnabled", EmergencyCallingEnabled.Value.ToString().ToLower()));
-            }
+      if (ByocTrunkSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ByocTrunkSid", ByocTrunkSid.ToString()));
+      }
 
-            if (Secure != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Secure", Secure.Value.ToString().ToLower()));
-            }
+      if (EmergencyCallerSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("EmergencyCallerSid", EmergencyCallerSid.ToString()));
+      }
 
-            if (ByocTrunkSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ByocTrunkSid", ByocTrunkSid.ToString()));
-            }
+      return p;
+    }
+  }
 
-            if (EmergencyCallerSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("EmergencyCallerSid", EmergencyCallerSid.ToString()));
-            }
+  /// <summary>
+  /// Fetch an instance of a Domain
+  /// </summary>
+  public class FetchDomainOptions : IOptions<DomainResource>
+  {
+    /// <summary>
+    /// The SID of the Account that created the resource to fetch
+    /// </summary>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
 
-            return p;
-        }
+    /// <summary>
+    /// Construct a new FetchDomainOptions
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public FetchDomainOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Fetch an instance of a Domain
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchDomainOptions : IOptions<DomainResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Account that created the resource to fetch
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new FetchDomainOptions
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public FetchDomainOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
+  /// <summary>
+  /// Update the attributes of a domain
+  /// </summary>
+  public class UpdateDomainOptions : IOptions<DomainResource>
+  {
+    /// <summary>
+    /// The SID of the Account that created the resource to update
+    /// </summary>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// A string to describe the resource
+    /// </summary>
+    public string FriendlyName { get; set; }
+    /// <summary>
+    /// The HTTP method used with voice_fallback_url
+    /// </summary>
+    public Twilio.Http.HttpMethod VoiceFallbackMethod { get; set; }
+    /// <summary>
+    /// The URL we should call when an error occurs in executing TwiML
+    /// </summary>
+    public Uri VoiceFallbackUrl { get; set; }
+    /// <summary>
+    /// The HTTP method we should use with voice_url
+    /// </summary>
+    public Twilio.Http.HttpMethod VoiceMethod { get; set; }
+    /// <summary>
+    /// The HTTP method we should use to call voice_status_callback_url
+    /// </summary>
+    public Twilio.Http.HttpMethod VoiceStatusCallbackMethod { get; set; }
+    /// <summary>
+    /// The URL that we should call to pass status updates
+    /// </summary>
+    public Uri VoiceStatusCallbackUrl { get; set; }
+    /// <summary>
+    /// The URL we should call when receiving a call
+    /// </summary>
+    public Uri VoiceUrl { get; set; }
+    /// <summary>
+    /// Whether SIP registration is allowed
+    /// </summary>
+    public bool? SipRegistration { get; set; }
+    /// <summary>
+    /// The unique address on Twilio to route SIP traffic
+    /// </summary>
+    public string DomainName { get; set; }
+    /// <summary>
+    /// Whether emergency calling is enabled for the domain.
+    /// </summary>
+    public bool? EmergencyCallingEnabled { get; set; }
+    /// <summary>
+    /// Whether secure SIP is enabled for the domain
+    /// </summary>
+    public bool? Secure { get; set; }
+    /// <summary>
+    /// The SID of the BYOC Trunk resource.
+    /// </summary>
+    public string ByocTrunkSid { get; set; }
+    /// <summary>
+    /// Whether an emergency caller sid is configured for the domain.
+    /// </summary>
+    public string EmergencyCallerSid { get; set; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+    /// <summary>
+    /// Construct a new UpdateDomainOptions
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public UpdateDomainOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Update the attributes of a domain
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateDomainOptions : IOptions<DomainResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Account that created the resource to update
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// A string to describe the resource
-        /// </summary>
-        public string FriendlyName { get; set; }
-        /// <summary>
-        /// The HTTP method used with voice_fallback_url
-        /// </summary>
-        public Twilio.Http.HttpMethod VoiceFallbackMethod { get; set; }
-        /// <summary>
-        /// The URL we should call when an error occurs in executing TwiML
-        /// </summary>
-        public Uri VoiceFallbackUrl { get; set; }
-        /// <summary>
-        /// The HTTP method we should use with voice_url
-        /// </summary>
-        public Twilio.Http.HttpMethod VoiceMethod { get; set; }
-        /// <summary>
-        /// The HTTP method we should use to call voice_status_callback_url
-        /// </summary>
-        public Twilio.Http.HttpMethod VoiceStatusCallbackMethod { get; set; }
-        /// <summary>
-        /// The URL that we should call to pass status updates
-        /// </summary>
-        public Uri VoiceStatusCallbackUrl { get; set; }
-        /// <summary>
-        /// The URL we should call when receiving a call
-        /// </summary>
-        public Uri VoiceUrl { get; set; }
-        /// <summary>
-        /// Whether SIP registration is allowed
-        /// </summary>
-        public bool? SipRegistration { get; set; }
-        /// <summary>
-        /// The unique address on Twilio to route SIP traffic
-        /// </summary>
-        public string DomainName { get; set; }
-        /// <summary>
-        /// Whether emergency calling is enabled for the domain.
-        /// </summary>
-        public bool? EmergencyCallingEnabled { get; set; }
-        /// <summary>
-        /// Whether secure SIP is enabled for the domain
-        /// </summary>
-        public bool? Secure { get; set; }
-        /// <summary>
-        /// The SID of the BYOC Trunk resource.
-        /// </summary>
-        public string ByocTrunkSid { get; set; }
-        /// <summary>
-        /// Whether an emergency caller sid is configured for the domain.
-        /// </summary>
-        public string EmergencyCallerSid { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
 
-        /// <summary>
-        /// Construct a new UpdateDomainOptions
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public UpdateDomainOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
+      if (VoiceFallbackMethod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("VoiceFallbackMethod", VoiceFallbackMethod.ToString()));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
+      if (VoiceFallbackUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("VoiceFallbackUrl", Serializers.Url(VoiceFallbackUrl)));
+      }
 
-            if (VoiceFallbackMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("VoiceFallbackMethod", VoiceFallbackMethod.ToString()));
-            }
+      if (VoiceMethod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("VoiceMethod", VoiceMethod.ToString()));
+      }
 
-            if (VoiceFallbackUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("VoiceFallbackUrl", Serializers.Url(VoiceFallbackUrl)));
-            }
+      if (VoiceStatusCallbackMethod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("VoiceStatusCallbackMethod", VoiceStatusCallbackMethod.ToString()));
+      }
 
-            if (VoiceMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("VoiceMethod", VoiceMethod.ToString()));
-            }
+      if (VoiceStatusCallbackUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("VoiceStatusCallbackUrl", Serializers.Url(VoiceStatusCallbackUrl)));
+      }
 
-            if (VoiceStatusCallbackMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("VoiceStatusCallbackMethod", VoiceStatusCallbackMethod.ToString()));
-            }
+      if (VoiceUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("VoiceUrl", Serializers.Url(VoiceUrl)));
+      }
 
-            if (VoiceStatusCallbackUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("VoiceStatusCallbackUrl", Serializers.Url(VoiceStatusCallbackUrl)));
-            }
+      if (SipRegistration != null)
+      {
+        p.Add(new KeyValuePair<string, string>("SipRegistration", SipRegistration.Value.ToString().ToLower()));
+      }
 
-            if (VoiceUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("VoiceUrl", Serializers.Url(VoiceUrl)));
-            }
+      if (DomainName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("DomainName", DomainName));
+      }
 
-            if (SipRegistration != null)
-            {
-                p.Add(new KeyValuePair<string, string>("SipRegistration", SipRegistration.Value.ToString().ToLower()));
-            }
+      if (EmergencyCallingEnabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("EmergencyCallingEnabled", EmergencyCallingEnabled.Value.ToString().ToLower()));
+      }
 
-            if (DomainName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DomainName", DomainName));
-            }
+      if (Secure != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Secure", Secure.Value.ToString().ToLower()));
+      }
 
-            if (EmergencyCallingEnabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("EmergencyCallingEnabled", EmergencyCallingEnabled.Value.ToString().ToLower()));
-            }
+      if (ByocTrunkSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ByocTrunkSid", ByocTrunkSid.ToString()));
+      }
 
-            if (Secure != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Secure", Secure.Value.ToString().ToLower()));
-            }
+      if (EmergencyCallerSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("EmergencyCallerSid", EmergencyCallerSid.ToString()));
+      }
 
-            if (ByocTrunkSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ByocTrunkSid", ByocTrunkSid.ToString()));
-            }
+      return p;
+    }
+  }
 
-            if (EmergencyCallerSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("EmergencyCallerSid", EmergencyCallerSid.ToString()));
-            }
+  /// <summary>
+  /// Delete an instance of a Domain
+  /// </summary>
+  public class DeleteDomainOptions : IOptions<DomainResource>
+  {
+    /// <summary>
+    /// The SID of the Account that created the resources to delete
+    /// </summary>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
 
-            return p;
-        }
+    /// <summary>
+    /// Construct a new DeleteDomainOptions
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public DeleteDomainOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Delete an instance of a Domain
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteDomainOptions : IOptions<DomainResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Account that created the resources to delete
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new DeleteDomainOptions
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public DeleteDomainOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
 
 }

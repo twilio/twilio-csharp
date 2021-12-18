@@ -11,278 +11,278 @@ using Twilio.Converters;
 namespace Twilio.Rest.Trunking.V1.Trunk
 {
 
+  /// <summary>
+  /// FetchOriginationUrlOptions
+  /// </summary>
+  public class FetchOriginationUrlOptions : IOptions<OriginationUrlResource>
+  {
     /// <summary>
-    /// FetchOriginationUrlOptions
+    /// The SID of the Trunk from which to fetch the OriginationUrl
     /// </summary>
-    public class FetchOriginationUrlOptions : IOptions<OriginationUrlResource>
+    public string PathTrunkSid { get; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchOriginationUrlOptions
+    /// </summary>
+    /// <param name="pathTrunkSid"> The SID of the Trunk from which to fetch the OriginationUrl </param>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public FetchOriginationUrlOptions(string pathTrunkSid, string pathSid)
     {
-        /// <summary>
-        /// The SID of the Trunk from which to fetch the OriginationUrl
-        /// </summary>
-        public string PathTrunkSid { get; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchOriginationUrlOptions
-        /// </summary>
-        /// <param name="pathTrunkSid"> The SID of the Trunk from which to fetch the OriginationUrl </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public FetchOriginationUrlOptions(string pathTrunkSid, string pathSid)
-        {
-            PathTrunkSid = pathTrunkSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathTrunkSid = pathTrunkSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// DeleteOriginationUrlOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteOriginationUrlOptions : IOptions<OriginationUrlResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Trunk from which to delete the OriginationUrl
-        /// </summary>
-        public string PathTrunkSid { get; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new DeleteOriginationUrlOptions
-        /// </summary>
-        /// <param name="pathTrunkSid"> The SID of the Trunk from which to delete the OriginationUrl </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public DeleteOriginationUrlOptions(string pathTrunkSid, string pathSid)
-        {
-            PathTrunkSid = pathTrunkSid;
-            PathSid = pathSid;
-        }
+  /// <summary>
+  /// DeleteOriginationUrlOptions
+  /// </summary>
+  public class DeleteOriginationUrlOptions : IOptions<OriginationUrlResource>
+  {
+    /// <summary>
+    /// The SID of the Trunk from which to delete the OriginationUrl
+    /// </summary>
+    public string PathTrunkSid { get; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+    /// <summary>
+    /// Construct a new DeleteOriginationUrlOptions
+    /// </summary>
+    /// <param name="pathTrunkSid"> The SID of the Trunk from which to delete the OriginationUrl </param>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public DeleteOriginationUrlOptions(string pathTrunkSid, string pathSid)
+    {
+      PathTrunkSid = pathTrunkSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// CreateOriginationUrlOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class CreateOriginationUrlOptions : IOptions<OriginationUrlResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Trunk to associate the resource with
-        /// </summary>
-        public string PathTrunkSid { get; }
-        /// <summary>
-        /// The value that determines the relative load the URI should receive compared to others with the same priority
-        /// </summary>
-        public int? Weight { get; }
-        /// <summary>
-        /// The relative importance of the URI
-        /// </summary>
-        public int? Priority { get; }
-        /// <summary>
-        /// Whether the URL is enabled
-        /// </summary>
-        public bool? Enabled { get; }
-        /// <summary>
-        /// A string to describe the resource
-        /// </summary>
-        public string FriendlyName { get; }
-        /// <summary>
-        /// The SIP address you want Twilio to route your Origination calls to
-        /// </summary>
-        public Uri SipUrl { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new CreateOriginationUrlOptions
-        /// </summary>
-        /// <param name="pathTrunkSid"> The SID of the Trunk to associate the resource with </param>
-        /// <param name="weight"> The value that determines the relative load the URI should receive compared to others with
-        ///              the same priority </param>
-        /// <param name="priority"> The relative importance of the URI </param>
-        /// <param name="enabled"> Whether the URL is enabled </param>
-        /// <param name="friendlyName"> A string to describe the resource </param>
-        /// <param name="sipUrl"> The SIP address you want Twilio to route your Origination calls to </param>
-        public CreateOriginationUrlOptions(string pathTrunkSid,
-                                           int? weight,
-                                           int? priority,
-                                           bool? enabled,
-                                           string friendlyName,
-                                           Uri sipUrl)
-        {
-            PathTrunkSid = pathTrunkSid;
-            Weight = weight;
-            Priority = priority;
-            Enabled = enabled;
-            FriendlyName = friendlyName;
-            SipUrl = sipUrl;
-        }
+  /// <summary>
+  /// CreateOriginationUrlOptions
+  /// </summary>
+  public class CreateOriginationUrlOptions : IOptions<OriginationUrlResource>
+  {
+    /// <summary>
+    /// The SID of the Trunk to associate the resource with
+    /// </summary>
+    public string PathTrunkSid { get; }
+    /// <summary>
+    /// The value that determines the relative load the URI should receive compared to others with the same priority
+    /// </summary>
+    public int? Weight { get; }
+    /// <summary>
+    /// The relative importance of the URI
+    /// </summary>
+    public int? Priority { get; }
+    /// <summary>
+    /// Whether the URL is enabled
+    /// </summary>
+    public bool? Enabled { get; }
+    /// <summary>
+    /// A string to describe the resource
+    /// </summary>
+    public string FriendlyName { get; }
+    /// <summary>
+    /// The SIP address you want Twilio to route your Origination calls to
+    /// </summary>
+    public Uri SipUrl { get; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Weight != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Weight", Weight.ToString()));
-            }
-
-            if (Priority != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Priority", Priority.ToString()));
-            }
-
-            if (Enabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Enabled", Enabled.Value.ToString().ToLower()));
-            }
-
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
-
-            if (SipUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("SipUrl", Serializers.Url(SipUrl)));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new CreateOriginationUrlOptions
+    /// </summary>
+    /// <param name="pathTrunkSid"> The SID of the Trunk to associate the resource with </param>
+    /// <param name="weight"> The value that determines the relative load the URI should receive compared to others with
+    ///              the same priority </param>
+    /// <param name="priority"> The relative importance of the URI </param>
+    /// <param name="enabled"> Whether the URL is enabled </param>
+    /// <param name="friendlyName"> A string to describe the resource </param>
+    /// <param name="sipUrl"> The SIP address you want Twilio to route your Origination calls to </param>
+    public CreateOriginationUrlOptions(string pathTrunkSid,
+                                       int? weight,
+                                       int? priority,
+                                       bool? enabled,
+                                       string friendlyName,
+                                       Uri sipUrl)
+    {
+      PathTrunkSid = pathTrunkSid;
+      Weight = weight;
+      Priority = priority;
+      Enabled = enabled;
+      FriendlyName = friendlyName;
+      SipUrl = sipUrl;
     }
 
     /// <summary>
-    /// ReadOriginationUrlOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadOriginationUrlOptions : ReadOptions<OriginationUrlResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Trunk from which to read the OriginationUrl
-        /// </summary>
-        public string PathTrunkSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (Weight != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Weight", Weight.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new ReadOriginationUrlOptions
-        /// </summary>
-        /// <param name="pathTrunkSid"> The SID of the Trunk from which to read the OriginationUrl </param>
-        public ReadOriginationUrlOptions(string pathTrunkSid)
-        {
-            PathTrunkSid = pathTrunkSid;
-        }
+      if (Priority != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Priority", Priority.ToString()));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
+      if (Enabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Enabled", Enabled.Value.ToString().ToLower()));
+      }
 
-            return p;
-        }
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
+
+      if (SipUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("SipUrl", Serializers.Url(SipUrl)));
+      }
+
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// ReadOriginationUrlOptions
+  /// </summary>
+  public class ReadOriginationUrlOptions : ReadOptions<OriginationUrlResource>
+  {
+    /// <summary>
+    /// The SID of the Trunk from which to read the OriginationUrl
+    /// </summary>
+    public string PathTrunkSid { get; }
+
+    /// <summary>
+    /// Construct a new ReadOriginationUrlOptions
+    /// </summary>
+    /// <param name="pathTrunkSid"> The SID of the Trunk from which to read the OriginationUrl </param>
+    public ReadOriginationUrlOptions(string pathTrunkSid)
+    {
+      PathTrunkSid = pathTrunkSid;
     }
 
     /// <summary>
-    /// UpdateOriginationUrlOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateOriginationUrlOptions : IOptions<OriginationUrlResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Trunk from which to update the OriginationUrl
-        /// </summary>
-        public string PathTrunkSid { get; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// The value that determines the relative load the URI should receive compared to others with the same priority
-        /// </summary>
-        public int? Weight { get; set; }
-        /// <summary>
-        /// The relative importance of the URI
-        /// </summary>
-        public int? Priority { get; set; }
-        /// <summary>
-        /// Whether the URL is enabled
-        /// </summary>
-        public bool? Enabled { get; set; }
-        /// <summary>
-        /// A string to describe the resource
-        /// </summary>
-        public string FriendlyName { get; set; }
-        /// <summary>
-        /// The SIP address you want Twilio to route your Origination calls to
-        /// </summary>
-        public Uri SipUrl { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new UpdateOriginationUrlOptions
-        /// </summary>
-        /// <param name="pathTrunkSid"> The SID of the Trunk from which to update the OriginationUrl </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public UpdateOriginationUrlOptions(string pathTrunkSid, string pathSid)
-        {
-            PathTrunkSid = pathTrunkSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Weight != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Weight", Weight.ToString()));
-            }
-
-            if (Priority != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Priority", Priority.ToString()));
-            }
-
-            if (Enabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Enabled", Enabled.Value.ToString().ToLower()));
-            }
-
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
-
-            if (SipUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("SipUrl", Serializers.Url(SipUrl)));
-            }
-
-            return p;
-        }
+      return p;
     }
+  }
+
+  /// <summary>
+  /// UpdateOriginationUrlOptions
+  /// </summary>
+  public class UpdateOriginationUrlOptions : IOptions<OriginationUrlResource>
+  {
+    /// <summary>
+    /// The SID of the Trunk from which to update the OriginationUrl
+    /// </summary>
+    public string PathTrunkSid { get; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// The value that determines the relative load the URI should receive compared to others with the same priority
+    /// </summary>
+    public int? Weight { get; set; }
+    /// <summary>
+    /// The relative importance of the URI
+    /// </summary>
+    public int? Priority { get; set; }
+    /// <summary>
+    /// Whether the URL is enabled
+    /// </summary>
+    public bool? Enabled { get; set; }
+    /// <summary>
+    /// A string to describe the resource
+    /// </summary>
+    public string FriendlyName { get; set; }
+    /// <summary>
+    /// The SIP address you want Twilio to route your Origination calls to
+    /// </summary>
+    public Uri SipUrl { get; set; }
+
+    /// <summary>
+    /// Construct a new UpdateOriginationUrlOptions
+    /// </summary>
+    /// <param name="pathTrunkSid"> The SID of the Trunk from which to update the OriginationUrl </param>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public UpdateOriginationUrlOptions(string pathTrunkSid, string pathSid)
+    {
+      PathTrunkSid = pathTrunkSid;
+      PathSid = pathSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (Weight != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Weight", Weight.ToString()));
+      }
+
+      if (Priority != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Priority", Priority.ToString()));
+      }
+
+      if (Enabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Enabled", Enabled.Value.ToString().ToLower()));
+      }
+
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
+
+      if (SipUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("SipUrl", Serializers.Url(SipUrl)));
+      }
+
+      return p;
+    }
+  }
 
 }

@@ -18,117 +18,117 @@ using Twilio.Http;
 namespace Twilio.Rest.Api.V2010.Account
 {
 
-    public class BalanceResource : Resource
+  public class BalanceResource : Resource
+  {
+    private static Request BuildFetchRequest(FetchBalanceOptions options, ITwilioRestClient client)
     {
-        private static Request BuildFetchRequest(FetchBalanceOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Get,
-                Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Balance.json",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// Fetch the balance for an Account based on Account Sid. Balance changes may not be reflected immediately. Child
-        /// accounts do not contain balance information
-        /// </summary>
-        /// <param name="options"> Fetch Balance parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Balance </returns>
-        public static BalanceResource Fetch(FetchBalanceOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Fetch the balance for an Account based on Account Sid. Balance changes may not be reflected immediately. Child
-        /// accounts do not contain balance information
-        /// </summary>
-        /// <param name="options"> Fetch Balance parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Balance </returns>
-        public static async System.Threading.Tasks.Task<BalanceResource> FetchAsync(FetchBalanceOptions options,
-                                                                                    ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// Fetch the balance for an Account based on Account Sid. Balance changes may not be reflected immediately. Child
-        /// accounts do not contain balance information
-        /// </summary>
-        /// <param name="pathAccountSid"> Account Sid. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Balance </returns>
-        public static BalanceResource Fetch(string pathAccountSid = null, ITwilioRestClient client = null)
-        {
-            var options = new FetchBalanceOptions(){PathAccountSid = pathAccountSid};
-            return Fetch(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Fetch the balance for an Account based on Account Sid. Balance changes may not be reflected immediately. Child
-        /// accounts do not contain balance information
-        /// </summary>
-        /// <param name="pathAccountSid"> Account Sid. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Balance </returns>
-        public static async System.Threading.Tasks.Task<BalanceResource> FetchAsync(string pathAccountSid = null,
-                                                                                    ITwilioRestClient client = null)
-        {
-            var options = new FetchBalanceOptions(){PathAccountSid = pathAccountSid};
-            return await FetchAsync(options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Converts a JSON string into a BalanceResource object
-        /// </summary>
-        /// <param name="json"> Raw JSON string </param>
-        /// <returns> BalanceResource object represented by the provided JSON </returns>
-        public static BalanceResource FromJson(string json)
-        {
-            // Convert all checked exceptions to Runtime
-            try
-            {
-                return JsonConvert.DeserializeObject<BalanceResource>(json);
-            }
-            catch (JsonException e)
-            {
-                throw new ApiException(e.Message, e);
-            }
-        }
-
-        /// <summary>
-        /// Account Sid.
-        /// </summary>
-        [JsonProperty("account_sid")]
-        public string AccountSid { get; private set; }
-        /// <summary>
-        /// Account balance
-        /// </summary>
-        [JsonProperty("balance")]
-        public string Balance { get; private set; }
-        /// <summary>
-        /// Currency units
-        /// </summary>
-        [JsonProperty("currency")]
-        public string Currency { get; private set; }
-
-        private BalanceResource()
-        {
-
-        }
+      return new Request(
+          HttpMethod.Get,
+          Rest.Domain.Api,
+          "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Balance.json",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
     }
+
+    /// <summary>
+    /// Fetch the balance for an Account based on Account Sid. Balance changes may not be reflected immediately. Child
+    /// accounts do not contain balance information
+    /// </summary>
+    /// <param name="options"> Fetch Balance parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Balance </returns>
+    public static BalanceResource Fetch(FetchBalanceOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Fetch the balance for an Account based on Account Sid. Balance changes may not be reflected immediately. Child
+    /// accounts do not contain balance information
+    /// </summary>
+    /// <param name="options"> Fetch Balance parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Balance </returns>
+    public static async System.Threading.Tasks.Task<BalanceResource> FetchAsync(FetchBalanceOptions options,
+                                                                                ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// Fetch the balance for an Account based on Account Sid. Balance changes may not be reflected immediately. Child
+    /// accounts do not contain balance information
+    /// </summary>
+    /// <param name="pathAccountSid"> Account Sid. </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Balance </returns>
+    public static BalanceResource Fetch(string pathAccountSid = null, ITwilioRestClient client = null)
+    {
+      var options = new FetchBalanceOptions() { PathAccountSid = pathAccountSid };
+      return Fetch(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Fetch the balance for an Account based on Account Sid. Balance changes may not be reflected immediately. Child
+    /// accounts do not contain balance information
+    /// </summary>
+    /// <param name="pathAccountSid"> Account Sid. </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Balance </returns>
+    public static async System.Threading.Tasks.Task<BalanceResource> FetchAsync(string pathAccountSid = null,
+                                                                                ITwilioRestClient client = null)
+    {
+      var options = new FetchBalanceOptions() { PathAccountSid = pathAccountSid };
+      return await FetchAsync(options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Converts a JSON string into a BalanceResource object
+    /// </summary>
+    /// <param name="json"> Raw JSON string </param>
+    /// <returns> BalanceResource object represented by the provided JSON </returns>
+    public static BalanceResource FromJson(string json)
+    {
+      // Convert all checked exceptions to Runtime
+      try
+      {
+        return JsonConvert.DeserializeObject<BalanceResource>(json);
+      }
+      catch (JsonException e)
+      {
+        throw new ApiException(e.Message, e);
+      }
+    }
+
+    /// <summary>
+    /// Account Sid.
+    /// </summary>
+    [JsonProperty("account_sid")]
+    public string AccountSid { get; private set; }
+    /// <summary>
+    /// Account balance
+    /// </summary>
+    [JsonProperty("balance")]
+    public string Balance { get; private set; }
+    /// <summary>
+    /// Currency units
+    /// </summary>
+    [JsonProperty("currency")]
+    public string Currency { get; private set; }
+
+    private BalanceResource()
+    {
+
+    }
+  }
 
 }

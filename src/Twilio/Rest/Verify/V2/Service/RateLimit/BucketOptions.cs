@@ -11,242 +11,242 @@ using Twilio.Converters;
 namespace Twilio.Rest.Verify.V2.Service.RateLimit
 {
 
+  /// <summary>
+  /// Create a new Bucket for a Rate Limit
+  /// </summary>
+  public class CreateBucketOptions : IOptions<BucketResource>
+  {
     /// <summary>
-    /// Create a new Bucket for a Rate Limit
+    /// The SID of the Service that the resource is associated with
     /// </summary>
-    public class CreateBucketOptions : IOptions<BucketResource>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// Rate Limit Sid.
+    /// </summary>
+    public string PathRateLimitSid { get; }
+    /// <summary>
+    /// Max number of requests.
+    /// </summary>
+    public int? Max { get; }
+    /// <summary>
+    /// Number of seconds that the rate limit will be enforced over.
+    /// </summary>
+    public int? Interval { get; }
+
+    /// <summary>
+    /// Construct a new CreateBucketOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service that the resource is associated with </param>
+    /// <param name="pathRateLimitSid"> Rate Limit Sid. </param>
+    /// <param name="max"> Max number of requests. </param>
+    /// <param name="interval"> Number of seconds that the rate limit will be enforced over. </param>
+    public CreateBucketOptions(string pathServiceSid, string pathRateLimitSid, int? max, int? interval)
     {
-        /// <summary>
-        /// The SID of the Service that the resource is associated with
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// Rate Limit Sid.
-        /// </summary>
-        public string PathRateLimitSid { get; }
-        /// <summary>
-        /// Max number of requests.
-        /// </summary>
-        public int? Max { get; }
-        /// <summary>
-        /// Number of seconds that the rate limit will be enforced over.
-        /// </summary>
-        public int? Interval { get; }
-
-        /// <summary>
-        /// Construct a new CreateBucketOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service that the resource is associated with </param>
-        /// <param name="pathRateLimitSid"> Rate Limit Sid. </param>
-        /// <param name="max"> Max number of requests. </param>
-        /// <param name="interval"> Number of seconds that the rate limit will be enforced over. </param>
-        public CreateBucketOptions(string pathServiceSid, string pathRateLimitSid, int? max, int? interval)
-        {
-            PathServiceSid = pathServiceSid;
-            PathRateLimitSid = pathRateLimitSid;
-            Max = max;
-            Interval = interval;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Max != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Max", Max.ToString()));
-            }
-
-            if (Interval != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Interval", Interval.ToString()));
-            }
-
-            return p;
-        }
+      PathServiceSid = pathServiceSid;
+      PathRateLimitSid = pathRateLimitSid;
+      Max = max;
+      Interval = interval;
     }
 
     /// <summary>
-    /// Update a specific Bucket.
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateBucketOptions : IOptions<BucketResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Service that the resource is associated with
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// Rate Limit Sid.
-        /// </summary>
-        public string PathRateLimitSid { get; }
-        /// <summary>
-        /// A string that uniquely identifies this Bucket.
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// Max number of requests.
-        /// </summary>
-        public int? Max { get; set; }
-        /// <summary>
-        /// Number of seconds that the rate limit will be enforced over.
-        /// </summary>
-        public int? Interval { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (Max != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Max", Max.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new UpdateBucketOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service that the resource is associated with </param>
-        /// <param name="pathRateLimitSid"> Rate Limit Sid. </param>
-        /// <param name="pathSid"> A string that uniquely identifies this Bucket. </param>
-        public UpdateBucketOptions(string pathServiceSid, string pathRateLimitSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathRateLimitSid = pathRateLimitSid;
-            PathSid = pathSid;
-        }
+      if (Interval != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Interval", Interval.ToString()));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Max != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Max", Max.ToString()));
-            }
+      return p;
+    }
+  }
 
-            if (Interval != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Interval", Interval.ToString()));
-            }
+  /// <summary>
+  /// Update a specific Bucket.
+  /// </summary>
+  public class UpdateBucketOptions : IOptions<BucketResource>
+  {
+    /// <summary>
+    /// The SID of the Service that the resource is associated with
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// Rate Limit Sid.
+    /// </summary>
+    public string PathRateLimitSid { get; }
+    /// <summary>
+    /// A string that uniquely identifies this Bucket.
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// Max number of requests.
+    /// </summary>
+    public int? Max { get; set; }
+    /// <summary>
+    /// Number of seconds that the rate limit will be enforced over.
+    /// </summary>
+    public int? Interval { get; set; }
 
-            return p;
-        }
+    /// <summary>
+    /// Construct a new UpdateBucketOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service that the resource is associated with </param>
+    /// <param name="pathRateLimitSid"> Rate Limit Sid. </param>
+    /// <param name="pathSid"> A string that uniquely identifies this Bucket. </param>
+    public UpdateBucketOptions(string pathServiceSid, string pathRateLimitSid, string pathSid)
+    {
+      PathServiceSid = pathServiceSid;
+      PathRateLimitSid = pathRateLimitSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Fetch a specific Bucket.
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchBucketOptions : IOptions<BucketResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Service that the resource is associated with
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// Rate Limit Sid.
-        /// </summary>
-        public string PathRateLimitSid { get; }
-        /// <summary>
-        /// A string that uniquely identifies this Bucket.
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (Max != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Max", Max.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new FetchBucketOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service that the resource is associated with </param>
-        /// <param name="pathRateLimitSid"> Rate Limit Sid. </param>
-        /// <param name="pathSid"> A string that uniquely identifies this Bucket. </param>
-        public FetchBucketOptions(string pathServiceSid, string pathRateLimitSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathRateLimitSid = pathRateLimitSid;
-            PathSid = pathSid;
-        }
+      if (Interval != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Interval", Interval.ToString()));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// Fetch a specific Bucket.
+  /// </summary>
+  public class FetchBucketOptions : IOptions<BucketResource>
+  {
+    /// <summary>
+    /// The SID of the Service that the resource is associated with
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// Rate Limit Sid.
+    /// </summary>
+    public string PathRateLimitSid { get; }
+    /// <summary>
+    /// A string that uniquely identifies this Bucket.
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchBucketOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service that the resource is associated with </param>
+    /// <param name="pathRateLimitSid"> Rate Limit Sid. </param>
+    /// <param name="pathSid"> A string that uniquely identifies this Bucket. </param>
+    public FetchBucketOptions(string pathServiceSid, string pathRateLimitSid, string pathSid)
+    {
+      PathServiceSid = pathServiceSid;
+      PathRateLimitSid = pathRateLimitSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Retrieve a list of all Buckets for a Rate Limit.
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadBucketOptions : ReadOptions<BucketResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Service that the resource is associated with
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// Rate Limit Sid.
-        /// </summary>
-        public string PathRateLimitSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new ReadBucketOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service that the resource is associated with </param>
-        /// <param name="pathRateLimitSid"> Rate Limit Sid. </param>
-        public ReadBucketOptions(string pathServiceSid, string pathRateLimitSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathRateLimitSid = pathRateLimitSid;
-        }
+  /// <summary>
+  /// Retrieve a list of all Buckets for a Rate Limit.
+  /// </summary>
+  public class ReadBucketOptions : ReadOptions<BucketResource>
+  {
+    /// <summary>
+    /// The SID of the Service that the resource is associated with
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// Rate Limit Sid.
+    /// </summary>
+    public string PathRateLimitSid { get; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new ReadBucketOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service that the resource is associated with </param>
+    /// <param name="pathRateLimitSid"> Rate Limit Sid. </param>
+    public ReadBucketOptions(string pathServiceSid, string pathRateLimitSid)
+    {
+      PathServiceSid = pathServiceSid;
+      PathRateLimitSid = pathRateLimitSid;
     }
 
     /// <summary>
-    /// Delete a specific Bucket.
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteBucketOptions : IOptions<BucketResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Service that the resource is associated with
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// Rate Limit Sid.
-        /// </summary>
-        public string PathRateLimitSid { get; }
-        /// <summary>
-        /// A string that uniquely identifies this Bucket.
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new DeleteBucketOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service that the resource is associated with </param>
-        /// <param name="pathRateLimitSid"> Rate Limit Sid. </param>
-        /// <param name="pathSid"> A string that uniquely identifies this Bucket. </param>
-        public DeleteBucketOptions(string pathServiceSid, string pathRateLimitSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathRateLimitSid = pathRateLimitSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      return p;
     }
+  }
+
+  /// <summary>
+  /// Delete a specific Bucket.
+  /// </summary>
+  public class DeleteBucketOptions : IOptions<BucketResource>
+  {
+    /// <summary>
+    /// The SID of the Service that the resource is associated with
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// Rate Limit Sid.
+    /// </summary>
+    public string PathRateLimitSid { get; }
+    /// <summary>
+    /// A string that uniquely identifies this Bucket.
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new DeleteBucketOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service that the resource is associated with </param>
+    /// <param name="pathRateLimitSid"> Rate Limit Sid. </param>
+    /// <param name="pathSid"> A string that uniquely identifies this Bucket. </param>
+    public DeleteBucketOptions(string pathServiceSid, string pathRateLimitSid, string pathSid)
+    {
+      PathServiceSid = pathServiceSid;
+      PathRateLimitSid = pathRateLimitSid;
+      PathSid = pathSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
 }

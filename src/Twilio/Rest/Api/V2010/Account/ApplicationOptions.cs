@@ -11,427 +11,427 @@ using Twilio.Converters;
 namespace Twilio.Rest.Api.V2010.Account
 {
 
+  /// <summary>
+  /// Create a new application within your account
+  /// </summary>
+  public class CreateApplicationOptions : IOptions<ApplicationResource>
+  {
     /// <summary>
-    /// Create a new application within your account
+    /// The SID of the Account that will create the resource
     /// </summary>
-    public class CreateApplicationOptions : IOptions<ApplicationResource>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The API version to use to start a new TwiML session
+    /// </summary>
+    public string ApiVersion { get; set; }
+    /// <summary>
+    /// The URL to call when the phone number receives a call
+    /// </summary>
+    public Uri VoiceUrl { get; set; }
+    /// <summary>
+    /// The HTTP method to use with the voice_url
+    /// </summary>
+    public Twilio.Http.HttpMethod VoiceMethod { get; set; }
+    /// <summary>
+    /// The URL to call when a TwiML error occurs
+    /// </summary>
+    public Uri VoiceFallbackUrl { get; set; }
+    /// <summary>
+    /// The HTTP method to use with voice_fallback_url
+    /// </summary>
+    public Twilio.Http.HttpMethod VoiceFallbackMethod { get; set; }
+    /// <summary>
+    /// The URL to send status information to your application
+    /// </summary>
+    public Uri StatusCallback { get; set; }
+    /// <summary>
+    /// The HTTP method to use to call status_callback
+    /// </summary>
+    public Twilio.Http.HttpMethod StatusCallbackMethod { get; set; }
+    /// <summary>
+    /// Whether to lookup the caller's name
+    /// </summary>
+    public bool? VoiceCallerIdLookup { get; set; }
+    /// <summary>
+    /// The URL to call when the phone number receives an incoming SMS message
+    /// </summary>
+    public Uri SmsUrl { get; set; }
+    /// <summary>
+    /// The HTTP method to use with sms_url
+    /// </summary>
+    public Twilio.Http.HttpMethod SmsMethod { get; set; }
+    /// <summary>
+    /// The URL to call when an error occurs while retrieving or executing the TwiML
+    /// </summary>
+    public Uri SmsFallbackUrl { get; set; }
+    /// <summary>
+    /// The HTTP method to use with sms_fallback_url
+    /// </summary>
+    public Twilio.Http.HttpMethod SmsFallbackMethod { get; set; }
+    /// <summary>
+    /// The URL to send status information to your application
+    /// </summary>
+    public Uri SmsStatusCallback { get; set; }
+    /// <summary>
+    /// The URL to send message status information to your application
+    /// </summary>
+    public Uri MessageStatusCallback { get; set; }
+    /// <summary>
+    /// A string to describe the new resource
+    /// </summary>
+    public string FriendlyName { get; set; }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Account that will create the resource
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The API version to use to start a new TwiML session
-        /// </summary>
-        public string ApiVersion { get; set; }
-        /// <summary>
-        /// The URL to call when the phone number receives a call
-        /// </summary>
-        public Uri VoiceUrl { get; set; }
-        /// <summary>
-        /// The HTTP method to use with the voice_url
-        /// </summary>
-        public Twilio.Http.HttpMethod VoiceMethod { get; set; }
-        /// <summary>
-        /// The URL to call when a TwiML error occurs
-        /// </summary>
-        public Uri VoiceFallbackUrl { get; set; }
-        /// <summary>
-        /// The HTTP method to use with voice_fallback_url
-        /// </summary>
-        public Twilio.Http.HttpMethod VoiceFallbackMethod { get; set; }
-        /// <summary>
-        /// The URL to send status information to your application
-        /// </summary>
-        public Uri StatusCallback { get; set; }
-        /// <summary>
-        /// The HTTP method to use to call status_callback
-        /// </summary>
-        public Twilio.Http.HttpMethod StatusCallbackMethod { get; set; }
-        /// <summary>
-        /// Whether to lookup the caller's name
-        /// </summary>
-        public bool? VoiceCallerIdLookup { get; set; }
-        /// <summary>
-        /// The URL to call when the phone number receives an incoming SMS message
-        /// </summary>
-        public Uri SmsUrl { get; set; }
-        /// <summary>
-        /// The HTTP method to use with sms_url
-        /// </summary>
-        public Twilio.Http.HttpMethod SmsMethod { get; set; }
-        /// <summary>
-        /// The URL to call when an error occurs while retrieving or executing the TwiML
-        /// </summary>
-        public Uri SmsFallbackUrl { get; set; }
-        /// <summary>
-        /// The HTTP method to use with sms_fallback_url
-        /// </summary>
-        public Twilio.Http.HttpMethod SmsFallbackMethod { get; set; }
-        /// <summary>
-        /// The URL to send status information to your application
-        /// </summary>
-        public Uri SmsStatusCallback { get; set; }
-        /// <summary>
-        /// The URL to send message status information to your application
-        /// </summary>
-        public Uri MessageStatusCallback { get; set; }
-        /// <summary>
-        /// A string to describe the new resource
-        /// </summary>
-        public string FriendlyName { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (ApiVersion != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ApiVersion", ApiVersion));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (ApiVersion != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ApiVersion", ApiVersion));
-            }
+      if (VoiceUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("VoiceUrl", Serializers.Url(VoiceUrl)));
+      }
 
-            if (VoiceUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("VoiceUrl", Serializers.Url(VoiceUrl)));
-            }
+      if (VoiceMethod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("VoiceMethod", VoiceMethod.ToString()));
+      }
 
-            if (VoiceMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("VoiceMethod", VoiceMethod.ToString()));
-            }
+      if (VoiceFallbackUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("VoiceFallbackUrl", Serializers.Url(VoiceFallbackUrl)));
+      }
 
-            if (VoiceFallbackUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("VoiceFallbackUrl", Serializers.Url(VoiceFallbackUrl)));
-            }
+      if (VoiceFallbackMethod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("VoiceFallbackMethod", VoiceFallbackMethod.ToString()));
+      }
 
-            if (VoiceFallbackMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("VoiceFallbackMethod", VoiceFallbackMethod.ToString()));
-            }
+      if (StatusCallback != null)
+      {
+        p.Add(new KeyValuePair<string, string>("StatusCallback", Serializers.Url(StatusCallback)));
+      }
 
-            if (StatusCallback != null)
-            {
-                p.Add(new KeyValuePair<string, string>("StatusCallback", Serializers.Url(StatusCallback)));
-            }
+      if (StatusCallbackMethod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("StatusCallbackMethod", StatusCallbackMethod.ToString()));
+      }
 
-            if (StatusCallbackMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("StatusCallbackMethod", StatusCallbackMethod.ToString()));
-            }
+      if (VoiceCallerIdLookup != null)
+      {
+        p.Add(new KeyValuePair<string, string>("VoiceCallerIdLookup", VoiceCallerIdLookup.Value.ToString().ToLower()));
+      }
 
-            if (VoiceCallerIdLookup != null)
-            {
-                p.Add(new KeyValuePair<string, string>("VoiceCallerIdLookup", VoiceCallerIdLookup.Value.ToString().ToLower()));
-            }
+      if (SmsUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("SmsUrl", Serializers.Url(SmsUrl)));
+      }
 
-            if (SmsUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("SmsUrl", Serializers.Url(SmsUrl)));
-            }
+      if (SmsMethod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("SmsMethod", SmsMethod.ToString()));
+      }
 
-            if (SmsMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("SmsMethod", SmsMethod.ToString()));
-            }
+      if (SmsFallbackUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("SmsFallbackUrl", Serializers.Url(SmsFallbackUrl)));
+      }
 
-            if (SmsFallbackUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("SmsFallbackUrl", Serializers.Url(SmsFallbackUrl)));
-            }
+      if (SmsFallbackMethod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("SmsFallbackMethod", SmsFallbackMethod.ToString()));
+      }
 
-            if (SmsFallbackMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("SmsFallbackMethod", SmsFallbackMethod.ToString()));
-            }
+      if (SmsStatusCallback != null)
+      {
+        p.Add(new KeyValuePair<string, string>("SmsStatusCallback", Serializers.Url(SmsStatusCallback)));
+      }
 
-            if (SmsStatusCallback != null)
-            {
-                p.Add(new KeyValuePair<string, string>("SmsStatusCallback", Serializers.Url(SmsStatusCallback)));
-            }
+      if (MessageStatusCallback != null)
+      {
+        p.Add(new KeyValuePair<string, string>("MessageStatusCallback", Serializers.Url(MessageStatusCallback)));
+      }
 
-            if (MessageStatusCallback != null)
-            {
-                p.Add(new KeyValuePair<string, string>("MessageStatusCallback", Serializers.Url(MessageStatusCallback)));
-            }
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
 
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
+      return p;
+    }
+  }
 
-            return p;
-        }
+  /// <summary>
+  /// Delete the application by the specified application sid
+  /// </summary>
+  public class DeleteApplicationOptions : IOptions<ApplicationResource>
+  {
+    /// <summary>
+    /// The SID of the Account that created the resources to delete
+    /// </summary>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new DeleteApplicationOptions
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public DeleteApplicationOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Delete the application by the specified application sid
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteApplicationOptions : IOptions<ApplicationResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Account that created the resources to delete
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new DeleteApplicationOptions
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public DeleteApplicationOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
+  /// <summary>
+  /// Fetch the application specified by the provided sid
+  /// </summary>
+  public class FetchApplicationOptions : IOptions<ApplicationResource>
+  {
+    /// <summary>
+    /// The SID of the Account that created the resource to fetch
+    /// </summary>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+    /// <summary>
+    /// Construct a new FetchApplicationOptions
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public FetchApplicationOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Fetch the application specified by the provided sid
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchApplicationOptions : IOptions<ApplicationResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Account that created the resource to fetch
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new FetchApplicationOptions
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public FetchApplicationOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
+  /// <summary>
+  /// Retrieve a list of applications representing an application within the requesting account
+  /// </summary>
+  public class ReadApplicationOptions : ReadOptions<ApplicationResource>
+  {
+    /// <summary>
+    /// The SID of the Account that created the resources to read
+    /// </summary>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The string that identifies the Application resources to read
+    /// </summary>
+    public string FriendlyName { get; set; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
+
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// Updates the application's properties
+  /// </summary>
+  public class UpdateApplicationOptions : IOptions<ApplicationResource>
+  {
+    /// <summary>
+    /// The SID of the Account that will create the resource
+    /// </summary>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// A string to describe the resource
+    /// </summary>
+    public string FriendlyName { get; set; }
+    /// <summary>
+    /// The API version to use to start a new TwiML session
+    /// </summary>
+    public string ApiVersion { get; set; }
+    /// <summary>
+    /// The URL to call when the phone number receives a call
+    /// </summary>
+    public Uri VoiceUrl { get; set; }
+    /// <summary>
+    /// The HTTP method to use with the voice_url
+    /// </summary>
+    public Twilio.Http.HttpMethod VoiceMethod { get; set; }
+    /// <summary>
+    /// The URL to call when a TwiML error occurs
+    /// </summary>
+    public Uri VoiceFallbackUrl { get; set; }
+    /// <summary>
+    /// The HTTP method to use with voice_fallback_url
+    /// </summary>
+    public Twilio.Http.HttpMethod VoiceFallbackMethod { get; set; }
+    /// <summary>
+    /// The URL to send status information to your application
+    /// </summary>
+    public Uri StatusCallback { get; set; }
+    /// <summary>
+    /// The HTTP method to use to call status_callback
+    /// </summary>
+    public Twilio.Http.HttpMethod StatusCallbackMethod { get; set; }
+    /// <summary>
+    /// Whether to lookup the caller's name
+    /// </summary>
+    public bool? VoiceCallerIdLookup { get; set; }
+    /// <summary>
+    /// The URL to call when the phone number receives an incoming SMS message
+    /// </summary>
+    public Uri SmsUrl { get; set; }
+    /// <summary>
+    /// The HTTP method to use with sms_url
+    /// </summary>
+    public Twilio.Http.HttpMethod SmsMethod { get; set; }
+    /// <summary>
+    /// The URL to call when an error occurs while retrieving or executing the TwiML
+    /// </summary>
+    public Uri SmsFallbackUrl { get; set; }
+    /// <summary>
+    /// The HTTP method to use with sms_fallback_url
+    /// </summary>
+    public Twilio.Http.HttpMethod SmsFallbackMethod { get; set; }
+    /// <summary>
+    /// Same as message_status_callback. Deprecated, included for backwards compatibility.
+    /// </summary>
+    public Uri SmsStatusCallback { get; set; }
+    /// <summary>
+    /// The URL to send message status information to your application
+    /// </summary>
+    public Uri MessageStatusCallback { get; set; }
+
+    /// <summary>
+    /// Construct a new UpdateApplicationOptions
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public UpdateApplicationOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Retrieve a list of applications representing an application within the requesting account
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadApplicationOptions : ReadOptions<ApplicationResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Account that created the resources to read
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The string that identifies the Application resources to read
-        /// </summary>
-        public string FriendlyName { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
+      if (ApiVersion != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ApiVersion", ApiVersion));
+      }
 
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
+      if (VoiceUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("VoiceUrl", Serializers.Url(VoiceUrl)));
+      }
 
-            return p;
-        }
+      if (VoiceMethod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("VoiceMethod", VoiceMethod.ToString()));
+      }
+
+      if (VoiceFallbackUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("VoiceFallbackUrl", Serializers.Url(VoiceFallbackUrl)));
+      }
+
+      if (VoiceFallbackMethod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("VoiceFallbackMethod", VoiceFallbackMethod.ToString()));
+      }
+
+      if (StatusCallback != null)
+      {
+        p.Add(new KeyValuePair<string, string>("StatusCallback", Serializers.Url(StatusCallback)));
+      }
+
+      if (StatusCallbackMethod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("StatusCallbackMethod", StatusCallbackMethod.ToString()));
+      }
+
+      if (VoiceCallerIdLookup != null)
+      {
+        p.Add(new KeyValuePair<string, string>("VoiceCallerIdLookup", VoiceCallerIdLookup.Value.ToString().ToLower()));
+      }
+
+      if (SmsUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("SmsUrl", Serializers.Url(SmsUrl)));
+      }
+
+      if (SmsMethod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("SmsMethod", SmsMethod.ToString()));
+      }
+
+      if (SmsFallbackUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("SmsFallbackUrl", Serializers.Url(SmsFallbackUrl)));
+      }
+
+      if (SmsFallbackMethod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("SmsFallbackMethod", SmsFallbackMethod.ToString()));
+      }
+
+      if (SmsStatusCallback != null)
+      {
+        p.Add(new KeyValuePair<string, string>("SmsStatusCallback", Serializers.Url(SmsStatusCallback)));
+      }
+
+      if (MessageStatusCallback != null)
+      {
+        p.Add(new KeyValuePair<string, string>("MessageStatusCallback", Serializers.Url(MessageStatusCallback)));
+      }
+
+      return p;
     }
-
-    /// <summary>
-    /// Updates the application's properties
-    /// </summary>
-    public class UpdateApplicationOptions : IOptions<ApplicationResource>
-    {
-        /// <summary>
-        /// The SID of the Account that will create the resource
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// A string to describe the resource
-        /// </summary>
-        public string FriendlyName { get; set; }
-        /// <summary>
-        /// The API version to use to start a new TwiML session
-        /// </summary>
-        public string ApiVersion { get; set; }
-        /// <summary>
-        /// The URL to call when the phone number receives a call
-        /// </summary>
-        public Uri VoiceUrl { get; set; }
-        /// <summary>
-        /// The HTTP method to use with the voice_url
-        /// </summary>
-        public Twilio.Http.HttpMethod VoiceMethod { get; set; }
-        /// <summary>
-        /// The URL to call when a TwiML error occurs
-        /// </summary>
-        public Uri VoiceFallbackUrl { get; set; }
-        /// <summary>
-        /// The HTTP method to use with voice_fallback_url
-        /// </summary>
-        public Twilio.Http.HttpMethod VoiceFallbackMethod { get; set; }
-        /// <summary>
-        /// The URL to send status information to your application
-        /// </summary>
-        public Uri StatusCallback { get; set; }
-        /// <summary>
-        /// The HTTP method to use to call status_callback
-        /// </summary>
-        public Twilio.Http.HttpMethod StatusCallbackMethod { get; set; }
-        /// <summary>
-        /// Whether to lookup the caller's name
-        /// </summary>
-        public bool? VoiceCallerIdLookup { get; set; }
-        /// <summary>
-        /// The URL to call when the phone number receives an incoming SMS message
-        /// </summary>
-        public Uri SmsUrl { get; set; }
-        /// <summary>
-        /// The HTTP method to use with sms_url
-        /// </summary>
-        public Twilio.Http.HttpMethod SmsMethod { get; set; }
-        /// <summary>
-        /// The URL to call when an error occurs while retrieving or executing the TwiML
-        /// </summary>
-        public Uri SmsFallbackUrl { get; set; }
-        /// <summary>
-        /// The HTTP method to use with sms_fallback_url
-        /// </summary>
-        public Twilio.Http.HttpMethod SmsFallbackMethod { get; set; }
-        /// <summary>
-        /// Same as message_status_callback. Deprecated, included for backwards compatibility.
-        /// </summary>
-        public Uri SmsStatusCallback { get; set; }
-        /// <summary>
-        /// The URL to send message status information to your application
-        /// </summary>
-        public Uri MessageStatusCallback { get; set; }
-
-        /// <summary>
-        /// Construct a new UpdateApplicationOptions
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public UpdateApplicationOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
-
-            if (ApiVersion != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ApiVersion", ApiVersion));
-            }
-
-            if (VoiceUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("VoiceUrl", Serializers.Url(VoiceUrl)));
-            }
-
-            if (VoiceMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("VoiceMethod", VoiceMethod.ToString()));
-            }
-
-            if (VoiceFallbackUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("VoiceFallbackUrl", Serializers.Url(VoiceFallbackUrl)));
-            }
-
-            if (VoiceFallbackMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("VoiceFallbackMethod", VoiceFallbackMethod.ToString()));
-            }
-
-            if (StatusCallback != null)
-            {
-                p.Add(new KeyValuePair<string, string>("StatusCallback", Serializers.Url(StatusCallback)));
-            }
-
-            if (StatusCallbackMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("StatusCallbackMethod", StatusCallbackMethod.ToString()));
-            }
-
-            if (VoiceCallerIdLookup != null)
-            {
-                p.Add(new KeyValuePair<string, string>("VoiceCallerIdLookup", VoiceCallerIdLookup.Value.ToString().ToLower()));
-            }
-
-            if (SmsUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("SmsUrl", Serializers.Url(SmsUrl)));
-            }
-
-            if (SmsMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("SmsMethod", SmsMethod.ToString()));
-            }
-
-            if (SmsFallbackUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("SmsFallbackUrl", Serializers.Url(SmsFallbackUrl)));
-            }
-
-            if (SmsFallbackMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("SmsFallbackMethod", SmsFallbackMethod.ToString()));
-            }
-
-            if (SmsStatusCallback != null)
-            {
-                p.Add(new KeyValuePair<string, string>("SmsStatusCallback", Serializers.Url(SmsStatusCallback)));
-            }
-
-            if (MessageStatusCallback != null)
-            {
-                p.Add(new KeyValuePair<string, string>("MessageStatusCallback", Serializers.Url(MessageStatusCallback)));
-            }
-
-            return p;
-        }
-    }
+  }
 
 }

@@ -11,98 +11,98 @@ using Twilio.Converters;
 namespace Twilio.Rest.Conversations.V1.Service
 {
 
+  /// <summary>
+  /// Fetch the configuration of a conversation service
+  /// </summary>
+  public class FetchConfigurationOptions : IOptions<ConfigurationResource>
+  {
     /// <summary>
-    /// Fetch the configuration of a conversation service
+    /// The SID of the Service configuration resource to fetch
     /// </summary>
-    public class FetchConfigurationOptions : IOptions<ConfigurationResource>
+    public string PathChatServiceSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchConfigurationOptions
+    /// </summary>
+    /// <param name="pathChatServiceSid"> The SID of the Service configuration resource to fetch </param>
+    public FetchConfigurationOptions(string pathChatServiceSid)
     {
-        /// <summary>
-        /// The SID of the Service configuration resource to fetch
-        /// </summary>
-        public string PathChatServiceSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchConfigurationOptions
-        /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Service configuration resource to fetch </param>
-        public FetchConfigurationOptions(string pathChatServiceSid)
-        {
-            PathChatServiceSid = pathChatServiceSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathChatServiceSid = pathChatServiceSid;
     }
 
     /// <summary>
-    /// Update configuration settings of a conversation service
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateConfigurationOptions : IOptions<ConfigurationResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Service configuration resource to update
-        /// </summary>
-        public string PathChatServiceSid { get; }
-        /// <summary>
-        /// The role assigned to a conversation creator when they join a new conversation
-        /// </summary>
-        public string DefaultConversationCreatorRoleSid { get; set; }
-        /// <summary>
-        /// The role assigned to users when they are added to a conversation
-        /// </summary>
-        public string DefaultConversationRoleSid { get; set; }
-        /// <summary>
-        /// The service role assigned to users when they are added to the service
-        /// </summary>
-        public string DefaultChatServiceRoleSid { get; set; }
-        /// <summary>
-        /// Whether the Reachability Indicator feature is enabled for this Conversations Service
-        /// </summary>
-        public bool? ReachabilityEnabled { get; set; }
-
-        /// <summary>
-        /// Construct a new UpdateConfigurationOptions
-        /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Service configuration resource to update </param>
-        public UpdateConfigurationOptions(string pathChatServiceSid)
-        {
-            PathChatServiceSid = pathChatServiceSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (DefaultConversationCreatorRoleSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DefaultConversationCreatorRoleSid", DefaultConversationCreatorRoleSid.ToString()));
-            }
-
-            if (DefaultConversationRoleSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DefaultConversationRoleSid", DefaultConversationRoleSid.ToString()));
-            }
-
-            if (DefaultChatServiceRoleSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DefaultChatServiceRoleSid", DefaultChatServiceRoleSid.ToString()));
-            }
-
-            if (ReachabilityEnabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ReachabilityEnabled", ReachabilityEnabled.Value.ToString().ToLower()));
-            }
-
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
+
+  /// <summary>
+  /// Update configuration settings of a conversation service
+  /// </summary>
+  public class UpdateConfigurationOptions : IOptions<ConfigurationResource>
+  {
+    /// <summary>
+    /// The SID of the Service configuration resource to update
+    /// </summary>
+    public string PathChatServiceSid { get; }
+    /// <summary>
+    /// The role assigned to a conversation creator when they join a new conversation
+    /// </summary>
+    public string DefaultConversationCreatorRoleSid { get; set; }
+    /// <summary>
+    /// The role assigned to users when they are added to a conversation
+    /// </summary>
+    public string DefaultConversationRoleSid { get; set; }
+    /// <summary>
+    /// The service role assigned to users when they are added to the service
+    /// </summary>
+    public string DefaultChatServiceRoleSid { get; set; }
+    /// <summary>
+    /// Whether the Reachability Indicator feature is enabled for this Conversations Service
+    /// </summary>
+    public bool? ReachabilityEnabled { get; set; }
+
+    /// <summary>
+    /// Construct a new UpdateConfigurationOptions
+    /// </summary>
+    /// <param name="pathChatServiceSid"> The SID of the Service configuration resource to update </param>
+    public UpdateConfigurationOptions(string pathChatServiceSid)
+    {
+      PathChatServiceSid = pathChatServiceSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (DefaultConversationCreatorRoleSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("DefaultConversationCreatorRoleSid", DefaultConversationCreatorRoleSid.ToString()));
+      }
+
+      if (DefaultConversationRoleSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("DefaultConversationRoleSid", DefaultConversationRoleSid.ToString()));
+      }
+
+      if (DefaultChatServiceRoleSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("DefaultChatServiceRoleSid", DefaultChatServiceRoleSid.ToString()));
+      }
+
+      if (ReachabilityEnabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ReachabilityEnabled", ReachabilityEnabled.Value.ToString().ToLower()));
+      }
+
+      return p;
+    }
+  }
 
 }

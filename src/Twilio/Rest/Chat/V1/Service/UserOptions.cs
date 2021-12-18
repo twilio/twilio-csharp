@@ -11,237 +11,237 @@ using Twilio.Converters;
 namespace Twilio.Rest.Chat.V1.Service
 {
 
+  /// <summary>
+  /// FetchUserOptions
+  /// </summary>
+  public class FetchUserOptions : IOptions<UserResource>
+  {
     /// <summary>
-    /// FetchUserOptions
+    /// The SID of the Service to fetch the resource from
     /// </summary>
-    public class FetchUserOptions : IOptions<UserResource>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchUserOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public FetchUserOptions(string pathServiceSid, string pathSid)
     {
-        /// <summary>
-        /// The SID of the Service to fetch the resource from
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchUserOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public FetchUserOptions(string pathServiceSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathServiceSid = pathServiceSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// DeleteUserOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteUserOptions : IOptions<UserResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Service to delete the resource from
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new DeleteUserOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public DeleteUserOptions(string pathServiceSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathSid = pathSid;
-        }
+  /// <summary>
+  /// DeleteUserOptions
+  /// </summary>
+  public class DeleteUserOptions : IOptions<UserResource>
+  {
+    /// <summary>
+    /// The SID of the Service to delete the resource from
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+    /// <summary>
+    /// Construct a new DeleteUserOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public DeleteUserOptions(string pathServiceSid, string pathSid)
+    {
+      PathServiceSid = pathServiceSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// CreateUserOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class CreateUserOptions : IOptions<UserResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Service to create the new resource under
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The `identity` value that identifies the new resource's User
-        /// </summary>
-        public string Identity { get; }
-        /// <summary>
-        /// The SID of the Role assigned to this user
-        /// </summary>
-        public string RoleSid { get; set; }
-        /// <summary>
-        /// A valid JSON string that contains application-specific data
-        /// </summary>
-        public string Attributes { get; set; }
-        /// <summary>
-        /// A string to describe the new resource
-        /// </summary>
-        public string FriendlyName { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new CreateUserOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to create the new resource under </param>
-        /// <param name="identity"> The `identity` value that identifies the new resource's User </param>
-        public CreateUserOptions(string pathServiceSid, string identity)
-        {
-            PathServiceSid = pathServiceSid;
-            Identity = identity;
-        }
+  /// <summary>
+  /// CreateUserOptions
+  /// </summary>
+  public class CreateUserOptions : IOptions<UserResource>
+  {
+    /// <summary>
+    /// The SID of the Service to create the new resource under
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The `identity` value that identifies the new resource's User
+    /// </summary>
+    public string Identity { get; }
+    /// <summary>
+    /// The SID of the Role assigned to this user
+    /// </summary>
+    public string RoleSid { get; set; }
+    /// <summary>
+    /// A valid JSON string that contains application-specific data
+    /// </summary>
+    public string Attributes { get; set; }
+    /// <summary>
+    /// A string to describe the new resource
+    /// </summary>
+    public string FriendlyName { get; set; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Identity != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Identity", Identity));
-            }
-
-            if (RoleSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("RoleSid", RoleSid.ToString()));
-            }
-
-            if (Attributes != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Attributes", Attributes));
-            }
-
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new CreateUserOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to create the new resource under </param>
+    /// <param name="identity"> The `identity` value that identifies the new resource's User </param>
+    public CreateUserOptions(string pathServiceSid, string identity)
+    {
+      PathServiceSid = pathServiceSid;
+      Identity = identity;
     }
 
     /// <summary>
-    /// ReadUserOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadUserOptions : ReadOptions<UserResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Service to read the resources from
-        /// </summary>
-        public string PathServiceSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (Identity != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Identity", Identity));
+      }
 
-        /// <summary>
-        /// Construct a new ReadUserOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to read the resources from </param>
-        public ReadUserOptions(string pathServiceSid)
-        {
-            PathServiceSid = pathServiceSid;
-        }
+      if (RoleSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("RoleSid", RoleSid.ToString()));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
+      if (Attributes != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Attributes", Attributes));
+      }
 
-            return p;
-        }
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
+
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// ReadUserOptions
+  /// </summary>
+  public class ReadUserOptions : ReadOptions<UserResource>
+  {
+    /// <summary>
+    /// The SID of the Service to read the resources from
+    /// </summary>
+    public string PathServiceSid { get; }
+
+    /// <summary>
+    /// Construct a new ReadUserOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to read the resources from </param>
+    public ReadUserOptions(string pathServiceSid)
+    {
+      PathServiceSid = pathServiceSid;
     }
 
     /// <summary>
-    /// UpdateUserOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateUserOptions : IOptions<UserResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Service to update the resource from
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// The SID id of the Role assigned to this user
-        /// </summary>
-        public string RoleSid { get; set; }
-        /// <summary>
-        /// A valid JSON string that contains application-specific data
-        /// </summary>
-        public string Attributes { get; set; }
-        /// <summary>
-        /// A string to describe the resource
-        /// </summary>
-        public string FriendlyName { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new UpdateUserOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to update the resource from </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public UpdateUserOptions(string pathServiceSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (RoleSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("RoleSid", RoleSid.ToString()));
-            }
-
-            if (Attributes != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Attributes", Attributes));
-            }
-
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
-
-            return p;
-        }
+      return p;
     }
+  }
+
+  /// <summary>
+  /// UpdateUserOptions
+  /// </summary>
+  public class UpdateUserOptions : IOptions<UserResource>
+  {
+    /// <summary>
+    /// The SID of the Service to update the resource from
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// The SID id of the Role assigned to this user
+    /// </summary>
+    public string RoleSid { get; set; }
+    /// <summary>
+    /// A valid JSON string that contains application-specific data
+    /// </summary>
+    public string Attributes { get; set; }
+    /// <summary>
+    /// A string to describe the resource
+    /// </summary>
+    public string FriendlyName { get; set; }
+
+    /// <summary>
+    /// Construct a new UpdateUserOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to update the resource from </param>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public UpdateUserOptions(string pathServiceSid, string pathSid)
+    {
+      PathServiceSid = pathServiceSid;
+      PathSid = pathSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (RoleSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("RoleSid", RoleSid.ToString()));
+      }
+
+      if (Attributes != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Attributes", Attributes));
+      }
+
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
+
+      return p;
+    }
+  }
 
 }

@@ -11,35 +11,35 @@ using Twilio.Converters;
 namespace Twilio.Rest.Events.V1.Sink
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Create a new Sink Test Event for the given Sink.
+  /// </summary>
+  public class CreateSinkTestOptions : IOptions<SinkTestResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Create a new Sink Test Event for the given Sink.
+    /// A string that uniquely identifies the Sink to be Tested.
     /// </summary>
-    public class CreateSinkTestOptions : IOptions<SinkTestResource>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new CreateSinkTestOptions
+    /// </summary>
+    /// <param name="pathSid"> A string that uniquely identifies the Sink to be Tested. </param>
+    public CreateSinkTestOptions(string pathSid)
     {
-        /// <summary>
-        /// A string that uniquely identifies the Sink to be Tested.
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new CreateSinkTestOptions
-        /// </summary>
-        /// <param name="pathSid"> A string that uniquely identifies the Sink to be Tested. </param>
-        public CreateSinkTestOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathSid = pathSid;
     }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
 }

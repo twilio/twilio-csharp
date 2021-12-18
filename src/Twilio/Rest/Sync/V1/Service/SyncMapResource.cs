@@ -18,519 +18,519 @@ using Twilio.Http;
 namespace Twilio.Rest.Sync.V1.Service
 {
 
-    public class SyncMapResource : Resource
+  public class SyncMapResource : Resource
+  {
+    private static Request BuildFetchRequest(FetchSyncMapOptions options, ITwilioRestClient client)
     {
-        private static Request BuildFetchRequest(FetchSyncMapOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Get,
-                Rest.Domain.Sync,
-                "/v1/Services/" + options.PathServiceSid + "/Maps/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="options"> Fetch SyncMap parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of SyncMap </returns>
-        public static SyncMapResource Fetch(FetchSyncMapOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="options"> Fetch SyncMap parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of SyncMap </returns>
-        public static async System.Threading.Tasks.Task<SyncMapResource> FetchAsync(FetchSyncMapOptions options,
-                                                                                    ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Map resource to fetch </param>
-        /// <param name="pathSid"> The SID of the Sync Map resource to fetch </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of SyncMap </returns>
-        public static SyncMapResource Fetch(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
-        {
-            var options = new FetchSyncMapOptions(pathServiceSid, pathSid);
-            return Fetch(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Map resource to fetch </param>
-        /// <param name="pathSid"> The SID of the Sync Map resource to fetch </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of SyncMap </returns>
-        public static async System.Threading.Tasks.Task<SyncMapResource> FetchAsync(string pathServiceSid,
-                                                                                    string pathSid,
-                                                                                    ITwilioRestClient client = null)
-        {
-            var options = new FetchSyncMapOptions(pathServiceSid, pathSid);
-            return await FetchAsync(options, client);
-        }
-        #endif
-
-        private static Request BuildDeleteRequest(DeleteSyncMapOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Delete,
-                Rest.Domain.Sync,
-                "/v1/Services/" + options.PathServiceSid + "/Maps/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// delete
-        /// </summary>
-        /// <param name="options"> Delete SyncMap parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of SyncMap </returns>
-        public static bool Delete(DeleteSyncMapOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
-        }
-
-        #if !NET35
-        /// <summary>
-        /// delete
-        /// </summary>
-        /// <param name="options"> Delete SyncMap parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of SyncMap </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteSyncMapOptions options,
-                                                                          ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
-        }
-        #endif
-
-        /// <summary>
-        /// delete
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Map resource to delete </param>
-        /// <param name="pathSid"> The SID of the Sync Map resource to delete </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of SyncMap </returns>
-        public static bool Delete(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
-        {
-            var options = new DeleteSyncMapOptions(pathServiceSid, pathSid);
-            return Delete(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// delete
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Map resource to delete </param>
-        /// <param name="pathSid"> The SID of the Sync Map resource to delete </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of SyncMap </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid,
-                                                                          string pathSid,
-                                                                          ITwilioRestClient client = null)
-        {
-            var options = new DeleteSyncMapOptions(pathServiceSid, pathSid);
-            return await DeleteAsync(options, client);
-        }
-        #endif
-
-        private static Request BuildCreateRequest(CreateSyncMapOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Post,
-                Rest.Domain.Sync,
-                "/v1/Services/" + options.PathServiceSid + "/Maps",
-                postParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// create
-        /// </summary>
-        /// <param name="options"> Create SyncMap parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of SyncMap </returns>
-        public static SyncMapResource Create(CreateSyncMapOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildCreateRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// create
-        /// </summary>
-        /// <param name="options"> Create SyncMap parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of SyncMap </returns>
-        public static async System.Threading.Tasks.Task<SyncMapResource> CreateAsync(CreateSyncMapOptions options,
-                                                                                     ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// create
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Sync Service to create the Sync Map in </param>
-        /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
-        /// <param name="ttl"> An alias for collection_ttl </param>
-        /// <param name="collectionTtl"> How long, in seconds, before the Sync Map expires and is deleted </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of SyncMap </returns>
-        public static SyncMapResource Create(string pathServiceSid,
-                                             string uniqueName = null,
-                                             int? ttl = null,
-                                             int? collectionTtl = null,
-                                             ITwilioRestClient client = null)
-        {
-            var options = new CreateSyncMapOptions(pathServiceSid){UniqueName = uniqueName, Ttl = ttl, CollectionTtl = collectionTtl};
-            return Create(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// create
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Sync Service to create the Sync Map in </param>
-        /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
-        /// <param name="ttl"> An alias for collection_ttl </param>
-        /// <param name="collectionTtl"> How long, in seconds, before the Sync Map expires and is deleted </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of SyncMap </returns>
-        public static async System.Threading.Tasks.Task<SyncMapResource> CreateAsync(string pathServiceSid,
-                                                                                     string uniqueName = null,
-                                                                                     int? ttl = null,
-                                                                                     int? collectionTtl = null,
-                                                                                     ITwilioRestClient client = null)
-        {
-            var options = new CreateSyncMapOptions(pathServiceSid){UniqueName = uniqueName, Ttl = ttl, CollectionTtl = collectionTtl};
-            return await CreateAsync(options, client);
-        }
-        #endif
-
-        private static Request BuildUpdateRequest(UpdateSyncMapOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Post,
-                Rest.Domain.Sync,
-                "/v1/Services/" + options.PathServiceSid + "/Maps/" + options.PathSid + "",
-                postParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// update
-        /// </summary>
-        /// <param name="options"> Update SyncMap parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of SyncMap </returns>
-        public static SyncMapResource Update(UpdateSyncMapOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildUpdateRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// update
-        /// </summary>
-        /// <param name="options"> Update SyncMap parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of SyncMap </returns>
-        public static async System.Threading.Tasks.Task<SyncMapResource> UpdateAsync(UpdateSyncMapOptions options,
-                                                                                     ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// update
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Map resource to update </param>
-        /// <param name="pathSid"> The SID of the Sync Map resource to update </param>
-        /// <param name="ttl"> An alias for collection_ttl </param>
-        /// <param name="collectionTtl"> How long, in seconds, before the Sync Map expires and is deleted </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of SyncMap </returns>
-        public static SyncMapResource Update(string pathServiceSid,
-                                             string pathSid,
-                                             int? ttl = null,
-                                             int? collectionTtl = null,
-                                             ITwilioRestClient client = null)
-        {
-            var options = new UpdateSyncMapOptions(pathServiceSid, pathSid){Ttl = ttl, CollectionTtl = collectionTtl};
-            return Update(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// update
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Map resource to update </param>
-        /// <param name="pathSid"> The SID of the Sync Map resource to update </param>
-        /// <param name="ttl"> An alias for collection_ttl </param>
-        /// <param name="collectionTtl"> How long, in seconds, before the Sync Map expires and is deleted </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of SyncMap </returns>
-        public static async System.Threading.Tasks.Task<SyncMapResource> UpdateAsync(string pathServiceSid,
-                                                                                     string pathSid,
-                                                                                     int? ttl = null,
-                                                                                     int? collectionTtl = null,
-                                                                                     ITwilioRestClient client = null)
-        {
-            var options = new UpdateSyncMapOptions(pathServiceSid, pathSid){Ttl = ttl, CollectionTtl = collectionTtl};
-            return await UpdateAsync(options, client);
-        }
-        #endif
-
-        private static Request BuildReadRequest(ReadSyncMapOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Get,
-                Rest.Domain.Sync,
-                "/v1/Services/" + options.PathServiceSid + "/Maps",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// read
-        /// </summary>
-        /// <param name="options"> Read SyncMap parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of SyncMap </returns>
-        public static ResourceSet<SyncMapResource> Read(ReadSyncMapOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildReadRequest(options, client));
-
-            var page = Page<SyncMapResource>.FromJson("maps", response.Content);
-            return new ResourceSet<SyncMapResource>(page, options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// read
-        /// </summary>
-        /// <param name="options"> Read SyncMap parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of SyncMap </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<SyncMapResource>> ReadAsync(ReadSyncMapOptions options,
-                                                                                                ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
-
-            var page = Page<SyncMapResource>.FromJson("maps", response.Content);
-            return new ResourceSet<SyncMapResource>(page, options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// read
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Map resources to read </param>
-        /// <param name="pageSize"> Page size </param>
-        /// <param name="limit"> Record limit </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of SyncMap </returns>
-        public static ResourceSet<SyncMapResource> Read(string pathServiceSid,
-                                                        int? pageSize = null,
-                                                        long? limit = null,
-                                                        ITwilioRestClient client = null)
-        {
-            var options = new ReadSyncMapOptions(pathServiceSid){PageSize = pageSize, Limit = limit};
-            return Read(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// read
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Map resources to read </param>
-        /// <param name="pageSize"> Page size </param>
-        /// <param name="limit"> Record limit </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of SyncMap </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<SyncMapResource>> ReadAsync(string pathServiceSid,
-                                                                                                int? pageSize = null,
-                                                                                                long? limit = null,
-                                                                                                ITwilioRestClient client = null)
-        {
-            var options = new ReadSyncMapOptions(pathServiceSid){PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Fetch the target page of records
-        /// </summary>
-        /// <param name="targetUrl"> API-generated URL for the requested results page </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns>
-        public static Page<SyncMapResource> GetPage(string targetUrl, ITwilioRestClient client)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-
-            var request = new Request(
-                HttpMethod.Get,
-                targetUrl
-            );
-
-            var response = client.Request(request);
-            return Page<SyncMapResource>.FromJson("maps", response.Content);
-        }
-
-        /// <summary>
-        /// Fetch the next page of records
-        /// </summary>
-        /// <param name="page"> current page of records </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns>
-        public static Page<SyncMapResource> NextPage(Page<SyncMapResource> page, ITwilioRestClient client)
-        {
-            var request = new Request(
-                HttpMethod.Get,
-                page.GetNextPageUrl(Rest.Domain.Sync)
-            );
-
-            var response = client.Request(request);
-            return Page<SyncMapResource>.FromJson("maps", response.Content);
-        }
-
-        /// <summary>
-        /// Fetch the previous page of records
-        /// </summary>
-        /// <param name="page"> current page of records </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns>
-        public static Page<SyncMapResource> PreviousPage(Page<SyncMapResource> page, ITwilioRestClient client)
-        {
-            var request = new Request(
-                HttpMethod.Get,
-                page.GetPreviousPageUrl(Rest.Domain.Sync)
-            );
-
-            var response = client.Request(request);
-            return Page<SyncMapResource>.FromJson("maps", response.Content);
-        }
-
-        /// <summary>
-        /// Converts a JSON string into a SyncMapResource object
-        /// </summary>
-        /// <param name="json"> Raw JSON string </param>
-        /// <returns> SyncMapResource object represented by the provided JSON </returns>
-        public static SyncMapResource FromJson(string json)
-        {
-            // Convert all checked exceptions to Runtime
-            try
-            {
-                return JsonConvert.DeserializeObject<SyncMapResource>(json);
-            }
-            catch (JsonException e)
-            {
-                throw new ApiException(e.Message, e);
-            }
-        }
-
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        [JsonProperty("sid")]
-        public string Sid { get; private set; }
-        /// <summary>
-        /// An application-defined string that uniquely identifies the resource
-        /// </summary>
-        [JsonProperty("unique_name")]
-        public string UniqueName { get; private set; }
-        /// <summary>
-        /// The SID of the Account that created the resource
-        /// </summary>
-        [JsonProperty("account_sid")]
-        public string AccountSid { get; private set; }
-        /// <summary>
-        /// The SID of the Sync Service that the resource is associated with
-        /// </summary>
-        [JsonProperty("service_sid")]
-        public string ServiceSid { get; private set; }
-        /// <summary>
-        /// The absolute URL of the Sync Map resource
-        /// </summary>
-        [JsonProperty("url")]
-        public Uri Url { get; private set; }
-        /// <summary>
-        /// The URLs of the Sync Map's nested resources
-        /// </summary>
-        [JsonProperty("links")]
-        public Dictionary<string, string> Links { get; private set; }
-        /// <summary>
-        /// The current revision of the Sync Map, represented as a string
-        /// </summary>
-        [JsonProperty("revision")]
-        public string Revision { get; private set; }
-        /// <summary>
-        /// The ISO 8601 date and time in GMT when the Sync Map expires
-        /// </summary>
-        [JsonProperty("date_expires")]
-        public DateTime? DateExpires { get; private set; }
-        /// <summary>
-        /// The ISO 8601 date and time in GMT when the resource was created
-        /// </summary>
-        [JsonProperty("date_created")]
-        public DateTime? DateCreated { get; private set; }
-        /// <summary>
-        /// The ISO 8601 date and time in GMT when the resource was last updated
-        /// </summary>
-        [JsonProperty("date_updated")]
-        public DateTime? DateUpdated { get; private set; }
-        /// <summary>
-        /// The identity of the Sync Map's creator
-        /// </summary>
-        [JsonProperty("created_by")]
-        public string CreatedBy { get; private set; }
-
-        private SyncMapResource()
-        {
-
-        }
+      return new Request(
+          HttpMethod.Get,
+          Rest.Domain.Sync,
+          "/v1/Services/" + options.PathServiceSid + "/Maps/" + options.PathSid + "",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
     }
+
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="options"> Fetch SyncMap parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of SyncMap </returns>
+    public static SyncMapResource Fetch(FetchSyncMapOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="options"> Fetch SyncMap parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of SyncMap </returns>
+    public static async System.Threading.Tasks.Task<SyncMapResource> FetchAsync(FetchSyncMapOptions options,
+                                                                                ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Map resource to fetch </param>
+    /// <param name="pathSid"> The SID of the Sync Map resource to fetch </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of SyncMap </returns>
+    public static SyncMapResource Fetch(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
+    {
+      var options = new FetchSyncMapOptions(pathServiceSid, pathSid);
+      return Fetch(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Map resource to fetch </param>
+    /// <param name="pathSid"> The SID of the Sync Map resource to fetch </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of SyncMap </returns>
+    public static async System.Threading.Tasks.Task<SyncMapResource> FetchAsync(string pathServiceSid,
+                                                                                string pathSid,
+                                                                                ITwilioRestClient client = null)
+    {
+      var options = new FetchSyncMapOptions(pathServiceSid, pathSid);
+      return await FetchAsync(options, client);
+    }
+#endif
+
+    private static Request BuildDeleteRequest(DeleteSyncMapOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Delete,
+          Rest.Domain.Sync,
+          "/v1/Services/" + options.PathServiceSid + "/Maps/" + options.PathSid + "",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// delete
+    /// </summary>
+    /// <param name="options"> Delete SyncMap parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of SyncMap </returns>
+    public static bool Delete(DeleteSyncMapOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildDeleteRequest(options, client));
+      return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+    }
+
+#if !NET35
+    /// <summary>
+    /// delete
+    /// </summary>
+    /// <param name="options"> Delete SyncMap parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of SyncMap </returns>
+    public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteSyncMapOptions options,
+                                                                      ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+      return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+    }
+#endif
+
+    /// <summary>
+    /// delete
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Map resource to delete </param>
+    /// <param name="pathSid"> The SID of the Sync Map resource to delete </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of SyncMap </returns>
+    public static bool Delete(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
+    {
+      var options = new DeleteSyncMapOptions(pathServiceSid, pathSid);
+      return Delete(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// delete
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Map resource to delete </param>
+    /// <param name="pathSid"> The SID of the Sync Map resource to delete </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of SyncMap </returns>
+    public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid,
+                                                                      string pathSid,
+                                                                      ITwilioRestClient client = null)
+    {
+      var options = new DeleteSyncMapOptions(pathServiceSid, pathSid);
+      return await DeleteAsync(options, client);
+    }
+#endif
+
+    private static Request BuildCreateRequest(CreateSyncMapOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Post,
+          Rest.Domain.Sync,
+          "/v1/Services/" + options.PathServiceSid + "/Maps",
+          postParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// create
+    /// </summary>
+    /// <param name="options"> Create SyncMap parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of SyncMap </returns>
+    public static SyncMapResource Create(CreateSyncMapOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildCreateRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// create
+    /// </summary>
+    /// <param name="options"> Create SyncMap parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of SyncMap </returns>
+    public static async System.Threading.Tasks.Task<SyncMapResource> CreateAsync(CreateSyncMapOptions options,
+                                                                                 ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildCreateRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// create
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Sync Service to create the Sync Map in </param>
+    /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
+    /// <param name="ttl"> An alias for collection_ttl </param>
+    /// <param name="collectionTtl"> How long, in seconds, before the Sync Map expires and is deleted </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of SyncMap </returns>
+    public static SyncMapResource Create(string pathServiceSid,
+                                         string uniqueName = null,
+                                         int? ttl = null,
+                                         int? collectionTtl = null,
+                                         ITwilioRestClient client = null)
+    {
+      var options = new CreateSyncMapOptions(pathServiceSid) { UniqueName = uniqueName, Ttl = ttl, CollectionTtl = collectionTtl };
+      return Create(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// create
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Sync Service to create the Sync Map in </param>
+    /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
+    /// <param name="ttl"> An alias for collection_ttl </param>
+    /// <param name="collectionTtl"> How long, in seconds, before the Sync Map expires and is deleted </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of SyncMap </returns>
+    public static async System.Threading.Tasks.Task<SyncMapResource> CreateAsync(string pathServiceSid,
+                                                                                 string uniqueName = null,
+                                                                                 int? ttl = null,
+                                                                                 int? collectionTtl = null,
+                                                                                 ITwilioRestClient client = null)
+    {
+      var options = new CreateSyncMapOptions(pathServiceSid) { UniqueName = uniqueName, Ttl = ttl, CollectionTtl = collectionTtl };
+      return await CreateAsync(options, client);
+    }
+#endif
+
+    private static Request BuildUpdateRequest(UpdateSyncMapOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Post,
+          Rest.Domain.Sync,
+          "/v1/Services/" + options.PathServiceSid + "/Maps/" + options.PathSid + "",
+          postParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// update
+    /// </summary>
+    /// <param name="options"> Update SyncMap parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of SyncMap </returns>
+    public static SyncMapResource Update(UpdateSyncMapOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildUpdateRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// update
+    /// </summary>
+    /// <param name="options"> Update SyncMap parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of SyncMap </returns>
+    public static async System.Threading.Tasks.Task<SyncMapResource> UpdateAsync(UpdateSyncMapOptions options,
+                                                                                 ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// update
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Map resource to update </param>
+    /// <param name="pathSid"> The SID of the Sync Map resource to update </param>
+    /// <param name="ttl"> An alias for collection_ttl </param>
+    /// <param name="collectionTtl"> How long, in seconds, before the Sync Map expires and is deleted </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of SyncMap </returns>
+    public static SyncMapResource Update(string pathServiceSid,
+                                         string pathSid,
+                                         int? ttl = null,
+                                         int? collectionTtl = null,
+                                         ITwilioRestClient client = null)
+    {
+      var options = new UpdateSyncMapOptions(pathServiceSid, pathSid) { Ttl = ttl, CollectionTtl = collectionTtl };
+      return Update(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// update
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Map resource to update </param>
+    /// <param name="pathSid"> The SID of the Sync Map resource to update </param>
+    /// <param name="ttl"> An alias for collection_ttl </param>
+    /// <param name="collectionTtl"> How long, in seconds, before the Sync Map expires and is deleted </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of SyncMap </returns>
+    public static async System.Threading.Tasks.Task<SyncMapResource> UpdateAsync(string pathServiceSid,
+                                                                                 string pathSid,
+                                                                                 int? ttl = null,
+                                                                                 int? collectionTtl = null,
+                                                                                 ITwilioRestClient client = null)
+    {
+      var options = new UpdateSyncMapOptions(pathServiceSid, pathSid) { Ttl = ttl, CollectionTtl = collectionTtl };
+      return await UpdateAsync(options, client);
+    }
+#endif
+
+    private static Request BuildReadRequest(ReadSyncMapOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Get,
+          Rest.Domain.Sync,
+          "/v1/Services/" + options.PathServiceSid + "/Maps",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// read
+    /// </summary>
+    /// <param name="options"> Read SyncMap parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of SyncMap </returns>
+    public static ResourceSet<SyncMapResource> Read(ReadSyncMapOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildReadRequest(options, client));
+
+      var page = Page<SyncMapResource>.FromJson("maps", response.Content);
+      return new ResourceSet<SyncMapResource>(page, options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// read
+    /// </summary>
+    /// <param name="options"> Read SyncMap parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of SyncMap </returns>
+    public static async System.Threading.Tasks.Task<ResourceSet<SyncMapResource>> ReadAsync(ReadSyncMapOptions options,
+                                                                                            ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+      var page = Page<SyncMapResource>.FromJson("maps", response.Content);
+      return new ResourceSet<SyncMapResource>(page, options, client);
+    }
+#endif
+
+    /// <summary>
+    /// read
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Map resources to read </param>
+    /// <param name="pageSize"> Page size </param>
+    /// <param name="limit"> Record limit </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of SyncMap </returns>
+    public static ResourceSet<SyncMapResource> Read(string pathServiceSid,
+                                                    int? pageSize = null,
+                                                    long? limit = null,
+                                                    ITwilioRestClient client = null)
+    {
+      var options = new ReadSyncMapOptions(pathServiceSid) { PageSize = pageSize, Limit = limit };
+      return Read(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// read
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Map resources to read </param>
+    /// <param name="pageSize"> Page size </param>
+    /// <param name="limit"> Record limit </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of SyncMap </returns>
+    public static async System.Threading.Tasks.Task<ResourceSet<SyncMapResource>> ReadAsync(string pathServiceSid,
+                                                                                            int? pageSize = null,
+                                                                                            long? limit = null,
+                                                                                            ITwilioRestClient client = null)
+    {
+      var options = new ReadSyncMapOptions(pathServiceSid) { PageSize = pageSize, Limit = limit };
+      return await ReadAsync(options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Fetch the target page of records
+    /// </summary>
+    /// <param name="targetUrl"> API-generated URL for the requested results page </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> The target page of records </returns>
+    public static Page<SyncMapResource> GetPage(string targetUrl, ITwilioRestClient client)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+
+      var request = new Request(
+          HttpMethod.Get,
+          targetUrl
+      );
+
+      var response = client.Request(request);
+      return Page<SyncMapResource>.FromJson("maps", response.Content);
+    }
+
+    /// <summary>
+    /// Fetch the next page of records
+    /// </summary>
+    /// <param name="page"> current page of records </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> The next page of records </returns>
+    public static Page<SyncMapResource> NextPage(Page<SyncMapResource> page, ITwilioRestClient client)
+    {
+      var request = new Request(
+          HttpMethod.Get,
+          page.GetNextPageUrl(Rest.Domain.Sync)
+      );
+
+      var response = client.Request(request);
+      return Page<SyncMapResource>.FromJson("maps", response.Content);
+    }
+
+    /// <summary>
+    /// Fetch the previous page of records
+    /// </summary>
+    /// <param name="page"> current page of records </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> The previous page of records </returns>
+    public static Page<SyncMapResource> PreviousPage(Page<SyncMapResource> page, ITwilioRestClient client)
+    {
+      var request = new Request(
+          HttpMethod.Get,
+          page.GetPreviousPageUrl(Rest.Domain.Sync)
+      );
+
+      var response = client.Request(request);
+      return Page<SyncMapResource>.FromJson("maps", response.Content);
+    }
+
+    /// <summary>
+    /// Converts a JSON string into a SyncMapResource object
+    /// </summary>
+    /// <param name="json"> Raw JSON string </param>
+    /// <returns> SyncMapResource object represented by the provided JSON </returns>
+    public static SyncMapResource FromJson(string json)
+    {
+      // Convert all checked exceptions to Runtime
+      try
+      {
+        return JsonConvert.DeserializeObject<SyncMapResource>(json);
+      }
+      catch (JsonException e)
+      {
+        throw new ApiException(e.Message, e);
+      }
+    }
+
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    [JsonProperty("sid")]
+    public string Sid { get; private set; }
+    /// <summary>
+    /// An application-defined string that uniquely identifies the resource
+    /// </summary>
+    [JsonProperty("unique_name")]
+    public string UniqueName { get; private set; }
+    /// <summary>
+    /// The SID of the Account that created the resource
+    /// </summary>
+    [JsonProperty("account_sid")]
+    public string AccountSid { get; private set; }
+    /// <summary>
+    /// The SID of the Sync Service that the resource is associated with
+    /// </summary>
+    [JsonProperty("service_sid")]
+    public string ServiceSid { get; private set; }
+    /// <summary>
+    /// The absolute URL of the Sync Map resource
+    /// </summary>
+    [JsonProperty("url")]
+    public Uri Url { get; private set; }
+    /// <summary>
+    /// The URLs of the Sync Map's nested resources
+    /// </summary>
+    [JsonProperty("links")]
+    public Dictionary<string, string> Links { get; private set; }
+    /// <summary>
+    /// The current revision of the Sync Map, represented as a string
+    /// </summary>
+    [JsonProperty("revision")]
+    public string Revision { get; private set; }
+    /// <summary>
+    /// The ISO 8601 date and time in GMT when the Sync Map expires
+    /// </summary>
+    [JsonProperty("date_expires")]
+    public DateTime? DateExpires { get; private set; }
+    /// <summary>
+    /// The ISO 8601 date and time in GMT when the resource was created
+    /// </summary>
+    [JsonProperty("date_created")]
+    public DateTime? DateCreated { get; private set; }
+    /// <summary>
+    /// The ISO 8601 date and time in GMT when the resource was last updated
+    /// </summary>
+    [JsonProperty("date_updated")]
+    public DateTime? DateUpdated { get; private set; }
+    /// <summary>
+    /// The identity of the Sync Map's creator
+    /// </summary>
+    [JsonProperty("created_by")]
+    public string CreatedBy { get; private set; }
+
+    private SyncMapResource()
+    {
+
+    }
+  }
 
 }

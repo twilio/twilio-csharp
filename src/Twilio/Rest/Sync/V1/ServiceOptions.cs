@@ -11,253 +11,253 @@ using Twilio.Converters;
 namespace Twilio.Rest.Sync.V1
 {
 
+  /// <summary>
+  /// FetchServiceOptions
+  /// </summary>
+  public class FetchServiceOptions : IOptions<ServiceResource>
+  {
     /// <summary>
-    /// FetchServiceOptions
+    /// The SID of the Service resource to fetch
     /// </summary>
-    public class FetchServiceOptions : IOptions<ServiceResource>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchServiceOptions
+    /// </summary>
+    /// <param name="pathSid"> The SID of the Service resource to fetch </param>
+    public FetchServiceOptions(string pathSid)
     {
-        /// <summary>
-        /// The SID of the Service resource to fetch
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchServiceOptions
-        /// </summary>
-        /// <param name="pathSid"> The SID of the Service resource to fetch </param>
-        public FetchServiceOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// DeleteServiceOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteServiceOptions : IOptions<ServiceResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Service resource to delete
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new DeleteServiceOptions
-        /// </summary>
-        /// <param name="pathSid"> The SID of the Service resource to delete </param>
-        public DeleteServiceOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
+  /// <summary>
+  /// DeleteServiceOptions
+  /// </summary>
+  public class DeleteServiceOptions : IOptions<ServiceResource>
+  {
+    /// <summary>
+    /// The SID of the Service resource to delete
+    /// </summary>
+    public string PathSid { get; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+    /// <summary>
+    /// Construct a new DeleteServiceOptions
+    /// </summary>
+    /// <param name="pathSid"> The SID of the Service resource to delete </param>
+    public DeleteServiceOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// CreateServiceOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class CreateServiceOptions : IOptions<ServiceResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// A string that you assign to describe the resource
-        /// </summary>
-        public string FriendlyName { get; set; }
-        /// <summary>
-        /// The URL we should call when Sync objects are manipulated
-        /// </summary>
-        public Uri WebhookUrl { get; set; }
-        /// <summary>
-        /// Whether the service instance should call webhook_url when client endpoints connect to Sync
-        /// </summary>
-        public bool? ReachabilityWebhooksEnabled { get; set; }
-        /// <summary>
-        /// Whether token identities in the Service must be granted access to Sync objects by using the Permissions resource
-        /// </summary>
-        public bool? AclEnabled { get; set; }
-        /// <summary>
-        /// Whether every endpoint_disconnected event occurs after a configurable delay
-        /// </summary>
-        public bool? ReachabilityDebouncingEnabled { get; set; }
-        /// <summary>
-        /// The reachability event delay in milliseconds
-        /// </summary>
-        public int? ReachabilityDebouncingWindow { get; set; }
-        /// <summary>
-        /// Whether the Service instance should call webhook_url when the REST API is used to update Sync objects
-        /// </summary>
-        public bool? WebhooksFromRestEnabled { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
+  /// <summary>
+  /// CreateServiceOptions
+  /// </summary>
+  public class CreateServiceOptions : IOptions<ServiceResource>
+  {
+    /// <summary>
+    /// A string that you assign to describe the resource
+    /// </summary>
+    public string FriendlyName { get; set; }
+    /// <summary>
+    /// The URL we should call when Sync objects are manipulated
+    /// </summary>
+    public Uri WebhookUrl { get; set; }
+    /// <summary>
+    /// Whether the service instance should call webhook_url when client endpoints connect to Sync
+    /// </summary>
+    public bool? ReachabilityWebhooksEnabled { get; set; }
+    /// <summary>
+    /// Whether token identities in the Service must be granted access to Sync objects by using the Permissions resource
+    /// </summary>
+    public bool? AclEnabled { get; set; }
+    /// <summary>
+    /// Whether every endpoint_disconnected event occurs after a configurable delay
+    /// </summary>
+    public bool? ReachabilityDebouncingEnabled { get; set; }
+    /// <summary>
+    /// The reachability event delay in milliseconds
+    /// </summary>
+    public int? ReachabilityDebouncingWindow { get; set; }
+    /// <summary>
+    /// Whether the Service instance should call webhook_url when the REST API is used to update Sync objects
+    /// </summary>
+    public bool? WebhooksFromRestEnabled { get; set; }
 
-            if (WebhookUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("WebhookUrl", Serializers.Url(WebhookUrl)));
-            }
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
 
-            if (ReachabilityWebhooksEnabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ReachabilityWebhooksEnabled", ReachabilityWebhooksEnabled.Value.ToString().ToLower()));
-            }
+      if (WebhookUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("WebhookUrl", Serializers.Url(WebhookUrl)));
+      }
 
-            if (AclEnabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("AclEnabled", AclEnabled.Value.ToString().ToLower()));
-            }
+      if (ReachabilityWebhooksEnabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ReachabilityWebhooksEnabled", ReachabilityWebhooksEnabled.Value.ToString().ToLower()));
+      }
 
-            if (ReachabilityDebouncingEnabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ReachabilityDebouncingEnabled", ReachabilityDebouncingEnabled.Value.ToString().ToLower()));
-            }
+      if (AclEnabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("AclEnabled", AclEnabled.Value.ToString().ToLower()));
+      }
 
-            if (ReachabilityDebouncingWindow != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ReachabilityDebouncingWindow", ReachabilityDebouncingWindow.ToString()));
-            }
+      if (ReachabilityDebouncingEnabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ReachabilityDebouncingEnabled", ReachabilityDebouncingEnabled.Value.ToString().ToLower()));
+      }
 
-            if (WebhooksFromRestEnabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("WebhooksFromRestEnabled", WebhooksFromRestEnabled.Value.ToString().ToLower()));
-            }
+      if (ReachabilityDebouncingWindow != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ReachabilityDebouncingWindow", ReachabilityDebouncingWindow.ToString()));
+      }
 
-            return p;
-        }
+      if (WebhooksFromRestEnabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("WebhooksFromRestEnabled", WebhooksFromRestEnabled.Value.ToString().ToLower()));
+      }
+
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// ReadServiceOptions
+  /// </summary>
+  public class ReadServiceOptions : ReadOptions<ServiceResource>
+  {
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// UpdateServiceOptions
+  /// </summary>
+  public class UpdateServiceOptions : IOptions<ServiceResource>
+  {
+    /// <summary>
+    /// The SID of the Service resource to update
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// The URL we should call when Sync objects are manipulated
+    /// </summary>
+    public Uri WebhookUrl { get; set; }
+    /// <summary>
+    /// A string that you assign to describe the resource
+    /// </summary>
+    public string FriendlyName { get; set; }
+    /// <summary>
+    /// Whether the service instance should call webhook_url when client endpoints connect to Sync
+    /// </summary>
+    public bool? ReachabilityWebhooksEnabled { get; set; }
+    /// <summary>
+    /// Whether token identities in the Service must be granted access to Sync objects by using the Permissions resource
+    /// </summary>
+    public bool? AclEnabled { get; set; }
+    /// <summary>
+    /// Whether every endpoint_disconnected event occurs after a configurable delay
+    /// </summary>
+    public bool? ReachabilityDebouncingEnabled { get; set; }
+    /// <summary>
+    /// The reachability event delay in milliseconds
+    /// </summary>
+    public int? ReachabilityDebouncingWindow { get; set; }
+    /// <summary>
+    /// Whether the Service instance should call webhook_url when the REST API is used to update Sync objects
+    /// </summary>
+    public bool? WebhooksFromRestEnabled { get; set; }
+
+    /// <summary>
+    /// Construct a new UpdateServiceOptions
+    /// </summary>
+    /// <param name="pathSid"> The SID of the Service resource to update </param>
+    public UpdateServiceOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// ReadServiceOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadServiceOptions : ReadOptions<ServiceResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
+      var p = new List<KeyValuePair<string, string>>();
+      if (WebhookUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("WebhookUrl", Serializers.Url(WebhookUrl)));
+      }
 
-            return p;
-        }
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
+
+      if (ReachabilityWebhooksEnabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ReachabilityWebhooksEnabled", ReachabilityWebhooksEnabled.Value.ToString().ToLower()));
+      }
+
+      if (AclEnabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("AclEnabled", AclEnabled.Value.ToString().ToLower()));
+      }
+
+      if (ReachabilityDebouncingEnabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ReachabilityDebouncingEnabled", ReachabilityDebouncingEnabled.Value.ToString().ToLower()));
+      }
+
+      if (ReachabilityDebouncingWindow != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ReachabilityDebouncingWindow", ReachabilityDebouncingWindow.ToString()));
+      }
+
+      if (WebhooksFromRestEnabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("WebhooksFromRestEnabled", WebhooksFromRestEnabled.Value.ToString().ToLower()));
+      }
+
+      return p;
     }
-
-    /// <summary>
-    /// UpdateServiceOptions
-    /// </summary>
-    public class UpdateServiceOptions : IOptions<ServiceResource>
-    {
-        /// <summary>
-        /// The SID of the Service resource to update
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// The URL we should call when Sync objects are manipulated
-        /// </summary>
-        public Uri WebhookUrl { get; set; }
-        /// <summary>
-        /// A string that you assign to describe the resource
-        /// </summary>
-        public string FriendlyName { get; set; }
-        /// <summary>
-        /// Whether the service instance should call webhook_url when client endpoints connect to Sync
-        /// </summary>
-        public bool? ReachabilityWebhooksEnabled { get; set; }
-        /// <summary>
-        /// Whether token identities in the Service must be granted access to Sync objects by using the Permissions resource
-        /// </summary>
-        public bool? AclEnabled { get; set; }
-        /// <summary>
-        /// Whether every endpoint_disconnected event occurs after a configurable delay
-        /// </summary>
-        public bool? ReachabilityDebouncingEnabled { get; set; }
-        /// <summary>
-        /// The reachability event delay in milliseconds
-        /// </summary>
-        public int? ReachabilityDebouncingWindow { get; set; }
-        /// <summary>
-        /// Whether the Service instance should call webhook_url when the REST API is used to update Sync objects
-        /// </summary>
-        public bool? WebhooksFromRestEnabled { get; set; }
-
-        /// <summary>
-        /// Construct a new UpdateServiceOptions
-        /// </summary>
-        /// <param name="pathSid"> The SID of the Service resource to update </param>
-        public UpdateServiceOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (WebhookUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("WebhookUrl", Serializers.Url(WebhookUrl)));
-            }
-
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
-
-            if (ReachabilityWebhooksEnabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ReachabilityWebhooksEnabled", ReachabilityWebhooksEnabled.Value.ToString().ToLower()));
-            }
-
-            if (AclEnabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("AclEnabled", AclEnabled.Value.ToString().ToLower()));
-            }
-
-            if (ReachabilityDebouncingEnabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ReachabilityDebouncingEnabled", ReachabilityDebouncingEnabled.Value.ToString().ToLower()));
-            }
-
-            if (ReachabilityDebouncingWindow != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ReachabilityDebouncingWindow", ReachabilityDebouncingWindow.ToString()));
-            }
-
-            if (WebhooksFromRestEnabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("WebhooksFromRestEnabled", WebhooksFromRestEnabled.Value.ToString().ToLower()));
-            }
-
-            return p;
-        }
-    }
+  }
 
 }

@@ -11,214 +11,214 @@ using Twilio.Converters;
 namespace Twilio.Rest.Preview.Understand.Assistant
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// FetchModelBuildOptions
+  /// </summary>
+  public class FetchModelBuildOptions : IOptions<ModelBuildResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// FetchModelBuildOptions
+    /// The assistant_sid
     /// </summary>
-    public class FetchModelBuildOptions : IOptions<ModelBuildResource>
+    public string PathAssistantSid { get; }
+    /// <summary>
+    /// The sid
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchModelBuildOptions
+    /// </summary>
+    /// <param name="pathAssistantSid"> The assistant_sid </param>
+    /// <param name="pathSid"> The sid </param>
+    public FetchModelBuildOptions(string pathAssistantSid, string pathSid)
     {
-        /// <summary>
-        /// The assistant_sid
-        /// </summary>
-        public string PathAssistantSid { get; }
-        /// <summary>
-        /// The sid
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchModelBuildOptions
-        /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        public FetchModelBuildOptions(string pathAssistantSid, string pathSid)
-        {
-            PathAssistantSid = pathAssistantSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathAssistantSid = pathAssistantSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// ReadModelBuildOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadModelBuildOptions : ReadOptions<ModelBuildResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The assistant_sid
-        /// </summary>
-        public string PathAssistantSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new ReadModelBuildOptions
-        /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
-        public ReadModelBuildOptions(string pathAssistantSid)
-        {
-            PathAssistantSid = pathAssistantSid;
-        }
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// ReadModelBuildOptions
+  /// </summary>
+  public class ReadModelBuildOptions : ReadOptions<ModelBuildResource>
+  {
+    /// <summary>
+    /// The assistant_sid
+    /// </summary>
+    public string PathAssistantSid { get; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new ReadModelBuildOptions
+    /// </summary>
+    /// <param name="pathAssistantSid"> The assistant_sid </param>
+    public ReadModelBuildOptions(string pathAssistantSid)
+    {
+      PathAssistantSid = pathAssistantSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// CreateModelBuildOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class CreateModelBuildOptions : IOptions<ModelBuildResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The assistant_sid
-        /// </summary>
-        public string PathAssistantSid { get; }
-        /// <summary>
-        /// The status_callback
-        /// </summary>
-        public Uri StatusCallback { get; set; }
-        /// <summary>
-        /// A user-provided string that uniquely identifies this resource as an alternative to the sid. Unique up to 64 characters long. For example: v0.1
-        /// </summary>
-        public string UniqueName { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new CreateModelBuildOptions
-        /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
-        public CreateModelBuildOptions(string pathAssistantSid)
-        {
-            PathAssistantSid = pathAssistantSid;
-        }
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (StatusCallback != null)
-            {
-                p.Add(new KeyValuePair<string, string>("StatusCallback", Serializers.Url(StatusCallback)));
-            }
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// CreateModelBuildOptions
+  /// </summary>
+  public class CreateModelBuildOptions : IOptions<ModelBuildResource>
+  {
+    /// <summary>
+    /// The assistant_sid
+    /// </summary>
+    public string PathAssistantSid { get; }
+    /// <summary>
+    /// The status_callback
+    /// </summary>
+    public Uri StatusCallback { get; set; }
+    /// <summary>
+    /// A user-provided string that uniquely identifies this resource as an alternative to the sid. Unique up to 64 characters long. For example: v0.1
+    /// </summary>
+    public string UniqueName { get; set; }
 
-            if (UniqueName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new CreateModelBuildOptions
+    /// </summary>
+    /// <param name="pathAssistantSid"> The assistant_sid </param>
+    public CreateModelBuildOptions(string pathAssistantSid)
+    {
+      PathAssistantSid = pathAssistantSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// UpdateModelBuildOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateModelBuildOptions : IOptions<ModelBuildResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The assistant_sid
-        /// </summary>
-        public string PathAssistantSid { get; }
-        /// <summary>
-        /// The sid
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// A user-provided string that uniquely identifies this resource as an alternative to the sid. Unique up to 64 characters long. For example: v0.1
-        /// </summary>
-        public string UniqueName { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (StatusCallback != null)
+      {
+        p.Add(new KeyValuePair<string, string>("StatusCallback", Serializers.Url(StatusCallback)));
+      }
 
-        /// <summary>
-        /// Construct a new UpdateModelBuildOptions
-        /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        public UpdateModelBuildOptions(string pathAssistantSid, string pathSid)
-        {
-            PathAssistantSid = pathAssistantSid;
-            PathSid = pathSid;
-        }
+      if (UniqueName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (UniqueName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
-            }
+      return p;
+    }
+  }
 
-            return p;
-        }
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// UpdateModelBuildOptions
+  /// </summary>
+  public class UpdateModelBuildOptions : IOptions<ModelBuildResource>
+  {
+    /// <summary>
+    /// The assistant_sid
+    /// </summary>
+    public string PathAssistantSid { get; }
+    /// <summary>
+    /// The sid
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// A user-provided string that uniquely identifies this resource as an alternative to the sid. Unique up to 64 characters long. For example: v0.1
+    /// </summary>
+    public string UniqueName { get; set; }
+
+    /// <summary>
+    /// Construct a new UpdateModelBuildOptions
+    /// </summary>
+    /// <param name="pathAssistantSid"> The assistant_sid </param>
+    /// <param name="pathSid"> The sid </param>
+    public UpdateModelBuildOptions(string pathAssistantSid, string pathSid)
+    {
+      PathAssistantSid = pathAssistantSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// DeleteModelBuildOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteModelBuildOptions : IOptions<ModelBuildResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The assistant_sid
-        /// </summary>
-        public string PathAssistantSid { get; }
-        /// <summary>
-        /// The sid
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (UniqueName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
+      }
 
-        /// <summary>
-        /// Construct a new DeleteModelBuildOptions
-        /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        public DeleteModelBuildOptions(string pathAssistantSid, string pathSid)
-        {
-            PathAssistantSid = pathAssistantSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      return p;
     }
+  }
+
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// DeleteModelBuildOptions
+  /// </summary>
+  public class DeleteModelBuildOptions : IOptions<ModelBuildResource>
+  {
+    /// <summary>
+    /// The assistant_sid
+    /// </summary>
+    public string PathAssistantSid { get; }
+    /// <summary>
+    /// The sid
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new DeleteModelBuildOptions
+    /// </summary>
+    /// <param name="pathAssistantSid"> The assistant_sid </param>
+    /// <param name="pathSid"> The sid </param>
+    public DeleteModelBuildOptions(string pathAssistantSid, string pathSid)
+    {
+      PathAssistantSid = pathAssistantSid;
+      PathSid = pathSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
 }

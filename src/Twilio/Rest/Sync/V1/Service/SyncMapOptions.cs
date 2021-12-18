@@ -11,217 +11,217 @@ using Twilio.Converters;
 namespace Twilio.Rest.Sync.V1.Service
 {
 
+  /// <summary>
+  /// FetchSyncMapOptions
+  /// </summary>
+  public class FetchSyncMapOptions : IOptions<SyncMapResource>
+  {
     /// <summary>
-    /// FetchSyncMapOptions
+    /// The SID of the Sync Service with the Sync Map resource to fetch
     /// </summary>
-    public class FetchSyncMapOptions : IOptions<SyncMapResource>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The SID of the Sync Map resource to fetch
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchSyncMapOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Map resource to fetch </param>
+    /// <param name="pathSid"> The SID of the Sync Map resource to fetch </param>
+    public FetchSyncMapOptions(string pathServiceSid, string pathSid)
     {
-        /// <summary>
-        /// The SID of the Sync Service with the Sync Map resource to fetch
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The SID of the Sync Map resource to fetch
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchSyncMapOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Map resource to fetch </param>
-        /// <param name="pathSid"> The SID of the Sync Map resource to fetch </param>
-        public FetchSyncMapOptions(string pathServiceSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathServiceSid = pathServiceSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// DeleteSyncMapOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteSyncMapOptions : IOptions<SyncMapResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Sync Service with the Sync Map resource to delete
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The SID of the Sync Map resource to delete
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new DeleteSyncMapOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Map resource to delete </param>
-        /// <param name="pathSid"> The SID of the Sync Map resource to delete </param>
-        public DeleteSyncMapOptions(string pathServiceSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathSid = pathSid;
-        }
+  /// <summary>
+  /// DeleteSyncMapOptions
+  /// </summary>
+  public class DeleteSyncMapOptions : IOptions<SyncMapResource>
+  {
+    /// <summary>
+    /// The SID of the Sync Service with the Sync Map resource to delete
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The SID of the Sync Map resource to delete
+    /// </summary>
+    public string PathSid { get; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+    /// <summary>
+    /// Construct a new DeleteSyncMapOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Map resource to delete </param>
+    /// <param name="pathSid"> The SID of the Sync Map resource to delete </param>
+    public DeleteSyncMapOptions(string pathServiceSid, string pathSid)
+    {
+      PathServiceSid = pathServiceSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// CreateSyncMapOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class CreateSyncMapOptions : IOptions<SyncMapResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Sync Service to create the Sync Map in
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// An application-defined string that uniquely identifies the resource
-        /// </summary>
-        public string UniqueName { get; set; }
-        /// <summary>
-        /// An alias for collection_ttl
-        /// </summary>
-        public int? Ttl { get; set; }
-        /// <summary>
-        /// How long, in seconds, before the Sync Map expires and is deleted
-        /// </summary>
-        public int? CollectionTtl { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new CreateSyncMapOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Sync Service to create the Sync Map in </param>
-        public CreateSyncMapOptions(string pathServiceSid)
-        {
-            PathServiceSid = pathServiceSid;
-        }
+  /// <summary>
+  /// CreateSyncMapOptions
+  /// </summary>
+  public class CreateSyncMapOptions : IOptions<SyncMapResource>
+  {
+    /// <summary>
+    /// The SID of the Sync Service to create the Sync Map in
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// An application-defined string that uniquely identifies the resource
+    /// </summary>
+    public string UniqueName { get; set; }
+    /// <summary>
+    /// An alias for collection_ttl
+    /// </summary>
+    public int? Ttl { get; set; }
+    /// <summary>
+    /// How long, in seconds, before the Sync Map expires and is deleted
+    /// </summary>
+    public int? CollectionTtl { get; set; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (UniqueName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
-            }
-
-            if (Ttl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Ttl", Ttl.ToString()));
-            }
-
-            if (CollectionTtl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("CollectionTtl", CollectionTtl.ToString()));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new CreateSyncMapOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Sync Service to create the Sync Map in </param>
+    public CreateSyncMapOptions(string pathServiceSid)
+    {
+      PathServiceSid = pathServiceSid;
     }
 
     /// <summary>
-    /// UpdateSyncMapOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateSyncMapOptions : IOptions<SyncMapResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Sync Service with the Sync Map resource to update
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The SID of the Sync Map resource to update
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// An alias for collection_ttl
-        /// </summary>
-        public int? Ttl { get; set; }
-        /// <summary>
-        /// How long, in seconds, before the Sync Map expires and is deleted
-        /// </summary>
-        public int? CollectionTtl { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (UniqueName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
+      }
 
-        /// <summary>
-        /// Construct a new UpdateSyncMapOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Map resource to update </param>
-        /// <param name="pathSid"> The SID of the Sync Map resource to update </param>
-        public UpdateSyncMapOptions(string pathServiceSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathSid = pathSid;
-        }
+      if (Ttl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Ttl", Ttl.ToString()));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Ttl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Ttl", Ttl.ToString()));
-            }
+      if (CollectionTtl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("CollectionTtl", CollectionTtl.ToString()));
+      }
 
-            if (CollectionTtl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("CollectionTtl", CollectionTtl.ToString()));
-            }
+      return p;
+    }
+  }
 
-            return p;
-        }
+  /// <summary>
+  /// UpdateSyncMapOptions
+  /// </summary>
+  public class UpdateSyncMapOptions : IOptions<SyncMapResource>
+  {
+    /// <summary>
+    /// The SID of the Sync Service with the Sync Map resource to update
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The SID of the Sync Map resource to update
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// An alias for collection_ttl
+    /// </summary>
+    public int? Ttl { get; set; }
+    /// <summary>
+    /// How long, in seconds, before the Sync Map expires and is deleted
+    /// </summary>
+    public int? CollectionTtl { get; set; }
+
+    /// <summary>
+    /// Construct a new UpdateSyncMapOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Map resource to update </param>
+    /// <param name="pathSid"> The SID of the Sync Map resource to update </param>
+    public UpdateSyncMapOptions(string pathServiceSid, string pathSid)
+    {
+      PathServiceSid = pathServiceSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// ReadSyncMapOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadSyncMapOptions : ReadOptions<SyncMapResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Sync Service with the Sync Map resources to read
-        /// </summary>
-        public string PathServiceSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (Ttl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Ttl", Ttl.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new ReadSyncMapOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Map resources to read </param>
-        public ReadSyncMapOptions(string pathServiceSid)
-        {
-            PathServiceSid = pathServiceSid;
-        }
+      if (CollectionTtl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("CollectionTtl", CollectionTtl.ToString()));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+      return p;
     }
+  }
+
+  /// <summary>
+  /// ReadSyncMapOptions
+  /// </summary>
+  public class ReadSyncMapOptions : ReadOptions<SyncMapResource>
+  {
+    /// <summary>
+    /// The SID of the Sync Service with the Sync Map resources to read
+    /// </summary>
+    public string PathServiceSid { get; }
+
+    /// <summary>
+    /// Construct a new ReadSyncMapOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Map resources to read </param>
+    public ReadSyncMapOptions(string pathServiceSid)
+    {
+      PathServiceSid = pathServiceSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
 
 }

@@ -18,158 +18,158 @@ using Twilio.Http;
 namespace Twilio.Rest.Taskrouter.V1.Workspace.Workflow
 {
 
-    public class WorkflowStatisticsResource : Resource
+  public class WorkflowStatisticsResource : Resource
+  {
+    private static Request BuildFetchRequest(FetchWorkflowStatisticsOptions options, ITwilioRestClient client)
     {
-        private static Request BuildFetchRequest(FetchWorkflowStatisticsOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Get,
-                Rest.Domain.Taskrouter,
-                "/v1/Workspaces/" + options.PathWorkspaceSid + "/Workflows/" + options.PathWorkflowSid + "/Statistics",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="options"> Fetch WorkflowStatistics parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of WorkflowStatistics </returns>
-        public static WorkflowStatisticsResource Fetch(FetchWorkflowStatisticsOptions options,
-                                                       ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="options"> Fetch WorkflowStatistics parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of WorkflowStatistics </returns>
-        public static async System.Threading.Tasks.Task<WorkflowStatisticsResource> FetchAsync(FetchWorkflowStatisticsOptions options,
-                                                                                               ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Workflow to fetch </param>
-        /// <param name="pathWorkflowSid"> Returns the list of Tasks that are being controlled by the Workflow with the
-        ///                       specified SID value </param>
-        /// <param name="minutes"> Only calculate statistics since this many minutes in the past </param>
-        /// <param name="startDate"> Only calculate statistics from on or after this date </param>
-        /// <param name="endDate"> Only calculate statistics from this date and time and earlier </param>
-        /// <param name="taskChannel"> Only calculate real-time statistics on this TaskChannel.  </param>
-        /// <param name="splitByWaitTime"> A comma separated list of values that describes the thresholds to calculate
-        ///                       statistics on </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of WorkflowStatistics </returns>
-        public static WorkflowStatisticsResource Fetch(string pathWorkspaceSid,
-                                                       string pathWorkflowSid,
-                                                       int? minutes = null,
-                                                       DateTime? startDate = null,
-                                                       DateTime? endDate = null,
-                                                       string taskChannel = null,
-                                                       string splitByWaitTime = null,
-                                                       ITwilioRestClient client = null)
-        {
-            var options = new FetchWorkflowStatisticsOptions(pathWorkspaceSid, pathWorkflowSid){Minutes = minutes, StartDate = startDate, EndDate = endDate, TaskChannel = taskChannel, SplitByWaitTime = splitByWaitTime};
-            return Fetch(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Workflow to fetch </param>
-        /// <param name="pathWorkflowSid"> Returns the list of Tasks that are being controlled by the Workflow with the
-        ///                       specified SID value </param>
-        /// <param name="minutes"> Only calculate statistics since this many minutes in the past </param>
-        /// <param name="startDate"> Only calculate statistics from on or after this date </param>
-        /// <param name="endDate"> Only calculate statistics from this date and time and earlier </param>
-        /// <param name="taskChannel"> Only calculate real-time statistics on this TaskChannel.  </param>
-        /// <param name="splitByWaitTime"> A comma separated list of values that describes the thresholds to calculate
-        ///                       statistics on </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of WorkflowStatistics </returns>
-        public static async System.Threading.Tasks.Task<WorkflowStatisticsResource> FetchAsync(string pathWorkspaceSid,
-                                                                                               string pathWorkflowSid,
-                                                                                               int? minutes = null,
-                                                                                               DateTime? startDate = null,
-                                                                                               DateTime? endDate = null,
-                                                                                               string taskChannel = null,
-                                                                                               string splitByWaitTime = null,
-                                                                                               ITwilioRestClient client = null)
-        {
-            var options = new FetchWorkflowStatisticsOptions(pathWorkspaceSid, pathWorkflowSid){Minutes = minutes, StartDate = startDate, EndDate = endDate, TaskChannel = taskChannel, SplitByWaitTime = splitByWaitTime};
-            return await FetchAsync(options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Converts a JSON string into a WorkflowStatisticsResource object
-        /// </summary>
-        /// <param name="json"> Raw JSON string </param>
-        /// <returns> WorkflowStatisticsResource object represented by the provided JSON </returns>
-        public static WorkflowStatisticsResource FromJson(string json)
-        {
-            // Convert all checked exceptions to Runtime
-            try
-            {
-                return JsonConvert.DeserializeObject<WorkflowStatisticsResource>(json);
-            }
-            catch (JsonException e)
-            {
-                throw new ApiException(e.Message, e);
-            }
-        }
-
-        /// <summary>
-        /// The SID of the Account that created the resource
-        /// </summary>
-        [JsonProperty("account_sid")]
-        public string AccountSid { get; private set; }
-        /// <summary>
-        /// An object that contains the cumulative statistics for the Workflow
-        /// </summary>
-        [JsonProperty("cumulative")]
-        public object Cumulative { get; private set; }
-        /// <summary>
-        /// An object that contains the real-time statistics for the Workflow
-        /// </summary>
-        [JsonProperty("realtime")]
-        public object Realtime { get; private set; }
-        /// <summary>
-        /// Returns the list of Tasks that are being controlled by the Workflow with the specified SID value
-        /// </summary>
-        [JsonProperty("workflow_sid")]
-        public string WorkflowSid { get; private set; }
-        /// <summary>
-        /// The SID of the Workspace that contains the Workflow
-        /// </summary>
-        [JsonProperty("workspace_sid")]
-        public string WorkspaceSid { get; private set; }
-        /// <summary>
-        /// The absolute URL of the Workflow statistics resource
-        /// </summary>
-        [JsonProperty("url")]
-        public Uri Url { get; private set; }
-
-        private WorkflowStatisticsResource()
-        {
-
-        }
+      return new Request(
+          HttpMethod.Get,
+          Rest.Domain.Taskrouter,
+          "/v1/Workspaces/" + options.PathWorkspaceSid + "/Workflows/" + options.PathWorkflowSid + "/Statistics",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
     }
+
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="options"> Fetch WorkflowStatistics parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of WorkflowStatistics </returns>
+    public static WorkflowStatisticsResource Fetch(FetchWorkflowStatisticsOptions options,
+                                                   ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="options"> Fetch WorkflowStatistics parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of WorkflowStatistics </returns>
+    public static async System.Threading.Tasks.Task<WorkflowStatisticsResource> FetchAsync(FetchWorkflowStatisticsOptions options,
+                                                                                           ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Workflow to fetch </param>
+    /// <param name="pathWorkflowSid"> Returns the list of Tasks that are being controlled by the Workflow with the
+    ///                       specified SID value </param>
+    /// <param name="minutes"> Only calculate statistics since this many minutes in the past </param>
+    /// <param name="startDate"> Only calculate statistics from on or after this date </param>
+    /// <param name="endDate"> Only calculate statistics from this date and time and earlier </param>
+    /// <param name="taskChannel"> Only calculate real-time statistics on this TaskChannel.  </param>
+    /// <param name="splitByWaitTime"> A comma separated list of values that describes the thresholds to calculate
+    ///                       statistics on </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of WorkflowStatistics </returns>
+    public static WorkflowStatisticsResource Fetch(string pathWorkspaceSid,
+                                                   string pathWorkflowSid,
+                                                   int? minutes = null,
+                                                   DateTime? startDate = null,
+                                                   DateTime? endDate = null,
+                                                   string taskChannel = null,
+                                                   string splitByWaitTime = null,
+                                                   ITwilioRestClient client = null)
+    {
+      var options = new FetchWorkflowStatisticsOptions(pathWorkspaceSid, pathWorkflowSid) { Minutes = minutes, StartDate = startDate, EndDate = endDate, TaskChannel = taskChannel, SplitByWaitTime = splitByWaitTime };
+      return Fetch(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Workflow to fetch </param>
+    /// <param name="pathWorkflowSid"> Returns the list of Tasks that are being controlled by the Workflow with the
+    ///                       specified SID value </param>
+    /// <param name="minutes"> Only calculate statistics since this many minutes in the past </param>
+    /// <param name="startDate"> Only calculate statistics from on or after this date </param>
+    /// <param name="endDate"> Only calculate statistics from this date and time and earlier </param>
+    /// <param name="taskChannel"> Only calculate real-time statistics on this TaskChannel.  </param>
+    /// <param name="splitByWaitTime"> A comma separated list of values that describes the thresholds to calculate
+    ///                       statistics on </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of WorkflowStatistics </returns>
+    public static async System.Threading.Tasks.Task<WorkflowStatisticsResource> FetchAsync(string pathWorkspaceSid,
+                                                                                           string pathWorkflowSid,
+                                                                                           int? minutes = null,
+                                                                                           DateTime? startDate = null,
+                                                                                           DateTime? endDate = null,
+                                                                                           string taskChannel = null,
+                                                                                           string splitByWaitTime = null,
+                                                                                           ITwilioRestClient client = null)
+    {
+      var options = new FetchWorkflowStatisticsOptions(pathWorkspaceSid, pathWorkflowSid) { Minutes = minutes, StartDate = startDate, EndDate = endDate, TaskChannel = taskChannel, SplitByWaitTime = splitByWaitTime };
+      return await FetchAsync(options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Converts a JSON string into a WorkflowStatisticsResource object
+    /// </summary>
+    /// <param name="json"> Raw JSON string </param>
+    /// <returns> WorkflowStatisticsResource object represented by the provided JSON </returns>
+    public static WorkflowStatisticsResource FromJson(string json)
+    {
+      // Convert all checked exceptions to Runtime
+      try
+      {
+        return JsonConvert.DeserializeObject<WorkflowStatisticsResource>(json);
+      }
+      catch (JsonException e)
+      {
+        throw new ApiException(e.Message, e);
+      }
+    }
+
+    /// <summary>
+    /// The SID of the Account that created the resource
+    /// </summary>
+    [JsonProperty("account_sid")]
+    public string AccountSid { get; private set; }
+    /// <summary>
+    /// An object that contains the cumulative statistics for the Workflow
+    /// </summary>
+    [JsonProperty("cumulative")]
+    public object Cumulative { get; private set; }
+    /// <summary>
+    /// An object that contains the real-time statistics for the Workflow
+    /// </summary>
+    [JsonProperty("realtime")]
+    public object Realtime { get; private set; }
+    /// <summary>
+    /// Returns the list of Tasks that are being controlled by the Workflow with the specified SID value
+    /// </summary>
+    [JsonProperty("workflow_sid")]
+    public string WorkflowSid { get; private set; }
+    /// <summary>
+    /// The SID of the Workspace that contains the Workflow
+    /// </summary>
+    [JsonProperty("workspace_sid")]
+    public string WorkspaceSid { get; private set; }
+    /// <summary>
+    /// The absolute URL of the Workflow statistics resource
+    /// </summary>
+    [JsonProperty("url")]
+    public Uri Url { get; private set; }
+
+    private WorkflowStatisticsResource()
+    {
+
+    }
+  }
 
 }

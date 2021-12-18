@@ -12,84 +12,84 @@ using Twilio.Types;
 namespace Twilio.TwiML.Voice
 {
 
-    /// <summary>
-    /// Adding a Pause in Say
-    /// </summary>
-    public class SsmlBreak : TwiML
+  /// <summary>
+  /// Adding a Pause in Say
+  /// </summary>
+  public class SsmlBreak : TwiML
+  {
+    public sealed class StrengthEnum : StringEnum
     {
-        public sealed class StrengthEnum : StringEnum
-        {
-            private StrengthEnum(string value) : base(value) {}
-            public StrengthEnum() {}
-            public static implicit operator StrengthEnum(string value)
-            {
-                return new StrengthEnum(value);
-            }
+      private StrengthEnum(string value) : base(value) { }
+      public StrengthEnum() { }
+      public static implicit operator StrengthEnum(string value)
+      {
+        return new StrengthEnum(value);
+      }
 
-            public static readonly StrengthEnum None = new StrengthEnum("none");
-            public static readonly StrengthEnum XWeak = new StrengthEnum("x-weak");
-            public static readonly StrengthEnum Weak = new StrengthEnum("weak");
-            public static readonly StrengthEnum Medium = new StrengthEnum("medium");
-            public static readonly StrengthEnum Strong = new StrengthEnum("strong");
-            public static readonly StrengthEnum XStrong = new StrengthEnum("x-strong");
-        }
-
-        /// <summary>
-        /// Set a pause based on strength
-        /// </summary>
-        public SsmlBreak.StrengthEnum Strength { get; set; }
-        /// <summary>
-        /// Set a pause to a specific length of time in seconds or milliseconds, available values: [number]s, [number]ms
-        /// </summary>
-        public string Time { get; set; }
-
-        /// <summary>
-        /// Create a new SsmlBreak
-        /// </summary>
-        /// <param name="strength"> Set a pause based on strength </param>
-        /// <param name="time"> Set a pause to a specific length of time in seconds or milliseconds, available values:
-        ///            [number]s, [number]ms </param>
-        public SsmlBreak(SsmlBreak.StrengthEnum strength = null, string time = null) : base("break")
-        {
-            this.Strength = strength;
-            this.Time = time;
-        }
-
-        /// <summary>
-        /// Return the attributes of the TwiML tag
-        /// </summary>
-        protected override List<XAttribute> GetElementAttributes()
-        {
-            var attributes = new List<XAttribute>();
-            if (this.Strength != null)
-            {
-                attributes.Add(new XAttribute("strength", this.Strength.ToString()));
-            }
-            if (this.Time != null)
-            {
-                attributes.Add(new XAttribute("time", this.Time));
-            }
-            return attributes;
-        }
-
-        /// <summary>
-        /// Append a child TwiML element to this element returning this element to allow chaining.
-        /// </summary>
-        /// <param name="childElem"> Child TwiML element to add </param>
-        public new SsmlBreak Append(TwiML childElem)
-        {
-            return (SsmlBreak) base.Append(childElem);
-        }
-
-        /// <summary>
-        /// Add freeform key-value attributes to the generated xml
-        /// </summary>
-        /// <param name="key"> Option key </param>
-        /// <param name="value"> Option value </param>
-        public new SsmlBreak SetOption(string key, object value)
-        {
-            return (SsmlBreak) base.SetOption(key, value);
-        }
+      public static readonly StrengthEnum None = new StrengthEnum("none");
+      public static readonly StrengthEnum XWeak = new StrengthEnum("x-weak");
+      public static readonly StrengthEnum Weak = new StrengthEnum("weak");
+      public static readonly StrengthEnum Medium = new StrengthEnum("medium");
+      public static readonly StrengthEnum Strong = new StrengthEnum("strong");
+      public static readonly StrengthEnum XStrong = new StrengthEnum("x-strong");
     }
+
+    /// <summary>
+    /// Set a pause based on strength
+    /// </summary>
+    public SsmlBreak.StrengthEnum Strength { get; set; }
+    /// <summary>
+    /// Set a pause to a specific length of time in seconds or milliseconds, available values: [number]s, [number]ms
+    /// </summary>
+    public string Time { get; set; }
+
+    /// <summary>
+    /// Create a new SsmlBreak
+    /// </summary>
+    /// <param name="strength"> Set a pause based on strength </param>
+    /// <param name="time"> Set a pause to a specific length of time in seconds or milliseconds, available values:
+    ///            [number]s, [number]ms </param>
+    public SsmlBreak(SsmlBreak.StrengthEnum strength = null, string time = null) : base("break")
+    {
+      this.Strength = strength;
+      this.Time = time;
+    }
+
+    /// <summary>
+    /// Return the attributes of the TwiML tag
+    /// </summary>
+    protected override List<XAttribute> GetElementAttributes()
+    {
+      var attributes = new List<XAttribute>();
+      if (this.Strength != null)
+      {
+        attributes.Add(new XAttribute("strength", this.Strength.ToString()));
+      }
+      if (this.Time != null)
+      {
+        attributes.Add(new XAttribute("time", this.Time));
+      }
+      return attributes;
+    }
+
+    /// <summary>
+    /// Append a child TwiML element to this element returning this element to allow chaining.
+    /// </summary>
+    /// <param name="childElem"> Child TwiML element to add </param>
+    public new SsmlBreak Append(TwiML childElem)
+    {
+      return (SsmlBreak)base.Append(childElem);
+    }
+
+    /// <summary>
+    /// Add freeform key-value attributes to the generated xml
+    /// </summary>
+    /// <param name="key"> Option key </param>
+    /// <param name="value"> Option value </param>
+    public new SsmlBreak SetOption(string key, object value)
+    {
+      return (SsmlBreak)base.SetOption(key, value);
+    }
+  }
 
 }

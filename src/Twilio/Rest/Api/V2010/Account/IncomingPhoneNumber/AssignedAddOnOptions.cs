@@ -11,172 +11,172 @@ using Twilio.Converters;
 namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Fetch an instance of an Add-on installation currently assigned to this Number.
+  /// </summary>
+  public class FetchAssignedAddOnOptions : IOptions<AssignedAddOnResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Fetch an instance of an Add-on installation currently assigned to this Number.
+    /// The SID of the Account that created the resource to fetch
     /// </summary>
-    public class FetchAssignedAddOnOptions : IOptions<AssignedAddOnResource>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The SID of the Phone Number that installed this Add-on
+    /// </summary>
+    public string PathResourceSid { get; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchAssignedAddOnOptions
+    /// </summary>
+    /// <param name="pathResourceSid"> The SID of the Phone Number that installed this Add-on </param>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public FetchAssignedAddOnOptions(string pathResourceSid, string pathSid)
     {
-        /// <summary>
-        /// The SID of the Account that created the resource to fetch
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The SID of the Phone Number that installed this Add-on
-        /// </summary>
-        public string PathResourceSid { get; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchAssignedAddOnOptions
-        /// </summary>
-        /// <param name="pathResourceSid"> The SID of the Phone Number that installed this Add-on </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public FetchAssignedAddOnOptions(string pathResourceSid, string pathSid)
-        {
-            PathResourceSid = pathResourceSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathResourceSid = pathResourceSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Retrieve a list of Add-on installations currently assigned to this Number.
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadAssignedAddOnOptions : ReadOptions<AssignedAddOnResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Account that created the resources to read
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The SID of the Phone Number that installed this Add-on
-        /// </summary>
-        public string PathResourceSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new ReadAssignedAddOnOptions
-        /// </summary>
-        /// <param name="pathResourceSid"> The SID of the Phone Number that installed this Add-on </param>
-        public ReadAssignedAddOnOptions(string pathResourceSid)
-        {
-            PathResourceSid = pathResourceSid;
-        }
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Retrieve a list of Add-on installations currently assigned to this Number.
+  /// </summary>
+  public class ReadAssignedAddOnOptions : ReadOptions<AssignedAddOnResource>
+  {
+    /// <summary>
+    /// The SID of the Account that created the resources to read
+    /// </summary>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The SID of the Phone Number that installed this Add-on
+    /// </summary>
+    public string PathResourceSid { get; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new ReadAssignedAddOnOptions
+    /// </summary>
+    /// <param name="pathResourceSid"> The SID of the Phone Number that installed this Add-on </param>
+    public ReadAssignedAddOnOptions(string pathResourceSid)
+    {
+      PathResourceSid = pathResourceSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Assign an Add-on installation to the Number specified.
+    /// Generate the necessary parameters
     /// </summary>
-    public class CreateAssignedAddOnOptions : IOptions<AssignedAddOnResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Account that will create the resource
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The SID of the Phone Number to assign the Add-on
-        /// </summary>
-        public string PathResourceSid { get; }
-        /// <summary>
-        /// The SID that identifies the Add-on installation
-        /// </summary>
-        public string InstalledAddOnSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new CreateAssignedAddOnOptions
-        /// </summary>
-        /// <param name="pathResourceSid"> The SID of the Phone Number to assign the Add-on </param>
-        /// <param name="installedAddOnSid"> The SID that identifies the Add-on installation </param>
-        public CreateAssignedAddOnOptions(string pathResourceSid, string installedAddOnSid)
-        {
-            PathResourceSid = pathResourceSid;
-            InstalledAddOnSid = installedAddOnSid;
-        }
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (InstalledAddOnSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("InstalledAddOnSid", InstalledAddOnSid.ToString()));
-            }
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Assign an Add-on installation to the Number specified.
+  /// </summary>
+  public class CreateAssignedAddOnOptions : IOptions<AssignedAddOnResource>
+  {
+    /// <summary>
+    /// The SID of the Account that will create the resource
+    /// </summary>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The SID of the Phone Number to assign the Add-on
+    /// </summary>
+    public string PathResourceSid { get; }
+    /// <summary>
+    /// The SID that identifies the Add-on installation
+    /// </summary>
+    public string InstalledAddOnSid { get; }
 
-            return p;
-        }
+    /// <summary>
+    /// Construct a new CreateAssignedAddOnOptions
+    /// </summary>
+    /// <param name="pathResourceSid"> The SID of the Phone Number to assign the Add-on </param>
+    /// <param name="installedAddOnSid"> The SID that identifies the Add-on installation </param>
+    public CreateAssignedAddOnOptions(string pathResourceSid, string installedAddOnSid)
+    {
+      PathResourceSid = pathResourceSid;
+      InstalledAddOnSid = installedAddOnSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Remove the assignment of an Add-on installation from the Number specified.
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteAssignedAddOnOptions : IOptions<AssignedAddOnResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Account that created the resources to delete
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The SID of the Phone Number that installed this Add-on
-        /// </summary>
-        public string PathResourceSid { get; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (InstalledAddOnSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("InstalledAddOnSid", InstalledAddOnSid.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new DeleteAssignedAddOnOptions
-        /// </summary>
-        /// <param name="pathResourceSid"> The SID of the Phone Number that installed this Add-on </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public DeleteAssignedAddOnOptions(string pathResourceSid, string pathSid)
-        {
-            PathResourceSid = pathResourceSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      return p;
     }
+  }
+
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Remove the assignment of an Add-on installation from the Number specified.
+  /// </summary>
+  public class DeleteAssignedAddOnOptions : IOptions<AssignedAddOnResource>
+  {
+    /// <summary>
+    /// The SID of the Account that created the resources to delete
+    /// </summary>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The SID of the Phone Number that installed this Add-on
+    /// </summary>
+    public string PathResourceSid { get; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new DeleteAssignedAddOnOptions
+    /// </summary>
+    /// <param name="pathResourceSid"> The SID of the Phone Number that installed this Add-on </param>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public DeleteAssignedAddOnOptions(string pathResourceSid, string pathSid)
+    {
+      PathResourceSid = pathResourceSid;
+      PathSid = pathSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
 }

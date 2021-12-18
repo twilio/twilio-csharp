@@ -11,20 +11,20 @@ using Twilio.Converters;
 namespace Twilio.Rest.Accounts.V1
 {
 
+  /// <summary>
+  /// Promote the secondary Auth Token to primary. After promoting the new token, all requests to Twilio using your old
+  /// primary Auth Token will result in an error.
+  /// </summary>
+  public class UpdateAuthTokenPromotionOptions : IOptions<AuthTokenPromotionResource>
+  {
     /// <summary>
-    /// Promote the secondary Auth Token to primary. After promoting the new token, all requests to Twilio using your old
-    /// primary Auth Token will result in an error.
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateAuthTokenPromotionOptions : IOptions<AuthTokenPromotionResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
 
 }

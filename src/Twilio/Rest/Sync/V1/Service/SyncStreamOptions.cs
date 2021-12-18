@@ -11,199 +11,199 @@ using Twilio.Converters;
 namespace Twilio.Rest.Sync.V1.Service
 {
 
+  /// <summary>
+  /// Fetch a specific Stream.
+  /// </summary>
+  public class FetchSyncStreamOptions : IOptions<SyncStreamResource>
+  {
     /// <summary>
-    /// Fetch a specific Stream.
+    /// The SID of the Sync Service with the Sync Stream resource to fetch
     /// </summary>
-    public class FetchSyncStreamOptions : IOptions<SyncStreamResource>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The SID of the Stream resource to fetch
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchSyncStreamOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Stream resource to fetch </param>
+    /// <param name="pathSid"> The SID of the Stream resource to fetch </param>
+    public FetchSyncStreamOptions(string pathServiceSid, string pathSid)
     {
-        /// <summary>
-        /// The SID of the Sync Service with the Sync Stream resource to fetch
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The SID of the Stream resource to fetch
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchSyncStreamOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Stream resource to fetch </param>
-        /// <param name="pathSid"> The SID of the Stream resource to fetch </param>
-        public FetchSyncStreamOptions(string pathServiceSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathServiceSid = pathServiceSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Delete a specific Stream.
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteSyncStreamOptions : IOptions<SyncStreamResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Sync Service with the Sync Stream resource to delete
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The SID of the Stream resource to delete
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new DeleteSyncStreamOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Stream resource to delete </param>
-        /// <param name="pathSid"> The SID of the Stream resource to delete </param>
-        public DeleteSyncStreamOptions(string pathServiceSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathSid = pathSid;
-        }
+  /// <summary>
+  /// Delete a specific Stream.
+  /// </summary>
+  public class DeleteSyncStreamOptions : IOptions<SyncStreamResource>
+  {
+    /// <summary>
+    /// The SID of the Sync Service with the Sync Stream resource to delete
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The SID of the Stream resource to delete
+    /// </summary>
+    public string PathSid { get; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+    /// <summary>
+    /// Construct a new DeleteSyncStreamOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Stream resource to delete </param>
+    /// <param name="pathSid"> The SID of the Stream resource to delete </param>
+    public DeleteSyncStreamOptions(string pathServiceSid, string pathSid)
+    {
+      PathServiceSid = pathServiceSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Create a new Stream.
+    /// Generate the necessary parameters
     /// </summary>
-    public class CreateSyncStreamOptions : IOptions<SyncStreamResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Sync Service to create the new Stream in
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// An application-defined string that uniquely identifies the resource
-        /// </summary>
-        public string UniqueName { get; set; }
-        /// <summary>
-        /// How long, in seconds, before the Stream expires and is deleted
-        /// </summary>
-        public int? Ttl { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new CreateSyncStreamOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Sync Service to create the new Stream in </param>
-        public CreateSyncStreamOptions(string pathServiceSid)
-        {
-            PathServiceSid = pathServiceSid;
-        }
+  /// <summary>
+  /// Create a new Stream.
+  /// </summary>
+  public class CreateSyncStreamOptions : IOptions<SyncStreamResource>
+  {
+    /// <summary>
+    /// The SID of the Sync Service to create the new Stream in
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// An application-defined string that uniquely identifies the resource
+    /// </summary>
+    public string UniqueName { get; set; }
+    /// <summary>
+    /// How long, in seconds, before the Stream expires and is deleted
+    /// </summary>
+    public int? Ttl { get; set; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (UniqueName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
-            }
-
-            if (Ttl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Ttl", Ttl.ToString()));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new CreateSyncStreamOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Sync Service to create the new Stream in </param>
+    public CreateSyncStreamOptions(string pathServiceSid)
+    {
+      PathServiceSid = pathServiceSid;
     }
 
     /// <summary>
-    /// Update a specific Stream.
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateSyncStreamOptions : IOptions<SyncStreamResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Sync Service with the Sync Stream resource to update
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The SID of the Stream resource to update
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// How long, in seconds, before the Stream expires and is deleted
-        /// </summary>
-        public int? Ttl { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (UniqueName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
+      }
 
-        /// <summary>
-        /// Construct a new UpdateSyncStreamOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Stream resource to update </param>
-        /// <param name="pathSid"> The SID of the Stream resource to update </param>
-        public UpdateSyncStreamOptions(string pathServiceSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathSid = pathSid;
-        }
+      if (Ttl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Ttl", Ttl.ToString()));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Ttl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Ttl", Ttl.ToString()));
-            }
+      return p;
+    }
+  }
 
-            return p;
-        }
+  /// <summary>
+  /// Update a specific Stream.
+  /// </summary>
+  public class UpdateSyncStreamOptions : IOptions<SyncStreamResource>
+  {
+    /// <summary>
+    /// The SID of the Sync Service with the Sync Stream resource to update
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The SID of the Stream resource to update
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// How long, in seconds, before the Stream expires and is deleted
+    /// </summary>
+    public int? Ttl { get; set; }
+
+    /// <summary>
+    /// Construct a new UpdateSyncStreamOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Stream resource to update </param>
+    /// <param name="pathSid"> The SID of the Stream resource to update </param>
+    public UpdateSyncStreamOptions(string pathServiceSid, string pathSid)
+    {
+      PathServiceSid = pathServiceSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Retrieve a list of all Streams in a Service Instance.
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadSyncStreamOptions : ReadOptions<SyncStreamResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Sync Service with the Stream resources to read
-        /// </summary>
-        public string PathServiceSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (Ttl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Ttl", Ttl.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new ReadSyncStreamOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Sync Service with the Stream resources to read </param>
-        public ReadSyncStreamOptions(string pathServiceSid)
-        {
-            PathServiceSid = pathServiceSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+      return p;
     }
+  }
+
+  /// <summary>
+  /// Retrieve a list of all Streams in a Service Instance.
+  /// </summary>
+  public class ReadSyncStreamOptions : ReadOptions<SyncStreamResource>
+  {
+    /// <summary>
+    /// The SID of the Sync Service with the Stream resources to read
+    /// </summary>
+    public string PathServiceSid { get; }
+
+    /// <summary>
+    /// Construct a new ReadSyncStreamOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Sync Service with the Stream resources to read </param>
+    public ReadSyncStreamOptions(string pathServiceSid)
+    {
+      PathServiceSid = pathServiceSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
 
 }

@@ -11,458 +11,458 @@ using Twilio.Converters;
 namespace Twilio.Rest.FlexApi.V1
 {
 
+  /// <summary>
+  /// ReadFlexFlowOptions
+  /// </summary>
+  public class ReadFlexFlowOptions : ReadOptions<FlexFlowResource>
+  {
     /// <summary>
-    /// ReadFlexFlowOptions
+    /// The `friendly_name` of the Flex Flow resources to read
     /// </summary>
-    public class ReadFlexFlowOptions : ReadOptions<FlexFlowResource>
+    public string FriendlyName { get; set; }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The `friendly_name` of the Flex Flow resources to read
-        /// </summary>
-        public string FriendlyName { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
+      return p;
+    }
+  }
 
-            return p;
-        }
+  /// <summary>
+  /// FetchFlexFlowOptions
+  /// </summary>
+  public class FetchFlexFlowOptions : IOptions<FlexFlowResource>
+  {
+    /// <summary>
+    /// The SID that identifies the resource to fetch
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchFlexFlowOptions
+    /// </summary>
+    /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
+    public FetchFlexFlowOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// FetchFlexFlowOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchFlexFlowOptions : IOptions<FlexFlowResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID that identifies the resource to fetch
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new FetchFlexFlowOptions
-        /// </summary>
-        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
-        public FetchFlexFlowOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
+  /// <summary>
+  /// CreateFlexFlowOptions
+  /// </summary>
+  public class CreateFlexFlowOptions : IOptions<FlexFlowResource>
+  {
+    /// <summary>
+    /// A string to describe the resource
+    /// </summary>
+    public string FriendlyName { get; }
+    /// <summary>
+    /// The SID of the chat service
+    /// </summary>
+    public string ChatServiceSid { get; }
+    /// <summary>
+    /// The channel type
+    /// </summary>
+    public FlexFlowResource.ChannelTypeEnum ChannelType { get; }
+    /// <summary>
+    /// The channel contact's Identity
+    /// </summary>
+    public string ContactIdentity { get; set; }
+    /// <summary>
+    /// Whether the new Flex Flow is enabled
+    /// </summary>
+    public bool? Enabled { get; set; }
+    /// <summary>
+    /// The software that will handle inbound messages.
+    /// </summary>
+    public FlexFlowResource.IntegrationTypeEnum IntegrationType { get; set; }
+    /// <summary>
+    /// The SID of the Studio Flow
+    /// </summary>
+    public string IntegrationFlowSid { get; set; }
+    /// <summary>
+    /// The External Webhook URL
+    /// </summary>
+    public Uri IntegrationUrl { get; set; }
+    /// <summary>
+    /// The Workspace SID for a new Task
+    /// </summary>
+    public string IntegrationWorkspaceSid { get; set; }
+    /// <summary>
+    /// The Workflow SID for a new Task
+    /// </summary>
+    public string IntegrationWorkflowSid { get; set; }
+    /// <summary>
+    /// The Task Channel for a new Task
+    /// </summary>
+    public string IntegrationChannel { get; set; }
+    /// <summary>
+    /// The Task timeout in seconds for a new Task
+    /// </summary>
+    public int? IntegrationTimeout { get; set; }
+    /// <summary>
+    /// The Task priority of a new Task
+    /// </summary>
+    public int? IntegrationPriority { get; set; }
+    /// <summary>
+    /// Whether to create a Task when the first message arrives
+    /// </summary>
+    public bool? IntegrationCreationOnMessage { get; set; }
+    /// <summary>
+    /// Reuse this chat channel for future interactions with a contact
+    /// </summary>
+    public bool? LongLived { get; set; }
+    /// <summary>
+    /// Remove active Proxy sessions if the corresponding Task is deleted
+    /// </summary>
+    public bool? JanitorEnabled { get; set; }
+    /// <summary>
+    /// The number of times to retry the webhook if the first attempt fails
+    /// </summary>
+    public int? IntegrationRetryCount { get; set; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+    /// <summary>
+    /// Construct a new CreateFlexFlowOptions
+    /// </summary>
+    /// <param name="friendlyName"> A string to describe the resource </param>
+    /// <param name="chatServiceSid"> The SID of the chat service </param>
+    /// <param name="channelType"> The channel type </param>
+    public CreateFlexFlowOptions(string friendlyName,
+                                 string chatServiceSid,
+                                 FlexFlowResource.ChannelTypeEnum channelType)
+    {
+      FriendlyName = friendlyName;
+      ChatServiceSid = chatServiceSid;
+      ChannelType = channelType;
     }
 
     /// <summary>
-    /// CreateFlexFlowOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class CreateFlexFlowOptions : IOptions<FlexFlowResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// A string to describe the resource
-        /// </summary>
-        public string FriendlyName { get; }
-        /// <summary>
-        /// The SID of the chat service
-        /// </summary>
-        public string ChatServiceSid { get; }
-        /// <summary>
-        /// The channel type
-        /// </summary>
-        public FlexFlowResource.ChannelTypeEnum ChannelType { get; }
-        /// <summary>
-        /// The channel contact's Identity
-        /// </summary>
-        public string ContactIdentity { get; set; }
-        /// <summary>
-        /// Whether the new Flex Flow is enabled
-        /// </summary>
-        public bool? Enabled { get; set; }
-        /// <summary>
-        /// The software that will handle inbound messages.
-        /// </summary>
-        public FlexFlowResource.IntegrationTypeEnum IntegrationType { get; set; }
-        /// <summary>
-        /// The SID of the Studio Flow
-        /// </summary>
-        public string IntegrationFlowSid { get; set; }
-        /// <summary>
-        /// The External Webhook URL
-        /// </summary>
-        public Uri IntegrationUrl { get; set; }
-        /// <summary>
-        /// The Workspace SID for a new Task
-        /// </summary>
-        public string IntegrationWorkspaceSid { get; set; }
-        /// <summary>
-        /// The Workflow SID for a new Task
-        /// </summary>
-        public string IntegrationWorkflowSid { get; set; }
-        /// <summary>
-        /// The Task Channel for a new Task
-        /// </summary>
-        public string IntegrationChannel { get; set; }
-        /// <summary>
-        /// The Task timeout in seconds for a new Task
-        /// </summary>
-        public int? IntegrationTimeout { get; set; }
-        /// <summary>
-        /// The Task priority of a new Task
-        /// </summary>
-        public int? IntegrationPriority { get; set; }
-        /// <summary>
-        /// Whether to create a Task when the first message arrives
-        /// </summary>
-        public bool? IntegrationCreationOnMessage { get; set; }
-        /// <summary>
-        /// Reuse this chat channel for future interactions with a contact
-        /// </summary>
-        public bool? LongLived { get; set; }
-        /// <summary>
-        /// Remove active Proxy sessions if the corresponding Task is deleted
-        /// </summary>
-        public bool? JanitorEnabled { get; set; }
-        /// <summary>
-        /// The number of times to retry the webhook if the first attempt fails
-        /// </summary>
-        public int? IntegrationRetryCount { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
 
-        /// <summary>
-        /// Construct a new CreateFlexFlowOptions
-        /// </summary>
-        /// <param name="friendlyName"> A string to describe the resource </param>
-        /// <param name="chatServiceSid"> The SID of the chat service </param>
-        /// <param name="channelType"> The channel type </param>
-        public CreateFlexFlowOptions(string friendlyName,
-                                     string chatServiceSid,
-                                     FlexFlowResource.ChannelTypeEnum channelType)
-        {
-            FriendlyName = friendlyName;
-            ChatServiceSid = chatServiceSid;
-            ChannelType = channelType;
-        }
+      if (ChatServiceSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ChatServiceSid", ChatServiceSid.ToString()));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
+      if (ChannelType != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ChannelType", ChannelType.ToString()));
+      }
 
-            if (ChatServiceSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ChatServiceSid", ChatServiceSid.ToString()));
-            }
+      if (ContactIdentity != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ContactIdentity", ContactIdentity));
+      }
 
-            if (ChannelType != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ChannelType", ChannelType.ToString()));
-            }
+      if (Enabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Enabled", Enabled.Value.ToString().ToLower()));
+      }
 
-            if (ContactIdentity != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ContactIdentity", ContactIdentity));
-            }
+      if (IntegrationType != null)
+      {
+        p.Add(new KeyValuePair<string, string>("IntegrationType", IntegrationType.ToString()));
+      }
 
-            if (Enabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Enabled", Enabled.Value.ToString().ToLower()));
-            }
+      if (IntegrationFlowSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Integration.FlowSid", IntegrationFlowSid.ToString()));
+      }
 
-            if (IntegrationType != null)
-            {
-                p.Add(new KeyValuePair<string, string>("IntegrationType", IntegrationType.ToString()));
-            }
+      if (IntegrationUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Integration.Url", Serializers.Url(IntegrationUrl)));
+      }
 
-            if (IntegrationFlowSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Integration.FlowSid", IntegrationFlowSid.ToString()));
-            }
+      if (IntegrationWorkspaceSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Integration.WorkspaceSid", IntegrationWorkspaceSid.ToString()));
+      }
 
-            if (IntegrationUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Integration.Url", Serializers.Url(IntegrationUrl)));
-            }
+      if (IntegrationWorkflowSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Integration.WorkflowSid", IntegrationWorkflowSid.ToString()));
+      }
 
-            if (IntegrationWorkspaceSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Integration.WorkspaceSid", IntegrationWorkspaceSid.ToString()));
-            }
+      if (IntegrationChannel != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Integration.Channel", IntegrationChannel));
+      }
 
-            if (IntegrationWorkflowSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Integration.WorkflowSid", IntegrationWorkflowSid.ToString()));
-            }
+      if (IntegrationTimeout != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Integration.Timeout", IntegrationTimeout.ToString()));
+      }
 
-            if (IntegrationChannel != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Integration.Channel", IntegrationChannel));
-            }
+      if (IntegrationPriority != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Integration.Priority", IntegrationPriority.ToString()));
+      }
 
-            if (IntegrationTimeout != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Integration.Timeout", IntegrationTimeout.ToString()));
-            }
+      if (IntegrationCreationOnMessage != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Integration.CreationOnMessage", IntegrationCreationOnMessage.Value.ToString().ToLower()));
+      }
 
-            if (IntegrationPriority != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Integration.Priority", IntegrationPriority.ToString()));
-            }
+      if (LongLived != null)
+      {
+        p.Add(new KeyValuePair<string, string>("LongLived", LongLived.Value.ToString().ToLower()));
+      }
 
-            if (IntegrationCreationOnMessage != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Integration.CreationOnMessage", IntegrationCreationOnMessage.Value.ToString().ToLower()));
-            }
+      if (JanitorEnabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("JanitorEnabled", JanitorEnabled.Value.ToString().ToLower()));
+      }
 
-            if (LongLived != null)
-            {
-                p.Add(new KeyValuePair<string, string>("LongLived", LongLived.Value.ToString().ToLower()));
-            }
+      if (IntegrationRetryCount != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Integration.RetryCount", IntegrationRetryCount.ToString()));
+      }
 
-            if (JanitorEnabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("JanitorEnabled", JanitorEnabled.Value.ToString().ToLower()));
-            }
+      return p;
+    }
+  }
 
-            if (IntegrationRetryCount != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Integration.RetryCount", IntegrationRetryCount.ToString()));
-            }
+  /// <summary>
+  /// UpdateFlexFlowOptions
+  /// </summary>
+  public class UpdateFlexFlowOptions : IOptions<FlexFlowResource>
+  {
+    /// <summary>
+    /// The SID that identifies the resource to update
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// A string to describe the resource
+    /// </summary>
+    public string FriendlyName { get; set; }
+    /// <summary>
+    /// The SID of the chat service
+    /// </summary>
+    public string ChatServiceSid { get; set; }
+    /// <summary>
+    /// The channel type
+    /// </summary>
+    public FlexFlowResource.ChannelTypeEnum ChannelType { get; set; }
+    /// <summary>
+    /// The channel contact's Identity
+    /// </summary>
+    public string ContactIdentity { get; set; }
+    /// <summary>
+    /// Whether the new Flex Flow is enabled
+    /// </summary>
+    public bool? Enabled { get; set; }
+    /// <summary>
+    /// The software that will handle inbound messages.
+    /// </summary>
+    public FlexFlowResource.IntegrationTypeEnum IntegrationType { get; set; }
+    /// <summary>
+    /// The SID of the Studio Flow
+    /// </summary>
+    public string IntegrationFlowSid { get; set; }
+    /// <summary>
+    /// The External Webhook URL
+    /// </summary>
+    public Uri IntegrationUrl { get; set; }
+    /// <summary>
+    /// The Workspace SID for a new Task
+    /// </summary>
+    public string IntegrationWorkspaceSid { get; set; }
+    /// <summary>
+    /// The Workflow SID for a new Task
+    /// </summary>
+    public string IntegrationWorkflowSid { get; set; }
+    /// <summary>
+    /// The Task Channel for a new Task
+    /// </summary>
+    public string IntegrationChannel { get; set; }
+    /// <summary>
+    /// The Task timeout in seconds for a new Task
+    /// </summary>
+    public int? IntegrationTimeout { get; set; }
+    /// <summary>
+    /// The Task priority of a new Task
+    /// </summary>
+    public int? IntegrationPriority { get; set; }
+    /// <summary>
+    /// Whether to create a Task when the first message arrives
+    /// </summary>
+    public bool? IntegrationCreationOnMessage { get; set; }
+    /// <summary>
+    /// Reuse this chat channel for future interactions with a contact
+    /// </summary>
+    public bool? LongLived { get; set; }
+    /// <summary>
+    /// Remove active Proxy sessions if the corresponding Task is deleted
+    /// </summary>
+    public bool? JanitorEnabled { get; set; }
+    /// <summary>
+    /// The number of times to retry the webhook if the first attempt fails
+    /// </summary>
+    public int? IntegrationRetryCount { get; set; }
 
-            return p;
-        }
+    /// <summary>
+    /// Construct a new UpdateFlexFlowOptions
+    /// </summary>
+    /// <param name="pathSid"> The SID that identifies the resource to update </param>
+    public UpdateFlexFlowOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// UpdateFlexFlowOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateFlexFlowOptions : IOptions<FlexFlowResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID that identifies the resource to update
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// A string to describe the resource
-        /// </summary>
-        public string FriendlyName { get; set; }
-        /// <summary>
-        /// The SID of the chat service
-        /// </summary>
-        public string ChatServiceSid { get; set; }
-        /// <summary>
-        /// The channel type
-        /// </summary>
-        public FlexFlowResource.ChannelTypeEnum ChannelType { get; set; }
-        /// <summary>
-        /// The channel contact's Identity
-        /// </summary>
-        public string ContactIdentity { get; set; }
-        /// <summary>
-        /// Whether the new Flex Flow is enabled
-        /// </summary>
-        public bool? Enabled { get; set; }
-        /// <summary>
-        /// The software that will handle inbound messages.
-        /// </summary>
-        public FlexFlowResource.IntegrationTypeEnum IntegrationType { get; set; }
-        /// <summary>
-        /// The SID of the Studio Flow
-        /// </summary>
-        public string IntegrationFlowSid { get; set; }
-        /// <summary>
-        /// The External Webhook URL
-        /// </summary>
-        public Uri IntegrationUrl { get; set; }
-        /// <summary>
-        /// The Workspace SID for a new Task
-        /// </summary>
-        public string IntegrationWorkspaceSid { get; set; }
-        /// <summary>
-        /// The Workflow SID for a new Task
-        /// </summary>
-        public string IntegrationWorkflowSid { get; set; }
-        /// <summary>
-        /// The Task Channel for a new Task
-        /// </summary>
-        public string IntegrationChannel { get; set; }
-        /// <summary>
-        /// The Task timeout in seconds for a new Task
-        /// </summary>
-        public int? IntegrationTimeout { get; set; }
-        /// <summary>
-        /// The Task priority of a new Task
-        /// </summary>
-        public int? IntegrationPriority { get; set; }
-        /// <summary>
-        /// Whether to create a Task when the first message arrives
-        /// </summary>
-        public bool? IntegrationCreationOnMessage { get; set; }
-        /// <summary>
-        /// Reuse this chat channel for future interactions with a contact
-        /// </summary>
-        public bool? LongLived { get; set; }
-        /// <summary>
-        /// Remove active Proxy sessions if the corresponding Task is deleted
-        /// </summary>
-        public bool? JanitorEnabled { get; set; }
-        /// <summary>
-        /// The number of times to retry the webhook if the first attempt fails
-        /// </summary>
-        public int? IntegrationRetryCount { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
 
-        /// <summary>
-        /// Construct a new UpdateFlexFlowOptions
-        /// </summary>
-        /// <param name="pathSid"> The SID that identifies the resource to update </param>
-        public UpdateFlexFlowOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
+      if (ChatServiceSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ChatServiceSid", ChatServiceSid.ToString()));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
+      if (ChannelType != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ChannelType", ChannelType.ToString()));
+      }
 
-            if (ChatServiceSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ChatServiceSid", ChatServiceSid.ToString()));
-            }
+      if (ContactIdentity != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ContactIdentity", ContactIdentity));
+      }
 
-            if (ChannelType != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ChannelType", ChannelType.ToString()));
-            }
+      if (Enabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Enabled", Enabled.Value.ToString().ToLower()));
+      }
 
-            if (ContactIdentity != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ContactIdentity", ContactIdentity));
-            }
+      if (IntegrationType != null)
+      {
+        p.Add(new KeyValuePair<string, string>("IntegrationType", IntegrationType.ToString()));
+      }
 
-            if (Enabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Enabled", Enabled.Value.ToString().ToLower()));
-            }
+      if (IntegrationFlowSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Integration.FlowSid", IntegrationFlowSid.ToString()));
+      }
 
-            if (IntegrationType != null)
-            {
-                p.Add(new KeyValuePair<string, string>("IntegrationType", IntegrationType.ToString()));
-            }
+      if (IntegrationUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Integration.Url", Serializers.Url(IntegrationUrl)));
+      }
 
-            if (IntegrationFlowSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Integration.FlowSid", IntegrationFlowSid.ToString()));
-            }
+      if (IntegrationWorkspaceSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Integration.WorkspaceSid", IntegrationWorkspaceSid.ToString()));
+      }
 
-            if (IntegrationUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Integration.Url", Serializers.Url(IntegrationUrl)));
-            }
+      if (IntegrationWorkflowSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Integration.WorkflowSid", IntegrationWorkflowSid.ToString()));
+      }
 
-            if (IntegrationWorkspaceSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Integration.WorkspaceSid", IntegrationWorkspaceSid.ToString()));
-            }
+      if (IntegrationChannel != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Integration.Channel", IntegrationChannel));
+      }
 
-            if (IntegrationWorkflowSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Integration.WorkflowSid", IntegrationWorkflowSid.ToString()));
-            }
+      if (IntegrationTimeout != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Integration.Timeout", IntegrationTimeout.ToString()));
+      }
 
-            if (IntegrationChannel != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Integration.Channel", IntegrationChannel));
-            }
+      if (IntegrationPriority != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Integration.Priority", IntegrationPriority.ToString()));
+      }
 
-            if (IntegrationTimeout != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Integration.Timeout", IntegrationTimeout.ToString()));
-            }
+      if (IntegrationCreationOnMessage != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Integration.CreationOnMessage", IntegrationCreationOnMessage.Value.ToString().ToLower()));
+      }
 
-            if (IntegrationPriority != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Integration.Priority", IntegrationPriority.ToString()));
-            }
+      if (LongLived != null)
+      {
+        p.Add(new KeyValuePair<string, string>("LongLived", LongLived.Value.ToString().ToLower()));
+      }
 
-            if (IntegrationCreationOnMessage != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Integration.CreationOnMessage", IntegrationCreationOnMessage.Value.ToString().ToLower()));
-            }
+      if (JanitorEnabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("JanitorEnabled", JanitorEnabled.Value.ToString().ToLower()));
+      }
 
-            if (LongLived != null)
-            {
-                p.Add(new KeyValuePair<string, string>("LongLived", LongLived.Value.ToString().ToLower()));
-            }
+      if (IntegrationRetryCount != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Integration.RetryCount", IntegrationRetryCount.ToString()));
+      }
 
-            if (JanitorEnabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("JanitorEnabled", JanitorEnabled.Value.ToString().ToLower()));
-            }
+      return p;
+    }
+  }
 
-            if (IntegrationRetryCount != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Integration.RetryCount", IntegrationRetryCount.ToString()));
-            }
+  /// <summary>
+  /// DeleteFlexFlowOptions
+  /// </summary>
+  public class DeleteFlexFlowOptions : IOptions<FlexFlowResource>
+  {
+    /// <summary>
+    /// The SID that identifies the resource to delete
+    /// </summary>
+    public string PathSid { get; }
 
-            return p;
-        }
+    /// <summary>
+    /// Construct a new DeleteFlexFlowOptions
+    /// </summary>
+    /// <param name="pathSid"> The SID that identifies the resource to delete </param>
+    public DeleteFlexFlowOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// DeleteFlexFlowOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteFlexFlowOptions : IOptions<FlexFlowResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID that identifies the resource to delete
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new DeleteFlexFlowOptions
-        /// </summary>
-        /// <param name="pathSid"> The SID that identifies the resource to delete </param>
-        public DeleteFlexFlowOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
 
 }

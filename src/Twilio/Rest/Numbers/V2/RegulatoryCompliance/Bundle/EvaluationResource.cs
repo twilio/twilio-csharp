@@ -19,355 +19,355 @@ using Twilio.Types;
 namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
 {
 
-    public class EvaluationResource : Resource
+  public class EvaluationResource : Resource
+  {
+    public sealed class StatusEnum : StringEnum
     {
-        public sealed class StatusEnum : StringEnum
-        {
-            private StatusEnum(string value) : base(value) {}
-            public StatusEnum() {}
-            public static implicit operator StatusEnum(string value)
-            {
-                return new StatusEnum(value);
-            }
+      private StatusEnum(string value) : base(value) { }
+      public StatusEnum() { }
+      public static implicit operator StatusEnum(string value)
+      {
+        return new StatusEnum(value);
+      }
 
-            public static readonly StatusEnum Compliant = new StatusEnum("compliant");
-            public static readonly StatusEnum Noncompliant = new StatusEnum("noncompliant");
-        }
-
-        private static Request BuildCreateRequest(CreateEvaluationOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Post,
-                Rest.Domain.Numbers,
-                "/v2/RegulatoryCompliance/Bundles/" + options.PathBundleSid + "/Evaluations",
-                postParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// Creates an evaluation for a bundle
-        /// </summary>
-        /// <param name="options"> Create Evaluation parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Evaluation </returns>
-        public static EvaluationResource Create(CreateEvaluationOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildCreateRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Creates an evaluation for a bundle
-        /// </summary>
-        /// <param name="options"> Create Evaluation parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Evaluation </returns>
-        public static async System.Threading.Tasks.Task<EvaluationResource> CreateAsync(CreateEvaluationOptions options,
-                                                                                        ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// Creates an evaluation for a bundle
-        /// </summary>
-        /// <param name="pathBundleSid"> The unique string that identifies the resource </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Evaluation </returns>
-        public static EvaluationResource Create(string pathBundleSid, ITwilioRestClient client = null)
-        {
-            var options = new CreateEvaluationOptions(pathBundleSid);
-            return Create(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Creates an evaluation for a bundle
-        /// </summary>
-        /// <param name="pathBundleSid"> The unique string that identifies the resource </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Evaluation </returns>
-        public static async System.Threading.Tasks.Task<EvaluationResource> CreateAsync(string pathBundleSid,
-                                                                                        ITwilioRestClient client = null)
-        {
-            var options = new CreateEvaluationOptions(pathBundleSid);
-            return await CreateAsync(options, client);
-        }
-        #endif
-
-        private static Request BuildReadRequest(ReadEvaluationOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Get,
-                Rest.Domain.Numbers,
-                "/v2/RegulatoryCompliance/Bundles/" + options.PathBundleSid + "/Evaluations",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// Retrieve a list of Evaluations associated to the Bundle resource.
-        /// </summary>
-        /// <param name="options"> Read Evaluation parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Evaluation </returns>
-        public static ResourceSet<EvaluationResource> Read(ReadEvaluationOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildReadRequest(options, client));
-
-            var page = Page<EvaluationResource>.FromJson("results", response.Content);
-            return new ResourceSet<EvaluationResource>(page, options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Retrieve a list of Evaluations associated to the Bundle resource.
-        /// </summary>
-        /// <param name="options"> Read Evaluation parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Evaluation </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<EvaluationResource>> ReadAsync(ReadEvaluationOptions options,
-                                                                                                   ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
-
-            var page = Page<EvaluationResource>.FromJson("results", response.Content);
-            return new ResourceSet<EvaluationResource>(page, options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Retrieve a list of Evaluations associated to the Bundle resource.
-        /// </summary>
-        /// <param name="pathBundleSid"> The unique string that identifies the resource </param>
-        /// <param name="pageSize"> Page size </param>
-        /// <param name="limit"> Record limit </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Evaluation </returns>
-        public static ResourceSet<EvaluationResource> Read(string pathBundleSid,
-                                                           int? pageSize = null,
-                                                           long? limit = null,
-                                                           ITwilioRestClient client = null)
-        {
-            var options = new ReadEvaluationOptions(pathBundleSid){PageSize = pageSize, Limit = limit};
-            return Read(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Retrieve a list of Evaluations associated to the Bundle resource.
-        /// </summary>
-        /// <param name="pathBundleSid"> The unique string that identifies the resource </param>
-        /// <param name="pageSize"> Page size </param>
-        /// <param name="limit"> Record limit </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Evaluation </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<EvaluationResource>> ReadAsync(string pathBundleSid,
-                                                                                                   int? pageSize = null,
-                                                                                                   long? limit = null,
-                                                                                                   ITwilioRestClient client = null)
-        {
-            var options = new ReadEvaluationOptions(pathBundleSid){PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Fetch the target page of records
-        /// </summary>
-        /// <param name="targetUrl"> API-generated URL for the requested results page </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns>
-        public static Page<EvaluationResource> GetPage(string targetUrl, ITwilioRestClient client)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-
-            var request = new Request(
-                HttpMethod.Get,
-                targetUrl
-            );
-
-            var response = client.Request(request);
-            return Page<EvaluationResource>.FromJson("results", response.Content);
-        }
-
-        /// <summary>
-        /// Fetch the next page of records
-        /// </summary>
-        /// <param name="page"> current page of records </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns>
-        public static Page<EvaluationResource> NextPage(Page<EvaluationResource> page, ITwilioRestClient client)
-        {
-            var request = new Request(
-                HttpMethod.Get,
-                page.GetNextPageUrl(Rest.Domain.Numbers)
-            );
-
-            var response = client.Request(request);
-            return Page<EvaluationResource>.FromJson("results", response.Content);
-        }
-
-        /// <summary>
-        /// Fetch the previous page of records
-        /// </summary>
-        /// <param name="page"> current page of records </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns>
-        public static Page<EvaluationResource> PreviousPage(Page<EvaluationResource> page, ITwilioRestClient client)
-        {
-            var request = new Request(
-                HttpMethod.Get,
-                page.GetPreviousPageUrl(Rest.Domain.Numbers)
-            );
-
-            var response = client.Request(request);
-            return Page<EvaluationResource>.FromJson("results", response.Content);
-        }
-
-        private static Request BuildFetchRequest(FetchEvaluationOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Get,
-                Rest.Domain.Numbers,
-                "/v2/RegulatoryCompliance/Bundles/" + options.PathBundleSid + "/Evaluations/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// Fetch specific Evaluation Instance.
-        /// </summary>
-        /// <param name="options"> Fetch Evaluation parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Evaluation </returns>
-        public static EvaluationResource Fetch(FetchEvaluationOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Fetch specific Evaluation Instance.
-        /// </summary>
-        /// <param name="options"> Fetch Evaluation parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Evaluation </returns>
-        public static async System.Threading.Tasks.Task<EvaluationResource> FetchAsync(FetchEvaluationOptions options,
-                                                                                       ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// Fetch specific Evaluation Instance.
-        /// </summary>
-        /// <param name="pathBundleSid"> The unique string that identifies the resource </param>
-        /// <param name="pathSid"> The unique string that identifies the Evaluation resource </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Evaluation </returns>
-        public static EvaluationResource Fetch(string pathBundleSid, string pathSid, ITwilioRestClient client = null)
-        {
-            var options = new FetchEvaluationOptions(pathBundleSid, pathSid);
-            return Fetch(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Fetch specific Evaluation Instance.
-        /// </summary>
-        /// <param name="pathBundleSid"> The unique string that identifies the resource </param>
-        /// <param name="pathSid"> The unique string that identifies the Evaluation resource </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Evaluation </returns>
-        public static async System.Threading.Tasks.Task<EvaluationResource> FetchAsync(string pathBundleSid,
-                                                                                       string pathSid,
-                                                                                       ITwilioRestClient client = null)
-        {
-            var options = new FetchEvaluationOptions(pathBundleSid, pathSid);
-            return await FetchAsync(options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Converts a JSON string into a EvaluationResource object
-        /// </summary>
-        /// <param name="json"> Raw JSON string </param>
-        /// <returns> EvaluationResource object represented by the provided JSON </returns>
-        public static EvaluationResource FromJson(string json)
-        {
-            // Convert all checked exceptions to Runtime
-            try
-            {
-                return JsonConvert.DeserializeObject<EvaluationResource>(json);
-            }
-            catch (JsonException e)
-            {
-                throw new ApiException(e.Message, e);
-            }
-        }
-
-        /// <summary>
-        /// The unique string that identifies the Evaluation resource
-        /// </summary>
-        [JsonProperty("sid")]
-        public string Sid { get; private set; }
-        /// <summary>
-        /// The SID of the Account that created the resource
-        /// </summary>
-        [JsonProperty("account_sid")]
-        public string AccountSid { get; private set; }
-        /// <summary>
-        /// The unique string of a regulation
-        /// </summary>
-        [JsonProperty("regulation_sid")]
-        public string RegulationSid { get; private set; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        [JsonProperty("bundle_sid")]
-        public string BundleSid { get; private set; }
-        /// <summary>
-        /// The compliance status of the Evaluation resource
-        /// </summary>
-        [JsonProperty("status")]
-        [JsonConverter(typeof(StringEnumConverter))]
-        public EvaluationResource.StatusEnum Status { get; private set; }
-        /// <summary>
-        /// The results of the Evaluation resource
-        /// </summary>
-        [JsonProperty("results")]
-        public List<object> Results { get; private set; }
-        /// <summary>
-        /// The date_created
-        /// </summary>
-        [JsonProperty("date_created")]
-        public DateTime? DateCreated { get; private set; }
-        /// <summary>
-        /// The url
-        /// </summary>
-        [JsonProperty("url")]
-        public Uri Url { get; private set; }
-
-        private EvaluationResource()
-        {
-
-        }
+      public static readonly StatusEnum Compliant = new StatusEnum("compliant");
+      public static readonly StatusEnum Noncompliant = new StatusEnum("noncompliant");
     }
+
+    private static Request BuildCreateRequest(CreateEvaluationOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Post,
+          Rest.Domain.Numbers,
+          "/v2/RegulatoryCompliance/Bundles/" + options.PathBundleSid + "/Evaluations",
+          postParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// Creates an evaluation for a bundle
+    /// </summary>
+    /// <param name="options"> Create Evaluation parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Evaluation </returns>
+    public static EvaluationResource Create(CreateEvaluationOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildCreateRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Creates an evaluation for a bundle
+    /// </summary>
+    /// <param name="options"> Create Evaluation parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Evaluation </returns>
+    public static async System.Threading.Tasks.Task<EvaluationResource> CreateAsync(CreateEvaluationOptions options,
+                                                                                    ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildCreateRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// Creates an evaluation for a bundle
+    /// </summary>
+    /// <param name="pathBundleSid"> The unique string that identifies the resource </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Evaluation </returns>
+    public static EvaluationResource Create(string pathBundleSid, ITwilioRestClient client = null)
+    {
+      var options = new CreateEvaluationOptions(pathBundleSid);
+      return Create(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Creates an evaluation for a bundle
+    /// </summary>
+    /// <param name="pathBundleSid"> The unique string that identifies the resource </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Evaluation </returns>
+    public static async System.Threading.Tasks.Task<EvaluationResource> CreateAsync(string pathBundleSid,
+                                                                                    ITwilioRestClient client = null)
+    {
+      var options = new CreateEvaluationOptions(pathBundleSid);
+      return await CreateAsync(options, client);
+    }
+#endif
+
+    private static Request BuildReadRequest(ReadEvaluationOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Get,
+          Rest.Domain.Numbers,
+          "/v2/RegulatoryCompliance/Bundles/" + options.PathBundleSid + "/Evaluations",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// Retrieve a list of Evaluations associated to the Bundle resource.
+    /// </summary>
+    /// <param name="options"> Read Evaluation parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Evaluation </returns>
+    public static ResourceSet<EvaluationResource> Read(ReadEvaluationOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildReadRequest(options, client));
+
+      var page = Page<EvaluationResource>.FromJson("results", response.Content);
+      return new ResourceSet<EvaluationResource>(page, options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Retrieve a list of Evaluations associated to the Bundle resource.
+    /// </summary>
+    /// <param name="options"> Read Evaluation parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Evaluation </returns>
+    public static async System.Threading.Tasks.Task<ResourceSet<EvaluationResource>> ReadAsync(ReadEvaluationOptions options,
+                                                                                               ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+      var page = Page<EvaluationResource>.FromJson("results", response.Content);
+      return new ResourceSet<EvaluationResource>(page, options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Retrieve a list of Evaluations associated to the Bundle resource.
+    /// </summary>
+    /// <param name="pathBundleSid"> The unique string that identifies the resource </param>
+    /// <param name="pageSize"> Page size </param>
+    /// <param name="limit"> Record limit </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Evaluation </returns>
+    public static ResourceSet<EvaluationResource> Read(string pathBundleSid,
+                                                       int? pageSize = null,
+                                                       long? limit = null,
+                                                       ITwilioRestClient client = null)
+    {
+      var options = new ReadEvaluationOptions(pathBundleSid) { PageSize = pageSize, Limit = limit };
+      return Read(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Retrieve a list of Evaluations associated to the Bundle resource.
+    /// </summary>
+    /// <param name="pathBundleSid"> The unique string that identifies the resource </param>
+    /// <param name="pageSize"> Page size </param>
+    /// <param name="limit"> Record limit </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Evaluation </returns>
+    public static async System.Threading.Tasks.Task<ResourceSet<EvaluationResource>> ReadAsync(string pathBundleSid,
+                                                                                               int? pageSize = null,
+                                                                                               long? limit = null,
+                                                                                               ITwilioRestClient client = null)
+    {
+      var options = new ReadEvaluationOptions(pathBundleSid) { PageSize = pageSize, Limit = limit };
+      return await ReadAsync(options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Fetch the target page of records
+    /// </summary>
+    /// <param name="targetUrl"> API-generated URL for the requested results page </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> The target page of records </returns>
+    public static Page<EvaluationResource> GetPage(string targetUrl, ITwilioRestClient client)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+
+      var request = new Request(
+          HttpMethod.Get,
+          targetUrl
+      );
+
+      var response = client.Request(request);
+      return Page<EvaluationResource>.FromJson("results", response.Content);
+    }
+
+    /// <summary>
+    /// Fetch the next page of records
+    /// </summary>
+    /// <param name="page"> current page of records </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> The next page of records </returns>
+    public static Page<EvaluationResource> NextPage(Page<EvaluationResource> page, ITwilioRestClient client)
+    {
+      var request = new Request(
+          HttpMethod.Get,
+          page.GetNextPageUrl(Rest.Domain.Numbers)
+      );
+
+      var response = client.Request(request);
+      return Page<EvaluationResource>.FromJson("results", response.Content);
+    }
+
+    /// <summary>
+    /// Fetch the previous page of records
+    /// </summary>
+    /// <param name="page"> current page of records </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> The previous page of records </returns>
+    public static Page<EvaluationResource> PreviousPage(Page<EvaluationResource> page, ITwilioRestClient client)
+    {
+      var request = new Request(
+          HttpMethod.Get,
+          page.GetPreviousPageUrl(Rest.Domain.Numbers)
+      );
+
+      var response = client.Request(request);
+      return Page<EvaluationResource>.FromJson("results", response.Content);
+    }
+
+    private static Request BuildFetchRequest(FetchEvaluationOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Get,
+          Rest.Domain.Numbers,
+          "/v2/RegulatoryCompliance/Bundles/" + options.PathBundleSid + "/Evaluations/" + options.PathSid + "",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// Fetch specific Evaluation Instance.
+    /// </summary>
+    /// <param name="options"> Fetch Evaluation parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Evaluation </returns>
+    public static EvaluationResource Fetch(FetchEvaluationOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Fetch specific Evaluation Instance.
+    /// </summary>
+    /// <param name="options"> Fetch Evaluation parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Evaluation </returns>
+    public static async System.Threading.Tasks.Task<EvaluationResource> FetchAsync(FetchEvaluationOptions options,
+                                                                                   ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// Fetch specific Evaluation Instance.
+    /// </summary>
+    /// <param name="pathBundleSid"> The unique string that identifies the resource </param>
+    /// <param name="pathSid"> The unique string that identifies the Evaluation resource </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Evaluation </returns>
+    public static EvaluationResource Fetch(string pathBundleSid, string pathSid, ITwilioRestClient client = null)
+    {
+      var options = new FetchEvaluationOptions(pathBundleSid, pathSid);
+      return Fetch(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Fetch specific Evaluation Instance.
+    /// </summary>
+    /// <param name="pathBundleSid"> The unique string that identifies the resource </param>
+    /// <param name="pathSid"> The unique string that identifies the Evaluation resource </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Evaluation </returns>
+    public static async System.Threading.Tasks.Task<EvaluationResource> FetchAsync(string pathBundleSid,
+                                                                                   string pathSid,
+                                                                                   ITwilioRestClient client = null)
+    {
+      var options = new FetchEvaluationOptions(pathBundleSid, pathSid);
+      return await FetchAsync(options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Converts a JSON string into a EvaluationResource object
+    /// </summary>
+    /// <param name="json"> Raw JSON string </param>
+    /// <returns> EvaluationResource object represented by the provided JSON </returns>
+    public static EvaluationResource FromJson(string json)
+    {
+      // Convert all checked exceptions to Runtime
+      try
+      {
+        return JsonConvert.DeserializeObject<EvaluationResource>(json);
+      }
+      catch (JsonException e)
+      {
+        throw new ApiException(e.Message, e);
+      }
+    }
+
+    /// <summary>
+    /// The unique string that identifies the Evaluation resource
+    /// </summary>
+    [JsonProperty("sid")]
+    public string Sid { get; private set; }
+    /// <summary>
+    /// The SID of the Account that created the resource
+    /// </summary>
+    [JsonProperty("account_sid")]
+    public string AccountSid { get; private set; }
+    /// <summary>
+    /// The unique string of a regulation
+    /// </summary>
+    [JsonProperty("regulation_sid")]
+    public string RegulationSid { get; private set; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    [JsonProperty("bundle_sid")]
+    public string BundleSid { get; private set; }
+    /// <summary>
+    /// The compliance status of the Evaluation resource
+    /// </summary>
+    [JsonProperty("status")]
+    [JsonConverter(typeof(StringEnumConverter))]
+    public EvaluationResource.StatusEnum Status { get; private set; }
+    /// <summary>
+    /// The results of the Evaluation resource
+    /// </summary>
+    [JsonProperty("results")]
+    public List<object> Results { get; private set; }
+    /// <summary>
+    /// The date_created
+    /// </summary>
+    [JsonProperty("date_created")]
+    public DateTime? DateCreated { get; private set; }
+    /// <summary>
+    /// The url
+    /// </summary>
+    [JsonProperty("url")]
+    public Uri Url { get; private set; }
+
+    private EvaluationResource()
+    {
+
+    }
+  }
 
 }

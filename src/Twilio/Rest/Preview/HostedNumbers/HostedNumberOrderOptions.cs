@@ -12,444 +12,444 @@ using Twilio.Converters;
 namespace Twilio.Rest.Preview.HostedNumbers
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// Fetch a specific HostedNumberOrder.
+  /// </summary>
+  public class FetchHostedNumberOrderOptions : IOptions<HostedNumberOrderResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// Fetch a specific HostedNumberOrder.
+    /// HostedNumberOrder sid.
     /// </summary>
-    public class FetchHostedNumberOrderOptions : IOptions<HostedNumberOrderResource>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchHostedNumberOrderOptions
+    /// </summary>
+    /// <param name="pathSid"> HostedNumberOrder sid. </param>
+    public FetchHostedNumberOrderOptions(string pathSid)
     {
-        /// <summary>
-        /// HostedNumberOrder sid.
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchHostedNumberOrderOptions
-        /// </summary>
-        /// <param name="pathSid"> HostedNumberOrder sid. </param>
-        public FetchHostedNumberOrderOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// Cancel the HostedNumberOrder (only available when the status is in `received`).
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteHostedNumberOrderOptions : IOptions<HostedNumberOrderResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// HostedNumberOrder sid.
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new DeleteHostedNumberOrderOptions
-        /// </summary>
-        /// <param name="pathSid"> HostedNumberOrder sid. </param>
-        public DeleteHostedNumberOrderOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// Cancel the HostedNumberOrder (only available when the status is in `received`).
+  /// </summary>
+  public class DeleteHostedNumberOrderOptions : IOptions<HostedNumberOrderResource>
+  {
+    /// <summary>
+    /// HostedNumberOrder sid.
+    /// </summary>
+    public string PathSid { get; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+    /// <summary>
+    /// Construct a new DeleteHostedNumberOrderOptions
+    /// </summary>
+    /// <param name="pathSid"> HostedNumberOrder sid. </param>
+    public DeleteHostedNumberOrderOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// Updates a specific HostedNumberOrder.
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateHostedNumberOrderOptions : IOptions<HostedNumberOrderResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The sid
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// A human readable description of this resource.
-        /// </summary>
-        public string FriendlyName { get; set; }
-        /// <summary>
-        /// A unique, developer assigned name of this HostedNumberOrder.
-        /// </summary>
-        public string UniqueName { get; set; }
-        /// <summary>
-        /// Email.
-        /// </summary>
-        public string Email { get; set; }
-        /// <summary>
-        /// A list of emails.
-        /// </summary>
-        public List<string> CcEmails { get; set; }
-        /// <summary>
-        /// The Status of this HostedNumberOrder.
-        /// </summary>
-        public HostedNumberOrderResource.StatusEnum Status { get; set; }
-        /// <summary>
-        /// A verification code.
-        /// </summary>
-        public string VerificationCode { get; set; }
-        /// <summary>
-        /// Verification Type.
-        /// </summary>
-        public HostedNumberOrderResource.VerificationTypeEnum VerificationType { get; set; }
-        /// <summary>
-        /// Verification Document Sid
-        /// </summary>
-        public string VerificationDocumentSid { get; set; }
-        /// <summary>
-        /// Digits to dial after connecting the verification call.
-        /// </summary>
-        public string Extension { get; set; }
-        /// <summary>
-        /// The number of seconds, between 0 and 60, to delay before initiating the verification call.
-        /// </summary>
-        public int? CallDelay { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new UpdateHostedNumberOrderOptions
-        /// </summary>
-        /// <param name="pathSid"> The sid </param>
-        public UpdateHostedNumberOrderOptions(string pathSid)
-        {
-            PathSid = pathSid;
-            CcEmails = new List<string>();
-        }
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// Updates a specific HostedNumberOrder.
+  /// </summary>
+  public class UpdateHostedNumberOrderOptions : IOptions<HostedNumberOrderResource>
+  {
+    /// <summary>
+    /// The sid
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// A human readable description of this resource.
+    /// </summary>
+    public string FriendlyName { get; set; }
+    /// <summary>
+    /// A unique, developer assigned name of this HostedNumberOrder.
+    /// </summary>
+    public string UniqueName { get; set; }
+    /// <summary>
+    /// Email.
+    /// </summary>
+    public string Email { get; set; }
+    /// <summary>
+    /// A list of emails.
+    /// </summary>
+    public List<string> CcEmails { get; set; }
+    /// <summary>
+    /// The Status of this HostedNumberOrder.
+    /// </summary>
+    public HostedNumberOrderResource.StatusEnum Status { get; set; }
+    /// <summary>
+    /// A verification code.
+    /// </summary>
+    public string VerificationCode { get; set; }
+    /// <summary>
+    /// Verification Type.
+    /// </summary>
+    public HostedNumberOrderResource.VerificationTypeEnum VerificationType { get; set; }
+    /// <summary>
+    /// Verification Document Sid
+    /// </summary>
+    public string VerificationDocumentSid { get; set; }
+    /// <summary>
+    /// Digits to dial after connecting the verification call.
+    /// </summary>
+    public string Extension { get; set; }
+    /// <summary>
+    /// The number of seconds, between 0 and 60, to delay before initiating the verification call.
+    /// </summary>
+    public int? CallDelay { get; set; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
-
-            if (UniqueName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
-            }
-
-            if (Email != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Email", Email));
-            }
-
-            if (CcEmails != null)
-            {
-                p.AddRange(CcEmails.Select(prop => new KeyValuePair<string, string>("CcEmails", prop)));
-            }
-
-            if (Status != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
-            }
-
-            if (VerificationCode != null)
-            {
-                p.Add(new KeyValuePair<string, string>("VerificationCode", VerificationCode));
-            }
-
-            if (VerificationType != null)
-            {
-                p.Add(new KeyValuePair<string, string>("VerificationType", VerificationType.ToString()));
-            }
-
-            if (VerificationDocumentSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("VerificationDocumentSid", VerificationDocumentSid.ToString()));
-            }
-
-            if (Extension != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Extension", Extension));
-            }
-
-            if (CallDelay != null)
-            {
-                p.Add(new KeyValuePair<string, string>("CallDelay", CallDelay.ToString()));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new UpdateHostedNumberOrderOptions
+    /// </summary>
+    /// <param name="pathSid"> The sid </param>
+    public UpdateHostedNumberOrderOptions(string pathSid)
+    {
+      PathSid = pathSid;
+      CcEmails = new List<string>();
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// Retrieve a list of HostedNumberOrders belonging to the account initiating the request.
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadHostedNumberOrderOptions : ReadOptions<HostedNumberOrderResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The Status of this HostedNumberOrder.
-        /// </summary>
-        public HostedNumberOrderResource.StatusEnum Status { get; set; }
-        /// <summary>
-        /// An E164 formatted phone number.
-        /// </summary>
-        public Types.PhoneNumber PhoneNumber { get; set; }
-        /// <summary>
-        /// IncomingPhoneNumber sid.
-        /// </summary>
-        public string IncomingPhoneNumberSid { get; set; }
-        /// <summary>
-        /// A human readable description of this resource.
-        /// </summary>
-        public string FriendlyName { get; set; }
-        /// <summary>
-        /// A unique, developer assigned name of this HostedNumberOrder.
-        /// </summary>
-        public string UniqueName { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Status != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
-            }
+      if (UniqueName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
+      }
 
-            if (PhoneNumber != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PhoneNumber", PhoneNumber.ToString()));
-            }
+      if (Email != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Email", Email));
+      }
 
-            if (IncomingPhoneNumberSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("IncomingPhoneNumberSid", IncomingPhoneNumberSid.ToString()));
-            }
+      if (CcEmails != null)
+      {
+        p.AddRange(CcEmails.Select(prop => new KeyValuePair<string, string>("CcEmails", prop)));
+      }
 
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
+      if (Status != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
+      }
 
-            if (UniqueName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
-            }
+      if (VerificationCode != null)
+      {
+        p.Add(new KeyValuePair<string, string>("VerificationCode", VerificationCode));
+      }
 
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
+      if (VerificationType != null)
+      {
+        p.Add(new KeyValuePair<string, string>("VerificationType", VerificationType.ToString()));
+      }
 
-            return p;
-        }
+      if (VerificationDocumentSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("VerificationDocumentSid", VerificationDocumentSid.ToString()));
+      }
+
+      if (Extension != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Extension", Extension));
+      }
+
+      if (CallDelay != null)
+      {
+        p.Add(new KeyValuePair<string, string>("CallDelay", CallDelay.ToString()));
+      }
+
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// Retrieve a list of HostedNumberOrders belonging to the account initiating the request.
+  /// </summary>
+  public class ReadHostedNumberOrderOptions : ReadOptions<HostedNumberOrderResource>
+  {
+    /// <summary>
+    /// The Status of this HostedNumberOrder.
+    /// </summary>
+    public HostedNumberOrderResource.StatusEnum Status { get; set; }
+    /// <summary>
+    /// An E164 formatted phone number.
+    /// </summary>
+    public Types.PhoneNumber PhoneNumber { get; set; }
+    /// <summary>
+    /// IncomingPhoneNumber sid.
+    /// </summary>
+    public string IncomingPhoneNumberSid { get; set; }
+    /// <summary>
+    /// A human readable description of this resource.
+    /// </summary>
+    public string FriendlyName { get; set; }
+    /// <summary>
+    /// A unique, developer assigned name of this HostedNumberOrder.
+    /// </summary>
+    public string UniqueName { get; set; }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (Status != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
+      }
+
+      if (PhoneNumber != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PhoneNumber", PhoneNumber.ToString()));
+      }
+
+      if (IncomingPhoneNumberSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("IncomingPhoneNumberSid", IncomingPhoneNumberSid.ToString()));
+      }
+
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
+
+      if (UniqueName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
+      }
+
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// Host a phone number's capability on Twilio's platform.
+  /// </summary>
+  public class CreateHostedNumberOrderOptions : IOptions<HostedNumberOrderResource>
+  {
+    /// <summary>
+    /// An E164 formatted phone number.
+    /// </summary>
+    public Types.PhoneNumber PhoneNumber { get; }
+    /// <summary>
+    /// Specify SMS capability to host.
+    /// </summary>
+    public bool? SmsCapability { get; }
+    /// <summary>
+    /// Account Sid.
+    /// </summary>
+    public string AccountSid { get; set; }
+    /// <summary>
+    /// A human readable description of this resource.
+    /// </summary>
+    public string FriendlyName { get; set; }
+    /// <summary>
+    /// A unique, developer assigned name of this HostedNumberOrder.
+    /// </summary>
+    public string UniqueName { get; set; }
+    /// <summary>
+    /// A list of emails.
+    /// </summary>
+    public List<string> CcEmails { get; set; }
+    /// <summary>
+    /// SMS URL.
+    /// </summary>
+    public Uri SmsUrl { get; set; }
+    /// <summary>
+    /// SMS Method.
+    /// </summary>
+    public Twilio.Http.HttpMethod SmsMethod { get; set; }
+    /// <summary>
+    /// SMS Fallback URL.
+    /// </summary>
+    public Uri SmsFallbackUrl { get; set; }
+    /// <summary>
+    /// SMS Fallback Method.
+    /// </summary>
+    public Twilio.Http.HttpMethod SmsFallbackMethod { get; set; }
+    /// <summary>
+    /// Status Callback URL.
+    /// </summary>
+    public Uri StatusCallbackUrl { get; set; }
+    /// <summary>
+    /// Status Callback Method.
+    /// </summary>
+    public Twilio.Http.HttpMethod StatusCallbackMethod { get; set; }
+    /// <summary>
+    /// SMS Application Sid.
+    /// </summary>
+    public string SmsApplicationSid { get; set; }
+    /// <summary>
+    /// Address sid.
+    /// </summary>
+    public string AddressSid { get; set; }
+    /// <summary>
+    /// Email.
+    /// </summary>
+    public string Email { get; set; }
+    /// <summary>
+    /// Verification Type.
+    /// </summary>
+    public HostedNumberOrderResource.VerificationTypeEnum VerificationType { get; set; }
+    /// <summary>
+    /// Verification Document Sid
+    /// </summary>
+    public string VerificationDocumentSid { get; set; }
+
+    /// <summary>
+    /// Construct a new CreateHostedNumberOrderOptions
+    /// </summary>
+    /// <param name="phoneNumber"> An E164 formatted phone number. </param>
+    /// <param name="smsCapability"> Specify SMS capability to host. </param>
+    public CreateHostedNumberOrderOptions(Types.PhoneNumber phoneNumber, bool? smsCapability)
+    {
+      PhoneNumber = phoneNumber;
+      SmsCapability = smsCapability;
+      CcEmails = new List<string>();
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// Host a phone number's capability on Twilio's platform.
+    /// Generate the necessary parameters
     /// </summary>
-    public class CreateHostedNumberOrderOptions : IOptions<HostedNumberOrderResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// An E164 formatted phone number.
-        /// </summary>
-        public Types.PhoneNumber PhoneNumber { get; }
-        /// <summary>
-        /// Specify SMS capability to host.
-        /// </summary>
-        public bool? SmsCapability { get; }
-        /// <summary>
-        /// Account Sid.
-        /// </summary>
-        public string AccountSid { get; set; }
-        /// <summary>
-        /// A human readable description of this resource.
-        /// </summary>
-        public string FriendlyName { get; set; }
-        /// <summary>
-        /// A unique, developer assigned name of this HostedNumberOrder.
-        /// </summary>
-        public string UniqueName { get; set; }
-        /// <summary>
-        /// A list of emails.
-        /// </summary>
-        public List<string> CcEmails { get; set; }
-        /// <summary>
-        /// SMS URL.
-        /// </summary>
-        public Uri SmsUrl { get; set; }
-        /// <summary>
-        /// SMS Method.
-        /// </summary>
-        public Twilio.Http.HttpMethod SmsMethod { get; set; }
-        /// <summary>
-        /// SMS Fallback URL.
-        /// </summary>
-        public Uri SmsFallbackUrl { get; set; }
-        /// <summary>
-        /// SMS Fallback Method.
-        /// </summary>
-        public Twilio.Http.HttpMethod SmsFallbackMethod { get; set; }
-        /// <summary>
-        /// Status Callback URL.
-        /// </summary>
-        public Uri StatusCallbackUrl { get; set; }
-        /// <summary>
-        /// Status Callback Method.
-        /// </summary>
-        public Twilio.Http.HttpMethod StatusCallbackMethod { get; set; }
-        /// <summary>
-        /// SMS Application Sid.
-        /// </summary>
-        public string SmsApplicationSid { get; set; }
-        /// <summary>
-        /// Address sid.
-        /// </summary>
-        public string AddressSid { get; set; }
-        /// <summary>
-        /// Email.
-        /// </summary>
-        public string Email { get; set; }
-        /// <summary>
-        /// Verification Type.
-        /// </summary>
-        public HostedNumberOrderResource.VerificationTypeEnum VerificationType { get; set; }
-        /// <summary>
-        /// Verification Document Sid
-        /// </summary>
-        public string VerificationDocumentSid { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (PhoneNumber != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PhoneNumber", PhoneNumber.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new CreateHostedNumberOrderOptions
-        /// </summary>
-        /// <param name="phoneNumber"> An E164 formatted phone number. </param>
-        /// <param name="smsCapability"> Specify SMS capability to host. </param>
-        public CreateHostedNumberOrderOptions(Types.PhoneNumber phoneNumber, bool? smsCapability)
-        {
-            PhoneNumber = phoneNumber;
-            SmsCapability = smsCapability;
-            CcEmails = new List<string>();
-        }
+      if (SmsCapability != null)
+      {
+        p.Add(new KeyValuePair<string, string>("SmsCapability", SmsCapability.Value.ToString().ToLower()));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PhoneNumber != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PhoneNumber", PhoneNumber.ToString()));
-            }
+      if (AccountSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("AccountSid", AccountSid.ToString()));
+      }
 
-            if (SmsCapability != null)
-            {
-                p.Add(new KeyValuePair<string, string>("SmsCapability", SmsCapability.Value.ToString().ToLower()));
-            }
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
 
-            if (AccountSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("AccountSid", AccountSid.ToString()));
-            }
+      if (UniqueName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
+      }
 
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
+      if (CcEmails != null)
+      {
+        p.AddRange(CcEmails.Select(prop => new KeyValuePair<string, string>("CcEmails", prop)));
+      }
 
-            if (UniqueName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
-            }
+      if (SmsUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("SmsUrl", Serializers.Url(SmsUrl)));
+      }
 
-            if (CcEmails != null)
-            {
-                p.AddRange(CcEmails.Select(prop => new KeyValuePair<string, string>("CcEmails", prop)));
-            }
+      if (SmsMethod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("SmsMethod", SmsMethod.ToString()));
+      }
 
-            if (SmsUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("SmsUrl", Serializers.Url(SmsUrl)));
-            }
+      if (SmsFallbackUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("SmsFallbackUrl", Serializers.Url(SmsFallbackUrl)));
+      }
 
-            if (SmsMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("SmsMethod", SmsMethod.ToString()));
-            }
+      if (SmsFallbackMethod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("SmsFallbackMethod", SmsFallbackMethod.ToString()));
+      }
 
-            if (SmsFallbackUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("SmsFallbackUrl", Serializers.Url(SmsFallbackUrl)));
-            }
+      if (StatusCallbackUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("StatusCallbackUrl", Serializers.Url(StatusCallbackUrl)));
+      }
 
-            if (SmsFallbackMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("SmsFallbackMethod", SmsFallbackMethod.ToString()));
-            }
+      if (StatusCallbackMethod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("StatusCallbackMethod", StatusCallbackMethod.ToString()));
+      }
 
-            if (StatusCallbackUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("StatusCallbackUrl", Serializers.Url(StatusCallbackUrl)));
-            }
+      if (SmsApplicationSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("SmsApplicationSid", SmsApplicationSid.ToString()));
+      }
 
-            if (StatusCallbackMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("StatusCallbackMethod", StatusCallbackMethod.ToString()));
-            }
+      if (AddressSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("AddressSid", AddressSid.ToString()));
+      }
 
-            if (SmsApplicationSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("SmsApplicationSid", SmsApplicationSid.ToString()));
-            }
+      if (Email != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Email", Email));
+      }
 
-            if (AddressSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("AddressSid", AddressSid.ToString()));
-            }
+      if (VerificationType != null)
+      {
+        p.Add(new KeyValuePair<string, string>("VerificationType", VerificationType.ToString()));
+      }
 
-            if (Email != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Email", Email));
-            }
+      if (VerificationDocumentSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("VerificationDocumentSid", VerificationDocumentSid.ToString()));
+      }
 
-            if (VerificationType != null)
-            {
-                p.Add(new KeyValuePair<string, string>("VerificationType", VerificationType.ToString()));
-            }
-
-            if (VerificationDocumentSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("VerificationDocumentSid", VerificationDocumentSid.ToString()));
-            }
-
-            return p;
-        }
+      return p;
     }
+  }
 
 }

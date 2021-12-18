@@ -19,151 +19,151 @@ using Twilio.Types;
 namespace Twilio.Rest.Api.V2010.Account.Message
 {
 
-    public class FeedbackResource : Resource
+  public class FeedbackResource : Resource
+  {
+    public sealed class OutcomeEnum : StringEnum
     {
-        public sealed class OutcomeEnum : StringEnum
-        {
-            private OutcomeEnum(string value) : base(value) {}
-            public OutcomeEnum() {}
-            public static implicit operator OutcomeEnum(string value)
-            {
-                return new OutcomeEnum(value);
-            }
+      private OutcomeEnum(string value) : base(value) { }
+      public OutcomeEnum() { }
+      public static implicit operator OutcomeEnum(string value)
+      {
+        return new OutcomeEnum(value);
+      }
 
-            public static readonly OutcomeEnum Confirmed = new OutcomeEnum("confirmed");
-            public static readonly OutcomeEnum Unconfirmed = new OutcomeEnum("unconfirmed");
-        }
-
-        private static Request BuildCreateRequest(CreateFeedbackOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Post,
-                Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Messages/" + options.PathMessageSid + "/Feedback.json",
-                postParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// create
-        /// </summary>
-        /// <param name="options"> Create Feedback parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Feedback </returns>
-        public static FeedbackResource Create(CreateFeedbackOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildCreateRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// create
-        /// </summary>
-        /// <param name="options"> Create Feedback parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Feedback </returns>
-        public static async System.Threading.Tasks.Task<FeedbackResource> CreateAsync(CreateFeedbackOptions options,
-                                                                                      ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// create
-        /// </summary>
-        /// <param name="pathMessageSid"> The SID of the Message resource for which the feedback was provided </param>
-        /// <param name="pathAccountSid"> The SID of the Account that will create the resource </param>
-        /// <param name="outcome"> Whether the feedback has arrived </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Feedback </returns>
-        public static FeedbackResource Create(string pathMessageSid,
-                                              string pathAccountSid = null,
-                                              FeedbackResource.OutcomeEnum outcome = null,
-                                              ITwilioRestClient client = null)
-        {
-            var options = new CreateFeedbackOptions(pathMessageSid){PathAccountSid = pathAccountSid, Outcome = outcome};
-            return Create(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// create
-        /// </summary>
-        /// <param name="pathMessageSid"> The SID of the Message resource for which the feedback was provided </param>
-        /// <param name="pathAccountSid"> The SID of the Account that will create the resource </param>
-        /// <param name="outcome"> Whether the feedback has arrived </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Feedback </returns>
-        public static async System.Threading.Tasks.Task<FeedbackResource> CreateAsync(string pathMessageSid,
-                                                                                      string pathAccountSid = null,
-                                                                                      FeedbackResource.OutcomeEnum outcome = null,
-                                                                                      ITwilioRestClient client = null)
-        {
-            var options = new CreateFeedbackOptions(pathMessageSid){PathAccountSid = pathAccountSid, Outcome = outcome};
-            return await CreateAsync(options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Converts a JSON string into a FeedbackResource object
-        /// </summary>
-        /// <param name="json"> Raw JSON string </param>
-        /// <returns> FeedbackResource object represented by the provided JSON </returns>
-        public static FeedbackResource FromJson(string json)
-        {
-            // Convert all checked exceptions to Runtime
-            try
-            {
-                return JsonConvert.DeserializeObject<FeedbackResource>(json);
-            }
-            catch (JsonException e)
-            {
-                throw new ApiException(e.Message, e);
-            }
-        }
-
-        /// <summary>
-        /// The SID of the Account that created the resource
-        /// </summary>
-        [JsonProperty("account_sid")]
-        public string AccountSid { get; private set; }
-        /// <summary>
-        /// The SID of the Message resource for which the feedback was provided
-        /// </summary>
-        [JsonProperty("message_sid")]
-        public string MessageSid { get; private set; }
-        /// <summary>
-        /// Whether the feedback has arrived
-        /// </summary>
-        [JsonProperty("outcome")]
-        [JsonConverter(typeof(StringEnumConverter))]
-        public FeedbackResource.OutcomeEnum Outcome { get; private set; }
-        /// <summary>
-        /// The RFC 2822 date and time in GMT that the resource was created
-        /// </summary>
-        [JsonProperty("date_created")]
-        public DateTime? DateCreated { get; private set; }
-        /// <summary>
-        /// The RFC 2822 date and time in GMT that the resource was last updated
-        /// </summary>
-        [JsonProperty("date_updated")]
-        public DateTime? DateUpdated { get; private set; }
-        /// <summary>
-        /// The URI of the resource, relative to `https://api.twilio.com`
-        /// </summary>
-        [JsonProperty("uri")]
-        public string Uri { get; private set; }
-
-        private FeedbackResource()
-        {
-
-        }
+      public static readonly OutcomeEnum Confirmed = new OutcomeEnum("confirmed");
+      public static readonly OutcomeEnum Unconfirmed = new OutcomeEnum("unconfirmed");
     }
+
+    private static Request BuildCreateRequest(CreateFeedbackOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Post,
+          Rest.Domain.Api,
+          "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Messages/" + options.PathMessageSid + "/Feedback.json",
+          postParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// create
+    /// </summary>
+    /// <param name="options"> Create Feedback parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Feedback </returns>
+    public static FeedbackResource Create(CreateFeedbackOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildCreateRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// create
+    /// </summary>
+    /// <param name="options"> Create Feedback parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Feedback </returns>
+    public static async System.Threading.Tasks.Task<FeedbackResource> CreateAsync(CreateFeedbackOptions options,
+                                                                                  ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildCreateRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// create
+    /// </summary>
+    /// <param name="pathMessageSid"> The SID of the Message resource for which the feedback was provided </param>
+    /// <param name="pathAccountSid"> The SID of the Account that will create the resource </param>
+    /// <param name="outcome"> Whether the feedback has arrived </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Feedback </returns>
+    public static FeedbackResource Create(string pathMessageSid,
+                                          string pathAccountSid = null,
+                                          FeedbackResource.OutcomeEnum outcome = null,
+                                          ITwilioRestClient client = null)
+    {
+      var options = new CreateFeedbackOptions(pathMessageSid) { PathAccountSid = pathAccountSid, Outcome = outcome };
+      return Create(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// create
+    /// </summary>
+    /// <param name="pathMessageSid"> The SID of the Message resource for which the feedback was provided </param>
+    /// <param name="pathAccountSid"> The SID of the Account that will create the resource </param>
+    /// <param name="outcome"> Whether the feedback has arrived </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Feedback </returns>
+    public static async System.Threading.Tasks.Task<FeedbackResource> CreateAsync(string pathMessageSid,
+                                                                                  string pathAccountSid = null,
+                                                                                  FeedbackResource.OutcomeEnum outcome = null,
+                                                                                  ITwilioRestClient client = null)
+    {
+      var options = new CreateFeedbackOptions(pathMessageSid) { PathAccountSid = pathAccountSid, Outcome = outcome };
+      return await CreateAsync(options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Converts a JSON string into a FeedbackResource object
+    /// </summary>
+    /// <param name="json"> Raw JSON string </param>
+    /// <returns> FeedbackResource object represented by the provided JSON </returns>
+    public static FeedbackResource FromJson(string json)
+    {
+      // Convert all checked exceptions to Runtime
+      try
+      {
+        return JsonConvert.DeserializeObject<FeedbackResource>(json);
+      }
+      catch (JsonException e)
+      {
+        throw new ApiException(e.Message, e);
+      }
+    }
+
+    /// <summary>
+    /// The SID of the Account that created the resource
+    /// </summary>
+    [JsonProperty("account_sid")]
+    public string AccountSid { get; private set; }
+    /// <summary>
+    /// The SID of the Message resource for which the feedback was provided
+    /// </summary>
+    [JsonProperty("message_sid")]
+    public string MessageSid { get; private set; }
+    /// <summary>
+    /// Whether the feedback has arrived
+    /// </summary>
+    [JsonProperty("outcome")]
+    [JsonConverter(typeof(StringEnumConverter))]
+    public FeedbackResource.OutcomeEnum Outcome { get; private set; }
+    /// <summary>
+    /// The RFC 2822 date and time in GMT that the resource was created
+    /// </summary>
+    [JsonProperty("date_created")]
+    public DateTime? DateCreated { get; private set; }
+    /// <summary>
+    /// The RFC 2822 date and time in GMT that the resource was last updated
+    /// </summary>
+    [JsonProperty("date_updated")]
+    public DateTime? DateUpdated { get; private set; }
+    /// <summary>
+    /// The URI of the resource, relative to `https://api.twilio.com`
+    /// </summary>
+    [JsonProperty("uri")]
+    public string Uri { get; private set; }
+
+    private FeedbackResource()
+    {
+
+    }
+  }
 
 }

@@ -11,65 +11,65 @@ using Twilio.Converters;
 namespace Twilio.Rest.Api.V2010.Account.Usage.Record
 {
 
+  /// <summary>
+  /// ReadLastMonthOptions
+  /// </summary>
+  public class ReadLastMonthOptions : ReadOptions<LastMonthResource>
+  {
     /// <summary>
-    /// ReadLastMonthOptions
+    /// The SID of the Account that created the resources to read
     /// </summary>
-    public class ReadLastMonthOptions : ReadOptions<LastMonthResource>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The usage category of the UsageRecord resources to read
+    /// </summary>
+    public LastMonthResource.CategoryEnum Category { get; set; }
+    /// <summary>
+    /// Only include usage that has occurred on or after this date
+    /// </summary>
+    public DateTime? StartDate { get; set; }
+    /// <summary>
+    /// Only include usage that occurred on or before this date
+    /// </summary>
+    public DateTime? EndDate { get; set; }
+    /// <summary>
+    /// Whether to include usage from the master account and all its subaccounts
+    /// </summary>
+    public bool? IncludeSubaccounts { get; set; }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Account that created the resources to read
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The usage category of the UsageRecord resources to read
-        /// </summary>
-        public LastMonthResource.CategoryEnum Category { get; set; }
-        /// <summary>
-        /// Only include usage that has occurred on or after this date
-        /// </summary>
-        public DateTime? StartDate { get; set; }
-        /// <summary>
-        /// Only include usage that occurred on or before this date
-        /// </summary>
-        public DateTime? EndDate { get; set; }
-        /// <summary>
-        /// Whether to include usage from the master account and all its subaccounts
-        /// </summary>
-        public bool? IncludeSubaccounts { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (Category != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Category", Category.ToString()));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Category != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Category", Category.ToString()));
-            }
+      if (StartDate != null)
+      {
+        p.Add(new KeyValuePair<string, string>("StartDate", StartDate.Value.ToString("yyyy-MM-dd")));
+      }
 
-            if (StartDate != null)
-            {
-                p.Add(new KeyValuePair<string, string>("StartDate", StartDate.Value.ToString("yyyy-MM-dd")));
-            }
+      if (EndDate != null)
+      {
+        p.Add(new KeyValuePair<string, string>("EndDate", EndDate.Value.ToString("yyyy-MM-dd")));
+      }
 
-            if (EndDate != null)
-            {
-                p.Add(new KeyValuePair<string, string>("EndDate", EndDate.Value.ToString("yyyy-MM-dd")));
-            }
+      if (IncludeSubaccounts != null)
+      {
+        p.Add(new KeyValuePair<string, string>("IncludeSubaccounts", IncludeSubaccounts.Value.ToString().ToLower()));
+      }
 
-            if (IncludeSubaccounts != null)
-            {
-                p.Add(new KeyValuePair<string, string>("IncludeSubaccounts", IncludeSubaccounts.Value.ToString().ToLower()));
-            }
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+      return p;
     }
+  }
 
 }

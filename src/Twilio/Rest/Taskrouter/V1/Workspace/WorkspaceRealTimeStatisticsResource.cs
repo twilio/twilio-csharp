@@ -18,154 +18,154 @@ using Twilio.Http;
 namespace Twilio.Rest.Taskrouter.V1.Workspace
 {
 
-    public class WorkspaceRealTimeStatisticsResource : Resource
+  public class WorkspaceRealTimeStatisticsResource : Resource
+  {
+    private static Request BuildFetchRequest(FetchWorkspaceRealTimeStatisticsOptions options, ITwilioRestClient client)
     {
-        private static Request BuildFetchRequest(FetchWorkspaceRealTimeStatisticsOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Get,
-                Rest.Domain.Taskrouter,
-                "/v1/Workspaces/" + options.PathWorkspaceSid + "/RealTimeStatistics",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="options"> Fetch WorkspaceRealTimeStatistics parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of WorkspaceRealTimeStatistics </returns>
-        public static WorkspaceRealTimeStatisticsResource Fetch(FetchWorkspaceRealTimeStatisticsOptions options,
-                                                                ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="options"> Fetch WorkspaceRealTimeStatistics parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of WorkspaceRealTimeStatistics </returns>
-        public static async System.Threading.Tasks.Task<WorkspaceRealTimeStatisticsResource> FetchAsync(FetchWorkspaceRealTimeStatisticsOptions options,
-                                                                                                        ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace to fetch </param>
-        /// <param name="taskChannel"> Only calculate real-time statistics on this TaskChannel </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of WorkspaceRealTimeStatistics </returns>
-        public static WorkspaceRealTimeStatisticsResource Fetch(string pathWorkspaceSid,
-                                                                string taskChannel = null,
-                                                                ITwilioRestClient client = null)
-        {
-            var options = new FetchWorkspaceRealTimeStatisticsOptions(pathWorkspaceSid){TaskChannel = taskChannel};
-            return Fetch(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace to fetch </param>
-        /// <param name="taskChannel"> Only calculate real-time statistics on this TaskChannel </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of WorkspaceRealTimeStatistics </returns>
-        public static async System.Threading.Tasks.Task<WorkspaceRealTimeStatisticsResource> FetchAsync(string pathWorkspaceSid,
-                                                                                                        string taskChannel = null,
-                                                                                                        ITwilioRestClient client = null)
-        {
-            var options = new FetchWorkspaceRealTimeStatisticsOptions(pathWorkspaceSid){TaskChannel = taskChannel};
-            return await FetchAsync(options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Converts a JSON string into a WorkspaceRealTimeStatisticsResource object
-        /// </summary>
-        /// <param name="json"> Raw JSON string </param>
-        /// <returns> WorkspaceRealTimeStatisticsResource object represented by the provided JSON </returns>
-        public static WorkspaceRealTimeStatisticsResource FromJson(string json)
-        {
-            // Convert all checked exceptions to Runtime
-            try
-            {
-                return JsonConvert.DeserializeObject<WorkspaceRealTimeStatisticsResource>(json);
-            }
-            catch (JsonException e)
-            {
-                throw new ApiException(e.Message, e);
-            }
-        }
-
-        /// <summary>
-        /// The SID of the Account that created the resource
-        /// </summary>
-        [JsonProperty("account_sid")]
-        public string AccountSid { get; private set; }
-        /// <summary>
-        /// The number of current Workers by Activity
-        /// </summary>
-        [JsonProperty("activity_statistics")]
-        public List<object> ActivityStatistics { get; private set; }
-        /// <summary>
-        /// The age of the longest waiting Task
-        /// </summary>
-        [JsonProperty("longest_task_waiting_age")]
-        public int? LongestTaskWaitingAge { get; private set; }
-        /// <summary>
-        /// The SID of the longest waiting Task
-        /// </summary>
-        [JsonProperty("longest_task_waiting_sid")]
-        public string LongestTaskWaitingSid { get; private set; }
-        /// <summary>
-        /// The number of Tasks by priority
-        /// </summary>
-        [JsonProperty("tasks_by_priority")]
-        public object TasksByPriority { get; private set; }
-        /// <summary>
-        /// The number of Tasks by their current status
-        /// </summary>
-        [JsonProperty("tasks_by_status")]
-        public object TasksByStatus { get; private set; }
-        /// <summary>
-        /// The total number of Tasks
-        /// </summary>
-        [JsonProperty("total_tasks")]
-        public int? TotalTasks { get; private set; }
-        /// <summary>
-        /// The total number of Workers in the Workspace
-        /// </summary>
-        [JsonProperty("total_workers")]
-        public int? TotalWorkers { get; private set; }
-        /// <summary>
-        /// The SID of the Workspace
-        /// </summary>
-        [JsonProperty("workspace_sid")]
-        public string WorkspaceSid { get; private set; }
-        /// <summary>
-        /// The absolute URL of the Workspace statistics resource
-        /// </summary>
-        [JsonProperty("url")]
-        public Uri Url { get; private set; }
-
-        private WorkspaceRealTimeStatisticsResource()
-        {
-
-        }
+      return new Request(
+          HttpMethod.Get,
+          Rest.Domain.Taskrouter,
+          "/v1/Workspaces/" + options.PathWorkspaceSid + "/RealTimeStatistics",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
     }
+
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="options"> Fetch WorkspaceRealTimeStatistics parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of WorkspaceRealTimeStatistics </returns>
+    public static WorkspaceRealTimeStatisticsResource Fetch(FetchWorkspaceRealTimeStatisticsOptions options,
+                                                            ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="options"> Fetch WorkspaceRealTimeStatistics parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of WorkspaceRealTimeStatistics </returns>
+    public static async System.Threading.Tasks.Task<WorkspaceRealTimeStatisticsResource> FetchAsync(FetchWorkspaceRealTimeStatisticsOptions options,
+                                                                                                    ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="pathWorkspaceSid"> The SID of the Workspace to fetch </param>
+    /// <param name="taskChannel"> Only calculate real-time statistics on this TaskChannel </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of WorkspaceRealTimeStatistics </returns>
+    public static WorkspaceRealTimeStatisticsResource Fetch(string pathWorkspaceSid,
+                                                            string taskChannel = null,
+                                                            ITwilioRestClient client = null)
+    {
+      var options = new FetchWorkspaceRealTimeStatisticsOptions(pathWorkspaceSid) { TaskChannel = taskChannel };
+      return Fetch(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="pathWorkspaceSid"> The SID of the Workspace to fetch </param>
+    /// <param name="taskChannel"> Only calculate real-time statistics on this TaskChannel </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of WorkspaceRealTimeStatistics </returns>
+    public static async System.Threading.Tasks.Task<WorkspaceRealTimeStatisticsResource> FetchAsync(string pathWorkspaceSid,
+                                                                                                    string taskChannel = null,
+                                                                                                    ITwilioRestClient client = null)
+    {
+      var options = new FetchWorkspaceRealTimeStatisticsOptions(pathWorkspaceSid) { TaskChannel = taskChannel };
+      return await FetchAsync(options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Converts a JSON string into a WorkspaceRealTimeStatisticsResource object
+    /// </summary>
+    /// <param name="json"> Raw JSON string </param>
+    /// <returns> WorkspaceRealTimeStatisticsResource object represented by the provided JSON </returns>
+    public static WorkspaceRealTimeStatisticsResource FromJson(string json)
+    {
+      // Convert all checked exceptions to Runtime
+      try
+      {
+        return JsonConvert.DeserializeObject<WorkspaceRealTimeStatisticsResource>(json);
+      }
+      catch (JsonException e)
+      {
+        throw new ApiException(e.Message, e);
+      }
+    }
+
+    /// <summary>
+    /// The SID of the Account that created the resource
+    /// </summary>
+    [JsonProperty("account_sid")]
+    public string AccountSid { get; private set; }
+    /// <summary>
+    /// The number of current Workers by Activity
+    /// </summary>
+    [JsonProperty("activity_statistics")]
+    public List<object> ActivityStatistics { get; private set; }
+    /// <summary>
+    /// The age of the longest waiting Task
+    /// </summary>
+    [JsonProperty("longest_task_waiting_age")]
+    public int? LongestTaskWaitingAge { get; private set; }
+    /// <summary>
+    /// The SID of the longest waiting Task
+    /// </summary>
+    [JsonProperty("longest_task_waiting_sid")]
+    public string LongestTaskWaitingSid { get; private set; }
+    /// <summary>
+    /// The number of Tasks by priority
+    /// </summary>
+    [JsonProperty("tasks_by_priority")]
+    public object TasksByPriority { get; private set; }
+    /// <summary>
+    /// The number of Tasks by their current status
+    /// </summary>
+    [JsonProperty("tasks_by_status")]
+    public object TasksByStatus { get; private set; }
+    /// <summary>
+    /// The total number of Tasks
+    /// </summary>
+    [JsonProperty("total_tasks")]
+    public int? TotalTasks { get; private set; }
+    /// <summary>
+    /// The total number of Workers in the Workspace
+    /// </summary>
+    [JsonProperty("total_workers")]
+    public int? TotalWorkers { get; private set; }
+    /// <summary>
+    /// The SID of the Workspace
+    /// </summary>
+    [JsonProperty("workspace_sid")]
+    public string WorkspaceSid { get; private set; }
+    /// <summary>
+    /// The absolute URL of the Workspace statistics resource
+    /// </summary>
+    [JsonProperty("url")]
+    public Uri Url { get; private set; }
+
+    private WorkspaceRealTimeStatisticsResource()
+    {
+
+    }
+  }
 
 }

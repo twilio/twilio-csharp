@@ -11,269 +11,269 @@ using Twilio.Converters;
 namespace Twilio.Rest.Supersim.V1
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Create a Fleet
+  /// </summary>
+  public class CreateFleetOptions : IOptions<FleetResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Create a Fleet
+    /// The SID or unique name of the Network Access Profile of the Fleet
     /// </summary>
-    public class CreateFleetOptions : IOptions<FleetResource>
+    public string NetworkAccessProfile { get; }
+    /// <summary>
+    /// An application-defined string that uniquely identifies the resource
+    /// </summary>
+    public string UniqueName { get; set; }
+    /// <summary>
+    /// Defines whether SIMs in the Fleet are capable of using data connectivity
+    /// </summary>
+    public bool? DataEnabled { get; set; }
+    /// <summary>
+    /// The total data usage (download and upload combined) in Megabytes that each Sim resource assigned to the Fleet resource can consume
+    /// </summary>
+    public int? DataLimit { get; set; }
+    /// <summary>
+    /// Defines whether SIMs in the Fleet are capable of sending and receiving machine-to-machine SMS via Commands
+    /// </summary>
+    public bool? CommandsEnabled { get; set; }
+    /// <summary>
+    /// The URL that will receive a webhook when a Super SIM in the Fleet is used to send an SMS from your device to the Commands number
+    /// </summary>
+    public Uri CommandsUrl { get; set; }
+    /// <summary>
+    /// A string representing the HTTP method to use when making a request to `commands_url`
+    /// </summary>
+    public Twilio.Http.HttpMethod CommandsMethod { get; set; }
+    /// <summary>
+    /// Defines whether SIMs in the Fleet are capable of sending and receiving machine-to-machine SMS via Commands
+    /// </summary>
+    public bool? SmsCommandsEnabled { get; set; }
+    /// <summary>
+    /// The URL that will receive a webhook when a Super SIM in the Fleet is used to send an SMS from your device to the SMS Commands number
+    /// </summary>
+    public Uri SmsCommandsUrl { get; set; }
+    /// <summary>
+    /// A string representing the HTTP method to use when making a request to `sms_commands_url`
+    /// </summary>
+    public Twilio.Http.HttpMethod SmsCommandsMethod { get; set; }
+
+    /// <summary>
+    /// Construct a new CreateFleetOptions
+    /// </summary>
+    /// <param name="networkAccessProfile"> The SID or unique name of the Network Access Profile of the Fleet </param>
+    public CreateFleetOptions(string networkAccessProfile)
     {
-        /// <summary>
-        /// The SID or unique name of the Network Access Profile of the Fleet
-        /// </summary>
-        public string NetworkAccessProfile { get; }
-        /// <summary>
-        /// An application-defined string that uniquely identifies the resource
-        /// </summary>
-        public string UniqueName { get; set; }
-        /// <summary>
-        /// Defines whether SIMs in the Fleet are capable of using data connectivity
-        /// </summary>
-        public bool? DataEnabled { get; set; }
-        /// <summary>
-        /// The total data usage (download and upload combined) in Megabytes that each Sim resource assigned to the Fleet resource can consume
-        /// </summary>
-        public int? DataLimit { get; set; }
-        /// <summary>
-        /// Defines whether SIMs in the Fleet are capable of sending and receiving machine-to-machine SMS via Commands
-        /// </summary>
-        public bool? CommandsEnabled { get; set; }
-        /// <summary>
-        /// The URL that will receive a webhook when a Super SIM in the Fleet is used to send an SMS from your device to the Commands number
-        /// </summary>
-        public Uri CommandsUrl { get; set; }
-        /// <summary>
-        /// A string representing the HTTP method to use when making a request to `commands_url`
-        /// </summary>
-        public Twilio.Http.HttpMethod CommandsMethod { get; set; }
-        /// <summary>
-        /// Defines whether SIMs in the Fleet are capable of sending and receiving machine-to-machine SMS via Commands
-        /// </summary>
-        public bool? SmsCommandsEnabled { get; set; }
-        /// <summary>
-        /// The URL that will receive a webhook when a Super SIM in the Fleet is used to send an SMS from your device to the SMS Commands number
-        /// </summary>
-        public Uri SmsCommandsUrl { get; set; }
-        /// <summary>
-        /// A string representing the HTTP method to use when making a request to `sms_commands_url`
-        /// </summary>
-        public Twilio.Http.HttpMethod SmsCommandsMethod { get; set; }
-
-        /// <summary>
-        /// Construct a new CreateFleetOptions
-        /// </summary>
-        /// <param name="networkAccessProfile"> The SID or unique name of the Network Access Profile of the Fleet </param>
-        public CreateFleetOptions(string networkAccessProfile)
-        {
-            NetworkAccessProfile = networkAccessProfile;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (NetworkAccessProfile != null)
-            {
-                p.Add(new KeyValuePair<string, string>("NetworkAccessProfile", NetworkAccessProfile.ToString()));
-            }
-
-            if (UniqueName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
-            }
-
-            if (DataEnabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DataEnabled", DataEnabled.Value.ToString().ToLower()));
-            }
-
-            if (DataLimit != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DataLimit", DataLimit.ToString()));
-            }
-
-            if (CommandsEnabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("CommandsEnabled", CommandsEnabled.Value.ToString().ToLower()));
-            }
-
-            if (CommandsUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("CommandsUrl", Serializers.Url(CommandsUrl)));
-            }
-
-            if (CommandsMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("CommandsMethod", CommandsMethod.ToString()));
-            }
-
-            if (SmsCommandsEnabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("SmsCommandsEnabled", SmsCommandsEnabled.Value.ToString().ToLower()));
-            }
-
-            if (SmsCommandsUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("SmsCommandsUrl", Serializers.Url(SmsCommandsUrl)));
-            }
-
-            if (SmsCommandsMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("SmsCommandsMethod", SmsCommandsMethod.ToString()));
-            }
-
-            return p;
-        }
+      NetworkAccessProfile = networkAccessProfile;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Fetch a Fleet instance from your account.
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchFleetOptions : IOptions<FleetResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID that identifies the resource to fetch
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (NetworkAccessProfile != null)
+      {
+        p.Add(new KeyValuePair<string, string>("NetworkAccessProfile", NetworkAccessProfile.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new FetchFleetOptions
-        /// </summary>
-        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
-        public FetchFleetOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
+      if (UniqueName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      if (DataEnabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("DataEnabled", DataEnabled.Value.ToString().ToLower()));
+      }
+
+      if (DataLimit != null)
+      {
+        p.Add(new KeyValuePair<string, string>("DataLimit", DataLimit.ToString()));
+      }
+
+      if (CommandsEnabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("CommandsEnabled", CommandsEnabled.Value.ToString().ToLower()));
+      }
+
+      if (CommandsUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("CommandsUrl", Serializers.Url(CommandsUrl)));
+      }
+
+      if (CommandsMethod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("CommandsMethod", CommandsMethod.ToString()));
+      }
+
+      if (SmsCommandsEnabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("SmsCommandsEnabled", SmsCommandsEnabled.Value.ToString().ToLower()));
+      }
+
+      if (SmsCommandsUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("SmsCommandsUrl", Serializers.Url(SmsCommandsUrl)));
+      }
+
+      if (SmsCommandsMethod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("SmsCommandsMethod", SmsCommandsMethod.ToString()));
+      }
+
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Fetch a Fleet instance from your account.
+  /// </summary>
+  public class FetchFleetOptions : IOptions<FleetResource>
+  {
+    /// <summary>
+    /// The SID that identifies the resource to fetch
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchFleetOptions
+    /// </summary>
+    /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
+    public FetchFleetOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Retrieve a list of Fleets from your account.
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadFleetOptions : ReadOptions<FleetResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID or unique name of the Network Access Profile of the Fleet
-        /// </summary>
-        public string NetworkAccessProfile { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (NetworkAccessProfile != null)
-            {
-                p.Add(new KeyValuePair<string, string>("NetworkAccessProfile", NetworkAccessProfile.ToString()));
-            }
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Retrieve a list of Fleets from your account.
+  /// </summary>
+  public class ReadFleetOptions : ReadOptions<FleetResource>
+  {
+    /// <summary>
+    /// The SID or unique name of the Network Access Profile of the Fleet
+    /// </summary>
+    public string NetworkAccessProfile { get; set; }
 
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (NetworkAccessProfile != null)
+      {
+        p.Add(new KeyValuePair<string, string>("NetworkAccessProfile", NetworkAccessProfile.ToString()));
+      }
 
-            return p;
-        }
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Updates the given properties of a Super SIM Fleet instance from your account.
+  /// </summary>
+  public class UpdateFleetOptions : IOptions<FleetResource>
+  {
+    /// <summary>
+    /// The SID that identifies the resource to update
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// An application-defined string that uniquely identifies the resource
+    /// </summary>
+    public string UniqueName { get; set; }
+    /// <summary>
+    /// The SID or unique name of the Network Access Profile of the Fleet
+    /// </summary>
+    public string NetworkAccessProfile { get; set; }
+    /// <summary>
+    /// The URL that will receive a webhook when a Super SIM in the Fleet is used to send an SMS from your device to the Commands number
+    /// </summary>
+    public Uri CommandsUrl { get; set; }
+    /// <summary>
+    /// A string representing the HTTP method to use when making a request to `commands_url`
+    /// </summary>
+    public Twilio.Http.HttpMethod CommandsMethod { get; set; }
+    /// <summary>
+    /// The URL that will receive a webhook when a Super SIM in the Fleet is used to send an SMS from your device to the SMS Commands number
+    /// </summary>
+    public Uri SmsCommandsUrl { get; set; }
+    /// <summary>
+    /// A string representing the HTTP method to use when making a request to `sms_commands_url`
+    /// </summary>
+    public Twilio.Http.HttpMethod SmsCommandsMethod { get; set; }
+
+    /// <summary>
+    /// Construct a new UpdateFleetOptions
+    /// </summary>
+    /// <param name="pathSid"> The SID that identifies the resource to update </param>
+    public UpdateFleetOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Updates the given properties of a Super SIM Fleet instance from your account.
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateFleetOptions : IOptions<FleetResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID that identifies the resource to update
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// An application-defined string that uniquely identifies the resource
-        /// </summary>
-        public string UniqueName { get; set; }
-        /// <summary>
-        /// The SID or unique name of the Network Access Profile of the Fleet
-        /// </summary>
-        public string NetworkAccessProfile { get; set; }
-        /// <summary>
-        /// The URL that will receive a webhook when a Super SIM in the Fleet is used to send an SMS from your device to the Commands number
-        /// </summary>
-        public Uri CommandsUrl { get; set; }
-        /// <summary>
-        /// A string representing the HTTP method to use when making a request to `commands_url`
-        /// </summary>
-        public Twilio.Http.HttpMethod CommandsMethod { get; set; }
-        /// <summary>
-        /// The URL that will receive a webhook when a Super SIM in the Fleet is used to send an SMS from your device to the SMS Commands number
-        /// </summary>
-        public Uri SmsCommandsUrl { get; set; }
-        /// <summary>
-        /// A string representing the HTTP method to use when making a request to `sms_commands_url`
-        /// </summary>
-        public Twilio.Http.HttpMethod SmsCommandsMethod { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (UniqueName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
+      }
 
-        /// <summary>
-        /// Construct a new UpdateFleetOptions
-        /// </summary>
-        /// <param name="pathSid"> The SID that identifies the resource to update </param>
-        public UpdateFleetOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
+      if (NetworkAccessProfile != null)
+      {
+        p.Add(new KeyValuePair<string, string>("NetworkAccessProfile", NetworkAccessProfile.ToString()));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (UniqueName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
-            }
+      if (CommandsUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("CommandsUrl", Serializers.Url(CommandsUrl)));
+      }
 
-            if (NetworkAccessProfile != null)
-            {
-                p.Add(new KeyValuePair<string, string>("NetworkAccessProfile", NetworkAccessProfile.ToString()));
-            }
+      if (CommandsMethod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("CommandsMethod", CommandsMethod.ToString()));
+      }
 
-            if (CommandsUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("CommandsUrl", Serializers.Url(CommandsUrl)));
-            }
+      if (SmsCommandsUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("SmsCommandsUrl", Serializers.Url(SmsCommandsUrl)));
+      }
 
-            if (CommandsMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("CommandsMethod", CommandsMethod.ToString()));
-            }
+      if (SmsCommandsMethod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("SmsCommandsMethod", SmsCommandsMethod.ToString()));
+      }
 
-            if (SmsCommandsUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("SmsCommandsUrl", Serializers.Url(SmsCommandsUrl)));
-            }
-
-            if (SmsCommandsMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("SmsCommandsMethod", SmsCommandsMethod.ToString()));
-            }
-
-            return p;
-        }
+      return p;
     }
+  }
 
 }

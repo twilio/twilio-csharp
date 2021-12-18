@@ -11,150 +11,150 @@ using Twilio.Converters;
 namespace Twilio.Rest.Supersim.V1
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Send SMS Command to a Sim.
+  /// </summary>
+  public class CreateSmsCommandOptions : IOptions<SmsCommandResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Send SMS Command to a Sim.
+    /// The sid or unique_name of the SIM to send the SMS Command to
     /// </summary>
-    public class CreateSmsCommandOptions : IOptions<SmsCommandResource>
+    public string Sim { get; }
+    /// <summary>
+    /// The message body of the SMS Command
+    /// </summary>
+    public string Payload { get; }
+    /// <summary>
+    /// The HTTP method we should use to call callback_url
+    /// </summary>
+    public Twilio.Http.HttpMethod CallbackMethod { get; set; }
+    /// <summary>
+    /// The URL we should call after we have sent the command
+    /// </summary>
+    public Uri CallbackUrl { get; set; }
+
+    /// <summary>
+    /// Construct a new CreateSmsCommandOptions
+    /// </summary>
+    /// <param name="sim"> The sid or unique_name of the SIM to send the SMS Command to </param>
+    /// <param name="payload"> The message body of the SMS Command </param>
+    public CreateSmsCommandOptions(string sim, string payload)
     {
-        /// <summary>
-        /// The sid or unique_name of the SIM to send the SMS Command to
-        /// </summary>
-        public string Sim { get; }
-        /// <summary>
-        /// The message body of the SMS Command
-        /// </summary>
-        public string Payload { get; }
-        /// <summary>
-        /// The HTTP method we should use to call callback_url
-        /// </summary>
-        public Twilio.Http.HttpMethod CallbackMethod { get; set; }
-        /// <summary>
-        /// The URL we should call after we have sent the command
-        /// </summary>
-        public Uri CallbackUrl { get; set; }
-
-        /// <summary>
-        /// Construct a new CreateSmsCommandOptions
-        /// </summary>
-        /// <param name="sim"> The sid or unique_name of the SIM to send the SMS Command to </param>
-        /// <param name="payload"> The message body of the SMS Command </param>
-        public CreateSmsCommandOptions(string sim, string payload)
-        {
-            Sim = sim;
-            Payload = payload;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Sim != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Sim", Sim.ToString()));
-            }
-
-            if (Payload != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Payload", Payload));
-            }
-
-            if (CallbackMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("CallbackMethod", CallbackMethod.ToString()));
-            }
-
-            if (CallbackUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("CallbackUrl", Serializers.Url(CallbackUrl)));
-            }
-
-            return p;
-        }
+      Sim = sim;
+      Payload = payload;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Fetch SMS Command instance from your account.
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchSmsCommandOptions : IOptions<SmsCommandResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID that identifies the resource to fetch
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (Sim != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Sim", Sim.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new FetchSmsCommandOptions
-        /// </summary>
-        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
-        public FetchSmsCommandOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
+      if (Payload != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Payload", Payload));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      if (CallbackMethod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("CallbackMethod", CallbackMethod.ToString()));
+      }
+
+      if (CallbackUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("CallbackUrl", Serializers.Url(CallbackUrl)));
+      }
+
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Fetch SMS Command instance from your account.
+  /// </summary>
+  public class FetchSmsCommandOptions : IOptions<SmsCommandResource>
+  {
+    /// <summary>
+    /// The SID that identifies the resource to fetch
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchSmsCommandOptions
+    /// </summary>
+    /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
+    public FetchSmsCommandOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Retrieve a list of SMS Commands from your account.
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadSmsCommandOptions : ReadOptions<SmsCommandResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID or unique name of the Sim resource that SMS Command was sent to or from.
-        /// </summary>
-        public string Sim { get; set; }
-        /// <summary>
-        /// The status of the SMS Command
-        /// </summary>
-        public SmsCommandResource.StatusEnum Status { get; set; }
-        /// <summary>
-        /// The direction of the SMS Command
-        /// </summary>
-        public SmsCommandResource.DirectionEnum Direction { get; set; }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Sim != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Sim", Sim.ToString()));
-            }
-
-            if (Status != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
-            }
-
-            if (Direction != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Direction", Direction.ToString()));
-            }
-
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
+
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Retrieve a list of SMS Commands from your account.
+  /// </summary>
+  public class ReadSmsCommandOptions : ReadOptions<SmsCommandResource>
+  {
+    /// <summary>
+    /// The SID or unique name of the Sim resource that SMS Command was sent to or from.
+    /// </summary>
+    public string Sim { get; set; }
+    /// <summary>
+    /// The status of the SMS Command
+    /// </summary>
+    public SmsCommandResource.StatusEnum Status { get; set; }
+    /// <summary>
+    /// The direction of the SMS Command
+    /// </summary>
+    public SmsCommandResource.DirectionEnum Direction { get; set; }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (Sim != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Sim", Sim.ToString()));
+      }
+
+      if (Status != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
+      }
+
+      if (Direction != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Direction", Direction.ToString()));
+      }
+
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
 
 }

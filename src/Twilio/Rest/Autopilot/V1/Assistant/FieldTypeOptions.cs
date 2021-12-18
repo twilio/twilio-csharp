@@ -11,225 +11,225 @@ using Twilio.Converters;
 namespace Twilio.Rest.Autopilot.V1.Assistant
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// FetchFieldTypeOptions
+  /// </summary>
+  public class FetchFieldTypeOptions : IOptions<FieldTypeResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// FetchFieldTypeOptions
+    /// The SID of the Assistant that is the parent of the resource to fetch
     /// </summary>
-    public class FetchFieldTypeOptions : IOptions<FieldTypeResource>
+    public string PathAssistantSid { get; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchFieldTypeOptions
+    /// </summary>
+    /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resource to fetch </param>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public FetchFieldTypeOptions(string pathAssistantSid, string pathSid)
     {
-        /// <summary>
-        /// The SID of the Assistant that is the parent of the resource to fetch
-        /// </summary>
-        public string PathAssistantSid { get; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchFieldTypeOptions
-        /// </summary>
-        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resource to fetch </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public FetchFieldTypeOptions(string pathAssistantSid, string pathSid)
-        {
-            PathAssistantSid = pathAssistantSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathAssistantSid = pathAssistantSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// ReadFieldTypeOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadFieldTypeOptions : ReadOptions<FieldTypeResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Assistant with the FieldType resources to read
-        /// </summary>
-        public string PathAssistantSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new ReadFieldTypeOptions
-        /// </summary>
-        /// <param name="pathAssistantSid"> The SID of the Assistant with the FieldType resources to read </param>
-        public ReadFieldTypeOptions(string pathAssistantSid)
-        {
-            PathAssistantSid = pathAssistantSid;
-        }
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// ReadFieldTypeOptions
+  /// </summary>
+  public class ReadFieldTypeOptions : ReadOptions<FieldTypeResource>
+  {
+    /// <summary>
+    /// The SID of the Assistant with the FieldType resources to read
+    /// </summary>
+    public string PathAssistantSid { get; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new ReadFieldTypeOptions
+    /// </summary>
+    /// <param name="pathAssistantSid"> The SID of the Assistant with the FieldType resources to read </param>
+    public ReadFieldTypeOptions(string pathAssistantSid)
+    {
+      PathAssistantSid = pathAssistantSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// CreateFieldTypeOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class CreateFieldTypeOptions : IOptions<FieldTypeResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Assistant that is the parent of the new resource
-        /// </summary>
-        public string PathAssistantSid { get; }
-        /// <summary>
-        /// An application-defined string that uniquely identifies the new resource
-        /// </summary>
-        public string UniqueName { get; }
-        /// <summary>
-        /// A string to describe the new resource
-        /// </summary>
-        public string FriendlyName { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new CreateFieldTypeOptions
-        /// </summary>
-        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the new resource </param>
-        /// <param name="uniqueName"> An application-defined string that uniquely identifies the new resource </param>
-        public CreateFieldTypeOptions(string pathAssistantSid, string uniqueName)
-        {
-            PathAssistantSid = pathAssistantSid;
-            UniqueName = uniqueName;
-        }
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (UniqueName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
-            }
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// CreateFieldTypeOptions
+  /// </summary>
+  public class CreateFieldTypeOptions : IOptions<FieldTypeResource>
+  {
+    /// <summary>
+    /// The SID of the Assistant that is the parent of the new resource
+    /// </summary>
+    public string PathAssistantSid { get; }
+    /// <summary>
+    /// An application-defined string that uniquely identifies the new resource
+    /// </summary>
+    public string UniqueName { get; }
+    /// <summary>
+    /// A string to describe the new resource
+    /// </summary>
+    public string FriendlyName { get; set; }
 
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new CreateFieldTypeOptions
+    /// </summary>
+    /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the new resource </param>
+    /// <param name="uniqueName"> An application-defined string that uniquely identifies the new resource </param>
+    public CreateFieldTypeOptions(string pathAssistantSid, string uniqueName)
+    {
+      PathAssistantSid = pathAssistantSid;
+      UniqueName = uniqueName;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// UpdateFieldTypeOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateFieldTypeOptions : IOptions<FieldTypeResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Assistant with the FieldType resource to update
-        /// </summary>
-        public string PathAssistantSid { get; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// A string to describe the resource
-        /// </summary>
-        public string FriendlyName { get; set; }
-        /// <summary>
-        /// An application-defined string that uniquely identifies the resource
-        /// </summary>
-        public string UniqueName { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (UniqueName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
+      }
 
-        /// <summary>
-        /// Construct a new UpdateFieldTypeOptions
-        /// </summary>
-        /// <param name="pathAssistantSid"> The SID of the Assistant with the FieldType resource to update </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public UpdateFieldTypeOptions(string pathAssistantSid, string pathSid)
-        {
-            PathAssistantSid = pathAssistantSid;
-            PathSid = pathSid;
-        }
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
+      return p;
+    }
+  }
 
-            if (UniqueName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
-            }
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// UpdateFieldTypeOptions
+  /// </summary>
+  public class UpdateFieldTypeOptions : IOptions<FieldTypeResource>
+  {
+    /// <summary>
+    /// The SID of the Assistant with the FieldType resource to update
+    /// </summary>
+    public string PathAssistantSid { get; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// A string to describe the resource
+    /// </summary>
+    public string FriendlyName { get; set; }
+    /// <summary>
+    /// An application-defined string that uniquely identifies the resource
+    /// </summary>
+    public string UniqueName { get; set; }
 
-            return p;
-        }
+    /// <summary>
+    /// Construct a new UpdateFieldTypeOptions
+    /// </summary>
+    /// <param name="pathAssistantSid"> The SID of the Assistant with the FieldType resource to update </param>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public UpdateFieldTypeOptions(string pathAssistantSid, string pathSid)
+    {
+      PathAssistantSid = pathAssistantSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// DeleteFieldTypeOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteFieldTypeOptions : IOptions<FieldTypeResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Assistant with the FieldType resources to delete
-        /// </summary>
-        public string PathAssistantSid { get; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
 
-        /// <summary>
-        /// Construct a new DeleteFieldTypeOptions
-        /// </summary>
-        /// <param name="pathAssistantSid"> The SID of the Assistant with the FieldType resources to delete </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public DeleteFieldTypeOptions(string pathAssistantSid, string pathSid)
-        {
-            PathAssistantSid = pathAssistantSid;
-            PathSid = pathSid;
-        }
+      if (UniqueName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      return p;
     }
+  }
+
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// DeleteFieldTypeOptions
+  /// </summary>
+  public class DeleteFieldTypeOptions : IOptions<FieldTypeResource>
+  {
+    /// <summary>
+    /// The SID of the Assistant with the FieldType resources to delete
+    /// </summary>
+    public string PathAssistantSid { get; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new DeleteFieldTypeOptions
+    /// </summary>
+    /// <param name="pathAssistantSid"> The SID of the Assistant with the FieldType resources to delete </param>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public DeleteFieldTypeOptions(string pathAssistantSid, string pathSid)
+    {
+      PathAssistantSid = pathAssistantSid;
+      PathSid = pathSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
 }

@@ -11,51 +11,51 @@ using Twilio.Converters;
 namespace Twilio.Rest.Sync.V1.Service.SyncStream
 {
 
+  /// <summary>
+  /// Create a new Stream Message.
+  /// </summary>
+  public class CreateStreamMessageOptions : IOptions<StreamMessageResource>
+  {
     /// <summary>
-    /// Create a new Stream Message.
+    /// The SID of the Sync Service to create the new Stream Message in
     /// </summary>
-    public class CreateStreamMessageOptions : IOptions<StreamMessageResource>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The SID of the Sync Stream to create the new Stream Message resource for
+    /// </summary>
+    public string PathStreamSid { get; }
+    /// <summary>
+    /// A JSON string that represents an arbitrary, schema-less object that makes up the Stream Message body
+    /// </summary>
+    public object Data { get; }
+
+    /// <summary>
+    /// Construct a new CreateStreamMessageOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Sync Service to create the new Stream Message in </param>
+    /// <param name="pathStreamSid"> The SID of the Sync Stream to create the new Stream Message resource for </param>
+    /// <param name="data"> A JSON string that represents an arbitrary, schema-less object that makes up the Stream Message
+    ///            body </param>
+    public CreateStreamMessageOptions(string pathServiceSid, string pathStreamSid, object data)
     {
-        /// <summary>
-        /// The SID of the Sync Service to create the new Stream Message in
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The SID of the Sync Stream to create the new Stream Message resource for
-        /// </summary>
-        public string PathStreamSid { get; }
-        /// <summary>
-        /// A JSON string that represents an arbitrary, schema-less object that makes up the Stream Message body
-        /// </summary>
-        public object Data { get; }
-
-        /// <summary>
-        /// Construct a new CreateStreamMessageOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Sync Service to create the new Stream Message in </param>
-        /// <param name="pathStreamSid"> The SID of the Sync Stream to create the new Stream Message resource for </param>
-        /// <param name="data"> A JSON string that represents an arbitrary, schema-less object that makes up the Stream Message
-        ///            body </param>
-        public CreateStreamMessageOptions(string pathServiceSid, string pathStreamSid, object data)
-        {
-            PathServiceSid = pathServiceSid;
-            PathStreamSid = pathStreamSid;
-            Data = data;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Data != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Data", Serializers.JsonObject(Data)));
-            }
-
-            return p;
-        }
+      PathServiceSid = pathServiceSid;
+      PathStreamSid = pathStreamSid;
+      Data = data;
     }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (Data != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Data", Serializers.JsonObject(Data)));
+      }
+
+      return p;
+    }
+  }
 
 }

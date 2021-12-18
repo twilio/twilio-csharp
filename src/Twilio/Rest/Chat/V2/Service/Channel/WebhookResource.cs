@@ -19,598 +19,598 @@ using Twilio.Types;
 namespace Twilio.Rest.Chat.V2.Service.Channel
 {
 
-    public class WebhookResource : Resource
+  public class WebhookResource : Resource
+  {
+    public sealed class TypeEnum : StringEnum
     {
-        public sealed class TypeEnum : StringEnum
-        {
-            private TypeEnum(string value) : base(value) {}
-            public TypeEnum() {}
-            public static implicit operator TypeEnum(string value)
-            {
-                return new TypeEnum(value);
-            }
+      private TypeEnum(string value) : base(value) { }
+      public TypeEnum() { }
+      public static implicit operator TypeEnum(string value)
+      {
+        return new TypeEnum(value);
+      }
 
-            public static readonly TypeEnum Webhook = new TypeEnum("webhook");
-            public static readonly TypeEnum Trigger = new TypeEnum("trigger");
-            public static readonly TypeEnum Studio = new TypeEnum("studio");
-        }
-
-        public sealed class MethodEnum : StringEnum
-        {
-            private MethodEnum(string value) : base(value) {}
-            public MethodEnum() {}
-            public static implicit operator MethodEnum(string value)
-            {
-                return new MethodEnum(value);
-            }
-
-            public static readonly MethodEnum Get = new MethodEnum("GET");
-            public static readonly MethodEnum Post = new MethodEnum("POST");
-        }
-
-        private static Request BuildReadRequest(ReadWebhookOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Get,
-                Rest.Domain.Chat,
-                "/v2/Services/" + options.PathServiceSid + "/Channels/" + options.PathChannelSid + "/Webhooks",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// read
-        /// </summary>
-        /// <param name="options"> Read Webhook parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Webhook </returns>
-        public static ResourceSet<WebhookResource> Read(ReadWebhookOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildReadRequest(options, client));
-
-            var page = Page<WebhookResource>.FromJson("webhooks", response.Content);
-            return new ResourceSet<WebhookResource>(page, options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// read
-        /// </summary>
-        /// <param name="options"> Read Webhook parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Webhook </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<WebhookResource>> ReadAsync(ReadWebhookOptions options,
-                                                                                                ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
-
-            var page = Page<WebhookResource>.FromJson("webhooks", response.Content);
-            return new ResourceSet<WebhookResource>(page, options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// read
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to read the resources from </param>
-        /// <param name="pathChannelSid"> The SID of the Channel the resources to read belong to </param>
-        /// <param name="pageSize"> Page size </param>
-        /// <param name="limit"> Record limit </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Webhook </returns>
-        public static ResourceSet<WebhookResource> Read(string pathServiceSid,
-                                                        string pathChannelSid,
-                                                        int? pageSize = null,
-                                                        long? limit = null,
-                                                        ITwilioRestClient client = null)
-        {
-            var options = new ReadWebhookOptions(pathServiceSid, pathChannelSid){PageSize = pageSize, Limit = limit};
-            return Read(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// read
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to read the resources from </param>
-        /// <param name="pathChannelSid"> The SID of the Channel the resources to read belong to </param>
-        /// <param name="pageSize"> Page size </param>
-        /// <param name="limit"> Record limit </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Webhook </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<WebhookResource>> ReadAsync(string pathServiceSid,
-                                                                                                string pathChannelSid,
-                                                                                                int? pageSize = null,
-                                                                                                long? limit = null,
-                                                                                                ITwilioRestClient client = null)
-        {
-            var options = new ReadWebhookOptions(pathServiceSid, pathChannelSid){PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Fetch the target page of records
-        /// </summary>
-        /// <param name="targetUrl"> API-generated URL for the requested results page </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns>
-        public static Page<WebhookResource> GetPage(string targetUrl, ITwilioRestClient client)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-
-            var request = new Request(
-                HttpMethod.Get,
-                targetUrl
-            );
-
-            var response = client.Request(request);
-            return Page<WebhookResource>.FromJson("webhooks", response.Content);
-        }
-
-        /// <summary>
-        /// Fetch the next page of records
-        /// </summary>
-        /// <param name="page"> current page of records </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns>
-        public static Page<WebhookResource> NextPage(Page<WebhookResource> page, ITwilioRestClient client)
-        {
-            var request = new Request(
-                HttpMethod.Get,
-                page.GetNextPageUrl(Rest.Domain.Chat)
-            );
-
-            var response = client.Request(request);
-            return Page<WebhookResource>.FromJson("webhooks", response.Content);
-        }
-
-        /// <summary>
-        /// Fetch the previous page of records
-        /// </summary>
-        /// <param name="page"> current page of records </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns>
-        public static Page<WebhookResource> PreviousPage(Page<WebhookResource> page, ITwilioRestClient client)
-        {
-            var request = new Request(
-                HttpMethod.Get,
-                page.GetPreviousPageUrl(Rest.Domain.Chat)
-            );
-
-            var response = client.Request(request);
-            return Page<WebhookResource>.FromJson("webhooks", response.Content);
-        }
-
-        private static Request BuildFetchRequest(FetchWebhookOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Get,
-                Rest.Domain.Chat,
-                "/v2/Services/" + options.PathServiceSid + "/Channels/" + options.PathChannelSid + "/Webhooks/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="options"> Fetch Webhook parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Webhook </returns>
-        public static WebhookResource Fetch(FetchWebhookOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="options"> Fetch Webhook parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Webhook </returns>
-        public static async System.Threading.Tasks.Task<WebhookResource> FetchAsync(FetchWebhookOptions options,
-                                                                                    ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service with the Channel to fetch the Webhook resource from </param>
-        /// <param name="pathChannelSid"> The SID of the Channel the resource to fetch belongs to </param>
-        /// <param name="pathSid"> The SID of the Channel Webhook resource to fetch </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Webhook </returns>
-        public static WebhookResource Fetch(string pathServiceSid,
-                                            string pathChannelSid,
-                                            string pathSid,
-                                            ITwilioRestClient client = null)
-        {
-            var options = new FetchWebhookOptions(pathServiceSid, pathChannelSid, pathSid);
-            return Fetch(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service with the Channel to fetch the Webhook resource from </param>
-        /// <param name="pathChannelSid"> The SID of the Channel the resource to fetch belongs to </param>
-        /// <param name="pathSid"> The SID of the Channel Webhook resource to fetch </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Webhook </returns>
-        public static async System.Threading.Tasks.Task<WebhookResource> FetchAsync(string pathServiceSid,
-                                                                                    string pathChannelSid,
-                                                                                    string pathSid,
-                                                                                    ITwilioRestClient client = null)
-        {
-            var options = new FetchWebhookOptions(pathServiceSid, pathChannelSid, pathSid);
-            return await FetchAsync(options, client);
-        }
-        #endif
-
-        private static Request BuildCreateRequest(CreateWebhookOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Post,
-                Rest.Domain.Chat,
-                "/v2/Services/" + options.PathServiceSid + "/Channels/" + options.PathChannelSid + "/Webhooks",
-                postParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// create
-        /// </summary>
-        /// <param name="options"> Create Webhook parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Webhook </returns>
-        public static WebhookResource Create(CreateWebhookOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildCreateRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// create
-        /// </summary>
-        /// <param name="options"> Create Webhook parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Webhook </returns>
-        public static async System.Threading.Tasks.Task<WebhookResource> CreateAsync(CreateWebhookOptions options,
-                                                                                     ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// create
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service with the Channel to create the resource under </param>
-        /// <param name="pathChannelSid"> The SID of the Channel the new resource belongs to </param>
-        /// <param name="type"> The type of webhook </param>
-        /// <param name="configurationUrl"> The URL of the webhook to call </param>
-        /// <param name="configurationMethod"> The HTTP method used to call `configuration.url` </param>
-        /// <param name="configurationFilters"> The events that cause us to call the Channel Webhook </param>
-        /// <param name="configurationTriggers"> A string that will cause us to call the webhook when it is found in a message
-        ///                             body </param>
-        /// <param name="configurationFlowSid"> The SID of the Studio Flow to call when an event occurs </param>
-        /// <param name="configurationRetryCount"> The number of times to retry the webhook if the first attempt fails </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Webhook </returns>
-        public static WebhookResource Create(string pathServiceSid,
-                                             string pathChannelSid,
-                                             WebhookResource.TypeEnum type,
-                                             string configurationUrl = null,
-                                             WebhookResource.MethodEnum configurationMethod = null,
-                                             List<string> configurationFilters = null,
-                                             List<string> configurationTriggers = null,
-                                             string configurationFlowSid = null,
-                                             int? configurationRetryCount = null,
-                                             ITwilioRestClient client = null)
-        {
-            var options = new CreateWebhookOptions(pathServiceSid, pathChannelSid, type){ConfigurationUrl = configurationUrl, ConfigurationMethod = configurationMethod, ConfigurationFilters = configurationFilters, ConfigurationTriggers = configurationTriggers, ConfigurationFlowSid = configurationFlowSid, ConfigurationRetryCount = configurationRetryCount};
-            return Create(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// create
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service with the Channel to create the resource under </param>
-        /// <param name="pathChannelSid"> The SID of the Channel the new resource belongs to </param>
-        /// <param name="type"> The type of webhook </param>
-        /// <param name="configurationUrl"> The URL of the webhook to call </param>
-        /// <param name="configurationMethod"> The HTTP method used to call `configuration.url` </param>
-        /// <param name="configurationFilters"> The events that cause us to call the Channel Webhook </param>
-        /// <param name="configurationTriggers"> A string that will cause us to call the webhook when it is found in a message
-        ///                             body </param>
-        /// <param name="configurationFlowSid"> The SID of the Studio Flow to call when an event occurs </param>
-        /// <param name="configurationRetryCount"> The number of times to retry the webhook if the first attempt fails </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Webhook </returns>
-        public static async System.Threading.Tasks.Task<WebhookResource> CreateAsync(string pathServiceSid,
-                                                                                     string pathChannelSid,
-                                                                                     WebhookResource.TypeEnum type,
-                                                                                     string configurationUrl = null,
-                                                                                     WebhookResource.MethodEnum configurationMethod = null,
-                                                                                     List<string> configurationFilters = null,
-                                                                                     List<string> configurationTriggers = null,
-                                                                                     string configurationFlowSid = null,
-                                                                                     int? configurationRetryCount = null,
-                                                                                     ITwilioRestClient client = null)
-        {
-            var options = new CreateWebhookOptions(pathServiceSid, pathChannelSid, type){ConfigurationUrl = configurationUrl, ConfigurationMethod = configurationMethod, ConfigurationFilters = configurationFilters, ConfigurationTriggers = configurationTriggers, ConfigurationFlowSid = configurationFlowSid, ConfigurationRetryCount = configurationRetryCount};
-            return await CreateAsync(options, client);
-        }
-        #endif
-
-        private static Request BuildUpdateRequest(UpdateWebhookOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Post,
-                Rest.Domain.Chat,
-                "/v2/Services/" + options.PathServiceSid + "/Channels/" + options.PathChannelSid + "/Webhooks/" + options.PathSid + "",
-                postParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// update
-        /// </summary>
-        /// <param name="options"> Update Webhook parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Webhook </returns>
-        public static WebhookResource Update(UpdateWebhookOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildUpdateRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// update
-        /// </summary>
-        /// <param name="options"> Update Webhook parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Webhook </returns>
-        public static async System.Threading.Tasks.Task<WebhookResource> UpdateAsync(UpdateWebhookOptions options,
-                                                                                     ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// update
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service with the Channel that has the Webhook resource to update
-        ///                      </param>
-        /// <param name="pathChannelSid"> The SID of the Channel the resource to update belongs to </param>
-        /// <param name="pathSid"> The SID of the resource </param>
-        /// <param name="configurationUrl"> The URL of the webhook to call </param>
-        /// <param name="configurationMethod"> The HTTP method used to call `configuration.url` </param>
-        /// <param name="configurationFilters"> The events that cause us to call the Channel Webhook </param>
-        /// <param name="configurationTriggers"> A string that will cause us to call the webhook when it is found in a message
-        ///                             body </param>
-        /// <param name="configurationFlowSid"> The SID of the Studio Flow to call when an event occurs </param>
-        /// <param name="configurationRetryCount"> The number of times to retry the webhook if the first attempt fails </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Webhook </returns>
-        public static WebhookResource Update(string pathServiceSid,
-                                             string pathChannelSid,
-                                             string pathSid,
-                                             string configurationUrl = null,
-                                             WebhookResource.MethodEnum configurationMethod = null,
-                                             List<string> configurationFilters = null,
-                                             List<string> configurationTriggers = null,
-                                             string configurationFlowSid = null,
-                                             int? configurationRetryCount = null,
-                                             ITwilioRestClient client = null)
-        {
-            var options = new UpdateWebhookOptions(pathServiceSid, pathChannelSid, pathSid){ConfigurationUrl = configurationUrl, ConfigurationMethod = configurationMethod, ConfigurationFilters = configurationFilters, ConfigurationTriggers = configurationTriggers, ConfigurationFlowSid = configurationFlowSid, ConfigurationRetryCount = configurationRetryCount};
-            return Update(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// update
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service with the Channel that has the Webhook resource to update
-        ///                      </param>
-        /// <param name="pathChannelSid"> The SID of the Channel the resource to update belongs to </param>
-        /// <param name="pathSid"> The SID of the resource </param>
-        /// <param name="configurationUrl"> The URL of the webhook to call </param>
-        /// <param name="configurationMethod"> The HTTP method used to call `configuration.url` </param>
-        /// <param name="configurationFilters"> The events that cause us to call the Channel Webhook </param>
-        /// <param name="configurationTriggers"> A string that will cause us to call the webhook when it is found in a message
-        ///                             body </param>
-        /// <param name="configurationFlowSid"> The SID of the Studio Flow to call when an event occurs </param>
-        /// <param name="configurationRetryCount"> The number of times to retry the webhook if the first attempt fails </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Webhook </returns>
-        public static async System.Threading.Tasks.Task<WebhookResource> UpdateAsync(string pathServiceSid,
-                                                                                     string pathChannelSid,
-                                                                                     string pathSid,
-                                                                                     string configurationUrl = null,
-                                                                                     WebhookResource.MethodEnum configurationMethod = null,
-                                                                                     List<string> configurationFilters = null,
-                                                                                     List<string> configurationTriggers = null,
-                                                                                     string configurationFlowSid = null,
-                                                                                     int? configurationRetryCount = null,
-                                                                                     ITwilioRestClient client = null)
-        {
-            var options = new UpdateWebhookOptions(pathServiceSid, pathChannelSid, pathSid){ConfigurationUrl = configurationUrl, ConfigurationMethod = configurationMethod, ConfigurationFilters = configurationFilters, ConfigurationTriggers = configurationTriggers, ConfigurationFlowSid = configurationFlowSid, ConfigurationRetryCount = configurationRetryCount};
-            return await UpdateAsync(options, client);
-        }
-        #endif
-
-        private static Request BuildDeleteRequest(DeleteWebhookOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Delete,
-                Rest.Domain.Chat,
-                "/v2/Services/" + options.PathServiceSid + "/Channels/" + options.PathChannelSid + "/Webhooks/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// delete
-        /// </summary>
-        /// <param name="options"> Delete Webhook parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Webhook </returns>
-        public static bool Delete(DeleteWebhookOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
-        }
-
-        #if !NET35
-        /// <summary>
-        /// delete
-        /// </summary>
-        /// <param name="options"> Delete Webhook parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Webhook </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteWebhookOptions options,
-                                                                          ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
-        }
-        #endif
-
-        /// <summary>
-        /// delete
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service with the Channel to delete the Webhook resource from </param>
-        /// <param name="pathChannelSid"> The SID of the channel the resource to delete belongs to </param>
-        /// <param name="pathSid"> The SID of the Channel Webhook resource to delete </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Webhook </returns>
-        public static bool Delete(string pathServiceSid,
-                                  string pathChannelSid,
-                                  string pathSid,
-                                  ITwilioRestClient client = null)
-        {
-            var options = new DeleteWebhookOptions(pathServiceSid, pathChannelSid, pathSid);
-            return Delete(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// delete
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service with the Channel to delete the Webhook resource from </param>
-        /// <param name="pathChannelSid"> The SID of the channel the resource to delete belongs to </param>
-        /// <param name="pathSid"> The SID of the Channel Webhook resource to delete </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Webhook </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid,
-                                                                          string pathChannelSid,
-                                                                          string pathSid,
-                                                                          ITwilioRestClient client = null)
-        {
-            var options = new DeleteWebhookOptions(pathServiceSid, pathChannelSid, pathSid);
-            return await DeleteAsync(options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Converts a JSON string into a WebhookResource object
-        /// </summary>
-        /// <param name="json"> Raw JSON string </param>
-        /// <returns> WebhookResource object represented by the provided JSON </returns>
-        public static WebhookResource FromJson(string json)
-        {
-            // Convert all checked exceptions to Runtime
-            try
-            {
-                return JsonConvert.DeserializeObject<WebhookResource>(json);
-            }
-            catch (JsonException e)
-            {
-                throw new ApiException(e.Message, e);
-            }
-        }
-
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        [JsonProperty("sid")]
-        public string Sid { get; private set; }
-        /// <summary>
-        /// The SID of the Account that created the resource
-        /// </summary>
-        [JsonProperty("account_sid")]
-        public string AccountSid { get; private set; }
-        /// <summary>
-        /// The SID of the Service that the Channel Webhook resource is associated with
-        /// </summary>
-        [JsonProperty("service_sid")]
-        public string ServiceSid { get; private set; }
-        /// <summary>
-        /// The SID of the Channel the Channel Webhook resource belongs to
-        /// </summary>
-        [JsonProperty("channel_sid")]
-        public string ChannelSid { get; private set; }
-        /// <summary>
-        /// The type of webhook
-        /// </summary>
-        [JsonProperty("type")]
-        public string Type { get; private set; }
-        /// <summary>
-        /// The absolute URL of the Channel Webhook resource
-        /// </summary>
-        [JsonProperty("url")]
-        public Uri Url { get; private set; }
-        /// <summary>
-        /// The JSON string that describes the configuration object for the channel webhook
-        /// </summary>
-        [JsonProperty("configuration")]
-        public object Configuration { get; private set; }
-        /// <summary>
-        /// The ISO 8601 date and time in GMT when the resource was created
-        /// </summary>
-        [JsonProperty("date_created")]
-        public DateTime? DateCreated { get; private set; }
-        /// <summary>
-        /// The ISO 8601 date and time in GMT when the resource was last updated
-        /// </summary>
-        [JsonProperty("date_updated")]
-        public DateTime? DateUpdated { get; private set; }
-
-        private WebhookResource()
-        {
-
-        }
+      public static readonly TypeEnum Webhook = new TypeEnum("webhook");
+      public static readonly TypeEnum Trigger = new TypeEnum("trigger");
+      public static readonly TypeEnum Studio = new TypeEnum("studio");
     }
+
+    public sealed class MethodEnum : StringEnum
+    {
+      private MethodEnum(string value) : base(value) { }
+      public MethodEnum() { }
+      public static implicit operator MethodEnum(string value)
+      {
+        return new MethodEnum(value);
+      }
+
+      public static readonly MethodEnum Get = new MethodEnum("GET");
+      public static readonly MethodEnum Post = new MethodEnum("POST");
+    }
+
+    private static Request BuildReadRequest(ReadWebhookOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Get,
+          Rest.Domain.Chat,
+          "/v2/Services/" + options.PathServiceSid + "/Channels/" + options.PathChannelSid + "/Webhooks",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// read
+    /// </summary>
+    /// <param name="options"> Read Webhook parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Webhook </returns>
+    public static ResourceSet<WebhookResource> Read(ReadWebhookOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildReadRequest(options, client));
+
+      var page = Page<WebhookResource>.FromJson("webhooks", response.Content);
+      return new ResourceSet<WebhookResource>(page, options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// read
+    /// </summary>
+    /// <param name="options"> Read Webhook parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Webhook </returns>
+    public static async System.Threading.Tasks.Task<ResourceSet<WebhookResource>> ReadAsync(ReadWebhookOptions options,
+                                                                                            ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+      var page = Page<WebhookResource>.FromJson("webhooks", response.Content);
+      return new ResourceSet<WebhookResource>(page, options, client);
+    }
+#endif
+
+    /// <summary>
+    /// read
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to read the resources from </param>
+    /// <param name="pathChannelSid"> The SID of the Channel the resources to read belong to </param>
+    /// <param name="pageSize"> Page size </param>
+    /// <param name="limit"> Record limit </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Webhook </returns>
+    public static ResourceSet<WebhookResource> Read(string pathServiceSid,
+                                                    string pathChannelSid,
+                                                    int? pageSize = null,
+                                                    long? limit = null,
+                                                    ITwilioRestClient client = null)
+    {
+      var options = new ReadWebhookOptions(pathServiceSid, pathChannelSid) { PageSize = pageSize, Limit = limit };
+      return Read(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// read
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to read the resources from </param>
+    /// <param name="pathChannelSid"> The SID of the Channel the resources to read belong to </param>
+    /// <param name="pageSize"> Page size </param>
+    /// <param name="limit"> Record limit </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Webhook </returns>
+    public static async System.Threading.Tasks.Task<ResourceSet<WebhookResource>> ReadAsync(string pathServiceSid,
+                                                                                            string pathChannelSid,
+                                                                                            int? pageSize = null,
+                                                                                            long? limit = null,
+                                                                                            ITwilioRestClient client = null)
+    {
+      var options = new ReadWebhookOptions(pathServiceSid, pathChannelSid) { PageSize = pageSize, Limit = limit };
+      return await ReadAsync(options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Fetch the target page of records
+    /// </summary>
+    /// <param name="targetUrl"> API-generated URL for the requested results page </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> The target page of records </returns>
+    public static Page<WebhookResource> GetPage(string targetUrl, ITwilioRestClient client)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+
+      var request = new Request(
+          HttpMethod.Get,
+          targetUrl
+      );
+
+      var response = client.Request(request);
+      return Page<WebhookResource>.FromJson("webhooks", response.Content);
+    }
+
+    /// <summary>
+    /// Fetch the next page of records
+    /// </summary>
+    /// <param name="page"> current page of records </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> The next page of records </returns>
+    public static Page<WebhookResource> NextPage(Page<WebhookResource> page, ITwilioRestClient client)
+    {
+      var request = new Request(
+          HttpMethod.Get,
+          page.GetNextPageUrl(Rest.Domain.Chat)
+      );
+
+      var response = client.Request(request);
+      return Page<WebhookResource>.FromJson("webhooks", response.Content);
+    }
+
+    /// <summary>
+    /// Fetch the previous page of records
+    /// </summary>
+    /// <param name="page"> current page of records </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> The previous page of records </returns>
+    public static Page<WebhookResource> PreviousPage(Page<WebhookResource> page, ITwilioRestClient client)
+    {
+      var request = new Request(
+          HttpMethod.Get,
+          page.GetPreviousPageUrl(Rest.Domain.Chat)
+      );
+
+      var response = client.Request(request);
+      return Page<WebhookResource>.FromJson("webhooks", response.Content);
+    }
+
+    private static Request BuildFetchRequest(FetchWebhookOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Get,
+          Rest.Domain.Chat,
+          "/v2/Services/" + options.PathServiceSid + "/Channels/" + options.PathChannelSid + "/Webhooks/" + options.PathSid + "",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="options"> Fetch Webhook parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Webhook </returns>
+    public static WebhookResource Fetch(FetchWebhookOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="options"> Fetch Webhook parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Webhook </returns>
+    public static async System.Threading.Tasks.Task<WebhookResource> FetchAsync(FetchWebhookOptions options,
+                                                                                ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service with the Channel to fetch the Webhook resource from </param>
+    /// <param name="pathChannelSid"> The SID of the Channel the resource to fetch belongs to </param>
+    /// <param name="pathSid"> The SID of the Channel Webhook resource to fetch </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Webhook </returns>
+    public static WebhookResource Fetch(string pathServiceSid,
+                                        string pathChannelSid,
+                                        string pathSid,
+                                        ITwilioRestClient client = null)
+    {
+      var options = new FetchWebhookOptions(pathServiceSid, pathChannelSid, pathSid);
+      return Fetch(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service with the Channel to fetch the Webhook resource from </param>
+    /// <param name="pathChannelSid"> The SID of the Channel the resource to fetch belongs to </param>
+    /// <param name="pathSid"> The SID of the Channel Webhook resource to fetch </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Webhook </returns>
+    public static async System.Threading.Tasks.Task<WebhookResource> FetchAsync(string pathServiceSid,
+                                                                                string pathChannelSid,
+                                                                                string pathSid,
+                                                                                ITwilioRestClient client = null)
+    {
+      var options = new FetchWebhookOptions(pathServiceSid, pathChannelSid, pathSid);
+      return await FetchAsync(options, client);
+    }
+#endif
+
+    private static Request BuildCreateRequest(CreateWebhookOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Post,
+          Rest.Domain.Chat,
+          "/v2/Services/" + options.PathServiceSid + "/Channels/" + options.PathChannelSid + "/Webhooks",
+          postParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// create
+    /// </summary>
+    /// <param name="options"> Create Webhook parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Webhook </returns>
+    public static WebhookResource Create(CreateWebhookOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildCreateRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// create
+    /// </summary>
+    /// <param name="options"> Create Webhook parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Webhook </returns>
+    public static async System.Threading.Tasks.Task<WebhookResource> CreateAsync(CreateWebhookOptions options,
+                                                                                 ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildCreateRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// create
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service with the Channel to create the resource under </param>
+    /// <param name="pathChannelSid"> The SID of the Channel the new resource belongs to </param>
+    /// <param name="type"> The type of webhook </param>
+    /// <param name="configurationUrl"> The URL of the webhook to call </param>
+    /// <param name="configurationMethod"> The HTTP method used to call `configuration.url` </param>
+    /// <param name="configurationFilters"> The events that cause us to call the Channel Webhook </param>
+    /// <param name="configurationTriggers"> A string that will cause us to call the webhook when it is found in a message
+    ///                             body </param>
+    /// <param name="configurationFlowSid"> The SID of the Studio Flow to call when an event occurs </param>
+    /// <param name="configurationRetryCount"> The number of times to retry the webhook if the first attempt fails </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Webhook </returns>
+    public static WebhookResource Create(string pathServiceSid,
+                                         string pathChannelSid,
+                                         WebhookResource.TypeEnum type,
+                                         string configurationUrl = null,
+                                         WebhookResource.MethodEnum configurationMethod = null,
+                                         List<string> configurationFilters = null,
+                                         List<string> configurationTriggers = null,
+                                         string configurationFlowSid = null,
+                                         int? configurationRetryCount = null,
+                                         ITwilioRestClient client = null)
+    {
+      var options = new CreateWebhookOptions(pathServiceSid, pathChannelSid, type) { ConfigurationUrl = configurationUrl, ConfigurationMethod = configurationMethod, ConfigurationFilters = configurationFilters, ConfigurationTriggers = configurationTriggers, ConfigurationFlowSid = configurationFlowSid, ConfigurationRetryCount = configurationRetryCount };
+      return Create(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// create
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service with the Channel to create the resource under </param>
+    /// <param name="pathChannelSid"> The SID of the Channel the new resource belongs to </param>
+    /// <param name="type"> The type of webhook </param>
+    /// <param name="configurationUrl"> The URL of the webhook to call </param>
+    /// <param name="configurationMethod"> The HTTP method used to call `configuration.url` </param>
+    /// <param name="configurationFilters"> The events that cause us to call the Channel Webhook </param>
+    /// <param name="configurationTriggers"> A string that will cause us to call the webhook when it is found in a message
+    ///                             body </param>
+    /// <param name="configurationFlowSid"> The SID of the Studio Flow to call when an event occurs </param>
+    /// <param name="configurationRetryCount"> The number of times to retry the webhook if the first attempt fails </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Webhook </returns>
+    public static async System.Threading.Tasks.Task<WebhookResource> CreateAsync(string pathServiceSid,
+                                                                                 string pathChannelSid,
+                                                                                 WebhookResource.TypeEnum type,
+                                                                                 string configurationUrl = null,
+                                                                                 WebhookResource.MethodEnum configurationMethod = null,
+                                                                                 List<string> configurationFilters = null,
+                                                                                 List<string> configurationTriggers = null,
+                                                                                 string configurationFlowSid = null,
+                                                                                 int? configurationRetryCount = null,
+                                                                                 ITwilioRestClient client = null)
+    {
+      var options = new CreateWebhookOptions(pathServiceSid, pathChannelSid, type) { ConfigurationUrl = configurationUrl, ConfigurationMethod = configurationMethod, ConfigurationFilters = configurationFilters, ConfigurationTriggers = configurationTriggers, ConfigurationFlowSid = configurationFlowSid, ConfigurationRetryCount = configurationRetryCount };
+      return await CreateAsync(options, client);
+    }
+#endif
+
+    private static Request BuildUpdateRequest(UpdateWebhookOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Post,
+          Rest.Domain.Chat,
+          "/v2/Services/" + options.PathServiceSid + "/Channels/" + options.PathChannelSid + "/Webhooks/" + options.PathSid + "",
+          postParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// update
+    /// </summary>
+    /// <param name="options"> Update Webhook parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Webhook </returns>
+    public static WebhookResource Update(UpdateWebhookOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildUpdateRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// update
+    /// </summary>
+    /// <param name="options"> Update Webhook parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Webhook </returns>
+    public static async System.Threading.Tasks.Task<WebhookResource> UpdateAsync(UpdateWebhookOptions options,
+                                                                                 ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// update
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service with the Channel that has the Webhook resource to update
+    ///                      </param>
+    /// <param name="pathChannelSid"> The SID of the Channel the resource to update belongs to </param>
+    /// <param name="pathSid"> The SID of the resource </param>
+    /// <param name="configurationUrl"> The URL of the webhook to call </param>
+    /// <param name="configurationMethod"> The HTTP method used to call `configuration.url` </param>
+    /// <param name="configurationFilters"> The events that cause us to call the Channel Webhook </param>
+    /// <param name="configurationTriggers"> A string that will cause us to call the webhook when it is found in a message
+    ///                             body </param>
+    /// <param name="configurationFlowSid"> The SID of the Studio Flow to call when an event occurs </param>
+    /// <param name="configurationRetryCount"> The number of times to retry the webhook if the first attempt fails </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Webhook </returns>
+    public static WebhookResource Update(string pathServiceSid,
+                                         string pathChannelSid,
+                                         string pathSid,
+                                         string configurationUrl = null,
+                                         WebhookResource.MethodEnum configurationMethod = null,
+                                         List<string> configurationFilters = null,
+                                         List<string> configurationTriggers = null,
+                                         string configurationFlowSid = null,
+                                         int? configurationRetryCount = null,
+                                         ITwilioRestClient client = null)
+    {
+      var options = new UpdateWebhookOptions(pathServiceSid, pathChannelSid, pathSid) { ConfigurationUrl = configurationUrl, ConfigurationMethod = configurationMethod, ConfigurationFilters = configurationFilters, ConfigurationTriggers = configurationTriggers, ConfigurationFlowSid = configurationFlowSid, ConfigurationRetryCount = configurationRetryCount };
+      return Update(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// update
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service with the Channel that has the Webhook resource to update
+    ///                      </param>
+    /// <param name="pathChannelSid"> The SID of the Channel the resource to update belongs to </param>
+    /// <param name="pathSid"> The SID of the resource </param>
+    /// <param name="configurationUrl"> The URL of the webhook to call </param>
+    /// <param name="configurationMethod"> The HTTP method used to call `configuration.url` </param>
+    /// <param name="configurationFilters"> The events that cause us to call the Channel Webhook </param>
+    /// <param name="configurationTriggers"> A string that will cause us to call the webhook when it is found in a message
+    ///                             body </param>
+    /// <param name="configurationFlowSid"> The SID of the Studio Flow to call when an event occurs </param>
+    /// <param name="configurationRetryCount"> The number of times to retry the webhook if the first attempt fails </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Webhook </returns>
+    public static async System.Threading.Tasks.Task<WebhookResource> UpdateAsync(string pathServiceSid,
+                                                                                 string pathChannelSid,
+                                                                                 string pathSid,
+                                                                                 string configurationUrl = null,
+                                                                                 WebhookResource.MethodEnum configurationMethod = null,
+                                                                                 List<string> configurationFilters = null,
+                                                                                 List<string> configurationTriggers = null,
+                                                                                 string configurationFlowSid = null,
+                                                                                 int? configurationRetryCount = null,
+                                                                                 ITwilioRestClient client = null)
+    {
+      var options = new UpdateWebhookOptions(pathServiceSid, pathChannelSid, pathSid) { ConfigurationUrl = configurationUrl, ConfigurationMethod = configurationMethod, ConfigurationFilters = configurationFilters, ConfigurationTriggers = configurationTriggers, ConfigurationFlowSid = configurationFlowSid, ConfigurationRetryCount = configurationRetryCount };
+      return await UpdateAsync(options, client);
+    }
+#endif
+
+    private static Request BuildDeleteRequest(DeleteWebhookOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Delete,
+          Rest.Domain.Chat,
+          "/v2/Services/" + options.PathServiceSid + "/Channels/" + options.PathChannelSid + "/Webhooks/" + options.PathSid + "",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// delete
+    /// </summary>
+    /// <param name="options"> Delete Webhook parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Webhook </returns>
+    public static bool Delete(DeleteWebhookOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildDeleteRequest(options, client));
+      return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+    }
+
+#if !NET35
+    /// <summary>
+    /// delete
+    /// </summary>
+    /// <param name="options"> Delete Webhook parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Webhook </returns>
+    public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteWebhookOptions options,
+                                                                      ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+      return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+    }
+#endif
+
+    /// <summary>
+    /// delete
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service with the Channel to delete the Webhook resource from </param>
+    /// <param name="pathChannelSid"> The SID of the channel the resource to delete belongs to </param>
+    /// <param name="pathSid"> The SID of the Channel Webhook resource to delete </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Webhook </returns>
+    public static bool Delete(string pathServiceSid,
+                              string pathChannelSid,
+                              string pathSid,
+                              ITwilioRestClient client = null)
+    {
+      var options = new DeleteWebhookOptions(pathServiceSid, pathChannelSid, pathSid);
+      return Delete(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// delete
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service with the Channel to delete the Webhook resource from </param>
+    /// <param name="pathChannelSid"> The SID of the channel the resource to delete belongs to </param>
+    /// <param name="pathSid"> The SID of the Channel Webhook resource to delete </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Webhook </returns>
+    public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid,
+                                                                      string pathChannelSid,
+                                                                      string pathSid,
+                                                                      ITwilioRestClient client = null)
+    {
+      var options = new DeleteWebhookOptions(pathServiceSid, pathChannelSid, pathSid);
+      return await DeleteAsync(options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Converts a JSON string into a WebhookResource object
+    /// </summary>
+    /// <param name="json"> Raw JSON string </param>
+    /// <returns> WebhookResource object represented by the provided JSON </returns>
+    public static WebhookResource FromJson(string json)
+    {
+      // Convert all checked exceptions to Runtime
+      try
+      {
+        return JsonConvert.DeserializeObject<WebhookResource>(json);
+      }
+      catch (JsonException e)
+      {
+        throw new ApiException(e.Message, e);
+      }
+    }
+
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    [JsonProperty("sid")]
+    public string Sid { get; private set; }
+    /// <summary>
+    /// The SID of the Account that created the resource
+    /// </summary>
+    [JsonProperty("account_sid")]
+    public string AccountSid { get; private set; }
+    /// <summary>
+    /// The SID of the Service that the Channel Webhook resource is associated with
+    /// </summary>
+    [JsonProperty("service_sid")]
+    public string ServiceSid { get; private set; }
+    /// <summary>
+    /// The SID of the Channel the Channel Webhook resource belongs to
+    /// </summary>
+    [JsonProperty("channel_sid")]
+    public string ChannelSid { get; private set; }
+    /// <summary>
+    /// The type of webhook
+    /// </summary>
+    [JsonProperty("type")]
+    public string Type { get; private set; }
+    /// <summary>
+    /// The absolute URL of the Channel Webhook resource
+    /// </summary>
+    [JsonProperty("url")]
+    public Uri Url { get; private set; }
+    /// <summary>
+    /// The JSON string that describes the configuration object for the channel webhook
+    /// </summary>
+    [JsonProperty("configuration")]
+    public object Configuration { get; private set; }
+    /// <summary>
+    /// The ISO 8601 date and time in GMT when the resource was created
+    /// </summary>
+    [JsonProperty("date_created")]
+    public DateTime? DateCreated { get; private set; }
+    /// <summary>
+    /// The ISO 8601 date and time in GMT when the resource was last updated
+    /// </summary>
+    [JsonProperty("date_updated")]
+    public DateTime? DateUpdated { get; private set; }
+
+    private WebhookResource()
+    {
+
+    }
+  }
 
 }

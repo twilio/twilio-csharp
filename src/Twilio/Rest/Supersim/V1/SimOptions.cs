@@ -11,218 +11,218 @@ using Twilio.Converters;
 namespace Twilio.Rest.Supersim.V1
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Register a Super SIM to your Account
+  /// </summary>
+  public class CreateSimOptions : IOptions<SimResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Register a Super SIM to your Account
+    /// The [ICCID](https://en.wikipedia.org/wiki/Subscriber_identity_module#ICCID) of the Super SIM to be added to your Account
     /// </summary>
-    public class CreateSimOptions : IOptions<SimResource>
+    public string Iccid { get; }
+    /// <summary>
+    /// The 10-digit code required to claim the Super SIM for your Account
+    /// </summary>
+    public string RegistrationCode { get; }
+
+    /// <summary>
+    /// Construct a new CreateSimOptions
+    /// </summary>
+    /// <param name="iccid"> The [ICCID](https://en.wikipedia.org/wiki/Subscriber_identity_module#ICCID) of the Super SIM
+    ///             to be added to your Account </param>
+    /// <param name="registrationCode"> The 10-digit code required to claim the Super SIM for your Account </param>
+    public CreateSimOptions(string iccid, string registrationCode)
     {
-        /// <summary>
-        /// The [ICCID](https://en.wikipedia.org/wiki/Subscriber_identity_module#ICCID) of the Super SIM to be added to your Account
-        /// </summary>
-        public string Iccid { get; }
-        /// <summary>
-        /// The 10-digit code required to claim the Super SIM for your Account
-        /// </summary>
-        public string RegistrationCode { get; }
-
-        /// <summary>
-        /// Construct a new CreateSimOptions
-        /// </summary>
-        /// <param name="iccid"> The [ICCID](https://en.wikipedia.org/wiki/Subscriber_identity_module#ICCID) of the Super SIM
-        ///             to be added to your Account </param>
-        /// <param name="registrationCode"> The 10-digit code required to claim the Super SIM for your Account </param>
-        public CreateSimOptions(string iccid, string registrationCode)
-        {
-            Iccid = iccid;
-            RegistrationCode = registrationCode;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Iccid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Iccid", Iccid));
-            }
-
-            if (RegistrationCode != null)
-            {
-                p.Add(new KeyValuePair<string, string>("RegistrationCode", RegistrationCode));
-            }
-
-            return p;
-        }
+      Iccid = iccid;
+      RegistrationCode = registrationCode;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Fetch a Super SIM instance from your account.
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchSimOptions : IOptions<SimResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID that identifies the resource to fetch
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (Iccid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Iccid", Iccid));
+      }
 
-        /// <summary>
-        /// Construct a new FetchSimOptions
-        /// </summary>
-        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
-        public FetchSimOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
+      if (RegistrationCode != null)
+      {
+        p.Add(new KeyValuePair<string, string>("RegistrationCode", RegistrationCode));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Fetch a Super SIM instance from your account.
+  /// </summary>
+  public class FetchSimOptions : IOptions<SimResource>
+  {
+    /// <summary>
+    /// The SID that identifies the resource to fetch
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchSimOptions
+    /// </summary>
+    /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
+    public FetchSimOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Updates the given properties of a Super SIM instance from your account.
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateSimOptions : IOptions<SimResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID that identifies the resource to update
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// An application-defined string that uniquely identifies the resource
-        /// </summary>
-        public string UniqueName { get; set; }
-        /// <summary>
-        /// The new status of the Super SIM
-        /// </summary>
-        public SimResource.StatusUpdateEnum Status { get; set; }
-        /// <summary>
-        /// The SID or unique name of the Fleet to which the SIM resource should be assigned
-        /// </summary>
-        public string Fleet { get; set; }
-        /// <summary>
-        /// The URL we should call after the update has finished
-        /// </summary>
-        public Uri CallbackUrl { get; set; }
-        /// <summary>
-        /// The HTTP method we should use to call callback_url
-        /// </summary>
-        public Twilio.Http.HttpMethod CallbackMethod { get; set; }
-        /// <summary>
-        /// The SID of the Account to which the Sim resource should belong
-        /// </summary>
-        public string AccountSid { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new UpdateSimOptions
-        /// </summary>
-        /// <param name="pathSid"> The SID that identifies the resource to update </param>
-        public UpdateSimOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Updates the given properties of a Super SIM instance from your account.
+  /// </summary>
+  public class UpdateSimOptions : IOptions<SimResource>
+  {
+    /// <summary>
+    /// The SID that identifies the resource to update
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// An application-defined string that uniquely identifies the resource
+    /// </summary>
+    public string UniqueName { get; set; }
+    /// <summary>
+    /// The new status of the Super SIM
+    /// </summary>
+    public SimResource.StatusUpdateEnum Status { get; set; }
+    /// <summary>
+    /// The SID or unique name of the Fleet to which the SIM resource should be assigned
+    /// </summary>
+    public string Fleet { get; set; }
+    /// <summary>
+    /// The URL we should call after the update has finished
+    /// </summary>
+    public Uri CallbackUrl { get; set; }
+    /// <summary>
+    /// The HTTP method we should use to call callback_url
+    /// </summary>
+    public Twilio.Http.HttpMethod CallbackMethod { get; set; }
+    /// <summary>
+    /// The SID of the Account to which the Sim resource should belong
+    /// </summary>
+    public string AccountSid { get; set; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (UniqueName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
-            }
-
-            if (Status != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
-            }
-
-            if (Fleet != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Fleet", Fleet.ToString()));
-            }
-
-            if (CallbackUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("CallbackUrl", Serializers.Url(CallbackUrl)));
-            }
-
-            if (CallbackMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("CallbackMethod", CallbackMethod.ToString()));
-            }
-
-            if (AccountSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("AccountSid", AccountSid.ToString()));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new UpdateSimOptions
+    /// </summary>
+    /// <param name="pathSid"> The SID that identifies the resource to update </param>
+    public UpdateSimOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Retrieve a list of Super SIMs from your account.
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadSimOptions : ReadOptions<SimResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The status of the Sim resources to read
-        /// </summary>
-        public SimResource.StatusEnum Status { get; set; }
-        /// <summary>
-        /// The SID or unique name of the Fleet to which a list of Sims are assigned
-        /// </summary>
-        public string Fleet { get; set; }
-        /// <summary>
-        /// The ICCID associated with a Super SIM to filter the list by
-        /// </summary>
-        public string Iccid { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (UniqueName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Status != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
-            }
+      if (Status != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
+      }
 
-            if (Fleet != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Fleet", Fleet.ToString()));
-            }
+      if (Fleet != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Fleet", Fleet.ToString()));
+      }
 
-            if (Iccid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Iccid", Iccid));
-            }
+      if (CallbackUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("CallbackUrl", Serializers.Url(CallbackUrl)));
+      }
 
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
+      if (CallbackMethod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("CallbackMethod", CallbackMethod.ToString()));
+      }
 
-            return p;
-        }
+      if (AccountSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("AccountSid", AccountSid.ToString()));
+      }
+
+      return p;
     }
+  }
+
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Retrieve a list of Super SIMs from your account.
+  /// </summary>
+  public class ReadSimOptions : ReadOptions<SimResource>
+  {
+    /// <summary>
+    /// The status of the Sim resources to read
+    /// </summary>
+    public SimResource.StatusEnum Status { get; set; }
+    /// <summary>
+    /// The SID or unique name of the Fleet to which a list of Sims are assigned
+    /// </summary>
+    public string Fleet { get; set; }
+    /// <summary>
+    /// The ICCID associated with a Super SIM to filter the list by
+    /// </summary>
+    public string Iccid { get; set; }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (Status != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
+      }
+
+      if (Fleet != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Fleet", Fleet.ToString()));
+      }
+
+      if (Iccid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Iccid", Iccid));
+      }
+
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
 
 }

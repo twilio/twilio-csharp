@@ -18,238 +18,238 @@ using Twilio.Http;
 namespace Twilio.Rest.Taskrouter.V1.Workspace.Workflow
 {
 
-    public class WorkflowCumulativeStatisticsResource : Resource
+  public class WorkflowCumulativeStatisticsResource : Resource
+  {
+    private static Request BuildFetchRequest(FetchWorkflowCumulativeStatisticsOptions options, ITwilioRestClient client)
     {
-        private static Request BuildFetchRequest(FetchWorkflowCumulativeStatisticsOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Get,
-                Rest.Domain.Taskrouter,
-                "/v1/Workspaces/" + options.PathWorkspaceSid + "/Workflows/" + options.PathWorkflowSid + "/CumulativeStatistics",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="options"> Fetch WorkflowCumulativeStatistics parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of WorkflowCumulativeStatistics </returns>
-        public static WorkflowCumulativeStatisticsResource Fetch(FetchWorkflowCumulativeStatisticsOptions options,
-                                                                 ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="options"> Fetch WorkflowCumulativeStatistics parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of WorkflowCumulativeStatistics </returns>
-        public static async System.Threading.Tasks.Task<WorkflowCumulativeStatisticsResource> FetchAsync(FetchWorkflowCumulativeStatisticsOptions options,
-                                                                                                         ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the resource to fetch </param>
-        /// <param name="pathWorkflowSid"> Returns the list of Tasks that are being controlled by the Workflow with the
-        ///                       specified Sid value </param>
-        /// <param name="endDate"> Only include usage that occurred on or before this date </param>
-        /// <param name="minutes"> Only calculate statistics since this many minutes in the past </param>
-        /// <param name="startDate"> Only calculate statistics from on or after this date </param>
-        /// <param name="taskChannel"> Only calculate cumulative statistics on this TaskChannel </param>
-        /// <param name="splitByWaitTime"> A comma separated list of values that describes the thresholds to calculate
-        ///                       statistics on </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of WorkflowCumulativeStatistics </returns>
-        public static WorkflowCumulativeStatisticsResource Fetch(string pathWorkspaceSid,
-                                                                 string pathWorkflowSid,
-                                                                 DateTime? endDate = null,
-                                                                 int? minutes = null,
-                                                                 DateTime? startDate = null,
-                                                                 string taskChannel = null,
-                                                                 string splitByWaitTime = null,
-                                                                 ITwilioRestClient client = null)
-        {
-            var options = new FetchWorkflowCumulativeStatisticsOptions(pathWorkspaceSid, pathWorkflowSid){EndDate = endDate, Minutes = minutes, StartDate = startDate, TaskChannel = taskChannel, SplitByWaitTime = splitByWaitTime};
-            return Fetch(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the resource to fetch </param>
-        /// <param name="pathWorkflowSid"> Returns the list of Tasks that are being controlled by the Workflow with the
-        ///                       specified Sid value </param>
-        /// <param name="endDate"> Only include usage that occurred on or before this date </param>
-        /// <param name="minutes"> Only calculate statistics since this many minutes in the past </param>
-        /// <param name="startDate"> Only calculate statistics from on or after this date </param>
-        /// <param name="taskChannel"> Only calculate cumulative statistics on this TaskChannel </param>
-        /// <param name="splitByWaitTime"> A comma separated list of values that describes the thresholds to calculate
-        ///                       statistics on </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of WorkflowCumulativeStatistics </returns>
-        public static async System.Threading.Tasks.Task<WorkflowCumulativeStatisticsResource> FetchAsync(string pathWorkspaceSid,
-                                                                                                         string pathWorkflowSid,
-                                                                                                         DateTime? endDate = null,
-                                                                                                         int? minutes = null,
-                                                                                                         DateTime? startDate = null,
-                                                                                                         string taskChannel = null,
-                                                                                                         string splitByWaitTime = null,
-                                                                                                         ITwilioRestClient client = null)
-        {
-            var options = new FetchWorkflowCumulativeStatisticsOptions(pathWorkspaceSid, pathWorkflowSid){EndDate = endDate, Minutes = minutes, StartDate = startDate, TaskChannel = taskChannel, SplitByWaitTime = splitByWaitTime};
-            return await FetchAsync(options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Converts a JSON string into a WorkflowCumulativeStatisticsResource object
-        /// </summary>
-        /// <param name="json"> Raw JSON string </param>
-        /// <returns> WorkflowCumulativeStatisticsResource object represented by the provided JSON </returns>
-        public static WorkflowCumulativeStatisticsResource FromJson(string json)
-        {
-            // Convert all checked exceptions to Runtime
-            try
-            {
-                return JsonConvert.DeserializeObject<WorkflowCumulativeStatisticsResource>(json);
-            }
-            catch (JsonException e)
-            {
-                throw new ApiException(e.Message, e);
-            }
-        }
-
-        /// <summary>
-        /// The SID of the Account that created the resource
-        /// </summary>
-        [JsonProperty("account_sid")]
-        public string AccountSid { get; private set; }
-        /// <summary>
-        /// The average time in seconds between Task creation and acceptance
-        /// </summary>
-        [JsonProperty("avg_task_acceptance_time")]
-        public int? AvgTaskAcceptanceTime { get; private set; }
-        /// <summary>
-        /// The beginning of the interval during which these statistics were calculated
-        /// </summary>
-        [JsonProperty("start_time")]
-        public DateTime? StartTime { get; private set; }
-        /// <summary>
-        /// The end of the interval during which these statistics were calculated
-        /// </summary>
-        [JsonProperty("end_time")]
-        public DateTime? EndTime { get; private set; }
-        /// <summary>
-        /// The total number of Reservations that were created for Workers
-        /// </summary>
-        [JsonProperty("reservations_created")]
-        public int? ReservationsCreated { get; private set; }
-        /// <summary>
-        /// The total number of Reservations accepted by Workers
-        /// </summary>
-        [JsonProperty("reservations_accepted")]
-        public int? ReservationsAccepted { get; private set; }
-        /// <summary>
-        /// The total number of Reservations that were rejected
-        /// </summary>
-        [JsonProperty("reservations_rejected")]
-        public int? ReservationsRejected { get; private set; }
-        /// <summary>
-        /// The total number of Reservations that were timed out
-        /// </summary>
-        [JsonProperty("reservations_timed_out")]
-        public int? ReservationsTimedOut { get; private set; }
-        /// <summary>
-        /// The total number of Reservations that were canceled
-        /// </summary>
-        [JsonProperty("reservations_canceled")]
-        public int? ReservationsCanceled { get; private set; }
-        /// <summary>
-        /// The total number of Reservations that were rescinded
-        /// </summary>
-        [JsonProperty("reservations_rescinded")]
-        public int? ReservationsRescinded { get; private set; }
-        /// <summary>
-        /// A list of objects that describe the Tasks canceled and reservations accepted above and below the specified thresholds
-        /// </summary>
-        [JsonProperty("split_by_wait_time")]
-        public object SplitByWaitTime { get; private set; }
-        /// <summary>
-        /// The wait duration statistics for Tasks that were accepted
-        /// </summary>
-        [JsonProperty("wait_duration_until_accepted")]
-        public object WaitDurationUntilAccepted { get; private set; }
-        /// <summary>
-        /// The wait duration statistics for Tasks that were canceled
-        /// </summary>
-        [JsonProperty("wait_duration_until_canceled")]
-        public object WaitDurationUntilCanceled { get; private set; }
-        /// <summary>
-        /// The total number of Tasks that were canceled
-        /// </summary>
-        [JsonProperty("tasks_canceled")]
-        public int? TasksCanceled { get; private set; }
-        /// <summary>
-        /// The total number of Tasks that were completed
-        /// </summary>
-        [JsonProperty("tasks_completed")]
-        public int? TasksCompleted { get; private set; }
-        /// <summary>
-        /// The total number of Tasks that entered the Workflow
-        /// </summary>
-        [JsonProperty("tasks_entered")]
-        public int? TasksEntered { get; private set; }
-        /// <summary>
-        /// The total number of Tasks that were deleted
-        /// </summary>
-        [JsonProperty("tasks_deleted")]
-        public int? TasksDeleted { get; private set; }
-        /// <summary>
-        /// The total number of Tasks that were moved from one queue to another
-        /// </summary>
-        [JsonProperty("tasks_moved")]
-        public int? TasksMoved { get; private set; }
-        /// <summary>
-        /// The total number of Tasks that were timed out of their Workflows
-        /// </summary>
-        [JsonProperty("tasks_timed_out_in_workflow")]
-        public int? TasksTimedOutInWorkflow { get; private set; }
-        /// <summary>
-        /// Returns the list of Tasks that are being controlled by the Workflow with the specified Sid value
-        /// </summary>
-        [JsonProperty("workflow_sid")]
-        public string WorkflowSid { get; private set; }
-        /// <summary>
-        /// The SID of the Workspace that contains the Workflow.
-        /// </summary>
-        [JsonProperty("workspace_sid")]
-        public string WorkspaceSid { get; private set; }
-        /// <summary>
-        /// The absolute URL of the Workflow statistics resource
-        /// </summary>
-        [JsonProperty("url")]
-        public Uri Url { get; private set; }
-
-        private WorkflowCumulativeStatisticsResource()
-        {
-
-        }
+      return new Request(
+          HttpMethod.Get,
+          Rest.Domain.Taskrouter,
+          "/v1/Workspaces/" + options.PathWorkspaceSid + "/Workflows/" + options.PathWorkflowSid + "/CumulativeStatistics",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
     }
+
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="options"> Fetch WorkflowCumulativeStatistics parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of WorkflowCumulativeStatistics </returns>
+    public static WorkflowCumulativeStatisticsResource Fetch(FetchWorkflowCumulativeStatisticsOptions options,
+                                                             ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="options"> Fetch WorkflowCumulativeStatistics parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of WorkflowCumulativeStatistics </returns>
+    public static async System.Threading.Tasks.Task<WorkflowCumulativeStatisticsResource> FetchAsync(FetchWorkflowCumulativeStatisticsOptions options,
+                                                                                                     ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="pathWorkspaceSid"> The SID of the Workspace with the resource to fetch </param>
+    /// <param name="pathWorkflowSid"> Returns the list of Tasks that are being controlled by the Workflow with the
+    ///                       specified Sid value </param>
+    /// <param name="endDate"> Only include usage that occurred on or before this date </param>
+    /// <param name="minutes"> Only calculate statistics since this many minutes in the past </param>
+    /// <param name="startDate"> Only calculate statistics from on or after this date </param>
+    /// <param name="taskChannel"> Only calculate cumulative statistics on this TaskChannel </param>
+    /// <param name="splitByWaitTime"> A comma separated list of values that describes the thresholds to calculate
+    ///                       statistics on </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of WorkflowCumulativeStatistics </returns>
+    public static WorkflowCumulativeStatisticsResource Fetch(string pathWorkspaceSid,
+                                                             string pathWorkflowSid,
+                                                             DateTime? endDate = null,
+                                                             int? minutes = null,
+                                                             DateTime? startDate = null,
+                                                             string taskChannel = null,
+                                                             string splitByWaitTime = null,
+                                                             ITwilioRestClient client = null)
+    {
+      var options = new FetchWorkflowCumulativeStatisticsOptions(pathWorkspaceSid, pathWorkflowSid) { EndDate = endDate, Minutes = minutes, StartDate = startDate, TaskChannel = taskChannel, SplitByWaitTime = splitByWaitTime };
+      return Fetch(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="pathWorkspaceSid"> The SID of the Workspace with the resource to fetch </param>
+    /// <param name="pathWorkflowSid"> Returns the list of Tasks that are being controlled by the Workflow with the
+    ///                       specified Sid value </param>
+    /// <param name="endDate"> Only include usage that occurred on or before this date </param>
+    /// <param name="minutes"> Only calculate statistics since this many minutes in the past </param>
+    /// <param name="startDate"> Only calculate statistics from on or after this date </param>
+    /// <param name="taskChannel"> Only calculate cumulative statistics on this TaskChannel </param>
+    /// <param name="splitByWaitTime"> A comma separated list of values that describes the thresholds to calculate
+    ///                       statistics on </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of WorkflowCumulativeStatistics </returns>
+    public static async System.Threading.Tasks.Task<WorkflowCumulativeStatisticsResource> FetchAsync(string pathWorkspaceSid,
+                                                                                                     string pathWorkflowSid,
+                                                                                                     DateTime? endDate = null,
+                                                                                                     int? minutes = null,
+                                                                                                     DateTime? startDate = null,
+                                                                                                     string taskChannel = null,
+                                                                                                     string splitByWaitTime = null,
+                                                                                                     ITwilioRestClient client = null)
+    {
+      var options = new FetchWorkflowCumulativeStatisticsOptions(pathWorkspaceSid, pathWorkflowSid) { EndDate = endDate, Minutes = minutes, StartDate = startDate, TaskChannel = taskChannel, SplitByWaitTime = splitByWaitTime };
+      return await FetchAsync(options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Converts a JSON string into a WorkflowCumulativeStatisticsResource object
+    /// </summary>
+    /// <param name="json"> Raw JSON string </param>
+    /// <returns> WorkflowCumulativeStatisticsResource object represented by the provided JSON </returns>
+    public static WorkflowCumulativeStatisticsResource FromJson(string json)
+    {
+      // Convert all checked exceptions to Runtime
+      try
+      {
+        return JsonConvert.DeserializeObject<WorkflowCumulativeStatisticsResource>(json);
+      }
+      catch (JsonException e)
+      {
+        throw new ApiException(e.Message, e);
+      }
+    }
+
+    /// <summary>
+    /// The SID of the Account that created the resource
+    /// </summary>
+    [JsonProperty("account_sid")]
+    public string AccountSid { get; private set; }
+    /// <summary>
+    /// The average time in seconds between Task creation and acceptance
+    /// </summary>
+    [JsonProperty("avg_task_acceptance_time")]
+    public int? AvgTaskAcceptanceTime { get; private set; }
+    /// <summary>
+    /// The beginning of the interval during which these statistics were calculated
+    /// </summary>
+    [JsonProperty("start_time")]
+    public DateTime? StartTime { get; private set; }
+    /// <summary>
+    /// The end of the interval during which these statistics were calculated
+    /// </summary>
+    [JsonProperty("end_time")]
+    public DateTime? EndTime { get; private set; }
+    /// <summary>
+    /// The total number of Reservations that were created for Workers
+    /// </summary>
+    [JsonProperty("reservations_created")]
+    public int? ReservationsCreated { get; private set; }
+    /// <summary>
+    /// The total number of Reservations accepted by Workers
+    /// </summary>
+    [JsonProperty("reservations_accepted")]
+    public int? ReservationsAccepted { get; private set; }
+    /// <summary>
+    /// The total number of Reservations that were rejected
+    /// </summary>
+    [JsonProperty("reservations_rejected")]
+    public int? ReservationsRejected { get; private set; }
+    /// <summary>
+    /// The total number of Reservations that were timed out
+    /// </summary>
+    [JsonProperty("reservations_timed_out")]
+    public int? ReservationsTimedOut { get; private set; }
+    /// <summary>
+    /// The total number of Reservations that were canceled
+    /// </summary>
+    [JsonProperty("reservations_canceled")]
+    public int? ReservationsCanceled { get; private set; }
+    /// <summary>
+    /// The total number of Reservations that were rescinded
+    /// </summary>
+    [JsonProperty("reservations_rescinded")]
+    public int? ReservationsRescinded { get; private set; }
+    /// <summary>
+    /// A list of objects that describe the Tasks canceled and reservations accepted above and below the specified thresholds
+    /// </summary>
+    [JsonProperty("split_by_wait_time")]
+    public object SplitByWaitTime { get; private set; }
+    /// <summary>
+    /// The wait duration statistics for Tasks that were accepted
+    /// </summary>
+    [JsonProperty("wait_duration_until_accepted")]
+    public object WaitDurationUntilAccepted { get; private set; }
+    /// <summary>
+    /// The wait duration statistics for Tasks that were canceled
+    /// </summary>
+    [JsonProperty("wait_duration_until_canceled")]
+    public object WaitDurationUntilCanceled { get; private set; }
+    /// <summary>
+    /// The total number of Tasks that were canceled
+    /// </summary>
+    [JsonProperty("tasks_canceled")]
+    public int? TasksCanceled { get; private set; }
+    /// <summary>
+    /// The total number of Tasks that were completed
+    /// </summary>
+    [JsonProperty("tasks_completed")]
+    public int? TasksCompleted { get; private set; }
+    /// <summary>
+    /// The total number of Tasks that entered the Workflow
+    /// </summary>
+    [JsonProperty("tasks_entered")]
+    public int? TasksEntered { get; private set; }
+    /// <summary>
+    /// The total number of Tasks that were deleted
+    /// </summary>
+    [JsonProperty("tasks_deleted")]
+    public int? TasksDeleted { get; private set; }
+    /// <summary>
+    /// The total number of Tasks that were moved from one queue to another
+    /// </summary>
+    [JsonProperty("tasks_moved")]
+    public int? TasksMoved { get; private set; }
+    /// <summary>
+    /// The total number of Tasks that were timed out of their Workflows
+    /// </summary>
+    [JsonProperty("tasks_timed_out_in_workflow")]
+    public int? TasksTimedOutInWorkflow { get; private set; }
+    /// <summary>
+    /// Returns the list of Tasks that are being controlled by the Workflow with the specified Sid value
+    /// </summary>
+    [JsonProperty("workflow_sid")]
+    public string WorkflowSid { get; private set; }
+    /// <summary>
+    /// The SID of the Workspace that contains the Workflow.
+    /// </summary>
+    [JsonProperty("workspace_sid")]
+    public string WorkspaceSid { get; private set; }
+    /// <summary>
+    /// The absolute URL of the Workflow statistics resource
+    /// </summary>
+    [JsonProperty("url")]
+    public Uri Url { get; private set; }
+
+    private WorkflowCumulativeStatisticsResource()
+    {
+
+    }
+  }
 
 }

@@ -11,442 +11,442 @@ using Twilio.Converters;
 namespace Twilio.Rest.Verify.V2
 {
 
+  /// <summary>
+  /// Create a new Verification Service.
+  /// </summary>
+  public class CreateServiceOptions : IOptions<ServiceResource>
+  {
     /// <summary>
-    /// Create a new Verification Service.
+    /// A string to describe the verification service
     /// </summary>
-    public class CreateServiceOptions : IOptions<ServiceResource>
+    public string FriendlyName { get; }
+    /// <summary>
+    /// The length of the verification code to generate
+    /// </summary>
+    public int? CodeLength { get; set; }
+    /// <summary>
+    /// Whether to perform a lookup with each verification
+    /// </summary>
+    public bool? LookupEnabled { get; set; }
+    /// <summary>
+    /// Whether to skip sending SMS verifications to landlines
+    /// </summary>
+    public bool? SkipSmsToLandlines { get; set; }
+    /// <summary>
+    /// Whether to ask the user to press a number before delivering the verify code in a phone call
+    /// </summary>
+    public bool? DtmfInputRequired { get; set; }
+    /// <summary>
+    /// The name of an alternative text-to-speech service to use in phone calls
+    /// </summary>
+    public string TtsName { get; set; }
+    /// <summary>
+    /// Whether to pass PSD2 transaction parameters when starting a verification
+    /// </summary>
+    public bool? Psd2Enabled { get; set; }
+    /// <summary>
+    /// Whether to add a security warning at the end of an SMS.
+    /// </summary>
+    public bool? DoNotShareWarningEnabled { get; set; }
+    /// <summary>
+    /// Whether to allow sending verifications with a custom code.
+    /// </summary>
+    public bool? CustomCodeEnabled { get; set; }
+    /// <summary>
+    /// Optional. Include the date in the Challenge's reponse. Default: true
+    /// </summary>
+    public bool? PushIncludeDate { get; set; }
+    /// <summary>
+    /// Optional. Set APN Credential for this service.
+    /// </summary>
+    public string PushApnCredentialSid { get; set; }
+    /// <summary>
+    /// Optional. Set FCM Credential for this service.
+    /// </summary>
+    public string PushFcmCredentialSid { get; set; }
+    /// <summary>
+    /// Optional. Set TOTP Issuer for this service.
+    /// </summary>
+    public string TotpIssuer { get; set; }
+    /// <summary>
+    /// Optional. How often, in seconds, are TOTP codes generated
+    /// </summary>
+    public int? TotpTimeStep { get; set; }
+    /// <summary>
+    /// Optional. Number of digits for generated TOTP codes
+    /// </summary>
+    public int? TotpCodeLength { get; set; }
+    /// <summary>
+    /// Optional. The number of past and future time-steps valid at a given time
+    /// </summary>
+    public int? TotpSkew { get; set; }
+    /// <summary>
+    /// The verification template SMS messages.
+    /// </summary>
+    public string DefaultTemplateSid { get; set; }
+
+    /// <summary>
+    /// Construct a new CreateServiceOptions
+    /// </summary>
+    /// <param name="friendlyName"> A string to describe the verification service </param>
+    public CreateServiceOptions(string friendlyName)
     {
-        /// <summary>
-        /// A string to describe the verification service
-        /// </summary>
-        public string FriendlyName { get; }
-        /// <summary>
-        /// The length of the verification code to generate
-        /// </summary>
-        public int? CodeLength { get; set; }
-        /// <summary>
-        /// Whether to perform a lookup with each verification
-        /// </summary>
-        public bool? LookupEnabled { get; set; }
-        /// <summary>
-        /// Whether to skip sending SMS verifications to landlines
-        /// </summary>
-        public bool? SkipSmsToLandlines { get; set; }
-        /// <summary>
-        /// Whether to ask the user to press a number before delivering the verify code in a phone call
-        /// </summary>
-        public bool? DtmfInputRequired { get; set; }
-        /// <summary>
-        /// The name of an alternative text-to-speech service to use in phone calls
-        /// </summary>
-        public string TtsName { get; set; }
-        /// <summary>
-        /// Whether to pass PSD2 transaction parameters when starting a verification
-        /// </summary>
-        public bool? Psd2Enabled { get; set; }
-        /// <summary>
-        /// Whether to add a security warning at the end of an SMS.
-        /// </summary>
-        public bool? DoNotShareWarningEnabled { get; set; }
-        /// <summary>
-        /// Whether to allow sending verifications with a custom code.
-        /// </summary>
-        public bool? CustomCodeEnabled { get; set; }
-        /// <summary>
-        /// Optional. Include the date in the Challenge's reponse. Default: true
-        /// </summary>
-        public bool? PushIncludeDate { get; set; }
-        /// <summary>
-        /// Optional. Set APN Credential for this service.
-        /// </summary>
-        public string PushApnCredentialSid { get; set; }
-        /// <summary>
-        /// Optional. Set FCM Credential for this service.
-        /// </summary>
-        public string PushFcmCredentialSid { get; set; }
-        /// <summary>
-        /// Optional. Set TOTP Issuer for this service.
-        /// </summary>
-        public string TotpIssuer { get; set; }
-        /// <summary>
-        /// Optional. How often, in seconds, are TOTP codes generated
-        /// </summary>
-        public int? TotpTimeStep { get; set; }
-        /// <summary>
-        /// Optional. Number of digits for generated TOTP codes
-        /// </summary>
-        public int? TotpCodeLength { get; set; }
-        /// <summary>
-        /// Optional. The number of past and future time-steps valid at a given time
-        /// </summary>
-        public int? TotpSkew { get; set; }
-        /// <summary>
-        /// The verification template SMS messages.
-        /// </summary>
-        public string DefaultTemplateSid { get; set; }
-
-        /// <summary>
-        /// Construct a new CreateServiceOptions
-        /// </summary>
-        /// <param name="friendlyName"> A string to describe the verification service </param>
-        public CreateServiceOptions(string friendlyName)
-        {
-            FriendlyName = friendlyName;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
-
-            if (CodeLength != null)
-            {
-                p.Add(new KeyValuePair<string, string>("CodeLength", CodeLength.ToString()));
-            }
-
-            if (LookupEnabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("LookupEnabled", LookupEnabled.Value.ToString().ToLower()));
-            }
-
-            if (SkipSmsToLandlines != null)
-            {
-                p.Add(new KeyValuePair<string, string>("SkipSmsToLandlines", SkipSmsToLandlines.Value.ToString().ToLower()));
-            }
-
-            if (DtmfInputRequired != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DtmfInputRequired", DtmfInputRequired.Value.ToString().ToLower()));
-            }
-
-            if (TtsName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("TtsName", TtsName));
-            }
-
-            if (Psd2Enabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Psd2Enabled", Psd2Enabled.Value.ToString().ToLower()));
-            }
-
-            if (DoNotShareWarningEnabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DoNotShareWarningEnabled", DoNotShareWarningEnabled.Value.ToString().ToLower()));
-            }
-
-            if (CustomCodeEnabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("CustomCodeEnabled", CustomCodeEnabled.Value.ToString().ToLower()));
-            }
-
-            if (PushIncludeDate != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Push.IncludeDate", PushIncludeDate.Value.ToString().ToLower()));
-            }
-
-            if (PushApnCredentialSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Push.ApnCredentialSid", PushApnCredentialSid.ToString()));
-            }
-
-            if (PushFcmCredentialSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Push.FcmCredentialSid", PushFcmCredentialSid.ToString()));
-            }
-
-            if (TotpIssuer != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Totp.Issuer", TotpIssuer));
-            }
-
-            if (TotpTimeStep != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Totp.TimeStep", TotpTimeStep.ToString()));
-            }
-
-            if (TotpCodeLength != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Totp.CodeLength", TotpCodeLength.ToString()));
-            }
-
-            if (TotpSkew != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Totp.Skew", TotpSkew.ToString()));
-            }
-
-            if (DefaultTemplateSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DefaultTemplateSid", DefaultTemplateSid.ToString()));
-            }
-
-            return p;
-        }
+      FriendlyName = friendlyName;
     }
 
     /// <summary>
-    /// Fetch specific Verification Service Instance.
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchServiceOptions : IOptions<ServiceResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
 
-        /// <summary>
-        /// Construct a new FetchServiceOptions
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public FetchServiceOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
+      if (CodeLength != null)
+      {
+        p.Add(new KeyValuePair<string, string>("CodeLength", CodeLength.ToString()));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      if (LookupEnabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("LookupEnabled", LookupEnabled.Value.ToString().ToLower()));
+      }
+
+      if (SkipSmsToLandlines != null)
+      {
+        p.Add(new KeyValuePair<string, string>("SkipSmsToLandlines", SkipSmsToLandlines.Value.ToString().ToLower()));
+      }
+
+      if (DtmfInputRequired != null)
+      {
+        p.Add(new KeyValuePair<string, string>("DtmfInputRequired", DtmfInputRequired.Value.ToString().ToLower()));
+      }
+
+      if (TtsName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("TtsName", TtsName));
+      }
+
+      if (Psd2Enabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Psd2Enabled", Psd2Enabled.Value.ToString().ToLower()));
+      }
+
+      if (DoNotShareWarningEnabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("DoNotShareWarningEnabled", DoNotShareWarningEnabled.Value.ToString().ToLower()));
+      }
+
+      if (CustomCodeEnabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("CustomCodeEnabled", CustomCodeEnabled.Value.ToString().ToLower()));
+      }
+
+      if (PushIncludeDate != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Push.IncludeDate", PushIncludeDate.Value.ToString().ToLower()));
+      }
+
+      if (PushApnCredentialSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Push.ApnCredentialSid", PushApnCredentialSid.ToString()));
+      }
+
+      if (PushFcmCredentialSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Push.FcmCredentialSid", PushFcmCredentialSid.ToString()));
+      }
+
+      if (TotpIssuer != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Totp.Issuer", TotpIssuer));
+      }
+
+      if (TotpTimeStep != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Totp.TimeStep", TotpTimeStep.ToString()));
+      }
+
+      if (TotpCodeLength != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Totp.CodeLength", TotpCodeLength.ToString()));
+      }
+
+      if (TotpSkew != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Totp.Skew", TotpSkew.ToString()));
+      }
+
+      if (DefaultTemplateSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("DefaultTemplateSid", DefaultTemplateSid.ToString()));
+      }
+
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// Fetch specific Verification Service Instance.
+  /// </summary>
+  public class FetchServiceOptions : IOptions<ServiceResource>
+  {
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchServiceOptions
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public FetchServiceOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Delete a specific Verification Service Instance.
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteServiceOptions : IOptions<ServiceResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new DeleteServiceOptions
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public DeleteServiceOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
+  /// <summary>
+  /// Delete a specific Verification Service Instance.
+  /// </summary>
+  public class DeleteServiceOptions : IOptions<ServiceResource>
+  {
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+    /// <summary>
+    /// Construct a new DeleteServiceOptions
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public DeleteServiceOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Retrieve a list of all Verification Services for an account.
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadServiceOptions : ReadOptions<ServiceResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-            return p;
-        }
+  /// <summary>
+  /// Retrieve a list of all Verification Services for an account.
+  /// </summary>
+  public class ReadServiceOptions : ReadOptions<ServiceResource>
+  {
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// Update a specific Verification Service.
+  /// </summary>
+  public class UpdateServiceOptions : IOptions<ServiceResource>
+  {
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// A string to describe the verification service
+    /// </summary>
+    public string FriendlyName { get; set; }
+    /// <summary>
+    /// The length of the verification code to generate
+    /// </summary>
+    public int? CodeLength { get; set; }
+    /// <summary>
+    /// Whether to perform a lookup with each verification
+    /// </summary>
+    public bool? LookupEnabled { get; set; }
+    /// <summary>
+    /// Whether to skip sending SMS verifications to landlines
+    /// </summary>
+    public bool? SkipSmsToLandlines { get; set; }
+    /// <summary>
+    /// Whether to ask the user to press a number before delivering the verify code in a phone call
+    /// </summary>
+    public bool? DtmfInputRequired { get; set; }
+    /// <summary>
+    /// The name of an alternative text-to-speech service to use in phone calls
+    /// </summary>
+    public string TtsName { get; set; }
+    /// <summary>
+    /// Whether to pass PSD2 transaction parameters when starting a verification
+    /// </summary>
+    public bool? Psd2Enabled { get; set; }
+    /// <summary>
+    /// Whether to add a privacy warning at the end of an SMS.
+    /// </summary>
+    public bool? DoNotShareWarningEnabled { get; set; }
+    /// <summary>
+    /// Whether to allow sending verifications with a custom code.
+    /// </summary>
+    public bool? CustomCodeEnabled { get; set; }
+    /// <summary>
+    /// Optional. Include the date in the Challenge's reponse. Default: true
+    /// </summary>
+    public bool? PushIncludeDate { get; set; }
+    /// <summary>
+    /// Optional. Set APN Credential for this service.
+    /// </summary>
+    public string PushApnCredentialSid { get; set; }
+    /// <summary>
+    /// Optional. Set FCM Credential for this service.
+    /// </summary>
+    public string PushFcmCredentialSid { get; set; }
+    /// <summary>
+    /// Optional. Set TOTP Issuer for this service.
+    /// </summary>
+    public string TotpIssuer { get; set; }
+    /// <summary>
+    /// Optional. How often, in seconds, are TOTP codes generated
+    /// </summary>
+    public int? TotpTimeStep { get; set; }
+    /// <summary>
+    /// Optional. Number of digits for generated TOTP codes
+    /// </summary>
+    public int? TotpCodeLength { get; set; }
+    /// <summary>
+    /// Optional. The number of past and future time-steps valid at a given time
+    /// </summary>
+    public int? TotpSkew { get; set; }
+    /// <summary>
+    /// The verification template SMS messages.
+    /// </summary>
+    public string DefaultTemplateSid { get; set; }
+
+    /// <summary>
+    /// Construct a new UpdateServiceOptions
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public UpdateServiceOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Update a specific Verification Service.
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateServiceOptions : IOptions<ServiceResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// A string to describe the verification service
-        /// </summary>
-        public string FriendlyName { get; set; }
-        /// <summary>
-        /// The length of the verification code to generate
-        /// </summary>
-        public int? CodeLength { get; set; }
-        /// <summary>
-        /// Whether to perform a lookup with each verification
-        /// </summary>
-        public bool? LookupEnabled { get; set; }
-        /// <summary>
-        /// Whether to skip sending SMS verifications to landlines
-        /// </summary>
-        public bool? SkipSmsToLandlines { get; set; }
-        /// <summary>
-        /// Whether to ask the user to press a number before delivering the verify code in a phone call
-        /// </summary>
-        public bool? DtmfInputRequired { get; set; }
-        /// <summary>
-        /// The name of an alternative text-to-speech service to use in phone calls
-        /// </summary>
-        public string TtsName { get; set; }
-        /// <summary>
-        /// Whether to pass PSD2 transaction parameters when starting a verification
-        /// </summary>
-        public bool? Psd2Enabled { get; set; }
-        /// <summary>
-        /// Whether to add a privacy warning at the end of an SMS.
-        /// </summary>
-        public bool? DoNotShareWarningEnabled { get; set; }
-        /// <summary>
-        /// Whether to allow sending verifications with a custom code.
-        /// </summary>
-        public bool? CustomCodeEnabled { get; set; }
-        /// <summary>
-        /// Optional. Include the date in the Challenge's reponse. Default: true
-        /// </summary>
-        public bool? PushIncludeDate { get; set; }
-        /// <summary>
-        /// Optional. Set APN Credential for this service.
-        /// </summary>
-        public string PushApnCredentialSid { get; set; }
-        /// <summary>
-        /// Optional. Set FCM Credential for this service.
-        /// </summary>
-        public string PushFcmCredentialSid { get; set; }
-        /// <summary>
-        /// Optional. Set TOTP Issuer for this service.
-        /// </summary>
-        public string TotpIssuer { get; set; }
-        /// <summary>
-        /// Optional. How often, in seconds, are TOTP codes generated
-        /// </summary>
-        public int? TotpTimeStep { get; set; }
-        /// <summary>
-        /// Optional. Number of digits for generated TOTP codes
-        /// </summary>
-        public int? TotpCodeLength { get; set; }
-        /// <summary>
-        /// Optional. The number of past and future time-steps valid at a given time
-        /// </summary>
-        public int? TotpSkew { get; set; }
-        /// <summary>
-        /// The verification template SMS messages.
-        /// </summary>
-        public string DefaultTemplateSid { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
 
-        /// <summary>
-        /// Construct a new UpdateServiceOptions
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public UpdateServiceOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
+      if (CodeLength != null)
+      {
+        p.Add(new KeyValuePair<string, string>("CodeLength", CodeLength.ToString()));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
+      if (LookupEnabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("LookupEnabled", LookupEnabled.Value.ToString().ToLower()));
+      }
 
-            if (CodeLength != null)
-            {
-                p.Add(new KeyValuePair<string, string>("CodeLength", CodeLength.ToString()));
-            }
+      if (SkipSmsToLandlines != null)
+      {
+        p.Add(new KeyValuePair<string, string>("SkipSmsToLandlines", SkipSmsToLandlines.Value.ToString().ToLower()));
+      }
 
-            if (LookupEnabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("LookupEnabled", LookupEnabled.Value.ToString().ToLower()));
-            }
+      if (DtmfInputRequired != null)
+      {
+        p.Add(new KeyValuePair<string, string>("DtmfInputRequired", DtmfInputRequired.Value.ToString().ToLower()));
+      }
 
-            if (SkipSmsToLandlines != null)
-            {
-                p.Add(new KeyValuePair<string, string>("SkipSmsToLandlines", SkipSmsToLandlines.Value.ToString().ToLower()));
-            }
+      if (TtsName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("TtsName", TtsName));
+      }
 
-            if (DtmfInputRequired != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DtmfInputRequired", DtmfInputRequired.Value.ToString().ToLower()));
-            }
+      if (Psd2Enabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Psd2Enabled", Psd2Enabled.Value.ToString().ToLower()));
+      }
 
-            if (TtsName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("TtsName", TtsName));
-            }
+      if (DoNotShareWarningEnabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("DoNotShareWarningEnabled", DoNotShareWarningEnabled.Value.ToString().ToLower()));
+      }
 
-            if (Psd2Enabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Psd2Enabled", Psd2Enabled.Value.ToString().ToLower()));
-            }
+      if (CustomCodeEnabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("CustomCodeEnabled", CustomCodeEnabled.Value.ToString().ToLower()));
+      }
 
-            if (DoNotShareWarningEnabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DoNotShareWarningEnabled", DoNotShareWarningEnabled.Value.ToString().ToLower()));
-            }
+      if (PushIncludeDate != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Push.IncludeDate", PushIncludeDate.Value.ToString().ToLower()));
+      }
 
-            if (CustomCodeEnabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("CustomCodeEnabled", CustomCodeEnabled.Value.ToString().ToLower()));
-            }
+      if (PushApnCredentialSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Push.ApnCredentialSid", PushApnCredentialSid.ToString()));
+      }
 
-            if (PushIncludeDate != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Push.IncludeDate", PushIncludeDate.Value.ToString().ToLower()));
-            }
+      if (PushFcmCredentialSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Push.FcmCredentialSid", PushFcmCredentialSid.ToString()));
+      }
 
-            if (PushApnCredentialSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Push.ApnCredentialSid", PushApnCredentialSid.ToString()));
-            }
+      if (TotpIssuer != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Totp.Issuer", TotpIssuer));
+      }
 
-            if (PushFcmCredentialSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Push.FcmCredentialSid", PushFcmCredentialSid.ToString()));
-            }
+      if (TotpTimeStep != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Totp.TimeStep", TotpTimeStep.ToString()));
+      }
 
-            if (TotpIssuer != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Totp.Issuer", TotpIssuer));
-            }
+      if (TotpCodeLength != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Totp.CodeLength", TotpCodeLength.ToString()));
+      }
 
-            if (TotpTimeStep != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Totp.TimeStep", TotpTimeStep.ToString()));
-            }
+      if (TotpSkew != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Totp.Skew", TotpSkew.ToString()));
+      }
 
-            if (TotpCodeLength != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Totp.CodeLength", TotpCodeLength.ToString()));
-            }
+      if (DefaultTemplateSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("DefaultTemplateSid", DefaultTemplateSid.ToString()));
+      }
 
-            if (TotpSkew != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Totp.Skew", TotpSkew.ToString()));
-            }
-
-            if (DefaultTemplateSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DefaultTemplateSid", DefaultTemplateSid.ToString()));
-            }
-
-            return p;
-        }
+      return p;
     }
+  }
 
 }

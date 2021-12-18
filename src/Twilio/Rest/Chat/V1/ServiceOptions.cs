@@ -12,632 +12,632 @@ using Twilio.Converters;
 namespace Twilio.Rest.Chat.V1
 {
 
+  /// <summary>
+  /// FetchServiceOptions
+  /// </summary>
+  public class FetchServiceOptions : IOptions<ServiceResource>
+  {
     /// <summary>
-    /// FetchServiceOptions
+    /// The unique string that identifies the resource
     /// </summary>
-    public class FetchServiceOptions : IOptions<ServiceResource>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchServiceOptions
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public FetchServiceOptions(string pathSid)
     {
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchServiceOptions
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public FetchServiceOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// DeleteServiceOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteServiceOptions : IOptions<ServiceResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new DeleteServiceOptions
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public DeleteServiceOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
+  /// <summary>
+  /// DeleteServiceOptions
+  /// </summary>
+  public class DeleteServiceOptions : IOptions<ServiceResource>
+  {
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+    /// <summary>
+    /// Construct a new DeleteServiceOptions
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public DeleteServiceOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// CreateServiceOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class CreateServiceOptions : IOptions<ServiceResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// A string to describe the resource
-        /// </summary>
-        public string FriendlyName { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new CreateServiceOptions
-        /// </summary>
-        /// <param name="friendlyName"> A string to describe the resource </param>
-        public CreateServiceOptions(string friendlyName)
-        {
-            FriendlyName = friendlyName;
-        }
+  /// <summary>
+  /// CreateServiceOptions
+  /// </summary>
+  public class CreateServiceOptions : IOptions<ServiceResource>
+  {
+    /// <summary>
+    /// A string to describe the resource
+    /// </summary>
+    public string FriendlyName { get; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new CreateServiceOptions
+    /// </summary>
+    /// <param name="friendlyName"> A string to describe the resource </param>
+    public CreateServiceOptions(string friendlyName)
+    {
+      FriendlyName = friendlyName;
     }
 
     /// <summary>
-    /// ReadServiceOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadServiceOptions : ReadOptions<ServiceResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
+      var p = new List<KeyValuePair<string, string>>();
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
 
-            return p;
-        }
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// ReadServiceOptions
+  /// </summary>
+  public class ReadServiceOptions : ReadOptions<ServiceResource>
+  {
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// UpdateServiceOptions
+  /// </summary>
+  public class UpdateServiceOptions : IOptions<ServiceResource>
+  {
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// A string to describe the resource
+    /// </summary>
+    public string FriendlyName { get; set; }
+    /// <summary>
+    /// The service role assigned to users when they are added to the service
+    /// </summary>
+    public string DefaultServiceRoleSid { get; set; }
+    /// <summary>
+    /// The channel role assigned to users when they are added to a channel
+    /// </summary>
+    public string DefaultChannelRoleSid { get; set; }
+    /// <summary>
+    /// The channel role assigned to a channel creator when they join a new channel
+    /// </summary>
+    public string DefaultChannelCreatorRoleSid { get; set; }
+    /// <summary>
+    /// Whether to enable the Message Consumption Horizon feature
+    /// </summary>
+    public bool? ReadStatusEnabled { get; set; }
+    /// <summary>
+    /// Whether to enable the Reachability Indicator feature for this Service instance
+    /// </summary>
+    public bool? ReachabilityEnabled { get; set; }
+    /// <summary>
+    /// How long in seconds to wait before assuming the user is no longer typing
+    /// </summary>
+    public int? TypingIndicatorTimeout { get; set; }
+    /// <summary>
+    /// DEPRECATED
+    /// </summary>
+    public int? ConsumptionReportInterval { get; set; }
+    /// <summary>
+    /// Whether to send a notification when a new message is added to a channel
+    /// </summary>
+    public bool? NotificationsNewMessageEnabled { get; set; }
+    /// <summary>
+    /// The template to use to create the notification text displayed when a new message is added to a channel
+    /// </summary>
+    public string NotificationsNewMessageTemplate { get; set; }
+    /// <summary>
+    /// Whether to send a notification when a member is added to a channel
+    /// </summary>
+    public bool? NotificationsAddedToChannelEnabled { get; set; }
+    /// <summary>
+    /// The template to use to create the notification text displayed when a member is added to a channel
+    /// </summary>
+    public string NotificationsAddedToChannelTemplate { get; set; }
+    /// <summary>
+    /// Whether to send a notification to a user when they are removed from a channel
+    /// </summary>
+    public bool? NotificationsRemovedFromChannelEnabled { get; set; }
+    /// <summary>
+    /// The template to use to create the notification text displayed to a user when they are removed
+    /// </summary>
+    public string NotificationsRemovedFromChannelTemplate { get; set; }
+    /// <summary>
+    /// Whether to send a notification when a user is invited to a channel
+    /// </summary>
+    public bool? NotificationsInvitedToChannelEnabled { get; set; }
+    /// <summary>
+    /// The template to use to create the notification text displayed when a user is invited to a channel
+    /// </summary>
+    public string NotificationsInvitedToChannelTemplate { get; set; }
+    /// <summary>
+    /// The webhook URL for pre-event webhooks
+    /// </summary>
+    public Uri PreWebhookUrl { get; set; }
+    /// <summary>
+    /// The URL for post-event webhooks
+    /// </summary>
+    public Uri PostWebhookUrl { get; set; }
+    /// <summary>
+    /// The HTTP method  to use for both PRE and POST webhooks
+    /// </summary>
+    public Twilio.Http.HttpMethod WebhookMethod { get; set; }
+    /// <summary>
+    /// The list of WebHook events that are enabled for this Service instance
+    /// </summary>
+    public List<string> WebhookFilters { get; set; }
+    /// <summary>
+    /// The URL of the webhook to call in response to the on_message_send event
+    /// </summary>
+    public Uri WebhooksOnMessageSendUrl { get; set; }
+    /// <summary>
+    /// The HTTP method to use when calling the webhooks.on_message_send.url
+    /// </summary>
+    public Twilio.Http.HttpMethod WebhooksOnMessageSendMethod { get; set; }
+    /// <summary>
+    /// The URL of the webhook to call in response to the on_message_update event
+    /// </summary>
+    public Uri WebhooksOnMessageUpdateUrl { get; set; }
+    /// <summary>
+    /// The HTTP method to use when calling the webhooks.on_message_update.url
+    /// </summary>
+    public Twilio.Http.HttpMethod WebhooksOnMessageUpdateMethod { get; set; }
+    /// <summary>
+    /// The URL of the webhook to call in response to the on_message_remove event
+    /// </summary>
+    public Uri WebhooksOnMessageRemoveUrl { get; set; }
+    /// <summary>
+    /// The HTTP method to use when calling the webhooks.on_message_remove.url
+    /// </summary>
+    public Twilio.Http.HttpMethod WebhooksOnMessageRemoveMethod { get; set; }
+    /// <summary>
+    /// The URL of the webhook to call in response to the on_channel_add event
+    /// </summary>
+    public Uri WebhooksOnChannelAddUrl { get; set; }
+    /// <summary>
+    /// The HTTP method to use when calling the webhooks.on_channel_add.url
+    /// </summary>
+    public Twilio.Http.HttpMethod WebhooksOnChannelAddMethod { get; set; }
+    /// <summary>
+    /// The URL of the webhook to call in response to the on_channel_destroy event
+    /// </summary>
+    public Uri WebhooksOnChannelDestroyUrl { get; set; }
+    /// <summary>
+    /// The HTTP method to use when calling the webhooks.on_channel_destroy.url
+    /// </summary>
+    public Twilio.Http.HttpMethod WebhooksOnChannelDestroyMethod { get; set; }
+    /// <summary>
+    /// The URL of the webhook to call in response to the on_channel_update event
+    /// </summary>
+    public Uri WebhooksOnChannelUpdateUrl { get; set; }
+    /// <summary>
+    /// The HTTP method to use when calling the webhooks.on_channel_update.url
+    /// </summary>
+    public Twilio.Http.HttpMethod WebhooksOnChannelUpdateMethod { get; set; }
+    /// <summary>
+    /// The URL of the webhook to call in response to the on_member_add event
+    /// </summary>
+    public Uri WebhooksOnMemberAddUrl { get; set; }
+    /// <summary>
+    /// The HTTP method to use when calling the webhooks.on_member_add.url
+    /// </summary>
+    public Twilio.Http.HttpMethod WebhooksOnMemberAddMethod { get; set; }
+    /// <summary>
+    /// The URL of the webhook to call in response to the on_member_remove event
+    /// </summary>
+    public Uri WebhooksOnMemberRemoveUrl { get; set; }
+    /// <summary>
+    /// The HTTP method to use when calling the webhooks.on_member_remove.url
+    /// </summary>
+    public Twilio.Http.HttpMethod WebhooksOnMemberRemoveMethod { get; set; }
+    /// <summary>
+    /// The URL of the webhook to call in response to the on_message_sent event
+    /// </summary>
+    public Uri WebhooksOnMessageSentUrl { get; set; }
+    /// <summary>
+    /// The URL of the webhook to call in response to the on_message_sent event
+    /// </summary>
+    public Twilio.Http.HttpMethod WebhooksOnMessageSentMethod { get; set; }
+    /// <summary>
+    /// The URL of the webhook to call in response to the on_message_updated event
+    /// </summary>
+    public Uri WebhooksOnMessageUpdatedUrl { get; set; }
+    /// <summary>
+    /// The HTTP method to use when calling the webhooks.on_message_updated.url
+    /// </summary>
+    public Twilio.Http.HttpMethod WebhooksOnMessageUpdatedMethod { get; set; }
+    /// <summary>
+    /// The URL of the webhook to call in response to the on_message_removed event
+    /// </summary>
+    public Uri WebhooksOnMessageRemovedUrl { get; set; }
+    /// <summary>
+    /// The HTTP method to use when calling the webhooks.on_message_removed.url
+    /// </summary>
+    public Twilio.Http.HttpMethod WebhooksOnMessageRemovedMethod { get; set; }
+    /// <summary>
+    /// The URL of the webhook to call in response to the on_channel_added event
+    /// </summary>
+    public Uri WebhooksOnChannelAddedUrl { get; set; }
+    /// <summary>
+    /// The URL of the webhook to call in response to the on_channel_added event
+    /// </summary>
+    public Twilio.Http.HttpMethod WebhooksOnChannelAddedMethod { get; set; }
+    /// <summary>
+    /// The URL of the webhook to call in response to the on_channel_added event
+    /// </summary>
+    public Uri WebhooksOnChannelDestroyedUrl { get; set; }
+    /// <summary>
+    /// The HTTP method to use when calling the webhooks.on_channel_destroyed.url
+    /// </summary>
+    public Twilio.Http.HttpMethod WebhooksOnChannelDestroyedMethod { get; set; }
+    /// <summary>
+    /// he URL of the webhook to call in response to the on_channel_updated event
+    /// </summary>
+    public Uri WebhooksOnChannelUpdatedUrl { get; set; }
+    /// <summary>
+    /// The HTTP method to use when calling the webhooks.on_channel_updated.url
+    /// </summary>
+    public Twilio.Http.HttpMethod WebhooksOnChannelUpdatedMethod { get; set; }
+    /// <summary>
+    /// The URL of the webhook to call in response to the on_channel_updated event
+    /// </summary>
+    public Uri WebhooksOnMemberAddedUrl { get; set; }
+    /// <summary>
+    /// he HTTP method to use when calling the webhooks.on_channel_updated.url
+    /// </summary>
+    public Twilio.Http.HttpMethod WebhooksOnMemberAddedMethod { get; set; }
+    /// <summary>
+    /// The URL of the webhook to call in response to the on_member_removed event
+    /// </summary>
+    public Uri WebhooksOnMemberRemovedUrl { get; set; }
+    /// <summary>
+    /// The HTTP method to use when calling the webhooks.on_member_removed.url
+    /// </summary>
+    public Twilio.Http.HttpMethod WebhooksOnMemberRemovedMethod { get; set; }
+    /// <summary>
+    /// The maximum number of Members that can be added to Channels within this Service
+    /// </summary>
+    public int? LimitsChannelMembers { get; set; }
+    /// <summary>
+    /// The maximum number of Channels Users can be a Member of within this Service
+    /// </summary>
+    public int? LimitsUserChannels { get; set; }
+
+    /// <summary>
+    /// Construct a new UpdateServiceOptions
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public UpdateServiceOptions(string pathSid)
+    {
+      PathSid = pathSid;
+      WebhookFilters = new List<string>();
     }
 
     /// <summary>
-    /// UpdateServiceOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateServiceOptions : IOptions<ServiceResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// A string to describe the resource
-        /// </summary>
-        public string FriendlyName { get; set; }
-        /// <summary>
-        /// The service role assigned to users when they are added to the service
-        /// </summary>
-        public string DefaultServiceRoleSid { get; set; }
-        /// <summary>
-        /// The channel role assigned to users when they are added to a channel
-        /// </summary>
-        public string DefaultChannelRoleSid { get; set; }
-        /// <summary>
-        /// The channel role assigned to a channel creator when they join a new channel
-        /// </summary>
-        public string DefaultChannelCreatorRoleSid { get; set; }
-        /// <summary>
-        /// Whether to enable the Message Consumption Horizon feature
-        /// </summary>
-        public bool? ReadStatusEnabled { get; set; }
-        /// <summary>
-        /// Whether to enable the Reachability Indicator feature for this Service instance
-        /// </summary>
-        public bool? ReachabilityEnabled { get; set; }
-        /// <summary>
-        /// How long in seconds to wait before assuming the user is no longer typing
-        /// </summary>
-        public int? TypingIndicatorTimeout { get; set; }
-        /// <summary>
-        /// DEPRECATED
-        /// </summary>
-        public int? ConsumptionReportInterval { get; set; }
-        /// <summary>
-        /// Whether to send a notification when a new message is added to a channel
-        /// </summary>
-        public bool? NotificationsNewMessageEnabled { get; set; }
-        /// <summary>
-        /// The template to use to create the notification text displayed when a new message is added to a channel
-        /// </summary>
-        public string NotificationsNewMessageTemplate { get; set; }
-        /// <summary>
-        /// Whether to send a notification when a member is added to a channel
-        /// </summary>
-        public bool? NotificationsAddedToChannelEnabled { get; set; }
-        /// <summary>
-        /// The template to use to create the notification text displayed when a member is added to a channel
-        /// </summary>
-        public string NotificationsAddedToChannelTemplate { get; set; }
-        /// <summary>
-        /// Whether to send a notification to a user when they are removed from a channel
-        /// </summary>
-        public bool? NotificationsRemovedFromChannelEnabled { get; set; }
-        /// <summary>
-        /// The template to use to create the notification text displayed to a user when they are removed
-        /// </summary>
-        public string NotificationsRemovedFromChannelTemplate { get; set; }
-        /// <summary>
-        /// Whether to send a notification when a user is invited to a channel
-        /// </summary>
-        public bool? NotificationsInvitedToChannelEnabled { get; set; }
-        /// <summary>
-        /// The template to use to create the notification text displayed when a user is invited to a channel
-        /// </summary>
-        public string NotificationsInvitedToChannelTemplate { get; set; }
-        /// <summary>
-        /// The webhook URL for pre-event webhooks
-        /// </summary>
-        public Uri PreWebhookUrl { get; set; }
-        /// <summary>
-        /// The URL for post-event webhooks
-        /// </summary>
-        public Uri PostWebhookUrl { get; set; }
-        /// <summary>
-        /// The HTTP method  to use for both PRE and POST webhooks
-        /// </summary>
-        public Twilio.Http.HttpMethod WebhookMethod { get; set; }
-        /// <summary>
-        /// The list of WebHook events that are enabled for this Service instance
-        /// </summary>
-        public List<string> WebhookFilters { get; set; }
-        /// <summary>
-        /// The URL of the webhook to call in response to the on_message_send event
-        /// </summary>
-        public Uri WebhooksOnMessageSendUrl { get; set; }
-        /// <summary>
-        /// The HTTP method to use when calling the webhooks.on_message_send.url
-        /// </summary>
-        public Twilio.Http.HttpMethod WebhooksOnMessageSendMethod { get; set; }
-        /// <summary>
-        /// The URL of the webhook to call in response to the on_message_update event
-        /// </summary>
-        public Uri WebhooksOnMessageUpdateUrl { get; set; }
-        /// <summary>
-        /// The HTTP method to use when calling the webhooks.on_message_update.url
-        /// </summary>
-        public Twilio.Http.HttpMethod WebhooksOnMessageUpdateMethod { get; set; }
-        /// <summary>
-        /// The URL of the webhook to call in response to the on_message_remove event
-        /// </summary>
-        public Uri WebhooksOnMessageRemoveUrl { get; set; }
-        /// <summary>
-        /// The HTTP method to use when calling the webhooks.on_message_remove.url
-        /// </summary>
-        public Twilio.Http.HttpMethod WebhooksOnMessageRemoveMethod { get; set; }
-        /// <summary>
-        /// The URL of the webhook to call in response to the on_channel_add event
-        /// </summary>
-        public Uri WebhooksOnChannelAddUrl { get; set; }
-        /// <summary>
-        /// The HTTP method to use when calling the webhooks.on_channel_add.url
-        /// </summary>
-        public Twilio.Http.HttpMethod WebhooksOnChannelAddMethod { get; set; }
-        /// <summary>
-        /// The URL of the webhook to call in response to the on_channel_destroy event
-        /// </summary>
-        public Uri WebhooksOnChannelDestroyUrl { get; set; }
-        /// <summary>
-        /// The HTTP method to use when calling the webhooks.on_channel_destroy.url
-        /// </summary>
-        public Twilio.Http.HttpMethod WebhooksOnChannelDestroyMethod { get; set; }
-        /// <summary>
-        /// The URL of the webhook to call in response to the on_channel_update event
-        /// </summary>
-        public Uri WebhooksOnChannelUpdateUrl { get; set; }
-        /// <summary>
-        /// The HTTP method to use when calling the webhooks.on_channel_update.url
-        /// </summary>
-        public Twilio.Http.HttpMethod WebhooksOnChannelUpdateMethod { get; set; }
-        /// <summary>
-        /// The URL of the webhook to call in response to the on_member_add event
-        /// </summary>
-        public Uri WebhooksOnMemberAddUrl { get; set; }
-        /// <summary>
-        /// The HTTP method to use when calling the webhooks.on_member_add.url
-        /// </summary>
-        public Twilio.Http.HttpMethod WebhooksOnMemberAddMethod { get; set; }
-        /// <summary>
-        /// The URL of the webhook to call in response to the on_member_remove event
-        /// </summary>
-        public Uri WebhooksOnMemberRemoveUrl { get; set; }
-        /// <summary>
-        /// The HTTP method to use when calling the webhooks.on_member_remove.url
-        /// </summary>
-        public Twilio.Http.HttpMethod WebhooksOnMemberRemoveMethod { get; set; }
-        /// <summary>
-        /// The URL of the webhook to call in response to the on_message_sent event
-        /// </summary>
-        public Uri WebhooksOnMessageSentUrl { get; set; }
-        /// <summary>
-        /// The URL of the webhook to call in response to the on_message_sent event
-        /// </summary>
-        public Twilio.Http.HttpMethod WebhooksOnMessageSentMethod { get; set; }
-        /// <summary>
-        /// The URL of the webhook to call in response to the on_message_updated event
-        /// </summary>
-        public Uri WebhooksOnMessageUpdatedUrl { get; set; }
-        /// <summary>
-        /// The HTTP method to use when calling the webhooks.on_message_updated.url
-        /// </summary>
-        public Twilio.Http.HttpMethod WebhooksOnMessageUpdatedMethod { get; set; }
-        /// <summary>
-        /// The URL of the webhook to call in response to the on_message_removed event
-        /// </summary>
-        public Uri WebhooksOnMessageRemovedUrl { get; set; }
-        /// <summary>
-        /// The HTTP method to use when calling the webhooks.on_message_removed.url
-        /// </summary>
-        public Twilio.Http.HttpMethod WebhooksOnMessageRemovedMethod { get; set; }
-        /// <summary>
-        /// The URL of the webhook to call in response to the on_channel_added event
-        /// </summary>
-        public Uri WebhooksOnChannelAddedUrl { get; set; }
-        /// <summary>
-        /// The URL of the webhook to call in response to the on_channel_added event
-        /// </summary>
-        public Twilio.Http.HttpMethod WebhooksOnChannelAddedMethod { get; set; }
-        /// <summary>
-        /// The URL of the webhook to call in response to the on_channel_added event
-        /// </summary>
-        public Uri WebhooksOnChannelDestroyedUrl { get; set; }
-        /// <summary>
-        /// The HTTP method to use when calling the webhooks.on_channel_destroyed.url
-        /// </summary>
-        public Twilio.Http.HttpMethod WebhooksOnChannelDestroyedMethod { get; set; }
-        /// <summary>
-        /// he URL of the webhook to call in response to the on_channel_updated event
-        /// </summary>
-        public Uri WebhooksOnChannelUpdatedUrl { get; set; }
-        /// <summary>
-        /// The HTTP method to use when calling the webhooks.on_channel_updated.url
-        /// </summary>
-        public Twilio.Http.HttpMethod WebhooksOnChannelUpdatedMethod { get; set; }
-        /// <summary>
-        /// The URL of the webhook to call in response to the on_channel_updated event
-        /// </summary>
-        public Uri WebhooksOnMemberAddedUrl { get; set; }
-        /// <summary>
-        /// he HTTP method to use when calling the webhooks.on_channel_updated.url
-        /// </summary>
-        public Twilio.Http.HttpMethod WebhooksOnMemberAddedMethod { get; set; }
-        /// <summary>
-        /// The URL of the webhook to call in response to the on_member_removed event
-        /// </summary>
-        public Uri WebhooksOnMemberRemovedUrl { get; set; }
-        /// <summary>
-        /// The HTTP method to use when calling the webhooks.on_member_removed.url
-        /// </summary>
-        public Twilio.Http.HttpMethod WebhooksOnMemberRemovedMethod { get; set; }
-        /// <summary>
-        /// The maximum number of Members that can be added to Channels within this Service
-        /// </summary>
-        public int? LimitsChannelMembers { get; set; }
-        /// <summary>
-        /// The maximum number of Channels Users can be a Member of within this Service
-        /// </summary>
-        public int? LimitsUserChannels { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
 
-        /// <summary>
-        /// Construct a new UpdateServiceOptions
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public UpdateServiceOptions(string pathSid)
-        {
-            PathSid = pathSid;
-            WebhookFilters = new List<string>();
-        }
+      if (DefaultServiceRoleSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("DefaultServiceRoleSid", DefaultServiceRoleSid.ToString()));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
+      if (DefaultChannelRoleSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("DefaultChannelRoleSid", DefaultChannelRoleSid.ToString()));
+      }
 
-            if (DefaultServiceRoleSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DefaultServiceRoleSid", DefaultServiceRoleSid.ToString()));
-            }
+      if (DefaultChannelCreatorRoleSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("DefaultChannelCreatorRoleSid", DefaultChannelCreatorRoleSid.ToString()));
+      }
 
-            if (DefaultChannelRoleSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DefaultChannelRoleSid", DefaultChannelRoleSid.ToString()));
-            }
+      if (ReadStatusEnabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ReadStatusEnabled", ReadStatusEnabled.Value.ToString().ToLower()));
+      }
 
-            if (DefaultChannelCreatorRoleSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DefaultChannelCreatorRoleSid", DefaultChannelCreatorRoleSid.ToString()));
-            }
+      if (ReachabilityEnabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ReachabilityEnabled", ReachabilityEnabled.Value.ToString().ToLower()));
+      }
 
-            if (ReadStatusEnabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ReadStatusEnabled", ReadStatusEnabled.Value.ToString().ToLower()));
-            }
+      if (TypingIndicatorTimeout != null)
+      {
+        p.Add(new KeyValuePair<string, string>("TypingIndicatorTimeout", TypingIndicatorTimeout.ToString()));
+      }
 
-            if (ReachabilityEnabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ReachabilityEnabled", ReachabilityEnabled.Value.ToString().ToLower()));
-            }
+      if (ConsumptionReportInterval != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ConsumptionReportInterval", ConsumptionReportInterval.ToString()));
+      }
 
-            if (TypingIndicatorTimeout != null)
-            {
-                p.Add(new KeyValuePair<string, string>("TypingIndicatorTimeout", TypingIndicatorTimeout.ToString()));
-            }
+      if (NotificationsNewMessageEnabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Notifications.NewMessage.Enabled", NotificationsNewMessageEnabled.Value.ToString().ToLower()));
+      }
 
-            if (ConsumptionReportInterval != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ConsumptionReportInterval", ConsumptionReportInterval.ToString()));
-            }
+      if (NotificationsNewMessageTemplate != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Notifications.NewMessage.Template", NotificationsNewMessageTemplate));
+      }
 
-            if (NotificationsNewMessageEnabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Notifications.NewMessage.Enabled", NotificationsNewMessageEnabled.Value.ToString().ToLower()));
-            }
+      if (NotificationsAddedToChannelEnabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Notifications.AddedToChannel.Enabled", NotificationsAddedToChannelEnabled.Value.ToString().ToLower()));
+      }
 
-            if (NotificationsNewMessageTemplate != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Notifications.NewMessage.Template", NotificationsNewMessageTemplate));
-            }
+      if (NotificationsAddedToChannelTemplate != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Notifications.AddedToChannel.Template", NotificationsAddedToChannelTemplate));
+      }
 
-            if (NotificationsAddedToChannelEnabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Notifications.AddedToChannel.Enabled", NotificationsAddedToChannelEnabled.Value.ToString().ToLower()));
-            }
+      if (NotificationsRemovedFromChannelEnabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Notifications.RemovedFromChannel.Enabled", NotificationsRemovedFromChannelEnabled.Value.ToString().ToLower()));
+      }
 
-            if (NotificationsAddedToChannelTemplate != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Notifications.AddedToChannel.Template", NotificationsAddedToChannelTemplate));
-            }
+      if (NotificationsRemovedFromChannelTemplate != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Notifications.RemovedFromChannel.Template", NotificationsRemovedFromChannelTemplate));
+      }
 
-            if (NotificationsRemovedFromChannelEnabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Notifications.RemovedFromChannel.Enabled", NotificationsRemovedFromChannelEnabled.Value.ToString().ToLower()));
-            }
+      if (NotificationsInvitedToChannelEnabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Notifications.InvitedToChannel.Enabled", NotificationsInvitedToChannelEnabled.Value.ToString().ToLower()));
+      }
 
-            if (NotificationsRemovedFromChannelTemplate != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Notifications.RemovedFromChannel.Template", NotificationsRemovedFromChannelTemplate));
-            }
+      if (NotificationsInvitedToChannelTemplate != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Notifications.InvitedToChannel.Template", NotificationsInvitedToChannelTemplate));
+      }
 
-            if (NotificationsInvitedToChannelEnabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Notifications.InvitedToChannel.Enabled", NotificationsInvitedToChannelEnabled.Value.ToString().ToLower()));
-            }
+      if (PreWebhookUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PreWebhookUrl", Serializers.Url(PreWebhookUrl)));
+      }
 
-            if (NotificationsInvitedToChannelTemplate != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Notifications.InvitedToChannel.Template", NotificationsInvitedToChannelTemplate));
-            }
+      if (PostWebhookUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PostWebhookUrl", Serializers.Url(PostWebhookUrl)));
+      }
 
-            if (PreWebhookUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PreWebhookUrl", Serializers.Url(PreWebhookUrl)));
-            }
+      if (WebhookMethod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("WebhookMethod", WebhookMethod.ToString()));
+      }
 
-            if (PostWebhookUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PostWebhookUrl", Serializers.Url(PostWebhookUrl)));
-            }
+      if (WebhookFilters != null)
+      {
+        p.AddRange(WebhookFilters.Select(prop => new KeyValuePair<string, string>("WebhookFilters", prop)));
+      }
 
-            if (WebhookMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("WebhookMethod", WebhookMethod.ToString()));
-            }
+      if (WebhooksOnMessageSendUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Webhooks.OnMessageSend.Url", Serializers.Url(WebhooksOnMessageSendUrl)));
+      }
 
-            if (WebhookFilters != null)
-            {
-                p.AddRange(WebhookFilters.Select(prop => new KeyValuePair<string, string>("WebhookFilters", prop)));
-            }
+      if (WebhooksOnMessageSendMethod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Webhooks.OnMessageSend.Method", WebhooksOnMessageSendMethod.ToString()));
+      }
 
-            if (WebhooksOnMessageSendUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Webhooks.OnMessageSend.Url", Serializers.Url(WebhooksOnMessageSendUrl)));
-            }
+      if (WebhooksOnMessageUpdateUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Webhooks.OnMessageUpdate.Url", Serializers.Url(WebhooksOnMessageUpdateUrl)));
+      }
 
-            if (WebhooksOnMessageSendMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Webhooks.OnMessageSend.Method", WebhooksOnMessageSendMethod.ToString()));
-            }
+      if (WebhooksOnMessageUpdateMethod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Webhooks.OnMessageUpdate.Method", WebhooksOnMessageUpdateMethod.ToString()));
+      }
 
-            if (WebhooksOnMessageUpdateUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Webhooks.OnMessageUpdate.Url", Serializers.Url(WebhooksOnMessageUpdateUrl)));
-            }
+      if (WebhooksOnMessageRemoveUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Webhooks.OnMessageRemove.Url", Serializers.Url(WebhooksOnMessageRemoveUrl)));
+      }
 
-            if (WebhooksOnMessageUpdateMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Webhooks.OnMessageUpdate.Method", WebhooksOnMessageUpdateMethod.ToString()));
-            }
+      if (WebhooksOnMessageRemoveMethod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Webhooks.OnMessageRemove.Method", WebhooksOnMessageRemoveMethod.ToString()));
+      }
 
-            if (WebhooksOnMessageRemoveUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Webhooks.OnMessageRemove.Url", Serializers.Url(WebhooksOnMessageRemoveUrl)));
-            }
+      if (WebhooksOnChannelAddUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Webhooks.OnChannelAdd.Url", Serializers.Url(WebhooksOnChannelAddUrl)));
+      }
 
-            if (WebhooksOnMessageRemoveMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Webhooks.OnMessageRemove.Method", WebhooksOnMessageRemoveMethod.ToString()));
-            }
+      if (WebhooksOnChannelAddMethod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Webhooks.OnChannelAdd.Method", WebhooksOnChannelAddMethod.ToString()));
+      }
 
-            if (WebhooksOnChannelAddUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Webhooks.OnChannelAdd.Url", Serializers.Url(WebhooksOnChannelAddUrl)));
-            }
+      if (WebhooksOnChannelDestroyUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Webhooks.OnChannelDestroy.Url", Serializers.Url(WebhooksOnChannelDestroyUrl)));
+      }
 
-            if (WebhooksOnChannelAddMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Webhooks.OnChannelAdd.Method", WebhooksOnChannelAddMethod.ToString()));
-            }
+      if (WebhooksOnChannelDestroyMethod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Webhooks.OnChannelDestroy.Method", WebhooksOnChannelDestroyMethod.ToString()));
+      }
 
-            if (WebhooksOnChannelDestroyUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Webhooks.OnChannelDestroy.Url", Serializers.Url(WebhooksOnChannelDestroyUrl)));
-            }
+      if (WebhooksOnChannelUpdateUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Webhooks.OnChannelUpdate.Url", Serializers.Url(WebhooksOnChannelUpdateUrl)));
+      }
 
-            if (WebhooksOnChannelDestroyMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Webhooks.OnChannelDestroy.Method", WebhooksOnChannelDestroyMethod.ToString()));
-            }
+      if (WebhooksOnChannelUpdateMethod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Webhooks.OnChannelUpdate.Method", WebhooksOnChannelUpdateMethod.ToString()));
+      }
 
-            if (WebhooksOnChannelUpdateUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Webhooks.OnChannelUpdate.Url", Serializers.Url(WebhooksOnChannelUpdateUrl)));
-            }
+      if (WebhooksOnMemberAddUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Webhooks.OnMemberAdd.Url", Serializers.Url(WebhooksOnMemberAddUrl)));
+      }
 
-            if (WebhooksOnChannelUpdateMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Webhooks.OnChannelUpdate.Method", WebhooksOnChannelUpdateMethod.ToString()));
-            }
+      if (WebhooksOnMemberAddMethod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Webhooks.OnMemberAdd.Method", WebhooksOnMemberAddMethod.ToString()));
+      }
 
-            if (WebhooksOnMemberAddUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Webhooks.OnMemberAdd.Url", Serializers.Url(WebhooksOnMemberAddUrl)));
-            }
+      if (WebhooksOnMemberRemoveUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Webhooks.OnMemberRemove.Url", Serializers.Url(WebhooksOnMemberRemoveUrl)));
+      }
 
-            if (WebhooksOnMemberAddMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Webhooks.OnMemberAdd.Method", WebhooksOnMemberAddMethod.ToString()));
-            }
+      if (WebhooksOnMemberRemoveMethod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Webhooks.OnMemberRemove.Method", WebhooksOnMemberRemoveMethod.ToString()));
+      }
 
-            if (WebhooksOnMemberRemoveUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Webhooks.OnMemberRemove.Url", Serializers.Url(WebhooksOnMemberRemoveUrl)));
-            }
+      if (WebhooksOnMessageSentUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Webhooks.OnMessageSent.Url", Serializers.Url(WebhooksOnMessageSentUrl)));
+      }
 
-            if (WebhooksOnMemberRemoveMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Webhooks.OnMemberRemove.Method", WebhooksOnMemberRemoveMethod.ToString()));
-            }
+      if (WebhooksOnMessageSentMethod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Webhooks.OnMessageSent.Method", WebhooksOnMessageSentMethod.ToString()));
+      }
 
-            if (WebhooksOnMessageSentUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Webhooks.OnMessageSent.Url", Serializers.Url(WebhooksOnMessageSentUrl)));
-            }
+      if (WebhooksOnMessageUpdatedUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Webhooks.OnMessageUpdated.Url", Serializers.Url(WebhooksOnMessageUpdatedUrl)));
+      }
 
-            if (WebhooksOnMessageSentMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Webhooks.OnMessageSent.Method", WebhooksOnMessageSentMethod.ToString()));
-            }
+      if (WebhooksOnMessageUpdatedMethod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Webhooks.OnMessageUpdated.Method", WebhooksOnMessageUpdatedMethod.ToString()));
+      }
 
-            if (WebhooksOnMessageUpdatedUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Webhooks.OnMessageUpdated.Url", Serializers.Url(WebhooksOnMessageUpdatedUrl)));
-            }
+      if (WebhooksOnMessageRemovedUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Webhooks.OnMessageRemoved.Url", Serializers.Url(WebhooksOnMessageRemovedUrl)));
+      }
 
-            if (WebhooksOnMessageUpdatedMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Webhooks.OnMessageUpdated.Method", WebhooksOnMessageUpdatedMethod.ToString()));
-            }
+      if (WebhooksOnMessageRemovedMethod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Webhooks.OnMessageRemoved.Method", WebhooksOnMessageRemovedMethod.ToString()));
+      }
 
-            if (WebhooksOnMessageRemovedUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Webhooks.OnMessageRemoved.Url", Serializers.Url(WebhooksOnMessageRemovedUrl)));
-            }
+      if (WebhooksOnChannelAddedUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Webhooks.OnChannelAdded.Url", Serializers.Url(WebhooksOnChannelAddedUrl)));
+      }
 
-            if (WebhooksOnMessageRemovedMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Webhooks.OnMessageRemoved.Method", WebhooksOnMessageRemovedMethod.ToString()));
-            }
+      if (WebhooksOnChannelAddedMethod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Webhooks.OnChannelAdded.Method", WebhooksOnChannelAddedMethod.ToString()));
+      }
 
-            if (WebhooksOnChannelAddedUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Webhooks.OnChannelAdded.Url", Serializers.Url(WebhooksOnChannelAddedUrl)));
-            }
+      if (WebhooksOnChannelDestroyedUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Webhooks.OnChannelDestroyed.Url", Serializers.Url(WebhooksOnChannelDestroyedUrl)));
+      }
 
-            if (WebhooksOnChannelAddedMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Webhooks.OnChannelAdded.Method", WebhooksOnChannelAddedMethod.ToString()));
-            }
+      if (WebhooksOnChannelDestroyedMethod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Webhooks.OnChannelDestroyed.Method", WebhooksOnChannelDestroyedMethod.ToString()));
+      }
 
-            if (WebhooksOnChannelDestroyedUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Webhooks.OnChannelDestroyed.Url", Serializers.Url(WebhooksOnChannelDestroyedUrl)));
-            }
+      if (WebhooksOnChannelUpdatedUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Webhooks.OnChannelUpdated.Url", Serializers.Url(WebhooksOnChannelUpdatedUrl)));
+      }
 
-            if (WebhooksOnChannelDestroyedMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Webhooks.OnChannelDestroyed.Method", WebhooksOnChannelDestroyedMethod.ToString()));
-            }
+      if (WebhooksOnChannelUpdatedMethod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Webhooks.OnChannelUpdated.Method", WebhooksOnChannelUpdatedMethod.ToString()));
+      }
 
-            if (WebhooksOnChannelUpdatedUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Webhooks.OnChannelUpdated.Url", Serializers.Url(WebhooksOnChannelUpdatedUrl)));
-            }
+      if (WebhooksOnMemberAddedUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Webhooks.OnMemberAdded.Url", Serializers.Url(WebhooksOnMemberAddedUrl)));
+      }
 
-            if (WebhooksOnChannelUpdatedMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Webhooks.OnChannelUpdated.Method", WebhooksOnChannelUpdatedMethod.ToString()));
-            }
+      if (WebhooksOnMemberAddedMethod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Webhooks.OnMemberAdded.Method", WebhooksOnMemberAddedMethod.ToString()));
+      }
 
-            if (WebhooksOnMemberAddedUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Webhooks.OnMemberAdded.Url", Serializers.Url(WebhooksOnMemberAddedUrl)));
-            }
+      if (WebhooksOnMemberRemovedUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Webhooks.OnMemberRemoved.Url", Serializers.Url(WebhooksOnMemberRemovedUrl)));
+      }
 
-            if (WebhooksOnMemberAddedMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Webhooks.OnMemberAdded.Method", WebhooksOnMemberAddedMethod.ToString()));
-            }
+      if (WebhooksOnMemberRemovedMethod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Webhooks.OnMemberRemoved.Method", WebhooksOnMemberRemovedMethod.ToString()));
+      }
 
-            if (WebhooksOnMemberRemovedUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Webhooks.OnMemberRemoved.Url", Serializers.Url(WebhooksOnMemberRemovedUrl)));
-            }
+      if (LimitsChannelMembers != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Limits.ChannelMembers", LimitsChannelMembers.ToString()));
+      }
 
-            if (WebhooksOnMemberRemovedMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Webhooks.OnMemberRemoved.Method", WebhooksOnMemberRemovedMethod.ToString()));
-            }
+      if (LimitsUserChannels != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Limits.UserChannels", LimitsUserChannels.ToString()));
+      }
 
-            if (LimitsChannelMembers != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Limits.ChannelMembers", LimitsChannelMembers.ToString()));
-            }
-
-            if (LimitsUserChannels != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Limits.UserChannels", LimitsUserChannels.ToString()));
-            }
-
-            return p;
-        }
+      return p;
     }
+  }
 
 }

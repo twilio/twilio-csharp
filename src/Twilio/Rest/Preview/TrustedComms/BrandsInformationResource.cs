@@ -21,118 +21,118 @@ using Twilio.Http;
 namespace Twilio.Rest.Preview.TrustedComms
 {
 
-    public class BrandsInformationResource : Resource
+  public class BrandsInformationResource : Resource
+  {
+    private static Request BuildFetchRequest(FetchBrandsInformationOptions options, ITwilioRestClient client)
     {
-        private static Request BuildFetchRequest(FetchBrandsInformationOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Get,
-                Rest.Domain.Preview,
-                "/TrustedComms/BrandsInformation",
-                queryParams: options.GetParams(),
-                headerParams: options.GetHeaderParams()
-            );
-        }
-
-        /// <summary>
-        /// Retrieve the newest available BrandInformation
-        /// </summary>
-        /// <param name="options"> Fetch BrandsInformation parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of BrandsInformation </returns>
-        public static BrandsInformationResource Fetch(FetchBrandsInformationOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Retrieve the newest available BrandInformation
-        /// </summary>
-        /// <param name="options"> Fetch BrandsInformation parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of BrandsInformation </returns>
-        public static async System.Threading.Tasks.Task<BrandsInformationResource> FetchAsync(FetchBrandsInformationOptions options,
-                                                                                              ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// Retrieve the newest available BrandInformation
-        /// </summary>
-        /// <param name="ifNoneMatch"> Standard `If-None-Match` HTTP header </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of BrandsInformation </returns>
-        public static BrandsInformationResource Fetch(string ifNoneMatch = null, ITwilioRestClient client = null)
-        {
-            var options = new FetchBrandsInformationOptions(){IfNoneMatch = ifNoneMatch};
-            return Fetch(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Retrieve the newest available BrandInformation
-        /// </summary>
-        /// <param name="ifNoneMatch"> Standard `If-None-Match` HTTP header </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of BrandsInformation </returns>
-        public static async System.Threading.Tasks.Task<BrandsInformationResource> FetchAsync(string ifNoneMatch = null,
-                                                                                              ITwilioRestClient client = null)
-        {
-            var options = new FetchBrandsInformationOptions(){IfNoneMatch = ifNoneMatch};
-            return await FetchAsync(options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Converts a JSON string into a BrandsInformationResource object
-        /// </summary>
-        /// <param name="json"> Raw JSON string </param>
-        /// <returns> BrandsInformationResource object represented by the provided JSON </returns>
-        public static BrandsInformationResource FromJson(string json)
-        {
-            // Convert all checked exceptions to Runtime
-            try
-            {
-                return JsonConvert.DeserializeObject<BrandsInformationResource>(json);
-            }
-            catch (JsonException e)
-            {
-                throw new ApiException(e.Message, e);
-            }
-        }
-
-        /// <summary>
-        /// Creation time of the information retrieved
-        /// </summary>
-        [JsonProperty("update_time")]
-        public DateTime? UpdateTime { get; private set; }
-        /// <summary>
-        /// The URL to the brands information
-        /// </summary>
-        [JsonProperty("file_link")]
-        public Uri FileLink { get; private set; }
-        /// <summary>
-        /// How long will be the `file_link` valid
-        /// </summary>
-        [JsonProperty("file_link_ttl_in_seconds")]
-        public string FileLinkTtlInSeconds { get; private set; }
-        /// <summary>
-        /// The URL of this resource
-        /// </summary>
-        [JsonProperty("url")]
-        public Uri Url { get; private set; }
-
-        private BrandsInformationResource()
-        {
-
-        }
+      return new Request(
+          HttpMethod.Get,
+          Rest.Domain.Preview,
+          "/TrustedComms/BrandsInformation",
+          queryParams: options.GetParams(),
+          headerParams: options.GetHeaderParams()
+      );
     }
+
+    /// <summary>
+    /// Retrieve the newest available BrandInformation
+    /// </summary>
+    /// <param name="options"> Fetch BrandsInformation parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of BrandsInformation </returns>
+    public static BrandsInformationResource Fetch(FetchBrandsInformationOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Retrieve the newest available BrandInformation
+    /// </summary>
+    /// <param name="options"> Fetch BrandsInformation parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of BrandsInformation </returns>
+    public static async System.Threading.Tasks.Task<BrandsInformationResource> FetchAsync(FetchBrandsInformationOptions options,
+                                                                                          ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// Retrieve the newest available BrandInformation
+    /// </summary>
+    /// <param name="ifNoneMatch"> Standard `If-None-Match` HTTP header </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of BrandsInformation </returns>
+    public static BrandsInformationResource Fetch(string ifNoneMatch = null, ITwilioRestClient client = null)
+    {
+      var options = new FetchBrandsInformationOptions() { IfNoneMatch = ifNoneMatch };
+      return Fetch(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Retrieve the newest available BrandInformation
+    /// </summary>
+    /// <param name="ifNoneMatch"> Standard `If-None-Match` HTTP header </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of BrandsInformation </returns>
+    public static async System.Threading.Tasks.Task<BrandsInformationResource> FetchAsync(string ifNoneMatch = null,
+                                                                                          ITwilioRestClient client = null)
+    {
+      var options = new FetchBrandsInformationOptions() { IfNoneMatch = ifNoneMatch };
+      return await FetchAsync(options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Converts a JSON string into a BrandsInformationResource object
+    /// </summary>
+    /// <param name="json"> Raw JSON string </param>
+    /// <returns> BrandsInformationResource object represented by the provided JSON </returns>
+    public static BrandsInformationResource FromJson(string json)
+    {
+      // Convert all checked exceptions to Runtime
+      try
+      {
+        return JsonConvert.DeserializeObject<BrandsInformationResource>(json);
+      }
+      catch (JsonException e)
+      {
+        throw new ApiException(e.Message, e);
+      }
+    }
+
+    /// <summary>
+    /// Creation time of the information retrieved
+    /// </summary>
+    [JsonProperty("update_time")]
+    public DateTime? UpdateTime { get; private set; }
+    /// <summary>
+    /// The URL to the brands information
+    /// </summary>
+    [JsonProperty("file_link")]
+    public Uri FileLink { get; private set; }
+    /// <summary>
+    /// How long will be the `file_link` valid
+    /// </summary>
+    [JsonProperty("file_link_ttl_in_seconds")]
+    public string FileLinkTtlInSeconds { get; private set; }
+    /// <summary>
+    /// The URL of this resource
+    /// </summary>
+    [JsonProperty("url")]
+    public Uri Url { get; private set; }
+
+    private BrandsInformationResource()
+    {
+
+    }
+  }
 
 }

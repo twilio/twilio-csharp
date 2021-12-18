@@ -18,469 +18,469 @@ using Twilio.Http;
 namespace Twilio.Rest.Voice.V1
 {
 
-    public class ConnectionPolicyResource : Resource
+  public class ConnectionPolicyResource : Resource
+  {
+    private static Request BuildCreateRequest(CreateConnectionPolicyOptions options, ITwilioRestClient client)
     {
-        private static Request BuildCreateRequest(CreateConnectionPolicyOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Post,
-                Rest.Domain.Voice,
-                "/v1/ConnectionPolicies",
-                postParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// create
-        /// </summary>
-        /// <param name="options"> Create ConnectionPolicy parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of ConnectionPolicy </returns>
-        public static ConnectionPolicyResource Create(CreateConnectionPolicyOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildCreateRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// create
-        /// </summary>
-        /// <param name="options"> Create ConnectionPolicy parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of ConnectionPolicy </returns>
-        public static async System.Threading.Tasks.Task<ConnectionPolicyResource> CreateAsync(CreateConnectionPolicyOptions options,
-                                                                                              ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// create
-        /// </summary>
-        /// <param name="friendlyName"> A string to describe the resource </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of ConnectionPolicy </returns>
-        public static ConnectionPolicyResource Create(string friendlyName = null, ITwilioRestClient client = null)
-        {
-            var options = new CreateConnectionPolicyOptions(){FriendlyName = friendlyName};
-            return Create(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// create
-        /// </summary>
-        /// <param name="friendlyName"> A string to describe the resource </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of ConnectionPolicy </returns>
-        public static async System.Threading.Tasks.Task<ConnectionPolicyResource> CreateAsync(string friendlyName = null,
-                                                                                              ITwilioRestClient client = null)
-        {
-            var options = new CreateConnectionPolicyOptions(){FriendlyName = friendlyName};
-            return await CreateAsync(options, client);
-        }
-        #endif
-
-        private static Request BuildFetchRequest(FetchConnectionPolicyOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Get,
-                Rest.Domain.Voice,
-                "/v1/ConnectionPolicies/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="options"> Fetch ConnectionPolicy parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of ConnectionPolicy </returns>
-        public static ConnectionPolicyResource Fetch(FetchConnectionPolicyOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="options"> Fetch ConnectionPolicy parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of ConnectionPolicy </returns>
-        public static async System.Threading.Tasks.Task<ConnectionPolicyResource> FetchAsync(FetchConnectionPolicyOptions options,
-                                                                                             ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of ConnectionPolicy </returns>
-        public static ConnectionPolicyResource Fetch(string pathSid, ITwilioRestClient client = null)
-        {
-            var options = new FetchConnectionPolicyOptions(pathSid);
-            return Fetch(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of ConnectionPolicy </returns>
-        public static async System.Threading.Tasks.Task<ConnectionPolicyResource> FetchAsync(string pathSid,
-                                                                                             ITwilioRestClient client = null)
-        {
-            var options = new FetchConnectionPolicyOptions(pathSid);
-            return await FetchAsync(options, client);
-        }
-        #endif
-
-        private static Request BuildReadRequest(ReadConnectionPolicyOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Get,
-                Rest.Domain.Voice,
-                "/v1/ConnectionPolicies",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// read
-        /// </summary>
-        /// <param name="options"> Read ConnectionPolicy parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of ConnectionPolicy </returns>
-        public static ResourceSet<ConnectionPolicyResource> Read(ReadConnectionPolicyOptions options,
-                                                                 ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildReadRequest(options, client));
-
-            var page = Page<ConnectionPolicyResource>.FromJson("connection_policies", response.Content);
-            return new ResourceSet<ConnectionPolicyResource>(page, options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// read
-        /// </summary>
-        /// <param name="options"> Read ConnectionPolicy parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of ConnectionPolicy </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<ConnectionPolicyResource>> ReadAsync(ReadConnectionPolicyOptions options,
-                                                                                                         ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
-
-            var page = Page<ConnectionPolicyResource>.FromJson("connection_policies", response.Content);
-            return new ResourceSet<ConnectionPolicyResource>(page, options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// read
-        /// </summary>
-        /// <param name="pageSize"> Page size </param>
-        /// <param name="limit"> Record limit </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of ConnectionPolicy </returns>
-        public static ResourceSet<ConnectionPolicyResource> Read(int? pageSize = null,
-                                                                 long? limit = null,
-                                                                 ITwilioRestClient client = null)
-        {
-            var options = new ReadConnectionPolicyOptions(){PageSize = pageSize, Limit = limit};
-            return Read(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// read
-        /// </summary>
-        /// <param name="pageSize"> Page size </param>
-        /// <param name="limit"> Record limit </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of ConnectionPolicy </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<ConnectionPolicyResource>> ReadAsync(int? pageSize = null,
-                                                                                                         long? limit = null,
-                                                                                                         ITwilioRestClient client = null)
-        {
-            var options = new ReadConnectionPolicyOptions(){PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Fetch the target page of records
-        /// </summary>
-        /// <param name="targetUrl"> API-generated URL for the requested results page </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns>
-        public static Page<ConnectionPolicyResource> GetPage(string targetUrl, ITwilioRestClient client)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-
-            var request = new Request(
-                HttpMethod.Get,
-                targetUrl
-            );
-
-            var response = client.Request(request);
-            return Page<ConnectionPolicyResource>.FromJson("connection_policies", response.Content);
-        }
-
-        /// <summary>
-        /// Fetch the next page of records
-        /// </summary>
-        /// <param name="page"> current page of records </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns>
-        public static Page<ConnectionPolicyResource> NextPage(Page<ConnectionPolicyResource> page, ITwilioRestClient client)
-        {
-            var request = new Request(
-                HttpMethod.Get,
-                page.GetNextPageUrl(Rest.Domain.Voice)
-            );
-
-            var response = client.Request(request);
-            return Page<ConnectionPolicyResource>.FromJson("connection_policies", response.Content);
-        }
-
-        /// <summary>
-        /// Fetch the previous page of records
-        /// </summary>
-        /// <param name="page"> current page of records </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns>
-        public static Page<ConnectionPolicyResource> PreviousPage(Page<ConnectionPolicyResource> page,
-                                                                  ITwilioRestClient client)
-        {
-            var request = new Request(
-                HttpMethod.Get,
-                page.GetPreviousPageUrl(Rest.Domain.Voice)
-            );
-
-            var response = client.Request(request);
-            return Page<ConnectionPolicyResource>.FromJson("connection_policies", response.Content);
-        }
-
-        private static Request BuildUpdateRequest(UpdateConnectionPolicyOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Post,
-                Rest.Domain.Voice,
-                "/v1/ConnectionPolicies/" + options.PathSid + "",
-                postParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// update
-        /// </summary>
-        /// <param name="options"> Update ConnectionPolicy parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of ConnectionPolicy </returns>
-        public static ConnectionPolicyResource Update(UpdateConnectionPolicyOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildUpdateRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// update
-        /// </summary>
-        /// <param name="options"> Update ConnectionPolicy parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of ConnectionPolicy </returns>
-        public static async System.Threading.Tasks.Task<ConnectionPolicyResource> UpdateAsync(UpdateConnectionPolicyOptions options,
-                                                                                              ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// update
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        /// <param name="friendlyName"> A string to describe the resource </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of ConnectionPolicy </returns>
-        public static ConnectionPolicyResource Update(string pathSid,
-                                                      string friendlyName = null,
-                                                      ITwilioRestClient client = null)
-        {
-            var options = new UpdateConnectionPolicyOptions(pathSid){FriendlyName = friendlyName};
-            return Update(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// update
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        /// <param name="friendlyName"> A string to describe the resource </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of ConnectionPolicy </returns>
-        public static async System.Threading.Tasks.Task<ConnectionPolicyResource> UpdateAsync(string pathSid,
-                                                                                              string friendlyName = null,
-                                                                                              ITwilioRestClient client = null)
-        {
-            var options = new UpdateConnectionPolicyOptions(pathSid){FriendlyName = friendlyName};
-            return await UpdateAsync(options, client);
-        }
-        #endif
-
-        private static Request BuildDeleteRequest(DeleteConnectionPolicyOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Delete,
-                Rest.Domain.Voice,
-                "/v1/ConnectionPolicies/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// delete
-        /// </summary>
-        /// <param name="options"> Delete ConnectionPolicy parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of ConnectionPolicy </returns>
-        public static bool Delete(DeleteConnectionPolicyOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
-        }
-
-        #if !NET35
-        /// <summary>
-        /// delete
-        /// </summary>
-        /// <param name="options"> Delete ConnectionPolicy parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of ConnectionPolicy </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteConnectionPolicyOptions options,
-                                                                          ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
-        }
-        #endif
-
-        /// <summary>
-        /// delete
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of ConnectionPolicy </returns>
-        public static bool Delete(string pathSid, ITwilioRestClient client = null)
-        {
-            var options = new DeleteConnectionPolicyOptions(pathSid);
-            return Delete(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// delete
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of ConnectionPolicy </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
-        {
-            var options = new DeleteConnectionPolicyOptions(pathSid);
-            return await DeleteAsync(options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Converts a JSON string into a ConnectionPolicyResource object
-        /// </summary>
-        /// <param name="json"> Raw JSON string </param>
-        /// <returns> ConnectionPolicyResource object represented by the provided JSON </returns>
-        public static ConnectionPolicyResource FromJson(string json)
-        {
-            // Convert all checked exceptions to Runtime
-            try
-            {
-                return JsonConvert.DeserializeObject<ConnectionPolicyResource>(json);
-            }
-            catch (JsonException e)
-            {
-                throw new ApiException(e.Message, e);
-            }
-        }
-
-        /// <summary>
-        /// The SID of the Account that created the resource
-        /// </summary>
-        [JsonProperty("account_sid")]
-        public string AccountSid { get; private set; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        [JsonProperty("sid")]
-        public string Sid { get; private set; }
-        /// <summary>
-        /// The string that you assigned to describe the resource
-        /// </summary>
-        [JsonProperty("friendly_name")]
-        public string FriendlyName { get; private set; }
-        /// <summary>
-        /// The RFC 2822 date and time in GMT when the resource was created
-        /// </summary>
-        [JsonProperty("date_created")]
-        public DateTime? DateCreated { get; private set; }
-        /// <summary>
-        /// The RFC 2822 date and time in GMT when the resource was last updated
-        /// </summary>
-        [JsonProperty("date_updated")]
-        public DateTime? DateUpdated { get; private set; }
-        /// <summary>
-        /// The absolute URL of the resource
-        /// </summary>
-        [JsonProperty("url")]
-        public Uri Url { get; private set; }
-        /// <summary>
-        /// The URLs of related resources
-        /// </summary>
-        [JsonProperty("links")]
-        public Dictionary<string, string> Links { get; private set; }
-
-        private ConnectionPolicyResource()
-        {
-
-        }
+      return new Request(
+          HttpMethod.Post,
+          Rest.Domain.Voice,
+          "/v1/ConnectionPolicies",
+          postParams: options.GetParams(),
+          headerParams: null
+      );
     }
+
+    /// <summary>
+    /// create
+    /// </summary>
+    /// <param name="options"> Create ConnectionPolicy parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of ConnectionPolicy </returns>
+    public static ConnectionPolicyResource Create(CreateConnectionPolicyOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildCreateRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// create
+    /// </summary>
+    /// <param name="options"> Create ConnectionPolicy parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of ConnectionPolicy </returns>
+    public static async System.Threading.Tasks.Task<ConnectionPolicyResource> CreateAsync(CreateConnectionPolicyOptions options,
+                                                                                          ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildCreateRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// create
+    /// </summary>
+    /// <param name="friendlyName"> A string to describe the resource </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of ConnectionPolicy </returns>
+    public static ConnectionPolicyResource Create(string friendlyName = null, ITwilioRestClient client = null)
+    {
+      var options = new CreateConnectionPolicyOptions() { FriendlyName = friendlyName };
+      return Create(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// create
+    /// </summary>
+    /// <param name="friendlyName"> A string to describe the resource </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of ConnectionPolicy </returns>
+    public static async System.Threading.Tasks.Task<ConnectionPolicyResource> CreateAsync(string friendlyName = null,
+                                                                                          ITwilioRestClient client = null)
+    {
+      var options = new CreateConnectionPolicyOptions() { FriendlyName = friendlyName };
+      return await CreateAsync(options, client);
+    }
+#endif
+
+    private static Request BuildFetchRequest(FetchConnectionPolicyOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Get,
+          Rest.Domain.Voice,
+          "/v1/ConnectionPolicies/" + options.PathSid + "",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="options"> Fetch ConnectionPolicy parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of ConnectionPolicy </returns>
+    public static ConnectionPolicyResource Fetch(FetchConnectionPolicyOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="options"> Fetch ConnectionPolicy parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of ConnectionPolicy </returns>
+    public static async System.Threading.Tasks.Task<ConnectionPolicyResource> FetchAsync(FetchConnectionPolicyOptions options,
+                                                                                         ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of ConnectionPolicy </returns>
+    public static ConnectionPolicyResource Fetch(string pathSid, ITwilioRestClient client = null)
+    {
+      var options = new FetchConnectionPolicyOptions(pathSid);
+      return Fetch(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of ConnectionPolicy </returns>
+    public static async System.Threading.Tasks.Task<ConnectionPolicyResource> FetchAsync(string pathSid,
+                                                                                         ITwilioRestClient client = null)
+    {
+      var options = new FetchConnectionPolicyOptions(pathSid);
+      return await FetchAsync(options, client);
+    }
+#endif
+
+    private static Request BuildReadRequest(ReadConnectionPolicyOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Get,
+          Rest.Domain.Voice,
+          "/v1/ConnectionPolicies",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// read
+    /// </summary>
+    /// <param name="options"> Read ConnectionPolicy parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of ConnectionPolicy </returns>
+    public static ResourceSet<ConnectionPolicyResource> Read(ReadConnectionPolicyOptions options,
+                                                             ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildReadRequest(options, client));
+
+      var page = Page<ConnectionPolicyResource>.FromJson("connection_policies", response.Content);
+      return new ResourceSet<ConnectionPolicyResource>(page, options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// read
+    /// </summary>
+    /// <param name="options"> Read ConnectionPolicy parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of ConnectionPolicy </returns>
+    public static async System.Threading.Tasks.Task<ResourceSet<ConnectionPolicyResource>> ReadAsync(ReadConnectionPolicyOptions options,
+                                                                                                     ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+      var page = Page<ConnectionPolicyResource>.FromJson("connection_policies", response.Content);
+      return new ResourceSet<ConnectionPolicyResource>(page, options, client);
+    }
+#endif
+
+    /// <summary>
+    /// read
+    /// </summary>
+    /// <param name="pageSize"> Page size </param>
+    /// <param name="limit"> Record limit </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of ConnectionPolicy </returns>
+    public static ResourceSet<ConnectionPolicyResource> Read(int? pageSize = null,
+                                                             long? limit = null,
+                                                             ITwilioRestClient client = null)
+    {
+      var options = new ReadConnectionPolicyOptions() { PageSize = pageSize, Limit = limit };
+      return Read(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// read
+    /// </summary>
+    /// <param name="pageSize"> Page size </param>
+    /// <param name="limit"> Record limit </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of ConnectionPolicy </returns>
+    public static async System.Threading.Tasks.Task<ResourceSet<ConnectionPolicyResource>> ReadAsync(int? pageSize = null,
+                                                                                                     long? limit = null,
+                                                                                                     ITwilioRestClient client = null)
+    {
+      var options = new ReadConnectionPolicyOptions() { PageSize = pageSize, Limit = limit };
+      return await ReadAsync(options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Fetch the target page of records
+    /// </summary>
+    /// <param name="targetUrl"> API-generated URL for the requested results page </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> The target page of records </returns>
+    public static Page<ConnectionPolicyResource> GetPage(string targetUrl, ITwilioRestClient client)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+
+      var request = new Request(
+          HttpMethod.Get,
+          targetUrl
+      );
+
+      var response = client.Request(request);
+      return Page<ConnectionPolicyResource>.FromJson("connection_policies", response.Content);
+    }
+
+    /// <summary>
+    /// Fetch the next page of records
+    /// </summary>
+    /// <param name="page"> current page of records </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> The next page of records </returns>
+    public static Page<ConnectionPolicyResource> NextPage(Page<ConnectionPolicyResource> page, ITwilioRestClient client)
+    {
+      var request = new Request(
+          HttpMethod.Get,
+          page.GetNextPageUrl(Rest.Domain.Voice)
+      );
+
+      var response = client.Request(request);
+      return Page<ConnectionPolicyResource>.FromJson("connection_policies", response.Content);
+    }
+
+    /// <summary>
+    /// Fetch the previous page of records
+    /// </summary>
+    /// <param name="page"> current page of records </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> The previous page of records </returns>
+    public static Page<ConnectionPolicyResource> PreviousPage(Page<ConnectionPolicyResource> page,
+                                                              ITwilioRestClient client)
+    {
+      var request = new Request(
+          HttpMethod.Get,
+          page.GetPreviousPageUrl(Rest.Domain.Voice)
+      );
+
+      var response = client.Request(request);
+      return Page<ConnectionPolicyResource>.FromJson("connection_policies", response.Content);
+    }
+
+    private static Request BuildUpdateRequest(UpdateConnectionPolicyOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Post,
+          Rest.Domain.Voice,
+          "/v1/ConnectionPolicies/" + options.PathSid + "",
+          postParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// update
+    /// </summary>
+    /// <param name="options"> Update ConnectionPolicy parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of ConnectionPolicy </returns>
+    public static ConnectionPolicyResource Update(UpdateConnectionPolicyOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildUpdateRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// update
+    /// </summary>
+    /// <param name="options"> Update ConnectionPolicy parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of ConnectionPolicy </returns>
+    public static async System.Threading.Tasks.Task<ConnectionPolicyResource> UpdateAsync(UpdateConnectionPolicyOptions options,
+                                                                                          ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// update
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    /// <param name="friendlyName"> A string to describe the resource </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of ConnectionPolicy </returns>
+    public static ConnectionPolicyResource Update(string pathSid,
+                                                  string friendlyName = null,
+                                                  ITwilioRestClient client = null)
+    {
+      var options = new UpdateConnectionPolicyOptions(pathSid) { FriendlyName = friendlyName };
+      return Update(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// update
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    /// <param name="friendlyName"> A string to describe the resource </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of ConnectionPolicy </returns>
+    public static async System.Threading.Tasks.Task<ConnectionPolicyResource> UpdateAsync(string pathSid,
+                                                                                          string friendlyName = null,
+                                                                                          ITwilioRestClient client = null)
+    {
+      var options = new UpdateConnectionPolicyOptions(pathSid) { FriendlyName = friendlyName };
+      return await UpdateAsync(options, client);
+    }
+#endif
+
+    private static Request BuildDeleteRequest(DeleteConnectionPolicyOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Delete,
+          Rest.Domain.Voice,
+          "/v1/ConnectionPolicies/" + options.PathSid + "",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// delete
+    /// </summary>
+    /// <param name="options"> Delete ConnectionPolicy parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of ConnectionPolicy </returns>
+    public static bool Delete(DeleteConnectionPolicyOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildDeleteRequest(options, client));
+      return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+    }
+
+#if !NET35
+    /// <summary>
+    /// delete
+    /// </summary>
+    /// <param name="options"> Delete ConnectionPolicy parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of ConnectionPolicy </returns>
+    public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteConnectionPolicyOptions options,
+                                                                      ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+      return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+    }
+#endif
+
+    /// <summary>
+    /// delete
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of ConnectionPolicy </returns>
+    public static bool Delete(string pathSid, ITwilioRestClient client = null)
+    {
+      var options = new DeleteConnectionPolicyOptions(pathSid);
+      return Delete(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// delete
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of ConnectionPolicy </returns>
+    public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
+    {
+      var options = new DeleteConnectionPolicyOptions(pathSid);
+      return await DeleteAsync(options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Converts a JSON string into a ConnectionPolicyResource object
+    /// </summary>
+    /// <param name="json"> Raw JSON string </param>
+    /// <returns> ConnectionPolicyResource object represented by the provided JSON </returns>
+    public static ConnectionPolicyResource FromJson(string json)
+    {
+      // Convert all checked exceptions to Runtime
+      try
+      {
+        return JsonConvert.DeserializeObject<ConnectionPolicyResource>(json);
+      }
+      catch (JsonException e)
+      {
+        throw new ApiException(e.Message, e);
+      }
+    }
+
+    /// <summary>
+    /// The SID of the Account that created the resource
+    /// </summary>
+    [JsonProperty("account_sid")]
+    public string AccountSid { get; private set; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    [JsonProperty("sid")]
+    public string Sid { get; private set; }
+    /// <summary>
+    /// The string that you assigned to describe the resource
+    /// </summary>
+    [JsonProperty("friendly_name")]
+    public string FriendlyName { get; private set; }
+    /// <summary>
+    /// The RFC 2822 date and time in GMT when the resource was created
+    /// </summary>
+    [JsonProperty("date_created")]
+    public DateTime? DateCreated { get; private set; }
+    /// <summary>
+    /// The RFC 2822 date and time in GMT when the resource was last updated
+    /// </summary>
+    [JsonProperty("date_updated")]
+    public DateTime? DateUpdated { get; private set; }
+    /// <summary>
+    /// The absolute URL of the resource
+    /// </summary>
+    [JsonProperty("url")]
+    public Uri Url { get; private set; }
+    /// <summary>
+    /// The URLs of related resources
+    /// </summary>
+    [JsonProperty("links")]
+    public Dictionary<string, string> Links { get; private set; }
+
+    private ConnectionPolicyResource()
+    {
+
+    }
+  }
 
 }

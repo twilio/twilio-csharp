@@ -11,34 +11,34 @@ using Twilio.Converters;
 namespace Twilio.Rest.Verify.V2
 {
 
+  /// <summary>
+  /// List all the available templates for a given Account.
+  /// </summary>
+  public class ReadTemplateOptions : ReadOptions<TemplateResource>
+  {
     /// <summary>
-    /// List all the available templates for a given Account.
+    /// Filter templates using friendly name
     /// </summary>
-    public class ReadTemplateOptions : ReadOptions<TemplateResource>
+    public string FriendlyName { get; set; }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// Filter templates using friendly name
-        /// </summary>
-        public string FriendlyName { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+      return p;
     }
+  }
 
 }

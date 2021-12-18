@@ -11,158 +11,158 @@ using Twilio.Converters;
 namespace Twilio.Rest.Preview.Sync.Service
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// FetchSyncListOptions
+  /// </summary>
+  public class FetchSyncListOptions : IOptions<SyncListResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// FetchSyncListOptions
+    /// The service_sid
     /// </summary>
-    public class FetchSyncListOptions : IOptions<SyncListResource>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The sid
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchSyncListOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The service_sid </param>
+    /// <param name="pathSid"> The sid </param>
+    public FetchSyncListOptions(string pathServiceSid, string pathSid)
     {
-        /// <summary>
-        /// The service_sid
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The sid
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchSyncListOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        public FetchSyncListOptions(string pathServiceSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathServiceSid = pathServiceSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// DeleteSyncListOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteSyncListOptions : IOptions<SyncListResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The service_sid
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The sid
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new DeleteSyncListOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        public DeleteSyncListOptions(string pathServiceSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathSid = pathSid;
-        }
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// DeleteSyncListOptions
+  /// </summary>
+  public class DeleteSyncListOptions : IOptions<SyncListResource>
+  {
+    /// <summary>
+    /// The service_sid
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The sid
+    /// </summary>
+    public string PathSid { get; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+    /// <summary>
+    /// Construct a new DeleteSyncListOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The service_sid </param>
+    /// <param name="pathSid"> The sid </param>
+    public DeleteSyncListOptions(string pathServiceSid, string pathSid)
+    {
+      PathServiceSid = pathServiceSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// CreateSyncListOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class CreateSyncListOptions : IOptions<SyncListResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The service_sid
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The unique_name
-        /// </summary>
-        public string UniqueName { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new CreateSyncListOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        public CreateSyncListOptions(string pathServiceSid)
-        {
-            PathServiceSid = pathServiceSid;
-        }
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// CreateSyncListOptions
+  /// </summary>
+  public class CreateSyncListOptions : IOptions<SyncListResource>
+  {
+    /// <summary>
+    /// The service_sid
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The unique_name
+    /// </summary>
+    public string UniqueName { get; set; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (UniqueName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new CreateSyncListOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The service_sid </param>
+    public CreateSyncListOptions(string pathServiceSid)
+    {
+      PathServiceSid = pathServiceSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// ReadSyncListOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadSyncListOptions : ReadOptions<SyncListResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The service_sid
-        /// </summary>
-        public string PathServiceSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (UniqueName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
+      }
 
-        /// <summary>
-        /// Construct a new ReadSyncListOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        public ReadSyncListOptions(string pathServiceSid)
-        {
-            PathServiceSid = pathServiceSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+      return p;
     }
+  }
+
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// ReadSyncListOptions
+  /// </summary>
+  public class ReadSyncListOptions : ReadOptions<SyncListResource>
+  {
+    /// <summary>
+    /// The service_sid
+    /// </summary>
+    public string PathServiceSid { get; }
+
+    /// <summary>
+    /// Construct a new ReadSyncListOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The service_sid </param>
+    public ReadSyncListOptions(string pathServiceSid)
+    {
+      PathServiceSid = pathServiceSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
 
 }

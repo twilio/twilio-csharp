@@ -11,33 +11,33 @@ using Twilio.Converters;
 namespace Twilio.Rest.Api.V2010.Account
 {
 
+  /// <summary>
+  /// Create a new token for ICE servers
+  /// </summary>
+  public class CreateTokenOptions : IOptions<TokenResource>
+  {
     /// <summary>
-    /// Create a new token for ICE servers
+    /// The SID of the Account that will create the resource
     /// </summary>
-    public class CreateTokenOptions : IOptions<TokenResource>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The duration in seconds the credentials are valid
+    /// </summary>
+    public int? Ttl { get; set; }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Account that will create the resource
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The duration in seconds the credentials are valid
-        /// </summary>
-        public int? Ttl { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (Ttl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Ttl", Ttl.ToString()));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Ttl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Ttl", Ttl.ToString()));
-            }
-
-            return p;
-        }
+      return p;
     }
+  }
 
 }

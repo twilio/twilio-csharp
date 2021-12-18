@@ -12,280 +12,280 @@ using Twilio.Converters;
 namespace Twilio.Rest.Video.V1
 {
 
+  /// <summary>
+  /// FetchRoomOptions
+  /// </summary>
+  public class FetchRoomOptions : IOptions<RoomResource>
+  {
     /// <summary>
-    /// FetchRoomOptions
+    /// The SID that identifies the resource to fetch
     /// </summary>
-    public class FetchRoomOptions : IOptions<RoomResource>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchRoomOptions
+    /// </summary>
+    /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
+    public FetchRoomOptions(string pathSid)
     {
-        /// <summary>
-        /// The SID that identifies the resource to fetch
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchRoomOptions
-        /// </summary>
-        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
-        public FetchRoomOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// CreateRoomOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class CreateRoomOptions : IOptions<RoomResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// Enable Twilio's Network Traversal TURN service
-        /// </summary>
-        public bool? EnableTurn { get; set; }
-        /// <summary>
-        /// The type of room
-        /// </summary>
-        public RoomResource.RoomTypeEnum Type { get; set; }
-        /// <summary>
-        /// An application-defined string that uniquely identifies the resource
-        /// </summary>
-        public string UniqueName { get; set; }
-        /// <summary>
-        /// The URL to send status information to your application
-        /// </summary>
-        public Uri StatusCallback { get; set; }
-        /// <summary>
-        /// The HTTP method we should use to call status_callback
-        /// </summary>
-        public Twilio.Http.HttpMethod StatusCallbackMethod { get; set; }
-        /// <summary>
-        /// The maximum number of concurrent Participants allowed in the room
-        /// </summary>
-        public int? MaxParticipants { get; set; }
-        /// <summary>
-        /// Whether to start recording when Participants connect
-        /// </summary>
-        public bool? RecordParticipantsOnConnect { get; set; }
-        /// <summary>
-        /// An array of the video codecs that are supported when publishing a track in the room
-        /// </summary>
-        public List<RoomResource.VideoCodecEnum> VideoCodecs { get; set; }
-        /// <summary>
-        /// The region for the media server in Group Rooms
-        /// </summary>
-        public string MediaRegion { get; set; }
-        /// <summary>
-        /// A collection of Recording Rules
-        /// </summary>
-        public object RecordingRules { get; set; }
-        /// <summary>
-        /// Indicates whether the room will only contain audio track participants for group rooms.
-        /// </summary>
-        public bool? AudioOnly { get; set; }
-        /// <summary>
-        /// The maximum number of seconds a Participant can be connected to the room
-        /// </summary>
-        public int? MaxParticipantDuration { get; set; }
-        /// <summary>
-        /// Configures the time a room will remain active after last participant leaves.
-        /// </summary>
-        public int? EmptyRoomTimeout { get; set; }
-        /// <summary>
-        /// Configures the time a room will remain active when no one joins.
-        /// </summary>
-        public int? UnusedRoomTimeout { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new CreateRoomOptions
-        /// </summary>
-        public CreateRoomOptions()
-        {
-            VideoCodecs = new List<RoomResource.VideoCodecEnum>();
-        }
+  /// <summary>
+  /// CreateRoomOptions
+  /// </summary>
+  public class CreateRoomOptions : IOptions<RoomResource>
+  {
+    /// <summary>
+    /// Enable Twilio's Network Traversal TURN service
+    /// </summary>
+    public bool? EnableTurn { get; set; }
+    /// <summary>
+    /// The type of room
+    /// </summary>
+    public RoomResource.RoomTypeEnum Type { get; set; }
+    /// <summary>
+    /// An application-defined string that uniquely identifies the resource
+    /// </summary>
+    public string UniqueName { get; set; }
+    /// <summary>
+    /// The URL to send status information to your application
+    /// </summary>
+    public Uri StatusCallback { get; set; }
+    /// <summary>
+    /// The HTTP method we should use to call status_callback
+    /// </summary>
+    public Twilio.Http.HttpMethod StatusCallbackMethod { get; set; }
+    /// <summary>
+    /// The maximum number of concurrent Participants allowed in the room
+    /// </summary>
+    public int? MaxParticipants { get; set; }
+    /// <summary>
+    /// Whether to start recording when Participants connect
+    /// </summary>
+    public bool? RecordParticipantsOnConnect { get; set; }
+    /// <summary>
+    /// An array of the video codecs that are supported when publishing a track in the room
+    /// </summary>
+    public List<RoomResource.VideoCodecEnum> VideoCodecs { get; set; }
+    /// <summary>
+    /// The region for the media server in Group Rooms
+    /// </summary>
+    public string MediaRegion { get; set; }
+    /// <summary>
+    /// A collection of Recording Rules
+    /// </summary>
+    public object RecordingRules { get; set; }
+    /// <summary>
+    /// Indicates whether the room will only contain audio track participants for group rooms.
+    /// </summary>
+    public bool? AudioOnly { get; set; }
+    /// <summary>
+    /// The maximum number of seconds a Participant can be connected to the room
+    /// </summary>
+    public int? MaxParticipantDuration { get; set; }
+    /// <summary>
+    /// Configures the time a room will remain active after last participant leaves.
+    /// </summary>
+    public int? EmptyRoomTimeout { get; set; }
+    /// <summary>
+    /// Configures the time a room will remain active when no one joins.
+    /// </summary>
+    public int? UnusedRoomTimeout { get; set; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (EnableTurn != null)
-            {
-                p.Add(new KeyValuePair<string, string>("EnableTurn", EnableTurn.Value.ToString().ToLower()));
-            }
-
-            if (Type != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Type", Type.ToString()));
-            }
-
-            if (UniqueName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
-            }
-
-            if (StatusCallback != null)
-            {
-                p.Add(new KeyValuePair<string, string>("StatusCallback", Serializers.Url(StatusCallback)));
-            }
-
-            if (StatusCallbackMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("StatusCallbackMethod", StatusCallbackMethod.ToString()));
-            }
-
-            if (MaxParticipants != null)
-            {
-                p.Add(new KeyValuePair<string, string>("MaxParticipants", MaxParticipants.ToString()));
-            }
-
-            if (RecordParticipantsOnConnect != null)
-            {
-                p.Add(new KeyValuePair<string, string>("RecordParticipantsOnConnect", RecordParticipantsOnConnect.Value.ToString().ToLower()));
-            }
-
-            if (VideoCodecs != null)
-            {
-                p.AddRange(VideoCodecs.Select(prop => new KeyValuePair<string, string>("VideoCodecs", prop.ToString())));
-            }
-
-            if (MediaRegion != null)
-            {
-                p.Add(new KeyValuePair<string, string>("MediaRegion", MediaRegion));
-            }
-
-            if (RecordingRules != null)
-            {
-                p.Add(new KeyValuePair<string, string>("RecordingRules", Serializers.JsonObject(RecordingRules)));
-            }
-
-            if (AudioOnly != null)
-            {
-                p.Add(new KeyValuePair<string, string>("AudioOnly", AudioOnly.Value.ToString().ToLower()));
-            }
-
-            if (MaxParticipantDuration != null)
-            {
-                p.Add(new KeyValuePair<string, string>("MaxParticipantDuration", MaxParticipantDuration.ToString()));
-            }
-
-            if (EmptyRoomTimeout != null)
-            {
-                p.Add(new KeyValuePair<string, string>("EmptyRoomTimeout", EmptyRoomTimeout.ToString()));
-            }
-
-            if (UnusedRoomTimeout != null)
-            {
-                p.Add(new KeyValuePair<string, string>("UnusedRoomTimeout", UnusedRoomTimeout.ToString()));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new CreateRoomOptions
+    /// </summary>
+    public CreateRoomOptions()
+    {
+      VideoCodecs = new List<RoomResource.VideoCodecEnum>();
     }
 
     /// <summary>
-    /// ReadRoomOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadRoomOptions : ReadOptions<RoomResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// Read only the rooms with this status
-        /// </summary>
-        public RoomResource.RoomStatusEnum Status { get; set; }
-        /// <summary>
-        /// Read only rooms with this unique_name
-        /// </summary>
-        public string UniqueName { get; set; }
-        /// <summary>
-        /// Read only rooms that started on or after this date, given as YYYY-MM-DD
-        /// </summary>
-        public DateTime? DateCreatedAfter { get; set; }
-        /// <summary>
-        /// Read only rooms that started before this date, given as YYYY-MM-DD
-        /// </summary>
-        public DateTime? DateCreatedBefore { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (EnableTurn != null)
+      {
+        p.Add(new KeyValuePair<string, string>("EnableTurn", EnableTurn.Value.ToString().ToLower()));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Status != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
-            }
+      if (Type != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Type", Type.ToString()));
+      }
 
-            if (UniqueName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
-            }
+      if (UniqueName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
+      }
 
-            if (DateCreatedAfter != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DateCreatedAfter", Serializers.DateTimeIso8601(DateCreatedAfter)));
-            }
+      if (StatusCallback != null)
+      {
+        p.Add(new KeyValuePair<string, string>("StatusCallback", Serializers.Url(StatusCallback)));
+      }
 
-            if (DateCreatedBefore != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DateCreatedBefore", Serializers.DateTimeIso8601(DateCreatedBefore)));
-            }
+      if (StatusCallbackMethod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("StatusCallbackMethod", StatusCallbackMethod.ToString()));
+      }
 
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
+      if (MaxParticipants != null)
+      {
+        p.Add(new KeyValuePair<string, string>("MaxParticipants", MaxParticipants.ToString()));
+      }
 
-            return p;
-        }
+      if (RecordParticipantsOnConnect != null)
+      {
+        p.Add(new KeyValuePair<string, string>("RecordParticipantsOnConnect", RecordParticipantsOnConnect.Value.ToString().ToLower()));
+      }
+
+      if (VideoCodecs != null)
+      {
+        p.AddRange(VideoCodecs.Select(prop => new KeyValuePair<string, string>("VideoCodecs", prop.ToString())));
+      }
+
+      if (MediaRegion != null)
+      {
+        p.Add(new KeyValuePair<string, string>("MediaRegion", MediaRegion));
+      }
+
+      if (RecordingRules != null)
+      {
+        p.Add(new KeyValuePair<string, string>("RecordingRules", Serializers.JsonObject(RecordingRules)));
+      }
+
+      if (AudioOnly != null)
+      {
+        p.Add(new KeyValuePair<string, string>("AudioOnly", AudioOnly.Value.ToString().ToLower()));
+      }
+
+      if (MaxParticipantDuration != null)
+      {
+        p.Add(new KeyValuePair<string, string>("MaxParticipantDuration", MaxParticipantDuration.ToString()));
+      }
+
+      if (EmptyRoomTimeout != null)
+      {
+        p.Add(new KeyValuePair<string, string>("EmptyRoomTimeout", EmptyRoomTimeout.ToString()));
+      }
+
+      if (UnusedRoomTimeout != null)
+      {
+        p.Add(new KeyValuePair<string, string>("UnusedRoomTimeout", UnusedRoomTimeout.ToString()));
+      }
+
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// ReadRoomOptions
+  /// </summary>
+  public class ReadRoomOptions : ReadOptions<RoomResource>
+  {
+    /// <summary>
+    /// Read only the rooms with this status
+    /// </summary>
+    public RoomResource.RoomStatusEnum Status { get; set; }
+    /// <summary>
+    /// Read only rooms with this unique_name
+    /// </summary>
+    public string UniqueName { get; set; }
+    /// <summary>
+    /// Read only rooms that started on or after this date, given as YYYY-MM-DD
+    /// </summary>
+    public DateTime? DateCreatedAfter { get; set; }
+    /// <summary>
+    /// Read only rooms that started before this date, given as YYYY-MM-DD
+    /// </summary>
+    public DateTime? DateCreatedBefore { get; set; }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (Status != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
+      }
+
+      if (UniqueName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
+      }
+
+      if (DateCreatedAfter != null)
+      {
+        p.Add(new KeyValuePair<string, string>("DateCreatedAfter", Serializers.DateTimeIso8601(DateCreatedAfter)));
+      }
+
+      if (DateCreatedBefore != null)
+      {
+        p.Add(new KeyValuePair<string, string>("DateCreatedBefore", Serializers.DateTimeIso8601(DateCreatedBefore)));
+      }
+
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// UpdateRoomOptions
+  /// </summary>
+  public class UpdateRoomOptions : IOptions<RoomResource>
+  {
+    /// <summary>
+    /// The SID that identifies the resource to update
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// The new status of the resource
+    /// </summary>
+    public RoomResource.RoomStatusEnum Status { get; }
+
+    /// <summary>
+    /// Construct a new UpdateRoomOptions
+    /// </summary>
+    /// <param name="pathSid"> The SID that identifies the resource to update </param>
+    /// <param name="status"> The new status of the resource </param>
+    public UpdateRoomOptions(string pathSid, RoomResource.RoomStatusEnum status)
+    {
+      PathSid = pathSid;
+      Status = status;
     }
 
     /// <summary>
-    /// UpdateRoomOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateRoomOptions : IOptions<RoomResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID that identifies the resource to update
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// The new status of the resource
-        /// </summary>
-        public RoomResource.RoomStatusEnum Status { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (Status != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new UpdateRoomOptions
-        /// </summary>
-        /// <param name="pathSid"> The SID that identifies the resource to update </param>
-        /// <param name="status"> The new status of the resource </param>
-        public UpdateRoomOptions(string pathSid, RoomResource.RoomStatusEnum status)
-        {
-            PathSid = pathSid;
-            Status = status;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Status != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
-            }
-
-            return p;
-        }
+      return p;
     }
+  }
 
 }

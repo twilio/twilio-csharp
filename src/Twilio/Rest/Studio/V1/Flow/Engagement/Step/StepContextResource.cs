@@ -18,137 +18,137 @@ using Twilio.Http;
 namespace Twilio.Rest.Studio.V1.Flow.Engagement.Step
 {
 
-    public class StepContextResource : Resource
+  public class StepContextResource : Resource
+  {
+    private static Request BuildFetchRequest(FetchStepContextOptions options, ITwilioRestClient client)
     {
-        private static Request BuildFetchRequest(FetchStepContextOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Get,
-                Rest.Domain.Studio,
-                "/v1/Flows/" + options.PathFlowSid + "/Engagements/" + options.PathEngagementSid + "/Steps/" + options.PathStepSid + "/Context",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// Retrieve the context for an Engagement Step.
-        /// </summary>
-        /// <param name="options"> Fetch StepContext parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of StepContext </returns>
-        public static StepContextResource Fetch(FetchStepContextOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Retrieve the context for an Engagement Step.
-        /// </summary>
-        /// <param name="options"> Fetch StepContext parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of StepContext </returns>
-        public static async System.Threading.Tasks.Task<StepContextResource> FetchAsync(FetchStepContextOptions options,
-                                                                                        ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// Retrieve the context for an Engagement Step.
-        /// </summary>
-        /// <param name="pathFlowSid"> The SID of the Flow </param>
-        /// <param name="pathEngagementSid"> The SID of the Engagement </param>
-        /// <param name="pathStepSid"> Step SID </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of StepContext </returns>
-        public static StepContextResource Fetch(string pathFlowSid,
-                                                string pathEngagementSid,
-                                                string pathStepSid,
-                                                ITwilioRestClient client = null)
-        {
-            var options = new FetchStepContextOptions(pathFlowSid, pathEngagementSid, pathStepSid);
-            return Fetch(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Retrieve the context for an Engagement Step.
-        /// </summary>
-        /// <param name="pathFlowSid"> The SID of the Flow </param>
-        /// <param name="pathEngagementSid"> The SID of the Engagement </param>
-        /// <param name="pathStepSid"> Step SID </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of StepContext </returns>
-        public static async System.Threading.Tasks.Task<StepContextResource> FetchAsync(string pathFlowSid,
-                                                                                        string pathEngagementSid,
-                                                                                        string pathStepSid,
-                                                                                        ITwilioRestClient client = null)
-        {
-            var options = new FetchStepContextOptions(pathFlowSid, pathEngagementSid, pathStepSid);
-            return await FetchAsync(options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Converts a JSON string into a StepContextResource object
-        /// </summary>
-        /// <param name="json"> Raw JSON string </param>
-        /// <returns> StepContextResource object represented by the provided JSON </returns>
-        public static StepContextResource FromJson(string json)
-        {
-            // Convert all checked exceptions to Runtime
-            try
-            {
-                return JsonConvert.DeserializeObject<StepContextResource>(json);
-            }
-            catch (JsonException e)
-            {
-                throw new ApiException(e.Message, e);
-            }
-        }
-
-        /// <summary>
-        /// The SID of the Account that created the resource
-        /// </summary>
-        [JsonProperty("account_sid")]
-        public string AccountSid { get; private set; }
-        /// <summary>
-        /// The current state of the flow
-        /// </summary>
-        [JsonProperty("context")]
-        public object Context { get; private set; }
-        /// <summary>
-        /// The SID of the Engagement
-        /// </summary>
-        [JsonProperty("engagement_sid")]
-        public string EngagementSid { get; private set; }
-        /// <summary>
-        /// The SID of the Flow
-        /// </summary>
-        [JsonProperty("flow_sid")]
-        public string FlowSid { get; private set; }
-        /// <summary>
-        /// Step SID
-        /// </summary>
-        [JsonProperty("step_sid")]
-        public string StepSid { get; private set; }
-        /// <summary>
-        /// The absolute URL of the resource
-        /// </summary>
-        [JsonProperty("url")]
-        public Uri Url { get; private set; }
-
-        private StepContextResource()
-        {
-
-        }
+      return new Request(
+          HttpMethod.Get,
+          Rest.Domain.Studio,
+          "/v1/Flows/" + options.PathFlowSid + "/Engagements/" + options.PathEngagementSid + "/Steps/" + options.PathStepSid + "/Context",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
     }
+
+    /// <summary>
+    /// Retrieve the context for an Engagement Step.
+    /// </summary>
+    /// <param name="options"> Fetch StepContext parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of StepContext </returns>
+    public static StepContextResource Fetch(FetchStepContextOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Retrieve the context for an Engagement Step.
+    /// </summary>
+    /// <param name="options"> Fetch StepContext parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of StepContext </returns>
+    public static async System.Threading.Tasks.Task<StepContextResource> FetchAsync(FetchStepContextOptions options,
+                                                                                    ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// Retrieve the context for an Engagement Step.
+    /// </summary>
+    /// <param name="pathFlowSid"> The SID of the Flow </param>
+    /// <param name="pathEngagementSid"> The SID of the Engagement </param>
+    /// <param name="pathStepSid"> Step SID </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of StepContext </returns>
+    public static StepContextResource Fetch(string pathFlowSid,
+                                            string pathEngagementSid,
+                                            string pathStepSid,
+                                            ITwilioRestClient client = null)
+    {
+      var options = new FetchStepContextOptions(pathFlowSid, pathEngagementSid, pathStepSid);
+      return Fetch(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Retrieve the context for an Engagement Step.
+    /// </summary>
+    /// <param name="pathFlowSid"> The SID of the Flow </param>
+    /// <param name="pathEngagementSid"> The SID of the Engagement </param>
+    /// <param name="pathStepSid"> Step SID </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of StepContext </returns>
+    public static async System.Threading.Tasks.Task<StepContextResource> FetchAsync(string pathFlowSid,
+                                                                                    string pathEngagementSid,
+                                                                                    string pathStepSid,
+                                                                                    ITwilioRestClient client = null)
+    {
+      var options = new FetchStepContextOptions(pathFlowSid, pathEngagementSid, pathStepSid);
+      return await FetchAsync(options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Converts a JSON string into a StepContextResource object
+    /// </summary>
+    /// <param name="json"> Raw JSON string </param>
+    /// <returns> StepContextResource object represented by the provided JSON </returns>
+    public static StepContextResource FromJson(string json)
+    {
+      // Convert all checked exceptions to Runtime
+      try
+      {
+        return JsonConvert.DeserializeObject<StepContextResource>(json);
+      }
+      catch (JsonException e)
+      {
+        throw new ApiException(e.Message, e);
+      }
+    }
+
+    /// <summary>
+    /// The SID of the Account that created the resource
+    /// </summary>
+    [JsonProperty("account_sid")]
+    public string AccountSid { get; private set; }
+    /// <summary>
+    /// The current state of the flow
+    /// </summary>
+    [JsonProperty("context")]
+    public object Context { get; private set; }
+    /// <summary>
+    /// The SID of the Engagement
+    /// </summary>
+    [JsonProperty("engagement_sid")]
+    public string EngagementSid { get; private set; }
+    /// <summary>
+    /// The SID of the Flow
+    /// </summary>
+    [JsonProperty("flow_sid")]
+    public string FlowSid { get; private set; }
+    /// <summary>
+    /// Step SID
+    /// </summary>
+    [JsonProperty("step_sid")]
+    public string StepSid { get; private set; }
+    /// <summary>
+    /// The absolute URL of the resource
+    /// </summary>
+    [JsonProperty("url")]
+    public Uri Url { get; private set; }
+
+    private StepContextResource()
+    {
+
+    }
+  }
 
 }

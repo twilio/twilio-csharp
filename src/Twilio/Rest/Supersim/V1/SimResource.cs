@@ -21,484 +21,484 @@ using Twilio.Types;
 namespace Twilio.Rest.Supersim.V1
 {
 
-    public class SimResource : Resource
+  public class SimResource : Resource
+  {
+    public sealed class StatusEnum : StringEnum
     {
-        public sealed class StatusEnum : StringEnum
-        {
-            private StatusEnum(string value) : base(value) {}
-            public StatusEnum() {}
-            public static implicit operator StatusEnum(string value)
-            {
-                return new StatusEnum(value);
-            }
+      private StatusEnum(string value) : base(value) { }
+      public StatusEnum() { }
+      public static implicit operator StatusEnum(string value)
+      {
+        return new StatusEnum(value);
+      }
 
-            public static readonly StatusEnum New = new StatusEnum("new");
-            public static readonly StatusEnum Ready = new StatusEnum("ready");
-            public static readonly StatusEnum Active = new StatusEnum("active");
-            public static readonly StatusEnum Inactive = new StatusEnum("inactive");
-            public static readonly StatusEnum Scheduled = new StatusEnum("scheduled");
-        }
-
-        public sealed class StatusUpdateEnum : StringEnum
-        {
-            private StatusUpdateEnum(string value) : base(value) {}
-            public StatusUpdateEnum() {}
-            public static implicit operator StatusUpdateEnum(string value)
-            {
-                return new StatusUpdateEnum(value);
-            }
-
-            public static readonly StatusUpdateEnum Ready = new StatusUpdateEnum("ready");
-            public static readonly StatusUpdateEnum Active = new StatusUpdateEnum("active");
-            public static readonly StatusUpdateEnum Inactive = new StatusUpdateEnum("inactive");
-        }
-
-        private static Request BuildCreateRequest(CreateSimOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Post,
-                Rest.Domain.Supersim,
-                "/v1/Sims",
-                postParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// Register a Super SIM to your Account
-        /// </summary>
-        /// <param name="options"> Create Sim parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Sim </returns>
-        public static SimResource Create(CreateSimOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildCreateRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Register a Super SIM to your Account
-        /// </summary>
-        /// <param name="options"> Create Sim parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Sim </returns>
-        public static async System.Threading.Tasks.Task<SimResource> CreateAsync(CreateSimOptions options,
-                                                                                 ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// Register a Super SIM to your Account
-        /// </summary>
-        /// <param name="iccid"> The [ICCID](https://en.wikipedia.org/wiki/Subscriber_identity_module#ICCID) of the Super SIM
-        ///             to be added to your Account </param>
-        /// <param name="registrationCode"> The 10-digit code required to claim the Super SIM for your Account </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Sim </returns>
-        public static SimResource Create(string iccid, string registrationCode, ITwilioRestClient client = null)
-        {
-            var options = new CreateSimOptions(iccid, registrationCode);
-            return Create(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Register a Super SIM to your Account
-        /// </summary>
-        /// <param name="iccid"> The [ICCID](https://en.wikipedia.org/wiki/Subscriber_identity_module#ICCID) of the Super SIM
-        ///             to be added to your Account </param>
-        /// <param name="registrationCode"> The 10-digit code required to claim the Super SIM for your Account </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Sim </returns>
-        public static async System.Threading.Tasks.Task<SimResource> CreateAsync(string iccid,
-                                                                                 string registrationCode,
-                                                                                 ITwilioRestClient client = null)
-        {
-            var options = new CreateSimOptions(iccid, registrationCode);
-            return await CreateAsync(options, client);
-        }
-        #endif
-
-        private static Request BuildFetchRequest(FetchSimOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Get,
-                Rest.Domain.Supersim,
-                "/v1/Sims/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// Fetch a Super SIM instance from your account.
-        /// </summary>
-        /// <param name="options"> Fetch Sim parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Sim </returns>
-        public static SimResource Fetch(FetchSimOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Fetch a Super SIM instance from your account.
-        /// </summary>
-        /// <param name="options"> Fetch Sim parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Sim </returns>
-        public static async System.Threading.Tasks.Task<SimResource> FetchAsync(FetchSimOptions options,
-                                                                                ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// Fetch a Super SIM instance from your account.
-        /// </summary>
-        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Sim </returns>
-        public static SimResource Fetch(string pathSid, ITwilioRestClient client = null)
-        {
-            var options = new FetchSimOptions(pathSid);
-            return Fetch(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Fetch a Super SIM instance from your account.
-        /// </summary>
-        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Sim </returns>
-        public static async System.Threading.Tasks.Task<SimResource> FetchAsync(string pathSid,
-                                                                                ITwilioRestClient client = null)
-        {
-            var options = new FetchSimOptions(pathSid);
-            return await FetchAsync(options, client);
-        }
-        #endif
-
-        private static Request BuildUpdateRequest(UpdateSimOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Post,
-                Rest.Domain.Supersim,
-                "/v1/Sims/" + options.PathSid + "",
-                postParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// Updates the given properties of a Super SIM instance from your account.
-        /// </summary>
-        /// <param name="options"> Update Sim parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Sim </returns>
-        public static SimResource Update(UpdateSimOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildUpdateRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Updates the given properties of a Super SIM instance from your account.
-        /// </summary>
-        /// <param name="options"> Update Sim parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Sim </returns>
-        public static async System.Threading.Tasks.Task<SimResource> UpdateAsync(UpdateSimOptions options,
-                                                                                 ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// Updates the given properties of a Super SIM instance from your account.
-        /// </summary>
-        /// <param name="pathSid"> The SID that identifies the resource to update </param>
-        /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
-        /// <param name="status"> The new status of the Super SIM </param>
-        /// <param name="fleet"> The SID or unique name of the Fleet to which the SIM resource should be assigned </param>
-        /// <param name="callbackUrl"> The URL we should call after the update has finished </param>
-        /// <param name="callbackMethod"> The HTTP method we should use to call callback_url </param>
-        /// <param name="accountSid"> The SID of the Account to which the Sim resource should belong </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Sim </returns>
-        public static SimResource Update(string pathSid,
-                                         string uniqueName = null,
-                                         SimResource.StatusUpdateEnum status = null,
-                                         string fleet = null,
-                                         Uri callbackUrl = null,
-                                         Twilio.Http.HttpMethod callbackMethod = null,
-                                         string accountSid = null,
-                                         ITwilioRestClient client = null)
-        {
-            var options = new UpdateSimOptions(pathSid){UniqueName = uniqueName, Status = status, Fleet = fleet, CallbackUrl = callbackUrl, CallbackMethod = callbackMethod, AccountSid = accountSid};
-            return Update(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Updates the given properties of a Super SIM instance from your account.
-        /// </summary>
-        /// <param name="pathSid"> The SID that identifies the resource to update </param>
-        /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
-        /// <param name="status"> The new status of the Super SIM </param>
-        /// <param name="fleet"> The SID or unique name of the Fleet to which the SIM resource should be assigned </param>
-        /// <param name="callbackUrl"> The URL we should call after the update has finished </param>
-        /// <param name="callbackMethod"> The HTTP method we should use to call callback_url </param>
-        /// <param name="accountSid"> The SID of the Account to which the Sim resource should belong </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Sim </returns>
-        public static async System.Threading.Tasks.Task<SimResource> UpdateAsync(string pathSid,
-                                                                                 string uniqueName = null,
-                                                                                 SimResource.StatusUpdateEnum status = null,
-                                                                                 string fleet = null,
-                                                                                 Uri callbackUrl = null,
-                                                                                 Twilio.Http.HttpMethod callbackMethod = null,
-                                                                                 string accountSid = null,
-                                                                                 ITwilioRestClient client = null)
-        {
-            var options = new UpdateSimOptions(pathSid){UniqueName = uniqueName, Status = status, Fleet = fleet, CallbackUrl = callbackUrl, CallbackMethod = callbackMethod, AccountSid = accountSid};
-            return await UpdateAsync(options, client);
-        }
-        #endif
-
-        private static Request BuildReadRequest(ReadSimOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Get,
-                Rest.Domain.Supersim,
-                "/v1/Sims",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// Retrieve a list of Super SIMs from your account.
-        /// </summary>
-        /// <param name="options"> Read Sim parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Sim </returns>
-        public static ResourceSet<SimResource> Read(ReadSimOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildReadRequest(options, client));
-
-            var page = Page<SimResource>.FromJson("sims", response.Content);
-            return new ResourceSet<SimResource>(page, options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Retrieve a list of Super SIMs from your account.
-        /// </summary>
-        /// <param name="options"> Read Sim parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Sim </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<SimResource>> ReadAsync(ReadSimOptions options,
-                                                                                            ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
-
-            var page = Page<SimResource>.FromJson("sims", response.Content);
-            return new ResourceSet<SimResource>(page, options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Retrieve a list of Super SIMs from your account.
-        /// </summary>
-        /// <param name="status"> The status of the Sim resources to read </param>
-        /// <param name="fleet"> The SID or unique name of the Fleet to which a list of Sims are assigned </param>
-        /// <param name="iccid"> The ICCID associated with a Super SIM to filter the list by </param>
-        /// <param name="pageSize"> Page size </param>
-        /// <param name="limit"> Record limit </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Sim </returns>
-        public static ResourceSet<SimResource> Read(SimResource.StatusEnum status = null,
-                                                    string fleet = null,
-                                                    string iccid = null,
-                                                    int? pageSize = null,
-                                                    long? limit = null,
-                                                    ITwilioRestClient client = null)
-        {
-            var options = new ReadSimOptions(){Status = status, Fleet = fleet, Iccid = iccid, PageSize = pageSize, Limit = limit};
-            return Read(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Retrieve a list of Super SIMs from your account.
-        /// </summary>
-        /// <param name="status"> The status of the Sim resources to read </param>
-        /// <param name="fleet"> The SID or unique name of the Fleet to which a list of Sims are assigned </param>
-        /// <param name="iccid"> The ICCID associated with a Super SIM to filter the list by </param>
-        /// <param name="pageSize"> Page size </param>
-        /// <param name="limit"> Record limit </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Sim </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<SimResource>> ReadAsync(SimResource.StatusEnum status = null,
-                                                                                            string fleet = null,
-                                                                                            string iccid = null,
-                                                                                            int? pageSize = null,
-                                                                                            long? limit = null,
-                                                                                            ITwilioRestClient client = null)
-        {
-            var options = new ReadSimOptions(){Status = status, Fleet = fleet, Iccid = iccid, PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Fetch the target page of records
-        /// </summary>
-        /// <param name="targetUrl"> API-generated URL for the requested results page </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns>
-        public static Page<SimResource> GetPage(string targetUrl, ITwilioRestClient client)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-
-            var request = new Request(
-                HttpMethod.Get,
-                targetUrl
-            );
-
-            var response = client.Request(request);
-            return Page<SimResource>.FromJson("sims", response.Content);
-        }
-
-        /// <summary>
-        /// Fetch the next page of records
-        /// </summary>
-        /// <param name="page"> current page of records </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns>
-        public static Page<SimResource> NextPage(Page<SimResource> page, ITwilioRestClient client)
-        {
-            var request = new Request(
-                HttpMethod.Get,
-                page.GetNextPageUrl(Rest.Domain.Supersim)
-            );
-
-            var response = client.Request(request);
-            return Page<SimResource>.FromJson("sims", response.Content);
-        }
-
-        /// <summary>
-        /// Fetch the previous page of records
-        /// </summary>
-        /// <param name="page"> current page of records </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns>
-        public static Page<SimResource> PreviousPage(Page<SimResource> page, ITwilioRestClient client)
-        {
-            var request = new Request(
-                HttpMethod.Get,
-                page.GetPreviousPageUrl(Rest.Domain.Supersim)
-            );
-
-            var response = client.Request(request);
-            return Page<SimResource>.FromJson("sims", response.Content);
-        }
-
-        /// <summary>
-        /// Converts a JSON string into a SimResource object
-        /// </summary>
-        /// <param name="json"> Raw JSON string </param>
-        /// <returns> SimResource object represented by the provided JSON </returns>
-        public static SimResource FromJson(string json)
-        {
-            // Convert all checked exceptions to Runtime
-            try
-            {
-                return JsonConvert.DeserializeObject<SimResource>(json);
-            }
-            catch (JsonException e)
-            {
-                throw new ApiException(e.Message, e);
-            }
-        }
-
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        [JsonProperty("sid")]
-        public string Sid { get; private set; }
-        /// <summary>
-        /// An application-defined string that uniquely identifies the resource
-        /// </summary>
-        [JsonProperty("unique_name")]
-        public string UniqueName { get; private set; }
-        /// <summary>
-        /// The SID of the Account that the Super SIM belongs to
-        /// </summary>
-        [JsonProperty("account_sid")]
-        public string AccountSid { get; private set; }
-        /// <summary>
-        /// The ICCID associated with the SIM
-        /// </summary>
-        [JsonProperty("iccid")]
-        public string Iccid { get; private set; }
-        /// <summary>
-        /// The status of the Super SIM
-        /// </summary>
-        [JsonProperty("status")]
-        [JsonConverter(typeof(StringEnumConverter))]
-        public SimResource.StatusEnum Status { get; private set; }
-        /// <summary>
-        /// The unique ID of the Fleet configured for this SIM
-        /// </summary>
-        [JsonProperty("fleet_sid")]
-        public string FleetSid { get; private set; }
-        /// <summary>
-        /// The ISO 8601 date and time in GMT when the resource was created
-        /// </summary>
-        [JsonProperty("date_created")]
-        public DateTime? DateCreated { get; private set; }
-        /// <summary>
-        /// The ISO 8601 date and time in GMT when the resource was last updated
-        /// </summary>
-        [JsonProperty("date_updated")]
-        public DateTime? DateUpdated { get; private set; }
-        /// <summary>
-        /// The absolute URL of the Sim Resource
-        /// </summary>
-        [JsonProperty("url")]
-        public Uri Url { get; private set; }
-        /// <summary>
-        /// The links
-        /// </summary>
-        [JsonProperty("links")]
-        public Dictionary<string, string> Links { get; private set; }
-
-        private SimResource()
-        {
-
-        }
+      public static readonly StatusEnum New = new StatusEnum("new");
+      public static readonly StatusEnum Ready = new StatusEnum("ready");
+      public static readonly StatusEnum Active = new StatusEnum("active");
+      public static readonly StatusEnum Inactive = new StatusEnum("inactive");
+      public static readonly StatusEnum Scheduled = new StatusEnum("scheduled");
     }
+
+    public sealed class StatusUpdateEnum : StringEnum
+    {
+      private StatusUpdateEnum(string value) : base(value) { }
+      public StatusUpdateEnum() { }
+      public static implicit operator StatusUpdateEnum(string value)
+      {
+        return new StatusUpdateEnum(value);
+      }
+
+      public static readonly StatusUpdateEnum Ready = new StatusUpdateEnum("ready");
+      public static readonly StatusUpdateEnum Active = new StatusUpdateEnum("active");
+      public static readonly StatusUpdateEnum Inactive = new StatusUpdateEnum("inactive");
+    }
+
+    private static Request BuildCreateRequest(CreateSimOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Post,
+          Rest.Domain.Supersim,
+          "/v1/Sims",
+          postParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// Register a Super SIM to your Account
+    /// </summary>
+    /// <param name="options"> Create Sim parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Sim </returns>
+    public static SimResource Create(CreateSimOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildCreateRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Register a Super SIM to your Account
+    /// </summary>
+    /// <param name="options"> Create Sim parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Sim </returns>
+    public static async System.Threading.Tasks.Task<SimResource> CreateAsync(CreateSimOptions options,
+                                                                             ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildCreateRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// Register a Super SIM to your Account
+    /// </summary>
+    /// <param name="iccid"> The [ICCID](https://en.wikipedia.org/wiki/Subscriber_identity_module#ICCID) of the Super SIM
+    ///             to be added to your Account </param>
+    /// <param name="registrationCode"> The 10-digit code required to claim the Super SIM for your Account </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Sim </returns>
+    public static SimResource Create(string iccid, string registrationCode, ITwilioRestClient client = null)
+    {
+      var options = new CreateSimOptions(iccid, registrationCode);
+      return Create(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Register a Super SIM to your Account
+    /// </summary>
+    /// <param name="iccid"> The [ICCID](https://en.wikipedia.org/wiki/Subscriber_identity_module#ICCID) of the Super SIM
+    ///             to be added to your Account </param>
+    /// <param name="registrationCode"> The 10-digit code required to claim the Super SIM for your Account </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Sim </returns>
+    public static async System.Threading.Tasks.Task<SimResource> CreateAsync(string iccid,
+                                                                             string registrationCode,
+                                                                             ITwilioRestClient client = null)
+    {
+      var options = new CreateSimOptions(iccid, registrationCode);
+      return await CreateAsync(options, client);
+    }
+#endif
+
+    private static Request BuildFetchRequest(FetchSimOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Get,
+          Rest.Domain.Supersim,
+          "/v1/Sims/" + options.PathSid + "",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// Fetch a Super SIM instance from your account.
+    /// </summary>
+    /// <param name="options"> Fetch Sim parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Sim </returns>
+    public static SimResource Fetch(FetchSimOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Fetch a Super SIM instance from your account.
+    /// </summary>
+    /// <param name="options"> Fetch Sim parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Sim </returns>
+    public static async System.Threading.Tasks.Task<SimResource> FetchAsync(FetchSimOptions options,
+                                                                            ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// Fetch a Super SIM instance from your account.
+    /// </summary>
+    /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Sim </returns>
+    public static SimResource Fetch(string pathSid, ITwilioRestClient client = null)
+    {
+      var options = new FetchSimOptions(pathSid);
+      return Fetch(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Fetch a Super SIM instance from your account.
+    /// </summary>
+    /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Sim </returns>
+    public static async System.Threading.Tasks.Task<SimResource> FetchAsync(string pathSid,
+                                                                            ITwilioRestClient client = null)
+    {
+      var options = new FetchSimOptions(pathSid);
+      return await FetchAsync(options, client);
+    }
+#endif
+
+    private static Request BuildUpdateRequest(UpdateSimOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Post,
+          Rest.Domain.Supersim,
+          "/v1/Sims/" + options.PathSid + "",
+          postParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// Updates the given properties of a Super SIM instance from your account.
+    /// </summary>
+    /// <param name="options"> Update Sim parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Sim </returns>
+    public static SimResource Update(UpdateSimOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildUpdateRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Updates the given properties of a Super SIM instance from your account.
+    /// </summary>
+    /// <param name="options"> Update Sim parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Sim </returns>
+    public static async System.Threading.Tasks.Task<SimResource> UpdateAsync(UpdateSimOptions options,
+                                                                             ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// Updates the given properties of a Super SIM instance from your account.
+    /// </summary>
+    /// <param name="pathSid"> The SID that identifies the resource to update </param>
+    /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
+    /// <param name="status"> The new status of the Super SIM </param>
+    /// <param name="fleet"> The SID or unique name of the Fleet to which the SIM resource should be assigned </param>
+    /// <param name="callbackUrl"> The URL we should call after the update has finished </param>
+    /// <param name="callbackMethod"> The HTTP method we should use to call callback_url </param>
+    /// <param name="accountSid"> The SID of the Account to which the Sim resource should belong </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Sim </returns>
+    public static SimResource Update(string pathSid,
+                                     string uniqueName = null,
+                                     SimResource.StatusUpdateEnum status = null,
+                                     string fleet = null,
+                                     Uri callbackUrl = null,
+                                     Twilio.Http.HttpMethod callbackMethod = null,
+                                     string accountSid = null,
+                                     ITwilioRestClient client = null)
+    {
+      var options = new UpdateSimOptions(pathSid) { UniqueName = uniqueName, Status = status, Fleet = fleet, CallbackUrl = callbackUrl, CallbackMethod = callbackMethod, AccountSid = accountSid };
+      return Update(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Updates the given properties of a Super SIM instance from your account.
+    /// </summary>
+    /// <param name="pathSid"> The SID that identifies the resource to update </param>
+    /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
+    /// <param name="status"> The new status of the Super SIM </param>
+    /// <param name="fleet"> The SID or unique name of the Fleet to which the SIM resource should be assigned </param>
+    /// <param name="callbackUrl"> The URL we should call after the update has finished </param>
+    /// <param name="callbackMethod"> The HTTP method we should use to call callback_url </param>
+    /// <param name="accountSid"> The SID of the Account to which the Sim resource should belong </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Sim </returns>
+    public static async System.Threading.Tasks.Task<SimResource> UpdateAsync(string pathSid,
+                                                                             string uniqueName = null,
+                                                                             SimResource.StatusUpdateEnum status = null,
+                                                                             string fleet = null,
+                                                                             Uri callbackUrl = null,
+                                                                             Twilio.Http.HttpMethod callbackMethod = null,
+                                                                             string accountSid = null,
+                                                                             ITwilioRestClient client = null)
+    {
+      var options = new UpdateSimOptions(pathSid) { UniqueName = uniqueName, Status = status, Fleet = fleet, CallbackUrl = callbackUrl, CallbackMethod = callbackMethod, AccountSid = accountSid };
+      return await UpdateAsync(options, client);
+    }
+#endif
+
+    private static Request BuildReadRequest(ReadSimOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Get,
+          Rest.Domain.Supersim,
+          "/v1/Sims",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// Retrieve a list of Super SIMs from your account.
+    /// </summary>
+    /// <param name="options"> Read Sim parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Sim </returns>
+    public static ResourceSet<SimResource> Read(ReadSimOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildReadRequest(options, client));
+
+      var page = Page<SimResource>.FromJson("sims", response.Content);
+      return new ResourceSet<SimResource>(page, options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Retrieve a list of Super SIMs from your account.
+    /// </summary>
+    /// <param name="options"> Read Sim parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Sim </returns>
+    public static async System.Threading.Tasks.Task<ResourceSet<SimResource>> ReadAsync(ReadSimOptions options,
+                                                                                        ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+      var page = Page<SimResource>.FromJson("sims", response.Content);
+      return new ResourceSet<SimResource>(page, options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Retrieve a list of Super SIMs from your account.
+    /// </summary>
+    /// <param name="status"> The status of the Sim resources to read </param>
+    /// <param name="fleet"> The SID or unique name of the Fleet to which a list of Sims are assigned </param>
+    /// <param name="iccid"> The ICCID associated with a Super SIM to filter the list by </param>
+    /// <param name="pageSize"> Page size </param>
+    /// <param name="limit"> Record limit </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Sim </returns>
+    public static ResourceSet<SimResource> Read(SimResource.StatusEnum status = null,
+                                                string fleet = null,
+                                                string iccid = null,
+                                                int? pageSize = null,
+                                                long? limit = null,
+                                                ITwilioRestClient client = null)
+    {
+      var options = new ReadSimOptions() { Status = status, Fleet = fleet, Iccid = iccid, PageSize = pageSize, Limit = limit };
+      return Read(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Retrieve a list of Super SIMs from your account.
+    /// </summary>
+    /// <param name="status"> The status of the Sim resources to read </param>
+    /// <param name="fleet"> The SID or unique name of the Fleet to which a list of Sims are assigned </param>
+    /// <param name="iccid"> The ICCID associated with a Super SIM to filter the list by </param>
+    /// <param name="pageSize"> Page size </param>
+    /// <param name="limit"> Record limit </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Sim </returns>
+    public static async System.Threading.Tasks.Task<ResourceSet<SimResource>> ReadAsync(SimResource.StatusEnum status = null,
+                                                                                        string fleet = null,
+                                                                                        string iccid = null,
+                                                                                        int? pageSize = null,
+                                                                                        long? limit = null,
+                                                                                        ITwilioRestClient client = null)
+    {
+      var options = new ReadSimOptions() { Status = status, Fleet = fleet, Iccid = iccid, PageSize = pageSize, Limit = limit };
+      return await ReadAsync(options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Fetch the target page of records
+    /// </summary>
+    /// <param name="targetUrl"> API-generated URL for the requested results page </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> The target page of records </returns>
+    public static Page<SimResource> GetPage(string targetUrl, ITwilioRestClient client)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+
+      var request = new Request(
+          HttpMethod.Get,
+          targetUrl
+      );
+
+      var response = client.Request(request);
+      return Page<SimResource>.FromJson("sims", response.Content);
+    }
+
+    /// <summary>
+    /// Fetch the next page of records
+    /// </summary>
+    /// <param name="page"> current page of records </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> The next page of records </returns>
+    public static Page<SimResource> NextPage(Page<SimResource> page, ITwilioRestClient client)
+    {
+      var request = new Request(
+          HttpMethod.Get,
+          page.GetNextPageUrl(Rest.Domain.Supersim)
+      );
+
+      var response = client.Request(request);
+      return Page<SimResource>.FromJson("sims", response.Content);
+    }
+
+    /// <summary>
+    /// Fetch the previous page of records
+    /// </summary>
+    /// <param name="page"> current page of records </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> The previous page of records </returns>
+    public static Page<SimResource> PreviousPage(Page<SimResource> page, ITwilioRestClient client)
+    {
+      var request = new Request(
+          HttpMethod.Get,
+          page.GetPreviousPageUrl(Rest.Domain.Supersim)
+      );
+
+      var response = client.Request(request);
+      return Page<SimResource>.FromJson("sims", response.Content);
+    }
+
+    /// <summary>
+    /// Converts a JSON string into a SimResource object
+    /// </summary>
+    /// <param name="json"> Raw JSON string </param>
+    /// <returns> SimResource object represented by the provided JSON </returns>
+    public static SimResource FromJson(string json)
+    {
+      // Convert all checked exceptions to Runtime
+      try
+      {
+        return JsonConvert.DeserializeObject<SimResource>(json);
+      }
+      catch (JsonException e)
+      {
+        throw new ApiException(e.Message, e);
+      }
+    }
+
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    [JsonProperty("sid")]
+    public string Sid { get; private set; }
+    /// <summary>
+    /// An application-defined string that uniquely identifies the resource
+    /// </summary>
+    [JsonProperty("unique_name")]
+    public string UniqueName { get; private set; }
+    /// <summary>
+    /// The SID of the Account that the Super SIM belongs to
+    /// </summary>
+    [JsonProperty("account_sid")]
+    public string AccountSid { get; private set; }
+    /// <summary>
+    /// The ICCID associated with the SIM
+    /// </summary>
+    [JsonProperty("iccid")]
+    public string Iccid { get; private set; }
+    /// <summary>
+    /// The status of the Super SIM
+    /// </summary>
+    [JsonProperty("status")]
+    [JsonConverter(typeof(StringEnumConverter))]
+    public SimResource.StatusEnum Status { get; private set; }
+    /// <summary>
+    /// The unique ID of the Fleet configured for this SIM
+    /// </summary>
+    [JsonProperty("fleet_sid")]
+    public string FleetSid { get; private set; }
+    /// <summary>
+    /// The ISO 8601 date and time in GMT when the resource was created
+    /// </summary>
+    [JsonProperty("date_created")]
+    public DateTime? DateCreated { get; private set; }
+    /// <summary>
+    /// The ISO 8601 date and time in GMT when the resource was last updated
+    /// </summary>
+    [JsonProperty("date_updated")]
+    public DateTime? DateUpdated { get; private set; }
+    /// <summary>
+    /// The absolute URL of the Sim Resource
+    /// </summary>
+    [JsonProperty("url")]
+    public Uri Url { get; private set; }
+    /// <summary>
+    /// The links
+    /// </summary>
+    [JsonProperty("links")]
+    public Dictionary<string, string> Links { get; private set; }
+
+    private SimResource()
+    {
+
+    }
+  }
 
 }

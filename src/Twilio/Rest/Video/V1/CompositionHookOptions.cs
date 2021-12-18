@@ -12,359 +12,359 @@ using Twilio.Converters;
 namespace Twilio.Rest.Video.V1
 {
 
+  /// <summary>
+  /// Returns a single CompositionHook resource identified by a CompositionHook SID.
+  /// </summary>
+  public class FetchCompositionHookOptions : IOptions<CompositionHookResource>
+  {
     /// <summary>
-    /// Returns a single CompositionHook resource identified by a CompositionHook SID.
+    /// The SID that identifies the resource to fetch
     /// </summary>
-    public class FetchCompositionHookOptions : IOptions<CompositionHookResource>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchCompositionHookOptions
+    /// </summary>
+    /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
+    public FetchCompositionHookOptions(string pathSid)
     {
-        /// <summary>
-        /// The SID that identifies the resource to fetch
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchCompositionHookOptions
-        /// </summary>
-        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
-        public FetchCompositionHookOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// List of all Recording CompositionHook resources.
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadCompositionHookOptions : ReadOptions<CompositionHookResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// Read only CompositionHook resources with an enabled value that matches this parameter
-        /// </summary>
-        public bool? Enabled { get; set; }
-        /// <summary>
-        /// Read only CompositionHook resources created on or after this ISO 8601 datetime with time zone
-        /// </summary>
-        public DateTime? DateCreatedAfter { get; set; }
-        /// <summary>
-        /// Read only CompositionHook resources created before this ISO 8601 datetime with time zone
-        /// </summary>
-        public DateTime? DateCreatedBefore { get; set; }
-        /// <summary>
-        /// Read only CompositionHook resources with friendly names that match this string
-        /// </summary>
-        public string FriendlyName { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Enabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Enabled", Enabled.Value.ToString().ToLower()));
-            }
+  /// <summary>
+  /// List of all Recording CompositionHook resources.
+  /// </summary>
+  public class ReadCompositionHookOptions : ReadOptions<CompositionHookResource>
+  {
+    /// <summary>
+    /// Read only CompositionHook resources with an enabled value that matches this parameter
+    /// </summary>
+    public bool? Enabled { get; set; }
+    /// <summary>
+    /// Read only CompositionHook resources created on or after this ISO 8601 datetime with time zone
+    /// </summary>
+    public DateTime? DateCreatedAfter { get; set; }
+    /// <summary>
+    /// Read only CompositionHook resources created before this ISO 8601 datetime with time zone
+    /// </summary>
+    public DateTime? DateCreatedBefore { get; set; }
+    /// <summary>
+    /// Read only CompositionHook resources with friendly names that match this string
+    /// </summary>
+    public string FriendlyName { get; set; }
 
-            if (DateCreatedAfter != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DateCreatedAfter", Serializers.DateTimeIso8601(DateCreatedAfter)));
-            }
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (Enabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Enabled", Enabled.Value.ToString().ToLower()));
+      }
 
-            if (DateCreatedBefore != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DateCreatedBefore", Serializers.DateTimeIso8601(DateCreatedBefore)));
-            }
+      if (DateCreatedAfter != null)
+      {
+        p.Add(new KeyValuePair<string, string>("DateCreatedAfter", Serializers.DateTimeIso8601(DateCreatedAfter)));
+      }
 
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
+      if (DateCreatedBefore != null)
+      {
+        p.Add(new KeyValuePair<string, string>("DateCreatedBefore", Serializers.DateTimeIso8601(DateCreatedBefore)));
+      }
 
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
 
-            return p;
-        }
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// Delete a Recording CompositionHook resource identified by a `CompositionHook SID`.
+  /// </summary>
+  public class DeleteCompositionHookOptions : IOptions<CompositionHookResource>
+  {
+    /// <summary>
+    /// The SID that identifies the resource to delete
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new DeleteCompositionHookOptions
+    /// </summary>
+    /// <param name="pathSid"> The SID that identifies the resource to delete </param>
+    public DeleteCompositionHookOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Delete a Recording CompositionHook resource identified by a `CompositionHook SID`.
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteCompositionHookOptions : IOptions<CompositionHookResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID that identifies the resource to delete
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new DeleteCompositionHookOptions
-        /// </summary>
-        /// <param name="pathSid"> The SID that identifies the resource to delete </param>
-        public DeleteCompositionHookOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
+  /// <summary>
+  /// CreateCompositionHookOptions
+  /// </summary>
+  public class CreateCompositionHookOptions : IOptions<CompositionHookResource>
+  {
+    /// <summary>
+    /// A unique string to describe the resource
+    /// </summary>
+    public string FriendlyName { get; }
+    /// <summary>
+    /// Whether the composition hook is active
+    /// </summary>
+    public bool? Enabled { get; set; }
+    /// <summary>
+    /// An object that describes the video layout of the composition hook
+    /// </summary>
+    public object VideoLayout { get; set; }
+    /// <summary>
+    /// An array of track names from the same group room to merge
+    /// </summary>
+    public List<string> AudioSources { get; set; }
+    /// <summary>
+    /// An array of track names to exclude
+    /// </summary>
+    public List<string> AudioSourcesExcluded { get; set; }
+    /// <summary>
+    /// A string that describes the rows (width) and columns (height) of the generated composed video in pixels
+    /// </summary>
+    public string Resolution { get; set; }
+    /// <summary>
+    /// The container format of the media files used by the compositions created by the composition hook
+    /// </summary>
+    public CompositionHookResource.FormatEnum Format { get; set; }
+    /// <summary>
+    /// The URL we should call to send status information to your application
+    /// </summary>
+    public Uri StatusCallback { get; set; }
+    /// <summary>
+    /// The HTTP method we should use to call status_callback
+    /// </summary>
+    public Twilio.Http.HttpMethod StatusCallbackMethod { get; set; }
+    /// <summary>
+    /// Whether to clip the intervals where there is no active media in the Compositions triggered by the composition hook
+    /// </summary>
+    public bool? Trim { get; set; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+    /// <summary>
+    /// Construct a new CreateCompositionHookOptions
+    /// </summary>
+    /// <param name="friendlyName"> A unique string to describe the resource </param>
+    public CreateCompositionHookOptions(string friendlyName)
+    {
+      FriendlyName = friendlyName;
+      AudioSources = new List<string>();
+      AudioSourcesExcluded = new List<string>();
     }
 
     /// <summary>
-    /// CreateCompositionHookOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class CreateCompositionHookOptions : IOptions<CompositionHookResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// A unique string to describe the resource
-        /// </summary>
-        public string FriendlyName { get; }
-        /// <summary>
-        /// Whether the composition hook is active
-        /// </summary>
-        public bool? Enabled { get; set; }
-        /// <summary>
-        /// An object that describes the video layout of the composition hook
-        /// </summary>
-        public object VideoLayout { get; set; }
-        /// <summary>
-        /// An array of track names from the same group room to merge
-        /// </summary>
-        public List<string> AudioSources { get; set; }
-        /// <summary>
-        /// An array of track names to exclude
-        /// </summary>
-        public List<string> AudioSourcesExcluded { get; set; }
-        /// <summary>
-        /// A string that describes the rows (width) and columns (height) of the generated composed video in pixels
-        /// </summary>
-        public string Resolution { get; set; }
-        /// <summary>
-        /// The container format of the media files used by the compositions created by the composition hook
-        /// </summary>
-        public CompositionHookResource.FormatEnum Format { get; set; }
-        /// <summary>
-        /// The URL we should call to send status information to your application
-        /// </summary>
-        public Uri StatusCallback { get; set; }
-        /// <summary>
-        /// The HTTP method we should use to call status_callback
-        /// </summary>
-        public Twilio.Http.HttpMethod StatusCallbackMethod { get; set; }
-        /// <summary>
-        /// Whether to clip the intervals where there is no active media in the Compositions triggered by the composition hook
-        /// </summary>
-        public bool? Trim { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
 
-        /// <summary>
-        /// Construct a new CreateCompositionHookOptions
-        /// </summary>
-        /// <param name="friendlyName"> A unique string to describe the resource </param>
-        public CreateCompositionHookOptions(string friendlyName)
-        {
-            FriendlyName = friendlyName;
-            AudioSources = new List<string>();
-            AudioSourcesExcluded = new List<string>();
-        }
+      if (Enabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Enabled", Enabled.Value.ToString().ToLower()));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
+      if (VideoLayout != null)
+      {
+        p.Add(new KeyValuePair<string, string>("VideoLayout", Serializers.JsonObject(VideoLayout)));
+      }
 
-            if (Enabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Enabled", Enabled.Value.ToString().ToLower()));
-            }
+      if (AudioSources != null)
+      {
+        p.AddRange(AudioSources.Select(prop => new KeyValuePair<string, string>("AudioSources", prop)));
+      }
 
-            if (VideoLayout != null)
-            {
-                p.Add(new KeyValuePair<string, string>("VideoLayout", Serializers.JsonObject(VideoLayout)));
-            }
+      if (AudioSourcesExcluded != null)
+      {
+        p.AddRange(AudioSourcesExcluded.Select(prop => new KeyValuePair<string, string>("AudioSourcesExcluded", prop)));
+      }
 
-            if (AudioSources != null)
-            {
-                p.AddRange(AudioSources.Select(prop => new KeyValuePair<string, string>("AudioSources", prop)));
-            }
+      if (Resolution != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Resolution", Resolution));
+      }
 
-            if (AudioSourcesExcluded != null)
-            {
-                p.AddRange(AudioSourcesExcluded.Select(prop => new KeyValuePair<string, string>("AudioSourcesExcluded", prop)));
-            }
+      if (Format != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Format", Format.ToString()));
+      }
 
-            if (Resolution != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Resolution", Resolution));
-            }
+      if (StatusCallback != null)
+      {
+        p.Add(new KeyValuePair<string, string>("StatusCallback", Serializers.Url(StatusCallback)));
+      }
 
-            if (Format != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Format", Format.ToString()));
-            }
+      if (StatusCallbackMethod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("StatusCallbackMethod", StatusCallbackMethod.ToString()));
+      }
 
-            if (StatusCallback != null)
-            {
-                p.Add(new KeyValuePair<string, string>("StatusCallback", Serializers.Url(StatusCallback)));
-            }
+      if (Trim != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Trim", Trim.Value.ToString().ToLower()));
+      }
 
-            if (StatusCallbackMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("StatusCallbackMethod", StatusCallbackMethod.ToString()));
-            }
+      return p;
+    }
+  }
 
-            if (Trim != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Trim", Trim.Value.ToString().ToLower()));
-            }
+  /// <summary>
+  /// UpdateCompositionHookOptions
+  /// </summary>
+  public class UpdateCompositionHookOptions : IOptions<CompositionHookResource>
+  {
+    /// <summary>
+    /// The SID that identifies the resource to update
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// A unique string to describe the resource
+    /// </summary>
+    public string FriendlyName { get; }
+    /// <summary>
+    /// Whether the composition hook is active
+    /// </summary>
+    public bool? Enabled { get; set; }
+    /// <summary>
+    /// A JSON object that describes the video layout of the composition hook
+    /// </summary>
+    public object VideoLayout { get; set; }
+    /// <summary>
+    /// An array of track names from the same group room to merge
+    /// </summary>
+    public List<string> AudioSources { get; set; }
+    /// <summary>
+    /// An array of track names to exclude
+    /// </summary>
+    public List<string> AudioSourcesExcluded { get; set; }
+    /// <summary>
+    /// Whether to clip the intervals where there is no active media in the Compositions triggered by the composition hook
+    /// </summary>
+    public bool? Trim { get; set; }
+    /// <summary>
+    /// The container format of the media files used by the compositions created by the composition hook
+    /// </summary>
+    public CompositionHookResource.FormatEnum Format { get; set; }
+    /// <summary>
+    /// A string that describes the columns (width) and rows (height) of the generated composed video in pixels
+    /// </summary>
+    public string Resolution { get; set; }
+    /// <summary>
+    /// The URL we should call to send status information to your application
+    /// </summary>
+    public Uri StatusCallback { get; set; }
+    /// <summary>
+    /// The HTTP method we should use to call status_callback
+    /// </summary>
+    public Twilio.Http.HttpMethod StatusCallbackMethod { get; set; }
 
-            return p;
-        }
+    /// <summary>
+    /// Construct a new UpdateCompositionHookOptions
+    /// </summary>
+    /// <param name="pathSid"> The SID that identifies the resource to update </param>
+    /// <param name="friendlyName"> A unique string to describe the resource </param>
+    public UpdateCompositionHookOptions(string pathSid, string friendlyName)
+    {
+      PathSid = pathSid;
+      FriendlyName = friendlyName;
+      AudioSources = new List<string>();
+      AudioSourcesExcluded = new List<string>();
     }
 
     /// <summary>
-    /// UpdateCompositionHookOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateCompositionHookOptions : IOptions<CompositionHookResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID that identifies the resource to update
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// A unique string to describe the resource
-        /// </summary>
-        public string FriendlyName { get; }
-        /// <summary>
-        /// Whether the composition hook is active
-        /// </summary>
-        public bool? Enabled { get; set; }
-        /// <summary>
-        /// A JSON object that describes the video layout of the composition hook
-        /// </summary>
-        public object VideoLayout { get; set; }
-        /// <summary>
-        /// An array of track names from the same group room to merge
-        /// </summary>
-        public List<string> AudioSources { get; set; }
-        /// <summary>
-        /// An array of track names to exclude
-        /// </summary>
-        public List<string> AudioSourcesExcluded { get; set; }
-        /// <summary>
-        /// Whether to clip the intervals where there is no active media in the Compositions triggered by the composition hook
-        /// </summary>
-        public bool? Trim { get; set; }
-        /// <summary>
-        /// The container format of the media files used by the compositions created by the composition hook
-        /// </summary>
-        public CompositionHookResource.FormatEnum Format { get; set; }
-        /// <summary>
-        /// A string that describes the columns (width) and rows (height) of the generated composed video in pixels
-        /// </summary>
-        public string Resolution { get; set; }
-        /// <summary>
-        /// The URL we should call to send status information to your application
-        /// </summary>
-        public Uri StatusCallback { get; set; }
-        /// <summary>
-        /// The HTTP method we should use to call status_callback
-        /// </summary>
-        public Twilio.Http.HttpMethod StatusCallbackMethod { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
 
-        /// <summary>
-        /// Construct a new UpdateCompositionHookOptions
-        /// </summary>
-        /// <param name="pathSid"> The SID that identifies the resource to update </param>
-        /// <param name="friendlyName"> A unique string to describe the resource </param>
-        public UpdateCompositionHookOptions(string pathSid, string friendlyName)
-        {
-            PathSid = pathSid;
-            FriendlyName = friendlyName;
-            AudioSources = new List<string>();
-            AudioSourcesExcluded = new List<string>();
-        }
+      if (Enabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Enabled", Enabled.Value.ToString().ToLower()));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
+      if (VideoLayout != null)
+      {
+        p.Add(new KeyValuePair<string, string>("VideoLayout", Serializers.JsonObject(VideoLayout)));
+      }
 
-            if (Enabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Enabled", Enabled.Value.ToString().ToLower()));
-            }
+      if (AudioSources != null)
+      {
+        p.AddRange(AudioSources.Select(prop => new KeyValuePair<string, string>("AudioSources", prop)));
+      }
 
-            if (VideoLayout != null)
-            {
-                p.Add(new KeyValuePair<string, string>("VideoLayout", Serializers.JsonObject(VideoLayout)));
-            }
+      if (AudioSourcesExcluded != null)
+      {
+        p.AddRange(AudioSourcesExcluded.Select(prop => new KeyValuePair<string, string>("AudioSourcesExcluded", prop)));
+      }
 
-            if (AudioSources != null)
-            {
-                p.AddRange(AudioSources.Select(prop => new KeyValuePair<string, string>("AudioSources", prop)));
-            }
+      if (Trim != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Trim", Trim.Value.ToString().ToLower()));
+      }
 
-            if (AudioSourcesExcluded != null)
-            {
-                p.AddRange(AudioSourcesExcluded.Select(prop => new KeyValuePair<string, string>("AudioSourcesExcluded", prop)));
-            }
+      if (Format != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Format", Format.ToString()));
+      }
 
-            if (Trim != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Trim", Trim.Value.ToString().ToLower()));
-            }
+      if (Resolution != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Resolution", Resolution));
+      }
 
-            if (Format != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Format", Format.ToString()));
-            }
+      if (StatusCallback != null)
+      {
+        p.Add(new KeyValuePair<string, string>("StatusCallback", Serializers.Url(StatusCallback)));
+      }
 
-            if (Resolution != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Resolution", Resolution));
-            }
+      if (StatusCallbackMethod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("StatusCallbackMethod", StatusCallbackMethod.ToString()));
+      }
 
-            if (StatusCallback != null)
-            {
-                p.Add(new KeyValuePair<string, string>("StatusCallback", Serializers.Url(StatusCallback)));
-            }
-
-            if (StatusCallbackMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("StatusCallbackMethod", StatusCallbackMethod.ToString()));
-            }
-
-            return p;
-        }
+      return p;
     }
+  }
 
 }

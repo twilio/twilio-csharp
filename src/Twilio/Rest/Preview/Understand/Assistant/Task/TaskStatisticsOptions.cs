@@ -11,42 +11,42 @@ using Twilio.Converters;
 namespace Twilio.Rest.Preview.Understand.Assistant.Task
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// FetchTaskStatisticsOptions
+  /// </summary>
+  public class FetchTaskStatisticsOptions : IOptions<TaskStatisticsResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// FetchTaskStatisticsOptions
+    /// The unique ID of the parent Assistant.
     /// </summary>
-    public class FetchTaskStatisticsOptions : IOptions<TaskStatisticsResource>
+    public string PathAssistantSid { get; }
+    /// <summary>
+    /// The unique ID of the Task associated with this Field.
+    /// </summary>
+    public string PathTaskSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchTaskStatisticsOptions
+    /// </summary>
+    /// <param name="pathAssistantSid"> The unique ID of the parent Assistant. </param>
+    /// <param name="pathTaskSid"> The unique ID of the Task associated with this Field. </param>
+    public FetchTaskStatisticsOptions(string pathAssistantSid, string pathTaskSid)
     {
-        /// <summary>
-        /// The unique ID of the parent Assistant.
-        /// </summary>
-        public string PathAssistantSid { get; }
-        /// <summary>
-        /// The unique ID of the Task associated with this Field.
-        /// </summary>
-        public string PathTaskSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchTaskStatisticsOptions
-        /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the parent Assistant. </param>
-        /// <param name="pathTaskSid"> The unique ID of the Task associated with this Field. </param>
-        public FetchTaskStatisticsOptions(string pathAssistantSid, string pathTaskSid)
-        {
-            PathAssistantSid = pathAssistantSid;
-            PathTaskSid = pathTaskSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathAssistantSid = pathAssistantSid;
+      PathTaskSid = pathTaskSid;
     }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
 }

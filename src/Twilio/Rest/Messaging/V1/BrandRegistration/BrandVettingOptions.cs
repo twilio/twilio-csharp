@@ -11,137 +11,137 @@ using Twilio.Converters;
 namespace Twilio.Rest.Messaging.V1.BrandRegistration
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// CreateBrandVettingOptions
+  /// </summary>
+  public class CreateBrandVettingOptions : IOptions<BrandVettingResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// CreateBrandVettingOptions
+    /// A2P BrandRegistration Sid
     /// </summary>
-    public class CreateBrandVettingOptions : IOptions<BrandVettingResource>
+    public string PathBrandSid { get; }
+    /// <summary>
+    /// Third-party provider of the vettings to create
+    /// </summary>
+    public BrandVettingResource.VettingProviderEnum VettingProvider { get; }
+    /// <summary>
+    /// The unique ID of the vetting
+    /// </summary>
+    public string VettingId { get; set; }
+
+    /// <summary>
+    /// Construct a new CreateBrandVettingOptions
+    /// </summary>
+    /// <param name="pathBrandSid"> A2P BrandRegistration Sid </param>
+    /// <param name="vettingProvider"> Third-party provider of the vettings to create </param>
+    public CreateBrandVettingOptions(string pathBrandSid, BrandVettingResource.VettingProviderEnum vettingProvider)
     {
-        /// <summary>
-        /// A2P BrandRegistration Sid
-        /// </summary>
-        public string PathBrandSid { get; }
-        /// <summary>
-        /// Third-party provider of the vettings to create
-        /// </summary>
-        public BrandVettingResource.VettingProviderEnum VettingProvider { get; }
-        /// <summary>
-        /// The unique ID of the vetting
-        /// </summary>
-        public string VettingId { get; set; }
-
-        /// <summary>
-        /// Construct a new CreateBrandVettingOptions
-        /// </summary>
-        /// <param name="pathBrandSid"> A2P BrandRegistration Sid </param>
-        /// <param name="vettingProvider"> Third-party provider of the vettings to create </param>
-        public CreateBrandVettingOptions(string pathBrandSid, BrandVettingResource.VettingProviderEnum vettingProvider)
-        {
-            PathBrandSid = pathBrandSid;
-            VettingProvider = vettingProvider;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (VettingProvider != null)
-            {
-                p.Add(new KeyValuePair<string, string>("VettingProvider", VettingProvider.ToString()));
-            }
-
-            if (VettingId != null)
-            {
-                p.Add(new KeyValuePair<string, string>("VettingId", VettingId));
-            }
-
-            return p;
-        }
+      PathBrandSid = pathBrandSid;
+      VettingProvider = vettingProvider;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// ReadBrandVettingOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadBrandVettingOptions : ReadOptions<BrandVettingResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// A2P BrandRegistration Sid
-        /// </summary>
-        public string PathBrandSid { get; }
-        /// <summary>
-        /// Third-party provider of the vettings to create
-        /// </summary>
-        public BrandVettingResource.VettingProviderEnum VettingProvider { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (VettingProvider != null)
+      {
+        p.Add(new KeyValuePair<string, string>("VettingProvider", VettingProvider.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new ReadBrandVettingOptions
-        /// </summary>
-        /// <param name="pathBrandSid"> A2P BrandRegistration Sid </param>
-        public ReadBrandVettingOptions(string pathBrandSid)
-        {
-            PathBrandSid = pathBrandSid;
-        }
+      if (VettingId != null)
+      {
+        p.Add(new KeyValuePair<string, string>("VettingId", VettingId));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (VettingProvider != null)
-            {
-                p.Add(new KeyValuePair<string, string>("VettingProvider", VettingProvider.ToString()));
-            }
+      return p;
+    }
+  }
 
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// ReadBrandVettingOptions
+  /// </summary>
+  public class ReadBrandVettingOptions : ReadOptions<BrandVettingResource>
+  {
+    /// <summary>
+    /// A2P BrandRegistration Sid
+    /// </summary>
+    public string PathBrandSid { get; }
+    /// <summary>
+    /// Third-party provider of the vettings to create
+    /// </summary>
+    public BrandVettingResource.VettingProviderEnum VettingProvider { get; set; }
 
-            return p;
-        }
+    /// <summary>
+    /// Construct a new ReadBrandVettingOptions
+    /// </summary>
+    /// <param name="pathBrandSid"> A2P BrandRegistration Sid </param>
+    public ReadBrandVettingOptions(string pathBrandSid)
+    {
+      PathBrandSid = pathBrandSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// FetchBrandVettingOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchBrandVettingOptions : IOptions<BrandVettingResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// A2P BrandRegistration Sid
-        /// </summary>
-        public string PathBrandSid { get; }
-        /// <summary>
-        /// SID for third-party vetting record
-        /// </summary>
-        public string PathBrandVettingSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (VettingProvider != null)
+      {
+        p.Add(new KeyValuePair<string, string>("VettingProvider", VettingProvider.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new FetchBrandVettingOptions
-        /// </summary>
-        /// <param name="pathBrandSid"> A2P BrandRegistration Sid </param>
-        /// <param name="pathBrandVettingSid"> SID for third-party vetting record </param>
-        public FetchBrandVettingOptions(string pathBrandSid, string pathBrandVettingSid)
-        {
-            PathBrandSid = pathBrandSid;
-            PathBrandVettingSid = pathBrandVettingSid;
-        }
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      return p;
     }
+  }
+
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// FetchBrandVettingOptions
+  /// </summary>
+  public class FetchBrandVettingOptions : IOptions<BrandVettingResource>
+  {
+    /// <summary>
+    /// A2P BrandRegistration Sid
+    /// </summary>
+    public string PathBrandSid { get; }
+    /// <summary>
+    /// SID for third-party vetting record
+    /// </summary>
+    public string PathBrandVettingSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchBrandVettingOptions
+    /// </summary>
+    /// <param name="pathBrandSid"> A2P BrandRegistration Sid </param>
+    /// <param name="pathBrandVettingSid"> SID for third-party vetting record </param>
+    public FetchBrandVettingOptions(string pathBrandSid, string pathBrandVettingSid)
+    {
+      PathBrandSid = pathBrandSid;
+      PathBrandVettingSid = pathBrandVettingSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
 }

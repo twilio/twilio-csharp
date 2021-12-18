@@ -11,172 +11,172 @@ using Twilio.Converters;
 namespace Twilio.Rest.Voice.V1
 {
 
+  /// <summary>
+  /// CreateIpRecordOptions
+  /// </summary>
+  public class CreateIpRecordOptions : IOptions<IpRecordResource>
+  {
     /// <summary>
-    /// CreateIpRecordOptions
+    /// An IP address in dotted decimal notation, IPv4 only.
     /// </summary>
-    public class CreateIpRecordOptions : IOptions<IpRecordResource>
+    public string IpAddress { get; }
+    /// <summary>
+    /// A string to describe the resource
+    /// </summary>
+    public string FriendlyName { get; set; }
+    /// <summary>
+    /// An integer representing the length of the [CIDR](https://tools.ietf.org/html/rfc4632) prefix to use with this IP address. By default the entire IP address is used, which for IPv4 is value 32.
+    /// </summary>
+    public int? CidrPrefixLength { get; set; }
+
+    /// <summary>
+    /// Construct a new CreateIpRecordOptions
+    /// </summary>
+    /// <param name="ipAddress"> An IP address in dotted decimal notation, IPv4 only. </param>
+    public CreateIpRecordOptions(string ipAddress)
     {
-        /// <summary>
-        /// An IP address in dotted decimal notation, IPv4 only.
-        /// </summary>
-        public string IpAddress { get; }
-        /// <summary>
-        /// A string to describe the resource
-        /// </summary>
-        public string FriendlyName { get; set; }
-        /// <summary>
-        /// An integer representing the length of the [CIDR](https://tools.ietf.org/html/rfc4632) prefix to use with this IP address. By default the entire IP address is used, which for IPv4 is value 32.
-        /// </summary>
-        public int? CidrPrefixLength { get; set; }
-
-        /// <summary>
-        /// Construct a new CreateIpRecordOptions
-        /// </summary>
-        /// <param name="ipAddress"> An IP address in dotted decimal notation, IPv4 only. </param>
-        public CreateIpRecordOptions(string ipAddress)
-        {
-            IpAddress = ipAddress;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (IpAddress != null)
-            {
-                p.Add(new KeyValuePair<string, string>("IpAddress", IpAddress));
-            }
-
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
-
-            if (CidrPrefixLength != null)
-            {
-                p.Add(new KeyValuePair<string, string>("CidrPrefixLength", CidrPrefixLength.ToString()));
-            }
-
-            return p;
-        }
+      IpAddress = ipAddress;
     }
 
     /// <summary>
-    /// FetchIpRecordOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchIpRecordOptions : IOptions<IpRecordResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (IpAddress != null)
+      {
+        p.Add(new KeyValuePair<string, string>("IpAddress", IpAddress));
+      }
 
-        /// <summary>
-        /// Construct a new FetchIpRecordOptions
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public FetchIpRecordOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      if (CidrPrefixLength != null)
+      {
+        p.Add(new KeyValuePair<string, string>("CidrPrefixLength", CidrPrefixLength.ToString()));
+      }
+
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// FetchIpRecordOptions
+  /// </summary>
+  public class FetchIpRecordOptions : IOptions<IpRecordResource>
+  {
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchIpRecordOptions
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public FetchIpRecordOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// ReadIpRecordOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadIpRecordOptions : ReadOptions<IpRecordResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-            return p;
-        }
+  /// <summary>
+  /// ReadIpRecordOptions
+  /// </summary>
+  public class ReadIpRecordOptions : ReadOptions<IpRecordResource>
+  {
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// UpdateIpRecordOptions
+  /// </summary>
+  public class UpdateIpRecordOptions : IOptions<IpRecordResource>
+  {
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// A string to describe the resource
+    /// </summary>
+    public string FriendlyName { get; set; }
+
+    /// <summary>
+    /// Construct a new UpdateIpRecordOptions
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public UpdateIpRecordOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// UpdateIpRecordOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateIpRecordOptions : IOptions<IpRecordResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// A string to describe the resource
-        /// </summary>
-        public string FriendlyName { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
 
-        /// <summary>
-        /// Construct a new UpdateIpRecordOptions
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public UpdateIpRecordOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
+  /// <summary>
+  /// DeleteIpRecordOptions
+  /// </summary>
+  public class DeleteIpRecordOptions : IOptions<IpRecordResource>
+  {
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
 
-            return p;
-        }
+    /// <summary>
+    /// Construct a new DeleteIpRecordOptions
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public DeleteIpRecordOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// DeleteIpRecordOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteIpRecordOptions : IOptions<IpRecordResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new DeleteIpRecordOptions
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public DeleteIpRecordOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
 
 }

@@ -11,81 +11,81 @@ using Twilio.Converters;
 namespace Twilio.Rest.Monitor.V1
 {
 
+  /// <summary>
+  /// FetchAlertOptions
+  /// </summary>
+  public class FetchAlertOptions : IOptions<AlertResource>
+  {
     /// <summary>
-    /// FetchAlertOptions
+    /// The SID that identifies the resource to fetch
     /// </summary>
-    public class FetchAlertOptions : IOptions<AlertResource>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchAlertOptions
+    /// </summary>
+    /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
+    public FetchAlertOptions(string pathSid)
     {
-        /// <summary>
-        /// The SID that identifies the resource to fetch
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchAlertOptions
-        /// </summary>
-        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
-        public FetchAlertOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// ReadAlertOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadAlertOptions : ReadOptions<AlertResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// Only show alerts for this log-level
-        /// </summary>
-        public string LogLevel { get; set; }
-        /// <summary>
-        /// Only include alerts that occurred on or after this date and time
-        /// </summary>
-        public DateTime? StartDate { get; set; }
-        /// <summary>
-        /// Only include alerts that occurred on or before this date and time
-        /// </summary>
-        public DateTime? EndDate { get; set; }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (LogLevel != null)
-            {
-                p.Add(new KeyValuePair<string, string>("LogLevel", LogLevel));
-            }
-
-            if (StartDate != null)
-            {
-                p.Add(new KeyValuePair<string, string>("StartDate", Serializers.DateTimeIso8601(StartDate)));
-            }
-
-            if (EndDate != null)
-            {
-                p.Add(new KeyValuePair<string, string>("EndDate", Serializers.DateTimeIso8601(EndDate)));
-            }
-
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
+
+  /// <summary>
+  /// ReadAlertOptions
+  /// </summary>
+  public class ReadAlertOptions : ReadOptions<AlertResource>
+  {
+    /// <summary>
+    /// Only show alerts for this log-level
+    /// </summary>
+    public string LogLevel { get; set; }
+    /// <summary>
+    /// Only include alerts that occurred on or after this date and time
+    /// </summary>
+    public DateTime? StartDate { get; set; }
+    /// <summary>
+    /// Only include alerts that occurred on or before this date and time
+    /// </summary>
+    public DateTime? EndDate { get; set; }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (LogLevel != null)
+      {
+        p.Add(new KeyValuePair<string, string>("LogLevel", LogLevel));
+      }
+
+      if (StartDate != null)
+      {
+        p.Add(new KeyValuePair<string, string>("StartDate", Serializers.DateTimeIso8601(StartDate)));
+      }
+
+      if (EndDate != null)
+      {
+        p.Add(new KeyValuePair<string, string>("EndDate", Serializers.DateTimeIso8601(EndDate)));
+      }
+
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
 
 }

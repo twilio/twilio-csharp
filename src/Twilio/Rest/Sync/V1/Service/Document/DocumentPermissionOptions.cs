@@ -11,208 +11,208 @@ using Twilio.Converters;
 namespace Twilio.Rest.Sync.V1.Service.Document
 {
 
+  /// <summary>
+  /// Fetch a specific Sync Document Permission.
+  /// </summary>
+  public class FetchDocumentPermissionOptions : IOptions<DocumentPermissionResource>
+  {
     /// <summary>
-    /// Fetch a specific Sync Document Permission.
+    /// The SID of the Sync Service with the Document Permission resource to fetch
     /// </summary>
-    public class FetchDocumentPermissionOptions : IOptions<DocumentPermissionResource>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The SID of the Sync Document with the Document Permission resource to fetch
+    /// </summary>
+    public string PathDocumentSid { get; }
+    /// <summary>
+    /// The application-defined string that uniquely identifies the User's Document Permission resource to fetch
+    /// </summary>
+    public string PathIdentity { get; }
+
+    /// <summary>
+    /// Construct a new FetchDocumentPermissionOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Sync Service with the Document Permission resource to fetch </param>
+    /// <param name="pathDocumentSid"> The SID of the Sync Document with the Document Permission resource to fetch </param>
+    /// <param name="pathIdentity"> The application-defined string that uniquely identifies the User's Document Permission
+    ///                    resource to fetch </param>
+    public FetchDocumentPermissionOptions(string pathServiceSid, string pathDocumentSid, string pathIdentity)
     {
-        /// <summary>
-        /// The SID of the Sync Service with the Document Permission resource to fetch
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The SID of the Sync Document with the Document Permission resource to fetch
-        /// </summary>
-        public string PathDocumentSid { get; }
-        /// <summary>
-        /// The application-defined string that uniquely identifies the User's Document Permission resource to fetch
-        /// </summary>
-        public string PathIdentity { get; }
-
-        /// <summary>
-        /// Construct a new FetchDocumentPermissionOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Sync Service with the Document Permission resource to fetch </param>
-        /// <param name="pathDocumentSid"> The SID of the Sync Document with the Document Permission resource to fetch </param>
-        /// <param name="pathIdentity"> The application-defined string that uniquely identifies the User's Document Permission
-        ///                    resource to fetch </param>
-        public FetchDocumentPermissionOptions(string pathServiceSid, string pathDocumentSid, string pathIdentity)
-        {
-            PathServiceSid = pathServiceSid;
-            PathDocumentSid = pathDocumentSid;
-            PathIdentity = pathIdentity;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathServiceSid = pathServiceSid;
+      PathDocumentSid = pathDocumentSid;
+      PathIdentity = pathIdentity;
     }
 
     /// <summary>
-    /// Delete a specific Sync Document Permission.
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteDocumentPermissionOptions : IOptions<DocumentPermissionResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Sync Service with the Document Permission resource to delete
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The SID of the Sync Document with the Document Permission resource to delete
-        /// </summary>
-        public string PathDocumentSid { get; }
-        /// <summary>
-        /// The application-defined string that uniquely identifies the User's Document Permission resource to delete
-        /// </summary>
-        public string PathIdentity { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new DeleteDocumentPermissionOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Sync Service with the Document Permission resource to delete </param>
-        /// <param name="pathDocumentSid"> The SID of the Sync Document with the Document Permission resource to delete </param>
-        /// <param name="pathIdentity"> The application-defined string that uniquely identifies the User's Document Permission
-        ///                    resource to delete </param>
-        public DeleteDocumentPermissionOptions(string pathServiceSid, string pathDocumentSid, string pathIdentity)
-        {
-            PathServiceSid = pathServiceSid;
-            PathDocumentSid = pathDocumentSid;
-            PathIdentity = pathIdentity;
-        }
+  /// <summary>
+  /// Delete a specific Sync Document Permission.
+  /// </summary>
+  public class DeleteDocumentPermissionOptions : IOptions<DocumentPermissionResource>
+  {
+    /// <summary>
+    /// The SID of the Sync Service with the Document Permission resource to delete
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The SID of the Sync Document with the Document Permission resource to delete
+    /// </summary>
+    public string PathDocumentSid { get; }
+    /// <summary>
+    /// The application-defined string that uniquely identifies the User's Document Permission resource to delete
+    /// </summary>
+    public string PathIdentity { get; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+    /// <summary>
+    /// Construct a new DeleteDocumentPermissionOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Sync Service with the Document Permission resource to delete </param>
+    /// <param name="pathDocumentSid"> The SID of the Sync Document with the Document Permission resource to delete </param>
+    /// <param name="pathIdentity"> The application-defined string that uniquely identifies the User's Document Permission
+    ///                    resource to delete </param>
+    public DeleteDocumentPermissionOptions(string pathServiceSid, string pathDocumentSid, string pathIdentity)
+    {
+      PathServiceSid = pathServiceSid;
+      PathDocumentSid = pathDocumentSid;
+      PathIdentity = pathIdentity;
     }
 
     /// <summary>
-    /// Retrieve a list of all Permissions applying to a Sync Document.
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadDocumentPermissionOptions : ReadOptions<DocumentPermissionResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Sync Service with the Document Permission resources to read
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The SID of the Sync Document with the Document Permission resources to read
-        /// </summary>
-        public string PathDocumentSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new ReadDocumentPermissionOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Sync Service with the Document Permission resources to read </param>
-        /// <param name="pathDocumentSid"> The SID of the Sync Document with the Document Permission resources to read </param>
-        public ReadDocumentPermissionOptions(string pathServiceSid, string pathDocumentSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathDocumentSid = pathDocumentSid;
-        }
+  /// <summary>
+  /// Retrieve a list of all Permissions applying to a Sync Document.
+  /// </summary>
+  public class ReadDocumentPermissionOptions : ReadOptions<DocumentPermissionResource>
+  {
+    /// <summary>
+    /// The SID of the Sync Service with the Document Permission resources to read
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The SID of the Sync Document with the Document Permission resources to read
+    /// </summary>
+    public string PathDocumentSid { get; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new ReadDocumentPermissionOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Sync Service with the Document Permission resources to read </param>
+    /// <param name="pathDocumentSid"> The SID of the Sync Document with the Document Permission resources to read </param>
+    public ReadDocumentPermissionOptions(string pathServiceSid, string pathDocumentSid)
+    {
+      PathServiceSid = pathServiceSid;
+      PathDocumentSid = pathDocumentSid;
     }
 
     /// <summary>
-    /// Update an identity's access to a specific Sync Document.
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateDocumentPermissionOptions : IOptions<DocumentPermissionResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Sync Service with the Document Permission resource to update
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The SID of the Sync Document with the Document Permission resource to update
-        /// </summary>
-        public string PathDocumentSid { get; }
-        /// <summary>
-        /// The application-defined string that uniquely identifies the User's Document Permission resource to update
-        /// </summary>
-        public string PathIdentity { get; }
-        /// <summary>
-        /// Read access
-        /// </summary>
-        public bool? Read { get; }
-        /// <summary>
-        /// Write access
-        /// </summary>
-        public bool? Write { get; }
-        /// <summary>
-        /// Manage access
-        /// </summary>
-        public bool? Manage { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new UpdateDocumentPermissionOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Sync Service with the Document Permission resource to update </param>
-        /// <param name="pathDocumentSid"> The SID of the Sync Document with the Document Permission resource to update </param>
-        /// <param name="pathIdentity"> The application-defined string that uniquely identifies the User's Document Permission
-        ///                    resource to update </param>
-        /// <param name="read"> Read access </param>
-        /// <param name="write"> Write access </param>
-        /// <param name="manage"> Manage access </param>
-        public UpdateDocumentPermissionOptions(string pathServiceSid,
-                                               string pathDocumentSid,
-                                               string pathIdentity,
-                                               bool? read,
-                                               bool? write,
-                                               bool? manage)
-        {
-            PathServiceSid = pathServiceSid;
-            PathDocumentSid = pathDocumentSid;
-            PathIdentity = pathIdentity;
-            Read = read;
-            Write = write;
-            Manage = manage;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Read != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Read", Read.Value.ToString().ToLower()));
-            }
-
-            if (Write != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Write", Write.Value.ToString().ToLower()));
-            }
-
-            if (Manage != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Manage", Manage.Value.ToString().ToLower()));
-            }
-
-            return p;
-        }
+      return p;
     }
+  }
+
+  /// <summary>
+  /// Update an identity's access to a specific Sync Document.
+  /// </summary>
+  public class UpdateDocumentPermissionOptions : IOptions<DocumentPermissionResource>
+  {
+    /// <summary>
+    /// The SID of the Sync Service with the Document Permission resource to update
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The SID of the Sync Document with the Document Permission resource to update
+    /// </summary>
+    public string PathDocumentSid { get; }
+    /// <summary>
+    /// The application-defined string that uniquely identifies the User's Document Permission resource to update
+    /// </summary>
+    public string PathIdentity { get; }
+    /// <summary>
+    /// Read access
+    /// </summary>
+    public bool? Read { get; }
+    /// <summary>
+    /// Write access
+    /// </summary>
+    public bool? Write { get; }
+    /// <summary>
+    /// Manage access
+    /// </summary>
+    public bool? Manage { get; }
+
+    /// <summary>
+    /// Construct a new UpdateDocumentPermissionOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Sync Service with the Document Permission resource to update </param>
+    /// <param name="pathDocumentSid"> The SID of the Sync Document with the Document Permission resource to update </param>
+    /// <param name="pathIdentity"> The application-defined string that uniquely identifies the User's Document Permission
+    ///                    resource to update </param>
+    /// <param name="read"> Read access </param>
+    /// <param name="write"> Write access </param>
+    /// <param name="manage"> Manage access </param>
+    public UpdateDocumentPermissionOptions(string pathServiceSid,
+                                           string pathDocumentSid,
+                                           string pathIdentity,
+                                           bool? read,
+                                           bool? write,
+                                           bool? manage)
+    {
+      PathServiceSid = pathServiceSid;
+      PathDocumentSid = pathDocumentSid;
+      PathIdentity = pathIdentity;
+      Read = read;
+      Write = write;
+      Manage = manage;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (Read != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Read", Read.Value.ToString().ToLower()));
+      }
+
+      if (Write != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Write", Write.Value.ToString().ToLower()));
+      }
+
+      if (Manage != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Manage", Manage.Value.ToString().ToLower()));
+      }
+
+      return p;
+    }
+  }
 
 }

@@ -19,642 +19,642 @@ using Twilio.Types;
 namespace Twilio.Rest.IpMessaging.V2.Service.Channel
 {
 
-    public class MessageResource : Resource
+  public class MessageResource : Resource
+  {
+    public sealed class OrderTypeEnum : StringEnum
     {
-        public sealed class OrderTypeEnum : StringEnum
-        {
-            private OrderTypeEnum(string value) : base(value) {}
-            public OrderTypeEnum() {}
-            public static implicit operator OrderTypeEnum(string value)
-            {
-                return new OrderTypeEnum(value);
-            }
+      private OrderTypeEnum(string value) : base(value) { }
+      public OrderTypeEnum() { }
+      public static implicit operator OrderTypeEnum(string value)
+      {
+        return new OrderTypeEnum(value);
+      }
 
-            public static readonly OrderTypeEnum Asc = new OrderTypeEnum("asc");
-            public static readonly OrderTypeEnum Desc = new OrderTypeEnum("desc");
-        }
-
-        public sealed class WebhookEnabledTypeEnum : StringEnum
-        {
-            private WebhookEnabledTypeEnum(string value) : base(value) {}
-            public WebhookEnabledTypeEnum() {}
-            public static implicit operator WebhookEnabledTypeEnum(string value)
-            {
-                return new WebhookEnabledTypeEnum(value);
-            }
-
-            public static readonly WebhookEnabledTypeEnum True = new WebhookEnabledTypeEnum("true");
-            public static readonly WebhookEnabledTypeEnum False = new WebhookEnabledTypeEnum("false");
-        }
-
-        private static Request BuildFetchRequest(FetchMessageOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Get,
-                Rest.Domain.IpMessaging,
-                "/v2/Services/" + options.PathServiceSid + "/Channels/" + options.PathChannelSid + "/Messages/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="options"> Fetch Message parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Message </returns>
-        public static MessageResource Fetch(FetchMessageOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="options"> Fetch Message parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Message </returns>
-        public static async System.Threading.Tasks.Task<MessageResource> FetchAsync(FetchMessageOptions options,
-                                                                                    ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathChannelSid"> The channel_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Message </returns>
-        public static MessageResource Fetch(string pathServiceSid,
-                                            string pathChannelSid,
-                                            string pathSid,
-                                            ITwilioRestClient client = null)
-        {
-            var options = new FetchMessageOptions(pathServiceSid, pathChannelSid, pathSid);
-            return Fetch(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathChannelSid"> The channel_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Message </returns>
-        public static async System.Threading.Tasks.Task<MessageResource> FetchAsync(string pathServiceSid,
-                                                                                    string pathChannelSid,
-                                                                                    string pathSid,
-                                                                                    ITwilioRestClient client = null)
-        {
-            var options = new FetchMessageOptions(pathServiceSid, pathChannelSid, pathSid);
-            return await FetchAsync(options, client);
-        }
-        #endif
-
-        private static Request BuildCreateRequest(CreateMessageOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Post,
-                Rest.Domain.IpMessaging,
-                "/v2/Services/" + options.PathServiceSid + "/Channels/" + options.PathChannelSid + "/Messages",
-                postParams: options.GetParams(),
-                headerParams: options.GetHeaderParams()
-            );
-        }
-
-        /// <summary>
-        /// create
-        /// </summary>
-        /// <param name="options"> Create Message parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Message </returns>
-        public static MessageResource Create(CreateMessageOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildCreateRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// create
-        /// </summary>
-        /// <param name="options"> Create Message parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Message </returns>
-        public static async System.Threading.Tasks.Task<MessageResource> CreateAsync(CreateMessageOptions options,
-                                                                                     ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// create
-        /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathChannelSid"> The channel_sid </param>
-        /// <param name="from"> The from </param>
-        /// <param name="attributes"> The attributes </param>
-        /// <param name="dateCreated"> The date_created </param>
-        /// <param name="dateUpdated"> The date_updated </param>
-        /// <param name="lastUpdatedBy"> The last_updated_by </param>
-        /// <param name="body"> The body </param>
-        /// <param name="mediaSid"> The media_sid </param>
-        /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Message </returns>
-        public static MessageResource Create(string pathServiceSid,
-                                             string pathChannelSid,
-                                             string from = null,
-                                             string attributes = null,
-                                             DateTime? dateCreated = null,
-                                             DateTime? dateUpdated = null,
-                                             string lastUpdatedBy = null,
-                                             string body = null,
-                                             string mediaSid = null,
-                                             MessageResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
-                                             ITwilioRestClient client = null)
-        {
-            var options = new CreateMessageOptions(pathServiceSid, pathChannelSid){From = from, Attributes = attributes, DateCreated = dateCreated, DateUpdated = dateUpdated, LastUpdatedBy = lastUpdatedBy, Body = body, MediaSid = mediaSid, XTwilioWebhookEnabled = xTwilioWebhookEnabled};
-            return Create(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// create
-        /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathChannelSid"> The channel_sid </param>
-        /// <param name="from"> The from </param>
-        /// <param name="attributes"> The attributes </param>
-        /// <param name="dateCreated"> The date_created </param>
-        /// <param name="dateUpdated"> The date_updated </param>
-        /// <param name="lastUpdatedBy"> The last_updated_by </param>
-        /// <param name="body"> The body </param>
-        /// <param name="mediaSid"> The media_sid </param>
-        /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Message </returns>
-        public static async System.Threading.Tasks.Task<MessageResource> CreateAsync(string pathServiceSid,
-                                                                                     string pathChannelSid,
-                                                                                     string from = null,
-                                                                                     string attributes = null,
-                                                                                     DateTime? dateCreated = null,
-                                                                                     DateTime? dateUpdated = null,
-                                                                                     string lastUpdatedBy = null,
-                                                                                     string body = null,
-                                                                                     string mediaSid = null,
-                                                                                     MessageResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
-                                                                                     ITwilioRestClient client = null)
-        {
-            var options = new CreateMessageOptions(pathServiceSid, pathChannelSid){From = from, Attributes = attributes, DateCreated = dateCreated, DateUpdated = dateUpdated, LastUpdatedBy = lastUpdatedBy, Body = body, MediaSid = mediaSid, XTwilioWebhookEnabled = xTwilioWebhookEnabled};
-            return await CreateAsync(options, client);
-        }
-        #endif
-
-        private static Request BuildReadRequest(ReadMessageOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Get,
-                Rest.Domain.IpMessaging,
-                "/v2/Services/" + options.PathServiceSid + "/Channels/" + options.PathChannelSid + "/Messages",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// read
-        /// </summary>
-        /// <param name="options"> Read Message parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Message </returns>
-        public static ResourceSet<MessageResource> Read(ReadMessageOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildReadRequest(options, client));
-
-            var page = Page<MessageResource>.FromJson("messages", response.Content);
-            return new ResourceSet<MessageResource>(page, options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// read
-        /// </summary>
-        /// <param name="options"> Read Message parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Message </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<MessageResource>> ReadAsync(ReadMessageOptions options,
-                                                                                                ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
-
-            var page = Page<MessageResource>.FromJson("messages", response.Content);
-            return new ResourceSet<MessageResource>(page, options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// read
-        /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathChannelSid"> The channel_sid </param>
-        /// <param name="order"> The order </param>
-        /// <param name="pageSize"> Page size </param>
-        /// <param name="limit"> Record limit </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Message </returns>
-        public static ResourceSet<MessageResource> Read(string pathServiceSid,
-                                                        string pathChannelSid,
-                                                        MessageResource.OrderTypeEnum order = null,
-                                                        int? pageSize = null,
-                                                        long? limit = null,
-                                                        ITwilioRestClient client = null)
-        {
-            var options = new ReadMessageOptions(pathServiceSid, pathChannelSid){Order = order, PageSize = pageSize, Limit = limit};
-            return Read(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// read
-        /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathChannelSid"> The channel_sid </param>
-        /// <param name="order"> The order </param>
-        /// <param name="pageSize"> Page size </param>
-        /// <param name="limit"> Record limit </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Message </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<MessageResource>> ReadAsync(string pathServiceSid,
-                                                                                                string pathChannelSid,
-                                                                                                MessageResource.OrderTypeEnum order = null,
-                                                                                                int? pageSize = null,
-                                                                                                long? limit = null,
-                                                                                                ITwilioRestClient client = null)
-        {
-            var options = new ReadMessageOptions(pathServiceSid, pathChannelSid){Order = order, PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Fetch the target page of records
-        /// </summary>
-        /// <param name="targetUrl"> API-generated URL for the requested results page </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns>
-        public static Page<MessageResource> GetPage(string targetUrl, ITwilioRestClient client)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-
-            var request = new Request(
-                HttpMethod.Get,
-                targetUrl
-            );
-
-            var response = client.Request(request);
-            return Page<MessageResource>.FromJson("messages", response.Content);
-        }
-
-        /// <summary>
-        /// Fetch the next page of records
-        /// </summary>
-        /// <param name="page"> current page of records </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns>
-        public static Page<MessageResource> NextPage(Page<MessageResource> page, ITwilioRestClient client)
-        {
-            var request = new Request(
-                HttpMethod.Get,
-                page.GetNextPageUrl(Rest.Domain.IpMessaging)
-            );
-
-            var response = client.Request(request);
-            return Page<MessageResource>.FromJson("messages", response.Content);
-        }
-
-        /// <summary>
-        /// Fetch the previous page of records
-        /// </summary>
-        /// <param name="page"> current page of records </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns>
-        public static Page<MessageResource> PreviousPage(Page<MessageResource> page, ITwilioRestClient client)
-        {
-            var request = new Request(
-                HttpMethod.Get,
-                page.GetPreviousPageUrl(Rest.Domain.IpMessaging)
-            );
-
-            var response = client.Request(request);
-            return Page<MessageResource>.FromJson("messages", response.Content);
-        }
-
-        private static Request BuildDeleteRequest(DeleteMessageOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Delete,
-                Rest.Domain.IpMessaging,
-                "/v2/Services/" + options.PathServiceSid + "/Channels/" + options.PathChannelSid + "/Messages/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: options.GetHeaderParams()
-            );
-        }
-
-        /// <summary>
-        /// delete
-        /// </summary>
-        /// <param name="options"> Delete Message parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Message </returns>
-        public static bool Delete(DeleteMessageOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
-        }
-
-        #if !NET35
-        /// <summary>
-        /// delete
-        /// </summary>
-        /// <param name="options"> Delete Message parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Message </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteMessageOptions options,
-                                                                          ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
-        }
-        #endif
-
-        /// <summary>
-        /// delete
-        /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathChannelSid"> The channel_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Message </returns>
-        public static bool Delete(string pathServiceSid,
-                                  string pathChannelSid,
-                                  string pathSid,
-                                  MessageResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
-                                  ITwilioRestClient client = null)
-        {
-            var options = new DeleteMessageOptions(pathServiceSid, pathChannelSid, pathSid){XTwilioWebhookEnabled = xTwilioWebhookEnabled};
-            return Delete(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// delete
-        /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathChannelSid"> The channel_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Message </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid,
-                                                                          string pathChannelSid,
-                                                                          string pathSid,
-                                                                          MessageResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
-                                                                          ITwilioRestClient client = null)
-        {
-            var options = new DeleteMessageOptions(pathServiceSid, pathChannelSid, pathSid){XTwilioWebhookEnabled = xTwilioWebhookEnabled};
-            return await DeleteAsync(options, client);
-        }
-        #endif
-
-        private static Request BuildUpdateRequest(UpdateMessageOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Post,
-                Rest.Domain.IpMessaging,
-                "/v2/Services/" + options.PathServiceSid + "/Channels/" + options.PathChannelSid + "/Messages/" + options.PathSid + "",
-                postParams: options.GetParams(),
-                headerParams: options.GetHeaderParams()
-            );
-        }
-
-        /// <summary>
-        /// update
-        /// </summary>
-        /// <param name="options"> Update Message parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Message </returns>
-        public static MessageResource Update(UpdateMessageOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildUpdateRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// update
-        /// </summary>
-        /// <param name="options"> Update Message parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Message </returns>
-        public static async System.Threading.Tasks.Task<MessageResource> UpdateAsync(UpdateMessageOptions options,
-                                                                                     ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// update
-        /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathChannelSid"> The channel_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="body"> The body </param>
-        /// <param name="attributes"> The attributes </param>
-        /// <param name="dateCreated"> The date_created </param>
-        /// <param name="dateUpdated"> The date_updated </param>
-        /// <param name="lastUpdatedBy"> The last_updated_by </param>
-        /// <param name="from"> The from </param>
-        /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Message </returns>
-        public static MessageResource Update(string pathServiceSid,
-                                             string pathChannelSid,
-                                             string pathSid,
-                                             string body = null,
-                                             string attributes = null,
-                                             DateTime? dateCreated = null,
-                                             DateTime? dateUpdated = null,
-                                             string lastUpdatedBy = null,
-                                             string from = null,
-                                             MessageResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
-                                             ITwilioRestClient client = null)
-        {
-            var options = new UpdateMessageOptions(pathServiceSid, pathChannelSid, pathSid){Body = body, Attributes = attributes, DateCreated = dateCreated, DateUpdated = dateUpdated, LastUpdatedBy = lastUpdatedBy, From = from, XTwilioWebhookEnabled = xTwilioWebhookEnabled};
-            return Update(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// update
-        /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathChannelSid"> The channel_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="body"> The body </param>
-        /// <param name="attributes"> The attributes </param>
-        /// <param name="dateCreated"> The date_created </param>
-        /// <param name="dateUpdated"> The date_updated </param>
-        /// <param name="lastUpdatedBy"> The last_updated_by </param>
-        /// <param name="from"> The from </param>
-        /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Message </returns>
-        public static async System.Threading.Tasks.Task<MessageResource> UpdateAsync(string pathServiceSid,
-                                                                                     string pathChannelSid,
-                                                                                     string pathSid,
-                                                                                     string body = null,
-                                                                                     string attributes = null,
-                                                                                     DateTime? dateCreated = null,
-                                                                                     DateTime? dateUpdated = null,
-                                                                                     string lastUpdatedBy = null,
-                                                                                     string from = null,
-                                                                                     MessageResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
-                                                                                     ITwilioRestClient client = null)
-        {
-            var options = new UpdateMessageOptions(pathServiceSid, pathChannelSid, pathSid){Body = body, Attributes = attributes, DateCreated = dateCreated, DateUpdated = dateUpdated, LastUpdatedBy = lastUpdatedBy, From = from, XTwilioWebhookEnabled = xTwilioWebhookEnabled};
-            return await UpdateAsync(options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Converts a JSON string into a MessageResource object
-        /// </summary>
-        /// <param name="json"> Raw JSON string </param>
-        /// <returns> MessageResource object represented by the provided JSON </returns>
-        public static MessageResource FromJson(string json)
-        {
-            // Convert all checked exceptions to Runtime
-            try
-            {
-                return JsonConvert.DeserializeObject<MessageResource>(json);
-            }
-            catch (JsonException e)
-            {
-                throw new ApiException(e.Message, e);
-            }
-        }
-
-        /// <summary>
-        /// The sid
-        /// </summary>
-        [JsonProperty("sid")]
-        public string Sid { get; private set; }
-        /// <summary>
-        /// The account_sid
-        /// </summary>
-        [JsonProperty("account_sid")]
-        public string AccountSid { get; private set; }
-        /// <summary>
-        /// The attributes
-        /// </summary>
-        [JsonProperty("attributes")]
-        public string Attributes { get; private set; }
-        /// <summary>
-        /// The service_sid
-        /// </summary>
-        [JsonProperty("service_sid")]
-        public string ServiceSid { get; private set; }
-        /// <summary>
-        /// The to
-        /// </summary>
-        [JsonProperty("to")]
-        public string To { get; private set; }
-        /// <summary>
-        /// The channel_sid
-        /// </summary>
-        [JsonProperty("channel_sid")]
-        public string ChannelSid { get; private set; }
-        /// <summary>
-        /// The date_created
-        /// </summary>
-        [JsonProperty("date_created")]
-        public DateTime? DateCreated { get; private set; }
-        /// <summary>
-        /// The date_updated
-        /// </summary>
-        [JsonProperty("date_updated")]
-        public DateTime? DateUpdated { get; private set; }
-        /// <summary>
-        /// The last_updated_by
-        /// </summary>
-        [JsonProperty("last_updated_by")]
-        public string LastUpdatedBy { get; private set; }
-        /// <summary>
-        /// The was_edited
-        /// </summary>
-        [JsonProperty("was_edited")]
-        public bool? WasEdited { get; private set; }
-        /// <summary>
-        /// The from
-        /// </summary>
-        [JsonProperty("from")]
-        public string From { get; private set; }
-        /// <summary>
-        /// The body
-        /// </summary>
-        [JsonProperty("body")]
-        public string Body { get; private set; }
-        /// <summary>
-        /// The index
-        /// </summary>
-        [JsonProperty("index")]
-        public int? Index { get; private set; }
-        /// <summary>
-        /// The type
-        /// </summary>
-        [JsonProperty("type")]
-        public string Type { get; private set; }
-        /// <summary>
-        /// The media
-        /// </summary>
-        [JsonProperty("media")]
-        public object Media { get; private set; }
-        /// <summary>
-        /// The url
-        /// </summary>
-        [JsonProperty("url")]
-        public Uri Url { get; private set; }
-
-        private MessageResource()
-        {
-
-        }
+      public static readonly OrderTypeEnum Asc = new OrderTypeEnum("asc");
+      public static readonly OrderTypeEnum Desc = new OrderTypeEnum("desc");
     }
+
+    public sealed class WebhookEnabledTypeEnum : StringEnum
+    {
+      private WebhookEnabledTypeEnum(string value) : base(value) { }
+      public WebhookEnabledTypeEnum() { }
+      public static implicit operator WebhookEnabledTypeEnum(string value)
+      {
+        return new WebhookEnabledTypeEnum(value);
+      }
+
+      public static readonly WebhookEnabledTypeEnum True = new WebhookEnabledTypeEnum("true");
+      public static readonly WebhookEnabledTypeEnum False = new WebhookEnabledTypeEnum("false");
+    }
+
+    private static Request BuildFetchRequest(FetchMessageOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Get,
+          Rest.Domain.IpMessaging,
+          "/v2/Services/" + options.PathServiceSid + "/Channels/" + options.PathChannelSid + "/Messages/" + options.PathSid + "",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="options"> Fetch Message parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Message </returns>
+    public static MessageResource Fetch(FetchMessageOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="options"> Fetch Message parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Message </returns>
+    public static async System.Threading.Tasks.Task<MessageResource> FetchAsync(FetchMessageOptions options,
+                                                                                ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="pathServiceSid"> The service_sid </param>
+    /// <param name="pathChannelSid"> The channel_sid </param>
+    /// <param name="pathSid"> The sid </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Message </returns>
+    public static MessageResource Fetch(string pathServiceSid,
+                                        string pathChannelSid,
+                                        string pathSid,
+                                        ITwilioRestClient client = null)
+    {
+      var options = new FetchMessageOptions(pathServiceSid, pathChannelSid, pathSid);
+      return Fetch(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="pathServiceSid"> The service_sid </param>
+    /// <param name="pathChannelSid"> The channel_sid </param>
+    /// <param name="pathSid"> The sid </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Message </returns>
+    public static async System.Threading.Tasks.Task<MessageResource> FetchAsync(string pathServiceSid,
+                                                                                string pathChannelSid,
+                                                                                string pathSid,
+                                                                                ITwilioRestClient client = null)
+    {
+      var options = new FetchMessageOptions(pathServiceSid, pathChannelSid, pathSid);
+      return await FetchAsync(options, client);
+    }
+#endif
+
+    private static Request BuildCreateRequest(CreateMessageOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Post,
+          Rest.Domain.IpMessaging,
+          "/v2/Services/" + options.PathServiceSid + "/Channels/" + options.PathChannelSid + "/Messages",
+          postParams: options.GetParams(),
+          headerParams: options.GetHeaderParams()
+      );
+    }
+
+    /// <summary>
+    /// create
+    /// </summary>
+    /// <param name="options"> Create Message parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Message </returns>
+    public static MessageResource Create(CreateMessageOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildCreateRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// create
+    /// </summary>
+    /// <param name="options"> Create Message parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Message </returns>
+    public static async System.Threading.Tasks.Task<MessageResource> CreateAsync(CreateMessageOptions options,
+                                                                                 ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildCreateRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// create
+    /// </summary>
+    /// <param name="pathServiceSid"> The service_sid </param>
+    /// <param name="pathChannelSid"> The channel_sid </param>
+    /// <param name="from"> The from </param>
+    /// <param name="attributes"> The attributes </param>
+    /// <param name="dateCreated"> The date_created </param>
+    /// <param name="dateUpdated"> The date_updated </param>
+    /// <param name="lastUpdatedBy"> The last_updated_by </param>
+    /// <param name="body"> The body </param>
+    /// <param name="mediaSid"> The media_sid </param>
+    /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Message </returns>
+    public static MessageResource Create(string pathServiceSid,
+                                         string pathChannelSid,
+                                         string from = null,
+                                         string attributes = null,
+                                         DateTime? dateCreated = null,
+                                         DateTime? dateUpdated = null,
+                                         string lastUpdatedBy = null,
+                                         string body = null,
+                                         string mediaSid = null,
+                                         MessageResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
+                                         ITwilioRestClient client = null)
+    {
+      var options = new CreateMessageOptions(pathServiceSid, pathChannelSid) { From = from, Attributes = attributes, DateCreated = dateCreated, DateUpdated = dateUpdated, LastUpdatedBy = lastUpdatedBy, Body = body, MediaSid = mediaSid, XTwilioWebhookEnabled = xTwilioWebhookEnabled };
+      return Create(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// create
+    /// </summary>
+    /// <param name="pathServiceSid"> The service_sid </param>
+    /// <param name="pathChannelSid"> The channel_sid </param>
+    /// <param name="from"> The from </param>
+    /// <param name="attributes"> The attributes </param>
+    /// <param name="dateCreated"> The date_created </param>
+    /// <param name="dateUpdated"> The date_updated </param>
+    /// <param name="lastUpdatedBy"> The last_updated_by </param>
+    /// <param name="body"> The body </param>
+    /// <param name="mediaSid"> The media_sid </param>
+    /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Message </returns>
+    public static async System.Threading.Tasks.Task<MessageResource> CreateAsync(string pathServiceSid,
+                                                                                 string pathChannelSid,
+                                                                                 string from = null,
+                                                                                 string attributes = null,
+                                                                                 DateTime? dateCreated = null,
+                                                                                 DateTime? dateUpdated = null,
+                                                                                 string lastUpdatedBy = null,
+                                                                                 string body = null,
+                                                                                 string mediaSid = null,
+                                                                                 MessageResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
+                                                                                 ITwilioRestClient client = null)
+    {
+      var options = new CreateMessageOptions(pathServiceSid, pathChannelSid) { From = from, Attributes = attributes, DateCreated = dateCreated, DateUpdated = dateUpdated, LastUpdatedBy = lastUpdatedBy, Body = body, MediaSid = mediaSid, XTwilioWebhookEnabled = xTwilioWebhookEnabled };
+      return await CreateAsync(options, client);
+    }
+#endif
+
+    private static Request BuildReadRequest(ReadMessageOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Get,
+          Rest.Domain.IpMessaging,
+          "/v2/Services/" + options.PathServiceSid + "/Channels/" + options.PathChannelSid + "/Messages",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// read
+    /// </summary>
+    /// <param name="options"> Read Message parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Message </returns>
+    public static ResourceSet<MessageResource> Read(ReadMessageOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildReadRequest(options, client));
+
+      var page = Page<MessageResource>.FromJson("messages", response.Content);
+      return new ResourceSet<MessageResource>(page, options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// read
+    /// </summary>
+    /// <param name="options"> Read Message parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Message </returns>
+    public static async System.Threading.Tasks.Task<ResourceSet<MessageResource>> ReadAsync(ReadMessageOptions options,
+                                                                                            ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+      var page = Page<MessageResource>.FromJson("messages", response.Content);
+      return new ResourceSet<MessageResource>(page, options, client);
+    }
+#endif
+
+    /// <summary>
+    /// read
+    /// </summary>
+    /// <param name="pathServiceSid"> The service_sid </param>
+    /// <param name="pathChannelSid"> The channel_sid </param>
+    /// <param name="order"> The order </param>
+    /// <param name="pageSize"> Page size </param>
+    /// <param name="limit"> Record limit </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Message </returns>
+    public static ResourceSet<MessageResource> Read(string pathServiceSid,
+                                                    string pathChannelSid,
+                                                    MessageResource.OrderTypeEnum order = null,
+                                                    int? pageSize = null,
+                                                    long? limit = null,
+                                                    ITwilioRestClient client = null)
+    {
+      var options = new ReadMessageOptions(pathServiceSid, pathChannelSid) { Order = order, PageSize = pageSize, Limit = limit };
+      return Read(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// read
+    /// </summary>
+    /// <param name="pathServiceSid"> The service_sid </param>
+    /// <param name="pathChannelSid"> The channel_sid </param>
+    /// <param name="order"> The order </param>
+    /// <param name="pageSize"> Page size </param>
+    /// <param name="limit"> Record limit </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Message </returns>
+    public static async System.Threading.Tasks.Task<ResourceSet<MessageResource>> ReadAsync(string pathServiceSid,
+                                                                                            string pathChannelSid,
+                                                                                            MessageResource.OrderTypeEnum order = null,
+                                                                                            int? pageSize = null,
+                                                                                            long? limit = null,
+                                                                                            ITwilioRestClient client = null)
+    {
+      var options = new ReadMessageOptions(pathServiceSid, pathChannelSid) { Order = order, PageSize = pageSize, Limit = limit };
+      return await ReadAsync(options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Fetch the target page of records
+    /// </summary>
+    /// <param name="targetUrl"> API-generated URL for the requested results page </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> The target page of records </returns>
+    public static Page<MessageResource> GetPage(string targetUrl, ITwilioRestClient client)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+
+      var request = new Request(
+          HttpMethod.Get,
+          targetUrl
+      );
+
+      var response = client.Request(request);
+      return Page<MessageResource>.FromJson("messages", response.Content);
+    }
+
+    /// <summary>
+    /// Fetch the next page of records
+    /// </summary>
+    /// <param name="page"> current page of records </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> The next page of records </returns>
+    public static Page<MessageResource> NextPage(Page<MessageResource> page, ITwilioRestClient client)
+    {
+      var request = new Request(
+          HttpMethod.Get,
+          page.GetNextPageUrl(Rest.Domain.IpMessaging)
+      );
+
+      var response = client.Request(request);
+      return Page<MessageResource>.FromJson("messages", response.Content);
+    }
+
+    /// <summary>
+    /// Fetch the previous page of records
+    /// </summary>
+    /// <param name="page"> current page of records </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> The previous page of records </returns>
+    public static Page<MessageResource> PreviousPage(Page<MessageResource> page, ITwilioRestClient client)
+    {
+      var request = new Request(
+          HttpMethod.Get,
+          page.GetPreviousPageUrl(Rest.Domain.IpMessaging)
+      );
+
+      var response = client.Request(request);
+      return Page<MessageResource>.FromJson("messages", response.Content);
+    }
+
+    private static Request BuildDeleteRequest(DeleteMessageOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Delete,
+          Rest.Domain.IpMessaging,
+          "/v2/Services/" + options.PathServiceSid + "/Channels/" + options.PathChannelSid + "/Messages/" + options.PathSid + "",
+          queryParams: options.GetParams(),
+          headerParams: options.GetHeaderParams()
+      );
+    }
+
+    /// <summary>
+    /// delete
+    /// </summary>
+    /// <param name="options"> Delete Message parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Message </returns>
+    public static bool Delete(DeleteMessageOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildDeleteRequest(options, client));
+      return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+    }
+
+#if !NET35
+    /// <summary>
+    /// delete
+    /// </summary>
+    /// <param name="options"> Delete Message parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Message </returns>
+    public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteMessageOptions options,
+                                                                      ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+      return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+    }
+#endif
+
+    /// <summary>
+    /// delete
+    /// </summary>
+    /// <param name="pathServiceSid"> The service_sid </param>
+    /// <param name="pathChannelSid"> The channel_sid </param>
+    /// <param name="pathSid"> The sid </param>
+    /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Message </returns>
+    public static bool Delete(string pathServiceSid,
+                              string pathChannelSid,
+                              string pathSid,
+                              MessageResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
+                              ITwilioRestClient client = null)
+    {
+      var options = new DeleteMessageOptions(pathServiceSid, pathChannelSid, pathSid) { XTwilioWebhookEnabled = xTwilioWebhookEnabled };
+      return Delete(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// delete
+    /// </summary>
+    /// <param name="pathServiceSid"> The service_sid </param>
+    /// <param name="pathChannelSid"> The channel_sid </param>
+    /// <param name="pathSid"> The sid </param>
+    /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Message </returns>
+    public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid,
+                                                                      string pathChannelSid,
+                                                                      string pathSid,
+                                                                      MessageResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
+                                                                      ITwilioRestClient client = null)
+    {
+      var options = new DeleteMessageOptions(pathServiceSid, pathChannelSid, pathSid) { XTwilioWebhookEnabled = xTwilioWebhookEnabled };
+      return await DeleteAsync(options, client);
+    }
+#endif
+
+    private static Request BuildUpdateRequest(UpdateMessageOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Post,
+          Rest.Domain.IpMessaging,
+          "/v2/Services/" + options.PathServiceSid + "/Channels/" + options.PathChannelSid + "/Messages/" + options.PathSid + "",
+          postParams: options.GetParams(),
+          headerParams: options.GetHeaderParams()
+      );
+    }
+
+    /// <summary>
+    /// update
+    /// </summary>
+    /// <param name="options"> Update Message parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Message </returns>
+    public static MessageResource Update(UpdateMessageOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildUpdateRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// update
+    /// </summary>
+    /// <param name="options"> Update Message parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Message </returns>
+    public static async System.Threading.Tasks.Task<MessageResource> UpdateAsync(UpdateMessageOptions options,
+                                                                                 ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// update
+    /// </summary>
+    /// <param name="pathServiceSid"> The service_sid </param>
+    /// <param name="pathChannelSid"> The channel_sid </param>
+    /// <param name="pathSid"> The sid </param>
+    /// <param name="body"> The body </param>
+    /// <param name="attributes"> The attributes </param>
+    /// <param name="dateCreated"> The date_created </param>
+    /// <param name="dateUpdated"> The date_updated </param>
+    /// <param name="lastUpdatedBy"> The last_updated_by </param>
+    /// <param name="from"> The from </param>
+    /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Message </returns>
+    public static MessageResource Update(string pathServiceSid,
+                                         string pathChannelSid,
+                                         string pathSid,
+                                         string body = null,
+                                         string attributes = null,
+                                         DateTime? dateCreated = null,
+                                         DateTime? dateUpdated = null,
+                                         string lastUpdatedBy = null,
+                                         string from = null,
+                                         MessageResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
+                                         ITwilioRestClient client = null)
+    {
+      var options = new UpdateMessageOptions(pathServiceSid, pathChannelSid, pathSid) { Body = body, Attributes = attributes, DateCreated = dateCreated, DateUpdated = dateUpdated, LastUpdatedBy = lastUpdatedBy, From = from, XTwilioWebhookEnabled = xTwilioWebhookEnabled };
+      return Update(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// update
+    /// </summary>
+    /// <param name="pathServiceSid"> The service_sid </param>
+    /// <param name="pathChannelSid"> The channel_sid </param>
+    /// <param name="pathSid"> The sid </param>
+    /// <param name="body"> The body </param>
+    /// <param name="attributes"> The attributes </param>
+    /// <param name="dateCreated"> The date_created </param>
+    /// <param name="dateUpdated"> The date_updated </param>
+    /// <param name="lastUpdatedBy"> The last_updated_by </param>
+    /// <param name="from"> The from </param>
+    /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Message </returns>
+    public static async System.Threading.Tasks.Task<MessageResource> UpdateAsync(string pathServiceSid,
+                                                                                 string pathChannelSid,
+                                                                                 string pathSid,
+                                                                                 string body = null,
+                                                                                 string attributes = null,
+                                                                                 DateTime? dateCreated = null,
+                                                                                 DateTime? dateUpdated = null,
+                                                                                 string lastUpdatedBy = null,
+                                                                                 string from = null,
+                                                                                 MessageResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
+                                                                                 ITwilioRestClient client = null)
+    {
+      var options = new UpdateMessageOptions(pathServiceSid, pathChannelSid, pathSid) { Body = body, Attributes = attributes, DateCreated = dateCreated, DateUpdated = dateUpdated, LastUpdatedBy = lastUpdatedBy, From = from, XTwilioWebhookEnabled = xTwilioWebhookEnabled };
+      return await UpdateAsync(options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Converts a JSON string into a MessageResource object
+    /// </summary>
+    /// <param name="json"> Raw JSON string </param>
+    /// <returns> MessageResource object represented by the provided JSON </returns>
+    public static MessageResource FromJson(string json)
+    {
+      // Convert all checked exceptions to Runtime
+      try
+      {
+        return JsonConvert.DeserializeObject<MessageResource>(json);
+      }
+      catch (JsonException e)
+      {
+        throw new ApiException(e.Message, e);
+      }
+    }
+
+    /// <summary>
+    /// The sid
+    /// </summary>
+    [JsonProperty("sid")]
+    public string Sid { get; private set; }
+    /// <summary>
+    /// The account_sid
+    /// </summary>
+    [JsonProperty("account_sid")]
+    public string AccountSid { get; private set; }
+    /// <summary>
+    /// The attributes
+    /// </summary>
+    [JsonProperty("attributes")]
+    public string Attributes { get; private set; }
+    /// <summary>
+    /// The service_sid
+    /// </summary>
+    [JsonProperty("service_sid")]
+    public string ServiceSid { get; private set; }
+    /// <summary>
+    /// The to
+    /// </summary>
+    [JsonProperty("to")]
+    public string To { get; private set; }
+    /// <summary>
+    /// The channel_sid
+    /// </summary>
+    [JsonProperty("channel_sid")]
+    public string ChannelSid { get; private set; }
+    /// <summary>
+    /// The date_created
+    /// </summary>
+    [JsonProperty("date_created")]
+    public DateTime? DateCreated { get; private set; }
+    /// <summary>
+    /// The date_updated
+    /// </summary>
+    [JsonProperty("date_updated")]
+    public DateTime? DateUpdated { get; private set; }
+    /// <summary>
+    /// The last_updated_by
+    /// </summary>
+    [JsonProperty("last_updated_by")]
+    public string LastUpdatedBy { get; private set; }
+    /// <summary>
+    /// The was_edited
+    /// </summary>
+    [JsonProperty("was_edited")]
+    public bool? WasEdited { get; private set; }
+    /// <summary>
+    /// The from
+    /// </summary>
+    [JsonProperty("from")]
+    public string From { get; private set; }
+    /// <summary>
+    /// The body
+    /// </summary>
+    [JsonProperty("body")]
+    public string Body { get; private set; }
+    /// <summary>
+    /// The index
+    /// </summary>
+    [JsonProperty("index")]
+    public int? Index { get; private set; }
+    /// <summary>
+    /// The type
+    /// </summary>
+    [JsonProperty("type")]
+    public string Type { get; private set; }
+    /// <summary>
+    /// The media
+    /// </summary>
+    [JsonProperty("media")]
+    public object Media { get; private set; }
+    /// <summary>
+    /// The url
+    /// </summary>
+    [JsonProperty("url")]
+    public Uri Url { get; private set; }
+
+    private MessageResource()
+    {
+
+    }
+  }
 
 }

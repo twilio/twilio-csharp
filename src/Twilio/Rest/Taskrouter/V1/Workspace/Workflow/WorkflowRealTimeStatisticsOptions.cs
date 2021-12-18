@@ -11,49 +11,49 @@ using Twilio.Converters;
 namespace Twilio.Rest.Taskrouter.V1.Workspace.Workflow
 {
 
+  /// <summary>
+  /// FetchWorkflowRealTimeStatisticsOptions
+  /// </summary>
+  public class FetchWorkflowRealTimeStatisticsOptions : IOptions<WorkflowRealTimeStatisticsResource>
+  {
     /// <summary>
-    /// FetchWorkflowRealTimeStatisticsOptions
+    /// The SID of the Workspace with the Workflow to fetch
     /// </summary>
-    public class FetchWorkflowRealTimeStatisticsOptions : IOptions<WorkflowRealTimeStatisticsResource>
+    public string PathWorkspaceSid { get; }
+    /// <summary>
+    /// Returns the list of Tasks that are being controlled by the Workflow with the specified SID value
+    /// </summary>
+    public string PathWorkflowSid { get; }
+    /// <summary>
+    /// Only calculate real-time statistics on this TaskChannel
+    /// </summary>
+    public string TaskChannel { get; set; }
+
+    /// <summary>
+    /// Construct a new FetchWorkflowRealTimeStatisticsOptions
+    /// </summary>
+    /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Workflow to fetch </param>
+    /// <param name="pathWorkflowSid"> Returns the list of Tasks that are being controlled by the Workflow with the
+    ///                       specified SID value </param>
+    public FetchWorkflowRealTimeStatisticsOptions(string pathWorkspaceSid, string pathWorkflowSid)
     {
-        /// <summary>
-        /// The SID of the Workspace with the Workflow to fetch
-        /// </summary>
-        public string PathWorkspaceSid { get; }
-        /// <summary>
-        /// Returns the list of Tasks that are being controlled by the Workflow with the specified SID value
-        /// </summary>
-        public string PathWorkflowSid { get; }
-        /// <summary>
-        /// Only calculate real-time statistics on this TaskChannel
-        /// </summary>
-        public string TaskChannel { get; set; }
-
-        /// <summary>
-        /// Construct a new FetchWorkflowRealTimeStatisticsOptions
-        /// </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Workflow to fetch </param>
-        /// <param name="pathWorkflowSid"> Returns the list of Tasks that are being controlled by the Workflow with the
-        ///                       specified SID value </param>
-        public FetchWorkflowRealTimeStatisticsOptions(string pathWorkspaceSid, string pathWorkflowSid)
-        {
-            PathWorkspaceSid = pathWorkspaceSid;
-            PathWorkflowSid = pathWorkflowSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (TaskChannel != null)
-            {
-                p.Add(new KeyValuePair<string, string>("TaskChannel", TaskChannel));
-            }
-
-            return p;
-        }
+      PathWorkspaceSid = pathWorkspaceSid;
+      PathWorkflowSid = pathWorkflowSid;
     }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (TaskChannel != null)
+      {
+        p.Add(new KeyValuePair<string, string>("TaskChannel", TaskChannel));
+      }
+
+      return p;
+    }
+  }
 
 }

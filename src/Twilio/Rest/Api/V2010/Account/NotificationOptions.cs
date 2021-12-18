@@ -11,100 +11,100 @@ using Twilio.Converters;
 namespace Twilio.Rest.Api.V2010.Account
 {
 
+  /// <summary>
+  /// Fetch a notification belonging to the account used to make the request
+  /// </summary>
+  public class FetchNotificationOptions : IOptions<NotificationResource>
+  {
     /// <summary>
-    /// Fetch a notification belonging to the account used to make the request
+    /// The SID of the Account that created the resource to fetch
     /// </summary>
-    public class FetchNotificationOptions : IOptions<NotificationResource>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchNotificationOptions
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public FetchNotificationOptions(string pathSid)
     {
-        /// <summary>
-        /// The SID of the Account that created the resource to fetch
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchNotificationOptions
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public FetchNotificationOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Retrieve a list of notifications belonging to the account used to make the request
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadNotificationOptions : ReadOptions<NotificationResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Account that created the resources to read
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// Filter by log level
-        /// </summary>
-        public int? Log { get; set; }
-        /// <summary>
-        /// Filter by date
-        /// </summary>
-        public DateTime? MessageDateBefore { get; set; }
-        /// <summary>
-        /// Filter by date
-        /// </summary>
-        public DateTime? MessageDate { get; set; }
-        /// <summary>
-        /// Filter by date
-        /// </summary>
-        public DateTime? MessageDateAfter { get; set; }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Log != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Log", Log.ToString()));
-            }
-
-            if (MessageDate != null)
-            {
-                p.Add(new KeyValuePair<string, string>("MessageDate", MessageDate.Value.ToString("yyyy-MM-dd")));
-            }
-            else
-            {
-                if (MessageDateBefore != null)
-                {
-                    p.Add(new KeyValuePair<string, string>("MessageDate<", MessageDateBefore.Value.ToString("yyyy-MM-dd")));
-                }
-
-                if (MessageDateAfter != null)
-                {
-                    p.Add(new KeyValuePair<string, string>("MessageDate>", MessageDateAfter.Value.ToString("yyyy-MM-dd")));
-                }
-            }
-
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
+
+  /// <summary>
+  /// Retrieve a list of notifications belonging to the account used to make the request
+  /// </summary>
+  public class ReadNotificationOptions : ReadOptions<NotificationResource>
+  {
+    /// <summary>
+    /// The SID of the Account that created the resources to read
+    /// </summary>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// Filter by log level
+    /// </summary>
+    public int? Log { get; set; }
+    /// <summary>
+    /// Filter by date
+    /// </summary>
+    public DateTime? MessageDateBefore { get; set; }
+    /// <summary>
+    /// Filter by date
+    /// </summary>
+    public DateTime? MessageDate { get; set; }
+    /// <summary>
+    /// Filter by date
+    /// </summary>
+    public DateTime? MessageDateAfter { get; set; }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (Log != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Log", Log.ToString()));
+      }
+
+      if (MessageDate != null)
+      {
+        p.Add(new KeyValuePair<string, string>("MessageDate", MessageDate.Value.ToString("yyyy-MM-dd")));
+      }
+      else
+      {
+        if (MessageDateBefore != null)
+        {
+          p.Add(new KeyValuePair<string, string>("MessageDate<", MessageDateBefore.Value.ToString("yyyy-MM-dd")));
+        }
+
+        if (MessageDateAfter != null)
+        {
+          p.Add(new KeyValuePair<string, string>("MessageDate>", MessageDateAfter.Value.ToString("yyyy-MM-dd")));
+        }
+      }
+
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
 
 }

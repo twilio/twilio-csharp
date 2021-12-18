@@ -11,50 +11,50 @@ using Twilio.Converters;
 namespace Twilio.Rest.Voice.V1.DialingPermissions
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// Retrieve voice dialing permissions inheritance for the sub-account
+  /// </summary>
+  public class FetchSettingsOptions : IOptions<SettingsResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// Retrieve voice dialing permissions inheritance for the sub-account
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchSettingsOptions : IOptions<SettingsResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
+
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// Update voice dialing permissions inheritance for the sub-account
+  /// </summary>
+  public class UpdateSettingsOptions : IOptions<SettingsResource>
+  {
+    /// <summary>
+    /// `true` for the sub-account to inherit voice dialing permissions from the Master Project; otherwise `false`
+    /// </summary>
+    public bool? DialingPermissionsInheritance { get; set; }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// Update voice dialing permissions inheritance for the sub-account
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateSettingsOptions : IOptions<SettingsResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// `true` for the sub-account to inherit voice dialing permissions from the Master Project; otherwise `false`
-        /// </summary>
-        public bool? DialingPermissionsInheritance { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (DialingPermissionsInheritance != null)
+      {
+        p.Add(new KeyValuePair<string, string>("DialingPermissionsInheritance", DialingPermissionsInheritance.Value.ToString().ToLower()));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (DialingPermissionsInheritance != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DialingPermissionsInheritance", DialingPermissionsInheritance.Value.ToString().ToLower()));
-            }
-
-            return p;
-        }
+      return p;
     }
+  }
 
 }

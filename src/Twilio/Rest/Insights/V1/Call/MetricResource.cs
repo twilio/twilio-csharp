@@ -22,250 +22,250 @@ using Twilio.Types;
 namespace Twilio.Rest.Insights.V1.Call
 {
 
-    public class MetricResource : Resource
+  public class MetricResource : Resource
+  {
+    public sealed class TwilioEdgeEnum : StringEnum
     {
-        public sealed class TwilioEdgeEnum : StringEnum
-        {
-            private TwilioEdgeEnum(string value) : base(value) {}
-            public TwilioEdgeEnum() {}
-            public static implicit operator TwilioEdgeEnum(string value)
-            {
-                return new TwilioEdgeEnum(value);
-            }
+      private TwilioEdgeEnum(string value) : base(value) { }
+      public TwilioEdgeEnum() { }
+      public static implicit operator TwilioEdgeEnum(string value)
+      {
+        return new TwilioEdgeEnum(value);
+      }
 
-            public static readonly TwilioEdgeEnum UnknownEdge = new TwilioEdgeEnum("unknown_edge");
-            public static readonly TwilioEdgeEnum CarrierEdge = new TwilioEdgeEnum("carrier_edge");
-            public static readonly TwilioEdgeEnum SipEdge = new TwilioEdgeEnum("sip_edge");
-            public static readonly TwilioEdgeEnum SdkEdge = new TwilioEdgeEnum("sdk_edge");
-            public static readonly TwilioEdgeEnum ClientEdge = new TwilioEdgeEnum("client_edge");
-        }
-
-        public sealed class StreamDirectionEnum : StringEnum
-        {
-            private StreamDirectionEnum(string value) : base(value) {}
-            public StreamDirectionEnum() {}
-            public static implicit operator StreamDirectionEnum(string value)
-            {
-                return new StreamDirectionEnum(value);
-            }
-
-            public static readonly StreamDirectionEnum Unknown = new StreamDirectionEnum("unknown");
-            public static readonly StreamDirectionEnum Inbound = new StreamDirectionEnum("inbound");
-            public static readonly StreamDirectionEnum Outbound = new StreamDirectionEnum("outbound");
-            public static readonly StreamDirectionEnum Both = new StreamDirectionEnum("both");
-        }
-
-        private static Request BuildReadRequest(ReadMetricOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Get,
-                Rest.Domain.Insights,
-                "/v1/Voice/" + options.PathCallSid + "/Metrics",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// read
-        /// </summary>
-        /// <param name="options"> Read Metric parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Metric </returns>
-        public static ResourceSet<MetricResource> Read(ReadMetricOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildReadRequest(options, client));
-
-            var page = Page<MetricResource>.FromJson("metrics", response.Content);
-            return new ResourceSet<MetricResource>(page, options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// read
-        /// </summary>
-        /// <param name="options"> Read Metric parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Metric </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<MetricResource>> ReadAsync(ReadMetricOptions options,
-                                                                                               ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
-
-            var page = Page<MetricResource>.FromJson("metrics", response.Content);
-            return new ResourceSet<MetricResource>(page, options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// read
-        /// </summary>
-        /// <param name="pathCallSid"> The call_sid </param>
-        /// <param name="edge"> The edge </param>
-        /// <param name="direction"> The direction </param>
-        /// <param name="pageSize"> Page size </param>
-        /// <param name="limit"> Record limit </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Metric </returns>
-        public static ResourceSet<MetricResource> Read(string pathCallSid,
-                                                       MetricResource.TwilioEdgeEnum edge = null,
-                                                       MetricResource.StreamDirectionEnum direction = null,
-                                                       int? pageSize = null,
-                                                       long? limit = null,
-                                                       ITwilioRestClient client = null)
-        {
-            var options = new ReadMetricOptions(pathCallSid){Edge = edge, Direction = direction, PageSize = pageSize, Limit = limit};
-            return Read(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// read
-        /// </summary>
-        /// <param name="pathCallSid"> The call_sid </param>
-        /// <param name="edge"> The edge </param>
-        /// <param name="direction"> The direction </param>
-        /// <param name="pageSize"> Page size </param>
-        /// <param name="limit"> Record limit </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Metric </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<MetricResource>> ReadAsync(string pathCallSid,
-                                                                                               MetricResource.TwilioEdgeEnum edge = null,
-                                                                                               MetricResource.StreamDirectionEnum direction = null,
-                                                                                               int? pageSize = null,
-                                                                                               long? limit = null,
-                                                                                               ITwilioRestClient client = null)
-        {
-            var options = new ReadMetricOptions(pathCallSid){Edge = edge, Direction = direction, PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Fetch the target page of records
-        /// </summary>
-        /// <param name="targetUrl"> API-generated URL for the requested results page </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns>
-        public static Page<MetricResource> GetPage(string targetUrl, ITwilioRestClient client)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-
-            var request = new Request(
-                HttpMethod.Get,
-                targetUrl
-            );
-
-            var response = client.Request(request);
-            return Page<MetricResource>.FromJson("metrics", response.Content);
-        }
-
-        /// <summary>
-        /// Fetch the next page of records
-        /// </summary>
-        /// <param name="page"> current page of records </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns>
-        public static Page<MetricResource> NextPage(Page<MetricResource> page, ITwilioRestClient client)
-        {
-            var request = new Request(
-                HttpMethod.Get,
-                page.GetNextPageUrl(Rest.Domain.Insights)
-            );
-
-            var response = client.Request(request);
-            return Page<MetricResource>.FromJson("metrics", response.Content);
-        }
-
-        /// <summary>
-        /// Fetch the previous page of records
-        /// </summary>
-        /// <param name="page"> current page of records </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns>
-        public static Page<MetricResource> PreviousPage(Page<MetricResource> page, ITwilioRestClient client)
-        {
-            var request = new Request(
-                HttpMethod.Get,
-                page.GetPreviousPageUrl(Rest.Domain.Insights)
-            );
-
-            var response = client.Request(request);
-            return Page<MetricResource>.FromJson("metrics", response.Content);
-        }
-
-        /// <summary>
-        /// Converts a JSON string into a MetricResource object
-        /// </summary>
-        /// <param name="json"> Raw JSON string </param>
-        /// <returns> MetricResource object represented by the provided JSON </returns>
-        public static MetricResource FromJson(string json)
-        {
-            // Convert all checked exceptions to Runtime
-            try
-            {
-                return JsonConvert.DeserializeObject<MetricResource>(json);
-            }
-            catch (JsonException e)
-            {
-                throw new ApiException(e.Message, e);
-            }
-        }
-
-        /// <summary>
-        /// The timestamp
-        /// </summary>
-        [JsonProperty("timestamp")]
-        public string Timestamp { get; private set; }
-        /// <summary>
-        /// The call_sid
-        /// </summary>
-        [JsonProperty("call_sid")]
-        public string CallSid { get; private set; }
-        /// <summary>
-        /// The account_sid
-        /// </summary>
-        [JsonProperty("account_sid")]
-        public string AccountSid { get; private set; }
-        /// <summary>
-        /// The edge
-        /// </summary>
-        [JsonProperty("edge")]
-        [JsonConverter(typeof(StringEnumConverter))]
-        public MetricResource.TwilioEdgeEnum Edge { get; private set; }
-        /// <summary>
-        /// The direction
-        /// </summary>
-        [JsonProperty("direction")]
-        [JsonConverter(typeof(StringEnumConverter))]
-        public MetricResource.StreamDirectionEnum Direction { get; private set; }
-        /// <summary>
-        /// The carrier_edge
-        /// </summary>
-        [JsonProperty("carrier_edge")]
-        public object CarrierEdge { get; private set; }
-        /// <summary>
-        /// The sip_edge
-        /// </summary>
-        [JsonProperty("sip_edge")]
-        public object SipEdge { get; private set; }
-        /// <summary>
-        /// The sdk_edge
-        /// </summary>
-        [JsonProperty("sdk_edge")]
-        public object SdkEdge { get; private set; }
-        /// <summary>
-        /// The client_edge
-        /// </summary>
-        [JsonProperty("client_edge")]
-        public object ClientEdge { get; private set; }
-
-        private MetricResource()
-        {
-
-        }
+      public static readonly TwilioEdgeEnum UnknownEdge = new TwilioEdgeEnum("unknown_edge");
+      public static readonly TwilioEdgeEnum CarrierEdge = new TwilioEdgeEnum("carrier_edge");
+      public static readonly TwilioEdgeEnum SipEdge = new TwilioEdgeEnum("sip_edge");
+      public static readonly TwilioEdgeEnum SdkEdge = new TwilioEdgeEnum("sdk_edge");
+      public static readonly TwilioEdgeEnum ClientEdge = new TwilioEdgeEnum("client_edge");
     }
+
+    public sealed class StreamDirectionEnum : StringEnum
+    {
+      private StreamDirectionEnum(string value) : base(value) { }
+      public StreamDirectionEnum() { }
+      public static implicit operator StreamDirectionEnum(string value)
+      {
+        return new StreamDirectionEnum(value);
+      }
+
+      public static readonly StreamDirectionEnum Unknown = new StreamDirectionEnum("unknown");
+      public static readonly StreamDirectionEnum Inbound = new StreamDirectionEnum("inbound");
+      public static readonly StreamDirectionEnum Outbound = new StreamDirectionEnum("outbound");
+      public static readonly StreamDirectionEnum Both = new StreamDirectionEnum("both");
+    }
+
+    private static Request BuildReadRequest(ReadMetricOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Get,
+          Rest.Domain.Insights,
+          "/v1/Voice/" + options.PathCallSid + "/Metrics",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// read
+    /// </summary>
+    /// <param name="options"> Read Metric parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Metric </returns>
+    public static ResourceSet<MetricResource> Read(ReadMetricOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildReadRequest(options, client));
+
+      var page = Page<MetricResource>.FromJson("metrics", response.Content);
+      return new ResourceSet<MetricResource>(page, options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// read
+    /// </summary>
+    /// <param name="options"> Read Metric parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Metric </returns>
+    public static async System.Threading.Tasks.Task<ResourceSet<MetricResource>> ReadAsync(ReadMetricOptions options,
+                                                                                           ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+      var page = Page<MetricResource>.FromJson("metrics", response.Content);
+      return new ResourceSet<MetricResource>(page, options, client);
+    }
+#endif
+
+    /// <summary>
+    /// read
+    /// </summary>
+    /// <param name="pathCallSid"> The call_sid </param>
+    /// <param name="edge"> The edge </param>
+    /// <param name="direction"> The direction </param>
+    /// <param name="pageSize"> Page size </param>
+    /// <param name="limit"> Record limit </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Metric </returns>
+    public static ResourceSet<MetricResource> Read(string pathCallSid,
+                                                   MetricResource.TwilioEdgeEnum edge = null,
+                                                   MetricResource.StreamDirectionEnum direction = null,
+                                                   int? pageSize = null,
+                                                   long? limit = null,
+                                                   ITwilioRestClient client = null)
+    {
+      var options = new ReadMetricOptions(pathCallSid) { Edge = edge, Direction = direction, PageSize = pageSize, Limit = limit };
+      return Read(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// read
+    /// </summary>
+    /// <param name="pathCallSid"> The call_sid </param>
+    /// <param name="edge"> The edge </param>
+    /// <param name="direction"> The direction </param>
+    /// <param name="pageSize"> Page size </param>
+    /// <param name="limit"> Record limit </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Metric </returns>
+    public static async System.Threading.Tasks.Task<ResourceSet<MetricResource>> ReadAsync(string pathCallSid,
+                                                                                           MetricResource.TwilioEdgeEnum edge = null,
+                                                                                           MetricResource.StreamDirectionEnum direction = null,
+                                                                                           int? pageSize = null,
+                                                                                           long? limit = null,
+                                                                                           ITwilioRestClient client = null)
+    {
+      var options = new ReadMetricOptions(pathCallSid) { Edge = edge, Direction = direction, PageSize = pageSize, Limit = limit };
+      return await ReadAsync(options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Fetch the target page of records
+    /// </summary>
+    /// <param name="targetUrl"> API-generated URL for the requested results page </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> The target page of records </returns>
+    public static Page<MetricResource> GetPage(string targetUrl, ITwilioRestClient client)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+
+      var request = new Request(
+          HttpMethod.Get,
+          targetUrl
+      );
+
+      var response = client.Request(request);
+      return Page<MetricResource>.FromJson("metrics", response.Content);
+    }
+
+    /// <summary>
+    /// Fetch the next page of records
+    /// </summary>
+    /// <param name="page"> current page of records </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> The next page of records </returns>
+    public static Page<MetricResource> NextPage(Page<MetricResource> page, ITwilioRestClient client)
+    {
+      var request = new Request(
+          HttpMethod.Get,
+          page.GetNextPageUrl(Rest.Domain.Insights)
+      );
+
+      var response = client.Request(request);
+      return Page<MetricResource>.FromJson("metrics", response.Content);
+    }
+
+    /// <summary>
+    /// Fetch the previous page of records
+    /// </summary>
+    /// <param name="page"> current page of records </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> The previous page of records </returns>
+    public static Page<MetricResource> PreviousPage(Page<MetricResource> page, ITwilioRestClient client)
+    {
+      var request = new Request(
+          HttpMethod.Get,
+          page.GetPreviousPageUrl(Rest.Domain.Insights)
+      );
+
+      var response = client.Request(request);
+      return Page<MetricResource>.FromJson("metrics", response.Content);
+    }
+
+    /// <summary>
+    /// Converts a JSON string into a MetricResource object
+    /// </summary>
+    /// <param name="json"> Raw JSON string </param>
+    /// <returns> MetricResource object represented by the provided JSON </returns>
+    public static MetricResource FromJson(string json)
+    {
+      // Convert all checked exceptions to Runtime
+      try
+      {
+        return JsonConvert.DeserializeObject<MetricResource>(json);
+      }
+      catch (JsonException e)
+      {
+        throw new ApiException(e.Message, e);
+      }
+    }
+
+    /// <summary>
+    /// The timestamp
+    /// </summary>
+    [JsonProperty("timestamp")]
+    public string Timestamp { get; private set; }
+    /// <summary>
+    /// The call_sid
+    /// </summary>
+    [JsonProperty("call_sid")]
+    public string CallSid { get; private set; }
+    /// <summary>
+    /// The account_sid
+    /// </summary>
+    [JsonProperty("account_sid")]
+    public string AccountSid { get; private set; }
+    /// <summary>
+    /// The edge
+    /// </summary>
+    [JsonProperty("edge")]
+    [JsonConverter(typeof(StringEnumConverter))]
+    public MetricResource.TwilioEdgeEnum Edge { get; private set; }
+    /// <summary>
+    /// The direction
+    /// </summary>
+    [JsonProperty("direction")]
+    [JsonConverter(typeof(StringEnumConverter))]
+    public MetricResource.StreamDirectionEnum Direction { get; private set; }
+    /// <summary>
+    /// The carrier_edge
+    /// </summary>
+    [JsonProperty("carrier_edge")]
+    public object CarrierEdge { get; private set; }
+    /// <summary>
+    /// The sip_edge
+    /// </summary>
+    [JsonProperty("sip_edge")]
+    public object SipEdge { get; private set; }
+    /// <summary>
+    /// The sdk_edge
+    /// </summary>
+    [JsonProperty("sdk_edge")]
+    public object SdkEdge { get; private set; }
+    /// <summary>
+    /// The client_edge
+    /// </summary>
+    [JsonProperty("client_edge")]
+    public object ClientEdge { get; private set; }
+
+    private MetricResource()
+    {
+
+    }
+  }
 
 }

@@ -11,203 +11,203 @@ using Twilio.Converters;
 namespace Twilio.Rest.Proxy.V1.Service
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Add a Short Code to the Proxy Number Pool for the Service.
+  /// </summary>
+  public class CreateShortCodeOptions : IOptions<ShortCodeResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Add a Short Code to the Proxy Number Pool for the Service.
+    /// The SID of the parent Service resource
     /// </summary>
-    public class CreateShortCodeOptions : IOptions<ShortCodeResource>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The SID of a Twilio ShortCode resource
+    /// </summary>
+    public string Sid { get; }
+
+    /// <summary>
+    /// Construct a new CreateShortCodeOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the parent Service resource </param>
+    /// <param name="sid"> The SID of a Twilio ShortCode resource </param>
+    public CreateShortCodeOptions(string pathServiceSid, string sid)
     {
-        /// <summary>
-        /// The SID of the parent Service resource
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The SID of a Twilio ShortCode resource
-        /// </summary>
-        public string Sid { get; }
-
-        /// <summary>
-        /// Construct a new CreateShortCodeOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the parent Service resource </param>
-        /// <param name="sid"> The SID of a Twilio ShortCode resource </param>
-        public CreateShortCodeOptions(string pathServiceSid, string sid)
-        {
-            PathServiceSid = pathServiceSid;
-            Sid = sid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Sid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Sid", Sid.ToString()));
-            }
-
-            return p;
-        }
+      PathServiceSid = pathServiceSid;
+      Sid = sid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Delete a specific Short Code from a Service.
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteShortCodeOptions : IOptions<ShortCodeResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the parent Service to delete the ShortCode resource from
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (Sid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Sid", Sid.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new DeleteShortCodeOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the parent Service to delete the ShortCode resource from </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public DeleteShortCodeOptions(string pathServiceSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathSid = pathSid;
-        }
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Delete a specific Short Code from a Service.
+  /// </summary>
+  public class DeleteShortCodeOptions : IOptions<ShortCodeResource>
+  {
+    /// <summary>
+    /// The SID of the parent Service to delete the ShortCode resource from
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new DeleteShortCodeOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the parent Service to delete the ShortCode resource from </param>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public DeleteShortCodeOptions(string pathServiceSid, string pathSid)
+    {
+      PathServiceSid = pathServiceSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Retrieve a list of all Short Codes in the Proxy Number Pool for the Service. A maximum of 100 records will be
-    /// returned per page.
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadShortCodeOptions : ReadOptions<ShortCodeResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the parent Service to read the resource from
-        /// </summary>
-        public string PathServiceSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new ReadShortCodeOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the parent Service to read the resource from </param>
-        public ReadShortCodeOptions(string pathServiceSid)
-        {
-            PathServiceSid = pathServiceSid;
-        }
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Retrieve a list of all Short Codes in the Proxy Number Pool for the Service. A maximum of 100 records will be
+  /// returned per page.
+  /// </summary>
+  public class ReadShortCodeOptions : ReadOptions<ShortCodeResource>
+  {
+    /// <summary>
+    /// The SID of the parent Service to read the resource from
+    /// </summary>
+    public string PathServiceSid { get; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new ReadShortCodeOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the parent Service to read the resource from </param>
+    public ReadShortCodeOptions(string pathServiceSid)
+    {
+      PathServiceSid = pathServiceSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Fetch a specific Short Code.
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchShortCodeOptions : IOptions<ShortCodeResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the parent Service to fetch the resource from
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new FetchShortCodeOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the parent Service to fetch the resource from </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public FetchShortCodeOptions(string pathServiceSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathSid = pathSid;
-        }
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Fetch a specific Short Code.
+  /// </summary>
+  public class FetchShortCodeOptions : IOptions<ShortCodeResource>
+  {
+    /// <summary>
+    /// The SID of the parent Service to fetch the resource from
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchShortCodeOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the parent Service to fetch the resource from </param>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public FetchShortCodeOptions(string pathServiceSid, string pathSid)
+    {
+      PathServiceSid = pathServiceSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Update a specific Short Code.
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateShortCodeOptions : IOptions<ShortCodeResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Service to update the resource from
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// Whether the short code should be reserved for manual assignment to participants only
-        /// </summary>
-        public bool? IsReserved { get; set; }
-
-        /// <summary>
-        /// Construct a new UpdateShortCodeOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to update the resource from </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public UpdateShortCodeOptions(string pathServiceSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (IsReserved != null)
-            {
-                p.Add(new KeyValuePair<string, string>("IsReserved", IsReserved.Value.ToString().ToLower()));
-            }
-
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
+
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Update a specific Short Code.
+  /// </summary>
+  public class UpdateShortCodeOptions : IOptions<ShortCodeResource>
+  {
+    /// <summary>
+    /// The SID of the Service to update the resource from
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// Whether the short code should be reserved for manual assignment to participants only
+    /// </summary>
+    public bool? IsReserved { get; set; }
+
+    /// <summary>
+    /// Construct a new UpdateShortCodeOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to update the resource from </param>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public UpdateShortCodeOptions(string pathServiceSid, string pathSid)
+    {
+      PathServiceSid = pathServiceSid;
+      PathSid = pathSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (IsReserved != null)
+      {
+        p.Add(new KeyValuePair<string, string>("IsReserved", IsReserved.Value.ToString().ToLower()));
+      }
+
+      return p;
+    }
+  }
 
 }

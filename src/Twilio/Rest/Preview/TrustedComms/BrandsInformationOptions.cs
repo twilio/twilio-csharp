@@ -11,41 +11,41 @@ using Twilio.Converters;
 namespace Twilio.Rest.Preview.TrustedComms
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// Retrieve the newest available BrandInformation
+  /// </summary>
+  public class FetchBrandsInformationOptions : IOptions<BrandsInformationResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// Retrieve the newest available BrandInformation
+    /// Standard `If-None-Match` HTTP header
     /// </summary>
-    public class FetchBrandsInformationOptions : IOptions<BrandsInformationResource>
+    public string IfNoneMatch { get; set; }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// Standard `If-None-Match` HTTP header
-        /// </summary>
-        public string IfNoneMatch { get; set; }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
-
-        /// <summary>
-        /// Generate the necessary header parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetHeaderParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (IfNoneMatch != null)
-            {
-                p.Add(new KeyValuePair<string, string>("If-None-Match", IfNoneMatch));
-            }
-
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+
+    /// <summary>
+    /// Generate the necessary header parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetHeaderParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (IfNoneMatch != null)
+      {
+        p.Add(new KeyValuePair<string, string>("If-None-Match", IfNoneMatch));
+      }
+
+      return p;
+    }
+  }
 
 }

@@ -11,290 +11,290 @@ using Twilio.Converters;
 namespace Twilio.Rest.Proxy.V1
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Fetch a specific Service.
+  /// </summary>
+  public class FetchServiceOptions : IOptions<ServiceResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Fetch a specific Service.
+    /// The unique string that identifies the resource
     /// </summary>
-    public class FetchServiceOptions : IOptions<ServiceResource>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchServiceOptions
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public FetchServiceOptions(string pathSid)
     {
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchServiceOptions
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public FetchServiceOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Retrieve a list of all Services for Twilio Proxy. A maximum of 100 records will be returned per page.
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadServiceOptions : ReadOptions<ServiceResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-            return p;
-        }
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Retrieve a list of all Services for Twilio Proxy. A maximum of 100 records will be returned per page.
+  /// </summary>
+  public class ReadServiceOptions : ReadOptions<ServiceResource>
+  {
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Create a new Service for Twilio Proxy
+  /// </summary>
+  public class CreateServiceOptions : IOptions<ServiceResource>
+  {
+    /// <summary>
+    /// An application-defined string that uniquely identifies the resource
+    /// </summary>
+    public string UniqueName { get; }
+    /// <summary>
+    /// Default TTL for a Session, in seconds
+    /// </summary>
+    public int? DefaultTtl { get; set; }
+    /// <summary>
+    /// The URL we should call when the interaction status changes
+    /// </summary>
+    public Uri CallbackUrl { get; set; }
+    /// <summary>
+    /// Where a proxy number must be located relative to the participant identifier
+    /// </summary>
+    public ServiceResource.GeoMatchLevelEnum GeoMatchLevel { get; set; }
+    /// <summary>
+    /// The preference for Proxy Number selection for the Service instance
+    /// </summary>
+    public ServiceResource.NumberSelectionBehaviorEnum NumberSelectionBehavior { get; set; }
+    /// <summary>
+    /// The URL we call on each interaction
+    /// </summary>
+    public Uri InterceptCallbackUrl { get; set; }
+    /// <summary>
+    /// The URL we call when an inbound call or SMS action occurs on a closed or non-existent Session
+    /// </summary>
+    public Uri OutOfSessionCallbackUrl { get; set; }
+    /// <summary>
+    /// The SID of the Chat Service Instance
+    /// </summary>
+    public string ChatInstanceSid { get; set; }
+
+    /// <summary>
+    /// Construct a new CreateServiceOptions
+    /// </summary>
+    /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
+    public CreateServiceOptions(string uniqueName)
+    {
+      UniqueName = uniqueName;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Create a new Service for Twilio Proxy
+    /// Generate the necessary parameters
     /// </summary>
-    public class CreateServiceOptions : IOptions<ServiceResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// An application-defined string that uniquely identifies the resource
-        /// </summary>
-        public string UniqueName { get; }
-        /// <summary>
-        /// Default TTL for a Session, in seconds
-        /// </summary>
-        public int? DefaultTtl { get; set; }
-        /// <summary>
-        /// The URL we should call when the interaction status changes
-        /// </summary>
-        public Uri CallbackUrl { get; set; }
-        /// <summary>
-        /// Where a proxy number must be located relative to the participant identifier
-        /// </summary>
-        public ServiceResource.GeoMatchLevelEnum GeoMatchLevel { get; set; }
-        /// <summary>
-        /// The preference for Proxy Number selection for the Service instance
-        /// </summary>
-        public ServiceResource.NumberSelectionBehaviorEnum NumberSelectionBehavior { get; set; }
-        /// <summary>
-        /// The URL we call on each interaction
-        /// </summary>
-        public Uri InterceptCallbackUrl { get; set; }
-        /// <summary>
-        /// The URL we call when an inbound call or SMS action occurs on a closed or non-existent Session
-        /// </summary>
-        public Uri OutOfSessionCallbackUrl { get; set; }
-        /// <summary>
-        /// The SID of the Chat Service Instance
-        /// </summary>
-        public string ChatInstanceSid { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (UniqueName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
+      }
 
-        /// <summary>
-        /// Construct a new CreateServiceOptions
-        /// </summary>
-        /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
-        public CreateServiceOptions(string uniqueName)
-        {
-            UniqueName = uniqueName;
-        }
+      if (DefaultTtl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("DefaultTtl", DefaultTtl.ToString()));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (UniqueName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
-            }
+      if (CallbackUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("CallbackUrl", Serializers.Url(CallbackUrl)));
+      }
 
-            if (DefaultTtl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DefaultTtl", DefaultTtl.ToString()));
-            }
+      if (GeoMatchLevel != null)
+      {
+        p.Add(new KeyValuePair<string, string>("GeoMatchLevel", GeoMatchLevel.ToString()));
+      }
 
-            if (CallbackUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("CallbackUrl", Serializers.Url(CallbackUrl)));
-            }
+      if (NumberSelectionBehavior != null)
+      {
+        p.Add(new KeyValuePair<string, string>("NumberSelectionBehavior", NumberSelectionBehavior.ToString()));
+      }
 
-            if (GeoMatchLevel != null)
-            {
-                p.Add(new KeyValuePair<string, string>("GeoMatchLevel", GeoMatchLevel.ToString()));
-            }
+      if (InterceptCallbackUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("InterceptCallbackUrl", Serializers.Url(InterceptCallbackUrl)));
+      }
 
-            if (NumberSelectionBehavior != null)
-            {
-                p.Add(new KeyValuePair<string, string>("NumberSelectionBehavior", NumberSelectionBehavior.ToString()));
-            }
+      if (OutOfSessionCallbackUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("OutOfSessionCallbackUrl", Serializers.Url(OutOfSessionCallbackUrl)));
+      }
 
-            if (InterceptCallbackUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("InterceptCallbackUrl", Serializers.Url(InterceptCallbackUrl)));
-            }
+      if (ChatInstanceSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ChatInstanceSid", ChatInstanceSid.ToString()));
+      }
 
-            if (OutOfSessionCallbackUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("OutOfSessionCallbackUrl", Serializers.Url(OutOfSessionCallbackUrl)));
-            }
+      return p;
+    }
+  }
 
-            if (ChatInstanceSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ChatInstanceSid", ChatInstanceSid.ToString()));
-            }
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Delete a specific Service.
+  /// </summary>
+  public class DeleteServiceOptions : IOptions<ServiceResource>
+  {
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
 
-            return p;
-        }
+    /// <summary>
+    /// Construct a new DeleteServiceOptions
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public DeleteServiceOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Delete a specific Service.
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteServiceOptions : IOptions<ServiceResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new DeleteServiceOptions
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public DeleteServiceOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Update a specific Service.
+  /// </summary>
+  public class UpdateServiceOptions : IOptions<ServiceResource>
+  {
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// An application-defined string that uniquely identifies the resource
+    /// </summary>
+    public string UniqueName { get; set; }
+    /// <summary>
+    /// Default TTL for a Session, in seconds
+    /// </summary>
+    public int? DefaultTtl { get; set; }
+    /// <summary>
+    /// The URL we should call when the interaction status changes
+    /// </summary>
+    public Uri CallbackUrl { get; set; }
+    /// <summary>
+    /// Where a proxy number must be located relative to the participant identifier
+    /// </summary>
+    public ServiceResource.GeoMatchLevelEnum GeoMatchLevel { get; set; }
+    /// <summary>
+    /// The preference for Proxy Number selection for the Service instance
+    /// </summary>
+    public ServiceResource.NumberSelectionBehaviorEnum NumberSelectionBehavior { get; set; }
+    /// <summary>
+    /// The URL we call on each interaction
+    /// </summary>
+    public Uri InterceptCallbackUrl { get; set; }
+    /// <summary>
+    /// The URL we call when an inbound call or SMS action occurs on a closed or non-existent Session
+    /// </summary>
+    public Uri OutOfSessionCallbackUrl { get; set; }
+    /// <summary>
+    /// The SID of the Chat Service Instance
+    /// </summary>
+    public string ChatInstanceSid { get; set; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+    /// <summary>
+    /// Construct a new UpdateServiceOptions
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public UpdateServiceOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Update a specific Service.
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateServiceOptions : IOptions<ServiceResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// An application-defined string that uniquely identifies the resource
-        /// </summary>
-        public string UniqueName { get; set; }
-        /// <summary>
-        /// Default TTL for a Session, in seconds
-        /// </summary>
-        public int? DefaultTtl { get; set; }
-        /// <summary>
-        /// The URL we should call when the interaction status changes
-        /// </summary>
-        public Uri CallbackUrl { get; set; }
-        /// <summary>
-        /// Where a proxy number must be located relative to the participant identifier
-        /// </summary>
-        public ServiceResource.GeoMatchLevelEnum GeoMatchLevel { get; set; }
-        /// <summary>
-        /// The preference for Proxy Number selection for the Service instance
-        /// </summary>
-        public ServiceResource.NumberSelectionBehaviorEnum NumberSelectionBehavior { get; set; }
-        /// <summary>
-        /// The URL we call on each interaction
-        /// </summary>
-        public Uri InterceptCallbackUrl { get; set; }
-        /// <summary>
-        /// The URL we call when an inbound call or SMS action occurs on a closed or non-existent Session
-        /// </summary>
-        public Uri OutOfSessionCallbackUrl { get; set; }
-        /// <summary>
-        /// The SID of the Chat Service Instance
-        /// </summary>
-        public string ChatInstanceSid { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (UniqueName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
+      }
 
-        /// <summary>
-        /// Construct a new UpdateServiceOptions
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public UpdateServiceOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
+      if (DefaultTtl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("DefaultTtl", DefaultTtl.ToString()));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (UniqueName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
-            }
+      if (CallbackUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("CallbackUrl", Serializers.Url(CallbackUrl)));
+      }
 
-            if (DefaultTtl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DefaultTtl", DefaultTtl.ToString()));
-            }
+      if (GeoMatchLevel != null)
+      {
+        p.Add(new KeyValuePair<string, string>("GeoMatchLevel", GeoMatchLevel.ToString()));
+      }
 
-            if (CallbackUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("CallbackUrl", Serializers.Url(CallbackUrl)));
-            }
+      if (NumberSelectionBehavior != null)
+      {
+        p.Add(new KeyValuePair<string, string>("NumberSelectionBehavior", NumberSelectionBehavior.ToString()));
+      }
 
-            if (GeoMatchLevel != null)
-            {
-                p.Add(new KeyValuePair<string, string>("GeoMatchLevel", GeoMatchLevel.ToString()));
-            }
+      if (InterceptCallbackUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("InterceptCallbackUrl", Serializers.Url(InterceptCallbackUrl)));
+      }
 
-            if (NumberSelectionBehavior != null)
-            {
-                p.Add(new KeyValuePair<string, string>("NumberSelectionBehavior", NumberSelectionBehavior.ToString()));
-            }
+      if (OutOfSessionCallbackUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("OutOfSessionCallbackUrl", Serializers.Url(OutOfSessionCallbackUrl)));
+      }
 
-            if (InterceptCallbackUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("InterceptCallbackUrl", Serializers.Url(InterceptCallbackUrl)));
-            }
+      if (ChatInstanceSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ChatInstanceSid", ChatInstanceSid.ToString()));
+      }
 
-            if (OutOfSessionCallbackUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("OutOfSessionCallbackUrl", Serializers.Url(OutOfSessionCallbackUrl)));
-            }
-
-            if (ChatInstanceSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ChatInstanceSid", ChatInstanceSid.ToString()));
-            }
-
-            return p;
-        }
+      return p;
     }
+  }
 
 }

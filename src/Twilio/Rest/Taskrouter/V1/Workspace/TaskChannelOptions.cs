@@ -11,221 +11,221 @@ using Twilio.Converters;
 namespace Twilio.Rest.Taskrouter.V1.Workspace
 {
 
+  /// <summary>
+  /// FetchTaskChannelOptions
+  /// </summary>
+  public class FetchTaskChannelOptions : IOptions<TaskChannelResource>
+  {
     /// <summary>
-    /// FetchTaskChannelOptions
+    /// The SID of the Workspace with the Task Channel to fetch
     /// </summary>
-    public class FetchTaskChannelOptions : IOptions<TaskChannelResource>
+    public string PathWorkspaceSid { get; }
+    /// <summary>
+    /// The SID of the Task Channel resource to fetch
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchTaskChannelOptions
+    /// </summary>
+    /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Task Channel to fetch </param>
+    /// <param name="pathSid"> The SID of the Task Channel resource to fetch </param>
+    public FetchTaskChannelOptions(string pathWorkspaceSid, string pathSid)
     {
-        /// <summary>
-        /// The SID of the Workspace with the Task Channel to fetch
-        /// </summary>
-        public string PathWorkspaceSid { get; }
-        /// <summary>
-        /// The SID of the Task Channel resource to fetch
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchTaskChannelOptions
-        /// </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Task Channel to fetch </param>
-        /// <param name="pathSid"> The SID of the Task Channel resource to fetch </param>
-        public FetchTaskChannelOptions(string pathWorkspaceSid, string pathSid)
-        {
-            PathWorkspaceSid = pathWorkspaceSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathWorkspaceSid = pathWorkspaceSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// ReadTaskChannelOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadTaskChannelOptions : ReadOptions<TaskChannelResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Workspace with the Task Channel to read
-        /// </summary>
-        public string PathWorkspaceSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new ReadTaskChannelOptions
-        /// </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Task Channel to read </param>
-        public ReadTaskChannelOptions(string pathWorkspaceSid)
-        {
-            PathWorkspaceSid = pathWorkspaceSid;
-        }
+  /// <summary>
+  /// ReadTaskChannelOptions
+  /// </summary>
+  public class ReadTaskChannelOptions : ReadOptions<TaskChannelResource>
+  {
+    /// <summary>
+    /// The SID of the Workspace with the Task Channel to read
+    /// </summary>
+    public string PathWorkspaceSid { get; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new ReadTaskChannelOptions
+    /// </summary>
+    /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Task Channel to read </param>
+    public ReadTaskChannelOptions(string pathWorkspaceSid)
+    {
+      PathWorkspaceSid = pathWorkspaceSid;
     }
 
     /// <summary>
-    /// UpdateTaskChannelOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateTaskChannelOptions : IOptions<TaskChannelResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Workspace with the Task Channel to update
-        /// </summary>
-        public string PathWorkspaceSid { get; }
-        /// <summary>
-        /// The SID of the Task Channel resource to update
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// A string to describe the Task Channel resource
-        /// </summary>
-        public string FriendlyName { get; set; }
-        /// <summary>
-        /// Whether the TaskChannel should prioritize Workers that have been idle
-        /// </summary>
-        public bool? ChannelOptimizedRouting { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new UpdateTaskChannelOptions
-        /// </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Task Channel to update </param>
-        /// <param name="pathSid"> The SID of the Task Channel resource to update </param>
-        public UpdateTaskChannelOptions(string pathWorkspaceSid, string pathSid)
-        {
-            PathWorkspaceSid = pathWorkspaceSid;
-            PathSid = pathSid;
-        }
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
+  /// <summary>
+  /// UpdateTaskChannelOptions
+  /// </summary>
+  public class UpdateTaskChannelOptions : IOptions<TaskChannelResource>
+  {
+    /// <summary>
+    /// The SID of the Workspace with the Task Channel to update
+    /// </summary>
+    public string PathWorkspaceSid { get; }
+    /// <summary>
+    /// The SID of the Task Channel resource to update
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// A string to describe the Task Channel resource
+    /// </summary>
+    public string FriendlyName { get; set; }
+    /// <summary>
+    /// Whether the TaskChannel should prioritize Workers that have been idle
+    /// </summary>
+    public bool? ChannelOptimizedRouting { get; set; }
 
-            if (ChannelOptimizedRouting != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ChannelOptimizedRouting", ChannelOptimizedRouting.Value.ToString().ToLower()));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new UpdateTaskChannelOptions
+    /// </summary>
+    /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Task Channel to update </param>
+    /// <param name="pathSid"> The SID of the Task Channel resource to update </param>
+    public UpdateTaskChannelOptions(string pathWorkspaceSid, string pathSid)
+    {
+      PathWorkspaceSid = pathWorkspaceSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// DeleteTaskChannelOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteTaskChannelOptions : IOptions<TaskChannelResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Workspace with the Task Channel to delete
-        /// </summary>
-        public string PathWorkspaceSid { get; }
-        /// <summary>
-        /// The SID of the Task Channel resource to delete
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
 
-        /// <summary>
-        /// Construct a new DeleteTaskChannelOptions
-        /// </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Task Channel to delete </param>
-        /// <param name="pathSid"> The SID of the Task Channel resource to delete </param>
-        public DeleteTaskChannelOptions(string pathWorkspaceSid, string pathSid)
-        {
-            PathWorkspaceSid = pathWorkspaceSid;
-            PathSid = pathSid;
-        }
+      if (ChannelOptimizedRouting != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ChannelOptimizedRouting", ChannelOptimizedRouting.Value.ToString().ToLower()));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// DeleteTaskChannelOptions
+  /// </summary>
+  public class DeleteTaskChannelOptions : IOptions<TaskChannelResource>
+  {
+    /// <summary>
+    /// The SID of the Workspace with the Task Channel to delete
+    /// </summary>
+    public string PathWorkspaceSid { get; }
+    /// <summary>
+    /// The SID of the Task Channel resource to delete
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new DeleteTaskChannelOptions
+    /// </summary>
+    /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Task Channel to delete </param>
+    /// <param name="pathSid"> The SID of the Task Channel resource to delete </param>
+    public DeleteTaskChannelOptions(string pathWorkspaceSid, string pathSid)
+    {
+      PathWorkspaceSid = pathWorkspaceSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// CreateTaskChannelOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class CreateTaskChannelOptions : IOptions<TaskChannelResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Workspace that the new Task Channel belongs to
-        /// </summary>
-        public string PathWorkspaceSid { get; }
-        /// <summary>
-        /// A string to describe the Task Channel resource
-        /// </summary>
-        public string FriendlyName { get; }
-        /// <summary>
-        /// An application-defined string that uniquely identifies the Task Channel
-        /// </summary>
-        public string UniqueName { get; }
-        /// <summary>
-        /// Whether the Task Channel should prioritize Workers that have been idle
-        /// </summary>
-        public bool? ChannelOptimizedRouting { get; set; }
-
-        /// <summary>
-        /// Construct a new CreateTaskChannelOptions
-        /// </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace that the new Task Channel belongs to </param>
-        /// <param name="friendlyName"> A string to describe the Task Channel resource </param>
-        /// <param name="uniqueName"> An application-defined string that uniquely identifies the Task Channel </param>
-        public CreateTaskChannelOptions(string pathWorkspaceSid, string friendlyName, string uniqueName)
-        {
-            PathWorkspaceSid = pathWorkspaceSid;
-            FriendlyName = friendlyName;
-            UniqueName = uniqueName;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
-
-            if (UniqueName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
-            }
-
-            if (ChannelOptimizedRouting != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ChannelOptimizedRouting", ChannelOptimizedRouting.Value.ToString().ToLower()));
-            }
-
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
+
+  /// <summary>
+  /// CreateTaskChannelOptions
+  /// </summary>
+  public class CreateTaskChannelOptions : IOptions<TaskChannelResource>
+  {
+    /// <summary>
+    /// The SID of the Workspace that the new Task Channel belongs to
+    /// </summary>
+    public string PathWorkspaceSid { get; }
+    /// <summary>
+    /// A string to describe the Task Channel resource
+    /// </summary>
+    public string FriendlyName { get; }
+    /// <summary>
+    /// An application-defined string that uniquely identifies the Task Channel
+    /// </summary>
+    public string UniqueName { get; }
+    /// <summary>
+    /// Whether the Task Channel should prioritize Workers that have been idle
+    /// </summary>
+    public bool? ChannelOptimizedRouting { get; set; }
+
+    /// <summary>
+    /// Construct a new CreateTaskChannelOptions
+    /// </summary>
+    /// <param name="pathWorkspaceSid"> The SID of the Workspace that the new Task Channel belongs to </param>
+    /// <param name="friendlyName"> A string to describe the Task Channel resource </param>
+    /// <param name="uniqueName"> An application-defined string that uniquely identifies the Task Channel </param>
+    public CreateTaskChannelOptions(string pathWorkspaceSid, string friendlyName, string uniqueName)
+    {
+      PathWorkspaceSid = pathWorkspaceSid;
+      FriendlyName = friendlyName;
+      UniqueName = uniqueName;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
+
+      if (UniqueName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
+      }
+
+      if (ChannelOptimizedRouting != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ChannelOptimizedRouting", ChannelOptimizedRouting.Value.ToString().ToLower()));
+      }
+
+      return p;
+    }
+  }
 
 }

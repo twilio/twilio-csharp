@@ -11,228 +11,228 @@ using Twilio.Converters;
 namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
 {
 
+  /// <summary>
+  /// Retrieve a list of credentials.
+  /// </summary>
+  public class ReadCredentialOptions : ReadOptions<CredentialResource>
+  {
     /// <summary>
-    /// Retrieve a list of credentials.
+    /// The unique id of the Account that is responsible for this resource.
     /// </summary>
-    public class ReadCredentialOptions : ReadOptions<CredentialResource>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The unique id that identifies the credential list that contains the desired credentials
+    /// </summary>
+    public string PathCredentialListSid { get; }
+
+    /// <summary>
+    /// Construct a new ReadCredentialOptions
+    /// </summary>
+    /// <param name="pathCredentialListSid"> The unique id that identifies the credential list that contains the desired
+    ///                             credentials </param>
+    public ReadCredentialOptions(string pathCredentialListSid)
     {
-        /// <summary>
-        /// The unique id of the Account that is responsible for this resource.
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The unique id that identifies the credential list that contains the desired credentials
-        /// </summary>
-        public string PathCredentialListSid { get; }
-
-        /// <summary>
-        /// Construct a new ReadCredentialOptions
-        /// </summary>
-        /// <param name="pathCredentialListSid"> The unique id that identifies the credential list that contains the desired
-        ///                             credentials </param>
-        public ReadCredentialOptions(string pathCredentialListSid)
-        {
-            PathCredentialListSid = pathCredentialListSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+      PathCredentialListSid = pathCredentialListSid;
     }
 
     /// <summary>
-    /// Create a new credential resource.
+    /// Generate the necessary parameters
     /// </summary>
-    public class CreateCredentialOptions : IOptions<CredentialResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique id of the Account that is responsible for this resource.
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The unique id that identifies the credential list to include the created credential
-        /// </summary>
-        public string PathCredentialListSid { get; }
-        /// <summary>
-        /// The username for this credential.
-        /// </summary>
-        public string Username { get; }
-        /// <summary>
-        /// The password will not be returned in the response.
-        /// </summary>
-        public string Password { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new CreateCredentialOptions
-        /// </summary>
-        /// <param name="pathCredentialListSid"> The unique id that identifies the credential list to include the created
-        ///                             credential </param>
-        /// <param name="username"> The username for this credential. </param>
-        /// <param name="password"> The password will not be returned in the response. </param>
-        public CreateCredentialOptions(string pathCredentialListSid, string username, string password)
-        {
-            PathCredentialListSid = pathCredentialListSid;
-            Username = username;
-            Password = password;
-        }
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Username != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Username", Username));
-            }
+  /// <summary>
+  /// Create a new credential resource.
+  /// </summary>
+  public class CreateCredentialOptions : IOptions<CredentialResource>
+  {
+    /// <summary>
+    /// The unique id of the Account that is responsible for this resource.
+    /// </summary>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The unique id that identifies the credential list to include the created credential
+    /// </summary>
+    public string PathCredentialListSid { get; }
+    /// <summary>
+    /// The username for this credential.
+    /// </summary>
+    public string Username { get; }
+    /// <summary>
+    /// The password will not be returned in the response.
+    /// </summary>
+    public string Password { get; }
 
-            if (Password != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Password", Password));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new CreateCredentialOptions
+    /// </summary>
+    /// <param name="pathCredentialListSid"> The unique id that identifies the credential list to include the created
+    ///                             credential </param>
+    /// <param name="username"> The username for this credential. </param>
+    /// <param name="password"> The password will not be returned in the response. </param>
+    public CreateCredentialOptions(string pathCredentialListSid, string username, string password)
+    {
+      PathCredentialListSid = pathCredentialListSid;
+      Username = username;
+      Password = password;
     }
 
     /// <summary>
-    /// Fetch a single credential.
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchCredentialOptions : IOptions<CredentialResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique id of the Account that is responsible for this resource.
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The unique id that identifies the credential list that contains the desired credential
-        /// </summary>
-        public string PathCredentialListSid { get; }
-        /// <summary>
-        /// The unique id that identifies the resource to fetch.
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (Username != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Username", Username));
+      }
 
-        /// <summary>
-        /// Construct a new FetchCredentialOptions
-        /// </summary>
-        /// <param name="pathCredentialListSid"> The unique id that identifies the credential list that contains the desired
-        ///                             credential </param>
-        /// <param name="pathSid"> The unique id that identifies the resource to fetch. </param>
-        public FetchCredentialOptions(string pathCredentialListSid, string pathSid)
-        {
-            PathCredentialListSid = pathCredentialListSid;
-            PathSid = pathSid;
-        }
+      if (Password != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Password", Password));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// Fetch a single credential.
+  /// </summary>
+  public class FetchCredentialOptions : IOptions<CredentialResource>
+  {
+    /// <summary>
+    /// The unique id of the Account that is responsible for this resource.
+    /// </summary>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The unique id that identifies the credential list that contains the desired credential
+    /// </summary>
+    public string PathCredentialListSid { get; }
+    /// <summary>
+    /// The unique id that identifies the resource to fetch.
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchCredentialOptions
+    /// </summary>
+    /// <param name="pathCredentialListSid"> The unique id that identifies the credential list that contains the desired
+    ///                             credential </param>
+    /// <param name="pathSid"> The unique id that identifies the resource to fetch. </param>
+    public FetchCredentialOptions(string pathCredentialListSid, string pathSid)
+    {
+      PathCredentialListSid = pathCredentialListSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Update a credential resource.
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateCredentialOptions : IOptions<CredentialResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique id of the Account that is responsible for this resource
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The unique id that identifies the credential list that includes this credential
-        /// </summary>
-        public string PathCredentialListSid { get; }
-        /// <summary>
-        /// The unique id that identifies the resource to update
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// The password will not be returned in the response
-        /// </summary>
-        public string Password { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new UpdateCredentialOptions
-        /// </summary>
-        /// <param name="pathCredentialListSid"> The unique id that identifies the credential list that includes this
-        ///                             credential </param>
-        /// <param name="pathSid"> The unique id that identifies the resource to update </param>
-        public UpdateCredentialOptions(string pathCredentialListSid, string pathSid)
-        {
-            PathCredentialListSid = pathCredentialListSid;
-            PathSid = pathSid;
-        }
+  /// <summary>
+  /// Update a credential resource.
+  /// </summary>
+  public class UpdateCredentialOptions : IOptions<CredentialResource>
+  {
+    /// <summary>
+    /// The unique id of the Account that is responsible for this resource
+    /// </summary>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The unique id that identifies the credential list that includes this credential
+    /// </summary>
+    public string PathCredentialListSid { get; }
+    /// <summary>
+    /// The unique id that identifies the resource to update
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// The password will not be returned in the response
+    /// </summary>
+    public string Password { get; set; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Password != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Password", Password));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new UpdateCredentialOptions
+    /// </summary>
+    /// <param name="pathCredentialListSid"> The unique id that identifies the credential list that includes this
+    ///                             credential </param>
+    /// <param name="pathSid"> The unique id that identifies the resource to update </param>
+    public UpdateCredentialOptions(string pathCredentialListSid, string pathSid)
+    {
+      PathCredentialListSid = pathCredentialListSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Delete a credential resource.
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteCredentialOptions : IOptions<CredentialResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique id of the Account that is responsible for this resource.
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The unique id that identifies the credential list that contains the desired credentials
-        /// </summary>
-        public string PathCredentialListSid { get; }
-        /// <summary>
-        /// The unique id that identifies the resource to delete
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (Password != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Password", Password));
+      }
 
-        /// <summary>
-        /// Construct a new DeleteCredentialOptions
-        /// </summary>
-        /// <param name="pathCredentialListSid"> The unique id that identifies the credential list that contains the desired
-        ///                             credentials </param>
-        /// <param name="pathSid"> The unique id that identifies the resource to delete </param>
-        public DeleteCredentialOptions(string pathCredentialListSid, string pathSid)
-        {
-            PathCredentialListSid = pathCredentialListSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      return p;
     }
+  }
+
+  /// <summary>
+  /// Delete a credential resource.
+  /// </summary>
+  public class DeleteCredentialOptions : IOptions<CredentialResource>
+  {
+    /// <summary>
+    /// The unique id of the Account that is responsible for this resource.
+    /// </summary>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The unique id that identifies the credential list that contains the desired credentials
+    /// </summary>
+    public string PathCredentialListSid { get; }
+    /// <summary>
+    /// The unique id that identifies the resource to delete
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new DeleteCredentialOptions
+    /// </summary>
+    /// <param name="pathCredentialListSid"> The unique id that identifies the credential list that contains the desired
+    ///                             credentials </param>
+    /// <param name="pathSid"> The unique id that identifies the resource to delete </param>
+    public DeleteCredentialOptions(string pathCredentialListSid, string pathSid)
+    {
+      PathCredentialListSid = pathCredentialListSid;
+      PathSid = pathSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
 }

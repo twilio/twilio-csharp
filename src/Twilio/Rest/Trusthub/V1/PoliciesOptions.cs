@@ -11,53 +11,53 @@ using Twilio.Converters;
 namespace Twilio.Rest.Trusthub.V1
 {
 
+  /// <summary>
+  /// Retrieve a list of all Policys.
+  /// </summary>
+  public class ReadPoliciesOptions : ReadOptions<PoliciesResource>
+  {
     /// <summary>
-    /// Retrieve a list of all Policys.
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadPoliciesOptions : ReadOptions<PoliciesResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-            return p;
-        }
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// Fetch specific Policy Instance.
+  /// </summary>
+  public class FetchPoliciesOptions : IOptions<PoliciesResource>
+  {
+    /// <summary>
+    /// The unique string that identifies the Policy resource
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchPoliciesOptions
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the Policy resource </param>
+    public FetchPoliciesOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Fetch specific Policy Instance.
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchPoliciesOptions : IOptions<PoliciesResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique string that identifies the Policy resource
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchPoliciesOptions
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the Policy resource </param>
-        public FetchPoliciesOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
 
 }

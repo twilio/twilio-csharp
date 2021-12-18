@@ -11,261 +11,261 @@ using Twilio.Converters;
 namespace Twilio.Rest.Autopilot.V1.Assistant
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// FetchTaskOptions
+  /// </summary>
+  public class FetchTaskOptions : IOptions<TaskResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// FetchTaskOptions
+    /// The SID of the Assistant that is the parent of the resource to fetch
     /// </summary>
-    public class FetchTaskOptions : IOptions<TaskResource>
+    public string PathAssistantSid { get; }
+    /// <summary>
+    /// The unique string that identifies the resource to fetch
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchTaskOptions
+    /// </summary>
+    /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resource to fetch </param>
+    /// <param name="pathSid"> The unique string that identifies the resource to fetch </param>
+    public FetchTaskOptions(string pathAssistantSid, string pathSid)
     {
-        /// <summary>
-        /// The SID of the Assistant that is the parent of the resource to fetch
-        /// </summary>
-        public string PathAssistantSid { get; }
-        /// <summary>
-        /// The unique string that identifies the resource to fetch
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchTaskOptions
-        /// </summary>
-        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resource to fetch </param>
-        /// <param name="pathSid"> The unique string that identifies the resource to fetch </param>
-        public FetchTaskOptions(string pathAssistantSid, string pathSid)
-        {
-            PathAssistantSid = pathAssistantSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathAssistantSid = pathAssistantSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// ReadTaskOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadTaskOptions : ReadOptions<TaskResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Assistant that is the parent of the resources to read
-        /// </summary>
-        public string PathAssistantSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new ReadTaskOptions
-        /// </summary>
-        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resources to read </param>
-        public ReadTaskOptions(string pathAssistantSid)
-        {
-            PathAssistantSid = pathAssistantSid;
-        }
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// ReadTaskOptions
+  /// </summary>
+  public class ReadTaskOptions : ReadOptions<TaskResource>
+  {
+    /// <summary>
+    /// The SID of the Assistant that is the parent of the resources to read
+    /// </summary>
+    public string PathAssistantSid { get; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new ReadTaskOptions
+    /// </summary>
+    /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resources to read </param>
+    public ReadTaskOptions(string pathAssistantSid)
+    {
+      PathAssistantSid = pathAssistantSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// CreateTaskOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class CreateTaskOptions : IOptions<TaskResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Assistant that is the parent of the new resource
-        /// </summary>
-        public string PathAssistantSid { get; }
-        /// <summary>
-        /// An application-defined string that uniquely identifies the resource
-        /// </summary>
-        public string UniqueName { get; }
-        /// <summary>
-        ///  descriptive string that you create to describe the new resource
-        /// </summary>
-        public string FriendlyName { get; set; }
-        /// <summary>
-        /// The JSON string that specifies the actions that instruct the Assistant on how to perform the task
-        /// </summary>
-        public object Actions { get; set; }
-        /// <summary>
-        /// The URL from which the Assistant can fetch actions
-        /// </summary>
-        public Uri ActionsUrl { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new CreateTaskOptions
-        /// </summary>
-        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the new resource </param>
-        /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
-        public CreateTaskOptions(string pathAssistantSid, string uniqueName)
-        {
-            PathAssistantSid = pathAssistantSid;
-            UniqueName = uniqueName;
-        }
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (UniqueName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
-            }
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// CreateTaskOptions
+  /// </summary>
+  public class CreateTaskOptions : IOptions<TaskResource>
+  {
+    /// <summary>
+    /// The SID of the Assistant that is the parent of the new resource
+    /// </summary>
+    public string PathAssistantSid { get; }
+    /// <summary>
+    /// An application-defined string that uniquely identifies the resource
+    /// </summary>
+    public string UniqueName { get; }
+    /// <summary>
+    ///  descriptive string that you create to describe the new resource
+    /// </summary>
+    public string FriendlyName { get; set; }
+    /// <summary>
+    /// The JSON string that specifies the actions that instruct the Assistant on how to perform the task
+    /// </summary>
+    public object Actions { get; set; }
+    /// <summary>
+    /// The URL from which the Assistant can fetch actions
+    /// </summary>
+    public Uri ActionsUrl { get; set; }
 
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
-
-            if (Actions != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Actions", Serializers.JsonObject(Actions)));
-            }
-
-            if (ActionsUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ActionsUrl", Serializers.Url(ActionsUrl)));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new CreateTaskOptions
+    /// </summary>
+    /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the new resource </param>
+    /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
+    public CreateTaskOptions(string pathAssistantSid, string uniqueName)
+    {
+      PathAssistantSid = pathAssistantSid;
+      UniqueName = uniqueName;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// UpdateTaskOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateTaskOptions : IOptions<TaskResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Assistant that is the parent of the resource to update
-        /// </summary>
-        public string PathAssistantSid { get; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// A string to describe the resource
-        /// </summary>
-        public string FriendlyName { get; set; }
-        /// <summary>
-        /// An application-defined string that uniquely identifies the resource
-        /// </summary>
-        public string UniqueName { get; set; }
-        /// <summary>
-        /// The JSON string that specifies the actions that instruct the Assistant on how to perform the task
-        /// </summary>
-        public object Actions { get; set; }
-        /// <summary>
-        /// The URL from which the Assistant can fetch actions
-        /// </summary>
-        public Uri ActionsUrl { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (UniqueName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
+      }
 
-        /// <summary>
-        /// Construct a new UpdateTaskOptions
-        /// </summary>
-        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resource to update </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public UpdateTaskOptions(string pathAssistantSid, string pathSid)
-        {
-            PathAssistantSid = pathAssistantSid;
-            PathSid = pathSid;
-        }
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
+      if (Actions != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Actions", Serializers.JsonObject(Actions)));
+      }
 
-            if (UniqueName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
-            }
+      if (ActionsUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ActionsUrl", Serializers.Url(ActionsUrl)));
+      }
 
-            if (Actions != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Actions", Serializers.JsonObject(Actions)));
-            }
+      return p;
+    }
+  }
 
-            if (ActionsUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ActionsUrl", Serializers.Url(ActionsUrl)));
-            }
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// UpdateTaskOptions
+  /// </summary>
+  public class UpdateTaskOptions : IOptions<TaskResource>
+  {
+    /// <summary>
+    /// The SID of the Assistant that is the parent of the resource to update
+    /// </summary>
+    public string PathAssistantSid { get; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// A string to describe the resource
+    /// </summary>
+    public string FriendlyName { get; set; }
+    /// <summary>
+    /// An application-defined string that uniquely identifies the resource
+    /// </summary>
+    public string UniqueName { get; set; }
+    /// <summary>
+    /// The JSON string that specifies the actions that instruct the Assistant on how to perform the task
+    /// </summary>
+    public object Actions { get; set; }
+    /// <summary>
+    /// The URL from which the Assistant can fetch actions
+    /// </summary>
+    public Uri ActionsUrl { get; set; }
 
-            return p;
-        }
+    /// <summary>
+    /// Construct a new UpdateTaskOptions
+    /// </summary>
+    /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resource to update </param>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public UpdateTaskOptions(string pathAssistantSid, string pathSid)
+    {
+      PathAssistantSid = pathAssistantSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// DeleteTaskOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteTaskOptions : IOptions<TaskResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Assistant that is the parent of the resources to delete
-        /// </summary>
-        public string PathAssistantSid { get; }
-        /// <summary>
-        /// The unique string that identifies the resource to delete
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
 
-        /// <summary>
-        /// Construct a new DeleteTaskOptions
-        /// </summary>
-        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resources to delete </param>
-        /// <param name="pathSid"> The unique string that identifies the resource to delete </param>
-        public DeleteTaskOptions(string pathAssistantSid, string pathSid)
-        {
-            PathAssistantSid = pathAssistantSid;
-            PathSid = pathSid;
-        }
+      if (UniqueName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      if (Actions != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Actions", Serializers.JsonObject(Actions)));
+      }
+
+      if (ActionsUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ActionsUrl", Serializers.Url(ActionsUrl)));
+      }
+
+      return p;
     }
+  }
+
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// DeleteTaskOptions
+  /// </summary>
+  public class DeleteTaskOptions : IOptions<TaskResource>
+  {
+    /// <summary>
+    /// The SID of the Assistant that is the parent of the resources to delete
+    /// </summary>
+    public string PathAssistantSid { get; }
+    /// <summary>
+    /// The unique string that identifies the resource to delete
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new DeleteTaskOptions
+    /// </summary>
+    /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resources to delete </param>
+    /// <param name="pathSid"> The unique string that identifies the resource to delete </param>
+    public DeleteTaskOptions(string pathAssistantSid, string pathSid)
+    {
+      PathAssistantSid = pathAssistantSid;
+      PathSid = pathSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
 }

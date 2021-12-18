@@ -11,214 +11,214 @@ using Twilio.Converters;
 namespace Twilio.Rest.Preview.Understand.Assistant.FieldType
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// FetchFieldValueOptions
+  /// </summary>
+  public class FetchFieldValueOptions : IOptions<FieldValueResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// FetchFieldValueOptions
+    /// The assistant_sid
     /// </summary>
-    public class FetchFieldValueOptions : IOptions<FieldValueResource>
+    public string PathAssistantSid { get; }
+    /// <summary>
+    /// The field_type_sid
+    /// </summary>
+    public string PathFieldTypeSid { get; }
+    /// <summary>
+    /// The sid
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchFieldValueOptions
+    /// </summary>
+    /// <param name="pathAssistantSid"> The assistant_sid </param>
+    /// <param name="pathFieldTypeSid"> The field_type_sid </param>
+    /// <param name="pathSid"> The sid </param>
+    public FetchFieldValueOptions(string pathAssistantSid, string pathFieldTypeSid, string pathSid)
     {
-        /// <summary>
-        /// The assistant_sid
-        /// </summary>
-        public string PathAssistantSid { get; }
-        /// <summary>
-        /// The field_type_sid
-        /// </summary>
-        public string PathFieldTypeSid { get; }
-        /// <summary>
-        /// The sid
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchFieldValueOptions
-        /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
-        /// <param name="pathFieldTypeSid"> The field_type_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        public FetchFieldValueOptions(string pathAssistantSid, string pathFieldTypeSid, string pathSid)
-        {
-            PathAssistantSid = pathAssistantSid;
-            PathFieldTypeSid = pathFieldTypeSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathAssistantSid = pathAssistantSid;
+      PathFieldTypeSid = pathFieldTypeSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// ReadFieldValueOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadFieldValueOptions : ReadOptions<FieldValueResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The assistant_sid
-        /// </summary>
-        public string PathAssistantSid { get; }
-        /// <summary>
-        /// The field_type_sid
-        /// </summary>
-        public string PathFieldTypeSid { get; }
-        /// <summary>
-        /// An ISO language-country string of the value. For example: en-US
-        /// </summary>
-        public string Language { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new ReadFieldValueOptions
-        /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
-        /// <param name="pathFieldTypeSid"> The field_type_sid </param>
-        public ReadFieldValueOptions(string pathAssistantSid, string pathFieldTypeSid)
-        {
-            PathAssistantSid = pathAssistantSid;
-            PathFieldTypeSid = pathFieldTypeSid;
-        }
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// ReadFieldValueOptions
+  /// </summary>
+  public class ReadFieldValueOptions : ReadOptions<FieldValueResource>
+  {
+    /// <summary>
+    /// The assistant_sid
+    /// </summary>
+    public string PathAssistantSid { get; }
+    /// <summary>
+    /// The field_type_sid
+    /// </summary>
+    public string PathFieldTypeSid { get; }
+    /// <summary>
+    /// An ISO language-country string of the value. For example: en-US
+    /// </summary>
+    public string Language { get; set; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Language != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Language", Language));
-            }
-
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new ReadFieldValueOptions
+    /// </summary>
+    /// <param name="pathAssistantSid"> The assistant_sid </param>
+    /// <param name="pathFieldTypeSid"> The field_type_sid </param>
+    public ReadFieldValueOptions(string pathAssistantSid, string pathFieldTypeSid)
+    {
+      PathAssistantSid = pathAssistantSid;
+      PathFieldTypeSid = pathFieldTypeSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// CreateFieldValueOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class CreateFieldValueOptions : IOptions<FieldValueResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The assistant_sid
-        /// </summary>
-        public string PathAssistantSid { get; }
-        /// <summary>
-        /// The field_type_sid
-        /// </summary>
-        public string PathFieldTypeSid { get; }
-        /// <summary>
-        /// An ISO language-country string of the value.
-        /// </summary>
-        public string Language { get; }
-        /// <summary>
-        /// A user-provided string that uniquely identifies this resource as an alternative to the sid. Unique up to 64 characters long.
-        /// </summary>
-        public string Value { get; }
-        /// <summary>
-        /// A value that indicates this field value is a synonym of. Empty if the value is not a synonym.
-        /// </summary>
-        public string SynonymOf { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (Language != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Language", Language));
+      }
 
-        /// <summary>
-        /// Construct a new CreateFieldValueOptions
-        /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
-        /// <param name="pathFieldTypeSid"> The field_type_sid </param>
-        /// <param name="language"> An ISO language-country string of the value. </param>
-        /// <param name="value"> A user-provided string that uniquely identifies this resource as an alternative to the sid.
-        ///             Unique up to 64 characters long. </param>
-        public CreateFieldValueOptions(string pathAssistantSid, string pathFieldTypeSid, string language, string value)
-        {
-            PathAssistantSid = pathAssistantSid;
-            PathFieldTypeSid = pathFieldTypeSid;
-            Language = language;
-            Value = value;
-        }
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Language != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Language", Language));
-            }
+      return p;
+    }
+  }
 
-            if (Value != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Value", Value));
-            }
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// CreateFieldValueOptions
+  /// </summary>
+  public class CreateFieldValueOptions : IOptions<FieldValueResource>
+  {
+    /// <summary>
+    /// The assistant_sid
+    /// </summary>
+    public string PathAssistantSid { get; }
+    /// <summary>
+    /// The field_type_sid
+    /// </summary>
+    public string PathFieldTypeSid { get; }
+    /// <summary>
+    /// An ISO language-country string of the value.
+    /// </summary>
+    public string Language { get; }
+    /// <summary>
+    /// A user-provided string that uniquely identifies this resource as an alternative to the sid. Unique up to 64 characters long.
+    /// </summary>
+    public string Value { get; }
+    /// <summary>
+    /// A value that indicates this field value is a synonym of. Empty if the value is not a synonym.
+    /// </summary>
+    public string SynonymOf { get; set; }
 
-            if (SynonymOf != null)
-            {
-                p.Add(new KeyValuePair<string, string>("SynonymOf", SynonymOf.ToString()));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new CreateFieldValueOptions
+    /// </summary>
+    /// <param name="pathAssistantSid"> The assistant_sid </param>
+    /// <param name="pathFieldTypeSid"> The field_type_sid </param>
+    /// <param name="language"> An ISO language-country string of the value. </param>
+    /// <param name="value"> A user-provided string that uniquely identifies this resource as an alternative to the sid.
+    ///             Unique up to 64 characters long. </param>
+    public CreateFieldValueOptions(string pathAssistantSid, string pathFieldTypeSid, string language, string value)
+    {
+      PathAssistantSid = pathAssistantSid;
+      PathFieldTypeSid = pathFieldTypeSid;
+      Language = language;
+      Value = value;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// DeleteFieldValueOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteFieldValueOptions : IOptions<FieldValueResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The assistant_sid
-        /// </summary>
-        public string PathAssistantSid { get; }
-        /// <summary>
-        /// The field_type_sid
-        /// </summary>
-        public string PathFieldTypeSid { get; }
-        /// <summary>
-        /// The sid
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (Language != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Language", Language));
+      }
 
-        /// <summary>
-        /// Construct a new DeleteFieldValueOptions
-        /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
-        /// <param name="pathFieldTypeSid"> The field_type_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        public DeleteFieldValueOptions(string pathAssistantSid, string pathFieldTypeSid, string pathSid)
-        {
-            PathAssistantSid = pathAssistantSid;
-            PathFieldTypeSid = pathFieldTypeSid;
-            PathSid = pathSid;
-        }
+      if (Value != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Value", Value));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      if (SynonymOf != null)
+      {
+        p.Add(new KeyValuePair<string, string>("SynonymOf", SynonymOf.ToString()));
+      }
+
+      return p;
     }
+  }
+
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// DeleteFieldValueOptions
+  /// </summary>
+  public class DeleteFieldValueOptions : IOptions<FieldValueResource>
+  {
+    /// <summary>
+    /// The assistant_sid
+    /// </summary>
+    public string PathAssistantSid { get; }
+    /// <summary>
+    /// The field_type_sid
+    /// </summary>
+    public string PathFieldTypeSid { get; }
+    /// <summary>
+    /// The sid
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new DeleteFieldValueOptions
+    /// </summary>
+    /// <param name="pathAssistantSid"> The assistant_sid </param>
+    /// <param name="pathFieldTypeSid"> The field_type_sid </param>
+    /// <param name="pathSid"> The sid </param>
+    public DeleteFieldValueOptions(string pathAssistantSid, string pathFieldTypeSid, string pathSid)
+    {
+      PathAssistantSid = pathAssistantSid;
+      PathFieldTypeSid = pathFieldTypeSid;
+      PathSid = pathSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
 }

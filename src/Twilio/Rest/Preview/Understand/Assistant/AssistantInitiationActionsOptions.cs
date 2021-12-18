@@ -11,77 +11,77 @@ using Twilio.Converters;
 namespace Twilio.Rest.Preview.Understand.Assistant
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// FetchAssistantInitiationActionsOptions
+  /// </summary>
+  public class FetchAssistantInitiationActionsOptions : IOptions<AssistantInitiationActionsResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// FetchAssistantInitiationActionsOptions
+    /// The assistant_sid
     /// </summary>
-    public class FetchAssistantInitiationActionsOptions : IOptions<AssistantInitiationActionsResource>
+    public string PathAssistantSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchAssistantInitiationActionsOptions
+    /// </summary>
+    /// <param name="pathAssistantSid"> The assistant_sid </param>
+    public FetchAssistantInitiationActionsOptions(string pathAssistantSid)
     {
-        /// <summary>
-        /// The assistant_sid
-        /// </summary>
-        public string PathAssistantSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchAssistantInitiationActionsOptions
-        /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
-        public FetchAssistantInitiationActionsOptions(string pathAssistantSid)
-        {
-            PathAssistantSid = pathAssistantSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathAssistantSid = pathAssistantSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// UpdateAssistantInitiationActionsOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateAssistantInitiationActionsOptions : IOptions<AssistantInitiationActionsResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The assistant_sid
-        /// </summary>
-        public string PathAssistantSid { get; }
-        /// <summary>
-        /// The initiation_actions
-        /// </summary>
-        public object InitiationActions { get; set; }
-
-        /// <summary>
-        /// Construct a new UpdateAssistantInitiationActionsOptions
-        /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
-        public UpdateAssistantInitiationActionsOptions(string pathAssistantSid)
-        {
-            PathAssistantSid = pathAssistantSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (InitiationActions != null)
-            {
-                p.Add(new KeyValuePair<string, string>("InitiationActions", Serializers.JsonObject(InitiationActions)));
-            }
-
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
+
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// UpdateAssistantInitiationActionsOptions
+  /// </summary>
+  public class UpdateAssistantInitiationActionsOptions : IOptions<AssistantInitiationActionsResource>
+  {
+    /// <summary>
+    /// The assistant_sid
+    /// </summary>
+    public string PathAssistantSid { get; }
+    /// <summary>
+    /// The initiation_actions
+    /// </summary>
+    public object InitiationActions { get; set; }
+
+    /// <summary>
+    /// Construct a new UpdateAssistantInitiationActionsOptions
+    /// </summary>
+    /// <param name="pathAssistantSid"> The assistant_sid </param>
+    public UpdateAssistantInitiationActionsOptions(string pathAssistantSid)
+    {
+      PathAssistantSid = pathAssistantSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (InitiationActions != null)
+      {
+        p.Add(new KeyValuePair<string, string>("InitiationActions", Serializers.JsonObject(InitiationActions)));
+      }
+
+      return p;
+    }
+  }
 
 }

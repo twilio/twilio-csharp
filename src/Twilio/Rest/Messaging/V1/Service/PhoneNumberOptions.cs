@@ -11,156 +11,156 @@ using Twilio.Converters;
 namespace Twilio.Rest.Messaging.V1.Service
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// CreatePhoneNumberOptions
+  /// </summary>
+  public class CreatePhoneNumberOptions : IOptions<PhoneNumberResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// CreatePhoneNumberOptions
+    /// The SID of the Service to create the resource under
     /// </summary>
-    public class CreatePhoneNumberOptions : IOptions<PhoneNumberResource>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The SID of the Phone Number being added to the Service
+    /// </summary>
+    public string PhoneNumberSid { get; }
+
+    /// <summary>
+    /// Construct a new CreatePhoneNumberOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to create the resource under </param>
+    /// <param name="phoneNumberSid"> The SID of the Phone Number being added to the Service </param>
+    public CreatePhoneNumberOptions(string pathServiceSid, string phoneNumberSid)
     {
-        /// <summary>
-        /// The SID of the Service to create the resource under
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The SID of the Phone Number being added to the Service
-        /// </summary>
-        public string PhoneNumberSid { get; }
-
-        /// <summary>
-        /// Construct a new CreatePhoneNumberOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to create the resource under </param>
-        /// <param name="phoneNumberSid"> The SID of the Phone Number being added to the Service </param>
-        public CreatePhoneNumberOptions(string pathServiceSid, string phoneNumberSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PhoneNumberSid = phoneNumberSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PhoneNumberSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PhoneNumberSid", PhoneNumberSid.ToString()));
-            }
-
-            return p;
-        }
+      PathServiceSid = pathServiceSid;
+      PhoneNumberSid = phoneNumberSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// DeletePhoneNumberOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeletePhoneNumberOptions : IOptions<PhoneNumberResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Service to delete the resource from
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The SID that identifies the resource to delete
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (PhoneNumberSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PhoneNumberSid", PhoneNumberSid.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new DeletePhoneNumberOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
-        /// <param name="pathSid"> The SID that identifies the resource to delete </param>
-        public DeletePhoneNumberOptions(string pathServiceSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathSid = pathSid;
-        }
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// DeletePhoneNumberOptions
+  /// </summary>
+  public class DeletePhoneNumberOptions : IOptions<PhoneNumberResource>
+  {
+    /// <summary>
+    /// The SID of the Service to delete the resource from
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The SID that identifies the resource to delete
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new DeletePhoneNumberOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
+    /// <param name="pathSid"> The SID that identifies the resource to delete </param>
+    public DeletePhoneNumberOptions(string pathServiceSid, string pathSid)
+    {
+      PathServiceSid = pathServiceSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// ReadPhoneNumberOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadPhoneNumberOptions : ReadOptions<PhoneNumberResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Service to read the resources from
-        /// </summary>
-        public string PathServiceSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new ReadPhoneNumberOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to read the resources from </param>
-        public ReadPhoneNumberOptions(string pathServiceSid)
-        {
-            PathServiceSid = pathServiceSid;
-        }
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// ReadPhoneNumberOptions
+  /// </summary>
+  public class ReadPhoneNumberOptions : ReadOptions<PhoneNumberResource>
+  {
+    /// <summary>
+    /// The SID of the Service to read the resources from
+    /// </summary>
+    public string PathServiceSid { get; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new ReadPhoneNumberOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to read the resources from </param>
+    public ReadPhoneNumberOptions(string pathServiceSid)
+    {
+      PathServiceSid = pathServiceSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// FetchPhoneNumberOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchPhoneNumberOptions : IOptions<PhoneNumberResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Service to fetch the resource from
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The SID that identifies the resource to fetch
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new FetchPhoneNumberOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
-        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
-        public FetchPhoneNumberOptions(string pathServiceSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      return p;
     }
+  }
+
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// FetchPhoneNumberOptions
+  /// </summary>
+  public class FetchPhoneNumberOptions : IOptions<PhoneNumberResource>
+  {
+    /// <summary>
+    /// The SID of the Service to fetch the resource from
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The SID that identifies the resource to fetch
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchPhoneNumberOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
+    /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
+    public FetchPhoneNumberOptions(string pathServiceSid, string pathSid)
+    {
+      PathServiceSid = pathServiceSid;
+      PathSid = pathSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
 }

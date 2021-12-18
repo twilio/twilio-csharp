@@ -22,383 +22,383 @@ using Twilio.Types;
 namespace Twilio.Rest.Api.V2010.Account.Call
 {
 
-    public class PaymentResource : Resource
+  public class PaymentResource : Resource
+  {
+    public sealed class PaymentMethodEnum : StringEnum
     {
-        public sealed class PaymentMethodEnum : StringEnum
-        {
-            private PaymentMethodEnum(string value) : base(value) {}
-            public PaymentMethodEnum() {}
-            public static implicit operator PaymentMethodEnum(string value)
-            {
-                return new PaymentMethodEnum(value);
-            }
+      private PaymentMethodEnum(string value) : base(value) { }
+      public PaymentMethodEnum() { }
+      public static implicit operator PaymentMethodEnum(string value)
+      {
+        return new PaymentMethodEnum(value);
+      }
 
-            public static readonly PaymentMethodEnum CreditCard = new PaymentMethodEnum("credit-card");
-            public static readonly PaymentMethodEnum AchDebit = new PaymentMethodEnum("ach-debit");
-        }
-
-        public sealed class BankAccountTypeEnum : StringEnum
-        {
-            private BankAccountTypeEnum(string value) : base(value) {}
-            public BankAccountTypeEnum() {}
-            public static implicit operator BankAccountTypeEnum(string value)
-            {
-                return new BankAccountTypeEnum(value);
-            }
-
-            public static readonly BankAccountTypeEnum ConsumerChecking = new BankAccountTypeEnum("consumer-checking");
-            public static readonly BankAccountTypeEnum ConsumerSavings = new BankAccountTypeEnum("consumer-savings");
-            public static readonly BankAccountTypeEnum CommercialChecking = new BankAccountTypeEnum("commercial-checking");
-        }
-
-        public sealed class TokenTypeEnum : StringEnum
-        {
-            private TokenTypeEnum(string value) : base(value) {}
-            public TokenTypeEnum() {}
-            public static implicit operator TokenTypeEnum(string value)
-            {
-                return new TokenTypeEnum(value);
-            }
-
-            public static readonly TokenTypeEnum OneTime = new TokenTypeEnum("one-time");
-            public static readonly TokenTypeEnum Reusable = new TokenTypeEnum("reusable");
-        }
-
-        public sealed class CaptureEnum : StringEnum
-        {
-            private CaptureEnum(string value) : base(value) {}
-            public CaptureEnum() {}
-            public static implicit operator CaptureEnum(string value)
-            {
-                return new CaptureEnum(value);
-            }
-
-            public static readonly CaptureEnum PaymentCardNumber = new CaptureEnum("payment-card-number");
-            public static readonly CaptureEnum ExpirationDate = new CaptureEnum("expiration-date");
-            public static readonly CaptureEnum SecurityCode = new CaptureEnum("security-code");
-            public static readonly CaptureEnum PostalCode = new CaptureEnum("postal-code");
-            public static readonly CaptureEnum BankRoutingNumber = new CaptureEnum("bank-routing-number");
-            public static readonly CaptureEnum BankAccountNumber = new CaptureEnum("bank-account-number");
-        }
-
-        public sealed class StatusEnum : StringEnum
-        {
-            private StatusEnum(string value) : base(value) {}
-            public StatusEnum() {}
-            public static implicit operator StatusEnum(string value)
-            {
-                return new StatusEnum(value);
-            }
-
-            public static readonly StatusEnum Complete = new StatusEnum("complete");
-            public static readonly StatusEnum Cancel = new StatusEnum("cancel");
-        }
-
-        private static Request BuildCreateRequest(CreatePaymentOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Post,
-                Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Calls/" + options.PathCallSid + "/Payments.json",
-                postParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// create an instance of payments. This will start a new payments session
-        /// </summary>
-        /// <param name="options"> Create Payment parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Payment </returns>
-        public static PaymentResource Create(CreatePaymentOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildCreateRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// create an instance of payments. This will start a new payments session
-        /// </summary>
-        /// <param name="options"> Create Payment parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Payment </returns>
-        public static async System.Threading.Tasks.Task<PaymentResource> CreateAsync(CreatePaymentOptions options,
-                                                                                     ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// create an instance of payments. This will start a new payments session
-        /// </summary>
-        /// <param name="pathCallSid"> The SID of the call that will create the resource. </param>
-        /// <param name="idempotencyKey"> A unique token that will be used to ensure that multiple API calls with the same
-        ///                      information do not result in multiple transactions. </param>
-        /// <param name="statusCallback"> Provide an absolute or relative URL to receive status updates regarding your Pay
-        ///                      session.. </param>
-        /// <param name="pathAccountSid"> The SID of the Account that will create the resource </param>
-        /// <param name="bankAccountType"> Type of bank account if payment source is ACH. </param>
-        /// <param name="chargeAmount"> A positive decimal value less than 1,000,000 to charge against the credit card or bank
-        ///                    account. </param>
-        /// <param name="currency"> The currency of the `charge_amount`. </param>
-        /// <param name="description"> The description can be used to provide more details regarding the transaction. </param>
-        /// <param name="input"> A list of inputs that should be accepted. Currently only `dtmf` is supported. </param>
-        /// <param name="minPostalCodeLength"> A positive integer that is used to validate the length of the `PostalCode`
-        ///                           inputted by the user. </param>
-        /// <param name="parameter"> A single level JSON string that is required when accepting certain information specific
-        ///                 only to ACH payments. </param>
-        /// <param name="paymentConnector"> This is the unique name corresponding to the Payment Gateway Connector installed in
-        ///                        the Twilio Add-ons. </param>
-        /// <param name="paymentMethod"> Type of payment being captured. </param>
-        /// <param name="postalCode"> Indicates whether the credit card PostalCode (zip code) is a required piece of payment
-        ///                  information that must be provided by the caller. </param>
-        /// <param name="securityCode"> Indicates whether the credit card security code is a required piece of payment
-        ///                    information that must be provided by the caller. </param>
-        /// <param name="timeout"> The number of seconds that <Pay> should wait for the caller to press a digit between each
-        ///               subsequent digit, after the first one, before moving on to validate the digits captured. </param>
-        /// <param name="tokenType"> Indicates whether the payment method should be tokenized as a `one-time` or `reusable`
-        ///                 token. </param>
-        /// <param name="validCardTypes"> Credit card types separated by space that Pay should accept. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Payment </returns>
-        public static PaymentResource Create(string pathCallSid,
-                                             string idempotencyKey,
-                                             Uri statusCallback,
-                                             string pathAccountSid = null,
-                                             PaymentResource.BankAccountTypeEnum bankAccountType = null,
-                                             decimal? chargeAmount = null,
-                                             string currency = null,
-                                             string description = null,
-                                             string input = null,
-                                             int? minPostalCodeLength = null,
-                                             object parameter = null,
-                                             string paymentConnector = null,
-                                             PaymentResource.PaymentMethodEnum paymentMethod = null,
-                                             bool? postalCode = null,
-                                             bool? securityCode = null,
-                                             int? timeout = null,
-                                             PaymentResource.TokenTypeEnum tokenType = null,
-                                             string validCardTypes = null,
-                                             ITwilioRestClient client = null)
-        {
-            var options = new CreatePaymentOptions(pathCallSid, idempotencyKey, statusCallback){PathAccountSid = pathAccountSid, BankAccountType = bankAccountType, ChargeAmount = chargeAmount, Currency = currency, Description = description, Input = input, MinPostalCodeLength = minPostalCodeLength, Parameter = parameter, PaymentConnector = paymentConnector, PaymentMethod = paymentMethod, PostalCode = postalCode, SecurityCode = securityCode, Timeout = timeout, TokenType = tokenType, ValidCardTypes = validCardTypes};
-            return Create(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// create an instance of payments. This will start a new payments session
-        /// </summary>
-        /// <param name="pathCallSid"> The SID of the call that will create the resource. </param>
-        /// <param name="idempotencyKey"> A unique token that will be used to ensure that multiple API calls with the same
-        ///                      information do not result in multiple transactions. </param>
-        /// <param name="statusCallback"> Provide an absolute or relative URL to receive status updates regarding your Pay
-        ///                      session.. </param>
-        /// <param name="pathAccountSid"> The SID of the Account that will create the resource </param>
-        /// <param name="bankAccountType"> Type of bank account if payment source is ACH. </param>
-        /// <param name="chargeAmount"> A positive decimal value less than 1,000,000 to charge against the credit card or bank
-        ///                    account. </param>
-        /// <param name="currency"> The currency of the `charge_amount`. </param>
-        /// <param name="description"> The description can be used to provide more details regarding the transaction. </param>
-        /// <param name="input"> A list of inputs that should be accepted. Currently only `dtmf` is supported. </param>
-        /// <param name="minPostalCodeLength"> A positive integer that is used to validate the length of the `PostalCode`
-        ///                           inputted by the user. </param>
-        /// <param name="parameter"> A single level JSON string that is required when accepting certain information specific
-        ///                 only to ACH payments. </param>
-        /// <param name="paymentConnector"> This is the unique name corresponding to the Payment Gateway Connector installed in
-        ///                        the Twilio Add-ons. </param>
-        /// <param name="paymentMethod"> Type of payment being captured. </param>
-        /// <param name="postalCode"> Indicates whether the credit card PostalCode (zip code) is a required piece of payment
-        ///                  information that must be provided by the caller. </param>
-        /// <param name="securityCode"> Indicates whether the credit card security code is a required piece of payment
-        ///                    information that must be provided by the caller. </param>
-        /// <param name="timeout"> The number of seconds that <Pay> should wait for the caller to press a digit between each
-        ///               subsequent digit, after the first one, before moving on to validate the digits captured. </param>
-        /// <param name="tokenType"> Indicates whether the payment method should be tokenized as a `one-time` or `reusable`
-        ///                 token. </param>
-        /// <param name="validCardTypes"> Credit card types separated by space that Pay should accept. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Payment </returns>
-        public static async System.Threading.Tasks.Task<PaymentResource> CreateAsync(string pathCallSid,
-                                                                                     string idempotencyKey,
-                                                                                     Uri statusCallback,
-                                                                                     string pathAccountSid = null,
-                                                                                     PaymentResource.BankAccountTypeEnum bankAccountType = null,
-                                                                                     decimal? chargeAmount = null,
-                                                                                     string currency = null,
-                                                                                     string description = null,
-                                                                                     string input = null,
-                                                                                     int? minPostalCodeLength = null,
-                                                                                     object parameter = null,
-                                                                                     string paymentConnector = null,
-                                                                                     PaymentResource.PaymentMethodEnum paymentMethod = null,
-                                                                                     bool? postalCode = null,
-                                                                                     bool? securityCode = null,
-                                                                                     int? timeout = null,
-                                                                                     PaymentResource.TokenTypeEnum tokenType = null,
-                                                                                     string validCardTypes = null,
-                                                                                     ITwilioRestClient client = null)
-        {
-            var options = new CreatePaymentOptions(pathCallSid, idempotencyKey, statusCallback){PathAccountSid = pathAccountSid, BankAccountType = bankAccountType, ChargeAmount = chargeAmount, Currency = currency, Description = description, Input = input, MinPostalCodeLength = minPostalCodeLength, Parameter = parameter, PaymentConnector = paymentConnector, PaymentMethod = paymentMethod, PostalCode = postalCode, SecurityCode = securityCode, Timeout = timeout, TokenType = tokenType, ValidCardTypes = validCardTypes};
-            return await CreateAsync(options, client);
-        }
-        #endif
-
-        private static Request BuildUpdateRequest(UpdatePaymentOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Post,
-                Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Calls/" + options.PathCallSid + "/Payments/" + options.PathSid + ".json",
-                postParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// update an instance of payments with different phases of payment flows.
-        /// </summary>
-        /// <param name="options"> Update Payment parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Payment </returns>
-        public static PaymentResource Update(UpdatePaymentOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildUpdateRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// update an instance of payments with different phases of payment flows.
-        /// </summary>
-        /// <param name="options"> Update Payment parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Payment </returns>
-        public static async System.Threading.Tasks.Task<PaymentResource> UpdateAsync(UpdatePaymentOptions options,
-                                                                                     ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// update an instance of payments with different phases of payment flows.
-        /// </summary>
-        /// <param name="pathCallSid"> The SID of the call that will create the resource. </param>
-        /// <param name="pathSid"> The SID of Payments session </param>
-        /// <param name="idempotencyKey"> A unique token that will be used to ensure that multiple API calls with the same
-        ///                      information do not result in multiple transactions. </param>
-        /// <param name="statusCallback"> Provide an absolute or relative URL to receive status updates regarding your Pay
-        ///                      session. </param>
-        /// <param name="pathAccountSid"> The SID of the Account that will update the resource </param>
-        /// <param name="capture"> The piece of payment information that you wish the caller to enter. </param>
-        /// <param name="status"> Indicates whether the current payment session should be cancelled or completed. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Payment </returns>
-        public static PaymentResource Update(string pathCallSid,
-                                             string pathSid,
-                                             string idempotencyKey,
-                                             Uri statusCallback,
-                                             string pathAccountSid = null,
-                                             PaymentResource.CaptureEnum capture = null,
-                                             PaymentResource.StatusEnum status = null,
-                                             ITwilioRestClient client = null)
-        {
-            var options = new UpdatePaymentOptions(pathCallSid, pathSid, idempotencyKey, statusCallback){PathAccountSid = pathAccountSid, Capture = capture, Status = status};
-            return Update(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// update an instance of payments with different phases of payment flows.
-        /// </summary>
-        /// <param name="pathCallSid"> The SID of the call that will create the resource. </param>
-        /// <param name="pathSid"> The SID of Payments session </param>
-        /// <param name="idempotencyKey"> A unique token that will be used to ensure that multiple API calls with the same
-        ///                      information do not result in multiple transactions. </param>
-        /// <param name="statusCallback"> Provide an absolute or relative URL to receive status updates regarding your Pay
-        ///                      session. </param>
-        /// <param name="pathAccountSid"> The SID of the Account that will update the resource </param>
-        /// <param name="capture"> The piece of payment information that you wish the caller to enter. </param>
-        /// <param name="status"> Indicates whether the current payment session should be cancelled or completed. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Payment </returns>
-        public static async System.Threading.Tasks.Task<PaymentResource> UpdateAsync(string pathCallSid,
-                                                                                     string pathSid,
-                                                                                     string idempotencyKey,
-                                                                                     Uri statusCallback,
-                                                                                     string pathAccountSid = null,
-                                                                                     PaymentResource.CaptureEnum capture = null,
-                                                                                     PaymentResource.StatusEnum status = null,
-                                                                                     ITwilioRestClient client = null)
-        {
-            var options = new UpdatePaymentOptions(pathCallSid, pathSid, idempotencyKey, statusCallback){PathAccountSid = pathAccountSid, Capture = capture, Status = status};
-            return await UpdateAsync(options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Converts a JSON string into a PaymentResource object
-        /// </summary>
-        /// <param name="json"> Raw JSON string </param>
-        /// <returns> PaymentResource object represented by the provided JSON </returns>
-        public static PaymentResource FromJson(string json)
-        {
-            // Convert all checked exceptions to Runtime
-            try
-            {
-                return JsonConvert.DeserializeObject<PaymentResource>(json);
-            }
-            catch (JsonException e)
-            {
-                throw new ApiException(e.Message, e);
-            }
-        }
-
-        /// <summary>
-        /// The SID of the Account that created the Payments resource.
-        /// </summary>
-        [JsonProperty("account_sid")]
-        public string AccountSid { get; private set; }
-        /// <summary>
-        /// The SID of the Call the resource is associated with.
-        /// </summary>
-        [JsonProperty("call_sid")]
-        public string CallSid { get; private set; }
-        /// <summary>
-        /// The SID of the Payments resource.
-        /// </summary>
-        [JsonProperty("sid")]
-        public string Sid { get; private set; }
-        /// <summary>
-        /// The RFC 2822 date and time in GMT that the resource was created
-        /// </summary>
-        [JsonProperty("date_created")]
-        public DateTime? DateCreated { get; private set; }
-        /// <summary>
-        /// The RFC 2822 date and time in GMT that the resource was last updated
-        /// </summary>
-        [JsonProperty("date_updated")]
-        public DateTime? DateUpdated { get; private set; }
-        /// <summary>
-        /// The URI of the resource, relative to `https://api.twilio.com`
-        /// </summary>
-        [JsonProperty("uri")]
-        public string Uri { get; private set; }
-
-        private PaymentResource()
-        {
-
-        }
+      public static readonly PaymentMethodEnum CreditCard = new PaymentMethodEnum("credit-card");
+      public static readonly PaymentMethodEnum AchDebit = new PaymentMethodEnum("ach-debit");
     }
+
+    public sealed class BankAccountTypeEnum : StringEnum
+    {
+      private BankAccountTypeEnum(string value) : base(value) { }
+      public BankAccountTypeEnum() { }
+      public static implicit operator BankAccountTypeEnum(string value)
+      {
+        return new BankAccountTypeEnum(value);
+      }
+
+      public static readonly BankAccountTypeEnum ConsumerChecking = new BankAccountTypeEnum("consumer-checking");
+      public static readonly BankAccountTypeEnum ConsumerSavings = new BankAccountTypeEnum("consumer-savings");
+      public static readonly BankAccountTypeEnum CommercialChecking = new BankAccountTypeEnum("commercial-checking");
+    }
+
+    public sealed class TokenTypeEnum : StringEnum
+    {
+      private TokenTypeEnum(string value) : base(value) { }
+      public TokenTypeEnum() { }
+      public static implicit operator TokenTypeEnum(string value)
+      {
+        return new TokenTypeEnum(value);
+      }
+
+      public static readonly TokenTypeEnum OneTime = new TokenTypeEnum("one-time");
+      public static readonly TokenTypeEnum Reusable = new TokenTypeEnum("reusable");
+    }
+
+    public sealed class CaptureEnum : StringEnum
+    {
+      private CaptureEnum(string value) : base(value) { }
+      public CaptureEnum() { }
+      public static implicit operator CaptureEnum(string value)
+      {
+        return new CaptureEnum(value);
+      }
+
+      public static readonly CaptureEnum PaymentCardNumber = new CaptureEnum("payment-card-number");
+      public static readonly CaptureEnum ExpirationDate = new CaptureEnum("expiration-date");
+      public static readonly CaptureEnum SecurityCode = new CaptureEnum("security-code");
+      public static readonly CaptureEnum PostalCode = new CaptureEnum("postal-code");
+      public static readonly CaptureEnum BankRoutingNumber = new CaptureEnum("bank-routing-number");
+      public static readonly CaptureEnum BankAccountNumber = new CaptureEnum("bank-account-number");
+    }
+
+    public sealed class StatusEnum : StringEnum
+    {
+      private StatusEnum(string value) : base(value) { }
+      public StatusEnum() { }
+      public static implicit operator StatusEnum(string value)
+      {
+        return new StatusEnum(value);
+      }
+
+      public static readonly StatusEnum Complete = new StatusEnum("complete");
+      public static readonly StatusEnum Cancel = new StatusEnum("cancel");
+    }
+
+    private static Request BuildCreateRequest(CreatePaymentOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Post,
+          Rest.Domain.Api,
+          "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Calls/" + options.PathCallSid + "/Payments.json",
+          postParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// create an instance of payments. This will start a new payments session
+    /// </summary>
+    /// <param name="options"> Create Payment parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Payment </returns>
+    public static PaymentResource Create(CreatePaymentOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildCreateRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// create an instance of payments. This will start a new payments session
+    /// </summary>
+    /// <param name="options"> Create Payment parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Payment </returns>
+    public static async System.Threading.Tasks.Task<PaymentResource> CreateAsync(CreatePaymentOptions options,
+                                                                                 ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildCreateRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// create an instance of payments. This will start a new payments session
+    /// </summary>
+    /// <param name="pathCallSid"> The SID of the call that will create the resource. </param>
+    /// <param name="idempotencyKey"> A unique token that will be used to ensure that multiple API calls with the same
+    ///                      information do not result in multiple transactions. </param>
+    /// <param name="statusCallback"> Provide an absolute or relative URL to receive status updates regarding your Pay
+    ///                      session.. </param>
+    /// <param name="pathAccountSid"> The SID of the Account that will create the resource </param>
+    /// <param name="bankAccountType"> Type of bank account if payment source is ACH. </param>
+    /// <param name="chargeAmount"> A positive decimal value less than 1,000,000 to charge against the credit card or bank
+    ///                    account. </param>
+    /// <param name="currency"> The currency of the `charge_amount`. </param>
+    /// <param name="description"> The description can be used to provide more details regarding the transaction. </param>
+    /// <param name="input"> A list of inputs that should be accepted. Currently only `dtmf` is supported. </param>
+    /// <param name="minPostalCodeLength"> A positive integer that is used to validate the length of the `PostalCode`
+    ///                           inputted by the user. </param>
+    /// <param name="parameter"> A single level JSON string that is required when accepting certain information specific
+    ///                 only to ACH payments. </param>
+    /// <param name="paymentConnector"> This is the unique name corresponding to the Payment Gateway Connector installed in
+    ///                        the Twilio Add-ons. </param>
+    /// <param name="paymentMethod"> Type of payment being captured. </param>
+    /// <param name="postalCode"> Indicates whether the credit card PostalCode (zip code) is a required piece of payment
+    ///                  information that must be provided by the caller. </param>
+    /// <param name="securityCode"> Indicates whether the credit card security code is a required piece of payment
+    ///                    information that must be provided by the caller. </param>
+    /// <param name="timeout"> The number of seconds that <Pay> should wait for the caller to press a digit between each
+    ///               subsequent digit, after the first one, before moving on to validate the digits captured. </param>
+    /// <param name="tokenType"> Indicates whether the payment method should be tokenized as a `one-time` or `reusable`
+    ///                 token. </param>
+    /// <param name="validCardTypes"> Credit card types separated by space that Pay should accept. </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Payment </returns>
+    public static PaymentResource Create(string pathCallSid,
+                                         string idempotencyKey,
+                                         Uri statusCallback,
+                                         string pathAccountSid = null,
+                                         PaymentResource.BankAccountTypeEnum bankAccountType = null,
+                                         decimal? chargeAmount = null,
+                                         string currency = null,
+                                         string description = null,
+                                         string input = null,
+                                         int? minPostalCodeLength = null,
+                                         object parameter = null,
+                                         string paymentConnector = null,
+                                         PaymentResource.PaymentMethodEnum paymentMethod = null,
+                                         bool? postalCode = null,
+                                         bool? securityCode = null,
+                                         int? timeout = null,
+                                         PaymentResource.TokenTypeEnum tokenType = null,
+                                         string validCardTypes = null,
+                                         ITwilioRestClient client = null)
+    {
+      var options = new CreatePaymentOptions(pathCallSid, idempotencyKey, statusCallback) { PathAccountSid = pathAccountSid, BankAccountType = bankAccountType, ChargeAmount = chargeAmount, Currency = currency, Description = description, Input = input, MinPostalCodeLength = minPostalCodeLength, Parameter = parameter, PaymentConnector = paymentConnector, PaymentMethod = paymentMethod, PostalCode = postalCode, SecurityCode = securityCode, Timeout = timeout, TokenType = tokenType, ValidCardTypes = validCardTypes };
+      return Create(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// create an instance of payments. This will start a new payments session
+    /// </summary>
+    /// <param name="pathCallSid"> The SID of the call that will create the resource. </param>
+    /// <param name="idempotencyKey"> A unique token that will be used to ensure that multiple API calls with the same
+    ///                      information do not result in multiple transactions. </param>
+    /// <param name="statusCallback"> Provide an absolute or relative URL to receive status updates regarding your Pay
+    ///                      session.. </param>
+    /// <param name="pathAccountSid"> The SID of the Account that will create the resource </param>
+    /// <param name="bankAccountType"> Type of bank account if payment source is ACH. </param>
+    /// <param name="chargeAmount"> A positive decimal value less than 1,000,000 to charge against the credit card or bank
+    ///                    account. </param>
+    /// <param name="currency"> The currency of the `charge_amount`. </param>
+    /// <param name="description"> The description can be used to provide more details regarding the transaction. </param>
+    /// <param name="input"> A list of inputs that should be accepted. Currently only `dtmf` is supported. </param>
+    /// <param name="minPostalCodeLength"> A positive integer that is used to validate the length of the `PostalCode`
+    ///                           inputted by the user. </param>
+    /// <param name="parameter"> A single level JSON string that is required when accepting certain information specific
+    ///                 only to ACH payments. </param>
+    /// <param name="paymentConnector"> This is the unique name corresponding to the Payment Gateway Connector installed in
+    ///                        the Twilio Add-ons. </param>
+    /// <param name="paymentMethod"> Type of payment being captured. </param>
+    /// <param name="postalCode"> Indicates whether the credit card PostalCode (zip code) is a required piece of payment
+    ///                  information that must be provided by the caller. </param>
+    /// <param name="securityCode"> Indicates whether the credit card security code is a required piece of payment
+    ///                    information that must be provided by the caller. </param>
+    /// <param name="timeout"> The number of seconds that <Pay> should wait for the caller to press a digit between each
+    ///               subsequent digit, after the first one, before moving on to validate the digits captured. </param>
+    /// <param name="tokenType"> Indicates whether the payment method should be tokenized as a `one-time` or `reusable`
+    ///                 token. </param>
+    /// <param name="validCardTypes"> Credit card types separated by space that Pay should accept. </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Payment </returns>
+    public static async System.Threading.Tasks.Task<PaymentResource> CreateAsync(string pathCallSid,
+                                                                                 string idempotencyKey,
+                                                                                 Uri statusCallback,
+                                                                                 string pathAccountSid = null,
+                                                                                 PaymentResource.BankAccountTypeEnum bankAccountType = null,
+                                                                                 decimal? chargeAmount = null,
+                                                                                 string currency = null,
+                                                                                 string description = null,
+                                                                                 string input = null,
+                                                                                 int? minPostalCodeLength = null,
+                                                                                 object parameter = null,
+                                                                                 string paymentConnector = null,
+                                                                                 PaymentResource.PaymentMethodEnum paymentMethod = null,
+                                                                                 bool? postalCode = null,
+                                                                                 bool? securityCode = null,
+                                                                                 int? timeout = null,
+                                                                                 PaymentResource.TokenTypeEnum tokenType = null,
+                                                                                 string validCardTypes = null,
+                                                                                 ITwilioRestClient client = null)
+    {
+      var options = new CreatePaymentOptions(pathCallSid, idempotencyKey, statusCallback) { PathAccountSid = pathAccountSid, BankAccountType = bankAccountType, ChargeAmount = chargeAmount, Currency = currency, Description = description, Input = input, MinPostalCodeLength = minPostalCodeLength, Parameter = parameter, PaymentConnector = paymentConnector, PaymentMethod = paymentMethod, PostalCode = postalCode, SecurityCode = securityCode, Timeout = timeout, TokenType = tokenType, ValidCardTypes = validCardTypes };
+      return await CreateAsync(options, client);
+    }
+#endif
+
+    private static Request BuildUpdateRequest(UpdatePaymentOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Post,
+          Rest.Domain.Api,
+          "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Calls/" + options.PathCallSid + "/Payments/" + options.PathSid + ".json",
+          postParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// update an instance of payments with different phases of payment flows.
+    /// </summary>
+    /// <param name="options"> Update Payment parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Payment </returns>
+    public static PaymentResource Update(UpdatePaymentOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildUpdateRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// update an instance of payments with different phases of payment flows.
+    /// </summary>
+    /// <param name="options"> Update Payment parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Payment </returns>
+    public static async System.Threading.Tasks.Task<PaymentResource> UpdateAsync(UpdatePaymentOptions options,
+                                                                                 ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// update an instance of payments with different phases of payment flows.
+    /// </summary>
+    /// <param name="pathCallSid"> The SID of the call that will create the resource. </param>
+    /// <param name="pathSid"> The SID of Payments session </param>
+    /// <param name="idempotencyKey"> A unique token that will be used to ensure that multiple API calls with the same
+    ///                      information do not result in multiple transactions. </param>
+    /// <param name="statusCallback"> Provide an absolute or relative URL to receive status updates regarding your Pay
+    ///                      session. </param>
+    /// <param name="pathAccountSid"> The SID of the Account that will update the resource </param>
+    /// <param name="capture"> The piece of payment information that you wish the caller to enter. </param>
+    /// <param name="status"> Indicates whether the current payment session should be cancelled or completed. </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Payment </returns>
+    public static PaymentResource Update(string pathCallSid,
+                                         string pathSid,
+                                         string idempotencyKey,
+                                         Uri statusCallback,
+                                         string pathAccountSid = null,
+                                         PaymentResource.CaptureEnum capture = null,
+                                         PaymentResource.StatusEnum status = null,
+                                         ITwilioRestClient client = null)
+    {
+      var options = new UpdatePaymentOptions(pathCallSid, pathSid, idempotencyKey, statusCallback) { PathAccountSid = pathAccountSid, Capture = capture, Status = status };
+      return Update(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// update an instance of payments with different phases of payment flows.
+    /// </summary>
+    /// <param name="pathCallSid"> The SID of the call that will create the resource. </param>
+    /// <param name="pathSid"> The SID of Payments session </param>
+    /// <param name="idempotencyKey"> A unique token that will be used to ensure that multiple API calls with the same
+    ///                      information do not result in multiple transactions. </param>
+    /// <param name="statusCallback"> Provide an absolute or relative URL to receive status updates regarding your Pay
+    ///                      session. </param>
+    /// <param name="pathAccountSid"> The SID of the Account that will update the resource </param>
+    /// <param name="capture"> The piece of payment information that you wish the caller to enter. </param>
+    /// <param name="status"> Indicates whether the current payment session should be cancelled or completed. </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Payment </returns>
+    public static async System.Threading.Tasks.Task<PaymentResource> UpdateAsync(string pathCallSid,
+                                                                                 string pathSid,
+                                                                                 string idempotencyKey,
+                                                                                 Uri statusCallback,
+                                                                                 string pathAccountSid = null,
+                                                                                 PaymentResource.CaptureEnum capture = null,
+                                                                                 PaymentResource.StatusEnum status = null,
+                                                                                 ITwilioRestClient client = null)
+    {
+      var options = new UpdatePaymentOptions(pathCallSid, pathSid, idempotencyKey, statusCallback) { PathAccountSid = pathAccountSid, Capture = capture, Status = status };
+      return await UpdateAsync(options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Converts a JSON string into a PaymentResource object
+    /// </summary>
+    /// <param name="json"> Raw JSON string </param>
+    /// <returns> PaymentResource object represented by the provided JSON </returns>
+    public static PaymentResource FromJson(string json)
+    {
+      // Convert all checked exceptions to Runtime
+      try
+      {
+        return JsonConvert.DeserializeObject<PaymentResource>(json);
+      }
+      catch (JsonException e)
+      {
+        throw new ApiException(e.Message, e);
+      }
+    }
+
+    /// <summary>
+    /// The SID of the Account that created the Payments resource.
+    /// </summary>
+    [JsonProperty("account_sid")]
+    public string AccountSid { get; private set; }
+    /// <summary>
+    /// The SID of the Call the resource is associated with.
+    /// </summary>
+    [JsonProperty("call_sid")]
+    public string CallSid { get; private set; }
+    /// <summary>
+    /// The SID of the Payments resource.
+    /// </summary>
+    [JsonProperty("sid")]
+    public string Sid { get; private set; }
+    /// <summary>
+    /// The RFC 2822 date and time in GMT that the resource was created
+    /// </summary>
+    [JsonProperty("date_created")]
+    public DateTime? DateCreated { get; private set; }
+    /// <summary>
+    /// The RFC 2822 date and time in GMT that the resource was last updated
+    /// </summary>
+    [JsonProperty("date_updated")]
+    public DateTime? DateUpdated { get; private set; }
+    /// <summary>
+    /// The URI of the resource, relative to `https://api.twilio.com`
+    /// </summary>
+    [JsonProperty("uri")]
+    public string Uri { get; private set; }
+
+    private PaymentResource()
+    {
+
+    }
+  }
 
 }

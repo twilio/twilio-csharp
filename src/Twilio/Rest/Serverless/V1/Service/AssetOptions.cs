@@ -11,204 +11,204 @@ using Twilio.Converters;
 namespace Twilio.Rest.Serverless.V1.Service
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Retrieve a list of all Assets.
+  /// </summary>
+  public class ReadAssetOptions : ReadOptions<AssetResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Retrieve a list of all Assets.
+    /// The SID of the Service to read the Asset resource from
     /// </summary>
-    public class ReadAssetOptions : ReadOptions<AssetResource>
+    public string PathServiceSid { get; }
+
+    /// <summary>
+    /// Construct a new ReadAssetOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to read the Asset resource from </param>
+    public ReadAssetOptions(string pathServiceSid)
     {
-        /// <summary>
-        /// The SID of the Service to read the Asset resource from
-        /// </summary>
-        public string PathServiceSid { get; }
-
-        /// <summary>
-        /// Construct a new ReadAssetOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to read the Asset resource from </param>
-        public ReadAssetOptions(string pathServiceSid)
-        {
-            PathServiceSid = pathServiceSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+      PathServiceSid = pathServiceSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Retrieve a specific Asset resource.
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchAssetOptions : IOptions<AssetResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Service to fetch the Asset resource from
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The SID that identifies the Asset resource to fetch
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new FetchAssetOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to fetch the Asset resource from </param>
-        /// <param name="pathSid"> The SID that identifies the Asset resource to fetch </param>
-        public FetchAssetOptions(string pathServiceSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathSid = pathSid;
-        }
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Retrieve a specific Asset resource.
+  /// </summary>
+  public class FetchAssetOptions : IOptions<AssetResource>
+  {
+    /// <summary>
+    /// The SID of the Service to fetch the Asset resource from
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The SID that identifies the Asset resource to fetch
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchAssetOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to fetch the Asset resource from </param>
+    /// <param name="pathSid"> The SID that identifies the Asset resource to fetch </param>
+    public FetchAssetOptions(string pathServiceSid, string pathSid)
+    {
+      PathServiceSid = pathServiceSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Delete an Asset resource.
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteAssetOptions : IOptions<AssetResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Service to delete the Asset resource from
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The SID that identifies the Asset resource to delete
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new DeleteAssetOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to delete the Asset resource from </param>
-        /// <param name="pathSid"> The SID that identifies the Asset resource to delete </param>
-        public DeleteAssetOptions(string pathServiceSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathSid = pathSid;
-        }
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Delete an Asset resource.
+  /// </summary>
+  public class DeleteAssetOptions : IOptions<AssetResource>
+  {
+    /// <summary>
+    /// The SID of the Service to delete the Asset resource from
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The SID that identifies the Asset resource to delete
+    /// </summary>
+    public string PathSid { get; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+    /// <summary>
+    /// Construct a new DeleteAssetOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to delete the Asset resource from </param>
+    /// <param name="pathSid"> The SID that identifies the Asset resource to delete </param>
+    public DeleteAssetOptions(string pathServiceSid, string pathSid)
+    {
+      PathServiceSid = pathServiceSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Create a new Asset resource.
+    /// Generate the necessary parameters
     /// </summary>
-    public class CreateAssetOptions : IOptions<AssetResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Service to create the Asset resource under
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// A string to describe the Asset resource
-        /// </summary>
-        public string FriendlyName { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new CreateAssetOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to create the Asset resource under </param>
-        /// <param name="friendlyName"> A string to describe the Asset resource </param>
-        public CreateAssetOptions(string pathServiceSid, string friendlyName)
-        {
-            PathServiceSid = pathServiceSid;
-            FriendlyName = friendlyName;
-        }
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Create a new Asset resource.
+  /// </summary>
+  public class CreateAssetOptions : IOptions<AssetResource>
+  {
+    /// <summary>
+    /// The SID of the Service to create the Asset resource under
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// A string to describe the Asset resource
+    /// </summary>
+    public string FriendlyName { get; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new CreateAssetOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to create the Asset resource under </param>
+    /// <param name="friendlyName"> A string to describe the Asset resource </param>
+    public CreateAssetOptions(string pathServiceSid, string friendlyName)
+    {
+      PathServiceSid = pathServiceSid;
+      FriendlyName = friendlyName;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Update a specific Asset resource.
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateAssetOptions : IOptions<AssetResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Service to update the Asset resource from
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The SID that identifies the Asset resource to update
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// A string to describe the Asset resource
-        /// </summary>
-        public string FriendlyName { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
 
-        /// <summary>
-        /// Construct a new UpdateAssetOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to update the Asset resource from </param>
-        /// <param name="pathSid"> The SID that identifies the Asset resource to update </param>
-        /// <param name="friendlyName"> A string to describe the Asset resource </param>
-        public UpdateAssetOptions(string pathServiceSid, string pathSid, string friendlyName)
-        {
-            PathServiceSid = pathServiceSid;
-            PathSid = pathSid;
-            FriendlyName = friendlyName;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
-
-            return p;
-        }
+      return p;
     }
+  }
+
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Update a specific Asset resource.
+  /// </summary>
+  public class UpdateAssetOptions : IOptions<AssetResource>
+  {
+    /// <summary>
+    /// The SID of the Service to update the Asset resource from
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The SID that identifies the Asset resource to update
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// A string to describe the Asset resource
+    /// </summary>
+    public string FriendlyName { get; }
+
+    /// <summary>
+    /// Construct a new UpdateAssetOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to update the Asset resource from </param>
+    /// <param name="pathSid"> The SID that identifies the Asset resource to update </param>
+    /// <param name="friendlyName"> A string to describe the Asset resource </param>
+    public UpdateAssetOptions(string pathServiceSid, string pathSid, string friendlyName)
+    {
+      PathServiceSid = pathServiceSid;
+      PathSid = pathSid;
+      FriendlyName = friendlyName;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
+
+      return p;
+    }
+  }
 
 }

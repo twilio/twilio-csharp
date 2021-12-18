@@ -11,21 +11,21 @@ using Twilio.Converters;
 namespace Twilio.Rest.Messaging.V1
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// FetchUsecaseOptions
+  /// </summary>
+  public class FetchUsecaseOptions : IOptions<UsecaseResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// FetchUsecaseOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchUsecaseOptions : IOptions<UsecaseResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
 
 }

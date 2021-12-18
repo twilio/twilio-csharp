@@ -11,153 +11,153 @@ using Twilio.Converters;
 namespace Twilio.Rest.Video.V1.Room
 {
 
+  /// <summary>
+  /// FetchParticipantOptions
+  /// </summary>
+  public class FetchParticipantOptions : IOptions<ParticipantResource>
+  {
     /// <summary>
-    /// FetchParticipantOptions
+    /// The SID of the room with the Participant resource to fetch
     /// </summary>
-    public class FetchParticipantOptions : IOptions<ParticipantResource>
+    public string PathRoomSid { get; }
+    /// <summary>
+    /// The SID that identifies the resource to fetch
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchParticipantOptions
+    /// </summary>
+    /// <param name="pathRoomSid"> The SID of the room with the Participant resource to fetch </param>
+    /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
+    public FetchParticipantOptions(string pathRoomSid, string pathSid)
     {
-        /// <summary>
-        /// The SID of the room with the Participant resource to fetch
-        /// </summary>
-        public string PathRoomSid { get; }
-        /// <summary>
-        /// The SID that identifies the resource to fetch
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchParticipantOptions
-        /// </summary>
-        /// <param name="pathRoomSid"> The SID of the room with the Participant resource to fetch </param>
-        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
-        public FetchParticipantOptions(string pathRoomSid, string pathSid)
-        {
-            PathRoomSid = pathRoomSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathRoomSid = pathRoomSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// ReadParticipantOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadParticipantOptions : ReadOptions<ParticipantResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the room with the Participant resources to read
-        /// </summary>
-        public string PathRoomSid { get; }
-        /// <summary>
-        /// Read only the participants with this status
-        /// </summary>
-        public ParticipantResource.StatusEnum Status { get; set; }
-        /// <summary>
-        /// Read only the Participants with this user identity value
-        /// </summary>
-        public string Identity { get; set; }
-        /// <summary>
-        /// Read only Participants that started after this date in UTC ISO 8601 format
-        /// </summary>
-        public DateTime? DateCreatedAfter { get; set; }
-        /// <summary>
-        /// Read only Participants that started before this date in ISO 8601 format
-        /// </summary>
-        public DateTime? DateCreatedBefore { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new ReadParticipantOptions
-        /// </summary>
-        /// <param name="pathRoomSid"> The SID of the room with the Participant resources to read </param>
-        public ReadParticipantOptions(string pathRoomSid)
-        {
-            PathRoomSid = pathRoomSid;
-        }
+  /// <summary>
+  /// ReadParticipantOptions
+  /// </summary>
+  public class ReadParticipantOptions : ReadOptions<ParticipantResource>
+  {
+    /// <summary>
+    /// The SID of the room with the Participant resources to read
+    /// </summary>
+    public string PathRoomSid { get; }
+    /// <summary>
+    /// Read only the participants with this status
+    /// </summary>
+    public ParticipantResource.StatusEnum Status { get; set; }
+    /// <summary>
+    /// Read only the Participants with this user identity value
+    /// </summary>
+    public string Identity { get; set; }
+    /// <summary>
+    /// Read only Participants that started after this date in UTC ISO 8601 format
+    /// </summary>
+    public DateTime? DateCreatedAfter { get; set; }
+    /// <summary>
+    /// Read only Participants that started before this date in ISO 8601 format
+    /// </summary>
+    public DateTime? DateCreatedBefore { get; set; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Status != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
-            }
-
-            if (Identity != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Identity", Identity));
-            }
-
-            if (DateCreatedAfter != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DateCreatedAfter", Serializers.DateTimeIso8601(DateCreatedAfter)));
-            }
-
-            if (DateCreatedBefore != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DateCreatedBefore", Serializers.DateTimeIso8601(DateCreatedBefore)));
-            }
-
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new ReadParticipantOptions
+    /// </summary>
+    /// <param name="pathRoomSid"> The SID of the room with the Participant resources to read </param>
+    public ReadParticipantOptions(string pathRoomSid)
+    {
+      PathRoomSid = pathRoomSid;
     }
 
     /// <summary>
-    /// UpdateParticipantOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateParticipantOptions : IOptions<ParticipantResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the room with the participant to update
-        /// </summary>
-        public string PathRoomSid { get; }
-        /// <summary>
-        /// The SID that identifies the resource to update
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// The new status of the resource
-        /// </summary>
-        public ParticipantResource.StatusEnum Status { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (Status != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new UpdateParticipantOptions
-        /// </summary>
-        /// <param name="pathRoomSid"> The SID of the room with the participant to update </param>
-        /// <param name="pathSid"> The SID that identifies the resource to update </param>
-        public UpdateParticipantOptions(string pathRoomSid, string pathSid)
-        {
-            PathRoomSid = pathRoomSid;
-            PathSid = pathSid;
-        }
+      if (Identity != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Identity", Identity));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Status != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
-            }
+      if (DateCreatedAfter != null)
+      {
+        p.Add(new KeyValuePair<string, string>("DateCreatedAfter", Serializers.DateTimeIso8601(DateCreatedAfter)));
+      }
 
-            return p;
-        }
+      if (DateCreatedBefore != null)
+      {
+        p.Add(new KeyValuePair<string, string>("DateCreatedBefore", Serializers.DateTimeIso8601(DateCreatedBefore)));
+      }
+
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
     }
+  }
+
+  /// <summary>
+  /// UpdateParticipantOptions
+  /// </summary>
+  public class UpdateParticipantOptions : IOptions<ParticipantResource>
+  {
+    /// <summary>
+    /// The SID of the room with the participant to update
+    /// </summary>
+    public string PathRoomSid { get; }
+    /// <summary>
+    /// The SID that identifies the resource to update
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// The new status of the resource
+    /// </summary>
+    public ParticipantResource.StatusEnum Status { get; set; }
+
+    /// <summary>
+    /// Construct a new UpdateParticipantOptions
+    /// </summary>
+    /// <param name="pathRoomSid"> The SID of the room with the participant to update </param>
+    /// <param name="pathSid"> The SID that identifies the resource to update </param>
+    public UpdateParticipantOptions(string pathRoomSid, string pathSid)
+    {
+      PathRoomSid = pathRoomSid;
+      PathSid = pathSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (Status != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
+      }
+
+      return p;
+    }
+  }
 
 }

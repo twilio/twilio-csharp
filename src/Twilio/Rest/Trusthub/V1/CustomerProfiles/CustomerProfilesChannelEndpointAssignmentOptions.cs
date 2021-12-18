@@ -11,179 +11,179 @@ using Twilio.Converters;
 namespace Twilio.Rest.Trusthub.V1.CustomerProfiles
 {
 
+  /// <summary>
+  /// Create a new Assigned Item.
+  /// </summary>
+  public class CreateCustomerProfilesChannelEndpointAssignmentOptions : IOptions<CustomerProfilesChannelEndpointAssignmentResource>
+  {
     /// <summary>
-    /// Create a new Assigned Item.
+    /// The unique string that identifies the resource.
     /// </summary>
-    public class CreateCustomerProfilesChannelEndpointAssignmentOptions : IOptions<CustomerProfilesChannelEndpointAssignmentResource>
+    public string PathCustomerProfileSid { get; }
+    /// <summary>
+    /// The type of channel endpoint
+    /// </summary>
+    public string ChannelEndpointType { get; }
+    /// <summary>
+    /// The sid of an channel endpoint
+    /// </summary>
+    public string ChannelEndpointSid { get; }
+
+    /// <summary>
+    /// Construct a new CreateCustomerProfilesChannelEndpointAssignmentOptions
+    /// </summary>
+    /// <param name="pathCustomerProfileSid"> The unique string that identifies the resource. </param>
+    /// <param name="channelEndpointType"> The type of channel endpoint </param>
+    /// <param name="channelEndpointSid"> The sid of an channel endpoint </param>
+    public CreateCustomerProfilesChannelEndpointAssignmentOptions(string pathCustomerProfileSid,
+                                                                  string channelEndpointType,
+                                                                  string channelEndpointSid)
     {
-        /// <summary>
-        /// The unique string that identifies the resource.
-        /// </summary>
-        public string PathCustomerProfileSid { get; }
-        /// <summary>
-        /// The type of channel endpoint
-        /// </summary>
-        public string ChannelEndpointType { get; }
-        /// <summary>
-        /// The sid of an channel endpoint
-        /// </summary>
-        public string ChannelEndpointSid { get; }
-
-        /// <summary>
-        /// Construct a new CreateCustomerProfilesChannelEndpointAssignmentOptions
-        /// </summary>
-        /// <param name="pathCustomerProfileSid"> The unique string that identifies the resource. </param>
-        /// <param name="channelEndpointType"> The type of channel endpoint </param>
-        /// <param name="channelEndpointSid"> The sid of an channel endpoint </param>
-        public CreateCustomerProfilesChannelEndpointAssignmentOptions(string pathCustomerProfileSid,
-                                                                      string channelEndpointType,
-                                                                      string channelEndpointSid)
-        {
-            PathCustomerProfileSid = pathCustomerProfileSid;
-            ChannelEndpointType = channelEndpointType;
-            ChannelEndpointSid = channelEndpointSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (ChannelEndpointType != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ChannelEndpointType", ChannelEndpointType));
-            }
-
-            if (ChannelEndpointSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ChannelEndpointSid", ChannelEndpointSid.ToString()));
-            }
-
-            return p;
-        }
+      PathCustomerProfileSid = pathCustomerProfileSid;
+      ChannelEndpointType = channelEndpointType;
+      ChannelEndpointSid = channelEndpointSid;
     }
 
     /// <summary>
-    /// Retrieve a list of all Assigned Items for an account.
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadCustomerProfilesChannelEndpointAssignmentOptions : ReadOptions<CustomerProfilesChannelEndpointAssignmentResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique string that identifies the resource.
-        /// </summary>
-        public string PathCustomerProfileSid { get; }
-        /// <summary>
-        /// The sid of an channel endpoint
-        /// </summary>
-        public string ChannelEndpointSid { get; set; }
-        /// <summary>
-        /// comma separated list of channel endpoint sids
-        /// </summary>
-        public string ChannelEndpointSids { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (ChannelEndpointType != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ChannelEndpointType", ChannelEndpointType));
+      }
 
-        /// <summary>
-        /// Construct a new ReadCustomerProfilesChannelEndpointAssignmentOptions
-        /// </summary>
-        /// <param name="pathCustomerProfileSid"> The unique string that identifies the resource. </param>
-        public ReadCustomerProfilesChannelEndpointAssignmentOptions(string pathCustomerProfileSid)
-        {
-            PathCustomerProfileSid = pathCustomerProfileSid;
-        }
+      if (ChannelEndpointSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ChannelEndpointSid", ChannelEndpointSid.ToString()));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (ChannelEndpointSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ChannelEndpointSid", ChannelEndpointSid.ToString()));
-            }
+      return p;
+    }
+  }
 
-            if (ChannelEndpointSids != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ChannelEndpointSids", ChannelEndpointSids));
-            }
+  /// <summary>
+  /// Retrieve a list of all Assigned Items for an account.
+  /// </summary>
+  public class ReadCustomerProfilesChannelEndpointAssignmentOptions : ReadOptions<CustomerProfilesChannelEndpointAssignmentResource>
+  {
+    /// <summary>
+    /// The unique string that identifies the resource.
+    /// </summary>
+    public string PathCustomerProfileSid { get; }
+    /// <summary>
+    /// The sid of an channel endpoint
+    /// </summary>
+    public string ChannelEndpointSid { get; set; }
+    /// <summary>
+    /// comma separated list of channel endpoint sids
+    /// </summary>
+    public string ChannelEndpointSids { get; set; }
 
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new ReadCustomerProfilesChannelEndpointAssignmentOptions
+    /// </summary>
+    /// <param name="pathCustomerProfileSid"> The unique string that identifies the resource. </param>
+    public ReadCustomerProfilesChannelEndpointAssignmentOptions(string pathCustomerProfileSid)
+    {
+      PathCustomerProfileSid = pathCustomerProfileSid;
     }
 
     /// <summary>
-    /// Fetch specific Assigned Item Instance.
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchCustomerProfilesChannelEndpointAssignmentOptions : IOptions<CustomerProfilesChannelEndpointAssignmentResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique string that identifies the resource.
-        /// </summary>
-        public string PathCustomerProfileSid { get; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (ChannelEndpointSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ChannelEndpointSid", ChannelEndpointSid.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new FetchCustomerProfilesChannelEndpointAssignmentOptions
-        /// </summary>
-        /// <param name="pathCustomerProfileSid"> The unique string that identifies the resource. </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public FetchCustomerProfilesChannelEndpointAssignmentOptions(string pathCustomerProfileSid, string pathSid)
-        {
-            PathCustomerProfileSid = pathCustomerProfileSid;
-            PathSid = pathSid;
-        }
+      if (ChannelEndpointSids != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ChannelEndpointSids", ChannelEndpointSids));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// Fetch specific Assigned Item Instance.
+  /// </summary>
+  public class FetchCustomerProfilesChannelEndpointAssignmentOptions : IOptions<CustomerProfilesChannelEndpointAssignmentResource>
+  {
+    /// <summary>
+    /// The unique string that identifies the resource.
+    /// </summary>
+    public string PathCustomerProfileSid { get; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchCustomerProfilesChannelEndpointAssignmentOptions
+    /// </summary>
+    /// <param name="pathCustomerProfileSid"> The unique string that identifies the resource. </param>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public FetchCustomerProfilesChannelEndpointAssignmentOptions(string pathCustomerProfileSid, string pathSid)
+    {
+      PathCustomerProfileSid = pathCustomerProfileSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Remove an Assignment Item Instance.
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteCustomerProfilesChannelEndpointAssignmentOptions : IOptions<CustomerProfilesChannelEndpointAssignmentResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique string that identifies the resource.
-        /// </summary>
-        public string PathCustomerProfileSid { get; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new DeleteCustomerProfilesChannelEndpointAssignmentOptions
-        /// </summary>
-        /// <param name="pathCustomerProfileSid"> The unique string that identifies the resource. </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public DeleteCustomerProfilesChannelEndpointAssignmentOptions(string pathCustomerProfileSid, string pathSid)
-        {
-            PathCustomerProfileSid = pathCustomerProfileSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
+
+  /// <summary>
+  /// Remove an Assignment Item Instance.
+  /// </summary>
+  public class DeleteCustomerProfilesChannelEndpointAssignmentOptions : IOptions<CustomerProfilesChannelEndpointAssignmentResource>
+  {
+    /// <summary>
+    /// The unique string that identifies the resource.
+    /// </summary>
+    public string PathCustomerProfileSid { get; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new DeleteCustomerProfilesChannelEndpointAssignmentOptions
+    /// </summary>
+    /// <param name="pathCustomerProfileSid"> The unique string that identifies the resource. </param>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public DeleteCustomerProfilesChannelEndpointAssignmentOptions(string pathCustomerProfileSid, string pathSid)
+    {
+      PathCustomerProfileSid = pathCustomerProfileSid;
+      PathSid = pathSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
 }

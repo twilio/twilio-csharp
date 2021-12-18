@@ -20,128 +20,128 @@ using Twilio.Http;
 namespace Twilio.Rest.Messaging.V1
 {
 
-    public class ExternalCampaignResource : Resource
+  public class ExternalCampaignResource : Resource
+  {
+    private static Request BuildCreateRequest(CreateExternalCampaignOptions options, ITwilioRestClient client)
     {
-        private static Request BuildCreateRequest(CreateExternalCampaignOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Post,
-                Rest.Domain.Messaging,
-                "/v1/Services/PreregisteredUsa2p",
-                postParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// create
-        /// </summary>
-        /// <param name="options"> Create ExternalCampaign parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of ExternalCampaign </returns>
-        public static ExternalCampaignResource Create(CreateExternalCampaignOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildCreateRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// create
-        /// </summary>
-        /// <param name="options"> Create ExternalCampaign parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of ExternalCampaign </returns>
-        public static async System.Threading.Tasks.Task<ExternalCampaignResource> CreateAsync(CreateExternalCampaignOptions options,
-                                                                                              ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// create
-        /// </summary>
-        /// <param name="campaignId"> ID of the preregistered campaign. </param>
-        /// <param name="messagingServiceSid"> The SID of the Messaging Service the resource is associated with </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of ExternalCampaign </returns>
-        public static ExternalCampaignResource Create(string campaignId,
-                                                      string messagingServiceSid,
-                                                      ITwilioRestClient client = null)
-        {
-            var options = new CreateExternalCampaignOptions(campaignId, messagingServiceSid);
-            return Create(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// create
-        /// </summary>
-        /// <param name="campaignId"> ID of the preregistered campaign. </param>
-        /// <param name="messagingServiceSid"> The SID of the Messaging Service the resource is associated with </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of ExternalCampaign </returns>
-        public static async System.Threading.Tasks.Task<ExternalCampaignResource> CreateAsync(string campaignId,
-                                                                                              string messagingServiceSid,
-                                                                                              ITwilioRestClient client = null)
-        {
-            var options = new CreateExternalCampaignOptions(campaignId, messagingServiceSid);
-            return await CreateAsync(options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Converts a JSON string into a ExternalCampaignResource object
-        /// </summary>
-        /// <param name="json"> Raw JSON string </param>
-        /// <returns> ExternalCampaignResource object represented by the provided JSON </returns>
-        public static ExternalCampaignResource FromJson(string json)
-        {
-            // Convert all checked exceptions to Runtime
-            try
-            {
-                return JsonConvert.DeserializeObject<ExternalCampaignResource>(json);
-            }
-            catch (JsonException e)
-            {
-                throw new ApiException(e.Message, e);
-            }
-        }
-
-        /// <summary>
-        /// The unique string that identifies a US A2P Compliance resource
-        /// </summary>
-        [JsonProperty("sid")]
-        public string Sid { get; private set; }
-        /// <summary>
-        /// The SID of the Account that created the resource
-        /// </summary>
-        [JsonProperty("account_sid")]
-        public string AccountSid { get; private set; }
-        /// <summary>
-        /// ID of the preregistered campaign.
-        /// </summary>
-        [JsonProperty("campaign_id")]
-        public string CampaignId { get; private set; }
-        /// <summary>
-        /// The SID of the Messaging Service the resource is associated with
-        /// </summary>
-        [JsonProperty("messaging_service_sid")]
-        public string MessagingServiceSid { get; private set; }
-        /// <summary>
-        /// The ISO 8601 date and time in GMT when the resource was created
-        /// </summary>
-        [JsonProperty("date_created")]
-        public DateTime? DateCreated { get; private set; }
-
-        private ExternalCampaignResource()
-        {
-
-        }
+      return new Request(
+          HttpMethod.Post,
+          Rest.Domain.Messaging,
+          "/v1/Services/PreregisteredUsa2p",
+          postParams: options.GetParams(),
+          headerParams: null
+      );
     }
+
+    /// <summary>
+    /// create
+    /// </summary>
+    /// <param name="options"> Create ExternalCampaign parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of ExternalCampaign </returns>
+    public static ExternalCampaignResource Create(CreateExternalCampaignOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildCreateRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// create
+    /// </summary>
+    /// <param name="options"> Create ExternalCampaign parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of ExternalCampaign </returns>
+    public static async System.Threading.Tasks.Task<ExternalCampaignResource> CreateAsync(CreateExternalCampaignOptions options,
+                                                                                          ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildCreateRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// create
+    /// </summary>
+    /// <param name="campaignId"> ID of the preregistered campaign. </param>
+    /// <param name="messagingServiceSid"> The SID of the Messaging Service the resource is associated with </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of ExternalCampaign </returns>
+    public static ExternalCampaignResource Create(string campaignId,
+                                                  string messagingServiceSid,
+                                                  ITwilioRestClient client = null)
+    {
+      var options = new CreateExternalCampaignOptions(campaignId, messagingServiceSid);
+      return Create(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// create
+    /// </summary>
+    /// <param name="campaignId"> ID of the preregistered campaign. </param>
+    /// <param name="messagingServiceSid"> The SID of the Messaging Service the resource is associated with </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of ExternalCampaign </returns>
+    public static async System.Threading.Tasks.Task<ExternalCampaignResource> CreateAsync(string campaignId,
+                                                                                          string messagingServiceSid,
+                                                                                          ITwilioRestClient client = null)
+    {
+      var options = new CreateExternalCampaignOptions(campaignId, messagingServiceSid);
+      return await CreateAsync(options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Converts a JSON string into a ExternalCampaignResource object
+    /// </summary>
+    /// <param name="json"> Raw JSON string </param>
+    /// <returns> ExternalCampaignResource object represented by the provided JSON </returns>
+    public static ExternalCampaignResource FromJson(string json)
+    {
+      // Convert all checked exceptions to Runtime
+      try
+      {
+        return JsonConvert.DeserializeObject<ExternalCampaignResource>(json);
+      }
+      catch (JsonException e)
+      {
+        throw new ApiException(e.Message, e);
+      }
+    }
+
+    /// <summary>
+    /// The unique string that identifies a US A2P Compliance resource
+    /// </summary>
+    [JsonProperty("sid")]
+    public string Sid { get; private set; }
+    /// <summary>
+    /// The SID of the Account that created the resource
+    /// </summary>
+    [JsonProperty("account_sid")]
+    public string AccountSid { get; private set; }
+    /// <summary>
+    /// ID of the preregistered campaign.
+    /// </summary>
+    [JsonProperty("campaign_id")]
+    public string CampaignId { get; private set; }
+    /// <summary>
+    /// The SID of the Messaging Service the resource is associated with
+    /// </summary>
+    [JsonProperty("messaging_service_sid")]
+    public string MessagingServiceSid { get; private set; }
+    /// <summary>
+    /// The ISO 8601 date and time in GMT when the resource was created
+    /// </summary>
+    [JsonProperty("date_created")]
+    public DateTime? DateCreated { get; private set; }
+
+    private ExternalCampaignResource()
+    {
+
+    }
+  }
 
 }

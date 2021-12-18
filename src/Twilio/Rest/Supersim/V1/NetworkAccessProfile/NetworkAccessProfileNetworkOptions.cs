@@ -11,160 +11,160 @@ using Twilio.Converters;
 namespace Twilio.Rest.Supersim.V1.NetworkAccessProfile
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Retrieve a list of Network Access Profile resource's Network resource.
+  /// </summary>
+  public class ReadNetworkAccessProfileNetworkOptions : ReadOptions<NetworkAccessProfileNetworkResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Retrieve a list of Network Access Profile resource's Network resource.
+    /// The unique string that identifies the Network Access Profile resource
     /// </summary>
-    public class ReadNetworkAccessProfileNetworkOptions : ReadOptions<NetworkAccessProfileNetworkResource>
+    public string PathNetworkAccessProfileSid { get; }
+
+    /// <summary>
+    /// Construct a new ReadNetworkAccessProfileNetworkOptions
+    /// </summary>
+    /// <param name="pathNetworkAccessProfileSid"> The unique string that identifies the Network Access Profile resource
+    ///                                   </param>
+    public ReadNetworkAccessProfileNetworkOptions(string pathNetworkAccessProfileSid)
     {
-        /// <summary>
-        /// The unique string that identifies the Network Access Profile resource
-        /// </summary>
-        public string PathNetworkAccessProfileSid { get; }
-
-        /// <summary>
-        /// Construct a new ReadNetworkAccessProfileNetworkOptions
-        /// </summary>
-        /// <param name="pathNetworkAccessProfileSid"> The unique string that identifies the Network Access Profile resource
-        ///                                   </param>
-        public ReadNetworkAccessProfileNetworkOptions(string pathNetworkAccessProfileSid)
-        {
-            PathNetworkAccessProfileSid = pathNetworkAccessProfileSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+      PathNetworkAccessProfileSid = pathNetworkAccessProfileSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Add a Network resource to the Network Access Profile resource.
+    /// Generate the necessary parameters
     /// </summary>
-    public class CreateNetworkAccessProfileNetworkOptions : IOptions<NetworkAccessProfileNetworkResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique string that identifies the Network Access Profile resource
-        /// </summary>
-        public string PathNetworkAccessProfileSid { get; }
-        /// <summary>
-        /// The SID that identifies the Network resource
-        /// </summary>
-        public string Network { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new CreateNetworkAccessProfileNetworkOptions
-        /// </summary>
-        /// <param name="pathNetworkAccessProfileSid"> The unique string that identifies the Network Access Profile resource
-        ///                                   </param>
-        /// <param name="network"> The SID that identifies the Network resource </param>
-        public CreateNetworkAccessProfileNetworkOptions(string pathNetworkAccessProfileSid, string network)
-        {
-            PathNetworkAccessProfileSid = pathNetworkAccessProfileSid;
-            Network = network;
-        }
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Network != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Network", Network.ToString()));
-            }
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Add a Network resource to the Network Access Profile resource.
+  /// </summary>
+  public class CreateNetworkAccessProfileNetworkOptions : IOptions<NetworkAccessProfileNetworkResource>
+  {
+    /// <summary>
+    /// The unique string that identifies the Network Access Profile resource
+    /// </summary>
+    public string PathNetworkAccessProfileSid { get; }
+    /// <summary>
+    /// The SID that identifies the Network resource
+    /// </summary>
+    public string Network { get; }
 
-            return p;
-        }
+    /// <summary>
+    /// Construct a new CreateNetworkAccessProfileNetworkOptions
+    /// </summary>
+    /// <param name="pathNetworkAccessProfileSid"> The unique string that identifies the Network Access Profile resource
+    ///                                   </param>
+    /// <param name="network"> The SID that identifies the Network resource </param>
+    public CreateNetworkAccessProfileNetworkOptions(string pathNetworkAccessProfileSid, string network)
+    {
+      PathNetworkAccessProfileSid = pathNetworkAccessProfileSid;
+      Network = network;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Remove a Network resource from the Network Access Profile resource's.
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteNetworkAccessProfileNetworkOptions : IOptions<NetworkAccessProfileNetworkResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique string that identifies the Network Access Profile resource
-        /// </summary>
-        public string PathNetworkAccessProfileSid { get; }
-        /// <summary>
-        /// The SID that identifies the Network resource
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (Network != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Network", Network.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new DeleteNetworkAccessProfileNetworkOptions
-        /// </summary>
-        /// <param name="pathNetworkAccessProfileSid"> The unique string that identifies the Network Access Profile resource
-        ///                                   </param>
-        /// <param name="pathSid"> The SID that identifies the Network resource </param>
-        public DeleteNetworkAccessProfileNetworkOptions(string pathNetworkAccessProfileSid, string pathSid)
-        {
-            PathNetworkAccessProfileSid = pathNetworkAccessProfileSid;
-            PathSid = pathSid;
-        }
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Remove a Network resource from the Network Access Profile resource's.
+  /// </summary>
+  public class DeleteNetworkAccessProfileNetworkOptions : IOptions<NetworkAccessProfileNetworkResource>
+  {
+    /// <summary>
+    /// The unique string that identifies the Network Access Profile resource
+    /// </summary>
+    public string PathNetworkAccessProfileSid { get; }
+    /// <summary>
+    /// The SID that identifies the Network resource
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new DeleteNetworkAccessProfileNetworkOptions
+    /// </summary>
+    /// <param name="pathNetworkAccessProfileSid"> The unique string that identifies the Network Access Profile resource
+    ///                                   </param>
+    /// <param name="pathSid"> The SID that identifies the Network resource </param>
+    public DeleteNetworkAccessProfileNetworkOptions(string pathNetworkAccessProfileSid, string pathSid)
+    {
+      PathNetworkAccessProfileSid = pathNetworkAccessProfileSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Fetch a Network Access Profile resource's Network resource.
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchNetworkAccessProfileNetworkOptions : IOptions<NetworkAccessProfileNetworkResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique string that identifies the Network Access Profile resource
-        /// </summary>
-        public string PathNetworkAccessProfileSid { get; }
-        /// <summary>
-        /// The SID of the resource to fetch
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchNetworkAccessProfileNetworkOptions
-        /// </summary>
-        /// <param name="pathNetworkAccessProfileSid"> The unique string that identifies the Network Access Profile resource
-        ///                                   </param>
-        /// <param name="pathSid"> The SID of the resource to fetch </param>
-        public FetchNetworkAccessProfileNetworkOptions(string pathNetworkAccessProfileSid, string pathSid)
-        {
-            PathNetworkAccessProfileSid = pathNetworkAccessProfileSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
+
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Fetch a Network Access Profile resource's Network resource.
+  /// </summary>
+  public class FetchNetworkAccessProfileNetworkOptions : IOptions<NetworkAccessProfileNetworkResource>
+  {
+    /// <summary>
+    /// The unique string that identifies the Network Access Profile resource
+    /// </summary>
+    public string PathNetworkAccessProfileSid { get; }
+    /// <summary>
+    /// The SID of the resource to fetch
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchNetworkAccessProfileNetworkOptions
+    /// </summary>
+    /// <param name="pathNetworkAccessProfileSid"> The unique string that identifies the Network Access Profile resource
+    ///                                   </param>
+    /// <param name="pathSid"> The SID of the resource to fetch </param>
+    public FetchNetworkAccessProfileNetworkOptions(string pathNetworkAccessProfileSid, string pathSid)
+    {
+      PathNetworkAccessProfileSid = pathNetworkAccessProfileSid;
+      PathSid = pathSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
 }

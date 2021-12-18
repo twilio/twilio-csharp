@@ -11,194 +11,194 @@ using Twilio.Converters;
 namespace Twilio.Rest.Chat.V2.Service.User
 {
 
+  /// <summary>
+  /// List all Channels for a given User.
+  /// </summary>
+  public class ReadUserChannelOptions : ReadOptions<UserChannelResource>
+  {
     /// <summary>
-    /// List all Channels for a given User.
+    /// The SID of the Service to read the resources from
     /// </summary>
-    public class ReadUserChannelOptions : ReadOptions<UserChannelResource>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The SID of the User to fetch the User Channel resources from
+    /// </summary>
+    public string PathUserSid { get; }
+
+    /// <summary>
+    /// Construct a new ReadUserChannelOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to read the resources from </param>
+    /// <param name="pathUserSid"> The SID of the User to fetch the User Channel resources from </param>
+    public ReadUserChannelOptions(string pathServiceSid, string pathUserSid)
     {
-        /// <summary>
-        /// The SID of the Service to read the resources from
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The SID of the User to fetch the User Channel resources from
-        /// </summary>
-        public string PathUserSid { get; }
-
-        /// <summary>
-        /// Construct a new ReadUserChannelOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to read the resources from </param>
-        /// <param name="pathUserSid"> The SID of the User to fetch the User Channel resources from </param>
-        public ReadUserChannelOptions(string pathServiceSid, string pathUserSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathUserSid = pathUserSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+      PathServiceSid = pathServiceSid;
+      PathUserSid = pathUserSid;
     }
 
     /// <summary>
-    /// FetchUserChannelOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchUserChannelOptions : IOptions<UserChannelResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Service to fetch the User Channel resource from
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The SID of the User to fetch the User Channel resource from
-        /// </summary>
-        public string PathUserSid { get; }
-        /// <summary>
-        /// The SID of the Channel that has the User Channel to fetch
-        /// </summary>
-        public string PathChannelSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new FetchUserChannelOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to fetch the User Channel resource from </param>
-        /// <param name="pathUserSid"> The SID of the User to fetch the User Channel resource from </param>
-        /// <param name="pathChannelSid"> The SID of the Channel that has the User Channel to fetch </param>
-        public FetchUserChannelOptions(string pathServiceSid, string pathUserSid, string pathChannelSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathUserSid = pathUserSid;
-            PathChannelSid = pathChannelSid;
-        }
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+  /// <summary>
+  /// FetchUserChannelOptions
+  /// </summary>
+  public class FetchUserChannelOptions : IOptions<UserChannelResource>
+  {
+    /// <summary>
+    /// The SID of the Service to fetch the User Channel resource from
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The SID of the User to fetch the User Channel resource from
+    /// </summary>
+    public string PathUserSid { get; }
+    /// <summary>
+    /// The SID of the Channel that has the User Channel to fetch
+    /// </summary>
+    public string PathChannelSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchUserChannelOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to fetch the User Channel resource from </param>
+    /// <param name="pathUserSid"> The SID of the User to fetch the User Channel resource from </param>
+    /// <param name="pathChannelSid"> The SID of the Channel that has the User Channel to fetch </param>
+    public FetchUserChannelOptions(string pathServiceSid, string pathUserSid, string pathChannelSid)
+    {
+      PathServiceSid = pathServiceSid;
+      PathUserSid = pathUserSid;
+      PathChannelSid = pathChannelSid;
     }
 
     /// <summary>
-    /// Removes User from selected Channel.
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteUserChannelOptions : IOptions<UserChannelResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Service to read the resources from
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The SID of the User to fetch the User Channel resources from
-        /// </summary>
-        public string PathUserSid { get; }
-        /// <summary>
-        /// The SID of the Channel the resource belongs to
-        /// </summary>
-        public string PathChannelSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new DeleteUserChannelOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to read the resources from </param>
-        /// <param name="pathUserSid"> The SID of the User to fetch the User Channel resources from </param>
-        /// <param name="pathChannelSid"> The SID of the Channel the resource belongs to </param>
-        public DeleteUserChannelOptions(string pathServiceSid, string pathUserSid, string pathChannelSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathUserSid = pathUserSid;
-            PathChannelSid = pathChannelSid;
-        }
+  /// <summary>
+  /// Removes User from selected Channel.
+  /// </summary>
+  public class DeleteUserChannelOptions : IOptions<UserChannelResource>
+  {
+    /// <summary>
+    /// The SID of the Service to read the resources from
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The SID of the User to fetch the User Channel resources from
+    /// </summary>
+    public string PathUserSid { get; }
+    /// <summary>
+    /// The SID of the Channel the resource belongs to
+    /// </summary>
+    public string PathChannelSid { get; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+    /// <summary>
+    /// Construct a new DeleteUserChannelOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to read the resources from </param>
+    /// <param name="pathUserSid"> The SID of the User to fetch the User Channel resources from </param>
+    /// <param name="pathChannelSid"> The SID of the Channel the resource belongs to </param>
+    public DeleteUserChannelOptions(string pathServiceSid, string pathUserSid, string pathChannelSid)
+    {
+      PathServiceSid = pathServiceSid;
+      PathUserSid = pathUserSid;
+      PathChannelSid = pathChannelSid;
     }
 
     /// <summary>
-    /// UpdateUserChannelOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateUserChannelOptions : IOptions<UserChannelResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Service to update the resource from
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The SID of the User to update the User Channel resource from
-        /// </summary>
-        public string PathUserSid { get; }
-        /// <summary>
-        /// The SID of the Channel with the User Channel resource to update
-        /// </summary>
-        public string PathChannelSid { get; }
-        /// <summary>
-        /// The push notification level to assign to the User Channel
-        /// </summary>
-        public UserChannelResource.NotificationLevelEnum NotificationLevel { get; set; }
-        /// <summary>
-        /// The index of the last Message that the Member has read within the Channel
-        /// </summary>
-        public int? LastConsumedMessageIndex { get; set; }
-        /// <summary>
-        /// The ISO 8601 based timestamp string that represents the datetime of the last Message read event for the Member within the Channel
-        /// </summary>
-        public DateTime? LastConsumptionTimestamp { get; set; }
-
-        /// <summary>
-        /// Construct a new UpdateUserChannelOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to update the resource from </param>
-        /// <param name="pathUserSid"> The SID of the User to update the User Channel resource from </param>
-        /// <param name="pathChannelSid"> The SID of the Channel with the User Channel resource to update </param>
-        public UpdateUserChannelOptions(string pathServiceSid, string pathUserSid, string pathChannelSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathUserSid = pathUserSid;
-            PathChannelSid = pathChannelSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (NotificationLevel != null)
-            {
-                p.Add(new KeyValuePair<string, string>("NotificationLevel", NotificationLevel.ToString()));
-            }
-
-            if (LastConsumedMessageIndex != null)
-            {
-                p.Add(new KeyValuePair<string, string>("LastConsumedMessageIndex", LastConsumedMessageIndex.ToString()));
-            }
-
-            if (LastConsumptionTimestamp != null)
-            {
-                p.Add(new KeyValuePair<string, string>("LastConsumptionTimestamp", Serializers.DateTimeIso8601(LastConsumptionTimestamp)));
-            }
-
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
+
+  /// <summary>
+  /// UpdateUserChannelOptions
+  /// </summary>
+  public class UpdateUserChannelOptions : IOptions<UserChannelResource>
+  {
+    /// <summary>
+    /// The SID of the Service to update the resource from
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The SID of the User to update the User Channel resource from
+    /// </summary>
+    public string PathUserSid { get; }
+    /// <summary>
+    /// The SID of the Channel with the User Channel resource to update
+    /// </summary>
+    public string PathChannelSid { get; }
+    /// <summary>
+    /// The push notification level to assign to the User Channel
+    /// </summary>
+    public UserChannelResource.NotificationLevelEnum NotificationLevel { get; set; }
+    /// <summary>
+    /// The index of the last Message that the Member has read within the Channel
+    /// </summary>
+    public int? LastConsumedMessageIndex { get; set; }
+    /// <summary>
+    /// The ISO 8601 based timestamp string that represents the datetime of the last Message read event for the Member within the Channel
+    /// </summary>
+    public DateTime? LastConsumptionTimestamp { get; set; }
+
+    /// <summary>
+    /// Construct a new UpdateUserChannelOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to update the resource from </param>
+    /// <param name="pathUserSid"> The SID of the User to update the User Channel resource from </param>
+    /// <param name="pathChannelSid"> The SID of the Channel with the User Channel resource to update </param>
+    public UpdateUserChannelOptions(string pathServiceSid, string pathUserSid, string pathChannelSid)
+    {
+      PathServiceSid = pathServiceSid;
+      PathUserSid = pathUserSid;
+      PathChannelSid = pathChannelSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (NotificationLevel != null)
+      {
+        p.Add(new KeyValuePair<string, string>("NotificationLevel", NotificationLevel.ToString()));
+      }
+
+      if (LastConsumedMessageIndex != null)
+      {
+        p.Add(new KeyValuePair<string, string>("LastConsumedMessageIndex", LastConsumedMessageIndex.ToString()));
+      }
+
+      if (LastConsumptionTimestamp != null)
+      {
+        p.Add(new KeyValuePair<string, string>("LastConsumptionTimestamp", Serializers.DateTimeIso8601(LastConsumptionTimestamp)));
+      }
+
+      return p;
+    }
+  }
 
 }

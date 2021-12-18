@@ -11,148 +11,148 @@ using Twilio.Converters;
 namespace Twilio.Rest.Trusthub.V1.CustomerProfiles
 {
 
+  /// <summary>
+  /// Create a new Assigned Item.
+  /// </summary>
+  public class CreateCustomerProfilesEntityAssignmentsOptions : IOptions<CustomerProfilesEntityAssignmentsResource>
+  {
     /// <summary>
-    /// Create a new Assigned Item.
+    /// The unique string that identifies the resource.
     /// </summary>
-    public class CreateCustomerProfilesEntityAssignmentsOptions : IOptions<CustomerProfilesEntityAssignmentsResource>
+    public string PathCustomerProfileSid { get; }
+    /// <summary>
+    /// The sid of an object bag
+    /// </summary>
+    public string ObjectSid { get; }
+
+    /// <summary>
+    /// Construct a new CreateCustomerProfilesEntityAssignmentsOptions
+    /// </summary>
+    /// <param name="pathCustomerProfileSid"> The unique string that identifies the resource. </param>
+    /// <param name="objectSid"> The sid of an object bag </param>
+    public CreateCustomerProfilesEntityAssignmentsOptions(string pathCustomerProfileSid, string objectSid)
     {
-        /// <summary>
-        /// The unique string that identifies the resource.
-        /// </summary>
-        public string PathCustomerProfileSid { get; }
-        /// <summary>
-        /// The sid of an object bag
-        /// </summary>
-        public string ObjectSid { get; }
-
-        /// <summary>
-        /// Construct a new CreateCustomerProfilesEntityAssignmentsOptions
-        /// </summary>
-        /// <param name="pathCustomerProfileSid"> The unique string that identifies the resource. </param>
-        /// <param name="objectSid"> The sid of an object bag </param>
-        public CreateCustomerProfilesEntityAssignmentsOptions(string pathCustomerProfileSid, string objectSid)
-        {
-            PathCustomerProfileSid = pathCustomerProfileSid;
-            ObjectSid = objectSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (ObjectSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ObjectSid", ObjectSid.ToString()));
-            }
-
-            return p;
-        }
+      PathCustomerProfileSid = pathCustomerProfileSid;
+      ObjectSid = objectSid;
     }
 
     /// <summary>
-    /// Retrieve a list of all Assigned Items for an account.
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadCustomerProfilesEntityAssignmentsOptions : ReadOptions<CustomerProfilesEntityAssignmentsResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique string that identifies the resource.
-        /// </summary>
-        public string PathCustomerProfileSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (ObjectSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ObjectSid", ObjectSid.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new ReadCustomerProfilesEntityAssignmentsOptions
-        /// </summary>
-        /// <param name="pathCustomerProfileSid"> The unique string that identifies the resource. </param>
-        public ReadCustomerProfilesEntityAssignmentsOptions(string pathCustomerProfileSid)
-        {
-            PathCustomerProfileSid = pathCustomerProfileSid;
-        }
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
+  /// <summary>
+  /// Retrieve a list of all Assigned Items for an account.
+  /// </summary>
+  public class ReadCustomerProfilesEntityAssignmentsOptions : ReadOptions<CustomerProfilesEntityAssignmentsResource>
+  {
+    /// <summary>
+    /// The unique string that identifies the resource.
+    /// </summary>
+    public string PathCustomerProfileSid { get; }
 
-            return p;
-        }
+    /// <summary>
+    /// Construct a new ReadCustomerProfilesEntityAssignmentsOptions
+    /// </summary>
+    /// <param name="pathCustomerProfileSid"> The unique string that identifies the resource. </param>
+    public ReadCustomerProfilesEntityAssignmentsOptions(string pathCustomerProfileSid)
+    {
+      PathCustomerProfileSid = pathCustomerProfileSid;
     }
 
     /// <summary>
-    /// Fetch specific Assigned Item Instance.
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchCustomerProfilesEntityAssignmentsOptions : IOptions<CustomerProfilesEntityAssignmentsResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique string that identifies the resource.
-        /// </summary>
-        public string PathCustomerProfileSid { get; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new FetchCustomerProfilesEntityAssignmentsOptions
-        /// </summary>
-        /// <param name="pathCustomerProfileSid"> The unique string that identifies the resource. </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public FetchCustomerProfilesEntityAssignmentsOptions(string pathCustomerProfileSid, string pathSid)
-        {
-            PathCustomerProfileSid = pathCustomerProfileSid;
-            PathSid = pathSid;
-        }
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+  /// <summary>
+  /// Fetch specific Assigned Item Instance.
+  /// </summary>
+  public class FetchCustomerProfilesEntityAssignmentsOptions : IOptions<CustomerProfilesEntityAssignmentsResource>
+  {
+    /// <summary>
+    /// The unique string that identifies the resource.
+    /// </summary>
+    public string PathCustomerProfileSid { get; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchCustomerProfilesEntityAssignmentsOptions
+    /// </summary>
+    /// <param name="pathCustomerProfileSid"> The unique string that identifies the resource. </param>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public FetchCustomerProfilesEntityAssignmentsOptions(string pathCustomerProfileSid, string pathSid)
+    {
+      PathCustomerProfileSid = pathCustomerProfileSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Remove an Assignment Item Instance.
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteCustomerProfilesEntityAssignmentsOptions : IOptions<CustomerProfilesEntityAssignmentsResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique string that identifies the resource.
-        /// </summary>
-        public string PathCustomerProfileSid { get; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new DeleteCustomerProfilesEntityAssignmentsOptions
-        /// </summary>
-        /// <param name="pathCustomerProfileSid"> The unique string that identifies the resource. </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public DeleteCustomerProfilesEntityAssignmentsOptions(string pathCustomerProfileSid, string pathSid)
-        {
-            PathCustomerProfileSid = pathCustomerProfileSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
+
+  /// <summary>
+  /// Remove an Assignment Item Instance.
+  /// </summary>
+  public class DeleteCustomerProfilesEntityAssignmentsOptions : IOptions<CustomerProfilesEntityAssignmentsResource>
+  {
+    /// <summary>
+    /// The unique string that identifies the resource.
+    /// </summary>
+    public string PathCustomerProfileSid { get; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new DeleteCustomerProfilesEntityAssignmentsOptions
+    /// </summary>
+    /// <param name="pathCustomerProfileSid"> The unique string that identifies the resource. </param>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public DeleteCustomerProfilesEntityAssignmentsOptions(string pathCustomerProfileSid, string pathSid)
+    {
+      PathCustomerProfileSid = pathCustomerProfileSid;
+      PathSid = pathSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
 }

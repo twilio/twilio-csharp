@@ -11,156 +11,156 @@ using Twilio.Converters;
 namespace Twilio.Rest.Verify.V2.Service
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Create a new Entity for the Service
+  /// </summary>
+  public class CreateEntityOptions : IOptions<EntityResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Create a new Entity for the Service
+    /// Service Sid.
     /// </summary>
-    public class CreateEntityOptions : IOptions<EntityResource>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// Unique external identifier of the Entity
+    /// </summary>
+    public string Identity { get; }
+
+    /// <summary>
+    /// Construct a new CreateEntityOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> Service Sid. </param>
+    /// <param name="identity"> Unique external identifier of the Entity </param>
+    public CreateEntityOptions(string pathServiceSid, string identity)
     {
-        /// <summary>
-        /// Service Sid.
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// Unique external identifier of the Entity
-        /// </summary>
-        public string Identity { get; }
-
-        /// <summary>
-        /// Construct a new CreateEntityOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="identity"> Unique external identifier of the Entity </param>
-        public CreateEntityOptions(string pathServiceSid, string identity)
-        {
-            PathServiceSid = pathServiceSid;
-            Identity = identity;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Identity != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Identity", Identity));
-            }
-
-            return p;
-        }
+      PathServiceSid = pathServiceSid;
+      Identity = identity;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Delete a specific Entity.
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteEntityOptions : IOptions<EntityResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// Service Sid.
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// Unique external identifier of the Entity
-        /// </summary>
-        public string PathIdentity { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (Identity != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Identity", Identity));
+      }
 
-        /// <summary>
-        /// Construct a new DeleteEntityOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
-        public DeleteEntityOptions(string pathServiceSid, string pathIdentity)
-        {
-            PathServiceSid = pathServiceSid;
-            PathIdentity = pathIdentity;
-        }
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Delete a specific Entity.
+  /// </summary>
+  public class DeleteEntityOptions : IOptions<EntityResource>
+  {
+    /// <summary>
+    /// Service Sid.
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// Unique external identifier of the Entity
+    /// </summary>
+    public string PathIdentity { get; }
+
+    /// <summary>
+    /// Construct a new DeleteEntityOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> Service Sid. </param>
+    /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
+    public DeleteEntityOptions(string pathServiceSid, string pathIdentity)
+    {
+      PathServiceSid = pathServiceSid;
+      PathIdentity = pathIdentity;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Fetch a specific Entity.
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchEntityOptions : IOptions<EntityResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// Service Sid.
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// Unique external identifier of the Entity
-        /// </summary>
-        public string PathIdentity { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new FetchEntityOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
-        public FetchEntityOptions(string pathServiceSid, string pathIdentity)
-        {
-            PathServiceSid = pathServiceSid;
-            PathIdentity = pathIdentity;
-        }
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Fetch a specific Entity.
+  /// </summary>
+  public class FetchEntityOptions : IOptions<EntityResource>
+  {
+    /// <summary>
+    /// Service Sid.
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// Unique external identifier of the Entity
+    /// </summary>
+    public string PathIdentity { get; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+    /// <summary>
+    /// Construct a new FetchEntityOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> Service Sid. </param>
+    /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
+    public FetchEntityOptions(string pathServiceSid, string pathIdentity)
+    {
+      PathServiceSid = pathServiceSid;
+      PathIdentity = pathIdentity;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Retrieve a list of all Entities for a Service.
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadEntityOptions : ReadOptions<EntityResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// Service Sid.
-        /// </summary>
-        public string PathServiceSid { get; }
-
-        /// <summary>
-        /// Construct a new ReadEntityOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        public ReadEntityOptions(string pathServiceSid)
-        {
-            PathServiceSid = pathServiceSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
+
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Retrieve a list of all Entities for a Service.
+  /// </summary>
+  public class ReadEntityOptions : ReadOptions<EntityResource>
+  {
+    /// <summary>
+    /// Service Sid.
+    /// </summary>
+    public string PathServiceSid { get; }
+
+    /// <summary>
+    /// Construct a new ReadEntityOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> Service Sid. </param>
+    public ReadEntityOptions(string pathServiceSid)
+    {
+      PathServiceSid = pathServiceSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
 
 }

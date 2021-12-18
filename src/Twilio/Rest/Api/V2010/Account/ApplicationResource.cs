@@ -18,677 +18,677 @@ using Twilio.Http;
 namespace Twilio.Rest.Api.V2010.Account
 {
 
-    public class ApplicationResource : Resource
+  public class ApplicationResource : Resource
+  {
+    private static Request BuildCreateRequest(CreateApplicationOptions options, ITwilioRestClient client)
     {
-        private static Request BuildCreateRequest(CreateApplicationOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Post,
-                Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Applications.json",
-                postParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// Create a new application within your account
-        /// </summary>
-        /// <param name="options"> Create Application parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Application </returns>
-        public static ApplicationResource Create(CreateApplicationOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildCreateRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Create a new application within your account
-        /// </summary>
-        /// <param name="options"> Create Application parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Application </returns>
-        public static async System.Threading.Tasks.Task<ApplicationResource> CreateAsync(CreateApplicationOptions options,
-                                                                                         ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// Create a new application within your account
-        /// </summary>
-        /// <param name="pathAccountSid"> The SID of the Account that will create the resource </param>
-        /// <param name="apiVersion"> The API version to use to start a new TwiML session </param>
-        /// <param name="voiceUrl"> The URL to call when the phone number receives a call </param>
-        /// <param name="voiceMethod"> The HTTP method to use with the voice_url </param>
-        /// <param name="voiceFallbackUrl"> The URL to call when a TwiML error occurs </param>
-        /// <param name="voiceFallbackMethod"> The HTTP method to use with voice_fallback_url </param>
-        /// <param name="statusCallback"> The URL to send status information to your application </param>
-        /// <param name="statusCallbackMethod"> The HTTP method to use to call status_callback </param>
-        /// <param name="voiceCallerIdLookup"> Whether to lookup the caller's name </param>
-        /// <param name="smsUrl"> The URL to call when the phone number receives an incoming SMS message </param>
-        /// <param name="smsMethod"> The HTTP method to use with sms_url </param>
-        /// <param name="smsFallbackUrl"> The URL to call when an error occurs while retrieving or executing the TwiML </param>
-        /// <param name="smsFallbackMethod"> The HTTP method to use with sms_fallback_url </param>
-        /// <param name="smsStatusCallback"> The URL to send status information to your application </param>
-        /// <param name="messageStatusCallback"> The URL to send message status information to your application </param>
-        /// <param name="friendlyName"> A string to describe the new resource </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Application </returns>
-        public static ApplicationResource Create(string pathAccountSid = null,
-                                                 string apiVersion = null,
-                                                 Uri voiceUrl = null,
-                                                 Twilio.Http.HttpMethod voiceMethod = null,
-                                                 Uri voiceFallbackUrl = null,
-                                                 Twilio.Http.HttpMethod voiceFallbackMethod = null,
-                                                 Uri statusCallback = null,
-                                                 Twilio.Http.HttpMethod statusCallbackMethod = null,
-                                                 bool? voiceCallerIdLookup = null,
-                                                 Uri smsUrl = null,
-                                                 Twilio.Http.HttpMethod smsMethod = null,
-                                                 Uri smsFallbackUrl = null,
-                                                 Twilio.Http.HttpMethod smsFallbackMethod = null,
-                                                 Uri smsStatusCallback = null,
-                                                 Uri messageStatusCallback = null,
-                                                 string friendlyName = null,
-                                                 ITwilioRestClient client = null)
-        {
-            var options = new CreateApplicationOptions(){PathAccountSid = pathAccountSid, ApiVersion = apiVersion, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceFallbackMethod = voiceFallbackMethod, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, VoiceCallerIdLookup = voiceCallerIdLookup, SmsUrl = smsUrl, SmsMethod = smsMethod, SmsFallbackUrl = smsFallbackUrl, SmsFallbackMethod = smsFallbackMethod, SmsStatusCallback = smsStatusCallback, MessageStatusCallback = messageStatusCallback, FriendlyName = friendlyName};
-            return Create(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Create a new application within your account
-        /// </summary>
-        /// <param name="pathAccountSid"> The SID of the Account that will create the resource </param>
-        /// <param name="apiVersion"> The API version to use to start a new TwiML session </param>
-        /// <param name="voiceUrl"> The URL to call when the phone number receives a call </param>
-        /// <param name="voiceMethod"> The HTTP method to use with the voice_url </param>
-        /// <param name="voiceFallbackUrl"> The URL to call when a TwiML error occurs </param>
-        /// <param name="voiceFallbackMethod"> The HTTP method to use with voice_fallback_url </param>
-        /// <param name="statusCallback"> The URL to send status information to your application </param>
-        /// <param name="statusCallbackMethod"> The HTTP method to use to call status_callback </param>
-        /// <param name="voiceCallerIdLookup"> Whether to lookup the caller's name </param>
-        /// <param name="smsUrl"> The URL to call when the phone number receives an incoming SMS message </param>
-        /// <param name="smsMethod"> The HTTP method to use with sms_url </param>
-        /// <param name="smsFallbackUrl"> The URL to call when an error occurs while retrieving or executing the TwiML </param>
-        /// <param name="smsFallbackMethod"> The HTTP method to use with sms_fallback_url </param>
-        /// <param name="smsStatusCallback"> The URL to send status information to your application </param>
-        /// <param name="messageStatusCallback"> The URL to send message status information to your application </param>
-        /// <param name="friendlyName"> A string to describe the new resource </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Application </returns>
-        public static async System.Threading.Tasks.Task<ApplicationResource> CreateAsync(string pathAccountSid = null,
-                                                                                         string apiVersion = null,
-                                                                                         Uri voiceUrl = null,
-                                                                                         Twilio.Http.HttpMethod voiceMethod = null,
-                                                                                         Uri voiceFallbackUrl = null,
-                                                                                         Twilio.Http.HttpMethod voiceFallbackMethod = null,
-                                                                                         Uri statusCallback = null,
-                                                                                         Twilio.Http.HttpMethod statusCallbackMethod = null,
-                                                                                         bool? voiceCallerIdLookup = null,
-                                                                                         Uri smsUrl = null,
-                                                                                         Twilio.Http.HttpMethod smsMethod = null,
-                                                                                         Uri smsFallbackUrl = null,
-                                                                                         Twilio.Http.HttpMethod smsFallbackMethod = null,
-                                                                                         Uri smsStatusCallback = null,
-                                                                                         Uri messageStatusCallback = null,
-                                                                                         string friendlyName = null,
-                                                                                         ITwilioRestClient client = null)
-        {
-            var options = new CreateApplicationOptions(){PathAccountSid = pathAccountSid, ApiVersion = apiVersion, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceFallbackMethod = voiceFallbackMethod, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, VoiceCallerIdLookup = voiceCallerIdLookup, SmsUrl = smsUrl, SmsMethod = smsMethod, SmsFallbackUrl = smsFallbackUrl, SmsFallbackMethod = smsFallbackMethod, SmsStatusCallback = smsStatusCallback, MessageStatusCallback = messageStatusCallback, FriendlyName = friendlyName};
-            return await CreateAsync(options, client);
-        }
-        #endif
-
-        private static Request BuildDeleteRequest(DeleteApplicationOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Delete,
-                Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Applications/" + options.PathSid + ".json",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// Delete the application by the specified application sid
-        /// </summary>
-        /// <param name="options"> Delete Application parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Application </returns>
-        public static bool Delete(DeleteApplicationOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Delete the application by the specified application sid
-        /// </summary>
-        /// <param name="options"> Delete Application parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Application </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteApplicationOptions options,
-                                                                          ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
-        }
-        #endif
-
-        /// <summary>
-        /// Delete the application by the specified application sid
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        /// <param name="pathAccountSid"> The SID of the Account that created the resources to delete </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Application </returns>
-        public static bool Delete(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
-        {
-            var options = new DeleteApplicationOptions(pathSid){PathAccountSid = pathAccountSid};
-            return Delete(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Delete the application by the specified application sid
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        /// <param name="pathAccountSid"> The SID of the Account that created the resources to delete </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Application </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid,
-                                                                          string pathAccountSid = null,
-                                                                          ITwilioRestClient client = null)
-        {
-            var options = new DeleteApplicationOptions(pathSid){PathAccountSid = pathAccountSid};
-            return await DeleteAsync(options, client);
-        }
-        #endif
-
-        private static Request BuildFetchRequest(FetchApplicationOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Get,
-                Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Applications/" + options.PathSid + ".json",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// Fetch the application specified by the provided sid
-        /// </summary>
-        /// <param name="options"> Fetch Application parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Application </returns>
-        public static ApplicationResource Fetch(FetchApplicationOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Fetch the application specified by the provided sid
-        /// </summary>
-        /// <param name="options"> Fetch Application parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Application </returns>
-        public static async System.Threading.Tasks.Task<ApplicationResource> FetchAsync(FetchApplicationOptions options,
-                                                                                        ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// Fetch the application specified by the provided sid
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        /// <param name="pathAccountSid"> The SID of the Account that created the resource to fetch </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Application </returns>
-        public static ApplicationResource Fetch(string pathSid,
-                                                string pathAccountSid = null,
-                                                ITwilioRestClient client = null)
-        {
-            var options = new FetchApplicationOptions(pathSid){PathAccountSid = pathAccountSid};
-            return Fetch(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Fetch the application specified by the provided sid
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        /// <param name="pathAccountSid"> The SID of the Account that created the resource to fetch </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Application </returns>
-        public static async System.Threading.Tasks.Task<ApplicationResource> FetchAsync(string pathSid,
-                                                                                        string pathAccountSid = null,
-                                                                                        ITwilioRestClient client = null)
-        {
-            var options = new FetchApplicationOptions(pathSid){PathAccountSid = pathAccountSid};
-            return await FetchAsync(options, client);
-        }
-        #endif
-
-        private static Request BuildReadRequest(ReadApplicationOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Get,
-                Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Applications.json",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// Retrieve a list of applications representing an application within the requesting account
-        /// </summary>
-        /// <param name="options"> Read Application parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Application </returns>
-        public static ResourceSet<ApplicationResource> Read(ReadApplicationOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildReadRequest(options, client));
-
-            var page = Page<ApplicationResource>.FromJson("applications", response.Content);
-            return new ResourceSet<ApplicationResource>(page, options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Retrieve a list of applications representing an application within the requesting account
-        /// </summary>
-        /// <param name="options"> Read Application parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Application </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<ApplicationResource>> ReadAsync(ReadApplicationOptions options,
-                                                                                                    ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
-
-            var page = Page<ApplicationResource>.FromJson("applications", response.Content);
-            return new ResourceSet<ApplicationResource>(page, options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Retrieve a list of applications representing an application within the requesting account
-        /// </summary>
-        /// <param name="pathAccountSid"> The SID of the Account that created the resources to read </param>
-        /// <param name="friendlyName"> The string that identifies the Application resources to read </param>
-        /// <param name="pageSize"> Page size </param>
-        /// <param name="limit"> Record limit </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Application </returns>
-        public static ResourceSet<ApplicationResource> Read(string pathAccountSid = null,
-                                                            string friendlyName = null,
-                                                            int? pageSize = null,
-                                                            long? limit = null,
-                                                            ITwilioRestClient client = null)
-        {
-            var options = new ReadApplicationOptions(){PathAccountSid = pathAccountSid, FriendlyName = friendlyName, PageSize = pageSize, Limit = limit};
-            return Read(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Retrieve a list of applications representing an application within the requesting account
-        /// </summary>
-        /// <param name="pathAccountSid"> The SID of the Account that created the resources to read </param>
-        /// <param name="friendlyName"> The string that identifies the Application resources to read </param>
-        /// <param name="pageSize"> Page size </param>
-        /// <param name="limit"> Record limit </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Application </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<ApplicationResource>> ReadAsync(string pathAccountSid = null,
-                                                                                                    string friendlyName = null,
-                                                                                                    int? pageSize = null,
-                                                                                                    long? limit = null,
-                                                                                                    ITwilioRestClient client = null)
-        {
-            var options = new ReadApplicationOptions(){PathAccountSid = pathAccountSid, FriendlyName = friendlyName, PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Fetch the target page of records
-        /// </summary>
-        /// <param name="targetUrl"> API-generated URL for the requested results page </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns>
-        public static Page<ApplicationResource> GetPage(string targetUrl, ITwilioRestClient client)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-
-            var request = new Request(
-                HttpMethod.Get,
-                targetUrl
-            );
-
-            var response = client.Request(request);
-            return Page<ApplicationResource>.FromJson("applications", response.Content);
-        }
-
-        /// <summary>
-        /// Fetch the next page of records
-        /// </summary>
-        /// <param name="page"> current page of records </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns>
-        public static Page<ApplicationResource> NextPage(Page<ApplicationResource> page, ITwilioRestClient client)
-        {
-            var request = new Request(
-                HttpMethod.Get,
-                page.GetNextPageUrl(Rest.Domain.Api)
-            );
-
-            var response = client.Request(request);
-            return Page<ApplicationResource>.FromJson("applications", response.Content);
-        }
-
-        /// <summary>
-        /// Fetch the previous page of records
-        /// </summary>
-        /// <param name="page"> current page of records </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns>
-        public static Page<ApplicationResource> PreviousPage(Page<ApplicationResource> page, ITwilioRestClient client)
-        {
-            var request = new Request(
-                HttpMethod.Get,
-                page.GetPreviousPageUrl(Rest.Domain.Api)
-            );
-
-            var response = client.Request(request);
-            return Page<ApplicationResource>.FromJson("applications", response.Content);
-        }
-
-        private static Request BuildUpdateRequest(UpdateApplicationOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Post,
-                Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Applications/" + options.PathSid + ".json",
-                postParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// Updates the application's properties
-        /// </summary>
-        /// <param name="options"> Update Application parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Application </returns>
-        public static ApplicationResource Update(UpdateApplicationOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildUpdateRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Updates the application's properties
-        /// </summary>
-        /// <param name="options"> Update Application parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Application </returns>
-        public static async System.Threading.Tasks.Task<ApplicationResource> UpdateAsync(UpdateApplicationOptions options,
-                                                                                         ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// Updates the application's properties
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        /// <param name="pathAccountSid"> The SID of the Account that will create the resource </param>
-        /// <param name="friendlyName"> A string to describe the resource </param>
-        /// <param name="apiVersion"> The API version to use to start a new TwiML session </param>
-        /// <param name="voiceUrl"> The URL to call when the phone number receives a call </param>
-        /// <param name="voiceMethod"> The HTTP method to use with the voice_url </param>
-        /// <param name="voiceFallbackUrl"> The URL to call when a TwiML error occurs </param>
-        /// <param name="voiceFallbackMethod"> The HTTP method to use with voice_fallback_url </param>
-        /// <param name="statusCallback"> The URL to send status information to your application </param>
-        /// <param name="statusCallbackMethod"> The HTTP method to use to call status_callback </param>
-        /// <param name="voiceCallerIdLookup"> Whether to lookup the caller's name </param>
-        /// <param name="smsUrl"> The URL to call when the phone number receives an incoming SMS message </param>
-        /// <param name="smsMethod"> The HTTP method to use with sms_url </param>
-        /// <param name="smsFallbackUrl"> The URL to call when an error occurs while retrieving or executing the TwiML </param>
-        /// <param name="smsFallbackMethod"> The HTTP method to use with sms_fallback_url </param>
-        /// <param name="smsStatusCallback"> Same as message_status_callback. Deprecated, included for backwards compatibility.
-        ///                         </param>
-        /// <param name="messageStatusCallback"> The URL to send message status information to your application </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Application </returns>
-        public static ApplicationResource Update(string pathSid,
-                                                 string pathAccountSid = null,
-                                                 string friendlyName = null,
-                                                 string apiVersion = null,
-                                                 Uri voiceUrl = null,
-                                                 Twilio.Http.HttpMethod voiceMethod = null,
-                                                 Uri voiceFallbackUrl = null,
-                                                 Twilio.Http.HttpMethod voiceFallbackMethod = null,
-                                                 Uri statusCallback = null,
-                                                 Twilio.Http.HttpMethod statusCallbackMethod = null,
-                                                 bool? voiceCallerIdLookup = null,
-                                                 Uri smsUrl = null,
-                                                 Twilio.Http.HttpMethod smsMethod = null,
-                                                 Uri smsFallbackUrl = null,
-                                                 Twilio.Http.HttpMethod smsFallbackMethod = null,
-                                                 Uri smsStatusCallback = null,
-                                                 Uri messageStatusCallback = null,
-                                                 ITwilioRestClient client = null)
-        {
-            var options = new UpdateApplicationOptions(pathSid){PathAccountSid = pathAccountSid, FriendlyName = friendlyName, ApiVersion = apiVersion, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceFallbackMethod = voiceFallbackMethod, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, VoiceCallerIdLookup = voiceCallerIdLookup, SmsUrl = smsUrl, SmsMethod = smsMethod, SmsFallbackUrl = smsFallbackUrl, SmsFallbackMethod = smsFallbackMethod, SmsStatusCallback = smsStatusCallback, MessageStatusCallback = messageStatusCallback};
-            return Update(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Updates the application's properties
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        /// <param name="pathAccountSid"> The SID of the Account that will create the resource </param>
-        /// <param name="friendlyName"> A string to describe the resource </param>
-        /// <param name="apiVersion"> The API version to use to start a new TwiML session </param>
-        /// <param name="voiceUrl"> The URL to call when the phone number receives a call </param>
-        /// <param name="voiceMethod"> The HTTP method to use with the voice_url </param>
-        /// <param name="voiceFallbackUrl"> The URL to call when a TwiML error occurs </param>
-        /// <param name="voiceFallbackMethod"> The HTTP method to use with voice_fallback_url </param>
-        /// <param name="statusCallback"> The URL to send status information to your application </param>
-        /// <param name="statusCallbackMethod"> The HTTP method to use to call status_callback </param>
-        /// <param name="voiceCallerIdLookup"> Whether to lookup the caller's name </param>
-        /// <param name="smsUrl"> The URL to call when the phone number receives an incoming SMS message </param>
-        /// <param name="smsMethod"> The HTTP method to use with sms_url </param>
-        /// <param name="smsFallbackUrl"> The URL to call when an error occurs while retrieving or executing the TwiML </param>
-        /// <param name="smsFallbackMethod"> The HTTP method to use with sms_fallback_url </param>
-        /// <param name="smsStatusCallback"> Same as message_status_callback. Deprecated, included for backwards compatibility.
-        ///                         </param>
-        /// <param name="messageStatusCallback"> The URL to send message status information to your application </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Application </returns>
-        public static async System.Threading.Tasks.Task<ApplicationResource> UpdateAsync(string pathSid,
-                                                                                         string pathAccountSid = null,
-                                                                                         string friendlyName = null,
-                                                                                         string apiVersion = null,
-                                                                                         Uri voiceUrl = null,
-                                                                                         Twilio.Http.HttpMethod voiceMethod = null,
-                                                                                         Uri voiceFallbackUrl = null,
-                                                                                         Twilio.Http.HttpMethod voiceFallbackMethod = null,
-                                                                                         Uri statusCallback = null,
-                                                                                         Twilio.Http.HttpMethod statusCallbackMethod = null,
-                                                                                         bool? voiceCallerIdLookup = null,
-                                                                                         Uri smsUrl = null,
-                                                                                         Twilio.Http.HttpMethod smsMethod = null,
-                                                                                         Uri smsFallbackUrl = null,
-                                                                                         Twilio.Http.HttpMethod smsFallbackMethod = null,
-                                                                                         Uri smsStatusCallback = null,
-                                                                                         Uri messageStatusCallback = null,
-                                                                                         ITwilioRestClient client = null)
-        {
-            var options = new UpdateApplicationOptions(pathSid){PathAccountSid = pathAccountSid, FriendlyName = friendlyName, ApiVersion = apiVersion, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceFallbackMethod = voiceFallbackMethod, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, VoiceCallerIdLookup = voiceCallerIdLookup, SmsUrl = smsUrl, SmsMethod = smsMethod, SmsFallbackUrl = smsFallbackUrl, SmsFallbackMethod = smsFallbackMethod, SmsStatusCallback = smsStatusCallback, MessageStatusCallback = messageStatusCallback};
-            return await UpdateAsync(options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Converts a JSON string into a ApplicationResource object
-        /// </summary>
-        /// <param name="json"> Raw JSON string </param>
-        /// <returns> ApplicationResource object represented by the provided JSON </returns>
-        public static ApplicationResource FromJson(string json)
-        {
-            // Convert all checked exceptions to Runtime
-            try
-            {
-                return JsonConvert.DeserializeObject<ApplicationResource>(json);
-            }
-            catch (JsonException e)
-            {
-                throw new ApiException(e.Message, e);
-            }
-        }
-
-        /// <summary>
-        /// The SID of the Account that created the resource
-        /// </summary>
-        [JsonProperty("account_sid")]
-        public string AccountSid { get; private set; }
-        /// <summary>
-        /// The API version used to start a new TwiML session
-        /// </summary>
-        [JsonProperty("api_version")]
-        public string ApiVersion { get; private set; }
-        /// <summary>
-        /// The RFC 2822 date and time in GMT that the resource was created
-        /// </summary>
-        [JsonProperty("date_created")]
-        public DateTime? DateCreated { get; private set; }
-        /// <summary>
-        /// The RFC 2822 date and time in GMT that the resource was last updated
-        /// </summary>
-        [JsonProperty("date_updated")]
-        public DateTime? DateUpdated { get; private set; }
-        /// <summary>
-        /// The string that you assigned to describe the resource
-        /// </summary>
-        [JsonProperty("friendly_name")]
-        public string FriendlyName { get; private set; }
-        /// <summary>
-        /// The URL to send message status information to your application
-        /// </summary>
-        [JsonProperty("message_status_callback")]
-        public Uri MessageStatusCallback { get; private set; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        [JsonProperty("sid")]
-        public string Sid { get; private set; }
-        /// <summary>
-        /// The HTTP method used with sms_fallback_url
-        /// </summary>
-        [JsonProperty("sms_fallback_method")]
-        [JsonConverter(typeof(HttpMethodConverter))]
-        public Twilio.Http.HttpMethod SmsFallbackMethod { get; private set; }
-        /// <summary>
-        /// The URL that we call when an error occurs while retrieving or executing the TwiML
-        /// </summary>
-        [JsonProperty("sms_fallback_url")]
-        public Uri SmsFallbackUrl { get; private set; }
-        /// <summary>
-        /// The HTTP method to use with sms_url
-        /// </summary>
-        [JsonProperty("sms_method")]
-        [JsonConverter(typeof(HttpMethodConverter))]
-        public Twilio.Http.HttpMethod SmsMethod { get; private set; }
-        /// <summary>
-        /// The URL to send status information to your application
-        /// </summary>
-        [JsonProperty("sms_status_callback")]
-        public Uri SmsStatusCallback { get; private set; }
-        /// <summary>
-        /// The URL we call when the phone number receives an incoming SMS message
-        /// </summary>
-        [JsonProperty("sms_url")]
-        public Uri SmsUrl { get; private set; }
-        /// <summary>
-        /// The URL to send status information to your application
-        /// </summary>
-        [JsonProperty("status_callback")]
-        public Uri StatusCallback { get; private set; }
-        /// <summary>
-        /// The HTTP method we use to call status_callback
-        /// </summary>
-        [JsonProperty("status_callback_method")]
-        [JsonConverter(typeof(HttpMethodConverter))]
-        public Twilio.Http.HttpMethod StatusCallbackMethod { get; private set; }
-        /// <summary>
-        /// The URI of the resource, relative to `https://api.twilio.com`
-        /// </summary>
-        [JsonProperty("uri")]
-        public string Uri { get; private set; }
-        /// <summary>
-        /// Whether to lookup the caller's name
-        /// </summary>
-        [JsonProperty("voice_caller_id_lookup")]
-        public bool? VoiceCallerIdLookup { get; private set; }
-        /// <summary>
-        /// The HTTP method used with voice_fallback_url
-        /// </summary>
-        [JsonProperty("voice_fallback_method")]
-        [JsonConverter(typeof(HttpMethodConverter))]
-        public Twilio.Http.HttpMethod VoiceFallbackMethod { get; private set; }
-        /// <summary>
-        /// The URL we call when a TwiML error occurs
-        /// </summary>
-        [JsonProperty("voice_fallback_url")]
-        public Uri VoiceFallbackUrl { get; private set; }
-        /// <summary>
-        /// The HTTP method used with the voice_url
-        /// </summary>
-        [JsonProperty("voice_method")]
-        [JsonConverter(typeof(HttpMethodConverter))]
-        public Twilio.Http.HttpMethod VoiceMethod { get; private set; }
-        /// <summary>
-        /// The URL we call when the phone number receives a call
-        /// </summary>
-        [JsonProperty("voice_url")]
-        public Uri VoiceUrl { get; private set; }
-
-        private ApplicationResource()
-        {
-
-        }
+      return new Request(
+          HttpMethod.Post,
+          Rest.Domain.Api,
+          "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Applications.json",
+          postParams: options.GetParams(),
+          headerParams: null
+      );
     }
+
+    /// <summary>
+    /// Create a new application within your account
+    /// </summary>
+    /// <param name="options"> Create Application parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Application </returns>
+    public static ApplicationResource Create(CreateApplicationOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildCreateRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Create a new application within your account
+    /// </summary>
+    /// <param name="options"> Create Application parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Application </returns>
+    public static async System.Threading.Tasks.Task<ApplicationResource> CreateAsync(CreateApplicationOptions options,
+                                                                                     ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildCreateRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// Create a new application within your account
+    /// </summary>
+    /// <param name="pathAccountSid"> The SID of the Account that will create the resource </param>
+    /// <param name="apiVersion"> The API version to use to start a new TwiML session </param>
+    /// <param name="voiceUrl"> The URL to call when the phone number receives a call </param>
+    /// <param name="voiceMethod"> The HTTP method to use with the voice_url </param>
+    /// <param name="voiceFallbackUrl"> The URL to call when a TwiML error occurs </param>
+    /// <param name="voiceFallbackMethod"> The HTTP method to use with voice_fallback_url </param>
+    /// <param name="statusCallback"> The URL to send status information to your application </param>
+    /// <param name="statusCallbackMethod"> The HTTP method to use to call status_callback </param>
+    /// <param name="voiceCallerIdLookup"> Whether to lookup the caller's name </param>
+    /// <param name="smsUrl"> The URL to call when the phone number receives an incoming SMS message </param>
+    /// <param name="smsMethod"> The HTTP method to use with sms_url </param>
+    /// <param name="smsFallbackUrl"> The URL to call when an error occurs while retrieving or executing the TwiML </param>
+    /// <param name="smsFallbackMethod"> The HTTP method to use with sms_fallback_url </param>
+    /// <param name="smsStatusCallback"> The URL to send status information to your application </param>
+    /// <param name="messageStatusCallback"> The URL to send message status information to your application </param>
+    /// <param name="friendlyName"> A string to describe the new resource </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Application </returns>
+    public static ApplicationResource Create(string pathAccountSid = null,
+                                             string apiVersion = null,
+                                             Uri voiceUrl = null,
+                                             Twilio.Http.HttpMethod voiceMethod = null,
+                                             Uri voiceFallbackUrl = null,
+                                             Twilio.Http.HttpMethod voiceFallbackMethod = null,
+                                             Uri statusCallback = null,
+                                             Twilio.Http.HttpMethod statusCallbackMethod = null,
+                                             bool? voiceCallerIdLookup = null,
+                                             Uri smsUrl = null,
+                                             Twilio.Http.HttpMethod smsMethod = null,
+                                             Uri smsFallbackUrl = null,
+                                             Twilio.Http.HttpMethod smsFallbackMethod = null,
+                                             Uri smsStatusCallback = null,
+                                             Uri messageStatusCallback = null,
+                                             string friendlyName = null,
+                                             ITwilioRestClient client = null)
+    {
+      var options = new CreateApplicationOptions() { PathAccountSid = pathAccountSid, ApiVersion = apiVersion, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceFallbackMethod = voiceFallbackMethod, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, VoiceCallerIdLookup = voiceCallerIdLookup, SmsUrl = smsUrl, SmsMethod = smsMethod, SmsFallbackUrl = smsFallbackUrl, SmsFallbackMethod = smsFallbackMethod, SmsStatusCallback = smsStatusCallback, MessageStatusCallback = messageStatusCallback, FriendlyName = friendlyName };
+      return Create(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Create a new application within your account
+    /// </summary>
+    /// <param name="pathAccountSid"> The SID of the Account that will create the resource </param>
+    /// <param name="apiVersion"> The API version to use to start a new TwiML session </param>
+    /// <param name="voiceUrl"> The URL to call when the phone number receives a call </param>
+    /// <param name="voiceMethod"> The HTTP method to use with the voice_url </param>
+    /// <param name="voiceFallbackUrl"> The URL to call when a TwiML error occurs </param>
+    /// <param name="voiceFallbackMethod"> The HTTP method to use with voice_fallback_url </param>
+    /// <param name="statusCallback"> The URL to send status information to your application </param>
+    /// <param name="statusCallbackMethod"> The HTTP method to use to call status_callback </param>
+    /// <param name="voiceCallerIdLookup"> Whether to lookup the caller's name </param>
+    /// <param name="smsUrl"> The URL to call when the phone number receives an incoming SMS message </param>
+    /// <param name="smsMethod"> The HTTP method to use with sms_url </param>
+    /// <param name="smsFallbackUrl"> The URL to call when an error occurs while retrieving or executing the TwiML </param>
+    /// <param name="smsFallbackMethod"> The HTTP method to use with sms_fallback_url </param>
+    /// <param name="smsStatusCallback"> The URL to send status information to your application </param>
+    /// <param name="messageStatusCallback"> The URL to send message status information to your application </param>
+    /// <param name="friendlyName"> A string to describe the new resource </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Application </returns>
+    public static async System.Threading.Tasks.Task<ApplicationResource> CreateAsync(string pathAccountSid = null,
+                                                                                     string apiVersion = null,
+                                                                                     Uri voiceUrl = null,
+                                                                                     Twilio.Http.HttpMethod voiceMethod = null,
+                                                                                     Uri voiceFallbackUrl = null,
+                                                                                     Twilio.Http.HttpMethod voiceFallbackMethod = null,
+                                                                                     Uri statusCallback = null,
+                                                                                     Twilio.Http.HttpMethod statusCallbackMethod = null,
+                                                                                     bool? voiceCallerIdLookup = null,
+                                                                                     Uri smsUrl = null,
+                                                                                     Twilio.Http.HttpMethod smsMethod = null,
+                                                                                     Uri smsFallbackUrl = null,
+                                                                                     Twilio.Http.HttpMethod smsFallbackMethod = null,
+                                                                                     Uri smsStatusCallback = null,
+                                                                                     Uri messageStatusCallback = null,
+                                                                                     string friendlyName = null,
+                                                                                     ITwilioRestClient client = null)
+    {
+      var options = new CreateApplicationOptions() { PathAccountSid = pathAccountSid, ApiVersion = apiVersion, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceFallbackMethod = voiceFallbackMethod, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, VoiceCallerIdLookup = voiceCallerIdLookup, SmsUrl = smsUrl, SmsMethod = smsMethod, SmsFallbackUrl = smsFallbackUrl, SmsFallbackMethod = smsFallbackMethod, SmsStatusCallback = smsStatusCallback, MessageStatusCallback = messageStatusCallback, FriendlyName = friendlyName };
+      return await CreateAsync(options, client);
+    }
+#endif
+
+    private static Request BuildDeleteRequest(DeleteApplicationOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Delete,
+          Rest.Domain.Api,
+          "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Applications/" + options.PathSid + ".json",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// Delete the application by the specified application sid
+    /// </summary>
+    /// <param name="options"> Delete Application parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Application </returns>
+    public static bool Delete(DeleteApplicationOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildDeleteRequest(options, client));
+      return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+    }
+
+#if !NET35
+    /// <summary>
+    /// Delete the application by the specified application sid
+    /// </summary>
+    /// <param name="options"> Delete Application parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Application </returns>
+    public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteApplicationOptions options,
+                                                                      ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+      return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+    }
+#endif
+
+    /// <summary>
+    /// Delete the application by the specified application sid
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    /// <param name="pathAccountSid"> The SID of the Account that created the resources to delete </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Application </returns>
+    public static bool Delete(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
+    {
+      var options = new DeleteApplicationOptions(pathSid) { PathAccountSid = pathAccountSid };
+      return Delete(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Delete the application by the specified application sid
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    /// <param name="pathAccountSid"> The SID of the Account that created the resources to delete </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Application </returns>
+    public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid,
+                                                                      string pathAccountSid = null,
+                                                                      ITwilioRestClient client = null)
+    {
+      var options = new DeleteApplicationOptions(pathSid) { PathAccountSid = pathAccountSid };
+      return await DeleteAsync(options, client);
+    }
+#endif
+
+    private static Request BuildFetchRequest(FetchApplicationOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Get,
+          Rest.Domain.Api,
+          "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Applications/" + options.PathSid + ".json",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// Fetch the application specified by the provided sid
+    /// </summary>
+    /// <param name="options"> Fetch Application parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Application </returns>
+    public static ApplicationResource Fetch(FetchApplicationOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Fetch the application specified by the provided sid
+    /// </summary>
+    /// <param name="options"> Fetch Application parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Application </returns>
+    public static async System.Threading.Tasks.Task<ApplicationResource> FetchAsync(FetchApplicationOptions options,
+                                                                                    ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// Fetch the application specified by the provided sid
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    /// <param name="pathAccountSid"> The SID of the Account that created the resource to fetch </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Application </returns>
+    public static ApplicationResource Fetch(string pathSid,
+                                            string pathAccountSid = null,
+                                            ITwilioRestClient client = null)
+    {
+      var options = new FetchApplicationOptions(pathSid) { PathAccountSid = pathAccountSid };
+      return Fetch(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Fetch the application specified by the provided sid
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    /// <param name="pathAccountSid"> The SID of the Account that created the resource to fetch </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Application </returns>
+    public static async System.Threading.Tasks.Task<ApplicationResource> FetchAsync(string pathSid,
+                                                                                    string pathAccountSid = null,
+                                                                                    ITwilioRestClient client = null)
+    {
+      var options = new FetchApplicationOptions(pathSid) { PathAccountSid = pathAccountSid };
+      return await FetchAsync(options, client);
+    }
+#endif
+
+    private static Request BuildReadRequest(ReadApplicationOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Get,
+          Rest.Domain.Api,
+          "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Applications.json",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// Retrieve a list of applications representing an application within the requesting account
+    /// </summary>
+    /// <param name="options"> Read Application parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Application </returns>
+    public static ResourceSet<ApplicationResource> Read(ReadApplicationOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildReadRequest(options, client));
+
+      var page = Page<ApplicationResource>.FromJson("applications", response.Content);
+      return new ResourceSet<ApplicationResource>(page, options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Retrieve a list of applications representing an application within the requesting account
+    /// </summary>
+    /// <param name="options"> Read Application parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Application </returns>
+    public static async System.Threading.Tasks.Task<ResourceSet<ApplicationResource>> ReadAsync(ReadApplicationOptions options,
+                                                                                                ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+      var page = Page<ApplicationResource>.FromJson("applications", response.Content);
+      return new ResourceSet<ApplicationResource>(page, options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Retrieve a list of applications representing an application within the requesting account
+    /// </summary>
+    /// <param name="pathAccountSid"> The SID of the Account that created the resources to read </param>
+    /// <param name="friendlyName"> The string that identifies the Application resources to read </param>
+    /// <param name="pageSize"> Page size </param>
+    /// <param name="limit"> Record limit </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Application </returns>
+    public static ResourceSet<ApplicationResource> Read(string pathAccountSid = null,
+                                                        string friendlyName = null,
+                                                        int? pageSize = null,
+                                                        long? limit = null,
+                                                        ITwilioRestClient client = null)
+    {
+      var options = new ReadApplicationOptions() { PathAccountSid = pathAccountSid, FriendlyName = friendlyName, PageSize = pageSize, Limit = limit };
+      return Read(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Retrieve a list of applications representing an application within the requesting account
+    /// </summary>
+    /// <param name="pathAccountSid"> The SID of the Account that created the resources to read </param>
+    /// <param name="friendlyName"> The string that identifies the Application resources to read </param>
+    /// <param name="pageSize"> Page size </param>
+    /// <param name="limit"> Record limit </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Application </returns>
+    public static async System.Threading.Tasks.Task<ResourceSet<ApplicationResource>> ReadAsync(string pathAccountSid = null,
+                                                                                                string friendlyName = null,
+                                                                                                int? pageSize = null,
+                                                                                                long? limit = null,
+                                                                                                ITwilioRestClient client = null)
+    {
+      var options = new ReadApplicationOptions() { PathAccountSid = pathAccountSid, FriendlyName = friendlyName, PageSize = pageSize, Limit = limit };
+      return await ReadAsync(options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Fetch the target page of records
+    /// </summary>
+    /// <param name="targetUrl"> API-generated URL for the requested results page </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> The target page of records </returns>
+    public static Page<ApplicationResource> GetPage(string targetUrl, ITwilioRestClient client)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+
+      var request = new Request(
+          HttpMethod.Get,
+          targetUrl
+      );
+
+      var response = client.Request(request);
+      return Page<ApplicationResource>.FromJson("applications", response.Content);
+    }
+
+    /// <summary>
+    /// Fetch the next page of records
+    /// </summary>
+    /// <param name="page"> current page of records </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> The next page of records </returns>
+    public static Page<ApplicationResource> NextPage(Page<ApplicationResource> page, ITwilioRestClient client)
+    {
+      var request = new Request(
+          HttpMethod.Get,
+          page.GetNextPageUrl(Rest.Domain.Api)
+      );
+
+      var response = client.Request(request);
+      return Page<ApplicationResource>.FromJson("applications", response.Content);
+    }
+
+    /// <summary>
+    /// Fetch the previous page of records
+    /// </summary>
+    /// <param name="page"> current page of records </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> The previous page of records </returns>
+    public static Page<ApplicationResource> PreviousPage(Page<ApplicationResource> page, ITwilioRestClient client)
+    {
+      var request = new Request(
+          HttpMethod.Get,
+          page.GetPreviousPageUrl(Rest.Domain.Api)
+      );
+
+      var response = client.Request(request);
+      return Page<ApplicationResource>.FromJson("applications", response.Content);
+    }
+
+    private static Request BuildUpdateRequest(UpdateApplicationOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Post,
+          Rest.Domain.Api,
+          "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Applications/" + options.PathSid + ".json",
+          postParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// Updates the application's properties
+    /// </summary>
+    /// <param name="options"> Update Application parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Application </returns>
+    public static ApplicationResource Update(UpdateApplicationOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildUpdateRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Updates the application's properties
+    /// </summary>
+    /// <param name="options"> Update Application parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Application </returns>
+    public static async System.Threading.Tasks.Task<ApplicationResource> UpdateAsync(UpdateApplicationOptions options,
+                                                                                     ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// Updates the application's properties
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    /// <param name="pathAccountSid"> The SID of the Account that will create the resource </param>
+    /// <param name="friendlyName"> A string to describe the resource </param>
+    /// <param name="apiVersion"> The API version to use to start a new TwiML session </param>
+    /// <param name="voiceUrl"> The URL to call when the phone number receives a call </param>
+    /// <param name="voiceMethod"> The HTTP method to use with the voice_url </param>
+    /// <param name="voiceFallbackUrl"> The URL to call when a TwiML error occurs </param>
+    /// <param name="voiceFallbackMethod"> The HTTP method to use with voice_fallback_url </param>
+    /// <param name="statusCallback"> The URL to send status information to your application </param>
+    /// <param name="statusCallbackMethod"> The HTTP method to use to call status_callback </param>
+    /// <param name="voiceCallerIdLookup"> Whether to lookup the caller's name </param>
+    /// <param name="smsUrl"> The URL to call when the phone number receives an incoming SMS message </param>
+    /// <param name="smsMethod"> The HTTP method to use with sms_url </param>
+    /// <param name="smsFallbackUrl"> The URL to call when an error occurs while retrieving or executing the TwiML </param>
+    /// <param name="smsFallbackMethod"> The HTTP method to use with sms_fallback_url </param>
+    /// <param name="smsStatusCallback"> Same as message_status_callback. Deprecated, included for backwards compatibility.
+    ///                         </param>
+    /// <param name="messageStatusCallback"> The URL to send message status information to your application </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Application </returns>
+    public static ApplicationResource Update(string pathSid,
+                                             string pathAccountSid = null,
+                                             string friendlyName = null,
+                                             string apiVersion = null,
+                                             Uri voiceUrl = null,
+                                             Twilio.Http.HttpMethod voiceMethod = null,
+                                             Uri voiceFallbackUrl = null,
+                                             Twilio.Http.HttpMethod voiceFallbackMethod = null,
+                                             Uri statusCallback = null,
+                                             Twilio.Http.HttpMethod statusCallbackMethod = null,
+                                             bool? voiceCallerIdLookup = null,
+                                             Uri smsUrl = null,
+                                             Twilio.Http.HttpMethod smsMethod = null,
+                                             Uri smsFallbackUrl = null,
+                                             Twilio.Http.HttpMethod smsFallbackMethod = null,
+                                             Uri smsStatusCallback = null,
+                                             Uri messageStatusCallback = null,
+                                             ITwilioRestClient client = null)
+    {
+      var options = new UpdateApplicationOptions(pathSid) { PathAccountSid = pathAccountSid, FriendlyName = friendlyName, ApiVersion = apiVersion, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceFallbackMethod = voiceFallbackMethod, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, VoiceCallerIdLookup = voiceCallerIdLookup, SmsUrl = smsUrl, SmsMethod = smsMethod, SmsFallbackUrl = smsFallbackUrl, SmsFallbackMethod = smsFallbackMethod, SmsStatusCallback = smsStatusCallback, MessageStatusCallback = messageStatusCallback };
+      return Update(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Updates the application's properties
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    /// <param name="pathAccountSid"> The SID of the Account that will create the resource </param>
+    /// <param name="friendlyName"> A string to describe the resource </param>
+    /// <param name="apiVersion"> The API version to use to start a new TwiML session </param>
+    /// <param name="voiceUrl"> The URL to call when the phone number receives a call </param>
+    /// <param name="voiceMethod"> The HTTP method to use with the voice_url </param>
+    /// <param name="voiceFallbackUrl"> The URL to call when a TwiML error occurs </param>
+    /// <param name="voiceFallbackMethod"> The HTTP method to use with voice_fallback_url </param>
+    /// <param name="statusCallback"> The URL to send status information to your application </param>
+    /// <param name="statusCallbackMethod"> The HTTP method to use to call status_callback </param>
+    /// <param name="voiceCallerIdLookup"> Whether to lookup the caller's name </param>
+    /// <param name="smsUrl"> The URL to call when the phone number receives an incoming SMS message </param>
+    /// <param name="smsMethod"> The HTTP method to use with sms_url </param>
+    /// <param name="smsFallbackUrl"> The URL to call when an error occurs while retrieving or executing the TwiML </param>
+    /// <param name="smsFallbackMethod"> The HTTP method to use with sms_fallback_url </param>
+    /// <param name="smsStatusCallback"> Same as message_status_callback. Deprecated, included for backwards compatibility.
+    ///                         </param>
+    /// <param name="messageStatusCallback"> The URL to send message status information to your application </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Application </returns>
+    public static async System.Threading.Tasks.Task<ApplicationResource> UpdateAsync(string pathSid,
+                                                                                     string pathAccountSid = null,
+                                                                                     string friendlyName = null,
+                                                                                     string apiVersion = null,
+                                                                                     Uri voiceUrl = null,
+                                                                                     Twilio.Http.HttpMethod voiceMethod = null,
+                                                                                     Uri voiceFallbackUrl = null,
+                                                                                     Twilio.Http.HttpMethod voiceFallbackMethod = null,
+                                                                                     Uri statusCallback = null,
+                                                                                     Twilio.Http.HttpMethod statusCallbackMethod = null,
+                                                                                     bool? voiceCallerIdLookup = null,
+                                                                                     Uri smsUrl = null,
+                                                                                     Twilio.Http.HttpMethod smsMethod = null,
+                                                                                     Uri smsFallbackUrl = null,
+                                                                                     Twilio.Http.HttpMethod smsFallbackMethod = null,
+                                                                                     Uri smsStatusCallback = null,
+                                                                                     Uri messageStatusCallback = null,
+                                                                                     ITwilioRestClient client = null)
+    {
+      var options = new UpdateApplicationOptions(pathSid) { PathAccountSid = pathAccountSid, FriendlyName = friendlyName, ApiVersion = apiVersion, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceFallbackMethod = voiceFallbackMethod, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, VoiceCallerIdLookup = voiceCallerIdLookup, SmsUrl = smsUrl, SmsMethod = smsMethod, SmsFallbackUrl = smsFallbackUrl, SmsFallbackMethod = smsFallbackMethod, SmsStatusCallback = smsStatusCallback, MessageStatusCallback = messageStatusCallback };
+      return await UpdateAsync(options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Converts a JSON string into a ApplicationResource object
+    /// </summary>
+    /// <param name="json"> Raw JSON string </param>
+    /// <returns> ApplicationResource object represented by the provided JSON </returns>
+    public static ApplicationResource FromJson(string json)
+    {
+      // Convert all checked exceptions to Runtime
+      try
+      {
+        return JsonConvert.DeserializeObject<ApplicationResource>(json);
+      }
+      catch (JsonException e)
+      {
+        throw new ApiException(e.Message, e);
+      }
+    }
+
+    /// <summary>
+    /// The SID of the Account that created the resource
+    /// </summary>
+    [JsonProperty("account_sid")]
+    public string AccountSid { get; private set; }
+    /// <summary>
+    /// The API version used to start a new TwiML session
+    /// </summary>
+    [JsonProperty("api_version")]
+    public string ApiVersion { get; private set; }
+    /// <summary>
+    /// The RFC 2822 date and time in GMT that the resource was created
+    /// </summary>
+    [JsonProperty("date_created")]
+    public DateTime? DateCreated { get; private set; }
+    /// <summary>
+    /// The RFC 2822 date and time in GMT that the resource was last updated
+    /// </summary>
+    [JsonProperty("date_updated")]
+    public DateTime? DateUpdated { get; private set; }
+    /// <summary>
+    /// The string that you assigned to describe the resource
+    /// </summary>
+    [JsonProperty("friendly_name")]
+    public string FriendlyName { get; private set; }
+    /// <summary>
+    /// The URL to send message status information to your application
+    /// </summary>
+    [JsonProperty("message_status_callback")]
+    public Uri MessageStatusCallback { get; private set; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    [JsonProperty("sid")]
+    public string Sid { get; private set; }
+    /// <summary>
+    /// The HTTP method used with sms_fallback_url
+    /// </summary>
+    [JsonProperty("sms_fallback_method")]
+    [JsonConverter(typeof(HttpMethodConverter))]
+    public Twilio.Http.HttpMethod SmsFallbackMethod { get; private set; }
+    /// <summary>
+    /// The URL that we call when an error occurs while retrieving or executing the TwiML
+    /// </summary>
+    [JsonProperty("sms_fallback_url")]
+    public Uri SmsFallbackUrl { get; private set; }
+    /// <summary>
+    /// The HTTP method to use with sms_url
+    /// </summary>
+    [JsonProperty("sms_method")]
+    [JsonConverter(typeof(HttpMethodConverter))]
+    public Twilio.Http.HttpMethod SmsMethod { get; private set; }
+    /// <summary>
+    /// The URL to send status information to your application
+    /// </summary>
+    [JsonProperty("sms_status_callback")]
+    public Uri SmsStatusCallback { get; private set; }
+    /// <summary>
+    /// The URL we call when the phone number receives an incoming SMS message
+    /// </summary>
+    [JsonProperty("sms_url")]
+    public Uri SmsUrl { get; private set; }
+    /// <summary>
+    /// The URL to send status information to your application
+    /// </summary>
+    [JsonProperty("status_callback")]
+    public Uri StatusCallback { get; private set; }
+    /// <summary>
+    /// The HTTP method we use to call status_callback
+    /// </summary>
+    [JsonProperty("status_callback_method")]
+    [JsonConverter(typeof(HttpMethodConverter))]
+    public Twilio.Http.HttpMethod StatusCallbackMethod { get; private set; }
+    /// <summary>
+    /// The URI of the resource, relative to `https://api.twilio.com`
+    /// </summary>
+    [JsonProperty("uri")]
+    public string Uri { get; private set; }
+    /// <summary>
+    /// Whether to lookup the caller's name
+    /// </summary>
+    [JsonProperty("voice_caller_id_lookup")]
+    public bool? VoiceCallerIdLookup { get; private set; }
+    /// <summary>
+    /// The HTTP method used with voice_fallback_url
+    /// </summary>
+    [JsonProperty("voice_fallback_method")]
+    [JsonConverter(typeof(HttpMethodConverter))]
+    public Twilio.Http.HttpMethod VoiceFallbackMethod { get; private set; }
+    /// <summary>
+    /// The URL we call when a TwiML error occurs
+    /// </summary>
+    [JsonProperty("voice_fallback_url")]
+    public Uri VoiceFallbackUrl { get; private set; }
+    /// <summary>
+    /// The HTTP method used with the voice_url
+    /// </summary>
+    [JsonProperty("voice_method")]
+    [JsonConverter(typeof(HttpMethodConverter))]
+    public Twilio.Http.HttpMethod VoiceMethod { get; private set; }
+    /// <summary>
+    /// The URL we call when the phone number receives a call
+    /// </summary>
+    [JsonProperty("voice_url")]
+    public Uri VoiceUrl { get; private set; }
+
+    private ApplicationResource()
+    {
+
+    }
+  }
 
 }

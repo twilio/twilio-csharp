@@ -11,42 +11,42 @@ using Twilio.Converters;
 namespace Twilio.Rest.Taskrouter.V1.Workspace
 {
 
+  /// <summary>
+  /// FetchWorkspaceRealTimeStatisticsOptions
+  /// </summary>
+  public class FetchWorkspaceRealTimeStatisticsOptions : IOptions<WorkspaceRealTimeStatisticsResource>
+  {
     /// <summary>
-    /// FetchWorkspaceRealTimeStatisticsOptions
+    /// The SID of the Workspace to fetch
     /// </summary>
-    public class FetchWorkspaceRealTimeStatisticsOptions : IOptions<WorkspaceRealTimeStatisticsResource>
+    public string PathWorkspaceSid { get; }
+    /// <summary>
+    /// Only calculate real-time statistics on this TaskChannel
+    /// </summary>
+    public string TaskChannel { get; set; }
+
+    /// <summary>
+    /// Construct a new FetchWorkspaceRealTimeStatisticsOptions
+    /// </summary>
+    /// <param name="pathWorkspaceSid"> The SID of the Workspace to fetch </param>
+    public FetchWorkspaceRealTimeStatisticsOptions(string pathWorkspaceSid)
     {
-        /// <summary>
-        /// The SID of the Workspace to fetch
-        /// </summary>
-        public string PathWorkspaceSid { get; }
-        /// <summary>
-        /// Only calculate real-time statistics on this TaskChannel
-        /// </summary>
-        public string TaskChannel { get; set; }
-
-        /// <summary>
-        /// Construct a new FetchWorkspaceRealTimeStatisticsOptions
-        /// </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace to fetch </param>
-        public FetchWorkspaceRealTimeStatisticsOptions(string pathWorkspaceSid)
-        {
-            PathWorkspaceSid = pathWorkspaceSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (TaskChannel != null)
-            {
-                p.Add(new KeyValuePair<string, string>("TaskChannel", TaskChannel));
-            }
-
-            return p;
-        }
+      PathWorkspaceSid = pathWorkspaceSid;
     }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (TaskChannel != null)
+      {
+        p.Add(new KeyValuePair<string, string>("TaskChannel", TaskChannel));
+      }
+
+      return p;
+    }
+  }
 
 }

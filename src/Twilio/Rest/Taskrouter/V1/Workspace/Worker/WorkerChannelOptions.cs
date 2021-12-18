@@ -11,144 +11,144 @@ using Twilio.Converters;
 namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
 {
 
+  /// <summary>
+  /// ReadWorkerChannelOptions
+  /// </summary>
+  public class ReadWorkerChannelOptions : ReadOptions<WorkerChannelResource>
+  {
     /// <summary>
-    /// ReadWorkerChannelOptions
+    /// The SID of the Workspace with the WorkerChannels to read
     /// </summary>
-    public class ReadWorkerChannelOptions : ReadOptions<WorkerChannelResource>
+    public string PathWorkspaceSid { get; }
+    /// <summary>
+    /// The SID of the Worker with the WorkerChannels to read
+    /// </summary>
+    public string PathWorkerSid { get; }
+
+    /// <summary>
+    /// Construct a new ReadWorkerChannelOptions
+    /// </summary>
+    /// <param name="pathWorkspaceSid"> The SID of the Workspace with the WorkerChannels to read </param>
+    /// <param name="pathWorkerSid"> The SID of the Worker with the WorkerChannels to read </param>
+    public ReadWorkerChannelOptions(string pathWorkspaceSid, string pathWorkerSid)
     {
-        /// <summary>
-        /// The SID of the Workspace with the WorkerChannels to read
-        /// </summary>
-        public string PathWorkspaceSid { get; }
-        /// <summary>
-        /// The SID of the Worker with the WorkerChannels to read
-        /// </summary>
-        public string PathWorkerSid { get; }
-
-        /// <summary>
-        /// Construct a new ReadWorkerChannelOptions
-        /// </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the WorkerChannels to read </param>
-        /// <param name="pathWorkerSid"> The SID of the Worker with the WorkerChannels to read </param>
-        public ReadWorkerChannelOptions(string pathWorkspaceSid, string pathWorkerSid)
-        {
-            PathWorkspaceSid = pathWorkspaceSid;
-            PathWorkerSid = pathWorkerSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+      PathWorkspaceSid = pathWorkspaceSid;
+      PathWorkerSid = pathWorkerSid;
     }
 
     /// <summary>
-    /// FetchWorkerChannelOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchWorkerChannelOptions : IOptions<WorkerChannelResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Workspace with the WorkerChannel to fetch
-        /// </summary>
-        public string PathWorkspaceSid { get; }
-        /// <summary>
-        /// The SID of the Worker with the WorkerChannel to fetch
-        /// </summary>
-        public string PathWorkerSid { get; }
-        /// <summary>
-        /// The SID of the to fetch
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new FetchWorkerChannelOptions
-        /// </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the WorkerChannel to fetch </param>
-        /// <param name="pathWorkerSid"> The SID of the Worker with the WorkerChannel to fetch </param>
-        /// <param name="pathSid"> The SID of the to fetch </param>
-        public FetchWorkerChannelOptions(string pathWorkspaceSid, string pathWorkerSid, string pathSid)
-        {
-            PathWorkspaceSid = pathWorkspaceSid;
-            PathWorkerSid = pathWorkerSid;
-            PathSid = pathSid;
-        }
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+  /// <summary>
+  /// FetchWorkerChannelOptions
+  /// </summary>
+  public class FetchWorkerChannelOptions : IOptions<WorkerChannelResource>
+  {
+    /// <summary>
+    /// The SID of the Workspace with the WorkerChannel to fetch
+    /// </summary>
+    public string PathWorkspaceSid { get; }
+    /// <summary>
+    /// The SID of the Worker with the WorkerChannel to fetch
+    /// </summary>
+    public string PathWorkerSid { get; }
+    /// <summary>
+    /// The SID of the to fetch
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchWorkerChannelOptions
+    /// </summary>
+    /// <param name="pathWorkspaceSid"> The SID of the Workspace with the WorkerChannel to fetch </param>
+    /// <param name="pathWorkerSid"> The SID of the Worker with the WorkerChannel to fetch </param>
+    /// <param name="pathSid"> The SID of the to fetch </param>
+    public FetchWorkerChannelOptions(string pathWorkspaceSid, string pathWorkerSid, string pathSid)
+    {
+      PathWorkspaceSid = pathWorkspaceSid;
+      PathWorkerSid = pathWorkerSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// UpdateWorkerChannelOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateWorkerChannelOptions : IOptions<WorkerChannelResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Workspace with the WorkerChannel to update
-        /// </summary>
-        public string PathWorkspaceSid { get; }
-        /// <summary>
-        /// The SID of the Worker with the WorkerChannel to update
-        /// </summary>
-        public string PathWorkerSid { get; }
-        /// <summary>
-        /// The SID of the WorkerChannel to update
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// The total number of Tasks that the Worker should handle for the TaskChannel type
-        /// </summary>
-        public int? Capacity { get; set; }
-        /// <summary>
-        /// Whether the WorkerChannel is available
-        /// </summary>
-        public bool? Available { get; set; }
-
-        /// <summary>
-        /// Construct a new UpdateWorkerChannelOptions
-        /// </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the WorkerChannel to update </param>
-        /// <param name="pathWorkerSid"> The SID of the Worker with the WorkerChannel to update </param>
-        /// <param name="pathSid"> The SID of the WorkerChannel to update </param>
-        public UpdateWorkerChannelOptions(string pathWorkspaceSid, string pathWorkerSid, string pathSid)
-        {
-            PathWorkspaceSid = pathWorkspaceSid;
-            PathWorkerSid = pathWorkerSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Capacity != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Capacity", Capacity.ToString()));
-            }
-
-            if (Available != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Available", Available.Value.ToString().ToLower()));
-            }
-
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
+
+  /// <summary>
+  /// UpdateWorkerChannelOptions
+  /// </summary>
+  public class UpdateWorkerChannelOptions : IOptions<WorkerChannelResource>
+  {
+    /// <summary>
+    /// The SID of the Workspace with the WorkerChannel to update
+    /// </summary>
+    public string PathWorkspaceSid { get; }
+    /// <summary>
+    /// The SID of the Worker with the WorkerChannel to update
+    /// </summary>
+    public string PathWorkerSid { get; }
+    /// <summary>
+    /// The SID of the WorkerChannel to update
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// The total number of Tasks that the Worker should handle for the TaskChannel type
+    /// </summary>
+    public int? Capacity { get; set; }
+    /// <summary>
+    /// Whether the WorkerChannel is available
+    /// </summary>
+    public bool? Available { get; set; }
+
+    /// <summary>
+    /// Construct a new UpdateWorkerChannelOptions
+    /// </summary>
+    /// <param name="pathWorkspaceSid"> The SID of the Workspace with the WorkerChannel to update </param>
+    /// <param name="pathWorkerSid"> The SID of the Worker with the WorkerChannel to update </param>
+    /// <param name="pathSid"> The SID of the WorkerChannel to update </param>
+    public UpdateWorkerChannelOptions(string pathWorkspaceSid, string pathWorkerSid, string pathSid)
+    {
+      PathWorkspaceSid = pathWorkspaceSid;
+      PathWorkerSid = pathWorkerSid;
+      PathSid = pathSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (Capacity != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Capacity", Capacity.ToString()));
+      }
+
+      if (Available != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Available", Available.Value.ToString().ToLower()));
+      }
+
+      return p;
+    }
+  }
 
 }

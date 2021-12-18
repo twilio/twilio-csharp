@@ -12,325 +12,325 @@ using Twilio.Converters;
 namespace Twilio.Rest.IpMessaging.V2.Service.Channel
 {
 
+  /// <summary>
+  /// ReadWebhookOptions
+  /// </summary>
+  public class ReadWebhookOptions : ReadOptions<WebhookResource>
+  {
     /// <summary>
-    /// ReadWebhookOptions
+    /// The service_sid
     /// </summary>
-    public class ReadWebhookOptions : ReadOptions<WebhookResource>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The channel_sid
+    /// </summary>
+    public string PathChannelSid { get; }
+
+    /// <summary>
+    /// Construct a new ReadWebhookOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The service_sid </param>
+    /// <param name="pathChannelSid"> The channel_sid </param>
+    public ReadWebhookOptions(string pathServiceSid, string pathChannelSid)
     {
-        /// <summary>
-        /// The service_sid
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The channel_sid
-        /// </summary>
-        public string PathChannelSid { get; }
-
-        /// <summary>
-        /// Construct a new ReadWebhookOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathChannelSid"> The channel_sid </param>
-        public ReadWebhookOptions(string pathServiceSid, string pathChannelSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathChannelSid = pathChannelSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+      PathServiceSid = pathServiceSid;
+      PathChannelSid = pathChannelSid;
     }
 
     /// <summary>
-    /// FetchWebhookOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchWebhookOptions : IOptions<WebhookResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The service_sid
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The channel_sid
-        /// </summary>
-        public string PathChannelSid { get; }
-        /// <summary>
-        /// The sid
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new FetchWebhookOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathChannelSid"> The channel_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        public FetchWebhookOptions(string pathServiceSid, string pathChannelSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathChannelSid = pathChannelSid;
-            PathSid = pathSid;
-        }
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+  /// <summary>
+  /// FetchWebhookOptions
+  /// </summary>
+  public class FetchWebhookOptions : IOptions<WebhookResource>
+  {
+    /// <summary>
+    /// The service_sid
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The channel_sid
+    /// </summary>
+    public string PathChannelSid { get; }
+    /// <summary>
+    /// The sid
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchWebhookOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The service_sid </param>
+    /// <param name="pathChannelSid"> The channel_sid </param>
+    /// <param name="pathSid"> The sid </param>
+    public FetchWebhookOptions(string pathServiceSid, string pathChannelSid, string pathSid)
+    {
+      PathServiceSid = pathServiceSid;
+      PathChannelSid = pathChannelSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// CreateWebhookOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class CreateWebhookOptions : IOptions<WebhookResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The service_sid
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The channel_sid
-        /// </summary>
-        public string PathChannelSid { get; }
-        /// <summary>
-        /// The type
-        /// </summary>
-        public WebhookResource.TypeEnum Type { get; }
-        /// <summary>
-        /// The configuration.url
-        /// </summary>
-        public string ConfigurationUrl { get; set; }
-        /// <summary>
-        /// The configuration.method
-        /// </summary>
-        public WebhookResource.MethodEnum ConfigurationMethod { get; set; }
-        /// <summary>
-        /// The configuration.filters
-        /// </summary>
-        public List<string> ConfigurationFilters { get; set; }
-        /// <summary>
-        /// The configuration.triggers
-        /// </summary>
-        public List<string> ConfigurationTriggers { get; set; }
-        /// <summary>
-        /// The configuration.flow_sid
-        /// </summary>
-        public string ConfigurationFlowSid { get; set; }
-        /// <summary>
-        /// The configuration.retry_count
-        /// </summary>
-        public int? ConfigurationRetryCount { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new CreateWebhookOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathChannelSid"> The channel_sid </param>
-        /// <param name="type"> The type </param>
-        public CreateWebhookOptions(string pathServiceSid, string pathChannelSid, WebhookResource.TypeEnum type)
-        {
-            PathServiceSid = pathServiceSid;
-            PathChannelSid = pathChannelSid;
-            Type = type;
-            ConfigurationFilters = new List<string>();
-            ConfigurationTriggers = new List<string>();
-        }
+  /// <summary>
+  /// CreateWebhookOptions
+  /// </summary>
+  public class CreateWebhookOptions : IOptions<WebhookResource>
+  {
+    /// <summary>
+    /// The service_sid
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The channel_sid
+    /// </summary>
+    public string PathChannelSid { get; }
+    /// <summary>
+    /// The type
+    /// </summary>
+    public WebhookResource.TypeEnum Type { get; }
+    /// <summary>
+    /// The configuration.url
+    /// </summary>
+    public string ConfigurationUrl { get; set; }
+    /// <summary>
+    /// The configuration.method
+    /// </summary>
+    public WebhookResource.MethodEnum ConfigurationMethod { get; set; }
+    /// <summary>
+    /// The configuration.filters
+    /// </summary>
+    public List<string> ConfigurationFilters { get; set; }
+    /// <summary>
+    /// The configuration.triggers
+    /// </summary>
+    public List<string> ConfigurationTriggers { get; set; }
+    /// <summary>
+    /// The configuration.flow_sid
+    /// </summary>
+    public string ConfigurationFlowSid { get; set; }
+    /// <summary>
+    /// The configuration.retry_count
+    /// </summary>
+    public int? ConfigurationRetryCount { get; set; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Type != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Type", Type.ToString()));
-            }
-
-            if (ConfigurationUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Configuration.Url", ConfigurationUrl));
-            }
-
-            if (ConfigurationMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Configuration.Method", ConfigurationMethod.ToString()));
-            }
-
-            if (ConfigurationFilters != null)
-            {
-                p.AddRange(ConfigurationFilters.Select(prop => new KeyValuePair<string, string>("Configuration.Filters", prop)));
-            }
-
-            if (ConfigurationTriggers != null)
-            {
-                p.AddRange(ConfigurationTriggers.Select(prop => new KeyValuePair<string, string>("Configuration.Triggers", prop)));
-            }
-
-            if (ConfigurationFlowSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Configuration.FlowSid", ConfigurationFlowSid.ToString()));
-            }
-
-            if (ConfigurationRetryCount != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Configuration.RetryCount", ConfigurationRetryCount.ToString()));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new CreateWebhookOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The service_sid </param>
+    /// <param name="pathChannelSid"> The channel_sid </param>
+    /// <param name="type"> The type </param>
+    public CreateWebhookOptions(string pathServiceSid, string pathChannelSid, WebhookResource.TypeEnum type)
+    {
+      PathServiceSid = pathServiceSid;
+      PathChannelSid = pathChannelSid;
+      Type = type;
+      ConfigurationFilters = new List<string>();
+      ConfigurationTriggers = new List<string>();
     }
 
     /// <summary>
-    /// UpdateWebhookOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateWebhookOptions : IOptions<WebhookResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The service_sid
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The channel_sid
-        /// </summary>
-        public string PathChannelSid { get; }
-        /// <summary>
-        /// The sid
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// The configuration.url
-        /// </summary>
-        public string ConfigurationUrl { get; set; }
-        /// <summary>
-        /// The configuration.method
-        /// </summary>
-        public WebhookResource.MethodEnum ConfigurationMethod { get; set; }
-        /// <summary>
-        /// The configuration.filters
-        /// </summary>
-        public List<string> ConfigurationFilters { get; set; }
-        /// <summary>
-        /// The configuration.triggers
-        /// </summary>
-        public List<string> ConfigurationTriggers { get; set; }
-        /// <summary>
-        /// The configuration.flow_sid
-        /// </summary>
-        public string ConfigurationFlowSid { get; set; }
-        /// <summary>
-        /// The configuration.retry_count
-        /// </summary>
-        public int? ConfigurationRetryCount { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (Type != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Type", Type.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new UpdateWebhookOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathChannelSid"> The channel_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        public UpdateWebhookOptions(string pathServiceSid, string pathChannelSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathChannelSid = pathChannelSid;
-            PathSid = pathSid;
-            ConfigurationFilters = new List<string>();
-            ConfigurationTriggers = new List<string>();
-        }
+      if (ConfigurationUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Configuration.Url", ConfigurationUrl));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (ConfigurationUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Configuration.Url", ConfigurationUrl));
-            }
+      if (ConfigurationMethod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Configuration.Method", ConfigurationMethod.ToString()));
+      }
 
-            if (ConfigurationMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Configuration.Method", ConfigurationMethod.ToString()));
-            }
+      if (ConfigurationFilters != null)
+      {
+        p.AddRange(ConfigurationFilters.Select(prop => new KeyValuePair<string, string>("Configuration.Filters", prop)));
+      }
 
-            if (ConfigurationFilters != null)
-            {
-                p.AddRange(ConfigurationFilters.Select(prop => new KeyValuePair<string, string>("Configuration.Filters", prop)));
-            }
+      if (ConfigurationTriggers != null)
+      {
+        p.AddRange(ConfigurationTriggers.Select(prop => new KeyValuePair<string, string>("Configuration.Triggers", prop)));
+      }
 
-            if (ConfigurationTriggers != null)
-            {
-                p.AddRange(ConfigurationTriggers.Select(prop => new KeyValuePair<string, string>("Configuration.Triggers", prop)));
-            }
+      if (ConfigurationFlowSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Configuration.FlowSid", ConfigurationFlowSid.ToString()));
+      }
 
-            if (ConfigurationFlowSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Configuration.FlowSid", ConfigurationFlowSid.ToString()));
-            }
+      if (ConfigurationRetryCount != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Configuration.RetryCount", ConfigurationRetryCount.ToString()));
+      }
 
-            if (ConfigurationRetryCount != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Configuration.RetryCount", ConfigurationRetryCount.ToString()));
-            }
+      return p;
+    }
+  }
 
-            return p;
-        }
+  /// <summary>
+  /// UpdateWebhookOptions
+  /// </summary>
+  public class UpdateWebhookOptions : IOptions<WebhookResource>
+  {
+    /// <summary>
+    /// The service_sid
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The channel_sid
+    /// </summary>
+    public string PathChannelSid { get; }
+    /// <summary>
+    /// The sid
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// The configuration.url
+    /// </summary>
+    public string ConfigurationUrl { get; set; }
+    /// <summary>
+    /// The configuration.method
+    /// </summary>
+    public WebhookResource.MethodEnum ConfigurationMethod { get; set; }
+    /// <summary>
+    /// The configuration.filters
+    /// </summary>
+    public List<string> ConfigurationFilters { get; set; }
+    /// <summary>
+    /// The configuration.triggers
+    /// </summary>
+    public List<string> ConfigurationTriggers { get; set; }
+    /// <summary>
+    /// The configuration.flow_sid
+    /// </summary>
+    public string ConfigurationFlowSid { get; set; }
+    /// <summary>
+    /// The configuration.retry_count
+    /// </summary>
+    public int? ConfigurationRetryCount { get; set; }
+
+    /// <summary>
+    /// Construct a new UpdateWebhookOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The service_sid </param>
+    /// <param name="pathChannelSid"> The channel_sid </param>
+    /// <param name="pathSid"> The sid </param>
+    public UpdateWebhookOptions(string pathServiceSid, string pathChannelSid, string pathSid)
+    {
+      PathServiceSid = pathServiceSid;
+      PathChannelSid = pathChannelSid;
+      PathSid = pathSid;
+      ConfigurationFilters = new List<string>();
+      ConfigurationTriggers = new List<string>();
     }
 
     /// <summary>
-    /// DeleteWebhookOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteWebhookOptions : IOptions<WebhookResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The service_sid
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The channel_sid
-        /// </summary>
-        public string PathChannelSid { get; }
-        /// <summary>
-        /// The sid
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (ConfigurationUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Configuration.Url", ConfigurationUrl));
+      }
 
-        /// <summary>
-        /// Construct a new DeleteWebhookOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathChannelSid"> The channel_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        public DeleteWebhookOptions(string pathServiceSid, string pathChannelSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathChannelSid = pathChannelSid;
-            PathSid = pathSid;
-        }
+      if (ConfigurationMethod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Configuration.Method", ConfigurationMethod.ToString()));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      if (ConfigurationFilters != null)
+      {
+        p.AddRange(ConfigurationFilters.Select(prop => new KeyValuePair<string, string>("Configuration.Filters", prop)));
+      }
+
+      if (ConfigurationTriggers != null)
+      {
+        p.AddRange(ConfigurationTriggers.Select(prop => new KeyValuePair<string, string>("Configuration.Triggers", prop)));
+      }
+
+      if (ConfigurationFlowSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Configuration.FlowSid", ConfigurationFlowSid.ToString()));
+      }
+
+      if (ConfigurationRetryCount != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Configuration.RetryCount", ConfigurationRetryCount.ToString()));
+      }
+
+      return p;
     }
+  }
+
+  /// <summary>
+  /// DeleteWebhookOptions
+  /// </summary>
+  public class DeleteWebhookOptions : IOptions<WebhookResource>
+  {
+    /// <summary>
+    /// The service_sid
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The channel_sid
+    /// </summary>
+    public string PathChannelSid { get; }
+    /// <summary>
+    /// The sid
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new DeleteWebhookOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The service_sid </param>
+    /// <param name="pathChannelSid"> The channel_sid </param>
+    /// <param name="pathSid"> The sid </param>
+    public DeleteWebhookOptions(string pathServiceSid, string pathChannelSid, string pathSid)
+    {
+      PathServiceSid = pathServiceSid;
+      PathChannelSid = pathChannelSid;
+      PathSid = pathSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
 }

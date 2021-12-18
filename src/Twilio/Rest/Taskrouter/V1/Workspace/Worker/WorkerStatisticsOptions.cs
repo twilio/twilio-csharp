@@ -11,75 +11,75 @@ using Twilio.Converters;
 namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
 {
 
+  /// <summary>
+  /// FetchWorkerStatisticsOptions
+  /// </summary>
+  public class FetchWorkerStatisticsOptions : IOptions<WorkerStatisticsResource>
+  {
     /// <summary>
-    /// FetchWorkerStatisticsOptions
+    /// The SID of the Workspace with the WorkerChannel to fetch
     /// </summary>
-    public class FetchWorkerStatisticsOptions : IOptions<WorkerStatisticsResource>
+    public string PathWorkspaceSid { get; }
+    /// <summary>
+    /// The SID of the Worker with the WorkerChannel to fetch
+    /// </summary>
+    public string PathWorkerSid { get; }
+    /// <summary>
+    /// Only calculate statistics since this many minutes in the past
+    /// </summary>
+    public int? Minutes { get; set; }
+    /// <summary>
+    /// Only calculate statistics from on or after this date
+    /// </summary>
+    public DateTime? StartDate { get; set; }
+    /// <summary>
+    /// Only include usage that occurred on or before this date
+    /// </summary>
+    public DateTime? EndDate { get; set; }
+    /// <summary>
+    /// Only calculate statistics on this TaskChannel
+    /// </summary>
+    public string TaskChannel { get; set; }
+
+    /// <summary>
+    /// Construct a new FetchWorkerStatisticsOptions
+    /// </summary>
+    /// <param name="pathWorkspaceSid"> The SID of the Workspace with the WorkerChannel to fetch </param>
+    /// <param name="pathWorkerSid"> The SID of the Worker with the WorkerChannel to fetch </param>
+    public FetchWorkerStatisticsOptions(string pathWorkspaceSid, string pathWorkerSid)
     {
-        /// <summary>
-        /// The SID of the Workspace with the WorkerChannel to fetch
-        /// </summary>
-        public string PathWorkspaceSid { get; }
-        /// <summary>
-        /// The SID of the Worker with the WorkerChannel to fetch
-        /// </summary>
-        public string PathWorkerSid { get; }
-        /// <summary>
-        /// Only calculate statistics since this many minutes in the past
-        /// </summary>
-        public int? Minutes { get; set; }
-        /// <summary>
-        /// Only calculate statistics from on or after this date
-        /// </summary>
-        public DateTime? StartDate { get; set; }
-        /// <summary>
-        /// Only include usage that occurred on or before this date
-        /// </summary>
-        public DateTime? EndDate { get; set; }
-        /// <summary>
-        /// Only calculate statistics on this TaskChannel
-        /// </summary>
-        public string TaskChannel { get; set; }
-
-        /// <summary>
-        /// Construct a new FetchWorkerStatisticsOptions
-        /// </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the WorkerChannel to fetch </param>
-        /// <param name="pathWorkerSid"> The SID of the Worker with the WorkerChannel to fetch </param>
-        public FetchWorkerStatisticsOptions(string pathWorkspaceSid, string pathWorkerSid)
-        {
-            PathWorkspaceSid = pathWorkspaceSid;
-            PathWorkerSid = pathWorkerSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Minutes != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Minutes", Minutes.ToString()));
-            }
-
-            if (StartDate != null)
-            {
-                p.Add(new KeyValuePair<string, string>("StartDate", Serializers.DateTimeIso8601(StartDate)));
-            }
-
-            if (EndDate != null)
-            {
-                p.Add(new KeyValuePair<string, string>("EndDate", Serializers.DateTimeIso8601(EndDate)));
-            }
-
-            if (TaskChannel != null)
-            {
-                p.Add(new KeyValuePair<string, string>("TaskChannel", TaskChannel));
-            }
-
-            return p;
-        }
+      PathWorkspaceSid = pathWorkspaceSid;
+      PathWorkerSid = pathWorkerSid;
     }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (Minutes != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Minutes", Minutes.ToString()));
+      }
+
+      if (StartDate != null)
+      {
+        p.Add(new KeyValuePair<string, string>("StartDate", Serializers.DateTimeIso8601(StartDate)));
+      }
+
+      if (EndDate != null)
+      {
+        p.Add(new KeyValuePair<string, string>("EndDate", Serializers.DateTimeIso8601(EndDate)));
+      }
+
+      if (TaskChannel != null)
+      {
+        p.Add(new KeyValuePair<string, string>("TaskChannel", TaskChannel));
+      }
+
+      return p;
+    }
+  }
 
 }

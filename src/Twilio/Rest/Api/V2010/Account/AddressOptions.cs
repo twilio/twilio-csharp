@@ -11,352 +11,352 @@ using Twilio.Converters;
 namespace Twilio.Rest.Api.V2010.Account
 {
 
+  /// <summary>
+  /// CreateAddressOptions
+  /// </summary>
+  public class CreateAddressOptions : IOptions<AddressResource>
+  {
     /// <summary>
-    /// CreateAddressOptions
+    /// The SID of the Account that will be responsible for the new Address resource
     /// </summary>
-    public class CreateAddressOptions : IOptions<AddressResource>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The name to associate with the new address
+    /// </summary>
+    public string CustomerName { get; }
+    /// <summary>
+    /// The number and street address of the new address
+    /// </summary>
+    public string Street { get; }
+    /// <summary>
+    /// The city of the new address
+    /// </summary>
+    public string City { get; }
+    /// <summary>
+    /// The state or region of the new address
+    /// </summary>
+    public string Region { get; }
+    /// <summary>
+    /// The postal code of the new address
+    /// </summary>
+    public string PostalCode { get; }
+    /// <summary>
+    /// The ISO country code of the new address
+    /// </summary>
+    public string IsoCountry { get; }
+    /// <summary>
+    /// A string to describe the new resource
+    /// </summary>
+    public string FriendlyName { get; set; }
+    /// <summary>
+    /// Whether to enable emergency calling on the new address
+    /// </summary>
+    public bool? EmergencyEnabled { get; set; }
+    /// <summary>
+    /// Whether we should automatically correct the address
+    /// </summary>
+    public bool? AutoCorrectAddress { get; set; }
+
+    /// <summary>
+    /// Construct a new CreateAddressOptions
+    /// </summary>
+    /// <param name="customerName"> The name to associate with the new address </param>
+    /// <param name="street"> The number and street address of the new address </param>
+    /// <param name="city"> The city of the new address </param>
+    /// <param name="region"> The state or region of the new address </param>
+    /// <param name="postalCode"> The postal code of the new address </param>
+    /// <param name="isoCountry"> The ISO country code of the new address </param>
+    public CreateAddressOptions(string customerName,
+                                string street,
+                                string city,
+                                string region,
+                                string postalCode,
+                                string isoCountry)
     {
-        /// <summary>
-        /// The SID of the Account that will be responsible for the new Address resource
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The name to associate with the new address
-        /// </summary>
-        public string CustomerName { get; }
-        /// <summary>
-        /// The number and street address of the new address
-        /// </summary>
-        public string Street { get; }
-        /// <summary>
-        /// The city of the new address
-        /// </summary>
-        public string City { get; }
-        /// <summary>
-        /// The state or region of the new address
-        /// </summary>
-        public string Region { get; }
-        /// <summary>
-        /// The postal code of the new address
-        /// </summary>
-        public string PostalCode { get; }
-        /// <summary>
-        /// The ISO country code of the new address
-        /// </summary>
-        public string IsoCountry { get; }
-        /// <summary>
-        /// A string to describe the new resource
-        /// </summary>
-        public string FriendlyName { get; set; }
-        /// <summary>
-        /// Whether to enable emergency calling on the new address
-        /// </summary>
-        public bool? EmergencyEnabled { get; set; }
-        /// <summary>
-        /// Whether we should automatically correct the address
-        /// </summary>
-        public bool? AutoCorrectAddress { get; set; }
-
-        /// <summary>
-        /// Construct a new CreateAddressOptions
-        /// </summary>
-        /// <param name="customerName"> The name to associate with the new address </param>
-        /// <param name="street"> The number and street address of the new address </param>
-        /// <param name="city"> The city of the new address </param>
-        /// <param name="region"> The state or region of the new address </param>
-        /// <param name="postalCode"> The postal code of the new address </param>
-        /// <param name="isoCountry"> The ISO country code of the new address </param>
-        public CreateAddressOptions(string customerName,
-                                    string street,
-                                    string city,
-                                    string region,
-                                    string postalCode,
-                                    string isoCountry)
-        {
-            CustomerName = customerName;
-            Street = street;
-            City = city;
-            Region = region;
-            PostalCode = postalCode;
-            IsoCountry = isoCountry;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (CustomerName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("CustomerName", CustomerName));
-            }
-
-            if (Street != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Street", Street));
-            }
-
-            if (City != null)
-            {
-                p.Add(new KeyValuePair<string, string>("City", City));
-            }
-
-            if (Region != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Region", Region));
-            }
-
-            if (PostalCode != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PostalCode", PostalCode));
-            }
-
-            if (IsoCountry != null)
-            {
-                p.Add(new KeyValuePair<string, string>("IsoCountry", IsoCountry.ToString()));
-            }
-
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
-
-            if (EmergencyEnabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("EmergencyEnabled", EmergencyEnabled.Value.ToString().ToLower()));
-            }
-
-            if (AutoCorrectAddress != null)
-            {
-                p.Add(new KeyValuePair<string, string>("AutoCorrectAddress", AutoCorrectAddress.Value.ToString().ToLower()));
-            }
-
-            return p;
-        }
+      CustomerName = customerName;
+      Street = street;
+      City = city;
+      Region = region;
+      PostalCode = postalCode;
+      IsoCountry = isoCountry;
     }
 
     /// <summary>
-    /// DeleteAddressOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteAddressOptions : IOptions<AddressResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Account that is responsible for the resources to delete
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (CustomerName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("CustomerName", CustomerName));
+      }
 
-        /// <summary>
-        /// Construct a new DeleteAddressOptions
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public DeleteAddressOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
+      if (Street != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Street", Street));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      if (City != null)
+      {
+        p.Add(new KeyValuePair<string, string>("City", City));
+      }
+
+      if (Region != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Region", Region));
+      }
+
+      if (PostalCode != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PostalCode", PostalCode));
+      }
+
+      if (IsoCountry != null)
+      {
+        p.Add(new KeyValuePair<string, string>("IsoCountry", IsoCountry.ToString()));
+      }
+
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
+
+      if (EmergencyEnabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("EmergencyEnabled", EmergencyEnabled.Value.ToString().ToLower()));
+      }
+
+      if (AutoCorrectAddress != null)
+      {
+        p.Add(new KeyValuePair<string, string>("AutoCorrectAddress", AutoCorrectAddress.Value.ToString().ToLower()));
+      }
+
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// DeleteAddressOptions
+  /// </summary>
+  public class DeleteAddressOptions : IOptions<AddressResource>
+  {
+    /// <summary>
+    /// The SID of the Account that is responsible for the resources to delete
+    /// </summary>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new DeleteAddressOptions
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public DeleteAddressOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// FetchAddressOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchAddressOptions : IOptions<AddressResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Account that is responsible for this address
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new FetchAddressOptions
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public FetchAddressOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
+  /// <summary>
+  /// FetchAddressOptions
+  /// </summary>
+  public class FetchAddressOptions : IOptions<AddressResource>
+  {
+    /// <summary>
+    /// The SID of the Account that is responsible for this address
+    /// </summary>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+    /// <summary>
+    /// Construct a new FetchAddressOptions
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public FetchAddressOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// UpdateAddressOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateAddressOptions : IOptions<AddressResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Account that is responsible for the resource to update
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// A string to describe the resource
-        /// </summary>
-        public string FriendlyName { get; set; }
-        /// <summary>
-        /// The name to associate with the address
-        /// </summary>
-        public string CustomerName { get; set; }
-        /// <summary>
-        /// The number and street address of the address
-        /// </summary>
-        public string Street { get; set; }
-        /// <summary>
-        /// The city of the address
-        /// </summary>
-        public string City { get; set; }
-        /// <summary>
-        /// The state or region of the address
-        /// </summary>
-        public string Region { get; set; }
-        /// <summary>
-        /// The postal code of the address
-        /// </summary>
-        public string PostalCode { get; set; }
-        /// <summary>
-        /// Whether to enable emergency calling on the address
-        /// </summary>
-        public bool? EmergencyEnabled { get; set; }
-        /// <summary>
-        /// Whether we should automatically correct the address
-        /// </summary>
-        public bool? AutoCorrectAddress { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new UpdateAddressOptions
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public UpdateAddressOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
+  /// <summary>
+  /// UpdateAddressOptions
+  /// </summary>
+  public class UpdateAddressOptions : IOptions<AddressResource>
+  {
+    /// <summary>
+    /// The SID of the Account that is responsible for the resource to update
+    /// </summary>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// A string to describe the resource
+    /// </summary>
+    public string FriendlyName { get; set; }
+    /// <summary>
+    /// The name to associate with the address
+    /// </summary>
+    public string CustomerName { get; set; }
+    /// <summary>
+    /// The number and street address of the address
+    /// </summary>
+    public string Street { get; set; }
+    /// <summary>
+    /// The city of the address
+    /// </summary>
+    public string City { get; set; }
+    /// <summary>
+    /// The state or region of the address
+    /// </summary>
+    public string Region { get; set; }
+    /// <summary>
+    /// The postal code of the address
+    /// </summary>
+    public string PostalCode { get; set; }
+    /// <summary>
+    /// Whether to enable emergency calling on the address
+    /// </summary>
+    public bool? EmergencyEnabled { get; set; }
+    /// <summary>
+    /// Whether we should automatically correct the address
+    /// </summary>
+    public bool? AutoCorrectAddress { get; set; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
-
-            if (CustomerName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("CustomerName", CustomerName));
-            }
-
-            if (Street != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Street", Street));
-            }
-
-            if (City != null)
-            {
-                p.Add(new KeyValuePair<string, string>("City", City));
-            }
-
-            if (Region != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Region", Region));
-            }
-
-            if (PostalCode != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PostalCode", PostalCode));
-            }
-
-            if (EmergencyEnabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("EmergencyEnabled", EmergencyEnabled.Value.ToString().ToLower()));
-            }
-
-            if (AutoCorrectAddress != null)
-            {
-                p.Add(new KeyValuePair<string, string>("AutoCorrectAddress", AutoCorrectAddress.Value.ToString().ToLower()));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new UpdateAddressOptions
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public UpdateAddressOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// ReadAddressOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadAddressOptions : ReadOptions<AddressResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Account that is responsible for this address
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The `customer_name` of the Address resources to read
-        /// </summary>
-        public string CustomerName { get; set; }
-        /// <summary>
-        /// The string that identifies the Address resources to read
-        /// </summary>
-        public string FriendlyName { get; set; }
-        /// <summary>
-        /// The ISO country code of the Address resources to read
-        /// </summary>
-        public string IsoCountry { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (CustomerName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("CustomerName", CustomerName));
-            }
+      if (CustomerName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("CustomerName", CustomerName));
+      }
 
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
+      if (Street != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Street", Street));
+      }
 
-            if (IsoCountry != null)
-            {
-                p.Add(new KeyValuePair<string, string>("IsoCountry", IsoCountry.ToString()));
-            }
+      if (City != null)
+      {
+        p.Add(new KeyValuePair<string, string>("City", City));
+      }
 
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
+      if (Region != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Region", Region));
+      }
 
-            return p;
-        }
+      if (PostalCode != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PostalCode", PostalCode));
+      }
+
+      if (EmergencyEnabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("EmergencyEnabled", EmergencyEnabled.Value.ToString().ToLower()));
+      }
+
+      if (AutoCorrectAddress != null)
+      {
+        p.Add(new KeyValuePair<string, string>("AutoCorrectAddress", AutoCorrectAddress.Value.ToString().ToLower()));
+      }
+
+      return p;
     }
+  }
+
+  /// <summary>
+  /// ReadAddressOptions
+  /// </summary>
+  public class ReadAddressOptions : ReadOptions<AddressResource>
+  {
+    /// <summary>
+    /// The SID of the Account that is responsible for this address
+    /// </summary>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The `customer_name` of the Address resources to read
+    /// </summary>
+    public string CustomerName { get; set; }
+    /// <summary>
+    /// The string that identifies the Address resources to read
+    /// </summary>
+    public string FriendlyName { get; set; }
+    /// <summary>
+    /// The ISO country code of the Address resources to read
+    /// </summary>
+    public string IsoCountry { get; set; }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (CustomerName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("CustomerName", CustomerName));
+      }
+
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
+
+      if (IsoCountry != null)
+      {
+        p.Add(new KeyValuePair<string, string>("IsoCountry", IsoCountry.ToString()));
+      }
+
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
 
 }

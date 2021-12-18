@@ -18,587 +18,587 @@ using Twilio.Http;
 namespace Twilio.Rest.Voice.V1
 {
 
-    public class ByocTrunkResource : Resource
+  public class ByocTrunkResource : Resource
+  {
+    private static Request BuildCreateRequest(CreateByocTrunkOptions options, ITwilioRestClient client)
     {
-        private static Request BuildCreateRequest(CreateByocTrunkOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Post,
-                Rest.Domain.Voice,
-                "/v1/ByocTrunks",
-                postParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// create
-        /// </summary>
-        /// <param name="options"> Create ByocTrunk parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of ByocTrunk </returns>
-        public static ByocTrunkResource Create(CreateByocTrunkOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildCreateRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// create
-        /// </summary>
-        /// <param name="options"> Create ByocTrunk parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of ByocTrunk </returns>
-        public static async System.Threading.Tasks.Task<ByocTrunkResource> CreateAsync(CreateByocTrunkOptions options,
-                                                                                       ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// create
-        /// </summary>
-        /// <param name="friendlyName"> A string to describe the resource </param>
-        /// <param name="voiceUrl"> The URL we should call when receiving a call </param>
-        /// <param name="voiceMethod"> The HTTP method to use with voice_url </param>
-        /// <param name="voiceFallbackUrl"> The URL we should call when an error occurs in executing TwiML </param>
-        /// <param name="voiceFallbackMethod"> The HTTP method to use with voice_fallback_url </param>
-        /// <param name="statusCallbackUrl"> The URL that we should call to pass status updates </param>
-        /// <param name="statusCallbackMethod"> The HTTP method we should use to call `status_callback_url` </param>
-        /// <param name="cnamLookupEnabled"> Whether Caller ID Name (CNAM) lookup is enabled for the trunk </param>
-        /// <param name="connectionPolicySid"> Origination Connection Policy (to your Carrier) </param>
-        /// <param name="fromDomainSid"> The SID of the SIP Domain that should be used in the `From` header of originating
-        ///                     calls </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of ByocTrunk </returns>
-        public static ByocTrunkResource Create(string friendlyName = null,
-                                               Uri voiceUrl = null,
-                                               Twilio.Http.HttpMethod voiceMethod = null,
-                                               Uri voiceFallbackUrl = null,
-                                               Twilio.Http.HttpMethod voiceFallbackMethod = null,
-                                               Uri statusCallbackUrl = null,
-                                               Twilio.Http.HttpMethod statusCallbackMethod = null,
-                                               bool? cnamLookupEnabled = null,
-                                               string connectionPolicySid = null,
-                                               string fromDomainSid = null,
-                                               ITwilioRestClient client = null)
-        {
-            var options = new CreateByocTrunkOptions(){FriendlyName = friendlyName, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceFallbackMethod = voiceFallbackMethod, StatusCallbackUrl = statusCallbackUrl, StatusCallbackMethod = statusCallbackMethod, CnamLookupEnabled = cnamLookupEnabled, ConnectionPolicySid = connectionPolicySid, FromDomainSid = fromDomainSid};
-            return Create(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// create
-        /// </summary>
-        /// <param name="friendlyName"> A string to describe the resource </param>
-        /// <param name="voiceUrl"> The URL we should call when receiving a call </param>
-        /// <param name="voiceMethod"> The HTTP method to use with voice_url </param>
-        /// <param name="voiceFallbackUrl"> The URL we should call when an error occurs in executing TwiML </param>
-        /// <param name="voiceFallbackMethod"> The HTTP method to use with voice_fallback_url </param>
-        /// <param name="statusCallbackUrl"> The URL that we should call to pass status updates </param>
-        /// <param name="statusCallbackMethod"> The HTTP method we should use to call `status_callback_url` </param>
-        /// <param name="cnamLookupEnabled"> Whether Caller ID Name (CNAM) lookup is enabled for the trunk </param>
-        /// <param name="connectionPolicySid"> Origination Connection Policy (to your Carrier) </param>
-        /// <param name="fromDomainSid"> The SID of the SIP Domain that should be used in the `From` header of originating
-        ///                     calls </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of ByocTrunk </returns>
-        public static async System.Threading.Tasks.Task<ByocTrunkResource> CreateAsync(string friendlyName = null,
-                                                                                       Uri voiceUrl = null,
-                                                                                       Twilio.Http.HttpMethod voiceMethod = null,
-                                                                                       Uri voiceFallbackUrl = null,
-                                                                                       Twilio.Http.HttpMethod voiceFallbackMethod = null,
-                                                                                       Uri statusCallbackUrl = null,
-                                                                                       Twilio.Http.HttpMethod statusCallbackMethod = null,
-                                                                                       bool? cnamLookupEnabled = null,
-                                                                                       string connectionPolicySid = null,
-                                                                                       string fromDomainSid = null,
-                                                                                       ITwilioRestClient client = null)
-        {
-            var options = new CreateByocTrunkOptions(){FriendlyName = friendlyName, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceFallbackMethod = voiceFallbackMethod, StatusCallbackUrl = statusCallbackUrl, StatusCallbackMethod = statusCallbackMethod, CnamLookupEnabled = cnamLookupEnabled, ConnectionPolicySid = connectionPolicySid, FromDomainSid = fromDomainSid};
-            return await CreateAsync(options, client);
-        }
-        #endif
-
-        private static Request BuildFetchRequest(FetchByocTrunkOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Get,
-                Rest.Domain.Voice,
-                "/v1/ByocTrunks/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="options"> Fetch ByocTrunk parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of ByocTrunk </returns>
-        public static ByocTrunkResource Fetch(FetchByocTrunkOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="options"> Fetch ByocTrunk parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of ByocTrunk </returns>
-        public static async System.Threading.Tasks.Task<ByocTrunkResource> FetchAsync(FetchByocTrunkOptions options,
-                                                                                      ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of ByocTrunk </returns>
-        public static ByocTrunkResource Fetch(string pathSid, ITwilioRestClient client = null)
-        {
-            var options = new FetchByocTrunkOptions(pathSid);
-            return Fetch(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of ByocTrunk </returns>
-        public static async System.Threading.Tasks.Task<ByocTrunkResource> FetchAsync(string pathSid,
-                                                                                      ITwilioRestClient client = null)
-        {
-            var options = new FetchByocTrunkOptions(pathSid);
-            return await FetchAsync(options, client);
-        }
-        #endif
-
-        private static Request BuildReadRequest(ReadByocTrunkOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Get,
-                Rest.Domain.Voice,
-                "/v1/ByocTrunks",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// read
-        /// </summary>
-        /// <param name="options"> Read ByocTrunk parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of ByocTrunk </returns>
-        public static ResourceSet<ByocTrunkResource> Read(ReadByocTrunkOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildReadRequest(options, client));
-
-            var page = Page<ByocTrunkResource>.FromJson("byoc_trunks", response.Content);
-            return new ResourceSet<ByocTrunkResource>(page, options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// read
-        /// </summary>
-        /// <param name="options"> Read ByocTrunk parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of ByocTrunk </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<ByocTrunkResource>> ReadAsync(ReadByocTrunkOptions options,
-                                                                                                  ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
-
-            var page = Page<ByocTrunkResource>.FromJson("byoc_trunks", response.Content);
-            return new ResourceSet<ByocTrunkResource>(page, options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// read
-        /// </summary>
-        /// <param name="pageSize"> Page size </param>
-        /// <param name="limit"> Record limit </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of ByocTrunk </returns>
-        public static ResourceSet<ByocTrunkResource> Read(int? pageSize = null,
-                                                          long? limit = null,
-                                                          ITwilioRestClient client = null)
-        {
-            var options = new ReadByocTrunkOptions(){PageSize = pageSize, Limit = limit};
-            return Read(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// read
-        /// </summary>
-        /// <param name="pageSize"> Page size </param>
-        /// <param name="limit"> Record limit </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of ByocTrunk </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<ByocTrunkResource>> ReadAsync(int? pageSize = null,
-                                                                                                  long? limit = null,
-                                                                                                  ITwilioRestClient client = null)
-        {
-            var options = new ReadByocTrunkOptions(){PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Fetch the target page of records
-        /// </summary>
-        /// <param name="targetUrl"> API-generated URL for the requested results page </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns>
-        public static Page<ByocTrunkResource> GetPage(string targetUrl, ITwilioRestClient client)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-
-            var request = new Request(
-                HttpMethod.Get,
-                targetUrl
-            );
-
-            var response = client.Request(request);
-            return Page<ByocTrunkResource>.FromJson("byoc_trunks", response.Content);
-        }
-
-        /// <summary>
-        /// Fetch the next page of records
-        /// </summary>
-        /// <param name="page"> current page of records </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns>
-        public static Page<ByocTrunkResource> NextPage(Page<ByocTrunkResource> page, ITwilioRestClient client)
-        {
-            var request = new Request(
-                HttpMethod.Get,
-                page.GetNextPageUrl(Rest.Domain.Voice)
-            );
-
-            var response = client.Request(request);
-            return Page<ByocTrunkResource>.FromJson("byoc_trunks", response.Content);
-        }
-
-        /// <summary>
-        /// Fetch the previous page of records
-        /// </summary>
-        /// <param name="page"> current page of records </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns>
-        public static Page<ByocTrunkResource> PreviousPage(Page<ByocTrunkResource> page, ITwilioRestClient client)
-        {
-            var request = new Request(
-                HttpMethod.Get,
-                page.GetPreviousPageUrl(Rest.Domain.Voice)
-            );
-
-            var response = client.Request(request);
-            return Page<ByocTrunkResource>.FromJson("byoc_trunks", response.Content);
-        }
-
-        private static Request BuildUpdateRequest(UpdateByocTrunkOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Post,
-                Rest.Domain.Voice,
-                "/v1/ByocTrunks/" + options.PathSid + "",
-                postParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// update
-        /// </summary>
-        /// <param name="options"> Update ByocTrunk parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of ByocTrunk </returns>
-        public static ByocTrunkResource Update(UpdateByocTrunkOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildUpdateRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// update
-        /// </summary>
-        /// <param name="options"> Update ByocTrunk parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of ByocTrunk </returns>
-        public static async System.Threading.Tasks.Task<ByocTrunkResource> UpdateAsync(UpdateByocTrunkOptions options,
-                                                                                       ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// update
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        /// <param name="friendlyName"> A string to describe the resource </param>
-        /// <param name="voiceUrl"> The URL we should call when receiving a call </param>
-        /// <param name="voiceMethod"> The HTTP method we should use with voice_url </param>
-        /// <param name="voiceFallbackUrl"> The URL we should call when an error occurs in executing TwiML </param>
-        /// <param name="voiceFallbackMethod"> The HTTP method used with voice_fallback_url </param>
-        /// <param name="statusCallbackUrl"> The URL that we should call to pass status updates </param>
-        /// <param name="statusCallbackMethod"> The HTTP method we should use to call status_callback_url </param>
-        /// <param name="cnamLookupEnabled"> Whether Caller ID Name (CNAM) lookup is enabled for the trunk </param>
-        /// <param name="connectionPolicySid"> Origination Connection Policy (to your Carrier) </param>
-        /// <param name="fromDomainSid"> The SID of the SIP Domain that should be used in the `From` header of originating
-        ///                     calls </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of ByocTrunk </returns>
-        public static ByocTrunkResource Update(string pathSid,
-                                               string friendlyName = null,
-                                               Uri voiceUrl = null,
-                                               Twilio.Http.HttpMethod voiceMethod = null,
-                                               Uri voiceFallbackUrl = null,
-                                               Twilio.Http.HttpMethod voiceFallbackMethod = null,
-                                               Uri statusCallbackUrl = null,
-                                               Twilio.Http.HttpMethod statusCallbackMethod = null,
-                                               bool? cnamLookupEnabled = null,
-                                               string connectionPolicySid = null,
-                                               string fromDomainSid = null,
-                                               ITwilioRestClient client = null)
-        {
-            var options = new UpdateByocTrunkOptions(pathSid){FriendlyName = friendlyName, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceFallbackMethod = voiceFallbackMethod, StatusCallbackUrl = statusCallbackUrl, StatusCallbackMethod = statusCallbackMethod, CnamLookupEnabled = cnamLookupEnabled, ConnectionPolicySid = connectionPolicySid, FromDomainSid = fromDomainSid};
-            return Update(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// update
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        /// <param name="friendlyName"> A string to describe the resource </param>
-        /// <param name="voiceUrl"> The URL we should call when receiving a call </param>
-        /// <param name="voiceMethod"> The HTTP method we should use with voice_url </param>
-        /// <param name="voiceFallbackUrl"> The URL we should call when an error occurs in executing TwiML </param>
-        /// <param name="voiceFallbackMethod"> The HTTP method used with voice_fallback_url </param>
-        /// <param name="statusCallbackUrl"> The URL that we should call to pass status updates </param>
-        /// <param name="statusCallbackMethod"> The HTTP method we should use to call status_callback_url </param>
-        /// <param name="cnamLookupEnabled"> Whether Caller ID Name (CNAM) lookup is enabled for the trunk </param>
-        /// <param name="connectionPolicySid"> Origination Connection Policy (to your Carrier) </param>
-        /// <param name="fromDomainSid"> The SID of the SIP Domain that should be used in the `From` header of originating
-        ///                     calls </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of ByocTrunk </returns>
-        public static async System.Threading.Tasks.Task<ByocTrunkResource> UpdateAsync(string pathSid,
-                                                                                       string friendlyName = null,
-                                                                                       Uri voiceUrl = null,
-                                                                                       Twilio.Http.HttpMethod voiceMethod = null,
-                                                                                       Uri voiceFallbackUrl = null,
-                                                                                       Twilio.Http.HttpMethod voiceFallbackMethod = null,
-                                                                                       Uri statusCallbackUrl = null,
-                                                                                       Twilio.Http.HttpMethod statusCallbackMethod = null,
-                                                                                       bool? cnamLookupEnabled = null,
-                                                                                       string connectionPolicySid = null,
-                                                                                       string fromDomainSid = null,
-                                                                                       ITwilioRestClient client = null)
-        {
-            var options = new UpdateByocTrunkOptions(pathSid){FriendlyName = friendlyName, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceFallbackMethod = voiceFallbackMethod, StatusCallbackUrl = statusCallbackUrl, StatusCallbackMethod = statusCallbackMethod, CnamLookupEnabled = cnamLookupEnabled, ConnectionPolicySid = connectionPolicySid, FromDomainSid = fromDomainSid};
-            return await UpdateAsync(options, client);
-        }
-        #endif
-
-        private static Request BuildDeleteRequest(DeleteByocTrunkOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Delete,
-                Rest.Domain.Voice,
-                "/v1/ByocTrunks/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// delete
-        /// </summary>
-        /// <param name="options"> Delete ByocTrunk parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of ByocTrunk </returns>
-        public static bool Delete(DeleteByocTrunkOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
-        }
-
-        #if !NET35
-        /// <summary>
-        /// delete
-        /// </summary>
-        /// <param name="options"> Delete ByocTrunk parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of ByocTrunk </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteByocTrunkOptions options,
-                                                                          ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
-        }
-        #endif
-
-        /// <summary>
-        /// delete
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of ByocTrunk </returns>
-        public static bool Delete(string pathSid, ITwilioRestClient client = null)
-        {
-            var options = new DeleteByocTrunkOptions(pathSid);
-            return Delete(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// delete
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of ByocTrunk </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
-        {
-            var options = new DeleteByocTrunkOptions(pathSid);
-            return await DeleteAsync(options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Converts a JSON string into a ByocTrunkResource object
-        /// </summary>
-        /// <param name="json"> Raw JSON string </param>
-        /// <returns> ByocTrunkResource object represented by the provided JSON </returns>
-        public static ByocTrunkResource FromJson(string json)
-        {
-            // Convert all checked exceptions to Runtime
-            try
-            {
-                return JsonConvert.DeserializeObject<ByocTrunkResource>(json);
-            }
-            catch (JsonException e)
-            {
-                throw new ApiException(e.Message, e);
-            }
-        }
-
-        /// <summary>
-        /// The SID of the Account that created the resource
-        /// </summary>
-        [JsonProperty("account_sid")]
-        public string AccountSid { get; private set; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        [JsonProperty("sid")]
-        public string Sid { get; private set; }
-        /// <summary>
-        /// The string that you assigned to describe the resource
-        /// </summary>
-        [JsonProperty("friendly_name")]
-        public string FriendlyName { get; private set; }
-        /// <summary>
-        /// The URL we call when receiving a call
-        /// </summary>
-        [JsonProperty("voice_url")]
-        public Uri VoiceUrl { get; private set; }
-        /// <summary>
-        /// The HTTP method to use with voice_url
-        /// </summary>
-        [JsonProperty("voice_method")]
-        [JsonConverter(typeof(HttpMethodConverter))]
-        public Twilio.Http.HttpMethod VoiceMethod { get; private set; }
-        /// <summary>
-        /// The URL we call when an error occurs while executing TwiML
-        /// </summary>
-        [JsonProperty("voice_fallback_url")]
-        public Uri VoiceFallbackUrl { get; private set; }
-        /// <summary>
-        /// The HTTP method used with voice_fallback_url
-        /// </summary>
-        [JsonProperty("voice_fallback_method")]
-        [JsonConverter(typeof(HttpMethodConverter))]
-        public Twilio.Http.HttpMethod VoiceFallbackMethod { get; private set; }
-        /// <summary>
-        /// The URL that we call with status updates
-        /// </summary>
-        [JsonProperty("status_callback_url")]
-        public Uri StatusCallbackUrl { get; private set; }
-        /// <summary>
-        /// The HTTP method we use to call status_callback_url
-        /// </summary>
-        [JsonProperty("status_callback_method")]
-        [JsonConverter(typeof(HttpMethodConverter))]
-        public Twilio.Http.HttpMethod StatusCallbackMethod { get; private set; }
-        /// <summary>
-        /// Whether Caller ID Name (CNAM) lookup is enabled for the trunk
-        /// </summary>
-        [JsonProperty("cnam_lookup_enabled")]
-        public bool? CnamLookupEnabled { get; private set; }
-        /// <summary>
-        /// Origination Connection Policy (to your Carrier)
-        /// </summary>
-        [JsonProperty("connection_policy_sid")]
-        public string ConnectionPolicySid { get; private set; }
-        /// <summary>
-        /// The SID of the SIP Domain that should be used in the `From` header of originating calls
-        /// </summary>
-        [JsonProperty("from_domain_sid")]
-        public string FromDomainSid { get; private set; }
-        /// <summary>
-        /// The RFC 2822 date and time in GMT that the resource was created
-        /// </summary>
-        [JsonProperty("date_created")]
-        public DateTime? DateCreated { get; private set; }
-        /// <summary>
-        /// The RFC 2822 date and time in GMT that the resource was last updated
-        /// </summary>
-        [JsonProperty("date_updated")]
-        public DateTime? DateUpdated { get; private set; }
-        /// <summary>
-        /// The absolute URL of the resource
-        /// </summary>
-        [JsonProperty("url")]
-        public Uri Url { get; private set; }
-
-        private ByocTrunkResource()
-        {
-
-        }
+      return new Request(
+          HttpMethod.Post,
+          Rest.Domain.Voice,
+          "/v1/ByocTrunks",
+          postParams: options.GetParams(),
+          headerParams: null
+      );
     }
+
+    /// <summary>
+    /// create
+    /// </summary>
+    /// <param name="options"> Create ByocTrunk parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of ByocTrunk </returns>
+    public static ByocTrunkResource Create(CreateByocTrunkOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildCreateRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// create
+    /// </summary>
+    /// <param name="options"> Create ByocTrunk parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of ByocTrunk </returns>
+    public static async System.Threading.Tasks.Task<ByocTrunkResource> CreateAsync(CreateByocTrunkOptions options,
+                                                                                   ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildCreateRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// create
+    /// </summary>
+    /// <param name="friendlyName"> A string to describe the resource </param>
+    /// <param name="voiceUrl"> The URL we should call when receiving a call </param>
+    /// <param name="voiceMethod"> The HTTP method to use with voice_url </param>
+    /// <param name="voiceFallbackUrl"> The URL we should call when an error occurs in executing TwiML </param>
+    /// <param name="voiceFallbackMethod"> The HTTP method to use with voice_fallback_url </param>
+    /// <param name="statusCallbackUrl"> The URL that we should call to pass status updates </param>
+    /// <param name="statusCallbackMethod"> The HTTP method we should use to call `status_callback_url` </param>
+    /// <param name="cnamLookupEnabled"> Whether Caller ID Name (CNAM) lookup is enabled for the trunk </param>
+    /// <param name="connectionPolicySid"> Origination Connection Policy (to your Carrier) </param>
+    /// <param name="fromDomainSid"> The SID of the SIP Domain that should be used in the `From` header of originating
+    ///                     calls </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of ByocTrunk </returns>
+    public static ByocTrunkResource Create(string friendlyName = null,
+                                           Uri voiceUrl = null,
+                                           Twilio.Http.HttpMethod voiceMethod = null,
+                                           Uri voiceFallbackUrl = null,
+                                           Twilio.Http.HttpMethod voiceFallbackMethod = null,
+                                           Uri statusCallbackUrl = null,
+                                           Twilio.Http.HttpMethod statusCallbackMethod = null,
+                                           bool? cnamLookupEnabled = null,
+                                           string connectionPolicySid = null,
+                                           string fromDomainSid = null,
+                                           ITwilioRestClient client = null)
+    {
+      var options = new CreateByocTrunkOptions() { FriendlyName = friendlyName, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceFallbackMethod = voiceFallbackMethod, StatusCallbackUrl = statusCallbackUrl, StatusCallbackMethod = statusCallbackMethod, CnamLookupEnabled = cnamLookupEnabled, ConnectionPolicySid = connectionPolicySid, FromDomainSid = fromDomainSid };
+      return Create(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// create
+    /// </summary>
+    /// <param name="friendlyName"> A string to describe the resource </param>
+    /// <param name="voiceUrl"> The URL we should call when receiving a call </param>
+    /// <param name="voiceMethod"> The HTTP method to use with voice_url </param>
+    /// <param name="voiceFallbackUrl"> The URL we should call when an error occurs in executing TwiML </param>
+    /// <param name="voiceFallbackMethod"> The HTTP method to use with voice_fallback_url </param>
+    /// <param name="statusCallbackUrl"> The URL that we should call to pass status updates </param>
+    /// <param name="statusCallbackMethod"> The HTTP method we should use to call `status_callback_url` </param>
+    /// <param name="cnamLookupEnabled"> Whether Caller ID Name (CNAM) lookup is enabled for the trunk </param>
+    /// <param name="connectionPolicySid"> Origination Connection Policy (to your Carrier) </param>
+    /// <param name="fromDomainSid"> The SID of the SIP Domain that should be used in the `From` header of originating
+    ///                     calls </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of ByocTrunk </returns>
+    public static async System.Threading.Tasks.Task<ByocTrunkResource> CreateAsync(string friendlyName = null,
+                                                                                   Uri voiceUrl = null,
+                                                                                   Twilio.Http.HttpMethod voiceMethod = null,
+                                                                                   Uri voiceFallbackUrl = null,
+                                                                                   Twilio.Http.HttpMethod voiceFallbackMethod = null,
+                                                                                   Uri statusCallbackUrl = null,
+                                                                                   Twilio.Http.HttpMethod statusCallbackMethod = null,
+                                                                                   bool? cnamLookupEnabled = null,
+                                                                                   string connectionPolicySid = null,
+                                                                                   string fromDomainSid = null,
+                                                                                   ITwilioRestClient client = null)
+    {
+      var options = new CreateByocTrunkOptions() { FriendlyName = friendlyName, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceFallbackMethod = voiceFallbackMethod, StatusCallbackUrl = statusCallbackUrl, StatusCallbackMethod = statusCallbackMethod, CnamLookupEnabled = cnamLookupEnabled, ConnectionPolicySid = connectionPolicySid, FromDomainSid = fromDomainSid };
+      return await CreateAsync(options, client);
+    }
+#endif
+
+    private static Request BuildFetchRequest(FetchByocTrunkOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Get,
+          Rest.Domain.Voice,
+          "/v1/ByocTrunks/" + options.PathSid + "",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="options"> Fetch ByocTrunk parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of ByocTrunk </returns>
+    public static ByocTrunkResource Fetch(FetchByocTrunkOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="options"> Fetch ByocTrunk parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of ByocTrunk </returns>
+    public static async System.Threading.Tasks.Task<ByocTrunkResource> FetchAsync(FetchByocTrunkOptions options,
+                                                                                  ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of ByocTrunk </returns>
+    public static ByocTrunkResource Fetch(string pathSid, ITwilioRestClient client = null)
+    {
+      var options = new FetchByocTrunkOptions(pathSid);
+      return Fetch(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of ByocTrunk </returns>
+    public static async System.Threading.Tasks.Task<ByocTrunkResource> FetchAsync(string pathSid,
+                                                                                  ITwilioRestClient client = null)
+    {
+      var options = new FetchByocTrunkOptions(pathSid);
+      return await FetchAsync(options, client);
+    }
+#endif
+
+    private static Request BuildReadRequest(ReadByocTrunkOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Get,
+          Rest.Domain.Voice,
+          "/v1/ByocTrunks",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// read
+    /// </summary>
+    /// <param name="options"> Read ByocTrunk parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of ByocTrunk </returns>
+    public static ResourceSet<ByocTrunkResource> Read(ReadByocTrunkOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildReadRequest(options, client));
+
+      var page = Page<ByocTrunkResource>.FromJson("byoc_trunks", response.Content);
+      return new ResourceSet<ByocTrunkResource>(page, options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// read
+    /// </summary>
+    /// <param name="options"> Read ByocTrunk parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of ByocTrunk </returns>
+    public static async System.Threading.Tasks.Task<ResourceSet<ByocTrunkResource>> ReadAsync(ReadByocTrunkOptions options,
+                                                                                              ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+      var page = Page<ByocTrunkResource>.FromJson("byoc_trunks", response.Content);
+      return new ResourceSet<ByocTrunkResource>(page, options, client);
+    }
+#endif
+
+    /// <summary>
+    /// read
+    /// </summary>
+    /// <param name="pageSize"> Page size </param>
+    /// <param name="limit"> Record limit </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of ByocTrunk </returns>
+    public static ResourceSet<ByocTrunkResource> Read(int? pageSize = null,
+                                                      long? limit = null,
+                                                      ITwilioRestClient client = null)
+    {
+      var options = new ReadByocTrunkOptions() { PageSize = pageSize, Limit = limit };
+      return Read(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// read
+    /// </summary>
+    /// <param name="pageSize"> Page size </param>
+    /// <param name="limit"> Record limit </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of ByocTrunk </returns>
+    public static async System.Threading.Tasks.Task<ResourceSet<ByocTrunkResource>> ReadAsync(int? pageSize = null,
+                                                                                              long? limit = null,
+                                                                                              ITwilioRestClient client = null)
+    {
+      var options = new ReadByocTrunkOptions() { PageSize = pageSize, Limit = limit };
+      return await ReadAsync(options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Fetch the target page of records
+    /// </summary>
+    /// <param name="targetUrl"> API-generated URL for the requested results page </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> The target page of records </returns>
+    public static Page<ByocTrunkResource> GetPage(string targetUrl, ITwilioRestClient client)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+
+      var request = new Request(
+          HttpMethod.Get,
+          targetUrl
+      );
+
+      var response = client.Request(request);
+      return Page<ByocTrunkResource>.FromJson("byoc_trunks", response.Content);
+    }
+
+    /// <summary>
+    /// Fetch the next page of records
+    /// </summary>
+    /// <param name="page"> current page of records </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> The next page of records </returns>
+    public static Page<ByocTrunkResource> NextPage(Page<ByocTrunkResource> page, ITwilioRestClient client)
+    {
+      var request = new Request(
+          HttpMethod.Get,
+          page.GetNextPageUrl(Rest.Domain.Voice)
+      );
+
+      var response = client.Request(request);
+      return Page<ByocTrunkResource>.FromJson("byoc_trunks", response.Content);
+    }
+
+    /// <summary>
+    /// Fetch the previous page of records
+    /// </summary>
+    /// <param name="page"> current page of records </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> The previous page of records </returns>
+    public static Page<ByocTrunkResource> PreviousPage(Page<ByocTrunkResource> page, ITwilioRestClient client)
+    {
+      var request = new Request(
+          HttpMethod.Get,
+          page.GetPreviousPageUrl(Rest.Domain.Voice)
+      );
+
+      var response = client.Request(request);
+      return Page<ByocTrunkResource>.FromJson("byoc_trunks", response.Content);
+    }
+
+    private static Request BuildUpdateRequest(UpdateByocTrunkOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Post,
+          Rest.Domain.Voice,
+          "/v1/ByocTrunks/" + options.PathSid + "",
+          postParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// update
+    /// </summary>
+    /// <param name="options"> Update ByocTrunk parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of ByocTrunk </returns>
+    public static ByocTrunkResource Update(UpdateByocTrunkOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildUpdateRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// update
+    /// </summary>
+    /// <param name="options"> Update ByocTrunk parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of ByocTrunk </returns>
+    public static async System.Threading.Tasks.Task<ByocTrunkResource> UpdateAsync(UpdateByocTrunkOptions options,
+                                                                                   ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// update
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    /// <param name="friendlyName"> A string to describe the resource </param>
+    /// <param name="voiceUrl"> The URL we should call when receiving a call </param>
+    /// <param name="voiceMethod"> The HTTP method we should use with voice_url </param>
+    /// <param name="voiceFallbackUrl"> The URL we should call when an error occurs in executing TwiML </param>
+    /// <param name="voiceFallbackMethod"> The HTTP method used with voice_fallback_url </param>
+    /// <param name="statusCallbackUrl"> The URL that we should call to pass status updates </param>
+    /// <param name="statusCallbackMethod"> The HTTP method we should use to call status_callback_url </param>
+    /// <param name="cnamLookupEnabled"> Whether Caller ID Name (CNAM) lookup is enabled for the trunk </param>
+    /// <param name="connectionPolicySid"> Origination Connection Policy (to your Carrier) </param>
+    /// <param name="fromDomainSid"> The SID of the SIP Domain that should be used in the `From` header of originating
+    ///                     calls </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of ByocTrunk </returns>
+    public static ByocTrunkResource Update(string pathSid,
+                                           string friendlyName = null,
+                                           Uri voiceUrl = null,
+                                           Twilio.Http.HttpMethod voiceMethod = null,
+                                           Uri voiceFallbackUrl = null,
+                                           Twilio.Http.HttpMethod voiceFallbackMethod = null,
+                                           Uri statusCallbackUrl = null,
+                                           Twilio.Http.HttpMethod statusCallbackMethod = null,
+                                           bool? cnamLookupEnabled = null,
+                                           string connectionPolicySid = null,
+                                           string fromDomainSid = null,
+                                           ITwilioRestClient client = null)
+    {
+      var options = new UpdateByocTrunkOptions(pathSid) { FriendlyName = friendlyName, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceFallbackMethod = voiceFallbackMethod, StatusCallbackUrl = statusCallbackUrl, StatusCallbackMethod = statusCallbackMethod, CnamLookupEnabled = cnamLookupEnabled, ConnectionPolicySid = connectionPolicySid, FromDomainSid = fromDomainSid };
+      return Update(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// update
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    /// <param name="friendlyName"> A string to describe the resource </param>
+    /// <param name="voiceUrl"> The URL we should call when receiving a call </param>
+    /// <param name="voiceMethod"> The HTTP method we should use with voice_url </param>
+    /// <param name="voiceFallbackUrl"> The URL we should call when an error occurs in executing TwiML </param>
+    /// <param name="voiceFallbackMethod"> The HTTP method used with voice_fallback_url </param>
+    /// <param name="statusCallbackUrl"> The URL that we should call to pass status updates </param>
+    /// <param name="statusCallbackMethod"> The HTTP method we should use to call status_callback_url </param>
+    /// <param name="cnamLookupEnabled"> Whether Caller ID Name (CNAM) lookup is enabled for the trunk </param>
+    /// <param name="connectionPolicySid"> Origination Connection Policy (to your Carrier) </param>
+    /// <param name="fromDomainSid"> The SID of the SIP Domain that should be used in the `From` header of originating
+    ///                     calls </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of ByocTrunk </returns>
+    public static async System.Threading.Tasks.Task<ByocTrunkResource> UpdateAsync(string pathSid,
+                                                                                   string friendlyName = null,
+                                                                                   Uri voiceUrl = null,
+                                                                                   Twilio.Http.HttpMethod voiceMethod = null,
+                                                                                   Uri voiceFallbackUrl = null,
+                                                                                   Twilio.Http.HttpMethod voiceFallbackMethod = null,
+                                                                                   Uri statusCallbackUrl = null,
+                                                                                   Twilio.Http.HttpMethod statusCallbackMethod = null,
+                                                                                   bool? cnamLookupEnabled = null,
+                                                                                   string connectionPolicySid = null,
+                                                                                   string fromDomainSid = null,
+                                                                                   ITwilioRestClient client = null)
+    {
+      var options = new UpdateByocTrunkOptions(pathSid) { FriendlyName = friendlyName, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceFallbackMethod = voiceFallbackMethod, StatusCallbackUrl = statusCallbackUrl, StatusCallbackMethod = statusCallbackMethod, CnamLookupEnabled = cnamLookupEnabled, ConnectionPolicySid = connectionPolicySid, FromDomainSid = fromDomainSid };
+      return await UpdateAsync(options, client);
+    }
+#endif
+
+    private static Request BuildDeleteRequest(DeleteByocTrunkOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Delete,
+          Rest.Domain.Voice,
+          "/v1/ByocTrunks/" + options.PathSid + "",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// delete
+    /// </summary>
+    /// <param name="options"> Delete ByocTrunk parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of ByocTrunk </returns>
+    public static bool Delete(DeleteByocTrunkOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildDeleteRequest(options, client));
+      return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+    }
+
+#if !NET35
+    /// <summary>
+    /// delete
+    /// </summary>
+    /// <param name="options"> Delete ByocTrunk parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of ByocTrunk </returns>
+    public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteByocTrunkOptions options,
+                                                                      ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+      return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+    }
+#endif
+
+    /// <summary>
+    /// delete
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of ByocTrunk </returns>
+    public static bool Delete(string pathSid, ITwilioRestClient client = null)
+    {
+      var options = new DeleteByocTrunkOptions(pathSid);
+      return Delete(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// delete
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of ByocTrunk </returns>
+    public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
+    {
+      var options = new DeleteByocTrunkOptions(pathSid);
+      return await DeleteAsync(options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Converts a JSON string into a ByocTrunkResource object
+    /// </summary>
+    /// <param name="json"> Raw JSON string </param>
+    /// <returns> ByocTrunkResource object represented by the provided JSON </returns>
+    public static ByocTrunkResource FromJson(string json)
+    {
+      // Convert all checked exceptions to Runtime
+      try
+      {
+        return JsonConvert.DeserializeObject<ByocTrunkResource>(json);
+      }
+      catch (JsonException e)
+      {
+        throw new ApiException(e.Message, e);
+      }
+    }
+
+    /// <summary>
+    /// The SID of the Account that created the resource
+    /// </summary>
+    [JsonProperty("account_sid")]
+    public string AccountSid { get; private set; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    [JsonProperty("sid")]
+    public string Sid { get; private set; }
+    /// <summary>
+    /// The string that you assigned to describe the resource
+    /// </summary>
+    [JsonProperty("friendly_name")]
+    public string FriendlyName { get; private set; }
+    /// <summary>
+    /// The URL we call when receiving a call
+    /// </summary>
+    [JsonProperty("voice_url")]
+    public Uri VoiceUrl { get; private set; }
+    /// <summary>
+    /// The HTTP method to use with voice_url
+    /// </summary>
+    [JsonProperty("voice_method")]
+    [JsonConverter(typeof(HttpMethodConverter))]
+    public Twilio.Http.HttpMethod VoiceMethod { get; private set; }
+    /// <summary>
+    /// The URL we call when an error occurs while executing TwiML
+    /// </summary>
+    [JsonProperty("voice_fallback_url")]
+    public Uri VoiceFallbackUrl { get; private set; }
+    /// <summary>
+    /// The HTTP method used with voice_fallback_url
+    /// </summary>
+    [JsonProperty("voice_fallback_method")]
+    [JsonConverter(typeof(HttpMethodConverter))]
+    public Twilio.Http.HttpMethod VoiceFallbackMethod { get; private set; }
+    /// <summary>
+    /// The URL that we call with status updates
+    /// </summary>
+    [JsonProperty("status_callback_url")]
+    public Uri StatusCallbackUrl { get; private set; }
+    /// <summary>
+    /// The HTTP method we use to call status_callback_url
+    /// </summary>
+    [JsonProperty("status_callback_method")]
+    [JsonConverter(typeof(HttpMethodConverter))]
+    public Twilio.Http.HttpMethod StatusCallbackMethod { get; private set; }
+    /// <summary>
+    /// Whether Caller ID Name (CNAM) lookup is enabled for the trunk
+    /// </summary>
+    [JsonProperty("cnam_lookup_enabled")]
+    public bool? CnamLookupEnabled { get; private set; }
+    /// <summary>
+    /// Origination Connection Policy (to your Carrier)
+    /// </summary>
+    [JsonProperty("connection_policy_sid")]
+    public string ConnectionPolicySid { get; private set; }
+    /// <summary>
+    /// The SID of the SIP Domain that should be used in the `From` header of originating calls
+    /// </summary>
+    [JsonProperty("from_domain_sid")]
+    public string FromDomainSid { get; private set; }
+    /// <summary>
+    /// The RFC 2822 date and time in GMT that the resource was created
+    /// </summary>
+    [JsonProperty("date_created")]
+    public DateTime? DateCreated { get; private set; }
+    /// <summary>
+    /// The RFC 2822 date and time in GMT that the resource was last updated
+    /// </summary>
+    [JsonProperty("date_updated")]
+    public DateTime? DateUpdated { get; private set; }
+    /// <summary>
+    /// The absolute URL of the resource
+    /// </summary>
+    [JsonProperty("url")]
+    public Uri Url { get; private set; }
+
+    private ByocTrunkResource()
+    {
+
+    }
+  }
 
 }

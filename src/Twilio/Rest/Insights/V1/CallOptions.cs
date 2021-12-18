@@ -11,36 +11,36 @@ using Twilio.Converters;
 namespace Twilio.Rest.Insights.V1
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// FetchCallOptions
+  /// </summary>
+  public class FetchCallOptions : IOptions<CallResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// FetchCallOptions
+    /// The sid
     /// </summary>
-    public class FetchCallOptions : IOptions<CallResource>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchCallOptions
+    /// </summary>
+    /// <param name="pathSid"> The sid </param>
+    public FetchCallOptions(string pathSid)
     {
-        /// <summary>
-        /// The sid
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchCallOptions
-        /// </summary>
-        /// <param name="pathSid"> The sid </param>
-        public FetchCallOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathSid = pathSid;
     }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
 }

@@ -11,56 +11,56 @@ using Twilio.Converters;
 namespace Twilio.Rest.Verify.V2.Service.Entity.Challenge
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Create a new Notification for the corresponding Challenge
+  /// </summary>
+  public class CreateNotificationOptions : IOptions<NotificationResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Create a new Notification for the corresponding Challenge
+    /// Service Sid.
     /// </summary>
-    public class CreateNotificationOptions : IOptions<NotificationResource>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// Unique external identifier of the Entity
+    /// </summary>
+    public string PathIdentity { get; }
+    /// <summary>
+    /// Challenge Sid.
+    /// </summary>
+    public string PathChallengeSid { get; }
+    /// <summary>
+    /// How long, in seconds, the notification is valid.
+    /// </summary>
+    public int? Ttl { get; set; }
+
+    /// <summary>
+    /// Construct a new CreateNotificationOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> Service Sid. </param>
+    /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
+    /// <param name="pathChallengeSid"> Challenge Sid. </param>
+    public CreateNotificationOptions(string pathServiceSid, string pathIdentity, string pathChallengeSid)
     {
-        /// <summary>
-        /// Service Sid.
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// Unique external identifier of the Entity
-        /// </summary>
-        public string PathIdentity { get; }
-        /// <summary>
-        /// Challenge Sid.
-        /// </summary>
-        public string PathChallengeSid { get; }
-        /// <summary>
-        /// How long, in seconds, the notification is valid.
-        /// </summary>
-        public int? Ttl { get; set; }
-
-        /// <summary>
-        /// Construct a new CreateNotificationOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
-        /// <param name="pathChallengeSid"> Challenge Sid. </param>
-        public CreateNotificationOptions(string pathServiceSid, string pathIdentity, string pathChallengeSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathIdentity = pathIdentity;
-            PathChallengeSid = pathChallengeSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Ttl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Ttl", Ttl.ToString()));
-            }
-
-            return p;
-        }
+      PathServiceSid = pathServiceSid;
+      PathIdentity = pathIdentity;
+      PathChallengeSid = pathChallengeSid;
     }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (Ttl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Ttl", Ttl.ToString()));
+      }
+
+      return p;
+    }
+  }
 
 }

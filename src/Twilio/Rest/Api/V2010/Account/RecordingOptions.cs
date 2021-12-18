@@ -11,142 +11,142 @@ using Twilio.Converters;
 namespace Twilio.Rest.Api.V2010.Account
 {
 
+  /// <summary>
+  /// Fetch an instance of a recording
+  /// </summary>
+  public class FetchRecordingOptions : IOptions<RecordingResource>
+  {
     /// <summary>
-    /// Fetch an instance of a recording
+    /// The SID of the Account that created the resource to fetch
     /// </summary>
-    public class FetchRecordingOptions : IOptions<RecordingResource>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchRecordingOptions
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public FetchRecordingOptions(string pathSid)
     {
-        /// <summary>
-        /// The SID of the Account that created the resource to fetch
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchRecordingOptions
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public FetchRecordingOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Delete a recording from your account
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteRecordingOptions : IOptions<RecordingResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Account that created the resources to delete
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new DeleteRecordingOptions
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public DeleteRecordingOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
+  /// <summary>
+  /// Delete a recording from your account
+  /// </summary>
+  public class DeleteRecordingOptions : IOptions<RecordingResource>
+  {
+    /// <summary>
+    /// The SID of the Account that created the resources to delete
+    /// </summary>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+    /// <summary>
+    /// Construct a new DeleteRecordingOptions
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public DeleteRecordingOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Retrieve a list of recordings belonging to the account used to make the request
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadRecordingOptions : ReadOptions<RecordingResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Account that created the resources to read
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// Only include recordings that were created on this date
-        /// </summary>
-        public DateTime? DateCreatedBefore { get; set; }
-        /// <summary>
-        /// Only include recordings that were created on this date
-        /// </summary>
-        public DateTime? DateCreated { get; set; }
-        /// <summary>
-        /// Only include recordings that were created on this date
-        /// </summary>
-        public DateTime? DateCreatedAfter { get; set; }
-        /// <summary>
-        /// The Call SID of the resources to read
-        /// </summary>
-        public string CallSid { get; set; }
-        /// <summary>
-        /// Read by unique Conference SID for the recording
-        /// </summary>
-        public string ConferenceSid { get; set; }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (DateCreated != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DateCreated", Serializers.DateTimeIso8601(DateCreated)));
-            }
-            else
-            {
-                if (DateCreatedBefore != null)
-                {
-                    p.Add(new KeyValuePair<string, string>("DateCreated<", Serializers.DateTimeIso8601(DateCreatedBefore)));
-                }
-
-                if (DateCreatedAfter != null)
-                {
-                    p.Add(new KeyValuePair<string, string>("DateCreated>", Serializers.DateTimeIso8601(DateCreatedAfter)));
-                }
-            }
-
-            if (CallSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("CallSid", CallSid.ToString()));
-            }
-
-            if (ConferenceSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ConferenceSid", ConferenceSid.ToString()));
-            }
-
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
+
+  /// <summary>
+  /// Retrieve a list of recordings belonging to the account used to make the request
+  /// </summary>
+  public class ReadRecordingOptions : ReadOptions<RecordingResource>
+  {
+    /// <summary>
+    /// The SID of the Account that created the resources to read
+    /// </summary>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// Only include recordings that were created on this date
+    /// </summary>
+    public DateTime? DateCreatedBefore { get; set; }
+    /// <summary>
+    /// Only include recordings that were created on this date
+    /// </summary>
+    public DateTime? DateCreated { get; set; }
+    /// <summary>
+    /// Only include recordings that were created on this date
+    /// </summary>
+    public DateTime? DateCreatedAfter { get; set; }
+    /// <summary>
+    /// The Call SID of the resources to read
+    /// </summary>
+    public string CallSid { get; set; }
+    /// <summary>
+    /// Read by unique Conference SID for the recording
+    /// </summary>
+    public string ConferenceSid { get; set; }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (DateCreated != null)
+      {
+        p.Add(new KeyValuePair<string, string>("DateCreated", Serializers.DateTimeIso8601(DateCreated)));
+      }
+      else
+      {
+        if (DateCreatedBefore != null)
+        {
+          p.Add(new KeyValuePair<string, string>("DateCreated<", Serializers.DateTimeIso8601(DateCreatedBefore)));
+        }
+
+        if (DateCreatedAfter != null)
+        {
+          p.Add(new KeyValuePair<string, string>("DateCreated>", Serializers.DateTimeIso8601(DateCreatedAfter)));
+        }
+      }
+
+      if (CallSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("CallSid", CallSid.ToString()));
+      }
+
+      if (ConferenceSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ConferenceSid", ConferenceSid.ToString()));
+      }
+
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
 
 }

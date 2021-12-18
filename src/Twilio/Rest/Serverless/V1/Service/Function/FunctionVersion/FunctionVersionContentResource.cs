@@ -20,140 +20,140 @@ using Twilio.Http;
 namespace Twilio.Rest.Serverless.V1.Service.Function.FunctionVersion
 {
 
-    public class FunctionVersionContentResource : Resource
+  public class FunctionVersionContentResource : Resource
+  {
+    private static Request BuildFetchRequest(FetchFunctionVersionContentOptions options, ITwilioRestClient client)
     {
-        private static Request BuildFetchRequest(FetchFunctionVersionContentOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Get,
-                Rest.Domain.Serverless,
-                "/v1/Services/" + options.PathServiceSid + "/Functions/" + options.PathFunctionSid + "/Versions/" + options.PathSid + "/Content",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// Retrieve a the content of a specific Function Version resource.
-        /// </summary>
-        /// <param name="options"> Fetch FunctionVersionContent parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of FunctionVersionContent </returns>
-        public static FunctionVersionContentResource Fetch(FetchFunctionVersionContentOptions options,
-                                                           ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Retrieve a the content of a specific Function Version resource.
-        /// </summary>
-        /// <param name="options"> Fetch FunctionVersionContent parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of FunctionVersionContent </returns>
-        public static async System.Threading.Tasks.Task<FunctionVersionContentResource> FetchAsync(FetchFunctionVersionContentOptions options,
-                                                                                                   ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// Retrieve a the content of a specific Function Version resource.
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to fetch the Function Version content from </param>
-        /// <param name="pathFunctionSid"> The SID of the Function that is the parent of the Function Version content to fetch
-        ///                       </param>
-        /// <param name="pathSid"> The SID that identifies the Function Version content to fetch </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of FunctionVersionContent </returns>
-        public static FunctionVersionContentResource Fetch(string pathServiceSid,
-                                                           string pathFunctionSid,
-                                                           string pathSid,
-                                                           ITwilioRestClient client = null)
-        {
-            var options = new FetchFunctionVersionContentOptions(pathServiceSid, pathFunctionSid, pathSid);
-            return Fetch(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Retrieve a the content of a specific Function Version resource.
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to fetch the Function Version content from </param>
-        /// <param name="pathFunctionSid"> The SID of the Function that is the parent of the Function Version content to fetch
-        ///                       </param>
-        /// <param name="pathSid"> The SID that identifies the Function Version content to fetch </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of FunctionVersionContent </returns>
-        public static async System.Threading.Tasks.Task<FunctionVersionContentResource> FetchAsync(string pathServiceSid,
-                                                                                                   string pathFunctionSid,
-                                                                                                   string pathSid,
-                                                                                                   ITwilioRestClient client = null)
-        {
-            var options = new FetchFunctionVersionContentOptions(pathServiceSid, pathFunctionSid, pathSid);
-            return await FetchAsync(options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Converts a JSON string into a FunctionVersionContentResource object
-        /// </summary>
-        /// <param name="json"> Raw JSON string </param>
-        /// <returns> FunctionVersionContentResource object represented by the provided JSON </returns>
-        public static FunctionVersionContentResource FromJson(string json)
-        {
-            // Convert all checked exceptions to Runtime
-            try
-            {
-                return JsonConvert.DeserializeObject<FunctionVersionContentResource>(json);
-            }
-            catch (JsonException e)
-            {
-                throw new ApiException(e.Message, e);
-            }
-        }
-
-        /// <summary>
-        /// The unique string that identifies the Function Version resource
-        /// </summary>
-        [JsonProperty("sid")]
-        public string Sid { get; private set; }
-        /// <summary>
-        /// The SID of the Account that created the Function Version resource
-        /// </summary>
-        [JsonProperty("account_sid")]
-        public string AccountSid { get; private set; }
-        /// <summary>
-        /// The SID of the Service that the Function Version resource is associated with
-        /// </summary>
-        [JsonProperty("service_sid")]
-        public string ServiceSid { get; private set; }
-        /// <summary>
-        /// The SID of the Function that is the parent of the Function Version
-        /// </summary>
-        [JsonProperty("function_sid")]
-        public string FunctionSid { get; private set; }
-        /// <summary>
-        /// The content of the Function Version resource
-        /// </summary>
-        [JsonProperty("content")]
-        public string Content { get; private set; }
-        /// <summary>
-        /// The url
-        /// </summary>
-        [JsonProperty("url")]
-        public Uri Url { get; private set; }
-
-        private FunctionVersionContentResource()
-        {
-
-        }
+      return new Request(
+          HttpMethod.Get,
+          Rest.Domain.Serverless,
+          "/v1/Services/" + options.PathServiceSid + "/Functions/" + options.PathFunctionSid + "/Versions/" + options.PathSid + "/Content",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
     }
+
+    /// <summary>
+    /// Retrieve a the content of a specific Function Version resource.
+    /// </summary>
+    /// <param name="options"> Fetch FunctionVersionContent parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of FunctionVersionContent </returns>
+    public static FunctionVersionContentResource Fetch(FetchFunctionVersionContentOptions options,
+                                                       ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Retrieve a the content of a specific Function Version resource.
+    /// </summary>
+    /// <param name="options"> Fetch FunctionVersionContent parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of FunctionVersionContent </returns>
+    public static async System.Threading.Tasks.Task<FunctionVersionContentResource> FetchAsync(FetchFunctionVersionContentOptions options,
+                                                                                               ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// Retrieve a the content of a specific Function Version resource.
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to fetch the Function Version content from </param>
+    /// <param name="pathFunctionSid"> The SID of the Function that is the parent of the Function Version content to fetch
+    ///                       </param>
+    /// <param name="pathSid"> The SID that identifies the Function Version content to fetch </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of FunctionVersionContent </returns>
+    public static FunctionVersionContentResource Fetch(string pathServiceSid,
+                                                       string pathFunctionSid,
+                                                       string pathSid,
+                                                       ITwilioRestClient client = null)
+    {
+      var options = new FetchFunctionVersionContentOptions(pathServiceSid, pathFunctionSid, pathSid);
+      return Fetch(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Retrieve a the content of a specific Function Version resource.
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to fetch the Function Version content from </param>
+    /// <param name="pathFunctionSid"> The SID of the Function that is the parent of the Function Version content to fetch
+    ///                       </param>
+    /// <param name="pathSid"> The SID that identifies the Function Version content to fetch </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of FunctionVersionContent </returns>
+    public static async System.Threading.Tasks.Task<FunctionVersionContentResource> FetchAsync(string pathServiceSid,
+                                                                                               string pathFunctionSid,
+                                                                                               string pathSid,
+                                                                                               ITwilioRestClient client = null)
+    {
+      var options = new FetchFunctionVersionContentOptions(pathServiceSid, pathFunctionSid, pathSid);
+      return await FetchAsync(options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Converts a JSON string into a FunctionVersionContentResource object
+    /// </summary>
+    /// <param name="json"> Raw JSON string </param>
+    /// <returns> FunctionVersionContentResource object represented by the provided JSON </returns>
+    public static FunctionVersionContentResource FromJson(string json)
+    {
+      // Convert all checked exceptions to Runtime
+      try
+      {
+        return JsonConvert.DeserializeObject<FunctionVersionContentResource>(json);
+      }
+      catch (JsonException e)
+      {
+        throw new ApiException(e.Message, e);
+      }
+    }
+
+    /// <summary>
+    /// The unique string that identifies the Function Version resource
+    /// </summary>
+    [JsonProperty("sid")]
+    public string Sid { get; private set; }
+    /// <summary>
+    /// The SID of the Account that created the Function Version resource
+    /// </summary>
+    [JsonProperty("account_sid")]
+    public string AccountSid { get; private set; }
+    /// <summary>
+    /// The SID of the Service that the Function Version resource is associated with
+    /// </summary>
+    [JsonProperty("service_sid")]
+    public string ServiceSid { get; private set; }
+    /// <summary>
+    /// The SID of the Function that is the parent of the Function Version
+    /// </summary>
+    [JsonProperty("function_sid")]
+    public string FunctionSid { get; private set; }
+    /// <summary>
+    /// The content of the Function Version resource
+    /// </summary>
+    [JsonProperty("content")]
+    public string Content { get; private set; }
+    /// <summary>
+    /// The url
+    /// </summary>
+    [JsonProperty("url")]
+    public Uri Url { get; private set; }
+
+    private FunctionVersionContentResource()
+    {
+
+    }
+  }
 
 }

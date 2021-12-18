@@ -11,108 +11,108 @@ using Twilio.Converters;
 namespace Twilio.Rest.Monitor.V1
 {
 
+  /// <summary>
+  /// FetchEventOptions
+  /// </summary>
+  public class FetchEventOptions : IOptions<EventResource>
+  {
     /// <summary>
-    /// FetchEventOptions
+    /// The SID that identifies the resource to fetch
     /// </summary>
-    public class FetchEventOptions : IOptions<EventResource>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchEventOptions
+    /// </summary>
+    /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
+    public FetchEventOptions(string pathSid)
     {
-        /// <summary>
-        /// The SID that identifies the resource to fetch
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchEventOptions
-        /// </summary>
-        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
-        public FetchEventOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Returns a list of events in the account, sorted by event-date.
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadEventOptions : ReadOptions<EventResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// Only include events initiated by this Actor
-        /// </summary>
-        public string ActorSid { get; set; }
-        /// <summary>
-        /// Only include events of this Event Type
-        /// </summary>
-        public string EventType { get; set; }
-        /// <summary>
-        /// Only include events that refer to this resource
-        /// </summary>
-        public string ResourceSid { get; set; }
-        /// <summary>
-        /// Only include events that originated from this IP address
-        /// </summary>
-        public string SourceIpAddress { get; set; }
-        /// <summary>
-        /// Only include events that occurred on or after this date
-        /// </summary>
-        public DateTime? StartDate { get; set; }
-        /// <summary>
-        /// Only include events that occurred on or before this date
-        /// </summary>
-        public DateTime? EndDate { get; set; }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (ActorSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ActorSid", ActorSid.ToString()));
-            }
-
-            if (EventType != null)
-            {
-                p.Add(new KeyValuePair<string, string>("EventType", EventType));
-            }
-
-            if (ResourceSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ResourceSid", ResourceSid.ToString()));
-            }
-
-            if (SourceIpAddress != null)
-            {
-                p.Add(new KeyValuePair<string, string>("SourceIpAddress", SourceIpAddress));
-            }
-
-            if (StartDate != null)
-            {
-                p.Add(new KeyValuePair<string, string>("StartDate", Serializers.DateTimeIso8601(StartDate)));
-            }
-
-            if (EndDate != null)
-            {
-                p.Add(new KeyValuePair<string, string>("EndDate", Serializers.DateTimeIso8601(EndDate)));
-            }
-
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
+
+  /// <summary>
+  /// Returns a list of events in the account, sorted by event-date.
+  /// </summary>
+  public class ReadEventOptions : ReadOptions<EventResource>
+  {
+    /// <summary>
+    /// Only include events initiated by this Actor
+    /// </summary>
+    public string ActorSid { get; set; }
+    /// <summary>
+    /// Only include events of this Event Type
+    /// </summary>
+    public string EventType { get; set; }
+    /// <summary>
+    /// Only include events that refer to this resource
+    /// </summary>
+    public string ResourceSid { get; set; }
+    /// <summary>
+    /// Only include events that originated from this IP address
+    /// </summary>
+    public string SourceIpAddress { get; set; }
+    /// <summary>
+    /// Only include events that occurred on or after this date
+    /// </summary>
+    public DateTime? StartDate { get; set; }
+    /// <summary>
+    /// Only include events that occurred on or before this date
+    /// </summary>
+    public DateTime? EndDate { get; set; }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (ActorSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ActorSid", ActorSid.ToString()));
+      }
+
+      if (EventType != null)
+      {
+        p.Add(new KeyValuePair<string, string>("EventType", EventType));
+      }
+
+      if (ResourceSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ResourceSid", ResourceSid.ToString()));
+      }
+
+      if (SourceIpAddress != null)
+      {
+        p.Add(new KeyValuePair<string, string>("SourceIpAddress", SourceIpAddress));
+      }
+
+      if (StartDate != null)
+      {
+        p.Add(new KeyValuePair<string, string>("StartDate", Serializers.DateTimeIso8601(StartDate)));
+      }
+
+      if (EndDate != null)
+      {
+        p.Add(new KeyValuePair<string, string>("EndDate", Serializers.DateTimeIso8601(EndDate)));
+      }
+
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
 
 }

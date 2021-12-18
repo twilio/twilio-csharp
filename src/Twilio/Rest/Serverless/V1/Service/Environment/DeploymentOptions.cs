@@ -11,135 +11,135 @@ using Twilio.Converters;
 namespace Twilio.Rest.Serverless.V1.Service.Environment
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Retrieve a list of all Deployments.
+  /// </summary>
+  public class ReadDeploymentOptions : ReadOptions<DeploymentResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Retrieve a list of all Deployments.
+    /// The SID of the Service to read the Deployment resources from
     /// </summary>
-    public class ReadDeploymentOptions : ReadOptions<DeploymentResource>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The SID of the Environment used by the Deployment resources to read
+    /// </summary>
+    public string PathEnvironmentSid { get; }
+
+    /// <summary>
+    /// Construct a new ReadDeploymentOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to read the Deployment resources from </param>
+    /// <param name="pathEnvironmentSid"> The SID of the Environment used by the Deployment resources to read </param>
+    public ReadDeploymentOptions(string pathServiceSid, string pathEnvironmentSid)
     {
-        /// <summary>
-        /// The SID of the Service to read the Deployment resources from
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The SID of the Environment used by the Deployment resources to read
-        /// </summary>
-        public string PathEnvironmentSid { get; }
-
-        /// <summary>
-        /// Construct a new ReadDeploymentOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to read the Deployment resources from </param>
-        /// <param name="pathEnvironmentSid"> The SID of the Environment used by the Deployment resources to read </param>
-        public ReadDeploymentOptions(string pathServiceSid, string pathEnvironmentSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathEnvironmentSid = pathEnvironmentSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+      PathServiceSid = pathServiceSid;
+      PathEnvironmentSid = pathEnvironmentSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Retrieve a specific Deployment.
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchDeploymentOptions : IOptions<DeploymentResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Service to fetch the Deployment resource from
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The SID of the Environment used by the Deployment to fetch
-        /// </summary>
-        public string PathEnvironmentSid { get; }
-        /// <summary>
-        /// The SID that identifies the Deployment resource to fetch
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new FetchDeploymentOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to fetch the Deployment resource from </param>
-        /// <param name="pathEnvironmentSid"> The SID of the Environment used by the Deployment to fetch </param>
-        /// <param name="pathSid"> The SID that identifies the Deployment resource to fetch </param>
-        public FetchDeploymentOptions(string pathServiceSid, string pathEnvironmentSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathEnvironmentSid = pathEnvironmentSid;
-            PathSid = pathSid;
-        }
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Retrieve a specific Deployment.
+  /// </summary>
+  public class FetchDeploymentOptions : IOptions<DeploymentResource>
+  {
+    /// <summary>
+    /// The SID of the Service to fetch the Deployment resource from
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The SID of the Environment used by the Deployment to fetch
+    /// </summary>
+    public string PathEnvironmentSid { get; }
+    /// <summary>
+    /// The SID that identifies the Deployment resource to fetch
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchDeploymentOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to fetch the Deployment resource from </param>
+    /// <param name="pathEnvironmentSid"> The SID of the Environment used by the Deployment to fetch </param>
+    /// <param name="pathSid"> The SID that identifies the Deployment resource to fetch </param>
+    public FetchDeploymentOptions(string pathServiceSid, string pathEnvironmentSid, string pathSid)
+    {
+      PathServiceSid = pathServiceSid;
+      PathEnvironmentSid = pathEnvironmentSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Create a new Deployment.
+    /// Generate the necessary parameters
     /// </summary>
-    public class CreateDeploymentOptions : IOptions<DeploymentResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Service to create the Deployment resource under
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The SID of the Environment for the Deployment
-        /// </summary>
-        public string PathEnvironmentSid { get; }
-        /// <summary>
-        /// The SID of the Build for the Deployment
-        /// </summary>
-        public string BuildSid { get; set; }
-
-        /// <summary>
-        /// Construct a new CreateDeploymentOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to create the Deployment resource under </param>
-        /// <param name="pathEnvironmentSid"> The SID of the Environment for the Deployment </param>
-        public CreateDeploymentOptions(string pathServiceSid, string pathEnvironmentSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathEnvironmentSid = pathEnvironmentSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (BuildSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("BuildSid", BuildSid.ToString()));
-            }
-
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
+
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Create a new Deployment.
+  /// </summary>
+  public class CreateDeploymentOptions : IOptions<DeploymentResource>
+  {
+    /// <summary>
+    /// The SID of the Service to create the Deployment resource under
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The SID of the Environment for the Deployment
+    /// </summary>
+    public string PathEnvironmentSid { get; }
+    /// <summary>
+    /// The SID of the Build for the Deployment
+    /// </summary>
+    public string BuildSid { get; set; }
+
+    /// <summary>
+    /// Construct a new CreateDeploymentOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to create the Deployment resource under </param>
+    /// <param name="pathEnvironmentSid"> The SID of the Environment for the Deployment </param>
+    public CreateDeploymentOptions(string pathServiceSid, string pathEnvironmentSid)
+    {
+      PathServiceSid = pathServiceSid;
+      PathEnvironmentSid = pathEnvironmentSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (BuildSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("BuildSid", BuildSid.ToString()));
+      }
+
+      return p;
+    }
+  }
 
 }

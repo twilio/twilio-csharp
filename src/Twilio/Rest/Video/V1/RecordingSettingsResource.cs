@@ -18,224 +18,224 @@ using Twilio.Http;
 namespace Twilio.Rest.Video.V1
 {
 
-    public class RecordingSettingsResource : Resource
+  public class RecordingSettingsResource : Resource
+  {
+    private static Request BuildFetchRequest(FetchRecordingSettingsOptions options, ITwilioRestClient client)
     {
-        private static Request BuildFetchRequest(FetchRecordingSettingsOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Get,
-                Rest.Domain.Video,
-                "/v1/RecordingSettings/Default",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="options"> Fetch RecordingSettings parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of RecordingSettings </returns>
-        public static RecordingSettingsResource Fetch(FetchRecordingSettingsOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="options"> Fetch RecordingSettings parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of RecordingSettings </returns>
-        public static async System.Threading.Tasks.Task<RecordingSettingsResource> FetchAsync(FetchRecordingSettingsOptions options,
-                                                                                              ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of RecordingSettings </returns>
-        public static RecordingSettingsResource Fetch(ITwilioRestClient client = null)
-        {
-            var options = new FetchRecordingSettingsOptions();
-            return Fetch(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of RecordingSettings </returns>
-        public static async System.Threading.Tasks.Task<RecordingSettingsResource> FetchAsync(ITwilioRestClient client = null)
-        {
-            var options = new FetchRecordingSettingsOptions();
-            return await FetchAsync(options, client);
-        }
-        #endif
-
-        private static Request BuildCreateRequest(CreateRecordingSettingsOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Post,
-                Rest.Domain.Video,
-                "/v1/RecordingSettings/Default",
-                postParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// create
-        /// </summary>
-        /// <param name="options"> Create RecordingSettings parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of RecordingSettings </returns>
-        public static RecordingSettingsResource Create(CreateRecordingSettingsOptions options,
-                                                       ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildCreateRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// create
-        /// </summary>
-        /// <param name="options"> Create RecordingSettings parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of RecordingSettings </returns>
-        public static async System.Threading.Tasks.Task<RecordingSettingsResource> CreateAsync(CreateRecordingSettingsOptions options,
-                                                                                               ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// create
-        /// </summary>
-        /// <param name="friendlyName"> A string to describe the resource </param>
-        /// <param name="awsCredentialsSid"> The SID of the stored Credential resource </param>
-        /// <param name="encryptionKeySid"> The SID of the Public Key resource to use for encryption </param>
-        /// <param name="awsS3Url"> The URL of the AWS S3 bucket where the recordings should be stored </param>
-        /// <param name="awsStorageEnabled"> Whether all recordings should be written to the aws_s3_url </param>
-        /// <param name="encryptionEnabled"> Whether all recordings should be stored in an encrypted form </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of RecordingSettings </returns>
-        public static RecordingSettingsResource Create(string friendlyName,
-                                                       string awsCredentialsSid = null,
-                                                       string encryptionKeySid = null,
-                                                       Uri awsS3Url = null,
-                                                       bool? awsStorageEnabled = null,
-                                                       bool? encryptionEnabled = null,
-                                                       ITwilioRestClient client = null)
-        {
-            var options = new CreateRecordingSettingsOptions(friendlyName){AwsCredentialsSid = awsCredentialsSid, EncryptionKeySid = encryptionKeySid, AwsS3Url = awsS3Url, AwsStorageEnabled = awsStorageEnabled, EncryptionEnabled = encryptionEnabled};
-            return Create(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// create
-        /// </summary>
-        /// <param name="friendlyName"> A string to describe the resource </param>
-        /// <param name="awsCredentialsSid"> The SID of the stored Credential resource </param>
-        /// <param name="encryptionKeySid"> The SID of the Public Key resource to use for encryption </param>
-        /// <param name="awsS3Url"> The URL of the AWS S3 bucket where the recordings should be stored </param>
-        /// <param name="awsStorageEnabled"> Whether all recordings should be written to the aws_s3_url </param>
-        /// <param name="encryptionEnabled"> Whether all recordings should be stored in an encrypted form </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of RecordingSettings </returns>
-        public static async System.Threading.Tasks.Task<RecordingSettingsResource> CreateAsync(string friendlyName,
-                                                                                               string awsCredentialsSid = null,
-                                                                                               string encryptionKeySid = null,
-                                                                                               Uri awsS3Url = null,
-                                                                                               bool? awsStorageEnabled = null,
-                                                                                               bool? encryptionEnabled = null,
-                                                                                               ITwilioRestClient client = null)
-        {
-            var options = new CreateRecordingSettingsOptions(friendlyName){AwsCredentialsSid = awsCredentialsSid, EncryptionKeySid = encryptionKeySid, AwsS3Url = awsS3Url, AwsStorageEnabled = awsStorageEnabled, EncryptionEnabled = encryptionEnabled};
-            return await CreateAsync(options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Converts a JSON string into a RecordingSettingsResource object
-        /// </summary>
-        /// <param name="json"> Raw JSON string </param>
-        /// <returns> RecordingSettingsResource object represented by the provided JSON </returns>
-        public static RecordingSettingsResource FromJson(string json)
-        {
-            // Convert all checked exceptions to Runtime
-            try
-            {
-                return JsonConvert.DeserializeObject<RecordingSettingsResource>(json);
-            }
-            catch (JsonException e)
-            {
-                throw new ApiException(e.Message, e);
-            }
-        }
-
-        /// <summary>
-        /// The SID of the Account that created the resource
-        /// </summary>
-        [JsonProperty("account_sid")]
-        public string AccountSid { get; private set; }
-        /// <summary>
-        /// The string that you assigned to describe the resource
-        /// </summary>
-        [JsonProperty("friendly_name")]
-        public string FriendlyName { get; private set; }
-        /// <summary>
-        /// The SID of the stored Credential resource
-        /// </summary>
-        [JsonProperty("aws_credentials_sid")]
-        public string AwsCredentialsSid { get; private set; }
-        /// <summary>
-        /// The URL of the AWS S3 bucket where the recordings are stored
-        /// </summary>
-        [JsonProperty("aws_s3_url")]
-        public Uri AwsS3Url { get; private set; }
-        /// <summary>
-        /// Whether all recordings are written to the aws_s3_url
-        /// </summary>
-        [JsonProperty("aws_storage_enabled")]
-        public bool? AwsStorageEnabled { get; private set; }
-        /// <summary>
-        /// The SID of the Public Key resource used for encryption
-        /// </summary>
-        [JsonProperty("encryption_key_sid")]
-        public string EncryptionKeySid { get; private set; }
-        /// <summary>
-        /// Whether all recordings are stored in an encrypted form
-        /// </summary>
-        [JsonProperty("encryption_enabled")]
-        public bool? EncryptionEnabled { get; private set; }
-        /// <summary>
-        /// The absolute URL of the resource
-        /// </summary>
-        [JsonProperty("url")]
-        public Uri Url { get; private set; }
-
-        private RecordingSettingsResource()
-        {
-
-        }
+      return new Request(
+          HttpMethod.Get,
+          Rest.Domain.Video,
+          "/v1/RecordingSettings/Default",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
     }
+
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="options"> Fetch RecordingSettings parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of RecordingSettings </returns>
+    public static RecordingSettingsResource Fetch(FetchRecordingSettingsOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="options"> Fetch RecordingSettings parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of RecordingSettings </returns>
+    public static async System.Threading.Tasks.Task<RecordingSettingsResource> FetchAsync(FetchRecordingSettingsOptions options,
+                                                                                          ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of RecordingSettings </returns>
+    public static RecordingSettingsResource Fetch(ITwilioRestClient client = null)
+    {
+      var options = new FetchRecordingSettingsOptions();
+      return Fetch(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of RecordingSettings </returns>
+    public static async System.Threading.Tasks.Task<RecordingSettingsResource> FetchAsync(ITwilioRestClient client = null)
+    {
+      var options = new FetchRecordingSettingsOptions();
+      return await FetchAsync(options, client);
+    }
+#endif
+
+    private static Request BuildCreateRequest(CreateRecordingSettingsOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Post,
+          Rest.Domain.Video,
+          "/v1/RecordingSettings/Default",
+          postParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// create
+    /// </summary>
+    /// <param name="options"> Create RecordingSettings parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of RecordingSettings </returns>
+    public static RecordingSettingsResource Create(CreateRecordingSettingsOptions options,
+                                                   ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildCreateRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// create
+    /// </summary>
+    /// <param name="options"> Create RecordingSettings parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of RecordingSettings </returns>
+    public static async System.Threading.Tasks.Task<RecordingSettingsResource> CreateAsync(CreateRecordingSettingsOptions options,
+                                                                                           ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildCreateRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// create
+    /// </summary>
+    /// <param name="friendlyName"> A string to describe the resource </param>
+    /// <param name="awsCredentialsSid"> The SID of the stored Credential resource </param>
+    /// <param name="encryptionKeySid"> The SID of the Public Key resource to use for encryption </param>
+    /// <param name="awsS3Url"> The URL of the AWS S3 bucket where the recordings should be stored </param>
+    /// <param name="awsStorageEnabled"> Whether all recordings should be written to the aws_s3_url </param>
+    /// <param name="encryptionEnabled"> Whether all recordings should be stored in an encrypted form </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of RecordingSettings </returns>
+    public static RecordingSettingsResource Create(string friendlyName,
+                                                   string awsCredentialsSid = null,
+                                                   string encryptionKeySid = null,
+                                                   Uri awsS3Url = null,
+                                                   bool? awsStorageEnabled = null,
+                                                   bool? encryptionEnabled = null,
+                                                   ITwilioRestClient client = null)
+    {
+      var options = new CreateRecordingSettingsOptions(friendlyName) { AwsCredentialsSid = awsCredentialsSid, EncryptionKeySid = encryptionKeySid, AwsS3Url = awsS3Url, AwsStorageEnabled = awsStorageEnabled, EncryptionEnabled = encryptionEnabled };
+      return Create(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// create
+    /// </summary>
+    /// <param name="friendlyName"> A string to describe the resource </param>
+    /// <param name="awsCredentialsSid"> The SID of the stored Credential resource </param>
+    /// <param name="encryptionKeySid"> The SID of the Public Key resource to use for encryption </param>
+    /// <param name="awsS3Url"> The URL of the AWS S3 bucket where the recordings should be stored </param>
+    /// <param name="awsStorageEnabled"> Whether all recordings should be written to the aws_s3_url </param>
+    /// <param name="encryptionEnabled"> Whether all recordings should be stored in an encrypted form </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of RecordingSettings </returns>
+    public static async System.Threading.Tasks.Task<RecordingSettingsResource> CreateAsync(string friendlyName,
+                                                                                           string awsCredentialsSid = null,
+                                                                                           string encryptionKeySid = null,
+                                                                                           Uri awsS3Url = null,
+                                                                                           bool? awsStorageEnabled = null,
+                                                                                           bool? encryptionEnabled = null,
+                                                                                           ITwilioRestClient client = null)
+    {
+      var options = new CreateRecordingSettingsOptions(friendlyName) { AwsCredentialsSid = awsCredentialsSid, EncryptionKeySid = encryptionKeySid, AwsS3Url = awsS3Url, AwsStorageEnabled = awsStorageEnabled, EncryptionEnabled = encryptionEnabled };
+      return await CreateAsync(options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Converts a JSON string into a RecordingSettingsResource object
+    /// </summary>
+    /// <param name="json"> Raw JSON string </param>
+    /// <returns> RecordingSettingsResource object represented by the provided JSON </returns>
+    public static RecordingSettingsResource FromJson(string json)
+    {
+      // Convert all checked exceptions to Runtime
+      try
+      {
+        return JsonConvert.DeserializeObject<RecordingSettingsResource>(json);
+      }
+      catch (JsonException e)
+      {
+        throw new ApiException(e.Message, e);
+      }
+    }
+
+    /// <summary>
+    /// The SID of the Account that created the resource
+    /// </summary>
+    [JsonProperty("account_sid")]
+    public string AccountSid { get; private set; }
+    /// <summary>
+    /// The string that you assigned to describe the resource
+    /// </summary>
+    [JsonProperty("friendly_name")]
+    public string FriendlyName { get; private set; }
+    /// <summary>
+    /// The SID of the stored Credential resource
+    /// </summary>
+    [JsonProperty("aws_credentials_sid")]
+    public string AwsCredentialsSid { get; private set; }
+    /// <summary>
+    /// The URL of the AWS S3 bucket where the recordings are stored
+    /// </summary>
+    [JsonProperty("aws_s3_url")]
+    public Uri AwsS3Url { get; private set; }
+    /// <summary>
+    /// Whether all recordings are written to the aws_s3_url
+    /// </summary>
+    [JsonProperty("aws_storage_enabled")]
+    public bool? AwsStorageEnabled { get; private set; }
+    /// <summary>
+    /// The SID of the Public Key resource used for encryption
+    /// </summary>
+    [JsonProperty("encryption_key_sid")]
+    public string EncryptionKeySid { get; private set; }
+    /// <summary>
+    /// Whether all recordings are stored in an encrypted form
+    /// </summary>
+    [JsonProperty("encryption_enabled")]
+    public bool? EncryptionEnabled { get; private set; }
+    /// <summary>
+    /// The absolute URL of the resource
+    /// </summary>
+    [JsonProperty("url")]
+    public Uri Url { get; private set; }
+
+    private RecordingSettingsResource()
+    {
+
+    }
+  }
 
 }

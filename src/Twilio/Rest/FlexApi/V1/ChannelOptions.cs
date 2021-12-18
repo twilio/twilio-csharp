@@ -11,206 +11,206 @@ using Twilio.Converters;
 namespace Twilio.Rest.FlexApi.V1
 {
 
+  /// <summary>
+  /// ReadChannelOptions
+  /// </summary>
+  public class ReadChannelOptions : ReadOptions<ChannelResource>
+  {
     /// <summary>
-    /// ReadChannelOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadChannelOptions : ReadOptions<ChannelResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-            return p;
-        }
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// FetchChannelOptions
+  /// </summary>
+  public class FetchChannelOptions : IOptions<ChannelResource>
+  {
+    /// <summary>
+    /// The SID that identifies the Flex chat channel resource to fetch
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchChannelOptions
+    /// </summary>
+    /// <param name="pathSid"> The SID that identifies the Flex chat channel resource to fetch </param>
+    public FetchChannelOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// FetchChannelOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchChannelOptions : IOptions<ChannelResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID that identifies the Flex chat channel resource to fetch
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new FetchChannelOptions
-        /// </summary>
-        /// <param name="pathSid"> The SID that identifies the Flex chat channel resource to fetch </param>
-        public FetchChannelOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
+  /// <summary>
+  /// CreateChannelOptions
+  /// </summary>
+  public class CreateChannelOptions : IOptions<ChannelResource>
+  {
+    /// <summary>
+    /// The SID of the Flex Flow
+    /// </summary>
+    public string FlexFlowSid { get; }
+    /// <summary>
+    /// The identity value that identifies the new resource's chat User
+    /// </summary>
+    public string Identity { get; }
+    /// <summary>
+    /// The chat participant's friendly name
+    /// </summary>
+    public string ChatUserFriendlyName { get; }
+    /// <summary>
+    /// The chat channel's friendly name
+    /// </summary>
+    public string ChatFriendlyName { get; }
+    /// <summary>
+    /// The Target Contact Identity
+    /// </summary>
+    public string Target { get; set; }
+    /// <summary>
+    /// The chat channel's unique name
+    /// </summary>
+    public string ChatUniqueName { get; set; }
+    /// <summary>
+    /// The pre-engagement data
+    /// </summary>
+    public string PreEngagementData { get; set; }
+    /// <summary>
+    /// The SID of the TaskRouter Task
+    /// </summary>
+    public string TaskSid { get; set; }
+    /// <summary>
+    /// The Task attributes to be added for the TaskRouter Task
+    /// </summary>
+    public string TaskAttributes { get; set; }
+    /// <summary>
+    /// Whether to create the channel as long-lived
+    /// </summary>
+    public bool? LongLived { get; set; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+    /// <summary>
+    /// Construct a new CreateChannelOptions
+    /// </summary>
+    /// <param name="flexFlowSid"> The SID of the Flex Flow </param>
+    /// <param name="identity"> The identity value that identifies the new resource's chat User </param>
+    /// <param name="chatUserFriendlyName"> The chat participant's friendly name </param>
+    /// <param name="chatFriendlyName"> The chat channel's friendly name </param>
+    public CreateChannelOptions(string flexFlowSid,
+                                string identity,
+                                string chatUserFriendlyName,
+                                string chatFriendlyName)
+    {
+      FlexFlowSid = flexFlowSid;
+      Identity = identity;
+      ChatUserFriendlyName = chatUserFriendlyName;
+      ChatFriendlyName = chatFriendlyName;
     }
 
     /// <summary>
-    /// CreateChannelOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class CreateChannelOptions : IOptions<ChannelResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Flex Flow
-        /// </summary>
-        public string FlexFlowSid { get; }
-        /// <summary>
-        /// The identity value that identifies the new resource's chat User
-        /// </summary>
-        public string Identity { get; }
-        /// <summary>
-        /// The chat participant's friendly name
-        /// </summary>
-        public string ChatUserFriendlyName { get; }
-        /// <summary>
-        /// The chat channel's friendly name
-        /// </summary>
-        public string ChatFriendlyName { get; }
-        /// <summary>
-        /// The Target Contact Identity
-        /// </summary>
-        public string Target { get; set; }
-        /// <summary>
-        /// The chat channel's unique name
-        /// </summary>
-        public string ChatUniqueName { get; set; }
-        /// <summary>
-        /// The pre-engagement data
-        /// </summary>
-        public string PreEngagementData { get; set; }
-        /// <summary>
-        /// The SID of the TaskRouter Task
-        /// </summary>
-        public string TaskSid { get; set; }
-        /// <summary>
-        /// The Task attributes to be added for the TaskRouter Task
-        /// </summary>
-        public string TaskAttributes { get; set; }
-        /// <summary>
-        /// Whether to create the channel as long-lived
-        /// </summary>
-        public bool? LongLived { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (FlexFlowSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FlexFlowSid", FlexFlowSid.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new CreateChannelOptions
-        /// </summary>
-        /// <param name="flexFlowSid"> The SID of the Flex Flow </param>
-        /// <param name="identity"> The identity value that identifies the new resource's chat User </param>
-        /// <param name="chatUserFriendlyName"> The chat participant's friendly name </param>
-        /// <param name="chatFriendlyName"> The chat channel's friendly name </param>
-        public CreateChannelOptions(string flexFlowSid,
-                                    string identity,
-                                    string chatUserFriendlyName,
-                                    string chatFriendlyName)
-        {
-            FlexFlowSid = flexFlowSid;
-            Identity = identity;
-            ChatUserFriendlyName = chatUserFriendlyName;
-            ChatFriendlyName = chatFriendlyName;
-        }
+      if (Identity != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Identity", Identity));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (FlexFlowSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FlexFlowSid", FlexFlowSid.ToString()));
-            }
+      if (ChatUserFriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ChatUserFriendlyName", ChatUserFriendlyName));
+      }
 
-            if (Identity != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Identity", Identity));
-            }
+      if (ChatFriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ChatFriendlyName", ChatFriendlyName));
+      }
 
-            if (ChatUserFriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ChatUserFriendlyName", ChatUserFriendlyName));
-            }
+      if (Target != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Target", Target));
+      }
 
-            if (ChatFriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ChatFriendlyName", ChatFriendlyName));
-            }
+      if (ChatUniqueName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ChatUniqueName", ChatUniqueName));
+      }
 
-            if (Target != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Target", Target));
-            }
+      if (PreEngagementData != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PreEngagementData", PreEngagementData));
+      }
 
-            if (ChatUniqueName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ChatUniqueName", ChatUniqueName));
-            }
+      if (TaskSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("TaskSid", TaskSid.ToString()));
+      }
 
-            if (PreEngagementData != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PreEngagementData", PreEngagementData));
-            }
+      if (TaskAttributes != null)
+      {
+        p.Add(new KeyValuePair<string, string>("TaskAttributes", TaskAttributes));
+      }
 
-            if (TaskSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("TaskSid", TaskSid.ToString()));
-            }
+      if (LongLived != null)
+      {
+        p.Add(new KeyValuePair<string, string>("LongLived", LongLived.Value.ToString().ToLower()));
+      }
 
-            if (TaskAttributes != null)
-            {
-                p.Add(new KeyValuePair<string, string>("TaskAttributes", TaskAttributes));
-            }
+      return p;
+    }
+  }
 
-            if (LongLived != null)
-            {
-                p.Add(new KeyValuePair<string, string>("LongLived", LongLived.Value.ToString().ToLower()));
-            }
+  /// <summary>
+  /// DeleteChannelOptions
+  /// </summary>
+  public class DeleteChannelOptions : IOptions<ChannelResource>
+  {
+    /// <summary>
+    /// The SID of the Flex chat channel resource to delete
+    /// </summary>
+    public string PathSid { get; }
 
-            return p;
-        }
+    /// <summary>
+    /// Construct a new DeleteChannelOptions
+    /// </summary>
+    /// <param name="pathSid"> The SID of the Flex chat channel resource to delete </param>
+    public DeleteChannelOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// DeleteChannelOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteChannelOptions : IOptions<ChannelResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Flex chat channel resource to delete
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new DeleteChannelOptions
-        /// </summary>
-        /// <param name="pathSid"> The SID of the Flex chat channel resource to delete </param>
-        public DeleteChannelOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
 
 }

@@ -11,33 +11,33 @@ using Twilio.Converters;
 namespace Twilio.Rest.Api.V2010.Account
 {
 
+  /// <summary>
+  /// CreateNewKeyOptions
+  /// </summary>
+  public class CreateNewKeyOptions : IOptions<NewKeyResource>
+  {
     /// <summary>
-    /// CreateNewKeyOptions
+    /// The SID of the Account that will be responsible for the new Key resource
     /// </summary>
-    public class CreateNewKeyOptions : IOptions<NewKeyResource>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// A string to describe the resource
+    /// </summary>
+    public string FriendlyName { get; set; }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Account that will be responsible for the new Key resource
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// A string to describe the resource
-        /// </summary>
-        public string FriendlyName { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
-
-            return p;
-        }
+      return p;
     }
+  }
 
 }

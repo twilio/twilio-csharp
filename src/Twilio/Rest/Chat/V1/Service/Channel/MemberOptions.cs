@@ -12,250 +12,250 @@ using Twilio.Converters;
 namespace Twilio.Rest.Chat.V1.Service.Channel
 {
 
+  /// <summary>
+  /// FetchMemberOptions
+  /// </summary>
+  public class FetchMemberOptions : IOptions<MemberResource>
+  {
     /// <summary>
-    /// FetchMemberOptions
+    /// The SID of the Service to fetch the resource from
     /// </summary>
-    public class FetchMemberOptions : IOptions<MemberResource>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The unique ID of the channel the member belongs to
+    /// </summary>
+    public string PathChannelSid { get; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchMemberOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
+    /// <param name="pathChannelSid"> The unique ID of the channel the member belongs to </param>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public FetchMemberOptions(string pathServiceSid, string pathChannelSid, string pathSid)
     {
-        /// <summary>
-        /// The SID of the Service to fetch the resource from
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The unique ID of the channel the member belongs to
-        /// </summary>
-        public string PathChannelSid { get; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchMemberOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
-        /// <param name="pathChannelSid"> The unique ID of the channel the member belongs to </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public FetchMemberOptions(string pathServiceSid, string pathChannelSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathChannelSid = pathChannelSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathServiceSid = pathServiceSid;
+      PathChannelSid = pathChannelSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// CreateMemberOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class CreateMemberOptions : IOptions<MemberResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Service to create the resource under
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The unique ID of the channel the new member belongs to
-        /// </summary>
-        public string PathChannelSid { get; }
-        /// <summary>
-        /// The `identity` value that identifies the new resource's User
-        /// </summary>
-        public string Identity { get; }
-        /// <summary>
-        /// The SID of the Role to assign to the member
-        /// </summary>
-        public string RoleSid { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new CreateMemberOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to create the resource under </param>
-        /// <param name="pathChannelSid"> The unique ID of the channel the new member belongs to </param>
-        /// <param name="identity"> The `identity` value that identifies the new resource's User </param>
-        public CreateMemberOptions(string pathServiceSid, string pathChannelSid, string identity)
-        {
-            PathServiceSid = pathServiceSid;
-            PathChannelSid = pathChannelSid;
-            Identity = identity;
-        }
+  /// <summary>
+  /// CreateMemberOptions
+  /// </summary>
+  public class CreateMemberOptions : IOptions<MemberResource>
+  {
+    /// <summary>
+    /// The SID of the Service to create the resource under
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The unique ID of the channel the new member belongs to
+    /// </summary>
+    public string PathChannelSid { get; }
+    /// <summary>
+    /// The `identity` value that identifies the new resource's User
+    /// </summary>
+    public string Identity { get; }
+    /// <summary>
+    /// The SID of the Role to assign to the member
+    /// </summary>
+    public string RoleSid { get; set; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Identity != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Identity", Identity));
-            }
-
-            if (RoleSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("RoleSid", RoleSid.ToString()));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new CreateMemberOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to create the resource under </param>
+    /// <param name="pathChannelSid"> The unique ID of the channel the new member belongs to </param>
+    /// <param name="identity"> The `identity` value that identifies the new resource's User </param>
+    public CreateMemberOptions(string pathServiceSid, string pathChannelSid, string identity)
+    {
+      PathServiceSid = pathServiceSid;
+      PathChannelSid = pathChannelSid;
+      Identity = identity;
     }
 
     /// <summary>
-    /// ReadMemberOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadMemberOptions : ReadOptions<MemberResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Service to read the resources from
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The unique ID of the channel the member belongs to
-        /// </summary>
-        public string PathChannelSid { get; }
-        /// <summary>
-        /// The `identity` value of the resources to read
-        /// </summary>
-        public List<string> Identity { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (Identity != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Identity", Identity));
+      }
 
-        /// <summary>
-        /// Construct a new ReadMemberOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to read the resources from </param>
-        /// <param name="pathChannelSid"> The unique ID of the channel the member belongs to </param>
-        public ReadMemberOptions(string pathServiceSid, string pathChannelSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathChannelSid = pathChannelSid;
-            Identity = new List<string>();
-        }
+      if (RoleSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("RoleSid", RoleSid.ToString()));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Identity != null)
-            {
-                p.AddRange(Identity.Select(prop => new KeyValuePair<string, string>("Identity", prop)));
-            }
+      return p;
+    }
+  }
 
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
+  /// <summary>
+  /// ReadMemberOptions
+  /// </summary>
+  public class ReadMemberOptions : ReadOptions<MemberResource>
+  {
+    /// <summary>
+    /// The SID of the Service to read the resources from
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The unique ID of the channel the member belongs to
+    /// </summary>
+    public string PathChannelSid { get; }
+    /// <summary>
+    /// The `identity` value of the resources to read
+    /// </summary>
+    public List<string> Identity { get; set; }
 
-            return p;
-        }
+    /// <summary>
+    /// Construct a new ReadMemberOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to read the resources from </param>
+    /// <param name="pathChannelSid"> The unique ID of the channel the member belongs to </param>
+    public ReadMemberOptions(string pathServiceSid, string pathChannelSid)
+    {
+      PathServiceSid = pathServiceSid;
+      PathChannelSid = pathChannelSid;
+      Identity = new List<string>();
     }
 
     /// <summary>
-    /// DeleteMemberOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteMemberOptions : IOptions<MemberResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Service to delete the resource from
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The unique ID of the channel the message to delete belongs to
-        /// </summary>
-        public string PathChannelSid { get; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (Identity != null)
+      {
+        p.AddRange(Identity.Select(prop => new KeyValuePair<string, string>("Identity", prop)));
+      }
 
-        /// <summary>
-        /// Construct a new DeleteMemberOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
-        /// <param name="pathChannelSid"> The unique ID of the channel the message to delete belongs to </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public DeleteMemberOptions(string pathServiceSid, string pathChannelSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathChannelSid = pathChannelSid;
-            PathSid = pathSid;
-        }
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// DeleteMemberOptions
+  /// </summary>
+  public class DeleteMemberOptions : IOptions<MemberResource>
+  {
+    /// <summary>
+    /// The SID of the Service to delete the resource from
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The unique ID of the channel the message to delete belongs to
+    /// </summary>
+    public string PathChannelSid { get; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new DeleteMemberOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
+    /// <param name="pathChannelSid"> The unique ID of the channel the message to delete belongs to </param>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public DeleteMemberOptions(string pathServiceSid, string pathChannelSid, string pathSid)
+    {
+      PathServiceSid = pathServiceSid;
+      PathChannelSid = pathChannelSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// UpdateMemberOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateMemberOptions : IOptions<MemberResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Service to create the resource under
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The unique ID of the channel the member to update belongs to
-        /// </summary>
-        public string PathChannelSid { get; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// The SID of the Role to assign to the member
-        /// </summary>
-        public string RoleSid { get; set; }
-        /// <summary>
-        /// The index of the last consumed Message for the Channel for the Member
-        /// </summary>
-        public int? LastConsumedMessageIndex { get; set; }
-
-        /// <summary>
-        /// Construct a new UpdateMemberOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to create the resource under </param>
-        /// <param name="pathChannelSid"> The unique ID of the channel the member to update belongs to </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public UpdateMemberOptions(string pathServiceSid, string pathChannelSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathChannelSid = pathChannelSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (RoleSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("RoleSid", RoleSid.ToString()));
-            }
-
-            if (LastConsumedMessageIndex != null)
-            {
-                p.Add(new KeyValuePair<string, string>("LastConsumedMessageIndex", LastConsumedMessageIndex.ToString()));
-            }
-
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
+
+  /// <summary>
+  /// UpdateMemberOptions
+  /// </summary>
+  public class UpdateMemberOptions : IOptions<MemberResource>
+  {
+    /// <summary>
+    /// The SID of the Service to create the resource under
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The unique ID of the channel the member to update belongs to
+    /// </summary>
+    public string PathChannelSid { get; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// The SID of the Role to assign to the member
+    /// </summary>
+    public string RoleSid { get; set; }
+    /// <summary>
+    /// The index of the last consumed Message for the Channel for the Member
+    /// </summary>
+    public int? LastConsumedMessageIndex { get; set; }
+
+    /// <summary>
+    /// Construct a new UpdateMemberOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to create the resource under </param>
+    /// <param name="pathChannelSid"> The unique ID of the channel the member to update belongs to </param>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public UpdateMemberOptions(string pathServiceSid, string pathChannelSid, string pathSid)
+    {
+      PathServiceSid = pathServiceSid;
+      PathChannelSid = pathChannelSid;
+      PathSid = pathSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (RoleSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("RoleSid", RoleSid.ToString()));
+      }
+
+      if (LastConsumedMessageIndex != null)
+      {
+        p.Add(new KeyValuePair<string, string>("LastConsumedMessageIndex", LastConsumedMessageIndex.ToString()));
+      }
+
+      return p;
+    }
+  }
 
 }

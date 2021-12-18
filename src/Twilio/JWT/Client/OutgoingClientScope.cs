@@ -9,77 +9,77 @@ using System.Web;
 
 namespace Twilio.Jwt.Client
 {
+  /// <summary>
+  /// Scope capability
+  /// </summary>
+  public class OutgoingClientScope : IScope
+  {
+    private static readonly string Scope = "scope:client:outgoing";
+
+    private readonly string _applicationSid;
+    private readonly string _clientName;
+    private readonly Dictionary<string, string> _parameters;
+
     /// <summary>
-    /// Scope capability
+    /// Create a new OutgoingClientScope
     /// </summary>
-    public class OutgoingClientScope : IScope
+    /// <param name="applicationSid">Twilio Application SID</param>
+    /// <param name="clientName">Name of client</param>
+    /// <param name="parameters">Parameters to pass</param>
+    public OutgoingClientScope(
+        string applicationSid,
+        string clientName = null,
+        Dictionary<string, string> parameters = null
+    )
     {
-        private static readonly string Scope = "scope:client:outgoing";
+      this._applicationSid = applicationSid;
+      this._clientName = clientName;
+      this._parameters = parameters;
+    }
 
-        private readonly string _applicationSid;
-        private readonly string _clientName;
-        private readonly Dictionary<string, string> _parameters;
+    /// <summary>
+    /// Generate scope payload
+    /// </summary>
+    public string Payload
+    {
+      get
+      {
+        var queryArgs = new List<string>();
+        queryArgs.Add(BuildParameter("appSid", _applicationSid));
 
-        /// <summary>
-        /// Create a new OutgoingClientScope
-        /// </summary>
-        /// <param name="applicationSid">Twilio Application SID</param>
-        /// <param name="clientName">Name of client</param>
-        /// <param name="parameters">Parameters to pass</param>
-        public OutgoingClientScope(
-            string applicationSid,
-            string clientName = null,
-            Dictionary<string, string> parameters = null
-        )
+        if (_clientName != null)
         {
-            this._applicationSid = applicationSid;
-            this._clientName = clientName;
-            this._parameters = parameters;
+          queryArgs.Add(BuildParameter("clientName", _clientName));
         }
 
-        /// <summary>
-        /// Generate scope payload
-        /// </summary>
-        public string Payload
+        if (_parameters != null)
         {
-            get
-            {
-                var queryArgs = new List<string>();
-                queryArgs.Add(BuildParameter("appSid", _applicationSid));
-
-                if (_clientName != null)
-                {
-                    queryArgs.Add(BuildParameter("clientName", _clientName));
-                }
-
-                if (_parameters != null)
-                {
-                    queryArgs.Add(BuildParameter("appParams", GetAppParams()));
-                }
-
-                var queryString = String.Join("&", queryArgs.ToArray());
-                return Scope + "?" + queryString;
-            }
+          queryArgs.Add(BuildParameter("appParams", GetAppParams()));
         }
 
-        private string GetAppParams()
-        {
-            var queryParams = new List<string>();
-            foreach (var entry in _parameters)
-            {
-                queryParams.Add(BuildParameter(entry.Key, entry.Value));
-            }
+        var queryString = String.Join("&", queryArgs.ToArray());
+        return Scope + "?" + queryString;
+      }
+    }
 
-            return String.Join("&", queryParams.ToArray());
-        }
+    private string GetAppParams()
+    {
+      var queryParams = new List<string>();
+      foreach (var entry in _parameters)
+      {
+        queryParams.Add(BuildParameter(entry.Key, entry.Value));
+      }
 
-        private string BuildParameter(string k, string v)
-        {
+      return String.Join("&", queryParams.ToArray());
+    }
+
+    private string BuildParameter(string k, string v)
+    {
 #if !NET35
-            return WebUtility.UrlEncode(k) + "=" + WebUtility.UrlEncode(v);
+      return WebUtility.UrlEncode(k) + "=" + WebUtility.UrlEncode(v);
 #else
             return HttpUtility.UrlEncode(k) + "=" + HttpUtility.UrlEncode(v);
 #endif
-        }
     }
+  }
 }

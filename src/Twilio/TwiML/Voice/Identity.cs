@@ -10,51 +10,51 @@ using System.Xml.Linq;
 namespace Twilio.TwiML.Voice
 {
 
+  /// <summary>
+  /// Identity TwiML Noun
+  /// </summary>
+  public class Identity : TwiML
+  {
     /// <summary>
-    /// Identity TwiML Noun
+    /// Identity of the client to dial
     /// </summary>
-    public class Identity : TwiML
+    public string ClientIdentity { get; set; }
+
+    /// <summary>
+    /// Create a new Identity
+    /// </summary>
+    /// <param name="clientIdentity"> Identity of the client to dial, the body of the TwiML Element. </param>
+    public Identity(string clientIdentity = null) : base("Identity")
     {
-        /// <summary>
-        /// Identity of the client to dial
-        /// </summary>
-        public string ClientIdentity { get; set; }
-
-        /// <summary>
-        /// Create a new Identity
-        /// </summary>
-        /// <param name="clientIdentity"> Identity of the client to dial, the body of the TwiML Element. </param>
-        public Identity(string clientIdentity = null) : base("Identity")
-        {
-            this.ClientIdentity = clientIdentity;
-        }
-
-        /// <summary>
-        /// Return the body of the TwiML tag
-        /// </summary>
-        protected override string GetElementBody()
-        {
-            return this.ClientIdentity != null ? this.ClientIdentity : string.Empty;
-        }
-
-        /// <summary>
-        /// Append a child TwiML element to this element returning this element to allow chaining.
-        /// </summary>
-        /// <param name="childElem"> Child TwiML element to add </param>
-        public new Identity Append(TwiML childElem)
-        {
-            return (Identity) base.Append(childElem);
-        }
-
-        /// <summary>
-        /// Add freeform key-value attributes to the generated xml
-        /// </summary>
-        /// <param name="key"> Option key </param>
-        /// <param name="value"> Option value </param>
-        public new Identity SetOption(string key, object value)
-        {
-            return (Identity) base.SetOption(key, value);
-        }
+      this.ClientIdentity = clientIdentity;
     }
+
+    /// <summary>
+    /// Return the body of the TwiML tag
+    /// </summary>
+    protected override string GetElementBody()
+    {
+      return this.ClientIdentity != null ? this.ClientIdentity : string.Empty;
+    }
+
+    /// <summary>
+    /// Append a child TwiML element to this element returning this element to allow chaining.
+    /// </summary>
+    /// <param name="childElem"> Child TwiML element to add </param>
+    public new Identity Append(TwiML childElem)
+    {
+      return (Identity)base.Append(childElem);
+    }
+
+    /// <summary>
+    /// Add freeform key-value attributes to the generated xml
+    /// </summary>
+    /// <param name="key"> Option key </param>
+    /// <param name="value"> Option value </param>
+    public new Identity SetOption(string key, object value)
+    {
+      return (Identity)base.SetOption(key, value);
+    }
+  }
 
 }

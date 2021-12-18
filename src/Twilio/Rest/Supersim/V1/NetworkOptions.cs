@@ -11,85 +11,85 @@ using Twilio.Converters;
 namespace Twilio.Rest.Supersim.V1
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Fetch a Network resource.
+  /// </summary>
+  public class FetchNetworkOptions : IOptions<NetworkResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Fetch a Network resource.
+    /// The SID of the Network resource to fetch
     /// </summary>
-    public class FetchNetworkOptions : IOptions<NetworkResource>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchNetworkOptions
+    /// </summary>
+    /// <param name="pathSid"> The SID of the Network resource to fetch </param>
+    public FetchNetworkOptions(string pathSid)
     {
-        /// <summary>
-        /// The SID of the Network resource to fetch
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchNetworkOptions
-        /// </summary>
-        /// <param name="pathSid"> The SID of the Network resource to fetch </param>
-        public FetchNetworkOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Retrieve a list of Network resources.
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadNetworkOptions : ReadOptions<NetworkResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The ISO country code of the Network resources to read
-        /// </summary>
-        public string IsoCountry { get; set; }
-        /// <summary>
-        /// The MCC of Network resource identifiers to be read
-        /// </summary>
-        public string Mcc { get; set; }
-        /// <summary>
-        /// The MNC of Network resource identifiers to be read
-        /// </summary>
-        public string Mnc { get; set; }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (IsoCountry != null)
-            {
-                p.Add(new KeyValuePair<string, string>("IsoCountry", IsoCountry));
-            }
-
-            if (Mcc != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Mcc", Mcc));
-            }
-
-            if (Mnc != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Mnc", Mnc));
-            }
-
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
+
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Retrieve a list of Network resources.
+  /// </summary>
+  public class ReadNetworkOptions : ReadOptions<NetworkResource>
+  {
+    /// <summary>
+    /// The ISO country code of the Network resources to read
+    /// </summary>
+    public string IsoCountry { get; set; }
+    /// <summary>
+    /// The MCC of Network resource identifiers to be read
+    /// </summary>
+    public string Mcc { get; set; }
+    /// <summary>
+    /// The MNC of Network resource identifiers to be read
+    /// </summary>
+    public string Mnc { get; set; }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (IsoCountry != null)
+      {
+        p.Add(new KeyValuePair<string, string>("IsoCountry", IsoCountry));
+      }
+
+      if (Mcc != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Mcc", Mcc));
+      }
+
+      if (Mnc != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Mnc", Mnc));
+      }
+
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
 
 }

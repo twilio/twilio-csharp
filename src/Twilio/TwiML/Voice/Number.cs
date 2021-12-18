@@ -15,152 +15,152 @@ using Twilio.Types;
 namespace Twilio.TwiML.Voice
 {
 
-    /// <summary>
-    /// Number TwiML Noun
-    /// </summary>
-    public class Number : TwiML
+  /// <summary>
+  /// Number TwiML Noun
+  /// </summary>
+  public class Number : TwiML
+  {
+    public sealed class EventEnum : StringEnum
     {
-        public sealed class EventEnum : StringEnum
-        {
-            private EventEnum(string value) : base(value) {}
-            public EventEnum() {}
-            public static implicit operator EventEnum(string value)
-            {
-                return new EventEnum(value);
-            }
+      private EventEnum(string value) : base(value) { }
+      public EventEnum() { }
+      public static implicit operator EventEnum(string value)
+      {
+        return new EventEnum(value);
+      }
 
-            public static readonly EventEnum Initiated = new EventEnum("initiated");
-            public static readonly EventEnum Ringing = new EventEnum("ringing");
-            public static readonly EventEnum Answered = new EventEnum("answered");
-            public static readonly EventEnum Completed = new EventEnum("completed");
-        }
-
-        /// <summary>
-        /// Phone Number to dial
-        /// </summary>
-        public Types.PhoneNumber PhoneNumber { get; set; }
-        /// <summary>
-        /// DTMF tones to play when the call is answered
-        /// </summary>
-        public string SendDigits { get; set; }
-        /// <summary>
-        /// TwiML URL
-        /// </summary>
-        public Uri Url { get; set; }
-        /// <summary>
-        /// TwiML URL method
-        /// </summary>
-        public Twilio.Http.HttpMethod Method { get; set; }
-        /// <summary>
-        /// Events to call status callback
-        /// </summary>
-        public List<Number.EventEnum> StatusCallbackEvent { get; set; }
-        /// <summary>
-        /// Status callback URL
-        /// </summary>
-        public Uri StatusCallback { get; set; }
-        /// <summary>
-        /// Status callback URL method
-        /// </summary>
-        public Twilio.Http.HttpMethod StatusCallbackMethod { get; set; }
-        /// <summary>
-        /// BYOC trunk SID (Beta)
-        /// </summary>
-        public string Byoc { get; set; }
-
-        /// <summary>
-        /// Create a new Number
-        /// </summary>
-        /// <param name="phoneNumber"> Phone Number to dial, the body of the TwiML Element. </param>
-        /// <param name="sendDigits"> DTMF tones to play when the call is answered </param>
-        /// <param name="url"> TwiML URL </param>
-        /// <param name="method"> TwiML URL method </param>
-        /// <param name="statusCallbackEvent"> Events to call status callback </param>
-        /// <param name="statusCallback"> Status callback URL </param>
-        /// <param name="statusCallbackMethod"> Status callback URL method </param>
-        /// <param name="byoc"> BYOC trunk SID (Beta) </param>
-        public Number(Types.PhoneNumber phoneNumber = null,
-                      string sendDigits = null,
-                      Uri url = null,
-                      Twilio.Http.HttpMethod method = null,
-                      List<Number.EventEnum> statusCallbackEvent = null,
-                      Uri statusCallback = null,
-                      Twilio.Http.HttpMethod statusCallbackMethod = null,
-                      string byoc = null) : base("Number")
-        {
-            this.PhoneNumber = phoneNumber;
-            this.SendDigits = sendDigits;
-            this.Url = url;
-            this.Method = method;
-            this.StatusCallbackEvent = statusCallbackEvent;
-            this.StatusCallback = statusCallback;
-            this.StatusCallbackMethod = statusCallbackMethod;
-            this.Byoc = byoc;
-        }
-
-        /// <summary>
-        /// Return the body of the TwiML tag
-        /// </summary>
-        protected override string GetElementBody()
-        {
-            return this.PhoneNumber != null ? this.PhoneNumber.ToString() : string.Empty;
-        }
-
-        /// <summary>
-        /// Return the attributes of the TwiML tag
-        /// </summary>
-        protected override List<XAttribute> GetElementAttributes()
-        {
-            var attributes = new List<XAttribute>();
-            if (this.SendDigits != null)
-            {
-                attributes.Add(new XAttribute("sendDigits", this.SendDigits));
-            }
-            if (this.Url != null)
-            {
-                attributes.Add(new XAttribute("url", Serializers.Url(this.Url)));
-            }
-            if (this.Method != null)
-            {
-                attributes.Add(new XAttribute("method", this.Method.ToString()));
-            }
-            if (this.StatusCallbackEvent != null)
-            {
-                attributes.Add(new XAttribute("statusCallbackEvent", String.Join(" ", this.StatusCallbackEvent.Select(e => e.ToString()).ToArray())));
-            }
-            if (this.StatusCallback != null)
-            {
-                attributes.Add(new XAttribute("statusCallback", Serializers.Url(this.StatusCallback)));
-            }
-            if (this.StatusCallbackMethod != null)
-            {
-                attributes.Add(new XAttribute("statusCallbackMethod", this.StatusCallbackMethod.ToString()));
-            }
-            if (this.Byoc != null)
-            {
-                attributes.Add(new XAttribute("byoc", this.Byoc.ToString()));
-            }
-            return attributes;
-        }
-
-        /// <summary>
-        /// Append a child TwiML element to this element returning this element to allow chaining.
-        /// </summary>
-        /// <param name="childElem"> Child TwiML element to add </param>
-        public new Number Append(TwiML childElem)
-        {
-            return (Number) base.Append(childElem);
-        }
-
-        /// <summary>
-        /// Add freeform key-value attributes to the generated xml
-        /// </summary>
-        /// <param name="key"> Option key </param>
-        /// <param name="value"> Option value </param>
-        public new Number SetOption(string key, object value)
-        {
-            return (Number) base.SetOption(key, value);
-        }
+      public static readonly EventEnum Initiated = new EventEnum("initiated");
+      public static readonly EventEnum Ringing = new EventEnum("ringing");
+      public static readonly EventEnum Answered = new EventEnum("answered");
+      public static readonly EventEnum Completed = new EventEnum("completed");
     }
+
+    /// <summary>
+    /// Phone Number to dial
+    /// </summary>
+    public Types.PhoneNumber PhoneNumber { get; set; }
+    /// <summary>
+    /// DTMF tones to play when the call is answered
+    /// </summary>
+    public string SendDigits { get; set; }
+    /// <summary>
+    /// TwiML URL
+    /// </summary>
+    public Uri Url { get; set; }
+    /// <summary>
+    /// TwiML URL method
+    /// </summary>
+    public Twilio.Http.HttpMethod Method { get; set; }
+    /// <summary>
+    /// Events to call status callback
+    /// </summary>
+    public List<Number.EventEnum> StatusCallbackEvent { get; set; }
+    /// <summary>
+    /// Status callback URL
+    /// </summary>
+    public Uri StatusCallback { get; set; }
+    /// <summary>
+    /// Status callback URL method
+    /// </summary>
+    public Twilio.Http.HttpMethod StatusCallbackMethod { get; set; }
+    /// <summary>
+    /// BYOC trunk SID (Beta)
+    /// </summary>
+    public string Byoc { get; set; }
+
+    /// <summary>
+    /// Create a new Number
+    /// </summary>
+    /// <param name="phoneNumber"> Phone Number to dial, the body of the TwiML Element. </param>
+    /// <param name="sendDigits"> DTMF tones to play when the call is answered </param>
+    /// <param name="url"> TwiML URL </param>
+    /// <param name="method"> TwiML URL method </param>
+    /// <param name="statusCallbackEvent"> Events to call status callback </param>
+    /// <param name="statusCallback"> Status callback URL </param>
+    /// <param name="statusCallbackMethod"> Status callback URL method </param>
+    /// <param name="byoc"> BYOC trunk SID (Beta) </param>
+    public Number(Types.PhoneNumber phoneNumber = null,
+                  string sendDigits = null,
+                  Uri url = null,
+                  Twilio.Http.HttpMethod method = null,
+                  List<Number.EventEnum> statusCallbackEvent = null,
+                  Uri statusCallback = null,
+                  Twilio.Http.HttpMethod statusCallbackMethod = null,
+                  string byoc = null) : base("Number")
+    {
+      this.PhoneNumber = phoneNumber;
+      this.SendDigits = sendDigits;
+      this.Url = url;
+      this.Method = method;
+      this.StatusCallbackEvent = statusCallbackEvent;
+      this.StatusCallback = statusCallback;
+      this.StatusCallbackMethod = statusCallbackMethod;
+      this.Byoc = byoc;
+    }
+
+    /// <summary>
+    /// Return the body of the TwiML tag
+    /// </summary>
+    protected override string GetElementBody()
+    {
+      return this.PhoneNumber != null ? this.PhoneNumber.ToString() : string.Empty;
+    }
+
+    /// <summary>
+    /// Return the attributes of the TwiML tag
+    /// </summary>
+    protected override List<XAttribute> GetElementAttributes()
+    {
+      var attributes = new List<XAttribute>();
+      if (this.SendDigits != null)
+      {
+        attributes.Add(new XAttribute("sendDigits", this.SendDigits));
+      }
+      if (this.Url != null)
+      {
+        attributes.Add(new XAttribute("url", Serializers.Url(this.Url)));
+      }
+      if (this.Method != null)
+      {
+        attributes.Add(new XAttribute("method", this.Method.ToString()));
+      }
+      if (this.StatusCallbackEvent != null)
+      {
+        attributes.Add(new XAttribute("statusCallbackEvent", String.Join(" ", this.StatusCallbackEvent.Select(e => e.ToString()).ToArray())));
+      }
+      if (this.StatusCallback != null)
+      {
+        attributes.Add(new XAttribute("statusCallback", Serializers.Url(this.StatusCallback)));
+      }
+      if (this.StatusCallbackMethod != null)
+      {
+        attributes.Add(new XAttribute("statusCallbackMethod", this.StatusCallbackMethod.ToString()));
+      }
+      if (this.Byoc != null)
+      {
+        attributes.Add(new XAttribute("byoc", this.Byoc.ToString()));
+      }
+      return attributes;
+    }
+
+    /// <summary>
+    /// Append a child TwiML element to this element returning this element to allow chaining.
+    /// </summary>
+    /// <param name="childElem"> Child TwiML element to add </param>
+    public new Number Append(TwiML childElem)
+    {
+      return (Number)base.Append(childElem);
+    }
+
+    /// <summary>
+    /// Add freeform key-value attributes to the generated xml
+    /// </summary>
+    /// <param name="key"> Option key </param>
+    /// <param name="value"> Option value </param>
+    public new Number SetOption(string key, object value)
+    {
+      return (Number)base.SetOption(key, value);
+    }
+  }
 
 }

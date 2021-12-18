@@ -12,201 +12,201 @@ using Twilio.Converters;
 namespace Twilio.Rest.Notify.V1.Service
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// CreateNotificationOptions
+  /// </summary>
+  public class CreateNotificationOptions : IOptions<NotificationResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// CreateNotificationOptions
+    /// The SID of the Service to create the resource under
     /// </summary>
-    public class CreateNotificationOptions : IOptions<NotificationResource>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The `identity` value that identifies the new resource's User
+    /// </summary>
+    public List<string> Identity { get; set; }
+    /// <summary>
+    /// A tag that selects the Bindings to notify
+    /// </summary>
+    public List<string> Tag { get; set; }
+    /// <summary>
+    /// The notification body text
+    /// </summary>
+    public string Body { get; set; }
+    /// <summary>
+    /// The priority of the notification
+    /// </summary>
+    public NotificationResource.PriorityEnum Priority { get; set; }
+    /// <summary>
+    /// How long, in seconds, the notification is valid
+    /// </summary>
+    public int? Ttl { get; set; }
+    /// <summary>
+    /// The notification title
+    /// </summary>
+    public string Title { get; set; }
+    /// <summary>
+    /// The name of the sound to be played for the notification
+    /// </summary>
+    public string Sound { get; set; }
+    /// <summary>
+    /// The actions to display for the notification
+    /// </summary>
+    public string Action { get; set; }
+    /// <summary>
+    /// The custom key-value pairs of the notification's payload
+    /// </summary>
+    public object Data { get; set; }
+    /// <summary>
+    /// The APNS-specific payload that overrides corresponding attributes in a generic payload for APNS Bindings
+    /// </summary>
+    public object Apn { get; set; }
+    /// <summary>
+    /// The GCM-specific payload that overrides corresponding attributes in generic payload for GCM Bindings
+    /// </summary>
+    public object Gcm { get; set; }
+    /// <summary>
+    /// The SMS-specific payload that overrides corresponding attributes in generic payload for SMS Bindings
+    /// </summary>
+    public object Sms { get; set; }
+    /// <summary>
+    /// Deprecated
+    /// </summary>
+    public object FacebookMessenger { get; set; }
+    /// <summary>
+    /// The FCM-specific payload that overrides corresponding attributes in generic payload for FCM Bindings
+    /// </summary>
+    public object Fcm { get; set; }
+    /// <summary>
+    /// A Segment to notify
+    /// </summary>
+    public List<string> Segment { get; set; }
+    /// <summary>
+    /// Deprecated
+    /// </summary>
+    public object Alexa { get; set; }
+    /// <summary>
+    /// The destination address specified as a JSON string
+    /// </summary>
+    public List<string> ToBinding { get; set; }
+    /// <summary>
+    /// URL to send webhooks
+    /// </summary>
+    public string DeliveryCallbackUrl { get; set; }
+
+    /// <summary>
+    /// Construct a new CreateNotificationOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to create the resource under </param>
+    public CreateNotificationOptions(string pathServiceSid)
     {
-        /// <summary>
-        /// The SID of the Service to create the resource under
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The `identity` value that identifies the new resource's User
-        /// </summary>
-        public List<string> Identity { get; set; }
-        /// <summary>
-        /// A tag that selects the Bindings to notify
-        /// </summary>
-        public List<string> Tag { get; set; }
-        /// <summary>
-        /// The notification body text
-        /// </summary>
-        public string Body { get; set; }
-        /// <summary>
-        /// The priority of the notification
-        /// </summary>
-        public NotificationResource.PriorityEnum Priority { get; set; }
-        /// <summary>
-        /// How long, in seconds, the notification is valid
-        /// </summary>
-        public int? Ttl { get; set; }
-        /// <summary>
-        /// The notification title
-        /// </summary>
-        public string Title { get; set; }
-        /// <summary>
-        /// The name of the sound to be played for the notification
-        /// </summary>
-        public string Sound { get; set; }
-        /// <summary>
-        /// The actions to display for the notification
-        /// </summary>
-        public string Action { get; set; }
-        /// <summary>
-        /// The custom key-value pairs of the notification's payload
-        /// </summary>
-        public object Data { get; set; }
-        /// <summary>
-        /// The APNS-specific payload that overrides corresponding attributes in a generic payload for APNS Bindings
-        /// </summary>
-        public object Apn { get; set; }
-        /// <summary>
-        /// The GCM-specific payload that overrides corresponding attributes in generic payload for GCM Bindings
-        /// </summary>
-        public object Gcm { get; set; }
-        /// <summary>
-        /// The SMS-specific payload that overrides corresponding attributes in generic payload for SMS Bindings
-        /// </summary>
-        public object Sms { get; set; }
-        /// <summary>
-        /// Deprecated
-        /// </summary>
-        public object FacebookMessenger { get; set; }
-        /// <summary>
-        /// The FCM-specific payload that overrides corresponding attributes in generic payload for FCM Bindings
-        /// </summary>
-        public object Fcm { get; set; }
-        /// <summary>
-        /// A Segment to notify
-        /// </summary>
-        public List<string> Segment { get; set; }
-        /// <summary>
-        /// Deprecated
-        /// </summary>
-        public object Alexa { get; set; }
-        /// <summary>
-        /// The destination address specified as a JSON string
-        /// </summary>
-        public List<string> ToBinding { get; set; }
-        /// <summary>
-        /// URL to send webhooks
-        /// </summary>
-        public string DeliveryCallbackUrl { get; set; }
-
-        /// <summary>
-        /// Construct a new CreateNotificationOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to create the resource under </param>
-        public CreateNotificationOptions(string pathServiceSid)
-        {
-            PathServiceSid = pathServiceSid;
-            Identity = new List<string>();
-            Tag = new List<string>();
-            Segment = new List<string>();
-            ToBinding = new List<string>();
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Identity != null)
-            {
-                p.AddRange(Identity.Select(prop => new KeyValuePair<string, string>("Identity", prop)));
-            }
-
-            if (Tag != null)
-            {
-                p.AddRange(Tag.Select(prop => new KeyValuePair<string, string>("Tag", prop)));
-            }
-
-            if (Body != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Body", Body));
-            }
-
-            if (Priority != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Priority", Priority.ToString()));
-            }
-
-            if (Ttl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Ttl", Ttl.ToString()));
-            }
-
-            if (Title != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Title", Title));
-            }
-
-            if (Sound != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Sound", Sound));
-            }
-
-            if (Action != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Action", Action));
-            }
-
-            if (Data != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Data", Serializers.JsonObject(Data)));
-            }
-
-            if (Apn != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Apn", Serializers.JsonObject(Apn)));
-            }
-
-            if (Gcm != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Gcm", Serializers.JsonObject(Gcm)));
-            }
-
-            if (Sms != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Sms", Serializers.JsonObject(Sms)));
-            }
-
-            if (FacebookMessenger != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FacebookMessenger", Serializers.JsonObject(FacebookMessenger)));
-            }
-
-            if (Fcm != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Fcm", Serializers.JsonObject(Fcm)));
-            }
-
-            if (Segment != null)
-            {
-                p.AddRange(Segment.Select(prop => new KeyValuePair<string, string>("Segment", prop)));
-            }
-
-            if (Alexa != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Alexa", Serializers.JsonObject(Alexa)));
-            }
-
-            if (ToBinding != null)
-            {
-                p.AddRange(ToBinding.Select(prop => new KeyValuePair<string, string>("ToBinding", prop)));
-            }
-
-            if (DeliveryCallbackUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DeliveryCallbackUrl", DeliveryCallbackUrl));
-            }
-
-            return p;
-        }
+      PathServiceSid = pathServiceSid;
+      Identity = new List<string>();
+      Tag = new List<string>();
+      Segment = new List<string>();
+      ToBinding = new List<string>();
     }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (Identity != null)
+      {
+        p.AddRange(Identity.Select(prop => new KeyValuePair<string, string>("Identity", prop)));
+      }
+
+      if (Tag != null)
+      {
+        p.AddRange(Tag.Select(prop => new KeyValuePair<string, string>("Tag", prop)));
+      }
+
+      if (Body != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Body", Body));
+      }
+
+      if (Priority != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Priority", Priority.ToString()));
+      }
+
+      if (Ttl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Ttl", Ttl.ToString()));
+      }
+
+      if (Title != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Title", Title));
+      }
+
+      if (Sound != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Sound", Sound));
+      }
+
+      if (Action != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Action", Action));
+      }
+
+      if (Data != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Data", Serializers.JsonObject(Data)));
+      }
+
+      if (Apn != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Apn", Serializers.JsonObject(Apn)));
+      }
+
+      if (Gcm != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Gcm", Serializers.JsonObject(Gcm)));
+      }
+
+      if (Sms != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Sms", Serializers.JsonObject(Sms)));
+      }
+
+      if (FacebookMessenger != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FacebookMessenger", Serializers.JsonObject(FacebookMessenger)));
+      }
+
+      if (Fcm != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Fcm", Serializers.JsonObject(Fcm)));
+      }
+
+      if (Segment != null)
+      {
+        p.AddRange(Segment.Select(prop => new KeyValuePair<string, string>("Segment", prop)));
+      }
+
+      if (Alexa != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Alexa", Serializers.JsonObject(Alexa)));
+      }
+
+      if (ToBinding != null)
+      {
+        p.AddRange(ToBinding.Select(prop => new KeyValuePair<string, string>("ToBinding", prop)));
+      }
+
+      if (DeliveryCallbackUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("DeliveryCallbackUrl", DeliveryCallbackUrl));
+      }
+
+      return p;
+    }
+  }
 
 }

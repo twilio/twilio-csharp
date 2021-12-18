@@ -12,145 +12,145 @@ using Twilio.Converters;
 namespace Twilio.Rest.Video.V1
 {
 
+  /// <summary>
+  /// Returns a single Recording resource identified by a Recording SID.
+  /// </summary>
+  public class FetchRecordingOptions : IOptions<RecordingResource>
+  {
     /// <summary>
-    /// Returns a single Recording resource identified by a Recording SID.
+    /// The SID that identifies the resource to fetch
     /// </summary>
-    public class FetchRecordingOptions : IOptions<RecordingResource>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchRecordingOptions
+    /// </summary>
+    /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
+    public FetchRecordingOptions(string pathSid)
     {
-        /// <summary>
-        /// The SID that identifies the resource to fetch
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchRecordingOptions
-        /// </summary>
-        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
-        public FetchRecordingOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// List of all Track recordings.
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadRecordingOptions : ReadOptions<RecordingResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// Read only the recordings that have this status
-        /// </summary>
-        public RecordingResource.StatusEnum Status { get; set; }
-        /// <summary>
-        /// Read only the recordings that have this source_sid
-        /// </summary>
-        public string SourceSid { get; set; }
-        /// <summary>
-        /// Read only recordings that have this grouping_sid
-        /// </summary>
-        public List<string> GroupingSid { get; set; }
-        /// <summary>
-        /// Read only recordings that started on or after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date-time with time zone
-        /// </summary>
-        public DateTime? DateCreatedAfter { get; set; }
-        /// <summary>
-        /// Read only recordings that started before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date-time with time zone
-        /// </summary>
-        public DateTime? DateCreatedBefore { get; set; }
-        /// <summary>
-        /// Read only recordings that have this media type
-        /// </summary>
-        public RecordingResource.TypeEnum MediaType { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new ReadRecordingOptions
-        /// </summary>
-        public ReadRecordingOptions()
-        {
-            GroupingSid = new List<string>();
-        }
+  /// <summary>
+  /// List of all Track recordings.
+  /// </summary>
+  public class ReadRecordingOptions : ReadOptions<RecordingResource>
+  {
+    /// <summary>
+    /// Read only the recordings that have this status
+    /// </summary>
+    public RecordingResource.StatusEnum Status { get; set; }
+    /// <summary>
+    /// Read only the recordings that have this source_sid
+    /// </summary>
+    public string SourceSid { get; set; }
+    /// <summary>
+    /// Read only recordings that have this grouping_sid
+    /// </summary>
+    public List<string> GroupingSid { get; set; }
+    /// <summary>
+    /// Read only recordings that started on or after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date-time with time zone
+    /// </summary>
+    public DateTime? DateCreatedAfter { get; set; }
+    /// <summary>
+    /// Read only recordings that started before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date-time with time zone
+    /// </summary>
+    public DateTime? DateCreatedBefore { get; set; }
+    /// <summary>
+    /// Read only recordings that have this media type
+    /// </summary>
+    public RecordingResource.TypeEnum MediaType { get; set; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Status != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
-            }
-
-            if (SourceSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("SourceSid", SourceSid.ToString()));
-            }
-
-            if (GroupingSid != null)
-            {
-                p.AddRange(GroupingSid.Select(prop => new KeyValuePair<string, string>("GroupingSid", prop.ToString())));
-            }
-
-            if (DateCreatedAfter != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DateCreatedAfter", Serializers.DateTimeIso8601(DateCreatedAfter)));
-            }
-
-            if (DateCreatedBefore != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DateCreatedBefore", Serializers.DateTimeIso8601(DateCreatedBefore)));
-            }
-
-            if (MediaType != null)
-            {
-                p.Add(new KeyValuePair<string, string>("MediaType", MediaType.ToString()));
-            }
-
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new ReadRecordingOptions
+    /// </summary>
+    public ReadRecordingOptions()
+    {
+      GroupingSid = new List<string>();
     }
 
     /// <summary>
-    /// Delete a Recording resource identified by a Recording SID.
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteRecordingOptions : IOptions<RecordingResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID that identifies the resource to delete
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (Status != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new DeleteRecordingOptions
-        /// </summary>
-        /// <param name="pathSid"> The SID that identifies the resource to delete </param>
-        public DeleteRecordingOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
+      if (SourceSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("SourceSid", SourceSid.ToString()));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      if (GroupingSid != null)
+      {
+        p.AddRange(GroupingSid.Select(prop => new KeyValuePair<string, string>("GroupingSid", prop.ToString())));
+      }
+
+      if (DateCreatedAfter != null)
+      {
+        p.Add(new KeyValuePair<string, string>("DateCreatedAfter", Serializers.DateTimeIso8601(DateCreatedAfter)));
+      }
+
+      if (DateCreatedBefore != null)
+      {
+        p.Add(new KeyValuePair<string, string>("DateCreatedBefore", Serializers.DateTimeIso8601(DateCreatedBefore)));
+      }
+
+      if (MediaType != null)
+      {
+        p.Add(new KeyValuePair<string, string>("MediaType", MediaType.ToString()));
+      }
+
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
     }
+  }
+
+  /// <summary>
+  /// Delete a Recording resource identified by a Recording SID.
+  /// </summary>
+  public class DeleteRecordingOptions : IOptions<RecordingResource>
+  {
+    /// <summary>
+    /// The SID that identifies the resource to delete
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new DeleteRecordingOptions
+    /// </summary>
+    /// <param name="pathSid"> The SID that identifies the resource to delete </param>
+    public DeleteRecordingOptions(string pathSid)
+    {
+      PathSid = pathSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
 }

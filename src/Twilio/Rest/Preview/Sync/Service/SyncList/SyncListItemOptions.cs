@@ -11,302 +11,302 @@ using Twilio.Converters;
 namespace Twilio.Rest.Preview.Sync.Service.SyncList
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// FetchSyncListItemOptions
+  /// </summary>
+  public class FetchSyncListItemOptions : IOptions<SyncListItemResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// FetchSyncListItemOptions
+    /// The service_sid
     /// </summary>
-    public class FetchSyncListItemOptions : IOptions<SyncListItemResource>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The list_sid
+    /// </summary>
+    public string PathListSid { get; }
+    /// <summary>
+    /// The index
+    /// </summary>
+    public int? PathIndex { get; }
+
+    /// <summary>
+    /// Construct a new FetchSyncListItemOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The service_sid </param>
+    /// <param name="pathListSid"> The list_sid </param>
+    /// <param name="pathIndex"> The index </param>
+    public FetchSyncListItemOptions(string pathServiceSid, string pathListSid, int? pathIndex)
     {
-        /// <summary>
-        /// The service_sid
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The list_sid
-        /// </summary>
-        public string PathListSid { get; }
-        /// <summary>
-        /// The index
-        /// </summary>
-        public int? PathIndex { get; }
-
-        /// <summary>
-        /// Construct a new FetchSyncListItemOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathListSid"> The list_sid </param>
-        /// <param name="pathIndex"> The index </param>
-        public FetchSyncListItemOptions(string pathServiceSid, string pathListSid, int? pathIndex)
-        {
-            PathServiceSid = pathServiceSid;
-            PathListSid = pathListSid;
-            PathIndex = pathIndex;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathServiceSid = pathServiceSid;
+      PathListSid = pathListSid;
+      PathIndex = pathIndex;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// DeleteSyncListItemOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteSyncListItemOptions : IOptions<SyncListItemResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The service_sid
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The list_sid
-        /// </summary>
-        public string PathListSid { get; }
-        /// <summary>
-        /// The index
-        /// </summary>
-        public int? PathIndex { get; }
-        /// <summary>
-        /// The If-Match HTTP request header
-        /// </summary>
-        public string IfMatch { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new DeleteSyncListItemOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathListSid"> The list_sid </param>
-        /// <param name="pathIndex"> The index </param>
-        public DeleteSyncListItemOptions(string pathServiceSid, string pathListSid, int? pathIndex)
-        {
-            PathServiceSid = pathServiceSid;
-            PathListSid = pathListSid;
-            PathIndex = pathIndex;
-        }
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// DeleteSyncListItemOptions
+  /// </summary>
+  public class DeleteSyncListItemOptions : IOptions<SyncListItemResource>
+  {
+    /// <summary>
+    /// The service_sid
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The list_sid
+    /// </summary>
+    public string PathListSid { get; }
+    /// <summary>
+    /// The index
+    /// </summary>
+    public int? PathIndex { get; }
+    /// <summary>
+    /// The If-Match HTTP request header
+    /// </summary>
+    public string IfMatch { get; set; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
-
-        /// <summary>
-        /// Generate the necessary header parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetHeaderParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (IfMatch != null)
-            {
-                p.Add(new KeyValuePair<string, string>("If-Match", IfMatch));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new DeleteSyncListItemOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The service_sid </param>
+    /// <param name="pathListSid"> The list_sid </param>
+    /// <param name="pathIndex"> The index </param>
+    public DeleteSyncListItemOptions(string pathServiceSid, string pathListSid, int? pathIndex)
+    {
+      PathServiceSid = pathServiceSid;
+      PathListSid = pathListSid;
+      PathIndex = pathIndex;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// CreateSyncListItemOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class CreateSyncListItemOptions : IOptions<SyncListItemResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The service_sid
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The list_sid
-        /// </summary>
-        public string PathListSid { get; }
-        /// <summary>
-        /// The data
-        /// </summary>
-        public object Data { get; }
-
-        /// <summary>
-        /// Construct a new CreateSyncListItemOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathListSid"> The list_sid </param>
-        /// <param name="data"> The data </param>
-        public CreateSyncListItemOptions(string pathServiceSid, string pathListSid, object data)
-        {
-            PathServiceSid = pathServiceSid;
-            PathListSid = pathListSid;
-            Data = data;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Data != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Data", Serializers.JsonObject(Data)));
-            }
-
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// ReadSyncListItemOptions
+    /// Generate the necessary header parameters
     /// </summary>
-    public class ReadSyncListItemOptions : ReadOptions<SyncListItemResource>
+    public List<KeyValuePair<string, string>> GetHeaderParams()
     {
-        /// <summary>
-        /// The service_sid
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The list_sid
-        /// </summary>
-        public string PathListSid { get; }
-        /// <summary>
-        /// The order
-        /// </summary>
-        public SyncListItemResource.QueryResultOrderEnum Order { get; set; }
-        /// <summary>
-        /// The from
-        /// </summary>
-        public string From { get; set; }
-        /// <summary>
-        /// The bounds
-        /// </summary>
-        public SyncListItemResource.QueryFromBoundTypeEnum Bounds { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (IfMatch != null)
+      {
+        p.Add(new KeyValuePair<string, string>("If-Match", IfMatch));
+      }
 
-        /// <summary>
-        /// Construct a new ReadSyncListItemOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathListSid"> The list_sid </param>
-        public ReadSyncListItemOptions(string pathServiceSid, string pathListSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathListSid = pathListSid;
-        }
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Order != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Order", Order.ToString()));
-            }
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// CreateSyncListItemOptions
+  /// </summary>
+  public class CreateSyncListItemOptions : IOptions<SyncListItemResource>
+  {
+    /// <summary>
+    /// The service_sid
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The list_sid
+    /// </summary>
+    public string PathListSid { get; }
+    /// <summary>
+    /// The data
+    /// </summary>
+    public object Data { get; }
 
-            if (From != null)
-            {
-                p.Add(new KeyValuePair<string, string>("From", From));
-            }
-
-            if (Bounds != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Bounds", Bounds.ToString()));
-            }
-
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new CreateSyncListItemOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The service_sid </param>
+    /// <param name="pathListSid"> The list_sid </param>
+    /// <param name="data"> The data </param>
+    public CreateSyncListItemOptions(string pathServiceSid, string pathListSid, object data)
+    {
+      PathServiceSid = pathServiceSid;
+      PathListSid = pathListSid;
+      Data = data;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// UpdateSyncListItemOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateSyncListItemOptions : IOptions<SyncListItemResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The service_sid
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The list_sid
-        /// </summary>
-        public string PathListSid { get; }
-        /// <summary>
-        /// The index
-        /// </summary>
-        public int? PathIndex { get; }
-        /// <summary>
-        /// The data
-        /// </summary>
-        public object Data { get; }
-        /// <summary>
-        /// The If-Match HTTP request header
-        /// </summary>
-        public string IfMatch { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (Data != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Data", Serializers.JsonObject(Data)));
+      }
 
-        /// <summary>
-        /// Construct a new UpdateSyncListItemOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathListSid"> The list_sid </param>
-        /// <param name="pathIndex"> The index </param>
-        /// <param name="data"> The data </param>
-        public UpdateSyncListItemOptions(string pathServiceSid, string pathListSid, int? pathIndex, object data)
-        {
-            PathServiceSid = pathServiceSid;
-            PathListSid = pathListSid;
-            PathIndex = pathIndex;
-            Data = data;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Data != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Data", Serializers.JsonObject(Data)));
-            }
-
-            return p;
-        }
-
-        /// <summary>
-        /// Generate the necessary header parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetHeaderParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (IfMatch != null)
-            {
-                p.Add(new KeyValuePair<string, string>("If-Match", IfMatch));
-            }
-
-            return p;
-        }
+      return p;
     }
+  }
+
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// ReadSyncListItemOptions
+  /// </summary>
+  public class ReadSyncListItemOptions : ReadOptions<SyncListItemResource>
+  {
+    /// <summary>
+    /// The service_sid
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The list_sid
+    /// </summary>
+    public string PathListSid { get; }
+    /// <summary>
+    /// The order
+    /// </summary>
+    public SyncListItemResource.QueryResultOrderEnum Order { get; set; }
+    /// <summary>
+    /// The from
+    /// </summary>
+    public string From { get; set; }
+    /// <summary>
+    /// The bounds
+    /// </summary>
+    public SyncListItemResource.QueryFromBoundTypeEnum Bounds { get; set; }
+
+    /// <summary>
+    /// Construct a new ReadSyncListItemOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The service_sid </param>
+    /// <param name="pathListSid"> The list_sid </param>
+    public ReadSyncListItemOptions(string pathServiceSid, string pathListSid)
+    {
+      PathServiceSid = pathServiceSid;
+      PathListSid = pathListSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (Order != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Order", Order.ToString()));
+      }
+
+      if (From != null)
+      {
+        p.Add(new KeyValuePair<string, string>("From", From));
+      }
+
+      if (Bounds != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Bounds", Bounds.ToString()));
+      }
+
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// UpdateSyncListItemOptions
+  /// </summary>
+  public class UpdateSyncListItemOptions : IOptions<SyncListItemResource>
+  {
+    /// <summary>
+    /// The service_sid
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The list_sid
+    /// </summary>
+    public string PathListSid { get; }
+    /// <summary>
+    /// The index
+    /// </summary>
+    public int? PathIndex { get; }
+    /// <summary>
+    /// The data
+    /// </summary>
+    public object Data { get; }
+    /// <summary>
+    /// The If-Match HTTP request header
+    /// </summary>
+    public string IfMatch { get; set; }
+
+    /// <summary>
+    /// Construct a new UpdateSyncListItemOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The service_sid </param>
+    /// <param name="pathListSid"> The list_sid </param>
+    /// <param name="pathIndex"> The index </param>
+    /// <param name="data"> The data </param>
+    public UpdateSyncListItemOptions(string pathServiceSid, string pathListSid, int? pathIndex, object data)
+    {
+      PathServiceSid = pathServiceSid;
+      PathListSid = pathListSid;
+      PathIndex = pathIndex;
+      Data = data;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (Data != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Data", Serializers.JsonObject(Data)));
+      }
+
+      return p;
+    }
+
+    /// <summary>
+    /// Generate the necessary header parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetHeaderParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (IfMatch != null)
+      {
+        p.Add(new KeyValuePair<string, string>("If-Match", IfMatch));
+      }
+
+      return p;
+    }
+  }
 
 }

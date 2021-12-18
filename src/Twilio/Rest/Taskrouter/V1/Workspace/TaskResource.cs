@@ -19,657 +19,657 @@ using Twilio.Types;
 namespace Twilio.Rest.Taskrouter.V1.Workspace
 {
 
-    public class TaskResource : Resource
+  public class TaskResource : Resource
+  {
+    public sealed class StatusEnum : StringEnum
     {
-        public sealed class StatusEnum : StringEnum
-        {
-            private StatusEnum(string value) : base(value) {}
-            public StatusEnum() {}
-            public static implicit operator StatusEnum(string value)
-            {
-                return new StatusEnum(value);
-            }
+      private StatusEnum(string value) : base(value) { }
+      public StatusEnum() { }
+      public static implicit operator StatusEnum(string value)
+      {
+        return new StatusEnum(value);
+      }
 
-            public static readonly StatusEnum Pending = new StatusEnum("pending");
-            public static readonly StatusEnum Reserved = new StatusEnum("reserved");
-            public static readonly StatusEnum Assigned = new StatusEnum("assigned");
-            public static readonly StatusEnum Canceled = new StatusEnum("canceled");
-            public static readonly StatusEnum Completed = new StatusEnum("completed");
-            public static readonly StatusEnum Wrapping = new StatusEnum("wrapping");
-        }
-
-        private static Request BuildFetchRequest(FetchTaskOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Get,
-                Rest.Domain.Taskrouter,
-                "/v1/Workspaces/" + options.PathWorkspaceSid + "/Tasks/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="options"> Fetch Task parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Task </returns>
-        public static TaskResource Fetch(FetchTaskOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="options"> Fetch Task parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Task </returns>
-        public static async System.Threading.Tasks.Task<TaskResource> FetchAsync(FetchTaskOptions options,
-                                                                                 ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Task to fetch </param>
-        /// <param name="pathSid"> The SID of the resource to fetch </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Task </returns>
-        public static TaskResource Fetch(string pathWorkspaceSid, string pathSid, ITwilioRestClient client = null)
-        {
-            var options = new FetchTaskOptions(pathWorkspaceSid, pathSid);
-            return Fetch(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Task to fetch </param>
-        /// <param name="pathSid"> The SID of the resource to fetch </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Task </returns>
-        public static async System.Threading.Tasks.Task<TaskResource> FetchAsync(string pathWorkspaceSid,
-                                                                                 string pathSid,
-                                                                                 ITwilioRestClient client = null)
-        {
-            var options = new FetchTaskOptions(pathWorkspaceSid, pathSid);
-            return await FetchAsync(options, client);
-        }
-        #endif
-
-        private static Request BuildUpdateRequest(UpdateTaskOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Post,
-                Rest.Domain.Taskrouter,
-                "/v1/Workspaces/" + options.PathWorkspaceSid + "/Tasks/" + options.PathSid + "",
-                postParams: options.GetParams(),
-                headerParams: options.GetHeaderParams()
-            );
-        }
-
-        /// <summary>
-        /// update
-        /// </summary>
-        /// <param name="options"> Update Task parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Task </returns>
-        public static TaskResource Update(UpdateTaskOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildUpdateRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// update
-        /// </summary>
-        /// <param name="options"> Update Task parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Task </returns>
-        public static async System.Threading.Tasks.Task<TaskResource> UpdateAsync(UpdateTaskOptions options,
-                                                                                  ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// update
-        /// </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Task to update </param>
-        /// <param name="pathSid"> The SID of the resource to update </param>
-        /// <param name="attributes"> The JSON string that describes the custom attributes of the task </param>
-        /// <param name="assignmentStatus"> The new status of the task </param>
-        /// <param name="reason"> The reason that the Task was canceled or complete </param>
-        /// <param name="priority"> The Task's new priority value </param>
-        /// <param name="taskChannel"> When MultiTasking is enabled, specify the TaskChannel with the task to update </param>
-        /// <param name="ifMatch"> The If-Match HTTP request header </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Task </returns>
-        public static TaskResource Update(string pathWorkspaceSid,
-                                          string pathSid,
-                                          string attributes = null,
-                                          TaskResource.StatusEnum assignmentStatus = null,
-                                          string reason = null,
-                                          int? priority = null,
-                                          string taskChannel = null,
-                                          string ifMatch = null,
-                                          ITwilioRestClient client = null)
-        {
-            var options = new UpdateTaskOptions(pathWorkspaceSid, pathSid){Attributes = attributes, AssignmentStatus = assignmentStatus, Reason = reason, Priority = priority, TaskChannel = taskChannel, IfMatch = ifMatch};
-            return Update(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// update
-        /// </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Task to update </param>
-        /// <param name="pathSid"> The SID of the resource to update </param>
-        /// <param name="attributes"> The JSON string that describes the custom attributes of the task </param>
-        /// <param name="assignmentStatus"> The new status of the task </param>
-        /// <param name="reason"> The reason that the Task was canceled or complete </param>
-        /// <param name="priority"> The Task's new priority value </param>
-        /// <param name="taskChannel"> When MultiTasking is enabled, specify the TaskChannel with the task to update </param>
-        /// <param name="ifMatch"> The If-Match HTTP request header </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Task </returns>
-        public static async System.Threading.Tasks.Task<TaskResource> UpdateAsync(string pathWorkspaceSid,
-                                                                                  string pathSid,
-                                                                                  string attributes = null,
-                                                                                  TaskResource.StatusEnum assignmentStatus = null,
-                                                                                  string reason = null,
-                                                                                  int? priority = null,
-                                                                                  string taskChannel = null,
-                                                                                  string ifMatch = null,
-                                                                                  ITwilioRestClient client = null)
-        {
-            var options = new UpdateTaskOptions(pathWorkspaceSid, pathSid){Attributes = attributes, AssignmentStatus = assignmentStatus, Reason = reason, Priority = priority, TaskChannel = taskChannel, IfMatch = ifMatch};
-            return await UpdateAsync(options, client);
-        }
-        #endif
-
-        private static Request BuildDeleteRequest(DeleteTaskOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Delete,
-                Rest.Domain.Taskrouter,
-                "/v1/Workspaces/" + options.PathWorkspaceSid + "/Tasks/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: options.GetHeaderParams()
-            );
-        }
-
-        /// <summary>
-        /// delete
-        /// </summary>
-        /// <param name="options"> Delete Task parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Task </returns>
-        public static bool Delete(DeleteTaskOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
-        }
-
-        #if !NET35
-        /// <summary>
-        /// delete
-        /// </summary>
-        /// <param name="options"> Delete Task parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Task </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteTaskOptions options,
-                                                                          ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
-        }
-        #endif
-
-        /// <summary>
-        /// delete
-        /// </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Task to delete </param>
-        /// <param name="pathSid"> The SID of the resource to delete </param>
-        /// <param name="ifMatch"> The If-Match HTTP request header </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Task </returns>
-        public static bool Delete(string pathWorkspaceSid,
-                                  string pathSid,
-                                  string ifMatch = null,
-                                  ITwilioRestClient client = null)
-        {
-            var options = new DeleteTaskOptions(pathWorkspaceSid, pathSid){IfMatch = ifMatch};
-            return Delete(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// delete
-        /// </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Task to delete </param>
-        /// <param name="pathSid"> The SID of the resource to delete </param>
-        /// <param name="ifMatch"> The If-Match HTTP request header </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Task </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathWorkspaceSid,
-                                                                          string pathSid,
-                                                                          string ifMatch = null,
-                                                                          ITwilioRestClient client = null)
-        {
-            var options = new DeleteTaskOptions(pathWorkspaceSid, pathSid){IfMatch = ifMatch};
-            return await DeleteAsync(options, client);
-        }
-        #endif
-
-        private static Request BuildReadRequest(ReadTaskOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Get,
-                Rest.Domain.Taskrouter,
-                "/v1/Workspaces/" + options.PathWorkspaceSid + "/Tasks",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// read
-        /// </summary>
-        /// <param name="options"> Read Task parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Task </returns>
-        public static ResourceSet<TaskResource> Read(ReadTaskOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildReadRequest(options, client));
-
-            var page = Page<TaskResource>.FromJson("tasks", response.Content);
-            return new ResourceSet<TaskResource>(page, options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// read
-        /// </summary>
-        /// <param name="options"> Read Task parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Task </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<TaskResource>> ReadAsync(ReadTaskOptions options,
-                                                                                             ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
-
-            var page = Page<TaskResource>.FromJson("tasks", response.Content);
-            return new ResourceSet<TaskResource>(page, options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// read
-        /// </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Tasks to read </param>
-        /// <param name="priority"> The priority value of the Tasks to read </param>
-        /// <param name="assignmentStatus"> Returns the list of all Tasks in the Workspace with the specified assignment_status
-        ///                        </param>
-        /// <param name="workflowSid"> The SID of the Workflow with the Tasks to read </param>
-        /// <param name="workflowName"> The friendly name of the Workflow with the Tasks to read </param>
-        /// <param name="taskQueueSid"> The SID of the TaskQueue with the Tasks to read </param>
-        /// <param name="taskQueueName"> The friendly_name of the TaskQueue with the Tasks to read </param>
-        /// <param name="evaluateTaskAttributes"> The task attributes of the Tasks to read </param>
-        /// <param name="ordering"> Controls the order of the Tasks returned </param>
-        /// <param name="hasAddons"> Whether to read Tasks with addons </param>
-        /// <param name="pageSize"> Page size </param>
-        /// <param name="limit"> Record limit </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Task </returns>
-        public static ResourceSet<TaskResource> Read(string pathWorkspaceSid,
-                                                     int? priority = null,
-                                                     List<string> assignmentStatus = null,
-                                                     string workflowSid = null,
-                                                     string workflowName = null,
-                                                     string taskQueueSid = null,
-                                                     string taskQueueName = null,
-                                                     string evaluateTaskAttributes = null,
-                                                     string ordering = null,
-                                                     bool? hasAddons = null,
-                                                     int? pageSize = null,
-                                                     long? limit = null,
-                                                     ITwilioRestClient client = null)
-        {
-            var options = new ReadTaskOptions(pathWorkspaceSid){Priority = priority, AssignmentStatus = assignmentStatus, WorkflowSid = workflowSid, WorkflowName = workflowName, TaskQueueSid = taskQueueSid, TaskQueueName = taskQueueName, EvaluateTaskAttributes = evaluateTaskAttributes, Ordering = ordering, HasAddons = hasAddons, PageSize = pageSize, Limit = limit};
-            return Read(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// read
-        /// </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Tasks to read </param>
-        /// <param name="priority"> The priority value of the Tasks to read </param>
-        /// <param name="assignmentStatus"> Returns the list of all Tasks in the Workspace with the specified assignment_status
-        ///                        </param>
-        /// <param name="workflowSid"> The SID of the Workflow with the Tasks to read </param>
-        /// <param name="workflowName"> The friendly name of the Workflow with the Tasks to read </param>
-        /// <param name="taskQueueSid"> The SID of the TaskQueue with the Tasks to read </param>
-        /// <param name="taskQueueName"> The friendly_name of the TaskQueue with the Tasks to read </param>
-        /// <param name="evaluateTaskAttributes"> The task attributes of the Tasks to read </param>
-        /// <param name="ordering"> Controls the order of the Tasks returned </param>
-        /// <param name="hasAddons"> Whether to read Tasks with addons </param>
-        /// <param name="pageSize"> Page size </param>
-        /// <param name="limit"> Record limit </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Task </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<TaskResource>> ReadAsync(string pathWorkspaceSid,
-                                                                                             int? priority = null,
-                                                                                             List<string> assignmentStatus = null,
-                                                                                             string workflowSid = null,
-                                                                                             string workflowName = null,
-                                                                                             string taskQueueSid = null,
-                                                                                             string taskQueueName = null,
-                                                                                             string evaluateTaskAttributes = null,
-                                                                                             string ordering = null,
-                                                                                             bool? hasAddons = null,
-                                                                                             int? pageSize = null,
-                                                                                             long? limit = null,
-                                                                                             ITwilioRestClient client = null)
-        {
-            var options = new ReadTaskOptions(pathWorkspaceSid){Priority = priority, AssignmentStatus = assignmentStatus, WorkflowSid = workflowSid, WorkflowName = workflowName, TaskQueueSid = taskQueueSid, TaskQueueName = taskQueueName, EvaluateTaskAttributes = evaluateTaskAttributes, Ordering = ordering, HasAddons = hasAddons, PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Fetch the target page of records
-        /// </summary>
-        /// <param name="targetUrl"> API-generated URL for the requested results page </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns>
-        public static Page<TaskResource> GetPage(string targetUrl, ITwilioRestClient client)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-
-            var request = new Request(
-                HttpMethod.Get,
-                targetUrl
-            );
-
-            var response = client.Request(request);
-            return Page<TaskResource>.FromJson("tasks", response.Content);
-        }
-
-        /// <summary>
-        /// Fetch the next page of records
-        /// </summary>
-        /// <param name="page"> current page of records </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns>
-        public static Page<TaskResource> NextPage(Page<TaskResource> page, ITwilioRestClient client)
-        {
-            var request = new Request(
-                HttpMethod.Get,
-                page.GetNextPageUrl(Rest.Domain.Taskrouter)
-            );
-
-            var response = client.Request(request);
-            return Page<TaskResource>.FromJson("tasks", response.Content);
-        }
-
-        /// <summary>
-        /// Fetch the previous page of records
-        /// </summary>
-        /// <param name="page"> current page of records </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns>
-        public static Page<TaskResource> PreviousPage(Page<TaskResource> page, ITwilioRestClient client)
-        {
-            var request = new Request(
-                HttpMethod.Get,
-                page.GetPreviousPageUrl(Rest.Domain.Taskrouter)
-            );
-
-            var response = client.Request(request);
-            return Page<TaskResource>.FromJson("tasks", response.Content);
-        }
-
-        private static Request BuildCreateRequest(CreateTaskOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Post,
-                Rest.Domain.Taskrouter,
-                "/v1/Workspaces/" + options.PathWorkspaceSid + "/Tasks",
-                postParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// create
-        /// </summary>
-        /// <param name="options"> Create Task parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Task </returns>
-        public static TaskResource Create(CreateTaskOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildCreateRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// create
-        /// </summary>
-        /// <param name="options"> Create Task parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Task </returns>
-        public static async System.Threading.Tasks.Task<TaskResource> CreateAsync(CreateTaskOptions options,
-                                                                                  ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// create
-        /// </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace that the new Task belongs to </param>
-        /// <param name="timeout"> The amount of time in seconds the task can live before being assigned </param>
-        /// <param name="priority"> The priority to assign the new task and override the default </param>
-        /// <param name="taskChannel"> When MultiTasking is enabled specify the TaskChannel by passing either its unique_name
-        ///                   or SID </param>
-        /// <param name="workflowSid"> The SID of the Workflow that you would like to handle routing for the new Task </param>
-        /// <param name="attributes"> A URL-encoded JSON string describing the attributes of the task </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Task </returns>
-        public static TaskResource Create(string pathWorkspaceSid,
-                                          int? timeout = null,
-                                          int? priority = null,
-                                          string taskChannel = null,
-                                          string workflowSid = null,
-                                          string attributes = null,
-                                          ITwilioRestClient client = null)
-        {
-            var options = new CreateTaskOptions(pathWorkspaceSid){Timeout = timeout, Priority = priority, TaskChannel = taskChannel, WorkflowSid = workflowSid, Attributes = attributes};
-            return Create(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// create
-        /// </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace that the new Task belongs to </param>
-        /// <param name="timeout"> The amount of time in seconds the task can live before being assigned </param>
-        /// <param name="priority"> The priority to assign the new task and override the default </param>
-        /// <param name="taskChannel"> When MultiTasking is enabled specify the TaskChannel by passing either its unique_name
-        ///                   or SID </param>
-        /// <param name="workflowSid"> The SID of the Workflow that you would like to handle routing for the new Task </param>
-        /// <param name="attributes"> A URL-encoded JSON string describing the attributes of the task </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Task </returns>
-        public static async System.Threading.Tasks.Task<TaskResource> CreateAsync(string pathWorkspaceSid,
-                                                                                  int? timeout = null,
-                                                                                  int? priority = null,
-                                                                                  string taskChannel = null,
-                                                                                  string workflowSid = null,
-                                                                                  string attributes = null,
-                                                                                  ITwilioRestClient client = null)
-        {
-            var options = new CreateTaskOptions(pathWorkspaceSid){Timeout = timeout, Priority = priority, TaskChannel = taskChannel, WorkflowSid = workflowSid, Attributes = attributes};
-            return await CreateAsync(options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Converts a JSON string into a TaskResource object
-        /// </summary>
-        /// <param name="json"> Raw JSON string </param>
-        /// <returns> TaskResource object represented by the provided JSON </returns>
-        public static TaskResource FromJson(string json)
-        {
-            // Convert all checked exceptions to Runtime
-            try
-            {
-                return JsonConvert.DeserializeObject<TaskResource>(json);
-            }
-            catch (JsonException e)
-            {
-                throw new ApiException(e.Message, e);
-            }
-        }
-
-        /// <summary>
-        /// The SID of the Account that created the resource
-        /// </summary>
-        [JsonProperty("account_sid")]
-        public string AccountSid { get; private set; }
-        /// <summary>
-        /// The number of seconds since the Task was created
-        /// </summary>
-        [JsonProperty("age")]
-        public int? Age { get; private set; }
-        /// <summary>
-        /// The current status of the Task's assignment
-        /// </summary>
-        [JsonProperty("assignment_status")]
-        [JsonConverter(typeof(StringEnumConverter))]
-        public TaskResource.StatusEnum AssignmentStatus { get; private set; }
-        /// <summary>
-        /// The JSON string with custom attributes of the work
-        /// </summary>
-        [JsonProperty("attributes")]
-        public string Attributes { get; private set; }
-        /// <summary>
-        /// An object that contains the addon data for all installed addons
-        /// </summary>
-        [JsonProperty("addons")]
-        public string Addons { get; private set; }
-        /// <summary>
-        /// The ISO 8601 date and time in GMT when the resource was created
-        /// </summary>
-        [JsonProperty("date_created")]
-        public DateTime? DateCreated { get; private set; }
-        /// <summary>
-        /// The ISO 8601 date and time in GMT when the resource was last updated
-        /// </summary>
-        [JsonProperty("date_updated")]
-        public DateTime? DateUpdated { get; private set; }
-        /// <summary>
-        /// The ISO 8601 date and time in GMT when the Task entered the TaskQueue.
-        /// </summary>
-        [JsonProperty("task_queue_entered_date")]
-        public DateTime? TaskQueueEnteredDate { get; private set; }
-        /// <summary>
-        /// Retrieve the list of all Tasks in the Workspace with the specified priority
-        /// </summary>
-        [JsonProperty("priority")]
-        public int? Priority { get; private set; }
-        /// <summary>
-        /// The reason the Task was canceled or completed
-        /// </summary>
-        [JsonProperty("reason")]
-        public string Reason { get; private set; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        [JsonProperty("sid")]
-        public string Sid { get; private set; }
-        /// <summary>
-        /// The SID of the TaskQueue
-        /// </summary>
-        [JsonProperty("task_queue_sid")]
-        public string TaskQueueSid { get; private set; }
-        /// <summary>
-        /// The friendly name of the TaskQueue
-        /// </summary>
-        [JsonProperty("task_queue_friendly_name")]
-        public string TaskQueueFriendlyName { get; private set; }
-        /// <summary>
-        /// The SID of the TaskChannel
-        /// </summary>
-        [JsonProperty("task_channel_sid")]
-        public string TaskChannelSid { get; private set; }
-        /// <summary>
-        /// The unique name of the TaskChannel
-        /// </summary>
-        [JsonProperty("task_channel_unique_name")]
-        public string TaskChannelUniqueName { get; private set; }
-        /// <summary>
-        /// The amount of time in seconds that the Task can live before being assigned
-        /// </summary>
-        [JsonProperty("timeout")]
-        public int? Timeout { get; private set; }
-        /// <summary>
-        /// The SID of the Workflow that is controlling the Task
-        /// </summary>
-        [JsonProperty("workflow_sid")]
-        public string WorkflowSid { get; private set; }
-        /// <summary>
-        /// The friendly name of the Workflow that is controlling the Task
-        /// </summary>
-        [JsonProperty("workflow_friendly_name")]
-        public string WorkflowFriendlyName { get; private set; }
-        /// <summary>
-        /// The SID of the Workspace that contains the Task
-        /// </summary>
-        [JsonProperty("workspace_sid")]
-        public string WorkspaceSid { get; private set; }
-        /// <summary>
-        /// The absolute URL of the Task resource
-        /// </summary>
-        [JsonProperty("url")]
-        public Uri Url { get; private set; }
-        /// <summary>
-        /// The URLs of related resources
-        /// </summary>
-        [JsonProperty("links")]
-        public Dictionary<string, string> Links { get; private set; }
-
-        private TaskResource()
-        {
-
-        }
+      public static readonly StatusEnum Pending = new StatusEnum("pending");
+      public static readonly StatusEnum Reserved = new StatusEnum("reserved");
+      public static readonly StatusEnum Assigned = new StatusEnum("assigned");
+      public static readonly StatusEnum Canceled = new StatusEnum("canceled");
+      public static readonly StatusEnum Completed = new StatusEnum("completed");
+      public static readonly StatusEnum Wrapping = new StatusEnum("wrapping");
     }
+
+    private static Request BuildFetchRequest(FetchTaskOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Get,
+          Rest.Domain.Taskrouter,
+          "/v1/Workspaces/" + options.PathWorkspaceSid + "/Tasks/" + options.PathSid + "",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="options"> Fetch Task parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Task </returns>
+    public static TaskResource Fetch(FetchTaskOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="options"> Fetch Task parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Task </returns>
+    public static async System.Threading.Tasks.Task<TaskResource> FetchAsync(FetchTaskOptions options,
+                                                                             ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Task to fetch </param>
+    /// <param name="pathSid"> The SID of the resource to fetch </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Task </returns>
+    public static TaskResource Fetch(string pathWorkspaceSid, string pathSid, ITwilioRestClient client = null)
+    {
+      var options = new FetchTaskOptions(pathWorkspaceSid, pathSid);
+      return Fetch(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Task to fetch </param>
+    /// <param name="pathSid"> The SID of the resource to fetch </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Task </returns>
+    public static async System.Threading.Tasks.Task<TaskResource> FetchAsync(string pathWorkspaceSid,
+                                                                             string pathSid,
+                                                                             ITwilioRestClient client = null)
+    {
+      var options = new FetchTaskOptions(pathWorkspaceSid, pathSid);
+      return await FetchAsync(options, client);
+    }
+#endif
+
+    private static Request BuildUpdateRequest(UpdateTaskOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Post,
+          Rest.Domain.Taskrouter,
+          "/v1/Workspaces/" + options.PathWorkspaceSid + "/Tasks/" + options.PathSid + "",
+          postParams: options.GetParams(),
+          headerParams: options.GetHeaderParams()
+      );
+    }
+
+    /// <summary>
+    /// update
+    /// </summary>
+    /// <param name="options"> Update Task parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Task </returns>
+    public static TaskResource Update(UpdateTaskOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildUpdateRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// update
+    /// </summary>
+    /// <param name="options"> Update Task parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Task </returns>
+    public static async System.Threading.Tasks.Task<TaskResource> UpdateAsync(UpdateTaskOptions options,
+                                                                              ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// update
+    /// </summary>
+    /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Task to update </param>
+    /// <param name="pathSid"> The SID of the resource to update </param>
+    /// <param name="attributes"> The JSON string that describes the custom attributes of the task </param>
+    /// <param name="assignmentStatus"> The new status of the task </param>
+    /// <param name="reason"> The reason that the Task was canceled or complete </param>
+    /// <param name="priority"> The Task's new priority value </param>
+    /// <param name="taskChannel"> When MultiTasking is enabled, specify the TaskChannel with the task to update </param>
+    /// <param name="ifMatch"> The If-Match HTTP request header </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Task </returns>
+    public static TaskResource Update(string pathWorkspaceSid,
+                                      string pathSid,
+                                      string attributes = null,
+                                      TaskResource.StatusEnum assignmentStatus = null,
+                                      string reason = null,
+                                      int? priority = null,
+                                      string taskChannel = null,
+                                      string ifMatch = null,
+                                      ITwilioRestClient client = null)
+    {
+      var options = new UpdateTaskOptions(pathWorkspaceSid, pathSid) { Attributes = attributes, AssignmentStatus = assignmentStatus, Reason = reason, Priority = priority, TaskChannel = taskChannel, IfMatch = ifMatch };
+      return Update(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// update
+    /// </summary>
+    /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Task to update </param>
+    /// <param name="pathSid"> The SID of the resource to update </param>
+    /// <param name="attributes"> The JSON string that describes the custom attributes of the task </param>
+    /// <param name="assignmentStatus"> The new status of the task </param>
+    /// <param name="reason"> The reason that the Task was canceled or complete </param>
+    /// <param name="priority"> The Task's new priority value </param>
+    /// <param name="taskChannel"> When MultiTasking is enabled, specify the TaskChannel with the task to update </param>
+    /// <param name="ifMatch"> The If-Match HTTP request header </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Task </returns>
+    public static async System.Threading.Tasks.Task<TaskResource> UpdateAsync(string pathWorkspaceSid,
+                                                                              string pathSid,
+                                                                              string attributes = null,
+                                                                              TaskResource.StatusEnum assignmentStatus = null,
+                                                                              string reason = null,
+                                                                              int? priority = null,
+                                                                              string taskChannel = null,
+                                                                              string ifMatch = null,
+                                                                              ITwilioRestClient client = null)
+    {
+      var options = new UpdateTaskOptions(pathWorkspaceSid, pathSid) { Attributes = attributes, AssignmentStatus = assignmentStatus, Reason = reason, Priority = priority, TaskChannel = taskChannel, IfMatch = ifMatch };
+      return await UpdateAsync(options, client);
+    }
+#endif
+
+    private static Request BuildDeleteRequest(DeleteTaskOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Delete,
+          Rest.Domain.Taskrouter,
+          "/v1/Workspaces/" + options.PathWorkspaceSid + "/Tasks/" + options.PathSid + "",
+          queryParams: options.GetParams(),
+          headerParams: options.GetHeaderParams()
+      );
+    }
+
+    /// <summary>
+    /// delete
+    /// </summary>
+    /// <param name="options"> Delete Task parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Task </returns>
+    public static bool Delete(DeleteTaskOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildDeleteRequest(options, client));
+      return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+    }
+
+#if !NET35
+    /// <summary>
+    /// delete
+    /// </summary>
+    /// <param name="options"> Delete Task parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Task </returns>
+    public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteTaskOptions options,
+                                                                      ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+      return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+    }
+#endif
+
+    /// <summary>
+    /// delete
+    /// </summary>
+    /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Task to delete </param>
+    /// <param name="pathSid"> The SID of the resource to delete </param>
+    /// <param name="ifMatch"> The If-Match HTTP request header </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Task </returns>
+    public static bool Delete(string pathWorkspaceSid,
+                              string pathSid,
+                              string ifMatch = null,
+                              ITwilioRestClient client = null)
+    {
+      var options = new DeleteTaskOptions(pathWorkspaceSid, pathSid) { IfMatch = ifMatch };
+      return Delete(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// delete
+    /// </summary>
+    /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Task to delete </param>
+    /// <param name="pathSid"> The SID of the resource to delete </param>
+    /// <param name="ifMatch"> The If-Match HTTP request header </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Task </returns>
+    public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathWorkspaceSid,
+                                                                      string pathSid,
+                                                                      string ifMatch = null,
+                                                                      ITwilioRestClient client = null)
+    {
+      var options = new DeleteTaskOptions(pathWorkspaceSid, pathSid) { IfMatch = ifMatch };
+      return await DeleteAsync(options, client);
+    }
+#endif
+
+    private static Request BuildReadRequest(ReadTaskOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Get,
+          Rest.Domain.Taskrouter,
+          "/v1/Workspaces/" + options.PathWorkspaceSid + "/Tasks",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// read
+    /// </summary>
+    /// <param name="options"> Read Task parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Task </returns>
+    public static ResourceSet<TaskResource> Read(ReadTaskOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildReadRequest(options, client));
+
+      var page = Page<TaskResource>.FromJson("tasks", response.Content);
+      return new ResourceSet<TaskResource>(page, options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// read
+    /// </summary>
+    /// <param name="options"> Read Task parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Task </returns>
+    public static async System.Threading.Tasks.Task<ResourceSet<TaskResource>> ReadAsync(ReadTaskOptions options,
+                                                                                         ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+      var page = Page<TaskResource>.FromJson("tasks", response.Content);
+      return new ResourceSet<TaskResource>(page, options, client);
+    }
+#endif
+
+    /// <summary>
+    /// read
+    /// </summary>
+    /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Tasks to read </param>
+    /// <param name="priority"> The priority value of the Tasks to read </param>
+    /// <param name="assignmentStatus"> Returns the list of all Tasks in the Workspace with the specified assignment_status
+    ///                        </param>
+    /// <param name="workflowSid"> The SID of the Workflow with the Tasks to read </param>
+    /// <param name="workflowName"> The friendly name of the Workflow with the Tasks to read </param>
+    /// <param name="taskQueueSid"> The SID of the TaskQueue with the Tasks to read </param>
+    /// <param name="taskQueueName"> The friendly_name of the TaskQueue with the Tasks to read </param>
+    /// <param name="evaluateTaskAttributes"> The task attributes of the Tasks to read </param>
+    /// <param name="ordering"> Controls the order of the Tasks returned </param>
+    /// <param name="hasAddons"> Whether to read Tasks with addons </param>
+    /// <param name="pageSize"> Page size </param>
+    /// <param name="limit"> Record limit </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Task </returns>
+    public static ResourceSet<TaskResource> Read(string pathWorkspaceSid,
+                                                 int? priority = null,
+                                                 List<string> assignmentStatus = null,
+                                                 string workflowSid = null,
+                                                 string workflowName = null,
+                                                 string taskQueueSid = null,
+                                                 string taskQueueName = null,
+                                                 string evaluateTaskAttributes = null,
+                                                 string ordering = null,
+                                                 bool? hasAddons = null,
+                                                 int? pageSize = null,
+                                                 long? limit = null,
+                                                 ITwilioRestClient client = null)
+    {
+      var options = new ReadTaskOptions(pathWorkspaceSid) { Priority = priority, AssignmentStatus = assignmentStatus, WorkflowSid = workflowSid, WorkflowName = workflowName, TaskQueueSid = taskQueueSid, TaskQueueName = taskQueueName, EvaluateTaskAttributes = evaluateTaskAttributes, Ordering = ordering, HasAddons = hasAddons, PageSize = pageSize, Limit = limit };
+      return Read(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// read
+    /// </summary>
+    /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Tasks to read </param>
+    /// <param name="priority"> The priority value of the Tasks to read </param>
+    /// <param name="assignmentStatus"> Returns the list of all Tasks in the Workspace with the specified assignment_status
+    ///                        </param>
+    /// <param name="workflowSid"> The SID of the Workflow with the Tasks to read </param>
+    /// <param name="workflowName"> The friendly name of the Workflow with the Tasks to read </param>
+    /// <param name="taskQueueSid"> The SID of the TaskQueue with the Tasks to read </param>
+    /// <param name="taskQueueName"> The friendly_name of the TaskQueue with the Tasks to read </param>
+    /// <param name="evaluateTaskAttributes"> The task attributes of the Tasks to read </param>
+    /// <param name="ordering"> Controls the order of the Tasks returned </param>
+    /// <param name="hasAddons"> Whether to read Tasks with addons </param>
+    /// <param name="pageSize"> Page size </param>
+    /// <param name="limit"> Record limit </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Task </returns>
+    public static async System.Threading.Tasks.Task<ResourceSet<TaskResource>> ReadAsync(string pathWorkspaceSid,
+                                                                                         int? priority = null,
+                                                                                         List<string> assignmentStatus = null,
+                                                                                         string workflowSid = null,
+                                                                                         string workflowName = null,
+                                                                                         string taskQueueSid = null,
+                                                                                         string taskQueueName = null,
+                                                                                         string evaluateTaskAttributes = null,
+                                                                                         string ordering = null,
+                                                                                         bool? hasAddons = null,
+                                                                                         int? pageSize = null,
+                                                                                         long? limit = null,
+                                                                                         ITwilioRestClient client = null)
+    {
+      var options = new ReadTaskOptions(pathWorkspaceSid) { Priority = priority, AssignmentStatus = assignmentStatus, WorkflowSid = workflowSid, WorkflowName = workflowName, TaskQueueSid = taskQueueSid, TaskQueueName = taskQueueName, EvaluateTaskAttributes = evaluateTaskAttributes, Ordering = ordering, HasAddons = hasAddons, PageSize = pageSize, Limit = limit };
+      return await ReadAsync(options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Fetch the target page of records
+    /// </summary>
+    /// <param name="targetUrl"> API-generated URL for the requested results page </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> The target page of records </returns>
+    public static Page<TaskResource> GetPage(string targetUrl, ITwilioRestClient client)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+
+      var request = new Request(
+          HttpMethod.Get,
+          targetUrl
+      );
+
+      var response = client.Request(request);
+      return Page<TaskResource>.FromJson("tasks", response.Content);
+    }
+
+    /// <summary>
+    /// Fetch the next page of records
+    /// </summary>
+    /// <param name="page"> current page of records </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> The next page of records </returns>
+    public static Page<TaskResource> NextPage(Page<TaskResource> page, ITwilioRestClient client)
+    {
+      var request = new Request(
+          HttpMethod.Get,
+          page.GetNextPageUrl(Rest.Domain.Taskrouter)
+      );
+
+      var response = client.Request(request);
+      return Page<TaskResource>.FromJson("tasks", response.Content);
+    }
+
+    /// <summary>
+    /// Fetch the previous page of records
+    /// </summary>
+    /// <param name="page"> current page of records </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> The previous page of records </returns>
+    public static Page<TaskResource> PreviousPage(Page<TaskResource> page, ITwilioRestClient client)
+    {
+      var request = new Request(
+          HttpMethod.Get,
+          page.GetPreviousPageUrl(Rest.Domain.Taskrouter)
+      );
+
+      var response = client.Request(request);
+      return Page<TaskResource>.FromJson("tasks", response.Content);
+    }
+
+    private static Request BuildCreateRequest(CreateTaskOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Post,
+          Rest.Domain.Taskrouter,
+          "/v1/Workspaces/" + options.PathWorkspaceSid + "/Tasks",
+          postParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// create
+    /// </summary>
+    /// <param name="options"> Create Task parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Task </returns>
+    public static TaskResource Create(CreateTaskOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildCreateRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// create
+    /// </summary>
+    /// <param name="options"> Create Task parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Task </returns>
+    public static async System.Threading.Tasks.Task<TaskResource> CreateAsync(CreateTaskOptions options,
+                                                                              ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildCreateRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// create
+    /// </summary>
+    /// <param name="pathWorkspaceSid"> The SID of the Workspace that the new Task belongs to </param>
+    /// <param name="timeout"> The amount of time in seconds the task can live before being assigned </param>
+    /// <param name="priority"> The priority to assign the new task and override the default </param>
+    /// <param name="taskChannel"> When MultiTasking is enabled specify the TaskChannel by passing either its unique_name
+    ///                   or SID </param>
+    /// <param name="workflowSid"> The SID of the Workflow that you would like to handle routing for the new Task </param>
+    /// <param name="attributes"> A URL-encoded JSON string describing the attributes of the task </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Task </returns>
+    public static TaskResource Create(string pathWorkspaceSid,
+                                      int? timeout = null,
+                                      int? priority = null,
+                                      string taskChannel = null,
+                                      string workflowSid = null,
+                                      string attributes = null,
+                                      ITwilioRestClient client = null)
+    {
+      var options = new CreateTaskOptions(pathWorkspaceSid) { Timeout = timeout, Priority = priority, TaskChannel = taskChannel, WorkflowSid = workflowSid, Attributes = attributes };
+      return Create(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// create
+    /// </summary>
+    /// <param name="pathWorkspaceSid"> The SID of the Workspace that the new Task belongs to </param>
+    /// <param name="timeout"> The amount of time in seconds the task can live before being assigned </param>
+    /// <param name="priority"> The priority to assign the new task and override the default </param>
+    /// <param name="taskChannel"> When MultiTasking is enabled specify the TaskChannel by passing either its unique_name
+    ///                   or SID </param>
+    /// <param name="workflowSid"> The SID of the Workflow that you would like to handle routing for the new Task </param>
+    /// <param name="attributes"> A URL-encoded JSON string describing the attributes of the task </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Task </returns>
+    public static async System.Threading.Tasks.Task<TaskResource> CreateAsync(string pathWorkspaceSid,
+                                                                              int? timeout = null,
+                                                                              int? priority = null,
+                                                                              string taskChannel = null,
+                                                                              string workflowSid = null,
+                                                                              string attributes = null,
+                                                                              ITwilioRestClient client = null)
+    {
+      var options = new CreateTaskOptions(pathWorkspaceSid) { Timeout = timeout, Priority = priority, TaskChannel = taskChannel, WorkflowSid = workflowSid, Attributes = attributes };
+      return await CreateAsync(options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Converts a JSON string into a TaskResource object
+    /// </summary>
+    /// <param name="json"> Raw JSON string </param>
+    /// <returns> TaskResource object represented by the provided JSON </returns>
+    public static TaskResource FromJson(string json)
+    {
+      // Convert all checked exceptions to Runtime
+      try
+      {
+        return JsonConvert.DeserializeObject<TaskResource>(json);
+      }
+      catch (JsonException e)
+      {
+        throw new ApiException(e.Message, e);
+      }
+    }
+
+    /// <summary>
+    /// The SID of the Account that created the resource
+    /// </summary>
+    [JsonProperty("account_sid")]
+    public string AccountSid { get; private set; }
+    /// <summary>
+    /// The number of seconds since the Task was created
+    /// </summary>
+    [JsonProperty("age")]
+    public int? Age { get; private set; }
+    /// <summary>
+    /// The current status of the Task's assignment
+    /// </summary>
+    [JsonProperty("assignment_status")]
+    [JsonConverter(typeof(StringEnumConverter))]
+    public TaskResource.StatusEnum AssignmentStatus { get; private set; }
+    /// <summary>
+    /// The JSON string with custom attributes of the work
+    /// </summary>
+    [JsonProperty("attributes")]
+    public string Attributes { get; private set; }
+    /// <summary>
+    /// An object that contains the addon data for all installed addons
+    /// </summary>
+    [JsonProperty("addons")]
+    public string Addons { get; private set; }
+    /// <summary>
+    /// The ISO 8601 date and time in GMT when the resource was created
+    /// </summary>
+    [JsonProperty("date_created")]
+    public DateTime? DateCreated { get; private set; }
+    /// <summary>
+    /// The ISO 8601 date and time in GMT when the resource was last updated
+    /// </summary>
+    [JsonProperty("date_updated")]
+    public DateTime? DateUpdated { get; private set; }
+    /// <summary>
+    /// The ISO 8601 date and time in GMT when the Task entered the TaskQueue.
+    /// </summary>
+    [JsonProperty("task_queue_entered_date")]
+    public DateTime? TaskQueueEnteredDate { get; private set; }
+    /// <summary>
+    /// Retrieve the list of all Tasks in the Workspace with the specified priority
+    /// </summary>
+    [JsonProperty("priority")]
+    public int? Priority { get; private set; }
+    /// <summary>
+    /// The reason the Task was canceled or completed
+    /// </summary>
+    [JsonProperty("reason")]
+    public string Reason { get; private set; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    [JsonProperty("sid")]
+    public string Sid { get; private set; }
+    /// <summary>
+    /// The SID of the TaskQueue
+    /// </summary>
+    [JsonProperty("task_queue_sid")]
+    public string TaskQueueSid { get; private set; }
+    /// <summary>
+    /// The friendly name of the TaskQueue
+    /// </summary>
+    [JsonProperty("task_queue_friendly_name")]
+    public string TaskQueueFriendlyName { get; private set; }
+    /// <summary>
+    /// The SID of the TaskChannel
+    /// </summary>
+    [JsonProperty("task_channel_sid")]
+    public string TaskChannelSid { get; private set; }
+    /// <summary>
+    /// The unique name of the TaskChannel
+    /// </summary>
+    [JsonProperty("task_channel_unique_name")]
+    public string TaskChannelUniqueName { get; private set; }
+    /// <summary>
+    /// The amount of time in seconds that the Task can live before being assigned
+    /// </summary>
+    [JsonProperty("timeout")]
+    public int? Timeout { get; private set; }
+    /// <summary>
+    /// The SID of the Workflow that is controlling the Task
+    /// </summary>
+    [JsonProperty("workflow_sid")]
+    public string WorkflowSid { get; private set; }
+    /// <summary>
+    /// The friendly name of the Workflow that is controlling the Task
+    /// </summary>
+    [JsonProperty("workflow_friendly_name")]
+    public string WorkflowFriendlyName { get; private set; }
+    /// <summary>
+    /// The SID of the Workspace that contains the Task
+    /// </summary>
+    [JsonProperty("workspace_sid")]
+    public string WorkspaceSid { get; private set; }
+    /// <summary>
+    /// The absolute URL of the Task resource
+    /// </summary>
+    [JsonProperty("url")]
+    public Uri Url { get; private set; }
+    /// <summary>
+    /// The URLs of related resources
+    /// </summary>
+    [JsonProperty("links")]
+    public Dictionary<string, string> Links { get; private set; }
+
+    private TaskResource()
+    {
+
+    }
+  }
 
 }

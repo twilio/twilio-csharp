@@ -21,293 +21,293 @@ using Twilio.Types;
 namespace Twilio.Rest.Notify.V1.Service
 {
 
-    public class NotificationResource : Resource
+  public class NotificationResource : Resource
+  {
+    public sealed class PriorityEnum : StringEnum
     {
-        public sealed class PriorityEnum : StringEnum
-        {
-            private PriorityEnum(string value) : base(value) {}
-            public PriorityEnum() {}
-            public static implicit operator PriorityEnum(string value)
-            {
-                return new PriorityEnum(value);
-            }
+      private PriorityEnum(string value) : base(value) { }
+      public PriorityEnum() { }
+      public static implicit operator PriorityEnum(string value)
+      {
+        return new PriorityEnum(value);
+      }
 
-            public static readonly PriorityEnum High = new PriorityEnum("high");
-            public static readonly PriorityEnum Low = new PriorityEnum("low");
-        }
-
-        private static Request BuildCreateRequest(CreateNotificationOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Post,
-                Rest.Domain.Notify,
-                "/v1/Services/" + options.PathServiceSid + "/Notifications",
-                postParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// create
-        /// </summary>
-        /// <param name="options"> Create Notification parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Notification </returns>
-        public static NotificationResource Create(CreateNotificationOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildCreateRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// create
-        /// </summary>
-        /// <param name="options"> Create Notification parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Notification </returns>
-        public static async System.Threading.Tasks.Task<NotificationResource> CreateAsync(CreateNotificationOptions options,
-                                                                                          ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// create
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to create the resource under </param>
-        /// <param name="identity"> The `identity` value that identifies the new resource's User </param>
-        /// <param name="tag"> A tag that selects the Bindings to notify </param>
-        /// <param name="body"> The notification body text </param>
-        /// <param name="priority"> The priority of the notification </param>
-        /// <param name="ttl"> How long, in seconds, the notification is valid </param>
-        /// <param name="title"> The notification title </param>
-        /// <param name="sound"> The name of the sound to be played for the notification </param>
-        /// <param name="action"> The actions to display for the notification </param>
-        /// <param name="data"> The custom key-value pairs of the notification's payload </param>
-        /// <param name="apn"> The APNS-specific payload that overrides corresponding attributes in a generic payload for APNS
-        ///           Bindings </param>
-        /// <param name="gcm"> The GCM-specific payload that overrides corresponding attributes in generic payload for GCM
-        ///           Bindings </param>
-        /// <param name="sms"> The SMS-specific payload that overrides corresponding attributes in generic payload for SMS
-        ///           Bindings </param>
-        /// <param name="facebookMessenger"> Deprecated </param>
-        /// <param name="fcm"> The FCM-specific payload that overrides corresponding attributes in generic payload for FCM
-        ///           Bindings </param>
-        /// <param name="segment"> A Segment to notify </param>
-        /// <param name="alexa"> Deprecated </param>
-        /// <param name="toBinding"> The destination address specified as a JSON string </param>
-        /// <param name="deliveryCallbackUrl"> URL to send webhooks </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Notification </returns>
-        public static NotificationResource Create(string pathServiceSid,
-                                                  List<string> identity = null,
-                                                  List<string> tag = null,
-                                                  string body = null,
-                                                  NotificationResource.PriorityEnum priority = null,
-                                                  int? ttl = null,
-                                                  string title = null,
-                                                  string sound = null,
-                                                  string action = null,
-                                                  object data = null,
-                                                  object apn = null,
-                                                  object gcm = null,
-                                                  object sms = null,
-                                                  object facebookMessenger = null,
-                                                  object fcm = null,
-                                                  List<string> segment = null,
-                                                  object alexa = null,
-                                                  List<string> toBinding = null,
-                                                  string deliveryCallbackUrl = null,
-                                                  ITwilioRestClient client = null)
-        {
-            var options = new CreateNotificationOptions(pathServiceSid){Identity = identity, Tag = tag, Body = body, Priority = priority, Ttl = ttl, Title = title, Sound = sound, Action = action, Data = data, Apn = apn, Gcm = gcm, Sms = sms, FacebookMessenger = facebookMessenger, Fcm = fcm, Segment = segment, Alexa = alexa, ToBinding = toBinding, DeliveryCallbackUrl = deliveryCallbackUrl};
-            return Create(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// create
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to create the resource under </param>
-        /// <param name="identity"> The `identity` value that identifies the new resource's User </param>
-        /// <param name="tag"> A tag that selects the Bindings to notify </param>
-        /// <param name="body"> The notification body text </param>
-        /// <param name="priority"> The priority of the notification </param>
-        /// <param name="ttl"> How long, in seconds, the notification is valid </param>
-        /// <param name="title"> The notification title </param>
-        /// <param name="sound"> The name of the sound to be played for the notification </param>
-        /// <param name="action"> The actions to display for the notification </param>
-        /// <param name="data"> The custom key-value pairs of the notification's payload </param>
-        /// <param name="apn"> The APNS-specific payload that overrides corresponding attributes in a generic payload for APNS
-        ///           Bindings </param>
-        /// <param name="gcm"> The GCM-specific payload that overrides corresponding attributes in generic payload for GCM
-        ///           Bindings </param>
-        /// <param name="sms"> The SMS-specific payload that overrides corresponding attributes in generic payload for SMS
-        ///           Bindings </param>
-        /// <param name="facebookMessenger"> Deprecated </param>
-        /// <param name="fcm"> The FCM-specific payload that overrides corresponding attributes in generic payload for FCM
-        ///           Bindings </param>
-        /// <param name="segment"> A Segment to notify </param>
-        /// <param name="alexa"> Deprecated </param>
-        /// <param name="toBinding"> The destination address specified as a JSON string </param>
-        /// <param name="deliveryCallbackUrl"> URL to send webhooks </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Notification </returns>
-        public static async System.Threading.Tasks.Task<NotificationResource> CreateAsync(string pathServiceSid,
-                                                                                          List<string> identity = null,
-                                                                                          List<string> tag = null,
-                                                                                          string body = null,
-                                                                                          NotificationResource.PriorityEnum priority = null,
-                                                                                          int? ttl = null,
-                                                                                          string title = null,
-                                                                                          string sound = null,
-                                                                                          string action = null,
-                                                                                          object data = null,
-                                                                                          object apn = null,
-                                                                                          object gcm = null,
-                                                                                          object sms = null,
-                                                                                          object facebookMessenger = null,
-                                                                                          object fcm = null,
-                                                                                          List<string> segment = null,
-                                                                                          object alexa = null,
-                                                                                          List<string> toBinding = null,
-                                                                                          string deliveryCallbackUrl = null,
-                                                                                          ITwilioRestClient client = null)
-        {
-            var options = new CreateNotificationOptions(pathServiceSid){Identity = identity, Tag = tag, Body = body, Priority = priority, Ttl = ttl, Title = title, Sound = sound, Action = action, Data = data, Apn = apn, Gcm = gcm, Sms = sms, FacebookMessenger = facebookMessenger, Fcm = fcm, Segment = segment, Alexa = alexa, ToBinding = toBinding, DeliveryCallbackUrl = deliveryCallbackUrl};
-            return await CreateAsync(options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Converts a JSON string into a NotificationResource object
-        /// </summary>
-        /// <param name="json"> Raw JSON string </param>
-        /// <returns> NotificationResource object represented by the provided JSON </returns>
-        public static NotificationResource FromJson(string json)
-        {
-            // Convert all checked exceptions to Runtime
-            try
-            {
-                return JsonConvert.DeserializeObject<NotificationResource>(json);
-            }
-            catch (JsonException e)
-            {
-                throw new ApiException(e.Message, e);
-            }
-        }
-
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        [JsonProperty("sid")]
-        public string Sid { get; private set; }
-        /// <summary>
-        /// The SID of the Account that created the resource
-        /// </summary>
-        [JsonProperty("account_sid")]
-        public string AccountSid { get; private set; }
-        /// <summary>
-        /// The SID of the Service that the resource is associated with
-        /// </summary>
-        [JsonProperty("service_sid")]
-        public string ServiceSid { get; private set; }
-        /// <summary>
-        /// The RFC 2822 date and time in GMT when the resource was created
-        /// </summary>
-        [JsonProperty("date_created")]
-        public DateTime? DateCreated { get; private set; }
-        /// <summary>
-        /// The list of identity values of the Users to notify
-        /// </summary>
-        [JsonProperty("identities")]
-        public List<string> Identities { get; private set; }
-        /// <summary>
-        /// The tags that select the Bindings to notify
-        /// </summary>
-        [JsonProperty("tags")]
-        public List<string> Tags { get; private set; }
-        /// <summary>
-        /// The list of Segments to notify
-        /// </summary>
-        [JsonProperty("segments")]
-        public List<string> Segments { get; private set; }
-        /// <summary>
-        /// The priority of the notification
-        /// </summary>
-        [JsonProperty("priority")]
-        [JsonConverter(typeof(StringEnumConverter))]
-        public NotificationResource.PriorityEnum Priority { get; private set; }
-        /// <summary>
-        /// How long, in seconds, the notification is valid
-        /// </summary>
-        [JsonProperty("ttl")]
-        public int? Ttl { get; private set; }
-        /// <summary>
-        /// The notification title
-        /// </summary>
-        [JsonProperty("title")]
-        public string Title { get; private set; }
-        /// <summary>
-        /// The notification body text
-        /// </summary>
-        [JsonProperty("body")]
-        public string Body { get; private set; }
-        /// <summary>
-        /// The name of the sound to be played for the notification
-        /// </summary>
-        [JsonProperty("sound")]
-        public string Sound { get; private set; }
-        /// <summary>
-        /// The actions to display for the notification
-        /// </summary>
-        [JsonProperty("action")]
-        public string Action { get; private set; }
-        /// <summary>
-        /// The custom key-value pairs of the notification's payload
-        /// </summary>
-        [JsonProperty("data")]
-        public object Data { get; private set; }
-        /// <summary>
-        /// The APNS-specific payload that overrides corresponding attributes in a generic payload for APNS Bindings
-        /// </summary>
-        [JsonProperty("apn")]
-        public object Apn { get; private set; }
-        /// <summary>
-        /// The GCM-specific payload that overrides corresponding attributes in generic payload for GCM Bindings
-        /// </summary>
-        [JsonProperty("gcm")]
-        public object Gcm { get; private set; }
-        /// <summary>
-        /// The FCM-specific payload that overrides corresponding attributes in generic payload for FCM Bindings
-        /// </summary>
-        [JsonProperty("fcm")]
-        public object Fcm { get; private set; }
-        /// <summary>
-        /// The SMS-specific payload that overrides corresponding attributes in generic payload for SMS Bindings
-        /// </summary>
-        [JsonProperty("sms")]
-        public object Sms { get; private set; }
-        /// <summary>
-        /// Deprecated
-        /// </summary>
-        [JsonProperty("facebook_messenger")]
-        public object FacebookMessenger { get; private set; }
-        /// <summary>
-        /// Deprecated
-        /// </summary>
-        [JsonProperty("alexa")]
-        public object Alexa { get; private set; }
-
-        private NotificationResource()
-        {
-
-        }
+      public static readonly PriorityEnum High = new PriorityEnum("high");
+      public static readonly PriorityEnum Low = new PriorityEnum("low");
     }
+
+    private static Request BuildCreateRequest(CreateNotificationOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Post,
+          Rest.Domain.Notify,
+          "/v1/Services/" + options.PathServiceSid + "/Notifications",
+          postParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// create
+    /// </summary>
+    /// <param name="options"> Create Notification parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Notification </returns>
+    public static NotificationResource Create(CreateNotificationOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildCreateRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// create
+    /// </summary>
+    /// <param name="options"> Create Notification parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Notification </returns>
+    public static async System.Threading.Tasks.Task<NotificationResource> CreateAsync(CreateNotificationOptions options,
+                                                                                      ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildCreateRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// create
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to create the resource under </param>
+    /// <param name="identity"> The `identity` value that identifies the new resource's User </param>
+    /// <param name="tag"> A tag that selects the Bindings to notify </param>
+    /// <param name="body"> The notification body text </param>
+    /// <param name="priority"> The priority of the notification </param>
+    /// <param name="ttl"> How long, in seconds, the notification is valid </param>
+    /// <param name="title"> The notification title </param>
+    /// <param name="sound"> The name of the sound to be played for the notification </param>
+    /// <param name="action"> The actions to display for the notification </param>
+    /// <param name="data"> The custom key-value pairs of the notification's payload </param>
+    /// <param name="apn"> The APNS-specific payload that overrides corresponding attributes in a generic payload for APNS
+    ///           Bindings </param>
+    /// <param name="gcm"> The GCM-specific payload that overrides corresponding attributes in generic payload for GCM
+    ///           Bindings </param>
+    /// <param name="sms"> The SMS-specific payload that overrides corresponding attributes in generic payload for SMS
+    ///           Bindings </param>
+    /// <param name="facebookMessenger"> Deprecated </param>
+    /// <param name="fcm"> The FCM-specific payload that overrides corresponding attributes in generic payload for FCM
+    ///           Bindings </param>
+    /// <param name="segment"> A Segment to notify </param>
+    /// <param name="alexa"> Deprecated </param>
+    /// <param name="toBinding"> The destination address specified as a JSON string </param>
+    /// <param name="deliveryCallbackUrl"> URL to send webhooks </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Notification </returns>
+    public static NotificationResource Create(string pathServiceSid,
+                                              List<string> identity = null,
+                                              List<string> tag = null,
+                                              string body = null,
+                                              NotificationResource.PriorityEnum priority = null,
+                                              int? ttl = null,
+                                              string title = null,
+                                              string sound = null,
+                                              string action = null,
+                                              object data = null,
+                                              object apn = null,
+                                              object gcm = null,
+                                              object sms = null,
+                                              object facebookMessenger = null,
+                                              object fcm = null,
+                                              List<string> segment = null,
+                                              object alexa = null,
+                                              List<string> toBinding = null,
+                                              string deliveryCallbackUrl = null,
+                                              ITwilioRestClient client = null)
+    {
+      var options = new CreateNotificationOptions(pathServiceSid) { Identity = identity, Tag = tag, Body = body, Priority = priority, Ttl = ttl, Title = title, Sound = sound, Action = action, Data = data, Apn = apn, Gcm = gcm, Sms = sms, FacebookMessenger = facebookMessenger, Fcm = fcm, Segment = segment, Alexa = alexa, ToBinding = toBinding, DeliveryCallbackUrl = deliveryCallbackUrl };
+      return Create(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// create
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to create the resource under </param>
+    /// <param name="identity"> The `identity` value that identifies the new resource's User </param>
+    /// <param name="tag"> A tag that selects the Bindings to notify </param>
+    /// <param name="body"> The notification body text </param>
+    /// <param name="priority"> The priority of the notification </param>
+    /// <param name="ttl"> How long, in seconds, the notification is valid </param>
+    /// <param name="title"> The notification title </param>
+    /// <param name="sound"> The name of the sound to be played for the notification </param>
+    /// <param name="action"> The actions to display for the notification </param>
+    /// <param name="data"> The custom key-value pairs of the notification's payload </param>
+    /// <param name="apn"> The APNS-specific payload that overrides corresponding attributes in a generic payload for APNS
+    ///           Bindings </param>
+    /// <param name="gcm"> The GCM-specific payload that overrides corresponding attributes in generic payload for GCM
+    ///           Bindings </param>
+    /// <param name="sms"> The SMS-specific payload that overrides corresponding attributes in generic payload for SMS
+    ///           Bindings </param>
+    /// <param name="facebookMessenger"> Deprecated </param>
+    /// <param name="fcm"> The FCM-specific payload that overrides corresponding attributes in generic payload for FCM
+    ///           Bindings </param>
+    /// <param name="segment"> A Segment to notify </param>
+    /// <param name="alexa"> Deprecated </param>
+    /// <param name="toBinding"> The destination address specified as a JSON string </param>
+    /// <param name="deliveryCallbackUrl"> URL to send webhooks </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Notification </returns>
+    public static async System.Threading.Tasks.Task<NotificationResource> CreateAsync(string pathServiceSid,
+                                                                                      List<string> identity = null,
+                                                                                      List<string> tag = null,
+                                                                                      string body = null,
+                                                                                      NotificationResource.PriorityEnum priority = null,
+                                                                                      int? ttl = null,
+                                                                                      string title = null,
+                                                                                      string sound = null,
+                                                                                      string action = null,
+                                                                                      object data = null,
+                                                                                      object apn = null,
+                                                                                      object gcm = null,
+                                                                                      object sms = null,
+                                                                                      object facebookMessenger = null,
+                                                                                      object fcm = null,
+                                                                                      List<string> segment = null,
+                                                                                      object alexa = null,
+                                                                                      List<string> toBinding = null,
+                                                                                      string deliveryCallbackUrl = null,
+                                                                                      ITwilioRestClient client = null)
+    {
+      var options = new CreateNotificationOptions(pathServiceSid) { Identity = identity, Tag = tag, Body = body, Priority = priority, Ttl = ttl, Title = title, Sound = sound, Action = action, Data = data, Apn = apn, Gcm = gcm, Sms = sms, FacebookMessenger = facebookMessenger, Fcm = fcm, Segment = segment, Alexa = alexa, ToBinding = toBinding, DeliveryCallbackUrl = deliveryCallbackUrl };
+      return await CreateAsync(options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Converts a JSON string into a NotificationResource object
+    /// </summary>
+    /// <param name="json"> Raw JSON string </param>
+    /// <returns> NotificationResource object represented by the provided JSON </returns>
+    public static NotificationResource FromJson(string json)
+    {
+      // Convert all checked exceptions to Runtime
+      try
+      {
+        return JsonConvert.DeserializeObject<NotificationResource>(json);
+      }
+      catch (JsonException e)
+      {
+        throw new ApiException(e.Message, e);
+      }
+    }
+
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    [JsonProperty("sid")]
+    public string Sid { get; private set; }
+    /// <summary>
+    /// The SID of the Account that created the resource
+    /// </summary>
+    [JsonProperty("account_sid")]
+    public string AccountSid { get; private set; }
+    /// <summary>
+    /// The SID of the Service that the resource is associated with
+    /// </summary>
+    [JsonProperty("service_sid")]
+    public string ServiceSid { get; private set; }
+    /// <summary>
+    /// The RFC 2822 date and time in GMT when the resource was created
+    /// </summary>
+    [JsonProperty("date_created")]
+    public DateTime? DateCreated { get; private set; }
+    /// <summary>
+    /// The list of identity values of the Users to notify
+    /// </summary>
+    [JsonProperty("identities")]
+    public List<string> Identities { get; private set; }
+    /// <summary>
+    /// The tags that select the Bindings to notify
+    /// </summary>
+    [JsonProperty("tags")]
+    public List<string> Tags { get; private set; }
+    /// <summary>
+    /// The list of Segments to notify
+    /// </summary>
+    [JsonProperty("segments")]
+    public List<string> Segments { get; private set; }
+    /// <summary>
+    /// The priority of the notification
+    /// </summary>
+    [JsonProperty("priority")]
+    [JsonConverter(typeof(StringEnumConverter))]
+    public NotificationResource.PriorityEnum Priority { get; private set; }
+    /// <summary>
+    /// How long, in seconds, the notification is valid
+    /// </summary>
+    [JsonProperty("ttl")]
+    public int? Ttl { get; private set; }
+    /// <summary>
+    /// The notification title
+    /// </summary>
+    [JsonProperty("title")]
+    public string Title { get; private set; }
+    /// <summary>
+    /// The notification body text
+    /// </summary>
+    [JsonProperty("body")]
+    public string Body { get; private set; }
+    /// <summary>
+    /// The name of the sound to be played for the notification
+    /// </summary>
+    [JsonProperty("sound")]
+    public string Sound { get; private set; }
+    /// <summary>
+    /// The actions to display for the notification
+    /// </summary>
+    [JsonProperty("action")]
+    public string Action { get; private set; }
+    /// <summary>
+    /// The custom key-value pairs of the notification's payload
+    /// </summary>
+    [JsonProperty("data")]
+    public object Data { get; private set; }
+    /// <summary>
+    /// The APNS-specific payload that overrides corresponding attributes in a generic payload for APNS Bindings
+    /// </summary>
+    [JsonProperty("apn")]
+    public object Apn { get; private set; }
+    /// <summary>
+    /// The GCM-specific payload that overrides corresponding attributes in generic payload for GCM Bindings
+    /// </summary>
+    [JsonProperty("gcm")]
+    public object Gcm { get; private set; }
+    /// <summary>
+    /// The FCM-specific payload that overrides corresponding attributes in generic payload for FCM Bindings
+    /// </summary>
+    [JsonProperty("fcm")]
+    public object Fcm { get; private set; }
+    /// <summary>
+    /// The SMS-specific payload that overrides corresponding attributes in generic payload for SMS Bindings
+    /// </summary>
+    [JsonProperty("sms")]
+    public object Sms { get; private set; }
+    /// <summary>
+    /// Deprecated
+    /// </summary>
+    [JsonProperty("facebook_messenger")]
+    public object FacebookMessenger { get; private set; }
+    /// <summary>
+    /// Deprecated
+    /// </summary>
+    [JsonProperty("alexa")]
+    public object Alexa { get; private set; }
+
+    private NotificationResource()
+    {
+
+    }
+  }
 
 }

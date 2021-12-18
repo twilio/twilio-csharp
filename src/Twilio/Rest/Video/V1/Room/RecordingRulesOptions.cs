@@ -11,71 +11,71 @@ using Twilio.Converters;
 namespace Twilio.Rest.Video.V1.Room
 {
 
+  /// <summary>
+  /// Returns a list of Recording Rules for the Room.
+  /// </summary>
+  public class FetchRecordingRulesOptions : IOptions<RecordingRulesResource>
+  {
     /// <summary>
-    /// Returns a list of Recording Rules for the Room.
+    /// The SID of the Room resource where the recording rules to fetch apply
     /// </summary>
-    public class FetchRecordingRulesOptions : IOptions<RecordingRulesResource>
+    public string PathRoomSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchRecordingRulesOptions
+    /// </summary>
+    /// <param name="pathRoomSid"> The SID of the Room resource where the recording rules to fetch apply </param>
+    public FetchRecordingRulesOptions(string pathRoomSid)
     {
-        /// <summary>
-        /// The SID of the Room resource where the recording rules to fetch apply
-        /// </summary>
-        public string PathRoomSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchRecordingRulesOptions
-        /// </summary>
-        /// <param name="pathRoomSid"> The SID of the Room resource where the recording rules to fetch apply </param>
-        public FetchRecordingRulesOptions(string pathRoomSid)
-        {
-            PathRoomSid = pathRoomSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathRoomSid = pathRoomSid;
     }
 
     /// <summary>
-    /// Update the Recording Rules for the Room
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateRecordingRulesOptions : IOptions<RecordingRulesResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Room resource where the recording rules to update apply
-        /// </summary>
-        public string PathRoomSid { get; }
-        /// <summary>
-        /// A JSON-encoded array of recording rules
-        /// </summary>
-        public object Rules { get; set; }
-
-        /// <summary>
-        /// Construct a new UpdateRecordingRulesOptions
-        /// </summary>
-        /// <param name="pathRoomSid"> The SID of the Room resource where the recording rules to update apply </param>
-        public UpdateRecordingRulesOptions(string pathRoomSid)
-        {
-            PathRoomSid = pathRoomSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Rules != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Rules", Serializers.JsonObject(Rules)));
-            }
-
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
+
+  /// <summary>
+  /// Update the Recording Rules for the Room
+  /// </summary>
+  public class UpdateRecordingRulesOptions : IOptions<RecordingRulesResource>
+  {
+    /// <summary>
+    /// The SID of the Room resource where the recording rules to update apply
+    /// </summary>
+    public string PathRoomSid { get; }
+    /// <summary>
+    /// A JSON-encoded array of recording rules
+    /// </summary>
+    public object Rules { get; set; }
+
+    /// <summary>
+    /// Construct a new UpdateRecordingRulesOptions
+    /// </summary>
+    /// <param name="pathRoomSid"> The SID of the Room resource where the recording rules to update apply </param>
+    public UpdateRecordingRulesOptions(string pathRoomSid)
+    {
+      PathRoomSid = pathRoomSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (Rules != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Rules", Serializers.JsonObject(Rules)));
+      }
+
+      return p;
+    }
+  }
 
 }

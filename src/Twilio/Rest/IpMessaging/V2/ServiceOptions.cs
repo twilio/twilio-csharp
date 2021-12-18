@@ -12,425 +12,425 @@ using Twilio.Converters;
 namespace Twilio.Rest.IpMessaging.V2
 {
 
+  /// <summary>
+  /// FetchServiceOptions
+  /// </summary>
+  public class FetchServiceOptions : IOptions<ServiceResource>
+  {
     /// <summary>
-    /// FetchServiceOptions
+    /// The sid
     /// </summary>
-    public class FetchServiceOptions : IOptions<ServiceResource>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchServiceOptions
+    /// </summary>
+    /// <param name="pathSid"> The sid </param>
+    public FetchServiceOptions(string pathSid)
     {
-        /// <summary>
-        /// The sid
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchServiceOptions
-        /// </summary>
-        /// <param name="pathSid"> The sid </param>
-        public FetchServiceOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// DeleteServiceOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteServiceOptions : IOptions<ServiceResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The sid
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new DeleteServiceOptions
-        /// </summary>
-        /// <param name="pathSid"> The sid </param>
-        public DeleteServiceOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
+  /// <summary>
+  /// DeleteServiceOptions
+  /// </summary>
+  public class DeleteServiceOptions : IOptions<ServiceResource>
+  {
+    /// <summary>
+    /// The sid
+    /// </summary>
+    public string PathSid { get; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+    /// <summary>
+    /// Construct a new DeleteServiceOptions
+    /// </summary>
+    /// <param name="pathSid"> The sid </param>
+    public DeleteServiceOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// CreateServiceOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class CreateServiceOptions : IOptions<ServiceResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The friendly_name
-        /// </summary>
-        public string FriendlyName { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new CreateServiceOptions
-        /// </summary>
-        /// <param name="friendlyName"> The friendly_name </param>
-        public CreateServiceOptions(string friendlyName)
-        {
-            FriendlyName = friendlyName;
-        }
+  /// <summary>
+  /// CreateServiceOptions
+  /// </summary>
+  public class CreateServiceOptions : IOptions<ServiceResource>
+  {
+    /// <summary>
+    /// The friendly_name
+    /// </summary>
+    public string FriendlyName { get; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new CreateServiceOptions
+    /// </summary>
+    /// <param name="friendlyName"> The friendly_name </param>
+    public CreateServiceOptions(string friendlyName)
+    {
+      FriendlyName = friendlyName;
     }
 
     /// <summary>
-    /// ReadServiceOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadServiceOptions : ReadOptions<ServiceResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
+      var p = new List<KeyValuePair<string, string>>();
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
 
-            return p;
-        }
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// ReadServiceOptions
+  /// </summary>
+  public class ReadServiceOptions : ReadOptions<ServiceResource>
+  {
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// UpdateServiceOptions
+  /// </summary>
+  public class UpdateServiceOptions : IOptions<ServiceResource>
+  {
+    /// <summary>
+    /// The sid
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// The friendly_name
+    /// </summary>
+    public string FriendlyName { get; set; }
+    /// <summary>
+    /// The default_service_role_sid
+    /// </summary>
+    public string DefaultServiceRoleSid { get; set; }
+    /// <summary>
+    /// The default_channel_role_sid
+    /// </summary>
+    public string DefaultChannelRoleSid { get; set; }
+    /// <summary>
+    /// The default_channel_creator_role_sid
+    /// </summary>
+    public string DefaultChannelCreatorRoleSid { get; set; }
+    /// <summary>
+    /// The read_status_enabled
+    /// </summary>
+    public bool? ReadStatusEnabled { get; set; }
+    /// <summary>
+    /// The reachability_enabled
+    /// </summary>
+    public bool? ReachabilityEnabled { get; set; }
+    /// <summary>
+    /// The typing_indicator_timeout
+    /// </summary>
+    public int? TypingIndicatorTimeout { get; set; }
+    /// <summary>
+    /// The consumption_report_interval
+    /// </summary>
+    public int? ConsumptionReportInterval { get; set; }
+    /// <summary>
+    /// The notifications.new_message.enabled
+    /// </summary>
+    public bool? NotificationsNewMessageEnabled { get; set; }
+    /// <summary>
+    /// The notifications.new_message.template
+    /// </summary>
+    public string NotificationsNewMessageTemplate { get; set; }
+    /// <summary>
+    /// The notifications.new_message.sound
+    /// </summary>
+    public string NotificationsNewMessageSound { get; set; }
+    /// <summary>
+    /// The notifications.new_message.badge_count_enabled
+    /// </summary>
+    public bool? NotificationsNewMessageBadgeCountEnabled { get; set; }
+    /// <summary>
+    /// The notifications.added_to_channel.enabled
+    /// </summary>
+    public bool? NotificationsAddedToChannelEnabled { get; set; }
+    /// <summary>
+    /// The notifications.added_to_channel.template
+    /// </summary>
+    public string NotificationsAddedToChannelTemplate { get; set; }
+    /// <summary>
+    /// The notifications.added_to_channel.sound
+    /// </summary>
+    public string NotificationsAddedToChannelSound { get; set; }
+    /// <summary>
+    /// The notifications.removed_from_channel.enabled
+    /// </summary>
+    public bool? NotificationsRemovedFromChannelEnabled { get; set; }
+    /// <summary>
+    /// The notifications.removed_from_channel.template
+    /// </summary>
+    public string NotificationsRemovedFromChannelTemplate { get; set; }
+    /// <summary>
+    /// The notifications.removed_from_channel.sound
+    /// </summary>
+    public string NotificationsRemovedFromChannelSound { get; set; }
+    /// <summary>
+    /// The notifications.invited_to_channel.enabled
+    /// </summary>
+    public bool? NotificationsInvitedToChannelEnabled { get; set; }
+    /// <summary>
+    /// The notifications.invited_to_channel.template
+    /// </summary>
+    public string NotificationsInvitedToChannelTemplate { get; set; }
+    /// <summary>
+    /// The notifications.invited_to_channel.sound
+    /// </summary>
+    public string NotificationsInvitedToChannelSound { get; set; }
+    /// <summary>
+    /// The pre_webhook_url
+    /// </summary>
+    public Uri PreWebhookUrl { get; set; }
+    /// <summary>
+    /// The post_webhook_url
+    /// </summary>
+    public Uri PostWebhookUrl { get; set; }
+    /// <summary>
+    /// The webhook_method
+    /// </summary>
+    public Twilio.Http.HttpMethod WebhookMethod { get; set; }
+    /// <summary>
+    /// The webhook_filters
+    /// </summary>
+    public List<string> WebhookFilters { get; set; }
+    /// <summary>
+    /// The limits.channel_members
+    /// </summary>
+    public int? LimitsChannelMembers { get; set; }
+    /// <summary>
+    /// The limits.user_channels
+    /// </summary>
+    public int? LimitsUserChannels { get; set; }
+    /// <summary>
+    /// The media.compatibility_message
+    /// </summary>
+    public string MediaCompatibilityMessage { get; set; }
+    /// <summary>
+    /// The pre_webhook_retry_count
+    /// </summary>
+    public int? PreWebhookRetryCount { get; set; }
+    /// <summary>
+    /// The post_webhook_retry_count
+    /// </summary>
+    public int? PostWebhookRetryCount { get; set; }
+    /// <summary>
+    /// The notifications.log_enabled
+    /// </summary>
+    public bool? NotificationsLogEnabled { get; set; }
+
+    /// <summary>
+    /// Construct a new UpdateServiceOptions
+    /// </summary>
+    /// <param name="pathSid"> The sid </param>
+    public UpdateServiceOptions(string pathSid)
+    {
+      PathSid = pathSid;
+      WebhookFilters = new List<string>();
     }
 
     /// <summary>
-    /// UpdateServiceOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateServiceOptions : IOptions<ServiceResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The sid
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// The friendly_name
-        /// </summary>
-        public string FriendlyName { get; set; }
-        /// <summary>
-        /// The default_service_role_sid
-        /// </summary>
-        public string DefaultServiceRoleSid { get; set; }
-        /// <summary>
-        /// The default_channel_role_sid
-        /// </summary>
-        public string DefaultChannelRoleSid { get; set; }
-        /// <summary>
-        /// The default_channel_creator_role_sid
-        /// </summary>
-        public string DefaultChannelCreatorRoleSid { get; set; }
-        /// <summary>
-        /// The read_status_enabled
-        /// </summary>
-        public bool? ReadStatusEnabled { get; set; }
-        /// <summary>
-        /// The reachability_enabled
-        /// </summary>
-        public bool? ReachabilityEnabled { get; set; }
-        /// <summary>
-        /// The typing_indicator_timeout
-        /// </summary>
-        public int? TypingIndicatorTimeout { get; set; }
-        /// <summary>
-        /// The consumption_report_interval
-        /// </summary>
-        public int? ConsumptionReportInterval { get; set; }
-        /// <summary>
-        /// The notifications.new_message.enabled
-        /// </summary>
-        public bool? NotificationsNewMessageEnabled { get; set; }
-        /// <summary>
-        /// The notifications.new_message.template
-        /// </summary>
-        public string NotificationsNewMessageTemplate { get; set; }
-        /// <summary>
-        /// The notifications.new_message.sound
-        /// </summary>
-        public string NotificationsNewMessageSound { get; set; }
-        /// <summary>
-        /// The notifications.new_message.badge_count_enabled
-        /// </summary>
-        public bool? NotificationsNewMessageBadgeCountEnabled { get; set; }
-        /// <summary>
-        /// The notifications.added_to_channel.enabled
-        /// </summary>
-        public bool? NotificationsAddedToChannelEnabled { get; set; }
-        /// <summary>
-        /// The notifications.added_to_channel.template
-        /// </summary>
-        public string NotificationsAddedToChannelTemplate { get; set; }
-        /// <summary>
-        /// The notifications.added_to_channel.sound
-        /// </summary>
-        public string NotificationsAddedToChannelSound { get; set; }
-        /// <summary>
-        /// The notifications.removed_from_channel.enabled
-        /// </summary>
-        public bool? NotificationsRemovedFromChannelEnabled { get; set; }
-        /// <summary>
-        /// The notifications.removed_from_channel.template
-        /// </summary>
-        public string NotificationsRemovedFromChannelTemplate { get; set; }
-        /// <summary>
-        /// The notifications.removed_from_channel.sound
-        /// </summary>
-        public string NotificationsRemovedFromChannelSound { get; set; }
-        /// <summary>
-        /// The notifications.invited_to_channel.enabled
-        /// </summary>
-        public bool? NotificationsInvitedToChannelEnabled { get; set; }
-        /// <summary>
-        /// The notifications.invited_to_channel.template
-        /// </summary>
-        public string NotificationsInvitedToChannelTemplate { get; set; }
-        /// <summary>
-        /// The notifications.invited_to_channel.sound
-        /// </summary>
-        public string NotificationsInvitedToChannelSound { get; set; }
-        /// <summary>
-        /// The pre_webhook_url
-        /// </summary>
-        public Uri PreWebhookUrl { get; set; }
-        /// <summary>
-        /// The post_webhook_url
-        /// </summary>
-        public Uri PostWebhookUrl { get; set; }
-        /// <summary>
-        /// The webhook_method
-        /// </summary>
-        public Twilio.Http.HttpMethod WebhookMethod { get; set; }
-        /// <summary>
-        /// The webhook_filters
-        /// </summary>
-        public List<string> WebhookFilters { get; set; }
-        /// <summary>
-        /// The limits.channel_members
-        /// </summary>
-        public int? LimitsChannelMembers { get; set; }
-        /// <summary>
-        /// The limits.user_channels
-        /// </summary>
-        public int? LimitsUserChannels { get; set; }
-        /// <summary>
-        /// The media.compatibility_message
-        /// </summary>
-        public string MediaCompatibilityMessage { get; set; }
-        /// <summary>
-        /// The pre_webhook_retry_count
-        /// </summary>
-        public int? PreWebhookRetryCount { get; set; }
-        /// <summary>
-        /// The post_webhook_retry_count
-        /// </summary>
-        public int? PostWebhookRetryCount { get; set; }
-        /// <summary>
-        /// The notifications.log_enabled
-        /// </summary>
-        public bool? NotificationsLogEnabled { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
 
-        /// <summary>
-        /// Construct a new UpdateServiceOptions
-        /// </summary>
-        /// <param name="pathSid"> The sid </param>
-        public UpdateServiceOptions(string pathSid)
-        {
-            PathSid = pathSid;
-            WebhookFilters = new List<string>();
-        }
+      if (DefaultServiceRoleSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("DefaultServiceRoleSid", DefaultServiceRoleSid.ToString()));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
+      if (DefaultChannelRoleSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("DefaultChannelRoleSid", DefaultChannelRoleSid.ToString()));
+      }
 
-            if (DefaultServiceRoleSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DefaultServiceRoleSid", DefaultServiceRoleSid.ToString()));
-            }
+      if (DefaultChannelCreatorRoleSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("DefaultChannelCreatorRoleSid", DefaultChannelCreatorRoleSid.ToString()));
+      }
 
-            if (DefaultChannelRoleSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DefaultChannelRoleSid", DefaultChannelRoleSid.ToString()));
-            }
+      if (ReadStatusEnabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ReadStatusEnabled", ReadStatusEnabled.Value.ToString().ToLower()));
+      }
 
-            if (DefaultChannelCreatorRoleSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DefaultChannelCreatorRoleSid", DefaultChannelCreatorRoleSid.ToString()));
-            }
+      if (ReachabilityEnabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ReachabilityEnabled", ReachabilityEnabled.Value.ToString().ToLower()));
+      }
 
-            if (ReadStatusEnabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ReadStatusEnabled", ReadStatusEnabled.Value.ToString().ToLower()));
-            }
+      if (TypingIndicatorTimeout != null)
+      {
+        p.Add(new KeyValuePair<string, string>("TypingIndicatorTimeout", TypingIndicatorTimeout.ToString()));
+      }
 
-            if (ReachabilityEnabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ReachabilityEnabled", ReachabilityEnabled.Value.ToString().ToLower()));
-            }
+      if (ConsumptionReportInterval != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ConsumptionReportInterval", ConsumptionReportInterval.ToString()));
+      }
 
-            if (TypingIndicatorTimeout != null)
-            {
-                p.Add(new KeyValuePair<string, string>("TypingIndicatorTimeout", TypingIndicatorTimeout.ToString()));
-            }
+      if (NotificationsNewMessageEnabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Notifications.NewMessage.Enabled", NotificationsNewMessageEnabled.Value.ToString().ToLower()));
+      }
 
-            if (ConsumptionReportInterval != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ConsumptionReportInterval", ConsumptionReportInterval.ToString()));
-            }
+      if (NotificationsNewMessageTemplate != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Notifications.NewMessage.Template", NotificationsNewMessageTemplate));
+      }
 
-            if (NotificationsNewMessageEnabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Notifications.NewMessage.Enabled", NotificationsNewMessageEnabled.Value.ToString().ToLower()));
-            }
+      if (NotificationsNewMessageSound != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Notifications.NewMessage.Sound", NotificationsNewMessageSound));
+      }
 
-            if (NotificationsNewMessageTemplate != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Notifications.NewMessage.Template", NotificationsNewMessageTemplate));
-            }
+      if (NotificationsNewMessageBadgeCountEnabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Notifications.NewMessage.BadgeCountEnabled", NotificationsNewMessageBadgeCountEnabled.Value.ToString().ToLower()));
+      }
 
-            if (NotificationsNewMessageSound != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Notifications.NewMessage.Sound", NotificationsNewMessageSound));
-            }
+      if (NotificationsAddedToChannelEnabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Notifications.AddedToChannel.Enabled", NotificationsAddedToChannelEnabled.Value.ToString().ToLower()));
+      }
 
-            if (NotificationsNewMessageBadgeCountEnabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Notifications.NewMessage.BadgeCountEnabled", NotificationsNewMessageBadgeCountEnabled.Value.ToString().ToLower()));
-            }
+      if (NotificationsAddedToChannelTemplate != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Notifications.AddedToChannel.Template", NotificationsAddedToChannelTemplate));
+      }
 
-            if (NotificationsAddedToChannelEnabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Notifications.AddedToChannel.Enabled", NotificationsAddedToChannelEnabled.Value.ToString().ToLower()));
-            }
+      if (NotificationsAddedToChannelSound != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Notifications.AddedToChannel.Sound", NotificationsAddedToChannelSound));
+      }
 
-            if (NotificationsAddedToChannelTemplate != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Notifications.AddedToChannel.Template", NotificationsAddedToChannelTemplate));
-            }
+      if (NotificationsRemovedFromChannelEnabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Notifications.RemovedFromChannel.Enabled", NotificationsRemovedFromChannelEnabled.Value.ToString().ToLower()));
+      }
 
-            if (NotificationsAddedToChannelSound != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Notifications.AddedToChannel.Sound", NotificationsAddedToChannelSound));
-            }
+      if (NotificationsRemovedFromChannelTemplate != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Notifications.RemovedFromChannel.Template", NotificationsRemovedFromChannelTemplate));
+      }
 
-            if (NotificationsRemovedFromChannelEnabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Notifications.RemovedFromChannel.Enabled", NotificationsRemovedFromChannelEnabled.Value.ToString().ToLower()));
-            }
+      if (NotificationsRemovedFromChannelSound != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Notifications.RemovedFromChannel.Sound", NotificationsRemovedFromChannelSound));
+      }
 
-            if (NotificationsRemovedFromChannelTemplate != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Notifications.RemovedFromChannel.Template", NotificationsRemovedFromChannelTemplate));
-            }
+      if (NotificationsInvitedToChannelEnabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Notifications.InvitedToChannel.Enabled", NotificationsInvitedToChannelEnabled.Value.ToString().ToLower()));
+      }
 
-            if (NotificationsRemovedFromChannelSound != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Notifications.RemovedFromChannel.Sound", NotificationsRemovedFromChannelSound));
-            }
+      if (NotificationsInvitedToChannelTemplate != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Notifications.InvitedToChannel.Template", NotificationsInvitedToChannelTemplate));
+      }
 
-            if (NotificationsInvitedToChannelEnabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Notifications.InvitedToChannel.Enabled", NotificationsInvitedToChannelEnabled.Value.ToString().ToLower()));
-            }
+      if (NotificationsInvitedToChannelSound != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Notifications.InvitedToChannel.Sound", NotificationsInvitedToChannelSound));
+      }
 
-            if (NotificationsInvitedToChannelTemplate != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Notifications.InvitedToChannel.Template", NotificationsInvitedToChannelTemplate));
-            }
+      if (PreWebhookUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PreWebhookUrl", Serializers.Url(PreWebhookUrl)));
+      }
 
-            if (NotificationsInvitedToChannelSound != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Notifications.InvitedToChannel.Sound", NotificationsInvitedToChannelSound));
-            }
+      if (PostWebhookUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PostWebhookUrl", Serializers.Url(PostWebhookUrl)));
+      }
 
-            if (PreWebhookUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PreWebhookUrl", Serializers.Url(PreWebhookUrl)));
-            }
+      if (WebhookMethod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("WebhookMethod", WebhookMethod.ToString()));
+      }
 
-            if (PostWebhookUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PostWebhookUrl", Serializers.Url(PostWebhookUrl)));
-            }
+      if (WebhookFilters != null)
+      {
+        p.AddRange(WebhookFilters.Select(prop => new KeyValuePair<string, string>("WebhookFilters", prop)));
+      }
 
-            if (WebhookMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("WebhookMethod", WebhookMethod.ToString()));
-            }
+      if (LimitsChannelMembers != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Limits.ChannelMembers", LimitsChannelMembers.ToString()));
+      }
 
-            if (WebhookFilters != null)
-            {
-                p.AddRange(WebhookFilters.Select(prop => new KeyValuePair<string, string>("WebhookFilters", prop)));
-            }
+      if (LimitsUserChannels != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Limits.UserChannels", LimitsUserChannels.ToString()));
+      }
 
-            if (LimitsChannelMembers != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Limits.ChannelMembers", LimitsChannelMembers.ToString()));
-            }
+      if (MediaCompatibilityMessage != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Media.CompatibilityMessage", MediaCompatibilityMessage));
+      }
 
-            if (LimitsUserChannels != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Limits.UserChannels", LimitsUserChannels.ToString()));
-            }
+      if (PreWebhookRetryCount != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PreWebhookRetryCount", PreWebhookRetryCount.ToString()));
+      }
 
-            if (MediaCompatibilityMessage != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Media.CompatibilityMessage", MediaCompatibilityMessage));
-            }
+      if (PostWebhookRetryCount != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PostWebhookRetryCount", PostWebhookRetryCount.ToString()));
+      }
 
-            if (PreWebhookRetryCount != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PreWebhookRetryCount", PreWebhookRetryCount.ToString()));
-            }
+      if (NotificationsLogEnabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Notifications.LogEnabled", NotificationsLogEnabled.Value.ToString().ToLower()));
+      }
 
-            if (PostWebhookRetryCount != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PostWebhookRetryCount", PostWebhookRetryCount.ToString()));
-            }
-
-            if (NotificationsLogEnabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Notifications.LogEnabled", NotificationsLogEnabled.Value.ToString().ToLower()));
-            }
-
-            return p;
-        }
+      return p;
     }
+  }
 
 }

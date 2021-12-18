@@ -9,62 +9,62 @@ using System.Web;
 
 namespace Twilio.Jwt.Client
 {
+  /// <summary>
+  /// Event stream scope for client capabilities
+  /// </summary>
+  public class EventStreamScope : IScope
+  {
+    private static readonly string Scope = "scope:stream:subscribe";
+
+    private readonly Dictionary<string, string> _filters;
+
     /// <summary>
-    /// Event stream scope for client capabilities
+    /// Create a new EventStreamScope
     /// </summary>
-    public class EventStreamScope : IScope
+    /// <param name="filters">filters to use</param>
+    public EventStreamScope(Dictionary<string, string> filters = null)
     {
-        private static readonly string Scope = "scope:stream:subscribe";
+      this._filters = filters;
+    }
 
-        private readonly Dictionary<string, string> _filters;
+    /// <summary>
+    /// Generate scope payload
+    /// </summary>
+    public string Payload
+    {
+      get
+      {
+        var queryArgs = new List<string>();
+        queryArgs.Add("path=/2010-04-01/Events");
 
-        /// <summary>
-        /// Create a new EventStreamScope
-        /// </summary>
-        /// <param name="filters">filters to use</param>
-        public EventStreamScope(Dictionary<string, string> filters = null)
+        if (_filters != null)
         {
-            this._filters = filters;
+          queryArgs.Add(BuildParameter("appParams", GetFilterParams()));
         }
 
-        /// <summary>
-        /// Generate scope payload
-        /// </summary>
-        public string Payload
-        {
-            get
-            {
-                var queryArgs = new List<string>();
-                queryArgs.Add("path=/2010-04-01/Events");
+        var queryString = String.Join("&", queryArgs.ToArray());
+        return Scope + "?" + queryString;
+      }
+    }
 
-                if (_filters != null)
-                {
-                    queryArgs.Add(BuildParameter("appParams", GetFilterParams()));
-                }
+    private string GetFilterParams()
+    {
+      var queryParams = new List<string>();
+      foreach (var entry in _filters)
+      {
+        queryParams.Add(BuildParameter(entry.Key, entry.Value));
+      }
 
-                var queryString = String.Join("&", queryArgs.ToArray());
-                return Scope + "?" + queryString;
-            }
-        }
+      return String.Join("&", queryParams.ToArray());
+    }
 
-        private string GetFilterParams()
-        {
-            var queryParams = new List<string>();
-            foreach (var entry in _filters)
-            {
-                queryParams.Add(BuildParameter(entry.Key, entry.Value));
-            }
-
-            return String.Join("&", queryParams.ToArray());
-        }
-
-        private string BuildParameter(string k, string v)
-        {
+    private string BuildParameter(string k, string v)
+    {
 #if !NET35
-            return WebUtility.UrlEncode(k) + "=" + WebUtility.UrlEncode(v);
+      return WebUtility.UrlEncode(k) + "=" + WebUtility.UrlEncode(v);
 #else
             return HttpUtility.UrlEncode(k) + "=" + HttpUtility.UrlEncode(v);
 #endif
-        }
     }
+  }
 }

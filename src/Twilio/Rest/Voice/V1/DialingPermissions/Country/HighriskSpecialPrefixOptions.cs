@@ -11,42 +11,42 @@ using Twilio.Converters;
 namespace Twilio.Rest.Voice.V1.DialingPermissions.Country
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// Fetch the high-risk special services prefixes from the country resource corresponding to the [ISO country
+  /// code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
+  /// </summary>
+  public class ReadHighriskSpecialPrefixOptions : ReadOptions<HighriskSpecialPrefixResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// Fetch the high-risk special services prefixes from the country resource corresponding to the [ISO country
-    /// code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
+    /// The ISO 3166-1 country code
     /// </summary>
-    public class ReadHighriskSpecialPrefixOptions : ReadOptions<HighriskSpecialPrefixResource>
+    public string PathIsoCode { get; }
+
+    /// <summary>
+    /// Construct a new ReadHighriskSpecialPrefixOptions
+    /// </summary>
+    /// <param name="pathIsoCode"> The ISO 3166-1 country code </param>
+    public ReadHighriskSpecialPrefixOptions(string pathIsoCode)
     {
-        /// <summary>
-        /// The ISO 3166-1 country code
-        /// </summary>
-        public string PathIsoCode { get; }
-
-        /// <summary>
-        /// Construct a new ReadHighriskSpecialPrefixOptions
-        /// </summary>
-        /// <param name="pathIsoCode"> The ISO 3166-1 country code </param>
-        public ReadHighriskSpecialPrefixOptions(string pathIsoCode)
-        {
-            PathIsoCode = pathIsoCode;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+      PathIsoCode = pathIsoCode;
     }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
 
 }

@@ -11,97 +11,97 @@ using Twilio.Converters;
 namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber.AssignedAddOn
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Fetch an instance of an Extension for the Assigned Add-on.
+  /// </summary>
+  public class FetchAssignedAddOnExtensionOptions : IOptions<AssignedAddOnExtensionResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Fetch an instance of an Extension for the Assigned Add-on.
+    /// The SID of the Account that created the resource to fetch
     /// </summary>
-    public class FetchAssignedAddOnExtensionOptions : IOptions<AssignedAddOnExtensionResource>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The SID of the Phone Number to which the Add-on is assigned
+    /// </summary>
+    public string PathResourceSid { get; }
+    /// <summary>
+    /// The SID that uniquely identifies the assigned Add-on installation
+    /// </summary>
+    public string PathAssignedAddOnSid { get; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchAssignedAddOnExtensionOptions
+    /// </summary>
+    /// <param name="pathResourceSid"> The SID of the Phone Number to which the Add-on is assigned </param>
+    /// <param name="pathAssignedAddOnSid"> The SID that uniquely identifies the assigned Add-on installation </param>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public FetchAssignedAddOnExtensionOptions(string pathResourceSid, string pathAssignedAddOnSid, string pathSid)
     {
-        /// <summary>
-        /// The SID of the Account that created the resource to fetch
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The SID of the Phone Number to which the Add-on is assigned
-        /// </summary>
-        public string PathResourceSid { get; }
-        /// <summary>
-        /// The SID that uniquely identifies the assigned Add-on installation
-        /// </summary>
-        public string PathAssignedAddOnSid { get; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchAssignedAddOnExtensionOptions
-        /// </summary>
-        /// <param name="pathResourceSid"> The SID of the Phone Number to which the Add-on is assigned </param>
-        /// <param name="pathAssignedAddOnSid"> The SID that uniquely identifies the assigned Add-on installation </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public FetchAssignedAddOnExtensionOptions(string pathResourceSid, string pathAssignedAddOnSid, string pathSid)
-        {
-            PathResourceSid = pathResourceSid;
-            PathAssignedAddOnSid = pathAssignedAddOnSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathResourceSid = pathResourceSid;
+      PathAssignedAddOnSid = pathAssignedAddOnSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Retrieve a list of Extensions for the Assigned Add-on.
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadAssignedAddOnExtensionOptions : ReadOptions<AssignedAddOnExtensionResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Account that created the resources to read
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The SID of the Phone Number to which the Add-on is assigned
-        /// </summary>
-        public string PathResourceSid { get; }
-        /// <summary>
-        /// The SID that uniquely identifies the assigned Add-on installation
-        /// </summary>
-        public string PathAssignedAddOnSid { get; }
-
-        /// <summary>
-        /// Construct a new ReadAssignedAddOnExtensionOptions
-        /// </summary>
-        /// <param name="pathResourceSid"> The SID of the Phone Number to which the Add-on is assigned </param>
-        /// <param name="pathAssignedAddOnSid"> The SID that uniquely identifies the assigned Add-on installation </param>
-        public ReadAssignedAddOnExtensionOptions(string pathResourceSid, string pathAssignedAddOnSid)
-        {
-            PathResourceSid = pathResourceSid;
-            PathAssignedAddOnSid = pathAssignedAddOnSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
+
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Retrieve a list of Extensions for the Assigned Add-on.
+  /// </summary>
+  public class ReadAssignedAddOnExtensionOptions : ReadOptions<AssignedAddOnExtensionResource>
+  {
+    /// <summary>
+    /// The SID of the Account that created the resources to read
+    /// </summary>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The SID of the Phone Number to which the Add-on is assigned
+    /// </summary>
+    public string PathResourceSid { get; }
+    /// <summary>
+    /// The SID that uniquely identifies the assigned Add-on installation
+    /// </summary>
+    public string PathAssignedAddOnSid { get; }
+
+    /// <summary>
+    /// Construct a new ReadAssignedAddOnExtensionOptions
+    /// </summary>
+    /// <param name="pathResourceSid"> The SID of the Phone Number to which the Add-on is assigned </param>
+    /// <param name="pathAssignedAddOnSid"> The SID that uniquely identifies the assigned Add-on installation </param>
+    public ReadAssignedAddOnExtensionOptions(string pathResourceSid, string pathAssignedAddOnSid)
+    {
+      PathResourceSid = pathResourceSid;
+      PathAssignedAddOnSid = pathAssignedAddOnSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
 
 }

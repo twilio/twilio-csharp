@@ -19,204 +19,204 @@ using Twilio.Types;
 namespace Twilio.Rest.Video.V1.Room.Participant
 {
 
-    public class SubscribeRulesResource : Resource
+  public class SubscribeRulesResource : Resource
+  {
+    private static Request BuildFetchRequest(FetchSubscribeRulesOptions options, ITwilioRestClient client)
     {
-        private static Request BuildFetchRequest(FetchSubscribeRulesOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Get,
-                Rest.Domain.Video,
-                "/v1/Rooms/" + options.PathRoomSid + "/Participants/" + options.PathParticipantSid + "/SubscribeRules",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// Returns a list of Subscribe Rules for the Participant.
-        /// </summary>
-        /// <param name="options"> Fetch SubscribeRules parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of SubscribeRules </returns>
-        public static SubscribeRulesResource Fetch(FetchSubscribeRulesOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Returns a list of Subscribe Rules for the Participant.
-        /// </summary>
-        /// <param name="options"> Fetch SubscribeRules parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of SubscribeRules </returns>
-        public static async System.Threading.Tasks.Task<SubscribeRulesResource> FetchAsync(FetchSubscribeRulesOptions options,
-                                                                                           ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// Returns a list of Subscribe Rules for the Participant.
-        /// </summary>
-        /// <param name="pathRoomSid"> The SID of the Room resource where the subscribe rules to fetch apply </param>
-        /// <param name="pathParticipantSid"> The SID of the Participant resource with the subscribe rules to fetch </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of SubscribeRules </returns>
-        public static SubscribeRulesResource Fetch(string pathRoomSid,
-                                                   string pathParticipantSid,
-                                                   ITwilioRestClient client = null)
-        {
-            var options = new FetchSubscribeRulesOptions(pathRoomSid, pathParticipantSid);
-            return Fetch(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Returns a list of Subscribe Rules for the Participant.
-        /// </summary>
-        /// <param name="pathRoomSid"> The SID of the Room resource where the subscribe rules to fetch apply </param>
-        /// <param name="pathParticipantSid"> The SID of the Participant resource with the subscribe rules to fetch </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of SubscribeRules </returns>
-        public static async System.Threading.Tasks.Task<SubscribeRulesResource> FetchAsync(string pathRoomSid,
-                                                                                           string pathParticipantSid,
-                                                                                           ITwilioRestClient client = null)
-        {
-            var options = new FetchSubscribeRulesOptions(pathRoomSid, pathParticipantSid);
-            return await FetchAsync(options, client);
-        }
-        #endif
-
-        private static Request BuildUpdateRequest(UpdateSubscribeRulesOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Post,
-                Rest.Domain.Video,
-                "/v1/Rooms/" + options.PathRoomSid + "/Participants/" + options.PathParticipantSid + "/SubscribeRules",
-                postParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// Update the Subscribe Rules for the Participant
-        /// </summary>
-        /// <param name="options"> Update SubscribeRules parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of SubscribeRules </returns>
-        public static SubscribeRulesResource Update(UpdateSubscribeRulesOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildUpdateRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Update the Subscribe Rules for the Participant
-        /// </summary>
-        /// <param name="options"> Update SubscribeRules parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of SubscribeRules </returns>
-        public static async System.Threading.Tasks.Task<SubscribeRulesResource> UpdateAsync(UpdateSubscribeRulesOptions options,
-                                                                                            ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// Update the Subscribe Rules for the Participant
-        /// </summary>
-        /// <param name="pathRoomSid"> The SID of the Room resource where the subscribe rules to update apply </param>
-        /// <param name="pathParticipantSid"> The SID of the Participant resource to update the Subscribe Rules </param>
-        /// <param name="rules"> A JSON-encoded array of subscribe rules </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of SubscribeRules </returns>
-        public static SubscribeRulesResource Update(string pathRoomSid,
-                                                    string pathParticipantSid,
-                                                    object rules = null,
-                                                    ITwilioRestClient client = null)
-        {
-            var options = new UpdateSubscribeRulesOptions(pathRoomSid, pathParticipantSid){Rules = rules};
-            return Update(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Update the Subscribe Rules for the Participant
-        /// </summary>
-        /// <param name="pathRoomSid"> The SID of the Room resource where the subscribe rules to update apply </param>
-        /// <param name="pathParticipantSid"> The SID of the Participant resource to update the Subscribe Rules </param>
-        /// <param name="rules"> A JSON-encoded array of subscribe rules </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of SubscribeRules </returns>
-        public static async System.Threading.Tasks.Task<SubscribeRulesResource> UpdateAsync(string pathRoomSid,
-                                                                                            string pathParticipantSid,
-                                                                                            object rules = null,
-                                                                                            ITwilioRestClient client = null)
-        {
-            var options = new UpdateSubscribeRulesOptions(pathRoomSid, pathParticipantSid){Rules = rules};
-            return await UpdateAsync(options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Converts a JSON string into a SubscribeRulesResource object
-        /// </summary>
-        /// <param name="json"> Raw JSON string </param>
-        /// <returns> SubscribeRulesResource object represented by the provided JSON </returns>
-        public static SubscribeRulesResource FromJson(string json)
-        {
-            // Convert all checked exceptions to Runtime
-            try
-            {
-                return JsonConvert.DeserializeObject<SubscribeRulesResource>(json);
-            }
-            catch (JsonException e)
-            {
-                throw new ApiException(e.Message, e);
-            }
-        }
-
-        /// <summary>
-        /// The SID of the Participant resource for the Subscribe Rules
-        /// </summary>
-        [JsonProperty("participant_sid")]
-        public string ParticipantSid { get; private set; }
-        /// <summary>
-        /// The SID of the Room resource for the Subscribe Rules
-        /// </summary>
-        [JsonProperty("room_sid")]
-        public string RoomSid { get; private set; }
-        /// <summary>
-        /// A collection of Subscribe Rules that describe how to include or exclude matching tracks
-        /// </summary>
-        [JsonProperty("rules")]
-        public List<SubscribeRule> Rules { get; private set; }
-        /// <summary>
-        /// The ISO 8601 date and time in GMT when the resource was created
-        /// </summary>
-        [JsonProperty("date_created")]
-        public DateTime? DateCreated { get; private set; }
-        /// <summary>
-        /// The ISO 8601 date and time in GMT when the resource was last updated
-        /// </summary>
-        [JsonProperty("date_updated")]
-        public DateTime? DateUpdated { get; private set; }
-
-        private SubscribeRulesResource()
-        {
-
-        }
+      return new Request(
+          HttpMethod.Get,
+          Rest.Domain.Video,
+          "/v1/Rooms/" + options.PathRoomSid + "/Participants/" + options.PathParticipantSid + "/SubscribeRules",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
     }
+
+    /// <summary>
+    /// Returns a list of Subscribe Rules for the Participant.
+    /// </summary>
+    /// <param name="options"> Fetch SubscribeRules parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of SubscribeRules </returns>
+    public static SubscribeRulesResource Fetch(FetchSubscribeRulesOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Returns a list of Subscribe Rules for the Participant.
+    /// </summary>
+    /// <param name="options"> Fetch SubscribeRules parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of SubscribeRules </returns>
+    public static async System.Threading.Tasks.Task<SubscribeRulesResource> FetchAsync(FetchSubscribeRulesOptions options,
+                                                                                       ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// Returns a list of Subscribe Rules for the Participant.
+    /// </summary>
+    /// <param name="pathRoomSid"> The SID of the Room resource where the subscribe rules to fetch apply </param>
+    /// <param name="pathParticipantSid"> The SID of the Participant resource with the subscribe rules to fetch </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of SubscribeRules </returns>
+    public static SubscribeRulesResource Fetch(string pathRoomSid,
+                                               string pathParticipantSid,
+                                               ITwilioRestClient client = null)
+    {
+      var options = new FetchSubscribeRulesOptions(pathRoomSid, pathParticipantSid);
+      return Fetch(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Returns a list of Subscribe Rules for the Participant.
+    /// </summary>
+    /// <param name="pathRoomSid"> The SID of the Room resource where the subscribe rules to fetch apply </param>
+    /// <param name="pathParticipantSid"> The SID of the Participant resource with the subscribe rules to fetch </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of SubscribeRules </returns>
+    public static async System.Threading.Tasks.Task<SubscribeRulesResource> FetchAsync(string pathRoomSid,
+                                                                                       string pathParticipantSid,
+                                                                                       ITwilioRestClient client = null)
+    {
+      var options = new FetchSubscribeRulesOptions(pathRoomSid, pathParticipantSid);
+      return await FetchAsync(options, client);
+    }
+#endif
+
+    private static Request BuildUpdateRequest(UpdateSubscribeRulesOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Post,
+          Rest.Domain.Video,
+          "/v1/Rooms/" + options.PathRoomSid + "/Participants/" + options.PathParticipantSid + "/SubscribeRules",
+          postParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// Update the Subscribe Rules for the Participant
+    /// </summary>
+    /// <param name="options"> Update SubscribeRules parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of SubscribeRules </returns>
+    public static SubscribeRulesResource Update(UpdateSubscribeRulesOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildUpdateRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Update the Subscribe Rules for the Participant
+    /// </summary>
+    /// <param name="options"> Update SubscribeRules parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of SubscribeRules </returns>
+    public static async System.Threading.Tasks.Task<SubscribeRulesResource> UpdateAsync(UpdateSubscribeRulesOptions options,
+                                                                                        ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// Update the Subscribe Rules for the Participant
+    /// </summary>
+    /// <param name="pathRoomSid"> The SID of the Room resource where the subscribe rules to update apply </param>
+    /// <param name="pathParticipantSid"> The SID of the Participant resource to update the Subscribe Rules </param>
+    /// <param name="rules"> A JSON-encoded array of subscribe rules </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of SubscribeRules </returns>
+    public static SubscribeRulesResource Update(string pathRoomSid,
+                                                string pathParticipantSid,
+                                                object rules = null,
+                                                ITwilioRestClient client = null)
+    {
+      var options = new UpdateSubscribeRulesOptions(pathRoomSid, pathParticipantSid) { Rules = rules };
+      return Update(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Update the Subscribe Rules for the Participant
+    /// </summary>
+    /// <param name="pathRoomSid"> The SID of the Room resource where the subscribe rules to update apply </param>
+    /// <param name="pathParticipantSid"> The SID of the Participant resource to update the Subscribe Rules </param>
+    /// <param name="rules"> A JSON-encoded array of subscribe rules </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of SubscribeRules </returns>
+    public static async System.Threading.Tasks.Task<SubscribeRulesResource> UpdateAsync(string pathRoomSid,
+                                                                                        string pathParticipantSid,
+                                                                                        object rules = null,
+                                                                                        ITwilioRestClient client = null)
+    {
+      var options = new UpdateSubscribeRulesOptions(pathRoomSid, pathParticipantSid) { Rules = rules };
+      return await UpdateAsync(options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Converts a JSON string into a SubscribeRulesResource object
+    /// </summary>
+    /// <param name="json"> Raw JSON string </param>
+    /// <returns> SubscribeRulesResource object represented by the provided JSON </returns>
+    public static SubscribeRulesResource FromJson(string json)
+    {
+      // Convert all checked exceptions to Runtime
+      try
+      {
+        return JsonConvert.DeserializeObject<SubscribeRulesResource>(json);
+      }
+      catch (JsonException e)
+      {
+        throw new ApiException(e.Message, e);
+      }
+    }
+
+    /// <summary>
+    /// The SID of the Participant resource for the Subscribe Rules
+    /// </summary>
+    [JsonProperty("participant_sid")]
+    public string ParticipantSid { get; private set; }
+    /// <summary>
+    /// The SID of the Room resource for the Subscribe Rules
+    /// </summary>
+    [JsonProperty("room_sid")]
+    public string RoomSid { get; private set; }
+    /// <summary>
+    /// A collection of Subscribe Rules that describe how to include or exclude matching tracks
+    /// </summary>
+    [JsonProperty("rules")]
+    public List<SubscribeRule> Rules { get; private set; }
+    /// <summary>
+    /// The ISO 8601 date and time in GMT when the resource was created
+    /// </summary>
+    [JsonProperty("date_created")]
+    public DateTime? DateCreated { get; private set; }
+    /// <summary>
+    /// The ISO 8601 date and time in GMT when the resource was last updated
+    /// </summary>
+    [JsonProperty("date_updated")]
+    public DateTime? DateUpdated { get; private set; }
+
+    private SubscribeRulesResource()
+    {
+
+    }
+  }
 
 }

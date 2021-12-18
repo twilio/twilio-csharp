@@ -12,227 +12,227 @@ using Twilio.Converters;
 namespace Twilio.Rest.Video.V1
 {
 
+  /// <summary>
+  /// Returns a single Composition resource identified by a Composition SID.
+  /// </summary>
+  public class FetchCompositionOptions : IOptions<CompositionResource>
+  {
     /// <summary>
-    /// Returns a single Composition resource identified by a Composition SID.
+    /// The SID that identifies the resource to fetch
     /// </summary>
-    public class FetchCompositionOptions : IOptions<CompositionResource>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchCompositionOptions
+    /// </summary>
+    /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
+    public FetchCompositionOptions(string pathSid)
     {
-        /// <summary>
-        /// The SID that identifies the resource to fetch
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchCompositionOptions
-        /// </summary>
-        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
-        public FetchCompositionOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// List of all Recording compositions.
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadCompositionOptions : ReadOptions<CompositionResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// Read only Composition resources with this status
-        /// </summary>
-        public CompositionResource.StatusEnum Status { get; set; }
-        /// <summary>
-        /// Read only Composition resources created on or after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date-time with time zone
-        /// </summary>
-        public DateTime? DateCreatedAfter { get; set; }
-        /// <summary>
-        /// Read only Composition resources created before this ISO 8601 date-time with time zone
-        /// </summary>
-        public DateTime? DateCreatedBefore { get; set; }
-        /// <summary>
-        /// Read only Composition resources with this Room SID
-        /// </summary>
-        public string RoomSid { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Status != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
-            }
+  /// <summary>
+  /// List of all Recording compositions.
+  /// </summary>
+  public class ReadCompositionOptions : ReadOptions<CompositionResource>
+  {
+    /// <summary>
+    /// Read only Composition resources with this status
+    /// </summary>
+    public CompositionResource.StatusEnum Status { get; set; }
+    /// <summary>
+    /// Read only Composition resources created on or after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date-time with time zone
+    /// </summary>
+    public DateTime? DateCreatedAfter { get; set; }
+    /// <summary>
+    /// Read only Composition resources created before this ISO 8601 date-time with time zone
+    /// </summary>
+    public DateTime? DateCreatedBefore { get; set; }
+    /// <summary>
+    /// Read only Composition resources with this Room SID
+    /// </summary>
+    public string RoomSid { get; set; }
 
-            if (DateCreatedAfter != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DateCreatedAfter", Serializers.DateTimeIso8601(DateCreatedAfter)));
-            }
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (Status != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
+      }
 
-            if (DateCreatedBefore != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DateCreatedBefore", Serializers.DateTimeIso8601(DateCreatedBefore)));
-            }
+      if (DateCreatedAfter != null)
+      {
+        p.Add(new KeyValuePair<string, string>("DateCreatedAfter", Serializers.DateTimeIso8601(DateCreatedAfter)));
+      }
 
-            if (RoomSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("RoomSid", RoomSid.ToString()));
-            }
+      if (DateCreatedBefore != null)
+      {
+        p.Add(new KeyValuePair<string, string>("DateCreatedBefore", Serializers.DateTimeIso8601(DateCreatedBefore)));
+      }
 
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
+      if (RoomSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("RoomSid", RoomSid.ToString()));
+      }
 
-            return p;
-        }
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// Delete a Recording Composition resource identified by a Composition SID.
+  /// </summary>
+  public class DeleteCompositionOptions : IOptions<CompositionResource>
+  {
+    /// <summary>
+    /// The SID that identifies the resource to delete
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new DeleteCompositionOptions
+    /// </summary>
+    /// <param name="pathSid"> The SID that identifies the resource to delete </param>
+    public DeleteCompositionOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Delete a Recording Composition resource identified by a Composition SID.
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteCompositionOptions : IOptions<CompositionResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID that identifies the resource to delete
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new DeleteCompositionOptions
-        /// </summary>
-        /// <param name="pathSid"> The SID that identifies the resource to delete </param>
-        public DeleteCompositionOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
+  /// <summary>
+  /// CreateCompositionOptions
+  /// </summary>
+  public class CreateCompositionOptions : IOptions<CompositionResource>
+  {
+    /// <summary>
+    /// The SID of the Group Room with the media tracks to be used as composition sources
+    /// </summary>
+    public string RoomSid { get; }
+    /// <summary>
+    /// An object that describes the video layout of the composition
+    /// </summary>
+    public object VideoLayout { get; set; }
+    /// <summary>
+    /// An array of track names from the same group room to merge
+    /// </summary>
+    public List<string> AudioSources { get; set; }
+    /// <summary>
+    /// An array of track names to exclude
+    /// </summary>
+    public List<string> AudioSourcesExcluded { get; set; }
+    /// <summary>
+    /// A string that describes the columns (width) and rows (height) of the generated composed video in pixels
+    /// </summary>
+    public string Resolution { get; set; }
+    /// <summary>
+    /// The container format of the composition's media files
+    /// </summary>
+    public CompositionResource.FormatEnum Format { get; set; }
+    /// <summary>
+    /// The URL we should call to send status information to your application
+    /// </summary>
+    public Uri StatusCallback { get; set; }
+    /// <summary>
+    /// The HTTP method we should use to call status_callback
+    /// </summary>
+    public Twilio.Http.HttpMethod StatusCallbackMethod { get; set; }
+    /// <summary>
+    /// Whether to clip the intervals where there is no active media in the composition
+    /// </summary>
+    public bool? Trim { get; set; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+    /// <summary>
+    /// Construct a new CreateCompositionOptions
+    /// </summary>
+    /// <param name="roomSid"> The SID of the Group Room with the media tracks to be used as composition sources </param>
+    public CreateCompositionOptions(string roomSid)
+    {
+      RoomSid = roomSid;
+      AudioSources = new List<string>();
+      AudioSourcesExcluded = new List<string>();
     }
 
     /// <summary>
-    /// CreateCompositionOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class CreateCompositionOptions : IOptions<CompositionResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Group Room with the media tracks to be used as composition sources
-        /// </summary>
-        public string RoomSid { get; }
-        /// <summary>
-        /// An object that describes the video layout of the composition
-        /// </summary>
-        public object VideoLayout { get; set; }
-        /// <summary>
-        /// An array of track names from the same group room to merge
-        /// </summary>
-        public List<string> AudioSources { get; set; }
-        /// <summary>
-        /// An array of track names to exclude
-        /// </summary>
-        public List<string> AudioSourcesExcluded { get; set; }
-        /// <summary>
-        /// A string that describes the columns (width) and rows (height) of the generated composed video in pixels
-        /// </summary>
-        public string Resolution { get; set; }
-        /// <summary>
-        /// The container format of the composition's media files
-        /// </summary>
-        public CompositionResource.FormatEnum Format { get; set; }
-        /// <summary>
-        /// The URL we should call to send status information to your application
-        /// </summary>
-        public Uri StatusCallback { get; set; }
-        /// <summary>
-        /// The HTTP method we should use to call status_callback
-        /// </summary>
-        public Twilio.Http.HttpMethod StatusCallbackMethod { get; set; }
-        /// <summary>
-        /// Whether to clip the intervals where there is no active media in the composition
-        /// </summary>
-        public bool? Trim { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (RoomSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("RoomSid", RoomSid.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new CreateCompositionOptions
-        /// </summary>
-        /// <param name="roomSid"> The SID of the Group Room with the media tracks to be used as composition sources </param>
-        public CreateCompositionOptions(string roomSid)
-        {
-            RoomSid = roomSid;
-            AudioSources = new List<string>();
-            AudioSourcesExcluded = new List<string>();
-        }
+      if (VideoLayout != null)
+      {
+        p.Add(new KeyValuePair<string, string>("VideoLayout", Serializers.JsonObject(VideoLayout)));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (RoomSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("RoomSid", RoomSid.ToString()));
-            }
+      if (AudioSources != null)
+      {
+        p.AddRange(AudioSources.Select(prop => new KeyValuePair<string, string>("AudioSources", prop)));
+      }
 
-            if (VideoLayout != null)
-            {
-                p.Add(new KeyValuePair<string, string>("VideoLayout", Serializers.JsonObject(VideoLayout)));
-            }
+      if (AudioSourcesExcluded != null)
+      {
+        p.AddRange(AudioSourcesExcluded.Select(prop => new KeyValuePair<string, string>("AudioSourcesExcluded", prop)));
+      }
 
-            if (AudioSources != null)
-            {
-                p.AddRange(AudioSources.Select(prop => new KeyValuePair<string, string>("AudioSources", prop)));
-            }
+      if (Resolution != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Resolution", Resolution));
+      }
 
-            if (AudioSourcesExcluded != null)
-            {
-                p.AddRange(AudioSourcesExcluded.Select(prop => new KeyValuePair<string, string>("AudioSourcesExcluded", prop)));
-            }
+      if (Format != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Format", Format.ToString()));
+      }
 
-            if (Resolution != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Resolution", Resolution));
-            }
+      if (StatusCallback != null)
+      {
+        p.Add(new KeyValuePair<string, string>("StatusCallback", Serializers.Url(StatusCallback)));
+      }
 
-            if (Format != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Format", Format.ToString()));
-            }
+      if (StatusCallbackMethod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("StatusCallbackMethod", StatusCallbackMethod.ToString()));
+      }
 
-            if (StatusCallback != null)
-            {
-                p.Add(new KeyValuePair<string, string>("StatusCallback", Serializers.Url(StatusCallback)));
-            }
+      if (Trim != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Trim", Trim.Value.ToString().ToLower()));
+      }
 
-            if (StatusCallbackMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("StatusCallbackMethod", StatusCallbackMethod.ToString()));
-            }
-
-            if (Trim != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Trim", Trim.Value.ToString().ToLower()));
-            }
-
-            return p;
-        }
+      return p;
     }
+  }
 
 }

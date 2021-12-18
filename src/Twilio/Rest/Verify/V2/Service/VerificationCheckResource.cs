@@ -19,191 +19,191 @@ using Twilio.Types;
 namespace Twilio.Rest.Verify.V2.Service
 {
 
-    public class VerificationCheckResource : Resource
+  public class VerificationCheckResource : Resource
+  {
+    public sealed class ChannelEnum : StringEnum
     {
-        public sealed class ChannelEnum : StringEnum
-        {
-            private ChannelEnum(string value) : base(value) {}
-            public ChannelEnum() {}
-            public static implicit operator ChannelEnum(string value)
-            {
-                return new ChannelEnum(value);
-            }
+      private ChannelEnum(string value) : base(value) { }
+      public ChannelEnum() { }
+      public static implicit operator ChannelEnum(string value)
+      {
+        return new ChannelEnum(value);
+      }
 
-            public static readonly ChannelEnum Sms = new ChannelEnum("sms");
-            public static readonly ChannelEnum Call = new ChannelEnum("call");
-            public static readonly ChannelEnum Email = new ChannelEnum("email");
-            public static readonly ChannelEnum Whatsapp = new ChannelEnum("whatsapp");
-        }
-
-        private static Request BuildCreateRequest(CreateVerificationCheckOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Post,
-                Rest.Domain.Verify,
-                "/v2/Services/" + options.PathServiceSid + "/VerificationCheck",
-                postParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// challenge a specific Verification Check.
-        /// </summary>
-        /// <param name="options"> Create VerificationCheck parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of VerificationCheck </returns>
-        public static VerificationCheckResource Create(CreateVerificationCheckOptions options,
-                                                       ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildCreateRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// challenge a specific Verification Check.
-        /// </summary>
-        /// <param name="options"> Create VerificationCheck parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of VerificationCheck </returns>
-        public static async System.Threading.Tasks.Task<VerificationCheckResource> CreateAsync(CreateVerificationCheckOptions options,
-                                                                                               ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// challenge a specific Verification Check.
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the verification Service to create the resource under </param>
-        /// <param name="code"> The verification string </param>
-        /// <param name="to"> The phone number or email to verify </param>
-        /// <param name="verificationSid"> A SID that uniquely identifies the Verification Check </param>
-        /// <param name="amount"> The amount of the associated PSD2 compliant transaction. </param>
-        /// <param name="payee"> The payee of the associated PSD2 compliant transaction </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of VerificationCheck </returns>
-        public static VerificationCheckResource Create(string pathServiceSid,
-                                                       string code,
-                                                       string to = null,
-                                                       string verificationSid = null,
-                                                       string amount = null,
-                                                       string payee = null,
-                                                       ITwilioRestClient client = null)
-        {
-            var options = new CreateVerificationCheckOptions(pathServiceSid, code){To = to, VerificationSid = verificationSid, Amount = amount, Payee = payee};
-            return Create(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// challenge a specific Verification Check.
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the verification Service to create the resource under </param>
-        /// <param name="code"> The verification string </param>
-        /// <param name="to"> The phone number or email to verify </param>
-        /// <param name="verificationSid"> A SID that uniquely identifies the Verification Check </param>
-        /// <param name="amount"> The amount of the associated PSD2 compliant transaction. </param>
-        /// <param name="payee"> The payee of the associated PSD2 compliant transaction </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of VerificationCheck </returns>
-        public static async System.Threading.Tasks.Task<VerificationCheckResource> CreateAsync(string pathServiceSid,
-                                                                                               string code,
-                                                                                               string to = null,
-                                                                                               string verificationSid = null,
-                                                                                               string amount = null,
-                                                                                               string payee = null,
-                                                                                               ITwilioRestClient client = null)
-        {
-            var options = new CreateVerificationCheckOptions(pathServiceSid, code){To = to, VerificationSid = verificationSid, Amount = amount, Payee = payee};
-            return await CreateAsync(options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Converts a JSON string into a VerificationCheckResource object
-        /// </summary>
-        /// <param name="json"> Raw JSON string </param>
-        /// <returns> VerificationCheckResource object represented by the provided JSON </returns>
-        public static VerificationCheckResource FromJson(string json)
-        {
-            // Convert all checked exceptions to Runtime
-            try
-            {
-                return JsonConvert.DeserializeObject<VerificationCheckResource>(json);
-            }
-            catch (JsonException e)
-            {
-                throw new ApiException(e.Message, e);
-            }
-        }
-
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        [JsonProperty("sid")]
-        public string Sid { get; private set; }
-        /// <summary>
-        /// The SID of the Service that the resource is associated with
-        /// </summary>
-        [JsonProperty("service_sid")]
-        public string ServiceSid { get; private set; }
-        /// <summary>
-        /// The SID of the Account that created the resource
-        /// </summary>
-        [JsonProperty("account_sid")]
-        public string AccountSid { get; private set; }
-        /// <summary>
-        /// The phone number or email being verified
-        /// </summary>
-        [JsonProperty("to")]
-        public string To { get; private set; }
-        /// <summary>
-        /// The verification method to use
-        /// </summary>
-        [JsonProperty("channel")]
-        [JsonConverter(typeof(StringEnumConverter))]
-        public VerificationCheckResource.ChannelEnum Channel { get; private set; }
-        /// <summary>
-        /// The status of the verification resource
-        /// </summary>
-        [JsonProperty("status")]
-        public string Status { get; private set; }
-        /// <summary>
-        /// Whether the verification was successful
-        /// </summary>
-        [JsonProperty("valid")]
-        public bool? Valid { get; private set; }
-        /// <summary>
-        /// The amount of the associated PSD2 compliant transaction.
-        /// </summary>
-        [JsonProperty("amount")]
-        public string Amount { get; private set; }
-        /// <summary>
-        /// The payee of the associated PSD2 compliant transaction
-        /// </summary>
-        [JsonProperty("payee")]
-        public string Payee { get; private set; }
-        /// <summary>
-        /// The ISO 8601 date and time in GMT when the Verification Check resource was created
-        /// </summary>
-        [JsonProperty("date_created")]
-        public DateTime? DateCreated { get; private set; }
-        /// <summary>
-        /// The ISO 8601 date and time in GMT when the Verification Check resource was last updated
-        /// </summary>
-        [JsonProperty("date_updated")]
-        public DateTime? DateUpdated { get; private set; }
-
-        private VerificationCheckResource()
-        {
-
-        }
+      public static readonly ChannelEnum Sms = new ChannelEnum("sms");
+      public static readonly ChannelEnum Call = new ChannelEnum("call");
+      public static readonly ChannelEnum Email = new ChannelEnum("email");
+      public static readonly ChannelEnum Whatsapp = new ChannelEnum("whatsapp");
     }
+
+    private static Request BuildCreateRequest(CreateVerificationCheckOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Post,
+          Rest.Domain.Verify,
+          "/v2/Services/" + options.PathServiceSid + "/VerificationCheck",
+          postParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// challenge a specific Verification Check.
+    /// </summary>
+    /// <param name="options"> Create VerificationCheck parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of VerificationCheck </returns>
+    public static VerificationCheckResource Create(CreateVerificationCheckOptions options,
+                                                   ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildCreateRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// challenge a specific Verification Check.
+    /// </summary>
+    /// <param name="options"> Create VerificationCheck parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of VerificationCheck </returns>
+    public static async System.Threading.Tasks.Task<VerificationCheckResource> CreateAsync(CreateVerificationCheckOptions options,
+                                                                                           ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildCreateRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// challenge a specific Verification Check.
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the verification Service to create the resource under </param>
+    /// <param name="code"> The verification string </param>
+    /// <param name="to"> The phone number or email to verify </param>
+    /// <param name="verificationSid"> A SID that uniquely identifies the Verification Check </param>
+    /// <param name="amount"> The amount of the associated PSD2 compliant transaction. </param>
+    /// <param name="payee"> The payee of the associated PSD2 compliant transaction </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of VerificationCheck </returns>
+    public static VerificationCheckResource Create(string pathServiceSid,
+                                                   string code,
+                                                   string to = null,
+                                                   string verificationSid = null,
+                                                   string amount = null,
+                                                   string payee = null,
+                                                   ITwilioRestClient client = null)
+    {
+      var options = new CreateVerificationCheckOptions(pathServiceSid, code) { To = to, VerificationSid = verificationSid, Amount = amount, Payee = payee };
+      return Create(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// challenge a specific Verification Check.
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the verification Service to create the resource under </param>
+    /// <param name="code"> The verification string </param>
+    /// <param name="to"> The phone number or email to verify </param>
+    /// <param name="verificationSid"> A SID that uniquely identifies the Verification Check </param>
+    /// <param name="amount"> The amount of the associated PSD2 compliant transaction. </param>
+    /// <param name="payee"> The payee of the associated PSD2 compliant transaction </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of VerificationCheck </returns>
+    public static async System.Threading.Tasks.Task<VerificationCheckResource> CreateAsync(string pathServiceSid,
+                                                                                           string code,
+                                                                                           string to = null,
+                                                                                           string verificationSid = null,
+                                                                                           string amount = null,
+                                                                                           string payee = null,
+                                                                                           ITwilioRestClient client = null)
+    {
+      var options = new CreateVerificationCheckOptions(pathServiceSid, code) { To = to, VerificationSid = verificationSid, Amount = amount, Payee = payee };
+      return await CreateAsync(options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Converts a JSON string into a VerificationCheckResource object
+    /// </summary>
+    /// <param name="json"> Raw JSON string </param>
+    /// <returns> VerificationCheckResource object represented by the provided JSON </returns>
+    public static VerificationCheckResource FromJson(string json)
+    {
+      // Convert all checked exceptions to Runtime
+      try
+      {
+        return JsonConvert.DeserializeObject<VerificationCheckResource>(json);
+      }
+      catch (JsonException e)
+      {
+        throw new ApiException(e.Message, e);
+      }
+    }
+
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    [JsonProperty("sid")]
+    public string Sid { get; private set; }
+    /// <summary>
+    /// The SID of the Service that the resource is associated with
+    /// </summary>
+    [JsonProperty("service_sid")]
+    public string ServiceSid { get; private set; }
+    /// <summary>
+    /// The SID of the Account that created the resource
+    /// </summary>
+    [JsonProperty("account_sid")]
+    public string AccountSid { get; private set; }
+    /// <summary>
+    /// The phone number or email being verified
+    /// </summary>
+    [JsonProperty("to")]
+    public string To { get; private set; }
+    /// <summary>
+    /// The verification method to use
+    /// </summary>
+    [JsonProperty("channel")]
+    [JsonConverter(typeof(StringEnumConverter))]
+    public VerificationCheckResource.ChannelEnum Channel { get; private set; }
+    /// <summary>
+    /// The status of the verification resource
+    /// </summary>
+    [JsonProperty("status")]
+    public string Status { get; private set; }
+    /// <summary>
+    /// Whether the verification was successful
+    /// </summary>
+    [JsonProperty("valid")]
+    public bool? Valid { get; private set; }
+    /// <summary>
+    /// The amount of the associated PSD2 compliant transaction.
+    /// </summary>
+    [JsonProperty("amount")]
+    public string Amount { get; private set; }
+    /// <summary>
+    /// The payee of the associated PSD2 compliant transaction
+    /// </summary>
+    [JsonProperty("payee")]
+    public string Payee { get; private set; }
+    /// <summary>
+    /// The ISO 8601 date and time in GMT when the Verification Check resource was created
+    /// </summary>
+    [JsonProperty("date_created")]
+    public DateTime? DateCreated { get; private set; }
+    /// <summary>
+    /// The ISO 8601 date and time in GMT when the Verification Check resource was last updated
+    /// </summary>
+    [JsonProperty("date_updated")]
+    public DateTime? DateUpdated { get; private set; }
+
+    private VerificationCheckResource()
+    {
+
+    }
+  }
 
 }

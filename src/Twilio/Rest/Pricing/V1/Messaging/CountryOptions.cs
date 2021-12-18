@@ -11,53 +11,53 @@ using Twilio.Converters;
 namespace Twilio.Rest.Pricing.V1.Messaging
 {
 
+  /// <summary>
+  /// ReadCountryOptions
+  /// </summary>
+  public class ReadCountryOptions : ReadOptions<CountryResource>
+  {
     /// <summary>
-    /// ReadCountryOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadCountryOptions : ReadOptions<CountryResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-            return p;
-        }
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// FetchCountryOptions
+  /// </summary>
+  public class FetchCountryOptions : IOptions<CountryResource>
+  {
+    /// <summary>
+    /// The ISO country code
+    /// </summary>
+    public string PathIsoCountry { get; }
+
+    /// <summary>
+    /// Construct a new FetchCountryOptions
+    /// </summary>
+    /// <param name="pathIsoCountry"> The ISO country code </param>
+    public FetchCountryOptions(string pathIsoCountry)
+    {
+      PathIsoCountry = pathIsoCountry;
     }
 
     /// <summary>
-    /// FetchCountryOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchCountryOptions : IOptions<CountryResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The ISO country code
-        /// </summary>
-        public string PathIsoCountry { get; }
-
-        /// <summary>
-        /// Construct a new FetchCountryOptions
-        /// </summary>
-        /// <param name="pathIsoCountry"> The ISO country code </param>
-        public FetchCountryOptions(string pathIsoCountry)
-        {
-            PathIsoCountry = pathIsoCountry;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
 
 }

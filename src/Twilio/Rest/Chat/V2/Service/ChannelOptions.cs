@@ -12,353 +12,353 @@ using Twilio.Converters;
 namespace Twilio.Rest.Chat.V2.Service
 {
 
+  /// <summary>
+  /// FetchChannelOptions
+  /// </summary>
+  public class FetchChannelOptions : IOptions<ChannelResource>
+  {
     /// <summary>
-    /// FetchChannelOptions
+    /// The SID of the Service to fetch the resource from
     /// </summary>
-    public class FetchChannelOptions : IOptions<ChannelResource>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The SID of the resource
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchChannelOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
+    /// <param name="pathSid"> The SID of the resource </param>
+    public FetchChannelOptions(string pathServiceSid, string pathSid)
     {
-        /// <summary>
-        /// The SID of the Service to fetch the resource from
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The SID of the resource
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchChannelOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
-        /// <param name="pathSid"> The SID of the resource </param>
-        public FetchChannelOptions(string pathServiceSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathServiceSid = pathServiceSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// DeleteChannelOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteChannelOptions : IOptions<ChannelResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Service to delete the resource from
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The SID of the Channel resource to delete
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// The X-Twilio-Webhook-Enabled HTTP request header
-        /// </summary>
-        public ChannelResource.WebhookEnabledTypeEnum XTwilioWebhookEnabled { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new DeleteChannelOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
-        /// <param name="pathSid"> The SID of the Channel resource to delete </param>
-        public DeleteChannelOptions(string pathServiceSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathSid = pathSid;
-        }
+  /// <summary>
+  /// DeleteChannelOptions
+  /// </summary>
+  public class DeleteChannelOptions : IOptions<ChannelResource>
+  {
+    /// <summary>
+    /// The SID of the Service to delete the resource from
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The SID of the Channel resource to delete
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// The X-Twilio-Webhook-Enabled HTTP request header
+    /// </summary>
+    public ChannelResource.WebhookEnabledTypeEnum XTwilioWebhookEnabled { get; set; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
-
-        /// <summary>
-        /// Generate the necessary header parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetHeaderParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (XTwilioWebhookEnabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("X-Twilio-Webhook-Enabled", XTwilioWebhookEnabled.ToString()));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new DeleteChannelOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
+    /// <param name="pathSid"> The SID of the Channel resource to delete </param>
+    public DeleteChannelOptions(string pathServiceSid, string pathSid)
+    {
+      PathServiceSid = pathServiceSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// CreateChannelOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class CreateChannelOptions : IOptions<ChannelResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Service to create the Channel resource under
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// A string to describe the new resource
-        /// </summary>
-        public string FriendlyName { get; set; }
-        /// <summary>
-        /// An application-defined string that uniquely identifies the Channel resource
-        /// </summary>
-        public string UniqueName { get; set; }
-        /// <summary>
-        /// A valid JSON string that contains application-specific data
-        /// </summary>
-        public string Attributes { get; set; }
-        /// <summary>
-        /// The visibility of the channel
-        /// </summary>
-        public ChannelResource.ChannelTypeEnum Type { get; set; }
-        /// <summary>
-        /// The ISO 8601 date and time in GMT when the resource was created
-        /// </summary>
-        public DateTime? DateCreated { get; set; }
-        /// <summary>
-        /// The ISO 8601 date and time in GMT when the resource was updated
-        /// </summary>
-        public DateTime? DateUpdated { get; set; }
-        /// <summary>
-        /// The identity of the User that created the Channel
-        /// </summary>
-        public string CreatedBy { get; set; }
-        /// <summary>
-        /// The X-Twilio-Webhook-Enabled HTTP request header
-        /// </summary>
-        public ChannelResource.WebhookEnabledTypeEnum XTwilioWebhookEnabled { get; set; }
-
-        /// <summary>
-        /// Construct a new CreateChannelOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to create the Channel resource under </param>
-        public CreateChannelOptions(string pathServiceSid)
-        {
-            PathServiceSid = pathServiceSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
-
-            if (UniqueName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
-            }
-
-            if (Attributes != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Attributes", Attributes));
-            }
-
-            if (Type != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Type", Type.ToString()));
-            }
-
-            if (DateCreated != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DateCreated", Serializers.DateTimeIso8601(DateCreated)));
-            }
-
-            if (DateUpdated != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DateUpdated", Serializers.DateTimeIso8601(DateUpdated)));
-            }
-
-            if (CreatedBy != null)
-            {
-                p.Add(new KeyValuePair<string, string>("CreatedBy", CreatedBy));
-            }
-
-            return p;
-        }
-
-        /// <summary>
-        /// Generate the necessary header parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetHeaderParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (XTwilioWebhookEnabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("X-Twilio-Webhook-Enabled", XTwilioWebhookEnabled.ToString()));
-            }
-
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
 
     /// <summary>
-    /// ReadChannelOptions
+    /// Generate the necessary header parameters
     /// </summary>
-    public class ReadChannelOptions : ReadOptions<ChannelResource>
+    public List<KeyValuePair<string, string>> GetHeaderParams()
     {
-        /// <summary>
-        /// The SID of the Service to read the resources from
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The visibility of the channel to read
-        /// </summary>
-        public List<ChannelResource.ChannelTypeEnum> Type { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (XTwilioWebhookEnabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("X-Twilio-Webhook-Enabled", XTwilioWebhookEnabled.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new ReadChannelOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to read the resources from </param>
-        public ReadChannelOptions(string pathServiceSid)
-        {
-            PathServiceSid = pathServiceSid;
-            Type = new List<ChannelResource.ChannelTypeEnum>();
-        }
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Type != null)
-            {
-                p.AddRange(Type.Select(prop => new KeyValuePair<string, string>("Type", prop.ToString())));
-            }
+  /// <summary>
+  /// CreateChannelOptions
+  /// </summary>
+  public class CreateChannelOptions : IOptions<ChannelResource>
+  {
+    /// <summary>
+    /// The SID of the Service to create the Channel resource under
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// A string to describe the new resource
+    /// </summary>
+    public string FriendlyName { get; set; }
+    /// <summary>
+    /// An application-defined string that uniquely identifies the Channel resource
+    /// </summary>
+    public string UniqueName { get; set; }
+    /// <summary>
+    /// A valid JSON string that contains application-specific data
+    /// </summary>
+    public string Attributes { get; set; }
+    /// <summary>
+    /// The visibility of the channel
+    /// </summary>
+    public ChannelResource.ChannelTypeEnum Type { get; set; }
+    /// <summary>
+    /// The ISO 8601 date and time in GMT when the resource was created
+    /// </summary>
+    public DateTime? DateCreated { get; set; }
+    /// <summary>
+    /// The ISO 8601 date and time in GMT when the resource was updated
+    /// </summary>
+    public DateTime? DateUpdated { get; set; }
+    /// <summary>
+    /// The identity of the User that created the Channel
+    /// </summary>
+    public string CreatedBy { get; set; }
+    /// <summary>
+    /// The X-Twilio-Webhook-Enabled HTTP request header
+    /// </summary>
+    public ChannelResource.WebhookEnabledTypeEnum XTwilioWebhookEnabled { get; set; }
 
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new CreateChannelOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to create the Channel resource under </param>
+    public CreateChannelOptions(string pathServiceSid)
+    {
+      PathServiceSid = pathServiceSid;
     }
 
     /// <summary>
-    /// UpdateChannelOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateChannelOptions : IOptions<ChannelResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Service to update the resource from
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The SID of the Channel resource to update
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// A string to describe the resource
-        /// </summary>
-        public string FriendlyName { get; set; }
-        /// <summary>
-        /// An application-defined string that uniquely identifies the resource
-        /// </summary>
-        public string UniqueName { get; set; }
-        /// <summary>
-        /// A valid JSON string that contains application-specific data
-        /// </summary>
-        public string Attributes { get; set; }
-        /// <summary>
-        /// The ISO 8601 date and time in GMT when the resource was created
-        /// </summary>
-        public DateTime? DateCreated { get; set; }
-        /// <summary>
-        /// The ISO 8601 date and time in GMT when the resource was updated
-        /// </summary>
-        public DateTime? DateUpdated { get; set; }
-        /// <summary>
-        /// The identity of the User that created the Channel
-        /// </summary>
-        public string CreatedBy { get; set; }
-        /// <summary>
-        /// The X-Twilio-Webhook-Enabled HTTP request header
-        /// </summary>
-        public ChannelResource.WebhookEnabledTypeEnum XTwilioWebhookEnabled { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
 
-        /// <summary>
-        /// Construct a new UpdateChannelOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to update the resource from </param>
-        /// <param name="pathSid"> The SID of the Channel resource to update </param>
-        public UpdateChannelOptions(string pathServiceSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathSid = pathSid;
-        }
+      if (UniqueName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
+      if (Attributes != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Attributes", Attributes));
+      }
 
-            if (UniqueName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
-            }
+      if (Type != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Type", Type.ToString()));
+      }
 
-            if (Attributes != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Attributes", Attributes));
-            }
+      if (DateCreated != null)
+      {
+        p.Add(new KeyValuePair<string, string>("DateCreated", Serializers.DateTimeIso8601(DateCreated)));
+      }
 
-            if (DateCreated != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DateCreated", Serializers.DateTimeIso8601(DateCreated)));
-            }
+      if (DateUpdated != null)
+      {
+        p.Add(new KeyValuePair<string, string>("DateUpdated", Serializers.DateTimeIso8601(DateUpdated)));
+      }
 
-            if (DateUpdated != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DateUpdated", Serializers.DateTimeIso8601(DateUpdated)));
-            }
+      if (CreatedBy != null)
+      {
+        p.Add(new KeyValuePair<string, string>("CreatedBy", CreatedBy));
+      }
 
-            if (CreatedBy != null)
-            {
-                p.Add(new KeyValuePair<string, string>("CreatedBy", CreatedBy));
-            }
-
-            return p;
-        }
-
-        /// <summary>
-        /// Generate the necessary header parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetHeaderParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (XTwilioWebhookEnabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("X-Twilio-Webhook-Enabled", XTwilioWebhookEnabled.ToString()));
-            }
-
-            return p;
-        }
+      return p;
     }
+
+    /// <summary>
+    /// Generate the necessary header parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetHeaderParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (XTwilioWebhookEnabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("X-Twilio-Webhook-Enabled", XTwilioWebhookEnabled.ToString()));
+      }
+
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// ReadChannelOptions
+  /// </summary>
+  public class ReadChannelOptions : ReadOptions<ChannelResource>
+  {
+    /// <summary>
+    /// The SID of the Service to read the resources from
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The visibility of the channel to read
+    /// </summary>
+    public List<ChannelResource.ChannelTypeEnum> Type { get; set; }
+
+    /// <summary>
+    /// Construct a new ReadChannelOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to read the resources from </param>
+    public ReadChannelOptions(string pathServiceSid)
+    {
+      PathServiceSid = pathServiceSid;
+      Type = new List<ChannelResource.ChannelTypeEnum>();
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (Type != null)
+      {
+        p.AddRange(Type.Select(prop => new KeyValuePair<string, string>("Type", prop.ToString())));
+      }
+
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// UpdateChannelOptions
+  /// </summary>
+  public class UpdateChannelOptions : IOptions<ChannelResource>
+  {
+    /// <summary>
+    /// The SID of the Service to update the resource from
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The SID of the Channel resource to update
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// A string to describe the resource
+    /// </summary>
+    public string FriendlyName { get; set; }
+    /// <summary>
+    /// An application-defined string that uniquely identifies the resource
+    /// </summary>
+    public string UniqueName { get; set; }
+    /// <summary>
+    /// A valid JSON string that contains application-specific data
+    /// </summary>
+    public string Attributes { get; set; }
+    /// <summary>
+    /// The ISO 8601 date and time in GMT when the resource was created
+    /// </summary>
+    public DateTime? DateCreated { get; set; }
+    /// <summary>
+    /// The ISO 8601 date and time in GMT when the resource was updated
+    /// </summary>
+    public DateTime? DateUpdated { get; set; }
+    /// <summary>
+    /// The identity of the User that created the Channel
+    /// </summary>
+    public string CreatedBy { get; set; }
+    /// <summary>
+    /// The X-Twilio-Webhook-Enabled HTTP request header
+    /// </summary>
+    public ChannelResource.WebhookEnabledTypeEnum XTwilioWebhookEnabled { get; set; }
+
+    /// <summary>
+    /// Construct a new UpdateChannelOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to update the resource from </param>
+    /// <param name="pathSid"> The SID of the Channel resource to update </param>
+    public UpdateChannelOptions(string pathServiceSid, string pathSid)
+    {
+      PathServiceSid = pathServiceSid;
+      PathSid = pathSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
+
+      if (UniqueName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
+      }
+
+      if (Attributes != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Attributes", Attributes));
+      }
+
+      if (DateCreated != null)
+      {
+        p.Add(new KeyValuePair<string, string>("DateCreated", Serializers.DateTimeIso8601(DateCreated)));
+      }
+
+      if (DateUpdated != null)
+      {
+        p.Add(new KeyValuePair<string, string>("DateUpdated", Serializers.DateTimeIso8601(DateUpdated)));
+      }
+
+      if (CreatedBy != null)
+      {
+        p.Add(new KeyValuePair<string, string>("CreatedBy", CreatedBy));
+      }
+
+      return p;
+    }
+
+    /// <summary>
+    /// Generate the necessary header parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetHeaderParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (XTwilioWebhookEnabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("X-Twilio-Webhook-Enabled", XTwilioWebhookEnabled.ToString()));
+      }
+
+      return p;
+    }
+  }
 
 }

@@ -11,35 +11,35 @@ using Twilio.Converters;
 namespace Twilio.Rest.Events.V1
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Fetch a specific schema with its nested versions.
+  /// </summary>
+  public class FetchSchemaOptions : IOptions<SchemaResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Fetch a specific schema with its nested versions.
+    /// The unique identifier of the schema.
     /// </summary>
-    public class FetchSchemaOptions : IOptions<SchemaResource>
+    public string PathId { get; }
+
+    /// <summary>
+    /// Construct a new FetchSchemaOptions
+    /// </summary>
+    /// <param name="pathId"> The unique identifier of the schema. </param>
+    public FetchSchemaOptions(string pathId)
     {
-        /// <summary>
-        /// The unique identifier of the schema.
-        /// </summary>
-        public string PathId { get; }
-
-        /// <summary>
-        /// Construct a new FetchSchemaOptions
-        /// </summary>
-        /// <param name="pathId"> The unique identifier of the schema. </param>
-        public FetchSchemaOptions(string pathId)
-        {
-            PathId = pathId;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathId = pathId;
     }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
 }

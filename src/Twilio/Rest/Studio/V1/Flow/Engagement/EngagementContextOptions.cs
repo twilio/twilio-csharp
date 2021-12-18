@@ -11,39 +11,39 @@ using Twilio.Converters;
 namespace Twilio.Rest.Studio.V1.Flow.Engagement
 {
 
+  /// <summary>
+  /// Retrieve the most recent context for an Engagement.
+  /// </summary>
+  public class FetchEngagementContextOptions : IOptions<EngagementContextResource>
+  {
     /// <summary>
-    /// Retrieve the most recent context for an Engagement.
+    /// Flow SID
     /// </summary>
-    public class FetchEngagementContextOptions : IOptions<EngagementContextResource>
+    public string PathFlowSid { get; }
+    /// <summary>
+    /// Engagement SID
+    /// </summary>
+    public string PathEngagementSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchEngagementContextOptions
+    /// </summary>
+    /// <param name="pathFlowSid"> Flow SID </param>
+    /// <param name="pathEngagementSid"> Engagement SID </param>
+    public FetchEngagementContextOptions(string pathFlowSid, string pathEngagementSid)
     {
-        /// <summary>
-        /// Flow SID
-        /// </summary>
-        public string PathFlowSid { get; }
-        /// <summary>
-        /// Engagement SID
-        /// </summary>
-        public string PathEngagementSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchEngagementContextOptions
-        /// </summary>
-        /// <param name="pathFlowSid"> Flow SID </param>
-        /// <param name="pathEngagementSid"> Engagement SID </param>
-        public FetchEngagementContextOptions(string pathFlowSid, string pathEngagementSid)
-        {
-            PathFlowSid = pathFlowSid;
-            PathEngagementSid = pathEngagementSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathFlowSid = pathFlowSid;
+      PathEngagementSid = pathEngagementSid;
     }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
 }

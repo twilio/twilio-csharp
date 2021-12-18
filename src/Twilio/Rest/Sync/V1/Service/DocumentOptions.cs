@@ -11,235 +11,235 @@ using Twilio.Converters;
 namespace Twilio.Rest.Sync.V1.Service
 {
 
+  /// <summary>
+  /// FetchDocumentOptions
+  /// </summary>
+  public class FetchDocumentOptions : IOptions<DocumentResource>
+  {
     /// <summary>
-    /// FetchDocumentOptions
+    /// The SID of the Sync Service with the Document resource to fetch
     /// </summary>
-    public class FetchDocumentOptions : IOptions<DocumentResource>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The SID of the Document resource to fetch
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchDocumentOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Sync Service with the Document resource to fetch </param>
+    /// <param name="pathSid"> The SID of the Document resource to fetch </param>
+    public FetchDocumentOptions(string pathServiceSid, string pathSid)
     {
-        /// <summary>
-        /// The SID of the Sync Service with the Document resource to fetch
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The SID of the Document resource to fetch
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchDocumentOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Sync Service with the Document resource to fetch </param>
-        /// <param name="pathSid"> The SID of the Document resource to fetch </param>
-        public FetchDocumentOptions(string pathServiceSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathServiceSid = pathServiceSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// DeleteDocumentOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteDocumentOptions : IOptions<DocumentResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Sync Service with the Document resource to delete
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The SID of the Document resource to delete
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new DeleteDocumentOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Sync Service with the Document resource to delete </param>
-        /// <param name="pathSid"> The SID of the Document resource to delete </param>
-        public DeleteDocumentOptions(string pathServiceSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathSid = pathSid;
-        }
+  /// <summary>
+  /// DeleteDocumentOptions
+  /// </summary>
+  public class DeleteDocumentOptions : IOptions<DocumentResource>
+  {
+    /// <summary>
+    /// The SID of the Sync Service with the Document resource to delete
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The SID of the Document resource to delete
+    /// </summary>
+    public string PathSid { get; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+    /// <summary>
+    /// Construct a new DeleteDocumentOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Sync Service with the Document resource to delete </param>
+    /// <param name="pathSid"> The SID of the Document resource to delete </param>
+    public DeleteDocumentOptions(string pathServiceSid, string pathSid)
+    {
+      PathServiceSid = pathServiceSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// CreateDocumentOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class CreateDocumentOptions : IOptions<DocumentResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Sync Service to associate the Document resource to create with
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// An application-defined string that uniquely identifies the Sync Document
-        /// </summary>
-        public string UniqueName { get; set; }
-        /// <summary>
-        /// A JSON string that represents an arbitrary, schema-less object that the Sync Document stores
-        /// </summary>
-        public object Data { get; set; }
-        /// <summary>
-        /// How long, in seconds, before the Sync Document expires and is deleted
-        /// </summary>
-        public int? Ttl { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new CreateDocumentOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Sync Service to associate the Document resource to create with </param>
-        public CreateDocumentOptions(string pathServiceSid)
-        {
-            PathServiceSid = pathServiceSid;
-        }
+  /// <summary>
+  /// CreateDocumentOptions
+  /// </summary>
+  public class CreateDocumentOptions : IOptions<DocumentResource>
+  {
+    /// <summary>
+    /// The SID of the Sync Service to associate the Document resource to create with
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// An application-defined string that uniquely identifies the Sync Document
+    /// </summary>
+    public string UniqueName { get; set; }
+    /// <summary>
+    /// A JSON string that represents an arbitrary, schema-less object that the Sync Document stores
+    /// </summary>
+    public object Data { get; set; }
+    /// <summary>
+    /// How long, in seconds, before the Sync Document expires and is deleted
+    /// </summary>
+    public int? Ttl { get; set; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (UniqueName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
-            }
-
-            if (Data != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Data", Serializers.JsonObject(Data)));
-            }
-
-            if (Ttl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Ttl", Ttl.ToString()));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new CreateDocumentOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Sync Service to associate the Document resource to create with </param>
+    public CreateDocumentOptions(string pathServiceSid)
+    {
+      PathServiceSid = pathServiceSid;
     }
 
     /// <summary>
-    /// ReadDocumentOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadDocumentOptions : ReadOptions<DocumentResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Sync Service with the Document resources to read
-        /// </summary>
-        public string PathServiceSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (UniqueName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
+      }
 
-        /// <summary>
-        /// Construct a new ReadDocumentOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Sync Service with the Document resources to read </param>
-        public ReadDocumentOptions(string pathServiceSid)
-        {
-            PathServiceSid = pathServiceSid;
-        }
+      if (Data != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Data", Serializers.JsonObject(Data)));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
+      if (Ttl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Ttl", Ttl.ToString()));
+      }
 
-            return p;
-        }
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// ReadDocumentOptions
+  /// </summary>
+  public class ReadDocumentOptions : ReadOptions<DocumentResource>
+  {
+    /// <summary>
+    /// The SID of the Sync Service with the Document resources to read
+    /// </summary>
+    public string PathServiceSid { get; }
+
+    /// <summary>
+    /// Construct a new ReadDocumentOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Sync Service with the Document resources to read </param>
+    public ReadDocumentOptions(string pathServiceSid)
+    {
+      PathServiceSid = pathServiceSid;
     }
 
     /// <summary>
-    /// UpdateDocumentOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateDocumentOptions : IOptions<DocumentResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Sync Service with the Document resource to update
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The SID of the Document resource to update
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// A JSON string that represents an arbitrary, schema-less object that the Sync Document stores
-        /// </summary>
-        public object Data { get; set; }
-        /// <summary>
-        /// How long, in seconds, before the Document resource expires and is deleted
-        /// </summary>
-        public int? Ttl { get; set; }
-        /// <summary>
-        /// The If-Match HTTP request header
-        /// </summary>
-        public string IfMatch { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new UpdateDocumentOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Sync Service with the Document resource to update </param>
-        /// <param name="pathSid"> The SID of the Document resource to update </param>
-        public UpdateDocumentOptions(string pathServiceSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Data != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Data", Serializers.JsonObject(Data)));
-            }
-
-            if (Ttl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Ttl", Ttl.ToString()));
-            }
-
-            return p;
-        }
-
-        /// <summary>
-        /// Generate the necessary header parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetHeaderParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (IfMatch != null)
-            {
-                p.Add(new KeyValuePair<string, string>("If-Match", IfMatch));
-            }
-
-            return p;
-        }
+      return p;
     }
+  }
+
+  /// <summary>
+  /// UpdateDocumentOptions
+  /// </summary>
+  public class UpdateDocumentOptions : IOptions<DocumentResource>
+  {
+    /// <summary>
+    /// The SID of the Sync Service with the Document resource to update
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The SID of the Document resource to update
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// A JSON string that represents an arbitrary, schema-less object that the Sync Document stores
+    /// </summary>
+    public object Data { get; set; }
+    /// <summary>
+    /// How long, in seconds, before the Document resource expires and is deleted
+    /// </summary>
+    public int? Ttl { get; set; }
+    /// <summary>
+    /// The If-Match HTTP request header
+    /// </summary>
+    public string IfMatch { get; set; }
+
+    /// <summary>
+    /// Construct a new UpdateDocumentOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Sync Service with the Document resource to update </param>
+    /// <param name="pathSid"> The SID of the Document resource to update </param>
+    public UpdateDocumentOptions(string pathServiceSid, string pathSid)
+    {
+      PathServiceSid = pathServiceSid;
+      PathSid = pathSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (Data != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Data", Serializers.JsonObject(Data)));
+      }
+
+      if (Ttl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Ttl", Ttl.ToString()));
+      }
+
+      return p;
+    }
+
+    /// <summary>
+    /// Generate the necessary header parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetHeaderParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (IfMatch != null)
+      {
+        p.Add(new KeyValuePair<string, string>("If-Match", IfMatch));
+      }
+
+      return p;
+    }
+  }
 
 }

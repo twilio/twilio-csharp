@@ -11,256 +11,256 @@ using Twilio.Converters;
 namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
 {
 
+  /// <summary>
+  /// Read multiple IpAddress resources.
+  /// </summary>
+  public class ReadIpAddressOptions : ReadOptions<IpAddressResource>
+  {
     /// <summary>
-    /// Read multiple IpAddress resources.
+    /// The unique sid that identifies this account
     /// </summary>
-    public class ReadIpAddressOptions : ReadOptions<IpAddressResource>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The IpAccessControlList Sid that identifies the IpAddress resources to read
+    /// </summary>
+    public string PathIpAccessControlListSid { get; }
+
+    /// <summary>
+    /// Construct a new ReadIpAddressOptions
+    /// </summary>
+    /// <param name="pathIpAccessControlListSid"> The IpAccessControlList Sid that identifies the IpAddress resources to
+    ///                                  read </param>
+    public ReadIpAddressOptions(string pathIpAccessControlListSid)
     {
-        /// <summary>
-        /// The unique sid that identifies this account
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The IpAccessControlList Sid that identifies the IpAddress resources to read
-        /// </summary>
-        public string PathIpAccessControlListSid { get; }
-
-        /// <summary>
-        /// Construct a new ReadIpAddressOptions
-        /// </summary>
-        /// <param name="pathIpAccessControlListSid"> The IpAccessControlList Sid that identifies the IpAddress resources to
-        ///                                  read </param>
-        public ReadIpAddressOptions(string pathIpAccessControlListSid)
-        {
-            PathIpAccessControlListSid = pathIpAccessControlListSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+      PathIpAccessControlListSid = pathIpAccessControlListSid;
     }
 
     /// <summary>
-    /// Create a new IpAddress resource.
+    /// Generate the necessary parameters
     /// </summary>
-    public class CreateIpAddressOptions : IOptions<IpAddressResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique sid that identifies this account
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The IpAccessControlList Sid with which to associate the created IpAddress resource
-        /// </summary>
-        public string PathIpAccessControlListSid { get; }
-        /// <summary>
-        /// A human readable descriptive text for this resource, up to 64 characters long.
-        /// </summary>
-        public string FriendlyName { get; }
-        /// <summary>
-        /// An IP address in dotted decimal notation from which you want to accept traffic. Any SIP requests from this IP address will be allowed by Twilio. IPv4 only supported today.
-        /// </summary>
-        public string IpAddress { get; }
-        /// <summary>
-        /// An integer representing the length of the CIDR prefix to use with this IP address when accepting traffic. By default the entire IP address is used.
-        /// </summary>
-        public int? CidrPrefixLength { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new CreateIpAddressOptions
-        /// </summary>
-        /// <param name="pathIpAccessControlListSid"> The IpAccessControlList Sid with which to associate the created IpAddress
-        ///                                  resource </param>
-        /// <param name="friendlyName"> A human readable descriptive text for this resource, up to 64 characters long. </param>
-        /// <param name="ipAddress"> An IP address in dotted decimal notation from which you want to accept traffic. Any SIP
-        ///                 requests from this IP address will be allowed by Twilio. IPv4 only supported today. </param>
-        public CreateIpAddressOptions(string pathIpAccessControlListSid, string friendlyName, string ipAddress)
-        {
-            PathIpAccessControlListSid = pathIpAccessControlListSid;
-            FriendlyName = friendlyName;
-            IpAddress = ipAddress;
-        }
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
+  /// <summary>
+  /// Create a new IpAddress resource.
+  /// </summary>
+  public class CreateIpAddressOptions : IOptions<IpAddressResource>
+  {
+    /// <summary>
+    /// The unique sid that identifies this account
+    /// </summary>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The IpAccessControlList Sid with which to associate the created IpAddress resource
+    /// </summary>
+    public string PathIpAccessControlListSid { get; }
+    /// <summary>
+    /// A human readable descriptive text for this resource, up to 64 characters long.
+    /// </summary>
+    public string FriendlyName { get; }
+    /// <summary>
+    /// An IP address in dotted decimal notation from which you want to accept traffic. Any SIP requests from this IP address will be allowed by Twilio. IPv4 only supported today.
+    /// </summary>
+    public string IpAddress { get; }
+    /// <summary>
+    /// An integer representing the length of the CIDR prefix to use with this IP address when accepting traffic. By default the entire IP address is used.
+    /// </summary>
+    public int? CidrPrefixLength { get; set; }
 
-            if (IpAddress != null)
-            {
-                p.Add(new KeyValuePair<string, string>("IpAddress", IpAddress));
-            }
-
-            if (CidrPrefixLength != null)
-            {
-                p.Add(new KeyValuePair<string, string>("CidrPrefixLength", CidrPrefixLength.ToString()));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new CreateIpAddressOptions
+    /// </summary>
+    /// <param name="pathIpAccessControlListSid"> The IpAccessControlList Sid with which to associate the created IpAddress
+    ///                                  resource </param>
+    /// <param name="friendlyName"> A human readable descriptive text for this resource, up to 64 characters long. </param>
+    /// <param name="ipAddress"> An IP address in dotted decimal notation from which you want to accept traffic. Any SIP
+    ///                 requests from this IP address will be allowed by Twilio. IPv4 only supported today. </param>
+    public CreateIpAddressOptions(string pathIpAccessControlListSid, string friendlyName, string ipAddress)
+    {
+      PathIpAccessControlListSid = pathIpAccessControlListSid;
+      FriendlyName = friendlyName;
+      IpAddress = ipAddress;
     }
 
     /// <summary>
-    /// Read one IpAddress resource.
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchIpAddressOptions : IOptions<IpAddressResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique sid that identifies this account
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The IpAccessControlList Sid that identifies the IpAddress resources to fetch
-        /// </summary>
-        public string PathIpAccessControlListSid { get; }
-        /// <summary>
-        /// A string that identifies the IpAddress resource to fetch
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
 
-        /// <summary>
-        /// Construct a new FetchIpAddressOptions
-        /// </summary>
-        /// <param name="pathIpAccessControlListSid"> The IpAccessControlList Sid that identifies the IpAddress resources to
-        ///                                  fetch </param>
-        /// <param name="pathSid"> A string that identifies the IpAddress resource to fetch </param>
-        public FetchIpAddressOptions(string pathIpAccessControlListSid, string pathSid)
-        {
-            PathIpAccessControlListSid = pathIpAccessControlListSid;
-            PathSid = pathSid;
-        }
+      if (IpAddress != null)
+      {
+        p.Add(new KeyValuePair<string, string>("IpAddress", IpAddress));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      if (CidrPrefixLength != null)
+      {
+        p.Add(new KeyValuePair<string, string>("CidrPrefixLength", CidrPrefixLength.ToString()));
+      }
+
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// Read one IpAddress resource.
+  /// </summary>
+  public class FetchIpAddressOptions : IOptions<IpAddressResource>
+  {
+    /// <summary>
+    /// The unique sid that identifies this account
+    /// </summary>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The IpAccessControlList Sid that identifies the IpAddress resources to fetch
+    /// </summary>
+    public string PathIpAccessControlListSid { get; }
+    /// <summary>
+    /// A string that identifies the IpAddress resource to fetch
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchIpAddressOptions
+    /// </summary>
+    /// <param name="pathIpAccessControlListSid"> The IpAccessControlList Sid that identifies the IpAddress resources to
+    ///                                  fetch </param>
+    /// <param name="pathSid"> A string that identifies the IpAddress resource to fetch </param>
+    public FetchIpAddressOptions(string pathIpAccessControlListSid, string pathSid)
+    {
+      PathIpAccessControlListSid = pathIpAccessControlListSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Update an IpAddress resource.
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateIpAddressOptions : IOptions<IpAddressResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique sid that identifies this account
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The IpAccessControlList Sid that identifies the IpAddress resources to update
-        /// </summary>
-        public string PathIpAccessControlListSid { get; }
-        /// <summary>
-        /// A string that identifies the IpAddress resource to update
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// An IP address in dotted decimal notation from which you want to accept traffic. Any SIP requests from this IP address will be allowed by Twilio. IPv4 only supported today.
-        /// </summary>
-        public string IpAddress { get; set; }
-        /// <summary>
-        /// A human readable descriptive text for this resource, up to 64 characters long.
-        /// </summary>
-        public string FriendlyName { get; set; }
-        /// <summary>
-        /// An integer representing the length of the CIDR prefix to use with this IP address when accepting traffic. By default the entire IP address is used.
-        /// </summary>
-        public int? CidrPrefixLength { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new UpdateIpAddressOptions
-        /// </summary>
-        /// <param name="pathIpAccessControlListSid"> The IpAccessControlList Sid that identifies the IpAddress resources to
-        ///                                  update </param>
-        /// <param name="pathSid"> A string that identifies the IpAddress resource to update </param>
-        public UpdateIpAddressOptions(string pathIpAccessControlListSid, string pathSid)
-        {
-            PathIpAccessControlListSid = pathIpAccessControlListSid;
-            PathSid = pathSid;
-        }
+  /// <summary>
+  /// Update an IpAddress resource.
+  /// </summary>
+  public class UpdateIpAddressOptions : IOptions<IpAddressResource>
+  {
+    /// <summary>
+    /// The unique sid that identifies this account
+    /// </summary>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The IpAccessControlList Sid that identifies the IpAddress resources to update
+    /// </summary>
+    public string PathIpAccessControlListSid { get; }
+    /// <summary>
+    /// A string that identifies the IpAddress resource to update
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// An IP address in dotted decimal notation from which you want to accept traffic. Any SIP requests from this IP address will be allowed by Twilio. IPv4 only supported today.
+    /// </summary>
+    public string IpAddress { get; set; }
+    /// <summary>
+    /// A human readable descriptive text for this resource, up to 64 characters long.
+    /// </summary>
+    public string FriendlyName { get; set; }
+    /// <summary>
+    /// An integer representing the length of the CIDR prefix to use with this IP address when accepting traffic. By default the entire IP address is used.
+    /// </summary>
+    public int? CidrPrefixLength { get; set; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (IpAddress != null)
-            {
-                p.Add(new KeyValuePair<string, string>("IpAddress", IpAddress));
-            }
-
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
-
-            if (CidrPrefixLength != null)
-            {
-                p.Add(new KeyValuePair<string, string>("CidrPrefixLength", CidrPrefixLength.ToString()));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new UpdateIpAddressOptions
+    /// </summary>
+    /// <param name="pathIpAccessControlListSid"> The IpAccessControlList Sid that identifies the IpAddress resources to
+    ///                                  update </param>
+    /// <param name="pathSid"> A string that identifies the IpAddress resource to update </param>
+    public UpdateIpAddressOptions(string pathIpAccessControlListSid, string pathSid)
+    {
+      PathIpAccessControlListSid = pathIpAccessControlListSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Delete an IpAddress resource.
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteIpAddressOptions : IOptions<IpAddressResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique sid that identifies this account
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The IpAccessControlList Sid that identifies the IpAddress resources to delete
-        /// </summary>
-        public string PathIpAccessControlListSid { get; }
-        /// <summary>
-        /// A string that identifies the resource to delete
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (IpAddress != null)
+      {
+        p.Add(new KeyValuePair<string, string>("IpAddress", IpAddress));
+      }
 
-        /// <summary>
-        /// Construct a new DeleteIpAddressOptions
-        /// </summary>
-        /// <param name="pathIpAccessControlListSid"> The IpAccessControlList Sid that identifies the IpAddress resources to
-        ///                                  delete </param>
-        /// <param name="pathSid"> A string that identifies the resource to delete </param>
-        public DeleteIpAddressOptions(string pathIpAccessControlListSid, string pathSid)
-        {
-            PathIpAccessControlListSid = pathIpAccessControlListSid;
-            PathSid = pathSid;
-        }
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      if (CidrPrefixLength != null)
+      {
+        p.Add(new KeyValuePair<string, string>("CidrPrefixLength", CidrPrefixLength.ToString()));
+      }
+
+      return p;
     }
+  }
+
+  /// <summary>
+  /// Delete an IpAddress resource.
+  /// </summary>
+  public class DeleteIpAddressOptions : IOptions<IpAddressResource>
+  {
+    /// <summary>
+    /// The unique sid that identifies this account
+    /// </summary>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The IpAccessControlList Sid that identifies the IpAddress resources to delete
+    /// </summary>
+    public string PathIpAccessControlListSid { get; }
+    /// <summary>
+    /// A string that identifies the resource to delete
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new DeleteIpAddressOptions
+    /// </summary>
+    /// <param name="pathIpAccessControlListSid"> The IpAccessControlList Sid that identifies the IpAddress resources to
+    ///                                  delete </param>
+    /// <param name="pathSid"> A string that identifies the resource to delete </param>
+    public DeleteIpAddressOptions(string pathIpAccessControlListSid, string pathSid)
+    {
+      PathIpAccessControlListSid = pathIpAccessControlListSid;
+      PathSid = pathSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
 }

@@ -21,544 +21,544 @@ using Twilio.Types;
 namespace Twilio.Rest.Supersim.V1
 {
 
-    public class FleetResource : Resource
+  public class FleetResource : Resource
+  {
+    public sealed class DataMeteringEnum : StringEnum
     {
-        public sealed class DataMeteringEnum : StringEnum
-        {
-            private DataMeteringEnum(string value) : base(value) {}
-            public DataMeteringEnum() {}
-            public static implicit operator DataMeteringEnum(string value)
-            {
-                return new DataMeteringEnum(value);
-            }
+      private DataMeteringEnum(string value) : base(value) { }
+      public DataMeteringEnum() { }
+      public static implicit operator DataMeteringEnum(string value)
+      {
+        return new DataMeteringEnum(value);
+      }
 
-            public static readonly DataMeteringEnum Payg = new DataMeteringEnum("payg");
-        }
-
-        private static Request BuildCreateRequest(CreateFleetOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Post,
-                Rest.Domain.Supersim,
-                "/v1/Fleets",
-                postParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// Create a Fleet
-        /// </summary>
-        /// <param name="options"> Create Fleet parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Fleet </returns>
-        public static FleetResource Create(CreateFleetOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildCreateRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Create a Fleet
-        /// </summary>
-        /// <param name="options"> Create Fleet parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Fleet </returns>
-        public static async System.Threading.Tasks.Task<FleetResource> CreateAsync(CreateFleetOptions options,
-                                                                                   ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// Create a Fleet
-        /// </summary>
-        /// <param name="networkAccessProfile"> The SID or unique name of the Network Access Profile of the Fleet </param>
-        /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
-        /// <param name="dataEnabled"> Defines whether SIMs in the Fleet are capable of using data connectivity </param>
-        /// <param name="dataLimit"> The total data usage (download and upload combined) in Megabytes that each Sim resource
-        ///                 assigned to the Fleet resource can consume </param>
-        /// <param name="commandsEnabled"> Defines whether SIMs in the Fleet are capable of sending and receiving
-        ///                       machine-to-machine SMS via Commands </param>
-        /// <param name="commandsUrl"> The URL that will receive a webhook when a Super SIM in the Fleet is used to send an SMS
-        ///                   from your device to the Commands number </param>
-        /// <param name="commandsMethod"> A string representing the HTTP method to use when making a request to `commands_url`
-        ///                      </param>
-        /// <param name="smsCommandsEnabled"> Defines whether SIMs in the Fleet are capable of sending and receiving
-        ///                          machine-to-machine SMS via Commands </param>
-        /// <param name="smsCommandsUrl"> The URL that will receive a webhook when a Super SIM in the Fleet is used to send an
-        ///                      SMS from your device to the SMS Commands number </param>
-        /// <param name="smsCommandsMethod"> A string representing the HTTP method to use when making a request to
-        ///                         `sms_commands_url` </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Fleet </returns>
-        public static FleetResource Create(string networkAccessProfile,
-                                           string uniqueName = null,
-                                           bool? dataEnabled = null,
-                                           int? dataLimit = null,
-                                           bool? commandsEnabled = null,
-                                           Uri commandsUrl = null,
-                                           Twilio.Http.HttpMethod commandsMethod = null,
-                                           bool? smsCommandsEnabled = null,
-                                           Uri smsCommandsUrl = null,
-                                           Twilio.Http.HttpMethod smsCommandsMethod = null,
-                                           ITwilioRestClient client = null)
-        {
-            var options = new CreateFleetOptions(networkAccessProfile){UniqueName = uniqueName, DataEnabled = dataEnabled, DataLimit = dataLimit, CommandsEnabled = commandsEnabled, CommandsUrl = commandsUrl, CommandsMethod = commandsMethod, SmsCommandsEnabled = smsCommandsEnabled, SmsCommandsUrl = smsCommandsUrl, SmsCommandsMethod = smsCommandsMethod};
-            return Create(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Create a Fleet
-        /// </summary>
-        /// <param name="networkAccessProfile"> The SID or unique name of the Network Access Profile of the Fleet </param>
-        /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
-        /// <param name="dataEnabled"> Defines whether SIMs in the Fleet are capable of using data connectivity </param>
-        /// <param name="dataLimit"> The total data usage (download and upload combined) in Megabytes that each Sim resource
-        ///                 assigned to the Fleet resource can consume </param>
-        /// <param name="commandsEnabled"> Defines whether SIMs in the Fleet are capable of sending and receiving
-        ///                       machine-to-machine SMS via Commands </param>
-        /// <param name="commandsUrl"> The URL that will receive a webhook when a Super SIM in the Fleet is used to send an SMS
-        ///                   from your device to the Commands number </param>
-        /// <param name="commandsMethod"> A string representing the HTTP method to use when making a request to `commands_url`
-        ///                      </param>
-        /// <param name="smsCommandsEnabled"> Defines whether SIMs in the Fleet are capable of sending and receiving
-        ///                          machine-to-machine SMS via Commands </param>
-        /// <param name="smsCommandsUrl"> The URL that will receive a webhook when a Super SIM in the Fleet is used to send an
-        ///                      SMS from your device to the SMS Commands number </param>
-        /// <param name="smsCommandsMethod"> A string representing the HTTP method to use when making a request to
-        ///                         `sms_commands_url` </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Fleet </returns>
-        public static async System.Threading.Tasks.Task<FleetResource> CreateAsync(string networkAccessProfile,
-                                                                                   string uniqueName = null,
-                                                                                   bool? dataEnabled = null,
-                                                                                   int? dataLimit = null,
-                                                                                   bool? commandsEnabled = null,
-                                                                                   Uri commandsUrl = null,
-                                                                                   Twilio.Http.HttpMethod commandsMethod = null,
-                                                                                   bool? smsCommandsEnabled = null,
-                                                                                   Uri smsCommandsUrl = null,
-                                                                                   Twilio.Http.HttpMethod smsCommandsMethod = null,
-                                                                                   ITwilioRestClient client = null)
-        {
-            var options = new CreateFleetOptions(networkAccessProfile){UniqueName = uniqueName, DataEnabled = dataEnabled, DataLimit = dataLimit, CommandsEnabled = commandsEnabled, CommandsUrl = commandsUrl, CommandsMethod = commandsMethod, SmsCommandsEnabled = smsCommandsEnabled, SmsCommandsUrl = smsCommandsUrl, SmsCommandsMethod = smsCommandsMethod};
-            return await CreateAsync(options, client);
-        }
-        #endif
-
-        private static Request BuildFetchRequest(FetchFleetOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Get,
-                Rest.Domain.Supersim,
-                "/v1/Fleets/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// Fetch a Fleet instance from your account.
-        /// </summary>
-        /// <param name="options"> Fetch Fleet parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Fleet </returns>
-        public static FleetResource Fetch(FetchFleetOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Fetch a Fleet instance from your account.
-        /// </summary>
-        /// <param name="options"> Fetch Fleet parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Fleet </returns>
-        public static async System.Threading.Tasks.Task<FleetResource> FetchAsync(FetchFleetOptions options,
-                                                                                  ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// Fetch a Fleet instance from your account.
-        /// </summary>
-        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Fleet </returns>
-        public static FleetResource Fetch(string pathSid, ITwilioRestClient client = null)
-        {
-            var options = new FetchFleetOptions(pathSid);
-            return Fetch(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Fetch a Fleet instance from your account.
-        /// </summary>
-        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Fleet </returns>
-        public static async System.Threading.Tasks.Task<FleetResource> FetchAsync(string pathSid,
-                                                                                  ITwilioRestClient client = null)
-        {
-            var options = new FetchFleetOptions(pathSid);
-            return await FetchAsync(options, client);
-        }
-        #endif
-
-        private static Request BuildReadRequest(ReadFleetOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Get,
-                Rest.Domain.Supersim,
-                "/v1/Fleets",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// Retrieve a list of Fleets from your account.
-        /// </summary>
-        /// <param name="options"> Read Fleet parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Fleet </returns>
-        public static ResourceSet<FleetResource> Read(ReadFleetOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildReadRequest(options, client));
-
-            var page = Page<FleetResource>.FromJson("fleets", response.Content);
-            return new ResourceSet<FleetResource>(page, options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Retrieve a list of Fleets from your account.
-        /// </summary>
-        /// <param name="options"> Read Fleet parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Fleet </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<FleetResource>> ReadAsync(ReadFleetOptions options,
-                                                                                              ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
-
-            var page = Page<FleetResource>.FromJson("fleets", response.Content);
-            return new ResourceSet<FleetResource>(page, options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Retrieve a list of Fleets from your account.
-        /// </summary>
-        /// <param name="networkAccessProfile"> The SID or unique name of the Network Access Profile of the Fleet </param>
-        /// <param name="pageSize"> Page size </param>
-        /// <param name="limit"> Record limit </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Fleet </returns>
-        public static ResourceSet<FleetResource> Read(string networkAccessProfile = null,
-                                                      int? pageSize = null,
-                                                      long? limit = null,
-                                                      ITwilioRestClient client = null)
-        {
-            var options = new ReadFleetOptions(){NetworkAccessProfile = networkAccessProfile, PageSize = pageSize, Limit = limit};
-            return Read(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Retrieve a list of Fleets from your account.
-        /// </summary>
-        /// <param name="networkAccessProfile"> The SID or unique name of the Network Access Profile of the Fleet </param>
-        /// <param name="pageSize"> Page size </param>
-        /// <param name="limit"> Record limit </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Fleet </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<FleetResource>> ReadAsync(string networkAccessProfile = null,
-                                                                                              int? pageSize = null,
-                                                                                              long? limit = null,
-                                                                                              ITwilioRestClient client = null)
-        {
-            var options = new ReadFleetOptions(){NetworkAccessProfile = networkAccessProfile, PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Fetch the target page of records
-        /// </summary>
-        /// <param name="targetUrl"> API-generated URL for the requested results page </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns>
-        public static Page<FleetResource> GetPage(string targetUrl, ITwilioRestClient client)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-
-            var request = new Request(
-                HttpMethod.Get,
-                targetUrl
-            );
-
-            var response = client.Request(request);
-            return Page<FleetResource>.FromJson("fleets", response.Content);
-        }
-
-        /// <summary>
-        /// Fetch the next page of records
-        /// </summary>
-        /// <param name="page"> current page of records </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns>
-        public static Page<FleetResource> NextPage(Page<FleetResource> page, ITwilioRestClient client)
-        {
-            var request = new Request(
-                HttpMethod.Get,
-                page.GetNextPageUrl(Rest.Domain.Supersim)
-            );
-
-            var response = client.Request(request);
-            return Page<FleetResource>.FromJson("fleets", response.Content);
-        }
-
-        /// <summary>
-        /// Fetch the previous page of records
-        /// </summary>
-        /// <param name="page"> current page of records </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns>
-        public static Page<FleetResource> PreviousPage(Page<FleetResource> page, ITwilioRestClient client)
-        {
-            var request = new Request(
-                HttpMethod.Get,
-                page.GetPreviousPageUrl(Rest.Domain.Supersim)
-            );
-
-            var response = client.Request(request);
-            return Page<FleetResource>.FromJson("fleets", response.Content);
-        }
-
-        private static Request BuildUpdateRequest(UpdateFleetOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Post,
-                Rest.Domain.Supersim,
-                "/v1/Fleets/" + options.PathSid + "",
-                postParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// Updates the given properties of a Super SIM Fleet instance from your account.
-        /// </summary>
-        /// <param name="options"> Update Fleet parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Fleet </returns>
-        public static FleetResource Update(UpdateFleetOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildUpdateRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Updates the given properties of a Super SIM Fleet instance from your account.
-        /// </summary>
-        /// <param name="options"> Update Fleet parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Fleet </returns>
-        public static async System.Threading.Tasks.Task<FleetResource> UpdateAsync(UpdateFleetOptions options,
-                                                                                   ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// Updates the given properties of a Super SIM Fleet instance from your account.
-        /// </summary>
-        /// <param name="pathSid"> The SID that identifies the resource to update </param>
-        /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
-        /// <param name="networkAccessProfile"> The SID or unique name of the Network Access Profile of the Fleet </param>
-        /// <param name="commandsUrl"> The URL that will receive a webhook when a Super SIM in the Fleet is used to send an SMS
-        ///                   from your device to the Commands number </param>
-        /// <param name="commandsMethod"> A string representing the HTTP method to use when making a request to `commands_url`
-        ///                      </param>
-        /// <param name="smsCommandsUrl"> The URL that will receive a webhook when a Super SIM in the Fleet is used to send an
-        ///                      SMS from your device to the SMS Commands number </param>
-        /// <param name="smsCommandsMethod"> A string representing the HTTP method to use when making a request to
-        ///                         `sms_commands_url` </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Fleet </returns>
-        public static FleetResource Update(string pathSid,
-                                           string uniqueName = null,
-                                           string networkAccessProfile = null,
-                                           Uri commandsUrl = null,
-                                           Twilio.Http.HttpMethod commandsMethod = null,
-                                           Uri smsCommandsUrl = null,
-                                           Twilio.Http.HttpMethod smsCommandsMethod = null,
-                                           ITwilioRestClient client = null)
-        {
-            var options = new UpdateFleetOptions(pathSid){UniqueName = uniqueName, NetworkAccessProfile = networkAccessProfile, CommandsUrl = commandsUrl, CommandsMethod = commandsMethod, SmsCommandsUrl = smsCommandsUrl, SmsCommandsMethod = smsCommandsMethod};
-            return Update(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Updates the given properties of a Super SIM Fleet instance from your account.
-        /// </summary>
-        /// <param name="pathSid"> The SID that identifies the resource to update </param>
-        /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
-        /// <param name="networkAccessProfile"> The SID or unique name of the Network Access Profile of the Fleet </param>
-        /// <param name="commandsUrl"> The URL that will receive a webhook when a Super SIM in the Fleet is used to send an SMS
-        ///                   from your device to the Commands number </param>
-        /// <param name="commandsMethod"> A string representing the HTTP method to use when making a request to `commands_url`
-        ///                      </param>
-        /// <param name="smsCommandsUrl"> The URL that will receive a webhook when a Super SIM in the Fleet is used to send an
-        ///                      SMS from your device to the SMS Commands number </param>
-        /// <param name="smsCommandsMethod"> A string representing the HTTP method to use when making a request to
-        ///                         `sms_commands_url` </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Fleet </returns>
-        public static async System.Threading.Tasks.Task<FleetResource> UpdateAsync(string pathSid,
-                                                                                   string uniqueName = null,
-                                                                                   string networkAccessProfile = null,
-                                                                                   Uri commandsUrl = null,
-                                                                                   Twilio.Http.HttpMethod commandsMethod = null,
-                                                                                   Uri smsCommandsUrl = null,
-                                                                                   Twilio.Http.HttpMethod smsCommandsMethod = null,
-                                                                                   ITwilioRestClient client = null)
-        {
-            var options = new UpdateFleetOptions(pathSid){UniqueName = uniqueName, NetworkAccessProfile = networkAccessProfile, CommandsUrl = commandsUrl, CommandsMethod = commandsMethod, SmsCommandsUrl = smsCommandsUrl, SmsCommandsMethod = smsCommandsMethod};
-            return await UpdateAsync(options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Converts a JSON string into a FleetResource object
-        /// </summary>
-        /// <param name="json"> Raw JSON string </param>
-        /// <returns> FleetResource object represented by the provided JSON </returns>
-        public static FleetResource FromJson(string json)
-        {
-            // Convert all checked exceptions to Runtime
-            try
-            {
-                return JsonConvert.DeserializeObject<FleetResource>(json);
-            }
-            catch (JsonException e)
-            {
-                throw new ApiException(e.Message, e);
-            }
-        }
-
-        /// <summary>
-        /// The SID of the Account that created the resource
-        /// </summary>
-        [JsonProperty("account_sid")]
-        public string AccountSid { get; private set; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        [JsonProperty("sid")]
-        public string Sid { get; private set; }
-        /// <summary>
-        /// An application-defined string that uniquely identifies the resource
-        /// </summary>
-        [JsonProperty("unique_name")]
-        public string UniqueName { get; private set; }
-        /// <summary>
-        /// The ISO 8601 date and time in GMT when the resource was created
-        /// </summary>
-        [JsonProperty("date_created")]
-        public DateTime? DateCreated { get; private set; }
-        /// <summary>
-        /// The ISO 8601 date and time in GMT when the resource was last updated
-        /// </summary>
-        [JsonProperty("date_updated")]
-        public DateTime? DateUpdated { get; private set; }
-        /// <summary>
-        /// The absolute URL of the Fleet resource
-        /// </summary>
-        [JsonProperty("url")]
-        public Uri Url { get; private set; }
-        /// <summary>
-        /// Defines whether SIMs in the Fleet are capable of using data connectivity
-        /// </summary>
-        [JsonProperty("data_enabled")]
-        public bool? DataEnabled { get; private set; }
-        /// <summary>
-        /// The total data usage (download and upload combined) in Megabytes that each Sim resource assigned to the Fleet resource can consume
-        /// </summary>
-        [JsonProperty("data_limit")]
-        public int? DataLimit { get; private set; }
-        /// <summary>
-        /// The model by which a SIM is metered and billed
-        /// </summary>
-        [JsonProperty("data_metering")]
-        [JsonConverter(typeof(StringEnumConverter))]
-        public FleetResource.DataMeteringEnum DataMetering { get; private set; }
-        /// <summary>
-        /// Defines whether SIMs in the Fleet are capable of sending and receiving machine-to-machine SMS via Commands
-        /// </summary>
-        [JsonProperty("commands_enabled")]
-        public bool? CommandsEnabled { get; private set; }
-        /// <summary>
-        /// The URL that will receive a webhook when a Super SIM in the Fleet is used to send an SMS from your device to the Commands number
-        /// </summary>
-        [JsonProperty("commands_url")]
-        public Uri CommandsUrl { get; private set; }
-        /// <summary>
-        /// A string representing the HTTP method to use when making a request to `commands_url`
-        /// </summary>
-        [JsonProperty("commands_method")]
-        [JsonConverter(typeof(HttpMethodConverter))]
-        public Twilio.Http.HttpMethod CommandsMethod { get; private set; }
-        /// <summary>
-        /// Defines whether SIMs in the Fleet are capable of sending and receiving machine-to-machine SMS via Commands
-        /// </summary>
-        [JsonProperty("sms_commands_enabled")]
-        public bool? SmsCommandsEnabled { get; private set; }
-        /// <summary>
-        /// The URL that will receive a webhook when a Super SIM in the Fleet is used to send an SMS from your device to the SMS Commands number
-        /// </summary>
-        [JsonProperty("sms_commands_url")]
-        public Uri SmsCommandsUrl { get; private set; }
-        /// <summary>
-        /// A string representing the HTTP method to use when making a request to `sms_commands_url`
-        /// </summary>
-        [JsonProperty("sms_commands_method")]
-        [JsonConverter(typeof(HttpMethodConverter))]
-        public Twilio.Http.HttpMethod SmsCommandsMethod { get; private set; }
-        /// <summary>
-        /// The SID of the Network Access Profile of the Fleet
-        /// </summary>
-        [JsonProperty("network_access_profile_sid")]
-        public string NetworkAccessProfileSid { get; private set; }
-
-        private FleetResource()
-        {
-
-        }
+      public static readonly DataMeteringEnum Payg = new DataMeteringEnum("payg");
     }
+
+    private static Request BuildCreateRequest(CreateFleetOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Post,
+          Rest.Domain.Supersim,
+          "/v1/Fleets",
+          postParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// Create a Fleet
+    /// </summary>
+    /// <param name="options"> Create Fleet parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Fleet </returns>
+    public static FleetResource Create(CreateFleetOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildCreateRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Create a Fleet
+    /// </summary>
+    /// <param name="options"> Create Fleet parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Fleet </returns>
+    public static async System.Threading.Tasks.Task<FleetResource> CreateAsync(CreateFleetOptions options,
+                                                                               ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildCreateRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// Create a Fleet
+    /// </summary>
+    /// <param name="networkAccessProfile"> The SID or unique name of the Network Access Profile of the Fleet </param>
+    /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
+    /// <param name="dataEnabled"> Defines whether SIMs in the Fleet are capable of using data connectivity </param>
+    /// <param name="dataLimit"> The total data usage (download and upload combined) in Megabytes that each Sim resource
+    ///                 assigned to the Fleet resource can consume </param>
+    /// <param name="commandsEnabled"> Defines whether SIMs in the Fleet are capable of sending and receiving
+    ///                       machine-to-machine SMS via Commands </param>
+    /// <param name="commandsUrl"> The URL that will receive a webhook when a Super SIM in the Fleet is used to send an SMS
+    ///                   from your device to the Commands number </param>
+    /// <param name="commandsMethod"> A string representing the HTTP method to use when making a request to `commands_url`
+    ///                      </param>
+    /// <param name="smsCommandsEnabled"> Defines whether SIMs in the Fleet are capable of sending and receiving
+    ///                          machine-to-machine SMS via Commands </param>
+    /// <param name="smsCommandsUrl"> The URL that will receive a webhook when a Super SIM in the Fleet is used to send an
+    ///                      SMS from your device to the SMS Commands number </param>
+    /// <param name="smsCommandsMethod"> A string representing the HTTP method to use when making a request to
+    ///                         `sms_commands_url` </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Fleet </returns>
+    public static FleetResource Create(string networkAccessProfile,
+                                       string uniqueName = null,
+                                       bool? dataEnabled = null,
+                                       int? dataLimit = null,
+                                       bool? commandsEnabled = null,
+                                       Uri commandsUrl = null,
+                                       Twilio.Http.HttpMethod commandsMethod = null,
+                                       bool? smsCommandsEnabled = null,
+                                       Uri smsCommandsUrl = null,
+                                       Twilio.Http.HttpMethod smsCommandsMethod = null,
+                                       ITwilioRestClient client = null)
+    {
+      var options = new CreateFleetOptions(networkAccessProfile) { UniqueName = uniqueName, DataEnabled = dataEnabled, DataLimit = dataLimit, CommandsEnabled = commandsEnabled, CommandsUrl = commandsUrl, CommandsMethod = commandsMethod, SmsCommandsEnabled = smsCommandsEnabled, SmsCommandsUrl = smsCommandsUrl, SmsCommandsMethod = smsCommandsMethod };
+      return Create(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Create a Fleet
+    /// </summary>
+    /// <param name="networkAccessProfile"> The SID or unique name of the Network Access Profile of the Fleet </param>
+    /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
+    /// <param name="dataEnabled"> Defines whether SIMs in the Fleet are capable of using data connectivity </param>
+    /// <param name="dataLimit"> The total data usage (download and upload combined) in Megabytes that each Sim resource
+    ///                 assigned to the Fleet resource can consume </param>
+    /// <param name="commandsEnabled"> Defines whether SIMs in the Fleet are capable of sending and receiving
+    ///                       machine-to-machine SMS via Commands </param>
+    /// <param name="commandsUrl"> The URL that will receive a webhook when a Super SIM in the Fleet is used to send an SMS
+    ///                   from your device to the Commands number </param>
+    /// <param name="commandsMethod"> A string representing the HTTP method to use when making a request to `commands_url`
+    ///                      </param>
+    /// <param name="smsCommandsEnabled"> Defines whether SIMs in the Fleet are capable of sending and receiving
+    ///                          machine-to-machine SMS via Commands </param>
+    /// <param name="smsCommandsUrl"> The URL that will receive a webhook when a Super SIM in the Fleet is used to send an
+    ///                      SMS from your device to the SMS Commands number </param>
+    /// <param name="smsCommandsMethod"> A string representing the HTTP method to use when making a request to
+    ///                         `sms_commands_url` </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Fleet </returns>
+    public static async System.Threading.Tasks.Task<FleetResource> CreateAsync(string networkAccessProfile,
+                                                                               string uniqueName = null,
+                                                                               bool? dataEnabled = null,
+                                                                               int? dataLimit = null,
+                                                                               bool? commandsEnabled = null,
+                                                                               Uri commandsUrl = null,
+                                                                               Twilio.Http.HttpMethod commandsMethod = null,
+                                                                               bool? smsCommandsEnabled = null,
+                                                                               Uri smsCommandsUrl = null,
+                                                                               Twilio.Http.HttpMethod smsCommandsMethod = null,
+                                                                               ITwilioRestClient client = null)
+    {
+      var options = new CreateFleetOptions(networkAccessProfile) { UniqueName = uniqueName, DataEnabled = dataEnabled, DataLimit = dataLimit, CommandsEnabled = commandsEnabled, CommandsUrl = commandsUrl, CommandsMethod = commandsMethod, SmsCommandsEnabled = smsCommandsEnabled, SmsCommandsUrl = smsCommandsUrl, SmsCommandsMethod = smsCommandsMethod };
+      return await CreateAsync(options, client);
+    }
+#endif
+
+    private static Request BuildFetchRequest(FetchFleetOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Get,
+          Rest.Domain.Supersim,
+          "/v1/Fleets/" + options.PathSid + "",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// Fetch a Fleet instance from your account.
+    /// </summary>
+    /// <param name="options"> Fetch Fleet parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Fleet </returns>
+    public static FleetResource Fetch(FetchFleetOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Fetch a Fleet instance from your account.
+    /// </summary>
+    /// <param name="options"> Fetch Fleet parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Fleet </returns>
+    public static async System.Threading.Tasks.Task<FleetResource> FetchAsync(FetchFleetOptions options,
+                                                                              ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// Fetch a Fleet instance from your account.
+    /// </summary>
+    /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Fleet </returns>
+    public static FleetResource Fetch(string pathSid, ITwilioRestClient client = null)
+    {
+      var options = new FetchFleetOptions(pathSid);
+      return Fetch(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Fetch a Fleet instance from your account.
+    /// </summary>
+    /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Fleet </returns>
+    public static async System.Threading.Tasks.Task<FleetResource> FetchAsync(string pathSid,
+                                                                              ITwilioRestClient client = null)
+    {
+      var options = new FetchFleetOptions(pathSid);
+      return await FetchAsync(options, client);
+    }
+#endif
+
+    private static Request BuildReadRequest(ReadFleetOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Get,
+          Rest.Domain.Supersim,
+          "/v1/Fleets",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// Retrieve a list of Fleets from your account.
+    /// </summary>
+    /// <param name="options"> Read Fleet parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Fleet </returns>
+    public static ResourceSet<FleetResource> Read(ReadFleetOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildReadRequest(options, client));
+
+      var page = Page<FleetResource>.FromJson("fleets", response.Content);
+      return new ResourceSet<FleetResource>(page, options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Retrieve a list of Fleets from your account.
+    /// </summary>
+    /// <param name="options"> Read Fleet parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Fleet </returns>
+    public static async System.Threading.Tasks.Task<ResourceSet<FleetResource>> ReadAsync(ReadFleetOptions options,
+                                                                                          ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+      var page = Page<FleetResource>.FromJson("fleets", response.Content);
+      return new ResourceSet<FleetResource>(page, options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Retrieve a list of Fleets from your account.
+    /// </summary>
+    /// <param name="networkAccessProfile"> The SID or unique name of the Network Access Profile of the Fleet </param>
+    /// <param name="pageSize"> Page size </param>
+    /// <param name="limit"> Record limit </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Fleet </returns>
+    public static ResourceSet<FleetResource> Read(string networkAccessProfile = null,
+                                                  int? pageSize = null,
+                                                  long? limit = null,
+                                                  ITwilioRestClient client = null)
+    {
+      var options = new ReadFleetOptions() { NetworkAccessProfile = networkAccessProfile, PageSize = pageSize, Limit = limit };
+      return Read(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Retrieve a list of Fleets from your account.
+    /// </summary>
+    /// <param name="networkAccessProfile"> The SID or unique name of the Network Access Profile of the Fleet </param>
+    /// <param name="pageSize"> Page size </param>
+    /// <param name="limit"> Record limit </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Fleet </returns>
+    public static async System.Threading.Tasks.Task<ResourceSet<FleetResource>> ReadAsync(string networkAccessProfile = null,
+                                                                                          int? pageSize = null,
+                                                                                          long? limit = null,
+                                                                                          ITwilioRestClient client = null)
+    {
+      var options = new ReadFleetOptions() { NetworkAccessProfile = networkAccessProfile, PageSize = pageSize, Limit = limit };
+      return await ReadAsync(options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Fetch the target page of records
+    /// </summary>
+    /// <param name="targetUrl"> API-generated URL for the requested results page </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> The target page of records </returns>
+    public static Page<FleetResource> GetPage(string targetUrl, ITwilioRestClient client)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+
+      var request = new Request(
+          HttpMethod.Get,
+          targetUrl
+      );
+
+      var response = client.Request(request);
+      return Page<FleetResource>.FromJson("fleets", response.Content);
+    }
+
+    /// <summary>
+    /// Fetch the next page of records
+    /// </summary>
+    /// <param name="page"> current page of records </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> The next page of records </returns>
+    public static Page<FleetResource> NextPage(Page<FleetResource> page, ITwilioRestClient client)
+    {
+      var request = new Request(
+          HttpMethod.Get,
+          page.GetNextPageUrl(Rest.Domain.Supersim)
+      );
+
+      var response = client.Request(request);
+      return Page<FleetResource>.FromJson("fleets", response.Content);
+    }
+
+    /// <summary>
+    /// Fetch the previous page of records
+    /// </summary>
+    /// <param name="page"> current page of records </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> The previous page of records </returns>
+    public static Page<FleetResource> PreviousPage(Page<FleetResource> page, ITwilioRestClient client)
+    {
+      var request = new Request(
+          HttpMethod.Get,
+          page.GetPreviousPageUrl(Rest.Domain.Supersim)
+      );
+
+      var response = client.Request(request);
+      return Page<FleetResource>.FromJson("fleets", response.Content);
+    }
+
+    private static Request BuildUpdateRequest(UpdateFleetOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Post,
+          Rest.Domain.Supersim,
+          "/v1/Fleets/" + options.PathSid + "",
+          postParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// Updates the given properties of a Super SIM Fleet instance from your account.
+    /// </summary>
+    /// <param name="options"> Update Fleet parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Fleet </returns>
+    public static FleetResource Update(UpdateFleetOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildUpdateRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Updates the given properties of a Super SIM Fleet instance from your account.
+    /// </summary>
+    /// <param name="options"> Update Fleet parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Fleet </returns>
+    public static async System.Threading.Tasks.Task<FleetResource> UpdateAsync(UpdateFleetOptions options,
+                                                                               ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// Updates the given properties of a Super SIM Fleet instance from your account.
+    /// </summary>
+    /// <param name="pathSid"> The SID that identifies the resource to update </param>
+    /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
+    /// <param name="networkAccessProfile"> The SID or unique name of the Network Access Profile of the Fleet </param>
+    /// <param name="commandsUrl"> The URL that will receive a webhook when a Super SIM in the Fleet is used to send an SMS
+    ///                   from your device to the Commands number </param>
+    /// <param name="commandsMethod"> A string representing the HTTP method to use when making a request to `commands_url`
+    ///                      </param>
+    /// <param name="smsCommandsUrl"> The URL that will receive a webhook when a Super SIM in the Fleet is used to send an
+    ///                      SMS from your device to the SMS Commands number </param>
+    /// <param name="smsCommandsMethod"> A string representing the HTTP method to use when making a request to
+    ///                         `sms_commands_url` </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Fleet </returns>
+    public static FleetResource Update(string pathSid,
+                                       string uniqueName = null,
+                                       string networkAccessProfile = null,
+                                       Uri commandsUrl = null,
+                                       Twilio.Http.HttpMethod commandsMethod = null,
+                                       Uri smsCommandsUrl = null,
+                                       Twilio.Http.HttpMethod smsCommandsMethod = null,
+                                       ITwilioRestClient client = null)
+    {
+      var options = new UpdateFleetOptions(pathSid) { UniqueName = uniqueName, NetworkAccessProfile = networkAccessProfile, CommandsUrl = commandsUrl, CommandsMethod = commandsMethod, SmsCommandsUrl = smsCommandsUrl, SmsCommandsMethod = smsCommandsMethod };
+      return Update(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Updates the given properties of a Super SIM Fleet instance from your account.
+    /// </summary>
+    /// <param name="pathSid"> The SID that identifies the resource to update </param>
+    /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
+    /// <param name="networkAccessProfile"> The SID or unique name of the Network Access Profile of the Fleet </param>
+    /// <param name="commandsUrl"> The URL that will receive a webhook when a Super SIM in the Fleet is used to send an SMS
+    ///                   from your device to the Commands number </param>
+    /// <param name="commandsMethod"> A string representing the HTTP method to use when making a request to `commands_url`
+    ///                      </param>
+    /// <param name="smsCommandsUrl"> The URL that will receive a webhook when a Super SIM in the Fleet is used to send an
+    ///                      SMS from your device to the SMS Commands number </param>
+    /// <param name="smsCommandsMethod"> A string representing the HTTP method to use when making a request to
+    ///                         `sms_commands_url` </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Fleet </returns>
+    public static async System.Threading.Tasks.Task<FleetResource> UpdateAsync(string pathSid,
+                                                                               string uniqueName = null,
+                                                                               string networkAccessProfile = null,
+                                                                               Uri commandsUrl = null,
+                                                                               Twilio.Http.HttpMethod commandsMethod = null,
+                                                                               Uri smsCommandsUrl = null,
+                                                                               Twilio.Http.HttpMethod smsCommandsMethod = null,
+                                                                               ITwilioRestClient client = null)
+    {
+      var options = new UpdateFleetOptions(pathSid) { UniqueName = uniqueName, NetworkAccessProfile = networkAccessProfile, CommandsUrl = commandsUrl, CommandsMethod = commandsMethod, SmsCommandsUrl = smsCommandsUrl, SmsCommandsMethod = smsCommandsMethod };
+      return await UpdateAsync(options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Converts a JSON string into a FleetResource object
+    /// </summary>
+    /// <param name="json"> Raw JSON string </param>
+    /// <returns> FleetResource object represented by the provided JSON </returns>
+    public static FleetResource FromJson(string json)
+    {
+      // Convert all checked exceptions to Runtime
+      try
+      {
+        return JsonConvert.DeserializeObject<FleetResource>(json);
+      }
+      catch (JsonException e)
+      {
+        throw new ApiException(e.Message, e);
+      }
+    }
+
+    /// <summary>
+    /// The SID of the Account that created the resource
+    /// </summary>
+    [JsonProperty("account_sid")]
+    public string AccountSid { get; private set; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    [JsonProperty("sid")]
+    public string Sid { get; private set; }
+    /// <summary>
+    /// An application-defined string that uniquely identifies the resource
+    /// </summary>
+    [JsonProperty("unique_name")]
+    public string UniqueName { get; private set; }
+    /// <summary>
+    /// The ISO 8601 date and time in GMT when the resource was created
+    /// </summary>
+    [JsonProperty("date_created")]
+    public DateTime? DateCreated { get; private set; }
+    /// <summary>
+    /// The ISO 8601 date and time in GMT when the resource was last updated
+    /// </summary>
+    [JsonProperty("date_updated")]
+    public DateTime? DateUpdated { get; private set; }
+    /// <summary>
+    /// The absolute URL of the Fleet resource
+    /// </summary>
+    [JsonProperty("url")]
+    public Uri Url { get; private set; }
+    /// <summary>
+    /// Defines whether SIMs in the Fleet are capable of using data connectivity
+    /// </summary>
+    [JsonProperty("data_enabled")]
+    public bool? DataEnabled { get; private set; }
+    /// <summary>
+    /// The total data usage (download and upload combined) in Megabytes that each Sim resource assigned to the Fleet resource can consume
+    /// </summary>
+    [JsonProperty("data_limit")]
+    public int? DataLimit { get; private set; }
+    /// <summary>
+    /// The model by which a SIM is metered and billed
+    /// </summary>
+    [JsonProperty("data_metering")]
+    [JsonConverter(typeof(StringEnumConverter))]
+    public FleetResource.DataMeteringEnum DataMetering { get; private set; }
+    /// <summary>
+    /// Defines whether SIMs in the Fleet are capable of sending and receiving machine-to-machine SMS via Commands
+    /// </summary>
+    [JsonProperty("commands_enabled")]
+    public bool? CommandsEnabled { get; private set; }
+    /// <summary>
+    /// The URL that will receive a webhook when a Super SIM in the Fleet is used to send an SMS from your device to the Commands number
+    /// </summary>
+    [JsonProperty("commands_url")]
+    public Uri CommandsUrl { get; private set; }
+    /// <summary>
+    /// A string representing the HTTP method to use when making a request to `commands_url`
+    /// </summary>
+    [JsonProperty("commands_method")]
+    [JsonConverter(typeof(HttpMethodConverter))]
+    public Twilio.Http.HttpMethod CommandsMethod { get; private set; }
+    /// <summary>
+    /// Defines whether SIMs in the Fleet are capable of sending and receiving machine-to-machine SMS via Commands
+    /// </summary>
+    [JsonProperty("sms_commands_enabled")]
+    public bool? SmsCommandsEnabled { get; private set; }
+    /// <summary>
+    /// The URL that will receive a webhook when a Super SIM in the Fleet is used to send an SMS from your device to the SMS Commands number
+    /// </summary>
+    [JsonProperty("sms_commands_url")]
+    public Uri SmsCommandsUrl { get; private set; }
+    /// <summary>
+    /// A string representing the HTTP method to use when making a request to `sms_commands_url`
+    /// </summary>
+    [JsonProperty("sms_commands_method")]
+    [JsonConverter(typeof(HttpMethodConverter))]
+    public Twilio.Http.HttpMethod SmsCommandsMethod { get; private set; }
+    /// <summary>
+    /// The SID of the Network Access Profile of the Fleet
+    /// </summary>
+    [JsonProperty("network_access_profile_sid")]
+    public string NetworkAccessProfileSid { get; private set; }
+
+    private FleetResource()
+    {
+
+    }
+  }
 
 }

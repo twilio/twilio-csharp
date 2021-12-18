@@ -21,556 +21,556 @@ using Twilio.Http;
 namespace Twilio.Rest.Autopilot.V1.Assistant
 {
 
-    public class QueryResource : Resource
+  public class QueryResource : Resource
+  {
+    private static Request BuildFetchRequest(FetchQueryOptions options, ITwilioRestClient client)
     {
-        private static Request BuildFetchRequest(FetchQueryOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Get,
-                Rest.Domain.Autopilot,
-                "/v1/Assistants/" + options.PathAssistantSid + "/Queries/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="options"> Fetch Query parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Query </returns>
-        public static QueryResource Fetch(FetchQueryOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="options"> Fetch Query parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Query </returns>
-        public static async System.Threading.Tasks.Task<QueryResource> FetchAsync(FetchQueryOptions options,
-                                                                                  ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resource to fetch </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Query </returns>
-        public static QueryResource Fetch(string pathAssistantSid, string pathSid, ITwilioRestClient client = null)
-        {
-            var options = new FetchQueryOptions(pathAssistantSid, pathSid);
-            return Fetch(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resource to fetch </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Query </returns>
-        public static async System.Threading.Tasks.Task<QueryResource> FetchAsync(string pathAssistantSid,
-                                                                                  string pathSid,
-                                                                                  ITwilioRestClient client = null)
-        {
-            var options = new FetchQueryOptions(pathAssistantSid, pathSid);
-            return await FetchAsync(options, client);
-        }
-        #endif
-
-        private static Request BuildReadRequest(ReadQueryOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Get,
-                Rest.Domain.Autopilot,
-                "/v1/Assistants/" + options.PathAssistantSid + "/Queries",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// read
-        /// </summary>
-        /// <param name="options"> Read Query parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Query </returns>
-        public static ResourceSet<QueryResource> Read(ReadQueryOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildReadRequest(options, client));
-
-            var page = Page<QueryResource>.FromJson("queries", response.Content);
-            return new ResourceSet<QueryResource>(page, options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// read
-        /// </summary>
-        /// <param name="options"> Read Query parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Query </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<QueryResource>> ReadAsync(ReadQueryOptions options,
-                                                                                              ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
-
-            var page = Page<QueryResource>.FromJson("queries", response.Content);
-            return new ResourceSet<QueryResource>(page, options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// read
-        /// </summary>
-        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resources to read </param>
-        /// <param name="language"> The ISO language-country string that specifies the language used by the Query resources to
-        ///                read </param>
-        /// <param name="modelBuild"> The SID or unique name of the Model Build to be queried </param>
-        /// <param name="status"> The status of the resources to read </param>
-        /// <param name="dialogueSid"> The SID of the [Dialogue](https://www.twilio.com/docs/autopilot/api/dialogue). </param>
-        /// <param name="pageSize"> Page size </param>
-        /// <param name="limit"> Record limit </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Query </returns>
-        public static ResourceSet<QueryResource> Read(string pathAssistantSid,
-                                                      string language = null,
-                                                      string modelBuild = null,
-                                                      string status = null,
-                                                      string dialogueSid = null,
-                                                      int? pageSize = null,
-                                                      long? limit = null,
-                                                      ITwilioRestClient client = null)
-        {
-            var options = new ReadQueryOptions(pathAssistantSid){Language = language, ModelBuild = modelBuild, Status = status, DialogueSid = dialogueSid, PageSize = pageSize, Limit = limit};
-            return Read(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// read
-        /// </summary>
-        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resources to read </param>
-        /// <param name="language"> The ISO language-country string that specifies the language used by the Query resources to
-        ///                read </param>
-        /// <param name="modelBuild"> The SID or unique name of the Model Build to be queried </param>
-        /// <param name="status"> The status of the resources to read </param>
-        /// <param name="dialogueSid"> The SID of the [Dialogue](https://www.twilio.com/docs/autopilot/api/dialogue). </param>
-        /// <param name="pageSize"> Page size </param>
-        /// <param name="limit"> Record limit </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Query </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<QueryResource>> ReadAsync(string pathAssistantSid,
-                                                                                              string language = null,
-                                                                                              string modelBuild = null,
-                                                                                              string status = null,
-                                                                                              string dialogueSid = null,
-                                                                                              int? pageSize = null,
-                                                                                              long? limit = null,
-                                                                                              ITwilioRestClient client = null)
-        {
-            var options = new ReadQueryOptions(pathAssistantSid){Language = language, ModelBuild = modelBuild, Status = status, DialogueSid = dialogueSid, PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Fetch the target page of records
-        /// </summary>
-        /// <param name="targetUrl"> API-generated URL for the requested results page </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns>
-        public static Page<QueryResource> GetPage(string targetUrl, ITwilioRestClient client)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-
-            var request = new Request(
-                HttpMethod.Get,
-                targetUrl
-            );
-
-            var response = client.Request(request);
-            return Page<QueryResource>.FromJson("queries", response.Content);
-        }
-
-        /// <summary>
-        /// Fetch the next page of records
-        /// </summary>
-        /// <param name="page"> current page of records </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns>
-        public static Page<QueryResource> NextPage(Page<QueryResource> page, ITwilioRestClient client)
-        {
-            var request = new Request(
-                HttpMethod.Get,
-                page.GetNextPageUrl(Rest.Domain.Autopilot)
-            );
-
-            var response = client.Request(request);
-            return Page<QueryResource>.FromJson("queries", response.Content);
-        }
-
-        /// <summary>
-        /// Fetch the previous page of records
-        /// </summary>
-        /// <param name="page"> current page of records </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns>
-        public static Page<QueryResource> PreviousPage(Page<QueryResource> page, ITwilioRestClient client)
-        {
-            var request = new Request(
-                HttpMethod.Get,
-                page.GetPreviousPageUrl(Rest.Domain.Autopilot)
-            );
-
-            var response = client.Request(request);
-            return Page<QueryResource>.FromJson("queries", response.Content);
-        }
-
-        private static Request BuildCreateRequest(CreateQueryOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Post,
-                Rest.Domain.Autopilot,
-                "/v1/Assistants/" + options.PathAssistantSid + "/Queries",
-                postParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// create
-        /// </summary>
-        /// <param name="options"> Create Query parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Query </returns>
-        public static QueryResource Create(CreateQueryOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildCreateRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// create
-        /// </summary>
-        /// <param name="options"> Create Query parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Query </returns>
-        public static async System.Threading.Tasks.Task<QueryResource> CreateAsync(CreateQueryOptions options,
-                                                                                   ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// create
-        /// </summary>
-        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the new resource </param>
-        /// <param name="language"> The ISO language-country string that specifies the language used for the new query </param>
-        /// <param name="query"> The end-user's natural language input </param>
-        /// <param name="tasks"> The list of tasks to limit the new query to </param>
-        /// <param name="modelBuild"> The SID or unique name of the Model Build to be queried </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Query </returns>
-        public static QueryResource Create(string pathAssistantSid,
-                                           string language,
-                                           string query,
-                                           string tasks = null,
-                                           string modelBuild = null,
-                                           ITwilioRestClient client = null)
-        {
-            var options = new CreateQueryOptions(pathAssistantSid, language, query){Tasks = tasks, ModelBuild = modelBuild};
-            return Create(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// create
-        /// </summary>
-        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the new resource </param>
-        /// <param name="language"> The ISO language-country string that specifies the language used for the new query </param>
-        /// <param name="query"> The end-user's natural language input </param>
-        /// <param name="tasks"> The list of tasks to limit the new query to </param>
-        /// <param name="modelBuild"> The SID or unique name of the Model Build to be queried </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Query </returns>
-        public static async System.Threading.Tasks.Task<QueryResource> CreateAsync(string pathAssistantSid,
-                                                                                   string language,
-                                                                                   string query,
-                                                                                   string tasks = null,
-                                                                                   string modelBuild = null,
-                                                                                   ITwilioRestClient client = null)
-        {
-            var options = new CreateQueryOptions(pathAssistantSid, language, query){Tasks = tasks, ModelBuild = modelBuild};
-            return await CreateAsync(options, client);
-        }
-        #endif
-
-        private static Request BuildUpdateRequest(UpdateQueryOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Post,
-                Rest.Domain.Autopilot,
-                "/v1/Assistants/" + options.PathAssistantSid + "/Queries/" + options.PathSid + "",
-                postParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// update
-        /// </summary>
-        /// <param name="options"> Update Query parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Query </returns>
-        public static QueryResource Update(UpdateQueryOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildUpdateRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// update
-        /// </summary>
-        /// <param name="options"> Update Query parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Query </returns>
-        public static async System.Threading.Tasks.Task<QueryResource> UpdateAsync(UpdateQueryOptions options,
-                                                                                   ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// update
-        /// </summary>
-        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resource to update </param>
-        /// <param name="pathSid"> The unique string that identifies the resource to update </param>
-        /// <param name="sampleSid"> The SID of an optional reference to the Sample created from the query </param>
-        /// <param name="status"> The new status of the resource </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Query </returns>
-        public static QueryResource Update(string pathAssistantSid,
-                                           string pathSid,
-                                           string sampleSid = null,
-                                           string status = null,
-                                           ITwilioRestClient client = null)
-        {
-            var options = new UpdateQueryOptions(pathAssistantSid, pathSid){SampleSid = sampleSid, Status = status};
-            return Update(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// update
-        /// </summary>
-        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resource to update </param>
-        /// <param name="pathSid"> The unique string that identifies the resource to update </param>
-        /// <param name="sampleSid"> The SID of an optional reference to the Sample created from the query </param>
-        /// <param name="status"> The new status of the resource </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Query </returns>
-        public static async System.Threading.Tasks.Task<QueryResource> UpdateAsync(string pathAssistantSid,
-                                                                                   string pathSid,
-                                                                                   string sampleSid = null,
-                                                                                   string status = null,
-                                                                                   ITwilioRestClient client = null)
-        {
-            var options = new UpdateQueryOptions(pathAssistantSid, pathSid){SampleSid = sampleSid, Status = status};
-            return await UpdateAsync(options, client);
-        }
-        #endif
-
-        private static Request BuildDeleteRequest(DeleteQueryOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Delete,
-                Rest.Domain.Autopilot,
-                "/v1/Assistants/" + options.PathAssistantSid + "/Queries/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// delete
-        /// </summary>
-        /// <param name="options"> Delete Query parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Query </returns>
-        public static bool Delete(DeleteQueryOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
-        }
-
-        #if !NET35
-        /// <summary>
-        /// delete
-        /// </summary>
-        /// <param name="options"> Delete Query parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Query </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteQueryOptions options,
-                                                                          ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
-        }
-        #endif
-
-        /// <summary>
-        /// delete
-        /// </summary>
-        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resources to delete </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Query </returns>
-        public static bool Delete(string pathAssistantSid, string pathSid, ITwilioRestClient client = null)
-        {
-            var options = new DeleteQueryOptions(pathAssistantSid, pathSid);
-            return Delete(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// delete
-        /// </summary>
-        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resources to delete </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Query </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathAssistantSid,
-                                                                          string pathSid,
-                                                                          ITwilioRestClient client = null)
-        {
-            var options = new DeleteQueryOptions(pathAssistantSid, pathSid);
-            return await DeleteAsync(options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Converts a JSON string into a QueryResource object
-        /// </summary>
-        /// <param name="json"> Raw JSON string </param>
-        /// <returns> QueryResource object represented by the provided JSON </returns>
-        public static QueryResource FromJson(string json)
-        {
-            // Convert all checked exceptions to Runtime
-            try
-            {
-                return JsonConvert.DeserializeObject<QueryResource>(json);
-            }
-            catch (JsonException e)
-            {
-                throw new ApiException(e.Message, e);
-            }
-        }
-
-        /// <summary>
-        /// The SID of the Account that created the resource
-        /// </summary>
-        [JsonProperty("account_sid")]
-        public string AccountSid { get; private set; }
-        /// <summary>
-        /// The RFC 2822 date and time in GMT when the resource was created
-        /// </summary>
-        [JsonProperty("date_created")]
-        public DateTime? DateCreated { get; private set; }
-        /// <summary>
-        /// The RFC 2822 date and time in GMT when the resource was last updated
-        /// </summary>
-        [JsonProperty("date_updated")]
-        public DateTime? DateUpdated { get; private set; }
-        /// <summary>
-        /// The natural language analysis results that include the Task recognized and a list of identified Fields
-        /// </summary>
-        [JsonProperty("results")]
-        public object Results { get; private set; }
-        /// <summary>
-        /// The ISO language-country string that specifies the language used by the Query
-        /// </summary>
-        [JsonProperty("language")]
-        public string Language { get; private set; }
-        /// <summary>
-        /// The SID of the [Model Build](https://www.twilio.com/docs/autopilot/api/model-build) queried
-        /// </summary>
-        [JsonProperty("model_build_sid")]
-        public string ModelBuildSid { get; private set; }
-        /// <summary>
-        /// The end-user's natural language input
-        /// </summary>
-        [JsonProperty("query")]
-        public string Query { get; private set; }
-        /// <summary>
-        /// The SID of an optional reference to the Sample created from the query
-        /// </summary>
-        [JsonProperty("sample_sid")]
-        public string SampleSid { get; private set; }
-        /// <summary>
-        /// The SID of the Assistant that is the parent of the resource
-        /// </summary>
-        [JsonProperty("assistant_sid")]
-        public string AssistantSid { get; private set; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        [JsonProperty("sid")]
-        public string Sid { get; private set; }
-        /// <summary>
-        /// The status of the Query
-        /// </summary>
-        [JsonProperty("status")]
-        public string Status { get; private set; }
-        /// <summary>
-        /// The absolute URL of the Query resource
-        /// </summary>
-        [JsonProperty("url")]
-        public Uri Url { get; private set; }
-        /// <summary>
-        /// The communication channel from where the end-user input came
-        /// </summary>
-        [JsonProperty("source_channel")]
-        public string SourceChannel { get; private set; }
-        /// <summary>
-        /// The SID of the [Dialogue](https://www.twilio.com/docs/autopilot/api/dialogue).
-        /// </summary>
-        [JsonProperty("dialogue_sid")]
-        public string DialogueSid { get; private set; }
-
-        private QueryResource()
-        {
-
-        }
+      return new Request(
+          HttpMethod.Get,
+          Rest.Domain.Autopilot,
+          "/v1/Assistants/" + options.PathAssistantSid + "/Queries/" + options.PathSid + "",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
     }
+
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="options"> Fetch Query parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Query </returns>
+    public static QueryResource Fetch(FetchQueryOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="options"> Fetch Query parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Query </returns>
+    public static async System.Threading.Tasks.Task<QueryResource> FetchAsync(FetchQueryOptions options,
+                                                                              ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resource to fetch </param>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Query </returns>
+    public static QueryResource Fetch(string pathAssistantSid, string pathSid, ITwilioRestClient client = null)
+    {
+      var options = new FetchQueryOptions(pathAssistantSid, pathSid);
+      return Fetch(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resource to fetch </param>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Query </returns>
+    public static async System.Threading.Tasks.Task<QueryResource> FetchAsync(string pathAssistantSid,
+                                                                              string pathSid,
+                                                                              ITwilioRestClient client = null)
+    {
+      var options = new FetchQueryOptions(pathAssistantSid, pathSid);
+      return await FetchAsync(options, client);
+    }
+#endif
+
+    private static Request BuildReadRequest(ReadQueryOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Get,
+          Rest.Domain.Autopilot,
+          "/v1/Assistants/" + options.PathAssistantSid + "/Queries",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// read
+    /// </summary>
+    /// <param name="options"> Read Query parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Query </returns>
+    public static ResourceSet<QueryResource> Read(ReadQueryOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildReadRequest(options, client));
+
+      var page = Page<QueryResource>.FromJson("queries", response.Content);
+      return new ResourceSet<QueryResource>(page, options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// read
+    /// </summary>
+    /// <param name="options"> Read Query parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Query </returns>
+    public static async System.Threading.Tasks.Task<ResourceSet<QueryResource>> ReadAsync(ReadQueryOptions options,
+                                                                                          ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+      var page = Page<QueryResource>.FromJson("queries", response.Content);
+      return new ResourceSet<QueryResource>(page, options, client);
+    }
+#endif
+
+    /// <summary>
+    /// read
+    /// </summary>
+    /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resources to read </param>
+    /// <param name="language"> The ISO language-country string that specifies the language used by the Query resources to
+    ///                read </param>
+    /// <param name="modelBuild"> The SID or unique name of the Model Build to be queried </param>
+    /// <param name="status"> The status of the resources to read </param>
+    /// <param name="dialogueSid"> The SID of the [Dialogue](https://www.twilio.com/docs/autopilot/api/dialogue). </param>
+    /// <param name="pageSize"> Page size </param>
+    /// <param name="limit"> Record limit </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Query </returns>
+    public static ResourceSet<QueryResource> Read(string pathAssistantSid,
+                                                  string language = null,
+                                                  string modelBuild = null,
+                                                  string status = null,
+                                                  string dialogueSid = null,
+                                                  int? pageSize = null,
+                                                  long? limit = null,
+                                                  ITwilioRestClient client = null)
+    {
+      var options = new ReadQueryOptions(pathAssistantSid) { Language = language, ModelBuild = modelBuild, Status = status, DialogueSid = dialogueSid, PageSize = pageSize, Limit = limit };
+      return Read(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// read
+    /// </summary>
+    /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resources to read </param>
+    /// <param name="language"> The ISO language-country string that specifies the language used by the Query resources to
+    ///                read </param>
+    /// <param name="modelBuild"> The SID or unique name of the Model Build to be queried </param>
+    /// <param name="status"> The status of the resources to read </param>
+    /// <param name="dialogueSid"> The SID of the [Dialogue](https://www.twilio.com/docs/autopilot/api/dialogue). </param>
+    /// <param name="pageSize"> Page size </param>
+    /// <param name="limit"> Record limit </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Query </returns>
+    public static async System.Threading.Tasks.Task<ResourceSet<QueryResource>> ReadAsync(string pathAssistantSid,
+                                                                                          string language = null,
+                                                                                          string modelBuild = null,
+                                                                                          string status = null,
+                                                                                          string dialogueSid = null,
+                                                                                          int? pageSize = null,
+                                                                                          long? limit = null,
+                                                                                          ITwilioRestClient client = null)
+    {
+      var options = new ReadQueryOptions(pathAssistantSid) { Language = language, ModelBuild = modelBuild, Status = status, DialogueSid = dialogueSid, PageSize = pageSize, Limit = limit };
+      return await ReadAsync(options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Fetch the target page of records
+    /// </summary>
+    /// <param name="targetUrl"> API-generated URL for the requested results page </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> The target page of records </returns>
+    public static Page<QueryResource> GetPage(string targetUrl, ITwilioRestClient client)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+
+      var request = new Request(
+          HttpMethod.Get,
+          targetUrl
+      );
+
+      var response = client.Request(request);
+      return Page<QueryResource>.FromJson("queries", response.Content);
+    }
+
+    /// <summary>
+    /// Fetch the next page of records
+    /// </summary>
+    /// <param name="page"> current page of records </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> The next page of records </returns>
+    public static Page<QueryResource> NextPage(Page<QueryResource> page, ITwilioRestClient client)
+    {
+      var request = new Request(
+          HttpMethod.Get,
+          page.GetNextPageUrl(Rest.Domain.Autopilot)
+      );
+
+      var response = client.Request(request);
+      return Page<QueryResource>.FromJson("queries", response.Content);
+    }
+
+    /// <summary>
+    /// Fetch the previous page of records
+    /// </summary>
+    /// <param name="page"> current page of records </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> The previous page of records </returns>
+    public static Page<QueryResource> PreviousPage(Page<QueryResource> page, ITwilioRestClient client)
+    {
+      var request = new Request(
+          HttpMethod.Get,
+          page.GetPreviousPageUrl(Rest.Domain.Autopilot)
+      );
+
+      var response = client.Request(request);
+      return Page<QueryResource>.FromJson("queries", response.Content);
+    }
+
+    private static Request BuildCreateRequest(CreateQueryOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Post,
+          Rest.Domain.Autopilot,
+          "/v1/Assistants/" + options.PathAssistantSid + "/Queries",
+          postParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// create
+    /// </summary>
+    /// <param name="options"> Create Query parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Query </returns>
+    public static QueryResource Create(CreateQueryOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildCreateRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// create
+    /// </summary>
+    /// <param name="options"> Create Query parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Query </returns>
+    public static async System.Threading.Tasks.Task<QueryResource> CreateAsync(CreateQueryOptions options,
+                                                                               ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildCreateRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// create
+    /// </summary>
+    /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the new resource </param>
+    /// <param name="language"> The ISO language-country string that specifies the language used for the new query </param>
+    /// <param name="query"> The end-user's natural language input </param>
+    /// <param name="tasks"> The list of tasks to limit the new query to </param>
+    /// <param name="modelBuild"> The SID or unique name of the Model Build to be queried </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Query </returns>
+    public static QueryResource Create(string pathAssistantSid,
+                                       string language,
+                                       string query,
+                                       string tasks = null,
+                                       string modelBuild = null,
+                                       ITwilioRestClient client = null)
+    {
+      var options = new CreateQueryOptions(pathAssistantSid, language, query) { Tasks = tasks, ModelBuild = modelBuild };
+      return Create(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// create
+    /// </summary>
+    /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the new resource </param>
+    /// <param name="language"> The ISO language-country string that specifies the language used for the new query </param>
+    /// <param name="query"> The end-user's natural language input </param>
+    /// <param name="tasks"> The list of tasks to limit the new query to </param>
+    /// <param name="modelBuild"> The SID or unique name of the Model Build to be queried </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Query </returns>
+    public static async System.Threading.Tasks.Task<QueryResource> CreateAsync(string pathAssistantSid,
+                                                                               string language,
+                                                                               string query,
+                                                                               string tasks = null,
+                                                                               string modelBuild = null,
+                                                                               ITwilioRestClient client = null)
+    {
+      var options = new CreateQueryOptions(pathAssistantSid, language, query) { Tasks = tasks, ModelBuild = modelBuild };
+      return await CreateAsync(options, client);
+    }
+#endif
+
+    private static Request BuildUpdateRequest(UpdateQueryOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Post,
+          Rest.Domain.Autopilot,
+          "/v1/Assistants/" + options.PathAssistantSid + "/Queries/" + options.PathSid + "",
+          postParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// update
+    /// </summary>
+    /// <param name="options"> Update Query parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Query </returns>
+    public static QueryResource Update(UpdateQueryOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildUpdateRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// update
+    /// </summary>
+    /// <param name="options"> Update Query parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Query </returns>
+    public static async System.Threading.Tasks.Task<QueryResource> UpdateAsync(UpdateQueryOptions options,
+                                                                               ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// update
+    /// </summary>
+    /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resource to update </param>
+    /// <param name="pathSid"> The unique string that identifies the resource to update </param>
+    /// <param name="sampleSid"> The SID of an optional reference to the Sample created from the query </param>
+    /// <param name="status"> The new status of the resource </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Query </returns>
+    public static QueryResource Update(string pathAssistantSid,
+                                       string pathSid,
+                                       string sampleSid = null,
+                                       string status = null,
+                                       ITwilioRestClient client = null)
+    {
+      var options = new UpdateQueryOptions(pathAssistantSid, pathSid) { SampleSid = sampleSid, Status = status };
+      return Update(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// update
+    /// </summary>
+    /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resource to update </param>
+    /// <param name="pathSid"> The unique string that identifies the resource to update </param>
+    /// <param name="sampleSid"> The SID of an optional reference to the Sample created from the query </param>
+    /// <param name="status"> The new status of the resource </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Query </returns>
+    public static async System.Threading.Tasks.Task<QueryResource> UpdateAsync(string pathAssistantSid,
+                                                                               string pathSid,
+                                                                               string sampleSid = null,
+                                                                               string status = null,
+                                                                               ITwilioRestClient client = null)
+    {
+      var options = new UpdateQueryOptions(pathAssistantSid, pathSid) { SampleSid = sampleSid, Status = status };
+      return await UpdateAsync(options, client);
+    }
+#endif
+
+    private static Request BuildDeleteRequest(DeleteQueryOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Delete,
+          Rest.Domain.Autopilot,
+          "/v1/Assistants/" + options.PathAssistantSid + "/Queries/" + options.PathSid + "",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// delete
+    /// </summary>
+    /// <param name="options"> Delete Query parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Query </returns>
+    public static bool Delete(DeleteQueryOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildDeleteRequest(options, client));
+      return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+    }
+
+#if !NET35
+    /// <summary>
+    /// delete
+    /// </summary>
+    /// <param name="options"> Delete Query parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Query </returns>
+    public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteQueryOptions options,
+                                                                      ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+      return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+    }
+#endif
+
+    /// <summary>
+    /// delete
+    /// </summary>
+    /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resources to delete </param>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Query </returns>
+    public static bool Delete(string pathAssistantSid, string pathSid, ITwilioRestClient client = null)
+    {
+      var options = new DeleteQueryOptions(pathAssistantSid, pathSid);
+      return Delete(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// delete
+    /// </summary>
+    /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resources to delete </param>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Query </returns>
+    public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathAssistantSid,
+                                                                      string pathSid,
+                                                                      ITwilioRestClient client = null)
+    {
+      var options = new DeleteQueryOptions(pathAssistantSid, pathSid);
+      return await DeleteAsync(options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Converts a JSON string into a QueryResource object
+    /// </summary>
+    /// <param name="json"> Raw JSON string </param>
+    /// <returns> QueryResource object represented by the provided JSON </returns>
+    public static QueryResource FromJson(string json)
+    {
+      // Convert all checked exceptions to Runtime
+      try
+      {
+        return JsonConvert.DeserializeObject<QueryResource>(json);
+      }
+      catch (JsonException e)
+      {
+        throw new ApiException(e.Message, e);
+      }
+    }
+
+    /// <summary>
+    /// The SID of the Account that created the resource
+    /// </summary>
+    [JsonProperty("account_sid")]
+    public string AccountSid { get; private set; }
+    /// <summary>
+    /// The RFC 2822 date and time in GMT when the resource was created
+    /// </summary>
+    [JsonProperty("date_created")]
+    public DateTime? DateCreated { get; private set; }
+    /// <summary>
+    /// The RFC 2822 date and time in GMT when the resource was last updated
+    /// </summary>
+    [JsonProperty("date_updated")]
+    public DateTime? DateUpdated { get; private set; }
+    /// <summary>
+    /// The natural language analysis results that include the Task recognized and a list of identified Fields
+    /// </summary>
+    [JsonProperty("results")]
+    public object Results { get; private set; }
+    /// <summary>
+    /// The ISO language-country string that specifies the language used by the Query
+    /// </summary>
+    [JsonProperty("language")]
+    public string Language { get; private set; }
+    /// <summary>
+    /// The SID of the [Model Build](https://www.twilio.com/docs/autopilot/api/model-build) queried
+    /// </summary>
+    [JsonProperty("model_build_sid")]
+    public string ModelBuildSid { get; private set; }
+    /// <summary>
+    /// The end-user's natural language input
+    /// </summary>
+    [JsonProperty("query")]
+    public string Query { get; private set; }
+    /// <summary>
+    /// The SID of an optional reference to the Sample created from the query
+    /// </summary>
+    [JsonProperty("sample_sid")]
+    public string SampleSid { get; private set; }
+    /// <summary>
+    /// The SID of the Assistant that is the parent of the resource
+    /// </summary>
+    [JsonProperty("assistant_sid")]
+    public string AssistantSid { get; private set; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    [JsonProperty("sid")]
+    public string Sid { get; private set; }
+    /// <summary>
+    /// The status of the Query
+    /// </summary>
+    [JsonProperty("status")]
+    public string Status { get; private set; }
+    /// <summary>
+    /// The absolute URL of the Query resource
+    /// </summary>
+    [JsonProperty("url")]
+    public Uri Url { get; private set; }
+    /// <summary>
+    /// The communication channel from where the end-user input came
+    /// </summary>
+    [JsonProperty("source_channel")]
+    public string SourceChannel { get; private set; }
+    /// <summary>
+    /// The SID of the [Dialogue](https://www.twilio.com/docs/autopilot/api/dialogue).
+    /// </summary>
+    [JsonProperty("dialogue_sid")]
+    public string DialogueSid { get; private set; }
+
+    private QueryResource()
+    {
+
+    }
+  }
 
 }

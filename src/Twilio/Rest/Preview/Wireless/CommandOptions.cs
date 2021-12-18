@@ -11,187 +11,187 @@ using Twilio.Converters;
 namespace Twilio.Rest.Preview.Wireless
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// FetchCommandOptions
+  /// </summary>
+  public class FetchCommandOptions : IOptions<CommandResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// FetchCommandOptions
+    /// The sid
     /// </summary>
-    public class FetchCommandOptions : IOptions<CommandResource>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchCommandOptions
+    /// </summary>
+    /// <param name="pathSid"> The sid </param>
+    public FetchCommandOptions(string pathSid)
     {
-        /// <summary>
-        /// The sid
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchCommandOptions
-        /// </summary>
-        /// <param name="pathSid"> The sid </param>
-        public FetchCommandOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// ReadCommandOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadCommandOptions : ReadOptions<CommandResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The device
-        /// </summary>
-        public string Device { get; set; }
-        /// <summary>
-        /// The sim
-        /// </summary>
-        public string Sim { get; set; }
-        /// <summary>
-        /// The status
-        /// </summary>
-        public string Status { get; set; }
-        /// <summary>
-        /// The direction
-        /// </summary>
-        public string Direction { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Device != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Device", Device));
-            }
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// ReadCommandOptions
+  /// </summary>
+  public class ReadCommandOptions : ReadOptions<CommandResource>
+  {
+    /// <summary>
+    /// The device
+    /// </summary>
+    public string Device { get; set; }
+    /// <summary>
+    /// The sim
+    /// </summary>
+    public string Sim { get; set; }
+    /// <summary>
+    /// The status
+    /// </summary>
+    public string Status { get; set; }
+    /// <summary>
+    /// The direction
+    /// </summary>
+    public string Direction { get; set; }
 
-            if (Sim != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Sim", Sim));
-            }
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (Device != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Device", Device));
+      }
 
-            if (Status != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Status", Status));
-            }
+      if (Sim != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Sim", Sim));
+      }
 
-            if (Direction != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Direction", Direction));
-            }
+      if (Status != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Status", Status));
+      }
 
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
+      if (Direction != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Direction", Direction));
+      }
 
-            return p;
-        }
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// CreateCommandOptions
+  /// </summary>
+  public class CreateCommandOptions : IOptions<CommandResource>
+  {
+    /// <summary>
+    /// The command
+    /// </summary>
+    public string Command { get; }
+    /// <summary>
+    /// The device
+    /// </summary>
+    public string Device { get; set; }
+    /// <summary>
+    /// The sim
+    /// </summary>
+    public string Sim { get; set; }
+    /// <summary>
+    /// The callback_method
+    /// </summary>
+    public string CallbackMethod { get; set; }
+    /// <summary>
+    /// The callback_url
+    /// </summary>
+    public Uri CallbackUrl { get; set; }
+    /// <summary>
+    /// The command_mode
+    /// </summary>
+    public string CommandMode { get; set; }
+    /// <summary>
+    /// The include_sid
+    /// </summary>
+    public string IncludeSid { get; set; }
+
+    /// <summary>
+    /// Construct a new CreateCommandOptions
+    /// </summary>
+    /// <param name="command"> The command </param>
+    public CreateCommandOptions(string command)
+    {
+      Command = command;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// CreateCommandOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class CreateCommandOptions : IOptions<CommandResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The command
-        /// </summary>
-        public string Command { get; }
-        /// <summary>
-        /// The device
-        /// </summary>
-        public string Device { get; set; }
-        /// <summary>
-        /// The sim
-        /// </summary>
-        public string Sim { get; set; }
-        /// <summary>
-        /// The callback_method
-        /// </summary>
-        public string CallbackMethod { get; set; }
-        /// <summary>
-        /// The callback_url
-        /// </summary>
-        public Uri CallbackUrl { get; set; }
-        /// <summary>
-        /// The command_mode
-        /// </summary>
-        public string CommandMode { get; set; }
-        /// <summary>
-        /// The include_sid
-        /// </summary>
-        public string IncludeSid { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (Command != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Command", Command));
+      }
 
-        /// <summary>
-        /// Construct a new CreateCommandOptions
-        /// </summary>
-        /// <param name="command"> The command </param>
-        public CreateCommandOptions(string command)
-        {
-            Command = command;
-        }
+      if (Device != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Device", Device));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Command != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Command", Command));
-            }
+      if (Sim != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Sim", Sim));
+      }
 
-            if (Device != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Device", Device));
-            }
+      if (CallbackMethod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("CallbackMethod", CallbackMethod));
+      }
 
-            if (Sim != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Sim", Sim));
-            }
+      if (CallbackUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("CallbackUrl", Serializers.Url(CallbackUrl)));
+      }
 
-            if (CallbackMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("CallbackMethod", CallbackMethod));
-            }
+      if (CommandMode != null)
+      {
+        p.Add(new KeyValuePair<string, string>("CommandMode", CommandMode));
+      }
 
-            if (CallbackUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("CallbackUrl", Serializers.Url(CallbackUrl)));
-            }
+      if (IncludeSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("IncludeSid", IncludeSid));
+      }
 
-            if (CommandMode != null)
-            {
-                p.Add(new KeyValuePair<string, string>("CommandMode", CommandMode));
-            }
-
-            if (IncludeSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("IncludeSid", IncludeSid));
-            }
-
-            return p;
-        }
+      return p;
     }
+  }
 
 }

@@ -11,148 +11,148 @@ using Twilio.Converters;
 namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
 {
 
+  /// <summary>
+  /// Create a new Assigned Item.
+  /// </summary>
+  public class CreateItemAssignmentOptions : IOptions<ItemAssignmentResource>
+  {
     /// <summary>
-    /// Create a new Assigned Item.
+    /// The unique string that identifies the resource.
     /// </summary>
-    public class CreateItemAssignmentOptions : IOptions<ItemAssignmentResource>
+    public string PathBundleSid { get; }
+    /// <summary>
+    /// The sid of an object bag
+    /// </summary>
+    public string ObjectSid { get; }
+
+    /// <summary>
+    /// Construct a new CreateItemAssignmentOptions
+    /// </summary>
+    /// <param name="pathBundleSid"> The unique string that identifies the resource. </param>
+    /// <param name="objectSid"> The sid of an object bag </param>
+    public CreateItemAssignmentOptions(string pathBundleSid, string objectSid)
     {
-        /// <summary>
-        /// The unique string that identifies the resource.
-        /// </summary>
-        public string PathBundleSid { get; }
-        /// <summary>
-        /// The sid of an object bag
-        /// </summary>
-        public string ObjectSid { get; }
-
-        /// <summary>
-        /// Construct a new CreateItemAssignmentOptions
-        /// </summary>
-        /// <param name="pathBundleSid"> The unique string that identifies the resource. </param>
-        /// <param name="objectSid"> The sid of an object bag </param>
-        public CreateItemAssignmentOptions(string pathBundleSid, string objectSid)
-        {
-            PathBundleSid = pathBundleSid;
-            ObjectSid = objectSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (ObjectSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ObjectSid", ObjectSid.ToString()));
-            }
-
-            return p;
-        }
+      PathBundleSid = pathBundleSid;
+      ObjectSid = objectSid;
     }
 
     /// <summary>
-    /// Retrieve a list of all Assigned Items for an account.
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadItemAssignmentOptions : ReadOptions<ItemAssignmentResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique string that identifies the resource.
-        /// </summary>
-        public string PathBundleSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (ObjectSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ObjectSid", ObjectSid.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new ReadItemAssignmentOptions
-        /// </summary>
-        /// <param name="pathBundleSid"> The unique string that identifies the resource. </param>
-        public ReadItemAssignmentOptions(string pathBundleSid)
-        {
-            PathBundleSid = pathBundleSid;
-        }
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
+  /// <summary>
+  /// Retrieve a list of all Assigned Items for an account.
+  /// </summary>
+  public class ReadItemAssignmentOptions : ReadOptions<ItemAssignmentResource>
+  {
+    /// <summary>
+    /// The unique string that identifies the resource.
+    /// </summary>
+    public string PathBundleSid { get; }
 
-            return p;
-        }
+    /// <summary>
+    /// Construct a new ReadItemAssignmentOptions
+    /// </summary>
+    /// <param name="pathBundleSid"> The unique string that identifies the resource. </param>
+    public ReadItemAssignmentOptions(string pathBundleSid)
+    {
+      PathBundleSid = pathBundleSid;
     }
 
     /// <summary>
-    /// Fetch specific Assigned Item Instance.
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchItemAssignmentOptions : IOptions<ItemAssignmentResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique string that identifies the resource.
-        /// </summary>
-        public string PathBundleSid { get; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new FetchItemAssignmentOptions
-        /// </summary>
-        /// <param name="pathBundleSid"> The unique string that identifies the resource. </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public FetchItemAssignmentOptions(string pathBundleSid, string pathSid)
-        {
-            PathBundleSid = pathBundleSid;
-            PathSid = pathSid;
-        }
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+  /// <summary>
+  /// Fetch specific Assigned Item Instance.
+  /// </summary>
+  public class FetchItemAssignmentOptions : IOptions<ItemAssignmentResource>
+  {
+    /// <summary>
+    /// The unique string that identifies the resource.
+    /// </summary>
+    public string PathBundleSid { get; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchItemAssignmentOptions
+    /// </summary>
+    /// <param name="pathBundleSid"> The unique string that identifies the resource. </param>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public FetchItemAssignmentOptions(string pathBundleSid, string pathSid)
+    {
+      PathBundleSid = pathBundleSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Remove an Assignment Item Instance.
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteItemAssignmentOptions : IOptions<ItemAssignmentResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique string that identifies the resource.
-        /// </summary>
-        public string PathBundleSid { get; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new DeleteItemAssignmentOptions
-        /// </summary>
-        /// <param name="pathBundleSid"> The unique string that identifies the resource. </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public DeleteItemAssignmentOptions(string pathBundleSid, string pathSid)
-        {
-            PathBundleSid = pathBundleSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
+
+  /// <summary>
+  /// Remove an Assignment Item Instance.
+  /// </summary>
+  public class DeleteItemAssignmentOptions : IOptions<ItemAssignmentResource>
+  {
+    /// <summary>
+    /// The unique string that identifies the resource.
+    /// </summary>
+    public string PathBundleSid { get; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new DeleteItemAssignmentOptions
+    /// </summary>
+    /// <param name="pathBundleSid"> The unique string that identifies the resource. </param>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public DeleteItemAssignmentOptions(string pathBundleSid, string pathSid)
+    {
+      PathBundleSid = pathBundleSid;
+      PathSid = pathSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
 }

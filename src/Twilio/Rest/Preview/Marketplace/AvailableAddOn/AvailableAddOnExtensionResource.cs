@@ -21,270 +21,270 @@ using Twilio.Http;
 namespace Twilio.Rest.Preview.Marketplace.AvailableAddOn
 {
 
-    public class AvailableAddOnExtensionResource : Resource
+  public class AvailableAddOnExtensionResource : Resource
+  {
+    private static Request BuildFetchRequest(FetchAvailableAddOnExtensionOptions options, ITwilioRestClient client)
     {
-        private static Request BuildFetchRequest(FetchAvailableAddOnExtensionOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Get,
-                Rest.Domain.Preview,
-                "/marketplace/AvailableAddOns/" + options.PathAvailableAddOnSid + "/Extensions/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// Fetch an instance of an Extension for the Available Add-on.
-        /// </summary>
-        /// <param name="options"> Fetch AvailableAddOnExtension parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of AvailableAddOnExtension </returns>
-        public static AvailableAddOnExtensionResource Fetch(FetchAvailableAddOnExtensionOptions options,
-                                                            ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Fetch an instance of an Extension for the Available Add-on.
-        /// </summary>
-        /// <param name="options"> Fetch AvailableAddOnExtension parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of AvailableAddOnExtension </returns>
-        public static async System.Threading.Tasks.Task<AvailableAddOnExtensionResource> FetchAsync(FetchAvailableAddOnExtensionOptions options,
-                                                                                                    ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// Fetch an instance of an Extension for the Available Add-on.
-        /// </summary>
-        /// <param name="pathAvailableAddOnSid"> The SID of the AvailableAddOn resource with the extension to fetch </param>
-        /// <param name="pathSid"> The SID of the AvailableAddOn Extension resource to fetch </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of AvailableAddOnExtension </returns>
-        public static AvailableAddOnExtensionResource Fetch(string pathAvailableAddOnSid,
-                                                            string pathSid,
-                                                            ITwilioRestClient client = null)
-        {
-            var options = new FetchAvailableAddOnExtensionOptions(pathAvailableAddOnSid, pathSid);
-            return Fetch(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Fetch an instance of an Extension for the Available Add-on.
-        /// </summary>
-        /// <param name="pathAvailableAddOnSid"> The SID of the AvailableAddOn resource with the extension to fetch </param>
-        /// <param name="pathSid"> The SID of the AvailableAddOn Extension resource to fetch </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of AvailableAddOnExtension </returns>
-        public static async System.Threading.Tasks.Task<AvailableAddOnExtensionResource> FetchAsync(string pathAvailableAddOnSid,
-                                                                                                    string pathSid,
-                                                                                                    ITwilioRestClient client = null)
-        {
-            var options = new FetchAvailableAddOnExtensionOptions(pathAvailableAddOnSid, pathSid);
-            return await FetchAsync(options, client);
-        }
-        #endif
-
-        private static Request BuildReadRequest(ReadAvailableAddOnExtensionOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Get,
-                Rest.Domain.Preview,
-                "/marketplace/AvailableAddOns/" + options.PathAvailableAddOnSid + "/Extensions",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// Retrieve a list of Extensions for the Available Add-on.
-        /// </summary>
-        /// <param name="options"> Read AvailableAddOnExtension parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of AvailableAddOnExtension </returns>
-        public static ResourceSet<AvailableAddOnExtensionResource> Read(ReadAvailableAddOnExtensionOptions options,
-                                                                        ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildReadRequest(options, client));
-
-            var page = Page<AvailableAddOnExtensionResource>.FromJson("extensions", response.Content);
-            return new ResourceSet<AvailableAddOnExtensionResource>(page, options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Retrieve a list of Extensions for the Available Add-on.
-        /// </summary>
-        /// <param name="options"> Read AvailableAddOnExtension parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of AvailableAddOnExtension </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<AvailableAddOnExtensionResource>> ReadAsync(ReadAvailableAddOnExtensionOptions options,
-                                                                                                                ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
-
-            var page = Page<AvailableAddOnExtensionResource>.FromJson("extensions", response.Content);
-            return new ResourceSet<AvailableAddOnExtensionResource>(page, options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Retrieve a list of Extensions for the Available Add-on.
-        /// </summary>
-        /// <param name="pathAvailableAddOnSid"> The SID of the AvailableAddOn resource with the extensions to read </param>
-        /// <param name="pageSize"> Page size </param>
-        /// <param name="limit"> Record limit </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of AvailableAddOnExtension </returns>
-        public static ResourceSet<AvailableAddOnExtensionResource> Read(string pathAvailableAddOnSid,
-                                                                        int? pageSize = null,
-                                                                        long? limit = null,
-                                                                        ITwilioRestClient client = null)
-        {
-            var options = new ReadAvailableAddOnExtensionOptions(pathAvailableAddOnSid){PageSize = pageSize, Limit = limit};
-            return Read(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Retrieve a list of Extensions for the Available Add-on.
-        /// </summary>
-        /// <param name="pathAvailableAddOnSid"> The SID of the AvailableAddOn resource with the extensions to read </param>
-        /// <param name="pageSize"> Page size </param>
-        /// <param name="limit"> Record limit </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of AvailableAddOnExtension </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<AvailableAddOnExtensionResource>> ReadAsync(string pathAvailableAddOnSid,
-                                                                                                                int? pageSize = null,
-                                                                                                                long? limit = null,
-                                                                                                                ITwilioRestClient client = null)
-        {
-            var options = new ReadAvailableAddOnExtensionOptions(pathAvailableAddOnSid){PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Fetch the target page of records
-        /// </summary>
-        /// <param name="targetUrl"> API-generated URL for the requested results page </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns>
-        public static Page<AvailableAddOnExtensionResource> GetPage(string targetUrl, ITwilioRestClient client)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-
-            var request = new Request(
-                HttpMethod.Get,
-                targetUrl
-            );
-
-            var response = client.Request(request);
-            return Page<AvailableAddOnExtensionResource>.FromJson("extensions", response.Content);
-        }
-
-        /// <summary>
-        /// Fetch the next page of records
-        /// </summary>
-        /// <param name="page"> current page of records </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns>
-        public static Page<AvailableAddOnExtensionResource> NextPage(Page<AvailableAddOnExtensionResource> page,
-                                                                     ITwilioRestClient client)
-        {
-            var request = new Request(
-                HttpMethod.Get,
-                page.GetNextPageUrl(Rest.Domain.Preview)
-            );
-
-            var response = client.Request(request);
-            return Page<AvailableAddOnExtensionResource>.FromJson("extensions", response.Content);
-        }
-
-        /// <summary>
-        /// Fetch the previous page of records
-        /// </summary>
-        /// <param name="page"> current page of records </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns>
-        public static Page<AvailableAddOnExtensionResource> PreviousPage(Page<AvailableAddOnExtensionResource> page,
-                                                                         ITwilioRestClient client)
-        {
-            var request = new Request(
-                HttpMethod.Get,
-                page.GetPreviousPageUrl(Rest.Domain.Preview)
-            );
-
-            var response = client.Request(request);
-            return Page<AvailableAddOnExtensionResource>.FromJson("extensions", response.Content);
-        }
-
-        /// <summary>
-        /// Converts a JSON string into a AvailableAddOnExtensionResource object
-        /// </summary>
-        /// <param name="json"> Raw JSON string </param>
-        /// <returns> AvailableAddOnExtensionResource object represented by the provided JSON </returns>
-        public static AvailableAddOnExtensionResource FromJson(string json)
-        {
-            // Convert all checked exceptions to Runtime
-            try
-            {
-                return JsonConvert.DeserializeObject<AvailableAddOnExtensionResource>(json);
-            }
-            catch (JsonException e)
-            {
-                throw new ApiException(e.Message, e);
-            }
-        }
-
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        [JsonProperty("sid")]
-        public string Sid { get; private set; }
-        /// <summary>
-        /// The SID of the AvailableAddOn resource to which this extension applies
-        /// </summary>
-        [JsonProperty("available_add_on_sid")]
-        public string AvailableAddOnSid { get; private set; }
-        /// <summary>
-        /// The string that you assigned to describe the resource
-        /// </summary>
-        [JsonProperty("friendly_name")]
-        public string FriendlyName { get; private set; }
-        /// <summary>
-        /// The name of the Extension's Product
-        /// </summary>
-        [JsonProperty("product_name")]
-        public string ProductName { get; private set; }
-        /// <summary>
-        /// An application-defined string that uniquely identifies the resource
-        /// </summary>
-        [JsonProperty("unique_name")]
-        public string UniqueName { get; private set; }
-        /// <summary>
-        /// The absolute URL of the resource
-        /// </summary>
-        [JsonProperty("url")]
-        public Uri Url { get; private set; }
-
-        private AvailableAddOnExtensionResource()
-        {
-
-        }
+      return new Request(
+          HttpMethod.Get,
+          Rest.Domain.Preview,
+          "/marketplace/AvailableAddOns/" + options.PathAvailableAddOnSid + "/Extensions/" + options.PathSid + "",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
     }
+
+    /// <summary>
+    /// Fetch an instance of an Extension for the Available Add-on.
+    /// </summary>
+    /// <param name="options"> Fetch AvailableAddOnExtension parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of AvailableAddOnExtension </returns>
+    public static AvailableAddOnExtensionResource Fetch(FetchAvailableAddOnExtensionOptions options,
+                                                        ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Fetch an instance of an Extension for the Available Add-on.
+    /// </summary>
+    /// <param name="options"> Fetch AvailableAddOnExtension parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of AvailableAddOnExtension </returns>
+    public static async System.Threading.Tasks.Task<AvailableAddOnExtensionResource> FetchAsync(FetchAvailableAddOnExtensionOptions options,
+                                                                                                ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// Fetch an instance of an Extension for the Available Add-on.
+    /// </summary>
+    /// <param name="pathAvailableAddOnSid"> The SID of the AvailableAddOn resource with the extension to fetch </param>
+    /// <param name="pathSid"> The SID of the AvailableAddOn Extension resource to fetch </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of AvailableAddOnExtension </returns>
+    public static AvailableAddOnExtensionResource Fetch(string pathAvailableAddOnSid,
+                                                        string pathSid,
+                                                        ITwilioRestClient client = null)
+    {
+      var options = new FetchAvailableAddOnExtensionOptions(pathAvailableAddOnSid, pathSid);
+      return Fetch(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Fetch an instance of an Extension for the Available Add-on.
+    /// </summary>
+    /// <param name="pathAvailableAddOnSid"> The SID of the AvailableAddOn resource with the extension to fetch </param>
+    /// <param name="pathSid"> The SID of the AvailableAddOn Extension resource to fetch </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of AvailableAddOnExtension </returns>
+    public static async System.Threading.Tasks.Task<AvailableAddOnExtensionResource> FetchAsync(string pathAvailableAddOnSid,
+                                                                                                string pathSid,
+                                                                                                ITwilioRestClient client = null)
+    {
+      var options = new FetchAvailableAddOnExtensionOptions(pathAvailableAddOnSid, pathSid);
+      return await FetchAsync(options, client);
+    }
+#endif
+
+    private static Request BuildReadRequest(ReadAvailableAddOnExtensionOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Get,
+          Rest.Domain.Preview,
+          "/marketplace/AvailableAddOns/" + options.PathAvailableAddOnSid + "/Extensions",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// Retrieve a list of Extensions for the Available Add-on.
+    /// </summary>
+    /// <param name="options"> Read AvailableAddOnExtension parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of AvailableAddOnExtension </returns>
+    public static ResourceSet<AvailableAddOnExtensionResource> Read(ReadAvailableAddOnExtensionOptions options,
+                                                                    ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildReadRequest(options, client));
+
+      var page = Page<AvailableAddOnExtensionResource>.FromJson("extensions", response.Content);
+      return new ResourceSet<AvailableAddOnExtensionResource>(page, options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Retrieve a list of Extensions for the Available Add-on.
+    /// </summary>
+    /// <param name="options"> Read AvailableAddOnExtension parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of AvailableAddOnExtension </returns>
+    public static async System.Threading.Tasks.Task<ResourceSet<AvailableAddOnExtensionResource>> ReadAsync(ReadAvailableAddOnExtensionOptions options,
+                                                                                                            ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+      var page = Page<AvailableAddOnExtensionResource>.FromJson("extensions", response.Content);
+      return new ResourceSet<AvailableAddOnExtensionResource>(page, options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Retrieve a list of Extensions for the Available Add-on.
+    /// </summary>
+    /// <param name="pathAvailableAddOnSid"> The SID of the AvailableAddOn resource with the extensions to read </param>
+    /// <param name="pageSize"> Page size </param>
+    /// <param name="limit"> Record limit </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of AvailableAddOnExtension </returns>
+    public static ResourceSet<AvailableAddOnExtensionResource> Read(string pathAvailableAddOnSid,
+                                                                    int? pageSize = null,
+                                                                    long? limit = null,
+                                                                    ITwilioRestClient client = null)
+    {
+      var options = new ReadAvailableAddOnExtensionOptions(pathAvailableAddOnSid) { PageSize = pageSize, Limit = limit };
+      return Read(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Retrieve a list of Extensions for the Available Add-on.
+    /// </summary>
+    /// <param name="pathAvailableAddOnSid"> The SID of the AvailableAddOn resource with the extensions to read </param>
+    /// <param name="pageSize"> Page size </param>
+    /// <param name="limit"> Record limit </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of AvailableAddOnExtension </returns>
+    public static async System.Threading.Tasks.Task<ResourceSet<AvailableAddOnExtensionResource>> ReadAsync(string pathAvailableAddOnSid,
+                                                                                                            int? pageSize = null,
+                                                                                                            long? limit = null,
+                                                                                                            ITwilioRestClient client = null)
+    {
+      var options = new ReadAvailableAddOnExtensionOptions(pathAvailableAddOnSid) { PageSize = pageSize, Limit = limit };
+      return await ReadAsync(options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Fetch the target page of records
+    /// </summary>
+    /// <param name="targetUrl"> API-generated URL for the requested results page </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> The target page of records </returns>
+    public static Page<AvailableAddOnExtensionResource> GetPage(string targetUrl, ITwilioRestClient client)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+
+      var request = new Request(
+          HttpMethod.Get,
+          targetUrl
+      );
+
+      var response = client.Request(request);
+      return Page<AvailableAddOnExtensionResource>.FromJson("extensions", response.Content);
+    }
+
+    /// <summary>
+    /// Fetch the next page of records
+    /// </summary>
+    /// <param name="page"> current page of records </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> The next page of records </returns>
+    public static Page<AvailableAddOnExtensionResource> NextPage(Page<AvailableAddOnExtensionResource> page,
+                                                                 ITwilioRestClient client)
+    {
+      var request = new Request(
+          HttpMethod.Get,
+          page.GetNextPageUrl(Rest.Domain.Preview)
+      );
+
+      var response = client.Request(request);
+      return Page<AvailableAddOnExtensionResource>.FromJson("extensions", response.Content);
+    }
+
+    /// <summary>
+    /// Fetch the previous page of records
+    /// </summary>
+    /// <param name="page"> current page of records </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> The previous page of records </returns>
+    public static Page<AvailableAddOnExtensionResource> PreviousPage(Page<AvailableAddOnExtensionResource> page,
+                                                                     ITwilioRestClient client)
+    {
+      var request = new Request(
+          HttpMethod.Get,
+          page.GetPreviousPageUrl(Rest.Domain.Preview)
+      );
+
+      var response = client.Request(request);
+      return Page<AvailableAddOnExtensionResource>.FromJson("extensions", response.Content);
+    }
+
+    /// <summary>
+    /// Converts a JSON string into a AvailableAddOnExtensionResource object
+    /// </summary>
+    /// <param name="json"> Raw JSON string </param>
+    /// <returns> AvailableAddOnExtensionResource object represented by the provided JSON </returns>
+    public static AvailableAddOnExtensionResource FromJson(string json)
+    {
+      // Convert all checked exceptions to Runtime
+      try
+      {
+        return JsonConvert.DeserializeObject<AvailableAddOnExtensionResource>(json);
+      }
+      catch (JsonException e)
+      {
+        throw new ApiException(e.Message, e);
+      }
+    }
+
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    [JsonProperty("sid")]
+    public string Sid { get; private set; }
+    /// <summary>
+    /// The SID of the AvailableAddOn resource to which this extension applies
+    /// </summary>
+    [JsonProperty("available_add_on_sid")]
+    public string AvailableAddOnSid { get; private set; }
+    /// <summary>
+    /// The string that you assigned to describe the resource
+    /// </summary>
+    [JsonProperty("friendly_name")]
+    public string FriendlyName { get; private set; }
+    /// <summary>
+    /// The name of the Extension's Product
+    /// </summary>
+    [JsonProperty("product_name")]
+    public string ProductName { get; private set; }
+    /// <summary>
+    /// An application-defined string that uniquely identifies the resource
+    /// </summary>
+    [JsonProperty("unique_name")]
+    public string UniqueName { get; private set; }
+    /// <summary>
+    /// The absolute URL of the resource
+    /// </summary>
+    [JsonProperty("url")]
+    public Uri Url { get; private set; }
+
+    private AvailableAddOnExtensionResource()
+    {
+
+    }
+  }
 
 }

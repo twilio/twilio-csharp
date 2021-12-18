@@ -11,252 +11,252 @@ using Twilio.Converters;
 namespace Twilio.Rest.Serverless.V1.Service.Environment
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Retrieve a list of all Variables.
+  /// </summary>
+  public class ReadVariableOptions : ReadOptions<VariableResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Retrieve a list of all Variables.
+    /// The SID of the Service to read the Variable resources from
     /// </summary>
-    public class ReadVariableOptions : ReadOptions<VariableResource>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The SID of the Environment with the Variable resources to read
+    /// </summary>
+    public string PathEnvironmentSid { get; }
+
+    /// <summary>
+    /// Construct a new ReadVariableOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to read the Variable resources from </param>
+    /// <param name="pathEnvironmentSid"> The SID of the Environment with the Variable resources to read </param>
+    public ReadVariableOptions(string pathServiceSid, string pathEnvironmentSid)
     {
-        /// <summary>
-        /// The SID of the Service to read the Variable resources from
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The SID of the Environment with the Variable resources to read
-        /// </summary>
-        public string PathEnvironmentSid { get; }
-
-        /// <summary>
-        /// Construct a new ReadVariableOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to read the Variable resources from </param>
-        /// <param name="pathEnvironmentSid"> The SID of the Environment with the Variable resources to read </param>
-        public ReadVariableOptions(string pathServiceSid, string pathEnvironmentSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathEnvironmentSid = pathEnvironmentSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+      PathServiceSid = pathServiceSid;
+      PathEnvironmentSid = pathEnvironmentSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Retrieve a specific Variable.
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchVariableOptions : IOptions<VariableResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Service to fetch the Variable resource from
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The SID of the Environment with the Variable resource to fetch
-        /// </summary>
-        public string PathEnvironmentSid { get; }
-        /// <summary>
-        /// The SID of the Variable resource to fetch
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new FetchVariableOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to fetch the Variable resource from </param>
-        /// <param name="pathEnvironmentSid"> The SID of the Environment with the Variable resource to fetch </param>
-        /// <param name="pathSid"> The SID of the Variable resource to fetch </param>
-        public FetchVariableOptions(string pathServiceSid, string pathEnvironmentSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathEnvironmentSid = pathEnvironmentSid;
-            PathSid = pathSid;
-        }
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Retrieve a specific Variable.
+  /// </summary>
+  public class FetchVariableOptions : IOptions<VariableResource>
+  {
+    /// <summary>
+    /// The SID of the Service to fetch the Variable resource from
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The SID of the Environment with the Variable resource to fetch
+    /// </summary>
+    public string PathEnvironmentSid { get; }
+    /// <summary>
+    /// The SID of the Variable resource to fetch
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchVariableOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to fetch the Variable resource from </param>
+    /// <param name="pathEnvironmentSid"> The SID of the Environment with the Variable resource to fetch </param>
+    /// <param name="pathSid"> The SID of the Variable resource to fetch </param>
+    public FetchVariableOptions(string pathServiceSid, string pathEnvironmentSid, string pathSid)
+    {
+      PathServiceSid = pathServiceSid;
+      PathEnvironmentSid = pathEnvironmentSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Create a new Variable.
+    /// Generate the necessary parameters
     /// </summary>
-    public class CreateVariableOptions : IOptions<VariableResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Service to create the Variable resource under
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The SID of the Environment in which the Variable exists
-        /// </summary>
-        public string PathEnvironmentSid { get; }
-        /// <summary>
-        /// A string by which the Variable resource can be referenced
-        /// </summary>
-        public string Key { get; }
-        /// <summary>
-        /// A string that contains the actual value of the Variable
-        /// </summary>
-        public string Value { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new CreateVariableOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to create the Variable resource under </param>
-        /// <param name="pathEnvironmentSid"> The SID of the Environment in which the Variable exists </param>
-        /// <param name="key"> A string by which the Variable resource can be referenced </param>
-        /// <param name="value"> A string that contains the actual value of the Variable </param>
-        public CreateVariableOptions(string pathServiceSid, string pathEnvironmentSid, string key, string value)
-        {
-            PathServiceSid = pathServiceSid;
-            PathEnvironmentSid = pathEnvironmentSid;
-            Key = key;
-            Value = value;
-        }
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Create a new Variable.
+  /// </summary>
+  public class CreateVariableOptions : IOptions<VariableResource>
+  {
+    /// <summary>
+    /// The SID of the Service to create the Variable resource under
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The SID of the Environment in which the Variable exists
+    /// </summary>
+    public string PathEnvironmentSid { get; }
+    /// <summary>
+    /// A string by which the Variable resource can be referenced
+    /// </summary>
+    public string Key { get; }
+    /// <summary>
+    /// A string that contains the actual value of the Variable
+    /// </summary>
+    public string Value { get; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Key != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Key", Key));
-            }
-
-            if (Value != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Value", Value));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new CreateVariableOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to create the Variable resource under </param>
+    /// <param name="pathEnvironmentSid"> The SID of the Environment in which the Variable exists </param>
+    /// <param name="key"> A string by which the Variable resource can be referenced </param>
+    /// <param name="value"> A string that contains the actual value of the Variable </param>
+    public CreateVariableOptions(string pathServiceSid, string pathEnvironmentSid, string key, string value)
+    {
+      PathServiceSid = pathServiceSid;
+      PathEnvironmentSid = pathEnvironmentSid;
+      Key = key;
+      Value = value;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Update a specific Variable.
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateVariableOptions : IOptions<VariableResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Service to update the Variable resource under
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The SID of the Environment with the Variable resource to update
-        /// </summary>
-        public string PathEnvironmentSid { get; }
-        /// <summary>
-        /// The SID of the Variable resource to update
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// A string by which the Variable resource can be referenced
-        /// </summary>
-        public string Key { get; set; }
-        /// <summary>
-        /// A string that contains the actual value of the Variable
-        /// </summary>
-        public string Value { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (Key != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Key", Key));
+      }
 
-        /// <summary>
-        /// Construct a new UpdateVariableOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to update the Variable resource under </param>
-        /// <param name="pathEnvironmentSid"> The SID of the Environment with the Variable resource to update </param>
-        /// <param name="pathSid"> The SID of the Variable resource to update </param>
-        public UpdateVariableOptions(string pathServiceSid, string pathEnvironmentSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathEnvironmentSid = pathEnvironmentSid;
-            PathSid = pathSid;
-        }
+      if (Value != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Value", Value));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Key != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Key", Key));
-            }
+      return p;
+    }
+  }
 
-            if (Value != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Value", Value));
-            }
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Update a specific Variable.
+  /// </summary>
+  public class UpdateVariableOptions : IOptions<VariableResource>
+  {
+    /// <summary>
+    /// The SID of the Service to update the Variable resource under
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The SID of the Environment with the Variable resource to update
+    /// </summary>
+    public string PathEnvironmentSid { get; }
+    /// <summary>
+    /// The SID of the Variable resource to update
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// A string by which the Variable resource can be referenced
+    /// </summary>
+    public string Key { get; set; }
+    /// <summary>
+    /// A string that contains the actual value of the Variable
+    /// </summary>
+    public string Value { get; set; }
 
-            return p;
-        }
+    /// <summary>
+    /// Construct a new UpdateVariableOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to update the Variable resource under </param>
+    /// <param name="pathEnvironmentSid"> The SID of the Environment with the Variable resource to update </param>
+    /// <param name="pathSid"> The SID of the Variable resource to update </param>
+    public UpdateVariableOptions(string pathServiceSid, string pathEnvironmentSid, string pathSid)
+    {
+      PathServiceSid = pathServiceSid;
+      PathEnvironmentSid = pathEnvironmentSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Delete a specific Variable.
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteVariableOptions : IOptions<VariableResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Service to delete the Variable resource from
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The SID of the Environment with the Variables to delete
-        /// </summary>
-        public string PathEnvironmentSid { get; }
-        /// <summary>
-        /// The SID of the Variable resource to delete
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (Key != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Key", Key));
+      }
 
-        /// <summary>
-        /// Construct a new DeleteVariableOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to delete the Variable resource from </param>
-        /// <param name="pathEnvironmentSid"> The SID of the Environment with the Variables to delete </param>
-        /// <param name="pathSid"> The SID of the Variable resource to delete </param>
-        public DeleteVariableOptions(string pathServiceSid, string pathEnvironmentSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathEnvironmentSid = pathEnvironmentSid;
-            PathSid = pathSid;
-        }
+      if (Value != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Value", Value));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      return p;
     }
+  }
+
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Delete a specific Variable.
+  /// </summary>
+  public class DeleteVariableOptions : IOptions<VariableResource>
+  {
+    /// <summary>
+    /// The SID of the Service to delete the Variable resource from
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The SID of the Environment with the Variables to delete
+    /// </summary>
+    public string PathEnvironmentSid { get; }
+    /// <summary>
+    /// The SID of the Variable resource to delete
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new DeleteVariableOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to delete the Variable resource from </param>
+    /// <param name="pathEnvironmentSid"> The SID of the Environment with the Variables to delete </param>
+    /// <param name="pathSid"> The SID of the Variable resource to delete </param>
+    public DeleteVariableOptions(string pathServiceSid, string pathEnvironmentSid, string pathSid)
+    {
+      PathServiceSid = pathServiceSid;
+      PathEnvironmentSid = pathEnvironmentSid;
+      PathSid = pathSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
 }

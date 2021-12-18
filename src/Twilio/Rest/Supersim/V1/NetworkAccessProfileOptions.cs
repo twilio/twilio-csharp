@@ -12,141 +12,141 @@ using Twilio.Converters;
 namespace Twilio.Rest.Supersim.V1
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Create a new Network Access Profile
+  /// </summary>
+  public class CreateNetworkAccessProfileOptions : IOptions<NetworkAccessProfileResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Create a new Network Access Profile
+    /// An application-defined string that uniquely identifies the resource
     /// </summary>
-    public class CreateNetworkAccessProfileOptions : IOptions<NetworkAccessProfileResource>
+    public string UniqueName { get; set; }
+    /// <summary>
+    /// List of Network SIDs that this Network Access Profile will allow connections to
+    /// </summary>
+    public List<string> Networks { get; set; }
+
+    /// <summary>
+    /// Construct a new CreateNetworkAccessProfileOptions
+    /// </summary>
+    public CreateNetworkAccessProfileOptions()
     {
-        /// <summary>
-        /// An application-defined string that uniquely identifies the resource
-        /// </summary>
-        public string UniqueName { get; set; }
-        /// <summary>
-        /// List of Network SIDs that this Network Access Profile will allow connections to
-        /// </summary>
-        public List<string> Networks { get; set; }
-
-        /// <summary>
-        /// Construct a new CreateNetworkAccessProfileOptions
-        /// </summary>
-        public CreateNetworkAccessProfileOptions()
-        {
-            Networks = new List<string>();
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (UniqueName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
-            }
-
-            if (Networks != null)
-            {
-                p.AddRange(Networks.Select(prop => new KeyValuePair<string, string>("Networks", prop.ToString())));
-            }
-
-            return p;
-        }
+      Networks = new List<string>();
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Fetch a Network Access Profile instance from your account.
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchNetworkAccessProfileOptions : IOptions<NetworkAccessProfileResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID that identifies the resource to fetch
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (UniqueName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
+      }
 
-        /// <summary>
-        /// Construct a new FetchNetworkAccessProfileOptions
-        /// </summary>
-        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
-        public FetchNetworkAccessProfileOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
+      if (Networks != null)
+      {
+        p.AddRange(Networks.Select(prop => new KeyValuePair<string, string>("Networks", prop.ToString())));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Fetch a Network Access Profile instance from your account.
+  /// </summary>
+  public class FetchNetworkAccessProfileOptions : IOptions<NetworkAccessProfileResource>
+  {
+    /// <summary>
+    /// The SID that identifies the resource to fetch
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchNetworkAccessProfileOptions
+    /// </summary>
+    /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
+    public FetchNetworkAccessProfileOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Updates the given properties of a Network Access Profile in your account.
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateNetworkAccessProfileOptions : IOptions<NetworkAccessProfileResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the resource to update
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// The new unique name of the resource
-        /// </summary>
-        public string UniqueName { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new UpdateNetworkAccessProfileOptions
-        /// </summary>
-        /// <param name="pathSid"> The SID of the resource to update </param>
-        public UpdateNetworkAccessProfileOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Updates the given properties of a Network Access Profile in your account.
+  /// </summary>
+  public class UpdateNetworkAccessProfileOptions : IOptions<NetworkAccessProfileResource>
+  {
+    /// <summary>
+    /// The SID of the resource to update
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// The new unique name of the resource
+    /// </summary>
+    public string UniqueName { get; set; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (UniqueName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new UpdateNetworkAccessProfileOptions
+    /// </summary>
+    /// <param name="pathSid"> The SID of the resource to update </param>
+    public UpdateNetworkAccessProfileOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Retrieve a list of Network Access Profiles from your account.
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadNetworkAccessProfileOptions : ReadOptions<NetworkAccessProfileResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
+      var p = new List<KeyValuePair<string, string>>();
+      if (UniqueName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
+      }
 
-            return p;
-        }
+      return p;
     }
+  }
+
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Retrieve a list of Network Access Profiles from your account.
+  /// </summary>
+  public class ReadNetworkAccessProfileOptions : ReadOptions<NetworkAccessProfileResource>
+  {
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
 
 }

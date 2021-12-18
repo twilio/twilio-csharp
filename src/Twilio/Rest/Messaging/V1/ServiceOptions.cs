@@ -11,434 +11,434 @@ using Twilio.Converters;
 namespace Twilio.Rest.Messaging.V1
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// CreateServiceOptions
+  /// </summary>
+  public class CreateServiceOptions : IOptions<ServiceResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// CreateServiceOptions
+    /// A string to describe the resource
     /// </summary>
-    public class CreateServiceOptions : IOptions<ServiceResource>
+    public string FriendlyName { get; }
+    /// <summary>
+    /// The URL we call using inbound_method when a message is received by any phone number or short code in the Service. This field will be overridden if the `use_inbound_webhook_on_number` field is enabled.
+    /// </summary>
+    public Uri InboundRequestUrl { get; set; }
+    /// <summary>
+    /// The HTTP method we should use to call inbound_request_url
+    /// </summary>
+    public Twilio.Http.HttpMethod InboundMethod { get; set; }
+    /// <summary>
+    /// The URL that we call using fallback_method if an error occurs while retrieving or executing the TwiML from the Inbound Request URL. This field will be overridden if the `use_inbound_webhook_on_number` field is enabled.
+    /// </summary>
+    public Uri FallbackUrl { get; set; }
+    /// <summary>
+    /// The HTTP method we should use to call fallback_url
+    /// </summary>
+    public Twilio.Http.HttpMethod FallbackMethod { get; set; }
+    /// <summary>
+    /// The URL we should call to pass status updates about message delivery
+    /// </summary>
+    public Uri StatusCallback { get; set; }
+    /// <summary>
+    /// Whether to enable Sticky Sender on the Service instance
+    /// </summary>
+    public bool? StickySender { get; set; }
+    /// <summary>
+    /// Whether to enable the MMS Converter for messages sent through the Service instance
+    /// </summary>
+    public bool? MmsConverter { get; set; }
+    /// <summary>
+    /// Whether to enable Encoding for messages sent through the Service instance
+    /// </summary>
+    public bool? SmartEncoding { get; set; }
+    /// <summary>
+    /// Reserved
+    /// </summary>
+    public ServiceResource.ScanMessageContentEnum ScanMessageContent { get; set; }
+    /// <summary>
+    /// Whether to enable Fallback to Long Code for messages sent through the Service instance
+    /// </summary>
+    public bool? FallbackToLongCode { get; set; }
+    /// <summary>
+    /// Whether to enable Area Code Geomatch on the Service Instance
+    /// </summary>
+    public bool? AreaCodeGeomatch { get; set; }
+    /// <summary>
+    /// How long, in seconds, messages sent from the Service are valid
+    /// </summary>
+    public int? ValidityPeriod { get; set; }
+    /// <summary>
+    /// Reserved
+    /// </summary>
+    public bool? SynchronousValidation { get; set; }
+    /// <summary>
+    /// A string describing the scenario in which the Messaging Service will be used
+    /// </summary>
+    public string Usecase { get; set; }
+    /// <summary>
+    /// If enabled, the webhook url configured on the phone number will be used and will override the `inbound_request_url`/`fallback_url` url called when an inbound message is received.
+    /// </summary>
+    public bool? UseInboundWebhookOnNumber { get; set; }
+
+    /// <summary>
+    /// Construct a new CreateServiceOptions
+    /// </summary>
+    /// <param name="friendlyName"> A string to describe the resource </param>
+    public CreateServiceOptions(string friendlyName)
     {
-        /// <summary>
-        /// A string to describe the resource
-        /// </summary>
-        public string FriendlyName { get; }
-        /// <summary>
-        /// The URL we call using inbound_method when a message is received by any phone number or short code in the Service. This field will be overridden if the `use_inbound_webhook_on_number` field is enabled.
-        /// </summary>
-        public Uri InboundRequestUrl { get; set; }
-        /// <summary>
-        /// The HTTP method we should use to call inbound_request_url
-        /// </summary>
-        public Twilio.Http.HttpMethod InboundMethod { get; set; }
-        /// <summary>
-        /// The URL that we call using fallback_method if an error occurs while retrieving or executing the TwiML from the Inbound Request URL. This field will be overridden if the `use_inbound_webhook_on_number` field is enabled.
-        /// </summary>
-        public Uri FallbackUrl { get; set; }
-        /// <summary>
-        /// The HTTP method we should use to call fallback_url
-        /// </summary>
-        public Twilio.Http.HttpMethod FallbackMethod { get; set; }
-        /// <summary>
-        /// The URL we should call to pass status updates about message delivery
-        /// </summary>
-        public Uri StatusCallback { get; set; }
-        /// <summary>
-        /// Whether to enable Sticky Sender on the Service instance
-        /// </summary>
-        public bool? StickySender { get; set; }
-        /// <summary>
-        /// Whether to enable the MMS Converter for messages sent through the Service instance
-        /// </summary>
-        public bool? MmsConverter { get; set; }
-        /// <summary>
-        /// Whether to enable Encoding for messages sent through the Service instance
-        /// </summary>
-        public bool? SmartEncoding { get; set; }
-        /// <summary>
-        /// Reserved
-        /// </summary>
-        public ServiceResource.ScanMessageContentEnum ScanMessageContent { get; set; }
-        /// <summary>
-        /// Whether to enable Fallback to Long Code for messages sent through the Service instance
-        /// </summary>
-        public bool? FallbackToLongCode { get; set; }
-        /// <summary>
-        /// Whether to enable Area Code Geomatch on the Service Instance
-        /// </summary>
-        public bool? AreaCodeGeomatch { get; set; }
-        /// <summary>
-        /// How long, in seconds, messages sent from the Service are valid
-        /// </summary>
-        public int? ValidityPeriod { get; set; }
-        /// <summary>
-        /// Reserved
-        /// </summary>
-        public bool? SynchronousValidation { get; set; }
-        /// <summary>
-        /// A string describing the scenario in which the Messaging Service will be used
-        /// </summary>
-        public string Usecase { get; set; }
-        /// <summary>
-        /// If enabled, the webhook url configured on the phone number will be used and will override the `inbound_request_url`/`fallback_url` url called when an inbound message is received.
-        /// </summary>
-        public bool? UseInboundWebhookOnNumber { get; set; }
-
-        /// <summary>
-        /// Construct a new CreateServiceOptions
-        /// </summary>
-        /// <param name="friendlyName"> A string to describe the resource </param>
-        public CreateServiceOptions(string friendlyName)
-        {
-            FriendlyName = friendlyName;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
-
-            if (InboundRequestUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("InboundRequestUrl", Serializers.Url(InboundRequestUrl)));
-            }
-
-            if (InboundMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("InboundMethod", InboundMethod.ToString()));
-            }
-
-            if (FallbackUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FallbackUrl", Serializers.Url(FallbackUrl)));
-            }
-
-            if (FallbackMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FallbackMethod", FallbackMethod.ToString()));
-            }
-
-            if (StatusCallback != null)
-            {
-                p.Add(new KeyValuePair<string, string>("StatusCallback", Serializers.Url(StatusCallback)));
-            }
-
-            if (StickySender != null)
-            {
-                p.Add(new KeyValuePair<string, string>("StickySender", StickySender.Value.ToString().ToLower()));
-            }
-
-            if (MmsConverter != null)
-            {
-                p.Add(new KeyValuePair<string, string>("MmsConverter", MmsConverter.Value.ToString().ToLower()));
-            }
-
-            if (SmartEncoding != null)
-            {
-                p.Add(new KeyValuePair<string, string>("SmartEncoding", SmartEncoding.Value.ToString().ToLower()));
-            }
-
-            if (ScanMessageContent != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ScanMessageContent", ScanMessageContent.ToString()));
-            }
-
-            if (FallbackToLongCode != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FallbackToLongCode", FallbackToLongCode.Value.ToString().ToLower()));
-            }
-
-            if (AreaCodeGeomatch != null)
-            {
-                p.Add(new KeyValuePair<string, string>("AreaCodeGeomatch", AreaCodeGeomatch.Value.ToString().ToLower()));
-            }
-
-            if (ValidityPeriod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ValidityPeriod", ValidityPeriod.ToString()));
-            }
-
-            if (SynchronousValidation != null)
-            {
-                p.Add(new KeyValuePair<string, string>("SynchronousValidation", SynchronousValidation.Value.ToString().ToLower()));
-            }
-
-            if (Usecase != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Usecase", Usecase));
-            }
-
-            if (UseInboundWebhookOnNumber != null)
-            {
-                p.Add(new KeyValuePair<string, string>("UseInboundWebhookOnNumber", UseInboundWebhookOnNumber.Value.ToString().ToLower()));
-            }
-
-            return p;
-        }
+      FriendlyName = friendlyName;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// UpdateServiceOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateServiceOptions : IOptions<ServiceResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID that identifies the resource to update
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// A string to describe the resource
-        /// </summary>
-        public string FriendlyName { get; set; }
-        /// <summary>
-        /// The URL we call using inbound_method when a message is received by any phone number or short code in the Service. This field will be overridden if the `use_inbound_webhook_on_number` field is enabled.
-        /// </summary>
-        public Uri InboundRequestUrl { get; set; }
-        /// <summary>
-        /// The HTTP method we should use to call inbound_request_url
-        /// </summary>
-        public Twilio.Http.HttpMethod InboundMethod { get; set; }
-        /// <summary>
-        /// The URL that we call using fallback_method if an error occurs while retrieving or executing the TwiML from the Inbound Request URL. This field will be overridden if the `use_inbound_webhook_on_number` field is enabled.
-        /// </summary>
-        public Uri FallbackUrl { get; set; }
-        /// <summary>
-        /// The HTTP method we should use to call fallback_url
-        /// </summary>
-        public Twilio.Http.HttpMethod FallbackMethod { get; set; }
-        /// <summary>
-        /// The URL we should call to pass status updates about message delivery
-        /// </summary>
-        public Uri StatusCallback { get; set; }
-        /// <summary>
-        /// Whether to enable Sticky Sender on the Service instance
-        /// </summary>
-        public bool? StickySender { get; set; }
-        /// <summary>
-        /// Whether to enable the MMS Converter for messages sent through the Service instance
-        /// </summary>
-        public bool? MmsConverter { get; set; }
-        /// <summary>
-        /// Whether to enable Encoding for messages sent through the Service instance
-        /// </summary>
-        public bool? SmartEncoding { get; set; }
-        /// <summary>
-        /// Reserved
-        /// </summary>
-        public ServiceResource.ScanMessageContentEnum ScanMessageContent { get; set; }
-        /// <summary>
-        /// Whether to enable Fallback to Long Code for messages sent through the Service instance
-        /// </summary>
-        public bool? FallbackToLongCode { get; set; }
-        /// <summary>
-        /// Whether to enable Area Code Geomatch on the Service Instance
-        /// </summary>
-        public bool? AreaCodeGeomatch { get; set; }
-        /// <summary>
-        /// How long, in seconds, messages sent from the Service are valid
-        /// </summary>
-        public int? ValidityPeriod { get; set; }
-        /// <summary>
-        /// Reserved
-        /// </summary>
-        public bool? SynchronousValidation { get; set; }
-        /// <summary>
-        /// A string describing the scenario in which the Messaging Service will be used
-        /// </summary>
-        public string Usecase { get; set; }
-        /// <summary>
-        /// If enabled, the webhook url configured on the phone number will be used and will override the `inbound_request_url`/`fallback_url` url called when an inbound message is received.
-        /// </summary>
-        public bool? UseInboundWebhookOnNumber { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
 
-        /// <summary>
-        /// Construct a new UpdateServiceOptions
-        /// </summary>
-        /// <param name="pathSid"> The SID that identifies the resource to update </param>
-        public UpdateServiceOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
+      if (InboundRequestUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("InboundRequestUrl", Serializers.Url(InboundRequestUrl)));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
+      if (InboundMethod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("InboundMethod", InboundMethod.ToString()));
+      }
 
-            if (InboundRequestUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("InboundRequestUrl", Serializers.Url(InboundRequestUrl)));
-            }
+      if (FallbackUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FallbackUrl", Serializers.Url(FallbackUrl)));
+      }
 
-            if (InboundMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("InboundMethod", InboundMethod.ToString()));
-            }
+      if (FallbackMethod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FallbackMethod", FallbackMethod.ToString()));
+      }
 
-            if (FallbackUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FallbackUrl", Serializers.Url(FallbackUrl)));
-            }
+      if (StatusCallback != null)
+      {
+        p.Add(new KeyValuePair<string, string>("StatusCallback", Serializers.Url(StatusCallback)));
+      }
 
-            if (FallbackMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FallbackMethod", FallbackMethod.ToString()));
-            }
+      if (StickySender != null)
+      {
+        p.Add(new KeyValuePair<string, string>("StickySender", StickySender.Value.ToString().ToLower()));
+      }
 
-            if (StatusCallback != null)
-            {
-                p.Add(new KeyValuePair<string, string>("StatusCallback", Serializers.Url(StatusCallback)));
-            }
+      if (MmsConverter != null)
+      {
+        p.Add(new KeyValuePair<string, string>("MmsConverter", MmsConverter.Value.ToString().ToLower()));
+      }
 
-            if (StickySender != null)
-            {
-                p.Add(new KeyValuePair<string, string>("StickySender", StickySender.Value.ToString().ToLower()));
-            }
+      if (SmartEncoding != null)
+      {
+        p.Add(new KeyValuePair<string, string>("SmartEncoding", SmartEncoding.Value.ToString().ToLower()));
+      }
 
-            if (MmsConverter != null)
-            {
-                p.Add(new KeyValuePair<string, string>("MmsConverter", MmsConverter.Value.ToString().ToLower()));
-            }
+      if (ScanMessageContent != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ScanMessageContent", ScanMessageContent.ToString()));
+      }
 
-            if (SmartEncoding != null)
-            {
-                p.Add(new KeyValuePair<string, string>("SmartEncoding", SmartEncoding.Value.ToString().ToLower()));
-            }
+      if (FallbackToLongCode != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FallbackToLongCode", FallbackToLongCode.Value.ToString().ToLower()));
+      }
 
-            if (ScanMessageContent != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ScanMessageContent", ScanMessageContent.ToString()));
-            }
+      if (AreaCodeGeomatch != null)
+      {
+        p.Add(new KeyValuePair<string, string>("AreaCodeGeomatch", AreaCodeGeomatch.Value.ToString().ToLower()));
+      }
 
-            if (FallbackToLongCode != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FallbackToLongCode", FallbackToLongCode.Value.ToString().ToLower()));
-            }
+      if (ValidityPeriod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ValidityPeriod", ValidityPeriod.ToString()));
+      }
 
-            if (AreaCodeGeomatch != null)
-            {
-                p.Add(new KeyValuePair<string, string>("AreaCodeGeomatch", AreaCodeGeomatch.Value.ToString().ToLower()));
-            }
+      if (SynchronousValidation != null)
+      {
+        p.Add(new KeyValuePair<string, string>("SynchronousValidation", SynchronousValidation.Value.ToString().ToLower()));
+      }
 
-            if (ValidityPeriod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ValidityPeriod", ValidityPeriod.ToString()));
-            }
+      if (Usecase != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Usecase", Usecase));
+      }
 
-            if (SynchronousValidation != null)
-            {
-                p.Add(new KeyValuePair<string, string>("SynchronousValidation", SynchronousValidation.Value.ToString().ToLower()));
-            }
+      if (UseInboundWebhookOnNumber != null)
+      {
+        p.Add(new KeyValuePair<string, string>("UseInboundWebhookOnNumber", UseInboundWebhookOnNumber.Value.ToString().ToLower()));
+      }
 
-            if (Usecase != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Usecase", Usecase));
-            }
+      return p;
+    }
+  }
 
-            if (UseInboundWebhookOnNumber != null)
-            {
-                p.Add(new KeyValuePair<string, string>("UseInboundWebhookOnNumber", UseInboundWebhookOnNumber.Value.ToString().ToLower()));
-            }
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// UpdateServiceOptions
+  /// </summary>
+  public class UpdateServiceOptions : IOptions<ServiceResource>
+  {
+    /// <summary>
+    /// The SID that identifies the resource to update
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// A string to describe the resource
+    /// </summary>
+    public string FriendlyName { get; set; }
+    /// <summary>
+    /// The URL we call using inbound_method when a message is received by any phone number or short code in the Service. This field will be overridden if the `use_inbound_webhook_on_number` field is enabled.
+    /// </summary>
+    public Uri InboundRequestUrl { get; set; }
+    /// <summary>
+    /// The HTTP method we should use to call inbound_request_url
+    /// </summary>
+    public Twilio.Http.HttpMethod InboundMethod { get; set; }
+    /// <summary>
+    /// The URL that we call using fallback_method if an error occurs while retrieving or executing the TwiML from the Inbound Request URL. This field will be overridden if the `use_inbound_webhook_on_number` field is enabled.
+    /// </summary>
+    public Uri FallbackUrl { get; set; }
+    /// <summary>
+    /// The HTTP method we should use to call fallback_url
+    /// </summary>
+    public Twilio.Http.HttpMethod FallbackMethod { get; set; }
+    /// <summary>
+    /// The URL we should call to pass status updates about message delivery
+    /// </summary>
+    public Uri StatusCallback { get; set; }
+    /// <summary>
+    /// Whether to enable Sticky Sender on the Service instance
+    /// </summary>
+    public bool? StickySender { get; set; }
+    /// <summary>
+    /// Whether to enable the MMS Converter for messages sent through the Service instance
+    /// </summary>
+    public bool? MmsConverter { get; set; }
+    /// <summary>
+    /// Whether to enable Encoding for messages sent through the Service instance
+    /// </summary>
+    public bool? SmartEncoding { get; set; }
+    /// <summary>
+    /// Reserved
+    /// </summary>
+    public ServiceResource.ScanMessageContentEnum ScanMessageContent { get; set; }
+    /// <summary>
+    /// Whether to enable Fallback to Long Code for messages sent through the Service instance
+    /// </summary>
+    public bool? FallbackToLongCode { get; set; }
+    /// <summary>
+    /// Whether to enable Area Code Geomatch on the Service Instance
+    /// </summary>
+    public bool? AreaCodeGeomatch { get; set; }
+    /// <summary>
+    /// How long, in seconds, messages sent from the Service are valid
+    /// </summary>
+    public int? ValidityPeriod { get; set; }
+    /// <summary>
+    /// Reserved
+    /// </summary>
+    public bool? SynchronousValidation { get; set; }
+    /// <summary>
+    /// A string describing the scenario in which the Messaging Service will be used
+    /// </summary>
+    public string Usecase { get; set; }
+    /// <summary>
+    /// If enabled, the webhook url configured on the phone number will be used and will override the `inbound_request_url`/`fallback_url` url called when an inbound message is received.
+    /// </summary>
+    public bool? UseInboundWebhookOnNumber { get; set; }
 
-            return p;
-        }
+    /// <summary>
+    /// Construct a new UpdateServiceOptions
+    /// </summary>
+    /// <param name="pathSid"> The SID that identifies the resource to update </param>
+    public UpdateServiceOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// ReadServiceOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadServiceOptions : ReadOptions<ServiceResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
+      var p = new List<KeyValuePair<string, string>>();
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
 
-            return p;
-        }
+      if (InboundRequestUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("InboundRequestUrl", Serializers.Url(InboundRequestUrl)));
+      }
+
+      if (InboundMethod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("InboundMethod", InboundMethod.ToString()));
+      }
+
+      if (FallbackUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FallbackUrl", Serializers.Url(FallbackUrl)));
+      }
+
+      if (FallbackMethod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FallbackMethod", FallbackMethod.ToString()));
+      }
+
+      if (StatusCallback != null)
+      {
+        p.Add(new KeyValuePair<string, string>("StatusCallback", Serializers.Url(StatusCallback)));
+      }
+
+      if (StickySender != null)
+      {
+        p.Add(new KeyValuePair<string, string>("StickySender", StickySender.Value.ToString().ToLower()));
+      }
+
+      if (MmsConverter != null)
+      {
+        p.Add(new KeyValuePair<string, string>("MmsConverter", MmsConverter.Value.ToString().ToLower()));
+      }
+
+      if (SmartEncoding != null)
+      {
+        p.Add(new KeyValuePair<string, string>("SmartEncoding", SmartEncoding.Value.ToString().ToLower()));
+      }
+
+      if (ScanMessageContent != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ScanMessageContent", ScanMessageContent.ToString()));
+      }
+
+      if (FallbackToLongCode != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FallbackToLongCode", FallbackToLongCode.Value.ToString().ToLower()));
+      }
+
+      if (AreaCodeGeomatch != null)
+      {
+        p.Add(new KeyValuePair<string, string>("AreaCodeGeomatch", AreaCodeGeomatch.Value.ToString().ToLower()));
+      }
+
+      if (ValidityPeriod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ValidityPeriod", ValidityPeriod.ToString()));
+      }
+
+      if (SynchronousValidation != null)
+      {
+        p.Add(new KeyValuePair<string, string>("SynchronousValidation", SynchronousValidation.Value.ToString().ToLower()));
+      }
+
+      if (Usecase != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Usecase", Usecase));
+      }
+
+      if (UseInboundWebhookOnNumber != null)
+      {
+        p.Add(new KeyValuePair<string, string>("UseInboundWebhookOnNumber", UseInboundWebhookOnNumber.Value.ToString().ToLower()));
+      }
+
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// ReadServiceOptions
+  /// </summary>
+  public class ReadServiceOptions : ReadOptions<ServiceResource>
+  {
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// FetchServiceOptions
+  /// </summary>
+  public class FetchServiceOptions : IOptions<ServiceResource>
+  {
+    /// <summary>
+    /// The SID that identifies the resource to fetch
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchServiceOptions
+    /// </summary>
+    /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
+    public FetchServiceOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// FetchServiceOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchServiceOptions : IOptions<ServiceResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID that identifies the resource to fetch
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new FetchServiceOptions
-        /// </summary>
-        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
-        public FetchServiceOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// DeleteServiceOptions
+  /// </summary>
+  public class DeleteServiceOptions : IOptions<ServiceResource>
+  {
+    /// <summary>
+    /// The SID that identifies the resource to delete
+    /// </summary>
+    public string PathSid { get; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+    /// <summary>
+    /// Construct a new DeleteServiceOptions
+    /// </summary>
+    /// <param name="pathSid"> The SID that identifies the resource to delete </param>
+    public DeleteServiceOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// DeleteServiceOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteServiceOptions : IOptions<ServiceResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID that identifies the resource to delete
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new DeleteServiceOptions
-        /// </summary>
-        /// <param name="pathSid"> The SID that identifies the resource to delete </param>
-        public DeleteServiceOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
 
 }

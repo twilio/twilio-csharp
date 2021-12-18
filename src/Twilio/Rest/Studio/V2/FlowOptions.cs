@@ -11,214 +11,214 @@ using Twilio.Converters;
 namespace Twilio.Rest.Studio.V2
 {
 
+  /// <summary>
+  /// Create a Flow.
+  /// </summary>
+  public class CreateFlowOptions : IOptions<FlowResource>
+  {
     /// <summary>
-    /// Create a Flow.
+    /// The string that you assigned to describe the Flow
     /// </summary>
-    public class CreateFlowOptions : IOptions<FlowResource>
+    public string FriendlyName { get; }
+    /// <summary>
+    /// The status of the Flow
+    /// </summary>
+    public FlowResource.StatusEnum Status { get; }
+    /// <summary>
+    /// JSON representation of flow definition
+    /// </summary>
+    public object Definition { get; }
+    /// <summary>
+    /// Description of change made in the revision
+    /// </summary>
+    public string CommitMessage { get; set; }
+
+    /// <summary>
+    /// Construct a new CreateFlowOptions
+    /// </summary>
+    /// <param name="friendlyName"> The string that you assigned to describe the Flow </param>
+    /// <param name="status"> The status of the Flow </param>
+    /// <param name="definition"> JSON representation of flow definition </param>
+    public CreateFlowOptions(string friendlyName, FlowResource.StatusEnum status, object definition)
     {
-        /// <summary>
-        /// The string that you assigned to describe the Flow
-        /// </summary>
-        public string FriendlyName { get; }
-        /// <summary>
-        /// The status of the Flow
-        /// </summary>
-        public FlowResource.StatusEnum Status { get; }
-        /// <summary>
-        /// JSON representation of flow definition
-        /// </summary>
-        public object Definition { get; }
-        /// <summary>
-        /// Description of change made in the revision
-        /// </summary>
-        public string CommitMessage { get; set; }
-
-        /// <summary>
-        /// Construct a new CreateFlowOptions
-        /// </summary>
-        /// <param name="friendlyName"> The string that you assigned to describe the Flow </param>
-        /// <param name="status"> The status of the Flow </param>
-        /// <param name="definition"> JSON representation of flow definition </param>
-        public CreateFlowOptions(string friendlyName, FlowResource.StatusEnum status, object definition)
-        {
-            FriendlyName = friendlyName;
-            Status = status;
-            Definition = definition;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
-
-            if (Status != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
-            }
-
-            if (Definition != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Definition", Serializers.JsonObject(Definition)));
-            }
-
-            if (CommitMessage != null)
-            {
-                p.Add(new KeyValuePair<string, string>("CommitMessage", CommitMessage));
-            }
-
-            return p;
-        }
+      FriendlyName = friendlyName;
+      Status = status;
+      Definition = definition;
     }
 
     /// <summary>
-    /// Update a Flow.
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateFlowOptions : IOptions<FlowResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID that identifies the resource to fetch
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// The status of the Flow
-        /// </summary>
-        public FlowResource.StatusEnum Status { get; }
-        /// <summary>
-        /// The string that you assigned to describe the Flow
-        /// </summary>
-        public string FriendlyName { get; set; }
-        /// <summary>
-        /// JSON representation of flow definition
-        /// </summary>
-        public object Definition { get; set; }
-        /// <summary>
-        /// Description of change made in the revision
-        /// </summary>
-        public string CommitMessage { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
 
-        /// <summary>
-        /// Construct a new UpdateFlowOptions
-        /// </summary>
-        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
-        /// <param name="status"> The status of the Flow </param>
-        public UpdateFlowOptions(string pathSid, FlowResource.StatusEnum status)
-        {
-            PathSid = pathSid;
-            Status = status;
-        }
+      if (Status != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Status != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
-            }
+      if (Definition != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Definition", Serializers.JsonObject(Definition)));
+      }
 
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
+      if (CommitMessage != null)
+      {
+        p.Add(new KeyValuePair<string, string>("CommitMessage", CommitMessage));
+      }
 
-            if (Definition != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Definition", Serializers.JsonObject(Definition)));
-            }
+      return p;
+    }
+  }
 
-            if (CommitMessage != null)
-            {
-                p.Add(new KeyValuePair<string, string>("CommitMessage", CommitMessage));
-            }
+  /// <summary>
+  /// Update a Flow.
+  /// </summary>
+  public class UpdateFlowOptions : IOptions<FlowResource>
+  {
+    /// <summary>
+    /// The SID that identifies the resource to fetch
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// The status of the Flow
+    /// </summary>
+    public FlowResource.StatusEnum Status { get; }
+    /// <summary>
+    /// The string that you assigned to describe the Flow
+    /// </summary>
+    public string FriendlyName { get; set; }
+    /// <summary>
+    /// JSON representation of flow definition
+    /// </summary>
+    public object Definition { get; set; }
+    /// <summary>
+    /// Description of change made in the revision
+    /// </summary>
+    public string CommitMessage { get; set; }
 
-            return p;
-        }
+    /// <summary>
+    /// Construct a new UpdateFlowOptions
+    /// </summary>
+    /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
+    /// <param name="status"> The status of the Flow </param>
+    public UpdateFlowOptions(string pathSid, FlowResource.StatusEnum status)
+    {
+      PathSid = pathSid;
+      Status = status;
     }
 
     /// <summary>
-    /// Retrieve a list of all Flows.
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadFlowOptions : ReadOptions<FlowResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
+      var p = new List<KeyValuePair<string, string>>();
+      if (Status != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
+      }
 
-            return p;
-        }
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
+
+      if (Definition != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Definition", Serializers.JsonObject(Definition)));
+      }
+
+      if (CommitMessage != null)
+      {
+        p.Add(new KeyValuePair<string, string>("CommitMessage", CommitMessage));
+      }
+
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// Retrieve a list of all Flows.
+  /// </summary>
+  public class ReadFlowOptions : ReadOptions<FlowResource>
+  {
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// Retrieve a specific Flow.
+  /// </summary>
+  public class FetchFlowOptions : IOptions<FlowResource>
+  {
+    /// <summary>
+    /// The SID that identifies the resource to fetch
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchFlowOptions
+    /// </summary>
+    /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
+    public FetchFlowOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Retrieve a specific Flow.
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchFlowOptions : IOptions<FlowResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID that identifies the resource to fetch
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new FetchFlowOptions
-        /// </summary>
-        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
-        public FetchFlowOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
+  /// <summary>
+  /// Delete a specific Flow.
+  /// </summary>
+  public class DeleteFlowOptions : IOptions<FlowResource>
+  {
+    /// <summary>
+    /// The SID that identifies the resource to delete
+    /// </summary>
+    public string PathSid { get; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+    /// <summary>
+    /// Construct a new DeleteFlowOptions
+    /// </summary>
+    /// <param name="pathSid"> The SID that identifies the resource to delete </param>
+    public DeleteFlowOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Delete a specific Flow.
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteFlowOptions : IOptions<FlowResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID that identifies the resource to delete
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new DeleteFlowOptions
-        /// </summary>
-        /// <param name="pathSid"> The SID that identifies the resource to delete </param>
-        public DeleteFlowOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
 
 }

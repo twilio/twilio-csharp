@@ -18,467 +18,467 @@ using Twilio.Http;
 namespace Twilio.Rest.Voice.V1
 {
 
-    public class SourceIpMappingResource : Resource
+  public class SourceIpMappingResource : Resource
+  {
+    private static Request BuildCreateRequest(CreateSourceIpMappingOptions options, ITwilioRestClient client)
     {
-        private static Request BuildCreateRequest(CreateSourceIpMappingOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Post,
-                Rest.Domain.Voice,
-                "/v1/SourceIpMappings",
-                postParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// create
-        /// </summary>
-        /// <param name="options"> Create SourceIpMapping parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of SourceIpMapping </returns>
-        public static SourceIpMappingResource Create(CreateSourceIpMappingOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildCreateRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// create
-        /// </summary>
-        /// <param name="options"> Create SourceIpMapping parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of SourceIpMapping </returns>
-        public static async System.Threading.Tasks.Task<SourceIpMappingResource> CreateAsync(CreateSourceIpMappingOptions options,
-                                                                                             ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// create
-        /// </summary>
-        /// <param name="ipRecordSid"> The unique string that identifies an IP Record </param>
-        /// <param name="sipDomainSid"> The unique string that identifies a SIP Domain </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of SourceIpMapping </returns>
-        public static SourceIpMappingResource Create(string ipRecordSid,
-                                                     string sipDomainSid,
-                                                     ITwilioRestClient client = null)
-        {
-            var options = new CreateSourceIpMappingOptions(ipRecordSid, sipDomainSid);
-            return Create(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// create
-        /// </summary>
-        /// <param name="ipRecordSid"> The unique string that identifies an IP Record </param>
-        /// <param name="sipDomainSid"> The unique string that identifies a SIP Domain </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of SourceIpMapping </returns>
-        public static async System.Threading.Tasks.Task<SourceIpMappingResource> CreateAsync(string ipRecordSid,
-                                                                                             string sipDomainSid,
-                                                                                             ITwilioRestClient client = null)
-        {
-            var options = new CreateSourceIpMappingOptions(ipRecordSid, sipDomainSid);
-            return await CreateAsync(options, client);
-        }
-        #endif
-
-        private static Request BuildFetchRequest(FetchSourceIpMappingOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Get,
-                Rest.Domain.Voice,
-                "/v1/SourceIpMappings/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="options"> Fetch SourceIpMapping parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of SourceIpMapping </returns>
-        public static SourceIpMappingResource Fetch(FetchSourceIpMappingOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="options"> Fetch SourceIpMapping parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of SourceIpMapping </returns>
-        public static async System.Threading.Tasks.Task<SourceIpMappingResource> FetchAsync(FetchSourceIpMappingOptions options,
-                                                                                            ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of SourceIpMapping </returns>
-        public static SourceIpMappingResource Fetch(string pathSid, ITwilioRestClient client = null)
-        {
-            var options = new FetchSourceIpMappingOptions(pathSid);
-            return Fetch(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of SourceIpMapping </returns>
-        public static async System.Threading.Tasks.Task<SourceIpMappingResource> FetchAsync(string pathSid,
-                                                                                            ITwilioRestClient client = null)
-        {
-            var options = new FetchSourceIpMappingOptions(pathSid);
-            return await FetchAsync(options, client);
-        }
-        #endif
-
-        private static Request BuildReadRequest(ReadSourceIpMappingOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Get,
-                Rest.Domain.Voice,
-                "/v1/SourceIpMappings",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// read
-        /// </summary>
-        /// <param name="options"> Read SourceIpMapping parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of SourceIpMapping </returns>
-        public static ResourceSet<SourceIpMappingResource> Read(ReadSourceIpMappingOptions options,
-                                                                ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildReadRequest(options, client));
-
-            var page = Page<SourceIpMappingResource>.FromJson("source_ip_mappings", response.Content);
-            return new ResourceSet<SourceIpMappingResource>(page, options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// read
-        /// </summary>
-        /// <param name="options"> Read SourceIpMapping parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of SourceIpMapping </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<SourceIpMappingResource>> ReadAsync(ReadSourceIpMappingOptions options,
-                                                                                                        ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
-
-            var page = Page<SourceIpMappingResource>.FromJson("source_ip_mappings", response.Content);
-            return new ResourceSet<SourceIpMappingResource>(page, options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// read
-        /// </summary>
-        /// <param name="pageSize"> Page size </param>
-        /// <param name="limit"> Record limit </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of SourceIpMapping </returns>
-        public static ResourceSet<SourceIpMappingResource> Read(int? pageSize = null,
-                                                                long? limit = null,
-                                                                ITwilioRestClient client = null)
-        {
-            var options = new ReadSourceIpMappingOptions(){PageSize = pageSize, Limit = limit};
-            return Read(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// read
-        /// </summary>
-        /// <param name="pageSize"> Page size </param>
-        /// <param name="limit"> Record limit </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of SourceIpMapping </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<SourceIpMappingResource>> ReadAsync(int? pageSize = null,
-                                                                                                        long? limit = null,
-                                                                                                        ITwilioRestClient client = null)
-        {
-            var options = new ReadSourceIpMappingOptions(){PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Fetch the target page of records
-        /// </summary>
-        /// <param name="targetUrl"> API-generated URL for the requested results page </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns>
-        public static Page<SourceIpMappingResource> GetPage(string targetUrl, ITwilioRestClient client)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-
-            var request = new Request(
-                HttpMethod.Get,
-                targetUrl
-            );
-
-            var response = client.Request(request);
-            return Page<SourceIpMappingResource>.FromJson("source_ip_mappings", response.Content);
-        }
-
-        /// <summary>
-        /// Fetch the next page of records
-        /// </summary>
-        /// <param name="page"> current page of records </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns>
-        public static Page<SourceIpMappingResource> NextPage(Page<SourceIpMappingResource> page, ITwilioRestClient client)
-        {
-            var request = new Request(
-                HttpMethod.Get,
-                page.GetNextPageUrl(Rest.Domain.Voice)
-            );
-
-            var response = client.Request(request);
-            return Page<SourceIpMappingResource>.FromJson("source_ip_mappings", response.Content);
-        }
-
-        /// <summary>
-        /// Fetch the previous page of records
-        /// </summary>
-        /// <param name="page"> current page of records </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns>
-        public static Page<SourceIpMappingResource> PreviousPage(Page<SourceIpMappingResource> page,
-                                                                 ITwilioRestClient client)
-        {
-            var request = new Request(
-                HttpMethod.Get,
-                page.GetPreviousPageUrl(Rest.Domain.Voice)
-            );
-
-            var response = client.Request(request);
-            return Page<SourceIpMappingResource>.FromJson("source_ip_mappings", response.Content);
-        }
-
-        private static Request BuildUpdateRequest(UpdateSourceIpMappingOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Post,
-                Rest.Domain.Voice,
-                "/v1/SourceIpMappings/" + options.PathSid + "",
-                postParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// update
-        /// </summary>
-        /// <param name="options"> Update SourceIpMapping parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of SourceIpMapping </returns>
-        public static SourceIpMappingResource Update(UpdateSourceIpMappingOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildUpdateRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// update
-        /// </summary>
-        /// <param name="options"> Update SourceIpMapping parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of SourceIpMapping </returns>
-        public static async System.Threading.Tasks.Task<SourceIpMappingResource> UpdateAsync(UpdateSourceIpMappingOptions options,
-                                                                                             ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// update
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        /// <param name="sipDomainSid"> The unique string that identifies a SIP Domain </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of SourceIpMapping </returns>
-        public static SourceIpMappingResource Update(string pathSid, string sipDomainSid, ITwilioRestClient client = null)
-        {
-            var options = new UpdateSourceIpMappingOptions(pathSid, sipDomainSid);
-            return Update(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// update
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        /// <param name="sipDomainSid"> The unique string that identifies a SIP Domain </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of SourceIpMapping </returns>
-        public static async System.Threading.Tasks.Task<SourceIpMappingResource> UpdateAsync(string pathSid,
-                                                                                             string sipDomainSid,
-                                                                                             ITwilioRestClient client = null)
-        {
-            var options = new UpdateSourceIpMappingOptions(pathSid, sipDomainSid);
-            return await UpdateAsync(options, client);
-        }
-        #endif
-
-        private static Request BuildDeleteRequest(DeleteSourceIpMappingOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Delete,
-                Rest.Domain.Voice,
-                "/v1/SourceIpMappings/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// delete
-        /// </summary>
-        /// <param name="options"> Delete SourceIpMapping parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of SourceIpMapping </returns>
-        public static bool Delete(DeleteSourceIpMappingOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
-        }
-
-        #if !NET35
-        /// <summary>
-        /// delete
-        /// </summary>
-        /// <param name="options"> Delete SourceIpMapping parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of SourceIpMapping </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteSourceIpMappingOptions options,
-                                                                          ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
-        }
-        #endif
-
-        /// <summary>
-        /// delete
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of SourceIpMapping </returns>
-        public static bool Delete(string pathSid, ITwilioRestClient client = null)
-        {
-            var options = new DeleteSourceIpMappingOptions(pathSid);
-            return Delete(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// delete
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of SourceIpMapping </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
-        {
-            var options = new DeleteSourceIpMappingOptions(pathSid);
-            return await DeleteAsync(options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Converts a JSON string into a SourceIpMappingResource object
-        /// </summary>
-        /// <param name="json"> Raw JSON string </param>
-        /// <returns> SourceIpMappingResource object represented by the provided JSON </returns>
-        public static SourceIpMappingResource FromJson(string json)
-        {
-            // Convert all checked exceptions to Runtime
-            try
-            {
-                return JsonConvert.DeserializeObject<SourceIpMappingResource>(json);
-            }
-            catch (JsonException e)
-            {
-                throw new ApiException(e.Message, e);
-            }
-        }
-
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        [JsonProperty("sid")]
-        public string Sid { get; private set; }
-        /// <summary>
-        /// The unique string that identifies an IP Record
-        /// </summary>
-        [JsonProperty("ip_record_sid")]
-        public string IpRecordSid { get; private set; }
-        /// <summary>
-        /// The unique string that identifies a SIP Domain
-        /// </summary>
-        [JsonProperty("sip_domain_sid")]
-        public string SipDomainSid { get; private set; }
-        /// <summary>
-        /// The RFC 2822 date and time in GMT that the resource was created
-        /// </summary>
-        [JsonProperty("date_created")]
-        public DateTime? DateCreated { get; private set; }
-        /// <summary>
-        /// The RFC 2822 date and time in GMT that the resource was last updated
-        /// </summary>
-        [JsonProperty("date_updated")]
-        public DateTime? DateUpdated { get; private set; }
-        /// <summary>
-        /// The absolute URL of the resource
-        /// </summary>
-        [JsonProperty("url")]
-        public Uri Url { get; private set; }
-
-        private SourceIpMappingResource()
-        {
-
-        }
+      return new Request(
+          HttpMethod.Post,
+          Rest.Domain.Voice,
+          "/v1/SourceIpMappings",
+          postParams: options.GetParams(),
+          headerParams: null
+      );
     }
+
+    /// <summary>
+    /// create
+    /// </summary>
+    /// <param name="options"> Create SourceIpMapping parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of SourceIpMapping </returns>
+    public static SourceIpMappingResource Create(CreateSourceIpMappingOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildCreateRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// create
+    /// </summary>
+    /// <param name="options"> Create SourceIpMapping parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of SourceIpMapping </returns>
+    public static async System.Threading.Tasks.Task<SourceIpMappingResource> CreateAsync(CreateSourceIpMappingOptions options,
+                                                                                         ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildCreateRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// create
+    /// </summary>
+    /// <param name="ipRecordSid"> The unique string that identifies an IP Record </param>
+    /// <param name="sipDomainSid"> The unique string that identifies a SIP Domain </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of SourceIpMapping </returns>
+    public static SourceIpMappingResource Create(string ipRecordSid,
+                                                 string sipDomainSid,
+                                                 ITwilioRestClient client = null)
+    {
+      var options = new CreateSourceIpMappingOptions(ipRecordSid, sipDomainSid);
+      return Create(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// create
+    /// </summary>
+    /// <param name="ipRecordSid"> The unique string that identifies an IP Record </param>
+    /// <param name="sipDomainSid"> The unique string that identifies a SIP Domain </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of SourceIpMapping </returns>
+    public static async System.Threading.Tasks.Task<SourceIpMappingResource> CreateAsync(string ipRecordSid,
+                                                                                         string sipDomainSid,
+                                                                                         ITwilioRestClient client = null)
+    {
+      var options = new CreateSourceIpMappingOptions(ipRecordSid, sipDomainSid);
+      return await CreateAsync(options, client);
+    }
+#endif
+
+    private static Request BuildFetchRequest(FetchSourceIpMappingOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Get,
+          Rest.Domain.Voice,
+          "/v1/SourceIpMappings/" + options.PathSid + "",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="options"> Fetch SourceIpMapping parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of SourceIpMapping </returns>
+    public static SourceIpMappingResource Fetch(FetchSourceIpMappingOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="options"> Fetch SourceIpMapping parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of SourceIpMapping </returns>
+    public static async System.Threading.Tasks.Task<SourceIpMappingResource> FetchAsync(FetchSourceIpMappingOptions options,
+                                                                                        ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of SourceIpMapping </returns>
+    public static SourceIpMappingResource Fetch(string pathSid, ITwilioRestClient client = null)
+    {
+      var options = new FetchSourceIpMappingOptions(pathSid);
+      return Fetch(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of SourceIpMapping </returns>
+    public static async System.Threading.Tasks.Task<SourceIpMappingResource> FetchAsync(string pathSid,
+                                                                                        ITwilioRestClient client = null)
+    {
+      var options = new FetchSourceIpMappingOptions(pathSid);
+      return await FetchAsync(options, client);
+    }
+#endif
+
+    private static Request BuildReadRequest(ReadSourceIpMappingOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Get,
+          Rest.Domain.Voice,
+          "/v1/SourceIpMappings",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// read
+    /// </summary>
+    /// <param name="options"> Read SourceIpMapping parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of SourceIpMapping </returns>
+    public static ResourceSet<SourceIpMappingResource> Read(ReadSourceIpMappingOptions options,
+                                                            ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildReadRequest(options, client));
+
+      var page = Page<SourceIpMappingResource>.FromJson("source_ip_mappings", response.Content);
+      return new ResourceSet<SourceIpMappingResource>(page, options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// read
+    /// </summary>
+    /// <param name="options"> Read SourceIpMapping parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of SourceIpMapping </returns>
+    public static async System.Threading.Tasks.Task<ResourceSet<SourceIpMappingResource>> ReadAsync(ReadSourceIpMappingOptions options,
+                                                                                                    ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+      var page = Page<SourceIpMappingResource>.FromJson("source_ip_mappings", response.Content);
+      return new ResourceSet<SourceIpMappingResource>(page, options, client);
+    }
+#endif
+
+    /// <summary>
+    /// read
+    /// </summary>
+    /// <param name="pageSize"> Page size </param>
+    /// <param name="limit"> Record limit </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of SourceIpMapping </returns>
+    public static ResourceSet<SourceIpMappingResource> Read(int? pageSize = null,
+                                                            long? limit = null,
+                                                            ITwilioRestClient client = null)
+    {
+      var options = new ReadSourceIpMappingOptions() { PageSize = pageSize, Limit = limit };
+      return Read(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// read
+    /// </summary>
+    /// <param name="pageSize"> Page size </param>
+    /// <param name="limit"> Record limit </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of SourceIpMapping </returns>
+    public static async System.Threading.Tasks.Task<ResourceSet<SourceIpMappingResource>> ReadAsync(int? pageSize = null,
+                                                                                                    long? limit = null,
+                                                                                                    ITwilioRestClient client = null)
+    {
+      var options = new ReadSourceIpMappingOptions() { PageSize = pageSize, Limit = limit };
+      return await ReadAsync(options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Fetch the target page of records
+    /// </summary>
+    /// <param name="targetUrl"> API-generated URL for the requested results page </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> The target page of records </returns>
+    public static Page<SourceIpMappingResource> GetPage(string targetUrl, ITwilioRestClient client)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+
+      var request = new Request(
+          HttpMethod.Get,
+          targetUrl
+      );
+
+      var response = client.Request(request);
+      return Page<SourceIpMappingResource>.FromJson("source_ip_mappings", response.Content);
+    }
+
+    /// <summary>
+    /// Fetch the next page of records
+    /// </summary>
+    /// <param name="page"> current page of records </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> The next page of records </returns>
+    public static Page<SourceIpMappingResource> NextPage(Page<SourceIpMappingResource> page, ITwilioRestClient client)
+    {
+      var request = new Request(
+          HttpMethod.Get,
+          page.GetNextPageUrl(Rest.Domain.Voice)
+      );
+
+      var response = client.Request(request);
+      return Page<SourceIpMappingResource>.FromJson("source_ip_mappings", response.Content);
+    }
+
+    /// <summary>
+    /// Fetch the previous page of records
+    /// </summary>
+    /// <param name="page"> current page of records </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> The previous page of records </returns>
+    public static Page<SourceIpMappingResource> PreviousPage(Page<SourceIpMappingResource> page,
+                                                             ITwilioRestClient client)
+    {
+      var request = new Request(
+          HttpMethod.Get,
+          page.GetPreviousPageUrl(Rest.Domain.Voice)
+      );
+
+      var response = client.Request(request);
+      return Page<SourceIpMappingResource>.FromJson("source_ip_mappings", response.Content);
+    }
+
+    private static Request BuildUpdateRequest(UpdateSourceIpMappingOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Post,
+          Rest.Domain.Voice,
+          "/v1/SourceIpMappings/" + options.PathSid + "",
+          postParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// update
+    /// </summary>
+    /// <param name="options"> Update SourceIpMapping parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of SourceIpMapping </returns>
+    public static SourceIpMappingResource Update(UpdateSourceIpMappingOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildUpdateRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// update
+    /// </summary>
+    /// <param name="options"> Update SourceIpMapping parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of SourceIpMapping </returns>
+    public static async System.Threading.Tasks.Task<SourceIpMappingResource> UpdateAsync(UpdateSourceIpMappingOptions options,
+                                                                                         ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// update
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    /// <param name="sipDomainSid"> The unique string that identifies a SIP Domain </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of SourceIpMapping </returns>
+    public static SourceIpMappingResource Update(string pathSid, string sipDomainSid, ITwilioRestClient client = null)
+    {
+      var options = new UpdateSourceIpMappingOptions(pathSid, sipDomainSid);
+      return Update(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// update
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    /// <param name="sipDomainSid"> The unique string that identifies a SIP Domain </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of SourceIpMapping </returns>
+    public static async System.Threading.Tasks.Task<SourceIpMappingResource> UpdateAsync(string pathSid,
+                                                                                         string sipDomainSid,
+                                                                                         ITwilioRestClient client = null)
+    {
+      var options = new UpdateSourceIpMappingOptions(pathSid, sipDomainSid);
+      return await UpdateAsync(options, client);
+    }
+#endif
+
+    private static Request BuildDeleteRequest(DeleteSourceIpMappingOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Delete,
+          Rest.Domain.Voice,
+          "/v1/SourceIpMappings/" + options.PathSid + "",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// delete
+    /// </summary>
+    /// <param name="options"> Delete SourceIpMapping parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of SourceIpMapping </returns>
+    public static bool Delete(DeleteSourceIpMappingOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildDeleteRequest(options, client));
+      return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+    }
+
+#if !NET35
+    /// <summary>
+    /// delete
+    /// </summary>
+    /// <param name="options"> Delete SourceIpMapping parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of SourceIpMapping </returns>
+    public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteSourceIpMappingOptions options,
+                                                                      ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+      return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+    }
+#endif
+
+    /// <summary>
+    /// delete
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of SourceIpMapping </returns>
+    public static bool Delete(string pathSid, ITwilioRestClient client = null)
+    {
+      var options = new DeleteSourceIpMappingOptions(pathSid);
+      return Delete(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// delete
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of SourceIpMapping </returns>
+    public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
+    {
+      var options = new DeleteSourceIpMappingOptions(pathSid);
+      return await DeleteAsync(options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Converts a JSON string into a SourceIpMappingResource object
+    /// </summary>
+    /// <param name="json"> Raw JSON string </param>
+    /// <returns> SourceIpMappingResource object represented by the provided JSON </returns>
+    public static SourceIpMappingResource FromJson(string json)
+    {
+      // Convert all checked exceptions to Runtime
+      try
+      {
+        return JsonConvert.DeserializeObject<SourceIpMappingResource>(json);
+      }
+      catch (JsonException e)
+      {
+        throw new ApiException(e.Message, e);
+      }
+    }
+
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    [JsonProperty("sid")]
+    public string Sid { get; private set; }
+    /// <summary>
+    /// The unique string that identifies an IP Record
+    /// </summary>
+    [JsonProperty("ip_record_sid")]
+    public string IpRecordSid { get; private set; }
+    /// <summary>
+    /// The unique string that identifies a SIP Domain
+    /// </summary>
+    [JsonProperty("sip_domain_sid")]
+    public string SipDomainSid { get; private set; }
+    /// <summary>
+    /// The RFC 2822 date and time in GMT that the resource was created
+    /// </summary>
+    [JsonProperty("date_created")]
+    public DateTime? DateCreated { get; private set; }
+    /// <summary>
+    /// The RFC 2822 date and time in GMT that the resource was last updated
+    /// </summary>
+    [JsonProperty("date_updated")]
+    public DateTime? DateUpdated { get; private set; }
+    /// <summary>
+    /// The absolute URL of the resource
+    /// </summary>
+    [JsonProperty("url")]
+    public Uri Url { get; private set; }
+
+    private SourceIpMappingResource()
+    {
+
+    }
+  }
 
 }

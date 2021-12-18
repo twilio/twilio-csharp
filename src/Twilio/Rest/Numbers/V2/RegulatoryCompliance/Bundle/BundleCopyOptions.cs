@@ -11,45 +11,45 @@ using Twilio.Converters;
 namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Creates a new copy of a Bundle. It will internally create copies of all the bundle items (identities and documents)
+  /// of the original bundle
+  /// </summary>
+  public class CreateBundleCopyOptions : IOptions<BundleCopyResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Creates a new copy of a Bundle. It will internally create copies of all the bundle items (identities and documents)
-    /// of the original bundle
+    /// The unique string that identifies the Bundle to be copied
     /// </summary>
-    public class CreateBundleCopyOptions : IOptions<BundleCopyResource>
+    public string PathBundleSid { get; }
+    /// <summary>
+    /// The string that you assigned to describe the copied bundle
+    /// </summary>
+    public string FriendlyName { get; set; }
+
+    /// <summary>
+    /// Construct a new CreateBundleCopyOptions
+    /// </summary>
+    /// <param name="pathBundleSid"> The unique string that identifies the Bundle to be copied </param>
+    public CreateBundleCopyOptions(string pathBundleSid)
     {
-        /// <summary>
-        /// The unique string that identifies the Bundle to be copied
-        /// </summary>
-        public string PathBundleSid { get; }
-        /// <summary>
-        /// The string that you assigned to describe the copied bundle
-        /// </summary>
-        public string FriendlyName { get; set; }
-
-        /// <summary>
-        /// Construct a new CreateBundleCopyOptions
-        /// </summary>
-        /// <param name="pathBundleSid"> The unique string that identifies the Bundle to be copied </param>
-        public CreateBundleCopyOptions(string pathBundleSid)
-        {
-            PathBundleSid = pathBundleSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
-
-            return p;
-        }
+      PathBundleSid = pathBundleSid;
     }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
+
+      return p;
+    }
+  }
 
 }

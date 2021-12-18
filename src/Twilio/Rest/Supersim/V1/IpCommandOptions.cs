@@ -11,179 +11,179 @@ using Twilio.Converters;
 namespace Twilio.Rest.Supersim.V1
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Send an IP Command to a Super SIM.
+  /// </summary>
+  public class CreateIpCommandOptions : IOptions<IpCommandResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Send an IP Command to a Super SIM.
+    /// The sid or unique_name of the Super SIM to send the IP Command to
     /// </summary>
-    public class CreateIpCommandOptions : IOptions<IpCommandResource>
+    public string Sim { get; }
+    /// <summary>
+    /// The payload to be delivered to the device
+    /// </summary>
+    public string Payload { get; }
+    /// <summary>
+    /// The device port to which the IP Command will be sent
+    /// </summary>
+    public int? DevicePort { get; }
+    /// <summary>
+    /// Indicates how the payload is encoded
+    /// </summary>
+    public IpCommandResource.PayloadTypeEnum PayloadType { get; set; }
+    /// <summary>
+    /// The URL we should call after we have sent the IP Command
+    /// </summary>
+    public Uri CallbackUrl { get; set; }
+    /// <summary>
+    /// The HTTP method we should use to call callback_url
+    /// </summary>
+    public Twilio.Http.HttpMethod CallbackMethod { get; set; }
+
+    /// <summary>
+    /// Construct a new CreateIpCommandOptions
+    /// </summary>
+    /// <param name="sim"> The sid or unique_name of the Super SIM to send the IP Command to </param>
+    /// <param name="payload"> The payload to be delivered to the device </param>
+    /// <param name="devicePort"> The device port to which the IP Command will be sent </param>
+    public CreateIpCommandOptions(string sim, string payload, int? devicePort)
     {
-        /// <summary>
-        /// The sid or unique_name of the Super SIM to send the IP Command to
-        /// </summary>
-        public string Sim { get; }
-        /// <summary>
-        /// The payload to be delivered to the device
-        /// </summary>
-        public string Payload { get; }
-        /// <summary>
-        /// The device port to which the IP Command will be sent
-        /// </summary>
-        public int? DevicePort { get; }
-        /// <summary>
-        /// Indicates how the payload is encoded
-        /// </summary>
-        public IpCommandResource.PayloadTypeEnum PayloadType { get; set; }
-        /// <summary>
-        /// The URL we should call after we have sent the IP Command
-        /// </summary>
-        public Uri CallbackUrl { get; set; }
-        /// <summary>
-        /// The HTTP method we should use to call callback_url
-        /// </summary>
-        public Twilio.Http.HttpMethod CallbackMethod { get; set; }
-
-        /// <summary>
-        /// Construct a new CreateIpCommandOptions
-        /// </summary>
-        /// <param name="sim"> The sid or unique_name of the Super SIM to send the IP Command to </param>
-        /// <param name="payload"> The payload to be delivered to the device </param>
-        /// <param name="devicePort"> The device port to which the IP Command will be sent </param>
-        public CreateIpCommandOptions(string sim, string payload, int? devicePort)
-        {
-            Sim = sim;
-            Payload = payload;
-            DevicePort = devicePort;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Sim != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Sim", Sim));
-            }
-
-            if (Payload != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Payload", Payload));
-            }
-
-            if (DevicePort != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DevicePort", DevicePort.ToString()));
-            }
-
-            if (PayloadType != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PayloadType", PayloadType.ToString()));
-            }
-
-            if (CallbackUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("CallbackUrl", Serializers.Url(CallbackUrl)));
-            }
-
-            if (CallbackMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("CallbackMethod", CallbackMethod.ToString()));
-            }
-
-            return p;
-        }
+      Sim = sim;
+      Payload = payload;
+      DevicePort = devicePort;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Fetch IP Command instance from your account.
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchIpCommandOptions : IOptions<IpCommandResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID that identifies the resource to fetch
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (Sim != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Sim", Sim));
+      }
 
-        /// <summary>
-        /// Construct a new FetchIpCommandOptions
-        /// </summary>
-        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
-        public FetchIpCommandOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
+      if (Payload != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Payload", Payload));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      if (DevicePort != null)
+      {
+        p.Add(new KeyValuePair<string, string>("DevicePort", DevicePort.ToString()));
+      }
+
+      if (PayloadType != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PayloadType", PayloadType.ToString()));
+      }
+
+      if (CallbackUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("CallbackUrl", Serializers.Url(CallbackUrl)));
+      }
+
+      if (CallbackMethod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("CallbackMethod", CallbackMethod.ToString()));
+      }
+
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Fetch IP Command instance from your account.
+  /// </summary>
+  public class FetchIpCommandOptions : IOptions<IpCommandResource>
+  {
+    /// <summary>
+    /// The SID that identifies the resource to fetch
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchIpCommandOptions
+    /// </summary>
+    /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
+    public FetchIpCommandOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Retrieve a list of IP Commands from your account.
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadIpCommandOptions : ReadOptions<IpCommandResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID or unique name of the Sim resource that IP Command was sent to or from.
-        /// </summary>
-        public string Sim { get; set; }
-        /// <summary>
-        /// The ICCID of the Sim resource that IP Command was sent to or from.
-        /// </summary>
-        public string SimIccid { get; set; }
-        /// <summary>
-        /// The status of the IP Command
-        /// </summary>
-        public IpCommandResource.StatusEnum Status { get; set; }
-        /// <summary>
-        /// The direction of the IP Command
-        /// </summary>
-        public IpCommandResource.DirectionEnum Direction { get; set; }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Sim != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Sim", Sim.ToString()));
-            }
-
-            if (SimIccid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("SimIccid", SimIccid));
-            }
-
-            if (Status != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
-            }
-
-            if (Direction != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Direction", Direction.ToString()));
-            }
-
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
+
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Retrieve a list of IP Commands from your account.
+  /// </summary>
+  public class ReadIpCommandOptions : ReadOptions<IpCommandResource>
+  {
+    /// <summary>
+    /// The SID or unique name of the Sim resource that IP Command was sent to or from.
+    /// </summary>
+    public string Sim { get; set; }
+    /// <summary>
+    /// The ICCID of the Sim resource that IP Command was sent to or from.
+    /// </summary>
+    public string SimIccid { get; set; }
+    /// <summary>
+    /// The status of the IP Command
+    /// </summary>
+    public IpCommandResource.StatusEnum Status { get; set; }
+    /// <summary>
+    /// The direction of the IP Command
+    /// </summary>
+    public IpCommandResource.DirectionEnum Direction { get; set; }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (Sim != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Sim", Sim.ToString()));
+      }
+
+      if (SimIccid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("SimIccid", SimIccid));
+      }
+
+      if (Status != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
+      }
+
+      if (Direction != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Direction", Direction.ToString()));
+      }
+
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
 
 }

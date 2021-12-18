@@ -11,120 +11,120 @@ using Twilio.Converters;
 namespace Twilio.Rest.Api.V2010.Account.Recording
 {
 
+  /// <summary>
+  /// Fetch an instance of an AddOnResult
+  /// </summary>
+  public class FetchAddOnResultOptions : IOptions<AddOnResultResource>
+  {
     /// <summary>
-    /// Fetch an instance of an AddOnResult
+    /// The SID of the Account that created the resource to fetch
     /// </summary>
-    public class FetchAddOnResultOptions : IOptions<AddOnResultResource>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The SID of the recording to which the result to fetch belongs
+    /// </summary>
+    public string PathReferenceSid { get; }
+    /// <summary>
+    /// The unique string that identifies the resource to fetch
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchAddOnResultOptions
+    /// </summary>
+    /// <param name="pathReferenceSid"> The SID of the recording to which the result to fetch belongs </param>
+    /// <param name="pathSid"> The unique string that identifies the resource to fetch </param>
+    public FetchAddOnResultOptions(string pathReferenceSid, string pathSid)
     {
-        /// <summary>
-        /// The SID of the Account that created the resource to fetch
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The SID of the recording to which the result to fetch belongs
-        /// </summary>
-        public string PathReferenceSid { get; }
-        /// <summary>
-        /// The unique string that identifies the resource to fetch
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchAddOnResultOptions
-        /// </summary>
-        /// <param name="pathReferenceSid"> The SID of the recording to which the result to fetch belongs </param>
-        /// <param name="pathSid"> The unique string that identifies the resource to fetch </param>
-        public FetchAddOnResultOptions(string pathReferenceSid, string pathSid)
-        {
-            PathReferenceSid = pathReferenceSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathReferenceSid = pathReferenceSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Retrieve a list of results belonging to the recording
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadAddOnResultOptions : ReadOptions<AddOnResultResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Account that created the resources to read
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The SID of the recording to which the result to read belongs
-        /// </summary>
-        public string PathReferenceSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new ReadAddOnResultOptions
-        /// </summary>
-        /// <param name="pathReferenceSid"> The SID of the recording to which the result to read belongs </param>
-        public ReadAddOnResultOptions(string pathReferenceSid)
-        {
-            PathReferenceSid = pathReferenceSid;
-        }
+  /// <summary>
+  /// Retrieve a list of results belonging to the recording
+  /// </summary>
+  public class ReadAddOnResultOptions : ReadOptions<AddOnResultResource>
+  {
+    /// <summary>
+    /// The SID of the Account that created the resources to read
+    /// </summary>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The SID of the recording to which the result to read belongs
+    /// </summary>
+    public string PathReferenceSid { get; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new ReadAddOnResultOptions
+    /// </summary>
+    /// <param name="pathReferenceSid"> The SID of the recording to which the result to read belongs </param>
+    public ReadAddOnResultOptions(string pathReferenceSid)
+    {
+      PathReferenceSid = pathReferenceSid;
     }
 
     /// <summary>
-    /// Delete a result and purge all associated Payloads
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteAddOnResultOptions : IOptions<AddOnResultResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Account that created the resources to delete
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The SID of the recording to which the result to delete belongs
-        /// </summary>
-        public string PathReferenceSid { get; }
-        /// <summary>
-        /// The unique string that identifies the resource to delete
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new DeleteAddOnResultOptions
-        /// </summary>
-        /// <param name="pathReferenceSid"> The SID of the recording to which the result to delete belongs </param>
-        /// <param name="pathSid"> The unique string that identifies the resource to delete </param>
-        public DeleteAddOnResultOptions(string pathReferenceSid, string pathSid)
-        {
-            PathReferenceSid = pathReferenceSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      return p;
     }
+  }
+
+  /// <summary>
+  /// Delete a result and purge all associated Payloads
+  /// </summary>
+  public class DeleteAddOnResultOptions : IOptions<AddOnResultResource>
+  {
+    /// <summary>
+    /// The SID of the Account that created the resources to delete
+    /// </summary>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The SID of the recording to which the result to delete belongs
+    /// </summary>
+    public string PathReferenceSid { get; }
+    /// <summary>
+    /// The unique string that identifies the resource to delete
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new DeleteAddOnResultOptions
+    /// </summary>
+    /// <param name="pathReferenceSid"> The SID of the recording to which the result to delete belongs </param>
+    /// <param name="pathSid"> The unique string that identifies the resource to delete </param>
+    public DeleteAddOnResultOptions(string pathReferenceSid, string pathSid)
+    {
+      PathReferenceSid = pathReferenceSid;
+      PathSid = pathSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
 }

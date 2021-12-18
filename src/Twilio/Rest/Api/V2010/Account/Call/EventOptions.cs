@@ -11,42 +11,42 @@ using Twilio.Converters;
 namespace Twilio.Rest.Api.V2010.Account.Call
 {
 
+  /// <summary>
+  /// Retrieve a list of all events for a call.
+  /// </summary>
+  public class ReadEventOptions : ReadOptions<EventResource>
+  {
     /// <summary>
-    /// Retrieve a list of all events for a call.
+    /// Account Sid.
     /// </summary>
-    public class ReadEventOptions : ReadOptions<EventResource>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// Call Sid.
+    /// </summary>
+    public string PathCallSid { get; }
+
+    /// <summary>
+    /// Construct a new ReadEventOptions
+    /// </summary>
+    /// <param name="pathCallSid"> Call Sid. </param>
+    public ReadEventOptions(string pathCallSid)
     {
-        /// <summary>
-        /// Account Sid.
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// Call Sid.
-        /// </summary>
-        public string PathCallSid { get; }
-
-        /// <summary>
-        /// Construct a new ReadEventOptions
-        /// </summary>
-        /// <param name="pathCallSid"> Call Sid. </param>
-        public ReadEventOptions(string pathCallSid)
-        {
-            PathCallSid = pathCallSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+      PathCallSid = pathCallSid;
     }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
 
 }

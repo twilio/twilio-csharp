@@ -11,84 +11,84 @@ using Twilio.Converters;
 namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
 {
 
+  /// <summary>
+  /// FetchTaskQueueCumulativeStatisticsOptions
+  /// </summary>
+  public class FetchTaskQueueCumulativeStatisticsOptions : IOptions<TaskQueueCumulativeStatisticsResource>
+  {
     /// <summary>
-    /// FetchTaskQueueCumulativeStatisticsOptions
+    /// The SID of the Workspace with the TaskQueue to fetch
     /// </summary>
-    public class FetchTaskQueueCumulativeStatisticsOptions : IOptions<TaskQueueCumulativeStatisticsResource>
+    public string PathWorkspaceSid { get; }
+    /// <summary>
+    /// The SID of the TaskQueue for which to fetch statistics
+    /// </summary>
+    public string PathTaskQueueSid { get; }
+    /// <summary>
+    /// Only calculate statistics from on or before this date
+    /// </summary>
+    public DateTime? EndDate { get; set; }
+    /// <summary>
+    /// Only calculate statistics since this many minutes in the past
+    /// </summary>
+    public int? Minutes { get; set; }
+    /// <summary>
+    /// Only calculate statistics from on or after this date
+    /// </summary>
+    public DateTime? StartDate { get; set; }
+    /// <summary>
+    /// Only calculate cumulative statistics on this TaskChannel
+    /// </summary>
+    public string TaskChannel { get; set; }
+    /// <summary>
+    /// A comma separated list of values that describes the thresholds to calculate statistics on
+    /// </summary>
+    public string SplitByWaitTime { get; set; }
+
+    /// <summary>
+    /// Construct a new FetchTaskQueueCumulativeStatisticsOptions
+    /// </summary>
+    /// <param name="pathWorkspaceSid"> The SID of the Workspace with the TaskQueue to fetch </param>
+    /// <param name="pathTaskQueueSid"> The SID of the TaskQueue for which to fetch statistics </param>
+    public FetchTaskQueueCumulativeStatisticsOptions(string pathWorkspaceSid, string pathTaskQueueSid)
     {
-        /// <summary>
-        /// The SID of the Workspace with the TaskQueue to fetch
-        /// </summary>
-        public string PathWorkspaceSid { get; }
-        /// <summary>
-        /// The SID of the TaskQueue for which to fetch statistics
-        /// </summary>
-        public string PathTaskQueueSid { get; }
-        /// <summary>
-        /// Only calculate statistics from on or before this date
-        /// </summary>
-        public DateTime? EndDate { get; set; }
-        /// <summary>
-        /// Only calculate statistics since this many minutes in the past
-        /// </summary>
-        public int? Minutes { get; set; }
-        /// <summary>
-        /// Only calculate statistics from on or after this date
-        /// </summary>
-        public DateTime? StartDate { get; set; }
-        /// <summary>
-        /// Only calculate cumulative statistics on this TaskChannel
-        /// </summary>
-        public string TaskChannel { get; set; }
-        /// <summary>
-        /// A comma separated list of values that describes the thresholds to calculate statistics on
-        /// </summary>
-        public string SplitByWaitTime { get; set; }
-
-        /// <summary>
-        /// Construct a new FetchTaskQueueCumulativeStatisticsOptions
-        /// </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the TaskQueue to fetch </param>
-        /// <param name="pathTaskQueueSid"> The SID of the TaskQueue for which to fetch statistics </param>
-        public FetchTaskQueueCumulativeStatisticsOptions(string pathWorkspaceSid, string pathTaskQueueSid)
-        {
-            PathWorkspaceSid = pathWorkspaceSid;
-            PathTaskQueueSid = pathTaskQueueSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (EndDate != null)
-            {
-                p.Add(new KeyValuePair<string, string>("EndDate", Serializers.DateTimeIso8601(EndDate)));
-            }
-
-            if (Minutes != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Minutes", Minutes.ToString()));
-            }
-
-            if (StartDate != null)
-            {
-                p.Add(new KeyValuePair<string, string>("StartDate", Serializers.DateTimeIso8601(StartDate)));
-            }
-
-            if (TaskChannel != null)
-            {
-                p.Add(new KeyValuePair<string, string>("TaskChannel", TaskChannel));
-            }
-
-            if (SplitByWaitTime != null)
-            {
-                p.Add(new KeyValuePair<string, string>("SplitByWaitTime", SplitByWaitTime));
-            }
-
-            return p;
-        }
+      PathWorkspaceSid = pathWorkspaceSid;
+      PathTaskQueueSid = pathTaskQueueSid;
     }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (EndDate != null)
+      {
+        p.Add(new KeyValuePair<string, string>("EndDate", Serializers.DateTimeIso8601(EndDate)));
+      }
+
+      if (Minutes != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Minutes", Minutes.ToString()));
+      }
+
+      if (StartDate != null)
+      {
+        p.Add(new KeyValuePair<string, string>("StartDate", Serializers.DateTimeIso8601(StartDate)));
+      }
+
+      if (TaskChannel != null)
+      {
+        p.Add(new KeyValuePair<string, string>("TaskChannel", TaskChannel));
+      }
+
+      if (SplitByWaitTime != null)
+      {
+        p.Add(new KeyValuePair<string, string>("SplitByWaitTime", SplitByWaitTime));
+      }
+
+      return p;
+    }
+  }
 
 }

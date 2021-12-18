@@ -11,140 +11,140 @@ using Twilio.Converters;
 namespace Twilio.Rest.Api.V2010.Account.Queue
 {
 
+  /// <summary>
+  /// Fetch a specific member from the queue
+  /// </summary>
+  public class FetchMemberOptions : IOptions<MemberResource>
+  {
     /// <summary>
-    /// Fetch a specific member from the queue
+    /// The SID of the Account that created the resource(s) to fetch
     /// </summary>
-    public class FetchMemberOptions : IOptions<MemberResource>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The SID of the Queue in which to find the members
+    /// </summary>
+    public string PathQueueSid { get; }
+    /// <summary>
+    /// The Call SID of the resource(s) to fetch
+    /// </summary>
+    public string PathCallSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchMemberOptions
+    /// </summary>
+    /// <param name="pathQueueSid"> The SID of the Queue in which to find the members </param>
+    /// <param name="pathCallSid"> The Call SID of the resource(s) to fetch </param>
+    public FetchMemberOptions(string pathQueueSid, string pathCallSid)
     {
-        /// <summary>
-        /// The SID of the Account that created the resource(s) to fetch
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The SID of the Queue in which to find the members
-        /// </summary>
-        public string PathQueueSid { get; }
-        /// <summary>
-        /// The Call SID of the resource(s) to fetch
-        /// </summary>
-        public string PathCallSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchMemberOptions
-        /// </summary>
-        /// <param name="pathQueueSid"> The SID of the Queue in which to find the members </param>
-        /// <param name="pathCallSid"> The Call SID of the resource(s) to fetch </param>
-        public FetchMemberOptions(string pathQueueSid, string pathCallSid)
-        {
-            PathQueueSid = pathQueueSid;
-            PathCallSid = pathCallSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathQueueSid = pathQueueSid;
+      PathCallSid = pathCallSid;
     }
 
     /// <summary>
-    /// Dequeue a member from a queue and have the member's call begin executing the TwiML document at that URL
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateMemberOptions : IOptions<MemberResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Account that created the resource(s) to update
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The SID of the Queue in which to find the members
-        /// </summary>
-        public string PathQueueSid { get; }
-        /// <summary>
-        /// The Call SID of the resource(s) to update
-        /// </summary>
-        public string PathCallSid { get; }
-        /// <summary>
-        /// The absolute URL of the Queue resource
-        /// </summary>
-        public Uri Url { get; }
-        /// <summary>
-        /// How to pass the update request data
-        /// </summary>
-        public Twilio.Http.HttpMethod Method { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new UpdateMemberOptions
-        /// </summary>
-        /// <param name="pathQueueSid"> The SID of the Queue in which to find the members </param>
-        /// <param name="pathCallSid"> The Call SID of the resource(s) to update </param>
-        /// <param name="url"> The absolute URL of the Queue resource </param>
-        public UpdateMemberOptions(string pathQueueSid, string pathCallSid, Uri url)
-        {
-            PathQueueSid = pathQueueSid;
-            PathCallSid = pathCallSid;
-            Url = url;
-        }
+  /// <summary>
+  /// Dequeue a member from a queue and have the member's call begin executing the TwiML document at that URL
+  /// </summary>
+  public class UpdateMemberOptions : IOptions<MemberResource>
+  {
+    /// <summary>
+    /// The SID of the Account that created the resource(s) to update
+    /// </summary>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The SID of the Queue in which to find the members
+    /// </summary>
+    public string PathQueueSid { get; }
+    /// <summary>
+    /// The Call SID of the resource(s) to update
+    /// </summary>
+    public string PathCallSid { get; }
+    /// <summary>
+    /// The absolute URL of the Queue resource
+    /// </summary>
+    public Uri Url { get; }
+    /// <summary>
+    /// How to pass the update request data
+    /// </summary>
+    public Twilio.Http.HttpMethod Method { get; set; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Url != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Url", Serializers.Url(Url)));
-            }
-
-            if (Method != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Method", Method.ToString()));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new UpdateMemberOptions
+    /// </summary>
+    /// <param name="pathQueueSid"> The SID of the Queue in which to find the members </param>
+    /// <param name="pathCallSid"> The Call SID of the resource(s) to update </param>
+    /// <param name="url"> The absolute URL of the Queue resource </param>
+    public UpdateMemberOptions(string pathQueueSid, string pathCallSid, Uri url)
+    {
+      PathQueueSid = pathQueueSid;
+      PathCallSid = pathCallSid;
+      Url = url;
     }
 
     /// <summary>
-    /// Retrieve the members of the queue
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadMemberOptions : ReadOptions<MemberResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Account that created the resource(s) to read
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The SID of the Queue in which to find the members
-        /// </summary>
-        public string PathQueueSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (Url != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Url", Serializers.Url(Url)));
+      }
 
-        /// <summary>
-        /// Construct a new ReadMemberOptions
-        /// </summary>
-        /// <param name="pathQueueSid"> The SID of the Queue in which to find the members </param>
-        public ReadMemberOptions(string pathQueueSid)
-        {
-            PathQueueSid = pathQueueSid;
-        }
+      if (Method != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Method", Method.ToString()));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+      return p;
     }
+  }
+
+  /// <summary>
+  /// Retrieve the members of the queue
+  /// </summary>
+  public class ReadMemberOptions : ReadOptions<MemberResource>
+  {
+    /// <summary>
+    /// The SID of the Account that created the resource(s) to read
+    /// </summary>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The SID of the Queue in which to find the members
+    /// </summary>
+    public string PathQueueSid { get; }
+
+    /// <summary>
+    /// Construct a new ReadMemberOptions
+    /// </summary>
+    /// <param name="pathQueueSid"> The SID of the Queue in which to find the members </param>
+    public ReadMemberOptions(string pathQueueSid)
+    {
+      PathQueueSid = pathQueueSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
 
 }

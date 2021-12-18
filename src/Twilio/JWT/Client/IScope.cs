@@ -2,14 +2,14 @@
 
 namespace Twilio.Jwt
 {
+  /// <summary>
+  /// Scope interface of client capabilities
+  /// </summary>
+  public interface IScope
+  {
     /// <summary>
-    /// Scope interface of client capabilities
+    /// Generate the scope payload
     /// </summary>
-    public interface IScope
-    {
-        /// <summary>
-        /// Generate the scope payload
-        /// </summary>
-        string Payload { get; }
-    }
+    string Payload { get; }
+  }
 }

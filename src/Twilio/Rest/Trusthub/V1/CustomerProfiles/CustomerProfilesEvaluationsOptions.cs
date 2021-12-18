@@ -11,113 +11,113 @@ using Twilio.Converters;
 namespace Twilio.Rest.Trusthub.V1.CustomerProfiles
 {
 
+  /// <summary>
+  /// Create a new Evaluation
+  /// </summary>
+  public class CreateCustomerProfilesEvaluationsOptions : IOptions<CustomerProfilesEvaluationsResource>
+  {
     /// <summary>
-    /// Create a new Evaluation
+    /// The unique string that identifies the resource.
     /// </summary>
-    public class CreateCustomerProfilesEvaluationsOptions : IOptions<CustomerProfilesEvaluationsResource>
+    public string PathCustomerProfileSid { get; }
+    /// <summary>
+    /// The unique string of a policy
+    /// </summary>
+    public string PolicySid { get; }
+
+    /// <summary>
+    /// Construct a new CreateCustomerProfilesEvaluationsOptions
+    /// </summary>
+    /// <param name="pathCustomerProfileSid"> The unique string that identifies the resource. </param>
+    /// <param name="policySid"> The unique string of a policy </param>
+    public CreateCustomerProfilesEvaluationsOptions(string pathCustomerProfileSid, string policySid)
     {
-        /// <summary>
-        /// The unique string that identifies the resource.
-        /// </summary>
-        public string PathCustomerProfileSid { get; }
-        /// <summary>
-        /// The unique string of a policy
-        /// </summary>
-        public string PolicySid { get; }
-
-        /// <summary>
-        /// Construct a new CreateCustomerProfilesEvaluationsOptions
-        /// </summary>
-        /// <param name="pathCustomerProfileSid"> The unique string that identifies the resource. </param>
-        /// <param name="policySid"> The unique string of a policy </param>
-        public CreateCustomerProfilesEvaluationsOptions(string pathCustomerProfileSid, string policySid)
-        {
-            PathCustomerProfileSid = pathCustomerProfileSid;
-            PolicySid = policySid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PolicySid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PolicySid", PolicySid.ToString()));
-            }
-
-            return p;
-        }
+      PathCustomerProfileSid = pathCustomerProfileSid;
+      PolicySid = policySid;
     }
 
     /// <summary>
-    /// Retrieve a list of Evaluations associated to the customer_profile resource.
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadCustomerProfilesEvaluationsOptions : ReadOptions<CustomerProfilesEvaluationsResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique string that identifies the resource.
-        /// </summary>
-        public string PathCustomerProfileSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (PolicySid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PolicySid", PolicySid.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new ReadCustomerProfilesEvaluationsOptions
-        /// </summary>
-        /// <param name="pathCustomerProfileSid"> The unique string that identifies the resource. </param>
-        public ReadCustomerProfilesEvaluationsOptions(string pathCustomerProfileSid)
-        {
-            PathCustomerProfileSid = pathCustomerProfileSid;
-        }
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
+  /// <summary>
+  /// Retrieve a list of Evaluations associated to the customer_profile resource.
+  /// </summary>
+  public class ReadCustomerProfilesEvaluationsOptions : ReadOptions<CustomerProfilesEvaluationsResource>
+  {
+    /// <summary>
+    /// The unique string that identifies the resource.
+    /// </summary>
+    public string PathCustomerProfileSid { get; }
 
-            return p;
-        }
+    /// <summary>
+    /// Construct a new ReadCustomerProfilesEvaluationsOptions
+    /// </summary>
+    /// <param name="pathCustomerProfileSid"> The unique string that identifies the resource. </param>
+    public ReadCustomerProfilesEvaluationsOptions(string pathCustomerProfileSid)
+    {
+      PathCustomerProfileSid = pathCustomerProfileSid;
     }
 
     /// <summary>
-    /// Fetch specific Evaluation Instance.
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchCustomerProfilesEvaluationsOptions : IOptions<CustomerProfilesEvaluationsResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathCustomerProfileSid { get; }
-        /// <summary>
-        /// The unique string that identifies the Evaluation resource
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new FetchCustomerProfilesEvaluationsOptions
-        /// </summary>
-        /// <param name="pathCustomerProfileSid"> The unique string that identifies the resource </param>
-        /// <param name="pathSid"> The unique string that identifies the Evaluation resource </param>
-        public FetchCustomerProfilesEvaluationsOptions(string pathCustomerProfileSid, string pathSid)
-        {
-            PathCustomerProfileSid = pathCustomerProfileSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      return p;
     }
+  }
+
+  /// <summary>
+  /// Fetch specific Evaluation Instance.
+  /// </summary>
+  public class FetchCustomerProfilesEvaluationsOptions : IOptions<CustomerProfilesEvaluationsResource>
+  {
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathCustomerProfileSid { get; }
+    /// <summary>
+    /// The unique string that identifies the Evaluation resource
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchCustomerProfilesEvaluationsOptions
+    /// </summary>
+    /// <param name="pathCustomerProfileSid"> The unique string that identifies the resource </param>
+    /// <param name="pathSid"> The unique string that identifies the Evaluation resource </param>
+    public FetchCustomerProfilesEvaluationsOptions(string pathCustomerProfileSid, string pathSid)
+    {
+      PathCustomerProfileSid = pathCustomerProfileSid;
+      PathSid = pathSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
 }

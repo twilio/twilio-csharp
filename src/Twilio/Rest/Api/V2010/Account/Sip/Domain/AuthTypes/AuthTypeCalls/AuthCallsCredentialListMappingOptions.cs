@@ -11,164 +11,164 @@ using Twilio.Converters;
 namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeCalls
 {
 
+  /// <summary>
+  /// Create a new credential list mapping resource
+  /// </summary>
+  public class CreateAuthCallsCredentialListMappingOptions : IOptions<AuthCallsCredentialListMappingResource>
+  {
     /// <summary>
-    /// Create a new credential list mapping resource
+    /// The SID of the Account that will create the resource
     /// </summary>
-    public class CreateAuthCallsCredentialListMappingOptions : IOptions<AuthCallsCredentialListMappingResource>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The SID of the SIP domain that will contain the new resource
+    /// </summary>
+    public string PathDomainSid { get; }
+    /// <summary>
+    /// The SID of the CredentialList resource to map to the SIP domain
+    /// </summary>
+    public string CredentialListSid { get; }
+
+    /// <summary>
+    /// Construct a new CreateAuthCallsCredentialListMappingOptions
+    /// </summary>
+    /// <param name="pathDomainSid"> The SID of the SIP domain that will contain the new resource </param>
+    /// <param name="credentialListSid"> The SID of the CredentialList resource to map to the SIP domain </param>
+    public CreateAuthCallsCredentialListMappingOptions(string pathDomainSid, string credentialListSid)
     {
-        /// <summary>
-        /// The SID of the Account that will create the resource
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The SID of the SIP domain that will contain the new resource
-        /// </summary>
-        public string PathDomainSid { get; }
-        /// <summary>
-        /// The SID of the CredentialList resource to map to the SIP domain
-        /// </summary>
-        public string CredentialListSid { get; }
-
-        /// <summary>
-        /// Construct a new CreateAuthCallsCredentialListMappingOptions
-        /// </summary>
-        /// <param name="pathDomainSid"> The SID of the SIP domain that will contain the new resource </param>
-        /// <param name="credentialListSid"> The SID of the CredentialList resource to map to the SIP domain </param>
-        public CreateAuthCallsCredentialListMappingOptions(string pathDomainSid, string credentialListSid)
-        {
-            PathDomainSid = pathDomainSid;
-            CredentialListSid = credentialListSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (CredentialListSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("CredentialListSid", CredentialListSid.ToString()));
-            }
-
-            return p;
-        }
+      PathDomainSid = pathDomainSid;
+      CredentialListSid = credentialListSid;
     }
 
     /// <summary>
-    /// Retrieve a list of credential list mappings belonging to the domain used in the request
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadAuthCallsCredentialListMappingOptions : ReadOptions<AuthCallsCredentialListMappingResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Account that created the resources to read
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The SID of the SIP domain that contains the resources to read
-        /// </summary>
-        public string PathDomainSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (CredentialListSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("CredentialListSid", CredentialListSid.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new ReadAuthCallsCredentialListMappingOptions
-        /// </summary>
-        /// <param name="pathDomainSid"> The SID of the SIP domain that contains the resources to read </param>
-        public ReadAuthCallsCredentialListMappingOptions(string pathDomainSid)
-        {
-            PathDomainSid = pathDomainSid;
-        }
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
+  /// <summary>
+  /// Retrieve a list of credential list mappings belonging to the domain used in the request
+  /// </summary>
+  public class ReadAuthCallsCredentialListMappingOptions : ReadOptions<AuthCallsCredentialListMappingResource>
+  {
+    /// <summary>
+    /// The SID of the Account that created the resources to read
+    /// </summary>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The SID of the SIP domain that contains the resources to read
+    /// </summary>
+    public string PathDomainSid { get; }
 
-            return p;
-        }
+    /// <summary>
+    /// Construct a new ReadAuthCallsCredentialListMappingOptions
+    /// </summary>
+    /// <param name="pathDomainSid"> The SID of the SIP domain that contains the resources to read </param>
+    public ReadAuthCallsCredentialListMappingOptions(string pathDomainSid)
+    {
+      PathDomainSid = pathDomainSid;
     }
 
     /// <summary>
-    /// Fetch a specific instance of a credential list mapping
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchAuthCallsCredentialListMappingOptions : IOptions<AuthCallsCredentialListMappingResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Account that created the resource to fetch
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The SID of the SIP domain that contains the resource to fetch
-        /// </summary>
-        public string PathDomainSid { get; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new FetchAuthCallsCredentialListMappingOptions
-        /// </summary>
-        /// <param name="pathDomainSid"> The SID of the SIP domain that contains the resource to fetch </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public FetchAuthCallsCredentialListMappingOptions(string pathDomainSid, string pathSid)
-        {
-            PathDomainSid = pathDomainSid;
-            PathSid = pathSid;
-        }
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+  /// <summary>
+  /// Fetch a specific instance of a credential list mapping
+  /// </summary>
+  public class FetchAuthCallsCredentialListMappingOptions : IOptions<AuthCallsCredentialListMappingResource>
+  {
+    /// <summary>
+    /// The SID of the Account that created the resource to fetch
+    /// </summary>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The SID of the SIP domain that contains the resource to fetch
+    /// </summary>
+    public string PathDomainSid { get; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchAuthCallsCredentialListMappingOptions
+    /// </summary>
+    /// <param name="pathDomainSid"> The SID of the SIP domain that contains the resource to fetch </param>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public FetchAuthCallsCredentialListMappingOptions(string pathDomainSid, string pathSid)
+    {
+      PathDomainSid = pathDomainSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Delete a credential list mapping from the requested domain
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteAuthCallsCredentialListMappingOptions : IOptions<AuthCallsCredentialListMappingResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Account that created the resources to delete
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The SID of the SIP domain that contains the resource to delete
-        /// </summary>
-        public string PathDomainSid { get; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new DeleteAuthCallsCredentialListMappingOptions
-        /// </summary>
-        /// <param name="pathDomainSid"> The SID of the SIP domain that contains the resource to delete </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public DeleteAuthCallsCredentialListMappingOptions(string pathDomainSid, string pathSid)
-        {
-            PathDomainSid = pathDomainSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
+
+  /// <summary>
+  /// Delete a credential list mapping from the requested domain
+  /// </summary>
+  public class DeleteAuthCallsCredentialListMappingOptions : IOptions<AuthCallsCredentialListMappingResource>
+  {
+    /// <summary>
+    /// The SID of the Account that created the resources to delete
+    /// </summary>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The SID of the SIP domain that contains the resource to delete
+    /// </summary>
+    public string PathDomainSid { get; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new DeleteAuthCallsCredentialListMappingOptions
+    /// </summary>
+    /// <param name="pathDomainSid"> The SID of the SIP domain that contains the resource to delete </param>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public DeleteAuthCallsCredentialListMappingOptions(string pathDomainSid, string pathSid)
+    {
+      PathDomainSid = pathDomainSid;
+      PathSid = pathSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
 }

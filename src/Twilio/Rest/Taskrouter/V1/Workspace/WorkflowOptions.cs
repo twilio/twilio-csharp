@@ -11,284 +11,284 @@ using Twilio.Converters;
 namespace Twilio.Rest.Taskrouter.V1.Workspace
 {
 
+  /// <summary>
+  /// FetchWorkflowOptions
+  /// </summary>
+  public class FetchWorkflowOptions : IOptions<WorkflowResource>
+  {
     /// <summary>
-    /// FetchWorkflowOptions
+    /// The SID of the Workspace with the Workflow to fetch
     /// </summary>
-    public class FetchWorkflowOptions : IOptions<WorkflowResource>
+    public string PathWorkspaceSid { get; }
+    /// <summary>
+    /// The SID of the resource
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchWorkflowOptions
+    /// </summary>
+    /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Workflow to fetch </param>
+    /// <param name="pathSid"> The SID of the resource </param>
+    public FetchWorkflowOptions(string pathWorkspaceSid, string pathSid)
     {
-        /// <summary>
-        /// The SID of the Workspace with the Workflow to fetch
-        /// </summary>
-        public string PathWorkspaceSid { get; }
-        /// <summary>
-        /// The SID of the resource
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchWorkflowOptions
-        /// </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Workflow to fetch </param>
-        /// <param name="pathSid"> The SID of the resource </param>
-        public FetchWorkflowOptions(string pathWorkspaceSid, string pathSid)
-        {
-            PathWorkspaceSid = pathWorkspaceSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathWorkspaceSid = pathWorkspaceSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// UpdateWorkflowOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateWorkflowOptions : IOptions<WorkflowResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Workspace with the Workflow to update
-        /// </summary>
-        public string PathWorkspaceSid { get; }
-        /// <summary>
-        /// The SID of the resource
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        ///  descriptive string that you create to describe the Workflow resource
-        /// </summary>
-        public string FriendlyName { get; set; }
-        /// <summary>
-        /// The URL from your application that will process task assignment events
-        /// </summary>
-        public Uri AssignmentCallbackUrl { get; set; }
-        /// <summary>
-        /// The URL that we should call when a call to the `assignment_callback_url` fails
-        /// </summary>
-        public Uri FallbackAssignmentCallbackUrl { get; set; }
-        /// <summary>
-        /// A JSON string that contains the rules to apply to the Workflow
-        /// </summary>
-        public string Configuration { get; set; }
-        /// <summary>
-        /// How long TaskRouter will wait for a confirmation response from your application after it assigns a Task to a Worker
-        /// </summary>
-        public int? TaskReservationTimeout { get; set; }
-        /// <summary>
-        /// Whether or not to re-evaluate Tasks
-        /// </summary>
-        public string ReEvaluateTasks { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new UpdateWorkflowOptions
-        /// </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Workflow to update </param>
-        /// <param name="pathSid"> The SID of the resource </param>
-        public UpdateWorkflowOptions(string pathWorkspaceSid, string pathSid)
-        {
-            PathWorkspaceSid = pathWorkspaceSid;
-            PathSid = pathSid;
-        }
+  /// <summary>
+  /// UpdateWorkflowOptions
+  /// </summary>
+  public class UpdateWorkflowOptions : IOptions<WorkflowResource>
+  {
+    /// <summary>
+    /// The SID of the Workspace with the Workflow to update
+    /// </summary>
+    public string PathWorkspaceSid { get; }
+    /// <summary>
+    /// The SID of the resource
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    ///  descriptive string that you create to describe the Workflow resource
+    /// </summary>
+    public string FriendlyName { get; set; }
+    /// <summary>
+    /// The URL from your application that will process task assignment events
+    /// </summary>
+    public Uri AssignmentCallbackUrl { get; set; }
+    /// <summary>
+    /// The URL that we should call when a call to the `assignment_callback_url` fails
+    /// </summary>
+    public Uri FallbackAssignmentCallbackUrl { get; set; }
+    /// <summary>
+    /// A JSON string that contains the rules to apply to the Workflow
+    /// </summary>
+    public string Configuration { get; set; }
+    /// <summary>
+    /// How long TaskRouter will wait for a confirmation response from your application after it assigns a Task to a Worker
+    /// </summary>
+    public int? TaskReservationTimeout { get; set; }
+    /// <summary>
+    /// Whether or not to re-evaluate Tasks
+    /// </summary>
+    public string ReEvaluateTasks { get; set; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
-
-            if (AssignmentCallbackUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("AssignmentCallbackUrl", Serializers.Url(AssignmentCallbackUrl)));
-            }
-
-            if (FallbackAssignmentCallbackUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FallbackAssignmentCallbackUrl", Serializers.Url(FallbackAssignmentCallbackUrl)));
-            }
-
-            if (Configuration != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Configuration", Configuration));
-            }
-
-            if (TaskReservationTimeout != null)
-            {
-                p.Add(new KeyValuePair<string, string>("TaskReservationTimeout", TaskReservationTimeout.ToString()));
-            }
-
-            if (ReEvaluateTasks != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ReEvaluateTasks", ReEvaluateTasks));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new UpdateWorkflowOptions
+    /// </summary>
+    /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Workflow to update </param>
+    /// <param name="pathSid"> The SID of the resource </param>
+    public UpdateWorkflowOptions(string pathWorkspaceSid, string pathSid)
+    {
+      PathWorkspaceSid = pathWorkspaceSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// DeleteWorkflowOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteWorkflowOptions : IOptions<WorkflowResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Workspace with the Workflow to delete
-        /// </summary>
-        public string PathWorkspaceSid { get; }
-        /// <summary>
-        /// The SID of the Workflow resource to delete
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
 
-        /// <summary>
-        /// Construct a new DeleteWorkflowOptions
-        /// </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Workflow to delete </param>
-        /// <param name="pathSid"> The SID of the Workflow resource to delete </param>
-        public DeleteWorkflowOptions(string pathWorkspaceSid, string pathSid)
-        {
-            PathWorkspaceSid = pathWorkspaceSid;
-            PathSid = pathSid;
-        }
+      if (AssignmentCallbackUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("AssignmentCallbackUrl", Serializers.Url(AssignmentCallbackUrl)));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      if (FallbackAssignmentCallbackUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FallbackAssignmentCallbackUrl", Serializers.Url(FallbackAssignmentCallbackUrl)));
+      }
+
+      if (Configuration != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Configuration", Configuration));
+      }
+
+      if (TaskReservationTimeout != null)
+      {
+        p.Add(new KeyValuePair<string, string>("TaskReservationTimeout", TaskReservationTimeout.ToString()));
+      }
+
+      if (ReEvaluateTasks != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ReEvaluateTasks", ReEvaluateTasks));
+      }
+
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// DeleteWorkflowOptions
+  /// </summary>
+  public class DeleteWorkflowOptions : IOptions<WorkflowResource>
+  {
+    /// <summary>
+    /// The SID of the Workspace with the Workflow to delete
+    /// </summary>
+    public string PathWorkspaceSid { get; }
+    /// <summary>
+    /// The SID of the Workflow resource to delete
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new DeleteWorkflowOptions
+    /// </summary>
+    /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Workflow to delete </param>
+    /// <param name="pathSid"> The SID of the Workflow resource to delete </param>
+    public DeleteWorkflowOptions(string pathWorkspaceSid, string pathSid)
+    {
+      PathWorkspaceSid = pathWorkspaceSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// ReadWorkflowOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadWorkflowOptions : ReadOptions<WorkflowResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Workspace with the Workflow to read
-        /// </summary>
-        public string PathWorkspaceSid { get; }
-        /// <summary>
-        /// The friendly_name of the Workflow resources to read
-        /// </summary>
-        public string FriendlyName { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new ReadWorkflowOptions
-        /// </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Workflow to read </param>
-        public ReadWorkflowOptions(string pathWorkspaceSid)
-        {
-            PathWorkspaceSid = pathWorkspaceSid;
-        }
+  /// <summary>
+  /// ReadWorkflowOptions
+  /// </summary>
+  public class ReadWorkflowOptions : ReadOptions<WorkflowResource>
+  {
+    /// <summary>
+    /// The SID of the Workspace with the Workflow to read
+    /// </summary>
+    public string PathWorkspaceSid { get; }
+    /// <summary>
+    /// The friendly_name of the Workflow resources to read
+    /// </summary>
+    public string FriendlyName { get; set; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
-
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new ReadWorkflowOptions
+    /// </summary>
+    /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Workflow to read </param>
+    public ReadWorkflowOptions(string pathWorkspaceSid)
+    {
+      PathWorkspaceSid = pathWorkspaceSid;
     }
 
     /// <summary>
-    /// CreateWorkflowOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class CreateWorkflowOptions : IOptions<WorkflowResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Workspace that the new Workflow to create belongs to
-        /// </summary>
-        public string PathWorkspaceSid { get; }
-        /// <summary>
-        ///  descriptive string that you create to describe the Workflow resource
-        /// </summary>
-        public string FriendlyName { get; }
-        /// <summary>
-        /// A JSON string that contains the rules to apply to the Workflow
-        /// </summary>
-        public string Configuration { get; }
-        /// <summary>
-        /// The URL from your application that will process task assignment events
-        /// </summary>
-        public Uri AssignmentCallbackUrl { get; set; }
-        /// <summary>
-        /// The URL that we should call when a call to the `assignment_callback_url` fails
-        /// </summary>
-        public Uri FallbackAssignmentCallbackUrl { get; set; }
-        /// <summary>
-        /// How long TaskRouter will wait for a confirmation response from your application after it assigns a Task to a Worker
-        /// </summary>
-        public int? TaskReservationTimeout { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
 
-        /// <summary>
-        /// Construct a new CreateWorkflowOptions
-        /// </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace that the new Workflow to create belongs to </param>
-        /// <param name="friendlyName">  descriptive string that you create to describe the Workflow resource </param>
-        /// <param name="configuration"> A JSON string that contains the rules to apply to the Workflow </param>
-        public CreateWorkflowOptions(string pathWorkspaceSid, string friendlyName, string configuration)
-        {
-            PathWorkspaceSid = pathWorkspaceSid;
-            FriendlyName = friendlyName;
-            Configuration = configuration;
-        }
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
-
-            if (Configuration != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Configuration", Configuration));
-            }
-
-            if (AssignmentCallbackUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("AssignmentCallbackUrl", Serializers.Url(AssignmentCallbackUrl)));
-            }
-
-            if (FallbackAssignmentCallbackUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FallbackAssignmentCallbackUrl", Serializers.Url(FallbackAssignmentCallbackUrl)));
-            }
-
-            if (TaskReservationTimeout != null)
-            {
-                p.Add(new KeyValuePair<string, string>("TaskReservationTimeout", TaskReservationTimeout.ToString()));
-            }
-
-            return p;
-        }
+      return p;
     }
+  }
+
+  /// <summary>
+  /// CreateWorkflowOptions
+  /// </summary>
+  public class CreateWorkflowOptions : IOptions<WorkflowResource>
+  {
+    /// <summary>
+    /// The SID of the Workspace that the new Workflow to create belongs to
+    /// </summary>
+    public string PathWorkspaceSid { get; }
+    /// <summary>
+    ///  descriptive string that you create to describe the Workflow resource
+    /// </summary>
+    public string FriendlyName { get; }
+    /// <summary>
+    /// A JSON string that contains the rules to apply to the Workflow
+    /// </summary>
+    public string Configuration { get; }
+    /// <summary>
+    /// The URL from your application that will process task assignment events
+    /// </summary>
+    public Uri AssignmentCallbackUrl { get; set; }
+    /// <summary>
+    /// The URL that we should call when a call to the `assignment_callback_url` fails
+    /// </summary>
+    public Uri FallbackAssignmentCallbackUrl { get; set; }
+    /// <summary>
+    /// How long TaskRouter will wait for a confirmation response from your application after it assigns a Task to a Worker
+    /// </summary>
+    public int? TaskReservationTimeout { get; set; }
+
+    /// <summary>
+    /// Construct a new CreateWorkflowOptions
+    /// </summary>
+    /// <param name="pathWorkspaceSid"> The SID of the Workspace that the new Workflow to create belongs to </param>
+    /// <param name="friendlyName">  descriptive string that you create to describe the Workflow resource </param>
+    /// <param name="configuration"> A JSON string that contains the rules to apply to the Workflow </param>
+    public CreateWorkflowOptions(string pathWorkspaceSid, string friendlyName, string configuration)
+    {
+      PathWorkspaceSid = pathWorkspaceSid;
+      FriendlyName = friendlyName;
+      Configuration = configuration;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
+
+      if (Configuration != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Configuration", Configuration));
+      }
+
+      if (AssignmentCallbackUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("AssignmentCallbackUrl", Serializers.Url(AssignmentCallbackUrl)));
+      }
+
+      if (FallbackAssignmentCallbackUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FallbackAssignmentCallbackUrl", Serializers.Url(FallbackAssignmentCallbackUrl)));
+      }
+
+      if (TaskReservationTimeout != null)
+      {
+        p.Add(new KeyValuePair<string, string>("TaskReservationTimeout", TaskReservationTimeout.ToString()));
+      }
+
+      return p;
+    }
+  }
 
 }

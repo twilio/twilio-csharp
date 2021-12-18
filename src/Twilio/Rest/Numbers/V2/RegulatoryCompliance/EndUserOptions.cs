@@ -11,183 +11,183 @@ using Twilio.Converters;
 namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
 {
 
+  /// <summary>
+  /// Create a new End User.
+  /// </summary>
+  public class CreateEndUserOptions : IOptions<EndUserResource>
+  {
     /// <summary>
-    /// Create a new End User.
+    /// The string that you assigned to describe the resource
     /// </summary>
-    public class CreateEndUserOptions : IOptions<EndUserResource>
+    public string FriendlyName { get; }
+    /// <summary>
+    /// The type of end user of the Bundle resource
+    /// </summary>
+    public EndUserResource.TypeEnum Type { get; }
+    /// <summary>
+    /// The set of parameters that compose the End User resource
+    /// </summary>
+    public object Attributes { get; set; }
+
+    /// <summary>
+    /// Construct a new CreateEndUserOptions
+    /// </summary>
+    /// <param name="friendlyName"> The string that you assigned to describe the resource </param>
+    /// <param name="type"> The type of end user of the Bundle resource </param>
+    public CreateEndUserOptions(string friendlyName, EndUserResource.TypeEnum type)
     {
-        /// <summary>
-        /// The string that you assigned to describe the resource
-        /// </summary>
-        public string FriendlyName { get; }
-        /// <summary>
-        /// The type of end user of the Bundle resource
-        /// </summary>
-        public EndUserResource.TypeEnum Type { get; }
-        /// <summary>
-        /// The set of parameters that compose the End User resource
-        /// </summary>
-        public object Attributes { get; set; }
-
-        /// <summary>
-        /// Construct a new CreateEndUserOptions
-        /// </summary>
-        /// <param name="friendlyName"> The string that you assigned to describe the resource </param>
-        /// <param name="type"> The type of end user of the Bundle resource </param>
-        public CreateEndUserOptions(string friendlyName, EndUserResource.TypeEnum type)
-        {
-            FriendlyName = friendlyName;
-            Type = type;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
-
-            if (Type != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Type", Type.ToString()));
-            }
-
-            if (Attributes != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Attributes", Serializers.JsonObject(Attributes)));
-            }
-
-            return p;
-        }
+      FriendlyName = friendlyName;
+      Type = type;
     }
 
     /// <summary>
-    /// Retrieve a list of all End User for an account.
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadEndUserOptions : ReadOptions<EndUserResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
+      var p = new List<KeyValuePair<string, string>>();
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
 
-            return p;
-        }
+      if (Type != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Type", Type.ToString()));
+      }
+
+      if (Attributes != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Attributes", Serializers.JsonObject(Attributes)));
+      }
+
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// Retrieve a list of all End User for an account.
+  /// </summary>
+  public class ReadEndUserOptions : ReadOptions<EndUserResource>
+  {
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// Fetch specific End User Instance.
+  /// </summary>
+  public class FetchEndUserOptions : IOptions<EndUserResource>
+  {
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchEndUserOptions
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public FetchEndUserOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Fetch specific End User Instance.
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchEndUserOptions : IOptions<EndUserResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new FetchEndUserOptions
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public FetchEndUserOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
+  /// <summary>
+  /// Update an existing End User.
+  /// </summary>
+  public class UpdateEndUserOptions : IOptions<EndUserResource>
+  {
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// The string that you assigned to describe the resource
+    /// </summary>
+    public string FriendlyName { get; set; }
+    /// <summary>
+    /// The set of parameters that compose the End User resource
+    /// </summary>
+    public object Attributes { get; set; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+    /// <summary>
+    /// Construct a new UpdateEndUserOptions
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public UpdateEndUserOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Update an existing End User.
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateEndUserOptions : IOptions<EndUserResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// The string that you assigned to describe the resource
-        /// </summary>
-        public string FriendlyName { get; set; }
-        /// <summary>
-        /// The set of parameters that compose the End User resource
-        /// </summary>
-        public object Attributes { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
 
-        /// <summary>
-        /// Construct a new UpdateEndUserOptions
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public UpdateEndUserOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
+      if (Attributes != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Attributes", Serializers.JsonObject(Attributes)));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
+      return p;
+    }
+  }
 
-            if (Attributes != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Attributes", Serializers.JsonObject(Attributes)));
-            }
+  /// <summary>
+  /// Delete a specific End User.
+  /// </summary>
+  public class DeleteEndUserOptions : IOptions<EndUserResource>
+  {
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
 
-            return p;
-        }
+    /// <summary>
+    /// Construct a new DeleteEndUserOptions
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public DeleteEndUserOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Delete a specific End User.
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteEndUserOptions : IOptions<EndUserResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new DeleteEndUserOptions
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public DeleteEndUserOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
 
 }

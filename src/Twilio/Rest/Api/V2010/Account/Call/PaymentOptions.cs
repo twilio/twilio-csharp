@@ -11,274 +11,274 @@ using Twilio.Converters;
 namespace Twilio.Rest.Api.V2010.Account.Call
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// create an instance of payments. This will start a new payments session
+  /// </summary>
+  public class CreatePaymentOptions : IOptions<PaymentResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// create an instance of payments. This will start a new payments session
+    /// The SID of the Account that will create the resource
     /// </summary>
-    public class CreatePaymentOptions : IOptions<PaymentResource>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The SID of the call that will create the resource.
+    /// </summary>
+    public string PathCallSid { get; }
+    /// <summary>
+    /// A unique token that will be used to ensure that multiple API calls with the same information do not result in multiple transactions.
+    /// </summary>
+    public string IdempotencyKey { get; }
+    /// <summary>
+    /// Provide an absolute or relative URL to receive status updates regarding your Pay session..
+    /// </summary>
+    public Uri StatusCallback { get; }
+    /// <summary>
+    /// Type of bank account if payment source is ACH.
+    /// </summary>
+    public PaymentResource.BankAccountTypeEnum BankAccountType { get; set; }
+    /// <summary>
+    /// A positive decimal value less than 1,000,000 to charge against the credit card or bank account.
+    /// </summary>
+    public decimal? ChargeAmount { get; set; }
+    /// <summary>
+    /// The currency of the `charge_amount`.
+    /// </summary>
+    public string Currency { get; set; }
+    /// <summary>
+    /// The description can be used to provide more details regarding the transaction.
+    /// </summary>
+    public string Description { get; set; }
+    /// <summary>
+    /// A list of inputs that should be accepted. Currently only `dtmf` is supported.
+    /// </summary>
+    public string Input { get; set; }
+    /// <summary>
+    /// A positive integer that is used to validate the length of the `PostalCode` inputted by the user.
+    /// </summary>
+    public int? MinPostalCodeLength { get; set; }
+    /// <summary>
+    /// A single level JSON string that is required when accepting certain information specific only to ACH payments.
+    /// </summary>
+    public object Parameter { get; set; }
+    /// <summary>
+    /// This is the unique name corresponding to the Payment Gateway Connector installed in the Twilio Add-ons.
+    /// </summary>
+    public string PaymentConnector { get; set; }
+    /// <summary>
+    /// Type of payment being captured.
+    /// </summary>
+    public PaymentResource.PaymentMethodEnum PaymentMethod { get; set; }
+    /// <summary>
+    /// Indicates whether the credit card PostalCode (zip code) is a required piece of payment information that must be provided by the caller.
+    /// </summary>
+    public bool? PostalCode { get; set; }
+    /// <summary>
+    /// Indicates whether the credit card security code is a required piece of payment information that must be provided by the caller.
+    /// </summary>
+    public bool? SecurityCode { get; set; }
+    /// <summary>
+    /// The number of seconds that <Pay> should wait for the caller to press a digit between each subsequent digit, after the first one, before moving on to validate the digits captured.
+    /// </summary>
+    public int? Timeout { get; set; }
+    /// <summary>
+    /// Indicates whether the payment method should be tokenized as a `one-time` or `reusable` token.
+    /// </summary>
+    public PaymentResource.TokenTypeEnum TokenType { get; set; }
+    /// <summary>
+    /// Credit card types separated by space that Pay should accept.
+    /// </summary>
+    public string ValidCardTypes { get; set; }
+
+    /// <summary>
+    /// Construct a new CreatePaymentOptions
+    /// </summary>
+    /// <param name="pathCallSid"> The SID of the call that will create the resource. </param>
+    /// <param name="idempotencyKey"> A unique token that will be used to ensure that multiple API calls with the same
+    ///                      information do not result in multiple transactions. </param>
+    /// <param name="statusCallback"> Provide an absolute or relative URL to receive status updates regarding your Pay
+    ///                      session.. </param>
+    public CreatePaymentOptions(string pathCallSid, string idempotencyKey, Uri statusCallback)
     {
-        /// <summary>
-        /// The SID of the Account that will create the resource
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The SID of the call that will create the resource.
-        /// </summary>
-        public string PathCallSid { get; }
-        /// <summary>
-        /// A unique token that will be used to ensure that multiple API calls with the same information do not result in multiple transactions.
-        /// </summary>
-        public string IdempotencyKey { get; }
-        /// <summary>
-        /// Provide an absolute or relative URL to receive status updates regarding your Pay session..
-        /// </summary>
-        public Uri StatusCallback { get; }
-        /// <summary>
-        /// Type of bank account if payment source is ACH.
-        /// </summary>
-        public PaymentResource.BankAccountTypeEnum BankAccountType { get; set; }
-        /// <summary>
-        /// A positive decimal value less than 1,000,000 to charge against the credit card or bank account.
-        /// </summary>
-        public decimal? ChargeAmount { get; set; }
-        /// <summary>
-        /// The currency of the `charge_amount`.
-        /// </summary>
-        public string Currency { get; set; }
-        /// <summary>
-        /// The description can be used to provide more details regarding the transaction.
-        /// </summary>
-        public string Description { get; set; }
-        /// <summary>
-        /// A list of inputs that should be accepted. Currently only `dtmf` is supported.
-        /// </summary>
-        public string Input { get; set; }
-        /// <summary>
-        /// A positive integer that is used to validate the length of the `PostalCode` inputted by the user.
-        /// </summary>
-        public int? MinPostalCodeLength { get; set; }
-        /// <summary>
-        /// A single level JSON string that is required when accepting certain information specific only to ACH payments.
-        /// </summary>
-        public object Parameter { get; set; }
-        /// <summary>
-        /// This is the unique name corresponding to the Payment Gateway Connector installed in the Twilio Add-ons.
-        /// </summary>
-        public string PaymentConnector { get; set; }
-        /// <summary>
-        /// Type of payment being captured.
-        /// </summary>
-        public PaymentResource.PaymentMethodEnum PaymentMethod { get; set; }
-        /// <summary>
-        /// Indicates whether the credit card PostalCode (zip code) is a required piece of payment information that must be provided by the caller.
-        /// </summary>
-        public bool? PostalCode { get; set; }
-        /// <summary>
-        /// Indicates whether the credit card security code is a required piece of payment information that must be provided by the caller.
-        /// </summary>
-        public bool? SecurityCode { get; set; }
-        /// <summary>
-        /// The number of seconds that <Pay> should wait for the caller to press a digit between each subsequent digit, after the first one, before moving on to validate the digits captured.
-        /// </summary>
-        public int? Timeout { get; set; }
-        /// <summary>
-        /// Indicates whether the payment method should be tokenized as a `one-time` or `reusable` token.
-        /// </summary>
-        public PaymentResource.TokenTypeEnum TokenType { get; set; }
-        /// <summary>
-        /// Credit card types separated by space that Pay should accept.
-        /// </summary>
-        public string ValidCardTypes { get; set; }
-
-        /// <summary>
-        /// Construct a new CreatePaymentOptions
-        /// </summary>
-        /// <param name="pathCallSid"> The SID of the call that will create the resource. </param>
-        /// <param name="idempotencyKey"> A unique token that will be used to ensure that multiple API calls with the same
-        ///                      information do not result in multiple transactions. </param>
-        /// <param name="statusCallback"> Provide an absolute or relative URL to receive status updates regarding your Pay
-        ///                      session.. </param>
-        public CreatePaymentOptions(string pathCallSid, string idempotencyKey, Uri statusCallback)
-        {
-            PathCallSid = pathCallSid;
-            IdempotencyKey = idempotencyKey;
-            StatusCallback = statusCallback;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (IdempotencyKey != null)
-            {
-                p.Add(new KeyValuePair<string, string>("IdempotencyKey", IdempotencyKey));
-            }
-
-            if (StatusCallback != null)
-            {
-                p.Add(new KeyValuePair<string, string>("StatusCallback", Serializers.Url(StatusCallback)));
-            }
-
-            if (BankAccountType != null)
-            {
-                p.Add(new KeyValuePair<string, string>("BankAccountType", BankAccountType.ToString()));
-            }
-
-            if (ChargeAmount != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ChargeAmount", ChargeAmount.Value.ToString()));
-            }
-
-            if (Currency != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Currency", Currency));
-            }
-
-            if (Description != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Description", Description));
-            }
-
-            if (Input != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Input", Input));
-            }
-
-            if (MinPostalCodeLength != null)
-            {
-                p.Add(new KeyValuePair<string, string>("MinPostalCodeLength", MinPostalCodeLength.ToString()));
-            }
-
-            if (Parameter != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Parameter", Serializers.JsonObject(Parameter)));
-            }
-
-            if (PaymentConnector != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PaymentConnector", PaymentConnector));
-            }
-
-            if (PaymentMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PaymentMethod", PaymentMethod.ToString()));
-            }
-
-            if (PostalCode != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PostalCode", PostalCode.Value.ToString().ToLower()));
-            }
-
-            if (SecurityCode != null)
-            {
-                p.Add(new KeyValuePair<string, string>("SecurityCode", SecurityCode.Value.ToString().ToLower()));
-            }
-
-            if (Timeout != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Timeout", Timeout.ToString()));
-            }
-
-            if (TokenType != null)
-            {
-                p.Add(new KeyValuePair<string, string>("TokenType", TokenType.ToString()));
-            }
-
-            if (ValidCardTypes != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ValidCardTypes", ValidCardTypes));
-            }
-
-            return p;
-        }
+      PathCallSid = pathCallSid;
+      IdempotencyKey = idempotencyKey;
+      StatusCallback = statusCallback;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// update an instance of payments with different phases of payment flows.
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdatePaymentOptions : IOptions<PaymentResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Account that will update the resource
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The SID of the call that will create the resource.
-        /// </summary>
-        public string PathCallSid { get; }
-        /// <summary>
-        /// The SID of Payments session
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// A unique token that will be used to ensure that multiple API calls with the same information do not result in multiple transactions.
-        /// </summary>
-        public string IdempotencyKey { get; }
-        /// <summary>
-        /// Provide an absolute or relative URL to receive status updates regarding your Pay session.
-        /// </summary>
-        public Uri StatusCallback { get; }
-        /// <summary>
-        /// The piece of payment information that you wish the caller to enter.
-        /// </summary>
-        public PaymentResource.CaptureEnum Capture { get; set; }
-        /// <summary>
-        /// Indicates whether the current payment session should be cancelled or completed.
-        /// </summary>
-        public PaymentResource.StatusEnum Status { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (IdempotencyKey != null)
+      {
+        p.Add(new KeyValuePair<string, string>("IdempotencyKey", IdempotencyKey));
+      }
 
-        /// <summary>
-        /// Construct a new UpdatePaymentOptions
-        /// </summary>
-        /// <param name="pathCallSid"> The SID of the call that will create the resource. </param>
-        /// <param name="pathSid"> The SID of Payments session </param>
-        /// <param name="idempotencyKey"> A unique token that will be used to ensure that multiple API calls with the same
-        ///                      information do not result in multiple transactions. </param>
-        /// <param name="statusCallback"> Provide an absolute or relative URL to receive status updates regarding your Pay
-        ///                      session. </param>
-        public UpdatePaymentOptions(string pathCallSid, string pathSid, string idempotencyKey, Uri statusCallback)
-        {
-            PathCallSid = pathCallSid;
-            PathSid = pathSid;
-            IdempotencyKey = idempotencyKey;
-            StatusCallback = statusCallback;
-        }
+      if (StatusCallback != null)
+      {
+        p.Add(new KeyValuePair<string, string>("StatusCallback", Serializers.Url(StatusCallback)));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (IdempotencyKey != null)
-            {
-                p.Add(new KeyValuePair<string, string>("IdempotencyKey", IdempotencyKey));
-            }
+      if (BankAccountType != null)
+      {
+        p.Add(new KeyValuePair<string, string>("BankAccountType", BankAccountType.ToString()));
+      }
 
-            if (StatusCallback != null)
-            {
-                p.Add(new KeyValuePair<string, string>("StatusCallback", Serializers.Url(StatusCallback)));
-            }
+      if (ChargeAmount != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ChargeAmount", ChargeAmount.Value.ToString()));
+      }
 
-            if (Capture != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Capture", Capture.ToString()));
-            }
+      if (Currency != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Currency", Currency));
+      }
 
-            if (Status != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
-            }
+      if (Description != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Description", Description));
+      }
 
-            return p;
-        }
+      if (Input != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Input", Input));
+      }
+
+      if (MinPostalCodeLength != null)
+      {
+        p.Add(new KeyValuePair<string, string>("MinPostalCodeLength", MinPostalCodeLength.ToString()));
+      }
+
+      if (Parameter != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Parameter", Serializers.JsonObject(Parameter)));
+      }
+
+      if (PaymentConnector != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PaymentConnector", PaymentConnector));
+      }
+
+      if (PaymentMethod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PaymentMethod", PaymentMethod.ToString()));
+      }
+
+      if (PostalCode != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PostalCode", PostalCode.Value.ToString().ToLower()));
+      }
+
+      if (SecurityCode != null)
+      {
+        p.Add(new KeyValuePair<string, string>("SecurityCode", SecurityCode.Value.ToString().ToLower()));
+      }
+
+      if (Timeout != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Timeout", Timeout.ToString()));
+      }
+
+      if (TokenType != null)
+      {
+        p.Add(new KeyValuePair<string, string>("TokenType", TokenType.ToString()));
+      }
+
+      if (ValidCardTypes != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ValidCardTypes", ValidCardTypes));
+      }
+
+      return p;
     }
+  }
+
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// update an instance of payments with different phases of payment flows.
+  /// </summary>
+  public class UpdatePaymentOptions : IOptions<PaymentResource>
+  {
+    /// <summary>
+    /// The SID of the Account that will update the resource
+    /// </summary>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The SID of the call that will create the resource.
+    /// </summary>
+    public string PathCallSid { get; }
+    /// <summary>
+    /// The SID of Payments session
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// A unique token that will be used to ensure that multiple API calls with the same information do not result in multiple transactions.
+    /// </summary>
+    public string IdempotencyKey { get; }
+    /// <summary>
+    /// Provide an absolute or relative URL to receive status updates regarding your Pay session.
+    /// </summary>
+    public Uri StatusCallback { get; }
+    /// <summary>
+    /// The piece of payment information that you wish the caller to enter.
+    /// </summary>
+    public PaymentResource.CaptureEnum Capture { get; set; }
+    /// <summary>
+    /// Indicates whether the current payment session should be cancelled or completed.
+    /// </summary>
+    public PaymentResource.StatusEnum Status { get; set; }
+
+    /// <summary>
+    /// Construct a new UpdatePaymentOptions
+    /// </summary>
+    /// <param name="pathCallSid"> The SID of the call that will create the resource. </param>
+    /// <param name="pathSid"> The SID of Payments session </param>
+    /// <param name="idempotencyKey"> A unique token that will be used to ensure that multiple API calls with the same
+    ///                      information do not result in multiple transactions. </param>
+    /// <param name="statusCallback"> Provide an absolute or relative URL to receive status updates regarding your Pay
+    ///                      session. </param>
+    public UpdatePaymentOptions(string pathCallSid, string pathSid, string idempotencyKey, Uri statusCallback)
+    {
+      PathCallSid = pathCallSid;
+      PathSid = pathSid;
+      IdempotencyKey = idempotencyKey;
+      StatusCallback = statusCallback;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (IdempotencyKey != null)
+      {
+        p.Add(new KeyValuePair<string, string>("IdempotencyKey", IdempotencyKey));
+      }
+
+      if (StatusCallback != null)
+      {
+        p.Add(new KeyValuePair<string, string>("StatusCallback", Serializers.Url(StatusCallback)));
+      }
+
+      if (Capture != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Capture", Capture.ToString()));
+      }
+
+      if (Status != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
+      }
+
+      return p;
+    }
+  }
 
 }

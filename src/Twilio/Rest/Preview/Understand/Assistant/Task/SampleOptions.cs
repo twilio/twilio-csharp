@@ -11,285 +11,285 @@ using Twilio.Converters;
 namespace Twilio.Rest.Preview.Understand.Assistant.Task
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// FetchSampleOptions
+  /// </summary>
+  public class FetchSampleOptions : IOptions<SampleResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// FetchSampleOptions
+    /// The unique ID of the Assistant.
     /// </summary>
-    public class FetchSampleOptions : IOptions<SampleResource>
+    public string PathAssistantSid { get; }
+    /// <summary>
+    /// The unique ID of the Task associated with this Sample.
+    /// </summary>
+    public string PathTaskSid { get; }
+    /// <summary>
+    /// A 34 character string that uniquely identifies this resource.
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchSampleOptions
+    /// </summary>
+    /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
+    /// <param name="pathTaskSid"> The unique ID of the Task associated with this Sample. </param>
+    /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+    public FetchSampleOptions(string pathAssistantSid, string pathTaskSid, string pathSid)
     {
-        /// <summary>
-        /// The unique ID of the Assistant.
-        /// </summary>
-        public string PathAssistantSid { get; }
-        /// <summary>
-        /// The unique ID of the Task associated with this Sample.
-        /// </summary>
-        public string PathTaskSid { get; }
-        /// <summary>
-        /// A 34 character string that uniquely identifies this resource.
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchSampleOptions
-        /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
-        /// <param name="pathTaskSid"> The unique ID of the Task associated with this Sample. </param>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
-        public FetchSampleOptions(string pathAssistantSid, string pathTaskSid, string pathSid)
-        {
-            PathAssistantSid = pathAssistantSid;
-            PathTaskSid = pathTaskSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathAssistantSid = pathAssistantSid;
+      PathTaskSid = pathTaskSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// ReadSampleOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadSampleOptions : ReadOptions<SampleResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique ID of the Assistant.
-        /// </summary>
-        public string PathAssistantSid { get; }
-        /// <summary>
-        /// The unique ID of the Task associated with this Sample.
-        /// </summary>
-        public string PathTaskSid { get; }
-        /// <summary>
-        /// An ISO language-country string of the sample.
-        /// </summary>
-        public string Language { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new ReadSampleOptions
-        /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
-        /// <param name="pathTaskSid"> The unique ID of the Task associated with this Sample. </param>
-        public ReadSampleOptions(string pathAssistantSid, string pathTaskSid)
-        {
-            PathAssistantSid = pathAssistantSid;
-            PathTaskSid = pathTaskSid;
-        }
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// ReadSampleOptions
+  /// </summary>
+  public class ReadSampleOptions : ReadOptions<SampleResource>
+  {
+    /// <summary>
+    /// The unique ID of the Assistant.
+    /// </summary>
+    public string PathAssistantSid { get; }
+    /// <summary>
+    /// The unique ID of the Task associated with this Sample.
+    /// </summary>
+    public string PathTaskSid { get; }
+    /// <summary>
+    /// An ISO language-country string of the sample.
+    /// </summary>
+    public string Language { get; set; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Language != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Language", Language));
-            }
-
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new ReadSampleOptions
+    /// </summary>
+    /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
+    /// <param name="pathTaskSid"> The unique ID of the Task associated with this Sample. </param>
+    public ReadSampleOptions(string pathAssistantSid, string pathTaskSid)
+    {
+      PathAssistantSid = pathAssistantSid;
+      PathTaskSid = pathTaskSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// CreateSampleOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class CreateSampleOptions : IOptions<SampleResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique ID of the Assistant.
-        /// </summary>
-        public string PathAssistantSid { get; }
-        /// <summary>
-        /// The unique ID of the Task associated with this Sample.
-        /// </summary>
-        public string PathTaskSid { get; }
-        /// <summary>
-        /// An ISO language-country string of the sample.
-        /// </summary>
-        public string Language { get; }
-        /// <summary>
-        /// The text example of how end-users may express this task. The sample may contain Field tag blocks.
-        /// </summary>
-        public string TaggedText { get; }
-        /// <summary>
-        /// The communication channel the sample was captured. It can be: voice, sms, chat, alexa, google-assistant, or slack. If not included the value will be null
-        /// </summary>
-        public string SourceChannel { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (Language != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Language", Language));
+      }
 
-        /// <summary>
-        /// Construct a new CreateSampleOptions
-        /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
-        /// <param name="pathTaskSid"> The unique ID of the Task associated with this Sample. </param>
-        /// <param name="language"> An ISO language-country string of the sample. </param>
-        /// <param name="taggedText"> The text example of how end-users may express this task. The sample may contain Field tag
-        ///                  blocks. </param>
-        public CreateSampleOptions(string pathAssistantSid, string pathTaskSid, string language, string taggedText)
-        {
-            PathAssistantSid = pathAssistantSid;
-            PathTaskSid = pathTaskSid;
-            Language = language;
-            TaggedText = taggedText;
-        }
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Language != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Language", Language));
-            }
+      return p;
+    }
+  }
 
-            if (TaggedText != null)
-            {
-                p.Add(new KeyValuePair<string, string>("TaggedText", TaggedText));
-            }
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// CreateSampleOptions
+  /// </summary>
+  public class CreateSampleOptions : IOptions<SampleResource>
+  {
+    /// <summary>
+    /// The unique ID of the Assistant.
+    /// </summary>
+    public string PathAssistantSid { get; }
+    /// <summary>
+    /// The unique ID of the Task associated with this Sample.
+    /// </summary>
+    public string PathTaskSid { get; }
+    /// <summary>
+    /// An ISO language-country string of the sample.
+    /// </summary>
+    public string Language { get; }
+    /// <summary>
+    /// The text example of how end-users may express this task. The sample may contain Field tag blocks.
+    /// </summary>
+    public string TaggedText { get; }
+    /// <summary>
+    /// The communication channel the sample was captured. It can be: voice, sms, chat, alexa, google-assistant, or slack. If not included the value will be null
+    /// </summary>
+    public string SourceChannel { get; set; }
 
-            if (SourceChannel != null)
-            {
-                p.Add(new KeyValuePair<string, string>("SourceChannel", SourceChannel));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new CreateSampleOptions
+    /// </summary>
+    /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
+    /// <param name="pathTaskSid"> The unique ID of the Task associated with this Sample. </param>
+    /// <param name="language"> An ISO language-country string of the sample. </param>
+    /// <param name="taggedText"> The text example of how end-users may express this task. The sample may contain Field tag
+    ///                  blocks. </param>
+    public CreateSampleOptions(string pathAssistantSid, string pathTaskSid, string language, string taggedText)
+    {
+      PathAssistantSid = pathAssistantSid;
+      PathTaskSid = pathTaskSid;
+      Language = language;
+      TaggedText = taggedText;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// UpdateSampleOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateSampleOptions : IOptions<SampleResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique ID of the Assistant.
-        /// </summary>
-        public string PathAssistantSid { get; }
-        /// <summary>
-        /// The unique ID of the Task associated with this Sample.
-        /// </summary>
-        public string PathTaskSid { get; }
-        /// <summary>
-        /// A 34 character string that uniquely identifies this resource.
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// An ISO language-country string of the sample.
-        /// </summary>
-        public string Language { get; set; }
-        /// <summary>
-        /// The text example of how end-users may express this task. The sample may contain Field tag blocks.
-        /// </summary>
-        public string TaggedText { get; set; }
-        /// <summary>
-        /// The communication channel the sample was captured. It can be: voice, sms, chat, alexa, google-assistant, or slack. If not included the value will be null
-        /// </summary>
-        public string SourceChannel { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (Language != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Language", Language));
+      }
 
-        /// <summary>
-        /// Construct a new UpdateSampleOptions
-        /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
-        /// <param name="pathTaskSid"> The unique ID of the Task associated with this Sample. </param>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
-        public UpdateSampleOptions(string pathAssistantSid, string pathTaskSid, string pathSid)
-        {
-            PathAssistantSid = pathAssistantSid;
-            PathTaskSid = pathTaskSid;
-            PathSid = pathSid;
-        }
+      if (TaggedText != null)
+      {
+        p.Add(new KeyValuePair<string, string>("TaggedText", TaggedText));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Language != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Language", Language));
-            }
+      if (SourceChannel != null)
+      {
+        p.Add(new KeyValuePair<string, string>("SourceChannel", SourceChannel));
+      }
 
-            if (TaggedText != null)
-            {
-                p.Add(new KeyValuePair<string, string>("TaggedText", TaggedText));
-            }
+      return p;
+    }
+  }
 
-            if (SourceChannel != null)
-            {
-                p.Add(new KeyValuePair<string, string>("SourceChannel", SourceChannel));
-            }
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// UpdateSampleOptions
+  /// </summary>
+  public class UpdateSampleOptions : IOptions<SampleResource>
+  {
+    /// <summary>
+    /// The unique ID of the Assistant.
+    /// </summary>
+    public string PathAssistantSid { get; }
+    /// <summary>
+    /// The unique ID of the Task associated with this Sample.
+    /// </summary>
+    public string PathTaskSid { get; }
+    /// <summary>
+    /// A 34 character string that uniquely identifies this resource.
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// An ISO language-country string of the sample.
+    /// </summary>
+    public string Language { get; set; }
+    /// <summary>
+    /// The text example of how end-users may express this task. The sample may contain Field tag blocks.
+    /// </summary>
+    public string TaggedText { get; set; }
+    /// <summary>
+    /// The communication channel the sample was captured. It can be: voice, sms, chat, alexa, google-assistant, or slack. If not included the value will be null
+    /// </summary>
+    public string SourceChannel { get; set; }
 
-            return p;
-        }
+    /// <summary>
+    /// Construct a new UpdateSampleOptions
+    /// </summary>
+    /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
+    /// <param name="pathTaskSid"> The unique ID of the Task associated with this Sample. </param>
+    /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+    public UpdateSampleOptions(string pathAssistantSid, string pathTaskSid, string pathSid)
+    {
+      PathAssistantSid = pathAssistantSid;
+      PathTaskSid = pathTaskSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// DeleteSampleOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteSampleOptions : IOptions<SampleResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique ID of the Assistant.
-        /// </summary>
-        public string PathAssistantSid { get; }
-        /// <summary>
-        /// The unique ID of the Task associated with this Sample.
-        /// </summary>
-        public string PathTaskSid { get; }
-        /// <summary>
-        /// A 34 character string that uniquely identifies this resource.
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (Language != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Language", Language));
+      }
 
-        /// <summary>
-        /// Construct a new DeleteSampleOptions
-        /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
-        /// <param name="pathTaskSid"> The unique ID of the Task associated with this Sample. </param>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
-        public DeleteSampleOptions(string pathAssistantSid, string pathTaskSid, string pathSid)
-        {
-            PathAssistantSid = pathAssistantSid;
-            PathTaskSid = pathTaskSid;
-            PathSid = pathSid;
-        }
+      if (TaggedText != null)
+      {
+        p.Add(new KeyValuePair<string, string>("TaggedText", TaggedText));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      if (SourceChannel != null)
+      {
+        p.Add(new KeyValuePair<string, string>("SourceChannel", SourceChannel));
+      }
+
+      return p;
     }
+  }
+
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// DeleteSampleOptions
+  /// </summary>
+  public class DeleteSampleOptions : IOptions<SampleResource>
+  {
+    /// <summary>
+    /// The unique ID of the Assistant.
+    /// </summary>
+    public string PathAssistantSid { get; }
+    /// <summary>
+    /// The unique ID of the Task associated with this Sample.
+    /// </summary>
+    public string PathTaskSid { get; }
+    /// <summary>
+    /// A 34 character string that uniquely identifies this resource.
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new DeleteSampleOptions
+    /// </summary>
+    /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
+    /// <param name="pathTaskSid"> The unique ID of the Task associated with this Sample. </param>
+    /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+    public DeleteSampleOptions(string pathAssistantSid, string pathTaskSid, string pathSid)
+    {
+      PathAssistantSid = pathAssistantSid;
+      PathTaskSid = pathTaskSid;
+      PathSid = pathSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
 }

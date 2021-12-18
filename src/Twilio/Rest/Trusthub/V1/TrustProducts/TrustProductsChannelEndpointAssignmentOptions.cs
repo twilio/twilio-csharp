@@ -11,179 +11,179 @@ using Twilio.Converters;
 namespace Twilio.Rest.Trusthub.V1.TrustProducts
 {
 
+  /// <summary>
+  /// Create a new Assigned Item.
+  /// </summary>
+  public class CreateTrustProductsChannelEndpointAssignmentOptions : IOptions<TrustProductsChannelEndpointAssignmentResource>
+  {
     /// <summary>
-    /// Create a new Assigned Item.
+    /// The unique string that identifies the resource.
     /// </summary>
-    public class CreateTrustProductsChannelEndpointAssignmentOptions : IOptions<TrustProductsChannelEndpointAssignmentResource>
+    public string PathTrustProductSid { get; }
+    /// <summary>
+    /// The type of channel endpoint
+    /// </summary>
+    public string ChannelEndpointType { get; }
+    /// <summary>
+    /// The sid of an channel endpoint
+    /// </summary>
+    public string ChannelEndpointSid { get; }
+
+    /// <summary>
+    /// Construct a new CreateTrustProductsChannelEndpointAssignmentOptions
+    /// </summary>
+    /// <param name="pathTrustProductSid"> The unique string that identifies the resource. </param>
+    /// <param name="channelEndpointType"> The type of channel endpoint </param>
+    /// <param name="channelEndpointSid"> The sid of an channel endpoint </param>
+    public CreateTrustProductsChannelEndpointAssignmentOptions(string pathTrustProductSid,
+                                                               string channelEndpointType,
+                                                               string channelEndpointSid)
     {
-        /// <summary>
-        /// The unique string that identifies the resource.
-        /// </summary>
-        public string PathTrustProductSid { get; }
-        /// <summary>
-        /// The type of channel endpoint
-        /// </summary>
-        public string ChannelEndpointType { get; }
-        /// <summary>
-        /// The sid of an channel endpoint
-        /// </summary>
-        public string ChannelEndpointSid { get; }
-
-        /// <summary>
-        /// Construct a new CreateTrustProductsChannelEndpointAssignmentOptions
-        /// </summary>
-        /// <param name="pathTrustProductSid"> The unique string that identifies the resource. </param>
-        /// <param name="channelEndpointType"> The type of channel endpoint </param>
-        /// <param name="channelEndpointSid"> The sid of an channel endpoint </param>
-        public CreateTrustProductsChannelEndpointAssignmentOptions(string pathTrustProductSid,
-                                                                   string channelEndpointType,
-                                                                   string channelEndpointSid)
-        {
-            PathTrustProductSid = pathTrustProductSid;
-            ChannelEndpointType = channelEndpointType;
-            ChannelEndpointSid = channelEndpointSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (ChannelEndpointType != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ChannelEndpointType", ChannelEndpointType));
-            }
-
-            if (ChannelEndpointSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ChannelEndpointSid", ChannelEndpointSid.ToString()));
-            }
-
-            return p;
-        }
+      PathTrustProductSid = pathTrustProductSid;
+      ChannelEndpointType = channelEndpointType;
+      ChannelEndpointSid = channelEndpointSid;
     }
 
     /// <summary>
-    /// Retrieve a list of all Assigned Items for an account.
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadTrustProductsChannelEndpointAssignmentOptions : ReadOptions<TrustProductsChannelEndpointAssignmentResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique string that identifies the resource.
-        /// </summary>
-        public string PathTrustProductSid { get; }
-        /// <summary>
-        /// The sid of an channel endpoint
-        /// </summary>
-        public string ChannelEndpointSid { get; set; }
-        /// <summary>
-        /// comma separated list of channel endpoint sids
-        /// </summary>
-        public string ChannelEndpointSids { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (ChannelEndpointType != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ChannelEndpointType", ChannelEndpointType));
+      }
 
-        /// <summary>
-        /// Construct a new ReadTrustProductsChannelEndpointAssignmentOptions
-        /// </summary>
-        /// <param name="pathTrustProductSid"> The unique string that identifies the resource. </param>
-        public ReadTrustProductsChannelEndpointAssignmentOptions(string pathTrustProductSid)
-        {
-            PathTrustProductSid = pathTrustProductSid;
-        }
+      if (ChannelEndpointSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ChannelEndpointSid", ChannelEndpointSid.ToString()));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (ChannelEndpointSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ChannelEndpointSid", ChannelEndpointSid.ToString()));
-            }
+      return p;
+    }
+  }
 
-            if (ChannelEndpointSids != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ChannelEndpointSids", ChannelEndpointSids));
-            }
+  /// <summary>
+  /// Retrieve a list of all Assigned Items for an account.
+  /// </summary>
+  public class ReadTrustProductsChannelEndpointAssignmentOptions : ReadOptions<TrustProductsChannelEndpointAssignmentResource>
+  {
+    /// <summary>
+    /// The unique string that identifies the resource.
+    /// </summary>
+    public string PathTrustProductSid { get; }
+    /// <summary>
+    /// The sid of an channel endpoint
+    /// </summary>
+    public string ChannelEndpointSid { get; set; }
+    /// <summary>
+    /// comma separated list of channel endpoint sids
+    /// </summary>
+    public string ChannelEndpointSids { get; set; }
 
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new ReadTrustProductsChannelEndpointAssignmentOptions
+    /// </summary>
+    /// <param name="pathTrustProductSid"> The unique string that identifies the resource. </param>
+    public ReadTrustProductsChannelEndpointAssignmentOptions(string pathTrustProductSid)
+    {
+      PathTrustProductSid = pathTrustProductSid;
     }
 
     /// <summary>
-    /// Fetch specific Assigned Item Instance.
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchTrustProductsChannelEndpointAssignmentOptions : IOptions<TrustProductsChannelEndpointAssignmentResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique string that identifies the resource.
-        /// </summary>
-        public string PathTrustProductSid { get; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (ChannelEndpointSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ChannelEndpointSid", ChannelEndpointSid.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new FetchTrustProductsChannelEndpointAssignmentOptions
-        /// </summary>
-        /// <param name="pathTrustProductSid"> The unique string that identifies the resource. </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public FetchTrustProductsChannelEndpointAssignmentOptions(string pathTrustProductSid, string pathSid)
-        {
-            PathTrustProductSid = pathTrustProductSid;
-            PathSid = pathSid;
-        }
+      if (ChannelEndpointSids != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ChannelEndpointSids", ChannelEndpointSids));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// Fetch specific Assigned Item Instance.
+  /// </summary>
+  public class FetchTrustProductsChannelEndpointAssignmentOptions : IOptions<TrustProductsChannelEndpointAssignmentResource>
+  {
+    /// <summary>
+    /// The unique string that identifies the resource.
+    /// </summary>
+    public string PathTrustProductSid { get; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchTrustProductsChannelEndpointAssignmentOptions
+    /// </summary>
+    /// <param name="pathTrustProductSid"> The unique string that identifies the resource. </param>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public FetchTrustProductsChannelEndpointAssignmentOptions(string pathTrustProductSid, string pathSid)
+    {
+      PathTrustProductSid = pathTrustProductSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Remove an Assignment Item Instance.
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteTrustProductsChannelEndpointAssignmentOptions : IOptions<TrustProductsChannelEndpointAssignmentResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique string that identifies the resource.
-        /// </summary>
-        public string PathTrustProductSid { get; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new DeleteTrustProductsChannelEndpointAssignmentOptions
-        /// </summary>
-        /// <param name="pathTrustProductSid"> The unique string that identifies the resource. </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public DeleteTrustProductsChannelEndpointAssignmentOptions(string pathTrustProductSid, string pathSid)
-        {
-            PathTrustProductSid = pathTrustProductSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
+
+  /// <summary>
+  /// Remove an Assignment Item Instance.
+  /// </summary>
+  public class DeleteTrustProductsChannelEndpointAssignmentOptions : IOptions<TrustProductsChannelEndpointAssignmentResource>
+  {
+    /// <summary>
+    /// The unique string that identifies the resource.
+    /// </summary>
+    public string PathTrustProductSid { get; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new DeleteTrustProductsChannelEndpointAssignmentOptions
+    /// </summary>
+    /// <param name="pathTrustProductSid"> The unique string that identifies the resource. </param>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public DeleteTrustProductsChannelEndpointAssignmentOptions(string pathTrustProductSid, string pathSid)
+    {
+      PathTrustProductSid = pathTrustProductSid;
+      PathSid = pathSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
 }

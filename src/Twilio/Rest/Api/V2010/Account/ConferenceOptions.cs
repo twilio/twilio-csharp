@@ -11,198 +11,198 @@ using Twilio.Converters;
 namespace Twilio.Rest.Api.V2010.Account
 {
 
+  /// <summary>
+  /// Fetch an instance of a conference
+  /// </summary>
+  public class FetchConferenceOptions : IOptions<ConferenceResource>
+  {
     /// <summary>
-    /// Fetch an instance of a conference
+    /// The SID of the Account that created the resource(s) to fetch
     /// </summary>
-    public class FetchConferenceOptions : IOptions<ConferenceResource>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The unique string that identifies this resource
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchConferenceOptions
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies this resource </param>
+    public FetchConferenceOptions(string pathSid)
     {
-        /// <summary>
-        /// The SID of the Account that created the resource(s) to fetch
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The unique string that identifies this resource
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchConferenceOptions
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies this resource </param>
-        public FetchConferenceOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Retrieve a list of conferences belonging to the account used to make the request
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadConferenceOptions : ReadOptions<ConferenceResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Account that created the resource(s) to read
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The `YYYY-MM-DD` value of the resources to read
-        /// </summary>
-        public DateTime? DateCreatedBefore { get; set; }
-        /// <summary>
-        /// The `YYYY-MM-DD` value of the resources to read
-        /// </summary>
-        public DateTime? DateCreated { get; set; }
-        /// <summary>
-        /// The `YYYY-MM-DD` value of the resources to read
-        /// </summary>
-        public DateTime? DateCreatedAfter { get; set; }
-        /// <summary>
-        /// The `YYYY-MM-DD` value of the resources to read
-        /// </summary>
-        public DateTime? DateUpdatedBefore { get; set; }
-        /// <summary>
-        /// The `YYYY-MM-DD` value of the resources to read
-        /// </summary>
-        public DateTime? DateUpdated { get; set; }
-        /// <summary>
-        /// The `YYYY-MM-DD` value of the resources to read
-        /// </summary>
-        public DateTime? DateUpdatedAfter { get; set; }
-        /// <summary>
-        /// The string that identifies the Conference resources to read
-        /// </summary>
-        public string FriendlyName { get; set; }
-        /// <summary>
-        /// The status of the resources to read
-        /// </summary>
-        public ConferenceResource.StatusEnum Status { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
+  /// <summary>
+  /// Retrieve a list of conferences belonging to the account used to make the request
+  /// </summary>
+  public class ReadConferenceOptions : ReadOptions<ConferenceResource>
+  {
+    /// <summary>
+    /// The SID of the Account that created the resource(s) to read
+    /// </summary>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The `YYYY-MM-DD` value of the resources to read
+    /// </summary>
+    public DateTime? DateCreatedBefore { get; set; }
+    /// <summary>
+    /// The `YYYY-MM-DD` value of the resources to read
+    /// </summary>
+    public DateTime? DateCreated { get; set; }
+    /// <summary>
+    /// The `YYYY-MM-DD` value of the resources to read
+    /// </summary>
+    public DateTime? DateCreatedAfter { get; set; }
+    /// <summary>
+    /// The `YYYY-MM-DD` value of the resources to read
+    /// </summary>
+    public DateTime? DateUpdatedBefore { get; set; }
+    /// <summary>
+    /// The `YYYY-MM-DD` value of the resources to read
+    /// </summary>
+    public DateTime? DateUpdated { get; set; }
+    /// <summary>
+    /// The `YYYY-MM-DD` value of the resources to read
+    /// </summary>
+    public DateTime? DateUpdatedAfter { get; set; }
+    /// <summary>
+    /// The string that identifies the Conference resources to read
+    /// </summary>
+    public string FriendlyName { get; set; }
+    /// <summary>
+    /// The status of the resources to read
+    /// </summary>
+    public ConferenceResource.StatusEnum Status { get; set; }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (DateCreated != null)
+      {
+        p.Add(new KeyValuePair<string, string>("DateCreated", DateCreated.Value.ToString("yyyy-MM-dd")));
+      }
+      else
+      {
+        if (DateCreatedBefore != null)
         {
-            var p = new List<KeyValuePair<string, string>>();
-            if (DateCreated != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DateCreated", DateCreated.Value.ToString("yyyy-MM-dd")));
-            }
-            else
-            {
-                if (DateCreatedBefore != null)
-                {
-                    p.Add(new KeyValuePair<string, string>("DateCreated<", DateCreatedBefore.Value.ToString("yyyy-MM-dd")));
-                }
-
-                if (DateCreatedAfter != null)
-                {
-                    p.Add(new KeyValuePair<string, string>("DateCreated>", DateCreatedAfter.Value.ToString("yyyy-MM-dd")));
-                }
-            }
-
-            if (DateUpdated != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DateUpdated", DateUpdated.Value.ToString("yyyy-MM-dd")));
-            }
-            else
-            {
-                if (DateUpdatedBefore != null)
-                {
-                    p.Add(new KeyValuePair<string, string>("DateUpdated<", DateUpdatedBefore.Value.ToString("yyyy-MM-dd")));
-                }
-
-                if (DateUpdatedAfter != null)
-                {
-                    p.Add(new KeyValuePair<string, string>("DateUpdated>", DateUpdatedAfter.Value.ToString("yyyy-MM-dd")));
-                }
-            }
-
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
-
-            if (Status != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
-            }
-
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
+          p.Add(new KeyValuePair<string, string>("DateCreated<", DateCreatedBefore.Value.ToString("yyyy-MM-dd")));
         }
+
+        if (DateCreatedAfter != null)
+        {
+          p.Add(new KeyValuePair<string, string>("DateCreated>", DateCreatedAfter.Value.ToString("yyyy-MM-dd")));
+        }
+      }
+
+      if (DateUpdated != null)
+      {
+        p.Add(new KeyValuePair<string, string>("DateUpdated", DateUpdated.Value.ToString("yyyy-MM-dd")));
+      }
+      else
+      {
+        if (DateUpdatedBefore != null)
+        {
+          p.Add(new KeyValuePair<string, string>("DateUpdated<", DateUpdatedBefore.Value.ToString("yyyy-MM-dd")));
+        }
+
+        if (DateUpdatedAfter != null)
+        {
+          p.Add(new KeyValuePair<string, string>("DateUpdated>", DateUpdatedAfter.Value.ToString("yyyy-MM-dd")));
+        }
+      }
+
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
+
+      if (Status != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
+      }
+
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// UpdateConferenceOptions
+  /// </summary>
+  public class UpdateConferenceOptions : IOptions<ConferenceResource>
+  {
+    /// <summary>
+    /// The SID of the Account that created the resource(s) to update
+    /// </summary>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The unique string that identifies this resource
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// The new status of the resource
+    /// </summary>
+    public ConferenceResource.UpdateStatusEnum Status { get; set; }
+    /// <summary>
+    /// The URL we should call to announce something into the conference
+    /// </summary>
+    public Uri AnnounceUrl { get; set; }
+    /// <summary>
+    /// he HTTP method used to call announce_url
+    /// </summary>
+    public Twilio.Http.HttpMethod AnnounceMethod { get; set; }
+
+    /// <summary>
+    /// Construct a new UpdateConferenceOptions
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies this resource </param>
+    public UpdateConferenceOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// UpdateConferenceOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateConferenceOptions : IOptions<ConferenceResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Account that created the resource(s) to update
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The unique string that identifies this resource
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// The new status of the resource
-        /// </summary>
-        public ConferenceResource.UpdateStatusEnum Status { get; set; }
-        /// <summary>
-        /// The URL we should call to announce something into the conference
-        /// </summary>
-        public Uri AnnounceUrl { get; set; }
-        /// <summary>
-        /// he HTTP method used to call announce_url
-        /// </summary>
-        public Twilio.Http.HttpMethod AnnounceMethod { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (Status != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new UpdateConferenceOptions
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies this resource </param>
-        public UpdateConferenceOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
+      if (AnnounceUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("AnnounceUrl", Serializers.Url(AnnounceUrl)));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Status != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
-            }
+      if (AnnounceMethod != null)
+      {
+        p.Add(new KeyValuePair<string, string>("AnnounceMethod", AnnounceMethod.ToString()));
+      }
 
-            if (AnnounceUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("AnnounceUrl", Serializers.Url(AnnounceUrl)));
-            }
-
-            if (AnnounceMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("AnnounceMethod", AnnounceMethod.ToString()));
-            }
-
-            return p;
-        }
+      return p;
     }
+  }
 
 }

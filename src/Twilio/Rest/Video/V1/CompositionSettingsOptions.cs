@@ -11,98 +11,98 @@ using Twilio.Converters;
 namespace Twilio.Rest.Video.V1
 {
 
+  /// <summary>
+  /// FetchCompositionSettingsOptions
+  /// </summary>
+  public class FetchCompositionSettingsOptions : IOptions<CompositionSettingsResource>
+  {
     /// <summary>
-    /// FetchCompositionSettingsOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchCompositionSettingsOptions : IOptions<CompositionSettingsResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// CreateCompositionSettingsOptions
+  /// </summary>
+  public class CreateCompositionSettingsOptions : IOptions<CompositionSettingsResource>
+  {
+    /// <summary>
+    /// A descriptive string that you create to describe the resource
+    /// </summary>
+    public string FriendlyName { get; }
+    /// <summary>
+    /// The SID of the stored Credential resource
+    /// </summary>
+    public string AwsCredentialsSid { get; set; }
+    /// <summary>
+    /// The SID of the Public Key resource to use for encryption
+    /// </summary>
+    public string EncryptionKeySid { get; set; }
+    /// <summary>
+    /// The URL of the AWS S3 bucket where the compositions should be stored
+    /// </summary>
+    public Uri AwsS3Url { get; set; }
+    /// <summary>
+    /// Whether all compositions should be written to the aws_s3_url
+    /// </summary>
+    public bool? AwsStorageEnabled { get; set; }
+    /// <summary>
+    /// Whether all compositions should be stored in an encrypted form
+    /// </summary>
+    public bool? EncryptionEnabled { get; set; }
+
+    /// <summary>
+    /// Construct a new CreateCompositionSettingsOptions
+    /// </summary>
+    /// <param name="friendlyName"> A descriptive string that you create to describe the resource </param>
+    public CreateCompositionSettingsOptions(string friendlyName)
+    {
+      FriendlyName = friendlyName;
     }
 
     /// <summary>
-    /// CreateCompositionSettingsOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class CreateCompositionSettingsOptions : IOptions<CompositionSettingsResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// A descriptive string that you create to describe the resource
-        /// </summary>
-        public string FriendlyName { get; }
-        /// <summary>
-        /// The SID of the stored Credential resource
-        /// </summary>
-        public string AwsCredentialsSid { get; set; }
-        /// <summary>
-        /// The SID of the Public Key resource to use for encryption
-        /// </summary>
-        public string EncryptionKeySid { get; set; }
-        /// <summary>
-        /// The URL of the AWS S3 bucket where the compositions should be stored
-        /// </summary>
-        public Uri AwsS3Url { get; set; }
-        /// <summary>
-        /// Whether all compositions should be written to the aws_s3_url
-        /// </summary>
-        public bool? AwsStorageEnabled { get; set; }
-        /// <summary>
-        /// Whether all compositions should be stored in an encrypted form
-        /// </summary>
-        public bool? EncryptionEnabled { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
 
-        /// <summary>
-        /// Construct a new CreateCompositionSettingsOptions
-        /// </summary>
-        /// <param name="friendlyName"> A descriptive string that you create to describe the resource </param>
-        public CreateCompositionSettingsOptions(string friendlyName)
-        {
-            FriendlyName = friendlyName;
-        }
+      if (AwsCredentialsSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("AwsCredentialsSid", AwsCredentialsSid.ToString()));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
+      if (EncryptionKeySid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("EncryptionKeySid", EncryptionKeySid.ToString()));
+      }
 
-            if (AwsCredentialsSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("AwsCredentialsSid", AwsCredentialsSid.ToString()));
-            }
+      if (AwsS3Url != null)
+      {
+        p.Add(new KeyValuePair<string, string>("AwsS3Url", Serializers.Url(AwsS3Url)));
+      }
 
-            if (EncryptionKeySid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("EncryptionKeySid", EncryptionKeySid.ToString()));
-            }
+      if (AwsStorageEnabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("AwsStorageEnabled", AwsStorageEnabled.Value.ToString().ToLower()));
+      }
 
-            if (AwsS3Url != null)
-            {
-                p.Add(new KeyValuePair<string, string>("AwsS3Url", Serializers.Url(AwsS3Url)));
-            }
+      if (EncryptionEnabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("EncryptionEnabled", EncryptionEnabled.Value.ToString().ToLower()));
+      }
 
-            if (AwsStorageEnabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("AwsStorageEnabled", AwsStorageEnabled.Value.ToString().ToLower()));
-            }
-
-            if (EncryptionEnabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("EncryptionEnabled", EncryptionEnabled.Value.ToString().ToLower()));
-            }
-
-            return p;
-        }
+      return p;
     }
+  }
 
 }

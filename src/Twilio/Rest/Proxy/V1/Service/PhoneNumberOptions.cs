@@ -11,219 +11,219 @@ using Twilio.Converters;
 namespace Twilio.Rest.Proxy.V1.Service
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Add a Phone Number to a Service's Proxy Number Pool.
+  /// </summary>
+  public class CreatePhoneNumberOptions : IOptions<PhoneNumberResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Add a Phone Number to a Service's Proxy Number Pool.
+    /// The SID of the resource's parent Service
     /// </summary>
-    public class CreatePhoneNumberOptions : IOptions<PhoneNumberResource>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The SID of a Twilio IncomingPhoneNumber resource
+    /// </summary>
+    public string Sid { get; set; }
+    /// <summary>
+    /// The phone number in E.164 format
+    /// </summary>
+    public Types.PhoneNumber PhoneNumber { get; set; }
+    /// <summary>
+    /// Whether the new phone number should be reserved
+    /// </summary>
+    public bool? IsReserved { get; set; }
+
+    /// <summary>
+    /// Construct a new CreatePhoneNumberOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the resource's parent Service </param>
+    public CreatePhoneNumberOptions(string pathServiceSid)
     {
-        /// <summary>
-        /// The SID of the resource's parent Service
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The SID of a Twilio IncomingPhoneNumber resource
-        /// </summary>
-        public string Sid { get; set; }
-        /// <summary>
-        /// The phone number in E.164 format
-        /// </summary>
-        public Types.PhoneNumber PhoneNumber { get; set; }
-        /// <summary>
-        /// Whether the new phone number should be reserved
-        /// </summary>
-        public bool? IsReserved { get; set; }
-
-        /// <summary>
-        /// Construct a new CreatePhoneNumberOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the resource's parent Service </param>
-        public CreatePhoneNumberOptions(string pathServiceSid)
-        {
-            PathServiceSid = pathServiceSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Sid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Sid", Sid.ToString()));
-            }
-
-            if (PhoneNumber != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PhoneNumber", PhoneNumber.ToString()));
-            }
-
-            if (IsReserved != null)
-            {
-                p.Add(new KeyValuePair<string, string>("IsReserved", IsReserved.Value.ToString().ToLower()));
-            }
-
-            return p;
-        }
+      PathServiceSid = pathServiceSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Delete a specific Phone Number from a Service.
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeletePhoneNumberOptions : IOptions<PhoneNumberResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the parent Service resource of the PhoneNumber resource to delete
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (Sid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Sid", Sid.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new DeletePhoneNumberOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the parent Service resource of the PhoneNumber resource to delete </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public DeletePhoneNumberOptions(string pathServiceSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathSid = pathSid;
-        }
+      if (PhoneNumber != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PhoneNumber", PhoneNumber.ToString()));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      if (IsReserved != null)
+      {
+        p.Add(new KeyValuePair<string, string>("IsReserved", IsReserved.Value.ToString().ToLower()));
+      }
+
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Delete a specific Phone Number from a Service.
+  /// </summary>
+  public class DeletePhoneNumberOptions : IOptions<PhoneNumberResource>
+  {
+    /// <summary>
+    /// The SID of the parent Service resource of the PhoneNumber resource to delete
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new DeletePhoneNumberOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the parent Service resource of the PhoneNumber resource to delete </param>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public DeletePhoneNumberOptions(string pathServiceSid, string pathSid)
+    {
+      PathServiceSid = pathServiceSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Retrieve a list of all Phone Numbers in the Proxy Number Pool for a Service. A maximum of 100 records will be
-    /// returned per page.
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadPhoneNumberOptions : ReadOptions<PhoneNumberResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the parent Service resource of the PhoneNumber resource to read
-        /// </summary>
-        public string PathServiceSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new ReadPhoneNumberOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the parent Service resource of the PhoneNumber resource to read </param>
-        public ReadPhoneNumberOptions(string pathServiceSid)
-        {
-            PathServiceSid = pathServiceSid;
-        }
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Retrieve a list of all Phone Numbers in the Proxy Number Pool for a Service. A maximum of 100 records will be
+  /// returned per page.
+  /// </summary>
+  public class ReadPhoneNumberOptions : ReadOptions<PhoneNumberResource>
+  {
+    /// <summary>
+    /// The SID of the parent Service resource of the PhoneNumber resource to read
+    /// </summary>
+    public string PathServiceSid { get; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new ReadPhoneNumberOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the parent Service resource of the PhoneNumber resource to read </param>
+    public ReadPhoneNumberOptions(string pathServiceSid)
+    {
+      PathServiceSid = pathServiceSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Fetch a specific Phone Number.
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchPhoneNumberOptions : IOptions<PhoneNumberResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the parent Service resource of the PhoneNumber resource to fetch
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new FetchPhoneNumberOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the parent Service resource of the PhoneNumber resource to fetch </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public FetchPhoneNumberOptions(string pathServiceSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathSid = pathSid;
-        }
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Fetch a specific Phone Number.
+  /// </summary>
+  public class FetchPhoneNumberOptions : IOptions<PhoneNumberResource>
+  {
+    /// <summary>
+    /// The SID of the parent Service resource of the PhoneNumber resource to fetch
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchPhoneNumberOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the parent Service resource of the PhoneNumber resource to fetch </param>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public FetchPhoneNumberOptions(string pathServiceSid, string pathSid)
+    {
+      PathServiceSid = pathServiceSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Update a specific Proxy Number.
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdatePhoneNumberOptions : IOptions<PhoneNumberResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the parent Service resource of the PhoneNumber resource to update
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// Whether the new phone number should be reserved
-        /// </summary>
-        public bool? IsReserved { get; set; }
-
-        /// <summary>
-        /// Construct a new UpdatePhoneNumberOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the parent Service resource of the PhoneNumber resource to update </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public UpdatePhoneNumberOptions(string pathServiceSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (IsReserved != null)
-            {
-                p.Add(new KeyValuePair<string, string>("IsReserved", IsReserved.Value.ToString().ToLower()));
-            }
-
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
+
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Update a specific Proxy Number.
+  /// </summary>
+  public class UpdatePhoneNumberOptions : IOptions<PhoneNumberResource>
+  {
+    /// <summary>
+    /// The SID of the parent Service resource of the PhoneNumber resource to update
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// Whether the new phone number should be reserved
+    /// </summary>
+    public bool? IsReserved { get; set; }
+
+    /// <summary>
+    /// Construct a new UpdatePhoneNumberOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the parent Service resource of the PhoneNumber resource to update </param>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public UpdatePhoneNumberOptions(string pathServiceSid, string pathSid)
+    {
+      PathServiceSid = pathServiceSid;
+      PathSid = pathSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (IsReserved != null)
+      {
+        p.Add(new KeyValuePair<string, string>("IsReserved", IsReserved.Value.ToString().ToLower()));
+      }
+
+      return p;
+    }
+  }
 
 }

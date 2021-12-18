@@ -11,205 +11,205 @@ using Twilio.Converters;
 namespace Twilio.Rest.Verify.V2.Service
 {
 
+  /// <summary>
+  /// Create a new MessagingConfiguration for a service.
+  /// </summary>
+  public class CreateMessagingConfigurationOptions : IOptions<MessagingConfigurationResource>
+  {
     /// <summary>
-    /// Create a new MessagingConfiguration for a service.
+    /// The SID of the Service that the resource is associated with
     /// </summary>
-    public class CreateMessagingConfigurationOptions : IOptions<MessagingConfigurationResource>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The ISO-3166-1 country code of the country or `all`.
+    /// </summary>
+    public string Country { get; }
+    /// <summary>
+    /// The SID of the Messaging Service used for this configuration.
+    /// </summary>
+    public string MessagingServiceSid { get; }
+
+    /// <summary>
+    /// Construct a new CreateMessagingConfigurationOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service that the resource is associated with </param>
+    /// <param name="country"> The ISO-3166-1 country code of the country or `all`. </param>
+    /// <param name="messagingServiceSid"> The SID of the Messaging Service used for this configuration. </param>
+    public CreateMessagingConfigurationOptions(string pathServiceSid, string country, string messagingServiceSid)
     {
-        /// <summary>
-        /// The SID of the Service that the resource is associated with
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The ISO-3166-1 country code of the country or `all`.
-        /// </summary>
-        public string Country { get; }
-        /// <summary>
-        /// The SID of the Messaging Service used for this configuration.
-        /// </summary>
-        public string MessagingServiceSid { get; }
-
-        /// <summary>
-        /// Construct a new CreateMessagingConfigurationOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service that the resource is associated with </param>
-        /// <param name="country"> The ISO-3166-1 country code of the country or `all`. </param>
-        /// <param name="messagingServiceSid"> The SID of the Messaging Service used for this configuration. </param>
-        public CreateMessagingConfigurationOptions(string pathServiceSid, string country, string messagingServiceSid)
-        {
-            PathServiceSid = pathServiceSid;
-            Country = country;
-            MessagingServiceSid = messagingServiceSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Country != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Country", Country));
-            }
-
-            if (MessagingServiceSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("MessagingServiceSid", MessagingServiceSid.ToString()));
-            }
-
-            return p;
-        }
+      PathServiceSid = pathServiceSid;
+      Country = country;
+      MessagingServiceSid = messagingServiceSid;
     }
 
     /// <summary>
-    /// Update a specific MessagingConfiguration
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateMessagingConfigurationOptions : IOptions<MessagingConfigurationResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Service that the resource is associated with
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The ISO-3166-1 country code of the country or `all`.
-        /// </summary>
-        public string PathCountry { get; }
-        /// <summary>
-        /// The SID of the Messaging Service used for this configuration.
-        /// </summary>
-        public string MessagingServiceSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (Country != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Country", Country));
+      }
 
-        /// <summary>
-        /// Construct a new UpdateMessagingConfigurationOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service that the resource is associated with </param>
-        /// <param name="pathCountry"> The ISO-3166-1 country code of the country or `all`. </param>
-        /// <param name="messagingServiceSid"> The SID of the Messaging Service used for this configuration. </param>
-        public UpdateMessagingConfigurationOptions(string pathServiceSid, string pathCountry, string messagingServiceSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathCountry = pathCountry;
-            MessagingServiceSid = messagingServiceSid;
-        }
+      if (MessagingServiceSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("MessagingServiceSid", MessagingServiceSid.ToString()));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (MessagingServiceSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("MessagingServiceSid", MessagingServiceSid.ToString()));
-            }
+      return p;
+    }
+  }
 
-            return p;
-        }
+  /// <summary>
+  /// Update a specific MessagingConfiguration
+  /// </summary>
+  public class UpdateMessagingConfigurationOptions : IOptions<MessagingConfigurationResource>
+  {
+    /// <summary>
+    /// The SID of the Service that the resource is associated with
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The ISO-3166-1 country code of the country or `all`.
+    /// </summary>
+    public string PathCountry { get; }
+    /// <summary>
+    /// The SID of the Messaging Service used for this configuration.
+    /// </summary>
+    public string MessagingServiceSid { get; }
+
+    /// <summary>
+    /// Construct a new UpdateMessagingConfigurationOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service that the resource is associated with </param>
+    /// <param name="pathCountry"> The ISO-3166-1 country code of the country or `all`. </param>
+    /// <param name="messagingServiceSid"> The SID of the Messaging Service used for this configuration. </param>
+    public UpdateMessagingConfigurationOptions(string pathServiceSid, string pathCountry, string messagingServiceSid)
+    {
+      PathServiceSid = pathServiceSid;
+      PathCountry = pathCountry;
+      MessagingServiceSid = messagingServiceSid;
     }
 
     /// <summary>
-    /// Fetch a specific MessagingConfiguration.
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchMessagingConfigurationOptions : IOptions<MessagingConfigurationResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Service that the resource is associated with
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The ISO-3166-1 country code of the country or `all`.
-        /// </summary>
-        public string PathCountry { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (MessagingServiceSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("MessagingServiceSid", MessagingServiceSid.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new FetchMessagingConfigurationOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service that the resource is associated with </param>
-        /// <param name="pathCountry"> The ISO-3166-1 country code of the country or `all`. </param>
-        public FetchMessagingConfigurationOptions(string pathServiceSid, string pathCountry)
-        {
-            PathServiceSid = pathServiceSid;
-            PathCountry = pathCountry;
-        }
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+  /// <summary>
+  /// Fetch a specific MessagingConfiguration.
+  /// </summary>
+  public class FetchMessagingConfigurationOptions : IOptions<MessagingConfigurationResource>
+  {
+    /// <summary>
+    /// The SID of the Service that the resource is associated with
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The ISO-3166-1 country code of the country or `all`.
+    /// </summary>
+    public string PathCountry { get; }
+
+    /// <summary>
+    /// Construct a new FetchMessagingConfigurationOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service that the resource is associated with </param>
+    /// <param name="pathCountry"> The ISO-3166-1 country code of the country or `all`. </param>
+    public FetchMessagingConfigurationOptions(string pathServiceSid, string pathCountry)
+    {
+      PathServiceSid = pathServiceSid;
+      PathCountry = pathCountry;
     }
 
     /// <summary>
-    /// Retrieve a list of all Messaging Configurations for a Service.
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadMessagingConfigurationOptions : ReadOptions<MessagingConfigurationResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Service that the resource is associated with
-        /// </summary>
-        public string PathServiceSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new ReadMessagingConfigurationOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service that the resource is associated with </param>
-        public ReadMessagingConfigurationOptions(string pathServiceSid)
-        {
-            PathServiceSid = pathServiceSid;
-        }
+  /// <summary>
+  /// Retrieve a list of all Messaging Configurations for a Service.
+  /// </summary>
+  public class ReadMessagingConfigurationOptions : ReadOptions<MessagingConfigurationResource>
+  {
+    /// <summary>
+    /// The SID of the Service that the resource is associated with
+    /// </summary>
+    public string PathServiceSid { get; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new ReadMessagingConfigurationOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service that the resource is associated with </param>
+    public ReadMessagingConfigurationOptions(string pathServiceSid)
+    {
+      PathServiceSid = pathServiceSid;
     }
 
     /// <summary>
-    /// Delete a specific MessagingConfiguration.
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteMessagingConfigurationOptions : IOptions<MessagingConfigurationResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Service that the resource is associated with
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The ISO-3166-1 country code of the country or `all`.
-        /// </summary>
-        public string PathCountry { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new DeleteMessagingConfigurationOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service that the resource is associated with </param>
-        /// <param name="pathCountry"> The ISO-3166-1 country code of the country or `all`. </param>
-        public DeleteMessagingConfigurationOptions(string pathServiceSid, string pathCountry)
-        {
-            PathServiceSid = pathServiceSid;
-            PathCountry = pathCountry;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      return p;
     }
+  }
+
+  /// <summary>
+  /// Delete a specific MessagingConfiguration.
+  /// </summary>
+  public class DeleteMessagingConfigurationOptions : IOptions<MessagingConfigurationResource>
+  {
+    /// <summary>
+    /// The SID of the Service that the resource is associated with
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The ISO-3166-1 country code of the country or `all`.
+    /// </summary>
+    public string PathCountry { get; }
+
+    /// <summary>
+    /// Construct a new DeleteMessagingConfigurationOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service that the resource is associated with </param>
+    /// <param name="pathCountry"> The ISO-3166-1 country code of the country or `all`. </param>
+    public DeleteMessagingConfigurationOptions(string pathServiceSid, string pathCountry)
+    {
+      PathServiceSid = pathServiceSid;
+      PathCountry = pathCountry;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
 }

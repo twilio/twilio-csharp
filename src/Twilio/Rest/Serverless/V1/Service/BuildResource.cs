@@ -21,479 +21,479 @@ using Twilio.Types;
 namespace Twilio.Rest.Serverless.V1.Service
 {
 
-    public class BuildResource : Resource
+  public class BuildResource : Resource
+  {
+    public sealed class StatusEnum : StringEnum
     {
-        public sealed class StatusEnum : StringEnum
-        {
-            private StatusEnum(string value) : base(value) {}
-            public StatusEnum() {}
-            public static implicit operator StatusEnum(string value)
-            {
-                return new StatusEnum(value);
-            }
+      private StatusEnum(string value) : base(value) { }
+      public StatusEnum() { }
+      public static implicit operator StatusEnum(string value)
+      {
+        return new StatusEnum(value);
+      }
 
-            public static readonly StatusEnum Building = new StatusEnum("building");
-            public static readonly StatusEnum Completed = new StatusEnum("completed");
-            public static readonly StatusEnum Failed = new StatusEnum("failed");
-        }
-
-        public sealed class RuntimeEnum : StringEnum
-        {
-            private RuntimeEnum(string value) : base(value) {}
-            public RuntimeEnum() {}
-            public static implicit operator RuntimeEnum(string value)
-            {
-                return new RuntimeEnum(value);
-            }
-
-            public static readonly RuntimeEnum Node8 = new RuntimeEnum("node8");
-            public static readonly RuntimeEnum Node10 = new RuntimeEnum("node10");
-            public static readonly RuntimeEnum Node12 = new RuntimeEnum("node12");
-            public static readonly RuntimeEnum Node14 = new RuntimeEnum("node14");
-        }
-
-        private static Request BuildReadRequest(ReadBuildOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Get,
-                Rest.Domain.Serverless,
-                "/v1/Services/" + options.PathServiceSid + "/Builds",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// Retrieve a list of all Builds.
-        /// </summary>
-        /// <param name="options"> Read Build parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Build </returns>
-        public static ResourceSet<BuildResource> Read(ReadBuildOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildReadRequest(options, client));
-
-            var page = Page<BuildResource>.FromJson("builds", response.Content);
-            return new ResourceSet<BuildResource>(page, options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Retrieve a list of all Builds.
-        /// </summary>
-        /// <param name="options"> Read Build parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Build </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<BuildResource>> ReadAsync(ReadBuildOptions options,
-                                                                                              ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
-
-            var page = Page<BuildResource>.FromJson("builds", response.Content);
-            return new ResourceSet<BuildResource>(page, options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Retrieve a list of all Builds.
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to read the Build resources from </param>
-        /// <param name="pageSize"> Page size </param>
-        /// <param name="limit"> Record limit </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Build </returns>
-        public static ResourceSet<BuildResource> Read(string pathServiceSid,
-                                                      int? pageSize = null,
-                                                      long? limit = null,
-                                                      ITwilioRestClient client = null)
-        {
-            var options = new ReadBuildOptions(pathServiceSid){PageSize = pageSize, Limit = limit};
-            return Read(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Retrieve a list of all Builds.
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to read the Build resources from </param>
-        /// <param name="pageSize"> Page size </param>
-        /// <param name="limit"> Record limit </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Build </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<BuildResource>> ReadAsync(string pathServiceSid,
-                                                                                              int? pageSize = null,
-                                                                                              long? limit = null,
-                                                                                              ITwilioRestClient client = null)
-        {
-            var options = new ReadBuildOptions(pathServiceSid){PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Fetch the target page of records
-        /// </summary>
-        /// <param name="targetUrl"> API-generated URL for the requested results page </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns>
-        public static Page<BuildResource> GetPage(string targetUrl, ITwilioRestClient client)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-
-            var request = new Request(
-                HttpMethod.Get,
-                targetUrl
-            );
-
-            var response = client.Request(request);
-            return Page<BuildResource>.FromJson("builds", response.Content);
-        }
-
-        /// <summary>
-        /// Fetch the next page of records
-        /// </summary>
-        /// <param name="page"> current page of records </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns>
-        public static Page<BuildResource> NextPage(Page<BuildResource> page, ITwilioRestClient client)
-        {
-            var request = new Request(
-                HttpMethod.Get,
-                page.GetNextPageUrl(Rest.Domain.Serverless)
-            );
-
-            var response = client.Request(request);
-            return Page<BuildResource>.FromJson("builds", response.Content);
-        }
-
-        /// <summary>
-        /// Fetch the previous page of records
-        /// </summary>
-        /// <param name="page"> current page of records </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns>
-        public static Page<BuildResource> PreviousPage(Page<BuildResource> page, ITwilioRestClient client)
-        {
-            var request = new Request(
-                HttpMethod.Get,
-                page.GetPreviousPageUrl(Rest.Domain.Serverless)
-            );
-
-            var response = client.Request(request);
-            return Page<BuildResource>.FromJson("builds", response.Content);
-        }
-
-        private static Request BuildFetchRequest(FetchBuildOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Get,
-                Rest.Domain.Serverless,
-                "/v1/Services/" + options.PathServiceSid + "/Builds/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// Retrieve a specific Build resource.
-        /// </summary>
-        /// <param name="options"> Fetch Build parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Build </returns>
-        public static BuildResource Fetch(FetchBuildOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Retrieve a specific Build resource.
-        /// </summary>
-        /// <param name="options"> Fetch Build parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Build </returns>
-        public static async System.Threading.Tasks.Task<BuildResource> FetchAsync(FetchBuildOptions options,
-                                                                                  ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// Retrieve a specific Build resource.
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to fetch the Build resource from </param>
-        /// <param name="pathSid"> The SID of the Build resource to fetch </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Build </returns>
-        public static BuildResource Fetch(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
-        {
-            var options = new FetchBuildOptions(pathServiceSid, pathSid);
-            return Fetch(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Retrieve a specific Build resource.
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to fetch the Build resource from </param>
-        /// <param name="pathSid"> The SID of the Build resource to fetch </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Build </returns>
-        public static async System.Threading.Tasks.Task<BuildResource> FetchAsync(string pathServiceSid,
-                                                                                  string pathSid,
-                                                                                  ITwilioRestClient client = null)
-        {
-            var options = new FetchBuildOptions(pathServiceSid, pathSid);
-            return await FetchAsync(options, client);
-        }
-        #endif
-
-        private static Request BuildDeleteRequest(DeleteBuildOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Delete,
-                Rest.Domain.Serverless,
-                "/v1/Services/" + options.PathServiceSid + "/Builds/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// Delete a Build resource.
-        /// </summary>
-        /// <param name="options"> Delete Build parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Build </returns>
-        public static bool Delete(DeleteBuildOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Delete a Build resource.
-        /// </summary>
-        /// <param name="options"> Delete Build parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Build </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteBuildOptions options,
-                                                                          ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
-        }
-        #endif
-
-        /// <summary>
-        /// Delete a Build resource.
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to delete the Build resource from </param>
-        /// <param name="pathSid"> The SID of the Build resource to delete </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Build </returns>
-        public static bool Delete(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
-        {
-            var options = new DeleteBuildOptions(pathServiceSid, pathSid);
-            return Delete(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Delete a Build resource.
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to delete the Build resource from </param>
-        /// <param name="pathSid"> The SID of the Build resource to delete </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Build </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid,
-                                                                          string pathSid,
-                                                                          ITwilioRestClient client = null)
-        {
-            var options = new DeleteBuildOptions(pathServiceSid, pathSid);
-            return await DeleteAsync(options, client);
-        }
-        #endif
-
-        private static Request BuildCreateRequest(CreateBuildOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Post,
-                Rest.Domain.Serverless,
-                "/v1/Services/" + options.PathServiceSid + "/Builds",
-                postParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// Create a new Build resource. At least one function version or asset version is required.
-        /// </summary>
-        /// <param name="options"> Create Build parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Build </returns>
-        public static BuildResource Create(CreateBuildOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildCreateRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Create a new Build resource. At least one function version or asset version is required.
-        /// </summary>
-        /// <param name="options"> Create Build parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Build </returns>
-        public static async System.Threading.Tasks.Task<BuildResource> CreateAsync(CreateBuildOptions options,
-                                                                                   ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// Create a new Build resource. At least one function version or asset version is required.
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to create the Build resource under </param>
-        /// <param name="assetVersions"> The list of Asset Version resource SIDs to include in the Build </param>
-        /// <param name="functionVersions"> The list of the Function Version resource SIDs to include in the Build </param>
-        /// <param name="dependencies"> A list of objects that describe the Dependencies included in the Build </param>
-        /// <param name="runtime"> The Runtime version that will be used to run the Build. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Build </returns>
-        public static BuildResource Create(string pathServiceSid,
-                                           List<string> assetVersions = null,
-                                           List<string> functionVersions = null,
-                                           string dependencies = null,
-                                           string runtime = null,
-                                           ITwilioRestClient client = null)
-        {
-            var options = new CreateBuildOptions(pathServiceSid){AssetVersions = assetVersions, FunctionVersions = functionVersions, Dependencies = dependencies, Runtime = runtime};
-            return Create(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Create a new Build resource. At least one function version or asset version is required.
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to create the Build resource under </param>
-        /// <param name="assetVersions"> The list of Asset Version resource SIDs to include in the Build </param>
-        /// <param name="functionVersions"> The list of the Function Version resource SIDs to include in the Build </param>
-        /// <param name="dependencies"> A list of objects that describe the Dependencies included in the Build </param>
-        /// <param name="runtime"> The Runtime version that will be used to run the Build. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Build </returns>
-        public static async System.Threading.Tasks.Task<BuildResource> CreateAsync(string pathServiceSid,
-                                                                                   List<string> assetVersions = null,
-                                                                                   List<string> functionVersions = null,
-                                                                                   string dependencies = null,
-                                                                                   string runtime = null,
-                                                                                   ITwilioRestClient client = null)
-        {
-            var options = new CreateBuildOptions(pathServiceSid){AssetVersions = assetVersions, FunctionVersions = functionVersions, Dependencies = dependencies, Runtime = runtime};
-            return await CreateAsync(options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Converts a JSON string into a BuildResource object
-        /// </summary>
-        /// <param name="json"> Raw JSON string </param>
-        /// <returns> BuildResource object represented by the provided JSON </returns>
-        public static BuildResource FromJson(string json)
-        {
-            // Convert all checked exceptions to Runtime
-            try
-            {
-                return JsonConvert.DeserializeObject<BuildResource>(json);
-            }
-            catch (JsonException e)
-            {
-                throw new ApiException(e.Message, e);
-            }
-        }
-
-        /// <summary>
-        /// The unique string that identifies the Build resource
-        /// </summary>
-        [JsonProperty("sid")]
-        public string Sid { get; private set; }
-        /// <summary>
-        /// The SID of the Account that created the Build resource
-        /// </summary>
-        [JsonProperty("account_sid")]
-        public string AccountSid { get; private set; }
-        /// <summary>
-        /// The SID of the Service that the Build resource is associated with
-        /// </summary>
-        [JsonProperty("service_sid")]
-        public string ServiceSid { get; private set; }
-        /// <summary>
-        /// The status of the Build
-        /// </summary>
-        [JsonProperty("status")]
-        [JsonConverter(typeof(StringEnumConverter))]
-        public BuildResource.StatusEnum Status { get; private set; }
-        /// <summary>
-        /// The list of Asset Version resource SIDs that are included in the Build
-        /// </summary>
-        [JsonProperty("asset_versions")]
-        public List<object> AssetVersions { get; private set; }
-        /// <summary>
-        /// The list of Function Version resource SIDs that are included in the Build
-        /// </summary>
-        [JsonProperty("function_versions")]
-        public List<object> FunctionVersions { get; private set; }
-        /// <summary>
-        /// A list of objects that describe the Dependencies included in the Build
-        /// </summary>
-        [JsonProperty("dependencies")]
-        public List<object> Dependencies { get; private set; }
-        /// <summary>
-        /// The Runtime version that will be used to run the Build.
-        /// </summary>
-        [JsonProperty("runtime")]
-        [JsonConverter(typeof(StringEnumConverter))]
-        public BuildResource.RuntimeEnum Runtime { get; private set; }
-        /// <summary>
-        /// The ISO 8601 date and time in GMT when the Build resource was created
-        /// </summary>
-        [JsonProperty("date_created")]
-        public DateTime? DateCreated { get; private set; }
-        /// <summary>
-        /// The ISO 8601 date and time in GMT when the Build resource was last updated
-        /// </summary>
-        [JsonProperty("date_updated")]
-        public DateTime? DateUpdated { get; private set; }
-        /// <summary>
-        /// The absolute URL of the Build resource
-        /// </summary>
-        [JsonProperty("url")]
-        public Uri Url { get; private set; }
-        /// <summary>
-        /// The links
-        /// </summary>
-        [JsonProperty("links")]
-        public Dictionary<string, string> Links { get; private set; }
-
-        private BuildResource()
-        {
-
-        }
+      public static readonly StatusEnum Building = new StatusEnum("building");
+      public static readonly StatusEnum Completed = new StatusEnum("completed");
+      public static readonly StatusEnum Failed = new StatusEnum("failed");
     }
+
+    public sealed class RuntimeEnum : StringEnum
+    {
+      private RuntimeEnum(string value) : base(value) { }
+      public RuntimeEnum() { }
+      public static implicit operator RuntimeEnum(string value)
+      {
+        return new RuntimeEnum(value);
+      }
+
+      public static readonly RuntimeEnum Node8 = new RuntimeEnum("node8");
+      public static readonly RuntimeEnum Node10 = new RuntimeEnum("node10");
+      public static readonly RuntimeEnum Node12 = new RuntimeEnum("node12");
+      public static readonly RuntimeEnum Node14 = new RuntimeEnum("node14");
+    }
+
+    private static Request BuildReadRequest(ReadBuildOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Get,
+          Rest.Domain.Serverless,
+          "/v1/Services/" + options.PathServiceSid + "/Builds",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// Retrieve a list of all Builds.
+    /// </summary>
+    /// <param name="options"> Read Build parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Build </returns>
+    public static ResourceSet<BuildResource> Read(ReadBuildOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildReadRequest(options, client));
+
+      var page = Page<BuildResource>.FromJson("builds", response.Content);
+      return new ResourceSet<BuildResource>(page, options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Retrieve a list of all Builds.
+    /// </summary>
+    /// <param name="options"> Read Build parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Build </returns>
+    public static async System.Threading.Tasks.Task<ResourceSet<BuildResource>> ReadAsync(ReadBuildOptions options,
+                                                                                          ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+      var page = Page<BuildResource>.FromJson("builds", response.Content);
+      return new ResourceSet<BuildResource>(page, options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Retrieve a list of all Builds.
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to read the Build resources from </param>
+    /// <param name="pageSize"> Page size </param>
+    /// <param name="limit"> Record limit </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Build </returns>
+    public static ResourceSet<BuildResource> Read(string pathServiceSid,
+                                                  int? pageSize = null,
+                                                  long? limit = null,
+                                                  ITwilioRestClient client = null)
+    {
+      var options = new ReadBuildOptions(pathServiceSid) { PageSize = pageSize, Limit = limit };
+      return Read(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Retrieve a list of all Builds.
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to read the Build resources from </param>
+    /// <param name="pageSize"> Page size </param>
+    /// <param name="limit"> Record limit </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Build </returns>
+    public static async System.Threading.Tasks.Task<ResourceSet<BuildResource>> ReadAsync(string pathServiceSid,
+                                                                                          int? pageSize = null,
+                                                                                          long? limit = null,
+                                                                                          ITwilioRestClient client = null)
+    {
+      var options = new ReadBuildOptions(pathServiceSid) { PageSize = pageSize, Limit = limit };
+      return await ReadAsync(options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Fetch the target page of records
+    /// </summary>
+    /// <param name="targetUrl"> API-generated URL for the requested results page </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> The target page of records </returns>
+    public static Page<BuildResource> GetPage(string targetUrl, ITwilioRestClient client)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+
+      var request = new Request(
+          HttpMethod.Get,
+          targetUrl
+      );
+
+      var response = client.Request(request);
+      return Page<BuildResource>.FromJson("builds", response.Content);
+    }
+
+    /// <summary>
+    /// Fetch the next page of records
+    /// </summary>
+    /// <param name="page"> current page of records </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> The next page of records </returns>
+    public static Page<BuildResource> NextPage(Page<BuildResource> page, ITwilioRestClient client)
+    {
+      var request = new Request(
+          HttpMethod.Get,
+          page.GetNextPageUrl(Rest.Domain.Serverless)
+      );
+
+      var response = client.Request(request);
+      return Page<BuildResource>.FromJson("builds", response.Content);
+    }
+
+    /// <summary>
+    /// Fetch the previous page of records
+    /// </summary>
+    /// <param name="page"> current page of records </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> The previous page of records </returns>
+    public static Page<BuildResource> PreviousPage(Page<BuildResource> page, ITwilioRestClient client)
+    {
+      var request = new Request(
+          HttpMethod.Get,
+          page.GetPreviousPageUrl(Rest.Domain.Serverless)
+      );
+
+      var response = client.Request(request);
+      return Page<BuildResource>.FromJson("builds", response.Content);
+    }
+
+    private static Request BuildFetchRequest(FetchBuildOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Get,
+          Rest.Domain.Serverless,
+          "/v1/Services/" + options.PathServiceSid + "/Builds/" + options.PathSid + "",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// Retrieve a specific Build resource.
+    /// </summary>
+    /// <param name="options"> Fetch Build parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Build </returns>
+    public static BuildResource Fetch(FetchBuildOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Retrieve a specific Build resource.
+    /// </summary>
+    /// <param name="options"> Fetch Build parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Build </returns>
+    public static async System.Threading.Tasks.Task<BuildResource> FetchAsync(FetchBuildOptions options,
+                                                                              ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// Retrieve a specific Build resource.
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to fetch the Build resource from </param>
+    /// <param name="pathSid"> The SID of the Build resource to fetch </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Build </returns>
+    public static BuildResource Fetch(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
+    {
+      var options = new FetchBuildOptions(pathServiceSid, pathSid);
+      return Fetch(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Retrieve a specific Build resource.
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to fetch the Build resource from </param>
+    /// <param name="pathSid"> The SID of the Build resource to fetch </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Build </returns>
+    public static async System.Threading.Tasks.Task<BuildResource> FetchAsync(string pathServiceSid,
+                                                                              string pathSid,
+                                                                              ITwilioRestClient client = null)
+    {
+      var options = new FetchBuildOptions(pathServiceSid, pathSid);
+      return await FetchAsync(options, client);
+    }
+#endif
+
+    private static Request BuildDeleteRequest(DeleteBuildOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Delete,
+          Rest.Domain.Serverless,
+          "/v1/Services/" + options.PathServiceSid + "/Builds/" + options.PathSid + "",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// Delete a Build resource.
+    /// </summary>
+    /// <param name="options"> Delete Build parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Build </returns>
+    public static bool Delete(DeleteBuildOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildDeleteRequest(options, client));
+      return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+    }
+
+#if !NET35
+    /// <summary>
+    /// Delete a Build resource.
+    /// </summary>
+    /// <param name="options"> Delete Build parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Build </returns>
+    public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteBuildOptions options,
+                                                                      ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+      return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+    }
+#endif
+
+    /// <summary>
+    /// Delete a Build resource.
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to delete the Build resource from </param>
+    /// <param name="pathSid"> The SID of the Build resource to delete </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Build </returns>
+    public static bool Delete(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
+    {
+      var options = new DeleteBuildOptions(pathServiceSid, pathSid);
+      return Delete(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Delete a Build resource.
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to delete the Build resource from </param>
+    /// <param name="pathSid"> The SID of the Build resource to delete </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Build </returns>
+    public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid,
+                                                                      string pathSid,
+                                                                      ITwilioRestClient client = null)
+    {
+      var options = new DeleteBuildOptions(pathServiceSid, pathSid);
+      return await DeleteAsync(options, client);
+    }
+#endif
+
+    private static Request BuildCreateRequest(CreateBuildOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Post,
+          Rest.Domain.Serverless,
+          "/v1/Services/" + options.PathServiceSid + "/Builds",
+          postParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// Create a new Build resource. At least one function version or asset version is required.
+    /// </summary>
+    /// <param name="options"> Create Build parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Build </returns>
+    public static BuildResource Create(CreateBuildOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildCreateRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Create a new Build resource. At least one function version or asset version is required.
+    /// </summary>
+    /// <param name="options"> Create Build parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Build </returns>
+    public static async System.Threading.Tasks.Task<BuildResource> CreateAsync(CreateBuildOptions options,
+                                                                               ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildCreateRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// Create a new Build resource. At least one function version or asset version is required.
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to create the Build resource under </param>
+    /// <param name="assetVersions"> The list of Asset Version resource SIDs to include in the Build </param>
+    /// <param name="functionVersions"> The list of the Function Version resource SIDs to include in the Build </param>
+    /// <param name="dependencies"> A list of objects that describe the Dependencies included in the Build </param>
+    /// <param name="runtime"> The Runtime version that will be used to run the Build. </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Build </returns>
+    public static BuildResource Create(string pathServiceSid,
+                                       List<string> assetVersions = null,
+                                       List<string> functionVersions = null,
+                                       string dependencies = null,
+                                       string runtime = null,
+                                       ITwilioRestClient client = null)
+    {
+      var options = new CreateBuildOptions(pathServiceSid) { AssetVersions = assetVersions, FunctionVersions = functionVersions, Dependencies = dependencies, Runtime = runtime };
+      return Create(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Create a new Build resource. At least one function version or asset version is required.
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to create the Build resource under </param>
+    /// <param name="assetVersions"> The list of Asset Version resource SIDs to include in the Build </param>
+    /// <param name="functionVersions"> The list of the Function Version resource SIDs to include in the Build </param>
+    /// <param name="dependencies"> A list of objects that describe the Dependencies included in the Build </param>
+    /// <param name="runtime"> The Runtime version that will be used to run the Build. </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Build </returns>
+    public static async System.Threading.Tasks.Task<BuildResource> CreateAsync(string pathServiceSid,
+                                                                               List<string> assetVersions = null,
+                                                                               List<string> functionVersions = null,
+                                                                               string dependencies = null,
+                                                                               string runtime = null,
+                                                                               ITwilioRestClient client = null)
+    {
+      var options = new CreateBuildOptions(pathServiceSid) { AssetVersions = assetVersions, FunctionVersions = functionVersions, Dependencies = dependencies, Runtime = runtime };
+      return await CreateAsync(options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Converts a JSON string into a BuildResource object
+    /// </summary>
+    /// <param name="json"> Raw JSON string </param>
+    /// <returns> BuildResource object represented by the provided JSON </returns>
+    public static BuildResource FromJson(string json)
+    {
+      // Convert all checked exceptions to Runtime
+      try
+      {
+        return JsonConvert.DeserializeObject<BuildResource>(json);
+      }
+      catch (JsonException e)
+      {
+        throw new ApiException(e.Message, e);
+      }
+    }
+
+    /// <summary>
+    /// The unique string that identifies the Build resource
+    /// </summary>
+    [JsonProperty("sid")]
+    public string Sid { get; private set; }
+    /// <summary>
+    /// The SID of the Account that created the Build resource
+    /// </summary>
+    [JsonProperty("account_sid")]
+    public string AccountSid { get; private set; }
+    /// <summary>
+    /// The SID of the Service that the Build resource is associated with
+    /// </summary>
+    [JsonProperty("service_sid")]
+    public string ServiceSid { get; private set; }
+    /// <summary>
+    /// The status of the Build
+    /// </summary>
+    [JsonProperty("status")]
+    [JsonConverter(typeof(StringEnumConverter))]
+    public BuildResource.StatusEnum Status { get; private set; }
+    /// <summary>
+    /// The list of Asset Version resource SIDs that are included in the Build
+    /// </summary>
+    [JsonProperty("asset_versions")]
+    public List<object> AssetVersions { get; private set; }
+    /// <summary>
+    /// The list of Function Version resource SIDs that are included in the Build
+    /// </summary>
+    [JsonProperty("function_versions")]
+    public List<object> FunctionVersions { get; private set; }
+    /// <summary>
+    /// A list of objects that describe the Dependencies included in the Build
+    /// </summary>
+    [JsonProperty("dependencies")]
+    public List<object> Dependencies { get; private set; }
+    /// <summary>
+    /// The Runtime version that will be used to run the Build.
+    /// </summary>
+    [JsonProperty("runtime")]
+    [JsonConverter(typeof(StringEnumConverter))]
+    public BuildResource.RuntimeEnum Runtime { get; private set; }
+    /// <summary>
+    /// The ISO 8601 date and time in GMT when the Build resource was created
+    /// </summary>
+    [JsonProperty("date_created")]
+    public DateTime? DateCreated { get; private set; }
+    /// <summary>
+    /// The ISO 8601 date and time in GMT when the Build resource was last updated
+    /// </summary>
+    [JsonProperty("date_updated")]
+    public DateTime? DateUpdated { get; private set; }
+    /// <summary>
+    /// The absolute URL of the Build resource
+    /// </summary>
+    [JsonProperty("url")]
+    public Uri Url { get; private set; }
+    /// <summary>
+    /// The links
+    /// </summary>
+    [JsonProperty("links")]
+    public Dictionary<string, string> Links { get; private set; }
+
+    private BuildResource()
+    {
+
+    }
+  }
 
 }

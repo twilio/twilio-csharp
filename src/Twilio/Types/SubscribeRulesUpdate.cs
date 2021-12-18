@@ -10,17 +10,17 @@ using Twilio.Converters;
 /// </summary>
 namespace Twilio.Types
 {
-    public class SubscribeRulesUpdate
-    {
-        [JsonProperty("rules")]
-        public List<SubscribeRule> Rules { get; private set; }
+  public class SubscribeRulesUpdate
+  {
+    [JsonProperty("rules")]
+    public List<SubscribeRule> Rules { get; private set; }
 
-        public SubscribeRulesUpdate (
-            [JsonProperty("rules")]
+    public SubscribeRulesUpdate(
+        [JsonProperty("rules")]
             List<SubscribeRule> rules
-        )
-        {
-            Rules = rules;
-        }
+    )
+    {
+      Rules = rules;
     }
+  }
 }

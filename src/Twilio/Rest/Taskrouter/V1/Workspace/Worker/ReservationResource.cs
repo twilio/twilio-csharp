@@ -19,676 +19,676 @@ using Twilio.Types;
 namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
 {
 
-    public class ReservationResource : Resource
+  public class ReservationResource : Resource
+  {
+    public sealed class StatusEnum : StringEnum
     {
-        public sealed class StatusEnum : StringEnum
-        {
-            private StatusEnum(string value) : base(value) {}
-            public StatusEnum() {}
-            public static implicit operator StatusEnum(string value)
-            {
-                return new StatusEnum(value);
-            }
+      private StatusEnum(string value) : base(value) { }
+      public StatusEnum() { }
+      public static implicit operator StatusEnum(string value)
+      {
+        return new StatusEnum(value);
+      }
 
-            public static readonly StatusEnum Pending = new StatusEnum("pending");
-            public static readonly StatusEnum Accepted = new StatusEnum("accepted");
-            public static readonly StatusEnum Rejected = new StatusEnum("rejected");
-            public static readonly StatusEnum Timeout = new StatusEnum("timeout");
-            public static readonly StatusEnum Canceled = new StatusEnum("canceled");
-            public static readonly StatusEnum Rescinded = new StatusEnum("rescinded");
-            public static readonly StatusEnum Wrapping = new StatusEnum("wrapping");
-            public static readonly StatusEnum Completed = new StatusEnum("completed");
-        }
-
-        public sealed class CallStatusEnum : StringEnum
-        {
-            private CallStatusEnum(string value) : base(value) {}
-            public CallStatusEnum() {}
-            public static implicit operator CallStatusEnum(string value)
-            {
-                return new CallStatusEnum(value);
-            }
-
-            public static readonly CallStatusEnum Initiated = new CallStatusEnum("initiated");
-            public static readonly CallStatusEnum Ringing = new CallStatusEnum("ringing");
-            public static readonly CallStatusEnum Answered = new CallStatusEnum("answered");
-            public static readonly CallStatusEnum Completed = new CallStatusEnum("completed");
-        }
-
-        public sealed class ConferenceEventEnum : StringEnum
-        {
-            private ConferenceEventEnum(string value) : base(value) {}
-            public ConferenceEventEnum() {}
-            public static implicit operator ConferenceEventEnum(string value)
-            {
-                return new ConferenceEventEnum(value);
-            }
-
-            public static readonly ConferenceEventEnum Start = new ConferenceEventEnum("start");
-            public static readonly ConferenceEventEnum End = new ConferenceEventEnum("end");
-            public static readonly ConferenceEventEnum Join = new ConferenceEventEnum("join");
-            public static readonly ConferenceEventEnum Leave = new ConferenceEventEnum("leave");
-            public static readonly ConferenceEventEnum Mute = new ConferenceEventEnum("mute");
-            public static readonly ConferenceEventEnum Hold = new ConferenceEventEnum("hold");
-            public static readonly ConferenceEventEnum Speaker = new ConferenceEventEnum("speaker");
-        }
-
-        private static Request BuildReadRequest(ReadReservationOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Get,
-                Rest.Domain.Taskrouter,
-                "/v1/Workspaces/" + options.PathWorkspaceSid + "/Workers/" + options.PathWorkerSid + "/Reservations",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// read
-        /// </summary>
-        /// <param name="options"> Read Reservation parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Reservation </returns>
-        public static ResourceSet<ReservationResource> Read(ReadReservationOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildReadRequest(options, client));
-
-            var page = Page<ReservationResource>.FromJson("reservations", response.Content);
-            return new ResourceSet<ReservationResource>(page, options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// read
-        /// </summary>
-        /// <param name="options"> Read Reservation parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Reservation </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<ReservationResource>> ReadAsync(ReadReservationOptions options,
-                                                                                                    ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
-
-            var page = Page<ReservationResource>.FromJson("reservations", response.Content);
-            return new ResourceSet<ReservationResource>(page, options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// read
-        /// </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the WorkerReservation resources to read </param>
-        /// <param name="pathWorkerSid"> The SID of the reserved Worker resource with the WorkerReservation resources to read
-        ///                     </param>
-        /// <param name="reservationStatus"> Returns the list of reservations for a worker with a specified ReservationStatus
-        ///                         </param>
-        /// <param name="pageSize"> Page size </param>
-        /// <param name="limit"> Record limit </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Reservation </returns>
-        public static ResourceSet<ReservationResource> Read(string pathWorkspaceSid,
-                                                            string pathWorkerSid,
-                                                            ReservationResource.StatusEnum reservationStatus = null,
-                                                            int? pageSize = null,
-                                                            long? limit = null,
-                                                            ITwilioRestClient client = null)
-        {
-            var options = new ReadReservationOptions(pathWorkspaceSid, pathWorkerSid){ReservationStatus = reservationStatus, PageSize = pageSize, Limit = limit};
-            return Read(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// read
-        /// </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the WorkerReservation resources to read </param>
-        /// <param name="pathWorkerSid"> The SID of the reserved Worker resource with the WorkerReservation resources to read
-        ///                     </param>
-        /// <param name="reservationStatus"> Returns the list of reservations for a worker with a specified ReservationStatus
-        ///                         </param>
-        /// <param name="pageSize"> Page size </param>
-        /// <param name="limit"> Record limit </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Reservation </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<ReservationResource>> ReadAsync(string pathWorkspaceSid,
-                                                                                                    string pathWorkerSid,
-                                                                                                    ReservationResource.StatusEnum reservationStatus = null,
-                                                                                                    int? pageSize = null,
-                                                                                                    long? limit = null,
-                                                                                                    ITwilioRestClient client = null)
-        {
-            var options = new ReadReservationOptions(pathWorkspaceSid, pathWorkerSid){ReservationStatus = reservationStatus, PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Fetch the target page of records
-        /// </summary>
-        /// <param name="targetUrl"> API-generated URL for the requested results page </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns>
-        public static Page<ReservationResource> GetPage(string targetUrl, ITwilioRestClient client)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-
-            var request = new Request(
-                HttpMethod.Get,
-                targetUrl
-            );
-
-            var response = client.Request(request);
-            return Page<ReservationResource>.FromJson("reservations", response.Content);
-        }
-
-        /// <summary>
-        /// Fetch the next page of records
-        /// </summary>
-        /// <param name="page"> current page of records </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns>
-        public static Page<ReservationResource> NextPage(Page<ReservationResource> page, ITwilioRestClient client)
-        {
-            var request = new Request(
-                HttpMethod.Get,
-                page.GetNextPageUrl(Rest.Domain.Taskrouter)
-            );
-
-            var response = client.Request(request);
-            return Page<ReservationResource>.FromJson("reservations", response.Content);
-        }
-
-        /// <summary>
-        /// Fetch the previous page of records
-        /// </summary>
-        /// <param name="page"> current page of records </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns>
-        public static Page<ReservationResource> PreviousPage(Page<ReservationResource> page, ITwilioRestClient client)
-        {
-            var request = new Request(
-                HttpMethod.Get,
-                page.GetPreviousPageUrl(Rest.Domain.Taskrouter)
-            );
-
-            var response = client.Request(request);
-            return Page<ReservationResource>.FromJson("reservations", response.Content);
-        }
-
-        private static Request BuildFetchRequest(FetchReservationOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Get,
-                Rest.Domain.Taskrouter,
-                "/v1/Workspaces/" + options.PathWorkspaceSid + "/Workers/" + options.PathWorkerSid + "/Reservations/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="options"> Fetch Reservation parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Reservation </returns>
-        public static ReservationResource Fetch(FetchReservationOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="options"> Fetch Reservation parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Reservation </returns>
-        public static async System.Threading.Tasks.Task<ReservationResource> FetchAsync(FetchReservationOptions options,
-                                                                                        ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the WorkerReservation resource to fetch </param>
-        /// <param name="pathWorkerSid"> The SID of the reserved Worker resource with the WorkerReservation resource to fetch
-        ///                     </param>
-        /// <param name="pathSid"> The SID of the WorkerReservation resource to fetch </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Reservation </returns>
-        public static ReservationResource Fetch(string pathWorkspaceSid,
-                                                string pathWorkerSid,
-                                                string pathSid,
-                                                ITwilioRestClient client = null)
-        {
-            var options = new FetchReservationOptions(pathWorkspaceSid, pathWorkerSid, pathSid);
-            return Fetch(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the WorkerReservation resource to fetch </param>
-        /// <param name="pathWorkerSid"> The SID of the reserved Worker resource with the WorkerReservation resource to fetch
-        ///                     </param>
-        /// <param name="pathSid"> The SID of the WorkerReservation resource to fetch </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Reservation </returns>
-        public static async System.Threading.Tasks.Task<ReservationResource> FetchAsync(string pathWorkspaceSid,
-                                                                                        string pathWorkerSid,
-                                                                                        string pathSid,
-                                                                                        ITwilioRestClient client = null)
-        {
-            var options = new FetchReservationOptions(pathWorkspaceSid, pathWorkerSid, pathSid);
-            return await FetchAsync(options, client);
-        }
-        #endif
-
-        private static Request BuildUpdateRequest(UpdateReservationOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Post,
-                Rest.Domain.Taskrouter,
-                "/v1/Workspaces/" + options.PathWorkspaceSid + "/Workers/" + options.PathWorkerSid + "/Reservations/" + options.PathSid + "",
-                postParams: options.GetParams(),
-                headerParams: options.GetHeaderParams()
-            );
-        }
-
-        /// <summary>
-        /// update
-        /// </summary>
-        /// <param name="options"> Update Reservation parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Reservation </returns>
-        public static ReservationResource Update(UpdateReservationOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildUpdateRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// update
-        /// </summary>
-        /// <param name="options"> Update Reservation parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Reservation </returns>
-        public static async System.Threading.Tasks.Task<ReservationResource> UpdateAsync(UpdateReservationOptions options,
-                                                                                         ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// update
-        /// </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the WorkerReservation resources to update </param>
-        /// <param name="pathWorkerSid"> The SID of the reserved Worker resource with the WorkerReservation resources to update
-        ///                     </param>
-        /// <param name="pathSid"> The SID of the WorkerReservation resource to update </param>
-        /// <param name="reservationStatus"> The new status of the reservation </param>
-        /// <param name="workerActivitySid"> The new worker activity SID if rejecting a reservation </param>
-        /// <param name="instruction"> The assignment instruction for the reservation </param>
-        /// <param name="dequeuePostWorkActivitySid"> The SID of the Activity resource to start after executing a Dequeue
-        ///                                  instruction </param>
-        /// <param name="dequeueFrom"> The caller ID of the call to the worker when executing a Dequeue instruction </param>
-        /// <param name="dequeueRecord"> Whether to record both legs of a call when executing a Dequeue instruction </param>
-        /// <param name="dequeueTimeout"> The timeout for call when executing a Dequeue instruction </param>
-        /// <param name="dequeueTo"> The contact URI of the worker when executing a Dequeue instruction </param>
-        /// <param name="dequeueStatusCallbackUrl"> The callback URL for completed call event when executing a Dequeue
-        ///                                instruction </param>
-        /// <param name="callFrom"> The Caller ID of the outbound call when executing a Call instruction </param>
-        /// <param name="callRecord"> Whether to record both legs of a call when executing a Call instruction </param>
-        /// <param name="callTimeout"> The timeout for a call when executing a Call instruction </param>
-        /// <param name="callTo"> The contact URI of the worker when executing a Call instruction </param>
-        /// <param name="callUrl"> TwiML URI executed on answering the worker's leg as a result of the Call instruction </param>
-        /// <param name="callStatusCallbackUrl"> The URL to call for the completed call event when executing a Call instruction
-        ///                             </param>
-        /// <param name="callAccept"> Whether to accept a reservation when executing a Call instruction </param>
-        /// <param name="redirectCallSid"> The Call SID of the call parked in the queue when executing a Redirect instruction
-        ///                       </param>
-        /// <param name="redirectAccept"> Whether the reservation should be accepted when executing a Redirect instruction
-        ///                      </param>
-        /// <param name="redirectUrl"> TwiML URI to redirect the call to when executing the Redirect instruction </param>
-        /// <param name="to"> The Contact URI of the worker when executing a Conference instruction </param>
-        /// <param name="from"> The caller ID of the call to the worker when executing a Conference instruction </param>
-        /// <param name="statusCallback"> The URL we should call to send status information to your application </param>
-        /// <param name="statusCallbackMethod"> The HTTP method we should use to call status_callback </param>
-        /// <param name="statusCallbackEvent"> The call progress events that we will send to status_callback </param>
-        /// <param name="timeout"> The timeout for a call when executing a Conference instruction </param>
-        /// <param name="record"> Whether to record the participant and their conferences </param>
-        /// <param name="muted"> Whether to mute the agent </param>
-        /// <param name="beep"> Whether to play a notification beep when the participant joins </param>
-        /// <param name="startConferenceOnEnter"> Whether the conference starts when the participant joins the conference
-        ///                              </param>
-        /// <param name="endConferenceOnExit"> Whether to end the conference when the agent leaves </param>
-        /// <param name="waitUrl"> URL that hosts pre-conference hold music </param>
-        /// <param name="waitMethod"> The HTTP method we should use to call `wait_url` </param>
-        /// <param name="earlyMedia"> Whether agents can hear the state of the outbound call </param>
-        /// <param name="maxParticipants"> The maximum number of agent conference participants </param>
-        /// <param name="conferenceStatusCallback"> The callback URL for conference events </param>
-        /// <param name="conferenceStatusCallbackMethod"> HTTP method for requesting `conference_status_callback` URL </param>
-        /// <param name="conferenceStatusCallbackEvent"> The conference status events that we will send to
-        ///                                     conference_status_callback </param>
-        /// <param name="conferenceRecord"> Whether to record the conference the participant is joining </param>
-        /// <param name="conferenceTrim"> Whether to trim leading and trailing silence from your recorded conference audio
-        ///                      files </param>
-        /// <param name="recordingChannels"> Specify `mono` or `dual` recording channels </param>
-        /// <param name="recordingStatusCallback"> The URL that we should call using the `recording_status_callback_method`
-        ///                               when the recording status changes </param>
-        /// <param name="recordingStatusCallbackMethod"> The HTTP method we should use when we call `recording_status_callback`
-        ///                                     </param>
-        /// <param name="conferenceRecordingStatusCallback"> The URL we should call using the
-        ///                                         `conference_recording_status_callback_method` when the conference recording
-        ///                                         is available </param>
-        /// <param name="conferenceRecordingStatusCallbackMethod"> The HTTP method we should use to call
-        ///                                               `conference_recording_status_callback` </param>
-        /// <param name="region"> The region where we should mix the conference audio </param>
-        /// <param name="sipAuthUsername"> The SIP username used for authentication </param>
-        /// <param name="sipAuthPassword"> The SIP password for authentication </param>
-        /// <param name="dequeueStatusCallbackEvent"> The call progress events sent via webhooks as a result of a Dequeue
-        ///                                  instruction </param>
-        /// <param name="postWorkActivitySid"> The new worker activity SID after executing a Conference instruction </param>
-        /// <param name="endConferenceOnCustomerExit"> Whether to end the conference when the customer leaves </param>
-        /// <param name="beepOnCustomerEntrance"> Whether to play a notification beep when the customer joins </param>
-        /// <param name="ifMatch"> The If-Match HTTP request header </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Reservation </returns>
-        public static ReservationResource Update(string pathWorkspaceSid,
-                                                 string pathWorkerSid,
-                                                 string pathSid,
-                                                 ReservationResource.StatusEnum reservationStatus = null,
-                                                 string workerActivitySid = null,
-                                                 string instruction = null,
-                                                 string dequeuePostWorkActivitySid = null,
-                                                 string dequeueFrom = null,
-                                                 string dequeueRecord = null,
-                                                 int? dequeueTimeout = null,
-                                                 string dequeueTo = null,
-                                                 Uri dequeueStatusCallbackUrl = null,
-                                                 string callFrom = null,
-                                                 string callRecord = null,
-                                                 int? callTimeout = null,
-                                                 string callTo = null,
-                                                 Uri callUrl = null,
-                                                 Uri callStatusCallbackUrl = null,
-                                                 bool? callAccept = null,
-                                                 string redirectCallSid = null,
-                                                 bool? redirectAccept = null,
-                                                 Uri redirectUrl = null,
-                                                 string to = null,
-                                                 string from = null,
-                                                 Uri statusCallback = null,
-                                                 Twilio.Http.HttpMethod statusCallbackMethod = null,
-                                                 List<ReservationResource.CallStatusEnum> statusCallbackEvent = null,
-                                                 int? timeout = null,
-                                                 bool? record = null,
-                                                 bool? muted = null,
-                                                 string beep = null,
-                                                 bool? startConferenceOnEnter = null,
-                                                 bool? endConferenceOnExit = null,
-                                                 Uri waitUrl = null,
-                                                 Twilio.Http.HttpMethod waitMethod = null,
-                                                 bool? earlyMedia = null,
-                                                 int? maxParticipants = null,
-                                                 Uri conferenceStatusCallback = null,
-                                                 Twilio.Http.HttpMethod conferenceStatusCallbackMethod = null,
-                                                 List<ReservationResource.ConferenceEventEnum> conferenceStatusCallbackEvent = null,
-                                                 string conferenceRecord = null,
-                                                 string conferenceTrim = null,
-                                                 string recordingChannels = null,
-                                                 Uri recordingStatusCallback = null,
-                                                 Twilio.Http.HttpMethod recordingStatusCallbackMethod = null,
-                                                 Uri conferenceRecordingStatusCallback = null,
-                                                 Twilio.Http.HttpMethod conferenceRecordingStatusCallbackMethod = null,
-                                                 string region = null,
-                                                 string sipAuthUsername = null,
-                                                 string sipAuthPassword = null,
-                                                 List<string> dequeueStatusCallbackEvent = null,
-                                                 string postWorkActivitySid = null,
-                                                 bool? endConferenceOnCustomerExit = null,
-                                                 bool? beepOnCustomerEntrance = null,
-                                                 string ifMatch = null,
-                                                 ITwilioRestClient client = null)
-        {
-            var options = new UpdateReservationOptions(pathWorkspaceSid, pathWorkerSid, pathSid){ReservationStatus = reservationStatus, WorkerActivitySid = workerActivitySid, Instruction = instruction, DequeuePostWorkActivitySid = dequeuePostWorkActivitySid, DequeueFrom = dequeueFrom, DequeueRecord = dequeueRecord, DequeueTimeout = dequeueTimeout, DequeueTo = dequeueTo, DequeueStatusCallbackUrl = dequeueStatusCallbackUrl, CallFrom = callFrom, CallRecord = callRecord, CallTimeout = callTimeout, CallTo = callTo, CallUrl = callUrl, CallStatusCallbackUrl = callStatusCallbackUrl, CallAccept = callAccept, RedirectCallSid = redirectCallSid, RedirectAccept = redirectAccept, RedirectUrl = redirectUrl, To = to, From = from, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, StatusCallbackEvent = statusCallbackEvent, Timeout = timeout, Record = record, Muted = muted, Beep = beep, StartConferenceOnEnter = startConferenceOnEnter, EndConferenceOnExit = endConferenceOnExit, WaitUrl = waitUrl, WaitMethod = waitMethod, EarlyMedia = earlyMedia, MaxParticipants = maxParticipants, ConferenceStatusCallback = conferenceStatusCallback, ConferenceStatusCallbackMethod = conferenceStatusCallbackMethod, ConferenceStatusCallbackEvent = conferenceStatusCallbackEvent, ConferenceRecord = conferenceRecord, ConferenceTrim = conferenceTrim, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, ConferenceRecordingStatusCallback = conferenceRecordingStatusCallback, ConferenceRecordingStatusCallbackMethod = conferenceRecordingStatusCallbackMethod, Region = region, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword, DequeueStatusCallbackEvent = dequeueStatusCallbackEvent, PostWorkActivitySid = postWorkActivitySid, EndConferenceOnCustomerExit = endConferenceOnCustomerExit, BeepOnCustomerEntrance = beepOnCustomerEntrance, IfMatch = ifMatch};
-            return Update(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// update
-        /// </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the WorkerReservation resources to update </param>
-        /// <param name="pathWorkerSid"> The SID of the reserved Worker resource with the WorkerReservation resources to update
-        ///                     </param>
-        /// <param name="pathSid"> The SID of the WorkerReservation resource to update </param>
-        /// <param name="reservationStatus"> The new status of the reservation </param>
-        /// <param name="workerActivitySid"> The new worker activity SID if rejecting a reservation </param>
-        /// <param name="instruction"> The assignment instruction for the reservation </param>
-        /// <param name="dequeuePostWorkActivitySid"> The SID of the Activity resource to start after executing a Dequeue
-        ///                                  instruction </param>
-        /// <param name="dequeueFrom"> The caller ID of the call to the worker when executing a Dequeue instruction </param>
-        /// <param name="dequeueRecord"> Whether to record both legs of a call when executing a Dequeue instruction </param>
-        /// <param name="dequeueTimeout"> The timeout for call when executing a Dequeue instruction </param>
-        /// <param name="dequeueTo"> The contact URI of the worker when executing a Dequeue instruction </param>
-        /// <param name="dequeueStatusCallbackUrl"> The callback URL for completed call event when executing a Dequeue
-        ///                                instruction </param>
-        /// <param name="callFrom"> The Caller ID of the outbound call when executing a Call instruction </param>
-        /// <param name="callRecord"> Whether to record both legs of a call when executing a Call instruction </param>
-        /// <param name="callTimeout"> The timeout for a call when executing a Call instruction </param>
-        /// <param name="callTo"> The contact URI of the worker when executing a Call instruction </param>
-        /// <param name="callUrl"> TwiML URI executed on answering the worker's leg as a result of the Call instruction </param>
-        /// <param name="callStatusCallbackUrl"> The URL to call for the completed call event when executing a Call instruction
-        ///                             </param>
-        /// <param name="callAccept"> Whether to accept a reservation when executing a Call instruction </param>
-        /// <param name="redirectCallSid"> The Call SID of the call parked in the queue when executing a Redirect instruction
-        ///                       </param>
-        /// <param name="redirectAccept"> Whether the reservation should be accepted when executing a Redirect instruction
-        ///                      </param>
-        /// <param name="redirectUrl"> TwiML URI to redirect the call to when executing the Redirect instruction </param>
-        /// <param name="to"> The Contact URI of the worker when executing a Conference instruction </param>
-        /// <param name="from"> The caller ID of the call to the worker when executing a Conference instruction </param>
-        /// <param name="statusCallback"> The URL we should call to send status information to your application </param>
-        /// <param name="statusCallbackMethod"> The HTTP method we should use to call status_callback </param>
-        /// <param name="statusCallbackEvent"> The call progress events that we will send to status_callback </param>
-        /// <param name="timeout"> The timeout for a call when executing a Conference instruction </param>
-        /// <param name="record"> Whether to record the participant and their conferences </param>
-        /// <param name="muted"> Whether to mute the agent </param>
-        /// <param name="beep"> Whether to play a notification beep when the participant joins </param>
-        /// <param name="startConferenceOnEnter"> Whether the conference starts when the participant joins the conference
-        ///                              </param>
-        /// <param name="endConferenceOnExit"> Whether to end the conference when the agent leaves </param>
-        /// <param name="waitUrl"> URL that hosts pre-conference hold music </param>
-        /// <param name="waitMethod"> The HTTP method we should use to call `wait_url` </param>
-        /// <param name="earlyMedia"> Whether agents can hear the state of the outbound call </param>
-        /// <param name="maxParticipants"> The maximum number of agent conference participants </param>
-        /// <param name="conferenceStatusCallback"> The callback URL for conference events </param>
-        /// <param name="conferenceStatusCallbackMethod"> HTTP method for requesting `conference_status_callback` URL </param>
-        /// <param name="conferenceStatusCallbackEvent"> The conference status events that we will send to
-        ///                                     conference_status_callback </param>
-        /// <param name="conferenceRecord"> Whether to record the conference the participant is joining </param>
-        /// <param name="conferenceTrim"> Whether to trim leading and trailing silence from your recorded conference audio
-        ///                      files </param>
-        /// <param name="recordingChannels"> Specify `mono` or `dual` recording channels </param>
-        /// <param name="recordingStatusCallback"> The URL that we should call using the `recording_status_callback_method`
-        ///                               when the recording status changes </param>
-        /// <param name="recordingStatusCallbackMethod"> The HTTP method we should use when we call `recording_status_callback`
-        ///                                     </param>
-        /// <param name="conferenceRecordingStatusCallback"> The URL we should call using the
-        ///                                         `conference_recording_status_callback_method` when the conference recording
-        ///                                         is available </param>
-        /// <param name="conferenceRecordingStatusCallbackMethod"> The HTTP method we should use to call
-        ///                                               `conference_recording_status_callback` </param>
-        /// <param name="region"> The region where we should mix the conference audio </param>
-        /// <param name="sipAuthUsername"> The SIP username used for authentication </param>
-        /// <param name="sipAuthPassword"> The SIP password for authentication </param>
-        /// <param name="dequeueStatusCallbackEvent"> The call progress events sent via webhooks as a result of a Dequeue
-        ///                                  instruction </param>
-        /// <param name="postWorkActivitySid"> The new worker activity SID after executing a Conference instruction </param>
-        /// <param name="endConferenceOnCustomerExit"> Whether to end the conference when the customer leaves </param>
-        /// <param name="beepOnCustomerEntrance"> Whether to play a notification beep when the customer joins </param>
-        /// <param name="ifMatch"> The If-Match HTTP request header </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Reservation </returns>
-        public static async System.Threading.Tasks.Task<ReservationResource> UpdateAsync(string pathWorkspaceSid,
-                                                                                         string pathWorkerSid,
-                                                                                         string pathSid,
-                                                                                         ReservationResource.StatusEnum reservationStatus = null,
-                                                                                         string workerActivitySid = null,
-                                                                                         string instruction = null,
-                                                                                         string dequeuePostWorkActivitySid = null,
-                                                                                         string dequeueFrom = null,
-                                                                                         string dequeueRecord = null,
-                                                                                         int? dequeueTimeout = null,
-                                                                                         string dequeueTo = null,
-                                                                                         Uri dequeueStatusCallbackUrl = null,
-                                                                                         string callFrom = null,
-                                                                                         string callRecord = null,
-                                                                                         int? callTimeout = null,
-                                                                                         string callTo = null,
-                                                                                         Uri callUrl = null,
-                                                                                         Uri callStatusCallbackUrl = null,
-                                                                                         bool? callAccept = null,
-                                                                                         string redirectCallSid = null,
-                                                                                         bool? redirectAccept = null,
-                                                                                         Uri redirectUrl = null,
-                                                                                         string to = null,
-                                                                                         string from = null,
-                                                                                         Uri statusCallback = null,
-                                                                                         Twilio.Http.HttpMethod statusCallbackMethod = null,
-                                                                                         List<ReservationResource.CallStatusEnum> statusCallbackEvent = null,
-                                                                                         int? timeout = null,
-                                                                                         bool? record = null,
-                                                                                         bool? muted = null,
-                                                                                         string beep = null,
-                                                                                         bool? startConferenceOnEnter = null,
-                                                                                         bool? endConferenceOnExit = null,
-                                                                                         Uri waitUrl = null,
-                                                                                         Twilio.Http.HttpMethod waitMethod = null,
-                                                                                         bool? earlyMedia = null,
-                                                                                         int? maxParticipants = null,
-                                                                                         Uri conferenceStatusCallback = null,
-                                                                                         Twilio.Http.HttpMethod conferenceStatusCallbackMethod = null,
-                                                                                         List<ReservationResource.ConferenceEventEnum> conferenceStatusCallbackEvent = null,
-                                                                                         string conferenceRecord = null,
-                                                                                         string conferenceTrim = null,
-                                                                                         string recordingChannels = null,
-                                                                                         Uri recordingStatusCallback = null,
-                                                                                         Twilio.Http.HttpMethod recordingStatusCallbackMethod = null,
-                                                                                         Uri conferenceRecordingStatusCallback = null,
-                                                                                         Twilio.Http.HttpMethod conferenceRecordingStatusCallbackMethod = null,
-                                                                                         string region = null,
-                                                                                         string sipAuthUsername = null,
-                                                                                         string sipAuthPassword = null,
-                                                                                         List<string> dequeueStatusCallbackEvent = null,
-                                                                                         string postWorkActivitySid = null,
-                                                                                         bool? endConferenceOnCustomerExit = null,
-                                                                                         bool? beepOnCustomerEntrance = null,
-                                                                                         string ifMatch = null,
-                                                                                         ITwilioRestClient client = null)
-        {
-            var options = new UpdateReservationOptions(pathWorkspaceSid, pathWorkerSid, pathSid){ReservationStatus = reservationStatus, WorkerActivitySid = workerActivitySid, Instruction = instruction, DequeuePostWorkActivitySid = dequeuePostWorkActivitySid, DequeueFrom = dequeueFrom, DequeueRecord = dequeueRecord, DequeueTimeout = dequeueTimeout, DequeueTo = dequeueTo, DequeueStatusCallbackUrl = dequeueStatusCallbackUrl, CallFrom = callFrom, CallRecord = callRecord, CallTimeout = callTimeout, CallTo = callTo, CallUrl = callUrl, CallStatusCallbackUrl = callStatusCallbackUrl, CallAccept = callAccept, RedirectCallSid = redirectCallSid, RedirectAccept = redirectAccept, RedirectUrl = redirectUrl, To = to, From = from, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, StatusCallbackEvent = statusCallbackEvent, Timeout = timeout, Record = record, Muted = muted, Beep = beep, StartConferenceOnEnter = startConferenceOnEnter, EndConferenceOnExit = endConferenceOnExit, WaitUrl = waitUrl, WaitMethod = waitMethod, EarlyMedia = earlyMedia, MaxParticipants = maxParticipants, ConferenceStatusCallback = conferenceStatusCallback, ConferenceStatusCallbackMethod = conferenceStatusCallbackMethod, ConferenceStatusCallbackEvent = conferenceStatusCallbackEvent, ConferenceRecord = conferenceRecord, ConferenceTrim = conferenceTrim, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, ConferenceRecordingStatusCallback = conferenceRecordingStatusCallback, ConferenceRecordingStatusCallbackMethod = conferenceRecordingStatusCallbackMethod, Region = region, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword, DequeueStatusCallbackEvent = dequeueStatusCallbackEvent, PostWorkActivitySid = postWorkActivitySid, EndConferenceOnCustomerExit = endConferenceOnCustomerExit, BeepOnCustomerEntrance = beepOnCustomerEntrance, IfMatch = ifMatch};
-            return await UpdateAsync(options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Converts a JSON string into a ReservationResource object
-        /// </summary>
-        /// <param name="json"> Raw JSON string </param>
-        /// <returns> ReservationResource object represented by the provided JSON </returns>
-        public static ReservationResource FromJson(string json)
-        {
-            // Convert all checked exceptions to Runtime
-            try
-            {
-                return JsonConvert.DeserializeObject<ReservationResource>(json);
-            }
-            catch (JsonException e)
-            {
-                throw new ApiException(e.Message, e);
-            }
-        }
-
-        /// <summary>
-        /// The SID of the Account that created the resource
-        /// </summary>
-        [JsonProperty("account_sid")]
-        public string AccountSid { get; private set; }
-        /// <summary>
-        /// The ISO 8601 date and time in GMT when the resource was created
-        /// </summary>
-        [JsonProperty("date_created")]
-        public DateTime? DateCreated { get; private set; }
-        /// <summary>
-        /// The ISO 8601 date and time in GMT when the resource was last updated
-        /// </summary>
-        [JsonProperty("date_updated")]
-        public DateTime? DateUpdated { get; private set; }
-        /// <summary>
-        /// The current status of the reservation
-        /// </summary>
-        [JsonProperty("reservation_status")]
-        [JsonConverter(typeof(StringEnumConverter))]
-        public ReservationResource.StatusEnum ReservationStatus { get; private set; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        [JsonProperty("sid")]
-        public string Sid { get; private set; }
-        /// <summary>
-        /// The SID of the reserved Task resource
-        /// </summary>
-        [JsonProperty("task_sid")]
-        public string TaskSid { get; private set; }
-        /// <summary>
-        /// The friendly_name of the Worker that is reserved
-        /// </summary>
-        [JsonProperty("worker_name")]
-        public string WorkerName { get; private set; }
-        /// <summary>
-        /// The SID of the reserved Worker resource
-        /// </summary>
-        [JsonProperty("worker_sid")]
-        public string WorkerSid { get; private set; }
-        /// <summary>
-        /// The SID of the Workspace that this worker is contained within.
-        /// </summary>
-        [JsonProperty("workspace_sid")]
-        public string WorkspaceSid { get; private set; }
-        /// <summary>
-        /// The absolute URL of the WorkerReservation resource
-        /// </summary>
-        [JsonProperty("url")]
-        public Uri Url { get; private set; }
-        /// <summary>
-        /// The URLs of related resources
-        /// </summary>
-        [JsonProperty("links")]
-        public Dictionary<string, string> Links { get; private set; }
-
-        private ReservationResource()
-        {
-
-        }
+      public static readonly StatusEnum Pending = new StatusEnum("pending");
+      public static readonly StatusEnum Accepted = new StatusEnum("accepted");
+      public static readonly StatusEnum Rejected = new StatusEnum("rejected");
+      public static readonly StatusEnum Timeout = new StatusEnum("timeout");
+      public static readonly StatusEnum Canceled = new StatusEnum("canceled");
+      public static readonly StatusEnum Rescinded = new StatusEnum("rescinded");
+      public static readonly StatusEnum Wrapping = new StatusEnum("wrapping");
+      public static readonly StatusEnum Completed = new StatusEnum("completed");
     }
+
+    public sealed class CallStatusEnum : StringEnum
+    {
+      private CallStatusEnum(string value) : base(value) { }
+      public CallStatusEnum() { }
+      public static implicit operator CallStatusEnum(string value)
+      {
+        return new CallStatusEnum(value);
+      }
+
+      public static readonly CallStatusEnum Initiated = new CallStatusEnum("initiated");
+      public static readonly CallStatusEnum Ringing = new CallStatusEnum("ringing");
+      public static readonly CallStatusEnum Answered = new CallStatusEnum("answered");
+      public static readonly CallStatusEnum Completed = new CallStatusEnum("completed");
+    }
+
+    public sealed class ConferenceEventEnum : StringEnum
+    {
+      private ConferenceEventEnum(string value) : base(value) { }
+      public ConferenceEventEnum() { }
+      public static implicit operator ConferenceEventEnum(string value)
+      {
+        return new ConferenceEventEnum(value);
+      }
+
+      public static readonly ConferenceEventEnum Start = new ConferenceEventEnum("start");
+      public static readonly ConferenceEventEnum End = new ConferenceEventEnum("end");
+      public static readonly ConferenceEventEnum Join = new ConferenceEventEnum("join");
+      public static readonly ConferenceEventEnum Leave = new ConferenceEventEnum("leave");
+      public static readonly ConferenceEventEnum Mute = new ConferenceEventEnum("mute");
+      public static readonly ConferenceEventEnum Hold = new ConferenceEventEnum("hold");
+      public static readonly ConferenceEventEnum Speaker = new ConferenceEventEnum("speaker");
+    }
+
+    private static Request BuildReadRequest(ReadReservationOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Get,
+          Rest.Domain.Taskrouter,
+          "/v1/Workspaces/" + options.PathWorkspaceSid + "/Workers/" + options.PathWorkerSid + "/Reservations",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// read
+    /// </summary>
+    /// <param name="options"> Read Reservation parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Reservation </returns>
+    public static ResourceSet<ReservationResource> Read(ReadReservationOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildReadRequest(options, client));
+
+      var page = Page<ReservationResource>.FromJson("reservations", response.Content);
+      return new ResourceSet<ReservationResource>(page, options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// read
+    /// </summary>
+    /// <param name="options"> Read Reservation parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Reservation </returns>
+    public static async System.Threading.Tasks.Task<ResourceSet<ReservationResource>> ReadAsync(ReadReservationOptions options,
+                                                                                                ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+      var page = Page<ReservationResource>.FromJson("reservations", response.Content);
+      return new ResourceSet<ReservationResource>(page, options, client);
+    }
+#endif
+
+    /// <summary>
+    /// read
+    /// </summary>
+    /// <param name="pathWorkspaceSid"> The SID of the Workspace with the WorkerReservation resources to read </param>
+    /// <param name="pathWorkerSid"> The SID of the reserved Worker resource with the WorkerReservation resources to read
+    ///                     </param>
+    /// <param name="reservationStatus"> Returns the list of reservations for a worker with a specified ReservationStatus
+    ///                         </param>
+    /// <param name="pageSize"> Page size </param>
+    /// <param name="limit"> Record limit </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Reservation </returns>
+    public static ResourceSet<ReservationResource> Read(string pathWorkspaceSid,
+                                                        string pathWorkerSid,
+                                                        ReservationResource.StatusEnum reservationStatus = null,
+                                                        int? pageSize = null,
+                                                        long? limit = null,
+                                                        ITwilioRestClient client = null)
+    {
+      var options = new ReadReservationOptions(pathWorkspaceSid, pathWorkerSid) { ReservationStatus = reservationStatus, PageSize = pageSize, Limit = limit };
+      return Read(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// read
+    /// </summary>
+    /// <param name="pathWorkspaceSid"> The SID of the Workspace with the WorkerReservation resources to read </param>
+    /// <param name="pathWorkerSid"> The SID of the reserved Worker resource with the WorkerReservation resources to read
+    ///                     </param>
+    /// <param name="reservationStatus"> Returns the list of reservations for a worker with a specified ReservationStatus
+    ///                         </param>
+    /// <param name="pageSize"> Page size </param>
+    /// <param name="limit"> Record limit </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Reservation </returns>
+    public static async System.Threading.Tasks.Task<ResourceSet<ReservationResource>> ReadAsync(string pathWorkspaceSid,
+                                                                                                string pathWorkerSid,
+                                                                                                ReservationResource.StatusEnum reservationStatus = null,
+                                                                                                int? pageSize = null,
+                                                                                                long? limit = null,
+                                                                                                ITwilioRestClient client = null)
+    {
+      var options = new ReadReservationOptions(pathWorkspaceSid, pathWorkerSid) { ReservationStatus = reservationStatus, PageSize = pageSize, Limit = limit };
+      return await ReadAsync(options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Fetch the target page of records
+    /// </summary>
+    /// <param name="targetUrl"> API-generated URL for the requested results page </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> The target page of records </returns>
+    public static Page<ReservationResource> GetPage(string targetUrl, ITwilioRestClient client)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+
+      var request = new Request(
+          HttpMethod.Get,
+          targetUrl
+      );
+
+      var response = client.Request(request);
+      return Page<ReservationResource>.FromJson("reservations", response.Content);
+    }
+
+    /// <summary>
+    /// Fetch the next page of records
+    /// </summary>
+    /// <param name="page"> current page of records </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> The next page of records </returns>
+    public static Page<ReservationResource> NextPage(Page<ReservationResource> page, ITwilioRestClient client)
+    {
+      var request = new Request(
+          HttpMethod.Get,
+          page.GetNextPageUrl(Rest.Domain.Taskrouter)
+      );
+
+      var response = client.Request(request);
+      return Page<ReservationResource>.FromJson("reservations", response.Content);
+    }
+
+    /// <summary>
+    /// Fetch the previous page of records
+    /// </summary>
+    /// <param name="page"> current page of records </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> The previous page of records </returns>
+    public static Page<ReservationResource> PreviousPage(Page<ReservationResource> page, ITwilioRestClient client)
+    {
+      var request = new Request(
+          HttpMethod.Get,
+          page.GetPreviousPageUrl(Rest.Domain.Taskrouter)
+      );
+
+      var response = client.Request(request);
+      return Page<ReservationResource>.FromJson("reservations", response.Content);
+    }
+
+    private static Request BuildFetchRequest(FetchReservationOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Get,
+          Rest.Domain.Taskrouter,
+          "/v1/Workspaces/" + options.PathWorkspaceSid + "/Workers/" + options.PathWorkerSid + "/Reservations/" + options.PathSid + "",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="options"> Fetch Reservation parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Reservation </returns>
+    public static ReservationResource Fetch(FetchReservationOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="options"> Fetch Reservation parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Reservation </returns>
+    public static async System.Threading.Tasks.Task<ReservationResource> FetchAsync(FetchReservationOptions options,
+                                                                                    ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="pathWorkspaceSid"> The SID of the Workspace with the WorkerReservation resource to fetch </param>
+    /// <param name="pathWorkerSid"> The SID of the reserved Worker resource with the WorkerReservation resource to fetch
+    ///                     </param>
+    /// <param name="pathSid"> The SID of the WorkerReservation resource to fetch </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Reservation </returns>
+    public static ReservationResource Fetch(string pathWorkspaceSid,
+                                            string pathWorkerSid,
+                                            string pathSid,
+                                            ITwilioRestClient client = null)
+    {
+      var options = new FetchReservationOptions(pathWorkspaceSid, pathWorkerSid, pathSid);
+      return Fetch(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="pathWorkspaceSid"> The SID of the Workspace with the WorkerReservation resource to fetch </param>
+    /// <param name="pathWorkerSid"> The SID of the reserved Worker resource with the WorkerReservation resource to fetch
+    ///                     </param>
+    /// <param name="pathSid"> The SID of the WorkerReservation resource to fetch </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Reservation </returns>
+    public static async System.Threading.Tasks.Task<ReservationResource> FetchAsync(string pathWorkspaceSid,
+                                                                                    string pathWorkerSid,
+                                                                                    string pathSid,
+                                                                                    ITwilioRestClient client = null)
+    {
+      var options = new FetchReservationOptions(pathWorkspaceSid, pathWorkerSid, pathSid);
+      return await FetchAsync(options, client);
+    }
+#endif
+
+    private static Request BuildUpdateRequest(UpdateReservationOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Post,
+          Rest.Domain.Taskrouter,
+          "/v1/Workspaces/" + options.PathWorkspaceSid + "/Workers/" + options.PathWorkerSid + "/Reservations/" + options.PathSid + "",
+          postParams: options.GetParams(),
+          headerParams: options.GetHeaderParams()
+      );
+    }
+
+    /// <summary>
+    /// update
+    /// </summary>
+    /// <param name="options"> Update Reservation parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Reservation </returns>
+    public static ReservationResource Update(UpdateReservationOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildUpdateRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// update
+    /// </summary>
+    /// <param name="options"> Update Reservation parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Reservation </returns>
+    public static async System.Threading.Tasks.Task<ReservationResource> UpdateAsync(UpdateReservationOptions options,
+                                                                                     ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// update
+    /// </summary>
+    /// <param name="pathWorkspaceSid"> The SID of the Workspace with the WorkerReservation resources to update </param>
+    /// <param name="pathWorkerSid"> The SID of the reserved Worker resource with the WorkerReservation resources to update
+    ///                     </param>
+    /// <param name="pathSid"> The SID of the WorkerReservation resource to update </param>
+    /// <param name="reservationStatus"> The new status of the reservation </param>
+    /// <param name="workerActivitySid"> The new worker activity SID if rejecting a reservation </param>
+    /// <param name="instruction"> The assignment instruction for the reservation </param>
+    /// <param name="dequeuePostWorkActivitySid"> The SID of the Activity resource to start after executing a Dequeue
+    ///                                  instruction </param>
+    /// <param name="dequeueFrom"> The caller ID of the call to the worker when executing a Dequeue instruction </param>
+    /// <param name="dequeueRecord"> Whether to record both legs of a call when executing a Dequeue instruction </param>
+    /// <param name="dequeueTimeout"> The timeout for call when executing a Dequeue instruction </param>
+    /// <param name="dequeueTo"> The contact URI of the worker when executing a Dequeue instruction </param>
+    /// <param name="dequeueStatusCallbackUrl"> The callback URL for completed call event when executing a Dequeue
+    ///                                instruction </param>
+    /// <param name="callFrom"> The Caller ID of the outbound call when executing a Call instruction </param>
+    /// <param name="callRecord"> Whether to record both legs of a call when executing a Call instruction </param>
+    /// <param name="callTimeout"> The timeout for a call when executing a Call instruction </param>
+    /// <param name="callTo"> The contact URI of the worker when executing a Call instruction </param>
+    /// <param name="callUrl"> TwiML URI executed on answering the worker's leg as a result of the Call instruction </param>
+    /// <param name="callStatusCallbackUrl"> The URL to call for the completed call event when executing a Call instruction
+    ///                             </param>
+    /// <param name="callAccept"> Whether to accept a reservation when executing a Call instruction </param>
+    /// <param name="redirectCallSid"> The Call SID of the call parked in the queue when executing a Redirect instruction
+    ///                       </param>
+    /// <param name="redirectAccept"> Whether the reservation should be accepted when executing a Redirect instruction
+    ///                      </param>
+    /// <param name="redirectUrl"> TwiML URI to redirect the call to when executing the Redirect instruction </param>
+    /// <param name="to"> The Contact URI of the worker when executing a Conference instruction </param>
+    /// <param name="from"> The caller ID of the call to the worker when executing a Conference instruction </param>
+    /// <param name="statusCallback"> The URL we should call to send status information to your application </param>
+    /// <param name="statusCallbackMethod"> The HTTP method we should use to call status_callback </param>
+    /// <param name="statusCallbackEvent"> The call progress events that we will send to status_callback </param>
+    /// <param name="timeout"> The timeout for a call when executing a Conference instruction </param>
+    /// <param name="record"> Whether to record the participant and their conferences </param>
+    /// <param name="muted"> Whether to mute the agent </param>
+    /// <param name="beep"> Whether to play a notification beep when the participant joins </param>
+    /// <param name="startConferenceOnEnter"> Whether the conference starts when the participant joins the conference
+    ///                              </param>
+    /// <param name="endConferenceOnExit"> Whether to end the conference when the agent leaves </param>
+    /// <param name="waitUrl"> URL that hosts pre-conference hold music </param>
+    /// <param name="waitMethod"> The HTTP method we should use to call `wait_url` </param>
+    /// <param name="earlyMedia"> Whether agents can hear the state of the outbound call </param>
+    /// <param name="maxParticipants"> The maximum number of agent conference participants </param>
+    /// <param name="conferenceStatusCallback"> The callback URL for conference events </param>
+    /// <param name="conferenceStatusCallbackMethod"> HTTP method for requesting `conference_status_callback` URL </param>
+    /// <param name="conferenceStatusCallbackEvent"> The conference status events that we will send to
+    ///                                     conference_status_callback </param>
+    /// <param name="conferenceRecord"> Whether to record the conference the participant is joining </param>
+    /// <param name="conferenceTrim"> Whether to trim leading and trailing silence from your recorded conference audio
+    ///                      files </param>
+    /// <param name="recordingChannels"> Specify `mono` or `dual` recording channels </param>
+    /// <param name="recordingStatusCallback"> The URL that we should call using the `recording_status_callback_method`
+    ///                               when the recording status changes </param>
+    /// <param name="recordingStatusCallbackMethod"> The HTTP method we should use when we call `recording_status_callback`
+    ///                                     </param>
+    /// <param name="conferenceRecordingStatusCallback"> The URL we should call using the
+    ///                                         `conference_recording_status_callback_method` when the conference recording
+    ///                                         is available </param>
+    /// <param name="conferenceRecordingStatusCallbackMethod"> The HTTP method we should use to call
+    ///                                               `conference_recording_status_callback` </param>
+    /// <param name="region"> The region where we should mix the conference audio </param>
+    /// <param name="sipAuthUsername"> The SIP username used for authentication </param>
+    /// <param name="sipAuthPassword"> The SIP password for authentication </param>
+    /// <param name="dequeueStatusCallbackEvent"> The call progress events sent via webhooks as a result of a Dequeue
+    ///                                  instruction </param>
+    /// <param name="postWorkActivitySid"> The new worker activity SID after executing a Conference instruction </param>
+    /// <param name="endConferenceOnCustomerExit"> Whether to end the conference when the customer leaves </param>
+    /// <param name="beepOnCustomerEntrance"> Whether to play a notification beep when the customer joins </param>
+    /// <param name="ifMatch"> The If-Match HTTP request header </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Reservation </returns>
+    public static ReservationResource Update(string pathWorkspaceSid,
+                                             string pathWorkerSid,
+                                             string pathSid,
+                                             ReservationResource.StatusEnum reservationStatus = null,
+                                             string workerActivitySid = null,
+                                             string instruction = null,
+                                             string dequeuePostWorkActivitySid = null,
+                                             string dequeueFrom = null,
+                                             string dequeueRecord = null,
+                                             int? dequeueTimeout = null,
+                                             string dequeueTo = null,
+                                             Uri dequeueStatusCallbackUrl = null,
+                                             string callFrom = null,
+                                             string callRecord = null,
+                                             int? callTimeout = null,
+                                             string callTo = null,
+                                             Uri callUrl = null,
+                                             Uri callStatusCallbackUrl = null,
+                                             bool? callAccept = null,
+                                             string redirectCallSid = null,
+                                             bool? redirectAccept = null,
+                                             Uri redirectUrl = null,
+                                             string to = null,
+                                             string from = null,
+                                             Uri statusCallback = null,
+                                             Twilio.Http.HttpMethod statusCallbackMethod = null,
+                                             List<ReservationResource.CallStatusEnum> statusCallbackEvent = null,
+                                             int? timeout = null,
+                                             bool? record = null,
+                                             bool? muted = null,
+                                             string beep = null,
+                                             bool? startConferenceOnEnter = null,
+                                             bool? endConferenceOnExit = null,
+                                             Uri waitUrl = null,
+                                             Twilio.Http.HttpMethod waitMethod = null,
+                                             bool? earlyMedia = null,
+                                             int? maxParticipants = null,
+                                             Uri conferenceStatusCallback = null,
+                                             Twilio.Http.HttpMethod conferenceStatusCallbackMethod = null,
+                                             List<ReservationResource.ConferenceEventEnum> conferenceStatusCallbackEvent = null,
+                                             string conferenceRecord = null,
+                                             string conferenceTrim = null,
+                                             string recordingChannels = null,
+                                             Uri recordingStatusCallback = null,
+                                             Twilio.Http.HttpMethod recordingStatusCallbackMethod = null,
+                                             Uri conferenceRecordingStatusCallback = null,
+                                             Twilio.Http.HttpMethod conferenceRecordingStatusCallbackMethod = null,
+                                             string region = null,
+                                             string sipAuthUsername = null,
+                                             string sipAuthPassword = null,
+                                             List<string> dequeueStatusCallbackEvent = null,
+                                             string postWorkActivitySid = null,
+                                             bool? endConferenceOnCustomerExit = null,
+                                             bool? beepOnCustomerEntrance = null,
+                                             string ifMatch = null,
+                                             ITwilioRestClient client = null)
+    {
+      var options = new UpdateReservationOptions(pathWorkspaceSid, pathWorkerSid, pathSid) { ReservationStatus = reservationStatus, WorkerActivitySid = workerActivitySid, Instruction = instruction, DequeuePostWorkActivitySid = dequeuePostWorkActivitySid, DequeueFrom = dequeueFrom, DequeueRecord = dequeueRecord, DequeueTimeout = dequeueTimeout, DequeueTo = dequeueTo, DequeueStatusCallbackUrl = dequeueStatusCallbackUrl, CallFrom = callFrom, CallRecord = callRecord, CallTimeout = callTimeout, CallTo = callTo, CallUrl = callUrl, CallStatusCallbackUrl = callStatusCallbackUrl, CallAccept = callAccept, RedirectCallSid = redirectCallSid, RedirectAccept = redirectAccept, RedirectUrl = redirectUrl, To = to, From = from, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, StatusCallbackEvent = statusCallbackEvent, Timeout = timeout, Record = record, Muted = muted, Beep = beep, StartConferenceOnEnter = startConferenceOnEnter, EndConferenceOnExit = endConferenceOnExit, WaitUrl = waitUrl, WaitMethod = waitMethod, EarlyMedia = earlyMedia, MaxParticipants = maxParticipants, ConferenceStatusCallback = conferenceStatusCallback, ConferenceStatusCallbackMethod = conferenceStatusCallbackMethod, ConferenceStatusCallbackEvent = conferenceStatusCallbackEvent, ConferenceRecord = conferenceRecord, ConferenceTrim = conferenceTrim, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, ConferenceRecordingStatusCallback = conferenceRecordingStatusCallback, ConferenceRecordingStatusCallbackMethod = conferenceRecordingStatusCallbackMethod, Region = region, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword, DequeueStatusCallbackEvent = dequeueStatusCallbackEvent, PostWorkActivitySid = postWorkActivitySid, EndConferenceOnCustomerExit = endConferenceOnCustomerExit, BeepOnCustomerEntrance = beepOnCustomerEntrance, IfMatch = ifMatch };
+      return Update(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// update
+    /// </summary>
+    /// <param name="pathWorkspaceSid"> The SID of the Workspace with the WorkerReservation resources to update </param>
+    /// <param name="pathWorkerSid"> The SID of the reserved Worker resource with the WorkerReservation resources to update
+    ///                     </param>
+    /// <param name="pathSid"> The SID of the WorkerReservation resource to update </param>
+    /// <param name="reservationStatus"> The new status of the reservation </param>
+    /// <param name="workerActivitySid"> The new worker activity SID if rejecting a reservation </param>
+    /// <param name="instruction"> The assignment instruction for the reservation </param>
+    /// <param name="dequeuePostWorkActivitySid"> The SID of the Activity resource to start after executing a Dequeue
+    ///                                  instruction </param>
+    /// <param name="dequeueFrom"> The caller ID of the call to the worker when executing a Dequeue instruction </param>
+    /// <param name="dequeueRecord"> Whether to record both legs of a call when executing a Dequeue instruction </param>
+    /// <param name="dequeueTimeout"> The timeout for call when executing a Dequeue instruction </param>
+    /// <param name="dequeueTo"> The contact URI of the worker when executing a Dequeue instruction </param>
+    /// <param name="dequeueStatusCallbackUrl"> The callback URL for completed call event when executing a Dequeue
+    ///                                instruction </param>
+    /// <param name="callFrom"> The Caller ID of the outbound call when executing a Call instruction </param>
+    /// <param name="callRecord"> Whether to record both legs of a call when executing a Call instruction </param>
+    /// <param name="callTimeout"> The timeout for a call when executing a Call instruction </param>
+    /// <param name="callTo"> The contact URI of the worker when executing a Call instruction </param>
+    /// <param name="callUrl"> TwiML URI executed on answering the worker's leg as a result of the Call instruction </param>
+    /// <param name="callStatusCallbackUrl"> The URL to call for the completed call event when executing a Call instruction
+    ///                             </param>
+    /// <param name="callAccept"> Whether to accept a reservation when executing a Call instruction </param>
+    /// <param name="redirectCallSid"> The Call SID of the call parked in the queue when executing a Redirect instruction
+    ///                       </param>
+    /// <param name="redirectAccept"> Whether the reservation should be accepted when executing a Redirect instruction
+    ///                      </param>
+    /// <param name="redirectUrl"> TwiML URI to redirect the call to when executing the Redirect instruction </param>
+    /// <param name="to"> The Contact URI of the worker when executing a Conference instruction </param>
+    /// <param name="from"> The caller ID of the call to the worker when executing a Conference instruction </param>
+    /// <param name="statusCallback"> The URL we should call to send status information to your application </param>
+    /// <param name="statusCallbackMethod"> The HTTP method we should use to call status_callback </param>
+    /// <param name="statusCallbackEvent"> The call progress events that we will send to status_callback </param>
+    /// <param name="timeout"> The timeout for a call when executing a Conference instruction </param>
+    /// <param name="record"> Whether to record the participant and their conferences </param>
+    /// <param name="muted"> Whether to mute the agent </param>
+    /// <param name="beep"> Whether to play a notification beep when the participant joins </param>
+    /// <param name="startConferenceOnEnter"> Whether the conference starts when the participant joins the conference
+    ///                              </param>
+    /// <param name="endConferenceOnExit"> Whether to end the conference when the agent leaves </param>
+    /// <param name="waitUrl"> URL that hosts pre-conference hold music </param>
+    /// <param name="waitMethod"> The HTTP method we should use to call `wait_url` </param>
+    /// <param name="earlyMedia"> Whether agents can hear the state of the outbound call </param>
+    /// <param name="maxParticipants"> The maximum number of agent conference participants </param>
+    /// <param name="conferenceStatusCallback"> The callback URL for conference events </param>
+    /// <param name="conferenceStatusCallbackMethod"> HTTP method for requesting `conference_status_callback` URL </param>
+    /// <param name="conferenceStatusCallbackEvent"> The conference status events that we will send to
+    ///                                     conference_status_callback </param>
+    /// <param name="conferenceRecord"> Whether to record the conference the participant is joining </param>
+    /// <param name="conferenceTrim"> Whether to trim leading and trailing silence from your recorded conference audio
+    ///                      files </param>
+    /// <param name="recordingChannels"> Specify `mono` or `dual` recording channels </param>
+    /// <param name="recordingStatusCallback"> The URL that we should call using the `recording_status_callback_method`
+    ///                               when the recording status changes </param>
+    /// <param name="recordingStatusCallbackMethod"> The HTTP method we should use when we call `recording_status_callback`
+    ///                                     </param>
+    /// <param name="conferenceRecordingStatusCallback"> The URL we should call using the
+    ///                                         `conference_recording_status_callback_method` when the conference recording
+    ///                                         is available </param>
+    /// <param name="conferenceRecordingStatusCallbackMethod"> The HTTP method we should use to call
+    ///                                               `conference_recording_status_callback` </param>
+    /// <param name="region"> The region where we should mix the conference audio </param>
+    /// <param name="sipAuthUsername"> The SIP username used for authentication </param>
+    /// <param name="sipAuthPassword"> The SIP password for authentication </param>
+    /// <param name="dequeueStatusCallbackEvent"> The call progress events sent via webhooks as a result of a Dequeue
+    ///                                  instruction </param>
+    /// <param name="postWorkActivitySid"> The new worker activity SID after executing a Conference instruction </param>
+    /// <param name="endConferenceOnCustomerExit"> Whether to end the conference when the customer leaves </param>
+    /// <param name="beepOnCustomerEntrance"> Whether to play a notification beep when the customer joins </param>
+    /// <param name="ifMatch"> The If-Match HTTP request header </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Reservation </returns>
+    public static async System.Threading.Tasks.Task<ReservationResource> UpdateAsync(string pathWorkspaceSid,
+                                                                                     string pathWorkerSid,
+                                                                                     string pathSid,
+                                                                                     ReservationResource.StatusEnum reservationStatus = null,
+                                                                                     string workerActivitySid = null,
+                                                                                     string instruction = null,
+                                                                                     string dequeuePostWorkActivitySid = null,
+                                                                                     string dequeueFrom = null,
+                                                                                     string dequeueRecord = null,
+                                                                                     int? dequeueTimeout = null,
+                                                                                     string dequeueTo = null,
+                                                                                     Uri dequeueStatusCallbackUrl = null,
+                                                                                     string callFrom = null,
+                                                                                     string callRecord = null,
+                                                                                     int? callTimeout = null,
+                                                                                     string callTo = null,
+                                                                                     Uri callUrl = null,
+                                                                                     Uri callStatusCallbackUrl = null,
+                                                                                     bool? callAccept = null,
+                                                                                     string redirectCallSid = null,
+                                                                                     bool? redirectAccept = null,
+                                                                                     Uri redirectUrl = null,
+                                                                                     string to = null,
+                                                                                     string from = null,
+                                                                                     Uri statusCallback = null,
+                                                                                     Twilio.Http.HttpMethod statusCallbackMethod = null,
+                                                                                     List<ReservationResource.CallStatusEnum> statusCallbackEvent = null,
+                                                                                     int? timeout = null,
+                                                                                     bool? record = null,
+                                                                                     bool? muted = null,
+                                                                                     string beep = null,
+                                                                                     bool? startConferenceOnEnter = null,
+                                                                                     bool? endConferenceOnExit = null,
+                                                                                     Uri waitUrl = null,
+                                                                                     Twilio.Http.HttpMethod waitMethod = null,
+                                                                                     bool? earlyMedia = null,
+                                                                                     int? maxParticipants = null,
+                                                                                     Uri conferenceStatusCallback = null,
+                                                                                     Twilio.Http.HttpMethod conferenceStatusCallbackMethod = null,
+                                                                                     List<ReservationResource.ConferenceEventEnum> conferenceStatusCallbackEvent = null,
+                                                                                     string conferenceRecord = null,
+                                                                                     string conferenceTrim = null,
+                                                                                     string recordingChannels = null,
+                                                                                     Uri recordingStatusCallback = null,
+                                                                                     Twilio.Http.HttpMethod recordingStatusCallbackMethod = null,
+                                                                                     Uri conferenceRecordingStatusCallback = null,
+                                                                                     Twilio.Http.HttpMethod conferenceRecordingStatusCallbackMethod = null,
+                                                                                     string region = null,
+                                                                                     string sipAuthUsername = null,
+                                                                                     string sipAuthPassword = null,
+                                                                                     List<string> dequeueStatusCallbackEvent = null,
+                                                                                     string postWorkActivitySid = null,
+                                                                                     bool? endConferenceOnCustomerExit = null,
+                                                                                     bool? beepOnCustomerEntrance = null,
+                                                                                     string ifMatch = null,
+                                                                                     ITwilioRestClient client = null)
+    {
+      var options = new UpdateReservationOptions(pathWorkspaceSid, pathWorkerSid, pathSid) { ReservationStatus = reservationStatus, WorkerActivitySid = workerActivitySid, Instruction = instruction, DequeuePostWorkActivitySid = dequeuePostWorkActivitySid, DequeueFrom = dequeueFrom, DequeueRecord = dequeueRecord, DequeueTimeout = dequeueTimeout, DequeueTo = dequeueTo, DequeueStatusCallbackUrl = dequeueStatusCallbackUrl, CallFrom = callFrom, CallRecord = callRecord, CallTimeout = callTimeout, CallTo = callTo, CallUrl = callUrl, CallStatusCallbackUrl = callStatusCallbackUrl, CallAccept = callAccept, RedirectCallSid = redirectCallSid, RedirectAccept = redirectAccept, RedirectUrl = redirectUrl, To = to, From = from, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, StatusCallbackEvent = statusCallbackEvent, Timeout = timeout, Record = record, Muted = muted, Beep = beep, StartConferenceOnEnter = startConferenceOnEnter, EndConferenceOnExit = endConferenceOnExit, WaitUrl = waitUrl, WaitMethod = waitMethod, EarlyMedia = earlyMedia, MaxParticipants = maxParticipants, ConferenceStatusCallback = conferenceStatusCallback, ConferenceStatusCallbackMethod = conferenceStatusCallbackMethod, ConferenceStatusCallbackEvent = conferenceStatusCallbackEvent, ConferenceRecord = conferenceRecord, ConferenceTrim = conferenceTrim, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, ConferenceRecordingStatusCallback = conferenceRecordingStatusCallback, ConferenceRecordingStatusCallbackMethod = conferenceRecordingStatusCallbackMethod, Region = region, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword, DequeueStatusCallbackEvent = dequeueStatusCallbackEvent, PostWorkActivitySid = postWorkActivitySid, EndConferenceOnCustomerExit = endConferenceOnCustomerExit, BeepOnCustomerEntrance = beepOnCustomerEntrance, IfMatch = ifMatch };
+      return await UpdateAsync(options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Converts a JSON string into a ReservationResource object
+    /// </summary>
+    /// <param name="json"> Raw JSON string </param>
+    /// <returns> ReservationResource object represented by the provided JSON </returns>
+    public static ReservationResource FromJson(string json)
+    {
+      // Convert all checked exceptions to Runtime
+      try
+      {
+        return JsonConvert.DeserializeObject<ReservationResource>(json);
+      }
+      catch (JsonException e)
+      {
+        throw new ApiException(e.Message, e);
+      }
+    }
+
+    /// <summary>
+    /// The SID of the Account that created the resource
+    /// </summary>
+    [JsonProperty("account_sid")]
+    public string AccountSid { get; private set; }
+    /// <summary>
+    /// The ISO 8601 date and time in GMT when the resource was created
+    /// </summary>
+    [JsonProperty("date_created")]
+    public DateTime? DateCreated { get; private set; }
+    /// <summary>
+    /// The ISO 8601 date and time in GMT when the resource was last updated
+    /// </summary>
+    [JsonProperty("date_updated")]
+    public DateTime? DateUpdated { get; private set; }
+    /// <summary>
+    /// The current status of the reservation
+    /// </summary>
+    [JsonProperty("reservation_status")]
+    [JsonConverter(typeof(StringEnumConverter))]
+    public ReservationResource.StatusEnum ReservationStatus { get; private set; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    [JsonProperty("sid")]
+    public string Sid { get; private set; }
+    /// <summary>
+    /// The SID of the reserved Task resource
+    /// </summary>
+    [JsonProperty("task_sid")]
+    public string TaskSid { get; private set; }
+    /// <summary>
+    /// The friendly_name of the Worker that is reserved
+    /// </summary>
+    [JsonProperty("worker_name")]
+    public string WorkerName { get; private set; }
+    /// <summary>
+    /// The SID of the reserved Worker resource
+    /// </summary>
+    [JsonProperty("worker_sid")]
+    public string WorkerSid { get; private set; }
+    /// <summary>
+    /// The SID of the Workspace that this worker is contained within.
+    /// </summary>
+    [JsonProperty("workspace_sid")]
+    public string WorkspaceSid { get; private set; }
+    /// <summary>
+    /// The absolute URL of the WorkerReservation resource
+    /// </summary>
+    [JsonProperty("url")]
+    public Uri Url { get; private set; }
+    /// <summary>
+    /// The URLs of related resources
+    /// </summary>
+    [JsonProperty("links")]
+    public Dictionary<string, string> Links { get; private set; }
+
+    private ReservationResource()
+    {
+
+    }
+  }
 
 }

@@ -21,517 +21,517 @@ using Twilio.Http;
 namespace Twilio.Rest.Preview.DeployedDevices.Fleet
 {
 
-    public class KeyResource : Resource
+  public class KeyResource : Resource
+  {
+    private static Request BuildFetchRequest(FetchKeyOptions options, ITwilioRestClient client)
     {
-        private static Request BuildFetchRequest(FetchKeyOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Get,
-                Rest.Domain.Preview,
-                "/DeployedDevices/Fleets/" + options.PathFleetSid + "/Keys/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// Fetch information about a specific Key credential in the Fleet.
-        /// </summary>
-        /// <param name="options"> Fetch Key parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Key </returns>
-        public static KeyResource Fetch(FetchKeyOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Fetch information about a specific Key credential in the Fleet.
-        /// </summary>
-        /// <param name="options"> Fetch Key parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Key </returns>
-        public static async System.Threading.Tasks.Task<KeyResource> FetchAsync(FetchKeyOptions options,
-                                                                                ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// Fetch information about a specific Key credential in the Fleet.
-        /// </summary>
-        /// <param name="pathFleetSid"> The fleet_sid </param>
-        /// <param name="pathSid"> A string that uniquely identifies the Key. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Key </returns>
-        public static KeyResource Fetch(string pathFleetSid, string pathSid, ITwilioRestClient client = null)
-        {
-            var options = new FetchKeyOptions(pathFleetSid, pathSid);
-            return Fetch(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Fetch information about a specific Key credential in the Fleet.
-        /// </summary>
-        /// <param name="pathFleetSid"> The fleet_sid </param>
-        /// <param name="pathSid"> A string that uniquely identifies the Key. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Key </returns>
-        public static async System.Threading.Tasks.Task<KeyResource> FetchAsync(string pathFleetSid,
-                                                                                string pathSid,
-                                                                                ITwilioRestClient client = null)
-        {
-            var options = new FetchKeyOptions(pathFleetSid, pathSid);
-            return await FetchAsync(options, client);
-        }
-        #endif
-
-        private static Request BuildDeleteRequest(DeleteKeyOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Delete,
-                Rest.Domain.Preview,
-                "/DeployedDevices/Fleets/" + options.PathFleetSid + "/Keys/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// Delete a specific Key credential from the Fleet, effectively disallowing any inbound client connections that are
-        /// presenting it.
-        /// </summary>
-        /// <param name="options"> Delete Key parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Key </returns>
-        public static bool Delete(DeleteKeyOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Delete a specific Key credential from the Fleet, effectively disallowing any inbound client connections that are
-        /// presenting it.
-        /// </summary>
-        /// <param name="options"> Delete Key parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Key </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteKeyOptions options,
-                                                                          ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
-        }
-        #endif
-
-        /// <summary>
-        /// Delete a specific Key credential from the Fleet, effectively disallowing any inbound client connections that are
-        /// presenting it.
-        /// </summary>
-        /// <param name="pathFleetSid"> The fleet_sid </param>
-        /// <param name="pathSid"> A string that uniquely identifies the Key. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Key </returns>
-        public static bool Delete(string pathFleetSid, string pathSid, ITwilioRestClient client = null)
-        {
-            var options = new DeleteKeyOptions(pathFleetSid, pathSid);
-            return Delete(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Delete a specific Key credential from the Fleet, effectively disallowing any inbound client connections that are
-        /// presenting it.
-        /// </summary>
-        /// <param name="pathFleetSid"> The fleet_sid </param>
-        /// <param name="pathSid"> A string that uniquely identifies the Key. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Key </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathFleetSid,
-                                                                          string pathSid,
-                                                                          ITwilioRestClient client = null)
-        {
-            var options = new DeleteKeyOptions(pathFleetSid, pathSid);
-            return await DeleteAsync(options, client);
-        }
-        #endif
-
-        private static Request BuildCreateRequest(CreateKeyOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Post,
-                Rest.Domain.Preview,
-                "/DeployedDevices/Fleets/" + options.PathFleetSid + "/Keys",
-                postParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// Create a new Key credential in the Fleet, optionally giving it a friendly name and assigning to a Device.
-        /// </summary>
-        /// <param name="options"> Create Key parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Key </returns>
-        public static KeyResource Create(CreateKeyOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildCreateRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Create a new Key credential in the Fleet, optionally giving it a friendly name and assigning to a Device.
-        /// </summary>
-        /// <param name="options"> Create Key parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Key </returns>
-        public static async System.Threading.Tasks.Task<KeyResource> CreateAsync(CreateKeyOptions options,
-                                                                                 ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// Create a new Key credential in the Fleet, optionally giving it a friendly name and assigning to a Device.
-        /// </summary>
-        /// <param name="pathFleetSid"> The fleet_sid </param>
-        /// <param name="friendlyName"> The human readable description for this Key. </param>
-        /// <param name="deviceSid"> The unique identifier of a Key to be authenticated. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Key </returns>
-        public static KeyResource Create(string pathFleetSid,
-                                         string friendlyName = null,
-                                         string deviceSid = null,
-                                         ITwilioRestClient client = null)
-        {
-            var options = new CreateKeyOptions(pathFleetSid){FriendlyName = friendlyName, DeviceSid = deviceSid};
-            return Create(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Create a new Key credential in the Fleet, optionally giving it a friendly name and assigning to a Device.
-        /// </summary>
-        /// <param name="pathFleetSid"> The fleet_sid </param>
-        /// <param name="friendlyName"> The human readable description for this Key. </param>
-        /// <param name="deviceSid"> The unique identifier of a Key to be authenticated. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Key </returns>
-        public static async System.Threading.Tasks.Task<KeyResource> CreateAsync(string pathFleetSid,
-                                                                                 string friendlyName = null,
-                                                                                 string deviceSid = null,
-                                                                                 ITwilioRestClient client = null)
-        {
-            var options = new CreateKeyOptions(pathFleetSid){FriendlyName = friendlyName, DeviceSid = deviceSid};
-            return await CreateAsync(options, client);
-        }
-        #endif
-
-        private static Request BuildReadRequest(ReadKeyOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Get,
-                Rest.Domain.Preview,
-                "/DeployedDevices/Fleets/" + options.PathFleetSid + "/Keys",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// Retrieve a list of all Keys credentials belonging to the Fleet.
-        /// </summary>
-        /// <param name="options"> Read Key parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Key </returns>
-        public static ResourceSet<KeyResource> Read(ReadKeyOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildReadRequest(options, client));
-
-            var page = Page<KeyResource>.FromJson("keys", response.Content);
-            return new ResourceSet<KeyResource>(page, options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Retrieve a list of all Keys credentials belonging to the Fleet.
-        /// </summary>
-        /// <param name="options"> Read Key parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Key </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<KeyResource>> ReadAsync(ReadKeyOptions options,
-                                                                                            ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
-
-            var page = Page<KeyResource>.FromJson("keys", response.Content);
-            return new ResourceSet<KeyResource>(page, options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Retrieve a list of all Keys credentials belonging to the Fleet.
-        /// </summary>
-        /// <param name="pathFleetSid"> The fleet_sid </param>
-        /// <param name="deviceSid"> Find all Keys authenticating specified Device. </param>
-        /// <param name="pageSize"> Page size </param>
-        /// <param name="limit"> Record limit </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Key </returns>
-        public static ResourceSet<KeyResource> Read(string pathFleetSid,
-                                                    string deviceSid = null,
-                                                    int? pageSize = null,
-                                                    long? limit = null,
-                                                    ITwilioRestClient client = null)
-        {
-            var options = new ReadKeyOptions(pathFleetSid){DeviceSid = deviceSid, PageSize = pageSize, Limit = limit};
-            return Read(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Retrieve a list of all Keys credentials belonging to the Fleet.
-        /// </summary>
-        /// <param name="pathFleetSid"> The fleet_sid </param>
-        /// <param name="deviceSid"> Find all Keys authenticating specified Device. </param>
-        /// <param name="pageSize"> Page size </param>
-        /// <param name="limit"> Record limit </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Key </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<KeyResource>> ReadAsync(string pathFleetSid,
-                                                                                            string deviceSid = null,
-                                                                                            int? pageSize = null,
-                                                                                            long? limit = null,
-                                                                                            ITwilioRestClient client = null)
-        {
-            var options = new ReadKeyOptions(pathFleetSid){DeviceSid = deviceSid, PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Fetch the target page of records
-        /// </summary>
-        /// <param name="targetUrl"> API-generated URL for the requested results page </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns>
-        public static Page<KeyResource> GetPage(string targetUrl, ITwilioRestClient client)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-
-            var request = new Request(
-                HttpMethod.Get,
-                targetUrl
-            );
-
-            var response = client.Request(request);
-            return Page<KeyResource>.FromJson("keys", response.Content);
-        }
-
-        /// <summary>
-        /// Fetch the next page of records
-        /// </summary>
-        /// <param name="page"> current page of records </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns>
-        public static Page<KeyResource> NextPage(Page<KeyResource> page, ITwilioRestClient client)
-        {
-            var request = new Request(
-                HttpMethod.Get,
-                page.GetNextPageUrl(Rest.Domain.Preview)
-            );
-
-            var response = client.Request(request);
-            return Page<KeyResource>.FromJson("keys", response.Content);
-        }
-
-        /// <summary>
-        /// Fetch the previous page of records
-        /// </summary>
-        /// <param name="page"> current page of records </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns>
-        public static Page<KeyResource> PreviousPage(Page<KeyResource> page, ITwilioRestClient client)
-        {
-            var request = new Request(
-                HttpMethod.Get,
-                page.GetPreviousPageUrl(Rest.Domain.Preview)
-            );
-
-            var response = client.Request(request);
-            return Page<KeyResource>.FromJson("keys", response.Content);
-        }
-
-        private static Request BuildUpdateRequest(UpdateKeyOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Post,
-                Rest.Domain.Preview,
-                "/DeployedDevices/Fleets/" + options.PathFleetSid + "/Keys/" + options.PathSid + "",
-                postParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// Update the given properties of a specific Key credential in the Fleet, giving it a friendly name or assigning to a
-        /// Device.
-        /// </summary>
-        /// <param name="options"> Update Key parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Key </returns>
-        public static KeyResource Update(UpdateKeyOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildUpdateRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Update the given properties of a specific Key credential in the Fleet, giving it a friendly name or assigning to a
-        /// Device.
-        /// </summary>
-        /// <param name="options"> Update Key parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Key </returns>
-        public static async System.Threading.Tasks.Task<KeyResource> UpdateAsync(UpdateKeyOptions options,
-                                                                                 ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// Update the given properties of a specific Key credential in the Fleet, giving it a friendly name or assigning to a
-        /// Device.
-        /// </summary>
-        /// <param name="pathFleetSid"> The fleet_sid </param>
-        /// <param name="pathSid"> A string that uniquely identifies the Key. </param>
-        /// <param name="friendlyName"> The human readable description for this Key. </param>
-        /// <param name="deviceSid"> The unique identifier of a Key to be authenticated. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Key </returns>
-        public static KeyResource Update(string pathFleetSid,
-                                         string pathSid,
-                                         string friendlyName = null,
-                                         string deviceSid = null,
-                                         ITwilioRestClient client = null)
-        {
-            var options = new UpdateKeyOptions(pathFleetSid, pathSid){FriendlyName = friendlyName, DeviceSid = deviceSid};
-            return Update(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Update the given properties of a specific Key credential in the Fleet, giving it a friendly name or assigning to a
-        /// Device.
-        /// </summary>
-        /// <param name="pathFleetSid"> The fleet_sid </param>
-        /// <param name="pathSid"> A string that uniquely identifies the Key. </param>
-        /// <param name="friendlyName"> The human readable description for this Key. </param>
-        /// <param name="deviceSid"> The unique identifier of a Key to be authenticated. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Key </returns>
-        public static async System.Threading.Tasks.Task<KeyResource> UpdateAsync(string pathFleetSid,
-                                                                                 string pathSid,
-                                                                                 string friendlyName = null,
-                                                                                 string deviceSid = null,
-                                                                                 ITwilioRestClient client = null)
-        {
-            var options = new UpdateKeyOptions(pathFleetSid, pathSid){FriendlyName = friendlyName, DeviceSid = deviceSid};
-            return await UpdateAsync(options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Converts a JSON string into a KeyResource object
-        /// </summary>
-        /// <param name="json"> Raw JSON string </param>
-        /// <returns> KeyResource object represented by the provided JSON </returns>
-        public static KeyResource FromJson(string json)
-        {
-            // Convert all checked exceptions to Runtime
-            try
-            {
-                return JsonConvert.DeserializeObject<KeyResource>(json);
-            }
-            catch (JsonException e)
-            {
-                throw new ApiException(e.Message, e);
-            }
-        }
-
-        /// <summary>
-        /// A string that uniquely identifies this Key.
-        /// </summary>
-        [JsonProperty("sid")]
-        public string Sid { get; private set; }
-        /// <summary>
-        /// URL of this Key.
-        /// </summary>
-        [JsonProperty("url")]
-        public Uri Url { get; private set; }
-        /// <summary>
-        /// A human readable description for this Key.
-        /// </summary>
-        [JsonProperty("friendly_name")]
-        public string FriendlyName { get; private set; }
-        /// <summary>
-        /// The unique identifier of the Fleet.
-        /// </summary>
-        [JsonProperty("fleet_sid")]
-        public string FleetSid { get; private set; }
-        /// <summary>
-        /// The unique SID that identifies this Account.
-        /// </summary>
-        [JsonProperty("account_sid")]
-        public string AccountSid { get; private set; }
-        /// <summary>
-        /// The unique identifier of a mapped Device.
-        /// </summary>
-        [JsonProperty("device_sid")]
-        public string DeviceSid { get; private set; }
-        /// <summary>
-        /// The key secret.
-        /// </summary>
-        [JsonProperty("secret")]
-        public string Secret { get; private set; }
-        /// <summary>
-        /// The date this Key credential was created.
-        /// </summary>
-        [JsonProperty("date_created")]
-        public DateTime? DateCreated { get; private set; }
-        /// <summary>
-        /// The date this Key credential was updated.
-        /// </summary>
-        [JsonProperty("date_updated")]
-        public DateTime? DateUpdated { get; private set; }
-
-        private KeyResource()
-        {
-
-        }
+      return new Request(
+          HttpMethod.Get,
+          Rest.Domain.Preview,
+          "/DeployedDevices/Fleets/" + options.PathFleetSid + "/Keys/" + options.PathSid + "",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
     }
+
+    /// <summary>
+    /// Fetch information about a specific Key credential in the Fleet.
+    /// </summary>
+    /// <param name="options"> Fetch Key parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Key </returns>
+    public static KeyResource Fetch(FetchKeyOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Fetch information about a specific Key credential in the Fleet.
+    /// </summary>
+    /// <param name="options"> Fetch Key parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Key </returns>
+    public static async System.Threading.Tasks.Task<KeyResource> FetchAsync(FetchKeyOptions options,
+                                                                            ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// Fetch information about a specific Key credential in the Fleet.
+    /// </summary>
+    /// <param name="pathFleetSid"> The fleet_sid </param>
+    /// <param name="pathSid"> A string that uniquely identifies the Key. </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Key </returns>
+    public static KeyResource Fetch(string pathFleetSid, string pathSid, ITwilioRestClient client = null)
+    {
+      var options = new FetchKeyOptions(pathFleetSid, pathSid);
+      return Fetch(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Fetch information about a specific Key credential in the Fleet.
+    /// </summary>
+    /// <param name="pathFleetSid"> The fleet_sid </param>
+    /// <param name="pathSid"> A string that uniquely identifies the Key. </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Key </returns>
+    public static async System.Threading.Tasks.Task<KeyResource> FetchAsync(string pathFleetSid,
+                                                                            string pathSid,
+                                                                            ITwilioRestClient client = null)
+    {
+      var options = new FetchKeyOptions(pathFleetSid, pathSid);
+      return await FetchAsync(options, client);
+    }
+#endif
+
+    private static Request BuildDeleteRequest(DeleteKeyOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Delete,
+          Rest.Domain.Preview,
+          "/DeployedDevices/Fleets/" + options.PathFleetSid + "/Keys/" + options.PathSid + "",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// Delete a specific Key credential from the Fleet, effectively disallowing any inbound client connections that are
+    /// presenting it.
+    /// </summary>
+    /// <param name="options"> Delete Key parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Key </returns>
+    public static bool Delete(DeleteKeyOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildDeleteRequest(options, client));
+      return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+    }
+
+#if !NET35
+    /// <summary>
+    /// Delete a specific Key credential from the Fleet, effectively disallowing any inbound client connections that are
+    /// presenting it.
+    /// </summary>
+    /// <param name="options"> Delete Key parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Key </returns>
+    public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteKeyOptions options,
+                                                                      ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+      return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+    }
+#endif
+
+    /// <summary>
+    /// Delete a specific Key credential from the Fleet, effectively disallowing any inbound client connections that are
+    /// presenting it.
+    /// </summary>
+    /// <param name="pathFleetSid"> The fleet_sid </param>
+    /// <param name="pathSid"> A string that uniquely identifies the Key. </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Key </returns>
+    public static bool Delete(string pathFleetSid, string pathSid, ITwilioRestClient client = null)
+    {
+      var options = new DeleteKeyOptions(pathFleetSid, pathSid);
+      return Delete(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Delete a specific Key credential from the Fleet, effectively disallowing any inbound client connections that are
+    /// presenting it.
+    /// </summary>
+    /// <param name="pathFleetSid"> The fleet_sid </param>
+    /// <param name="pathSid"> A string that uniquely identifies the Key. </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Key </returns>
+    public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathFleetSid,
+                                                                      string pathSid,
+                                                                      ITwilioRestClient client = null)
+    {
+      var options = new DeleteKeyOptions(pathFleetSid, pathSid);
+      return await DeleteAsync(options, client);
+    }
+#endif
+
+    private static Request BuildCreateRequest(CreateKeyOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Post,
+          Rest.Domain.Preview,
+          "/DeployedDevices/Fleets/" + options.PathFleetSid + "/Keys",
+          postParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// Create a new Key credential in the Fleet, optionally giving it a friendly name and assigning to a Device.
+    /// </summary>
+    /// <param name="options"> Create Key parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Key </returns>
+    public static KeyResource Create(CreateKeyOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildCreateRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Create a new Key credential in the Fleet, optionally giving it a friendly name and assigning to a Device.
+    /// </summary>
+    /// <param name="options"> Create Key parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Key </returns>
+    public static async System.Threading.Tasks.Task<KeyResource> CreateAsync(CreateKeyOptions options,
+                                                                             ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildCreateRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// Create a new Key credential in the Fleet, optionally giving it a friendly name and assigning to a Device.
+    /// </summary>
+    /// <param name="pathFleetSid"> The fleet_sid </param>
+    /// <param name="friendlyName"> The human readable description for this Key. </param>
+    /// <param name="deviceSid"> The unique identifier of a Key to be authenticated. </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Key </returns>
+    public static KeyResource Create(string pathFleetSid,
+                                     string friendlyName = null,
+                                     string deviceSid = null,
+                                     ITwilioRestClient client = null)
+    {
+      var options = new CreateKeyOptions(pathFleetSid) { FriendlyName = friendlyName, DeviceSid = deviceSid };
+      return Create(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Create a new Key credential in the Fleet, optionally giving it a friendly name and assigning to a Device.
+    /// </summary>
+    /// <param name="pathFleetSid"> The fleet_sid </param>
+    /// <param name="friendlyName"> The human readable description for this Key. </param>
+    /// <param name="deviceSid"> The unique identifier of a Key to be authenticated. </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Key </returns>
+    public static async System.Threading.Tasks.Task<KeyResource> CreateAsync(string pathFleetSid,
+                                                                             string friendlyName = null,
+                                                                             string deviceSid = null,
+                                                                             ITwilioRestClient client = null)
+    {
+      var options = new CreateKeyOptions(pathFleetSid) { FriendlyName = friendlyName, DeviceSid = deviceSid };
+      return await CreateAsync(options, client);
+    }
+#endif
+
+    private static Request BuildReadRequest(ReadKeyOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Get,
+          Rest.Domain.Preview,
+          "/DeployedDevices/Fleets/" + options.PathFleetSid + "/Keys",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// Retrieve a list of all Keys credentials belonging to the Fleet.
+    /// </summary>
+    /// <param name="options"> Read Key parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Key </returns>
+    public static ResourceSet<KeyResource> Read(ReadKeyOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildReadRequest(options, client));
+
+      var page = Page<KeyResource>.FromJson("keys", response.Content);
+      return new ResourceSet<KeyResource>(page, options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Retrieve a list of all Keys credentials belonging to the Fleet.
+    /// </summary>
+    /// <param name="options"> Read Key parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Key </returns>
+    public static async System.Threading.Tasks.Task<ResourceSet<KeyResource>> ReadAsync(ReadKeyOptions options,
+                                                                                        ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+      var page = Page<KeyResource>.FromJson("keys", response.Content);
+      return new ResourceSet<KeyResource>(page, options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Retrieve a list of all Keys credentials belonging to the Fleet.
+    /// </summary>
+    /// <param name="pathFleetSid"> The fleet_sid </param>
+    /// <param name="deviceSid"> Find all Keys authenticating specified Device. </param>
+    /// <param name="pageSize"> Page size </param>
+    /// <param name="limit"> Record limit </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Key </returns>
+    public static ResourceSet<KeyResource> Read(string pathFleetSid,
+                                                string deviceSid = null,
+                                                int? pageSize = null,
+                                                long? limit = null,
+                                                ITwilioRestClient client = null)
+    {
+      var options = new ReadKeyOptions(pathFleetSid) { DeviceSid = deviceSid, PageSize = pageSize, Limit = limit };
+      return Read(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Retrieve a list of all Keys credentials belonging to the Fleet.
+    /// </summary>
+    /// <param name="pathFleetSid"> The fleet_sid </param>
+    /// <param name="deviceSid"> Find all Keys authenticating specified Device. </param>
+    /// <param name="pageSize"> Page size </param>
+    /// <param name="limit"> Record limit </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Key </returns>
+    public static async System.Threading.Tasks.Task<ResourceSet<KeyResource>> ReadAsync(string pathFleetSid,
+                                                                                        string deviceSid = null,
+                                                                                        int? pageSize = null,
+                                                                                        long? limit = null,
+                                                                                        ITwilioRestClient client = null)
+    {
+      var options = new ReadKeyOptions(pathFleetSid) { DeviceSid = deviceSid, PageSize = pageSize, Limit = limit };
+      return await ReadAsync(options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Fetch the target page of records
+    /// </summary>
+    /// <param name="targetUrl"> API-generated URL for the requested results page </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> The target page of records </returns>
+    public static Page<KeyResource> GetPage(string targetUrl, ITwilioRestClient client)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+
+      var request = new Request(
+          HttpMethod.Get,
+          targetUrl
+      );
+
+      var response = client.Request(request);
+      return Page<KeyResource>.FromJson("keys", response.Content);
+    }
+
+    /// <summary>
+    /// Fetch the next page of records
+    /// </summary>
+    /// <param name="page"> current page of records </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> The next page of records </returns>
+    public static Page<KeyResource> NextPage(Page<KeyResource> page, ITwilioRestClient client)
+    {
+      var request = new Request(
+          HttpMethod.Get,
+          page.GetNextPageUrl(Rest.Domain.Preview)
+      );
+
+      var response = client.Request(request);
+      return Page<KeyResource>.FromJson("keys", response.Content);
+    }
+
+    /// <summary>
+    /// Fetch the previous page of records
+    /// </summary>
+    /// <param name="page"> current page of records </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> The previous page of records </returns>
+    public static Page<KeyResource> PreviousPage(Page<KeyResource> page, ITwilioRestClient client)
+    {
+      var request = new Request(
+          HttpMethod.Get,
+          page.GetPreviousPageUrl(Rest.Domain.Preview)
+      );
+
+      var response = client.Request(request);
+      return Page<KeyResource>.FromJson("keys", response.Content);
+    }
+
+    private static Request BuildUpdateRequest(UpdateKeyOptions options, ITwilioRestClient client)
+    {
+      return new Request(
+          HttpMethod.Post,
+          Rest.Domain.Preview,
+          "/DeployedDevices/Fleets/" + options.PathFleetSid + "/Keys/" + options.PathSid + "",
+          postParams: options.GetParams(),
+          headerParams: null
+      );
+    }
+
+    /// <summary>
+    /// Update the given properties of a specific Key credential in the Fleet, giving it a friendly name or assigning to a
+    /// Device.
+    /// </summary>
+    /// <param name="options"> Update Key parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Key </returns>
+    public static KeyResource Update(UpdateKeyOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildUpdateRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Update the given properties of a specific Key credential in the Fleet, giving it a friendly name or assigning to a
+    /// Device.
+    /// </summary>
+    /// <param name="options"> Update Key parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Key </returns>
+    public static async System.Threading.Tasks.Task<KeyResource> UpdateAsync(UpdateKeyOptions options,
+                                                                             ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// Update the given properties of a specific Key credential in the Fleet, giving it a friendly name or assigning to a
+    /// Device.
+    /// </summary>
+    /// <param name="pathFleetSid"> The fleet_sid </param>
+    /// <param name="pathSid"> A string that uniquely identifies the Key. </param>
+    /// <param name="friendlyName"> The human readable description for this Key. </param>
+    /// <param name="deviceSid"> The unique identifier of a Key to be authenticated. </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Key </returns>
+    public static KeyResource Update(string pathFleetSid,
+                                     string pathSid,
+                                     string friendlyName = null,
+                                     string deviceSid = null,
+                                     ITwilioRestClient client = null)
+    {
+      var options = new UpdateKeyOptions(pathFleetSid, pathSid) { FriendlyName = friendlyName, DeviceSid = deviceSid };
+      return Update(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// Update the given properties of a specific Key credential in the Fleet, giving it a friendly name or assigning to a
+    /// Device.
+    /// </summary>
+    /// <param name="pathFleetSid"> The fleet_sid </param>
+    /// <param name="pathSid"> A string that uniquely identifies the Key. </param>
+    /// <param name="friendlyName"> The human readable description for this Key. </param>
+    /// <param name="deviceSid"> The unique identifier of a Key to be authenticated. </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Key </returns>
+    public static async System.Threading.Tasks.Task<KeyResource> UpdateAsync(string pathFleetSid,
+                                                                             string pathSid,
+                                                                             string friendlyName = null,
+                                                                             string deviceSid = null,
+                                                                             ITwilioRestClient client = null)
+    {
+      var options = new UpdateKeyOptions(pathFleetSid, pathSid) { FriendlyName = friendlyName, DeviceSid = deviceSid };
+      return await UpdateAsync(options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Converts a JSON string into a KeyResource object
+    /// </summary>
+    /// <param name="json"> Raw JSON string </param>
+    /// <returns> KeyResource object represented by the provided JSON </returns>
+    public static KeyResource FromJson(string json)
+    {
+      // Convert all checked exceptions to Runtime
+      try
+      {
+        return JsonConvert.DeserializeObject<KeyResource>(json);
+      }
+      catch (JsonException e)
+      {
+        throw new ApiException(e.Message, e);
+      }
+    }
+
+    /// <summary>
+    /// A string that uniquely identifies this Key.
+    /// </summary>
+    [JsonProperty("sid")]
+    public string Sid { get; private set; }
+    /// <summary>
+    /// URL of this Key.
+    /// </summary>
+    [JsonProperty("url")]
+    public Uri Url { get; private set; }
+    /// <summary>
+    /// A human readable description for this Key.
+    /// </summary>
+    [JsonProperty("friendly_name")]
+    public string FriendlyName { get; private set; }
+    /// <summary>
+    /// The unique identifier of the Fleet.
+    /// </summary>
+    [JsonProperty("fleet_sid")]
+    public string FleetSid { get; private set; }
+    /// <summary>
+    /// The unique SID that identifies this Account.
+    /// </summary>
+    [JsonProperty("account_sid")]
+    public string AccountSid { get; private set; }
+    /// <summary>
+    /// The unique identifier of a mapped Device.
+    /// </summary>
+    [JsonProperty("device_sid")]
+    public string DeviceSid { get; private set; }
+    /// <summary>
+    /// The key secret.
+    /// </summary>
+    [JsonProperty("secret")]
+    public string Secret { get; private set; }
+    /// <summary>
+    /// The date this Key credential was created.
+    /// </summary>
+    [JsonProperty("date_created")]
+    public DateTime? DateCreated { get; private set; }
+    /// <summary>
+    /// The date this Key credential was updated.
+    /// </summary>
+    [JsonProperty("date_updated")]
+    public DateTime? DateUpdated { get; private set; }
+
+    private KeyResource()
+    {
+
+    }
+  }
 
 }

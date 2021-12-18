@@ -11,44 +11,44 @@ using Twilio.Converters;
 namespace Twilio.Rest.Messaging.V1.Service
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// FetchUsAppToPersonUsecaseOptions
+  /// </summary>
+  public class FetchUsAppToPersonUsecaseOptions : IOptions<UsAppToPersonUsecaseResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// FetchUsAppToPersonUsecaseOptions
+    /// The SID of the Messaging Service to fetch the resource from
     /// </summary>
-    public class FetchUsAppToPersonUsecaseOptions : IOptions<UsAppToPersonUsecaseResource>
+    public string PathMessagingServiceSid { get; }
+    /// <summary>
+    /// A2P Brand Registration SID
+    /// </summary>
+    public string BrandRegistrationSid { get; set; }
+
+    /// <summary>
+    /// Construct a new FetchUsAppToPersonUsecaseOptions
+    /// </summary>
+    /// <param name="pathMessagingServiceSid"> The SID of the Messaging Service to fetch the resource from </param>
+    public FetchUsAppToPersonUsecaseOptions(string pathMessagingServiceSid)
     {
-        /// <summary>
-        /// The SID of the Messaging Service to fetch the resource from
-        /// </summary>
-        public string PathMessagingServiceSid { get; }
-        /// <summary>
-        /// A2P Brand Registration SID
-        /// </summary>
-        public string BrandRegistrationSid { get; set; }
-
-        /// <summary>
-        /// Construct a new FetchUsAppToPersonUsecaseOptions
-        /// </summary>
-        /// <param name="pathMessagingServiceSid"> The SID of the Messaging Service to fetch the resource from </param>
-        public FetchUsAppToPersonUsecaseOptions(string pathMessagingServiceSid)
-        {
-            PathMessagingServiceSid = pathMessagingServiceSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (BrandRegistrationSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("BrandRegistrationSid", BrandRegistrationSid.ToString()));
-            }
-
-            return p;
-        }
+      PathMessagingServiceSid = pathMessagingServiceSid;
     }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (BrandRegistrationSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("BrandRegistrationSid", BrandRegistrationSid.ToString()));
+      }
+
+      return p;
+    }
+  }
 
 }

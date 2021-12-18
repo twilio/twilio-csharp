@@ -12,219 +12,219 @@ using Twilio.Converters;
 namespace Twilio.Rest.Conversations.V1.Service
 {
 
+  /// <summary>
+  /// Create a new user role in your service
+  /// </summary>
+  public class CreateRoleOptions : IOptions<RoleResource>
+  {
     /// <summary>
-    /// Create a new user role in your service
+    /// The SID of the Conversation Service to create the resource under
     /// </summary>
-    public class CreateRoleOptions : IOptions<RoleResource>
+    public string PathChatServiceSid { get; }
+    /// <summary>
+    /// A string to describe the new resource
+    /// </summary>
+    public string FriendlyName { get; }
+    /// <summary>
+    /// The type of role
+    /// </summary>
+    public RoleResource.RoleTypeEnum Type { get; }
+    /// <summary>
+    /// A permission the role should have
+    /// </summary>
+    public List<string> Permission { get; }
+
+    /// <summary>
+    /// Construct a new CreateRoleOptions
+    /// </summary>
+    /// <param name="pathChatServiceSid"> The SID of the Conversation Service to create the resource under </param>
+    /// <param name="friendlyName"> A string to describe the new resource </param>
+    /// <param name="type"> The type of role </param>
+    /// <param name="permission"> A permission the role should have </param>
+    public CreateRoleOptions(string pathChatServiceSid,
+                             string friendlyName,
+                             RoleResource.RoleTypeEnum type,
+                             List<string> permission)
     {
-        /// <summary>
-        /// The SID of the Conversation Service to create the resource under
-        /// </summary>
-        public string PathChatServiceSid { get; }
-        /// <summary>
-        /// A string to describe the new resource
-        /// </summary>
-        public string FriendlyName { get; }
-        /// <summary>
-        /// The type of role
-        /// </summary>
-        public RoleResource.RoleTypeEnum Type { get; }
-        /// <summary>
-        /// A permission the role should have
-        /// </summary>
-        public List<string> Permission { get; }
-
-        /// <summary>
-        /// Construct a new CreateRoleOptions
-        /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Conversation Service to create the resource under </param>
-        /// <param name="friendlyName"> A string to describe the new resource </param>
-        /// <param name="type"> The type of role </param>
-        /// <param name="permission"> A permission the role should have </param>
-        public CreateRoleOptions(string pathChatServiceSid,
-                                 string friendlyName,
-                                 RoleResource.RoleTypeEnum type,
-                                 List<string> permission)
-        {
-            PathChatServiceSid = pathChatServiceSid;
-            FriendlyName = friendlyName;
-            Type = type;
-            Permission = permission;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
-
-            if (Type != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Type", Type.ToString()));
-            }
-
-            if (Permission != null)
-            {
-                p.AddRange(Permission.Select(prop => new KeyValuePair<string, string>("Permission", prop)));
-            }
-
-            return p;
-        }
+      PathChatServiceSid = pathChatServiceSid;
+      FriendlyName = friendlyName;
+      Type = type;
+      Permission = permission;
     }
 
     /// <summary>
-    /// Update an existing user role in your service
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateRoleOptions : IOptions<RoleResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Conversation Service to update the resource from
-        /// </summary>
-        public string PathChatServiceSid { get; }
-        /// <summary>
-        /// The SID of the Role resource to update
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// A permission the role should have
-        /// </summary>
-        public List<string> Permission { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
 
-        /// <summary>
-        /// Construct a new UpdateRoleOptions
-        /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Conversation Service to update the resource from </param>
-        /// <param name="pathSid"> The SID of the Role resource to update </param>
-        /// <param name="permission"> A permission the role should have </param>
-        public UpdateRoleOptions(string pathChatServiceSid, string pathSid, List<string> permission)
-        {
-            PathChatServiceSid = pathChatServiceSid;
-            PathSid = pathSid;
-            Permission = permission;
-        }
+      if (Type != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Type", Type.ToString()));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Permission != null)
-            {
-                p.AddRange(Permission.Select(prop => new KeyValuePair<string, string>("Permission", prop)));
-            }
+      if (Permission != null)
+      {
+        p.AddRange(Permission.Select(prop => new KeyValuePair<string, string>("Permission", prop)));
+      }
 
-            return p;
-        }
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// Update an existing user role in your service
+  /// </summary>
+  public class UpdateRoleOptions : IOptions<RoleResource>
+  {
+    /// <summary>
+    /// The SID of the Conversation Service to update the resource from
+    /// </summary>
+    public string PathChatServiceSid { get; }
+    /// <summary>
+    /// The SID of the Role resource to update
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// A permission the role should have
+    /// </summary>
+    public List<string> Permission { get; }
+
+    /// <summary>
+    /// Construct a new UpdateRoleOptions
+    /// </summary>
+    /// <param name="pathChatServiceSid"> The SID of the Conversation Service to update the resource from </param>
+    /// <param name="pathSid"> The SID of the Role resource to update </param>
+    /// <param name="permission"> A permission the role should have </param>
+    public UpdateRoleOptions(string pathChatServiceSid, string pathSid, List<string> permission)
+    {
+      PathChatServiceSid = pathChatServiceSid;
+      PathSid = pathSid;
+      Permission = permission;
     }
 
     /// <summary>
-    /// Remove a user role from your service
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteRoleOptions : IOptions<RoleResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Conversation Service to delete the resource from
-        /// </summary>
-        public string PathChatServiceSid { get; }
-        /// <summary>
-        /// The SID of the Role resource to delete
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (Permission != null)
+      {
+        p.AddRange(Permission.Select(prop => new KeyValuePair<string, string>("Permission", prop)));
+      }
 
-        /// <summary>
-        /// Construct a new DeleteRoleOptions
-        /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Conversation Service to delete the resource from </param>
-        /// <param name="pathSid"> The SID of the Role resource to delete </param>
-        public DeleteRoleOptions(string pathChatServiceSid, string pathSid)
-        {
-            PathChatServiceSid = pathChatServiceSid;
-            PathSid = pathSid;
-        }
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+  /// <summary>
+  /// Remove a user role from your service
+  /// </summary>
+  public class DeleteRoleOptions : IOptions<RoleResource>
+  {
+    /// <summary>
+    /// The SID of the Conversation Service to delete the resource from
+    /// </summary>
+    public string PathChatServiceSid { get; }
+    /// <summary>
+    /// The SID of the Role resource to delete
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new DeleteRoleOptions
+    /// </summary>
+    /// <param name="pathChatServiceSid"> The SID of the Conversation Service to delete the resource from </param>
+    /// <param name="pathSid"> The SID of the Role resource to delete </param>
+    public DeleteRoleOptions(string pathChatServiceSid, string pathSid)
+    {
+      PathChatServiceSid = pathChatServiceSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Fetch a user role from your service
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchRoleOptions : IOptions<RoleResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Conversation Service to fetch the resource from
-        /// </summary>
-        public string PathChatServiceSid { get; }
-        /// <summary>
-        /// The SID of the Role resource to fetch
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new FetchRoleOptions
-        /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Conversation Service to fetch the resource from </param>
-        /// <param name="pathSid"> The SID of the Role resource to fetch </param>
-        public FetchRoleOptions(string pathChatServiceSid, string pathSid)
-        {
-            PathChatServiceSid = pathChatServiceSid;
-            PathSid = pathSid;
-        }
+  /// <summary>
+  /// Fetch a user role from your service
+  /// </summary>
+  public class FetchRoleOptions : IOptions<RoleResource>
+  {
+    /// <summary>
+    /// The SID of the Conversation Service to fetch the resource from
+    /// </summary>
+    public string PathChatServiceSid { get; }
+    /// <summary>
+    /// The SID of the Role resource to fetch
+    /// </summary>
+    public string PathSid { get; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+    /// <summary>
+    /// Construct a new FetchRoleOptions
+    /// </summary>
+    /// <param name="pathChatServiceSid"> The SID of the Conversation Service to fetch the resource from </param>
+    /// <param name="pathSid"> The SID of the Role resource to fetch </param>
+    public FetchRoleOptions(string pathChatServiceSid, string pathSid)
+    {
+      PathChatServiceSid = pathChatServiceSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Retrieve a list of all user roles in your service
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadRoleOptions : ReadOptions<RoleResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Conversation Service to read the resources from
-        /// </summary>
-        public string PathChatServiceSid { get; }
-
-        /// <summary>
-        /// Construct a new ReadRoleOptions
-        /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Conversation Service to read the resources from </param>
-        public ReadRoleOptions(string pathChatServiceSid)
-        {
-            PathChatServiceSid = pathChatServiceSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
+
+  /// <summary>
+  /// Retrieve a list of all user roles in your service
+  /// </summary>
+  public class ReadRoleOptions : ReadOptions<RoleResource>
+  {
+    /// <summary>
+    /// The SID of the Conversation Service to read the resources from
+    /// </summary>
+    public string PathChatServiceSid { get; }
+
+    /// <summary>
+    /// Construct a new ReadRoleOptions
+    /// </summary>
+    /// <param name="pathChatServiceSid"> The SID of the Conversation Service to read the resources from </param>
+    public ReadRoleOptions(string pathChatServiceSid)
+    {
+      PathChatServiceSid = pathChatServiceSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
 
 }

@@ -21,133 +21,133 @@ using Twilio.Http;
 namespace Twilio.Rest.Preview.Understand.Assistant.Task
 {
 
-    public class TaskStatisticsResource : Resource
+  public class TaskStatisticsResource : Resource
+  {
+    private static Request BuildFetchRequest(FetchTaskStatisticsOptions options, ITwilioRestClient client)
     {
-        private static Request BuildFetchRequest(FetchTaskStatisticsOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Get,
-                Rest.Domain.Preview,
-                "/understand/Assistants/" + options.PathAssistantSid + "/Tasks/" + options.PathTaskSid + "/Statistics",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="options"> Fetch TaskStatistics parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of TaskStatistics </returns>
-        public static TaskStatisticsResource Fetch(FetchTaskStatisticsOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="options"> Fetch TaskStatistics parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of TaskStatistics </returns>
-        public static async System.Threading.Tasks.Task<TaskStatisticsResource> FetchAsync(FetchTaskStatisticsOptions options,
-                                                                                           ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the parent Assistant. </param>
-        /// <param name="pathTaskSid"> The unique ID of the Task associated with this Field. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of TaskStatistics </returns>
-        public static TaskStatisticsResource Fetch(string pathAssistantSid,
-                                                   string pathTaskSid,
-                                                   ITwilioRestClient client = null)
-        {
-            var options = new FetchTaskStatisticsOptions(pathAssistantSid, pathTaskSid);
-            return Fetch(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the parent Assistant. </param>
-        /// <param name="pathTaskSid"> The unique ID of the Task associated with this Field. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of TaskStatistics </returns>
-        public static async System.Threading.Tasks.Task<TaskStatisticsResource> FetchAsync(string pathAssistantSid,
-                                                                                           string pathTaskSid,
-                                                                                           ITwilioRestClient client = null)
-        {
-            var options = new FetchTaskStatisticsOptions(pathAssistantSid, pathTaskSid);
-            return await FetchAsync(options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Converts a JSON string into a TaskStatisticsResource object
-        /// </summary>
-        /// <param name="json"> Raw JSON string </param>
-        /// <returns> TaskStatisticsResource object represented by the provided JSON </returns>
-        public static TaskStatisticsResource FromJson(string json)
-        {
-            // Convert all checked exceptions to Runtime
-            try
-            {
-                return JsonConvert.DeserializeObject<TaskStatisticsResource>(json);
-            }
-            catch (JsonException e)
-            {
-                throw new ApiException(e.Message, e);
-            }
-        }
-
-        /// <summary>
-        /// The unique ID of the Account that created this Field.
-        /// </summary>
-        [JsonProperty("account_sid")]
-        public string AccountSid { get; private set; }
-        /// <summary>
-        /// The unique ID of the parent Assistant.
-        /// </summary>
-        [JsonProperty("assistant_sid")]
-        public string AssistantSid { get; private set; }
-        /// <summary>
-        /// The unique ID of the Task associated with this Field.
-        /// </summary>
-        [JsonProperty("task_sid")]
-        public string TaskSid { get; private set; }
-        /// <summary>
-        /// The total number of Samples associated with this Task.
-        /// </summary>
-        [JsonProperty("samples_count")]
-        public int? SamplesCount { get; private set; }
-        /// <summary>
-        /// The total number of Fields associated with this Task.
-        /// </summary>
-        [JsonProperty("fields_count")]
-        public int? FieldsCount { get; private set; }
-        /// <summary>
-        /// The url
-        /// </summary>
-        [JsonProperty("url")]
-        public Uri Url { get; private set; }
-
-        private TaskStatisticsResource()
-        {
-
-        }
+      return new Request(
+          HttpMethod.Get,
+          Rest.Domain.Preview,
+          "/understand/Assistants/" + options.PathAssistantSid + "/Tasks/" + options.PathTaskSid + "/Statistics",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
     }
+
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="options"> Fetch TaskStatistics parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of TaskStatistics </returns>
+    public static TaskStatisticsResource Fetch(FetchTaskStatisticsOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="options"> Fetch TaskStatistics parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of TaskStatistics </returns>
+    public static async System.Threading.Tasks.Task<TaskStatisticsResource> FetchAsync(FetchTaskStatisticsOptions options,
+                                                                                       ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="pathAssistantSid"> The unique ID of the parent Assistant. </param>
+    /// <param name="pathTaskSid"> The unique ID of the Task associated with this Field. </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of TaskStatistics </returns>
+    public static TaskStatisticsResource Fetch(string pathAssistantSid,
+                                               string pathTaskSid,
+                                               ITwilioRestClient client = null)
+    {
+      var options = new FetchTaskStatisticsOptions(pathAssistantSid, pathTaskSid);
+      return Fetch(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="pathAssistantSid"> The unique ID of the parent Assistant. </param>
+    /// <param name="pathTaskSid"> The unique ID of the Task associated with this Field. </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of TaskStatistics </returns>
+    public static async System.Threading.Tasks.Task<TaskStatisticsResource> FetchAsync(string pathAssistantSid,
+                                                                                       string pathTaskSid,
+                                                                                       ITwilioRestClient client = null)
+    {
+      var options = new FetchTaskStatisticsOptions(pathAssistantSid, pathTaskSid);
+      return await FetchAsync(options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Converts a JSON string into a TaskStatisticsResource object
+    /// </summary>
+    /// <param name="json"> Raw JSON string </param>
+    /// <returns> TaskStatisticsResource object represented by the provided JSON </returns>
+    public static TaskStatisticsResource FromJson(string json)
+    {
+      // Convert all checked exceptions to Runtime
+      try
+      {
+        return JsonConvert.DeserializeObject<TaskStatisticsResource>(json);
+      }
+      catch (JsonException e)
+      {
+        throw new ApiException(e.Message, e);
+      }
+    }
+
+    /// <summary>
+    /// The unique ID of the Account that created this Field.
+    /// </summary>
+    [JsonProperty("account_sid")]
+    public string AccountSid { get; private set; }
+    /// <summary>
+    /// The unique ID of the parent Assistant.
+    /// </summary>
+    [JsonProperty("assistant_sid")]
+    public string AssistantSid { get; private set; }
+    /// <summary>
+    /// The unique ID of the Task associated with this Field.
+    /// </summary>
+    [JsonProperty("task_sid")]
+    public string TaskSid { get; private set; }
+    /// <summary>
+    /// The total number of Samples associated with this Task.
+    /// </summary>
+    [JsonProperty("samples_count")]
+    public int? SamplesCount { get; private set; }
+    /// <summary>
+    /// The total number of Fields associated with this Task.
+    /// </summary>
+    [JsonProperty("fields_count")]
+    public int? FieldsCount { get; private set; }
+    /// <summary>
+    /// The url
+    /// </summary>
+    [JsonProperty("url")]
+    public Uri Url { get; private set; }
+
+    private TaskStatisticsResource()
+    {
+
+    }
+  }
 
 }

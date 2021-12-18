@@ -11,275 +11,275 @@ using Twilio.Converters;
 namespace Twilio.Rest.Fax.V1
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Fetch a specific fax.
+  /// </summary>
+  public class FetchFaxOptions : IOptions<FaxResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Fetch a specific fax.
+    /// The unique string that identifies the resource
     /// </summary>
-    public class FetchFaxOptions : IOptions<FaxResource>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchFaxOptions
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public FetchFaxOptions(string pathSid)
     {
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchFaxOptions
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public FetchFaxOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Retrieve a list of all faxes.
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadFaxOptions : ReadOptions<FaxResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// Retrieve only those faxes sent from this phone number
-        /// </summary>
-        public string From { get; set; }
-        /// <summary>
-        /// Retrieve only those faxes sent to this phone number
-        /// </summary>
-        public string To { get; set; }
-        /// <summary>
-        /// Retrieve only faxes created on or before this date
-        /// </summary>
-        public DateTime? DateCreatedOnOrBefore { get; set; }
-        /// <summary>
-        /// Retrieve only faxes created after this date
-        /// </summary>
-        public DateTime? DateCreatedAfter { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (From != null)
-            {
-                p.Add(new KeyValuePair<string, string>("From", From));
-            }
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Retrieve a list of all faxes.
+  /// </summary>
+  public class ReadFaxOptions : ReadOptions<FaxResource>
+  {
+    /// <summary>
+    /// Retrieve only those faxes sent from this phone number
+    /// </summary>
+    public string From { get; set; }
+    /// <summary>
+    /// Retrieve only those faxes sent to this phone number
+    /// </summary>
+    public string To { get; set; }
+    /// <summary>
+    /// Retrieve only faxes created on or before this date
+    /// </summary>
+    public DateTime? DateCreatedOnOrBefore { get; set; }
+    /// <summary>
+    /// Retrieve only faxes created after this date
+    /// </summary>
+    public DateTime? DateCreatedAfter { get; set; }
 
-            if (To != null)
-            {
-                p.Add(new KeyValuePair<string, string>("To", To));
-            }
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (From != null)
+      {
+        p.Add(new KeyValuePair<string, string>("From", From));
+      }
 
-            if (DateCreatedOnOrBefore != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DateCreatedOnOrBefore", Serializers.DateTimeIso8601(DateCreatedOnOrBefore)));
-            }
+      if (To != null)
+      {
+        p.Add(new KeyValuePair<string, string>("To", To));
+      }
 
-            if (DateCreatedAfter != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DateCreatedAfter", Serializers.DateTimeIso8601(DateCreatedAfter)));
-            }
+      if (DateCreatedOnOrBefore != null)
+      {
+        p.Add(new KeyValuePair<string, string>("DateCreatedOnOrBefore", Serializers.DateTimeIso8601(DateCreatedOnOrBefore)));
+      }
 
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
+      if (DateCreatedAfter != null)
+      {
+        p.Add(new KeyValuePair<string, string>("DateCreatedAfter", Serializers.DateTimeIso8601(DateCreatedAfter)));
+      }
 
-            return p;
-        }
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Create a new fax to send to a phone number or SIP endpoint.
+  /// </summary>
+  public class CreateFaxOptions : IOptions<FaxResource>
+  {
+    /// <summary>
+    /// The phone number to receive the fax
+    /// </summary>
+    public string To { get; }
+    /// <summary>
+    /// The URL of the PDF that contains the fax
+    /// </summary>
+    public Uri MediaUrl { get; }
+    /// <summary>
+    /// The quality of this fax
+    /// </summary>
+    public FaxResource.QualityEnum Quality { get; set; }
+    /// <summary>
+    /// The URL we should call to send status information to your application
+    /// </summary>
+    public Uri StatusCallback { get; set; }
+    /// <summary>
+    /// The number the fax was sent from
+    /// </summary>
+    public string From { get; set; }
+    /// <summary>
+    /// The username for SIP authentication
+    /// </summary>
+    public string SipAuthUsername { get; set; }
+    /// <summary>
+    /// The password for SIP authentication
+    /// </summary>
+    public string SipAuthPassword { get; set; }
+    /// <summary>
+    /// Whether to store a copy of the sent media
+    /// </summary>
+    public bool? StoreMedia { get; set; }
+    /// <summary>
+    /// How long in minutes to try to send the fax
+    /// </summary>
+    public int? Ttl { get; set; }
+
+    /// <summary>
+    /// Construct a new CreateFaxOptions
+    /// </summary>
+    /// <param name="to"> The phone number to receive the fax </param>
+    /// <param name="mediaUrl"> The URL of the PDF that contains the fax </param>
+    public CreateFaxOptions(string to, Uri mediaUrl)
+    {
+      To = to;
+      MediaUrl = mediaUrl;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Create a new fax to send to a phone number or SIP endpoint.
+    /// Generate the necessary parameters
     /// </summary>
-    public class CreateFaxOptions : IOptions<FaxResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The phone number to receive the fax
-        /// </summary>
-        public string To { get; }
-        /// <summary>
-        /// The URL of the PDF that contains the fax
-        /// </summary>
-        public Uri MediaUrl { get; }
-        /// <summary>
-        /// The quality of this fax
-        /// </summary>
-        public FaxResource.QualityEnum Quality { get; set; }
-        /// <summary>
-        /// The URL we should call to send status information to your application
-        /// </summary>
-        public Uri StatusCallback { get; set; }
-        /// <summary>
-        /// The number the fax was sent from
-        /// </summary>
-        public string From { get; set; }
-        /// <summary>
-        /// The username for SIP authentication
-        /// </summary>
-        public string SipAuthUsername { get; set; }
-        /// <summary>
-        /// The password for SIP authentication
-        /// </summary>
-        public string SipAuthPassword { get; set; }
-        /// <summary>
-        /// Whether to store a copy of the sent media
-        /// </summary>
-        public bool? StoreMedia { get; set; }
-        /// <summary>
-        /// How long in minutes to try to send the fax
-        /// </summary>
-        public int? Ttl { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (To != null)
+      {
+        p.Add(new KeyValuePair<string, string>("To", To));
+      }
 
-        /// <summary>
-        /// Construct a new CreateFaxOptions
-        /// </summary>
-        /// <param name="to"> The phone number to receive the fax </param>
-        /// <param name="mediaUrl"> The URL of the PDF that contains the fax </param>
-        public CreateFaxOptions(string to, Uri mediaUrl)
-        {
-            To = to;
-            MediaUrl = mediaUrl;
-        }
+      if (MediaUrl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("MediaUrl", Serializers.Url(MediaUrl)));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (To != null)
-            {
-                p.Add(new KeyValuePair<string, string>("To", To));
-            }
+      if (Quality != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Quality", Quality.ToString()));
+      }
 
-            if (MediaUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("MediaUrl", Serializers.Url(MediaUrl)));
-            }
+      if (StatusCallback != null)
+      {
+        p.Add(new KeyValuePair<string, string>("StatusCallback", Serializers.Url(StatusCallback)));
+      }
 
-            if (Quality != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Quality", Quality.ToString()));
-            }
+      if (From != null)
+      {
+        p.Add(new KeyValuePair<string, string>("From", From));
+      }
 
-            if (StatusCallback != null)
-            {
-                p.Add(new KeyValuePair<string, string>("StatusCallback", Serializers.Url(StatusCallback)));
-            }
+      if (SipAuthUsername != null)
+      {
+        p.Add(new KeyValuePair<string, string>("SipAuthUsername", SipAuthUsername));
+      }
 
-            if (From != null)
-            {
-                p.Add(new KeyValuePair<string, string>("From", From));
-            }
+      if (SipAuthPassword != null)
+      {
+        p.Add(new KeyValuePair<string, string>("SipAuthPassword", SipAuthPassword));
+      }
 
-            if (SipAuthUsername != null)
-            {
-                p.Add(new KeyValuePair<string, string>("SipAuthUsername", SipAuthUsername));
-            }
+      if (StoreMedia != null)
+      {
+        p.Add(new KeyValuePair<string, string>("StoreMedia", StoreMedia.Value.ToString().ToLower()));
+      }
 
-            if (SipAuthPassword != null)
-            {
-                p.Add(new KeyValuePair<string, string>("SipAuthPassword", SipAuthPassword));
-            }
+      if (Ttl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Ttl", Ttl.ToString()));
+      }
 
-            if (StoreMedia != null)
-            {
-                p.Add(new KeyValuePair<string, string>("StoreMedia", StoreMedia.Value.ToString().ToLower()));
-            }
+      return p;
+    }
+  }
 
-            if (Ttl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Ttl", Ttl.ToString()));
-            }
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Update a specific fax.
+  /// </summary>
+  public class UpdateFaxOptions : IOptions<FaxResource>
+  {
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// The new status of the resource
+    /// </summary>
+    public FaxResource.UpdateStatusEnum Status { get; set; }
 
-            return p;
-        }
+    /// <summary>
+    /// Construct a new UpdateFaxOptions
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public UpdateFaxOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Update a specific fax.
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateFaxOptions : IOptions<FaxResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// The new status of the resource
-        /// </summary>
-        public FaxResource.UpdateStatusEnum Status { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (Status != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new UpdateFaxOptions
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public UpdateFaxOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Status != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
-            }
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Delete a specific fax and its associated media.
+  /// </summary>
+  public class DeleteFaxOptions : IOptions<FaxResource>
+  {
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
 
-            return p;
-        }
+    /// <summary>
+    /// Construct a new DeleteFaxOptions
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public DeleteFaxOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Delete a specific fax and its associated media.
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteFaxOptions : IOptions<FaxResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new DeleteFaxOptions
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public DeleteFaxOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
 
 }

@@ -11,149 +11,149 @@ using Twilio.Converters;
 namespace Twilio.Rest.Trunking.V1.Trunk
 {
 
+  /// <summary>
+  /// FetchPhoneNumberOptions
+  /// </summary>
+  public class FetchPhoneNumberOptions : IOptions<PhoneNumberResource>
+  {
     /// <summary>
-    /// FetchPhoneNumberOptions
+    /// The SID of the Trunk from which to fetch the PhoneNumber resource
     /// </summary>
-    public class FetchPhoneNumberOptions : IOptions<PhoneNumberResource>
+    public string PathTrunkSid { get; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchPhoneNumberOptions
+    /// </summary>
+    /// <param name="pathTrunkSid"> The SID of the Trunk from which to fetch the PhoneNumber resource </param>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public FetchPhoneNumberOptions(string pathTrunkSid, string pathSid)
     {
-        /// <summary>
-        /// The SID of the Trunk from which to fetch the PhoneNumber resource
-        /// </summary>
-        public string PathTrunkSid { get; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchPhoneNumberOptions
-        /// </summary>
-        /// <param name="pathTrunkSid"> The SID of the Trunk from which to fetch the PhoneNumber resource </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public FetchPhoneNumberOptions(string pathTrunkSid, string pathSid)
-        {
-            PathTrunkSid = pathTrunkSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathTrunkSid = pathTrunkSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// DeletePhoneNumberOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeletePhoneNumberOptions : IOptions<PhoneNumberResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Trunk from which to delete the PhoneNumber resource
-        /// </summary>
-        public string PathTrunkSid { get; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new DeletePhoneNumberOptions
-        /// </summary>
-        /// <param name="pathTrunkSid"> The SID of the Trunk from which to delete the PhoneNumber resource </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public DeletePhoneNumberOptions(string pathTrunkSid, string pathSid)
-        {
-            PathTrunkSid = pathTrunkSid;
-            PathSid = pathSid;
-        }
+  /// <summary>
+  /// DeletePhoneNumberOptions
+  /// </summary>
+  public class DeletePhoneNumberOptions : IOptions<PhoneNumberResource>
+  {
+    /// <summary>
+    /// The SID of the Trunk from which to delete the PhoneNumber resource
+    /// </summary>
+    public string PathTrunkSid { get; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+    /// <summary>
+    /// Construct a new DeletePhoneNumberOptions
+    /// </summary>
+    /// <param name="pathTrunkSid"> The SID of the Trunk from which to delete the PhoneNumber resource </param>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public DeletePhoneNumberOptions(string pathTrunkSid, string pathSid)
+    {
+      PathTrunkSid = pathTrunkSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// CreatePhoneNumberOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class CreatePhoneNumberOptions : IOptions<PhoneNumberResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Trunk to associate the phone number with
-        /// </summary>
-        public string PathTrunkSid { get; }
-        /// <summary>
-        /// The SID of the Incoming Phone Number that you want to associate with the trunk
-        /// </summary>
-        public string PhoneNumberSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new CreatePhoneNumberOptions
-        /// </summary>
-        /// <param name="pathTrunkSid"> The SID of the Trunk to associate the phone number with </param>
-        /// <param name="phoneNumberSid"> The SID of the Incoming Phone Number that you want to associate with the trunk
-        ///                      </param>
-        public CreatePhoneNumberOptions(string pathTrunkSid, string phoneNumberSid)
-        {
-            PathTrunkSid = pathTrunkSid;
-            PhoneNumberSid = phoneNumberSid;
-        }
+  /// <summary>
+  /// CreatePhoneNumberOptions
+  /// </summary>
+  public class CreatePhoneNumberOptions : IOptions<PhoneNumberResource>
+  {
+    /// <summary>
+    /// The SID of the Trunk to associate the phone number with
+    /// </summary>
+    public string PathTrunkSid { get; }
+    /// <summary>
+    /// The SID of the Incoming Phone Number that you want to associate with the trunk
+    /// </summary>
+    public string PhoneNumberSid { get; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PhoneNumberSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PhoneNumberSid", PhoneNumberSid.ToString()));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new CreatePhoneNumberOptions
+    /// </summary>
+    /// <param name="pathTrunkSid"> The SID of the Trunk to associate the phone number with </param>
+    /// <param name="phoneNumberSid"> The SID of the Incoming Phone Number that you want to associate with the trunk
+    ///                      </param>
+    public CreatePhoneNumberOptions(string pathTrunkSid, string phoneNumberSid)
+    {
+      PathTrunkSid = pathTrunkSid;
+      PhoneNumberSid = phoneNumberSid;
     }
 
     /// <summary>
-    /// ReadPhoneNumberOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadPhoneNumberOptions : ReadOptions<PhoneNumberResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Trunk from which to read the PhoneNumber resources
-        /// </summary>
-        public string PathTrunkSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (PhoneNumberSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PhoneNumberSid", PhoneNumberSid.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new ReadPhoneNumberOptions
-        /// </summary>
-        /// <param name="pathTrunkSid"> The SID of the Trunk from which to read the PhoneNumber resources </param>
-        public ReadPhoneNumberOptions(string pathTrunkSid)
-        {
-            PathTrunkSid = pathTrunkSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+      return p;
     }
+  }
+
+  /// <summary>
+  /// ReadPhoneNumberOptions
+  /// </summary>
+  public class ReadPhoneNumberOptions : ReadOptions<PhoneNumberResource>
+  {
+    /// <summary>
+    /// The SID of the Trunk from which to read the PhoneNumber resources
+    /// </summary>
+    public string PathTrunkSid { get; }
+
+    /// <summary>
+    /// Construct a new ReadPhoneNumberOptions
+    /// </summary>
+    /// <param name="pathTrunkSid"> The SID of the Trunk from which to read the PhoneNumber resources </param>
+    public ReadPhoneNumberOptions(string pathTrunkSid)
+    {
+      PathTrunkSid = pathTrunkSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
 
 }

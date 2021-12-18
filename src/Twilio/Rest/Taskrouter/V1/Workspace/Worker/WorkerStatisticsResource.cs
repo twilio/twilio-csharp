@@ -18,144 +18,144 @@ using Twilio.Http;
 namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
 {
 
-    public class WorkerStatisticsResource : Resource
+  public class WorkerStatisticsResource : Resource
+  {
+    private static Request BuildFetchRequest(FetchWorkerStatisticsOptions options, ITwilioRestClient client)
     {
-        private static Request BuildFetchRequest(FetchWorkerStatisticsOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Get,
-                Rest.Domain.Taskrouter,
-                "/v1/Workspaces/" + options.PathWorkspaceSid + "/Workers/" + options.PathWorkerSid + "/Statistics",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="options"> Fetch WorkerStatistics parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of WorkerStatistics </returns>
-        public static WorkerStatisticsResource Fetch(FetchWorkerStatisticsOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="options"> Fetch WorkerStatistics parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of WorkerStatistics </returns>
-        public static async System.Threading.Tasks.Task<WorkerStatisticsResource> FetchAsync(FetchWorkerStatisticsOptions options,
-                                                                                             ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the WorkerChannel to fetch </param>
-        /// <param name="pathWorkerSid"> The SID of the Worker with the WorkerChannel to fetch </param>
-        /// <param name="minutes"> Only calculate statistics since this many minutes in the past </param>
-        /// <param name="startDate"> Only calculate statistics from on or after this date </param>
-        /// <param name="endDate"> Only include usage that occurred on or before this date </param>
-        /// <param name="taskChannel"> Only calculate statistics on this TaskChannel </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of WorkerStatistics </returns>
-        public static WorkerStatisticsResource Fetch(string pathWorkspaceSid,
-                                                     string pathWorkerSid,
-                                                     int? minutes = null,
-                                                     DateTime? startDate = null,
-                                                     DateTime? endDate = null,
-                                                     string taskChannel = null,
-                                                     ITwilioRestClient client = null)
-        {
-            var options = new FetchWorkerStatisticsOptions(pathWorkspaceSid, pathWorkerSid){Minutes = minutes, StartDate = startDate, EndDate = endDate, TaskChannel = taskChannel};
-            return Fetch(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the WorkerChannel to fetch </param>
-        /// <param name="pathWorkerSid"> The SID of the Worker with the WorkerChannel to fetch </param>
-        /// <param name="minutes"> Only calculate statistics since this many minutes in the past </param>
-        /// <param name="startDate"> Only calculate statistics from on or after this date </param>
-        /// <param name="endDate"> Only include usage that occurred on or before this date </param>
-        /// <param name="taskChannel"> Only calculate statistics on this TaskChannel </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of WorkerStatistics </returns>
-        public static async System.Threading.Tasks.Task<WorkerStatisticsResource> FetchAsync(string pathWorkspaceSid,
-                                                                                             string pathWorkerSid,
-                                                                                             int? minutes = null,
-                                                                                             DateTime? startDate = null,
-                                                                                             DateTime? endDate = null,
-                                                                                             string taskChannel = null,
-                                                                                             ITwilioRestClient client = null)
-        {
-            var options = new FetchWorkerStatisticsOptions(pathWorkspaceSid, pathWorkerSid){Minutes = minutes, StartDate = startDate, EndDate = endDate, TaskChannel = taskChannel};
-            return await FetchAsync(options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Converts a JSON string into a WorkerStatisticsResource object
-        /// </summary>
-        /// <param name="json"> Raw JSON string </param>
-        /// <returns> WorkerStatisticsResource object represented by the provided JSON </returns>
-        public static WorkerStatisticsResource FromJson(string json)
-        {
-            // Convert all checked exceptions to Runtime
-            try
-            {
-                return JsonConvert.DeserializeObject<WorkerStatisticsResource>(json);
-            }
-            catch (JsonException e)
-            {
-                throw new ApiException(e.Message, e);
-            }
-        }
-
-        /// <summary>
-        /// The SID of the Account that created the resource
-        /// </summary>
-        [JsonProperty("account_sid")]
-        public string AccountSid { get; private set; }
-        /// <summary>
-        /// An object that contains the cumulative statistics for the Worker
-        /// </summary>
-        [JsonProperty("cumulative")]
-        public object Cumulative { get; private set; }
-        /// <summary>
-        /// The SID of the Worker that contains the WorkerChannel
-        /// </summary>
-        [JsonProperty("worker_sid")]
-        public string WorkerSid { get; private set; }
-        /// <summary>
-        /// The SID of the Workspace that contains the WorkerChannel
-        /// </summary>
-        [JsonProperty("workspace_sid")]
-        public string WorkspaceSid { get; private set; }
-        /// <summary>
-        /// The absolute URL of the WorkerChannel statistics resource
-        /// </summary>
-        [JsonProperty("url")]
-        public Uri Url { get; private set; }
-
-        private WorkerStatisticsResource()
-        {
-
-        }
+      return new Request(
+          HttpMethod.Get,
+          Rest.Domain.Taskrouter,
+          "/v1/Workspaces/" + options.PathWorkspaceSid + "/Workers/" + options.PathWorkerSid + "/Statistics",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
     }
+
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="options"> Fetch WorkerStatistics parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of WorkerStatistics </returns>
+    public static WorkerStatisticsResource Fetch(FetchWorkerStatisticsOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="options"> Fetch WorkerStatistics parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of WorkerStatistics </returns>
+    public static async System.Threading.Tasks.Task<WorkerStatisticsResource> FetchAsync(FetchWorkerStatisticsOptions options,
+                                                                                         ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="pathWorkspaceSid"> The SID of the Workspace with the WorkerChannel to fetch </param>
+    /// <param name="pathWorkerSid"> The SID of the Worker with the WorkerChannel to fetch </param>
+    /// <param name="minutes"> Only calculate statistics since this many minutes in the past </param>
+    /// <param name="startDate"> Only calculate statistics from on or after this date </param>
+    /// <param name="endDate"> Only include usage that occurred on or before this date </param>
+    /// <param name="taskChannel"> Only calculate statistics on this TaskChannel </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of WorkerStatistics </returns>
+    public static WorkerStatisticsResource Fetch(string pathWorkspaceSid,
+                                                 string pathWorkerSid,
+                                                 int? minutes = null,
+                                                 DateTime? startDate = null,
+                                                 DateTime? endDate = null,
+                                                 string taskChannel = null,
+                                                 ITwilioRestClient client = null)
+    {
+      var options = new FetchWorkerStatisticsOptions(pathWorkspaceSid, pathWorkerSid) { Minutes = minutes, StartDate = startDate, EndDate = endDate, TaskChannel = taskChannel };
+      return Fetch(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="pathWorkspaceSid"> The SID of the Workspace with the WorkerChannel to fetch </param>
+    /// <param name="pathWorkerSid"> The SID of the Worker with the WorkerChannel to fetch </param>
+    /// <param name="minutes"> Only calculate statistics since this many minutes in the past </param>
+    /// <param name="startDate"> Only calculate statistics from on or after this date </param>
+    /// <param name="endDate"> Only include usage that occurred on or before this date </param>
+    /// <param name="taskChannel"> Only calculate statistics on this TaskChannel </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of WorkerStatistics </returns>
+    public static async System.Threading.Tasks.Task<WorkerStatisticsResource> FetchAsync(string pathWorkspaceSid,
+                                                                                         string pathWorkerSid,
+                                                                                         int? minutes = null,
+                                                                                         DateTime? startDate = null,
+                                                                                         DateTime? endDate = null,
+                                                                                         string taskChannel = null,
+                                                                                         ITwilioRestClient client = null)
+    {
+      var options = new FetchWorkerStatisticsOptions(pathWorkspaceSid, pathWorkerSid) { Minutes = minutes, StartDate = startDate, EndDate = endDate, TaskChannel = taskChannel };
+      return await FetchAsync(options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Converts a JSON string into a WorkerStatisticsResource object
+    /// </summary>
+    /// <param name="json"> Raw JSON string </param>
+    /// <returns> WorkerStatisticsResource object represented by the provided JSON </returns>
+    public static WorkerStatisticsResource FromJson(string json)
+    {
+      // Convert all checked exceptions to Runtime
+      try
+      {
+        return JsonConvert.DeserializeObject<WorkerStatisticsResource>(json);
+      }
+      catch (JsonException e)
+      {
+        throw new ApiException(e.Message, e);
+      }
+    }
+
+    /// <summary>
+    /// The SID of the Account that created the resource
+    /// </summary>
+    [JsonProperty("account_sid")]
+    public string AccountSid { get; private set; }
+    /// <summary>
+    /// An object that contains the cumulative statistics for the Worker
+    /// </summary>
+    [JsonProperty("cumulative")]
+    public object Cumulative { get; private set; }
+    /// <summary>
+    /// The SID of the Worker that contains the WorkerChannel
+    /// </summary>
+    [JsonProperty("worker_sid")]
+    public string WorkerSid { get; private set; }
+    /// <summary>
+    /// The SID of the Workspace that contains the WorkerChannel
+    /// </summary>
+    [JsonProperty("workspace_sid")]
+    public string WorkspaceSid { get; private set; }
+    /// <summary>
+    /// The absolute URL of the WorkerChannel statistics resource
+    /// </summary>
+    [JsonProperty("url")]
+    public Uri Url { get; private set; }
+
+    private WorkerStatisticsResource()
+    {
+
+    }
+  }
 
 }

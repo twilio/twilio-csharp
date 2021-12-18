@@ -2,20 +2,20 @@
 
 namespace Twilio.Converters
 {
+  /// <summary>
+  /// Convert strings to objects
+  /// </summary>
+  public class MarshalConverter
+  {
     /// <summary>
-    /// Convert strings to objects
+    /// Convert a date time string to a DateTime object
     /// </summary>
-    public class MarshalConverter
+    /// <param name="dateTimeString">date time string to convert</param>
+    /// <returns>Converted DateTime object</returns>
+    public static DateTime DateTimeFromString(string dateTimeString)
     {
-        /// <summary>
-        /// Convert a date time string to a DateTime object
-        /// </summary>
-        /// <param name="dateTimeString">date time string to convert</param>
-        /// <returns>Converted DateTime object</returns>
-        public static DateTime DateTimeFromString(string dateTimeString)
-        {
-            return DateTime.Parse(dateTimeString);
-        }
+      return DateTime.Parse(dateTimeString);
     }
+  }
 }
 

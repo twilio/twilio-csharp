@@ -11,409 +11,409 @@ using Twilio.Converters;
 namespace Twilio.Rest.Conversations.V1.Service.Conversation
 {
 
+  /// <summary>
+  /// Add a new participant to the conversation in a specific service
+  /// </summary>
+  public class CreateParticipantOptions : IOptions<ParticipantResource>
+  {
     /// <summary>
-    /// Add a new participant to the conversation in a specific service
+    /// The SID of the Conversation Service that the resource is associated with.
     /// </summary>
-    public class CreateParticipantOptions : IOptions<ParticipantResource>
+    public string PathChatServiceSid { get; }
+    /// <summary>
+    /// The unique ID of the Conversation for this participant.
+    /// </summary>
+    public string PathConversationSid { get; }
+    /// <summary>
+    /// A unique string identifier for the conversation participant as Conversation User.
+    /// </summary>
+    public string Identity { get; set; }
+    /// <summary>
+    /// The address of the participant's device.
+    /// </summary>
+    public string MessagingBindingAddress { get; set; }
+    /// <summary>
+    /// The address of the Twilio phone number that the participant is in contact with.
+    /// </summary>
+    public string MessagingBindingProxyAddress { get; set; }
+    /// <summary>
+    /// The date that this resource was created.
+    /// </summary>
+    public DateTime? DateCreated { get; set; }
+    /// <summary>
+    /// The date that this resource was last updated.
+    /// </summary>
+    public DateTime? DateUpdated { get; set; }
+    /// <summary>
+    /// An optional string metadata field you can use to store any data you wish.
+    /// </summary>
+    public string Attributes { get; set; }
+    /// <summary>
+    /// The address of the Twilio phone number that is used in Group MMS.
+    /// </summary>
+    public string MessagingBindingProjectedAddress { get; set; }
+    /// <summary>
+    /// The SID of a conversation-level Role to assign to the participant
+    /// </summary>
+    public string RoleSid { get; set; }
+    /// <summary>
+    /// The X-Twilio-Webhook-Enabled HTTP request header
+    /// </summary>
+    public ParticipantResource.WebhookEnabledTypeEnum XTwilioWebhookEnabled { get; set; }
+
+    /// <summary>
+    /// Construct a new CreateParticipantOptions
+    /// </summary>
+    /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
+    /// <param name="pathConversationSid"> The unique ID of the Conversation for this participant. </param>
+    public CreateParticipantOptions(string pathChatServiceSid, string pathConversationSid)
     {
-        /// <summary>
-        /// The SID of the Conversation Service that the resource is associated with.
-        /// </summary>
-        public string PathChatServiceSid { get; }
-        /// <summary>
-        /// The unique ID of the Conversation for this participant.
-        /// </summary>
-        public string PathConversationSid { get; }
-        /// <summary>
-        /// A unique string identifier for the conversation participant as Conversation User.
-        /// </summary>
-        public string Identity { get; set; }
-        /// <summary>
-        /// The address of the participant's device.
-        /// </summary>
-        public string MessagingBindingAddress { get; set; }
-        /// <summary>
-        /// The address of the Twilio phone number that the participant is in contact with.
-        /// </summary>
-        public string MessagingBindingProxyAddress { get; set; }
-        /// <summary>
-        /// The date that this resource was created.
-        /// </summary>
-        public DateTime? DateCreated { get; set; }
-        /// <summary>
-        /// The date that this resource was last updated.
-        /// </summary>
-        public DateTime? DateUpdated { get; set; }
-        /// <summary>
-        /// An optional string metadata field you can use to store any data you wish.
-        /// </summary>
-        public string Attributes { get; set; }
-        /// <summary>
-        /// The address of the Twilio phone number that is used in Group MMS.
-        /// </summary>
-        public string MessagingBindingProjectedAddress { get; set; }
-        /// <summary>
-        /// The SID of a conversation-level Role to assign to the participant
-        /// </summary>
-        public string RoleSid { get; set; }
-        /// <summary>
-        /// The X-Twilio-Webhook-Enabled HTTP request header
-        /// </summary>
-        public ParticipantResource.WebhookEnabledTypeEnum XTwilioWebhookEnabled { get; set; }
-
-        /// <summary>
-        /// Construct a new CreateParticipantOptions
-        /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
-        /// <param name="pathConversationSid"> The unique ID of the Conversation for this participant. </param>
-        public CreateParticipantOptions(string pathChatServiceSid, string pathConversationSid)
-        {
-            PathChatServiceSid = pathChatServiceSid;
-            PathConversationSid = pathConversationSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Identity != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Identity", Identity));
-            }
-
-            if (MessagingBindingAddress != null)
-            {
-                p.Add(new KeyValuePair<string, string>("MessagingBinding.Address", MessagingBindingAddress));
-            }
-
-            if (MessagingBindingProxyAddress != null)
-            {
-                p.Add(new KeyValuePair<string, string>("MessagingBinding.ProxyAddress", MessagingBindingProxyAddress));
-            }
-
-            if (DateCreated != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DateCreated", Serializers.DateTimeIso8601(DateCreated)));
-            }
-
-            if (DateUpdated != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DateUpdated", Serializers.DateTimeIso8601(DateUpdated)));
-            }
-
-            if (Attributes != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Attributes", Attributes));
-            }
-
-            if (MessagingBindingProjectedAddress != null)
-            {
-                p.Add(new KeyValuePair<string, string>("MessagingBinding.ProjectedAddress", MessagingBindingProjectedAddress));
-            }
-
-            if (RoleSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("RoleSid", RoleSid.ToString()));
-            }
-
-            return p;
-        }
-
-        /// <summary>
-        /// Generate the necessary header parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetHeaderParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (XTwilioWebhookEnabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("X-Twilio-Webhook-Enabled", XTwilioWebhookEnabled.ToString()));
-            }
-
-            return p;
-        }
+      PathChatServiceSid = pathChatServiceSid;
+      PathConversationSid = pathConversationSid;
     }
 
     /// <summary>
-    /// Update an existing participant in the conversation
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateParticipantOptions : IOptions<ParticipantResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Conversation Service that the resource is associated with.
-        /// </summary>
-        public string PathChatServiceSid { get; }
-        /// <summary>
-        /// The unique ID of the Conversation for this participant.
-        /// </summary>
-        public string PathConversationSid { get; }
-        /// <summary>
-        /// A 34 character string that uniquely identifies this resource.
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// The date that this resource was created.
-        /// </summary>
-        public DateTime? DateCreated { get; set; }
-        /// <summary>
-        /// The date that this resource was last updated.
-        /// </summary>
-        public DateTime? DateUpdated { get; set; }
-        /// <summary>
-        /// A unique string identifier for the conversation participant as Conversation User.
-        /// </summary>
-        public string Identity { get; set; }
-        /// <summary>
-        /// An optional string metadata field you can use to store any data you wish.
-        /// </summary>
-        public string Attributes { get; set; }
-        /// <summary>
-        /// The SID of a conversation-level Role to assign to the participant
-        /// </summary>
-        public string RoleSid { get; set; }
-        /// <summary>
-        /// The address of the Twilio phone number that the participant is in contact with.
-        /// </summary>
-        public string MessagingBindingProxyAddress { get; set; }
-        /// <summary>
-        /// The address of the Twilio phone number that is used in Group MMS.
-        /// </summary>
-        public string MessagingBindingProjectedAddress { get; set; }
-        /// <summary>
-        /// Index of last “read” message in the Conversation for the Participant.
-        /// </summary>
-        public int? LastReadMessageIndex { get; set; }
-        /// <summary>
-        /// Timestamp of last “read” message in the Conversation for the Participant.
-        /// </summary>
-        public string LastReadTimestamp { get; set; }
-        /// <summary>
-        /// The X-Twilio-Webhook-Enabled HTTP request header
-        /// </summary>
-        public ParticipantResource.WebhookEnabledTypeEnum XTwilioWebhookEnabled { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (Identity != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Identity", Identity));
+      }
 
-        /// <summary>
-        /// Construct a new UpdateParticipantOptions
-        /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
-        /// <param name="pathConversationSid"> The unique ID of the Conversation for this participant. </param>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
-        public UpdateParticipantOptions(string pathChatServiceSid, string pathConversationSid, string pathSid)
-        {
-            PathChatServiceSid = pathChatServiceSid;
-            PathConversationSid = pathConversationSid;
-            PathSid = pathSid;
-        }
+      if (MessagingBindingAddress != null)
+      {
+        p.Add(new KeyValuePair<string, string>("MessagingBinding.Address", MessagingBindingAddress));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (DateCreated != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DateCreated", Serializers.DateTimeIso8601(DateCreated)));
-            }
+      if (MessagingBindingProxyAddress != null)
+      {
+        p.Add(new KeyValuePair<string, string>("MessagingBinding.ProxyAddress", MessagingBindingProxyAddress));
+      }
 
-            if (DateUpdated != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DateUpdated", Serializers.DateTimeIso8601(DateUpdated)));
-            }
+      if (DateCreated != null)
+      {
+        p.Add(new KeyValuePair<string, string>("DateCreated", Serializers.DateTimeIso8601(DateCreated)));
+      }
 
-            if (Identity != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Identity", Identity));
-            }
+      if (DateUpdated != null)
+      {
+        p.Add(new KeyValuePair<string, string>("DateUpdated", Serializers.DateTimeIso8601(DateUpdated)));
+      }
 
-            if (Attributes != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Attributes", Attributes));
-            }
+      if (Attributes != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Attributes", Attributes));
+      }
 
-            if (RoleSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("RoleSid", RoleSid.ToString()));
-            }
+      if (MessagingBindingProjectedAddress != null)
+      {
+        p.Add(new KeyValuePair<string, string>("MessagingBinding.ProjectedAddress", MessagingBindingProjectedAddress));
+      }
 
-            if (MessagingBindingProxyAddress != null)
-            {
-                p.Add(new KeyValuePair<string, string>("MessagingBinding.ProxyAddress", MessagingBindingProxyAddress));
-            }
+      if (RoleSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("RoleSid", RoleSid.ToString()));
+      }
 
-            if (MessagingBindingProjectedAddress != null)
-            {
-                p.Add(new KeyValuePair<string, string>("MessagingBinding.ProjectedAddress", MessagingBindingProjectedAddress));
-            }
-
-            if (LastReadMessageIndex != null)
-            {
-                p.Add(new KeyValuePair<string, string>("LastReadMessageIndex", LastReadMessageIndex.ToString()));
-            }
-
-            if (LastReadTimestamp != null)
-            {
-                p.Add(new KeyValuePair<string, string>("LastReadTimestamp", LastReadTimestamp));
-            }
-
-            return p;
-        }
-
-        /// <summary>
-        /// Generate the necessary header parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetHeaderParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (XTwilioWebhookEnabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("X-Twilio-Webhook-Enabled", XTwilioWebhookEnabled.ToString()));
-            }
-
-            return p;
-        }
+      return p;
     }
 
     /// <summary>
-    /// Remove a participant from the conversation
+    /// Generate the necessary header parameters
     /// </summary>
-    public class DeleteParticipantOptions : IOptions<ParticipantResource>
+    public List<KeyValuePair<string, string>> GetHeaderParams()
     {
-        /// <summary>
-        /// The SID of the Conversation Service that the resource is associated with.
-        /// </summary>
-        public string PathChatServiceSid { get; }
-        /// <summary>
-        /// The unique ID of the Conversation for this participant.
-        /// </summary>
-        public string PathConversationSid { get; }
-        /// <summary>
-        /// A 34 character string that uniquely identifies this resource.
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// The X-Twilio-Webhook-Enabled HTTP request header
-        /// </summary>
-        public ParticipantResource.WebhookEnabledTypeEnum XTwilioWebhookEnabled { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (XTwilioWebhookEnabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("X-Twilio-Webhook-Enabled", XTwilioWebhookEnabled.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new DeleteParticipantOptions
-        /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
-        /// <param name="pathConversationSid"> The unique ID of the Conversation for this participant. </param>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
-        public DeleteParticipantOptions(string pathChatServiceSid, string pathConversationSid, string pathSid)
-        {
-            PathChatServiceSid = pathChatServiceSid;
-            PathConversationSid = pathConversationSid;
-            PathSid = pathSid;
-        }
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+  /// <summary>
+  /// Update an existing participant in the conversation
+  /// </summary>
+  public class UpdateParticipantOptions : IOptions<ParticipantResource>
+  {
+    /// <summary>
+    /// The SID of the Conversation Service that the resource is associated with.
+    /// </summary>
+    public string PathChatServiceSid { get; }
+    /// <summary>
+    /// The unique ID of the Conversation for this participant.
+    /// </summary>
+    public string PathConversationSid { get; }
+    /// <summary>
+    /// A 34 character string that uniquely identifies this resource.
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// The date that this resource was created.
+    /// </summary>
+    public DateTime? DateCreated { get; set; }
+    /// <summary>
+    /// The date that this resource was last updated.
+    /// </summary>
+    public DateTime? DateUpdated { get; set; }
+    /// <summary>
+    /// A unique string identifier for the conversation participant as Conversation User.
+    /// </summary>
+    public string Identity { get; set; }
+    /// <summary>
+    /// An optional string metadata field you can use to store any data you wish.
+    /// </summary>
+    public string Attributes { get; set; }
+    /// <summary>
+    /// The SID of a conversation-level Role to assign to the participant
+    /// </summary>
+    public string RoleSid { get; set; }
+    /// <summary>
+    /// The address of the Twilio phone number that the participant is in contact with.
+    /// </summary>
+    public string MessagingBindingProxyAddress { get; set; }
+    /// <summary>
+    /// The address of the Twilio phone number that is used in Group MMS.
+    /// </summary>
+    public string MessagingBindingProjectedAddress { get; set; }
+    /// <summary>
+    /// Index of last “read” message in the Conversation for the Participant.
+    /// </summary>
+    public int? LastReadMessageIndex { get; set; }
+    /// <summary>
+    /// Timestamp of last “read” message in the Conversation for the Participant.
+    /// </summary>
+    public string LastReadTimestamp { get; set; }
+    /// <summary>
+    /// The X-Twilio-Webhook-Enabled HTTP request header
+    /// </summary>
+    public ParticipantResource.WebhookEnabledTypeEnum XTwilioWebhookEnabled { get; set; }
 
-        /// <summary>
-        /// Generate the necessary header parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetHeaderParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (XTwilioWebhookEnabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("X-Twilio-Webhook-Enabled", XTwilioWebhookEnabled.ToString()));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new UpdateParticipantOptions
+    /// </summary>
+    /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
+    /// <param name="pathConversationSid"> The unique ID of the Conversation for this participant. </param>
+    /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+    public UpdateParticipantOptions(string pathChatServiceSid, string pathConversationSid, string pathSid)
+    {
+      PathChatServiceSid = pathChatServiceSid;
+      PathConversationSid = pathConversationSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Fetch a participant of the conversation
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchParticipantOptions : IOptions<ParticipantResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Conversation Service that the resource is associated with.
-        /// </summary>
-        public string PathChatServiceSid { get; }
-        /// <summary>
-        /// The unique ID of the Conversation for this participant.
-        /// </summary>
-        public string PathConversationSid { get; }
-        /// <summary>
-        /// A 34 character string that uniquely identifies this resource.
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (DateCreated != null)
+      {
+        p.Add(new KeyValuePair<string, string>("DateCreated", Serializers.DateTimeIso8601(DateCreated)));
+      }
 
-        /// <summary>
-        /// Construct a new FetchParticipantOptions
-        /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
-        /// <param name="pathConversationSid"> The unique ID of the Conversation for this participant. </param>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
-        public FetchParticipantOptions(string pathChatServiceSid, string pathConversationSid, string pathSid)
-        {
-            PathChatServiceSid = pathChatServiceSid;
-            PathConversationSid = pathConversationSid;
-            PathSid = pathSid;
-        }
+      if (DateUpdated != null)
+      {
+        p.Add(new KeyValuePair<string, string>("DateUpdated", Serializers.DateTimeIso8601(DateUpdated)));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      if (Identity != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Identity", Identity));
+      }
+
+      if (Attributes != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Attributes", Attributes));
+      }
+
+      if (RoleSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("RoleSid", RoleSid.ToString()));
+      }
+
+      if (MessagingBindingProxyAddress != null)
+      {
+        p.Add(new KeyValuePair<string, string>("MessagingBinding.ProxyAddress", MessagingBindingProxyAddress));
+      }
+
+      if (MessagingBindingProjectedAddress != null)
+      {
+        p.Add(new KeyValuePair<string, string>("MessagingBinding.ProjectedAddress", MessagingBindingProjectedAddress));
+      }
+
+      if (LastReadMessageIndex != null)
+      {
+        p.Add(new KeyValuePair<string, string>("LastReadMessageIndex", LastReadMessageIndex.ToString()));
+      }
+
+      if (LastReadTimestamp != null)
+      {
+        p.Add(new KeyValuePair<string, string>("LastReadTimestamp", LastReadTimestamp));
+      }
+
+      return p;
     }
 
     /// <summary>
-    /// Retrieve a list of all participants of the conversation
+    /// Generate the necessary header parameters
     /// </summary>
-    public class ReadParticipantOptions : ReadOptions<ParticipantResource>
+    public List<KeyValuePair<string, string>> GetHeaderParams()
     {
-        /// <summary>
-        /// The SID of the Conversation Service that the resource is associated with.
-        /// </summary>
-        public string PathChatServiceSid { get; }
-        /// <summary>
-        /// The unique ID of the Conversation for participants.
-        /// </summary>
-        public string PathConversationSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (XTwilioWebhookEnabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("X-Twilio-Webhook-Enabled", XTwilioWebhookEnabled.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new ReadParticipantOptions
-        /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
-        /// <param name="pathConversationSid"> The unique ID of the Conversation for participants. </param>
-        public ReadParticipantOptions(string pathChatServiceSid, string pathConversationSid)
-        {
-            PathChatServiceSid = pathChatServiceSid;
-            PathConversationSid = pathConversationSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+      return p;
     }
+  }
+
+  /// <summary>
+  /// Remove a participant from the conversation
+  /// </summary>
+  public class DeleteParticipantOptions : IOptions<ParticipantResource>
+  {
+    /// <summary>
+    /// The SID of the Conversation Service that the resource is associated with.
+    /// </summary>
+    public string PathChatServiceSid { get; }
+    /// <summary>
+    /// The unique ID of the Conversation for this participant.
+    /// </summary>
+    public string PathConversationSid { get; }
+    /// <summary>
+    /// A 34 character string that uniquely identifies this resource.
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// The X-Twilio-Webhook-Enabled HTTP request header
+    /// </summary>
+    public ParticipantResource.WebhookEnabledTypeEnum XTwilioWebhookEnabled { get; set; }
+
+    /// <summary>
+    /// Construct a new DeleteParticipantOptions
+    /// </summary>
+    /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
+    /// <param name="pathConversationSid"> The unique ID of the Conversation for this participant. </param>
+    /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+    public DeleteParticipantOptions(string pathChatServiceSid, string pathConversationSid, string pathSid)
+    {
+      PathChatServiceSid = pathChatServiceSid;
+      PathConversationSid = pathConversationSid;
+      PathSid = pathSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+
+    /// <summary>
+    /// Generate the necessary header parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetHeaderParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (XTwilioWebhookEnabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("X-Twilio-Webhook-Enabled", XTwilioWebhookEnabled.ToString()));
+      }
+
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// Fetch a participant of the conversation
+  /// </summary>
+  public class FetchParticipantOptions : IOptions<ParticipantResource>
+  {
+    /// <summary>
+    /// The SID of the Conversation Service that the resource is associated with.
+    /// </summary>
+    public string PathChatServiceSid { get; }
+    /// <summary>
+    /// The unique ID of the Conversation for this participant.
+    /// </summary>
+    public string PathConversationSid { get; }
+    /// <summary>
+    /// A 34 character string that uniquely identifies this resource.
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchParticipantOptions
+    /// </summary>
+    /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
+    /// <param name="pathConversationSid"> The unique ID of the Conversation for this participant. </param>
+    /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+    public FetchParticipantOptions(string pathChatServiceSid, string pathConversationSid, string pathSid)
+    {
+      PathChatServiceSid = pathChatServiceSid;
+      PathConversationSid = pathConversationSid;
+      PathSid = pathSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// Retrieve a list of all participants of the conversation
+  /// </summary>
+  public class ReadParticipantOptions : ReadOptions<ParticipantResource>
+  {
+    /// <summary>
+    /// The SID of the Conversation Service that the resource is associated with.
+    /// </summary>
+    public string PathChatServiceSid { get; }
+    /// <summary>
+    /// The unique ID of the Conversation for participants.
+    /// </summary>
+    public string PathConversationSid { get; }
+
+    /// <summary>
+    /// Construct a new ReadParticipantOptions
+    /// </summary>
+    /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
+    /// <param name="pathConversationSid"> The unique ID of the Conversation for participants. </param>
+    public ReadParticipantOptions(string pathChatServiceSid, string pathConversationSid)
+    {
+      PathChatServiceSid = pathChatServiceSid;
+      PathConversationSid = pathConversationSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
 
 }

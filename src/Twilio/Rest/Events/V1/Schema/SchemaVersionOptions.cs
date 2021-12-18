@@ -11,77 +11,77 @@ using Twilio.Converters;
 namespace Twilio.Rest.Events.V1.Schema
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Retrieve a paginated list of versions of the schema.
+  /// </summary>
+  public class ReadSchemaVersionOptions : ReadOptions<SchemaVersionResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Retrieve a paginated list of versions of the schema.
+    /// The unique identifier of the schema.
     /// </summary>
-    public class ReadSchemaVersionOptions : ReadOptions<SchemaVersionResource>
+    public string PathId { get; }
+
+    /// <summary>
+    /// Construct a new ReadSchemaVersionOptions
+    /// </summary>
+    /// <param name="pathId"> The unique identifier of the schema. </param>
+    public ReadSchemaVersionOptions(string pathId)
     {
-        /// <summary>
-        /// The unique identifier of the schema.
-        /// </summary>
-        public string PathId { get; }
-
-        /// <summary>
-        /// Construct a new ReadSchemaVersionOptions
-        /// </summary>
-        /// <param name="pathId"> The unique identifier of the schema. </param>
-        public ReadSchemaVersionOptions(string pathId)
-        {
-            PathId = pathId;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+      PathId = pathId;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Fetch a specific schema and version.
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchSchemaVersionOptions : IOptions<SchemaVersionResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique identifier of the schema.
-        /// </summary>
-        public string PathId { get; }
-        /// <summary>
-        /// The version of the schema
-        /// </summary>
-        public int? PathSchemaVersion { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new FetchSchemaVersionOptions
-        /// </summary>
-        /// <param name="pathId"> The unique identifier of the schema. </param>
-        /// <param name="pathSchemaVersion"> The version of the schema </param>
-        public FetchSchemaVersionOptions(string pathId, int? pathSchemaVersion)
-        {
-            PathId = pathId;
-            PathSchemaVersion = pathSchemaVersion;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      return p;
     }
+  }
+
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Fetch a specific schema and version.
+  /// </summary>
+  public class FetchSchemaVersionOptions : IOptions<SchemaVersionResource>
+  {
+    /// <summary>
+    /// The unique identifier of the schema.
+    /// </summary>
+    public string PathId { get; }
+    /// <summary>
+    /// The version of the schema
+    /// </summary>
+    public int? PathSchemaVersion { get; }
+
+    /// <summary>
+    /// Construct a new FetchSchemaVersionOptions
+    /// </summary>
+    /// <param name="pathId"> The unique identifier of the schema. </param>
+    /// <param name="pathSchemaVersion"> The version of the schema </param>
+    public FetchSchemaVersionOptions(string pathId, int? pathSchemaVersion)
+    {
+      PathId = pathId;
+      PathSchemaVersion = pathSchemaVersion;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
 }

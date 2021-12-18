@@ -11,34 +11,34 @@ using Twilio.Converters;
 namespace Twilio.Rest.Accounts.V1
 {
 
+  /// <summary>
+  /// Create a new secondary Auth Token
+  /// </summary>
+  public class CreateSecondaryAuthTokenOptions : IOptions<SecondaryAuthTokenResource>
+  {
     /// <summary>
-    /// Create a new secondary Auth Token
+    /// Generate the necessary parameters
     /// </summary>
-    public class CreateSecondaryAuthTokenOptions : IOptions<SecondaryAuthTokenResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
 
+  /// <summary>
+  /// Delete the secondary Auth Token from your account
+  /// </summary>
+  public class DeleteSecondaryAuthTokenOptions : IOptions<SecondaryAuthTokenResource>
+  {
     /// <summary>
-    /// Delete the secondary Auth Token from your account
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteSecondaryAuthTokenOptions : IOptions<SecondaryAuthTokenResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
 
 }

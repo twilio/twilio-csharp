@@ -11,102 +11,102 @@ using Twilio.Converters;
 namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
 {
 
+  /// <summary>
+  /// Creates an evaluation for a bundle
+  /// </summary>
+  public class CreateEvaluationOptions : IOptions<EvaluationResource>
+  {
     /// <summary>
-    /// Creates an evaluation for a bundle
+    /// The unique string that identifies the resource
     /// </summary>
-    public class CreateEvaluationOptions : IOptions<EvaluationResource>
+    public string PathBundleSid { get; }
+
+    /// <summary>
+    /// Construct a new CreateEvaluationOptions
+    /// </summary>
+    /// <param name="pathBundleSid"> The unique string that identifies the resource </param>
+    public CreateEvaluationOptions(string pathBundleSid)
     {
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathBundleSid { get; }
-
-        /// <summary>
-        /// Construct a new CreateEvaluationOptions
-        /// </summary>
-        /// <param name="pathBundleSid"> The unique string that identifies the resource </param>
-        public CreateEvaluationOptions(string pathBundleSid)
-        {
-            PathBundleSid = pathBundleSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathBundleSid = pathBundleSid;
     }
 
     /// <summary>
-    /// Retrieve a list of Evaluations associated to the Bundle resource.
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadEvaluationOptions : ReadOptions<EvaluationResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathBundleSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new ReadEvaluationOptions
-        /// </summary>
-        /// <param name="pathBundleSid"> The unique string that identifies the resource </param>
-        public ReadEvaluationOptions(string pathBundleSid)
-        {
-            PathBundleSid = pathBundleSid;
-        }
+  /// <summary>
+  /// Retrieve a list of Evaluations associated to the Bundle resource.
+  /// </summary>
+  public class ReadEvaluationOptions : ReadOptions<EvaluationResource>
+  {
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathBundleSid { get; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new ReadEvaluationOptions
+    /// </summary>
+    /// <param name="pathBundleSid"> The unique string that identifies the resource </param>
+    public ReadEvaluationOptions(string pathBundleSid)
+    {
+      PathBundleSid = pathBundleSid;
     }
 
     /// <summary>
-    /// Fetch specific Evaluation Instance.
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchEvaluationOptions : IOptions<EvaluationResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathBundleSid { get; }
-        /// <summary>
-        /// The unique string that identifies the Evaluation resource
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new FetchEvaluationOptions
-        /// </summary>
-        /// <param name="pathBundleSid"> The unique string that identifies the resource </param>
-        /// <param name="pathSid"> The unique string that identifies the Evaluation resource </param>
-        public FetchEvaluationOptions(string pathBundleSid, string pathSid)
-        {
-            PathBundleSid = pathBundleSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      return p;
     }
+  }
+
+  /// <summary>
+  /// Fetch specific Evaluation Instance.
+  /// </summary>
+  public class FetchEvaluationOptions : IOptions<EvaluationResource>
+  {
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathBundleSid { get; }
+    /// <summary>
+    /// The unique string that identifies the Evaluation resource
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchEvaluationOptions
+    /// </summary>
+    /// <param name="pathBundleSid"> The unique string that identifies the resource </param>
+    /// <param name="pathSid"> The unique string that identifies the Evaluation resource </param>
+    public FetchEvaluationOptions(string pathBundleSid, string pathSid)
+    {
+      PathBundleSid = pathBundleSid;
+      PathSid = pathSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
 }

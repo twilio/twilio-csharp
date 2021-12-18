@@ -11,179 +11,179 @@ using Twilio.Converters;
 namespace Twilio.Rest.Conversations.V1.Service.Configuration
 {
 
+  /// <summary>
+  /// Update push notification service settings
+  /// </summary>
+  public class UpdateNotificationOptions : IOptions<NotificationResource>
+  {
     /// <summary>
-    /// Update push notification service settings
+    /// The SID of the Conversation Service that the Configuration applies to.
     /// </summary>
-    public class UpdateNotificationOptions : IOptions<NotificationResource>
+    public string PathChatServiceSid { get; }
+    /// <summary>
+    /// Weather the notification logging is enabled.
+    /// </summary>
+    public bool? LogEnabled { get; set; }
+    /// <summary>
+    /// Whether to send a notification when a new message is added to a conversation.
+    /// </summary>
+    public bool? NewMessageEnabled { get; set; }
+    /// <summary>
+    /// The template to use to create the notification text displayed when a new message is added to a conversation.
+    /// </summary>
+    public string NewMessageTemplate { get; set; }
+    /// <summary>
+    /// The name of the sound to play when a new message is added to a conversation.
+    /// </summary>
+    public string NewMessageSound { get; set; }
+    /// <summary>
+    /// Whether the new message badge is enabled.
+    /// </summary>
+    public bool? NewMessageBadgeCountEnabled { get; set; }
+    /// <summary>
+    /// Whether to send a notification when a participant is added to a conversation.
+    /// </summary>
+    public bool? AddedToConversationEnabled { get; set; }
+    /// <summary>
+    /// The template to use to create the notification text displayed when a participant is added to a conversation.
+    /// </summary>
+    public string AddedToConversationTemplate { get; set; }
+    /// <summary>
+    /// The name of the sound to play when a participant is added to a conversation.
+    /// </summary>
+    public string AddedToConversationSound { get; set; }
+    /// <summary>
+    /// Whether to send a notification to a user when they are removed from a conversation.
+    /// </summary>
+    public bool? RemovedFromConversationEnabled { get; set; }
+    /// <summary>
+    /// The template to use to create the notification text displayed to a user when they are removed.
+    /// </summary>
+    public string RemovedFromConversationTemplate { get; set; }
+    /// <summary>
+    /// The name of the sound to play to a user when they are removed from a conversation.
+    /// </summary>
+    public string RemovedFromConversationSound { get; set; }
+    /// <summary>
+    /// Whether to send a notification when a new message with media/file attachments is added to a conversation.
+    /// </summary>
+    public bool? NewMessageWithMediaEnabled { get; set; }
+    /// <summary>
+    /// The template to use to create the notification text displayed when a new message with media/file attachments is added to a conversation.
+    /// </summary>
+    public string NewMessageWithMediaTemplate { get; set; }
+
+    /// <summary>
+    /// Construct a new UpdateNotificationOptions
+    /// </summary>
+    /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the Configuration applies to. </param>
+    public UpdateNotificationOptions(string pathChatServiceSid)
     {
-        /// <summary>
-        /// The SID of the Conversation Service that the Configuration applies to.
-        /// </summary>
-        public string PathChatServiceSid { get; }
-        /// <summary>
-        /// Weather the notification logging is enabled.
-        /// </summary>
-        public bool? LogEnabled { get; set; }
-        /// <summary>
-        /// Whether to send a notification when a new message is added to a conversation.
-        /// </summary>
-        public bool? NewMessageEnabled { get; set; }
-        /// <summary>
-        /// The template to use to create the notification text displayed when a new message is added to a conversation.
-        /// </summary>
-        public string NewMessageTemplate { get; set; }
-        /// <summary>
-        /// The name of the sound to play when a new message is added to a conversation.
-        /// </summary>
-        public string NewMessageSound { get; set; }
-        /// <summary>
-        /// Whether the new message badge is enabled.
-        /// </summary>
-        public bool? NewMessageBadgeCountEnabled { get; set; }
-        /// <summary>
-        /// Whether to send a notification when a participant is added to a conversation.
-        /// </summary>
-        public bool? AddedToConversationEnabled { get; set; }
-        /// <summary>
-        /// The template to use to create the notification text displayed when a participant is added to a conversation.
-        /// </summary>
-        public string AddedToConversationTemplate { get; set; }
-        /// <summary>
-        /// The name of the sound to play when a participant is added to a conversation.
-        /// </summary>
-        public string AddedToConversationSound { get; set; }
-        /// <summary>
-        /// Whether to send a notification to a user when they are removed from a conversation.
-        /// </summary>
-        public bool? RemovedFromConversationEnabled { get; set; }
-        /// <summary>
-        /// The template to use to create the notification text displayed to a user when they are removed.
-        /// </summary>
-        public string RemovedFromConversationTemplate { get; set; }
-        /// <summary>
-        /// The name of the sound to play to a user when they are removed from a conversation.
-        /// </summary>
-        public string RemovedFromConversationSound { get; set; }
-        /// <summary>
-        /// Whether to send a notification when a new message with media/file attachments is added to a conversation.
-        /// </summary>
-        public bool? NewMessageWithMediaEnabled { get; set; }
-        /// <summary>
-        /// The template to use to create the notification text displayed when a new message with media/file attachments is added to a conversation.
-        /// </summary>
-        public string NewMessageWithMediaTemplate { get; set; }
-
-        /// <summary>
-        /// Construct a new UpdateNotificationOptions
-        /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the Configuration applies to. </param>
-        public UpdateNotificationOptions(string pathChatServiceSid)
-        {
-            PathChatServiceSid = pathChatServiceSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (LogEnabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("LogEnabled", LogEnabled.Value.ToString().ToLower()));
-            }
-
-            if (NewMessageEnabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("NewMessage.Enabled", NewMessageEnabled.Value.ToString().ToLower()));
-            }
-
-            if (NewMessageTemplate != null)
-            {
-                p.Add(new KeyValuePair<string, string>("NewMessage.Template", NewMessageTemplate));
-            }
-
-            if (NewMessageSound != null)
-            {
-                p.Add(new KeyValuePair<string, string>("NewMessage.Sound", NewMessageSound));
-            }
-
-            if (NewMessageBadgeCountEnabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("NewMessage.BadgeCountEnabled", NewMessageBadgeCountEnabled.Value.ToString().ToLower()));
-            }
-
-            if (AddedToConversationEnabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("AddedToConversation.Enabled", AddedToConversationEnabled.Value.ToString().ToLower()));
-            }
-
-            if (AddedToConversationTemplate != null)
-            {
-                p.Add(new KeyValuePair<string, string>("AddedToConversation.Template", AddedToConversationTemplate));
-            }
-
-            if (AddedToConversationSound != null)
-            {
-                p.Add(new KeyValuePair<string, string>("AddedToConversation.Sound", AddedToConversationSound));
-            }
-
-            if (RemovedFromConversationEnabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("RemovedFromConversation.Enabled", RemovedFromConversationEnabled.Value.ToString().ToLower()));
-            }
-
-            if (RemovedFromConversationTemplate != null)
-            {
-                p.Add(new KeyValuePair<string, string>("RemovedFromConversation.Template", RemovedFromConversationTemplate));
-            }
-
-            if (RemovedFromConversationSound != null)
-            {
-                p.Add(new KeyValuePair<string, string>("RemovedFromConversation.Sound", RemovedFromConversationSound));
-            }
-
-            if (NewMessageWithMediaEnabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("NewMessage.WithMedia.Enabled", NewMessageWithMediaEnabled.Value.ToString().ToLower()));
-            }
-
-            if (NewMessageWithMediaTemplate != null)
-            {
-                p.Add(new KeyValuePair<string, string>("NewMessage.WithMedia.Template", NewMessageWithMediaTemplate));
-            }
-
-            return p;
-        }
+      PathChatServiceSid = pathChatServiceSid;
     }
 
     /// <summary>
-    /// Fetch push notification service settings
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchNotificationOptions : IOptions<NotificationResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Conversation Service that the Configuration applies to.
-        /// </summary>
-        public string PathChatServiceSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (LogEnabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("LogEnabled", LogEnabled.Value.ToString().ToLower()));
+      }
 
-        /// <summary>
-        /// Construct a new FetchNotificationOptions
-        /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the Configuration applies to. </param>
-        public FetchNotificationOptions(string pathChatServiceSid)
-        {
-            PathChatServiceSid = pathChatServiceSid;
-        }
+      if (NewMessageEnabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("NewMessage.Enabled", NewMessageEnabled.Value.ToString().ToLower()));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      if (NewMessageTemplate != null)
+      {
+        p.Add(new KeyValuePair<string, string>("NewMessage.Template", NewMessageTemplate));
+      }
+
+      if (NewMessageSound != null)
+      {
+        p.Add(new KeyValuePair<string, string>("NewMessage.Sound", NewMessageSound));
+      }
+
+      if (NewMessageBadgeCountEnabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("NewMessage.BadgeCountEnabled", NewMessageBadgeCountEnabled.Value.ToString().ToLower()));
+      }
+
+      if (AddedToConversationEnabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("AddedToConversation.Enabled", AddedToConversationEnabled.Value.ToString().ToLower()));
+      }
+
+      if (AddedToConversationTemplate != null)
+      {
+        p.Add(new KeyValuePair<string, string>("AddedToConversation.Template", AddedToConversationTemplate));
+      }
+
+      if (AddedToConversationSound != null)
+      {
+        p.Add(new KeyValuePair<string, string>("AddedToConversation.Sound", AddedToConversationSound));
+      }
+
+      if (RemovedFromConversationEnabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("RemovedFromConversation.Enabled", RemovedFromConversationEnabled.Value.ToString().ToLower()));
+      }
+
+      if (RemovedFromConversationTemplate != null)
+      {
+        p.Add(new KeyValuePair<string, string>("RemovedFromConversation.Template", RemovedFromConversationTemplate));
+      }
+
+      if (RemovedFromConversationSound != null)
+      {
+        p.Add(new KeyValuePair<string, string>("RemovedFromConversation.Sound", RemovedFromConversationSound));
+      }
+
+      if (NewMessageWithMediaEnabled != null)
+      {
+        p.Add(new KeyValuePair<string, string>("NewMessage.WithMedia.Enabled", NewMessageWithMediaEnabled.Value.ToString().ToLower()));
+      }
+
+      if (NewMessageWithMediaTemplate != null)
+      {
+        p.Add(new KeyValuePair<string, string>("NewMessage.WithMedia.Template", NewMessageWithMediaTemplate));
+      }
+
+      return p;
     }
+  }
+
+  /// <summary>
+  /// Fetch push notification service settings
+  /// </summary>
+  public class FetchNotificationOptions : IOptions<NotificationResource>
+  {
+    /// <summary>
+    /// The SID of the Conversation Service that the Configuration applies to.
+    /// </summary>
+    public string PathChatServiceSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchNotificationOptions
+    /// </summary>
+    /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the Configuration applies to. </param>
+    public FetchNotificationOptions(string pathChatServiceSid)
+    {
+      PathChatServiceSid = pathChatServiceSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
 }

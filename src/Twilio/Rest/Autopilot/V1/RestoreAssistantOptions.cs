@@ -11,41 +11,41 @@ using Twilio.Converters;
 namespace Twilio.Rest.Autopilot.V1
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// UpdateRestoreAssistantOptions
+  /// </summary>
+  public class UpdateRestoreAssistantOptions : IOptions<RestoreAssistantResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// UpdateRestoreAssistantOptions
+    /// The unique string that identifies the resource
     /// </summary>
-    public class UpdateRestoreAssistantOptions : IOptions<RestoreAssistantResource>
+    public string Assistant { get; }
+
+    /// <summary>
+    /// Construct a new UpdateRestoreAssistantOptions
+    /// </summary>
+    /// <param name="assistant"> The unique string that identifies the resource </param>
+    public UpdateRestoreAssistantOptions(string assistant)
     {
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string Assistant { get; }
-
-        /// <summary>
-        /// Construct a new UpdateRestoreAssistantOptions
-        /// </summary>
-        /// <param name="assistant"> The unique string that identifies the resource </param>
-        public UpdateRestoreAssistantOptions(string assistant)
-        {
-            Assistant = assistant;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Assistant != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Assistant", Assistant.ToString()));
-            }
-
-            return p;
-        }
+      Assistant = assistant;
     }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (Assistant != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Assistant", Assistant.ToString()));
+      }
+
+      return p;
+    }
+  }
 
 }

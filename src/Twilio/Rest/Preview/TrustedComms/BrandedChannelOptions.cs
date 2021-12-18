@@ -11,36 +11,36 @@ using Twilio.Converters;
 namespace Twilio.Rest.Preview.TrustedComms
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+  /// currently do not have developer preview access, please contact help@twilio.com.
+  ///
+  /// Fetch a specific Branded Channel.
+  /// </summary>
+  public class FetchBrandedChannelOptions : IOptions<BrandedChannelResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// Fetch a specific Branded Channel.
+    /// Branded Channel Sid.
     /// </summary>
-    public class FetchBrandedChannelOptions : IOptions<BrandedChannelResource>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchBrandedChannelOptions
+    /// </summary>
+    /// <param name="pathSid"> Branded Channel Sid. </param>
+    public FetchBrandedChannelOptions(string pathSid)
     {
-        /// <summary>
-        /// Branded Channel Sid.
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchBrandedChannelOptions
-        /// </summary>
-        /// <param name="pathSid"> Branded Channel Sid. </param>
-        public FetchBrandedChannelOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathSid = pathSid;
     }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
 }

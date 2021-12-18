@@ -12,282 +12,282 @@ using Twilio.Converters;
 namespace Twilio.Rest.Proxy.V1.Service
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Fetch a specific Session.
+  /// </summary>
+  public class FetchSessionOptions : IOptions<SessionResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Fetch a specific Session.
+    /// The SID of the Service to fetch the resource from
     /// </summary>
-    public class FetchSessionOptions : IOptions<SessionResource>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchSessionOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public FetchSessionOptions(string pathServiceSid, string pathSid)
     {
-        /// <summary>
-        /// The SID of the Service to fetch the resource from
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchSessionOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public FetchSessionOptions(string pathServiceSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathServiceSid = pathServiceSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Retrieve a list of all Sessions for the Service. A maximum of 100 records will be returned per page.
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadSessionOptions : ReadOptions<SessionResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Service to fetch the resource from
-        /// </summary>
-        public string PathServiceSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new ReadSessionOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
-        public ReadSessionOptions(string pathServiceSid)
-        {
-            PathServiceSid = pathServiceSid;
-        }
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Retrieve a list of all Sessions for the Service. A maximum of 100 records will be returned per page.
+  /// </summary>
+  public class ReadSessionOptions : ReadOptions<SessionResource>
+  {
+    /// <summary>
+    /// The SID of the Service to fetch the resource from
+    /// </summary>
+    public string PathServiceSid { get; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new ReadSessionOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
+    public ReadSessionOptions(string pathServiceSid)
+    {
+      PathServiceSid = pathServiceSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Create a new Session
+    /// Generate the necessary parameters
     /// </summary>
-    public class CreateSessionOptions : IOptions<SessionResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the parent Service resource
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// An application-defined string that uniquely identifies the resource
-        /// </summary>
-        public string UniqueName { get; set; }
-        /// <summary>
-        /// The ISO 8601 date when the Session should expire
-        /// </summary>
-        public DateTime? DateExpiry { get; set; }
-        /// <summary>
-        /// When the session will expire
-        /// </summary>
-        public int? Ttl { get; set; }
-        /// <summary>
-        /// The Mode of the Session
-        /// </summary>
-        public SessionResource.ModeEnum Mode { get; set; }
-        /// <summary>
-        /// Session status
-        /// </summary>
-        public SessionResource.StatusEnum Status { get; set; }
-        /// <summary>
-        /// The Participant objects to include in the new session
-        /// </summary>
-        public List<object> Participants { get; set; }
-        /// <summary>
-        /// An experimental parameter to override the ProxyAllowParticipantConflict account flag on a per-request basis.
-        /// </summary>
-        public bool? FailOnParticipantConflict { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new CreateSessionOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the parent Service resource </param>
-        public CreateSessionOptions(string pathServiceSid)
-        {
-            PathServiceSid = pathServiceSid;
-            Participants = new List<object>();
-        }
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (UniqueName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
-            }
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Create a new Session
+  /// </summary>
+  public class CreateSessionOptions : IOptions<SessionResource>
+  {
+    /// <summary>
+    /// The SID of the parent Service resource
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// An application-defined string that uniquely identifies the resource
+    /// </summary>
+    public string UniqueName { get; set; }
+    /// <summary>
+    /// The ISO 8601 date when the Session should expire
+    /// </summary>
+    public DateTime? DateExpiry { get; set; }
+    /// <summary>
+    /// When the session will expire
+    /// </summary>
+    public int? Ttl { get; set; }
+    /// <summary>
+    /// The Mode of the Session
+    /// </summary>
+    public SessionResource.ModeEnum Mode { get; set; }
+    /// <summary>
+    /// Session status
+    /// </summary>
+    public SessionResource.StatusEnum Status { get; set; }
+    /// <summary>
+    /// The Participant objects to include in the new session
+    /// </summary>
+    public List<object> Participants { get; set; }
+    /// <summary>
+    /// An experimental parameter to override the ProxyAllowParticipantConflict account flag on a per-request basis.
+    /// </summary>
+    public bool? FailOnParticipantConflict { get; set; }
 
-            if (DateExpiry != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DateExpiry", Serializers.DateTimeIso8601(DateExpiry)));
-            }
-
-            if (Ttl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Ttl", Ttl.ToString()));
-            }
-
-            if (Mode != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Mode", Mode.ToString()));
-            }
-
-            if (Status != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
-            }
-
-            if (Participants != null)
-            {
-                p.AddRange(Participants.Select(prop => new KeyValuePair<string, string>("Participants", Serializers.JsonObject(prop))));
-            }
-
-            if (FailOnParticipantConflict != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FailOnParticipantConflict", FailOnParticipantConflict.Value.ToString().ToLower()));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new CreateSessionOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the parent Service resource </param>
+    public CreateSessionOptions(string pathServiceSid)
+    {
+      PathServiceSid = pathServiceSid;
+      Participants = new List<object>();
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Delete a specific Session.
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteSessionOptions : IOptions<SessionResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Service to delete the resource from
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (UniqueName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
+      }
 
-        /// <summary>
-        /// Construct a new DeleteSessionOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public DeleteSessionOptions(string pathServiceSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathSid = pathSid;
-        }
+      if (DateExpiry != null)
+      {
+        p.Add(new KeyValuePair<string, string>("DateExpiry", Serializers.DateTimeIso8601(DateExpiry)));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      if (Ttl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Ttl", Ttl.ToString()));
+      }
+
+      if (Mode != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Mode", Mode.ToString()));
+      }
+
+      if (Status != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
+      }
+
+      if (Participants != null)
+      {
+        p.AddRange(Participants.Select(prop => new KeyValuePair<string, string>("Participants", Serializers.JsonObject(prop))));
+      }
+
+      if (FailOnParticipantConflict != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FailOnParticipantConflict", FailOnParticipantConflict.Value.ToString().ToLower()));
+      }
+
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Delete a specific Session.
+  /// </summary>
+  public class DeleteSessionOptions : IOptions<SessionResource>
+  {
+    /// <summary>
+    /// The SID of the Service to delete the resource from
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new DeleteSessionOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public DeleteSessionOptions(string pathServiceSid, string pathSid)
+    {
+      PathServiceSid = pathServiceSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Update a specific Session.
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateSessionOptions : IOptions<SessionResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Service to update the resource from
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// The ISO 8601 date when the Session should expire
-        /// </summary>
-        public DateTime? DateExpiry { get; set; }
-        /// <summary>
-        /// When the session will expire
-        /// </summary>
-        public int? Ttl { get; set; }
-        /// <summary>
-        /// The new status of the resource
-        /// </summary>
-        public SessionResource.StatusEnum Status { get; set; }
-        /// <summary>
-        /// An experimental parameter to override the ProxyAllowParticipantConflict account flag on a per-request basis.
-        /// </summary>
-        public bool? FailOnParticipantConflict { get; set; }
-
-        /// <summary>
-        /// Construct a new UpdateSessionOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to update the resource from </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public UpdateSessionOptions(string pathServiceSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (DateExpiry != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DateExpiry", Serializers.DateTimeIso8601(DateExpiry)));
-            }
-
-            if (Ttl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Ttl", Ttl.ToString()));
-            }
-
-            if (Status != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
-            }
-
-            if (FailOnParticipantConflict != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FailOnParticipantConflict", FailOnParticipantConflict.Value.ToString().ToLower()));
-            }
-
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
+
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Update a specific Session.
+  /// </summary>
+  public class UpdateSessionOptions : IOptions<SessionResource>
+  {
+    /// <summary>
+    /// The SID of the Service to update the resource from
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// The ISO 8601 date when the Session should expire
+    /// </summary>
+    public DateTime? DateExpiry { get; set; }
+    /// <summary>
+    /// When the session will expire
+    /// </summary>
+    public int? Ttl { get; set; }
+    /// <summary>
+    /// The new status of the resource
+    /// </summary>
+    public SessionResource.StatusEnum Status { get; set; }
+    /// <summary>
+    /// An experimental parameter to override the ProxyAllowParticipantConflict account flag on a per-request basis.
+    /// </summary>
+    public bool? FailOnParticipantConflict { get; set; }
+
+    /// <summary>
+    /// Construct a new UpdateSessionOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to update the resource from </param>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    public UpdateSessionOptions(string pathServiceSid, string pathSid)
+    {
+      PathServiceSid = pathServiceSid;
+      PathSid = pathSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (DateExpiry != null)
+      {
+        p.Add(new KeyValuePair<string, string>("DateExpiry", Serializers.DateTimeIso8601(DateExpiry)));
+      }
+
+      if (Ttl != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Ttl", Ttl.ToString()));
+      }
+
+      if (Status != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
+      }
+
+      if (FailOnParticipantConflict != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FailOnParticipantConflict", FailOnParticipantConflict.Value.ToString().ToLower()));
+      }
+
+      return p;
+    }
+  }
 
 }

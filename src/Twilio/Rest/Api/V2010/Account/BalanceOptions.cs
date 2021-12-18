@@ -11,25 +11,25 @@ using Twilio.Converters;
 namespace Twilio.Rest.Api.V2010.Account
 {
 
+  /// <summary>
+  /// Fetch the balance for an Account based on Account Sid. Balance changes may not be reflected immediately. Child
+  /// accounts do not contain balance information
+  /// </summary>
+  public class FetchBalanceOptions : IOptions<BalanceResource>
+  {
     /// <summary>
-    /// Fetch the balance for an Account based on Account Sid. Balance changes may not be reflected immediately. Child
-    /// accounts do not contain balance information
+    /// Account Sid.
     /// </summary>
-    public class FetchBalanceOptions : IOptions<BalanceResource>
-    {
-        /// <summary>
-        /// Account Sid.
-        /// </summary>
-        public string PathAccountSid { get; set; }
+    public string PathAccountSid { get; set; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
 
 }

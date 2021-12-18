@@ -11,53 +11,53 @@ using Twilio.Converters;
 namespace Twilio.Rest.Pricing.V2.Voice
 {
 
+  /// <summary>
+  /// ReadCountryOptions
+  /// </summary>
+  public class ReadCountryOptions : ReadOptions<CountryResource>
+  {
     /// <summary>
-    /// ReadCountryOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadCountryOptions : ReadOptions<CountryResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-            return p;
-        }
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// Fetch a specific Country.
+  /// </summary>
+  public class FetchCountryOptions : IOptions<CountryResource>
+  {
+    /// <summary>
+    /// The ISO country code of the pricing information to fetch
+    /// </summary>
+    public string PathIsoCountry { get; }
+
+    /// <summary>
+    /// Construct a new FetchCountryOptions
+    /// </summary>
+    /// <param name="pathIsoCountry"> The ISO country code of the pricing information to fetch </param>
+    public FetchCountryOptions(string pathIsoCountry)
+    {
+      PathIsoCountry = pathIsoCountry;
     }
 
     /// <summary>
-    /// Fetch a specific Country.
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchCountryOptions : IOptions<CountryResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The ISO country code of the pricing information to fetch
-        /// </summary>
-        public string PathIsoCountry { get; }
-
-        /// <summary>
-        /// Construct a new FetchCountryOptions
-        /// </summary>
-        /// <param name="pathIsoCountry"> The ISO country code of the pricing information to fetch </param>
-        public FetchCountryOptions(string pathIsoCountry)
-        {
-            PathIsoCountry = pathIsoCountry;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
 
 }

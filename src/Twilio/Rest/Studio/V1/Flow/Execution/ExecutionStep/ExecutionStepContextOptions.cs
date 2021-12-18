@@ -11,45 +11,45 @@ using Twilio.Converters;
 namespace Twilio.Rest.Studio.V1.Flow.Execution.ExecutionStep
 {
 
+  /// <summary>
+  /// Retrieve the context for an Execution Step.
+  /// </summary>
+  public class FetchExecutionStepContextOptions : IOptions<ExecutionStepContextResource>
+  {
     /// <summary>
-    /// Retrieve the context for an Execution Step.
+    /// The SID of the Flow
     /// </summary>
-    public class FetchExecutionStepContextOptions : IOptions<ExecutionStepContextResource>
+    public string PathFlowSid { get; }
+    /// <summary>
+    /// The SID of the Execution
+    /// </summary>
+    public string PathExecutionSid { get; }
+    /// <summary>
+    /// Step SID
+    /// </summary>
+    public string PathStepSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchExecutionStepContextOptions
+    /// </summary>
+    /// <param name="pathFlowSid"> The SID of the Flow </param>
+    /// <param name="pathExecutionSid"> The SID of the Execution </param>
+    /// <param name="pathStepSid"> Step SID </param>
+    public FetchExecutionStepContextOptions(string pathFlowSid, string pathExecutionSid, string pathStepSid)
     {
-        /// <summary>
-        /// The SID of the Flow
-        /// </summary>
-        public string PathFlowSid { get; }
-        /// <summary>
-        /// The SID of the Execution
-        /// </summary>
-        public string PathExecutionSid { get; }
-        /// <summary>
-        /// Step SID
-        /// </summary>
-        public string PathStepSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchExecutionStepContextOptions
-        /// </summary>
-        /// <param name="pathFlowSid"> The SID of the Flow </param>
-        /// <param name="pathExecutionSid"> The SID of the Execution </param>
-        /// <param name="pathStepSid"> Step SID </param>
-        public FetchExecutionStepContextOptions(string pathFlowSid, string pathExecutionSid, string pathStepSid)
-        {
-            PathFlowSid = pathFlowSid;
-            PathExecutionSid = pathExecutionSid;
-            PathStepSid = pathStepSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathFlowSid = pathFlowSid;
+      PathExecutionSid = pathExecutionSid;
+      PathStepSid = pathStepSid;
     }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
 }

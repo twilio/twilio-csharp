@@ -11,59 +11,59 @@ using Twilio.Converters;
 namespace Twilio.Rest.FlexApi.V1
 {
 
+  /// <summary>
+  /// FetchConfigurationOptions
+  /// </summary>
+  public class FetchConfigurationOptions : IOptions<ConfigurationResource>
+  {
     /// <summary>
-    /// FetchConfigurationOptions
+    /// The Pinned UI version of the Configuration resource to fetch
     /// </summary>
-    public class FetchConfigurationOptions : IOptions<ConfigurationResource>
-    {
-        /// <summary>
-        /// The Pinned UI version of the Configuration resource to fetch
-        /// </summary>
-        public string UiVersion { get; set; }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (UiVersion != null)
-            {
-                p.Add(new KeyValuePair<string, string>("UiVersion", UiVersion));
-            }
-
-            return p;
-        }
-    }
+    public string UiVersion { get; set; }
 
     /// <summary>
-    /// CreateConfigurationOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class CreateConfigurationOptions : IOptions<ConfigurationResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
-    }
+      var p = new List<KeyValuePair<string, string>>();
+      if (UiVersion != null)
+      {
+        p.Add(new KeyValuePair<string, string>("UiVersion", UiVersion));
+      }
 
-    /// <summary>
-    /// UpdateConfigurationOptions
-    /// </summary>
-    public class UpdateConfigurationOptions : IOptions<ConfigurationResource>
-    {
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      return p;
     }
+  }
+
+  /// <summary>
+  /// CreateConfigurationOptions
+  /// </summary>
+  public class CreateConfigurationOptions : IOptions<ConfigurationResource>
+  {
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// UpdateConfigurationOptions
+  /// </summary>
+  public class UpdateConfigurationOptions : IOptions<ConfigurationResource>
+  {
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
 }

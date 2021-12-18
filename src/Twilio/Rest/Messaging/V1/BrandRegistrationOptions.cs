@@ -11,131 +11,131 @@ using Twilio.Converters;
 namespace Twilio.Rest.Messaging.V1
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// FetchBrandRegistrationOptions
+  /// </summary>
+  public class FetchBrandRegistrationOptions : IOptions<BrandRegistrationResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// FetchBrandRegistrationOptions
+    /// The SID that identifies the resource to fetch
     /// </summary>
-    public class FetchBrandRegistrationOptions : IOptions<BrandRegistrationResource>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchBrandRegistrationOptions
+    /// </summary>
+    /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
+    public FetchBrandRegistrationOptions(string pathSid)
     {
-        /// <summary>
-        /// The SID that identifies the resource to fetch
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchBrandRegistrationOptions
-        /// </summary>
-        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
-        public FetchBrandRegistrationOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// ReadBrandRegistrationOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadBrandRegistrationOptions : ReadOptions<BrandRegistrationResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-            return p;
-        }
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// ReadBrandRegistrationOptions
+  /// </summary>
+  public class ReadBrandRegistrationOptions : ReadOptions<BrandRegistrationResource>
+  {
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// CreateBrandRegistrationOptions
+  /// </summary>
+  public class CreateBrandRegistrationOptions : IOptions<BrandRegistrationResource>
+  {
+    /// <summary>
+    /// Customer Profile Bundle Sid
+    /// </summary>
+    public string CustomerProfileBundleSid { get; }
+    /// <summary>
+    /// A2P Messaging Profile Bundle Sid
+    /// </summary>
+    public string A2PProfileBundleSid { get; }
+    /// <summary>
+    /// Type of brand being created. One of: "STANDARD", "STARTER".
+    /// </summary>
+    public string BrandType { get; set; }
+    /// <summary>
+    /// A boolean that specifies whether brand should be a mock or not. If true, brand will be registered as a mock brand. Defaults to false if no value is provided.
+    /// </summary>
+    public bool? Mock { get; set; }
+    /// <summary>
+    /// Skip Automatic Secondary Vetting
+    /// </summary>
+    public bool? SkipAutomaticSecVet { get; set; }
+
+    /// <summary>
+    /// Construct a new CreateBrandRegistrationOptions
+    /// </summary>
+    /// <param name="customerProfileBundleSid"> Customer Profile Bundle Sid </param>
+    /// <param name="a2PProfileBundleSid"> A2P Messaging Profile Bundle Sid </param>
+    public CreateBrandRegistrationOptions(string customerProfileBundleSid, string a2PProfileBundleSid)
+    {
+      CustomerProfileBundleSid = customerProfileBundleSid;
+      A2PProfileBundleSid = a2PProfileBundleSid;
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// CreateBrandRegistrationOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class CreateBrandRegistrationOptions : IOptions<BrandRegistrationResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// Customer Profile Bundle Sid
-        /// </summary>
-        public string CustomerProfileBundleSid { get; }
-        /// <summary>
-        /// A2P Messaging Profile Bundle Sid
-        /// </summary>
-        public string A2PProfileBundleSid { get; }
-        /// <summary>
-        /// Type of brand being created. One of: "STANDARD", "STARTER".
-        /// </summary>
-        public string BrandType { get; set; }
-        /// <summary>
-        /// A boolean that specifies whether brand should be a mock or not. If true, brand will be registered as a mock brand. Defaults to false if no value is provided.
-        /// </summary>
-        public bool? Mock { get; set; }
-        /// <summary>
-        /// Skip Automatic Secondary Vetting
-        /// </summary>
-        public bool? SkipAutomaticSecVet { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (CustomerProfileBundleSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("CustomerProfileBundleSid", CustomerProfileBundleSid.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new CreateBrandRegistrationOptions
-        /// </summary>
-        /// <param name="customerProfileBundleSid"> Customer Profile Bundle Sid </param>
-        /// <param name="a2PProfileBundleSid"> A2P Messaging Profile Bundle Sid </param>
-        public CreateBrandRegistrationOptions(string customerProfileBundleSid, string a2PProfileBundleSid)
-        {
-            CustomerProfileBundleSid = customerProfileBundleSid;
-            A2PProfileBundleSid = a2PProfileBundleSid;
-        }
+      if (A2PProfileBundleSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("A2PProfileBundleSid", A2PProfileBundleSid.ToString()));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (CustomerProfileBundleSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("CustomerProfileBundleSid", CustomerProfileBundleSid.ToString()));
-            }
+      if (BrandType != null)
+      {
+        p.Add(new KeyValuePair<string, string>("BrandType", BrandType));
+      }
 
-            if (A2PProfileBundleSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("A2PProfileBundleSid", A2PProfileBundleSid.ToString()));
-            }
+      if (Mock != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Mock", Mock.Value.ToString().ToLower()));
+      }
 
-            if (BrandType != null)
-            {
-                p.Add(new KeyValuePair<string, string>("BrandType", BrandType));
-            }
+      if (SkipAutomaticSecVet != null)
+      {
+        p.Add(new KeyValuePair<string, string>("SkipAutomaticSecVet", SkipAutomaticSecVet.Value.ToString().ToLower()));
+      }
 
-            if (Mock != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Mock", Mock.Value.ToString().ToLower()));
-            }
-
-            if (SkipAutomaticSecVet != null)
-            {
-                p.Add(new KeyValuePair<string, string>("SkipAutomaticSecVet", SkipAutomaticSecVet.Value.ToString().ToLower()));
-            }
-
-            return p;
-        }
+      return p;
     }
+  }
 
 }

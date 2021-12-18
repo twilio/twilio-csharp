@@ -11,309 +11,309 @@ using Twilio.Converters;
 namespace Twilio.Rest.Taskrouter.V1.Workspace
 {
 
+  /// <summary>
+  /// FetchTaskQueueOptions
+  /// </summary>
+  public class FetchTaskQueueOptions : IOptions<TaskQueueResource>
+  {
     /// <summary>
-    /// FetchTaskQueueOptions
+    /// The SID of the Workspace with the TaskQueue to fetch
     /// </summary>
-    public class FetchTaskQueueOptions : IOptions<TaskQueueResource>
+    public string PathWorkspaceSid { get; }
+    /// <summary>
+    /// The SID of the resource to
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchTaskQueueOptions
+    /// </summary>
+    /// <param name="pathWorkspaceSid"> The SID of the Workspace with the TaskQueue to fetch </param>
+    /// <param name="pathSid"> The SID of the resource to  </param>
+    public FetchTaskQueueOptions(string pathWorkspaceSid, string pathSid)
     {
-        /// <summary>
-        /// The SID of the Workspace with the TaskQueue to fetch
-        /// </summary>
-        public string PathWorkspaceSid { get; }
-        /// <summary>
-        /// The SID of the resource to
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchTaskQueueOptions
-        /// </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the TaskQueue to fetch </param>
-        /// <param name="pathSid"> The SID of the resource to  </param>
-        public FetchTaskQueueOptions(string pathWorkspaceSid, string pathSid)
-        {
-            PathWorkspaceSid = pathWorkspaceSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathWorkspaceSid = pathWorkspaceSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// UpdateTaskQueueOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateTaskQueueOptions : IOptions<TaskQueueResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Workspace with the TaskQueue to update
-        /// </summary>
-        public string PathWorkspaceSid { get; }
-        /// <summary>
-        /// The SID of the resource to update
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// A string to describe the resource
-        /// </summary>
-        public string FriendlyName { get; set; }
-        /// <summary>
-        /// A string describing the Worker selection criteria for any Tasks that enter the TaskQueue
-        /// </summary>
-        public string TargetWorkers { get; set; }
-        /// <summary>
-        /// The SID of the Activity to assign Workers when a task is reserved for them
-        /// </summary>
-        public string ReservationActivitySid { get; set; }
-        /// <summary>
-        /// The SID of the Activity to assign Workers when a task is assigned for them
-        /// </summary>
-        public string AssignmentActivitySid { get; set; }
-        /// <summary>
-        /// The maximum number of Workers to create reservations for the assignment of a task while in the queue
-        /// </summary>
-        public int? MaxReservedWorkers { get; set; }
-        /// <summary>
-        /// How Tasks will be assigned to Workers
-        /// </summary>
-        public TaskQueueResource.TaskOrderEnum TaskOrder { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new UpdateTaskQueueOptions
-        /// </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the TaskQueue to update </param>
-        /// <param name="pathSid"> The SID of the resource to update </param>
-        public UpdateTaskQueueOptions(string pathWorkspaceSid, string pathSid)
-        {
-            PathWorkspaceSid = pathWorkspaceSid;
-            PathSid = pathSid;
-        }
+  /// <summary>
+  /// UpdateTaskQueueOptions
+  /// </summary>
+  public class UpdateTaskQueueOptions : IOptions<TaskQueueResource>
+  {
+    /// <summary>
+    /// The SID of the Workspace with the TaskQueue to update
+    /// </summary>
+    public string PathWorkspaceSid { get; }
+    /// <summary>
+    /// The SID of the resource to update
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// A string to describe the resource
+    /// </summary>
+    public string FriendlyName { get; set; }
+    /// <summary>
+    /// A string describing the Worker selection criteria for any Tasks that enter the TaskQueue
+    /// </summary>
+    public string TargetWorkers { get; set; }
+    /// <summary>
+    /// The SID of the Activity to assign Workers when a task is reserved for them
+    /// </summary>
+    public string ReservationActivitySid { get; set; }
+    /// <summary>
+    /// The SID of the Activity to assign Workers when a task is assigned for them
+    /// </summary>
+    public string AssignmentActivitySid { get; set; }
+    /// <summary>
+    /// The maximum number of Workers to create reservations for the assignment of a task while in the queue
+    /// </summary>
+    public int? MaxReservedWorkers { get; set; }
+    /// <summary>
+    /// How Tasks will be assigned to Workers
+    /// </summary>
+    public TaskQueueResource.TaskOrderEnum TaskOrder { get; set; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
-
-            if (TargetWorkers != null)
-            {
-                p.Add(new KeyValuePair<string, string>("TargetWorkers", TargetWorkers));
-            }
-
-            if (ReservationActivitySid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ReservationActivitySid", ReservationActivitySid.ToString()));
-            }
-
-            if (AssignmentActivitySid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("AssignmentActivitySid", AssignmentActivitySid.ToString()));
-            }
-
-            if (MaxReservedWorkers != null)
-            {
-                p.Add(new KeyValuePair<string, string>("MaxReservedWorkers", MaxReservedWorkers.ToString()));
-            }
-
-            if (TaskOrder != null)
-            {
-                p.Add(new KeyValuePair<string, string>("TaskOrder", TaskOrder.ToString()));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new UpdateTaskQueueOptions
+    /// </summary>
+    /// <param name="pathWorkspaceSid"> The SID of the Workspace with the TaskQueue to update </param>
+    /// <param name="pathSid"> The SID of the resource to update </param>
+    public UpdateTaskQueueOptions(string pathWorkspaceSid, string pathSid)
+    {
+      PathWorkspaceSid = pathWorkspaceSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// ReadTaskQueueOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadTaskQueueOptions : ReadOptions<TaskQueueResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Workspace with the TaskQueue to read
-        /// </summary>
-        public string PathWorkspaceSid { get; }
-        /// <summary>
-        /// The friendly_name of the TaskQueue resources to read
-        /// </summary>
-        public string FriendlyName { get; set; }
-        /// <summary>
-        /// The attributes of the Workers to read
-        /// </summary>
-        public string EvaluateWorkerAttributes { get; set; }
-        /// <summary>
-        /// The SID of the Worker with the TaskQueue resources to read
-        /// </summary>
-        public string WorkerSid { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
 
-        /// <summary>
-        /// Construct a new ReadTaskQueueOptions
-        /// </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the TaskQueue to read </param>
-        public ReadTaskQueueOptions(string pathWorkspaceSid)
-        {
-            PathWorkspaceSid = pathWorkspaceSid;
-        }
+      if (TargetWorkers != null)
+      {
+        p.Add(new KeyValuePair<string, string>("TargetWorkers", TargetWorkers));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
+      if (ReservationActivitySid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ReservationActivitySid", ReservationActivitySid.ToString()));
+      }
 
-            if (EvaluateWorkerAttributes != null)
-            {
-                p.Add(new KeyValuePair<string, string>("EvaluateWorkerAttributes", EvaluateWorkerAttributes));
-            }
+      if (AssignmentActivitySid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("AssignmentActivitySid", AssignmentActivitySid.ToString()));
+      }
 
-            if (WorkerSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("WorkerSid", WorkerSid.ToString()));
-            }
+      if (MaxReservedWorkers != null)
+      {
+        p.Add(new KeyValuePair<string, string>("MaxReservedWorkers", MaxReservedWorkers.ToString()));
+      }
 
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
+      if (TaskOrder != null)
+      {
+        p.Add(new KeyValuePair<string, string>("TaskOrder", TaskOrder.ToString()));
+      }
 
-            return p;
-        }
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// ReadTaskQueueOptions
+  /// </summary>
+  public class ReadTaskQueueOptions : ReadOptions<TaskQueueResource>
+  {
+    /// <summary>
+    /// The SID of the Workspace with the TaskQueue to read
+    /// </summary>
+    public string PathWorkspaceSid { get; }
+    /// <summary>
+    /// The friendly_name of the TaskQueue resources to read
+    /// </summary>
+    public string FriendlyName { get; set; }
+    /// <summary>
+    /// The attributes of the Workers to read
+    /// </summary>
+    public string EvaluateWorkerAttributes { get; set; }
+    /// <summary>
+    /// The SID of the Worker with the TaskQueue resources to read
+    /// </summary>
+    public string WorkerSid { get; set; }
+
+    /// <summary>
+    /// Construct a new ReadTaskQueueOptions
+    /// </summary>
+    /// <param name="pathWorkspaceSid"> The SID of the Workspace with the TaskQueue to read </param>
+    public ReadTaskQueueOptions(string pathWorkspaceSid)
+    {
+      PathWorkspaceSid = pathWorkspaceSid;
     }
 
     /// <summary>
-    /// CreateTaskQueueOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class CreateTaskQueueOptions : IOptions<TaskQueueResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Workspace that the new TaskQueue belongs to
-        /// </summary>
-        public string PathWorkspaceSid { get; }
-        /// <summary>
-        /// A string to describe the resource
-        /// </summary>
-        public string FriendlyName { get; }
-        /// <summary>
-        /// A string describing the Worker selection criteria for any Tasks that enter the TaskQueue
-        /// </summary>
-        public string TargetWorkers { get; set; }
-        /// <summary>
-        /// The maximum number of Workers to reserve
-        /// </summary>
-        public int? MaxReservedWorkers { get; set; }
-        /// <summary>
-        /// How Tasks will be assigned to Workers
-        /// </summary>
-        public TaskQueueResource.TaskOrderEnum TaskOrder { get; set; }
-        /// <summary>
-        /// The SID of the Activity to assign Workers when a task is reserved for them
-        /// </summary>
-        public string ReservationActivitySid { get; set; }
-        /// <summary>
-        /// The SID of the Activity to assign Workers once a task is assigned to them
-        /// </summary>
-        public string AssignmentActivitySid { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
 
-        /// <summary>
-        /// Construct a new CreateTaskQueueOptions
-        /// </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace that the new TaskQueue belongs to </param>
-        /// <param name="friendlyName"> A string to describe the resource </param>
-        public CreateTaskQueueOptions(string pathWorkspaceSid, string friendlyName)
-        {
-            PathWorkspaceSid = pathWorkspaceSid;
-            FriendlyName = friendlyName;
-        }
+      if (EvaluateWorkerAttributes != null)
+      {
+        p.Add(new KeyValuePair<string, string>("EvaluateWorkerAttributes", EvaluateWorkerAttributes));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
+      if (WorkerSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("WorkerSid", WorkerSid.ToString()));
+      }
 
-            if (TargetWorkers != null)
-            {
-                p.Add(new KeyValuePair<string, string>("TargetWorkers", TargetWorkers));
-            }
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-            if (MaxReservedWorkers != null)
-            {
-                p.Add(new KeyValuePair<string, string>("MaxReservedWorkers", MaxReservedWorkers.ToString()));
-            }
+      return p;
+    }
+  }
 
-            if (TaskOrder != null)
-            {
-                p.Add(new KeyValuePair<string, string>("TaskOrder", TaskOrder.ToString()));
-            }
+  /// <summary>
+  /// CreateTaskQueueOptions
+  /// </summary>
+  public class CreateTaskQueueOptions : IOptions<TaskQueueResource>
+  {
+    /// <summary>
+    /// The SID of the Workspace that the new TaskQueue belongs to
+    /// </summary>
+    public string PathWorkspaceSid { get; }
+    /// <summary>
+    /// A string to describe the resource
+    /// </summary>
+    public string FriendlyName { get; }
+    /// <summary>
+    /// A string describing the Worker selection criteria for any Tasks that enter the TaskQueue
+    /// </summary>
+    public string TargetWorkers { get; set; }
+    /// <summary>
+    /// The maximum number of Workers to reserve
+    /// </summary>
+    public int? MaxReservedWorkers { get; set; }
+    /// <summary>
+    /// How Tasks will be assigned to Workers
+    /// </summary>
+    public TaskQueueResource.TaskOrderEnum TaskOrder { get; set; }
+    /// <summary>
+    /// The SID of the Activity to assign Workers when a task is reserved for them
+    /// </summary>
+    public string ReservationActivitySid { get; set; }
+    /// <summary>
+    /// The SID of the Activity to assign Workers once a task is assigned to them
+    /// </summary>
+    public string AssignmentActivitySid { get; set; }
 
-            if (ReservationActivitySid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ReservationActivitySid", ReservationActivitySid.ToString()));
-            }
-
-            if (AssignmentActivitySid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("AssignmentActivitySid", AssignmentActivitySid.ToString()));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new CreateTaskQueueOptions
+    /// </summary>
+    /// <param name="pathWorkspaceSid"> The SID of the Workspace that the new TaskQueue belongs to </param>
+    /// <param name="friendlyName"> A string to describe the resource </param>
+    public CreateTaskQueueOptions(string pathWorkspaceSid, string friendlyName)
+    {
+      PathWorkspaceSid = pathWorkspaceSid;
+      FriendlyName = friendlyName;
     }
 
     /// <summary>
-    /// DeleteTaskQueueOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteTaskQueueOptions : IOptions<TaskQueueResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Workspace with the TaskQueue to delete
-        /// </summary>
-        public string PathWorkspaceSid { get; }
-        /// <summary>
-        /// The SID of the resource to delete
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
 
-        /// <summary>
-        /// Construct a new DeleteTaskQueueOptions
-        /// </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the TaskQueue to delete </param>
-        /// <param name="pathSid"> The SID of the resource to delete </param>
-        public DeleteTaskQueueOptions(string pathWorkspaceSid, string pathSid)
-        {
-            PathWorkspaceSid = pathWorkspaceSid;
-            PathSid = pathSid;
-        }
+      if (TargetWorkers != null)
+      {
+        p.Add(new KeyValuePair<string, string>("TargetWorkers", TargetWorkers));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      if (MaxReservedWorkers != null)
+      {
+        p.Add(new KeyValuePair<string, string>("MaxReservedWorkers", MaxReservedWorkers.ToString()));
+      }
+
+      if (TaskOrder != null)
+      {
+        p.Add(new KeyValuePair<string, string>("TaskOrder", TaskOrder.ToString()));
+      }
+
+      if (ReservationActivitySid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("ReservationActivitySid", ReservationActivitySid.ToString()));
+      }
+
+      if (AssignmentActivitySid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("AssignmentActivitySid", AssignmentActivitySid.ToString()));
+      }
+
+      return p;
     }
+  }
+
+  /// <summary>
+  /// DeleteTaskQueueOptions
+  /// </summary>
+  public class DeleteTaskQueueOptions : IOptions<TaskQueueResource>
+  {
+    /// <summary>
+    /// The SID of the Workspace with the TaskQueue to delete
+    /// </summary>
+    public string PathWorkspaceSid { get; }
+    /// <summary>
+    /// The SID of the resource to delete
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new DeleteTaskQueueOptions
+    /// </summary>
+    /// <param name="pathWorkspaceSid"> The SID of the Workspace with the TaskQueue to delete </param>
+    /// <param name="pathSid"> The SID of the resource to delete </param>
+    public DeleteTaskQueueOptions(string pathWorkspaceSid, string pathSid)
+    {
+      PathWorkspaceSid = pathWorkspaceSid;
+      PathSid = pathSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
 }

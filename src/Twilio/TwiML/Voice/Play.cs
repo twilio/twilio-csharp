@@ -13,80 +13,80 @@ using Twilio.Converters;
 namespace Twilio.TwiML.Voice
 {
 
+  /// <summary>
+  /// Play TwiML Verb
+  /// </summary>
+  public class Play : TwiML
+  {
     /// <summary>
-    /// Play TwiML Verb
+    /// Media URL
     /// </summary>
-    public class Play : TwiML
+    public Uri Url { get; set; }
+    /// <summary>
+    /// Times to loop media
+    /// </summary>
+    public int? Loop { get; set; }
+    /// <summary>
+    /// Play DTMF tones for digits
+    /// </summary>
+    public string Digits { get; set; }
+
+    /// <summary>
+    /// Create a new Play
+    /// </summary>
+    /// <param name="url"> Media URL, the body of the TwiML Element. </param>
+    /// <param name="loop"> Times to loop media </param>
+    /// <param name="digits"> Play DTMF tones for digits </param>
+    public Play(Uri url = null, int? loop = null, string digits = null) : base("Play")
     {
-        /// <summary>
-        /// Media URL
-        /// </summary>
-        public Uri Url { get; set; }
-        /// <summary>
-        /// Times to loop media
-        /// </summary>
-        public int? Loop { get; set; }
-        /// <summary>
-        /// Play DTMF tones for digits
-        /// </summary>
-        public string Digits { get; set; }
-
-        /// <summary>
-        /// Create a new Play
-        /// </summary>
-        /// <param name="url"> Media URL, the body of the TwiML Element. </param>
-        /// <param name="loop"> Times to loop media </param>
-        /// <param name="digits"> Play DTMF tones for digits </param>
-        public Play(Uri url = null, int? loop = null, string digits = null) : base("Play")
-        {
-            this.Url = url;
-            this.Loop = loop;
-            this.Digits = digits;
-        }
-
-        /// <summary>
-        /// Return the body of the TwiML tag
-        /// </summary>
-        protected override string GetElementBody()
-        {
-            return this.Url != null ? Serializers.Url(this.Url) : string.Empty;
-        }
-
-        /// <summary>
-        /// Return the attributes of the TwiML tag
-        /// </summary>
-        protected override List<XAttribute> GetElementAttributes()
-        {
-            var attributes = new List<XAttribute>();
-            if (this.Loop != null)
-            {
-                attributes.Add(new XAttribute("loop", this.Loop.ToString()));
-            }
-            if (this.Digits != null)
-            {
-                attributes.Add(new XAttribute("digits", this.Digits));
-            }
-            return attributes;
-        }
-
-        /// <summary>
-        /// Append a child TwiML element to this element returning this element to allow chaining.
-        /// </summary>
-        /// <param name="childElem"> Child TwiML element to add </param>
-        public new Play Append(TwiML childElem)
-        {
-            return (Play) base.Append(childElem);
-        }
-
-        /// <summary>
-        /// Add freeform key-value attributes to the generated xml
-        /// </summary>
-        /// <param name="key"> Option key </param>
-        /// <param name="value"> Option value </param>
-        public new Play SetOption(string key, object value)
-        {
-            return (Play) base.SetOption(key, value);
-        }
+      this.Url = url;
+      this.Loop = loop;
+      this.Digits = digits;
     }
+
+    /// <summary>
+    /// Return the body of the TwiML tag
+    /// </summary>
+    protected override string GetElementBody()
+    {
+      return this.Url != null ? Serializers.Url(this.Url) : string.Empty;
+    }
+
+    /// <summary>
+    /// Return the attributes of the TwiML tag
+    /// </summary>
+    protected override List<XAttribute> GetElementAttributes()
+    {
+      var attributes = new List<XAttribute>();
+      if (this.Loop != null)
+      {
+        attributes.Add(new XAttribute("loop", this.Loop.ToString()));
+      }
+      if (this.Digits != null)
+      {
+        attributes.Add(new XAttribute("digits", this.Digits));
+      }
+      return attributes;
+    }
+
+    /// <summary>
+    /// Append a child TwiML element to this element returning this element to allow chaining.
+    /// </summary>
+    /// <param name="childElem"> Child TwiML element to add </param>
+    public new Play Append(TwiML childElem)
+    {
+      return (Play)base.Append(childElem);
+    }
+
+    /// <summary>
+    /// Add freeform key-value attributes to the generated xml
+    /// </summary>
+    /// <param name="key"> Option key </param>
+    /// <param name="value"> Option value </param>
+    public new Play SetOption(string key, object value)
+    {
+      return (Play)base.SetOption(key, value);
+    }
+  }
 
 }

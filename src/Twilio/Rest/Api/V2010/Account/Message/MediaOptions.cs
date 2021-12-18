@@ -11,149 +11,149 @@ using Twilio.Converters;
 namespace Twilio.Rest.Api.V2010.Account.Message
 {
 
+  /// <summary>
+  /// Delete media from your account. Once delete, you will no longer be billed
+  /// </summary>
+  public class DeleteMediaOptions : IOptions<MediaResource>
+  {
     /// <summary>
-    /// Delete media from your account. Once delete, you will no longer be billed
+    /// The SID of the Account that created the resource(s) to delete
     /// </summary>
-    public class DeleteMediaOptions : IOptions<MediaResource>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The SID of the Message resource that this Media resource belongs to
+    /// </summary>
+    public string PathMessageSid { get; }
+    /// <summary>
+    /// The unique string that identifies this resource
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new DeleteMediaOptions
+    /// </summary>
+    /// <param name="pathMessageSid"> The SID of the Message resource that this Media resource belongs to </param>
+    /// <param name="pathSid"> The unique string that identifies this resource </param>
+    public DeleteMediaOptions(string pathMessageSid, string pathSid)
     {
-        /// <summary>
-        /// The SID of the Account that created the resource(s) to delete
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The SID of the Message resource that this Media resource belongs to
-        /// </summary>
-        public string PathMessageSid { get; }
-        /// <summary>
-        /// The unique string that identifies this resource
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new DeleteMediaOptions
-        /// </summary>
-        /// <param name="pathMessageSid"> The SID of the Message resource that this Media resource belongs to </param>
-        /// <param name="pathSid"> The unique string that identifies this resource </param>
-        public DeleteMediaOptions(string pathMessageSid, string pathSid)
-        {
-            PathMessageSid = pathMessageSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathMessageSid = pathMessageSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Fetch a single media instance belonging to the account used to make the request
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchMediaOptions : IOptions<MediaResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Account that created the resource(s) to fetch
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The SID of the Message resource that this Media resource belongs to
-        /// </summary>
-        public string PathMessageSid { get; }
-        /// <summary>
-        /// The unique string that identifies this resource
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new FetchMediaOptions
-        /// </summary>
-        /// <param name="pathMessageSid"> The SID of the Message resource that this Media resource belongs to </param>
-        /// <param name="pathSid"> The unique string that identifies this resource </param>
-        public FetchMediaOptions(string pathMessageSid, string pathSid)
-        {
-            PathMessageSid = pathMessageSid;
-            PathSid = pathSid;
-        }
+  /// <summary>
+  /// Fetch a single media instance belonging to the account used to make the request
+  /// </summary>
+  public class FetchMediaOptions : IOptions<MediaResource>
+  {
+    /// <summary>
+    /// The SID of the Account that created the resource(s) to fetch
+    /// </summary>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The SID of the Message resource that this Media resource belongs to
+    /// </summary>
+    public string PathMessageSid { get; }
+    /// <summary>
+    /// The unique string that identifies this resource
+    /// </summary>
+    public string PathSid { get; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+    /// <summary>
+    /// Construct a new FetchMediaOptions
+    /// </summary>
+    /// <param name="pathMessageSid"> The SID of the Message resource that this Media resource belongs to </param>
+    /// <param name="pathSid"> The unique string that identifies this resource </param>
+    public FetchMediaOptions(string pathMessageSid, string pathSid)
+    {
+      PathMessageSid = pathMessageSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Retrieve a list of Media resources belonging to the account used to make the request
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadMediaOptions : ReadOptions<MediaResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Account that created the resource(s) to read
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The SID of the Message resource that this Media resource belongs to
-        /// </summary>
-        public string PathMessageSid { get; }
-        /// <summary>
-        /// Only include media that was created on this date
-        /// </summary>
-        public DateTime? DateCreatedBefore { get; set; }
-        /// <summary>
-        /// Only include media that was created on this date
-        /// </summary>
-        public DateTime? DateCreated { get; set; }
-        /// <summary>
-        /// Only include media that was created on this date
-        /// </summary>
-        public DateTime? DateCreatedAfter { get; set; }
-
-        /// <summary>
-        /// Construct a new ReadMediaOptions
-        /// </summary>
-        /// <param name="pathMessageSid"> The SID of the Message resource that this Media resource belongs to </param>
-        public ReadMediaOptions(string pathMessageSid)
-        {
-            PathMessageSid = pathMessageSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (DateCreated != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DateCreated", Serializers.DateTimeIso8601(DateCreated)));
-            }
-            else
-            {
-                if (DateCreatedBefore != null)
-                {
-                    p.Add(new KeyValuePair<string, string>("DateCreated<", Serializers.DateTimeIso8601(DateCreatedBefore)));
-                }
-
-                if (DateCreatedAfter != null)
-                {
-                    p.Add(new KeyValuePair<string, string>("DateCreated>", Serializers.DateTimeIso8601(DateCreatedAfter)));
-                }
-            }
-
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
+
+  /// <summary>
+  /// Retrieve a list of Media resources belonging to the account used to make the request
+  /// </summary>
+  public class ReadMediaOptions : ReadOptions<MediaResource>
+  {
+    /// <summary>
+    /// The SID of the Account that created the resource(s) to read
+    /// </summary>
+    public string PathAccountSid { get; set; }
+    /// <summary>
+    /// The SID of the Message resource that this Media resource belongs to
+    /// </summary>
+    public string PathMessageSid { get; }
+    /// <summary>
+    /// Only include media that was created on this date
+    /// </summary>
+    public DateTime? DateCreatedBefore { get; set; }
+    /// <summary>
+    /// Only include media that was created on this date
+    /// </summary>
+    public DateTime? DateCreated { get; set; }
+    /// <summary>
+    /// Only include media that was created on this date
+    /// </summary>
+    public DateTime? DateCreatedAfter { get; set; }
+
+    /// <summary>
+    /// Construct a new ReadMediaOptions
+    /// </summary>
+    /// <param name="pathMessageSid"> The SID of the Message resource that this Media resource belongs to </param>
+    public ReadMediaOptions(string pathMessageSid)
+    {
+      PathMessageSid = pathMessageSid;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (DateCreated != null)
+      {
+        p.Add(new KeyValuePair<string, string>("DateCreated", Serializers.DateTimeIso8601(DateCreated)));
+      }
+      else
+      {
+        if (DateCreatedBefore != null)
+        {
+          p.Add(new KeyValuePair<string, string>("DateCreated<", Serializers.DateTimeIso8601(DateCreatedBefore)));
+        }
+
+        if (DateCreatedAfter != null)
+        {
+          p.Add(new KeyValuePair<string, string>("DateCreated>", Serializers.DateTimeIso8601(DateCreatedAfter)));
+        }
+      }
+
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
 
 }

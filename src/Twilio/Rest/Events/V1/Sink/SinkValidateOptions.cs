@@ -11,46 +11,46 @@ using Twilio.Converters;
 namespace Twilio.Rest.Events.V1.Sink
 {
 
+  /// <summary>
+  /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+  ///
+  /// Validate that a test event for a Sink was received.
+  /// </summary>
+  public class CreateSinkValidateOptions : IOptions<SinkValidateResource>
+  {
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Validate that a test event for a Sink was received.
+    /// A string that uniquely identifies the Sink being validated.
     /// </summary>
-    public class CreateSinkValidateOptions : IOptions<SinkValidateResource>
+    public string PathSid { get; }
+    /// <summary>
+    /// A string that uniquely identifies the test event for a Sink being validated.
+    /// </summary>
+    public string TestId { get; }
+
+    /// <summary>
+    /// Construct a new CreateSinkValidateOptions
+    /// </summary>
+    /// <param name="pathSid"> A string that uniquely identifies the Sink being validated. </param>
+    /// <param name="testId"> A string that uniquely identifies the test event for a Sink being validated. </param>
+    public CreateSinkValidateOptions(string pathSid, string testId)
     {
-        /// <summary>
-        /// A string that uniquely identifies the Sink being validated.
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// A string that uniquely identifies the test event for a Sink being validated.
-        /// </summary>
-        public string TestId { get; }
-
-        /// <summary>
-        /// Construct a new CreateSinkValidateOptions
-        /// </summary>
-        /// <param name="pathSid"> A string that uniquely identifies the Sink being validated. </param>
-        /// <param name="testId"> A string that uniquely identifies the test event for a Sink being validated. </param>
-        public CreateSinkValidateOptions(string pathSid, string testId)
-        {
-            PathSid = pathSid;
-            TestId = testId;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (TestId != null)
-            {
-                p.Add(new KeyValuePair<string, string>("TestId", TestId));
-            }
-
-            return p;
-        }
+      PathSid = pathSid;
+      TestId = testId;
     }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (TestId != null)
+      {
+        p.Add(new KeyValuePair<string, string>("TestId", TestId));
+      }
+
+      return p;
+    }
+  }
 
 }

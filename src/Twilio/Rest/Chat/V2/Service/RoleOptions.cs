@@ -12,219 +12,219 @@ using Twilio.Converters;
 namespace Twilio.Rest.Chat.V2.Service
 {
 
+  /// <summary>
+  /// FetchRoleOptions
+  /// </summary>
+  public class FetchRoleOptions : IOptions<RoleResource>
+  {
     /// <summary>
-    /// FetchRoleOptions
+    /// The SID of the Service to fetch the resource from
     /// </summary>
-    public class FetchRoleOptions : IOptions<RoleResource>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The SID of the Role resource to fetch
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchRoleOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
+    /// <param name="pathSid"> The SID of the Role resource to fetch </param>
+    public FetchRoleOptions(string pathServiceSid, string pathSid)
     {
-        /// <summary>
-        /// The SID of the Service to fetch the resource from
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The SID of the Role resource to fetch
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchRoleOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
-        /// <param name="pathSid"> The SID of the Role resource to fetch </param>
-        public FetchRoleOptions(string pathServiceSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      PathServiceSid = pathServiceSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// DeleteRoleOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteRoleOptions : IOptions<RoleResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Service to delete the resource from
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The SID of the Role resource to delete
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new DeleteRoleOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
-        /// <param name="pathSid"> The SID of the Role resource to delete </param>
-        public DeleteRoleOptions(string pathServiceSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathSid = pathSid;
-        }
+  /// <summary>
+  /// DeleteRoleOptions
+  /// </summary>
+  public class DeleteRoleOptions : IOptions<RoleResource>
+  {
+    /// <summary>
+    /// The SID of the Service to delete the resource from
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The SID of the Role resource to delete
+    /// </summary>
+    public string PathSid { get; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+    /// <summary>
+    /// Construct a new DeleteRoleOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
+    /// <param name="pathSid"> The SID of the Role resource to delete </param>
+    public DeleteRoleOptions(string pathServiceSid, string pathSid)
+    {
+      PathServiceSid = pathServiceSid;
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// CreateRoleOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class CreateRoleOptions : IOptions<RoleResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Service to create the resource under
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// A string to describe the new resource
-        /// </summary>
-        public string FriendlyName { get; }
-        /// <summary>
-        /// The type of role
-        /// </summary>
-        public RoleResource.RoleTypeEnum Type { get; }
-        /// <summary>
-        /// A permission the role should have
-        /// </summary>
-        public List<string> Permission { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new CreateRoleOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to create the resource under </param>
-        /// <param name="friendlyName"> A string to describe the new resource </param>
-        /// <param name="type"> The type of role </param>
-        /// <param name="permission"> A permission the role should have </param>
-        public CreateRoleOptions(string pathServiceSid,
-                                 string friendlyName,
-                                 RoleResource.RoleTypeEnum type,
-                                 List<string> permission)
-        {
-            PathServiceSid = pathServiceSid;
-            FriendlyName = friendlyName;
-            Type = type;
-            Permission = permission;
-        }
+  /// <summary>
+  /// CreateRoleOptions
+  /// </summary>
+  public class CreateRoleOptions : IOptions<RoleResource>
+  {
+    /// <summary>
+    /// The SID of the Service to create the resource under
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// A string to describe the new resource
+    /// </summary>
+    public string FriendlyName { get; }
+    /// <summary>
+    /// The type of role
+    /// </summary>
+    public RoleResource.RoleTypeEnum Type { get; }
+    /// <summary>
+    /// A permission the role should have
+    /// </summary>
+    public List<string> Permission { get; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
-
-            if (Type != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Type", Type.ToString()));
-            }
-
-            if (Permission != null)
-            {
-                p.AddRange(Permission.Select(prop => new KeyValuePair<string, string>("Permission", prop)));
-            }
-
-            return p;
-        }
+    /// <summary>
+    /// Construct a new CreateRoleOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to create the resource under </param>
+    /// <param name="friendlyName"> A string to describe the new resource </param>
+    /// <param name="type"> The type of role </param>
+    /// <param name="permission"> A permission the role should have </param>
+    public CreateRoleOptions(string pathServiceSid,
+                             string friendlyName,
+                             RoleResource.RoleTypeEnum type,
+                             List<string> permission)
+    {
+      PathServiceSid = pathServiceSid;
+      FriendlyName = friendlyName;
+      Type = type;
+      Permission = permission;
     }
 
     /// <summary>
-    /// ReadRoleOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadRoleOptions : ReadOptions<RoleResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Service to read the resources from
-        /// </summary>
-        public string PathServiceSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
 
-        /// <summary>
-        /// Construct a new ReadRoleOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to read the resources from </param>
-        public ReadRoleOptions(string pathServiceSid)
-        {
-            PathServiceSid = pathServiceSid;
-        }
+      if (Type != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Type", Type.ToString()));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
+      if (Permission != null)
+      {
+        p.AddRange(Permission.Select(prop => new KeyValuePair<string, string>("Permission", prop)));
+      }
 
-            return p;
-        }
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// ReadRoleOptions
+  /// </summary>
+  public class ReadRoleOptions : ReadOptions<RoleResource>
+  {
+    /// <summary>
+    /// The SID of the Service to read the resources from
+    /// </summary>
+    public string PathServiceSid { get; }
+
+    /// <summary>
+    /// Construct a new ReadRoleOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to read the resources from </param>
+    public ReadRoleOptions(string pathServiceSid)
+    {
+      PathServiceSid = pathServiceSid;
     }
 
     /// <summary>
-    /// UpdateRoleOptions
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateRoleOptions : IOptions<RoleResource>
+    public override List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the Service to update the resource from
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The SID of the Role resource to update
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// A permission the role should have
-        /// </summary>
-        public List<string> Permission { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new UpdateRoleOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to update the resource from </param>
-        /// <param name="pathSid"> The SID of the Role resource to update </param>
-        /// <param name="permission"> A permission the role should have </param>
-        public UpdateRoleOptions(string pathServiceSid, string pathSid, List<string> permission)
-        {
-            PathServiceSid = pathServiceSid;
-            PathSid = pathSid;
-            Permission = permission;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Permission != null)
-            {
-                p.AddRange(Permission.Select(prop => new KeyValuePair<string, string>("Permission", prop)));
-            }
-
-            return p;
-        }
+      return p;
     }
+  }
+
+  /// <summary>
+  /// UpdateRoleOptions
+  /// </summary>
+  public class UpdateRoleOptions : IOptions<RoleResource>
+  {
+    /// <summary>
+    /// The SID of the Service to update the resource from
+    /// </summary>
+    public string PathServiceSid { get; }
+    /// <summary>
+    /// The SID of the Role resource to update
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// A permission the role should have
+    /// </summary>
+    public List<string> Permission { get; }
+
+    /// <summary>
+    /// Construct a new UpdateRoleOptions
+    /// </summary>
+    /// <param name="pathServiceSid"> The SID of the Service to update the resource from </param>
+    /// <param name="pathSid"> The SID of the Role resource to update </param>
+    /// <param name="permission"> A permission the role should have </param>
+    public UpdateRoleOptions(string pathServiceSid, string pathSid, List<string> permission)
+    {
+      PathServiceSid = pathServiceSid;
+      PathSid = pathSid;
+      Permission = permission;
+    }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (Permission != null)
+      {
+        p.AddRange(Permission.Select(prop => new KeyValuePair<string, string>("Permission", prop)));
+      }
+
+      return p;
+    }
+  }
 
 }

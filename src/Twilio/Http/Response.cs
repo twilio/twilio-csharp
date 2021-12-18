@@ -8,37 +8,37 @@ using Headers = System.Net.Http.Headers.HttpResponseHeaders;
 
 namespace Twilio.Http
 {
+  /// <summary>
+  /// Twilio response
+  /// </summary>
+  public class Response
+  {
     /// <summary>
-    /// Twilio response
+    /// HTTP status code
     /// </summary>
-    public class Response
+    public HttpStatusCode StatusCode { get; }
+
+    /// <summary>
+    /// Content string
+    /// </summary>
+    public string Content { get; }
+
+    /// <summary>
+    /// Headers
+    /// </summary>
+    public Headers Headers { get; }
+
+    /// <summary>
+    /// Create a new Response
+    /// </summary>
+    /// <param name="statusCode">HTTP status code</param>
+    /// <param name="content">Content string</param>
+    /// <param name="headers">Headers</param>
+    public Response(HttpStatusCode statusCode, string content, Headers headers = null)
     {
-        /// <summary>
-        /// HTTP status code
-        /// </summary>
-        public HttpStatusCode StatusCode { get; }
-
-        /// <summary>
-        /// Content string
-        /// </summary>
-        public string Content { get; }
-
-        /// <summary>
-        /// Headers
-        /// </summary>
-        public Headers Headers { get; }
-
-        /// <summary>
-        /// Create a new Response
-        /// </summary>
-        /// <param name="statusCode">HTTP status code</param>
-        /// <param name="content">Content string</param>
-        /// <param name="headers">Headers</param>
-        public Response(HttpStatusCode statusCode, string content, Headers headers = null)
-        {
-            StatusCode = statusCode;
-            Content = content;
-            Headers = headers;
-        }
+      StatusCode = statusCode;
+      Content = content;
+      Headers = headers;
     }
+  }
 }

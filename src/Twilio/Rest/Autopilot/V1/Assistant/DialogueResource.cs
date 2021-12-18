@@ -21,126 +21,126 @@ using Twilio.Http;
 namespace Twilio.Rest.Autopilot.V1.Assistant
 {
 
-    public class DialogueResource : Resource
+  public class DialogueResource : Resource
+  {
+    private static Request BuildFetchRequest(FetchDialogueOptions options, ITwilioRestClient client)
     {
-        private static Request BuildFetchRequest(FetchDialogueOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Get,
-                Rest.Domain.Autopilot,
-                "/v1/Assistants/" + options.PathAssistantSid + "/Dialogues/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="options"> Fetch Dialogue parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Dialogue </returns>
-        public static DialogueResource Fetch(FetchDialogueOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="options"> Fetch Dialogue parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Dialogue </returns>
-        public static async System.Threading.Tasks.Task<DialogueResource> FetchAsync(FetchDialogueOptions options,
-                                                                                     ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resource to fetch </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Dialogue </returns>
-        public static DialogueResource Fetch(string pathAssistantSid, string pathSid, ITwilioRestClient client = null)
-        {
-            var options = new FetchDialogueOptions(pathAssistantSid, pathSid);
-            return Fetch(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// fetch
-        /// </summary>
-        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resource to fetch </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Dialogue </returns>
-        public static async System.Threading.Tasks.Task<DialogueResource> FetchAsync(string pathAssistantSid,
-                                                                                     string pathSid,
-                                                                                     ITwilioRestClient client = null)
-        {
-            var options = new FetchDialogueOptions(pathAssistantSid, pathSid);
-            return await FetchAsync(options, client);
-        }
-        #endif
-
-        /// <summary>
-        /// Converts a JSON string into a DialogueResource object
-        /// </summary>
-        /// <param name="json"> Raw JSON string </param>
-        /// <returns> DialogueResource object represented by the provided JSON </returns>
-        public static DialogueResource FromJson(string json)
-        {
-            // Convert all checked exceptions to Runtime
-            try
-            {
-                return JsonConvert.DeserializeObject<DialogueResource>(json);
-            }
-            catch (JsonException e)
-            {
-                throw new ApiException(e.Message, e);
-            }
-        }
-
-        /// <summary>
-        /// The SID of the Account that created the resource
-        /// </summary>
-        [JsonProperty("account_sid")]
-        public string AccountSid { get; private set; }
-        /// <summary>
-        /// The SID of the Assistant that is the parent of the resource
-        /// </summary>
-        [JsonProperty("assistant_sid")]
-        public string AssistantSid { get; private set; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        [JsonProperty("sid")]
-        public string Sid { get; private set; }
-        /// <summary>
-        /// The JSON string that describes the dialogue session object
-        /// </summary>
-        [JsonProperty("data")]
-        public object Data { get; private set; }
-        /// <summary>
-        /// The absolute URL of the Dialogue resource
-        /// </summary>
-        [JsonProperty("url")]
-        public Uri Url { get; private set; }
-
-        private DialogueResource()
-        {
-
-        }
+      return new Request(
+          HttpMethod.Get,
+          Rest.Domain.Autopilot,
+          "/v1/Assistants/" + options.PathAssistantSid + "/Dialogues/" + options.PathSid + "",
+          queryParams: options.GetParams(),
+          headerParams: null
+      );
     }
+
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="options"> Fetch Dialogue parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Dialogue </returns>
+    public static DialogueResource Fetch(FetchDialogueOptions options, ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = client.Request(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+
+#if !NET35
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="options"> Fetch Dialogue parameters </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Dialogue </returns>
+    public static async System.Threading.Tasks.Task<DialogueResource> FetchAsync(FetchDialogueOptions options,
+                                                                                 ITwilioRestClient client = null)
+    {
+      client = client ?? TwilioClient.GetRestClient();
+      var response = await client.RequestAsync(BuildFetchRequest(options, client));
+      return FromJson(response.Content);
+    }
+#endif
+
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resource to fetch </param>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> A single instance of Dialogue </returns>
+    public static DialogueResource Fetch(string pathAssistantSid, string pathSid, ITwilioRestClient client = null)
+    {
+      var options = new FetchDialogueOptions(pathAssistantSid, pathSid);
+      return Fetch(options, client);
+    }
+
+#if !NET35
+    /// <summary>
+    /// fetch
+    /// </summary>
+    /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resource to fetch </param>
+    /// <param name="pathSid"> The unique string that identifies the resource </param>
+    /// <param name="client"> Client to make requests to Twilio </param>
+    /// <returns> Task that resolves to A single instance of Dialogue </returns>
+    public static async System.Threading.Tasks.Task<DialogueResource> FetchAsync(string pathAssistantSid,
+                                                                                 string pathSid,
+                                                                                 ITwilioRestClient client = null)
+    {
+      var options = new FetchDialogueOptions(pathAssistantSid, pathSid);
+      return await FetchAsync(options, client);
+    }
+#endif
+
+    /// <summary>
+    /// Converts a JSON string into a DialogueResource object
+    /// </summary>
+    /// <param name="json"> Raw JSON string </param>
+    /// <returns> DialogueResource object represented by the provided JSON </returns>
+    public static DialogueResource FromJson(string json)
+    {
+      // Convert all checked exceptions to Runtime
+      try
+      {
+        return JsonConvert.DeserializeObject<DialogueResource>(json);
+      }
+      catch (JsonException e)
+      {
+        throw new ApiException(e.Message, e);
+      }
+    }
+
+    /// <summary>
+    /// The SID of the Account that created the resource
+    /// </summary>
+    [JsonProperty("account_sid")]
+    public string AccountSid { get; private set; }
+    /// <summary>
+    /// The SID of the Assistant that is the parent of the resource
+    /// </summary>
+    [JsonProperty("assistant_sid")]
+    public string AssistantSid { get; private set; }
+    /// <summary>
+    /// The unique string that identifies the resource
+    /// </summary>
+    [JsonProperty("sid")]
+    public string Sid { get; private set; }
+    /// <summary>
+    /// The JSON string that describes the dialogue session object
+    /// </summary>
+    [JsonProperty("data")]
+    public object Data { get; private set; }
+    /// <summary>
+    /// The absolute URL of the Dialogue resource
+    /// </summary>
+    [JsonProperty("url")]
+    public Uri Url { get; private set; }
+
+    private DialogueResource()
+    {
+
+    }
+  }
 
 }

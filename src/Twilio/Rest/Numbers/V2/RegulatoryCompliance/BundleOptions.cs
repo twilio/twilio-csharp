@@ -11,283 +11,283 @@ using Twilio.Converters;
 namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
 {
 
+  /// <summary>
+  /// Create a new Bundle.
+  /// </summary>
+  public class CreateBundleOptions : IOptions<BundleResource>
+  {
     /// <summary>
-    /// Create a new Bundle.
+    /// The string that you assigned to describe the resource
     /// </summary>
-    public class CreateBundleOptions : IOptions<BundleResource>
+    public string FriendlyName { get; }
+    /// <summary>
+    /// The email address
+    /// </summary>
+    public string Email { get; }
+    /// <summary>
+    /// The URL we call to inform your application of status changes.
+    /// </summary>
+    public Uri StatusCallback { get; set; }
+    /// <summary>
+    /// The unique string of a regulation.
+    /// </summary>
+    public string RegulationSid { get; set; }
+    /// <summary>
+    /// The ISO country code of the country
+    /// </summary>
+    public string IsoCountry { get; set; }
+    /// <summary>
+    /// The type of End User of the Bundle resource
+    /// </summary>
+    public BundleResource.EndUserTypeEnum EndUserType { get; set; }
+    /// <summary>
+    /// The type of phone number
+    /// </summary>
+    public string NumberType { get; set; }
+
+    /// <summary>
+    /// Construct a new CreateBundleOptions
+    /// </summary>
+    /// <param name="friendlyName"> The string that you assigned to describe the resource </param>
+    /// <param name="email"> The email address </param>
+    public CreateBundleOptions(string friendlyName, string email)
     {
-        /// <summary>
-        /// The string that you assigned to describe the resource
-        /// </summary>
-        public string FriendlyName { get; }
-        /// <summary>
-        /// The email address
-        /// </summary>
-        public string Email { get; }
-        /// <summary>
-        /// The URL we call to inform your application of status changes.
-        /// </summary>
-        public Uri StatusCallback { get; set; }
-        /// <summary>
-        /// The unique string of a regulation.
-        /// </summary>
-        public string RegulationSid { get; set; }
-        /// <summary>
-        /// The ISO country code of the country
-        /// </summary>
-        public string IsoCountry { get; set; }
-        /// <summary>
-        /// The type of End User of the Bundle resource
-        /// </summary>
-        public BundleResource.EndUserTypeEnum EndUserType { get; set; }
-        /// <summary>
-        /// The type of phone number
-        /// </summary>
-        public string NumberType { get; set; }
-
-        /// <summary>
-        /// Construct a new CreateBundleOptions
-        /// </summary>
-        /// <param name="friendlyName"> The string that you assigned to describe the resource </param>
-        /// <param name="email"> The email address </param>
-        public CreateBundleOptions(string friendlyName, string email)
-        {
-            FriendlyName = friendlyName;
-            Email = email;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
-
-            if (Email != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Email", Email));
-            }
-
-            if (StatusCallback != null)
-            {
-                p.Add(new KeyValuePair<string, string>("StatusCallback", Serializers.Url(StatusCallback)));
-            }
-
-            if (RegulationSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("RegulationSid", RegulationSid.ToString()));
-            }
-
-            if (IsoCountry != null)
-            {
-                p.Add(new KeyValuePair<string, string>("IsoCountry", IsoCountry));
-            }
-
-            if (EndUserType != null)
-            {
-                p.Add(new KeyValuePair<string, string>("EndUserType", EndUserType.ToString()));
-            }
-
-            if (NumberType != null)
-            {
-                p.Add(new KeyValuePair<string, string>("NumberType", NumberType));
-            }
-
-            return p;
-        }
+      FriendlyName = friendlyName;
+      Email = email;
     }
 
     /// <summary>
-    /// Retrieve a list of all Bundles for an account.
+    /// Generate the necessary parameters
     /// </summary>
-    public class ReadBundleOptions : ReadOptions<BundleResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The verification status of the Bundle resource
-        /// </summary>
-        public BundleResource.StatusEnum Status { get; set; }
-        /// <summary>
-        /// The string that you assigned to describe the resource
-        /// </summary>
-        public string FriendlyName { get; set; }
-        /// <summary>
-        /// The unique string of a regulation.
-        /// </summary>
-        public string RegulationSid { get; set; }
-        /// <summary>
-        /// The ISO country code of the country
-        /// </summary>
-        public string IsoCountry { get; set; }
-        /// <summary>
-        /// The type of phone number
-        /// </summary>
-        public string NumberType { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Status != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
-            }
+      if (Email != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Email", Email));
+      }
 
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
+      if (StatusCallback != null)
+      {
+        p.Add(new KeyValuePair<string, string>("StatusCallback", Serializers.Url(StatusCallback)));
+      }
 
-            if (RegulationSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("RegulationSid", RegulationSid.ToString()));
-            }
+      if (RegulationSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("RegulationSid", RegulationSid.ToString()));
+      }
 
-            if (IsoCountry != null)
-            {
-                p.Add(new KeyValuePair<string, string>("IsoCountry", IsoCountry));
-            }
+      if (IsoCountry != null)
+      {
+        p.Add(new KeyValuePair<string, string>("IsoCountry", IsoCountry));
+      }
 
-            if (NumberType != null)
-            {
-                p.Add(new KeyValuePair<string, string>("NumberType", NumberType));
-            }
+      if (EndUserType != null)
+      {
+        p.Add(new KeyValuePair<string, string>("EndUserType", EndUserType.ToString()));
+      }
 
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
+      if (NumberType != null)
+      {
+        p.Add(new KeyValuePair<string, string>("NumberType", NumberType));
+      }
 
-            return p;
-        }
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// Retrieve a list of all Bundles for an account.
+  /// </summary>
+  public class ReadBundleOptions : ReadOptions<BundleResource>
+  {
+    /// <summary>
+    /// The verification status of the Bundle resource
+    /// </summary>
+    public BundleResource.StatusEnum Status { get; set; }
+    /// <summary>
+    /// The string that you assigned to describe the resource
+    /// </summary>
+    public string FriendlyName { get; set; }
+    /// <summary>
+    /// The unique string of a regulation.
+    /// </summary>
+    public string RegulationSid { get; set; }
+    /// <summary>
+    /// The ISO country code of the country
+    /// </summary>
+    public string IsoCountry { get; set; }
+    /// <summary>
+    /// The type of phone number
+    /// </summary>
+    public string NumberType { get; set; }
+
+    /// <summary>
+    /// Generate the necessary parameters
+    /// </summary>
+    public override List<KeyValuePair<string, string>> GetParams()
+    {
+      var p = new List<KeyValuePair<string, string>>();
+      if (Status != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
+      }
+
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
+
+      if (RegulationSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("RegulationSid", RegulationSid.ToString()));
+      }
+
+      if (IsoCountry != null)
+      {
+        p.Add(new KeyValuePair<string, string>("IsoCountry", IsoCountry));
+      }
+
+      if (NumberType != null)
+      {
+        p.Add(new KeyValuePair<string, string>("NumberType", NumberType));
+      }
+
+      if (PageSize != null)
+      {
+        p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+      }
+
+      return p;
+    }
+  }
+
+  /// <summary>
+  /// Fetch a specific Bundle instance.
+  /// </summary>
+  public class FetchBundleOptions : IOptions<BundleResource>
+  {
+    /// <summary>
+    /// The unique string that identifies the resource.
+    /// </summary>
+    public string PathSid { get; }
+
+    /// <summary>
+    /// Construct a new FetchBundleOptions
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource. </param>
+    public FetchBundleOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Fetch a specific Bundle instance.
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchBundleOptions : IOptions<BundleResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique string that identifies the resource.
-        /// </summary>
-        public string PathSid { get; }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
+    }
+  }
 
-        /// <summary>
-        /// Construct a new FetchBundleOptions
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource. </param>
-        public FetchBundleOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
+  /// <summary>
+  /// Updates a Bundle in an account.
+  /// </summary>
+  public class UpdateBundleOptions : IOptions<BundleResource>
+  {
+    /// <summary>
+    /// The unique string that identifies the resource.
+    /// </summary>
+    public string PathSid { get; }
+    /// <summary>
+    /// The verification status of the Bundle resource
+    /// </summary>
+    public BundleResource.StatusEnum Status { get; set; }
+    /// <summary>
+    /// The URL we call to inform your application of status changes.
+    /// </summary>
+    public Uri StatusCallback { get; set; }
+    /// <summary>
+    /// The string that you assigned to describe the resource
+    /// </summary>
+    public string FriendlyName { get; set; }
+    /// <summary>
+    /// The email address
+    /// </summary>
+    public string Email { get; set; }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+    /// <summary>
+    /// Construct a new UpdateBundleOptions
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource. </param>
+    public UpdateBundleOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Updates a Bundle in an account.
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateBundleOptions : IOptions<BundleResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique string that identifies the resource.
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// The verification status of the Bundle resource
-        /// </summary>
-        public BundleResource.StatusEnum Status { get; set; }
-        /// <summary>
-        /// The URL we call to inform your application of status changes.
-        /// </summary>
-        public Uri StatusCallback { get; set; }
-        /// <summary>
-        /// The string that you assigned to describe the resource
-        /// </summary>
-        public string FriendlyName { get; set; }
-        /// <summary>
-        /// The email address
-        /// </summary>
-        public string Email { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (Status != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
+      }
 
-        /// <summary>
-        /// Construct a new UpdateBundleOptions
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource. </param>
-        public UpdateBundleOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
+      if (StatusCallback != null)
+      {
+        p.Add(new KeyValuePair<string, string>("StatusCallback", Serializers.Url(StatusCallback)));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Status != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
-            }
+      if (FriendlyName != null)
+      {
+        p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+      }
 
-            if (StatusCallback != null)
-            {
-                p.Add(new KeyValuePair<string, string>("StatusCallback", Serializers.Url(StatusCallback)));
-            }
+      if (Email != null)
+      {
+        p.Add(new KeyValuePair<string, string>("Email", Email));
+      }
 
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
+      return p;
+    }
+  }
 
-            if (Email != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Email", Email));
-            }
+  /// <summary>
+  /// Delete a specific Bundle.
+  /// </summary>
+  public class DeleteBundleOptions : IOptions<BundleResource>
+  {
+    /// <summary>
+    /// The unique string that identifies the resource.
+    /// </summary>
+    public string PathSid { get; }
 
-            return p;
-        }
+    /// <summary>
+    /// Construct a new DeleteBundleOptions
+    /// </summary>
+    /// <param name="pathSid"> The unique string that identifies the resource. </param>
+    public DeleteBundleOptions(string pathSid)
+    {
+      PathSid = pathSid;
     }
 
     /// <summary>
-    /// Delete a specific Bundle.
+    /// Generate the necessary parameters
     /// </summary>
-    public class DeleteBundleOptions : IOptions<BundleResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The unique string that identifies the resource.
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new DeleteBundleOptions
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource. </param>
-        public DeleteBundleOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
 
 }

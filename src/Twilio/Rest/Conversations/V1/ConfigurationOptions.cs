@@ -11,71 +11,71 @@ using Twilio.Converters;
 namespace Twilio.Rest.Conversations.V1
 {
 
+  /// <summary>
+  /// Fetch the global configuration of conversations on your account
+  /// </summary>
+  public class FetchConfigurationOptions : IOptions<ConfigurationResource>
+  {
     /// <summary>
-    /// Fetch the global configuration of conversations on your account
+    /// Generate the necessary parameters
     /// </summary>
-    public class FetchConfigurationOptions : IOptions<ConfigurationResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
+      var p = new List<KeyValuePair<string, string>>();
+      return p;
     }
+  }
+
+  /// <summary>
+  /// Update the global configuration of conversations on your account
+  /// </summary>
+  public class UpdateConfigurationOptions : IOptions<ConfigurationResource>
+  {
+    /// <summary>
+    /// The SID of the default Conversation Service that every new conversation will be associated with.
+    /// </summary>
+    public string DefaultChatServiceSid { get; set; }
+    /// <summary>
+    /// The SID of the default Messaging Service that every new conversation will be associated with.
+    /// </summary>
+    public string DefaultMessagingServiceSid { get; set; }
+    /// <summary>
+    /// Default ISO8601 duration when conversation will be switched to `inactive` state.
+    /// </summary>
+    public string DefaultInactiveTimer { get; set; }
+    /// <summary>
+    /// Default ISO8601 duration when conversation will be switched to `closed` state.
+    /// </summary>
+    public string DefaultClosedTimer { get; set; }
 
     /// <summary>
-    /// Update the global configuration of conversations on your account
+    /// Generate the necessary parameters
     /// </summary>
-    public class UpdateConfigurationOptions : IOptions<ConfigurationResource>
+    public List<KeyValuePair<string, string>> GetParams()
     {
-        /// <summary>
-        /// The SID of the default Conversation Service that every new conversation will be associated with.
-        /// </summary>
-        public string DefaultChatServiceSid { get; set; }
-        /// <summary>
-        /// The SID of the default Messaging Service that every new conversation will be associated with.
-        /// </summary>
-        public string DefaultMessagingServiceSid { get; set; }
-        /// <summary>
-        /// Default ISO8601 duration when conversation will be switched to `inactive` state.
-        /// </summary>
-        public string DefaultInactiveTimer { get; set; }
-        /// <summary>
-        /// Default ISO8601 duration when conversation will be switched to `closed` state.
-        /// </summary>
-        public string DefaultClosedTimer { get; set; }
+      var p = new List<KeyValuePair<string, string>>();
+      if (DefaultChatServiceSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("DefaultChatServiceSid", DefaultChatServiceSid.ToString()));
+      }
 
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (DefaultChatServiceSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DefaultChatServiceSid", DefaultChatServiceSid.ToString()));
-            }
+      if (DefaultMessagingServiceSid != null)
+      {
+        p.Add(new KeyValuePair<string, string>("DefaultMessagingServiceSid", DefaultMessagingServiceSid.ToString()));
+      }
 
-            if (DefaultMessagingServiceSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DefaultMessagingServiceSid", DefaultMessagingServiceSid.ToString()));
-            }
+      if (DefaultInactiveTimer != null)
+      {
+        p.Add(new KeyValuePair<string, string>("DefaultInactiveTimer", DefaultInactiveTimer));
+      }
 
-            if (DefaultInactiveTimer != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DefaultInactiveTimer", DefaultInactiveTimer));
-            }
+      if (DefaultClosedTimer != null)
+      {
+        p.Add(new KeyValuePair<string, string>("DefaultClosedTimer", DefaultClosedTimer));
+      }
 
-            if (DefaultClosedTimer != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DefaultClosedTimer", DefaultClosedTimer));
-            }
-
-            return p;
-        }
+      return p;
     }
+  }
 
 }
