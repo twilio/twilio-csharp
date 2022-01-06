@@ -1,4 +1,4 @@
-name: Test and Deploy
+git name: Test and Deploy
 on:
   push:
     branches: [ '*' ]
@@ -27,32 +27,29 @@ jobs:
       - name: Build & Test
         run: make test
 
-  sonarcloud:
+  sonarCloud:
     name: SonarCloud
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout twilio-csharp
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2.2.0
         with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+          # Disabling shallow clone is recommended for improving relevancy of sonarqube reporting
+          fetch-depth: 0
 
       - name: Setup .NET Core SDK
         uses: actions/setup-dotnet@v1.8.2
         with:
           dotnet-version: '3.1.x'
 
-      - name: Install SonarCloud scanner
-        run: dotnet tool install --global dotnet-sonarscanner
-
-      - name: Run Analysis
+      - name: Install SonarCloud Scanner
+        run: | 
+          dotnet tool install --global dotnet-sonarscanner
+      
+      - name: Build and analyze
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: |
-          dotnet sonarscanner begin /k:"twilio_twilio-csharp" /d:sonar.host.url=https://sonarcloud.io /o:"twilio" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.language="cs" /d:sonar.exclusions="src/Twilio/Rest/**/*.*,test/Twilio.Test/**/*.*" /d:sonar.cs.opencover.reportsPaths="test/lcov.net451.opencover.xml"
-          dotnet build Twilio.sln
-          dotnet test test/Twilio.Test/Twilio.Test.csproj --no-build /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=../lcov 
-          dotnet sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
+        run: make cover
 
   # deploy:
   #   name: Deploy
