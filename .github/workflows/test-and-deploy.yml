@@ -12,12 +12,14 @@ on:
 
 jobs:
   test:
-    name: Test
+    name: Test and Analyze
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
       - name: Checkout twilio-csharp
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
       - name: Setup .NET Core SDK
         uses: actions/setup-dotnet@v1.8.2
@@ -26,30 +28,15 @@ jobs:
 
       - name: Build & Test
         run: make test
-
-  sonarCloud:
-    name: SonarCloud
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2.2.0
-        with:
-          # Disabling shallow clone is recommended for improving relevancy of sonarqube reporting
-          fetch-depth: 0
-
-      - name: Setup .NET Core SDK
-        uses: actions/setup-dotnet@v1.8.2
-        with:
-          dotnet-version: '3.1.x'
-
-      - name: Install SonarCloud Scanner
-        run: | 
-          dotnet tool install --global dotnet-sonarscanner
       
-      - name: Build and analyze
+      - name: Install SonarCloud scanner and run analysis
+        if: ${{ github.event_name == 'pull_request' || github.ref_type == 'branch' }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: make cover
+        run: |
+          dotnet tool install --global dotnet-sonarscanner
+          make cover
 
   deploy:
     name: Deploy
