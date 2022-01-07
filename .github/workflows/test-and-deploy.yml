@@ -18,6 +18,8 @@ jobs:
     steps:
       - name: Checkout twilio-csharp
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
       - name: Setup .NET Core SDK
         uses: actions/setup-dotnet@v1.8.2
@@ -26,6 +28,16 @@ jobs:
 
       - name: Build & Test
         run: make test
+      
+      - name: Install SonarCloud scanner and run analysis
+        if: ${{ github.event_name == 'pull_request' || github.ref_type == 'branch' }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: |
+          dotnet tool install --global dotnet-sonarscanner
+          make cover
+  
 
   deploy:
     name: Deploy
