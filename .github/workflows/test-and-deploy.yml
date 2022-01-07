@@ -12,7 +12,7 @@ on:
 
 jobs:
   test:
-    name: Test and Analyze
+    name: Test
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
