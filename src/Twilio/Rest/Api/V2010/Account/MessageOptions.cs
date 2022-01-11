@@ -85,6 +85,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Rich actions for Channels Messages.
         /// </summary>
         public List<string> PersistentAction { get; set; }
+        /// <summary>
+        /// If set to True, Twilio will deliver the message as a single MMS message, regardless of the presence of media
+        /// </summary>
+        public bool? SendAsMms { get; set; }
 
         /// <summary>
         /// Construct a new CreateMessageOptions
@@ -181,6 +185,11 @@ namespace Twilio.Rest.Api.V2010.Account
             if (PersistentAction != null)
             {
                 p.AddRange(PersistentAction.Select(prop => new KeyValuePair<string, string>("PersistentAction", prop)));
+            }
+
+            if (SendAsMms != null)
+            {
+                p.Add(new KeyValuePair<string, string>("SendAsMms", SendAsMms.Value.ToString().ToLower()));
             }
 
             return p;

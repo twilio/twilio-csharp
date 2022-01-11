@@ -185,6 +185,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="smartEncoded"> Whether to detect Unicode characters that have a similar GSM-7 character and replace
         ///                    them </param>
         /// <param name="persistentAction"> Rich actions for Channels Messages. </param>
+        /// <param name="sendAsMms"> If set to True, Twilio will deliver the message as a single MMS message, regardless of the
+        ///                 presence of media </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Message </returns>
         public static MessageResource Create(Types.PhoneNumber to,
@@ -204,9 +206,10 @@ namespace Twilio.Rest.Api.V2010.Account
                                              MessageResource.AddressRetentionEnum addressRetention = null,
                                              bool? smartEncoded = null,
                                              List<string> persistentAction = null,
+                                             bool? sendAsMms = null,
                                              ITwilioRestClient client = null)
         {
-            var options = new CreateMessageOptions(to){PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, Attempt = attempt, ValidityPeriod = validityPeriod, ForceDelivery = forceDelivery, ContentRetention = contentRetention, AddressRetention = addressRetention, SmartEncoded = smartEncoded, PersistentAction = persistentAction};
+            var options = new CreateMessageOptions(to){PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, Attempt = attempt, ValidityPeriod = validityPeriod, ForceDelivery = forceDelivery, ContentRetention = contentRetention, AddressRetention = addressRetention, SmartEncoded = smartEncoded, PersistentAction = persistentAction, SendAsMms = sendAsMms};
             return Create(options, client);
         }
 
@@ -235,6 +238,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="smartEncoded"> Whether to detect Unicode characters that have a similar GSM-7 character and replace
         ///                    them </param>
         /// <param name="persistentAction"> Rich actions for Channels Messages. </param>
+        /// <param name="sendAsMms"> If set to True, Twilio will deliver the message as a single MMS message, regardless of the
+        ///                 presence of media </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Message </returns>
         public static async System.Threading.Tasks.Task<MessageResource> CreateAsync(Types.PhoneNumber to,
@@ -254,9 +259,10 @@ namespace Twilio.Rest.Api.V2010.Account
                                                                                      MessageResource.AddressRetentionEnum addressRetention = null,
                                                                                      bool? smartEncoded = null,
                                                                                      List<string> persistentAction = null,
+                                                                                     bool? sendAsMms = null,
                                                                                      ITwilioRestClient client = null)
         {
-            var options = new CreateMessageOptions(to){PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, Attempt = attempt, ValidityPeriod = validityPeriod, ForceDelivery = forceDelivery, ContentRetention = contentRetention, AddressRetention = addressRetention, SmartEncoded = smartEncoded, PersistentAction = persistentAction};
+            var options = new CreateMessageOptions(to){PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, Attempt = attempt, ValidityPeriod = validityPeriod, ForceDelivery = forceDelivery, ContentRetention = contentRetention, AddressRetention = addressRetention, SmartEncoded = smartEncoded, PersistentAction = persistentAction, SendAsMms = sendAsMms};
             return await CreateAsync(options, client);
         }
         #endif

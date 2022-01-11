@@ -188,6 +188,9 @@ namespace Twilio.Rest.Video.V1
         ///                 </param>
         /// <param name="maxParticipantDuration"> The maximum number of seconds a Participant can be connected to the room
         ///                              </param>
+        /// <param name="emptyRoomTimeout"> Configures the time a room will remain active after last participant leaves.
+        ///                        </param>
+        /// <param name="unusedRoomTimeout"> Configures the time a room will remain active when no one joins. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Room </returns>
         public static RoomResource Create(bool? enableTurn = null,
@@ -202,9 +205,11 @@ namespace Twilio.Rest.Video.V1
                                           object recordingRules = null,
                                           bool? audioOnly = null,
                                           int? maxParticipantDuration = null,
+                                          int? emptyRoomTimeout = null,
+                                          int? unusedRoomTimeout = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new CreateRoomOptions(){EnableTurn = enableTurn, Type = type, UniqueName = uniqueName, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, MaxParticipants = maxParticipants, RecordParticipantsOnConnect = recordParticipantsOnConnect, VideoCodecs = videoCodecs, MediaRegion = mediaRegion, RecordingRules = recordingRules, AudioOnly = audioOnly, MaxParticipantDuration = maxParticipantDuration};
+            var options = new CreateRoomOptions(){EnableTurn = enableTurn, Type = type, UniqueName = uniqueName, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, MaxParticipants = maxParticipants, RecordParticipantsOnConnect = recordParticipantsOnConnect, VideoCodecs = videoCodecs, MediaRegion = mediaRegion, RecordingRules = recordingRules, AudioOnly = audioOnly, MaxParticipantDuration = maxParticipantDuration, EmptyRoomTimeout = emptyRoomTimeout, UnusedRoomTimeout = unusedRoomTimeout};
             return Create(options, client);
         }
 
@@ -227,6 +232,9 @@ namespace Twilio.Rest.Video.V1
         ///                 </param>
         /// <param name="maxParticipantDuration"> The maximum number of seconds a Participant can be connected to the room
         ///                              </param>
+        /// <param name="emptyRoomTimeout"> Configures the time a room will remain active after last participant leaves.
+        ///                        </param>
+        /// <param name="unusedRoomTimeout"> Configures the time a room will remain active when no one joins. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Room </returns>
         public static async System.Threading.Tasks.Task<RoomResource> CreateAsync(bool? enableTurn = null,
@@ -241,9 +249,11 @@ namespace Twilio.Rest.Video.V1
                                                                                   object recordingRules = null,
                                                                                   bool? audioOnly = null,
                                                                                   int? maxParticipantDuration = null,
+                                                                                  int? emptyRoomTimeout = null,
+                                                                                  int? unusedRoomTimeout = null,
                                                                                   ITwilioRestClient client = null)
         {
-            var options = new CreateRoomOptions(){EnableTurn = enableTurn, Type = type, UniqueName = uniqueName, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, MaxParticipants = maxParticipants, RecordParticipantsOnConnect = recordParticipantsOnConnect, VideoCodecs = videoCodecs, MediaRegion = mediaRegion, RecordingRules = recordingRules, AudioOnly = audioOnly, MaxParticipantDuration = maxParticipantDuration};
+            var options = new CreateRoomOptions(){EnableTurn = enableTurn, Type = type, UniqueName = uniqueName, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, MaxParticipants = maxParticipants, RecordParticipantsOnConnect = recordParticipantsOnConnect, VideoCodecs = videoCodecs, MediaRegion = mediaRegion, RecordingRules = recordingRules, AudioOnly = audioOnly, MaxParticipantDuration = maxParticipantDuration, EmptyRoomTimeout = emptyRoomTimeout, UnusedRoomTimeout = unusedRoomTimeout};
             return await CreateAsync(options, client);
         }
         #endif
@@ -582,6 +592,16 @@ namespace Twilio.Rest.Video.V1
         /// </summary>
         [JsonProperty("audio_only")]
         public bool? AudioOnly { get; private set; }
+        /// <summary>
+        /// The time a room will remain active after last participant leaves.
+        /// </summary>
+        [JsonProperty("empty_room_timeout")]
+        public int? EmptyRoomTimeout { get; private set; }
+        /// <summary>
+        /// The time a room will remain active when no one joins.
+        /// </summary>
+        [JsonProperty("unused_room_timeout")]
+        public int? UnusedRoomTimeout { get; private set; }
         /// <summary>
         /// The absolute URL of the resource
         /// </summary>

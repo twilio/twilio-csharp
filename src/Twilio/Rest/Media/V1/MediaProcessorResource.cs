@@ -108,6 +108,7 @@ namespace Twilio.Rest.Media.V1
         /// <param name="extensionEnvironment"> The Media Extension environment </param>
         /// <param name="statusCallback"> The URL to send MediaProcessor event updates to your application </param>
         /// <param name="statusCallbackMethod"> The HTTP method Twilio should use to call the `status_callback` URL </param>
+        /// <param name="maxDuration"> Maximum MediaProcessor duration in minutes </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of MediaProcessor </returns>
         public static MediaProcessorResource Create(string extension,
@@ -115,9 +116,10 @@ namespace Twilio.Rest.Media.V1
                                                     object extensionEnvironment = null,
                                                     Uri statusCallback = null,
                                                     Twilio.Http.HttpMethod statusCallbackMethod = null,
+                                                    int? maxDuration = null,
                                                     ITwilioRestClient client = null)
         {
-            var options = new CreateMediaProcessorOptions(extension, extensionContext){ExtensionEnvironment = extensionEnvironment, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod};
+            var options = new CreateMediaProcessorOptions(extension, extensionContext){ExtensionEnvironment = extensionEnvironment, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, MaxDuration = maxDuration};
             return Create(options, client);
         }
 
@@ -130,6 +132,7 @@ namespace Twilio.Rest.Media.V1
         /// <param name="extensionEnvironment"> The Media Extension environment </param>
         /// <param name="statusCallback"> The URL to send MediaProcessor event updates to your application </param>
         /// <param name="statusCallbackMethod"> The HTTP method Twilio should use to call the `status_callback` URL </param>
+        /// <param name="maxDuration"> Maximum MediaProcessor duration in minutes </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of MediaProcessor </returns>
         public static async System.Threading.Tasks.Task<MediaProcessorResource> CreateAsync(string extension,
@@ -137,9 +140,10 @@ namespace Twilio.Rest.Media.V1
                                                                                             object extensionEnvironment = null,
                                                                                             Uri statusCallback = null,
                                                                                             Twilio.Http.HttpMethod statusCallbackMethod = null,
+                                                                                            int? maxDuration = null,
                                                                                             ITwilioRestClient client = null)
         {
-            var options = new CreateMediaProcessorOptions(extension, extensionContext){ExtensionEnvironment = extensionEnvironment, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod};
+            var options = new CreateMediaProcessorOptions(extension, extensionContext){ExtensionEnvironment = extensionEnvironment, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, MaxDuration = maxDuration};
             return await CreateAsync(options, client);
         }
         #endif
@@ -496,6 +500,11 @@ namespace Twilio.Rest.Media.V1
         [JsonProperty("status_callback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
         public Twilio.Http.HttpMethod StatusCallbackMethod { get; private set; }
+        /// <summary>
+        /// Maximum MediaProcessor duration in minutes
+        /// </summary>
+        [JsonProperty("max_duration")]
+        public int? MaxDuration { get; private set; }
 
         private MediaProcessorResource()
         {

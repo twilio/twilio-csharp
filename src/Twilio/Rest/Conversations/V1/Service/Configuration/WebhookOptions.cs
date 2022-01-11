@@ -18,7 +18,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Configuration
     public class UpdateWebhookOptions : IOptions<WebhookResource>
     {
         /// <summary>
-        /// The unique ID of the Conversation Service this conversation belongs to.
+        /// The unique ID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) this conversation belongs to.
         /// </summary>
         public string PathChatServiceSid { get; }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Configuration
         /// </summary>
         public Uri PostWebhookUrl { get; set; }
         /// <summary>
-        /// The list of webhook event triggers that are enabled for this Service.
+        /// The list of events that your configured webhook targets will receive. Events not configured here will not fire.
         /// </summary>
         public List<string> Filters { get; set; }
         /// <summary>
@@ -41,7 +41,9 @@ namespace Twilio.Rest.Conversations.V1.Service.Configuration
         /// <summary>
         /// Construct a new UpdateWebhookOptions
         /// </summary>
-        /// <param name="pathChatServiceSid"> The unique ID of the Conversation Service this conversation belongs to. </param>
+        /// <param name="pathChatServiceSid"> The unique ID of the [Conversation
+        ///                          Service](https://www.twilio.com/docs/conversations/api/service-resource) this conversation
+        ///                          belongs to. </param>
         public UpdateWebhookOptions(string pathChatServiceSid)
         {
             PathChatServiceSid = pathChatServiceSid;
@@ -84,14 +86,16 @@ namespace Twilio.Rest.Conversations.V1.Service.Configuration
     public class FetchWebhookOptions : IOptions<WebhookResource>
     {
         /// <summary>
-        /// The unique ID of the Conversation Service this conversation belongs to.
+        /// The unique ID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) this conversation belongs to.
         /// </summary>
         public string PathChatServiceSid { get; }
 
         /// <summary>
         /// Construct a new FetchWebhookOptions
         /// </summary>
-        /// <param name="pathChatServiceSid"> The unique ID of the Conversation Service this conversation belongs to. </param>
+        /// <param name="pathChatServiceSid"> The unique ID of the [Conversation
+        ///                          Service](https://www.twilio.com/docs/conversations/api/service-resource) this conversation
+        ///                          belongs to. </param>
         public FetchWebhookOptions(string pathChatServiceSid)
         {
             PathChatServiceSid = pathChatServiceSid;
