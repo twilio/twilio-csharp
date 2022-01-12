@@ -535,6 +535,11 @@ namespace Twilio.Rest.Video.V1
         [JsonProperty("duration")]
         public int? Duration { get; private set; }
         /// <summary>
+        /// The URL of the media file associated with the composition when stored externally
+        /// </summary>
+        [JsonProperty("media_external_location")]
+        public Uri MediaExternalLocation { get; private set; }
+        /// <summary>
         /// The absolute URL of the resource
         /// </summary>
         [JsonProperty("url")]

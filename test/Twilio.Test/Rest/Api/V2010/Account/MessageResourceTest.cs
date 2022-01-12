@@ -104,6 +104,51 @@ namespace Twilio.Tests.Rest.Api.V2010.Account
         }
 
         [Test]
+        public void TestCreateScheduledMessageSmsResponse()
+        {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+            twilioRestClient.Request(Arg.Any<Request>())
+                            .Returns(new Response(
+                                         System.Net.HttpStatusCode.Created,
+                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"api_version\": \"2010-04-01\",\"body\": \"Hello! \\ud83d\\udc4d\",\"date_created\": \"Mon, 29 Nov 2021 22:40:10 +0000\",\"date_sent\": null,\"date_updated\": \"Mon, 29 Nov 2021 22:40:10 +0000\",\"direction\": \"outbound-api\",\"error_code\": null,\"error_message\": null,\"from\": null,\"messaging_service_sid\": \"MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"num_media\": \"0\",\"num_segments\": \"0\",\"price\": null,\"price_unit\": null,\"sid\": \"SMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"status\": \"scheduled\",\"subresource_uris\": {\"media\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages/SMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Media.json\"},\"to\": \"+15558675310\",\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages/SMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json\"}"
+                                     ));
+
+            var response = MessageResource.Create(new Twilio.Types.PhoneNumber("+15558675310"), client: twilioRestClient);
+            Assert.NotNull(response);
+        }
+
+        [Test]
+        public void TestCreateScheduledMessageMmsResponse()
+        {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+            twilioRestClient.Request(Arg.Any<Request>())
+                            .Returns(new Response(
+                                         System.Net.HttpStatusCode.Created,
+                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"api_version\": \"2010-04-01\",\"body\": \"Hello! \\ud83d\\udc4d\",\"date_created\": \"Mon, 29 Nov 2021 22:40:10 +0000\",\"date_sent\": null,\"date_updated\": \"Mon, 29 Nov 2021 22:40:10 +0000\",\"direction\": \"outbound-api\",\"error_code\": null,\"error_message\": null,\"from\": null,\"messaging_service_sid\": \"MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"num_media\": \"1\",\"num_segments\": \"1\",\"price\": null,\"price_unit\": null,\"sid\": \"SMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"status\": \"scheduled\",\"subresource_uris\": {\"media\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages/SMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Media.json\"},\"to\": \"+15558675310\",\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages/SMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json\"}"
+                                     ));
+
+            var response = MessageResource.Create(new Twilio.Types.PhoneNumber("+15558675310"), client: twilioRestClient);
+            Assert.NotNull(response);
+        }
+
+        [Test]
+        public void TestCreateScheduledMessageWhatsappResponse()
+        {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+            twilioRestClient.Request(Arg.Any<Request>())
+                            .Returns(new Response(
+                                         System.Net.HttpStatusCode.Created,
+                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"api_version\": \"2010-04-01\",\"body\": \"Hello! \\ud83d\\udc4d\",\"date_created\": \"Mon, 29 Nov 2021 22:40:10 +0000\",\"date_sent\": null,\"date_updated\": \"Mon, 29 Nov 2021 22:40:10 +0000\",\"direction\": \"outbound-api\",\"error_code\": null,\"error_message\": null,\"from\": null,\"messaging_service_sid\": \"MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"num_media\": \"0\",\"num_segments\": \"0\",\"price\": null,\"price_unit\": null,\"sid\": \"SMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"status\": \"scheduled\",\"subresource_uris\": {\"media\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages/SMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Media.json\"},\"to\": \"whatsapp:+15558675310\",\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages/SMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json\"}"
+                                     ));
+
+            var response = MessageResource.Create(new Twilio.Types.PhoneNumber("+15558675310"), client: twilioRestClient);
+            Assert.NotNull(response);
+        }
+
+        [Test]
         public void TestDeleteRequest()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();

@@ -138,4 +138,35 @@ namespace Twilio.Rest.Messaging.V1
         }
     }
 
+    /// <summary>
+    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+    ///
+    /// UpdateBrandRegistrationOptions
+    /// </summary>
+    public class UpdateBrandRegistrationOptions : IOptions<BrandRegistrationResource>
+    {
+        /// <summary>
+        /// The SID that identifies the resource to update
+        /// </summary>
+        public string PathSid { get; }
+
+        /// <summary>
+        /// Construct a new UpdateBrandRegistrationOptions
+        /// </summary>
+        /// <param name="pathSid"> The SID that identifies the resource to update </param>
+        public UpdateBrandRegistrationOptions(string pathSid)
+        {
+            PathSid = pathSid;
+        }
+
+        /// <summary>
+        /// Generate the necessary parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            return p;
+        }
+    }
+
 }

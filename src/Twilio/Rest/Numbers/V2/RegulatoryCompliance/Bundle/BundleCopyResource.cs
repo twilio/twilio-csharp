@@ -129,6 +129,139 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
         }
         #endif
 
+        private static Request BuildReadRequest(ReadBundleCopyOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.Numbers,
+                "/v2/RegulatoryCompliance/Bundles/" + options.PathBundleSid + "/Copies",
+                queryParams: options.GetParams(),
+                headerParams: null
+            );
+        }
+
+        /// <summary>
+        /// Retrieve a list of all Bundles Copies for a Bundle.
+        /// </summary>
+        /// <param name="options"> Read BundleCopy parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of BundleCopy </returns>
+        public static ResourceSet<BundleCopyResource> Read(ReadBundleCopyOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+
+            var page = Page<BundleCopyResource>.FromJson("results", response.Content);
+            return new ResourceSet<BundleCopyResource>(page, options, client);
+        }
+
+        #if !NET35
+        /// <summary>
+        /// Retrieve a list of all Bundles Copies for a Bundle.
+        /// </summary>
+        /// <param name="options"> Read BundleCopy parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of BundleCopy </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<BundleCopyResource>> ReadAsync(ReadBundleCopyOptions options,
+                                                                                                   ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<BundleCopyResource>.FromJson("results", response.Content);
+            return new ResourceSet<BundleCopyResource>(page, options, client);
+        }
+        #endif
+
+        /// <summary>
+        /// Retrieve a list of all Bundles Copies for a Bundle.
+        /// </summary>
+        /// <param name="pathBundleSid"> The unique string that identifies the resource. </param>
+        /// <param name="pageSize"> Page size </param>
+        /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of BundleCopy </returns>
+        public static ResourceSet<BundleCopyResource> Read(string pathBundleSid,
+                                                           int? pageSize = null,
+                                                           long? limit = null,
+                                                           ITwilioRestClient client = null)
+        {
+            var options = new ReadBundleCopyOptions(pathBundleSid){PageSize = pageSize, Limit = limit};
+            return Read(options, client);
+        }
+
+        #if !NET35
+        /// <summary>
+        /// Retrieve a list of all Bundles Copies for a Bundle.
+        /// </summary>
+        /// <param name="pathBundleSid"> The unique string that identifies the resource. </param>
+        /// <param name="pageSize"> Page size </param>
+        /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of BundleCopy </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<BundleCopyResource>> ReadAsync(string pathBundleSid,
+                                                                                                   int? pageSize = null,
+                                                                                                   long? limit = null,
+                                                                                                   ITwilioRestClient client = null)
+        {
+            var options = new ReadBundleCopyOptions(pathBundleSid){PageSize = pageSize, Limit = limit};
+            return await ReadAsync(options, client);
+        }
+        #endif
+
+        /// <summary>
+        /// Fetch the target page of records
+        /// </summary>
+        /// <param name="targetUrl"> API-generated URL for the requested results page </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> The target page of records </returns>
+        public static Page<BundleCopyResource> GetPage(string targetUrl, ITwilioRestClient client)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+
+            var request = new Request(
+                HttpMethod.Get,
+                targetUrl
+            );
+
+            var response = client.Request(request);
+            return Page<BundleCopyResource>.FromJson("results", response.Content);
+        }
+
+        /// <summary>
+        /// Fetch the next page of records
+        /// </summary>
+        /// <param name="page"> current page of records </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> The next page of records </returns>
+        public static Page<BundleCopyResource> NextPage(Page<BundleCopyResource> page, ITwilioRestClient client)
+        {
+            var request = new Request(
+                HttpMethod.Get,
+                page.GetNextPageUrl(Rest.Domain.Numbers)
+            );
+
+            var response = client.Request(request);
+            return Page<BundleCopyResource>.FromJson("results", response.Content);
+        }
+
+        /// <summary>
+        /// Fetch the previous page of records
+        /// </summary>
+        /// <param name="page"> current page of records </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> The previous page of records </returns>
+        public static Page<BundleCopyResource> PreviousPage(Page<BundleCopyResource> page, ITwilioRestClient client)
+        {
+            var request = new Request(
+                HttpMethod.Get,
+                page.GetPreviousPageUrl(Rest.Domain.Numbers)
+            );
+
+            var response = client.Request(request);
+            return Page<BundleCopyResource>.FromJson("results", response.Content);
+        }
+
         /// <summary>
         /// Converts a JSON string into a BundleCopyResource object
         /// </summary>

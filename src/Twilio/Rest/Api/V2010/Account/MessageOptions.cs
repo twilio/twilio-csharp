@@ -86,6 +86,14 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         public List<string> PersistentAction { get; set; }
         /// <summary>
+        /// Pass the value `fixed` to schedule a message at a fixed time.
+        /// </summary>
+        public MessageResource.ScheduleTypeEnum ScheduleType { get; set; }
+        /// <summary>
+        /// The time that Twilio will send the message. Must be in ISO 8601 format.
+        /// </summary>
+        public DateTime? SendAt { get; set; }
+        /// <summary>
         /// If set to True, Twilio will deliver the message as a single MMS message, regardless of the presence of media
         /// </summary>
         public bool? SendAsMms { get; set; }
@@ -185,6 +193,16 @@ namespace Twilio.Rest.Api.V2010.Account
             if (PersistentAction != null)
             {
                 p.AddRange(PersistentAction.Select(prop => new KeyValuePair<string, string>("PersistentAction", prop)));
+            }
+
+            if (ScheduleType != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ScheduleType", ScheduleType.ToString()));
+            }
+
+            if (SendAt != null)
+            {
+                p.Add(new KeyValuePair<string, string>("SendAt", Serializers.DateTimeIso8601(SendAt)));
             }
 
             if (SendAsMms != null)
@@ -351,6 +369,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// The text of the message you want to send
         /// </summary>
         public string Body { get; set; }
+        /// <summary>
+        /// Set as `canceled` to cancel a message from being sent.
+        /// </summary>
+        public MessageResource.UpdateStatusEnum Status { get; set; }
 
         /// <summary>
         /// Construct a new UpdateMessageOptions
@@ -370,6 +392,11 @@ namespace Twilio.Rest.Api.V2010.Account
             if (Body != null)
             {
                 p.Add(new KeyValuePair<string, string>("Body", Body));
+            }
+
+            if (Status != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
             }
 
             return p;

@@ -356,6 +356,74 @@ namespace Twilio.Rest.Messaging.V1
         }
         #endif
 
+        private static Request BuildUpdateRequest(UpdateBrandRegistrationOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Post,
+                Rest.Domain.Messaging,
+                "/v1/a2p/BrandRegistrations/" + options.PathSid + "",
+                postParams: options.GetParams(),
+                headerParams: null
+            );
+        }
+
+        /// <summary>
+        /// update
+        /// </summary>
+        /// <param name="options"> Update BrandRegistration parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of BrandRegistration </returns>
+        public static BrandRegistrationResource Update(UpdateBrandRegistrationOptions options,
+                                                       ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
+        }
+
+        #if !NET35
+        /// <summary>
+        /// update
+        /// </summary>
+        /// <param name="options"> Update BrandRegistration parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of BrandRegistration </returns>
+        public static async System.Threading.Tasks.Task<BrandRegistrationResource> UpdateAsync(UpdateBrandRegistrationOptions options,
+                                                                                               ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
+        }
+        #endif
+
+        /// <summary>
+        /// update
+        /// </summary>
+        /// <param name="pathSid"> The SID that identifies the resource to update </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of BrandRegistration </returns>
+        public static BrandRegistrationResource Update(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new UpdateBrandRegistrationOptions(pathSid);
+            return Update(options, client);
+        }
+
+        #if !NET35
+        /// <summary>
+        /// update
+        /// </summary>
+        /// <param name="pathSid"> The SID that identifies the resource to update </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of BrandRegistration </returns>
+        public static async System.Threading.Tasks.Task<BrandRegistrationResource> UpdateAsync(string pathSid,
+                                                                                               ITwilioRestClient client = null)
+        {
+            var options = new UpdateBrandRegistrationOptions(pathSid);
+            return await UpdateAsync(options, client);
+        }
+        #endif
+
         /// <summary>
         /// Converts a JSON string into a BrandRegistrationResource object
         /// </summary>

@@ -1,6 +1,28 @@
 twilio-csharp Changelog
 =======================
 
+[2022-01-12] Version 5.70.0
+---------------------------
+**Library - Chore**
+- [PR #595](https://github.com/twilio/twilio-csharp/pull/595): prevent Sonarcloud from running on forks. Thanks to [@JenniferMah](https://github.com/JenniferMah)!
+
+**Library - Feature**
+- [PR #591](https://github.com/twilio/twilio-csharp/pull/591): add GitHub release step during deploy. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+- [PR #592](https://github.com/twilio/twilio-csharp/pull/592): Add SonarCloud analysis. Thanks to [@BrimmingDev](https://github.com/BrimmingDev)!
+
+**Api**
+- Make fixed time scheduling parameters public **(breaking change)**
+
+**Messaging**
+- Add update brand registration API
+
+**Numbers**
+- Add API endpoint for List Bundle Copies resource
+
+**Video**
+- Enable external storage for all customers
+
+
 [2021-12-15] Version 5.69.0
 ---------------------------
 **Library - Feature**
