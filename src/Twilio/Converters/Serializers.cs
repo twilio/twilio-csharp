@@ -29,7 +29,7 @@ namespace Twilio.Converters
         {
             if (input == null) return null;
 
-            return input.Value.ToString("yyyy-MM-ddTHH:mm:ssZ");
+            return input.Value.ToString("yyyy'-'MM'-'ddTHH':'mm':'ssZ");
         }
 
         public static string Url(Uri input) 
