@@ -28,7 +28,8 @@ namespace Twilio.Converters
         public static string DateTimeIso8601(DateTime? input)
         {
             if (input == null) return null;
-
+            
+            // Explicitly escape separators to avoid using system/culture defaults.
             return input.Value.ToString("yyyy'-'MM'-'ddTHH':'mm':'ssZ");
         }
 
