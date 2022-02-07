@@ -11,8 +11,7 @@ namespace Twilio.Security
     /// </summary>
     public class RequestValidator : IDisposable
     {
-        private readonly HMACSHA1 _hmac;
-        private readonly SHA256 _sha;
+        private readonly string _secret;
 
         /// <summary>
         /// Create a new RequestValidator
@@ -20,8 +19,7 @@ namespace Twilio.Security
         /// <param name="secret">Signing secret</param>
         public RequestValidator(string secret)
         {
-            _hmac = new HMACSHA1(Encoding.UTF8.GetBytes(secret));
-            _sha = SHA256.Create();
+            _secret = secret;
         }
 
         /// <summary>
@@ -68,10 +66,15 @@ namespace Twilio.Security
             return Validate(url, new Dictionary<string, string>(), expected) && ValidateBody(body, bodyHash);
         }
 
-        public bool ValidateBody(string rawBody, string expected)
+        public static bool ValidateBody(string rawBody, string expected)
         {
-            var signature = _sha.ComputeHash(Encoding.UTF8.GetBytes(rawBody));
-            return SecureCompare(BitConverter.ToString(signature).Replace("-","").ToLower(), expected);
+            // TODO: In future, use net6's one-shot methods.
+            // See: https://github.com/twilio/twilio-csharp/issues/466#issuecomment-1028091370
+            using (var sha = SHA256.Create())
+            {
+                var signature = sha.ComputeHash(Encoding.UTF8.GetBytes(rawBody));
+                return SecureCompare(BitConverter.ToString(signature).Replace("-", "").ToLower(), expected);
+            }
         }
 
         private static IDictionary<string, string> ToDictionary(NameValueCollection col)
@@ -98,8 +101,13 @@ namespace Twilio.Security
                 }
             }
 
-            var hash = _hmac.ComputeHash(Encoding.UTF8.GetBytes(b.ToString()));
-            return Convert.ToBase64String(hash);
+            // TODO: In future, use net6's one-shot methods.
+            // See: https://github.com/twilio/twilio-csharp/issues/466#issuecomment-1028091370
+            using (var hmac = new HMACSHA1(Encoding.UTF8.GetBytes(_secret)))
+            {
+                var hash = hmac.ComputeHash(Encoding.UTF8.GetBytes(b.ToString()));
+                return Convert.ToBase64String(hash);
+            }
         }
 
         private static bool SecureCompare(string a, string b)
@@ -124,18 +132,18 @@ namespace Twilio.Security
             return mismatch == 0;
         }
 
-        private string RemovePort(string url)
+        private static string RemovePort(string url)
         {
             return SetPort(url, -1);
         }
 
-        private string AddPort(string url)
+        private static string AddPort(string url)
         {
             var uri = new UriBuilder(url);
             return SetPort(url, uri.Port);
         }
 
-        private string SetPort(string url, int port)
+        private static string SetPort(string url, int port)
         {
             var uri = new UriBuilder(url);
             uri.Host = PreserveCase(url, uri.Host);
@@ -155,7 +163,7 @@ namespace Twilio.Security
             return uri.Uri.OriginalString.Replace(uri.Scheme, scheme);
         }
 
-        private string PreserveCase(string url, string replacementString)
+        private static string PreserveCase(string url, string replacementString)
         {
             var startIndex = url.IndexOf(replacementString, StringComparison.OrdinalIgnoreCase);
             return url.Substring(startIndex, replacementString.Length);
