@@ -9,7 +9,7 @@ namespace Twilio.Security
     /// <summary>
     /// Twilio request validator
     /// </summary>
-    public class RequestValidator : IDisposable
+    public class RequestValidator
     {
         private readonly string _secret;
 
@@ -167,12 +167,6 @@ namespace Twilio.Security
         {
             var startIndex = url.IndexOf(replacementString, StringComparison.OrdinalIgnoreCase);
             return url.Substring(startIndex, replacementString.Length);
-        }
-        
-        public void Dispose()
-        {
-            _hmac.Dispose()
-            _sha.Dispose();
         }
     }
 }
