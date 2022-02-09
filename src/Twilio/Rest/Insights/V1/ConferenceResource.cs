@@ -92,6 +92,20 @@ namespace Twilio.Rest.Insights.V1
             public static readonly TagEnum DetectedSilence = new TagEnum("detected_silence");
         }
 
+        public sealed class ProcessingStateEnum : StringEnum
+        {
+            private ProcessingStateEnum(string value) : base(value) {}
+            public ProcessingStateEnum() {}
+            public static implicit operator ProcessingStateEnum(string value)
+            {
+                return new ProcessingStateEnum(value);
+            }
+
+            public static readonly ProcessingStateEnum Complete = new ProcessingStateEnum("complete");
+            public static readonly ProcessingStateEnum InProgress = new ProcessingStateEnum("in_progress");
+            public static readonly ProcessingStateEnum Timeout = new ProcessingStateEnum("timeout");
+        }
+
         private static Request BuildFetchRequest(FetchConferenceOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -104,7 +118,7 @@ namespace Twilio.Rest.Insights.V1
         }
 
         /// <summary>
-        /// fetch
+        /// Fetch a specific Conference.
         /// </summary>
         /// <param name="options"> Fetch Conference parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -118,7 +132,7 @@ namespace Twilio.Rest.Insights.V1
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Fetch a specific Conference.
         /// </summary>
         /// <param name="options"> Fetch Conference parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -133,9 +147,9 @@ namespace Twilio.Rest.Insights.V1
         #endif
 
         /// <summary>
-        /// fetch
+        /// Fetch a specific Conference.
         /// </summary>
-        /// <param name="pathConferenceSid"> The conference_sid </param>
+        /// <param name="pathConferenceSid"> Conference SID. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Conference </returns>
         public static ConferenceResource Fetch(string pathConferenceSid, ITwilioRestClient client = null)
@@ -146,9 +160,9 @@ namespace Twilio.Rest.Insights.V1
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Fetch a specific Conference.
         /// </summary>
-        /// <param name="pathConferenceSid"> The conference_sid </param>
+        /// <param name="pathConferenceSid"> Conference SID. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Conference </returns>
         public static async System.Threading.Tasks.Task<ConferenceResource> FetchAsync(string pathConferenceSid,
@@ -171,7 +185,7 @@ namespace Twilio.Rest.Insights.V1
         }
 
         /// <summary>
-        /// read
+        /// Retrieve a list of Conferences.
         /// </summary>
         /// <param name="options"> Read Conference parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -187,7 +201,7 @@ namespace Twilio.Rest.Insights.V1
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieve a list of Conferences.
         /// </summary>
         /// <param name="options"> Read Conference parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -204,18 +218,18 @@ namespace Twilio.Rest.Insights.V1
         #endif
 
         /// <summary>
-        /// read
+        /// Retrieve a list of Conferences.
         /// </summary>
-        /// <param name="conferenceSid"> The conference_sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="status"> The status </param>
-        /// <param name="createdAfter"> The created_after </param>
-        /// <param name="createdBefore"> The created_before </param>
-        /// <param name="mixerRegion"> The mixer_region </param>
-        /// <param name="tags"> The tags </param>
-        /// <param name="subaccount"> The subaccount </param>
-        /// <param name="detectedIssues"> The detected_issues </param>
-        /// <param name="endReason"> The end_reason </param>
+        /// <param name="conferenceSid"> The SID of the conference. </param>
+        /// <param name="friendlyName"> Custom label for the conference. </param>
+        /// <param name="status"> Conference status. </param>
+        /// <param name="createdAfter"> Conferences created after timestamp. </param>
+        /// <param name="createdBefore"> Conferences created before timestamp. </param>
+        /// <param name="mixerRegion"> Region where the conference was mixed. </param>
+        /// <param name="tags"> Tags applied by Twilio for common issues. </param>
+        /// <param name="subaccount"> Account SID for the subaccount. </param>
+        /// <param name="detectedIssues"> Potential issues detected during the conference. </param>
+        /// <param name="endReason"> Conference end reason. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -240,18 +254,18 @@ namespace Twilio.Rest.Insights.V1
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieve a list of Conferences.
         /// </summary>
-        /// <param name="conferenceSid"> The conference_sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="status"> The status </param>
-        /// <param name="createdAfter"> The created_after </param>
-        /// <param name="createdBefore"> The created_before </param>
-        /// <param name="mixerRegion"> The mixer_region </param>
-        /// <param name="tags"> The tags </param>
-        /// <param name="subaccount"> The subaccount </param>
-        /// <param name="detectedIssues"> The detected_issues </param>
-        /// <param name="endReason"> The end_reason </param>
+        /// <param name="conferenceSid"> The SID of the conference. </param>
+        /// <param name="friendlyName"> Custom label for the conference. </param>
+        /// <param name="status"> Conference status. </param>
+        /// <param name="createdAfter"> Conferences created after timestamp. </param>
+        /// <param name="createdBefore"> Conferences created before timestamp. </param>
+        /// <param name="mixerRegion"> Region where the conference was mixed. </param>
+        /// <param name="tags"> Tags applied by Twilio for common issues. </param>
+        /// <param name="subaccount"> Account SID for the subaccount. </param>
+        /// <param name="detectedIssues"> Potential issues detected during the conference. </param>
+        /// <param name="endReason"> Conference end reason. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -347,117 +361,123 @@ namespace Twilio.Rest.Insights.V1
         }
 
         /// <summary>
-        /// The conference_sid
+        /// Conference SID.
         /// </summary>
         [JsonProperty("conference_sid")]
         public string ConferenceSid { get; private set; }
         /// <summary>
-        /// The account_sid
+        /// Account SID.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The friendly_name
+        /// Custom label for the conference.
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// The create_time
+        /// Conference creation date/time.
         /// </summary>
         [JsonProperty("create_time")]
         public DateTime? CreateTime { get; private set; }
         /// <summary>
-        /// The start_time
+        /// Timestamp in ISO 8601 format when the conference started.
         /// </summary>
         [JsonProperty("start_time")]
         public DateTime? StartTime { get; private set; }
         /// <summary>
-        /// The end_time
+        /// Conference end date/time.
         /// </summary>
         [JsonProperty("end_time")]
         public DateTime? EndTime { get; private set; }
         /// <summary>
-        /// The duration_seconds
+        /// Conference duration in seconds.
         /// </summary>
         [JsonProperty("duration_seconds")]
         public int? DurationSeconds { get; private set; }
         /// <summary>
-        /// The connect_duration_seconds
+        /// Duration of the conference in seconds.
         /// </summary>
         [JsonProperty("connect_duration_seconds")]
         public int? ConnectDurationSeconds { get; private set; }
         /// <summary>
-        /// The status
+        /// Status of conference
         /// </summary>
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
         public ConferenceResource.ConferenceStatusEnum Status { get; private set; }
         /// <summary>
-        /// The max_participants
+        /// Max participants specified in config.
         /// </summary>
         [JsonProperty("max_participants")]
         public int? MaxParticipants { get; private set; }
         /// <summary>
-        /// The max_concurrent_participants
+        /// Actual maximum concurrent participants.
         /// </summary>
         [JsonProperty("max_concurrent_participants")]
         public int? MaxConcurrentParticipants { get; private set; }
         /// <summary>
-        /// The unique_participants
+        /// Unique conference participants.
         /// </summary>
         [JsonProperty("unique_participants")]
         public int? UniqueParticipants { get; private set; }
         /// <summary>
-        /// The end_reason
+        /// Conference end reason.
         /// </summary>
         [JsonProperty("end_reason")]
         [JsonConverter(typeof(StringEnumConverter))]
         public ConferenceResource.ConferenceEndReasonEnum EndReason { get; private set; }
         /// <summary>
-        /// The ended_by
+        /// Call SID that ended the conference.
         /// </summary>
         [JsonProperty("ended_by")]
         public string EndedBy { get; private set; }
         /// <summary>
-        /// The mixer_region
+        /// Region where the conference was mixed.
         /// </summary>
         [JsonProperty("mixer_region")]
         [JsonConverter(typeof(StringEnumConverter))]
         public ConferenceResource.RegionEnum MixerRegion { get; private set; }
         /// <summary>
-        /// The mixer_region_requested
+        /// Configuration-requested conference mixer region.
         /// </summary>
         [JsonProperty("mixer_region_requested")]
         [JsonConverter(typeof(StringEnumConverter))]
         public ConferenceResource.RegionEnum MixerRegionRequested { get; private set; }
         /// <summary>
-        /// The recording_enabled
+        /// Boolean. Indicates whether recording was enabled.
         /// </summary>
         [JsonProperty("recording_enabled")]
         public bool? RecordingEnabled { get; private set; }
         /// <summary>
-        /// The detected_issues
+        /// Potential issues detected during the conference.
         /// </summary>
         [JsonProperty("detected_issues")]
         public object DetectedIssues { get; private set; }
         /// <summary>
-        /// The tags
+        /// Tags for detected conference conditions and participant behaviors.
         /// </summary>
         [JsonProperty("tags")]
         [JsonConverter(typeof(StringEnumConverter))]
         public List<ConferenceResource.TagEnum> Tags { get; private set; }
         /// <summary>
-        /// The tag_info
+        /// Object. Contains details about conference tags.
         /// </summary>
         [JsonProperty("tag_info")]
         public object TagInfo { get; private set; }
         /// <summary>
-        /// The url
+        /// Processing state for the Conference Summary resource.
+        /// </summary>
+        [JsonProperty("processing_state")]
+        [JsonConverter(typeof(StringEnumConverter))]
+        public ConferenceResource.ProcessingStateEnum ProcessingState { get; private set; }
+        /// <summary>
+        /// The URL of this resource.
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// The links
+        /// Nested resource URLs.
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }

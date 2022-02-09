@@ -187,7 +187,7 @@ namespace Twilio.Rest.Verify.V2
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// Ojbect with the template translations.
+        /// Object with the template translations.
         /// </summary>
         [JsonProperty("translations")]
         public object Translations { get; private set; }

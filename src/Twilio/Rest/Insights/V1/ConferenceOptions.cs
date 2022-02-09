@@ -12,19 +12,19 @@ namespace Twilio.Rest.Insights.V1
 {
 
     /// <summary>
-    /// FetchConferenceOptions
+    /// Fetch a specific Conference.
     /// </summary>
     public class FetchConferenceOptions : IOptions<ConferenceResource>
     {
         /// <summary>
-        /// The conference_sid
+        /// Conference SID.
         /// </summary>
         public string PathConferenceSid { get; }
 
         /// <summary>
         /// Construct a new FetchConferenceOptions
         /// </summary>
-        /// <param name="pathConferenceSid"> The conference_sid </param>
+        /// <param name="pathConferenceSid"> Conference SID. </param>
         public FetchConferenceOptions(string pathConferenceSid)
         {
             PathConferenceSid = pathConferenceSid;
@@ -41,48 +41,48 @@ namespace Twilio.Rest.Insights.V1
     }
 
     /// <summary>
-    /// ReadConferenceOptions
+    /// Retrieve a list of Conferences.
     /// </summary>
     public class ReadConferenceOptions : ReadOptions<ConferenceResource>
     {
         /// <summary>
-        /// The conference_sid
+        /// The SID of the conference.
         /// </summary>
         public string ConferenceSid { get; set; }
         /// <summary>
-        /// The friendly_name
+        /// Custom label for the conference.
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// The status
+        /// Conference status.
         /// </summary>
         public string Status { get; set; }
         /// <summary>
-        /// The created_after
+        /// Conferences created after timestamp.
         /// </summary>
         public string CreatedAfter { get; set; }
         /// <summary>
-        /// The created_before
+        /// Conferences created before timestamp.
         /// </summary>
         public string CreatedBefore { get; set; }
         /// <summary>
-        /// The mixer_region
+        /// Region where the conference was mixed.
         /// </summary>
         public string MixerRegion { get; set; }
         /// <summary>
-        /// The tags
+        /// Tags applied by Twilio for common issues.
         /// </summary>
         public string Tags { get; set; }
         /// <summary>
-        /// The subaccount
+        /// Account SID for the subaccount.
         /// </summary>
         public string Subaccount { get; set; }
         /// <summary>
-        /// The detected_issues
+        /// Potential issues detected during the conference.
         /// </summary>
         public string DetectedIssues { get; set; }
         /// <summary>
-        /// The end_reason
+        /// Conference end reason.
         /// </summary>
         public string EndReason { get; set; }
 

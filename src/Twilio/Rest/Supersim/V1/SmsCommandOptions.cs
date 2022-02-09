@@ -54,7 +54,7 @@ namespace Twilio.Rest.Supersim.V1
             var p = new List<KeyValuePair<string, string>>();
             if (Sim != null)
             {
-                p.Add(new KeyValuePair<string, string>("Sim", Sim.ToString()));
+                p.Add(new KeyValuePair<string, string>("Sim", Sim));
             }
 
             if (Payload != null)
