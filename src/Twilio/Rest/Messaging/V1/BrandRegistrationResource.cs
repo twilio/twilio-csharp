@@ -521,6 +521,11 @@ namespace Twilio.Rest.Messaging.V1
         [JsonProperty("russell_3000")]
         public bool? Russell3000 { get; private set; }
         /// <summary>
+        /// Government Entity
+        /// </summary>
+        [JsonProperty("government_entity")]
+        public bool? GovernmentEntity { get; private set; }
+        /// <summary>
         /// Tax Exempt Status
         /// </summary>
         [JsonProperty("tax_exempt_status")]

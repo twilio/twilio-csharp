@@ -14,36 +14,30 @@ namespace Twilio.Rest.Supersim.V1
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     ///
-    /// Send SMS Command to a Sim.
+    /// Order an eSIM Profile.
     /// </summary>
-    public class CreateSmsCommandOptions : IOptions<SmsCommandResource>
+    public class CreateEsimProfileOptions : IOptions<EsimProfileResource>
     {
         /// <summary>
-        /// The sid or unique_name of the SIM to send the SMS Command to
+        /// Identifier of the eUICC that will claim the eSIM Profile
         /// </summary>
-        public string Sim { get; }
+        public string Eid { get; }
         /// <summary>
-        /// The message body of the SMS Command
+        /// The URL we should call after we have sent when the status of the eSIM Profile changes
         /// </summary>
-        public string Payload { get; }
+        public string CallbackUrl { get; set; }
         /// <summary>
         /// The HTTP method we should use to call callback_url
         /// </summary>
         public Twilio.Http.HttpMethod CallbackMethod { get; set; }
-        /// <summary>
-        /// The URL we should call after we have sent the command
-        /// </summary>
-        public Uri CallbackUrl { get; set; }
 
         /// <summary>
-        /// Construct a new CreateSmsCommandOptions
+        /// Construct a new CreateEsimProfileOptions
         /// </summary>
-        /// <param name="sim"> The sid or unique_name of the SIM to send the SMS Command to </param>
-        /// <param name="payload"> The message body of the SMS Command </param>
-        public CreateSmsCommandOptions(string sim, string payload)
+        /// <param name="eid"> Identifier of the eUICC that will claim the eSIM Profile </param>
+        public CreateEsimProfileOptions(string eid)
         {
-            Sim = sim;
-            Payload = payload;
+            Eid = eid;
         }
 
         /// <summary>
@@ -52,24 +46,19 @@ namespace Twilio.Rest.Supersim.V1
         public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
-            if (Sim != null)
+            if (Eid != null)
             {
-                p.Add(new KeyValuePair<string, string>("Sim", Sim));
+                p.Add(new KeyValuePair<string, string>("Eid", Eid));
             }
 
-            if (Payload != null)
+            if (CallbackUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("Payload", Payload));
+                p.Add(new KeyValuePair<string, string>("CallbackUrl", CallbackUrl));
             }
 
             if (CallbackMethod != null)
             {
                 p.Add(new KeyValuePair<string, string>("CallbackMethod", CallbackMethod.ToString()));
-            }
-
-            if (CallbackUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("CallbackUrl", Serializers.Url(CallbackUrl)));
             }
 
             return p;
@@ -79,20 +68,20 @@ namespace Twilio.Rest.Supersim.V1
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     ///
-    /// Fetch SMS Command instance from your account.
+    /// Fetch an eSIM Profile.
     /// </summary>
-    public class FetchSmsCommandOptions : IOptions<SmsCommandResource>
+    public class FetchEsimProfileOptions : IOptions<EsimProfileResource>
     {
         /// <summary>
-        /// The SID that identifies the resource to fetch
+        /// The SID of the eSIM Profile resource to fetch
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
-        /// Construct a new FetchSmsCommandOptions
+        /// Construct a new FetchEsimProfileOptions
         /// </summary>
-        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
-        public FetchSmsCommandOptions(string pathSid)
+        /// <param name="pathSid"> The SID of the eSIM Profile resource to fetch </param>
+        public FetchEsimProfileOptions(string pathSid)
         {
             PathSid = pathSid;
         }
@@ -110,22 +99,22 @@ namespace Twilio.Rest.Supersim.V1
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     ///
-    /// Retrieve a list of SMS Commands from your account.
+    /// Retrieve a list of eSIM Profiles.
     /// </summary>
-    public class ReadSmsCommandOptions : ReadOptions<SmsCommandResource>
+    public class ReadEsimProfileOptions : ReadOptions<EsimProfileResource>
     {
         /// <summary>
-        /// The SID or unique name of the Sim resource that SMS Command was sent to or from.
+        /// List the eSIM Profiles that have been associated with an EId
         /// </summary>
-        public string Sim { get; set; }
+        public string Eid { get; set; }
         /// <summary>
-        /// The status of the SMS Command
+        /// Find the eSIM Profile resource related to a Sim resource by providing the SIM SID
         /// </summary>
-        public SmsCommandResource.StatusEnum Status { get; set; }
+        public string SimSid { get; set; }
         /// <summary>
-        /// The direction of the SMS Command
+        /// List the eSIM Profiles that are in a given status
         /// </summary>
-        public SmsCommandResource.DirectionEnum Direction { get; set; }
+        public EsimProfileResource.StatusEnum Status { get; set; }
 
         /// <summary>
         /// Generate the necessary parameters
@@ -133,19 +122,19 @@ namespace Twilio.Rest.Supersim.V1
         public override List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
-            if (Sim != null)
+            if (Eid != null)
             {
-                p.Add(new KeyValuePair<string, string>("Sim", Sim.ToString()));
+                p.Add(new KeyValuePair<string, string>("Eid", Eid));
+            }
+
+            if (SimSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("SimSid", SimSid.ToString()));
             }
 
             if (Status != null)
             {
                 p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
-            }
-
-            if (Direction != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Direction", Direction.ToString()));
             }
 
             if (PageSize != null)
