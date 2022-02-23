@@ -50,7 +50,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Call
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.Created,
-                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"call_sid\": \"CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"sid\": \"MZaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"name\": null,\"status\": \"in-progress\",\"date_updated\": \"Thu, 30 Jul 2015 20:00:00 +0000\"}"
+                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"call_sid\": \"CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"sid\": \"MZaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"name\": null,\"status\": \"in-progress\",\"date_updated\": \"Thu, 30 Jul 2015 20:00:00 +0000\",\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Streams/MZaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json\"}"
                                      ));
 
             var response = StreamResource.Create("CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
@@ -65,7 +65,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Call
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.Created,
-                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"call_sid\": \"CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"sid\": \"MZaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"name\": \"myName\",\"status\": \"in-progress\",\"date_updated\": \"Thu, 30 Jul 2015 20:00:00 +0000\"}"
+                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"call_sid\": \"CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"sid\": \"MZaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"name\": \"myName\",\"status\": \"in-progress\",\"date_updated\": \"Thu, 30 Jul 2015 20:00:00 +0000\",\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Streams/MZaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json\"}"
                                      ));
 
             var response = StreamResource.Create("CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
@@ -103,7 +103,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Call
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"call_sid\": \"CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"sid\": \"MZaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"name\": null,\"status\": \"stopped\",\"date_updated\": \"Thu, 30 Jul 2015 20:00:00 +0000\"}"
+                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"call_sid\": \"CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"sid\": \"MZaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"name\": null,\"status\": \"stopped\",\"date_updated\": \"Thu, 30 Jul 2015 20:00:00 +0000\",\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Streams/MZaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json\"}"
                                      ));
 
             var response = StreamResource.Update("CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "MZXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", StreamResource.UpdateStatusEnum.Stopped, client: twilioRestClient);
@@ -118,7 +118,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Call
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"call_sid\": \"CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"sid\": \"MZaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"name\": \"myStream\",\"status\": \"stopped\",\"date_updated\": \"Thu, 30 Jul 2015 20:00:00 +0000\"}"
+                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"call_sid\": \"CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"sid\": \"MZaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"name\": \"myStream\",\"status\": \"stopped\",\"date_updated\": \"Thu, 30 Jul 2015 20:00:00 +0000\",\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Streams/MZaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json\"}"
                                      ));
 
             var response = StreamResource.Update("CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "MZXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", StreamResource.UpdateStatusEnum.Stopped, client: twilioRestClient);

@@ -60,8 +60,8 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
                 return new SortByEnum(value);
             }
 
-            public static readonly SortByEnum Asc = new SortByEnum("ASC");
-            public static readonly SortByEnum Desc = new SortByEnum("DESC");
+            public static readonly SortByEnum ValidUntil = new SortByEnum("valid-until");
+            public static readonly SortByEnum DateUpdated = new SortByEnum("date-updated");
         }
 
         public sealed class SortDirectionEnum : StringEnum
@@ -73,8 +73,8 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
                 return new SortDirectionEnum(value);
             }
 
-            public static readonly SortDirectionEnum ValidUntilDate = new SortDirectionEnum("valid_until_date");
-            public static readonly SortDirectionEnum DateUpdated = new SortDirectionEnum("date_updated");
+            public static readonly SortDirectionEnum Asc = new SortDirectionEnum("ASC");
+            public static readonly SortDirectionEnum Desc = new SortDirectionEnum("DESC");
         }
 
         private static Request BuildCreateRequest(CreateBundleOptions options, ITwilioRestClient client)
@@ -223,7 +223,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         /// <param name="numberType"> The type of phone number </param>
         /// <param name="hasValidUntilDate"> Indicates that the Bundle is a valid Bundle until a specified expiration date.
         ///                         </param>
-        /// <param name="sortBy"> Can be `ValidUntilDate` or `DateUpdated`. Defaults to `DateCreated` </param>
+        /// <param name="sortBy"> Can be `valid-until` or `date-updated`. Defaults to `date-created`. </param>
         /// <param name="sortDirection"> Default is `DESC`. Can be `ASC` or `DESC`. </param>
         /// <param name="validUntilDateBefore"> Date to filter Bundles having their `valid_until_date` before or after the
         ///                            specified date. Can be `ValidUntilDate>=` or `ValidUntilDate<=`. Both can be used in
@@ -268,7 +268,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         /// <param name="numberType"> The type of phone number </param>
         /// <param name="hasValidUntilDate"> Indicates that the Bundle is a valid Bundle until a specified expiration date.
         ///                         </param>
-        /// <param name="sortBy"> Can be `ValidUntilDate` or `DateUpdated`. Defaults to `DateCreated` </param>
+        /// <param name="sortBy"> Can be `valid-until` or `date-updated`. Defaults to `date-created`. </param>
         /// <param name="sortDirection"> Default is `DESC`. Can be `ASC` or `DESC`. </param>
         /// <param name="validUntilDateBefore"> Date to filter Bundles having their `valid_until_date` before or after the
         ///                            specified date. Can be `ValidUntilDate>=` or `ValidUntilDate<=`. Both can be used in

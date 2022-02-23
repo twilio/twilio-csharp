@@ -103,7 +103,7 @@ namespace Twilio.Rest.Conversations.V1
         /// </summary>
         public List<string> AutoCreationWebhookFilters { get; set; }
         /// <summary>
-        /// For type `studio`, the studio flow SID, where the webhook should be sent to.
+        /// For type `studio`, the studio flow SID where the webhook should be sent to.
         /// </summary>
         public string AutoCreationStudioFlowSid { get; set; }
         /// <summary>
@@ -226,7 +226,7 @@ namespace Twilio.Rest.Conversations.V1
         /// </summary>
         public List<string> AutoCreationWebhookFilters { get; set; }
         /// <summary>
-        /// For type `studio`, the studio flow SID, where the webhook should be sent to.
+        /// For type `studio`, the studio flow SID where the webhook should be sent to.
         /// </summary>
         public string AutoCreationStudioFlowSid { get; set; }
         /// <summary>

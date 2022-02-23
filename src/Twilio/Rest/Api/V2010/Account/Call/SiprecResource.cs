@@ -1073,6 +1073,11 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
+        /// <summary>
+        /// The URI of the resource, relative to `https://api.twilio.com`
+        /// </summary>
+        [JsonProperty("uri")]
+        public string Uri { get; private set; }
 
         private SiprecResource()
         {

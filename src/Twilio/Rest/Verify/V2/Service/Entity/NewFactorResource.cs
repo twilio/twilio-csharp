@@ -135,6 +135,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// <param name="configSkew"> The number of past and future time-steps valid at a given time </param>
         /// <param name="configCodeLength"> Number of digits for generated TOTP codes </param>
         /// <param name="configAlg"> The algorithm used to derive the TOTP codes </param>
+        /// <param name="metadata"> Metadata of the factor. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of NewFactor </returns>
         public static NewFactorResource Create(string pathServiceSid,
@@ -152,9 +153,10 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
                                                int? configSkew = null,
                                                int? configCodeLength = null,
                                                NewFactorResource.TotpAlgorithmsEnum configAlg = null,
+                                               object metadata = null,
                                                ITwilioRestClient client = null)
         {
-            var options = new CreateNewFactorOptions(pathServiceSid, pathIdentity, friendlyName, factorType){BindingAlg = bindingAlg, BindingPublicKey = bindingPublicKey, ConfigAppId = configAppId, ConfigNotificationPlatform = configNotificationPlatform, ConfigNotificationToken = configNotificationToken, ConfigSdkVersion = configSdkVersion, BindingSecret = bindingSecret, ConfigTimeStep = configTimeStep, ConfigSkew = configSkew, ConfigCodeLength = configCodeLength, ConfigAlg = configAlg};
+            var options = new CreateNewFactorOptions(pathServiceSid, pathIdentity, friendlyName, factorType){BindingAlg = bindingAlg, BindingPublicKey = bindingPublicKey, ConfigAppId = configAppId, ConfigNotificationPlatform = configNotificationPlatform, ConfigNotificationToken = configNotificationToken, ConfigSdkVersion = configSdkVersion, BindingSecret = bindingSecret, ConfigTimeStep = configTimeStep, ConfigSkew = configSkew, ConfigCodeLength = configCodeLength, ConfigAlg = configAlg, Metadata = metadata};
             return Create(options, client);
         }
 
@@ -177,6 +179,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// <param name="configSkew"> The number of past and future time-steps valid at a given time </param>
         /// <param name="configCodeLength"> Number of digits for generated TOTP codes </param>
         /// <param name="configAlg"> The algorithm used to derive the TOTP codes </param>
+        /// <param name="metadata"> Metadata of the factor. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of NewFactor </returns>
         public static async System.Threading.Tasks.Task<NewFactorResource> CreateAsync(string pathServiceSid,
@@ -194,9 +197,10 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
                                                                                        int? configSkew = null,
                                                                                        int? configCodeLength = null,
                                                                                        NewFactorResource.TotpAlgorithmsEnum configAlg = null,
+                                                                                       object metadata = null,
                                                                                        ITwilioRestClient client = null)
         {
-            var options = new CreateNewFactorOptions(pathServiceSid, pathIdentity, friendlyName, factorType){BindingAlg = bindingAlg, BindingPublicKey = bindingPublicKey, ConfigAppId = configAppId, ConfigNotificationPlatform = configNotificationPlatform, ConfigNotificationToken = configNotificationToken, ConfigSdkVersion = configSdkVersion, BindingSecret = bindingSecret, ConfigTimeStep = configTimeStep, ConfigSkew = configSkew, ConfigCodeLength = configCodeLength, ConfigAlg = configAlg};
+            var options = new CreateNewFactorOptions(pathServiceSid, pathIdentity, friendlyName, factorType){BindingAlg = bindingAlg, BindingPublicKey = bindingPublicKey, ConfigAppId = configAppId, ConfigNotificationPlatform = configNotificationPlatform, ConfigNotificationToken = configNotificationToken, ConfigSdkVersion = configSdkVersion, BindingSecret = bindingSecret, ConfigTimeStep = configTimeStep, ConfigSkew = configSkew, ConfigCodeLength = configCodeLength, ConfigAlg = configAlg, Metadata = metadata};
             return await CreateAsync(options, client);
         }
         #endif
@@ -245,7 +249,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         [JsonProperty("identity")]
         public string Identity { get; private set; }
         /// <summary>
-        /// Unique external identifier of the Entity
+        /// Binding of the factor
         /// </summary>
         [JsonProperty("binding")]
         public object Binding { get; private set; }
@@ -277,10 +281,15 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         [JsonConverter(typeof(StringEnumConverter))]
         public NewFactorResource.FactorTypesEnum FactorType { get; private set; }
         /// <summary>
-        /// Binding for a `factor_type`.
+        /// Configurations for a `factor_type`.
         /// </summary>
         [JsonProperty("config")]
         public object Config { get; private set; }
+        /// <summary>
+        /// Metadata of the factor.
+        /// </summary>
+        [JsonProperty("metadata")]
+        public object Metadata { get; private set; }
         /// <summary>
         /// The URL of this resource.
         /// </summary>

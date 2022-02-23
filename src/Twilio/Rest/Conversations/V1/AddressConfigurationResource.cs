@@ -33,6 +33,7 @@ namespace Twilio.Rest.Conversations.V1
             public static readonly TypeEnum Sms = new TypeEnum("sms");
             public static readonly TypeEnum Whatsapp = new TypeEnum("whatsapp");
             public static readonly TypeEnum Messenger = new TypeEnum("messenger");
+            public static readonly TypeEnum Gbm = new TypeEnum("gbm");
         }
 
         public sealed class AutoCreationTypeEnum : StringEnum
@@ -316,7 +317,7 @@ namespace Twilio.Rest.Conversations.V1
         /// <param name="autoCreationWebhookMethod"> For type `webhook`, the HTTP method to be used when sending a webhook
         ///                                 request. </param>
         /// <param name="autoCreationWebhookFilters"> The list of events, firing webhook event for this Conversation. </param>
-        /// <param name="autoCreationStudioFlowSid"> For type `studio`, the studio flow SID, where the webhook should be sent
+        /// <param name="autoCreationStudioFlowSid"> For type `studio`, the studio flow SID where the webhook should be sent
         ///                                 to. </param>
         /// <param name="autoCreationStudioRetryCount"> For type `studio`, number of times to retry the webhook request </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -352,7 +353,7 @@ namespace Twilio.Rest.Conversations.V1
         /// <param name="autoCreationWebhookMethod"> For type `webhook`, the HTTP method to be used when sending a webhook
         ///                                 request. </param>
         /// <param name="autoCreationWebhookFilters"> The list of events, firing webhook event for this Conversation. </param>
-        /// <param name="autoCreationStudioFlowSid"> For type `studio`, the studio flow SID, where the webhook should be sent
+        /// <param name="autoCreationStudioFlowSid"> For type `studio`, the studio flow SID where the webhook should be sent
         ///                                 to. </param>
         /// <param name="autoCreationStudioRetryCount"> For type `studio`, number of times to retry the webhook request </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -428,7 +429,7 @@ namespace Twilio.Rest.Conversations.V1
         /// <param name="autoCreationWebhookMethod"> For type `webhook`, the HTTP method to be used when sending a webhook
         ///                                 request. </param>
         /// <param name="autoCreationWebhookFilters"> The list of events, firing webhook event for this Conversation. </param>
-        /// <param name="autoCreationStudioFlowSid"> For type `studio`, the studio flow SID, where the webhook should be sent
+        /// <param name="autoCreationStudioFlowSid"> For type `studio`, the studio flow SID where the webhook should be sent
         ///                                 to. </param>
         /// <param name="autoCreationStudioRetryCount"> For type `studio`, number of times to retry the webhook request </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -462,7 +463,7 @@ namespace Twilio.Rest.Conversations.V1
         /// <param name="autoCreationWebhookMethod"> For type `webhook`, the HTTP method to be used when sending a webhook
         ///                                 request. </param>
         /// <param name="autoCreationWebhookFilters"> The list of events, firing webhook event for this Conversation. </param>
-        /// <param name="autoCreationStudioFlowSid"> For type `studio`, the studio flow SID, where the webhook should be sent
+        /// <param name="autoCreationStudioFlowSid"> For type `studio`, the studio flow SID where the webhook should be sent
         ///                                 to. </param>
         /// <param name="autoCreationStudioRetryCount"> For type `studio`, number of times to retry the webhook request </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -579,7 +580,7 @@ namespace Twilio.Rest.Conversations.V1
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// Type of Address, value can be `whatsapp` or `sms`.
+        /// Type of Address.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; private set; }

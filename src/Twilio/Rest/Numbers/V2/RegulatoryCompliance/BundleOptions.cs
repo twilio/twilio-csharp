@@ -131,7 +131,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         /// </summary>
         public bool? HasValidUntilDate { get; set; }
         /// <summary>
-        /// Can be `ValidUntilDate` or `DateUpdated`. Defaults to `DateCreated`
+        /// Can be `valid-until` or `date-updated`. Defaults to `date-created`.
         /// </summary>
         public BundleResource.SortByEnum SortBy { get; set; }
         /// <summary>

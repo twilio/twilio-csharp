@@ -123,7 +123,7 @@ namespace Twilio.Rest.Supersim.V1
         /// <param name="granularity"> Time-based grouping that UsageRecords should be aggregated by. Can be: `hour`, `day`, or
         ///                   `all`. Default is `all`. </param>
         /// <param name="startTime"> Only include usage that occurred at or after this time. </param>
-        /// <param name="endTime"> Only include usage that occurred before this time. </param>
+        /// <param name="endTime"> Only include usage that occurred before this time (exclusive). </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -160,7 +160,7 @@ namespace Twilio.Rest.Supersim.V1
         /// <param name="granularity"> Time-based grouping that UsageRecords should be aggregated by. Can be: `hour`, `day`, or
         ///                   `all`. Default is `all`. </param>
         /// <param name="startTime"> Only include usage that occurred at or after this time. </param>
-        /// <param name="endTime"> Only include usage that occurred before this time. </param>
+        /// <param name="endTime"> Only include usage that occurred before this time (exclusive). </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
