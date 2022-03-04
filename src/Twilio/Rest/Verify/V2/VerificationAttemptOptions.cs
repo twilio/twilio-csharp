@@ -17,17 +17,37 @@ namespace Twilio.Rest.Verify.V2
     public class ReadVerificationAttemptOptions : ReadOptions<VerificationAttemptResource>
     {
         /// <summary>
-        /// Filter verification attempts after this date
+        /// Filter verification attempts after this date.
         /// </summary>
         public DateTime? DateCreatedAfter { get; set; }
         /// <summary>
-        /// Filter verification attempts befor this date
+        /// Filter verification attempts before this date.
         /// </summary>
         public DateTime? DateCreatedBefore { get; set; }
         /// <summary>
-        /// Destination of a verification
+        /// Filters by destination of the verification attempt.
         /// </summary>
         public string ChannelDataTo { get; set; }
+        /// <summary>
+        /// Filter verification attempts by destination country.
+        /// </summary>
+        public string Country { get; set; }
+        /// <summary>
+        /// Filter verification attempts by communication channel.
+        /// </summary>
+        public VerificationAttemptResource.ChannelsEnum Channel { get; set; }
+        /// <summary>
+        /// Filter verification attempts by verify service.
+        /// </summary>
+        public string VerifyServiceSid { get; set; }
+        /// <summary>
+        /// Filter attempts by verification.
+        /// </summary>
+        public string VerificationSid { get; set; }
+        /// <summary>
+        /// Filter verification attempts by conversion status.
+        /// </summary>
+        public VerificationAttemptResource.ConversionStatusEnum Status { get; set; }
 
         /// <summary>
         /// Generate the necessary parameters
@@ -48,6 +68,31 @@ namespace Twilio.Rest.Verify.V2
             if (ChannelDataTo != null)
             {
                 p.Add(new KeyValuePair<string, string>("ChannelData.To", ChannelDataTo));
+            }
+
+            if (Country != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Country", Country.ToString()));
+            }
+
+            if (Channel != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Channel", Channel.ToString()));
+            }
+
+            if (VerifyServiceSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("VerifyServiceSid", VerifyServiceSid.ToString()));
+            }
+
+            if (VerificationSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("VerificationSid", VerificationSid.ToString()));
+            }
+
+            if (Status != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
             }
 
             if (PageSize != null)

@@ -104,6 +104,15 @@ namespace Twilio.TwiML.Voice
             public static readonly VoiceEnum PollyLupeNeural = new VoiceEnum("Polly.Lupe-Neural");
             public static readonly VoiceEnum PollyOliviaNeural = new VoiceEnum("Polly.Olivia-Neural");
             public static readonly VoiceEnum PollyKevinNeural = new VoiceEnum("Polly.Kevin-Neural");
+            public static readonly VoiceEnum PollyAriaNeural = new VoiceEnum("Polly.Aria-Neural");
+            public static readonly VoiceEnum PollyAyandaNeural = new VoiceEnum("Polly.Ayanda-Neural");
+            public static readonly VoiceEnum PollyGabrielleNeural = new VoiceEnum("Polly.Gabrielle-Neural");
+            public static readonly VoiceEnum PollyLeaNeural = new VoiceEnum("Polly.Lea-Neural");
+            public static readonly VoiceEnum PollyVickiNeural = new VoiceEnum("Polly.Vicki-Neural");
+            public static readonly VoiceEnum PollyBiancaNeural = new VoiceEnum("Polly.Bianca-Neural");
+            public static readonly VoiceEnum PollyTakumiNeural = new VoiceEnum("Polly.Takumi-Neural");
+            public static readonly VoiceEnum PollySeoyeonNeural = new VoiceEnum("Polly.Seoyeon-Neural");
+            public static readonly VoiceEnum PollyLuciaNeural = new VoiceEnum("Polly.Lucia-Neural");
         }
 
         public sealed class LanguageEnum : StringEnum
@@ -125,6 +134,8 @@ namespace Twilio.TwiML.Voice
             public static readonly LanguageEnum EnGb = new LanguageEnum("en-GB");
             public static readonly LanguageEnum EnGbWls = new LanguageEnum("en-GB-WLS");
             public static readonly LanguageEnum EnIn = new LanguageEnum("en-IN");
+            public static readonly LanguageEnum EnNz = new LanguageEnum("en-NZ");
+            public static readonly LanguageEnum EnZa = new LanguageEnum("en-ZA");
             public static readonly LanguageEnum EnUs = new LanguageEnum("en-US");
             public static readonly LanguageEnum EsEs = new LanguageEnum("es-ES");
             public static readonly LanguageEnum EsMx = new LanguageEnum("es-MX");

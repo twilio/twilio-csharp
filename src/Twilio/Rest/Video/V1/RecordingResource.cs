@@ -461,6 +461,11 @@ namespace Twilio.Rest.Video.V1
         [JsonProperty("offset")]
         public long? Offset { get; private set; }
         /// <summary>
+        /// The URL of the media file associated with the recording when stored externally
+        /// </summary>
+        [JsonProperty("media_external_location")]
+        public Uri MediaExternalLocation { get; private set; }
+        /// <summary>
         /// The URLs of related resources
         /// </summary>
         [JsonProperty("links")]

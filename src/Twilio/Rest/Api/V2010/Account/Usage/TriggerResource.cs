@@ -30,6 +30,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
                 return new UsageCategoryEnum(value);
             }
 
+            public static readonly UsageCategoryEnum A2PRegistrationFees = new UsageCategoryEnum("a2p-registration-fees");
             public static readonly UsageCategoryEnum AgentConference = new UsageCategoryEnum("agent-conference");
             public static readonly UsageCategoryEnum AnsweringMachineDetection = new UsageCategoryEnum("answering-machine-detection");
             public static readonly UsageCategoryEnum AuthyAuthentications = new UsageCategoryEnum("authy-authentications");

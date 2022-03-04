@@ -36,6 +36,49 @@ namespace Twilio.Rest.Verify.V2
             public static readonly ChannelsEnum Whatsapp = new ChannelsEnum("whatsapp");
         }
 
+        public sealed class CallStatusEnum : StringEnum
+        {
+            private CallStatusEnum(string value) : base(value) {}
+            public CallStatusEnum() {}
+            public static implicit operator CallStatusEnum(string value)
+            {
+                return new CallStatusEnum(value);
+            }
+
+            public static readonly CallStatusEnum Queued = new CallStatusEnum("queued");
+            public static readonly CallStatusEnum InProgress = new CallStatusEnum("in-progress");
+            public static readonly CallStatusEnum Completed = new CallStatusEnum("completed");
+            public static readonly CallStatusEnum Busy = new CallStatusEnum("busy");
+            public static readonly CallStatusEnum Failed = new CallStatusEnum("failed");
+            public static readonly CallStatusEnum NoAnswer = new CallStatusEnum("no-answer");
+            public static readonly CallStatusEnum Ringing = new CallStatusEnum("ringing");
+            public static readonly CallStatusEnum Canceled = new CallStatusEnum("canceled");
+        }
+
+        public sealed class MessageStatusEnum : StringEnum
+        {
+            private MessageStatusEnum(string value) : base(value) {}
+            public MessageStatusEnum() {}
+            public static implicit operator MessageStatusEnum(string value)
+            {
+                return new MessageStatusEnum(value);
+            }
+
+            public static readonly MessageStatusEnum Queued = new MessageStatusEnum("queued");
+            public static readonly MessageStatusEnum Sending = new MessageStatusEnum("sending");
+            public static readonly MessageStatusEnum Sent = new MessageStatusEnum("sent");
+            public static readonly MessageStatusEnum Failed = new MessageStatusEnum("failed");
+            public static readonly MessageStatusEnum Delivered = new MessageStatusEnum("delivered");
+            public static readonly MessageStatusEnum Undelivered = new MessageStatusEnum("undelivered");
+            public static readonly MessageStatusEnum Receiving = new MessageStatusEnum("receiving");
+            public static readonly MessageStatusEnum Received = new MessageStatusEnum("received");
+            public static readonly MessageStatusEnum Accepted = new MessageStatusEnum("accepted");
+            public static readonly MessageStatusEnum Scheduled = new MessageStatusEnum("scheduled");
+            public static readonly MessageStatusEnum Read = new MessageStatusEnum("read");
+            public static readonly MessageStatusEnum PartiallyDelivered = new MessageStatusEnum("partially_delivered");
+            public static readonly MessageStatusEnum Canceled = new MessageStatusEnum("canceled");
+        }
+
         public sealed class ConversionStatusEnum : StringEnum
         {
             private ConversionStatusEnum(string value) : base(value) {}
@@ -47,6 +90,20 @@ namespace Twilio.Rest.Verify.V2
 
             public static readonly ConversionStatusEnum Converted = new ConversionStatusEnum("converted");
             public static readonly ConversionStatusEnum Unconverted = new ConversionStatusEnum("unconverted");
+        }
+
+        public sealed class AttemptStatusEnum : StringEnum
+        {
+            private AttemptStatusEnum(string value) : base(value) {}
+            public AttemptStatusEnum() {}
+            public static implicit operator AttemptStatusEnum(string value)
+            {
+                return new AttemptStatusEnum(value);
+            }
+
+            public static readonly AttemptStatusEnum Confirmed = new AttemptStatusEnum("confirmed");
+            public static readonly AttemptStatusEnum Unconfirmed = new AttemptStatusEnum("unconfirmed");
+            public static readonly AttemptStatusEnum Expired = new AttemptStatusEnum("expired");
         }
 
         private static Request BuildReadRequest(ReadVerificationAttemptOptions options, ITwilioRestClient client)
@@ -97,9 +154,14 @@ namespace Twilio.Rest.Verify.V2
         /// <summary>
         /// List all the verification attempts for a given Account.
         /// </summary>
-        /// <param name="dateCreatedAfter"> Filter verification attempts after this date </param>
-        /// <param name="dateCreatedBefore"> Filter verification attempts befor this date </param>
-        /// <param name="channelDataTo"> Destination of a verification </param>
+        /// <param name="dateCreatedAfter"> Filter verification attempts after this date. </param>
+        /// <param name="dateCreatedBefore"> Filter verification attempts before this date. </param>
+        /// <param name="channelDataTo"> Filters by destination of the verification attempt. </param>
+        /// <param name="country"> Filter verification attempts by destination country. </param>
+        /// <param name="channel"> Filter verification attempts by communication channel. </param>
+        /// <param name="verifyServiceSid"> Filter verification attempts by verify service. </param>
+        /// <param name="verificationSid"> Filter attempts by verification. </param>
+        /// <param name="status"> Filter verification attempts by conversion status. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -107,11 +169,16 @@ namespace Twilio.Rest.Verify.V2
         public static ResourceSet<VerificationAttemptResource> Read(DateTime? dateCreatedAfter = null,
                                                                     DateTime? dateCreatedBefore = null,
                                                                     string channelDataTo = null,
+                                                                    string country = null,
+                                                                    VerificationAttemptResource.ChannelsEnum channel = null,
+                                                                    string verifyServiceSid = null,
+                                                                    string verificationSid = null,
+                                                                    VerificationAttemptResource.ConversionStatusEnum status = null,
                                                                     int? pageSize = null,
                                                                     long? limit = null,
                                                                     ITwilioRestClient client = null)
         {
-            var options = new ReadVerificationAttemptOptions(){DateCreatedAfter = dateCreatedAfter, DateCreatedBefore = dateCreatedBefore, ChannelDataTo = channelDataTo, PageSize = pageSize, Limit = limit};
+            var options = new ReadVerificationAttemptOptions(){DateCreatedAfter = dateCreatedAfter, DateCreatedBefore = dateCreatedBefore, ChannelDataTo = channelDataTo, Country = country, Channel = channel, VerifyServiceSid = verifyServiceSid, VerificationSid = verificationSid, Status = status, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -119,9 +186,14 @@ namespace Twilio.Rest.Verify.V2
         /// <summary>
         /// List all the verification attempts for a given Account.
         /// </summary>
-        /// <param name="dateCreatedAfter"> Filter verification attempts after this date </param>
-        /// <param name="dateCreatedBefore"> Filter verification attempts befor this date </param>
-        /// <param name="channelDataTo"> Destination of a verification </param>
+        /// <param name="dateCreatedAfter"> Filter verification attempts after this date. </param>
+        /// <param name="dateCreatedBefore"> Filter verification attempts before this date. </param>
+        /// <param name="channelDataTo"> Filters by destination of the verification attempt. </param>
+        /// <param name="country"> Filter verification attempts by destination country. </param>
+        /// <param name="channel"> Filter verification attempts by communication channel. </param>
+        /// <param name="verifyServiceSid"> Filter verification attempts by verify service. </param>
+        /// <param name="verificationSid"> Filter attempts by verification. </param>
+        /// <param name="status"> Filter verification attempts by conversion status. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -129,11 +201,16 @@ namespace Twilio.Rest.Verify.V2
         public static async System.Threading.Tasks.Task<ResourceSet<VerificationAttemptResource>> ReadAsync(DateTime? dateCreatedAfter = null,
                                                                                                             DateTime? dateCreatedBefore = null,
                                                                                                             string channelDataTo = null,
+                                                                                                            string country = null,
+                                                                                                            VerificationAttemptResource.ChannelsEnum channel = null,
+                                                                                                            string verifyServiceSid = null,
+                                                                                                            string verificationSid = null,
+                                                                                                            VerificationAttemptResource.ConversionStatusEnum status = null,
                                                                                                             int? pageSize = null,
                                                                                                             long? limit = null,
                                                                                                             ITwilioRestClient client = null)
         {
-            var options = new ReadVerificationAttemptOptions(){DateCreatedAfter = dateCreatedAfter, DateCreatedBefore = dateCreatedBefore, ChannelDataTo = channelDataTo, PageSize = pageSize, Limit = limit};
+            var options = new ReadVerificationAttemptOptions(){DateCreatedAfter = dateCreatedAfter, DateCreatedBefore = dateCreatedBefore, ChannelDataTo = channelDataTo, Country = country, Channel = channel, VerifyServiceSid = verifyServiceSid, VerificationSid = verificationSid, Status = status, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
@@ -280,20 +357,25 @@ namespace Twilio.Rest.Verify.V2
         }
 
         /// <summary>
-        /// A string that uniquely identifies this Verification Attempt
+        /// The SID that uniquely identifies the verification attempt.
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// Account Sid
+        /// The SID of the Account that created the verification.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The service_sid
+        /// The SID of the verify service that generated this attempt.
         /// </summary>
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
+        /// <summary>
+        /// The SID of the verification that generated this attempt.
+        /// </summary>
+        [JsonProperty("verification_sid")]
+        public string VerificationSid { get; private set; }
         /// <summary>
         /// The date this Attempt was created
         /// </summary>
@@ -305,19 +387,24 @@ namespace Twilio.Rest.Verify.V2
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// Status of a conversion
+        /// Status of the conversion for the verification.
         /// </summary>
         [JsonProperty("conversion_status")]
         [JsonConverter(typeof(StringEnumConverter))]
         public VerificationAttemptResource.ConversionStatusEnum ConversionStatus { get; private set; }
         /// <summary>
-        /// Channel used for the attempt
+        /// Communication channel used for the attempt.
         /// </summary>
         [JsonProperty("channel")]
         [JsonConverter(typeof(StringEnumConverter))]
         public VerificationAttemptResource.ChannelsEnum Channel { get; private set; }
         /// <summary>
-        /// Object with the channel information for an attempt
+        /// An object containing the charge for this verification attempt.
+        /// </summary>
+        [JsonProperty("price")]
+        public object Price { get; private set; }
+        /// <summary>
+        /// An object containing the channel specific information for an attempt.
         /// </summary>
         [JsonProperty("channel_data")]
         public object ChannelData { get; private set; }

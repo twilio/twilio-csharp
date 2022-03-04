@@ -465,6 +465,11 @@ namespace Twilio.Rest.Video.V1.Room
         [JsonProperty("offset")]
         public long? Offset { get; private set; }
         /// <summary>
+        /// The URL of the media file associated with the recording when stored externally
+        /// </summary>
+        [JsonProperty("media_external_location")]
+        public Uri MediaExternalLocation { get; private set; }
+        /// <summary>
         /// The SID of the Room resource the recording is associated with
         /// </summary>
         [JsonProperty("room_sid")]

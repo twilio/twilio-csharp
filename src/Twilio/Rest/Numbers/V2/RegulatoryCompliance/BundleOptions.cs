@@ -126,6 +126,30 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         /// The type of phone number
         /// </summary>
         public string NumberType { get; set; }
+        /// <summary>
+        /// Indicates that the Bundle is a valid Bundle until a specified expiration date.
+        /// </summary>
+        public bool? HasValidUntilDate { get; set; }
+        /// <summary>
+        /// Can be `valid-until` or `date-updated`. Defaults to `date-created`.
+        /// </summary>
+        public BundleResource.SortByEnum SortBy { get; set; }
+        /// <summary>
+        /// Default is `DESC`. Can be `ASC` or `DESC`.
+        /// </summary>
+        public BundleResource.SortDirectionEnum SortDirection { get; set; }
+        /// <summary>
+        /// Date to filter Bundles having their `valid_until_date` before or after the specified date. Can be `ValidUntilDate>=` or `ValidUntilDate<=`. Both can be used in conjunction as well.
+        /// </summary>
+        public DateTime? ValidUntilDateBefore { get; set; }
+        /// <summary>
+        /// Date to filter Bundles having their `valid_until_date` before or after the specified date. Can be `ValidUntilDate>=` or `ValidUntilDate<=`. Both can be used in conjunction as well.
+        /// </summary>
+        public DateTime? ValidUntilDate { get; set; }
+        /// <summary>
+        /// Date to filter Bundles having their `valid_until_date` before or after the specified date. Can be `ValidUntilDate>=` or `ValidUntilDate<=`. Both can be used in conjunction as well.
+        /// </summary>
+        public DateTime? ValidUntilDateAfter { get; set; }
 
         /// <summary>
         /// Generate the necessary parameters
@@ -156,6 +180,38 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
             if (NumberType != null)
             {
                 p.Add(new KeyValuePair<string, string>("NumberType", NumberType));
+            }
+
+            if (HasValidUntilDate != null)
+            {
+                p.Add(new KeyValuePair<string, string>("HasValidUntilDate", HasValidUntilDate.Value.ToString().ToLower()));
+            }
+
+            if (SortBy != null)
+            {
+                p.Add(new KeyValuePair<string, string>("SortBy", SortBy.ToString()));
+            }
+
+            if (SortDirection != null)
+            {
+                p.Add(new KeyValuePair<string, string>("SortDirection", SortDirection.ToString()));
+            }
+
+            if (ValidUntilDate != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ValidUntilDate", Serializers.DateTimeIso8601(ValidUntilDate)));
+            }
+            else
+            {
+                if (ValidUntilDateBefore != null)
+                {
+                    p.Add(new KeyValuePair<string, string>("ValidUntilDate<", Serializers.DateTimeIso8601(ValidUntilDateBefore)));
+                }
+
+                if (ValidUntilDateAfter != null)
+                {
+                    p.Add(new KeyValuePair<string, string>("ValidUntilDate>", Serializers.DateTimeIso8601(ValidUntilDateAfter)));
+                }
             }
 
             if (PageSize != null)

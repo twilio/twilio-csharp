@@ -554,6 +554,11 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         [JsonProperty("config")]
         public object Config { get; private set; }
         /// <summary>
+        /// Metadata of the factor.
+        /// </summary>
+        [JsonProperty("metadata")]
+        public object Metadata { get; private set; }
+        /// <summary>
         /// The URL of this resource.
         /// </summary>
         [JsonProperty("url")]

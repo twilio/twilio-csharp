@@ -1,6 +1,97 @@
 twilio-csharp Changelog
 =======================
 
+[2022-02-23] Version 5.72.0
+---------------------------
+**Api**
+- Add `uri` to `stream` resource
+- Add A2P Registration Fee category (`a2p-registration-fee`) to usage records
+- Detected a bug and removed optional boolean include_soft_deleted parameter to retrieve soft deleted recordings. **(breaking change)**
+- Add optional boolean include_soft_deleted parameter to retrieve soft deleted recordings.
+
+**Numbers**
+- Unrevert valid_until and sort filter params added to List Bundles resource
+- Revert valid_until and sort filter params added to List Bundles resource
+- Update sorting params added to List Bundles resource in the previous release
+
+**Preview**
+- Moved `web_channels` from preview to beta under `flex-api` **(breaking change)**
+
+**Taskrouter**
+- Add `ETag` as Response Header to List of Task, Reservation & Worker
+
+**Verify**
+- Remove outdated documentation commentary to contact sales. Product is already in public beta.
+- Add optional `metadata` to factors.
+
+**Twiml**
+- Add new Polly Neural voices
+
+
+[2022-02-09] Version 5.71.0
+---------------------------
+**Api**
+- Add `stream` resource
+
+**Conversations**
+- Fixed DELETE request to accept "sid_like" params in Address Configuration resources **(breaking change)**
+- Expose Address Configuration resource for `sms` and `whatsapp`
+
+**Fax**
+- Removed deprecated Programmable Fax Create and Update methods **(breaking change)**
+
+**Insights**
+- Rename `call_state` to `call_status` and remove `whisper` in conference participant summary **(breaking change)**
+
+**Numbers**
+- Expose valid_until filters as part of provisionally-approved compliance feature on the List Bundles resource
+
+**Supersim**
+- Fix typo in Fleet resource docs
+- Updated documentation for the Fleet resource indicating that fields related to commands have been deprecated and to use sms_command fields instead.
+- Add support for setting and reading `ip_commands_url` and `ip_commands_method` on Fleets resource for helper libraries
+- Changed `sim` property in requests to create an SMS Command made to the /SmsCommands to accept SIM UniqueNames in addition to SIDs
+
+**Verify**
+- Update list attempts API to include new filters and response fields.
+
+
+[2022-01-26] Version 5.70.1
+---------------------------
+**Insights**
+- Added new endpoint to fetch Conference Participant Summary
+- Added new endpoint to fetch Conference Summary
+
+**Messaging**
+- Add government_entity parameter to brand apis
+
+**Verify**
+- Add Access Token fetch endpoint to retrieve a previously created token.
+- Add Access Token payload to the Access Token creation endpoint, including a unique Sid, so it's addressable while it's TTL is valid.
+
+
+[2022-01-12] Version 5.70.0
+---------------------------
+**Library - Chore**
+- [PR #595](https://github.com/twilio/twilio-csharp/pull/595): prevent Sonarcloud from running on forks. Thanks to [@JenniferMah](https://github.com/JenniferMah)!
+
+**Library - Feature**
+- [PR #591](https://github.com/twilio/twilio-csharp/pull/591): add GitHub release step during deploy. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+- [PR #592](https://github.com/twilio/twilio-csharp/pull/592): Add SonarCloud analysis. Thanks to [@BrimmingDev](https://github.com/BrimmingDev)!
+
+**Api**
+- Make fixed time scheduling parameters public **(breaking change)**
+
+**Messaging**
+- Add update brand registration API
+
+**Numbers**
+- Add API endpoint for List Bundle Copies resource
+
+**Video**
+- Enable external storage for all customers
+
+
 [2021-12-15] Version 5.69.0
 ---------------------------
 **Library - Feature**

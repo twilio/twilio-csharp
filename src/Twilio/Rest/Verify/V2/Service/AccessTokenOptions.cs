@@ -75,4 +75,41 @@ namespace Twilio.Rest.Verify.V2.Service
         }
     }
 
+    /// <summary>
+    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+    ///
+    /// Fetch an Access Token for the Entity
+    /// </summary>
+    public class FetchAccessTokenOptions : IOptions<AccessTokenResource>
+    {
+        /// <summary>
+        /// Service Sid.
+        /// </summary>
+        public string PathServiceSid { get; }
+        /// <summary>
+        /// A string that uniquely identifies this Access Token.
+        /// </summary>
+        public string PathSid { get; }
+
+        /// <summary>
+        /// Construct a new FetchAccessTokenOptions
+        /// </summary>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathSid"> A string that uniquely identifies this Access Token. </param>
+        public FetchAccessTokenOptions(string pathServiceSid, string pathSid)
+        {
+            PathServiceSid = pathServiceSid;
+            PathSid = pathSid;
+        }
+
+        /// <summary>
+        /// Generate the necessary parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            return p;
+        }
+    }
+
 }

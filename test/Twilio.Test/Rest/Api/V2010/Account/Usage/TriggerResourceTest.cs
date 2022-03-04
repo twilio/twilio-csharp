@@ -143,13 +143,13 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Usage
             );
             request.AddPostParam("CallbackUrl", Serialize(new Uri("https://example.com")));
             request.AddPostParam("TriggerValue", Serialize("trigger_value"));
-            request.AddPostParam("UsageCategory", Serialize(TriggerResource.UsageCategoryEnum.AgentConference));
+            request.AddPostParam("UsageCategory", Serialize(TriggerResource.UsageCategoryEnum.A2PRegistrationFees));
             twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                TriggerResource.Create(new Uri("https://example.com"), "trigger_value", TriggerResource.UsageCategoryEnum.AgentConference, client: twilioRestClient);
+                TriggerResource.Create(new Uri("https://example.com"), "trigger_value", TriggerResource.UsageCategoryEnum.A2PRegistrationFees, client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -167,7 +167,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Usage
                                          "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"api_version\": \"2010-04-01\",\"callback_method\": \"GET\",\"callback_url\": \"http://cap.com/streetfight\",\"current_value\": \"0\",\"date_created\": \"Sun, 06 Sep 2015 12:58:45 +0000\",\"date_fired\": null,\"date_updated\": \"Sun, 06 Sep 2015 12:58:45 +0000\",\"friendly_name\": \"raphael-cluster-1441544325.86\",\"recurring\": \"yearly\",\"sid\": \"UTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"trigger_by\": \"price\",\"trigger_value\": \"50\",\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Usage/Triggers/UTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"usage_category\": \"totalprice\",\"usage_record_uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Usage/Records?Category=totalprice\"}"
                                      ));
 
-            var response = TriggerResource.Create(new Uri("https://example.com"), "trigger_value", TriggerResource.UsageCategoryEnum.AgentConference, client: twilioRestClient);
+            var response = TriggerResource.Create(new Uri("https://example.com"), "trigger_value", TriggerResource.UsageCategoryEnum.A2PRegistrationFees, client: twilioRestClient);
             Assert.NotNull(response);
         }
 

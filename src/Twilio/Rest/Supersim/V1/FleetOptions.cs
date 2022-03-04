@@ -35,17 +35,25 @@ namespace Twilio.Rest.Supersim.V1
         /// </summary>
         public int? DataLimit { get; set; }
         /// <summary>
-        /// Defines whether SIMs in the Fleet are capable of sending and receiving machine-to-machine SMS via Commands
+        /// Deprecated
         /// </summary>
         public bool? CommandsEnabled { get; set; }
         /// <summary>
-        /// The URL that will receive a webhook when a Super SIM in the Fleet is used to send an SMS from your device to the Commands number
+        /// Deprecated
         /// </summary>
         public Uri CommandsUrl { get; set; }
         /// <summary>
-        /// A string representing the HTTP method to use when making a request to `commands_url`
+        /// Deprecated
         /// </summary>
         public Twilio.Http.HttpMethod CommandsMethod { get; set; }
+        /// <summary>
+        /// The URL that will receive a webhook when a Super SIM in the Fleet is used to send an IP Command from your device
+        /// </summary>
+        public Uri IpCommandsUrl { get; set; }
+        /// <summary>
+        /// A string representing the HTTP method to use when making a request to `ip_commands_url`
+        /// </summary>
+        public Twilio.Http.HttpMethod IpCommandsMethod { get; set; }
         /// <summary>
         /// Defines whether SIMs in the Fleet are capable of sending and receiving machine-to-machine SMS via Commands
         /// </summary>
@@ -107,6 +115,16 @@ namespace Twilio.Rest.Supersim.V1
             if (CommandsMethod != null)
             {
                 p.Add(new KeyValuePair<string, string>("CommandsMethod", CommandsMethod.ToString()));
+            }
+
+            if (IpCommandsUrl != null)
+            {
+                p.Add(new KeyValuePair<string, string>("IpCommandsUrl", Serializers.Url(IpCommandsUrl)));
+            }
+
+            if (IpCommandsMethod != null)
+            {
+                p.Add(new KeyValuePair<string, string>("IpCommandsMethod", IpCommandsMethod.ToString()));
             }
 
             if (SmsCommandsEnabled != null)
@@ -211,13 +229,21 @@ namespace Twilio.Rest.Supersim.V1
         /// </summary>
         public string NetworkAccessProfile { get; set; }
         /// <summary>
-        /// The URL that will receive a webhook when a Super SIM in the Fleet is used to send an SMS from your device to the Commands number
+        /// Deprecated
         /// </summary>
         public Uri CommandsUrl { get; set; }
         /// <summary>
-        /// A string representing the HTTP method to use when making a request to `commands_url`
+        /// Deprecated
         /// </summary>
         public Twilio.Http.HttpMethod CommandsMethod { get; set; }
+        /// <summary>
+        /// The URL that will receive a webhook when a Super SIM in the Fleet is used to send an IP Command from your device
+        /// </summary>
+        public Uri IpCommandsUrl { get; set; }
+        /// <summary>
+        /// A string representing the HTTP method to use when making a request to `ip_commands_url`
+        /// </summary>
+        public Twilio.Http.HttpMethod IpCommandsMethod { get; set; }
         /// <summary>
         /// The URL that will receive a webhook when a Super SIM in the Fleet is used to send an SMS from your device to the SMS Commands number
         /// </summary>
@@ -260,6 +286,16 @@ namespace Twilio.Rest.Supersim.V1
             if (CommandsMethod != null)
             {
                 p.Add(new KeyValuePair<string, string>("CommandsMethod", CommandsMethod.ToString()));
+            }
+
+            if (IpCommandsUrl != null)
+            {
+                p.Add(new KeyValuePair<string, string>("IpCommandsUrl", Serializers.Url(IpCommandsUrl)));
+            }
+
+            if (IpCommandsMethod != null)
+            {
+                p.Add(new KeyValuePair<string, string>("IpCommandsMethod", IpCommandsMethod.ToString()));
             }
 
             if (SmsCommandsUrl != null)

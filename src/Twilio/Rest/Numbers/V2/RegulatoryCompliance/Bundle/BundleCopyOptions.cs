@@ -52,4 +52,40 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
         }
     }
 
+    /// <summary>
+    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+    ///
+    /// Retrieve a list of all Bundles Copies for a Bundle.
+    /// </summary>
+    public class ReadBundleCopyOptions : ReadOptions<BundleCopyResource>
+    {
+        /// <summary>
+        /// The unique string that identifies the resource.
+        /// </summary>
+        public string PathBundleSid { get; }
+
+        /// <summary>
+        /// Construct a new ReadBundleCopyOptions
+        /// </summary>
+        /// <param name="pathBundleSid"> The unique string that identifies the resource. </param>
+        public ReadBundleCopyOptions(string pathBundleSid)
+        {
+            PathBundleSid = pathBundleSid;
+        }
+
+        /// <summary>
+        /// Generate the necessary parameters
+        /// </summary>
+        public override List<KeyValuePair<string, string>> GetParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            if (PageSize != null)
+            {
+                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+            }
+
+            return p;
+        }
+    }
+
 }
