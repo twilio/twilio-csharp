@@ -241,6 +241,10 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// Optional payload to verify the Challenge
         /// </summary>
         public string AuthPayload { get; set; }
+        /// <summary>
+        /// Metadata of the challenge.
+        /// </summary>
+        public object Metadata { get; set; }
 
         /// <summary>
         /// Construct a new UpdateChallengeOptions
@@ -264,6 +268,11 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
             if (AuthPayload != null)
             {
                 p.Add(new KeyValuePair<string, string>("AuthPayload", AuthPayload));
+            }
+
+            if (Metadata != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Metadata", Serializers.JsonObject(Metadata)));
             }
 
             return p;

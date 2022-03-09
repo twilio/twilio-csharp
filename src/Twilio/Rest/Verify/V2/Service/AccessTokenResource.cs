@@ -82,15 +82,17 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="identity"> Unique external identifier of the Entity </param>
         /// <param name="factorType"> The Type of this Factor </param>
         /// <param name="factorFriendlyName"> The factor friendly name </param>
+        /// <param name="ttl"> How long, in seconds, the access token is valid. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of AccessToken </returns>
         public static AccessTokenResource Create(string pathServiceSid,
                                                  string identity,
                                                  AccessTokenResource.FactorTypesEnum factorType,
                                                  string factorFriendlyName = null,
+                                                 int? ttl = null,
                                                  ITwilioRestClient client = null)
         {
-            var options = new CreateAccessTokenOptions(pathServiceSid, identity, factorType){FactorFriendlyName = factorFriendlyName};
+            var options = new CreateAccessTokenOptions(pathServiceSid, identity, factorType){FactorFriendlyName = factorFriendlyName, Ttl = ttl};
             return Create(options, client);
         }
 
@@ -102,15 +104,17 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="identity"> Unique external identifier of the Entity </param>
         /// <param name="factorType"> The Type of this Factor </param>
         /// <param name="factorFriendlyName"> The factor friendly name </param>
+        /// <param name="ttl"> How long, in seconds, the access token is valid. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AccessToken </returns>
         public static async System.Threading.Tasks.Task<AccessTokenResource> CreateAsync(string pathServiceSid,
                                                                                          string identity,
                                                                                          AccessTokenResource.FactorTypesEnum factorType,
                                                                                          string factorFriendlyName = null,
+                                                                                         int? ttl = null,
                                                                                          ITwilioRestClient client = null)
         {
-            var options = new CreateAccessTokenOptions(pathServiceSid, identity, factorType){FactorFriendlyName = factorFriendlyName};
+            var options = new CreateAccessTokenOptions(pathServiceSid, identity, factorType){FactorFriendlyName = factorFriendlyName, Ttl = ttl};
             return await CreateAsync(options, client);
         }
         #endif
@@ -244,6 +248,16 @@ namespace Twilio.Rest.Verify.V2.Service
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
+        /// <summary>
+        /// How long, in seconds, the access token is valid.
+        /// </summary>
+        [JsonProperty("ttl")]
+        public int? Ttl { get; private set; }
+        /// <summary>
+        /// The date this access token was created
+        /// </summary>
+        [JsonProperty("date_created")]
+        public DateTime? DateCreated { get; private set; }
 
         private AccessTokenResource()
         {

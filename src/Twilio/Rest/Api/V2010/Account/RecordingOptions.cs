@@ -24,6 +24,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
+        /// <summary>
+        /// A boolean parameter indicating whether to retrieve soft deleted recordings or not.
+        /// </summary>
+        public bool? IncludeSoftDeleted { get; set; }
 
         /// <summary>
         /// Construct a new FetchRecordingOptions
@@ -40,6 +44,11 @@ namespace Twilio.Rest.Api.V2010.Account
         public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
+            if (IncludeSoftDeleted != null)
+            {
+                p.Add(new KeyValuePair<string, string>("IncludeSoftDeleted", IncludeSoftDeleted.Value.ToString().ToLower()));
+            }
+
             return p;
         }
     }
@@ -106,6 +115,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Read by unique Conference SID for the recording
         /// </summary>
         public string ConferenceSid { get; set; }
+        /// <summary>
+        /// A boolean parameter indicating whether to retrieve soft deleted recordings or not.
+        /// </summary>
+        public bool? IncludeSoftDeleted { get; set; }
 
         /// <summary>
         /// Generate the necessary parameters
@@ -138,6 +151,11 @@ namespace Twilio.Rest.Api.V2010.Account
             if (ConferenceSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("ConferenceSid", ConferenceSid.ToString()));
+            }
+
+            if (IncludeSoftDeleted != null)
+            {
+                p.Add(new KeyValuePair<string, string>("IncludeSoftDeleted", IncludeSoftDeleted.Value.ToString().ToLower()));
             }
 
             if (PageSize != null)

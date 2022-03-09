@@ -48,6 +48,19 @@ namespace Twilio.Rest.Chat.V2.Service.User
             public static readonly NotificationLevelEnum Muted = new NotificationLevelEnum("muted");
         }
 
+        public sealed class WebhookEnabledTypeEnum : StringEnum
+        {
+            private WebhookEnabledTypeEnum(string value) : base(value) {}
+            public WebhookEnabledTypeEnum() {}
+            public static implicit operator WebhookEnabledTypeEnum(string value)
+            {
+                return new WebhookEnabledTypeEnum(value);
+            }
+
+            public static readonly WebhookEnabledTypeEnum True = new WebhookEnabledTypeEnum("true");
+            public static readonly WebhookEnabledTypeEnum False = new WebhookEnabledTypeEnum("false");
+        }
+
         private static Request BuildReadRequest(ReadUserChannelOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -268,7 +281,7 @@ namespace Twilio.Rest.Chat.V2.Service.User
                 Rest.Domain.Chat,
                 "/v2/Services/" + options.PathServiceSid + "/Users/" + options.PathUserSid + "/Channels/" + options.PathChannelSid + "",
                 queryParams: options.GetParams(),
-                headerParams: null
+                headerParams: options.GetHeaderParams()
             );
         }
 
@@ -307,14 +320,16 @@ namespace Twilio.Rest.Chat.V2.Service.User
         /// <param name="pathServiceSid"> The SID of the Service to read the resources from </param>
         /// <param name="pathUserSid"> The SID of the User to fetch the User Channel resources from </param>
         /// <param name="pathChannelSid"> The SID of the Channel the resource belongs to </param>
+        /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of UserChannel </returns>
         public static bool Delete(string pathServiceSid,
                                   string pathUserSid,
                                   string pathChannelSid,
+                                  UserChannelResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
                                   ITwilioRestClient client = null)
         {
-            var options = new DeleteUserChannelOptions(pathServiceSid, pathUserSid, pathChannelSid);
+            var options = new DeleteUserChannelOptions(pathServiceSid, pathUserSid, pathChannelSid){XTwilioWebhookEnabled = xTwilioWebhookEnabled};
             return Delete(options, client);
         }
 
@@ -325,14 +340,16 @@ namespace Twilio.Rest.Chat.V2.Service.User
         /// <param name="pathServiceSid"> The SID of the Service to read the resources from </param>
         /// <param name="pathUserSid"> The SID of the User to fetch the User Channel resources from </param>
         /// <param name="pathChannelSid"> The SID of the Channel the resource belongs to </param>
+        /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of UserChannel </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid,
                                                                           string pathUserSid,
                                                                           string pathChannelSid,
+                                                                          UserChannelResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
                                                                           ITwilioRestClient client = null)
         {
-            var options = new DeleteUserChannelOptions(pathServiceSid, pathUserSid, pathChannelSid);
+            var options = new DeleteUserChannelOptions(pathServiceSid, pathUserSid, pathChannelSid){XTwilioWebhookEnabled = xTwilioWebhookEnabled};
             return await DeleteAsync(options, client);
         }
         #endif

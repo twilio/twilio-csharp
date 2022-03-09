@@ -503,6 +503,11 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         [JsonConverter(typeof(StringEnumConverter))]
         public SupportingDocumentResource.StatusEnum Status { get; private set; }
         /// <summary>
+        /// The failure reason of the Supporting Document Resource.
+        /// </summary>
+        [JsonProperty("failure_reason")]
+        public string FailureReason { get; private set; }
+        /// <summary>
         /// The type of the Supporting Document
         /// </summary>
         [JsonProperty("type")]

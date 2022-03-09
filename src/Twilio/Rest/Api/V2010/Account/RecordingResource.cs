@@ -36,6 +36,7 @@ namespace Twilio.Rest.Api.V2010.Account
             public static readonly StatusEnum Processing = new StatusEnum("processing");
             public static readonly StatusEnum Completed = new StatusEnum("completed");
             public static readonly StatusEnum Absent = new StatusEnum("absent");
+            public static readonly StatusEnum Deleted = new StatusEnum("deleted");
         }
 
         public sealed class SourceEnum : StringEnum
@@ -101,11 +102,16 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="pathAccountSid"> The SID of the Account that created the resource to fetch </param>
+        /// <param name="includeSoftDeleted"> A boolean parameter indicating whether to retrieve soft deleted recordings or
+        ///                          not. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Recording </returns>
-        public static RecordingResource Fetch(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
+        public static RecordingResource Fetch(string pathSid,
+                                              string pathAccountSid = null,
+                                              bool? includeSoftDeleted = null,
+                                              ITwilioRestClient client = null)
         {
-            var options = new FetchRecordingOptions(pathSid){PathAccountSid = pathAccountSid};
+            var options = new FetchRecordingOptions(pathSid){PathAccountSid = pathAccountSid, IncludeSoftDeleted = includeSoftDeleted};
             return Fetch(options, client);
         }
 
@@ -115,13 +121,16 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="pathAccountSid"> The SID of the Account that created the resource to fetch </param>
+        /// <param name="includeSoftDeleted"> A boolean parameter indicating whether to retrieve soft deleted recordings or
+        ///                          not. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Recording </returns>
         public static async System.Threading.Tasks.Task<RecordingResource> FetchAsync(string pathSid,
                                                                                       string pathAccountSid = null,
+                                                                                      bool? includeSoftDeleted = null,
                                                                                       ITwilioRestClient client = null)
         {
-            var options = new FetchRecordingOptions(pathSid){PathAccountSid = pathAccountSid};
+            var options = new FetchRecordingOptions(pathSid){PathAccountSid = pathAccountSid, IncludeSoftDeleted = includeSoftDeleted};
             return await FetchAsync(options, client);
         }
         #endif
@@ -249,6 +258,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="dateCreatedAfter"> Only include recordings that were created on this date </param>
         /// <param name="callSid"> The Call SID of the resources to read </param>
         /// <param name="conferenceSid"> Read by unique Conference SID for the recording </param>
+        /// <param name="includeSoftDeleted"> A boolean parameter indicating whether to retrieve soft deleted recordings or
+        ///                          not. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -259,11 +270,12 @@ namespace Twilio.Rest.Api.V2010.Account
                                                           DateTime? dateCreatedAfter = null,
                                                           string callSid = null,
                                                           string conferenceSid = null,
+                                                          bool? includeSoftDeleted = null,
                                                           int? pageSize = null,
                                                           long? limit = null,
                                                           ITwilioRestClient client = null)
         {
-            var options = new ReadRecordingOptions(){PathAccountSid = pathAccountSid, DateCreatedBefore = dateCreatedBefore, DateCreated = dateCreated, DateCreatedAfter = dateCreatedAfter, CallSid = callSid, ConferenceSid = conferenceSid, PageSize = pageSize, Limit = limit};
+            var options = new ReadRecordingOptions(){PathAccountSid = pathAccountSid, DateCreatedBefore = dateCreatedBefore, DateCreated = dateCreated, DateCreatedAfter = dateCreatedAfter, CallSid = callSid, ConferenceSid = conferenceSid, IncludeSoftDeleted = includeSoftDeleted, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -277,6 +289,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="dateCreatedAfter"> Only include recordings that were created on this date </param>
         /// <param name="callSid"> The Call SID of the resources to read </param>
         /// <param name="conferenceSid"> Read by unique Conference SID for the recording </param>
+        /// <param name="includeSoftDeleted"> A boolean parameter indicating whether to retrieve soft deleted recordings or
+        ///                          not. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -287,11 +301,12 @@ namespace Twilio.Rest.Api.V2010.Account
                                                                                                   DateTime? dateCreatedAfter = null,
                                                                                                   string callSid = null,
                                                                                                   string conferenceSid = null,
+                                                                                                  bool? includeSoftDeleted = null,
                                                                                                   int? pageSize = null,
                                                                                                   long? limit = null,
                                                                                                   ITwilioRestClient client = null)
         {
-            var options = new ReadRecordingOptions(){PathAccountSid = pathAccountSid, DateCreatedBefore = dateCreatedBefore, DateCreated = dateCreated, DateCreatedAfter = dateCreatedAfter, CallSid = callSid, ConferenceSid = conferenceSid, PageSize = pageSize, Limit = limit};
+            var options = new ReadRecordingOptions(){PathAccountSid = pathAccountSid, DateCreatedBefore = dateCreatedBefore, DateCreated = dateCreated, DateCreatedAfter = dateCreatedAfter, CallSid = callSid, ConferenceSid = conferenceSid, IncludeSoftDeleted = includeSoftDeleted, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

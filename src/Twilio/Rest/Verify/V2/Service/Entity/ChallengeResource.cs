@@ -446,15 +446,17 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
         /// <param name="pathSid"> A string that uniquely identifies this Challenge. </param>
         /// <param name="authPayload"> Optional payload to verify the Challenge </param>
+        /// <param name="metadata"> Metadata of the challenge. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Challenge </returns>
         public static ChallengeResource Update(string pathServiceSid,
                                                string pathIdentity,
                                                string pathSid,
                                                string authPayload = null,
+                                               object metadata = null,
                                                ITwilioRestClient client = null)
         {
-            var options = new UpdateChallengeOptions(pathServiceSid, pathIdentity, pathSid){AuthPayload = authPayload};
+            var options = new UpdateChallengeOptions(pathServiceSid, pathIdentity, pathSid){AuthPayload = authPayload, Metadata = metadata};
             return Update(options, client);
         }
 
@@ -466,15 +468,17 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
         /// <param name="pathSid"> A string that uniquely identifies this Challenge. </param>
         /// <param name="authPayload"> Optional payload to verify the Challenge </param>
+        /// <param name="metadata"> Metadata of the challenge. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Challenge </returns>
         public static async System.Threading.Tasks.Task<ChallengeResource> UpdateAsync(string pathServiceSid,
                                                                                        string pathIdentity,
                                                                                        string pathSid,
                                                                                        string authPayload = null,
+                                                                                       object metadata = null,
                                                                                        ITwilioRestClient client = null)
         {
-            var options = new UpdateChallengeOptions(pathServiceSid, pathIdentity, pathSid){AuthPayload = authPayload};
+            var options = new UpdateChallengeOptions(pathServiceSid, pathIdentity, pathSid){AuthPayload = authPayload, Metadata = metadata};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -569,6 +573,11 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// </summary>
         [JsonProperty("hidden_details")]
         public object HiddenDetails { get; private set; }
+        /// <summary>
+        /// Metadata of the challenge.
+        /// </summary>
+        [JsonProperty("metadata")]
+        public object Metadata { get; private set; }
         /// <summary>
         /// The Factor Type of this Challenge
         /// </summary>
