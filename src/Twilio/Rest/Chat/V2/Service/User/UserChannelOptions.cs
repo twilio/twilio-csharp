@@ -109,6 +109,10 @@ namespace Twilio.Rest.Chat.V2.Service.User
         /// The SID of the Channel the resource belongs to
         /// </summary>
         public string PathChannelSid { get; }
+        /// <summary>
+        /// The X-Twilio-Webhook-Enabled HTTP request header
+        /// </summary>
+        public UserChannelResource.WebhookEnabledTypeEnum XTwilioWebhookEnabled { get; set; }
 
         /// <summary>
         /// Construct a new DeleteUserChannelOptions
@@ -129,6 +133,20 @@ namespace Twilio.Rest.Chat.V2.Service.User
         public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
+            return p;
+        }
+
+        /// <summary>
+        /// Generate the necessary header parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetHeaderParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            if (XTwilioWebhookEnabled != null)
+            {
+                p.Add(new KeyValuePair<string, string>("X-Twilio-Webhook-Enabled", XTwilioWebhookEnabled.ToString()));
+            }
+
             return p;
         }
     }

@@ -34,6 +34,10 @@ namespace Twilio.Rest.Verify.V2.Service
         /// The factor friendly name
         /// </summary>
         public string FactorFriendlyName { get; set; }
+        /// <summary>
+        /// How long, in seconds, the access token is valid.
+        /// </summary>
+        public int? Ttl { get; set; }
 
         /// <summary>
         /// Construct a new CreateAccessTokenOptions
@@ -69,6 +73,11 @@ namespace Twilio.Rest.Verify.V2.Service
             if (FactorFriendlyName != null)
             {
                 p.Add(new KeyValuePair<string, string>("FactorFriendlyName", FactorFriendlyName));
+            }
+
+            if (Ttl != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Ttl", Ttl.ToString()));
             }
 
             return p;
