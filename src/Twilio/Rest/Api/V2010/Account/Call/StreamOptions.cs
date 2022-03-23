@@ -25,13 +25,13 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// </summary>
         public string PathCallSid { get; }
         /// <summary>
+        /// Url where WebSocket connection will be established.
+        /// </summary>
+        public Uri Url { get; }
+        /// <summary>
         /// The name of this resource
         /// </summary>
         public string Name { get; set; }
-        /// <summary>
-        /// Url where WebSocket connection will be established.
-        /// </summary>
-        public Uri Url { get; set; }
         /// <summary>
         /// One of `inbound_track`, `outbound_track`, `both_tracks`.
         /// </summary>
@@ -841,9 +841,11 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// Construct a new CreateStreamOptions
         /// </summary>
         /// <param name="pathCallSid"> The SID of the Call the resource is associated with </param>
-        public CreateStreamOptions(string pathCallSid)
+        /// <param name="url"> Url where WebSocket connection will be established. </param>
+        public CreateStreamOptions(string pathCallSid, Uri url)
         {
             PathCallSid = pathCallSid;
+            Url = url;
         }
 
         /// <summary>
@@ -852,14 +854,14 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
-            if (Name != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Name", Name));
-            }
-
             if (Url != null)
             {
                 p.Add(new KeyValuePair<string, string>("Url", Serializers.Url(Url)));
+            }
+
+            if (Name != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Name", Name));
             }
 
             if (Track != null)

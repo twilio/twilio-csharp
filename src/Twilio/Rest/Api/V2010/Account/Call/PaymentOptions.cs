@@ -60,7 +60,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// </summary>
         public int? MinPostalCodeLength { get; set; }
         /// <summary>
-        /// A single level JSON string that is required when accepting certain information specific only to ACH payments.
+        /// A single-level JSON object used to pass custom parameters to payment processors. (Required for ACH payments)
         /// </summary>
         public object Parameter { get; set; }
         /// <summary>

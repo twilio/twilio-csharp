@@ -30,12 +30,13 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Call
                 "/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Calls/CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Streams.json",
                 ""
             );
+            request.AddPostParam("Url", Serialize(new Uri("https://example.com")));
             twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                StreamResource.Create("CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
+                StreamResource.Create("CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", new Uri("https://example.com"), client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -53,7 +54,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Call
                                          "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"call_sid\": \"CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"sid\": \"MZaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"name\": null,\"status\": \"in-progress\",\"date_updated\": \"Thu, 30 Jul 2015 20:00:00 +0000\",\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Streams/MZaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json\"}"
                                      ));
 
-            var response = StreamResource.Create("CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
+            var response = StreamResource.Create("CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", new Uri("https://example.com"), client: twilioRestClient);
             Assert.NotNull(response);
         }
 
@@ -68,7 +69,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Call
                                          "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"call_sid\": \"CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"sid\": \"MZaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"name\": \"myName\",\"status\": \"in-progress\",\"date_updated\": \"Thu, 30 Jul 2015 20:00:00 +0000\",\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Streams/MZaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json\"}"
                                      ));
 
-            var response = StreamResource.Create("CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
+            var response = StreamResource.Create("CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", new Uri("https://example.com"), client: twilioRestClient);
             Assert.NotNull(response);
         }
 

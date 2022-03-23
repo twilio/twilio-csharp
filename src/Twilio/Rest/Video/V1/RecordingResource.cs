@@ -466,6 +466,17 @@ namespace Twilio.Rest.Video.V1
         [JsonProperty("media_external_location")]
         public Uri MediaExternalLocation { get; private set; }
         /// <summary>
+        /// The URL called to send status information on every recording event.
+        /// </summary>
+        [JsonProperty("status_callback")]
+        public Uri StatusCallback { get; private set; }
+        /// <summary>
+        /// The HTTP method used to call `status_callback`
+        /// </summary>
+        [JsonProperty("status_callback_method")]
+        [JsonConverter(typeof(HttpMethodConverter))]
+        public Twilio.Http.HttpMethod StatusCallbackMethod { get; private set; }
+        /// <summary>
         /// The URLs of related resources
         /// </summary>
         [JsonProperty("links")]

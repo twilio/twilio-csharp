@@ -248,17 +248,21 @@ namespace Twilio.Rest.Media.V1
         /// </summary>
         /// <param name="order"> The sort order of the list </param>
         /// <param name="status"> Status to filter by </param>
+        /// <param name="processorSid"> MediaProcessor to filter by </param>
+        /// <param name="sourceSid"> Source SID to filter by </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of MediaRecording </returns>
         public static ResourceSet<MediaRecordingResource> Read(MediaRecordingResource.OrderEnum order = null,
                                                                MediaRecordingResource.StatusEnum status = null,
+                                                               string processorSid = null,
+                                                               string sourceSid = null,
                                                                int? pageSize = null,
                                                                long? limit = null,
                                                                ITwilioRestClient client = null)
         {
-            var options = new ReadMediaRecordingOptions(){Order = order, Status = status, PageSize = pageSize, Limit = limit};
+            var options = new ReadMediaRecordingOptions(){Order = order, Status = status, ProcessorSid = processorSid, SourceSid = sourceSid, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -268,17 +272,21 @@ namespace Twilio.Rest.Media.V1
         /// </summary>
         /// <param name="order"> The sort order of the list </param>
         /// <param name="status"> Status to filter by </param>
+        /// <param name="processorSid"> MediaProcessor to filter by </param>
+        /// <param name="sourceSid"> Source SID to filter by </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of MediaRecording </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<MediaRecordingResource>> ReadAsync(MediaRecordingResource.OrderEnum order = null,
                                                                                                        MediaRecordingResource.StatusEnum status = null,
+                                                                                                       string processorSid = null,
+                                                                                                       string sourceSid = null,
                                                                                                        int? pageSize = null,
                                                                                                        long? limit = null,
                                                                                                        ITwilioRestClient client = null)
         {
-            var options = new ReadMediaRecordingOptions(){Order = order, Status = status, PageSize = pageSize, Limit = limit};
+            var options = new ReadMediaRecordingOptions(){Order = order, Status = status, ProcessorSid = processorSid, SourceSid = sourceSid, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

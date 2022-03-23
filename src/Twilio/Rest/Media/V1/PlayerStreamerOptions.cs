@@ -57,6 +57,10 @@ namespace Twilio.Rest.Media.V1
         /// The HTTP method Twilio should use to call the `status_callback` URL
         /// </summary>
         public Twilio.Http.HttpMethod StatusCallbackMethod { get; set; }
+        /// <summary>
+        /// Maximum PlayerStreamer duration in seconds
+        /// </summary>
+        public int? MaxDuration { get; set; }
 
         /// <summary>
         /// Generate the necessary parameters
@@ -77,6 +81,11 @@ namespace Twilio.Rest.Media.V1
             if (StatusCallbackMethod != null)
             {
                 p.Add(new KeyValuePair<string, string>("StatusCallbackMethod", StatusCallbackMethod.ToString()));
+            }
+
+            if (MaxDuration != null)
+            {
+                p.Add(new KeyValuePair<string, string>("MaxDuration", MaxDuration.ToString()));
             }
 
             return p;

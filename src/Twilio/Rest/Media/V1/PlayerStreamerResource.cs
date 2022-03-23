@@ -189,14 +189,16 @@ namespace Twilio.Rest.Media.V1
         /// <param name="video"> Whether the PlayerStreamer is configured to stream video </param>
         /// <param name="statusCallback"> The URL to which Twilio will send PlayerStreamer event updates </param>
         /// <param name="statusCallbackMethod"> The HTTP method Twilio should use to call the `status_callback` URL </param>
+        /// <param name="maxDuration"> Maximum PlayerStreamer duration in seconds </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of PlayerStreamer </returns>
         public static PlayerStreamerResource Create(bool? video = null,
                                                     Uri statusCallback = null,
                                                     Twilio.Http.HttpMethod statusCallbackMethod = null,
+                                                    int? maxDuration = null,
                                                     ITwilioRestClient client = null)
         {
-            var options = new CreatePlayerStreamerOptions(){Video = video, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod};
+            var options = new CreatePlayerStreamerOptions(){Video = video, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, MaxDuration = maxDuration};
             return Create(options, client);
         }
 
@@ -207,14 +209,16 @@ namespace Twilio.Rest.Media.V1
         /// <param name="video"> Whether the PlayerStreamer is configured to stream video </param>
         /// <param name="statusCallback"> The URL to which Twilio will send PlayerStreamer event updates </param>
         /// <param name="statusCallbackMethod"> The HTTP method Twilio should use to call the `status_callback` URL </param>
+        /// <param name="maxDuration"> Maximum PlayerStreamer duration in seconds </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PlayerStreamer </returns>
         public static async System.Threading.Tasks.Task<PlayerStreamerResource> CreateAsync(bool? video = null,
                                                                                             Uri statusCallback = null,
                                                                                             Twilio.Http.HttpMethod statusCallbackMethod = null,
+                                                                                            int? maxDuration = null,
                                                                                             ITwilioRestClient client = null)
         {
-            var options = new CreatePlayerStreamerOptions(){Video = video, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod};
+            var options = new CreatePlayerStreamerOptions(){Video = video, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, MaxDuration = maxDuration};
             return await CreateAsync(options, client);
         }
         #endif
@@ -505,6 +509,11 @@ namespace Twilio.Rest.Media.V1
         [JsonProperty("ended_reason")]
         [JsonConverter(typeof(StringEnumConverter))]
         public PlayerStreamerResource.EndedReasonEnum EndedReason { get; private set; }
+        /// <summary>
+        /// Maximum PlayerStreamer duration in seconds
+        /// </summary>
+        [JsonProperty("max_duration")]
+        public int? MaxDuration { get; private set; }
 
         private PlayerStreamerResource()
         {
