@@ -35,18 +35,6 @@ namespace Twilio.Rest.Supersim.V1
         /// </summary>
         public int? DataLimit { get; set; }
         /// <summary>
-        /// Deprecated
-        /// </summary>
-        public bool? CommandsEnabled { get; set; }
-        /// <summary>
-        /// Deprecated
-        /// </summary>
-        public Uri CommandsUrl { get; set; }
-        /// <summary>
-        /// Deprecated
-        /// </summary>
-        public Twilio.Http.HttpMethod CommandsMethod { get; set; }
-        /// <summary>
         /// The URL that will receive a webhook when a Super SIM in the Fleet is used to send an IP Command from your device
         /// </summary>
         public Uri IpCommandsUrl { get; set; }
@@ -100,21 +88,6 @@ namespace Twilio.Rest.Supersim.V1
             if (DataLimit != null)
             {
                 p.Add(new KeyValuePair<string, string>("DataLimit", DataLimit.ToString()));
-            }
-
-            if (CommandsEnabled != null)
-            {
-                p.Add(new KeyValuePair<string, string>("CommandsEnabled", CommandsEnabled.Value.ToString().ToLower()));
-            }
-
-            if (CommandsUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("CommandsUrl", Serializers.Url(CommandsUrl)));
-            }
-
-            if (CommandsMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("CommandsMethod", CommandsMethod.ToString()));
             }
 
             if (IpCommandsUrl != null)
@@ -229,14 +202,6 @@ namespace Twilio.Rest.Supersim.V1
         /// </summary>
         public string NetworkAccessProfile { get; set; }
         /// <summary>
-        /// Deprecated
-        /// </summary>
-        public Uri CommandsUrl { get; set; }
-        /// <summary>
-        /// Deprecated
-        /// </summary>
-        public Twilio.Http.HttpMethod CommandsMethod { get; set; }
-        /// <summary>
         /// The URL that will receive a webhook when a Super SIM in the Fleet is used to send an IP Command from your device
         /// </summary>
         public Uri IpCommandsUrl { get; set; }
@@ -276,16 +241,6 @@ namespace Twilio.Rest.Supersim.V1
             if (NetworkAccessProfile != null)
             {
                 p.Add(new KeyValuePair<string, string>("NetworkAccessProfile", NetworkAccessProfile.ToString()));
-            }
-
-            if (CommandsUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("CommandsUrl", Serializers.Url(CommandsUrl)));
-            }
-
-            if (CommandsMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("CommandsMethod", CommandsMethod.ToString()));
             }
 
             if (IpCommandsUrl != null)

@@ -91,6 +91,14 @@ namespace Twilio.Rest.Media.V1
         /// Status to filter by
         /// </summary>
         public MediaRecordingResource.StatusEnum Status { get; set; }
+        /// <summary>
+        /// MediaProcessor to filter by
+        /// </summary>
+        public string ProcessorSid { get; set; }
+        /// <summary>
+        /// Source SID to filter by
+        /// </summary>
+        public string SourceSid { get; set; }
 
         /// <summary>
         /// Generate the necessary parameters
@@ -106,6 +114,16 @@ namespace Twilio.Rest.Media.V1
             if (Status != null)
             {
                 p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
+            }
+
+            if (ProcessorSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ProcessorSid", ProcessorSid.ToString()));
+            }
+
+            if (SourceSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("SourceSid", SourceSid.ToString()));
             }
 
             if (PageSize != null)

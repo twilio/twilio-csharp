@@ -459,6 +459,11 @@ namespace Twilio.Rest.FlexApi.V1
         /// </summary>
         [JsonProperty("flex_url")]
         public Uri FlexUrl { get; private set; }
+        /// <summary>
+        /// Flex Conversations channels' attachments configurations
+        /// </summary>
+        [JsonProperty("channel_configs")]
+        public List<object> ChannelConfigs { get; private set; }
 
         private ConfigurationResource()
         {

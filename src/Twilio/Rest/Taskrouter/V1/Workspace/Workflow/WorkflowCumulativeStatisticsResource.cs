@@ -71,8 +71,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Workflow
         /// <param name="minutes"> Only calculate statistics since this many minutes in the past </param>
         /// <param name="startDate"> Only calculate statistics from on or after this date </param>
         /// <param name="taskChannel"> Only calculate cumulative statistics on this TaskChannel </param>
-        /// <param name="splitByWaitTime"> A comma separated list of values that describes the thresholds to calculate
-        ///                       statistics on </param>
+        /// <param name="splitByWaitTime"> A comma separated list of values that describes the thresholds, in seconds, to
+        ///                       calculate statistics on </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of WorkflowCumulativeStatistics </returns>
         public static WorkflowCumulativeStatisticsResource Fetch(string pathWorkspaceSid,
@@ -99,8 +99,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Workflow
         /// <param name="minutes"> Only calculate statistics since this many minutes in the past </param>
         /// <param name="startDate"> Only calculate statistics from on or after this date </param>
         /// <param name="taskChannel"> Only calculate cumulative statistics on this TaskChannel </param>
-        /// <param name="splitByWaitTime"> A comma separated list of values that describes the thresholds to calculate
-        ///                       statistics on </param>
+        /// <param name="splitByWaitTime"> A comma separated list of values that describes the thresholds, in seconds, to
+        ///                       calculate statistics on </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of WorkflowCumulativeStatistics </returns>
         public static async System.Threading.Tasks.Task<WorkflowCumulativeStatisticsResource> FetchAsync(string pathWorkspaceSid,

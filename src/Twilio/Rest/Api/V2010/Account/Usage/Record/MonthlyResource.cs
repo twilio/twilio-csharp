@@ -224,6 +224,8 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
             public static readonly CategoryEnum TurnmegabytesUswest = new CategoryEnum("turnmegabytes-uswest");
             public static readonly CategoryEnum TwilioInterconnect = new CategoryEnum("twilio-interconnect");
             public static readonly CategoryEnum VerifyPush = new CategoryEnum("verify-push");
+            public static readonly CategoryEnum VerifyTotp = new CategoryEnum("verify-totp");
+            public static readonly CategoryEnum VerifyWhatsappConversationsBusinessInitiated = new CategoryEnum("verify-whatsapp-conversations-business-initiated");
             public static readonly CategoryEnum VideoRecordings = new CategoryEnum("video-recordings");
             public static readonly CategoryEnum VoiceInsights = new CategoryEnum("voice-insights");
             public static readonly CategoryEnum VoiceInsightsClientInsightsOnDemandMinute = new CategoryEnum("voice-insights-client-insights-on-demand-minute");

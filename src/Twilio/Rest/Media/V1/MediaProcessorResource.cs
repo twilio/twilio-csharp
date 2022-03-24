@@ -501,7 +501,7 @@ namespace Twilio.Rest.Media.V1
         [JsonConverter(typeof(HttpMethodConverter))]
         public Twilio.Http.HttpMethod StatusCallbackMethod { get; private set; }
         /// <summary>
-        /// Maximum MediaProcessor duration in minutes
+        /// Maximum MediaProcessor duration in seconds
         /// </summary>
         [JsonProperty("max_duration")]
         public int? MaxDuration { get; private set; }
