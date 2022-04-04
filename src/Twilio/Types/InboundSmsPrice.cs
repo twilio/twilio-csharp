@@ -35,7 +35,7 @@ namespace Twilio.Types
             public static readonly TypeEnum National = new TypeEnum("national");
 
             /// <summary>
-            /// shortcode number type
+            /// Shortcode number type
             /// </summary>
             public static readonly TypeEnum Shortcode = new TypeEnum("shortcode");
 
