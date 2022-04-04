@@ -35,6 +35,11 @@ namespace Twilio.Types
             public static readonly TypeEnum National = new TypeEnum("national");
 
             /// <summary>
+            /// Shortcode number type
+            /// </summary>
+            public static readonly TypeEnum Shortcode = new TypeEnum("shortcode");
+
+            /// <summary>
             /// Toll Free number type
             /// </summary>
             public static readonly TypeEnum TollFree = new TypeEnum("toll free");
