@@ -825,11 +825,6 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonProperty("answered_by")]
         public string AnsweredBy { get; private set; }
         /// <summary>
-        /// The annotation provided for the call
-        /// </summary>
-        [JsonProperty("annotation")]
-        public string Annotation { get; private set; }
-        /// <summary>
         /// The API Version used to create the call
         /// </summary>
         [JsonProperty("api_version")]

@@ -1,6 +1,22 @@
 twilio-csharp Changelog
 =======================
 
+[2022-04-06] Version 5.74.0
+---------------------------
+**Library - Feature**
+- [PR #602](https://github.com/twilio/twilio-csharp/pull/602): support shortcode as an InboundSmsPrice type. Thanks to [@beebzz](https://github.com/beebzz)!
+
+**Api**
+- Updated `provider_sid` visibility to private
+
+**Verify**
+- Verify List Attempts API summary endpoint added.
+- Update PII documentation for `AccessTokens` `factor_friendly_name` property.
+
+**Voice**
+- make annotation parameter from /Calls API private
+
+
 [2022-03-23] Version 5.73.0
 ---------------------------
 **Api**
