@@ -48,7 +48,7 @@ If you are building with the .NET Core command line tools, then you can run the 
 
 ## Sample Usage
 
-The examples below show how to have your application initiate and outbound phone call and send an SMS message using the Twilio .NET helper library:
+The examples below show how to have your application initiate an outbound phone call and send an SMS message using the Twilio .NET helper library:
 ```csharp
 TwilioClient.Init("ACCOUNT_SID", "AUTH_TOKEN");
 
