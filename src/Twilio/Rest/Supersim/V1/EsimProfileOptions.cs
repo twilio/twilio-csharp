@@ -19,10 +19,6 @@ namespace Twilio.Rest.Supersim.V1
     public class CreateEsimProfileOptions : IOptions<EsimProfileResource>
     {
         /// <summary>
-        /// Identifier of the eUICC that will claim the eSIM Profile
-        /// </summary>
-        public string Eid { get; }
-        /// <summary>
         /// The URL we should call after we have sent when the status of the eSIM Profile changes
         /// </summary>
         public string CallbackUrl { get; set; }
@@ -30,15 +26,10 @@ namespace Twilio.Rest.Supersim.V1
         /// The HTTP method we should use to call callback_url
         /// </summary>
         public Twilio.Http.HttpMethod CallbackMethod { get; set; }
-
         /// <summary>
-        /// Construct a new CreateEsimProfileOptions
+        /// Identifier of the eUICC that will claim the eSIM Profile
         /// </summary>
-        /// <param name="eid"> Identifier of the eUICC that will claim the eSIM Profile </param>
-        public CreateEsimProfileOptions(string eid)
-        {
-            Eid = eid;
-        }
+        public string Eid { get; set; }
 
         /// <summary>
         /// Generate the necessary parameters
@@ -46,11 +37,6 @@ namespace Twilio.Rest.Supersim.V1
         public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
-            if (Eid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Eid", Eid));
-            }
-
             if (CallbackUrl != null)
             {
                 p.Add(new KeyValuePair<string, string>("CallbackUrl", CallbackUrl));
@@ -59,6 +45,11 @@ namespace Twilio.Rest.Supersim.V1
             if (CallbackMethod != null)
             {
                 p.Add(new KeyValuePair<string, string>("CallbackMethod", CallbackMethod.ToString()));
+            }
+
+            if (Eid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Eid", Eid));
             }
 
             return p;

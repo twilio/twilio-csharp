@@ -83,18 +83,18 @@ namespace Twilio.Rest.Supersim.V1
         /// <summary>
         /// Order an eSIM Profile.
         /// </summary>
-        /// <param name="eid"> Identifier of the eUICC that will claim the eSIM Profile </param>
         /// <param name="callbackUrl"> The URL we should call after we have sent when the status of the eSIM Profile changes
         ///                   </param>
         /// <param name="callbackMethod"> The HTTP method we should use to call callback_url </param>
+        /// <param name="eid"> Identifier of the eUICC that will claim the eSIM Profile </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of EsimProfile </returns>
-        public static EsimProfileResource Create(string eid,
-                                                 string callbackUrl = null,
+        public static EsimProfileResource Create(string callbackUrl = null,
                                                  Twilio.Http.HttpMethod callbackMethod = null,
+                                                 string eid = null,
                                                  ITwilioRestClient client = null)
         {
-            var options = new CreateEsimProfileOptions(eid){CallbackUrl = callbackUrl, CallbackMethod = callbackMethod};
+            var options = new CreateEsimProfileOptions(){CallbackUrl = callbackUrl, CallbackMethod = callbackMethod, Eid = eid};
             return Create(options, client);
         }
 
@@ -102,18 +102,18 @@ namespace Twilio.Rest.Supersim.V1
         /// <summary>
         /// Order an eSIM Profile.
         /// </summary>
-        /// <param name="eid"> Identifier of the eUICC that will claim the eSIM Profile </param>
         /// <param name="callbackUrl"> The URL we should call after we have sent when the status of the eSIM Profile changes
         ///                   </param>
         /// <param name="callbackMethod"> The HTTP method we should use to call callback_url </param>
+        /// <param name="eid"> Identifier of the eUICC that will claim the eSIM Profile </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of EsimProfile </returns>
-        public static async System.Threading.Tasks.Task<EsimProfileResource> CreateAsync(string eid,
-                                                                                         string callbackUrl = null,
+        public static async System.Threading.Tasks.Task<EsimProfileResource> CreateAsync(string callbackUrl = null,
                                                                                          Twilio.Http.HttpMethod callbackMethod = null,
+                                                                                         string eid = null,
                                                                                          ITwilioRestClient client = null)
         {
-            var options = new CreateEsimProfileOptions(eid){CallbackUrl = callbackUrl, CallbackMethod = callbackMethod};
+            var options = new CreateEsimProfileOptions(){CallbackUrl = callbackUrl, CallbackMethod = callbackMethod, Eid = eid};
             return await CreateAsync(options, client);
         }
         #endif

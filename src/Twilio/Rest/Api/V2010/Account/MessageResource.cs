@@ -187,7 +187,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="scheduleType"> Pass the value `fixed` to schedule a message at a fixed time. </param>
         /// <param name="sendAt"> The time that Twilio will send the message. Must be in ISO 8601 format. </param>
         /// <param name="sendAsMms"> If set to True, Twilio will deliver the message as a single MMS message, regardless of the
-        ///                 presence of media </param>
+        ///                 presence of media. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Message </returns>
         public static MessageResource Create(Types.PhoneNumber to,
@@ -244,7 +244,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="scheduleType"> Pass the value `fixed` to schedule a message at a fixed time. </param>
         /// <param name="sendAt"> The time that Twilio will send the message. Must be in ISO 8601 format. </param>
         /// <param name="sendAsMms"> If set to True, Twilio will deliver the message as a single MMS message, regardless of the
-        ///                 presence of media </param>
+        ///                 presence of media. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Message </returns>
         public static async System.Threading.Tasks.Task<MessageResource> CreateAsync(Types.PhoneNumber to,

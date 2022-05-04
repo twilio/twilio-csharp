@@ -18,11 +18,21 @@ namespace Twilio.Rest.Conversations.V1
     public class ReadAddressConfigurationOptions : ReadOptions<AddressConfigurationResource>
     {
         /// <summary>
+        /// The type of address configuration.
+        /// </summary>
+        public string Type { get; set; }
+
+        /// <summary>
         /// Generate the necessary parameters
         /// </summary>
         public override List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
+            if (Type != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Type", Type));
+            }
+
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));

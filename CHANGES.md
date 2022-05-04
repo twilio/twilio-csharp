@@ -1,6 +1,22 @@
 twilio-csharp Changelog
 =======================
 
+[2022-05-04] Version 5.75.0
+---------------------------
+**Library - Chore**
+- [PR #604](https://github.com/twilio/twilio-csharp/pull/604): Security upgrade Newtonsoft.Json from 9.0.1 to 13.0.1. Thanks to [@twilio-product-security](https://github.com/twilio-product-security)!
+
+**Conversations**
+- Expose query parameter `type` in list operation on Address Configurations resource
+
+**Supersim**
+- Add `data_total_billed` and `billed_units` fields to Super SIM UsageRecords API response.
+- Change ESimProfiles `Eid` parameter to optional to enable Activation Code download method support **(breaking change)**
+
+**Verify**
+- Deprecate `push.include_date` parameter in create and update service.
+
+
 [2022-04-06] Version 5.74.0
 ---------------------------
 **Library - Feature**

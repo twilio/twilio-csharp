@@ -73,7 +73,8 @@ namespace Twilio.Rest.Verify.V2
         /// <param name="psd2Enabled"> Whether to pass PSD2 transaction parameters when starting a verification </param>
         /// <param name="doNotShareWarningEnabled"> Whether to add a security warning at the end of an SMS. </param>
         /// <param name="customCodeEnabled"> Whether to allow sending verifications with a custom code. </param>
-        /// <param name="pushIncludeDate"> Optional. Include the date in the Challenge's reponse. Default: true </param>
+        /// <param name="pushIncludeDate"> Optional. Include the date in the Challenge's response. Default: false.
+        ///                       **Deprecated** do not use this parameter. </param>
         /// <param name="pushApnCredentialSid"> Optional. Set APN Credential for this service. </param>
         /// <param name="pushFcmCredentialSid"> Optional. Set FCM Credential for this service. </param>
         /// <param name="totpIssuer"> Optional. Set TOTP Issuer for this service. </param>
@@ -120,7 +121,8 @@ namespace Twilio.Rest.Verify.V2
         /// <param name="psd2Enabled"> Whether to pass PSD2 transaction parameters when starting a verification </param>
         /// <param name="doNotShareWarningEnabled"> Whether to add a security warning at the end of an SMS. </param>
         /// <param name="customCodeEnabled"> Whether to allow sending verifications with a custom code. </param>
-        /// <param name="pushIncludeDate"> Optional. Include the date in the Challenge's reponse. Default: true </param>
+        /// <param name="pushIncludeDate"> Optional. Include the date in the Challenge's response. Default: false.
+        ///                       **Deprecated** do not use this parameter. </param>
         /// <param name="pushApnCredentialSid"> Optional. Set APN Credential for this service. </param>
         /// <param name="pushFcmCredentialSid"> Optional. Set FCM Credential for this service. </param>
         /// <param name="totpIssuer"> Optional. Set TOTP Issuer for this service. </param>
@@ -470,7 +472,8 @@ namespace Twilio.Rest.Verify.V2
         /// <param name="psd2Enabled"> Whether to pass PSD2 transaction parameters when starting a verification </param>
         /// <param name="doNotShareWarningEnabled"> Whether to add a privacy warning at the end of an SMS. </param>
         /// <param name="customCodeEnabled"> Whether to allow sending verifications with a custom code. </param>
-        /// <param name="pushIncludeDate"> Optional. Include the date in the Challenge's reponse. Default: true </param>
+        /// <param name="pushIncludeDate"> Optional. Include the date in the Challenge's response. Default: false.
+        ///                       **Deprecated** do not use this parameter. </param>
         /// <param name="pushApnCredentialSid"> Optional. Set APN Credential for this service. </param>
         /// <param name="pushFcmCredentialSid"> Optional. Set FCM Credential for this service. </param>
         /// <param name="totpIssuer"> Optional. Set TOTP Issuer for this service. </param>
@@ -519,7 +522,8 @@ namespace Twilio.Rest.Verify.V2
         /// <param name="psd2Enabled"> Whether to pass PSD2 transaction parameters when starting a verification </param>
         /// <param name="doNotShareWarningEnabled"> Whether to add a privacy warning at the end of an SMS. </param>
         /// <param name="customCodeEnabled"> Whether to allow sending verifications with a custom code. </param>
-        /// <param name="pushIncludeDate"> Optional. Include the date in the Challenge's reponse. Default: true </param>
+        /// <param name="pushIncludeDate"> Optional. Include the date in the Challenge's response. Default: false.
+        ///                       **Deprecated** do not use this parameter. </param>
         /// <param name="pushApnCredentialSid"> Optional. Set APN Credential for this service. </param>
         /// <param name="pushFcmCredentialSid"> Optional. Set FCM Credential for this service. </param>
         /// <param name="totpIssuer"> Optional. Set TOTP Issuer for this service. </param>

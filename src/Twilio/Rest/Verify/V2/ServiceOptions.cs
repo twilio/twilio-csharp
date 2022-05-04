@@ -53,7 +53,7 @@ namespace Twilio.Rest.Verify.V2
         /// </summary>
         public bool? CustomCodeEnabled { get; set; }
         /// <summary>
-        /// Optional. Include the date in the Challenge's reponse. Default: true
+        /// Optional. Include the date in the Challenge's response. Default: false. **Deprecated** do not use this parameter.
         /// </summary>
         public bool? PushIncludeDate { get; set; }
         /// <summary>
@@ -313,7 +313,7 @@ namespace Twilio.Rest.Verify.V2
         /// </summary>
         public bool? CustomCodeEnabled { get; set; }
         /// <summary>
-        /// Optional. Include the date in the Challenge's reponse. Default: true
+        /// Optional. Include the date in the Challenge's response. Default: false. **Deprecated** do not use this parameter.
         /// </summary>
         public bool? PushIncludeDate { get; set; }
         /// <summary>

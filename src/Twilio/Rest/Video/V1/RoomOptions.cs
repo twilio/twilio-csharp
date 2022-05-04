@@ -102,6 +102,10 @@ namespace Twilio.Rest.Video.V1
         /// Configures the time a room will remain active when no one joins.
         /// </summary>
         public int? UnusedRoomTimeout { get; set; }
+        /// <summary>
+        /// Indicates whether this is a large room.
+        /// </summary>
+        public bool? LargeRoom { get; set; }
 
         /// <summary>
         /// Construct a new CreateRoomOptions
@@ -185,6 +189,11 @@ namespace Twilio.Rest.Video.V1
             if (UnusedRoomTimeout != null)
             {
                 p.Add(new KeyValuePair<string, string>("UnusedRoomTimeout", UnusedRoomTimeout.ToString()));
+            }
+
+            if (LargeRoom != null)
+            {
+                p.Add(new KeyValuePair<string, string>("LargeRoom", LargeRoom.Value.ToString().ToLower()));
             }
 
             return p;

@@ -94,7 +94,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         public DateTime? SendAt { get; set; }
         /// <summary>
-        /// If set to True, Twilio will deliver the message as a single MMS message, regardless of the presence of media
+        /// If set to True, Twilio will deliver the message as a single MMS message, regardless of the presence of media.
         /// </summary>
         public bool? SendAsMms { get; set; }
 

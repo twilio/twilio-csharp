@@ -111,15 +111,17 @@ namespace Twilio.Rest.Conversations.V1
         /// <summary>
         /// Retrieve a list of address configurations for an account
         /// </summary>
+        /// <param name="type"> The type of address configuration. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of AddressConfiguration </returns>
-        public static ResourceSet<AddressConfigurationResource> Read(int? pageSize = null,
+        public static ResourceSet<AddressConfigurationResource> Read(string type = null,
+                                                                     int? pageSize = null,
                                                                      long? limit = null,
                                                                      ITwilioRestClient client = null)
         {
-            var options = new ReadAddressConfigurationOptions(){PageSize = pageSize, Limit = limit};
+            var options = new ReadAddressConfigurationOptions(){Type = type, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -127,15 +129,17 @@ namespace Twilio.Rest.Conversations.V1
         /// <summary>
         /// Retrieve a list of address configurations for an account
         /// </summary>
+        /// <param name="type"> The type of address configuration. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AddressConfiguration </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<AddressConfigurationResource>> ReadAsync(int? pageSize = null,
+        public static async System.Threading.Tasks.Task<ResourceSet<AddressConfigurationResource>> ReadAsync(string type = null,
+                                                                                                             int? pageSize = null,
                                                                                                              long? limit = null,
                                                                                                              ITwilioRestClient client = null)
         {
-            var options = new ReadAddressConfigurationOptions(){PageSize = pageSize, Limit = limit};
+            var options = new ReadAddressConfigurationOptions(){Type = type, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

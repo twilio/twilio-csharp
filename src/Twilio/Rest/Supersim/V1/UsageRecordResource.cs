@@ -298,6 +298,16 @@ namespace Twilio.Rest.Supersim.V1
         /// </summary>
         [JsonProperty("data_total")]
         public long? DataTotal { get; private set; }
+        /// <summary>
+        /// Total amount in the `billed_unit` that was charged for the data uploaded or downloaded.
+        /// </summary>
+        [JsonProperty("data_total_billed")]
+        public decimal? DataTotalBilled { get; private set; }
+        /// <summary>
+        /// The currency in which the billed amounts are measured, specified in the 3 letter ISO 4127 format (e.g. `USD`, `EUR`, `JPY`).
+        /// </summary>
+        [JsonProperty("billed_unit")]
+        public string BilledUnit { get; private set; }
 
         private UsageRecordResource()
         {
