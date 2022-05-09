@@ -97,8 +97,6 @@ namespace Twilio.Http
 
             string helperLibVersion = AssemblyInfomation.AssemblyInformationalVersion;
 
-            //TODO: FIGURE THIS OUTT AHHHHH - TEST ON NET451 for OSArch
-
             string osName = "Unknown";
 #if !NETSTANDARD1_4
             osName = Environment.OSVersion.Platform.ToString();
