@@ -474,6 +474,11 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         [JsonProperty("subresource_uris")]
         public Dictionary<string, string> SubresourceUris { get; private set; }
+        /// <summary>
+        /// The URL of the media file.
+        /// </summary>
+        [JsonProperty("media_url")]
+        public Uri MediaUrl { get; private set; }
 
         private RecordingResource()
         {
