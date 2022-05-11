@@ -6,7 +6,6 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
-using System.Linq;
 using NUnit.Framework;
 using Twilio.Http;
 using HttpMethod = Twilio.Http.HttpMethod;
@@ -255,10 +254,13 @@ namespace Twilio.Tests.Http
             testRequest.SetAuth("username", "password");
 
             this.TwilioHttpClient.MakeRequest(testRequest);
+
             HttpRequestMessage internalRequest = this._mockHttp.InternalRequest;
             string userAgent = internalRequest.Headers.UserAgent.ToString();
-            var actualUserAgent = userAgent.Split(" ").TakeLast(userAgentExtensions.Length);
-            CollectionAssert.AreEqual(userAgentExtensions, actualUserAgent);
+            var actualUserAgent = userAgent.Split(' ');
+            var actualUserAgentExtensions = new string[userAgentExtensions.Length];
+            Array.Copy(actualUserAgent, actualUserAgent.Length - userAgentExtensions.Length, actualUserAgentExtensions, 0, userAgentExtensions.Length);
+            CollectionAssert.AreEqual(userAgentExtensions, actualUserAgentExtensions);
         }
     }
 }
