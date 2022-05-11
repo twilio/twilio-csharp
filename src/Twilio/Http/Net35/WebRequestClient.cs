@@ -9,7 +9,7 @@ namespace Twilio.Http.Net35
     /// </summary>
     public class WebRequestClient : HttpClient
     {
-        private const string PlatVersion = " .NET 3.5";
+        private const string PlatVersion = ".NET 3.5";
         private HttpWebRequestFactory factory;
 
         public WebRequestClient(HttpWebRequestFactory factory = null)
