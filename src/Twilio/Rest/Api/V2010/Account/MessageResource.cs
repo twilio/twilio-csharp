@@ -189,6 +189,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="sendAsMms"> If set to True, Twilio will deliver the message as a single MMS message, regardless of the
         ///                 presence of media. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
+        /// <param name="shortenUrls"> Whether or not shorten URL in message </param>
+        /// <param name="domainSid"> The domain used for shorten URL </param>
         /// <returns> A single instance of Message </returns>
         public static MessageResource Create(Types.PhoneNumber to,
                                              string pathAccountSid = null,
@@ -210,9 +212,11 @@ namespace Twilio.Rest.Api.V2010.Account
                                              MessageResource.ScheduleTypeEnum scheduleType = null,
                                              DateTime? sendAt = null,
                                              bool? sendAsMms = null,
-                                             ITwilioRestClient client = null)
+                                             ITwilioRestClient client = null,
+                                             bool? shortenUrls = null,
+                                             string domainSid = null)
         {
-            var options = new CreateMessageOptions(to){PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, Attempt = attempt, ValidityPeriod = validityPeriod, ForceDelivery = forceDelivery, ContentRetention = contentRetention, AddressRetention = addressRetention, SmartEncoded = smartEncoded, PersistentAction = persistentAction, ScheduleType = scheduleType, SendAt = sendAt, SendAsMms = sendAsMms};
+            var options = new CreateMessageOptions(to){PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, Attempt = attempt, ValidityPeriod = validityPeriod, ForceDelivery = forceDelivery, ContentRetention = contentRetention, AddressRetention = addressRetention, SmartEncoded = smartEncoded, PersistentAction = persistentAction, ScheduleType = scheduleType, SendAt = sendAt, SendAsMms = sendAsMms, ShortenUrls = shortenUrls, DomainSid = domainSid};
             return Create(options, client);
         }
 
@@ -246,6 +250,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="sendAsMms"> If set to True, Twilio will deliver the message as a single MMS message, regardless of the
         ///                 presence of media. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
+        /// <param name="shortenUrls"> Whether or not shorten URL in message </param>
+        /// <param name="domainSid"> The domain used for shorten URL </param>
         /// <returns> Task that resolves to A single instance of Message </returns>
         public static async System.Threading.Tasks.Task<MessageResource> CreateAsync(Types.PhoneNumber to,
                                                                                      string pathAccountSid = null,
@@ -267,9 +273,11 @@ namespace Twilio.Rest.Api.V2010.Account
                                                                                      MessageResource.ScheduleTypeEnum scheduleType = null,
                                                                                      DateTime? sendAt = null,
                                                                                      bool? sendAsMms = null,
-                                                                                     ITwilioRestClient client = null)
+                                                                                     ITwilioRestClient client = null,
+                                                                                     bool? shortenUrls = null,
+                                                                                     string domainSid = null)
         {
-            var options = new CreateMessageOptions(to){PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, Attempt = attempt, ValidityPeriod = validityPeriod, ForceDelivery = forceDelivery, ContentRetention = contentRetention, AddressRetention = addressRetention, SmartEncoded = smartEncoded, PersistentAction = persistentAction, ScheduleType = scheduleType, SendAt = sendAt, SendAsMms = sendAsMms};
+            var options = new CreateMessageOptions(to){PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, Attempt = attempt, ValidityPeriod = validityPeriod, ForceDelivery = forceDelivery, ContentRetention = contentRetention, AddressRetention = addressRetention, SmartEncoded = smartEncoded, PersistentAction = persistentAction, ScheduleType = scheduleType, SendAt = sendAt, SendAsMms = sendAsMms, ShortenUrls = shortenUrls, DomainSid = domainSid};
             return await CreateAsync(options, client);
         }
         #endif
