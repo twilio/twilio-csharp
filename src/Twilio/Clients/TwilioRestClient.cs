@@ -41,11 +41,6 @@ namespace Twilio.Clients
         public string Edge { get; set; }
 
         /// <summary>
-        /// Additions to the user agent string
-        /// </summary>
-        public string[] UserAgentExtensions { get; set; }
-
-        /// <summary>
         /// Log level for logging
         /// </summary>
         public string LogLevel { get; set; } = Environment.GetEnvironmentVariable("TWILIO_LOG_LEVEL");
@@ -62,15 +57,13 @@ namespace Twilio.Clients
         /// <param name="region">region to make requests for</param>
         /// <param name="httpClient">http client used to make the requests</param>
         /// <param name="edge">edge to make requests for</param>
-        /// <param name="userAgentExtensions">Additions to the user agent string</param>
         public TwilioRestClient(
             string username,
             string password,
             string accountSid = null,
             string region = null,
             HttpClient httpClient = null,
-            string edge = null,
-            string[] userAgentExtensions = null
+            string edge = null
         )
         {
             _username = username;
@@ -81,7 +74,6 @@ namespace Twilio.Clients
 
             Region = region;
             Edge = edge;
-            UserAgentExtensions = userAgentExtensions;
         }
 
         /// <summary>
@@ -102,9 +94,6 @@ namespace Twilio.Clients
 
             if (Edge != null)
                 request.Edge = Edge;
-
-            if (UserAgentExtensions != null)
-                request.UserAgentExtensions = UserAgentExtensions;
 
             Response response;
             try
@@ -142,9 +131,6 @@ namespace Twilio.Clients
 
             if (Edge != null)
                 request.Edge = Edge;
-
-            if (UserAgentExtensions != null)
-                request.UserAgentExtensions = UserAgentExtensions;
 
             Response response;
             try
