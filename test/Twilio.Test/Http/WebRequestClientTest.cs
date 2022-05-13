@@ -9,6 +9,7 @@ using Twilio.Http;
 using System.Collections.Specialized;
 using System.IO;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Twilio.Tests.Http
 {
@@ -185,7 +186,9 @@ namespace Twilio.Tests.Http
             Assert.Contains("Authorization", this._mockRequest.Headers.AllKeys);
             Assert.AreEqual("Basic " + authString, this._mockRequest.Headers["Authorization"]);
 
-            StringAssert.StartsWith("twilio-csharp/", this._mockRequest.UserAgent);
+            Assert.IsNotNull(this._mockRequest.UserAgent);
+            Regex rgx = new Regex(@"^twilio-csharp/[0-9.]+\s\(\w+\s\w+\)\s[.\s\w]+/[^\s]+$");
+            Assert.IsTrue(rgx.IsMatch(this._mockRequest.UserAgent));
         }
     }
 }
