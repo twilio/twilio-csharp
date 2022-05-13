@@ -114,13 +114,13 @@ namespace Twilio.Http
                 osName = "Linux";
             }
 #endif
-            string osArch;
-#if !NET451
-            osArch = RuntimeInformation.OSArchitecture.ToString();
-#else
-            osArch = Environment.GetEnvironmentVariable("PROCESSOR_ARCHITECTURE").ToString(); 
-#endif
-            var libraryVersion = String.Format("twilio-csharp/{0} ({1} {2}) {3}", helperLibVersion,osName,osArch,PlatVersionSb);
+//            string osArch;
+//#if !NET451
+//            osArch = RuntimeInformation.OSArchitecture.ToString();
+//#else
+//            osArch = Environment.GetEnvironmentVariable("PROCESSOR_ARCHITECTURE").ToString(); 
+//#endif
+            var libraryVersion = String.Format("twilio-csharp/{0} ({1} {2}) {3}", helperLibVersion,osName,"x86",PlatVersionSb);
 
             //if (request.UserAgentExtensions != null)
             //{
