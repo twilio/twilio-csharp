@@ -187,7 +187,7 @@ namespace Twilio.Tests.Http
             Assert.AreEqual("Basic " + authString, this._mockRequest.Headers["Authorization"]);
 
             Assert.IsNotNull(this._mockRequest.UserAgent);
-            Regex rgx = new Regex(@"^twilio-csharp/[0-9.]+\s\(\w+\s\w+\)\s[.\s\w]+/[^\s]+$");
+            Regex rgx = new Regex(@"^twilio-csharp/[0-9.]+\s\(\w+\s\w+\)\s.NET/3.5$");
             Assert.IsTrue(rgx.IsMatch(this._mockRequest.UserAgent));
         }
     }

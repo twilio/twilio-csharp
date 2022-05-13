@@ -9,7 +9,7 @@ namespace Twilio.Http.Net35
     /// </summary>
     public class WebRequestClient : HttpClient
     {
-        private const string PlatVersion = ".NET 3.5";
+        private const string PlatVersion = ".NET/3.5";
         private HttpWebRequestFactory factory;
 
         public WebRequestClient(HttpWebRequestFactory factory = null)
@@ -63,14 +63,10 @@ namespace Twilio.Http.Net35
         {
             IHttpWebRequestWrapper httpRequest = this.factory.Create(request.ConstructUrl());
 
-            int lastSpaceIndex = PlatVersion.LastIndexOf(" ");
-            System.Text.StringBuilder PlatVersionSb= new System.Text.StringBuilder(PlatVersion);
-            PlatVersionSb[lastSpaceIndex] = '/';
-
             string helperLibVersion = AssemblyInfomation.AssemblyInformationalVersion;
             string osName = System.Environment.OSVersion.Platform.ToString();
             //string osArch = System.Environment.GetEnvironmentVariable("PROCESSOR_ARCHITECTURE").ToString();
-            var libraryVersion = System.String.Format("twilio-csharp/{0} ({1} {2}) {3}", helperLibVersion,osName,"x86",PlatVersionSb);
+            var libraryVersion = System.String.Format("twilio-csharp/{0} ({1} {2}) {3}", helperLibVersion,osName,"x86",PlatVersion);
 
             //if (request.UserAgentExtensions != null)
             //{
