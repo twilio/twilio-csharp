@@ -91,6 +91,8 @@ namespace Twilio.Http
         /// <param name="postParams">Post data</param>
         /// <param name="edge">Twilio edge</param>
         /// <param name="headerParams">Custom header data</param>
+        /// <param name="userAgentExtensions">Additions to the user agent string</param>
+
         public Request(
             HttpMethod method,
             Domain domain,
@@ -99,13 +101,15 @@ namespace Twilio.Http
             List<KeyValuePair<string, string>> queryParams = null,
             List<KeyValuePair<string, string>> postParams = null,
             string edge = null,
-            List<KeyValuePair<string, string>> headerParams = null
+            List<KeyValuePair<string, string>> headerParams = null,
+            string[] userAgentExtensions = null
         )
         {
             Method = method;
             Uri = new Uri("https://" + domain + ".twilio.com" + uri);
             Region = region;
             Edge = edge;
+            UserAgentExtensions = userAgentExtensions;
 
             QueryParams = queryParams ?? new List<KeyValuePair<string, string>>();
             PostParams = postParams ?? new List<KeyValuePair<string, string>>();
