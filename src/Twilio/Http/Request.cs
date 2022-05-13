@@ -49,7 +49,7 @@ namespace Twilio.Http
         /// <summary>
         /// Additions to the user agent string
         /// </summary>
-        public string[] UserAgentExtensions { get; set; }
+        // public string[] UserAgentExtensions { get; set; }
 
         /// <summary>
         /// Query params
@@ -91,7 +91,6 @@ namespace Twilio.Http
         /// <param name="postParams">Post data</param>
         /// <param name="edge">Twilio edge</param>
         /// <param name="headerParams">Custom header data</param>
-
         public Request(
             HttpMethod method,
             Domain domain,
