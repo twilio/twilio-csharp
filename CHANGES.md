@@ -1,6 +1,12 @@
 twilio-csharp Changelog
 =======================
 
+[2022-05-09] Version 99.99.99
+-----------------------------
+**Api**
+- Add property `media_url` to the recording resources
+
+
 [2022-05-04] Version 5.75.0
 ---------------------------
 **Library - Chore**

@@ -98,6 +98,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         public bool? SendAsMms { get; set; }
 
+        public bool? ShortenUrls { get; set; }
+
+        public string DomainSid { get; set; }
+
         /// <summary>
         /// Construct a new CreateMessageOptions
         /// </summary>
@@ -208,6 +212,14 @@ namespace Twilio.Rest.Api.V2010.Account
             if (SendAsMms != null)
             {
                 p.Add(new KeyValuePair<string, string>("SendAsMms", SendAsMms.Value.ToString().ToLower()));
+            }
+            if (ShortenUrls != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ShortenUrls", ShortenUrls.Value.ToString().ToLower()));
+            }
+            if (DomainSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("DomainSid", DomainSid.ToString()));
             }
 
             return p;
