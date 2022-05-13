@@ -65,16 +65,16 @@ namespace Twilio.Http.Net35
 
             string helperLibVersion = AssemblyInfomation.AssemblyInformationalVersion;
             string osName = System.Environment.OSVersion.Platform.ToString();
-            //string osArch = System.Environment.GetEnvironmentVariable("PROCESSOR_ARCHITECTURE").ToString();
-            var libraryVersion = System.String.Format("twilio-csharp/{0} ({1} {2}) {3}", helperLibVersion,osName,"x86",PlatVersion);
+            string osArch = System.Environment.GetEnvironmentVariable("PROCESSOR_ARCHITECTURE") ?? "Unknown";
+            var libraryVersion = System.String.Format("twilio-csharp/{0} ({1} {2}) {3}", helperLibVersion,osName,osArch,PlatVersion);
 
-            //if (request.UserAgentExtensions != null)
-            //{
-            //    foreach (var extension in request.UserAgentExtensions)
-            //    {
-            //        libraryVersion += " " + extension;
-            //    }
-            //}
+            if (request.UserAgentExtensions != null)
+            {
+                foreach (var extension in request.UserAgentExtensions)
+                {
+                    libraryVersion += " " + extension;
+                }
+            }
 
             httpRequest.UserAgent = libraryVersion;
 

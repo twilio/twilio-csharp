@@ -123,13 +123,13 @@ namespace Twilio.Http
 #endif
             var libraryVersion = String.Format("twilio-csharp/{0} ({1} {2}) {3}", helperLibVersion,osName,osArch,PlatVersionSb);
 
-            //if (request.UserAgentExtensions != null)
-            //{
-            //    foreach (var extension in request.UserAgentExtensions)
-            //    {
-            //        libraryVersion += " " + extension;
-            //    }
-            //}
+            if (request.UserAgentExtensions != null)
+            {
+                foreach (var extension in request.UserAgentExtensions)
+                {
+                    libraryVersion += " " + extension;
+                }
+            }
 
             httpRequest.Headers.TryAddWithoutValidation("User-Agent", libraryVersion);
 

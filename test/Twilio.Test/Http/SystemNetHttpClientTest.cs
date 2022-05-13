@@ -242,26 +242,26 @@ namespace Twilio.Tests.Http
             Assert.IsTrue(rgx.IsMatch(internalRequest.Headers.UserAgent.ToString()));
         }
 
-        //[Test]
-        //public void TestMakeRequestAddUserAgentExtensions()
-        //{
-        //    string[] userAgentExtensions = new string[] { "twilio-run/2.0.0-test", "flex-plugin/3.4.0" };
+        [Test]
+        public void TestMakeRequestAddUserAgentExtensions()
+        {
+            string[] userAgentExtensions = new string[] { "twilio-run/2.0.0-test", "flex-plugin/3.4.0" };
 
-        //    this._mockHttp.Respond("https://api.twilio.com/v1/Resource.json", HttpStatusCode.OK);
+            this._mockHttp.Respond("https://api.twilio.com/v1/Resource.json", HttpStatusCode.OK);
 
-        //    Request testRequest = new Request(HttpMethod.Get, "https://api.twilio.com/v1/Resource.json");
-        //    testRequest.UserAgentExtensions = userAgentExtensions;
-        //    testRequest.SetAuth("username", "password");
+            Request testRequest = new Request(HttpMethod.Get, "https://api.twilio.com/v1/Resource.json");
+            testRequest.UserAgentExtensions = userAgentExtensions;
+            testRequest.SetAuth("username", "password");
 
-        //    this.TwilioHttpClient.MakeRequest(testRequest);
+            this.TwilioHttpClient.MakeRequest(testRequest);
 
-        //    HttpRequestMessage internalRequest = this._mockHttp.InternalRequest;
-        //    string userAgent = internalRequest.Headers.UserAgent.ToString();
-        //    var actualUserAgent = userAgent.Split(' ');
-        //    var actualUserAgentExtensions = new string[userAgentExtensions.Length];
-        //    Array.Copy(actualUserAgent, actualUserAgent.Length - userAgentExtensions.Length, actualUserAgentExtensions, 0, userAgentExtensions.Length);
-        //    CollectionAssert.AreEqual(userAgentExtensions, actualUserAgentExtensions);
-        //}
+            HttpRequestMessage internalRequest = this._mockHttp.InternalRequest;
+            string userAgent = internalRequest.Headers.UserAgent.ToString();
+            var actualUserAgent = userAgent.Split(' ');
+            var actualUserAgentExtensions = new string[userAgentExtensions.Length];
+            Array.Copy(actualUserAgent, actualUserAgent.Length - userAgentExtensions.Length, actualUserAgentExtensions, 0, userAgentExtensions.Length);
+            CollectionAssert.AreEqual(userAgentExtensions, actualUserAgentExtensions);
+        }
     }
 }
 #endif

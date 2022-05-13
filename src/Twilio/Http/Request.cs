@@ -49,7 +49,7 @@ namespace Twilio.Http
         /// <summary>
         /// Additions to the user agent string
         /// </summary>
-        // public string[] UserAgentExtensions { get; set; }
+        public string[] UserAgentExtensions { get; set; }
 
         /// <summary>
         /// Query params
