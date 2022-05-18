@@ -34,6 +34,7 @@ namespace Twilio.Rest.Verify.V2.Service
             public static readonly ChannelEnum Call = new ChannelEnum("call");
             public static readonly ChannelEnum Email = new ChannelEnum("email");
             public static readonly ChannelEnum Whatsapp = new ChannelEnum("whatsapp");
+            public static readonly ChannelEnum Silent = new ChannelEnum("silent");
         }
 
         private static Request BuildCreateRequest(CreateVerificationCheckOptions options, ITwilioRestClient client)
