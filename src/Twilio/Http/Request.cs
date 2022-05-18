@@ -91,7 +91,6 @@ namespace Twilio.Http
         /// <param name="postParams">Post data</param>
         /// <param name="edge">Twilio edge</param>
         /// <param name="headerParams">Custom header data</param>
-
         public Request(
             HttpMethod method,
             Domain domain,

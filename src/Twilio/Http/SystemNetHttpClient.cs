@@ -16,7 +16,7 @@ namespace Twilio.Http
 #if NET451
         private string PlatVersion = ".NET Framework 4.5.1+";
 #else
-        private string PlatVersion = $"{RuntimeInformation.FrameworkDescription}";
+        private string PlatVersion = RuntimeInformation.FrameworkDescription;
 #endif
 
         private readonly System.Net.Http.HttpClient _httpClient;
@@ -121,7 +121,7 @@ namespace Twilio.Http
 #else
             osArch = Environment.GetEnvironmentVariable("PROCESSOR_ARCHITECTURE") ?? "Unknown"; 
 #endif
-            var libraryVersion = String.Format("twilio-csharp/{0} ({1} {2}) {3}", helperLibVersion,osName,osArch,PlatVersionSb);
+            var libraryVersion = String.Format("twilio-csharp/{0} ({1} {2}) {3}", helperLibVersion, osName, osArch, PlatVersionSb);
 
             if (request.UserAgentExtensions != null)
             {

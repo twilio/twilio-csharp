@@ -257,9 +257,8 @@ namespace Twilio.Tests.Http
 
             HttpRequestMessage internalRequest = this._mockHttp.InternalRequest;
             string userAgent = internalRequest.Headers.UserAgent.ToString();
-            var actualUserAgent = userAgent.Split(' ');
-            var actualUserAgentExtensions = new string[userAgentExtensions.Length];
-            Array.Copy(actualUserAgent, actualUserAgent.Length - userAgentExtensions.Length, actualUserAgentExtensions, 0, userAgentExtensions.Length);
+            string[] actualUserAgent = userAgent.Split(' '); 
+            var actualUserAgentExtensions = new List<string>(actualUserAgent).GetRange(actualUserAgent.Length - userAgentExtensions.Length, userAgentExtensions.Length);
             CollectionAssert.AreEqual(userAgentExtensions, actualUserAgentExtensions);
         }
     }

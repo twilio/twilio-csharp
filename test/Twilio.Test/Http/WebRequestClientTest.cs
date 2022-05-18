@@ -207,8 +207,7 @@ namespace Twilio.Tests.Http
 
             // Assert
             var actualUserAgent = this._mockRequest.UserAgent.Split(' ');
-            var actualUserAgentExtensions = new string[userAgentExtensions.Length];
-            Array.Copy(actualUserAgent, actualUserAgent.Length - userAgentExtensions.Length, actualUserAgentExtensions, 0, userAgentExtensions.Length);
+            var actualUserAgentExtensions = new List<string>(actualUserAgent).GetRange(actualUserAgent.Length - userAgentExtensions.Length, userAgentExtensions.Length);
             CollectionAssert.AreEqual(userAgentExtensions, actualUserAgentExtensions);
         }
     }
