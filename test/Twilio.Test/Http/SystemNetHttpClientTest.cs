@@ -1,6 +1,7 @@
 ﻿#if !NET35
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading;
@@ -257,8 +258,8 @@ namespace Twilio.Tests.Http
 
             HttpRequestMessage internalRequest = this._mockHttp.InternalRequest;
             string userAgent = internalRequest.Headers.UserAgent.ToString();
-            string[] actualUserAgent = userAgent.Split(' '); 
-            var actualUserAgentExtensions = new List<string>(actualUserAgent).GetRange(actualUserAgent.Length - userAgentExtensions.Length, userAgentExtensions.Length);
+            string[] actualUserAgent = userAgent.Split(' ');
+            var actualUserAgentExtensions = actualUserAgent.ToList().GetRange(actualUserAgent.Length - userAgentExtensions.Length, userAgentExtensions.Length);
             CollectionAssert.AreEqual(userAgentExtensions, actualUserAgentExtensions);
         }
     }

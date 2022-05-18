@@ -8,6 +8,7 @@ using System.Net;
 using Twilio.Http;
 using System.Collections.Specialized;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -206,8 +207,8 @@ namespace Twilio.Tests.Http
             var response = this.TwilioClient.MakeRequest(request);
 
             // Assert
-            var actualUserAgent = this._mockRequest.UserAgent.Split(' ');
-            var actualUserAgentExtensions = new List<string>(actualUserAgent).GetRange(actualUserAgent.Length - userAgentExtensions.Length, userAgentExtensions.Length);
+            string[] actualUserAgent = this._mockRequest.UserAgent.Split(' ');
+            var actualUserAgentExtensions = actualUserAgent.ToList().GetRange(actualUserAgent.Length - userAgentExtensions.Length, userAgentExtensions.Length);
             CollectionAssert.AreEqual(userAgentExtensions, actualUserAgentExtensions);
         }
     }
