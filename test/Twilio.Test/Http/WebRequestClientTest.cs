@@ -8,7 +8,9 @@ using System.Net;
 using Twilio.Http;
 using System.Collections.Specialized;
 using System.IO;
+using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Twilio.Tests.Http
 {
@@ -185,7 +187,29 @@ namespace Twilio.Tests.Http
             Assert.Contains("Authorization", this._mockRequest.Headers.AllKeys);
             Assert.AreEqual("Basic " + authString, this._mockRequest.Headers["Authorization"]);
 
-            StringAssert.StartsWith("twilio-csharp/", this._mockRequest.UserAgent);
+            Assert.IsNotNull(this._mockRequest.UserAgent);
+            Regex rgx = new Regex(@"^twilio-csharp/[0-9.]+\s\(\w+\s\w+\)\s.NET/3.5$");
+            Assert.IsTrue(rgx.IsMatch(this._mockRequest.UserAgent));
+        }
+
+        [Test]
+        public void TestMakeRequestAddUserAgentExtensions()
+        {
+            // Setup
+            this._mockResponse.StatusCode = HttpStatusCode.OK;
+            string[] userAgentExtensions = new string[] { "twilio-run/2.0.0-test", "flex-plugin/3.4.0" };
+
+            // Run Test
+            var request = new Request(HttpMethod.Post, "https://api.twilio.com/v1/Resource.json");
+            request.UserAgentExtensions = userAgentExtensions;
+            request.SetAuth("user", "pass");
+
+            var response = this.TwilioClient.MakeRequest(request);
+
+            // Assert
+            string[] actualUserAgent = this._mockRequest.UserAgent.Split(' ');
+            var actualUserAgentExtensions = actualUserAgent.ToList().GetRange(actualUserAgent.Length - userAgentExtensions.Length, userAgentExtensions.Length);
+            CollectionAssert.AreEqual(userAgentExtensions, actualUserAgentExtensions);
         }
     }
 }

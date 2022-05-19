@@ -47,6 +47,11 @@ namespace Twilio.Http
         public string Edge { get; set; }
 
         /// <summary>
+        /// Additions to the user agent string
+        /// </summary>
+        public string[] UserAgentExtensions { get; set; }
+
+        /// <summary>
         /// Query params
         /// </summary>
         public List<KeyValuePair<string, string>> QueryParams { get; private set; }
