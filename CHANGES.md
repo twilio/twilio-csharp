@@ -1,6 +1,13 @@
 twilio-csharp Changelog
 =======================
 
+[2022-06-01] Version 5.75.2
+---------------------------
+**Library - Chore**
+- [PR #611](https://github.com/twilio/twilio-csharp/pull/611): use Docker 'rc' tag for release candidate images. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+- [PR #606](https://github.com/twilio/twilio-csharp/pull/606): update the user agent string for twilio-csharp. Thanks to [@claudiachua](https://github.com/claudiachua)!
+
+
 [2022-05-18] Version 5.75.1
 ---------------------------
 **Api**

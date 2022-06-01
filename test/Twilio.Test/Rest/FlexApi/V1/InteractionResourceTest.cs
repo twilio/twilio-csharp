@@ -49,7 +49,7 @@ namespace Twilio.Tests.Rest.FlexApi.V1
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"sid\": \"KDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"channel\": {\"type\": \"email\"},\"routing\": {\"properties\": {\"workflow_sid\": \"WWxx\",\"attributes\": \"WWxx\",\"task_channel_unique_name\": \"email\",\"routing_target\": \"WKXX\",\"queue_name\": \"WQXX\"}},\"url\": \"https://flex-api.twilio.com/v1/Interactions/KDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"links\": {\"channels\": \"https://flex-api.twilio.com/v1/Interactions/KDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels\"}}"
+                                         "{\"sid\": \"KDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"channel\": {\"type\": \"sms\",\"sid\": \"UOaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"},\"routing\": {\"properties\": {\"workflow_sid\": \"WWxx\",\"attributes\": \"WWxx\",\"task_channel_unique_name\": \"sms\",\"routing_target\": \"WKXX\",\"queue_name\": \"WQXX\"}},\"url\": \"https://flex-api.twilio.com/v1/Interactions/KDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"links\": {\"channels\": \"https://flex-api.twilio.com/v1/Interactions/KDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels\"}}"
                                      ));
 
             var response = InteractionResource.Fetch("KDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
@@ -87,7 +87,7 @@ namespace Twilio.Tests.Rest.FlexApi.V1
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.Created,
-                                         "{\"sid\": \"KDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"channel\": {\"type\": \"email\"},\"routing\": {\"properties\": {\"workflow_sid\": \"WWxx\",\"attributes\": \"WWxx\",\"task_channel_unique_name\": \"email\",\"routing_target\": \"WKXX\",\"queue_name\": \"WQXX\"}},\"url\": \"https://flex-api.twilio.com/v1/Interactions/KDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"links\": {\"channels\": \"https://flex-api.twilio.com/v1/Interactions/KDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels\"}}"
+                                         "{\"sid\": \"KDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"channel\": {\"type\": \"sms\",\"sid\": \"UOaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"},\"routing\": {\"properties\": {\"workflow_sid\": \"WWxx\",\"attributes\": \"WWxx\",\"task_channel_unique_name\": \"sms\",\"routing_target\": \"WKXX\",\"queue_name\": \"WQXX\"}},\"url\": \"https://flex-api.twilio.com/v1/Interactions/KDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"links\": {\"channels\": \"https://flex-api.twilio.com/v1/Interactions/KDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels\"}}"
                                      ));
 
             var response = InteractionResource.Create("{}", "{}", client: twilioRestClient);

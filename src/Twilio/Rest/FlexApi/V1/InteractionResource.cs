@@ -201,7 +201,7 @@ namespace Twilio.Rest.FlexApi.V1
         [JsonProperty("channel")]
         public object Channel { get; private set; }
         /// <summary>
-        /// The Interaction's routing logic
+        /// A JSON Object representing the routing rules for the Interaction Channel
         /// </summary>
         [JsonProperty("routing")]
         public object Routing { get; private set; }

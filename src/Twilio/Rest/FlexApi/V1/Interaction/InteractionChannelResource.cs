@@ -96,8 +96,8 @@ namespace Twilio.Rest.FlexApi.V1.Interaction
         /// <summary>
         /// Fetch a Channel for an Interaction.
         /// </summary>
-        /// <param name="pathInteractionSid"> The Interaction Sid for this channel. </param>
-        /// <param name="pathSid"> The Channel Sid for this Participant. </param>
+        /// <param name="pathInteractionSid"> The unique string that identifies the resource </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of InteractionChannel </returns>
         public static InteractionChannelResource Fetch(string pathInteractionSid,
@@ -112,8 +112,8 @@ namespace Twilio.Rest.FlexApi.V1.Interaction
         /// <summary>
         /// Fetch a Channel for an Interaction.
         /// </summary>
-        /// <param name="pathInteractionSid"> The Interaction Sid for this channel. </param>
-        /// <param name="pathSid"> The Channel Sid for this Participant. </param>
+        /// <param name="pathInteractionSid"> The unique string that identifies the resource </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InteractionChannel </returns>
         public static async System.Threading.Tasks.Task<InteractionChannelResource> FetchAsync(string pathInteractionSid,
@@ -173,7 +173,7 @@ namespace Twilio.Rest.FlexApi.V1.Interaction
         /// <summary>
         /// List all Channels for an Interaction.
         /// </summary>
-        /// <param name="pathInteractionSid"> The Interaction Sid for this channel. </param>
+        /// <param name="pathInteractionSid"> The unique string that identifies the resource </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -191,7 +191,7 @@ namespace Twilio.Rest.FlexApi.V1.Interaction
         /// <summary>
         /// List all Channels for an Interaction.
         /// </summary>
-        /// <param name="pathInteractionSid"> The Interaction Sid for this channel. </param>
+        /// <param name="pathInteractionSid"> The unique string that identifies the resource </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -305,10 +305,10 @@ namespace Twilio.Rest.FlexApi.V1.Interaction
         /// <summary>
         /// Update an existing Interaction.
         /// </summary>
-        /// <param name="pathInteractionSid"> The Interaction Sid for this channel. </param>
+        /// <param name="pathInteractionSid"> The unique string that identifies the resource </param>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
-        /// <param name="status"> The Interaction Channels's status </param>
-        /// <param name="routing"> The Interaction Channels's optional routing parameters </param>
+        /// <param name="status"> Required. The Interaction channels's status </param>
+        /// <param name="routing"> Optional. The state of associated tasks. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of InteractionChannel </returns>
         public static InteractionChannelResource Update(string pathInteractionSid,
@@ -325,10 +325,10 @@ namespace Twilio.Rest.FlexApi.V1.Interaction
         /// <summary>
         /// Update an existing Interaction.
         /// </summary>
-        /// <param name="pathInteractionSid"> The Interaction Sid for this channel. </param>
+        /// <param name="pathInteractionSid"> The unique string that identifies the resource </param>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
-        /// <param name="status"> The Interaction Channels's status </param>
-        /// <param name="routing"> The Interaction Channels's optional routing parameters </param>
+        /// <param name="status"> Required. The Interaction channels's status </param>
+        /// <param name="routing"> Optional. The state of associated tasks. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InteractionChannel </returns>
         public static async System.Threading.Tasks.Task<InteractionChannelResource> UpdateAsync(string pathInteractionSid,
@@ -366,7 +366,7 @@ namespace Twilio.Rest.FlexApi.V1.Interaction
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The Interaction Sid for this channel.
+        /// The unique string that identifies the resource
         /// </summary>
         [JsonProperty("interaction_sid")]
         public string InteractionSid { get; private set; }

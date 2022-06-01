@@ -12,29 +12,29 @@ namespace Twilio.Rest.FlexApi.V1.Interaction.InteractionChannel
 {
 
     /// <summary>
-    /// CreateInteractionChannelInviteOptions
+    /// Invite an Agent or a TaskQueue to a Channel.
     /// </summary>
     public class CreateInteractionChannelInviteOptions : IOptions<InteractionChannelInviteResource>
     {
         /// <summary>
-        /// The interaction_sid
+        /// The Interaction SID for this Channel
         /// </summary>
         public string PathInteractionSid { get; }
         /// <summary>
-        /// The channel_sid
+        /// The Channel SID for this Invite
         /// </summary>
         public string PathChannelSid { get; }
         /// <summary>
-        /// The routing
+        /// The Interaction's routing logic
         /// </summary>
         public object Routing { get; }
 
         /// <summary>
         /// Construct a new CreateInteractionChannelInviteOptions
         /// </summary>
-        /// <param name="pathInteractionSid"> The interaction_sid </param>
-        /// <param name="pathChannelSid"> The channel_sid </param>
-        /// <param name="routing"> The routing </param>
+        /// <param name="pathInteractionSid"> The Interaction SID for this Channel </param>
+        /// <param name="pathChannelSid"> The Channel SID for this Invite </param>
+        /// <param name="routing"> The Interaction's routing logic </param>
         public CreateInteractionChannelInviteOptions(string pathInteractionSid, string pathChannelSid, object routing)
         {
             PathInteractionSid = pathInteractionSid;
@@ -58,24 +58,24 @@ namespace Twilio.Rest.FlexApi.V1.Interaction.InteractionChannel
     }
 
     /// <summary>
-    /// ReadInteractionChannelInviteOptions
+    /// List all Invites for a Channel.
     /// </summary>
     public class ReadInteractionChannelInviteOptions : ReadOptions<InteractionChannelInviteResource>
     {
         /// <summary>
-        /// The interaction_sid
+        /// The Interaction SID for this Channel
         /// </summary>
         public string PathInteractionSid { get; }
         /// <summary>
-        /// The channel_sid
+        /// The Channel SID for this Participant
         /// </summary>
         public string PathChannelSid { get; }
 
         /// <summary>
         /// Construct a new ReadInteractionChannelInviteOptions
         /// </summary>
-        /// <param name="pathInteractionSid"> The interaction_sid </param>
-        /// <param name="pathChannelSid"> The channel_sid </param>
+        /// <param name="pathInteractionSid"> The Interaction SID for this Channel </param>
+        /// <param name="pathChannelSid"> The Channel SID for this Participant </param>
         public ReadInteractionChannelInviteOptions(string pathInteractionSid, string pathChannelSid)
         {
             PathInteractionSid = pathInteractionSid;

@@ -34,7 +34,7 @@ namespace Twilio.Rest.Verify.V2.Service
             public static readonly ChannelEnum Call = new ChannelEnum("call");
             public static readonly ChannelEnum Email = new ChannelEnum("email");
             public static readonly ChannelEnum Whatsapp = new ChannelEnum("whatsapp");
-            public static readonly ChannelEnum Silent = new ChannelEnum("silent");
+            public static readonly ChannelEnum Sna = new ChannelEnum("sna");
         }
 
         public sealed class StatusEnum : StringEnum
@@ -406,6 +406,11 @@ namespace Twilio.Rest.Verify.V2.Service
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
+        /// <summary>
+        /// The set of fields used for a silent network auth (`sna`) verification
+        /// </summary>
+        [JsonProperty("sna")]
+        public object Sna { get; private set; }
         /// <summary>
         /// The absolute URL of the Verification resource
         /// </summary>

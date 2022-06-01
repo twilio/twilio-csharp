@@ -17,19 +17,19 @@ namespace Twilio.Rest.FlexApi.V1.Interaction
     public class FetchInteractionChannelOptions : IOptions<InteractionChannelResource>
     {
         /// <summary>
-        /// The Interaction Sid for this channel.
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathInteractionSid { get; }
         /// <summary>
-        /// The Channel Sid for this Participant.
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchInteractionChannelOptions
         /// </summary>
-        /// <param name="pathInteractionSid"> The Interaction Sid for this channel. </param>
-        /// <param name="pathSid"> The Channel Sid for this Participant. </param>
+        /// <param name="pathInteractionSid"> The unique string that identifies the resource </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public FetchInteractionChannelOptions(string pathInteractionSid, string pathSid)
         {
             PathInteractionSid = pathInteractionSid;
@@ -52,14 +52,14 @@ namespace Twilio.Rest.FlexApi.V1.Interaction
     public class ReadInteractionChannelOptions : ReadOptions<InteractionChannelResource>
     {
         /// <summary>
-        /// The Interaction Sid for this channel.
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathInteractionSid { get; }
 
         /// <summary>
         /// Construct a new ReadInteractionChannelOptions
         /// </summary>
-        /// <param name="pathInteractionSid"> The Interaction Sid for this channel. </param>
+        /// <param name="pathInteractionSid"> The unique string that identifies the resource </param>
         public ReadInteractionChannelOptions(string pathInteractionSid)
         {
             PathInteractionSid = pathInteractionSid;
@@ -86,7 +86,7 @@ namespace Twilio.Rest.FlexApi.V1.Interaction
     public class UpdateInteractionChannelOptions : IOptions<InteractionChannelResource>
     {
         /// <summary>
-        /// The Interaction Sid for this channel.
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathInteractionSid { get; }
         /// <summary>
@@ -94,20 +94,20 @@ namespace Twilio.Rest.FlexApi.V1.Interaction
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// The Interaction Channels's status
+        /// Required. The Interaction channels's status
         /// </summary>
         public InteractionChannelResource.StatusEnum Status { get; }
         /// <summary>
-        /// The Interaction Channels's optional routing parameters
+        /// Optional. The state of associated tasks.
         /// </summary>
         public object Routing { get; set; }
 
         /// <summary>
         /// Construct a new UpdateInteractionChannelOptions
         /// </summary>
-        /// <param name="pathInteractionSid"> The Interaction Sid for this channel. </param>
+        /// <param name="pathInteractionSid"> The unique string that identifies the resource </param>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
-        /// <param name="status"> The Interaction Channels's status </param>
+        /// <param name="status"> Required. The Interaction channels's status </param>
         public UpdateInteractionChannelOptions(string pathInteractionSid,
                                                string pathSid,
                                                InteractionChannelResource.StatusEnum status)

@@ -58,7 +58,7 @@ namespace Twilio.Rest.FlexApi.V1.Interaction.InteractionChannel
         }
 
         /// <summary>
-        /// create
+        /// Invite an Agent or a TaskQueue to a Channel.
         /// </summary>
         /// <param name="options"> Create InteractionChannelInvite parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -73,7 +73,7 @@ namespace Twilio.Rest.FlexApi.V1.Interaction.InteractionChannel
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Invite an Agent or a TaskQueue to a Channel.
         /// </summary>
         /// <param name="options"> Create InteractionChannelInvite parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -88,11 +88,11 @@ namespace Twilio.Rest.FlexApi.V1.Interaction.InteractionChannel
         #endif
 
         /// <summary>
-        /// create
+        /// Invite an Agent or a TaskQueue to a Channel.
         /// </summary>
-        /// <param name="pathInteractionSid"> The interaction_sid </param>
-        /// <param name="pathChannelSid"> The channel_sid </param>
-        /// <param name="routing"> The routing </param>
+        /// <param name="pathInteractionSid"> The Interaction SID for this Channel </param>
+        /// <param name="pathChannelSid"> The Channel SID for this Invite </param>
+        /// <param name="routing"> The Interaction's routing logic </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of InteractionChannelInvite </returns>
         public static InteractionChannelInviteResource Create(string pathInteractionSid,
@@ -106,11 +106,11 @@ namespace Twilio.Rest.FlexApi.V1.Interaction.InteractionChannel
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Invite an Agent or a TaskQueue to a Channel.
         /// </summary>
-        /// <param name="pathInteractionSid"> The interaction_sid </param>
-        /// <param name="pathChannelSid"> The channel_sid </param>
-        /// <param name="routing"> The routing </param>
+        /// <param name="pathInteractionSid"> The Interaction SID for this Channel </param>
+        /// <param name="pathChannelSid"> The Channel SID for this Invite </param>
+        /// <param name="routing"> The Interaction's routing logic </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InteractionChannelInvite </returns>
         public static async System.Threading.Tasks.Task<InteractionChannelInviteResource> CreateAsync(string pathInteractionSid,
@@ -135,7 +135,7 @@ namespace Twilio.Rest.FlexApi.V1.Interaction.InteractionChannel
         }
 
         /// <summary>
-        /// read
+        /// List all Invites for a Channel.
         /// </summary>
         /// <param name="options"> Read InteractionChannelInvite parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -152,7 +152,7 @@ namespace Twilio.Rest.FlexApi.V1.Interaction.InteractionChannel
 
         #if !NET35
         /// <summary>
-        /// read
+        /// List all Invites for a Channel.
         /// </summary>
         /// <param name="options"> Read InteractionChannelInvite parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -169,10 +169,10 @@ namespace Twilio.Rest.FlexApi.V1.Interaction.InteractionChannel
         #endif
 
         /// <summary>
-        /// read
+        /// List all Invites for a Channel.
         /// </summary>
-        /// <param name="pathInteractionSid"> The interaction_sid </param>
-        /// <param name="pathChannelSid"> The channel_sid </param>
+        /// <param name="pathInteractionSid"> The Interaction SID for this Channel </param>
+        /// <param name="pathChannelSid"> The Channel SID for this Participant </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -189,10 +189,10 @@ namespace Twilio.Rest.FlexApi.V1.Interaction.InteractionChannel
 
         #if !NET35
         /// <summary>
-        /// read
+        /// List all Invites for a Channel.
         /// </summary>
-        /// <param name="pathInteractionSid"> The interaction_sid </param>
-        /// <param name="pathChannelSid"> The channel_sid </param>
+        /// <param name="pathInteractionSid"> The Interaction SID for this Channel </param>
+        /// <param name="pathChannelSid"> The Channel SID for this Participant </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -282,22 +282,22 @@ namespace Twilio.Rest.FlexApi.V1.Interaction.InteractionChannel
         }
 
         /// <summary>
-        /// The sid
+        /// The unique string that identifies the resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The interaction_sid
+        /// The Interaction SID for this Channel
         /// </summary>
         [JsonProperty("interaction_sid")]
         public string InteractionSid { get; private set; }
         /// <summary>
-        /// The channel_sid
+        /// The Channel SID for this Invite
         /// </summary>
         [JsonProperty("channel_sid")]
         public string ChannelSid { get; private set; }
         /// <summary>
-        /// The routing
+        /// A JSON object representing the routing rules for the Interaction Channel
         /// </summary>
         [JsonProperty("routing")]
         public object Routing { get; private set; }
