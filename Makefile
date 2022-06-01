@@ -18,16 +18,17 @@ docs:
 	doxygen Doxyfile
 
 API_DEFINITIONS_SHA=$(shell git log --oneline | grep Regenerated | head -n1 | cut -d ' ' -f 5)
+CURRENT_TAG=$(shell [[ "${GITHUB_TAG}" == *"-rc"* ]] && echo "rc" || echo "latest")
 docker-build:
 	docker build -t twilio/twilio-csharp .
 	docker tag twilio/twilio-csharp twilio/twilio-csharp:${GITHUB_TAG}
 	docker tag twilio/twilio-csharp twilio/twilio-csharp:apidefs-${API_DEFINITIONS_SHA}
-	docker tag twilio/twilio-csharp twilio/twilio-csharp:latest
+	docker tag twilio/twilio-csharp twilio/twilio-csharp:${CURRENT_TAG}
 
 docker-push:
 	docker push twilio/twilio-csharp:${GITHUB_TAG}
 	docker push twilio/twilio-csharp:apidefs-${API_DEFINITIONS_SHA}
-	docker push twilio/twilio-csharp:latest
+	docker push twilio/twilio-csharp:${CURRENT_TAG}
 
 cover:
 	dotnet sonarscanner begin /k:"twilio_twilio-csharp" /o:"twilio" /d:sonar.host.url=https://sonarcloud.io /d:sonar.login="${SONAR_TOKEN}"  /d:sonar.language="cs" /d:sonar.exclusions="src/Twilio/Rest/**/*.*,test/Twilio.Test/**/*.*" /d:sonar.cs.opencover.reportsPaths="test/lcov.net451.opencover.xml"
