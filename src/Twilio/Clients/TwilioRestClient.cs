@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Net;
 using Newtonsoft.Json;
 using Twilio.Exceptions;
@@ -51,6 +50,25 @@ namespace Twilio.Clients
         public string LogLevel { get; set; } = Environment.GetEnvironmentVariable("TWILIO_LOG_LEVEL");
         private readonly string _username;
         private readonly string _password;
+
+        /// <summary>
+        /// Constructor for a TwilioRestClient
+        /// </summary>
+        ///
+        /// <param name="username">username for requests</param>
+        /// <param name="password">password for requests</param>
+        /// <param name="accountSid">account sid to make requests for</param>
+        /// <param name="region">region to make requests for</param>
+        /// <param name="httpClient">http client used to make the requests</param>
+        public TwilioRestClient(
+            string username,
+            string password,
+            string accountSid = null,
+            string region = null,
+            HttpClient httpClient = null 
+        ) : this(username, password, accountSid, region, httpClient, null)
+        {
+        }
 
         /// <summary>
         /// Constructor for a TwilioRestClient
