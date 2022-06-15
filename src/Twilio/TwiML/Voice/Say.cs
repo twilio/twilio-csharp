@@ -113,6 +113,11 @@ namespace Twilio.TwiML.Voice
             public static readonly VoiceEnum PollyTakumiNeural = new VoiceEnum("Polly.Takumi-Neural");
             public static readonly VoiceEnum PollySeoyeonNeural = new VoiceEnum("Polly.Seoyeon-Neural");
             public static readonly VoiceEnum PollyLuciaNeural = new VoiceEnum("Polly.Lucia-Neural");
+            public static readonly VoiceEnum PollyArletNeural = new VoiceEnum("Polly.Arlet-Neural");
+            public static readonly VoiceEnum PollyHannahNeural = new VoiceEnum("Polly.Hannah-Neural");
+            public static readonly VoiceEnum PollyMiaNeural = new VoiceEnum("Polly.Mia-Neural");
+            public static readonly VoiceEnum PollyVitoriaNeural = new VoiceEnum("Polly.Vitoria-Neural");
+            public static readonly VoiceEnum PollyInesNeural = new VoiceEnum("Polly.Ines-Neural");
         }
 
         public sealed class LanguageEnum : StringEnum
@@ -129,6 +134,7 @@ namespace Twilio.TwiML.Voice
             public static readonly LanguageEnum CyGb = new LanguageEnum("cy-GB");
             public static readonly LanguageEnum DaDk = new LanguageEnum("da-DK");
             public static readonly LanguageEnum DeDe = new LanguageEnum("de-DE");
+            public static readonly LanguageEnum DeAt = new LanguageEnum("de-AT");
             public static readonly LanguageEnum EnAu = new LanguageEnum("en-AU");
             public static readonly LanguageEnum EnCa = new LanguageEnum("en-CA");
             public static readonly LanguageEnum EnGb = new LanguageEnum("en-GB");
@@ -175,7 +181,7 @@ namespace Twilio.TwiML.Voice
         /// </summary>
         public int? Loop { get; set; }
         /// <summary>
-        /// Message langauge
+        /// Message language
         /// </summary>
         public Say.LanguageEnum Language { get; set; }
 
@@ -185,7 +191,7 @@ namespace Twilio.TwiML.Voice
         /// <param name="message"> Message to say, the body of the TwiML Element. </param>
         /// <param name="voice"> Voice to use </param>
         /// <param name="loop"> Times to loop message </param>
-        /// <param name="language"> Message langauge </param>
+        /// <param name="language"> Message language </param>
         public Say(string message = null,
                    Say.VoiceEnum voice = null,
                    int? loop = null,

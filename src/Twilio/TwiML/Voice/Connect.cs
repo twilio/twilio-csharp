@@ -139,12 +139,20 @@ namespace Twilio.TwiML.Voice
         /// <param name="language"> Language to be used by Dialogflow to transcribe speech </param>
         /// <param name="sentimentAnalysis"> Whether sentiment analysis needs to be enabled or not </param>
         /// <param name="statusCallback"> URL to post status callbacks from Twilio </param>
+        /// <param name="statusCallbackMethod"> HTTP method to use when requesting the status callback URL </param>
         public Connect VirtualAgent(string connectorName = null,
                                     string language = null,
                                     bool? sentimentAnalysis = null,
-                                    string statusCallback = null)
+                                    string statusCallback = null,
+                                    Twilio.Http.HttpMethod statusCallbackMethod = null)
         {
-            var newChild = new VirtualAgent(connectorName, language, sentimentAnalysis, statusCallback);
+            var newChild = new VirtualAgent(
+                connectorName,
+                language,
+                sentimentAnalysis,
+                statusCallback,
+                statusCallbackMethod
+            );
             this.Append(newChild);
             return this;
         }
@@ -157,6 +165,63 @@ namespace Twilio.TwiML.Voice
         public Connect VirtualAgent(VirtualAgent virtualAgent)
         {
             this.Append(virtualAgent);
+            return this;
+        }
+
+        /// <summary>
+        /// Create a new <Conversation/> element and append it as a child of this element.
+        /// </summary>
+        /// <param name="serviceInstanceSid"> Service instance Sid </param>
+        /// <param name="inboundAutocreation"> Inbound autocreation </param>
+        /// <param name="routingAssignmentTimeout"> Routing assignment timeout </param>
+        /// <param name="inboundTimeout"> Inbound timeout </param>
+        /// <param name="record"> Record </param>
+        /// <param name="trim"> Trim </param>
+        /// <param name="recordingStatusCallback"> Recording status callback URL </param>
+        /// <param name="recordingStatusCallbackMethod"> Recording status callback URL method </param>
+        /// <param name="recordingStatusCallbackEvent"> Recording status callback events </param>
+        /// <param name="statusCallback"> Status callback URL </param>
+        /// <param name="statusCallbackMethod"> Status callback URL method </param>
+        /// <param name="statusCallbackEvent"> Events to call status callback URL </param>
+        public Connect Conversation(string serviceInstanceSid = null,
+                                    bool? inboundAutocreation = null,
+                                    int? routingAssignmentTimeout = null,
+                                    int? inboundTimeout = null,
+                                    Conversation.RecordEnum record = null,
+                                    Conversation.TrimEnum trim = null,
+                                    Uri recordingStatusCallback = null,
+                                    Twilio.Http.HttpMethod recordingStatusCallbackMethod = null,
+                                    List<Conversation.RecordingEventEnum> recordingStatusCallbackEvent = null,
+                                    Uri statusCallback = null,
+                                    Twilio.Http.HttpMethod statusCallbackMethod = null,
+                                    List<Conversation.EventEnum> statusCallbackEvent = null)
+        {
+            var newChild = new Conversation(
+                serviceInstanceSid,
+                inboundAutocreation,
+                routingAssignmentTimeout,
+                inboundTimeout,
+                record,
+                trim,
+                recordingStatusCallback,
+                recordingStatusCallbackMethod,
+                recordingStatusCallbackEvent,
+                statusCallback,
+                statusCallbackMethod,
+                statusCallbackEvent
+            );
+            this.Append(newChild);
+            return this;
+        }
+
+        /// <summary>
+        /// Append a <Conversation/> element as a child of this element
+        /// </summary>
+        /// <param name="conversation"> A Conversation instance. </param>
+        [System.Obsolete("This method is deprecated, use .Append() instead.")]
+        public Connect Conversation(Conversation conversation)
+        {
+            this.Append(conversation);
             return this;
         }
 

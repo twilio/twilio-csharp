@@ -69,7 +69,28 @@ namespace Twilio.Tests.TwiML
                 Stream.StatusCallbackMethodEnum.Get
             );
 
-            elem.VirtualAgent("connector_name", "language", true, "status_callback");
+            elem.VirtualAgent(
+                "connector_name",
+                "language",
+                true,
+                "status_callback",
+                Twilio.Http.HttpMethod.Get
+            );
+
+            elem.Conversation(
+                "service_instance_sid",
+                true,
+                1,
+                1,
+                Conversation.RecordEnum.DoNotRecord,
+                Conversation.TrimEnum.TrimSilence,
+                new Uri("https://example.com"),
+                Twilio.Http.HttpMethod.Get,
+                Promoter.ListOfOne(Conversation.RecordingEventEnum.InProgress),
+                new Uri("https://example.com"),
+                Twilio.Http.HttpMethod.Get,
+                Promoter.ListOfOne(Conversation.EventEnum.CallInitiated)
+            );
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
@@ -77,7 +98,8 @@ namespace Twilio.Tests.TwiML
                 "  <Room participantIdentity=\"participant_identity\">name</Room>" + Environment.NewLine +
                 "  <Autopilot>name</Autopilot>" + Environment.NewLine +
                 "  <Stream name=\"name\" connectorName=\"connector_name\" url=\"url\" track=\"inbound_track\" statusCallback=\"status_callback\" statusCallbackMethod=\"GET\"></Stream>" + Environment.NewLine +
-                "  <VirtualAgent connectorName=\"connector_name\" language=\"language\" sentimentAnalysis=\"true\" statusCallback=\"status_callback\"></VirtualAgent>" + Environment.NewLine +
+                "  <VirtualAgent connectorName=\"connector_name\" language=\"language\" sentimentAnalysis=\"true\" statusCallback=\"status_callback\" statusCallbackMethod=\"GET\"></VirtualAgent>" + Environment.NewLine +
+                "  <Conversation serviceInstanceSid=\"service_instance_sid\" inboundAutocreation=\"true\" routingAssignmentTimeout=\"1\" inboundTimeout=\"1\" record=\"do-not-record\" trim=\"trim-silence\" recordingStatusCallback=\"https://example.com\" recordingStatusCallbackMethod=\"GET\" recordingStatusCallbackEvent=\"in-progress\" statusCallback=\"https://example.com\" statusCallbackMethod=\"GET\" statusCallbackEvent=\"call-initiated\"></Conversation>" + Environment.NewLine +
                 "</Connect>",
                 elem.ToString()
             );

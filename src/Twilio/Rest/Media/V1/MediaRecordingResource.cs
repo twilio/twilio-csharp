@@ -419,10 +419,10 @@ namespace Twilio.Rest.Media.V1
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The size of the recording
+        /// The size of the recording media
         /// </summary>
-        [JsonProperty("size")]
-        public long? Size { get; private set; }
+        [JsonProperty("media_size")]
+        public long? MediaSize { get; private set; }
         /// <summary>
         /// The status of the MediaRecording
         /// </summary>

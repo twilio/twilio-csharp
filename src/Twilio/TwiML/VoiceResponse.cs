@@ -482,7 +482,7 @@ namespace Twilio.TwiML
         /// <param name="message"> Message to say, the body of the TwiML Element. </param>
         /// <param name="voice"> Voice to use </param>
         /// <param name="loop"> Times to loop message </param>
-        /// <param name="language"> Message langauge </param>
+        /// <param name="language"> Message language </param>
         public VoiceResponse Say(string message = null,
                                  Say.VoiceEnum voice = null,
                                  int? loop = null,

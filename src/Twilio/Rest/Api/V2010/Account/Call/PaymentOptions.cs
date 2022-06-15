@@ -64,7 +64,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// </summary>
         public object Parameter { get; set; }
         /// <summary>
-        /// This is the unique name corresponding to the Payment Gateway Connector installed in the Twilio Add-ons.
+        /// This is the unique name corresponding to the Pay Connector installed in the Twilio Add-ons.
         /// </summary>
         public string PaymentConnector { get; set; }
         /// <summary>
