@@ -137,6 +137,11 @@ To use a custom HTTP client with this helper library, please see the [Twilio doc
 
 The `Dockerfile` present in this repository and its respective `twilio/twilio-csharp` Docker image are currently used by Twilio for testing purposes only.
 
+## Docker build Image
+
+There is a [Dockerfile](Dockerbuild/) available for build/testing your code.
+
+
 ## Getting help
 
 If you need help installing or using the library, please check the [Twilio Support Help Center](https://support.twilio.com) first, and [file a support ticket](https://twilio.com/help/contact) if you don't find an answer to your question.
