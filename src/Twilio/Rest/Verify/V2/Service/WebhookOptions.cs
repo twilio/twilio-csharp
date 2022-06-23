@@ -39,6 +39,10 @@ namespace Twilio.Rest.Verify.V2.Service
         /// The webhook status
         /// </summary>
         public WebhookResource.StatusEnum Status { get; set; }
+        /// <summary>
+        /// The webhook version
+        /// </summary>
+        public WebhookResource.VersionEnum Version { get; set; }
 
         /// <summary>
         /// Construct a new CreateWebhookOptions
@@ -81,6 +85,11 @@ namespace Twilio.Rest.Verify.V2.Service
                 p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
             }
 
+            if (Version != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Version", Version.ToString()));
+            }
+
             return p;
         }
     }
@@ -116,6 +125,10 @@ namespace Twilio.Rest.Verify.V2.Service
         /// The webhook status
         /// </summary>
         public WebhookResource.StatusEnum Status { get; set; }
+        /// <summary>
+        /// The webhook version
+        /// </summary>
+        public WebhookResource.VersionEnum Version { get; set; }
 
         /// <summary>
         /// Construct a new UpdateWebhookOptions
@@ -153,6 +166,11 @@ namespace Twilio.Rest.Verify.V2.Service
             if (Status != null)
             {
                 p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
+            }
+
+            if (Version != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Version", Version.ToString()));
             }
 
             return p;

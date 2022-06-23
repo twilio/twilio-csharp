@@ -49,6 +49,7 @@ namespace Twilio.Rest.Events.V1
 
             public static readonly SinkTypeEnum Kinesis = new SinkTypeEnum("kinesis");
             public static readonly SinkTypeEnum Webhook = new SinkTypeEnum("webhook");
+            public static readonly SinkTypeEnum Segment = new SinkTypeEnum("segment");
         }
 
         private static Request BuildFetchRequest(FetchSinkOptions options, ITwilioRestClient client)

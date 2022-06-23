@@ -151,10 +151,10 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <param name="input"> A list of inputs that should be accepted. Currently only `dtmf` is supported. </param>
         /// <param name="minPostalCodeLength"> A positive integer that is used to validate the length of the `PostalCode`
         ///                           inputted by the user. </param>
-        /// <param name="parameter"> A single level JSON string that is required when accepting certain information specific
-        ///                 only to ACH payments. </param>
-        /// <param name="paymentConnector"> This is the unique name corresponding to the Payment Gateway Connector installed in
-        ///                        the Twilio Add-ons. </param>
+        /// <param name="parameter"> A single-level JSON object used to pass custom parameters to payment processors. (Required
+        ///                 for ACH payments) </param>
+        /// <param name="paymentConnector"> This is the unique name corresponding to the Pay Connector installed in the Twilio
+        ///                        Add-ons. </param>
         /// <param name="paymentMethod"> Type of payment being captured. </param>
         /// <param name="postalCode"> Indicates whether the credit card PostalCode (zip code) is a required piece of payment
         ///                  information that must be provided by the caller. </param>
@@ -209,10 +209,10 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <param name="input"> A list of inputs that should be accepted. Currently only `dtmf` is supported. </param>
         /// <param name="minPostalCodeLength"> A positive integer that is used to validate the length of the `PostalCode`
         ///                           inputted by the user. </param>
-        /// <param name="parameter"> A single level JSON string that is required when accepting certain information specific
-        ///                 only to ACH payments. </param>
-        /// <param name="paymentConnector"> This is the unique name corresponding to the Payment Gateway Connector installed in
-        ///                        the Twilio Add-ons. </param>
+        /// <param name="parameter"> A single-level JSON object used to pass custom parameters to payment processors. (Required
+        ///                 for ACH payments) </param>
+        /// <param name="paymentConnector"> This is the unique name corresponding to the Pay Connector installed in the Twilio
+        ///                        Add-ons. </param>
         /// <param name="paymentMethod"> Type of payment being captured. </param>
         /// <param name="postalCode"> Indicates whether the credit card PostalCode (zip code) is a required piece of payment
         ///                  information that must be provided by the caller. </param>

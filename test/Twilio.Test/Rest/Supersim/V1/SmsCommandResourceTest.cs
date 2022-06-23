@@ -30,13 +30,13 @@ namespace Twilio.Tests.Rest.Supersim.V1
                 "/v1/SmsCommands",
                 ""
             );
-            request.AddPostParam("Sim", Serialize("HSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"));
+            request.AddPostParam("Sim", Serialize("sim"));
             request.AddPostParam("Payload", Serialize("payload"));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                SmsCommandResource.Create("HSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "payload", client: twilioRestClient);
+                SmsCommandResource.Create("sim", "payload", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -54,7 +54,7 @@ namespace Twilio.Tests.Rest.Supersim.V1
                                          "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"payload\": \"checkin: firmware update\",\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"sim_sid\": \"HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"sid\": \"HCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"status\": \"queued\",\"direction\": \"to_sim\",\"url\": \"https://supersim.twilio.com/v1/SmsCommands/HCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
                                      ));
 
-            var response = SmsCommandResource.Create("HSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "payload", client: twilioRestClient);
+            var response = SmsCommandResource.Create("sim", "payload", client: twilioRestClient);
             Assert.NotNull(response);
         }
 
@@ -69,7 +69,7 @@ namespace Twilio.Tests.Rest.Supersim.V1
                                          "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"payload\": \"Report location: (52.520008, 13.404954)\",\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"sim_sid\": \"HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"sid\": \"HCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"status\": \"queued\",\"direction\": \"to_sim\",\"url\": \"https://supersim.twilio.com/v1/SmsCommands/HCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
                                      ));
 
-            var response = SmsCommandResource.Create("HSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "payload", client: twilioRestClient);
+            var response = SmsCommandResource.Create("sim", "payload", client: twilioRestClient);
             Assert.NotNull(response);
         }
 

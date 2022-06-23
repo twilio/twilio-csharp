@@ -47,7 +47,7 @@ namespace Twilio.Rest.Supersim.V1
         /// </summary>
         public DateTime? StartTime { get; set; }
         /// <summary>
-        /// Only include usage that occurred before this time.
+        /// Only include usage that occurred before this time (exclusive).
         /// </summary>
         public DateTime? EndTime { get; set; }
 

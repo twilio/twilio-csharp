@@ -79,6 +79,18 @@ namespace Twilio.Rest.Messaging.V1
         /// A2P Messaging Profile Bundle Sid
         /// </summary>
         public string A2PProfileBundleSid { get; }
+        /// <summary>
+        /// Type of brand being created. One of: "STANDARD", "STARTER".
+        /// </summary>
+        public string BrandType { get; set; }
+        /// <summary>
+        /// A boolean that specifies whether brand should be a mock or not. If true, brand will be registered as a mock brand. Defaults to false if no value is provided.
+        /// </summary>
+        public bool? Mock { get; set; }
+        /// <summary>
+        /// Skip Automatic Secondary Vetting
+        /// </summary>
+        public bool? SkipAutomaticSecVet { get; set; }
 
         /// <summary>
         /// Construct a new CreateBrandRegistrationOptions
@@ -107,6 +119,52 @@ namespace Twilio.Rest.Messaging.V1
                 p.Add(new KeyValuePair<string, string>("A2PProfileBundleSid", A2PProfileBundleSid.ToString()));
             }
 
+            if (BrandType != null)
+            {
+                p.Add(new KeyValuePair<string, string>("BrandType", BrandType));
+            }
+
+            if (Mock != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Mock", Mock.Value.ToString().ToLower()));
+            }
+
+            if (SkipAutomaticSecVet != null)
+            {
+                p.Add(new KeyValuePair<string, string>("SkipAutomaticSecVet", SkipAutomaticSecVet.Value.ToString().ToLower()));
+            }
+
+            return p;
+        }
+    }
+
+    /// <summary>
+    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+    ///
+    /// UpdateBrandRegistrationOptions
+    /// </summary>
+    public class UpdateBrandRegistrationOptions : IOptions<BrandRegistrationResource>
+    {
+        /// <summary>
+        /// The SID that identifies the resource to update
+        /// </summary>
+        public string PathSid { get; }
+
+        /// <summary>
+        /// Construct a new UpdateBrandRegistrationOptions
+        /// </summary>
+        /// <param name="pathSid"> The SID that identifies the resource to update </param>
+        public UpdateBrandRegistrationOptions(string pathSid)
+        {
+            PathSid = pathSid;
+        }
+
+        /// <summary>
+        /// Generate the necessary parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
             return p;
         }
     }

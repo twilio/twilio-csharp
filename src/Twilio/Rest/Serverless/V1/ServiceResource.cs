@@ -495,6 +495,11 @@ namespace Twilio.Rest.Serverless.V1
         [JsonProperty("ui_editable")]
         public bool? UiEditable { get; private set; }
         /// <summary>
+        /// The base domain name for this Service, which is a combination of the unique name and a randomly generated string
+        /// </summary>
+        [JsonProperty("domain_base")]
+        public string DomainBase { get; private set; }
+        /// <summary>
         /// The ISO 8601 date and time in GMT when the Service resource was created
         /// </summary>
         [JsonProperty("date_created")]

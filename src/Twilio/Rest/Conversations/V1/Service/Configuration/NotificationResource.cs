@@ -83,6 +83,10 @@ namespace Twilio.Rest.Conversations.V1.Service.Configuration
         ///                                       user when they are removed. </param>
         /// <param name="removedFromConversationSound"> The name of the sound to play to a user when they are removed from a
         ///                                    conversation. </param>
+        /// <param name="newMessageWithMediaEnabled"> Whether to send a notification when a new message with media/file
+        ///                                  attachments is added to a conversation. </param>
+        /// <param name="newMessageWithMediaTemplate"> The template to use to create the notification text displayed when a new
+        ///                                   message with media/file attachments is added to a conversation. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Notification </returns>
         public static NotificationResource Update(string pathChatServiceSid,
@@ -97,9 +101,11 @@ namespace Twilio.Rest.Conversations.V1.Service.Configuration
                                                   bool? removedFromConversationEnabled = null,
                                                   string removedFromConversationTemplate = null,
                                                   string removedFromConversationSound = null,
+                                                  bool? newMessageWithMediaEnabled = null,
+                                                  string newMessageWithMediaTemplate = null,
                                                   ITwilioRestClient client = null)
         {
-            var options = new UpdateNotificationOptions(pathChatServiceSid){LogEnabled = logEnabled, NewMessageEnabled = newMessageEnabled, NewMessageTemplate = newMessageTemplate, NewMessageSound = newMessageSound, NewMessageBadgeCountEnabled = newMessageBadgeCountEnabled, AddedToConversationEnabled = addedToConversationEnabled, AddedToConversationTemplate = addedToConversationTemplate, AddedToConversationSound = addedToConversationSound, RemovedFromConversationEnabled = removedFromConversationEnabled, RemovedFromConversationTemplate = removedFromConversationTemplate, RemovedFromConversationSound = removedFromConversationSound};
+            var options = new UpdateNotificationOptions(pathChatServiceSid){LogEnabled = logEnabled, NewMessageEnabled = newMessageEnabled, NewMessageTemplate = newMessageTemplate, NewMessageSound = newMessageSound, NewMessageBadgeCountEnabled = newMessageBadgeCountEnabled, AddedToConversationEnabled = addedToConversationEnabled, AddedToConversationTemplate = addedToConversationTemplate, AddedToConversationSound = addedToConversationSound, RemovedFromConversationEnabled = removedFromConversationEnabled, RemovedFromConversationTemplate = removedFromConversationTemplate, RemovedFromConversationSound = removedFromConversationSound, NewMessageWithMediaEnabled = newMessageWithMediaEnabled, NewMessageWithMediaTemplate = newMessageWithMediaTemplate};
             return Update(options, client);
         }
 
@@ -127,6 +133,10 @@ namespace Twilio.Rest.Conversations.V1.Service.Configuration
         ///                                       user when they are removed. </param>
         /// <param name="removedFromConversationSound"> The name of the sound to play to a user when they are removed from a
         ///                                    conversation. </param>
+        /// <param name="newMessageWithMediaEnabled"> Whether to send a notification when a new message with media/file
+        ///                                  attachments is added to a conversation. </param>
+        /// <param name="newMessageWithMediaTemplate"> The template to use to create the notification text displayed when a new
+        ///                                   message with media/file attachments is added to a conversation. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Notification </returns>
         public static async System.Threading.Tasks.Task<NotificationResource> UpdateAsync(string pathChatServiceSid,
@@ -141,9 +151,11 @@ namespace Twilio.Rest.Conversations.V1.Service.Configuration
                                                                                           bool? removedFromConversationEnabled = null,
                                                                                           string removedFromConversationTemplate = null,
                                                                                           string removedFromConversationSound = null,
+                                                                                          bool? newMessageWithMediaEnabled = null,
+                                                                                          string newMessageWithMediaTemplate = null,
                                                                                           ITwilioRestClient client = null)
         {
-            var options = new UpdateNotificationOptions(pathChatServiceSid){LogEnabled = logEnabled, NewMessageEnabled = newMessageEnabled, NewMessageTemplate = newMessageTemplate, NewMessageSound = newMessageSound, NewMessageBadgeCountEnabled = newMessageBadgeCountEnabled, AddedToConversationEnabled = addedToConversationEnabled, AddedToConversationTemplate = addedToConversationTemplate, AddedToConversationSound = addedToConversationSound, RemovedFromConversationEnabled = removedFromConversationEnabled, RemovedFromConversationTemplate = removedFromConversationTemplate, RemovedFromConversationSound = removedFromConversationSound};
+            var options = new UpdateNotificationOptions(pathChatServiceSid){LogEnabled = logEnabled, NewMessageEnabled = newMessageEnabled, NewMessageTemplate = newMessageTemplate, NewMessageSound = newMessageSound, NewMessageBadgeCountEnabled = newMessageBadgeCountEnabled, AddedToConversationEnabled = addedToConversationEnabled, AddedToConversationTemplate = addedToConversationTemplate, AddedToConversationSound = addedToConversationSound, RemovedFromConversationEnabled = removedFromConversationEnabled, RemovedFromConversationTemplate = removedFromConversationTemplate, RemovedFromConversationSound = removedFromConversationSound, NewMessageWithMediaEnabled = newMessageWithMediaEnabled, NewMessageWithMediaTemplate = newMessageWithMediaTemplate};
             return await UpdateAsync(options, client);
         }
         #endif

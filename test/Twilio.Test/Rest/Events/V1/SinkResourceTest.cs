@@ -96,6 +96,21 @@ namespace Twilio.Tests.Rest.Events.V1
         }
 
         [Test]
+        public void TestCreateSegmentResponse()
+        {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+            twilioRestClient.Request(Arg.Any<Request>())
+                            .Returns(new Response(
+                                         System.Net.HttpStatusCode.Created,
+                                         "{\"status\": \"initialized\",\"sink_configuration\": {\"write_key\": \"MY_WRITEKEY\"},\"description\": \"My segment Sink\",\"sid\": \"DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2015-07-30T20:00:00Z\",\"sink_type\": \"segment\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"url\": \"https://events.twilio.com/v1/Sinks/DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"links\": {\"sink_test\": \"https://events.twilio.com/v1/Sinks/DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Test\",\"sink_validate\": \"https://events.twilio.com/v1/Sinks/DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Validate\"}}"
+                                     ));
+
+            var response = SinkResource.Create("description", "{}", SinkResource.SinkTypeEnum.Kinesis, client: twilioRestClient);
+            Assert.NotNull(response);
+        }
+
+        [Test]
         public void TestDeleteRequest()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();

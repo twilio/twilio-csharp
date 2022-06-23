@@ -86,6 +86,26 @@ namespace Twilio.Rest.Video.V1
         /// A collection of Recording Rules
         /// </summary>
         public object RecordingRules { get; set; }
+        /// <summary>
+        /// Indicates whether the room will only contain audio track participants for group rooms.
+        /// </summary>
+        public bool? AudioOnly { get; set; }
+        /// <summary>
+        /// The maximum number of seconds a Participant can be connected to the room
+        /// </summary>
+        public int? MaxParticipantDuration { get; set; }
+        /// <summary>
+        /// Configures the time a room will remain active after last participant leaves.
+        /// </summary>
+        public int? EmptyRoomTimeout { get; set; }
+        /// <summary>
+        /// Configures the time a room will remain active when no one joins.
+        /// </summary>
+        public int? UnusedRoomTimeout { get; set; }
+        /// <summary>
+        /// Indicates whether this is a large room.
+        /// </summary>
+        public bool? LargeRoom { get; set; }
 
         /// <summary>
         /// Construct a new CreateRoomOptions
@@ -149,6 +169,31 @@ namespace Twilio.Rest.Video.V1
             if (RecordingRules != null)
             {
                 p.Add(new KeyValuePair<string, string>("RecordingRules", Serializers.JsonObject(RecordingRules)));
+            }
+
+            if (AudioOnly != null)
+            {
+                p.Add(new KeyValuePair<string, string>("AudioOnly", AudioOnly.Value.ToString().ToLower()));
+            }
+
+            if (MaxParticipantDuration != null)
+            {
+                p.Add(new KeyValuePair<string, string>("MaxParticipantDuration", MaxParticipantDuration.ToString()));
+            }
+
+            if (EmptyRoomTimeout != null)
+            {
+                p.Add(new KeyValuePair<string, string>("EmptyRoomTimeout", EmptyRoomTimeout.ToString()));
+            }
+
+            if (UnusedRoomTimeout != null)
+            {
+                p.Add(new KeyValuePair<string, string>("UnusedRoomTimeout", UnusedRoomTimeout.ToString()));
+            }
+
+            if (LargeRoom != null)
+            {
+                p.Add(new KeyValuePair<string, string>("LargeRoom", LargeRoom.Value.ToString().ToLower()));
             }
 
             return p;

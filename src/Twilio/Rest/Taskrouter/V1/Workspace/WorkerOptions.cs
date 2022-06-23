@@ -227,9 +227,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// Whether to reject pending reservations
+        /// Whether to reject the Worker's pending reservations
         /// </summary>
         public bool? RejectPendingReservations { get; set; }
+        /// <summary>
+        /// The If-Match HTTP request header
+        /// </summary>
+        public string IfMatch { get; set; }
 
         /// <summary>
         /// Construct a new UpdateWorkerOptions
@@ -270,6 +274,20 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
             return p;
         }
+
+        /// <summary>
+        /// Generate the necessary header parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetHeaderParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            if (IfMatch != null)
+            {
+                p.Add(new KeyValuePair<string, string>("If-Match", IfMatch));
+            }
+
+            return p;
+        }
     }
 
     /// <summary>
@@ -285,6 +303,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// The SID of the resource to delete
         /// </summary>
         public string PathSid { get; }
+        /// <summary>
+        /// The If-Match HTTP request header
+        /// </summary>
+        public string IfMatch { get; set; }
 
         /// <summary>
         /// Construct a new DeleteWorkerOptions
@@ -303,6 +325,20 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
+            return p;
+        }
+
+        /// <summary>
+        /// Generate the necessary header parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetHeaderParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            if (IfMatch != null)
+            {
+                p.Add(new KeyValuePair<string, string>("If-Match", IfMatch));
+            }
+
             return p;
         }
     }

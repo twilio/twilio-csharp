@@ -73,7 +73,8 @@ namespace Twilio.Jwt
             var headers = BuildHeaders();
             foreach (var entry in Headers)
             {
-                headers.Add(entry.Key, entry.Value);
+                // Newer versions of JwtToken includes cty, which is already available in the headers.
+                headers[entry.Key] = entry.Value;
             }
 
             var payload = BuildPayload();

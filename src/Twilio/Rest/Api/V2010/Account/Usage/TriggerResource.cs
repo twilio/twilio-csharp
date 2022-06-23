@@ -30,6 +30,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
                 return new UsageCategoryEnum(value);
             }
 
+            public static readonly UsageCategoryEnum A2PRegistrationFees = new UsageCategoryEnum("a2p-registration-fees");
             public static readonly UsageCategoryEnum AgentConference = new UsageCategoryEnum("agent-conference");
             public static readonly UsageCategoryEnum AnsweringMachineDetection = new UsageCategoryEnum("answering-machine-detection");
             public static readonly UsageCategoryEnum AuthyAuthentications = new UsageCategoryEnum("authy-authentications");
@@ -53,6 +54,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             public static readonly UsageCategoryEnum CallsSip = new UsageCategoryEnum("calls-sip");
             public static readonly UsageCategoryEnum CallsSipInbound = new UsageCategoryEnum("calls-sip-inbound");
             public static readonly UsageCategoryEnum CallsSipOutbound = new UsageCategoryEnum("calls-sip-outbound");
+            public static readonly UsageCategoryEnum CallsTransfers = new UsageCategoryEnum("calls-transfers");
             public static readonly UsageCategoryEnum CarrierLookups = new UsageCategoryEnum("carrier-lookups");
             public static readonly UsageCategoryEnum Conversations = new UsageCategoryEnum("conversations");
             public static readonly UsageCategoryEnum ConversationsApiRequests = new UsageCategoryEnum("conversations-api-requests");
@@ -62,6 +64,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             public static readonly UsageCategoryEnum ConversationsParticipantEvents = new UsageCategoryEnum("conversations-participant-events");
             public static readonly UsageCategoryEnum ConversationsParticipants = new UsageCategoryEnum("conversations-participants");
             public static readonly UsageCategoryEnum Cps = new UsageCategoryEnum("cps");
+            public static readonly UsageCategoryEnum FlexUsage = new UsageCategoryEnum("flex-usage");
             public static readonly UsageCategoryEnum FraudLookups = new UsageCategoryEnum("fraud-lookups");
             public static readonly UsageCategoryEnum GroupRooms = new UsageCategoryEnum("group-rooms");
             public static readonly UsageCategoryEnum GroupRoomsDataTrack = new UsageCategoryEnum("group-rooms-data-track");
@@ -221,6 +224,8 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             public static readonly UsageCategoryEnum TurnmegabytesUswest = new UsageCategoryEnum("turnmegabytes-uswest");
             public static readonly UsageCategoryEnum TwilioInterconnect = new UsageCategoryEnum("twilio-interconnect");
             public static readonly UsageCategoryEnum VerifyPush = new UsageCategoryEnum("verify-push");
+            public static readonly UsageCategoryEnum VerifyTotp = new UsageCategoryEnum("verify-totp");
+            public static readonly UsageCategoryEnum VerifyWhatsappConversationsBusinessInitiated = new UsageCategoryEnum("verify-whatsapp-conversations-business-initiated");
             public static readonly UsageCategoryEnum VideoRecordings = new UsageCategoryEnum("video-recordings");
             public static readonly UsageCategoryEnum VoiceInsights = new UsageCategoryEnum("voice-insights");
             public static readonly UsageCategoryEnum VoiceInsightsClientInsightsOnDemandMinute = new UsageCategoryEnum("voice-insights-client-insights-on-demand-minute");

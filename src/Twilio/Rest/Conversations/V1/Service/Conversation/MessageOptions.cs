@@ -335,6 +335,10 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         /// The unique ID of the Conversation for messages.
         /// </summary>
         public string PathConversationSid { get; }
+        /// <summary>
+        /// The sort order of the returned messages
+        /// </summary>
+        public MessageResource.OrderTypeEnum Order { get; set; }
 
         /// <summary>
         /// Construct a new ReadMessageOptions
@@ -353,6 +357,11 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         public override List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
+            if (Order != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Order", Order.ToString()));
+            }
+
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));

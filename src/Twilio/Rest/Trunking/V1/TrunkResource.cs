@@ -35,6 +35,19 @@ namespace Twilio.Rest.Trunking.V1
             public static readonly TransferSettingEnum SipOnly = new TransferSettingEnum("sip-only");
         }
 
+        public sealed class TransferCallerIdEnum : StringEnum
+        {
+            private TransferCallerIdEnum(string value) : base(value) {}
+            public TransferCallerIdEnum() {}
+            public static implicit operator TransferCallerIdEnum(string value)
+            {
+                return new TransferCallerIdEnum(value);
+            }
+
+            public static readonly TransferCallerIdEnum FromTransferee = new TransferCallerIdEnum("from-transferee");
+            public static readonly TransferCallerIdEnum FromTransferor = new TransferCallerIdEnum("from-transferor");
+        }
+
         private static Request BuildFetchRequest(FetchTrunkOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -219,6 +232,7 @@ namespace Twilio.Rest.Trunking.V1
         /// <param name="transferMode"> The call transfer settings for the trunk </param>
         /// <param name="secure"> Whether Secure Trunking is enabled for the trunk </param>
         /// <param name="cnamLookupEnabled"> Whether Caller ID Name (CNAM) lookup should be enabled for the trunk </param>
+        /// <param name="transferCallerId"> Caller Id for transfer target </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Trunk </returns>
         public static TrunkResource Create(string friendlyName = null,
@@ -228,9 +242,10 @@ namespace Twilio.Rest.Trunking.V1
                                            TrunkResource.TransferSettingEnum transferMode = null,
                                            bool? secure = null,
                                            bool? cnamLookupEnabled = null,
+                                           TrunkResource.TransferCallerIdEnum transferCallerId = null,
                                            ITwilioRestClient client = null)
         {
-            var options = new CreateTrunkOptions(){FriendlyName = friendlyName, DomainName = domainName, DisasterRecoveryUrl = disasterRecoveryUrl, DisasterRecoveryMethod = disasterRecoveryMethod, TransferMode = transferMode, Secure = secure, CnamLookupEnabled = cnamLookupEnabled};
+            var options = new CreateTrunkOptions(){FriendlyName = friendlyName, DomainName = domainName, DisasterRecoveryUrl = disasterRecoveryUrl, DisasterRecoveryMethod = disasterRecoveryMethod, TransferMode = transferMode, Secure = secure, CnamLookupEnabled = cnamLookupEnabled, TransferCallerId = transferCallerId};
             return Create(options, client);
         }
 
@@ -246,6 +261,7 @@ namespace Twilio.Rest.Trunking.V1
         /// <param name="transferMode"> The call transfer settings for the trunk </param>
         /// <param name="secure"> Whether Secure Trunking is enabled for the trunk </param>
         /// <param name="cnamLookupEnabled"> Whether Caller ID Name (CNAM) lookup should be enabled for the trunk </param>
+        /// <param name="transferCallerId"> Caller Id for transfer target </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Trunk </returns>
         public static async System.Threading.Tasks.Task<TrunkResource> CreateAsync(string friendlyName = null,
@@ -255,9 +271,10 @@ namespace Twilio.Rest.Trunking.V1
                                                                                    TrunkResource.TransferSettingEnum transferMode = null,
                                                                                    bool? secure = null,
                                                                                    bool? cnamLookupEnabled = null,
+                                                                                   TrunkResource.TransferCallerIdEnum transferCallerId = null,
                                                                                    ITwilioRestClient client = null)
         {
-            var options = new CreateTrunkOptions(){FriendlyName = friendlyName, DomainName = domainName, DisasterRecoveryUrl = disasterRecoveryUrl, DisasterRecoveryMethod = disasterRecoveryMethod, TransferMode = transferMode, Secure = secure, CnamLookupEnabled = cnamLookupEnabled};
+            var options = new CreateTrunkOptions(){FriendlyName = friendlyName, DomainName = domainName, DisasterRecoveryUrl = disasterRecoveryUrl, DisasterRecoveryMethod = disasterRecoveryMethod, TransferMode = transferMode, Secure = secure, CnamLookupEnabled = cnamLookupEnabled, TransferCallerId = transferCallerId};
             return await CreateAsync(options, client);
         }
         #endif
@@ -443,6 +460,7 @@ namespace Twilio.Rest.Trunking.V1
         /// <param name="transferMode"> The call transfer settings for the trunk </param>
         /// <param name="secure"> Whether Secure Trunking is enabled for the trunk </param>
         /// <param name="cnamLookupEnabled"> Whether Caller ID Name (CNAM) lookup should be enabled for the trunk </param>
+        /// <param name="transferCallerId"> Caller Id for transfer target </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Trunk </returns>
         public static TrunkResource Update(string pathSid,
@@ -453,9 +471,10 @@ namespace Twilio.Rest.Trunking.V1
                                            TrunkResource.TransferSettingEnum transferMode = null,
                                            bool? secure = null,
                                            bool? cnamLookupEnabled = null,
+                                           TrunkResource.TransferCallerIdEnum transferCallerId = null,
                                            ITwilioRestClient client = null)
         {
-            var options = new UpdateTrunkOptions(pathSid){FriendlyName = friendlyName, DomainName = domainName, DisasterRecoveryUrl = disasterRecoveryUrl, DisasterRecoveryMethod = disasterRecoveryMethod, TransferMode = transferMode, Secure = secure, CnamLookupEnabled = cnamLookupEnabled};
+            var options = new UpdateTrunkOptions(pathSid){FriendlyName = friendlyName, DomainName = domainName, DisasterRecoveryUrl = disasterRecoveryUrl, DisasterRecoveryMethod = disasterRecoveryMethod, TransferMode = transferMode, Secure = secure, CnamLookupEnabled = cnamLookupEnabled, TransferCallerId = transferCallerId};
             return Update(options, client);
         }
 
@@ -472,6 +491,7 @@ namespace Twilio.Rest.Trunking.V1
         /// <param name="transferMode"> The call transfer settings for the trunk </param>
         /// <param name="secure"> Whether Secure Trunking is enabled for the trunk </param>
         /// <param name="cnamLookupEnabled"> Whether Caller ID Name (CNAM) lookup should be enabled for the trunk </param>
+        /// <param name="transferCallerId"> Caller Id for transfer target </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Trunk </returns>
         public static async System.Threading.Tasks.Task<TrunkResource> UpdateAsync(string pathSid,
@@ -482,9 +502,10 @@ namespace Twilio.Rest.Trunking.V1
                                                                                    TrunkResource.TransferSettingEnum transferMode = null,
                                                                                    bool? secure = null,
                                                                                    bool? cnamLookupEnabled = null,
+                                                                                   TrunkResource.TransferCallerIdEnum transferCallerId = null,
                                                                                    ITwilioRestClient client = null)
         {
-            var options = new UpdateTrunkOptions(pathSid){FriendlyName = friendlyName, DomainName = domainName, DisasterRecoveryUrl = disasterRecoveryUrl, DisasterRecoveryMethod = disasterRecoveryMethod, TransferMode = transferMode, Secure = secure, CnamLookupEnabled = cnamLookupEnabled};
+            var options = new UpdateTrunkOptions(pathSid){FriendlyName = friendlyName, DomainName = domainName, DisasterRecoveryUrl = disasterRecoveryUrl, DisasterRecoveryMethod = disasterRecoveryMethod, TransferMode = transferMode, Secure = secure, CnamLookupEnabled = cnamLookupEnabled, TransferCallerId = transferCallerId};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -549,6 +570,12 @@ namespace Twilio.Rest.Trunking.V1
         [JsonProperty("transfer_mode")]
         [JsonConverter(typeof(StringEnumConverter))]
         public TrunkResource.TransferSettingEnum TransferMode { get; private set; }
+        /// <summary>
+        /// Caller Id for transfer target
+        /// </summary>
+        [JsonProperty("transfer_caller_id")]
+        [JsonConverter(typeof(StringEnumConverter))]
+        public TrunkResource.TransferCallerIdEnum TransferCallerId { get; private set; }
         /// <summary>
         /// Whether Caller ID Name (CNAM) lookup is enabled for the trunk
         /// </summary>

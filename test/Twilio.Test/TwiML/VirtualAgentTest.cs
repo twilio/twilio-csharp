@@ -29,10 +29,16 @@ namespace Twilio.Tests.TwiML
         [Test]
         public void TestElementWithParams()
         {
-            var elem = new VirtualAgent("connector_name", "language", true, "status_callback");
+            var elem = new VirtualAgent(
+                "connector_name",
+                "language",
+                true,
+                "status_callback",
+                Twilio.Http.HttpMethod.Get
+            );
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<VirtualAgent connectorName=\"connector_name\" language=\"language\" sentimentAnalysis=\"true\" statusCallback=\"status_callback\"></VirtualAgent>",
+                "<VirtualAgent connectorName=\"connector_name\" language=\"language\" sentimentAnalysis=\"true\" statusCallback=\"status_callback\" statusCallbackMethod=\"GET\"></VirtualAgent>",
                 elem.ToString()
             );
         }
@@ -47,6 +53,25 @@ namespace Twilio.Tests.TwiML
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
                 "<VirtualAgent newParam1=\"value\" newParam2=\"1\"></VirtualAgent>",
+                elem.ToString()
+            );
+        }
+
+        [Test]
+        public void TestElementWithChildren()
+        {
+            var elem = new VirtualAgent();
+
+            elem.Config("name", "value");
+
+            elem.Parameter("name", "value");
+
+            Assert.AreEqual(
+                "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
+                "<VirtualAgent>" + Environment.NewLine +
+                "  <Config name=\"name\" value=\"value\"></Config>" + Environment.NewLine +
+                "  <Parameter name=\"name\" value=\"value\"></Parameter>" + Environment.NewLine +
+                "</VirtualAgent>",
                 elem.ToString()
             );
         }
@@ -75,6 +100,24 @@ namespace Twilio.Tests.TwiML
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
                 "<VirtualAgent>" + Environment.NewLine +
                 "  <generic-tag tag=\"True\">Content</generic-tag>" + Environment.NewLine +
+                "</VirtualAgent>",
+                elem.ToString()
+            );
+        }
+
+        [Test]
+        public void TestAllowGenericChildrenOfChildNodes()
+        {
+            var elem = new VirtualAgent();
+            var child = new Config();
+            elem.Nest(child).AddChild("generic-tag").SetOption("tag", true).AddText("Content");
+
+            Assert.AreEqual(
+                "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
+                "<VirtualAgent>" + Environment.NewLine +
+                "  <Config>" + Environment.NewLine +
+                "    <generic-tag tag=\"True\">Content</generic-tag>" + Environment.NewLine +
+                "  </Config>" + Environment.NewLine +
                 "</VirtualAgent>",
                 elem.ToString()
             );

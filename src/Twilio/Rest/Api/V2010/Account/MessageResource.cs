@@ -118,7 +118,6 @@ namespace Twilio.Rest.Api.V2010.Account
             }
 
             public static readonly ScheduleTypeEnum Fixed = new ScheduleTypeEnum("fixed");
-            public static readonly ScheduleTypeEnum Optimize = new ScheduleTypeEnum("optimize");
         }
 
         private static Request BuildCreateRequest(CreateMessageOptions options, ITwilioRestClient client)
@@ -185,6 +184,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="smartEncoded"> Whether to detect Unicode characters that have a similar GSM-7 character and replace
         ///                    them </param>
         /// <param name="persistentAction"> Rich actions for Channels Messages. </param>
+        /// <param name="scheduleType"> Pass the value `fixed` to schedule a message at a fixed time. </param>
+        /// <param name="sendAt"> The time that Twilio will send the message. Must be in ISO 8601 format. </param>
+        /// <param name="sendAsMms"> If set to True, Twilio will deliver the message as a single MMS message, regardless of the
+        ///                 presence of media. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Message </returns>
         public static MessageResource Create(Types.PhoneNumber to,
@@ -204,9 +207,12 @@ namespace Twilio.Rest.Api.V2010.Account
                                              MessageResource.AddressRetentionEnum addressRetention = null,
                                              bool? smartEncoded = null,
                                              List<string> persistentAction = null,
+                                             MessageResource.ScheduleTypeEnum scheduleType = null,
+                                             DateTime? sendAt = null,
+                                             bool? sendAsMms = null,
                                              ITwilioRestClient client = null)
         {
-            var options = new CreateMessageOptions(to){PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, Attempt = attempt, ValidityPeriod = validityPeriod, ForceDelivery = forceDelivery, ContentRetention = contentRetention, AddressRetention = addressRetention, SmartEncoded = smartEncoded, PersistentAction = persistentAction};
+            var options = new CreateMessageOptions(to){PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, Attempt = attempt, ValidityPeriod = validityPeriod, ForceDelivery = forceDelivery, ContentRetention = contentRetention, AddressRetention = addressRetention, SmartEncoded = smartEncoded, PersistentAction = persistentAction, ScheduleType = scheduleType, SendAt = sendAt, SendAsMms = sendAsMms};
             return Create(options, client);
         }
 
@@ -235,6 +241,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="smartEncoded"> Whether to detect Unicode characters that have a similar GSM-7 character and replace
         ///                    them </param>
         /// <param name="persistentAction"> Rich actions for Channels Messages. </param>
+        /// <param name="scheduleType"> Pass the value `fixed` to schedule a message at a fixed time. </param>
+        /// <param name="sendAt"> The time that Twilio will send the message. Must be in ISO 8601 format. </param>
+        /// <param name="sendAsMms"> If set to True, Twilio will deliver the message as a single MMS message, regardless of the
+        ///                 presence of media. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Message </returns>
         public static async System.Threading.Tasks.Task<MessageResource> CreateAsync(Types.PhoneNumber to,
@@ -254,9 +264,12 @@ namespace Twilio.Rest.Api.V2010.Account
                                                                                      MessageResource.AddressRetentionEnum addressRetention = null,
                                                                                      bool? smartEncoded = null,
                                                                                      List<string> persistentAction = null,
+                                                                                     MessageResource.ScheduleTypeEnum scheduleType = null,
+                                                                                     DateTime? sendAt = null,
+                                                                                     bool? sendAsMms = null,
                                                                                      ITwilioRestClient client = null)
         {
-            var options = new CreateMessageOptions(to){PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, Attempt = attempt, ValidityPeriod = validityPeriod, ForceDelivery = forceDelivery, ContentRetention = contentRetention, AddressRetention = addressRetention, SmartEncoded = smartEncoded, PersistentAction = persistentAction};
+            var options = new CreateMessageOptions(to){PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, Attempt = attempt, ValidityPeriod = validityPeriod, ForceDelivery = forceDelivery, ContentRetention = contentRetention, AddressRetention = addressRetention, SmartEncoded = smartEncoded, PersistentAction = persistentAction, ScheduleType = scheduleType, SendAt = sendAt, SendAsMms = sendAsMms};
             return await CreateAsync(options, client);
         }
         #endif
@@ -600,14 +613,16 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="pathAccountSid"> The SID of the Account that created the resources to update </param>
         /// <param name="body"> The text of the message you want to send </param>
+        /// <param name="status"> Set as `canceled` to cancel a message from being sent. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Message </returns>
         public static MessageResource Update(string pathSid,
                                              string pathAccountSid = null,
                                              string body = null,
+                                             MessageResource.UpdateStatusEnum status = null,
                                              ITwilioRestClient client = null)
         {
-            var options = new UpdateMessageOptions(pathSid){PathAccountSid = pathAccountSid, Body = body};
+            var options = new UpdateMessageOptions(pathSid){PathAccountSid = pathAccountSid, Body = body, Status = status};
             return Update(options, client);
         }
 
@@ -618,14 +633,16 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="pathAccountSid"> The SID of the Account that created the resources to update </param>
         /// <param name="body"> The text of the message you want to send </param>
+        /// <param name="status"> Set as `canceled` to cancel a message from being sent. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Message </returns>
         public static async System.Threading.Tasks.Task<MessageResource> UpdateAsync(string pathSid,
                                                                                      string pathAccountSid = null,
                                                                                      string body = null,
+                                                                                     MessageResource.UpdateStatusEnum status = null,
                                                                                      ITwilioRestClient client = null)
         {
-            var options = new UpdateMessageOptions(pathSid){PathAccountSid = pathAccountSid, Body = body};
+            var options = new UpdateMessageOptions(pathSid){PathAccountSid = pathAccountSid, Body = body, Status = status};
             return await UpdateAsync(options, client);
         }
         #endif

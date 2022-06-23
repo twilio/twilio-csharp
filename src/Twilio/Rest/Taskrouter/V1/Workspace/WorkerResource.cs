@@ -338,7 +338,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                 Rest.Domain.Taskrouter,
                 "/v1/Workspaces/" + options.PathWorkspaceSid + "/Workers/" + options.PathSid + "",
                 postParams: options.GetParams(),
-                headerParams: null
+                headerParams: options.GetHeaderParams()
             );
         }
 
@@ -379,7 +379,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="activitySid"> The SID of the Activity that describes the Worker's initial state </param>
         /// <param name="attributes"> The JSON string that describes the Worker </param>
         /// <param name="friendlyName"> A string to describe the Worker </param>
-        /// <param name="rejectPendingReservations"> Whether to reject pending reservations </param>
+        /// <param name="rejectPendingReservations"> Whether to reject the Worker's pending reservations </param>
+        /// <param name="ifMatch"> The If-Match HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Worker </returns>
         public static WorkerResource Update(string pathWorkspaceSid,
@@ -388,9 +389,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                                             string attributes = null,
                                             string friendlyName = null,
                                             bool? rejectPendingReservations = null,
+                                            string ifMatch = null,
                                             ITwilioRestClient client = null)
         {
-            var options = new UpdateWorkerOptions(pathWorkspaceSid, pathSid){ActivitySid = activitySid, Attributes = attributes, FriendlyName = friendlyName, RejectPendingReservations = rejectPendingReservations};
+            var options = new UpdateWorkerOptions(pathWorkspaceSid, pathSid){ActivitySid = activitySid, Attributes = attributes, FriendlyName = friendlyName, RejectPendingReservations = rejectPendingReservations, IfMatch = ifMatch};
             return Update(options, client);
         }
 
@@ -403,7 +405,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="activitySid"> The SID of the Activity that describes the Worker's initial state </param>
         /// <param name="attributes"> The JSON string that describes the Worker </param>
         /// <param name="friendlyName"> A string to describe the Worker </param>
-        /// <param name="rejectPendingReservations"> Whether to reject pending reservations </param>
+        /// <param name="rejectPendingReservations"> Whether to reject the Worker's pending reservations </param>
+        /// <param name="ifMatch"> The If-Match HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Worker </returns>
         public static async System.Threading.Tasks.Task<WorkerResource> UpdateAsync(string pathWorkspaceSid,
@@ -412,9 +415,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                                                                                     string attributes = null,
                                                                                     string friendlyName = null,
                                                                                     bool? rejectPendingReservations = null,
+                                                                                    string ifMatch = null,
                                                                                     ITwilioRestClient client = null)
         {
-            var options = new UpdateWorkerOptions(pathWorkspaceSid, pathSid){ActivitySid = activitySid, Attributes = attributes, FriendlyName = friendlyName, RejectPendingReservations = rejectPendingReservations};
+            var options = new UpdateWorkerOptions(pathWorkspaceSid, pathSid){ActivitySid = activitySid, Attributes = attributes, FriendlyName = friendlyName, RejectPendingReservations = rejectPendingReservations, IfMatch = ifMatch};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -426,7 +430,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                 Rest.Domain.Taskrouter,
                 "/v1/Workspaces/" + options.PathWorkspaceSid + "/Workers/" + options.PathSid + "",
                 queryParams: options.GetParams(),
-                headerParams: null
+                headerParams: options.GetHeaderParams()
             );
         }
 
@@ -464,11 +468,15 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// </summary>
         /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Worker to delete </param>
         /// <param name="pathSid"> The SID of the resource to delete </param>
+        /// <param name="ifMatch"> The If-Match HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Worker </returns>
-        public static bool Delete(string pathWorkspaceSid, string pathSid, ITwilioRestClient client = null)
+        public static bool Delete(string pathWorkspaceSid,
+                                  string pathSid,
+                                  string ifMatch = null,
+                                  ITwilioRestClient client = null)
         {
-            var options = new DeleteWorkerOptions(pathWorkspaceSid, pathSid);
+            var options = new DeleteWorkerOptions(pathWorkspaceSid, pathSid){IfMatch = ifMatch};
             return Delete(options, client);
         }
 
@@ -478,13 +486,15 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// </summary>
         /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Worker to delete </param>
         /// <param name="pathSid"> The SID of the resource to delete </param>
+        /// <param name="ifMatch"> The If-Match HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Worker </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathWorkspaceSid,
                                                                           string pathSid,
+                                                                          string ifMatch = null,
                                                                           ITwilioRestClient client = null)
         {
-            var options = new DeleteWorkerOptions(pathWorkspaceSid, pathSid);
+            var options = new DeleteWorkerOptions(pathWorkspaceSid, pathSid){IfMatch = ifMatch};
             return await DeleteAsync(options, client);
         }
         #endif

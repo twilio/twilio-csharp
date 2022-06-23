@@ -327,11 +327,10 @@ namespace Twilio.Rest.Wireless.V1
         /// <param name="smsMethod"> The HTTP method we should use to call sms_url </param>
         /// <param name="smsUrl"> The URL we should call when the SIM-connected device sends an SMS message that is not a
         ///              Command </param>
-        /// <param name="voiceFallbackMethod"> The HTTP method we should use to call voice_fallback_url </param>
-        /// <param name="voiceFallbackUrl"> The URL we should call when an error occurs while retrieving or executing the TwiML
-        ///                        requested from voice_url </param>
-        /// <param name="voiceMethod"> The HTTP method we should use when we call voice_url </param>
-        /// <param name="voiceUrl"> The URL we should call when the SIM-connected device makes a voice call </param>
+        /// <param name="voiceFallbackMethod"> Deprecated </param>
+        /// <param name="voiceFallbackUrl"> Deprecated </param>
+        /// <param name="voiceMethod"> Deprecated </param>
+        /// <param name="voiceUrl"> Deprecated </param>
         /// <param name="resetStatus"> Initiate a connectivity reset on a SIM </param>
         /// <param name="accountSid"> The SID of the Account to which the Sim resource should belong </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -381,11 +380,10 @@ namespace Twilio.Rest.Wireless.V1
         /// <param name="smsMethod"> The HTTP method we should use to call sms_url </param>
         /// <param name="smsUrl"> The URL we should call when the SIM-connected device sends an SMS message that is not a
         ///              Command </param>
-        /// <param name="voiceFallbackMethod"> The HTTP method we should use to call voice_fallback_url </param>
-        /// <param name="voiceFallbackUrl"> The URL we should call when an error occurs while retrieving or executing the TwiML
-        ///                        requested from voice_url </param>
-        /// <param name="voiceMethod"> The HTTP method we should use when we call voice_url </param>
-        /// <param name="voiceUrl"> The URL we should call when the SIM-connected device makes a voice call </param>
+        /// <param name="voiceFallbackMethod"> Deprecated </param>
+        /// <param name="voiceFallbackUrl"> Deprecated </param>
+        /// <param name="voiceMethod"> Deprecated </param>
+        /// <param name="voiceUrl"> Deprecated </param>
         /// <param name="resetStatus"> Initiate a connectivity reset on a SIM </param>
         /// <param name="accountSid"> The SID of the Account to which the Sim resource should belong </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -559,46 +557,46 @@ namespace Twilio.Rest.Wireless.V1
         [JsonConverter(typeof(HttpMethodConverter))]
         public Twilio.Http.HttpMethod CommandsCallbackMethod { get; private set; }
         /// <summary>
-        /// The HTTP method we use to call sms_fallback_url
+        /// Deprecated
         /// </summary>
         [JsonProperty("sms_fallback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
         public Twilio.Http.HttpMethod SmsFallbackMethod { get; private set; }
         /// <summary>
-        /// The URL we call when an error occurs while retrieving or executing the TwiML requested from the sms_url
+        /// Deprecated
         /// </summary>
         [JsonProperty("sms_fallback_url")]
         public Uri SmsFallbackUrl { get; private set; }
         /// <summary>
-        /// The HTTP method we use to call sms_url
+        /// Deprecated
         /// </summary>
         [JsonProperty("sms_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
         public Twilio.Http.HttpMethod SmsMethod { get; private set; }
         /// <summary>
-        /// The URL we call when the SIM-connected device sends an SMS message that is not a Command
+        /// Deprecated
         /// </summary>
         [JsonProperty("sms_url")]
         public Uri SmsUrl { get; private set; }
         /// <summary>
-        /// The HTTP method we use to call voice_fallback_url
+        /// Deprecated. The HTTP method we use to call voice_fallback_url
         /// </summary>
         [JsonProperty("voice_fallback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
         public Twilio.Http.HttpMethod VoiceFallbackMethod { get; private set; }
         /// <summary>
-        /// The URL we call when an error occurs while retrieving or executing the TwiML requested from voice_url
+        /// Deprecated. The URL we call when an error occurs while retrieving or executing the TwiML requested from voice_url
         /// </summary>
         [JsonProperty("voice_fallback_url")]
         public Uri VoiceFallbackUrl { get; private set; }
         /// <summary>
-        /// The HTTP method we use to call voice_url
+        /// Deprecated. The HTTP method we use to call voice_url
         /// </summary>
         [JsonProperty("voice_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
         public Twilio.Http.HttpMethod VoiceMethod { get; private set; }
         /// <summary>
-        /// The URL we call when the SIM-connected device makes a voice call
+        /// Deprecated. The URL we call when the SIM-connected device makes a voice call
         /// </summary>
         [JsonProperty("voice_url")]
         public Uri VoiceUrl { get; private set; }

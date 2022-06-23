@@ -167,7 +167,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// For APN, the device token. For FCM the registration token
+        /// For APN, the device token. For FCM, the registration token
         /// </summary>
         public string ConfigNotificationToken { get; set; }
         /// <summary>
@@ -190,6 +190,10 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// The algorithm used to derive the TOTP codes
         /// </summary>
         public FactorResource.TotpAlgorithmsEnum ConfigAlg { get; set; }
+        /// <summary>
+        /// The transport technology used to generate the Notification Token
+        /// </summary>
+        public string ConfigNotificationPlatform { get; set; }
 
         /// <summary>
         /// Construct a new UpdateFactorOptions
@@ -248,6 +252,11 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
             if (ConfigAlg != null)
             {
                 p.Add(new KeyValuePair<string, string>("Config.Alg", ConfigAlg.ToString()));
+            }
+
+            if (ConfigNotificationPlatform != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Config.NotificationPlatform", ConfigNotificationPlatform));
             }
 
             return p;

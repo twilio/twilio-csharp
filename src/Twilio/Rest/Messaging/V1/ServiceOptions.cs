@@ -75,6 +75,10 @@ namespace Twilio.Rest.Messaging.V1
         /// </summary>
         public bool? SynchronousValidation { get; set; }
         /// <summary>
+        /// A string describing the scenario in which the Messaging Service will be used
+        /// </summary>
+        public string Usecase { get; set; }
+        /// <summary>
         /// If enabled, the webhook url configured on the phone number will be used and will override the `inbound_request_url`/`fallback_url` url called when an inbound message is received.
         /// </summary>
         public bool? UseInboundWebhookOnNumber { get; set; }
@@ -164,6 +168,11 @@ namespace Twilio.Rest.Messaging.V1
                 p.Add(new KeyValuePair<string, string>("SynchronousValidation", SynchronousValidation.Value.ToString().ToLower()));
             }
 
+            if (Usecase != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Usecase", Usecase));
+            }
+
             if (UseInboundWebhookOnNumber != null)
             {
                 p.Add(new KeyValuePair<string, string>("UseInboundWebhookOnNumber", UseInboundWebhookOnNumber.Value.ToString().ToLower()));
@@ -240,6 +249,10 @@ namespace Twilio.Rest.Messaging.V1
         /// Reserved
         /// </summary>
         public bool? SynchronousValidation { get; set; }
+        /// <summary>
+        /// A string describing the scenario in which the Messaging Service will be used
+        /// </summary>
+        public string Usecase { get; set; }
         /// <summary>
         /// If enabled, the webhook url configured on the phone number will be used and will override the `inbound_request_url`/`fallback_url` url called when an inbound message is received.
         /// </summary>
@@ -328,6 +341,11 @@ namespace Twilio.Rest.Messaging.V1
             if (SynchronousValidation != null)
             {
                 p.Add(new KeyValuePair<string, string>("SynchronousValidation", SynchronousValidation.Value.ToString().ToLower()));
+            }
+
+            if (Usecase != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Usecase", Usecase));
             }
 
             if (UseInboundWebhookOnNumber != null)

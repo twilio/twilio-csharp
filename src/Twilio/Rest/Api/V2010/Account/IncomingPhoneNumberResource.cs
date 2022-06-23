@@ -49,6 +49,23 @@ namespace Twilio.Rest.Api.V2010.Account
             public static readonly EmergencyStatusEnum Inactive = new EmergencyStatusEnum("Inactive");
         }
 
+        public sealed class EmergencyAddressStatusEnum : StringEnum
+        {
+            private EmergencyAddressStatusEnum(string value) : base(value) {}
+            public EmergencyAddressStatusEnum() {}
+            public static implicit operator EmergencyAddressStatusEnum(string value)
+            {
+                return new EmergencyAddressStatusEnum(value);
+            }
+
+            public static readonly EmergencyAddressStatusEnum Registered = new EmergencyAddressStatusEnum("registered");
+            public static readonly EmergencyAddressStatusEnum Unregistered = new EmergencyAddressStatusEnum("unregistered");
+            public static readonly EmergencyAddressStatusEnum PendingRegistration = new EmergencyAddressStatusEnum("pending-registration");
+            public static readonly EmergencyAddressStatusEnum RegistrationFailure = new EmergencyAddressStatusEnum("registration-failure");
+            public static readonly EmergencyAddressStatusEnum PendingUnregistration = new EmergencyAddressStatusEnum("pending-unregistration");
+            public static readonly EmergencyAddressStatusEnum UnregistrationFailure = new EmergencyAddressStatusEnum("unregistration-failure");
+        }
+
         public sealed class VoiceReceiveModeEnum : StringEnum
         {
             private VoiceReceiveModeEnum(string value) : base(value) {}
@@ -124,7 +141,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="voiceFallbackUrl"> The URL we will call when an error occurs in TwiML </param>
         /// <param name="voiceMethod"> The HTTP method used with the voice_url </param>
         /// <param name="voiceUrl"> The URL we should call when the phone number receives a call </param>
-        /// <param name="emergencyStatus"> Whether the phone number is enabled for emergency calling </param>
+        /// <param name="emergencyStatus"> Displays if emergency calling is enabled for this number. </param>
         /// <param name="emergencyAddressSid"> The emergency address configuration to use for emergency calling </param>
         /// <param name="trunkSid"> SID of the trunk to handle phone calls to the phone number </param>
         /// <param name="voiceReceiveMode"> Incoming call type: fax or voice </param>
@@ -186,7 +203,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="voiceFallbackUrl"> The URL we will call when an error occurs in TwiML </param>
         /// <param name="voiceMethod"> The HTTP method used with the voice_url </param>
         /// <param name="voiceUrl"> The URL we should call when the phone number receives a call </param>
-        /// <param name="emergencyStatus"> Whether the phone number is enabled for emergency calling </param>
+        /// <param name="emergencyStatus"> Displays if emergency calling is enabled for this number. </param>
         /// <param name="emergencyAddressSid"> The emergency address configuration to use for emergency calling </param>
         /// <param name="trunkSid"> SID of the trunk to handle phone calls to the phone number </param>
         /// <param name="voiceReceiveMode"> Incoming call type: fax or voice </param>
@@ -586,8 +603,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="voiceFallbackUrl"> The URL we will call when an error occurs in TwiML </param>
         /// <param name="voiceMethod"> The HTTP method used with the voice_url </param>
         /// <param name="voiceUrl"> The URL we should call when the phone number receives a call </param>
-        /// <param name="emergencyStatus"> Status determining whether the new phone number is enabled for emergency calling
-        ///                       </param>
+        /// <param name="emergencyStatus"> Displays if emergency calling is enabled for this number. </param>
         /// <param name="emergencyAddressSid"> The emergency address configuration to use for emergency calling </param>
         /// <param name="trunkSid"> SID of the trunk to handle calls to the new phone number </param>
         /// <param name="identitySid"> The SID of the Identity resource to associate with the new phone number </param>
@@ -649,8 +665,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="voiceFallbackUrl"> The URL we will call when an error occurs in TwiML </param>
         /// <param name="voiceMethod"> The HTTP method used with the voice_url </param>
         /// <param name="voiceUrl"> The URL we should call when the phone number receives a call </param>
-        /// <param name="emergencyStatus"> Status determining whether the new phone number is enabled for emergency calling
-        ///                       </param>
+        /// <param name="emergencyStatus"> Displays if emergency calling is enabled for this number. </param>
         /// <param name="emergencyAddressSid"> The emergency address configuration to use for emergency calling </param>
         /// <param name="trunkSid"> SID of the trunk to handle calls to the new phone number </param>
         /// <param name="identitySid"> The SID of the Identity resource to associate with the new phone number </param>
@@ -863,7 +878,7 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonProperty("voice_url")]
         public Uri VoiceUrl { get; private set; }
         /// <summary>
-        /// Whether the phone number is enabled for emergency calling
+        /// Displays if emergency calling is enabled for this number.
         /// </summary>
         [JsonProperty("emergency_status")]
         [JsonConverter(typeof(StringEnumConverter))]
@@ -873,6 +888,12 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         [JsonProperty("emergency_address_sid")]
         public string EmergencyAddressSid { get; private set; }
+        /// <summary>
+        /// State of the emergency address configuration for the phone number
+        /// </summary>
+        [JsonProperty("emergency_address_status")]
+        [JsonConverter(typeof(StringEnumConverter))]
+        public IncomingPhoneNumberResource.EmergencyAddressStatusEnum EmergencyAddressStatus { get; private set; }
         /// <summary>
         /// The SID of the Bundle resource associated with number
         /// </summary>

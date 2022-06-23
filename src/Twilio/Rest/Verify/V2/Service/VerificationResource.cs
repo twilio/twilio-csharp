@@ -33,6 +33,8 @@ namespace Twilio.Rest.Verify.V2.Service
             public static readonly ChannelEnum Sms = new ChannelEnum("sms");
             public static readonly ChannelEnum Call = new ChannelEnum("call");
             public static readonly ChannelEnum Email = new ChannelEnum("email");
+            public static readonly ChannelEnum Whatsapp = new ChannelEnum("whatsapp");
+            public static readonly ChannelEnum Sna = new ChannelEnum("sna");
         }
 
         public sealed class StatusEnum : StringEnum
@@ -97,13 +99,16 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="customFriendlyName"> A custom user defined friendly name </param>
         /// <param name="customMessage"> The text of a custom message to use for the verification </param>
         /// <param name="sendDigits"> The digits to send after a phone call is answered </param>
-        /// <param name="locale"> The locale to use for the verification SMS or call </param>
+        /// <param name="locale"> The locale to use for the verification SMS, WhatsApp or call </param>
         /// <param name="customCode"> A pre-generated code </param>
         /// <param name="amount"> The amount of the associated PSD2 compliant transaction. </param>
         /// <param name="payee"> The payee of the associated PSD2 compliant transaction </param>
         /// <param name="rateLimits"> The custom key-value pairs of Programmable Rate Limits. </param>
         /// <param name="channelConfiguration"> Channel specific configuration in json format. </param>
         /// <param name="appHash"> Your App Hash to be appended at the end of an SMS. </param>
+        /// <param name="templateSid"> The verification template SMS messages. </param>
+        /// <param name="templateCustomSubstitutions"> The values of the special variables declared on the message template.
+        ///                                   </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Verification </returns>
         public static VerificationResource Create(string pathServiceSid,
@@ -119,9 +124,11 @@ namespace Twilio.Rest.Verify.V2.Service
                                                   object rateLimits = null,
                                                   object channelConfiguration = null,
                                                   string appHash = null,
+                                                  string templateSid = null,
+                                                  string templateCustomSubstitutions = null,
                                                   ITwilioRestClient client = null)
         {
-            var options = new CreateVerificationOptions(pathServiceSid, to, channel){CustomFriendlyName = customFriendlyName, CustomMessage = customMessage, SendDigits = sendDigits, Locale = locale, CustomCode = customCode, Amount = amount, Payee = payee, RateLimits = rateLimits, ChannelConfiguration = channelConfiguration, AppHash = appHash};
+            var options = new CreateVerificationOptions(pathServiceSid, to, channel){CustomFriendlyName = customFriendlyName, CustomMessage = customMessage, SendDigits = sendDigits, Locale = locale, CustomCode = customCode, Amount = amount, Payee = payee, RateLimits = rateLimits, ChannelConfiguration = channelConfiguration, AppHash = appHash, TemplateSid = templateSid, TemplateCustomSubstitutions = templateCustomSubstitutions};
             return Create(options, client);
         }
 
@@ -135,13 +142,16 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="customFriendlyName"> A custom user defined friendly name </param>
         /// <param name="customMessage"> The text of a custom message to use for the verification </param>
         /// <param name="sendDigits"> The digits to send after a phone call is answered </param>
-        /// <param name="locale"> The locale to use for the verification SMS or call </param>
+        /// <param name="locale"> The locale to use for the verification SMS, WhatsApp or call </param>
         /// <param name="customCode"> A pre-generated code </param>
         /// <param name="amount"> The amount of the associated PSD2 compliant transaction. </param>
         /// <param name="payee"> The payee of the associated PSD2 compliant transaction </param>
         /// <param name="rateLimits"> The custom key-value pairs of Programmable Rate Limits. </param>
         /// <param name="channelConfiguration"> Channel specific configuration in json format. </param>
         /// <param name="appHash"> Your App Hash to be appended at the end of an SMS. </param>
+        /// <param name="templateSid"> The verification template SMS messages. </param>
+        /// <param name="templateCustomSubstitutions"> The values of the special variables declared on the message template.
+        ///                                   </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Verification </returns>
         public static async System.Threading.Tasks.Task<VerificationResource> CreateAsync(string pathServiceSid,
@@ -157,9 +167,11 @@ namespace Twilio.Rest.Verify.V2.Service
                                                                                           object rateLimits = null,
                                                                                           object channelConfiguration = null,
                                                                                           string appHash = null,
+                                                                                          string templateSid = null,
+                                                                                          string templateCustomSubstitutions = null,
                                                                                           ITwilioRestClient client = null)
         {
-            var options = new CreateVerificationOptions(pathServiceSid, to, channel){CustomFriendlyName = customFriendlyName, CustomMessage = customMessage, SendDigits = sendDigits, Locale = locale, CustomCode = customCode, Amount = amount, Payee = payee, RateLimits = rateLimits, ChannelConfiguration = channelConfiguration, AppHash = appHash};
+            var options = new CreateVerificationOptions(pathServiceSid, to, channel){CustomFriendlyName = customFriendlyName, CustomMessage = customMessage, SendDigits = sendDigits, Locale = locale, CustomCode = customCode, Amount = amount, Payee = payee, RateLimits = rateLimits, ChannelConfiguration = channelConfiguration, AppHash = appHash, TemplateSid = templateSid, TemplateCustomSubstitutions = templateCustomSubstitutions};
             return await CreateAsync(options, client);
         }
         #endif
@@ -394,6 +406,11 @@ namespace Twilio.Rest.Verify.V2.Service
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
+        /// <summary>
+        /// The set of fields used for a silent network auth (`sna`) verification
+        /// </summary>
+        [JsonProperty("sna")]
+        public object Sna { get; private set; }
         /// <summary>
         /// The absolute URL of the Verification resource
         /// </summary>

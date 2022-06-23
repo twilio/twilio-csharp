@@ -41,7 +41,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         /// </summary>
         public string TaskChannel { get; set; }
         /// <summary>
-        /// A comma separated list of values that describes the thresholds to calculate statistics on
+        /// A comma separated list of values that describes the thresholds, in seconds, to calculate statistics on
         /// </summary>
         public string SplitByWaitTime { get; set; }
 

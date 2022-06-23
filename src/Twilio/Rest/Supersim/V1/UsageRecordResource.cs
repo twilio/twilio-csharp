@@ -123,7 +123,7 @@ namespace Twilio.Rest.Supersim.V1
         /// <param name="granularity"> Time-based grouping that UsageRecords should be aggregated by. Can be: `hour`, `day`, or
         ///                   `all`. Default is `all`. </param>
         /// <param name="startTime"> Only include usage that occurred at or after this time. </param>
-        /// <param name="endTime"> Only include usage that occurred before this time. </param>
+        /// <param name="endTime"> Only include usage that occurred before this time (exclusive). </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -160,7 +160,7 @@ namespace Twilio.Rest.Supersim.V1
         /// <param name="granularity"> Time-based grouping that UsageRecords should be aggregated by. Can be: `hour`, `day`, or
         ///                   `all`. Default is `all`. </param>
         /// <param name="startTime"> Only include usage that occurred at or after this time. </param>
-        /// <param name="endTime"> Only include usage that occurred before this time. </param>
+        /// <param name="endTime"> Only include usage that occurred before this time (exclusive). </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -298,6 +298,16 @@ namespace Twilio.Rest.Supersim.V1
         /// </summary>
         [JsonProperty("data_total")]
         public long? DataTotal { get; private set; }
+        /// <summary>
+        /// Total amount in the `billed_unit` that was charged for the data uploaded or downloaded.
+        /// </summary>
+        [JsonProperty("data_total_billed")]
+        public decimal? DataTotalBilled { get; private set; }
+        /// <summary>
+        /// The currency in which the billed amounts are measured, specified in the 3 letter ISO 4127 format (e.g. `USD`, `EUR`, `JPY`).
+        /// </summary>
+        [JsonProperty("billed_unit")]
+        public string BilledUnit { get; private set; }
 
         private UsageRecordResource()
         {

@@ -150,9 +150,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="asyncAmdStatusCallbackMethod"> HTTP Method to use with async_amd_status_callback </param>
         /// <param name="byoc"> BYOC trunk SID (Beta) </param>
         /// <param name="callReason"> Reason for the call (Branded Calls Beta) </param>
-        /// <param name="callToken"> A token string needed to invoke a forwarded call with a caller-id recieved on a previous
+        /// <param name="callToken"> A token string needed to invoke a forwarded call with a CallerId recieved on a previous
         ///                 incoming call </param>
         /// <param name="recordingTrack"> Which track(s) to record </param>
+        /// <param name="timeLimit"> The maximum duration of the call in seconds. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Call </returns>
         public static CallResource Create(IEndpoint to,
@@ -190,9 +191,10 @@ namespace Twilio.Rest.Api.V2010.Account
                                           string callReason = null,
                                           string callToken = null,
                                           string recordingTrack = null,
+                                          int? timeLimit = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new CreateCallOptions(to, from){PathAccountSid = pathAccountSid, Url = url, Twiml = twiml, ApplicationSid = applicationSid, Method = method, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StatusCallbackEvent = statusCallbackEvent, StatusCallbackMethod = statusCallbackMethod, SendDigits = sendDigits, Timeout = timeout, Record = record, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword, MachineDetection = machineDetection, MachineDetectionTimeout = machineDetectionTimeout, RecordingStatusCallbackEvent = recordingStatusCallbackEvent, Trim = trim, CallerId = callerId, MachineDetectionSpeechThreshold = machineDetectionSpeechThreshold, MachineDetectionSpeechEndThreshold = machineDetectionSpeechEndThreshold, MachineDetectionSilenceTimeout = machineDetectionSilenceTimeout, AsyncAmd = asyncAmd, AsyncAmdStatusCallback = asyncAmdStatusCallback, AsyncAmdStatusCallbackMethod = asyncAmdStatusCallbackMethod, Byoc = byoc, CallReason = callReason, CallToken = callToken, RecordingTrack = recordingTrack};
+            var options = new CreateCallOptions(to, from){PathAccountSid = pathAccountSid, Url = url, Twiml = twiml, ApplicationSid = applicationSid, Method = method, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StatusCallbackEvent = statusCallbackEvent, StatusCallbackMethod = statusCallbackMethod, SendDigits = sendDigits, Timeout = timeout, Record = record, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword, MachineDetection = machineDetection, MachineDetectionTimeout = machineDetectionTimeout, RecordingStatusCallbackEvent = recordingStatusCallbackEvent, Trim = trim, CallerId = callerId, MachineDetectionSpeechThreshold = machineDetectionSpeechThreshold, MachineDetectionSpeechEndThreshold = machineDetectionSpeechEndThreshold, MachineDetectionSilenceTimeout = machineDetectionSilenceTimeout, AsyncAmd = asyncAmd, AsyncAmdStatusCallback = asyncAmdStatusCallback, AsyncAmdStatusCallbackMethod = asyncAmdStatusCallbackMethod, Byoc = byoc, CallReason = callReason, CallToken = callToken, RecordingTrack = recordingTrack, TimeLimit = timeLimit};
             return Create(options, client);
         }
 
@@ -239,9 +241,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="asyncAmdStatusCallbackMethod"> HTTP Method to use with async_amd_status_callback </param>
         /// <param name="byoc"> BYOC trunk SID (Beta) </param>
         /// <param name="callReason"> Reason for the call (Branded Calls Beta) </param>
-        /// <param name="callToken"> A token string needed to invoke a forwarded call with a caller-id recieved on a previous
+        /// <param name="callToken"> A token string needed to invoke a forwarded call with a CallerId recieved on a previous
         ///                 incoming call </param>
         /// <param name="recordingTrack"> Which track(s) to record </param>
+        /// <param name="timeLimit"> The maximum duration of the call in seconds. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Call </returns>
         public static async System.Threading.Tasks.Task<CallResource> CreateAsync(IEndpoint to,
@@ -279,9 +282,10 @@ namespace Twilio.Rest.Api.V2010.Account
                                                                                   string callReason = null,
                                                                                   string callToken = null,
                                                                                   string recordingTrack = null,
+                                                                                  int? timeLimit = null,
                                                                                   ITwilioRestClient client = null)
         {
-            var options = new CreateCallOptions(to, from){PathAccountSid = pathAccountSid, Url = url, Twiml = twiml, ApplicationSid = applicationSid, Method = method, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StatusCallbackEvent = statusCallbackEvent, StatusCallbackMethod = statusCallbackMethod, SendDigits = sendDigits, Timeout = timeout, Record = record, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword, MachineDetection = machineDetection, MachineDetectionTimeout = machineDetectionTimeout, RecordingStatusCallbackEvent = recordingStatusCallbackEvent, Trim = trim, CallerId = callerId, MachineDetectionSpeechThreshold = machineDetectionSpeechThreshold, MachineDetectionSpeechEndThreshold = machineDetectionSpeechEndThreshold, MachineDetectionSilenceTimeout = machineDetectionSilenceTimeout, AsyncAmd = asyncAmd, AsyncAmdStatusCallback = asyncAmdStatusCallback, AsyncAmdStatusCallbackMethod = asyncAmdStatusCallbackMethod, Byoc = byoc, CallReason = callReason, CallToken = callToken, RecordingTrack = recordingTrack};
+            var options = new CreateCallOptions(to, from){PathAccountSid = pathAccountSid, Url = url, Twiml = twiml, ApplicationSid = applicationSid, Method = method, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StatusCallbackEvent = statusCallbackEvent, StatusCallbackMethod = statusCallbackMethod, SendDigits = sendDigits, Timeout = timeout, Record = record, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword, MachineDetection = machineDetection, MachineDetectionTimeout = machineDetectionTimeout, RecordingStatusCallbackEvent = recordingStatusCallbackEvent, Trim = trim, CallerId = callerId, MachineDetectionSpeechThreshold = machineDetectionSpeechThreshold, MachineDetectionSpeechEndThreshold = machineDetectionSpeechEndThreshold, MachineDetectionSilenceTimeout = machineDetectionSilenceTimeout, AsyncAmd = asyncAmd, AsyncAmdStatusCallback = asyncAmdStatusCallback, AsyncAmdStatusCallbackMethod = asyncAmdStatusCallbackMethod, Byoc = byoc, CallReason = callReason, CallToken = callToken, RecordingTrack = recordingTrack, TimeLimit = timeLimit};
             return await CreateAsync(options, client);
         }
         #endif
@@ -656,6 +660,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="statusCallback"> The URL we should call to send status information to your application </param>
         /// <param name="statusCallbackMethod"> HTTP Method to use to call status_callback </param>
         /// <param name="twiml"> TwiML instructions for the call </param>
+        /// <param name="timeLimit"> The maximum duration of the call in seconds. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Call </returns>
         public static CallResource Update(string pathSid,
@@ -668,9 +673,10 @@ namespace Twilio.Rest.Api.V2010.Account
                                           Uri statusCallback = null,
                                           Twilio.Http.HttpMethod statusCallbackMethod = null,
                                           Types.Twiml twiml = null,
+                                          int? timeLimit = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new UpdateCallOptions(pathSid){PathAccountSid = pathAccountSid, Url = url, Method = method, Status = status, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, Twiml = twiml};
+            var options = new UpdateCallOptions(pathSid){PathAccountSid = pathAccountSid, Url = url, Method = method, Status = status, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, Twiml = twiml, TimeLimit = timeLimit};
             return Update(options, client);
         }
 
@@ -688,6 +694,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="statusCallback"> The URL we should call to send status information to your application </param>
         /// <param name="statusCallbackMethod"> HTTP Method to use to call status_callback </param>
         /// <param name="twiml"> TwiML instructions for the call </param>
+        /// <param name="timeLimit"> The maximum duration of the call in seconds. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Call </returns>
         public static async System.Threading.Tasks.Task<CallResource> UpdateAsync(string pathSid,
@@ -700,9 +707,10 @@ namespace Twilio.Rest.Api.V2010.Account
                                                                                   Uri statusCallback = null,
                                                                                   Twilio.Http.HttpMethod statusCallbackMethod = null,
                                                                                   Types.Twiml twiml = null,
+                                                                                  int? timeLimit = null,
                                                                                   ITwilioRestClient client = null)
         {
-            var options = new UpdateCallOptions(pathSid){PathAccountSid = pathAccountSid, Url = url, Method = method, Status = status, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, Twiml = twiml};
+            var options = new UpdateCallOptions(pathSid){PathAccountSid = pathAccountSid, Url = url, Method = method, Status = status, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, Twiml = twiml, TimeLimit = timeLimit};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -816,11 +824,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         [JsonProperty("answered_by")]
         public string AnsweredBy { get; private set; }
-        /// <summary>
-        /// The annotation provided for the call
-        /// </summary>
-        [JsonProperty("annotation")]
-        public string Annotation { get; private set; }
         /// <summary>
         /// The API Version used to create the call
         /// </summary>

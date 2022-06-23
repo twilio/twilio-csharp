@@ -49,7 +49,7 @@ namespace Twilio.Tests.Rest.FrontlineApi.V1
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"sid\": \"USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"identity\": \"john@example.com\",\"friendly_name\": \"John Doe\",\"avatar\": \"https://example.com/profile.png\",\"state\": \"active\",\"url\": \"https://frontline-api.twilio.com/v1/Users/USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
+                                         "{\"sid\": \"USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"identity\": \"john@example.com\",\"friendly_name\": \"John Doe\",\"avatar\": \"https://example.com/profile.png\",\"state\": \"active\",\"is_available\": true,\"url\": \"https://frontline-api.twilio.com/v1/Users/USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
                                      ));
 
             var response = UserResource.Fetch("sid", client: twilioRestClient);
@@ -85,7 +85,7 @@ namespace Twilio.Tests.Rest.FrontlineApi.V1
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"sid\": \"USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"identity\": \"john@example.com\",\"friendly_name\": \"John Doe\",\"avatar\": \"https://example.com/profile.png\",\"state\": \"active\",\"url\": \"https://frontline-api.twilio.com/v1/Users/USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
+                                         "{\"sid\": \"USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"identity\": \"john@example.com\",\"friendly_name\": \"John Doe\",\"avatar\": \"https://example.com/profile.png\",\"state\": \"active\",\"is_available\": true,\"url\": \"https://frontline-api.twilio.com/v1/Users/USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
                                      ));
 
             var response = UserResource.Update("sid", client: twilioRestClient);

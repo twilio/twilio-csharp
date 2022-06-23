@@ -21,6 +21,19 @@ namespace Twilio.Rest.Conversations.V1.Conversation
 
     public class MessageResource : Resource
     {
+        public sealed class OrderTypeEnum : StringEnum
+        {
+            private OrderTypeEnum(string value) : base(value) {}
+            public OrderTypeEnum() {}
+            public static implicit operator OrderTypeEnum(string value)
+            {
+                return new OrderTypeEnum(value);
+            }
+
+            public static readonly OrderTypeEnum Asc = new OrderTypeEnum("asc");
+            public static readonly OrderTypeEnum Desc = new OrderTypeEnum("desc");
+        }
+
         public sealed class WebhookEnabledTypeEnum : StringEnum
         {
             private WebhookEnabledTypeEnum(string value) : base(value) {}
@@ -420,16 +433,18 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// Retrieve a list of all messages in the conversation
         /// </summary>
         /// <param name="pathConversationSid"> The unique ID of the Conversation for messages. </param>
+        /// <param name="order"> The sort order of the returned messages </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Message </returns>
         public static ResourceSet<MessageResource> Read(string pathConversationSid,
+                                                        MessageResource.OrderTypeEnum order = null,
                                                         int? pageSize = null,
                                                         long? limit = null,
                                                         ITwilioRestClient client = null)
         {
-            var options = new ReadMessageOptions(pathConversationSid){PageSize = pageSize, Limit = limit};
+            var options = new ReadMessageOptions(pathConversationSid){Order = order, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -438,16 +453,18 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// Retrieve a list of all messages in the conversation
         /// </summary>
         /// <param name="pathConversationSid"> The unique ID of the Conversation for messages. </param>
+        /// <param name="order"> The sort order of the returned messages </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Message </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<MessageResource>> ReadAsync(string pathConversationSid,
+                                                                                                MessageResource.OrderTypeEnum order = null,
                                                                                                 int? pageSize = null,
                                                                                                 long? limit = null,
                                                                                                 ITwilioRestClient client = null)
         {
-            var options = new ReadMessageOptions(pathConversationSid){PageSize = pageSize, Limit = limit};
+            var options = new ReadMessageOptions(pathConversationSid){Order = order, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

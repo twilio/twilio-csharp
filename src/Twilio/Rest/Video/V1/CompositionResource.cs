@@ -535,6 +535,22 @@ namespace Twilio.Rest.Video.V1
         [JsonProperty("duration")]
         public int? Duration { get; private set; }
         /// <summary>
+        /// The URL of the media file associated with the composition when stored externally
+        /// </summary>
+        [JsonProperty("media_external_location")]
+        public Uri MediaExternalLocation { get; private set; }
+        /// <summary>
+        /// The URL called to send status information on every composition event.
+        /// </summary>
+        [JsonProperty("status_callback")]
+        public Uri StatusCallback { get; private set; }
+        /// <summary>
+        /// The HTTP method used to call `status_callback`
+        /// </summary>
+        [JsonProperty("status_callback_method")]
+        [JsonConverter(typeof(HttpMethodConverter))]
+        public Twilio.Http.HttpMethod StatusCallbackMethod { get; private set; }
+        /// <summary>
         /// The absolute URL of the resource
         /// </summary>
         [JsonProperty("url")]

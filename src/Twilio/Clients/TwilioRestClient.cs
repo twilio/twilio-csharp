@@ -41,6 +41,11 @@ namespace Twilio.Clients
         public string Edge { get; set; }
 
         /// <summary>
+        /// Additions to the user agent string
+        /// </summary>
+        public string[] UserAgentExtensions { get; set; }
+
+        /// <summary>
         /// Log level for logging
         /// </summary>
         public string LogLevel { get; set; } = Environment.GetEnvironmentVariable("TWILIO_LOG_LEVEL");
@@ -95,6 +100,9 @@ namespace Twilio.Clients
             if (Edge != null)
                 request.Edge = Edge;
 
+            if (UserAgentExtensions != null)
+                request.UserAgentExtensions = UserAgentExtensions;
+
             Response response;
             try
             {
@@ -131,6 +139,9 @@ namespace Twilio.Clients
 
             if (Edge != null)
                 request.Edge = Edge;
+
+            if (UserAgentExtensions != null)
+                request.UserAgentExtensions = UserAgentExtensions;
 
             Response response;
             try

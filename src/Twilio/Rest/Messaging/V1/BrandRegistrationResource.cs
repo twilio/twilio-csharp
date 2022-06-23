@@ -35,6 +35,39 @@ namespace Twilio.Rest.Messaging.V1
             public static readonly StatusEnum Pending = new StatusEnum("PENDING");
             public static readonly StatusEnum Approved = new StatusEnum("APPROVED");
             public static readonly StatusEnum Failed = new StatusEnum("FAILED");
+            public static readonly StatusEnum InReview = new StatusEnum("IN_REVIEW");
+            public static readonly StatusEnum Deleted = new StatusEnum("DELETED");
+        }
+
+        public sealed class IdentityStatusEnum : StringEnum
+        {
+            private IdentityStatusEnum(string value) : base(value) {}
+            public IdentityStatusEnum() {}
+            public static implicit operator IdentityStatusEnum(string value)
+            {
+                return new IdentityStatusEnum(value);
+            }
+
+            public static readonly IdentityStatusEnum SelfDeclared = new IdentityStatusEnum("SELF_DECLARED");
+            public static readonly IdentityStatusEnum Unverified = new IdentityStatusEnum("UNVERIFIED");
+            public static readonly IdentityStatusEnum Verified = new IdentityStatusEnum("VERIFIED");
+            public static readonly IdentityStatusEnum VettedVerified = new IdentityStatusEnum("VETTED_VERIFIED");
+        }
+
+        public sealed class BrandFeedbackEnum : StringEnum
+        {
+            private BrandFeedbackEnum(string value) : base(value) {}
+            public BrandFeedbackEnum() {}
+            public static implicit operator BrandFeedbackEnum(string value)
+            {
+                return new BrandFeedbackEnum(value);
+            }
+
+            public static readonly BrandFeedbackEnum TaxId = new BrandFeedbackEnum("TAX_ID");
+            public static readonly BrandFeedbackEnum StockSymbol = new BrandFeedbackEnum("STOCK_SYMBOL");
+            public static readonly BrandFeedbackEnum Nonprofit = new BrandFeedbackEnum("NONPROFIT");
+            public static readonly BrandFeedbackEnum GovernmentEntity = new BrandFeedbackEnum("GOVERNMENT_ENTITY");
+            public static readonly BrandFeedbackEnum Others = new BrandFeedbackEnum("OTHERS");
         }
 
         private static Request BuildFetchRequest(FetchBrandRegistrationOptions options, ITwilioRestClient client)
@@ -282,13 +315,20 @@ namespace Twilio.Rest.Messaging.V1
         /// </summary>
         /// <param name="customerProfileBundleSid"> Customer Profile Bundle Sid </param>
         /// <param name="a2PProfileBundleSid"> A2P Messaging Profile Bundle Sid </param>
+        /// <param name="brandType"> Type of brand being created. One of: "STANDARD", "STARTER". </param>
+        /// <param name="mock"> A boolean that specifies whether brand should be a mock or not. If true, brand will be
+        ///            registered as a mock brand. Defaults to false if no value is provided. </param>
+        /// <param name="skipAutomaticSecVet"> Skip Automatic Secondary Vetting </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of BrandRegistration </returns>
         public static BrandRegistrationResource Create(string customerProfileBundleSid,
                                                        string a2PProfileBundleSid,
+                                                       string brandType = null,
+                                                       bool? mock = null,
+                                                       bool? skipAutomaticSecVet = null,
                                                        ITwilioRestClient client = null)
         {
-            var options = new CreateBrandRegistrationOptions(customerProfileBundleSid, a2PProfileBundleSid);
+            var options = new CreateBrandRegistrationOptions(customerProfileBundleSid, a2PProfileBundleSid){BrandType = brandType, Mock = mock, SkipAutomaticSecVet = skipAutomaticSecVet};
             return Create(options, client);
         }
 
@@ -298,14 +338,89 @@ namespace Twilio.Rest.Messaging.V1
         /// </summary>
         /// <param name="customerProfileBundleSid"> Customer Profile Bundle Sid </param>
         /// <param name="a2PProfileBundleSid"> A2P Messaging Profile Bundle Sid </param>
+        /// <param name="brandType"> Type of brand being created. One of: "STANDARD", "STARTER". </param>
+        /// <param name="mock"> A boolean that specifies whether brand should be a mock or not. If true, brand will be
+        ///            registered as a mock brand. Defaults to false if no value is provided. </param>
+        /// <param name="skipAutomaticSecVet"> Skip Automatic Secondary Vetting </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of BrandRegistration </returns>
         public static async System.Threading.Tasks.Task<BrandRegistrationResource> CreateAsync(string customerProfileBundleSid,
                                                                                                string a2PProfileBundleSid,
+                                                                                               string brandType = null,
+                                                                                               bool? mock = null,
+                                                                                               bool? skipAutomaticSecVet = null,
                                                                                                ITwilioRestClient client = null)
         {
-            var options = new CreateBrandRegistrationOptions(customerProfileBundleSid, a2PProfileBundleSid);
+            var options = new CreateBrandRegistrationOptions(customerProfileBundleSid, a2PProfileBundleSid){BrandType = brandType, Mock = mock, SkipAutomaticSecVet = skipAutomaticSecVet};
             return await CreateAsync(options, client);
+        }
+        #endif
+
+        private static Request BuildUpdateRequest(UpdateBrandRegistrationOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Post,
+                Rest.Domain.Messaging,
+                "/v1/a2p/BrandRegistrations/" + options.PathSid + "",
+                postParams: options.GetParams(),
+                headerParams: null
+            );
+        }
+
+        /// <summary>
+        /// update
+        /// </summary>
+        /// <param name="options"> Update BrandRegistration parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of BrandRegistration </returns>
+        public static BrandRegistrationResource Update(UpdateBrandRegistrationOptions options,
+                                                       ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
+        }
+
+        #if !NET35
+        /// <summary>
+        /// update
+        /// </summary>
+        /// <param name="options"> Update BrandRegistration parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of BrandRegistration </returns>
+        public static async System.Threading.Tasks.Task<BrandRegistrationResource> UpdateAsync(UpdateBrandRegistrationOptions options,
+                                                                                               ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
+        }
+        #endif
+
+        /// <summary>
+        /// update
+        /// </summary>
+        /// <param name="pathSid"> The SID that identifies the resource to update </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of BrandRegistration </returns>
+        public static BrandRegistrationResource Update(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new UpdateBrandRegistrationOptions(pathSid);
+            return Update(options, client);
+        }
+
+        #if !NET35
+        /// <summary>
+        /// update
+        /// </summary>
+        /// <param name="pathSid"> The SID that identifies the resource to update </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of BrandRegistration </returns>
+        public static async System.Threading.Tasks.Task<BrandRegistrationResource> UpdateAsync(string pathSid,
+                                                                                               ITwilioRestClient client = null)
+        {
+            var options = new UpdateBrandRegistrationOptions(pathSid);
+            return await UpdateAsync(options, client);
         }
         #endif
 
@@ -358,7 +473,12 @@ namespace Twilio.Rest.Messaging.V1
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// Brand Registration status
+        /// Type of brand. One of: "STANDARD", "STARTER".
+        /// </summary>
+        [JsonProperty("brand_type")]
+        public string BrandType { get; private set; }
+        /// <summary>
+        /// Brand Registration status.
         /// </summary>
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
@@ -383,6 +503,48 @@ namespace Twilio.Rest.Messaging.V1
         /// </summary>
         [JsonProperty("brand_score")]
         public int? BrandScore { get; private set; }
+        /// <summary>
+        /// Brand feedback
+        /// </summary>
+        [JsonProperty("brand_feedback")]
+        [JsonConverter(typeof(StringEnumConverter))]
+        public List<BrandRegistrationResource.BrandFeedbackEnum> BrandFeedback { get; private set; }
+        /// <summary>
+        /// Identity Status
+        /// </summary>
+        [JsonProperty("identity_status")]
+        [JsonConverter(typeof(StringEnumConverter))]
+        public BrandRegistrationResource.IdentityStatusEnum IdentityStatus { get; private set; }
+        /// <summary>
+        /// Russell 3000
+        /// </summary>
+        [JsonProperty("russell_3000")]
+        public bool? Russell3000 { get; private set; }
+        /// <summary>
+        /// Government Entity
+        /// </summary>
+        [JsonProperty("government_entity")]
+        public bool? GovernmentEntity { get; private set; }
+        /// <summary>
+        /// Tax Exempt Status
+        /// </summary>
+        [JsonProperty("tax_exempt_status")]
+        public string TaxExemptStatus { get; private set; }
+        /// <summary>
+        /// Skip Automatic Secondary Vetting
+        /// </summary>
+        [JsonProperty("skip_automatic_sec_vet")]
+        public bool? SkipAutomaticSecVet { get; private set; }
+        /// <summary>
+        /// A boolean that specifies whether brand should be a mock or not. If true, brand will be registered as a mock brand. Defaults to false if no value is provided.
+        /// </summary>
+        [JsonProperty("mock")]
+        public bool? Mock { get; private set; }
+        /// <summary>
+        /// The links
+        /// </summary>
+        [JsonProperty("links")]
+        public Dictionary<string, string> Links { get; private set; }
 
         private BrandRegistrationResource()
         {

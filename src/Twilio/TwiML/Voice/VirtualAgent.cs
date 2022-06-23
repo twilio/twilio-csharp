@@ -32,6 +32,10 @@ namespace Twilio.TwiML.Voice
         /// URL to post status callbacks from Twilio
         /// </summary>
         public string StatusCallback { get; set; }
+        /// <summary>
+        /// HTTP method to use when requesting the status callback URL
+        /// </summary>
+        public Twilio.Http.HttpMethod StatusCallbackMethod { get; set; }
 
         /// <summary>
         /// Create a new VirtualAgent
@@ -40,15 +44,18 @@ namespace Twilio.TwiML.Voice
         /// <param name="language"> Language to be used by Dialogflow to transcribe speech </param>
         /// <param name="sentimentAnalysis"> Whether sentiment analysis needs to be enabled or not </param>
         /// <param name="statusCallback"> URL to post status callbacks from Twilio </param>
+        /// <param name="statusCallbackMethod"> HTTP method to use when requesting the status callback URL </param>
         public VirtualAgent(string connectorName = null,
                             string language = null,
                             bool? sentimentAnalysis = null,
-                            string statusCallback = null) : base("VirtualAgent")
+                            string statusCallback = null,
+                            Twilio.Http.HttpMethod statusCallbackMethod = null) : base("VirtualAgent")
         {
             this.ConnectorName = connectorName;
             this.Language = language;
             this.SentimentAnalysis = sentimentAnalysis;
             this.StatusCallback = statusCallback;
+            this.StatusCallbackMethod = statusCallbackMethod;
         }
 
         /// <summary>
@@ -73,7 +80,57 @@ namespace Twilio.TwiML.Voice
             {
                 attributes.Add(new XAttribute("statusCallback", this.StatusCallback));
             }
+            if (this.StatusCallbackMethod != null)
+            {
+                attributes.Add(new XAttribute("statusCallbackMethod", this.StatusCallbackMethod.ToString()));
+            }
             return attributes;
+        }
+
+        /// <summary>
+        /// Create a new <Config/> element and append it as a child of this element.
+        /// </summary>
+        /// <param name="name"> The name of the custom config </param>
+        /// <param name="value"> The value of the custom config </param>
+        public VirtualAgent Config(string name = null, string value = null)
+        {
+            var newChild = new Config(name, value);
+            this.Append(newChild);
+            return this;
+        }
+
+        /// <summary>
+        /// Append a <Config/> element as a child of this element
+        /// </summary>
+        /// <param name="config"> A Config instance. </param>
+        [System.Obsolete("This method is deprecated, use .Append() instead.")]
+        public VirtualAgent Config(Config config)
+        {
+            this.Append(config);
+            return this;
+        }
+
+        /// <summary>
+        /// Create a new <Parameter/> element and append it as a child of this element.
+        /// </summary>
+        /// <param name="name"> The name of the custom parameter </param>
+        /// <param name="value"> The value of the custom parameter </param>
+        public VirtualAgent Parameter(string name = null, string value = null)
+        {
+            var newChild = new Parameter(name, value);
+            this.Append(newChild);
+            return this;
+        }
+
+        /// <summary>
+        /// Append a <Parameter/> element as a child of this element
+        /// </summary>
+        /// <param name="parameter"> A Parameter instance. </param>
+        [System.Obsolete("This method is deprecated, use .Append() instead.")]
+        public VirtualAgent Parameter(Parameter parameter)
+        {
+            this.Append(parameter);
+            return this;
         }
 
         /// <summary>

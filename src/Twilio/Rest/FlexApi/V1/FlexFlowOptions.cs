@@ -140,7 +140,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// </summary>
         public bool? JanitorEnabled { get; set; }
         /// <summary>
-        /// The number of times to retry the webhook if the first attempt fails
+        /// The number of times to retry the Studio Flow or webhook in case of failure
         /// </summary>
         public int? IntegrationRetryCount { get; set; }
 
@@ -328,7 +328,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// </summary>
         public bool? JanitorEnabled { get; set; }
         /// <summary>
-        /// The number of times to retry the webhook if the first attempt fails
+        /// The number of times to retry the Studio Flow or webhook in case of failure
         /// </summary>
         public int? IntegrationRetryCount { get; set; }
 

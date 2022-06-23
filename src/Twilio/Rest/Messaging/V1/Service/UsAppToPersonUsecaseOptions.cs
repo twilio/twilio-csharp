@@ -22,6 +22,10 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// The SID of the Messaging Service to fetch the resource from
         /// </summary>
         public string PathMessagingServiceSid { get; }
+        /// <summary>
+        /// A2P Brand Registration SID
+        /// </summary>
+        public string BrandRegistrationSid { get; set; }
 
         /// <summary>
         /// Construct a new FetchUsAppToPersonUsecaseOptions
@@ -38,6 +42,11 @@ namespace Twilio.Rest.Messaging.V1.Service
         public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
+            if (BrandRegistrationSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("BrandRegistrationSid", BrandRegistrationSid.ToString()));
+            }
+
             return p;
         }
     }

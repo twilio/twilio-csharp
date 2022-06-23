@@ -67,11 +67,14 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// fetch
         /// </summary>
         /// <param name="pathMessagingServiceSid"> The SID of the Messaging Service to fetch the resource from </param>
+        /// <param name="brandRegistrationSid"> A2P Brand Registration SID </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of UsAppToPersonUsecase </returns>
-        public static UsAppToPersonUsecaseResource Fetch(string pathMessagingServiceSid, ITwilioRestClient client = null)
+        public static UsAppToPersonUsecaseResource Fetch(string pathMessagingServiceSid,
+                                                         string brandRegistrationSid = null,
+                                                         ITwilioRestClient client = null)
         {
-            var options = new FetchUsAppToPersonUsecaseOptions(pathMessagingServiceSid);
+            var options = new FetchUsAppToPersonUsecaseOptions(pathMessagingServiceSid){BrandRegistrationSid = brandRegistrationSid};
             return Fetch(options, client);
         }
 
@@ -80,12 +83,14 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// fetch
         /// </summary>
         /// <param name="pathMessagingServiceSid"> The SID of the Messaging Service to fetch the resource from </param>
+        /// <param name="brandRegistrationSid"> A2P Brand Registration SID </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of UsAppToPersonUsecase </returns>
         public static async System.Threading.Tasks.Task<UsAppToPersonUsecaseResource> FetchAsync(string pathMessagingServiceSid,
+                                                                                                 string brandRegistrationSid = null,
                                                                                                  ITwilioRestClient client = null)
         {
-            var options = new FetchUsAppToPersonUsecaseOptions(pathMessagingServiceSid);
+            var options = new FetchUsAppToPersonUsecaseOptions(pathMessagingServiceSid){BrandRegistrationSid = brandRegistrationSid};
             return await FetchAsync(options, client);
         }
         #endif

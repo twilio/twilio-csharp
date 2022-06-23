@@ -104,6 +104,20 @@ namespace Twilio.TwiML.Voice
             public static readonly VoiceEnum PollyLupeNeural = new VoiceEnum("Polly.Lupe-Neural");
             public static readonly VoiceEnum PollyOliviaNeural = new VoiceEnum("Polly.Olivia-Neural");
             public static readonly VoiceEnum PollyKevinNeural = new VoiceEnum("Polly.Kevin-Neural");
+            public static readonly VoiceEnum PollyAriaNeural = new VoiceEnum("Polly.Aria-Neural");
+            public static readonly VoiceEnum PollyAyandaNeural = new VoiceEnum("Polly.Ayanda-Neural");
+            public static readonly VoiceEnum PollyGabrielleNeural = new VoiceEnum("Polly.Gabrielle-Neural");
+            public static readonly VoiceEnum PollyLeaNeural = new VoiceEnum("Polly.Lea-Neural");
+            public static readonly VoiceEnum PollyVickiNeural = new VoiceEnum("Polly.Vicki-Neural");
+            public static readonly VoiceEnum PollyBiancaNeural = new VoiceEnum("Polly.Bianca-Neural");
+            public static readonly VoiceEnum PollyTakumiNeural = new VoiceEnum("Polly.Takumi-Neural");
+            public static readonly VoiceEnum PollySeoyeonNeural = new VoiceEnum("Polly.Seoyeon-Neural");
+            public static readonly VoiceEnum PollyLuciaNeural = new VoiceEnum("Polly.Lucia-Neural");
+            public static readonly VoiceEnum PollyArletNeural = new VoiceEnum("Polly.Arlet-Neural");
+            public static readonly VoiceEnum PollyHannahNeural = new VoiceEnum("Polly.Hannah-Neural");
+            public static readonly VoiceEnum PollyMiaNeural = new VoiceEnum("Polly.Mia-Neural");
+            public static readonly VoiceEnum PollyVitoriaNeural = new VoiceEnum("Polly.Vitoria-Neural");
+            public static readonly VoiceEnum PollyInesNeural = new VoiceEnum("Polly.Ines-Neural");
         }
 
         public sealed class LanguageEnum : StringEnum
@@ -120,11 +134,14 @@ namespace Twilio.TwiML.Voice
             public static readonly LanguageEnum CyGb = new LanguageEnum("cy-GB");
             public static readonly LanguageEnum DaDk = new LanguageEnum("da-DK");
             public static readonly LanguageEnum DeDe = new LanguageEnum("de-DE");
+            public static readonly LanguageEnum DeAt = new LanguageEnum("de-AT");
             public static readonly LanguageEnum EnAu = new LanguageEnum("en-AU");
             public static readonly LanguageEnum EnCa = new LanguageEnum("en-CA");
             public static readonly LanguageEnum EnGb = new LanguageEnum("en-GB");
             public static readonly LanguageEnum EnGbWls = new LanguageEnum("en-GB-WLS");
             public static readonly LanguageEnum EnIn = new LanguageEnum("en-IN");
+            public static readonly LanguageEnum EnNz = new LanguageEnum("en-NZ");
+            public static readonly LanguageEnum EnZa = new LanguageEnum("en-ZA");
             public static readonly LanguageEnum EnUs = new LanguageEnum("en-US");
             public static readonly LanguageEnum EsEs = new LanguageEnum("es-ES");
             public static readonly LanguageEnum EsMx = new LanguageEnum("es-MX");
@@ -164,7 +181,7 @@ namespace Twilio.TwiML.Voice
         /// </summary>
         public int? Loop { get; set; }
         /// <summary>
-        /// Message langauge
+        /// Message language
         /// </summary>
         public Say.LanguageEnum Language { get; set; }
 
@@ -174,7 +191,7 @@ namespace Twilio.TwiML.Voice
         /// <param name="message"> Message to say, the body of the TwiML Element. </param>
         /// <param name="voice"> Voice to use </param>
         /// <param name="loop"> Times to loop message </param>
-        /// <param name="language"> Message langauge </param>
+        /// <param name="language"> Message language </param>
         public Say(string message = null,
                    Say.VoiceEnum voice = null,
                    int? loop = null,

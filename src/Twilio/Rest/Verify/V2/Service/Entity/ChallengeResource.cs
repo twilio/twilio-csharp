@@ -65,6 +65,19 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
             public static readonly FactorTypesEnum Totp = new FactorTypesEnum("totp");
         }
 
+        public sealed class ListOrdersEnum : StringEnum
+        {
+            private ListOrdersEnum(string value) : base(value) {}
+            public ListOrdersEnum() {}
+            public static implicit operator ListOrdersEnum(string value)
+            {
+                return new ListOrdersEnum(value);
+            }
+
+            public static readonly ListOrdersEnum Asc = new ListOrdersEnum("asc");
+            public static readonly ListOrdersEnum Desc = new ListOrdersEnum("desc");
+        }
+
         private static Request BuildCreateRequest(CreateChallengeOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -288,6 +301,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
         /// <param name="factorSid"> Factor Sid. </param>
         /// <param name="status"> The Status of theChallenges to fetch </param>
+        /// <param name="order"> The sort order of the Challenges list </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -296,11 +310,12 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
                                                           string pathIdentity,
                                                           string factorSid = null,
                                                           ChallengeResource.ChallengeStatusesEnum status = null,
+                                                          ChallengeResource.ListOrdersEnum order = null,
                                                           int? pageSize = null,
                                                           long? limit = null,
                                                           ITwilioRestClient client = null)
         {
-            var options = new ReadChallengeOptions(pathServiceSid, pathIdentity){FactorSid = factorSid, Status = status, PageSize = pageSize, Limit = limit};
+            var options = new ReadChallengeOptions(pathServiceSid, pathIdentity){FactorSid = factorSid, Status = status, Order = order, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -312,6 +327,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
         /// <param name="factorSid"> Factor Sid. </param>
         /// <param name="status"> The Status of theChallenges to fetch </param>
+        /// <param name="order"> The sort order of the Challenges list </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -320,11 +336,12 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
                                                                                                   string pathIdentity,
                                                                                                   string factorSid = null,
                                                                                                   ChallengeResource.ChallengeStatusesEnum status = null,
+                                                                                                  ChallengeResource.ListOrdersEnum order = null,
                                                                                                   int? pageSize = null,
                                                                                                   long? limit = null,
                                                                                                   ITwilioRestClient client = null)
         {
-            var options = new ReadChallengeOptions(pathServiceSid, pathIdentity){FactorSid = factorSid, Status = status, PageSize = pageSize, Limit = limit};
+            var options = new ReadChallengeOptions(pathServiceSid, pathIdentity){FactorSid = factorSid, Status = status, Order = order, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
@@ -429,15 +446,17 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
         /// <param name="pathSid"> A string that uniquely identifies this Challenge. </param>
         /// <param name="authPayload"> Optional payload to verify the Challenge </param>
+        /// <param name="metadata"> Metadata of the challenge. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Challenge </returns>
         public static ChallengeResource Update(string pathServiceSid,
                                                string pathIdentity,
                                                string pathSid,
                                                string authPayload = null,
+                                               object metadata = null,
                                                ITwilioRestClient client = null)
         {
-            var options = new UpdateChallengeOptions(pathServiceSid, pathIdentity, pathSid){AuthPayload = authPayload};
+            var options = new UpdateChallengeOptions(pathServiceSid, pathIdentity, pathSid){AuthPayload = authPayload, Metadata = metadata};
             return Update(options, client);
         }
 
@@ -449,15 +468,17 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
         /// <param name="pathSid"> A string that uniquely identifies this Challenge. </param>
         /// <param name="authPayload"> Optional payload to verify the Challenge </param>
+        /// <param name="metadata"> Metadata of the challenge. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Challenge </returns>
         public static async System.Threading.Tasks.Task<ChallengeResource> UpdateAsync(string pathServiceSid,
                                                                                        string pathIdentity,
                                                                                        string pathSid,
                                                                                        string authPayload = null,
+                                                                                       object metadata = null,
                                                                                        ITwilioRestClient client = null)
         {
-            var options = new UpdateChallengeOptions(pathServiceSid, pathIdentity, pathSid){AuthPayload = authPayload};
+            var options = new UpdateChallengeOptions(pathServiceSid, pathIdentity, pathSid){AuthPayload = authPayload, Metadata = metadata};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -552,6 +573,11 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// </summary>
         [JsonProperty("hidden_details")]
         public object HiddenDetails { get; private set; }
+        /// <summary>
+        /// Metadata of the challenge.
+        /// </summary>
+        [JsonProperty("metadata")]
+        public object Metadata { get; private set; }
         /// <summary>
         /// The Factor Type of this Challenge
         /// </summary>

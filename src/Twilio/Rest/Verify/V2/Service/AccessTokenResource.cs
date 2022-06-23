@@ -81,14 +81,18 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="identity"> Unique external identifier of the Entity </param>
         /// <param name="factorType"> The Type of this Factor </param>
+        /// <param name="factorFriendlyName"> The factor friendly name </param>
+        /// <param name="ttl"> How long, in seconds, the access token is valid. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of AccessToken </returns>
         public static AccessTokenResource Create(string pathServiceSid,
                                                  string identity,
                                                  AccessTokenResource.FactorTypesEnum factorType,
+                                                 string factorFriendlyName = null,
+                                                 int? ttl = null,
                                                  ITwilioRestClient client = null)
         {
-            var options = new CreateAccessTokenOptions(pathServiceSid, identity, factorType);
+            var options = new CreateAccessTokenOptions(pathServiceSid, identity, factorType){FactorFriendlyName = factorFriendlyName, Ttl = ttl};
             return Create(options, client);
         }
 
@@ -99,15 +103,89 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="identity"> Unique external identifier of the Entity </param>
         /// <param name="factorType"> The Type of this Factor </param>
+        /// <param name="factorFriendlyName"> The factor friendly name </param>
+        /// <param name="ttl"> How long, in seconds, the access token is valid. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AccessToken </returns>
         public static async System.Threading.Tasks.Task<AccessTokenResource> CreateAsync(string pathServiceSid,
                                                                                          string identity,
                                                                                          AccessTokenResource.FactorTypesEnum factorType,
+                                                                                         string factorFriendlyName = null,
+                                                                                         int? ttl = null,
                                                                                          ITwilioRestClient client = null)
         {
-            var options = new CreateAccessTokenOptions(pathServiceSid, identity, factorType);
+            var options = new CreateAccessTokenOptions(pathServiceSid, identity, factorType){FactorFriendlyName = factorFriendlyName, Ttl = ttl};
             return await CreateAsync(options, client);
+        }
+        #endif
+
+        private static Request BuildFetchRequest(FetchAccessTokenOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.Verify,
+                "/v2/Services/" + options.PathServiceSid + "/AccessTokens/" + options.PathSid + "",
+                queryParams: options.GetParams(),
+                headerParams: null
+            );
+        }
+
+        /// <summary>
+        /// Fetch an Access Token for the Entity
+        /// </summary>
+        /// <param name="options"> Fetch AccessToken parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of AccessToken </returns>
+        public static AccessTokenResource Fetch(FetchAccessTokenOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            return FromJson(response.Content);
+        }
+
+        #if !NET35
+        /// <summary>
+        /// Fetch an Access Token for the Entity
+        /// </summary>
+        /// <param name="options"> Fetch AccessToken parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of AccessToken </returns>
+        public static async System.Threading.Tasks.Task<AccessTokenResource> FetchAsync(FetchAccessTokenOptions options,
+                                                                                        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            return FromJson(response.Content);
+        }
+        #endif
+
+        /// <summary>
+        /// Fetch an Access Token for the Entity
+        /// </summary>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathSid"> A string that uniquely identifies this Access Token. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of AccessToken </returns>
+        public static AccessTokenResource Fetch(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchAccessTokenOptions(pathServiceSid, pathSid);
+            return Fetch(options, client);
+        }
+
+        #if !NET35
+        /// <summary>
+        /// Fetch an Access Token for the Entity
+        /// </summary>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathSid"> A string that uniquely identifies this Access Token. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of AccessToken </returns>
+        public static async System.Threading.Tasks.Task<AccessTokenResource> FetchAsync(string pathServiceSid,
+                                                                                        string pathSid,
+                                                                                        ITwilioRestClient client = null)
+        {
+            var options = new FetchAccessTokenOptions(pathServiceSid, pathSid);
+            return await FetchAsync(options, client);
         }
         #endif
 
@@ -130,10 +208,56 @@ namespace Twilio.Rest.Verify.V2.Service
         }
 
         /// <summary>
+        /// A string that uniquely identifies this Access Token.
+        /// </summary>
+        [JsonProperty("sid")]
+        public string Sid { get; private set; }
+        /// <summary>
+        /// Account Sid.
+        /// </summary>
+        [JsonProperty("account_sid")]
+        public string AccountSid { get; private set; }
+        /// <summary>
+        /// Verify Service Sid.
+        /// </summary>
+        [JsonProperty("service_sid")]
+        public string ServiceSid { get; private set; }
+        /// <summary>
+        /// Unique external identifier of the Entity
+        /// </summary>
+        [JsonProperty("entity_identity")]
+        public string EntityIdentity { get; private set; }
+        /// <summary>
+        /// The Type of the Factor
+        /// </summary>
+        [JsonProperty("factor_type")]
+        [JsonConverter(typeof(StringEnumConverter))]
+        public AccessTokenResource.FactorTypesEnum FactorType { get; private set; }
+        /// <summary>
+        /// A human readable description of this factor.
+        /// </summary>
+        [JsonProperty("factor_friendly_name")]
+        public string FactorFriendlyName { get; private set; }
+        /// <summary>
         /// Generated access token.
         /// </summary>
         [JsonProperty("token")]
         public string Token { get; private set; }
+        /// <summary>
+        /// The URL of this resource.
+        /// </summary>
+        [JsonProperty("url")]
+        public Uri Url { get; private set; }
+        /// <summary>
+        /// How long, in seconds, the access token is valid.
+        /// </summary>
+        [JsonProperty("ttl")]
+        public int? Ttl { get; private set; }
+        /// <summary>
+        /// The date this access token was created
+        /// </summary>
+        [JsonProperty("date_created")]
+        public DateTime? DateCreated { get; private set; }
 
         private AccessTokenResource()
         {
