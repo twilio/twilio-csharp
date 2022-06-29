@@ -27,6 +27,10 @@ namespace Twilio.TwiML.Voice
         /// </summary>
         public Uri Action { get; set; }
         /// <summary>
+        /// Maximum size of queue
+        /// </summary>
+        public int? MaxQueueSize { get; set; }
+        /// <summary>
         /// Action URL method
         /// </summary>
         public Twilio.Http.HttpMethod Method { get; set; }
@@ -48,12 +52,14 @@ namespace Twilio.TwiML.Voice
         /// </summary>
         /// <param name="name"> Friendly name, the body of the TwiML Element. </param>
         /// <param name="action"> Action URL </param>
+        /// <param name="maxQueueSize"> Maximum size of queue </param>
         /// <param name="method"> Action URL method </param>
         /// <param name="waitUrl"> Wait URL </param>
         /// <param name="waitUrlMethod"> Wait URL method </param>
         /// <param name="workflowSid"> TaskRouter Workflow SID </param>
         public Enqueue(string name = null,
                        Uri action = null,
+                       int? maxQueueSize = null,
                        Twilio.Http.HttpMethod method = null,
                        Uri waitUrl = null,
                        Twilio.Http.HttpMethod waitUrlMethod = null,
@@ -61,6 +67,7 @@ namespace Twilio.TwiML.Voice
         {
             this.Name = name;
             this.Action = action;
+            this.MaxQueueSize = maxQueueSize;
             this.Method = method;
             this.WaitUrl = waitUrl;
             this.WaitUrlMethod = waitUrlMethod;
@@ -84,6 +91,10 @@ namespace Twilio.TwiML.Voice
             if (this.Action != null)
             {
                 attributes.Add(new XAttribute("action", Serializers.Url(this.Action)));
+            }
+            if (this.MaxQueueSize != null)
+            {
+                attributes.Add(new XAttribute("maxQueueSize", this.MaxQueueSize.ToString()));
             }
             if (this.Method != null)
             {

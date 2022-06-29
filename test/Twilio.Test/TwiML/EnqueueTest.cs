@@ -32,6 +32,7 @@ namespace Twilio.Tests.TwiML
             var elem = new Enqueue(
                 "name",
                 new Uri("https://example.com"),
+                1,
                 Twilio.Http.HttpMethod.Get,
                 new Uri("https://example.com"),
                 Twilio.Http.HttpMethod.Get,
@@ -39,7 +40,7 @@ namespace Twilio.Tests.TwiML
             );
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Enqueue action=\"https://example.com\" method=\"GET\" waitUrl=\"https://example.com\" waitUrlMethod=\"GET\" workflowSid=\"workflow_sid\">name</Enqueue>",
+                "<Enqueue action=\"https://example.com\" maxQueueSize=\"1\" method=\"GET\" waitUrl=\"https://example.com\" waitUrlMethod=\"GET\" workflowSid=\"workflow_sid\">name</Enqueue>",
                 elem.ToString()
             );
         }

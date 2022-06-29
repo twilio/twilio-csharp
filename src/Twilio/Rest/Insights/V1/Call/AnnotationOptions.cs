@@ -8,51 +8,53 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Insights.V1
+namespace Twilio.Rest.Insights.V1.Call
 {
 
     /// <summary>
-    /// UpdateAnnotationOptions
+    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+    ///
+    /// Create/Update the annotation for the call
     /// </summary>
     public class UpdateAnnotationOptions : IOptions<AnnotationResource>
     {
         /// <summary>
-        /// The call_sid
+        /// The SID of the call.
         /// </summary>
         public string PathCallSid { get; }
         /// <summary>
-        /// The answered_by
+        /// Indicates the answering entity as determined by Answering Machine Detection.
         /// </summary>
         public AnnotationResource.AnsweredByEnum AnsweredBy { get; set; }
         /// <summary>
-        /// The connectivity_issue
+        /// Indicates if the call had any connectivity issue
         /// </summary>
         public AnnotationResource.ConnectivityIssueEnum ConnectivityIssue { get; set; }
         /// <summary>
-        /// The quality_issues
+        /// Indicates if the call had audio quality issues.
         /// </summary>
         public string QualityIssues { get; set; }
         /// <summary>
-        /// The spam
+        /// Call spam indicator
         /// </summary>
         public bool? Spam { get; set; }
         /// <summary>
-        /// The call_score
+        /// Call Score
         /// </summary>
         public int? CallScore { get; set; }
         /// <summary>
-        /// The comment
+        /// User comments
         /// </summary>
         public string Comment { get; set; }
         /// <summary>
-        /// The incident
+        /// Call tag for incidents or support ticket
         /// </summary>
         public string Incident { get; set; }
 
         /// <summary>
         /// Construct a new UpdateAnnotationOptions
         /// </summary>
-        /// <param name="pathCallSid"> The call_sid </param>
+        /// <param name="pathCallSid"> The SID of the call. </param>
         public UpdateAnnotationOptions(string pathCallSid)
         {
             PathCallSid = pathCallSid;
@@ -104,19 +106,21 @@ namespace Twilio.Rest.Insights.V1
     }
 
     /// <summary>
-    /// FetchAnnotationOptions
+    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+    ///
+    /// Fetch a specific Annotation.
     /// </summary>
     public class FetchAnnotationOptions : IOptions<AnnotationResource>
     {
         /// <summary>
-        /// The call_sid
+        /// Call SID.
         /// </summary>
         public string PathCallSid { get; }
 
         /// <summary>
         /// Construct a new FetchAnnotationOptions
         /// </summary>
-        /// <param name="pathCallSid"> The call_sid </param>
+        /// <param name="pathCallSid"> Call SID. </param>
         public FetchAnnotationOptions(string pathCallSid)
         {
             PathCallSid = pathCallSid;

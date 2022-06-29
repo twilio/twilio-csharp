@@ -266,6 +266,11 @@ namespace Twilio.Rest.Insights.V1.Call
         /// </summary>
         [JsonProperty("trust")]
         public object Trust { get; private set; }
+        /// <summary>
+        /// The annotation
+        /// </summary>
+        [JsonProperty("annotation")]
+        public object Annotation { get; private set; }
 
         private CallSummaryResource()
         {

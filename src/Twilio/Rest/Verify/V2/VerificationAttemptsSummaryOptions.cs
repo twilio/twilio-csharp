@@ -19,7 +19,7 @@ namespace Twilio.Rest.Verify.V2
         /// <summary>
         /// Filter the verification attempts considered on the summary by verify service.
         /// </summary>
-        public string VerifyServiceSid { get; set; }
+        public string ServiceSid { get; set; }
         /// <summary>
         /// Consider verification attempts create after this date on the summary.
         /// </summary>
@@ -47,9 +47,9 @@ namespace Twilio.Rest.Verify.V2
         public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
-            if (VerifyServiceSid != null)
+            if (ServiceSid != null)
             {
-                p.Add(new KeyValuePair<string, string>("VerifyServiceSid", VerifyServiceSid.ToString()));
+                p.Add(new KeyValuePair<string, string>("ServiceSid", ServiceSid.ToString()));
             }
 
             if (DateCreatedAfter != null)
