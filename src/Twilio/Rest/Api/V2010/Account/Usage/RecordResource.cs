@@ -32,6 +32,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
 
             public static readonly CategoryEnum A2PRegistrationFees = new CategoryEnum("a2p-registration-fees");
             public static readonly CategoryEnum AgentConference = new CategoryEnum("agent-conference");
+            public static readonly CategoryEnum AmazonPolly = new CategoryEnum("amazon-polly");
             public static readonly CategoryEnum AnsweringMachineDetection = new CategoryEnum("answering-machine-detection");
             public static readonly CategoryEnum AuthyAuthentications = new CategoryEnum("authy-authentications");
             public static readonly CategoryEnum AuthyCallsOutbound = new CategoryEnum("authy-calls-outbound");

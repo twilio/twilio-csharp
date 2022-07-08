@@ -3,6 +3,8 @@
 ///  | (_)\/(_)(_|\/| |(/_  v1.0.0
 ///       /       /
 /// <summary>
+/// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+///
 /// AnnotationResource
 /// </summary>
 
@@ -16,7 +18,7 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Types;
 
-namespace Twilio.Rest.Insights.V1
+namespace Twilio.Rest.Insights.V1.Call
 {
 
     public class AnnotationResource : Resource
@@ -84,7 +86,7 @@ namespace Twilio.Rest.Insights.V1
         }
 
         /// <summary>
-        /// update
+        /// Create/Update the annotation for the call
         /// </summary>
         /// <param name="options"> Update Annotation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -98,7 +100,7 @@ namespace Twilio.Rest.Insights.V1
 
         #if !NET35
         /// <summary>
-        /// update
+        /// Create/Update the annotation for the call
         /// </summary>
         /// <param name="options"> Update Annotation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -113,16 +115,16 @@ namespace Twilio.Rest.Insights.V1
         #endif
 
         /// <summary>
-        /// update
+        /// Create/Update the annotation for the call
         /// </summary>
-        /// <param name="pathCallSid"> The call_sid </param>
-        /// <param name="answeredBy"> The answered_by </param>
-        /// <param name="connectivityIssue"> The connectivity_issue </param>
-        /// <param name="qualityIssues"> The quality_issues </param>
-        /// <param name="spam"> The spam </param>
-        /// <param name="callScore"> The call_score </param>
-        /// <param name="comment"> The comment </param>
-        /// <param name="incident"> The incident </param>
+        /// <param name="pathCallSid"> The SID of the call. </param>
+        /// <param name="answeredBy"> Indicates the answering entity as determined by Answering Machine Detection. </param>
+        /// <param name="connectivityIssue"> Indicates if the call had any connectivity issue </param>
+        /// <param name="qualityIssues"> Indicates if the call had audio quality issues. </param>
+        /// <param name="spam"> Call spam indicator </param>
+        /// <param name="callScore"> Call Score </param>
+        /// <param name="comment"> User comments </param>
+        /// <param name="incident"> Call tag for incidents or support ticket </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Annotation </returns>
         public static AnnotationResource Update(string pathCallSid,
@@ -141,16 +143,16 @@ namespace Twilio.Rest.Insights.V1
 
         #if !NET35
         /// <summary>
-        /// update
+        /// Create/Update the annotation for the call
         /// </summary>
-        /// <param name="pathCallSid"> The call_sid </param>
-        /// <param name="answeredBy"> The answered_by </param>
-        /// <param name="connectivityIssue"> The connectivity_issue </param>
-        /// <param name="qualityIssues"> The quality_issues </param>
-        /// <param name="spam"> The spam </param>
-        /// <param name="callScore"> The call_score </param>
-        /// <param name="comment"> The comment </param>
-        /// <param name="incident"> The incident </param>
+        /// <param name="pathCallSid"> The SID of the call. </param>
+        /// <param name="answeredBy"> Indicates the answering entity as determined by Answering Machine Detection. </param>
+        /// <param name="connectivityIssue"> Indicates if the call had any connectivity issue </param>
+        /// <param name="qualityIssues"> Indicates if the call had audio quality issues. </param>
+        /// <param name="spam"> Call spam indicator </param>
+        /// <param name="callScore"> Call Score </param>
+        /// <param name="comment"> User comments </param>
+        /// <param name="incident"> Call tag for incidents or support ticket </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Annotation </returns>
         public static async System.Threading.Tasks.Task<AnnotationResource> UpdateAsync(string pathCallSid,
@@ -180,7 +182,7 @@ namespace Twilio.Rest.Insights.V1
         }
 
         /// <summary>
-        /// fetch
+        /// Fetch a specific Annotation.
         /// </summary>
         /// <param name="options"> Fetch Annotation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -194,7 +196,7 @@ namespace Twilio.Rest.Insights.V1
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Fetch a specific Annotation.
         /// </summary>
         /// <param name="options"> Fetch Annotation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -209,9 +211,9 @@ namespace Twilio.Rest.Insights.V1
         #endif
 
         /// <summary>
-        /// fetch
+        /// Fetch a specific Annotation.
         /// </summary>
-        /// <param name="pathCallSid"> The call_sid </param>
+        /// <param name="pathCallSid"> Call SID. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Annotation </returns>
         public static AnnotationResource Fetch(string pathCallSid, ITwilioRestClient client = null)
@@ -222,9 +224,9 @@ namespace Twilio.Rest.Insights.V1
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Fetch a specific Annotation.
         /// </summary>
-        /// <param name="pathCallSid"> The call_sid </param>
+        /// <param name="pathCallSid"> Call SID. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Annotation </returns>
         public static async System.Threading.Tasks.Task<AnnotationResource> FetchAsync(string pathCallSid,
@@ -254,54 +256,54 @@ namespace Twilio.Rest.Insights.V1
         }
 
         /// <summary>
-        /// The call_sid
+        /// Call SID.
         /// </summary>
         [JsonProperty("call_sid")]
         public string CallSid { get; private set; }
         /// <summary>
-        /// The account_sid
+        /// Account SID.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The answered_by
+        /// Indicates the answering entity as determined by Answering Machine Detection.
         /// </summary>
         [JsonProperty("answered_by")]
         [JsonConverter(typeof(StringEnumConverter))]
         public AnnotationResource.AnsweredByEnum AnsweredBy { get; private set; }
         /// <summary>
-        /// The connectivity_issue
+        /// Indicates if the call had any connectivity issue
         /// </summary>
         [JsonProperty("connectivity_issue")]
         [JsonConverter(typeof(StringEnumConverter))]
         public AnnotationResource.ConnectivityIssueEnum ConnectivityIssue { get; private set; }
         /// <summary>
-        /// The quality_issues
+        /// Indicates if the call had audio quality issues.
         /// </summary>
         [JsonProperty("quality_issues")]
         public List<string> QualityIssues { get; private set; }
         /// <summary>
-        /// The spam
+        /// Call spam indicator
         /// </summary>
         [JsonProperty("spam")]
         public bool? Spam { get; private set; }
         /// <summary>
-        /// The call_score
+        /// Call Score
         /// </summary>
         [JsonProperty("call_score")]
         public int? CallScore { get; private set; }
         /// <summary>
-        /// The comment
+        /// User comments
         /// </summary>
         [JsonProperty("comment")]
         public string Comment { get; private set; }
         /// <summary>
-        /// The incident
+        /// Call tag for incidents or support ticket
         /// </summary>
         [JsonProperty("incident")]
         public string Incident { get; private set; }
         /// <summary>
-        /// The url
+        /// The URL of this resource.
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

@@ -12,9 +12,9 @@ using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
-using Twilio.Rest.Insights.V1;
+using Twilio.Rest.Insights.V1.Call;
 
-namespace Twilio.Tests.Rest.Insights.V1
+namespace Twilio.Tests.Rest.Insights.V1.Call
 {
 
     [TestFixture]
@@ -49,7 +49,7 @@ namespace Twilio.Tests.Rest.Insights.V1
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"call_sid\": \"CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"answered_by\": \"human\",\"connectivity_issue\": \"invalid_number\",\"quality_issues\": [\"low_volume\"],\"spam\": true,\"call_score\": 2,\"comment\": \"this is a call\",\"incident\": \"https://twilio.zendesk.com/support/tickets/17353089\",\"url\": \"https://insights.twilio.com/v1/Voice/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Annotation\"}"
+                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"call_sid\": \"CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"answered_by\": \"human\",\"connectivity_issue\": \"invalid_number\",\"quality_issues\": [\"low_volume\",\"choppy_robotic\"],\"spam\": true,\"call_score\": 2,\"comment\": \"this is a call\",\"incident\": \"https://twilio.zendesk.com/support/tickets/17353089\",\"url\": \"https://insights.twilio.com/v1/Voice/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Annotation\"}"
                                      ));
 
             var response = AnnotationResource.Update("CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);

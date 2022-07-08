@@ -80,8 +80,7 @@ namespace Twilio.Rest.Verify.V2
         /// <summary>
         /// Get a summary of how many attempts were made and how many were converted.
         /// </summary>
-        /// <param name="verifyServiceSid"> Filter the verification attempts considered on the summary by verify service.
-        ///                        </param>
+        /// <param name="serviceSid"> Filter the verification attempts considered on the summary by verify service. </param>
         /// <param name="dateCreatedAfter"> Consider verification attempts create after this date on the summary. </param>
         /// <param name="dateCreatedBefore"> Consider verification attempts created before this date on the summary. </param>
         /// <param name="country"> Filter verification attempts considered on the summary by destination country. </param>
@@ -89,7 +88,7 @@ namespace Twilio.Rest.Verify.V2
         /// <param name="destinationPrefix"> Filters the attempts considered on the summary by destination prefix. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of VerificationAttemptsSummary </returns>
-        public static VerificationAttemptsSummaryResource Fetch(string verifyServiceSid = null,
+        public static VerificationAttemptsSummaryResource Fetch(string serviceSid = null,
                                                                 DateTime? dateCreatedAfter = null,
                                                                 DateTime? dateCreatedBefore = null,
                                                                 string country = null,
@@ -97,7 +96,7 @@ namespace Twilio.Rest.Verify.V2
                                                                 string destinationPrefix = null,
                                                                 ITwilioRestClient client = null)
         {
-            var options = new FetchVerificationAttemptsSummaryOptions(){VerifyServiceSid = verifyServiceSid, DateCreatedAfter = dateCreatedAfter, DateCreatedBefore = dateCreatedBefore, Country = country, Channel = channel, DestinationPrefix = destinationPrefix};
+            var options = new FetchVerificationAttemptsSummaryOptions(){ServiceSid = serviceSid, DateCreatedAfter = dateCreatedAfter, DateCreatedBefore = dateCreatedBefore, Country = country, Channel = channel, DestinationPrefix = destinationPrefix};
             return Fetch(options, client);
         }
 
@@ -105,8 +104,7 @@ namespace Twilio.Rest.Verify.V2
         /// <summary>
         /// Get a summary of how many attempts were made and how many were converted.
         /// </summary>
-        /// <param name="verifyServiceSid"> Filter the verification attempts considered on the summary by verify service.
-        ///                        </param>
+        /// <param name="serviceSid"> Filter the verification attempts considered on the summary by verify service. </param>
         /// <param name="dateCreatedAfter"> Consider verification attempts create after this date on the summary. </param>
         /// <param name="dateCreatedBefore"> Consider verification attempts created before this date on the summary. </param>
         /// <param name="country"> Filter verification attempts considered on the summary by destination country. </param>
@@ -114,7 +112,7 @@ namespace Twilio.Rest.Verify.V2
         /// <param name="destinationPrefix"> Filters the attempts considered on the summary by destination prefix. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of VerificationAttemptsSummary </returns>
-        public static async System.Threading.Tasks.Task<VerificationAttemptsSummaryResource> FetchAsync(string verifyServiceSid = null,
+        public static async System.Threading.Tasks.Task<VerificationAttemptsSummaryResource> FetchAsync(string serviceSid = null,
                                                                                                         DateTime? dateCreatedAfter = null,
                                                                                                         DateTime? dateCreatedBefore = null,
                                                                                                         string country = null,
@@ -122,7 +120,7 @@ namespace Twilio.Rest.Verify.V2
                                                                                                         string destinationPrefix = null,
                                                                                                         ITwilioRestClient client = null)
         {
-            var options = new FetchVerificationAttemptsSummaryOptions(){VerifyServiceSid = verifyServiceSid, DateCreatedAfter = dateCreatedAfter, DateCreatedBefore = dateCreatedBefore, Country = country, Channel = channel, DestinationPrefix = destinationPrefix};
+            var options = new FetchVerificationAttemptsSummaryOptions(){ServiceSid = serviceSid, DateCreatedAfter = dateCreatedAfter, DateCreatedBefore = dateCreatedBefore, Country = country, Channel = channel, DestinationPrefix = destinationPrefix};
             return await FetchAsync(options, client);
         }
         #endif

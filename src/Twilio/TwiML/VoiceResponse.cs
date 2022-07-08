@@ -153,18 +153,20 @@ namespace Twilio.TwiML
         /// </summary>
         /// <param name="name"> Friendly name, the body of the TwiML Element. </param>
         /// <param name="action"> Action URL </param>
+        /// <param name="maxQueueSize"> Maximum size of queue </param>
         /// <param name="method"> Action URL method </param>
         /// <param name="waitUrl"> Wait URL </param>
         /// <param name="waitUrlMethod"> Wait URL method </param>
         /// <param name="workflowSid"> TaskRouter Workflow SID </param>
         public VoiceResponse Enqueue(string name = null,
                                      Uri action = null,
+                                     int? maxQueueSize = null,
                                      Twilio.Http.HttpMethod method = null,
                                      Uri waitUrl = null,
                                      Twilio.Http.HttpMethod waitUrlMethod = null,
                                      string workflowSid = null)
         {
-            var newChild = new Enqueue(name, action, method, waitUrl, waitUrlMethod, workflowSid);
+            var newChild = new Enqueue(name, action, maxQueueSize, method, waitUrl, waitUrlMethod, workflowSid);
             this.Append(newChild);
             return this;
         }

@@ -368,11 +368,6 @@ namespace Twilio.Rest.Media.V1
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The bitrate of the media
-        /// </summary>
-        [JsonProperty("bitrate")]
-        public int? Bitrate { get; private set; }
-        /// <summary>
         /// The ISO 8601 date and time in GMT when the resource was created
         /// </summary>
         [JsonProperty("date_created")]
