@@ -49,7 +49,7 @@ namespace Twilio.Tests.Rest.Lookups.V2
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"calling_country_code\": \"1\",\"country_code\": \"US\",\"phone_number\": \"+14159929960\",\"national_format\": \"(415) 992-9960\",\"valid\": true,\"validation_errors\": null,\"caller_name\": null,\"sim_swap\": null,\"call_forwarding\": null,\"live_activity\": null,\"enhanced_line_type\": null,\"line_type_intelligence\": null,\"url\": \"https://lookups.twilio.com/v2/PhoneNumbers/+14159929960\"}"
+                                         "{\"calling_country_code\": \"1\",\"country_code\": \"US\",\"phone_number\": \"+14159929960\",\"national_format\": \"(415) 992-9960\",\"valid\": true,\"validation_errors\": null,\"caller_name\": null,\"sim_swap\": null,\"call_forwarding\": null,\"live_activity\": null,\"line_type_intelligence\": null,\"url\": \"https://lookups.twilio.com/v2/PhoneNumbers/+14159929960\"}"
                                      ));
 
             var response = PhoneNumberResource.Fetch("phone_number", client: twilioRestClient);
@@ -64,7 +64,7 @@ namespace Twilio.Tests.Rest.Lookups.V2
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"calling_country_code\": null,\"country_code\": null,\"phone_number\": \"+141599299600\",\"national_format\": null,\"valid\": false,\"validation_errors\": [\"TOO_LONG\"],\"caller_name\": null,\"sim_swap\": null,\"call_forwarding\": null,\"live_activity\": null,\"enhanced_line_type\": null,\"line_type_intelligence\": null,\"url\": \"https://lookups.twilio.com/v2/PhoneNumbers/+141599299600\"}"
+                                         "{\"calling_country_code\": null,\"country_code\": null,\"phone_number\": \"+141599299600\",\"national_format\": null,\"valid\": false,\"validation_errors\": [\"TOO_LONG\"],\"caller_name\": null,\"sim_swap\": null,\"call_forwarding\": null,\"live_activity\": null,\"line_type_intelligence\": null,\"url\": \"https://lookups.twilio.com/v2/PhoneNumbers/+141599299600\"}"
                                      ));
 
             var response = PhoneNumberResource.Fetch("phone_number", client: twilioRestClient);
@@ -79,7 +79,7 @@ namespace Twilio.Tests.Rest.Lookups.V2
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"calling_country_code\": \"1\",\"country_code\": \"US\",\"phone_number\": \"+14159929960\",\"national_format\": \"(415) 992-9960\",\"valid\": true,\"validation_errors\": null,\"caller_name\": {\"caller_name\": \"Sergio Suarez\",\"caller_type\": \"CONSUMER\",\"error_code\": null},\"sim_swap\": null,\"call_forwarding\": null,\"live_activity\": null,\"enhanced_line_type\": null,\"line_type_intelligence\": null,\"url\": \"https://lookups.twilio.com/v2/PhoneNumbers/+14159929960\"}"
+                                         "{\"calling_country_code\": \"1\",\"country_code\": \"US\",\"phone_number\": \"+14159929960\",\"national_format\": \"(415) 992-9960\",\"valid\": true,\"validation_errors\": null,\"caller_name\": {\"caller_name\": \"Sergio Suarez\",\"caller_type\": \"CONSUMER\",\"error_code\": null},\"sim_swap\": null,\"call_forwarding\": null,\"live_activity\": null,\"line_type_intelligence\": null,\"url\": \"https://lookups.twilio.com/v2/PhoneNumbers/+14159929960\"}"
                                      ));
 
             var response = PhoneNumberResource.Fetch("phone_number", client: twilioRestClient);
@@ -94,7 +94,7 @@ namespace Twilio.Tests.Rest.Lookups.V2
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"calling_country_code\": \"44\",\"country_code\": \"GB\",\"phone_number\": \"+447772000001\",\"national_format\": \"07772 000001\",\"valid\": true,\"validation_errors\": null,\"caller_name\": null,\"sim_swap\": {\"last_sim_swap\": {\"last_sim_swap_date\": \"2020-04-27T10:18:50Z\",\"swapped_period\": \"PT15282H33M44S\",\"swapped_in_period\": true},\"carrier_name\": \"Vodafone UK\",\"mobile_country_code\": \"276\",\"mobile_network_code\": \"02\",\"error_code\": null},\"call_forwarding\": null,\"live_activity\": null,\"enhanced_line_type\": null,\"line_type_intelligence\": null,\"url\": \"https://lookups.twilio.com/v2/PhoneNumbers/+447772000001\"}"
+                                         "{\"calling_country_code\": \"44\",\"country_code\": \"GB\",\"phone_number\": \"+447772000001\",\"national_format\": \"07772 000001\",\"valid\": true,\"validation_errors\": null,\"caller_name\": null,\"sim_swap\": {\"last_sim_swap\": {\"last_sim_swap_date\": \"2020-04-27T10:18:50Z\",\"swapped_period\": \"PT15282H33M44S\",\"swapped_in_period\": true},\"carrier_name\": \"Vodafone UK\",\"mobile_country_code\": \"276\",\"mobile_network_code\": \"02\",\"error_code\": null},\"call_forwarding\": null,\"live_activity\": null,\"line_type_intelligence\": null,\"url\": \"https://lookups.twilio.com/v2/PhoneNumbers/+447772000001\"}"
                                      ));
 
             var response = PhoneNumberResource.Fetch("phone_number", client: twilioRestClient);
@@ -109,7 +109,7 @@ namespace Twilio.Tests.Rest.Lookups.V2
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"calling_country_code\": \"44\",\"country_code\": \"GB\",\"phone_number\": \"+447772000001\",\"national_format\": \"07772 000001\",\"valid\": true,\"validation_errors\": null,\"caller_name\": null,\"sim_swap\": {\"last_sim_swap\": {\"last_sim_swap_date\": null,\"swapped_period\": \"PT24H\",\"swapped_in_period\": true},\"carrier_name\": \"Vodafone UK\",\"mobile_country_code\": \"276\",\"mobile_network_code\": \"02\",\"error_code\": null},\"call_forwarding\": null,\"live_activity\": null,\"enhanced_line_type\": null,\"line_type_intelligence\": null,\"url\": \"https://lookups.twilio.com/v2/PhoneNumbers/+447772000001\"}"
+                                         "{\"calling_country_code\": \"44\",\"country_code\": \"GB\",\"phone_number\": \"+447772000001\",\"national_format\": \"07772 000001\",\"valid\": true,\"validation_errors\": null,\"caller_name\": null,\"sim_swap\": {\"last_sim_swap\": {\"last_sim_swap_date\": null,\"swapped_period\": \"PT24H\",\"swapped_in_period\": true},\"carrier_name\": \"Vodafone UK\",\"mobile_country_code\": \"276\",\"mobile_network_code\": \"02\",\"error_code\": null},\"call_forwarding\": null,\"live_activity\": null,\"line_type_intelligence\": null,\"url\": \"https://lookups.twilio.com/v2/PhoneNumbers/+447772000001\"}"
                                      ));
 
             var response = PhoneNumberResource.Fetch("phone_number", client: twilioRestClient);
@@ -124,7 +124,7 @@ namespace Twilio.Tests.Rest.Lookups.V2
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"calling_country_code\": \"44\",\"country_code\": \"GB\",\"phone_number\": \"+447772000001\",\"national_format\": \"07772 000001\",\"valid\": true,\"validation_errors\": null,\"caller_name\": null,\"sim_swap\": {\"last_sim_swap\": {\"last_sim_swap_date\": null,\"swapped_period\": \"PT24H\",\"swapped_in_period\": false},\"carrier_name\": \"Vodafone UK\",\"mobile_country_code\": \"276\",\"mobile_network_code\": \"02\",\"error_code\": null},\"call_forwarding\": null,\"live_activity\": null,\"enhanced_line_type\": null,\"line_type_intelligence\": null,\"url\": \"https://lookups.twilio.com/v2/PhoneNumbers/+447772000001\"}"
+                                         "{\"calling_country_code\": \"44\",\"country_code\": \"GB\",\"phone_number\": \"+447772000001\",\"national_format\": \"07772 000001\",\"valid\": true,\"validation_errors\": null,\"caller_name\": null,\"sim_swap\": {\"last_sim_swap\": {\"last_sim_swap_date\": null,\"swapped_period\": \"PT24H\",\"swapped_in_period\": false},\"carrier_name\": \"Vodafone UK\",\"mobile_country_code\": \"276\",\"mobile_network_code\": \"02\",\"error_code\": null},\"call_forwarding\": null,\"live_activity\": null,\"line_type_intelligence\": null,\"url\": \"https://lookups.twilio.com/v2/PhoneNumbers/+447772000001\"}"
                                      ));
 
             var response = PhoneNumberResource.Fetch("phone_number", client: twilioRestClient);
@@ -139,7 +139,7 @@ namespace Twilio.Tests.Rest.Lookups.V2
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"calling_country_code\": \"44\",\"country_code\": \"GB\",\"phone_number\": \"+447772000001\",\"national_format\": \"07772 000001\",\"valid\": true,\"validation_errors\": null,\"caller_name\": null,\"sim_swap\": null,\"call_forwarding\": {\"call_forwarding_status\": \"true\",\"carrier_name\": \"Vodafone UK\",\"mobile_country_code\": \"276\",\"mobile_network_code\": \"02\",\"error_code\": null},\"live_activity\": null,\"enhanced_line_type\": null,\"line_type_intelligence\": null,\"url\": \"https://lookups.twilio.com/v2/PhoneNumbers/+447772000001\"}"
+                                         "{\"calling_country_code\": \"44\",\"country_code\": \"GB\",\"phone_number\": \"+447772000001\",\"national_format\": \"07772 000001\",\"valid\": true,\"validation_errors\": null,\"caller_name\": null,\"sim_swap\": null,\"call_forwarding\": {\"call_forwarding_status\": \"true\",\"carrier_name\": \"Vodafone UK\",\"mobile_country_code\": \"276\",\"mobile_network_code\": \"02\",\"error_code\": null},\"live_activity\": null,\"line_type_intelligence\": null,\"url\": \"https://lookups.twilio.com/v2/PhoneNumbers/+447772000001\"}"
                                      ));
 
             var response = PhoneNumberResource.Fetch("phone_number", client: twilioRestClient);
@@ -154,7 +154,7 @@ namespace Twilio.Tests.Rest.Lookups.V2
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"calling_country_code\": \"44\",\"country_code\": \"GB\",\"phone_number\": \"+447772000001\",\"national_format\": \"07772 000001\",\"valid\": true,\"validation_errors\": null,\"caller_name\": null,\"sim_swap\": {\"last_sim_swap\": {\"last_sim_swap_date\": \"2020-11-05T20:52:09.322Z\",\"swapped_period\": \"PT24H\",\"swapped_in_period\": true},\"carrier_name\": \"Vodafone UK\",\"mobile_country_code\": \"276\",\"mobile_network_code\": \"02\",\"error_code\": null},\"call_forwarding\": {\"call_forwarding_status\": \"true\",\"carrier_name\": \"Vodafone UK\",\"mobile_country_code\": \"276\",\"mobile_network_code\": \"02\",\"error_code\": null},\"live_activity\": null,\"enhanced_line_type\": null,\"line_type_intelligence\": null,\"url\": \"https://lookups.twilio.com/v2/PhoneNumbers/+447772000001\"}"
+                                         "{\"calling_country_code\": \"44\",\"country_code\": \"GB\",\"phone_number\": \"+447772000001\",\"national_format\": \"07772 000001\",\"valid\": true,\"validation_errors\": null,\"caller_name\": null,\"sim_swap\": {\"last_sim_swap\": {\"last_sim_swap_date\": \"2020-11-05T20:52:09.322Z\",\"swapped_period\": \"PT24H\",\"swapped_in_period\": true},\"carrier_name\": \"Vodafone UK\",\"mobile_country_code\": \"276\",\"mobile_network_code\": \"02\",\"error_code\": null},\"call_forwarding\": {\"call_forwarding_status\": \"true\",\"carrier_name\": \"Vodafone UK\",\"mobile_country_code\": \"276\",\"mobile_network_code\": \"02\",\"error_code\": null},\"live_activity\": null,\"line_type_intelligence\": null,\"url\": \"https://lookups.twilio.com/v2/PhoneNumbers/+447772000001\"}"
                                      ));
 
             var response = PhoneNumberResource.Fetch("phone_number", client: twilioRestClient);
@@ -169,7 +169,7 @@ namespace Twilio.Tests.Rest.Lookups.V2
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"calling_country_code\": \"44\",\"country_code\": \"GB\",\"phone_number\": \"+447772000001\",\"national_format\": \"07772 000001\",\"valid\": true,\"validation_errors\": null,\"caller_name\": null,\"sim_swap\": null,\"call_forwarding\": null,\"live_activity\": {\"connectivity\": \"connected\",\"original_carrier\": {\"name\": \"Vodafone\",\"mobile_country_code\": \"234\",\"mobile_network_code\": \"15\"},\"ported\": \"false\",\"ported_carrier\": null,\"roaming\": \"false\",\"roaming_carrier\": null,\"error_code\": null},\"enhanced_line_type\": null,\"line_type_intelligence\": null,\"url\": \"https://lookups.twilio.com/v2/PhoneNumbers/+447772000001\"}"
+                                         "{\"calling_country_code\": \"44\",\"country_code\": \"GB\",\"phone_number\": \"+447772000001\",\"national_format\": \"07772 000001\",\"valid\": true,\"validation_errors\": null,\"caller_name\": null,\"sim_swap\": null,\"call_forwarding\": null,\"live_activity\": {\"connectivity\": \"connected\",\"original_carrier\": {\"name\": \"Vodafone\",\"mobile_country_code\": \"234\",\"mobile_network_code\": \"15\"},\"ported\": \"false\",\"ported_carrier\": null,\"roaming\": \"false\",\"roaming_carrier\": null,\"error_code\": null},\"line_type_intelligence\": null,\"url\": \"https://lookups.twilio.com/v2/PhoneNumbers/+447772000001\"}"
                                      ));
 
             var response = PhoneNumberResource.Fetch("phone_number", client: twilioRestClient);
@@ -184,7 +184,7 @@ namespace Twilio.Tests.Rest.Lookups.V2
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"calling_country_code\": \"44\",\"country_code\": \"GB\",\"phone_number\": \"+447772000001\",\"national_format\": \"07772 000001\",\"valid\": true,\"validation_errors\": null,\"caller_name\": null,\"sim_swap\": null,\"call_forwarding\": null,\"live_activity\": {\"connectivity\": \"connected\",\"original_carrier\": {\"name\": \"Vodafone\",\"mobile_country_code\": \"234\",\"mobile_network_code\": \"15\"},\"ported\": \"true\",\"ported_carrier\": {\"name\": \"Orange\",\"mobile_country_code\": \"266\",\"mobile_network_code\": \"10\"},\"roaming\": \"false\",\"roaming_carrier\": null,\"error_code\": null},\"enhanced_line_type\": null,\"line_type_intelligence\": null,\"url\": \"https://lookups.twilio.com/v2/PhoneNumbers/+447772000001\"}"
+                                         "{\"calling_country_code\": \"44\",\"country_code\": \"GB\",\"phone_number\": \"+447772000001\",\"national_format\": \"07772 000001\",\"valid\": true,\"validation_errors\": null,\"caller_name\": null,\"sim_swap\": null,\"call_forwarding\": null,\"live_activity\": {\"connectivity\": \"connected\",\"original_carrier\": {\"name\": \"Vodafone\",\"mobile_country_code\": \"234\",\"mobile_network_code\": \"15\"},\"ported\": \"true\",\"ported_carrier\": {\"name\": \"Orange\",\"mobile_country_code\": \"266\",\"mobile_network_code\": \"10\"},\"roaming\": \"false\",\"roaming_carrier\": null,\"error_code\": null},\"line_type_intelligence\": null,\"url\": \"https://lookups.twilio.com/v2/PhoneNumbers/+447772000001\"}"
                                      ));
 
             var response = PhoneNumberResource.Fetch("phone_number", client: twilioRestClient);
@@ -199,22 +199,7 @@ namespace Twilio.Tests.Rest.Lookups.V2
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"calling_country_code\": \"44\",\"country_code\": \"GB\",\"phone_number\": \"+447772000001\",\"national_format\": \"07772 000001\",\"valid\": true,\"validation_errors\": null,\"caller_name\": null,\"sim_swap\": null,\"call_forwarding\": null,\"live_activity\": {\"connectivity\": \"connected\",\"original_carrier\": {\"name\": \"Vodafone\",\"mobile_country_code\": \"234\",\"mobile_network_code\": \"15\"},\"ported\": \"false\",\"ported_carrier\": null,\"roaming\": \"true\",\"roaming_carrier\": {\"name\": \"Orange\",\"mobile_country_code\": \"266\",\"mobile_network_code\": \"10\",\"country_code\": \"RO\"},\"error_code\": null},\"enhanced_line_type\": null,\"line_type_intelligence\": null,\"url\": \"https://lookups.twilio.com/v2/PhoneNumbers/+447772000001\"}"
-                                     ));
-
-            var response = PhoneNumberResource.Fetch("phone_number", client: twilioRestClient);
-            Assert.NotNull(response);
-        }
-
-        [Test]
-        public void TestFetchEnhancedLineTypeResponse()
-        {
-            var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-            twilioRestClient.Request(Arg.Any<Request>())
-                            .Returns(new Response(
-                                         System.Net.HttpStatusCode.OK,
-                                         "{\"calling_country_code\": \"1\",\"country_code\": \"US\",\"phone_number\": \"+14159929960\",\"national_format\": \"(415) 992-9960\",\"valid\": true,\"validation_errors\": null,\"caller_name\": null,\"sim_swap\": null,\"call_forwarding\": null,\"live_activity\": null,\"enhanced_line_type\": {\"error_code\": null,\"mobile_country_code\": \"240\",\"mobile_network_code\": \"38\",\"carrier_name\": \"Twilio - SMS/MMS-SVR\",\"type\": \"nonFixedVoip\"},\"line_type_intelligence\": {\"error_code\": null,\"mobile_country_code\": \"240\",\"mobile_network_code\": \"38\",\"carrier_name\": \"Twilio - SMS/MMS-SVR\",\"type\": \"nonFixedVoip\"},\"url\": \"https://lookups.twilio.com/v2/PhoneNumbers/+14159929960\"}"
+                                         "{\"calling_country_code\": \"44\",\"country_code\": \"GB\",\"phone_number\": \"+447772000001\",\"national_format\": \"07772 000001\",\"valid\": true,\"validation_errors\": null,\"caller_name\": null,\"sim_swap\": null,\"call_forwarding\": null,\"live_activity\": {\"connectivity\": \"connected\",\"original_carrier\": {\"name\": \"Vodafone\",\"mobile_country_code\": \"234\",\"mobile_network_code\": \"15\"},\"ported\": \"false\",\"ported_carrier\": null,\"roaming\": \"true\",\"roaming_carrier\": {\"name\": \"Orange\",\"mobile_country_code\": \"266\",\"mobile_network_code\": \"10\",\"country_code\": \"RO\"},\"error_code\": null},\"line_type_intelligence\": null,\"url\": \"https://lookups.twilio.com/v2/PhoneNumbers/+447772000001\"}"
                                      ));
 
             var response = PhoneNumberResource.Fetch("phone_number", client: twilioRestClient);
@@ -229,7 +214,7 @@ namespace Twilio.Tests.Rest.Lookups.V2
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"calling_country_code\": \"1\",\"country_code\": \"US\",\"phone_number\": \"+14159929960\",\"national_format\": \"(415) 992-9960\",\"valid\": true,\"validation_errors\": null,\"caller_name\": null,\"sim_swap\": null,\"call_forwarding\": null,\"live_activity\": null,\"enhanced_line_type\": {\"error_code\": null,\"mobile_country_code\": \"240\",\"mobile_network_code\": \"38\",\"carrier_name\": \"Twilio - SMS/MMS-SVR\",\"type\": \"nonFixedVoip\"},\"line_type_intelligence\": {\"error_code\": null,\"mobile_country_code\": \"240\",\"mobile_network_code\": \"38\",\"carrier_name\": \"Twilio - SMS/MMS-SVR\",\"type\": \"nonFixedVoip\"},\"url\": \"https://lookups.twilio.com/v2/PhoneNumbers/+14159929960\"}"
+                                         "{\"calling_country_code\": \"1\",\"country_code\": \"US\",\"phone_number\": \"+14159929960\",\"national_format\": \"(415) 992-9960\",\"valid\": true,\"validation_errors\": null,\"caller_name\": null,\"sim_swap\": null,\"call_forwarding\": null,\"live_activity\": null,\"line_type_intelligence\": {\"error_code\": null,\"mobile_country_code\": \"240\",\"mobile_network_code\": \"38\",\"carrier_name\": \"Twilio - SMS/MMS-SVR\",\"type\": \"nonFixedVoip\"},\"url\": \"https://lookups.twilio.com/v2/PhoneNumbers/+14159929960\"}"
                                      ));
 
             var response = PhoneNumberResource.Fetch("phone_number", client: twilioRestClient);

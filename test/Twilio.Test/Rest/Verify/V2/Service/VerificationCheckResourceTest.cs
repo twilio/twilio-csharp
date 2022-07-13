@@ -30,12 +30,11 @@ namespace Twilio.Tests.Rest.Verify.V2.Service
                 "/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/VerificationCheck",
                 ""
             );
-            request.AddPostParam("Code", Serialize("code"));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                VerificationCheckResource.Create("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "code", client: twilioRestClient);
+                VerificationCheckResource.Create("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -53,7 +52,7 @@ namespace Twilio.Tests.Rest.Verify.V2.Service
                                          "{\"sid\": \"VEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"to\": \"+15017122661\",\"channel\": \"sms\",\"status\": \"approved\",\"valid\": true,\"amount\": null,\"payee\": null,\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\"}"
                                      ));
 
-            var response = VerificationCheckResource.Create("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "code", client: twilioRestClient);
+            var response = VerificationCheckResource.Create("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
             Assert.NotNull(response);
         }
 
@@ -68,7 +67,22 @@ namespace Twilio.Tests.Rest.Verify.V2.Service
                                          "{\"sid\": \"VEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"to\": \"recipient@foo.com\",\"channel\": \"email\",\"status\": \"approved\",\"valid\": true,\"amount\": null,\"payee\": null,\"date_created\": \"2020-01-30T20:00:00Z\",\"date_updated\": \"2020-01-30T20:00:00Z\"}"
                                      ));
 
-            var response = VerificationCheckResource.Create("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "code", client: twilioRestClient);
+            var response = VerificationCheckResource.Create("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
+            Assert.NotNull(response);
+        }
+
+        [Test]
+        public void TestSnaVerificationChecksResponse()
+        {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+            twilioRestClient.Request(Arg.Any<Request>())
+                            .Returns(new Response(
+                                         System.Net.HttpStatusCode.Created,
+                                         "{\"sid\": \"VEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"to\": \"+15017122661\",\"channel\": \"sna\",\"status\": \"approved\",\"valid\": true,\"amount\": null,\"payee\": null,\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\"}"
+                                     ));
+
+            var response = VerificationCheckResource.Create("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

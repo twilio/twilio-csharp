@@ -21,10 +21,6 @@ namespace Twilio.Rest.Verify.V2.Service
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The verification string
-        /// </summary>
-        public string Code { get; }
-        /// <summary>
         /// The phone number or email to verify
         /// </summary>
         public string To { get; set; }
@@ -40,16 +36,18 @@ namespace Twilio.Rest.Verify.V2.Service
         /// The payee of the associated PSD2 compliant transaction
         /// </summary>
         public string Payee { get; set; }
+        /// <summary>
+        /// The verification string
+        /// </summary>
+        public string Code { get; set; }
 
         /// <summary>
         /// Construct a new CreateVerificationCheckOptions
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the verification Service to create the resource under </param>
-        /// <param name="code"> The verification string </param>
-        public CreateVerificationCheckOptions(string pathServiceSid, string code)
+        public CreateVerificationCheckOptions(string pathServiceSid)
         {
             PathServiceSid = pathServiceSid;
-            Code = code;
         }
 
         /// <summary>
@@ -58,11 +56,6 @@ namespace Twilio.Rest.Verify.V2.Service
         public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
-            if (Code != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Code", Code));
-            }
-
             if (To != null)
             {
                 p.Add(new KeyValuePair<string, string>("To", To));
@@ -81,6 +74,11 @@ namespace Twilio.Rest.Verify.V2.Service
             if (Payee != null)
             {
                 p.Add(new KeyValuePair<string, string>("Payee", Payee));
+            }
+
+            if (Code != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Code", Code));
             }
 
             return p;

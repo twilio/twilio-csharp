@@ -203,11 +203,6 @@ namespace Twilio.Rest.Lookups.V2
         /// <summary>
         /// An object that contains line type information
         /// </summary>
-        [JsonProperty("enhanced_line_type")]
-        public object EnhancedLineType { get; private set; }
-        /// <summary>
-        /// An object that contains line type information
-        /// </summary>
         [JsonProperty("line_type_intelligence")]
         public object LineTypeIntelligence { get; private set; }
         /// <summary>
