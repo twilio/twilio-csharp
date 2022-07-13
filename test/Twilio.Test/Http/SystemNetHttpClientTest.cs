@@ -239,7 +239,7 @@ namespace Twilio.Tests.Http
             Assert.AreEqual("utf-8", internalRequest.Headers.AcceptEncoding.ToString());
 
             Assert.IsNotNull(internalRequest.Headers.UserAgent);
-            Regex rgx = new Regex(@"^twilio-csharp/[0-9.]+(-rc\.[0-9]+)?\s\(\w+\s\w+\)\s[.\s\w]+/[^\s]+$");
+            Regex rgx = new Regex(@"^twilio-csharp/[0-9.]+(-rc\.[0-9])?\s\(\w+\s\w+\)\s[.\s\w]+/[^\s]+$");
             Assert.IsTrue(rgx.IsMatch(internalRequest.Headers.UserAgent.ToString()));
         }
 
