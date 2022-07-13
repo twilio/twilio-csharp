@@ -1,6 +1,28 @@
 twilio-csharp Changelog
 =======================
 
+[2022-07-13] Version 5.77.0
+---------------------------
+**Library - Chore**
+- [PR #618](https://github.com/twilio/twilio-csharp/pull/618): bump Newtonsoft.Json from 10.0.1 to 13.0.1. Thanks to [@dependabot](https://github.com/dependabot)!
+
+**Library - Test**
+- [PR #619](https://github.com/twilio/twilio-csharp/pull/619): Adding misc as PR type. Thanks to [@rakatyal](https://github.com/rakatyal)!
+
+**Conversations**
+- Allowed to use `identity` as part of Participant's resource **(breaking change)**
+
+**Lookups**
+- Remove `enhanced_line_type` from the lookup response **(breaking change)**
+
+**Supersim**
+- Add support for `sim_ip_addresses` resource to helper libraries
+
+**Verify**
+- Changed summary param `service_sid` to `verify_service_sid` to be consistent with list attempts API **(breaking change)**
+- Make `code` optional on Verification check to support `sna` attempts.
+
+
 [2022-06-29] Version 5.76.0
 ---------------------------
 **Library - Fix**
