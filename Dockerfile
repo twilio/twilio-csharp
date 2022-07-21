@@ -2,6 +2,11 @@ FROM ubuntu:16.04
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
+        apt-transport-https \
+        curl \
+        ca-certificates \
+        dirmngr \
+        gnupg \
         libc6 \
         libcurl3 \
         libgcc1 \
@@ -12,27 +17,26 @@ RUN apt-get update \
         libstdc++6 \
         libunwind8 \
         libuuid1 \
+        make \
+        software-properties-common \
+        wget \
         zlib1g \
-        curl \
-        ca-certificates \
+    && apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF \
+    && apt-add-repository 'deb https://download.mono-project.com/repo/ubuntu stable-xenial main' \
+    && wget https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb \
+    && dpkg -i packages-microsoft-prod.deb  \
+    && apt-get update \
+    && apt-get install -y \
+        dotnet-sdk-3.1 \
+        dotnet-sdk-6.0 \
+        mono-complete \
     && rm -rf /var/lib/apt/lists/*
 
-ENV DOTNET_SDK_VERSION 2.1.4
-ENV DOTNET_SDK_DOWNLOAD_URL https://dotnetcli.blob.core.windows.net/dotnet/Sdk/$DOTNET_SDK_VERSION/dotnet-sdk-$DOTNET_SDK_VERSION-linux-x64.tar.gz
-ENV DOTNET_SDK_DOWNLOAD_SHA 05FE90457A8B77AD5A5EB2F22348F53E962012A55077AC4AD144B279F6CAD69740E57F165820BFD6104E88B30E93684BDE3E858F781541D4F110F28CD52CE2B7
-
-RUN curl -SL $DOTNET_SDK_DOWNLOAD_URL --output dotnet.tar.gz \
-    && echo "$DOTNET_SDK_DOWNLOAD_SHA dotnet.tar.gz" | sha512sum -c - \
-    && mkdir -p /usr/share/dotnet \
-    && tar -zxf dotnet.tar.gz -C /usr/share/dotnet \
-    && ln -s /usr/share/dotnet/dotnet /usr/bin/dotnet \
-    && rm dotnet.tar.gz
-
-RUN mkdir /twilio
 WORKDIR /twilio
 
 COPY src ./src
 COPY test ./test
 COPY Twilio.sln .
+COPY Makefile .
 
 RUN dotnet restore

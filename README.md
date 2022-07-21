@@ -135,7 +135,25 @@ To use a custom HTTP client with this helper library, please see the [Twilio doc
 
 ## Docker Image
 
-The `Dockerfile` present in this repository and its respective `twilio/twilio-csharp` Docker image are currently used by Twilio for testing purposes only.
+The `Dockerfile` present in this repository and its respective `twilio/twilio-csharp` Docker image are used by Twilio for testing purposes.
+
+You could use the docker image for building and running tests:
+```bash
+docker build -t twiliobuild .
+```
+
+Bash:
+```bash
+docker run -it --rm -v $(pwd):/twilio twiliobuild
+make test
+```
+
+Powershell:
+```pwsh
+docker run -it --rm -v ${PWD}:/twilio twiliobuild
+make test
+```
+
 
 ## Getting help
 
