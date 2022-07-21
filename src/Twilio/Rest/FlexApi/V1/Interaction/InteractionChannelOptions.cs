@@ -81,7 +81,7 @@ namespace Twilio.Rest.FlexApi.V1.Interaction
     }
 
     /// <summary>
-    /// Update an existing Interaction.
+    /// Update an existing Interaction Channel.
     /// </summary>
     public class UpdateInteractionChannelOptions : IOptions<InteractionChannelResource>
     {

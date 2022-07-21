@@ -82,22 +82,22 @@ namespace Twilio.Rest.Verify.V2.Service
         /// challenge a specific Verification Check.
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the verification Service to create the resource under </param>
+        /// <param name="code"> The verification string </param>
         /// <param name="to"> The phone number or email to verify </param>
         /// <param name="verificationSid"> A SID that uniquely identifies the Verification Check </param>
         /// <param name="amount"> The amount of the associated PSD2 compliant transaction. </param>
         /// <param name="payee"> The payee of the associated PSD2 compliant transaction </param>
-        /// <param name="code"> The verification string </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of VerificationCheck </returns>
         public static VerificationCheckResource Create(string pathServiceSid,
+                                                       string code = null,
                                                        string to = null,
                                                        string verificationSid = null,
                                                        string amount = null,
                                                        string payee = null,
-                                                       string code = null,
                                                        ITwilioRestClient client = null)
         {
-            var options = new CreateVerificationCheckOptions(pathServiceSid){To = to, VerificationSid = verificationSid, Amount = amount, Payee = payee, Code = code};
+            var options = new CreateVerificationCheckOptions(pathServiceSid){Code = code, To = to, VerificationSid = verificationSid, Amount = amount, Payee = payee};
             return Create(options, client);
         }
 
@@ -106,22 +106,22 @@ namespace Twilio.Rest.Verify.V2.Service
         /// challenge a specific Verification Check.
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the verification Service to create the resource under </param>
+        /// <param name="code"> The verification string </param>
         /// <param name="to"> The phone number or email to verify </param>
         /// <param name="verificationSid"> A SID that uniquely identifies the Verification Check </param>
         /// <param name="amount"> The amount of the associated PSD2 compliant transaction. </param>
         /// <param name="payee"> The payee of the associated PSD2 compliant transaction </param>
-        /// <param name="code"> The verification string </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of VerificationCheck </returns>
         public static async System.Threading.Tasks.Task<VerificationCheckResource> CreateAsync(string pathServiceSid,
+                                                                                               string code = null,
                                                                                                string to = null,
                                                                                                string verificationSid = null,
                                                                                                string amount = null,
                                                                                                string payee = null,
-                                                                                               string code = null,
                                                                                                ITwilioRestClient client = null)
         {
-            var options = new CreateVerificationCheckOptions(pathServiceSid){To = to, VerificationSid = verificationSid, Amount = amount, Payee = payee, Code = code};
+            var options = new CreateVerificationCheckOptions(pathServiceSid){Code = code, To = to, VerificationSid = verificationSid, Amount = amount, Payee = payee};
             return await CreateAsync(options, client);
         }
         #endif
@@ -200,6 +200,11 @@ namespace Twilio.Rest.Verify.V2.Service
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
+        /// <summary>
+        /// List of error codes as a result of attempting a verification using the `sna` channel.
+        /// </summary>
+        [JsonProperty("sna_attempts_error_codes")]
+        public List<object> SnaAttemptsErrorCodes { get; private set; }
 
         private VerificationCheckResource()
         {

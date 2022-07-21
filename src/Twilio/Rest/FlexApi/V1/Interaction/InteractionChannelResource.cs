@@ -50,6 +50,23 @@ namespace Twilio.Rest.FlexApi.V1.Interaction
             public static readonly TypeEnum Web = new TypeEnum("web");
             public static readonly TypeEnum Whatsapp = new TypeEnum("whatsapp");
             public static readonly TypeEnum Chat = new TypeEnum("chat");
+            public static readonly TypeEnum Messenger = new TypeEnum("messenger");
+            public static readonly TypeEnum Gbm = new TypeEnum("gbm");
+        }
+
+        public sealed class ChannelStatusEnum : StringEnum
+        {
+            private ChannelStatusEnum(string value) : base(value) {}
+            public ChannelStatusEnum() {}
+            public static implicit operator ChannelStatusEnum(string value)
+            {
+                return new ChannelStatusEnum(value);
+            }
+
+            public static readonly ChannelStatusEnum Setup = new ChannelStatusEnum("setup");
+            public static readonly ChannelStatusEnum Active = new ChannelStatusEnum("active");
+            public static readonly ChannelStatusEnum Failed = new ChannelStatusEnum("failed");
+            public static readonly ChannelStatusEnum Closed = new ChannelStatusEnum("closed");
         }
 
         private static Request BuildFetchRequest(FetchInteractionChannelOptions options, ITwilioRestClient client)
@@ -273,7 +290,7 @@ namespace Twilio.Rest.FlexApi.V1.Interaction
         }
 
         /// <summary>
-        /// Update an existing Interaction.
+        /// Update an existing Interaction Channel.
         /// </summary>
         /// <param name="options"> Update InteractionChannel parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -288,7 +305,7 @@ namespace Twilio.Rest.FlexApi.V1.Interaction
 
         #if !NET35
         /// <summary>
-        /// Update an existing Interaction.
+        /// Update an existing Interaction Channel.
         /// </summary>
         /// <param name="options"> Update InteractionChannel parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -303,7 +320,7 @@ namespace Twilio.Rest.FlexApi.V1.Interaction
         #endif
 
         /// <summary>
-        /// Update an existing Interaction.
+        /// Update an existing Interaction Channel.
         /// </summary>
         /// <param name="pathInteractionSid"> The unique string that identifies the resource </param>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
@@ -323,7 +340,7 @@ namespace Twilio.Rest.FlexApi.V1.Interaction
 
         #if !NET35
         /// <summary>
-        /// Update an existing Interaction.
+        /// Update an existing Interaction Channel.
         /// </summary>
         /// <param name="pathInteractionSid"> The unique string that identifies the resource </param>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
@@ -366,7 +383,7 @@ namespace Twilio.Rest.FlexApi.V1.Interaction
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The unique string that identifies the resource
+        /// The unique string that identifies the resource.
         /// </summary>
         [JsonProperty("interaction_sid")]
         public string InteractionSid { get; private set; }
@@ -376,6 +393,22 @@ namespace Twilio.Rest.FlexApi.V1.Interaction
         [JsonProperty("type")]
         [JsonConverter(typeof(StringEnumConverter))]
         public InteractionChannelResource.TypeEnum Type { get; private set; }
+        /// <summary>
+        /// The status of this channel.
+        /// </summary>
+        [JsonProperty("status")]
+        [JsonConverter(typeof(StringEnumConverter))]
+        public InteractionChannelResource.ChannelStatusEnum Status { get; private set; }
+        /// <summary>
+        /// The Twilio error code for a failed channel.
+        /// </summary>
+        [JsonProperty("error_code")]
+        public int? ErrorCode { get; private set; }
+        /// <summary>
+        /// The error message for a failed channel.
+        /// </summary>
+        [JsonProperty("error_message")]
+        public string ErrorMessage { get; private set; }
         /// <summary>
         /// The url
         /// </summary>
