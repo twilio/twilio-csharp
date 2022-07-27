@@ -18,7 +18,7 @@ docs:
 	doxygen Doxyfile
 
 API_DEFINITIONS_SHA=$(shell git log --oneline | grep Regenerated | head -n1 | cut -d ' ' -f 5)
-CURRENT_TAG=$(shell [[ "${GITHUB_TAG}" == *"-rc"* ]] && echo "rc" || echo "latest")
+CURRENT_TAG=$(shell expr "${GITHUB_TAG}" : ".*-rc.*" >/dev/null && echo "rc" || echo "latest")
 docker-build:
 	docker build -t twilio/twilio-csharp .
 	docker tag twilio/twilio-csharp twilio/twilio-csharp:${GITHUB_TAG}
