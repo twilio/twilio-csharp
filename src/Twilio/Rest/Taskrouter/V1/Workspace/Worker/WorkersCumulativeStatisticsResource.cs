@@ -142,7 +142,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// The minimum, average, maximum, and total time that Workers spent in each Activity
         /// </summary>
         [JsonProperty("activity_durations")]
-        public List<object> ActivityDurations { get; private set; }
+        public List<ActivityDuration> ActivityDurations { get; private set; }
         /// <summary>
         /// The total number of Reservations that were created
         /// </summary>
@@ -183,6 +183,23 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
+
+
+        public class ActivityDuration
+        {
+            [JsonProperty("avg")]
+            public int Avg { get; set; }
+            [JsonProperty("min")]
+            public int Min { get; set; }
+            [JsonProperty("max")]
+            public int Max { get; set; }
+            [JsonProperty("friendly_name")]
+            public string FriendlyName { get; set; }
+            [JsonProperty("sid")]
+            public string Sid { get; set; }
+            [JsonProperty("total")]
+            public int Total { get; set; }
+        }
 
         private WorkersCumulativeStatisticsResource()
         {
