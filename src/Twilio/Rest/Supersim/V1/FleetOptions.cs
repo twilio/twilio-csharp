@@ -31,7 +31,7 @@ namespace Twilio.Rest.Supersim.V1
         /// </summary>
         public bool? DataEnabled { get; set; }
         /// <summary>
-        /// The total data usage (download and upload combined) in Megabytes that each Sim resource assigned to the Fleet resource can consume
+        /// The total data usage (download and upload combined) in Megabytes that each Super SIM resource assigned to the Fleet can consume
         /// </summary>
         public int? DataLimit { get; set; }
         /// <summary>
@@ -217,6 +217,10 @@ namespace Twilio.Rest.Supersim.V1
         /// A string representing the HTTP method to use when making a request to `sms_commands_url`
         /// </summary>
         public Twilio.Http.HttpMethod SmsCommandsMethod { get; set; }
+        /// <summary>
+        /// The total data usage (download and upload combined) in Megabytes that each Super SIM assigned to the Fleet can consume
+        /// </summary>
+        public int? DataLimit { get; set; }
 
         /// <summary>
         /// Construct a new UpdateFleetOptions
@@ -261,6 +265,11 @@ namespace Twilio.Rest.Supersim.V1
             if (SmsCommandsMethod != null)
             {
                 p.Add(new KeyValuePair<string, string>("SmsCommandsMethod", SmsCommandsMethod.ToString()));
+            }
+
+            if (DataLimit != null)
+            {
+                p.Add(new KeyValuePair<string, string>("DataLimit", DataLimit.ToString()));
             }
 
             return p;
