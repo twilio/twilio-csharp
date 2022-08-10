@@ -13,8 +13,7 @@ test:
 
 test-docker:
 	docker build -t twilio/twilio-csharp .
-	dotnet build -c Release
-	dotnet test -c Release
+	docker run twilio/twilio-csharp /bin/bash -c "dotnet build -c Release; dotnet test -c Release"
 
 release:
 	dotnet pack -c Release
