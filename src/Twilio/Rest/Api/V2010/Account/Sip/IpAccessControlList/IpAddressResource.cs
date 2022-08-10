@@ -204,7 +204,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         /// </summary>
         /// <param name="pathIpAccessControlListSid"> The IpAccessControlList Sid with which to associate the created IpAddress
         ///                                  resource </param>
-        /// <param name="friendlyName"> A human readable descriptive text for this resource, up to 64 characters long. </param>
+        /// <param name="friendlyName"> A human readable descriptive text for this resource, up to 255 characters long. </param>
         /// <param name="ipAddress"> An IP address in dotted decimal notation from which you want to accept traffic. Any SIP
         ///                 requests from this IP address will be allowed by Twilio. IPv4 only supported today. </param>
         /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
@@ -229,7 +229,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         /// </summary>
         /// <param name="pathIpAccessControlListSid"> The IpAccessControlList Sid with which to associate the created IpAddress
         ///                                  resource </param>
-        /// <param name="friendlyName"> A human readable descriptive text for this resource, up to 64 characters long. </param>
+        /// <param name="friendlyName"> A human readable descriptive text for this resource, up to 255 characters long. </param>
         /// <param name="ipAddress"> An IP address in dotted decimal notation from which you want to accept traffic. Any SIP
         ///                 requests from this IP address will be allowed by Twilio. IPv4 only supported today. </param>
         /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
@@ -376,7 +376,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
         /// <param name="ipAddress"> An IP address in dotted decimal notation from which you want to accept traffic. Any SIP
         ///                 requests from this IP address will be allowed by Twilio. IPv4 only supported today. </param>
-        /// <param name="friendlyName"> A human readable descriptive text for this resource, up to 64 characters long. </param>
+        /// <param name="friendlyName"> A human readable descriptive text for this resource, up to 255 characters long. </param>
         /// <param name="cidrPrefixLength"> An integer representing the length of the CIDR prefix to use with this IP address
         ///                        when accepting traffic. By default the entire IP address is used. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -403,7 +403,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
         /// <param name="ipAddress"> An IP address in dotted decimal notation from which you want to accept traffic. Any SIP
         ///                 requests from this IP address will be allowed by Twilio. IPv4 only supported today. </param>
-        /// <param name="friendlyName"> A human readable descriptive text for this resource, up to 64 characters long. </param>
+        /// <param name="friendlyName"> A human readable descriptive text for this resource, up to 255 characters long. </param>
         /// <param name="cidrPrefixLength"> An integer representing the length of the CIDR prefix to use with this IP address
         ///                        when accepting traffic. By default the entire IP address is used. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -528,7 +528,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// A human readable descriptive text for this resource, up to 64 characters long.
+        /// A human readable descriptive text for this resource, up to 255 characters long.
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }

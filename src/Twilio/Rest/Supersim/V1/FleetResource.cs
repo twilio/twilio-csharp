@@ -81,8 +81,8 @@ namespace Twilio.Rest.Supersim.V1
         /// <param name="networkAccessProfile"> The SID or unique name of the Network Access Profile of the Fleet </param>
         /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
         /// <param name="dataEnabled"> Defines whether SIMs in the Fleet are capable of using data connectivity </param>
-        /// <param name="dataLimit"> The total data usage (download and upload combined) in Megabytes that each Sim resource
-        ///                 assigned to the Fleet resource can consume </param>
+        /// <param name="dataLimit"> The total data usage (download and upload combined) in Megabytes that each Super SIM
+        ///                 resource assigned to the Fleet can consume </param>
         /// <param name="ipCommandsUrl"> The URL that will receive a webhook when a Super SIM in the Fleet is used to send an
         ///                     IP Command from your device </param>
         /// <param name="ipCommandsMethod"> A string representing the HTTP method to use when making a request to
@@ -117,8 +117,8 @@ namespace Twilio.Rest.Supersim.V1
         /// <param name="networkAccessProfile"> The SID or unique name of the Network Access Profile of the Fleet </param>
         /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
         /// <param name="dataEnabled"> Defines whether SIMs in the Fleet are capable of using data connectivity </param>
-        /// <param name="dataLimit"> The total data usage (download and upload combined) in Megabytes that each Sim resource
-        ///                 assigned to the Fleet resource can consume </param>
+        /// <param name="dataLimit"> The total data usage (download and upload combined) in Megabytes that each Super SIM
+        ///                 resource assigned to the Fleet can consume </param>
         /// <param name="ipCommandsUrl"> The URL that will receive a webhook when a Super SIM in the Fleet is used to send an
         ///                     IP Command from your device </param>
         /// <param name="ipCommandsMethod"> A string representing the HTTP method to use when making a request to
@@ -401,6 +401,8 @@ namespace Twilio.Rest.Supersim.V1
         ///                      SMS from your device to the SMS Commands number </param>
         /// <param name="smsCommandsMethod"> A string representing the HTTP method to use when making a request to
         ///                         `sms_commands_url` </param>
+        /// <param name="dataLimit"> The total data usage (download and upload combined) in Megabytes that each Super SIM
+        ///                 assigned to the Fleet can consume </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Fleet </returns>
         public static FleetResource Update(string pathSid,
@@ -410,9 +412,10 @@ namespace Twilio.Rest.Supersim.V1
                                            Twilio.Http.HttpMethod ipCommandsMethod = null,
                                            Uri smsCommandsUrl = null,
                                            Twilio.Http.HttpMethod smsCommandsMethod = null,
+                                           int? dataLimit = null,
                                            ITwilioRestClient client = null)
         {
-            var options = new UpdateFleetOptions(pathSid){UniqueName = uniqueName, NetworkAccessProfile = networkAccessProfile, IpCommandsUrl = ipCommandsUrl, IpCommandsMethod = ipCommandsMethod, SmsCommandsUrl = smsCommandsUrl, SmsCommandsMethod = smsCommandsMethod};
+            var options = new UpdateFleetOptions(pathSid){UniqueName = uniqueName, NetworkAccessProfile = networkAccessProfile, IpCommandsUrl = ipCommandsUrl, IpCommandsMethod = ipCommandsMethod, SmsCommandsUrl = smsCommandsUrl, SmsCommandsMethod = smsCommandsMethod, DataLimit = dataLimit};
             return Update(options, client);
         }
 
@@ -431,6 +434,8 @@ namespace Twilio.Rest.Supersim.V1
         ///                      SMS from your device to the SMS Commands number </param>
         /// <param name="smsCommandsMethod"> A string representing the HTTP method to use when making a request to
         ///                         `sms_commands_url` </param>
+        /// <param name="dataLimit"> The total data usage (download and upload combined) in Megabytes that each Super SIM
+        ///                 assigned to the Fleet can consume </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Fleet </returns>
         public static async System.Threading.Tasks.Task<FleetResource> UpdateAsync(string pathSid,
@@ -440,9 +445,10 @@ namespace Twilio.Rest.Supersim.V1
                                                                                    Twilio.Http.HttpMethod ipCommandsMethod = null,
                                                                                    Uri smsCommandsUrl = null,
                                                                                    Twilio.Http.HttpMethod smsCommandsMethod = null,
+                                                                                   int? dataLimit = null,
                                                                                    ITwilioRestClient client = null)
         {
-            var options = new UpdateFleetOptions(pathSid){UniqueName = uniqueName, NetworkAccessProfile = networkAccessProfile, IpCommandsUrl = ipCommandsUrl, IpCommandsMethod = ipCommandsMethod, SmsCommandsUrl = smsCommandsUrl, SmsCommandsMethod = smsCommandsMethod};
+            var options = new UpdateFleetOptions(pathSid){UniqueName = uniqueName, NetworkAccessProfile = networkAccessProfile, IpCommandsUrl = ipCommandsUrl, IpCommandsMethod = ipCommandsMethod, SmsCommandsUrl = smsCommandsUrl, SmsCommandsMethod = smsCommandsMethod, DataLimit = dataLimit};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -501,7 +507,7 @@ namespace Twilio.Rest.Supersim.V1
         [JsonProperty("data_enabled")]
         public bool? DataEnabled { get; private set; }
         /// <summary>
-        /// The total data usage (download and upload combined) in Megabytes that each Sim resource assigned to the Fleet resource can consume
+        /// The total data usage (download and upload combined) in Megabytes that each Super SIM assigned to the Fleet can consume
         /// </summary>
         [JsonProperty("data_limit")]
         public int? DataLimit { get; private set; }

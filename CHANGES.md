@@ -1,6 +1,18 @@
 twilio-csharp Changelog
 =======================
 
+[2022-08-10] Version 5.78.1
+---------------------------
+**Library - Test**
+- [PR #623](https://github.com/twilio/twilio-csharp/pull/623): Modified Dockerfile to be able to easily build and test. Thanks to [@marcusber](https://github.com/marcusber)!
+
+**Routes**
+- Inbound Proccessing Region API - Public GA
+
+**Supersim**
+- Allow updating `DataLimit` on a Fleet
+
+
 [2022-07-21] Version 5.78.0
 ---------------------------
 **Library - Fix**

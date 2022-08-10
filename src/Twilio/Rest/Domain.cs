@@ -36,6 +36,7 @@ namespace Twilio.Rest
         public static readonly Domain Preview = new Domain("preview");
         public static readonly Domain Pricing = new Domain("pricing");
         public static readonly Domain Proxy = new Domain("proxy");
+        public static readonly Domain Routes = new Domain("routes");
         public static readonly Domain Serverless = new Domain("serverless");
         public static readonly Domain Studio = new Domain("studio");
         public static readonly Domain Sync = new Domain("sync");
@@ -48,6 +49,7 @@ namespace Twilio.Rest
         public static readonly Domain Wireless = new Domain("wireless");
         public static readonly Domain Supersim = new Domain("supersim");
         public static readonly Domain Bulkexports = new Domain("bulkexports");
+        public static readonly Domain Microvisor = new Domain("microvisor");
     }
 
 }
