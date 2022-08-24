@@ -26,31 +26,39 @@ namespace Twilio.TwiML.Voice
                 return new XmlLangEnum(value);
             }
 
+            public static readonly XmlLangEnum Arb = new XmlLangEnum("arb");
+            public static readonly XmlLangEnum CaEs = new XmlLangEnum("ca-ES");
+            public static readonly XmlLangEnum CmnCn = new XmlLangEnum("cmn-CN");
+            public static readonly XmlLangEnum CyGb = new XmlLangEnum("cy-GB");
             public static readonly XmlLangEnum DaDk = new XmlLangEnum("da-DK");
-            public static readonly XmlLangEnum NlNl = new XmlLangEnum("nl-NL");
+            public static readonly XmlLangEnum DeDe = new XmlLangEnum("de-DE");
+            public static readonly XmlLangEnum DeAt = new XmlLangEnum("de-AT");
             public static readonly XmlLangEnum EnAu = new XmlLangEnum("en-AU");
             public static readonly XmlLangEnum EnGb = new XmlLangEnum("en-GB");
-            public static readonly XmlLangEnum EnIn = new XmlLangEnum("en-IN");
-            public static readonly XmlLangEnum EnUs = new XmlLangEnum("en-US");
             public static readonly XmlLangEnum EnGbWls = new XmlLangEnum("en-GB-WLS");
-            public static readonly XmlLangEnum FrFr = new XmlLangEnum("fr-FR");
+            public static readonly XmlLangEnum EnIn = new XmlLangEnum("en-IN");
+            public static readonly XmlLangEnum EnNz = new XmlLangEnum("en-NZ");
+            public static readonly XmlLangEnum EnUs = new XmlLangEnum("en-US");
+            public static readonly XmlLangEnum EnZa = new XmlLangEnum("en-ZA");
+            public static readonly XmlLangEnum EsEs = new XmlLangEnum("es-ES");
+            public static readonly XmlLangEnum EsMx = new XmlLangEnum("es-MX");
+            public static readonly XmlLangEnum EsUs = new XmlLangEnum("es-US");
             public static readonly XmlLangEnum FrCa = new XmlLangEnum("fr-CA");
-            public static readonly XmlLangEnum DeDe = new XmlLangEnum("de-DE");
+            public static readonly XmlLangEnum FrFr = new XmlLangEnum("fr-FR");
+            public static readonly XmlLangEnum HiIn = new XmlLangEnum("hi-IN");
             public static readonly XmlLangEnum IsIs = new XmlLangEnum("is-IS");
             public static readonly XmlLangEnum ItIt = new XmlLangEnum("it-IT");
             public static readonly XmlLangEnum JaJp = new XmlLangEnum("ja-JP");
             public static readonly XmlLangEnum KoKr = new XmlLangEnum("ko-KR");
             public static readonly XmlLangEnum NbNo = new XmlLangEnum("nb-NO");
+            public static readonly XmlLangEnum NlNl = new XmlLangEnum("nl-NL");
             public static readonly XmlLangEnum PlPl = new XmlLangEnum("pl-PL");
             public static readonly XmlLangEnum PtBr = new XmlLangEnum("pt-BR");
             public static readonly XmlLangEnum PtPt = new XmlLangEnum("pt-PT");
             public static readonly XmlLangEnum RoRo = new XmlLangEnum("ro-RO");
             public static readonly XmlLangEnum RuRu = new XmlLangEnum("ru-RU");
-            public static readonly XmlLangEnum EsEs = new XmlLangEnum("es-ES");
-            public static readonly XmlLangEnum EsUs = new XmlLangEnum("es-US");
             public static readonly XmlLangEnum SvSe = new XmlLangEnum("sv-SE");
             public static readonly XmlLangEnum TrTr = new XmlLangEnum("tr-TR");
-            public static readonly XmlLangEnum CyGb = new XmlLangEnum("cy-GB");
         }
 
         /// <summary>

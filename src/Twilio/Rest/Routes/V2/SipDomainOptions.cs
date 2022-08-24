@@ -12,53 +12,6 @@ namespace Twilio.Rest.Routes.V2
 {
 
     /// <summary>
-    /// CreateSipDomainOptions
-    /// </summary>
-    public class CreateSipDomainOptions : IOptions<SipDomainResource>
-    {
-        /// <summary>
-        /// The sip_domain
-        /// </summary>
-        public string PathSipDomain { get; }
-        /// <summary>
-        /// The voice_region
-        /// </summary>
-        public string VoiceRegion { get; set; }
-        /// <summary>
-        /// The friendly_name
-        /// </summary>
-        public string FriendlyName { get; set; }
-
-        /// <summary>
-        /// Construct a new CreateSipDomainOptions
-        /// </summary>
-        /// <param name="pathSipDomain"> The sip_domain </param>
-        public CreateSipDomainOptions(string pathSipDomain)
-        {
-            PathSipDomain = pathSipDomain;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (VoiceRegion != null)
-            {
-                p.Add(new KeyValuePair<string, string>("VoiceRegion", VoiceRegion));
-            }
-
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
-
-            return p;
-        }
-    }
-
-    /// <summary>
     /// UpdateSipDomainOptions
     /// </summary>
     public class UpdateSipDomainOptions : IOptions<SipDomainResource>

@@ -21,42 +21,6 @@ namespace Twilio.Tests.Rest.Routes.V2
     public class TrunkTest : TwilioTest
     {
         [Test]
-        public void TestCreateRequest()
-        {
-            var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            var request = new Request(
-                HttpMethod.Post,
-                Twilio.Rest.Domain.Routes,
-                "/v2/Trunks/sip_trunk_domain",
-                ""
-            );
-            twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
-
-            try
-            {
-                TrunkResource.Create("sip_trunk_domain", client: twilioRestClient);
-                Assert.Fail("Expected TwilioException to be thrown for 500");
-            }
-            catch (ApiException) {}
-            twilioRestClient.Received().Request(request);
-        }
-
-        [Test]
-        public void TestCreateResponse()
-        {
-            var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-            twilioRestClient.Request(Arg.Any<Request>())
-                            .Returns(new Response(
-                                         System.Net.HttpStatusCode.Created,
-                                         "{\"sip_trunk_domain\": \"test.pstn.twilio.com\",\"url\": \"https://routes.twilio.com/v2/Trunks/test.pstn.twilio.com\",\"sid\": \"QQaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"friendly_name\",\"voice_region\": \"au1\",\"date_created\": \"2020-08-07T22:29:24Z\",\"date_updated\": \"2020-08-07T22:29:24Z\"}"
-                                     ));
-
-            var response = TrunkResource.Create("sip_trunk_domain", client: twilioRestClient);
-            Assert.NotNull(response);
-        }
-
-        [Test]
         public void TestUpdateRequest()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();

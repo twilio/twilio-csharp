@@ -20,82 +20,6 @@ namespace Twilio.Rest.Routes.V2
 
     public class PhoneNumberResource : Resource
     {
-        private static Request BuildCreateRequest(CreatePhoneNumberOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Post,
-                Rest.Domain.Routes,
-                "/v2/PhoneNumbers/" + options.PathPhoneNumber + "",
-                postParams: options.GetParams(),
-                headerParams: null
-            );
-        }
-
-        /// <summary>
-        /// Assign an Inbound Processing Region to a phone number
-        /// </summary>
-        /// <param name="options"> Create PhoneNumber parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of PhoneNumber </returns>
-        public static PhoneNumberResource Create(CreatePhoneNumberOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildCreateRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Assign an Inbound Processing Region to a phone number
-        /// </summary>
-        /// <param name="options"> Create PhoneNumber parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of PhoneNumber </returns>
-        public static async System.Threading.Tasks.Task<PhoneNumberResource> CreateAsync(CreatePhoneNumberOptions options,
-                                                                                         ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// Assign an Inbound Processing Region to a phone number
-        /// </summary>
-        /// <param name="pathPhoneNumber"> The phone number </param>
-        /// <param name="voiceRegion"> The Inbound Processing Region used for this phone number for voice </param>
-        /// <param name="friendlyName"> A human readable description of this resource. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of PhoneNumber </returns>
-        public static PhoneNumberResource Create(string pathPhoneNumber,
-                                                 string voiceRegion = null,
-                                                 string friendlyName = null,
-                                                 ITwilioRestClient client = null)
-        {
-            var options = new CreatePhoneNumberOptions(pathPhoneNumber){VoiceRegion = voiceRegion, FriendlyName = friendlyName};
-            return Create(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Assign an Inbound Processing Region to a phone number
-        /// </summary>
-        /// <param name="pathPhoneNumber"> The phone number </param>
-        /// <param name="voiceRegion"> The Inbound Processing Region used for this phone number for voice </param>
-        /// <param name="friendlyName"> A human readable description of this resource. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of PhoneNumber </returns>
-        public static async System.Threading.Tasks.Task<PhoneNumberResource> CreateAsync(string pathPhoneNumber,
-                                                                                         string voiceRegion = null,
-                                                                                         string friendlyName = null,
-                                                                                         ITwilioRestClient client = null)
-        {
-            var options = new CreatePhoneNumberOptions(pathPhoneNumber){VoiceRegion = voiceRegion, FriendlyName = friendlyName};
-            return await CreateAsync(options, client);
-        }
-        #endif
-
         private static Request BuildUpdateRequest(UpdatePhoneNumberOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -145,11 +69,11 @@ namespace Twilio.Rest.Routes.V2
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of PhoneNumber </returns>
         public static PhoneNumberResource Update(string pathPhoneNumber,
-                                                 string voiceRegion,
-                                                 string friendlyName,
+                                                 string voiceRegion = null,
+                                                 string friendlyName = null,
                                                  ITwilioRestClient client = null)
         {
-            var options = new UpdatePhoneNumberOptions(pathPhoneNumber, voiceRegion, friendlyName);
+            var options = new UpdatePhoneNumberOptions(pathPhoneNumber){VoiceRegion = voiceRegion, FriendlyName = friendlyName};
             return Update(options, client);
         }
 
@@ -163,11 +87,11 @@ namespace Twilio.Rest.Routes.V2
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PhoneNumber </returns>
         public static async System.Threading.Tasks.Task<PhoneNumberResource> UpdateAsync(string pathPhoneNumber,
-                                                                                         string voiceRegion,
-                                                                                         string friendlyName,
+                                                                                         string voiceRegion = null,
+                                                                                         string friendlyName = null,
                                                                                          ITwilioRestClient client = null)
         {
-            var options = new UpdatePhoneNumberOptions(pathPhoneNumber, voiceRegion, friendlyName);
+            var options = new UpdatePhoneNumberOptions(pathPhoneNumber){VoiceRegion = voiceRegion, FriendlyName = friendlyName};
             return await UpdateAsync(options, client);
         }
         #endif

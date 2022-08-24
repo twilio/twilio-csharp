@@ -99,7 +99,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="customFriendlyName"> A custom user defined friendly name </param>
         /// <param name="customMessage"> The text of a custom message to use for the verification </param>
         /// <param name="sendDigits"> The digits to send after a phone call is answered </param>
-        /// <param name="locale"> The locale to use for the verification SMS, WhatsApp or call </param>
+        /// <param name="locale"> The override locale to use for the verification SMS, WhatsApp or call </param>
         /// <param name="customCode"> A pre-generated code </param>
         /// <param name="amount"> The amount of the associated PSD2 compliant transaction. </param>
         /// <param name="payee"> The payee of the associated PSD2 compliant transaction </param>
@@ -142,7 +142,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="customFriendlyName"> A custom user defined friendly name </param>
         /// <param name="customMessage"> The text of a custom message to use for the verification </param>
         /// <param name="sendDigits"> The digits to send after a phone call is answered </param>
-        /// <param name="locale"> The locale to use for the verification SMS, WhatsApp or call </param>
+        /// <param name="locale"> The override locale to use for the verification SMS, WhatsApp or call </param>
         /// <param name="customCode"> A pre-generated code </param>
         /// <param name="amount"> The amount of the associated PSD2 compliant transaction. </param>
         /// <param name="payee"> The payee of the associated PSD2 compliant transaction </param>

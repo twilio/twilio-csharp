@@ -1,6 +1,22 @@
 twilio-csharp Changelog
 =======================
 
+[2022-08-24] Version 5.79.0
+---------------------------
+**Library - Test**
+- [PR #627](https://github.com/twilio/twilio-csharp/pull/627): add test-docker rule. Thanks to [@beebzz](https://github.com/beebzz)!
+
+**Api**
+- Remove `beta feature` from scheduling params and remove optimize parameters. **(breaking change)**
+
+**Routes**
+- Remove Duplicate Create Method - Update Method will work even if Inbound Processing Region is currently empty/404. **(breaking change)**
+
+**Twiml**
+- Add new Polly Neural voices
+- Add new languages to SSML `<lang>`.
+
+
 [2022-08-10] Version 5.78.1
 ---------------------------
 **Library - Test**

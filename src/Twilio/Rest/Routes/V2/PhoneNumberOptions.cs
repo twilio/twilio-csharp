@@ -12,9 +12,9 @@ namespace Twilio.Rest.Routes.V2
 {
 
     /// <summary>
-    /// Assign an Inbound Processing Region to a phone number
+    /// Assign an Inbound Processing Region to a phone number.
     /// </summary>
-    public class CreatePhoneNumberOptions : IOptions<PhoneNumberResource>
+    public class UpdatePhoneNumberOptions : IOptions<PhoneNumberResource>
     {
         /// <summary>
         /// The phone number
@@ -30,63 +30,12 @@ namespace Twilio.Rest.Routes.V2
         public string FriendlyName { get; set; }
 
         /// <summary>
-        /// Construct a new CreatePhoneNumberOptions
-        /// </summary>
-        /// <param name="pathPhoneNumber"> The phone number </param>
-        public CreatePhoneNumberOptions(string pathPhoneNumber)
-        {
-            PathPhoneNumber = pathPhoneNumber;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (VoiceRegion != null)
-            {
-                p.Add(new KeyValuePair<string, string>("VoiceRegion", VoiceRegion));
-            }
-
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
-
-            return p;
-        }
-    }
-
-    /// <summary>
-    /// Assign an Inbound Processing Region to a phone number.
-    /// </summary>
-    public class UpdatePhoneNumberOptions : IOptions<PhoneNumberResource>
-    {
-        /// <summary>
-        /// The phone number
-        /// </summary>
-        public string PathPhoneNumber { get; }
-        /// <summary>
-        /// The Inbound Processing Region used for this phone number for voice
-        /// </summary>
-        public string VoiceRegion { get; }
-        /// <summary>
-        /// A human readable description of this resource.
-        /// </summary>
-        public string FriendlyName { get; }
-
-        /// <summary>
         /// Construct a new UpdatePhoneNumberOptions
         /// </summary>
         /// <param name="pathPhoneNumber"> The phone number </param>
-        /// <param name="voiceRegion"> The Inbound Processing Region used for this phone number for voice </param>
-        /// <param name="friendlyName"> A human readable description of this resource. </param>
-        public UpdatePhoneNumberOptions(string pathPhoneNumber, string voiceRegion, string friendlyName)
+        public UpdatePhoneNumberOptions(string pathPhoneNumber)
         {
             PathPhoneNumber = pathPhoneNumber;
-            VoiceRegion = voiceRegion;
-            FriendlyName = friendlyName;
         }
 
         /// <summary>
