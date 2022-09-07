@@ -104,12 +104,12 @@ namespace Twilio.Tests.Rest.FlexApi.V1.Interaction.InteractionChannel
                 "/v1/Interactions/KDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Channels/UOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Participants/UOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
                 ""
             );
-            request.AddPostParam("Status", Serialize(InteractionChannelParticipantResource.StatusEnum.Close));
+            request.AddPostParam("Status", Serialize(InteractionChannelParticipantResource.StatusEnum.Closed));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                InteractionChannelParticipantResource.Update("KDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "UOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "UOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", InteractionChannelParticipantResource.StatusEnum.Close, client: twilioRestClient);
+                InteractionChannelParticipantResource.Update("KDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "UOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "UOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", InteractionChannelParticipantResource.StatusEnum.Closed, client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -127,7 +127,7 @@ namespace Twilio.Tests.Rest.FlexApi.V1.Interaction.InteractionChannel
                                          "{\"sid\": \"UTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa1\",\"channel_sid\": \"UOaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa1\",\"interaction_sid\": \"KDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"type\": \"agent\",\"url\": \"https://flex-api.twilio.com/v1/Interactions/KDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/UOaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa1/Participants/UTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa1\"}"
                                      ));
 
-            var response = InteractionChannelParticipantResource.Update("KDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "UOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "UOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", InteractionChannelParticipantResource.StatusEnum.Close, client: twilioRestClient);
+            var response = InteractionChannelParticipantResource.Update("KDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "UOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "UOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", InteractionChannelParticipantResource.StatusEnum.Closed, client: twilioRestClient);
             Assert.NotNull(response);
         }
 
@@ -142,7 +142,7 @@ namespace Twilio.Tests.Rest.FlexApi.V1.Interaction.InteractionChannel
                                          "{\"sid\": \"UTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa1\",\"channel_sid\": \"UOaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa1\",\"interaction_sid\": \"KDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"type\": \"agent\",\"url\": \"https://flex-api.twilio.com/v1/Interactions/KDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/UOaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa1/Participants/UTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa1\"}"
                                      ));
 
-            var response = InteractionChannelParticipantResource.Update("KDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "UOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "UOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", InteractionChannelParticipantResource.StatusEnum.Close, client: twilioRestClient);
+            var response = InteractionChannelParticipantResource.Update("KDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "UOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "UOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", InteractionChannelParticipantResource.StatusEnum.Closed, client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

@@ -14,27 +14,12 @@ using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
-using Twilio.Types;
 
 namespace Twilio.Rest.FlexApi.V1
 {
 
     public class InteractionResource : Resource
     {
-        public sealed class StatusEnum : StringEnum
-        {
-            private StatusEnum(string value) : base(value) {}
-            public StatusEnum() {}
-            public static implicit operator StatusEnum(string value)
-            {
-                return new StatusEnum(value);
-            }
-
-            public static readonly StatusEnum Close = new StatusEnum("close");
-            public static readonly StatusEnum Closed = new StatusEnum("closed");
-            public static readonly StatusEnum Wrapup = new StatusEnum("wrapup");
-        }
-
         private static Request BuildFetchRequest(FetchInteractionOptions options, ITwilioRestClient client)
         {
             return new Request(

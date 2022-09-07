@@ -30,7 +30,6 @@ namespace Twilio.Rest.FlexApi.V1.Interaction
                 return new StatusEnum(value);
             }
 
-            public static readonly StatusEnum Close = new StatusEnum("close");
             public static readonly StatusEnum Closed = new StatusEnum("closed");
             public static readonly StatusEnum Wrapup = new StatusEnum("wrapup");
         }
