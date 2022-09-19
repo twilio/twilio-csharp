@@ -12,29 +12,66 @@ using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
-using Twilio.Rest.Preview.BulkExports.Export;
+using Twilio.Rest.Verify.V2;
 
-namespace Twilio.Tests.Rest.Preview.BulkExports.Export
+namespace Twilio.Tests.Rest.Verify.V2
 {
 
     [TestFixture]
-    public class DayTest : TwilioTest
+    public class SafelistTest : TwilioTest
     {
+        [Test]
+        public void TestCreateRequest()
+        {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            var request = new Request(
+                HttpMethod.Post,
+                Twilio.Rest.Domain.Verify,
+                "/v2/SafeList/Numbers",
+                ""
+            );
+            request.AddPostParam("PhoneNumber", Serialize("phone_number"));
+            twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
+
+            try
+            {
+                SafelistResource.Create("phone_number", client: twilioRestClient);
+                Assert.Fail("Expected TwilioException to be thrown for 500");
+            }
+            catch (ApiException) {}
+            twilioRestClient.Received().Request(request);
+        }
+
+        [Test]
+        public void TestCreateResponse()
+        {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+            twilioRestClient.Request(Arg.Any<Request>())
+                            .Returns(new Response(
+                                         System.Net.HttpStatusCode.Created,
+                                         "{\"sid\": \"GNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"phone_number\": \"+18001234567\",\"url\": \"https://verify.twilio.com/v2/SafeList/Numbers/+18001234567\"}"
+                                     ));
+
+            var response = SafelistResource.Create("phone_number", client: twilioRestClient);
+            Assert.NotNull(response);
+        }
+
         [Test]
         public void TestFetchRequest()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             var request = new Request(
                 HttpMethod.Get,
-                Twilio.Rest.Domain.Preview,
-                "/BulkExports/Exports/resource_type/Days/day",
+                Twilio.Rest.Domain.Verify,
+                "/v2/SafeList/Numbers/phone_number",
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                DayResource.Fetch("resource_type", "day", client: twilioRestClient);
+                SafelistResource.Fetch("phone_number", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -49,28 +86,28 @@ namespace Twilio.Tests.Rest.Preview.BulkExports.Export
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"redirect_to\": \"https://www.twilio.com\"}"
+                                         "{\"sid\": \"GNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"phone_number\": \"+18001234567\",\"url\": \"https://verify.twilio.com/v2/SafeList/Numbers/+18001234567\"}"
                                      ));
 
-            var response = DayResource.Fetch("resource_type", "day", client: twilioRestClient);
+            var response = SafelistResource.Fetch("phone_number", client: twilioRestClient);
             Assert.NotNull(response);
         }
 
         [Test]
-        public void TestReadRequest()
+        public void TestDeleteRequest()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             var request = new Request(
-                HttpMethod.Get,
-                Twilio.Rest.Domain.Preview,
-                "/BulkExports/Exports/resource_type/Days",
+                HttpMethod.Delete,
+                Twilio.Rest.Domain.Verify,
+                "/v2/SafeList/Numbers/phone_number",
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                DayResource.Read("resource_type", client: twilioRestClient);
+                SafelistResource.Delete("phone_number", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -78,32 +115,17 @@ namespace Twilio.Tests.Rest.Preview.BulkExports.Export
         }
 
         [Test]
-        public void TestReadEmptyResponse()
+        public void TestDeleteResponse()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
-                                         System.Net.HttpStatusCode.OK,
-                                         "{\"days\": [],\"meta\": {\"page\": 0,\"page_size\": 50,\"first_page_url\": \"https://preview.twilio.com/BulkExports/Exports/Calls/Days?PageSize=50&Page=0\",\"previous_page_url\": null,\"url\": \"https://preview.twilio.com/BulkExports/Exports/Calls/Days?PageSize=50&Page=0\",\"next_page_url\": null,\"key\": \"days\"}}"
+                                         System.Net.HttpStatusCode.NoContent,
+                                         "null"
                                      ));
 
-            var response = DayResource.Read("resource_type", client: twilioRestClient);
-            Assert.NotNull(response);
-        }
-
-        [Test]
-        public void TestReadFullResponse()
-        {
-            var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-            twilioRestClient.Request(Arg.Any<Request>())
-                            .Returns(new Response(
-                                         System.Net.HttpStatusCode.OK,
-                                         "{\"days\": [{\"day\": \"2017-04-01\",\"size\": 100,\"resource_type\": \"Calls\",\"create_date\": \"2017-04-02\",\"friendly_name\": \"friendly_name\"}],\"meta\": {\"page\": 0,\"page_size\": 50,\"first_page_url\": \"https://preview.twilio.com/BulkExports/Exports/Calls/Days?PageSize=50&Page=0\",\"previous_page_url\": null,\"url\": \"https://preview.twilio.com/BulkExports/Exports/Calls/Days?PageSize=50&Page=0\",\"next_page_url\": null,\"key\": \"days\"}}"
-                                     ));
-
-            var response = DayResource.Read("resource_type", client: twilioRestClient);
+            var response = SafelistResource.Delete("phone_number", client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

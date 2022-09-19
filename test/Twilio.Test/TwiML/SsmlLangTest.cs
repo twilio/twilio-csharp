@@ -29,10 +29,10 @@ namespace Twilio.Tests.TwiML
         [Test]
         public void TestElementWithParams()
         {
-            var elem = new SsmlLang("words", SsmlLang.XmlLangEnum.DaDk);
+            var elem = new SsmlLang("words", SsmlLang.XmlLangEnum.Arb);
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<lang xml:lang=\"da-DK\">words</lang>",
+                "<lang xml:lang=\"arb\">words</lang>",
                 elem.ToString()
             );
         }
@@ -60,7 +60,7 @@ namespace Twilio.Tests.TwiML
 
             elem.Emphasis("words", SsmlEmphasis.LevelEnum.Strong);
 
-            elem.Lang("words", SsmlLang.XmlLangEnum.DaDk);
+            elem.Lang("words", SsmlLang.XmlLangEnum.Arb);
 
             elem.P("words");
 
@@ -81,7 +81,7 @@ namespace Twilio.Tests.TwiML
                 "<lang>" + Environment.NewLine +
                 "  <break strength=\"none\" time=\"time\"></break>" + Environment.NewLine +
                 "  <emphasis level=\"strong\">words</emphasis>" + Environment.NewLine +
-                "  <lang xml:lang=\"da-DK\">words</lang>" + Environment.NewLine +
+                "  <lang xml:lang=\"arb\">words</lang>" + Environment.NewLine +
                 "  <p>words</p>" + Environment.NewLine +
                 "  <phoneme alphabet=\"ipa\" ph=\"ph\">words</phoneme>" + Environment.NewLine +
                 "  <prosody volume=\"volume\" rate=\"rate\" pitch=\"pitch\">words</prosody>" + Environment.NewLine +

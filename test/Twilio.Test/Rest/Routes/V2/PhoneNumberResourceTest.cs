@@ -12,65 +12,29 @@ using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
-using Twilio.Rest.Preview.BulkExports;
+using Twilio.Rest.Routes.V2;
 
-namespace Twilio.Tests.Rest.Preview.BulkExports
+namespace Twilio.Tests.Rest.Routes.V2
 {
 
     [TestFixture]
-    public class ExportConfigurationTest : TwilioTest
+    public class PhoneNumberTest : TwilioTest
     {
-        [Test]
-        public void TestFetchRequest()
-        {
-            var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            var request = new Request(
-                HttpMethod.Get,
-                Twilio.Rest.Domain.Preview,
-                "/BulkExports/Exports/resource_type/Configuration",
-                ""
-            );
-            twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
-
-            try
-            {
-                ExportConfigurationResource.Fetch("resource_type", client: twilioRestClient);
-                Assert.Fail("Expected TwilioException to be thrown for 500");
-            }
-            catch (ApiException) {}
-            twilioRestClient.Received().Request(request);
-        }
-
-        [Test]
-        public void TestFetchResponse()
-        {
-            var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-            twilioRestClient.Request(Arg.Any<Request>())
-                            .Returns(new Response(
-                                         System.Net.HttpStatusCode.OK,
-                                         "{\"url\": \"https://preview.twilio.com/BulkExports/Exports/Calls/Configuration\",\"enabled\": true,\"webhook_url\": \"\",\"webhook_method\": \"\",\"resource_type\": \"Calls\"}"
-                                     ));
-
-            var response = ExportConfigurationResource.Fetch("resource_type", client: twilioRestClient);
-            Assert.NotNull(response);
-        }
-
         [Test]
         public void TestUpdateRequest()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             var request = new Request(
                 HttpMethod.Post,
-                Twilio.Rest.Domain.Preview,
-                "/BulkExports/Exports/resource_type/Configuration",
+                Twilio.Rest.Domain.Routes,
+                "/v2/PhoneNumbers/phone_number",
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                ExportConfigurationResource.Update("resource_type", client: twilioRestClient);
+                PhoneNumberResource.Update("phone_number", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -85,10 +49,46 @@ namespace Twilio.Tests.Rest.Preview.BulkExports
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"url\": \"https://preview.twilio.com/BulkExports/Exports/Calls/Configuration\",\"enabled\": true,\"webhook_url\": \"\",\"resource_type\": \"Calls\",\"webhook_method\": \"\"}"
+                                         "{\"phone_number\": \"+18001234567\",\"url\": \"https://routes.twilio.com/v2/PhoneNumbers/+18001234567\",\"sid\": \"QQaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"friendly_name\",\"voice_region\": \"au1\",\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\"}"
                                      ));
 
-            var response = ExportConfigurationResource.Update("resource_type", client: twilioRestClient);
+            var response = PhoneNumberResource.Update("phone_number", client: twilioRestClient);
+            Assert.NotNull(response);
+        }
+
+        [Test]
+        public void TestFetchRequest()
+        {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            var request = new Request(
+                HttpMethod.Get,
+                Twilio.Rest.Domain.Routes,
+                "/v2/PhoneNumbers/phone_number",
+                ""
+            );
+            twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
+
+            try
+            {
+                PhoneNumberResource.Fetch("phone_number", client: twilioRestClient);
+                Assert.Fail("Expected TwilioException to be thrown for 500");
+            }
+            catch (ApiException) {}
+            twilioRestClient.Received().Request(request);
+        }
+
+        [Test]
+        public void TestFetchResponse()
+        {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+            twilioRestClient.Request(Arg.Any<Request>())
+                            .Returns(new Response(
+                                         System.Net.HttpStatusCode.OK,
+                                         "{\"phone_number\": \"+18001234567\",\"url\": \"https://routes.twilio.com/v2/PhoneNumbers/+18001234567\",\"sid\": \"QQaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"friendly_name\",\"voice_region\": \"au1\",\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\"}"
+                                     ));
+
+            var response = PhoneNumberResource.Fetch("phone_number", client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

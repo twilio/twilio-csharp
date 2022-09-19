@@ -64,7 +64,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         /// </summary>
         public string PathIpAccessControlListSid { get; }
         /// <summary>
-        /// A human readable descriptive text for this resource, up to 64 characters long.
+        /// A human readable descriptive text for this resource, up to 255 characters long.
         /// </summary>
         public string FriendlyName { get; }
         /// <summary>
@@ -81,7 +81,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         /// </summary>
         /// <param name="pathIpAccessControlListSid"> The IpAccessControlList Sid with which to associate the created IpAddress
         ///                                  resource </param>
-        /// <param name="friendlyName"> A human readable descriptive text for this resource, up to 64 characters long. </param>
+        /// <param name="friendlyName"> A human readable descriptive text for this resource, up to 255 characters long. </param>
         /// <param name="ipAddress"> An IP address in dotted decimal notation from which you want to accept traffic. Any SIP
         ///                 requests from this IP address will be allowed by Twilio. IPv4 only supported today. </param>
         public CreateIpAddressOptions(string pathIpAccessControlListSid, string friendlyName, string ipAddress)
@@ -178,7 +178,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         /// </summary>
         public string IpAddress { get; set; }
         /// <summary>
-        /// A human readable descriptive text for this resource, up to 64 characters long.
+        /// A human readable descriptive text for this resource, up to 255 characters long.
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>

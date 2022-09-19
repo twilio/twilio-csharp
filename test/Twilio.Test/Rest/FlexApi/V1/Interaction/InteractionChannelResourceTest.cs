@@ -102,12 +102,12 @@ namespace Twilio.Tests.Rest.FlexApi.V1.Interaction
                 "/v1/Interactions/KDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Channels/UOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
                 ""
             );
-            request.AddPostParam("Status", Serialize(InteractionChannelResource.StatusEnum.Close));
+            request.AddPostParam("Status", Serialize(InteractionChannelResource.StatusEnum.Closed));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                InteractionChannelResource.Update("KDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "UOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", InteractionChannelResource.StatusEnum.Close, client: twilioRestClient);
+                InteractionChannelResource.Update("KDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "UOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", InteractionChannelResource.StatusEnum.Closed, client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -125,7 +125,7 @@ namespace Twilio.Tests.Rest.FlexApi.V1.Interaction
                                          "{\"sid\": \"UOaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa1\",\"interaction_sid\": \"KDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"type\": \"chat\",\"status\": \"closed\",\"error_code\": 19025,\"error_message\": \"Channel validation error\",\"url\": \"https://flex-api.twilio.com/v1/Interactions/KDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/UOaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa1\",\"links\": {\"participants\": \"https://flex-api.twilio.com/v1/Interactions/KDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/UOaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa1/Participants\",\"invites\": \"https://flex-api.twilio.com/v1/Interactions/KDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/UOaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa1/Invites\"}}"
                                      ));
 
-            var response = InteractionChannelResource.Update("KDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "UOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", InteractionChannelResource.StatusEnum.Close, client: twilioRestClient);
+            var response = InteractionChannelResource.Update("KDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "UOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", InteractionChannelResource.StatusEnum.Closed, client: twilioRestClient);
             Assert.NotNull(response);
         }
 
@@ -140,7 +140,7 @@ namespace Twilio.Tests.Rest.FlexApi.V1.Interaction
                                          "{\"sid\": \"UOaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa1\",\"interaction_sid\": \"KDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"type\": \"chat\",\"status\": \"failed\",\"error_code\": 19025,\"error_message\": \"Channel validation error\",\"url\": \"https://flex-api.twilio.com/v1/Interactions/KDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/UOaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa1\",\"links\": {\"participants\": \"https://flex-api.twilio.com/v1/Interactions/KDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/UOaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa1/Participants\",\"invites\": \"https://flex-api.twilio.com/v1/Interactions/KDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/UOaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa1/Invites\"}}"
                                      ));
 
-            var response = InteractionChannelResource.Update("KDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "UOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", InteractionChannelResource.StatusEnum.Close, client: twilioRestClient);
+            var response = InteractionChannelResource.Update("KDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "UOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", InteractionChannelResource.StatusEnum.Closed, client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

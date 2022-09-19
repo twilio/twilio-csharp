@@ -60,7 +60,7 @@ namespace Twilio.Tests.TwiML
 
             elem.Emphasis("words", SsmlEmphasis.LevelEnum.Strong);
 
-            elem.Lang("words", SsmlLang.XmlLangEnum.DaDk);
+            elem.Lang("words", SsmlLang.XmlLangEnum.Arb);
 
             elem.P("words");
 
@@ -81,7 +81,7 @@ namespace Twilio.Tests.TwiML
                 "<prosody>" + Environment.NewLine +
                 "  <break strength=\"none\" time=\"time\"></break>" + Environment.NewLine +
                 "  <emphasis level=\"strong\">words</emphasis>" + Environment.NewLine +
-                "  <lang xml:lang=\"da-DK\">words</lang>" + Environment.NewLine +
+                "  <lang xml:lang=\"arb\">words</lang>" + Environment.NewLine +
                 "  <p>words</p>" + Environment.NewLine +
                 "  <phoneme alphabet=\"ipa\" ph=\"ph\">words</phoneme>" + Environment.NewLine +
                 "  <prosody volume=\"volume\" rate=\"rate\" pitch=\"pitch\">words</prosody>" + Environment.NewLine +

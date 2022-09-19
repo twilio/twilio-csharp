@@ -76,7 +76,7 @@ namespace Twilio.TwiML.Voice
 
             public static readonly EventEnum CallInitiated = new EventEnum("call-initiated");
             public static readonly EventEnum CallRinging = new EventEnum("call-ringing");
-            public static readonly EventEnum CallInProgress = new EventEnum("call-in-progress");
+            public static readonly EventEnum CallAnswered = new EventEnum("call-answered");
             public static readonly EventEnum CallCompleted = new EventEnum("call-completed");
         }
 

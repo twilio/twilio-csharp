@@ -12,29 +12,29 @@ using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
-using Twilio.Rest.Preview.BulkExports;
+using Twilio.Rest.Video.V1.Room.Participant;
 
-namespace Twilio.Tests.Rest.Preview.BulkExports
+namespace Twilio.Tests.Rest.Video.V1.Room.Participant
 {
 
     [TestFixture]
-    public class ExportTest : TwilioTest
+    public class AnonymizeTest : TwilioTest
     {
         [Test]
-        public void TestFetchRequest()
+        public void TestUpdateRequest()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             var request = new Request(
-                HttpMethod.Get,
-                Twilio.Rest.Domain.Preview,
-                "/BulkExports/Exports/resource_type",
+                HttpMethod.Post,
+                Twilio.Rest.Domain.Video,
+                "/v1/Rooms/RMXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Participants/PAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Anonymize",
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                ExportResource.Fetch("resource_type", client: twilioRestClient);
+                AnonymizeResource.Update("RMXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "PAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -42,17 +42,17 @@ namespace Twilio.Tests.Rest.Preview.BulkExports
         }
 
         [Test]
-        public void TestFetchResponse()
+        public void TestUpdateResponse()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"resource_type\": \"Calls\",\"url\": \"https://preview.twilio.com/BulkExports/Exports/Calls\",\"links\": {\"days\": \"https://preview.twilio.com/BulkExports/Exports/Calls/Days\"}}"
+                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"room_sid\": \"RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"start_time\": \"2015-07-30T20:00:00Z\",\"end_time\": null,\"sid\": \"PAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"identity\": \"PAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"status\": \"disconnected\",\"url\": \"https://video.twilio.com/v1/Rooms/RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants/PAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Anonymize\",\"duration\": 1}"
                                      ));
 
-            var response = ExportResource.Fetch("resource_type", client: twilioRestClient);
+            var response = AnonymizeResource.Update("RMXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "PAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

@@ -41,7 +41,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// </summary>
         public string SendDigits { get; set; }
         /// <summary>
-        /// The locale to use for the verification SMS, WhatsApp or call
+        /// The override locale to use for the verification SMS, WhatsApp or call
         /// </summary>
         public string Locale { get; set; }
         /// <summary>

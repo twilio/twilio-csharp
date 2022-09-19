@@ -1,4 +1,4 @@
-.PHONY: clean test install release docs
+.PHONY: clean test test-docker install release docs
 
 clean:
 	dotnet clean
@@ -10,6 +10,10 @@ install:
 test:
 	dotnet build -c Release
 	dotnet test -c Release
+
+test-docker:
+	docker build -t twilio/twilio-csharp .
+	docker run twilio/twilio-csharp /bin/bash -c "dotnet build -c Release; dotnet test -c Release"
 
 release:
 	dotnet pack -c Release

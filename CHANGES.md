@@ -1,6 +1,53 @@
 twilio-csharp Changelog
 =======================
 
+[2022-09-07] Version 5.80.0
+---------------------------
+**Flex**
+- Removed redundant `close` status from Flex Interactions flow **(breaking change)**
+- Adding `debugger_integration` and `flex_ui_status_report` to Flex Configuration
+
+**Messaging**
+- Add create, list and get tollfree verification API
+
+**Verify**
+- Verify SafeList API endpoints added.
+
+**Video**
+- Add `Anonymize` API
+
+**Twiml**
+- Update `event` value `call-in-progress` to `call-answered`
+
+
+[2022-08-24] Version 5.79.0
+---------------------------
+**Library - Test**
+- [PR #627](https://github.com/twilio/twilio-csharp/pull/627): add test-docker rule. Thanks to [@beebzz](https://github.com/beebzz)!
+
+**Api**
+- Remove `beta feature` from scheduling params and remove optimize parameters. **(breaking change)**
+
+**Routes**
+- Remove Duplicate Create Method - Update Method will work even if Inbound Processing Region is currently empty/404. **(breaking change)**
+
+**Twiml**
+- Add new Polly Neural voices
+- Add new languages to SSML `<lang>`.
+
+
+[2022-08-10] Version 5.78.1
+---------------------------
+**Library - Test**
+- [PR #623](https://github.com/twilio/twilio-csharp/pull/623): Modified Dockerfile to be able to easily build and test. Thanks to [@marcusber](https://github.com/marcusber)!
+
+**Routes**
+- Inbound Proccessing Region API - Public GA
+
+**Supersim**
+- Allow updating `DataLimit` on a Fleet
+
+
 [2022-07-21] Version 5.78.0
 ---------------------------
 **Library - Fix**

@@ -12,29 +12,65 @@ using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
-using Twilio.Rest.Preview.BulkExports.Export;
+using Twilio.Rest.Routes.V2;
 
-namespace Twilio.Tests.Rest.Preview.BulkExports.Export
+namespace Twilio.Tests.Rest.Routes.V2
 {
 
     [TestFixture]
-    public class JobTest : TwilioTest
+    public class TrunkTest : TwilioTest
     {
         [Test]
-        public void TestFetchRequest()
+        public void TestUpdateRequest()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             var request = new Request(
-                HttpMethod.Get,
-                Twilio.Rest.Domain.Preview,
-                "/BulkExports/Exports/Jobs/JSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+                HttpMethod.Post,
+                Twilio.Rest.Domain.Routes,
+                "/v2/Trunks/sip_trunk_domain",
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                JobResource.Fetch("JSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
+                TrunkResource.Update("sip_trunk_domain", client: twilioRestClient);
+                Assert.Fail("Expected TwilioException to be thrown for 500");
+            }
+            catch (ApiException) {}
+            twilioRestClient.Received().Request(request);
+        }
+
+        [Test]
+        public void TestUpdateResponse()
+        {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+            twilioRestClient.Request(Arg.Any<Request>())
+                            .Returns(new Response(
+                                         System.Net.HttpStatusCode.OK,
+                                         "{\"sip_trunk_domain\": \"test.pstn.twilio.com\",\"url\": \"https://routes.twilio.com/v2/Trunks/test.pstn.twilio.com\",\"sid\": \"QQaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"friendly_name\",\"voice_region\": \"au1\",\"date_created\": \"2020-08-07T22:29:24Z\",\"date_updated\": \"2020-08-07T22:29:24Z\"}"
+                                     ));
+
+            var response = TrunkResource.Update("sip_trunk_domain", client: twilioRestClient);
+            Assert.NotNull(response);
+        }
+
+        [Test]
+        public void TestFetchRequest()
+        {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            var request = new Request(
+                HttpMethod.Get,
+                Twilio.Rest.Domain.Routes,
+                "/v2/Trunks/sip_trunk_domain",
+                ""
+            );
+            twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
+
+            try
+            {
+                TrunkResource.Fetch("sip_trunk_domain", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -49,46 +85,10 @@ namespace Twilio.Tests.Rest.Preview.BulkExports.Export
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"start_day\": \"start_day\",\"job_sid\": \"JSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://preview.twilio.com/BulkExports/Exports/Jobs/JSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"friendly_name\",\"end_day\": \"end_day\",\"details\": {},\"webhook_url\": \"webhook_url\",\"webhook_method\": \"webhook_method\",\"email\": \"email\",\"resource_type\": \"resource_type\"}"
+                                         "{\"sip_trunk_domain\": \"test.pstn.twilio.com\",\"url\": \"https://routes.twilio.com/v2/Trunks/test.pstn.twilio.com\",\"account_sid\": \"AC00000000000000000000000000000000\",\"sid\": \"QQ00000000000000000000000000000000\",\"friendly_name\": \"string\",\"voice_region\": \"string\",\"date_created\": \"2022-06-02T22:33:47Z\",\"date_updated\": \"2022-06-02T22:33:47Z\"}"
                                      ));
 
-            var response = JobResource.Fetch("JSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
-            Assert.NotNull(response);
-        }
-
-        [Test]
-        public void TestDeleteRequest()
-        {
-            var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            var request = new Request(
-                HttpMethod.Delete,
-                Twilio.Rest.Domain.Preview,
-                "/BulkExports/Exports/Jobs/JSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-                ""
-            );
-            twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
-
-            try
-            {
-                JobResource.Delete("JSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
-                Assert.Fail("Expected TwilioException to be thrown for 500");
-            }
-            catch (ApiException) {}
-            twilioRestClient.Received().Request(request);
-        }
-
-        [Test]
-        public void TestDeleteResponse()
-        {
-            var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-            twilioRestClient.Request(Arg.Any<Request>())
-                            .Returns(new Response(
-                                         System.Net.HttpStatusCode.NoContent,
-                                         "null"
-                                     ));
-
-            var response = JobResource.Delete("JSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
+            var response = TrunkResource.Fetch("sip_trunk_domain", client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

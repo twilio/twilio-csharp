@@ -464,6 +464,16 @@ namespace Twilio.Rest.FlexApi.V1
         /// </summary>
         [JsonProperty("channel_configs")]
         public List<object> ChannelConfigs { get; private set; }
+        /// <summary>
+        /// Configurable parameters for Debugger Integration
+        /// </summary>
+        [JsonProperty("debugger_integration")]
+        public object DebuggerIntegration { get; private set; }
+        /// <summary>
+        /// Configurable parameters for Flex UI Status report
+        /// </summary>
+        [JsonProperty("flex_ui_status_report")]
+        public object FlexUiStatusReport { get; private set; }
 
         private ConfigurationResource()
         {
