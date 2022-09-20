@@ -17,7 +17,9 @@ namespace Twilio.Converters
         /// <param name="serializer">unsued</param>
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
-            var t = JToken.FromObject(value.ToString());
+            var t = value.ToString() != null
+                                            ? JToken.FromObject(value.ToString())
+                                            : JValue.CreateNull();
             t.WriteTo(writer);
         }
 
