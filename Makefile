@@ -9,11 +9,11 @@ install:
 
 test:
 	dotnet build -c Release
-	dotnet test -c Release
+	dotnet test -c Release --filter TestCategory!="ClusterTest"
 
 test-docker:
 	docker build -t twilio/twilio-csharp .
-	docker run twilio/twilio-csharp /bin/bash -c "dotnet build -c Release; dotnet test -c Release"
+	docker run twilio/twilio-csharp /bin/bash -c "dotnet build -c Release; dotnet test -c Release --filter TestCategory!=\"ClusterTest\""
 
 release:
 	dotnet pack -c Release
