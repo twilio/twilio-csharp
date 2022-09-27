@@ -34,10 +34,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          PROJECT_NAME: "twilio_twilio-csharp"
         run: |
           dotnet tool install --global dotnet-sonarscanner
-          make cover
+          make cover PROJECT_NAME=twilio_twilio-csharp
 
   deploy:
     name: Deploy
