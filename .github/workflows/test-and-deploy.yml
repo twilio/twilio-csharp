@@ -32,7 +32,7 @@ jobs:
       - name: Install SonarCloud scanner and run analysis
         if: (github.event_name == 'pull_request' || github.ref_type == 'branch') && !github.event.pull_request.head.repo.fork
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  #Needed to get PR information, if any
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
           dotnet tool install --global dotnet-sonarscanner
