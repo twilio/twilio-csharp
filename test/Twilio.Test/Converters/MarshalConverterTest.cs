@@ -14,7 +14,6 @@ namespace Twilio.Tests.Converters
             Assert.AreEqual(dtIso,dtRfc);
         }
 
-
         [Test]
         public void TestIsoCorrectness()
         {
