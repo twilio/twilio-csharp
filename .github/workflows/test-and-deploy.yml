@@ -33,9 +33,10 @@ jobs:
         if: (github.event_name == 'pull_request' || github.ref_type == 'branch') && !github.event.pull_request.head.repo.fork
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  #Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
           dotnet tool install --global dotnet-sonarscanner
-          make cover PROJECT_NAME=twilio_twilio-csharp SONAR_TOKEN=${{ secrets.SONAR_TOKEN }}
+          make cover PROJECT_NAME=twilio_twilio-csharp
 
   deploy:
     name: Deploy
