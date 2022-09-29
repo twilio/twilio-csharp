@@ -36,7 +36,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
           dotnet tool install --global dotnet-sonarscanner
-          make cover PROJECT_NAME=twilio_twilio-csharp SONAR_SOURCES="/d:sonar.exclusions=src/Twilio/Rest/**/*.*,test/Twilio.Test/**/*.*"
+          make cover
 
   deploy:
     name: Deploy
