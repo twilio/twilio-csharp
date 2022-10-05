@@ -134,7 +134,14 @@ namespace Twilio.Tests.TwiML
                 Promoter.ListOfOne(Number.EventEnum.Initiated),
                 new Uri("https://example.com"),
                 Twilio.Http.HttpMethod.Get,
-                "BYXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+                "BYXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+                "machine_detection",
+                Twilio.Http.HttpMethod.Get,
+                "amd_status_callback",
+                1,
+                1,
+                1,
+                1
             );
 
             elem.Queue(
@@ -155,7 +162,14 @@ namespace Twilio.Tests.TwiML
                 Twilio.Http.HttpMethod.Get,
                 Promoter.ListOfOne(Sip.EventEnum.Initiated),
                 new Uri("https://example.com"),
-                Twilio.Http.HttpMethod.Get
+                Twilio.Http.HttpMethod.Get,
+                "machine_detection",
+                Twilio.Http.HttpMethod.Get,
+                "amd_status_callback",
+                1,
+                1,
+                1,
+                1
             );
 
             Assert.AreEqual(
@@ -163,10 +177,10 @@ namespace Twilio.Tests.TwiML
                 "<Dial>" + Environment.NewLine +
                 "  <Client url=\"https://example.com\" method=\"GET\" statusCallbackEvent=\"initiated\" statusCallback=\"https://example.com\" statusCallbackMethod=\"GET\">identity</Client>" + Environment.NewLine +
                 "  <Conference muted=\"true\" beep=\"true\" startConferenceOnEnter=\"true\" endConferenceOnExit=\"true\" waitUrl=\"https://example.com\" waitMethod=\"GET\" maxParticipants=\"1\" record=\"do-not-record\" region=\"us1\" coach=\"CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\" trim=\"trim-silence\" statusCallbackEvent=\"start\" statusCallback=\"https://example.com\" statusCallbackMethod=\"GET\" recordingStatusCallback=\"https://example.com\" recordingStatusCallbackMethod=\"GET\" recordingStatusCallbackEvent=\"in-progress\" eventCallbackUrl=\"https://example.com\" jitterBufferSize=\"large\" participantLabel=\"participant_label\">name</Conference>" + Environment.NewLine +
-                "  <Number sendDigits=\"send_digits\" url=\"https://example.com\" method=\"GET\" statusCallbackEvent=\"initiated\" statusCallback=\"https://example.com\" statusCallbackMethod=\"GET\" byoc=\"BYXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\">+15017122661</Number>" + Environment.NewLine +
+                "  <Number sendDigits=\"send_digits\" url=\"https://example.com\" method=\"GET\" statusCallbackEvent=\"initiated\" statusCallback=\"https://example.com\" statusCallbackMethod=\"GET\" byoc=\"BYXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\" machineDetection=\"machine_detection\" amdStatusCallbackMethod=\"GET\" amdStatusCallback=\"amd_status_callback\" machineDetectionTimeout=\"1\" machineDetectionSpeechThreshold=\"1\" machineDetectionSpeechEndThreshold=\"1\" machineDetectionSilenceTimeout=\"1\">+15017122661</Number>" + Environment.NewLine +
                 "  <Queue url=\"https://example.com\" method=\"GET\" reservationSid=\"reservation_sid\" postWorkActivitySid=\"post_work_activity_sid\">name</Queue>" + Environment.NewLine +
                 "  <Sim>DEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</Sim>" + Environment.NewLine +
-                "  <Sip username=\"username\" password=\"password\" url=\"https://example.com\" method=\"GET\" statusCallbackEvent=\"initiated\" statusCallback=\"https://example.com\" statusCallbackMethod=\"GET\">https://example.com</Sip>" + Environment.NewLine +
+                "  <Sip username=\"username\" password=\"password\" url=\"https://example.com\" method=\"GET\" statusCallbackEvent=\"initiated\" statusCallback=\"https://example.com\" statusCallbackMethod=\"GET\" machineDetection=\"machine_detection\" amdStatusCallbackMethod=\"GET\" amdStatusCallback=\"amd_status_callback\" machineDetectionTimeout=\"1\" machineDetectionSpeechThreshold=\"1\" machineDetectionSpeechEndThreshold=\"1\" machineDetectionSilenceTimeout=\"1\">https://example.com</Sip>" + Environment.NewLine +
                 "</Dial>",
                 elem.ToString()
             );

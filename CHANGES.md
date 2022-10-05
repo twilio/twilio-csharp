@@ -1,6 +1,23 @@
 twilio-csharp Changelog
 =======================
 
+[2022-10-05] Version 5.80.1
+---------------------------
+**Library - Fix**
+- [PR #632](https://github.com/twilio/twilio-csharp/pull/632): handling null 'from' parameter. Thanks to [@isha689](https://github.com/isha689)!
+- [PR #636](https://github.com/twilio/twilio-csharp/pull/636): Make sonar exclusions a variable to reuse this file. Thanks to [@AsabuHere](https://github.com/AsabuHere)!
+
+**Library - Test**
+- [PR #634](https://github.com/twilio/twilio-csharp/pull/634): Modifying make command to take project name and token as arguments for reuse. Thanks to [@AsabuHere](https://github.com/AsabuHere)!
+
+**Api**
+- Added `virtual-agent` to `usage_record` API.
+- Add AMD attributes to participant create request
+
+**Twiml**
+- Add AMD attributes to `Number` and `Sip`
+
+
 [2022-09-07] Version 5.80.0
 ---------------------------
 **Flex**

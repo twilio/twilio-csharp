@@ -338,6 +338,14 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <param name="callReason"> Reason for the call (Branded Calls Beta) </param>
         /// <param name="recordingTrack"> The track(s) to record </param>
         /// <param name="timeLimit"> The maximum duration of the call in seconds. </param>
+        /// <param name="machineDetection"> Enable machine detection or end of greeting detection </param>
+        /// <param name="machineDetectionTimeout"> Number of seconds to wait for machine detection </param>
+        /// <param name="machineDetectionSpeechThreshold"> Number of milliseconds for measuring stick for the length of the
+        ///                                       speech activity </param>
+        /// <param name="machineDetectionSpeechEndThreshold"> Number of milliseconds of silence after speech activity </param>
+        /// <param name="machineDetectionSilenceTimeout"> Number of milliseconds of initial silence </param>
+        /// <param name="amdStatusCallback"> The URL we should call to send amd status information to your application </param>
+        /// <param name="amdStatusCallbackMethod"> HTTP Method to use with amd_status_callback </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Participant </returns>
         public static ParticipantResource Create(string pathConferenceSid,
@@ -381,9 +389,16 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
                                                  string callReason = null,
                                                  string recordingTrack = null,
                                                  int? timeLimit = null,
+                                                 string machineDetection = null,
+                                                 int? machineDetectionTimeout = null,
+                                                 int? machineDetectionSpeechThreshold = null,
+                                                 int? machineDetectionSpeechEndThreshold = null,
+                                                 int? machineDetectionSilenceTimeout = null,
+                                                 Uri amdStatusCallback = null,
+                                                 Twilio.Http.HttpMethod amdStatusCallbackMethod = null,
                                                  ITwilioRestClient client = null)
         {
-            var options = new CreateParticipantOptions(pathConferenceSid, from, to){PathAccountSid = pathAccountSid, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, StatusCallbackEvent = statusCallbackEvent, Label = label, Timeout = timeout, Record = record, Muted = muted, Beep = beep, StartConferenceOnEnter = startConferenceOnEnter, EndConferenceOnExit = endConferenceOnExit, WaitUrl = waitUrl, WaitMethod = waitMethod, EarlyMedia = earlyMedia, MaxParticipants = maxParticipants, ConferenceRecord = conferenceRecord, ConferenceTrim = conferenceTrim, ConferenceStatusCallback = conferenceStatusCallback, ConferenceStatusCallbackMethod = conferenceStatusCallbackMethod, ConferenceStatusCallbackEvent = conferenceStatusCallbackEvent, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword, Region = region, ConferenceRecordingStatusCallback = conferenceRecordingStatusCallback, ConferenceRecordingStatusCallbackMethod = conferenceRecordingStatusCallbackMethod, RecordingStatusCallbackEvent = recordingStatusCallbackEvent, ConferenceRecordingStatusCallbackEvent = conferenceRecordingStatusCallbackEvent, Coaching = coaching, CallSidToCoach = callSidToCoach, JitterBufferSize = jitterBufferSize, Byoc = byoc, CallerId = callerId, CallReason = callReason, RecordingTrack = recordingTrack, TimeLimit = timeLimit};
+            var options = new CreateParticipantOptions(pathConferenceSid, from, to){PathAccountSid = pathAccountSid, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, StatusCallbackEvent = statusCallbackEvent, Label = label, Timeout = timeout, Record = record, Muted = muted, Beep = beep, StartConferenceOnEnter = startConferenceOnEnter, EndConferenceOnExit = endConferenceOnExit, WaitUrl = waitUrl, WaitMethod = waitMethod, EarlyMedia = earlyMedia, MaxParticipants = maxParticipants, ConferenceRecord = conferenceRecord, ConferenceTrim = conferenceTrim, ConferenceStatusCallback = conferenceStatusCallback, ConferenceStatusCallbackMethod = conferenceStatusCallbackMethod, ConferenceStatusCallbackEvent = conferenceStatusCallbackEvent, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword, Region = region, ConferenceRecordingStatusCallback = conferenceRecordingStatusCallback, ConferenceRecordingStatusCallbackMethod = conferenceRecordingStatusCallbackMethod, RecordingStatusCallbackEvent = recordingStatusCallbackEvent, ConferenceRecordingStatusCallbackEvent = conferenceRecordingStatusCallbackEvent, Coaching = coaching, CallSidToCoach = callSidToCoach, JitterBufferSize = jitterBufferSize, Byoc = byoc, CallerId = callerId, CallReason = callReason, RecordingTrack = recordingTrack, TimeLimit = timeLimit, MachineDetection = machineDetection, MachineDetectionTimeout = machineDetectionTimeout, MachineDetectionSpeechThreshold = machineDetectionSpeechThreshold, MachineDetectionSpeechEndThreshold = machineDetectionSpeechEndThreshold, MachineDetectionSilenceTimeout = machineDetectionSilenceTimeout, AmdStatusCallback = amdStatusCallback, AmdStatusCallbackMethod = amdStatusCallbackMethod};
             return Create(options, client);
         }
 
@@ -444,6 +459,14 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <param name="callReason"> Reason for the call (Branded Calls Beta) </param>
         /// <param name="recordingTrack"> The track(s) to record </param>
         /// <param name="timeLimit"> The maximum duration of the call in seconds. </param>
+        /// <param name="machineDetection"> Enable machine detection or end of greeting detection </param>
+        /// <param name="machineDetectionTimeout"> Number of seconds to wait for machine detection </param>
+        /// <param name="machineDetectionSpeechThreshold"> Number of milliseconds for measuring stick for the length of the
+        ///                                       speech activity </param>
+        /// <param name="machineDetectionSpeechEndThreshold"> Number of milliseconds of silence after speech activity </param>
+        /// <param name="machineDetectionSilenceTimeout"> Number of milliseconds of initial silence </param>
+        /// <param name="amdStatusCallback"> The URL we should call to send amd status information to your application </param>
+        /// <param name="amdStatusCallbackMethod"> HTTP Method to use with amd_status_callback </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Participant </returns>
         public static async System.Threading.Tasks.Task<ParticipantResource> CreateAsync(string pathConferenceSid,
@@ -487,9 +510,16 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
                                                                                          string callReason = null,
                                                                                          string recordingTrack = null,
                                                                                          int? timeLimit = null,
+                                                                                         string machineDetection = null,
+                                                                                         int? machineDetectionTimeout = null,
+                                                                                         int? machineDetectionSpeechThreshold = null,
+                                                                                         int? machineDetectionSpeechEndThreshold = null,
+                                                                                         int? machineDetectionSilenceTimeout = null,
+                                                                                         Uri amdStatusCallback = null,
+                                                                                         Twilio.Http.HttpMethod amdStatusCallbackMethod = null,
                                                                                          ITwilioRestClient client = null)
         {
-            var options = new CreateParticipantOptions(pathConferenceSid, from, to){PathAccountSid = pathAccountSid, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, StatusCallbackEvent = statusCallbackEvent, Label = label, Timeout = timeout, Record = record, Muted = muted, Beep = beep, StartConferenceOnEnter = startConferenceOnEnter, EndConferenceOnExit = endConferenceOnExit, WaitUrl = waitUrl, WaitMethod = waitMethod, EarlyMedia = earlyMedia, MaxParticipants = maxParticipants, ConferenceRecord = conferenceRecord, ConferenceTrim = conferenceTrim, ConferenceStatusCallback = conferenceStatusCallback, ConferenceStatusCallbackMethod = conferenceStatusCallbackMethod, ConferenceStatusCallbackEvent = conferenceStatusCallbackEvent, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword, Region = region, ConferenceRecordingStatusCallback = conferenceRecordingStatusCallback, ConferenceRecordingStatusCallbackMethod = conferenceRecordingStatusCallbackMethod, RecordingStatusCallbackEvent = recordingStatusCallbackEvent, ConferenceRecordingStatusCallbackEvent = conferenceRecordingStatusCallbackEvent, Coaching = coaching, CallSidToCoach = callSidToCoach, JitterBufferSize = jitterBufferSize, Byoc = byoc, CallerId = callerId, CallReason = callReason, RecordingTrack = recordingTrack, TimeLimit = timeLimit};
+            var options = new CreateParticipantOptions(pathConferenceSid, from, to){PathAccountSid = pathAccountSid, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, StatusCallbackEvent = statusCallbackEvent, Label = label, Timeout = timeout, Record = record, Muted = muted, Beep = beep, StartConferenceOnEnter = startConferenceOnEnter, EndConferenceOnExit = endConferenceOnExit, WaitUrl = waitUrl, WaitMethod = waitMethod, EarlyMedia = earlyMedia, MaxParticipants = maxParticipants, ConferenceRecord = conferenceRecord, ConferenceTrim = conferenceTrim, ConferenceStatusCallback = conferenceStatusCallback, ConferenceStatusCallbackMethod = conferenceStatusCallbackMethod, ConferenceStatusCallbackEvent = conferenceStatusCallbackEvent, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword, Region = region, ConferenceRecordingStatusCallback = conferenceRecordingStatusCallback, ConferenceRecordingStatusCallbackMethod = conferenceRecordingStatusCallbackMethod, RecordingStatusCallbackEvent = recordingStatusCallbackEvent, ConferenceRecordingStatusCallbackEvent = conferenceRecordingStatusCallbackEvent, Coaching = coaching, CallSidToCoach = callSidToCoach, JitterBufferSize = jitterBufferSize, Byoc = byoc, CallerId = callerId, CallReason = callReason, RecordingTrack = recordingTrack, TimeLimit = timeLimit, MachineDetection = machineDetection, MachineDetectionTimeout = machineDetectionTimeout, MachineDetectionSpeechThreshold = machineDetectionSpeechThreshold, MachineDetectionSpeechEndThreshold = machineDetectionSpeechEndThreshold, MachineDetectionSilenceTimeout = machineDetectionSilenceTimeout, AmdStatusCallback = amdStatusCallback, AmdStatusCallbackMethod = amdStatusCallbackMethod};
             return await CreateAsync(options, client);
         }
         #endif

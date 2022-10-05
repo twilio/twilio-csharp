@@ -228,6 +228,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             public static readonly UsageCategoryEnum VerifyTotp = new UsageCategoryEnum("verify-totp");
             public static readonly UsageCategoryEnum VerifyWhatsappConversationsBusinessInitiated = new UsageCategoryEnum("verify-whatsapp-conversations-business-initiated");
             public static readonly UsageCategoryEnum VideoRecordings = new UsageCategoryEnum("video-recordings");
+            public static readonly UsageCategoryEnum VirtualAgent = new UsageCategoryEnum("virtual-agent");
             public static readonly UsageCategoryEnum VoiceInsights = new UsageCategoryEnum("voice-insights");
             public static readonly UsageCategoryEnum VoiceInsightsClientInsightsOnDemandMinute = new UsageCategoryEnum("voice-insights-client-insights-on-demand-minute");
             public static readonly UsageCategoryEnum VoiceInsightsPtsnInsightsOnDemandMinute = new UsageCategoryEnum("voice-insights-ptsn-insights-on-demand-minute");

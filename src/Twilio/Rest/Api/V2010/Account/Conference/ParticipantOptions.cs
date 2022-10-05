@@ -368,6 +368,34 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// The maximum duration of the call in seconds.
         /// </summary>
         public int? TimeLimit { get; set; }
+        /// <summary>
+        /// Enable machine detection or end of greeting detection
+        /// </summary>
+        public string MachineDetection { get; set; }
+        /// <summary>
+        /// Number of seconds to wait for machine detection
+        /// </summary>
+        public int? MachineDetectionTimeout { get; set; }
+        /// <summary>
+        /// Number of milliseconds for measuring stick for the length of the speech activity
+        /// </summary>
+        public int? MachineDetectionSpeechThreshold { get; set; }
+        /// <summary>
+        /// Number of milliseconds of silence after speech activity
+        /// </summary>
+        public int? MachineDetectionSpeechEndThreshold { get; set; }
+        /// <summary>
+        /// Number of milliseconds of initial silence
+        /// </summary>
+        public int? MachineDetectionSilenceTimeout { get; set; }
+        /// <summary>
+        /// The URL we should call to send amd status information to your application
+        /// </summary>
+        public Uri AmdStatusCallback { get; set; }
+        /// <summary>
+        /// HTTP Method to use with amd_status_callback
+        /// </summary>
+        public Twilio.Http.HttpMethod AmdStatusCallbackMethod { get; set; }
 
         /// <summary>
         /// Construct a new CreateParticipantOptions
@@ -586,6 +614,41 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             if (TimeLimit != null)
             {
                 p.Add(new KeyValuePair<string, string>("TimeLimit", TimeLimit.ToString()));
+            }
+
+            if (MachineDetection != null)
+            {
+                p.Add(new KeyValuePair<string, string>("MachineDetection", MachineDetection));
+            }
+
+            if (MachineDetectionTimeout != null)
+            {
+                p.Add(new KeyValuePair<string, string>("MachineDetectionTimeout", MachineDetectionTimeout.ToString()));
+            }
+
+            if (MachineDetectionSpeechThreshold != null)
+            {
+                p.Add(new KeyValuePair<string, string>("MachineDetectionSpeechThreshold", MachineDetectionSpeechThreshold.ToString()));
+            }
+
+            if (MachineDetectionSpeechEndThreshold != null)
+            {
+                p.Add(new KeyValuePair<string, string>("MachineDetectionSpeechEndThreshold", MachineDetectionSpeechEndThreshold.ToString()));
+            }
+
+            if (MachineDetectionSilenceTimeout != null)
+            {
+                p.Add(new KeyValuePair<string, string>("MachineDetectionSilenceTimeout", MachineDetectionSilenceTimeout.ToString()));
+            }
+
+            if (AmdStatusCallback != null)
+            {
+                p.Add(new KeyValuePair<string, string>("AmdStatusCallback", Serializers.Url(AmdStatusCallback)));
+            }
+
+            if (AmdStatusCallbackMethod != null)
+            {
+                p.Add(new KeyValuePair<string, string>("AmdStatusCallbackMethod", AmdStatusCallbackMethod.ToString()));
             }
 
             return p;
