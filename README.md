@@ -50,11 +50,11 @@ If you are building with the .NET Core command line tools, then you can run the 
 
 To use twilio-csharp release candidates with Visual Studio Code, you can use the NuGet GUI to search for and install the Twilio NuGet package and provide version as 6.0.0. Or, as a shortcut, simply type the following command into the Package Manager Console:
 
-    Install-Package Twilio -Version 6.0.0
+    Install-Package Twilio -Version 6.x.x-rc.x
 
 If you are building with the .NET Core command line tools, then you can run the following command from within your project directory:
 
-    dotnet add package Twilio --version 6.0.0
+    dotnet add package Twilio --version 6.x.x-rc.x
 
 ## Sample Usage
 
