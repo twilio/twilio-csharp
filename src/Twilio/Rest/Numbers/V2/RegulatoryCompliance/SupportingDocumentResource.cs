@@ -40,6 +40,20 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
 
         private static Request BuildCreateRequest(CreateSupportingDocumentOptions options, ITwilioRestClient client)
         {
+#if !NET35
+            if (options.File != null)
+            {
+                return new Request(
+                    HttpMethod.Post,
+                    Rest.Domain.NumbersUpload,
+                    "/v2/RegulatoryCompliance/SupportingDocuments",
+                    postParams: options.GetParams(),
+                    headerParams: null, 
+                    files: new List<KeyValuePair<string, IUploadFile>> { new KeyValuePair<string, IUploadFile>("File", options.File) }
+                );
+            }
+#endif
+
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Numbers,
@@ -63,7 +77,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
             return FromJson(response.Content);
         }
 
-        #if !NET35
+#if !NET35
         /// <summary>
         /// Create a new Supporting Document.
         /// </summary>
@@ -77,7 +91,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
             return FromJson(response.Content);
         }
-        #endif
+#endif
 
         /// <summary>
         /// Create a new Supporting Document.
@@ -96,7 +110,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
             return Create(options, client);
         }
 
-        #if !NET35
+#if !NET35
         /// <summary>
         /// Create a new Supporting Document.
         /// </summary>
@@ -113,7 +127,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
             var options = new CreateSupportingDocumentOptions(friendlyName, type){Attributes = attributes};
             return await CreateAsync(options, client);
         }
-        #endif
+#endif
 
         private static Request BuildReadRequest(ReadSupportingDocumentOptions options, ITwilioRestClient client)
         {
@@ -142,7 +156,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
             return new ResourceSet<SupportingDocumentResource>(page, options, client);
         }
 
-        #if !NET35
+#if !NET35
         /// <summary>
         /// Retrieve a list of all Supporting Document for an account.
         /// </summary>
@@ -158,7 +172,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
             var page = Page<SupportingDocumentResource>.FromJson("results", response.Content);
             return new ResourceSet<SupportingDocumentResource>(page, options, client);
         }
-        #endif
+#endif
 
         /// <summary>
         /// Retrieve a list of all Supporting Document for an account.
@@ -175,7 +189,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
             return Read(options, client);
         }
 
-        #if !NET35
+#if !NET35
         /// <summary>
         /// Retrieve a list of all Supporting Document for an account.
         /// </summary>
@@ -190,7 +204,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
             var options = new ReadSupportingDocumentOptions(){PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
-        #endif
+#endif
 
         /// <summary>
         /// Fetch the target page of records
@@ -272,7 +286,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
             return FromJson(response.Content);
         }
 
-        #if !NET35
+#if !NET35
         /// <summary>
         /// Fetch specific Supporting Document Instance.
         /// </summary>
@@ -286,7 +300,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
             return FromJson(response.Content);
         }
-        #endif
+#endif
 
         /// <summary>
         /// Fetch specific Supporting Document Instance.
@@ -300,7 +314,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
             return Fetch(options, client);
         }
 
-        #if !NET35
+#if !NET35
         /// <summary>
         /// Fetch specific Supporting Document Instance.
         /// </summary>
@@ -313,7 +327,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
             var options = new FetchSupportingDocumentOptions(pathSid);
             return await FetchAsync(options, client);
         }
-        #endif
+#endif
 
         private static Request BuildUpdateRequest(UpdateSupportingDocumentOptions options, ITwilioRestClient client)
         {
@@ -340,7 +354,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
             return FromJson(response.Content);
         }
 
-        #if !NET35
+#if !NET35
         /// <summary>
         /// Update an existing Supporting Document.
         /// </summary>
@@ -354,7 +368,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
             return FromJson(response.Content);
         }
-        #endif
+#endif
 
         /// <summary>
         /// Update an existing Supporting Document.
@@ -373,7 +387,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
             return Update(options, client);
         }
 
-        #if !NET35
+#if !NET35
         /// <summary>
         /// Update an existing Supporting Document.
         /// </summary>
@@ -390,7 +404,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
             var options = new UpdateSupportingDocumentOptions(pathSid){FriendlyName = friendlyName, Attributes = attributes};
             return await UpdateAsync(options, client);
         }
-        #endif
+#endif
 
         private static Request BuildDeleteRequest(DeleteSupportingDocumentOptions options, ITwilioRestClient client)
         {
@@ -416,7 +430,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
 
-        #if !NET35
+#if !NET35
         /// <summary>
         /// Delete a specific Supporting Document.
         /// </summary>
@@ -430,7 +444,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
-        #endif
+#endif
 
         /// <summary>
         /// Delete a specific Supporting Document.
@@ -444,7 +458,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
             return Delete(options, client);
         }
 
-        #if !NET35
+#if !NET35
         /// <summary>
         /// Delete a specific Supporting Document.
         /// </summary>
@@ -456,7 +470,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
             var options = new DeleteSupportingDocumentOptions(pathSid);
             return await DeleteAsync(options, client);
         }
-        #endif
+#endif
 
         /// <summary>
         /// Converts a JSON string into a SupportingDocumentResource object

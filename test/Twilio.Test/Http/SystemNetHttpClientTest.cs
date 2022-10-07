@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 using NUnit.Framework;
 using Twilio.Http;
+using Twilio.Types;
 using HttpMethod = Twilio.Http.HttpMethod;
 
 namespace Twilio.Tests.Http
@@ -25,6 +26,7 @@ namespace Twilio.Tests.Http
         private Dictionary<String, MockResponse> responseMap = new Dictionary<String, MockResponse>();
 
         public HttpRequestMessage InternalRequest { get; private set; }
+        public List<HttpContent> InternalRequestNestedContent { get; private set; }
 
         private Random random = new Random();
 
@@ -61,6 +63,11 @@ namespace Twilio.Tests.Http
                 throw response.error;
             }
             this.InternalRequest = request;
+            
+            if (request.Content is IEnumerable<HttpContent> nestedContent)
+            {
+                this.InternalRequestNestedContent = nestedContent.ToList();
+            }
 
             // Inject some randomness for multi-threading scenarios. And for fun!
             Thread.Sleep(random.Next(100));
@@ -217,6 +224,36 @@ namespace Twilio.Tests.Http
 
             Assert.IsNotNull(internalRequest.Content);
             Assert.IsInstanceOf<FormUrlEncodedContent>(internalRequest.Content);
+        }
+
+        [Test]
+        public void TestMakeRequestWithParamsAndFile()
+        {
+            this._mockHttp.Respond("https://api.twilio.com/v1/Resource.json", HttpStatusCode.OK);
+
+            Request testRequest = new Request(HttpMethod.Post, "https://api.twilio.com/v1/Resource.json");
+            testRequest.AddPostParam("post_param", "post_value");
+            testRequest.AddQueryParam("query_param", "query_value");
+
+            UploadFile file = new UploadFile("FileName.txt", new System.IO.MemoryStream(System.Text.Encoding.UTF8.GetBytes("File content")));
+            testRequest.Files.Add(new KeyValuePair<string, IUploadFile>("File", file));
+
+            this.TwilioHttpClient.MakeRequest(testRequest);
+
+            HttpRequestMessage internalRequest = this._mockHttp.InternalRequest;
+            List<HttpContent> nestedRequestContent = this._mockHttp.InternalRequestNestedContent;
+
+            Assert.AreEqual("https://api.twilio.com/v1/Resource.json?query_param=query_value",
+                            internalRequest.RequestUri.ToString());
+
+            Assert.IsNotNull(internalRequest.Content);
+            Assert.IsInstanceOf<MultipartFormDataContent>(internalRequest.Content);
+
+            Assert.IsNotNull(nestedRequestContent);
+            Assert.AreEqual(2, nestedRequestContent.Count);
+
+            Assert.IsInstanceOf<StringContent>(nestedRequestContent[0]);
+            Assert.IsInstanceOf<StreamContent>(nestedRequestContent[1]);
         }
 
         [Test]
