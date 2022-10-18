@@ -15,6 +15,7 @@ local.properties
 .classpath
 .settings/
 .loadpath
+**/.openapi-generator*
 
 # External tool builders
 .externalToolBuilders/
