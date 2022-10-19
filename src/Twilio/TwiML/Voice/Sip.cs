@@ -67,6 +67,34 @@ namespace Twilio.TwiML.Voice
         /// Status callback URL method
         /// </summary>
         public Twilio.Http.HttpMethod StatusCallbackMethod { get; set; }
+        /// <summary>
+        /// Enable machine detection or end of greeting detection
+        /// </summary>
+        public string MachineDetection { get; set; }
+        /// <summary>
+        /// HTTP Method to use with amd_status_callback
+        /// </summary>
+        public Twilio.Http.HttpMethod AmdStatusCallbackMethod { get; set; }
+        /// <summary>
+        /// The URL we should call to send amd status information to your application
+        /// </summary>
+        public string AmdStatusCallback { get; set; }
+        /// <summary>
+        /// Number of seconds to wait for machine detection
+        /// </summary>
+        public int? MachineDetectionTimeout { get; set; }
+        /// <summary>
+        /// Number of milliseconds for measuring stick for the length of the speech activity
+        /// </summary>
+        public int? MachineDetectionSpeechThreshold { get; set; }
+        /// <summary>
+        /// Number of milliseconds of silence after speech activity
+        /// </summary>
+        public int? MachineDetectionSpeechEndThreshold { get; set; }
+        /// <summary>
+        /// Number of milliseconds of initial silence
+        /// </summary>
+        public int? MachineDetectionSilenceTimeout { get; set; }
 
         /// <summary>
         /// Create a new Sip
@@ -79,6 +107,14 @@ namespace Twilio.TwiML.Voice
         /// <param name="statusCallbackEvent"> Status callback events </param>
         /// <param name="statusCallback"> Status callback URL </param>
         /// <param name="statusCallbackMethod"> Status callback URL method </param>
+        /// <param name="machineDetection"> Enable machine detection or end of greeting detection </param>
+        /// <param name="amdStatusCallbackMethod"> HTTP Method to use with amd_status_callback </param>
+        /// <param name="amdStatusCallback"> The URL we should call to send amd status information to your application </param>
+        /// <param name="machineDetectionTimeout"> Number of seconds to wait for machine detection </param>
+        /// <param name="machineDetectionSpeechThreshold"> Number of milliseconds for measuring stick for the length of the
+        ///                                       speech activity </param>
+        /// <param name="machineDetectionSpeechEndThreshold"> Number of milliseconds of silence after speech activity </param>
+        /// <param name="machineDetectionSilenceTimeout"> Number of milliseconds of initial silence </param>
         public Sip(Uri sipUrl = null,
                    string username = null,
                    string password = null,
@@ -86,7 +122,14 @@ namespace Twilio.TwiML.Voice
                    Twilio.Http.HttpMethod method = null,
                    List<Sip.EventEnum> statusCallbackEvent = null,
                    Uri statusCallback = null,
-                   Twilio.Http.HttpMethod statusCallbackMethod = null) : base("Sip")
+                   Twilio.Http.HttpMethod statusCallbackMethod = null,
+                   string machineDetection = null,
+                   Twilio.Http.HttpMethod amdStatusCallbackMethod = null,
+                   string amdStatusCallback = null,
+                   int? machineDetectionTimeout = null,
+                   int? machineDetectionSpeechThreshold = null,
+                   int? machineDetectionSpeechEndThreshold = null,
+                   int? machineDetectionSilenceTimeout = null) : base("Sip")
         {
             this.SipUrl = sipUrl;
             this.Username = username;
@@ -96,6 +139,13 @@ namespace Twilio.TwiML.Voice
             this.StatusCallbackEvent = statusCallbackEvent;
             this.StatusCallback = statusCallback;
             this.StatusCallbackMethod = statusCallbackMethod;
+            this.MachineDetection = machineDetection;
+            this.AmdStatusCallbackMethod = amdStatusCallbackMethod;
+            this.AmdStatusCallback = amdStatusCallback;
+            this.MachineDetectionTimeout = machineDetectionTimeout;
+            this.MachineDetectionSpeechThreshold = machineDetectionSpeechThreshold;
+            this.MachineDetectionSpeechEndThreshold = machineDetectionSpeechEndThreshold;
+            this.MachineDetectionSilenceTimeout = machineDetectionSilenceTimeout;
         }
 
         /// <summary>
@@ -139,6 +189,34 @@ namespace Twilio.TwiML.Voice
             if (this.StatusCallbackMethod != null)
             {
                 attributes.Add(new XAttribute("statusCallbackMethod", this.StatusCallbackMethod.ToString()));
+            }
+            if (this.MachineDetection != null)
+            {
+                attributes.Add(new XAttribute("machineDetection", this.MachineDetection));
+            }
+            if (this.AmdStatusCallbackMethod != null)
+            {
+                attributes.Add(new XAttribute("amdStatusCallbackMethod", this.AmdStatusCallbackMethod.ToString()));
+            }
+            if (this.AmdStatusCallback != null)
+            {
+                attributes.Add(new XAttribute("amdStatusCallback", this.AmdStatusCallback));
+            }
+            if (this.MachineDetectionTimeout != null)
+            {
+                attributes.Add(new XAttribute("machineDetectionTimeout", this.MachineDetectionTimeout.ToString()));
+            }
+            if (this.MachineDetectionSpeechThreshold != null)
+            {
+                attributes.Add(new XAttribute("machineDetectionSpeechThreshold", this.MachineDetectionSpeechThreshold.ToString()));
+            }
+            if (this.MachineDetectionSpeechEndThreshold != null)
+            {
+                attributes.Add(new XAttribute("machineDetectionSpeechEndThreshold", this.MachineDetectionSpeechEndThreshold.ToString()));
+            }
+            if (this.MachineDetectionSilenceTimeout != null)
+            {
+                attributes.Add(new XAttribute("machineDetectionSilenceTimeout", this.MachineDetectionSilenceTimeout.ToString()));
             }
             return attributes;
         }

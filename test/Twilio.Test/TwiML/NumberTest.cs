@@ -37,11 +37,18 @@ namespace Twilio.Tests.TwiML
                 Promoter.ListOfOne(Number.EventEnum.Initiated),
                 new Uri("https://example.com"),
                 Twilio.Http.HttpMethod.Get,
-                "BYXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+                "BYXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+                "machine_detection",
+                Twilio.Http.HttpMethod.Get,
+                "amd_status_callback",
+                1,
+                1,
+                1,
+                1
             );
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Number sendDigits=\"send_digits\" url=\"https://example.com\" method=\"GET\" statusCallbackEvent=\"initiated\" statusCallback=\"https://example.com\" statusCallbackMethod=\"GET\" byoc=\"BYXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\">+15017122661</Number>",
+                "<Number sendDigits=\"send_digits\" url=\"https://example.com\" method=\"GET\" statusCallbackEvent=\"initiated\" statusCallback=\"https://example.com\" statusCallbackMethod=\"GET\" byoc=\"BYXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\" machineDetection=\"machine_detection\" amdStatusCallbackMethod=\"GET\" amdStatusCallback=\"amd_status_callback\" machineDetectionTimeout=\"1\" machineDetectionSpeechThreshold=\"1\" machineDetectionSpeechEndThreshold=\"1\" machineDetectionSilenceTimeout=\"1\">+15017122661</Number>",
                 elem.ToString()
             );
         }

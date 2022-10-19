@@ -53,6 +53,7 @@ namespace Twilio.TwiML.Voice
             public static readonly ErrorTypeEnum InvalidDate = new ErrorTypeEnum("invalid-date");
             public static readonly ErrorTypeEnum InvalidSecurityCode = new ErrorTypeEnum("invalid-security-code");
             public static readonly ErrorTypeEnum InternalError = new ErrorTypeEnum("internal-error");
+            public static readonly ErrorTypeEnum InputMatchingFailed = new ErrorTypeEnum("input-matching-failed");
         }
 
         public sealed class CardTypeEnum : StringEnum
@@ -91,6 +92,10 @@ namespace Twilio.TwiML.Voice
         /// Current attempt count
         /// </summary>
         public List<int> Attempt { get; set; }
+        /// <summary>
+        /// Require customer to input requested information twice and verify matching.
+        /// </summary>
+        public bool? RequireMatchingInputs { get; set; }
 
         /// <summary>
         /// Create a new Prompt
@@ -99,15 +104,19 @@ namespace Twilio.TwiML.Voice
         /// <param name="errorType"> Type of error </param>
         /// <param name="cardType"> Type of the credit card </param>
         /// <param name="attempt"> Current attempt count </param>
+        /// <param name="requireMatchingInputs"> Require customer to input requested information twice and verify matching.
+        ///                             </param>
         public Prompt(Prompt.ForEnum for_ = null,
                       List<Prompt.ErrorTypeEnum> errorType = null,
                       List<Prompt.CardTypeEnum> cardType = null,
-                      List<int> attempt = null) : base("Prompt")
+                      List<int> attempt = null,
+                      bool? requireMatchingInputs = null) : base("Prompt")
         {
             this.For_ = for_;
             this.ErrorType = errorType;
             this.CardType = cardType;
             this.Attempt = attempt;
+            this.RequireMatchingInputs = requireMatchingInputs;
         }
 
         /// <summary>
@@ -131,6 +140,10 @@ namespace Twilio.TwiML.Voice
             if (this.Attempt != null)
             {
                 attributes.Add(new XAttribute("attempt", String.Join(" ", this.Attempt.Select(e => e.ToString()).ToArray())));
+            }
+            if (this.RequireMatchingInputs != null)
+            {
+                attributes.Add(new XAttribute("requireMatchingInputs", this.RequireMatchingInputs.Value.ToString().ToLower()));
             }
             return attributes;
         }

@@ -622,12 +622,15 @@ namespace Twilio.TwiML
         /// <param name="errorType"> Type of error </param>
         /// <param name="cardType"> Type of the credit card </param>
         /// <param name="attempt"> Current attempt count </param>
+        /// <param name="requireMatchingInputs"> Require customer to input requested information twice and verify matching.
+        ///                             </param>
         public VoiceResponse Prompt(Prompt.ForEnum for_ = null,
                                     List<Prompt.ErrorTypeEnum> errorType = null,
                                     List<Prompt.CardTypeEnum> cardType = null,
-                                    List<int> attempt = null)
+                                    List<int> attempt = null,
+                                    bool? requireMatchingInputs = null)
         {
-            var newChild = new Prompt(for_, errorType, cardType, attempt);
+            var newChild = new Prompt(for_, errorType, cardType, attempt, requireMatchingInputs);
             this.Append(newChild);
             return this;
         }

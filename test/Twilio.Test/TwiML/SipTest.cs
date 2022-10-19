@@ -37,11 +37,18 @@ namespace Twilio.Tests.TwiML
                 Twilio.Http.HttpMethod.Get,
                 Promoter.ListOfOne(Sip.EventEnum.Initiated),
                 new Uri("https://example.com"),
-                Twilio.Http.HttpMethod.Get
+                Twilio.Http.HttpMethod.Get,
+                "machine_detection",
+                Twilio.Http.HttpMethod.Get,
+                "amd_status_callback",
+                1,
+                1,
+                1,
+                1
             );
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Sip username=\"username\" password=\"password\" url=\"https://example.com\" method=\"GET\" statusCallbackEvent=\"initiated\" statusCallback=\"https://example.com\" statusCallbackMethod=\"GET\">https://example.com</Sip>",
+                "<Sip username=\"username\" password=\"password\" url=\"https://example.com\" method=\"GET\" statusCallbackEvent=\"initiated\" statusCallback=\"https://example.com\" statusCallbackMethod=\"GET\" machineDetection=\"machine_detection\" amdStatusCallbackMethod=\"GET\" amdStatusCallback=\"amd_status_callback\" machineDetectionTimeout=\"1\" machineDetectionSpeechThreshold=\"1\" machineDetectionSpeechEndThreshold=\"1\" machineDetectionSilenceTimeout=\"1\">https://example.com</Sip>",
                 elem.ToString()
             );
         }

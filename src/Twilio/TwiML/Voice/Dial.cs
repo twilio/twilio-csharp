@@ -483,6 +483,14 @@ namespace Twilio.TwiML.Voice
         /// <param name="statusCallback"> Status callback URL </param>
         /// <param name="statusCallbackMethod"> Status callback URL method </param>
         /// <param name="byoc"> BYOC trunk SID (Beta) </param>
+        /// <param name="machineDetection"> Enable machine detection or end of greeting detection </param>
+        /// <param name="amdStatusCallbackMethod"> HTTP Method to use with amd_status_callback </param>
+        /// <param name="amdStatusCallback"> The URL we should call to send amd status information to your application </param>
+        /// <param name="machineDetectionTimeout"> Number of seconds to wait for machine detection </param>
+        /// <param name="machineDetectionSpeechThreshold"> Number of milliseconds for measuring stick for the length of the
+        ///                                       speech activity </param>
+        /// <param name="machineDetectionSpeechEndThreshold"> Number of milliseconds of silence after speech activity </param>
+        /// <param name="machineDetectionSilenceTimeout"> Number of milliseconds of initial silence </param>
         public Dial Number(Types.PhoneNumber phoneNumber = null,
                            string sendDigits = null,
                            Uri url = null,
@@ -490,7 +498,14 @@ namespace Twilio.TwiML.Voice
                            List<Number.EventEnum> statusCallbackEvent = null,
                            Uri statusCallback = null,
                            Twilio.Http.HttpMethod statusCallbackMethod = null,
-                           string byoc = null)
+                           string byoc = null,
+                           string machineDetection = null,
+                           Twilio.Http.HttpMethod amdStatusCallbackMethod = null,
+                           string amdStatusCallback = null,
+                           int? machineDetectionTimeout = null,
+                           int? machineDetectionSpeechThreshold = null,
+                           int? machineDetectionSpeechEndThreshold = null,
+                           int? machineDetectionSilenceTimeout = null)
         {
             var newChild = new Number(
                 phoneNumber,
@@ -500,7 +515,14 @@ namespace Twilio.TwiML.Voice
                 statusCallbackEvent,
                 statusCallback,
                 statusCallbackMethod,
-                byoc
+                byoc,
+                machineDetection,
+                amdStatusCallbackMethod,
+                amdStatusCallback,
+                machineDetectionTimeout,
+                machineDetectionSpeechThreshold,
+                machineDetectionSpeechEndThreshold,
+                machineDetectionSilenceTimeout
             );
             this.Append(newChild);
             return this;
@@ -580,6 +602,14 @@ namespace Twilio.TwiML.Voice
         /// <param name="statusCallbackEvent"> Status callback events </param>
         /// <param name="statusCallback"> Status callback URL </param>
         /// <param name="statusCallbackMethod"> Status callback URL method </param>
+        /// <param name="machineDetection"> Enable machine detection or end of greeting detection </param>
+        /// <param name="amdStatusCallbackMethod"> HTTP Method to use with amd_status_callback </param>
+        /// <param name="amdStatusCallback"> The URL we should call to send amd status information to your application </param>
+        /// <param name="machineDetectionTimeout"> Number of seconds to wait for machine detection </param>
+        /// <param name="machineDetectionSpeechThreshold"> Number of milliseconds for measuring stick for the length of the
+        ///                                       speech activity </param>
+        /// <param name="machineDetectionSpeechEndThreshold"> Number of milliseconds of silence after speech activity </param>
+        /// <param name="machineDetectionSilenceTimeout"> Number of milliseconds of initial silence </param>
         public Dial Sip(Uri sipUrl = null,
                         string username = null,
                         string password = null,
@@ -587,7 +617,14 @@ namespace Twilio.TwiML.Voice
                         Twilio.Http.HttpMethod method = null,
                         List<Sip.EventEnum> statusCallbackEvent = null,
                         Uri statusCallback = null,
-                        Twilio.Http.HttpMethod statusCallbackMethod = null)
+                        Twilio.Http.HttpMethod statusCallbackMethod = null,
+                        string machineDetection = null,
+                        Twilio.Http.HttpMethod amdStatusCallbackMethod = null,
+                        string amdStatusCallback = null,
+                        int? machineDetectionTimeout = null,
+                        int? machineDetectionSpeechThreshold = null,
+                        int? machineDetectionSpeechEndThreshold = null,
+                        int? machineDetectionSilenceTimeout = null)
         {
             var newChild = new Sip(
                 sipUrl,
@@ -597,7 +634,14 @@ namespace Twilio.TwiML.Voice
                 method,
                 statusCallbackEvent,
                 statusCallback,
-                statusCallbackMethod
+                statusCallbackMethod,
+                machineDetection,
+                amdStatusCallbackMethod,
+                amdStatusCallback,
+                machineDetectionTimeout,
+                machineDetectionSpeechThreshold,
+                machineDetectionSpeechEndThreshold,
+                machineDetectionSilenceTimeout
             );
             this.Append(newChild);
             return this;
