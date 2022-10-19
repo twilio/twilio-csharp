@@ -12,8 +12,6 @@ namespace Twilio.Rest.Verify.V2.Service
 {
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// Create a new Entity for the Service
     /// </summary>
     public class CreateEntityOptions : IOptions<EntityResource>
@@ -54,8 +52,6 @@ namespace Twilio.Rest.Verify.V2.Service
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// Delete a specific Entity.
     /// </summary>
     public class DeleteEntityOptions : IOptions<EntityResource>
@@ -91,8 +87,6 @@ namespace Twilio.Rest.Verify.V2.Service
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// Fetch a specific Entity.
     /// </summary>
     public class FetchEntityOptions : IOptions<EntityResource>
@@ -128,8 +122,6 @@ namespace Twilio.Rest.Verify.V2.Service
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// Retrieve a list of all Entities for a Service.
     /// </summary>
     public class ReadEntityOptions : ReadOptions<EntityResource>

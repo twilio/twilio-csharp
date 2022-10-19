@@ -86,6 +86,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         public List<string> PersistentAction { get; set; }
         /// <summary>
+        /// Sets whether to shorten and track links included in the body of this message.
+        /// </summary>
+        public bool? ShortenUrls { get; set; }
+        /// <summary>
         /// Pass the value `fixed` to schedule a message at a fixed time.
         /// </summary>
         public MessageResource.ScheduleTypeEnum ScheduleType { get; set; }
@@ -193,6 +197,11 @@ namespace Twilio.Rest.Api.V2010.Account
             if (PersistentAction != null)
             {
                 p.AddRange(PersistentAction.Select(prop => new KeyValuePair<string, string>("PersistentAction", prop)));
+            }
+
+            if (ShortenUrls != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ShortenUrls", ShortenUrls.Value.ToString().ToLower()));
             }
 
             if (ScheduleType != null)

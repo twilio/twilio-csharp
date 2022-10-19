@@ -12,8 +12,6 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
 {
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// Create a new Factor for the Entity
     /// </summary>
     public class CreateNewFactorOptions : IOptions<NewFactorResource>

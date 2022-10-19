@@ -12,8 +12,6 @@ namespace Twilio.Rest.Verify.V2.Service.Entity.Challenge
 {
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// Create a new Notification for the corresponding Challenge
     /// </summary>
     public class CreateNotificationOptions : IOptions<NotificationResource>

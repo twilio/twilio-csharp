@@ -12,8 +12,6 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
 {
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// Delete a specific Factor.
     /// </summary>
     public class DeleteFactorOptions : IOptions<FactorResource>
@@ -55,8 +53,6 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// Fetch a specific Factor.
     /// </summary>
     public class FetchFactorOptions : IOptions<FactorResource>
@@ -98,8 +94,6 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// Retrieve a list of all Factors for an Entity.
     /// </summary>
     public class ReadFactorOptions : ReadOptions<FactorResource>
@@ -140,8 +134,6 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// Update a specific Factor. This endpoint can be used to Verify a Factor if passed an `AuthPayload` param.
     /// </summary>
     public class UpdateFactorOptions : IOptions<FactorResource>

@@ -191,7 +191,8 @@ namespace Twilio.Tests.TwiML
                 Prompt.ForEnum.PaymentCardNumber,
                 Promoter.ListOfOne(Prompt.ErrorTypeEnum.Timeout),
                 Promoter.ListOfOne(Prompt.CardTypeEnum.Visa),
-                Promoter.ListOfOne(1)
+                Promoter.ListOfOne(1),
+                true
             );
 
             elem.Start(new Uri("https://example.com"), Twilio.Http.HttpMethod.Get);
@@ -219,7 +220,7 @@ namespace Twilio.Tests.TwiML
                 "  <Say voice=\"man\" loop=\"1\" language=\"arb\">message</Say>" + Environment.NewLine +
                 "  <Sms to=\"+15558675310\" from=\"+15017122661\" action=\"https://example.com\" method=\"GET\" statusCallback=\"https://example.com\">message</Sms>" + Environment.NewLine +
                 "  <Pay input=\"dtmf\" action=\"https://example.com\" bankAccountType=\"consumer-checking\" statusCallback=\"https://example.com\" statusCallbackMethod=\"GET\" timeout=\"1\" maxAttempts=\"1\" securityCode=\"true\" postalCode=\"postal_code\" minPostalCodeLength=\"1\" paymentConnector=\"payment_connector\" paymentMethod=\"ach-debit\" tokenType=\"one-time\" chargeAmount=\"charge_amount\" currency=\"currency\" description=\"description\" validCardTypes=\"visa\" language=\"de-DE\"></Pay>" + Environment.NewLine +
-                "  <Prompt for=\"payment-card-number\" errorType=\"timeout\" cardType=\"visa\" attempt=\"1\"></Prompt>" + Environment.NewLine +
+                "  <Prompt for=\"payment-card-number\" errorType=\"timeout\" cardType=\"visa\" attempt=\"1\" requireMatchingInputs=\"true\"></Prompt>" + Environment.NewLine +
                 "  <Start action=\"https://example.com\" method=\"GET\"></Start>" + Environment.NewLine +
                 "  <Stop></Stop>" + Environment.NewLine +
                 "  <Refer action=\"https://example.com\" method=\"GET\"></Refer>" + Environment.NewLine +

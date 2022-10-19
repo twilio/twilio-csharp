@@ -184,6 +184,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="smartEncoded"> Whether to detect Unicode characters that have a similar GSM-7 character and replace
         ///                    them </param>
         /// <param name="persistentAction"> Rich actions for Channels Messages. </param>
+        /// <param name="shortenUrls"> Sets whether to shorten and track links included in the body of this message. </param>
         /// <param name="scheduleType"> Pass the value `fixed` to schedule a message at a fixed time. </param>
         /// <param name="sendAt"> The time that Twilio will send the message. Must be in ISO 8601 format. </param>
         /// <param name="sendAsMms"> If set to True, Twilio will deliver the message as a single MMS message, regardless of the
@@ -207,12 +208,13 @@ namespace Twilio.Rest.Api.V2010.Account
                                              MessageResource.AddressRetentionEnum addressRetention = null,
                                              bool? smartEncoded = null,
                                              List<string> persistentAction = null,
+                                             bool? shortenUrls = null,
                                              MessageResource.ScheduleTypeEnum scheduleType = null,
                                              DateTime? sendAt = null,
                                              bool? sendAsMms = null,
                                              ITwilioRestClient client = null)
         {
-            var options = new CreateMessageOptions(to){PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, Attempt = attempt, ValidityPeriod = validityPeriod, ForceDelivery = forceDelivery, ContentRetention = contentRetention, AddressRetention = addressRetention, SmartEncoded = smartEncoded, PersistentAction = persistentAction, ScheduleType = scheduleType, SendAt = sendAt, SendAsMms = sendAsMms};
+            var options = new CreateMessageOptions(to){PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, Attempt = attempt, ValidityPeriod = validityPeriod, ForceDelivery = forceDelivery, ContentRetention = contentRetention, AddressRetention = addressRetention, SmartEncoded = smartEncoded, PersistentAction = persistentAction, ShortenUrls = shortenUrls, ScheduleType = scheduleType, SendAt = sendAt, SendAsMms = sendAsMms};
             return Create(options, client);
         }
 
@@ -241,6 +243,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="smartEncoded"> Whether to detect Unicode characters that have a similar GSM-7 character and replace
         ///                    them </param>
         /// <param name="persistentAction"> Rich actions for Channels Messages. </param>
+        /// <param name="shortenUrls"> Sets whether to shorten and track links included in the body of this message. </param>
         /// <param name="scheduleType"> Pass the value `fixed` to schedule a message at a fixed time. </param>
         /// <param name="sendAt"> The time that Twilio will send the message. Must be in ISO 8601 format. </param>
         /// <param name="sendAsMms"> If set to True, Twilio will deliver the message as a single MMS message, regardless of the
@@ -264,12 +267,13 @@ namespace Twilio.Rest.Api.V2010.Account
                                                                                      MessageResource.AddressRetentionEnum addressRetention = null,
                                                                                      bool? smartEncoded = null,
                                                                                      List<string> persistentAction = null,
+                                                                                     bool? shortenUrls = null,
                                                                                      MessageResource.ScheduleTypeEnum scheduleType = null,
                                                                                      DateTime? sendAt = null,
                                                                                      bool? sendAsMms = null,
                                                                                      ITwilioRestClient client = null)
         {
-            var options = new CreateMessageOptions(to){PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, Attempt = attempt, ValidityPeriod = validityPeriod, ForceDelivery = forceDelivery, ContentRetention = contentRetention, AddressRetention = addressRetention, SmartEncoded = smartEncoded, PersistentAction = persistentAction, ScheduleType = scheduleType, SendAt = sendAt, SendAsMms = sendAsMms};
+            var options = new CreateMessageOptions(to){PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, Attempt = attempt, ValidityPeriod = validityPeriod, ForceDelivery = forceDelivery, ContentRetention = contentRetention, AddressRetention = addressRetention, SmartEncoded = smartEncoded, PersistentAction = persistentAction, ShortenUrls = shortenUrls, ScheduleType = scheduleType, SendAt = sendAt, SendAsMms = sendAsMms};
             return await CreateAsync(options, client);
         }
         #endif

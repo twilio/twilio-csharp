@@ -13,8 +13,6 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
 {
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// Create a new Challenge for the Factor
     /// </summary>
     public class CreateChallengeOptions : IOptions<ChallengeResource>
@@ -107,8 +105,6 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// Fetch a specific Challenge.
     /// </summary>
     public class FetchChallengeOptions : IOptions<ChallengeResource>
@@ -150,8 +146,6 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// Retrieve a list of all Challenges for a Factor.
     /// </summary>
     public class ReadChallengeOptions : ReadOptions<ChallengeResource>
@@ -219,8 +213,6 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// Verify a specific Challenge.
     /// </summary>
     public class UpdateChallengeOptions : IOptions<ChallengeResource>

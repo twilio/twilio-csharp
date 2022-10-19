@@ -33,11 +33,12 @@ namespace Twilio.Tests.TwiML
                 Prompt.ForEnum.PaymentCardNumber,
                 Promoter.ListOfOne(Prompt.ErrorTypeEnum.Timeout),
                 Promoter.ListOfOne(Prompt.CardTypeEnum.Visa),
-                Promoter.ListOfOne(1)
+                Promoter.ListOfOne(1),
+                true
             );
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Prompt for=\"payment-card-number\" errorType=\"timeout\" cardType=\"visa\" attempt=\"1\"></Prompt>",
+                "<Prompt for=\"payment-card-number\" errorType=\"timeout\" cardType=\"visa\" attempt=\"1\" requireMatchingInputs=\"true\"></Prompt>",
                 elem.ToString()
             );
         }

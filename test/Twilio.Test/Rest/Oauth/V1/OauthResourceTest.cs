@@ -12,29 +12,29 @@ using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
-using Twilio.Rest.Verify.V2;
+using Twilio.Rest.Oauth.V1;
 
-namespace Twilio.Tests.Rest.Verify.V2
+namespace Twilio.Tests.Rest.Oauth.V1
 {
 
     [TestFixture]
-    public class TemplateTest : TwilioTest
+    public class OauthTest : TwilioTest
     {
         [Test]
-        public void TestReadRequest()
+        public void TestFetchRequest()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             var request = new Request(
                 HttpMethod.Get,
-                Twilio.Rest.Domain.Verify,
-                "/v2/Templates",
+                Twilio.Rest.Domain.Oauth,
+                "/v1/certs",
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                TemplateResource.Read(client: twilioRestClient);
+                OauthResource.Fetch(client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -42,17 +42,17 @@ namespace Twilio.Tests.Rest.Verify.V2
         }
 
         [Test]
-        public void TestListVerificationTemplatesResponse()
+        public void TestFetchResponse()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"templates\": [{\"sid\": \"HJaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"Base Verification Template 2 with do not share\",\"channels\": [\"sms\"],\"translations\": {\"en\": {\"is_default_translation\": true,\"status\": \"approved\",\"locale\": \"en\",\"text\": \"Your {{friendly_name}} verification code is: {{code}}. Do not share this code with anyone.\",\"date_updated\": \"2021-07-29T20:38:28.759979905Z\",\"date_created\": \"2021-07-29T20:38:28.165602325Z\"}}}],\"meta\": {\"page\": 0,\"page_size\": 50,\"first_page_url\": \"https://verify.twilio.com/v2/Templates?PageSize=50&Page=0\",\"previous_page_url\": null,\"url\": \"https://verify.twilio.com/v2/Templates?PageSize=50&Page=0\",\"next_page_url\": null,\"key\": \"templates\"}}"
+                                         "{\"keys\": [{\"alg\": \"ES256\",\"kid\": \"IC10c8172f35dd36f20d9ed2fcc0b818c7\",\"key_ops\": [],\"use\": \"sig\",\"crv\": \"P-256\",\"x\": \"hrJ4NKauVYBiREgIY_EPPj10zHIiOHeIf3-LGODt_KM\",\"y\": \"c3IcyhpvfMIMpqd_ku9Q_4n20nMlelUF-zSmRXEIFEU\",\"kty\": \"EC\"}],\"url\": \"https://oauth.twilio.com/v1/certs\"}"
                                      ));
 
-            var response = TemplateResource.Read(client: twilioRestClient);
+            var response = OauthResource.Fetch(client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

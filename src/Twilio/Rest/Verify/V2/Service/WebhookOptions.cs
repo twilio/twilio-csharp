@@ -13,8 +13,6 @@ namespace Twilio.Rest.Verify.V2.Service
 {
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// Create a new Webhook for the Service
     /// </summary>
     public class CreateWebhookOptions : IOptions<WebhookResource>
@@ -95,8 +93,6 @@ namespace Twilio.Rest.Verify.V2.Service
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// UpdateWebhookOptions
     /// </summary>
     public class UpdateWebhookOptions : IOptions<WebhookResource>
@@ -178,8 +174,6 @@ namespace Twilio.Rest.Verify.V2.Service
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// Delete a specific Webhook.
     /// </summary>
     public class DeleteWebhookOptions : IOptions<WebhookResource>
@@ -215,8 +209,6 @@ namespace Twilio.Rest.Verify.V2.Service
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// Fetch a specific Webhook.
     /// </summary>
     public class FetchWebhookOptions : IOptions<WebhookResource>
@@ -252,8 +244,6 @@ namespace Twilio.Rest.Verify.V2.Service
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// Retrieve a list of all Webhooks for a Service.
     /// </summary>
     public class ReadWebhookOptions : ReadOptions<WebhookResource>

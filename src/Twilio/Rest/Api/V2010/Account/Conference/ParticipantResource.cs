@@ -162,13 +162,14 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <param name="pathAccountSid"> The SID of the Account that created the resources to update </param>
         /// <param name="muted"> Whether the participant should be muted </param>
         /// <param name="hold"> Whether the participant should be on hold </param>
-        /// <param name="holdUrl"> The URL we call using the `hold_method` for  music that plays when the participant is on
-        ///               hold </param>
+        /// <param name="holdUrl"> The URL we call using the `hold_method` for music that plays when the participant is on hold
+        ///               </param>
         /// <param name="holdMethod"> The HTTP method we should use to call hold_url </param>
         /// <param name="announceUrl"> The URL we call using the `announce_method` for an announcement to the participant
         ///                   </param>
         /// <param name="announceMethod"> The HTTP method we should use to call announce_url </param>
-        /// <param name="waitUrl"> URL that hosts pre-conference hold music </param>
+        /// <param name="waitUrl"> The URL we call using the `wait_method` for the music to play while participants are waiting
+        ///               for the conference to start </param>
         /// <param name="waitMethod"> The HTTP method we should use to call `wait_url` </param>
         /// <param name="beepOnExit"> Whether to play a notification beep to the conference when the participant exit </param>
         /// <param name="endConferenceOnExit"> Whether to end the conference when the participant leaves </param>
@@ -206,13 +207,14 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <param name="pathAccountSid"> The SID of the Account that created the resources to update </param>
         /// <param name="muted"> Whether the participant should be muted </param>
         /// <param name="hold"> Whether the participant should be on hold </param>
-        /// <param name="holdUrl"> The URL we call using the `hold_method` for  music that plays when the participant is on
-        ///               hold </param>
+        /// <param name="holdUrl"> The URL we call using the `hold_method` for music that plays when the participant is on hold
+        ///               </param>
         /// <param name="holdMethod"> The HTTP method we should use to call hold_url </param>
         /// <param name="announceUrl"> The URL we call using the `announce_method` for an announcement to the participant
         ///                   </param>
         /// <param name="announceMethod"> The HTTP method we should use to call announce_url </param>
-        /// <param name="waitUrl"> URL that hosts pre-conference hold music </param>
+        /// <param name="waitUrl"> The URL we call using the `wait_method` for the music to play while participants are waiting
+        ///               for the conference to start </param>
         /// <param name="waitMethod"> The HTTP method we should use to call `wait_url` </param>
         /// <param name="beepOnExit"> Whether to play a notification beep to the conference when the participant exit </param>
         /// <param name="endConferenceOnExit"> Whether to end the conference when the participant leaves </param>

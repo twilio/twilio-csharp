@@ -78,7 +78,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// </summary>
         public bool? Hold { get; set; }
         /// <summary>
-        /// The URL we call using the `hold_method` for  music that plays when the participant is on hold
+        /// The URL we call using the `hold_method` for music that plays when the participant is on hold
         /// </summary>
         public Uri HoldUrl { get; set; }
         /// <summary>
@@ -94,7 +94,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// </summary>
         public Twilio.Http.HttpMethod AnnounceMethod { get; set; }
         /// <summary>
-        /// URL that hosts pre-conference hold music
+        /// The URL we call using the `wait_method` for the music to play while participants are waiting for the conference to start
         /// </summary>
         public Uri WaitUrl { get; set; }
         /// <summary>

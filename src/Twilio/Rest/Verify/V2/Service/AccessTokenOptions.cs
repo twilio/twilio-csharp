@@ -12,8 +12,6 @@ namespace Twilio.Rest.Verify.V2.Service
 {
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// Create a new enrollment Access Token for the Entity
     /// </summary>
     public class CreateAccessTokenOptions : IOptions<AccessTokenResource>
@@ -85,8 +83,6 @@ namespace Twilio.Rest.Verify.V2.Service
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// Fetch an Access Token for the Entity
     /// </summary>
     public class FetchAccessTokenOptions : IOptions<AccessTokenResource>
