@@ -29,6 +29,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         /// Returns the list of reservations for a task with a specified ReservationStatus
         /// </summary>
         public ReservationResource.StatusEnum ReservationStatus { get; set; }
+        /// <summary>
+        /// The SID of the reserved Worker resource to read
+        /// </summary>
+        public string WorkerSid { get; set; }
 
         /// <summary>
         /// Construct a new ReadReservationOptions
@@ -50,6 +54,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
             if (ReservationStatus != null)
             {
                 p.Add(new KeyValuePair<string, string>("ReservationStatus", ReservationStatus.ToString()));
+            }
+
+            if (WorkerSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("WorkerSid", WorkerSid.ToString()));
             }
 
             if (PageSize != null)

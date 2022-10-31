@@ -120,10 +120,6 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// The Participant objects to include in the new session
         /// </summary>
         public List<object> Participants { get; set; }
-        /// <summary>
-        /// An experimental parameter to override the ProxyAllowParticipantConflict account flag on a per-request basis.
-        /// </summary>
-        public bool? FailOnParticipantConflict { get; set; }
 
         /// <summary>
         /// Construct a new CreateSessionOptions
@@ -169,11 +165,6 @@ namespace Twilio.Rest.Proxy.V1.Service
             if (Participants != null)
             {
                 p.AddRange(Participants.Select(prop => new KeyValuePair<string, string>("Participants", Serializers.JsonObject(prop))));
-            }
-
-            if (FailOnParticipantConflict != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FailOnParticipantConflict", FailOnParticipantConflict.Value.ToString().ToLower()));
             }
 
             return p;
@@ -244,10 +235,6 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// The new status of the resource
         /// </summary>
         public SessionResource.StatusEnum Status { get; set; }
-        /// <summary>
-        /// An experimental parameter to override the ProxyAllowParticipantConflict account flag on a per-request basis.
-        /// </summary>
-        public bool? FailOnParticipantConflict { get; set; }
 
         /// <summary>
         /// Construct a new UpdateSessionOptions
@@ -279,11 +266,6 @@ namespace Twilio.Rest.Proxy.V1.Service
             if (Status != null)
             {
                 p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
-            }
-
-            if (FailOnParticipantConflict != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FailOnParticipantConflict", FailOnParticipantConflict.Value.ToString().ToLower()));
             }
 
             return p;

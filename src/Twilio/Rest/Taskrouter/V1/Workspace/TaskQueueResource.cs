@@ -259,6 +259,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="friendlyName"> The friendly_name of the TaskQueue resources to read </param>
         /// <param name="evaluateWorkerAttributes"> The attributes of the Workers to read </param>
         /// <param name="workerSid"> The SID of the Worker with the TaskQueue resources to read </param>
+        /// <param name="ordering"> Sorting parameter for TaskQueues </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -267,11 +268,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                                                           string friendlyName = null,
                                                           string evaluateWorkerAttributes = null,
                                                           string workerSid = null,
+                                                          string ordering = null,
                                                           int? pageSize = null,
                                                           long? limit = null,
                                                           ITwilioRestClient client = null)
         {
-            var options = new ReadTaskQueueOptions(pathWorkspaceSid){FriendlyName = friendlyName, EvaluateWorkerAttributes = evaluateWorkerAttributes, WorkerSid = workerSid, PageSize = pageSize, Limit = limit};
+            var options = new ReadTaskQueueOptions(pathWorkspaceSid){FriendlyName = friendlyName, EvaluateWorkerAttributes = evaluateWorkerAttributes, WorkerSid = workerSid, Ordering = ordering, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -283,6 +285,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="friendlyName"> The friendly_name of the TaskQueue resources to read </param>
         /// <param name="evaluateWorkerAttributes"> The attributes of the Workers to read </param>
         /// <param name="workerSid"> The SID of the Worker with the TaskQueue resources to read </param>
+        /// <param name="ordering"> Sorting parameter for TaskQueues </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -291,11 +294,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                                                                                                   string friendlyName = null,
                                                                                                   string evaluateWorkerAttributes = null,
                                                                                                   string workerSid = null,
+                                                                                                  string ordering = null,
                                                                                                   int? pageSize = null,
                                                                                                   long? limit = null,
                                                                                                   ITwilioRestClient client = null)
         {
-            var options = new ReadTaskQueueOptions(pathWorkspaceSid){FriendlyName = friendlyName, EvaluateWorkerAttributes = evaluateWorkerAttributes, WorkerSid = workerSid, PageSize = pageSize, Limit = limit};
+            var options = new ReadTaskQueueOptions(pathWorkspaceSid){FriendlyName = friendlyName, EvaluateWorkerAttributes = evaluateWorkerAttributes, WorkerSid = workerSid, Ordering = ordering, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

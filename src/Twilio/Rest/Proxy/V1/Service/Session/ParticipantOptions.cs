@@ -127,10 +127,6 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         /// The Proxy Identifier Sid
         /// </summary>
         public string ProxyIdentifierSid { get; set; }
-        /// <summary>
-        /// An experimental parameter to override the ProxyAllowParticipantConflict account flag on a per-request basis.
-        /// </summary>
-        public bool? FailOnParticipantConflict { get; set; }
 
         /// <summary>
         /// Construct a new CreateParticipantOptions
@@ -169,11 +165,6 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
             if (ProxyIdentifierSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("ProxyIdentifierSid", ProxyIdentifierSid.ToString()));
-            }
-
-            if (FailOnParticipantConflict != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FailOnParticipantConflict", FailOnParticipantConflict.Value.ToString().ToLower()));
             }
 
             return p;

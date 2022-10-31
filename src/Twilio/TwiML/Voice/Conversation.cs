@@ -97,6 +97,14 @@ namespace Twilio.TwiML.Voice
         /// </summary>
         public int? InboundTimeout { get; set; }
         /// <summary>
+        /// TwiML URL
+        /// </summary>
+        public Uri Url { get; set; }
+        /// <summary>
+        /// TwiML URL method
+        /// </summary>
+        public Twilio.Http.HttpMethod Method { get; set; }
+        /// <summary>
         /// Record
         /// </summary>
         public Conversation.RecordEnum Record { get; set; }
@@ -136,6 +144,8 @@ namespace Twilio.TwiML.Voice
         /// <param name="inboundAutocreation"> Inbound autocreation </param>
         /// <param name="routingAssignmentTimeout"> Routing assignment timeout </param>
         /// <param name="inboundTimeout"> Inbound timeout </param>
+        /// <param name="url"> TwiML URL </param>
+        /// <param name="method"> TwiML URL method </param>
         /// <param name="record"> Record </param>
         /// <param name="trim"> Trim </param>
         /// <param name="recordingStatusCallback"> Recording status callback URL </param>
@@ -148,6 +158,8 @@ namespace Twilio.TwiML.Voice
                             bool? inboundAutocreation = null,
                             int? routingAssignmentTimeout = null,
                             int? inboundTimeout = null,
+                            Uri url = null,
+                            Twilio.Http.HttpMethod method = null,
                             Conversation.RecordEnum record = null,
                             Conversation.TrimEnum trim = null,
                             Uri recordingStatusCallback = null,
@@ -161,6 +173,8 @@ namespace Twilio.TwiML.Voice
             this.InboundAutocreation = inboundAutocreation;
             this.RoutingAssignmentTimeout = routingAssignmentTimeout;
             this.InboundTimeout = inboundTimeout;
+            this.Url = url;
+            this.Method = method;
             this.Record = record;
             this.Trim = trim;
             this.RecordingStatusCallback = recordingStatusCallback;
@@ -192,6 +206,14 @@ namespace Twilio.TwiML.Voice
             if (this.InboundTimeout != null)
             {
                 attributes.Add(new XAttribute("inboundTimeout", this.InboundTimeout.ToString()));
+            }
+            if (this.Url != null)
+            {
+                attributes.Add(new XAttribute("url", Serializers.Url(this.Url)));
+            }
+            if (this.Method != null)
+            {
+                attributes.Add(new XAttribute("method", this.Method.ToString()));
             }
             if (this.Record != null)
             {

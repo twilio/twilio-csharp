@@ -156,6 +156,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// The SID of the Worker with the TaskQueue resources to read
         /// </summary>
         public string WorkerSid { get; set; }
+        /// <summary>
+        /// Sorting parameter for TaskQueues
+        /// </summary>
+        public string Ordering { get; set; }
 
         /// <summary>
         /// Construct a new ReadTaskQueueOptions
@@ -185,6 +189,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             if (WorkerSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("WorkerSid", WorkerSid.ToString()));
+            }
+
+            if (Ordering != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Ordering", Ordering));
             }
 
             if (PageSize != null)

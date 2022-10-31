@@ -101,6 +101,14 @@ namespace Twilio.Rest.Api.V2010.Account
         /// If set to True, Twilio will deliver the message as a single MMS message, regardless of the presence of media.
         /// </summary>
         public bool? SendAsMms { get; set; }
+        /// <summary>
+        /// The SID of the preconfigured Content object you want to associate with the message.
+        /// </summary>
+        public string ContentSid { get; set; }
+        /// <summary>
+        /// Key-value pairs of variable names to substitution values, used alongside a content_sid.
+        /// </summary>
+        public string ContentVariables { get; set; }
 
         /// <summary>
         /// Construct a new CreateMessageOptions
@@ -217,6 +225,16 @@ namespace Twilio.Rest.Api.V2010.Account
             if (SendAsMms != null)
             {
                 p.Add(new KeyValuePair<string, string>("SendAsMms", SendAsMms.Value.ToString().ToLower()));
+            }
+
+            if (ContentSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ContentSid", ContentSid.ToString()));
+            }
+
+            if (ContentVariables != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ContentVariables", ContentVariables));
             }
 
             return p;

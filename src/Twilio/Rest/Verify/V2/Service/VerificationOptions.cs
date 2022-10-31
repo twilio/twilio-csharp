@@ -69,7 +69,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// </summary>
         public string AppHash { get; set; }
         /// <summary>
-        /// The verification template SMS messages.
+        /// The verification template SMS or Voice message.
         /// </summary>
         public string TemplateSid { get; set; }
         /// <summary>

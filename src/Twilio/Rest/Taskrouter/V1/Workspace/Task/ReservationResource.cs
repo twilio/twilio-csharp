@@ -138,6 +138,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         /// <param name="pathTaskSid"> The SID of the reserved Task resource with the TaskReservation resources to read </param>
         /// <param name="reservationStatus"> Returns the list of reservations for a task with a specified ReservationStatus
         ///                         </param>
+        /// <param name="workerSid"> The SID of the reserved Worker resource to read </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -145,11 +146,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         public static ResourceSet<ReservationResource> Read(string pathWorkspaceSid,
                                                             string pathTaskSid,
                                                             ReservationResource.StatusEnum reservationStatus = null,
+                                                            string workerSid = null,
                                                             int? pageSize = null,
                                                             long? limit = null,
                                                             ITwilioRestClient client = null)
         {
-            var options = new ReadReservationOptions(pathWorkspaceSid, pathTaskSid){ReservationStatus = reservationStatus, PageSize = pageSize, Limit = limit};
+            var options = new ReadReservationOptions(pathWorkspaceSid, pathTaskSid){ReservationStatus = reservationStatus, WorkerSid = workerSid, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -161,6 +163,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         /// <param name="pathTaskSid"> The SID of the reserved Task resource with the TaskReservation resources to read </param>
         /// <param name="reservationStatus"> Returns the list of reservations for a task with a specified ReservationStatus
         ///                         </param>
+        /// <param name="workerSid"> The SID of the reserved Worker resource to read </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -168,11 +171,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         public static async System.Threading.Tasks.Task<ResourceSet<ReservationResource>> ReadAsync(string pathWorkspaceSid,
                                                                                                     string pathTaskSid,
                                                                                                     ReservationResource.StatusEnum reservationStatus = null,
+                                                                                                    string workerSid = null,
                                                                                                     int? pageSize = null,
                                                                                                     long? limit = null,
                                                                                                     ITwilioRestClient client = null)
         {
-            var options = new ReadReservationOptions(pathWorkspaceSid, pathTaskSid){ReservationStatus = reservationStatus, PageSize = pageSize, Limit = limit};
+            var options = new ReadReservationOptions(pathWorkspaceSid, pathTaskSid){ReservationStatus = reservationStatus, WorkerSid = workerSid, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

@@ -106,7 +106,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="rateLimits"> The custom key-value pairs of Programmable Rate Limits. </param>
         /// <param name="channelConfiguration"> Channel specific configuration in json format. </param>
         /// <param name="appHash"> Your App Hash to be appended at the end of an SMS. </param>
-        /// <param name="templateSid"> The verification template SMS messages. </param>
+        /// <param name="templateSid"> The verification template SMS or Voice message. </param>
         /// <param name="templateCustomSubstitutions"> The values of the special variables declared on the message template.
         ///                                   </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -149,7 +149,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="rateLimits"> The custom key-value pairs of Programmable Rate Limits. </param>
         /// <param name="channelConfiguration"> Channel specific configuration in json format. </param>
         /// <param name="appHash"> Your App Hash to be appended at the end of an SMS. </param>
-        /// <param name="templateSid"> The verification template SMS messages. </param>
+        /// <param name="templateSid"> The verification template SMS or Voice message. </param>
         /// <param name="templateCustomSubstitutions"> The values of the special variables declared on the message template.
         ///                                   </param>
         /// <param name="client"> Client to make requests to Twilio </param>
