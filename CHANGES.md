@@ -1,6 +1,29 @@
 twilio-csharp Changelog
 =======================
 
+[2022-10-31] Version 6.0.0-rc.2
+-------------------------------
+**Library - Fix**
+- [PR #641](https://github.com/twilio/twilio-csharp/pull/641): corrected AssemblyInfomation release version. Thanks to [@Hunga1](https://github.com/Hunga1)!
+
+**Api**
+- Added `contentSid` and `contentVariables` to Message resource with public visibility as Beta
+- Add `UserDefinedMessageSubscription` and `UserDefinedMessage` resource
+
+**Proxy**
+- Remove FailOnParticipantConflict param from Proxy Session create and update and Proxy Participant create
+
+**Supersim**
+- Update SettingsUpdates resource to remove PackageSid
+
+**Taskrouter**
+- Add `Ordering` query parameter to Workers and TaskQueues for sorting by
+- Add `worker_sid` query param for list reservations endpoint
+
+**Twiml**
+- Add `url` and `method` attributes to `<Conversation>`
+
+
 [2022-10-19] Version 6.0.0-rc.1
 -------------------------------
 **Library - Fix**

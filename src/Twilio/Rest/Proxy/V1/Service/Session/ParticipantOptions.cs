@@ -46,9 +46,6 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         ///<summary> The SID of the Proxy Identifier to assign to the Participant. </summary> 
         public string ProxyIdentifierSid { get; set; }
 
-        ///<summary> [Experimental] For accounts with the ProxyAllowParticipantConflict account flag, setting to true enables per-request opt-in to allowing Proxy to reject a Participant create request that could cause the same Identifier/ProxyIdentifier pair to be active in multiple Sessions. Depending on the context, this could be a 409 error (Twilio error code 80623) or a 400 error (Twilio error code 80604). If not provided, requests will be allowed to succeed and a Debugger notification (80802) will be emitted. Having multiple, active Participants with the same Identifier/ProxyIdentifier pair causes calls and messages from affected Participants to be routed incorrectly. Please note, the default behavior for accounts without the ProxyAllowParticipantConflict flag is to reject the request as described.  This will eventually be the default for all accounts. </summary> 
-        public bool? FailOnParticipantConflict { get; set; }
-
 
         /// <summary> Construct a new CreateParticipantOptions </summary>
         /// <param name="pathServiceSid"> The SID of the parent [Service](https://www.twilio.com/docs/proxy/api/service) resource. </param>        /// <param name="pathSessionSid"> The SID of the parent [Session](https://www.twilio.com/docs/proxy/api/session) resource. </param>        /// <param name="identifier"> The phone number of the Participant. </param>
@@ -80,10 +77,6 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
             if (ProxyIdentifierSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("ProxyIdentifierSid", ProxyIdentifierSid));
-            }
-            if (FailOnParticipantConflict != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FailOnParticipantConflict", FailOnParticipantConflict.Value.ToString().ToLower()));
             }
             return p;
         }

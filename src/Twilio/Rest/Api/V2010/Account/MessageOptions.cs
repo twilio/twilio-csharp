@@ -79,6 +79,12 @@ namespace Twilio.Rest.Api.V2010.Account
         ///<summary> If set to True, Twilio will deliver the message as a single MMS message, regardless of the presence of media. </summary> 
         public bool? SendAsMms { get; set; }
 
+        ///<summary> The SID of the Content object returned at Content API content create time (https://www.twilio.com/docs/content-api/create-and-send-your-first-content-api-template#create-a-template). If this parameter is not specified, then the Content API will not be utilized. </summary> 
+        public string ContentSid { get; set; }
+
+        ///<summary> Key-value pairs of variable names to substitution values, used alongside a content_sid. If not specified, Content API will default to the default variables defined at create time. </summary> 
+        public string ContentVariables { get; set; }
+
         ///<summary> A Twilio phone number in [E.164](https://www.twilio.com/docs/glossary/what-e164) format, an [alphanumeric sender ID](https://www.twilio.com/docs/sms/send-messages#use-an-alphanumeric-sender-id), or a [Channel Endpoint address](https://www.twilio.com/docs/sms/channels#channel-addresses) that is enabled for the type of message you want to send. Phone numbers or [short codes](https://www.twilio.com/docs/sms/api/short-code) purchased from Twilio also work here. You cannot, for example, spoof messages from a private cell phone number. If you are using `messaging_service_sid`, this parameter must be empty. </summary> 
         public Types.PhoneNumber From { get; set; }
 
@@ -170,6 +176,14 @@ namespace Twilio.Rest.Api.V2010.Account
             if (SendAsMms != null)
             {
                 p.Add(new KeyValuePair<string, string>("SendAsMms", SendAsMms.Value.ToString().ToLower()));
+            }
+            if (ContentSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ContentSid", ContentSid));
+            }
+            if (ContentVariables != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ContentVariables", ContentVariables));
             }
             if (From != null)
             {

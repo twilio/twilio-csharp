@@ -175,6 +175,8 @@ namespace Twilio.TwiML.Voice
         /// <param name="inboundAutocreation"> Inbound autocreation </param>
         /// <param name="routingAssignmentTimeout"> Routing assignment timeout </param>
         /// <param name="inboundTimeout"> Inbound timeout </param>
+        /// <param name="url"> TwiML URL </param>
+        /// <param name="method"> TwiML URL method </param>
         /// <param name="record"> Record </param>
         /// <param name="trim"> Trim </param>
         /// <param name="recordingStatusCallback"> Recording status callback URL </param>
@@ -187,6 +189,8 @@ namespace Twilio.TwiML.Voice
                                     bool? inboundAutocreation = null,
                                     int? routingAssignmentTimeout = null,
                                     int? inboundTimeout = null,
+                                    Uri url = null,
+                                    Twilio.Http.HttpMethod method = null,
                                     Conversation.RecordEnum record = null,
                                     Conversation.TrimEnum trim = null,
                                     Uri recordingStatusCallback = null,
@@ -201,6 +205,8 @@ namespace Twilio.TwiML.Voice
                 inboundAutocreation,
                 routingAssignmentTimeout,
                 inboundTimeout,
+                url,
+                method,
                 record,
                 trim,
                 recordingStatusCallback,

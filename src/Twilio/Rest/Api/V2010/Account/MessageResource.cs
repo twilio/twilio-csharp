@@ -179,6 +179,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="scheduleType">  </param>
         /// <param name="sendAt"> The time that Twilio will send the message. Must be in ISO 8601 format. </param>
         /// <param name="sendAsMms"> If set to True, Twilio will deliver the message as a single MMS message, regardless of the presence of media. </param>
+        /// <param name="contentSid"> The SID of the Content object returned at Content API content create time (https://www.twilio.com/docs/content-api/create-and-send-your-first-content-api-template#create-a-template). If this parameter is not specified, then the Content API will not be utilized. </param>
+        /// <param name="contentVariables"> Key-value pairs of variable names to substitution values, used alongside a content_sid. If not specified, Content API will default to the default variables defined at create time. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Message </returns>
         public static MessageResource Create(
@@ -203,9 +205,11 @@ namespace Twilio.Rest.Api.V2010.Account
                                           MessageResource.ScheduleTypeEnum scheduleType = null,
                                           DateTime? sendAt = null,
                                           bool? sendAsMms = null,
+                                          string contentSid = null,
+                                          string contentVariables = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new CreateMessageOptions(to){  PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, Attempt = attempt, ValidityPeriod = validityPeriod, ForceDelivery = forceDelivery, ContentRetention = contentRetention, AddressRetention = addressRetention, SmartEncoded = smartEncoded, PersistentAction = persistentAction, ShortenUrls = shortenUrls, ScheduleType = scheduleType, SendAt = sendAt, SendAsMms = sendAsMms };
+            var options = new CreateMessageOptions(to){  PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, Attempt = attempt, ValidityPeriod = validityPeriod, ForceDelivery = forceDelivery, ContentRetention = contentRetention, AddressRetention = addressRetention, SmartEncoded = smartEncoded, PersistentAction = persistentAction, ShortenUrls = shortenUrls, ScheduleType = scheduleType, SendAt = sendAt, SendAsMms = sendAsMms, ContentSid = contentSid, ContentVariables = contentVariables };
             return Create(options, client);
         }
 
@@ -232,6 +236,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="scheduleType">  </param>
         /// <param name="sendAt"> The time that Twilio will send the message. Must be in ISO 8601 format. </param>
         /// <param name="sendAsMms"> If set to True, Twilio will deliver the message as a single MMS message, regardless of the presence of media. </param>
+        /// <param name="contentSid"> The SID of the Content object returned at Content API content create time (https://www.twilio.com/docs/content-api/create-and-send-your-first-content-api-template#create-a-template). If this parameter is not specified, then the Content API will not be utilized. </param>
+        /// <param name="contentVariables"> Key-value pairs of variable names to substitution values, used alongside a content_sid. If not specified, Content API will default to the default variables defined at create time. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Message </returns>
         public static async System.Threading.Tasks.Task<MessageResource> CreateAsync(
@@ -256,9 +262,11 @@ namespace Twilio.Rest.Api.V2010.Account
                                                                                   MessageResource.ScheduleTypeEnum scheduleType = null,
                                                                                   DateTime? sendAt = null,
                                                                                   bool? sendAsMms = null,
+                                                                                  string contentSid = null,
+                                                                                  string contentVariables = null,
                                                                                   ITwilioRestClient client = null)
         {
-        var options = new CreateMessageOptions(to){  PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, Attempt = attempt, ValidityPeriod = validityPeriod, ForceDelivery = forceDelivery, ContentRetention = contentRetention, AddressRetention = addressRetention, SmartEncoded = smartEncoded, PersistentAction = persistentAction, ShortenUrls = shortenUrls, ScheduleType = scheduleType, SendAt = sendAt, SendAsMms = sendAsMms };
+        var options = new CreateMessageOptions(to){  PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, Attempt = attempt, ValidityPeriod = validityPeriod, ForceDelivery = forceDelivery, ContentRetention = contentRetention, AddressRetention = addressRetention, SmartEncoded = smartEncoded, PersistentAction = persistentAction, ShortenUrls = shortenUrls, ScheduleType = scheduleType, SendAt = sendAt, SendAsMms = sendAsMms, ContentSid = contentSid, ContentVariables = contentVariables };
             return await CreateAsync(options, client);
         }
         #endif

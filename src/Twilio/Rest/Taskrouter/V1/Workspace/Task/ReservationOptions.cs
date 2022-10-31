@@ -73,6 +73,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         ///<summary> Returns the list of reservations for a task with a specified ReservationStatus.  Can be: `pending`, `accepted`, `rejected`, or `timeout`. </summary> 
         public ReservationResource.StatusEnum ReservationStatus { get; set; }
 
+        ///<summary> The SID of the reserved Worker resource to read. </summary> 
+        public string WorkerSid { get; set; }
+
 
 
         /// <summary> Construct a new ListTaskReservationOptions </summary>
@@ -92,6 +95,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
             if (ReservationStatus != null)
             {
                 p.Add(new KeyValuePair<string, string>("ReservationStatus", ReservationStatus.ToString()));
+            }
+            if (WorkerSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("WorkerSid", WorkerSid));
             }
             if (PageSize != null)
             {

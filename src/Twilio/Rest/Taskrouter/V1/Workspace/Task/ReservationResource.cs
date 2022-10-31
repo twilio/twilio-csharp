@@ -220,6 +220,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         /// <param name="pathWorkspaceSid"> The SID of the Workspace with the TaskReservation resources to read. </param>
         /// <param name="pathTaskSid"> The SID of the reserved Task resource with the TaskReservation resources to read. </param>
         /// <param name="reservationStatus"> Returns the list of reservations for a task with a specified ReservationStatus.  Can be: `pending`, `accepted`, `rejected`, or `timeout`. </param>
+        /// <param name="workerSid"> The SID of the reserved Worker resource to read. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
@@ -228,11 +229,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
                                                      string pathWorkspaceSid,
                                                      string pathTaskSid,
                                                      ReservationResource.StatusEnum reservationStatus = null,
+                                                     string workerSid = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
                                                      ITwilioRestClient client = null)
         {
-            var options = new ReadReservationOptions(pathWorkspaceSid, pathTaskSid){ ReservationStatus = reservationStatus, PageSize = pageSize, Limit = limit};
+            var options = new ReadReservationOptions(pathWorkspaceSid, pathTaskSid){ ReservationStatus = reservationStatus, WorkerSid = workerSid, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -241,6 +243,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         /// <param name="pathWorkspaceSid"> The SID of the Workspace with the TaskReservation resources to read. </param>
         /// <param name="pathTaskSid"> The SID of the reserved Task resource with the TaskReservation resources to read. </param>
         /// <param name="reservationStatus"> Returns the list of reservations for a task with a specified ReservationStatus.  Can be: `pending`, `accepted`, `rejected`, or `timeout`. </param>
+        /// <param name="workerSid"> The SID of the reserved Worker resource to read. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
@@ -249,11 +252,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
                                                                                              string pathWorkspaceSid,
                                                                                              string pathTaskSid,
                                                                                              ReservationResource.StatusEnum reservationStatus = null,
+                                                                                             string workerSid = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
                                                                                              ITwilioRestClient client = null)
         {
-            var options = new ReadReservationOptions(pathWorkspaceSid, pathTaskSid){ ReservationStatus = reservationStatus, PageSize = pageSize, Limit = limit};
+            var options = new ReadReservationOptions(pathWorkspaceSid, pathTaskSid){ ReservationStatus = reservationStatus, WorkerSid = workerSid, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

@@ -83,7 +83,6 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         /// <param name="friendlyName"> The string that you assigned to describe the participant. This value must be 255 characters or fewer. **This value should not have PII.** </param>
         /// <param name="proxyIdentifier"> The proxy phone number to use for the Participant. If not specified, Proxy will select a number from the pool. </param>
         /// <param name="proxyIdentifierSid"> The SID of the Proxy Identifier to assign to the Participant. </param>
-        /// <param name="failOnParticipantConflict"> [Experimental] For accounts with the ProxyAllowParticipantConflict account flag, setting to true enables per-request opt-in to allowing Proxy to reject a Participant create request that could cause the same Identifier/ProxyIdentifier pair to be active in multiple Sessions. Depending on the context, this could be a 409 error (Twilio error code 80623) or a 400 error (Twilio error code 80604). If not provided, requests will be allowed to succeed and a Debugger notification (80802) will be emitted. Having multiple, active Participants with the same Identifier/ProxyIdentifier pair causes calls and messages from affected Participants to be routed incorrectly. Please note, the default behavior for accounts without the ProxyAllowParticipantConflict flag is to reject the request as described.  This will eventually be the default for all accounts. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Participant </returns>
         public static ParticipantResource Create(
@@ -93,10 +92,9 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
                                           string friendlyName = null,
                                           string proxyIdentifier = null,
                                           string proxyIdentifierSid = null,
-                                          bool? failOnParticipantConflict = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new CreateParticipantOptions(pathServiceSid, pathSessionSid, identifier){  FriendlyName = friendlyName, ProxyIdentifier = proxyIdentifier, ProxyIdentifierSid = proxyIdentifierSid, FailOnParticipantConflict = failOnParticipantConflict };
+            var options = new CreateParticipantOptions(pathServiceSid, pathSessionSid, identifier){  FriendlyName = friendlyName, ProxyIdentifier = proxyIdentifier, ProxyIdentifierSid = proxyIdentifierSid };
             return Create(options, client);
         }
 
@@ -108,7 +106,6 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         /// <param name="friendlyName"> The string that you assigned to describe the participant. This value must be 255 characters or fewer. **This value should not have PII.** </param>
         /// <param name="proxyIdentifier"> The proxy phone number to use for the Participant. If not specified, Proxy will select a number from the pool. </param>
         /// <param name="proxyIdentifierSid"> The SID of the Proxy Identifier to assign to the Participant. </param>
-        /// <param name="failOnParticipantConflict"> [Experimental] For accounts with the ProxyAllowParticipantConflict account flag, setting to true enables per-request opt-in to allowing Proxy to reject a Participant create request that could cause the same Identifier/ProxyIdentifier pair to be active in multiple Sessions. Depending on the context, this could be a 409 error (Twilio error code 80623) or a 400 error (Twilio error code 80604). If not provided, requests will be allowed to succeed and a Debugger notification (80802) will be emitted. Having multiple, active Participants with the same Identifier/ProxyIdentifier pair causes calls and messages from affected Participants to be routed incorrectly. Please note, the default behavior for accounts without the ProxyAllowParticipantConflict flag is to reject the request as described.  This will eventually be the default for all accounts. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Participant </returns>
         public static async System.Threading.Tasks.Task<ParticipantResource> CreateAsync(
@@ -118,10 +115,9 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
                                                                                   string friendlyName = null,
                                                                                   string proxyIdentifier = null,
                                                                                   string proxyIdentifierSid = null,
-                                                                                  bool? failOnParticipantConflict = null,
                                                                                   ITwilioRestClient client = null)
         {
-        var options = new CreateParticipantOptions(pathServiceSid, pathSessionSid, identifier){  FriendlyName = friendlyName, ProxyIdentifier = proxyIdentifier, ProxyIdentifierSid = proxyIdentifierSid, FailOnParticipantConflict = failOnParticipantConflict };
+        var options = new CreateParticipantOptions(pathServiceSid, pathSessionSid, identifier){  FriendlyName = friendlyName, ProxyIdentifier = proxyIdentifier, ProxyIdentifierSid = proxyIdentifierSid };
             return await CreateAsync(options, client);
         }
         #endif

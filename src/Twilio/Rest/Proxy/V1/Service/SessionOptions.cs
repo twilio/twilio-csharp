@@ -49,9 +49,6 @@ namespace Twilio.Rest.Proxy.V1.Service
         ///<summary> The Participant objects to include in the new session. </summary> 
         public List<object> Participants { get; set; }
 
-        ///<summary> [Experimental] For accounts with the ProxyAllowParticipantConflict account flag, setting to true enables per-request opt-in to allowing Proxy to reject a Session create (with Participants) request that could cause the same Identifier/ProxyIdentifier pair to be active in multiple Sessions. Depending on the context, this could be a 409 error (Twilio error code 80623) or a 400 error (Twilio error code 80604). If not provided, requests will be allowed to succeed and a Debugger notification (80802) will be emitted. Having multiple, active Participants with the same Identifier/ProxyIdentifier pair causes calls and messages from affected Participants to be routed incorrectly. Please note, the default behavior for accounts without the ProxyAllowParticipantConflict flag is to reject the request as described.  This will eventually be the default for all accounts. </summary> 
-        public bool? FailOnParticipantConflict { get; set; }
-
 
         /// <summary> Construct a new CreateSessionOptions </summary>
         /// <param name="pathServiceSid"> The SID of the parent [Service](https://www.twilio.com/docs/proxy/api/service) resource. </param>
@@ -90,10 +87,6 @@ namespace Twilio.Rest.Proxy.V1.Service
             if (Participants != null)
             {
                 p.AddRange(Participants.Select(Participants => new KeyValuePair<string, string>("Participants", Serializers.JsonObject(Participants))));
-            }
-            if (FailOnParticipantConflict != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FailOnParticipantConflict", FailOnParticipantConflict.Value.ToString().ToLower()));
             }
             return p;
         }
@@ -217,9 +210,6 @@ namespace Twilio.Rest.Proxy.V1.Service
         
         public SessionResource.StatusEnum Status { get; set; }
 
-        ///<summary> [Experimental] For accounts with the ProxyAllowParticipantConflict account flag, setting to true enables per-request opt-in to allowing Proxy to return a 400 error (Twilio error code 80604) when a request to set a Session to in-progress would cause Participants with the same Identifier/ProxyIdentifier pair to be active in multiple Sessions. If not provided, requests will be allowed to succeed, and a Debugger notification (80801) will be emitted. Having multiple, active Participants with the same Identifier/ProxyIdentifier pair causes calls and messages from affected Participants to be routed incorrectly. Please note, the default behavior for accounts without the ProxyAllowParticipantConflict flag is to reject the request as described.  This will eventually be the default for all accounts. </summary> 
-        public bool? FailOnParticipantConflict { get; set; }
-
 
 
         /// <summary> Construct a new UpdateSessionOptions </summary>
@@ -247,10 +237,6 @@ namespace Twilio.Rest.Proxy.V1.Service
             if (Status != null)
             {
                 p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
-            }
-            if (FailOnParticipantConflict != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FailOnParticipantConflict", FailOnParticipantConflict.Value.ToString().ToLower()));
             }
             return p;
         }

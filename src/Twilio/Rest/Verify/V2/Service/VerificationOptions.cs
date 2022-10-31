@@ -46,7 +46,7 @@ namespace Twilio.Rest.Verify.V2.Service
         ///<summary> The digits to send after a phone call is answered, for example, to dial an extension. For more information, see the Programmable Voice documentation of [sendDigits](https://www.twilio.com/docs/voice/twiml/number#attributes-sendDigits). </summary> 
         public string SendDigits { get; set; }
 
-        ///<summary> Locale will automatically resolve based on phone number country code for SMS, WhatsApp and call channel verifications. This parameter will override the automatic locale. [See supported languages and more information here.](https://www.twilio.com/docs/verify/supported-languages). </summary> 
+        ///<summary> Locale will automatically resolve based on phone number country code for SMS, WhatsApp and call channel verifications. This parameter will override the automatic locale. [See supported languages and more information here](https://www.twilio.com/docs/verify/supported-languages). </summary> 
         public string Locale { get; set; }
 
         ///<summary> A pre-generated code to use for verification. The code can be between 4 and 10 characters, inclusive. </summary> 
@@ -67,7 +67,7 @@ namespace Twilio.Rest.Verify.V2.Service
         ///<summary> Your [App Hash](https://developers.google.com/identity/sms-retriever/verify#computing_your_apps_hash_string) to be appended at the end of your verification SMS body. Applies only to SMS. Example SMS body: `<#> Your AppName verification code is: 1234 He42w354ol9`. </summary> 
         public string AppHash { get; set; }
 
-        ///<summary> The message [template](https://www.twilio.com/docs/verify/api/templates). If provided, will override the default template for the Service. SMS channel only. </summary> 
+        ///<summary> The message [template](https://www.twilio.com/docs/verify/api/templates). If provided, will override the default template for the Service. SMS and Voice channels only. </summary> 
         public string TemplateSid { get; set; }
 
         ///<summary> A stringified JSON object in which the keys are the template's special variables and the values are the variables substitutions. </summary> 

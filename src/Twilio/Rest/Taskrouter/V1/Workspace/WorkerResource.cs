@@ -315,6 +315,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="targetWorkersExpression"> Filter by Workers that would match an expression on a TaskQueue. This is helpful for debugging which Workers would match a potential queue. </param>
         /// <param name="taskQueueName"> The `friendly_name` of the TaskQueue that the Workers to read are eligible for. </param>
         /// <param name="taskQueueSid"> The SID of the TaskQueue that the Workers to read are eligible for. </param>
+        /// <param name="ordering"> Sorting parameter for Workers </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
@@ -328,11 +329,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                                                      string targetWorkersExpression = null,
                                                      string taskQueueName = null,
                                                      string taskQueueSid = null,
+                                                     string ordering = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
                                                      ITwilioRestClient client = null)
         {
-            var options = new ReadWorkerOptions(pathWorkspaceSid){ ActivityName = activityName, ActivitySid = activitySid, Available = available, FriendlyName = friendlyName, TargetWorkersExpression = targetWorkersExpression, TaskQueueName = taskQueueName, TaskQueueSid = taskQueueSid, PageSize = pageSize, Limit = limit};
+            var options = new ReadWorkerOptions(pathWorkspaceSid){ ActivityName = activityName, ActivitySid = activitySid, Available = available, FriendlyName = friendlyName, TargetWorkersExpression = targetWorkersExpression, TaskQueueName = taskQueueName, TaskQueueSid = taskQueueSid, Ordering = ordering, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -346,6 +348,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="targetWorkersExpression"> Filter by Workers that would match an expression on a TaskQueue. This is helpful for debugging which Workers would match a potential queue. </param>
         /// <param name="taskQueueName"> The `friendly_name` of the TaskQueue that the Workers to read are eligible for. </param>
         /// <param name="taskQueueSid"> The SID of the TaskQueue that the Workers to read are eligible for. </param>
+        /// <param name="ordering"> Sorting parameter for Workers </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
@@ -359,11 +362,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                                                                                              string targetWorkersExpression = null,
                                                                                              string taskQueueName = null,
                                                                                              string taskQueueSid = null,
+                                                                                             string ordering = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
                                                                                              ITwilioRestClient client = null)
         {
-            var options = new ReadWorkerOptions(pathWorkspaceSid){ ActivityName = activityName, ActivitySid = activitySid, Available = available, FriendlyName = friendlyName, TargetWorkersExpression = targetWorkersExpression, TaskQueueName = taskQueueName, TaskQueueSid = taskQueueSid, PageSize = pageSize, Limit = limit};
+            var options = new ReadWorkerOptions(pathWorkspaceSid){ ActivityName = activityName, ActivitySid = activitySid, Available = available, FriendlyName = friendlyName, TargetWorkersExpression = targetWorkersExpression, TaskQueueName = taskQueueName, TaskQueueSid = taskQueueSid, Ordering = ordering, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

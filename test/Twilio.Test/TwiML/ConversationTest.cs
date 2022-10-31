@@ -34,6 +34,8 @@ namespace Twilio.Tests.TwiML
                 true,
                 1,
                 1,
+                new Uri("https://example.com"),
+                Twilio.Http.HttpMethod.Get,
                 Conversation.RecordEnum.DoNotRecord,
                 Conversation.TrimEnum.TrimSilence,
                 new Uri("https://example.com"),
@@ -45,7 +47,7 @@ namespace Twilio.Tests.TwiML
             );
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Conversation serviceInstanceSid=\"service_instance_sid\" inboundAutocreation=\"true\" routingAssignmentTimeout=\"1\" inboundTimeout=\"1\" record=\"do-not-record\" trim=\"trim-silence\" recordingStatusCallback=\"https://example.com\" recordingStatusCallbackMethod=\"GET\" recordingStatusCallbackEvent=\"in-progress\" statusCallback=\"https://example.com\" statusCallbackMethod=\"GET\" statusCallbackEvent=\"call-initiated\"></Conversation>",
+                "<Conversation serviceInstanceSid=\"service_instance_sid\" inboundAutocreation=\"true\" routingAssignmentTimeout=\"1\" inboundTimeout=\"1\" url=\"https://example.com\" method=\"GET\" record=\"do-not-record\" trim=\"trim-silence\" recordingStatusCallback=\"https://example.com\" recordingStatusCallbackMethod=\"GET\" recordingStatusCallbackEvent=\"in-progress\" statusCallback=\"https://example.com\" statusCallbackMethod=\"GET\" statusCallbackEvent=\"call-initiated\"></Conversation>",
                 elem.ToString()
             );
         }
