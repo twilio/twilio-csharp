@@ -112,30 +112,56 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         }
 
         /// <summary>
-        /// The SID of the Account that created the resource
-        /// </summary>
-        [JsonProperty("account_sid")]
-        public string AccountSid { get; private set; }
-        /// <summary>
-        /// The number of current Workers by Activity
-        /// </summary>
-        [JsonProperty("activity_statistics")]
-        public List<object> ActivityStatistics { get; private set; }
-        /// <summary>
-        /// The total number of Workers
-        /// </summary>
-        [JsonProperty("total_workers")]
-        public int? TotalWorkers { get; private set; }
-        /// <summary>
-        /// The SID of the Workspace that contains the Workers
-        /// </summary>
-        [JsonProperty("workspace_sid")]
-        public string WorkspaceSid { get; private set; }
-        /// <summary>
-        /// The absolute URL of the Workers statistics resource
-        /// </summary>
-        [JsonProperty("url")]
-        public Uri Url { get; private set; }
+		/// The SID of the Account that created the resource
+		/// </summary>
+		[JsonProperty("account_sid")]
+		public string AccountSid { get; private set; }
+		/// <summary>
+		/// The number of current Workers by Activity
+		/// </summary>
+		[JsonProperty("activity_statistics")]
+		public List<ActivityStatistic> ActivityStatistics { get; private set; }
+		/// <summary>
+		/// The total number of Workers
+		/// </summary>
+		[JsonProperty("total_workers")]
+		public int? TotalWorkers { get; private set; }
+		/// <summary>
+		/// The SID of the Workspace that contains the Workers
+		/// </summary>
+		[JsonProperty("workspace_sid")]
+		public string WorkspaceSid { get; private set; }
+		/// <summary>
+		/// The absolute URL of the Workers statistics resource
+		/// </summary>
+		[JsonProperty("url")]
+		public Uri Url { get; private set; }
+
+		public class ActivityStatistic
+		{
+			[JsonProperty("workers")]
+			public int Workers { get; set; }
+			[JsonProperty("friendly_name")]
+			public string Friendlyname { get; set; }
+			[JsonProperty("sid")]
+			public string Sid { get; set; }
+		}
+
+		public class TasksByStatusType
+		{
+			[JsonProperty("reserved")]
+			public int Reserved { get; set; }
+			[JsonProperty("completed")]
+			public int Completed { get; set; }
+			[JsonProperty("wrapping")]
+			public int Wrapping { get; set; }
+			[JsonProperty("assigned")]
+			public int Assigned { get; set; }
+			[JsonProperty("canceled")]
+			public int Canceled { get; set; }
+			[JsonProperty("pending")]
+			public int Pending { get; set; }
+		}
 
         private WorkersRealTimeStatisticsResource()
         {

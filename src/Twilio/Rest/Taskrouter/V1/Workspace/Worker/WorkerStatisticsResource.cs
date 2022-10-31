@@ -135,7 +135,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// An object that contains the cumulative statistics for the Worker
         /// </summary>
         [JsonProperty("cumulative")]
-        public object Cumulative { get; private set; }
+        public CumulativeStatistics Cumulative { get; private set; }
         /// <summary>
         /// The SID of the Worker that contains the WorkerChannel
         /// </summary>
@@ -152,6 +152,50 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
+		public class CumulativeStatistics
+			{
+				[JsonProperty("reservations_timed_out")]
+				public int ReservationsTimedOut { get; set; }
+				[JsonProperty("reservations_rejected")]
+				public int ReservationsRejected { get; set; }
+				[JsonProperty("reservations_created")]
+				public int ReservationsCreated { get; set; }
+				[JsonProperty("reservations_rescinded")]
+				public int ReservationsRescinded { get; set; }
+				[JsonProperty("tasks_assigned")]
+				public int TasksAssigned { get; set; }
+				[JsonProperty("start_time")]
+				public DateTime StartTime { get; set; }
+				[JsonProperty("reservations_wrapup ")]
+				public int ReservationsWrapup { get; set; }
+				[JsonProperty("end_time")]
+				public DateTime EndTime { get; set; }
+				[JsonProperty("reservations_accepted")]
+				public int ReservationsAccepted { get; set; }
+				[JsonProperty("activity_durations")]
+				public List<ActivityDuration> ActivityDurations { get; set; }
+				[JsonProperty("reservations_canceled")]
+				public int ReservationsCanceled { get; set; }
+				[JsonProperty("reservations_completed")]
+				public int ReservationsCompleted { get; set; }
+			}
+
+		public class ActivityDuration
+        {
+            [JsonProperty("avg")]
+            public int Avg { get; set; }
+            [JsonProperty("min")]
+            public int Min { get; set; }
+            [JsonProperty("max")]
+            public int Max { get; set; }
+            [JsonProperty("friendly_name")]
+            public string FriendlyName { get; set; }
+            [JsonProperty("sid")]
+            public string Sid { get; set; }
+            [JsonProperty("total")]
+            public int Total { get; set; }
+        }
+		
         private WorkerStatisticsResource()
         {
 
