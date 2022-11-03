@@ -24,7 +24,7 @@ using Twilio.Converters;
 namespace Twilio.Rest.Oauth.V1
 {
     /// <summary> Retrieves the consented UserInfo and other claims about the logged-in subject (end-user). </summary>
-    public class FetchUserinfoOptions : IOptions<UserinfoResource>
+    public class FetchUserInfoOptions : IOptions<UserInfoResource>
     {
     
 

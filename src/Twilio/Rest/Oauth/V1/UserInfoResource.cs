@@ -26,12 +26,12 @@ using Twilio.Http;
 
 namespace Twilio.Rest.Oauth.V1
 {
-    public class UserinfoResource : Resource
+    public class UserInfoResource : Resource
     {
     
 
         
-        private static Request BuildFetchRequest(FetchUserinfoOptions options, ITwilioRestClient client)
+        private static Request BuildFetchRequest(FetchUserInfoOptions options, ITwilioRestClient client)
         {
             
             string path = "/v1/userinfo";
@@ -48,10 +48,10 @@ namespace Twilio.Rest.Oauth.V1
         }
 
         /// <summary> Retrieves the consented UserInfo and other claims about the logged-in subject (end-user). </summary>
-        /// <param name="options"> Fetch Userinfo parameters </param>
+        /// <param name="options"> Fetch UserInfo parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Userinfo </returns>
-        public static UserinfoResource Fetch(FetchUserinfoOptions options, ITwilioRestClient client = null)
+        /// <returns> A single instance of UserInfo </returns>
+        public static UserInfoResource Fetch(FetchUserInfoOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildFetchRequest(options, client));
@@ -60,10 +60,10 @@ namespace Twilio.Rest.Oauth.V1
 
         #if !NET35
         /// <summary> Retrieves the consented UserInfo and other claims about the logged-in subject (end-user). </summary>
-        /// <param name="options"> Fetch Userinfo parameters </param>
+        /// <param name="options"> Fetch UserInfo parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Userinfo </returns>
-        public static async System.Threading.Tasks.Task<UserinfoResource> FetchAsync(FetchUserinfoOptions options,
+        /// <returns> Task that resolves to A single instance of UserInfo </returns>
+        public static async System.Threading.Tasks.Task<UserInfoResource> FetchAsync(FetchUserInfoOptions options,
                                                                                              ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -73,35 +73,35 @@ namespace Twilio.Rest.Oauth.V1
         #endif
         /// <summary> Retrieves the consented UserInfo and other claims about the logged-in subject (end-user). </summary>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Userinfo </returns>
-        public static UserinfoResource Fetch(
+        /// <returns> A single instance of UserInfo </returns>
+        public static UserInfoResource Fetch(
                                          ITwilioRestClient client = null)
         {
-            var options = new FetchUserinfoOptions(){  };
+            var options = new FetchUserInfoOptions(){  };
             return Fetch(options, client);
         }
 
         #if !NET35
         /// <summary> Retrieves the consented UserInfo and other claims about the logged-in subject (end-user). </summary>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Userinfo </returns>
-        public static async System.Threading.Tasks.Task<UserinfoResource> FetchAsync(ITwilioRestClient client = null)
+        /// <returns> Task that resolves to A single instance of UserInfo </returns>
+        public static async System.Threading.Tasks.Task<UserInfoResource> FetchAsync(ITwilioRestClient client = null)
         {
-            var options = new FetchUserinfoOptions(){  };
+            var options = new FetchUserInfoOptions(){  };
             return await FetchAsync(options, client);
         }
         #endif
     
         /// <summary>
-        /// Converts a JSON string into a UserinfoResource object
+        /// Converts a JSON string into a UserInfoResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> UserinfoResource object represented by the provided JSON </returns>
-        public static UserinfoResource FromJson(string json)
+        /// <returns> UserInfoResource object represented by the provided JSON </returns>
+        public static UserInfoResource FromJson(string json)
         {
             try
             {
-                return JsonConvert.DeserializeObject<UserinfoResource>(json);
+                return JsonConvert.DeserializeObject<UserInfoResource>(json);
             }
             catch (JsonException e)
             {
@@ -136,7 +136,7 @@ namespace Twilio.Rest.Oauth.V1
 
 
 
-        private UserinfoResource() {
+        private UserInfoResource() {
 
         }
     }
