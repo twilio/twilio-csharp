@@ -38,23 +38,13 @@ The best and easiest way to add the Twilio libraries to your .NET project is to 
 
 From within Visual Studio, you can use the NuGet GUI to search for and install the Twilio NuGet package. Or, as a shortcut, simply type the following command into the Package Manager Console:
 
-    Install-Package Twilio
+    Install-Package Twilio -Version 6.X.X
 
 ### With .NET Core Command Line Tools
 
 If you are building with the .NET Core command line tools, then you can run the following command from within your project directory:
 
-    dotnet add package Twilio
-
-### Installing release candidates
-
-To use twilio-csharp release candidates with Visual Studio Code, you can use the NuGet GUI to search for and install the Twilio NuGet package and provide version as 6.0.0. Or, as a shortcut, simply type the following command into the Package Manager Console:
-
-    Install-Package Twilio -Version 6.x.x-rc.x
-
-If you are building with the .NET Core command line tools, then you can run the following command from within your project directory:
-
-    dotnet add package Twilio --version 6.x.x-rc.x
+    dotnet add package Twilio --version 6.X.X
 
 ## Sample Usage
 
