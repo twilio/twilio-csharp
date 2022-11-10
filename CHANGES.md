@@ -1,6 +1,18 @@
 twilio-csharp Changelog
 =======================
 
+[2022-11-10] Version 6.0.0-rc.3
+-------------------------------
+**Flex**
+- Adding two new authorization API 'user_roles' and 'gooddata' in version `v1`
+
+**Messaging**
+- Add new Campaign properties (MessageFlow, OptInMessage, OptInKeywords, OptOutMessage, OptOutKeywords, HelpMessage, HelpKeywords)
+
+**Twiml**
+- Add new speech models to `Gather`.
+
+
 [2022-10-31] Version 6.0.0-rc.2
 -------------------------------
 **Library - Fix**

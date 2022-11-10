@@ -49,6 +49,27 @@ namespace Twilio.Rest.Messaging.V1.Service
         ///<summary> Indicates that this SMS campaign will send messages that contain phone numbers. </summary> 
         public bool? HasEmbeddedPhone { get; }
 
+        ///<summary> Description of how end users opt-in to the SMS campaign, therefore giving consent to receive messages. </summary> 
+        public string MessageFlow { get; set; }
+
+        ///<summary> The message that will be sent to the user when they opt in to the SMS campaign. </summary> 
+        public string OptInMessage { get; set; }
+
+        ///<summary> The message that will be sent to the user when they opt out of the SMS campaign. </summary> 
+        public string OptOutMessage { get; set; }
+
+        ///<summary> The message that will be sent to the user when they request help for the SMS campaign. </summary> 
+        public string HelpMessage { get; set; }
+
+        ///<summary> The keywords that will be used to opt in to the SMS campaign. </summary> 
+        public List<string> OptInKeywords { get; set; }
+
+        ///<summary> The keywords that will be used to opt out of the SMS campaign. </summary> 
+        public List<string> OptOutKeywords { get; set; }
+
+        ///<summary> The keywords that will be used to request help for the SMS campaign. </summary> 
+        public List<string> HelpKeywords { get; set; }
+
 
         /// <summary> Construct a new CreateUsAppToPersonOptions </summary>
         /// <param name="pathMessagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) to create the resources from. </param>        /// <param name="brandRegistrationSid"> A2P Brand Registration SID </param>        /// <param name="description"> A short description of what this SMS campaign does. </param>        /// <param name="messageSamples"> Message samples, at least 2 and up to 5 sample messages, &lt;&#x3D;1024 chars each. </param>        /// <param name="usAppToPersonUsecase"> A2P Campaign Use Case. Examples: [ 2FA, EMERGENCY, MARKETING..] </param>        /// <param name="hasEmbeddedLinks"> Indicates that this SMS campaign will send messages that contain links. </param>        /// <param name="hasEmbeddedPhone"> Indicates that this SMS campaign will send messages that contain phone numbers. </param>
@@ -61,6 +82,9 @@ namespace Twilio.Rest.Messaging.V1.Service
             UsAppToPersonUsecase = usAppToPersonUsecase;
             HasEmbeddedLinks = hasEmbeddedLinks;
             HasEmbeddedPhone = hasEmbeddedPhone;
+            OptInKeywords = new List<string>();
+            OptOutKeywords = new List<string>();
+            HelpKeywords = new List<string>();
         }
 
         
@@ -92,6 +116,34 @@ namespace Twilio.Rest.Messaging.V1.Service
             if (HasEmbeddedPhone != null)
             {
                 p.Add(new KeyValuePair<string, string>("HasEmbeddedPhone", HasEmbeddedPhone.Value.ToString().ToLower()));
+            }
+            if (MessageFlow != null)
+            {
+                p.Add(new KeyValuePair<string, string>("MessageFlow", MessageFlow));
+            }
+            if (OptInMessage != null)
+            {
+                p.Add(new KeyValuePair<string, string>("OptInMessage", OptInMessage));
+            }
+            if (OptOutMessage != null)
+            {
+                p.Add(new KeyValuePair<string, string>("OptOutMessage", OptOutMessage));
+            }
+            if (HelpMessage != null)
+            {
+                p.Add(new KeyValuePair<string, string>("HelpMessage", HelpMessage));
+            }
+            if (OptInKeywords != null)
+            {
+                p.AddRange(OptInKeywords.Select(OptInKeywords => new KeyValuePair<string, string>("OptInKeywords", OptInKeywords)));
+            }
+            if (OptOutKeywords != null)
+            {
+                p.AddRange(OptOutKeywords.Select(OptOutKeywords => new KeyValuePair<string, string>("OptOutKeywords", OptOutKeywords)));
+            }
+            if (HelpKeywords != null)
+            {
+                p.AddRange(HelpKeywords.Select(HelpKeywords => new KeyValuePair<string, string>("HelpKeywords", HelpKeywords)));
             }
             return p;
         }

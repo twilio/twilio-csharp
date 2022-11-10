@@ -51,7 +51,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             );
         }
 
-        /// <summary> Create a new User Defined Message for the given call sid. </summary>
+        /// <summary> Create a new User Defined Message for the given Call SID. </summary>
         /// <param name="options"> Create UserDefinedMessage parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of UserDefinedMessage </returns>
@@ -63,7 +63,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
 
         #if !NET35
-        /// <summary> Create a new User Defined Message for the given call sid. </summary>
+        /// <summary> Create a new User Defined Message for the given Call SID. </summary>
         /// <param name="options"> Create UserDefinedMessage parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of UserDefinedMessage </returns>
@@ -76,9 +76,9 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
         #endif
 
-        /// <summary> Create a new User Defined Message for the given call sid. </summary>
+        /// <summary> Create a new User Defined Message for the given Call SID. </summary>
         /// <param name="pathCallSid"> The SID of the [Call](https://www.twilio.com/docs/voice/api/call-resource) the User Defined Message is associated with. </param>
-        /// <param name="content"> A unique string value to identify API call. This should be a unique string value per API call and can be a randomly generated. </param>
+        /// <param name="content"> The User Defined Message in the form of URL-encoded JSON string. </param>
         /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created User Defined Message. </param>
         /// <param name="idempotencyKey"> A unique string value to identify API call. This should be a unique string value per API call and can be a randomly generated. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -95,9 +95,9 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
 
         #if !NET35
-        /// <summary> Create a new User Defined Message for the given call sid. </summary>
+        /// <summary> Create a new User Defined Message for the given Call SID. </summary>
         /// <param name="pathCallSid"> The SID of the [Call](https://www.twilio.com/docs/voice/api/call-resource) the User Defined Message is associated with. </param>
-        /// <param name="content"> A unique string value to identify API call. This should be a unique string value per API call and can be a randomly generated. </param>
+        /// <param name="content"> The User Defined Message in the form of URL-encoded JSON string. </param>
         /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created User Defined Message. </param>
         /// <param name="idempotencyKey"> A unique string value to identify API call. This should be a unique string value per API call and can be a randomly generated. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -136,19 +136,19 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
 
     
-        ///<summary> Account Sid. </summary> 
+        ///<summary> Account SID. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> Call Sid. </summary> 
+        ///<summary> Call SID. </summary> 
         [JsonProperty("call_sid")]
         public string CallSid { get; private set; }
 
-        ///<summary> A string that uniquely identifies this User Defined Message. </summary> 
+        ///<summary> User Defined Message SID. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The date this User Defined Message was created </summary> 
+        ///<summary> The date this User Defined Message was created. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
