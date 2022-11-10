@@ -73,6 +73,13 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <param name="hasEmbeddedLinks"> Indicates that this SMS campaign will send messages that contain links </param>
         /// <param name="hasEmbeddedPhone"> Indicates that this SMS campaign will send messages that contain phone numbers
         ///                        </param>
+        /// <param name="messageFlow"> The message flow of the campaign </param>
+        /// <param name="optInMessage"> Opt In Message </param>
+        /// <param name="optOutMessage"> Opt Out Message </param>
+        /// <param name="helpMessage"> Help Message </param>
+        /// <param name="optInKeywords"> Opt In Keywords </param>
+        /// <param name="optOutKeywords"> Opt Out Keywords </param>
+        /// <param name="helpKeywords"> Help Keywords </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of UsAppToPerson </returns>
         public static UsAppToPersonResource Create(string pathMessagingServiceSid,
@@ -82,9 +89,16 @@ namespace Twilio.Rest.Messaging.V1.Service
                                                    string usAppToPersonUsecase,
                                                    bool? hasEmbeddedLinks,
                                                    bool? hasEmbeddedPhone,
+                                                   string messageFlow = null,
+                                                   string optInMessage = null,
+                                                   string optOutMessage = null,
+                                                   string helpMessage = null,
+                                                   List<string> optInKeywords = null,
+                                                   List<string> optOutKeywords = null,
+                                                   List<string> helpKeywords = null,
                                                    ITwilioRestClient client = null)
         {
-            var options = new CreateUsAppToPersonOptions(pathMessagingServiceSid, brandRegistrationSid, description, messageSamples, usAppToPersonUsecase, hasEmbeddedLinks, hasEmbeddedPhone);
+            var options = new CreateUsAppToPersonOptions(pathMessagingServiceSid, brandRegistrationSid, description, messageSamples, usAppToPersonUsecase, hasEmbeddedLinks, hasEmbeddedPhone){MessageFlow = messageFlow, OptInMessage = optInMessage, OptOutMessage = optOutMessage, HelpMessage = helpMessage, OptInKeywords = optInKeywords, OptOutKeywords = optOutKeywords, HelpKeywords = helpKeywords};
             return Create(options, client);
         }
 
@@ -100,6 +114,13 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <param name="hasEmbeddedLinks"> Indicates that this SMS campaign will send messages that contain links </param>
         /// <param name="hasEmbeddedPhone"> Indicates that this SMS campaign will send messages that contain phone numbers
         ///                        </param>
+        /// <param name="messageFlow"> The message flow of the campaign </param>
+        /// <param name="optInMessage"> Opt In Message </param>
+        /// <param name="optOutMessage"> Opt Out Message </param>
+        /// <param name="helpMessage"> Help Message </param>
+        /// <param name="optInKeywords"> Opt In Keywords </param>
+        /// <param name="optOutKeywords"> Opt Out Keywords </param>
+        /// <param name="helpKeywords"> Help Keywords </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of UsAppToPerson </returns>
         public static async System.Threading.Tasks.Task<UsAppToPersonResource> CreateAsync(string pathMessagingServiceSid,
@@ -109,9 +130,16 @@ namespace Twilio.Rest.Messaging.V1.Service
                                                                                            string usAppToPersonUsecase,
                                                                                            bool? hasEmbeddedLinks,
                                                                                            bool? hasEmbeddedPhone,
+                                                                                           string messageFlow = null,
+                                                                                           string optInMessage = null,
+                                                                                           string optOutMessage = null,
+                                                                                           string helpMessage = null,
+                                                                                           List<string> optInKeywords = null,
+                                                                                           List<string> optOutKeywords = null,
+                                                                                           List<string> helpKeywords = null,
                                                                                            ITwilioRestClient client = null)
         {
-            var options = new CreateUsAppToPersonOptions(pathMessagingServiceSid, brandRegistrationSid, description, messageSamples, usAppToPersonUsecase, hasEmbeddedLinks, hasEmbeddedPhone);
+            var options = new CreateUsAppToPersonOptions(pathMessagingServiceSid, brandRegistrationSid, description, messageSamples, usAppToPersonUsecase, hasEmbeddedLinks, hasEmbeddedPhone){MessageFlow = messageFlow, OptInMessage = optInMessage, OptOutMessage = optOutMessage, HelpMessage = helpMessage, OptInKeywords = optInKeywords, OptOutKeywords = optOutKeywords, HelpKeywords = helpKeywords};
             return await CreateAsync(options, client);
         }
         #endif
@@ -475,6 +503,41 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// </summary>
         [JsonProperty("rate_limits")]
         public object RateLimits { get; private set; }
+        /// <summary>
+        /// Consumer opt-in flow
+        /// </summary>
+        [JsonProperty("message_flow")]
+        public string MessageFlow { get; private set; }
+        /// <summary>
+        /// Opt In Message
+        /// </summary>
+        [JsonProperty("opt_in_message")]
+        public string OptInMessage { get; private set; }
+        /// <summary>
+        /// Opt Out Message
+        /// </summary>
+        [JsonProperty("opt_out_message")]
+        public string OptOutMessage { get; private set; }
+        /// <summary>
+        /// Help Message
+        /// </summary>
+        [JsonProperty("help_message")]
+        public string HelpMessage { get; private set; }
+        /// <summary>
+        /// Opt In Keywords
+        /// </summary>
+        [JsonProperty("opt_in_keywords")]
+        public List<string> OptInKeywords { get; private set; }
+        /// <summary>
+        /// Opt Out Keywords
+        /// </summary>
+        [JsonProperty("opt_out_keywords")]
+        public List<string> OptOutKeywords { get; private set; }
+        /// <summary>
+        /// Help Keywords
+        /// </summary>
+        [JsonProperty("help_keywords")]
+        public List<string> HelpKeywords { get; private set; }
         /// <summary>
         /// The ISO 8601 date and time in GMT when the resource was created
         /// </summary>

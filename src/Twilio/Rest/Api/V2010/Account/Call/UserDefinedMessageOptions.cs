@@ -12,20 +12,20 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 {
 
     /// <summary>
-    /// Create a new User Defined Message for the given call sid.
+    /// Create a new User Defined Message for the given Call SID.
     /// </summary>
     public class CreateUserDefinedMessageOptions : IOptions<UserDefinedMessageResource>
     {
         /// <summary>
-        /// Account Sid.
+        /// Account SID.
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// Call Sid.
+        /// Call SID.
         /// </summary>
         public string PathCallSid { get; }
         /// <summary>
-        /// A unique string value to identify API call. This should be a unique string value per API call and can be a randomly generated.
+        /// The User Defined Message in the form of URL-encoded JSON string.
         /// </summary>
         public string Content { get; }
         /// <summary>
@@ -36,9 +36,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary>
         /// Construct a new CreateUserDefinedMessageOptions
         /// </summary>
-        /// <param name="pathCallSid"> Call Sid. </param>
-        /// <param name="content"> A unique string value to identify API call. This should be a unique string value per API
-        ///               call and can be a randomly generated. </param>
+        /// <param name="pathCallSid"> Call SID. </param>
+        /// <param name="content"> The User Defined Message in the form of URL-encoded JSON string. </param>
         public CreateUserDefinedMessageOptions(string pathCallSid, string content)
         {
             PathCallSid = pathCallSid;

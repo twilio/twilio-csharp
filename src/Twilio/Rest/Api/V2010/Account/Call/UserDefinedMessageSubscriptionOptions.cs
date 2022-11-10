@@ -12,16 +12,16 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 {
 
     /// <summary>
-    /// Subscribe to User Defined Messages for a given call sid.
+    /// Subscribe to User Defined Messages for a given Call SID.
     /// </summary>
     public class CreateUserDefinedMessageSubscriptionOptions : IOptions<UserDefinedMessageSubscriptionResource>
     {
         /// <summary>
-        /// Account Sid.
+        /// Account SID.
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// Call Sid.
+        /// Call SID.
         /// </summary>
         public string PathCallSid { get; }
         /// <summary>
@@ -40,7 +40,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary>
         /// Construct a new CreateUserDefinedMessageSubscriptionOptions
         /// </summary>
-        /// <param name="pathCallSid"> Call Sid. </param>
+        /// <param name="pathCallSid"> Call SID. </param>
         /// <param name="callback"> The URL we should call to send user defined messages. </param>
         /// <param name="method"> HTTP method used with the callback. </param>
         public CreateUserDefinedMessageSubscriptionOptions(string pathCallSid, Uri callback, Twilio.Http.HttpMethod method)
@@ -81,23 +81,23 @@ namespace Twilio.Rest.Api.V2010.Account.Call
     public class DeleteUserDefinedMessageSubscriptionOptions : IOptions<UserDefinedMessageSubscriptionResource>
     {
         /// <summary>
-        /// Account Sid.
+        /// Account SID.
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// Call Sid.
+        /// Call SID.
         /// </summary>
         public string PathCallSid { get; }
         /// <summary>
-        /// User Defined Message Subscription Sid
+        /// User Defined Message Subscription SID.
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteUserDefinedMessageSubscriptionOptions
         /// </summary>
-        /// <param name="pathCallSid"> Call Sid. </param>
-        /// <param name="pathSid"> User Defined Message Subscription Sid </param>
+        /// <param name="pathCallSid"> Call SID. </param>
+        /// <param name="pathSid"> User Defined Message Subscription SID. </param>
         public DeleteUserDefinedMessageSubscriptionOptions(string pathCallSid, string pathSid)
         {
             PathCallSid = pathCallSid;

@@ -47,6 +47,34 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// Indicates that this SMS campaign will send messages that contain phone numbers
         /// </summary>
         public bool? HasEmbeddedPhone { get; }
+        /// <summary>
+        /// The message flow of the campaign
+        /// </summary>
+        public string MessageFlow { get; set; }
+        /// <summary>
+        /// Opt In Message
+        /// </summary>
+        public string OptInMessage { get; set; }
+        /// <summary>
+        /// Opt Out Message
+        /// </summary>
+        public string OptOutMessage { get; set; }
+        /// <summary>
+        /// Help Message
+        /// </summary>
+        public string HelpMessage { get; set; }
+        /// <summary>
+        /// Opt In Keywords
+        /// </summary>
+        public List<string> OptInKeywords { get; set; }
+        /// <summary>
+        /// Opt Out Keywords
+        /// </summary>
+        public List<string> OptOutKeywords { get; set; }
+        /// <summary>
+        /// Help Keywords
+        /// </summary>
+        public List<string> HelpKeywords { get; set; }
 
         /// <summary>
         /// Construct a new CreateUsAppToPersonOptions
@@ -74,6 +102,9 @@ namespace Twilio.Rest.Messaging.V1.Service
             UsAppToPersonUsecase = usAppToPersonUsecase;
             HasEmbeddedLinks = hasEmbeddedLinks;
             HasEmbeddedPhone = hasEmbeddedPhone;
+            OptInKeywords = new List<string>();
+            OptOutKeywords = new List<string>();
+            HelpKeywords = new List<string>();
         }
 
         /// <summary>
@@ -110,6 +141,41 @@ namespace Twilio.Rest.Messaging.V1.Service
             if (HasEmbeddedPhone != null)
             {
                 p.Add(new KeyValuePair<string, string>("HasEmbeddedPhone", HasEmbeddedPhone.Value.ToString().ToLower()));
+            }
+
+            if (MessageFlow != null)
+            {
+                p.Add(new KeyValuePair<string, string>("MessageFlow", MessageFlow));
+            }
+
+            if (OptInMessage != null)
+            {
+                p.Add(new KeyValuePair<string, string>("OptInMessage", OptInMessage));
+            }
+
+            if (OptOutMessage != null)
+            {
+                p.Add(new KeyValuePair<string, string>("OptOutMessage", OptOutMessage));
+            }
+
+            if (HelpMessage != null)
+            {
+                p.Add(new KeyValuePair<string, string>("HelpMessage", HelpMessage));
+            }
+
+            if (OptInKeywords != null)
+            {
+                p.AddRange(OptInKeywords.Select(prop => new KeyValuePair<string, string>("OptInKeywords", prop)));
+            }
+
+            if (OptOutKeywords != null)
+            {
+                p.AddRange(OptOutKeywords.Select(prop => new KeyValuePair<string, string>("OptOutKeywords", prop)));
+            }
+
+            if (HelpKeywords != null)
+            {
+                p.AddRange(HelpKeywords.Select(prop => new KeyValuePair<string, string>("HelpKeywords", prop)));
             }
 
             return p;

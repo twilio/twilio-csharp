@@ -33,7 +33,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
 
         /// <summary>
-        /// Subscribe to User Defined Messages for a given call sid.
+        /// Subscribe to User Defined Messages for a given Call SID.
         /// </summary>
         /// <param name="options"> Create UserDefinedMessageSubscription parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -48,7 +48,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
         #if !NET35
         /// <summary>
-        /// Subscribe to User Defined Messages for a given call sid.
+        /// Subscribe to User Defined Messages for a given Call SID.
         /// </summary>
         /// <param name="options"> Create UserDefinedMessageSubscription parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -63,12 +63,12 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         #endif
 
         /// <summary>
-        /// Subscribe to User Defined Messages for a given call sid.
+        /// Subscribe to User Defined Messages for a given Call SID.
         /// </summary>
-        /// <param name="pathCallSid"> Call Sid. </param>
+        /// <param name="pathCallSid"> Call SID. </param>
         /// <param name="callback"> The URL we should call to send user defined messages. </param>
         /// <param name="method"> HTTP method used with the callback. </param>
-        /// <param name="pathAccountSid"> Account Sid. </param>
+        /// <param name="pathAccountSid"> Account SID. </param>
         /// <param name="idempotencyKey"> A unique string value to identify API call. This should be a unique string value per
         ///                      API call and can be a randomly generated. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -86,12 +86,12 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
         #if !NET35
         /// <summary>
-        /// Subscribe to User Defined Messages for a given call sid.
+        /// Subscribe to User Defined Messages for a given Call SID.
         /// </summary>
-        /// <param name="pathCallSid"> Call Sid. </param>
+        /// <param name="pathCallSid"> Call SID. </param>
         /// <param name="callback"> The URL we should call to send user defined messages. </param>
         /// <param name="method"> HTTP method used with the callback. </param>
-        /// <param name="pathAccountSid"> Account Sid. </param>
+        /// <param name="pathAccountSid"> Account SID. </param>
         /// <param name="idempotencyKey"> A unique string value to identify API call. This should be a unique string value per
         ///                      API call and can be a randomly generated. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -152,9 +152,9 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary>
         /// Delete a specific User Defined Message Subscription.
         /// </summary>
-        /// <param name="pathCallSid"> Call Sid. </param>
-        /// <param name="pathSid"> User Defined Message Subscription Sid </param>
-        /// <param name="pathAccountSid"> Account Sid. </param>
+        /// <param name="pathCallSid"> Call SID. </param>
+        /// <param name="pathSid"> User Defined Message Subscription SID. </param>
+        /// <param name="pathAccountSid"> Account SID. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of UserDefinedMessageSubscription </returns>
         public static bool Delete(string pathCallSid,
@@ -170,9 +170,9 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary>
         /// Delete a specific User Defined Message Subscription.
         /// </summary>
-        /// <param name="pathCallSid"> Call Sid. </param>
-        /// <param name="pathSid"> User Defined Message Subscription Sid </param>
-        /// <param name="pathAccountSid"> Account Sid. </param>
+        /// <param name="pathCallSid"> Call SID. </param>
+        /// <param name="pathSid"> User Defined Message Subscription SID. </param>
+        /// <param name="pathAccountSid"> Account SID. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of UserDefinedMessageSubscription </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathCallSid,
@@ -204,27 +204,27 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
 
         /// <summary>
-        /// Account Sid.
+        /// Account SID.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// Call Sid.
+        /// Call SID.
         /// </summary>
         [JsonProperty("call_sid")]
         public string CallSid { get; private set; }
         /// <summary>
-        /// User Defined Message Subscription Sid
+        /// User Defined Message Subscription SID.
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The date this User Defined Message Subscription was created
+        /// The date this User Defined Message Subscription was created.
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The URI of the resource, relative to `https://api.twilio.com`.
+        /// The URI of the User Defined Message Subscription Resource, relative to `https://api.twilio.com`.
         /// </summary>
         [JsonProperty("uri")]
         public string Uri { get; private set; }
