@@ -82,6 +82,13 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <param name="usAppToPersonUsecase"> A2P Campaign Use Case. Examples: [ 2FA, EMERGENCY, MARKETING..] </param>
         /// <param name="hasEmbeddedLinks"> Indicates that this SMS campaign will send messages that contain links. </param>
         /// <param name="hasEmbeddedPhone"> Indicates that this SMS campaign will send messages that contain phone numbers. </param>
+        /// <param name="messageFlow"> Description of how end users opt-in to the SMS campaign, therefore giving consent to receive messages. </param>
+        /// <param name="optInMessage"> The message that will be sent to the user when they opt in to the SMS campaign. </param>
+        /// <param name="optOutMessage"> The message that will be sent to the user when they opt out of the SMS campaign. </param>
+        /// <param name="helpMessage"> The message that will be sent to the user when they request help for the SMS campaign. </param>
+        /// <param name="optInKeywords"> The keywords that will be used to opt in to the SMS campaign. </param>
+        /// <param name="optOutKeywords"> The keywords that will be used to opt out of the SMS campaign. </param>
+        /// <param name="helpKeywords"> The keywords that will be used to request help for the SMS campaign. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of UsAppToPerson </returns>
         public static UsAppToPersonResource Create(
@@ -92,9 +99,16 @@ namespace Twilio.Rest.Messaging.V1.Service
                                           string usAppToPersonUsecase,
                                           bool? hasEmbeddedLinks,
                                           bool? hasEmbeddedPhone,
+                                          string messageFlow = null,
+                                          string optInMessage = null,
+                                          string optOutMessage = null,
+                                          string helpMessage = null,
+                                          List<string> optInKeywords = null,
+                                          List<string> optOutKeywords = null,
+                                          List<string> helpKeywords = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new CreateUsAppToPersonOptions(pathMessagingServiceSid, brandRegistrationSid, description, messageSamples, usAppToPersonUsecase, hasEmbeddedLinks, hasEmbeddedPhone){  };
+            var options = new CreateUsAppToPersonOptions(pathMessagingServiceSid, brandRegistrationSid, description, messageSamples, usAppToPersonUsecase, hasEmbeddedLinks, hasEmbeddedPhone){  MessageFlow = messageFlow, OptInMessage = optInMessage, OptOutMessage = optOutMessage, HelpMessage = helpMessage, OptInKeywords = optInKeywords, OptOutKeywords = optOutKeywords, HelpKeywords = helpKeywords };
             return Create(options, client);
         }
 
@@ -107,6 +121,13 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <param name="usAppToPersonUsecase"> A2P Campaign Use Case. Examples: [ 2FA, EMERGENCY, MARKETING..] </param>
         /// <param name="hasEmbeddedLinks"> Indicates that this SMS campaign will send messages that contain links. </param>
         /// <param name="hasEmbeddedPhone"> Indicates that this SMS campaign will send messages that contain phone numbers. </param>
+        /// <param name="messageFlow"> Description of how end users opt-in to the SMS campaign, therefore giving consent to receive messages. </param>
+        /// <param name="optInMessage"> The message that will be sent to the user when they opt in to the SMS campaign. </param>
+        /// <param name="optOutMessage"> The message that will be sent to the user when they opt out of the SMS campaign. </param>
+        /// <param name="helpMessage"> The message that will be sent to the user when they request help for the SMS campaign. </param>
+        /// <param name="optInKeywords"> The keywords that will be used to opt in to the SMS campaign. </param>
+        /// <param name="optOutKeywords"> The keywords that will be used to opt out of the SMS campaign. </param>
+        /// <param name="helpKeywords"> The keywords that will be used to request help for the SMS campaign. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of UsAppToPerson </returns>
         public static async System.Threading.Tasks.Task<UsAppToPersonResource> CreateAsync(
@@ -117,9 +138,16 @@ namespace Twilio.Rest.Messaging.V1.Service
                                                                                   string usAppToPersonUsecase,
                                                                                   bool? hasEmbeddedLinks,
                                                                                   bool? hasEmbeddedPhone,
+                                                                                  string messageFlow = null,
+                                                                                  string optInMessage = null,
+                                                                                  string optOutMessage = null,
+                                                                                  string helpMessage = null,
+                                                                                  List<string> optInKeywords = null,
+                                                                                  List<string> optOutKeywords = null,
+                                                                                  List<string> helpKeywords = null,
                                                                                   ITwilioRestClient client = null)
         {
-        var options = new CreateUsAppToPersonOptions(pathMessagingServiceSid, brandRegistrationSid, description, messageSamples, usAppToPersonUsecase, hasEmbeddedLinks, hasEmbeddedPhone){  };
+        var options = new CreateUsAppToPersonOptions(pathMessagingServiceSid, brandRegistrationSid, description, messageSamples, usAppToPersonUsecase, hasEmbeddedLinks, hasEmbeddedPhone){  MessageFlow = messageFlow, OptInMessage = optInMessage, OptOutMessage = optOutMessage, HelpMessage = helpMessage, OptInKeywords = optInKeywords, OptOutKeywords = optOutKeywords, HelpKeywords = helpKeywords };
             return await CreateAsync(options, client);
         }
         #endif
@@ -470,6 +498,34 @@ namespace Twilio.Rest.Messaging.V1.Service
         ///<summary> Rate limit and/or classification set by each carrier </summary> 
         [JsonProperty("rate_limits")]
         public object RateLimits { get; private set; }
+
+        ///<summary> Consumer opt-in flow </summary> 
+        [JsonProperty("message_flow")]
+        public string MessageFlow { get; private set; }
+
+        ///<summary> Opt In Message </summary> 
+        [JsonProperty("opt_in_message")]
+        public string OptInMessage { get; private set; }
+
+        ///<summary> Opt Out Message </summary> 
+        [JsonProperty("opt_out_message")]
+        public string OptOutMessage { get; private set; }
+
+        ///<summary> Help Message </summary> 
+        [JsonProperty("help_message")]
+        public string HelpMessage { get; private set; }
+
+        ///<summary> Opt In Keywords </summary> 
+        [JsonProperty("opt_in_keywords")]
+        public List<string> OptInKeywords { get; private set; }
+
+        ///<summary> Opt Out Keywords </summary> 
+        [JsonProperty("opt_out_keywords")]
+        public List<string> OptOutKeywords { get; private set; }
+
+        ///<summary> Help Keywords </summary> 
+        [JsonProperty("help_keywords")]
+        public List<string> HelpKeywords { get; private set; }
 
         ///<summary> The ISO 8601 date and time in GMT when the resource was created </summary> 
         [JsonProperty("date_created")]

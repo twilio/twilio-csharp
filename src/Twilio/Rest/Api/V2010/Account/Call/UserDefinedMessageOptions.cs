@@ -24,14 +24,14 @@ using Twilio.Converters;
 namespace Twilio.Rest.Api.V2010.Account.Call
 {
 
-    /// <summary> Create a new User Defined Message for the given call sid. </summary>
+    /// <summary> Create a new User Defined Message for the given Call SID. </summary>
     public class CreateUserDefinedMessageOptions : IOptions<UserDefinedMessageResource>
     {
         
         ///<summary> The SID of the [Call](https://www.twilio.com/docs/voice/api/call-resource) the User Defined Message is associated with. </summary> 
         public string PathCallSid { get; }
 
-        ///<summary> A unique string value to identify API call. This should be a unique string value per API call and can be a randomly generated. </summary> 
+        ///<summary> The User Defined Message in the form of URL-encoded JSON string. </summary> 
         public string Content { get; }
 
         ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created User Defined Message. </summary> 
@@ -42,7 +42,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
 
         /// <summary> Construct a new CreateUserDefinedMessageOptions </summary>
-        /// <param name="pathCallSid"> The SID of the [Call](https://www.twilio.com/docs/voice/api/call-resource) the User Defined Message is associated with. </param>        /// <param name="content"> A unique string value to identify API call. This should be a unique string value per API call and can be a randomly generated. </param>
+        /// <param name="pathCallSid"> The SID of the [Call](https://www.twilio.com/docs/voice/api/call-resource) the User Defined Message is associated with. </param>        /// <param name="content"> The User Defined Message in the form of URL-encoded JSON string. </param>
         public CreateUserDefinedMessageOptions(string pathCallSid, string content)
         {
             PathCallSid = pathCallSid;

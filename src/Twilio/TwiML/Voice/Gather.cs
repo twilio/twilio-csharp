@@ -186,6 +186,8 @@ namespace Twilio.TwiML.Voice
             public static readonly SpeechModelEnum Default = new SpeechModelEnum("default");
             public static readonly SpeechModelEnum NumbersAndCommands = new SpeechModelEnum("numbers_and_commands");
             public static readonly SpeechModelEnum PhoneCall = new SpeechModelEnum("phone_call");
+            public static readonly SpeechModelEnum ExperimentalConversations = new SpeechModelEnum("experimental_conversations");
+            public static readonly SpeechModelEnum ExperimentalUtterances = new SpeechModelEnum("experimental_utterances");
         }
 
         /// <summary>
