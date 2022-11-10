@@ -7,7 +7,7 @@
 
 ## Twilio REST API and TwiML Libraries for .NET
 
-Twilio provides a simple HTTP-based API for sending and receiving phone calls and text messages. Learn more on [twilio.com][apidocs].
+Twilio provides a HTTP-based API for sending and receiving phone calls and text messages. Learn more on [twilio.com][apidocs].
 
 More documentation for this library can be found [here][libdocs].
 
@@ -15,7 +15,7 @@ More documentation for this library can be found [here][libdocs].
 
 `twilio-csharp` uses a modified version of [Semantic Versioning](https://semver.org) for all changes. [See this document](VERSIONS.md) for details.
 
-### Migrating from earlier versions
+### Migrate from earlier versions
 
 See the migration guide [here][migrating]. Also, if you were using the `Twilio.Mvc` package, that has been replaced by the [Twilio.AspNet.Mvc][aspnet] package which is compatible with this version of the library.
 
@@ -46,7 +46,7 @@ If you are building with the .NET Core command line tools, then you can run the 
 
     dotnet add package Twilio
 
-### Installing release candidates
+### Install release candidates
 
 To use twilio-csharp release candidates with Visual Studio Code, you can use the NuGet GUI to search for and install the Twilio NuGet package and provide version as 6.0.0. Or, as a shortcut, simply type the following command into the Package Manager Console:
 
@@ -56,7 +56,7 @@ If you are building with the .NET Core command line tools, then you can run the 
 
     dotnet add package Twilio --version 6.x.x-rc.x
 
-## Sample Usage
+## Sample usage
 
 The examples below show how to have your application initiate and outbound phone call and send an SMS message using the Twilio .NET helper library:
 ```csharp
@@ -88,18 +88,18 @@ TwilioClient.SetEdge("sydney");
 
 This will result in the `hostname` transforming from `api.twilio.com` to `api.sydney.au1.twilio.com`.
 
-## Ways to Enable Debug Logging
+## Enable debug logging
 There are two ways to enable debug logging in the default HTTP client. You can create an environment variable called `TWILIO_LOG_LEVEL` and set it to `debug` or you can set the LogLevel variable on the client as debug:
 
 ```csharp
 TwilioClient.SetLogLevel("debug");
 ```
 
-## Handling Exceptions
+## Handle exceptions
 
-For an example on how to handle exceptions in this helper library, please see the [Twilio documentation](https://www.twilio.com/docs/libraries/csharp-dotnet/usage-guide#handling-errors).
+For an example on how to handle exceptions in this helper library, please see the [Twilio documentation](https://www.twilio.com/docs/libraries/csharp-dotnet/usage-guide#handle-errors).
 
-## Generating TwiML
+## Generate TwiML
 
 To control phone calls, your application needs to output [TwiML][twiml].
 
@@ -139,7 +139,7 @@ Console.WriteLine(response);
 */
 ```
 
-## Using a Custom HTTP Client
+## Use a custom HTTP Client
 
 To use a custom HTTP client with this helper library, please see the [Twilio documentation](https://www.twilio.com/docs/libraries/csharp-dotnet/custom-http-clients-dot-net-framework).
 
@@ -165,7 +165,7 @@ make test
 ```
 
 
-## Getting help
+## Get support
 
 If you need help installing or using the library, please check the [Twilio Support Help Center](https://support.twilio.com) first, and [file a support ticket](https://twilio.com/help/contact) if you don't find an answer to your question.
 
@@ -174,6 +174,6 @@ If you've instead found a bug in the library or would like new features added, g
 [twilio]: https://www.twilio.com
 [apidocs]: https://www.twilio.com/docs/api
 [twiml]: https://www.twilio.com/docs/api/twiml
-[libdocs]: https://twilio.github.io/twilio-csharp
-[migrating]: https://www.twilio.com/docs/libraries/csharp/migrating-your-csharp-dot-net-application-twilio-sdk-4x-5x
+[libdocs]: https://www.twilio.com/docs/libraries/reference/twilio-csharp/
+[migrating]: https://www.twilio.com/docs/libraries/csharp-dotnet/usage-guide
 [aspnet]: https://github.com/twilio/twilio-aspnet
