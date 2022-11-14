@@ -2,7 +2,7 @@
 
 _`MAJOR` version bumps will have upgrade notes posted here._
 
-[2017-11-XX] 5.x.x to 6.x.x
+[2022-11-XX] 5.x.x to 6.x.x
 ---------------------------
 ### Overview
 
