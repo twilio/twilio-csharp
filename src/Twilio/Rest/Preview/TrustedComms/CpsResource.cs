@@ -46,7 +46,7 @@ namespace Twilio.Rest.Preview.TrustedComms
             );
         }
 
-        /// <summary> Fetch a specific Call Placement Service (CPS) given a phone number via &#x60;X-XCNAM-Sensitive-Phone-Number&#x60; header. </summary>
+        /// <summary> Fetch a specific Call Placement Service (CPS) given a phone number via `X-XCNAM-Sensitive-Phone-Number` header. </summary>
         /// <param name="options"> Fetch Cps parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Cps </returns>
@@ -58,7 +58,7 @@ namespace Twilio.Rest.Preview.TrustedComms
         }
 
         #if !NET35
-        /// <summary> Fetch a specific Call Placement Service (CPS) given a phone number via &#x60;X-XCNAM-Sensitive-Phone-Number&#x60; header. </summary>
+        /// <summary> Fetch a specific Call Placement Service (CPS) given a phone number via `X-XCNAM-Sensitive-Phone-Number` header. </summary>
         /// <param name="options"> Fetch Cps parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Cps </returns>
@@ -70,7 +70,7 @@ namespace Twilio.Rest.Preview.TrustedComms
             return FromJson(response.Content);
         }
         #endif
-        /// <summary> Fetch a specific Call Placement Service (CPS) given a phone number via &#x60;X-XCNAM-Sensitive-Phone-Number&#x60; header. </summary>
+        /// <summary> Fetch a specific Call Placement Service (CPS) given a phone number via `X-XCNAM-Sensitive-Phone-Number` header. </summary>
         /// <param name="xXcnamSensitivePhoneNumber"> Phone number used to retrieve its corresponding CPS. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Cps </returns>
@@ -83,7 +83,7 @@ namespace Twilio.Rest.Preview.TrustedComms
         }
 
         #if !NET35
-        /// <summary> Fetch a specific Call Placement Service (CPS) given a phone number via &#x60;X-XCNAM-Sensitive-Phone-Number&#x60; header. </summary>
+        /// <summary> Fetch a specific Call Placement Service (CPS) given a phone number via `X-XCNAM-Sensitive-Phone-Number` header. </summary>
         /// <param name="xXcnamSensitivePhoneNumber"> Phone number used to retrieve its corresponding CPS. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Cps </returns>

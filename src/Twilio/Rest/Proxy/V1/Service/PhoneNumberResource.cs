@@ -48,7 +48,7 @@ namespace Twilio.Rest.Proxy.V1.Service
             );
         }
 
-        /// <summary> Add a Phone Number to a Service&#39;s Proxy Number Pool. </summary>
+        /// <summary> Add a Phone Number to a Service's Proxy Number Pool. </summary>
         /// <param name="options"> Create PhoneNumber parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of PhoneNumber </returns>
@@ -60,7 +60,7 @@ namespace Twilio.Rest.Proxy.V1.Service
         }
 
         #if !NET35
-        /// <summary> Add a Phone Number to a Service&#39;s Proxy Number Pool. </summary>
+        /// <summary> Add a Phone Number to a Service's Proxy Number Pool. </summary>
         /// <param name="options"> Create PhoneNumber parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PhoneNumber </returns>
@@ -73,7 +73,7 @@ namespace Twilio.Rest.Proxy.V1.Service
         }
         #endif
 
-        /// <summary> Add a Phone Number to a Service&#39;s Proxy Number Pool. </summary>
+        /// <summary> Add a Phone Number to a Service's Proxy Number Pool. </summary>
         /// <param name="pathServiceSid"> The SID parent [Service](https://www.twilio.com/docs/proxy/api/service) resource of the new PhoneNumber resource. </param>
         /// <param name="sid"> The SID of a Twilio [IncomingPhoneNumber](https://www.twilio.com/docs/phone-numbers/api/incomingphonenumber-resource) resource that represents the Twilio Number you would like to assign to your Proxy Service. </param>
         /// <param name="phoneNumber"> The phone number in [E.164](https://www.twilio.com/docs/glossary/what-e164) format.  E.164 phone numbers consist of a + followed by the country code and subscriber number without punctuation characters. For example, +14155551234. </param>
@@ -92,7 +92,7 @@ namespace Twilio.Rest.Proxy.V1.Service
         }
 
         #if !NET35
-        /// <summary> Add a Phone Number to a Service&#39;s Proxy Number Pool. </summary>
+        /// <summary> Add a Phone Number to a Service's Proxy Number Pool. </summary>
         /// <param name="pathServiceSid"> The SID parent [Service](https://www.twilio.com/docs/proxy/api/service) resource of the new PhoneNumber resource. </param>
         /// <param name="sid"> The SID of a Twilio [IncomingPhoneNumber](https://www.twilio.com/docs/phone-numbers/api/incomingphonenumber-resource) resource that represents the Twilio Number you would like to assign to your Proxy Service. </param>
         /// <param name="phoneNumber"> The phone number in [E.164](https://www.twilio.com/docs/glossary/what-e164) format.  E.164 phone numbers consist of a + followed by the country code and subscriber number without punctuation characters. For example, +14155551234. </param>

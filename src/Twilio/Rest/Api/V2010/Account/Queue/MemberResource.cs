@@ -259,7 +259,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
             );
         }
 
-        /// <summary> Dequeue a member from a queue and have the member&#39;s call begin executing the TwiML document at that URL </summary>
+        /// <summary> Dequeue a member from a queue and have the member's call begin executing the TwiML document at that URL </summary>
         /// <param name="options"> Update Member parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Member </returns>
@@ -270,7 +270,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
             return FromJson(response.Content);
         }
 
-        /// <summary> Dequeue a member from a queue and have the member&#39;s call begin executing the TwiML document at that URL </summary>
+        /// <summary> Dequeue a member from a queue and have the member's call begin executing the TwiML document at that URL </summary>
         /// <param name="options"> Update Member parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Member </returns>
@@ -284,7 +284,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         }
         #endif
 
-        /// <summary> Dequeue a member from a queue and have the member&#39;s call begin executing the TwiML document at that URL </summary>
+        /// <summary> Dequeue a member from a queue and have the member's call begin executing the TwiML document at that URL </summary>
         /// <param name="pathQueueSid"> The SID of the Queue in which to find the members to update. </param>
         /// <param name="pathCallSid"> The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID of the resource(s) to update. </param>
         /// <param name="url"> The absolute URL of the Queue resource. </param>
@@ -305,7 +305,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         }
 
         #if !NET35
-        /// <summary> Dequeue a member from a queue and have the member&#39;s call begin executing the TwiML document at that URL </summary>
+        /// <summary> Dequeue a member from a queue and have the member's call begin executing the TwiML document at that URL </summary>
         /// <param name="pathQueueSid"> The SID of the Queue in which to find the members to update. </param>
         /// <param name="pathCallSid"> The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID of the resource(s) to update. </param>
         /// <param name="url"> The absolute URL of the Queue resource. </param>

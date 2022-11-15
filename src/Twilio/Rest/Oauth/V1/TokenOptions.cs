@@ -24,7 +24,7 @@ using Twilio.Converters;
 namespace Twilio.Rest.Oauth.V1
 {
 
-    /// <summary> Issues a new Access token (optionally identity_token &amp; refresh_token) in exchange of Oauth grant </summary>
+    /// <summary> Issues a new Access token (optionally identity_token & refresh_token) in exchange of Oauth grant </summary>
     public class CreateTokenOptions : IOptions<TokenResource>
     {
         

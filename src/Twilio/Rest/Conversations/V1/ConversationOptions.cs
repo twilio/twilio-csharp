@@ -24,7 +24,7 @@ using Twilio.Converters;
 namespace Twilio.Rest.Conversations.V1
 {
 
-    /// <summary> Create a new conversation in your account&#39;s default service </summary>
+    /// <summary> Create a new conversation in your account's default service </summary>
     public class CreateConversationOptions : IOptions<ConversationResource>
     {
         
@@ -117,7 +117,7 @@ namespace Twilio.Rest.Conversations.V1
     }
 
     }
-    /// <summary> Remove a conversation from your account&#39;s default service </summary>
+    /// <summary> Remove a conversation from your account's default service </summary>
     public class DeleteConversationOptions : IOptions<ConversationResource>
     {
         
@@ -159,7 +159,7 @@ namespace Twilio.Rest.Conversations.V1
     }
 
 
-    /// <summary> Fetch a conversation from your account&#39;s default service </summary>
+    /// <summary> Fetch a conversation from your account's default service </summary>
     public class FetchConversationOptions : IOptions<ConversationResource>
     {
     
@@ -188,7 +188,7 @@ namespace Twilio.Rest.Conversations.V1
     }
 
 
-    /// <summary> Retrieve a list of conversations in your account&#39;s default service </summary>
+    /// <summary> Retrieve a list of conversations in your account's default service </summary>
     public class ReadConversationOptions : ReadOptions<ConversationResource>
     {
     
@@ -211,7 +211,7 @@ namespace Twilio.Rest.Conversations.V1
 
     }
 
-    /// <summary> Update an existing conversation in your account&#39;s default service </summary>
+    /// <summary> Update an existing conversation in your account's default service </summary>
     public class UpdateConversationOptions : IOptions<ConversationResource>
     {
     

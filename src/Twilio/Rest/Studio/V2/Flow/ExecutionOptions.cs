@@ -185,7 +185,7 @@ namespace Twilio.Rest.Studio.V2.Flow
 
     }
 
-    /// <summary> Update the status of an Execution to &#x60;ended&#x60;. </summary>
+    /// <summary> Update the status of an Execution to `ended`. </summary>
     public class UpdateExecutionOptions : IOptions<ExecutionResource>
     {
     

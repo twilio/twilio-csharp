@@ -60,7 +60,7 @@ namespace Twilio.Rest.Video.V1.Room.Participant
     }
 
 
-    /// <summary> Returns a list of tracks associated with a given Participant. Only &#x60;currently&#x60; Published Tracks are in the list resource. </summary>
+    /// <summary> Returns a list of tracks associated with a given Participant. Only `currently` Published Tracks are in the list resource. </summary>
     public class ReadPublishedTrackOptions : ReadOptions<PublishedTrackResource>
     {
     

@@ -246,7 +246,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
     }
 
-    /// <summary> Updates the application&#39;s properties </summary>
+    /// <summary> Updates the application's properties </summary>
     public class UpdateApplicationOptions : IOptions<ApplicationResource>
     {
     

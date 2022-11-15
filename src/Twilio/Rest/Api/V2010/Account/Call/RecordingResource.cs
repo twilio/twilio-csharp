@@ -480,7 +480,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             );
         }
 
-        /// <summary> Changes the status of the recording to paused, stopped, or in-progress. Note: Pass &#x60;Twilio.CURRENT&#x60; instead of recording sid to reference current active recording. </summary>
+        /// <summary> Changes the status of the recording to paused, stopped, or in-progress. Note: Pass `Twilio.CURRENT` instead of recording sid to reference current active recording. </summary>
         /// <param name="options"> Update Recording parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Recording </returns>
@@ -491,7 +491,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             return FromJson(response.Content);
         }
 
-        /// <summary> Changes the status of the recording to paused, stopped, or in-progress. Note: Pass &#x60;Twilio.CURRENT&#x60; instead of recording sid to reference current active recording. </summary>
+        /// <summary> Changes the status of the recording to paused, stopped, or in-progress. Note: Pass `Twilio.CURRENT` instead of recording sid to reference current active recording. </summary>
         /// <param name="options"> Update Recording parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Recording </returns>
@@ -505,7 +505,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
         #endif
 
-        /// <summary> Changes the status of the recording to paused, stopped, or in-progress. Note: Pass &#x60;Twilio.CURRENT&#x60; instead of recording sid to reference current active recording. </summary>
+        /// <summary> Changes the status of the recording to paused, stopped, or in-progress. Note: Pass `Twilio.CURRENT` instead of recording sid to reference current active recording. </summary>
         /// <param name="pathCallSid"> The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID of the resource to update. </param>
         /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Recording resource to update. </param>
         /// <param name="status">  </param>
@@ -526,7 +526,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
 
         #if !NET35
-        /// <summary> Changes the status of the recording to paused, stopped, or in-progress. Note: Pass &#x60;Twilio.CURRENT&#x60; instead of recording sid to reference current active recording. </summary>
+        /// <summary> Changes the status of the recording to paused, stopped, or in-progress. Note: Pass `Twilio.CURRENT` instead of recording sid to reference current active recording. </summary>
         /// <param name="pathCallSid"> The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID of the resource to update. </param>
         /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Recording resource to update. </param>
         /// <param name="status">  </param>

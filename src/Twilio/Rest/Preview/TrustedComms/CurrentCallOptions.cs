@@ -23,7 +23,7 @@ using Twilio.Converters;
 
 namespace Twilio.Rest.Preview.TrustedComms
 {
-    /// <summary> Retrieve a current call given the originating and terminating number via &#x60;X-XCNAM-Sensitive-Phone-Number-From&#x60; and &#x60;X-XCNAM-Sensitive-Phone-Number-To&#x60; headers. </summary>
+    /// <summary> Retrieve a current call given the originating and terminating number via `X-XCNAM-Sensitive-Phone-Number-From` and `X-XCNAM-Sensitive-Phone-Number-To` headers. </summary>
     public class FetchCurrentCallOptions : IOptions<CurrentCallResource>
     {
     

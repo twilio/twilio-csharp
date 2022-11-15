@@ -1475,7 +1475,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         
 
     }
-    /// <summary> Stop a Stream using either the SID of the Stream resource or the &#x60;name&#x60; used when creating the resource </summary>
+    /// <summary> Stop a Stream using either the SID of the Stream resource or the `name` used when creating the resource </summary>
     public class UpdateStreamOptions : IOptions<StreamResource>
     {
     

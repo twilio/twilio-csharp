@@ -236,7 +236,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
     }
 
-    /// <summary> Changes the status of the recording to paused, stopped, or in-progress. Note: Pass &#x60;Twilio.CURRENT&#x60; instead of recording sid to reference current active recording. </summary>
+    /// <summary> Changes the status of the recording to paused, stopped, or in-progress. Note: Pass `Twilio.CURRENT` instead of recording sid to reference current active recording. </summary>
     public class UpdateRecordingOptions : IOptions<RecordingResource>
     {
     

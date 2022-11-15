@@ -24,7 +24,7 @@ using System.Linq;
 namespace Twilio.Rest.Preview.HostedNumbers
 {
 
-    /// <summary> Host a phone number&#39;s capability on Twilio&#39;s platform. </summary>
+    /// <summary> Host a phone number's capability on Twilio's platform. </summary>
     public class CreateHostedNumberOrderOptions : IOptions<HostedNumberOrderResource>
     {
         
@@ -168,7 +168,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
         
 
     }
-    /// <summary> Cancel the HostedNumberOrder (only available when the status is in &#x60;received&#x60;). </summary>
+    /// <summary> Cancel the HostedNumberOrder (only available when the status is in `received`). </summary>
     public class DeleteHostedNumberOrderOptions : IOptions<HostedNumberOrderResource>
     {
         

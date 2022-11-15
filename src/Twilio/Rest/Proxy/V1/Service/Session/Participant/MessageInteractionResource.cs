@@ -98,7 +98,7 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
             );
         }
 
-        /// <summary> Create a new message Interaction to send directly from your system to one [Participant](https://www.twilio.com/docs/proxy/api/participant).  The &#x60;inbound&#x60; properties for the Interaction will always be empty. </summary>
+        /// <summary> Create a new message Interaction to send directly from your system to one [Participant](https://www.twilio.com/docs/proxy/api/participant).  The `inbound` properties for the Interaction will always be empty. </summary>
         /// <param name="options"> Create MessageInteraction parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of MessageInteraction </returns>
@@ -110,7 +110,7 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
         }
 
         #if !NET35
-        /// <summary> Create a new message Interaction to send directly from your system to one [Participant](https://www.twilio.com/docs/proxy/api/participant).  The &#x60;inbound&#x60; properties for the Interaction will always be empty. </summary>
+        /// <summary> Create a new message Interaction to send directly from your system to one [Participant](https://www.twilio.com/docs/proxy/api/participant).  The `inbound` properties for the Interaction will always be empty. </summary>
         /// <param name="options"> Create MessageInteraction parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of MessageInteraction </returns>
@@ -123,7 +123,7 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
         }
         #endif
 
-        /// <summary> Create a new message Interaction to send directly from your system to one [Participant](https://www.twilio.com/docs/proxy/api/participant).  The &#x60;inbound&#x60; properties for the Interaction will always be empty. </summary>
+        /// <summary> Create a new message Interaction to send directly from your system to one [Participant](https://www.twilio.com/docs/proxy/api/participant).  The `inbound` properties for the Interaction will always be empty. </summary>
         /// <param name="pathServiceSid"> The SID of the parent [Service](https://www.twilio.com/docs/proxy/api/service) resource. </param>
         /// <param name="pathSessionSid"> The SID of the parent [Session](https://www.twilio.com/docs/proxy/api/session) resource. </param>
         /// <param name="pathParticipantSid"> The SID of the [Participant](https://www.twilio.com/docs/proxy/api/participant) resource. </param>
@@ -144,7 +144,7 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
         }
 
         #if !NET35
-        /// <summary> Create a new message Interaction to send directly from your system to one [Participant](https://www.twilio.com/docs/proxy/api/participant).  The &#x60;inbound&#x60; properties for the Interaction will always be empty. </summary>
+        /// <summary> Create a new message Interaction to send directly from your system to one [Participant](https://www.twilio.com/docs/proxy/api/participant).  The `inbound` properties for the Interaction will always be empty. </summary>
         /// <param name="pathServiceSid"> The SID of the parent [Service](https://www.twilio.com/docs/proxy/api/service) resource. </param>
         /// <param name="pathSessionSid"> The SID of the parent [Session](https://www.twilio.com/docs/proxy/api/session) resource. </param>
         /// <param name="pathParticipantSid"> The SID of the [Participant](https://www.twilio.com/docs/proxy/api/participant) resource. </param>

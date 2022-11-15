@@ -975,7 +975,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             );
         }
 
-        /// <summary> Stop a Stream using either the SID of the Stream resource or the &#x60;name&#x60; used when creating the resource </summary>
+        /// <summary> Stop a Stream using either the SID of the Stream resource or the `name` used when creating the resource </summary>
         /// <param name="options"> Update Stream parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Stream </returns>
@@ -986,7 +986,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             return FromJson(response.Content);
         }
 
-        /// <summary> Stop a Stream using either the SID of the Stream resource or the &#x60;name&#x60; used when creating the resource </summary>
+        /// <summary> Stop a Stream using either the SID of the Stream resource or the `name` used when creating the resource </summary>
         /// <param name="options"> Update Stream parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Stream </returns>
@@ -1000,7 +1000,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
         #endif
 
-        /// <summary> Stop a Stream using either the SID of the Stream resource or the &#x60;name&#x60; used when creating the resource </summary>
+        /// <summary> Stop a Stream using either the SID of the Stream resource or the `name` used when creating the resource </summary>
         /// <param name="pathCallSid"> The SID of the [Call](https://www.twilio.com/docs/voice/api/call-resource) the Stream resource is associated with. </param>
         /// <param name="pathSid"> The SID of the Stream resource, or the `name` used when creating the resource </param>
         /// <param name="status">  </param>
@@ -1019,7 +1019,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
 
         #if !NET35
-        /// <summary> Stop a Stream using either the SID of the Stream resource or the &#x60;name&#x60; used when creating the resource </summary>
+        /// <summary> Stop a Stream using either the SID of the Stream resource or the `name` used when creating the resource </summary>
         /// <param name="pathCallSid"> The SID of the [Call](https://www.twilio.com/docs/voice/api/call-resource) the Stream resource is associated with. </param>
         /// <param name="pathSid"> The SID of the Stream resource, or the `name` used when creating the resource </param>
         /// <param name="status">  </param>

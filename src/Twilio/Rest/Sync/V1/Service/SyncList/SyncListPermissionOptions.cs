@@ -133,7 +133,7 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
 
     }
 
-    /// <summary> Update an identity&#39;s access to a specific Sync List. </summary>
+    /// <summary> Update an identity's access to a specific Sync List. </summary>
     public class UpdateSyncListPermissionOptions : IOptions<SyncListPermissionResource>
     {
     

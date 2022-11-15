@@ -59,7 +59,7 @@ namespace Twilio.Rest.Conversations.V1
             );
         }
 
-        /// <summary> Create a new user role in your account&#39;s default service </summary>
+        /// <summary> Create a new user role in your account's default service </summary>
         /// <param name="options"> Create Role parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Role </returns>
@@ -71,7 +71,7 @@ namespace Twilio.Rest.Conversations.V1
         }
 
         #if !NET35
-        /// <summary> Create a new user role in your account&#39;s default service </summary>
+        /// <summary> Create a new user role in your account's default service </summary>
         /// <param name="options"> Create Role parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Role </returns>
@@ -84,7 +84,7 @@ namespace Twilio.Rest.Conversations.V1
         }
         #endif
 
-        /// <summary> Create a new user role in your account&#39;s default service </summary>
+        /// <summary> Create a new user role in your account's default service </summary>
         /// <param name="friendlyName"> A descriptive string that you create to describe the new resource. It can be up to 64 characters long. </param>
         /// <param name="type">  </param>
         /// <param name="permission"> A permission that you grant to the new role. Only one permission can be granted per parameter. To assign more than one permission, repeat this parameter for each permission value. The values for this parameter depend on the role's `type`. </param>
@@ -101,7 +101,7 @@ namespace Twilio.Rest.Conversations.V1
         }
 
         #if !NET35
-        /// <summary> Create a new user role in your account&#39;s default service </summary>
+        /// <summary> Create a new user role in your account's default service </summary>
         /// <param name="friendlyName"> A descriptive string that you create to describe the new resource. It can be up to 64 characters long. </param>
         /// <param name="type">  </param>
         /// <param name="permission"> A permission that you grant to the new role. Only one permission can be granted per parameter. To assign more than one permission, repeat this parameter for each permission value. The values for this parameter depend on the role's `type`. </param>
@@ -118,7 +118,7 @@ namespace Twilio.Rest.Conversations.V1
         }
         #endif
         
-        /// <summary> Remove a user role from your account&#39;s default service </summary>
+        /// <summary> Remove a user role from your account's default service </summary>
         /// <param name="options"> Delete Role parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Role </returns>
@@ -139,7 +139,7 @@ namespace Twilio.Rest.Conversations.V1
             );
         }
 
-        /// <summary> Remove a user role from your account&#39;s default service </summary>
+        /// <summary> Remove a user role from your account's default service </summary>
         /// <param name="options"> Delete Role parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Role </returns>
@@ -151,7 +151,7 @@ namespace Twilio.Rest.Conversations.V1
         }
 
         #if !NET35
-        /// <summary> Remove a user role from your account&#39;s default service </summary>
+        /// <summary> Remove a user role from your account's default service </summary>
         /// <param name="options"> Delete Role parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Role </returns>
@@ -164,7 +164,7 @@ namespace Twilio.Rest.Conversations.V1
         }
         #endif
 
-        /// <summary> Remove a user role from your account&#39;s default service </summary>
+        /// <summary> Remove a user role from your account's default service </summary>
         /// <param name="pathSid"> The SID of the Role resource to delete. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Role </returns>
@@ -175,7 +175,7 @@ namespace Twilio.Rest.Conversations.V1
         }
 
         #if !NET35
-        /// <summary> Remove a user role from your account&#39;s default service </summary>
+        /// <summary> Remove a user role from your account's default service </summary>
         /// <param name="pathSid"> The SID of the Role resource to delete. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Role </returns>
@@ -203,7 +203,7 @@ namespace Twilio.Rest.Conversations.V1
             );
         }
 
-        /// <summary> Fetch a user role from your account&#39;s default service </summary>
+        /// <summary> Fetch a user role from your account's default service </summary>
         /// <param name="options"> Fetch Role parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Role </returns>
@@ -215,7 +215,7 @@ namespace Twilio.Rest.Conversations.V1
         }
 
         #if !NET35
-        /// <summary> Fetch a user role from your account&#39;s default service </summary>
+        /// <summary> Fetch a user role from your account's default service </summary>
         /// <param name="options"> Fetch Role parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Role </returns>
@@ -227,7 +227,7 @@ namespace Twilio.Rest.Conversations.V1
             return FromJson(response.Content);
         }
         #endif
-        /// <summary> Fetch a user role from your account&#39;s default service </summary>
+        /// <summary> Fetch a user role from your account's default service </summary>
         /// <param name="pathSid"> The SID of the Role resource to fetch. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Role </returns>
@@ -240,7 +240,7 @@ namespace Twilio.Rest.Conversations.V1
         }
 
         #if !NET35
-        /// <summary> Fetch a user role from your account&#39;s default service </summary>
+        /// <summary> Fetch a user role from your account's default service </summary>
         /// <param name="pathSid"> The SID of the Role resource to fetch. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Role </returns>
@@ -265,7 +265,7 @@ namespace Twilio.Rest.Conversations.V1
                 headerParams: null
             );
         }
-        /// <summary> Retrieve a list of all user roles in your account&#39;s default service </summary>
+        /// <summary> Retrieve a list of all user roles in your account's default service </summary>
         /// <param name="options"> Read Role parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Role </returns>
@@ -278,7 +278,7 @@ namespace Twilio.Rest.Conversations.V1
         }
 
         #if !NET35
-        /// <summary> Retrieve a list of all user roles in your account&#39;s default service </summary>
+        /// <summary> Retrieve a list of all user roles in your account's default service </summary>
         /// <param name="options"> Read Role parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Role </returns>
@@ -292,7 +292,7 @@ namespace Twilio.Rest.Conversations.V1
             return new ResourceSet<RoleResource>(page, options, client);
         }
         #endif
-        /// <summary> Retrieve a list of all user roles in your account&#39;s default service </summary>
+        /// <summary> Retrieve a list of all user roles in your account's default service </summary>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
@@ -307,7 +307,7 @@ namespace Twilio.Rest.Conversations.V1
         }
 
         #if !NET35
-        /// <summary> Retrieve a list of all user roles in your account&#39;s default service </summary>
+        /// <summary> Retrieve a list of all user roles in your account's default service </summary>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
@@ -388,7 +388,7 @@ namespace Twilio.Rest.Conversations.V1
             );
         }
 
-        /// <summary> Update an existing user role in your account&#39;s default service </summary>
+        /// <summary> Update an existing user role in your account's default service </summary>
         /// <param name="options"> Update Role parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Role </returns>
@@ -399,7 +399,7 @@ namespace Twilio.Rest.Conversations.V1
             return FromJson(response.Content);
         }
 
-        /// <summary> Update an existing user role in your account&#39;s default service </summary>
+        /// <summary> Update an existing user role in your account's default service </summary>
         /// <param name="options"> Update Role parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Role </returns>
@@ -413,7 +413,7 @@ namespace Twilio.Rest.Conversations.V1
         }
         #endif
 
-        /// <summary> Update an existing user role in your account&#39;s default service </summary>
+        /// <summary> Update an existing user role in your account's default service </summary>
         /// <param name="pathSid"> The SID of the Role resource to update. </param>
         /// <param name="permission"> A permission that you grant to the role. Only one permission can be granted per parameter. To assign more than one permission, repeat this parameter for each permission value. Note that the update action replaces all previously assigned permissions with those defined in the update action. To remove a permission, do not include it in the subsequent update action. The values for this parameter depend on the role's `type`. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -428,7 +428,7 @@ namespace Twilio.Rest.Conversations.V1
         }
 
         #if !NET35
-        /// <summary> Update an existing user role in your account&#39;s default service </summary>
+        /// <summary> Update an existing user role in your account's default service </summary>
         /// <param name="pathSid"> The SID of the Role resource to update. </param>
         /// <param name="permission"> A permission that you grant to the role. Only one permission can be granted per parameter. To assign more than one permission, repeat this parameter for each permission value. Note that the update action replaces all previously assigned permissions with those defined in the update action. To remove a permission, do not include it in the subsequent update action. The values for this parameter depend on the role's `type`. </param>
         /// <param name="client"> Client to make requests to Twilio </param>

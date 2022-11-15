@@ -24,7 +24,7 @@ using Twilio.Converters;
 namespace Twilio.Rest.Conversations.V1
 {
 
-    /// <summary> Add a new conversation user to your account&#39;s default service </summary>
+    /// <summary> Add a new conversation user to your account's default service </summary>
     public class CreateUserOptions : IOptions<UserResource>
     {
         
@@ -88,7 +88,7 @@ namespace Twilio.Rest.Conversations.V1
     }
 
     }
-    /// <summary> Remove a conversation user from your account&#39;s default service </summary>
+    /// <summary> Remove a conversation user from your account's default service </summary>
     public class DeleteUserOptions : IOptions<UserResource>
     {
         
@@ -130,7 +130,7 @@ namespace Twilio.Rest.Conversations.V1
     }
 
 
-    /// <summary> Fetch a conversation user from your account&#39;s default service </summary>
+    /// <summary> Fetch a conversation user from your account's default service </summary>
     public class FetchUserOptions : IOptions<UserResource>
     {
     
@@ -159,7 +159,7 @@ namespace Twilio.Rest.Conversations.V1
     }
 
 
-    /// <summary> Retrieve a list of all conversation users in your account&#39;s default service </summary>
+    /// <summary> Retrieve a list of all conversation users in your account's default service </summary>
     public class ReadUserOptions : ReadOptions<UserResource>
     {
     
@@ -182,7 +182,7 @@ namespace Twilio.Rest.Conversations.V1
 
     }
 
-    /// <summary> Update an existing conversation user in your account&#39;s default service </summary>
+    /// <summary> Update an existing conversation user in your account's default service </summary>
     public class UpdateUserOptions : IOptions<UserResource>
     {
     

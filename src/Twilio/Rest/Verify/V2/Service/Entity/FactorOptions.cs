@@ -133,7 +133,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
 
     }
 
-    /// <summary> Update a specific Factor. This endpoint can be used to Verify a Factor if passed an &#x60;AuthPayload&#x60; param. </summary>
+    /// <summary> Update a specific Factor. This endpoint can be used to Verify a Factor if passed an `AuthPayload` param. </summary>
     public class UpdateFactorOptions : IOptions<FactorResource>
     {
     
