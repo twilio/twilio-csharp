@@ -52,7 +52,6 @@ namespace Twilio.Rest.Studio.V1.Flow
             string PathFlowSid = options.PathFlowSid;
             path = path.Replace("{"+"FlowSid"+"}", PathFlowSid);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Studio,
@@ -124,10 +123,6 @@ namespace Twilio.Rest.Studio.V1.Flow
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> Delete this Engagement and all Steps relating to it. </summary>
         /// <param name="options"> Delete Engagement parameters </param>
@@ -142,7 +137,6 @@ namespace Twilio.Rest.Studio.V1.Flow
             path = path.Replace("{"+"FlowSid"+"}", PathFlowSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -212,7 +206,6 @@ namespace Twilio.Rest.Studio.V1.Flow
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Studio,
@@ -280,7 +273,6 @@ namespace Twilio.Rest.Studio.V1.Flow
 
             string PathFlowSid = options.PathFlowSid;
             path = path.Replace("{"+"FlowSid"+"}", PathFlowSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -398,8 +390,6 @@ namespace Twilio.Rest.Studio.V1.Flow
             var response = client.Request(request);
             return Page<EngagementResource>.FromJson("engagements", response.Content);
         }
-
-
 
     
         /// <summary>

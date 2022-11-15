@@ -41,7 +41,6 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
             string PathTaskSid = options.PathTaskSid;
             path = path.Replace("{"+"TaskSid"+"}", PathTaskSid);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Preview,
@@ -113,10 +112,6 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> delete </summary>
         /// <param name="options"> Delete Field parameters </param>
@@ -133,7 +128,6 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
             path = path.Replace("{"+"TaskSid"+"}", PathTaskSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -207,7 +201,6 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Preview,
@@ -280,7 +273,6 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
             path = path.Replace("{"+"AssistantSid"+"}", PathAssistantSid);
             string PathTaskSid = options.PathTaskSid;
             path = path.Replace("{"+"TaskSid"+"}", PathTaskSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -402,8 +394,6 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
             var response = client.Request(request);
             return Page<FieldResource>.FromJson("fields", response.Content);
         }
-
-
 
     
         /// <summary>

@@ -43,7 +43,6 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Studio,
@@ -116,7 +115,6 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement
             path = path.Replace("{"+"FlowSid"+"}", PathFlowSid);
             string PathEngagementSid = options.PathEngagementSid;
             path = path.Replace("{"+"EngagementSid"+"}", PathEngagementSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -238,8 +236,6 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement
             var response = client.Request(request);
             return Page<StepResource>.FromJson("steps", response.Content);
         }
-
-
 
     
         /// <summary>

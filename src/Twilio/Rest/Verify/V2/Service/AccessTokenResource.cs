@@ -51,7 +51,6 @@ namespace Twilio.Rest.Verify.V2.Service
             string PathServiceSid = options.PathServiceSid;
             path = path.Replace("{"+"ServiceSid"+"}", PathServiceSid);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Verify,
@@ -127,10 +126,6 @@ namespace Twilio.Rest.Verify.V2.Service
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         private static Request BuildFetchRequest(FetchAccessTokenOptions options, ITwilioRestClient client)
         {
@@ -141,7 +136,6 @@ namespace Twilio.Rest.Verify.V2.Service
             path = path.Replace("{"+"ServiceSid"+"}", PathServiceSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Get,

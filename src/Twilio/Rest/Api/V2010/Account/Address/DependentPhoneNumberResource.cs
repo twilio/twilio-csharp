@@ -69,7 +69,6 @@ namespace Twilio.Rest.Api.V2010.Account.Address
             string PathAddressSid = options.PathAddressSid;
             path = path.Replace("{"+"AddressSid"+"}", PathAddressSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
@@ -190,8 +189,6 @@ namespace Twilio.Rest.Api.V2010.Account.Address
             var response = client.Request(request);
             return Page<DependentPhoneNumberResource>.FromJson("dependent_phone_numbers", response.Content);
         }
-
-
 
     
         /// <summary>

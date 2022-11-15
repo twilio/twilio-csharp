@@ -37,7 +37,6 @@ namespace Twilio.Rest.Oauth.V1
             string path = "/v1/token";
 
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Oauth,
@@ -125,10 +124,6 @@ namespace Twilio.Rest.Oauth.V1
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
     
         /// <summary>
         /// Converts a JSON string into a TokenResource object

@@ -61,7 +61,6 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation.Message
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Conversations,
@@ -139,7 +138,6 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation.Message
             path = path.Replace("{"+"ConversationSid"+"}", PathConversationSid);
             string PathMessageSid = options.PathMessageSid;
             path = path.Replace("{"+"MessageSid"+"}", PathMessageSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -265,8 +263,6 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation.Message
             var response = client.Request(request);
             return Page<DeliveryReceiptResource>.FromJson("delivery_receipts", response.Content);
         }
-
-
 
     
         /// <summary>

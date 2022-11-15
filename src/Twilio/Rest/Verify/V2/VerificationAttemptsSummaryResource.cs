@@ -51,7 +51,6 @@ namespace Twilio.Rest.Verify.V2
             string path = "/v2/Attempts/Summary";
 
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Verify,

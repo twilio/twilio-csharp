@@ -45,7 +45,6 @@ namespace Twilio.Rest.Api.V2010.Account
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Api,
@@ -114,7 +113,6 @@ namespace Twilio.Rest.Api.V2010.Account
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
@@ -182,7 +180,6 @@ namespace Twilio.Rest.Api.V2010.Account
 
             string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
             path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -301,8 +298,6 @@ namespace Twilio.Rest.Api.V2010.Account
             return Page<KeyResource>.FromJson("keys", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateKeyOptions options, ITwilioRestClient client)
         {
@@ -313,7 +308,6 @@ namespace Twilio.Rest.Api.V2010.Account
             path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Post,

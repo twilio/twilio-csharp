@@ -89,7 +89,6 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
             string PathParticipantSid = options.PathParticipantSid;
             path = path.Replace("{"+"ParticipantSid"+"}", PathParticipantSid);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Proxy,
@@ -165,10 +164,6 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         private static Request BuildFetchRequest(FetchMessageInteractionOptions options, ITwilioRestClient client)
         {
@@ -183,7 +178,6 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
             path = path.Replace("{"+"ParticipantSid"+"}", PathParticipantSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -262,7 +256,6 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
             path = path.Replace("{"+"SessionSid"+"}", PathSessionSid);
             string PathParticipantSid = options.PathParticipantSid;
             path = path.Replace("{"+"ParticipantSid"+"}", PathParticipantSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -388,8 +381,6 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
             var response = client.Request(request);
             return Page<MessageInteractionResource>.FromJson("interactions", response.Content);
         }
-
-
 
     
         /// <summary>

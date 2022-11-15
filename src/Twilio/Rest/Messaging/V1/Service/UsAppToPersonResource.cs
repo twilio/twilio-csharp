@@ -39,7 +39,6 @@ namespace Twilio.Rest.Messaging.V1.Service
             string PathMessagingServiceSid = options.PathMessagingServiceSid;
             path = path.Replace("{"+"MessagingServiceSid"+"}", PathMessagingServiceSid);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Messaging,
@@ -151,10 +150,6 @@ namespace Twilio.Rest.Messaging.V1.Service
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> delete </summary>
         /// <param name="options"> Delete UsAppToPerson parameters </param>
@@ -169,7 +164,6 @@ namespace Twilio.Rest.Messaging.V1.Service
             path = path.Replace("{"+"MessagingServiceSid"+"}", PathMessagingServiceSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -239,7 +233,6 @@ namespace Twilio.Rest.Messaging.V1.Service
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Messaging,
@@ -307,7 +300,6 @@ namespace Twilio.Rest.Messaging.V1.Service
 
             string PathMessagingServiceSid = options.PathMessagingServiceSid;
             path = path.Replace("{"+"MessagingServiceSid"+"}", PathMessagingServiceSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -425,8 +417,6 @@ namespace Twilio.Rest.Messaging.V1.Service
             var response = client.Request(request);
             return Page<UsAppToPersonResource>.FromJson("compliance", response.Content);
         }
-
-
 
     
         /// <summary>

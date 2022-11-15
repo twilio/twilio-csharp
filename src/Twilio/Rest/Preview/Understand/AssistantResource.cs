@@ -37,7 +37,6 @@ namespace Twilio.Rest.Preview.Understand
             string path = "/understand/Assistants";
 
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Preview,
@@ -125,10 +124,6 @@ namespace Twilio.Rest.Preview.Understand
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> delete </summary>
         /// <param name="options"> Delete Assistant parameters </param>
@@ -141,7 +136,6 @@ namespace Twilio.Rest.Preview.Understand
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -207,7 +201,6 @@ namespace Twilio.Rest.Preview.Understand
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Preview,
@@ -269,7 +262,6 @@ namespace Twilio.Rest.Preview.Understand
         {
             
             string path = "/understand/Assistants";
-
 
 
             return new Request(
@@ -385,8 +377,6 @@ namespace Twilio.Rest.Preview.Understand
             return Page<AssistantResource>.FromJson("assistants", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateAssistantOptions options, ITwilioRestClient client)
         {
@@ -395,7 +385,6 @@ namespace Twilio.Rest.Preview.Understand
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Post,

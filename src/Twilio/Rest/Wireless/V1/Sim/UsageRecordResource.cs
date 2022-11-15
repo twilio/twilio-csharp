@@ -52,7 +52,6 @@ namespace Twilio.Rest.Wireless.V1.Sim
             string PathSimSid = options.PathSimSid;
             path = path.Replace("{"+"SimSid"+"}", PathSimSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Wireless,
@@ -181,8 +180,6 @@ namespace Twilio.Rest.Wireless.V1.Sim
             var response = client.Request(request);
             return Page<UsageRecordResource>.FromJson("usage_records", response.Content);
         }
-
-
 
     
         /// <summary>

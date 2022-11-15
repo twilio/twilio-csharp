@@ -110,7 +110,6 @@ namespace Twilio.Rest.Insights.V1
             string path = "/v1/Voice/Summaries";
 
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Insights,
@@ -295,8 +294,6 @@ namespace Twilio.Rest.Insights.V1
             var response = client.Request(request);
             return Page<CallSummariesResource>.FromJson("call_summaries", response.Content);
         }
-
-
 
     
         /// <summary>

@@ -70,7 +70,6 @@ namespace Twilio.Rest.Preview.HostedNumbers
             string path = "/HostedNumbers/HostedNumberOrders";
 
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Preview,
@@ -194,10 +193,6 @@ namespace Twilio.Rest.Preview.HostedNumbers
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> Cancel the HostedNumberOrder (only available when the status is in &#x60;received&#x60;). </summary>
         /// <param name="options"> Delete HostedNumberOrder parameters </param>
@@ -210,7 +205,6 @@ namespace Twilio.Rest.Preview.HostedNumbers
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -276,7 +270,6 @@ namespace Twilio.Rest.Preview.HostedNumbers
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Preview,
@@ -338,7 +331,6 @@ namespace Twilio.Rest.Preview.HostedNumbers
         {
             
             string path = "/HostedNumbers/HostedNumberOrders";
-
 
 
             return new Request(
@@ -474,8 +466,6 @@ namespace Twilio.Rest.Preview.HostedNumbers
             return Page<HostedNumberOrderResource>.FromJson("items", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateHostedNumberOrderOptions options, ITwilioRestClient client)
         {
@@ -484,7 +474,6 @@ namespace Twilio.Rest.Preview.HostedNumbers
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Post,

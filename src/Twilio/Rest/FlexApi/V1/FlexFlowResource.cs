@@ -68,7 +68,6 @@ namespace Twilio.Rest.FlexApi.V1
             string path = "/v1/FlexFlows";
 
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.FlexApi,
@@ -192,10 +191,6 @@ namespace Twilio.Rest.FlexApi.V1
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> delete </summary>
         /// <param name="options"> Delete FlexFlow parameters </param>
@@ -208,7 +203,6 @@ namespace Twilio.Rest.FlexApi.V1
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -274,7 +268,6 @@ namespace Twilio.Rest.FlexApi.V1
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.FlexApi,
@@ -336,7 +329,6 @@ namespace Twilio.Rest.FlexApi.V1
         {
             
             string path = "/v1/FlexFlows";
-
 
 
             return new Request(
@@ -456,8 +448,6 @@ namespace Twilio.Rest.FlexApi.V1
             return Page<FlexFlowResource>.FromJson("flex_flows", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateFlexFlowOptions options, ITwilioRestClient client)
         {
@@ -466,7 +456,6 @@ namespace Twilio.Rest.FlexApi.V1
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Post,

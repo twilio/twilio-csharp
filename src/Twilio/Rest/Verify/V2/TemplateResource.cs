@@ -37,7 +37,6 @@ namespace Twilio.Rest.Verify.V2
             string path = "/v2/Templates";
 
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Verify,
@@ -154,8 +153,6 @@ namespace Twilio.Rest.Verify.V2
             var response = client.Request(request);
             return Page<TemplateResource>.FromJson("templates", response.Content);
         }
-
-
 
     
         /// <summary>

@@ -47,7 +47,6 @@ namespace Twilio.Rest.Api.V2010.Account.Message
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Api,
@@ -119,7 +118,6 @@ namespace Twilio.Rest.Api.V2010.Account.Message
             path = path.Replace("{"+"MessageSid"+"}", PathMessageSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -193,7 +191,6 @@ namespace Twilio.Rest.Api.V2010.Account.Message
             path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
             string PathMessageSid = options.PathMessageSid;
             path = path.Replace("{"+"MessageSid"+"}", PathMessageSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -327,8 +324,6 @@ namespace Twilio.Rest.Api.V2010.Account.Message
             var response = client.Request(request);
             return Page<MediaResource>.FromJson("media_list", response.Content);
         }
-
-
 
     
         /// <summary>

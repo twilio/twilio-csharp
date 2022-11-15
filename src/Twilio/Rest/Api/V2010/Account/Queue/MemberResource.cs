@@ -43,7 +43,6 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
             string PathCallSid = options.PathCallSid;
             path = path.Replace("{"+"CallSid"+"}", PathCallSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
@@ -116,7 +115,6 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
             path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
             string PathQueueSid = options.PathQueueSid;
             path = path.Replace("{"+"QueueSid"+"}", PathQueueSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -239,8 +237,6 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
             return Page<MemberResource>.FromJson("queue_members", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateMemberOptions options, ITwilioRestClient client)
         {
@@ -253,7 +249,6 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
             path = path.Replace("{"+"QueueSid"+"}", PathQueueSid);
             string PathCallSid = options.PathCallSid;
             path = path.Replace("{"+"CallSid"+"}", PathCallSid);
-
 
             return new Request(
                 HttpMethod.Post,

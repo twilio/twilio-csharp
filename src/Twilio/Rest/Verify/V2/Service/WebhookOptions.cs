@@ -48,7 +48,7 @@ namespace Twilio.Rest.Verify.V2.Service
 
 
         /// <summary> Construct a new CreateWebhookOptions </summary>
-        /// <param name="pathServiceSid"> The unique SID identifier of the Service. </param>        /// <param name="friendlyName"> The string that you assigned to describe the webhook. **This value should not contain PII.** </param>        /// <param name="eventTypes"> The array of events that this Webhook is subscribed to. Possible event types: &#x60;*, factor.deleted, factor.created, factor.verified, challenge.approved, challenge.denied&#x60; </param>        /// <param name="webhookUrl"> The URL associated with this Webhook. </param>
+        /// <param name="pathServiceSid"> The unique SID identifier of the Service. </param>        /// <param name="friendlyName"> The string that you assigned to describe the webhook. **This value should not contain PII.** </param>        /// <param name="eventTypes"> The array of events that this Webhook is subscribed to. Possible event types: `*, factor.deleted, factor.created, factor.verified, challenge.approved, challenge.denied` </param>        /// <param name="webhookUrl"> The URL associated with this Webhook. </param>
         public CreateWebhookOptions(string pathServiceSid, string friendlyName, List<string> eventTypes, string webhookUrl)
         {
             PathServiceSid = pathServiceSid;

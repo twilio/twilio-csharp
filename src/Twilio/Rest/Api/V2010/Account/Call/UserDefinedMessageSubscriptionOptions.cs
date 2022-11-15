@@ -45,7 +45,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
 
         /// <summary> Construct a new CreateUserDefinedMessageSubscriptionOptions </summary>
-        /// <param name="pathCallSid"> The SID of the [Call](https://www.twilio.com/docs/voice/api/call-resource) the User Defined Messages subscription is associated with. This refers to the Call SID that is producing the user defined messages. </param>        /// <param name="callback"> The URL we should call using the &#x60;method&#x60; to send user defined events to your application. URLs must contain a valid hostname (underscores are not permitted). </param>        /// <param name="method"> The HTTP method Twilio will use when requesting the above &#x60;Url&#x60;. Either &#x60;GET&#x60; or &#x60;POST&#x60;. </param>
+        /// <param name="pathCallSid"> The SID of the [Call](https://www.twilio.com/docs/voice/api/call-resource) the User Defined Messages subscription is associated with. This refers to the Call SID that is producing the user defined messages. </param>        /// <param name="callback"> The URL we should call using the `method` to send user defined events to your application. URLs must contain a valid hostname (underscores are not permitted). </param>        /// <param name="method"> The HTTP method Twilio will use when requesting the above `Url`. Either `GET` or `POST`. </param>
         public CreateUserDefinedMessageSubscriptionOptions(string pathCallSid, Uri callback, Twilio.Http.HttpMethod method)
         {
             PathCallSid = pathCallSid;

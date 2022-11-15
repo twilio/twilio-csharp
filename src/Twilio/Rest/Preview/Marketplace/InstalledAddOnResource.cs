@@ -37,7 +37,6 @@ namespace Twilio.Rest.Preview.Marketplace
             string path = "/marketplace/InstalledAddOns";
 
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Preview,
@@ -109,10 +108,6 @@ namespace Twilio.Rest.Preview.Marketplace
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> Remove an Add-on installation from your account </summary>
         /// <param name="options"> Delete InstalledAddOn parameters </param>
@@ -125,7 +120,6 @@ namespace Twilio.Rest.Preview.Marketplace
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -191,7 +185,6 @@ namespace Twilio.Rest.Preview.Marketplace
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Preview,
@@ -253,7 +246,6 @@ namespace Twilio.Rest.Preview.Marketplace
         {
             
             string path = "/marketplace/InstalledAddOns";
-
 
 
             return new Request(
@@ -369,8 +361,6 @@ namespace Twilio.Rest.Preview.Marketplace
             return Page<InstalledAddOnResource>.FromJson("installed_add_ons", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateInstalledAddOnOptions options, ITwilioRestClient client)
         {
@@ -379,7 +369,6 @@ namespace Twilio.Rest.Preview.Marketplace
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Post,

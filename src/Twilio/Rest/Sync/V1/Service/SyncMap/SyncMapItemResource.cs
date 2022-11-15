@@ -65,7 +65,6 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
             string PathMapSid = options.PathMapSid;
             path = path.Replace("{"+"MapSid"+"}", PathMapSid);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Sync,
@@ -149,10 +148,6 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> delete </summary>
         /// <param name="options"> Delete SyncMapItem parameters </param>
@@ -169,7 +164,6 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
             path = path.Replace("{"+"MapSid"+"}", PathMapSid);
             string PathKey = options.PathKey;
             path = path.Replace("{"+"Key"+"}", PathKey);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -245,7 +239,6 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
             string PathKey = options.PathKey;
             path = path.Replace("{"+"Key"+"}", PathKey);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Sync,
@@ -318,7 +311,6 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
             path = path.Replace("{"+"ServiceSid"+"}", PathServiceSid);
             string PathMapSid = options.PathMapSid;
             path = path.Replace("{"+"MapSid"+"}", PathMapSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -453,8 +445,6 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
             return Page<SyncMapItemResource>.FromJson("items", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateSyncMapItemOptions options, ITwilioRestClient client)
         {
@@ -467,7 +457,6 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
             path = path.Replace("{"+"MapSid"+"}", PathMapSid);
             string PathKey = options.PathKey;
             path = path.Replace("{"+"Key"+"}", PathKey);
-
 
             return new Request(
                 HttpMethod.Post,

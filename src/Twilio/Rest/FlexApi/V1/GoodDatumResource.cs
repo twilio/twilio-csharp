@@ -37,7 +37,6 @@ namespace Twilio.Rest.FlexApi.V1
             string path = "/v1/Accounts/GoodData";
 
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.FlexApi,
@@ -97,10 +96,6 @@ namespace Twilio.Rest.FlexApi.V1
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
     
         /// <summary>
         /// Converts a JSON string into a GoodDatumResource object

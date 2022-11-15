@@ -41,7 +41,6 @@ namespace Twilio.Rest.FlexApi.V1.Interaction.InteractionChannel
             string PathChannelSid = options.PathChannelSid;
             path = path.Replace("{"+"ChannelSid"+"}", PathChannelSid);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.FlexApi,
@@ -109,10 +108,6 @@ namespace Twilio.Rest.FlexApi.V1.Interaction.InteractionChannel
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         private static Request BuildReadRequest(ReadInteractionChannelInviteOptions options, ITwilioRestClient client)
         {
@@ -123,7 +118,6 @@ namespace Twilio.Rest.FlexApi.V1.Interaction.InteractionChannel
             path = path.Replace("{"+"InteractionSid"+"}", PathInteractionSid);
             string PathChannelSid = options.PathChannelSid;
             path = path.Replace("{"+"ChannelSid"+"}", PathChannelSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -245,8 +239,6 @@ namespace Twilio.Rest.FlexApi.V1.Interaction.InteractionChannel
             var response = client.Request(request);
             return Page<InteractionChannelInviteResource>.FromJson("invites", response.Content);
         }
-
-
 
     
         /// <summary>

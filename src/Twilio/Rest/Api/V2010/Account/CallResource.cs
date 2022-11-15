@@ -70,7 +70,6 @@ namespace Twilio.Rest.Api.V2010.Account
             string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
             path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Api,
@@ -270,10 +269,6 @@ namespace Twilio.Rest.Api.V2010.Account
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> Delete a Call record from your account. Once the record is deleted, it will no longer appear in the API and Account Portal logs. </summary>
         /// <param name="options"> Delete Call parameters </param>
@@ -288,7 +283,6 @@ namespace Twilio.Rest.Api.V2010.Account
             path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -358,7 +352,6 @@ namespace Twilio.Rest.Api.V2010.Account
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
@@ -426,7 +419,6 @@ namespace Twilio.Rest.Api.V2010.Account
 
             string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
             path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -585,8 +577,6 @@ namespace Twilio.Rest.Api.V2010.Account
             return Page<CallResource>.FromJson("calls", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateCallOptions options, ITwilioRestClient client)
         {
@@ -597,7 +587,6 @@ namespace Twilio.Rest.Api.V2010.Account
             path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Post,

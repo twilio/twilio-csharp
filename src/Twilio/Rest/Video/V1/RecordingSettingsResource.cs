@@ -37,7 +37,6 @@ namespace Twilio.Rest.Video.V1
             string path = "/v1/RecordingSettings/Default";
 
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Video,
@@ -117,16 +116,11 @@ namespace Twilio.Rest.Video.V1
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         private static Request BuildFetchRequest(FetchRecordingSettingsOptions options, ITwilioRestClient client)
         {
             
             string path = "/v1/RecordingSettings/Default";
-
 
 
             return new Request(

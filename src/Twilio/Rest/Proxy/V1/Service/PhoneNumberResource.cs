@@ -39,7 +39,6 @@ namespace Twilio.Rest.Proxy.V1.Service
             string PathServiceSid = options.PathServiceSid;
             path = path.Replace("{"+"ServiceSid"+"}", PathServiceSid);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Proxy,
@@ -111,10 +110,6 @@ namespace Twilio.Rest.Proxy.V1.Service
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> Delete a specific Phone Number from a Service. </summary>
         /// <param name="options"> Delete PhoneNumber parameters </param>
@@ -129,7 +124,6 @@ namespace Twilio.Rest.Proxy.V1.Service
             path = path.Replace("{"+"ServiceSid"+"}", PathServiceSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -199,7 +193,6 @@ namespace Twilio.Rest.Proxy.V1.Service
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Proxy,
@@ -267,7 +260,6 @@ namespace Twilio.Rest.Proxy.V1.Service
 
             string PathServiceSid = options.PathServiceSid;
             path = path.Replace("{"+"ServiceSid"+"}", PathServiceSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -386,8 +378,6 @@ namespace Twilio.Rest.Proxy.V1.Service
             return Page<PhoneNumberResource>.FromJson("phone_numbers", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdatePhoneNumberOptions options, ITwilioRestClient client)
         {
@@ -398,7 +388,6 @@ namespace Twilio.Rest.Proxy.V1.Service
             path = path.Replace("{"+"ServiceSid"+"}", PathServiceSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Post,

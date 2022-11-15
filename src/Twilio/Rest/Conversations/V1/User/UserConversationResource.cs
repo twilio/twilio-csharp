@@ -72,7 +72,6 @@ namespace Twilio.Rest.Conversations.V1.User
             string PathConversationSid = options.PathConversationSid;
             path = path.Replace("{"+"ConversationSid"+"}", PathConversationSid);
 
-
             return new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Conversations,
@@ -141,7 +140,6 @@ namespace Twilio.Rest.Conversations.V1.User
             string PathConversationSid = options.PathConversationSid;
             path = path.Replace("{"+"ConversationSid"+"}", PathConversationSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Conversations,
@@ -209,7 +207,6 @@ namespace Twilio.Rest.Conversations.V1.User
 
             string PathUserSid = options.PathUserSid;
             path = path.Replace("{"+"UserSid"+"}", PathUserSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -328,8 +325,6 @@ namespace Twilio.Rest.Conversations.V1.User
             return Page<UserConversationResource>.FromJson("conversations", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateUserConversationOptions options, ITwilioRestClient client)
         {
@@ -340,7 +335,6 @@ namespace Twilio.Rest.Conversations.V1.User
             path = path.Replace("{"+"UserSid"+"}", PathUserSid);
             string PathConversationSid = options.PathConversationSid;
             path = path.Replace("{"+"ConversationSid"+"}", PathConversationSid);
-
 
             return new Request(
                 HttpMethod.Post,

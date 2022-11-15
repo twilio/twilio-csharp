@@ -41,7 +41,6 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement
             string PathEngagementSid = options.PathEngagementSid;
             path = path.Replace("{"+"EngagementSid"+"}", PathEngagementSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Studio,

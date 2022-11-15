@@ -39,7 +39,6 @@ namespace Twilio.Rest.Bulkexports.V1.Export
             string PathResourceType = options.PathResourceType;
             path = path.Replace("{"+"ResourceType"+"}", PathResourceType);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Bulkexports,
@@ -123,10 +122,6 @@ namespace Twilio.Rest.Bulkexports.V1.Export
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         private static Request BuildReadRequest(ReadExportCustomJobOptions options, ITwilioRestClient client)
         {
@@ -135,7 +130,6 @@ namespace Twilio.Rest.Bulkexports.V1.Export
 
             string PathResourceType = options.PathResourceType;
             path = path.Replace("{"+"ResourceType"+"}", PathResourceType);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -253,8 +247,6 @@ namespace Twilio.Rest.Bulkexports.V1.Export
             var response = client.Request(request);
             return Page<ExportCustomJobResource>.FromJson("jobs", response.Content);
         }
-
-
 
     
         /// <summary>

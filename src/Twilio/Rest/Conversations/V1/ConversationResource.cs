@@ -63,7 +63,6 @@ namespace Twilio.Rest.Conversations.V1
             string path = "/v1/Conversations";
 
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Conversations,
@@ -159,10 +158,6 @@ namespace Twilio.Rest.Conversations.V1
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> Remove a conversation from your account&#39;s default service </summary>
         /// <param name="options"> Delete Conversation parameters </param>
@@ -175,7 +170,6 @@ namespace Twilio.Rest.Conversations.V1
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -243,7 +237,6 @@ namespace Twilio.Rest.Conversations.V1
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Conversations,
@@ -305,7 +298,6 @@ namespace Twilio.Rest.Conversations.V1
         {
             
             string path = "/v1/Conversations";
-
 
 
             return new Request(
@@ -421,8 +413,6 @@ namespace Twilio.Rest.Conversations.V1
             return Page<ConversationResource>.FromJson("conversations", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateConversationOptions options, ITwilioRestClient client)
         {
@@ -431,7 +421,6 @@ namespace Twilio.Rest.Conversations.V1
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Post,

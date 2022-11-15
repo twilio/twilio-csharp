@@ -41,7 +41,6 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             string PathCallSid = options.PathCallSid;
             path = path.Replace("{"+"CallSid"+"}", PathCallSid);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Api,
@@ -113,10 +112,6 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
     
         /// <summary>
         /// Converts a JSON string into a UserDefinedMessageResource object

@@ -45,7 +45,7 @@ namespace Twilio.Rest.Chat.V1.Service
 
 
         /// <summary> Construct a new CreateUserOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/api/chat/rest/services) to create the resource under. </param>        /// <param name="identity"> The &#x60;identity&#x60; value that uniquely identifies the new resource&#39;s [User](https://www.twilio.com/docs/api/chat/rest/v1/user) within the [Service](https://www.twilio.com/docs/api/chat/rest/v1/service). This value is often a username or email address. See the Identity documentation for more details. </param>
+        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/api/chat/rest/services) to create the resource under. </param>        /// <param name="identity"> The `identity` value that uniquely identifies the new resource's [User](https://www.twilio.com/docs/api/chat/rest/v1/user) within the [Service](https://www.twilio.com/docs/api/chat/rest/v1/service). This value is often a username or email address. See the Identity documentation for more details. </param>
         public CreateUserOptions(string pathServiceSid, string identity)
         {
             PathServiceSid = pathServiceSid;

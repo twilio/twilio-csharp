@@ -41,7 +41,6 @@ namespace Twilio.Rest.Bulkexports.V1.Export
             string PathDay = options.PathDay;
             path = path.Replace("{"+"Day"+"}", PathDay);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Bulkexports,
@@ -109,7 +108,6 @@ namespace Twilio.Rest.Bulkexports.V1.Export
 
             string PathResourceType = options.PathResourceType;
             path = path.Replace("{"+"ResourceType"+"}", PathResourceType);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -227,8 +225,6 @@ namespace Twilio.Rest.Bulkexports.V1.Export
             var response = client.Request(request);
             return Page<DayResource>.FromJson("days", response.Content);
         }
-
-
 
     
         /// <summary>

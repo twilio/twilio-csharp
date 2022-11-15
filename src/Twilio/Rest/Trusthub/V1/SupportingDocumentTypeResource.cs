@@ -39,7 +39,6 @@ namespace Twilio.Rest.Trusthub.V1
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Trusthub,
@@ -101,7 +100,6 @@ namespace Twilio.Rest.Trusthub.V1
         {
             
             string path = "/v1/SupportingDocumentTypes";
-
 
 
             return new Request(
@@ -216,8 +214,6 @@ namespace Twilio.Rest.Trusthub.V1
             var response = client.Request(request);
             return Page<SupportingDocumentTypeResource>.FromJson("supporting_document_types", response.Content);
         }
-
-
 
     
         /// <summary>

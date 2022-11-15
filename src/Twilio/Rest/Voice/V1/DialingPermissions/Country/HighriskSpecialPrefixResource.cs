@@ -39,7 +39,6 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions.Country
             string PathIsoCode = options.PathIsoCode.ToString();
             path = path.Replace("{"+"IsoCode"+"}", PathIsoCode);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Voice,
@@ -156,8 +155,6 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions.Country
             var response = client.Request(request);
             return Page<HighriskSpecialPrefixResource>.FromJson("content", response.Content);
         }
-
-
 
     
         /// <summary>

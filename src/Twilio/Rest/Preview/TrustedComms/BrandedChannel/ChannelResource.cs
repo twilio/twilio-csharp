@@ -39,7 +39,6 @@ namespace Twilio.Rest.Preview.TrustedComms.BrandedChannel
             string PathBrandedChannelSid = options.PathBrandedChannelSid;
             path = path.Replace("{"+"BrandedChannelSid"+"}", PathBrandedChannelSid);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Preview,
@@ -103,10 +102,6 @@ namespace Twilio.Rest.Preview.TrustedComms.BrandedChannel
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
     
         /// <summary>
         /// Converts a JSON string into a ChannelResource object

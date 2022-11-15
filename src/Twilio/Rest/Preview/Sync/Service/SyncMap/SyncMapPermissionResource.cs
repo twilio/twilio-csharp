@@ -47,7 +47,6 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
             string PathIdentity = options.PathIdentity;
             path = path.Replace("{"+"Identity"+"}", PathIdentity);
 
-
             return new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Preview,
@@ -119,7 +118,6 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
             path = path.Replace("{"+"MapSid"+"}", PathMapSid);
             string PathIdentity = options.PathIdentity;
             path = path.Replace("{"+"Identity"+"}", PathIdentity);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -193,7 +191,6 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
             path = path.Replace("{"+"ServiceSid"+"}", PathServiceSid);
             string PathMapSid = options.PathMapSid;
             path = path.Replace("{"+"MapSid"+"}", PathMapSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -316,8 +313,6 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
             return Page<SyncMapPermissionResource>.FromJson("permissions", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateSyncMapPermissionOptions options, ITwilioRestClient client)
         {
@@ -330,7 +325,6 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
             path = path.Replace("{"+"MapSid"+"}", PathMapSid);
             string PathIdentity = options.PathIdentity;
             path = path.Replace("{"+"Identity"+"}", PathIdentity);
-
 
             return new Request(
                 HttpMethod.Post,

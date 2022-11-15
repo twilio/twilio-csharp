@@ -78,7 +78,6 @@ namespace Twilio.Rest.Supersim.V1
             string path = "/v1/IpCommands";
 
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Supersim,
@@ -158,10 +157,6 @@ namespace Twilio.Rest.Supersim.V1
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         private static Request BuildFetchRequest(FetchIpCommandOptions options, ITwilioRestClient client)
         {
@@ -170,7 +165,6 @@ namespace Twilio.Rest.Supersim.V1
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -233,7 +227,6 @@ namespace Twilio.Rest.Supersim.V1
         {
             
             string path = "/v1/IpCommands";
-
 
 
             return new Request(
@@ -364,8 +357,6 @@ namespace Twilio.Rest.Supersim.V1
             var response = client.Request(request);
             return Page<IpCommandResource>.FromJson("ip_commands", response.Content);
         }
-
-
 
     
         /// <summary>

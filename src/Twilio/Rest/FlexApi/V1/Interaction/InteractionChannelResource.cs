@@ -87,7 +87,6 @@ namespace Twilio.Rest.FlexApi.V1.Interaction
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.FlexApi,
@@ -155,7 +154,6 @@ namespace Twilio.Rest.FlexApi.V1.Interaction
 
             string PathInteractionSid = options.PathInteractionSid;
             path = path.Replace("{"+"InteractionSid"+"}", PathInteractionSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -274,8 +272,6 @@ namespace Twilio.Rest.FlexApi.V1.Interaction
             return Page<InteractionChannelResource>.FromJson("channels", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateInteractionChannelOptions options, ITwilioRestClient client)
         {
@@ -286,7 +282,6 @@ namespace Twilio.Rest.FlexApi.V1.Interaction
             path = path.Replace("{"+"InteractionSid"+"}", PathInteractionSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Post,

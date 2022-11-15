@@ -37,7 +37,6 @@ namespace Twilio.Rest.Accounts.V1
             string path = "/v1/AuthTokens/Promote";
 
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Accounts,

@@ -52,7 +52,6 @@ namespace Twilio.Rest.Supersim.V1
             string path = "/v1/SettingsUpdates";
 
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Supersim,
@@ -169,8 +168,6 @@ namespace Twilio.Rest.Supersim.V1
             var response = client.Request(request);
             return Page<SettingsUpdateResource>.FromJson("settings_updates", response.Content);
         }
-
-
 
     
         /// <summary>

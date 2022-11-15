@@ -93,7 +93,6 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
             string PathIdentity = options.PathIdentity;
             path = path.Replace("{"+"Identity"+"}", PathIdentity);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Verify,
@@ -213,10 +212,6 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
     
         /// <summary>
         /// Converts a JSON string into a NewFactorResource object

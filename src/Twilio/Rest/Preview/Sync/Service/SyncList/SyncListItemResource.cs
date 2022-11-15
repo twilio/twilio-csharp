@@ -65,7 +65,6 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
             string PathListSid = options.PathListSid;
             path = path.Replace("{"+"ListSid"+"}", PathListSid);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Preview,
@@ -133,10 +132,6 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> delete </summary>
         /// <param name="options"> Delete SyncListItem parameters </param>
@@ -153,7 +148,6 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
             path = path.Replace("{"+"ListSid"+"}", PathListSid);
             string PathIndex = options.PathIndex.ToString();
             path = path.Replace("{"+"Index"+"}", PathIndex);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -229,7 +223,6 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
             string PathIndex = options.PathIndex.ToString();
             path = path.Replace("{"+"Index"+"}", PathIndex);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Preview,
@@ -302,7 +295,6 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
             path = path.Replace("{"+"ServiceSid"+"}", PathServiceSid);
             string PathListSid = options.PathListSid;
             path = path.Replace("{"+"ListSid"+"}", PathListSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -437,8 +429,6 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
             return Page<SyncListItemResource>.FromJson("items", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateSyncListItemOptions options, ITwilioRestClient client)
         {
@@ -451,7 +441,6 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
             path = path.Replace("{"+"ListSid"+"}", PathListSid);
             string PathIndex = options.PathIndex.ToString();
             path = path.Replace("{"+"Index"+"}", PathIndex);
-
 
             return new Request(
                 HttpMethod.Post,

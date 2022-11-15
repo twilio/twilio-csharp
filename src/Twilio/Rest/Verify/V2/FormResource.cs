@@ -51,7 +51,6 @@ namespace Twilio.Rest.Verify.V2
             string PathFormType = options.PathFormType.ToString();
             path = path.Replace("{"+"FormType"+"}", PathFormType);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Verify,

@@ -66,7 +66,6 @@ namespace Twilio.Rest.Events.V1
             string path = "/v1/Sinks";
 
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Events,
@@ -134,10 +133,6 @@ namespace Twilio.Rest.Events.V1
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> Delete a specific Sink. </summary>
         /// <param name="options"> Delete Sink parameters </param>
@@ -150,7 +145,6 @@ namespace Twilio.Rest.Events.V1
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -216,7 +210,6 @@ namespace Twilio.Rest.Events.V1
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Events,
@@ -278,7 +271,6 @@ namespace Twilio.Rest.Events.V1
         {
             
             string path = "/v1/Sinks";
-
 
 
             return new Request(
@@ -402,8 +394,6 @@ namespace Twilio.Rest.Events.V1
             return Page<SinkResource>.FromJson("sinks", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateSinkOptions options, ITwilioRestClient client)
         {
@@ -412,7 +402,6 @@ namespace Twilio.Rest.Events.V1
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Post,

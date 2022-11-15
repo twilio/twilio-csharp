@@ -39,7 +39,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             string PathWorkspaceSid = options.PathWorkspaceSid;
             path = path.Replace("{"+"WorkspaceSid"+"}", PathWorkspaceSid);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Taskrouter,
@@ -107,10 +106,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> delete </summary>
         /// <param name="options"> Delete Activity parameters </param>
@@ -125,7 +120,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             path = path.Replace("{"+"WorkspaceSid"+"}", PathWorkspaceSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -195,7 +189,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Taskrouter,
@@ -263,7 +256,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
             string PathWorkspaceSid = options.PathWorkspaceSid;
             path = path.Replace("{"+"WorkspaceSid"+"}", PathWorkspaceSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -390,8 +382,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             return Page<ActivityResource>.FromJson("activities", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateActivityOptions options, ITwilioRestClient client)
         {
@@ -402,7 +392,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             path = path.Replace("{"+"WorkspaceSid"+"}", PathWorkspaceSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Post,

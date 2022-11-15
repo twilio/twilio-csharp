@@ -37,7 +37,6 @@ namespace Twilio.Rest.Oauth.V1
             string path = "/v1/userinfo";
 
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Oauth,

@@ -41,7 +41,6 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
             string PathTaskSid = options.PathTaskSid;
             path = path.Replace("{"+"TaskSid"+"}", PathTaskSid);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Autopilot,
@@ -117,10 +116,6 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> delete </summary>
         /// <param name="options"> Delete Sample parameters </param>
@@ -137,7 +132,6 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
             path = path.Replace("{"+"TaskSid"+"}", PathTaskSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -211,7 +205,6 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Autopilot,
@@ -284,7 +277,6 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
             path = path.Replace("{"+"AssistantSid"+"}", PathAssistantSid);
             string PathTaskSid = options.PathTaskSid;
             path = path.Replace("{"+"TaskSid"+"}", PathTaskSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -411,8 +403,6 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
             return Page<SampleResource>.FromJson("samples", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateSampleOptions options, ITwilioRestClient client)
         {
@@ -425,7 +415,6 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
             path = path.Replace("{"+"TaskSid"+"}", PathTaskSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Post,

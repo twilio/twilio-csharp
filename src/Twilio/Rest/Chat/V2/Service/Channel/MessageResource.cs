@@ -65,7 +65,6 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
             string PathChannelSid = options.PathChannelSid;
             path = path.Replace("{"+"ChannelSid"+"}", PathChannelSid);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Chat,
@@ -161,10 +160,6 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> delete </summary>
         /// <param name="options"> Delete Message parameters </param>
@@ -181,7 +176,6 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
             path = path.Replace("{"+"ChannelSid"+"}", PathChannelSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -257,7 +251,6 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Chat,
@@ -330,7 +323,6 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
             path = path.Replace("{"+"ServiceSid"+"}", PathServiceSid);
             string PathChannelSid = options.PathChannelSid;
             path = path.Replace("{"+"ChannelSid"+"}", PathChannelSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -457,8 +449,6 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
             return Page<MessageResource>.FromJson("messages", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateMessageOptions options, ITwilioRestClient client)
         {
@@ -471,7 +461,6 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
             path = path.Replace("{"+"ChannelSid"+"}", PathChannelSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Post,

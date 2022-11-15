@@ -37,7 +37,6 @@ namespace Twilio.Rest.Accounts.V1.Credential
             string path = "/v1/Credentials/PublicKeys";
 
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Accounts,
@@ -105,10 +104,6 @@ namespace Twilio.Rest.Accounts.V1.Credential
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> Delete a Credential from your account </summary>
         /// <param name="options"> Delete PublicKey parameters </param>
@@ -121,7 +116,6 @@ namespace Twilio.Rest.Accounts.V1.Credential
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -187,7 +181,6 @@ namespace Twilio.Rest.Accounts.V1.Credential
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Accounts,
@@ -249,7 +242,6 @@ namespace Twilio.Rest.Accounts.V1.Credential
         {
             
             string path = "/v1/Credentials/PublicKeys";
-
 
 
             return new Request(
@@ -365,8 +357,6 @@ namespace Twilio.Rest.Accounts.V1.Credential
             return Page<PublicKeyResource>.FromJson("credentials", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdatePublicKeyOptions options, ITwilioRestClient client)
         {
@@ -375,7 +365,6 @@ namespace Twilio.Rest.Accounts.V1.Credential
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Post,

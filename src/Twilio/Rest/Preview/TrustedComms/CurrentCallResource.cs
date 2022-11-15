@@ -37,7 +37,6 @@ namespace Twilio.Rest.Preview.TrustedComms
             string path = "/TrustedComms/CurrentCall";
 
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Preview,

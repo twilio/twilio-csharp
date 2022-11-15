@@ -67,7 +67,6 @@ namespace Twilio.Rest.Verify.V2
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Verify,
@@ -129,7 +128,6 @@ namespace Twilio.Rest.Verify.V2
         {
             
             string path = "/v2/Attempts";
-
 
 
             return new Request(
@@ -276,8 +274,6 @@ namespace Twilio.Rest.Verify.V2
             var response = client.Request(request);
             return Page<VerificationAttemptResource>.FromJson("attempts", response.Content);
         }
-
-
 
     
         /// <summary>

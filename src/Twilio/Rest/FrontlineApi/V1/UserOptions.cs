@@ -33,7 +33,7 @@ namespace Twilio.Rest.FrontlineApi.V1
 
 
         /// <summary> Construct a new FetchUserOptions </summary>
-        /// <param name="pathSid"> The SID of the User resource to fetch. This value can be either the &#x60;sid&#x60; or the &#x60;identity&#x60; of the User resource to fetch. </param>
+        /// <param name="pathSid"> The SID of the User resource to fetch. This value can be either the `sid` or the `identity` of the User resource to fetch. </param>
         public FetchUserOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -74,7 +74,7 @@ namespace Twilio.Rest.FrontlineApi.V1
 
 
         /// <summary> Construct a new UpdateUserOptions </summary>
-        /// <param name="pathSid"> The SID of the User resource to update. This value can be either the &#x60;sid&#x60; or the &#x60;identity&#x60; of the User resource to update. </param>
+        /// <param name="pathSid"> The SID of the User resource to update. This value can be either the `sid` or the `identity` of the User resource to update. </param>
         public UpdateUserOptions(string pathSid)
         {
             PathSid = pathSid;

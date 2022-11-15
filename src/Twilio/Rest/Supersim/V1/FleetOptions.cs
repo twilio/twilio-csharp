@@ -57,7 +57,7 @@ namespace Twilio.Rest.Supersim.V1
 
 
         /// <summary> Construct a new CreateFleetOptions </summary>
-        /// <param name="networkAccessProfile"> The SID or unique name of the Network Access Profile that will control which cellular networks the Fleet&#39;s SIMs can connect to. </param>
+        /// <param name="networkAccessProfile"> The SID or unique name of the Network Access Profile that will control which cellular networks the Fleet's SIMs can connect to. </param>
         public CreateFleetOptions(string networkAccessProfile)
         {
             NetworkAccessProfile = networkAccessProfile;

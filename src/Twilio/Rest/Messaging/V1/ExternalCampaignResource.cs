@@ -37,7 +37,6 @@ namespace Twilio.Rest.Messaging.V1
             string path = "/v1/Services/PreregisteredUsa2p";
 
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Messaging,
@@ -101,10 +100,6 @@ namespace Twilio.Rest.Messaging.V1
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
     
         /// <summary>
         /// Converts a JSON string into a ExternalCampaignResource object

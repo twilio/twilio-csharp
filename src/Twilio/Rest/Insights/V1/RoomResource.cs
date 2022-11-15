@@ -162,7 +162,6 @@ namespace Twilio.Rest.Insights.V1
             string PathRoomSid = options.PathRoomSid;
             path = path.Replace("{"+"RoomSid"+"}", PathRoomSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Insights,
@@ -224,7 +223,6 @@ namespace Twilio.Rest.Insights.V1
         {
             
             string path = "/v1/Video/Rooms";
-
 
 
             return new Request(
@@ -359,8 +357,6 @@ namespace Twilio.Rest.Insights.V1
             var response = client.Request(request);
             return Page<RoomResource>.FromJson("rooms", response.Content);
         }
-
-
 
     
         /// <summary>

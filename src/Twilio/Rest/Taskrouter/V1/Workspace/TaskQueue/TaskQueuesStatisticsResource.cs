@@ -39,7 +39,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
             string PathWorkspaceSid = options.PathWorkspaceSid;
             path = path.Replace("{"+"WorkspaceSid"+"}", PathWorkspaceSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Taskrouter,
@@ -180,8 +179,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
             var response = client.Request(request);
             return Page<TaskQueuesStatisticsResource>.FromJson("task_queues_statistics", response.Content);
         }
-
-
 
     
         /// <summary>

@@ -86,7 +86,6 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Verify,
@@ -158,7 +157,6 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
             path = path.Replace("{"+"Identity"+"}", PathIdentity);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -232,7 +230,6 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
             path = path.Replace("{"+"ServiceSid"+"}", PathServiceSid);
             string PathIdentity = options.PathIdentity;
             path = path.Replace("{"+"Identity"+"}", PathIdentity);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -355,8 +352,6 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
             return Page<FactorResource>.FromJson("factors", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateFactorOptions options, ITwilioRestClient client)
         {
@@ -369,7 +364,6 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
             path = path.Replace("{"+"Identity"+"}", PathIdentity);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Post,

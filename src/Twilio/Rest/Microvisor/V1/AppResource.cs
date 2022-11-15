@@ -43,7 +43,6 @@ namespace Twilio.Rest.Microvisor.V1
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Microvisor,
@@ -108,7 +107,6 @@ namespace Twilio.Rest.Microvisor.V1
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Microvisor,
@@ -170,7 +168,6 @@ namespace Twilio.Rest.Microvisor.V1
         {
             
             string path = "/v1/Apps";
-
 
 
             return new Request(
@@ -285,8 +282,6 @@ namespace Twilio.Rest.Microvisor.V1
             var response = client.Request(request);
             return Page<AppResource>.FromJson("apps", response.Content);
         }
-
-
 
     
         /// <summary>

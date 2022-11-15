@@ -55,7 +55,6 @@ namespace Twilio.Rest.Chat.V1.Service.User
             string PathUserSid = options.PathUserSid;
             path = path.Replace("{"+"UserSid"+"}", PathUserSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Chat,
@@ -176,8 +175,6 @@ namespace Twilio.Rest.Chat.V1.Service.User
             var response = client.Request(request);
             return Page<UserChannelResource>.FromJson("channels", response.Content);
         }
-
-
 
     
         /// <summary>

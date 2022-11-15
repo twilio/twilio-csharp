@@ -72,7 +72,7 @@ namespace Twilio.Rest.Messaging.V1.Service
 
 
         /// <summary> Construct a new CreateUsAppToPersonOptions </summary>
-        /// <param name="pathMessagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) to create the resources from. </param>        /// <param name="brandRegistrationSid"> A2P Brand Registration SID </param>        /// <param name="description"> A short description of what this SMS campaign does. </param>        /// <param name="messageSamples"> Message samples, at least 2 and up to 5 sample messages, &lt;&#x3D;1024 chars each. </param>        /// <param name="usAppToPersonUsecase"> A2P Campaign Use Case. Examples: [ 2FA, EMERGENCY, MARKETING..] </param>        /// <param name="hasEmbeddedLinks"> Indicates that this SMS campaign will send messages that contain links. </param>        /// <param name="hasEmbeddedPhone"> Indicates that this SMS campaign will send messages that contain phone numbers. </param>
+        /// <param name="pathMessagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) to create the resources from. </param>        /// <param name="brandRegistrationSid"> A2P Brand Registration SID </param>        /// <param name="description"> A short description of what this SMS campaign does. </param>        /// <param name="messageSamples"> Message samples, at least 2 and up to 5 sample messages, <=1024 chars each. </param>        /// <param name="usAppToPersonUsecase"> A2P Campaign Use Case. Examples: [ 2FA, EMERGENCY, MARKETING..] </param>        /// <param name="hasEmbeddedLinks"> Indicates that this SMS campaign will send messages that contain links. </param>        /// <param name="hasEmbeddedPhone"> Indicates that this SMS campaign will send messages that contain phone numbers. </param>
         public CreateUsAppToPersonOptions(string pathMessagingServiceSid, string brandRegistrationSid, string description, List<string> messageSamples, string usAppToPersonUsecase, bool? hasEmbeddedLinks, bool? hasEmbeddedPhone)
         {
             PathMessagingServiceSid = pathMessagingServiceSid;
@@ -163,7 +163,7 @@ namespace Twilio.Rest.Messaging.V1.Service
 
 
         /// <summary> Construct a new DeleteUsAppToPersonOptions </summary>
-        /// <param name="pathMessagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) to delete the resource from. </param>        /// <param name="pathSid"> The SID of the US A2P Compliance resource to delete &#x60;QE2c6890da8086d771620e9b13fadeba0b&#x60;. </param>
+        /// <param name="pathMessagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) to delete the resource from. </param>        /// <param name="pathSid"> The SID of the US A2P Compliance resource to delete `QE2c6890da8086d771620e9b13fadeba0b`. </param>
         public DeleteUsAppToPersonOptions(string pathMessagingServiceSid, string pathSid)
         {
             PathMessagingServiceSid = pathMessagingServiceSid;
@@ -196,7 +196,7 @@ namespace Twilio.Rest.Messaging.V1.Service
 
 
         /// <summary> Construct a new FetchUsAppToPersonOptions </summary>
-        /// <param name="pathMessagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) to fetch the resource from. </param>        /// <param name="pathSid"> The SID of the US A2P Compliance resource to fetch &#x60;QE2c6890da8086d771620e9b13fadeba0b&#x60;. </param>
+        /// <param name="pathMessagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) to fetch the resource from. </param>        /// <param name="pathSid"> The SID of the US A2P Compliance resource to fetch `QE2c6890da8086d771620e9b13fadeba0b`. </param>
         public FetchUsAppToPersonOptions(string pathMessagingServiceSid, string pathSid)
         {
             PathMessagingServiceSid = pathMessagingServiceSid;

@@ -52,7 +52,6 @@ namespace Twilio.Rest.Supersim.V1.Sim
             string PathSimSid = options.PathSimSid;
             path = path.Replace("{"+"SimSid"+"}", PathSimSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Supersim,
@@ -169,8 +168,6 @@ namespace Twilio.Rest.Supersim.V1.Sim
             var response = client.Request(request);
             return Page<SimIpAddressResource>.FromJson("ip_addresses", response.Content);
         }
-
-
 
     
         /// <summary>

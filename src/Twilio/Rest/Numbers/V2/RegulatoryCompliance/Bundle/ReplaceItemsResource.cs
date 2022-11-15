@@ -56,7 +56,6 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
             string PathBundleSid = options.PathBundleSid;
             path = path.Replace("{"+"BundleSid"+"}", PathBundleSid);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Numbers,
@@ -120,10 +119,6 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
     
         /// <summary>
         /// Converts a JSON string into a ReplaceItemsResource object

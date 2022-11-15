@@ -185,7 +185,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
 
 
         /// <summary> Construct a new UpdateConferenceRecordingOptions </summary>
-        /// <param name="pathConferenceSid"> The Conference SID that identifies the conference associated with the recording to update. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Conference Recording resource to update. Use &#x60;Twilio.CURRENT&#x60; to reference the current active recording. </param>        /// <param name="status">  </param>
+        /// <param name="pathConferenceSid"> The Conference SID that identifies the conference associated with the recording to update. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Conference Recording resource to update. Use `Twilio.CURRENT` to reference the current active recording. </param>        /// <param name="status">  </param>
         public UpdateRecordingOptions(string pathConferenceSid, string pathSid, RecordingResource.StatusEnum status)
         {
             PathConferenceSid = pathConferenceSid;

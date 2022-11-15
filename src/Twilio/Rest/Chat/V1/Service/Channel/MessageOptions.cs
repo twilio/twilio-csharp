@@ -45,7 +45,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
 
 
         /// <summary> Construct a new CreateMessageOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/api/chat/rest/services) to create the resource under. </param>        /// <param name="pathChannelSid"> The unique ID of the [Channel](https://www.twilio.com/docs/api/chat/rest/channels) the new resource belongs to. Can be the Channel resource&#39;s &#x60;sid&#x60; or &#x60;unique_name&#x60;. </param>        /// <param name="body"> The message to send to the channel. Can also be an empty string or &#x60;null&#x60;, which sets the value as an empty string. You can send structured data in the body by serializing it as a string. </param>
+        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/api/chat/rest/services) to create the resource under. </param>        /// <param name="pathChannelSid"> The unique ID of the [Channel](https://www.twilio.com/docs/api/chat/rest/channels) the new resource belongs to. Can be the Channel resource's `sid` or `unique_name`. </param>        /// <param name="body"> The message to send to the channel. Can also be an empty string or `null`, which sets the value as an empty string. You can send structured data in the body by serializing it as a string. </param>
         public CreateMessageOptions(string pathServiceSid, string pathChannelSid, string body)
         {
             PathServiceSid = pathServiceSid;
@@ -92,7 +92,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
 
 
         /// <summary> Construct a new DeleteMessageOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/api/chat/rest/services) to delete the resource from. </param>        /// <param name="pathChannelSid"> The unique ID of the [Channel](https://www.twilio.com/docs/api/chat/rest/channels) the message to delete belongs to.  Can be the Channel resource&#39;s &#x60;sid&#x60; or &#x60;unique_name&#x60;. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Message resource to delete. </param>
+        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/api/chat/rest/services) to delete the resource from. </param>        /// <param name="pathChannelSid"> The unique ID of the [Channel](https://www.twilio.com/docs/api/chat/rest/channels) the message to delete belongs to.  Can be the Channel resource's `sid` or `unique_name`. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Message resource to delete. </param>
         public DeleteMessageOptions(string pathServiceSid, string pathChannelSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -129,7 +129,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
 
 
         /// <summary> Construct a new FetchMessageOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/api/chat/rest/services) to fetch the resource from. </param>        /// <param name="pathChannelSid"> The unique ID of the [Channel](https://www.twilio.com/docs/api/chat/rest/channels) the message to fetch belongs to. Can be the Channel&#39;s &#x60;sid&#x60; or &#x60;unique_name&#x60;. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Message resource to fetch. </param>
+        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/api/chat/rest/services) to fetch the resource from. </param>        /// <param name="pathChannelSid"> The unique ID of the [Channel](https://www.twilio.com/docs/api/chat/rest/channels) the message to fetch belongs to. Can be the Channel's `sid` or `unique_name`. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Message resource to fetch. </param>
         public FetchMessageOptions(string pathServiceSid, string pathChannelSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -166,7 +166,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
 
 
         /// <summary> Construct a new ListMessageOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/api/chat/rest/services) to read the resources from. </param>        /// <param name="pathChannelSid"> The unique ID of the [Channel](https://www.twilio.com/docs/api/chat/rest/channels) the message to read belongs to. Can be the Channel&#39;s &#x60;sid&#x60; or &#x60;unique_name&#x60;. </param>
+        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/api/chat/rest/services) to read the resources from. </param>        /// <param name="pathChannelSid"> The unique ID of the [Channel](https://www.twilio.com/docs/api/chat/rest/channels) the message to read belongs to. Can be the Channel's `sid` or `unique_name`. </param>
         public ReadMessageOptions(string pathServiceSid, string pathChannelSid)
         {
             PathServiceSid = pathServiceSid;
@@ -215,7 +215,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
 
 
         /// <summary> Construct a new UpdateMessageOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/api/chat/rest/services) to update the resource from. </param>        /// <param name="pathChannelSid"> The unique ID of the [Channel](https://www.twilio.com/docs/api/chat/rest/channels) the message belongs to. Can be the Channel&#39;s &#x60;sid&#x60; or &#x60;unique_name&#x60;. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Message resource to update. </param>
+        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/api/chat/rest/services) to update the resource from. </param>        /// <param name="pathChannelSid"> The unique ID of the [Channel](https://www.twilio.com/docs/api/chat/rest/channels) the message belongs to. Can be the Channel's `sid` or `unique_name`. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Message resource to update. </param>
         public UpdateMessageOptions(string pathServiceSid, string pathChannelSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;

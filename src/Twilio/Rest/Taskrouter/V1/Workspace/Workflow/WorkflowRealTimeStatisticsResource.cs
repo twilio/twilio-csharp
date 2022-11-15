@@ -41,7 +41,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Workflow
             string PathWorkflowSid = options.PathWorkflowSid;
             path = path.Replace("{"+"WorkflowSid"+"}", PathWorkflowSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Taskrouter,

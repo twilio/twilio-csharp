@@ -50,7 +50,6 @@ namespace Twilio.Rest.Video.V1
             string path = "/v1/CompositionHooks";
 
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Video,
@@ -146,10 +145,6 @@ namespace Twilio.Rest.Video.V1
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> Delete a Recording CompositionHook resource identified by a &#x60;CompositionHook SID&#x60;. </summary>
         /// <param name="options"> Delete CompositionHook parameters </param>
@@ -162,7 +157,6 @@ namespace Twilio.Rest.Video.V1
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -228,7 +222,6 @@ namespace Twilio.Rest.Video.V1
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Video,
@@ -290,7 +283,6 @@ namespace Twilio.Rest.Video.V1
         {
             
             string path = "/v1/CompositionHooks";
-
 
 
             return new Request(
@@ -422,8 +414,6 @@ namespace Twilio.Rest.Video.V1
             return Page<CompositionHookResource>.FromJson("composition_hooks", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateCompositionHookOptions options, ITwilioRestClient client)
         {
@@ -432,7 +422,6 @@ namespace Twilio.Rest.Video.V1
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Post,

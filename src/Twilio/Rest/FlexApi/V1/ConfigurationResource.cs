@@ -51,7 +51,6 @@ namespace Twilio.Rest.FlexApi.V1
             string path = "/v1/Configuration";
 
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.FlexApi,

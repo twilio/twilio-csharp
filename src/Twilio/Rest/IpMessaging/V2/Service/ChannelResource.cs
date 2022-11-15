@@ -64,7 +64,6 @@ namespace Twilio.Rest.IpMessaging.V2.Service
             string PathServiceSid = options.PathServiceSid;
             path = path.Replace("{"+"ServiceSid"+"}", PathServiceSid);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.IpMessaging,
@@ -156,10 +155,6 @@ namespace Twilio.Rest.IpMessaging.V2.Service
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> delete </summary>
         /// <param name="options"> Delete Channel parameters </param>
@@ -174,7 +169,6 @@ namespace Twilio.Rest.IpMessaging.V2.Service
             path = path.Replace("{"+"ServiceSid"+"}", PathServiceSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -246,7 +240,6 @@ namespace Twilio.Rest.IpMessaging.V2.Service
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.IpMessaging,
@@ -314,7 +307,6 @@ namespace Twilio.Rest.IpMessaging.V2.Service
 
             string PathServiceSid = options.PathServiceSid;
             path = path.Replace("{"+"ServiceSid"+"}", PathServiceSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -437,8 +429,6 @@ namespace Twilio.Rest.IpMessaging.V2.Service
             return Page<ChannelResource>.FromJson("channels", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateChannelOptions options, ITwilioRestClient client)
         {
@@ -449,7 +439,6 @@ namespace Twilio.Rest.IpMessaging.V2.Service
             path = path.Replace("{"+"ServiceSid"+"}", PathServiceSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Post,

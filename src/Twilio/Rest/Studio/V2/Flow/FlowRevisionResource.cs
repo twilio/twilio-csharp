@@ -54,7 +54,6 @@ namespace Twilio.Rest.Studio.V2.Flow
             string PathRevision = options.PathRevision;
             path = path.Replace("{"+"Revision"+"}", PathRevision);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Studio,
@@ -122,7 +121,6 @@ namespace Twilio.Rest.Studio.V2.Flow
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -240,8 +238,6 @@ namespace Twilio.Rest.Studio.V2.Flow
             var response = client.Request(request);
             return Page<FlowRevisionResource>.FromJson("revisions", response.Content);
         }
-
-
 
     
         /// <summary>

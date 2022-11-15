@@ -37,7 +37,6 @@ namespace Twilio.Rest.Voice.V1
             string path = "/v1/ByocTrunks";
 
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Voice,
@@ -133,10 +132,6 @@ namespace Twilio.Rest.Voice.V1
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> delete </summary>
         /// <param name="options"> Delete ByocTrunk parameters </param>
@@ -149,7 +144,6 @@ namespace Twilio.Rest.Voice.V1
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -215,7 +209,6 @@ namespace Twilio.Rest.Voice.V1
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Voice,
@@ -277,7 +270,6 @@ namespace Twilio.Rest.Voice.V1
         {
             
             string path = "/v1/ByocTrunks";
-
 
 
             return new Request(
@@ -393,8 +385,6 @@ namespace Twilio.Rest.Voice.V1
             return Page<ByocTrunkResource>.FromJson("byoc_trunks", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateByocTrunkOptions options, ITwilioRestClient client)
         {
@@ -403,7 +393,6 @@ namespace Twilio.Rest.Voice.V1
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Post,

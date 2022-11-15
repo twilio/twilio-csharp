@@ -81,7 +81,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
 
 
         /// <summary> Construct a new CreateHostedNumbersHostedNumberOrderOptions </summary>
-        /// <param name="phoneNumber"> The number to host in [+E.164](https://en.wikipedia.org/wiki/E.164) format </param>        /// <param name="smsCapability"> Used to specify that the SMS capability will be hosted on Twilio&#39;s platform. </param>
+        /// <param name="phoneNumber"> The number to host in [+E.164](https://en.wikipedia.org/wiki/E.164) format </param>        /// <param name="smsCapability"> Used to specify that the SMS capability will be hosted on Twilio's platform. </param>
         public CreateHostedNumberOrderOptions(Types.PhoneNumber phoneNumber, bool? smsCapability)
         {
             PhoneNumber = phoneNumber;

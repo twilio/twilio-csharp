@@ -102,7 +102,6 @@ namespace Twilio.Rest.Video.V1.Room
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Video,
@@ -171,7 +170,6 @@ namespace Twilio.Rest.Video.V1.Room
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Video,
@@ -239,7 +237,6 @@ namespace Twilio.Rest.Video.V1.Room
 
             string PathRoomSid = options.PathRoomSid;
             path = path.Replace("{"+"RoomSid"+"}", PathRoomSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -373,8 +370,6 @@ namespace Twilio.Rest.Video.V1.Room
             var response = client.Request(request);
             return Page<RoomRecordingResource>.FromJson("recordings", response.Content);
         }
-
-
 
     
         /// <summary>

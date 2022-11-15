@@ -43,7 +43,6 @@ namespace Twilio.Rest.Studio.V2.Flow.Execution.ExecutionStep
             string PathStepSid = options.PathStepSid;
             path = path.Replace("{"+"StepSid"+"}", PathStepSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Studio,

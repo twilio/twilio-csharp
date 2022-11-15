@@ -42,7 +42,7 @@ namespace Twilio.Rest.Studio.V1.Flow
 
 
         /// <summary> Construct a new CreateEngagementOptions </summary>
-        /// <param name="pathFlowSid"> The SID of the Flow. </param>        /// <param name="to"> The Contact phone number to start a Studio Flow Engagement, available as variable &#x60;{{contact.channel.address}}&#x60;. </param>        /// <param name="from"> The Twilio phone number to send messages or initiate calls from during the Flow Engagement. Available as variable &#x60;{{flow.channel.address}}&#x60; </param>
+        /// <param name="pathFlowSid"> The SID of the Flow. </param>        /// <param name="to"> The Contact phone number to start a Studio Flow Engagement, available as variable `{{contact.channel.address}}`. </param>        /// <param name="from"> The Twilio phone number to send messages or initiate calls from during the Flow Engagement. Available as variable `{{flow.channel.address}}` </param>
         public CreateEngagementOptions(string pathFlowSid, Types.PhoneNumber to, Types.PhoneNumber from)
         {
             PathFlowSid = pathFlowSid;

@@ -54,7 +54,6 @@ namespace Twilio.Rest.Api.V2010.Account.Message
             string PathMessageSid = options.PathMessageSid;
             path = path.Replace("{"+"MessageSid"+"}", PathMessageSid);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Api,
@@ -122,10 +121,6 @@ namespace Twilio.Rest.Api.V2010.Account.Message
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
     
         /// <summary>
         /// Converts a JSON string into a FeedbackResource object

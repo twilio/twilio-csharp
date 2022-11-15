@@ -41,7 +41,6 @@ namespace Twilio.Rest.Preview.Understand.Assistant.FieldType
             string PathFieldTypeSid = options.PathFieldTypeSid;
             path = path.Replace("{"+"FieldTypeSid"+"}", PathFieldTypeSid);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Preview,
@@ -117,10 +116,6 @@ namespace Twilio.Rest.Preview.Understand.Assistant.FieldType
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> delete </summary>
         /// <param name="options"> Delete FieldValue parameters </param>
@@ -137,7 +132,6 @@ namespace Twilio.Rest.Preview.Understand.Assistant.FieldType
             path = path.Replace("{"+"FieldTypeSid"+"}", PathFieldTypeSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -211,7 +205,6 @@ namespace Twilio.Rest.Preview.Understand.Assistant.FieldType
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Preview,
@@ -284,7 +277,6 @@ namespace Twilio.Rest.Preview.Understand.Assistant.FieldType
             path = path.Replace("{"+"AssistantSid"+"}", PathAssistantSid);
             string PathFieldTypeSid = options.PathFieldTypeSid;
             path = path.Replace("{"+"FieldTypeSid"+"}", PathFieldTypeSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -410,8 +402,6 @@ namespace Twilio.Rest.Preview.Understand.Assistant.FieldType
             var response = client.Request(request);
             return Page<FieldValueResource>.FromJson("field_values", response.Content);
         }
-
-
 
     
         /// <summary>

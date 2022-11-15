@@ -134,7 +134,6 @@ namespace Twilio.Rest.Insights.V1.Conference
             string PathParticipantSid = options.PathParticipantSid;
             path = path.Replace("{"+"ParticipantSid"+"}", PathParticipantSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Insights,
@@ -208,7 +207,6 @@ namespace Twilio.Rest.Insights.V1.Conference
 
             string PathConferenceSid = options.PathConferenceSid;
             path = path.Replace("{"+"ConferenceSid"+"}", PathConferenceSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -338,8 +336,6 @@ namespace Twilio.Rest.Insights.V1.Conference
             var response = client.Request(request);
             return Page<ConferenceParticipantResource>.FromJson("participants", response.Content);
         }
-
-
 
     
         /// <summary>

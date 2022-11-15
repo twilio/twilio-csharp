@@ -74,7 +74,6 @@ namespace Twilio.Rest.Wireless.V1
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Wireless,
@@ -139,7 +138,6 @@ namespace Twilio.Rest.Wireless.V1
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Wireless,
@@ -201,7 +199,6 @@ namespace Twilio.Rest.Wireless.V1
         {
             
             string path = "/v1/Sims";
-
 
 
             return new Request(
@@ -337,8 +334,6 @@ namespace Twilio.Rest.Wireless.V1
             return Page<SimResource>.FromJson("sims", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateSimOptions options, ITwilioRestClient client)
         {
@@ -347,7 +342,6 @@ namespace Twilio.Rest.Wireless.V1
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Post,

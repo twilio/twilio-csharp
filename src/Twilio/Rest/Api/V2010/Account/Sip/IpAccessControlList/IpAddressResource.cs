@@ -41,7 +41,6 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
             string PathIpAccessControlListSid = options.PathIpAccessControlListSid;
             path = path.Replace("{"+"IpAccessControlListSid"+"}", PathIpAccessControlListSid);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Api,
@@ -117,10 +116,6 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> Delete an IpAddress resource. </summary>
         /// <param name="options"> Delete IpAddress parameters </param>
@@ -137,7 +132,6 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
             path = path.Replace("{"+"IpAccessControlListSid"+"}", PathIpAccessControlListSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -211,7 +205,6 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
@@ -284,7 +277,6 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
             path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
             string PathIpAccessControlListSid = options.PathIpAccessControlListSid;
             path = path.Replace("{"+"IpAccessControlListSid"+"}", PathIpAccessControlListSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -407,8 +399,6 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
             return Page<IpAddressResource>.FromJson("ip_addresses", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateIpAddressOptions options, ITwilioRestClient client)
         {
@@ -421,7 +411,6 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
             path = path.Replace("{"+"IpAccessControlListSid"+"}", PathIpAccessControlListSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Post,

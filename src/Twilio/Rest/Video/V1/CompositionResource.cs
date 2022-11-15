@@ -66,7 +66,6 @@ namespace Twilio.Rest.Video.V1
             string path = "/v1/Compositions";
 
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Video,
@@ -158,10 +157,6 @@ namespace Twilio.Rest.Video.V1
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> Delete a Recording Composition resource identified by a Composition SID. </summary>
         /// <param name="options"> Delete Composition parameters </param>
@@ -174,7 +169,6 @@ namespace Twilio.Rest.Video.V1
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -240,7 +234,6 @@ namespace Twilio.Rest.Video.V1
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Video,
@@ -302,7 +295,6 @@ namespace Twilio.Rest.Video.V1
         {
             
             string path = "/v1/Compositions";
-
 
 
             return new Request(
@@ -434,8 +426,6 @@ namespace Twilio.Rest.Video.V1
             return Page<CompositionResource>.FromJson("compositions", response.Content);
         }
 
-
-
     
         /// <summary>
         /// Converts a JSON string into a CompositionResource object
@@ -527,7 +517,7 @@ namespace Twilio.Rest.Video.V1
         [JsonProperty("status_callback")]
         public Uri StatusCallback { get; private set; }
 
-        ///<summary> The HTTP method used to call &#x60;status_callback&#x60; </summary> 
+        ///<summary> The HTTP method used to call `status_callback` </summary> 
         [JsonProperty("status_callback_method")]
         public Twilio.Http.HttpMethod StatusCallbackMethod { get; private set; }
 

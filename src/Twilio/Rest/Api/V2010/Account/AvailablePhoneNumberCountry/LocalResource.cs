@@ -41,7 +41,6 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
             string PathCountryCode = options.PathCountryCode.ToString();
             path = path.Replace("{"+"CountryCode"+"}", PathCountryCode);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
@@ -234,8 +233,6 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
             var response = client.Request(request);
             return Page<LocalResource>.FromJson("available_phone_numbers", response.Content);
         }
-
-
 
     
         /// <summary>

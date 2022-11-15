@@ -39,7 +39,6 @@ namespace Twilio.Rest.Events.V1
             string PathId = options.PathId;
             path = path.Replace("{"+"Id"+"}", PathId);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Events,

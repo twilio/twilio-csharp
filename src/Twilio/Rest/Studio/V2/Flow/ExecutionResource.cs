@@ -52,7 +52,6 @@ namespace Twilio.Rest.Studio.V2.Flow
             string PathFlowSid = options.PathFlowSid;
             path = path.Replace("{"+"FlowSid"+"}", PathFlowSid);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Studio,
@@ -124,10 +123,6 @@ namespace Twilio.Rest.Studio.V2.Flow
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> Delete the Execution and all Steps relating to it. </summary>
         /// <param name="options"> Delete Execution parameters </param>
@@ -142,7 +137,6 @@ namespace Twilio.Rest.Studio.V2.Flow
             path = path.Replace("{"+"FlowSid"+"}", PathFlowSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -212,7 +206,6 @@ namespace Twilio.Rest.Studio.V2.Flow
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Studio,
@@ -280,7 +273,6 @@ namespace Twilio.Rest.Studio.V2.Flow
 
             string PathFlowSid = options.PathFlowSid;
             path = path.Replace("{"+"FlowSid"+"}", PathFlowSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -407,8 +399,6 @@ namespace Twilio.Rest.Studio.V2.Flow
             return Page<ExecutionResource>.FromJson("executions", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateExecutionOptions options, ITwilioRestClient client)
         {
@@ -419,7 +409,6 @@ namespace Twilio.Rest.Studio.V2.Flow
             path = path.Replace("{"+"FlowSid"+"}", PathFlowSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Post,

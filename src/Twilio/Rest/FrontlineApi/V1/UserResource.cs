@@ -52,7 +52,6 @@ namespace Twilio.Rest.FrontlineApi.V1
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.FrontlineApi,
@@ -117,7 +116,6 @@ namespace Twilio.Rest.FrontlineApi.V1
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Post,

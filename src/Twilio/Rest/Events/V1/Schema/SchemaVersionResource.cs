@@ -41,7 +41,6 @@ namespace Twilio.Rest.Events.V1.Schema
             string PathSchemaVersion = options.PathSchemaVersion.ToString();
             path = path.Replace("{"+"SchemaVersion"+"}", PathSchemaVersion);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Events,
@@ -109,7 +108,6 @@ namespace Twilio.Rest.Events.V1.Schema
 
             string PathId = options.PathId;
             path = path.Replace("{"+"Id"+"}", PathId);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -227,8 +225,6 @@ namespace Twilio.Rest.Events.V1.Schema
             var response = client.Request(request);
             return Page<SchemaVersionResource>.FromJson("schema_versions", response.Content);
         }
-
-
 
     
         /// <summary>

@@ -45,7 +45,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
 
 
         /// <summary> Construct a new CreateQueryOptions </summary>
-        /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the new resource. </param>        /// <param name="language"> The [ISO language-country](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html) string that specifies the language used for the new query. For example: &#x60;en-US&#x60;. </param>        /// <param name="query"> The end-user&#39;s natural language input. It can be up to 2048 characters long. </param>
+        /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the new resource. </param>        /// <param name="language"> The [ISO language-country](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html) string that specifies the language used for the new query. For example: `en-US`. </param>        /// <param name="query"> The end-user's natural language input. It can be up to 2048 characters long. </param>
         public CreateQueryOptions(string pathAssistantSid, string language, string query)
         {
             PathAssistantSid = pathAssistantSid;

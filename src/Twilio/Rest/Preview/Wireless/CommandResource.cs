@@ -37,7 +37,6 @@ namespace Twilio.Rest.Preview.Wireless
             string path = "/wireless/Commands";
 
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Preview,
@@ -121,10 +120,6 @@ namespace Twilio.Rest.Preview.Wireless
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         private static Request BuildFetchRequest(FetchCommandOptions options, ITwilioRestClient client)
         {
@@ -133,7 +128,6 @@ namespace Twilio.Rest.Preview.Wireless
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -196,7 +190,6 @@ namespace Twilio.Rest.Preview.Wireless
         {
             
             string path = "/wireless/Commands";
-
 
 
             return new Request(
@@ -327,8 +320,6 @@ namespace Twilio.Rest.Preview.Wireless
             var response = client.Request(request);
             return Page<CommandResource>.FromJson("commands", response.Content);
         }
-
-
 
     
         /// <summary>

@@ -66,7 +66,6 @@ namespace Twilio.Rest.Supersim.V1
             string path = "/v1/Sims";
 
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Supersim,
@@ -130,10 +129,6 @@ namespace Twilio.Rest.Supersim.V1
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         private static Request BuildFetchRequest(FetchSimOptions options, ITwilioRestClient client)
         {
@@ -142,7 +137,6 @@ namespace Twilio.Rest.Supersim.V1
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -205,7 +199,6 @@ namespace Twilio.Rest.Supersim.V1
         {
             
             string path = "/v1/Sims";
-
 
 
             return new Request(
@@ -333,8 +326,6 @@ namespace Twilio.Rest.Supersim.V1
             return Page<SimResource>.FromJson("sims", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateSimOptions options, ITwilioRestClient client)
         {
@@ -343,7 +334,6 @@ namespace Twilio.Rest.Supersim.V1
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Post,

@@ -42,7 +42,7 @@ namespace Twilio.Rest.Studio.V2.Flow
 
 
         /// <summary> Construct a new CreateExecutionOptions </summary>
-        /// <param name="pathFlowSid"> The SID of the Excecution&#39;s Flow. </param>        /// <param name="to"> The Contact phone number to start a Studio Flow Execution, available as variable &#x60;{{contact.channel.address}}&#x60;. </param>        /// <param name="from"> The Twilio phone number to send messages or initiate calls from during the Flow&#39;s Execution. Available as variable &#x60;{{flow.channel.address}}&#x60;. For SMS, this can also be a Messaging Service SID. </param>
+        /// <param name="pathFlowSid"> The SID of the Excecution's Flow. </param>        /// <param name="to"> The Contact phone number to start a Studio Flow Execution, available as variable `{{contact.channel.address}}`. </param>        /// <param name="from"> The Twilio phone number to send messages or initiate calls from during the Flow's Execution. Available as variable `{{flow.channel.address}}`. For SMS, this can also be a Messaging Service SID. </param>
         public CreateExecutionOptions(string pathFlowSid, Types.PhoneNumber to, Types.PhoneNumber from)
         {
             PathFlowSid = pathFlowSid;

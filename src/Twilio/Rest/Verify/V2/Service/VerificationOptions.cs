@@ -75,7 +75,7 @@ namespace Twilio.Rest.Verify.V2.Service
 
 
         /// <summary> Construct a new CreateVerificationOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the verification [Service](https://www.twilio.com/docs/verify/api/service) to create the resource under. </param>        /// <param name="to"> The phone number or [email](https://www.twilio.com/docs/verify/email) to verify. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164). </param>        /// <param name="channel"> The verification method to use. One of: [&#x60;email&#x60;](https://www.twilio.com/docs/verify/email), &#x60;sms&#x60;, &#x60;whatsapp&#x60;, &#x60;call&#x60;, or &#x60;sna&#x60;. </param>
+        /// <param name="pathServiceSid"> The SID of the verification [Service](https://www.twilio.com/docs/verify/api/service) to create the resource under. </param>        /// <param name="to"> The phone number or [email](https://www.twilio.com/docs/verify/email) to verify. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164). </param>        /// <param name="channel"> The verification method to use. One of: [`email`](https://www.twilio.com/docs/verify/email), `sms`, `whatsapp`, `call`, or `sna`. </param>
         public CreateVerificationOptions(string pathServiceSid, string to, string channel)
         {
             PathServiceSid = pathServiceSid;

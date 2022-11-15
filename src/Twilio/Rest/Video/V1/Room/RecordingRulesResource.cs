@@ -39,7 +39,6 @@ namespace Twilio.Rest.Video.V1.Room
             string PathRoomSid = options.PathRoomSid;
             path = path.Replace("{"+"RoomSid"+"}", PathRoomSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Video,
@@ -104,7 +103,6 @@ namespace Twilio.Rest.Video.V1.Room
 
             string PathRoomSid = options.PathRoomSid;
             path = path.Replace("{"+"RoomSid"+"}", PathRoomSid);
-
 
             return new Request(
                 HttpMethod.Post,

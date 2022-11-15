@@ -41,7 +41,6 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
             string PathCredentialListSid = options.PathCredentialListSid;
             path = path.Replace("{"+"CredentialListSid"+"}", PathCredentialListSid);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Api,
@@ -113,10 +112,6 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> Delete a credential resource. </summary>
         /// <param name="options"> Delete Credential parameters </param>
@@ -133,7 +128,6 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
             path = path.Replace("{"+"CredentialListSid"+"}", PathCredentialListSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -207,7 +201,6 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
@@ -280,7 +273,6 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
             path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
             string PathCredentialListSid = options.PathCredentialListSid;
             path = path.Replace("{"+"CredentialListSid"+"}", PathCredentialListSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -403,8 +395,6 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
             return Page<CredentialResource>.FromJson("credentials", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateCredentialOptions options, ITwilioRestClient client)
         {
@@ -417,7 +407,6 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
             path = path.Replace("{"+"CredentialListSid"+"}", PathCredentialListSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Post,

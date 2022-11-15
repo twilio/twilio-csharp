@@ -39,7 +39,6 @@ namespace Twilio.Rest.Supersim.V1.NetworkAccessProfile
             string PathNetworkAccessProfileSid = options.PathNetworkAccessProfileSid;
             path = path.Replace("{"+"NetworkAccessProfileSid"+"}", PathNetworkAccessProfileSid);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Supersim,
@@ -103,10 +102,6 @@ namespace Twilio.Rest.Supersim.V1.NetworkAccessProfile
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> Remove a Network resource from the Network Access Profile resource&#39;s. </summary>
         /// <param name="options"> Delete NetworkAccessProfileNetwork parameters </param>
@@ -121,7 +116,6 @@ namespace Twilio.Rest.Supersim.V1.NetworkAccessProfile
             path = path.Replace("{"+"NetworkAccessProfileSid"+"}", PathNetworkAccessProfileSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -191,7 +185,6 @@ namespace Twilio.Rest.Supersim.V1.NetworkAccessProfile
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Supersim,
@@ -259,7 +252,6 @@ namespace Twilio.Rest.Supersim.V1.NetworkAccessProfile
 
             string PathNetworkAccessProfileSid = options.PathNetworkAccessProfileSid;
             path = path.Replace("{"+"NetworkAccessProfileSid"+"}", PathNetworkAccessProfileSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -377,8 +369,6 @@ namespace Twilio.Rest.Supersim.V1.NetworkAccessProfile
             var response = client.Request(request);
             return Page<NetworkAccessProfileNetworkResource>.FromJson("networks", response.Content);
         }
-
-
 
     
         /// <summary>

@@ -39,7 +39,6 @@ namespace Twilio.Rest.Messaging.V1.Service
             string PathMessagingServiceSid = options.PathMessagingServiceSid;
             path = path.Replace("{"+"MessagingServiceSid"+"}", PathMessagingServiceSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Messaging,

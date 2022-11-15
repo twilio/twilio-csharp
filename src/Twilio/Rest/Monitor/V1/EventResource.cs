@@ -39,7 +39,6 @@ namespace Twilio.Rest.Monitor.V1
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Monitor,
@@ -101,7 +100,6 @@ namespace Twilio.Rest.Monitor.V1
         {
             
             string path = "/v1/Events";
-
 
 
             return new Request(
@@ -240,8 +238,6 @@ namespace Twilio.Rest.Monitor.V1
             var response = client.Request(request);
             return Page<EventResource>.FromJson("events", response.Content);
         }
-
-
 
     
         /// <summary>

@@ -64,7 +64,6 @@ namespace Twilio.Rest.Supersim.V1
             string path = "/v1/UsageRecords";
 
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Supersim,
@@ -209,8 +208,6 @@ namespace Twilio.Rest.Supersim.V1
             var response = client.Request(request);
             return Page<UsageRecordResource>.FromJson("usage_records", response.Content);
         }
-
-
 
     
         /// <summary>

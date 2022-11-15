@@ -41,7 +41,6 @@ namespace Twilio.Rest.Studio.V1.Flow.Execution
             string PathExecutionSid = options.PathExecutionSid;
             path = path.Replace("{"+"ExecutionSid"+"}", PathExecutionSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Studio,

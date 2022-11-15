@@ -39,7 +39,6 @@ namespace Twilio.Rest.Insights.V1
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Insights,

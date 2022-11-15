@@ -58,7 +58,6 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             string PathConferenceSid = options.PathConferenceSid;
             path = path.Replace("{"+"ConferenceSid"+"}", PathConferenceSid);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Api,
@@ -306,10 +305,6 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> Kick a participant from a given conference </summary>
         /// <param name="options"> Delete Participant parameters </param>
@@ -326,7 +321,6 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             path = path.Replace("{"+"ConferenceSid"+"}", PathConferenceSid);
             string PathCallSid = options.PathCallSid;
             path = path.Replace("{"+"CallSid"+"}", PathCallSid);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -400,7 +394,6 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             string PathCallSid = options.PathCallSid;
             path = path.Replace("{"+"CallSid"+"}", PathCallSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
@@ -473,7 +466,6 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
             string PathConferenceSid = options.PathConferenceSid;
             path = path.Replace("{"+"ConferenceSid"+"}", PathConferenceSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -608,8 +600,6 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             return Page<ParticipantResource>.FromJson("participants", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateParticipantOptions options, ITwilioRestClient client)
         {
@@ -622,7 +612,6 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             path = path.Replace("{"+"ConferenceSid"+"}", PathConferenceSid);
             string PathCallSid = options.PathCallSid;
             path = path.Replace("{"+"CallSid"+"}", PathCallSid);
-
 
             return new Request(
                 HttpMethod.Post,

@@ -93,7 +93,6 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Proxy,
@@ -165,7 +164,6 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
             path = path.Replace("{"+"SessionSid"+"}", PathSessionSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -239,7 +237,6 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
             path = path.Replace("{"+"ServiceSid"+"}", PathServiceSid);
             string PathSessionSid = options.PathSessionSid;
             path = path.Replace("{"+"SessionSid"+"}", PathSessionSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -361,8 +358,6 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
             var response = client.Request(request);
             return Page<InteractionResource>.FromJson("interactions", response.Content);
         }
-
-
 
     
         /// <summary>

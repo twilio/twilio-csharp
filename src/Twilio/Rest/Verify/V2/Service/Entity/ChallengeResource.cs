@@ -95,7 +95,6 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
             string PathIdentity = options.PathIdentity;
             path = path.Replace("{"+"Identity"+"}", PathIdentity);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Verify,
@@ -183,10 +182,6 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         private static Request BuildFetchRequest(FetchChallengeOptions options, ITwilioRestClient client)
         {
@@ -199,7 +194,6 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
             path = path.Replace("{"+"Identity"+"}", PathIdentity);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -273,7 +267,6 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
             path = path.Replace("{"+"ServiceSid"+"}", PathServiceSid);
             string PathIdentity = options.PathIdentity;
             path = path.Replace("{"+"Identity"+"}", PathIdentity);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -408,8 +401,6 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
             return Page<ChallengeResource>.FromJson("challenges", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateChallengeOptions options, ITwilioRestClient client)
         {
@@ -422,7 +413,6 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
             path = path.Replace("{"+"Identity"+"}", PathIdentity);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Post,

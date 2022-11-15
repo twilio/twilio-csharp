@@ -45,7 +45,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
 
 
         /// <summary> Construct a new CreateTaskOptions </summary>
-        /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the new resource. </param>        /// <param name="uniqueName"> An application-defined string that uniquely identifies the new resource. It can be used as an alternative to the &#x60;sid&#x60; in the URL path to address the resource. This value must be unique and 64 characters or less in length. </param>
+        /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the new resource. </param>        /// <param name="uniqueName"> An application-defined string that uniquely identifies the new resource. It can be used as an alternative to the `sid` in the URL path to address the resource. This value must be unique and 64 characters or less in length. </param>
         public CreateTaskOptions(string pathAssistantSid, string uniqueName)
         {
             PathAssistantSid = pathAssistantSid;

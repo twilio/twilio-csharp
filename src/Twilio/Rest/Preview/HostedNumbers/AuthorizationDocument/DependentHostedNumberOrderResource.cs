@@ -72,7 +72,6 @@ namespace Twilio.Rest.Preview.HostedNumbers.AuthorizationDocument
             string PathSigningDocumentSid = options.PathSigningDocumentSid;
             path = path.Replace("{"+"SigningDocumentSid"+"}", PathSigningDocumentSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Preview,
@@ -209,8 +208,6 @@ namespace Twilio.Rest.Preview.HostedNumbers.AuthorizationDocument
             var response = client.Request(request);
             return Page<DependentHostedNumberOrderResource>.FromJson("items", response.Content);
         }
-
-
 
     
         /// <summary>

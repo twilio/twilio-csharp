@@ -39,7 +39,7 @@ namespace Twilio.Rest.FlexApi.V1.Interaction.InteractionChannel
 
 
         /// <summary> Construct a new CreateInteractionChannelInviteOptions </summary>
-        /// <param name="pathInteractionSid"> The Interaction SID for this Channel. </param>        /// <param name="pathChannelSid"> The Channel SID for this Invite. </param>        /// <param name="routing"> The Interaction&#39;s routing logic. </param>
+        /// <param name="pathInteractionSid"> The Interaction SID for this Channel. </param>        /// <param name="pathChannelSid"> The Channel SID for this Invite. </param>        /// <param name="routing"> The Interaction's routing logic. </param>
         public CreateInteractionChannelInviteOptions(string pathInteractionSid, string pathChannelSid, object routing)
         {
             PathInteractionSid = pathInteractionSid;

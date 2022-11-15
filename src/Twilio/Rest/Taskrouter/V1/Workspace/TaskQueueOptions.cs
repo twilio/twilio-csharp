@@ -51,7 +51,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
 
         /// <summary> Construct a new CreateTaskQueueOptions </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace that the new TaskQueue belongs to. </param>        /// <param name="friendlyName"> A descriptive string that you create to describe the TaskQueue. For example &#x60;Support-Tier 1&#x60;, &#x60;Sales&#x60;, or &#x60;Escalation&#x60;. </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace that the new TaskQueue belongs to. </param>        /// <param name="friendlyName"> A descriptive string that you create to describe the TaskQueue. For example `Support-Tier 1`, `Sales`, or `Escalation`. </param>
         public CreateTaskQueueOptions(string pathWorkspaceSid, string friendlyName)
         {
             PathWorkspaceSid = pathWorkspaceSid;

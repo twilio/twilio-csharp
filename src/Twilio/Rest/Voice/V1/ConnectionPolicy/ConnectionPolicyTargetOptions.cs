@@ -48,7 +48,7 @@ namespace Twilio.Rest.Voice.V1.ConnectionPolicy
 
 
         /// <summary> Construct a new CreateConnectionPolicyTargetOptions </summary>
-        /// <param name="pathConnectionPolicySid"> The SID of the Connection Policy that owns the Target. </param>        /// <param name="target"> The SIP address you want Twilio to route your calls to. This must be a &#x60;sip:&#x60; schema. &#x60;sips&#x60; is NOT supported. </param>
+        /// <param name="pathConnectionPolicySid"> The SID of the Connection Policy that owns the Target. </param>        /// <param name="target"> The SIP address you want Twilio to route your calls to. This must be a `sip:` schema. `sips` is NOT supported. </param>
         public CreateConnectionPolicyTargetOptions(string pathConnectionPolicySid, Uri target)
         {
             PathConnectionPolicySid = pathConnectionPolicySid;

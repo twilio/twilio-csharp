@@ -37,7 +37,6 @@ namespace Twilio.Rest.Voice.V1
             string path = "/v1/IpRecords";
 
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Voice,
@@ -105,10 +104,6 @@ namespace Twilio.Rest.Voice.V1
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> delete </summary>
         /// <param name="options"> Delete IpRecord parameters </param>
@@ -121,7 +116,6 @@ namespace Twilio.Rest.Voice.V1
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -187,7 +181,6 @@ namespace Twilio.Rest.Voice.V1
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Voice,
@@ -249,7 +242,6 @@ namespace Twilio.Rest.Voice.V1
         {
             
             string path = "/v1/IpRecords";
-
 
 
             return new Request(
@@ -365,8 +357,6 @@ namespace Twilio.Rest.Voice.V1
             return Page<IpRecordResource>.FromJson("ip_records", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateIpRecordOptions options, ITwilioRestClient client)
         {
@@ -375,7 +365,6 @@ namespace Twilio.Rest.Voice.V1
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Post,

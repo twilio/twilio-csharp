@@ -82,7 +82,6 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Api,
@@ -154,7 +153,6 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             path = path.Replace("{"+"ConferenceSid"+"}", PathConferenceSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -228,7 +226,6 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
             string PathConferenceSid = options.PathConferenceSid;
             path = path.Replace("{"+"ConferenceSid"+"}", PathConferenceSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -363,8 +360,6 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             return Page<RecordingResource>.FromJson("recordings", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateRecordingOptions options, ITwilioRestClient client)
         {
@@ -377,7 +372,6 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             path = path.Replace("{"+"ConferenceSid"+"}", PathConferenceSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Post,

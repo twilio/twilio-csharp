@@ -39,7 +39,6 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             string PathTrunkSid = options.PathTrunkSid;
             path = path.Replace("{"+"TrunkSid"+"}", PathTrunkSid);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Trunking,
@@ -103,10 +102,6 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> Remove an associated IP Access Control List from a Trunk </summary>
         /// <param name="options"> Delete IpAccessControlList parameters </param>
@@ -121,7 +116,6 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             path = path.Replace("{"+"TrunkSid"+"}", PathTrunkSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -191,7 +185,6 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Trunking,
@@ -259,7 +252,6 @@ namespace Twilio.Rest.Trunking.V1.Trunk
 
             string PathTrunkSid = options.PathTrunkSid;
             path = path.Replace("{"+"TrunkSid"+"}", PathTrunkSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -377,8 +369,6 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             var response = client.Request(request);
             return Page<IpAccessControlListResource>.FromJson("ip_access_control_lists", response.Content);
         }
-
-
 
     
         /// <summary>

@@ -37,7 +37,6 @@ namespace Twilio.Rest.IpMessaging.V2
             string path = "/v2/Services";
 
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.IpMessaging,
@@ -97,10 +96,6 @@ namespace Twilio.Rest.IpMessaging.V2
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> delete </summary>
         /// <param name="options"> Delete Service parameters </param>
@@ -113,7 +108,6 @@ namespace Twilio.Rest.IpMessaging.V2
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -179,7 +173,6 @@ namespace Twilio.Rest.IpMessaging.V2
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.IpMessaging,
@@ -241,7 +234,6 @@ namespace Twilio.Rest.IpMessaging.V2
         {
             
             string path = "/v2/Services";
-
 
 
             return new Request(
@@ -357,8 +349,6 @@ namespace Twilio.Rest.IpMessaging.V2
             return Page<ServiceResource>.FromJson("services", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateServiceOptions options, ITwilioRestClient client)
         {
@@ -367,7 +357,6 @@ namespace Twilio.Rest.IpMessaging.V2
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Post,

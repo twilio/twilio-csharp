@@ -36,7 +36,7 @@ namespace Twilio.Rest.Messaging.V1.Service
 
 
         /// <summary> Construct a new CreateAlphaSenderOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to create the resource under. </param>        /// <param name="alphaSender"> The Alphanumeric Sender ID string. Can be up to 11 characters long. Valid characters are A-Z, a-z, 0-9, space, hyphen &#x60;-&#x60;, plus &#x60;+&#x60;, underscore &#x60;_&#x60; and ampersand &#x60;&amp;&#x60;. This value cannot contain only numbers. </param>
+        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to create the resource under. </param>        /// <param name="alphaSender"> The Alphanumeric Sender ID string. Can be up to 11 characters long. Valid characters are A-Z, a-z, 0-9, space, hyphen `-`, plus `+`, underscore `_` and ampersand `&`. This value cannot contain only numbers. </param>
         public CreateAlphaSenderOptions(string pathServiceSid, string alphaSender)
         {
             PathServiceSid = pathServiceSid;

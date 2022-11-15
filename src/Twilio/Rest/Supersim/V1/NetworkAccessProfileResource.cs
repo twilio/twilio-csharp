@@ -37,7 +37,6 @@ namespace Twilio.Rest.Supersim.V1
             string path = "/v1/NetworkAccessProfiles";
 
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Supersim,
@@ -101,10 +100,6 @@ namespace Twilio.Rest.Supersim.V1
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         private static Request BuildFetchRequest(FetchNetworkAccessProfileOptions options, ITwilioRestClient client)
         {
@@ -113,7 +108,6 @@ namespace Twilio.Rest.Supersim.V1
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -176,7 +170,6 @@ namespace Twilio.Rest.Supersim.V1
         {
             
             string path = "/v1/NetworkAccessProfiles";
-
 
 
             return new Request(
@@ -292,8 +285,6 @@ namespace Twilio.Rest.Supersim.V1
             return Page<NetworkAccessProfileResource>.FromJson("network_access_profiles", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateNetworkAccessProfileOptions options, ITwilioRestClient client)
         {
@@ -302,7 +293,6 @@ namespace Twilio.Rest.Supersim.V1
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Post,

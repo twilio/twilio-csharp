@@ -37,7 +37,6 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
             string path = "/v1/Settings";
 
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Voice,
@@ -96,7 +95,6 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
         {
             
             string path = "/v1/Settings";
-
 
 
             return new Request(

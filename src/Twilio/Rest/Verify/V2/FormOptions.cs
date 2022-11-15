@@ -33,7 +33,7 @@ namespace Twilio.Rest.Verify.V2
 
 
         /// <summary> Construct a new FetchFormOptions </summary>
-        /// <param name="pathFormType"> The Type of this Form. Currently only &#x60;form-push&#x60; is supported. </param>
+        /// <param name="pathFormType"> The Type of this Form. Currently only `form-push` is supported. </param>
         public FetchFormOptions(FormResource.FormTypesEnum pathFormType)
         {
             PathFormType = pathFormType;

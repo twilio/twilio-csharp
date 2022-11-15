@@ -42,7 +42,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
 
 
         /// <summary> Construct a new CreateInviteOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/api/chat/rest/services) to create the resource under. </param>        /// <param name="pathChannelSid"> The SID of the [Channel](https://www.twilio.com/docs/api/chat/rest/channels) the new resource belongs to. </param>        /// <param name="identity"> The &#x60;identity&#x60; value that uniquely identifies the new resource&#39;s [User](https://www.twilio.com/docs/api/chat/rest/v1/user) within the [Service](https://www.twilio.com/docs/api/chat/rest/v1/service). See [access tokens](https://www.twilio.com/docs/api/chat/guides/create-tokens) for more info. </param>
+        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/api/chat/rest/services) to create the resource under. </param>        /// <param name="pathChannelSid"> The SID of the [Channel](https://www.twilio.com/docs/api/chat/rest/channels) the new resource belongs to. </param>        /// <param name="identity"> The `identity` value that uniquely identifies the new resource's [User](https://www.twilio.com/docs/api/chat/rest/v1/user) within the [Service](https://www.twilio.com/docs/api/chat/rest/v1/service). See [access tokens](https://www.twilio.com/docs/api/chat/guides/create-tokens) for more info. </param>
         public CreateInviteOptions(string pathServiceSid, string pathChannelSid, string identity)
         {
             PathServiceSid = pathServiceSid;

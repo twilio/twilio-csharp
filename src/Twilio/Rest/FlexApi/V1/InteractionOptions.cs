@@ -36,7 +36,7 @@ namespace Twilio.Rest.FlexApi.V1
 
 
         /// <summary> Construct a new CreateInteractionOptions </summary>
-        /// <param name="channel"> The Interaction&#39;s channel. </param>        /// <param name="routing"> The Interaction&#39;s routing logic. </param>
+        /// <param name="channel"> The Interaction's channel. </param>        /// <param name="routing"> The Interaction's routing logic. </param>
         public CreateInteractionOptions(object channel, object routing)
         {
             Channel = channel;

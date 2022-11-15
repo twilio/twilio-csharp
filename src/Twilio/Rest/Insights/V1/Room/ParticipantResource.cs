@@ -109,7 +109,6 @@ namespace Twilio.Rest.Insights.V1.Room
             string PathParticipantSid = options.PathParticipantSid;
             path = path.Replace("{"+"ParticipantSid"+"}", PathParticipantSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Insights,
@@ -177,7 +176,6 @@ namespace Twilio.Rest.Insights.V1.Room
 
             string PathRoomSid = options.PathRoomSid;
             path = path.Replace("{"+"RoomSid"+"}", PathRoomSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -295,8 +293,6 @@ namespace Twilio.Rest.Insights.V1.Room
             var response = client.Request(request);
             return Page<ParticipantResource>.FromJson("participants", response.Content);
         }
-
-
 
     
         /// <summary>

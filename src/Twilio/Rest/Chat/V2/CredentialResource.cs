@@ -51,7 +51,6 @@ namespace Twilio.Rest.Chat.V2
             string path = "/v2/Credentials";
 
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Chat,
@@ -135,10 +134,6 @@ namespace Twilio.Rest.Chat.V2
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> delete </summary>
         /// <param name="options"> Delete Credential parameters </param>
@@ -151,7 +146,6 @@ namespace Twilio.Rest.Chat.V2
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -217,7 +211,6 @@ namespace Twilio.Rest.Chat.V2
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Chat,
@@ -279,7 +272,6 @@ namespace Twilio.Rest.Chat.V2
         {
             
             string path = "/v2/Credentials";
-
 
 
             return new Request(
@@ -395,8 +387,6 @@ namespace Twilio.Rest.Chat.V2
             return Page<CredentialResource>.FromJson("credentials", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateCredentialOptions options, ITwilioRestClient client)
         {
@@ -405,7 +395,6 @@ namespace Twilio.Rest.Chat.V2
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Post,

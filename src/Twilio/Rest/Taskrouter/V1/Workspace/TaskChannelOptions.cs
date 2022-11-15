@@ -42,7 +42,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
 
         /// <summary> Construct a new CreateTaskChannelOptions </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace that the new Task Channel belongs to. </param>        /// <param name="friendlyName"> A descriptive string that you create to describe the Task Channel. It can be up to 64 characters long. </param>        /// <param name="uniqueName"> An application-defined string that uniquely identifies the Task Channel, such as &#x60;voice&#x60; or &#x60;sms&#x60;. </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace that the new Task Channel belongs to. </param>        /// <param name="friendlyName"> A descriptive string that you create to describe the Task Channel. It can be up to 64 characters long. </param>        /// <param name="uniqueName"> An application-defined string that uniquely identifies the Task Channel, such as `voice` or `sms`. </param>
         public CreateTaskChannelOptions(string pathWorkspaceSid, string friendlyName, string uniqueName)
         {
             PathWorkspaceSid = pathWorkspaceSid;

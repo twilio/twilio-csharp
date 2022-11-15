@@ -37,7 +37,6 @@ namespace Twilio.Rest.Insights.V1
             string path = "/v1/Voice/Settings";
 
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Insights,
@@ -99,7 +98,6 @@ namespace Twilio.Rest.Insights.V1
         {
             
             string path = "/v1/Voice/Settings";
-
 
 
             return new Request(

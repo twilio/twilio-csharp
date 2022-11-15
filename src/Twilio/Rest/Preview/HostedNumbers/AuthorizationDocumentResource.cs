@@ -53,7 +53,6 @@ namespace Twilio.Rest.Preview.HostedNumbers
             string path = "/HostedNumbers/AuthorizationDocuments";
 
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Preview,
@@ -133,10 +132,6 @@ namespace Twilio.Rest.Preview.HostedNumbers
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         private static Request BuildFetchRequest(FetchAuthorizationDocumentOptions options, ITwilioRestClient client)
         {
@@ -145,7 +140,6 @@ namespace Twilio.Rest.Preview.HostedNumbers
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -208,7 +202,6 @@ namespace Twilio.Rest.Preview.HostedNumbers
         {
             
             string path = "/HostedNumbers/AuthorizationDocuments";
-
 
 
             return new Request(
@@ -332,8 +325,6 @@ namespace Twilio.Rest.Preview.HostedNumbers
             return Page<AuthorizationDocumentResource>.FromJson("items", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateAuthorizationDocumentOptions options, ITwilioRestClient client)
         {
@@ -342,7 +333,6 @@ namespace Twilio.Rest.Preview.HostedNumbers
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Post,

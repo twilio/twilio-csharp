@@ -54,7 +54,6 @@ namespace Twilio.Rest.Video.V1.Room.Participant
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Video,

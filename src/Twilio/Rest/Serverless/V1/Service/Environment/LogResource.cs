@@ -57,7 +57,6 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Serverless,
@@ -130,7 +129,6 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
             path = path.Replace("{"+"ServiceSid"+"}", PathServiceSid);
             string PathEnvironmentSid = options.PathEnvironmentSid;
             path = path.Replace("{"+"EnvironmentSid"+"}", PathEnvironmentSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -264,8 +262,6 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
             var response = client.Request(request);
             return Page<LogResource>.FromJson("logs", response.Content);
         }
-
-
 
     
         /// <summary>

@@ -51,7 +51,6 @@ namespace Twilio.Rest.Conversations.V1
             string path = "/v1/ParticipantConversations";
 
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Conversations,
@@ -172,8 +171,6 @@ namespace Twilio.Rest.Conversations.V1
             var response = client.Request(request);
             return Page<ParticipantConversationResource>.FromJson("conversations", response.Content);
         }
-
-
 
     
         /// <summary>

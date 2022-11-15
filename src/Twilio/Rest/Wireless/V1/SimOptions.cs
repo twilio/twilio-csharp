@@ -33,7 +33,7 @@ namespace Twilio.Rest.Wireless.V1
 
 
         /// <summary> Construct a new DeleteSimOptions </summary>
-        /// <param name="pathSid"> The SID or the &#x60;unique_name&#x60; of the Sim resource to delete. </param>
+        /// <param name="pathSid"> The SID or the `unique_name` of the Sim resource to delete. </param>
         public DeleteSimOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -62,7 +62,7 @@ namespace Twilio.Rest.Wireless.V1
 
 
         /// <summary> Construct a new FetchSimOptions </summary>
-        /// <param name="pathSid"> The SID or the &#x60;unique_name&#x60; of the Sim resource to fetch. </param>
+        /// <param name="pathSid"> The SID or the `unique_name` of the Sim resource to fetch. </param>
         public FetchSimOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -203,7 +203,7 @@ namespace Twilio.Rest.Wireless.V1
 
 
         /// <summary> Construct a new UpdateSimOptions </summary>
-        /// <param name="pathSid"> The SID or the &#x60;unique_name&#x60; of the Sim resource to update. </param>
+        /// <param name="pathSid"> The SID or the `unique_name` of the Sim resource to update. </param>
         public UpdateSimOptions(string pathSid)
         {
             PathSid = pathSid;

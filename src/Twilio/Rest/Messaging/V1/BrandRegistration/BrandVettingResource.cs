@@ -51,7 +51,6 @@ namespace Twilio.Rest.Messaging.V1.BrandRegistration
             string PathBrandSid = options.PathBrandSid;
             path = path.Replace("{"+"BrandSid"+"}", PathBrandSid);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Messaging,
@@ -119,10 +118,6 @@ namespace Twilio.Rest.Messaging.V1.BrandRegistration
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         private static Request BuildFetchRequest(FetchBrandVettingOptions options, ITwilioRestClient client)
         {
@@ -133,7 +128,6 @@ namespace Twilio.Rest.Messaging.V1.BrandRegistration
             path = path.Replace("{"+"BrandSid"+"}", PathBrandSid);
             string PathBrandVettingSid = options.PathBrandVettingSid;
             path = path.Replace("{"+"BrandVettingSid"+"}", PathBrandVettingSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -202,7 +196,6 @@ namespace Twilio.Rest.Messaging.V1.BrandRegistration
 
             string PathBrandSid = options.PathBrandSid;
             path = path.Replace("{"+"BrandSid"+"}", PathBrandSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -324,8 +317,6 @@ namespace Twilio.Rest.Messaging.V1.BrandRegistration
             var response = client.Request(request);
             return Page<BrandVettingResource>.FromJson("data", response.Content);
         }
-
-
 
     
         /// <summary>
