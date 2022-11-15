@@ -94,7 +94,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
 
     }
 
-    /// <summary> Dequeue a member from a queue and have the member&#39;s call begin executing the TwiML document at that URL </summary>
+    /// <summary> Dequeue a member from a queue and have the member's call begin executing the TwiML document at that URL </summary>
     public class UpdateMemberOptions : IOptions<MemberResource>
     {
     

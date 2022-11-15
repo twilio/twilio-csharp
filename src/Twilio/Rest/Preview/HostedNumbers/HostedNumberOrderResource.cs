@@ -79,7 +79,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
             );
         }
 
-        /// <summary> Host a phone number&#39;s capability on Twilio&#39;s platform. </summary>
+        /// <summary> Host a phone number's capability on Twilio's platform. </summary>
         /// <param name="options"> Create HostedNumberOrder parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of HostedNumberOrder </returns>
@@ -91,7 +91,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
         }
 
         #if !NET35
-        /// <summary> Host a phone number&#39;s capability on Twilio&#39;s platform. </summary>
+        /// <summary> Host a phone number's capability on Twilio's platform. </summary>
         /// <param name="options"> Create HostedNumberOrder parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of HostedNumberOrder </returns>
@@ -104,7 +104,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
         }
         #endif
 
-        /// <summary> Host a phone number&#39;s capability on Twilio&#39;s platform. </summary>
+        /// <summary> Host a phone number's capability on Twilio's platform. </summary>
         /// <param name="phoneNumber"> The number to host in [+E.164](https://en.wikipedia.org/wiki/E.164) format </param>
         /// <param name="smsCapability"> Used to specify that the SMS capability will be hosted on Twilio's platform. </param>
         /// <param name="accountSid"> This defaults to the AccountSid of the authorization the user is using. This can be provided to specify a subaccount to add the HostedNumberOrder to. </param>
@@ -149,7 +149,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
         }
 
         #if !NET35
-        /// <summary> Host a phone number&#39;s capability on Twilio&#39;s platform. </summary>
+        /// <summary> Host a phone number's capability on Twilio's platform. </summary>
         /// <param name="phoneNumber"> The number to host in [+E.164](https://en.wikipedia.org/wiki/E.164) format </param>
         /// <param name="smsCapability"> Used to specify that the SMS capability will be hosted on Twilio's platform. </param>
         /// <param name="accountSid"> This defaults to the AccountSid of the authorization the user is using. This can be provided to specify a subaccount to add the HostedNumberOrder to. </param>
@@ -194,7 +194,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
         }
         #endif
         
-        /// <summary> Cancel the HostedNumberOrder (only available when the status is in &#x60;received&#x60;). </summary>
+        /// <summary> Cancel the HostedNumberOrder (only available when the status is in `received`). </summary>
         /// <param name="options"> Delete HostedNumberOrder parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of HostedNumberOrder </returns>
@@ -215,7 +215,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
             );
         }
 
-        /// <summary> Cancel the HostedNumberOrder (only available when the status is in &#x60;received&#x60;). </summary>
+        /// <summary> Cancel the HostedNumberOrder (only available when the status is in `received`). </summary>
         /// <param name="options"> Delete HostedNumberOrder parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of HostedNumberOrder </returns>
@@ -227,7 +227,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
         }
 
         #if !NET35
-        /// <summary> Cancel the HostedNumberOrder (only available when the status is in &#x60;received&#x60;). </summary>
+        /// <summary> Cancel the HostedNumberOrder (only available when the status is in `received`). </summary>
         /// <param name="options"> Delete HostedNumberOrder parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of HostedNumberOrder </returns>
@@ -240,7 +240,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
         }
         #endif
 
-        /// <summary> Cancel the HostedNumberOrder (only available when the status is in &#x60;received&#x60;). </summary>
+        /// <summary> Cancel the HostedNumberOrder (only available when the status is in `received`). </summary>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this HostedNumberOrder. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of HostedNumberOrder </returns>
@@ -251,7 +251,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
         }
 
         #if !NET35
-        /// <summary> Cancel the HostedNumberOrder (only available when the status is in &#x60;received&#x60;). </summary>
+        /// <summary> Cancel the HostedNumberOrder (only available when the status is in `received`). </summary>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this HostedNumberOrder. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of HostedNumberOrder </returns>

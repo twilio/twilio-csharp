@@ -335,7 +335,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
             );
         }
 
-        /// <summary> Update an identity&#39;s access to a specific Sync List. </summary>
+        /// <summary> Update an identity's access to a specific Sync List. </summary>
         /// <param name="options"> Update SyncListPermission parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncListPermission </returns>
@@ -346,7 +346,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
             return FromJson(response.Content);
         }
 
-        /// <summary> Update an identity&#39;s access to a specific Sync List. </summary>
+        /// <summary> Update an identity's access to a specific Sync List. </summary>
         /// <param name="options"> Update SyncListPermission parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncListPermission </returns>
@@ -360,7 +360,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         }
         #endif
 
-        /// <summary> Update an identity&#39;s access to a specific Sync List. </summary>
+        /// <summary> Update an identity's access to a specific Sync List. </summary>
         /// <param name="pathServiceSid"> The unique SID identifier of the Sync Service Instance. </param>
         /// <param name="pathListSid"> Identifier of the Sync List. Either a SID or a unique name. </param>
         /// <param name="pathIdentity"> Arbitrary string identifier representing a human user associated with an FPA token, assigned by the developer. </param>
@@ -383,7 +383,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         }
 
         #if !NET35
-        /// <summary> Update an identity&#39;s access to a specific Sync List. </summary>
+        /// <summary> Update an identity's access to a specific Sync List. </summary>
         /// <param name="pathServiceSid"> The unique SID identifier of the Sync Service Instance. </param>
         /// <param name="pathListSid"> Identifier of the Sync List. Either a SID or a unique name. </param>
         /// <param name="pathIdentity"> Arbitrary string identifier representing a human user associated with an FPA token, assigned by the developer. </param>

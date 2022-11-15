@@ -24,7 +24,7 @@ using System.Linq;
 namespace Twilio.Rest.Preview.HostedNumbers
 {
 
-    /// <summary> Create an AuthorizationDocument for authorizing the hosting of phone number capabilities on Twilio&#39;s platform. </summary>
+    /// <summary> Create an AuthorizationDocument for authorizing the hosting of phone number capabilities on Twilio's platform. </summary>
     public class CreateAuthorizationDocumentOptions : IOptions<AuthorizationDocumentResource>
     {
         

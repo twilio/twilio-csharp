@@ -52,7 +52,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
     }
 
 
-    /// <summary> Updates the style sheet for an Assistant identified by &#x60;assistant_sid&#x60;. </summary>
+    /// <summary> Updates the style sheet for an Assistant identified by `assistant_sid`. </summary>
     public class UpdateStyleSheetOptions : IOptions<StyleSheetResource>
     {
     

@@ -133,7 +133,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
 
     }
 
-    /// <summary> Update an identity&#39;s access to a specific Sync Map. </summary>
+    /// <summary> Update an identity's access to a specific Sync Map. </summary>
     public class UpdateSyncMapPermissionOptions : IOptions<SyncMapPermissionResource>
     {
     

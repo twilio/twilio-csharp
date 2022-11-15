@@ -46,7 +46,7 @@ namespace Twilio.Rest.Oauth.V1
             );
         }
 
-        /// <summary> Issues a new Access token (optionally identity_token &amp; refresh_token) in exchange of Oauth grant </summary>
+        /// <summary> Issues a new Access token (optionally identity_token & refresh_token) in exchange of Oauth grant </summary>
         /// <param name="options"> Create Token parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Token </returns>
@@ -58,7 +58,7 @@ namespace Twilio.Rest.Oauth.V1
         }
 
         #if !NET35
-        /// <summary> Issues a new Access token (optionally identity_token &amp; refresh_token) in exchange of Oauth grant </summary>
+        /// <summary> Issues a new Access token (optionally identity_token & refresh_token) in exchange of Oauth grant </summary>
         /// <param name="options"> Create Token parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Token </returns>
@@ -71,7 +71,7 @@ namespace Twilio.Rest.Oauth.V1
         }
         #endif
 
-        /// <summary> Issues a new Access token (optionally identity_token &amp; refresh_token) in exchange of Oauth grant </summary>
+        /// <summary> Issues a new Access token (optionally identity_token & refresh_token) in exchange of Oauth grant </summary>
         /// <param name="grantType"> Grant type is a credential representing resource owner's authorization which can be used by client to obtain access token. </param>
         /// <param name="clientSid"> A 34 character string that uniquely identifies this OAuth App. </param>
         /// <param name="clientSecret"> The credential for confidential OAuth App. </param>
@@ -98,7 +98,7 @@ namespace Twilio.Rest.Oauth.V1
         }
 
         #if !NET35
-        /// <summary> Issues a new Access token (optionally identity_token &amp; refresh_token) in exchange of Oauth grant </summary>
+        /// <summary> Issues a new Access token (optionally identity_token & refresh_token) in exchange of Oauth grant </summary>
         /// <param name="grantType"> Grant type is a credential representing resource owner's authorization which can be used by client to obtain access token. </param>
         /// <param name="clientSid"> A 34 character string that uniquely identifies this OAuth App. </param>
         /// <param name="clientSecret"> The credential for confidential OAuth App. </param>

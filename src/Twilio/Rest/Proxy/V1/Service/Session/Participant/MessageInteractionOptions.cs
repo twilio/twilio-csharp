@@ -24,7 +24,7 @@ using System.Linq;
 namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
 {
 
-    /// <summary> Create a new message Interaction to send directly from your system to one [Participant](https://www.twilio.com/docs/proxy/api/participant).  The &#x60;inbound&#x60; properties for the Interaction will always be empty. </summary>
+    /// <summary> Create a new message Interaction to send directly from your system to one [Participant](https://www.twilio.com/docs/proxy/api/participant).  The `inbound` properties for the Interaction will always be empty. </summary>
     public class CreateMessageInteractionOptions : IOptions<MessageInteractionResource>
     {
         

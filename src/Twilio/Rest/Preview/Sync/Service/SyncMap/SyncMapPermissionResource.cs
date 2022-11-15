@@ -335,7 +335,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
             );
         }
 
-        /// <summary> Update an identity&#39;s access to a specific Sync Map. </summary>
+        /// <summary> Update an identity's access to a specific Sync Map. </summary>
         /// <param name="options"> Update SyncMapPermission parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncMapPermission </returns>
@@ -346,7 +346,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
             return FromJson(response.Content);
         }
 
-        /// <summary> Update an identity&#39;s access to a specific Sync Map. </summary>
+        /// <summary> Update an identity's access to a specific Sync Map. </summary>
         /// <param name="options"> Update SyncMapPermission parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncMapPermission </returns>
@@ -360,7 +360,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         }
         #endif
 
-        /// <summary> Update an identity&#39;s access to a specific Sync Map. </summary>
+        /// <summary> Update an identity's access to a specific Sync Map. </summary>
         /// <param name="pathServiceSid"> The unique SID identifier of the Sync Service Instance. </param>
         /// <param name="pathMapSid"> Identifier of the Sync Map. Either a SID or a unique name. </param>
         /// <param name="pathIdentity"> Arbitrary string identifier representing a human user associated with an FPA token, assigned by the developer. </param>
@@ -383,7 +383,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         }
 
         #if !NET35
-        /// <summary> Update an identity&#39;s access to a specific Sync Map. </summary>
+        /// <summary> Update an identity's access to a specific Sync Map. </summary>
         /// <param name="pathServiceSid"> The unique SID identifier of the Sync Service Instance. </param>
         /// <param name="pathMapSid"> Identifier of the Sync Map. Either a SID or a unique name. </param>
         /// <param name="pathIdentity"> Arbitrary string identifier representing a human user associated with an FPA token, assigned by the developer. </param>

@@ -24,7 +24,7 @@ using System.Linq;
 namespace Twilio.Rest.Conversations.V1
 {
 
-    /// <summary> Create a new user role in your account&#39;s default service </summary>
+    /// <summary> Create a new user role in your account's default service </summary>
     public class CreateRoleOptions : IOptions<RoleResource>
     {
         
@@ -70,7 +70,7 @@ namespace Twilio.Rest.Conversations.V1
         
 
     }
-    /// <summary> Remove a user role from your account&#39;s default service </summary>
+    /// <summary> Remove a user role from your account's default service </summary>
     public class DeleteRoleOptions : IOptions<RoleResource>
     {
         
@@ -99,7 +99,7 @@ namespace Twilio.Rest.Conversations.V1
     }
 
 
-    /// <summary> Fetch a user role from your account&#39;s default service </summary>
+    /// <summary> Fetch a user role from your account's default service </summary>
     public class FetchRoleOptions : IOptions<RoleResource>
     {
     
@@ -128,7 +128,7 @@ namespace Twilio.Rest.Conversations.V1
     }
 
 
-    /// <summary> Retrieve a list of all user roles in your account&#39;s default service </summary>
+    /// <summary> Retrieve a list of all user roles in your account's default service </summary>
     public class ReadRoleOptions : ReadOptions<RoleResource>
     {
     
@@ -151,7 +151,7 @@ namespace Twilio.Rest.Conversations.V1
 
     }
 
-    /// <summary> Update an existing user role in your account&#39;s default service </summary>
+    /// <summary> Update an existing user role in your account's default service </summary>
     public class UpdateRoleOptions : IOptions<RoleResource>
     {
     

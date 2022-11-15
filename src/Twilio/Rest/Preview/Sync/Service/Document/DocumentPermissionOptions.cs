@@ -133,7 +133,7 @@ namespace Twilio.Rest.Preview.Sync.Service.Document
 
     }
 
-    /// <summary> Update an identity&#39;s access to a specific Sync Document. </summary>
+    /// <summary> Update an identity's access to a specific Sync Document. </summary>
     public class UpdateDocumentPermissionOptions : IOptions<DocumentPermissionResource>
     {
     

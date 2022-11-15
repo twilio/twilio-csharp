@@ -58,7 +58,7 @@ namespace Twilio.Rest.Conversations.V1
             );
         }
 
-        /// <summary> Add a new conversation user to your account&#39;s default service </summary>
+        /// <summary> Add a new conversation user to your account's default service </summary>
         /// <param name="options"> Create User parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of User </returns>
@@ -70,7 +70,7 @@ namespace Twilio.Rest.Conversations.V1
         }
 
         #if !NET35
-        /// <summary> Add a new conversation user to your account&#39;s default service </summary>
+        /// <summary> Add a new conversation user to your account's default service </summary>
         /// <param name="options"> Create User parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of User </returns>
@@ -83,7 +83,7 @@ namespace Twilio.Rest.Conversations.V1
         }
         #endif
 
-        /// <summary> Add a new conversation user to your account&#39;s default service </summary>
+        /// <summary> Add a new conversation user to your account's default service </summary>
         /// <param name="identity"> The application-defined string that uniquely identifies the resource's User within the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource). This value is often a username or an email address, and is case-sensitive. </param>
         /// <param name="friendlyName"> The string that you assigned to describe the resource. </param>
         /// <param name="attributes"> The JSON Object string that stores application-specific data. If attributes have not been set, `{}` is returned. </param>
@@ -104,7 +104,7 @@ namespace Twilio.Rest.Conversations.V1
         }
 
         #if !NET35
-        /// <summary> Add a new conversation user to your account&#39;s default service </summary>
+        /// <summary> Add a new conversation user to your account's default service </summary>
         /// <param name="identity"> The application-defined string that uniquely identifies the resource's User within the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource). This value is often a username or an email address, and is case-sensitive. </param>
         /// <param name="friendlyName"> The string that you assigned to describe the resource. </param>
         /// <param name="attributes"> The JSON Object string that stores application-specific data. If attributes have not been set, `{}` is returned. </param>
@@ -125,7 +125,7 @@ namespace Twilio.Rest.Conversations.V1
         }
         #endif
         
-        /// <summary> Remove a conversation user from your account&#39;s default service </summary>
+        /// <summary> Remove a conversation user from your account's default service </summary>
         /// <param name="options"> Delete User parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of User </returns>
@@ -146,7 +146,7 @@ namespace Twilio.Rest.Conversations.V1
             );
         }
 
-        /// <summary> Remove a conversation user from your account&#39;s default service </summary>
+        /// <summary> Remove a conversation user from your account's default service </summary>
         /// <param name="options"> Delete User parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of User </returns>
@@ -158,7 +158,7 @@ namespace Twilio.Rest.Conversations.V1
         }
 
         #if !NET35
-        /// <summary> Remove a conversation user from your account&#39;s default service </summary>
+        /// <summary> Remove a conversation user from your account's default service </summary>
         /// <param name="options"> Delete User parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of User </returns>
@@ -171,7 +171,7 @@ namespace Twilio.Rest.Conversations.V1
         }
         #endif
 
-        /// <summary> Remove a conversation user from your account&#39;s default service </summary>
+        /// <summary> Remove a conversation user from your account's default service </summary>
         /// <param name="pathSid"> The SID of the User resource to delete. This value can be either the `sid` or the `identity` of the User resource to delete. </param>
         /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -183,7 +183,7 @@ namespace Twilio.Rest.Conversations.V1
         }
 
         #if !NET35
-        /// <summary> Remove a conversation user from your account&#39;s default service </summary>
+        /// <summary> Remove a conversation user from your account's default service </summary>
         /// <param name="pathSid"> The SID of the User resource to delete. This value can be either the `sid` or the `identity` of the User resource to delete. </param>
         /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -212,7 +212,7 @@ namespace Twilio.Rest.Conversations.V1
             );
         }
 
-        /// <summary> Fetch a conversation user from your account&#39;s default service </summary>
+        /// <summary> Fetch a conversation user from your account's default service </summary>
         /// <param name="options"> Fetch User parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of User </returns>
@@ -224,7 +224,7 @@ namespace Twilio.Rest.Conversations.V1
         }
 
         #if !NET35
-        /// <summary> Fetch a conversation user from your account&#39;s default service </summary>
+        /// <summary> Fetch a conversation user from your account's default service </summary>
         /// <param name="options"> Fetch User parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of User </returns>
@@ -236,7 +236,7 @@ namespace Twilio.Rest.Conversations.V1
             return FromJson(response.Content);
         }
         #endif
-        /// <summary> Fetch a conversation user from your account&#39;s default service </summary>
+        /// <summary> Fetch a conversation user from your account's default service </summary>
         /// <param name="pathSid"> The SID of the User resource to fetch. This value can be either the `sid` or the `identity` of the User resource to fetch. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of User </returns>
@@ -249,7 +249,7 @@ namespace Twilio.Rest.Conversations.V1
         }
 
         #if !NET35
-        /// <summary> Fetch a conversation user from your account&#39;s default service </summary>
+        /// <summary> Fetch a conversation user from your account's default service </summary>
         /// <param name="pathSid"> The SID of the User resource to fetch. This value can be either the `sid` or the `identity` of the User resource to fetch. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of User </returns>
@@ -274,7 +274,7 @@ namespace Twilio.Rest.Conversations.V1
                 headerParams: null
             );
         }
-        /// <summary> Retrieve a list of all conversation users in your account&#39;s default service </summary>
+        /// <summary> Retrieve a list of all conversation users in your account's default service </summary>
         /// <param name="options"> Read User parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of User </returns>
@@ -287,7 +287,7 @@ namespace Twilio.Rest.Conversations.V1
         }
 
         #if !NET35
-        /// <summary> Retrieve a list of all conversation users in your account&#39;s default service </summary>
+        /// <summary> Retrieve a list of all conversation users in your account's default service </summary>
         /// <param name="options"> Read User parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of User </returns>
@@ -301,7 +301,7 @@ namespace Twilio.Rest.Conversations.V1
             return new ResourceSet<UserResource>(page, options, client);
         }
         #endif
-        /// <summary> Retrieve a list of all conversation users in your account&#39;s default service </summary>
+        /// <summary> Retrieve a list of all conversation users in your account's default service </summary>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
@@ -316,7 +316,7 @@ namespace Twilio.Rest.Conversations.V1
         }
 
         #if !NET35
-        /// <summary> Retrieve a list of all conversation users in your account&#39;s default service </summary>
+        /// <summary> Retrieve a list of all conversation users in your account's default service </summary>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
@@ -397,7 +397,7 @@ namespace Twilio.Rest.Conversations.V1
             );
         }
 
-        /// <summary> Update an existing conversation user in your account&#39;s default service </summary>
+        /// <summary> Update an existing conversation user in your account's default service </summary>
         /// <param name="options"> Update User parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of User </returns>
@@ -408,7 +408,7 @@ namespace Twilio.Rest.Conversations.V1
             return FromJson(response.Content);
         }
 
-        /// <summary> Update an existing conversation user in your account&#39;s default service </summary>
+        /// <summary> Update an existing conversation user in your account's default service </summary>
         /// <param name="options"> Update User parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of User </returns>
@@ -422,7 +422,7 @@ namespace Twilio.Rest.Conversations.V1
         }
         #endif
 
-        /// <summary> Update an existing conversation user in your account&#39;s default service </summary>
+        /// <summary> Update an existing conversation user in your account's default service </summary>
         /// <param name="pathSid"> The SID of the User resource to update. This value can be either the `sid` or the `identity` of the User resource to update. </param>
         /// <param name="friendlyName"> The string that you assigned to describe the resource. </param>
         /// <param name="attributes"> The JSON Object string that stores application-specific data. If attributes have not been set, `{}` is returned. </param>
@@ -443,7 +443,7 @@ namespace Twilio.Rest.Conversations.V1
         }
 
         #if !NET35
-        /// <summary> Update an existing conversation user in your account&#39;s default service </summary>
+        /// <summary> Update an existing conversation user in your account's default service </summary>
         /// <param name="pathSid"> The SID of the User resource to update. This value can be either the `sid` or the `identity` of the User resource to update. </param>
         /// <param name="friendlyName"> The string that you assigned to describe the resource. </param>
         /// <param name="attributes"> The JSON Object string that stores application-specific data. If attributes have not been set, `{}` is returned. </param>

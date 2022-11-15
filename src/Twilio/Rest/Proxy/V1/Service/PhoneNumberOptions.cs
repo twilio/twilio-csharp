@@ -24,7 +24,7 @@ using Twilio.Converters;
 namespace Twilio.Rest.Proxy.V1.Service
 {
 
-    /// <summary> Add a Phone Number to a Service&#39;s Proxy Number Pool. </summary>
+    /// <summary> Add a Phone Number to a Service's Proxy Number Pool. </summary>
     public class CreatePhoneNumberOptions : IOptions<PhoneNumberResource>
     {
         

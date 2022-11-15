@@ -113,7 +113,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
             );
         }
 
-        /// <summary> Updates the style sheet for an Assistant identified by &#x60;assistant_sid&#x60;. </summary>
+        /// <summary> Updates the style sheet for an Assistant identified by `assistant_sid`. </summary>
         /// <param name="options"> Update StyleSheet parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of StyleSheet </returns>
@@ -124,7 +124,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
             return FromJson(response.Content);
         }
 
-        /// <summary> Updates the style sheet for an Assistant identified by &#x60;assistant_sid&#x60;. </summary>
+        /// <summary> Updates the style sheet for an Assistant identified by `assistant_sid`. </summary>
         /// <param name="options"> Update StyleSheet parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of StyleSheet </returns>
@@ -138,7 +138,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         }
         #endif
 
-        /// <summary> Updates the style sheet for an Assistant identified by &#x60;assistant_sid&#x60;. </summary>
+        /// <summary> Updates the style sheet for an Assistant identified by `assistant_sid`. </summary>
         /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resource to update. </param>
         /// <param name="styleSheet"> The JSON string that describes the style sheet object. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -153,7 +153,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         }
 
         #if !NET35
-        /// <summary> Updates the style sheet for an Assistant identified by &#x60;assistant_sid&#x60;. </summary>
+        /// <summary> Updates the style sheet for an Assistant identified by `assistant_sid`. </summary>
         /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resource to update. </param>
         /// <param name="styleSheet"> The JSON string that describes the style sheet object. </param>
         /// <param name="client"> Client to make requests to Twilio </param>

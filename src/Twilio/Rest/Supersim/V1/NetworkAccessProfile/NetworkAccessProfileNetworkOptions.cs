@@ -58,7 +58,7 @@ namespace Twilio.Rest.Supersim.V1.NetworkAccessProfile
         
 
     }
-    /// <summary> Remove a Network resource from the Network Access Profile resource&#39;s. </summary>
+    /// <summary> Remove a Network resource from the Network Access Profile resource's. </summary>
     public class DeleteNetworkAccessProfileNetworkOptions : IOptions<NetworkAccessProfileNetworkResource>
     {
         
@@ -91,7 +91,7 @@ namespace Twilio.Rest.Supersim.V1.NetworkAccessProfile
     }
 
 
-    /// <summary> Fetch a Network Access Profile resource&#39;s Network resource. </summary>
+    /// <summary> Fetch a Network Access Profile resource's Network resource. </summary>
     public class FetchNetworkAccessProfileNetworkOptions : IOptions<NetworkAccessProfileNetworkResource>
     {
     
@@ -124,7 +124,7 @@ namespace Twilio.Rest.Supersim.V1.NetworkAccessProfile
     }
 
 
-    /// <summary> Retrieve a list of Network Access Profile resource&#39;s Network resource. </summary>
+    /// <summary> Retrieve a list of Network Access Profile resource's Network resource. </summary>
     public class ReadNetworkAccessProfileNetworkOptions : ReadOptions<NetworkAccessProfileNetworkResource>
     {
     

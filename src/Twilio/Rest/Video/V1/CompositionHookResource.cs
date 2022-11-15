@@ -146,7 +146,7 @@ namespace Twilio.Rest.Video.V1
         }
         #endif
         
-        /// <summary> Delete a Recording CompositionHook resource identified by a &#x60;CompositionHook SID&#x60;. </summary>
+        /// <summary> Delete a Recording CompositionHook resource identified by a `CompositionHook SID`. </summary>
         /// <param name="options"> Delete CompositionHook parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of CompositionHook </returns>
@@ -167,7 +167,7 @@ namespace Twilio.Rest.Video.V1
             );
         }
 
-        /// <summary> Delete a Recording CompositionHook resource identified by a &#x60;CompositionHook SID&#x60;. </summary>
+        /// <summary> Delete a Recording CompositionHook resource identified by a `CompositionHook SID`. </summary>
         /// <param name="options"> Delete CompositionHook parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of CompositionHook </returns>
@@ -179,7 +179,7 @@ namespace Twilio.Rest.Video.V1
         }
 
         #if !NET35
-        /// <summary> Delete a Recording CompositionHook resource identified by a &#x60;CompositionHook SID&#x60;. </summary>
+        /// <summary> Delete a Recording CompositionHook resource identified by a `CompositionHook SID`. </summary>
         /// <param name="options"> Delete CompositionHook parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CompositionHook </returns>
@@ -192,7 +192,7 @@ namespace Twilio.Rest.Video.V1
         }
         #endif
 
-        /// <summary> Delete a Recording CompositionHook resource identified by a &#x60;CompositionHook SID&#x60;. </summary>
+        /// <summary> Delete a Recording CompositionHook resource identified by a `CompositionHook SID`. </summary>
         /// <param name="pathSid"> The SID of the CompositionHook resource to delete. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of CompositionHook </returns>
@@ -203,7 +203,7 @@ namespace Twilio.Rest.Video.V1
         }
 
         #if !NET35
-        /// <summary> Delete a Recording CompositionHook resource identified by a &#x60;CompositionHook SID&#x60;. </summary>
+        /// <summary> Delete a Recording CompositionHook resource identified by a `CompositionHook SID`. </summary>
         /// <param name="pathSid"> The SID of the CompositionHook resource to delete. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CompositionHook </returns>
