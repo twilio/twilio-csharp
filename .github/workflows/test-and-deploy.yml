@@ -26,6 +26,9 @@ jobs:
         with:
           dotnet-version: '3.1.x'
 
+      - name: Build & Test
+        run: make test
+
       - name: Install SonarCloud scanner and run analysis
         if: (github.event_name == 'pull_request' || github.ref_type == 'branch') && !github.event.pull_request.head.repo.fork
         env:
