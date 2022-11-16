@@ -91,7 +91,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service
 
 
         /// <summary> Construct a new DeleteChannelOptions </summary>
-        /// <param name="pathServiceSid">  </param>        /// <param name="pathSid">  </param>
+        /// <param name="pathServiceSid">  </param>
+        /// <param name="pathSid">  </param>
         public DeleteChannelOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -124,7 +125,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service
 
 
         /// <summary> Construct a new FetchChannelOptions </summary>
-        /// <param name="pathServiceSid">  </param>        /// <param name="pathSid">  </param>
+        /// <param name="pathServiceSid">  </param>
+        /// <param name="pathSid">  </param>
         public FetchChannelOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -206,7 +208,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service
 
 
         /// <summary> Construct a new UpdateChannelOptions </summary>
-        /// <param name="pathServiceSid">  </param>        /// <param name="pathSid">  </param>
+        /// <param name="pathServiceSid">  </param>
+        /// <param name="pathSid">  </param>
         public UpdateChannelOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;

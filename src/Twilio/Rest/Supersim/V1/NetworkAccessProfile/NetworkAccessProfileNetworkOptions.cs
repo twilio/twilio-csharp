@@ -36,7 +36,8 @@ namespace Twilio.Rest.Supersim.V1.NetworkAccessProfile
 
 
         /// <summary> Construct a new CreateNetworkAccessProfileNetworkOptions </summary>
-        /// <param name="pathNetworkAccessProfileSid"> The unique string that identifies the Network Access Profile resource. </param>        /// <param name="network"> The SID of the Network resource to be added to the Network Access Profile resource. </param>
+        /// <param name="pathNetworkAccessProfileSid"> The unique string that identifies the Network Access Profile resource. </param>
+        /// <param name="network"> The SID of the Network resource to be added to the Network Access Profile resource. </param>
         public CreateNetworkAccessProfileNetworkOptions(string pathNetworkAccessProfileSid, string network)
         {
             PathNetworkAccessProfileSid = pathNetworkAccessProfileSid;
@@ -71,7 +72,8 @@ namespace Twilio.Rest.Supersim.V1.NetworkAccessProfile
 
 
         /// <summary> Construct a new DeleteNetworkAccessProfileNetworkOptions </summary>
-        /// <param name="pathNetworkAccessProfileSid"> The unique string that identifies the Network Access Profile resource. </param>        /// <param name="pathSid"> The SID of the Network resource to be removed from the Network Access Profile resource. </param>
+        /// <param name="pathNetworkAccessProfileSid"> The unique string that identifies the Network Access Profile resource. </param>
+        /// <param name="pathSid"> The SID of the Network resource to be removed from the Network Access Profile resource. </param>
         public DeleteNetworkAccessProfileNetworkOptions(string pathNetworkAccessProfileSid, string pathSid)
         {
             PathNetworkAccessProfileSid = pathNetworkAccessProfileSid;
@@ -104,7 +106,8 @@ namespace Twilio.Rest.Supersim.V1.NetworkAccessProfile
 
 
         /// <summary> Construct a new FetchNetworkAccessProfileNetworkOptions </summary>
-        /// <param name="pathNetworkAccessProfileSid"> The unique string that identifies the Network Access Profile resource. </param>        /// <param name="pathSid"> The SID of the Network resource to fetch. </param>
+        /// <param name="pathNetworkAccessProfileSid"> The unique string that identifies the Network Access Profile resource. </param>
+        /// <param name="pathSid"> The SID of the Network resource to fetch. </param>
         public FetchNetworkAccessProfileNetworkOptions(string pathNetworkAccessProfileSid, string pathSid)
         {
             PathNetworkAccessProfileSid = pathNetworkAccessProfileSid;

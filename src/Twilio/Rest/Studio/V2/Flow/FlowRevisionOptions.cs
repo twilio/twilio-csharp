@@ -36,7 +36,8 @@ namespace Twilio.Rest.Studio.V2.Flow
 
 
         /// <summary> Construct a new FetchFlowRevisionOptions </summary>
-        /// <param name="pathSid"> The SID of the Flow resource to fetch. </param>        /// <param name="pathRevision"> Specific Revision number or can be `LatestPublished` and `LatestRevision`. </param>
+        /// <param name="pathSid"> The SID of the Flow resource to fetch. </param>
+        /// <param name="pathRevision"> Specific Revision number or can be `LatestPublished` and `LatestRevision`. </param>
         public FetchFlowRevisionOptions(string pathSid, string pathRevision)
         {
             PathSid = pathSid;

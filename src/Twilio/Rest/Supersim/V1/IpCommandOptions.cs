@@ -48,7 +48,9 @@ namespace Twilio.Rest.Supersim.V1
 
 
         /// <summary> Construct a new CreateIpCommandOptions </summary>
-        /// <param name="sim"> The `sid` or `unique_name` of the [Super SIM](https://www.twilio.com/docs/iot/supersim/api/sim-resource) to send the IP Command to. </param>        /// <param name="payload"> The payload to be delivered to the device. </param>        /// <param name="devicePort"> The device port to which the IP Command will be sent. </param>
+        /// <param name="sim"> The `sid` or `unique_name` of the [Super SIM](https://www.twilio.com/docs/iot/supersim/api/sim-resource) to send the IP Command to. </param>
+        /// <param name="payload"> The payload to be delivered to the device. </param>
+        /// <param name="devicePort"> The device port to which the IP Command will be sent. </param>
         public CreateIpCommandOptions(string sim, string payload, int? devicePort)
         {
             Sim = sim;

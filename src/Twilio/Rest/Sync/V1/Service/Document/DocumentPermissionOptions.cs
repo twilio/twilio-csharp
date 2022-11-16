@@ -39,7 +39,9 @@ namespace Twilio.Rest.Sync.V1.Service.Document
 
 
         /// <summary> Construct a new DeleteDocumentPermissionOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Document Permission resource to delete. </param>        /// <param name="pathDocumentSid"> The SID of the Sync Document with the Document Permission resource to delete. Can be the Document resource's `sid` or its `unique_name`. </param>        /// <param name="pathIdentity"> The application-defined string that uniquely identifies the User's Document Permission resource to delete. </param>
+        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Document Permission resource to delete. </param>
+        /// <param name="pathDocumentSid"> The SID of the Sync Document with the Document Permission resource to delete. Can be the Document resource's `sid` or its `unique_name`. </param>
+        /// <param name="pathIdentity"> The application-defined string that uniquely identifies the User's Document Permission resource to delete. </param>
         public DeleteDocumentPermissionOptions(string pathServiceSid, string pathDocumentSid, string pathIdentity)
         {
             PathServiceSid = pathServiceSid;
@@ -76,7 +78,9 @@ namespace Twilio.Rest.Sync.V1.Service.Document
 
 
         /// <summary> Construct a new FetchDocumentPermissionOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Document Permission resource to fetch. </param>        /// <param name="pathDocumentSid"> The SID of the Sync Document with the Document Permission resource to fetch. Can be the Document resource's `sid` or its `unique_name`. </param>        /// <param name="pathIdentity"> The application-defined string that uniquely identifies the User's Document Permission resource to fetch. </param>
+        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Document Permission resource to fetch. </param>
+        /// <param name="pathDocumentSid"> The SID of the Sync Document with the Document Permission resource to fetch. Can be the Document resource's `sid` or its `unique_name`. </param>
+        /// <param name="pathIdentity"> The application-defined string that uniquely identifies the User's Document Permission resource to fetch. </param>
         public FetchDocumentPermissionOptions(string pathServiceSid, string pathDocumentSid, string pathIdentity)
         {
             PathServiceSid = pathServiceSid;
@@ -110,7 +114,8 @@ namespace Twilio.Rest.Sync.V1.Service.Document
 
 
         /// <summary> Construct a new ListDocumentPermissionOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Document Permission resources to read. </param>        /// <param name="pathDocumentSid"> The SID of the Sync Document with the Document Permission resources to read. Can be the Document resource's `sid` or its `unique_name`. </param>
+        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Document Permission resources to read. </param>
+        /// <param name="pathDocumentSid"> The SID of the Sync Document with the Document Permission resources to read. Can be the Document resource's `sid` or its `unique_name`. </param>
         public ReadDocumentPermissionOptions(string pathServiceSid, string pathDocumentSid)
         {
             PathServiceSid = pathServiceSid;
@@ -158,7 +163,12 @@ namespace Twilio.Rest.Sync.V1.Service.Document
 
 
         /// <summary> Construct a new UpdateDocumentPermissionOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Document Permission resource to update. </param>        /// <param name="pathDocumentSid"> The SID of the Sync Document with the Document Permission resource to update. Can be the Document resource's `sid` or its `unique_name`. </param>        /// <param name="pathIdentity"> The application-defined string that uniquely identifies the User's Document Permission resource to update. </param>        /// <param name="read"> Whether the identity can read the Sync Document. Default value is `false`. </param>        /// <param name="write"> Whether the identity can update the Sync Document. Default value is `false`. </param>        /// <param name="manage"> Whether the identity can delete the Sync Document. Default value is `false`. </param>
+        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Document Permission resource to update. </param>
+        /// <param name="pathDocumentSid"> The SID of the Sync Document with the Document Permission resource to update. Can be the Document resource's `sid` or its `unique_name`. </param>
+        /// <param name="pathIdentity"> The application-defined string that uniquely identifies the User's Document Permission resource to update. </param>
+        /// <param name="read"> Whether the identity can read the Sync Document. Default value is `false`. </param>
+        /// <param name="write"> Whether the identity can update the Sync Document. Default value is `false`. </param>
+        /// <param name="manage"> Whether the identity can delete the Sync Document. Default value is `false`. </param>
         public UpdateDocumentPermissionOptions(string pathServiceSid, string pathDocumentSid, string pathIdentity, bool? read, bool? write, bool? manage)
         {
             PathServiceSid = pathServiceSid;

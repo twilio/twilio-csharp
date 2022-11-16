@@ -51,7 +51,10 @@ namespace Twilio.Rest.Bulkexports.V1.Export
 
 
         /// <summary> Construct a new CreateExportCustomJobOptions </summary>
-        /// <param name="pathResourceType"> The type of communication – Messages or Calls, Conferences, and Participants </param>        /// <param name="startDay"> The start day for the custom export specified as a string in the format of yyyy-mm-dd </param>        /// <param name="endDay"> The end day for the custom export specified as a string in the format of yyyy-mm-dd. End day is inclusive and must be 2 days earlier than the current UTC day. </param>        /// <param name="friendlyName"> The friendly name specified when creating the job </param>
+        /// <param name="pathResourceType"> The type of communication – Messages or Calls, Conferences, and Participants </param>
+        /// <param name="startDay"> The start day for the custom export specified as a string in the format of yyyy-mm-dd </param>
+        /// <param name="endDay"> The end day for the custom export specified as a string in the format of yyyy-mm-dd. End day is inclusive and must be 2 days earlier than the current UTC day. </param>
+        /// <param name="friendlyName"> The friendly name specified when creating the job </param>
         public CreateExportCustomJobOptions(string pathResourceType, string startDay, string endDay, string friendlyName)
         {
             PathResourceType = pathResourceType;

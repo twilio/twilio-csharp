@@ -81,7 +81,9 @@ namespace Twilio.Rest.FlexApi.V1
 
 
         /// <summary> Construct a new CreateFlexFlowOptions </summary>
-        /// <param name="friendlyName"> A descriptive string that you create to describe the Flex Flow resource. </param>        /// <param name="chatServiceSid"> The SID of the chat service. </param>        /// <param name="channelType">  </param>
+        /// <param name="friendlyName"> A descriptive string that you create to describe the Flex Flow resource. </param>
+        /// <param name="chatServiceSid"> The SID of the chat service. </param>
+        /// <param name="channelType">  </param>
         public CreateFlexFlowOptions(string friendlyName, string chatServiceSid, FlexFlowResource.ChannelTypeEnum channelType)
         {
             FriendlyName = friendlyName;

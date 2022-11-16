@@ -42,7 +42,10 @@ namespace Twilio.Rest.Verify.V2.Service.RateLimit
 
 
         /// <summary> Construct a new CreateBucketOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/verify/api/service) the resource is associated with. </param>        /// <param name="pathRateLimitSid"> The Twilio-provided string that uniquely identifies the Rate Limit resource. </param>        /// <param name="max"> Maximum number of requests permitted in during the interval. </param>        /// <param name="interval"> Number of seconds that the rate limit will be enforced over. </param>
+        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/verify/api/service) the resource is associated with. </param>
+        /// <param name="pathRateLimitSid"> The Twilio-provided string that uniquely identifies the Rate Limit resource. </param>
+        /// <param name="max"> Maximum number of requests permitted in during the interval. </param>
+        /// <param name="interval"> Number of seconds that the rate limit will be enforced over. </param>
         public CreateBucketOptions(string pathServiceSid, string pathRateLimitSid, int? max, int? interval)
         {
             PathServiceSid = pathServiceSid;
@@ -86,7 +89,9 @@ namespace Twilio.Rest.Verify.V2.Service.RateLimit
 
 
         /// <summary> Construct a new DeleteBucketOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/verify/api/service) the resource is associated with. </param>        /// <param name="pathRateLimitSid"> The Twilio-provided string that uniquely identifies the Rate Limit resource. </param>        /// <param name="pathSid"> A 34 character string that uniquely identifies this Bucket. </param>
+        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/verify/api/service) the resource is associated with. </param>
+        /// <param name="pathRateLimitSid"> The Twilio-provided string that uniquely identifies the Rate Limit resource. </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this Bucket. </param>
         public DeleteBucketOptions(string pathServiceSid, string pathRateLimitSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -123,7 +128,9 @@ namespace Twilio.Rest.Verify.V2.Service.RateLimit
 
 
         /// <summary> Construct a new FetchBucketOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/verify/api/service) the resource is associated with. </param>        /// <param name="pathRateLimitSid"> The Twilio-provided string that uniquely identifies the Rate Limit resource. </param>        /// <param name="pathSid"> A 34 character string that uniquely identifies this Bucket. </param>
+        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/verify/api/service) the resource is associated with. </param>
+        /// <param name="pathRateLimitSid"> The Twilio-provided string that uniquely identifies the Rate Limit resource. </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this Bucket. </param>
         public FetchBucketOptions(string pathServiceSid, string pathRateLimitSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -157,7 +164,8 @@ namespace Twilio.Rest.Verify.V2.Service.RateLimit
 
 
         /// <summary> Construct a new ListBucketOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/verify/api/service) the resource is associated with. </param>        /// <param name="pathRateLimitSid"> The Twilio-provided string that uniquely identifies the Rate Limit resource. </param>
+        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/verify/api/service) the resource is associated with. </param>
+        /// <param name="pathRateLimitSid"> The Twilio-provided string that uniquely identifies the Rate Limit resource. </param>
         public ReadBucketOptions(string pathServiceSid, string pathRateLimitSid)
         {
             PathServiceSid = pathServiceSid;
@@ -202,7 +210,9 @@ namespace Twilio.Rest.Verify.V2.Service.RateLimit
 
 
         /// <summary> Construct a new UpdateBucketOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/verify/api/service) the resource is associated with. </param>        /// <param name="pathRateLimitSid"> The Twilio-provided string that uniquely identifies the Rate Limit resource. </param>        /// <param name="pathSid"> A 34 character string that uniquely identifies this Bucket. </param>
+        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/verify/api/service) the resource is associated with. </param>
+        /// <param name="pathRateLimitSid"> The Twilio-provided string that uniquely identifies the Rate Limit resource. </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this Bucket. </param>
         public UpdateBucketOptions(string pathServiceSid, string pathRateLimitSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;

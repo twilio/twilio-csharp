@@ -36,7 +36,8 @@ namespace Twilio.Rest.Preview.Understand.Assistant
 
 
         /// <summary> Construct a new FetchUnderstandDialogueOptions </summary>
-        /// <param name="pathAssistantSid">  </param>        /// <param name="pathSid">  </param>
+        /// <param name="pathAssistantSid">  </param>
+        /// <param name="pathSid">  </param>
         public FetchDialogueOptions(string pathAssistantSid, string pathSid)
         {
             PathAssistantSid = pathAssistantSid;

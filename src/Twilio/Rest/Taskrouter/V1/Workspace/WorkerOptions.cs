@@ -42,7 +42,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
 
         /// <summary> Construct a new CreateWorkerOptions </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace that the new Worker belongs to. </param>        /// <param name="friendlyName"> A descriptive string that you create to describe the new Worker. It can be up to 64 characters long. </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace that the new Worker belongs to. </param>
+        /// <param name="friendlyName"> A descriptive string that you create to describe the new Worker. It can be up to 64 characters long. </param>
         public CreateWorkerOptions(string pathWorkspaceSid, string friendlyName)
         {
             PathWorkspaceSid = pathWorkspaceSid;
@@ -88,7 +89,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
 
         /// <summary> Construct a new DeleteWorkerOptions </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Worker to delete. </param>        /// <param name="pathSid"> The SID of the Worker resource to delete. </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Worker to delete. </param>
+        /// <param name="pathSid"> The SID of the Worker resource to delete. </param>
         public DeleteWorkerOptions(string pathWorkspaceSid, string pathSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;
@@ -131,7 +133,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
 
         /// <summary> Construct a new FetchWorkerOptions </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Worker to fetch. </param>        /// <param name="pathSid"> The SID of the Worker resource to fetch. </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Worker to fetch. </param>
+        /// <param name="pathSid"> The SID of the Worker resource to fetch. </param>
         public FetchWorkerOptions(string pathWorkspaceSid, string pathSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;
@@ -267,7 +270,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
 
         /// <summary> Construct a new UpdateWorkerOptions </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Worker to update. </param>        /// <param name="pathSid"> The SID of the Worker resource to update. </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Worker to update. </param>
+        /// <param name="pathSid"> The SID of the Worker resource to update. </param>
         public UpdateWorkerOptions(string pathWorkspaceSid, string pathSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;

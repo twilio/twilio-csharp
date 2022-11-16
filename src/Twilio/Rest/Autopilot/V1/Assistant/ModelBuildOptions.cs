@@ -77,7 +77,8 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
 
 
         /// <summary> Construct a new DeleteModelBuildOptions </summary>
-        /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resources to delete. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the ModelBuild resource to delete. </param>
+        /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resources to delete. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the ModelBuild resource to delete. </param>
         public DeleteModelBuildOptions(string pathAssistantSid, string pathSid)
         {
             PathAssistantSid = pathAssistantSid;
@@ -110,7 +111,8 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
 
 
         /// <summary> Construct a new FetchModelBuildOptions </summary>
-        /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resource to fetch. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the ModelBuild resource to fetch. </param>
+        /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resource to fetch. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the ModelBuild resource to fetch. </param>
         public FetchModelBuildOptions(string pathAssistantSid, string pathSid)
         {
             PathAssistantSid = pathAssistantSid;
@@ -178,7 +180,8 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
 
 
         /// <summary> Construct a new UpdateModelBuildOptions </summary>
-        /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resource to update. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the ModelBuild resource to update. </param>
+        /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resource to update. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the ModelBuild resource to update. </param>
         public UpdateModelBuildOptions(string pathAssistantSid, string pathSid)
         {
             PathAssistantSid = pathAssistantSid;

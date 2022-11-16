@@ -36,7 +36,8 @@ namespace Twilio.Rest.Messaging.V1.Service
 
 
         /// <summary> Construct a new CreatePhoneNumberOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to create the resource under. </param>        /// <param name="phoneNumberSid"> The SID of the Phone Number being added to the Service. </param>
+        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to create the resource under. </param>
+        /// <param name="phoneNumberSid"> The SID of the Phone Number being added to the Service. </param>
         public CreatePhoneNumberOptions(string pathServiceSid, string phoneNumberSid)
         {
             PathServiceSid = pathServiceSid;
@@ -71,7 +72,8 @@ namespace Twilio.Rest.Messaging.V1.Service
 
 
         /// <summary> Construct a new DeletePhoneNumberOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to delete the resource from. </param>        /// <param name="pathSid"> The SID of the PhoneNumber resource to delete. </param>
+        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to delete the resource from. </param>
+        /// <param name="pathSid"> The SID of the PhoneNumber resource to delete. </param>
         public DeletePhoneNumberOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -104,7 +106,8 @@ namespace Twilio.Rest.Messaging.V1.Service
 
 
         /// <summary> Construct a new FetchPhoneNumberOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to fetch the resource from. </param>        /// <param name="pathSid"> The SID of the PhoneNumber resource to fetch. </param>
+        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to fetch the resource from. </param>
+        /// <param name="pathSid"> The SID of the PhoneNumber resource to fetch. </param>
         public FetchPhoneNumberOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;

@@ -128,7 +128,8 @@ namespace Twilio.Rest.Chat.V2.Service
 
 
         /// <summary> Construct a new DeleteChannelOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to delete the resource from. </param>        /// <param name="pathSid"> The SID of the Channel resource to delete.  This value can be either the `sid` or the `unique_name` of the Channel resource to delete. </param>
+        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to delete the resource from. </param>
+        /// <param name="pathSid"> The SID of the Channel resource to delete.  This value can be either the `sid` or the `unique_name` of the Channel resource to delete. </param>
         public DeleteChannelOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -171,7 +172,8 @@ namespace Twilio.Rest.Chat.V2.Service
 
 
         /// <summary> Construct a new FetchChannelOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to fetch the Channel resource from. </param>        /// <param name="pathSid"> The SID of the Channel resource to fetch. This value can be either the `sid` or the `unique_name` of the Channel resource to fetch. </param>
+        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to fetch the Channel resource from. </param>
+        /// <param name="pathSid"> The SID of the Channel resource to fetch. This value can be either the `sid` or the `unique_name` of the Channel resource to fetch. </param>
         public FetchChannelOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -265,7 +267,8 @@ namespace Twilio.Rest.Chat.V2.Service
 
 
         /// <summary> Construct a new UpdateChannelOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to update the Channel resource in. </param>        /// <param name="pathSid"> The SID of the Channel resource to update. This value can be either the `sid` or the `unique_name` of the Channel resource to update. </param>
+        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to update the Channel resource in. </param>
+        /// <param name="pathSid"> The SID of the Channel resource to update. This value can be either the `sid` or the `unique_name` of the Channel resource to update. </param>
         public UpdateChannelOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;

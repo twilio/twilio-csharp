@@ -39,7 +39,8 @@ namespace Twilio.Rest.Trusthub.V1
 
 
         /// <summary> Construct a new CreateEndUserOptions </summary>
-        /// <param name="friendlyName"> The string that you assigned to describe the resource. </param>        /// <param name="type"> The type of end user of the Bundle resource - can be `individual` or `business`. </param>
+        /// <param name="friendlyName"> The string that you assigned to describe the resource. </param>
+        /// <param name="type"> The type of end user of the Bundle resource - can be `individual` or `business`. </param>
         public CreateEndUserOptions(string friendlyName, string type)
         {
             FriendlyName = friendlyName;

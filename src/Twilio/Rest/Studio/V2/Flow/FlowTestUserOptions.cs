@@ -65,7 +65,8 @@ namespace Twilio.Rest.Studio.V2.Flow
 
 
         /// <summary> Construct a new UpdateTestUserOptions </summary>
-        /// <param name="pathSid"> Unique identifier of the flow. </param>        /// <param name="testUsers"> List of test user identities that can test draft versions of the flow. </param>
+        /// <param name="pathSid"> Unique identifier of the flow. </param>
+        /// <param name="testUsers"> List of test user identities that can test draft versions of the flow. </param>
         public UpdateFlowTestUserOptions(string pathSid, List<string> testUsers)
         {
             PathSid = pathSid;

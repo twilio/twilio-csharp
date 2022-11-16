@@ -84,7 +84,8 @@ namespace Twilio.Rest.Sync.V1.Service
 
 
         /// <summary> Construct a new DeleteDocumentOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Document resource to delete. </param>        /// <param name="pathSid"> The SID of the Document resource to delete. Can be the Document resource's `sid` or its `unique_name`. </param>
+        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Document resource to delete. </param>
+        /// <param name="pathSid"> The SID of the Document resource to delete. Can be the Document resource's `sid` or its `unique_name`. </param>
         public DeleteDocumentOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -117,7 +118,8 @@ namespace Twilio.Rest.Sync.V1.Service
 
 
         /// <summary> Construct a new FetchDocumentOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Document resource to fetch. </param>        /// <param name="pathSid"> The SID of the Document resource to fetch. Can be the Document resource's `sid` or its `unique_name`. </param>
+        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Document resource to fetch. </param>
+        /// <param name="pathSid"> The SID of the Document resource to fetch. Can be the Document resource's `sid` or its `unique_name`. </param>
         public FetchDocumentOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -191,7 +193,8 @@ namespace Twilio.Rest.Sync.V1.Service
 
 
         /// <summary> Construct a new UpdateDocumentOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Document resource to update. </param>        /// <param name="pathSid"> The SID of the Document resource to update. Can be the Document resource's `sid` or its `unique_name`. </param>
+        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Document resource to update. </param>
+        /// <param name="pathSid"> The SID of the Document resource to update. Can be the Document resource's `sid` or its `unique_name`. </param>
         public UpdateDocumentOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;

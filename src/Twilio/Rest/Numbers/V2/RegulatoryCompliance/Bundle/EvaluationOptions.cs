@@ -63,7 +63,8 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
 
 
         /// <summary> Construct a new FetchEvaluationOptions </summary>
-        /// <param name="pathBundleSid"> The unique string that we created to identify the Bundle resource. </param>        /// <param name="pathSid"> The unique string that identifies the Evaluation resource. </param>
+        /// <param name="pathBundleSid"> The unique string that we created to identify the Bundle resource. </param>
+        /// <param name="pathSid"> The unique string that identifies the Evaluation resource. </param>
         public FetchEvaluationOptions(string pathBundleSid, string pathSid)
         {
             PathBundleSid = pathBundleSid;

@@ -39,7 +39,9 @@ namespace Twilio.Rest.Serverless.V1.Service.Asset
 
 
         /// <summary> Construct a new FetchAssetVersionOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to fetch the Asset Version resource from. </param>        /// <param name="pathAssetSid"> The SID of the Asset resource that is the parent of the Asset Version resource to fetch. </param>        /// <param name="pathSid"> The SID of the Asset Version resource to fetch. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to fetch the Asset Version resource from. </param>
+        /// <param name="pathAssetSid"> The SID of the Asset resource that is the parent of the Asset Version resource to fetch. </param>
+        /// <param name="pathSid"> The SID of the Asset Version resource to fetch. </param>
         public FetchAssetVersionOptions(string pathServiceSid, string pathAssetSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -73,7 +75,8 @@ namespace Twilio.Rest.Serverless.V1.Service.Asset
 
 
         /// <summary> Construct a new ListAssetVersionOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to read the Asset Version resource from. </param>        /// <param name="pathAssetSid"> The SID of the Asset resource that is the parent of the Asset Version resources to read. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to read the Asset Version resource from. </param>
+        /// <param name="pathAssetSid"> The SID of the Asset resource that is the parent of the Asset Version resources to read. </param>
         public ReadAssetVersionOptions(string pathServiceSid, string pathAssetSid)
         {
             PathServiceSid = pathServiceSid;

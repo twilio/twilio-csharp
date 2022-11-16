@@ -45,7 +45,10 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
 
 
         /// <summary> Construct a new CreateSampleOptions </summary>
-        /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the Task associated with the new resource. </param>        /// <param name="pathTaskSid"> The SID of the [Task](https://www.twilio.com/docs/autopilot/api/task) associated with the Sample resource to create. </param>        /// <param name="language"> The [ISO language-country](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html) string that specifies the language used for the new sample. For example: `en-US`. </param>        /// <param name="taggedText"> The text example of how end users might express the task. The sample can contain [Field tag blocks](https://www.twilio.com/docs/autopilot/api/task-sample#field-tagging). </param>
+        /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the Task associated with the new resource. </param>
+        /// <param name="pathTaskSid"> The SID of the [Task](https://www.twilio.com/docs/autopilot/api/task) associated with the Sample resource to create. </param>
+        /// <param name="language"> The [ISO language-country](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html) string that specifies the language used for the new sample. For example: `en-US`. </param>
+        /// <param name="taggedText"> The text example of how end users might express the task. The sample can contain [Field tag blocks](https://www.twilio.com/docs/autopilot/api/task-sample#field-tagging). </param>
         public CreateSampleOptions(string pathAssistantSid, string pathTaskSid, string language, string taggedText)
         {
             PathAssistantSid = pathAssistantSid;
@@ -93,7 +96,9 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
 
 
         /// <summary> Construct a new DeleteSampleOptions </summary>
-        /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the Task associated with the resources to delete. </param>        /// <param name="pathTaskSid"> The SID of the [Task](https://www.twilio.com/docs/autopilot/api/task) associated with the Sample resource to delete. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Sample resource to delete. </param>
+        /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the Task associated with the resources to delete. </param>
+        /// <param name="pathTaskSid"> The SID of the [Task](https://www.twilio.com/docs/autopilot/api/task) associated with the Sample resource to delete. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Sample resource to delete. </param>
         public DeleteSampleOptions(string pathAssistantSid, string pathTaskSid, string pathSid)
         {
             PathAssistantSid = pathAssistantSid;
@@ -130,7 +135,9 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
 
 
         /// <summary> Construct a new FetchSampleOptions </summary>
-        /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the Task associated with the resource to fetch. </param>        /// <param name="pathTaskSid"> The SID of the [Task](https://www.twilio.com/docs/autopilot/api/task) associated with the Sample resource to create. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Sample resource to fetch. </param>
+        /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the Task associated with the resource to fetch. </param>
+        /// <param name="pathTaskSid"> The SID of the [Task](https://www.twilio.com/docs/autopilot/api/task) associated with the Sample resource to create. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Sample resource to fetch. </param>
         public FetchSampleOptions(string pathAssistantSid, string pathTaskSid, string pathSid)
         {
             PathAssistantSid = pathAssistantSid;
@@ -167,7 +174,8 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
 
 
         /// <summary> Construct a new ListSampleOptions </summary>
-        /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the Task associated with the resources to read. </param>        /// <param name="pathTaskSid"> The SID of the [Task](https://www.twilio.com/docs/autopilot/api/task) associated with the Sample resources to read. </param>
+        /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the Task associated with the resources to read. </param>
+        /// <param name="pathTaskSid"> The SID of the [Task](https://www.twilio.com/docs/autopilot/api/task) associated with the Sample resources to read. </param>
         public ReadSampleOptions(string pathAssistantSid, string pathTaskSid)
         {
             PathAssistantSid = pathAssistantSid;
@@ -219,7 +227,9 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
 
 
         /// <summary> Construct a new UpdateSampleOptions </summary>
-        /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the Task associated with the resource to update. </param>        /// <param name="pathTaskSid"> The SID of the [Task](https://www.twilio.com/docs/autopilot/api/task) associated with the Sample resource to update. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Sample resource to update. </param>
+        /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the Task associated with the resource to update. </param>
+        /// <param name="pathTaskSid"> The SID of the [Task](https://www.twilio.com/docs/autopilot/api/task) associated with the Sample resource to update. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Sample resource to update. </param>
         public UpdateSampleOptions(string pathAssistantSid, string pathTaskSid, string pathSid)
         {
             PathAssistantSid = pathAssistantSid;

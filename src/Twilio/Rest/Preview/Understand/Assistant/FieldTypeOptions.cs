@@ -39,7 +39,8 @@ namespace Twilio.Rest.Preview.Understand.Assistant
 
 
         /// <summary> Construct a new CreateUnderstandFieldTypeOptions </summary>
-        /// <param name="pathAssistantSid">  </param>        /// <param name="uniqueName"> A user-provided string that uniquely identifies this resource as an alternative to the sid. Unique up to 64 characters long. </param>
+        /// <param name="pathAssistantSid">  </param>
+        /// <param name="uniqueName"> A user-provided string that uniquely identifies this resource as an alternative to the sid. Unique up to 64 characters long. </param>
         public CreateFieldTypeOptions(string pathAssistantSid, string uniqueName)
         {
             PathAssistantSid = pathAssistantSid;
@@ -78,7 +79,8 @@ namespace Twilio.Rest.Preview.Understand.Assistant
 
 
         /// <summary> Construct a new DeleteUnderstandFieldTypeOptions </summary>
-        /// <param name="pathAssistantSid">  </param>        /// <param name="pathSid">  </param>
+        /// <param name="pathAssistantSid">  </param>
+        /// <param name="pathSid">  </param>
         public DeleteFieldTypeOptions(string pathAssistantSid, string pathSid)
         {
             PathAssistantSid = pathAssistantSid;
@@ -111,7 +113,8 @@ namespace Twilio.Rest.Preview.Understand.Assistant
 
 
         /// <summary> Construct a new FetchUnderstandFieldTypeOptions </summary>
-        /// <param name="pathAssistantSid">  </param>        /// <param name="pathSid">  </param>
+        /// <param name="pathAssistantSid">  </param>
+        /// <param name="pathSid">  </param>
         public FetchFieldTypeOptions(string pathAssistantSid, string pathSid)
         {
             PathAssistantSid = pathAssistantSid;
@@ -182,7 +185,8 @@ namespace Twilio.Rest.Preview.Understand.Assistant
 
 
         /// <summary> Construct a new UpdateUnderstandFieldTypeOptions </summary>
-        /// <param name="pathAssistantSid">  </param>        /// <param name="pathSid">  </param>
+        /// <param name="pathAssistantSid">  </param>
+        /// <param name="pathSid">  </param>
         public UpdateFieldTypeOptions(string pathAssistantSid, string pathSid)
         {
             PathAssistantSid = pathAssistantSid;

@@ -163,7 +163,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
 
 
         /// <summary> Construct a new UpdateSipCredentialListOptions </summary>
-        /// <param name="pathSid"> The credential list Sid that uniquely identifies this resource </param>        /// <param name="friendlyName"> A human readable descriptive text for a CredentialList, up to 64 characters long. </param>
+        /// <param name="pathSid"> The credential list Sid that uniquely identifies this resource </param>
+        /// <param name="friendlyName"> A human readable descriptive text for a CredentialList, up to 64 characters long. </param>
         public UpdateCredentialListOptions(string pathSid, string friendlyName)
         {
             PathSid = pathSid;
