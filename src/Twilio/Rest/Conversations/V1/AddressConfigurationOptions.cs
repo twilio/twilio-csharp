@@ -63,7 +63,9 @@ namespace Twilio.Rest.Conversations.V1
 
 
         /// <summary> Construct a new CreateConfigurationAddressOptions </summary>
-        /// <param name="type">  </param>        /// <param name="address"> The unique address to be configured. The address can be a whatsapp address or phone number </param>
+        /// <param name="type">  </param>
+        /// <param name="address"> The unique address to be configured. The address can be a whatsapp address or phone number </param>
+
         public CreateAddressConfigurationOptions(AddressConfigurationResource.TypeEnum type, string address)
         {
             Type = type;
@@ -137,6 +139,7 @@ namespace Twilio.Rest.Conversations.V1
 
         /// <summary> Construct a new DeleteConfigurationAddressOptions </summary>
         /// <param name="pathSid"> The SID of the Address Configuration resource. This value can be either the `sid` or the `address` of the configuration </param>
+
         public DeleteAddressConfigurationOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -166,6 +169,7 @@ namespace Twilio.Rest.Conversations.V1
 
         /// <summary> Construct a new FetchConfigurationAddressOptions </summary>
         /// <param name="pathSid"> The SID of the Address Configuration resource. This value can be either the `sid` or the `address` of the configuration </param>
+
         public FetchAddressConfigurationOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -252,6 +256,7 @@ namespace Twilio.Rest.Conversations.V1
 
         /// <summary> Construct a new UpdateConfigurationAddressOptions </summary>
         /// <param name="pathSid"> The SID of the Address Configuration resource. This value can be either the `sid` or the `address` of the configuration </param>
+
         public UpdateAddressConfigurationOptions(string pathSid)
         {
             PathSid = pathSid;

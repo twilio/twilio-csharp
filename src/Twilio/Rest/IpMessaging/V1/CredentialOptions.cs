@@ -52,6 +52,7 @@ namespace Twilio.Rest.IpMessaging.V1
 
         /// <summary> Construct a new CreateCredentialOptions </summary>
         /// <param name="type">  </param>
+
         public CreateCredentialOptions(CredentialResource.PushServiceEnum type)
         {
             Type = type;
@@ -107,6 +108,7 @@ namespace Twilio.Rest.IpMessaging.V1
 
         /// <summary> Construct a new DeleteCredentialOptions </summary>
         /// <param name="pathSid">  </param>
+
         public DeleteCredentialOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -136,6 +138,7 @@ namespace Twilio.Rest.IpMessaging.V1
 
         /// <summary> Construct a new FetchCredentialOptions </summary>
         /// <param name="pathSid">  </param>
+
         public FetchCredentialOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -206,6 +209,7 @@ namespace Twilio.Rest.IpMessaging.V1
 
         /// <summary> Construct a new UpdateCredentialOptions </summary>
         /// <param name="pathSid">  </param>
+
         public UpdateCredentialOptions(string pathSid)
         {
             PathSid = pathSid;

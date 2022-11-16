@@ -122,6 +122,7 @@ namespace Twilio.Rest.Preview.Wireless
 
         /// <summary> Construct a new DeleteWirelessRatePlanOptions </summary>
         /// <param name="pathSid">  </param>
+
         public DeleteRatePlanOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -151,6 +152,7 @@ namespace Twilio.Rest.Preview.Wireless
 
         /// <summary> Construct a new FetchWirelessRatePlanOptions </summary>
         /// <param name="pathSid">  </param>
+
         public FetchRatePlanOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -209,6 +211,7 @@ namespace Twilio.Rest.Preview.Wireless
 
         /// <summary> Construct a new UpdateWirelessRatePlanOptions </summary>
         /// <param name="pathSid">  </param>
+
         public UpdateRatePlanOptions(string pathSid)
         {
             PathSid = pathSid;

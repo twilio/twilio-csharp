@@ -48,7 +48,10 @@ namespace Twilio.Rest.Preview.Understand.Assistant
 
 
         /// <summary> Construct a new CreateUnderstandQueryOptions </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the parent Assistant. </param>        /// <param name="language"> An ISO language-country string of the sample. </param>        /// <param name="query"> A user-provided string that uniquely identifies this resource as an alternative to the sid. It can be up to 2048 characters long. </param>
+        /// <param name="pathAssistantSid"> The unique ID of the parent Assistant. </param>
+        /// <param name="language"> An ISO language-country string of the sample. </param>
+        /// <param name="query"> A user-provided string that uniquely identifies this resource as an alternative to the sid. It can be up to 2048 characters long. </param>
+
         public CreateQueryOptions(string pathAssistantSid, string language, string query)
         {
             PathAssistantSid = pathAssistantSid;
@@ -100,7 +103,9 @@ namespace Twilio.Rest.Preview.Understand.Assistant
 
 
         /// <summary> Construct a new DeleteUnderstandQueryOptions </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+
         public DeleteQueryOptions(string pathAssistantSid, string pathSid)
         {
             PathAssistantSid = pathAssistantSid;
@@ -133,7 +138,9 @@ namespace Twilio.Rest.Preview.Understand.Assistant
 
 
         /// <summary> Construct a new FetchUnderstandQueryOptions </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+
         public FetchQueryOptions(string pathAssistantSid, string pathSid)
         {
             PathAssistantSid = pathAssistantSid;
@@ -173,6 +180,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant
 
         /// <summary> Construct a new ListUnderstandQueryOptions </summary>
         /// <param name="pathAssistantSid"> The unique ID of the parent Assistant. </param>
+
         public ReadQueryOptions(string pathAssistantSid)
         {
             PathAssistantSid = pathAssistantSid;
@@ -225,7 +233,9 @@ namespace Twilio.Rest.Preview.Understand.Assistant
 
 
         /// <summary> Construct a new UpdateUnderstandQueryOptions </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the parent Assistant. </param>        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="pathAssistantSid"> The unique ID of the parent Assistant. </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+
         public UpdateQueryOptions(string pathAssistantSid, string pathSid)
         {
             PathAssistantSid = pathAssistantSid;

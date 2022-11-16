@@ -39,7 +39,10 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
 
 
         /// <summary> Construct a new DeleteSyncSyncListPermissionOptions </summary>
-        /// <param name="pathServiceSid">  </param>        /// <param name="pathListSid"> Identifier of the Sync List. Either a SID or a unique name. </param>        /// <param name="pathIdentity"> Arbitrary string identifier representing a user associated with an FPA token, assigned by the developer. </param>
+        /// <param name="pathServiceSid">  </param>
+        /// <param name="pathListSid"> Identifier of the Sync List. Either a SID or a unique name. </param>
+        /// <param name="pathIdentity"> Arbitrary string identifier representing a user associated with an FPA token, assigned by the developer. </param>
+
         public DeleteSyncListPermissionOptions(string pathServiceSid, string pathListSid, string pathIdentity)
         {
             PathServiceSid = pathServiceSid;
@@ -76,7 +79,10 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
 
 
         /// <summary> Construct a new FetchSyncSyncListPermissionOptions </summary>
-        /// <param name="pathServiceSid">  </param>        /// <param name="pathListSid"> Identifier of the Sync List. Either a SID or a unique name. </param>        /// <param name="pathIdentity"> Arbitrary string identifier representing a user associated with an FPA token, assigned by the developer. </param>
+        /// <param name="pathServiceSid">  </param>
+        /// <param name="pathListSid"> Identifier of the Sync List. Either a SID or a unique name. </param>
+        /// <param name="pathIdentity"> Arbitrary string identifier representing a user associated with an FPA token, assigned by the developer. </param>
+
         public FetchSyncListPermissionOptions(string pathServiceSid, string pathListSid, string pathIdentity)
         {
             PathServiceSid = pathServiceSid;
@@ -110,7 +116,9 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
 
 
         /// <summary> Construct a new ListSyncSyncListPermissionOptions </summary>
-        /// <param name="pathServiceSid">  </param>        /// <param name="pathListSid"> Identifier of the Sync List. Either a SID or a unique name. </param>
+        /// <param name="pathServiceSid">  </param>
+        /// <param name="pathListSid"> Identifier of the Sync List. Either a SID or a unique name. </param>
+
         public ReadSyncListPermissionOptions(string pathServiceSid, string pathListSid)
         {
             PathServiceSid = pathServiceSid;
@@ -158,7 +166,13 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
 
 
         /// <summary> Construct a new UpdateSyncSyncListPermissionOptions </summary>
-        /// <param name="pathServiceSid"> The unique SID identifier of the Sync Service Instance. </param>        /// <param name="pathListSid"> Identifier of the Sync List. Either a SID or a unique name. </param>        /// <param name="pathIdentity"> Arbitrary string identifier representing a human user associated with an FPA token, assigned by the developer. </param>        /// <param name="read"> Boolean flag specifying whether the identity can read the Sync List. </param>        /// <param name="write"> Boolean flag specifying whether the identity can create, update and delete Items of the Sync List. </param>        /// <param name="manage"> Boolean flag specifying whether the identity can delete the Sync List. </param>
+        /// <param name="pathServiceSid"> The unique SID identifier of the Sync Service Instance. </param>
+        /// <param name="pathListSid"> Identifier of the Sync List. Either a SID or a unique name. </param>
+        /// <param name="pathIdentity"> Arbitrary string identifier representing a human user associated with an FPA token, assigned by the developer. </param>
+        /// <param name="read"> Boolean flag specifying whether the identity can read the Sync List. </param>
+        /// <param name="write"> Boolean flag specifying whether the identity can create, update and delete Items of the Sync List. </param>
+        /// <param name="manage"> Boolean flag specifying whether the identity can delete the Sync List. </param>
+
         public UpdateSyncListPermissionOptions(string pathServiceSid, string pathListSid, string pathIdentity, bool? read, bool? write, bool? manage)
         {
             PathServiceSid = pathServiceSid;

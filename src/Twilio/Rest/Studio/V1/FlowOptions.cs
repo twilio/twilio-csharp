@@ -34,6 +34,7 @@ namespace Twilio.Rest.Studio.V1
 
         /// <summary> Construct a new DeleteFlowOptions </summary>
         /// <param name="pathSid"> The SID of the Flow resource to delete. </param>
+
         public DeleteFlowOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -63,6 +64,7 @@ namespace Twilio.Rest.Studio.V1
 
         /// <summary> Construct a new FetchFlowOptions </summary>
         /// <param name="pathSid"> The SID of the Flow resource to fetch. </param>
+
         public FetchFlowOptions(string pathSid)
         {
             PathSid = pathSid;

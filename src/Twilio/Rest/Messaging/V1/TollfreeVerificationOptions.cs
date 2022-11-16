@@ -96,7 +96,17 @@ namespace Twilio.Rest.Messaging.V1
 
 
         /// <summary> Construct a new CreateTollfreeVerificationOptions </summary>
-        /// <param name="businessName"> The name of the business or organization using the Tollfree number. </param>        /// <param name="businessWebsite"> The website of the business or organization using the Tollfree number. </param>        /// <param name="notificationEmail"> The email address to receive the notification about the verification result. . </param>        /// <param name="useCaseCategories"> The category of the use case for the Tollfree Number. List as many are applicable.. </param>        /// <param name="useCaseSummary"> Use this to further explain how messaging is used by the business or organization. </param>        /// <param name="productionMessageSample"> An example of message content, i.e. a sample message. </param>        /// <param name="optInImageUrls"> Link to an image that shows the opt-in workflow. Multiple images allowed and must be a publicly hosted URL. </param>        /// <param name="optInType">  </param>        /// <param name="messageVolume"> Estimate monthly volume of messages from the Tollfree Number. </param>        /// <param name="tollfreePhoneNumberSid"> The SID of the Phone Number associated with the Tollfree Verification. </param>
+        /// <param name="businessName"> The name of the business or organization using the Tollfree number. </param>
+        /// <param name="businessWebsite"> The website of the business or organization using the Tollfree number. </param>
+        /// <param name="notificationEmail"> The email address to receive the notification about the verification result. . </param>
+        /// <param name="useCaseCategories"> The category of the use case for the Tollfree Number. List as many are applicable.. </param>
+        /// <param name="useCaseSummary"> Use this to further explain how messaging is used by the business or organization. </param>
+        /// <param name="productionMessageSample"> An example of message content, i.e. a sample message. </param>
+        /// <param name="optInImageUrls"> Link to an image that shows the opt-in workflow. Multiple images allowed and must be a publicly hosted URL. </param>
+        /// <param name="optInType">  </param>
+        /// <param name="messageVolume"> Estimate monthly volume of messages from the Tollfree Number. </param>
+        /// <param name="tollfreePhoneNumberSid"> The SID of the Phone Number associated with the Tollfree Verification. </param>
+
         public CreateTollfreeVerificationOptions(string businessName, string businessWebsite, string notificationEmail, List<string> useCaseCategories, string useCaseSummary, string productionMessageSample, List<string> optInImageUrls, TollfreeVerificationResource.OptInTypeEnum optInType, string messageVolume, string tollfreePhoneNumberSid)
         {
             BusinessName = businessName;
@@ -221,6 +231,7 @@ namespace Twilio.Rest.Messaging.V1
 
         /// <summary> Construct a new FetchTollfreeVerificationOptions </summary>
         /// <param name="pathSid"> The unique string to identify Tollfree Verification. </param>
+
         public FetchTollfreeVerificationOptions(string pathSid)
         {
             PathSid = pathSid;

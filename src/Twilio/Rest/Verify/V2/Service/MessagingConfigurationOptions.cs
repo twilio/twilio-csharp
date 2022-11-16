@@ -39,7 +39,10 @@ namespace Twilio.Rest.Verify.V2.Service
 
 
         /// <summary> Construct a new CreateMessagingConfigurationOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/verify/api/service) that the resource is associated with. </param>        /// <param name="country"> The [ISO-3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the country this configuration will be applied to. If this is a global configuration, Country will take the value `all`. </param>        /// <param name="messagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/sms/services/api) to be used to send SMS to the country of this configuration. </param>
+        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/verify/api/service) that the resource is associated with. </param>
+        /// <param name="country"> The [ISO-3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the country this configuration will be applied to. If this is a global configuration, Country will take the value `all`. </param>
+        /// <param name="messagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/sms/services/api) to be used to send SMS to the country of this configuration. </param>
+
         public CreateMessagingConfigurationOptions(string pathServiceSid, string country, string messagingServiceSid)
         {
             PathServiceSid = pathServiceSid;
@@ -79,7 +82,9 @@ namespace Twilio.Rest.Verify.V2.Service
 
 
         /// <summary> Construct a new DeleteMessagingConfigurationOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/verify/api/service) that the resource is associated with. </param>        /// <param name="pathCountry"> The [ISO-3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the country this configuration will be applied to. If this is a global configuration, Country will take the value `all`. </param>
+        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/verify/api/service) that the resource is associated with. </param>
+        /// <param name="pathCountry"> The [ISO-3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the country this configuration will be applied to. If this is a global configuration, Country will take the value `all`. </param>
+
         public DeleteMessagingConfigurationOptions(string pathServiceSid, string pathCountry)
         {
             PathServiceSid = pathServiceSid;
@@ -112,7 +117,9 @@ namespace Twilio.Rest.Verify.V2.Service
 
 
         /// <summary> Construct a new FetchMessagingConfigurationOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/verify/api/service) that the resource is associated with. </param>        /// <param name="pathCountry"> The [ISO-3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the country this configuration will be applied to. If this is a global configuration, Country will take the value `all`. </param>
+        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/verify/api/service) that the resource is associated with. </param>
+        /// <param name="pathCountry"> The [ISO-3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the country this configuration will be applied to. If this is a global configuration, Country will take the value `all`. </param>
+
         public FetchMessagingConfigurationOptions(string pathServiceSid, string pathCountry)
         {
             PathServiceSid = pathServiceSid;
@@ -143,6 +150,7 @@ namespace Twilio.Rest.Verify.V2.Service
 
         /// <summary> Construct a new ListMessagingConfigurationOptions </summary>
         /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/verify/api/service) that the resource is associated with. </param>
+
         public ReadMessagingConfigurationOptions(string pathServiceSid)
         {
             PathServiceSid = pathServiceSid;
@@ -180,7 +188,10 @@ namespace Twilio.Rest.Verify.V2.Service
 
 
         /// <summary> Construct a new UpdateMessagingConfigurationOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/verify/api/service) that the resource is associated with. </param>        /// <param name="pathCountry"> The [ISO-3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the country this configuration will be applied to. If this is a global configuration, Country will take the value `all`. </param>        /// <param name="messagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/sms/services/api) to be used to send SMS to the country of this configuration. </param>
+        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/verify/api/service) that the resource is associated with. </param>
+        /// <param name="pathCountry"> The [ISO-3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the country this configuration will be applied to. If this is a global configuration, Country will take the value `all`. </param>
+        /// <param name="messagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/sms/services/api) to be used to send SMS to the country of this configuration. </param>
+
         public UpdateMessagingConfigurationOptions(string pathServiceSid, string pathCountry, string messagingServiceSid)
         {
             PathServiceSid = pathServiceSid;

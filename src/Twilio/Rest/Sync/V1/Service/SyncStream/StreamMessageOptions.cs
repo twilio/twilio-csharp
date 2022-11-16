@@ -39,7 +39,10 @@ namespace Twilio.Rest.Sync.V1.Service.SyncStream
 
 
         /// <summary> Construct a new CreateStreamMessageOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) to create the new Stream Message in. </param>        /// <param name="pathStreamSid"> The SID of the Sync Stream to create the new Stream Message resource for. </param>        /// <param name="data"> A JSON string that represents an arbitrary, schema-less object that makes up the Stream Message body. Can be up to 4 KiB in length. </param>
+        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) to create the new Stream Message in. </param>
+        /// <param name="pathStreamSid"> The SID of the Sync Stream to create the new Stream Message resource for. </param>
+        /// <param name="data"> A JSON string that represents an arbitrary, schema-less object that makes up the Stream Message body. Can be up to 4 KiB in length. </param>
+
         public CreateStreamMessageOptions(string pathServiceSid, string pathStreamSid, object data)
         {
             PathServiceSid = pathServiceSid;

@@ -36,7 +36,9 @@ namespace Twilio.Rest.Insights.V1.Room
 
 
         /// <summary> Construct a new FetchVideoParticipantSummaryOptions </summary>
-        /// <param name="pathRoomSid"> The SID of the Room resource. </param>        /// <param name="pathParticipantSid"> The SID of the Participant resource. </param>
+        /// <param name="pathRoomSid"> The SID of the Room resource. </param>
+        /// <param name="pathParticipantSid"> The SID of the Participant resource. </param>
+
         public FetchParticipantOptions(string pathRoomSid, string pathParticipantSid)
         {
             PathRoomSid = pathRoomSid;
@@ -67,6 +69,7 @@ namespace Twilio.Rest.Insights.V1.Room
 
         /// <summary> Construct a new ListVideoParticipantSummaryOptions </summary>
         /// <param name="pathRoomSid"> The SID of the Room resource. </param>
+
         public ReadParticipantOptions(string pathRoomSid)
         {
             PathRoomSid = pathRoomSid;

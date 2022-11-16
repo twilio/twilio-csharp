@@ -40,6 +40,7 @@ namespace Twilio.Rest.Conversations.V1.Service
 
         /// <summary> Construct a new ListServiceParticipantConversationOptions </summary>
         /// <param name="pathChatServiceSid"> The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Participant Conversations resource is associated with. </param>
+
         public ReadParticipantConversationOptions(string pathChatServiceSid)
         {
             PathChatServiceSid = pathChatServiceSid;

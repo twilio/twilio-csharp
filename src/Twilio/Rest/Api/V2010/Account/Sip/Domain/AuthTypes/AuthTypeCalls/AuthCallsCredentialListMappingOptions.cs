@@ -39,7 +39,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeCalls
 
 
         /// <summary> Construct a new CreateSipAuthCallsCredentialListMappingOptions </summary>
-        /// <param name="pathDomainSid"> The SID of the SIP domain that will contain the new resource. </param>        /// <param name="credentialListSid"> The SID of the CredentialList resource to map to the SIP domain. </param>
+        /// <param name="pathDomainSid"> The SID of the SIP domain that will contain the new resource. </param>
+        /// <param name="credentialListSid"> The SID of the CredentialList resource to map to the SIP domain. </param>
+
         public CreateAuthCallsCredentialListMappingOptions(string pathDomainSid, string credentialListSid)
         {
             PathDomainSid = pathDomainSid;
@@ -77,7 +79,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeCalls
 
 
         /// <summary> Construct a new DeleteSipAuthCallsCredentialListMappingOptions </summary>
-        /// <param name="pathDomainSid"> The SID of the SIP domain that contains the resource to delete. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the CredentialListMapping resource to delete. </param>
+        /// <param name="pathDomainSid"> The SID of the SIP domain that contains the resource to delete. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the CredentialListMapping resource to delete. </param>
+
         public DeleteAuthCallsCredentialListMappingOptions(string pathDomainSid, string pathSid)
         {
             PathDomainSid = pathDomainSid;
@@ -113,7 +117,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeCalls
 
 
         /// <summary> Construct a new FetchSipAuthCallsCredentialListMappingOptions </summary>
-        /// <param name="pathDomainSid"> The SID of the SIP domain that contains the resource to fetch. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the CredentialListMapping resource to fetch. </param>
+        /// <param name="pathDomainSid"> The SID of the SIP domain that contains the resource to fetch. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the CredentialListMapping resource to fetch. </param>
+
         public FetchAuthCallsCredentialListMappingOptions(string pathDomainSid, string pathSid)
         {
             PathDomainSid = pathDomainSid;
@@ -147,6 +153,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeCalls
 
         /// <summary> Construct a new ListSipAuthCallsCredentialListMappingOptions </summary>
         /// <param name="pathDomainSid"> The SID of the SIP domain that contains the resources to read. </param>
+
         public ReadAuthCallsCredentialListMappingOptions(string pathDomainSid)
         {
             PathDomainSid = pathDomainSid;

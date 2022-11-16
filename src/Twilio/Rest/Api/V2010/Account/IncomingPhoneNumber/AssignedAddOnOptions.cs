@@ -39,7 +39,9 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
 
 
         /// <summary> Construct a new CreateIncomingPhoneNumberAssignedAddOnOptions </summary>
-        /// <param name="pathResourceSid"> The SID of the Phone Number to assign the Add-on. </param>        /// <param name="installedAddOnSid"> The SID that identifies the Add-on installation. </param>
+        /// <param name="pathResourceSid"> The SID of the Phone Number to assign the Add-on. </param>
+        /// <param name="installedAddOnSid"> The SID that identifies the Add-on installation. </param>
+
         public CreateAssignedAddOnOptions(string pathResourceSid, string installedAddOnSid)
         {
             PathResourceSid = pathResourceSid;
@@ -77,7 +79,9 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
 
 
         /// <summary> Construct a new DeleteIncomingPhoneNumberAssignedAddOnOptions </summary>
-        /// <param name="pathResourceSid"> The SID of the Phone Number to which the Add-on is assigned. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the resource to delete. </param>
+        /// <param name="pathResourceSid"> The SID of the Phone Number to which the Add-on is assigned. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the resource to delete. </param>
+
         public DeleteAssignedAddOnOptions(string pathResourceSid, string pathSid)
         {
             PathResourceSid = pathResourceSid;
@@ -113,7 +117,9 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
 
 
         /// <summary> Construct a new FetchIncomingPhoneNumberAssignedAddOnOptions </summary>
-        /// <param name="pathResourceSid"> The SID of the Phone Number to which the Add-on is assigned. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the resource to fetch. </param>
+        /// <param name="pathResourceSid"> The SID of the Phone Number to which the Add-on is assigned. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the resource to fetch. </param>
+
         public FetchAssignedAddOnOptions(string pathResourceSid, string pathSid)
         {
             PathResourceSid = pathResourceSid;
@@ -147,6 +153,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
 
         /// <summary> Construct a new ListIncomingPhoneNumberAssignedAddOnOptions </summary>
         /// <param name="pathResourceSid"> The SID of the Phone Number to which the Add-on is assigned. </param>
+
         public ReadAssignedAddOnOptions(string pathResourceSid)
         {
             PathResourceSid = pathResourceSid;

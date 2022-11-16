@@ -34,6 +34,7 @@ namespace Twilio.Rest.Insights.V1
 
         /// <summary> Construct a new FetchVideoRoomSummaryOptions </summary>
         /// <param name="pathRoomSid"> The SID of the Room resource. </param>
+
         public FetchRoomOptions(string pathRoomSid)
         {
             PathRoomSid = pathRoomSid;

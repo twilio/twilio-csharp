@@ -58,6 +58,7 @@ namespace Twilio.Rest.Video.V1
 
         /// <summary> Construct a new CreateCompositionOptions </summary>
         /// <param name="roomSid"> The SID of the Group Room with the media tracks to be used as composition sources. </param>
+
         public CreateCompositionOptions(string roomSid)
         {
             RoomSid = roomSid;
@@ -123,6 +124,7 @@ namespace Twilio.Rest.Video.V1
 
         /// <summary> Construct a new DeleteCompositionOptions </summary>
         /// <param name="pathSid"> The SID of the Composition resource to delete. </param>
+
         public DeleteCompositionOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -152,6 +154,7 @@ namespace Twilio.Rest.Video.V1
 
         /// <summary> Construct a new FetchCompositionOptions </summary>
         /// <param name="pathSid"> The SID of the Composition resource to fetch. </param>
+
         public FetchCompositionOptions(string pathSid)
         {
             PathSid = pathSid;

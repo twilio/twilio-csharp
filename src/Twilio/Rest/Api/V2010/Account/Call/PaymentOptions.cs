@@ -84,7 +84,10 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
 
         /// <summary> Construct a new CreatePaymentsOptions </summary>
-        /// <param name="pathCallSid"> The SID of the call that will create the resource. Call leg associated with this sid is expected to provide payment information thru DTMF. </param>        /// <param name="idempotencyKey"> A unique token that will be used to ensure that multiple API calls with the same information do not result in multiple transactions. This should be a unique string value per API call and can be a randomly generated. </param>        /// <param name="statusCallback"> Provide an absolute or relative URL to receive status updates regarding your Pay session. Read more about the [expected StatusCallback values](https://www.twilio.com/docs/voice/api/payment-resource#statuscallback) </param>
+        /// <param name="pathCallSid"> The SID of the call that will create the resource. Call leg associated with this sid is expected to provide payment information thru DTMF. </param>
+        /// <param name="idempotencyKey"> A unique token that will be used to ensure that multiple API calls with the same information do not result in multiple transactions. This should be a unique string value per API call and can be a randomly generated. </param>
+        /// <param name="statusCallback"> Provide an absolute or relative URL to receive status updates regarding your Pay session. Read more about the [expected StatusCallback values](https://www.twilio.com/docs/voice/api/payment-resource#statuscallback) </param>
+
         public CreatePaymentOptions(string pathCallSid, string idempotencyKey, Uri statusCallback)
         {
             PathCallSid = pathCallSid;
@@ -195,7 +198,11 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
 
         /// <summary> Construct a new UpdatePaymentsOptions </summary>
-        /// <param name="pathCallSid"> The SID of the call that will update the resource. This should be the same call sid that was used to create payments resource. </param>        /// <param name="pathSid"> The SID of Payments session that needs to be updated. </param>        /// <param name="idempotencyKey"> A unique token that will be used to ensure that multiple API calls with the same information do not result in multiple transactions. This should be a unique string value per API call and can be a randomly generated. </param>        /// <param name="statusCallback"> Provide an absolute or relative URL to receive status updates regarding your Pay session. Read more about the [Update](https://www.twilio.com/docs/voice/api/payment-resource#statuscallback-update) and [Complete/Cancel](https://www.twilio.com/docs/voice/api/payment-resource#statuscallback-cancelcomplete) POST requests. </param>
+        /// <param name="pathCallSid"> The SID of the call that will update the resource. This should be the same call sid that was used to create payments resource. </param>
+        /// <param name="pathSid"> The SID of Payments session that needs to be updated. </param>
+        /// <param name="idempotencyKey"> A unique token that will be used to ensure that multiple API calls with the same information do not result in multiple transactions. This should be a unique string value per API call and can be a randomly generated. </param>
+        /// <param name="statusCallback"> Provide an absolute or relative URL to receive status updates regarding your Pay session. Read more about the [Update](https://www.twilio.com/docs/voice/api/payment-resource#statuscallback-update) and [Complete/Cancel](https://www.twilio.com/docs/voice/api/payment-resource#statuscallback-cancelcomplete) POST requests. </param>
+
         public UpdatePaymentOptions(string pathCallSid, string pathSid, string idempotencyKey, Uri statusCallback)
         {
             PathCallSid = pathCallSid;

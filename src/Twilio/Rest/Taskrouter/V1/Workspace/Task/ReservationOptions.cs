@@ -39,7 +39,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
 
 
         /// <summary> Construct a new FetchTaskReservationOptions </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the TaskReservation resource to fetch. </param>        /// <param name="pathTaskSid"> The SID of the reserved Task resource with the TaskReservation resource to fetch. </param>        /// <param name="pathSid"> The SID of the TaskReservation resource to fetch. </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the TaskReservation resource to fetch. </param>
+        /// <param name="pathTaskSid"> The SID of the reserved Task resource with the TaskReservation resource to fetch. </param>
+        /// <param name="pathSid"> The SID of the TaskReservation resource to fetch. </param>
+
         public FetchReservationOptions(string pathWorkspaceSid, string pathTaskSid, string pathSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;
@@ -79,7 +82,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
 
 
         /// <summary> Construct a new ListTaskReservationOptions </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the TaskReservation resources to read. </param>        /// <param name="pathTaskSid"> The SID of the reserved Task resource with the TaskReservation resources to read. </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the TaskReservation resources to read. </param>
+        /// <param name="pathTaskSid"> The SID of the reserved Task resource with the TaskReservation resources to read. </param>
+
         public ReadReservationOptions(string pathWorkspaceSid, string pathTaskSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;
@@ -288,7 +293,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
 
 
         /// <summary> Construct a new UpdateTaskReservationOptions </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the TaskReservation resources to update. </param>        /// <param name="pathTaskSid"> The SID of the reserved Task resource with the TaskReservation resources to update. </param>        /// <param name="pathSid"> The SID of the TaskReservation resource to update. </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the TaskReservation resources to update. </param>
+        /// <param name="pathTaskSid"> The SID of the reserved Task resource with the TaskReservation resources to update. </param>
+        /// <param name="pathSid"> The SID of the TaskReservation resource to update. </param>
+
         public UpdateReservationOptions(string pathWorkspaceSid, string pathTaskSid, string pathSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;

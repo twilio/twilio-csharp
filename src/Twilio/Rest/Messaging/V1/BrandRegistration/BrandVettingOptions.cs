@@ -39,7 +39,9 @@ namespace Twilio.Rest.Messaging.V1.BrandRegistration
 
 
         /// <summary> Construct a new CreateBrandVettingOptions </summary>
-        /// <param name="pathBrandSid"> The SID of the Brand Registration resource of the vettings to create . </param>        /// <param name="vettingProvider">  </param>
+        /// <param name="pathBrandSid"> The SID of the Brand Registration resource of the vettings to create . </param>
+        /// <param name="vettingProvider">  </param>
+
         public CreateBrandVettingOptions(string pathBrandSid, BrandVettingResource.VettingProviderEnum vettingProvider)
         {
             PathBrandSid = pathBrandSid;
@@ -78,7 +80,9 @@ namespace Twilio.Rest.Messaging.V1.BrandRegistration
 
 
         /// <summary> Construct a new FetchBrandVettingOptions </summary>
-        /// <param name="pathBrandSid"> The SID of the Brand Registration resource of the vettings to read . </param>        /// <param name="pathBrandVettingSid"> The Twilio SID of the third-party vetting record. </param>
+        /// <param name="pathBrandSid"> The SID of the Brand Registration resource of the vettings to read . </param>
+        /// <param name="pathBrandVettingSid"> The Twilio SID of the third-party vetting record. </param>
+
         public FetchBrandVettingOptions(string pathBrandSid, string pathBrandVettingSid)
         {
             PathBrandSid = pathBrandSid;
@@ -112,6 +116,7 @@ namespace Twilio.Rest.Messaging.V1.BrandRegistration
 
         /// <summary> Construct a new ListBrandVettingOptions </summary>
         /// <param name="pathBrandSid"> The SID of the Brand Registration resource of the vettings to read . </param>
+
         public ReadBrandVettingOptions(string pathBrandSid)
         {
             PathBrandSid = pathBrandSid;

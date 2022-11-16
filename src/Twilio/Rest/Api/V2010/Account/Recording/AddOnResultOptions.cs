@@ -39,7 +39,9 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
 
 
         /// <summary> Construct a new DeleteRecordingAddOnResultOptions </summary>
-        /// <param name="pathReferenceSid"> The SID of the recording to which the result to delete belongs. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Recording AddOnResult resource to delete. </param>
+        /// <param name="pathReferenceSid"> The SID of the recording to which the result to delete belongs. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Recording AddOnResult resource to delete. </param>
+
         public DeleteAddOnResultOptions(string pathReferenceSid, string pathSid)
         {
             PathReferenceSid = pathReferenceSid;
@@ -75,7 +77,9 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
 
 
         /// <summary> Construct a new FetchRecordingAddOnResultOptions </summary>
-        /// <param name="pathReferenceSid"> The SID of the recording to which the result to fetch belongs. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Recording AddOnResult resource to fetch. </param>
+        /// <param name="pathReferenceSid"> The SID of the recording to which the result to fetch belongs. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Recording AddOnResult resource to fetch. </param>
+
         public FetchAddOnResultOptions(string pathReferenceSid, string pathSid)
         {
             PathReferenceSid = pathReferenceSid;
@@ -109,6 +113,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
 
         /// <summary> Construct a new ListRecordingAddOnResultOptions </summary>
         /// <param name="pathReferenceSid"> The SID of the recording to which the result to read belongs. </param>
+
         public ReadAddOnResultOptions(string pathReferenceSid)
         {
             PathReferenceSid = pathReferenceSid;

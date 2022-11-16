@@ -46,6 +46,7 @@ namespace Twilio.Rest.Serverless.V1.Service
 
         /// <summary> Construct a new CreateBuildOptions </summary>
         /// <param name="pathServiceSid"> The SID of the Service to create the Build resource under. </param>
+
         public CreateBuildOptions(string pathServiceSid)
         {
             PathServiceSid = pathServiceSid;
@@ -93,7 +94,9 @@ namespace Twilio.Rest.Serverless.V1.Service
 
 
         /// <summary> Construct a new DeleteBuildOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to delete the Build resource from. </param>        /// <param name="pathSid"> The SID of the Build resource to delete. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to delete the Build resource from. </param>
+        /// <param name="pathSid"> The SID of the Build resource to delete. </param>
+
         public DeleteBuildOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -126,7 +129,9 @@ namespace Twilio.Rest.Serverless.V1.Service
 
 
         /// <summary> Construct a new FetchBuildOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to fetch the Build resource from. </param>        /// <param name="pathSid"> The SID of the Build resource to fetch. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to fetch the Build resource from. </param>
+        /// <param name="pathSid"> The SID of the Build resource to fetch. </param>
+
         public FetchBuildOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -157,6 +162,7 @@ namespace Twilio.Rest.Serverless.V1.Service
 
         /// <summary> Construct a new ListBuildOptions </summary>
         /// <param name="pathServiceSid"> The SID of the Service to read the Build resources from. </param>
+
         public ReadBuildOptions(string pathServiceSid)
         {
             PathServiceSid = pathServiceSid;

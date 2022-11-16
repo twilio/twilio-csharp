@@ -34,6 +34,7 @@ namespace Twilio.Rest.Trusthub.V1
 
         /// <summary> Construct a new FetchEndUserTypeOptions </summary>
         /// <param name="pathSid"> The unique string that identifies the End-User Type resource. </param>
+
         public FetchEndUserTypeOptions(string pathSid)
         {
             PathSid = pathSid;

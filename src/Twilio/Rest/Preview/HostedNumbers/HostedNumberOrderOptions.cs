@@ -81,7 +81,9 @@ namespace Twilio.Rest.Preview.HostedNumbers
 
 
         /// <summary> Construct a new CreateHostedNumbersHostedNumberOrderOptions </summary>
-        /// <param name="phoneNumber"> The number to host in [+E.164](https://en.wikipedia.org/wiki/E.164) format </param>        /// <param name="smsCapability"> Used to specify that the SMS capability will be hosted on Twilio's platform. </param>
+        /// <param name="phoneNumber"> The number to host in [+E.164](https://en.wikipedia.org/wiki/E.164) format </param>
+        /// <param name="smsCapability"> Used to specify that the SMS capability will be hosted on Twilio's platform. </param>
+
         public CreateHostedNumberOrderOptions(Types.PhoneNumber phoneNumber, bool? smsCapability)
         {
             PhoneNumber = phoneNumber;
@@ -179,6 +181,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
 
         /// <summary> Construct a new DeleteHostedNumbersHostedNumberOrderOptions </summary>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this HostedNumberOrder. </param>
+
         public DeleteHostedNumberOrderOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -208,6 +211,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
 
         /// <summary> Construct a new FetchHostedNumbersHostedNumberOrderOptions </summary>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this HostedNumberOrder. </param>
+
         public FetchHostedNumberOrderOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -325,6 +329,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
 
         /// <summary> Construct a new UpdateHostedNumbersHostedNumberOrderOptions </summary>
         /// <param name="pathSid">  </param>
+
         public UpdateHostedNumberOrderOptions(string pathSid)
         {
             PathSid = pathSid;

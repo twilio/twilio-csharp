@@ -163,6 +163,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
         /// <summary> Construct a new DeleteApplicationOptions </summary>
         /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Application resource to delete. </param>
+
         public DeleteApplicationOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -195,6 +196,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
         /// <summary> Construct a new FetchApplicationOptions </summary>
         /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Application resource to fetch. </param>
+
         public FetchApplicationOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -305,6 +307,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
         /// <summary> Construct a new UpdateApplicationOptions </summary>
         /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Application resource to update. </param>
+
         public UpdateApplicationOptions(string pathSid)
         {
             PathSid = pathSid;

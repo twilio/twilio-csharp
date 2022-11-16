@@ -39,7 +39,9 @@ namespace Twilio.Rest.Trusthub.V1
 
 
         /// <summary> Construct a new CreateEndUserOptions </summary>
-        /// <param name="friendlyName"> The string that you assigned to describe the resource. </param>        /// <param name="type"> The type of end user of the Bundle resource - can be `individual` or `business`. </param>
+        /// <param name="friendlyName"> The string that you assigned to describe the resource. </param>
+        /// <param name="type"> The type of end user of the Bundle resource - can be `individual` or `business`. </param>
+
         public CreateEndUserOptions(string friendlyName, string type)
         {
             FriendlyName = friendlyName;
@@ -80,6 +82,7 @@ namespace Twilio.Rest.Trusthub.V1
 
         /// <summary> Construct a new DeleteEndUserOptions </summary>
         /// <param name="pathSid"> The unique string created by Twilio to identify the End User resource. </param>
+
         public DeleteEndUserOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -109,6 +112,7 @@ namespace Twilio.Rest.Trusthub.V1
 
         /// <summary> Construct a new FetchEndUserOptions </summary>
         /// <param name="pathSid"> The unique string created by Twilio to identify the End User resource. </param>
+
         public FetchEndUserOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -167,6 +171,7 @@ namespace Twilio.Rest.Trusthub.V1
 
         /// <summary> Construct a new UpdateEndUserOptions </summary>
         /// <param name="pathSid"> The unique string created by Twilio to identify the End User resource. </param>
+
         public UpdateEndUserOptions(string pathSid)
         {
             PathSid = pathSid;

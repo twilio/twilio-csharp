@@ -34,6 +34,7 @@ namespace Twilio.Rest.Microvisor.V1
 
         /// <summary> Construct a new FetchDeviceOptions </summary>
         /// <param name="pathSid"> A 34-character string that uniquely identifies this Device. </param>
+
         public FetchDeviceOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -95,6 +96,7 @@ namespace Twilio.Rest.Microvisor.V1
 
         /// <summary> Construct a new UpdateDeviceOptions </summary>
         /// <param name="pathSid"> A 34-character string that uniquely identifies this Device. </param>
+
         public UpdateDeviceOptions(string pathSid)
         {
             PathSid = pathSid;

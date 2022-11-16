@@ -49,6 +49,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
         /// <summary> Construct a new CreateTaskOptions </summary>
         /// <param name="pathWorkspaceSid"> The SID of the Workspace that the new Task belongs to. </param>
+
         public CreateTaskOptions(string pathWorkspaceSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;
@@ -101,7 +102,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
 
         /// <summary> Construct a new DeleteTaskOptions </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Task to delete. </param>        /// <param name="pathSid"> The SID of the Task resource to delete. </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Task to delete. </param>
+        /// <param name="pathSid"> The SID of the Task resource to delete. </param>
+
         public DeleteTaskOptions(string pathWorkspaceSid, string pathSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;
@@ -144,7 +147,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
 
         /// <summary> Construct a new FetchTaskOptions </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Task to fetch. </param>        /// <param name="pathSid"> The SID of the Task resource to fetch. </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Task to fetch. </param>
+        /// <param name="pathSid"> The SID of the Task resource to fetch. </param>
+
         public FetchTaskOptions(string pathWorkspaceSid, string pathSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;
@@ -202,6 +207,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
         /// <summary> Construct a new ListTaskOptions </summary>
         /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Tasks to read. </param>
+
         public ReadTaskOptions(string pathWorkspaceSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;
@@ -291,7 +297,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
 
         /// <summary> Construct a new UpdateTaskOptions </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Task to update. </param>        /// <param name="pathSid"> The SID of the Task resource to update. </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Task to update. </param>
+        /// <param name="pathSid"> The SID of the Task resource to update. </param>
+
         public UpdateTaskOptions(string pathWorkspaceSid, string pathSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;

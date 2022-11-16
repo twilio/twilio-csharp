@@ -100,6 +100,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
         /// <summary> Construct a new CreateMessageOptions </summary>
         /// <param name="to"> The destination phone number in [E.164](https://www.twilio.com/docs/glossary/what-e164) format for SMS/MMS or [Channel user address](https://www.twilio.com/docs/sms/channels#channel-addresses) for other 3rd-party channels. </param>
+
         public CreateMessageOptions(Types.PhoneNumber to)
         {
             To = to;
@@ -220,6 +221,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
         /// <summary> Construct a new DeleteMessageOptions </summary>
         /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Message resource to delete. </param>
+
         public DeleteMessageOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -252,6 +254,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
         /// <summary> Construct a new FetchMessageOptions </summary>
         /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Message resource to fetch. </param>
+
         public FetchMessageOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -363,6 +366,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
         /// <summary> Construct a new UpdateMessageOptions </summary>
         /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Message resource to update. </param>
+
         public UpdateMessageOptions(string pathSid)
         {
             PathSid = pathSid;

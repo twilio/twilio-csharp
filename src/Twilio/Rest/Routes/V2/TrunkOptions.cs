@@ -34,6 +34,7 @@ namespace Twilio.Rest.Routes.V2
 
         /// <summary> Construct a new FetchTrunksOptions </summary>
         /// <param name="pathSipTrunkDomain"> The absolute URL of the SIP Trunk </param>
+
         public FetchTrunkOptions(string pathSipTrunkDomain)
         {
             PathSipTrunkDomain = pathSipTrunkDomain;
@@ -69,6 +70,7 @@ namespace Twilio.Rest.Routes.V2
 
         /// <summary> Construct a new UpdateTrunksOptions </summary>
         /// <param name="pathSipTrunkDomain"> The absolute URL of the SIP Trunk </param>
+
         public UpdateTrunkOptions(string pathSipTrunkDomain)
         {
             PathSipTrunkDomain = pathSipTrunkDomain;

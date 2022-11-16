@@ -34,6 +34,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
 
         /// <summary> Construct a new FetchRecordingOptions </summary>
         /// <param name="pathTrunkSid"> The SID of the Trunk from which to fetch the recording settings. </param>
+
         public FetchRecordingOptions(string pathTrunkSid)
         {
             PathTrunkSid = pathTrunkSid;
@@ -69,6 +70,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
 
         /// <summary> Construct a new UpdateRecordingOptions </summary>
         /// <param name="pathTrunkSid"> The SID of the Trunk that will have its recording settings updated. </param>
+
         public UpdateRecordingOptions(string pathTrunkSid)
         {
             PathTrunkSid = pathTrunkSid;

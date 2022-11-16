@@ -42,7 +42,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
 
         /// <summary> Construct a new CreateTaskChannelOptions </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace that the new Task Channel belongs to. </param>        /// <param name="friendlyName"> A descriptive string that you create to describe the Task Channel. It can be up to 64 characters long. </param>        /// <param name="uniqueName"> An application-defined string that uniquely identifies the Task Channel, such as `voice` or `sms`. </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace that the new Task Channel belongs to. </param>
+        /// <param name="friendlyName"> A descriptive string that you create to describe the Task Channel. It can be up to 64 characters long. </param>
+        /// <param name="uniqueName"> An application-defined string that uniquely identifies the Task Channel, such as `voice` or `sms`. </param>
+
         public CreateTaskChannelOptions(string pathWorkspaceSid, string friendlyName, string uniqueName)
         {
             PathWorkspaceSid = pathWorkspaceSid;
@@ -86,7 +89,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
 
         /// <summary> Construct a new DeleteTaskChannelOptions </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Task Channel to delete. </param>        /// <param name="pathSid"> The SID of the Task Channel resource to delete. </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Task Channel to delete. </param>
+        /// <param name="pathSid"> The SID of the Task Channel resource to delete. </param>
+
         public DeleteTaskChannelOptions(string pathWorkspaceSid, string pathSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;
@@ -119,7 +124,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
 
         /// <summary> Construct a new FetchTaskChannelOptions </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Task Channel to fetch. </param>        /// <param name="pathSid"> The SID of the Task Channel resource to fetch. </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Task Channel to fetch. </param>
+        /// <param name="pathSid"> The SID of the Task Channel resource to fetch. </param>
+
         public FetchTaskChannelOptions(string pathWorkspaceSid, string pathSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;
@@ -150,6 +157,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
         /// <summary> Construct a new ListTaskChannelOptions </summary>
         /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Task Channel to read. </param>
+
         public ReadTaskChannelOptions(string pathWorkspaceSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;
@@ -190,7 +198,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
 
         /// <summary> Construct a new UpdateTaskChannelOptions </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Task Channel to update. </param>        /// <param name="pathSid"> The SID of the Task Channel resource to update. </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Task Channel to update. </param>
+        /// <param name="pathSid"> The SID of the Task Channel resource to update. </param>
+
         public UpdateTaskChannelOptions(string pathWorkspaceSid, string pathSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;

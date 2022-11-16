@@ -80,6 +80,7 @@ namespace Twilio.Rest.Preview.Sync
 
         /// <summary> Construct a new DeleteSyncServiceOptions </summary>
         /// <param name="pathSid">  </param>
+
         public DeleteServiceOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -109,6 +110,7 @@ namespace Twilio.Rest.Preview.Sync
 
         /// <summary> Construct a new FetchSyncServiceOptions </summary>
         /// <param name="pathSid">  </param>
+
         public FetchServiceOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -173,6 +175,7 @@ namespace Twilio.Rest.Preview.Sync
 
         /// <summary> Construct a new UpdateSyncServiceOptions </summary>
         /// <param name="pathSid">  </param>
+
         public UpdateServiceOptions(string pathSid)
         {
             PathSid = pathSid;

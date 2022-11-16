@@ -34,6 +34,7 @@ namespace Twilio.Rest.Preview.Wireless
 
         /// <summary> Construct a new FetchWirelessSimOptions </summary>
         /// <param name="pathSid">  </param>
+
         public FetchSimOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -169,6 +170,7 @@ namespace Twilio.Rest.Preview.Wireless
 
         /// <summary> Construct a new UpdateWirelessSimOptions </summary>
         /// <param name="pathSid">  </param>
+
         public UpdateSimOptions(string pathSid)
         {
             PathSid = pathSid;

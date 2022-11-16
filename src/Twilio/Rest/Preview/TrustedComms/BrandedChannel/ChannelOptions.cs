@@ -36,7 +36,9 @@ namespace Twilio.Rest.Preview.TrustedComms.BrandedChannel
 
 
         /// <summary> Construct a new CreateTrustedCommsChannelOptions </summary>
-        /// <param name="pathBrandedChannelSid"> The unique SID identifier of the Branded Channel. The given phone number is going to be assigned to this Branded Channel </param>        /// <param name="phoneNumberSid"> The unique SID identifier of the Phone Number of the Phone number to be assigned to the Branded Channel. </param>
+        /// <param name="pathBrandedChannelSid"> The unique SID identifier of the Branded Channel. The given phone number is going to be assigned to this Branded Channel </param>
+        /// <param name="phoneNumberSid"> The unique SID identifier of the Phone Number of the Phone number to be assigned to the Branded Channel. </param>
+
         public CreateChannelOptions(string pathBrandedChannelSid, string phoneNumberSid)
         {
             PathBrandedChannelSid = pathBrandedChannelSid;

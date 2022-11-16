@@ -36,7 +36,9 @@ namespace Twilio.Rest.Bulkexports.V1.Export
 
 
         /// <summary> Construct a new FetchDayOptions </summary>
-        /// <param name="pathResourceType"> The type of communication – Messages, Calls, Conferences, and Participants </param>        /// <param name="pathDay"> The ISO 8601 format date of the resources in the file, for a UTC day </param>
+        /// <param name="pathResourceType"> The type of communication – Messages, Calls, Conferences, and Participants </param>
+        /// <param name="pathDay"> The ISO 8601 format date of the resources in the file, for a UTC day </param>
+
         public FetchDayOptions(string pathResourceType, string pathDay)
         {
             PathResourceType = pathResourceType;
@@ -67,6 +69,7 @@ namespace Twilio.Rest.Bulkexports.V1.Export
 
         /// <summary> Construct a new ListDayOptions </summary>
         /// <param name="pathResourceType"> The type of communication – Messages, Calls, Conferences, and Participants </param>
+
         public ReadDayOptions(string pathResourceType)
         {
             PathResourceType = pathResourceType;

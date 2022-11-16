@@ -42,7 +42,10 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
 
 
         /// <summary> Construct a new CreateInviteOptions </summary>
-        /// <param name="pathServiceSid">  </param>        /// <param name="pathChannelSid">  </param>        /// <param name="identity">  </param>
+        /// <param name="pathServiceSid">  </param>
+        /// <param name="pathChannelSid">  </param>
+        /// <param name="identity">  </param>
+
         public CreateInviteOptions(string pathServiceSid, string pathChannelSid, string identity)
         {
             PathServiceSid = pathServiceSid;
@@ -85,7 +88,10 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
 
 
         /// <summary> Construct a new DeleteInviteOptions </summary>
-        /// <param name="pathServiceSid">  </param>        /// <param name="pathChannelSid">  </param>        /// <param name="pathSid">  </param>
+        /// <param name="pathServiceSid">  </param>
+        /// <param name="pathChannelSid">  </param>
+        /// <param name="pathSid">  </param>
+
         public DeleteInviteOptions(string pathServiceSid, string pathChannelSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -122,7 +128,10 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
 
 
         /// <summary> Construct a new FetchInviteOptions </summary>
-        /// <param name="pathServiceSid">  </param>        /// <param name="pathChannelSid">  </param>        /// <param name="pathSid">  </param>
+        /// <param name="pathServiceSid">  </param>
+        /// <param name="pathChannelSid">  </param>
+        /// <param name="pathSid">  </param>
+
         public FetchInviteOptions(string pathServiceSid, string pathChannelSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -159,7 +168,9 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
 
 
         /// <summary> Construct a new ListInviteOptions </summary>
-        /// <param name="pathServiceSid">  </param>        /// <param name="pathChannelSid">  </param>
+        /// <param name="pathServiceSid">  </param>
+        /// <param name="pathChannelSid">  </param>
+
         public ReadInviteOptions(string pathServiceSid, string pathChannelSid)
         {
             PathServiceSid = pathServiceSid;

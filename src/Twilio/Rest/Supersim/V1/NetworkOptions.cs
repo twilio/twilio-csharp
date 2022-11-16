@@ -34,6 +34,7 @@ namespace Twilio.Rest.Supersim.V1
 
         /// <summary> Construct a new FetchNetworkOptions </summary>
         /// <param name="pathSid"> The SID of the Network resource to fetch. </param>
+
         public FetchNetworkOptions(string pathSid)
         {
             PathSid = pathSid;

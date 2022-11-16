@@ -54,7 +54,10 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
 
 
         /// <summary> Construct a new CreateUsageTriggerOptions </summary>
-        /// <param name="callbackUrl"> The URL we should call using `callback_method` when the trigger fires. </param>        /// <param name="triggerValue"> The usage value at which the trigger should fire.  For convenience, you can use an offset value such as `+30` to specify a trigger_value that is 30 units more than the current usage value. Be sure to urlencode a `+` as `%2B`. </param>        /// <param name="usageCategory">  </param>
+        /// <param name="callbackUrl"> The URL we should call using `callback_method` when the trigger fires. </param>
+        /// <param name="triggerValue"> The usage value at which the trigger should fire.  For convenience, you can use an offset value such as `+30` to specify a trigger_value that is 30 units more than the current usage value. Be sure to urlencode a `+` as `%2B`. </param>
+        /// <param name="usageCategory">  </param>
+
         public CreateTriggerOptions(Uri callbackUrl, string triggerValue, TriggerResource.UsageCategoryEnum usageCategory)
         {
             CallbackUrl = callbackUrl;
@@ -115,6 +118,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
 
         /// <summary> Construct a new DeleteUsageTriggerOptions </summary>
         /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the UsageTrigger resource to delete. </param>
+
         public DeleteTriggerOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -147,6 +151,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
 
         /// <summary> Construct a new FetchUsageTriggerOptions </summary>
         /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the UsageTrigger resource to fetch. </param>
+
         public FetchTriggerOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -235,6 +240,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
 
         /// <summary> Construct a new UpdateUsageTriggerOptions </summary>
         /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the UsageTrigger resource to update. </param>
+
         public UpdateTriggerOptions(string pathSid)
         {
             PathSid = pathSid;

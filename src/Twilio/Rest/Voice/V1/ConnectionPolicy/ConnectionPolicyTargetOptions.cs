@@ -48,7 +48,9 @@ namespace Twilio.Rest.Voice.V1.ConnectionPolicy
 
 
         /// <summary> Construct a new CreateConnectionPolicyTargetOptions </summary>
-        /// <param name="pathConnectionPolicySid"> The SID of the Connection Policy that owns the Target. </param>        /// <param name="target"> The SIP address you want Twilio to route your calls to. This must be a `sip:` schema. `sips` is NOT supported. </param>
+        /// <param name="pathConnectionPolicySid"> The SID of the Connection Policy that owns the Target. </param>
+        /// <param name="target"> The SIP address you want Twilio to route your calls to. This must be a `sip:` schema. `sips` is NOT supported. </param>
+
         public CreateConnectionPolicyTargetOptions(string pathConnectionPolicySid, Uri target)
         {
             PathConnectionPolicySid = pathConnectionPolicySid;
@@ -99,7 +101,9 @@ namespace Twilio.Rest.Voice.V1.ConnectionPolicy
 
 
         /// <summary> Construct a new DeleteConnectionPolicyTargetOptions </summary>
-        /// <param name="pathConnectionPolicySid"> The SID of the Connection Policy that owns the Target. </param>        /// <param name="pathSid"> The unique string that we created to identify the Target resource to delete. </param>
+        /// <param name="pathConnectionPolicySid"> The SID of the Connection Policy that owns the Target. </param>
+        /// <param name="pathSid"> The unique string that we created to identify the Target resource to delete. </param>
+
         public DeleteConnectionPolicyTargetOptions(string pathConnectionPolicySid, string pathSid)
         {
             PathConnectionPolicySid = pathConnectionPolicySid;
@@ -132,7 +136,9 @@ namespace Twilio.Rest.Voice.V1.ConnectionPolicy
 
 
         /// <summary> Construct a new FetchConnectionPolicyTargetOptions </summary>
-        /// <param name="pathConnectionPolicySid"> The SID of the Connection Policy that owns the Target. </param>        /// <param name="pathSid"> The unique string that we created to identify the Target resource to fetch. </param>
+        /// <param name="pathConnectionPolicySid"> The SID of the Connection Policy that owns the Target. </param>
+        /// <param name="pathSid"> The unique string that we created to identify the Target resource to fetch. </param>
+
         public FetchConnectionPolicyTargetOptions(string pathConnectionPolicySid, string pathSid)
         {
             PathConnectionPolicySid = pathConnectionPolicySid;
@@ -163,6 +169,7 @@ namespace Twilio.Rest.Voice.V1.ConnectionPolicy
 
         /// <summary> Construct a new ListConnectionPolicyTargetOptions </summary>
         /// <param name="pathConnectionPolicySid"> The SID of the Connection Policy from which to read the Targets. </param>
+
         public ReadConnectionPolicyTargetOptions(string pathConnectionPolicySid)
         {
             PathConnectionPolicySid = pathConnectionPolicySid;
@@ -212,7 +219,9 @@ namespace Twilio.Rest.Voice.V1.ConnectionPolicy
 
 
         /// <summary> Construct a new UpdateConnectionPolicyTargetOptions </summary>
-        /// <param name="pathConnectionPolicySid"> The SID of the Connection Policy that owns the Target. </param>        /// <param name="pathSid"> The unique string that we created to identify the Target resource to update. </param>
+        /// <param name="pathConnectionPolicySid"> The SID of the Connection Policy that owns the Target. </param>
+        /// <param name="pathSid"> The unique string that we created to identify the Target resource to update. </param>
+
         public UpdateConnectionPolicyTargetOptions(string pathConnectionPolicySid, string pathSid)
         {
             PathConnectionPolicySid = pathConnectionPolicySid;

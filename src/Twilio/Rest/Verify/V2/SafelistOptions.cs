@@ -34,6 +34,7 @@ namespace Twilio.Rest.Verify.V2
 
         /// <summary> Construct a new CreateSafelistOptions </summary>
         /// <param name="phoneNumber"> The phone number to be added in SafeList. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164). </param>
+
         public CreateSafelistOptions(string phoneNumber)
         {
             PhoneNumber = phoneNumber;
@@ -65,6 +66,7 @@ namespace Twilio.Rest.Verify.V2
 
         /// <summary> Construct a new DeleteSafelistOptions </summary>
         /// <param name="pathPhoneNumber"> The phone number to be removed from SafeList. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164). </param>
+
         public DeleteSafelistOptions(string pathPhoneNumber)
         {
             PathPhoneNumber = pathPhoneNumber;
@@ -94,6 +96,7 @@ namespace Twilio.Rest.Verify.V2
 
         /// <summary> Construct a new FetchSafelistOptions </summary>
         /// <param name="pathPhoneNumber"> The phone number to be fetched from SafeList. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164). </param>
+
         public FetchSafelistOptions(string pathPhoneNumber)
         {
             PathPhoneNumber = pathPhoneNumber;

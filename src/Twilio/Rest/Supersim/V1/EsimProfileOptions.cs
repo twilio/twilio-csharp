@@ -73,6 +73,7 @@ namespace Twilio.Rest.Supersim.V1
 
         /// <summary> Construct a new FetchEsimProfileOptions </summary>
         /// <param name="pathSid"> The SID of the eSIM Profile resource to fetch. </param>
+
         public FetchEsimProfileOptions(string pathSid)
         {
             PathSid = pathSid;

@@ -34,6 +34,7 @@ namespace Twilio.Rest.Bulkexports.V1
 
         /// <summary> Construct a new FetchExportOptions </summary>
         /// <param name="pathResourceType"> The type of communication – Messages, Calls, Conferences, and Participants </param>
+
         public FetchExportOptions(string pathResourceType)
         {
             PathResourceType = pathResourceType;

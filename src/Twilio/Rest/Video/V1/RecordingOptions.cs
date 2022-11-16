@@ -34,6 +34,7 @@ namespace Twilio.Rest.Video.V1
 
         /// <summary> Construct a new DeleteRecordingOptions </summary>
         /// <param name="pathSid"> The SID of the Recording resource to delete. </param>
+
         public DeleteRecordingOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -63,6 +64,7 @@ namespace Twilio.Rest.Video.V1
 
         /// <summary> Construct a new FetchRecordingOptions </summary>
         /// <param name="pathSid"> The SID of the Recording resource to fetch. </param>
+
         public FetchRecordingOptions(string pathSid)
         {
             PathSid = pathSid;

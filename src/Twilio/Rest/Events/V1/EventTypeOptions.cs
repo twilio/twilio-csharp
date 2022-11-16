@@ -34,6 +34,7 @@ namespace Twilio.Rest.Events.V1
 
         /// <summary> Construct a new FetchEventTypeOptions </summary>
         /// <param name="pathType"> A string that uniquely identifies this Event Type. </param>
+
         public FetchEventTypeOptions(string pathType)
         {
             PathType = pathType;

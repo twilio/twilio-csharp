@@ -131,6 +131,7 @@ namespace Twilio.Rest.Conversations.V1
 
         /// <summary> Construct a new DeleteConversationOptions </summary>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. Can also be the `unique_name` of the Conversation. </param>
+
         public DeleteConversationOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -170,6 +171,7 @@ namespace Twilio.Rest.Conversations.V1
 
         /// <summary> Construct a new FetchConversationOptions </summary>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. Can also be the `unique_name` of the Conversation. </param>
+
         public FetchConversationOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -252,6 +254,7 @@ namespace Twilio.Rest.Conversations.V1
 
         /// <summary> Construct a new UpdateConversationOptions </summary>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. Can also be the `unique_name` of the Conversation. </param>
+
         public UpdateConversationOptions(string pathSid)
         {
             PathSid = pathSid;

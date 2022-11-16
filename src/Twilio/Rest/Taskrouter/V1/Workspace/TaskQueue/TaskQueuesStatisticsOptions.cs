@@ -52,6 +52,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
 
         /// <summary> Construct a new ListTaskQueuesStatisticsOptions </summary>
         /// <param name="pathWorkspaceSid"> The SID of the Workspace with the TaskQueues to read. </param>
+
         public ReadTaskQueuesStatisticsOptions(string pathWorkspaceSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;

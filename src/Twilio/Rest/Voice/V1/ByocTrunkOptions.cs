@@ -122,6 +122,7 @@ namespace Twilio.Rest.Voice.V1
 
         /// <summary> Construct a new DeleteByocTrunkOptions </summary>
         /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the BYOC Trunk resource to delete. </param>
+
         public DeleteByocTrunkOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -151,6 +152,7 @@ namespace Twilio.Rest.Voice.V1
 
         /// <summary> Construct a new FetchByocTrunkOptions </summary>
         /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the BYOC Trunk resource to fetch. </param>
+
         public FetchByocTrunkOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -233,6 +235,7 @@ namespace Twilio.Rest.Voice.V1
 
         /// <summary> Construct a new UpdateByocTrunkOptions </summary>
         /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the BYOC Trunk resource to update. </param>
+
         public UpdateByocTrunkOptions(string pathSid)
         {
             PathSid = pathSid;

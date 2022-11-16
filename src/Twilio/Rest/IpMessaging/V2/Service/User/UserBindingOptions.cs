@@ -39,7 +39,10 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
 
 
         /// <summary> Construct a new DeleteUserBindingOptions </summary>
-        /// <param name="pathServiceSid">  </param>        /// <param name="pathUserSid">  </param>        /// <param name="pathSid">  </param>
+        /// <param name="pathServiceSid">  </param>
+        /// <param name="pathUserSid">  </param>
+        /// <param name="pathSid">  </param>
+
         public DeleteUserBindingOptions(string pathServiceSid, string pathUserSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -76,7 +79,10 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
 
 
         /// <summary> Construct a new FetchUserBindingOptions </summary>
-        /// <param name="pathServiceSid">  </param>        /// <param name="pathUserSid">  </param>        /// <param name="pathSid">  </param>
+        /// <param name="pathServiceSid">  </param>
+        /// <param name="pathUserSid">  </param>
+        /// <param name="pathSid">  </param>
+
         public FetchUserBindingOptions(string pathServiceSid, string pathUserSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -113,7 +119,9 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
 
 
         /// <summary> Construct a new ListUserBindingOptions </summary>
-        /// <param name="pathServiceSid">  </param>        /// <param name="pathUserSid">  </param>
+        /// <param name="pathServiceSid">  </param>
+        /// <param name="pathUserSid">  </param>
+
         public ReadUserBindingOptions(string pathServiceSid, string pathUserSid)
         {
             PathServiceSid = pathServiceSid;

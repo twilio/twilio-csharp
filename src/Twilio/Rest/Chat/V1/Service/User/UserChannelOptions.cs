@@ -36,7 +36,9 @@ namespace Twilio.Rest.Chat.V1.Service.User
 
 
         /// <summary> Construct a new ListUserChannelOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/api/chat/rest/services) to read the resources from. </param>        /// <param name="pathUserSid"> The SID of the [User](https://www.twilio.com/docs/api/chat/rest/users) to read the User Channel resources from. </param>
+        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/api/chat/rest/services) to read the resources from. </param>
+        /// <param name="pathUserSid"> The SID of the [User](https://www.twilio.com/docs/api/chat/rest/users) to read the User Channel resources from. </param>
+
         public ReadUserChannelOptions(string pathServiceSid, string pathUserSid)
         {
             PathServiceSid = pathServiceSid;

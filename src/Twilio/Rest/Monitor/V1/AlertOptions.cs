@@ -34,6 +34,7 @@ namespace Twilio.Rest.Monitor.V1
 
         /// <summary> Construct a new FetchAlertOptions </summary>
         /// <param name="pathSid"> The SID of the Alert resource to fetch. </param>
+
         public FetchAlertOptions(string pathSid)
         {
             PathSid = pathSid;

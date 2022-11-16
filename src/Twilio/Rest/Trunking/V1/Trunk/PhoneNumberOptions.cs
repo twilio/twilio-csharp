@@ -36,7 +36,9 @@ namespace Twilio.Rest.Trunking.V1.Trunk
 
 
         /// <summary> Construct a new CreatePhoneNumberOptions </summary>
-        /// <param name="pathTrunkSid"> The SID of the Trunk to associate the phone number with. </param>        /// <param name="phoneNumberSid"> The SID of the [Incoming Phone Number](https://www.twilio.com/docs/phone-numbers/api/incomingphonenumber-resource) that you want to associate with the trunk. </param>
+        /// <param name="pathTrunkSid"> The SID of the Trunk to associate the phone number with. </param>
+        /// <param name="phoneNumberSid"> The SID of the [Incoming Phone Number](https://www.twilio.com/docs/phone-numbers/api/incomingphonenumber-resource) that you want to associate with the trunk. </param>
+
         public CreatePhoneNumberOptions(string pathTrunkSid, string phoneNumberSid)
         {
             PathTrunkSid = pathTrunkSid;
@@ -71,7 +73,9 @@ namespace Twilio.Rest.Trunking.V1.Trunk
 
 
         /// <summary> Construct a new DeletePhoneNumberOptions </summary>
-        /// <param name="pathTrunkSid"> The SID of the Trunk from which to delete the PhoneNumber resource. </param>        /// <param name="pathSid"> The unique string that we created to identify the PhoneNumber resource to delete. </param>
+        /// <param name="pathTrunkSid"> The SID of the Trunk from which to delete the PhoneNumber resource. </param>
+        /// <param name="pathSid"> The unique string that we created to identify the PhoneNumber resource to delete. </param>
+
         public DeletePhoneNumberOptions(string pathTrunkSid, string pathSid)
         {
             PathTrunkSid = pathTrunkSid;
@@ -104,7 +108,9 @@ namespace Twilio.Rest.Trunking.V1.Trunk
 
 
         /// <summary> Construct a new FetchPhoneNumberOptions </summary>
-        /// <param name="pathTrunkSid"> The SID of the Trunk from which to fetch the PhoneNumber resource. </param>        /// <param name="pathSid"> The unique string that we created to identify the PhoneNumber resource to fetch. </param>
+        /// <param name="pathTrunkSid"> The SID of the Trunk from which to fetch the PhoneNumber resource. </param>
+        /// <param name="pathSid"> The unique string that we created to identify the PhoneNumber resource to fetch. </param>
+
         public FetchPhoneNumberOptions(string pathTrunkSid, string pathSid)
         {
             PathTrunkSid = pathTrunkSid;
@@ -135,6 +141,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
 
         /// <summary> Construct a new ListPhoneNumberOptions </summary>
         /// <param name="pathTrunkSid"> The SID of the Trunk from which to read the PhoneNumber resources. </param>
+
         public ReadPhoneNumberOptions(string pathTrunkSid)
         {
             PathTrunkSid = pathTrunkSid;

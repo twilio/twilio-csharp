@@ -34,6 +34,7 @@ namespace Twilio.Rest.Monitor.V1
 
         /// <summary> Construct a new FetchEventOptions </summary>
         /// <param name="pathSid"> The SID of the Event resource to fetch. </param>
+
         public FetchEventOptions(string pathSid)
         {
             PathSid = pathSid;

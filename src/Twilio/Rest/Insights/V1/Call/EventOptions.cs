@@ -37,6 +37,7 @@ namespace Twilio.Rest.Insights.V1.Call
 
         /// <summary> Construct a new ListEventOptions </summary>
         /// <param name="pathCallSid">  </param>
+
         public ReadEventOptions(string pathCallSid)
         {
             PathCallSid = pathCallSid;

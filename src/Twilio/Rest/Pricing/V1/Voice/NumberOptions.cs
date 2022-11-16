@@ -34,6 +34,7 @@ namespace Twilio.Rest.Pricing.V1.Voice
 
         /// <summary> Construct a new FetchVoiceNumberOptions </summary>
         /// <param name="pathNumber"> The phone number to fetch. </param>
+
         public FetchNumberOptions(Types.PhoneNumber pathNumber)
         {
             PathNumber = pathNumber;

@@ -40,6 +40,7 @@ namespace Twilio.Rest.Media.V1.PlayerStreamer
 
         /// <summary> Construct a new CreatePlayerStreamerPlaybackGrantOptions </summary>
         /// <param name="pathSid"> The unique string generated to identify the PlayerStreamer resource associated with this PlaybackGrant </param>
+
         public CreatePlaybackGrantOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -75,6 +76,7 @@ namespace Twilio.Rest.Media.V1.PlayerStreamer
 
         /// <summary> Construct a new FetchPlayerStreamerPlaybackGrantOptions </summary>
         /// <param name="pathSid"> The SID of the PlayerStreamer resource to fetch. </param>
+
         public FetchPlaybackGrantOptions(string pathSid)
         {
             PathSid = pathSid;

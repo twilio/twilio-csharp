@@ -34,6 +34,7 @@ namespace Twilio.Rest.Pricing.V1.PhoneNumber
 
         /// <summary> Construct a new FetchPhoneNumberCountryOptions </summary>
         /// <param name="pathIsoCountry"> The [ISO country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the pricing information to fetch. </param>
+
         public FetchCountryOptions(string pathIsoCountry)
         {
             PathIsoCountry = pathIsoCountry;

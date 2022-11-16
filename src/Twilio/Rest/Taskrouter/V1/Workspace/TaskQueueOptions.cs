@@ -51,7 +51,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
 
         /// <summary> Construct a new CreateTaskQueueOptions </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace that the new TaskQueue belongs to. </param>        /// <param name="friendlyName"> A descriptive string that you create to describe the TaskQueue. For example `Support-Tier 1`, `Sales`, or `Escalation`. </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace that the new TaskQueue belongs to. </param>
+        /// <param name="friendlyName"> A descriptive string that you create to describe the TaskQueue. For example `Support-Tier 1`, `Sales`, or `Escalation`. </param>
+
         public CreateTaskQueueOptions(string pathWorkspaceSid, string friendlyName)
         {
             PathWorkspaceSid = pathWorkspaceSid;
@@ -106,7 +108,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
 
         /// <summary> Construct a new DeleteTaskQueueOptions </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the TaskQueue to delete. </param>        /// <param name="pathSid"> The SID of the TaskQueue resource to delete. </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the TaskQueue to delete. </param>
+        /// <param name="pathSid"> The SID of the TaskQueue resource to delete. </param>
+
         public DeleteTaskQueueOptions(string pathWorkspaceSid, string pathSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;
@@ -139,7 +143,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
 
         /// <summary> Construct a new FetchTaskQueueOptions </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the TaskQueue to fetch. </param>        /// <param name="pathSid"> The SID of the TaskQueue resource to fetch. </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the TaskQueue to fetch. </param>
+        /// <param name="pathSid"> The SID of the TaskQueue resource to fetch. </param>
+
         public FetchTaskQueueOptions(string pathWorkspaceSid, string pathSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;
@@ -182,6 +188,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
         /// <summary> Construct a new ListTaskQueueOptions </summary>
         /// <param name="pathWorkspaceSid"> The SID of the Workspace with the TaskQueue to read. </param>
+
         public ReadTaskQueueOptions(string pathWorkspaceSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;
@@ -250,7 +257,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
 
         /// <summary> Construct a new UpdateTaskQueueOptions </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the TaskQueue to update. </param>        /// <param name="pathSid"> The SID of the TaskQueue resource to update. </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the TaskQueue to update. </param>
+        /// <param name="pathSid"> The SID of the TaskQueue resource to update. </param>
+
         public UpdateTaskQueueOptions(string pathWorkspaceSid, string pathSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;

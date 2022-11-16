@@ -34,6 +34,7 @@ namespace Twilio.Rest.Supersim.V1.Sim
 
         /// <summary> Construct a new ListBillingPeriodOptions </summary>
         /// <param name="pathSimSid"> The SID of the Super SIM to list Billing Periods for. </param>
+
         public ReadBillingPeriodOptions(string pathSimSid)
         {
             PathSimSid = pathSimSid;

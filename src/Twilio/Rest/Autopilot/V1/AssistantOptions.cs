@@ -101,6 +101,7 @@ namespace Twilio.Rest.Autopilot.V1
 
         /// <summary> Construct a new DeleteAssistantOptions </summary>
         /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Assistant resource to delete. </param>
+
         public DeleteAssistantOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -130,6 +131,7 @@ namespace Twilio.Rest.Autopilot.V1
 
         /// <summary> Construct a new FetchAssistantOptions </summary>
         /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Assistant resource to fetch. </param>
+
         public FetchAssistantOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -206,6 +208,7 @@ namespace Twilio.Rest.Autopilot.V1
 
         /// <summary> Construct a new UpdateAssistantOptions </summary>
         /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Assistant resource to update. </param>
+
         public UpdateAssistantOptions(string pathSid)
         {
             PathSid = pathSid;

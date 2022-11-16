@@ -36,7 +36,9 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
 
 
         /// <summary> Construct a new FetchUnderstandTaskActionsOptions </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the parent Assistant. </param>        /// <param name="pathTaskSid"> The unique ID of the Task. </param>
+        /// <param name="pathAssistantSid"> The unique ID of the parent Assistant. </param>
+        /// <param name="pathTaskSid"> The unique ID of the Task. </param>
+
         public FetchTaskActionsOptions(string pathAssistantSid, string pathTaskSid)
         {
             PathAssistantSid = pathAssistantSid;
@@ -72,7 +74,9 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
 
 
         /// <summary> Construct a new UpdateUnderstandTaskActionsOptions </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the parent Assistant. </param>        /// <param name="pathTaskSid"> The unique ID of the Task. </param>
+        /// <param name="pathAssistantSid"> The unique ID of the parent Assistant. </param>
+        /// <param name="pathTaskSid"> The unique ID of the Task. </param>
+
         public UpdateTaskActionsOptions(string pathAssistantSid, string pathTaskSid)
         {
             PathAssistantSid = pathAssistantSid;

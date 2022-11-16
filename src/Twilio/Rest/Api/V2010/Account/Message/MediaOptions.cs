@@ -39,7 +39,9 @@ namespace Twilio.Rest.Api.V2010.Account.Message
 
 
         /// <summary> Construct a new DeleteMediaOptions </summary>
-        /// <param name="pathMessageSid"> The SID of the Message resource that this Media resource belongs to. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Media resource to delete </param>
+        /// <param name="pathMessageSid"> The SID of the Message resource that this Media resource belongs to. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Media resource to delete </param>
+
         public DeleteMediaOptions(string pathMessageSid, string pathSid)
         {
             PathMessageSid = pathMessageSid;
@@ -75,7 +77,9 @@ namespace Twilio.Rest.Api.V2010.Account.Message
 
 
         /// <summary> Construct a new FetchMediaOptions </summary>
-        /// <param name="pathMessageSid"> The SID of the Message resource that this Media resource belongs to. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Media resource to fetch </param>
+        /// <param name="pathMessageSid"> The SID of the Message resource that this Media resource belongs to. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Media resource to fetch </param>
+
         public FetchMediaOptions(string pathMessageSid, string pathSid)
         {
             PathMessageSid = pathMessageSid;
@@ -118,6 +122,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
 
         /// <summary> Construct a new ListMediaOptions </summary>
         /// <param name="pathMessageSid"> The SID of the Message resource that this Media resource belongs to. </param>
+
         public ReadMediaOptions(string pathMessageSid)
         {
             PathMessageSid = pathMessageSid;

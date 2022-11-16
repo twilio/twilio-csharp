@@ -108,6 +108,7 @@ namespace Twilio.Rest.Trunking.V1
 
         /// <summary> Construct a new DeleteTrunkOptions </summary>
         /// <param name="pathSid"> The unique string that we created to identify the Trunk resource to delete. </param>
+
         public DeleteTrunkOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -137,6 +138,7 @@ namespace Twilio.Rest.Trunking.V1
 
         /// <summary> Construct a new FetchTrunkOptions </summary>
         /// <param name="pathSid"> The unique string that we created to identify the Trunk resource to fetch. </param>
+
         public FetchTrunkOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -213,6 +215,7 @@ namespace Twilio.Rest.Trunking.V1
 
         /// <summary> Construct a new UpdateTrunkOptions </summary>
         /// <param name="pathSid"> The unique string that we created to identify the OriginationUrl resource to update. </param>
+
         public UpdateTrunkOptions(string pathSid)
         {
             PathSid = pathSid;

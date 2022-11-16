@@ -34,6 +34,7 @@ namespace Twilio.Rest.Insights.V1
 
         /// <summary> Construct a new FetchConferenceOptions </summary>
         /// <param name="pathConferenceSid"> The unique SID identifier of the Conference. </param>
+
         public FetchConferenceOptions(string pathConferenceSid)
         {
             PathConferenceSid = pathConferenceSid;

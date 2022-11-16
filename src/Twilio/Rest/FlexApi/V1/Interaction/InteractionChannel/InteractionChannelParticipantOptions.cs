@@ -42,7 +42,11 @@ namespace Twilio.Rest.FlexApi.V1.Interaction.InteractionChannel
 
 
         /// <summary> Construct a new CreateInteractionChannelParticipantOptions </summary>
-        /// <param name="pathInteractionSid"> The Interaction Sid for the new Channel Participant. </param>        /// <param name="pathChannelSid"> The Channel Sid for the new Channel Participant. </param>        /// <param name="type">  </param>        /// <param name="mediaProperties"> JSON representing the Media Properties for the new Participant. </param>
+        /// <param name="pathInteractionSid"> The Interaction Sid for the new Channel Participant. </param>
+        /// <param name="pathChannelSid"> The Channel Sid for the new Channel Participant. </param>
+        /// <param name="type">  </param>
+        /// <param name="mediaProperties"> JSON representing the Media Properties for the new Participant. </param>
+
         public CreateInteractionChannelParticipantOptions(string pathInteractionSid, string pathChannelSid, InteractionChannelParticipantResource.TypeEnum type, object mediaProperties)
         {
             PathInteractionSid = pathInteractionSid;
@@ -83,7 +87,9 @@ namespace Twilio.Rest.FlexApi.V1.Interaction.InteractionChannel
 
 
         /// <summary> Construct a new ListInteractionChannelParticipantOptions </summary>
-        /// <param name="pathInteractionSid"> The Interaction Sid for this channel. </param>        /// <param name="pathChannelSid"> The Channel Sid for this Participant. </param>
+        /// <param name="pathInteractionSid"> The Interaction Sid for this channel. </param>
+        /// <param name="pathChannelSid"> The Channel Sid for this Participant. </param>
+
         public ReadInteractionChannelParticipantOptions(string pathInteractionSid, string pathChannelSid)
         {
             PathInteractionSid = pathInteractionSid;
@@ -125,7 +131,11 @@ namespace Twilio.Rest.FlexApi.V1.Interaction.InteractionChannel
 
 
         /// <summary> Construct a new UpdateInteractionChannelParticipantOptions </summary>
-        /// <param name="pathInteractionSid"> The Interaction Sid for this channel. </param>        /// <param name="pathChannelSid"> The Channel Sid for this Participant. </param>        /// <param name="pathSid"> The unique string created by Twilio to identify an Interaction Channel resource. </param>        /// <param name="status">  </param>
+        /// <param name="pathInteractionSid"> The Interaction Sid for this channel. </param>
+        /// <param name="pathChannelSid"> The Channel Sid for this Participant. </param>
+        /// <param name="pathSid"> The unique string created by Twilio to identify an Interaction Channel resource. </param>
+        /// <param name="status">  </param>
+
         public UpdateInteractionChannelParticipantOptions(string pathInteractionSid, string pathChannelSid, string pathSid, InteractionChannelParticipantResource.StatusEnum status)
         {
             PathInteractionSid = pathInteractionSid;

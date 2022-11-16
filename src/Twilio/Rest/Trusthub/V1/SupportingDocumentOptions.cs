@@ -39,7 +39,9 @@ namespace Twilio.Rest.Trusthub.V1
 
 
         /// <summary> Construct a new CreateSupportingDocumentOptions </summary>
-        /// <param name="friendlyName"> The string that you assigned to describe the resource. </param>        /// <param name="type"> The type of the Supporting Document. </param>
+        /// <param name="friendlyName"> The string that you assigned to describe the resource. </param>
+        /// <param name="type"> The type of the Supporting Document. </param>
+
         public CreateSupportingDocumentOptions(string friendlyName, string type)
         {
             FriendlyName = friendlyName;
@@ -80,6 +82,7 @@ namespace Twilio.Rest.Trusthub.V1
 
         /// <summary> Construct a new DeleteSupportingDocumentOptions </summary>
         /// <param name="pathSid"> The unique string created by Twilio to identify the Supporting Document resource. </param>
+
         public DeleteSupportingDocumentOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -109,6 +112,7 @@ namespace Twilio.Rest.Trusthub.V1
 
         /// <summary> Construct a new FetchSupportingDocumentOptions </summary>
         /// <param name="pathSid"> The unique string created by Twilio to identify the Supporting Document resource. </param>
+
         public FetchSupportingDocumentOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -167,6 +171,7 @@ namespace Twilio.Rest.Trusthub.V1
 
         /// <summary> Construct a new UpdateSupportingDocumentOptions </summary>
         /// <param name="pathSid"> The unique string created by Twilio to identify the Supporting Document resource. </param>
+
         public UpdateSupportingDocumentOptions(string pathSid)
         {
             PathSid = pathSid;

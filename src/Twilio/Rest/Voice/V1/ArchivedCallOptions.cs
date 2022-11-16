@@ -36,7 +36,9 @@ namespace Twilio.Rest.Voice.V1
 
 
         /// <summary> Construct a new DeleteArchivedCallOptions </summary>
-        /// <param name="pathDate"> The date of the Call in UTC. </param>        /// <param name="pathSid"> The Twilio-provided Call SID that uniquely identifies the Call resource to delete </param>
+        /// <param name="pathDate"> The date of the Call in UTC. </param>
+        /// <param name="pathSid"> The Twilio-provided Call SID that uniquely identifies the Call resource to delete </param>
+
         public DeleteArchivedCallOptions(DateTime? pathDate, string pathSid)
         {
             PathDate = pathDate;

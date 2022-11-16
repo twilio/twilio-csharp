@@ -48,7 +48,9 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
 
         /// <summary> Construct a new CreateCallFeedbackSummaryOptions </summary>
-        /// <param name="startDate"> Only include feedback given on or after this date. Format is `YYYY-MM-DD` and specified in UTC. </param>        /// <param name="endDate"> Only include feedback given on or before this date. Format is `YYYY-MM-DD` and specified in UTC. </param>
+        /// <param name="startDate"> Only include feedback given on or after this date. Format is `YYYY-MM-DD` and specified in UTC. </param>
+        /// <param name="endDate"> Only include feedback given on or before this date. Format is `YYYY-MM-DD` and specified in UTC. </param>
+
         public CreateFeedbackSummaryOptions(DateTime? startDate, DateTime? endDate)
         {
             StartDate = startDate;
@@ -100,6 +102,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
         /// <summary> Construct a new DeleteCallFeedbackSummaryOptions </summary>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+
         public DeleteFeedbackSummaryOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -132,6 +135,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
         /// <summary> Construct a new FetchCallFeedbackSummaryOptions </summary>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+
         public FetchFeedbackSummaryOptions(string pathSid)
         {
             PathSid = pathSid;

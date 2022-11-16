@@ -34,6 +34,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant
 
         /// <summary> Construct a new FetchUnderstandAssistantInitiationActionsOptions </summary>
         /// <param name="pathAssistantSid">  </param>
+
         public FetchAssistantInitiationActionsOptions(string pathAssistantSid)
         {
             PathAssistantSid = pathAssistantSid;
@@ -66,6 +67,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant
 
         /// <summary> Construct a new UpdateUnderstandAssistantInitiationActionsOptions </summary>
         /// <param name="pathAssistantSid">  </param>
+
         public UpdateAssistantInitiationActionsOptions(string pathAssistantSid)
         {
             PathAssistantSid = pathAssistantSid;

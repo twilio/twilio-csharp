@@ -36,7 +36,9 @@ namespace Twilio.Rest.Video.V1.Room
 
 
         /// <summary> Construct a new DeleteRoomRecordingOptions </summary>
-        /// <param name="pathRoomSid"> The SID of the room with the RoomRecording resource to delete. </param>        /// <param name="pathSid"> The SID of the RoomRecording resource to delete. </param>
+        /// <param name="pathRoomSid"> The SID of the room with the RoomRecording resource to delete. </param>
+        /// <param name="pathSid"> The SID of the RoomRecording resource to delete. </param>
+
         public DeleteRoomRecordingOptions(string pathRoomSid, string pathSid)
         {
             PathRoomSid = pathRoomSid;
@@ -69,7 +71,9 @@ namespace Twilio.Rest.Video.V1.Room
 
 
         /// <summary> Construct a new FetchRoomRecordingOptions </summary>
-        /// <param name="pathRoomSid"> The SID of the Room resource with the recording to fetch. </param>        /// <param name="pathSid"> The SID of the RoomRecording resource to fetch. </param>
+        /// <param name="pathRoomSid"> The SID of the Room resource with the recording to fetch. </param>
+        /// <param name="pathSid"> The SID of the RoomRecording resource to fetch. </param>
+
         public FetchRoomRecordingOptions(string pathRoomSid, string pathSid)
         {
             PathRoomSid = pathRoomSid;
@@ -112,6 +116,7 @@ namespace Twilio.Rest.Video.V1.Room
 
         /// <summary> Construct a new ListRoomRecordingOptions </summary>
         /// <param name="pathRoomSid"> The SID of the room with the RoomRecording resources to read. </param>
+
         public ReadRoomRecordingOptions(string pathRoomSid)
         {
             PathRoomSid = pathRoomSid;

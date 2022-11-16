@@ -34,6 +34,7 @@ namespace Twilio.Rest.Routes.V2
 
         /// <summary> Construct a new FetchPhoneNumberOptions </summary>
         /// <param name="pathPhoneNumber"> The phone number in E.164 format </param>
+
         public FetchPhoneNumberOptions(string pathPhoneNumber)
         {
             PathPhoneNumber = pathPhoneNumber;
@@ -69,6 +70,7 @@ namespace Twilio.Rest.Routes.V2
 
         /// <summary> Construct a new UpdatePhoneNumberOptions </summary>
         /// <param name="pathPhoneNumber"> The phone number in E.164 format </param>
+
         public UpdatePhoneNumberOptions(string pathPhoneNumber)
         {
             PathPhoneNumber = pathPhoneNumber;

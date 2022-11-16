@@ -40,6 +40,7 @@ namespace Twilio.Rest.Lookups.V2
 
         /// <summary> Construct a new FetchPhoneNumberOptions </summary>
         /// <param name="pathPhoneNumber"> The phone number to lookup in E.164 or national format. Default country code is +1 (North America). </param>
+
         public FetchPhoneNumberOptions(string pathPhoneNumber)
         {
             PathPhoneNumber = pathPhoneNumber;

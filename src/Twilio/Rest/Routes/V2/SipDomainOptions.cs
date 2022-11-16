@@ -34,6 +34,7 @@ namespace Twilio.Rest.Routes.V2
 
         /// <summary> Construct a new FetchSipDomainOptions </summary>
         /// <param name="pathSipDomain">  </param>
+
         public FetchSipDomainOptions(string pathSipDomain)
         {
             PathSipDomain = pathSipDomain;
@@ -69,6 +70,7 @@ namespace Twilio.Rest.Routes.V2
 
         /// <summary> Construct a new UpdateSipDomainOptions </summary>
         /// <param name="pathSipDomain">  </param>
+
         public UpdateSipDomainOptions(string pathSipDomain)
         {
             PathSipDomain = pathSipDomain;

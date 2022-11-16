@@ -46,6 +46,7 @@ namespace Twilio.Rest.Lookups.V1
 
         /// <summary> Construct a new FetchPhoneNumberOptions </summary>
         /// <param name="pathPhoneNumber"> The phone number to lookup in [E.164](https://www.twilio.com/docs/glossary/what-e164) format, which consists of a + followed by the country code and subscriber number. </param>
+
         public FetchPhoneNumberOptions(Types.PhoneNumber pathPhoneNumber)
         {
             PathPhoneNumber = pathPhoneNumber;

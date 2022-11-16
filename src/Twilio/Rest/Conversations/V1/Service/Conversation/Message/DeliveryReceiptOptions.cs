@@ -42,7 +42,11 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation.Message
 
 
         /// <summary> Construct a new FetchServiceConversationMessageReceiptOptions </summary>
-        /// <param name="pathChatServiceSid"> The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Message resource is associated with. </param>        /// <param name="pathConversationSid"> The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this message. </param>        /// <param name="pathMessageSid"> The SID of the message within a [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) the delivery receipt belongs to. </param>        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="pathChatServiceSid"> The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Message resource is associated with. </param>
+        /// <param name="pathConversationSid"> The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this message. </param>
+        /// <param name="pathMessageSid"> The SID of the message within a [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) the delivery receipt belongs to. </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+
         public FetchDeliveryReceiptOptions(string pathChatServiceSid, string pathConversationSid, string pathMessageSid, string pathSid)
         {
             PathChatServiceSid = pathChatServiceSid;
@@ -80,7 +84,10 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation.Message
 
 
         /// <summary> Construct a new ListServiceConversationMessageReceiptOptions </summary>
-        /// <param name="pathChatServiceSid"> The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Message resource is associated with. </param>        /// <param name="pathConversationSid"> The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this message. </param>        /// <param name="pathMessageSid"> The SID of the message within a [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) the delivery receipt belongs to. </param>
+        /// <param name="pathChatServiceSid"> The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Message resource is associated with. </param>
+        /// <param name="pathConversationSid"> The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this message. </param>
+        /// <param name="pathMessageSid"> The SID of the message within a [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) the delivery receipt belongs to. </param>
+
         public ReadDeliveryReceiptOptions(string pathChatServiceSid, string pathConversationSid, string pathMessageSid)
         {
             PathChatServiceSid = pathChatServiceSid;

@@ -37,6 +37,7 @@ namespace Twilio.Rest.Messaging.V1.Service
 
         /// <summary> Construct a new FetchUsAppToPersonUsecaseOptions </summary>
         /// <param name="pathMessagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) to fetch the resource from. </param>
+
         public FetchUsAppToPersonUsecaseOptions(string pathMessagingServiceSid)
         {
             PathMessagingServiceSid = pathMessagingServiceSid;

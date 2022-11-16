@@ -39,7 +39,9 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
 
 
         /// <summary> Construct a new CreateFieldTypeOptions </summary>
-        /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the new resource. </param>        /// <param name="uniqueName"> An application-defined string that uniquely identifies the new resource. It can be used as an alternative to the `sid` in the URL path to address the resource. The first 64 characters must be unique. </param>
+        /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the new resource. </param>
+        /// <param name="uniqueName"> An application-defined string that uniquely identifies the new resource. It can be used as an alternative to the `sid` in the URL path to address the resource. The first 64 characters must be unique. </param>
+
         public CreateFieldTypeOptions(string pathAssistantSid, string uniqueName)
         {
             PathAssistantSid = pathAssistantSid;
@@ -78,7 +80,9 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
 
 
         /// <summary> Construct a new DeleteFieldTypeOptions </summary>
-        /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resources to delete. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the FieldType resource to delete. </param>
+        /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resources to delete. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the FieldType resource to delete. </param>
+
         public DeleteFieldTypeOptions(string pathAssistantSid, string pathSid)
         {
             PathAssistantSid = pathAssistantSid;
@@ -111,7 +115,9 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
 
 
         /// <summary> Construct a new FetchFieldTypeOptions </summary>
-        /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resource to fetch. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the FieldType resource to fetch. </param>
+        /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resource to fetch. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the FieldType resource to fetch. </param>
+
         public FetchFieldTypeOptions(string pathAssistantSid, string pathSid)
         {
             PathAssistantSid = pathAssistantSid;
@@ -142,6 +148,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
 
         /// <summary> Construct a new ListFieldTypeOptions </summary>
         /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resources to read. </param>
+
         public ReadFieldTypeOptions(string pathAssistantSid)
         {
             PathAssistantSid = pathAssistantSid;
@@ -182,7 +189,9 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
 
 
         /// <summary> Construct a new UpdateFieldTypeOptions </summary>
-        /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the to update. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the FieldType resource to update. </param>
+        /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the to update. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the FieldType resource to update. </param>
+
         public UpdateFieldTypeOptions(string pathAssistantSid, string pathSid)
         {
             PathAssistantSid = pathAssistantSid;

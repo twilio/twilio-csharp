@@ -40,6 +40,7 @@ namespace Twilio.Rest.Sync.V1.Service
 
         /// <summary> Construct a new CreateSyncStreamOptions </summary>
         /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) to create the new Stream in. </param>
+
         public CreateSyncStreamOptions(string pathServiceSid)
         {
             PathServiceSid = pathServiceSid;
@@ -77,7 +78,9 @@ namespace Twilio.Rest.Sync.V1.Service
 
 
         /// <summary> Construct a new DeleteSyncStreamOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync Stream resource to delete. </param>        /// <param name="pathSid"> The SID of the Stream resource to delete. </param>
+        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync Stream resource to delete. </param>
+        /// <param name="pathSid"> The SID of the Stream resource to delete. </param>
+
         public DeleteSyncStreamOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -110,7 +113,9 @@ namespace Twilio.Rest.Sync.V1.Service
 
 
         /// <summary> Construct a new FetchSyncStreamOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync Stream resource to fetch. </param>        /// <param name="pathSid"> The SID of the Stream resource to fetch. </param>
+        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync Stream resource to fetch. </param>
+        /// <param name="pathSid"> The SID of the Stream resource to fetch. </param>
+
         public FetchSyncStreamOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -141,6 +146,7 @@ namespace Twilio.Rest.Sync.V1.Service
 
         /// <summary> Construct a new ListSyncStreamOptions </summary>
         /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Stream resources to read. </param>
+
         public ReadSyncStreamOptions(string pathServiceSid)
         {
             PathServiceSid = pathServiceSid;
@@ -178,7 +184,9 @@ namespace Twilio.Rest.Sync.V1.Service
 
 
         /// <summary> Construct a new UpdateSyncStreamOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync Stream resource to update. </param>        /// <param name="pathSid"> The SID of the Stream resource to update. </param>
+        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync Stream resource to update. </param>
+        /// <param name="pathSid"> The SID of the Stream resource to update. </param>
+
         public UpdateSyncStreamOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;

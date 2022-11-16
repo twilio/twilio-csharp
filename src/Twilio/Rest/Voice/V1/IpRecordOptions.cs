@@ -40,6 +40,7 @@ namespace Twilio.Rest.Voice.V1
 
         /// <summary> Construct a new CreateIpRecordOptions </summary>
         /// <param name="ipAddress"> An IP address in dotted decimal notation, IPv4 only. </param>
+
         public CreateIpRecordOptions(string ipAddress)
         {
             IpAddress = ipAddress;
@@ -79,6 +80,7 @@ namespace Twilio.Rest.Voice.V1
 
         /// <summary> Construct a new DeleteIpRecordOptions </summary>
         /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the IP Record resource to delete. </param>
+
         public DeleteIpRecordOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -108,6 +110,7 @@ namespace Twilio.Rest.Voice.V1
 
         /// <summary> Construct a new FetchIpRecordOptions </summary>
         /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the IP Record resource to fetch. </param>
+
         public FetchIpRecordOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -163,6 +166,7 @@ namespace Twilio.Rest.Voice.V1
 
         /// <summary> Construct a new UpdateIpRecordOptions </summary>
         /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the IP Record resource to update. </param>
+
         public UpdateIpRecordOptions(string pathSid)
         {
             PathSid = pathSid;

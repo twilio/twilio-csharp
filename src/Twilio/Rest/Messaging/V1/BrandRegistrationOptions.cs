@@ -45,7 +45,9 @@ namespace Twilio.Rest.Messaging.V1
 
 
         /// <summary> Construct a new CreateBrandRegistrationsOptions </summary>
-        /// <param name="customerProfileBundleSid"> Customer Profile Bundle Sid. </param>        /// <param name="a2PProfileBundleSid"> A2P Messaging Profile Bundle Sid. </param>
+        /// <param name="customerProfileBundleSid"> Customer Profile Bundle Sid. </param>
+        /// <param name="a2PProfileBundleSid"> A2P Messaging Profile Bundle Sid. </param>
+
         public CreateBrandRegistrationOptions(string customerProfileBundleSid, string a2PProfileBundleSid)
         {
             CustomerProfileBundleSid = customerProfileBundleSid;
@@ -94,6 +96,7 @@ namespace Twilio.Rest.Messaging.V1
 
         /// <summary> Construct a new FetchBrandRegistrationsOptions </summary>
         /// <param name="pathSid"> The SID of the Brand Registration resource to fetch. </param>
+
         public FetchBrandRegistrationOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -146,6 +149,7 @@ namespace Twilio.Rest.Messaging.V1
 
         /// <summary> Construct a new UpdateBrandRegistrationsOptions </summary>
         /// <param name="pathSid"> The SID of the Brand Registration resource to update. </param>
+
         public UpdateBrandRegistrationOptions(string pathSid)
         {
             PathSid = pathSid;

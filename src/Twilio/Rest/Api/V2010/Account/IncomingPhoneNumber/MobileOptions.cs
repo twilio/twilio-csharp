@@ -103,6 +103,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
 
         /// <summary> Construct a new CreateIncomingPhoneNumberMobileOptions </summary>
         /// <param name="phoneNumber"> The phone number to purchase specified in [E.164](https://www.twilio.com/docs/glossary/what-e164) format.  E.164 phone numbers consist of a + followed by the country code and subscriber number without punctuation characters. For example, +14155551234. </param>
+
         public CreateMobileOptions(Types.PhoneNumber phoneNumber)
         {
             PhoneNumber = phoneNumber;

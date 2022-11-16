@@ -36,7 +36,9 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
 
 
         /// <summary> Construct a new FetchDialogueOptions </summary>
-        /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resource to fetch. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Dialogue resource to fetch. </param>
+        /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resource to fetch. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Dialogue resource to fetch. </param>
+
         public FetchDialogueOptions(string pathAssistantSid, string pathSid)
         {
             PathAssistantSid = pathAssistantSid;

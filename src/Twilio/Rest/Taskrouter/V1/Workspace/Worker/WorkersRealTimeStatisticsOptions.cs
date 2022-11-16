@@ -37,6 +37,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
 
         /// <summary> Construct a new FetchWorkersRealTimeStatisticsOptions </summary>
         /// <param name="pathWorkspaceSid"> The SID of the Workspace with the resource to fetch. </param>
+
         public FetchWorkersRealTimeStatisticsOptions(string pathWorkspaceSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;

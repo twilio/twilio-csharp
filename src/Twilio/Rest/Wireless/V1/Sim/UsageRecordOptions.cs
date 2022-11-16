@@ -43,6 +43,7 @@ namespace Twilio.Rest.Wireless.V1.Sim
 
         /// <summary> Construct a new ListUsageRecordOptions </summary>
         /// <param name="pathSimSid"> The SID of the [Sim resource](https://www.twilio.com/docs/wireless/api/sim-resource)  to read the usage from. </param>
+
         public ReadUsageRecordOptions(string pathSimSid)
         {
             PathSimSid = pathSimSid;

@@ -42,7 +42,11 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
 
 
         /// <summary> Construct a new CreateUnderstandFieldOptions </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the parent Assistant. </param>        /// <param name="pathTaskSid"> The unique ID of the Task associated with this Field. </param>        /// <param name="fieldType"> The unique name or sid of the FieldType. It can be any [Built-in Field Type](https://www.twilio.com/docs/assistant/api/built-in-field-types) or the unique_name or the Field Type sid of a custom Field Type. </param>        /// <param name="uniqueName"> A user-provided string that uniquely identifies this resource as an alternative to the sid. Unique up to 64 characters long. </param>
+        /// <param name="pathAssistantSid"> The unique ID of the parent Assistant. </param>
+        /// <param name="pathTaskSid"> The unique ID of the Task associated with this Field. </param>
+        /// <param name="fieldType"> The unique name or sid of the FieldType. It can be any [Built-in Field Type](https://www.twilio.com/docs/assistant/api/built-in-field-types) or the unique_name or the Field Type sid of a custom Field Type. </param>
+        /// <param name="uniqueName"> A user-provided string that uniquely identifies this resource as an alternative to the sid. Unique up to 64 characters long. </param>
+
         public CreateFieldOptions(string pathAssistantSid, string pathTaskSid, string fieldType, string uniqueName)
         {
             PathAssistantSid = pathAssistantSid;
@@ -86,7 +90,10 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
 
 
         /// <summary> Construct a new DeleteUnderstandFieldOptions </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>        /// <param name="pathTaskSid"> The unique ID of the Task associated with this Field. </param>        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
+        /// <param name="pathTaskSid"> The unique ID of the Task associated with this Field. </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+
         public DeleteFieldOptions(string pathAssistantSid, string pathTaskSid, string pathSid)
         {
             PathAssistantSid = pathAssistantSid;
@@ -123,7 +130,10 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
 
 
         /// <summary> Construct a new FetchUnderstandFieldOptions </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>        /// <param name="pathTaskSid"> The unique ID of the Task associated with this Field. </param>        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
+        /// <param name="pathTaskSid"> The unique ID of the Task associated with this Field. </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+
         public FetchFieldOptions(string pathAssistantSid, string pathTaskSid, string pathSid)
         {
             PathAssistantSid = pathAssistantSid;
@@ -157,7 +167,9 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
 
 
         /// <summary> Construct a new ListUnderstandFieldOptions </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>        /// <param name="pathTaskSid"> The unique ID of the Task associated with this Field. </param>
+        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
+        /// <param name="pathTaskSid"> The unique ID of the Task associated with this Field. </param>
+
         public ReadFieldOptions(string pathAssistantSid, string pathTaskSid)
         {
             PathAssistantSid = pathAssistantSid;

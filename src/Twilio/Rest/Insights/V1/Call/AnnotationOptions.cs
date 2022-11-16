@@ -34,6 +34,7 @@ namespace Twilio.Rest.Insights.V1.Call
 
         /// <summary> Construct a new FetchAnnotationOptions </summary>
         /// <param name="pathCallSid"> The unique SID identifier of the Call. </param>
+
         public FetchAnnotationOptions(string pathCallSid)
         {
             PathCallSid = pathCallSid;
@@ -84,6 +85,7 @@ namespace Twilio.Rest.Insights.V1.Call
 
         /// <summary> Construct a new UpdateAnnotationOptions </summary>
         /// <param name="pathCallSid"> The unique string that Twilio created to identify this Call resource. It always starts with a CA. </param>
+
         public UpdateAnnotationOptions(string pathCallSid)
         {
             PathCallSid = pathCallSid;

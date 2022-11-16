@@ -39,7 +39,9 @@ namespace Twilio.Rest.Serverless.V1.Service
 
 
         /// <summary> Construct a new CreateEnvironmentOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to create the Environment resource under. </param>        /// <param name="uniqueName"> A user-defined string that uniquely identifies the Environment resource. It can be a maximum of 100 characters. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to create the Environment resource under. </param>
+        /// <param name="uniqueName"> A user-defined string that uniquely identifies the Environment resource. It can be a maximum of 100 characters. </param>
+
         public CreateEnvironmentOptions(string pathServiceSid, string uniqueName)
         {
             PathServiceSid = pathServiceSid;
@@ -78,7 +80,9 @@ namespace Twilio.Rest.Serverless.V1.Service
 
 
         /// <summary> Construct a new DeleteEnvironmentOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to delete the Environment resource from. </param>        /// <param name="pathSid"> The SID of the Environment resource to delete. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to delete the Environment resource from. </param>
+        /// <param name="pathSid"> The SID of the Environment resource to delete. </param>
+
         public DeleteEnvironmentOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -111,7 +115,9 @@ namespace Twilio.Rest.Serverless.V1.Service
 
 
         /// <summary> Construct a new FetchEnvironmentOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to fetch the Environment resource from. </param>        /// <param name="pathSid"> The SID of the Environment resource to fetch. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to fetch the Environment resource from. </param>
+        /// <param name="pathSid"> The SID of the Environment resource to fetch. </param>
+
         public FetchEnvironmentOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -142,6 +148,7 @@ namespace Twilio.Rest.Serverless.V1.Service
 
         /// <summary> Construct a new ListEnvironmentOptions </summary>
         /// <param name="pathServiceSid"> The SID of the Service to read the Environment resources from. </param>
+
         public ReadEnvironmentOptions(string pathServiceSid)
         {
             PathServiceSid = pathServiceSid;

@@ -37,6 +37,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
         /// <summary> Construct a new DeleteConnectAppOptions </summary>
         /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the ConnectApp resource to fetch. </param>
+
         public DeleteConnectAppOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -69,6 +70,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
         /// <summary> Construct a new FetchConnectAppOptions </summary>
         /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the ConnectApp resource to fetch. </param>
+
         public FetchConnectAppOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -151,6 +153,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
         /// <summary> Construct a new UpdateConnectAppOptions </summary>
         /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the ConnectApp resource to update. </param>
+
         public UpdateConnectAppOptions(string pathSid)
         {
             PathSid = pathSid;

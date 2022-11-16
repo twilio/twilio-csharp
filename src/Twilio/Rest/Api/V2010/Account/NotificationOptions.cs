@@ -37,6 +37,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
         /// <summary> Construct a new FetchNotificationOptions </summary>
         /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Notification resource to fetch. </param>
+
         public FetchNotificationOptions(string pathSid)
         {
             PathSid = pathSid;

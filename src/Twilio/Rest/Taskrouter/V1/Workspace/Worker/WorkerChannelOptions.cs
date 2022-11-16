@@ -39,7 +39,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
 
 
         /// <summary> Construct a new FetchWorkerChannelOptions </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the WorkerChannel to fetch. </param>        /// <param name="pathWorkerSid"> The SID of the Worker with the WorkerChannel to fetch. </param>        /// <param name="pathSid"> The SID of the WorkerChannel to fetch. </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the WorkerChannel to fetch. </param>
+        /// <param name="pathWorkerSid"> The SID of the Worker with the WorkerChannel to fetch. </param>
+        /// <param name="pathSid"> The SID of the WorkerChannel to fetch. </param>
+
         public FetchWorkerChannelOptions(string pathWorkspaceSid, string pathWorkerSid, string pathSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;
@@ -73,7 +76,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
 
 
         /// <summary> Construct a new ListWorkerChannelOptions </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the WorkerChannels to read. </param>        /// <param name="pathWorkerSid"> The SID of the Worker with the WorkerChannels to read. </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the WorkerChannels to read. </param>
+        /// <param name="pathWorkerSid"> The SID of the Worker with the WorkerChannels to read. </param>
+
         public ReadWorkerChannelOptions(string pathWorkspaceSid, string pathWorkerSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;
@@ -118,7 +123,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
 
 
         /// <summary> Construct a new UpdateWorkerChannelOptions </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the WorkerChannel to update. </param>        /// <param name="pathWorkerSid"> The SID of the Worker with the WorkerChannel to update. </param>        /// <param name="pathSid"> The SID of the WorkerChannel to update. </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the WorkerChannel to update. </param>
+        /// <param name="pathWorkerSid"> The SID of the Worker with the WorkerChannel to update. </param>
+        /// <param name="pathSid"> The SID of the WorkerChannel to update. </param>
+
         public UpdateWorkerChannelOptions(string pathWorkspaceSid, string pathWorkerSid, string pathSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;

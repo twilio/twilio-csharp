@@ -42,7 +42,11 @@ namespace Twilio.Rest.Chat.V1.Service
 
 
         /// <summary> Construct a new CreateRoleOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/api/chat/rest/services) to create the resource under. </param>        /// <param name="friendlyName"> A descriptive string that you create to describe the new resource. It can be up to 64 characters long. </param>        /// <param name="type">  </param>        /// <param name="permission"> A permission that you grant to the new role. Only one permission can be granted per parameter. To assign more than one permission, repeat this parameter for each permission value. The values for this parameter depend on the role's `type` and are described in the documentation. </param>
+        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/api/chat/rest/services) to create the resource under. </param>
+        /// <param name="friendlyName"> A descriptive string that you create to describe the new resource. It can be up to 64 characters long. </param>
+        /// <param name="type">  </param>
+        /// <param name="permission"> A permission that you grant to the new role. Only one permission can be granted per parameter. To assign more than one permission, repeat this parameter for each permission value. The values for this parameter depend on the role's `type` and are described in the documentation. </param>
+
         public CreateRoleOptions(string pathServiceSid, string friendlyName, RoleResource.RoleTypeEnum type, List<string> permission)
         {
             PathServiceSid = pathServiceSid;
@@ -87,7 +91,9 @@ namespace Twilio.Rest.Chat.V1.Service
 
 
         /// <summary> Construct a new DeleteRoleOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/api/chat/rest/services) to delete the resource from. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Role resource to delete. </param>
+        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/api/chat/rest/services) to delete the resource from. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Role resource to delete. </param>
+
         public DeleteRoleOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -120,7 +126,9 @@ namespace Twilio.Rest.Chat.V1.Service
 
 
         /// <summary> Construct a new FetchRoleOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/api/chat/rest/services) to fetch the resource from. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Role resource to fetch. </param>
+        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/api/chat/rest/services) to fetch the resource from. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Role resource to fetch. </param>
+
         public FetchRoleOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -151,6 +159,7 @@ namespace Twilio.Rest.Chat.V1.Service
 
         /// <summary> Construct a new ListRoleOptions </summary>
         /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/api/chat/rest/services) to read the resources from. </param>
+
         public ReadRoleOptions(string pathServiceSid)
         {
             PathServiceSid = pathServiceSid;
@@ -188,7 +197,10 @@ namespace Twilio.Rest.Chat.V1.Service
 
 
         /// <summary> Construct a new UpdateRoleOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/api/chat/rest/services) to update the resource from. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Role resource to update. </param>        /// <param name="permission"> A permission that you grant to the role. Only one permission can be granted per parameter. To assign more than one permission, repeat this parameter for each permission value. The values for this parameter depend on the role's `type` and are described in the documentation. </param>
+        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/api/chat/rest/services) to update the resource from. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Role resource to update. </param>
+        /// <param name="permission"> A permission that you grant to the role. Only one permission can be granted per parameter. To assign more than one permission, repeat this parameter for each permission value. The values for this parameter depend on the role's `type` and are described in the documentation. </param>
+
         public UpdateRoleOptions(string pathServiceSid, string pathSid, List<string> permission)
         {
             PathServiceSid = pathServiceSid;

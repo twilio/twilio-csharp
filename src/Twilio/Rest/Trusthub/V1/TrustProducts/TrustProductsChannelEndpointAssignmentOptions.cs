@@ -39,7 +39,10 @@ namespace Twilio.Rest.Trusthub.V1.TrustProducts
 
 
         /// <summary> Construct a new CreateTrustProductChannelEndpointAssignmentOptions </summary>
-        /// <param name="pathTrustProductSid"> The unique string that we created to identify the CustomerProfile resource. </param>        /// <param name="channelEndpointType"> The type of channel endpoint. eg: phone-number </param>        /// <param name="channelEndpointSid"> The SID of an channel endpoint </param>
+        /// <param name="pathTrustProductSid"> The unique string that we created to identify the CustomerProfile resource. </param>
+        /// <param name="channelEndpointType"> The type of channel endpoint. eg: phone-number </param>
+        /// <param name="channelEndpointSid"> The SID of an channel endpoint </param>
+
         public CreateTrustProductsChannelEndpointAssignmentOptions(string pathTrustProductSid, string channelEndpointType, string channelEndpointSid)
         {
             PathTrustProductSid = pathTrustProductSid;
@@ -79,7 +82,9 @@ namespace Twilio.Rest.Trusthub.V1.TrustProducts
 
 
         /// <summary> Construct a new DeleteTrustProductChannelEndpointAssignmentOptions </summary>
-        /// <param name="pathTrustProductSid"> The unique string that we created to identify the CustomerProfile resource. </param>        /// <param name="pathSid"> The unique string that we created to identify the resource. </param>
+        /// <param name="pathTrustProductSid"> The unique string that we created to identify the CustomerProfile resource. </param>
+        /// <param name="pathSid"> The unique string that we created to identify the resource. </param>
+
         public DeleteTrustProductsChannelEndpointAssignmentOptions(string pathTrustProductSid, string pathSid)
         {
             PathTrustProductSid = pathTrustProductSid;
@@ -112,7 +117,9 @@ namespace Twilio.Rest.Trusthub.V1.TrustProducts
 
 
         /// <summary> Construct a new FetchTrustProductChannelEndpointAssignmentOptions </summary>
-        /// <param name="pathTrustProductSid"> The unique string that we created to identify the CustomerProfile resource. </param>        /// <param name="pathSid"> The unique string that we created to identify the resource. </param>
+        /// <param name="pathTrustProductSid"> The unique string that we created to identify the CustomerProfile resource. </param>
+        /// <param name="pathSid"> The unique string that we created to identify the resource. </param>
+
         public FetchTrustProductsChannelEndpointAssignmentOptions(string pathTrustProductSid, string pathSid)
         {
             PathTrustProductSid = pathTrustProductSid;
@@ -149,6 +156,7 @@ namespace Twilio.Rest.Trusthub.V1.TrustProducts
 
         /// <summary> Construct a new ListTrustProductChannelEndpointAssignmentOptions </summary>
         /// <param name="pathTrustProductSid"> The unique string that we created to identify the CustomerProfile resource. </param>
+
         public ReadTrustProductsChannelEndpointAssignmentOptions(string pathTrustProductSid)
         {
             PathTrustProductSid = pathTrustProductSid;

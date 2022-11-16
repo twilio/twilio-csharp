@@ -34,6 +34,7 @@ namespace Twilio.Rest.Trusthub.V1
 
         /// <summary> Construct a new FetchPoliciesOptions </summary>
         /// <param name="pathSid"> The unique string that identifies the Policy resource. </param>
+
         public FetchPoliciesOptions(string pathSid)
         {
             PathSid = pathSid;

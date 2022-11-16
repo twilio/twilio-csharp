@@ -37,6 +37,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
         /// <summary> Construct a new ListCallEventOptions </summary>
         /// <param name="pathCallSid"> The unique SID identifier of the Call. </param>
+
         public ReadEventOptions(string pathCallSid)
         {
             PathCallSid = pathCallSid;

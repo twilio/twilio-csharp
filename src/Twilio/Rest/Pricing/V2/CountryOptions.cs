@@ -34,6 +34,7 @@ namespace Twilio.Rest.Pricing.V2
 
         /// <summary> Construct a new FetchTrunkingCountryOptions </summary>
         /// <param name="pathIsoCountry"> The [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the origin-based voice pricing information to fetch. </param>
+
         public FetchCountryOptions(string pathIsoCountry)
         {
             PathIsoCountry = pathIsoCountry;

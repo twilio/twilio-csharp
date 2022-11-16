@@ -37,6 +37,7 @@ namespace Twilio.Rest.Insights.V1.Call
 
         /// <summary> Construct a new FetchSummaryOptions </summary>
         /// <param name="pathCallSid">  </param>
+
         public FetchCallSummaryOptions(string pathCallSid)
         {
             PathCallSid = pathCallSid;

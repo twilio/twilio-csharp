@@ -34,6 +34,7 @@ namespace Twilio.Rest.Video.V1.Room
 
         /// <summary> Construct a new FetchRoomRecordingRuleOptions </summary>
         /// <param name="pathRoomSid"> The SID of the Room resource where the recording rules to fetch apply. </param>
+
         public FetchRecordingRulesOptions(string pathRoomSid)
         {
             PathRoomSid = pathRoomSid;
@@ -66,6 +67,7 @@ namespace Twilio.Rest.Video.V1.Room
 
         /// <summary> Construct a new UpdateRoomRecordingRuleOptions </summary>
         /// <param name="pathRoomSid"> The SID of the Room resource where the recording rules to update apply. </param>
+
         public UpdateRecordingRulesOptions(string pathRoomSid)
         {
             PathRoomSid = pathRoomSid;

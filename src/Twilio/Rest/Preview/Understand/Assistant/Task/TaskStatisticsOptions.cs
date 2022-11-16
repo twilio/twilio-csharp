@@ -36,7 +36,9 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
 
 
         /// <summary> Construct a new FetchUnderstandTaskStatisticsOptions </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the parent Assistant. </param>        /// <param name="pathTaskSid"> The unique ID of the Task associated with this Field. </param>
+        /// <param name="pathAssistantSid"> The unique ID of the parent Assistant. </param>
+        /// <param name="pathTaskSid"> The unique ID of the Task associated with this Field. </param>
+
         public FetchTaskStatisticsOptions(string pathAssistantSid, string pathTaskSid)
         {
             PathAssistantSid = pathAssistantSid;

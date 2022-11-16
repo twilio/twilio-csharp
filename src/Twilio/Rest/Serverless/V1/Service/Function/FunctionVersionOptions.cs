@@ -39,7 +39,10 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
 
 
         /// <summary> Construct a new FetchFunctionVersionOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to fetch the Function Version resource from. </param>        /// <param name="pathFunctionSid"> The SID of the function that is the parent of the Function Version resource to fetch. </param>        /// <param name="pathSid"> The SID of the Function Version resource to fetch. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to fetch the Function Version resource from. </param>
+        /// <param name="pathFunctionSid"> The SID of the function that is the parent of the Function Version resource to fetch. </param>
+        /// <param name="pathSid"> The SID of the Function Version resource to fetch. </param>
+
         public FetchFunctionVersionOptions(string pathServiceSid, string pathFunctionSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -73,7 +76,9 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
 
 
         /// <summary> Construct a new ListFunctionVersionOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to read the Function Version resources from. </param>        /// <param name="pathFunctionSid"> The SID of the function that is the parent of the Function Version resources to read. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to read the Function Version resources from. </param>
+        /// <param name="pathFunctionSid"> The SID of the function that is the parent of the Function Version resources to read. </param>
+
         public ReadFunctionVersionOptions(string pathServiceSid, string pathFunctionSid)
         {
             PathServiceSid = pathServiceSid;

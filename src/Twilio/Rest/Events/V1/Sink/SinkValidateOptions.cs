@@ -36,7 +36,9 @@ namespace Twilio.Rest.Events.V1.Sink
 
 
         /// <summary> Construct a new CreateSinkValidateOptions </summary>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies the Sink being validated. </param>        /// <param name="testId"> A 34 character string that uniquely identifies the test event for a Sink being validated. </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies the Sink being validated. </param>
+        /// <param name="testId"> A 34 character string that uniquely identifies the test event for a Sink being validated. </param>
+
         public CreateSinkValidateOptions(string pathSid, string testId)
         {
             PathSid = pathSid;

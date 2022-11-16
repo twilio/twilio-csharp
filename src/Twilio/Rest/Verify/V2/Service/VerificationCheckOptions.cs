@@ -49,6 +49,7 @@ namespace Twilio.Rest.Verify.V2.Service
 
         /// <summary> Construct a new CreateVerificationCheckOptions </summary>
         /// <param name="pathServiceSid"> The SID of the verification [Service](https://www.twilio.com/docs/verify/api/service) to create the resource under. </param>
+
         public CreateVerificationCheckOptions(string pathServiceSid)
         {
             PathServiceSid = pathServiceSid;

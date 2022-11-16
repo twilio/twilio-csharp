@@ -45,7 +45,11 @@ namespace Twilio.Rest.Preview.Understand.Assistant.FieldType
 
 
         /// <summary> Construct a new CreateUnderstandFieldValueOptions </summary>
-        /// <param name="pathAssistantSid">  </param>        /// <param name="pathFieldTypeSid">  </param>        /// <param name="language"> An ISO language-country string of the value. </param>        /// <param name="value"> A user-provided string that uniquely identifies this resource as an alternative to the sid. Unique up to 64 characters long. </param>
+        /// <param name="pathAssistantSid">  </param>
+        /// <param name="pathFieldTypeSid">  </param>
+        /// <param name="language"> An ISO language-country string of the value. </param>
+        /// <param name="value"> A user-provided string that uniquely identifies this resource as an alternative to the sid. Unique up to 64 characters long. </param>
+
         public CreateFieldValueOptions(string pathAssistantSid, string pathFieldTypeSid, string language, string value)
         {
             PathAssistantSid = pathAssistantSid;
@@ -93,7 +97,10 @@ namespace Twilio.Rest.Preview.Understand.Assistant.FieldType
 
 
         /// <summary> Construct a new DeleteUnderstandFieldValueOptions </summary>
-        /// <param name="pathAssistantSid">  </param>        /// <param name="pathFieldTypeSid">  </param>        /// <param name="pathSid">  </param>
+        /// <param name="pathAssistantSid">  </param>
+        /// <param name="pathFieldTypeSid">  </param>
+        /// <param name="pathSid">  </param>
+
         public DeleteFieldValueOptions(string pathAssistantSid, string pathFieldTypeSid, string pathSid)
         {
             PathAssistantSid = pathAssistantSid;
@@ -130,7 +137,10 @@ namespace Twilio.Rest.Preview.Understand.Assistant.FieldType
 
 
         /// <summary> Construct a new FetchUnderstandFieldValueOptions </summary>
-        /// <param name="pathAssistantSid">  </param>        /// <param name="pathFieldTypeSid">  </param>        /// <param name="pathSid">  </param>
+        /// <param name="pathAssistantSid">  </param>
+        /// <param name="pathFieldTypeSid">  </param>
+        /// <param name="pathSid">  </param>
+
         public FetchFieldValueOptions(string pathAssistantSid, string pathFieldTypeSid, string pathSid)
         {
             PathAssistantSid = pathAssistantSid;
@@ -167,7 +177,9 @@ namespace Twilio.Rest.Preview.Understand.Assistant.FieldType
 
 
         /// <summary> Construct a new ListUnderstandFieldValueOptions </summary>
-        /// <param name="pathAssistantSid">  </param>        /// <param name="pathFieldTypeSid">  </param>
+        /// <param name="pathAssistantSid">  </param>
+        /// <param name="pathFieldTypeSid">  </param>
+
         public ReadFieldValueOptions(string pathAssistantSid, string pathFieldTypeSid)
         {
             PathAssistantSid = pathAssistantSid;

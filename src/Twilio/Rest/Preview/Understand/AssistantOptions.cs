@@ -108,6 +108,7 @@ namespace Twilio.Rest.Preview.Understand
 
         /// <summary> Construct a new DeleteUnderstandAssistantOptions </summary>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+
         public DeleteAssistantOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -137,6 +138,7 @@ namespace Twilio.Rest.Preview.Understand
 
         /// <summary> Construct a new FetchUnderstandAssistantOptions </summary>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+
         public FetchAssistantOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -213,6 +215,7 @@ namespace Twilio.Rest.Preview.Understand
 
         /// <summary> Construct a new UpdateUnderstandAssistantOptions </summary>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+
         public UpdateAssistantOptions(string pathSid)
         {
             PathSid = pathSid;

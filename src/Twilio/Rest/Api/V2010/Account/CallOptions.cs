@@ -138,7 +138,9 @@ namespace Twilio.Rest.Api.V2010.Account
 
 
         /// <summary> Construct a new CreateCallOptions </summary>
-        /// <param name="to"> The phone number, SIP address, or client identifier to call. </param>        /// <param name="from"> The phone number or client identifier to use as the caller id. If using a phone number, it must be a Twilio number or a Verified [outgoing caller id](https://www.twilio.com/docs/voice/api/outgoing-caller-ids) for your account. If the `to` parameter is a phone number, `From` must also be a phone number. </param>
+        /// <param name="to"> The phone number, SIP address, or client identifier to call. </param>
+        /// <param name="from"> The phone number or client identifier to use as the caller id. If using a phone number, it must be a Twilio number or a Verified [outgoing caller id](https://www.twilio.com/docs/voice/api/outgoing-caller-ids) for your account. If the `to` parameter is a phone number, `From` must also be a phone number. </param>
+
         public CreateCallOptions(IEndpoint to, IEndpoint from)
         {
             To = to;
@@ -312,6 +314,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
         /// <summary> Construct a new DeleteCallOptions </summary>
         /// <param name="pathSid"> The Twilio-provided Call SID that uniquely identifies the Call resource to delete </param>
+
         public DeleteCallOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -344,6 +347,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
         /// <summary> Construct a new FetchCallOptions </summary>
         /// <param name="pathSid"> The SID of the Call resource to fetch. </param>
+
         public FetchCallOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -523,6 +527,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
         /// <summary> Construct a new UpdateCallOptions </summary>
         /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Call resource to update </param>
+
         public UpdateCallOptions(string pathSid)
         {
             PathSid = pathSid;

@@ -45,7 +45,9 @@ namespace Twilio.Rest.Chat.V3
 
 
         /// <summary> Construct a new UpdateChannelOptions </summary>
-        /// <param name="pathServiceSid"> The unique SID identifier of the Service. </param>        /// <param name="pathSid"> A 34 character string that uniquely identifies this Channel. </param>
+        /// <param name="pathServiceSid"> The unique SID identifier of the Service. </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this Channel. </param>
+
         public UpdateChannelOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;

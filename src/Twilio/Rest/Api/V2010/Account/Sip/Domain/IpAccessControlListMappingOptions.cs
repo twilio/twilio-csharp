@@ -39,7 +39,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
 
 
         /// <summary> Construct a new CreateSipIpAccessControlListMappingOptions </summary>
-        /// <param name="pathDomainSid"> A 34 character string that uniquely identifies the SIP domain. </param>        /// <param name="ipAccessControlListSid"> The unique id of the IP access control list to map to the SIP domain. </param>
+        /// <param name="pathDomainSid"> A 34 character string that uniquely identifies the SIP domain. </param>
+        /// <param name="ipAccessControlListSid"> The unique id of the IP access control list to map to the SIP domain. </param>
+
         public CreateIpAccessControlListMappingOptions(string pathDomainSid, string ipAccessControlListSid)
         {
             PathDomainSid = pathDomainSid;
@@ -77,7 +79,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
 
 
         /// <summary> Construct a new DeleteSipIpAccessControlListMappingOptions </summary>
-        /// <param name="pathDomainSid"> A 34 character string that uniquely identifies the SIP domain. </param>        /// <param name="pathSid"> A 34 character string that uniquely identifies the resource to delete. </param>
+        /// <param name="pathDomainSid"> A 34 character string that uniquely identifies the SIP domain. </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies the resource to delete. </param>
+
         public DeleteIpAccessControlListMappingOptions(string pathDomainSid, string pathSid)
         {
             PathDomainSid = pathDomainSid;
@@ -113,7 +117,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
 
 
         /// <summary> Construct a new FetchSipIpAccessControlListMappingOptions </summary>
-        /// <param name="pathDomainSid"> A 34 character string that uniquely identifies the SIP domain. </param>        /// <param name="pathSid"> A 34 character string that uniquely identifies the resource to fetch. </param>
+        /// <param name="pathDomainSid"> A 34 character string that uniquely identifies the SIP domain. </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies the resource to fetch. </param>
+
         public FetchIpAccessControlListMappingOptions(string pathDomainSid, string pathSid)
         {
             PathDomainSid = pathDomainSid;
@@ -147,6 +153,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
 
         /// <summary> Construct a new ListSipIpAccessControlListMappingOptions </summary>
         /// <param name="pathDomainSid"> A 34 character string that uniquely identifies the SIP domain. </param>
+
         public ReadIpAccessControlListMappingOptions(string pathDomainSid)
         {
             PathDomainSid = pathDomainSid;

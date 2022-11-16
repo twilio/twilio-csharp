@@ -64,6 +64,7 @@ namespace Twilio.Rest.Conversations.V1.Service
 
         /// <summary> Construct a new CreateServiceConversationOptions </summary>
         /// <param name="pathChatServiceSid"> The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Conversation resource is associated with. </param>
+
         public CreateConversationOptions(string pathChatServiceSid)
         {
             PathChatServiceSid = pathChatServiceSid;
@@ -142,7 +143,9 @@ namespace Twilio.Rest.Conversations.V1.Service
 
 
         /// <summary> Construct a new DeleteServiceConversationOptions </summary>
-        /// <param name="pathChatServiceSid"> The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Conversation resource is associated with. </param>        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. Can also be the `unique_name` of the Conversation. </param>
+        /// <param name="pathChatServiceSid"> The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Conversation resource is associated with. </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. Can also be the `unique_name` of the Conversation. </param>
+
         public DeleteConversationOptions(string pathChatServiceSid, string pathSid)
         {
             PathChatServiceSid = pathChatServiceSid;
@@ -185,7 +188,9 @@ namespace Twilio.Rest.Conversations.V1.Service
 
 
         /// <summary> Construct a new FetchServiceConversationOptions </summary>
-        /// <param name="pathChatServiceSid"> The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Conversation resource is associated with. </param>        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. Can also be the `unique_name` of the Conversation. </param>
+        /// <param name="pathChatServiceSid"> The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Conversation resource is associated with. </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. Can also be the `unique_name` of the Conversation. </param>
+
         public FetchConversationOptions(string pathChatServiceSid, string pathSid)
         {
             PathChatServiceSid = pathChatServiceSid;
@@ -216,6 +221,7 @@ namespace Twilio.Rest.Conversations.V1.Service
 
         /// <summary> Construct a new ListServiceConversationOptions </summary>
         /// <param name="pathChatServiceSid"> The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Conversation resource is associated with. </param>
+
         public ReadConversationOptions(string pathChatServiceSid)
         {
             PathChatServiceSid = pathChatServiceSid;
@@ -280,7 +286,9 @@ namespace Twilio.Rest.Conversations.V1.Service
 
 
         /// <summary> Construct a new UpdateServiceConversationOptions </summary>
-        /// <param name="pathChatServiceSid"> The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Conversation resource is associated with. </param>        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. Can also be the `unique_name` of the Conversation. </param>
+        /// <param name="pathChatServiceSid"> The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Conversation resource is associated with. </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. Can also be the `unique_name` of the Conversation. </param>
+
         public UpdateConversationOptions(string pathChatServiceSid, string pathSid)
         {
             PathChatServiceSid = pathChatServiceSid;

@@ -36,7 +36,9 @@ namespace Twilio.Rest.FlexApi.V1.Interaction
 
 
         /// <summary> Construct a new FetchInteractionChannelOptions </summary>
-        /// <param name="pathInteractionSid"> The unique string created by Twilio to identify an Interaction resource, prefixed with KD. </param>        /// <param name="pathSid"> The unique string created by Twilio to identify an Interaction Channel resource, prefixed with UO. </param>
+        /// <param name="pathInteractionSid"> The unique string created by Twilio to identify an Interaction resource, prefixed with KD. </param>
+        /// <param name="pathSid"> The unique string created by Twilio to identify an Interaction Channel resource, prefixed with UO. </param>
+
         public FetchInteractionChannelOptions(string pathInteractionSid, string pathSid)
         {
             PathInteractionSid = pathInteractionSid;
@@ -67,6 +69,7 @@ namespace Twilio.Rest.FlexApi.V1.Interaction
 
         /// <summary> Construct a new ListInteractionChannelOptions </summary>
         /// <param name="pathInteractionSid"> The unique string created by Twilio to identify an Interaction resource, prefixed with KD. </param>
+
         public ReadInteractionChannelOptions(string pathInteractionSid)
         {
             PathInteractionSid = pathInteractionSid;
@@ -107,7 +110,10 @@ namespace Twilio.Rest.FlexApi.V1.Interaction
 
 
         /// <summary> Construct a new UpdateInteractionChannelOptions </summary>
-        /// <param name="pathInteractionSid"> The unique string created by Twilio to identify an Interaction resource, prefixed with KD. </param>        /// <param name="pathSid"> The unique string created by Twilio to identify an Interaction Channel resource, prefixed with UO. </param>        /// <param name="status">  </param>
+        /// <param name="pathInteractionSid"> The unique string created by Twilio to identify an Interaction resource, prefixed with KD. </param>
+        /// <param name="pathSid"> The unique string created by Twilio to identify an Interaction Channel resource, prefixed with UO. </param>
+        /// <param name="status">  </param>
+
         public UpdateInteractionChannelOptions(string pathInteractionSid, string pathSid, InteractionChannelResource.StatusEnum status)
         {
             PathInteractionSid = pathInteractionSid;

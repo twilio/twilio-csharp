@@ -43,6 +43,7 @@ namespace Twilio.Rest.Proxy.V1.Service
 
         /// <summary> Construct a new CreatePhoneNumberOptions </summary>
         /// <param name="pathServiceSid"> The SID parent [Service](https://www.twilio.com/docs/proxy/api/service) resource of the new PhoneNumber resource. </param>
+
         public CreatePhoneNumberOptions(string pathServiceSid)
         {
             PathServiceSid = pathServiceSid;
@@ -84,7 +85,9 @@ namespace Twilio.Rest.Proxy.V1.Service
 
 
         /// <summary> Construct a new DeletePhoneNumberOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the parent [Service](https://www.twilio.com/docs/proxy/api/service) of the PhoneNumber resource to delete. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the PhoneNumber resource to delete. </param>
+        /// <param name="pathServiceSid"> The SID of the parent [Service](https://www.twilio.com/docs/proxy/api/service) of the PhoneNumber resource to delete. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the PhoneNumber resource to delete. </param>
+
         public DeletePhoneNumberOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -117,7 +120,9 @@ namespace Twilio.Rest.Proxy.V1.Service
 
 
         /// <summary> Construct a new FetchPhoneNumberOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the parent [Service](https://www.twilio.com/docs/proxy/api/service) of the PhoneNumber resource to fetch. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the PhoneNumber resource to fetch. </param>
+        /// <param name="pathServiceSid"> The SID of the parent [Service](https://www.twilio.com/docs/proxy/api/service) of the PhoneNumber resource to fetch. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the PhoneNumber resource to fetch. </param>
+
         public FetchPhoneNumberOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -148,6 +153,7 @@ namespace Twilio.Rest.Proxy.V1.Service
 
         /// <summary> Construct a new ListPhoneNumberOptions </summary>
         /// <param name="pathServiceSid"> The SID of the parent [Service](https://www.twilio.com/docs/proxy/api/service) of the PhoneNumber resources to read. </param>
+
         public ReadPhoneNumberOptions(string pathServiceSid)
         {
             PathServiceSid = pathServiceSid;
@@ -185,7 +191,9 @@ namespace Twilio.Rest.Proxy.V1.Service
 
 
         /// <summary> Construct a new UpdatePhoneNumberOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the parent [Service](https://www.twilio.com/docs/proxy/api/service) of the PhoneNumber resource to update. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the PhoneNumber resource to update. </param>
+        /// <param name="pathServiceSid"> The SID of the parent [Service](https://www.twilio.com/docs/proxy/api/service) of the PhoneNumber resource to update. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the PhoneNumber resource to update. </param>
+
         public UpdatePhoneNumberOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;

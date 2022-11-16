@@ -52,6 +52,7 @@ namespace Twilio.Rest.Wireless.V1
 
         /// <summary> Construct a new CreateCommandOptions </summary>
         /// <param name="command"> The message body of the Command. Can be plain text in text mode or a Base64 encoded byte string in binary mode. </param>
+
         public CreateCommandOptions(string command)
         {
             Command = command;
@@ -107,6 +108,7 @@ namespace Twilio.Rest.Wireless.V1
 
         /// <summary> Construct a new DeleteCommandOptions </summary>
         /// <param name="pathSid"> The SID of the Command resource to delete. </param>
+
         public DeleteCommandOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -136,6 +138,7 @@ namespace Twilio.Rest.Wireless.V1
 
         /// <summary> Construct a new FetchCommandOptions </summary>
         /// <param name="pathSid"> The SID of the Command resource to fetch. </param>
+
         public FetchCommandOptions(string pathSid)
         {
             PathSid = pathSid;

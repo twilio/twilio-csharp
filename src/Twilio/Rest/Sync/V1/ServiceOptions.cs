@@ -101,6 +101,7 @@ namespace Twilio.Rest.Sync.V1
 
         /// <summary> Construct a new DeleteServiceOptions </summary>
         /// <param name="pathSid"> The SID of the Service resource to delete. </param>
+
         public DeleteServiceOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -130,6 +131,7 @@ namespace Twilio.Rest.Sync.V1
 
         /// <summary> Construct a new FetchServiceOptions </summary>
         /// <param name="pathSid"> The SID of the Service resource to fetch. </param>
+
         public FetchServiceOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -203,6 +205,7 @@ namespace Twilio.Rest.Sync.V1
 
         /// <summary> Construct a new UpdateServiceOptions </summary>
         /// <param name="pathSid"> The SID of the Service resource to update. </param>
+
         public UpdateServiceOptions(string pathSid)
         {
             PathSid = pathSid;

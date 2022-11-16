@@ -36,7 +36,9 @@ namespace Twilio.Rest.Trusthub.V1.CustomerProfiles
 
 
         /// <summary> Construct a new CreateCustomerProfileEntityAssignmentOptions </summary>
-        /// <param name="pathCustomerProfileSid"> The unique string that we created to identify the CustomerProfile resource. </param>        /// <param name="objectSid"> The SID of an object bag that holds information of the different items. </param>
+        /// <param name="pathCustomerProfileSid"> The unique string that we created to identify the CustomerProfile resource. </param>
+        /// <param name="objectSid"> The SID of an object bag that holds information of the different items. </param>
+
         public CreateCustomerProfilesEntityAssignmentsOptions(string pathCustomerProfileSid, string objectSid)
         {
             PathCustomerProfileSid = pathCustomerProfileSid;
@@ -71,7 +73,9 @@ namespace Twilio.Rest.Trusthub.V1.CustomerProfiles
 
 
         /// <summary> Construct a new DeleteCustomerProfileEntityAssignmentOptions </summary>
-        /// <param name="pathCustomerProfileSid"> The unique string that we created to identify the CustomerProfile resource. </param>        /// <param name="pathSid"> The unique string that we created to identify the Identity resource. </param>
+        /// <param name="pathCustomerProfileSid"> The unique string that we created to identify the CustomerProfile resource. </param>
+        /// <param name="pathSid"> The unique string that we created to identify the Identity resource. </param>
+
         public DeleteCustomerProfilesEntityAssignmentsOptions(string pathCustomerProfileSid, string pathSid)
         {
             PathCustomerProfileSid = pathCustomerProfileSid;
@@ -104,7 +108,9 @@ namespace Twilio.Rest.Trusthub.V1.CustomerProfiles
 
 
         /// <summary> Construct a new FetchCustomerProfileEntityAssignmentOptions </summary>
-        /// <param name="pathCustomerProfileSid"> The unique string that we created to identify the CustomerProfile resource. </param>        /// <param name="pathSid"> The unique string that we created to identify the Identity resource. </param>
+        /// <param name="pathCustomerProfileSid"> The unique string that we created to identify the CustomerProfile resource. </param>
+        /// <param name="pathSid"> The unique string that we created to identify the Identity resource. </param>
+
         public FetchCustomerProfilesEntityAssignmentsOptions(string pathCustomerProfileSid, string pathSid)
         {
             PathCustomerProfileSid = pathCustomerProfileSid;
@@ -135,6 +141,7 @@ namespace Twilio.Rest.Trusthub.V1.CustomerProfiles
 
         /// <summary> Construct a new ListCustomerProfileEntityAssignmentOptions </summary>
         /// <param name="pathCustomerProfileSid"> The unique string that we created to identify the CustomerProfile resource. </param>
+
         public ReadCustomerProfilesEntityAssignmentsOptions(string pathCustomerProfileSid)
         {
             PathCustomerProfileSid = pathCustomerProfileSid;

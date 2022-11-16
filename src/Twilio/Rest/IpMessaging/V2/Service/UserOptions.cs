@@ -48,7 +48,9 @@ namespace Twilio.Rest.IpMessaging.V2.Service
 
 
         /// <summary> Construct a new CreateUserOptions </summary>
-        /// <param name="pathServiceSid">  </param>        /// <param name="identity">  </param>
+        /// <param name="pathServiceSid">  </param>
+        /// <param name="identity">  </param>
+
         public CreateUserOptions(string pathServiceSid, string identity)
         {
             PathServiceSid = pathServiceSid;
@@ -105,7 +107,9 @@ namespace Twilio.Rest.IpMessaging.V2.Service
 
 
         /// <summary> Construct a new DeleteUserOptions </summary>
-        /// <param name="pathServiceSid">  </param>        /// <param name="pathSid">  </param>
+        /// <param name="pathServiceSid">  </param>
+        /// <param name="pathSid">  </param>
+
         public DeleteUserOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -138,7 +142,9 @@ namespace Twilio.Rest.IpMessaging.V2.Service
 
 
         /// <summary> Construct a new FetchUserOptions </summary>
-        /// <param name="pathServiceSid">  </param>        /// <param name="pathSid">  </param>
+        /// <param name="pathServiceSid">  </param>
+        /// <param name="pathSid">  </param>
+
         public FetchUserOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -169,6 +175,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service
 
         /// <summary> Construct a new ListUserOptions </summary>
         /// <param name="pathServiceSid">  </param>
+
         public ReadUserOptions(string pathServiceSid)
         {
             PathServiceSid = pathServiceSid;
@@ -215,7 +222,9 @@ namespace Twilio.Rest.IpMessaging.V2.Service
 
 
         /// <summary> Construct a new UpdateUserOptions </summary>
-        /// <param name="pathServiceSid">  </param>        /// <param name="pathSid">  </param>
+        /// <param name="pathServiceSid">  </param>
+        /// <param name="pathSid">  </param>
+
         public UpdateUserOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;

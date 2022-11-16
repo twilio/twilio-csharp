@@ -39,7 +39,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
 
         /// <summary> Construct a new CreateActivityOptions </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace that the new Activity belongs to. </param>        /// <param name="friendlyName"> A descriptive string that you create to describe the Activity resource. It can be up to 64 characters long. These names are used to calculate and expose statistics about Workers, and provide visibility into the state of each Worker. Examples of friendly names include: `on-call`, `break`, and `email`. </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace that the new Activity belongs to. </param>
+        /// <param name="friendlyName"> A descriptive string that you create to describe the Activity resource. It can be up to 64 characters long. These names are used to calculate and expose statistics about Workers, and provide visibility into the state of each Worker. Examples of friendly names include: `on-call`, `break`, and `email`. </param>
+
         public CreateActivityOptions(string pathWorkspaceSid, string friendlyName)
         {
             PathWorkspaceSid = pathWorkspaceSid;
@@ -78,7 +80,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
 
         /// <summary> Construct a new DeleteActivityOptions </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Activity resources to delete. </param>        /// <param name="pathSid"> The SID of the Activity resource to delete. </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Activity resources to delete. </param>
+        /// <param name="pathSid"> The SID of the Activity resource to delete. </param>
+
         public DeleteActivityOptions(string pathWorkspaceSid, string pathSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;
@@ -111,7 +115,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
 
         /// <summary> Construct a new FetchActivityOptions </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Activity resources to fetch. </param>        /// <param name="pathSid"> The SID of the Activity resource to fetch. </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Activity resources to fetch. </param>
+        /// <param name="pathSid"> The SID of the Activity resource to fetch. </param>
+
         public FetchActivityOptions(string pathWorkspaceSid, string pathSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;
@@ -148,6 +154,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
         /// <summary> Construct a new ListActivityOptions </summary>
         /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Activity resources to read. </param>
+
         public ReadActivityOptions(string pathWorkspaceSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;
@@ -193,7 +200,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
 
         /// <summary> Construct a new UpdateActivityOptions </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Activity resources to update. </param>        /// <param name="pathSid"> The SID of the Activity resource to update. </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Activity resources to update. </param>
+        /// <param name="pathSid"> The SID of the Activity resource to update. </param>
+
         public UpdateActivityOptions(string pathWorkspaceSid, string pathSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;

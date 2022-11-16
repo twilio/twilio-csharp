@@ -645,7 +645,9 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
 
         /// <summary> Construct a new CreateStreamOptions </summary>
-        /// <param name="pathCallSid"> The SID of the [Call](https://www.twilio.com/docs/voice/api/call-resource) the Stream resource is associated with. </param>        /// <param name="url"> Relative or absolute url where WebSocket connection will be established. </param>
+        /// <param name="pathCallSid"> The SID of the [Call](https://www.twilio.com/docs/voice/api/call-resource) the Stream resource is associated with. </param>
+        /// <param name="url"> Relative or absolute url where WebSocket connection will be established. </param>
+
         public CreateStreamOptions(string pathCallSid, Uri url)
         {
             PathCallSid = pathCallSid;
@@ -1494,7 +1496,10 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
 
         /// <summary> Construct a new UpdateStreamOptions </summary>
-        /// <param name="pathCallSid"> The SID of the [Call](https://www.twilio.com/docs/voice/api/call-resource) the Stream resource is associated with. </param>        /// <param name="pathSid"> The SID of the Stream resource, or the `name` used when creating the resource </param>        /// <param name="status">  </param>
+        /// <param name="pathCallSid"> The SID of the [Call](https://www.twilio.com/docs/voice/api/call-resource) the Stream resource is associated with. </param>
+        /// <param name="pathSid"> The SID of the Stream resource, or the `name` used when creating the resource </param>
+        /// <param name="status">  </param>
+
         public UpdateStreamOptions(string pathCallSid, string pathSid, StreamResource.UpdateStatusEnum status)
         {
             PathCallSid = pathCallSid;

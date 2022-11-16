@@ -34,6 +34,7 @@ namespace Twilio.Rest.Microvisor.V1
 
         /// <summary> Construct a new DeleteAppOptions </summary>
         /// <param name="pathSid"> A 34-character string that uniquely identifies this App. </param>
+
         public DeleteAppOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -63,6 +64,7 @@ namespace Twilio.Rest.Microvisor.V1
 
         /// <summary> Construct a new FetchAppOptions </summary>
         /// <param name="pathSid"> A 34-character string that uniquely identifies this App. </param>
+
         public FetchAppOptions(string pathSid)
         {
             PathSid = pathSid;

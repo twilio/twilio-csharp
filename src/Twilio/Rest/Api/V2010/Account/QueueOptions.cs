@@ -40,6 +40,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
         /// <summary> Construct a new CreateQueueOptions </summary>
         /// <param name="friendlyName"> A descriptive string that you created to describe this resource. It can be up to 64 characters long. </param>
+
         public CreateQueueOptions(string friendlyName)
         {
             FriendlyName = friendlyName;
@@ -78,6 +79,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
         /// <summary> Construct a new DeleteQueueOptions </summary>
         /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Queue resource to delete </param>
+
         public DeleteQueueOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -110,6 +112,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
         /// <summary> Construct a new FetchQueueOptions </summary>
         /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Queue resource to fetch </param>
+
         public FetchQueueOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -174,6 +177,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
         /// <summary> Construct a new UpdateQueueOptions </summary>
         /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Queue resource to update </param>
+
         public UpdateQueueOptions(string pathSid)
         {
             PathSid = pathSid;

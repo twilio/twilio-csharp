@@ -34,6 +34,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
 
         /// <summary> Construct a new FetchSupportingDocumentTypeOptions </summary>
         /// <param name="pathSid"> The unique string that identifies the Supporting Document Type resource. </param>
+
         public FetchSupportingDocumentTypeOptions(string pathSid)
         {
             PathSid = pathSid;

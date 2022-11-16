@@ -39,7 +39,10 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
 
 
         /// <summary> Construct a new CreateSyncSyncListItemOptions </summary>
-        /// <param name="pathServiceSid">  </param>        /// <param name="pathListSid">  </param>        /// <param name="data">  </param>
+        /// <param name="pathServiceSid">  </param>
+        /// <param name="pathListSid">  </param>
+        /// <param name="data">  </param>
+
         public CreateSyncListItemOptions(string pathServiceSid, string pathListSid, object data)
         {
             PathServiceSid = pathServiceSid;
@@ -81,7 +84,10 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
 
 
         /// <summary> Construct a new DeleteSyncSyncListItemOptions </summary>
-        /// <param name="pathServiceSid">  </param>        /// <param name="pathListSid">  </param>        /// <param name="pathIndex">  </param>
+        /// <param name="pathServiceSid">  </param>
+        /// <param name="pathListSid">  </param>
+        /// <param name="pathIndex">  </param>
+
         public DeleteSyncListItemOptions(string pathServiceSid, string pathListSid, int? pathIndex)
         {
             PathServiceSid = pathServiceSid;
@@ -128,7 +134,10 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
 
 
         /// <summary> Construct a new FetchSyncSyncListItemOptions </summary>
-        /// <param name="pathServiceSid">  </param>        /// <param name="pathListSid">  </param>        /// <param name="pathIndex">  </param>
+        /// <param name="pathServiceSid">  </param>
+        /// <param name="pathListSid">  </param>
+        /// <param name="pathIndex">  </param>
+
         public FetchSyncListItemOptions(string pathServiceSid, string pathListSid, int? pathIndex)
         {
             PathServiceSid = pathServiceSid;
@@ -171,7 +180,9 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
 
 
         /// <summary> Construct a new ListSyncSyncListItemOptions </summary>
-        /// <param name="pathServiceSid">  </param>        /// <param name="pathListSid">  </param>
+        /// <param name="pathServiceSid">  </param>
+        /// <param name="pathListSid">  </param>
+
         public ReadSyncListItemOptions(string pathServiceSid, string pathListSid)
         {
             PathServiceSid = pathServiceSid;
@@ -228,7 +239,11 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
 
 
         /// <summary> Construct a new UpdateSyncSyncListItemOptions </summary>
-        /// <param name="pathServiceSid">  </param>        /// <param name="pathListSid">  </param>        /// <param name="pathIndex">  </param>        /// <param name="data">  </param>
+        /// <param name="pathServiceSid">  </param>
+        /// <param name="pathListSid">  </param>
+        /// <param name="pathIndex">  </param>
+        /// <param name="data">  </param>
+
         public UpdateSyncListItemOptions(string pathServiceSid, string pathListSid, int? pathIndex, object data)
         {
             PathServiceSid = pathServiceSid;

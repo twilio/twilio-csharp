@@ -40,6 +40,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant
 
         /// <summary> Construct a new CreateUnderstandModelBuildOptions </summary>
         /// <param name="pathAssistantSid">  </param>
+
         public CreateModelBuildOptions(string pathAssistantSid)
         {
             PathAssistantSid = pathAssistantSid;
@@ -77,7 +78,9 @@ namespace Twilio.Rest.Preview.Understand.Assistant
 
 
         /// <summary> Construct a new DeleteUnderstandModelBuildOptions </summary>
-        /// <param name="pathAssistantSid">  </param>        /// <param name="pathSid">  </param>
+        /// <param name="pathAssistantSid">  </param>
+        /// <param name="pathSid">  </param>
+
         public DeleteModelBuildOptions(string pathAssistantSid, string pathSid)
         {
             PathAssistantSid = pathAssistantSid;
@@ -110,7 +113,9 @@ namespace Twilio.Rest.Preview.Understand.Assistant
 
 
         /// <summary> Construct a new FetchUnderstandModelBuildOptions </summary>
-        /// <param name="pathAssistantSid">  </param>        /// <param name="pathSid">  </param>
+        /// <param name="pathAssistantSid">  </param>
+        /// <param name="pathSid">  </param>
+
         public FetchModelBuildOptions(string pathAssistantSid, string pathSid)
         {
             PathAssistantSid = pathAssistantSid;
@@ -141,6 +146,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant
 
         /// <summary> Construct a new ListUnderstandModelBuildOptions </summary>
         /// <param name="pathAssistantSid">  </param>
+
         public ReadModelBuildOptions(string pathAssistantSid)
         {
             PathAssistantSid = pathAssistantSid;
@@ -178,7 +184,9 @@ namespace Twilio.Rest.Preview.Understand.Assistant
 
 
         /// <summary> Construct a new UpdateUnderstandModelBuildOptions </summary>
-        /// <param name="pathAssistantSid">  </param>        /// <param name="pathSid">  </param>
+        /// <param name="pathAssistantSid">  </param>
+        /// <param name="pathSid">  </param>
+
         public UpdateModelBuildOptions(string pathAssistantSid, string pathSid)
         {
             PathAssistantSid = pathAssistantSid;

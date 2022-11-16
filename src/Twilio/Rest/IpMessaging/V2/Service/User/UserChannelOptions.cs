@@ -39,7 +39,10 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
 
 
         /// <summary> Construct a new DeleteUserChannelOptions </summary>
-        /// <param name="pathServiceSid">  </param>        /// <param name="pathUserSid">  </param>        /// <param name="pathChannelSid">  </param>
+        /// <param name="pathServiceSid">  </param>
+        /// <param name="pathUserSid">  </param>
+        /// <param name="pathChannelSid">  </param>
+
         public DeleteUserChannelOptions(string pathServiceSid, string pathUserSid, string pathChannelSid)
         {
             PathServiceSid = pathServiceSid;
@@ -76,7 +79,10 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
 
 
         /// <summary> Construct a new FetchUserChannelOptions </summary>
-        /// <param name="pathServiceSid">  </param>        /// <param name="pathUserSid">  </param>        /// <param name="pathChannelSid">  </param>
+        /// <param name="pathServiceSid">  </param>
+        /// <param name="pathUserSid">  </param>
+        /// <param name="pathChannelSid">  </param>
+
         public FetchUserChannelOptions(string pathServiceSid, string pathUserSid, string pathChannelSid)
         {
             PathServiceSid = pathServiceSid;
@@ -110,7 +116,9 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
 
 
         /// <summary> Construct a new ListUserChannelOptions </summary>
-        /// <param name="pathServiceSid">  </param>        /// <param name="pathUserSid">  </param>
+        /// <param name="pathServiceSid">  </param>
+        /// <param name="pathUserSid">  </param>
+
         public ReadUserChannelOptions(string pathServiceSid, string pathUserSid)
         {
             PathServiceSid = pathServiceSid;
@@ -158,7 +166,10 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
 
 
         /// <summary> Construct a new UpdateUserChannelOptions </summary>
-        /// <param name="pathServiceSid">  </param>        /// <param name="pathUserSid">  </param>        /// <param name="pathChannelSid">  </param>
+        /// <param name="pathServiceSid">  </param>
+        /// <param name="pathUserSid">  </param>
+        /// <param name="pathChannelSid">  </param>
+
         public UpdateUserChannelOptions(string pathServiceSid, string pathUserSid, string pathChannelSid)
         {
             PathServiceSid = pathServiceSid;

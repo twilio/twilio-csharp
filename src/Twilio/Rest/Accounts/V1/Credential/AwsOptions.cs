@@ -40,6 +40,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
 
         /// <summary> Construct a new CreateCredentialAwsOptions </summary>
         /// <param name="credentials"> A string that contains the AWS access credentials in the format `<AWS_ACCESS_KEY_ID>:<AWS_SECRET_ACCESS_KEY>`. For example, `AKIAIOSFODNN7EXAMPLE:wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY` </param>
+
         public CreateAwsOptions(string credentials)
         {
             Credentials = credentials;
@@ -79,6 +80,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
 
         /// <summary> Construct a new DeleteCredentialAwsOptions </summary>
         /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the AWS resource to delete. </param>
+
         public DeleteAwsOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -108,6 +110,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
 
         /// <summary> Construct a new FetchCredentialAwsOptions </summary>
         /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the AWS resource to fetch. </param>
+
         public FetchAwsOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -163,6 +166,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
 
         /// <summary> Construct a new UpdateCredentialAwsOptions </summary>
         /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the AWS resource to update. </param>
+
         public UpdateAwsOptions(string pathSid)
         {
             PathSid = pathSid;

@@ -48,7 +48,10 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
 
 
         /// <summary> Construct a new CreateSyncListItemOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) to create the new List Item in. </param>        /// <param name="pathListSid"> The SID of the Sync List to add the new List Item to. Can be the Sync List resource's `sid` or its `unique_name`. </param>        /// <param name="data"> A JSON string that represents an arbitrary, schema-less object that the List Item stores. Can be up to 16 KiB in length. </param>
+        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) to create the new List Item in. </param>
+        /// <param name="pathListSid"> The SID of the Sync List to add the new List Item to. Can be the Sync List resource's `sid` or its `unique_name`. </param>
+        /// <param name="data"> A JSON string that represents an arbitrary, schema-less object that the List Item stores. Can be up to 16 KiB in length. </param>
+
         public CreateSyncListItemOptions(string pathServiceSid, string pathListSid, object data)
         {
             PathServiceSid = pathServiceSid;
@@ -102,7 +105,10 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
 
 
         /// <summary> Construct a new DeleteSyncListItemOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync List Item resource to delete. </param>        /// <param name="pathListSid"> The SID of the Sync List with the Sync List Item resource to delete. Can be the Sync List resource's `sid` or its `unique_name`. </param>        /// <param name="pathIndex"> The index of the Sync List Item resource to delete. </param>
+        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync List Item resource to delete. </param>
+        /// <param name="pathListSid"> The SID of the Sync List with the Sync List Item resource to delete. Can be the Sync List resource's `sid` or its `unique_name`. </param>
+        /// <param name="pathIndex"> The index of the Sync List Item resource to delete. </param>
+
         public DeleteSyncListItemOptions(string pathServiceSid, string pathListSid, int? pathIndex)
         {
             PathServiceSid = pathServiceSid;
@@ -149,7 +155,10 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
 
 
         /// <summary> Construct a new FetchSyncListItemOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync List Item resource to fetch. </param>        /// <param name="pathListSid"> The SID of the Sync List with the Sync List Item resource to fetch. Can be the Sync List resource's `sid` or its `unique_name`. </param>        /// <param name="pathIndex"> The index of the Sync List Item resource to fetch. </param>
+        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync List Item resource to fetch. </param>
+        /// <param name="pathListSid"> The SID of the Sync List with the Sync List Item resource to fetch. Can be the Sync List resource's `sid` or its `unique_name`. </param>
+        /// <param name="pathIndex"> The index of the Sync List Item resource to fetch. </param>
+
         public FetchSyncListItemOptions(string pathServiceSid, string pathListSid, int? pathIndex)
         {
             PathServiceSid = pathServiceSid;
@@ -192,7 +201,9 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
 
 
         /// <summary> Construct a new ListSyncListItemOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the List Item resources to read. </param>        /// <param name="pathListSid"> The SID of the Sync List with the List Items to read. Can be the Sync List resource's `sid` or its `unique_name`. </param>
+        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the List Item resources to read. </param>
+        /// <param name="pathListSid"> The SID of the Sync List with the List Items to read. Can be the Sync List resource's `sid` or its `unique_name`. </param>
+
         public ReadSyncListItemOptions(string pathServiceSid, string pathListSid)
         {
             PathServiceSid = pathServiceSid;
@@ -258,7 +269,10 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
 
 
         /// <summary> Construct a new UpdateSyncListItemOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync List Item resource to update. </param>        /// <param name="pathListSid"> The SID of the Sync List with the Sync List Item resource to update. Can be the Sync List resource's `sid` or its `unique_name`. </param>        /// <param name="pathIndex"> The index of the Sync List Item resource to update. </param>
+        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync List Item resource to update. </param>
+        /// <param name="pathListSid"> The SID of the Sync List with the Sync List Item resource to update. Can be the Sync List resource's `sid` or its `unique_name`. </param>
+        /// <param name="pathIndex"> The index of the Sync List Item resource to update. </param>
+
         public UpdateSyncListItemOptions(string pathServiceSid, string pathListSid, int? pathIndex)
         {
             PathServiceSid = pathServiceSid;

@@ -37,6 +37,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
         /// <summary> Construct a new FetchAuthorizedConnectAppOptions </summary>
         /// <param name="pathConnectAppSid"> The SID of the Connect App to fetch. </param>
+
         public FetchAuthorizedConnectAppOptions(string pathConnectAppSid)
         {
             PathConnectAppSid = pathConnectAppSid;

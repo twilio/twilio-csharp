@@ -34,6 +34,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Configuration
 
         /// <summary> Construct a new FetchServiceWebhookConfigurationOptions </summary>
         /// <param name="pathChatServiceSid"> The unique ID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) this conversation belongs to. </param>
+
         public FetchWebhookOptions(string pathChatServiceSid)
         {
             PathChatServiceSid = pathChatServiceSid;
@@ -75,6 +76,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Configuration
 
         /// <summary> Construct a new UpdateServiceWebhookConfigurationOptions </summary>
         /// <param name="pathChatServiceSid"> The unique ID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) this conversation belongs to. </param>
+
         public UpdateWebhookOptions(string pathChatServiceSid)
         {
             PathChatServiceSid = pathChatServiceSid;

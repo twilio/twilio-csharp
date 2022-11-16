@@ -42,7 +42,10 @@ namespace Twilio.Rest.Trusthub.V1
 
 
         /// <summary> Construct a new CreateCustomerProfileOptions </summary>
-        /// <param name="friendlyName"> The string that you assigned to describe the resource. </param>        /// <param name="email"> The email address that will receive updates when the Customer-Profile resource changes status. </param>        /// <param name="policySid"> The unique string of a policy that is associated to the Customer-Profile resource. </param>
+        /// <param name="friendlyName"> The string that you assigned to describe the resource. </param>
+        /// <param name="email"> The email address that will receive updates when the Customer-Profile resource changes status. </param>
+        /// <param name="policySid"> The unique string of a policy that is associated to the Customer-Profile resource. </param>
+
         public CreateCustomerProfilesOptions(string friendlyName, string email, string policySid)
         {
             FriendlyName = friendlyName;
@@ -88,6 +91,7 @@ namespace Twilio.Rest.Trusthub.V1
 
         /// <summary> Construct a new DeleteCustomerProfileOptions </summary>
         /// <param name="pathSid"> The unique string that we created to identify the Customer-Profile resource. </param>
+
         public DeleteCustomerProfilesOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -117,6 +121,7 @@ namespace Twilio.Rest.Trusthub.V1
 
         /// <summary> Construct a new FetchCustomerProfileOptions </summary>
         /// <param name="pathSid"> The unique string that we created to identify the Customer-Profile resource. </param>
+
         public FetchCustomerProfilesOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -202,6 +207,7 @@ namespace Twilio.Rest.Trusthub.V1
 
         /// <summary> Construct a new UpdateCustomerProfileOptions </summary>
         /// <param name="pathSid"> The unique string that we created to identify the Customer-Profile resource. </param>
+
         public UpdateCustomerProfilesOptions(string pathSid)
         {
             PathSid = pathSid;

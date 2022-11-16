@@ -36,7 +36,9 @@ namespace Twilio.Rest.Trusthub.V1.CustomerProfiles
 
 
         /// <summary> Construct a new CreateCustomerProfileEvaluationOptions </summary>
-        /// <param name="pathCustomerProfileSid"> The unique string that we created to identify the CustomerProfile resource. </param>        /// <param name="policySid"> The unique string of a policy that is associated to the customer_profile resource. </param>
+        /// <param name="pathCustomerProfileSid"> The unique string that we created to identify the CustomerProfile resource. </param>
+        /// <param name="policySid"> The unique string of a policy that is associated to the customer_profile resource. </param>
+
         public CreateCustomerProfilesEvaluationsOptions(string pathCustomerProfileSid, string policySid)
         {
             PathCustomerProfileSid = pathCustomerProfileSid;
@@ -71,7 +73,9 @@ namespace Twilio.Rest.Trusthub.V1.CustomerProfiles
 
 
         /// <summary> Construct a new FetchCustomerProfileEvaluationOptions </summary>
-        /// <param name="pathCustomerProfileSid"> The unique string that we created to identify the customer_profile resource. </param>        /// <param name="pathSid"> The unique string that identifies the Evaluation resource. </param>
+        /// <param name="pathCustomerProfileSid"> The unique string that we created to identify the customer_profile resource. </param>
+        /// <param name="pathSid"> The unique string that identifies the Evaluation resource. </param>
+
         public FetchCustomerProfilesEvaluationsOptions(string pathCustomerProfileSid, string pathSid)
         {
             PathCustomerProfileSid = pathCustomerProfileSid;
@@ -102,6 +106,7 @@ namespace Twilio.Rest.Trusthub.V1.CustomerProfiles
 
         /// <summary> Construct a new ListCustomerProfileEvaluationOptions </summary>
         /// <param name="pathCustomerProfileSid"> The unique string that we created to identify the CustomerProfile resource. </param>
+
         public ReadCustomerProfilesEvaluationsOptions(string pathCustomerProfileSid)
         {
             PathCustomerProfileSid = pathCustomerProfileSid;

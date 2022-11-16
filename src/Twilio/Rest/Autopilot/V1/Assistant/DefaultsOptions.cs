@@ -34,6 +34,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
 
         /// <summary> Construct a new FetchDefaultsOptions </summary>
         /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resource to fetch. </param>
+
         public FetchDefaultsOptions(string pathAssistantSid)
         {
             PathAssistantSid = pathAssistantSid;
@@ -66,6 +67,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
 
         /// <summary> Construct a new UpdateDefaultsOptions </summary>
         /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resource to update. </param>
+
         public UpdateDefaultsOptions(string pathAssistantSid)
         {
             PathAssistantSid = pathAssistantSid;

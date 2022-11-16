@@ -34,6 +34,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant
 
         /// <summary> Construct a new FetchUnderstandStyleSheetOptions </summary>
         /// <param name="pathAssistantSid"> The unique ID of the Assistant </param>
+
         public FetchStyleSheetOptions(string pathAssistantSid)
         {
             PathAssistantSid = pathAssistantSid;
@@ -66,6 +67,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant
 
         /// <summary> Construct a new UpdateUnderstandStyleSheetOptions </summary>
         /// <param name="pathAssistantSid"> The unique ID of the Assistant </param>
+
         public UpdateStyleSheetOptions(string pathAssistantSid)
         {
             PathAssistantSid = pathAssistantSid;

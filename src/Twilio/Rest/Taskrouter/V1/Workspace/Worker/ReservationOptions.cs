@@ -39,7 +39,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
 
 
         /// <summary> Construct a new FetchWorkerReservationOptions </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the WorkerReservation resource to fetch. </param>        /// <param name="pathWorkerSid"> The SID of the reserved Worker resource with the WorkerReservation resource to fetch. </param>        /// <param name="pathSid"> The SID of the WorkerReservation resource to fetch. </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the WorkerReservation resource to fetch. </param>
+        /// <param name="pathWorkerSid"> The SID of the reserved Worker resource with the WorkerReservation resource to fetch. </param>
+        /// <param name="pathSid"> The SID of the WorkerReservation resource to fetch. </param>
+
         public FetchReservationOptions(string pathWorkspaceSid, string pathWorkerSid, string pathSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;
@@ -76,7 +79,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
 
 
         /// <summary> Construct a new ListWorkerReservationOptions </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the WorkerReservation resources to read. </param>        /// <param name="pathWorkerSid"> The SID of the reserved Worker resource with the WorkerReservation resources to read. </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the WorkerReservation resources to read. </param>
+        /// <param name="pathWorkerSid"> The SID of the reserved Worker resource with the WorkerReservation resources to read. </param>
+
         public ReadReservationOptions(string pathWorkspaceSid, string pathWorkerSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;
@@ -275,7 +280,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
 
 
         /// <summary> Construct a new UpdateWorkerReservationOptions </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the WorkerReservation resources to update. </param>        /// <param name="pathWorkerSid"> The SID of the reserved Worker resource with the WorkerReservation resources to update. </param>        /// <param name="pathSid"> The SID of the WorkerReservation resource to update. </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the WorkerReservation resources to update. </param>
+        /// <param name="pathWorkerSid"> The SID of the reserved Worker resource with the WorkerReservation resources to update. </param>
+        /// <param name="pathSid"> The SID of the WorkerReservation resource to update. </param>
+
         public UpdateReservationOptions(string pathWorkspaceSid, string pathWorkerSid, string pathSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;

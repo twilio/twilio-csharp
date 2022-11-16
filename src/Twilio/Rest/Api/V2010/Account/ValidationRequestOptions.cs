@@ -52,6 +52,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
         /// <summary> Construct a new CreateValidationRequestOptions </summary>
         /// <param name="phoneNumber"> The phone number to verify in [E.164](https://www.twilio.com/docs/glossary/what-e164) format, which consists of a + followed by the country code and subscriber number. </param>
+
         public CreateValidationRequestOptions(Types.PhoneNumber phoneNumber)
         {
             PhoneNumber = phoneNumber;

@@ -37,6 +37,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
 
         /// <summary> Construct a new CreateBundleCopyOptions </summary>
         /// <param name="pathBundleSid"> The unique string that identifies the Bundle to be copied. </param>
+
         public CreateBundleCopyOptions(string pathBundleSid)
         {
             PathBundleSid = pathBundleSid;
@@ -68,6 +69,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
 
         /// <summary> Construct a new ListBundleCopyOptions </summary>
         /// <param name="pathBundleSid"> The unique string that we created to identify the Bundle resource. </param>
+
         public ReadBundleCopyOptions(string pathBundleSid)
         {
             PathBundleSid = pathBundleSid;

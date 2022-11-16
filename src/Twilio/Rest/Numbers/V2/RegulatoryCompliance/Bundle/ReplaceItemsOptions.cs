@@ -36,7 +36,9 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
 
 
         /// <summary> Construct a new CreateReplaceItemsOptions </summary>
-        /// <param name="pathBundleSid"> The unique string that identifies the Bundle where the item assignments are going to be replaced. </param>        /// <param name="fromBundleSid"> The source bundle sid to copy the item assignments from. </param>
+        /// <param name="pathBundleSid"> The unique string that identifies the Bundle where the item assignments are going to be replaced. </param>
+        /// <param name="fromBundleSid"> The source bundle sid to copy the item assignments from. </param>
+
         public CreateReplaceItemsOptions(string pathBundleSid, string fromBundleSid)
         {
             PathBundleSid = pathBundleSid;

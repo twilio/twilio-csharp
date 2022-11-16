@@ -37,6 +37,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
         /// <summary> Construct a new FetchCallFeedbackOptions </summary>
         /// <param name="pathCallSid"> The call sid that uniquely identifies the call </param>
+
         public FetchFeedbackOptions(string pathCallSid)
         {
             PathCallSid = pathCallSid;
@@ -75,6 +76,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
         /// <summary> Construct a new UpdateCallFeedbackOptions </summary>
         /// <param name="pathCallSid"> The call sid that uniquely identifies the call </param>
+
         public UpdateFeedbackOptions(string pathCallSid)
         {
             PathCallSid = pathCallSid;

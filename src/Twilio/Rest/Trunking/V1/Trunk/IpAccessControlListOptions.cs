@@ -36,7 +36,9 @@ namespace Twilio.Rest.Trunking.V1.Trunk
 
 
         /// <summary> Construct a new CreateIpAccessControlListOptions </summary>
-        /// <param name="pathTrunkSid"> The SID of the Trunk to associate the IP Access Control List with. </param>        /// <param name="ipAccessControlListSid"> The SID of the [IP Access Control List](https://www.twilio.com/docs/voice/sip/api/sip-ipaccesscontrollist-resource) that you want to associate with the trunk. </param>
+        /// <param name="pathTrunkSid"> The SID of the Trunk to associate the IP Access Control List with. </param>
+        /// <param name="ipAccessControlListSid"> The SID of the [IP Access Control List](https://www.twilio.com/docs/voice/sip/api/sip-ipaccesscontrollist-resource) that you want to associate with the trunk. </param>
+
         public CreateIpAccessControlListOptions(string pathTrunkSid, string ipAccessControlListSid)
         {
             PathTrunkSid = pathTrunkSid;
@@ -71,7 +73,9 @@ namespace Twilio.Rest.Trunking.V1.Trunk
 
 
         /// <summary> Construct a new DeleteIpAccessControlListOptions </summary>
-        /// <param name="pathTrunkSid"> The SID of the Trunk from which to delete the IP Access Control List. </param>        /// <param name="pathSid"> The unique string that we created to identify the IpAccessControlList resource to delete. </param>
+        /// <param name="pathTrunkSid"> The SID of the Trunk from which to delete the IP Access Control List. </param>
+        /// <param name="pathSid"> The unique string that we created to identify the IpAccessControlList resource to delete. </param>
+
         public DeleteIpAccessControlListOptions(string pathTrunkSid, string pathSid)
         {
             PathTrunkSid = pathTrunkSid;
@@ -104,7 +108,9 @@ namespace Twilio.Rest.Trunking.V1.Trunk
 
 
         /// <summary> Construct a new FetchIpAccessControlListOptions </summary>
-        /// <param name="pathTrunkSid"> The SID of the Trunk from which to fetch the IP Access Control List. </param>        /// <param name="pathSid"> The unique string that we created to identify the IpAccessControlList resource to fetch. </param>
+        /// <param name="pathTrunkSid"> The SID of the Trunk from which to fetch the IP Access Control List. </param>
+        /// <param name="pathSid"> The unique string that we created to identify the IpAccessControlList resource to fetch. </param>
+
         public FetchIpAccessControlListOptions(string pathTrunkSid, string pathSid)
         {
             PathTrunkSid = pathTrunkSid;
@@ -135,6 +141,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
 
         /// <summary> Construct a new ListIpAccessControlListOptions </summary>
         /// <param name="pathTrunkSid"> The SID of the Trunk from which to read the IP Access Control Lists. </param>
+
         public ReadIpAccessControlListOptions(string pathTrunkSid)
         {
             PathTrunkSid = pathTrunkSid;

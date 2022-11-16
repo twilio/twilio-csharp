@@ -39,7 +39,9 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
 
 
         /// <summary> Construct a new FetchMemberOptions </summary>
-        /// <param name="pathQueueSid"> The SID of the Queue in which to find the members to fetch. </param>        /// <param name="pathCallSid"> The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID of the resource(s) to fetch. </param>
+        /// <param name="pathQueueSid"> The SID of the Queue in which to find the members to fetch. </param>
+        /// <param name="pathCallSid"> The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID of the resource(s) to fetch. </param>
+
         public FetchMemberOptions(string pathQueueSid, string pathCallSid)
         {
             PathQueueSid = pathQueueSid;
@@ -73,6 +75,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
 
         /// <summary> Construct a new ListMemberOptions </summary>
         /// <param name="pathQueueSid"> The SID of the Queue in which to find the members </param>
+
         public ReadMemberOptions(string pathQueueSid)
         {
             PathQueueSid = pathQueueSid;
@@ -116,7 +119,10 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
 
 
         /// <summary> Construct a new UpdateMemberOptions </summary>
-        /// <param name="pathQueueSid"> The SID of the Queue in which to find the members to update. </param>        /// <param name="pathCallSid"> The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID of the resource(s) to update. </param>        /// <param name="url"> The absolute URL of the Queue resource. </param>
+        /// <param name="pathQueueSid"> The SID of the Queue in which to find the members to update. </param>
+        /// <param name="pathCallSid"> The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID of the resource(s) to update. </param>
+        /// <param name="url"> The absolute URL of the Queue resource. </param>
+
         public UpdateMemberOptions(string pathQueueSid, string pathCallSid, Uri url)
         {
             PathQueueSid = pathQueueSid;

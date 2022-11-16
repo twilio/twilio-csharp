@@ -37,6 +37,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
         /// <summary> Construct a new DeleteKeyOptions </summary>
         /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Key resource to delete. </param>
+
         public DeleteKeyOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -69,6 +70,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
         /// <summary> Construct a new FetchKeyOptions </summary>
         /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Key resource to fetch. </param>
+
         public FetchKeyOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -130,6 +132,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
         /// <summary> Construct a new UpdateKeyOptions </summary>
         /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Key resource to update. </param>
+
         public UpdateKeyOptions(string pathSid)
         {
             PathSid = pathSid;

@@ -66,6 +66,7 @@ namespace Twilio.Rest.Supersim.V1
 
         /// <summary> Construct a new FetchNetworkAccessProfileOptions </summary>
         /// <param name="pathSid"> The SID of the Network Access Profile resource to fetch. </param>
+
         public FetchNetworkAccessProfileOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -121,6 +122,7 @@ namespace Twilio.Rest.Supersim.V1
 
         /// <summary> Construct a new UpdateNetworkAccessProfileOptions </summary>
         /// <param name="pathSid"> The SID of the Network Access Profile to update. </param>
+
         public UpdateNetworkAccessProfileOptions(string pathSid)
         {
             PathSid = pathSid;

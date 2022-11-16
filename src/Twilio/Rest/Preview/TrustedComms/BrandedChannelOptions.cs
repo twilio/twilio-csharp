@@ -34,6 +34,7 @@ namespace Twilio.Rest.Preview.TrustedComms
 
         /// <summary> Construct a new FetchTrustedCommsBrandedChannelOptions </summary>
         /// <param name="pathSid"> The unique SID identifier of the Branded Channel. </param>
+
         public FetchBrandedChannelOptions(string pathSid)
         {
             PathSid = pathSid;

@@ -37,6 +37,7 @@ namespace Twilio.Rest.Pricing.V2
 
         /// <summary> Construct a new FetchTrunkingNumberOptions </summary>
         /// <param name="pathDestinationNumber"> The destination phone number, in [E.164](https://www.twilio.com/docs/glossary/what-e164) format, for which to fetch the origin-based voice pricing information. E.164 format consists of a + followed by the country code and subscriber number. </param>
+
         public FetchNumberOptions(Types.PhoneNumber pathDestinationNumber)
         {
             PathDestinationNumber = pathDestinationNumber;

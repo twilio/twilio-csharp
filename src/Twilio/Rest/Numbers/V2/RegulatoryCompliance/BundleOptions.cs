@@ -51,7 +51,9 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
 
 
         /// <summary> Construct a new CreateBundleOptions </summary>
-        /// <param name="friendlyName"> The string that you assigned to describe the resource. </param>        /// <param name="email"> The email address that will receive updates when the Bundle resource changes status. </param>
+        /// <param name="friendlyName"> The string that you assigned to describe the resource. </param>
+        /// <param name="email"> The email address that will receive updates when the Bundle resource changes status. </param>
+
         public CreateBundleOptions(string friendlyName, string email)
         {
             FriendlyName = friendlyName;
@@ -108,6 +110,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
 
         /// <summary> Construct a new DeleteBundleOptions </summary>
         /// <param name="pathSid"> The unique string that we created to identify the Bundle resource. </param>
+
         public DeleteBundleOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -137,6 +140,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
 
         /// <summary> Construct a new FetchBundleOptions </summary>
         /// <param name="pathSid"> The unique string that we created to identify the Bundle resource. </param>
+
         public FetchBundleOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -290,6 +294,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
 
         /// <summary> Construct a new UpdateBundleOptions </summary>
         /// <param name="pathSid"> The unique string that we created to identify the Bundle resource. </param>
+
         public UpdateBundleOptions(string pathSid)
         {
             PathSid = pathSid;

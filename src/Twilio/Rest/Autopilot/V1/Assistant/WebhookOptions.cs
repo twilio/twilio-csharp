@@ -45,7 +45,11 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
 
 
         /// <summary> Construct a new CreateWebhookOptions </summary>
-        /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the new resource. </param>        /// <param name="uniqueName"> An application-defined string that uniquely identifies the new resource. It can be used as an alternative to the `sid` in the URL path to address the resource. This value must be unique and 64 characters or less in length. </param>        /// <param name="events"> The list of space-separated events that this Webhook will subscribe to. </param>        /// <param name="webhookUrl"> The URL associated with this Webhook. </param>
+        /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the new resource. </param>
+        /// <param name="uniqueName"> An application-defined string that uniquely identifies the new resource. It can be used as an alternative to the `sid` in the URL path to address the resource. This value must be unique and 64 characters or less in length. </param>
+        /// <param name="events"> The list of space-separated events that this Webhook will subscribe to. </param>
+        /// <param name="webhookUrl"> The URL associated with this Webhook. </param>
+
         public CreateWebhookOptions(string pathAssistantSid, string uniqueName, string events, Uri webhookUrl)
         {
             PathAssistantSid = pathAssistantSid;
@@ -94,7 +98,9 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
 
 
         /// <summary> Construct a new DeleteWebhookOptions </summary>
-        /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resources to delete. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Webhook resource to delete. </param>
+        /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resources to delete. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Webhook resource to delete. </param>
+
         public DeleteWebhookOptions(string pathAssistantSid, string pathSid)
         {
             PathAssistantSid = pathAssistantSid;
@@ -127,7 +133,9 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
 
 
         /// <summary> Construct a new FetchWebhookOptions </summary>
-        /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resource to fetch. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Webhook resource to fetch. </param>
+        /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resource to fetch. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Webhook resource to fetch. </param>
+
         public FetchWebhookOptions(string pathAssistantSid, string pathSid)
         {
             PathAssistantSid = pathAssistantSid;
@@ -158,6 +166,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
 
         /// <summary> Construct a new ListWebhookOptions </summary>
         /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resources to read. </param>
+
         public ReadWebhookOptions(string pathAssistantSid)
         {
             PathAssistantSid = pathAssistantSid;
@@ -204,7 +213,9 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
 
 
         /// <summary> Construct a new UpdateWebhookOptions </summary>
-        /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resource to update. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Webhook resource to update. </param>
+        /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resource to update. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Webhook resource to update. </param>
+
         public UpdateWebhookOptions(string pathAssistantSid, string pathSid)
         {
             PathAssistantSid = pathAssistantSid;

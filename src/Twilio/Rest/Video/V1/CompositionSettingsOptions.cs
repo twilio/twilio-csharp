@@ -49,6 +49,7 @@ namespace Twilio.Rest.Video.V1
 
         /// <summary> Construct a new CreateCompositionSettingsOptions </summary>
         /// <param name="friendlyName"> A descriptive string that you create to describe the resource and show to the user in the console </param>
+
         public CreateCompositionSettingsOptions(string friendlyName)
         {
             FriendlyName = friendlyName;

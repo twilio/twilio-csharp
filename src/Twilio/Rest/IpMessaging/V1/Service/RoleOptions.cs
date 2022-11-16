@@ -42,7 +42,11 @@ namespace Twilio.Rest.IpMessaging.V1.Service
 
 
         /// <summary> Construct a new CreateRoleOptions </summary>
-        /// <param name="pathServiceSid">  </param>        /// <param name="friendlyName">  </param>        /// <param name="type">  </param>        /// <param name="permission">  </param>
+        /// <param name="pathServiceSid">  </param>
+        /// <param name="friendlyName">  </param>
+        /// <param name="type">  </param>
+        /// <param name="permission">  </param>
+
         public CreateRoleOptions(string pathServiceSid, string friendlyName, RoleResource.RoleTypeEnum type, List<string> permission)
         {
             PathServiceSid = pathServiceSid;
@@ -87,7 +91,9 @@ namespace Twilio.Rest.IpMessaging.V1.Service
 
 
         /// <summary> Construct a new DeleteRoleOptions </summary>
-        /// <param name="pathServiceSid">  </param>        /// <param name="pathSid">  </param>
+        /// <param name="pathServiceSid">  </param>
+        /// <param name="pathSid">  </param>
+
         public DeleteRoleOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -120,7 +126,9 @@ namespace Twilio.Rest.IpMessaging.V1.Service
 
 
         /// <summary> Construct a new FetchRoleOptions </summary>
-        /// <param name="pathServiceSid">  </param>        /// <param name="pathSid">  </param>
+        /// <param name="pathServiceSid">  </param>
+        /// <param name="pathSid">  </param>
+
         public FetchRoleOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -151,6 +159,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
 
         /// <summary> Construct a new ListRoleOptions </summary>
         /// <param name="pathServiceSid">  </param>
+
         public ReadRoleOptions(string pathServiceSid)
         {
             PathServiceSid = pathServiceSid;
@@ -188,7 +197,10 @@ namespace Twilio.Rest.IpMessaging.V1.Service
 
 
         /// <summary> Construct a new UpdateRoleOptions </summary>
-        /// <param name="pathServiceSid">  </param>        /// <param name="pathSid">  </param>        /// <param name="permission">  </param>
+        /// <param name="pathServiceSid">  </param>
+        /// <param name="pathSid">  </param>
+        /// <param name="permission">  </param>
+
         public UpdateRoleOptions(string pathServiceSid, string pathSid, List<string> permission)
         {
             PathServiceSid = pathServiceSid;

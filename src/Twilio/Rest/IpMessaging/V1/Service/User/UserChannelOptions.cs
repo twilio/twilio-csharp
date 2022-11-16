@@ -36,7 +36,9 @@ namespace Twilio.Rest.IpMessaging.V1.Service.User
 
 
         /// <summary> Construct a new ListUserChannelOptions </summary>
-        /// <param name="pathServiceSid">  </param>        /// <param name="pathUserSid">  </param>
+        /// <param name="pathServiceSid">  </param>
+        /// <param name="pathUserSid">  </param>
+
         public ReadUserChannelOptions(string pathServiceSid, string pathUserSid)
         {
             PathServiceSid = pathServiceSid;

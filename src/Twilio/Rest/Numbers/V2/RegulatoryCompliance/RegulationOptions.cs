@@ -34,6 +34,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
 
         /// <summary> Construct a new FetchRegulationOptions </summary>
         /// <param name="pathSid"> The unique string that identifies the Regulation resource. </param>
+
         public FetchRegulationOptions(string pathSid)
         {
             PathSid = pathSid;

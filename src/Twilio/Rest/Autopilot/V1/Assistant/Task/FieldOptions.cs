@@ -42,7 +42,11 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
 
 
         /// <summary> Construct a new CreateFieldOptions </summary>
-        /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the Task associated with the new resource. </param>        /// <param name="pathTaskSid"> The SID of the [Task](https://www.twilio.com/docs/autopilot/api/task) resource associated with the new Field resource. </param>        /// <param name="fieldType"> The Field Type of the new field. Can be: a [Built-in Field Type](https://www.twilio.com/docs/autopilot/built-in-field-types), the `unique_name`, or the `sid` of a custom Field Type. </param>        /// <param name="uniqueName"> An application-defined string that uniquely identifies the new resource. This value must be a unique string of no more than 64 characters. It can be used as an alternative to the `sid` in the URL path to address the resource. </param>
+        /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the Task associated with the new resource. </param>
+        /// <param name="pathTaskSid"> The SID of the [Task](https://www.twilio.com/docs/autopilot/api/task) resource associated with the new Field resource. </param>
+        /// <param name="fieldType"> The Field Type of the new field. Can be: a [Built-in Field Type](https://www.twilio.com/docs/autopilot/built-in-field-types), the `unique_name`, or the `sid` of a custom Field Type. </param>
+        /// <param name="uniqueName"> An application-defined string that uniquely identifies the new resource. This value must be a unique string of no more than 64 characters. It can be used as an alternative to the `sid` in the URL path to address the resource. </param>
+
         public CreateFieldOptions(string pathAssistantSid, string pathTaskSid, string fieldType, string uniqueName)
         {
             PathAssistantSid = pathAssistantSid;
@@ -86,7 +90,10 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
 
 
         /// <summary> Construct a new DeleteFieldOptions </summary>
-        /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the Task associated with the resources to delete. </param>        /// <param name="pathTaskSid"> The SID of the [Task](https://www.twilio.com/docs/autopilot/api/task) resource associated with the Field resource to delete. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Field resource to delete. </param>
+        /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the Task associated with the resources to delete. </param>
+        /// <param name="pathTaskSid"> The SID of the [Task](https://www.twilio.com/docs/autopilot/api/task) resource associated with the Field resource to delete. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Field resource to delete. </param>
+
         public DeleteFieldOptions(string pathAssistantSid, string pathTaskSid, string pathSid)
         {
             PathAssistantSid = pathAssistantSid;
@@ -123,7 +130,10 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
 
 
         /// <summary> Construct a new FetchFieldOptions </summary>
-        /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the Task associated with the resource to fetch. </param>        /// <param name="pathTaskSid"> The SID of the [Task](https://www.twilio.com/docs/autopilot/api/task) resource associated with the Field resource to fetch. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Field resource to fetch. </param>
+        /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the Task associated with the resource to fetch. </param>
+        /// <param name="pathTaskSid"> The SID of the [Task](https://www.twilio.com/docs/autopilot/api/task) resource associated with the Field resource to fetch. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Field resource to fetch. </param>
+
         public FetchFieldOptions(string pathAssistantSid, string pathTaskSid, string pathSid)
         {
             PathAssistantSid = pathAssistantSid;
@@ -157,7 +167,9 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
 
 
         /// <summary> Construct a new ListFieldOptions </summary>
-        /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the Task associated with the resources to read. </param>        /// <param name="pathTaskSid"> The SID of the [Task](https://www.twilio.com/docs/autopilot/api/task) resource associated with the Field resources to read. </param>
+        /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the Task associated with the resources to read. </param>
+        /// <param name="pathTaskSid"> The SID of the [Task](https://www.twilio.com/docs/autopilot/api/task) resource associated with the Field resources to read. </param>
+
         public ReadFieldOptions(string pathAssistantSid, string pathTaskSid)
         {
             PathAssistantSid = pathAssistantSid;

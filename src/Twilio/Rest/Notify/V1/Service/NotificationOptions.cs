@@ -88,6 +88,7 @@ namespace Twilio.Rest.Notify.V1.Service
 
         /// <summary> Construct a new CreateNotificationOptions </summary>
         /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/notify/api/service-resource) to create the resource under. </param>
+
         public CreateNotificationOptions(string pathServiceSid)
         {
             PathServiceSid = pathServiceSid;

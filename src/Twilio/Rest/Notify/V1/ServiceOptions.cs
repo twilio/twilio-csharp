@@ -150,6 +150,7 @@ namespace Twilio.Rest.Notify.V1
 
         /// <summary> Construct a new DeleteServiceOptions </summary>
         /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Service resource to delete. </param>
+
         public DeleteServiceOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -179,6 +180,7 @@ namespace Twilio.Rest.Notify.V1
 
         /// <summary> Construct a new FetchServiceOptions </summary>
         /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Service resource to fetch. </param>
+
         public FetchServiceOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -280,6 +282,7 @@ namespace Twilio.Rest.Notify.V1
 
         /// <summary> Construct a new UpdateServiceOptions </summary>
         /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Service resource to update. </param>
+
         public UpdateServiceOptions(string pathSid)
         {
             PathSid = pathSid;

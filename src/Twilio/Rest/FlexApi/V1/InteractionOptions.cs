@@ -36,7 +36,9 @@ namespace Twilio.Rest.FlexApi.V1
 
 
         /// <summary> Construct a new CreateInteractionOptions </summary>
-        /// <param name="channel"> The Interaction's channel. </param>        /// <param name="routing"> The Interaction's routing logic. </param>
+        /// <param name="channel"> The Interaction's channel. </param>
+        /// <param name="routing"> The Interaction's routing logic. </param>
+
         public CreateInteractionOptions(object channel, object routing)
         {
             Channel = channel;
@@ -73,6 +75,7 @@ namespace Twilio.Rest.FlexApi.V1
 
         /// <summary> Construct a new FetchInteractionOptions </summary>
         /// <param name="pathSid"> The SID of the Interaction resource to fetch. </param>
+
         public FetchInteractionOptions(string pathSid)
         {
             PathSid = pathSid;

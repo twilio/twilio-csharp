@@ -39,7 +39,9 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
 
 
         /// <summary> Construct a new CreateDeploymentOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to create the Deployment resource under. </param>        /// <param name="pathEnvironmentSid"> The SID of the Environment for the Deployment. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to create the Deployment resource under. </param>
+        /// <param name="pathEnvironmentSid"> The SID of the Environment for the Deployment. </param>
+
         public CreateDeploymentOptions(string pathServiceSid, string pathEnvironmentSid)
         {
             PathServiceSid = pathServiceSid;
@@ -77,7 +79,10 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
 
 
         /// <summary> Construct a new FetchDeploymentOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to fetch the Deployment resource from. </param>        /// <param name="pathEnvironmentSid"> The SID of the Environment used by the Deployment to fetch. </param>        /// <param name="pathSid"> The SID that identifies the Deployment resource to fetch. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to fetch the Deployment resource from. </param>
+        /// <param name="pathEnvironmentSid"> The SID of the Environment used by the Deployment to fetch. </param>
+        /// <param name="pathSid"> The SID that identifies the Deployment resource to fetch. </param>
+
         public FetchDeploymentOptions(string pathServiceSid, string pathEnvironmentSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -111,7 +116,9 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
 
 
         /// <summary> Construct a new ListDeploymentOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to read the Deployment resources from. </param>        /// <param name="pathEnvironmentSid"> The SID of the Environment used by the Deployment resources to read. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to read the Deployment resources from. </param>
+        /// <param name="pathEnvironmentSid"> The SID of the Environment used by the Deployment resources to read. </param>
+
         public ReadDeploymentOptions(string pathServiceSid, string pathEnvironmentSid)
         {
             PathServiceSid = pathServiceSid;

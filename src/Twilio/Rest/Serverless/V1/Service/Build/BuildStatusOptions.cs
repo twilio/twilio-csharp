@@ -36,7 +36,9 @@ namespace Twilio.Rest.Serverless.V1.Service.Build
 
 
         /// <summary> Construct a new FetchBuildStatusOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to fetch the Build resource from. </param>        /// <param name="pathSid"> The SID of the Build resource to fetch. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to fetch the Build resource from. </param>
+        /// <param name="pathSid"> The SID of the Build resource to fetch. </param>
+
         public FetchBuildStatusOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;

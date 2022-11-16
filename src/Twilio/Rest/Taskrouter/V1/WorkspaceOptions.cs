@@ -49,6 +49,7 @@ namespace Twilio.Rest.Taskrouter.V1
 
         /// <summary> Construct a new CreateWorkspaceOptions </summary>
         /// <param name="friendlyName"> A descriptive string that you create to describe the Workspace resource. It can be up to 64 characters long. For example: `Customer Support` or `2014 Election Campaign`. </param>
+
         public CreateWorkspaceOptions(string friendlyName)
         {
             FriendlyName = friendlyName;
@@ -100,6 +101,7 @@ namespace Twilio.Rest.Taskrouter.V1
 
         /// <summary> Construct a new DeleteWorkspaceOptions </summary>
         /// <param name="pathSid"> The SID of the Workspace resource to delete. </param>
+
         public DeleteWorkspaceOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -129,6 +131,7 @@ namespace Twilio.Rest.Taskrouter.V1
 
         /// <summary> Construct a new FetchWorkspaceOptions </summary>
         /// <param name="pathSid"> The SID of the Workspace resource to fetch. </param>
+
         public FetchWorkspaceOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -209,6 +212,7 @@ namespace Twilio.Rest.Taskrouter.V1
 
         /// <summary> Construct a new UpdateWorkspaceOptions </summary>
         /// <param name="pathSid"> The SID of the Workspace resource to update. </param>
+
         public UpdateWorkspaceOptions(string pathSid)
         {
             PathSid = pathSid;

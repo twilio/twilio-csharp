@@ -36,7 +36,9 @@ namespace Twilio.Rest.Trusthub.V1.TrustProducts
 
 
         /// <summary> Construct a new CreateTrustProductEvaluationOptions </summary>
-        /// <param name="pathTrustProductSid"> The unique string that we created to identify the trust_product resource. </param>        /// <param name="policySid"> The unique string of a policy that is associated to the customer_profile resource. </param>
+        /// <param name="pathTrustProductSid"> The unique string that we created to identify the trust_product resource. </param>
+        /// <param name="policySid"> The unique string of a policy that is associated to the customer_profile resource. </param>
+
         public CreateTrustProductsEvaluationsOptions(string pathTrustProductSid, string policySid)
         {
             PathTrustProductSid = pathTrustProductSid;
@@ -71,7 +73,9 @@ namespace Twilio.Rest.Trusthub.V1.TrustProducts
 
 
         /// <summary> Construct a new FetchTrustProductEvaluationOptions </summary>
-        /// <param name="pathTrustProductSid"> The unique string that we created to identify the trust_product resource. </param>        /// <param name="pathSid"> The unique string that identifies the Evaluation resource. </param>
+        /// <param name="pathTrustProductSid"> The unique string that we created to identify the trust_product resource. </param>
+        /// <param name="pathSid"> The unique string that identifies the Evaluation resource. </param>
+
         public FetchTrustProductsEvaluationsOptions(string pathTrustProductSid, string pathSid)
         {
             PathTrustProductSid = pathTrustProductSid;
@@ -102,6 +106,7 @@ namespace Twilio.Rest.Trusthub.V1.TrustProducts
 
         /// <summary> Construct a new ListTrustProductEvaluationOptions </summary>
         /// <param name="pathTrustProductSid"> The unique string that we created to identify the trust_product resource. </param>
+
         public ReadTrustProductsEvaluationsOptions(string pathTrustProductSid)
         {
             PathTrustProductSid = pathTrustProductSid;

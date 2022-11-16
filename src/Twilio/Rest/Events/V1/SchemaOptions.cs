@@ -34,6 +34,7 @@ namespace Twilio.Rest.Events.V1
 
         /// <summary> Construct a new FetchSchemaOptions </summary>
         /// <param name="pathId"> The unique identifier of the schema. Each schema can have multiple versions, that share the same id. </param>
+
         public FetchSchemaOptions(string pathId)
         {
             PathId = pathId;

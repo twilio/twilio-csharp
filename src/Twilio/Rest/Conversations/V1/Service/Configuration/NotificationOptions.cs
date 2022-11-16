@@ -34,6 +34,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Configuration
 
         /// <summary> Construct a new FetchServiceNotificationOptions </summary>
         /// <param name="pathChatServiceSid"> The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Configuration applies to. </param>
+
         public FetchNotificationOptions(string pathChatServiceSid)
         {
             PathChatServiceSid = pathChatServiceSid;
@@ -102,6 +103,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Configuration
 
         /// <summary> Construct a new UpdateServiceNotificationOptions </summary>
         /// <param name="pathChatServiceSid"> The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Configuration applies to. </param>
+
         public UpdateNotificationOptions(string pathChatServiceSid)
         {
             PathChatServiceSid = pathChatServiceSid;

@@ -59,6 +59,7 @@ namespace Twilio.Rest.Preview.DeployedDevices
 
         /// <summary> Construct a new DeleteDeployedDevicesFleetOptions </summary>
         /// <param name="pathSid"> Provides a 34 character string that uniquely identifies the requested Fleet resource. </param>
+
         public DeleteFleetOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -88,6 +89,7 @@ namespace Twilio.Rest.Preview.DeployedDevices
 
         /// <summary> Construct a new FetchDeployedDevicesFleetOptions </summary>
         /// <param name="pathSid"> Provides a 34 character string that uniquely identifies the requested Fleet resource. </param>
+
         public FetchFleetOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -146,6 +148,7 @@ namespace Twilio.Rest.Preview.DeployedDevices
 
         /// <summary> Construct a new UpdateDeployedDevicesFleetOptions </summary>
         /// <param name="pathSid"> Provides a 34 character string that uniquely identifies the requested Fleet resource. </param>
+
         public UpdateFleetOptions(string pathSid)
         {
             PathSid = pathSid;

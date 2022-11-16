@@ -42,7 +42,9 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
 
 
         /// <summary> Construct a new CreateDeployedDevicesCertificateOptions </summary>
-        /// <param name="pathFleetSid">  </param>        /// <param name="certificateData"> Provides a URL encoded representation of the public certificate in PEM format. </param>
+        /// <param name="pathFleetSid">  </param>
+        /// <param name="certificateData"> Provides a URL encoded representation of the public certificate in PEM format. </param>
+
         public CreateCertificateOptions(string pathFleetSid, string certificateData)
         {
             PathFleetSid = pathFleetSid;
@@ -85,7 +87,9 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
 
 
         /// <summary> Construct a new DeleteDeployedDevicesCertificateOptions </summary>
-        /// <param name="pathFleetSid">  </param>        /// <param name="pathSid"> Provides a 34 character string that uniquely identifies the requested Certificate credential resource. </param>
+        /// <param name="pathFleetSid">  </param>
+        /// <param name="pathSid"> Provides a 34 character string that uniquely identifies the requested Certificate credential resource. </param>
+
         public DeleteCertificateOptions(string pathFleetSid, string pathSid)
         {
             PathFleetSid = pathFleetSid;
@@ -118,7 +122,9 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
 
 
         /// <summary> Construct a new FetchDeployedDevicesCertificateOptions </summary>
-        /// <param name="pathFleetSid">  </param>        /// <param name="pathSid"> Provides a 34 character string that uniquely identifies the requested Certificate credential resource. </param>
+        /// <param name="pathFleetSid">  </param>
+        /// <param name="pathSid"> Provides a 34 character string that uniquely identifies the requested Certificate credential resource. </param>
+
         public FetchCertificateOptions(string pathFleetSid, string pathSid)
         {
             PathFleetSid = pathFleetSid;
@@ -152,6 +158,7 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
 
         /// <summary> Construct a new ListDeployedDevicesCertificateOptions </summary>
         /// <param name="pathFleetSid">  </param>
+
         public ReadCertificateOptions(string pathFleetSid)
         {
             PathFleetSid = pathFleetSid;
@@ -196,7 +203,9 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
 
 
         /// <summary> Construct a new UpdateDeployedDevicesCertificateOptions </summary>
-        /// <param name="pathFleetSid">  </param>        /// <param name="pathSid"> Provides a 34 character string that uniquely identifies the requested Certificate credential resource. </param>
+        /// <param name="pathFleetSid">  </param>
+        /// <param name="pathSid"> Provides a 34 character string that uniquely identifies the requested Certificate credential resource. </param>
+
         public UpdateCertificateOptions(string pathFleetSid, string pathSid)
         {
             PathFleetSid = pathFleetSid;

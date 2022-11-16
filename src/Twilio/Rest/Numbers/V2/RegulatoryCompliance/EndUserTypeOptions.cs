@@ -34,6 +34,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
 
         /// <summary> Construct a new FetchEndUserTypeOptions </summary>
         /// <param name="pathSid"> The unique string that identifies the End-User Type resource. </param>
+
         public FetchEndUserTypeOptions(string pathSid)
         {
             PathSid = pathSid;

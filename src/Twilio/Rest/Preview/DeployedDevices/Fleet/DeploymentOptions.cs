@@ -40,6 +40,7 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
 
         /// <summary> Construct a new CreateDeployedDevicesDeploymentOptions </summary>
         /// <param name="pathFleetSid">  </param>
+
         public CreateDeploymentOptions(string pathFleetSid)
         {
             PathFleetSid = pathFleetSid;
@@ -77,7 +78,9 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
 
 
         /// <summary> Construct a new DeleteDeployedDevicesDeploymentOptions </summary>
-        /// <param name="pathFleetSid">  </param>        /// <param name="pathSid"> Provides a 34 character string that uniquely identifies the requested Deployment resource. </param>
+        /// <param name="pathFleetSid">  </param>
+        /// <param name="pathSid"> Provides a 34 character string that uniquely identifies the requested Deployment resource. </param>
+
         public DeleteDeploymentOptions(string pathFleetSid, string pathSid)
         {
             PathFleetSid = pathFleetSid;
@@ -110,7 +113,9 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
 
 
         /// <summary> Construct a new FetchDeployedDevicesDeploymentOptions </summary>
-        /// <param name="pathFleetSid">  </param>        /// <param name="pathSid"> Provides a 34 character string that uniquely identifies the requested Deployment resource. </param>
+        /// <param name="pathFleetSid">  </param>
+        /// <param name="pathSid"> Provides a 34 character string that uniquely identifies the requested Deployment resource. </param>
+
         public FetchDeploymentOptions(string pathFleetSid, string pathSid)
         {
             PathFleetSid = pathFleetSid;
@@ -141,6 +146,7 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
 
         /// <summary> Construct a new ListDeployedDevicesDeploymentOptions </summary>
         /// <param name="pathFleetSid">  </param>
+
         public ReadDeploymentOptions(string pathFleetSid)
         {
             PathFleetSid = pathFleetSid;
@@ -181,7 +187,9 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
 
 
         /// <summary> Construct a new UpdateDeployedDevicesDeploymentOptions </summary>
-        /// <param name="pathFleetSid">  </param>        /// <param name="pathSid"> Provides a 34 character string that uniquely identifies the requested Deployment resource. </param>
+        /// <param name="pathFleetSid">  </param>
+        /// <param name="pathSid"> Provides a 34 character string that uniquely identifies the requested Deployment resource. </param>
+
         public UpdateDeploymentOptions(string pathFleetSid, string pathSid)
         {
             PathFleetSid = pathFleetSid;

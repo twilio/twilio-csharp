@@ -58,6 +58,7 @@ namespace Twilio.Rest.Supersim.V1
 
         /// <summary> Construct a new CreateFleetOptions </summary>
         /// <param name="networkAccessProfile"> The SID or unique name of the Network Access Profile that will control which cellular networks the Fleet's SIMs can connect to. </param>
+
         public CreateFleetOptions(string networkAccessProfile)
         {
             NetworkAccessProfile = networkAccessProfile;
@@ -121,6 +122,7 @@ namespace Twilio.Rest.Supersim.V1
 
         /// <summary> Construct a new FetchFleetOptions </summary>
         /// <param name="pathSid"> The SID of the Fleet resource to fetch. </param>
+
         public FetchFleetOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -201,6 +203,7 @@ namespace Twilio.Rest.Supersim.V1
 
         /// <summary> Construct a new UpdateFleetOptions </summary>
         /// <param name="pathSid"> The SID of the Fleet resource to update. </param>
+
         public UpdateFleetOptions(string pathSid)
         {
             PathSid = pathSid;

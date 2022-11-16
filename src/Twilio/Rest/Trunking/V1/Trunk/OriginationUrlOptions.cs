@@ -48,7 +48,13 @@ namespace Twilio.Rest.Trunking.V1.Trunk
 
 
         /// <summary> Construct a new CreateOriginationUrlOptions </summary>
-        /// <param name="pathTrunkSid"> The SID of the Trunk to associate the resource with. </param>        /// <param name="weight"> The value that determines the relative share of the load the URI should receive compared to other URIs with the same priority. Can be an integer from 1 to 65535, inclusive, and the default is 10. URLs with higher values receive more load than those with lower ones with the same priority. </param>        /// <param name="priority"> The relative importance of the URI. Can be an integer from 0 to 65535, inclusive, and the default is 10. The lowest number represents the most important URI. </param>        /// <param name="enabled"> Whether the URL is enabled. The default is `true`. </param>        /// <param name="friendlyName"> A descriptive string that you create to describe the resource. It can be up to 64 characters long. </param>        /// <param name="sipUrl"> The SIP address you want Twilio to route your Origination calls to. This must be a `sip:` schema. </param>
+        /// <param name="pathTrunkSid"> The SID of the Trunk to associate the resource with. </param>
+        /// <param name="weight"> The value that determines the relative share of the load the URI should receive compared to other URIs with the same priority. Can be an integer from 1 to 65535, inclusive, and the default is 10. URLs with higher values receive more load than those with lower ones with the same priority. </param>
+        /// <param name="priority"> The relative importance of the URI. Can be an integer from 0 to 65535, inclusive, and the default is 10. The lowest number represents the most important URI. </param>
+        /// <param name="enabled"> Whether the URL is enabled. The default is `true`. </param>
+        /// <param name="friendlyName"> A descriptive string that you create to describe the resource. It can be up to 64 characters long. </param>
+        /// <param name="sipUrl"> The SIP address you want Twilio to route your Origination calls to. This must be a `sip:` schema. </param>
+
         public CreateOriginationUrlOptions(string pathTrunkSid, int? weight, int? priority, bool? enabled, string friendlyName, Uri sipUrl)
         {
             PathTrunkSid = pathTrunkSid;
@@ -103,7 +109,9 @@ namespace Twilio.Rest.Trunking.V1.Trunk
 
 
         /// <summary> Construct a new DeleteOriginationUrlOptions </summary>
-        /// <param name="pathTrunkSid"> The SID of the Trunk from which to delete the OriginationUrl. </param>        /// <param name="pathSid"> The unique string that we created to identify the OriginationUrl resource to delete. </param>
+        /// <param name="pathTrunkSid"> The SID of the Trunk from which to delete the OriginationUrl. </param>
+        /// <param name="pathSid"> The unique string that we created to identify the OriginationUrl resource to delete. </param>
+
         public DeleteOriginationUrlOptions(string pathTrunkSid, string pathSid)
         {
             PathTrunkSid = pathTrunkSid;
@@ -136,7 +144,9 @@ namespace Twilio.Rest.Trunking.V1.Trunk
 
 
         /// <summary> Construct a new FetchOriginationUrlOptions </summary>
-        /// <param name="pathTrunkSid"> The SID of the Trunk from which to fetch the OriginationUrl. </param>        /// <param name="pathSid"> The unique string that we created to identify the OriginationUrl resource to fetch. </param>
+        /// <param name="pathTrunkSid"> The SID of the Trunk from which to fetch the OriginationUrl. </param>
+        /// <param name="pathSid"> The unique string that we created to identify the OriginationUrl resource to fetch. </param>
+
         public FetchOriginationUrlOptions(string pathTrunkSid, string pathSid)
         {
             PathTrunkSid = pathTrunkSid;
@@ -167,6 +177,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
 
         /// <summary> Construct a new ListOriginationUrlOptions </summary>
         /// <param name="pathTrunkSid"> The SID of the Trunk from which to read the OriginationUrl. </param>
+
         public ReadOriginationUrlOptions(string pathTrunkSid)
         {
             PathTrunkSid = pathTrunkSid;
@@ -216,7 +227,9 @@ namespace Twilio.Rest.Trunking.V1.Trunk
 
 
         /// <summary> Construct a new UpdateOriginationUrlOptions </summary>
-        /// <param name="pathTrunkSid"> The SID of the Trunk from which to update the OriginationUrl. </param>        /// <param name="pathSid"> The unique string that we created to identify the OriginationUrl resource to update. </param>
+        /// <param name="pathTrunkSid"> The SID of the Trunk from which to update the OriginationUrl. </param>
+        /// <param name="pathSid"> The unique string that we created to identify the OriginationUrl resource to update. </param>
+
         public UpdateOriginationUrlOptions(string pathTrunkSid, string pathSid)
         {
             PathTrunkSid = pathTrunkSid;

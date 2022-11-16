@@ -34,6 +34,7 @@ namespace Twilio.Rest.Autopilot.V1
 
         /// <summary> Construct a new UpdateRestoreAssistantOptions </summary>
         /// <param name="assistant"> The Twilio-provided string that uniquely identifies the Assistant resource to restore. </param>
+
         public UpdateRestoreAssistantOptions(string assistant)
         {
             Assistant = assistant;

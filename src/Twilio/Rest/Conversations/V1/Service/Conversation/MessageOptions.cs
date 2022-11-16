@@ -57,7 +57,9 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
 
 
         /// <summary> Construct a new CreateServiceConversationMessageOptions </summary>
-        /// <param name="pathChatServiceSid"> The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Participant resource is associated with. </param>        /// <param name="pathConversationSid"> The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this message. </param>
+        /// <param name="pathChatServiceSid"> The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Participant resource is associated with. </param>
+        /// <param name="pathConversationSid"> The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this message. </param>
+
         public CreateMessageOptions(string pathChatServiceSid, string pathConversationSid)
         {
             PathChatServiceSid = pathChatServiceSid;
@@ -128,7 +130,10 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
 
 
         /// <summary> Construct a new DeleteServiceConversationMessageOptions </summary>
-        /// <param name="pathChatServiceSid"> The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Participant resource is associated with. </param>        /// <param name="pathConversationSid"> The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this message. </param>        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="pathChatServiceSid"> The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Participant resource is associated with. </param>
+        /// <param name="pathConversationSid"> The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this message. </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+
         public DeleteMessageOptions(string pathChatServiceSid, string pathConversationSid, string pathSid)
         {
             PathChatServiceSid = pathChatServiceSid;
@@ -175,7 +180,10 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
 
 
         /// <summary> Construct a new FetchServiceConversationMessageOptions </summary>
-        /// <param name="pathChatServiceSid"> The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Participant resource is associated with. </param>        /// <param name="pathConversationSid"> The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this message. </param>        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="pathChatServiceSid"> The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Participant resource is associated with. </param>
+        /// <param name="pathConversationSid"> The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this message. </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+
         public FetchMessageOptions(string pathChatServiceSid, string pathConversationSid, string pathSid)
         {
             PathChatServiceSid = pathChatServiceSid;
@@ -212,7 +220,9 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
 
 
         /// <summary> Construct a new ListServiceConversationMessageOptions </summary>
-        /// <param name="pathChatServiceSid"> The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Participant resource is associated with. </param>        /// <param name="pathConversationSid"> The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for messages. </param>
+        /// <param name="pathChatServiceSid"> The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Participant resource is associated with. </param>
+        /// <param name="pathConversationSid"> The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for messages. </param>
+
         public ReadMessageOptions(string pathChatServiceSid, string pathConversationSid)
         {
             PathChatServiceSid = pathChatServiceSid;
@@ -273,7 +283,10 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
 
 
         /// <summary> Construct a new UpdateServiceConversationMessageOptions </summary>
-        /// <param name="pathChatServiceSid"> The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Participant resource is associated with. </param>        /// <param name="pathConversationSid"> The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this message. </param>        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="pathChatServiceSid"> The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Participant resource is associated with. </param>
+        /// <param name="pathConversationSid"> The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this message. </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+
         public UpdateMessageOptions(string pathChatServiceSid, string pathConversationSid, string pathSid)
         {
             PathChatServiceSid = pathChatServiceSid;

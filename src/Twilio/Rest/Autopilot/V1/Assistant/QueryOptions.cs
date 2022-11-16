@@ -45,7 +45,10 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
 
 
         /// <summary> Construct a new CreateQueryOptions </summary>
-        /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the new resource. </param>        /// <param name="language"> The [ISO language-country](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html) string that specifies the language used for the new query. For example: `en-US`. </param>        /// <param name="query"> The end-user's natural language input. It can be up to 2048 characters long. </param>
+        /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the new resource. </param>
+        /// <param name="language"> The [ISO language-country](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html) string that specifies the language used for the new query. For example: `en-US`. </param>
+        /// <param name="query"> The end-user's natural language input. It can be up to 2048 characters long. </param>
+
         public CreateQueryOptions(string pathAssistantSid, string language, string query)
         {
             PathAssistantSid = pathAssistantSid;
@@ -93,7 +96,9 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
 
 
         /// <summary> Construct a new DeleteQueryOptions </summary>
-        /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resources to delete. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Query resource to delete. </param>
+        /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resources to delete. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Query resource to delete. </param>
+
         public DeleteQueryOptions(string pathAssistantSid, string pathSid)
         {
             PathAssistantSid = pathAssistantSid;
@@ -126,7 +131,9 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
 
 
         /// <summary> Construct a new FetchQueryOptions </summary>
-        /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resource to fetch. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Query resource to fetch. </param>
+        /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resource to fetch. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Query resource to fetch. </param>
+
         public FetchQueryOptions(string pathAssistantSid, string pathSid)
         {
             PathAssistantSid = pathAssistantSid;
@@ -169,6 +176,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
 
         /// <summary> Construct a new ListQueryOptions </summary>
         /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resources to read. </param>
+
         public ReadQueryOptions(string pathAssistantSid)
         {
             PathAssistantSid = pathAssistantSid;
@@ -225,7 +233,9 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
 
 
         /// <summary> Construct a new UpdateQueryOptions </summary>
-        /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resource to update. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Query resource to update. </param>
+        /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resource to update. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Query resource to update. </param>
+
         public UpdateQueryOptions(string pathAssistantSid, string pathSid)
         {
             PathAssistantSid = pathAssistantSid;

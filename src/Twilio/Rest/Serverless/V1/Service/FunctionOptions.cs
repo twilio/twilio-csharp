@@ -36,7 +36,9 @@ namespace Twilio.Rest.Serverless.V1.Service
 
 
         /// <summary> Construct a new CreateFunctionOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to create the Function resource under. </param>        /// <param name="friendlyName"> A descriptive string that you create to describe the Function resource. It can be a maximum of 255 characters. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to create the Function resource under. </param>
+        /// <param name="friendlyName"> A descriptive string that you create to describe the Function resource. It can be a maximum of 255 characters. </param>
+
         public CreateFunctionOptions(string pathServiceSid, string friendlyName)
         {
             PathServiceSid = pathServiceSid;
@@ -71,7 +73,9 @@ namespace Twilio.Rest.Serverless.V1.Service
 
 
         /// <summary> Construct a new DeleteFunctionOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to delete the Function resource from. </param>        /// <param name="pathSid"> The SID of the Function resource to delete. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to delete the Function resource from. </param>
+        /// <param name="pathSid"> The SID of the Function resource to delete. </param>
+
         public DeleteFunctionOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -104,7 +108,9 @@ namespace Twilio.Rest.Serverless.V1.Service
 
 
         /// <summary> Construct a new FetchFunctionOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to fetch the Function resource from. </param>        /// <param name="pathSid"> The SID of the Function resource to fetch. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to fetch the Function resource from. </param>
+        /// <param name="pathSid"> The SID of the Function resource to fetch. </param>
+
         public FetchFunctionOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -135,6 +141,7 @@ namespace Twilio.Rest.Serverless.V1.Service
 
         /// <summary> Construct a new ListFunctionOptions </summary>
         /// <param name="pathServiceSid"> The SID of the Service to read the Function resources from. </param>
+
         public ReadFunctionOptions(string pathServiceSid)
         {
             PathServiceSid = pathServiceSid;
@@ -172,7 +179,10 @@ namespace Twilio.Rest.Serverless.V1.Service
 
 
         /// <summary> Construct a new UpdateFunctionOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to update the Function resource from. </param>        /// <param name="pathSid"> The SID of the Function resource to update. </param>        /// <param name="friendlyName"> A descriptive string that you create to describe the Function resource. It can be a maximum of 255 characters. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to update the Function resource from. </param>
+        /// <param name="pathSid"> The SID of the Function resource to update. </param>
+        /// <param name="friendlyName"> A descriptive string that you create to describe the Function resource. It can be a maximum of 255 characters. </param>
+
         public UpdateFunctionOptions(string pathServiceSid, string pathSid, string friendlyName)
         {
             PathServiceSid = pathServiceSid;

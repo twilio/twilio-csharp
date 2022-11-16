@@ -39,7 +39,10 @@ namespace Twilio.Rest.Chat.V2.Service.User
 
 
         /// <summary> Construct a new DeleteUserBindingOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to delete the User Binding resource from. </param>        /// <param name="pathUserSid"> The SID of the [User](https://www.twilio.com/docs/chat/rest/user-resource) with the User Binding resources to delete.  See [push notification configuration](https://www.twilio.com/docs/chat/push-notification-configuration) for more info. </param>        /// <param name="pathSid"> The SID of the User Binding resource to delete. </param>
+        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to delete the User Binding resource from. </param>
+        /// <param name="pathUserSid"> The SID of the [User](https://www.twilio.com/docs/chat/rest/user-resource) with the User Binding resources to delete.  See [push notification configuration](https://www.twilio.com/docs/chat/push-notification-configuration) for more info. </param>
+        /// <param name="pathSid"> The SID of the User Binding resource to delete. </param>
+
         public DeleteUserBindingOptions(string pathServiceSid, string pathUserSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -76,7 +79,10 @@ namespace Twilio.Rest.Chat.V2.Service.User
 
 
         /// <summary> Construct a new FetchUserBindingOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to fetch the User Binding resource from. </param>        /// <param name="pathUserSid"> The SID of the [User](https://www.twilio.com/docs/chat/rest/user-resource) with the User Binding resource to fetch.  See [push notification configuration](https://www.twilio.com/docs/chat/push-notification-configuration) for more info. </param>        /// <param name="pathSid"> The SID of the User Binding resource to fetch. </param>
+        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to fetch the User Binding resource from. </param>
+        /// <param name="pathUserSid"> The SID of the [User](https://www.twilio.com/docs/chat/rest/user-resource) with the User Binding resource to fetch.  See [push notification configuration](https://www.twilio.com/docs/chat/push-notification-configuration) for more info. </param>
+        /// <param name="pathSid"> The SID of the User Binding resource to fetch. </param>
+
         public FetchUserBindingOptions(string pathServiceSid, string pathUserSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -113,7 +119,9 @@ namespace Twilio.Rest.Chat.V2.Service.User
 
 
         /// <summary> Construct a new ListUserBindingOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to read the User Binding resources from. </param>        /// <param name="pathUserSid"> The SID of the [User](https://www.twilio.com/docs/chat/rest/user-resource) with the User Binding resources to read.  See [push notification configuration](https://www.twilio.com/docs/chat/push-notification-configuration) for more info. </param>
+        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to read the User Binding resources from. </param>
+        /// <param name="pathUserSid"> The SID of the [User](https://www.twilio.com/docs/chat/rest/user-resource) with the User Binding resources to read.  See [push notification configuration](https://www.twilio.com/docs/chat/push-notification-configuration) for more info. </param>
+
         public ReadUserBindingOptions(string pathServiceSid, string pathUserSid)
         {
             PathServiceSid = pathServiceSid;

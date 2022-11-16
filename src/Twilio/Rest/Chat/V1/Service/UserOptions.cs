@@ -45,7 +45,9 @@ namespace Twilio.Rest.Chat.V1.Service
 
 
         /// <summary> Construct a new CreateUserOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/api/chat/rest/services) to create the resource under. </param>        /// <param name="identity"> The `identity` value that uniquely identifies the new resource's [User](https://www.twilio.com/docs/api/chat/rest/v1/user) within the [Service](https://www.twilio.com/docs/api/chat/rest/v1/service). This value is often a username or email address. See the Identity documentation for more details. </param>
+        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/api/chat/rest/services) to create the resource under. </param>
+        /// <param name="identity"> The `identity` value that uniquely identifies the new resource's [User](https://www.twilio.com/docs/api/chat/rest/v1/user) within the [Service](https://www.twilio.com/docs/api/chat/rest/v1/service). This value is often a username or email address. See the Identity documentation for more details. </param>
+
         public CreateUserOptions(string pathServiceSid, string identity)
         {
             PathServiceSid = pathServiceSid;
@@ -92,7 +94,9 @@ namespace Twilio.Rest.Chat.V1.Service
 
 
         /// <summary> Construct a new DeleteUserOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/api/chat/rest/services) to delete the resource from. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the User resource to delete. </param>
+        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/api/chat/rest/services) to delete the resource from. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the User resource to delete. </param>
+
         public DeleteUserOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -125,7 +129,9 @@ namespace Twilio.Rest.Chat.V1.Service
 
 
         /// <summary> Construct a new FetchUserOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/api/chat/rest/services) to fetch the resource from. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the User resource to fetch. </param>
+        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/api/chat/rest/services) to fetch the resource from. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the User resource to fetch. </param>
+
         public FetchUserOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -156,6 +162,7 @@ namespace Twilio.Rest.Chat.V1.Service
 
         /// <summary> Construct a new ListUserOptions </summary>
         /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/api/chat/rest/services) to read the resources from. </param>
+
         public ReadUserOptions(string pathServiceSid)
         {
             PathServiceSid = pathServiceSid;
@@ -199,7 +206,9 @@ namespace Twilio.Rest.Chat.V1.Service
 
 
         /// <summary> Construct a new UpdateUserOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/api/chat/rest/services) to update the resource from. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the User resource to update. </param>
+        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/api/chat/rest/services) to update the resource from. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the User resource to update. </param>
+
         public UpdateUserOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;

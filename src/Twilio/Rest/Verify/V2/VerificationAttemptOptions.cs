@@ -34,6 +34,7 @@ namespace Twilio.Rest.Verify.V2
 
         /// <summary> Construct a new FetchVerificationAttemptOptions </summary>
         /// <param name="pathSid"> The unique SID identifier of a Verification Attempt </param>
+
         public FetchVerificationAttemptOptions(string pathSid)
         {
             PathSid = pathSid;

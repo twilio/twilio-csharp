@@ -40,6 +40,7 @@ namespace Twilio.Rest.Insights.V1.Call
 
         /// <summary> Construct a new ListMetricOptions </summary>
         /// <param name="pathCallSid">  </param>
+
         public ReadMetricOptions(string pathCallSid)
         {
             PathCallSid = pathCallSid;

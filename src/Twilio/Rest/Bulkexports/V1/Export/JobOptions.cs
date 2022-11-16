@@ -34,6 +34,7 @@ namespace Twilio.Rest.Bulkexports.V1.Export
 
         /// <summary> Construct a new DeleteJobOptions </summary>
         /// <param name="pathJobSid"> The unique string that that we created to identify the Bulk Export job </param>
+
         public DeleteJobOptions(string pathJobSid)
         {
             PathJobSid = pathJobSid;
@@ -63,6 +64,7 @@ namespace Twilio.Rest.Bulkexports.V1.Export
 
         /// <summary> Construct a new FetchJobOptions </summary>
         /// <param name="pathJobSid"> The unique string that that we created to identify the Bulk Export job </param>
+
         public FetchJobOptions(string pathJobSid)
         {
             PathJobSid = pathJobSid;

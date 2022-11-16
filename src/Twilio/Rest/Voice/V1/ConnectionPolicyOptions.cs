@@ -59,6 +59,7 @@ namespace Twilio.Rest.Voice.V1
 
         /// <summary> Construct a new DeleteConnectionPolicyOptions </summary>
         /// <param name="pathSid"> The unique string that we created to identify the Connection Policy resource to delete. </param>
+
         public DeleteConnectionPolicyOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -88,6 +89,7 @@ namespace Twilio.Rest.Voice.V1
 
         /// <summary> Construct a new FetchConnectionPolicyOptions </summary>
         /// <param name="pathSid"> The unique string that we created to identify the Connection Policy resource to fetch. </param>
+
         public FetchConnectionPolicyOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -143,6 +145,7 @@ namespace Twilio.Rest.Voice.V1
 
         /// <summary> Construct a new UpdateConnectionPolicyOptions </summary>
         /// <param name="pathSid"> The unique string that we created to identify the Connection Policy resource to update. </param>
+
         public UpdateConnectionPolicyOptions(string pathSid)
         {
             PathSid = pathSid;

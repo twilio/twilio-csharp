@@ -37,6 +37,7 @@ namespace Twilio.Rest.Preview.Sync.Service
 
         /// <summary> Construct a new CreateSyncSyncMapOptions </summary>
         /// <param name="pathServiceSid">  </param>
+
         public CreateSyncMapOptions(string pathServiceSid)
         {
             PathServiceSid = pathServiceSid;
@@ -70,7 +71,9 @@ namespace Twilio.Rest.Preview.Sync.Service
 
 
         /// <summary> Construct a new DeleteSyncSyncMapOptions </summary>
-        /// <param name="pathServiceSid">  </param>        /// <param name="pathSid">  </param>
+        /// <param name="pathServiceSid">  </param>
+        /// <param name="pathSid">  </param>
+
         public DeleteSyncMapOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -103,7 +106,9 @@ namespace Twilio.Rest.Preview.Sync.Service
 
 
         /// <summary> Construct a new FetchSyncSyncMapOptions </summary>
-        /// <param name="pathServiceSid">  </param>        /// <param name="pathSid">  </param>
+        /// <param name="pathServiceSid">  </param>
+        /// <param name="pathSid">  </param>
+
         public FetchSyncMapOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -134,6 +139,7 @@ namespace Twilio.Rest.Preview.Sync.Service
 
         /// <summary> Construct a new ListSyncSyncMapOptions </summary>
         /// <param name="pathServiceSid">  </param>
+
         public ReadSyncMapOptions(string pathServiceSid)
         {
             PathServiceSid = pathServiceSid;

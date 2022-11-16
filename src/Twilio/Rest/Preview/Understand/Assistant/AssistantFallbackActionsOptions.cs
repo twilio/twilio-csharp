@@ -34,6 +34,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant
 
         /// <summary> Construct a new FetchUnderstandAssistantFallbackActionsOptions </summary>
         /// <param name="pathAssistantSid">  </param>
+
         public FetchAssistantFallbackActionsOptions(string pathAssistantSid)
         {
             PathAssistantSid = pathAssistantSid;
@@ -66,6 +67,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant
 
         /// <summary> Construct a new UpdateUnderstandAssistantFallbackActionsOptions </summary>
         /// <param name="pathAssistantSid">  </param>
+
         public UpdateAssistantFallbackActionsOptions(string pathAssistantSid)
         {
             PathAssistantSid = pathAssistantSid;

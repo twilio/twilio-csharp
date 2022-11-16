@@ -81,7 +81,10 @@ namespace Twilio.Rest.FlexApi.V1
 
 
         /// <summary> Construct a new CreateFlexFlowOptions </summary>
-        /// <param name="friendlyName"> A descriptive string that you create to describe the Flex Flow resource. </param>        /// <param name="chatServiceSid"> The SID of the chat service. </param>        /// <param name="channelType">  </param>
+        /// <param name="friendlyName"> A descriptive string that you create to describe the Flex Flow resource. </param>
+        /// <param name="chatServiceSid"> The SID of the chat service. </param>
+        /// <param name="channelType">  </param>
+
         public CreateFlexFlowOptions(string friendlyName, string chatServiceSid, FlexFlowResource.ChannelTypeEnum channelType)
         {
             FriendlyName = friendlyName;
@@ -179,6 +182,7 @@ namespace Twilio.Rest.FlexApi.V1
 
         /// <summary> Construct a new DeleteFlexFlowOptions </summary>
         /// <param name="pathSid"> The SID of the Flex Flow resource to delete. </param>
+
         public DeleteFlexFlowOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -208,6 +212,7 @@ namespace Twilio.Rest.FlexApi.V1
 
         /// <summary> Construct a new FetchFlexFlowOptions </summary>
         /// <param name="pathSid"> The SID of the Flex Flow resource to fetch. </param>
+
         public FetchFlexFlowOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -318,6 +323,7 @@ namespace Twilio.Rest.FlexApi.V1
 
         /// <summary> Construct a new UpdateFlexFlowOptions </summary>
         /// <param name="pathSid"> The SID of the Flex Flow resource to update. </param>
+
         public UpdateFlexFlowOptions(string pathSid)
         {
             PathSid = pathSid;

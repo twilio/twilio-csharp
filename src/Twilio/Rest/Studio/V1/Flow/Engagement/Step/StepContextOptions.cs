@@ -39,7 +39,10 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement.Step
 
 
         /// <summary> Construct a new FetchStepContextOptions </summary>
-        /// <param name="pathFlowSid"> The SID of the Flow with the Step to fetch. </param>        /// <param name="pathEngagementSid"> The SID of the Engagement with the Step to fetch. </param>        /// <param name="pathStepSid"> The SID of the Step to fetch </param>
+        /// <param name="pathFlowSid"> The SID of the Flow with the Step to fetch. </param>
+        /// <param name="pathEngagementSid"> The SID of the Engagement with the Step to fetch. </param>
+        /// <param name="pathStepSid"> The SID of the Step to fetch </param>
+
         public FetchStepContextOptions(string pathFlowSid, string pathEngagementSid, string pathStepSid)
         {
             PathFlowSid = pathFlowSid;

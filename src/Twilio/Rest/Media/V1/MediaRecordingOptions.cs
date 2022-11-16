@@ -34,6 +34,7 @@ namespace Twilio.Rest.Media.V1
 
         /// <summary> Construct a new DeleteMediaRecordingOptions </summary>
         /// <param name="pathSid"> The SID of the MediaRecording resource to delete. </param>
+
         public DeleteMediaRecordingOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -63,6 +64,7 @@ namespace Twilio.Rest.Media.V1
 
         /// <summary> Construct a new FetchMediaRecordingOptions </summary>
         /// <param name="pathSid"> The SID of the MediaRecording resource to fetch. </param>
+
         public FetchMediaRecordingOptions(string pathSid)
         {
             PathSid = pathSid;
