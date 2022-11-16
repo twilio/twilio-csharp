@@ -39,7 +39,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
 
 
         /// <summary> Construct a new CreateCredentialPublicKeyOptions </summary>
-        /// <param name="publicKey"> A URL encoded representation of the public key. For example, &#x60;- - - - -BEGIN PUBLIC KEY- - - - -MIIBIjANB.pa9xQIDAQAB- - - - -END PUBLIC KEY- - - - -&#x60; </param>
+        /// <param name="publicKey"> A URL encoded representation of the public key. For example, `- - - - -BEGIN PUBLIC KEY- - - - -MIIBIjANB.pa9xQIDAQAB- - - - -END PUBLIC KEY- - - - -` </param>
         public CreatePublicKeyOptions(string publicKey)
         {
             PublicKey = publicKey;

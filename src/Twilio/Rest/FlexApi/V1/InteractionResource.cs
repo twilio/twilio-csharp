@@ -37,7 +37,6 @@ namespace Twilio.Rest.FlexApi.V1
             string path = "/v1/Interactions";
 
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.FlexApi,
@@ -101,10 +100,6 @@ namespace Twilio.Rest.FlexApi.V1
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         private static Request BuildFetchRequest(FetchInteractionOptions options, ITwilioRestClient client)
         {
@@ -113,7 +108,6 @@ namespace Twilio.Rest.FlexApi.V1
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Get,

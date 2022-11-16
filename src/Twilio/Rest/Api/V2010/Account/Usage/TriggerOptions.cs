@@ -54,7 +54,9 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
 
 
         /// <summary> Construct a new CreateUsageTriggerOptions </summary>
-        /// <param name="callbackUrl"> The URL we should call using &#x60;callback_method&#x60; when the trigger fires. </param>        /// <param name="triggerValue"> The usage value at which the trigger should fire.  For convenience, you can use an offset value such as &#x60;+30&#x60; to specify a trigger_value that is 30 units more than the current usage value. Be sure to urlencode a &#x60;+&#x60; as &#x60;%2B&#x60;. </param>        /// <param name="usageCategory">  </param>
+        /// <param name="callbackUrl"> The URL we should call using `callback_method` when the trigger fires. </param>
+        /// <param name="triggerValue"> The usage value at which the trigger should fire.  For convenience, you can use an offset value such as `+30` to specify a trigger_value that is 30 units more than the current usage value. Be sure to urlencode a `+` as `%2B`. </param>
+        /// <param name="usageCategory">  </param>
         public CreateTriggerOptions(Uri callbackUrl, string triggerValue, TriggerResource.UsageCategoryEnum usageCategory)
         {
             CallbackUrl = callbackUrl;

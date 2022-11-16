@@ -60,7 +60,10 @@ namespace Twilio.Rest.FlexApi.V1
 
 
         /// <summary> Construct a new CreateChannelOptions </summary>
-        /// <param name="flexFlowSid"> The SID of the Flex Flow. </param>        /// <param name="identity"> The &#x60;identity&#x60; value that uniquely identifies the new resource&#39;s chat User. </param>        /// <param name="chatUserFriendlyName"> The chat participant&#39;s friendly name. </param>        /// <param name="chatFriendlyName"> The chat channel&#39;s friendly name. </param>
+        /// <param name="flexFlowSid"> The SID of the Flex Flow. </param>
+        /// <param name="identity"> The `identity` value that uniquely identifies the new resource's chat User. </param>
+        /// <param name="chatUserFriendlyName"> The chat participant's friendly name. </param>
+        /// <param name="chatFriendlyName"> The chat channel's friendly name. </param>
         public CreateChannelOptions(string flexFlowSid, string identity, string chatUserFriendlyName, string chatFriendlyName)
         {
             FlexFlowSid = flexFlowSid;

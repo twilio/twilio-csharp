@@ -24,7 +24,7 @@ using Twilio.Converters;
 namespace Twilio.Rest.Conversations.V1
 {
 
-    /// <summary> Create a new conversation in your account&#39;s default service </summary>
+    /// <summary> Create a new conversation in your account's default service </summary>
     public class CreateConversationOptions : IOptions<ConversationResource>
     {
         
@@ -117,7 +117,7 @@ namespace Twilio.Rest.Conversations.V1
     }
 
     }
-    /// <summary> Remove a conversation from your account&#39;s default service </summary>
+    /// <summary> Remove a conversation from your account's default service </summary>
     public class DeleteConversationOptions : IOptions<ConversationResource>
     {
         
@@ -130,7 +130,7 @@ namespace Twilio.Rest.Conversations.V1
 
 
         /// <summary> Construct a new DeleteConversationOptions </summary>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. Can also be the &#x60;unique_name&#x60; of the Conversation. </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. Can also be the `unique_name` of the Conversation. </param>
         public DeleteConversationOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -159,7 +159,7 @@ namespace Twilio.Rest.Conversations.V1
     }
 
 
-    /// <summary> Fetch a conversation from your account&#39;s default service </summary>
+    /// <summary> Fetch a conversation from your account's default service </summary>
     public class FetchConversationOptions : IOptions<ConversationResource>
     {
     
@@ -169,7 +169,7 @@ namespace Twilio.Rest.Conversations.V1
 
 
         /// <summary> Construct a new FetchConversationOptions </summary>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. Can also be the &#x60;unique_name&#x60; of the Conversation. </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. Can also be the `unique_name` of the Conversation. </param>
         public FetchConversationOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -188,7 +188,7 @@ namespace Twilio.Rest.Conversations.V1
     }
 
 
-    /// <summary> Retrieve a list of conversations in your account&#39;s default service </summary>
+    /// <summary> Retrieve a list of conversations in your account's default service </summary>
     public class ReadConversationOptions : ReadOptions<ConversationResource>
     {
     
@@ -211,7 +211,7 @@ namespace Twilio.Rest.Conversations.V1
 
     }
 
-    /// <summary> Update an existing conversation in your account&#39;s default service </summary>
+    /// <summary> Update an existing conversation in your account's default service </summary>
     public class UpdateConversationOptions : IOptions<ConversationResource>
     {
     
@@ -251,7 +251,7 @@ namespace Twilio.Rest.Conversations.V1
 
 
         /// <summary> Construct a new UpdateConversationOptions </summary>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. Can also be the &#x60;unique_name&#x60; of the Conversation. </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. Can also be the `unique_name` of the Conversation. </param>
         public UpdateConversationOptions(string pathSid)
         {
             PathSid = pathSid;

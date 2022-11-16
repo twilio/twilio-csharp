@@ -47,7 +47,6 @@ namespace Twilio.Rest.Sync.V1.Service.Document
             string PathIdentity = options.PathIdentity;
             path = path.Replace("{"+"Identity"+"}", PathIdentity);
 
-
             return new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Sync,
@@ -119,7 +118,6 @@ namespace Twilio.Rest.Sync.V1.Service.Document
             path = path.Replace("{"+"DocumentSid"+"}", PathDocumentSid);
             string PathIdentity = options.PathIdentity;
             path = path.Replace("{"+"Identity"+"}", PathIdentity);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -193,7 +191,6 @@ namespace Twilio.Rest.Sync.V1.Service.Document
             path = path.Replace("{"+"ServiceSid"+"}", PathServiceSid);
             string PathDocumentSid = options.PathDocumentSid;
             path = path.Replace("{"+"DocumentSid"+"}", PathDocumentSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -316,8 +313,6 @@ namespace Twilio.Rest.Sync.V1.Service.Document
             return Page<DocumentPermissionResource>.FromJson("permissions", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateDocumentPermissionOptions options, ITwilioRestClient client)
         {
@@ -331,7 +326,6 @@ namespace Twilio.Rest.Sync.V1.Service.Document
             string PathIdentity = options.PathIdentity;
             path = path.Replace("{"+"Identity"+"}", PathIdentity);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Sync,
@@ -341,7 +335,7 @@ namespace Twilio.Rest.Sync.V1.Service.Document
             );
         }
 
-        /// <summary> Update an identity&#39;s access to a specific Sync Document. </summary>
+        /// <summary> Update an identity's access to a specific Sync Document. </summary>
         /// <param name="options"> Update DocumentPermission parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of DocumentPermission </returns>
@@ -352,7 +346,7 @@ namespace Twilio.Rest.Sync.V1.Service.Document
             return FromJson(response.Content);
         }
 
-        /// <summary> Update an identity&#39;s access to a specific Sync Document. </summary>
+        /// <summary> Update an identity's access to a specific Sync Document. </summary>
         /// <param name="options"> Update DocumentPermission parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of DocumentPermission </returns>
@@ -366,7 +360,7 @@ namespace Twilio.Rest.Sync.V1.Service.Document
         }
         #endif
 
-        /// <summary> Update an identity&#39;s access to a specific Sync Document. </summary>
+        /// <summary> Update an identity's access to a specific Sync Document. </summary>
         /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Document Permission resource to update. </param>
         /// <param name="pathDocumentSid"> The SID of the Sync Document with the Document Permission resource to update. Can be the Document resource's `sid` or its `unique_name`. </param>
         /// <param name="pathIdentity"> The application-defined string that uniquely identifies the User's Document Permission resource to update. </param>
@@ -389,7 +383,7 @@ namespace Twilio.Rest.Sync.V1.Service.Document
         }
 
         #if !NET35
-        /// <summary> Update an identity&#39;s access to a specific Sync Document. </summary>
+        /// <summary> Update an identity's access to a specific Sync Document. </summary>
         /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Document Permission resource to update. </param>
         /// <param name="pathDocumentSid"> The SID of the Sync Document with the Document Permission resource to update. Can be the Document resource's `sid` or its `unique_name`. </param>
         /// <param name="pathIdentity"> The application-defined string that uniquely identifies the User's Document Permission resource to update. </param>

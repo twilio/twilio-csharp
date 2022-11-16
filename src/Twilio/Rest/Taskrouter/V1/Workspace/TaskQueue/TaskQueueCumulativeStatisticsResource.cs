@@ -41,7 +41,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
             string PathTaskQueueSid = options.PathTaskQueueSid;
             path = path.Replace("{"+"TaskQueueSid"+"}", PathTaskQueueSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Taskrouter,

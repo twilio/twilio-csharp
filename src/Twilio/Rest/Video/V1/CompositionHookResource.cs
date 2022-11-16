@@ -50,7 +50,6 @@ namespace Twilio.Rest.Video.V1
             string path = "/v1/CompositionHooks";
 
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Video,
@@ -146,12 +145,8 @@ namespace Twilio.Rest.Video.V1
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
-        /// <summary> Delete a Recording CompositionHook resource identified by a &#x60;CompositionHook SID&#x60;. </summary>
+        /// <summary> Delete a Recording CompositionHook resource identified by a `CompositionHook SID`. </summary>
         /// <param name="options"> Delete CompositionHook parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of CompositionHook </returns>
@@ -163,7 +158,6 @@ namespace Twilio.Rest.Video.V1
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Video,
@@ -173,7 +167,7 @@ namespace Twilio.Rest.Video.V1
             );
         }
 
-        /// <summary> Delete a Recording CompositionHook resource identified by a &#x60;CompositionHook SID&#x60;. </summary>
+        /// <summary> Delete a Recording CompositionHook resource identified by a `CompositionHook SID`. </summary>
         /// <param name="options"> Delete CompositionHook parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of CompositionHook </returns>
@@ -185,7 +179,7 @@ namespace Twilio.Rest.Video.V1
         }
 
         #if !NET35
-        /// <summary> Delete a Recording CompositionHook resource identified by a &#x60;CompositionHook SID&#x60;. </summary>
+        /// <summary> Delete a Recording CompositionHook resource identified by a `CompositionHook SID`. </summary>
         /// <param name="options"> Delete CompositionHook parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CompositionHook </returns>
@@ -198,7 +192,7 @@ namespace Twilio.Rest.Video.V1
         }
         #endif
 
-        /// <summary> Delete a Recording CompositionHook resource identified by a &#x60;CompositionHook SID&#x60;. </summary>
+        /// <summary> Delete a Recording CompositionHook resource identified by a `CompositionHook SID`. </summary>
         /// <param name="pathSid"> The SID of the CompositionHook resource to delete. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of CompositionHook </returns>
@@ -209,7 +203,7 @@ namespace Twilio.Rest.Video.V1
         }
 
         #if !NET35
-        /// <summary> Delete a Recording CompositionHook resource identified by a &#x60;CompositionHook SID&#x60;. </summary>
+        /// <summary> Delete a Recording CompositionHook resource identified by a `CompositionHook SID`. </summary>
         /// <param name="pathSid"> The SID of the CompositionHook resource to delete. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CompositionHook </returns>
@@ -227,7 +221,6 @@ namespace Twilio.Rest.Video.V1
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -290,7 +283,6 @@ namespace Twilio.Rest.Video.V1
         {
             
             string path = "/v1/CompositionHooks";
-
 
 
             return new Request(
@@ -422,8 +414,6 @@ namespace Twilio.Rest.Video.V1
             return Page<CompositionHookResource>.FromJson("composition_hooks", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateCompositionHookOptions options, ITwilioRestClient client)
         {
@@ -432,7 +422,6 @@ namespace Twilio.Rest.Video.V1
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Post,

@@ -63,7 +63,6 @@ namespace Twilio.Rest.Conversations.V1
             string path = "/v1/Conversations";
 
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Conversations,
@@ -73,7 +72,7 @@ namespace Twilio.Rest.Conversations.V1
             );
         }
 
-        /// <summary> Create a new conversation in your account&#39;s default service </summary>
+        /// <summary> Create a new conversation in your account's default service </summary>
         /// <param name="options"> Create Conversation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Conversation </returns>
@@ -85,7 +84,7 @@ namespace Twilio.Rest.Conversations.V1
         }
 
         #if !NET35
-        /// <summary> Create a new conversation in your account&#39;s default service </summary>
+        /// <summary> Create a new conversation in your account's default service </summary>
         /// <param name="options"> Create Conversation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Conversation </returns>
@@ -98,7 +97,7 @@ namespace Twilio.Rest.Conversations.V1
         }
         #endif
 
-        /// <summary> Create a new conversation in your account&#39;s default service </summary>
+        /// <summary> Create a new conversation in your account's default service </summary>
         /// <param name="friendlyName"> The human-readable name of this conversation, limited to 256 characters. Optional. </param>
         /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource. It can be used to address the resource in place of the resource's `sid` in the URL. </param>
         /// <param name="dateCreated"> The date that this resource was created. </param>
@@ -129,7 +128,7 @@ namespace Twilio.Rest.Conversations.V1
         }
 
         #if !NET35
-        /// <summary> Create a new conversation in your account&#39;s default service </summary>
+        /// <summary> Create a new conversation in your account's default service </summary>
         /// <param name="friendlyName"> The human-readable name of this conversation, limited to 256 characters. Optional. </param>
         /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource. It can be used to address the resource in place of the resource's `sid` in the URL. </param>
         /// <param name="dateCreated"> The date that this resource was created. </param>
@@ -159,12 +158,8 @@ namespace Twilio.Rest.Conversations.V1
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
-        /// <summary> Remove a conversation from your account&#39;s default service </summary>
+        /// <summary> Remove a conversation from your account's default service </summary>
         /// <param name="options"> Delete Conversation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Conversation </returns>
@@ -176,7 +171,6 @@ namespace Twilio.Rest.Conversations.V1
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Conversations,
@@ -186,7 +180,7 @@ namespace Twilio.Rest.Conversations.V1
             );
         }
 
-        /// <summary> Remove a conversation from your account&#39;s default service </summary>
+        /// <summary> Remove a conversation from your account's default service </summary>
         /// <param name="options"> Delete Conversation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Conversation </returns>
@@ -198,7 +192,7 @@ namespace Twilio.Rest.Conversations.V1
         }
 
         #if !NET35
-        /// <summary> Remove a conversation from your account&#39;s default service </summary>
+        /// <summary> Remove a conversation from your account's default service </summary>
         /// <param name="options"> Delete Conversation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Conversation </returns>
@@ -211,7 +205,7 @@ namespace Twilio.Rest.Conversations.V1
         }
         #endif
 
-        /// <summary> Remove a conversation from your account&#39;s default service </summary>
+        /// <summary> Remove a conversation from your account's default service </summary>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. Can also be the `unique_name` of the Conversation. </param>
         /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -223,7 +217,7 @@ namespace Twilio.Rest.Conversations.V1
         }
 
         #if !NET35
-        /// <summary> Remove a conversation from your account&#39;s default service </summary>
+        /// <summary> Remove a conversation from your account's default service </summary>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. Can also be the `unique_name` of the Conversation. </param>
         /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -243,7 +237,6 @@ namespace Twilio.Rest.Conversations.V1
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Conversations,
@@ -253,7 +246,7 @@ namespace Twilio.Rest.Conversations.V1
             );
         }
 
-        /// <summary> Fetch a conversation from your account&#39;s default service </summary>
+        /// <summary> Fetch a conversation from your account's default service </summary>
         /// <param name="options"> Fetch Conversation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Conversation </returns>
@@ -265,7 +258,7 @@ namespace Twilio.Rest.Conversations.V1
         }
 
         #if !NET35
-        /// <summary> Fetch a conversation from your account&#39;s default service </summary>
+        /// <summary> Fetch a conversation from your account's default service </summary>
         /// <param name="options"> Fetch Conversation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Conversation </returns>
@@ -277,7 +270,7 @@ namespace Twilio.Rest.Conversations.V1
             return FromJson(response.Content);
         }
         #endif
-        /// <summary> Fetch a conversation from your account&#39;s default service </summary>
+        /// <summary> Fetch a conversation from your account's default service </summary>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. Can also be the `unique_name` of the Conversation. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Conversation </returns>
@@ -290,7 +283,7 @@ namespace Twilio.Rest.Conversations.V1
         }
 
         #if !NET35
-        /// <summary> Fetch a conversation from your account&#39;s default service </summary>
+        /// <summary> Fetch a conversation from your account's default service </summary>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. Can also be the `unique_name` of the Conversation. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Conversation </returns>
@@ -307,7 +300,6 @@ namespace Twilio.Rest.Conversations.V1
             string path = "/v1/Conversations";
 
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Conversations,
@@ -316,7 +308,7 @@ namespace Twilio.Rest.Conversations.V1
                 headerParams: null
             );
         }
-        /// <summary> Retrieve a list of conversations in your account&#39;s default service </summary>
+        /// <summary> Retrieve a list of conversations in your account's default service </summary>
         /// <param name="options"> Read Conversation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Conversation </returns>
@@ -329,7 +321,7 @@ namespace Twilio.Rest.Conversations.V1
         }
 
         #if !NET35
-        /// <summary> Retrieve a list of conversations in your account&#39;s default service </summary>
+        /// <summary> Retrieve a list of conversations in your account's default service </summary>
         /// <param name="options"> Read Conversation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Conversation </returns>
@@ -343,7 +335,7 @@ namespace Twilio.Rest.Conversations.V1
             return new ResourceSet<ConversationResource>(page, options, client);
         }
         #endif
-        /// <summary> Retrieve a list of conversations in your account&#39;s default service </summary>
+        /// <summary> Retrieve a list of conversations in your account's default service </summary>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
@@ -358,7 +350,7 @@ namespace Twilio.Rest.Conversations.V1
         }
 
         #if !NET35
-        /// <summary> Retrieve a list of conversations in your account&#39;s default service </summary>
+        /// <summary> Retrieve a list of conversations in your account's default service </summary>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
@@ -421,8 +413,6 @@ namespace Twilio.Rest.Conversations.V1
             return Page<ConversationResource>.FromJson("conversations", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateConversationOptions options, ITwilioRestClient client)
         {
@@ -431,7 +421,6 @@ namespace Twilio.Rest.Conversations.V1
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Post,
@@ -442,7 +431,7 @@ namespace Twilio.Rest.Conversations.V1
             );
         }
 
-        /// <summary> Update an existing conversation in your account&#39;s default service </summary>
+        /// <summary> Update an existing conversation in your account's default service </summary>
         /// <param name="options"> Update Conversation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Conversation </returns>
@@ -453,7 +442,7 @@ namespace Twilio.Rest.Conversations.V1
             return FromJson(response.Content);
         }
 
-        /// <summary> Update an existing conversation in your account&#39;s default service </summary>
+        /// <summary> Update an existing conversation in your account's default service </summary>
         /// <param name="options"> Update Conversation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Conversation </returns>
@@ -467,7 +456,7 @@ namespace Twilio.Rest.Conversations.V1
         }
         #endif
 
-        /// <summary> Update an existing conversation in your account&#39;s default service </summary>
+        /// <summary> Update an existing conversation in your account's default service </summary>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. Can also be the `unique_name` of the Conversation. </param>
         /// <param name="friendlyName"> The human-readable name of this conversation, limited to 256 characters. Optional. </param>
         /// <param name="dateCreated"> The date that this resource was created. </param>
@@ -500,7 +489,7 @@ namespace Twilio.Rest.Conversations.V1
         }
 
         #if !NET35
-        /// <summary> Update an existing conversation in your account&#39;s default service </summary>
+        /// <summary> Update an existing conversation in your account's default service </summary>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. Can also be the `unique_name` of the Conversation. </param>
         /// <param name="friendlyName"> The human-readable name of this conversation, limited to 256 characters. Optional. </param>
         /// <param name="dateCreated"> The date that this resource was created. </param>

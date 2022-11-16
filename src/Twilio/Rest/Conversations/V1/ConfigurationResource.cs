@@ -37,7 +37,6 @@ namespace Twilio.Rest.Conversations.V1
             string path = "/v1/Configuration";
 
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Conversations,
@@ -96,7 +95,6 @@ namespace Twilio.Rest.Conversations.V1
         {
             
             string path = "/v1/Configuration";
-
 
 
             return new Request(

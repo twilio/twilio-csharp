@@ -42,7 +42,9 @@ namespace Twilio.Rest.Studio.V2
 
 
         /// <summary> Construct a new CreateFlowOptions </summary>
-        /// <param name="friendlyName"> The string that you assigned to describe the Flow. </param>        /// <param name="status">  </param>        /// <param name="definition"> JSON representation of flow definition. </param>
+        /// <param name="friendlyName"> The string that you assigned to describe the Flow. </param>
+        /// <param name="status">  </param>
+        /// <param name="definition"> JSON representation of flow definition. </param>
         public CreateFlowOptions(string friendlyName, FlowResource.StatusEnum status, object definition)
         {
             FriendlyName = friendlyName;
@@ -180,7 +182,8 @@ namespace Twilio.Rest.Studio.V2
 
 
         /// <summary> Construct a new UpdateFlowOptions </summary>
-        /// <param name="pathSid"> The SID of the Flow resource to fetch. </param>        /// <param name="status">  </param>
+        /// <param name="pathSid"> The SID of the Flow resource to fetch. </param>
+        /// <param name="status">  </param>
         public UpdateFlowOptions(string pathSid, FlowResource.StatusEnum status)
         {
             PathSid = pathSid;

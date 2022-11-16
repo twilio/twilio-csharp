@@ -24,7 +24,7 @@ using System.Linq;
 namespace Twilio.Rest.Preview.HostedNumbers
 {
 
-    /// <summary> Create an AuthorizationDocument for authorizing the hosting of phone number capabilities on Twilio&#39;s platform. </summary>
+    /// <summary> Create an AuthorizationDocument for authorizing the hosting of phone number capabilities on Twilio's platform. </summary>
     public class CreateAuthorizationDocumentOptions : IOptions<AuthorizationDocumentResource>
     {
         
@@ -48,7 +48,11 @@ namespace Twilio.Rest.Preview.HostedNumbers
 
 
         /// <summary> Construct a new CreateHostedNumbersAuthorizationDocumentOptions </summary>
-        /// <param name="hostedNumberOrderSids"> A list of HostedNumberOrder sids that this AuthorizationDocument will authorize for hosting phone number capabilities on Twilio&#39;s platform. </param>        /// <param name="addressSid"> A 34 character string that uniquely identifies the Address resource that is associated with this AuthorizationDocument. </param>        /// <param name="email"> Email that this AuthorizationDocument will be sent to for signing. </param>        /// <param name="contactTitle"> The title of the person authorized to sign the Authorization Document for this phone number. </param>        /// <param name="contactPhoneNumber"> The contact phone number of the person authorized to sign the Authorization Document. </param>
+        /// <param name="hostedNumberOrderSids"> A list of HostedNumberOrder sids that this AuthorizationDocument will authorize for hosting phone number capabilities on Twilio's platform. </param>
+        /// <param name="addressSid"> A 34 character string that uniquely identifies the Address resource that is associated with this AuthorizationDocument. </param>
+        /// <param name="email"> Email that this AuthorizationDocument will be sent to for signing. </param>
+        /// <param name="contactTitle"> The title of the person authorized to sign the Authorization Document for this phone number. </param>
+        /// <param name="contactPhoneNumber"> The contact phone number of the person authorized to sign the Authorization Document. </param>
         public CreateAuthorizationDocumentOptions(List<string> hostedNumberOrderSids, string addressSid, string email, string contactTitle, string contactPhoneNumber)
         {
             HostedNumberOrderSids = hostedNumberOrderSids;

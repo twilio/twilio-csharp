@@ -37,7 +37,6 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
             string path = "/v1/DialingPermissions/BulkCountryUpdates";
 
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Voice,
@@ -97,10 +96,6 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
     
         /// <summary>
         /// Converts a JSON string into a BulkCountryUpdateResource object

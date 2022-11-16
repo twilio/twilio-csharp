@@ -39,7 +39,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
 
 
         /// <summary> Construct a new CreateCredentialAwsOptions </summary>
-        /// <param name="credentials"> A string that contains the AWS access credentials in the format &#x60;&lt;AWS_ACCESS_KEY_ID&gt;:&lt;AWS_SECRET_ACCESS_KEY&gt;&#x60;. For example, &#x60;AKIAIOSFODNN7EXAMPLE:wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY&#x60; </param>
+        /// <param name="credentials"> A string that contains the AWS access credentials in the format `<AWS_ACCESS_KEY_ID>:<AWS_SECRET_ACCESS_KEY>`. For example, `AKIAIOSFODNN7EXAMPLE:wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY` </param>
         public CreateAwsOptions(string credentials)
         {
             Credentials = credentials;

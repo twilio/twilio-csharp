@@ -23,7 +23,7 @@ using Twilio.Converters;
 
 namespace Twilio.Rest.Preview.TrustedComms
 {
-    /// <summary> Fetch a specific Call Placement Service (CPS) given a phone number via &#x60;X-XCNAM-Sensitive-Phone-Number&#x60; header. </summary>
+    /// <summary> Fetch a specific Call Placement Service (CPS) given a phone number via `X-XCNAM-Sensitive-Phone-Number` header. </summary>
     public class FetchCpsOptions : IOptions<CpsResource>
     {
     

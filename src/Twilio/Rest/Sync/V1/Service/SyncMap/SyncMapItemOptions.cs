@@ -51,7 +51,10 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
 
 
         /// <summary> Construct a new CreateSyncMapItemOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) to create the Map Item in. </param>        /// <param name="pathMapSid"> The SID of the Sync Map to add the new Map Item to. Can be the Sync Map resource&#39;s &#x60;sid&#x60; or its &#x60;unique_name&#x60;. </param>        /// <param name="key"> The unique, user-defined key for the Map Item. Can be up to 320 characters long. </param>        /// <param name="data"> A JSON string that represents an arbitrary, schema-less object that the Map Item stores. Can be up to 16 KiB in length. </param>
+        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) to create the Map Item in. </param>
+        /// <param name="pathMapSid"> The SID of the Sync Map to add the new Map Item to. Can be the Sync Map resource's `sid` or its `unique_name`. </param>
+        /// <param name="key"> The unique, user-defined key for the Map Item. Can be up to 320 characters long. </param>
+        /// <param name="data"> A JSON string that represents an arbitrary, schema-less object that the Map Item stores. Can be up to 16 KiB in length. </param>
         public CreateSyncMapItemOptions(string pathServiceSid, string pathMapSid, string key, object data)
         {
             PathServiceSid = pathServiceSid;
@@ -110,7 +113,9 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
 
 
         /// <summary> Construct a new DeleteSyncMapItemOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync Map Item resource to delete. </param>        /// <param name="pathMapSid"> The SID of the Sync Map with the Sync Map Item resource to delete. Can be the Sync Map resource&#39;s &#x60;sid&#x60; or its &#x60;unique_name&#x60;. </param>        /// <param name="pathKey"> The &#x60;key&#x60; value of the Sync Map Item resource to delete. </param>
+        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync Map Item resource to delete. </param>
+        /// <param name="pathMapSid"> The SID of the Sync Map with the Sync Map Item resource to delete. Can be the Sync Map resource's `sid` or its `unique_name`. </param>
+        /// <param name="pathKey"> The `key` value of the Sync Map Item resource to delete. </param>
         public DeleteSyncMapItemOptions(string pathServiceSid, string pathMapSid, string pathKey)
         {
             PathServiceSid = pathServiceSid;
@@ -157,7 +162,9 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
 
 
         /// <summary> Construct a new FetchSyncMapItemOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync Map Item resource to fetch. </param>        /// <param name="pathMapSid"> The SID of the Sync Map with the Sync Map Item resource to fetch. Can be the Sync Map resource&#39;s &#x60;sid&#x60; or its &#x60;unique_name&#x60;. </param>        /// <param name="pathKey"> The &#x60;key&#x60; value of the Sync Map Item resource to fetch. </param>
+        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync Map Item resource to fetch. </param>
+        /// <param name="pathMapSid"> The SID of the Sync Map with the Sync Map Item resource to fetch. Can be the Sync Map resource's `sid` or its `unique_name`. </param>
+        /// <param name="pathKey"> The `key` value of the Sync Map Item resource to fetch. </param>
         public FetchSyncMapItemOptions(string pathServiceSid, string pathMapSid, string pathKey)
         {
             PathServiceSid = pathServiceSid;
@@ -200,7 +207,8 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
 
 
         /// <summary> Construct a new ListSyncMapItemOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Map Item resources to read. </param>        /// <param name="pathMapSid"> The SID of the Sync Map with the Sync Map Item resource to fetch. Can be the Sync Map resource&#39;s &#x60;sid&#x60; or its &#x60;unique_name&#x60;. </param>
+        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Map Item resources to read. </param>
+        /// <param name="pathMapSid"> The SID of the Sync Map with the Sync Map Item resource to fetch. Can be the Sync Map resource's `sid` or its `unique_name`. </param>
         public ReadSyncMapItemOptions(string pathServiceSid, string pathMapSid)
         {
             PathServiceSid = pathServiceSid;
@@ -266,7 +274,9 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
 
 
         /// <summary> Construct a new UpdateSyncMapItemOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync Map Item resource to update. </param>        /// <param name="pathMapSid"> The SID of the Sync Map with the Sync Map Item resource to update. Can be the Sync Map resource&#39;s &#x60;sid&#x60; or its &#x60;unique_name&#x60;. </param>        /// <param name="pathKey"> The &#x60;key&#x60; value of the Sync Map Item resource to update.  </param>
+        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync Map Item resource to update. </param>
+        /// <param name="pathMapSid"> The SID of the Sync Map with the Sync Map Item resource to update. Can be the Sync Map resource's `sid` or its `unique_name`. </param>
+        /// <param name="pathKey"> The `key` value of the Sync Map Item resource to update.  </param>
         public UpdateSyncMapItemOptions(string pathServiceSid, string pathMapSid, string pathKey)
         {
             PathServiceSid = pathServiceSid;

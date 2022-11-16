@@ -39,7 +39,6 @@ namespace Twilio.Rest.Preview.Sync.Service
             string PathServiceSid = options.PathServiceSid;
             path = path.Replace("{"+"ServiceSid"+"}", PathServiceSid);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Preview,
@@ -103,10 +102,6 @@ namespace Twilio.Rest.Preview.Sync.Service
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> delete </summary>
         /// <param name="options"> Delete SyncList parameters </param>
@@ -121,7 +116,6 @@ namespace Twilio.Rest.Preview.Sync.Service
             path = path.Replace("{"+"ServiceSid"+"}", PathServiceSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -191,7 +185,6 @@ namespace Twilio.Rest.Preview.Sync.Service
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Preview,
@@ -259,7 +252,6 @@ namespace Twilio.Rest.Preview.Sync.Service
 
             string PathServiceSid = options.PathServiceSid;
             path = path.Replace("{"+"ServiceSid"+"}", PathServiceSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -377,8 +369,6 @@ namespace Twilio.Rest.Preview.Sync.Service
             var response = client.Request(request);
             return Page<SyncListResource>.FromJson("lists", response.Content);
         }
-
-
 
     
         /// <summary>

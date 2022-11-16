@@ -97,7 +97,6 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
             string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
             path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Api,
@@ -249,10 +248,6 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         private static Request BuildReadRequest(ReadTollFreeOptions options, ITwilioRestClient client)
         {
@@ -261,7 +256,6 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
 
             string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
             path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -395,8 +389,6 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
             var response = client.Request(request);
             return Page<TollFreeResource>.FromJson("incoming_phone_numbers", response.Content);
         }
-
-
 
     
         /// <summary>

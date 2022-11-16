@@ -41,7 +41,6 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Preview,
@@ -109,7 +108,6 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
 
             string PathInstalledAddOnSid = options.PathInstalledAddOnSid;
             path = path.Replace("{"+"InstalledAddOnSid"+"}", PathInstalledAddOnSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -228,8 +226,6 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
             return Page<InstalledAddOnExtensionResource>.FromJson("extensions", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateInstalledAddOnExtensionOptions options, ITwilioRestClient client)
         {
@@ -240,7 +236,6 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
             path = path.Replace("{"+"InstalledAddOnSid"+"}", PathInstalledAddOnSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Post,

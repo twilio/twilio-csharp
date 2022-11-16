@@ -61,7 +61,6 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Delete,
                 Rest.Domain.IpMessaging,
@@ -133,7 +132,6 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
             path = path.Replace("{"+"UserSid"+"}", PathUserSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -207,7 +205,6 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
             path = path.Replace("{"+"ServiceSid"+"}", PathServiceSid);
             string PathUserSid = options.PathUserSid;
             path = path.Replace("{"+"UserSid"+"}", PathUserSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -333,8 +330,6 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
             var response = client.Request(request);
             return Page<UserBindingResource>.FromJson("bindings", response.Content);
         }
-
-
 
     
         /// <summary>

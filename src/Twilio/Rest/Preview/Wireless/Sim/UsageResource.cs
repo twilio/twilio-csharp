@@ -39,7 +39,6 @@ namespace Twilio.Rest.Preview.Wireless.Sim
             string PathSimSid = options.PathSimSid;
             path = path.Replace("{"+"SimSid"+"}", PathSimSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Preview,

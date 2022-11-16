@@ -36,7 +36,8 @@ namespace Twilio.Rest.Trusthub.V1.TrustProducts
 
 
         /// <summary> Construct a new CreateTrustProductEntityAssignmentOptions </summary>
-        /// <param name="pathTrustProductSid"> The unique string that we created to identify the TrustProduct resource. </param>        /// <param name="objectSid"> The SID of an object bag that holds information of the different items. </param>
+        /// <param name="pathTrustProductSid"> The unique string that we created to identify the TrustProduct resource. </param>
+        /// <param name="objectSid"> The SID of an object bag that holds information of the different items. </param>
         public CreateTrustProductsEntityAssignmentsOptions(string pathTrustProductSid, string objectSid)
         {
             PathTrustProductSid = pathTrustProductSid;
@@ -71,7 +72,8 @@ namespace Twilio.Rest.Trusthub.V1.TrustProducts
 
 
         /// <summary> Construct a new DeleteTrustProductEntityAssignmentOptions </summary>
-        /// <param name="pathTrustProductSid"> The unique string that we created to identify the TrustProduct resource. </param>        /// <param name="pathSid"> The unique string that we created to identify the Identity resource. </param>
+        /// <param name="pathTrustProductSid"> The unique string that we created to identify the TrustProduct resource. </param>
+        /// <param name="pathSid"> The unique string that we created to identify the Identity resource. </param>
         public DeleteTrustProductsEntityAssignmentsOptions(string pathTrustProductSid, string pathSid)
         {
             PathTrustProductSid = pathTrustProductSid;
@@ -104,7 +106,8 @@ namespace Twilio.Rest.Trusthub.V1.TrustProducts
 
 
         /// <summary> Construct a new FetchTrustProductEntityAssignmentOptions </summary>
-        /// <param name="pathTrustProductSid"> The unique string that we created to identify the TrustProduct resource. </param>        /// <param name="pathSid"> The unique string that we created to identify the Identity resource. </param>
+        /// <param name="pathTrustProductSid"> The unique string that we created to identify the TrustProduct resource. </param>
+        /// <param name="pathSid"> The unique string that we created to identify the Identity resource. </param>
         public FetchTrustProductsEntityAssignmentsOptions(string pathTrustProductSid, string pathSid)
         {
             PathTrustProductSid = pathTrustProductSid;

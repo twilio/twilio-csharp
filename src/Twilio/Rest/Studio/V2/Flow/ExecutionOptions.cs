@@ -42,7 +42,9 @@ namespace Twilio.Rest.Studio.V2.Flow
 
 
         /// <summary> Construct a new CreateExecutionOptions </summary>
-        /// <param name="pathFlowSid"> The SID of the Excecution&#39;s Flow. </param>        /// <param name="to"> The Contact phone number to start a Studio Flow Execution, available as variable &#x60;{{contact.channel.address}}&#x60;. </param>        /// <param name="from"> The Twilio phone number to send messages or initiate calls from during the Flow&#39;s Execution. Available as variable &#x60;{{flow.channel.address}}&#x60;. For SMS, this can also be a Messaging Service SID. </param>
+        /// <param name="pathFlowSid"> The SID of the Excecution's Flow. </param>
+        /// <param name="to"> The Contact phone number to start a Studio Flow Execution, available as variable `{{contact.channel.address}}`. </param>
+        /// <param name="from"> The Twilio phone number to send messages or initiate calls from during the Flow's Execution. Available as variable `{{flow.channel.address}}`. For SMS, this can also be a Messaging Service SID. </param>
         public CreateExecutionOptions(string pathFlowSid, Types.PhoneNumber to, Types.PhoneNumber from)
         {
             PathFlowSid = pathFlowSid;
@@ -86,7 +88,8 @@ namespace Twilio.Rest.Studio.V2.Flow
 
 
         /// <summary> Construct a new DeleteExecutionOptions </summary>
-        /// <param name="pathFlowSid"> The SID of the Flow with the Execution resources to delete. </param>        /// <param name="pathSid"> The SID of the Execution resource to delete. </param>
+        /// <param name="pathFlowSid"> The SID of the Flow with the Execution resources to delete. </param>
+        /// <param name="pathSid"> The SID of the Execution resource to delete. </param>
         public DeleteExecutionOptions(string pathFlowSid, string pathSid)
         {
             PathFlowSid = pathFlowSid;
@@ -119,7 +122,8 @@ namespace Twilio.Rest.Studio.V2.Flow
 
 
         /// <summary> Construct a new FetchExecutionOptions </summary>
-        /// <param name="pathFlowSid"> The SID of the Flow with the Execution resource to fetch </param>        /// <param name="pathSid"> The SID of the Execution resource to fetch. </param>
+        /// <param name="pathFlowSid"> The SID of the Flow with the Execution resource to fetch </param>
+        /// <param name="pathSid"> The SID of the Execution resource to fetch. </param>
         public FetchExecutionOptions(string pathFlowSid, string pathSid)
         {
             PathFlowSid = pathFlowSid;
@@ -185,7 +189,7 @@ namespace Twilio.Rest.Studio.V2.Flow
 
     }
 
-    /// <summary> Update the status of an Execution to &#x60;ended&#x60;. </summary>
+    /// <summary> Update the status of an Execution to `ended`. </summary>
     public class UpdateExecutionOptions : IOptions<ExecutionResource>
     {
     
@@ -201,7 +205,9 @@ namespace Twilio.Rest.Studio.V2.Flow
 
 
         /// <summary> Construct a new UpdateExecutionOptions </summary>
-        /// <param name="pathFlowSid"> The SID of the Flow with the Execution resources to update. </param>        /// <param name="pathSid"> The SID of the Execution resource to update. </param>        /// <param name="status">  </param>
+        /// <param name="pathFlowSid"> The SID of the Flow with the Execution resources to update. </param>
+        /// <param name="pathSid"> The SID of the Execution resource to update. </param>
+        /// <param name="status">  </param>
         public UpdateExecutionOptions(string pathFlowSid, string pathSid, ExecutionResource.StatusEnum status)
         {
             PathFlowSid = pathFlowSid;

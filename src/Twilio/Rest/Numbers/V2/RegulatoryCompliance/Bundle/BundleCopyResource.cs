@@ -56,7 +56,6 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
             string PathBundleSid = options.PathBundleSid;
             path = path.Replace("{"+"BundleSid"+"}", PathBundleSid);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Numbers,
@@ -120,10 +119,6 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         private static Request BuildReadRequest(ReadBundleCopyOptions options, ITwilioRestClient client)
         {
@@ -132,7 +127,6 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
 
             string PathBundleSid = options.PathBundleSid;
             path = path.Replace("{"+"BundleSid"+"}", PathBundleSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -250,8 +244,6 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
             var response = client.Request(request);
             return Page<BundleCopyResource>.FromJson("results", response.Content);
         }
-
-
 
     
         /// <summary>

@@ -53,7 +53,6 @@ namespace Twilio.Rest.Trusthub.V1
             string path = "/v1/CustomerProfiles";
 
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Trusthub,
@@ -125,10 +124,6 @@ namespace Twilio.Rest.Trusthub.V1
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> Delete a specific Customer-Profile. </summary>
         /// <param name="options"> Delete CustomerProfiles parameters </param>
@@ -141,7 +136,6 @@ namespace Twilio.Rest.Trusthub.V1
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -207,7 +201,6 @@ namespace Twilio.Rest.Trusthub.V1
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Trusthub,
@@ -269,7 +262,6 @@ namespace Twilio.Rest.Trusthub.V1
         {
             
             string path = "/v1/CustomerProfiles";
-
 
 
             return new Request(
@@ -397,8 +389,6 @@ namespace Twilio.Rest.Trusthub.V1
             return Page<CustomerProfilesResource>.FromJson("results", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateCustomerProfilesOptions options, ITwilioRestClient client)
         {
@@ -407,7 +397,6 @@ namespace Twilio.Rest.Trusthub.V1
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Post,

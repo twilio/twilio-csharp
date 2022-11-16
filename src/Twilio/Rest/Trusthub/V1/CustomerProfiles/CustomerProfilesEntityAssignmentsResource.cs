@@ -39,7 +39,6 @@ namespace Twilio.Rest.Trusthub.V1.CustomerProfiles
             string PathCustomerProfileSid = options.PathCustomerProfileSid;
             path = path.Replace("{"+"CustomerProfileSid"+"}", PathCustomerProfileSid);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Trusthub,
@@ -103,10 +102,6 @@ namespace Twilio.Rest.Trusthub.V1.CustomerProfiles
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> Remove an Assignment Item Instance. </summary>
         /// <param name="options"> Delete CustomerProfilesEntityAssignments parameters </param>
@@ -121,7 +116,6 @@ namespace Twilio.Rest.Trusthub.V1.CustomerProfiles
             path = path.Replace("{"+"CustomerProfileSid"+"}", PathCustomerProfileSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -191,7 +185,6 @@ namespace Twilio.Rest.Trusthub.V1.CustomerProfiles
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Trusthub,
@@ -259,7 +252,6 @@ namespace Twilio.Rest.Trusthub.V1.CustomerProfiles
 
             string PathCustomerProfileSid = options.PathCustomerProfileSid;
             path = path.Replace("{"+"CustomerProfileSid"+"}", PathCustomerProfileSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -377,8 +369,6 @@ namespace Twilio.Rest.Trusthub.V1.CustomerProfiles
             var response = client.Request(request);
             return Page<CustomerProfilesEntityAssignmentsResource>.FromJson("results", response.Content);
         }
-
-
 
     
         /// <summary>

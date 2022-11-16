@@ -48,7 +48,9 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
 
 
         /// <summary> Construct a new CreateParticipantOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the parent [Service](https://www.twilio.com/docs/proxy/api/service) resource. </param>        /// <param name="pathSessionSid"> The SID of the parent [Session](https://www.twilio.com/docs/proxy/api/session) resource. </param>        /// <param name="identifier"> The phone number of the Participant. </param>
+        /// <param name="pathServiceSid"> The SID of the parent [Service](https://www.twilio.com/docs/proxy/api/service) resource. </param>
+        /// <param name="pathSessionSid"> The SID of the parent [Session](https://www.twilio.com/docs/proxy/api/session) resource. </param>
+        /// <param name="identifier"> The phone number of the Participant. </param>
         public CreateParticipantOptions(string pathServiceSid, string pathSessionSid, string identifier)
         {
             PathServiceSid = pathServiceSid;
@@ -99,7 +101,9 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
 
 
         /// <summary> Construct a new DeleteParticipantOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the parent [Service](https://www.twilio.com/docs/proxy/api/service) of the resource to delete. </param>        /// <param name="pathSessionSid"> The SID of the parent [Session](https://www.twilio.com/docs/proxy/api/session) of the resource to delete. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Participant resource to delete. </param>
+        /// <param name="pathServiceSid"> The SID of the parent [Service](https://www.twilio.com/docs/proxy/api/service) of the resource to delete. </param>
+        /// <param name="pathSessionSid"> The SID of the parent [Session](https://www.twilio.com/docs/proxy/api/session) of the resource to delete. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Participant resource to delete. </param>
         public DeleteParticipantOptions(string pathServiceSid, string pathSessionSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -136,7 +140,9 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
 
 
         /// <summary> Construct a new FetchParticipantOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the parent [Service](https://www.twilio.com/docs/proxy/api/service) of the resource to fetch. </param>        /// <param name="pathSessionSid"> The SID of the parent [Session](https://www.twilio.com/docs/proxy/api/session) of the resource to fetch. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Participant resource to fetch. </param>
+        /// <param name="pathServiceSid"> The SID of the parent [Service](https://www.twilio.com/docs/proxy/api/service) of the resource to fetch. </param>
+        /// <param name="pathSessionSid"> The SID of the parent [Session](https://www.twilio.com/docs/proxy/api/session) of the resource to fetch. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Participant resource to fetch. </param>
         public FetchParticipantOptions(string pathServiceSid, string pathSessionSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -170,7 +176,8 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
 
 
         /// <summary> Construct a new ListParticipantOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the parent [Service](https://www.twilio.com/docs/proxy/api/service) of the resources to read. </param>        /// <param name="pathSessionSid"> The SID of the parent [Session](https://www.twilio.com/docs/proxy/api/session) of the resources to read. </param>
+        /// <param name="pathServiceSid"> The SID of the parent [Service](https://www.twilio.com/docs/proxy/api/service) of the resources to read. </param>
+        /// <param name="pathSessionSid"> The SID of the parent [Session](https://www.twilio.com/docs/proxy/api/session) of the resources to read. </param>
         public ReadParticipantOptions(string pathServiceSid, string pathSessionSid)
         {
             PathServiceSid = pathServiceSid;

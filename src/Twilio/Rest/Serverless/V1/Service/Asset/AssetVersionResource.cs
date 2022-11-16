@@ -57,7 +57,6 @@ namespace Twilio.Rest.Serverless.V1.Service.Asset
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Serverless,
@@ -130,7 +129,6 @@ namespace Twilio.Rest.Serverless.V1.Service.Asset
             path = path.Replace("{"+"ServiceSid"+"}", PathServiceSid);
             string PathAssetSid = options.PathAssetSid;
             path = path.Replace("{"+"AssetSid"+"}", PathAssetSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -252,8 +250,6 @@ namespace Twilio.Rest.Serverless.V1.Service.Asset
             var response = client.Request(request);
             return Page<AssetVersionResource>.FromJson("asset_versions", response.Content);
         }
-
-
 
     
         /// <summary>

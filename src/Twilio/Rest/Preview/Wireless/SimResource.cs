@@ -39,7 +39,6 @@ namespace Twilio.Rest.Preview.Wireless
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Preview,
@@ -101,7 +100,6 @@ namespace Twilio.Rest.Preview.Wireless
         {
             
             string path = "/wireless/Sims";
-
 
 
             return new Request(
@@ -237,8 +235,6 @@ namespace Twilio.Rest.Preview.Wireless
             return Page<SimResource>.FromJson("sims", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateSimOptions options, ITwilioRestClient client)
         {
@@ -247,7 +243,6 @@ namespace Twilio.Rest.Preview.Wireless
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Post,

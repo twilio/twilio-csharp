@@ -68,7 +68,6 @@ namespace Twilio.Rest.Serverless.V1.Service
             string PathServiceSid = options.PathServiceSid;
             path = path.Replace("{"+"ServiceSid"+"}", PathServiceSid);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Serverless,
@@ -144,10 +143,6 @@ namespace Twilio.Rest.Serverless.V1.Service
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> Delete a Build resource. </summary>
         /// <param name="options"> Delete Build parameters </param>
@@ -162,7 +157,6 @@ namespace Twilio.Rest.Serverless.V1.Service
             path = path.Replace("{"+"ServiceSid"+"}", PathServiceSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -232,7 +226,6 @@ namespace Twilio.Rest.Serverless.V1.Service
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Serverless,
@@ -300,7 +293,6 @@ namespace Twilio.Rest.Serverless.V1.Service
 
             string PathServiceSid = options.PathServiceSid;
             path = path.Replace("{"+"ServiceSid"+"}", PathServiceSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -418,8 +410,6 @@ namespace Twilio.Rest.Serverless.V1.Service
             var response = client.Request(request);
             return Page<BuildResource>.FromJson("builds", response.Content);
         }
-
-
 
     
         /// <summary>

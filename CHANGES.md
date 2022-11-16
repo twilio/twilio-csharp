@@ -1,6 +1,40 @@
 twilio-csharp Changelog
 =======================
 
+[2022-11-16] Version 6.0.1
+--------------------------
+**Library - Chore**
+- [PR #654](https://github.com/twilio/twilio-csharp/pull/654): bump csharp version to 6.0.1. Thanks to [@sbansla](https://github.com/sbansla)!
+
+
+[2022-11-16] Version 6.0.0
+--------------------------
+**Note:** This release contains breaking changes, check our [upgrade guide](./UPGRADE.md#2022-11-XX-5xx-to-6xx) for detailed migration notes.
+
+**Library - Chore**
+- [PR #653](https://github.com/twilio/twilio-csharp/pull/653): refactored c# comments in options file. Thanks to [@sbansla](https://github.com/sbansla)!
+- [PR #646](https://github.com/twilio/twilio-csharp/pull/646): upgrade GitHub Actions dependencies. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+**Library - Fix**
+- [PR #651](https://github.com/twilio/twilio-csharp/pull/651): renamed resource and option file from GoodDatum to GoodData. Thanks to [@sbansla](https://github.com/sbansla)!
+
+**Library - Docs**
+- [PR #650](https://github.com/twilio/twilio-csharp/pull/650): update summaries with special characters. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+**Library - Feature**
+- [PR #645](https://github.com/twilio/twilio-csharp/pull/645): Merging RC branch to main. Thanks to [@sbansla](https://github.com/sbansla)! **(breaking change)**
+
+**Api**
+- Set the Content resource to have public visibility as Preview
+
+**Flex**
+- Adding new parameter `base_url` to 'gooddata' response in version `v1`
+
+**Insights**
+- Added `answered_by` field in List Call Summary
+- Added `answered_by` field in call summary
+
+
 [2022-11-10] Version 5.81.2
 ---------------------------
 **Flex**

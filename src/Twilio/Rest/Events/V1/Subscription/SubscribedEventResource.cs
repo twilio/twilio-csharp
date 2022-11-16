@@ -39,7 +39,6 @@ namespace Twilio.Rest.Events.V1.Subscription
             string PathSubscriptionSid = options.PathSubscriptionSid;
             path = path.Replace("{"+"SubscriptionSid"+"}", PathSubscriptionSid);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Events,
@@ -107,10 +106,6 @@ namespace Twilio.Rest.Events.V1.Subscription
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> Remove an event type from a subscription. </summary>
         /// <param name="options"> Delete SubscribedEvent parameters </param>
@@ -125,7 +120,6 @@ namespace Twilio.Rest.Events.V1.Subscription
             path = path.Replace("{"+"SubscriptionSid"+"}", PathSubscriptionSid);
             string PathType = options.PathType;
             path = path.Replace("{"+"Type"+"}", PathType);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -195,7 +189,6 @@ namespace Twilio.Rest.Events.V1.Subscription
             string PathType = options.PathType;
             path = path.Replace("{"+"Type"+"}", PathType);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Events,
@@ -263,7 +256,6 @@ namespace Twilio.Rest.Events.V1.Subscription
 
             string PathSubscriptionSid = options.PathSubscriptionSid;
             path = path.Replace("{"+"SubscriptionSid"+"}", PathSubscriptionSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -382,8 +374,6 @@ namespace Twilio.Rest.Events.V1.Subscription
             return Page<SubscribedEventResource>.FromJson("types", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateSubscribedEventOptions options, ITwilioRestClient client)
         {
@@ -394,7 +384,6 @@ namespace Twilio.Rest.Events.V1.Subscription
             path = path.Replace("{"+"SubscriptionSid"+"}", PathSubscriptionSid);
             string PathType = options.PathType;
             path = path.Replace("{"+"Type"+"}", PathType);
-
 
             return new Request(
                 HttpMethod.Post,

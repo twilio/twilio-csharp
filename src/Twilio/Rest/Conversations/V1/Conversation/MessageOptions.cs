@@ -121,7 +121,8 @@ namespace Twilio.Rest.Conversations.V1.Conversation
 
 
         /// <summary> Construct a new DeleteConversationMessageOptions </summary>
-        /// <param name="pathConversationSid"> The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this message. </param>        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="pathConversationSid"> The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this message. </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         public DeleteMessageOptions(string pathConversationSid, string pathSid)
         {
             PathConversationSid = pathConversationSid;
@@ -164,7 +165,8 @@ namespace Twilio.Rest.Conversations.V1.Conversation
 
 
         /// <summary> Construct a new FetchConversationMessageOptions </summary>
-        /// <param name="pathConversationSid"> The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this message. </param>        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="pathConversationSid"> The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this message. </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         public FetchMessageOptions(string pathConversationSid, string pathSid)
         {
             PathConversationSid = pathConversationSid;
@@ -254,7 +256,8 @@ namespace Twilio.Rest.Conversations.V1.Conversation
 
 
         /// <summary> Construct a new UpdateConversationMessageOptions </summary>
-        /// <param name="pathConversationSid"> The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this message. </param>        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="pathConversationSid"> The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this message. </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         public UpdateMessageOptions(string pathConversationSid, string pathSid)
         {
             PathConversationSid = pathConversationSid;

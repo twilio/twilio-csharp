@@ -41,7 +41,6 @@ namespace Twilio.Rest.Preview.Marketplace.AvailableAddOn
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Preview,
@@ -109,7 +108,6 @@ namespace Twilio.Rest.Preview.Marketplace.AvailableAddOn
 
             string PathAvailableAddOnSid = options.PathAvailableAddOnSid;
             path = path.Replace("{"+"AvailableAddOnSid"+"}", PathAvailableAddOnSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -227,8 +225,6 @@ namespace Twilio.Rest.Preview.Marketplace.AvailableAddOn
             var response = client.Request(request);
             return Page<AvailableAddOnExtensionResource>.FromJson("extensions", response.Content);
         }
-
-
 
     
         /// <summary>

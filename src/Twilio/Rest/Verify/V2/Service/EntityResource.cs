@@ -39,7 +39,6 @@ namespace Twilio.Rest.Verify.V2.Service
             string PathServiceSid = options.PathServiceSid;
             path = path.Replace("{"+"ServiceSid"+"}", PathServiceSid);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Verify,
@@ -103,10 +102,6 @@ namespace Twilio.Rest.Verify.V2.Service
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> Delete a specific Entity. </summary>
         /// <param name="options"> Delete Entity parameters </param>
@@ -121,7 +116,6 @@ namespace Twilio.Rest.Verify.V2.Service
             path = path.Replace("{"+"ServiceSid"+"}", PathServiceSid);
             string PathIdentity = options.PathIdentity;
             path = path.Replace("{"+"Identity"+"}", PathIdentity);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -191,7 +185,6 @@ namespace Twilio.Rest.Verify.V2.Service
             string PathIdentity = options.PathIdentity;
             path = path.Replace("{"+"Identity"+"}", PathIdentity);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Verify,
@@ -259,7 +252,6 @@ namespace Twilio.Rest.Verify.V2.Service
 
             string PathServiceSid = options.PathServiceSid;
             path = path.Replace("{"+"ServiceSid"+"}", PathServiceSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -377,8 +369,6 @@ namespace Twilio.Rest.Verify.V2.Service
             var response = client.Request(request);
             return Page<EntityResource>.FromJson("entities", response.Content);
         }
-
-
 
     
         /// <summary>

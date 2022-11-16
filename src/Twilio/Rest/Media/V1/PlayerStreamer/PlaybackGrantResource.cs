@@ -39,7 +39,6 @@ namespace Twilio.Rest.Media.V1.PlayerStreamer
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Media,
@@ -107,10 +106,6 @@ namespace Twilio.Rest.Media.V1.PlayerStreamer
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         private static Request BuildFetchRequest(FetchPlaybackGrantOptions options, ITwilioRestClient client)
         {
@@ -119,7 +114,6 @@ namespace Twilio.Rest.Media.V1.PlayerStreamer
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Get,

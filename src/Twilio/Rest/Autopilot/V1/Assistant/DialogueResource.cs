@@ -41,7 +41,6 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Autopilot,

@@ -39,7 +39,9 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
 
 
         /// <summary> Construct a new DeleteSyncListPermissionOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync List Permission resource to delete. </param>        /// <param name="pathListSid"> The SID of the Sync List with the Sync List Permission resource to delete. Can be the Sync List resource&#39;s &#x60;sid&#x60; or its &#x60;unique_name&#x60;. </param>        /// <param name="pathIdentity"> The application-defined string that uniquely identifies the User&#39;s Sync List Permission resource to delete. </param>
+        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync List Permission resource to delete. </param>
+        /// <param name="pathListSid"> The SID of the Sync List with the Sync List Permission resource to delete. Can be the Sync List resource's `sid` or its `unique_name`. </param>
+        /// <param name="pathIdentity"> The application-defined string that uniquely identifies the User's Sync List Permission resource to delete. </param>
         public DeleteSyncListPermissionOptions(string pathServiceSid, string pathListSid, string pathIdentity)
         {
             PathServiceSid = pathServiceSid;
@@ -76,7 +78,9 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
 
 
         /// <summary> Construct a new FetchSyncListPermissionOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync List Permission resource to fetch. </param>        /// <param name="pathListSid"> The SID of the Sync List with the Sync List Permission resource to fetch. Can be the Sync List resource&#39;s &#x60;sid&#x60; or its &#x60;unique_name&#x60;. </param>        /// <param name="pathIdentity"> The application-defined string that uniquely identifies the User&#39;s Sync List Permission resource to fetch. </param>
+        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync List Permission resource to fetch. </param>
+        /// <param name="pathListSid"> The SID of the Sync List with the Sync List Permission resource to fetch. Can be the Sync List resource's `sid` or its `unique_name`. </param>
+        /// <param name="pathIdentity"> The application-defined string that uniquely identifies the User's Sync List Permission resource to fetch. </param>
         public FetchSyncListPermissionOptions(string pathServiceSid, string pathListSid, string pathIdentity)
         {
             PathServiceSid = pathServiceSid;
@@ -110,7 +114,8 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
 
 
         /// <summary> Construct a new ListSyncListPermissionOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync List Permission resources to read. </param>        /// <param name="pathListSid"> The SID of the Sync List with the Sync List Permission resources to read. Can be the Sync List resource&#39;s &#x60;sid&#x60; or its &#x60;unique_name&#x60;. </param>
+        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync List Permission resources to read. </param>
+        /// <param name="pathListSid"> The SID of the Sync List with the Sync List Permission resources to read. Can be the Sync List resource's `sid` or its `unique_name`. </param>
         public ReadSyncListPermissionOptions(string pathServiceSid, string pathListSid)
         {
             PathServiceSid = pathServiceSid;
@@ -133,7 +138,7 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
 
     }
 
-    /// <summary> Update an identity&#39;s access to a specific Sync List. </summary>
+    /// <summary> Update an identity's access to a specific Sync List. </summary>
     public class UpdateSyncListPermissionOptions : IOptions<SyncListPermissionResource>
     {
     
@@ -158,7 +163,12 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
 
 
         /// <summary> Construct a new UpdateSyncListPermissionOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync List Permission resource to update. </param>        /// <param name="pathListSid"> The SID of the Sync List with the Sync List Permission resource to update. Can be the Sync List resource&#39;s &#x60;sid&#x60; or its &#x60;unique_name&#x60;. </param>        /// <param name="pathIdentity"> The application-defined string that uniquely identifies the User&#39;s Sync List Permission resource to update. </param>        /// <param name="read"> Whether the identity can read the Sync List and its Items. Default value is &#x60;false&#x60;. </param>        /// <param name="write"> Whether the identity can create, update, and delete Items in the Sync List. Default value is &#x60;false&#x60;. </param>        /// <param name="manage"> Whether the identity can delete the Sync List. Default value is &#x60;false&#x60;. </param>
+        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync List Permission resource to update. </param>
+        /// <param name="pathListSid"> The SID of the Sync List with the Sync List Permission resource to update. Can be the Sync List resource's `sid` or its `unique_name`. </param>
+        /// <param name="pathIdentity"> The application-defined string that uniquely identifies the User's Sync List Permission resource to update. </param>
+        /// <param name="read"> Whether the identity can read the Sync List and its Items. Default value is `false`. </param>
+        /// <param name="write"> Whether the identity can create, update, and delete Items in the Sync List. Default value is `false`. </param>
+        /// <param name="manage"> Whether the identity can delete the Sync List. Default value is `false`. </param>
         public UpdateSyncListPermissionOptions(string pathServiceSid, string pathListSid, string pathIdentity, bool? read, bool? write, bool? manage)
         {
             PathServiceSid = pathServiceSid;

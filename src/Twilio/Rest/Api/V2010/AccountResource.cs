@@ -64,7 +64,6 @@ namespace Twilio.Rest.Api.V2010
             string path = "/2010-04-01/Accounts.json";
 
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Api,
@@ -124,10 +123,6 @@ namespace Twilio.Rest.Api.V2010
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         private static Request BuildFetchRequest(FetchAccountOptions options, ITwilioRestClient client)
         {
@@ -136,7 +131,6 @@ namespace Twilio.Rest.Api.V2010
 
             string PathSid = options.PathSid ?? client.AccountSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -199,7 +193,6 @@ namespace Twilio.Rest.Api.V2010
         {
             
             string path = "/2010-04-01/Accounts.json";
-
 
 
             return new Request(
@@ -323,8 +316,6 @@ namespace Twilio.Rest.Api.V2010
             return Page<AccountResource>.FromJson("accounts", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateAccountOptions options, ITwilioRestClient client)
         {
@@ -333,7 +324,6 @@ namespace Twilio.Rest.Api.V2010
 
             string PathSid = options.PathSid ?? client.AccountSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Post,

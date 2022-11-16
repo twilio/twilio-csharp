@@ -39,7 +39,6 @@ namespace Twilio.Rest.Supersim.V1
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Supersim,
@@ -101,7 +100,6 @@ namespace Twilio.Rest.Supersim.V1
         {
             
             string path = "/v1/Networks";
-
 
 
             return new Request(
@@ -228,8 +226,6 @@ namespace Twilio.Rest.Supersim.V1
             var response = client.Request(request);
             return Page<NetworkResource>.FromJson("networks", response.Content);
         }
-
-
 
     
         /// <summary>

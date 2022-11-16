@@ -57,7 +57,9 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
 
 
         /// <summary> Construct a new CreateChannelWebhookOptions </summary>
-        /// <param name="pathServiceSid">  </param>        /// <param name="pathChannelSid">  </param>        /// <param name="type">  </param>
+        /// <param name="pathServiceSid">  </param>
+        /// <param name="pathChannelSid">  </param>
+        /// <param name="type">  </param>
         public CreateWebhookOptions(string pathServiceSid, string pathChannelSid, WebhookResource.TypeEnum type)
         {
             PathServiceSid = pathServiceSid;
@@ -122,7 +124,9 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
 
 
         /// <summary> Construct a new DeleteChannelWebhookOptions </summary>
-        /// <param name="pathServiceSid">  </param>        /// <param name="pathChannelSid">  </param>        /// <param name="pathSid">  </param>
+        /// <param name="pathServiceSid">  </param>
+        /// <param name="pathChannelSid">  </param>
+        /// <param name="pathSid">  </param>
         public DeleteWebhookOptions(string pathServiceSid, string pathChannelSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -159,7 +163,9 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
 
 
         /// <summary> Construct a new FetchChannelWebhookOptions </summary>
-        /// <param name="pathServiceSid">  </param>        /// <param name="pathChannelSid">  </param>        /// <param name="pathSid">  </param>
+        /// <param name="pathServiceSid">  </param>
+        /// <param name="pathChannelSid">  </param>
+        /// <param name="pathSid">  </param>
         public FetchWebhookOptions(string pathServiceSid, string pathChannelSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -193,7 +199,8 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
 
 
         /// <summary> Construct a new ListChannelWebhookOptions </summary>
-        /// <param name="pathServiceSid">  </param>        /// <param name="pathChannelSid">  </param>
+        /// <param name="pathServiceSid">  </param>
+        /// <param name="pathChannelSid">  </param>
         public ReadWebhookOptions(string pathServiceSid, string pathChannelSid)
         {
             PathServiceSid = pathServiceSid;
@@ -250,7 +257,9 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
 
 
         /// <summary> Construct a new UpdateChannelWebhookOptions </summary>
-        /// <param name="pathServiceSid">  </param>        /// <param name="pathChannelSid">  </param>        /// <param name="pathSid">  </param>
+        /// <param name="pathServiceSid">  </param>
+        /// <param name="pathChannelSid">  </param>
+        /// <param name="pathSid">  </param>
         public UpdateWebhookOptions(string pathServiceSid, string pathChannelSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;

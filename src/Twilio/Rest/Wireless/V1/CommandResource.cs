@@ -92,7 +92,6 @@ namespace Twilio.Rest.Wireless.V1
             string path = "/v1/Commands";
 
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Wireless,
@@ -176,10 +175,6 @@ namespace Twilio.Rest.Wireless.V1
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> Delete a Command instance from your account. </summary>
         /// <param name="options"> Delete Command parameters </param>
@@ -192,7 +187,6 @@ namespace Twilio.Rest.Wireless.V1
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -258,7 +252,6 @@ namespace Twilio.Rest.Wireless.V1
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Wireless,
@@ -320,7 +313,6 @@ namespace Twilio.Rest.Wireless.V1
         {
             
             string path = "/v1/Commands";
-
 
 
             return new Request(
@@ -451,8 +443,6 @@ namespace Twilio.Rest.Wireless.V1
             var response = client.Request(request);
             return Page<CommandResource>.FromJson("commands", response.Content);
         }
-
-
 
     
         /// <summary>

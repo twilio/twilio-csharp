@@ -39,7 +39,9 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
 
 
         /// <summary> Construct a new FetchLogOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to fetch the Log resource from. </param>        /// <param name="pathEnvironmentSid"> The SID of the environment with the Log resource to fetch. </param>        /// <param name="pathSid"> The SID of the Log resource to fetch. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to fetch the Log resource from. </param>
+        /// <param name="pathEnvironmentSid"> The SID of the environment with the Log resource to fetch. </param>
+        /// <param name="pathSid"> The SID of the Log resource to fetch. </param>
         public FetchLogOptions(string pathServiceSid, string pathEnvironmentSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -82,7 +84,8 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
 
 
         /// <summary> Construct a new ListLogOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to read the Log resource from. </param>        /// <param name="pathEnvironmentSid"> The SID of the environment with the Log resources to read. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to read the Log resource from. </param>
+        /// <param name="pathEnvironmentSid"> The SID of the environment with the Log resources to read. </param>
         public ReadLogOptions(string pathServiceSid, string pathEnvironmentSid)
         {
             PathServiceSid = pathServiceSid;

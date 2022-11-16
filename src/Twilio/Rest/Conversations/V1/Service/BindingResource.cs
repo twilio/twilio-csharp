@@ -59,7 +59,6 @@ namespace Twilio.Rest.Conversations.V1.Service
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Conversations,
@@ -128,7 +127,6 @@ namespace Twilio.Rest.Conversations.V1.Service
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Conversations,
@@ -196,7 +194,6 @@ namespace Twilio.Rest.Conversations.V1.Service
 
             string PathChatServiceSid = options.PathChatServiceSid;
             path = path.Replace("{"+"ChatServiceSid"+"}", PathChatServiceSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -322,8 +319,6 @@ namespace Twilio.Rest.Conversations.V1.Service
             var response = client.Request(request);
             return Page<BindingResource>.FromJson("bindings", response.Content);
         }
-
-
 
     
         /// <summary>

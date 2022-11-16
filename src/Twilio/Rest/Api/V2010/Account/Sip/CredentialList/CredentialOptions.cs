@@ -42,7 +42,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
 
 
         /// <summary> Construct a new CreateSipCredentialOptions </summary>
-        /// <param name="pathCredentialListSid"> The unique id that identifies the credential list to include the created credential. </param>        /// <param name="username"> The username that will be passed when authenticating SIP requests. The username should be sent in response to Twilio&#39;s challenge of the initial INVITE. It can be up to 32 characters long. </param>        /// <param name="password"> The password that the username will use when authenticating SIP requests. The password must be a minimum of 12 characters, contain at least 1 digit, and have mixed case. (eg &#x60;IWasAtSignal2018&#x60;) </param>
+        /// <param name="pathCredentialListSid"> The unique id that identifies the credential list to include the created credential. </param>
+        /// <param name="username"> The username that will be passed when authenticating SIP requests. The username should be sent in response to Twilio's challenge of the initial INVITE. It can be up to 32 characters long. </param>
+        /// <param name="password"> The password that the username will use when authenticating SIP requests. The password must be a minimum of 12 characters, contain at least 1 digit, and have mixed case. (eg `IWasAtSignal2018`) </param>
         public CreateCredentialOptions(string pathCredentialListSid, string username, string password)
         {
             PathCredentialListSid = pathCredentialListSid;
@@ -85,7 +87,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
 
 
         /// <summary> Construct a new DeleteSipCredentialOptions </summary>
-        /// <param name="pathCredentialListSid"> The unique id that identifies the credential list that contains the desired credentials. </param>        /// <param name="pathSid"> The unique id that identifies the resource to delete. </param>
+        /// <param name="pathCredentialListSid"> The unique id that identifies the credential list that contains the desired credentials. </param>
+        /// <param name="pathSid"> The unique id that identifies the resource to delete. </param>
         public DeleteCredentialOptions(string pathCredentialListSid, string pathSid)
         {
             PathCredentialListSid = pathCredentialListSid;
@@ -121,7 +124,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
 
 
         /// <summary> Construct a new FetchSipCredentialOptions </summary>
-        /// <param name="pathCredentialListSid"> The unique id that identifies the credential list that contains the desired credential. </param>        /// <param name="pathSid"> The unique id that identifies the resource to fetch. </param>
+        /// <param name="pathCredentialListSid"> The unique id that identifies the credential list that contains the desired credential. </param>
+        /// <param name="pathSid"> The unique id that identifies the resource to fetch. </param>
         public FetchCredentialOptions(string pathCredentialListSid, string pathSid)
         {
             PathCredentialListSid = pathCredentialListSid;
@@ -195,7 +199,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
 
 
         /// <summary> Construct a new UpdateSipCredentialOptions </summary>
-        /// <param name="pathCredentialListSid"> The unique id that identifies the credential list that includes this credential. </param>        /// <param name="pathSid"> The unique id that identifies the resource to update. </param>
+        /// <param name="pathCredentialListSid"> The unique id that identifies the credential list that includes this credential. </param>
+        /// <param name="pathSid"> The unique id that identifies the resource to update. </param>
         public UpdateCredentialOptions(string pathCredentialListSid, string pathSid)
         {
             PathCredentialListSid = pathCredentialListSid;

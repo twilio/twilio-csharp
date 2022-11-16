@@ -72,7 +72,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
 
 
         /// <summary> Construct a new CreateSipDomainOptions </summary>
-        /// <param name="domainName"> The unique address you reserve on Twilio to which you route your SIP traffic. Domain names can contain letters, digits, and \\\&quot;-\\\&quot; and must end with &#x60;sip.twilio.com&#x60;. </param>
+        /// <param name="domainName"> The unique address you reserve on Twilio to which you route your SIP traffic. Domain names can contain letters, digits, and \\\"-\\\" and must end with `sip.twilio.com`. </param>
         public CreateDomainOptions(string domainName)
         {
             DomainName = domainName;

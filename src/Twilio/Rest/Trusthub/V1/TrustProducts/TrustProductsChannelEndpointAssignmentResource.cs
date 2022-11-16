@@ -39,7 +39,6 @@ namespace Twilio.Rest.Trusthub.V1.TrustProducts
             string PathTrustProductSid = options.PathTrustProductSid;
             path = path.Replace("{"+"TrustProductSid"+"}", PathTrustProductSid);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Trusthub,
@@ -107,10 +106,6 @@ namespace Twilio.Rest.Trusthub.V1.TrustProducts
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> Remove an Assignment Item Instance. </summary>
         /// <param name="options"> Delete TrustProductsChannelEndpointAssignment parameters </param>
@@ -125,7 +120,6 @@ namespace Twilio.Rest.Trusthub.V1.TrustProducts
             path = path.Replace("{"+"TrustProductSid"+"}", PathTrustProductSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -195,7 +189,6 @@ namespace Twilio.Rest.Trusthub.V1.TrustProducts
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Trusthub,
@@ -263,7 +256,6 @@ namespace Twilio.Rest.Trusthub.V1.TrustProducts
 
             string PathTrustProductSid = options.PathTrustProductSid;
             path = path.Replace("{"+"TrustProductSid"+"}", PathTrustProductSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -389,8 +381,6 @@ namespace Twilio.Rest.Trusthub.V1.TrustProducts
             var response = client.Request(request);
             return Page<TrustProductsChannelEndpointAssignmentResource>.FromJson("results", response.Content);
         }
-
-
 
     
         /// <summary>

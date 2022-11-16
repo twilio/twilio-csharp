@@ -36,7 +36,8 @@ namespace Twilio.Rest.IpMessaging.V2.Service
 
 
         /// <summary> Construct a new DeleteBindingOptions </summary>
-        /// <param name="pathServiceSid">  </param>        /// <param name="pathSid">  </param>
+        /// <param name="pathServiceSid">  </param>
+        /// <param name="pathSid">  </param>
         public DeleteBindingOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -69,7 +70,8 @@ namespace Twilio.Rest.IpMessaging.V2.Service
 
 
         /// <summary> Construct a new FetchBindingOptions </summary>
-        /// <param name="pathServiceSid">  </param>        /// <param name="pathSid">  </param>
+        /// <param name="pathServiceSid">  </param>
+        /// <param name="pathSid">  </param>
         public FetchBindingOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;

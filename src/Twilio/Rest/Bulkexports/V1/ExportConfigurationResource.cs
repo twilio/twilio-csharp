@@ -39,7 +39,6 @@ namespace Twilio.Rest.Bulkexports.V1
             string PathResourceType = options.PathResourceType;
             path = path.Replace("{"+"ResourceType"+"}", PathResourceType);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Bulkexports,
@@ -104,7 +103,6 @@ namespace Twilio.Rest.Bulkexports.V1
 
             string PathResourceType = options.PathResourceType;
             path = path.Replace("{"+"ResourceType"+"}", PathResourceType);
-
 
             return new Request(
                 HttpMethod.Post,

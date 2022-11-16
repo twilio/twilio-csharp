@@ -75,7 +75,9 @@ namespace Twilio.Rest.Verify.V2.Service
 
 
         /// <summary> Construct a new CreateVerificationOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the verification [Service](https://www.twilio.com/docs/verify/api/service) to create the resource under. </param>        /// <param name="to"> The phone number or [email](https://www.twilio.com/docs/verify/email) to verify. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164). </param>        /// <param name="channel"> The verification method to use. One of: [&#x60;email&#x60;](https://www.twilio.com/docs/verify/email), &#x60;sms&#x60;, &#x60;whatsapp&#x60;, &#x60;call&#x60;, or &#x60;sna&#x60;. </param>
+        /// <param name="pathServiceSid"> The SID of the verification [Service](https://www.twilio.com/docs/verify/api/service) to create the resource under. </param>
+        /// <param name="to"> The phone number or [email](https://www.twilio.com/docs/verify/email) to verify. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164). </param>
+        /// <param name="channel"> The verification method to use. One of: [`email`](https://www.twilio.com/docs/verify/email), `sms`, `whatsapp`, `call`, or `sna`. </param>
         public CreateVerificationOptions(string pathServiceSid, string to, string channel)
         {
             PathServiceSid = pathServiceSid;
@@ -163,7 +165,8 @@ namespace Twilio.Rest.Verify.V2.Service
 
 
         /// <summary> Construct a new FetchVerificationOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the verification [Service](https://www.twilio.com/docs/verify/api/service) to fetch the resource from. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Verification resource to fetch. </param>
+        /// <param name="pathServiceSid"> The SID of the verification [Service](https://www.twilio.com/docs/verify/api/service) to fetch the resource from. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Verification resource to fetch. </param>
         public FetchVerificationOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -199,7 +202,9 @@ namespace Twilio.Rest.Verify.V2.Service
 
 
         /// <summary> Construct a new UpdateVerificationOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the verification [Service](https://www.twilio.com/docs/verify/api/service) to update the resource from. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Verification resource to update. </param>        /// <param name="status">  </param>
+        /// <param name="pathServiceSid"> The SID of the verification [Service](https://www.twilio.com/docs/verify/api/service) to update the resource from. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Verification resource to update. </param>
+        /// <param name="status">  </param>
         public UpdateVerificationOptions(string pathServiceSid, string pathSid, VerificationResource.StatusEnum status)
         {
             PathServiceSid = pathServiceSid;

@@ -37,7 +37,6 @@ namespace Twilio.Rest.Wireless.V1
             string path = "/v1/RatePlans";
 
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Wireless,
@@ -137,10 +136,6 @@ namespace Twilio.Rest.Wireless.V1
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> delete </summary>
         /// <param name="options"> Delete RatePlan parameters </param>
@@ -153,7 +148,6 @@ namespace Twilio.Rest.Wireless.V1
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -219,7 +213,6 @@ namespace Twilio.Rest.Wireless.V1
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Wireless,
@@ -281,7 +274,6 @@ namespace Twilio.Rest.Wireless.V1
         {
             
             string path = "/v1/RatePlans";
-
 
 
             return new Request(
@@ -397,8 +389,6 @@ namespace Twilio.Rest.Wireless.V1
             return Page<RatePlanResource>.FromJson("rate_plans", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateRatePlanOptions options, ITwilioRestClient client)
         {
@@ -407,7 +397,6 @@ namespace Twilio.Rest.Wireless.V1
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Post,

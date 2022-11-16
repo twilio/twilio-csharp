@@ -56,7 +56,6 @@ namespace Twilio.Rest.Lookups.V2
             string PathPhoneNumber = options.PathPhoneNumber;
             path = path.Replace("{"+"PhoneNumber"+"}", PathPhoneNumber);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Lookups,

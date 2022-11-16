@@ -64,7 +64,6 @@ namespace Twilio.Rest.Trunking.V1
             string path = "/v1/Trunks";
 
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Trunking,
@@ -152,10 +151,6 @@ namespace Twilio.Rest.Trunking.V1
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> delete </summary>
         /// <param name="options"> Delete Trunk parameters </param>
@@ -168,7 +163,6 @@ namespace Twilio.Rest.Trunking.V1
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -234,7 +228,6 @@ namespace Twilio.Rest.Trunking.V1
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Trunking,
@@ -296,7 +289,6 @@ namespace Twilio.Rest.Trunking.V1
         {
             
             string path = "/v1/Trunks";
-
 
 
             return new Request(
@@ -412,8 +404,6 @@ namespace Twilio.Rest.Trunking.V1
             return Page<TrunkResource>.FromJson("trunks", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateTrunkOptions options, ITwilioRestClient client)
         {
@@ -422,7 +412,6 @@ namespace Twilio.Rest.Trunking.V1
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Post,

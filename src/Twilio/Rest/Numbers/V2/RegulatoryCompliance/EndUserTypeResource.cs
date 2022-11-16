@@ -39,7 +39,6 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Numbers,
@@ -101,7 +100,6 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         {
             
             string path = "/v2/RegulatoryCompliance/EndUserTypes";
-
 
 
             return new Request(
@@ -216,8 +214,6 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
             var response = client.Request(request);
             return Page<EndUserTypeResource>.FromJson("end_user_types", response.Content);
         }
-
-
 
     
         /// <summary>

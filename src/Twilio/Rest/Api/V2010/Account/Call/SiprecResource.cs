@@ -78,7 +78,6 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             string PathCallSid = options.PathCallSid;
             path = path.Replace("{"+"CallSid"+"}", PathCallSid);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Api,
@@ -954,10 +953,6 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         private static Request BuildUpdateRequest(UpdateSiprecOptions options, ITwilioRestClient client)
         {
@@ -971,7 +966,6 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Api,
@@ -981,7 +975,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             );
         }
 
-        /// <summary> Stop a Siprec using either the SID of the Siprec resource or the &#x60;name&#x60; used when creating the resource </summary>
+        /// <summary> Stop a Siprec using either the SID of the Siprec resource or the `name` used when creating the resource </summary>
         /// <param name="options"> Update Siprec parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Siprec </returns>
@@ -992,7 +986,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             return FromJson(response.Content);
         }
 
-        /// <summary> Stop a Siprec using either the SID of the Siprec resource or the &#x60;name&#x60; used when creating the resource </summary>
+        /// <summary> Stop a Siprec using either the SID of the Siprec resource or the `name` used when creating the resource </summary>
         /// <param name="options"> Update Siprec parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Siprec </returns>
@@ -1006,7 +1000,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
         #endif
 
-        /// <summary> Stop a Siprec using either the SID of the Siprec resource or the &#x60;name&#x60; used when creating the resource </summary>
+        /// <summary> Stop a Siprec using either the SID of the Siprec resource or the `name` used when creating the resource </summary>
         /// <param name="pathCallSid"> The SID of the [Call](https://www.twilio.com/docs/voice/api/call-resource) the Siprec resource is associated with. </param>
         /// <param name="pathSid"> The SID of the Siprec resource, or the `name` used when creating the resource </param>
         /// <param name="status">  </param>
@@ -1025,7 +1019,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
 
         #if !NET35
-        /// <summary> Stop a Siprec using either the SID of the Siprec resource or the &#x60;name&#x60; used when creating the resource </summary>
+        /// <summary> Stop a Siprec using either the SID of the Siprec resource or the `name` used when creating the resource </summary>
         /// <param name="pathCallSid"> The SID of the [Call](https://www.twilio.com/docs/voice/api/call-resource) the Siprec resource is associated with. </param>
         /// <param name="pathSid"> The SID of the Siprec resource, or the `name` used when creating the resource </param>
         /// <param name="status">  </param>

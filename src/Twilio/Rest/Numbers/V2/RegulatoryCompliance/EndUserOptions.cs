@@ -39,7 +39,8 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
 
 
         /// <summary> Construct a new CreateEndUserOptions </summary>
-        /// <param name="friendlyName"> The string that you assigned to describe the resource. </param>        /// <param name="type">  </param>
+        /// <param name="friendlyName"> The string that you assigned to describe the resource. </param>
+        /// <param name="type">  </param>
         public CreateEndUserOptions(string friendlyName, EndUserResource.TypeEnum type)
         {
             FriendlyName = friendlyName;

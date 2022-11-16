@@ -66,7 +66,6 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Api,
@@ -138,7 +137,6 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
             path = path.Replace("{"+"ReferenceSid"+"}", PathReferenceSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -212,7 +210,6 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
             path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
             string PathReferenceSid = options.PathReferenceSid;
             path = path.Replace("{"+"ReferenceSid"+"}", PathReferenceSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -334,8 +331,6 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
             var response = client.Request(request);
             return Page<AddOnResultResource>.FromJson("add_on_results", response.Content);
         }
-
-
 
     
         /// <summary>

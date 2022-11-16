@@ -37,7 +37,6 @@ namespace Twilio.Rest.Voice.V1
             string path = "/v1/SourceIpMappings";
 
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Voice,
@@ -101,10 +100,6 @@ namespace Twilio.Rest.Voice.V1
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> delete </summary>
         /// <param name="options"> Delete SourceIpMapping parameters </param>
@@ -117,7 +112,6 @@ namespace Twilio.Rest.Voice.V1
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -183,7 +177,6 @@ namespace Twilio.Rest.Voice.V1
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Voice,
@@ -245,7 +238,6 @@ namespace Twilio.Rest.Voice.V1
         {
             
             string path = "/v1/SourceIpMappings";
-
 
 
             return new Request(
@@ -361,8 +353,6 @@ namespace Twilio.Rest.Voice.V1
             return Page<SourceIpMappingResource>.FromJson("source_ip_mappings", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateSourceIpMappingOptions options, ITwilioRestClient client)
         {
@@ -371,7 +361,6 @@ namespace Twilio.Rest.Voice.V1
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Post,

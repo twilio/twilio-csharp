@@ -1474,7 +1474,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         
 
     }
-    /// <summary> Stop a Siprec using either the SID of the Siprec resource or the &#x60;name&#x60; used when creating the resource </summary>
+    /// <summary> Stop a Siprec using either the SID of the Siprec resource or the `name` used when creating the resource </summary>
     public class UpdateSiprecOptions : IOptions<SiprecResource>
     {
     
@@ -1493,7 +1493,9 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
 
         /// <summary> Construct a new UpdateSiprecOptions </summary>
-        /// <param name="pathCallSid"> The SID of the [Call](https://www.twilio.com/docs/voice/api/call-resource) the Siprec resource is associated with. </param>        /// <param name="pathSid"> The SID of the Siprec resource, or the &#x60;name&#x60; used when creating the resource </param>        /// <param name="status">  </param>
+        /// <param name="pathCallSid"> The SID of the [Call](https://www.twilio.com/docs/voice/api/call-resource) the Siprec resource is associated with. </param>
+        /// <param name="pathSid"> The SID of the Siprec resource, or the `name` used when creating the resource </param>
+        /// <param name="status">  </param>
         public UpdateSiprecOptions(string pathCallSid, string pathSid, SiprecResource.UpdateStatusEnum status)
         {
             PathCallSid = pathCallSid;

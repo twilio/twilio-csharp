@@ -47,7 +47,6 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
             string PathIdentity = options.PathIdentity;
             path = path.Replace("{"+"Identity"+"}", PathIdentity);
 
-
             return new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Sync,
@@ -119,7 +118,6 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
             path = path.Replace("{"+"MapSid"+"}", PathMapSid);
             string PathIdentity = options.PathIdentity;
             path = path.Replace("{"+"Identity"+"}", PathIdentity);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -193,7 +191,6 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
             path = path.Replace("{"+"ServiceSid"+"}", PathServiceSid);
             string PathMapSid = options.PathMapSid;
             path = path.Replace("{"+"MapSid"+"}", PathMapSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -316,8 +313,6 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
             return Page<SyncMapPermissionResource>.FromJson("permissions", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateSyncMapPermissionOptions options, ITwilioRestClient client)
         {
@@ -331,7 +326,6 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
             string PathIdentity = options.PathIdentity;
             path = path.Replace("{"+"Identity"+"}", PathIdentity);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Sync,
@@ -341,7 +335,7 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
             );
         }
 
-        /// <summary> Update an identity&#39;s access to a specific Sync Map. </summary>
+        /// <summary> Update an identity's access to a specific Sync Map. </summary>
         /// <param name="options"> Update SyncMapPermission parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncMapPermission </returns>
@@ -352,7 +346,7 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
             return FromJson(response.Content);
         }
 
-        /// <summary> Update an identity&#39;s access to a specific Sync Map. </summary>
+        /// <summary> Update an identity's access to a specific Sync Map. </summary>
         /// <param name="options"> Update SyncMapPermission parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncMapPermission </returns>
@@ -366,7 +360,7 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         }
         #endif
 
-        /// <summary> Update an identity&#39;s access to a specific Sync Map. </summary>
+        /// <summary> Update an identity's access to a specific Sync Map. </summary>
         /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync Map Permission resource to update. Can be the Service's `sid` value or `default`. </param>
         /// <param name="pathMapSid"> The SID of the Sync Map with the Sync Map Permission resource to update. Can be the Sync Map resource's `sid` or its `unique_name`. </param>
         /// <param name="pathIdentity"> The application-defined string that uniquely identifies the User's Sync Map Permission resource to update. </param>
@@ -389,7 +383,7 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         }
 
         #if !NET35
-        /// <summary> Update an identity&#39;s access to a specific Sync Map. </summary>
+        /// <summary> Update an identity's access to a specific Sync Map. </summary>
         /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync Map Permission resource to update. Can be the Service's `sid` value or `default`. </param>
         /// <param name="pathMapSid"> The SID of the Sync Map with the Sync Map Permission resource to update. Can be the Sync Map resource's `sid` or its `unique_name`. </param>
         /// <param name="pathIdentity"> The application-defined string that uniquely identifies the User's Sync Map Permission resource to update. </param>

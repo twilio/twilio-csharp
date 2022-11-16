@@ -37,7 +37,6 @@ namespace Twilio.Rest.Verify.V2
             string path = "/v2/SafeList/Numbers";
 
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Verify,
@@ -97,10 +96,6 @@ namespace Twilio.Rest.Verify.V2
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> Remove a phone number from SafeList. </summary>
         /// <param name="options"> Delete Safelist parameters </param>
@@ -113,7 +108,6 @@ namespace Twilio.Rest.Verify.V2
 
             string PathPhoneNumber = options.PathPhoneNumber;
             path = path.Replace("{"+"PhoneNumber"+"}", PathPhoneNumber);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -178,7 +172,6 @@ namespace Twilio.Rest.Verify.V2
 
             string PathPhoneNumber = options.PathPhoneNumber;
             path = path.Replace("{"+"PhoneNumber"+"}", PathPhoneNumber);
-
 
             return new Request(
                 HttpMethod.Get,

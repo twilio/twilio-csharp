@@ -39,7 +39,9 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement
 
 
         /// <summary> Construct a new FetchStepOptions </summary>
-        /// <param name="pathFlowSid"> The SID of the Flow with the Step to fetch. </param>        /// <param name="pathEngagementSid"> The SID of the Engagement with the Step to fetch. </param>        /// <param name="pathSid"> The SID of the Step resource to fetch. </param>
+        /// <param name="pathFlowSid"> The SID of the Flow with the Step to fetch. </param>
+        /// <param name="pathEngagementSid"> The SID of the Engagement with the Step to fetch. </param>
+        /// <param name="pathSid"> The SID of the Step resource to fetch. </param>
         public FetchStepOptions(string pathFlowSid, string pathEngagementSid, string pathSid)
         {
             PathFlowSid = pathFlowSid;
@@ -73,7 +75,8 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement
 
 
         /// <summary> Construct a new ListStepOptions </summary>
-        /// <param name="pathFlowSid"> The SID of the Flow with the Step to read. </param>        /// <param name="pathEngagementSid"> The SID of the Engagement with the Step to read. </param>
+        /// <param name="pathFlowSid"> The SID of the Flow with the Step to read. </param>
+        /// <param name="pathEngagementSid"> The SID of the Engagement with the Step to read. </param>
         public ReadStepOptions(string pathFlowSid, string pathEngagementSid)
         {
             PathFlowSid = pathFlowSid;

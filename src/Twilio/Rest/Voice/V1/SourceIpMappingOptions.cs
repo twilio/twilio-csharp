@@ -36,7 +36,8 @@ namespace Twilio.Rest.Voice.V1
 
 
         /// <summary> Construct a new CreateSourceIpMappingOptions </summary>
-        /// <param name="ipRecordSid"> The Twilio-provided string that uniquely identifies the IP Record resource to map from. </param>        /// <param name="sipDomainSid"> The SID of the SIP Domain that the IP Record should be mapped to. </param>
+        /// <param name="ipRecordSid"> The Twilio-provided string that uniquely identifies the IP Record resource to map from. </param>
+        /// <param name="sipDomainSid"> The SID of the SIP Domain that the IP Record should be mapped to. </param>
         public CreateSourceIpMappingOptions(string ipRecordSid, string sipDomainSid)
         {
             IpRecordSid = ipRecordSid;
@@ -156,7 +157,8 @@ namespace Twilio.Rest.Voice.V1
 
 
         /// <summary> Construct a new UpdateSourceIpMappingOptions </summary>
-        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the IP Record resource to update. </param>        /// <param name="sipDomainSid"> The SID of the SIP Domain that the IP Record should be mapped to. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the IP Record resource to update. </param>
+        /// <param name="sipDomainSid"> The SID of the SIP Domain that the IP Record should be mapped to. </param>
         public UpdateSourceIpMappingOptions(string pathSid, string sipDomainSid)
         {
             PathSid = pathSid;

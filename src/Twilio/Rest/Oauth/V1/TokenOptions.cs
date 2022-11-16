@@ -24,7 +24,7 @@ using Twilio.Converters;
 namespace Twilio.Rest.Oauth.V1
 {
 
-    /// <summary> Issues a new Access token (optionally identity_token &amp; refresh_token) in exchange of Oauth grant </summary>
+    /// <summary> Issues a new Access token (optionally identity_token & refresh_token) in exchange of Oauth grant </summary>
     public class CreateTokenOptions : IOptions<TokenResource>
     {
         
@@ -54,7 +54,8 @@ namespace Twilio.Rest.Oauth.V1
 
 
         /// <summary> Construct a new CreateTokenOptions </summary>
-        /// <param name="grantType"> Grant type is a credential representing resource owner&#39;s authorization which can be used by client to obtain access token. </param>        /// <param name="clientSid"> A 34 character string that uniquely identifies this OAuth App. </param>
+        /// <param name="grantType"> Grant type is a credential representing resource owner's authorization which can be used by client to obtain access token. </param>
+        /// <param name="clientSid"> A 34 character string that uniquely identifies this OAuth App. </param>
         public CreateTokenOptions(string grantType, string clientSid)
         {
             GrantType = grantType;

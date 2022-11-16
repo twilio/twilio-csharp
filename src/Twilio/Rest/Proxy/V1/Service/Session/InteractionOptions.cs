@@ -39,7 +39,9 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
 
 
         /// <summary> Construct a new DeleteInteractionOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the parent [Service](https://www.twilio.com/docs/proxy/api/service) of the resource to delete. </param>        /// <param name="pathSessionSid"> The SID of the parent [Session](https://www.twilio.com/docs/proxy/api/session) of the resource to delete. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Interaction resource to delete. </param>
+        /// <param name="pathServiceSid"> The SID of the parent [Service](https://www.twilio.com/docs/proxy/api/service) of the resource to delete. </param>
+        /// <param name="pathSessionSid"> The SID of the parent [Session](https://www.twilio.com/docs/proxy/api/session) of the resource to delete. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Interaction resource to delete. </param>
         public DeleteInteractionOptions(string pathServiceSid, string pathSessionSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -76,7 +78,9 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
 
 
         /// <summary> Construct a new FetchInteractionOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the parent [Service](https://www.twilio.com/docs/proxy/api/service) of the resource to fetch. </param>        /// <param name="pathSessionSid"> The SID of the parent [Session](https://www.twilio.com/docs/proxy/api/session) of the resource to fetch. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Interaction resource to fetch. </param>
+        /// <param name="pathServiceSid"> The SID of the parent [Service](https://www.twilio.com/docs/proxy/api/service) of the resource to fetch. </param>
+        /// <param name="pathSessionSid"> The SID of the parent [Session](https://www.twilio.com/docs/proxy/api/session) of the resource to fetch. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Interaction resource to fetch. </param>
         public FetchInteractionOptions(string pathServiceSid, string pathSessionSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -110,7 +114,8 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
 
 
         /// <summary> Construct a new ListInteractionOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the parent [Service](https://www.twilio.com/docs/proxy/api/service) to read the resources from. </param>        /// <param name="pathSessionSid"> The SID of the parent [Session](https://www.twilio.com/docs/proxy/api/session) to read the resources from. </param>
+        /// <param name="pathServiceSid"> The SID of the parent [Service](https://www.twilio.com/docs/proxy/api/service) to read the resources from. </param>
+        /// <param name="pathSessionSid"> The SID of the parent [Session](https://www.twilio.com/docs/proxy/api/session) to read the resources from. </param>
         public ReadInteractionOptions(string pathServiceSid, string pathSessionSid)
         {
             PathServiceSid = pathServiceSid;

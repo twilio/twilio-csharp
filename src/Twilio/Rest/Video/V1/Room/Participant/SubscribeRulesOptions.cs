@@ -36,7 +36,8 @@ namespace Twilio.Rest.Video.V1.Room.Participant
 
 
         /// <summary> Construct a new FetchRoomParticipantSubscribeRuleOptions </summary>
-        /// <param name="pathRoomSid"> The SID of the Room resource where the subscribe rules to fetch apply. </param>        /// <param name="pathParticipantSid"> The SID of the Participant resource with the subscribe rules to fetch. </param>
+        /// <param name="pathRoomSid"> The SID of the Room resource where the subscribe rules to fetch apply. </param>
+        /// <param name="pathParticipantSid"> The SID of the Participant resource with the subscribe rules to fetch. </param>
         public FetchSubscribeRulesOptions(string pathRoomSid, string pathParticipantSid)
         {
             PathRoomSid = pathRoomSid;
@@ -72,7 +73,8 @@ namespace Twilio.Rest.Video.V1.Room.Participant
 
 
         /// <summary> Construct a new UpdateRoomParticipantSubscribeRuleOptions </summary>
-        /// <param name="pathRoomSid"> The SID of the Room resource where the subscribe rules to update apply. </param>        /// <param name="pathParticipantSid"> The SID of the Participant resource to update the Subscribe Rules. </param>
+        /// <param name="pathRoomSid"> The SID of the Room resource where the subscribe rules to update apply. </param>
+        /// <param name="pathParticipantSid"> The SID of the Participant resource to update the Subscribe Rules. </param>
         public UpdateSubscribeRulesOptions(string pathRoomSid, string pathParticipantSid)
         {
             PathRoomSid = pathRoomSid;

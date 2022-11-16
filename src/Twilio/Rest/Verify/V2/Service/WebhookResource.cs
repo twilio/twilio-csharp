@@ -78,7 +78,6 @@ namespace Twilio.Rest.Verify.V2.Service
             string PathServiceSid = options.PathServiceSid;
             path = path.Replace("{"+"ServiceSid"+"}", PathServiceSid);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Verify,
@@ -158,10 +157,6 @@ namespace Twilio.Rest.Verify.V2.Service
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> Delete a specific Webhook. </summary>
         /// <param name="options"> Delete Webhook parameters </param>
@@ -176,7 +171,6 @@ namespace Twilio.Rest.Verify.V2.Service
             path = path.Replace("{"+"ServiceSid"+"}", PathServiceSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -246,7 +240,6 @@ namespace Twilio.Rest.Verify.V2.Service
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Verify,
@@ -314,7 +307,6 @@ namespace Twilio.Rest.Verify.V2.Service
 
             string PathServiceSid = options.PathServiceSid;
             path = path.Replace("{"+"ServiceSid"+"}", PathServiceSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -433,8 +425,6 @@ namespace Twilio.Rest.Verify.V2.Service
             return Page<WebhookResource>.FromJson("webhooks", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateWebhookOptions options, ITwilioRestClient client)
         {
@@ -445,7 +435,6 @@ namespace Twilio.Rest.Verify.V2.Service
             path = path.Replace("{"+"ServiceSid"+"}", PathServiceSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Post,

@@ -39,7 +39,6 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
             path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Api,
@@ -151,10 +150,6 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> Delete an instance of a Domain </summary>
         /// <param name="options"> Delete Domain parameters </param>
@@ -169,7 +164,6 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -239,7 +233,6 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
@@ -307,7 +300,6 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
 
             string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
             path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -426,8 +418,6 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             return Page<DomainResource>.FromJson("domains", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateDomainOptions options, ITwilioRestClient client)
         {
@@ -438,7 +428,6 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Post,

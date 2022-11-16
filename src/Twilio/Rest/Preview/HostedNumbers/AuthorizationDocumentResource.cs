@@ -53,7 +53,6 @@ namespace Twilio.Rest.Preview.HostedNumbers
             string path = "/HostedNumbers/AuthorizationDocuments";
 
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Preview,
@@ -63,7 +62,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
             );
         }
 
-        /// <summary> Create an AuthorizationDocument for authorizing the hosting of phone number capabilities on Twilio&#39;s platform. </summary>
+        /// <summary> Create an AuthorizationDocument for authorizing the hosting of phone number capabilities on Twilio's platform. </summary>
         /// <param name="options"> Create AuthorizationDocument parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of AuthorizationDocument </returns>
@@ -75,7 +74,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
         }
 
         #if !NET35
-        /// <summary> Create an AuthorizationDocument for authorizing the hosting of phone number capabilities on Twilio&#39;s platform. </summary>
+        /// <summary> Create an AuthorizationDocument for authorizing the hosting of phone number capabilities on Twilio's platform. </summary>
         /// <param name="options"> Create AuthorizationDocument parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AuthorizationDocument </returns>
@@ -88,7 +87,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
         }
         #endif
 
-        /// <summary> Create an AuthorizationDocument for authorizing the hosting of phone number capabilities on Twilio&#39;s platform. </summary>
+        /// <summary> Create an AuthorizationDocument for authorizing the hosting of phone number capabilities on Twilio's platform. </summary>
         /// <param name="hostedNumberOrderSids"> A list of HostedNumberOrder sids that this AuthorizationDocument will authorize for hosting phone number capabilities on Twilio's platform. </param>
         /// <param name="addressSid"> A 34 character string that uniquely identifies the Address resource that is associated with this AuthorizationDocument. </param>
         /// <param name="email"> Email that this AuthorizationDocument will be sent to for signing. </param>
@@ -111,7 +110,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
         }
 
         #if !NET35
-        /// <summary> Create an AuthorizationDocument for authorizing the hosting of phone number capabilities on Twilio&#39;s platform. </summary>
+        /// <summary> Create an AuthorizationDocument for authorizing the hosting of phone number capabilities on Twilio's platform. </summary>
         /// <param name="hostedNumberOrderSids"> A list of HostedNumberOrder sids that this AuthorizationDocument will authorize for hosting phone number capabilities on Twilio's platform. </param>
         /// <param name="addressSid"> A 34 character string that uniquely identifies the Address resource that is associated with this AuthorizationDocument. </param>
         /// <param name="email"> Email that this AuthorizationDocument will be sent to for signing. </param>
@@ -133,10 +132,6 @@ namespace Twilio.Rest.Preview.HostedNumbers
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         private static Request BuildFetchRequest(FetchAuthorizationDocumentOptions options, ITwilioRestClient client)
         {
@@ -145,7 +140,6 @@ namespace Twilio.Rest.Preview.HostedNumbers
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -208,7 +202,6 @@ namespace Twilio.Rest.Preview.HostedNumbers
         {
             
             string path = "/HostedNumbers/AuthorizationDocuments";
-
 
 
             return new Request(
@@ -332,8 +325,6 @@ namespace Twilio.Rest.Preview.HostedNumbers
             return Page<AuthorizationDocumentResource>.FromJson("items", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateAuthorizationDocumentOptions options, ITwilioRestClient client)
         {
@@ -342,7 +333,6 @@ namespace Twilio.Rest.Preview.HostedNumbers
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Post,

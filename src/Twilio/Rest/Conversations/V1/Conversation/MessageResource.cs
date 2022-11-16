@@ -63,7 +63,6 @@ namespace Twilio.Rest.Conversations.V1.Conversation
             string PathConversationSid = options.PathConversationSid;
             path = path.Replace("{"+"ConversationSid"+"}", PathConversationSid);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Conversations,
@@ -151,10 +150,6 @@ namespace Twilio.Rest.Conversations.V1.Conversation
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> Remove a message from the conversation </summary>
         /// <param name="options"> Delete Message parameters </param>
@@ -169,7 +164,6 @@ namespace Twilio.Rest.Conversations.V1.Conversation
             path = path.Replace("{"+"ConversationSid"+"}", PathConversationSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -241,7 +235,6 @@ namespace Twilio.Rest.Conversations.V1.Conversation
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Conversations,
@@ -309,7 +302,6 @@ namespace Twilio.Rest.Conversations.V1.Conversation
 
             string PathConversationSid = options.PathConversationSid;
             path = path.Replace("{"+"ConversationSid"+"}", PathConversationSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -432,8 +424,6 @@ namespace Twilio.Rest.Conversations.V1.Conversation
             return Page<MessageResource>.FromJson("messages", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateMessageOptions options, ITwilioRestClient client)
         {
@@ -444,7 +434,6 @@ namespace Twilio.Rest.Conversations.V1.Conversation
             path = path.Replace("{"+"ConversationSid"+"}", PathConversationSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Post,

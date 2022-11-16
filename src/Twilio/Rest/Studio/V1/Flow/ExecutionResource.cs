@@ -52,7 +52,6 @@ namespace Twilio.Rest.Studio.V1.Flow
             string PathFlowSid = options.PathFlowSid;
             path = path.Replace("{"+"FlowSid"+"}", PathFlowSid);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Studio,
@@ -124,10 +123,6 @@ namespace Twilio.Rest.Studio.V1.Flow
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> Delete the Execution and all Steps relating to it. </summary>
         /// <param name="options"> Delete Execution parameters </param>
@@ -142,7 +137,6 @@ namespace Twilio.Rest.Studio.V1.Flow
             path = path.Replace("{"+"FlowSid"+"}", PathFlowSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -212,7 +206,6 @@ namespace Twilio.Rest.Studio.V1.Flow
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Studio,
@@ -280,7 +273,6 @@ namespace Twilio.Rest.Studio.V1.Flow
 
             string PathFlowSid = options.PathFlowSid;
             path = path.Replace("{"+"FlowSid"+"}", PathFlowSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -407,8 +399,6 @@ namespace Twilio.Rest.Studio.V1.Flow
             return Page<ExecutionResource>.FromJson("executions", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateExecutionOptions options, ITwilioRestClient client)
         {
@@ -420,7 +410,6 @@ namespace Twilio.Rest.Studio.V1.Flow
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Studio,
@@ -430,7 +419,7 @@ namespace Twilio.Rest.Studio.V1.Flow
             );
         }
 
-        /// <summary> Update the status of an Execution to &#x60;ended&#x60;. </summary>
+        /// <summary> Update the status of an Execution to `ended`. </summary>
         /// <param name="options"> Update Execution parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Execution </returns>
@@ -441,7 +430,7 @@ namespace Twilio.Rest.Studio.V1.Flow
             return FromJson(response.Content);
         }
 
-        /// <summary> Update the status of an Execution to &#x60;ended&#x60;. </summary>
+        /// <summary> Update the status of an Execution to `ended`. </summary>
         /// <param name="options"> Update Execution parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Execution </returns>
@@ -455,7 +444,7 @@ namespace Twilio.Rest.Studio.V1.Flow
         }
         #endif
 
-        /// <summary> Update the status of an Execution to &#x60;ended&#x60;. </summary>
+        /// <summary> Update the status of an Execution to `ended`. </summary>
         /// <param name="pathFlowSid"> The SID of the Flow with the Execution resources to update. </param>
         /// <param name="pathSid"> The SID of the Execution resource to update. </param>
         /// <param name="status">  </param>
@@ -472,7 +461,7 @@ namespace Twilio.Rest.Studio.V1.Flow
         }
 
         #if !NET35
-        /// <summary> Update the status of an Execution to &#x60;ended&#x60;. </summary>
+        /// <summary> Update the status of an Execution to `ended`. </summary>
         /// <param name="pathFlowSid"> The SID of the Flow with the Execution resources to update. </param>
         /// <param name="pathSid"> The SID of the Execution resource to update. </param>
         /// <param name="status">  </param>

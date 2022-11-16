@@ -41,7 +41,6 @@ namespace Twilio.Rest.Preview.Understand.Assistant
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Preview,

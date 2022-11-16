@@ -84,7 +84,8 @@ namespace Twilio.Rest.Sync.V1.Service
 
 
         /// <summary> Construct a new DeleteSyncListOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync List resource to delete. </param>        /// <param name="pathSid"> The SID of the Sync List resource to delete. Can be the Sync List resource&#39;s &#x60;sid&#x60; or its &#x60;unique_name&#x60;. </param>
+        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync List resource to delete. </param>
+        /// <param name="pathSid"> The SID of the Sync List resource to delete. Can be the Sync List resource's `sid` or its `unique_name`. </param>
         public DeleteSyncListOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -117,7 +118,8 @@ namespace Twilio.Rest.Sync.V1.Service
 
 
         /// <summary> Construct a new FetchSyncListOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync List resource to fetch. </param>        /// <param name="pathSid"> The SID of the Sync List resource to fetch. Can be the Sync List resource&#39;s &#x60;sid&#x60; or its &#x60;unique_name&#x60;. </param>
+        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync List resource to fetch. </param>
+        /// <param name="pathSid"> The SID of the Sync List resource to fetch. Can be the Sync List resource's `sid` or its `unique_name`. </param>
         public FetchSyncListOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -188,7 +190,8 @@ namespace Twilio.Rest.Sync.V1.Service
 
 
         /// <summary> Construct a new UpdateSyncListOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync List resource to update. </param>        /// <param name="pathSid"> The SID of the Sync List resource to update. Can be the Sync List resource&#39;s &#x60;sid&#x60; or its &#x60;unique_name&#x60;. </param>
+        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync List resource to update. </param>
+        /// <param name="pathSid"> The SID of the Sync List resource to update. Can be the Sync List resource's `sid` or its `unique_name`. </param>
         public UpdateSyncListOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;

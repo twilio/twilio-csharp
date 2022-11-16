@@ -37,7 +37,6 @@ namespace Twilio.Rest.Conversations.V1
             string path = "/v1/Services";
 
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Conversations,
@@ -97,10 +96,6 @@ namespace Twilio.Rest.Conversations.V1
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> Remove a conversation service with all its nested resources from your account </summary>
         /// <param name="options"> Delete Service parameters </param>
@@ -113,7 +108,6 @@ namespace Twilio.Rest.Conversations.V1
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -179,7 +173,6 @@ namespace Twilio.Rest.Conversations.V1
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Conversations,
@@ -241,7 +234,6 @@ namespace Twilio.Rest.Conversations.V1
         {
             
             string path = "/v1/Services";
-
 
 
             return new Request(
@@ -356,8 +348,6 @@ namespace Twilio.Rest.Conversations.V1
             var response = client.Request(request);
             return Page<ServiceResource>.FromJson("services", response.Content);
         }
-
-
 
     
         /// <summary>

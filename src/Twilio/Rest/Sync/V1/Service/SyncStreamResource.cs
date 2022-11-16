@@ -39,7 +39,6 @@ namespace Twilio.Rest.Sync.V1.Service
             string PathServiceSid = options.PathServiceSid;
             path = path.Replace("{"+"ServiceSid"+"}", PathServiceSid);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Sync,
@@ -107,10 +106,6 @@ namespace Twilio.Rest.Sync.V1.Service
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> Delete a specific Stream. </summary>
         /// <param name="options"> Delete SyncStream parameters </param>
@@ -125,7 +120,6 @@ namespace Twilio.Rest.Sync.V1.Service
             path = path.Replace("{"+"ServiceSid"+"}", PathServiceSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -195,7 +189,6 @@ namespace Twilio.Rest.Sync.V1.Service
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Sync,
@@ -263,7 +256,6 @@ namespace Twilio.Rest.Sync.V1.Service
 
             string PathServiceSid = options.PathServiceSid;
             path = path.Replace("{"+"ServiceSid"+"}", PathServiceSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -382,8 +374,6 @@ namespace Twilio.Rest.Sync.V1.Service
             return Page<SyncStreamResource>.FromJson("streams", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateSyncStreamOptions options, ITwilioRestClient client)
         {
@@ -394,7 +384,6 @@ namespace Twilio.Rest.Sync.V1.Service
             path = path.Replace("{"+"ServiceSid"+"}", PathServiceSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Post,

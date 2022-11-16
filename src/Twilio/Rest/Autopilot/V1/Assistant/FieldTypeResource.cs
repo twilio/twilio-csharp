@@ -39,7 +39,6 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
             string PathAssistantSid = options.PathAssistantSid;
             path = path.Replace("{"+"AssistantSid"+"}", PathAssistantSid);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Autopilot,
@@ -107,10 +106,6 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> delete </summary>
         /// <param name="options"> Delete FieldType parameters </param>
@@ -125,7 +120,6 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
             path = path.Replace("{"+"AssistantSid"+"}", PathAssistantSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -195,7 +189,6 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Autopilot,
@@ -263,7 +256,6 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
 
             string PathAssistantSid = options.PathAssistantSid;
             path = path.Replace("{"+"AssistantSid"+"}", PathAssistantSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -382,8 +374,6 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
             return Page<FieldTypeResource>.FromJson("field_types", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateFieldTypeOptions options, ITwilioRestClient client)
         {
@@ -394,7 +384,6 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
             path = path.Replace("{"+"AssistantSid"+"}", PathAssistantSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Post,

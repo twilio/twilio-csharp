@@ -37,7 +37,6 @@ namespace Twilio.Rest.FlexApi.V1
             string path = "/v1/Channels";
 
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.FlexApi,
@@ -133,10 +132,6 @@ namespace Twilio.Rest.FlexApi.V1
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> delete </summary>
         /// <param name="options"> Delete Channel parameters </param>
@@ -149,7 +144,6 @@ namespace Twilio.Rest.FlexApi.V1
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -215,7 +209,6 @@ namespace Twilio.Rest.FlexApi.V1
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.FlexApi,
@@ -277,7 +270,6 @@ namespace Twilio.Rest.FlexApi.V1
         {
             
             string path = "/v1/Channels";
-
 
 
             return new Request(
@@ -392,8 +384,6 @@ namespace Twilio.Rest.FlexApi.V1
             var response = client.Request(request);
             return Page<ChannelResource>.FromJson("flex_chat_channels", response.Content);
         }
-
-
 
     
         /// <summary>

@@ -49,7 +49,6 @@ namespace Twilio.Rest.Supersim.V1
             string path = "/v1/Fleets";
 
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Supersim,
@@ -141,10 +140,6 @@ namespace Twilio.Rest.Supersim.V1
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         private static Request BuildFetchRequest(FetchFleetOptions options, ITwilioRestClient client)
         {
@@ -153,7 +148,6 @@ namespace Twilio.Rest.Supersim.V1
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -216,7 +210,6 @@ namespace Twilio.Rest.Supersim.V1
         {
             
             string path = "/v1/Fleets";
-
 
 
             return new Request(
@@ -336,8 +329,6 @@ namespace Twilio.Rest.Supersim.V1
             return Page<FleetResource>.FromJson("fleets", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateFleetOptions options, ITwilioRestClient client)
         {
@@ -346,7 +337,6 @@ namespace Twilio.Rest.Supersim.V1
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Post,
@@ -498,7 +488,7 @@ namespace Twilio.Rest.Supersim.V1
         [JsonProperty("sms_commands_url")]
         public Uri SmsCommandsUrl { get; private set; }
 
-        ///<summary> A string representing the HTTP method to use when making a request to &#x60;sms_commands_url&#x60; </summary> 
+        ///<summary> A string representing the HTTP method to use when making a request to `sms_commands_url` </summary> 
         [JsonProperty("sms_commands_method")]
         public Twilio.Http.HttpMethod SmsCommandsMethod { get; private set; }
 
@@ -510,7 +500,7 @@ namespace Twilio.Rest.Supersim.V1
         [JsonProperty("ip_commands_url")]
         public Uri IpCommandsUrl { get; private set; }
 
-        ///<summary> A string representing the HTTP method to use when making a request to &#x60;ip_commands_url&#x60; </summary> 
+        ///<summary> A string representing the HTTP method to use when making a request to `ip_commands_url` </summary> 
         [JsonProperty("ip_commands_method")]
         public Twilio.Http.HttpMethod IpCommandsMethod { get; private set; }
 

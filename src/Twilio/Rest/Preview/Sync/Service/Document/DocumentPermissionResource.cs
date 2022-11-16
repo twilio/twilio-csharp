@@ -47,7 +47,6 @@ namespace Twilio.Rest.Preview.Sync.Service.Document
             string PathIdentity = options.PathIdentity;
             path = path.Replace("{"+"Identity"+"}", PathIdentity);
 
-
             return new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Preview,
@@ -119,7 +118,6 @@ namespace Twilio.Rest.Preview.Sync.Service.Document
             path = path.Replace("{"+"DocumentSid"+"}", PathDocumentSid);
             string PathIdentity = options.PathIdentity;
             path = path.Replace("{"+"Identity"+"}", PathIdentity);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -193,7 +191,6 @@ namespace Twilio.Rest.Preview.Sync.Service.Document
             path = path.Replace("{"+"ServiceSid"+"}", PathServiceSid);
             string PathDocumentSid = options.PathDocumentSid;
             path = path.Replace("{"+"DocumentSid"+"}", PathDocumentSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -316,8 +313,6 @@ namespace Twilio.Rest.Preview.Sync.Service.Document
             return Page<DocumentPermissionResource>.FromJson("permissions", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateDocumentPermissionOptions options, ITwilioRestClient client)
         {
@@ -331,7 +326,6 @@ namespace Twilio.Rest.Preview.Sync.Service.Document
             string PathIdentity = options.PathIdentity;
             path = path.Replace("{"+"Identity"+"}", PathIdentity);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Preview,
@@ -341,7 +335,7 @@ namespace Twilio.Rest.Preview.Sync.Service.Document
             );
         }
 
-        /// <summary> Update an identity&#39;s access to a specific Sync Document. </summary>
+        /// <summary> Update an identity's access to a specific Sync Document. </summary>
         /// <param name="options"> Update DocumentPermission parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of DocumentPermission </returns>
@@ -352,7 +346,7 @@ namespace Twilio.Rest.Preview.Sync.Service.Document
             return FromJson(response.Content);
         }
 
-        /// <summary> Update an identity&#39;s access to a specific Sync Document. </summary>
+        /// <summary> Update an identity's access to a specific Sync Document. </summary>
         /// <param name="options"> Update DocumentPermission parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of DocumentPermission </returns>
@@ -366,7 +360,7 @@ namespace Twilio.Rest.Preview.Sync.Service.Document
         }
         #endif
 
-        /// <summary> Update an identity&#39;s access to a specific Sync Document. </summary>
+        /// <summary> Update an identity's access to a specific Sync Document. </summary>
         /// <param name="pathServiceSid"> The unique SID identifier of the Sync Service Instance. </param>
         /// <param name="pathDocumentSid"> Identifier of the Sync Document. Either a SID or a unique name. </param>
         /// <param name="pathIdentity"> Arbitrary string identifier representing a human user associated with an FPA token, assigned by the developer. </param>
@@ -389,7 +383,7 @@ namespace Twilio.Rest.Preview.Sync.Service.Document
         }
 
         #if !NET35
-        /// <summary> Update an identity&#39;s access to a specific Sync Document. </summary>
+        /// <summary> Update an identity's access to a specific Sync Document. </summary>
         /// <param name="pathServiceSid"> The unique SID identifier of the Sync Service Instance. </param>
         /// <param name="pathDocumentSid"> Identifier of the Sync Document. Either a SID or a unique name. </param>
         /// <param name="pathIdentity"> Arbitrary string identifier representing a human user associated with an FPA token, assigned by the developer. </param>

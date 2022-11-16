@@ -39,7 +39,6 @@ namespace Twilio.Rest.Preview.Understand.Assistant
             string PathAssistantSid = options.PathAssistantSid;
             path = path.Replace("{"+"AssistantSid"+"}", PathAssistantSid);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Preview,
@@ -119,10 +118,6 @@ namespace Twilio.Rest.Preview.Understand.Assistant
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> delete </summary>
         /// <param name="options"> Delete Query parameters </param>
@@ -137,7 +132,6 @@ namespace Twilio.Rest.Preview.Understand.Assistant
             path = path.Replace("{"+"AssistantSid"+"}", PathAssistantSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -207,7 +201,6 @@ namespace Twilio.Rest.Preview.Understand.Assistant
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Preview,
@@ -275,7 +268,6 @@ namespace Twilio.Rest.Preview.Understand.Assistant
 
             string PathAssistantSid = options.PathAssistantSid;
             path = path.Replace("{"+"AssistantSid"+"}", PathAssistantSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -406,8 +398,6 @@ namespace Twilio.Rest.Preview.Understand.Assistant
             return Page<QueryResource>.FromJson("queries", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateQueryOptions options, ITwilioRestClient client)
         {
@@ -418,7 +408,6 @@ namespace Twilio.Rest.Preview.Understand.Assistant
             path = path.Replace("{"+"AssistantSid"+"}", PathAssistantSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Post,

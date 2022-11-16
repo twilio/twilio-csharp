@@ -45,7 +45,6 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber.AssignedAddOn
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
@@ -123,7 +122,6 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber.AssignedAddOn
             path = path.Replace("{"+"ResourceSid"+"}", PathResourceSid);
             string PathAssignedAddOnSid = options.PathAssignedAddOnSid;
             path = path.Replace("{"+"AssignedAddOnSid"+"}", PathAssignedAddOnSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -249,8 +247,6 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber.AssignedAddOn
             var response = client.Request(request);
             return Page<AssignedAddOnExtensionResource>.FromJson("extensions", response.Content);
         }
-
-
 
     
         /// <summary>

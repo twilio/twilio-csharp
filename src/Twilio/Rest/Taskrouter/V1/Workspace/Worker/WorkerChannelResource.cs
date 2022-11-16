@@ -43,7 +43,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Taskrouter,
@@ -116,7 +115,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
             path = path.Replace("{"+"WorkspaceSid"+"}", PathWorkspaceSid);
             string PathWorkerSid = options.PathWorkerSid;
             path = path.Replace("{"+"WorkerSid"+"}", PathWorkerSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -239,8 +237,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
             return Page<WorkerChannelResource>.FromJson("channels", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateWorkerChannelOptions options, ITwilioRestClient client)
         {
@@ -253,7 +249,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
             path = path.Replace("{"+"WorkerSid"+"}", PathWorkerSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Post,

@@ -41,7 +41,6 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeRegistratio
             string PathDomainSid = options.PathDomainSid;
             path = path.Replace("{"+"DomainSid"+"}", PathDomainSid);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Api,
@@ -109,10 +108,6 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeRegistratio
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> Delete a credential list mapping from the requested domain </summary>
         /// <param name="options"> Delete AuthRegistrationsCredentialListMapping parameters </param>
@@ -129,7 +124,6 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeRegistratio
             path = path.Replace("{"+"DomainSid"+"}", PathDomainSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -203,7 +197,6 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeRegistratio
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
@@ -276,7 +269,6 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeRegistratio
             path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
             string PathDomainSid = options.PathDomainSid;
             path = path.Replace("{"+"DomainSid"+"}", PathDomainSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -398,8 +390,6 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeRegistratio
             var response = client.Request(request);
             return Page<AuthRegistrationsCredentialListMappingResource>.FromJson("contents", response.Content);
         }
-
-
 
     
         /// <summary>

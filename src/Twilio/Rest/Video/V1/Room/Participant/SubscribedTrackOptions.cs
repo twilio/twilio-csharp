@@ -23,7 +23,7 @@ using Twilio.Converters;
 
 namespace Twilio.Rest.Video.V1.Room.Participant
 {
-    /// <summary> Returns a single Track resource represented by &#x60;track_sid&#x60;.  Note: This is one resource with the Video API that requires a SID, be Track Name on the subscriber side is not guaranteed to be unique. </summary>
+    /// <summary> Returns a single Track resource represented by `track_sid`.  Note: This is one resource with the Video API that requires a SID, be Track Name on the subscriber side is not guaranteed to be unique. </summary>
     public class FetchSubscribedTrackOptions : IOptions<SubscribedTrackResource>
     {
     
@@ -39,7 +39,9 @@ namespace Twilio.Rest.Video.V1.Room.Participant
 
 
         /// <summary> Construct a new FetchRoomParticipantSubscribedTrackOptions </summary>
-        /// <param name="pathRoomSid"> The SID of the Room where the Track resource to fetch is subscribed. </param>        /// <param name="pathParticipantSid"> The SID of the participant that subscribes to the Track resource to fetch. </param>        /// <param name="pathSid"> The SID of the RoomParticipantSubscribedTrack resource to fetch. </param>
+        /// <param name="pathRoomSid"> The SID of the Room where the Track resource to fetch is subscribed. </param>
+        /// <param name="pathParticipantSid"> The SID of the participant that subscribes to the Track resource to fetch. </param>
+        /// <param name="pathSid"> The SID of the RoomParticipantSubscribedTrack resource to fetch. </param>
         public FetchSubscribedTrackOptions(string pathRoomSid, string pathParticipantSid, string pathSid)
         {
             PathRoomSid = pathRoomSid;
@@ -73,7 +75,8 @@ namespace Twilio.Rest.Video.V1.Room.Participant
 
 
         /// <summary> Construct a new ListRoomParticipantSubscribedTrackOptions </summary>
-        /// <param name="pathRoomSid"> The SID of the Room resource with the Track resources to read. </param>        /// <param name="pathParticipantSid"> The SID of the participant that subscribes to the Track resources to read. </param>
+        /// <param name="pathRoomSid"> The SID of the Room resource with the Track resources to read. </param>
+        /// <param name="pathParticipantSid"> The SID of the participant that subscribes to the Track resources to read. </param>
         public ReadSubscribedTrackOptions(string pathRoomSid, string pathParticipantSid)
         {
             PathRoomSid = pathRoomSid;

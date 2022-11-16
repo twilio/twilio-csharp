@@ -57,7 +57,6 @@ namespace Twilio.Rest.Video.V1.Room.Participant
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Video,
@@ -67,7 +66,7 @@ namespace Twilio.Rest.Video.V1.Room.Participant
             );
         }
 
-        /// <summary> Returns a single Track resource represented by &#x60;track_sid&#x60;.  Note: This is one resource with the Video API that requires a SID, be Track Name on the subscriber side is not guaranteed to be unique. </summary>
+        /// <summary> Returns a single Track resource represented by `track_sid`.  Note: This is one resource with the Video API that requires a SID, be Track Name on the subscriber side is not guaranteed to be unique. </summary>
         /// <param name="options"> Fetch SubscribedTrack parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SubscribedTrack </returns>
@@ -79,7 +78,7 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         }
 
         #if !NET35
-        /// <summary> Returns a single Track resource represented by &#x60;track_sid&#x60;.  Note: This is one resource with the Video API that requires a SID, be Track Name on the subscriber side is not guaranteed to be unique. </summary>
+        /// <summary> Returns a single Track resource represented by `track_sid`.  Note: This is one resource with the Video API that requires a SID, be Track Name on the subscriber side is not guaranteed to be unique. </summary>
         /// <param name="options"> Fetch SubscribedTrack parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SubscribedTrack </returns>
@@ -91,7 +90,7 @@ namespace Twilio.Rest.Video.V1.Room.Participant
             return FromJson(response.Content);
         }
         #endif
-        /// <summary> Returns a single Track resource represented by &#x60;track_sid&#x60;.  Note: This is one resource with the Video API that requires a SID, be Track Name on the subscriber side is not guaranteed to be unique. </summary>
+        /// <summary> Returns a single Track resource represented by `track_sid`.  Note: This is one resource with the Video API that requires a SID, be Track Name on the subscriber side is not guaranteed to be unique. </summary>
         /// <param name="pathRoomSid"> The SID of the Room where the Track resource to fetch is subscribed. </param>
         /// <param name="pathParticipantSid"> The SID of the participant that subscribes to the Track resource to fetch. </param>
         /// <param name="pathSid"> The SID of the RoomParticipantSubscribedTrack resource to fetch. </param>
@@ -108,7 +107,7 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         }
 
         #if !NET35
-        /// <summary> Returns a single Track resource represented by &#x60;track_sid&#x60;.  Note: This is one resource with the Video API that requires a SID, be Track Name on the subscriber side is not guaranteed to be unique. </summary>
+        /// <summary> Returns a single Track resource represented by `track_sid`.  Note: This is one resource with the Video API that requires a SID, be Track Name on the subscriber side is not guaranteed to be unique. </summary>
         /// <param name="pathRoomSid"> The SID of the Room where the Track resource to fetch is subscribed. </param>
         /// <param name="pathParticipantSid"> The SID of the participant that subscribes to the Track resource to fetch. </param>
         /// <param name="pathSid"> The SID of the RoomParticipantSubscribedTrack resource to fetch. </param>
@@ -130,7 +129,6 @@ namespace Twilio.Rest.Video.V1.Room.Participant
             path = path.Replace("{"+"RoomSid"+"}", PathRoomSid);
             string PathParticipantSid = options.PathParticipantSid;
             path = path.Replace("{"+"ParticipantSid"+"}", PathParticipantSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -252,8 +250,6 @@ namespace Twilio.Rest.Video.V1.Room.Participant
             var response = client.Request(request);
             return Page<SubscribedTrackResource>.FromJson("subscribed_tracks", response.Content);
         }
-
-
 
     
         /// <summary>

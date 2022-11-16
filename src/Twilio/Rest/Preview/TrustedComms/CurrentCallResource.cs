@@ -37,7 +37,6 @@ namespace Twilio.Rest.Preview.TrustedComms
             string path = "/TrustedComms/CurrentCall";
 
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Preview,
@@ -47,7 +46,7 @@ namespace Twilio.Rest.Preview.TrustedComms
             );
         }
 
-        /// <summary> Retrieve a current call given the originating and terminating number via &#x60;X-XCNAM-Sensitive-Phone-Number-From&#x60; and &#x60;X-XCNAM-Sensitive-Phone-Number-To&#x60; headers. </summary>
+        /// <summary> Retrieve a current call given the originating and terminating number via `X-XCNAM-Sensitive-Phone-Number-From` and `X-XCNAM-Sensitive-Phone-Number-To` headers. </summary>
         /// <param name="options"> Fetch CurrentCall parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of CurrentCall </returns>
@@ -59,7 +58,7 @@ namespace Twilio.Rest.Preview.TrustedComms
         }
 
         #if !NET35
-        /// <summary> Retrieve a current call given the originating and terminating number via &#x60;X-XCNAM-Sensitive-Phone-Number-From&#x60; and &#x60;X-XCNAM-Sensitive-Phone-Number-To&#x60; headers. </summary>
+        /// <summary> Retrieve a current call given the originating and terminating number via `X-XCNAM-Sensitive-Phone-Number-From` and `X-XCNAM-Sensitive-Phone-Number-To` headers. </summary>
         /// <param name="options"> Fetch CurrentCall parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CurrentCall </returns>
@@ -71,7 +70,7 @@ namespace Twilio.Rest.Preview.TrustedComms
             return FromJson(response.Content);
         }
         #endif
-        /// <summary> Retrieve a current call given the originating and terminating number via &#x60;X-XCNAM-Sensitive-Phone-Number-From&#x60; and &#x60;X-XCNAM-Sensitive-Phone-Number-To&#x60; headers. </summary>
+        /// <summary> Retrieve a current call given the originating and terminating number via `X-XCNAM-Sensitive-Phone-Number-From` and `X-XCNAM-Sensitive-Phone-Number-To` headers. </summary>
         /// <param name="xXcnamSensitivePhoneNumberFrom"> The originating Phone Number, given in [E.164 format](https://www.twilio.com/docs/glossary/what-e164). This phone number should be a Twilio number, otherwise it will return an error with HTTP Status Code 400. </param>
         /// <param name="xXcnamSensitivePhoneNumberTo"> The terminating Phone Number, given in [E.164 format](https://www.twilio.com/docs/glossary/what-e164). </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -86,7 +85,7 @@ namespace Twilio.Rest.Preview.TrustedComms
         }
 
         #if !NET35
-        /// <summary> Retrieve a current call given the originating and terminating number via &#x60;X-XCNAM-Sensitive-Phone-Number-From&#x60; and &#x60;X-XCNAM-Sensitive-Phone-Number-To&#x60; headers. </summary>
+        /// <summary> Retrieve a current call given the originating and terminating number via `X-XCNAM-Sensitive-Phone-Number-From` and `X-XCNAM-Sensitive-Phone-Number-To` headers. </summary>
         /// <param name="xXcnamSensitivePhoneNumberFrom"> The originating Phone Number, given in [E.164 format](https://www.twilio.com/docs/glossary/what-e164). This phone number should be a Twilio number, otherwise it will return an error with HTTP Status Code 400. </param>
         /// <param name="xXcnamSensitivePhoneNumberTo"> The terminating Phone Number, given in [E.164 format](https://www.twilio.com/docs/glossary/what-e164). </param>
         /// <param name="client"> Client to make requests to Twilio </param>

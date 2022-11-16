@@ -36,7 +36,8 @@ namespace Twilio.Rest.Messaging.V1.Service
 
 
         /// <summary> Construct a new CreateShortCodeOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to create the resource under. </param>        /// <param name="shortCodeSid"> The SID of the ShortCode resource being added to the Service. </param>
+        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to create the resource under. </param>
+        /// <param name="shortCodeSid"> The SID of the ShortCode resource being added to the Service. </param>
         public CreateShortCodeOptions(string pathServiceSid, string shortCodeSid)
         {
             PathServiceSid = pathServiceSid;
@@ -71,7 +72,8 @@ namespace Twilio.Rest.Messaging.V1.Service
 
 
         /// <summary> Construct a new DeleteShortCodeOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to delete the resource from. </param>        /// <param name="pathSid"> The SID of the ShortCode resource to delete. </param>
+        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to delete the resource from. </param>
+        /// <param name="pathSid"> The SID of the ShortCode resource to delete. </param>
         public DeleteShortCodeOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -104,7 +106,8 @@ namespace Twilio.Rest.Messaging.V1.Service
 
 
         /// <summary> Construct a new FetchShortCodeOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to fetch the resource from. </param>        /// <param name="pathSid"> The SID of the ShortCode resource to fetch. </param>
+        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to fetch the resource from. </param>
+        /// <param name="pathSid"> The SID of the ShortCode resource to fetch. </param>
         public FetchShortCodeOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;

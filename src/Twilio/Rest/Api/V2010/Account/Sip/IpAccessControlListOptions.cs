@@ -163,7 +163,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
 
 
         /// <summary> Construct a new UpdateSipIpAccessControlListOptions </summary>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies the resource to udpate. </param>        /// <param name="friendlyName"> A human readable descriptive text, up to 255 characters long. </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies the resource to udpate. </param>
+        /// <param name="friendlyName"> A human readable descriptive text, up to 255 characters long. </param>
         public UpdateIpAccessControlListOptions(string pathSid, string friendlyName)
         {
             PathSid = pathSid;

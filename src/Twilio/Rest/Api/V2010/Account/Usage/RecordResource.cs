@@ -295,7 +295,6 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
             path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
@@ -428,8 +427,6 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             var response = client.Request(request);
             return Page<RecordResource>.FromJson("usage_records", response.Content);
         }
-
-
 
     
         /// <summary>

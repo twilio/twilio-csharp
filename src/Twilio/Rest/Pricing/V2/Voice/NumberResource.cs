@@ -39,7 +39,6 @@ namespace Twilio.Rest.Pricing.V2.Voice
             string PathDestinationNumber = options.PathDestinationNumber.ToString();
             path = path.Replace("{"+"DestinationNumber"+"}", PathDestinationNumber);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Pricing,

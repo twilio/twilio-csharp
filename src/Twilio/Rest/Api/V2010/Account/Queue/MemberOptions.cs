@@ -39,7 +39,8 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
 
 
         /// <summary> Construct a new FetchMemberOptions </summary>
-        /// <param name="pathQueueSid"> The SID of the Queue in which to find the members to fetch. </param>        /// <param name="pathCallSid"> The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID of the resource(s) to fetch. </param>
+        /// <param name="pathQueueSid"> The SID of the Queue in which to find the members to fetch. </param>
+        /// <param name="pathCallSid"> The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID of the resource(s) to fetch. </param>
         public FetchMemberOptions(string pathQueueSid, string pathCallSid)
         {
             PathQueueSid = pathQueueSid;
@@ -94,7 +95,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
 
     }
 
-    /// <summary> Dequeue a member from a queue and have the member&#39;s call begin executing the TwiML document at that URL </summary>
+    /// <summary> Dequeue a member from a queue and have the member's call begin executing the TwiML document at that URL </summary>
     public class UpdateMemberOptions : IOptions<MemberResource>
     {
     
@@ -116,7 +117,9 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
 
 
         /// <summary> Construct a new UpdateMemberOptions </summary>
-        /// <param name="pathQueueSid"> The SID of the Queue in which to find the members to update. </param>        /// <param name="pathCallSid"> The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID of the resource(s) to update. </param>        /// <param name="url"> The absolute URL of the Queue resource. </param>
+        /// <param name="pathQueueSid"> The SID of the Queue in which to find the members to update. </param>
+        /// <param name="pathCallSid"> The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID of the resource(s) to update. </param>
+        /// <param name="url"> The absolute URL of the Queue resource. </param>
         public UpdateMemberOptions(string pathQueueSid, string pathCallSid, Uri url)
         {
             PathQueueSid = pathQueueSid;

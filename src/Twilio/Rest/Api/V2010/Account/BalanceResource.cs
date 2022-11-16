@@ -39,7 +39,6 @@ namespace Twilio.Rest.Api.V2010.Account
             string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
             path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,

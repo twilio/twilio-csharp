@@ -39,7 +39,6 @@ namespace Twilio.Rest.Supersim.V1.NetworkAccessProfile
             string PathNetworkAccessProfileSid = options.PathNetworkAccessProfileSid;
             path = path.Replace("{"+"NetworkAccessProfileSid"+"}", PathNetworkAccessProfileSid);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Supersim,
@@ -103,12 +102,8 @@ namespace Twilio.Rest.Supersim.V1.NetworkAccessProfile
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
-        /// <summary> Remove a Network resource from the Network Access Profile resource&#39;s. </summary>
+        /// <summary> Remove a Network resource from the Network Access Profile resource's. </summary>
         /// <param name="options"> Delete NetworkAccessProfileNetwork parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of NetworkAccessProfileNetwork </returns>
@@ -122,7 +117,6 @@ namespace Twilio.Rest.Supersim.V1.NetworkAccessProfile
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Supersim,
@@ -132,7 +126,7 @@ namespace Twilio.Rest.Supersim.V1.NetworkAccessProfile
             );
         }
 
-        /// <summary> Remove a Network resource from the Network Access Profile resource&#39;s. </summary>
+        /// <summary> Remove a Network resource from the Network Access Profile resource's. </summary>
         /// <param name="options"> Delete NetworkAccessProfileNetwork parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of NetworkAccessProfileNetwork </returns>
@@ -144,7 +138,7 @@ namespace Twilio.Rest.Supersim.V1.NetworkAccessProfile
         }
 
         #if !NET35
-        /// <summary> Remove a Network resource from the Network Access Profile resource&#39;s. </summary>
+        /// <summary> Remove a Network resource from the Network Access Profile resource's. </summary>
         /// <param name="options"> Delete NetworkAccessProfileNetwork parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of NetworkAccessProfileNetwork </returns>
@@ -157,7 +151,7 @@ namespace Twilio.Rest.Supersim.V1.NetworkAccessProfile
         }
         #endif
 
-        /// <summary> Remove a Network resource from the Network Access Profile resource&#39;s. </summary>
+        /// <summary> Remove a Network resource from the Network Access Profile resource's. </summary>
         /// <param name="pathNetworkAccessProfileSid"> The unique string that identifies the Network Access Profile resource. </param>
         /// <param name="pathSid"> The SID of the Network resource to be removed from the Network Access Profile resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -169,7 +163,7 @@ namespace Twilio.Rest.Supersim.V1.NetworkAccessProfile
         }
 
         #if !NET35
-        /// <summary> Remove a Network resource from the Network Access Profile resource&#39;s. </summary>
+        /// <summary> Remove a Network resource from the Network Access Profile resource's. </summary>
         /// <param name="pathNetworkAccessProfileSid"> The unique string that identifies the Network Access Profile resource. </param>
         /// <param name="pathSid"> The SID of the Network resource to be removed from the Network Access Profile resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -191,7 +185,6 @@ namespace Twilio.Rest.Supersim.V1.NetworkAccessProfile
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Supersim,
@@ -201,7 +194,7 @@ namespace Twilio.Rest.Supersim.V1.NetworkAccessProfile
             );
         }
 
-        /// <summary> Fetch a Network Access Profile resource&#39;s Network resource. </summary>
+        /// <summary> Fetch a Network Access Profile resource's Network resource. </summary>
         /// <param name="options"> Fetch NetworkAccessProfileNetwork parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of NetworkAccessProfileNetwork </returns>
@@ -213,7 +206,7 @@ namespace Twilio.Rest.Supersim.V1.NetworkAccessProfile
         }
 
         #if !NET35
-        /// <summary> Fetch a Network Access Profile resource&#39;s Network resource. </summary>
+        /// <summary> Fetch a Network Access Profile resource's Network resource. </summary>
         /// <param name="options"> Fetch NetworkAccessProfileNetwork parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of NetworkAccessProfileNetwork </returns>
@@ -225,7 +218,7 @@ namespace Twilio.Rest.Supersim.V1.NetworkAccessProfile
             return FromJson(response.Content);
         }
         #endif
-        /// <summary> Fetch a Network Access Profile resource&#39;s Network resource. </summary>
+        /// <summary> Fetch a Network Access Profile resource's Network resource. </summary>
         /// <param name="pathNetworkAccessProfileSid"> The unique string that identifies the Network Access Profile resource. </param>
         /// <param name="pathSid"> The SID of the Network resource to fetch. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -240,7 +233,7 @@ namespace Twilio.Rest.Supersim.V1.NetworkAccessProfile
         }
 
         #if !NET35
-        /// <summary> Fetch a Network Access Profile resource&#39;s Network resource. </summary>
+        /// <summary> Fetch a Network Access Profile resource's Network resource. </summary>
         /// <param name="pathNetworkAccessProfileSid"> The unique string that identifies the Network Access Profile resource. </param>
         /// <param name="pathSid"> The SID of the Network resource to fetch. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -260,7 +253,6 @@ namespace Twilio.Rest.Supersim.V1.NetworkAccessProfile
             string PathNetworkAccessProfileSid = options.PathNetworkAccessProfileSid;
             path = path.Replace("{"+"NetworkAccessProfileSid"+"}", PathNetworkAccessProfileSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Supersim,
@@ -269,7 +261,7 @@ namespace Twilio.Rest.Supersim.V1.NetworkAccessProfile
                 headerParams: null
             );
         }
-        /// <summary> Retrieve a list of Network Access Profile resource&#39;s Network resource. </summary>
+        /// <summary> Retrieve a list of Network Access Profile resource's Network resource. </summary>
         /// <param name="options"> Read NetworkAccessProfileNetwork parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of NetworkAccessProfileNetwork </returns>
@@ -282,7 +274,7 @@ namespace Twilio.Rest.Supersim.V1.NetworkAccessProfile
         }
 
         #if !NET35
-        /// <summary> Retrieve a list of Network Access Profile resource&#39;s Network resource. </summary>
+        /// <summary> Retrieve a list of Network Access Profile resource's Network resource. </summary>
         /// <param name="options"> Read NetworkAccessProfileNetwork parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of NetworkAccessProfileNetwork </returns>
@@ -296,7 +288,7 @@ namespace Twilio.Rest.Supersim.V1.NetworkAccessProfile
             return new ResourceSet<NetworkAccessProfileNetworkResource>(page, options, client);
         }
         #endif
-        /// <summary> Retrieve a list of Network Access Profile resource&#39;s Network resource. </summary>
+        /// <summary> Retrieve a list of Network Access Profile resource's Network resource. </summary>
         /// <param name="pathNetworkAccessProfileSid"> The unique string that identifies the Network Access Profile resource. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -313,7 +305,7 @@ namespace Twilio.Rest.Supersim.V1.NetworkAccessProfile
         }
 
         #if !NET35
-        /// <summary> Retrieve a list of Network Access Profile resource&#39;s Network resource. </summary>
+        /// <summary> Retrieve a list of Network Access Profile resource's Network resource. </summary>
         /// <param name="pathNetworkAccessProfileSid"> The unique string that identifies the Network Access Profile resource. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -377,8 +369,6 @@ namespace Twilio.Rest.Supersim.V1.NetworkAccessProfile
             var response = client.Request(request);
             return Page<NetworkAccessProfileNetworkResource>.FromJson("networks", response.Content);
         }
-
-
 
     
         /// <summary>

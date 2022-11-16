@@ -100,7 +100,6 @@ namespace Twilio.Rest.Video.V1
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Video,
@@ -165,7 +164,6 @@ namespace Twilio.Rest.Video.V1
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Video,
@@ -227,7 +225,6 @@ namespace Twilio.Rest.Video.V1
         {
             
             string path = "/v1/Recordings";
-
 
 
             return new Request(
@@ -367,8 +364,6 @@ namespace Twilio.Rest.Video.V1
             return Page<RecordingResource>.FromJson("recordings", response.Content);
         }
 
-
-
     
         /// <summary>
         /// Converts a JSON string into a RecordingResource object
@@ -452,7 +447,7 @@ namespace Twilio.Rest.Video.V1
         [JsonProperty("status_callback")]
         public Uri StatusCallback { get; private set; }
 
-        ///<summary> The HTTP method used to call &#x60;status_callback&#x60; </summary> 
+        ///<summary> The HTTP method used to call `status_callback` </summary> 
         [JsonProperty("status_callback_method")]
         public Twilio.Http.HttpMethod StatusCallbackMethod { get; private set; }
 

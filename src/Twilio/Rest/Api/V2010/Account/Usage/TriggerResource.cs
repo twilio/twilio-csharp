@@ -324,7 +324,6 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
             path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Api,
@@ -412,10 +411,6 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> delete </summary>
         /// <param name="options"> Delete Trigger parameters </param>
@@ -430,7 +425,6 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -500,7 +494,6 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
@@ -568,7 +561,6 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
 
             string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
             path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -699,8 +691,6 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             return Page<TriggerResource>.FromJson("usage_triggers", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateTriggerOptions options, ITwilioRestClient client)
         {
@@ -711,7 +701,6 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Post,

@@ -106,7 +106,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Taskrouter,
@@ -179,7 +178,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
             path = path.Replace("{"+"WorkspaceSid"+"}", PathWorkspaceSid);
             string PathTaskSid = options.PathTaskSid;
             path = path.Replace("{"+"TaskSid"+"}", PathTaskSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -310,8 +308,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
             return Page<ReservationResource>.FromJson("reservations", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateReservationOptions options, ITwilioRestClient client)
         {
@@ -324,7 +320,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
             path = path.Replace("{"+"TaskSid"+"}", PathTaskSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Post,

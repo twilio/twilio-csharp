@@ -39,7 +39,6 @@ namespace Twilio.Rest.Api.V2010.Account
             string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
             path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Api,
@@ -103,10 +102,6 @@ namespace Twilio.Rest.Api.V2010.Account
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
     
         /// <summary>
         /// Converts a JSON string into a NewKeyResource object

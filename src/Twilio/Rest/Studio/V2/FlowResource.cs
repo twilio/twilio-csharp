@@ -50,7 +50,6 @@ namespace Twilio.Rest.Studio.V2
             string path = "/v2/Flows";
 
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Studio,
@@ -122,10 +121,6 @@ namespace Twilio.Rest.Studio.V2
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> Delete a specific Flow. </summary>
         /// <param name="options"> Delete Flow parameters </param>
@@ -138,7 +133,6 @@ namespace Twilio.Rest.Studio.V2
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -204,7 +198,6 @@ namespace Twilio.Rest.Studio.V2
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Studio,
@@ -266,7 +259,6 @@ namespace Twilio.Rest.Studio.V2
         {
             
             string path = "/v2/Flows";
-
 
 
             return new Request(
@@ -382,8 +374,6 @@ namespace Twilio.Rest.Studio.V2
             return Page<FlowResource>.FromJson("flows", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateFlowOptions options, ITwilioRestClient client)
         {
@@ -392,7 +382,6 @@ namespace Twilio.Rest.Studio.V2
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Post,

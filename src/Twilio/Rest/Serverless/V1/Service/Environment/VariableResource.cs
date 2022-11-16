@@ -41,7 +41,6 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
             string PathEnvironmentSid = options.PathEnvironmentSid;
             path = path.Replace("{"+"EnvironmentSid"+"}", PathEnvironmentSid);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Serverless,
@@ -113,10 +112,6 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> Delete a specific Variable. </summary>
         /// <param name="options"> Delete Variable parameters </param>
@@ -133,7 +128,6 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
             path = path.Replace("{"+"EnvironmentSid"+"}", PathEnvironmentSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -207,7 +201,6 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Serverless,
@@ -280,7 +273,6 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
             path = path.Replace("{"+"ServiceSid"+"}", PathServiceSid);
             string PathEnvironmentSid = options.PathEnvironmentSid;
             path = path.Replace("{"+"EnvironmentSid"+"}", PathEnvironmentSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -403,8 +395,6 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
             return Page<VariableResource>.FromJson("variables", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateVariableOptions options, ITwilioRestClient client)
         {
@@ -417,7 +407,6 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
             path = path.Replace("{"+"EnvironmentSid"+"}", PathEnvironmentSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Post,

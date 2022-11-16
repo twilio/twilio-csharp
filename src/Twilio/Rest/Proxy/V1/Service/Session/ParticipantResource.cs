@@ -41,7 +41,6 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
             string PathSessionSid = options.PathSessionSid;
             path = path.Replace("{"+"SessionSid"+"}", PathSessionSid);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Proxy,
@@ -121,10 +120,6 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> Delete a specific Participant. This is a soft-delete. The participant remains associated with the session and cannot be re-added. Participants are only permanently deleted when the [Session](https://www.twilio.com/docs/proxy/api/session) is deleted. </summary>
         /// <param name="options"> Delete Participant parameters </param>
@@ -141,7 +136,6 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
             path = path.Replace("{"+"SessionSid"+"}", PathSessionSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -215,7 +209,6 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Proxy,
@@ -288,7 +281,6 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
             path = path.Replace("{"+"ServiceSid"+"}", PathServiceSid);
             string PathSessionSid = options.PathSessionSid;
             path = path.Replace("{"+"SessionSid"+"}", PathSessionSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -410,8 +402,6 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
             var response = client.Request(request);
             return Page<ParticipantResource>.FromJson("participants", response.Content);
         }
-
-
 
     
         /// <summary>

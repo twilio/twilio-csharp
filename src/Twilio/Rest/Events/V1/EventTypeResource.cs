@@ -39,7 +39,6 @@ namespace Twilio.Rest.Events.V1
             string PathType = options.PathType;
             path = path.Replace("{"+"Type"+"}", PathType);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Events,
@@ -101,7 +100,6 @@ namespace Twilio.Rest.Events.V1
         {
             
             string path = "/v1/Types";
-
 
 
             return new Request(
@@ -220,8 +218,6 @@ namespace Twilio.Rest.Events.V1
             var response = client.Request(request);
             return Page<EventTypeResource>.FromJson("types", response.Content);
         }
-
-
 
     
         /// <summary>

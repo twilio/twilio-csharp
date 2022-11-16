@@ -37,7 +37,6 @@ namespace Twilio.Rest.Preview.DeployedDevices
             string path = "/DeployedDevices/Fleets";
 
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Preview,
@@ -97,10 +96,6 @@ namespace Twilio.Rest.Preview.DeployedDevices
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> Delete a specific Fleet from your account, also destroys all nested resources: Devices, Deployments, Certificates, Keys. </summary>
         /// <param name="options"> Delete Fleet parameters </param>
@@ -113,7 +108,6 @@ namespace Twilio.Rest.Preview.DeployedDevices
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -179,7 +173,6 @@ namespace Twilio.Rest.Preview.DeployedDevices
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Preview,
@@ -241,7 +234,6 @@ namespace Twilio.Rest.Preview.DeployedDevices
         {
             
             string path = "/DeployedDevices/Fleets";
-
 
 
             return new Request(
@@ -357,8 +349,6 @@ namespace Twilio.Rest.Preview.DeployedDevices
             return Page<FleetResource>.FromJson("fleets", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateFleetOptions options, ITwilioRestClient client)
         {
@@ -367,7 +357,6 @@ namespace Twilio.Rest.Preview.DeployedDevices
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Post,

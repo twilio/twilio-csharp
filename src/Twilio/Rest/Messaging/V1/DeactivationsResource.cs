@@ -37,7 +37,6 @@ namespace Twilio.Rest.Messaging.V1
             string path = "/v1/Deactivations";
 
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Messaging,

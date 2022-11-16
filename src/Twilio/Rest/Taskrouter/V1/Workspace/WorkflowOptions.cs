@@ -48,7 +48,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
 
         /// <summary> Construct a new CreateWorkflowOptions </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace that the new Workflow to create belongs to. </param>        /// <param name="friendlyName"> A descriptive string that you create to describe the Workflow resource. For example, &#x60;Inbound Call Workflow&#x60; or &#x60;2014 Outbound Campaign&#x60;. </param>        /// <param name="configuration"> A JSON string that contains the rules to apply to the Workflow. See [Configuring Workflows](https://www.twilio.com/docs/taskrouter/workflow-configuration) for more information. </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace that the new Workflow to create belongs to. </param>
+        /// <param name="friendlyName"> A descriptive string that you create to describe the Workflow resource. For example, `Inbound Call Workflow` or `2014 Outbound Campaign`. </param>
+        /// <param name="configuration"> A JSON string that contains the rules to apply to the Workflow. See [Configuring Workflows](https://www.twilio.com/docs/taskrouter/workflow-configuration) for more information. </param>
         public CreateWorkflowOptions(string pathWorkspaceSid, string friendlyName, string configuration)
         {
             PathWorkspaceSid = pathWorkspaceSid;
@@ -100,7 +102,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
 
         /// <summary> Construct a new DeleteWorkflowOptions </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Workflow to delete. </param>        /// <param name="pathSid"> The SID of the Workflow resource to delete. </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Workflow to delete. </param>
+        /// <param name="pathSid"> The SID of the Workflow resource to delete. </param>
         public DeleteWorkflowOptions(string pathWorkspaceSid, string pathSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;
@@ -133,7 +136,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
 
         /// <summary> Construct a new FetchWorkflowOptions </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Workflow to fetch. </param>        /// <param name="pathSid"> The SID of the Workflow resource to fetch. </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Workflow to fetch. </param>
+        /// <param name="pathSid"> The SID of the Workflow resource to fetch. </param>
         public FetchWorkflowOptions(string pathWorkspaceSid, string pathSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;
@@ -223,7 +227,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
 
         /// <summary> Construct a new UpdateWorkflowOptions </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Workflow to update. </param>        /// <param name="pathSid"> The SID of the Workflow resource to update. </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Workflow to update. </param>
+        /// <param name="pathSid"> The SID of the Workflow resource to update. </param>
         public UpdateWorkflowOptions(string pathWorkspaceSid, string pathSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;

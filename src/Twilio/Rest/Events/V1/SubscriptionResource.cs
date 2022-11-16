@@ -37,7 +37,6 @@ namespace Twilio.Rest.Events.V1
             string path = "/v1/Subscriptions";
 
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Events,
@@ -105,10 +104,6 @@ namespace Twilio.Rest.Events.V1
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> Delete a specific Subscription. </summary>
         /// <param name="options"> Delete Subscription parameters </param>
@@ -121,7 +116,6 @@ namespace Twilio.Rest.Events.V1
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -187,7 +181,6 @@ namespace Twilio.Rest.Events.V1
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Events,
@@ -249,7 +242,6 @@ namespace Twilio.Rest.Events.V1
         {
             
             string path = "/v1/Subscriptions";
-
 
 
             return new Request(
@@ -369,8 +361,6 @@ namespace Twilio.Rest.Events.V1
             return Page<SubscriptionResource>.FromJson("subscriptions", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateSubscriptionOptions options, ITwilioRestClient client)
         {
@@ -379,7 +369,6 @@ namespace Twilio.Rest.Events.V1
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Post,

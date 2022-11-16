@@ -68,7 +68,6 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             string PathTrunkSid = options.PathTrunkSid;
             path = path.Replace("{"+"TrunkSid"+"}", PathTrunkSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Trunking,
@@ -133,7 +132,6 @@ namespace Twilio.Rest.Trunking.V1.Trunk
 
             string PathTrunkSid = options.PathTrunkSid;
             path = path.Replace("{"+"TrunkSid"+"}", PathTrunkSid);
-
 
             return new Request(
                 HttpMethod.Post,

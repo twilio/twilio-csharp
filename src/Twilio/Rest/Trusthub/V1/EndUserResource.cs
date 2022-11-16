@@ -37,7 +37,6 @@ namespace Twilio.Rest.Trusthub.V1
             string path = "/v1/EndUsers";
 
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Trusthub,
@@ -105,10 +104,6 @@ namespace Twilio.Rest.Trusthub.V1
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> Delete a specific End User. </summary>
         /// <param name="options"> Delete EndUser parameters </param>
@@ -121,7 +116,6 @@ namespace Twilio.Rest.Trusthub.V1
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -187,7 +181,6 @@ namespace Twilio.Rest.Trusthub.V1
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Trusthub,
@@ -249,7 +242,6 @@ namespace Twilio.Rest.Trusthub.V1
         {
             
             string path = "/v1/EndUsers";
-
 
 
             return new Request(
@@ -365,8 +357,6 @@ namespace Twilio.Rest.Trusthub.V1
             return Page<EndUserResource>.FromJson("results", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateEndUserOptions options, ITwilioRestClient client)
         {
@@ -375,7 +365,6 @@ namespace Twilio.Rest.Trusthub.V1
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Post,

@@ -48,7 +48,7 @@ namespace Twilio.Rest.Taskrouter.V1
 
 
         /// <summary> Construct a new CreateWorkspaceOptions </summary>
-        /// <param name="friendlyName"> A descriptive string that you create to describe the Workspace resource. It can be up to 64 characters long. For example: &#x60;Customer Support&#x60; or &#x60;2014 Election Campaign&#x60;. </param>
+        /// <param name="friendlyName"> A descriptive string that you create to describe the Workspace resource. It can be up to 64 characters long. For example: `Customer Support` or `2014 Election Campaign`. </param>
         public CreateWorkspaceOptions(string friendlyName)
         {
             FriendlyName = friendlyName;

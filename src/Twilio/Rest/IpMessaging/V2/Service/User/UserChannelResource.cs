@@ -74,7 +74,6 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
             string PathChannelSid = options.PathChannelSid;
             path = path.Replace("{"+"ChannelSid"+"}", PathChannelSid);
 
-
             return new Request(
                 HttpMethod.Delete,
                 Rest.Domain.IpMessaging,
@@ -146,7 +145,6 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
             path = path.Replace("{"+"UserSid"+"}", PathUserSid);
             string PathChannelSid = options.PathChannelSid;
             path = path.Replace("{"+"ChannelSid"+"}", PathChannelSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -220,7 +218,6 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
             path = path.Replace("{"+"ServiceSid"+"}", PathServiceSid);
             string PathUserSid = options.PathUserSid;
             path = path.Replace("{"+"UserSid"+"}", PathUserSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -343,8 +340,6 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
             return Page<UserChannelResource>.FromJson("channels", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateUserChannelOptions options, ITwilioRestClient client)
         {
@@ -357,7 +352,6 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
             path = path.Replace("{"+"UserSid"+"}", PathUserSid);
             string PathChannelSid = options.PathChannelSid;
             path = path.Replace("{"+"ChannelSid"+"}", PathChannelSid);
-
 
             return new Request(
                 HttpMethod.Post,

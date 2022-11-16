@@ -47,7 +47,6 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
             string PathIdentity = options.PathIdentity;
             path = path.Replace("{"+"Identity"+"}", PathIdentity);
 
-
             return new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Preview,
@@ -119,7 +118,6 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
             path = path.Replace("{"+"ListSid"+"}", PathListSid);
             string PathIdentity = options.PathIdentity;
             path = path.Replace("{"+"Identity"+"}", PathIdentity);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -193,7 +191,6 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
             path = path.Replace("{"+"ServiceSid"+"}", PathServiceSid);
             string PathListSid = options.PathListSid;
             path = path.Replace("{"+"ListSid"+"}", PathListSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -316,8 +313,6 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
             return Page<SyncListPermissionResource>.FromJson("permissions", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateSyncListPermissionOptions options, ITwilioRestClient client)
         {
@@ -331,7 +326,6 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
             string PathIdentity = options.PathIdentity;
             path = path.Replace("{"+"Identity"+"}", PathIdentity);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Preview,
@@ -341,7 +335,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
             );
         }
 
-        /// <summary> Update an identity&#39;s access to a specific Sync List. </summary>
+        /// <summary> Update an identity's access to a specific Sync List. </summary>
         /// <param name="options"> Update SyncListPermission parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncListPermission </returns>
@@ -352,7 +346,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
             return FromJson(response.Content);
         }
 
-        /// <summary> Update an identity&#39;s access to a specific Sync List. </summary>
+        /// <summary> Update an identity's access to a specific Sync List. </summary>
         /// <param name="options"> Update SyncListPermission parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncListPermission </returns>
@@ -366,7 +360,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         }
         #endif
 
-        /// <summary> Update an identity&#39;s access to a specific Sync List. </summary>
+        /// <summary> Update an identity's access to a specific Sync List. </summary>
         /// <param name="pathServiceSid"> The unique SID identifier of the Sync Service Instance. </param>
         /// <param name="pathListSid"> Identifier of the Sync List. Either a SID or a unique name. </param>
         /// <param name="pathIdentity"> Arbitrary string identifier representing a human user associated with an FPA token, assigned by the developer. </param>
@@ -389,7 +383,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         }
 
         #if !NET35
-        /// <summary> Update an identity&#39;s access to a specific Sync List. </summary>
+        /// <summary> Update an identity's access to a specific Sync List. </summary>
         /// <param name="pathServiceSid"> The unique SID identifier of the Sync Service Instance. </param>
         /// <param name="pathListSid"> Identifier of the Sync List. Either a SID or a unique name. </param>
         /// <param name="pathIdentity"> Arbitrary string identifier representing a human user associated with an FPA token, assigned by the developer. </param>

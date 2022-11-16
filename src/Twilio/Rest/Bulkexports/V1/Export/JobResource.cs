@@ -43,7 +43,6 @@ namespace Twilio.Rest.Bulkexports.V1.Export
             string PathJobSid = options.PathJobSid;
             path = path.Replace("{"+"JobSid"+"}", PathJobSid);
 
-
             return new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Bulkexports,
@@ -107,7 +106,6 @@ namespace Twilio.Rest.Bulkexports.V1.Export
 
             string PathJobSid = options.PathJobSid;
             path = path.Replace("{"+"JobSid"+"}", PathJobSid);
-
 
             return new Request(
                 HttpMethod.Get,

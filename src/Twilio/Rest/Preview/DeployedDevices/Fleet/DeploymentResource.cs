@@ -39,7 +39,6 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
             string PathFleetSid = options.PathFleetSid;
             path = path.Replace("{"+"FleetSid"+"}", PathFleetSid);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Preview,
@@ -107,10 +106,6 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> Delete a specific Deployment from the Fleet, leaving associated devices effectively undeployed. </summary>
         /// <param name="options"> Delete Deployment parameters </param>
@@ -125,7 +120,6 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
             path = path.Replace("{"+"FleetSid"+"}", PathFleetSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -195,7 +189,6 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Preview,
@@ -263,7 +256,6 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
 
             string PathFleetSid = options.PathFleetSid;
             path = path.Replace("{"+"FleetSid"+"}", PathFleetSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -382,8 +374,6 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
             return Page<DeploymentResource>.FromJson("deployments", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateDeploymentOptions options, ITwilioRestClient client)
         {
@@ -394,7 +384,6 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
             path = path.Replace("{"+"FleetSid"+"}", PathFleetSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Post,

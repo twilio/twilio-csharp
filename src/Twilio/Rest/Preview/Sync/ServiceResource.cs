@@ -37,7 +37,6 @@ namespace Twilio.Rest.Preview.Sync
             string path = "/Sync/Services";
 
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Preview,
@@ -109,10 +108,6 @@ namespace Twilio.Rest.Preview.Sync
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> delete </summary>
         /// <param name="options"> Delete Service parameters </param>
@@ -125,7 +120,6 @@ namespace Twilio.Rest.Preview.Sync
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -191,7 +185,6 @@ namespace Twilio.Rest.Preview.Sync
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Preview,
@@ -253,7 +246,6 @@ namespace Twilio.Rest.Preview.Sync
         {
             
             string path = "/Sync/Services";
-
 
 
             return new Request(
@@ -369,8 +361,6 @@ namespace Twilio.Rest.Preview.Sync
             return Page<ServiceResource>.FromJson("services", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateServiceOptions options, ITwilioRestClient client)
         {
@@ -379,7 +369,6 @@ namespace Twilio.Rest.Preview.Sync
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Post,

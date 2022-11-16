@@ -39,7 +39,6 @@ namespace Twilio.Rest.Routes.V2
             string PathSipTrunkDomain = options.PathSipTrunkDomain;
             path = path.Replace("{"+"SipTrunkDomain"+"}", PathSipTrunkDomain);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Routes,
@@ -104,7 +103,6 @@ namespace Twilio.Rest.Routes.V2
 
             string PathSipTrunkDomain = options.PathSipTrunkDomain;
             path = path.Replace("{"+"SipTrunkDomain"+"}", PathSipTrunkDomain);
-
 
             return new Request(
                 HttpMethod.Post,

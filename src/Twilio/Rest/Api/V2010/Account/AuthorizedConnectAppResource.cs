@@ -54,7 +54,6 @@ namespace Twilio.Rest.Api.V2010.Account
             string PathConnectAppSid = options.PathConnectAppSid;
             path = path.Replace("{"+"ConnectAppSid"+"}", PathConnectAppSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
@@ -122,7 +121,6 @@ namespace Twilio.Rest.Api.V2010.Account
 
             string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
             path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -240,8 +238,6 @@ namespace Twilio.Rest.Api.V2010.Account
             var response = client.Request(request);
             return Page<AuthorizedConnectAppResource>.FromJson("authorized_connect_apps", response.Content);
         }
-
-
 
     
         /// <summary>

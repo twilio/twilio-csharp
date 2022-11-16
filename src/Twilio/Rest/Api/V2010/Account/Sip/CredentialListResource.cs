@@ -39,7 +39,6 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
             path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Api,
@@ -103,10 +102,6 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> Delete a Credential List </summary>
         /// <param name="options"> Delete CredentialList parameters </param>
@@ -121,7 +116,6 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -191,7 +185,6 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
@@ -259,7 +252,6 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
 
             string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
             path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -378,8 +370,6 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             return Page<CredentialListResource>.FromJson("credential_lists", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateCredentialListOptions options, ITwilioRestClient client)
         {
@@ -390,7 +380,6 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Post,

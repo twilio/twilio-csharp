@@ -39,7 +39,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeCalls
 
 
         /// <summary> Construct a new CreateSipAuthCallsIpAccessControlListMappingOptions </summary>
-        /// <param name="pathDomainSid"> The SID of the SIP domain that will contain the new resource. </param>        /// <param name="ipAccessControlListSid"> The SID of the IpAccessControlList resource to map to the SIP domain. </param>
+        /// <param name="pathDomainSid"> The SID of the SIP domain that will contain the new resource. </param>
+        /// <param name="ipAccessControlListSid"> The SID of the IpAccessControlList resource to map to the SIP domain. </param>
         public CreateAuthCallsIpAccessControlListMappingOptions(string pathDomainSid, string ipAccessControlListSid)
         {
             PathDomainSid = pathDomainSid;
@@ -77,7 +78,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeCalls
 
 
         /// <summary> Construct a new DeleteSipAuthCallsIpAccessControlListMappingOptions </summary>
-        /// <param name="pathDomainSid"> The SID of the SIP domain that contains the resources to delete. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the IpAccessControlListMapping resource to delete. </param>
+        /// <param name="pathDomainSid"> The SID of the SIP domain that contains the resources to delete. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the IpAccessControlListMapping resource to delete. </param>
         public DeleteAuthCallsIpAccessControlListMappingOptions(string pathDomainSid, string pathSid)
         {
             PathDomainSid = pathDomainSid;
@@ -113,7 +115,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeCalls
 
 
         /// <summary> Construct a new FetchSipAuthCallsIpAccessControlListMappingOptions </summary>
-        /// <param name="pathDomainSid"> The SID of the SIP domain that contains the resource to fetch. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the IpAccessControlListMapping resource to fetch. </param>
+        /// <param name="pathDomainSid"> The SID of the SIP domain that contains the resource to fetch. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the IpAccessControlListMapping resource to fetch. </param>
         public FetchAuthCallsIpAccessControlListMappingOptions(string pathDomainSid, string pathSid)
         {
             PathDomainSid = pathDomainSid;

@@ -82,7 +82,6 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Api,
@@ -154,7 +153,6 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             path = path.Replace("{"+"ConferenceSid"+"}", PathConferenceSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -228,7 +226,6 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
             string PathConferenceSid = options.PathConferenceSid;
             path = path.Replace("{"+"ConferenceSid"+"}", PathConferenceSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -363,8 +360,6 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             return Page<RecordingResource>.FromJson("recordings", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateRecordingOptions options, ITwilioRestClient client)
         {
@@ -378,7 +373,6 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Api,
@@ -388,7 +382,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             );
         }
 
-        /// <summary> Changes the status of the recording to paused, stopped, or in-progress. Note: To use &#x60;Twilio.CURRENT&#x60;, pass it as recording sid. </summary>
+        /// <summary> Changes the status of the recording to paused, stopped, or in-progress. Note: To use `Twilio.CURRENT`, pass it as recording sid. </summary>
         /// <param name="options"> Update Recording parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Recording </returns>
@@ -399,7 +393,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             return FromJson(response.Content);
         }
 
-        /// <summary> Changes the status of the recording to paused, stopped, or in-progress. Note: To use &#x60;Twilio.CURRENT&#x60;, pass it as recording sid. </summary>
+        /// <summary> Changes the status of the recording to paused, stopped, or in-progress. Note: To use `Twilio.CURRENT`, pass it as recording sid. </summary>
         /// <param name="options"> Update Recording parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Recording </returns>
@@ -413,7 +407,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         }
         #endif
 
-        /// <summary> Changes the status of the recording to paused, stopped, or in-progress. Note: To use &#x60;Twilio.CURRENT&#x60;, pass it as recording sid. </summary>
+        /// <summary> Changes the status of the recording to paused, stopped, or in-progress. Note: To use `Twilio.CURRENT`, pass it as recording sid. </summary>
         /// <param name="pathConferenceSid"> The Conference SID that identifies the conference associated with the recording to update. </param>
         /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Conference Recording resource to update. Use `Twilio.CURRENT` to reference the current active recording. </param>
         /// <param name="status">  </param>
@@ -434,7 +428,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         }
 
         #if !NET35
-        /// <summary> Changes the status of the recording to paused, stopped, or in-progress. Note: To use &#x60;Twilio.CURRENT&#x60;, pass it as recording sid. </summary>
+        /// <summary> Changes the status of the recording to paused, stopped, or in-progress. Note: To use `Twilio.CURRENT`, pass it as recording sid. </summary>
         /// <param name="pathConferenceSid"> The Conference SID that identifies the conference associated with the recording to update. </param>
         /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Conference Recording resource to update. Use `Twilio.CURRENT` to reference the current active recording. </param>
         /// <param name="status">  </param>

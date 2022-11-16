@@ -39,7 +39,6 @@ namespace Twilio.Rest.Microvisor.V1
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Microvisor,
@@ -101,7 +100,6 @@ namespace Twilio.Rest.Microvisor.V1
         {
             
             string path = "/v1/Devices";
-
 
 
             return new Request(
@@ -217,8 +215,6 @@ namespace Twilio.Rest.Microvisor.V1
             return Page<DeviceResource>.FromJson("devices", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateDeviceOptions options, ITwilioRestClient client)
         {
@@ -227,7 +223,6 @@ namespace Twilio.Rest.Microvisor.V1
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Post,

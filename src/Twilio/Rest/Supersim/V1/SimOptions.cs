@@ -36,7 +36,8 @@ namespace Twilio.Rest.Supersim.V1
 
 
         /// <summary> Construct a new CreateSimOptions </summary>
-        /// <param name="iccid"> The [ICCID](https://en.wikipedia.org/wiki/Subscriber_identity_module#ICCID) of the Super SIM to be added to your Account. </param>        /// <param name="registrationCode"> The 10-digit code required to claim the Super SIM for your Account. </param>
+        /// <param name="iccid"> The [ICCID](https://en.wikipedia.org/wiki/Subscriber_identity_module#ICCID) of the Super SIM to be added to your Account. </param>
+        /// <param name="registrationCode"> The 10-digit code required to claim the Super SIM for your Account. </param>
         public CreateSimOptions(string iccid, string registrationCode)
         {
             Iccid = iccid;

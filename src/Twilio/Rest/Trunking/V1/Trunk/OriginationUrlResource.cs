@@ -39,7 +39,6 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             string PathTrunkSid = options.PathTrunkSid;
             path = path.Replace("{"+"TrunkSid"+"}", PathTrunkSid);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Trunking,
@@ -119,10 +118,6 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> delete </summary>
         /// <param name="options"> Delete OriginationUrl parameters </param>
@@ -137,7 +132,6 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             path = path.Replace("{"+"TrunkSid"+"}", PathTrunkSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -207,7 +201,6 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Trunking,
@@ -275,7 +268,6 @@ namespace Twilio.Rest.Trunking.V1.Trunk
 
             string PathTrunkSid = options.PathTrunkSid;
             path = path.Replace("{"+"TrunkSid"+"}", PathTrunkSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -394,8 +386,6 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             return Page<OriginationUrlResource>.FromJson("origination_urls", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateOriginationUrlOptions options, ITwilioRestClient client)
         {
@@ -406,7 +396,6 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             path = path.Replace("{"+"TrunkSid"+"}", PathTrunkSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Post,

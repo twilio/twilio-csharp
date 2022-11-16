@@ -56,7 +56,6 @@ namespace Twilio.Rest.Studio.V1
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Studio,
@@ -121,7 +120,6 @@ namespace Twilio.Rest.Studio.V1
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Studio,
@@ -183,7 +181,6 @@ namespace Twilio.Rest.Studio.V1
         {
             
             string path = "/v1/Flows";
-
 
 
             return new Request(
@@ -298,8 +295,6 @@ namespace Twilio.Rest.Studio.V1
             var response = client.Request(request);
             return Page<FlowResource>.FromJson("flows", response.Content);
         }
-
-
 
     
         /// <summary>

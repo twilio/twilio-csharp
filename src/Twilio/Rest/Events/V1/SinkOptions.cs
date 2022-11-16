@@ -39,7 +39,9 @@ namespace Twilio.Rest.Events.V1
 
 
         /// <summary> Construct a new CreateSinkOptions </summary>
-        /// <param name="description"> A human readable description for the Sink **This value should not contain PII.** </param>        /// <param name="sinkConfiguration"> The information required for Twilio to connect to the provided Sink encoded as JSON. </param>        /// <param name="sinkType">  </param>
+        /// <param name="description"> A human readable description for the Sink **This value should not contain PII.** </param>
+        /// <param name="sinkConfiguration"> The information required for Twilio to connect to the provided Sink encoded as JSON. </param>
+        /// <param name="sinkType">  </param>
         public CreateSinkOptions(string description, object sinkConfiguration, SinkResource.SinkTypeEnum sinkType)
         {
             Description = description;
@@ -178,7 +180,8 @@ namespace Twilio.Rest.Events.V1
 
 
         /// <summary> Construct a new UpdateSinkOptions </summary>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this Sink. </param>        /// <param name="description"> A human readable description for the Sink **This value should not contain PII.** </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this Sink. </param>
+        /// <param name="description"> A human readable description for the Sink **This value should not contain PII.** </param>
         public UpdateSinkOptions(string pathSid, string description)
         {
             PathSid = pathSid;

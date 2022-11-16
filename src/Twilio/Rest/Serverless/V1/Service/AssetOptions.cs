@@ -36,7 +36,8 @@ namespace Twilio.Rest.Serverless.V1.Service
 
 
         /// <summary> Construct a new CreateAssetOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to create the Asset resource under. </param>        /// <param name="friendlyName"> A descriptive string that you create to describe the Asset resource. It can be a maximum of 255 characters. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to create the Asset resource under. </param>
+        /// <param name="friendlyName"> A descriptive string that you create to describe the Asset resource. It can be a maximum of 255 characters. </param>
         public CreateAssetOptions(string pathServiceSid, string friendlyName)
         {
             PathServiceSid = pathServiceSid;
@@ -71,7 +72,8 @@ namespace Twilio.Rest.Serverless.V1.Service
 
 
         /// <summary> Construct a new DeleteAssetOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to delete the Asset resource from. </param>        /// <param name="pathSid"> The SID that identifies the Asset resource to delete. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to delete the Asset resource from. </param>
+        /// <param name="pathSid"> The SID that identifies the Asset resource to delete. </param>
         public DeleteAssetOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -104,7 +106,8 @@ namespace Twilio.Rest.Serverless.V1.Service
 
 
         /// <summary> Construct a new FetchAssetOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to fetch the Asset resource from. </param>        /// <param name="pathSid"> The SID that identifies the Asset resource to fetch. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to fetch the Asset resource from. </param>
+        /// <param name="pathSid"> The SID that identifies the Asset resource to fetch. </param>
         public FetchAssetOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -172,7 +175,9 @@ namespace Twilio.Rest.Serverless.V1.Service
 
 
         /// <summary> Construct a new UpdateAssetOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to update the Asset resource from. </param>        /// <param name="pathSid"> The SID that identifies the Asset resource to update. </param>        /// <param name="friendlyName"> A descriptive string that you create to describe the Asset resource. It can be a maximum of 255 characters. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to update the Asset resource from. </param>
+        /// <param name="pathSid"> The SID that identifies the Asset resource to update. </param>
+        /// <param name="friendlyName"> A descriptive string that you create to describe the Asset resource. It can be a maximum of 255 characters. </param>
         public UpdateAssetOptions(string pathServiceSid, string pathSid, string friendlyName)
         {
             PathServiceSid = pathServiceSid;

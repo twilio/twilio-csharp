@@ -76,7 +76,6 @@ namespace Twilio.Rest.Conversations.V1
             string path = "/v1/Configuration/Addresses";
 
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Conversations,
@@ -176,10 +175,6 @@ namespace Twilio.Rest.Conversations.V1
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> Remove an existing address configuration </summary>
         /// <param name="options"> Delete AddressConfiguration parameters </param>
@@ -192,7 +187,6 @@ namespace Twilio.Rest.Conversations.V1
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -258,7 +252,6 @@ namespace Twilio.Rest.Conversations.V1
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Conversations,
@@ -320,7 +313,6 @@ namespace Twilio.Rest.Conversations.V1
         {
             
             string path = "/v1/Configuration/Addresses";
-
 
 
             return new Request(
@@ -440,8 +432,6 @@ namespace Twilio.Rest.Conversations.V1
             return Page<AddressConfigurationResource>.FromJson("address_configurations", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateAddressConfigurationOptions options, ITwilioRestClient client)
         {
@@ -450,7 +440,6 @@ namespace Twilio.Rest.Conversations.V1
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Post,

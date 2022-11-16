@@ -52,7 +52,6 @@ namespace Twilio.Rest.Trusthub.V1.CustomerProfiles
             string PathCustomerProfileSid = options.PathCustomerProfileSid;
             path = path.Replace("{"+"CustomerProfileSid"+"}", PathCustomerProfileSid);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Trusthub,
@@ -116,10 +115,6 @@ namespace Twilio.Rest.Trusthub.V1.CustomerProfiles
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         private static Request BuildFetchRequest(FetchCustomerProfilesEvaluationsOptions options, ITwilioRestClient client)
         {
@@ -130,7 +125,6 @@ namespace Twilio.Rest.Trusthub.V1.CustomerProfiles
             path = path.Replace("{"+"CustomerProfileSid"+"}", PathCustomerProfileSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -199,7 +193,6 @@ namespace Twilio.Rest.Trusthub.V1.CustomerProfiles
 
             string PathCustomerProfileSid = options.PathCustomerProfileSid;
             path = path.Replace("{"+"CustomerProfileSid"+"}", PathCustomerProfileSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -317,8 +310,6 @@ namespace Twilio.Rest.Trusthub.V1.CustomerProfiles
             var response = client.Request(request);
             return Page<CustomerProfilesEvaluationsResource>.FromJson("results", response.Content);
         }
-
-
 
     
         /// <summary>

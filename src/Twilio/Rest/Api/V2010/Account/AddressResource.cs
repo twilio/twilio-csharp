@@ -39,7 +39,6 @@ namespace Twilio.Rest.Api.V2010.Account
             string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
             path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Api,
@@ -135,10 +134,6 @@ namespace Twilio.Rest.Api.V2010.Account
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> delete </summary>
         /// <param name="options"> Delete Address parameters </param>
@@ -153,7 +148,6 @@ namespace Twilio.Rest.Api.V2010.Account
             path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -223,7 +217,6 @@ namespace Twilio.Rest.Api.V2010.Account
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
@@ -291,7 +284,6 @@ namespace Twilio.Rest.Api.V2010.Account
 
             string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
             path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -422,8 +414,6 @@ namespace Twilio.Rest.Api.V2010.Account
             return Page<AddressResource>.FromJson("addresses", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateAddressOptions options, ITwilioRestClient client)
         {
@@ -434,7 +424,6 @@ namespace Twilio.Rest.Api.V2010.Account
             path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Post,

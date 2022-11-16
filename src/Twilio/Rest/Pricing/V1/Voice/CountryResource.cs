@@ -39,7 +39,6 @@ namespace Twilio.Rest.Pricing.V1.Voice
             string PathIsoCountry = options.PathIsoCountry.ToString();
             path = path.Replace("{"+"IsoCountry"+"}", PathIsoCountry);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Pricing,
@@ -101,7 +100,6 @@ namespace Twilio.Rest.Pricing.V1.Voice
         {
             
             string path = "/v1/Voice/Countries";
-
 
 
             return new Request(
@@ -216,8 +214,6 @@ namespace Twilio.Rest.Pricing.V1.Voice
             var response = client.Request(request);
             return Page<CountryResource>.FromJson("countries", response.Content);
         }
-
-
 
     
         /// <summary>

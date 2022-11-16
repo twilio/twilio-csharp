@@ -39,7 +39,8 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
 
 
         /// <summary> Construct a new DeleteRecordingTranscriptionOptions </summary>
-        /// <param name="pathRecordingSid"> The SID of the [Recording](https://www.twilio.com/docs/voice/api/recording) that created the transcription to delete. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Transcription resource to delete. </param>
+        /// <param name="pathRecordingSid"> The SID of the [Recording](https://www.twilio.com/docs/voice/api/recording) that created the transcription to delete. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Transcription resource to delete. </param>
         public DeleteTranscriptionOptions(string pathRecordingSid, string pathSid)
         {
             PathRecordingSid = pathRecordingSid;
@@ -75,7 +76,8 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
 
 
         /// <summary> Construct a new FetchRecordingTranscriptionOptions </summary>
-        /// <param name="pathRecordingSid"> The SID of the [Recording](https://www.twilio.com/docs/voice/api/recording) that created the transcription to fetch. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Transcription resource to fetch. </param>
+        /// <param name="pathRecordingSid"> The SID of the [Recording](https://www.twilio.com/docs/voice/api/recording) that created the transcription to fetch. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Transcription resource to fetch. </param>
         public FetchTranscriptionOptions(string pathRecordingSid, string pathSid)
         {
             PathRecordingSid = pathRecordingSid;

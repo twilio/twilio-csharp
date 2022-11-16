@@ -43,6 +43,24 @@ namespace Twilio.Rest.Insights.V1.Call
 
         }
         [JsonConverter(typeof(StringEnumConverter))]
+        public sealed class AnsweredByEnum : StringEnum
+        {
+            private AnsweredByEnum(string value) : base(value) {}
+            public AnsweredByEnum() {}
+            public static implicit operator AnsweredByEnum(string value)
+            {
+                return new AnsweredByEnum(value);
+            }
+            public static readonly AnsweredByEnum Unknown = new AnsweredByEnum("unknown");
+            public static readonly AnsweredByEnum MachineStart = new AnsweredByEnum("machine_start");
+            public static readonly AnsweredByEnum MachineEndBeep = new AnsweredByEnum("machine_end_beep");
+            public static readonly AnsweredByEnum MachineEndSilence = new AnsweredByEnum("machine_end_silence");
+            public static readonly AnsweredByEnum MachineEndOther = new AnsweredByEnum("machine_end_other");
+            public static readonly AnsweredByEnum Human = new AnsweredByEnum("human");
+            public static readonly AnsweredByEnum Fax = new AnsweredByEnum("fax");
+
+        }
+        [JsonConverter(typeof(StringEnumConverter))]
         public sealed class CallStateEnum : StringEnum
         {
             private CallStateEnum(string value) : base(value) {}
@@ -85,7 +103,6 @@ namespace Twilio.Rest.Insights.V1.Call
 
             string PathCallSid = options.PathCallSid;
             path = path.Replace("{"+"CallSid"+"}", PathCallSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -180,6 +197,10 @@ namespace Twilio.Rest.Insights.V1.Call
         
         [JsonProperty("call_state")]
         public CallSummaryResource.CallStateEnum CallState { get; private set; }
+
+        
+        [JsonProperty("answered_by")]
+        public CallSummaryResource.AnsweredByEnum AnsweredBy { get; private set; }
 
         
         [JsonProperty("processing_state")]

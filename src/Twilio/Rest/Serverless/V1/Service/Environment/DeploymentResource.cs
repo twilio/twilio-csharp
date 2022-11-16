@@ -41,7 +41,6 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
             string PathEnvironmentSid = options.PathEnvironmentSid;
             path = path.Replace("{"+"EnvironmentSid"+"}", PathEnvironmentSid);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Serverless,
@@ -109,10 +108,6 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         private static Request BuildFetchRequest(FetchDeploymentOptions options, ITwilioRestClient client)
         {
@@ -125,7 +120,6 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
             path = path.Replace("{"+"EnvironmentSid"+"}", PathEnvironmentSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -199,7 +193,6 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
             path = path.Replace("{"+"ServiceSid"+"}", PathServiceSid);
             string PathEnvironmentSid = options.PathEnvironmentSid;
             path = path.Replace("{"+"EnvironmentSid"+"}", PathEnvironmentSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -321,8 +314,6 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
             var response = client.Request(request);
             return Page<DeploymentResource>.FromJson("deployments", response.Content);
         }
-
-
 
     
         /// <summary>

@@ -39,7 +39,6 @@ namespace Twilio.Rest.Messaging.V1.Service
             string PathServiceSid = options.PathServiceSid;
             path = path.Replace("{"+"ServiceSid"+"}", PathServiceSid);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Messaging,
@@ -103,10 +102,6 @@ namespace Twilio.Rest.Messaging.V1.Service
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> delete </summary>
         /// <param name="options"> Delete PhoneNumber parameters </param>
@@ -121,7 +116,6 @@ namespace Twilio.Rest.Messaging.V1.Service
             path = path.Replace("{"+"ServiceSid"+"}", PathServiceSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -191,7 +185,6 @@ namespace Twilio.Rest.Messaging.V1.Service
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Messaging,
@@ -259,7 +252,6 @@ namespace Twilio.Rest.Messaging.V1.Service
 
             string PathServiceSid = options.PathServiceSid;
             path = path.Replace("{"+"ServiceSid"+"}", PathServiceSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -377,8 +369,6 @@ namespace Twilio.Rest.Messaging.V1.Service
             var response = client.Request(request);
             return Page<PhoneNumberResource>.FromJson("phone_numbers", response.Content);
         }
-
-
 
     
         /// <summary>

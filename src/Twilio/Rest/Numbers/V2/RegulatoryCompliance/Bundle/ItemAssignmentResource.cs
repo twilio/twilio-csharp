@@ -39,7 +39,6 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
             string PathBundleSid = options.PathBundleSid;
             path = path.Replace("{"+"BundleSid"+"}", PathBundleSid);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Numbers,
@@ -103,10 +102,6 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> Remove an Assignment Item Instance. </summary>
         /// <param name="options"> Delete ItemAssignment parameters </param>
@@ -121,7 +116,6 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
             path = path.Replace("{"+"BundleSid"+"}", PathBundleSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -191,7 +185,6 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Numbers,
@@ -259,7 +252,6 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
 
             string PathBundleSid = options.PathBundleSid;
             path = path.Replace("{"+"BundleSid"+"}", PathBundleSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -377,8 +369,6 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
             var response = client.Request(request);
             return Page<ItemAssignmentResource>.FromJson("results", response.Content);
         }
-
-
 
     
         /// <summary>

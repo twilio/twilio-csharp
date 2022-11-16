@@ -41,7 +41,6 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
             string PathResourceSid = options.PathResourceSid;
             path = path.Replace("{"+"ResourceSid"+"}", PathResourceSid);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Api,
@@ -109,10 +108,6 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> Remove the assignment of an Add-on installation from the Number specified. </summary>
         /// <param name="options"> Delete AssignedAddOn parameters </param>
@@ -129,7 +124,6 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
             path = path.Replace("{"+"ResourceSid"+"}", PathResourceSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -203,7 +197,6 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
@@ -276,7 +269,6 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
             path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
             string PathResourceSid = options.PathResourceSid;
             path = path.Replace("{"+"ResourceSid"+"}", PathResourceSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -398,8 +390,6 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
             var response = client.Request(request);
             return Page<AssignedAddOnResource>.FromJson("assigned_add_ons", response.Content);
         }
-
-
 
     
         /// <summary>

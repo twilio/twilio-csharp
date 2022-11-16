@@ -57,7 +57,6 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Serverless,
@@ -130,7 +129,6 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
             path = path.Replace("{"+"ServiceSid"+"}", PathServiceSid);
             string PathFunctionSid = options.PathFunctionSid;
             path = path.Replace("{"+"FunctionSid"+"}", PathFunctionSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -252,8 +250,6 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
             var response = client.Request(request);
             return Page<FunctionVersionResource>.FromJson("function_versions", response.Content);
         }
-
-
 
     
         /// <summary>

@@ -41,7 +41,6 @@ namespace Twilio.Rest.Sync.V1.Service.SyncStream
             string PathStreamSid = options.PathStreamSid;
             path = path.Replace("{"+"StreamSid"+"}", PathStreamSid);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Sync,
@@ -109,10 +108,6 @@ namespace Twilio.Rest.Sync.V1.Service.SyncStream
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
     
         /// <summary>
         /// Converts a JSON string into a StreamMessageResource object

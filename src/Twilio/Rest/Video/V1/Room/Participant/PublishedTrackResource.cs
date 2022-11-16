@@ -57,7 +57,6 @@ namespace Twilio.Rest.Video.V1.Room.Participant
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Video,
@@ -131,7 +130,6 @@ namespace Twilio.Rest.Video.V1.Room.Participant
             string PathParticipantSid = options.PathParticipantSid;
             path = path.Replace("{"+"ParticipantSid"+"}", PathParticipantSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Video,
@@ -140,7 +138,7 @@ namespace Twilio.Rest.Video.V1.Room.Participant
                 headerParams: null
             );
         }
-        /// <summary> Returns a list of tracks associated with a given Participant. Only &#x60;currently&#x60; Published Tracks are in the list resource. </summary>
+        /// <summary> Returns a list of tracks associated with a given Participant. Only `currently` Published Tracks are in the list resource. </summary>
         /// <param name="options"> Read PublishedTrack parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of PublishedTrack </returns>
@@ -153,7 +151,7 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         }
 
         #if !NET35
-        /// <summary> Returns a list of tracks associated with a given Participant. Only &#x60;currently&#x60; Published Tracks are in the list resource. </summary>
+        /// <summary> Returns a list of tracks associated with a given Participant. Only `currently` Published Tracks are in the list resource. </summary>
         /// <param name="options"> Read PublishedTrack parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PublishedTrack </returns>
@@ -167,7 +165,7 @@ namespace Twilio.Rest.Video.V1.Room.Participant
             return new ResourceSet<PublishedTrackResource>(page, options, client);
         }
         #endif
-        /// <summary> Returns a list of tracks associated with a given Participant. Only &#x60;currently&#x60; Published Tracks are in the list resource. </summary>
+        /// <summary> Returns a list of tracks associated with a given Participant. Only `currently` Published Tracks are in the list resource. </summary>
         /// <param name="pathRoomSid"> The SID of the Room resource where the Track resources to read are published. </param>
         /// <param name="pathParticipantSid"> The SID of the Participant resource with the published tracks to read. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
@@ -186,7 +184,7 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         }
 
         #if !NET35
-        /// <summary> Returns a list of tracks associated with a given Participant. Only &#x60;currently&#x60; Published Tracks are in the list resource. </summary>
+        /// <summary> Returns a list of tracks associated with a given Participant. Only `currently` Published Tracks are in the list resource. </summary>
         /// <param name="pathRoomSid"> The SID of the Room resource where the Track resources to read are published. </param>
         /// <param name="pathParticipantSid"> The SID of the Participant resource with the published tracks to read. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
@@ -252,8 +250,6 @@ namespace Twilio.Rest.Video.V1.Room.Participant
             var response = client.Request(request);
             return Page<PublishedTrackResource>.FromJson("published_tracks", response.Content);
         }
-
-
 
     
         /// <summary>

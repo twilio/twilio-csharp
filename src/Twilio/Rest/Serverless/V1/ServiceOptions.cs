@@ -42,7 +42,8 @@ namespace Twilio.Rest.Serverless.V1
 
 
         /// <summary> Construct a new CreateServiceOptions </summary>
-        /// <param name="uniqueName"> A user-defined string that uniquely identifies the Service resource. It can be used as an alternative to the &#x60;sid&#x60; in the URL path to address the Service resource. This value must be 50 characters or less in length and be unique. </param>        /// <param name="friendlyName"> A descriptive string that you create to describe the Service resource. It can be a maximum of 255 characters. </param>
+        /// <param name="uniqueName"> A user-defined string that uniquely identifies the Service resource. It can be used as an alternative to the `sid` in the URL path to address the Service resource. This value must be 50 characters or less in length and be unique. </param>
+        /// <param name="friendlyName"> A descriptive string that you create to describe the Service resource. It can be a maximum of 255 characters. </param>
         public CreateServiceOptions(string uniqueName, string friendlyName)
         {
             UniqueName = uniqueName;
@@ -86,7 +87,7 @@ namespace Twilio.Rest.Serverless.V1
 
 
         /// <summary> Construct a new DeleteServiceOptions </summary>
-        /// <param name="pathSid"> The &#x60;sid&#x60; or &#x60;unique_name&#x60; of the Service resource to delete. </param>
+        /// <param name="pathSid"> The `sid` or `unique_name` of the Service resource to delete. </param>
         public DeleteServiceOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -115,7 +116,7 @@ namespace Twilio.Rest.Serverless.V1
 
 
         /// <summary> Construct a new FetchServiceOptions </summary>
-        /// <param name="pathSid"> The &#x60;sid&#x60; or &#x60;unique_name&#x60; of the Service resource to fetch. </param>
+        /// <param name="pathSid"> The `sid` or `unique_name` of the Service resource to fetch. </param>
         public FetchServiceOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -176,7 +177,7 @@ namespace Twilio.Rest.Serverless.V1
 
 
         /// <summary> Construct a new UpdateServiceOptions </summary>
-        /// <param name="pathSid"> The &#x60;sid&#x60; or &#x60;unique_name&#x60; of the Service resource to update. </param>
+        /// <param name="pathSid"> The `sid` or `unique_name` of the Service resource to update. </param>
         public UpdateServiceOptions(string pathSid)
         {
             PathSid = pathSid;

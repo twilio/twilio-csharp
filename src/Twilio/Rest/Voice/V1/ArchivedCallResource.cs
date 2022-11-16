@@ -45,7 +45,6 @@ namespace Twilio.Rest.Voice.V1
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Voice,

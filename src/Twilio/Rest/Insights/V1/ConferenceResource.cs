@@ -124,7 +124,6 @@ namespace Twilio.Rest.Insights.V1
             string PathConferenceSid = options.PathConferenceSid;
             path = path.Replace("{"+"ConferenceSid"+"}", PathConferenceSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Insights,
@@ -186,7 +185,6 @@ namespace Twilio.Rest.Insights.V1
         {
             
             string path = "/v1/Conferences";
-
 
 
             return new Request(
@@ -341,8 +339,6 @@ namespace Twilio.Rest.Insights.V1
             var response = client.Request(request);
             return Page<ConferenceResource>.FromJson("conferences", response.Content);
         }
-
-
 
     
         /// <summary>

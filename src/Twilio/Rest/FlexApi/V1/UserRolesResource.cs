@@ -37,7 +37,6 @@ namespace Twilio.Rest.FlexApi.V1
             string path = "/v1/Accounts/UserRoles";
 
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.FlexApi,

@@ -39,7 +39,6 @@ namespace Twilio.Rest.Verify.V2.Service
             string PathServiceSid = options.PathServiceSid;
             path = path.Replace("{"+"ServiceSid"+"}", PathServiceSid);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Verify,
@@ -107,10 +106,6 @@ namespace Twilio.Rest.Verify.V2.Service
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> Delete a specific MessagingConfiguration. </summary>
         /// <param name="options"> Delete MessagingConfiguration parameters </param>
@@ -125,7 +120,6 @@ namespace Twilio.Rest.Verify.V2.Service
             path = path.Replace("{"+"ServiceSid"+"}", PathServiceSid);
             string PathCountry = options.PathCountry;
             path = path.Replace("{"+"Country"+"}", PathCountry);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -195,7 +189,6 @@ namespace Twilio.Rest.Verify.V2.Service
             string PathCountry = options.PathCountry;
             path = path.Replace("{"+"Country"+"}", PathCountry);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Verify,
@@ -263,7 +256,6 @@ namespace Twilio.Rest.Verify.V2.Service
 
             string PathServiceSid = options.PathServiceSid;
             path = path.Replace("{"+"ServiceSid"+"}", PathServiceSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -382,8 +374,6 @@ namespace Twilio.Rest.Verify.V2.Service
             return Page<MessagingConfigurationResource>.FromJson("messaging_configurations", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateMessagingConfigurationOptions options, ITwilioRestClient client)
         {
@@ -394,7 +384,6 @@ namespace Twilio.Rest.Verify.V2.Service
             path = path.Replace("{"+"ServiceSid"+"}", PathServiceSid);
             string PathCountry = options.PathCountry;
             path = path.Replace("{"+"Country"+"}", PathCountry);
-
 
             return new Request(
                 HttpMethod.Post,

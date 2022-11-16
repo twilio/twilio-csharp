@@ -39,7 +39,6 @@ namespace Twilio.Rest.Api.V2010.Account
             string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
             path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Api,
@@ -159,10 +158,6 @@ namespace Twilio.Rest.Api.V2010.Account
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         /// <summary> Delete the application by the specified application sid </summary>
         /// <param name="options"> Delete Application parameters </param>
@@ -177,7 +172,6 @@ namespace Twilio.Rest.Api.V2010.Account
             path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Delete,
@@ -247,7 +241,6 @@ namespace Twilio.Rest.Api.V2010.Account
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
@@ -315,7 +308,6 @@ namespace Twilio.Rest.Api.V2010.Account
 
             string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
             path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -438,8 +430,6 @@ namespace Twilio.Rest.Api.V2010.Account
             return Page<ApplicationResource>.FromJson("applications", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateApplicationOptions options, ITwilioRestClient client)
         {
@@ -451,7 +441,6 @@ namespace Twilio.Rest.Api.V2010.Account
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Api,
@@ -461,7 +450,7 @@ namespace Twilio.Rest.Api.V2010.Account
             );
         }
 
-        /// <summary> Updates the application&#39;s properties </summary>
+        /// <summary> Updates the application's properties </summary>
         /// <param name="options"> Update Application parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Application </returns>
@@ -472,7 +461,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return FromJson(response.Content);
         }
 
-        /// <summary> Updates the application&#39;s properties </summary>
+        /// <summary> Updates the application's properties </summary>
         /// <param name="options"> Update Application parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Application </returns>
@@ -486,7 +475,7 @@ namespace Twilio.Rest.Api.V2010.Account
         }
         #endif
 
-        /// <summary> Updates the application&#39;s properties </summary>
+        /// <summary> Updates the application's properties </summary>
         /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Application resource to update. </param>
         /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Application resources to update. </param>
         /// <param name="friendlyName"> A descriptive string that you create to describe the resource. It can be up to 64 characters long. </param>
@@ -531,7 +520,7 @@ namespace Twilio.Rest.Api.V2010.Account
         }
 
         #if !NET35
-        /// <summary> Updates the application&#39;s properties </summary>
+        /// <summary> Updates the application's properties </summary>
         /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Application resource to update. </param>
         /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Application resources to update. </param>
         /// <param name="friendlyName"> A descriptive string that you create to describe the resource. It can be up to 64 characters long. </param>

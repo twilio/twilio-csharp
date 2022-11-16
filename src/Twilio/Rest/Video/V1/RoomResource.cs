@@ -79,7 +79,6 @@ namespace Twilio.Rest.Video.V1
             string path = "/v1/Rooms";
 
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Video,
@@ -195,10 +194,6 @@ namespace Twilio.Rest.Video.V1
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         private static Request BuildFetchRequest(FetchRoomOptions options, ITwilioRestClient client)
         {
@@ -207,7 +202,6 @@ namespace Twilio.Rest.Video.V1
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -270,7 +264,6 @@ namespace Twilio.Rest.Video.V1
         {
             
             string path = "/v1/Rooms";
-
 
 
             return new Request(
@@ -402,8 +395,6 @@ namespace Twilio.Rest.Video.V1
             return Page<RoomResource>.FromJson("rooms", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdateRoomOptions options, ITwilioRestClient client)
         {
@@ -412,7 +403,6 @@ namespace Twilio.Rest.Video.V1
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Post,

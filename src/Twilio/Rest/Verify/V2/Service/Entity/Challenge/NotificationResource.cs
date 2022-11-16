@@ -43,7 +43,6 @@ namespace Twilio.Rest.Verify.V2.Service.Entity.Challenge
             string PathChallengeSid = options.PathChallengeSid;
             path = path.Replace("{"+"ChallengeSid"+"}", PathChallengeSid);
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Verify,
@@ -115,10 +114,6 @@ namespace Twilio.Rest.Verify.V2.Service.Entity.Challenge
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
     
         /// <summary>
         /// Converts a JSON string into a NotificationResource object

@@ -83,7 +83,6 @@ namespace Twilio.Rest.Media.V1
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Media,
@@ -148,7 +147,6 @@ namespace Twilio.Rest.Media.V1
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Media,
@@ -210,7 +208,6 @@ namespace Twilio.Rest.Media.V1
         {
             
             string path = "/v1/MediaRecordings";
-
 
 
             return new Request(
@@ -342,8 +339,6 @@ namespace Twilio.Rest.Media.V1
             return Page<MediaRecordingResource>.FromJson("media_recordings", response.Content);
         }
 
-
-
     
         /// <summary>
         /// Converts a JSON string into a MediaRecordingResource object
@@ -415,7 +410,7 @@ namespace Twilio.Rest.Media.V1
         [JsonProperty("status_callback")]
         public Uri StatusCallback { get; private set; }
 
-        ///<summary> The HTTP method Twilio should use to call the &#x60;status_callback&#x60; URL </summary> 
+        ///<summary> The HTTP method Twilio should use to call the `status_callback` URL </summary> 
         [JsonProperty("status_callback_method")]
         public Twilio.Http.HttpMethod StatusCallbackMethod { get; private set; }
 

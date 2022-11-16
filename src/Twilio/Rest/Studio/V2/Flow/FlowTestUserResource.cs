@@ -39,7 +39,6 @@ namespace Twilio.Rest.Studio.V2.Flow
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
 
-
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Studio,
@@ -104,7 +103,6 @@ namespace Twilio.Rest.Studio.V2.Flow
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Post,

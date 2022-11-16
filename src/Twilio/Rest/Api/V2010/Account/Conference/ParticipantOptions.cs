@@ -174,7 +174,9 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
 
 
         /// <summary> Construct a new CreateParticipantOptions </summary>
-        /// <param name="pathConferenceSid"> The SID of the participant&#39;s conference. </param>        /// <param name="from"> The phone number, Client identifier, or username portion of SIP address that made this call. Phone numbers are in [E.164](https://www.twilio.com/docs/glossary/what-e164) format (e.g., +16175551212). Client identifiers are formatted &#x60;client:name&#x60;. If using a phone number, it must be a Twilio number or a Verified [outgoing caller id](https://www.twilio.com/docs/voice/api/outgoing-caller-ids) for your account. If the &#x60;to&#x60; parameter is a phone number, &#x60;from&#x60; must also be a phone number. If &#x60;to&#x60; is sip address, this value of &#x60;from&#x60; should be a username portion to be used to populate the P-Asserted-Identity header that is passed to the SIP endpoint. </param>        /// <param name="to"> The phone number, SIP address, or Client identifier that received this call. Phone numbers are in [E.164](https://www.twilio.com/docs/glossary/what-e164) format (e.g., +16175551212). SIP addresses are formatted as &#x60;sip:name@company.com&#x60;. Client identifiers are formatted &#x60;client:name&#x60;. [Custom parameters](https://www.twilio.com/docs/voice/api/conference-participant-resource#custom-parameters) may also be specified. </param>
+        /// <param name="pathConferenceSid"> The SID of the participant's conference. </param>
+        /// <param name="from"> The phone number, Client identifier, or username portion of SIP address that made this call. Phone numbers are in [E.164](https://www.twilio.com/docs/glossary/what-e164) format (e.g., +16175551212). Client identifiers are formatted `client:name`. If using a phone number, it must be a Twilio number or a Verified [outgoing caller id](https://www.twilio.com/docs/voice/api/outgoing-caller-ids) for your account. If the `to` parameter is a phone number, `from` must also be a phone number. If `to` is sip address, this value of `from` should be a username portion to be used to populate the P-Asserted-Identity header that is passed to the SIP endpoint. </param>
+        /// <param name="to"> The phone number, SIP address, or Client identifier that received this call. Phone numbers are in [E.164](https://www.twilio.com/docs/glossary/what-e164) format (e.g., +16175551212). SIP addresses are formatted as `sip:name@company.com`. Client identifiers are formatted `client:name`. [Custom parameters](https://www.twilio.com/docs/voice/api/conference-participant-resource#custom-parameters) may also be specified. </param>
         public CreateParticipantOptions(string pathConferenceSid, IEndpoint from, IEndpoint to)
         {
             PathConferenceSid = pathConferenceSid;
@@ -397,7 +399,8 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
 
 
         /// <summary> Construct a new DeleteParticipantOptions </summary>
-        /// <param name="pathConferenceSid"> The SID of the conference with the participants to delete. </param>        /// <param name="pathCallSid"> The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID or label of the participant to delete. Non URL safe characters in a label must be percent encoded, for example, a space character is represented as %20. </param>
+        /// <param name="pathConferenceSid"> The SID of the conference with the participants to delete. </param>
+        /// <param name="pathCallSid"> The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID or label of the participant to delete. Non URL safe characters in a label must be percent encoded, for example, a space character is represented as %20. </param>
         public DeleteParticipantOptions(string pathConferenceSid, string pathCallSid)
         {
             PathConferenceSid = pathConferenceSid;
@@ -433,7 +436,8 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
 
 
         /// <summary> Construct a new FetchParticipantOptions </summary>
-        /// <param name="pathConferenceSid"> The SID of the conference with the participant to fetch. </param>        /// <param name="pathCallSid"> The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID or label of the participant to fetch. Non URL safe characters in a label must be percent encoded, for example, a space character is represented as %20. </param>
+        /// <param name="pathConferenceSid"> The SID of the conference with the participant to fetch. </param>
+        /// <param name="pathCallSid"> The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID or label of the participant to fetch. Non URL safe characters in a label must be percent encoded, for example, a space character is represented as %20. </param>
         public FetchParticipantOptions(string pathConferenceSid, string pathCallSid)
         {
             PathConferenceSid = pathConferenceSid;
@@ -561,7 +565,8 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
 
 
         /// <summary> Construct a new UpdateParticipantOptions </summary>
-        /// <param name="pathConferenceSid"> The SID of the conference with the participant to update. </param>        /// <param name="pathCallSid"> The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID or label of the participant to update. Non URL safe characters in a label must be percent encoded, for example, a space character is represented as %20. </param>
+        /// <param name="pathConferenceSid"> The SID of the conference with the participant to update. </param>
+        /// <param name="pathCallSid"> The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID or label of the participant to update. Non URL safe characters in a label must be percent encoded, for example, a space character is represented as %20. </param>
         public UpdateParticipantOptions(string pathConferenceSid, string pathCallSid)
         {
             PathConferenceSid = pathConferenceSid;

@@ -24,7 +24,7 @@ using Twilio.Converters;
 namespace Twilio.Rest.Conversations.V1
 {
 
-    /// <summary> Add a new conversation user to your account&#39;s default service </summary>
+    /// <summary> Add a new conversation user to your account's default service </summary>
     public class CreateUserOptions : IOptions<UserResource>
     {
         
@@ -45,7 +45,7 @@ namespace Twilio.Rest.Conversations.V1
 
 
         /// <summary> Construct a new CreateUserOptions </summary>
-        /// <param name="identity"> The application-defined string that uniquely identifies the resource&#39;s User within the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource). This value is often a username or an email address, and is case-sensitive. </param>
+        /// <param name="identity"> The application-defined string that uniquely identifies the resource's User within the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource). This value is often a username or an email address, and is case-sensitive. </param>
         public CreateUserOptions(string identity)
         {
             Identity = identity;
@@ -88,7 +88,7 @@ namespace Twilio.Rest.Conversations.V1
     }
 
     }
-    /// <summary> Remove a conversation user from your account&#39;s default service </summary>
+    /// <summary> Remove a conversation user from your account's default service </summary>
     public class DeleteUserOptions : IOptions<UserResource>
     {
         
@@ -101,7 +101,7 @@ namespace Twilio.Rest.Conversations.V1
 
 
         /// <summary> Construct a new DeleteUserOptions </summary>
-        /// <param name="pathSid"> The SID of the User resource to delete. This value can be either the &#x60;sid&#x60; or the &#x60;identity&#x60; of the User resource to delete. </param>
+        /// <param name="pathSid"> The SID of the User resource to delete. This value can be either the `sid` or the `identity` of the User resource to delete. </param>
         public DeleteUserOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -130,7 +130,7 @@ namespace Twilio.Rest.Conversations.V1
     }
 
 
-    /// <summary> Fetch a conversation user from your account&#39;s default service </summary>
+    /// <summary> Fetch a conversation user from your account's default service </summary>
     public class FetchUserOptions : IOptions<UserResource>
     {
     
@@ -140,7 +140,7 @@ namespace Twilio.Rest.Conversations.V1
 
 
         /// <summary> Construct a new FetchUserOptions </summary>
-        /// <param name="pathSid"> The SID of the User resource to fetch. This value can be either the &#x60;sid&#x60; or the &#x60;identity&#x60; of the User resource to fetch. </param>
+        /// <param name="pathSid"> The SID of the User resource to fetch. This value can be either the `sid` or the `identity` of the User resource to fetch. </param>
         public FetchUserOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -159,7 +159,7 @@ namespace Twilio.Rest.Conversations.V1
     }
 
 
-    /// <summary> Retrieve a list of all conversation users in your account&#39;s default service </summary>
+    /// <summary> Retrieve a list of all conversation users in your account's default service </summary>
     public class ReadUserOptions : ReadOptions<UserResource>
     {
     
@@ -182,7 +182,7 @@ namespace Twilio.Rest.Conversations.V1
 
     }
 
-    /// <summary> Update an existing conversation user in your account&#39;s default service </summary>
+    /// <summary> Update an existing conversation user in your account's default service </summary>
     public class UpdateUserOptions : IOptions<UserResource>
     {
     
@@ -204,7 +204,7 @@ namespace Twilio.Rest.Conversations.V1
 
 
         /// <summary> Construct a new UpdateUserOptions </summary>
-        /// <param name="pathSid"> The SID of the User resource to update. This value can be either the &#x60;sid&#x60; or the &#x60;identity&#x60; of the User resource to update. </param>
+        /// <param name="pathSid"> The SID of the User resource to update. This value can be either the `sid` or the `identity` of the User resource to update. </param>
         public UpdateUserOptions(string pathSid)
         {
             PathSid = pathSid;

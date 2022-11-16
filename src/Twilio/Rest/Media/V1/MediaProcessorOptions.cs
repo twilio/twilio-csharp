@@ -48,7 +48,8 @@ namespace Twilio.Rest.Media.V1
 
 
         /// <summary> Construct a new CreateMediaProcessorOptions </summary>
-        /// <param name="extension"> The [Media Extension](/docs/live/api/media-extensions-overview) name or URL. Ex: &#x60;video-composer-v2&#x60; </param>        /// <param name="extensionContext"> The context of the Media Extension, represented as a JSON dictionary. See the documentation for the specific [Media Extension](/docs/live/api/media-extensions-overview) you are using for more information about the context to send. </param>
+        /// <param name="extension"> The [Media Extension](/docs/live/api/media-extensions-overview) name or URL. Ex: `video-composer-v2` </param>
+        /// <param name="extensionContext"> The context of the Media Extension, represented as a JSON dictionary. See the documentation for the specific [Media Extension](/docs/live/api/media-extensions-overview) you are using for more information about the context to send. </param>
         public CreateMediaProcessorOptions(string extension, string extensionContext)
         {
             Extension = extension;
@@ -169,7 +170,8 @@ namespace Twilio.Rest.Media.V1
 
 
         /// <summary> Construct a new UpdateMediaProcessorOptions </summary>
-        /// <param name="pathSid"> The SID of the MediaProcessor resource to update. </param>        /// <param name="status">  </param>
+        /// <param name="pathSid"> The SID of the MediaProcessor resource to update. </param>
+        /// <param name="status">  </param>
         public UpdateMediaProcessorOptions(string pathSid, MediaProcessorResource.UpdateStatusEnum status)
         {
             PathSid = pathSid;

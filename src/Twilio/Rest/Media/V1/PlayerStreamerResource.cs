@@ -90,7 +90,6 @@ namespace Twilio.Rest.Media.V1
             string path = "/v1/PlayerStreamers";
 
 
-
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Media,
@@ -162,10 +161,6 @@ namespace Twilio.Rest.Media.V1
             return await CreateAsync(options, client);
         }
         #endif
-
-
-
-
         
         private static Request BuildFetchRequest(FetchPlayerStreamerOptions options, ITwilioRestClient client)
         {
@@ -174,7 +169,6 @@ namespace Twilio.Rest.Media.V1
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Get,
@@ -237,7 +231,6 @@ namespace Twilio.Rest.Media.V1
         {
             
             string path = "/v1/PlayerStreamers";
-
 
 
             return new Request(
@@ -361,8 +354,6 @@ namespace Twilio.Rest.Media.V1
             return Page<PlayerStreamerResource>.FromJson("player_streamers", response.Content);
         }
 
-
-
         
         private static Request BuildUpdateRequest(UpdatePlayerStreamerOptions options, ITwilioRestClient client)
         {
@@ -371,7 +362,6 @@ namespace Twilio.Rest.Media.V1
 
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
-
 
             return new Request(
                 HttpMethod.Post,
@@ -491,7 +481,7 @@ namespace Twilio.Rest.Media.V1
         [JsonProperty("status_callback")]
         public Uri StatusCallback { get; private set; }
 
-        ///<summary> The HTTP method Twilio should use to call the &#x60;status_callback&#x60; URL </summary> 
+        ///<summary> The HTTP method Twilio should use to call the `status_callback` URL </summary> 
         [JsonProperty("status_callback_method")]
         public Twilio.Http.HttpMethod StatusCallbackMethod { get; private set; }
 
