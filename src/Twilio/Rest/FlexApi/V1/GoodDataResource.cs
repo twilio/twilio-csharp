@@ -127,6 +127,10 @@ namespace Twilio.Rest.FlexApi.V1
         [JsonProperty("session_id")]
         public string SessionId { get; private set; }
 
+        ///<summary> GoodData login base URL </summary> 
+        [JsonProperty("gd_base_url")]
+        public string GdBaseUrl { get; private set; }
+
         ///<summary> The URL of this resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
