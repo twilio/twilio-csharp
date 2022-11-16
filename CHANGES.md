@@ -1,6 +1,12 @@
 twilio-csharp Changelog
 =======================
 
+[2022-11-16] Version 6.0.1
+--------------------------
+**Library - Chore**
+- [PR #654](https://github.com/twilio/twilio-csharp/pull/654): bump csharp version to 6.0.1. Thanks to [@sbansla](https://github.com/sbansla)!
+
+
 [2022-11-16] Version 6.0.0
 --------------------------
 **Note:** This release contains breaking changes, check our [upgrade guide](./UPGRADE.md#2022-11-XX-5xx-to-6xx) for detailed migration notes.
