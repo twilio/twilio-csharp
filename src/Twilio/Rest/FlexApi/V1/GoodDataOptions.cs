@@ -25,7 +25,7 @@ namespace Twilio.Rest.FlexApi.V1
 {
 
     /// <summary> To create a GoodData Session id to access GoodData dashboards </summary>
-    public class CreateGoodDatumOptions : IOptions<GoodDatumResource>
+    public class CreateGoodDataOptions : IOptions<GoodDataResource>
     {
         
         ///<summary> The Token HTTP request header </summary> 
