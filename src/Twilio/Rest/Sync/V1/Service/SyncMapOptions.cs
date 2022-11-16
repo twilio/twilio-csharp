@@ -84,7 +84,8 @@ namespace Twilio.Rest.Sync.V1.Service
 
 
         /// <summary> Construct a new DeleteSyncMapOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync Map resource to delete. </param>        /// <param name="pathSid"> The SID of the Sync Map resource to delete. Can be the Sync Map's `sid` or its `unique_name`. </param>
+        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync Map resource to delete. </param>
+        /// <param name="pathSid"> The SID of the Sync Map resource to delete. Can be the Sync Map's `sid` or its `unique_name`. </param>
         public DeleteSyncMapOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -117,7 +118,8 @@ namespace Twilio.Rest.Sync.V1.Service
 
 
         /// <summary> Construct a new FetchSyncMapOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync Map resource to fetch. </param>        /// <param name="pathSid"> The SID of the Sync Map resource to fetch. Can be the Sync Map's `sid` or its `unique_name`. </param>
+        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync Map resource to fetch. </param>
+        /// <param name="pathSid"> The SID of the Sync Map resource to fetch. Can be the Sync Map's `sid` or its `unique_name`. </param>
         public FetchSyncMapOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -188,7 +190,8 @@ namespace Twilio.Rest.Sync.V1.Service
 
 
         /// <summary> Construct a new UpdateSyncMapOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync Map resource to update. </param>        /// <param name="pathSid"> The SID of the Sync Map resource to update. Can be the Sync Map's `sid` or its `unique_name`. </param>
+        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync Map resource to update. </param>
+        /// <param name="pathSid"> The SID of the Sync Map resource to update. Can be the Sync Map's `sid` or its `unique_name`. </param>
         public UpdateSyncMapOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;

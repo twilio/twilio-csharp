@@ -42,7 +42,9 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
 
 
         /// <summary> Construct a new DeleteRecordingAddOnResultPayloadOptions </summary>
-        /// <param name="pathReferenceSid"> The SID of the recording to which the AddOnResult resource that contains the payloads to delete belongs. </param>        /// <param name="pathAddOnResultSid"> The SID of the AddOnResult to which the payloads to delete belongs. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Recording AddOnResult Payload resource to delete. </param>
+        /// <param name="pathReferenceSid"> The SID of the recording to which the AddOnResult resource that contains the payloads to delete belongs. </param>
+        /// <param name="pathAddOnResultSid"> The SID of the AddOnResult to which the payloads to delete belongs. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Recording AddOnResult Payload resource to delete. </param>
         public DeletePayloadOptions(string pathReferenceSid, string pathAddOnResultSid, string pathSid)
         {
             PathReferenceSid = pathReferenceSid;
@@ -82,7 +84,9 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
 
 
         /// <summary> Construct a new FetchRecordingAddOnResultPayloadOptions </summary>
-        /// <param name="pathReferenceSid"> The SID of the recording to which the AddOnResult resource that contains the payload to fetch belongs. </param>        /// <param name="pathAddOnResultSid"> The SID of the AddOnResult to which the payload to fetch belongs. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Recording AddOnResult Payload resource to fetch. </param>
+        /// <param name="pathReferenceSid"> The SID of the recording to which the AddOnResult resource that contains the payload to fetch belongs. </param>
+        /// <param name="pathAddOnResultSid"> The SID of the AddOnResult to which the payload to fetch belongs. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Recording AddOnResult Payload resource to fetch. </param>
         public FetchPayloadOptions(string pathReferenceSid, string pathAddOnResultSid, string pathSid)
         {
             PathReferenceSid = pathReferenceSid;
@@ -119,7 +123,8 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
 
 
         /// <summary> Construct a new ListRecordingAddOnResultPayloadOptions </summary>
-        /// <param name="pathReferenceSid"> The SID of the recording to which the AddOnResult resource that contains the payloads to read belongs. </param>        /// <param name="pathAddOnResultSid"> The SID of the AddOnResult to which the payloads to read belongs. </param>
+        /// <param name="pathReferenceSid"> The SID of the recording to which the AddOnResult resource that contains the payloads to read belongs. </param>
+        /// <param name="pathAddOnResultSid"> The SID of the AddOnResult to which the payloads to read belongs. </param>
         public ReadPayloadOptions(string pathReferenceSid, string pathAddOnResultSid)
         {
             PathReferenceSid = pathReferenceSid;

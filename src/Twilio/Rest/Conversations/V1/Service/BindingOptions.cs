@@ -36,7 +36,8 @@ namespace Twilio.Rest.Conversations.V1.Service
 
 
         /// <summary> Construct a new DeleteServiceBindingOptions </summary>
-        /// <param name="pathChatServiceSid"> The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) to delete the Binding resource from. </param>        /// <param name="pathSid"> The SID of the Binding resource to delete. </param>
+        /// <param name="pathChatServiceSid"> The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) to delete the Binding resource from. </param>
+        /// <param name="pathSid"> The SID of the Binding resource to delete. </param>
         public DeleteBindingOptions(string pathChatServiceSid, string pathSid)
         {
             PathChatServiceSid = pathChatServiceSid;
@@ -69,7 +70,8 @@ namespace Twilio.Rest.Conversations.V1.Service
 
 
         /// <summary> Construct a new FetchServiceBindingOptions </summary>
-        /// <param name="pathChatServiceSid"> The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Binding resource is associated with. </param>        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="pathChatServiceSid"> The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Binding resource is associated with. </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         public FetchBindingOptions(string pathChatServiceSid, string pathSid)
         {
             PathChatServiceSid = pathChatServiceSid;

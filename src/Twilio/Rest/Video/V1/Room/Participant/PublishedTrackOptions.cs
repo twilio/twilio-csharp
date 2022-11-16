@@ -39,7 +39,9 @@ namespace Twilio.Rest.Video.V1.Room.Participant
 
 
         /// <summary> Construct a new FetchRoomParticipantPublishedTrackOptions </summary>
-        /// <param name="pathRoomSid"> The SID of the Room resource where the Track resource to fetch is published. </param>        /// <param name="pathParticipantSid"> The SID of the Participant resource with the published track to fetch. </param>        /// <param name="pathSid"> The SID of the RoomParticipantPublishedTrack resource to fetch. </param>
+        /// <param name="pathRoomSid"> The SID of the Room resource where the Track resource to fetch is published. </param>
+        /// <param name="pathParticipantSid"> The SID of the Participant resource with the published track to fetch. </param>
+        /// <param name="pathSid"> The SID of the RoomParticipantPublishedTrack resource to fetch. </param>
         public FetchPublishedTrackOptions(string pathRoomSid, string pathParticipantSid, string pathSid)
         {
             PathRoomSid = pathRoomSid;
@@ -73,7 +75,8 @@ namespace Twilio.Rest.Video.V1.Room.Participant
 
 
         /// <summary> Construct a new ListRoomParticipantPublishedTrackOptions </summary>
-        /// <param name="pathRoomSid"> The SID of the Room resource where the Track resources to read are published. </param>        /// <param name="pathParticipantSid"> The SID of the Participant resource with the published tracks to read. </param>
+        /// <param name="pathRoomSid"> The SID of the Room resource where the Track resources to read are published. </param>
+        /// <param name="pathParticipantSid"> The SID of the Participant resource with the published tracks to read. </param>
         public ReadPublishedTrackOptions(string pathRoomSid, string pathParticipantSid)
         {
             PathRoomSid = pathRoomSid;

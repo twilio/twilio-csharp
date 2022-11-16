@@ -63,7 +63,8 @@ namespace Twilio.Rest.Conversations.V1
 
 
         /// <summary> Construct a new CreateConfigurationAddressOptions </summary>
-        /// <param name="type">  </param>        /// <param name="address"> The unique address to be configured. The address can be a whatsapp address or phone number </param>
+        /// <param name="type">  </param>
+        /// <param name="address"> The unique address to be configured. The address can be a whatsapp address or phone number </param>
         public CreateAddressConfigurationOptions(AddressConfigurationResource.TypeEnum type, string address)
         {
             Type = type;

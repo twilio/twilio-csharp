@@ -42,7 +42,9 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
 
 
         /// <summary> Construct a new CreateInviteOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/api/chat/rest/services) to create the resource under. </param>        /// <param name="pathChannelSid"> The SID of the [Channel](https://www.twilio.com/docs/api/chat/rest/channels) the new resource belongs to. </param>        /// <param name="identity"> The `identity` value that uniquely identifies the new resource's [User](https://www.twilio.com/docs/api/chat/rest/v1/user) within the [Service](https://www.twilio.com/docs/api/chat/rest/v1/service). See [access tokens](https://www.twilio.com/docs/api/chat/guides/create-tokens) for more info. </param>
+        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/api/chat/rest/services) to create the resource under. </param>
+        /// <param name="pathChannelSid"> The SID of the [Channel](https://www.twilio.com/docs/api/chat/rest/channels) the new resource belongs to. </param>
+        /// <param name="identity"> The `identity` value that uniquely identifies the new resource's [User](https://www.twilio.com/docs/api/chat/rest/v1/user) within the [Service](https://www.twilio.com/docs/api/chat/rest/v1/service). See [access tokens](https://www.twilio.com/docs/api/chat/guides/create-tokens) for more info. </param>
         public CreateInviteOptions(string pathServiceSid, string pathChannelSid, string identity)
         {
             PathServiceSid = pathServiceSid;
@@ -85,7 +87,9 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
 
 
         /// <summary> Construct a new DeleteInviteOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/api/chat/rest/services) to delete the resource from. </param>        /// <param name="pathChannelSid"> The SID of the [Channel](https://www.twilio.com/docs/api/chat/rest/channels) the resource to delete belongs to. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Invite resource to delete. </param>
+        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/api/chat/rest/services) to delete the resource from. </param>
+        /// <param name="pathChannelSid"> The SID of the [Channel](https://www.twilio.com/docs/api/chat/rest/channels) the resource to delete belongs to. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Invite resource to delete. </param>
         public DeleteInviteOptions(string pathServiceSid, string pathChannelSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -122,7 +126,9 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
 
 
         /// <summary> Construct a new FetchInviteOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/api/chat/rest/services) to fetch the resource from. </param>        /// <param name="pathChannelSid"> The SID of the [Channel](https://www.twilio.com/docs/api/chat/rest/channels) the resource to fetch belongs to. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Invite resource to fetch. </param>
+        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/api/chat/rest/services) to fetch the resource from. </param>
+        /// <param name="pathChannelSid"> The SID of the [Channel](https://www.twilio.com/docs/api/chat/rest/channels) the resource to fetch belongs to. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Invite resource to fetch. </param>
         public FetchInviteOptions(string pathServiceSid, string pathChannelSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -159,7 +165,8 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
 
 
         /// <summary> Construct a new ListInviteOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/api/chat/rest/services) to read the resources from. </param>        /// <param name="pathChannelSid"> The SID of the [Channel](https://www.twilio.com/docs/api/chat/rest/channels) the resources to read belong to. </param>
+        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/api/chat/rest/services) to read the resources from. </param>
+        /// <param name="pathChannelSid"> The SID of the [Channel](https://www.twilio.com/docs/api/chat/rest/channels) the resources to read belong to. </param>
         public ReadInviteOptions(string pathServiceSid, string pathChannelSid)
         {
             PathServiceSid = pathServiceSid;

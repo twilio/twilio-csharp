@@ -51,7 +51,8 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
 
 
         /// <summary> Construct a new CreateBundleOptions </summary>
-        /// <param name="friendlyName"> The string that you assigned to describe the resource. </param>        /// <param name="email"> The email address that will receive updates when the Bundle resource changes status. </param>
+        /// <param name="friendlyName"> The string that you assigned to describe the resource. </param>
+        /// <param name="email"> The email address that will receive updates when the Bundle resource changes status. </param>
         public CreateBundleOptions(string friendlyName, string email)
         {
             FriendlyName = friendlyName;

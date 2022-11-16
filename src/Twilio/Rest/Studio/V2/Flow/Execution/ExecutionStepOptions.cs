@@ -39,7 +39,9 @@ namespace Twilio.Rest.Studio.V2.Flow.Execution
 
 
         /// <summary> Construct a new FetchExecutionStepOptions </summary>
-        /// <param name="pathFlowSid"> The SID of the Flow with the Step to fetch. </param>        /// <param name="pathExecutionSid"> The SID of the Execution resource with the Step to fetch. </param>        /// <param name="pathSid"> The SID of the ExecutionStep resource to fetch. </param>
+        /// <param name="pathFlowSid"> The SID of the Flow with the Step to fetch. </param>
+        /// <param name="pathExecutionSid"> The SID of the Execution resource with the Step to fetch. </param>
+        /// <param name="pathSid"> The SID of the ExecutionStep resource to fetch. </param>
         public FetchExecutionStepOptions(string pathFlowSid, string pathExecutionSid, string pathSid)
         {
             PathFlowSid = pathFlowSid;
@@ -73,7 +75,8 @@ namespace Twilio.Rest.Studio.V2.Flow.Execution
 
 
         /// <summary> Construct a new ListExecutionStepOptions </summary>
-        /// <param name="pathFlowSid"> The SID of the Flow with the Steps to read. </param>        /// <param name="pathExecutionSid"> The SID of the Execution with the Steps to read. </param>
+        /// <param name="pathFlowSid"> The SID of the Flow with the Steps to read. </param>
+        /// <param name="pathExecutionSid"> The SID of the Execution with the Steps to read. </param>
         public ReadExecutionStepOptions(string pathFlowSid, string pathExecutionSid)
         {
             PathFlowSid = pathFlowSid;

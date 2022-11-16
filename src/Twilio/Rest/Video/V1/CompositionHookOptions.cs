@@ -268,7 +268,8 @@ namespace Twilio.Rest.Video.V1
 
 
         /// <summary> Construct a new UpdateCompositionHookOptions </summary>
-        /// <param name="pathSid"> The SID of the CompositionHook resource to update. </param>        /// <param name="friendlyName"> A descriptive string that you create to describe the resource. It can be up to  100 characters long and it must be unique within the account. </param>
+        /// <param name="pathSid"> The SID of the CompositionHook resource to update. </param>
+        /// <param name="friendlyName"> A descriptive string that you create to describe the resource. It can be up to  100 characters long and it must be unique within the account. </param>
         public UpdateCompositionHookOptions(string pathSid, string friendlyName)
         {
             PathSid = pathSid;

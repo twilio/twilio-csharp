@@ -45,7 +45,8 @@ namespace Twilio.Rest.Preview.Understand.Assistant
 
 
         /// <summary> Construct a new CreateUnderstandTaskOptions </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>        /// <param name="uniqueName"> A user-provided string that uniquely identifies this resource as an alternative to the sid. Unique up to 64 characters long. </param>
+        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
+        /// <param name="uniqueName"> A user-provided string that uniquely identifies this resource as an alternative to the sid. Unique up to 64 characters long. </param>
         public CreateTaskOptions(string pathAssistantSid, string uniqueName)
         {
             PathAssistantSid = pathAssistantSid;
@@ -92,7 +93,8 @@ namespace Twilio.Rest.Preview.Understand.Assistant
 
 
         /// <summary> Construct a new DeleteUnderstandTaskOptions </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         public DeleteTaskOptions(string pathAssistantSid, string pathSid)
         {
             PathAssistantSid = pathAssistantSid;
@@ -125,7 +127,8 @@ namespace Twilio.Rest.Preview.Understand.Assistant
 
 
         /// <summary> Construct a new FetchUnderstandTaskOptions </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         public FetchTaskOptions(string pathAssistantSid, string pathSid)
         {
             PathAssistantSid = pathAssistantSid;
@@ -202,7 +205,8 @@ namespace Twilio.Rest.Preview.Understand.Assistant
 
 
         /// <summary> Construct a new UpdateUnderstandTaskOptions </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         public UpdateTaskOptions(string pathAssistantSid, string pathSid)
         {
             PathAssistantSid = pathAssistantSid;

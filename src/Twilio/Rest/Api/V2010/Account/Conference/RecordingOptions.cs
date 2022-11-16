@@ -39,7 +39,8 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
 
 
         /// <summary> Construct a new DeleteConferenceRecordingOptions </summary>
-        /// <param name="pathConferenceSid"> The Conference SID that identifies the conference associated with the recording to delete. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Conference Recording resource to delete. </param>
+        /// <param name="pathConferenceSid"> The Conference SID that identifies the conference associated with the recording to delete. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Conference Recording resource to delete. </param>
         public DeleteRecordingOptions(string pathConferenceSid, string pathSid)
         {
             PathConferenceSid = pathConferenceSid;
@@ -75,7 +76,8 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
 
 
         /// <summary> Construct a new FetchConferenceRecordingOptions </summary>
-        /// <param name="pathConferenceSid"> The Conference SID that identifies the conference associated with the recording to fetch. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Conference Recording resource to fetch. </param>
+        /// <param name="pathConferenceSid"> The Conference SID that identifies the conference associated with the recording to fetch. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Conference Recording resource to fetch. </param>
         public FetchRecordingOptions(string pathConferenceSid, string pathSid)
         {
             PathConferenceSid = pathConferenceSid;
@@ -185,7 +187,9 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
 
 
         /// <summary> Construct a new UpdateConferenceRecordingOptions </summary>
-        /// <param name="pathConferenceSid"> The Conference SID that identifies the conference associated with the recording to update. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Conference Recording resource to update. Use `Twilio.CURRENT` to reference the current active recording. </param>        /// <param name="status">  </param>
+        /// <param name="pathConferenceSid"> The Conference SID that identifies the conference associated with the recording to update. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Conference Recording resource to update. Use `Twilio.CURRENT` to reference the current active recording. </param>
+        /// <param name="status">  </param>
         public UpdateRecordingOptions(string pathConferenceSid, string pathSid, RecordingResource.StatusEnum status)
         {
             PathConferenceSid = pathConferenceSid;

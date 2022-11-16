@@ -36,7 +36,8 @@ namespace Twilio.Rest.Video.V1.Room
 
 
         /// <summary> Construct a new FetchRoomParticipantOptions </summary>
-        /// <param name="pathRoomSid"> The SID of the room with the Participant resource to fetch. </param>        /// <param name="pathSid"> The SID of the RoomParticipant resource to fetch. </param>
+        /// <param name="pathRoomSid"> The SID of the room with the Participant resource to fetch. </param>
+        /// <param name="pathSid"> The SID of the RoomParticipant resource to fetch. </param>
         public FetchParticipantOptions(string pathRoomSid, string pathSid)
         {
             PathRoomSid = pathRoomSid;
@@ -132,7 +133,8 @@ namespace Twilio.Rest.Video.V1.Room
 
 
         /// <summary> Construct a new UpdateRoomParticipantOptions </summary>
-        /// <param name="pathRoomSid"> The SID of the room with the participant to update. </param>        /// <param name="pathSid"> The SID of the RoomParticipant resource to update. </param>
+        /// <param name="pathRoomSid"> The SID of the room with the participant to update. </param>
+        /// <param name="pathSid"> The SID of the RoomParticipant resource to update. </param>
         public UpdateParticipantOptions(string pathRoomSid, string pathSid)
         {
             PathRoomSid = pathRoomSid;

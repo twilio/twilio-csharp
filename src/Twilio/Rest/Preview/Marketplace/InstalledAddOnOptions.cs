@@ -42,7 +42,8 @@ namespace Twilio.Rest.Preview.Marketplace
 
 
         /// <summary> Construct a new CreateMarketplaceInstalledAddOnOptions </summary>
-        /// <param name="availableAddOnSid"> The SID of the AvaliableAddOn to install. </param>        /// <param name="acceptTermsOfService"> Whether the Terms of Service were accepted. </param>
+        /// <param name="availableAddOnSid"> The SID of the AvaliableAddOn to install. </param>
+        /// <param name="acceptTermsOfService"> Whether the Terms of Service were accepted. </param>
         public CreateInstalledAddOnOptions(string availableAddOnSid, bool? acceptTermsOfService)
         {
             AvailableAddOnSid = availableAddOnSid;

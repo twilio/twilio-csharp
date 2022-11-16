@@ -54,7 +54,10 @@ namespace Twilio.Rest.Notify.V1.Service
 
 
         /// <summary> Construct a new CreateBindingOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/notify/api/service-resource) to create the resource under. </param>        /// <param name="identity"> The `identity` value that uniquely identifies the new resource's [User](https://www.twilio.com/docs/chat/rest/user-resource) within the [Service](https://www.twilio.com/docs/notify/api/service-resource). Up to 20 Bindings can be created for the same Identity in a given Service. </param>        /// <param name="bindingType">  </param>        /// <param name="address"> The channel-specific address. For APNS, the device token. For FCM and GCM, the registration token. For SMS, a phone number in E.164 format. For Facebook Messenger, the Messenger ID of the user or a phone number in E.164 format. </param>
+        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/notify/api/service-resource) to create the resource under. </param>
+        /// <param name="identity"> The `identity` value that uniquely identifies the new resource's [User](https://www.twilio.com/docs/chat/rest/user-resource) within the [Service](https://www.twilio.com/docs/notify/api/service-resource). Up to 20 Bindings can be created for the same Identity in a given Service. </param>
+        /// <param name="bindingType">  </param>
+        /// <param name="address"> The channel-specific address. For APNS, the device token. For FCM and GCM, the registration token. For SMS, a phone number in E.164 format. For Facebook Messenger, the Messenger ID of the user or a phone number in E.164 format. </param>
         public CreateBindingOptions(string pathServiceSid, string identity, BindingResource.BindingTypeEnum bindingType, string address)
         {
             PathServiceSid = pathServiceSid;
@@ -116,7 +119,8 @@ namespace Twilio.Rest.Notify.V1.Service
 
 
         /// <summary> Construct a new DeleteBindingOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/notify/api/service-resource) to delete the resource from. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Binding resource to delete. </param>
+        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/notify/api/service-resource) to delete the resource from. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Binding resource to delete. </param>
         public DeleteBindingOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -149,7 +153,8 @@ namespace Twilio.Rest.Notify.V1.Service
 
 
         /// <summary> Construct a new FetchBindingOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/notify/api/service-resource) to fetch the resource from. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Binding resource to fetch. </param>
+        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/notify/api/service-resource) to fetch the resource from. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Binding resource to fetch. </param>
         public FetchBindingOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;

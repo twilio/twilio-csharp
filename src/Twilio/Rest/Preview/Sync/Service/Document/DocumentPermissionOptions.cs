@@ -39,7 +39,9 @@ namespace Twilio.Rest.Preview.Sync.Service.Document
 
 
         /// <summary> Construct a new DeleteSyncDocumentPermissionOptions </summary>
-        /// <param name="pathServiceSid">  </param>        /// <param name="pathDocumentSid"> Identifier of the Sync Document. Either a SID or a unique name. </param>        /// <param name="pathIdentity"> Arbitrary string identifier representing a user associated with an FPA token, assigned by the developer. </param>
+        /// <param name="pathServiceSid">  </param>
+        /// <param name="pathDocumentSid"> Identifier of the Sync Document. Either a SID or a unique name. </param>
+        /// <param name="pathIdentity"> Arbitrary string identifier representing a user associated with an FPA token, assigned by the developer. </param>
         public DeleteDocumentPermissionOptions(string pathServiceSid, string pathDocumentSid, string pathIdentity)
         {
             PathServiceSid = pathServiceSid;
@@ -76,7 +78,9 @@ namespace Twilio.Rest.Preview.Sync.Service.Document
 
 
         /// <summary> Construct a new FetchSyncDocumentPermissionOptions </summary>
-        /// <param name="pathServiceSid">  </param>        /// <param name="pathDocumentSid"> Identifier of the Sync Document. Either a SID or a unique name. </param>        /// <param name="pathIdentity"> Arbitrary string identifier representing a user associated with an FPA token, assigned by the developer. </param>
+        /// <param name="pathServiceSid">  </param>
+        /// <param name="pathDocumentSid"> Identifier of the Sync Document. Either a SID or a unique name. </param>
+        /// <param name="pathIdentity"> Arbitrary string identifier representing a user associated with an FPA token, assigned by the developer. </param>
         public FetchDocumentPermissionOptions(string pathServiceSid, string pathDocumentSid, string pathIdentity)
         {
             PathServiceSid = pathServiceSid;
@@ -110,7 +114,8 @@ namespace Twilio.Rest.Preview.Sync.Service.Document
 
 
         /// <summary> Construct a new ListSyncDocumentPermissionOptions </summary>
-        /// <param name="pathServiceSid">  </param>        /// <param name="pathDocumentSid"> Identifier of the Sync Document. Either a SID or a unique name. </param>
+        /// <param name="pathServiceSid">  </param>
+        /// <param name="pathDocumentSid"> Identifier of the Sync Document. Either a SID or a unique name. </param>
         public ReadDocumentPermissionOptions(string pathServiceSid, string pathDocumentSid)
         {
             PathServiceSid = pathServiceSid;
@@ -158,7 +163,12 @@ namespace Twilio.Rest.Preview.Sync.Service.Document
 
 
         /// <summary> Construct a new UpdateSyncDocumentPermissionOptions </summary>
-        /// <param name="pathServiceSid"> The unique SID identifier of the Sync Service Instance. </param>        /// <param name="pathDocumentSid"> Identifier of the Sync Document. Either a SID or a unique name. </param>        /// <param name="pathIdentity"> Arbitrary string identifier representing a human user associated with an FPA token, assigned by the developer. </param>        /// <param name="read"> Boolean flag specifying whether the identity can read the Sync Document. </param>        /// <param name="write"> Boolean flag specifying whether the identity can update the Sync Document. </param>        /// <param name="manage"> Boolean flag specifying whether the identity can delete the Sync Document. </param>
+        /// <param name="pathServiceSid"> The unique SID identifier of the Sync Service Instance. </param>
+        /// <param name="pathDocumentSid"> Identifier of the Sync Document. Either a SID or a unique name. </param>
+        /// <param name="pathIdentity"> Arbitrary string identifier representing a human user associated with an FPA token, assigned by the developer. </param>
+        /// <param name="read"> Boolean flag specifying whether the identity can read the Sync Document. </param>
+        /// <param name="write"> Boolean flag specifying whether the identity can update the Sync Document. </param>
+        /// <param name="manage"> Boolean flag specifying whether the identity can delete the Sync Document. </param>
         public UpdateDocumentPermissionOptions(string pathServiceSid, string pathDocumentSid, string pathIdentity, bool? read, bool? write, bool? manage)
         {
             PathServiceSid = pathServiceSid;

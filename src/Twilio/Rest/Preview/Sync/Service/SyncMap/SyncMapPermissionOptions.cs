@@ -39,7 +39,9 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
 
 
         /// <summary> Construct a new DeleteSyncSyncMapPermissionOptions </summary>
-        /// <param name="pathServiceSid">  </param>        /// <param name="pathMapSid"> Identifier of the Sync Map. Either a SID or a unique name. </param>        /// <param name="pathIdentity"> Arbitrary string identifier representing a user associated with an FPA token, assigned by the developer. </param>
+        /// <param name="pathServiceSid">  </param>
+        /// <param name="pathMapSid"> Identifier of the Sync Map. Either a SID or a unique name. </param>
+        /// <param name="pathIdentity"> Arbitrary string identifier representing a user associated with an FPA token, assigned by the developer. </param>
         public DeleteSyncMapPermissionOptions(string pathServiceSid, string pathMapSid, string pathIdentity)
         {
             PathServiceSid = pathServiceSid;
@@ -76,7 +78,9 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
 
 
         /// <summary> Construct a new FetchSyncSyncMapPermissionOptions </summary>
-        /// <param name="pathServiceSid">  </param>        /// <param name="pathMapSid"> Identifier of the Sync Map. Either a SID or a unique name. </param>        /// <param name="pathIdentity"> Arbitrary string identifier representing a user associated with an FPA token, assigned by the developer. </param>
+        /// <param name="pathServiceSid">  </param>
+        /// <param name="pathMapSid"> Identifier of the Sync Map. Either a SID or a unique name. </param>
+        /// <param name="pathIdentity"> Arbitrary string identifier representing a user associated with an FPA token, assigned by the developer. </param>
         public FetchSyncMapPermissionOptions(string pathServiceSid, string pathMapSid, string pathIdentity)
         {
             PathServiceSid = pathServiceSid;
@@ -110,7 +114,8 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
 
 
         /// <summary> Construct a new ListSyncSyncMapPermissionOptions </summary>
-        /// <param name="pathServiceSid">  </param>        /// <param name="pathMapSid"> Identifier of the Sync Map. Either a SID or a unique name. </param>
+        /// <param name="pathServiceSid">  </param>
+        /// <param name="pathMapSid"> Identifier of the Sync Map. Either a SID or a unique name. </param>
         public ReadSyncMapPermissionOptions(string pathServiceSid, string pathMapSid)
         {
             PathServiceSid = pathServiceSid;
@@ -158,7 +163,12 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
 
 
         /// <summary> Construct a new UpdateSyncSyncMapPermissionOptions </summary>
-        /// <param name="pathServiceSid"> The unique SID identifier of the Sync Service Instance. </param>        /// <param name="pathMapSid"> Identifier of the Sync Map. Either a SID or a unique name. </param>        /// <param name="pathIdentity"> Arbitrary string identifier representing a human user associated with an FPA token, assigned by the developer. </param>        /// <param name="read"> Boolean flag specifying whether the identity can read the Sync Map. </param>        /// <param name="write"> Boolean flag specifying whether the identity can create, update and delete Items of the Sync Map. </param>        /// <param name="manage"> Boolean flag specifying whether the identity can delete the Sync Map. </param>
+        /// <param name="pathServiceSid"> The unique SID identifier of the Sync Service Instance. </param>
+        /// <param name="pathMapSid"> Identifier of the Sync Map. Either a SID or a unique name. </param>
+        /// <param name="pathIdentity"> Arbitrary string identifier representing a human user associated with an FPA token, assigned by the developer. </param>
+        /// <param name="read"> Boolean flag specifying whether the identity can read the Sync Map. </param>
+        /// <param name="write"> Boolean flag specifying whether the identity can create, update and delete Items of the Sync Map. </param>
+        /// <param name="manage"> Boolean flag specifying whether the identity can delete the Sync Map. </param>
         public UpdateSyncMapPermissionOptions(string pathServiceSid, string pathMapSid, string pathIdentity, bool? read, bool? write, bool? manage)
         {
             PathServiceSid = pathServiceSid;

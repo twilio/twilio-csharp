@@ -39,7 +39,9 @@ namespace Twilio.Rest.Events.V1
 
 
         /// <summary> Construct a new CreateSubscriptionOptions </summary>
-        /// <param name="description"> A human readable description for the Subscription **This value should not contain PII.** </param>        /// <param name="sinkSid"> The SID of the sink that events selected by this subscription should be sent to. Sink must be active for the subscription to be created. </param>        /// <param name="types"> An array of objects containing the subscribed Event Types </param>
+        /// <param name="description"> A human readable description for the Subscription **This value should not contain PII.** </param>
+        /// <param name="sinkSid"> The SID of the sink that events selected by this subscription should be sent to. Sink must be active for the subscription to be created. </param>
+        /// <param name="types"> An array of objects containing the subscribed Event Types </param>
         public CreateSubscriptionOptions(string description, string sinkSid, List<object> types)
         {
             Description = description;

@@ -106,7 +106,8 @@ namespace Twilio.Rest.Proxy.V1.Service
 
 
         /// <summary> Construct a new DeleteSessionOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the parent [Service](https://www.twilio.com/docs/proxy/api/service) of the resource to delete. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Session resource to delete. </param>
+        /// <param name="pathServiceSid"> The SID of the parent [Service](https://www.twilio.com/docs/proxy/api/service) of the resource to delete. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Session resource to delete. </param>
         public DeleteSessionOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -139,7 +140,8 @@ namespace Twilio.Rest.Proxy.V1.Service
 
 
         /// <summary> Construct a new FetchSessionOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the parent [Service](https://www.twilio.com/docs/proxy/api/service) of the resource to fetch. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Session resource to fetch. </param>
+        /// <param name="pathServiceSid"> The SID of the parent [Service](https://www.twilio.com/docs/proxy/api/service) of the resource to fetch. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Session resource to fetch. </param>
         public FetchSessionOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -213,7 +215,8 @@ namespace Twilio.Rest.Proxy.V1.Service
 
 
         /// <summary> Construct a new UpdateSessionOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the parent [Service](https://www.twilio.com/docs/proxy/api/service) of the resource to update. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Session resource to update. </param>
+        /// <param name="pathServiceSid"> The SID of the parent [Service](https://www.twilio.com/docs/proxy/api/service) of the resource to update. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Session resource to update. </param>
         public UpdateSessionOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;

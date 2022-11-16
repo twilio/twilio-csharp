@@ -45,7 +45,10 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
 
 
         /// <summary> Construct a new CreateUnderstandSampleOptions </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>        /// <param name="pathTaskSid"> The unique ID of the Task associated with this Sample. </param>        /// <param name="language"> An ISO language-country string of the sample. </param>        /// <param name="taggedText"> The text example of how end-users may express this task. The sample may contain Field tag blocks. </param>
+        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
+        /// <param name="pathTaskSid"> The unique ID of the Task associated with this Sample. </param>
+        /// <param name="language"> An ISO language-country string of the sample. </param>
+        /// <param name="taggedText"> The text example of how end-users may express this task. The sample may contain Field tag blocks. </param>
         public CreateSampleOptions(string pathAssistantSid, string pathTaskSid, string language, string taggedText)
         {
             PathAssistantSid = pathAssistantSid;
@@ -93,7 +96,9 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
 
 
         /// <summary> Construct a new DeleteUnderstandSampleOptions </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>        /// <param name="pathTaskSid"> The unique ID of the Task associated with this Sample. </param>        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
+        /// <param name="pathTaskSid"> The unique ID of the Task associated with this Sample. </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         public DeleteSampleOptions(string pathAssistantSid, string pathTaskSid, string pathSid)
         {
             PathAssistantSid = pathAssistantSid;
@@ -130,7 +135,9 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
 
 
         /// <summary> Construct a new FetchUnderstandSampleOptions </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>        /// <param name="pathTaskSid"> The unique ID of the Task associated with this Sample. </param>        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
+        /// <param name="pathTaskSid"> The unique ID of the Task associated with this Sample. </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         public FetchSampleOptions(string pathAssistantSid, string pathTaskSid, string pathSid)
         {
             PathAssistantSid = pathAssistantSid;
@@ -167,7 +174,8 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
 
 
         /// <summary> Construct a new ListUnderstandSampleOptions </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>        /// <param name="pathTaskSid"> The unique ID of the Task associated with this Sample. </param>
+        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
+        /// <param name="pathTaskSid"> The unique ID of the Task associated with this Sample. </param>
         public ReadSampleOptions(string pathAssistantSid, string pathTaskSid)
         {
             PathAssistantSid = pathAssistantSid;
@@ -219,7 +227,9 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
 
 
         /// <summary> Construct a new UpdateUnderstandSampleOptions </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>        /// <param name="pathTaskSid"> The unique ID of the Task associated with this Sample. </param>        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
+        /// <param name="pathTaskSid"> The unique ID of the Task associated with this Sample. </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         public UpdateSampleOptions(string pathAssistantSid, string pathTaskSid, string pathSid)
         {
             PathAssistantSid = pathAssistantSid;

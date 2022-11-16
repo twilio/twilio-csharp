@@ -148,7 +148,8 @@ namespace Twilio.Rest.Media.V1
 
 
         /// <summary> Construct a new UpdatePlayerStreamerOptions </summary>
-        /// <param name="pathSid"> The SID of the PlayerStreamer resource to update. </param>        /// <param name="status">  </param>
+        /// <param name="pathSid"> The SID of the PlayerStreamer resource to update. </param>
+        /// <param name="status">  </param>
         public UpdatePlayerStreamerOptions(string pathSid, PlayerStreamerResource.UpdateStatusEnum status)
         {
             PathSid = pathSid;

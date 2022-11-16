@@ -42,7 +42,8 @@ namespace Twilio.Rest.Serverless.V1
 
 
         /// <summary> Construct a new CreateServiceOptions </summary>
-        /// <param name="uniqueName"> A user-defined string that uniquely identifies the Service resource. It can be used as an alternative to the `sid` in the URL path to address the Service resource. This value must be 50 characters or less in length and be unique. </param>        /// <param name="friendlyName"> A descriptive string that you create to describe the Service resource. It can be a maximum of 255 characters. </param>
+        /// <param name="uniqueName"> A user-defined string that uniquely identifies the Service resource. It can be used as an alternative to the `sid` in the URL path to address the Service resource. This value must be 50 characters or less in length and be unique. </param>
+        /// <param name="friendlyName"> A descriptive string that you create to describe the Service resource. It can be a maximum of 255 characters. </param>
         public CreateServiceOptions(string uniqueName, string friendlyName)
         {
             UniqueName = uniqueName;

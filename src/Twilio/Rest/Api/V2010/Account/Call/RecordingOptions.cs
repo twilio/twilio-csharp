@@ -112,7 +112,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
 
         /// <summary> Construct a new DeleteCallRecordingOptions </summary>
-        /// <param name="pathCallSid"> The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID of the resources to delete. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Recording resource to delete. </param>
+        /// <param name="pathCallSid"> The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID of the resources to delete. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Recording resource to delete. </param>
         public DeleteRecordingOptions(string pathCallSid, string pathSid)
         {
             PathCallSid = pathCallSid;
@@ -148,7 +149,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
 
         /// <summary> Construct a new FetchCallRecordingOptions </summary>
-        /// <param name="pathCallSid"> The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID of the resource to fetch. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Recording resource to fetch. </param>
+        /// <param name="pathCallSid"> The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID of the resource to fetch. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Recording resource to fetch. </param>
         public FetchRecordingOptions(string pathCallSid, string pathSid)
         {
             PathCallSid = pathCallSid;
@@ -258,7 +260,9 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
 
         /// <summary> Construct a new UpdateCallRecordingOptions </summary>
-        /// <param name="pathCallSid"> The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID of the resource to update. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Recording resource to update. </param>        /// <param name="status">  </param>
+        /// <param name="pathCallSid"> The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID of the resource to update. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Recording resource to update. </param>
+        /// <param name="status">  </param>
         public UpdateRecordingOptions(string pathCallSid, string pathSid, RecordingResource.StatusEnum status)
         {
             PathCallSid = pathCallSid;

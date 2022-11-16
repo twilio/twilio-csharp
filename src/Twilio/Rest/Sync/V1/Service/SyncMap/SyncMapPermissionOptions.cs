@@ -39,7 +39,9 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
 
 
         /// <summary> Construct a new DeleteSyncMapPermissionOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync Map Permission resource to delete. Can be the Service's `sid` value or `default`. </param>        /// <param name="pathMapSid"> The SID of the Sync Map with the Sync Map Permission resource to delete. Can be the Sync Map resource's `sid` or its `unique_name`. </param>        /// <param name="pathIdentity"> The application-defined string that uniquely identifies the User's Sync Map Permission resource to delete. </param>
+        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync Map Permission resource to delete. Can be the Service's `sid` value or `default`. </param>
+        /// <param name="pathMapSid"> The SID of the Sync Map with the Sync Map Permission resource to delete. Can be the Sync Map resource's `sid` or its `unique_name`. </param>
+        /// <param name="pathIdentity"> The application-defined string that uniquely identifies the User's Sync Map Permission resource to delete. </param>
         public DeleteSyncMapPermissionOptions(string pathServiceSid, string pathMapSid, string pathIdentity)
         {
             PathServiceSid = pathServiceSid;
@@ -76,7 +78,9 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
 
 
         /// <summary> Construct a new FetchSyncMapPermissionOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync Map Permission resource to fetch. Can be the Service's `sid` value or `default`. </param>        /// <param name="pathMapSid"> The SID of the Sync Map with the Sync Map Permission resource to fetch. Can be the Sync Map resource's `sid` or its `unique_name`. </param>        /// <param name="pathIdentity"> The application-defined string that uniquely identifies the User's Sync Map Permission resource to fetch. </param>
+        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync Map Permission resource to fetch. Can be the Service's `sid` value or `default`. </param>
+        /// <param name="pathMapSid"> The SID of the Sync Map with the Sync Map Permission resource to fetch. Can be the Sync Map resource's `sid` or its `unique_name`. </param>
+        /// <param name="pathIdentity"> The application-defined string that uniquely identifies the User's Sync Map Permission resource to fetch. </param>
         public FetchSyncMapPermissionOptions(string pathServiceSid, string pathMapSid, string pathIdentity)
         {
             PathServiceSid = pathServiceSid;
@@ -110,7 +114,8 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
 
 
         /// <summary> Construct a new ListSyncMapPermissionOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync Map Permission resources to read. Can be the Service's `sid` value or `default`. </param>        /// <param name="pathMapSid"> The SID of the Sync Map with the Permission resources to read. Can be the Sync Map resource's `sid` or its `unique_name`. </param>
+        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync Map Permission resources to read. Can be the Service's `sid` value or `default`. </param>
+        /// <param name="pathMapSid"> The SID of the Sync Map with the Permission resources to read. Can be the Sync Map resource's `sid` or its `unique_name`. </param>
         public ReadSyncMapPermissionOptions(string pathServiceSid, string pathMapSid)
         {
             PathServiceSid = pathServiceSid;
@@ -158,7 +163,12 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
 
 
         /// <summary> Construct a new UpdateSyncMapPermissionOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync Map Permission resource to update. Can be the Service's `sid` value or `default`. </param>        /// <param name="pathMapSid"> The SID of the Sync Map with the Sync Map Permission resource to update. Can be the Sync Map resource's `sid` or its `unique_name`. </param>        /// <param name="pathIdentity"> The application-defined string that uniquely identifies the User's Sync Map Permission resource to update. </param>        /// <param name="read"> Whether the identity can read the Sync Map and its Items. Default value is `false`. </param>        /// <param name="write"> Whether the identity can create, update, and delete Items in the Sync Map. Default value is `false`. </param>        /// <param name="manage"> Whether the identity can delete the Sync Map. Default value is `false`. </param>
+        /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync Map Permission resource to update. Can be the Service's `sid` value or `default`. </param>
+        /// <param name="pathMapSid"> The SID of the Sync Map with the Sync Map Permission resource to update. Can be the Sync Map resource's `sid` or its `unique_name`. </param>
+        /// <param name="pathIdentity"> The application-defined string that uniquely identifies the User's Sync Map Permission resource to update. </param>
+        /// <param name="read"> Whether the identity can read the Sync Map and its Items. Default value is `false`. </param>
+        /// <param name="write"> Whether the identity can create, update, and delete Items in the Sync Map. Default value is `false`. </param>
+        /// <param name="manage"> Whether the identity can delete the Sync Map. Default value is `false`. </param>
         public UpdateSyncMapPermissionOptions(string pathServiceSid, string pathMapSid, string pathIdentity, bool? read, bool? write, bool? manage)
         {
             PathServiceSid = pathServiceSid;

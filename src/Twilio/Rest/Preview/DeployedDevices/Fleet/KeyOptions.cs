@@ -77,7 +77,8 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
 
 
         /// <summary> Construct a new DeleteDeployedDevicesKeyOptions </summary>
-        /// <param name="pathFleetSid">  </param>        /// <param name="pathSid"> Provides a 34 character string that uniquely identifies the requested Key credential resource. </param>
+        /// <param name="pathFleetSid">  </param>
+        /// <param name="pathSid"> Provides a 34 character string that uniquely identifies the requested Key credential resource. </param>
         public DeleteKeyOptions(string pathFleetSid, string pathSid)
         {
             PathFleetSid = pathFleetSid;
@@ -110,7 +111,8 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
 
 
         /// <summary> Construct a new FetchDeployedDevicesKeyOptions </summary>
-        /// <param name="pathFleetSid">  </param>        /// <param name="pathSid"> Provides a 34 character string that uniquely identifies the requested Key credential resource. </param>
+        /// <param name="pathFleetSid">  </param>
+        /// <param name="pathSid"> Provides a 34 character string that uniquely identifies the requested Key credential resource. </param>
         public FetchKeyOptions(string pathFleetSid, string pathSid)
         {
             PathFleetSid = pathFleetSid;
@@ -188,7 +190,8 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
 
 
         /// <summary> Construct a new UpdateDeployedDevicesKeyOptions </summary>
-        /// <param name="pathFleetSid">  </param>        /// <param name="pathSid"> Provides a 34 character string that uniquely identifies the requested Key credential resource. </param>
+        /// <param name="pathFleetSid">  </param>
+        /// <param name="pathSid"> Provides a 34 character string that uniquely identifies the requested Key credential resource. </param>
         public UpdateKeyOptions(string pathFleetSid, string pathSid)
         {
             PathFleetSid = pathFleetSid;

@@ -42,7 +42,9 @@ namespace Twilio.Rest.Studio.V1.Flow
 
 
         /// <summary> Construct a new CreateEngagementOptions </summary>
-        /// <param name="pathFlowSid"> The SID of the Flow. </param>        /// <param name="to"> The Contact phone number to start a Studio Flow Engagement, available as variable `{{contact.channel.address}}`. </param>        /// <param name="from"> The Twilio phone number to send messages or initiate calls from during the Flow Engagement. Available as variable `{{flow.channel.address}}` </param>
+        /// <param name="pathFlowSid"> The SID of the Flow. </param>
+        /// <param name="to"> The Contact phone number to start a Studio Flow Engagement, available as variable `{{contact.channel.address}}`. </param>
+        /// <param name="from"> The Twilio phone number to send messages or initiate calls from during the Flow Engagement. Available as variable `{{flow.channel.address}}` </param>
         public CreateEngagementOptions(string pathFlowSid, Types.PhoneNumber to, Types.PhoneNumber from)
         {
             PathFlowSid = pathFlowSid;
@@ -86,7 +88,8 @@ namespace Twilio.Rest.Studio.V1.Flow
 
 
         /// <summary> Construct a new DeleteEngagementOptions </summary>
-        /// <param name="pathFlowSid"> The SID of the Flow to delete Engagements from. </param>        /// <param name="pathSid"> The SID of the Engagement resource to delete. </param>
+        /// <param name="pathFlowSid"> The SID of the Flow to delete Engagements from. </param>
+        /// <param name="pathSid"> The SID of the Engagement resource to delete. </param>
         public DeleteEngagementOptions(string pathFlowSid, string pathSid)
         {
             PathFlowSid = pathFlowSid;
@@ -119,7 +122,8 @@ namespace Twilio.Rest.Studio.V1.Flow
 
 
         /// <summary> Construct a new FetchEngagementOptions </summary>
-        /// <param name="pathFlowSid"> The SID of the Flow. </param>        /// <param name="pathSid"> The SID of the Engagement resource to fetch. </param>
+        /// <param name="pathFlowSid"> The SID of the Flow. </param>
+        /// <param name="pathSid"> The SID of the Engagement resource to fetch. </param>
         public FetchEngagementOptions(string pathFlowSid, string pathSid)
         {
             PathFlowSid = pathFlowSid;

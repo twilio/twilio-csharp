@@ -36,7 +36,8 @@ namespace Twilio.Rest.Video.V1.Room.Participant
 
 
         /// <summary> Construct a new UpdateRoomParticipantAnonymizeOptions </summary>
-        /// <param name="pathRoomSid"> The SID of the room with the participant to update. </param>        /// <param name="pathSid"> The SID of the RoomParticipant resource to update. </param>
+        /// <param name="pathRoomSid"> The SID of the room with the participant to update. </param>
+        /// <param name="pathSid"> The SID of the RoomParticipant resource to update. </param>
         public UpdateAnonymizeOptions(string pathRoomSid, string pathSid)
         {
             PathRoomSid = pathRoomSid;

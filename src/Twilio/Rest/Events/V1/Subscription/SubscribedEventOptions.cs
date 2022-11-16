@@ -39,7 +39,8 @@ namespace Twilio.Rest.Events.V1.Subscription
 
 
         /// <summary> Construct a new CreateSubscribedEventOptions </summary>
-        /// <param name="pathSubscriptionSid"> The unique SID identifier of the Subscription. </param>        /// <param name="type"> Type of event being subscribed to. </param>
+        /// <param name="pathSubscriptionSid"> The unique SID identifier of the Subscription. </param>
+        /// <param name="type"> Type of event being subscribed to. </param>
         public CreateSubscribedEventOptions(string pathSubscriptionSid, string type)
         {
             PathSubscriptionSid = pathSubscriptionSid;
@@ -78,7 +79,8 @@ namespace Twilio.Rest.Events.V1.Subscription
 
 
         /// <summary> Construct a new DeleteSubscribedEventOptions </summary>
-        /// <param name="pathSubscriptionSid"> The unique SID identifier of the Subscription. </param>        /// <param name="pathType"> Type of event being subscribed to. </param>
+        /// <param name="pathSubscriptionSid"> The unique SID identifier of the Subscription. </param>
+        /// <param name="pathType"> Type of event being subscribed to. </param>
         public DeleteSubscribedEventOptions(string pathSubscriptionSid, string pathType)
         {
             PathSubscriptionSid = pathSubscriptionSid;
@@ -111,7 +113,8 @@ namespace Twilio.Rest.Events.V1.Subscription
 
 
         /// <summary> Construct a new FetchSubscribedEventOptions </summary>
-        /// <param name="pathSubscriptionSid"> The unique SID identifier of the Subscription. </param>        /// <param name="pathType"> Type of event being subscribed to. </param>
+        /// <param name="pathSubscriptionSid"> The unique SID identifier of the Subscription. </param>
+        /// <param name="pathType"> Type of event being subscribed to. </param>
         public FetchSubscribedEventOptions(string pathSubscriptionSid, string pathType)
         {
             PathSubscriptionSid = pathSubscriptionSid;
@@ -179,7 +182,8 @@ namespace Twilio.Rest.Events.V1.Subscription
 
 
         /// <summary> Construct a new UpdateSubscribedEventOptions </summary>
-        /// <param name="pathSubscriptionSid"> The unique SID identifier of the Subscription. </param>        /// <param name="pathType"> Type of event being subscribed to. </param>
+        /// <param name="pathSubscriptionSid"> The unique SID identifier of the Subscription. </param>
+        /// <param name="pathType"> Type of event being subscribed to. </param>
         public UpdateSubscribedEventOptions(string pathSubscriptionSid, string pathType)
         {
             PathSubscriptionSid = pathSubscriptionSid;

@@ -36,7 +36,8 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
 
 
         /// <summary> Construct a new CreateItemAssignmentOptions </summary>
-        /// <param name="pathBundleSid"> The unique string that we created to identify the Bundle resource. </param>        /// <param name="objectSid"> The SID of an object bag that holds information of the different items. </param>
+        /// <param name="pathBundleSid"> The unique string that we created to identify the Bundle resource. </param>
+        /// <param name="objectSid"> The SID of an object bag that holds information of the different items. </param>
         public CreateItemAssignmentOptions(string pathBundleSid, string objectSid)
         {
             PathBundleSid = pathBundleSid;
@@ -71,7 +72,8 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
 
 
         /// <summary> Construct a new DeleteItemAssignmentOptions </summary>
-        /// <param name="pathBundleSid"> The unique string that we created to identify the Bundle resource. </param>        /// <param name="pathSid"> The unique string that we created to identify the Identity resource. </param>
+        /// <param name="pathBundleSid"> The unique string that we created to identify the Bundle resource. </param>
+        /// <param name="pathSid"> The unique string that we created to identify the Identity resource. </param>
         public DeleteItemAssignmentOptions(string pathBundleSid, string pathSid)
         {
             PathBundleSid = pathBundleSid;
@@ -104,7 +106,8 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
 
 
         /// <summary> Construct a new FetchItemAssignmentOptions </summary>
-        /// <param name="pathBundleSid"> The unique string that we created to identify the Bundle resource. </param>        /// <param name="pathSid"> The unique string that we created to identify the Identity resource. </param>
+        /// <param name="pathBundleSid"> The unique string that we created to identify the Bundle resource. </param>
+        /// <param name="pathSid"> The unique string that we created to identify the Identity resource. </param>
         public FetchItemAssignmentOptions(string pathBundleSid, string pathSid)
         {
             PathBundleSid = pathBundleSid;

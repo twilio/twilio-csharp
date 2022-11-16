@@ -91,7 +91,8 @@ namespace Twilio.Rest.Chat.V1.Service
 
 
         /// <summary> Construct a new DeleteChannelOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/api/chat/rest/services) to delete the resource from. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Channel resource to delete. </param>
+        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/api/chat/rest/services) to delete the resource from. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Channel resource to delete. </param>
         public DeleteChannelOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -124,7 +125,8 @@ namespace Twilio.Rest.Chat.V1.Service
 
 
         /// <summary> Construct a new FetchChannelOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/api/chat/rest/services) to fetch the resource from. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Channel resource to fetch. </param>
+        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/api/chat/rest/services) to fetch the resource from. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Channel resource to fetch. </param>
         public FetchChannelOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -206,7 +208,8 @@ namespace Twilio.Rest.Chat.V1.Service
 
 
         /// <summary> Construct a new UpdateChannelOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/api/chat/rest/services) to update the resource from. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Channel resource to update. </param>
+        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/api/chat/rest/services) to update the resource from. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Channel resource to update. </param>
         public UpdateChannelOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;

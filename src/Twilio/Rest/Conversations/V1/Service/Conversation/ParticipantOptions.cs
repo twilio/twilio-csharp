@@ -63,7 +63,8 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
 
 
         /// <summary> Construct a new CreateServiceConversationParticipantOptions </summary>
-        /// <param name="pathChatServiceSid"> The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Participant resource is associated with. </param>        /// <param name="pathConversationSid"> The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this participant. </param>
+        /// <param name="pathChatServiceSid"> The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Participant resource is associated with. </param>
+        /// <param name="pathConversationSid"> The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this participant. </param>
         public CreateParticipantOptions(string pathChatServiceSid, string pathConversationSid)
         {
             PathChatServiceSid = pathChatServiceSid;
@@ -142,7 +143,9 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
 
 
         /// <summary> Construct a new DeleteServiceConversationParticipantOptions </summary>
-        /// <param name="pathChatServiceSid"> The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Participant resource is associated with. </param>        /// <param name="pathConversationSid"> The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this participant. </param>        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="pathChatServiceSid"> The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Participant resource is associated with. </param>
+        /// <param name="pathConversationSid"> The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this participant. </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         public DeleteParticipantOptions(string pathChatServiceSid, string pathConversationSid, string pathSid)
         {
             PathChatServiceSid = pathChatServiceSid;
@@ -189,7 +192,9 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
 
 
         /// <summary> Construct a new FetchServiceConversationParticipantOptions </summary>
-        /// <param name="pathChatServiceSid"> The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Participant resource is associated with. </param>        /// <param name="pathConversationSid"> The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this participant. </param>        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="pathChatServiceSid"> The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Participant resource is associated with. </param>
+        /// <param name="pathConversationSid"> The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this participant. </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         public FetchParticipantOptions(string pathChatServiceSid, string pathConversationSid, string pathSid)
         {
             PathChatServiceSid = pathChatServiceSid;
@@ -223,7 +228,8 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
 
 
         /// <summary> Construct a new ListServiceConversationParticipantOptions </summary>
-        /// <param name="pathChatServiceSid"> The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Participant resource is associated with. </param>        /// <param name="pathConversationSid"> The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for participants. </param>
+        /// <param name="pathChatServiceSid"> The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Participant resource is associated with. </param>
+        /// <param name="pathConversationSid"> The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for participants. </param>
         public ReadParticipantOptions(string pathChatServiceSid, string pathConversationSid)
         {
             PathChatServiceSid = pathChatServiceSid;
@@ -292,7 +298,9 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
 
 
         /// <summary> Construct a new UpdateServiceConversationParticipantOptions </summary>
-        /// <param name="pathChatServiceSid"> The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Participant resource is associated with. </param>        /// <param name="pathConversationSid"> The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this participant. </param>        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="pathChatServiceSid"> The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Participant resource is associated with. </param>
+        /// <param name="pathConversationSid"> The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this participant. </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         public UpdateParticipantOptions(string pathChatServiceSid, string pathConversationSid, string pathSid)
         {
             PathChatServiceSid = pathChatServiceSid;

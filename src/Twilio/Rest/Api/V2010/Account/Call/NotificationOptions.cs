@@ -39,7 +39,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
 
         /// <summary> Construct a new FetchCallNotificationOptions </summary>
-        /// <param name="pathCallSid"> The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID of the Call Notification resource to fetch. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Call Notification resource to fetch. </param>
+        /// <param name="pathCallSid"> The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID of the Call Notification resource to fetch. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Call Notification resource to fetch. </param>
         public FetchNotificationOptions(string pathCallSid, string pathSid)
         {
             PathCallSid = pathCallSid;

@@ -42,7 +42,8 @@ namespace Twilio.Rest.Supersim.V1
 
 
         /// <summary> Construct a new CreateSmsCommandOptions </summary>
-        /// <param name="sim"> The `sid` or `unique_name` of the [SIM](https://www.twilio.com/docs/iot/supersim/api/sim-resource) to send the SMS Command to. </param>        /// <param name="payload"> The message body of the SMS Command. </param>
+        /// <param name="sim"> The `sid` or `unique_name` of the [SIM](https://www.twilio.com/docs/iot/supersim/api/sim-resource) to send the SMS Command to. </param>
+        /// <param name="payload"> The message body of the SMS Command. </param>
         public CreateSmsCommandOptions(string sim, string payload)
         {
             Sim = sim;

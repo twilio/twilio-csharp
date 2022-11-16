@@ -36,7 +36,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
 
         /// <summary> Construct a new FetchEventOptions </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Event to fetch. </param>        /// <param name="pathSid"> The SID of the Event resource to fetch. </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Event to fetch. </param>
+        /// <param name="pathSid"> The SID of the Event resource to fetch. </param>
         public FetchEventOptions(string pathWorkspaceSid, string pathSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;

@@ -51,7 +51,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Workflow
 
 
         /// <summary> Construct a new FetchWorkflowCumulativeStatisticsOptions </summary>
-        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the resource to fetch. </param>        /// <param name="pathWorkflowSid"> Returns the list of Tasks that are being controlled by the Workflow with the specified Sid value. </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the resource to fetch. </param>
+        /// <param name="pathWorkflowSid"> Returns the list of Tasks that are being controlled by the Workflow with the specified Sid value. </param>
         public FetchWorkflowCumulativeStatisticsOptions(string pathWorkspaceSid, string pathWorkflowSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;

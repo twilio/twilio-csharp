@@ -45,7 +45,8 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
 
 
         /// <summary> Construct a new CreateTaskOptions </summary>
-        /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the new resource. </param>        /// <param name="uniqueName"> An application-defined string that uniquely identifies the new resource. It can be used as an alternative to the `sid` in the URL path to address the resource. This value must be unique and 64 characters or less in length. </param>
+        /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the new resource. </param>
+        /// <param name="uniqueName"> An application-defined string that uniquely identifies the new resource. It can be used as an alternative to the `sid` in the URL path to address the resource. This value must be unique and 64 characters or less in length. </param>
         public CreateTaskOptions(string pathAssistantSid, string uniqueName)
         {
             PathAssistantSid = pathAssistantSid;
@@ -92,7 +93,8 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
 
 
         /// <summary> Construct a new DeleteTaskOptions </summary>
-        /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resources to delete. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Task resource to delete. </param>
+        /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resources to delete. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Task resource to delete. </param>
         public DeleteTaskOptions(string pathAssistantSid, string pathSid)
         {
             PathAssistantSid = pathAssistantSid;
@@ -125,7 +127,8 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
 
 
         /// <summary> Construct a new FetchTaskOptions </summary>
-        /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resource to fetch. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Task resource to fetch. </param>
+        /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resource to fetch. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Task resource to fetch. </param>
         public FetchTaskOptions(string pathAssistantSid, string pathSid)
         {
             PathAssistantSid = pathAssistantSid;
@@ -202,7 +205,8 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
 
 
         /// <summary> Construct a new UpdateTaskOptions </summary>
-        /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resource to update. </param>        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Task resource to update. </param>
+        /// <param name="pathAssistantSid"> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resource to update. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Task resource to update. </param>
         public UpdateTaskOptions(string pathAssistantSid, string pathSid)
         {
             PathAssistantSid = pathAssistantSid;

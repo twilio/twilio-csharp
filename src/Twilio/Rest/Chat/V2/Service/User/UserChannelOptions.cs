@@ -42,7 +42,9 @@ namespace Twilio.Rest.Chat.V2.Service.User
 
 
         /// <summary> Construct a new DeleteUserChannelOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/api/chat/rest/services) to read the resources from. </param>        /// <param name="pathUserSid"> The SID of the [User](https://www.twilio.com/docs/api/chat/rest/users) to read the User Channel resources from. </param>        /// <param name="pathChannelSid"> The SID of the [Channel](https://www.twilio.com/docs/api/chat/rest/channels) the resource belongs to. </param>
+        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/api/chat/rest/services) to read the resources from. </param>
+        /// <param name="pathUserSid"> The SID of the [User](https://www.twilio.com/docs/api/chat/rest/users) to read the User Channel resources from. </param>
+        /// <param name="pathChannelSid"> The SID of the [Channel](https://www.twilio.com/docs/api/chat/rest/channels) the resource belongs to. </param>
         public DeleteUserChannelOptions(string pathServiceSid, string pathUserSid, string pathChannelSid)
         {
             PathServiceSid = pathServiceSid;
@@ -89,7 +91,9 @@ namespace Twilio.Rest.Chat.V2.Service.User
 
 
         /// <summary> Construct a new FetchUserChannelOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to fetch the User Channel resource from. </param>        /// <param name="pathUserSid"> The SID of the [User](https://www.twilio.com/docs/chat/rest/user-resource) to fetch the User Channel resource from. This value can be either the `sid` or the `identity` of the User resource. </param>        /// <param name="pathChannelSid"> The SID of the [Channel](https://www.twilio.com/docs/chat/channels) that has the User Channel to fetch. This value can be either the `sid` or the `unique_name` of the Channel to fetch. </param>
+        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to fetch the User Channel resource from. </param>
+        /// <param name="pathUserSid"> The SID of the [User](https://www.twilio.com/docs/chat/rest/user-resource) to fetch the User Channel resource from. This value can be either the `sid` or the `identity` of the User resource. </param>
+        /// <param name="pathChannelSid"> The SID of the [Channel](https://www.twilio.com/docs/chat/channels) that has the User Channel to fetch. This value can be either the `sid` or the `unique_name` of the Channel to fetch. </param>
         public FetchUserChannelOptions(string pathServiceSid, string pathUserSid, string pathChannelSid)
         {
             PathServiceSid = pathServiceSid;
@@ -123,7 +127,8 @@ namespace Twilio.Rest.Chat.V2.Service.User
 
 
         /// <summary> Construct a new ListUserChannelOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to read the User Channel resources from. </param>        /// <param name="pathUserSid"> The SID of the [User](https://www.twilio.com/docs/chat/rest/user-resource) to read the User Channel resources from. This value can be either the `sid` or the `identity` of the User resource. </param>
+        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to read the User Channel resources from. </param>
+        /// <param name="pathUserSid"> The SID of the [User](https://www.twilio.com/docs/chat/rest/user-resource) to read the User Channel resources from. This value can be either the `sid` or the `identity` of the User resource. </param>
         public ReadUserChannelOptions(string pathServiceSid, string pathUserSid)
         {
             PathServiceSid = pathServiceSid;
@@ -171,7 +176,9 @@ namespace Twilio.Rest.Chat.V2.Service.User
 
 
         /// <summary> Construct a new UpdateUserChannelOptions </summary>
-        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to update the User Channel resource in. </param>        /// <param name="pathUserSid"> The SID of the [User](https://www.twilio.com/docs/chat/rest/user-resource) to update the User Channel resource from. This value can be either the `sid` or the `identity` of the User resource. </param>        /// <param name="pathChannelSid"> The SID of the [Channel](https://www.twilio.com/docs/chat/channels) with the User Channel resource to update. This value can be the Channel resource's `sid` or `unique_name`. </param>
+        /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to update the User Channel resource in. </param>
+        /// <param name="pathUserSid"> The SID of the [User](https://www.twilio.com/docs/chat/rest/user-resource) to update the User Channel resource from. This value can be either the `sid` or the `identity` of the User resource. </param>
+        /// <param name="pathChannelSid"> The SID of the [Channel](https://www.twilio.com/docs/chat/channels) with the User Channel resource to update. This value can be the Channel resource's `sid` or `unique_name`. </param>
         public UpdateUserChannelOptions(string pathServiceSid, string pathUserSid, string pathChannelSid)
         {
             PathServiceSid = pathServiceSid;

@@ -39,7 +39,9 @@ namespace Twilio.Rest.Trusthub.V1.CustomerProfiles
 
 
         /// <summary> Construct a new CreateCustomerProfileChannelEndpointAssignmentOptions </summary>
-        /// <param name="pathCustomerProfileSid"> The unique string that we created to identify the CustomerProfile resource. </param>        /// <param name="channelEndpointType"> The type of channel endpoint. eg: phone-number </param>        /// <param name="channelEndpointSid"> The SID of an channel endpoint </param>
+        /// <param name="pathCustomerProfileSid"> The unique string that we created to identify the CustomerProfile resource. </param>
+        /// <param name="channelEndpointType"> The type of channel endpoint. eg: phone-number </param>
+        /// <param name="channelEndpointSid"> The SID of an channel endpoint </param>
         public CreateCustomerProfilesChannelEndpointAssignmentOptions(string pathCustomerProfileSid, string channelEndpointType, string channelEndpointSid)
         {
             PathCustomerProfileSid = pathCustomerProfileSid;
@@ -79,7 +81,8 @@ namespace Twilio.Rest.Trusthub.V1.CustomerProfiles
 
 
         /// <summary> Construct a new DeleteCustomerProfileChannelEndpointAssignmentOptions </summary>
-        /// <param name="pathCustomerProfileSid"> The unique string that we created to identify the CustomerProfile resource. </param>        /// <param name="pathSid"> The unique string that we created to identify the resource. </param>
+        /// <param name="pathCustomerProfileSid"> The unique string that we created to identify the CustomerProfile resource. </param>
+        /// <param name="pathSid"> The unique string that we created to identify the resource. </param>
         public DeleteCustomerProfilesChannelEndpointAssignmentOptions(string pathCustomerProfileSid, string pathSid)
         {
             PathCustomerProfileSid = pathCustomerProfileSid;
@@ -112,7 +115,8 @@ namespace Twilio.Rest.Trusthub.V1.CustomerProfiles
 
 
         /// <summary> Construct a new FetchCustomerProfileChannelEndpointAssignmentOptions </summary>
-        /// <param name="pathCustomerProfileSid"> The unique string that we created to identify the CustomerProfile resource. </param>        /// <param name="pathSid"> The unique string that we created to identify the resource. </param>
+        /// <param name="pathCustomerProfileSid"> The unique string that we created to identify the CustomerProfile resource. </param>
+        /// <param name="pathSid"> The unique string that we created to identify the resource. </param>
         public FetchCustomerProfilesChannelEndpointAssignmentOptions(string pathCustomerProfileSid, string pathSid)
         {
             PathCustomerProfileSid = pathCustomerProfileSid;
