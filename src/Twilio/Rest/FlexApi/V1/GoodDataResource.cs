@@ -26,12 +26,12 @@ using Twilio.Http;
 
 namespace Twilio.Rest.FlexApi.V1
 {
-    public class GoodDatumResource : Resource
+    public class GoodDataResource : Resource
     {
     
 
         
-        private static Request BuildCreateRequest(CreateGoodDatumOptions options, ITwilioRestClient client)
+        private static Request BuildCreateRequest(CreateGoodDataOptions options, ITwilioRestClient client)
         {
             
             string path = "/v1/Accounts/GoodData";
@@ -47,10 +47,10 @@ namespace Twilio.Rest.FlexApi.V1
         }
 
         /// <summary> To create a GoodData Session id to access GoodData dashboards </summary>
-        /// <param name="options"> Create GoodDatum parameters </param>
+        /// <param name="options"> Create GoodData parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of GoodDatum </returns>
-        public static GoodDatumResource Create(CreateGoodDatumOptions options, ITwilioRestClient client = null)
+        /// <returns> A single instance of GoodData </returns>
+        public static GoodDataResource Create(CreateGoodDataOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildCreateRequest(options, client));
@@ -59,10 +59,10 @@ namespace Twilio.Rest.FlexApi.V1
 
         #if !NET35
         /// <summary> To create a GoodData Session id to access GoodData dashboards </summary>
-        /// <param name="options"> Create GoodDatum parameters </param>
+        /// <param name="options"> Create GoodData parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of GoodDatum </returns>
-        public static async System.Threading.Tasks.Task<GoodDatumResource> CreateAsync(CreateGoodDatumOptions options,
+        /// <returns> Task that resolves to A single instance of GoodData </returns>
+        public static async System.Threading.Tasks.Task<GoodDataResource> CreateAsync(CreateGoodDataOptions options,
         ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -74,12 +74,12 @@ namespace Twilio.Rest.FlexApi.V1
         /// <summary> To create a GoodData Session id to access GoodData dashboards </summary>
         /// <param name="token"> The Token HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of GoodDatum </returns>
-        public static GoodDatumResource Create(
+        /// <returns> A single instance of GoodData </returns>
+        public static GoodDataResource Create(
                                           string token = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new CreateGoodDatumOptions(){  Token = token };
+            var options = new CreateGoodDataOptions(){  Token = token };
             return Create(options, client);
         }
 
@@ -87,26 +87,26 @@ namespace Twilio.Rest.FlexApi.V1
         /// <summary> To create a GoodData Session id to access GoodData dashboards </summary>
         /// <param name="token"> The Token HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of GoodDatum </returns>
-        public static async System.Threading.Tasks.Task<GoodDatumResource> CreateAsync(
+        /// <returns> Task that resolves to A single instance of GoodData </returns>
+        public static async System.Threading.Tasks.Task<GoodDataResource> CreateAsync(
                                                                                   string token = null,
                                                                                   ITwilioRestClient client = null)
         {
-        var options = new CreateGoodDatumOptions(){  Token = token };
+        var options = new CreateGoodDataOptions(){  Token = token };
             return await CreateAsync(options, client);
         }
         #endif
     
         /// <summary>
-        /// Converts a JSON string into a GoodDatumResource object
+        /// Converts a JSON string into a GoodDataResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> GoodDatumResource object represented by the provided JSON </returns>
-        public static GoodDatumResource FromJson(string json)
+        /// <returns> GoodDataResource object represented by the provided JSON </returns>
+        public static GoodDataResource FromJson(string json)
         {
             try
             {
-                return JsonConvert.DeserializeObject<GoodDatumResource>(json);
+                return JsonConvert.DeserializeObject<GoodDataResource>(json);
             }
             catch (JsonException e)
             {
@@ -133,7 +133,7 @@ namespace Twilio.Rest.FlexApi.V1
 
 
 
-        private GoodDatumResource() {
+        private GoodDataResource() {
 
         }
     }
