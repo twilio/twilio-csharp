@@ -154,6 +154,17 @@ namespace Twilio.TwiML
 
             return elem;
         }
+        
+        /// <summary>
+        /// Generate XDocument from TwiML object
+        /// </summary>
+        public XDocument ToXDocument()
+        {
+            var declaration = new XDeclaration("1.0", "utf-8", null);
+            var elem = this.ToXml();
+            var document = new XDocument(declaration, elem);
+            return document;
+        }
 
         /// <summary>
         /// Generate XML string from TwiML object
@@ -161,10 +172,7 @@ namespace Twilio.TwiML
         /// <param name="formattingOptions"> Change generated string format. </param>
         public string ToString(SaveOptions formattingOptions = SaveOptions.None)
         {
-            var declaration = new XDeclaration("1.0", "utf-8", null);
-            var elem = this.ToXml();
-
-            var document = new XDocument(declaration, elem);
+            var document = this.ToXDocument();
             var writer = new Utf8StringWriter();
             document.Save(writer, formattingOptions);
             return writer.GetStringBuilder().ToString();
