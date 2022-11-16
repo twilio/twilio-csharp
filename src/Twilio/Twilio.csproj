@@ -7,7 +7,7 @@
     <Copyright>Copyright © Twilio</Copyright>
     <AssemblyTitle>Twilio</AssemblyTitle>
     <NeutralLanguage>en-US</NeutralLanguage>
-    <VersionPrefix>5.81.2</VersionPrefix>
+    <VersionPrefix>6.0.0</VersionPrefix>
     <VersionSuffix>
     </VersionSuffix>
     <Authors>Twilio</Authors>
