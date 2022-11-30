@@ -346,6 +346,10 @@ namespace Twilio.Rest.Microvisor.V1
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
+        ///<summary> The absolute URLs of related resources </summary> 
+        [JsonProperty("links")]
+        public Dictionary<string, string> Links { get; private set; }
+
 
 
         private DeviceResource() {

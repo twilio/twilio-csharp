@@ -91,30 +91,60 @@ namespace Twilio.Rest.Lookups.V2
         #endif
         /// <summary> fetch </summary>
         /// <param name="pathPhoneNumber"> The phone number to lookup in E.164 or national format. Default country code is +1 (North America). </param>
-        /// <param name="fields"> A comma-separated list of fields to return. Possible values are caller_name, sim_swap, call_forwarding, live_activity, line_type_intelligence. </param>
+        /// <param name="fields"> A comma-separated list of fields to return. Possible values are caller_name, sim_swap, call_forwarding, live_activity, line_type_intelligence, identity_match. </param>
         /// <param name="countryCode"> The [country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) used if the phone number provided is in national format. </param>
+        /// <param name="firstName"> User’s first name. This query parameter is only used (optionally) for identity_match package requests. </param>
+        /// <param name="lastName"> User’s last name. This query parameter is only used (optionally) for identity_match package requests. </param>
+        /// <param name="addressLine1"> User’s first address line. This query parameter is only used (optionally) for identity_match package requests. </param>
+        /// <param name="addressLine2"> User’s second address line. This query parameter is only used (optionally) for identity_match package requests. </param>
+        /// <param name="city"> User’s city. This query parameter is only used (optionally) for identity_match package requests. </param>
+        /// <param name="state"> User’s country subdivision, such as state, province, or locality. This query parameter is only used (optionally) for identity_match package requests. </param>
+        /// <param name="postalCode"> User’s postal zip code. This query parameter is only used (optionally) for identity_match package requests. </param>
+        /// <param name="addressCountryCode"> User’s country, up to two characters. This query parameter is only used (optionally) for identity_match package requests. </param>
+        /// <param name="nationalId"> User’s national ID, such as SSN or Passport ID. This query parameter is only used (optionally) for identity_match package requests. </param>
+        /// <param name="dateOfBirth"> User’s date of birth, in YYYYMMDD format. This query parameter is only used (optionally) for identity_match package requests. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of PhoneNumber </returns>
         public static PhoneNumberResource Fetch(
                                          string pathPhoneNumber, 
                                          string fields = null, 
                                          string countryCode = null, 
+                                         string firstName = null, 
+                                         string lastName = null, 
+                                         string addressLine1 = null, 
+                                         string addressLine2 = null, 
+                                         string city = null, 
+                                         string state = null, 
+                                         string postalCode = null, 
+                                         string addressCountryCode = null, 
+                                         string nationalId = null, 
+                                         string dateOfBirth = null, 
                                          ITwilioRestClient client = null)
         {
-            var options = new FetchPhoneNumberOptions(pathPhoneNumber){ Fields = fields,CountryCode = countryCode };
+            var options = new FetchPhoneNumberOptions(pathPhoneNumber){ Fields = fields,CountryCode = countryCode,FirstName = firstName,LastName = lastName,AddressLine1 = addressLine1,AddressLine2 = addressLine2,City = city,State = state,PostalCode = postalCode,AddressCountryCode = addressCountryCode,NationalId = nationalId,DateOfBirth = dateOfBirth };
             return Fetch(options, client);
         }
 
         #if !NET35
         /// <summary> fetch </summary>
         /// <param name="pathPhoneNumber"> The phone number to lookup in E.164 or national format. Default country code is +1 (North America). </param>
-        /// <param name="fields"> A comma-separated list of fields to return. Possible values are caller_name, sim_swap, call_forwarding, live_activity, line_type_intelligence. </param>
+        /// <param name="fields"> A comma-separated list of fields to return. Possible values are caller_name, sim_swap, call_forwarding, live_activity, line_type_intelligence, identity_match. </param>
         /// <param name="countryCode"> The [country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) used if the phone number provided is in national format. </param>
+        /// <param name="firstName"> User’s first name. This query parameter is only used (optionally) for identity_match package requests. </param>
+        /// <param name="lastName"> User’s last name. This query parameter is only used (optionally) for identity_match package requests. </param>
+        /// <param name="addressLine1"> User’s first address line. This query parameter is only used (optionally) for identity_match package requests. </param>
+        /// <param name="addressLine2"> User’s second address line. This query parameter is only used (optionally) for identity_match package requests. </param>
+        /// <param name="city"> User’s city. This query parameter is only used (optionally) for identity_match package requests. </param>
+        /// <param name="state"> User’s country subdivision, such as state, province, or locality. This query parameter is only used (optionally) for identity_match package requests. </param>
+        /// <param name="postalCode"> User’s postal zip code. This query parameter is only used (optionally) for identity_match package requests. </param>
+        /// <param name="addressCountryCode"> User’s country, up to two characters. This query parameter is only used (optionally) for identity_match package requests. </param>
+        /// <param name="nationalId"> User’s national ID, such as SSN or Passport ID. This query parameter is only used (optionally) for identity_match package requests. </param>
+        /// <param name="dateOfBirth"> User’s date of birth, in YYYYMMDD format. This query parameter is only used (optionally) for identity_match package requests. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PhoneNumber </returns>
-        public static async System.Threading.Tasks.Task<PhoneNumberResource> FetchAsync(string pathPhoneNumber, string fields = null, string countryCode = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<PhoneNumberResource> FetchAsync(string pathPhoneNumber, string fields = null, string countryCode = null, string firstName = null, string lastName = null, string addressLine1 = null, string addressLine2 = null, string city = null, string state = null, string postalCode = null, string addressCountryCode = null, string nationalId = null, string dateOfBirth = null, ITwilioRestClient client = null)
         {
-            var options = new FetchPhoneNumberOptions(pathPhoneNumber){ Fields = fields,CountryCode = countryCode };
+            var options = new FetchPhoneNumberOptions(pathPhoneNumber){ Fields = fields,CountryCode = countryCode,FirstName = firstName,LastName = lastName,AddressLine1 = addressLine1,AddressLine2 = addressLine2,City = city,State = state,PostalCode = postalCode,AddressCountryCode = addressCountryCode,NationalId = nationalId,DateOfBirth = dateOfBirth };
             return await FetchAsync(options, client);
         }
         #endif
@@ -181,6 +211,10 @@ namespace Twilio.Rest.Lookups.V2
         ///<summary> An object that contains line type information </summary> 
         [JsonProperty("line_type_intelligence")]
         public object LineTypeIntelligence { get; private set; }
+
+        ///<summary> An object that contains identity match information </summary> 
+        [JsonProperty("identity_match")]
+        public object IdentityMatch { get; private set; }
 
         ///<summary> The absolute URL of the resource </summary> 
         [JsonProperty("url")]

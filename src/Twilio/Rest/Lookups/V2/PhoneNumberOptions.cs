@@ -30,11 +30,41 @@ namespace Twilio.Rest.Lookups.V2
         ///<summary> The phone number to lookup in E.164 or national format. Default country code is +1 (North America). </summary> 
         public string PathPhoneNumber { get; }
 
-        ///<summary> A comma-separated list of fields to return. Possible values are caller_name, sim_swap, call_forwarding, live_activity, line_type_intelligence. </summary> 
+        ///<summary> A comma-separated list of fields to return. Possible values are caller_name, sim_swap, call_forwarding, live_activity, line_type_intelligence, identity_match. </summary> 
         public string Fields { get; set; }
 
         ///<summary> The [country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) used if the phone number provided is in national format. </summary> 
         public string CountryCode { get; set; }
+
+        ///<summary> User’s first name. This query parameter is only used (optionally) for identity_match package requests. </summary> 
+        public string FirstName { get; set; }
+
+        ///<summary> User’s last name. This query parameter is only used (optionally) for identity_match package requests. </summary> 
+        public string LastName { get; set; }
+
+        ///<summary> User’s first address line. This query parameter is only used (optionally) for identity_match package requests. </summary> 
+        public string AddressLine1 { get; set; }
+
+        ///<summary> User’s second address line. This query parameter is only used (optionally) for identity_match package requests. </summary> 
+        public string AddressLine2 { get; set; }
+
+        ///<summary> User’s city. This query parameter is only used (optionally) for identity_match package requests. </summary> 
+        public string City { get; set; }
+
+        ///<summary> User’s country subdivision, such as state, province, or locality. This query parameter is only used (optionally) for identity_match package requests. </summary> 
+        public string State { get; set; }
+
+        ///<summary> User’s postal zip code. This query parameter is only used (optionally) for identity_match package requests. </summary> 
+        public string PostalCode { get; set; }
+
+        ///<summary> User’s country, up to two characters. This query parameter is only used (optionally) for identity_match package requests. </summary> 
+        public string AddressCountryCode { get; set; }
+
+        ///<summary> User’s national ID, such as SSN or Passport ID. This query parameter is only used (optionally) for identity_match package requests. </summary> 
+        public string NationalId { get; set; }
+
+        ///<summary> User’s date of birth, in YYYYMMDD format. This query parameter is only used (optionally) for identity_match package requests. </summary> 
+        public string DateOfBirth { get; set; }
 
 
 
@@ -58,6 +88,46 @@ namespace Twilio.Rest.Lookups.V2
             if (CountryCode != null)
             {
                 p.Add(new KeyValuePair<string, string>("CountryCode", CountryCode));
+            }
+            if (FirstName != null)
+            {
+                p.Add(new KeyValuePair<string, string>("FirstName", FirstName));
+            }
+            if (LastName != null)
+            {
+                p.Add(new KeyValuePair<string, string>("LastName", LastName));
+            }
+            if (AddressLine1 != null)
+            {
+                p.Add(new KeyValuePair<string, string>("AddressLine1", AddressLine1));
+            }
+            if (AddressLine2 != null)
+            {
+                p.Add(new KeyValuePair<string, string>("AddressLine2", AddressLine2));
+            }
+            if (City != null)
+            {
+                p.Add(new KeyValuePair<string, string>("City", City));
+            }
+            if (State != null)
+            {
+                p.Add(new KeyValuePair<string, string>("State", State));
+            }
+            if (PostalCode != null)
+            {
+                p.Add(new KeyValuePair<string, string>("PostalCode", PostalCode));
+            }
+            if (AddressCountryCode != null)
+            {
+                p.Add(new KeyValuePair<string, string>("AddressCountryCode", AddressCountryCode.ToString()));
+            }
+            if (NationalId != null)
+            {
+                p.Add(new KeyValuePair<string, string>("NationalId", NationalId));
+            }
+            if (DateOfBirth != null)
+            {
+                p.Add(new KeyValuePair<string, string>("DateOfBirth", DateOfBirth));
             }
             return p;
         }

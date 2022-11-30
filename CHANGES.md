@@ -1,6 +1,25 @@
 twilio-csharp Changelog
 =======================
 
+[2022-11-30] Version 6.1.0
+--------------------------
+**Library - Feature**
+- [PR #649](https://github.com/twilio/twilio-csharp/pull/649): Add `ToXDocument` method to `TwiML`. Thanks to [@Swimburger](https://github.com/Swimburger)!
+
+**Flex**
+- Adding new `assessments` api in version `v1`
+
+**Lookups**
+- Add `identity_match` package to the lookup response
+
+**Messaging**
+- Added `validated` parameter to Link Shortening API
+
+**Serverless**
+- Add node16 as a valid Build runtime
+- Add ie1 and au1 as supported regions for all endpoints.
+
+
 [2022-11-16] Version 6.0.1
 --------------------------
 **Library - Chore**
