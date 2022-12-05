@@ -153,7 +153,7 @@ namespace Twilio.Rest.Notify.V1.Service
             }
             if (Segment != null)
             {
-                p.AddRange(Segment.Select(prop => new KeyValuePair<string, string>("Segment", Segment)));
+                p.AddRange(Segment.Select(prop => new KeyValuePair<string, string>("Segment", prop.ToString())));
             }
             if (Alexa != null)
             {
@@ -161,7 +161,7 @@ namespace Twilio.Rest.Notify.V1.Service
             }
             if (ToBinding != null)
             {
-                p.AddRange(ToBinding.Select(prop => new KeyValuePair<string, string>("ToBinding", ToBinding)));
+                p.AddRange(ToBinding.Select(prop => new KeyValuePair<string, string>("ToBinding", prop.ToString())));
             }
             if (DeliveryCallbackUrl != null)
             {
@@ -169,11 +169,11 @@ namespace Twilio.Rest.Notify.V1.Service
             }
             if (Identity != null)
             {
-                p.AddRange(Identity.Select(prop => new KeyValuePair<string, string>("Identity", Identity)));
+                p.AddRange(Identity.Select(prop => new KeyValuePair<string, string>("Identity", prop.ToString())));
             }
             if (Tag != null)
             {
-                p.AddRange(Tag.Select(prop => new KeyValuePair<string, string>("Tag", Tag)));
+                p.AddRange(Tag.Select(prop => new KeyValuePair<string, string>("Tag", prop.ToString())));
             }
             return p;
         }

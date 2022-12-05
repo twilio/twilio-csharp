@@ -71,7 +71,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
 
             if (HostedNumberOrderSids != null)
             {
-                p.AddRange(HostedNumberOrderSids.Select(prop => new KeyValuePair<string, string>("HostedNumberOrderSids", HostedNumberOrderSids)));
+                p.AddRange(HostedNumberOrderSids.Select(prop => new KeyValuePair<string, string>("HostedNumberOrderSids", prop.ToString())));
             }
             if (AddressSid != null)
             {
@@ -91,7 +91,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
             }
             if (CcEmails != null)
             {
-                p.AddRange(CcEmails.Select(prop => new KeyValuePair<string, string>("CcEmails", CcEmails)));
+                p.AddRange(CcEmails.Select(prop => new KeyValuePair<string, string>("CcEmails", prop.ToString())));
             }
             return p;
         }
@@ -211,7 +211,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
 
             if (HostedNumberOrderSids != null)
             {
-                p.AddRange(HostedNumberOrderSids.Select(prop => new KeyValuePair<string, string>("HostedNumberOrderSids", HostedNumberOrderSids)));
+                p.AddRange(HostedNumberOrderSids.Select(prop => new KeyValuePair<string, string>("HostedNumberOrderSids", prop.ToString())));
             }
             if (AddressSid != null)
             {
@@ -223,7 +223,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
             }
             if (CcEmails != null)
             {
-                p.AddRange(CcEmails.Select(prop => new KeyValuePair<string, string>("CcEmails", CcEmails)));
+                p.AddRange(CcEmails.Select(prop => new KeyValuePair<string, string>("CcEmails", prop.ToString())));
             }
             if (Status != null)
             {

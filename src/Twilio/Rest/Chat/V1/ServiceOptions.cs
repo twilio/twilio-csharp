@@ -398,7 +398,7 @@ namespace Twilio.Rest.Chat.V1
             }
             if (WebhookFilters != null)
             {
-                p.AddRange(WebhookFilters.Select(prop => new KeyValuePair<string, string>("WebhookFilters", WebhookFilters)));
+                p.AddRange(WebhookFilters.Select(prop => new KeyValuePair<string, string>("WebhookFilters", prop.ToString())));
             }
             if (WebhooksOnMessageSendUrl != null)
             {

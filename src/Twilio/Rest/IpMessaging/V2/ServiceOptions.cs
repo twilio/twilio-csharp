@@ -349,7 +349,7 @@ namespace Twilio.Rest.IpMessaging.V2
             }
             if (WebhookFilters != null)
             {
-                p.AddRange(WebhookFilters.Select(prop => new KeyValuePair<string, string>("WebhookFilters", WebhookFilters)));
+                p.AddRange(WebhookFilters.Select(prop => new KeyValuePair<string, string>("WebhookFilters", prop.ToString())));
             }
             if (LimitsChannelMembers != null)
             {

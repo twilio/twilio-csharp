@@ -68,7 +68,7 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
             }
             if (MediaUrl != null)
             {
-                p.AddRange(MediaUrl.Select(prop => new KeyValuePair<string, string>("MediaUrl", Serializers.Url(MediaUrl))));
+                p.AddRange(MediaUrl.Select(prop => new KeyValuePair<string, string>("MediaUrl", prop.ToString())));
             }
             return p;
         }

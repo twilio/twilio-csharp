@@ -111,7 +111,7 @@ namespace Twilio.Rest.Video.V1
             }
             if (VideoCodecs != null)
             {
-                p.AddRange(VideoCodecs.Select(prop => new KeyValuePair<string, string>("VideoCodecs", VideoCodecs.ToString())));
+                p.AddRange(VideoCodecs.Select(prop => new KeyValuePair<string, string>("VideoCodecs", prop.ToString())));
             }
             if (MediaRegion != null)
             {

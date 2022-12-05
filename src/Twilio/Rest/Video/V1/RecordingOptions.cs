@@ -122,7 +122,7 @@ namespace Twilio.Rest.Video.V1
             }
             if (GroupingSid != null)
             {
-                p.AddRange(GroupingSid.Select(prop => new KeyValuePair<string, string>("GroupingSid", GroupingSid)));
+                p.AddRange(GroupingSid.Select(prop => new KeyValuePair<string, string>("GroupingSid", prop.ToString())));
             }
             if (DateCreatedAfter != null)
             {

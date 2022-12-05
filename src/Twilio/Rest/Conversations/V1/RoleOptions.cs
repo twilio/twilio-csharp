@@ -65,7 +65,7 @@ namespace Twilio.Rest.Conversations.V1
             }
             if (Permission != null)
             {
-                p.AddRange(Permission.Select(prop => new KeyValuePair<string, string>("Permission", Permission)));
+                p.AddRange(Permission.Select(prop => new KeyValuePair<string, string>("Permission", prop.ToString())));
             }
             return p;
         }
@@ -182,7 +182,7 @@ namespace Twilio.Rest.Conversations.V1
 
             if (Permission != null)
             {
-                p.AddRange(Permission.Select(prop => new KeyValuePair<string, string>("Permission", Permission)));
+                p.AddRange(Permission.Select(prop => new KeyValuePair<string, string>("Permission", prop.ToString())));
             }
             return p;
         }

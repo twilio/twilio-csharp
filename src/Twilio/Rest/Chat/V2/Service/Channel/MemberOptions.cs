@@ -243,7 +243,7 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
 
             if (Identity != null)
             {
-                p.AddRange(Identity.Select(prop => new KeyValuePair<string, string>("Identity", Identity)));
+                p.AddRange(Identity.Select(prop => new KeyValuePair<string, string>("Identity", prop.ToString())));
             }
             if (PageSize != null)
             {

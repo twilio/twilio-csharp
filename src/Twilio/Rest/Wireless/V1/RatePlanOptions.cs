@@ -103,7 +103,7 @@ namespace Twilio.Rest.Wireless.V1
             }
             if (InternationalRoaming != null)
             {
-                p.AddRange(InternationalRoaming.Select(prop => new KeyValuePair<string, string>("InternationalRoaming", InternationalRoaming)));
+                p.AddRange(InternationalRoaming.Select(prop => new KeyValuePair<string, string>("InternationalRoaming", prop.ToString())));
             }
             if (NationalRoamingDataLimit != null)
             {

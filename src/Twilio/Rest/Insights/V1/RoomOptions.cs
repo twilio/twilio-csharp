@@ -82,11 +82,11 @@ namespace Twilio.Rest.Insights.V1
 
             if (RoomType != null)
             {
-                p.AddRange(RoomType.Select(prop => new KeyValuePair<string, string>("RoomType", RoomType.ToString())));
+                p.AddRange(RoomType.Select(prop => new KeyValuePair<string, string>("RoomType", prop.ToString())));
             }
             if (Codec != null)
             {
-                p.AddRange(Codec.Select(prop => new KeyValuePair<string, string>("Codec", Codec.ToString())));
+                p.AddRange(Codec.Select(prop => new KeyValuePair<string, string>("Codec", prop.ToString())));
             }
             if (RoomName != null)
             {

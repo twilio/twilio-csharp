@@ -89,11 +89,11 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
             }
             if (ConfigurationFilters != null)
             {
-                p.AddRange(ConfigurationFilters.Select(prop => new KeyValuePair<string, string>("Configuration.Filters", ConfigurationFilters)));
+                p.AddRange(ConfigurationFilters.Select(prop => new KeyValuePair<string, string>("Configuration.Filters", prop.ToString())));
             }
             if (ConfigurationTriggers != null)
             {
-                p.AddRange(ConfigurationTriggers.Select(prop => new KeyValuePair<string, string>("Configuration.Triggers", ConfigurationTriggers)));
+                p.AddRange(ConfigurationTriggers.Select(prop => new KeyValuePair<string, string>("Configuration.Triggers", prop.ToString())));
             }
             if (ConfigurationFlowSid != null)
             {
@@ -282,11 +282,11 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
             }
             if (ConfigurationFilters != null)
             {
-                p.AddRange(ConfigurationFilters.Select(prop => new KeyValuePair<string, string>("Configuration.Filters", ConfigurationFilters)));
+                p.AddRange(ConfigurationFilters.Select(prop => new KeyValuePair<string, string>("Configuration.Filters", prop.ToString())));
             }
             if (ConfigurationTriggers != null)
             {
-                p.AddRange(ConfigurationTriggers.Select(prop => new KeyValuePair<string, string>("Configuration.Triggers", ConfigurationTriggers)));
+                p.AddRange(ConfigurationTriggers.Select(prop => new KeyValuePair<string, string>("Configuration.Triggers", prop.ToString())));
             }
             if (ConfigurationFlowSid != null)
             {

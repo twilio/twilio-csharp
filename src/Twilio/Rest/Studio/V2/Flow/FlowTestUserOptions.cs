@@ -81,7 +81,7 @@ namespace Twilio.Rest.Studio.V2.Flow
 
             if (TestUsers != null)
             {
-                p.AddRange(TestUsers.Select(prop => new KeyValuePair<string, string>("TestUsers", TestUsers)));
+                p.AddRange(TestUsers.Select(prop => new KeyValuePair<string, string>("TestUsers", prop.ToString())));
             }
             return p;
         }

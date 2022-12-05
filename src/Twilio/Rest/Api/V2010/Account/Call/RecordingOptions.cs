@@ -69,7 +69,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
             if (RecordingStatusCallbackEvent != null)
             {
-                p.AddRange(RecordingStatusCallbackEvent.Select(prop => new KeyValuePair<string, string>("RecordingStatusCallbackEvent", RecordingStatusCallbackEvent)));
+                p.AddRange(RecordingStatusCallbackEvent.Select(prop => new KeyValuePair<string, string>("RecordingStatusCallbackEvent", prop.ToString())));
             }
             if (RecordingStatusCallback != null)
             {

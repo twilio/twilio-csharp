@@ -212,7 +212,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             }
             if (StatusCallbackEvent != null)
             {
-                p.AddRange(StatusCallbackEvent.Select(prop => new KeyValuePair<string, string>("StatusCallbackEvent", StatusCallbackEvent)));
+                p.AddRange(StatusCallbackEvent.Select(prop => new KeyValuePair<string, string>("StatusCallbackEvent", prop.ToString())));
             }
             if (Label != null)
             {
@@ -276,7 +276,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             }
             if (ConferenceStatusCallbackEvent != null)
             {
-                p.AddRange(ConferenceStatusCallbackEvent.Select(prop => new KeyValuePair<string, string>("ConferenceStatusCallbackEvent", ConferenceStatusCallbackEvent)));
+                p.AddRange(ConferenceStatusCallbackEvent.Select(prop => new KeyValuePair<string, string>("ConferenceStatusCallbackEvent", prop.ToString())));
             }
             if (RecordingChannels != null)
             {
@@ -312,11 +312,11 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             }
             if (RecordingStatusCallbackEvent != null)
             {
-                p.AddRange(RecordingStatusCallbackEvent.Select(prop => new KeyValuePair<string, string>("RecordingStatusCallbackEvent", RecordingStatusCallbackEvent)));
+                p.AddRange(RecordingStatusCallbackEvent.Select(prop => new KeyValuePair<string, string>("RecordingStatusCallbackEvent", prop.ToString())));
             }
             if (ConferenceRecordingStatusCallbackEvent != null)
             {
-                p.AddRange(ConferenceRecordingStatusCallbackEvent.Select(prop => new KeyValuePair<string, string>("ConferenceRecordingStatusCallbackEvent", ConferenceRecordingStatusCallbackEvent)));
+                p.AddRange(ConferenceRecordingStatusCallbackEvent.Select(prop => new KeyValuePair<string, string>("ConferenceRecordingStatusCallbackEvent", prop.ToString())));
             }
             if (Coaching != null)
             {

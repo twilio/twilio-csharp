@@ -90,7 +90,7 @@ namespace Twilio.Rest.Messaging.V1
 
             if (MessagingServiceSids != null)
             {
-                p.AddRange(MessagingServiceSids.Select(prop => new KeyValuePair<string, string>("MessagingServiceSids", MessagingServiceSids)));
+                p.AddRange(MessagingServiceSids.Select(prop => new KeyValuePair<string, string>("MessagingServiceSids", prop.ToString())));
             }
             if (FallbackUrl != null)
             {

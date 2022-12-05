@@ -65,7 +65,7 @@ namespace Twilio.Rest.Events.V1
             }
             if (Types != null)
             {
-                p.AddRange(Types.Select(prop => new KeyValuePair<string, string>("Types", Serializers.JsonObject(Types))));
+                p.AddRange(Types.Select(prop => new KeyValuePair<string, string>("Types", prop.ToString())));
             }
             return p;
         }

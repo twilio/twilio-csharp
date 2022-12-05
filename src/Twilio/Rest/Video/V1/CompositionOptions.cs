@@ -81,11 +81,11 @@ namespace Twilio.Rest.Video.V1
             }
             if (AudioSources != null)
             {
-                p.AddRange(AudioSources.Select(prop => new KeyValuePair<string, string>("AudioSources", AudioSources)));
+                p.AddRange(AudioSources.Select(prop => new KeyValuePair<string, string>("AudioSources", prop.ToString())));
             }
             if (AudioSourcesExcluded != null)
             {
-                p.AddRange(AudioSourcesExcluded.Select(prop => new KeyValuePair<string, string>("AudioSourcesExcluded", AudioSourcesExcluded)));
+                p.AddRange(AudioSourcesExcluded.Select(prop => new KeyValuePair<string, string>("AudioSourcesExcluded", prop.ToString())));
             }
             if (Resolution != null)
             {

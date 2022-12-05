@@ -180,7 +180,7 @@ namespace Twilio.Rest.Api.V2010.Account
             }
             if (StatusCallbackEvent != null)
             {
-                p.AddRange(StatusCallbackEvent.Select(prop => new KeyValuePair<string, string>("StatusCallbackEvent", StatusCallbackEvent)));
+                p.AddRange(StatusCallbackEvent.Select(prop => new KeyValuePair<string, string>("StatusCallbackEvent", prop.ToString())));
             }
             if (StatusCallbackMethod != null)
             {
@@ -228,7 +228,7 @@ namespace Twilio.Rest.Api.V2010.Account
             }
             if (RecordingStatusCallbackEvent != null)
             {
-                p.AddRange(RecordingStatusCallbackEvent.Select(prop => new KeyValuePair<string, string>("RecordingStatusCallbackEvent", RecordingStatusCallbackEvent)));
+                p.AddRange(RecordingStatusCallbackEvent.Select(prop => new KeyValuePair<string, string>("RecordingStatusCallbackEvent", prop.ToString())));
             }
             if (Trim != null)
             {

@@ -104,7 +104,7 @@ namespace Twilio.Rest.Preview.Wireless
             }
             if (InternationalRoaming != null)
             {
-                p.AddRange(InternationalRoaming.Select(prop => new KeyValuePair<string, string>("InternationalRoaming", InternationalRoaming)));
+                p.AddRange(InternationalRoaming.Select(prop => new KeyValuePair<string, string>("InternationalRoaming", prop.ToString())));
             }
             return p;
         }

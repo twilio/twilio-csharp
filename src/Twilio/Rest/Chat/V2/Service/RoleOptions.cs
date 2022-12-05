@@ -70,7 +70,7 @@ namespace Twilio.Rest.Chat.V2.Service
             }
             if (Permission != null)
             {
-                p.AddRange(Permission.Select(prop => new KeyValuePair<string, string>("Permission", Permission)));
+                p.AddRange(Permission.Select(prop => new KeyValuePair<string, string>("Permission", prop.ToString())));
             }
             return p;
         }
@@ -211,7 +211,7 @@ namespace Twilio.Rest.Chat.V2.Service
 
             if (Permission != null)
             {
-                p.AddRange(Permission.Select(prop => new KeyValuePair<string, string>("Permission", Permission)));
+                p.AddRange(Permission.Select(prop => new KeyValuePair<string, string>("Permission", prop.ToString())));
             }
             return p;
         }

@@ -140,7 +140,7 @@ namespace Twilio.Rest.Messaging.V1
             }
             if (UseCaseCategories != null)
             {
-                p.AddRange(UseCaseCategories.Select(prop => new KeyValuePair<string, string>("UseCaseCategories", UseCaseCategories)));
+                p.AddRange(UseCaseCategories.Select(prop => new KeyValuePair<string, string>("UseCaseCategories", prop.ToString())));
             }
             if (UseCaseSummary != null)
             {
@@ -152,7 +152,7 @@ namespace Twilio.Rest.Messaging.V1
             }
             if (OptInImageUrls != null)
             {
-                p.AddRange(OptInImageUrls.Select(prop => new KeyValuePair<string, string>("OptInImageUrls", OptInImageUrls)));
+                p.AddRange(OptInImageUrls.Select(prop => new KeyValuePair<string, string>("OptInImageUrls", prop.ToString())));
             }
             if (OptInType != null)
             {

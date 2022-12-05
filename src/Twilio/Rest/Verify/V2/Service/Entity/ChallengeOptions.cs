@@ -85,7 +85,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
             }
             if (DetailsFields != null)
             {
-                p.AddRange(DetailsFields.Select(prop => new KeyValuePair<string, string>("Details.Fields", Serializers.JsonObject(DetailsFields))));
+                p.AddRange(DetailsFields.Select(prop => new KeyValuePair<string, string>("Details.Fields", prop.ToString())));
             }
             if (HiddenDetails != null)
             {
