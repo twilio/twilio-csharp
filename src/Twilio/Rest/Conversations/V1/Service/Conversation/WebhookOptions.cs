@@ -81,27 +81,27 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
             }
             if (ConfigurationUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("ConfigurationUrl", ConfigurationUrl));
+                p.Add(new KeyValuePair<string, string>("Configuration.Url", ConfigurationUrl));
             }
             if (ConfigurationMethod != null)
             {
-                p.Add(new KeyValuePair<string, string>("ConfigurationMethod", ConfigurationMethod.ToString()));
+                p.Add(new KeyValuePair<string, string>("Configuration.Method", ConfigurationMethod.ToString()));
             }
             if (ConfigurationFilters != null)
             {
-                p.AddRange(ConfigurationFilters.Select(ConfigurationFilters => new KeyValuePair<string, string>("ConfigurationFilters", ConfigurationFilters)));
+                p.AddRange(Configuration.Filters.Select(Configuration.Filters => new KeyValuePair<string, string>("Configuration.Filters", ConfigurationFilters)));
             }
             if (ConfigurationTriggers != null)
             {
-                p.AddRange(ConfigurationTriggers.Select(ConfigurationTriggers => new KeyValuePair<string, string>("ConfigurationTriggers", ConfigurationTriggers)));
+                p.AddRange(Configuration.Triggers.Select(Configuration.Triggers => new KeyValuePair<string, string>("Configuration.Triggers", ConfigurationTriggers)));
             }
             if (ConfigurationFlowSid != null)
             {
-                p.Add(new KeyValuePair<string, string>("ConfigurationFlowSid", ConfigurationFlowSid));
+                p.Add(new KeyValuePair<string, string>("Configuration.FlowSid", ConfigurationFlowSid));
             }
             if (ConfigurationReplayAfter != null)
             {
-                p.Add(new KeyValuePair<string, string>("ConfigurationReplayAfter", ConfigurationReplayAfter.ToString()));
+                p.Add(new KeyValuePair<string, string>("Configuration.ReplayAfter", ConfigurationReplayAfter.ToString()));
             }
             return p;
         }
@@ -274,23 +274,23 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
 
             if (ConfigurationUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("ConfigurationUrl", ConfigurationUrl));
+                p.Add(new KeyValuePair<string, string>("Configuration.Url", ConfigurationUrl));
             }
             if (ConfigurationMethod != null)
             {
-                p.Add(new KeyValuePair<string, string>("ConfigurationMethod", ConfigurationMethod.ToString()));
+                p.Add(new KeyValuePair<string, string>("Configuration.Method", ConfigurationMethod.ToString()));
             }
             if (ConfigurationFilters != null)
             {
-                p.AddRange(ConfigurationFilters.Select(ConfigurationFilters => new KeyValuePair<string, string>("ConfigurationFilters", ConfigurationFilters)));
+                p.AddRange(Configuration.Filters.Select(Configuration.Filters => new KeyValuePair<string, string>("Configuration.Filters", ConfigurationFilters)));
             }
             if (ConfigurationTriggers != null)
             {
-                p.AddRange(ConfigurationTriggers.Select(ConfigurationTriggers => new KeyValuePair<string, string>("ConfigurationTriggers", ConfigurationTriggers)));
+                p.AddRange(Configuration.Triggers.Select(Configuration.Triggers => new KeyValuePair<string, string>("Configuration.Triggers", ConfigurationTriggers)));
             }
             if (ConfigurationFlowSid != null)
             {
-                p.Add(new KeyValuePair<string, string>("ConfigurationFlowSid", ConfigurationFlowSid));
+                p.Add(new KeyValuePair<string, string>("Configuration.FlowSid", ConfigurationFlowSid));
             }
             return p;
         }

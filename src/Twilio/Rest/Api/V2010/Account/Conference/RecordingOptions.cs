@@ -149,11 +149,11 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             }
             if (DateCreatedBefore != null)
             {
-                p.Add(new KeyValuePair<string, string>("DateCreatedBefore", DateCreatedBefore.Value.ToString("yyyy-MM-dd")));
+                p.Add(new KeyValuePair<string, string>("DateCreated<", DateCreatedBefore.Value.ToString("yyyy-MM-dd")));
             }
             if (DateCreatedAfter != null)
             {
-                p.Add(new KeyValuePair<string, string>("DateCreatedAfter", DateCreatedAfter.Value.ToString("yyyy-MM-dd")));
+                p.Add(new KeyValuePair<string, string>("DateCreated>", DateCreatedAfter.Value.ToString("yyyy-MM-dd")));
             }
             if (PageSize != null)
             {

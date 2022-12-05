@@ -123,35 +123,35 @@ namespace Twilio.Rest.FlexApi.V1
             }
             if (IntegrationFlowSid != null)
             {
-                p.Add(new KeyValuePair<string, string>("IntegrationFlowSid", IntegrationFlowSid));
+                p.Add(new KeyValuePair<string, string>("Integration.FlowSid", IntegrationFlowSid));
             }
             if (IntegrationUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("IntegrationUrl", Serializers.Url(IntegrationUrl)));
+                p.Add(new KeyValuePair<string, string>("Integration.Url", Serializers.Url(IntegrationUrl)));
             }
             if (IntegrationWorkspaceSid != null)
             {
-                p.Add(new KeyValuePair<string, string>("IntegrationWorkspaceSid", IntegrationWorkspaceSid));
+                p.Add(new KeyValuePair<string, string>("Integration.WorkspaceSid", IntegrationWorkspaceSid));
             }
             if (IntegrationWorkflowSid != null)
             {
-                p.Add(new KeyValuePair<string, string>("IntegrationWorkflowSid", IntegrationWorkflowSid));
+                p.Add(new KeyValuePair<string, string>("Integration.WorkflowSid", IntegrationWorkflowSid));
             }
             if (IntegrationChannel != null)
             {
-                p.Add(new KeyValuePair<string, string>("IntegrationChannel", IntegrationChannel));
+                p.Add(new KeyValuePair<string, string>("Integration.Channel", IntegrationChannel));
             }
             if (IntegrationTimeout != null)
             {
-                p.Add(new KeyValuePair<string, string>("IntegrationTimeout", IntegrationTimeout.ToString()));
+                p.Add(new KeyValuePair<string, string>("Integration.Timeout", IntegrationTimeout.ToString()));
             }
             if (IntegrationPriority != null)
             {
-                p.Add(new KeyValuePair<string, string>("IntegrationPriority", IntegrationPriority.ToString()));
+                p.Add(new KeyValuePair<string, string>("Integration.Priority", IntegrationPriority.ToString()));
             }
             if (IntegrationCreationOnMessage != null)
             {
-                p.Add(new KeyValuePair<string, string>("IntegrationCreationOnMessage", IntegrationCreationOnMessage.Value.ToString().ToLower()));
+                p.Add(new KeyValuePair<string, string>("Integration.CreationOnMessage", IntegrationCreationOnMessage.Value.ToString().ToLower()));
             }
             if (LongLived != null)
             {
@@ -163,7 +163,7 @@ namespace Twilio.Rest.FlexApi.V1
             }
             if (IntegrationRetryCount != null)
             {
-                p.Add(new KeyValuePair<string, string>("IntegrationRetryCount", IntegrationRetryCount.ToString()));
+                p.Add(new KeyValuePair<string, string>("Integration.RetryCount", IntegrationRetryCount.ToString()));
             }
             return p;
         }
@@ -357,35 +357,35 @@ namespace Twilio.Rest.FlexApi.V1
             }
             if (IntegrationFlowSid != null)
             {
-                p.Add(new KeyValuePair<string, string>("IntegrationFlowSid", IntegrationFlowSid));
+                p.Add(new KeyValuePair<string, string>("Integration.FlowSid", IntegrationFlowSid));
             }
             if (IntegrationUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("IntegrationUrl", Serializers.Url(IntegrationUrl)));
+                p.Add(new KeyValuePair<string, string>("Integration.Url", Serializers.Url(IntegrationUrl)));
             }
             if (IntegrationWorkspaceSid != null)
             {
-                p.Add(new KeyValuePair<string, string>("IntegrationWorkspaceSid", IntegrationWorkspaceSid));
+                p.Add(new KeyValuePair<string, string>("Integration.WorkspaceSid", IntegrationWorkspaceSid));
             }
             if (IntegrationWorkflowSid != null)
             {
-                p.Add(new KeyValuePair<string, string>("IntegrationWorkflowSid", IntegrationWorkflowSid));
+                p.Add(new KeyValuePair<string, string>("Integration.WorkflowSid", IntegrationWorkflowSid));
             }
             if (IntegrationChannel != null)
             {
-                p.Add(new KeyValuePair<string, string>("IntegrationChannel", IntegrationChannel));
+                p.Add(new KeyValuePair<string, string>("Integration.Channel", IntegrationChannel));
             }
             if (IntegrationTimeout != null)
             {
-                p.Add(new KeyValuePair<string, string>("IntegrationTimeout", IntegrationTimeout.ToString()));
+                p.Add(new KeyValuePair<string, string>("Integration.Timeout", IntegrationTimeout.ToString()));
             }
             if (IntegrationPriority != null)
             {
-                p.Add(new KeyValuePair<string, string>("IntegrationPriority", IntegrationPriority.ToString()));
+                p.Add(new KeyValuePair<string, string>("Integration.Priority", IntegrationPriority.ToString()));
             }
             if (IntegrationCreationOnMessage != null)
             {
-                p.Add(new KeyValuePair<string, string>("IntegrationCreationOnMessage", IntegrationCreationOnMessage.Value.ToString().ToLower()));
+                p.Add(new KeyValuePair<string, string>("Integration.CreationOnMessage", IntegrationCreationOnMessage.Value.ToString().ToLower()));
             }
             if (LongLived != null)
             {
@@ -397,7 +397,7 @@ namespace Twilio.Rest.FlexApi.V1
             }
             if (IntegrationRetryCount != null)
             {
-                p.Add(new KeyValuePair<string, string>("IntegrationRetryCount", IntegrationRetryCount.ToString()));
+                p.Add(new KeyValuePair<string, string>("Integration.RetryCount", IntegrationRetryCount.ToString()));
             }
             return p;
         }
