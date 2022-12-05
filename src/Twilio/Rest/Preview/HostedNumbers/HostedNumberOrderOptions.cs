@@ -118,7 +118,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
             }
             if (CcEmails != null)
             {
-                p.AddRange(CcEmails.Select(CcEmails => new KeyValuePair<string, string>("CcEmails", CcEmails)));
+                p.AddRange(CcEmails.Select(prop => new KeyValuePair<string, string>("CcEmails", CcEmails)));
             }
             if (SmsUrl != null)
             {
@@ -352,7 +352,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
             }
             if (CcEmails != null)
             {
-                p.AddRange(CcEmails.Select(CcEmails => new KeyValuePair<string, string>("CcEmails", CcEmails)));
+                p.AddRange(CcEmails.Select(prop => new KeyValuePair<string, string>("CcEmails", CcEmails)));
             }
             if (Status != null)
             {

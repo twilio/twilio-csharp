@@ -398,7 +398,7 @@ namespace Twilio.Rest.IpMessaging.V1
             }
             if (WebhookFilters != null)
             {
-                p.AddRange(WebhookFilters.Select(WebhookFilters => new KeyValuePair<string, string>("WebhookFilters", WebhookFilters)));
+                p.AddRange(WebhookFilters.Select(prop => new KeyValuePair<string, string>("WebhookFilters", WebhookFilters)));
             }
             if (WebhooksOnMessageSendUrl != null)
             {

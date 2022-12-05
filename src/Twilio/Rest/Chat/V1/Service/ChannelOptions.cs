@@ -174,7 +174,7 @@ namespace Twilio.Rest.Chat.V1.Service
 
             if (Type != null)
             {
-                p.AddRange(Type.Select(Type => new KeyValuePair<string, string>("Type", Type.ToString())));
+                p.AddRange(Type.Select(prop => new KeyValuePair<string, string>("Type", Type.ToString())));
             }
             if (PageSize != null)
             {

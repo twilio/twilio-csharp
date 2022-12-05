@@ -134,7 +134,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
 
             if (BindingType != null)
             {
-                p.AddRange(BindingType.Select(BindingType => new KeyValuePair<string, string>("BindingType", BindingType.ToString())));
+                p.AddRange(BindingType.Select(prop => new KeyValuePair<string, string>("BindingType", BindingType.ToString())));
             }
             if (PageSize != null)
             {

@@ -61,11 +61,11 @@ namespace Twilio.Rest.Serverless.V1.Service
 
             if (AssetVersions != null)
             {
-                p.AddRange(AssetVersions.Select(AssetVersions => new KeyValuePair<string, string>("AssetVersions", AssetVersions)));
+                p.AddRange(AssetVersions.Select(prop => new KeyValuePair<string, string>("AssetVersions", AssetVersions)));
             }
             if (FunctionVersions != null)
             {
-                p.AddRange(FunctionVersions.Select(FunctionVersions => new KeyValuePair<string, string>("FunctionVersions", FunctionVersions)));
+                p.AddRange(FunctionVersions.Select(prop => new KeyValuePair<string, string>("FunctionVersions", FunctionVersions)));
             }
             if (Dependencies != null)
             {

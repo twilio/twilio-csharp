@@ -182,7 +182,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
 
             if (Identity != null)
             {
-                p.AddRange(Identity.Select(Identity => new KeyValuePair<string, string>("Identity", Identity)));
+                p.AddRange(Identity.Select(prop => new KeyValuePair<string, string>("Identity", Identity)));
             }
             if (PageSize != null)
             {

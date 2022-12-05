@@ -193,7 +193,7 @@ namespace Twilio.Rest.Api.V2010.Account
             }
             if (Permissions != null)
             {
-                p.AddRange(Permissions.Select(Permissions => new KeyValuePair<string, string>("Permissions", Permissions.ToString())));
+                p.AddRange(Permissions.Select(prop => new KeyValuePair<string, string>("Permissions", Permissions.ToString())));
             }
             return p;
         }

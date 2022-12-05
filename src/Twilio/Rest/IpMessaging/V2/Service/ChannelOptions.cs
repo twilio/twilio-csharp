@@ -221,7 +221,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service
 
             if (Type != null)
             {
-                p.AddRange(Type.Select(Type => new KeyValuePair<string, string>("Type", Type.ToString())));
+                p.AddRange(Type.Select(prop => new KeyValuePair<string, string>("Type", Type.ToString())));
             }
             if (PageSize != null)
             {

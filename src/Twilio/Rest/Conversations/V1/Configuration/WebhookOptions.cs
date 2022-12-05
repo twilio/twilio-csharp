@@ -77,7 +77,7 @@ namespace Twilio.Rest.Conversations.V1.Configuration
             }
             if (Filters != null)
             {
-                p.AddRange(Filters.Select(Filters => new KeyValuePair<string, string>("Filters", Filters)));
+                p.AddRange(Filters.Select(prop => new KeyValuePair<string, string>("Filters", Filters)));
             }
             if (PreWebhookUrl != null)
             {
