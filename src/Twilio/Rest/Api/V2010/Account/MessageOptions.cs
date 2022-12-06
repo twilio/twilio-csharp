@@ -159,7 +159,7 @@ namespace Twilio.Rest.Api.V2010.Account
             }
             if (PersistentAction != null)
             {
-                p.AddRange(PersistentAction.Select(prop => new KeyValuePair<string, string>("PersistentAction", prop.ToString())));
+                p.AddRange(PersistentAction.Select(PersistentAction => new KeyValuePair<string, string>("PersistentAction", PersistentAction)));
             }
             if (ShortenUrls != null)
             {
@@ -199,7 +199,7 @@ namespace Twilio.Rest.Api.V2010.Account
             }
             if (MediaUrl != null)
             {
-                p.AddRange(MediaUrl.Select(prop => new KeyValuePair<string, string>("MediaUrl", prop.ToString())));
+                p.AddRange(MediaUrl.Select(MediaUrl => new KeyValuePair<string, string>("MediaUrl", Serializers.Url(MediaUrl))));
             }
             return p;
         }

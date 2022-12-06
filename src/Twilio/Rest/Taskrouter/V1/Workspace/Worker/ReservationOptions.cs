@@ -391,7 +391,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
             }
             if (StatusCallbackEvent != null)
             {
-                p.AddRange(StatusCallbackEvent.Select(prop => new KeyValuePair<string, string>("StatusCallbackEvent", prop.ToString())));
+                p.AddRange(StatusCallbackEvent.Select(StatusCallbackEvent => new KeyValuePair<string, string>("StatusCallbackEvent", StatusCallbackEvent.ToString())));
             }
             if (Timeout != null)
             {
@@ -443,7 +443,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
             }
             if (ConferenceStatusCallbackEvent != null)
             {
-                p.AddRange(ConferenceStatusCallbackEvent.Select(prop => new KeyValuePair<string, string>("ConferenceStatusCallbackEvent", prop.ToString())));
+                p.AddRange(ConferenceStatusCallbackEvent.Select(ConferenceStatusCallbackEvent => new KeyValuePair<string, string>("ConferenceStatusCallbackEvent", ConferenceStatusCallbackEvent.ToString())));
             }
             if (ConferenceRecord != null)
             {
@@ -487,7 +487,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
             }
             if (DequeueStatusCallbackEvent != null)
             {
-                p.AddRange(DequeueStatusCallbackEvent.Select(prop => new KeyValuePair<string, string>("DequeueStatusCallbackEvent", prop.ToString())));
+                p.AddRange(DequeueStatusCallbackEvent.Select(DequeueStatusCallbackEvent => new KeyValuePair<string, string>("DequeueStatusCallbackEvent", DequeueStatusCallbackEvent)));
             }
             if (PostWorkActivitySid != null)
             {

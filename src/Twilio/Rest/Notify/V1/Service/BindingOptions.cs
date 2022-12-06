@@ -87,7 +87,7 @@ namespace Twilio.Rest.Notify.V1.Service
             }
             if (Tag != null)
             {
-                p.AddRange(Tag.Select(prop => new KeyValuePair<string, string>("Tag", prop.ToString())));
+                p.AddRange(Tag.Select(Tag => new KeyValuePair<string, string>("Tag", Tag)));
             }
             if (NotificationProtocolVersion != null)
             {
@@ -220,11 +220,11 @@ namespace Twilio.Rest.Notify.V1.Service
             }
             if (Identity != null)
             {
-                p.AddRange(Identity.Select(prop => new KeyValuePair<string, string>("Identity", prop.ToString())));
+                p.AddRange(Identity.Select(Identity => new KeyValuePair<string, string>("Identity", Identity)));
             }
             if (Tag != null)
             {
-                p.AddRange(Tag.Select(prop => new KeyValuePair<string, string>("Tag", prop.ToString())));
+                p.AddRange(Tag.Select(Tag => new KeyValuePair<string, string>("Tag", Tag)));
             }
             if (PageSize != null)
             {

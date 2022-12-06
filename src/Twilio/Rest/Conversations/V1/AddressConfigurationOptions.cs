@@ -112,7 +112,7 @@ namespace Twilio.Rest.Conversations.V1
             }
             if (AutoCreationWebhookFilters != null)
             {
-                p.AddRange(AutoCreationWebhookFilters.Select(prop => new KeyValuePair<string, string>("AutoCreation.WebhookFilters", prop.ToString())));
+                p.AddRange(AutoCreationWebhookFilters.Select(AutoCreationWebhookFilters => new KeyValuePair<string, string>("AutoCreation.WebhookFilters", AutoCreationWebhookFilters)));
             }
             if (AutoCreationStudioFlowSid != null)
             {
@@ -291,7 +291,7 @@ namespace Twilio.Rest.Conversations.V1
             }
             if (AutoCreationWebhookFilters != null)
             {
-                p.AddRange(AutoCreationWebhookFilters.Select(prop => new KeyValuePair<string, string>("AutoCreation.WebhookFilters", prop.ToString())));
+                p.AddRange(AutoCreationWebhookFilters.Select(AutoCreationWebhookFilters => new KeyValuePair<string, string>("AutoCreation.WebhookFilters", AutoCreationWebhookFilters)));
             }
             if (AutoCreationStudioFlowSid != null)
             {

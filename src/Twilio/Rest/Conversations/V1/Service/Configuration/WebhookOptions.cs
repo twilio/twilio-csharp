@@ -97,7 +97,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Configuration
             }
             if (Filters != null)
             {
-                p.AddRange(Filters.Select(prop => new KeyValuePair<string, string>("Filters", prop.ToString())));
+                p.AddRange(Filters.Select(Filters => new KeyValuePair<string, string>("Filters", Filters)));
             }
             if (Method != null)
             {

@@ -86,7 +86,7 @@ namespace Twilio.Rest.Proxy.V1.Service
             }
             if (Participants != null)
             {
-                p.AddRange(Participants.Select(prop => new KeyValuePair<string, string>("Participants", prop.ToString())));
+                p.AddRange(Participants.Select(Participants => new KeyValuePair<string, string>("Participants", Serializers.JsonObject(Participants))));
             }
             return p;
         }

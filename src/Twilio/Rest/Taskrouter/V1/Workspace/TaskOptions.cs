@@ -222,7 +222,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             }
             if (AssignmentStatus != null)
             {
-                p.AddRange(AssignmentStatus.Select(prop => new KeyValuePair<string, string>("AssignmentStatus", prop.ToString())));
+                p.AddRange(AssignmentStatus.Select(AssignmentStatus => new KeyValuePair<string, string>("AssignmentStatus", AssignmentStatus)));
             }
             if (WorkflowSid != null)
             {

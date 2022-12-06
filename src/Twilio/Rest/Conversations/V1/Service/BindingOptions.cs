@@ -123,11 +123,11 @@ namespace Twilio.Rest.Conversations.V1.Service
 
             if (BindingType != null)
             {
-                p.AddRange(BindingType.Select(prop => new KeyValuePair<string, string>("BindingType", prop.ToString())));
+                p.AddRange(BindingType.Select(BindingType => new KeyValuePair<string, string>("BindingType", BindingType.ToString())));
             }
             if (Identity != null)
             {
-                p.AddRange(Identity.Select(prop => new KeyValuePair<string, string>("Identity", prop.ToString())));
+                p.AddRange(Identity.Select(Identity => new KeyValuePair<string, string>("Identity", Identity)));
             }
             if (PageSize != null)
             {

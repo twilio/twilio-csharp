@@ -48,7 +48,7 @@ namespace Twilio.Rest.Supersim.V1
             }
             if (Networks != null)
             {
-                p.AddRange(Networks.Select(prop => new KeyValuePair<string, string>("Networks", prop.ToString())));
+                p.AddRange(Networks.Select(Networks => new KeyValuePair<string, string>("Networks", Networks)));
             }
             return p;
         }

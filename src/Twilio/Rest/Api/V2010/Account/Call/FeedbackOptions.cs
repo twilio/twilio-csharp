@@ -93,7 +93,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             }
             if (Issue != null)
             {
-                p.AddRange(Issue.Select(prop => new KeyValuePair<string, string>("Issue", prop.ToString())));
+                p.AddRange(Issue.Select(Issue => new KeyValuePair<string, string>("Issue", Issue.ToString())));
             }
             return p;
         }

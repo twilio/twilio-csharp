@@ -72,7 +72,7 @@ namespace Twilio.Rest.Verify.V2.Service
             }
             if (EventTypes != null)
             {
-                p.AddRange(EventTypes.Select(prop => new KeyValuePair<string, string>("EventTypes", prop.ToString())));
+                p.AddRange(EventTypes.Select(EventTypes => new KeyValuePair<string, string>("EventTypes", EventTypes)));
             }
             if (WebhookUrl != null)
             {
@@ -240,7 +240,7 @@ namespace Twilio.Rest.Verify.V2.Service
             }
             if (EventTypes != null)
             {
-                p.AddRange(EventTypes.Select(prop => new KeyValuePair<string, string>("EventTypes", prop.ToString())));
+                p.AddRange(EventTypes.Select(EventTypes => new KeyValuePair<string, string>("EventTypes", EventTypes)));
             }
             if (WebhookUrl != null)
             {

@@ -212,7 +212,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             }
             if (StatusCallbackEvent != null)
             {
-                p.AddRange(StatusCallbackEvent.Select(prop => new KeyValuePair<string, string>("StatusCallbackEvent", prop.ToString())));
+                p.AddRange(StatusCallbackEvent.Select(StatusCallbackEvent => new KeyValuePair<string, string>("StatusCallbackEvent", StatusCallbackEvent)));
             }
             if (Label != null)
             {
@@ -276,7 +276,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             }
             if (ConferenceStatusCallbackEvent != null)
             {
-                p.AddRange(ConferenceStatusCallbackEvent.Select(prop => new KeyValuePair<string, string>("ConferenceStatusCallbackEvent", prop.ToString())));
+                p.AddRange(ConferenceStatusCallbackEvent.Select(ConferenceStatusCallbackEvent => new KeyValuePair<string, string>("ConferenceStatusCallbackEvent", ConferenceStatusCallbackEvent)));
             }
             if (RecordingChannels != null)
             {
@@ -312,11 +312,11 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             }
             if (RecordingStatusCallbackEvent != null)
             {
-                p.AddRange(RecordingStatusCallbackEvent.Select(prop => new KeyValuePair<string, string>("RecordingStatusCallbackEvent", prop.ToString())));
+                p.AddRange(RecordingStatusCallbackEvent.Select(RecordingStatusCallbackEvent => new KeyValuePair<string, string>("RecordingStatusCallbackEvent", RecordingStatusCallbackEvent)));
             }
             if (ConferenceRecordingStatusCallbackEvent != null)
             {
-                p.AddRange(ConferenceRecordingStatusCallbackEvent.Select(prop => new KeyValuePair<string, string>("ConferenceRecordingStatusCallbackEvent", prop.ToString())));
+                p.AddRange(ConferenceRecordingStatusCallbackEvent.Select(ConferenceRecordingStatusCallbackEvent => new KeyValuePair<string, string>("ConferenceRecordingStatusCallbackEvent", ConferenceRecordingStatusCallbackEvent)));
             }
             if (Coaching != null)
             {

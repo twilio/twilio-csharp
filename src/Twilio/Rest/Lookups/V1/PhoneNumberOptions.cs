@@ -65,11 +65,11 @@ namespace Twilio.Rest.Lookups.V1
             }
             if (Type != null)
             {
-                p.AddRange(Type.Select(prop => new KeyValuePair<string, string>("Type", prop.ToString())));
+                p.AddRange(Type.Select(Type => new KeyValuePair<string, string>("Type", Type)));
             }
             if (AddOns != null)
             {
-                p.AddRange(AddOns.Select(prop => new KeyValuePair<string, string>("AddOns", prop.ToString())));
+                p.AddRange(AddOns.Select(AddOns => new KeyValuePair<string, string>("AddOns", AddOns)));
             }
             if (AddOnsData != null)
             {

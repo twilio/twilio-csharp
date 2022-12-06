@@ -109,7 +109,7 @@ namespace Twilio.Rest.Messaging.V1.Service
             }
             if (MessageSamples != null)
             {
-                p.AddRange(MessageSamples.Select(prop => new KeyValuePair<string, string>("MessageSamples", prop.ToString())));
+                p.AddRange(MessageSamples.Select(MessageSamples => new KeyValuePair<string, string>("MessageSamples", MessageSamples)));
             }
             if (UsAppToPersonUsecase != null)
             {
@@ -141,15 +141,15 @@ namespace Twilio.Rest.Messaging.V1.Service
             }
             if (OptInKeywords != null)
             {
-                p.AddRange(OptInKeywords.Select(prop => new KeyValuePair<string, string>("OptInKeywords", prop.ToString())));
+                p.AddRange(OptInKeywords.Select(OptInKeywords => new KeyValuePair<string, string>("OptInKeywords", OptInKeywords)));
             }
             if (OptOutKeywords != null)
             {
-                p.AddRange(OptOutKeywords.Select(prop => new KeyValuePair<string, string>("OptOutKeywords", prop.ToString())));
+                p.AddRange(OptOutKeywords.Select(OptOutKeywords => new KeyValuePair<string, string>("OptOutKeywords", OptOutKeywords)));
             }
             if (HelpKeywords != null)
             {
-                p.AddRange(HelpKeywords.Select(prop => new KeyValuePair<string, string>("HelpKeywords", prop.ToString())));
+                p.AddRange(HelpKeywords.Select(HelpKeywords => new KeyValuePair<string, string>("HelpKeywords", HelpKeywords)));
             }
             return p;
         }
