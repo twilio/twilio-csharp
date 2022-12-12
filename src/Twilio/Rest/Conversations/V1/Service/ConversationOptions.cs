@@ -105,11 +105,11 @@ namespace Twilio.Rest.Conversations.V1.Service
             }
             if (TimersInactive != null)
             {
-                p.Add(new KeyValuePair<string, string>("TimersInactive", TimersInactive));
+                p.Add(new KeyValuePair<string, string>("Timers.Inactive", TimersInactive));
             }
             if (TimersClosed != null)
             {
-                p.Add(new KeyValuePair<string, string>("TimersClosed", TimersClosed));
+                p.Add(new KeyValuePair<string, string>("Timers.Closed", TimersClosed));
             }
             return p;
         }
@@ -322,11 +322,11 @@ namespace Twilio.Rest.Conversations.V1.Service
             }
             if (TimersInactive != null)
             {
-                p.Add(new KeyValuePair<string, string>("TimersInactive", TimersInactive));
+                p.Add(new KeyValuePair<string, string>("Timers.Inactive", TimersInactive));
             }
             if (TimersClosed != null)
             {
-                p.Add(new KeyValuePair<string, string>("TimersClosed", TimersClosed));
+                p.Add(new KeyValuePair<string, string>("Timers.Closed", TimersClosed));
             }
             if (UniqueName != null)
             {

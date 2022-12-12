@@ -354,35 +354,35 @@ namespace Twilio.Rest.Chat.V1
             }
             if (NotificationsNewMessageEnabled != null)
             {
-                p.Add(new KeyValuePair<string, string>("NotificationsNewMessageEnabled", NotificationsNewMessageEnabled.Value.ToString().ToLower()));
+                p.Add(new KeyValuePair<string, string>("Notifications.NewMessage.Enabled", NotificationsNewMessageEnabled.Value.ToString().ToLower()));
             }
             if (NotificationsNewMessageTemplate != null)
             {
-                p.Add(new KeyValuePair<string, string>("NotificationsNewMessageTemplate", NotificationsNewMessageTemplate));
+                p.Add(new KeyValuePair<string, string>("Notifications.NewMessage.Template", NotificationsNewMessageTemplate));
             }
             if (NotificationsAddedToChannelEnabled != null)
             {
-                p.Add(new KeyValuePair<string, string>("NotificationsAddedToChannelEnabled", NotificationsAddedToChannelEnabled.Value.ToString().ToLower()));
+                p.Add(new KeyValuePair<string, string>("Notifications.AddedToChannel.Enabled", NotificationsAddedToChannelEnabled.Value.ToString().ToLower()));
             }
             if (NotificationsAddedToChannelTemplate != null)
             {
-                p.Add(new KeyValuePair<string, string>("NotificationsAddedToChannelTemplate", NotificationsAddedToChannelTemplate));
+                p.Add(new KeyValuePair<string, string>("Notifications.AddedToChannel.Template", NotificationsAddedToChannelTemplate));
             }
             if (NotificationsRemovedFromChannelEnabled != null)
             {
-                p.Add(new KeyValuePair<string, string>("NotificationsRemovedFromChannelEnabled", NotificationsRemovedFromChannelEnabled.Value.ToString().ToLower()));
+                p.Add(new KeyValuePair<string, string>("Notifications.RemovedFromChannel.Enabled", NotificationsRemovedFromChannelEnabled.Value.ToString().ToLower()));
             }
             if (NotificationsRemovedFromChannelTemplate != null)
             {
-                p.Add(new KeyValuePair<string, string>("NotificationsRemovedFromChannelTemplate", NotificationsRemovedFromChannelTemplate));
+                p.Add(new KeyValuePair<string, string>("Notifications.RemovedFromChannel.Template", NotificationsRemovedFromChannelTemplate));
             }
             if (NotificationsInvitedToChannelEnabled != null)
             {
-                p.Add(new KeyValuePair<string, string>("NotificationsInvitedToChannelEnabled", NotificationsInvitedToChannelEnabled.Value.ToString().ToLower()));
+                p.Add(new KeyValuePair<string, string>("Notifications.InvitedToChannel.Enabled", NotificationsInvitedToChannelEnabled.Value.ToString().ToLower()));
             }
             if (NotificationsInvitedToChannelTemplate != null)
             {
-                p.Add(new KeyValuePair<string, string>("NotificationsInvitedToChannelTemplate", NotificationsInvitedToChannelTemplate));
+                p.Add(new KeyValuePair<string, string>("Notifications.InvitedToChannel.Template", NotificationsInvitedToChannelTemplate));
             }
             if (PreWebhookUrl != null)
             {
@@ -402,139 +402,139 @@ namespace Twilio.Rest.Chat.V1
             }
             if (WebhooksOnMessageSendUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("WebhooksOnMessageSendUrl", Serializers.Url(WebhooksOnMessageSendUrl)));
+                p.Add(new KeyValuePair<string, string>("Webhooks.OnMessageSend.Url", Serializers.Url(WebhooksOnMessageSendUrl)));
             }
             if (WebhooksOnMessageSendMethod != null)
             {
-                p.Add(new KeyValuePair<string, string>("WebhooksOnMessageSendMethod", WebhooksOnMessageSendMethod.ToString()));
+                p.Add(new KeyValuePair<string, string>("Webhooks.OnMessageSend.Method", WebhooksOnMessageSendMethod.ToString()));
             }
             if (WebhooksOnMessageUpdateUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("WebhooksOnMessageUpdateUrl", Serializers.Url(WebhooksOnMessageUpdateUrl)));
+                p.Add(new KeyValuePair<string, string>("Webhooks.OnMessageUpdate.Url", Serializers.Url(WebhooksOnMessageUpdateUrl)));
             }
             if (WebhooksOnMessageUpdateMethod != null)
             {
-                p.Add(new KeyValuePair<string, string>("WebhooksOnMessageUpdateMethod", WebhooksOnMessageUpdateMethod.ToString()));
+                p.Add(new KeyValuePair<string, string>("Webhooks.OnMessageUpdate.Method", WebhooksOnMessageUpdateMethod.ToString()));
             }
             if (WebhooksOnMessageRemoveUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("WebhooksOnMessageRemoveUrl", Serializers.Url(WebhooksOnMessageRemoveUrl)));
+                p.Add(new KeyValuePair<string, string>("Webhooks.OnMessageRemove.Url", Serializers.Url(WebhooksOnMessageRemoveUrl)));
             }
             if (WebhooksOnMessageRemoveMethod != null)
             {
-                p.Add(new KeyValuePair<string, string>("WebhooksOnMessageRemoveMethod", WebhooksOnMessageRemoveMethod.ToString()));
+                p.Add(new KeyValuePair<string, string>("Webhooks.OnMessageRemove.Method", WebhooksOnMessageRemoveMethod.ToString()));
             }
             if (WebhooksOnChannelAddUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("WebhooksOnChannelAddUrl", Serializers.Url(WebhooksOnChannelAddUrl)));
+                p.Add(new KeyValuePair<string, string>("Webhooks.OnChannelAdd.Url", Serializers.Url(WebhooksOnChannelAddUrl)));
             }
             if (WebhooksOnChannelAddMethod != null)
             {
-                p.Add(new KeyValuePair<string, string>("WebhooksOnChannelAddMethod", WebhooksOnChannelAddMethod.ToString()));
+                p.Add(new KeyValuePair<string, string>("Webhooks.OnChannelAdd.Method", WebhooksOnChannelAddMethod.ToString()));
             }
             if (WebhooksOnChannelDestroyUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("WebhooksOnChannelDestroyUrl", Serializers.Url(WebhooksOnChannelDestroyUrl)));
+                p.Add(new KeyValuePair<string, string>("Webhooks.OnChannelDestroy.Url", Serializers.Url(WebhooksOnChannelDestroyUrl)));
             }
             if (WebhooksOnChannelDestroyMethod != null)
             {
-                p.Add(new KeyValuePair<string, string>("WebhooksOnChannelDestroyMethod", WebhooksOnChannelDestroyMethod.ToString()));
+                p.Add(new KeyValuePair<string, string>("Webhooks.OnChannelDestroy.Method", WebhooksOnChannelDestroyMethod.ToString()));
             }
             if (WebhooksOnChannelUpdateUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("WebhooksOnChannelUpdateUrl", Serializers.Url(WebhooksOnChannelUpdateUrl)));
+                p.Add(new KeyValuePair<string, string>("Webhooks.OnChannelUpdate.Url", Serializers.Url(WebhooksOnChannelUpdateUrl)));
             }
             if (WebhooksOnChannelUpdateMethod != null)
             {
-                p.Add(new KeyValuePair<string, string>("WebhooksOnChannelUpdateMethod", WebhooksOnChannelUpdateMethod.ToString()));
+                p.Add(new KeyValuePair<string, string>("Webhooks.OnChannelUpdate.Method", WebhooksOnChannelUpdateMethod.ToString()));
             }
             if (WebhooksOnMemberAddUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("WebhooksOnMemberAddUrl", Serializers.Url(WebhooksOnMemberAddUrl)));
+                p.Add(new KeyValuePair<string, string>("Webhooks.OnMemberAdd.Url", Serializers.Url(WebhooksOnMemberAddUrl)));
             }
             if (WebhooksOnMemberAddMethod != null)
             {
-                p.Add(new KeyValuePair<string, string>("WebhooksOnMemberAddMethod", WebhooksOnMemberAddMethod.ToString()));
+                p.Add(new KeyValuePair<string, string>("Webhooks.OnMemberAdd.Method", WebhooksOnMemberAddMethod.ToString()));
             }
             if (WebhooksOnMemberRemoveUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("WebhooksOnMemberRemoveUrl", Serializers.Url(WebhooksOnMemberRemoveUrl)));
+                p.Add(new KeyValuePair<string, string>("Webhooks.OnMemberRemove.Url", Serializers.Url(WebhooksOnMemberRemoveUrl)));
             }
             if (WebhooksOnMemberRemoveMethod != null)
             {
-                p.Add(new KeyValuePair<string, string>("WebhooksOnMemberRemoveMethod", WebhooksOnMemberRemoveMethod.ToString()));
+                p.Add(new KeyValuePair<string, string>("Webhooks.OnMemberRemove.Method", WebhooksOnMemberRemoveMethod.ToString()));
             }
             if (WebhooksOnMessageSentUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("WebhooksOnMessageSentUrl", Serializers.Url(WebhooksOnMessageSentUrl)));
+                p.Add(new KeyValuePair<string, string>("Webhooks.OnMessageSent.Url", Serializers.Url(WebhooksOnMessageSentUrl)));
             }
             if (WebhooksOnMessageSentMethod != null)
             {
-                p.Add(new KeyValuePair<string, string>("WebhooksOnMessageSentMethod", WebhooksOnMessageSentMethod.ToString()));
+                p.Add(new KeyValuePair<string, string>("Webhooks.OnMessageSent.Method", WebhooksOnMessageSentMethod.ToString()));
             }
             if (WebhooksOnMessageUpdatedUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("WebhooksOnMessageUpdatedUrl", Serializers.Url(WebhooksOnMessageUpdatedUrl)));
+                p.Add(new KeyValuePair<string, string>("Webhooks.OnMessageUpdated.Url", Serializers.Url(WebhooksOnMessageUpdatedUrl)));
             }
             if (WebhooksOnMessageUpdatedMethod != null)
             {
-                p.Add(new KeyValuePair<string, string>("WebhooksOnMessageUpdatedMethod", WebhooksOnMessageUpdatedMethod.ToString()));
+                p.Add(new KeyValuePair<string, string>("Webhooks.OnMessageUpdated.Method", WebhooksOnMessageUpdatedMethod.ToString()));
             }
             if (WebhooksOnMessageRemovedUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("WebhooksOnMessageRemovedUrl", Serializers.Url(WebhooksOnMessageRemovedUrl)));
+                p.Add(new KeyValuePair<string, string>("Webhooks.OnMessageRemoved.Url", Serializers.Url(WebhooksOnMessageRemovedUrl)));
             }
             if (WebhooksOnMessageRemovedMethod != null)
             {
-                p.Add(new KeyValuePair<string, string>("WebhooksOnMessageRemovedMethod", WebhooksOnMessageRemovedMethod.ToString()));
+                p.Add(new KeyValuePair<string, string>("Webhooks.OnMessageRemoved.Method", WebhooksOnMessageRemovedMethod.ToString()));
             }
             if (WebhooksOnChannelAddedUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("WebhooksOnChannelAddedUrl", Serializers.Url(WebhooksOnChannelAddedUrl)));
+                p.Add(new KeyValuePair<string, string>("Webhooks.OnChannelAdded.Url", Serializers.Url(WebhooksOnChannelAddedUrl)));
             }
             if (WebhooksOnChannelAddedMethod != null)
             {
-                p.Add(new KeyValuePair<string, string>("WebhooksOnChannelAddedMethod", WebhooksOnChannelAddedMethod.ToString()));
+                p.Add(new KeyValuePair<string, string>("Webhooks.OnChannelAdded.Method", WebhooksOnChannelAddedMethod.ToString()));
             }
             if (WebhooksOnChannelDestroyedUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("WebhooksOnChannelDestroyedUrl", Serializers.Url(WebhooksOnChannelDestroyedUrl)));
+                p.Add(new KeyValuePair<string, string>("Webhooks.OnChannelDestroyed.Url", Serializers.Url(WebhooksOnChannelDestroyedUrl)));
             }
             if (WebhooksOnChannelDestroyedMethod != null)
             {
-                p.Add(new KeyValuePair<string, string>("WebhooksOnChannelDestroyedMethod", WebhooksOnChannelDestroyedMethod.ToString()));
+                p.Add(new KeyValuePair<string, string>("Webhooks.OnChannelDestroyed.Method", WebhooksOnChannelDestroyedMethod.ToString()));
             }
             if (WebhooksOnChannelUpdatedUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("WebhooksOnChannelUpdatedUrl", Serializers.Url(WebhooksOnChannelUpdatedUrl)));
+                p.Add(new KeyValuePair<string, string>("Webhooks.OnChannelUpdated.Url", Serializers.Url(WebhooksOnChannelUpdatedUrl)));
             }
             if (WebhooksOnChannelUpdatedMethod != null)
             {
-                p.Add(new KeyValuePair<string, string>("WebhooksOnChannelUpdatedMethod", WebhooksOnChannelUpdatedMethod.ToString()));
+                p.Add(new KeyValuePair<string, string>("Webhooks.OnChannelUpdated.Method", WebhooksOnChannelUpdatedMethod.ToString()));
             }
             if (WebhooksOnMemberAddedUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("WebhooksOnMemberAddedUrl", Serializers.Url(WebhooksOnMemberAddedUrl)));
+                p.Add(new KeyValuePair<string, string>("Webhooks.OnMemberAdded.Url", Serializers.Url(WebhooksOnMemberAddedUrl)));
             }
             if (WebhooksOnMemberAddedMethod != null)
             {
-                p.Add(new KeyValuePair<string, string>("WebhooksOnMemberAddedMethod", WebhooksOnMemberAddedMethod.ToString()));
+                p.Add(new KeyValuePair<string, string>("Webhooks.OnMemberAdded.Method", WebhooksOnMemberAddedMethod.ToString()));
             }
             if (WebhooksOnMemberRemovedUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("WebhooksOnMemberRemovedUrl", Serializers.Url(WebhooksOnMemberRemovedUrl)));
+                p.Add(new KeyValuePair<string, string>("Webhooks.OnMemberRemoved.Url", Serializers.Url(WebhooksOnMemberRemovedUrl)));
             }
             if (WebhooksOnMemberRemovedMethod != null)
             {
-                p.Add(new KeyValuePair<string, string>("WebhooksOnMemberRemovedMethod", WebhooksOnMemberRemovedMethod.ToString()));
+                p.Add(new KeyValuePair<string, string>("Webhooks.OnMemberRemoved.Method", WebhooksOnMemberRemovedMethod.ToString()));
             }
             if (LimitsChannelMembers != null)
             {
-                p.Add(new KeyValuePair<string, string>("LimitsChannelMembers", LimitsChannelMembers.ToString()));
+                p.Add(new KeyValuePair<string, string>("Limits.ChannelMembers", LimitsChannelMembers.ToString()));
             }
             if (LimitsUserChannels != null)
             {
-                p.Add(new KeyValuePair<string, string>("LimitsUserChannels", LimitsUserChannels.ToString()));
+                p.Add(new KeyValuePair<string, string>("Limits.UserChannels", LimitsUserChannels.ToString()));
             }
             return p;
         }

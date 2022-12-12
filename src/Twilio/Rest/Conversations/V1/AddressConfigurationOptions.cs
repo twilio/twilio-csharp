@@ -92,35 +92,35 @@ namespace Twilio.Rest.Conversations.V1
             }
             if (AutoCreationEnabled != null)
             {
-                p.Add(new KeyValuePair<string, string>("AutoCreationEnabled", AutoCreationEnabled.Value.ToString().ToLower()));
+                p.Add(new KeyValuePair<string, string>("AutoCreation.Enabled", AutoCreationEnabled.Value.ToString().ToLower()));
             }
             if (AutoCreationType != null)
             {
-                p.Add(new KeyValuePair<string, string>("AutoCreationType", AutoCreationType.ToString()));
+                p.Add(new KeyValuePair<string, string>("AutoCreation.Type", AutoCreationType.ToString()));
             }
             if (AutoCreationConversationServiceSid != null)
             {
-                p.Add(new KeyValuePair<string, string>("AutoCreationConversationServiceSid", AutoCreationConversationServiceSid));
+                p.Add(new KeyValuePair<string, string>("AutoCreation.ConversationServiceSid", AutoCreationConversationServiceSid));
             }
             if (AutoCreationWebhookUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("AutoCreationWebhookUrl", AutoCreationWebhookUrl));
+                p.Add(new KeyValuePair<string, string>("AutoCreation.WebhookUrl", AutoCreationWebhookUrl));
             }
             if (AutoCreationWebhookMethod != null)
             {
-                p.Add(new KeyValuePair<string, string>("AutoCreationWebhookMethod", AutoCreationWebhookMethod.ToString()));
+                p.Add(new KeyValuePair<string, string>("AutoCreation.WebhookMethod", AutoCreationWebhookMethod.ToString()));
             }
             if (AutoCreationWebhookFilters != null)
             {
-                p.AddRange(AutoCreationWebhookFilters.Select(AutoCreationWebhookFilters => new KeyValuePair<string, string>("AutoCreationWebhookFilters", AutoCreationWebhookFilters)));
+                p.AddRange(AutoCreationWebhookFilters.Select(AutoCreationWebhookFilters => new KeyValuePair<string, string>("AutoCreation.WebhookFilters", AutoCreationWebhookFilters)));
             }
             if (AutoCreationStudioFlowSid != null)
             {
-                p.Add(new KeyValuePair<string, string>("AutoCreationStudioFlowSid", AutoCreationStudioFlowSid));
+                p.Add(new KeyValuePair<string, string>("AutoCreation.StudioFlowSid", AutoCreationStudioFlowSid));
             }
             if (AutoCreationStudioRetryCount != null)
             {
-                p.Add(new KeyValuePair<string, string>("AutoCreationStudioRetryCount", AutoCreationStudioRetryCount.ToString()));
+                p.Add(new KeyValuePair<string, string>("AutoCreation.StudioRetryCount", AutoCreationStudioRetryCount.ToString()));
             }
             return p;
         }
@@ -271,35 +271,35 @@ namespace Twilio.Rest.Conversations.V1
             }
             if (AutoCreationEnabled != null)
             {
-                p.Add(new KeyValuePair<string, string>("AutoCreationEnabled", AutoCreationEnabled.Value.ToString().ToLower()));
+                p.Add(new KeyValuePair<string, string>("AutoCreation.Enabled", AutoCreationEnabled.Value.ToString().ToLower()));
             }
             if (AutoCreationType != null)
             {
-                p.Add(new KeyValuePair<string, string>("AutoCreationType", AutoCreationType.ToString()));
+                p.Add(new KeyValuePair<string, string>("AutoCreation.Type", AutoCreationType.ToString()));
             }
             if (AutoCreationConversationServiceSid != null)
             {
-                p.Add(new KeyValuePair<string, string>("AutoCreationConversationServiceSid", AutoCreationConversationServiceSid));
+                p.Add(new KeyValuePair<string, string>("AutoCreation.ConversationServiceSid", AutoCreationConversationServiceSid));
             }
             if (AutoCreationWebhookUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("AutoCreationWebhookUrl", AutoCreationWebhookUrl));
+                p.Add(new KeyValuePair<string, string>("AutoCreation.WebhookUrl", AutoCreationWebhookUrl));
             }
             if (AutoCreationWebhookMethod != null)
             {
-                p.Add(new KeyValuePair<string, string>("AutoCreationWebhookMethod", AutoCreationWebhookMethod.ToString()));
+                p.Add(new KeyValuePair<string, string>("AutoCreation.WebhookMethod", AutoCreationWebhookMethod.ToString()));
             }
             if (AutoCreationWebhookFilters != null)
             {
-                p.AddRange(AutoCreationWebhookFilters.Select(AutoCreationWebhookFilters => new KeyValuePair<string, string>("AutoCreationWebhookFilters", AutoCreationWebhookFilters)));
+                p.AddRange(AutoCreationWebhookFilters.Select(AutoCreationWebhookFilters => new KeyValuePair<string, string>("AutoCreation.WebhookFilters", AutoCreationWebhookFilters)));
             }
             if (AutoCreationStudioFlowSid != null)
             {
-                p.Add(new KeyValuePair<string, string>("AutoCreationStudioFlowSid", AutoCreationStudioFlowSid));
+                p.Add(new KeyValuePair<string, string>("AutoCreation.StudioFlowSid", AutoCreationStudioFlowSid));
             }
             if (AutoCreationStudioRetryCount != null)
             {
-                p.Add(new KeyValuePair<string, string>("AutoCreationStudioRetryCount", AutoCreationStudioRetryCount.ToString()));
+                p.Add(new KeyValuePair<string, string>("AutoCreation.StudioRetryCount", AutoCreationStudioRetryCount.ToString()));
             }
             return p;
         }

@@ -106,47 +106,47 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
             }
             if (BindingAlg != null)
             {
-                p.Add(new KeyValuePair<string, string>("BindingAlg", BindingAlg));
+                p.Add(new KeyValuePair<string, string>("Binding.Alg", BindingAlg));
             }
             if (BindingPublicKey != null)
             {
-                p.Add(new KeyValuePair<string, string>("BindingPublicKey", BindingPublicKey));
+                p.Add(new KeyValuePair<string, string>("Binding.PublicKey", BindingPublicKey));
             }
             if (ConfigAppId != null)
             {
-                p.Add(new KeyValuePair<string, string>("ConfigAppId", ConfigAppId));
+                p.Add(new KeyValuePair<string, string>("Config.AppId", ConfigAppId));
             }
             if (ConfigNotificationPlatform != null)
             {
-                p.Add(new KeyValuePair<string, string>("ConfigNotificationPlatform", ConfigNotificationPlatform.ToString()));
+                p.Add(new KeyValuePair<string, string>("Config.NotificationPlatform", ConfigNotificationPlatform.ToString()));
             }
             if (ConfigNotificationToken != null)
             {
-                p.Add(new KeyValuePair<string, string>("ConfigNotificationToken", ConfigNotificationToken));
+                p.Add(new KeyValuePair<string, string>("Config.NotificationToken", ConfigNotificationToken));
             }
             if (ConfigSdkVersion != null)
             {
-                p.Add(new KeyValuePair<string, string>("ConfigSdkVersion", ConfigSdkVersion));
+                p.Add(new KeyValuePair<string, string>("Config.SdkVersion", ConfigSdkVersion));
             }
             if (BindingSecret != null)
             {
-                p.Add(new KeyValuePair<string, string>("BindingSecret", BindingSecret));
+                p.Add(new KeyValuePair<string, string>("Binding.Secret", BindingSecret));
             }
             if (ConfigTimeStep != null)
             {
-                p.Add(new KeyValuePair<string, string>("ConfigTimeStep", ConfigTimeStep.ToString()));
+                p.Add(new KeyValuePair<string, string>("Config.TimeStep", ConfigTimeStep.ToString()));
             }
             if (ConfigSkew != null)
             {
-                p.Add(new KeyValuePair<string, string>("ConfigSkew", ConfigSkew.ToString()));
+                p.Add(new KeyValuePair<string, string>("Config.Skew", ConfigSkew.ToString()));
             }
             if (ConfigCodeLength != null)
             {
-                p.Add(new KeyValuePair<string, string>("ConfigCodeLength", ConfigCodeLength.ToString()));
+                p.Add(new KeyValuePair<string, string>("Config.CodeLength", ConfigCodeLength.ToString()));
             }
             if (ConfigAlg != null)
             {
-                p.Add(new KeyValuePair<string, string>("ConfigAlg", ConfigAlg.ToString()));
+                p.Add(new KeyValuePair<string, string>("Config.Alg", ConfigAlg.ToString()));
             }
             if (Metadata != null)
             {
