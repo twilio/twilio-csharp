@@ -285,55 +285,55 @@ namespace Twilio.Rest.Chat.V2
             }
             if (NotificationsNewMessageEnabled != null)
             {
-                p.Add(new KeyValuePair<string, string>("NotificationsNewMessageEnabled", NotificationsNewMessageEnabled.Value.ToString().ToLower()));
+                p.Add(new KeyValuePair<string, string>("Notifications.NewMessage.Enabled", NotificationsNewMessageEnabled.Value.ToString().ToLower()));
             }
             if (NotificationsNewMessageTemplate != null)
             {
-                p.Add(new KeyValuePair<string, string>("NotificationsNewMessageTemplate", NotificationsNewMessageTemplate));
+                p.Add(new KeyValuePair<string, string>("Notifications.NewMessage.Template", NotificationsNewMessageTemplate));
             }
             if (NotificationsNewMessageSound != null)
             {
-                p.Add(new KeyValuePair<string, string>("NotificationsNewMessageSound", NotificationsNewMessageSound));
+                p.Add(new KeyValuePair<string, string>("Notifications.NewMessage.Sound", NotificationsNewMessageSound));
             }
             if (NotificationsNewMessageBadgeCountEnabled != null)
             {
-                p.Add(new KeyValuePair<string, string>("NotificationsNewMessageBadgeCountEnabled", NotificationsNewMessageBadgeCountEnabled.Value.ToString().ToLower()));
+                p.Add(new KeyValuePair<string, string>("Notifications.NewMessage.BadgeCountEnabled", NotificationsNewMessageBadgeCountEnabled.Value.ToString().ToLower()));
             }
             if (NotificationsAddedToChannelEnabled != null)
             {
-                p.Add(new KeyValuePair<string, string>("NotificationsAddedToChannelEnabled", NotificationsAddedToChannelEnabled.Value.ToString().ToLower()));
+                p.Add(new KeyValuePair<string, string>("Notifications.AddedToChannel.Enabled", NotificationsAddedToChannelEnabled.Value.ToString().ToLower()));
             }
             if (NotificationsAddedToChannelTemplate != null)
             {
-                p.Add(new KeyValuePair<string, string>("NotificationsAddedToChannelTemplate", NotificationsAddedToChannelTemplate));
+                p.Add(new KeyValuePair<string, string>("Notifications.AddedToChannel.Template", NotificationsAddedToChannelTemplate));
             }
             if (NotificationsAddedToChannelSound != null)
             {
-                p.Add(new KeyValuePair<string, string>("NotificationsAddedToChannelSound", NotificationsAddedToChannelSound));
+                p.Add(new KeyValuePair<string, string>("Notifications.AddedToChannel.Sound", NotificationsAddedToChannelSound));
             }
             if (NotificationsRemovedFromChannelEnabled != null)
             {
-                p.Add(new KeyValuePair<string, string>("NotificationsRemovedFromChannelEnabled", NotificationsRemovedFromChannelEnabled.Value.ToString().ToLower()));
+                p.Add(new KeyValuePair<string, string>("Notifications.RemovedFromChannel.Enabled", NotificationsRemovedFromChannelEnabled.Value.ToString().ToLower()));
             }
             if (NotificationsRemovedFromChannelTemplate != null)
             {
-                p.Add(new KeyValuePair<string, string>("NotificationsRemovedFromChannelTemplate", NotificationsRemovedFromChannelTemplate));
+                p.Add(new KeyValuePair<string, string>("Notifications.RemovedFromChannel.Template", NotificationsRemovedFromChannelTemplate));
             }
             if (NotificationsRemovedFromChannelSound != null)
             {
-                p.Add(new KeyValuePair<string, string>("NotificationsRemovedFromChannelSound", NotificationsRemovedFromChannelSound));
+                p.Add(new KeyValuePair<string, string>("Notifications.RemovedFromChannel.Sound", NotificationsRemovedFromChannelSound));
             }
             if (NotificationsInvitedToChannelEnabled != null)
             {
-                p.Add(new KeyValuePair<string, string>("NotificationsInvitedToChannelEnabled", NotificationsInvitedToChannelEnabled.Value.ToString().ToLower()));
+                p.Add(new KeyValuePair<string, string>("Notifications.InvitedToChannel.Enabled", NotificationsInvitedToChannelEnabled.Value.ToString().ToLower()));
             }
             if (NotificationsInvitedToChannelTemplate != null)
             {
-                p.Add(new KeyValuePair<string, string>("NotificationsInvitedToChannelTemplate", NotificationsInvitedToChannelTemplate));
+                p.Add(new KeyValuePair<string, string>("Notifications.InvitedToChannel.Template", NotificationsInvitedToChannelTemplate));
             }
             if (NotificationsInvitedToChannelSound != null)
             {
-                p.Add(new KeyValuePair<string, string>("NotificationsInvitedToChannelSound", NotificationsInvitedToChannelSound));
+                p.Add(new KeyValuePair<string, string>("Notifications.InvitedToChannel.Sound", NotificationsInvitedToChannelSound));
             }
             if (PreWebhookUrl != null)
             {
@@ -353,15 +353,15 @@ namespace Twilio.Rest.Chat.V2
             }
             if (LimitsChannelMembers != null)
             {
-                p.Add(new KeyValuePair<string, string>("LimitsChannelMembers", LimitsChannelMembers.ToString()));
+                p.Add(new KeyValuePair<string, string>("Limits.ChannelMembers", LimitsChannelMembers.ToString()));
             }
             if (LimitsUserChannels != null)
             {
-                p.Add(new KeyValuePair<string, string>("LimitsUserChannels", LimitsUserChannels.ToString()));
+                p.Add(new KeyValuePair<string, string>("Limits.UserChannels", LimitsUserChannels.ToString()));
             }
             if (MediaCompatibilityMessage != null)
             {
-                p.Add(new KeyValuePair<string, string>("MediaCompatibilityMessage", MediaCompatibilityMessage));
+                p.Add(new KeyValuePair<string, string>("Media.CompatibilityMessage", MediaCompatibilityMessage));
             }
             if (PreWebhookRetryCount != null)
             {
@@ -373,7 +373,7 @@ namespace Twilio.Rest.Chat.V2
             }
             if (NotificationsLogEnabled != null)
             {
-                p.Add(new KeyValuePair<string, string>("NotificationsLogEnabled", NotificationsLogEnabled.Value.ToString().ToLower()));
+                p.Add(new KeyValuePair<string, string>("Notifications.LogEnabled", NotificationsLogEnabled.Value.ToString().ToLower()));
             }
             return p;
         }

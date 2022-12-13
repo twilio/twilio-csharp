@@ -78,11 +78,11 @@ namespace Twilio.Rest.Conversations.V1.Conversation
             }
             if (MessagingBindingAddress != null)
             {
-                p.Add(new KeyValuePair<string, string>("MessagingBindingAddress", MessagingBindingAddress));
+                p.Add(new KeyValuePair<string, string>("MessagingBinding.Address", MessagingBindingAddress));
             }
             if (MessagingBindingProxyAddress != null)
             {
-                p.Add(new KeyValuePair<string, string>("MessagingBindingProxyAddress", MessagingBindingProxyAddress));
+                p.Add(new KeyValuePair<string, string>("MessagingBinding.ProxyAddress", MessagingBindingProxyAddress));
             }
             if (DateCreated != null)
             {
@@ -98,7 +98,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
             }
             if (MessagingBindingProjectedAddress != null)
             {
-                p.Add(new KeyValuePair<string, string>("MessagingBindingProjectedAddress", MessagingBindingProjectedAddress));
+                p.Add(new KeyValuePair<string, string>("MessagingBinding.ProjectedAddress", MessagingBindingProjectedAddress));
             }
             if (RoleSid != null)
             {
@@ -307,11 +307,11 @@ namespace Twilio.Rest.Conversations.V1.Conversation
             }
             if (MessagingBindingProxyAddress != null)
             {
-                p.Add(new KeyValuePair<string, string>("MessagingBindingProxyAddress", MessagingBindingProxyAddress));
+                p.Add(new KeyValuePair<string, string>("MessagingBinding.ProxyAddress", MessagingBindingProxyAddress));
             }
             if (MessagingBindingProjectedAddress != null)
             {
-                p.Add(new KeyValuePair<string, string>("MessagingBindingProjectedAddress", MessagingBindingProjectedAddress));
+                p.Add(new KeyValuePair<string, string>("MessagingBinding.ProjectedAddress", MessagingBindingProjectedAddress));
             }
             if (Identity != null)
             {

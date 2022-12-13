@@ -119,51 +119,51 @@ namespace Twilio.Rest.Conversations.V1.Service.Configuration
             }
             if (NewMessageEnabled != null)
             {
-                p.Add(new KeyValuePair<string, string>("NewMessageEnabled", NewMessageEnabled.Value.ToString().ToLower()));
+                p.Add(new KeyValuePair<string, string>("NewMessage.Enabled", NewMessageEnabled.Value.ToString().ToLower()));
             }
             if (NewMessageTemplate != null)
             {
-                p.Add(new KeyValuePair<string, string>("NewMessageTemplate", NewMessageTemplate));
+                p.Add(new KeyValuePair<string, string>("NewMessage.Template", NewMessageTemplate));
             }
             if (NewMessageSound != null)
             {
-                p.Add(new KeyValuePair<string, string>("NewMessageSound", NewMessageSound));
+                p.Add(new KeyValuePair<string, string>("NewMessage.Sound", NewMessageSound));
             }
             if (NewMessageBadgeCountEnabled != null)
             {
-                p.Add(new KeyValuePair<string, string>("NewMessageBadgeCountEnabled", NewMessageBadgeCountEnabled.Value.ToString().ToLower()));
+                p.Add(new KeyValuePair<string, string>("NewMessage.BadgeCountEnabled", NewMessageBadgeCountEnabled.Value.ToString().ToLower()));
             }
             if (AddedToConversationEnabled != null)
             {
-                p.Add(new KeyValuePair<string, string>("AddedToConversationEnabled", AddedToConversationEnabled.Value.ToString().ToLower()));
+                p.Add(new KeyValuePair<string, string>("AddedToConversation.Enabled", AddedToConversationEnabled.Value.ToString().ToLower()));
             }
             if (AddedToConversationTemplate != null)
             {
-                p.Add(new KeyValuePair<string, string>("AddedToConversationTemplate", AddedToConversationTemplate));
+                p.Add(new KeyValuePair<string, string>("AddedToConversation.Template", AddedToConversationTemplate));
             }
             if (AddedToConversationSound != null)
             {
-                p.Add(new KeyValuePair<string, string>("AddedToConversationSound", AddedToConversationSound));
+                p.Add(new KeyValuePair<string, string>("AddedToConversation.Sound", AddedToConversationSound));
             }
             if (RemovedFromConversationEnabled != null)
             {
-                p.Add(new KeyValuePair<string, string>("RemovedFromConversationEnabled", RemovedFromConversationEnabled.Value.ToString().ToLower()));
+                p.Add(new KeyValuePair<string, string>("RemovedFromConversation.Enabled", RemovedFromConversationEnabled.Value.ToString().ToLower()));
             }
             if (RemovedFromConversationTemplate != null)
             {
-                p.Add(new KeyValuePair<string, string>("RemovedFromConversationTemplate", RemovedFromConversationTemplate));
+                p.Add(new KeyValuePair<string, string>("RemovedFromConversation.Template", RemovedFromConversationTemplate));
             }
             if (RemovedFromConversationSound != null)
             {
-                p.Add(new KeyValuePair<string, string>("RemovedFromConversationSound", RemovedFromConversationSound));
+                p.Add(new KeyValuePair<string, string>("RemovedFromConversation.Sound", RemovedFromConversationSound));
             }
             if (NewMessageWithMediaEnabled != null)
             {
-                p.Add(new KeyValuePair<string, string>("NewMessageWithMediaEnabled", NewMessageWithMediaEnabled.Value.ToString().ToLower()));
+                p.Add(new KeyValuePair<string, string>("NewMessage.WithMedia.Enabled", NewMessageWithMediaEnabled.Value.ToString().ToLower()));
             }
             if (NewMessageWithMediaTemplate != null)
             {
-                p.Add(new KeyValuePair<string, string>("NewMessageWithMediaTemplate", NewMessageWithMediaTemplate));
+                p.Add(new KeyValuePair<string, string>("NewMessage.WithMedia.Template", NewMessageWithMediaTemplate));
             }
             return p;
         }

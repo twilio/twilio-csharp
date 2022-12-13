@@ -127,7 +127,7 @@ namespace Twilio.Rest.Api.V2010.Account
             }
             if (MaxPrice != null)
             {
-                p.Add(new KeyValuePair<string, string>("MaxPrice", MaxPrice.ToString()));
+                p.Add(new KeyValuePair<string, string>("MaxPrice", MaxPrice.Value.ToString()));
             }
             if (ProvideFeedback != null)
             {
@@ -327,11 +327,11 @@ namespace Twilio.Rest.Api.V2010.Account
             }
             if (DateSentBefore != null)
             {
-                p.Add(new KeyValuePair<string, string>("DateSentBefore", Serializers.DateTimeIso8601(DateSentBefore)));
+                p.Add(new KeyValuePair<string, string>("DateSent<", Serializers.DateTimeIso8601(DateSentBefore)));
             }
             if (DateSentAfter != null)
             {
-                p.Add(new KeyValuePair<string, string>("DateSentAfter", Serializers.DateTimeIso8601(DateSentAfter)));
+                p.Add(new KeyValuePair<string, string>("DateSent>", Serializers.DateTimeIso8601(DateSentAfter)));
             }
             if (PageSize != null)
             {

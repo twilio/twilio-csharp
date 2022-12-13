@@ -131,31 +131,31 @@ namespace Twilio.Rest.Verify.V2
             }
             if (PushIncludeDate != null)
             {
-                p.Add(new KeyValuePair<string, string>("PushIncludeDate", PushIncludeDate.Value.ToString().ToLower()));
+                p.Add(new KeyValuePair<string, string>("Push.IncludeDate", PushIncludeDate.Value.ToString().ToLower()));
             }
             if (PushApnCredentialSid != null)
             {
-                p.Add(new KeyValuePair<string, string>("PushApnCredentialSid", PushApnCredentialSid));
+                p.Add(new KeyValuePair<string, string>("Push.ApnCredentialSid", PushApnCredentialSid));
             }
             if (PushFcmCredentialSid != null)
             {
-                p.Add(new KeyValuePair<string, string>("PushFcmCredentialSid", PushFcmCredentialSid));
+                p.Add(new KeyValuePair<string, string>("Push.FcmCredentialSid", PushFcmCredentialSid));
             }
             if (TotpIssuer != null)
             {
-                p.Add(new KeyValuePair<string, string>("TotpIssuer", TotpIssuer));
+                p.Add(new KeyValuePair<string, string>("Totp.Issuer", TotpIssuer));
             }
             if (TotpTimeStep != null)
             {
-                p.Add(new KeyValuePair<string, string>("TotpTimeStep", TotpTimeStep.ToString()));
+                p.Add(new KeyValuePair<string, string>("Totp.TimeStep", TotpTimeStep.ToString()));
             }
             if (TotpCodeLength != null)
             {
-                p.Add(new KeyValuePair<string, string>("TotpCodeLength", TotpCodeLength.ToString()));
+                p.Add(new KeyValuePair<string, string>("Totp.CodeLength", TotpCodeLength.ToString()));
             }
             if (TotpSkew != null)
             {
-                p.Add(new KeyValuePair<string, string>("TotpSkew", TotpSkew.ToString()));
+                p.Add(new KeyValuePair<string, string>("Totp.Skew", TotpSkew.ToString()));
             }
             if (DefaultTemplateSid != null)
             {
@@ -358,31 +358,31 @@ namespace Twilio.Rest.Verify.V2
             }
             if (PushIncludeDate != null)
             {
-                p.Add(new KeyValuePair<string, string>("PushIncludeDate", PushIncludeDate.Value.ToString().ToLower()));
+                p.Add(new KeyValuePair<string, string>("Push.IncludeDate", PushIncludeDate.Value.ToString().ToLower()));
             }
             if (PushApnCredentialSid != null)
             {
-                p.Add(new KeyValuePair<string, string>("PushApnCredentialSid", PushApnCredentialSid));
+                p.Add(new KeyValuePair<string, string>("Push.ApnCredentialSid", PushApnCredentialSid));
             }
             if (PushFcmCredentialSid != null)
             {
-                p.Add(new KeyValuePair<string, string>("PushFcmCredentialSid", PushFcmCredentialSid));
+                p.Add(new KeyValuePair<string, string>("Push.FcmCredentialSid", PushFcmCredentialSid));
             }
             if (TotpIssuer != null)
             {
-                p.Add(new KeyValuePair<string, string>("TotpIssuer", TotpIssuer));
+                p.Add(new KeyValuePair<string, string>("Totp.Issuer", TotpIssuer));
             }
             if (TotpTimeStep != null)
             {
-                p.Add(new KeyValuePair<string, string>("TotpTimeStep", TotpTimeStep.ToString()));
+                p.Add(new KeyValuePair<string, string>("Totp.TimeStep", TotpTimeStep.ToString()));
             }
             if (TotpCodeLength != null)
             {
-                p.Add(new KeyValuePair<string, string>("TotpCodeLength", TotpCodeLength.ToString()));
+                p.Add(new KeyValuePair<string, string>("Totp.CodeLength", TotpCodeLength.ToString()));
             }
             if (TotpSkew != null)
             {
-                p.Add(new KeyValuePair<string, string>("TotpSkew", TotpSkew.ToString()));
+                p.Add(new KeyValuePair<string, string>("Totp.Skew", TotpSkew.ToString()));
             }
             if (DefaultTemplateSid != null)
             {

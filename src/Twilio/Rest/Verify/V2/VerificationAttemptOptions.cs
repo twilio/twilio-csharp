@@ -99,7 +99,7 @@ namespace Twilio.Rest.Verify.V2
             }
             if (ChannelDataTo != null)
             {
-                p.Add(new KeyValuePair<string, string>("ChannelDataTo", ChannelDataTo));
+                p.Add(new KeyValuePair<string, string>("ChannelData.To", ChannelDataTo));
             }
             if (Country != null)
             {
