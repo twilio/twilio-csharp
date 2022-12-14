@@ -224,10 +224,12 @@ namespace Twilio.TwiML.Voice
         /// </summary>
         /// <param name="words"> Words to be interpreted, the body of the TwiML Element. </param>
         /// <param name="interpret-As"> Specify the type of words are spoken </param>
-        /// <param name="role"> Specify the format of the date when interpret-as is set to date </param>
-        public SsmlS SayAs(string words = null, SsmlSayAs.InterpretAsEnum interpretAs = null, SsmlSayAs.RoleEnum role = null)
+        /// <param name="format"> Specify the format of the date when interpret-as is set to date </param>
+        public SsmlS SayAs(string words = null,
+                           SsmlSayAs.InterpretAsEnum interpretAs = null,
+                           SsmlSayAs.FormatEnum format = null)
         {
-            var newChild = new SsmlSayAs(words, interpretAs, role);
+            var newChild = new SsmlSayAs(words, interpretAs, format);
             this.Append(newChild);
             return this;
         }
@@ -248,13 +250,13 @@ namespace Twilio.TwiML.Voice
         /// </summary>
         /// <param name="words"> Words to be interpreted, the body of the TwiML Element. </param>
         /// <param name="interpret-As"> Specify the type of words are spoken </param>
-        /// <param name="role"> Specify the format of the date when interpret-as is set to date </param>
+        /// <param name="format"> Specify the format of the date when interpret-as is set to date </param>
         [System.Obsolete("This method is deprecated, use .SayAs() instead.")]
         public SsmlS SsmlSayAs(string words = null,
                                SsmlSayAs.InterpretAsEnum interpretAs = null,
-                               SsmlSayAs.RoleEnum role = null)
+                               SsmlSayAs.FormatEnum format = null)
         {
-            return SayAs(words, interpretAs, role);
+            return SayAs(words, interpretAs, format);
         }
 
         /// <summary>

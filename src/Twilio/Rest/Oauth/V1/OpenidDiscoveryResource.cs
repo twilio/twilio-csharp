@@ -34,7 +34,7 @@ namespace Twilio.Rest.Oauth.V1
         private static Request BuildFetchRequest(FetchOpenidDiscoveryOptions options, ITwilioRestClient client)
         {
             
-            string path = "/v1/well-known/openid-configuration";
+            string path = "/v1/.well-known/openid-configuration";
 
 
             return new Request(

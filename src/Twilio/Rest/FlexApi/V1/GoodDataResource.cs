@@ -34,7 +34,7 @@ namespace Twilio.Rest.FlexApi.V1
         private static Request BuildCreateRequest(CreateGoodDataOptions options, ITwilioRestClient client)
         {
             
-            string path = "/v1/Accounts/GoodData";
+            string path = "/v1/Insights/Session";
 
 
             return new Request(
@@ -46,7 +46,7 @@ namespace Twilio.Rest.FlexApi.V1
             );
         }
 
-        /// <summary> To create a GoodData Session id to access GoodData dashboards </summary>
+        /// <summary> To obtain session details for fetching reports and dashboards </summary>
         /// <param name="options"> Create GoodData parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of GoodData </returns>
@@ -58,7 +58,7 @@ namespace Twilio.Rest.FlexApi.V1
         }
 
         #if !NET35
-        /// <summary> To create a GoodData Session id to access GoodData dashboards </summary>
+        /// <summary> To obtain session details for fetching reports and dashboards </summary>
         /// <param name="options"> Create GoodData parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of GoodData </returns>
@@ -71,7 +71,7 @@ namespace Twilio.Rest.FlexApi.V1
         }
         #endif
 
-        /// <summary> To create a GoodData Session id to access GoodData dashboards </summary>
+        /// <summary> To obtain session details for fetching reports and dashboards </summary>
         /// <param name="token"> The Token HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of GoodData </returns>
@@ -84,7 +84,7 @@ namespace Twilio.Rest.FlexApi.V1
         }
 
         #if !NET35
-        /// <summary> To create a GoodData Session id to access GoodData dashboards </summary>
+        /// <summary> To obtain session details for fetching reports and dashboards </summary>
         /// <param name="token"> The Token HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of GoodData </returns>
@@ -115,7 +115,7 @@ namespace Twilio.Rest.FlexApi.V1
         }
 
     
-        ///<summary> Unique workspace ID in gooddata </summary> 
+        ///<summary> Unique ID to identify the user's workspace </summary> 
         [JsonProperty("workspace_id")]
         public string WorkspaceId { get; private set; }
 
@@ -127,9 +127,9 @@ namespace Twilio.Rest.FlexApi.V1
         [JsonProperty("session_id")]
         public string SessionId { get; private set; }
 
-        ///<summary> GoodData login base URL </summary> 
-        [JsonProperty("gd_base_url")]
-        public string GdBaseUrl { get; private set; }
+        ///<summary> Base URL to fetch reports and dashboards </summary> 
+        [JsonProperty("base_url")]
+        public string BaseUrl { get; private set; }
 
         ///<summary> The URL of this resource. </summary> 
         [JsonProperty("url")]

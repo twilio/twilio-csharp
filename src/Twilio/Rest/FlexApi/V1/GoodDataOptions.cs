@@ -24,7 +24,7 @@ using Twilio.Converters;
 namespace Twilio.Rest.FlexApi.V1
 {
 
-    /// <summary> To create a GoodData Session id to access GoodData dashboards </summary>
+    /// <summary> To obtain session details for fetching reports and dashboards </summary>
     public class CreateGoodDataOptions : IOptions<GoodDataResource>
     {
         

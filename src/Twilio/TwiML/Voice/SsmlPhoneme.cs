@@ -28,6 +28,10 @@ namespace Twilio.TwiML.Voice
 
             public static readonly AlphabetEnum Ipa = new AlphabetEnum("ipa");
             public static readonly AlphabetEnum XSampa = new AlphabetEnum("x-sampa");
+            public static readonly AlphabetEnum XAmazonJyutping = new AlphabetEnum("x-amazon-jyutping");
+            public static readonly AlphabetEnum XAmazonPinyin = new AlphabetEnum("x-amazon-pinyin");
+            public static readonly AlphabetEnum XAmazonPronKana = new AlphabetEnum("x-amazon-pron-kana");
+            public static readonly AlphabetEnum XAmazonYomigana = new AlphabetEnum("x-amazon-yomigana");
         }
 
         /// <summary>

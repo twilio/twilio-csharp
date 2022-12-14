@@ -89,34 +89,38 @@ namespace Twilio.Rest.Supersim.V1
         #endif
         /// <summary> Retrieve a list of Settings Updates. </summary>
         /// <param name="sim"> Filter the Settings Updates by a Super SIM's SID or UniqueName. </param>
+        /// <param name="status"> Filter the Settings Updates by status. Can be `scheduled`, `in-progress`, `successful`, or `failed`. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
         /// <returns> A single instance of SettingsUpdate </returns>
         public static ResourceSet<SettingsUpdateResource> Read(
                                                      string sim = null,
+                                                     SettingsUpdateResource.StatusEnum status = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
                                                      ITwilioRestClient client = null)
         {
-            var options = new ReadSettingsUpdateOptions(){ Sim = sim, PageSize = pageSize, Limit = limit};
+            var options = new ReadSettingsUpdateOptions(){ Sim = sim, Status = status, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
         #if !NET35
         /// <summary> Retrieve a list of Settings Updates. </summary>
         /// <param name="sim"> Filter the Settings Updates by a Super SIM's SID or UniqueName. </param>
+        /// <param name="status"> Filter the Settings Updates by status. Can be `scheduled`, `in-progress`, `successful`, or `failed`. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
         /// <returns> Task that resolves to A single instance of SettingsUpdate </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<SettingsUpdateResource>> ReadAsync(
                                                                                              string sim = null,
+                                                                                             SettingsUpdateResource.StatusEnum status = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
                                                                                              ITwilioRestClient client = null)
         {
-            var options = new ReadSettingsUpdateOptions(){ Sim = sim, PageSize = pageSize, Limit = limit};
+            var options = new ReadSettingsUpdateOptions(){ Sim = sim, Status = status, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

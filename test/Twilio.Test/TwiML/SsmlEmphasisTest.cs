@@ -66,7 +66,7 @@ namespace Twilio.Tests.TwiML
 
             elem.Prosody("words", "volume", "rate", "pitch");
 
-            elem.SayAs("words", SsmlSayAs.InterpretAsEnum.Character, SsmlSayAs.RoleEnum.Mdy);
+            elem.SayAs("words", SsmlSayAs.InterpretAsEnum.Characters, SsmlSayAs.FormatEnum.Mdy);
 
             elem.Sub("words", "alias");
 
@@ -80,7 +80,7 @@ namespace Twilio.Tests.TwiML
                 "  <lang xml:lang=\"arb\">words</lang>" + Environment.NewLine +
                 "  <phoneme alphabet=\"ipa\" ph=\"ph\">words</phoneme>" + Environment.NewLine +
                 "  <prosody volume=\"volume\" rate=\"rate\" pitch=\"pitch\">words</prosody>" + Environment.NewLine +
-                "  <say-as interpret-as=\"character\" role=\"mdy\">words</say-as>" + Environment.NewLine +
+                "  <say-as interpret-as=\"characters\" format=\"mdy\">words</say-as>" + Environment.NewLine +
                 "  <sub alias=\"alias\">words</sub>" + Environment.NewLine +
                 "  <w role=\"role\">words</w>" + Environment.NewLine +
                 "</emphasis>",

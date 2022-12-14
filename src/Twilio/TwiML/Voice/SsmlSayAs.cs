@@ -26,7 +26,7 @@ namespace Twilio.TwiML.Voice
                 return new InterpretAsEnum(value);
             }
 
-            public static readonly InterpretAsEnum Character = new InterpretAsEnum("character");
+            public static readonly InterpretAsEnum Characters = new InterpretAsEnum("characters");
             public static readonly InterpretAsEnum SpellOut = new InterpretAsEnum("spell-out");
             public static readonly InterpretAsEnum Cardinal = new InterpretAsEnum("cardinal");
             public static readonly InterpretAsEnum Number = new InterpretAsEnum("number");
@@ -41,26 +41,26 @@ namespace Twilio.TwiML.Voice
             public static readonly InterpretAsEnum Telephone = new InterpretAsEnum("telephone");
         }
 
-        public sealed class RoleEnum : StringEnum
+        public sealed class FormatEnum : StringEnum
         {
-            private RoleEnum(string value) : base(value) {}
-            public RoleEnum() {}
-            public static implicit operator RoleEnum(string value)
+            private FormatEnum(string value) : base(value) {}
+            public FormatEnum() {}
+            public static implicit operator FormatEnum(string value)
             {
-                return new RoleEnum(value);
+                return new FormatEnum(value);
             }
 
-            public static readonly RoleEnum Mdy = new RoleEnum("mdy");
-            public static readonly RoleEnum Dmy = new RoleEnum("dmy");
-            public static readonly RoleEnum Ymd = new RoleEnum("ymd");
-            public static readonly RoleEnum Md = new RoleEnum("md");
-            public static readonly RoleEnum Dm = new RoleEnum("dm");
-            public static readonly RoleEnum Ym = new RoleEnum("ym");
-            public static readonly RoleEnum My = new RoleEnum("my");
-            public static readonly RoleEnum D = new RoleEnum("d");
-            public static readonly RoleEnum M = new RoleEnum("m");
-            public static readonly RoleEnum Y = new RoleEnum("y");
-            public static readonly RoleEnum Yyyymmdd = new RoleEnum("yyyymmdd");
+            public static readonly FormatEnum Mdy = new FormatEnum("mdy");
+            public static readonly FormatEnum Dmy = new FormatEnum("dmy");
+            public static readonly FormatEnum Ymd = new FormatEnum("ymd");
+            public static readonly FormatEnum Md = new FormatEnum("md");
+            public static readonly FormatEnum Dm = new FormatEnum("dm");
+            public static readonly FormatEnum Ym = new FormatEnum("ym");
+            public static readonly FormatEnum My = new FormatEnum("my");
+            public static readonly FormatEnum D = new FormatEnum("d");
+            public static readonly FormatEnum M = new FormatEnum("m");
+            public static readonly FormatEnum Y = new FormatEnum("y");
+            public static readonly FormatEnum Yyyymmdd = new FormatEnum("yyyymmdd");
         }
 
         /// <summary>
@@ -74,21 +74,21 @@ namespace Twilio.TwiML.Voice
         /// <summary>
         /// Specify the format of the date when interpret-as is set to date
         /// </summary>
-        public SsmlSayAs.RoleEnum Role { get; set; }
+        public SsmlSayAs.FormatEnum Format { get; set; }
 
         /// <summary>
         /// Create a new SsmlSayAs
         /// </summary>
         /// <param name="words"> Words to be interpreted, the body of the TwiML Element. </param>
         /// <param name="interpret-As"> Specify the type of words are spoken </param>
-        /// <param name="role"> Specify the format of the date when interpret-as is set to date </param>
+        /// <param name="format"> Specify the format of the date when interpret-as is set to date </param>
         public SsmlSayAs(string words = null,
                          SsmlSayAs.InterpretAsEnum interpretAs = null,
-                         SsmlSayAs.RoleEnum role = null) : base("say-as")
+                         SsmlSayAs.FormatEnum format = null) : base("say-as")
         {
             this.Words = words;
             this.InterpretAs = interpretAs;
-            this.Role = role;
+            this.Format = format;
         }
 
         /// <summary>
@@ -109,9 +109,9 @@ namespace Twilio.TwiML.Voice
             {
                 attributes.Add(new XAttribute("interpret-as", this.InterpretAs.ToString()));
             }
-            if (this.Role != null)
+            if (this.Format != null)
             {
-                attributes.Add(new XAttribute("role", this.Role.ToString()));
+                attributes.Add(new XAttribute("format", this.Format.ToString()));
             }
             return attributes;
         }

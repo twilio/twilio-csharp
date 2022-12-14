@@ -84,6 +84,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="friendlyName"> A descriptive string that you create to describe the new address. It can be up to 64 characters long. </param>
         /// <param name="emergencyEnabled"> Whether to enable emergency calling on the new address. Can be: `true` or `false`. </param>
         /// <param name="autoCorrectAddress"> Whether we should automatically correct the address. Can be: `true` or `false` and the default is `true`. If empty or `true`, we will correct the address you provide if necessary. If `false`, we won't alter the address you provide. </param>
+        /// <param name="streetSecondary"> The additional number and street address of the address. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Address </returns>
         public static AddressResource Create(
@@ -97,9 +98,10 @@ namespace Twilio.Rest.Api.V2010.Account
                                           string friendlyName = null,
                                           bool? emergencyEnabled = null,
                                           bool? autoCorrectAddress = null,
+                                          string streetSecondary = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new CreateAddressOptions(customerName, street, city, region, postalCode, isoCountry){  PathAccountSid = pathAccountSid, FriendlyName = friendlyName, EmergencyEnabled = emergencyEnabled, AutoCorrectAddress = autoCorrectAddress };
+            var options = new CreateAddressOptions(customerName, street, city, region, postalCode, isoCountry){  PathAccountSid = pathAccountSid, FriendlyName = friendlyName, EmergencyEnabled = emergencyEnabled, AutoCorrectAddress = autoCorrectAddress, StreetSecondary = streetSecondary };
             return Create(options, client);
         }
 
@@ -115,6 +117,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="friendlyName"> A descriptive string that you create to describe the new address. It can be up to 64 characters long. </param>
         /// <param name="emergencyEnabled"> Whether to enable emergency calling on the new address. Can be: `true` or `false`. </param>
         /// <param name="autoCorrectAddress"> Whether we should automatically correct the address. Can be: `true` or `false` and the default is `true`. If empty or `true`, we will correct the address you provide if necessary. If `false`, we won't alter the address you provide. </param>
+        /// <param name="streetSecondary"> The additional number and street address of the address. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Address </returns>
         public static async System.Threading.Tasks.Task<AddressResource> CreateAsync(
@@ -128,9 +131,10 @@ namespace Twilio.Rest.Api.V2010.Account
                                                                                   string friendlyName = null,
                                                                                   bool? emergencyEnabled = null,
                                                                                   bool? autoCorrectAddress = null,
+                                                                                  string streetSecondary = null,
                                                                                   ITwilioRestClient client = null)
         {
-        var options = new CreateAddressOptions(customerName, street, city, region, postalCode, isoCountry){  PathAccountSid = pathAccountSid, FriendlyName = friendlyName, EmergencyEnabled = emergencyEnabled, AutoCorrectAddress = autoCorrectAddress };
+        var options = new CreateAddressOptions(customerName, street, city, region, postalCode, isoCountry){  PathAccountSid = pathAccountSid, FriendlyName = friendlyName, EmergencyEnabled = emergencyEnabled, AutoCorrectAddress = autoCorrectAddress, StreetSecondary = streetSecondary };
             return await CreateAsync(options, client);
         }
         #endif
@@ -470,6 +474,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="postalCode"> The postal code of the address. </param>
         /// <param name="emergencyEnabled"> Whether to enable emergency calling on the address. Can be: `true` or `false`. </param>
         /// <param name="autoCorrectAddress"> Whether we should automatically correct the address. Can be: `true` or `false` and the default is `true`. If empty or `true`, we will correct the address you provide if necessary. If `false`, we won't alter the address you provide. </param>
+        /// <param name="streetSecondary"> The additional number and street address of the address. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Address </returns>
         public static AddressResource Update(
@@ -483,9 +488,10 @@ namespace Twilio.Rest.Api.V2010.Account
                                           string postalCode = null,
                                           bool? emergencyEnabled = null,
                                           bool? autoCorrectAddress = null,
+                                          string streetSecondary = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new UpdateAddressOptions(pathSid){ PathAccountSid = pathAccountSid, FriendlyName = friendlyName, CustomerName = customerName, Street = street, City = city, Region = region, PostalCode = postalCode, EmergencyEnabled = emergencyEnabled, AutoCorrectAddress = autoCorrectAddress };
+            var options = new UpdateAddressOptions(pathSid){ PathAccountSid = pathAccountSid, FriendlyName = friendlyName, CustomerName = customerName, Street = street, City = city, Region = region, PostalCode = postalCode, EmergencyEnabled = emergencyEnabled, AutoCorrectAddress = autoCorrectAddress, StreetSecondary = streetSecondary };
             return Update(options, client);
         }
 
@@ -501,6 +507,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="postalCode"> The postal code of the address. </param>
         /// <param name="emergencyEnabled"> Whether to enable emergency calling on the address. Can be: `true` or `false`. </param>
         /// <param name="autoCorrectAddress"> Whether we should automatically correct the address. Can be: `true` or `false` and the default is `true`. If empty or `true`, we will correct the address you provide if necessary. If `false`, we won't alter the address you provide. </param>
+        /// <param name="streetSecondary"> The additional number and street address of the address. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Address </returns>
         public static async System.Threading.Tasks.Task<AddressResource> UpdateAsync(
@@ -514,9 +521,10 @@ namespace Twilio.Rest.Api.V2010.Account
                                                                               string postalCode = null,
                                                                               bool? emergencyEnabled = null,
                                                                               bool? autoCorrectAddress = null,
+                                                                              string streetSecondary = null,
                                                                               ITwilioRestClient client = null)
         {
-            var options = new UpdateAddressOptions(pathSid){ PathAccountSid = pathAccountSid, FriendlyName = friendlyName, CustomerName = customerName, Street = street, City = city, Region = region, PostalCode = postalCode, EmergencyEnabled = emergencyEnabled, AutoCorrectAddress = autoCorrectAddress };
+            var options = new UpdateAddressOptions(pathSid){ PathAccountSid = pathAccountSid, FriendlyName = friendlyName, CustomerName = customerName, Street = street, City = city, Region = region, PostalCode = postalCode, EmergencyEnabled = emergencyEnabled, AutoCorrectAddress = autoCorrectAddress, StreetSecondary = streetSecondary };
             return await UpdateAsync(options, client);
         }
         #endif
@@ -598,6 +606,10 @@ namespace Twilio.Rest.Api.V2010.Account
         ///<summary> Whether the address has been verified to comply with regulation </summary> 
         [JsonProperty("verified")]
         public bool? Verified { get; private set; }
+
+        ///<summary> The additional number and street address of the address </summary> 
+        [JsonProperty("street_secondary")]
+        public string StreetSecondary { get; private set; }
 
 
 

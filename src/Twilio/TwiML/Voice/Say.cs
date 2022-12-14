@@ -98,9 +98,13 @@ namespace Twilio.TwiML.Voice
             public static readonly VoiceEnum PollyBrianNeural = new VoiceEnum("Polly.Brian-Neural");
             public static readonly VoiceEnum PollyCamilaNeural = new VoiceEnum("Polly.Camila-Neural");
             public static readonly VoiceEnum PollyDanielNeural = new VoiceEnum("Polly.Daniel-Neural");
+            public static readonly VoiceEnum PollyElinNeural = new VoiceEnum("Polly.Elin-Neural");
             public static readonly VoiceEnum PollyEmmaNeural = new VoiceEnum("Polly.Emma-Neural");
             public static readonly VoiceEnum PollyGabrielleNeural = new VoiceEnum("Polly.Gabrielle-Neural");
+            public static readonly VoiceEnum PollyHalaNeural = new VoiceEnum("Polly.Hala-Neural");
             public static readonly VoiceEnum PollyHannahNeural = new VoiceEnum("Polly.Hannah-Neural");
+            public static readonly VoiceEnum PollyHiujinNeural = new VoiceEnum("Polly.Hiujin-Neural");
+            public static readonly VoiceEnum PollyIdaNeural = new VoiceEnum("Polly.Ida-Neural");
             public static readonly VoiceEnum PollyInesNeural = new VoiceEnum("Polly.Ines-Neural");
             public static readonly VoiceEnum PollyIvyNeural = new VoiceEnum("Polly.Ivy-Neural");
             public static readonly VoiceEnum PollyJoannaNeural = new VoiceEnum("Polly.Joanna-Neural");
@@ -110,19 +114,23 @@ namespace Twilio.TwiML.Voice
             public static readonly VoiceEnum PollyKendraNeural = new VoiceEnum("Polly.Kendra-Neural");
             public static readonly VoiceEnum PollyKevinNeural = new VoiceEnum("Polly.Kevin-Neural");
             public static readonly VoiceEnum PollyKimberlyNeural = new VoiceEnum("Polly.Kimberly-Neural");
+            public static readonly VoiceEnum PollyLauraNeural = new VoiceEnum("Polly.Laura-Neural");
             public static readonly VoiceEnum PollyLeaNeural = new VoiceEnum("Polly.Lea-Neural");
             public static readonly VoiceEnum PollyLiamNeural = new VoiceEnum("Polly.Liam-Neural");
             public static readonly VoiceEnum PollyLuciaNeural = new VoiceEnum("Polly.Lucia-Neural");
             public static readonly VoiceEnum PollyLupeNeural = new VoiceEnum("Polly.Lupe-Neural");
             public static readonly VoiceEnum PollyMatthewNeural = new VoiceEnum("Polly.Matthew-Neural");
             public static readonly VoiceEnum PollyMiaNeural = new VoiceEnum("Polly.Mia-Neural");
+            public static readonly VoiceEnum PollyOlaNeural = new VoiceEnum("Polly.Ola-Neural");
             public static readonly VoiceEnum PollyOliviaNeural = new VoiceEnum("Polly.Olivia-Neural");
             public static readonly VoiceEnum PollyPedroNeural = new VoiceEnum("Polly.Pedro-Neural");
             public static readonly VoiceEnum PollySalliNeural = new VoiceEnum("Polly.Salli-Neural");
             public static readonly VoiceEnum PollySeoyeonNeural = new VoiceEnum("Polly.Seoyeon-Neural");
+            public static readonly VoiceEnum PollySuviNeural = new VoiceEnum("Polly.Suvi-Neural");
             public static readonly VoiceEnum PollyTakumiNeural = new VoiceEnum("Polly.Takumi-Neural");
             public static readonly VoiceEnum PollyVickiNeural = new VoiceEnum("Polly.Vicki-Neural");
             public static readonly VoiceEnum PollyVitoriaNeural = new VoiceEnum("Polly.Vitoria-Neural");
+            public static readonly VoiceEnum PollyZhiyuNeural = new VoiceEnum("Polly.Zhiyu-Neural");
         }
 
         public sealed class LanguageEnum : StringEnum
@@ -488,10 +496,12 @@ namespace Twilio.TwiML.Voice
         /// </summary>
         /// <param name="words"> Words to be interpreted, the body of the TwiML Element. </param>
         /// <param name="interpret-As"> Specify the type of words are spoken </param>
-        /// <param name="role"> Specify the format of the date when interpret-as is set to date </param>
-        public Say SayAs(string words = null, SsmlSayAs.InterpretAsEnum interpretAs = null, SsmlSayAs.RoleEnum role = null)
+        /// <param name="format"> Specify the format of the date when interpret-as is set to date </param>
+        public Say SayAs(string words = null,
+                         SsmlSayAs.InterpretAsEnum interpretAs = null,
+                         SsmlSayAs.FormatEnum format = null)
         {
-            var newChild = new SsmlSayAs(words, interpretAs, role);
+            var newChild = new SsmlSayAs(words, interpretAs, format);
             this.Append(newChild);
             return this;
         }
@@ -512,13 +522,13 @@ namespace Twilio.TwiML.Voice
         /// </summary>
         /// <param name="words"> Words to be interpreted, the body of the TwiML Element. </param>
         /// <param name="interpret-As"> Specify the type of words are spoken </param>
-        /// <param name="role"> Specify the format of the date when interpret-as is set to date </param>
+        /// <param name="format"> Specify the format of the date when interpret-as is set to date </param>
         [System.Obsolete("This method is deprecated, use .SayAs() instead.")]
         public Say SsmlSayAs(string words = null,
                              SsmlSayAs.InterpretAsEnum interpretAs = null,
-                             SsmlSayAs.RoleEnum role = null)
+                             SsmlSayAs.FormatEnum format = null)
         {
-            return SayAs(words, interpretAs, role);
+            return SayAs(words, interpretAs, format);
         }
 
         /// <summary>

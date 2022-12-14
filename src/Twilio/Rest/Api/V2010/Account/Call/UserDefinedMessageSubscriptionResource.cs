@@ -78,20 +78,20 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary> Subscribe to User Defined Messages for a given Call SID. </summary>
         /// <param name="pathCallSid"> The SID of the [Call](https://www.twilio.com/docs/voice/api/call-resource) the User Defined Messages subscription is associated with. This refers to the Call SID that is producing the user defined messages. </param>
         /// <param name="callback"> The URL we should call using the `method` to send user defined events to your application. URLs must contain a valid hostname (underscores are not permitted). </param>
-        /// <param name="method"> The HTTP method Twilio will use when requesting the above `Url`. Either `GET` or `POST`. </param>
         /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that subscribed to the User Defined Messages. </param>
         /// <param name="idempotencyKey"> A unique string value to identify API call. This should be a unique string value per API call and can be a randomly generated. </param>
+        /// <param name="method"> The HTTP method Twilio will use when requesting the above `Url`. Either `GET` or `POST`. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of UserDefinedMessageSubscription </returns>
         public static UserDefinedMessageSubscriptionResource Create(
                                           string pathCallSid,
                                           Uri callback,
-                                          Twilio.Http.HttpMethod method,
                                           string pathAccountSid = null,
                                           string idempotencyKey = null,
+                                          Twilio.Http.HttpMethod method = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new CreateUserDefinedMessageSubscriptionOptions(pathCallSid, callback, method){  PathAccountSid = pathAccountSid, IdempotencyKey = idempotencyKey };
+            var options = new CreateUserDefinedMessageSubscriptionOptions(pathCallSid, callback){  PathAccountSid = pathAccountSid, IdempotencyKey = idempotencyKey, Method = method };
             return Create(options, client);
         }
 
@@ -99,20 +99,20 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary> Subscribe to User Defined Messages for a given Call SID. </summary>
         /// <param name="pathCallSid"> The SID of the [Call](https://www.twilio.com/docs/voice/api/call-resource) the User Defined Messages subscription is associated with. This refers to the Call SID that is producing the user defined messages. </param>
         /// <param name="callback"> The URL we should call using the `method` to send user defined events to your application. URLs must contain a valid hostname (underscores are not permitted). </param>
-        /// <param name="method"> The HTTP method Twilio will use when requesting the above `Url`. Either `GET` or `POST`. </param>
         /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that subscribed to the User Defined Messages. </param>
         /// <param name="idempotencyKey"> A unique string value to identify API call. This should be a unique string value per API call and can be a randomly generated. </param>
+        /// <param name="method"> The HTTP method Twilio will use when requesting the above `Url`. Either `GET` or `POST`. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of UserDefinedMessageSubscription </returns>
         public static async System.Threading.Tasks.Task<UserDefinedMessageSubscriptionResource> CreateAsync(
                                                                                   string pathCallSid,
                                                                                   Uri callback,
-                                                                                  Twilio.Http.HttpMethod method,
                                                                                   string pathAccountSid = null,
                                                                                   string idempotencyKey = null,
+                                                                                  Twilio.Http.HttpMethod method = null,
                                                                                   ITwilioRestClient client = null)
         {
-        var options = new CreateUserDefinedMessageSubscriptionOptions(pathCallSid, callback, method){  PathAccountSid = pathAccountSid, IdempotencyKey = idempotencyKey };
+        var options = new CreateUserDefinedMessageSubscriptionOptions(pathCallSid, callback){  PathAccountSid = pathAccountSid, IdempotencyKey = idempotencyKey, Method = method };
             return await CreateAsync(options, client);
         }
         #endif

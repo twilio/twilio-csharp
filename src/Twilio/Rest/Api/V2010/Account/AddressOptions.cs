@@ -58,6 +58,9 @@ namespace Twilio.Rest.Api.V2010.Account
         ///<summary> Whether we should automatically correct the address. Can be: `true` or `false` and the default is `true`. If empty or `true`, we will correct the address you provide if necessary. If `false`, we won't alter the address you provide. </summary> 
         public bool? AutoCorrectAddress { get; set; }
 
+        ///<summary> The additional number and street address of the address. </summary> 
+        public string StreetSecondary { get; set; }
+
 
         /// <summary> Construct a new CreateAddressOptions </summary>
         /// <param name="customerName"> The name to associate with the new address. </param>
@@ -117,6 +120,10 @@ namespace Twilio.Rest.Api.V2010.Account
             if (AutoCorrectAddress != null)
             {
                 p.Add(new KeyValuePair<string, string>("AutoCorrectAddress", AutoCorrectAddress.Value.ToString().ToLower()));
+            }
+            if (StreetSecondary != null)
+            {
+                p.Add(new KeyValuePair<string, string>("StreetSecondary", StreetSecondary));
             }
             return p;
         }
@@ -268,6 +275,9 @@ namespace Twilio.Rest.Api.V2010.Account
         ///<summary> Whether we should automatically correct the address. Can be: `true` or `false` and the default is `true`. If empty or `true`, we will correct the address you provide if necessary. If `false`, we won't alter the address you provide. </summary> 
         public bool? AutoCorrectAddress { get; set; }
 
+        ///<summary> The additional number and street address of the address. </summary> 
+        public string StreetSecondary { get; set; }
+
 
 
         /// <summary> Construct a new UpdateAddressOptions </summary>
@@ -314,6 +324,10 @@ namespace Twilio.Rest.Api.V2010.Account
             if (AutoCorrectAddress != null)
             {
                 p.Add(new KeyValuePair<string, string>("AutoCorrectAddress", AutoCorrectAddress.Value.ToString().ToLower()));
+            }
+            if (StreetSecondary != null)
+            {
+                p.Add(new KeyValuePair<string, string>("StreetSecondary", StreetSecondary));
             }
             return p;
         }

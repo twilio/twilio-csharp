@@ -34,7 +34,7 @@ namespace Twilio.Rest.FlexApi.V1
         private static Request BuildFetchRequest(FetchUserRolesOptions options, ITwilioRestClient client)
         {
             
-            string path = "/v1/Accounts/UserRoles";
+            string path = "/v1/Insights/UserRoles";
 
 
             return new Request(

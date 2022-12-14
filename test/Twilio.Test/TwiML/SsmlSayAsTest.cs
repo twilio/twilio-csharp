@@ -29,10 +29,10 @@ namespace Twilio.Tests.TwiML
         [Test]
         public void TestElementWithParams()
         {
-            var elem = new SsmlSayAs("words", SsmlSayAs.InterpretAsEnum.Character, SsmlSayAs.RoleEnum.Mdy);
+            var elem = new SsmlSayAs("words", SsmlSayAs.InterpretAsEnum.Characters, SsmlSayAs.FormatEnum.Mdy);
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<say-as interpret-as=\"character\" role=\"mdy\">words</say-as>",
+                "<say-as interpret-as=\"characters\" format=\"mdy\">words</say-as>",
                 elem.ToString()
             );
         }

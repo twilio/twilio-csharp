@@ -30,6 +30,9 @@ namespace Twilio.Rest.Supersim.V1
         ///<summary> Filter the Settings Updates by a Super SIM's SID or UniqueName. </summary> 
         public string Sim { get; set; }
 
+        ///<summary> Filter the Settings Updates by status. Can be `scheduled`, `in-progress`, `successful`, or `failed`. </summary> 
+        public SettingsUpdateResource.StatusEnum Status { get; set; }
+
 
 
 
@@ -42,6 +45,10 @@ namespace Twilio.Rest.Supersim.V1
             if (Sim != null)
             {
                 p.Add(new KeyValuePair<string, string>("Sim", Sim));
+            }
+            if (Status != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
             }
             if (PageSize != null)
             {

@@ -27,6 +27,7 @@ namespace Twilio.TwiML.Voice
             }
 
             public static readonly XmlLangEnum Arb = new XmlLangEnum("arb");
+            public static readonly XmlLangEnum ArAe = new XmlLangEnum("ar-AE");
             public static readonly XmlLangEnum CaEs = new XmlLangEnum("ca-ES");
             public static readonly XmlLangEnum CmnCn = new XmlLangEnum("cmn-CN");
             public static readonly XmlLangEnum CyGb = new XmlLangEnum("cy-GB");
@@ -43,6 +44,7 @@ namespace Twilio.TwiML.Voice
             public static readonly XmlLangEnum EsEs = new XmlLangEnum("es-ES");
             public static readonly XmlLangEnum EsMx = new XmlLangEnum("es-MX");
             public static readonly XmlLangEnum EsUs = new XmlLangEnum("es-US");
+            public static readonly XmlLangEnum FiFi = new XmlLangEnum("fi-FI");
             public static readonly XmlLangEnum FrCa = new XmlLangEnum("fr-CA");
             public static readonly XmlLangEnum FrFr = new XmlLangEnum("fr-FR");
             public static readonly XmlLangEnum HiIn = new XmlLangEnum("hi-IN");
@@ -59,6 +61,7 @@ namespace Twilio.TwiML.Voice
             public static readonly XmlLangEnum RuRu = new XmlLangEnum("ru-RU");
             public static readonly XmlLangEnum SvSe = new XmlLangEnum("sv-SE");
             public static readonly XmlLangEnum TrTr = new XmlLangEnum("tr-TR");
+            public static readonly XmlLangEnum YueCn = new XmlLangEnum("yue-CN");
         }
 
         /// <summary>
@@ -353,12 +356,12 @@ namespace Twilio.TwiML.Voice
         /// </summary>
         /// <param name="words"> Words to be interpreted, the body of the TwiML Element. </param>
         /// <param name="interpret-As"> Specify the type of words are spoken </param>
-        /// <param name="role"> Specify the format of the date when interpret-as is set to date </param>
+        /// <param name="format"> Specify the format of the date when interpret-as is set to date </param>
         public SsmlLang SayAs(string words = null,
                               SsmlSayAs.InterpretAsEnum interpretAs = null,
-                              SsmlSayAs.RoleEnum role = null)
+                              SsmlSayAs.FormatEnum format = null)
         {
-            var newChild = new SsmlSayAs(words, interpretAs, role);
+            var newChild = new SsmlSayAs(words, interpretAs, format);
             this.Append(newChild);
             return this;
         }
@@ -379,13 +382,13 @@ namespace Twilio.TwiML.Voice
         /// </summary>
         /// <param name="words"> Words to be interpreted, the body of the TwiML Element. </param>
         /// <param name="interpret-As"> Specify the type of words are spoken </param>
-        /// <param name="role"> Specify the format of the date when interpret-as is set to date </param>
+        /// <param name="format"> Specify the format of the date when interpret-as is set to date </param>
         [System.Obsolete("This method is deprecated, use .SayAs() instead.")]
         public SsmlLang SsmlSayAs(string words = null,
                                   SsmlSayAs.InterpretAsEnum interpretAs = null,
-                                  SsmlSayAs.RoleEnum role = null)
+                                  SsmlSayAs.FormatEnum format = null)
         {
-            return SayAs(words, interpretAs, role);
+            return SayAs(words, interpretAs, format);
         }
 
         /// <summary>

@@ -76,29 +76,29 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <summary> create </summary>
         /// <param name="pathMessagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) to create the resources from. </param>
         /// <param name="brandRegistrationSid"> A2P Brand Registration SID </param>
-        /// <param name="description"> A short description of what this SMS campaign does. </param>
-        /// <param name="messageSamples"> Message samples, at least 2 and up to 5 sample messages, <=1024 chars each. </param>
+        /// <param name="description"> A short description of what this SMS campaign does. Min length: 40 characters. Max length: 4096 characters. </param>
+        /// <param name="messageFlow"> Required for all Campaigns. Details around how a consumer opts-in to their campaign, therefore giving consent to receive their messages. If multiple opt-in methods can be used for the same campaign, they must all be listed. 40 character minimum. 2048 character maximum. </param>
+        /// <param name="messageSamples"> Message samples, at least 1 and up to 5 sample messages (at least 2 for sole proprietor), >=20 chars, <=1024 chars each. </param>
         /// <param name="usAppToPersonUsecase"> A2P Campaign Use Case. Examples: [ 2FA, EMERGENCY, MARKETING..] </param>
         /// <param name="hasEmbeddedLinks"> Indicates that this SMS campaign will send messages that contain links. </param>
         /// <param name="hasEmbeddedPhone"> Indicates that this SMS campaign will send messages that contain phone numbers. </param>
-        /// <param name="messageFlow"> Description of how end users opt-in to the SMS campaign, therefore giving consent to receive messages. </param>
-        /// <param name="optInMessage"> The message that will be sent to the user when they opt in to the SMS campaign. </param>
-        /// <param name="optOutMessage"> The message that will be sent to the user when they opt out of the SMS campaign. </param>
-        /// <param name="helpMessage"> The message that will be sent to the user when they request help for the SMS campaign. </param>
-        /// <param name="optInKeywords"> The keywords that will be used to opt in to the SMS campaign. </param>
-        /// <param name="optOutKeywords"> The keywords that will be used to opt out of the SMS campaign. </param>
-        /// <param name="helpKeywords"> The keywords that will be used to request help for the SMS campaign. </param>
+        /// <param name="optInMessage"> If end users can text in a keyword to start receiving messages from this campaign, the auto-reply messages sent to the end users must be provided. The opt-in response should include the Brand name, confirmation of opt-in enrollment to a recurring message campaign, how to get help, and clear description of how to opt-out. This field is required if end users can text in a keyword to start receiving messages from this campaign. 20 character minimum. 320 character maximum. </param>
+        /// <param name="optOutMessage"> Upon receiving the opt-out keywords from the end users, Twilio customers are expected to send back an auto-generated response, which must provide acknowledgment of the opt-out request and confirmation that no further messages will be sent. It is also recommended that these opt-out messages include the brand name. This field is required if managing opt out keywords yourself (i.e. not using Twilio's Default or Advanced Opt Out features). 20 character minimum. 320 character maximum. </param>
+        /// <param name="helpMessage"> When customers receive the help keywords from their end users, Twilio customers are expected to send back an auto-generated response; this may include the brand name and additional support contact information. This field is required if managing help keywords yourself (i.e. not using Twilio's Default or Advanced Opt Out features). 20 character minimum. 320 character maximum. </param>
+        /// <param name="optInKeywords"> If end users can text in a keyword to start receiving messages from this campaign, those keywords must be provided. This field is required if end users can text in a keyword to start receiving messages from this campaign. Values must be alphanumeric. 255 character maximum. </param>
+        /// <param name="optOutKeywords"> End users should be able to text in a keyword to stop receiving messages from this campaign. Those keywords must be provided. This field is required if managing opt out keywords yourself (i.e. not using Twilio's Default or Advanced Opt Out features). Values must be alphanumeric. 255 character maximum. </param>
+        /// <param name="helpKeywords"> End users should be able to text in a keyword to receive help. Those keywords must be provided as part of the campaign registration request. This field is required if managing help keywords yourself (i.e. not using Twilio's Default or Advanced Opt Out features). Values must be alphanumeric. 255 character maximum. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of UsAppToPerson </returns>
         public static UsAppToPersonResource Create(
                                           string pathMessagingServiceSid,
                                           string brandRegistrationSid,
                                           string description,
+                                          string messageFlow,
                                           List<string> messageSamples,
                                           string usAppToPersonUsecase,
                                           bool? hasEmbeddedLinks,
                                           bool? hasEmbeddedPhone,
-                                          string messageFlow = null,
                                           string optInMessage = null,
                                           string optOutMessage = null,
                                           string helpMessage = null,
@@ -107,7 +107,7 @@ namespace Twilio.Rest.Messaging.V1.Service
                                           List<string> helpKeywords = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new CreateUsAppToPersonOptions(pathMessagingServiceSid, brandRegistrationSid, description, messageSamples, usAppToPersonUsecase, hasEmbeddedLinks, hasEmbeddedPhone){  MessageFlow = messageFlow, OptInMessage = optInMessage, OptOutMessage = optOutMessage, HelpMessage = helpMessage, OptInKeywords = optInKeywords, OptOutKeywords = optOutKeywords, HelpKeywords = helpKeywords };
+            var options = new CreateUsAppToPersonOptions(pathMessagingServiceSid, brandRegistrationSid, description, messageFlow, messageSamples, usAppToPersonUsecase, hasEmbeddedLinks, hasEmbeddedPhone){  OptInMessage = optInMessage, OptOutMessage = optOutMessage, HelpMessage = helpMessage, OptInKeywords = optInKeywords, OptOutKeywords = optOutKeywords, HelpKeywords = helpKeywords };
             return Create(options, client);
         }
 
@@ -115,29 +115,29 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <summary> create </summary>
         /// <param name="pathMessagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) to create the resources from. </param>
         /// <param name="brandRegistrationSid"> A2P Brand Registration SID </param>
-        /// <param name="description"> A short description of what this SMS campaign does. </param>
-        /// <param name="messageSamples"> Message samples, at least 2 and up to 5 sample messages, <=1024 chars each. </param>
+        /// <param name="description"> A short description of what this SMS campaign does. Min length: 40 characters. Max length: 4096 characters. </param>
+        /// <param name="messageFlow"> Required for all Campaigns. Details around how a consumer opts-in to their campaign, therefore giving consent to receive their messages. If multiple opt-in methods can be used for the same campaign, they must all be listed. 40 character minimum. 2048 character maximum. </param>
+        /// <param name="messageSamples"> Message samples, at least 1 and up to 5 sample messages (at least 2 for sole proprietor), >=20 chars, <=1024 chars each. </param>
         /// <param name="usAppToPersonUsecase"> A2P Campaign Use Case. Examples: [ 2FA, EMERGENCY, MARKETING..] </param>
         /// <param name="hasEmbeddedLinks"> Indicates that this SMS campaign will send messages that contain links. </param>
         /// <param name="hasEmbeddedPhone"> Indicates that this SMS campaign will send messages that contain phone numbers. </param>
-        /// <param name="messageFlow"> Description of how end users opt-in to the SMS campaign, therefore giving consent to receive messages. </param>
-        /// <param name="optInMessage"> The message that will be sent to the user when they opt in to the SMS campaign. </param>
-        /// <param name="optOutMessage"> The message that will be sent to the user when they opt out of the SMS campaign. </param>
-        /// <param name="helpMessage"> The message that will be sent to the user when they request help for the SMS campaign. </param>
-        /// <param name="optInKeywords"> The keywords that will be used to opt in to the SMS campaign. </param>
-        /// <param name="optOutKeywords"> The keywords that will be used to opt out of the SMS campaign. </param>
-        /// <param name="helpKeywords"> The keywords that will be used to request help for the SMS campaign. </param>
+        /// <param name="optInMessage"> If end users can text in a keyword to start receiving messages from this campaign, the auto-reply messages sent to the end users must be provided. The opt-in response should include the Brand name, confirmation of opt-in enrollment to a recurring message campaign, how to get help, and clear description of how to opt-out. This field is required if end users can text in a keyword to start receiving messages from this campaign. 20 character minimum. 320 character maximum. </param>
+        /// <param name="optOutMessage"> Upon receiving the opt-out keywords from the end users, Twilio customers are expected to send back an auto-generated response, which must provide acknowledgment of the opt-out request and confirmation that no further messages will be sent. It is also recommended that these opt-out messages include the brand name. This field is required if managing opt out keywords yourself (i.e. not using Twilio's Default or Advanced Opt Out features). 20 character minimum. 320 character maximum. </param>
+        /// <param name="helpMessage"> When customers receive the help keywords from their end users, Twilio customers are expected to send back an auto-generated response; this may include the brand name and additional support contact information. This field is required if managing help keywords yourself (i.e. not using Twilio's Default or Advanced Opt Out features). 20 character minimum. 320 character maximum. </param>
+        /// <param name="optInKeywords"> If end users can text in a keyword to start receiving messages from this campaign, those keywords must be provided. This field is required if end users can text in a keyword to start receiving messages from this campaign. Values must be alphanumeric. 255 character maximum. </param>
+        /// <param name="optOutKeywords"> End users should be able to text in a keyword to stop receiving messages from this campaign. Those keywords must be provided. This field is required if managing opt out keywords yourself (i.e. not using Twilio's Default or Advanced Opt Out features). Values must be alphanumeric. 255 character maximum. </param>
+        /// <param name="helpKeywords"> End users should be able to text in a keyword to receive help. Those keywords must be provided as part of the campaign registration request. This field is required if managing help keywords yourself (i.e. not using Twilio's Default or Advanced Opt Out features). Values must be alphanumeric. 255 character maximum. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of UsAppToPerson </returns>
         public static async System.Threading.Tasks.Task<UsAppToPersonResource> CreateAsync(
                                                                                   string pathMessagingServiceSid,
                                                                                   string brandRegistrationSid,
                                                                                   string description,
+                                                                                  string messageFlow,
                                                                                   List<string> messageSamples,
                                                                                   string usAppToPersonUsecase,
                                                                                   bool? hasEmbeddedLinks,
                                                                                   bool? hasEmbeddedPhone,
-                                                                                  string messageFlow = null,
                                                                                   string optInMessage = null,
                                                                                   string optOutMessage = null,
                                                                                   string helpMessage = null,
@@ -146,7 +146,7 @@ namespace Twilio.Rest.Messaging.V1.Service
                                                                                   List<string> helpKeywords = null,
                                                                                   ITwilioRestClient client = null)
         {
-        var options = new CreateUsAppToPersonOptions(pathMessagingServiceSid, brandRegistrationSid, description, messageSamples, usAppToPersonUsecase, hasEmbeddedLinks, hasEmbeddedPhone){  MessageFlow = messageFlow, OptInMessage = optInMessage, OptOutMessage = optOutMessage, HelpMessage = helpMessage, OptInKeywords = optInKeywords, OptOutKeywords = optOutKeywords, HelpKeywords = helpKeywords };
+        var options = new CreateUsAppToPersonOptions(pathMessagingServiceSid, brandRegistrationSid, description, messageFlow, messageSamples, usAppToPersonUsecase, hasEmbeddedLinks, hasEmbeddedPhone){  OptInMessage = optInMessage, OptOutMessage = optOutMessage, HelpMessage = helpMessage, OptInKeywords = optInKeywords, OptOutKeywords = optOutKeywords, HelpKeywords = helpKeywords };
             return await CreateAsync(options, client);
         }
         #endif

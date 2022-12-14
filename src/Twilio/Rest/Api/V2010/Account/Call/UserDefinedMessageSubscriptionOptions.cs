@@ -34,25 +34,23 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         ///<summary> The URL we should call using the `method` to send user defined events to your application. URLs must contain a valid hostname (underscores are not permitted). </summary> 
         public Uri Callback { get; }
 
-        ///<summary> The HTTP method Twilio will use when requesting the above `Url`. Either `GET` or `POST`. </summary> 
-        public Twilio.Http.HttpMethod Method { get; }
-
         ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that subscribed to the User Defined Messages. </summary> 
         public string PathAccountSid { get; set; }
 
         ///<summary> A unique string value to identify API call. This should be a unique string value per API call and can be a randomly generated. </summary> 
         public string IdempotencyKey { get; set; }
 
+        ///<summary> The HTTP method Twilio will use when requesting the above `Url`. Either `GET` or `POST`. </summary> 
+        public Twilio.Http.HttpMethod Method { get; set; }
+
 
         /// <summary> Construct a new CreateUserDefinedMessageSubscriptionOptions </summary>
         /// <param name="pathCallSid"> The SID of the [Call](https://www.twilio.com/docs/voice/api/call-resource) the User Defined Messages subscription is associated with. This refers to the Call SID that is producing the user defined messages. </param>
         /// <param name="callback"> The URL we should call using the `method` to send user defined events to your application. URLs must contain a valid hostname (underscores are not permitted). </param>
-        /// <param name="method"> The HTTP method Twilio will use when requesting the above `Url`. Either `GET` or `POST`. </param>
-        public CreateUserDefinedMessageSubscriptionOptions(string pathCallSid, Uri callback, Twilio.Http.HttpMethod method)
+        public CreateUserDefinedMessageSubscriptionOptions(string pathCallSid, Uri callback)
         {
             PathCallSid = pathCallSid;
             Callback = callback;
-            Method = method;
         }
 
         
@@ -65,13 +63,13 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             {
                 p.Add(new KeyValuePair<string, string>("Callback", Serializers.Url(Callback)));
             }
-            if (Method != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Method", Method.ToString()));
-            }
             if (IdempotencyKey != null)
             {
                 p.Add(new KeyValuePair<string, string>("IdempotencyKey", IdempotencyKey));
+            }
+            if (Method != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Method", Method.ToString()));
             }
             return p;
         }

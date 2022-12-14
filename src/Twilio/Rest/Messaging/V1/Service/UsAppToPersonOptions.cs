@@ -34,10 +34,13 @@ namespace Twilio.Rest.Messaging.V1.Service
         ///<summary> A2P Brand Registration SID </summary> 
         public string BrandRegistrationSid { get; }
 
-        ///<summary> A short description of what this SMS campaign does. </summary> 
+        ///<summary> A short description of what this SMS campaign does. Min length: 40 characters. Max length: 4096 characters. </summary> 
         public string Description { get; }
 
-        ///<summary> Message samples, at least 2 and up to 5 sample messages, <=1024 chars each. </summary> 
+        ///<summary> Required for all Campaigns. Details around how a consumer opts-in to their campaign, therefore giving consent to receive their messages. If multiple opt-in methods can be used for the same campaign, they must all be listed. 40 character minimum. 2048 character maximum. </summary> 
+        public string MessageFlow { get; }
+
+        ///<summary> Message samples, at least 1 and up to 5 sample messages (at least 2 for sole proprietor), >=20 chars, <=1024 chars each. </summary> 
         public List<string> MessageSamples { get; }
 
         ///<summary> A2P Campaign Use Case. Examples: [ 2FA, EMERGENCY, MARKETING..] </summary> 
@@ -49,41 +52,40 @@ namespace Twilio.Rest.Messaging.V1.Service
         ///<summary> Indicates that this SMS campaign will send messages that contain phone numbers. </summary> 
         public bool? HasEmbeddedPhone { get; }
 
-        ///<summary> Description of how end users opt-in to the SMS campaign, therefore giving consent to receive messages. </summary> 
-        public string MessageFlow { get; set; }
-
-        ///<summary> The message that will be sent to the user when they opt in to the SMS campaign. </summary> 
+        ///<summary> If end users can text in a keyword to start receiving messages from this campaign, the auto-reply messages sent to the end users must be provided. The opt-in response should include the Brand name, confirmation of opt-in enrollment to a recurring message campaign, how to get help, and clear description of how to opt-out. This field is required if end users can text in a keyword to start receiving messages from this campaign. 20 character minimum. 320 character maximum. </summary> 
         public string OptInMessage { get; set; }
 
-        ///<summary> The message that will be sent to the user when they opt out of the SMS campaign. </summary> 
+        ///<summary> Upon receiving the opt-out keywords from the end users, Twilio customers are expected to send back an auto-generated response, which must provide acknowledgment of the opt-out request and confirmation that no further messages will be sent. It is also recommended that these opt-out messages include the brand name. This field is required if managing opt out keywords yourself (i.e. not using Twilio's Default or Advanced Opt Out features). 20 character minimum. 320 character maximum. </summary> 
         public string OptOutMessage { get; set; }
 
-        ///<summary> The message that will be sent to the user when they request help for the SMS campaign. </summary> 
+        ///<summary> When customers receive the help keywords from their end users, Twilio customers are expected to send back an auto-generated response; this may include the brand name and additional support contact information. This field is required if managing help keywords yourself (i.e. not using Twilio's Default or Advanced Opt Out features). 20 character minimum. 320 character maximum. </summary> 
         public string HelpMessage { get; set; }
 
-        ///<summary> The keywords that will be used to opt in to the SMS campaign. </summary> 
+        ///<summary> If end users can text in a keyword to start receiving messages from this campaign, those keywords must be provided. This field is required if end users can text in a keyword to start receiving messages from this campaign. Values must be alphanumeric. 255 character maximum. </summary> 
         public List<string> OptInKeywords { get; set; }
 
-        ///<summary> The keywords that will be used to opt out of the SMS campaign. </summary> 
+        ///<summary> End users should be able to text in a keyword to stop receiving messages from this campaign. Those keywords must be provided. This field is required if managing opt out keywords yourself (i.e. not using Twilio's Default or Advanced Opt Out features). Values must be alphanumeric. 255 character maximum. </summary> 
         public List<string> OptOutKeywords { get; set; }
 
-        ///<summary> The keywords that will be used to request help for the SMS campaign. </summary> 
+        ///<summary> End users should be able to text in a keyword to receive help. Those keywords must be provided as part of the campaign registration request. This field is required if managing help keywords yourself (i.e. not using Twilio's Default or Advanced Opt Out features). Values must be alphanumeric. 255 character maximum. </summary> 
         public List<string> HelpKeywords { get; set; }
 
 
         /// <summary> Construct a new CreateUsAppToPersonOptions </summary>
         /// <param name="pathMessagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) to create the resources from. </param>
         /// <param name="brandRegistrationSid"> A2P Brand Registration SID </param>
-        /// <param name="description"> A short description of what this SMS campaign does. </param>
-        /// <param name="messageSamples"> Message samples, at least 2 and up to 5 sample messages, <=1024 chars each. </param>
+        /// <param name="description"> A short description of what this SMS campaign does. Min length: 40 characters. Max length: 4096 characters. </param>
+        /// <param name="messageFlow"> Required for all Campaigns. Details around how a consumer opts-in to their campaign, therefore giving consent to receive their messages. If multiple opt-in methods can be used for the same campaign, they must all be listed. 40 character minimum. 2048 character maximum. </param>
+        /// <param name="messageSamples"> Message samples, at least 1 and up to 5 sample messages (at least 2 for sole proprietor), >=20 chars, <=1024 chars each. </param>
         /// <param name="usAppToPersonUsecase"> A2P Campaign Use Case. Examples: [ 2FA, EMERGENCY, MARKETING..] </param>
         /// <param name="hasEmbeddedLinks"> Indicates that this SMS campaign will send messages that contain links. </param>
         /// <param name="hasEmbeddedPhone"> Indicates that this SMS campaign will send messages that contain phone numbers. </param>
-        public CreateUsAppToPersonOptions(string pathMessagingServiceSid, string brandRegistrationSid, string description, List<string> messageSamples, string usAppToPersonUsecase, bool? hasEmbeddedLinks, bool? hasEmbeddedPhone)
+        public CreateUsAppToPersonOptions(string pathMessagingServiceSid, string brandRegistrationSid, string description, string messageFlow, List<string> messageSamples, string usAppToPersonUsecase, bool? hasEmbeddedLinks, bool? hasEmbeddedPhone)
         {
             PathMessagingServiceSid = pathMessagingServiceSid;
             BrandRegistrationSid = brandRegistrationSid;
             Description = description;
+            MessageFlow = messageFlow;
             MessageSamples = messageSamples;
             UsAppToPersonUsecase = usAppToPersonUsecase;
             HasEmbeddedLinks = hasEmbeddedLinks;
@@ -107,6 +109,10 @@ namespace Twilio.Rest.Messaging.V1.Service
             {
                 p.Add(new KeyValuePair<string, string>("Description", Description));
             }
+            if (MessageFlow != null)
+            {
+                p.Add(new KeyValuePair<string, string>("MessageFlow", MessageFlow));
+            }
             if (MessageSamples != null)
             {
                 p.AddRange(MessageSamples.Select(MessageSamples => new KeyValuePair<string, string>("MessageSamples", MessageSamples)));
@@ -122,10 +128,6 @@ namespace Twilio.Rest.Messaging.V1.Service
             if (HasEmbeddedPhone != null)
             {
                 p.Add(new KeyValuePair<string, string>("HasEmbeddedPhone", HasEmbeddedPhone.Value.ToString().ToLower()));
-            }
-            if (MessageFlow != null)
-            {
-                p.Add(new KeyValuePair<string, string>("MessageFlow", MessageFlow));
             }
             if (OptInMessage != null)
             {
