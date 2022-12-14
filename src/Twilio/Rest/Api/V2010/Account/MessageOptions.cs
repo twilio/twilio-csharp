@@ -127,7 +127,7 @@ namespace Twilio.Rest.Api.V2010.Account
             }
             if (MaxPrice != null)
             {
-                p.Add(new KeyValuePair<string, string>("MaxPrice", MaxPrice.ToString()));
+                p.Add(new KeyValuePair<string, string>("MaxPrice", MaxPrice.Value.ToString()));
             }
             if (ProvideFeedback != null)
             {

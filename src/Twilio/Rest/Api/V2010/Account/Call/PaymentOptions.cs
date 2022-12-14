@@ -114,7 +114,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             }
             if (ChargeAmount != null)
             {
-                p.Add(new KeyValuePair<string, string>("ChargeAmount", ChargeAmount.ToString()));
+                p.Add(new KeyValuePair<string, string>("ChargeAmount", ChargeAmount.Value.ToString()));
             }
             if (Currency != null)
             {
