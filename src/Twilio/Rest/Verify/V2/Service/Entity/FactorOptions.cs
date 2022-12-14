@@ -207,31 +207,31 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
             }
             if (ConfigNotificationToken != null)
             {
-                p.Add(new KeyValuePair<string, string>("ConfigNotificationToken", ConfigNotificationToken));
+                p.Add(new KeyValuePair<string, string>("Config.NotificationToken", ConfigNotificationToken));
             }
             if (ConfigSdkVersion != null)
             {
-                p.Add(new KeyValuePair<string, string>("ConfigSdkVersion", ConfigSdkVersion));
+                p.Add(new KeyValuePair<string, string>("Config.SdkVersion", ConfigSdkVersion));
             }
             if (ConfigTimeStep != null)
             {
-                p.Add(new KeyValuePair<string, string>("ConfigTimeStep", ConfigTimeStep.ToString()));
+                p.Add(new KeyValuePair<string, string>("Config.TimeStep", ConfigTimeStep.ToString()));
             }
             if (ConfigSkew != null)
             {
-                p.Add(new KeyValuePair<string, string>("ConfigSkew", ConfigSkew.ToString()));
+                p.Add(new KeyValuePair<string, string>("Config.Skew", ConfigSkew.ToString()));
             }
             if (ConfigCodeLength != null)
             {
-                p.Add(new KeyValuePair<string, string>("ConfigCodeLength", ConfigCodeLength.ToString()));
+                p.Add(new KeyValuePair<string, string>("Config.CodeLength", ConfigCodeLength.ToString()));
             }
             if (ConfigAlg != null)
             {
-                p.Add(new KeyValuePair<string, string>("ConfigAlg", ConfigAlg.ToString()));
+                p.Add(new KeyValuePair<string, string>("Config.Alg", ConfigAlg.ToString()));
             }
             if (ConfigNotificationPlatform != null)
             {
-                p.Add(new KeyValuePair<string, string>("ConfigNotificationPlatform", ConfigNotificationPlatform));
+                p.Add(new KeyValuePair<string, string>("Config.NotificationPlatform", ConfigNotificationPlatform));
             }
             return p;
         }

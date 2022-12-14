@@ -252,11 +252,11 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
             }
             if (ValidUntilDateBefore != null)
             {
-                p.Add(new KeyValuePair<string, string>("ValidUntilDateBefore", Serializers.DateTimeIso8601(ValidUntilDateBefore)));
+                p.Add(new KeyValuePair<string, string>("ValidUntilDate<", Serializers.DateTimeIso8601(ValidUntilDateBefore)));
             }
             if (ValidUntilDateAfter != null)
             {
-                p.Add(new KeyValuePair<string, string>("ValidUntilDateAfter", Serializers.DateTimeIso8601(ValidUntilDateAfter)));
+                p.Add(new KeyValuePair<string, string>("ValidUntilDate>", Serializers.DateTimeIso8601(ValidUntilDateAfter)));
             }
             if (PageSize != null)
             {

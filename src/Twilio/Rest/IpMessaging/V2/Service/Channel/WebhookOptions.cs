@@ -81,27 +81,27 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
             }
             if (ConfigurationUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("ConfigurationUrl", ConfigurationUrl));
+                p.Add(new KeyValuePair<string, string>("Configuration.Url", ConfigurationUrl));
             }
             if (ConfigurationMethod != null)
             {
-                p.Add(new KeyValuePair<string, string>("ConfigurationMethod", ConfigurationMethod.ToString()));
+                p.Add(new KeyValuePair<string, string>("Configuration.Method", ConfigurationMethod.ToString()));
             }
             if (ConfigurationFilters != null)
             {
-                p.AddRange(ConfigurationFilters.Select(ConfigurationFilters => new KeyValuePair<string, string>("ConfigurationFilters", ConfigurationFilters)));
+                p.AddRange(ConfigurationFilters.Select(ConfigurationFilters => new KeyValuePair<string, string>("Configuration.Filters", ConfigurationFilters)));
             }
             if (ConfigurationTriggers != null)
             {
-                p.AddRange(ConfigurationTriggers.Select(ConfigurationTriggers => new KeyValuePair<string, string>("ConfigurationTriggers", ConfigurationTriggers)));
+                p.AddRange(ConfigurationTriggers.Select(ConfigurationTriggers => new KeyValuePair<string, string>("Configuration.Triggers", ConfigurationTriggers)));
             }
             if (ConfigurationFlowSid != null)
             {
-                p.Add(new KeyValuePair<string, string>("ConfigurationFlowSid", ConfigurationFlowSid));
+                p.Add(new KeyValuePair<string, string>("Configuration.FlowSid", ConfigurationFlowSid));
             }
             if (ConfigurationRetryCount != null)
             {
-                p.Add(new KeyValuePair<string, string>("ConfigurationRetryCount", ConfigurationRetryCount.ToString()));
+                p.Add(new KeyValuePair<string, string>("Configuration.RetryCount", ConfigurationRetryCount.ToString()));
             }
             return p;
         }
@@ -277,27 +277,27 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
 
             if (ConfigurationUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("ConfigurationUrl", ConfigurationUrl));
+                p.Add(new KeyValuePair<string, string>("Configuration.Url", ConfigurationUrl));
             }
             if (ConfigurationMethod != null)
             {
-                p.Add(new KeyValuePair<string, string>("ConfigurationMethod", ConfigurationMethod.ToString()));
+                p.Add(new KeyValuePair<string, string>("Configuration.Method", ConfigurationMethod.ToString()));
             }
             if (ConfigurationFilters != null)
             {
-                p.AddRange(ConfigurationFilters.Select(ConfigurationFilters => new KeyValuePair<string, string>("ConfigurationFilters", ConfigurationFilters)));
+                p.AddRange(ConfigurationFilters.Select(ConfigurationFilters => new KeyValuePair<string, string>("Configuration.Filters", ConfigurationFilters)));
             }
             if (ConfigurationTriggers != null)
             {
-                p.AddRange(ConfigurationTriggers.Select(ConfigurationTriggers => new KeyValuePair<string, string>("ConfigurationTriggers", ConfigurationTriggers)));
+                p.AddRange(ConfigurationTriggers.Select(ConfigurationTriggers => new KeyValuePair<string, string>("Configuration.Triggers", ConfigurationTriggers)));
             }
             if (ConfigurationFlowSid != null)
             {
-                p.Add(new KeyValuePair<string, string>("ConfigurationFlowSid", ConfigurationFlowSid));
+                p.Add(new KeyValuePair<string, string>("Configuration.FlowSid", ConfigurationFlowSid));
             }
             if (ConfigurationRetryCount != null)
             {
-                p.Add(new KeyValuePair<string, string>("ConfigurationRetryCount", ConfigurationRetryCount.ToString()));
+                p.Add(new KeyValuePair<string, string>("Configuration.RetryCount", ConfigurationRetryCount.ToString()));
             }
             return p;
         }
