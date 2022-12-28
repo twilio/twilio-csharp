@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Security.Cryptography;
@@ -45,16 +46,63 @@ namespace Twilio.Security
         /// <returns>true if the signature matches the result; false otherwise</returns>
         public bool Validate(string url, IDictionary<string, string> parameters, string expected)
         {
-            // check signature of url with and without port, since sig generation on back end is inconsistent
-            var signatureWithoutPort = GetValidationSignature(RemovePort(url), parameters);
-            var signatureWithPort = GetValidationSignature(AddPort(url), parameters);
-            // If either url produces a valid signature, we accept the request as valid
-            return SecureCompare(signatureWithoutPort, expected) || SecureCompare(signatureWithPort, expected);
+            if (string.IsNullOrEmpty(url))
+                throw new ArgumentException("Parameter 'url' cannot be null or empty.");
+            if (string.IsNullOrEmpty(expected))
+                throw new ArgumentException("Parameter 'expected' cannot be null or empty.");
+
+            if(parameters == null || parameters.Count == 0)
+            {
+                var signature = GetValidationSignature(url);
+                if (SecureCompare(signature, expected)) return true;
+
+                // check signature of url with and without port, since sig generation on back end is inconsistent
+                // If either url produces a valid signature, we accept the request as valid
+                url = GetUriVariation(url);
+                signature = GetValidationSignature(url);
+                if (SecureCompare(signature, expected)) return true;
+                return false;
+            }
+            else
+            {
+                var parameterStringBuilder = GetJoinedParametersStringBuilder(parameters);
+                parameterStringBuilder.Insert(0, url);
+                var signature = GetValidationSignature(parameterStringBuilder.ToString());
+                if (SecureCompare(signature, expected)) return true;
+                parameterStringBuilder.Remove(0, url.Length);
+
+                // check signature of url with and without port, since sig generation on back end is inconsistent
+                // If either url produces a valid signature, we accept the request as valid
+                url = GetUriVariation(url);
+                parameterStringBuilder.Insert(0, url);
+                signature = GetValidationSignature(parameterStringBuilder.ToString());
+                if (SecureCompare(signature, expected)) return true;
+
+                return false;
+            }
+        }
+
+        private StringBuilder GetJoinedParametersStringBuilder(IDictionary<string, string> parameters)
+        {
+            var keys = parameters.Keys.ToArray();
+            Array.Sort(keys, StringComparer.Ordinal);
+
+            var b = new StringBuilder();
+            foreach (var key in keys)
+            {
+                b.Append(key).Append(parameters[key] ?? "");
+            }
+            return b;
         }
 
         public bool Validate(string url, string body, string expected)
         {
-            var paramString = new UriBuilder(url).Query.TrimStart('?');
+            if (string.IsNullOrEmpty(url)) 
+                throw new ArgumentException("Parameter 'url' cannot be null or empty.");
+            if (string.IsNullOrEmpty(expected))
+                throw new ArgumentException("Parameter 'expected' cannot be null or empty.");
+
+            var paramString = new Uri(url, UriKind.Absolute).Query.TrimStart('?');
             var bodyHash = "";
             foreach (var param in paramString.Split('&'))
             {
@@ -65,13 +113,13 @@ namespace Twilio.Security
                 }
             }
 
-            return Validate(url, new Dictionary<string, string>(), expected) && ValidateBody(body, bodyHash);
+            return Validate(url, (IDictionary<string, string>) null, expected) && ValidateBody(body, bodyHash);
         }
 
         public bool ValidateBody(string rawBody, string expected)
         {
             var signature = _sha.ComputeHash(Encoding.UTF8.GetBytes(rawBody));
-            return SecureCompare(BitConverter.ToString(signature).Replace("-","").ToLower(), expected);
+            return SecureCompare(BitConverter.ToString(signature).Replace("-", "").ToLower(), expected);
         }
 
         private static IDictionary<string, string> ToDictionary(NameValueCollection col)
@@ -81,24 +129,13 @@ namespace Twilio.Security
             {
                 dict.Add(k, col[k]);
             }
+
             return dict;
         }
 
-        private string GetValidationSignature(string url, IDictionary<string, string> parameters)
+        private string GetValidationSignature(string urlWithParameters)
         {
-            var b = new StringBuilder(url);
-            if (parameters != null)
-            {
-                var sortedKeys = new List<string>(parameters.Keys);
-                sortedKeys.Sort(StringComparer.Ordinal);
-
-                foreach (var key in sortedKeys)
-                {
-                    b.Append(key).Append(parameters[key] ?? "");
-                }
-            }
-
-            var hash = _hmac.ComputeHash(Encoding.UTF8.GetBytes(b.ToString()));
+            byte[] hash = _hmac.ComputeHash(Encoding.UTF8.GetBytes(urlWithParameters));
             return Convert.ToBase64String(hash);
         }
 
@@ -124,35 +161,49 @@ namespace Twilio.Security
             return mismatch == 0;
         }
 
-        private string RemovePort(string url)
+        /// <summary>
+        /// Returns URL without port if given URL has port, returns URL with port if given URL has no port
+        /// </summary>
+        /// <param name="url"></param>
+        /// <returns></returns>
+        private string GetUriVariation(string url)
         {
-            return SetPort(url, -1);
-        }
-
-        private string AddPort(string url)
-        {
-            var uri = new UriBuilder(url);
-            return SetPort(url, uri.Port);
-        }
-
-        private string SetPort(string url, int port)
-        {
-            var uri = new UriBuilder(url);
-            uri.Host = PreserveCase(url, uri.Host);
-            if (port == -1)
+            var uri = new Uri(url);
+            var uriBuilder = new UriBuilder(uri);
+            var port = uri.GetComponents(UriComponents.Port, UriFormat.UriEscaped);
+            // if port already removed
+            if (port == "")
             {
-                uri.Port = port;
+                return SetPort(url, uriBuilder, uriBuilder.Port);
             }
-            else if ((port != 443) && (port != 80))
+
+            return SetPort(url, uriBuilder, -1);
+        }
+
+        private string SetPort(string url, UriBuilder uri, int newPort)
+        {
+            if (newPort == -1)
             {
-                uri.Port = port;
+                uri.Port = newPort;
+            }
+            else if (newPort != 443 && newPort != 80)
+            {
+                uri.Port = newPort;
             }
             else
             {
                 uri.Port = uri.Scheme == "https" ? 443 : 80;
             }
+
+            var uriStringBuilder = new StringBuilder(uri.ToString());
+
+            var host = PreserveCase(url, uri.Host);
+            uriStringBuilder.Replace(uri.Host, host);
+
             var scheme = PreserveCase(url, uri.Scheme);
-            return uri.Uri.OriginalString.Replace(uri.Scheme, scheme);
+            uriStringBuilder.Replace(uri.Scheme, scheme);
+
+            return uriStringBuilder.ToString();
         }
 
         private string PreserveCase(string url, string replacementString)
