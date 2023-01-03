@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Diagnostics;
+using System.Threading;
 using NUnit.Framework;
 using Twilio.Security;
 
@@ -121,7 +123,7 @@ namespace Twilio.Tests.Security
         [Test]
         public void TestValidateBody()
         {
-            Assert.IsTrue(_validator.ValidateBody(Body, BodyHash), "Request body validation failed");
+            Assert.IsTrue(RequestValidator.ValidateBody(Body, BodyHash), "Request body validation failed");
         }
 
         [Test]
@@ -183,6 +185,31 @@ namespace Twilio.Tests.Security
         {
             const string url = "http://mycompany.com:1234/myapp.php?foo=1&bar=2";
             Assert.IsTrue(_validator.Validate(url, _parameters, "Zmvh+3yNM1Phv2jhDCwEM3q5ebU="), "Request does not match provided signature");
+        }
+
+        [Test]
+        public void TestIsThreadSafe()
+        {
+            var validator = new RequestValidator("secret");
+            var thread1 = new Thread(Validate);
+            var thread2 = new Thread(Validate);
+
+            Assert.DoesNotThrow(() =>
+            {
+                thread1.Start(validator);
+                thread2.Start(validator);
+                thread1.Join();
+                thread2.Join();
+            });
+        }
+
+        private static void Validate(object obj)
+        {
+            var sw = Stopwatch.StartNew();
+            while (sw.ElapsedMilliseconds < 5000)
+            {
+                ((RequestValidator)obj).Validate("https://foo.com", "123", "foo");
+            }
         }
     }
 }
