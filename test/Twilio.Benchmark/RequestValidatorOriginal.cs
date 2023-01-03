@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -102,6 +103,7 @@ namespace Twilio.Security
             return Convert.ToBase64String(hash);
         }
 
+        [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
         private static bool SecureCompare(string a, string b)
         {
             if (a == null || b == null)
