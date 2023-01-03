@@ -12,7 +12,7 @@ namespace Twilio.Security
     /// </summary>
     public class RequestValidator
     {
-        private readonly string _secret;
+        private readonly byte[] _secret;
 
         /// <summary>
         /// Create a new RequestValidator
@@ -20,7 +20,7 @@ namespace Twilio.Security
         /// <param name="secret">Signing secret</param>
         public RequestValidator(string secret)
         {
-            _secret = secret;
+            _secret = Encoding.UTF8.GetBytes(secret);
         }
 
         /// <summary>
@@ -49,34 +49,43 @@ namespace Twilio.Security
             if (string.IsNullOrEmpty(expected))
                 throw new ArgumentException("Parameter 'expected' cannot be null or empty.");
 
-            if(parameters == null || parameters.Count == 0)
+#if NET6_0_OR_GREATER
             {
-                var signature = GetValidationSignature(url);
-                if (SecureCompare(signature, expected)) return true;
-
-                // check signature of url with and without port, since sig generation on back end is inconsistent
-                // If either url produces a valid signature, we accept the request as valid
-                url = GetUriVariation(url);
-                signature = GetValidationSignature(url);
-                if (SecureCompare(signature, expected)) return true;
-                return false;
-            }
-            else
+                byte[] computeHash(byte[] buffer) => HMACSHA1.HashData(_secret, buffer);
+#else
+            using (var hmac = new HMACSHA1(_secret))
             {
-                var parameterStringBuilder = GetJoinedParametersStringBuilder(parameters);
-                parameterStringBuilder.Insert(0, url);
-                var signature = GetValidationSignature(parameterStringBuilder.ToString());
-                if (SecureCompare(signature, expected)) return true;
-                parameterStringBuilder.Remove(0, url.Length);
+                Func<byte[], byte[]> computeHash = hmac.ComputeHash;
+#endif
+                if (parameters == null || parameters.Count == 0)
+                {
+                    var signature = GetValidationSignature(url, computeHash);
+                    if (SecureCompare(signature, expected)) return true;
 
-                // check signature of url with and without port, since sig generation on back end is inconsistent
-                // If either url produces a valid signature, we accept the request as valid
-                url = GetUriVariation(url);
-                parameterStringBuilder.Insert(0, url);
-                signature = GetValidationSignature(parameterStringBuilder.ToString());
-                if (SecureCompare(signature, expected)) return true;
+                    // check signature of url with and without port, since sig generation on back end is inconsistent
+                    // If either url produces a valid signature, we accept the request as valid
+                    url = GetUriVariation(url);
+                    signature = GetValidationSignature(url, computeHash);
+                    if (SecureCompare(signature, expected)) return true;
+                    return false;
+                }
+                else
+                {
+                    var parameterStringBuilder = GetJoinedParametersStringBuilder(parameters);
+                    parameterStringBuilder.Insert(0, url);
+                    var signature = GetValidationSignature(parameterStringBuilder.ToString(), computeHash);
+                    if (SecureCompare(signature, expected)) return true;
+                    parameterStringBuilder.Remove(0, url.Length);
 
-                return false;
+                    // check signature of url with and without port, since sig generation on back end is inconsistent
+                    // If either url produces a valid signature, we accept the request as valid
+                    url = GetUriVariation(url);
+                    parameterStringBuilder.Insert(0, url);
+                    signature = GetValidationSignature(parameterStringBuilder.ToString(), computeHash);
+                    if (SecureCompare(signature, expected)) return true;
+
+                    return false;
+                }
             }
         }
 
@@ -95,7 +104,7 @@ namespace Twilio.Security
 
         public bool Validate(string url, string body, string expected)
         {
-            if (string.IsNullOrEmpty(url)) 
+            if (string.IsNullOrEmpty(url))
                 throw new ArgumentException("Parameter 'url' cannot be null or empty.");
             if (string.IsNullOrEmpty(expected))
                 throw new ArgumentException("Parameter 'expected' cannot be null or empty.");
@@ -111,7 +120,7 @@ namespace Twilio.Security
                 }
             }
 
-            return Validate(url, (IDictionary<string, string>) null, expected) && ValidateBody(body, bodyHash);
+            return Validate(url, (IDictionary<string, string>)null, expected) && ValidateBody(body, bodyHash);
         }
 
         public static bool ValidateBody(string rawBody, string expected)
@@ -136,15 +145,12 @@ namespace Twilio.Security
             return dict;
         }
 
-        private string GetValidationSignature(string urlWithParameters)
+        private string GetValidationSignature(string urlWithParameters, Func<byte[], byte[]> computeHash)
         {
             // TODO: In future, use net6's one-shot methods.
             // See: https://github.com/twilio/twilio-csharp/issues/466#issuecomment-1028091370
-            using (var hmac = new HMACSHA1(Encoding.UTF8.GetBytes(_secret)))
-            {
-                var hash = hmac.ComputeHash(Encoding.UTF8.GetBytes(urlWithParameters));
-                return Convert.ToBase64String(hash);
-            }
+            var hash = computeHash(Encoding.UTF8.GetBytes(urlWithParameters));
+            return Convert.ToBase64String(hash);
         }
 
         private static bool SecureCompare(string a, string b)
