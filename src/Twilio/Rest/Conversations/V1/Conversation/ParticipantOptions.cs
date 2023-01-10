@@ -72,10 +72,8 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         {
             var p = new List<KeyValuePair<string, string>>();
 
-            if (Identity != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Identity", Identity));
-            }
+            p.Add(new KeyValuePair<string, string>("Identity", Identity));
+
             if (MessagingBindingAddress != null)
             {
                 p.Add(new KeyValuePair<string, string>("MessagingBinding.Address", MessagingBindingAddress));
