@@ -248,15 +248,6 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
                 {
                     p.Add(new KeyValuePair<string, string>("ValidUntilDate>", Serializers.DateTimeIso8601(ValidUntilDateAfter)));
                 }
-
-            }
-            if (ValidUntilDateBefore != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ValidUntilDate<", Serializers.DateTimeIso8601(ValidUntilDateBefore)));
-            }
-            if (ValidUntilDateAfter != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ValidUntilDate>", Serializers.DateTimeIso8601(ValidUntilDateAfter)));
             }
             if (PageSize != null)
             {

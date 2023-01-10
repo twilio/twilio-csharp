@@ -109,15 +109,6 @@ namespace Twilio.Rest.Api.V2010.Account
                 {
                     p.Add(new KeyValuePair<string, string>("DateCreated>", DateCreatedAfter.Value.ToString("yyyy-MM-dd")));
                 }
-
-            }
-            if (DateCreatedBefore != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DateCreated<", DateCreatedBefore.Value.ToString("yyyy-MM-dd")));
-            }
-            if (DateCreatedAfter != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DateCreated>", DateCreatedAfter.Value.ToString("yyyy-MM-dd")));
             }
             if (DateUpdated != null)
             {
@@ -133,15 +124,6 @@ namespace Twilio.Rest.Api.V2010.Account
                 {
                     p.Add(new KeyValuePair<string, string>("DateUpdated>", DateUpdatedAfter.Value.ToString("yyyy-MM-dd")));
                 }
-
-            }
-            if (DateUpdatedBefore != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DateUpdated<", DateUpdatedBefore.Value.ToString("yyyy-MM-dd")));
-            }
-            if (DateUpdatedAfter != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DateUpdated>", DateUpdatedAfter.Value.ToString("yyyy-MM-dd")));
             }
             if (FriendlyName != null)
             {
