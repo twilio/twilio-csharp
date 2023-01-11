@@ -31,7 +31,7 @@ namespace Twilio.Rest.Supersim.V1
         ///<summary> The `sid` or `unique_name` of the [Super SIM](https://www.twilio.com/docs/iot/supersim/api/sim-resource) to send the IP Command to. </summary> 
         public string Sim { get; }
 
-        ///<summary> The payload to be delivered to the device. </summary> 
+        ///<summary> The data that will be sent to the device. The payload cannot exceed 1300 bytes. If the PayloadType is set to text, the payload is encoded in UTF-8. If PayloadType is set to binary, the payload is encoded in Base64. </summary> 
         public string Payload { get; }
 
         ///<summary> The device port to which the IP Command will be sent. </summary> 
@@ -49,7 +49,7 @@ namespace Twilio.Rest.Supersim.V1
 
         /// <summary> Construct a new CreateIpCommandOptions </summary>
         /// <param name="sim"> The `sid` or `unique_name` of the [Super SIM](https://www.twilio.com/docs/iot/supersim/api/sim-resource) to send the IP Command to. </param>
-        /// <param name="payload"> The payload to be delivered to the device. </param>
+        /// <param name="payload"> The data that will be sent to the device. The payload cannot exceed 1300 bytes. If the PayloadType is set to text, the payload is encoded in UTF-8. If PayloadType is set to binary, the payload is encoded in Base64. </param>
         /// <param name="devicePort"> The device port to which the IP Command will be sent. </param>
         public CreateIpCommandOptions(string sim, string payload, int? devicePort)
         {
