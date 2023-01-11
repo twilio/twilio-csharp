@@ -218,15 +218,6 @@ namespace Twilio.Rest.Api.V2010.Account.Call
                 {
                     p.Add(new KeyValuePair<string, string>("DateCreated>", DateCreatedAfter.Value.ToString("yyyy-MM-dd")));
                 }
-
-            }
-            if (DateCreatedBefore != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DateCreated<", DateCreatedBefore.Value.ToString("yyyy-MM-dd")));
-            }
-            if (DateCreatedAfter != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DateCreated>", DateCreatedAfter.Value.ToString("yyyy-MM-dd")));
             }
             if (PageSize != null)
             {

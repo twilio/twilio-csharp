@@ -439,15 +439,6 @@ namespace Twilio.Rest.Api.V2010.Account
                 {
                     p.Add(new KeyValuePair<string, string>("StartTime>", Serializers.DateTimeIso8601(StartTimeAfter)));
                 }
-
-            }
-            if (StartTimeBefore != null)
-            {
-                p.Add(new KeyValuePair<string, string>("StartTime<", Serializers.DateTimeIso8601(StartTimeBefore)));
-            }
-            if (StartTimeAfter != null)
-            {
-                p.Add(new KeyValuePair<string, string>("StartTime>", Serializers.DateTimeIso8601(StartTimeAfter)));
             }
             if (EndTime != null)
             {
@@ -463,15 +454,6 @@ namespace Twilio.Rest.Api.V2010.Account
                 {
                     p.Add(new KeyValuePair<string, string>("EndTime>", Serializers.DateTimeIso8601(EndTimeAfter)));
                 }
-
-            }
-            if (EndTimeBefore != null)
-            {
-                p.Add(new KeyValuePair<string, string>("EndTime<", Serializers.DateTimeIso8601(EndTimeBefore)));
-            }
-            if (EndTimeAfter != null)
-            {
-                p.Add(new KeyValuePair<string, string>("EndTime>", Serializers.DateTimeIso8601(EndTimeAfter)));
             }
             if (PageSize != null)
             {
