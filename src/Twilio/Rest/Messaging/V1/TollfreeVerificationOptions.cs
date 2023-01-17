@@ -285,5 +285,176 @@ namespace Twilio.Rest.Messaging.V1
 
     }
 
+    /// <summary> update </summary>
+    public class UpdateTollfreeVerificationOptions : IOptions<TollfreeVerificationResource>
+    {
+    
+        ///<summary> The unique string to identify Tollfree Verification. </summary> 
+        public string PathSid { get; }
+
+        ///<summary> The name of the business or organization using the Tollfree number. </summary> 
+        public string BusinessName { get; set; }
+
+        ///<summary> The website of the business or organization using the Tollfree number. </summary> 
+        public string BusinessWebsite { get; set; }
+
+        ///<summary> The email address to receive the notification about the verification result. . </summary> 
+        public string NotificationEmail { get; set; }
+
+        ///<summary> The category of the use case for the Tollfree Number. List as many are applicable.. </summary> 
+        public List<string> UseCaseCategories { get; set; }
+
+        ///<summary> Use this to further explain how messaging is used by the business or organization. </summary> 
+        public string UseCaseSummary { get; set; }
+
+        ///<summary> An example of message content, i.e. a sample message. </summary> 
+        public string ProductionMessageSample { get; set; }
+
+        ///<summary> Link to an image that shows the opt-in workflow. Multiple images allowed and must be a publicly hosted URL. </summary> 
+        public List<string> OptInImageUrls { get; set; }
+
+        
+        public TollfreeVerificationResource.OptInTypeEnum OptInType { get; set; }
+
+        ///<summary> Estimate monthly volume of messages from the Tollfree Number. </summary> 
+        public string MessageVolume { get; set; }
+
+        ///<summary> The address of the business or organization using the Tollfree number. </summary> 
+        public string BusinessStreetAddress { get; set; }
+
+        ///<summary> The address of the business or organization using the Tollfree number. </summary> 
+        public string BusinessStreetAddress2 { get; set; }
+
+        ///<summary> The city of the business or organization using the Tollfree number. </summary> 
+        public string BusinessCity { get; set; }
+
+        ///<summary> The state/province/region of the business or organization using the Tollfree number. </summary> 
+        public string BusinessStateProvinceRegion { get; set; }
+
+        ///<summary> The postal code of the business or organization using the Tollfree number. </summary> 
+        public string BusinessPostalCode { get; set; }
+
+        ///<summary> The country of the business or organization using the Tollfree number. </summary> 
+        public string BusinessCountry { get; set; }
+
+        ///<summary> Additional information to be provided for verification. </summary> 
+        public string AdditionalInformation { get; set; }
+
+        ///<summary> The first name of the contact for the business or organization using the Tollfree number. </summary> 
+        public string BusinessContactFirstName { get; set; }
+
+        ///<summary> The last name of the contact for the business or organization using the Tollfree number. </summary> 
+        public string BusinessContactLastName { get; set; }
+
+        ///<summary> The email address of the contact for the business or organization using the Tollfree number. </summary> 
+        public string BusinessContactEmail { get; set; }
+
+        ///<summary> The phone number of the contact for the business or organization using the Tollfree number. </summary> 
+        public Types.PhoneNumber BusinessContactPhone { get; set; }
+
+
+
+        /// <summary> Construct a new UpdateTollfreeVerificationOptions </summary>
+        /// <param name="pathSid"> The unique string to identify Tollfree Verification. </param>
+        public UpdateTollfreeVerificationOptions(string pathSid)
+        {
+            PathSid = pathSid;
+            UseCaseCategories = new List<string>();
+            OptInImageUrls = new List<string>();
+        }
+
+        
+        /// <summary> Generate the necessary parameters </summary>
+        public  List<KeyValuePair<string, string>> GetParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+
+            if (BusinessName != null)
+            {
+                p.Add(new KeyValuePair<string, string>("BusinessName", BusinessName));
+            }
+            if (BusinessWebsite != null)
+            {
+                p.Add(new KeyValuePair<string, string>("BusinessWebsite", BusinessWebsite));
+            }
+            if (NotificationEmail != null)
+            {
+                p.Add(new KeyValuePair<string, string>("NotificationEmail", NotificationEmail));
+            }
+            if (UseCaseCategories != null)
+            {
+                p.AddRange(UseCaseCategories.Select(UseCaseCategories => new KeyValuePair<string, string>("UseCaseCategories", UseCaseCategories)));
+            }
+            if (UseCaseSummary != null)
+            {
+                p.Add(new KeyValuePair<string, string>("UseCaseSummary", UseCaseSummary));
+            }
+            if (ProductionMessageSample != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ProductionMessageSample", ProductionMessageSample));
+            }
+            if (OptInImageUrls != null)
+            {
+                p.AddRange(OptInImageUrls.Select(OptInImageUrls => new KeyValuePair<string, string>("OptInImageUrls", OptInImageUrls)));
+            }
+            if (OptInType != null)
+            {
+                p.Add(new KeyValuePair<string, string>("OptInType", OptInType.ToString()));
+            }
+            if (MessageVolume != null)
+            {
+                p.Add(new KeyValuePair<string, string>("MessageVolume", MessageVolume));
+            }
+            if (BusinessStreetAddress != null)
+            {
+                p.Add(new KeyValuePair<string, string>("BusinessStreetAddress", BusinessStreetAddress));
+            }
+            if (BusinessStreetAddress2 != null)
+            {
+                p.Add(new KeyValuePair<string, string>("BusinessStreetAddress2", BusinessStreetAddress2));
+            }
+            if (BusinessCity != null)
+            {
+                p.Add(new KeyValuePair<string, string>("BusinessCity", BusinessCity));
+            }
+            if (BusinessStateProvinceRegion != null)
+            {
+                p.Add(new KeyValuePair<string, string>("BusinessStateProvinceRegion", BusinessStateProvinceRegion));
+            }
+            if (BusinessPostalCode != null)
+            {
+                p.Add(new KeyValuePair<string, string>("BusinessPostalCode", BusinessPostalCode));
+            }
+            if (BusinessCountry != null)
+            {
+                p.Add(new KeyValuePair<string, string>("BusinessCountry", BusinessCountry));
+            }
+            if (AdditionalInformation != null)
+            {
+                p.Add(new KeyValuePair<string, string>("AdditionalInformation", AdditionalInformation));
+            }
+            if (BusinessContactFirstName != null)
+            {
+                p.Add(new KeyValuePair<string, string>("BusinessContactFirstName", BusinessContactFirstName));
+            }
+            if (BusinessContactLastName != null)
+            {
+                p.Add(new KeyValuePair<string, string>("BusinessContactLastName", BusinessContactLastName));
+            }
+            if (BusinessContactEmail != null)
+            {
+                p.Add(new KeyValuePair<string, string>("BusinessContactEmail", BusinessContactEmail));
+            }
+            if (BusinessContactPhone != null)
+            {
+                p.Add(new KeyValuePair<string, string>("BusinessContactPhone", BusinessContactPhone.ToString()));
+            }
+            return p;
+        }
+        
+
+    }
+
+
 }
 

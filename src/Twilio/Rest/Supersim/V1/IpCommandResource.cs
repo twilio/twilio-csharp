@@ -114,7 +114,7 @@ namespace Twilio.Rest.Supersim.V1
 
         /// <summary> Send an IP Command to a Super SIM. </summary>
         /// <param name="sim"> The `sid` or `unique_name` of the [Super SIM](https://www.twilio.com/docs/iot/supersim/api/sim-resource) to send the IP Command to. </param>
-        /// <param name="payload"> The payload to be delivered to the device. </param>
+        /// <param name="payload"> The data that will be sent to the device. The payload cannot exceed 1300 bytes. If the PayloadType is set to text, the payload is encoded in UTF-8. If PayloadType is set to binary, the payload is encoded in Base64. </param>
         /// <param name="devicePort"> The device port to which the IP Command will be sent. </param>
         /// <param name="payloadType">  </param>
         /// <param name="callbackUrl"> The URL we should call using the `callback_method` after we have sent the IP Command. </param>
@@ -137,7 +137,7 @@ namespace Twilio.Rest.Supersim.V1
         #if !NET35
         /// <summary> Send an IP Command to a Super SIM. </summary>
         /// <param name="sim"> The `sid` or `unique_name` of the [Super SIM](https://www.twilio.com/docs/iot/supersim/api/sim-resource) to send the IP Command to. </param>
-        /// <param name="payload"> The payload to be delivered to the device. </param>
+        /// <param name="payload"> The data that will be sent to the device. The payload cannot exceed 1300 bytes. If the PayloadType is set to text, the payload is encoded in UTF-8. If PayloadType is set to binary, the payload is encoded in Base64. </param>
         /// <param name="devicePort"> The device port to which the IP Command will be sent. </param>
         /// <param name="payloadType">  </param>
         /// <param name="callbackUrl"> The URL we should call using the `callback_method` after we have sent the IP Command. </param>

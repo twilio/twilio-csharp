@@ -46,7 +46,7 @@ namespace Twilio.Rest.Verify.V2.Service
         ///<summary> The digits to send after a phone call is answered, for example, to dial an extension. For more information, see the Programmable Voice documentation of [sendDigits](https://www.twilio.com/docs/voice/twiml/number#attributes-sendDigits). </summary> 
         public string SendDigits { get; set; }
 
-        ///<summary> Locale will automatically resolve based on phone number country code for SMS, WhatsApp and call channel verifications. This parameter will override the automatic locale. [See supported languages and more information here](https://www.twilio.com/docs/verify/supported-languages). </summary> 
+        ///<summary> Locale will automatically resolve based on phone number country code for SMS, WhatsApp, and call channel verifications. It will fallback to English or the template’s default translation if the selected translation is not available. This parameter will override the automatic locale resolution. [See supported languages and more information here](https://www.twilio.com/docs/verify/supported-languages). </summary> 
         public string Locale { get; set; }
 
         ///<summary> A pre-generated code to use for verification. The code can be between 4 and 10 characters, inclusive. </summary> 
