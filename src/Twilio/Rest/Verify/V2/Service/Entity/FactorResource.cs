@@ -42,19 +42,6 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
             public static readonly FactorTypesEnum Totp = new FactorTypesEnum("totp");
 
         }
-        [JsonConverter(typeof(StringEnumConverter))]
-        public sealed class FactorStatusesEnum : StringEnum
-        {
-            private FactorStatusesEnum(string value) : base(value) {}
-            public FactorStatusesEnum() {}
-            public static implicit operator FactorStatusesEnum(string value)
-            {
-                return new FactorStatusesEnum(value);
-            }
-            public static readonly FactorStatusesEnum Unverified = new FactorStatusesEnum("unverified");
-            public static readonly FactorStatusesEnum Verified = new FactorStatusesEnum("verified");
-
-        }
         public sealed class TotpAlgorithmsEnum : StringEnum
         {
             private TotpAlgorithmsEnum(string value) : base(value) {}
@@ -66,6 +53,19 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
             public static readonly TotpAlgorithmsEnum Sha1 = new TotpAlgorithmsEnum("sha1");
             public static readonly TotpAlgorithmsEnum Sha256 = new TotpAlgorithmsEnum("sha256");
             public static readonly TotpAlgorithmsEnum Sha512 = new TotpAlgorithmsEnum("sha512");
+
+        }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public sealed class FactorStatusesEnum : StringEnum
+        {
+            private FactorStatusesEnum(string value) : base(value) {}
+            public FactorStatusesEnum() {}
+            public static implicit operator FactorStatusesEnum(string value)
+            {
+                return new FactorStatusesEnum(value);
+            }
+            public static readonly FactorStatusesEnum Unverified = new FactorStatusesEnum("unverified");
+            public static readonly FactorStatusesEnum Verified = new FactorStatusesEnum("verified");
 
         }
 

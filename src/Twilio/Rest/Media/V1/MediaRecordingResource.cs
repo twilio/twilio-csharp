@@ -30,19 +30,6 @@ namespace Twilio.Rest.Media.V1
     {
     
         [JsonConverter(typeof(StringEnumConverter))]
-        public sealed class FormatEnum : StringEnum
-        {
-            private FormatEnum(string value) : base(value) {}
-            public FormatEnum() {}
-            public static implicit operator FormatEnum(string value)
-            {
-                return new FormatEnum(value);
-            }
-            public static readonly FormatEnum Mp4 = new FormatEnum("mp4");
-            public static readonly FormatEnum Webm = new FormatEnum("webm");
-
-        }
-        [JsonConverter(typeof(StringEnumConverter))]
         public sealed class StatusEnum : StringEnum
         {
             private StatusEnum(string value) : base(value) {}
@@ -55,6 +42,19 @@ namespace Twilio.Rest.Media.V1
             public static readonly StatusEnum Completed = new StatusEnum("completed");
             public static readonly StatusEnum Deleted = new StatusEnum("deleted");
             public static readonly StatusEnum Failed = new StatusEnum("failed");
+
+        }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public sealed class FormatEnum : StringEnum
+        {
+            private FormatEnum(string value) : base(value) {}
+            public FormatEnum() {}
+            public static implicit operator FormatEnum(string value)
+            {
+                return new FormatEnum(value);
+            }
+            public static readonly FormatEnum Mp4 = new FormatEnum("mp4");
+            public static readonly FormatEnum Webm = new FormatEnum("webm");
 
         }
         public sealed class OrderEnum : StringEnum
