@@ -262,11 +262,11 @@ namespace Twilio.Rest.Messaging.V1
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> Expiration date for your private certificate. </summary> 
+        ///<summary> Date that the private certificate associated with this domain expires. You will need to update the certificate before that date to ensure your shortened links will continue to work. </summary> 
         [JsonProperty("date_expires")]
         public DateTime? DateExpires { get; private set; }
 
-        ///<summary> Date this Domain SID was created. </summary> 
+        ///<summary> Date that this Domain was registered to the Twilio platform to create a new Domain object. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
@@ -282,7 +282,7 @@ namespace Twilio.Rest.Messaging.V1
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
-        ///<summary> Certificate validation field </summary> 
+        ///<summary> Boolean value indicating whether certificate has been validated </summary> 
         [JsonProperty("validated")]
         public bool? Validated { get; private set; }
 

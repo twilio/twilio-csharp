@@ -380,7 +380,7 @@ namespace Twilio.Rest.Api.V2010.Account
         }
 
     
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Recording resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
@@ -388,23 +388,23 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonProperty("api_version")]
         public string ApiVersion { get; private set; }
 
-        ///<summary> The SID of the Call the resource is associated with </summary> 
+        ///<summary> The SID of the [Call](https://www.twilio.com/docs/voice/api/call-resource) the Recording resource is associated with. This will always refer to the parent leg of a two-leg call. </summary> 
         [JsonProperty("call_sid")]
         public string CallSid { get; private set; }
 
-        ///<summary> The unique ID for the conference associated with the recording. </summary> 
+        ///<summary> The Conference SID that identifies the conference associated with the recording, if a conference recording. </summary> 
         [JsonProperty("conference_sid")]
         public string ConferenceSid { get; private set; }
 
-        ///<summary> The RFC 2822 date and time in GMT that the resource was created </summary> 
+        ///<summary> The date and time in GMT that the resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The RFC 2822 date and time in GMT that the resource was last updated </summary> 
+        ///<summary> The date and time in GMT that the resource was last updated specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> The start time of the recording, given in RFC 2822 format </summary> 
+        ///<summary> The start time of the recording in GMT and in [RFC 2822](https://www.php.net/manual/en/class.datetime.php#datetime.constants.rfc2822) format. </summary> 
         [JsonProperty("start_time")]
         public DateTime? StartTime { get; private set; }
 
@@ -412,15 +412,15 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonProperty("duration")]
         public string Duration { get; private set; }
 
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string that that we created to identify the Recording resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The one-time cost of creating the recording. </summary> 
+        ///<summary> The one-time cost of creating the recording in the `price_unit` currency. </summary> 
         [JsonProperty("price")]
         public string Price { get; private set; }
 
-        ///<summary> The currency used in the price property. </summary> 
+        ///<summary> The currency used in the `price` property. Example: `USD`. </summary> 
         [JsonProperty("price_unit")]
         public string PriceUnit { get; private set; }
 
@@ -428,7 +428,7 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonProperty("status")]
         public RecordingResource.StatusEnum Status { get; private set; }
 
-        ///<summary> The number of channels in the final recording file as an integer. </summary> 
+        ///<summary> The number of channels in the final recording file. Can be: `1` or `2`. You can split a call with two legs into two separate recording channels if you record using [TwiML Dial](https://www.twilio.com/docs/voice/twiml/dial#record) or the [Outbound Rest API](https://www.twilio.com/docs/voice/make-calls#manage-your-outbound-call). </summary> 
         [JsonProperty("channels")]
         public int? Channels { get; private set; }
 
@@ -436,23 +436,23 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonProperty("source")]
         public RecordingResource.SourceEnum Source { get; private set; }
 
-        ///<summary> More information about why the recording is missing, if status is `absent`. </summary> 
+        ///<summary> The error code that describes why the recording is `absent`. The error code is described in our [Error Dictionary](https://www.twilio.com/docs/api/errors). This value is null if the recording `status` is not `absent`. </summary> 
         [JsonProperty("error_code")]
         public int? ErrorCode { get; private set; }
 
-        ///<summary> The URI of the resource, relative to `https://api.twilio.com` </summary> 
+        ///<summary> The URI of the resource, relative to `https://api.twilio.com`. </summary> 
         [JsonProperty("uri")]
         public string Uri { get; private set; }
 
-        ///<summary> How to decrypt the recording. </summary> 
+        ///<summary> How to decrypt the recording if it was encrypted using [Call Recording Encryption](https://www.twilio.com/docs/voice/tutorials/voice-recording-encryption) feature. </summary> 
         [JsonProperty("encryption_details")]
         public object EncryptionDetails { get; private set; }
 
-        ///<summary> A list of related resources identified by their relative URIs </summary> 
+        ///<summary> A list of related resources identified by their relative URIs. </summary> 
         [JsonProperty("subresource_uris")]
         public Dictionary<string, string> SubresourceUris { get; private set; }
 
-        ///<summary> The URL of the media file. </summary> 
+        ///<summary> The URL of the media file associated with this recording resource. When stored externally, this is the full URL location of the media file. </summary> 
         [JsonProperty("media_url")]
         public Uri MediaUrl { get; private set; }
 

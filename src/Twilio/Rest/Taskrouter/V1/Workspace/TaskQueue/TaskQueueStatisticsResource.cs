@@ -134,27 +134,27 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         }
 
     
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the TaskQueue resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> An object that contains the cumulative statistics for the TaskQueue </summary> 
+        ///<summary> An object that contains the cumulative statistics for the TaskQueue. </summary> 
         [JsonProperty("cumulative")]
         public object Cumulative { get; private set; }
 
-        ///<summary> An object that contains the real-time statistics for the TaskQueue </summary> 
+        ///<summary> An object that contains the real-time statistics for the TaskQueue. </summary> 
         [JsonProperty("realtime")]
         public object Realtime { get; private set; }
 
-        ///<summary> The SID of the TaskQueue from which these statistics were calculated </summary> 
+        ///<summary> The SID of the TaskQueue from which these statistics were calculated. </summary> 
         [JsonProperty("task_queue_sid")]
         public string TaskQueueSid { get; private set; }
 
-        ///<summary> The SID of the Workspace that contains the TaskQueue </summary> 
+        ///<summary> The SID of the Workspace that contains the TaskQueue. </summary> 
         [JsonProperty("workspace_sid")]
         public string WorkspaceSid { get; private set; }
 
-        ///<summary> The absolute URL of the TaskQueue statistics resource </summary> 
+        ///<summary> The absolute URL of the TaskQueue statistics resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 

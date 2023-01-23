@@ -258,19 +258,19 @@ namespace Twilio.Rest.Studio.V2.Flow
         }
 
     
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string that we created to identify the Flow resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Flow resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The string that you assigned to describe the Flow </summary> 
+        ///<summary> The string that you assigned to describe the Flow. </summary> 
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
 
-        ///<summary> JSON representation of flow definition </summary> 
+        ///<summary> JSON representation of flow definition. </summary> 
         [JsonProperty("definition")]
         public object Definition { get; private set; }
 
@@ -278,31 +278,31 @@ namespace Twilio.Rest.Studio.V2.Flow
         [JsonProperty("status")]
         public FlowRevisionResource.StatusEnum Status { get; private set; }
 
-        ///<summary> The latest revision number of the Flow's definition </summary> 
+        ///<summary> The latest revision number of the Flow's definition. </summary> 
         [JsonProperty("revision")]
         public int? Revision { get; private set; }
 
-        ///<summary> Description of change made in the revision </summary> 
+        ///<summary> Description of change made in the revision. </summary> 
         [JsonProperty("commit_message")]
         public string CommitMessage { get; private set; }
 
-        ///<summary> Boolean if the flow definition is valid </summary> 
+        ///<summary> Boolean if the flow definition is valid. </summary> 
         [JsonProperty("valid")]
         public bool? Valid { get; private set; }
 
-        ///<summary> List of error in the flow definition </summary> 
+        ///<summary> List of error in the flow definition. </summary> 
         [JsonProperty("errors")]
         public List<object> Errors { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was created </summary> 
+        ///<summary> The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was last updated </summary> 
+        ///<summary> The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> The absolute URL of the resource </summary> 
+        ///<summary> The absolute URL of the resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 

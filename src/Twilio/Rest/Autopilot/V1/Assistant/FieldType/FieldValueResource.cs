@@ -422,43 +422,43 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.FieldType
         }
 
     
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the FieldValue resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The RFC 2822 date and time in GMT when the resource was created </summary> 
+        ///<summary> The date and time in GMT when the resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The RFC 2822 date and time in GMT when the resource was last updated </summary> 
+        ///<summary> The date and time in GMT when the resource was last updated specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> The SID of the Field Type associated with the Field Value </summary> 
+        ///<summary> The SID of the Field Type associated with the Field Value. </summary> 
         [JsonProperty("field_type_sid")]
         public string FieldTypeSid { get; private set; }
 
-        ///<summary> The ISO language-country tag that identifies the language of the value </summary> 
+        ///<summary> The [ISO language-country](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html) tag that specifies the language of the value. Currently supported tags: `en-US` </summary> 
         [JsonProperty("language")]
         public string Language { get; private set; }
 
-        ///<summary> The SID of the Assistant that is the parent of the FieldType associated with the resource </summary> 
+        ///<summary> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the FieldType associated with the resource. </summary> 
         [JsonProperty("assistant_sid")]
         public string AssistantSid { get; private set; }
 
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string that we created to identify the FieldValue resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The Field Value data </summary> 
+        ///<summary> The Field Value data. </summary> 
         [JsonProperty("value")]
         public string Value { get; private set; }
 
-        ///<summary> The absolute URL of the FieldValue resource </summary> 
+        ///<summary> The absolute URL of the FieldValue resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
-        ///<summary> The word for which the field value is a synonym of </summary> 
+        ///<summary> The word for which the field value is a synonym of. </summary> 
         [JsonProperty("synonym_of")]
         public string SynonymOf { get; private set; }
 

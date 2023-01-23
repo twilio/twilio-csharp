@@ -270,35 +270,35 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         }
 
     
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string that we created to identify the RoomParticipantSubscribedTrack resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The SID of the participant that subscribes to the track </summary> 
+        ///<summary> The SID of the participant that subscribes to the track. </summary> 
         [JsonProperty("participant_sid")]
         public string ParticipantSid { get; private set; }
 
-        ///<summary> The SID of the participant that publishes the track </summary> 
+        ///<summary> The SID of the participant that publishes the track. </summary> 
         [JsonProperty("publisher_sid")]
         public string PublisherSid { get; private set; }
 
-        ///<summary> The SID of the room where the track is published </summary> 
+        ///<summary> The SID of the room where the track is published. </summary> 
         [JsonProperty("room_sid")]
         public string RoomSid { get; private set; }
 
-        ///<summary> The track name </summary> 
+        ///<summary> The track name. Must have no more than 128 characters and be unique among the participant's published tracks. </summary> 
         [JsonProperty("name")]
         public string Name { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was created </summary> 
+        ///<summary> The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was last updated </summary> 
+        ///<summary> The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> Whether the track is enabled </summary> 
+        ///<summary> Whether the track is enabled. </summary> 
         [JsonProperty("enabled")]
         public bool? Enabled { get; private set; }
 
@@ -306,7 +306,7 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         [JsonProperty("kind")]
         public SubscribedTrackResource.KindEnum Kind { get; private set; }
 
-        ///<summary> The absolute URL of the resource </summary> 
+        ///<summary> The absolute URL of the resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 

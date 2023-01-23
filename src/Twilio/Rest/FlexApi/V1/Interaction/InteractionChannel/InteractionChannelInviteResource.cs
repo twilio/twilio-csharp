@@ -259,19 +259,19 @@ namespace Twilio.Rest.FlexApi.V1.Interaction.InteractionChannel
         }
 
     
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string created by Twilio to identify an Interaction Channel Invite resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The Interaction SID for this Channel </summary> 
+        ///<summary> The Interaction SID for this Channel. </summary> 
         [JsonProperty("interaction_sid")]
         public string InteractionSid { get; private set; }
 
-        ///<summary> The Channel SID for this Invite </summary> 
+        ///<summary> The Channel SID for this Invite. </summary> 
         [JsonProperty("channel_sid")]
         public string ChannelSid { get; private set; }
 
-        ///<summary> A JSON object representing the routing rules for the Interaction Channel </summary> 
+        ///<summary> A JSON object representing the routing rules for the Interaction Channel. See [Outbound SMS Example](https://www.twilio.com/docs/flex/developer/conversations/interactions-api/interactions#agent-initiated-outbound-interactions) for an example Routing object. The Interactions resource uses TaskRouter for all routing functionality.   All attributes in the Routing object on your Interaction request body are added “as is” to the task. For a list of known attributes consumed by the Flex UI and/or Flex Insights, see [Known Task Attributes](https://www.twilio.com/docs/flex/developer/conversations/interactions-api#task-attributes). </summary> 
         [JsonProperty("routing")]
         public object Routing { get; private set; }
 

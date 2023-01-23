@@ -302,43 +302,43 @@ namespace Twilio.Rest.Content.V1
         }
 
     
-        ///<summary> The RFC 2822 date and time in GMT that the resource was created </summary> 
+        ///<summary> The date and time in GMT that the resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The RFC 2822 date and time in GMT that the resource was last updated </summary> 
+        ///<summary> The date and time in GMT that the resource was last updated specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string that that we created to identify the Content resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/usage/api/account) that created Content resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> A string name used to describe the Content resource </summary> 
+        ///<summary> A string name used to describe the Content resource. Not visible to the end recipient. </summary> 
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
 
-        ///<summary> Two-letter language code identifying the language the Content resource is in. </summary> 
+        ///<summary> Two-letter (ISO 639-1) language code (e.g., en) identifying the language the Content resource is in. </summary> 
         [JsonProperty("language")]
         public string Language { get; private set; }
 
-        ///<summary> Defines the default placeholder values for variables included in the Content resource </summary> 
+        ///<summary> Defines the default placeholder values for variables included in the Content resource. e.g. {\"1\": \"Customer_Name\"}. </summary> 
         [JsonProperty("variables")]
         public object Variables { get; private set; }
 
-        ///<summary> The Content types (e.g. twilio/text) for this Content resource </summary> 
+        ///<summary> The [Content types](https://www.twilio.com/docs/content-api/content-types-overview) (e.g. twilio/text) for this Content resource. </summary> 
         [JsonProperty("types")]
         public object Types { get; private set; }
 
-        ///<summary> The URL of the resource, relative to `https://content.twilio.com` </summary> 
+        ///<summary> The URL of the resource, relative to `https://content.twilio.com`. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
-        ///<summary> A list of links related to the Content resource </summary> 
+        ///<summary> A list of links related to the Content resource, such as approval_fetch and approval_create </summary> 
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
 

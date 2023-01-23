@@ -200,23 +200,23 @@ namespace Twilio.Rest.Wireless.V1.Sim
         }
 
     
-        ///<summary> The SID of the Sim resource that this Usage Record is for </summary> 
+        ///<summary> The SID of the [Sim resource](https://www.twilio.com/docs/wireless/api/sim-resource) that this Usage Record is for. </summary> 
         [JsonProperty("sim_sid")]
         public string SimSid { get; private set; }
 
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageRecord resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The time period for which the usage is reported </summary> 
+        ///<summary> The time period for which the usage is reported. Contains `start` and `end` datetime values given as GMT in [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) format. </summary> 
         [JsonProperty("period")]
         public object Period { get; private set; }
 
-        ///<summary> An object that describes the SIM's usage of Commands during the specified period </summary> 
+        ///<summary> An object that describes the SIM's usage of Commands during the specified period. See [Commands Usage Object](https://www.twilio.com/docs/wireless/api/sim-usagerecord-resource#commands-usage-object). </summary> 
         [JsonProperty("commands")]
         public object Commands { get; private set; }
 
-        ///<summary> An object that describes the SIM's data usage during the specified period </summary> 
+        ///<summary> An object that describes the SIM's data usage during the specified period. See [Data Usage Object](https://www.twilio.com/docs/wireless/api/sim-usagerecord-resource#data-usage-object). </summary> 
         [JsonProperty("data")]
         public object Data { get; private set; }
 

@@ -491,43 +491,43 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         }
 
     
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Task resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The RFC 2822 date and time in GMT when the resource was created </summary> 
+        ///<summary> The date and time in GMT when the resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The RFC 2822 date and time in GMT when the resource was last updated </summary> 
+        ///<summary> The date and time in GMT when the resource was last updated specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> The string that you assigned to describe the resource </summary> 
+        ///<summary> The string that you assigned to describe the resource. It is not unique and can be up to 255 characters long. </summary> 
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
 
-        ///<summary> A list of the URLs of related resources </summary> 
+        ///<summary> A list of the URLs of related resources. </summary> 
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
 
-        ///<summary> The SID of the Assistant that is the parent of the resource </summary> 
+        ///<summary> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resource. </summary> 
         [JsonProperty("assistant_sid")]
         public string AssistantSid { get; private set; }
 
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string that we created to identify the Task resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> An application-defined string that uniquely identifies the resource </summary> 
+        ///<summary> An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource. </summary> 
         [JsonProperty("unique_name")]
         public string UniqueName { get; private set; }
 
-        ///<summary> The URL from which the Assistant can fetch actions </summary> 
+        ///<summary> The URL from which the Assistant can fetch actions. </summary> 
         [JsonProperty("actions_url")]
         public Uri ActionsUrl { get; private set; }
 
-        ///<summary> The absolute URL of the Task resource </summary> 
+        ///<summary> The absolute URL of the Task resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 

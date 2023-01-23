@@ -436,47 +436,47 @@ namespace Twilio.Rest.Api.V2010.Account
         }
 
     
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the ConnectApp resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The URL to redirect the user to after authorization </summary> 
+        ///<summary> The URL we redirect the user to after we authenticate the user and obtain authorization to access the Connect App. </summary> 
         [JsonProperty("authorize_redirect_url")]
         public Uri AuthorizeRedirectUrl { get; private set; }
 
-        ///<summary> The company name set for the Connect App </summary> 
+        ///<summary> The company name set for the Connect App. </summary> 
         [JsonProperty("company_name")]
         public string CompanyName { get; private set; }
 
-        ///<summary> The HTTP method we use to call deauthorize_callback_url </summary> 
+        ///<summary> The HTTP method we use to call `deauthorize_callback_url`. </summary> 
         [JsonProperty("deauthorize_callback_method")]
         public Twilio.Http.HttpMethod DeauthorizeCallbackMethod { get; private set; }
 
-        ///<summary> The URL we call to de-authorize the Connect App </summary> 
+        ///<summary> The URL we call using the `deauthorize_callback_method` to de-authorize the Connect App. </summary> 
         [JsonProperty("deauthorize_callback_url")]
         public Uri DeauthorizeCallbackUrl { get; private set; }
 
-        ///<summary> The description of the Connect App </summary> 
+        ///<summary> The description of the Connect App. </summary> 
         [JsonProperty("description")]
         public string Description { get; private set; }
 
-        ///<summary> The string that you assigned to describe the resource </summary> 
+        ///<summary> The string that you assigned to describe the resource. </summary> 
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
 
-        ///<summary> The URL users can obtain more information </summary> 
+        ///<summary> The public URL where users can obtain more information about this Connect App. </summary> 
         [JsonProperty("homepage_url")]
         public Uri HomepageUrl { get; private set; }
 
-        ///<summary> The set of permissions that your ConnectApp requests </summary> 
+        ///<summary> The set of permissions that your ConnectApp requests. </summary> 
         [JsonProperty("permissions")]
         public List<ConnectAppResource.PermissionEnum> Permissions { get; private set; }
 
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string that that we created to identify the ConnectApp resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The URI of the resource, relative to `https://api.twilio.com` </summary> 
+        ///<summary> The URI of the resource, relative to `https://api.twilio.com`. </summary> 
         [JsonProperty("uri")]
         public string Uri { get; private set; }
 

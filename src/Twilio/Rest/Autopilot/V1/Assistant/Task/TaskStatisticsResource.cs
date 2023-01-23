@@ -119,27 +119,27 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
         }
 
     
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the TaskStatistics resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The SID of the Assistant that is the parent of the Task associated with the resource </summary> 
+        ///<summary> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the Task associated with the resource. </summary> 
         [JsonProperty("assistant_sid")]
         public string AssistantSid { get; private set; }
 
-        ///<summary> The SID of the Task for which the statistics were collected </summary> 
+        ///<summary> The SID of the [Task](https://www.twilio.com/docs/autopilot/api/task) for which the statistics were collected. </summary> 
         [JsonProperty("task_sid")]
         public string TaskSid { get; private set; }
 
-        ///<summary> The total number of Samples associated with the Task </summary> 
+        ///<summary> The total number of [Samples](https://www.twilio.com/docs/autopilot/api/task-sample) associated with the Task. </summary> 
         [JsonProperty("samples_count")]
         public int? SamplesCount { get; private set; }
 
-        ///<summary> The total number of Fields associated with the Task </summary> 
+        ///<summary> The total number of [Fields](https://www.twilio.com/docs/autopilot/api/task-field) associated with the Task. </summary> 
         [JsonProperty("fields_count")]
         public int? FieldsCount { get; private set; }
 
-        ///<summary> The absolute URL of the TaskStatistics resource </summary> 
+        ///<summary> The absolute URL of the TaskStatistics resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 

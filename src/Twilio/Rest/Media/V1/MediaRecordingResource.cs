@@ -358,19 +358,19 @@ namespace Twilio.Rest.Media.V1
         }
 
     
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the MediaRecording resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was created </summary> 
+        ///<summary> The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was last updated </summary> 
+        ///<summary> The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> The duration of the MediaRecording </summary> 
+        ///<summary> The duration of the MediaRecording in seconds. </summary> 
         [JsonProperty("duration")]
         public int? Duration { get; private set; }
 
@@ -378,27 +378,27 @@ namespace Twilio.Rest.Media.V1
         [JsonProperty("format")]
         public MediaRecordingResource.FormatEnum Format { get; private set; }
 
-        ///<summary> The URLs of related resources </summary> 
+        ///<summary> The URLs of related resources. </summary> 
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
 
-        ///<summary> The SID of the MediaProcessor </summary> 
+        ///<summary> The SID of the MediaProcessor resource which produced the MediaRecording. </summary> 
         [JsonProperty("processor_sid")]
         public string ProcessorSid { get; private set; }
 
-        ///<summary> The dimensions of the video image in pixels </summary> 
+        ///<summary> The dimensions of the video image in pixels expressed as columns (width) and rows (height). </summary> 
         [JsonProperty("resolution")]
         public string Resolution { get; private set; }
 
-        ///<summary> The SID of the resource that generated the original media </summary> 
+        ///<summary> The SID of the resource that generated the original media track(s) of the MediaRecording. </summary> 
         [JsonProperty("source_sid")]
         public string SourceSid { get; private set; }
 
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string generated to identify the MediaRecording resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The size of the recording media </summary> 
+        ///<summary> The size of the recording media in bytes. </summary> 
         [JsonProperty("media_size")]
         public long? MediaSize { get; private set; }
 
@@ -406,15 +406,15 @@ namespace Twilio.Rest.Media.V1
         [JsonProperty("status")]
         public MediaRecordingResource.StatusEnum Status { get; private set; }
 
-        ///<summary> The URL to which Twilio will send MediaRecording event updates </summary> 
+        ///<summary> The URL to which Twilio will send asynchronous webhook requests for every MediaRecording event. See [Status Callbacks](/docs/live/status-callbacks) for more details. </summary> 
         [JsonProperty("status_callback")]
         public Uri StatusCallback { get; private set; }
 
-        ///<summary> The HTTP method Twilio should use to call the `status_callback` URL </summary> 
+        ///<summary> The HTTP method Twilio should use to call the `status_callback` URL. Can be `POST` or `GET` and the default is `POST`. </summary> 
         [JsonProperty("status_callback_method")]
         public Twilio.Http.HttpMethod StatusCallbackMethod { get; private set; }
 
-        ///<summary> The absolute URL of the resource </summary> 
+        ///<summary> The absolute URL of the resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 

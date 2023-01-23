@@ -479,35 +479,35 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         }
 
     
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Activity resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> Whether the Worker should be eligible to receive a Task when it occupies the Activity </summary> 
+        ///<summary> Whether the Worker is eligible to receive a Task when it occupies the Activity. A value of `true`, `1`, or `yes` indicates the Activity is available. All other values indicate that it is not. The value cannot be changed after the Activity is created. </summary> 
         [JsonProperty("available")]
         public bool? Available { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was created </summary> 
+        ///<summary> The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was last updated </summary> 
+        ///<summary> The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> The string that you assigned to describe the Activity resource </summary> 
+        ///<summary> The string that you assigned to describe the Activity resource. </summary> 
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
 
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string that we created to identify the Activity resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The SID of the Workspace that contains the Activity </summary> 
+        ///<summary> The SID of the Workspace that contains the Activity. </summary> 
         [JsonProperty("workspace_sid")]
         public string WorkspaceSid { get; private set; }
 
-        ///<summary> The absolute URL of the Activity resource </summary> 
+        ///<summary> The absolute URL of the Activity resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 

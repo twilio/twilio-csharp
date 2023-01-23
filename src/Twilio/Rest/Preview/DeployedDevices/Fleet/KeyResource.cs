@@ -479,39 +479,39 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         }
 
     
-        ///<summary> A string that uniquely identifies this Key. </summary> 
+        ///<summary> Contains a 34 character string that uniquely identifies this Key credential resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> URL of this Key. </summary> 
+        ///<summary> Contains an absolute URL for this Key credential resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
-        ///<summary> A human readable description for this Key. </summary> 
+        ///<summary> Contains a human readable descriptive text for this Key credential, up to 256 characters long. </summary> 
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
 
-        ///<summary> The unique identifier of the Fleet. </summary> 
+        ///<summary> Specifies the unique string identifier of the Fleet that the given Key credential belongs to. </summary> 
         [JsonProperty("fleet_sid")]
         public string FleetSid { get; private set; }
 
-        ///<summary> The unique SID that identifies this Account. </summary> 
+        ///<summary> Specifies the unique string identifier of the Account responsible for this Key credential. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The unique identifier of a mapped Device. </summary> 
+        ///<summary> Specifies the unique string identifier of a Device authenticated with this Key credential. </summary> 
         [JsonProperty("device_sid")]
         public string DeviceSid { get; private set; }
 
-        ///<summary> The key secret. </summary> 
+        ///<summary> Contains the automatically generated secret belonging to this Key credential, used to authenticate the Device. </summary> 
         [JsonProperty("secret")]
         public string Secret { get; private set; }
 
-        ///<summary> The date this Key credential was created. </summary> 
+        ///<summary> Specifies the date this Key credential was created, given in UTC ISO 8601 format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The date this Key credential was updated. </summary> 
+        ///<summary> Specifies the date this Key credential was last updated, given in UTC ISO 8601 format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 

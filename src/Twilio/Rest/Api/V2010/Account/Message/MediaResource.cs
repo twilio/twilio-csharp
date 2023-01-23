@@ -344,31 +344,31 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         }
 
     
-        ///<summary> The SID of the Account that created this resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created this Media resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The default mime-type of the media </summary> 
+        ///<summary> The default [mime-type](https://en.wikipedia.org/wiki/Internet_media_type) of the media, for example `image/jpeg`, `image/png`, or `image/gif` </summary> 
         [JsonProperty("content_type")]
         public string ContentType { get; private set; }
 
-        ///<summary> The RFC 2822 date and time in GMT that this resource was created </summary> 
+        ///<summary> The date and time in GMT that this resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The RFC 2822 date and time in GMT that this resource was last updated </summary> 
+        ///<summary> The date and time in GMT that this resource was last updated, specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> The SID of the resource that created the media </summary> 
+        ///<summary> The SID of the resource that created the media. </summary> 
         [JsonProperty("parent_sid")]
         public string ParentSid { get; private set; }
 
-        ///<summary> The unique string that identifies this resource </summary> 
+        ///<summary> The unique string that that we created to identify this Media resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The URI of this resource, relative to `https://api.twilio.com` </summary> 
+        ///<summary> The URI of this resource, relative to `https://api.twilio.com`. </summary> 
         [JsonProperty("uri")]
         public string Uri { get; private set; }
 

@@ -344,11 +344,11 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         }
 
     
-        ///<summary> The SID of the Call the resource is associated with </summary> 
+        ///<summary> The SID of the [Call](https://www.twilio.com/docs/voice/api/call-resource) the Member resource is associated with. </summary> 
         [JsonProperty("call_sid")]
         public string CallSid { get; private set; }
 
-        ///<summary> The date the member was enqueued </summary> 
+        ///<summary> The date that the member was enqueued, given in RFC 2822 format. </summary> 
         [JsonProperty("date_enqueued")]
         public DateTime? DateEnqueued { get; private set; }
 
@@ -356,7 +356,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         [JsonProperty("position")]
         public int? Position { get; private set; }
 
-        ///<summary> The URI of the resource, relative to `https://api.twilio.com` </summary> 
+        ///<summary> The URI of the resource, relative to `https://api.twilio.com`. </summary> 
         [JsonProperty("uri")]
         public string Uri { get; private set; }
 
@@ -364,7 +364,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         [JsonProperty("wait_time")]
         public int? WaitTime { get; private set; }
 
-        ///<summary> The SID of the Queue the member is in </summary> 
+        ///<summary> The SID of the Queue the member is in. </summary> 
         [JsonProperty("queue_sid")]
         public string QueueSid { get; private set; }
 

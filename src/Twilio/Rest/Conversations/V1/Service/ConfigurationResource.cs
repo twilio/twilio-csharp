@@ -198,31 +198,31 @@ namespace Twilio.Rest.Conversations.V1.Service
         }
 
     
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string that we created to identify the Service configuration resource. </summary> 
         [JsonProperty("chat_service_sid")]
         public string ChatServiceSid { get; private set; }
 
-        ///<summary> The role assigned to a conversation creator user when they join a new conversation </summary> 
+        ///<summary> The conversation-level role assigned to a conversation creator user when they join a new conversation. See the [Conversation Role](https://www.twilio.com/docs/conversations/api/role-resource) for more info about roles. </summary> 
         [JsonProperty("default_conversation_creator_role_sid")]
         public string DefaultConversationCreatorRoleSid { get; private set; }
 
-        ///<summary> The role assigned to users when they are added to a conversation </summary> 
+        ///<summary> The conversation-level role assigned to users when they are added to a conversation. See the [Conversation Role](https://www.twilio.com/docs/conversations/api/role-resource) for more info about roles. </summary> 
         [JsonProperty("default_conversation_role_sid")]
         public string DefaultConversationRoleSid { get; private set; }
 
-        ///<summary> The service role assigned to users when they are added to the service </summary> 
+        ///<summary> The service-level role assigned to users when they are added to the service. See the [Conversation Role](https://www.twilio.com/docs/conversations/api/role-resource) for more info about roles. </summary> 
         [JsonProperty("default_chat_service_role_sid")]
         public string DefaultChatServiceRoleSid { get; private set; }
 
-        ///<summary> An absolute URL for this service configuration. </summary> 
+        ///<summary> An absolute API resource URL for this service configuration. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
-        ///<summary> Absolute URL to access the push notifications configuration of this service. </summary> 
+        ///<summary> Contains an absolute API resource URL to access the push notifications configuration of this service. </summary> 
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
 
-        ///<summary> Whether the Reachability Indicator feature is enabled for this Conversations Service </summary> 
+        ///<summary> Whether the [Reachability Indicator](https://www.twilio.com/docs/chat/reachability-indicator) is enabled for this Conversations Service. The default is `false`. </summary> 
         [JsonProperty("reachability_enabled")]
         public bool? ReachabilityEnabled { get; private set; }
 

@@ -117,21 +117,21 @@ namespace Twilio.Rest.Pricing.V2
         }
 
     
-        ///<summary> The destination phone number, in E.164 format </summary> 
+        ///<summary> The destination phone number in [E.164](https://www.twilio.com/docs/glossary/what-e164) format, which consists of a + followed by the country code and subscriber number. </summary> 
         [JsonProperty("destination_number")]
         [JsonConverter(typeof(PhoneNumberConverter))]
         public Types.PhoneNumber DestinationNumber { get; private set; }
 
-        ///<summary> The origination phone number, in E.164 format </summary> 
+        ///<summary> The origination phone number in [[E.164](https://www.twilio.com/docs/glossary/what-e164) format, which consists of a + followed by the country code and subscriber number. </summary> 
         [JsonProperty("origination_number")]
         [JsonConverter(typeof(PhoneNumberConverter))]
         public Types.PhoneNumber OriginationNumber { get; private set; }
 
-        ///<summary> The name of the country </summary> 
+        ///<summary> The name of the country. </summary> 
         [JsonProperty("country")]
         public string Country { get; private set; }
 
-        ///<summary> The ISO country code </summary> 
+        ///<summary> The [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) </summary> 
         [JsonProperty("iso_country")]
         public string IsoCountry { get; private set; }
 
@@ -143,11 +143,11 @@ namespace Twilio.Rest.Pricing.V2
         [JsonProperty("originating_call_price")]
         public InboundCallPrice OriginatingCallPrice { get; private set; }
 
-        ///<summary> The currency in which prices are measured, in ISO 4127 format (e.g. usd, eur, jpy) </summary> 
+        ///<summary> The currency in which prices are measured, specified in [ISO 4127](https://www.iso.org/iso/home/standards/currency_codes.htm) format (e.g. `usd`, `eur`, `jpy`). </summary> 
         [JsonProperty("price_unit")]
         public string PriceUnit { get; private set; }
 
-        ///<summary> The absolute URL of the resource </summary> 
+        ///<summary> The absolute URL of the resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 

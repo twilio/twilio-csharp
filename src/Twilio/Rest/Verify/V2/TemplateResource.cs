@@ -173,23 +173,23 @@ namespace Twilio.Rest.Verify.V2
         }
 
     
-        ///<summary> A string that uniquely identifies this Template </summary> 
+        ///<summary> A 34 character string that uniquely identifies a Verification Template. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> Account Sid </summary> 
+        ///<summary> The unique SID identifier of the Account. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> A string to describe the verification template </summary> 
+        ///<summary> A descriptive string that you create to describe a Template. </summary> 
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
 
-        ///<summary> A list of channels that support the Template </summary> 
+        ///<summary> A list of channels that support the Template. Can include: sms, voice </summary> 
         [JsonProperty("channels")]
         public List<string> Channels { get; private set; }
 
-        ///<summary> Object with the template translations. </summary> 
+        ///<summary> An object that contains the different translations of the template. Every translation is identified by the language short name and contains its respective information as the approval status, text and created/modified date. </summary> 
         [JsonProperty("translations")]
         public object Translations { get; private set; }
 

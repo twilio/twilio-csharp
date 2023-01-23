@@ -404,35 +404,35 @@ namespace Twilio.Rest.FlexApi.V1
         }
 
     
-        ///<summary> The SID of the Account that created the resource and owns this Workflow </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Channel resource and owns this Workflow. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The SID of the Flex Flow </summary> 
+        ///<summary> The SID of the Flex Flow. </summary> 
         [JsonProperty("flex_flow_sid")]
         public string FlexFlowSid { get; private set; }
 
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string that we created to identify the Channel resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The SID of the chat user </summary> 
+        ///<summary> The SID of the chat user. </summary> 
         [JsonProperty("user_sid")]
         public string UserSid { get; private set; }
 
-        ///<summary> The SID of the TaskRouter Task </summary> 
+        ///<summary> The SID of the TaskRouter Task. Only valid when integration type is `task`. `null` for integration types `studio` & `external` </summary> 
         [JsonProperty("task_sid")]
         public string TaskSid { get; private set; }
 
-        ///<summary> The absolute URL of the Flex chat channel resource </summary> 
+        ///<summary> The absolute URL of the Flex chat channel resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the Flex chat channel was created </summary> 
+        ///<summary> The date and time in GMT when the Flex chat channel was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the Flex chat channel was last updated </summary> 
+        ///<summary> The date and time in GMT when the Flex chat channel was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 

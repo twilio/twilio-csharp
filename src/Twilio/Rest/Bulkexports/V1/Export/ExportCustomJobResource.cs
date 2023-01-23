@@ -275,19 +275,19 @@ namespace Twilio.Rest.Bulkexports.V1.Export
         [JsonProperty("resource_type")]
         public string ResourceType { get; private set; }
 
-        ///<summary> The start day for the custom export specified as a string in the format of yyyy-MM-dd </summary> 
+        ///<summary> The start day for the custom export specified when creating the job </summary> 
         [JsonProperty("start_day")]
         public string StartDay { get; private set; }
 
-        ///<summary> The end day for the custom export specified as a string in the format of yyyy-MM-dd. This will be the last day exported. For instance, to export a single day, choose the same day for start and end day. To export the first 4 days of July, you would set the start date to 2020-07-01 and the end date to 2020-07-04. The end date must be the UTC day before yesterday. </summary> 
+        ///<summary> The end day for the export specified when creating the job </summary> 
         [JsonProperty("end_day")]
         public string EndDay { get; private set; }
 
-        ///<summary> The optional webhook url called on completion </summary> 
+        ///<summary> The optional webhook url called on completion of the job. If this is supplied, `WebhookMethod` must also be supplied. </summary> 
         [JsonProperty("webhook_url")]
         public string WebhookUrl { get; private set; }
 
-        ///<summary> This is the method used to call the webhook </summary> 
+        ///<summary> This is the method used to call the webhook on completion of the job. If this is supplied, `WebhookUrl` must also be supplied. </summary> 
         [JsonProperty("webhook_method")]
         public string WebhookMethod { get; private set; }
 
@@ -295,11 +295,11 @@ namespace Twilio.Rest.Bulkexports.V1.Export
         [JsonProperty("email")]
         public string Email { get; private set; }
 
-        ///<summary> The unique job_sid returned when the custom export was created. This can be used to look up the status of the job. </summary> 
+        ///<summary> The unique job_sid returned when the custom export was created </summary> 
         [JsonProperty("job_sid")]
         public string JobSid { get; private set; }
 
-        ///<summary> The details of a job state which is an object that contains a `status` string, a day count integer, and list of days in the job </summary> 
+        ///<summary> The details of a job which is an object that contains an array of status grouped by `status` state.  Each `status` object has a `status` string, a count which is the number of days in that `status`, and list of days in that `status`. The day strings are in the format yyyy-MM-dd. As an example, a currently running job may have a status object for COMPLETED and a `status` object for SUBMITTED each with its own count and list of days. </summary> 
         [JsonProperty("details")]
         public object Details { get; private set; }
 

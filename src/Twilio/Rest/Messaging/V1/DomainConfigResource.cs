@@ -210,7 +210,7 @@ namespace Twilio.Rest.Messaging.V1
         [JsonProperty("messaging_service_sids")]
         public List<string> MessagingServiceSids { get; private set; }
 
-        ///<summary> We will redirect requests to urls we are unable to identify to this url. </summary> 
+        ///<summary> Any requests we receive to this domain that do not match an existing shortened message will be redirected to the fallback url. These will likely be either expired messages, random misdirected traffic, or intentional scraping. </summary> 
         [JsonProperty("fallback_url")]
         public Uri FallbackUrl { get; private set; }
 

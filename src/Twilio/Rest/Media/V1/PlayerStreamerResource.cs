@@ -445,27 +445,27 @@ namespace Twilio.Rest.Media.V1
         }
 
     
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the PlayerStreamer resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was created </summary> 
+        ///<summary> The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was last updated </summary> 
+        ///<summary> The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> Whether the PlayerStreamer is configured to stream video </summary> 
+        ///<summary> Specifies whether the PlayerStreamer is configured to stream video. Defaults to `true`. </summary> 
         [JsonProperty("video")]
         public bool? Video { get; private set; }
 
-        ///<summary> The URLs of related resources </summary> 
+        ///<summary> The URLs of related resources. </summary> 
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
 
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string generated to identify the PlayerStreamer resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
@@ -473,15 +473,15 @@ namespace Twilio.Rest.Media.V1
         [JsonProperty("status")]
         public PlayerStreamerResource.StatusEnum Status { get; private set; }
 
-        ///<summary> The absolute URL of the resource </summary> 
+        ///<summary> The absolute URL of the resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
-        ///<summary> The URL to which Twilio will send PlayerStreamer event updates </summary> 
+        ///<summary> The URL to which Twilio will send asynchronous webhook requests for every PlayerStreamer event. See [Status Callbacks](/docs/live/status-callbacks) for more details. </summary> 
         [JsonProperty("status_callback")]
         public Uri StatusCallback { get; private set; }
 
-        ///<summary> The HTTP method Twilio should use to call the `status_callback` URL </summary> 
+        ///<summary> The HTTP method Twilio should use to call the `status_callback` URL. Can be `POST` or `GET` and the default is `POST`. </summary> 
         [JsonProperty("status_callback_method")]
         public Twilio.Http.HttpMethod StatusCallbackMethod { get; private set; }
 
@@ -489,7 +489,7 @@ namespace Twilio.Rest.Media.V1
         [JsonProperty("ended_reason")]
         public PlayerStreamerResource.EndedReasonEnum EndedReason { get; private set; }
 
-        ///<summary> Maximum PlayerStreamer duration in seconds </summary> 
+        ///<summary> The maximum time, in seconds, that the PlayerStreamer is active (`created` or `started`) before automatically ends. The default value is 300 seconds, and the maximum value is 90000 seconds. Once this maximum duration is reached, Twilio will end the PlayerStreamer, regardless of whether media is still streaming. </summary> 
         [JsonProperty("max_duration")]
         public int? MaxDuration { get; private set; }
 

@@ -507,59 +507,59 @@ namespace Twilio.Rest.Chat.V2.Service
         }
 
     
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string that we created to identify the User resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the User resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The SID of the Service that the resource is associated with </summary> 
+        ///<summary> The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) the User resource is associated with. </summary> 
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
 
-        ///<summary> The JSON string that stores application-specific data </summary> 
+        ///<summary> The JSON string that stores application-specific data. If attributes have not been set, `{}` is returned. </summary> 
         [JsonProperty("attributes")]
         public string Attributes { get; private set; }
 
-        ///<summary> The string that you assigned to describe the resource </summary> 
+        ///<summary> The string that you assigned to describe the resource. </summary> 
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
 
-        ///<summary> The SID of the Role assigned to the user </summary> 
+        ///<summary> The SID of the [Role](https://www.twilio.com/docs/chat/rest/role-resource) assigned to the user. </summary> 
         [JsonProperty("role_sid")]
         public string RoleSid { get; private set; }
 
-        ///<summary> The string that identifies the resource's User </summary> 
+        ///<summary> The application-defined string that uniquely identifies the resource's User within the [Service](https://www.twilio.com/docs/chat/rest/service-resource). This value is often a username or an email address, and is case-sensitive. See [access tokens](https://www.twilio.com/docs/chat/create-tokens) for more info. </summary> 
         [JsonProperty("identity")]
         public string Identity { get; private set; }
 
-        ///<summary> Whether the User is actively connected to the Service instance and online </summary> 
+        ///<summary> Whether the User is actively connected to the Service instance and online. This value is only returned by Fetch actions that return a single resource and `null` is always returned by a Read action. This value is `null` if the Service's `reachability_enabled` is `false`, if the User has never been online for the Service instance, even if the Service's `reachability_enabled` is `true`. </summary> 
         [JsonProperty("is_online")]
         public bool? IsOnline { get; private set; }
 
-        ///<summary> Whether the User has a potentially valid Push Notification registration for the Service instance </summary> 
+        ///<summary> Whether the User has a potentially valid Push Notification registration (APN or GCM) for the Service instance. If at least one registration exists, `true`; otherwise `false`. This value is only returned by Fetch actions that return a single resource and `null` is always returned by a Read action. This value is `null` if the Service's `reachability_enabled` is `false`, and if the User has never had a notification registration, even if the Service's `reachability_enabled` is `true`. </summary> 
         [JsonProperty("is_notifiable")]
         public bool? IsNotifiable { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was created </summary> 
+        ///<summary> The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was last updated </summary> 
+        ///<summary> The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> The number of Channels the User is a Member of </summary> 
+        ///<summary> The number of Channels the User is a Member of. </summary> 
         [JsonProperty("joined_channels_count")]
         public int? JoinedChannelsCount { get; private set; }
 
-        ///<summary> The absolute URLs of the Channel and Binding resources related to the user </summary> 
+        ///<summary> The absolute URLs of the [Channel](https://www.twilio.com/docs/chat/channels) and [Binding](https://www.twilio.com/docs/chat/rest/binding-resource) resources related to the user. </summary> 
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
 
-        ///<summary> The absolute URL of the User resource </summary> 
+        ///<summary> The absolute URL of the User resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 

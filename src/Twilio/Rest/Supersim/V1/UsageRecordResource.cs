@@ -228,27 +228,27 @@ namespace Twilio.Rest.Supersim.V1
         }
 
     
-        ///<summary> The SID of the Account that incurred the usage. </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that incurred the usage. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> SID of a Sim resource to which the UsageRecord belongs. </summary> 
+        ///<summary> SID of a Sim resource to which the UsageRecord belongs. Value will only be present when either a value for the `Sim` query parameter is provided or when UsageRecords are grouped by `sim`. Otherwise, the value will be `null`. </summary> 
         [JsonProperty("sim_sid")]
         public string SimSid { get; private set; }
 
-        ///<summary> SID of the Network resource on which the usage occurred. </summary> 
+        ///<summary> SID of the Network resource the usage occurred on. Value will only be present when either a value for the `Network` query parameter is provided or when UsageRecords are grouped by `network`. Otherwise, the value will be `null`. </summary> 
         [JsonProperty("network_sid")]
         public string NetworkSid { get; private set; }
 
-        ///<summary> SID of the Fleet resource on which the usage occurred. </summary> 
+        ///<summary> SID of the Fleet resource the usage occurred on. Value will only be present when either a value for the `Fleet` query parameter is provided or when UsageRecords are grouped by `fleet`. Otherwise, the value will be `null`. </summary> 
         [JsonProperty("fleet_sid")]
         public string FleetSid { get; private set; }
 
-        ///<summary> Alpha-2 ISO Country Code of the country the usage occurred in. </summary> 
+        ///<summary> Alpha-2 ISO Country Code that the usage occurred in. Value will only be present when either a value for the `IsoCountry` query parameter is provided or when UsageRecords are grouped by `isoCountry`. Otherwise, the value will be `null`. </summary> 
         [JsonProperty("iso_country")]
         public string IsoCountry { get; private set; }
 
-        ///<summary> The time period for which the usage is reported. </summary> 
+        ///<summary> The time period for which the usage is reported. The period is represented as a pair of `start_time` and `end_time` timestamps specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("period")]
         public object Period { get; private set; }
 
@@ -264,11 +264,11 @@ namespace Twilio.Rest.Supersim.V1
         [JsonProperty("data_total")]
         public long? DataTotal { get; private set; }
 
-        ///<summary> Total amount in the `billed_unit` that was charged for the data uploaded or downloaded. </summary> 
+        ///<summary> Total amount in the `billed_unit` that was charged for the data uploaded or downloaded. Will return 0 for usage prior to February 1, 2022. Value may be 0 despite `data_total` being greater than 0 if the data usage is still being processed by Twilio's billing system. Refer to [Data Usage Processing](https://www.twilio.com/docs/iot/supersim/api/usage-record-resource#data-usage-processing) for more details. </summary> 
         [JsonProperty("data_total_billed")]
         public decimal? DataTotalBilled { get; private set; }
 
-        ///<summary> The currency in which the billed amounts are measured, specified in the 3 letter ISO 4127 format (e.g. `USD`, `EUR`, `JPY`). </summary> 
+        ///<summary> The currency in which the billed amounts are measured, specified in the 3 letter ISO 4127 format (e.g. `USD`, `EUR`, `JPY`). This can be null when data_toal_billed is 0 and we do not yet have billing information for the corresponding data usage. Refer to [Data Usage Processing](https://www.twilio.com/docs/iot/supersim/api/usage-record-resource#data-usage-processing) for more details. </summary> 
         [JsonProperty("billed_unit")]
         public string BilledUnit { get; private set; }
 

@@ -187,31 +187,31 @@ namespace Twilio.Rest.Conversations.V1
         }
 
     
-        ///<summary> The SID of the Account responsible for this configuration. </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this configuration. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The SID of the default Conversation Service that every new conversation is associated with. </summary> 
+        ///<summary> The SID of the default [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) used when creating a conversation. </summary> 
         [JsonProperty("default_chat_service_sid")]
         public string DefaultChatServiceSid { get; private set; }
 
-        ///<summary> The SID of the default Messaging Service that every new conversation is associated with. </summary> 
+        ///<summary> The SID of the default [Messaging Service](https://www.twilio.com/docs/sms/services/api) used when creating a conversation. </summary> 
         [JsonProperty("default_messaging_service_sid")]
         public string DefaultMessagingServiceSid { get; private set; }
 
-        ///<summary> Default ISO8601 duration when conversation will be switched to `inactive` state. </summary> 
+        ///<summary> Default ISO8601 duration when conversation will be switched to `inactive` state. Minimum value for this timer is 1 minute. </summary> 
         [JsonProperty("default_inactive_timer")]
         public string DefaultInactiveTimer { get; private set; }
 
-        ///<summary> Default ISO8601 duration when conversation will be switched to `closed` state. </summary> 
+        ///<summary> Default ISO8601 duration when conversation will be switched to `closed` state. Minimum value for this timer is 10 minutes. </summary> 
         [JsonProperty("default_closed_timer")]
         public string DefaultClosedTimer { get; private set; }
 
-        ///<summary> An absolute URL for this global configuration. </summary> 
+        ///<summary> An absolute API resource URL for this global configuration. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
-        ///<summary> Absolute URLs to access the webhook and default service configurations. </summary> 
+        ///<summary> Contains absolute API resource URLs to access the webhook and default service configurations. </summary> 
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
 

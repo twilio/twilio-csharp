@@ -245,7 +245,7 @@ namespace Twilio.Rest.Events.V1.Schema
         }
 
     
-        ///<summary> The unique identifier of the schema. </summary> 
+        ///<summary> The unique identifier of the schema. Each schema can have multiple versions, that share the same id. </summary> 
         [JsonProperty("id")]
         public string Id { get; private set; }
 
@@ -253,7 +253,7 @@ namespace Twilio.Rest.Events.V1.Schema
         [JsonProperty("schema_version")]
         public int? SchemaVersion { get; private set; }
 
-        ///<summary> The date the schema version was created. </summary> 
+        ///<summary> The date the schema version was created, given in ISO 8601 format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 

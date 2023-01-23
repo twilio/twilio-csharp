@@ -574,55 +574,55 @@ namespace Twilio.Rest.Messaging.V1
         }
 
     
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string that we created to identify the Service resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Service resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The string that you assigned to describe the resource </summary> 
+        ///<summary> The string that you assigned to describe the resource. </summary> 
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was created </summary> 
+        ///<summary> The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was last updated </summary> 
+        ///<summary> The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> The URL we call using inbound_method when a message is received by any phone number or short code in the Service. This field will be overridden if the `use_inbound_webhook_on_number` field is enabled. </summary> 
+        ///<summary> The URL we call using `inbound_method` when a message is received by any phone number or short code in the Service. When this property is `null`, receiving inbound messages is disabled. All messages sent to the Twilio phone number or short code will not be logged and received on the Account. If the `use_inbound_webhook_on_number` field is enabled then the webhook url defined on the phone number will override the `inbound_request_url` defined for the Messaging Service. </summary> 
         [JsonProperty("inbound_request_url")]
         public Uri InboundRequestUrl { get; private set; }
 
-        ///<summary> The HTTP method we use to call inbound_request_url </summary> 
+        ///<summary> The HTTP method we use to call `inbound_request_url`. Can be `GET` or `POST`. </summary> 
         [JsonProperty("inbound_method")]
         public Twilio.Http.HttpMethod InboundMethod { get; private set; }
 
-        ///<summary> The URL that we call using fallback_method if an error occurs while retrieving or executing the TwiML from the Inbound Request URL. This field will be overridden if the `use_inbound_webhook_on_number` field is enabled. </summary> 
+        ///<summary> The URL that we call using `fallback_method` if an error occurs while retrieving or executing the TwiML from the Inbound Request URL. If the `use_inbound_webhook_on_number` field is enabled then the webhook url defined on the phone number will override the `fallback_url` defined for the Messaging Service. </summary> 
         [JsonProperty("fallback_url")]
         public Uri FallbackUrl { get; private set; }
 
-        ///<summary> The HTTP method we use to call fallback_url </summary> 
+        ///<summary> The HTTP method we use to call `fallback_url`. Can be: `GET` or `POST`. </summary> 
         [JsonProperty("fallback_method")]
         public Twilio.Http.HttpMethod FallbackMethod { get; private set; }
 
-        ///<summary> The URL we call to pass status updates about message delivery </summary> 
+        ///<summary> The URL we call to [pass status updates](https://www.twilio.com/docs/sms/api/message-resource#message-status-values) about message delivery. </summary> 
         [JsonProperty("status_callback")]
         public Uri StatusCallback { get; private set; }
 
-        ///<summary> Whether to enable Sticky Sender on the Service instance </summary> 
+        ///<summary> Whether to enable [Sticky Sender](https://www.twilio.com/docs/sms/services#sticky-sender) on the Service instance. </summary> 
         [JsonProperty("sticky_sender")]
         public bool? StickySender { get; private set; }
 
-        ///<summary> Whether to enable the MMS Converter for messages sent through the Service instance </summary> 
+        ///<summary> Whether to enable the [MMS Converter](https://www.twilio.com/docs/sms/services#mms-converter) for messages sent through the Service instance. </summary> 
         [JsonProperty("mms_converter")]
         public bool? MmsConverter { get; private set; }
 
-        ///<summary> Whether to enable Encoding for messages sent through the Service instance </summary> 
+        ///<summary> Whether to enable [Smart Encoding](https://www.twilio.com/docs/sms/services#smart-encoding) for messages sent through the Service instance. </summary> 
         [JsonProperty("smart_encoding")]
         public bool? SmartEncoding { get; private set; }
 
@@ -630,31 +630,31 @@ namespace Twilio.Rest.Messaging.V1
         [JsonProperty("scan_message_content")]
         public ServiceResource.ScanMessageContentEnum ScanMessageContent { get; private set; }
 
-        ///<summary> Whether to enable Fallback to Long Code for messages sent through the Service instance </summary> 
+        ///<summary> Whether to enable [Fallback to Long Code](https://www.twilio.com/docs/sms/services#fallback-to-long-code) for messages sent through the Service instance. </summary> 
         [JsonProperty("fallback_to_long_code")]
         public bool? FallbackToLongCode { get; private set; }
 
-        ///<summary> Whether to enable Area Code Geomatch on the Service Instance </summary> 
+        ///<summary> Whether to enable [Area Code Geomatch](https://www.twilio.com/docs/sms/services#area-code-geomatch) on the Service Instance. </summary> 
         [JsonProperty("area_code_geomatch")]
         public bool? AreaCodeGeomatch { get; private set; }
 
-        ///<summary> Reserved </summary> 
+        ///<summary> Reserved. </summary> 
         [JsonProperty("synchronous_validation")]
         public bool? SynchronousValidation { get; private set; }
 
-        ///<summary> How long, in seconds, messages sent from the Service are valid </summary> 
+        ///<summary> How long, in seconds, messages sent from the Service are valid. Can be an integer from `1` to `14,400`. </summary> 
         [JsonProperty("validity_period")]
         public int? ValidityPeriod { get; private set; }
 
-        ///<summary> The absolute URL of the Service resource </summary> 
+        ///<summary> The absolute URL of the Service resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
-        ///<summary> The absolute URLs of related resources </summary> 
+        ///<summary> The absolute URLs of related resources. </summary> 
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
 
-        ///<summary> A string describing the scenario in which the Messaging Service will be used </summary> 
+        ///<summary> A string that describes the scenario in which the Messaging Service will be used. Examples: [notification, marketing, verification, poll ..] </summary> 
         [JsonProperty("usecase")]
         public string Usecase { get; private set; }
 
@@ -662,7 +662,7 @@ namespace Twilio.Rest.Messaging.V1
         [JsonProperty("us_app_to_person_registered")]
         public bool? UsAppToPersonRegistered { get; private set; }
 
-        ///<summary> If enabled, the webhook url configured on the phone number will be used and will override the `inbound_request_url`/`fallback_url` url called when an inbound message is received. </summary> 
+        ///<summary> A boolean value that indicates either the webhook url configured on the phone number will be used or `inbound_request_url`/`fallback_url` url will be called when a message is received from the phone number. If this field is enabled then the webhook url defined on the phone number will override the `inbound_request_url`/`fallback_url` defined for the Messaging Service. </summary> 
         [JsonProperty("use_inbound_webhook_on_number")]
         public bool? UseInboundWebhookOnNumber { get; private set; }
 

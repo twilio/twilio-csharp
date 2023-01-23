@@ -337,35 +337,35 @@ namespace Twilio.Rest.Messaging.V1.BrandRegistration
         }
 
     
-        ///<summary> The SID of the Account that created the vetting </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the vetting record. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> A2P BrandRegistration Sid </summary> 
+        ///<summary> The unique string to identify Brand Registration. </summary> 
         [JsonProperty("brand_sid")]
         public string BrandSid { get; private set; }
 
-        ///<summary> SID for third-party vetting record </summary> 
+        ///<summary> The Twilio SID of the third-party vetting record. </summary> 
         [JsonProperty("brand_vetting_sid")]
         public string BrandVettingSid { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was last updated </summary> 
+        ///<summary> The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was created </summary> 
+        ///<summary> The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The unique ID of the vetting </summary> 
+        ///<summary> The unique identifier of the vetting from the third-party provider. </summary> 
         [JsonProperty("vetting_id")]
         public string VettingId { get; private set; }
 
-        ///<summary> The type of vetting </summary> 
+        ///<summary> The type of vetting that has been conducted. One of “STANDARD” (Aegis) or “POLITICAL” (Campaign Verify). </summary> 
         [JsonProperty("vetting_class")]
         public string VettingClass { get; private set; }
 
-        ///<summary> Status of vetting attempt </summary> 
+        ///<summary> The status of the import vetting attempt. One of “PENDING,” “SUCCESS,” or “FAILED”. </summary> 
         [JsonProperty("vetting_status")]
         public string VettingStatus { get; private set; }
 
@@ -373,7 +373,7 @@ namespace Twilio.Rest.Messaging.V1.BrandRegistration
         [JsonProperty("vetting_provider")]
         public BrandVettingResource.VettingProviderEnum VettingProvider { get; private set; }
 
-        ///<summary> The absolute URL of the Brand Vetting </summary> 
+        ///<summary> The absolute URL of the Brand Vetting resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 

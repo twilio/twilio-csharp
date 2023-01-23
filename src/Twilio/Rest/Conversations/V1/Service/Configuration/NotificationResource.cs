@@ -234,11 +234,11 @@ namespace Twilio.Rest.Conversations.V1.Service.Configuration
         }
 
     
-        ///<summary> The unique ID of the Account responsible for this configuration. </summary> 
+        ///<summary> The unique ID of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this configuration. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The SID of the Conversation Service that the Configuration applies to. </summary> 
+        ///<summary> The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Configuration applies to. </summary> 
         [JsonProperty("chat_service_sid")]
         public string ChatServiceSid { get; private set; }
 
@@ -258,7 +258,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Configuration
         [JsonProperty("log_enabled")]
         public bool? LogEnabled { get; private set; }
 
-        ///<summary> An absolute URL for this configuration. </summary> 
+        ///<summary> An absolute API resource URL for this configuration. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 

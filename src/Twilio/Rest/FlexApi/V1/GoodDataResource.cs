@@ -119,15 +119,15 @@ namespace Twilio.Rest.FlexApi.V1
         [JsonProperty("workspace_id")]
         public string WorkspaceId { get; private set; }
 
-        ///<summary> The session expiry date and time </summary> 
+        ///<summary> The session expiry date and time, given in ISO 8601 format. </summary> 
         [JsonProperty("session_expiry")]
         public string SessionExpiry { get; private set; }
 
-        ///<summary> Unique session ID </summary> 
+        ///<summary> The unique ID for the session </summary> 
         [JsonProperty("session_id")]
         public string SessionId { get; private set; }
 
-        ///<summary> Base URL to fetch reports and dashboards </summary> 
+        ///<summary> The base URL to fetch reports and dashboards </summary> 
         [JsonProperty("base_url")]
         public string BaseUrl { get; private set; }
 

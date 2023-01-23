@@ -534,15 +534,15 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         [JsonProperty("ip_access_control_list_sid")]
         public string IpAccessControlListSid { get; private set; }
 
-        ///<summary> The date that this resource was created, given as GMT in RFC 2822 format. </summary> 
+        ///<summary> The date that this resource was created, given as GMT in [RFC 2822](https://www.php.net/manual/en/class.datetime.php#datetime.constants.rfc2822) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The date that this resource was last updated, given as GMT in RFC 2822 format. </summary> 
+        ///<summary> The date that this resource was last updated, given as GMT in [RFC 2822](https://www.php.net/manual/en/class.datetime.php#datetime.constants.rfc2822) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> The URI for this resource, relative to https://api.twilio.com </summary> 
+        ///<summary> The URI for this resource, relative to `https://api.twilio.com` </summary> 
         [JsonProperty("uri")]
         public string Uri { get; private set; }
 

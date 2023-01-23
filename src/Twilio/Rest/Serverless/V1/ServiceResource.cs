@@ -460,47 +460,47 @@ namespace Twilio.Rest.Serverless.V1
         }
 
     
-        ///<summary> The unique string that identifies the Service resource </summary> 
+        ///<summary> The unique string that we created to identify the Service resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The SID of the Account that created the Service resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Service resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The string that you assigned to describe the Service resource </summary> 
+        ///<summary> The string that you assigned to describe the Service resource. </summary> 
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
 
-        ///<summary> A user-defined string that uniquely identifies the Service resource </summary> 
+        ///<summary> A user-defined string that uniquely identifies the Service resource. It can be used in place of the Service resource's `sid` in the URL to address the Service resource. </summary> 
         [JsonProperty("unique_name")]
         public string UniqueName { get; private set; }
 
-        ///<summary> Whether to inject Account credentials into a function invocation context </summary> 
+        ///<summary> Whether to inject Account credentials into a function invocation context. </summary> 
         [JsonProperty("include_credentials")]
         public bool? IncludeCredentials { get; private set; }
 
-        ///<summary> Whether the Service resource's properties and subresources can be edited via the UI </summary> 
+        ///<summary> Whether the Service resource's properties and subresources can be edited via the UI. </summary> 
         [JsonProperty("ui_editable")]
         public bool? UiEditable { get; private set; }
 
-        ///<summary> The base domain name for this Service, which is a combination of the unique name and a randomly generated string </summary> 
+        ///<summary> The base domain name for this Service, which is a combination of the unique name and a randomly generated string. </summary> 
         [JsonProperty("domain_base")]
         public string DomainBase { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the Service resource was created </summary> 
+        ///<summary> The date and time in GMT when the Service resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the Service resource was last updated </summary> 
+        ///<summary> The date and time in GMT when the Service resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> The absolute URL of the Service resource </summary> 
+        ///<summary> The absolute URL of the Service resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
-        ///<summary> The URLs of the Service's nested resources </summary> 
+        ///<summary> The URLs of the Service's nested resources. </summary> 
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
 

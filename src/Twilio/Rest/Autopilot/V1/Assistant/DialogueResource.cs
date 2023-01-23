@@ -119,23 +119,23 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         }
 
     
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Dialogue resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The SID of the Assistant that is the parent of the resource </summary> 
+        ///<summary> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resource. </summary> 
         [JsonProperty("assistant_sid")]
         public string AssistantSid { get; private set; }
 
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string that we created to identify the Dialogue resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The JSON string that describes the dialogue session object </summary> 
+        ///<summary> The JSON string that describes the dialogue session object. </summary> 
         [JsonProperty("data")]
         public object Data { get; private set; }
 
-        ///<summary> The absolute URL of the Dialogue resource </summary> 
+        ///<summary> The absolute URL of the Dialogue resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 

@@ -241,11 +241,11 @@ namespace Twilio.Rest.Insights.V1.Call
         }
 
     
-        ///<summary> Call SID. </summary> 
+        ///<summary> The unique SID identifier of the Call. </summary> 
         [JsonProperty("call_sid")]
         public string CallSid { get; private set; }
 
-        ///<summary> Account SID. </summary> 
+        ///<summary> The unique SID identifier of the Account. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
@@ -257,23 +257,23 @@ namespace Twilio.Rest.Insights.V1.Call
         [JsonProperty("connectivity_issue")]
         public AnnotationResource.ConnectivityIssueEnum ConnectivityIssue { get; private set; }
 
-        ///<summary> Indicates if the call had audio quality issues. </summary> 
+        ///<summary> Specify if the call had any subjective quality issues. Possible values, one or more of:  no_quality_issue, low_volume, choppy_robotic, echo, dtmf, latency, owa, static_noise. Use comma separated values to indicate multiple quality issues for the same call </summary> 
         [JsonProperty("quality_issues")]
         public List<string> QualityIssues { get; private set; }
 
-        ///<summary> Call spam indicator </summary> 
+        ///<summary> Specify if the call was a spam call. Use this to provide feedback on whether calls placed from your account were marked as spam, or if inbound calls received by your account were unwanted spam. Is of type Boolean: true, false. Use true if the call was a spam call. </summary> 
         [JsonProperty("spam")]
         public bool? Spam { get; private set; }
 
-        ///<summary> Call Score </summary> 
+        ///<summary> Specify the call score. This is of type integer. Use a range of 1-5 to indicate the call experience score, with the following mapping as a reference for rating the call [5: Excellent, 4: Good, 3 : Fair, 2 : Poor, 1: Bad]. </summary> 
         [JsonProperty("call_score")]
         public int? CallScore { get; private set; }
 
-        ///<summary> User comments </summary> 
+        ///<summary> Specify any comments pertaining to the call. This of type string with a max limit of 100 characters. Twilio does not treat this field as PII, so don’t put any PII in here. </summary> 
         [JsonProperty("comment")]
         public string Comment { get; private set; }
 
-        ///<summary> Call tag for incidents or support ticket </summary> 
+        ///<summary> Associate this call with an incident or support ticket. This is of type string with a max limit of 100 characters. Twilio does not treat this field as PII, so don’t put any PII in here. </summary> 
         [JsonProperty("incident")]
         public string Incident { get; private set; }
 

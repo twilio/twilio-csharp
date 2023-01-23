@@ -576,67 +576,67 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         }
 
     
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string that we created to identify the Message resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Message resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The JSON string that stores application-specific data </summary> 
+        ///<summary> The JSON string that stores application-specific data. If attributes have not been set, `{}` is returned. </summary> 
         [JsonProperty("attributes")]
         public string Attributes { get; private set; }
 
-        ///<summary> The SID of the Service that the resource is associated with </summary> 
+        ///<summary> The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) the Message resource is associated with. </summary> 
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
 
-        ///<summary> The SID of the Channel that the message was sent to </summary> 
+        ///<summary> The SID of the [Channel](https://www.twilio.com/docs/chat/channels) that the message was sent to. </summary> 
         [JsonProperty("to")]
         public string To { get; private set; }
 
-        ///<summary> The SID of the Channel the Message resource belongs to </summary> 
+        ///<summary> The SID of the [Channel](https://www.twilio.com/docs/chat/channels) the Message resource belongs to. </summary> 
         [JsonProperty("channel_sid")]
         public string ChannelSid { get; private set; }
 
-        ///<summary> The RFC 2822 date and time in GMT when the resource was created </summary> 
+        ///<summary> The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The RFC 2822 date and time in GMT when the resource was last updated </summary> 
+        ///<summary> The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> The Identity of the User who last updated the Message </summary> 
+        ///<summary> The [Identity](https://www.twilio.com/docs/chat/identity) of the User who last updated the Message, if applicable. </summary> 
         [JsonProperty("last_updated_by")]
         public string LastUpdatedBy { get; private set; }
 
-        ///<summary> Whether the message has been edited since  it was created </summary> 
+        ///<summary> Whether the message has been edited since it was created. </summary> 
         [JsonProperty("was_edited")]
         public bool? WasEdited { get; private set; }
 
-        ///<summary> The Identity of the message's author </summary> 
+        ///<summary> The [Identity](https://www.twilio.com/docs/chat/identity) of the message's author. The default value is `system`. </summary> 
         [JsonProperty("from")]
         public string From { get; private set; }
 
-        ///<summary> The content of the message </summary> 
+        ///<summary> The content of the message. </summary> 
         [JsonProperty("body")]
         public string Body { get; private set; }
 
-        ///<summary> The index of the message within the Channel </summary> 
+        ///<summary> The index of the message within the [Channel](https://www.twilio.com/docs/chat/channels). Indices may skip numbers, but will always be in order of when the message was received. </summary> 
         [JsonProperty("index")]
         public int? Index { get; private set; }
 
-        ///<summary> The Message type </summary> 
+        ///<summary> The Message type. Can be: `text` or `media`. </summary> 
         [JsonProperty("type")]
         public string Type { get; private set; }
 
-        ///<summary> A Media object that describes the Message's media if attached; otherwise, null </summary> 
+        ///<summary> An object that describes the Message's media, if the message contains media. The object contains these fields: `content_type` with the MIME type of the media, `filename` with the name of the media, `sid` with the SID of the Media resource, and `size` with the media object's file size in bytes. If the Message has no media, this value is `null`. </summary> 
         [JsonProperty("media")]
         public object Media { get; private set; }
 
-        ///<summary> The absolute URL of the Message resource </summary> 
+        ///<summary> The absolute URL of the Message resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 

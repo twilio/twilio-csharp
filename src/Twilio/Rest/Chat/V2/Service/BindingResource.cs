@@ -339,35 +339,35 @@ namespace Twilio.Rest.Chat.V2.Service
         }
 
     
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string that we created to identify the Binding resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Binding resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The SID of the Service that the Binding resource is associated with </summary> 
+        ///<summary> The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) the Binding resource is associated with. </summary> 
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was created </summary> 
+        ///<summary> The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was last updated </summary> 
+        ///<summary> The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> The unique endpoint identifier for the Binding </summary> 
+        ///<summary> The unique endpoint identifier for the Binding. The format of this value depends on the `binding_type`. </summary> 
         [JsonProperty("endpoint")]
         public string Endpoint { get; private set; }
 
-        ///<summary> The string that identifies the resource's User </summary> 
+        ///<summary> The application-defined string that uniquely identifies the resource's [User](https://www.twilio.com/docs/chat/rest/user-resource) within the [Service](https://www.twilio.com/docs/chat/rest/service-resource). See [access tokens](https://www.twilio.com/docs/chat/create-tokens) for more info. </summary> 
         [JsonProperty("identity")]
         public string Identity { get; private set; }
 
-        ///<summary> The SID of the Credential for the binding </summary> 
+        ///<summary> The SID of the [Credential](https://www.twilio.com/docs/chat/rest/credential-resource) for the binding. See [push notification configuration](https://www.twilio.com/docs/chat/push-notification-configuration) for more info. </summary> 
         [JsonProperty("credential_sid")]
         public string CredentialSid { get; private set; }
 
@@ -375,15 +375,15 @@ namespace Twilio.Rest.Chat.V2.Service
         [JsonProperty("binding_type")]
         public BindingResource.BindingTypeEnum BindingType { get; private set; }
 
-        ///<summary> The Programmable Chat message types the binding is subscribed to </summary> 
+        ///<summary> The [Programmable Chat message types](https://www.twilio.com/docs/chat/push-notification-configuration#push-types) the binding is subscribed to. </summary> 
         [JsonProperty("message_types")]
         public List<string> MessageTypes { get; private set; }
 
-        ///<summary> The absolute URL of the Binding resource </summary> 
+        ///<summary> The absolute URL of the Binding resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
-        ///<summary> The absolute URLs of the Binding's User </summary> 
+        ///<summary> The absolute URLs of the Binding's [User](https://www.twilio.com/docs/chat/rest/user-resource). </summary> 
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
 

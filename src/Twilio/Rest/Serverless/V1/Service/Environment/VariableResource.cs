@@ -502,39 +502,39 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         }
 
     
-        ///<summary> The unique string that identifies the Variable resource </summary> 
+        ///<summary> The unique string that we created to identify the Variable resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The SID of the Account that created the Variable resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Variable resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The SID of the Service that the Variable resource is associated with </summary> 
+        ///<summary> The SID of the Service that the Variable resource is associated with. </summary> 
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
 
-        ///<summary> The SID of the Environment in which the Variable exists </summary> 
+        ///<summary> The SID of the Environment in which the Variable exists. </summary> 
         [JsonProperty("environment_sid")]
         public string EnvironmentSid { get; private set; }
 
-        ///<summary> A string by which the Variable resource can be referenced </summary> 
+        ///<summary> A string by which the Variable resource can be referenced. </summary> 
         [JsonProperty("key")]
         public string Key { get; private set; }
 
-        ///<summary> A string that contains the actual value of the Variable </summary> 
+        ///<summary> A string that contains the actual value of the Variable. </summary> 
         [JsonProperty("value")]
         public string Value { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the Variable resource was created </summary> 
+        ///<summary> The date and time in GMT when the Variable resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the Variable resource was last updated </summary> 
+        ///<summary> The date and time in GMT when the Variable resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> The absolute URL of the Variable resource </summary> 
+        ///<summary> The absolute URL of the Variable resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 

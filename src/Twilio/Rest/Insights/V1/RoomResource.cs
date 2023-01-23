@@ -385,7 +385,7 @@ namespace Twilio.Rest.Insights.V1
         [JsonProperty("room_sid")]
         public string RoomSid { get; private set; }
 
-        ///<summary> room friendly name. </summary> 
+        ///<summary> Room friendly name. </summary> 
         [JsonProperty("room_name")]
         public string RoomName { get; private set; }
 
@@ -441,7 +441,7 @@ namespace Twilio.Rest.Insights.V1
         [JsonProperty("max_concurrent_participants")]
         public int? MaxConcurrentParticipants { get; private set; }
 
-        ///<summary> Codecs used by participants in the room. </summary> 
+        ///<summary> Codecs used by participants in the room. Can be `VP8`, `H264`, or `VP9`. </summary> 
         [JsonProperty("codecs")]
         public List<RoomResource.CodecEnum> Codecs { get; private set; }
 

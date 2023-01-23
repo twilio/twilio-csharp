@@ -175,11 +175,11 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
         }
 
     
-        ///<summary> `true` if the sub-account will inherit voice dialing permissions from the Master Project; otherwise `false` </summary> 
+        ///<summary> `true` if the sub-account will inherit voice dialing permissions from the Master Project; otherwise `false`. </summary> 
         [JsonProperty("dialing_permissions_inheritance")]
         public bool? DialingPermissionsInheritance { get; private set; }
 
-        ///<summary> The absolute URL of this resource </summary> 
+        ///<summary> The absolute URL of this resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 

@@ -114,15 +114,15 @@ namespace Twilio.Rest.Api.V2010.Account
         }
 
     
-        ///<summary> Account Sid. </summary> 
+        ///<summary> The unique SID identifier of the Account. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> Account balance </summary> 
+        ///<summary> The balance of the Account, in units specified by the unit parameter. Balance changes may not be reflected immediately. Child accounts do not contain balance information </summary> 
         [JsonProperty("balance")]
         public string Balance { get; private set; }
 
-        ///<summary> Currency units </summary> 
+        ///<summary> The units of currency for the account balance </summary> 
         [JsonProperty("currency")]
         public string Currency { get; private set; }
 

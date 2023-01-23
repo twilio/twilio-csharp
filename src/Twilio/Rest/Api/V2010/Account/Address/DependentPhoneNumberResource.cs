@@ -209,65 +209,65 @@ namespace Twilio.Rest.Api.V2010.Account.Address
         }
 
     
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string that that we created to identify the DependentPhoneNumber resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the DependentPhoneNumber resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The string that you assigned to describe the resource </summary> 
+        ///<summary> The string that you assigned to describe the resource. </summary> 
         [JsonProperty("friendly_name")]
         [JsonConverter(typeof(PhoneNumberConverter))]
         public Types.PhoneNumber FriendlyName { get; private set; }
 
-        ///<summary> The phone number in E.164 format </summary> 
+        ///<summary> The phone number in [E.164](https://www.twilio.com/docs/glossary/what-e164) format, which consists of a + followed by the country code and subscriber number. </summary> 
         [JsonProperty("phone_number")]
         [JsonConverter(typeof(PhoneNumberConverter))]
         public Types.PhoneNumber PhoneNumber { get; private set; }
 
-        ///<summary> The URL we call when the phone number receives a call </summary> 
+        ///<summary> The URL we call when the phone number receives a call. The `voice_url` will not be used if a `voice_application_sid` or a `trunk_sid` is set. </summary> 
         [JsonProperty("voice_url")]
         public Uri VoiceUrl { get; private set; }
 
-        ///<summary> The HTTP method used with the voice_url </summary> 
+        ///<summary> The HTTP method we use to call `voice_url`. Can be: `GET` or `POST`. </summary> 
         [JsonProperty("voice_method")]
         public Twilio.Http.HttpMethod VoiceMethod { get; private set; }
 
-        ///<summary> The HTTP method used with voice_fallback_url </summary> 
+        ///<summary> The HTTP method we use to call `voice_fallback_url`. Can be: `GET` or `POST`. </summary> 
         [JsonProperty("voice_fallback_method")]
         public Twilio.Http.HttpMethod VoiceFallbackMethod { get; private set; }
 
-        ///<summary> The URL we call when an error occurs in TwiML </summary> 
+        ///<summary> The URL that we call when an error occurs retrieving or executing the TwiML requested by `url`. </summary> 
         [JsonProperty("voice_fallback_url")]
         public Uri VoiceFallbackUrl { get; private set; }
 
-        ///<summary> Whether to lookup the caller's name </summary> 
+        ///<summary> Whether we look up the caller's caller-ID name from the CNAM database. Can be: `true` or `false`. Caller ID lookups can cost $0.01 each. </summary> 
         [JsonProperty("voice_caller_id_lookup")]
         public bool? VoiceCallerIdLookup { get; private set; }
 
-        ///<summary> The RFC 2822 date and time in GMT that the resource was created </summary> 
+        ///<summary> The date and time in GMT that the resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The RFC 2822 date and time in GMT that the resource was last updated </summary> 
+        ///<summary> The date and time in GMT that the resource was last updated specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> The HTTP method used with sms_fallback_url </summary> 
+        ///<summary> The HTTP method we use to call `sms_fallback_url`. Can be: `GET` or `POST`. </summary> 
         [JsonProperty("sms_fallback_method")]
         public Twilio.Http.HttpMethod SmsFallbackMethod { get; private set; }
 
-        ///<summary> The URL that we call when an error occurs while retrieving or executing the TwiML </summary> 
+        ///<summary> The URL that we call when an error occurs while retrieving or executing the TwiML from `sms_url`. </summary> 
         [JsonProperty("sms_fallback_url")]
         public Uri SmsFallbackUrl { get; private set; }
 
-        ///<summary> The HTTP method to use with sms_url </summary> 
+        ///<summary> The HTTP method we use to call `sms_url`. Can be: `GET` or `POST`. </summary> 
         [JsonProperty("sms_method")]
         public Twilio.Http.HttpMethod SmsMethod { get; private set; }
 
-        ///<summary> The URL we call when the phone number receives an incoming SMS message </summary> 
+        ///<summary> The URL we call when the phone number receives an incoming SMS message. </summary> 
         [JsonProperty("sms_url")]
         public Uri SmsUrl { get; private set; }
 
@@ -275,31 +275,31 @@ namespace Twilio.Rest.Api.V2010.Account.Address
         [JsonProperty("address_requirements")]
         public DependentPhoneNumberResource.AddressRequirementEnum AddressRequirements { get; private set; }
 
-        ///<summary> Indicate if a phone can receive calls or messages </summary> 
+        ///<summary> The set of Boolean properties that indicates whether a phone number can receive calls or messages.  Capabilities are  `Voice`, `SMS`, and `MMS` and each capability can be: `true` or `false`. </summary> 
         [JsonProperty("capabilities")]
         public object Capabilities { get; private set; }
 
-        ///<summary> The URL to send status information to your application </summary> 
+        ///<summary> The URL we call using the `status_callback_method` to send status information to your application. </summary> 
         [JsonProperty("status_callback")]
         public Uri StatusCallback { get; private set; }
 
-        ///<summary> The HTTP method we use to call status_callback </summary> 
+        ///<summary> The HTTP method we use to call `status_callback`. Can be: `GET` or `POST`. </summary> 
         [JsonProperty("status_callback_method")]
         public Twilio.Http.HttpMethod StatusCallbackMethod { get; private set; }
 
-        ///<summary> The API version used to start a new TwiML session </summary> 
+        ///<summary> The API version used to start a new TwiML session. </summary> 
         [JsonProperty("api_version")]
         public string ApiVersion { get; private set; }
 
-        ///<summary> The SID of the application that handles SMS messages sent to the phone number </summary> 
+        ///<summary> The SID of the application that handles SMS messages sent to the phone number. If an `sms_application_sid` is present, we ignore all `sms_*_url` values and use those of the application. </summary> 
         [JsonProperty("sms_application_sid")]
         public string SmsApplicationSid { get; private set; }
 
-        ///<summary> The SID of the application that handles calls to the phone number </summary> 
+        ///<summary> The SID of the application that handles calls to the phone number. If a `voice_application_sid` is present, we ignore all of the voice urls and use those set on the application. Setting a `voice_application_sid` will automatically delete your `trunk_sid` and vice versa. </summary> 
         [JsonProperty("voice_application_sid")]
         public string VoiceApplicationSid { get; private set; }
 
-        ///<summary> The SID of the Trunk that handles calls to the phone number </summary> 
+        ///<summary> The SID of the Trunk that handles calls to the phone number. If a `trunk_sid` is present, we ignore all of the voice urls and voice applications and use those set on the Trunk. Setting a `trunk_sid` will automatically delete your `voice_application_sid` and vice versa. </summary> 
         [JsonProperty("trunk_sid")]
         public string TrunkSid { get; private set; }
 
@@ -307,11 +307,11 @@ namespace Twilio.Rest.Api.V2010.Account.Address
         [JsonProperty("emergency_status")]
         public DependentPhoneNumberResource.EmergencyStatusEnum EmergencyStatus { get; private set; }
 
-        ///<summary> The emergency address configuration to use for emergency calling </summary> 
+        ///<summary> The SID of the emergency address configuration that we use for emergency calling from the phone number. </summary> 
         [JsonProperty("emergency_address_sid")]
         public string EmergencyAddressSid { get; private set; }
 
-        ///<summary> The URI of the resource, relative to `https://api.twilio.com` </summary> 
+        ///<summary> The URI of the resource, relative to `https://api.twilio.com`. </summary> 
         [JsonProperty("uri")]
         public string Uri { get; private set; }
 

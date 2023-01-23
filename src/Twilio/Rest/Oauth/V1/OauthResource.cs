@@ -109,7 +109,7 @@ namespace Twilio.Rest.Oauth.V1
         }
 
     
-        ///<summary> A collection of certificates </summary> 
+        ///<summary> A collection of certificates where are signed Twilio-issued tokens. </summary> 
         [JsonProperty("keys")]
         public object Keys { get; private set; }
 

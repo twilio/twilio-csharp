@@ -133,15 +133,15 @@ namespace Twilio.Rest.Serverless.V1.Service.Build
         }
 
     
-        ///<summary> The unique string that identifies the Build resource </summary> 
+        ///<summary> The unique string that we created to identify the Build resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The SID of the Account that created the Build resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Build resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The SID of the Service that the Build resource is associated with </summary> 
+        ///<summary> The SID of the Service that the Build resource is associated with. </summary> 
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
 
@@ -149,7 +149,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Build
         [JsonProperty("status")]
         public BuildStatusResource.StatusEnum Status { get; private set; }
 
-        ///<summary> The absolute URL of the Build Status resource </summary> 
+        ///<summary> The absolute URL of the Build Status resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 

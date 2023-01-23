@@ -126,51 +126,51 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         }
 
     
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Worker resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The beginning of the interval during which these statistics were calculated </summary> 
+        ///<summary> The beginning of the interval during which these statistics were calculated, in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("start_time")]
         public DateTime? StartTime { get; private set; }
 
-        ///<summary> The end of the interval during which these statistics were calculated </summary> 
+        ///<summary> The end of the interval during which these statistics were calculated, in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("end_time")]
         public DateTime? EndTime { get; private set; }
 
-        ///<summary> The minimum, average, maximum, and total time that Workers spent in each Activity </summary> 
+        ///<summary> The minimum, average, maximum, and total time (in seconds) that Workers spent in each Activity. </summary> 
         [JsonProperty("activity_durations")]
         public List<object> ActivityDurations { get; private set; }
 
-        ///<summary> The total number of Reservations that were created </summary> 
+        ///<summary> The total number of Reservations that were created. </summary> 
         [JsonProperty("reservations_created")]
         public int? ReservationsCreated { get; private set; }
 
-        ///<summary> The total number of Reservations that were accepted </summary> 
+        ///<summary> The total number of Reservations that were accepted. </summary> 
         [JsonProperty("reservations_accepted")]
         public int? ReservationsAccepted { get; private set; }
 
-        ///<summary> The total number of Reservations that were rejected </summary> 
+        ///<summary> The total number of Reservations that were rejected. </summary> 
         [JsonProperty("reservations_rejected")]
         public int? ReservationsRejected { get; private set; }
 
-        ///<summary> The total number of Reservations that were timed out </summary> 
+        ///<summary> The total number of Reservations that were timed out. </summary> 
         [JsonProperty("reservations_timed_out")]
         public int? ReservationsTimedOut { get; private set; }
 
-        ///<summary> The total number of Reservations that were canceled </summary> 
+        ///<summary> The total number of Reservations that were canceled. </summary> 
         [JsonProperty("reservations_canceled")]
         public int? ReservationsCanceled { get; private set; }
 
-        ///<summary> The total number of Reservations that were rescinded </summary> 
+        ///<summary> The total number of Reservations that were rescinded. </summary> 
         [JsonProperty("reservations_rescinded")]
         public int? ReservationsRescinded { get; private set; }
 
-        ///<summary> The SID of the Workspace that contains the Workers </summary> 
+        ///<summary> The SID of the Workspace that contains the Workers. </summary> 
         [JsonProperty("workspace_sid")]
         public string WorkspaceSid { get; private set; }
 
-        ///<summary> The absolute URL of the Workers statistics resource </summary> 
+        ///<summary> The absolute URL of the Workers statistics resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 

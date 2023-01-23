@@ -134,91 +134,91 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         }
 
     
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the TaskQueue resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The average time in seconds between Task creation and acceptance </summary> 
+        ///<summary> The average time in seconds between Task creation and acceptance. </summary> 
         [JsonProperty("avg_task_acceptance_time")]
         public int? AvgTaskAcceptanceTime { get; private set; }
 
-        ///<summary> The beginning of the interval during which these statistics were calculated </summary> 
+        ///<summary> The beginning of the interval during which these statistics were calculated, in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("start_time")]
         public DateTime? StartTime { get; private set; }
 
-        ///<summary> The end of the interval during which these statistics were calculated </summary> 
+        ///<summary> The end of the interval during which these statistics were calculated, in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("end_time")]
         public DateTime? EndTime { get; private set; }
 
-        ///<summary> The total number of Reservations created for Tasks in the TaskQueue </summary> 
+        ///<summary> The total number of Reservations created for Tasks in the TaskQueue. </summary> 
         [JsonProperty("reservations_created")]
         public int? ReservationsCreated { get; private set; }
 
-        ///<summary> The total number of Reservations accepted for Tasks in the TaskQueue </summary> 
+        ///<summary> The total number of Reservations accepted for Tasks in the TaskQueue. </summary> 
         [JsonProperty("reservations_accepted")]
         public int? ReservationsAccepted { get; private set; }
 
-        ///<summary> The total number of Reservations rejected for Tasks in the TaskQueue </summary> 
+        ///<summary> The total number of Reservations rejected for Tasks in the TaskQueue. </summary> 
         [JsonProperty("reservations_rejected")]
         public int? ReservationsRejected { get; private set; }
 
-        ///<summary> The total number of Reservations that timed out for Tasks in the TaskQueue </summary> 
+        ///<summary> The total number of Reservations that timed out for Tasks in the TaskQueue. </summary> 
         [JsonProperty("reservations_timed_out")]
         public int? ReservationsTimedOut { get; private set; }
 
-        ///<summary> The total number of Reservations canceled for Tasks in the TaskQueue </summary> 
+        ///<summary> The total number of Reservations canceled for Tasks in the TaskQueue. </summary> 
         [JsonProperty("reservations_canceled")]
         public int? ReservationsCanceled { get; private set; }
 
-        ///<summary> The total number of Reservations rescinded </summary> 
+        ///<summary> The total number of Reservations rescinded. </summary> 
         [JsonProperty("reservations_rescinded")]
         public int? ReservationsRescinded { get; private set; }
 
-        ///<summary> A list of objects that describe the Tasks canceled and reservations accepted above and below the specified thresholds </summary> 
+        ///<summary> A list of objects that describe the number of Tasks canceled and reservations accepted above and below the thresholds specified in seconds. </summary> 
         [JsonProperty("split_by_wait_time")]
         public object SplitByWaitTime { get; private set; }
 
-        ///<summary> The SID of the TaskQueue from which these statistics were calculated </summary> 
+        ///<summary> The SID of the TaskQueue from which these statistics were calculated. </summary> 
         [JsonProperty("task_queue_sid")]
         public string TaskQueueSid { get; private set; }
 
-        ///<summary> The wait duration statistics for Tasks accepted while in the TaskQueue </summary> 
+        ///<summary> The wait duration statistics (`avg`, `min`, `max`, `total`) for Tasks accepted while in the TaskQueue. Calculation is based on the time when the Tasks were created. For transfers, the wait duration is counted from the moment ***the Task was created***, and not from when the transfer was initiated. </summary> 
         [JsonProperty("wait_duration_until_accepted")]
         public object WaitDurationUntilAccepted { get; private set; }
 
-        ///<summary> The wait duration statistics for Tasks canceled while in the TaskQueue </summary> 
+        ///<summary> The wait duration statistics (`avg`, `min`, `max`, `total`) for Tasks canceled while in the TaskQueue. </summary> 
         [JsonProperty("wait_duration_until_canceled")]
         public object WaitDurationUntilCanceled { get; private set; }
 
-        ///<summary> The relative wait duration statistics for Tasks accepted while in the TaskQueue </summary> 
+        ///<summary> The relative wait duration statistics (`avg`, `min`, `max`, `total`) for Tasks accepted while in the TaskQueue. Calculation is based on the time when the Tasks entered the TaskQueue. </summary> 
         [JsonProperty("wait_duration_in_queue_until_accepted")]
         public object WaitDurationInQueueUntilAccepted { get; private set; }
 
-        ///<summary> The total number of Tasks canceled in the TaskQueue </summary> 
+        ///<summary> The total number of Tasks canceled in the TaskQueue. </summary> 
         [JsonProperty("tasks_canceled")]
         public int? TasksCanceled { get; private set; }
 
-        ///<summary> The total number of Tasks completed in the TaskQueue </summary> 
+        ///<summary> The total number of Tasks completed in the TaskQueue. </summary> 
         [JsonProperty("tasks_completed")]
         public int? TasksCompleted { get; private set; }
 
-        ///<summary> The total number of Tasks deleted in the TaskQueue </summary> 
+        ///<summary> The total number of Tasks deleted in the TaskQueue. </summary> 
         [JsonProperty("tasks_deleted")]
         public int? TasksDeleted { get; private set; }
 
-        ///<summary> The total number of Tasks entered into the TaskQueue </summary> 
+        ///<summary> The total number of Tasks entered into the TaskQueue. </summary> 
         [JsonProperty("tasks_entered")]
         public int? TasksEntered { get; private set; }
 
-        ///<summary> The total number of Tasks that were moved from one queue to another </summary> 
+        ///<summary> The total number of Tasks that were moved from one queue to another. </summary> 
         [JsonProperty("tasks_moved")]
         public int? TasksMoved { get; private set; }
 
-        ///<summary> The SID of the Workspace that contains the TaskQueue </summary> 
+        ///<summary> The SID of the Workspace that contains the TaskQueue. </summary> 
         [JsonProperty("workspace_sid")]
         public string WorkspaceSid { get; private set; }
 
-        ///<summary> The absolute URL of the TaskQueue statistics resource </summary> 
+        ///<summary> The absolute URL of the TaskQueue statistics resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 

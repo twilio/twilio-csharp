@@ -431,15 +431,15 @@ namespace Twilio.Rest.Serverless.V1.Service
         }
 
     
-        ///<summary> The unique string that identifies the Build resource </summary> 
+        ///<summary> The unique string that we created to identify the Build resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The SID of the Account that created the Build resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Build resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The SID of the Service that the Build resource is associated with </summary> 
+        ///<summary> The SID of the Service that the Build resource is associated with. </summary> 
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
 
@@ -447,15 +447,15 @@ namespace Twilio.Rest.Serverless.V1.Service
         [JsonProperty("status")]
         public BuildResource.StatusEnum Status { get; private set; }
 
-        ///<summary> The list of Asset Version resource SIDs that are included in the Build </summary> 
+        ///<summary> The list of Asset Version resource SIDs that are included in the Build. </summary> 
         [JsonProperty("asset_versions")]
         public List<object> AssetVersions { get; private set; }
 
-        ///<summary> The list of Function Version resource SIDs that are included in the Build </summary> 
+        ///<summary> The list of Function Version resource SIDs that are included in the Build. </summary> 
         [JsonProperty("function_versions")]
         public List<object> FunctionVersions { get; private set; }
 
-        ///<summary> A list of objects that describe the Dependencies included in the Build </summary> 
+        ///<summary> A list of objects that describe the Dependencies included in the Build. Each object contains the `name` and `version` of the dependency. </summary> 
         [JsonProperty("dependencies")]
         public List<object> Dependencies { get; private set; }
 
@@ -463,15 +463,15 @@ namespace Twilio.Rest.Serverless.V1.Service
         [JsonProperty("runtime")]
         public BuildResource.RuntimeEnum Runtime { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the Build resource was created </summary> 
+        ///<summary> The date and time in GMT when the Build resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the Build resource was last updated </summary> 
+        ///<summary> The date and time in GMT when the Build resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> The absolute URL of the Build resource </summary> 
+        ///<summary> The absolute URL of the Build resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 

@@ -431,31 +431,31 @@ namespace Twilio.Rest.Messaging.V1
         }
 
     
-        ///<summary> A2P BrandRegistration Sid </summary> 
+        ///<summary> The unique string to identify Brand Registration. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Brand Registration resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> A2P Messaging Profile Bundle BundleSid </summary> 
+        ///<summary> A2P Messaging Profile Bundle BundleSid. </summary> 
         [JsonProperty("customer_profile_bundle_sid")]
         public string CustomerProfileBundleSid { get; private set; }
 
-        ///<summary> A2P Messaging Profile Bundle BundleSid </summary> 
+        ///<summary> A2P Messaging Profile Bundle BundleSid. </summary> 
         [JsonProperty("a2p_profile_bundle_sid")]
         public string A2PProfileBundleSid { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was created </summary> 
+        ///<summary> The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was last updated </summary> 
+        ///<summary> The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> Type of brand. One of: \"STANDARD\", \"STARTER\". </summary> 
+        ///<summary> Type of brand. One of: \"STANDARD\", \"STARTER\". STARTER is for the low volume, STARTER campaign use case. There can only be one STARTER campaign created per STARTER brand. STANDARD is for all other campaign use cases. Multiple campaign use cases can be created per STANDARD brand. </summary> 
         [JsonProperty("brand_type")]
         public string BrandType { get; private set; }
 
@@ -463,23 +463,23 @@ namespace Twilio.Rest.Messaging.V1
         [JsonProperty("status")]
         public BrandRegistrationResource.StatusEnum Status { get; private set; }
 
-        ///<summary> Campaign Registry (TCR) Brand ID </summary> 
+        ///<summary> Campaign Registry (TCR) Brand ID. Assigned only after successful brand registration. </summary> 
         [JsonProperty("tcr_id")]
         public string TcrId { get; private set; }
 
-        ///<summary> A reason why brand registration has failed </summary> 
+        ///<summary> A reason why brand registration has failed. Only applicable when status is FAILED. </summary> 
         [JsonProperty("failure_reason")]
         public string FailureReason { get; private set; }
 
-        ///<summary> The absolute URL of the Brand Registration </summary> 
+        ///<summary> The absolute URL of the Brand Registration resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
-        ///<summary> Brand score </summary> 
+        ///<summary> The secondary vetting score if it was done. Otherwise, it will be the brand score if it's returned from TCR. It may be null if no score is available. </summary> 
         [JsonProperty("brand_score")]
         public int? BrandScore { get; private set; }
 
-        ///<summary> Brand feedback </summary> 
+        ///<summary> Feedback on how to improve brand score </summary> 
         [JsonProperty("brand_feedback")]
         public List<BrandRegistrationResource.BrandFeedbackEnum> BrandFeedback { get; private set; }
 
@@ -487,19 +487,19 @@ namespace Twilio.Rest.Messaging.V1
         [JsonProperty("identity_status")]
         public BrandRegistrationResource.IdentityStatusEnum IdentityStatus { get; private set; }
 
-        ///<summary> Russell 3000 </summary> 
+        ///<summary> Publicly traded company identified in the Russell 3000 Index </summary> 
         [JsonProperty("russell_3000")]
         public bool? Russell3000 { get; private set; }
 
-        ///<summary> Government Entity </summary> 
+        ///<summary> Identified as a government entity </summary> 
         [JsonProperty("government_entity")]
         public bool? GovernmentEntity { get; private set; }
 
-        ///<summary> Tax Exempt Status </summary> 
+        ///<summary> Nonprofit organization tax-exempt status per section 501 of the U.S. tax code. </summary> 
         [JsonProperty("tax_exempt_status")]
         public string TaxExemptStatus { get; private set; }
 
-        ///<summary> Skip Automatic Secondary Vetting </summary> 
+        ///<summary> A flag to disable automatic secondary vetting for brands which it would otherwise be done. </summary> 
         [JsonProperty("skip_automatic_sec_vet")]
         public bool? SkipAutomaticSecVet { get; private set; }
 

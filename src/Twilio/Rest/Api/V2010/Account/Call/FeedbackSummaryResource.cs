@@ -294,55 +294,55 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
 
     
-        ///<summary> The unique sid that identifies this account </summary> 
+        ///<summary> The unique id of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The total number of calls </summary> 
+        ///<summary> The total number of calls. </summary> 
         [JsonProperty("call_count")]
         public int? CallCount { get; private set; }
 
-        ///<summary> The total number of calls with a feedback entry </summary> 
+        ///<summary> The total number of calls with a feedback entry. </summary> 
         [JsonProperty("call_feedback_count")]
         public int? CallFeedbackCount { get; private set; }
 
-        ///<summary> The date this resource was created </summary> 
+        ///<summary> The date that this resource was created, given in [RFC 2822](https://www.php.net/manual/en/class.datetime.php#datetime.constants.rfc2822) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The date this resource was last updated </summary> 
+        ///<summary> The date that this resource was last updated, given in [RFC 2822](https://www.php.net/manual/en/class.datetime.php#datetime.constants.rfc2822) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> The latest feedback entry date in the summary </summary> 
+        ///<summary> The last date for which feedback entries are included in this Feedback Summary, formatted as `YYYY-MM-DD` and specified in UTC. </summary> 
         [JsonProperty("end_date")]
         public DateTime? EndDate { get; private set; }
 
-        ///<summary> Whether the feedback summary includes subaccounts </summary> 
+        ///<summary> Whether the feedback summary includes subaccounts; `true` if it does, otherwise `false`. </summary> 
         [JsonProperty("include_subaccounts")]
         public bool? IncludeSubaccounts { get; private set; }
 
-        ///<summary> Issues experienced during the call </summary> 
+        ///<summary> A list of issues experienced during the call. The issues can be: `imperfect-audio`, `dropped-call`, `incorrect-caller-id`, `post-dial-delay`, `digits-not-captured`, `audio-latency`, or `one-way-audio`. </summary> 
         [JsonProperty("issues")]
         public List<object> Issues { get; private set; }
 
-        ///<summary> The average QualityScore of the feedback entries </summary> 
+        ///<summary> The average QualityScore of the feedback entries. </summary> 
         [JsonProperty("quality_score_average")]
         public decimal? QualityScoreAverage { get; private set; }
 
-        ///<summary> The median QualityScore of the feedback entries </summary> 
+        ///<summary> The median QualityScore of the feedback entries. </summary> 
         [JsonProperty("quality_score_median")]
         public decimal? QualityScoreMedian { get; private set; }
 
-        ///<summary> The standard deviation of the quality scores </summary> 
+        ///<summary> The standard deviation of the quality scores. </summary> 
         [JsonProperty("quality_score_standard_deviation")]
         public decimal? QualityScoreStandardDeviation { get; private set; }
 
-        ///<summary> A string that uniquely identifies this feedback entry </summary> 
+        ///<summary> A 34 character string that uniquely identifies this resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The earliest feedback entry date in the summary </summary> 
+        ///<summary> The first date for which feedback entries are included in this feedback summary, formatted as `YYYY-MM-DD` and specified in UTC. </summary> 
         [JsonProperty("start_date")]
         public DateTime? StartDate { get; private set; }
 

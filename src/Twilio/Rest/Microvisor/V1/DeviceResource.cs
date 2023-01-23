@@ -314,31 +314,31 @@ namespace Twilio.Rest.Microvisor.V1
         }
 
     
-        ///<summary> A string that uniquely identifies this Device. </summary> 
+        ///<summary> A 34-character string that uniquely identifies this Device. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> A developer-defined string that uniquely identifies the Device. </summary> 
+        ///<summary> A developer-defined string that uniquely identifies the Device. This value must be unique for all Devices on this Account. The `unique_name` value may be used as an alternative to the `sid` in the URL path to address the resource. </summary> 
         [JsonProperty("unique_name")]
         public string UniqueName { get; private set; }
 
-        ///<summary> Account SID. </summary> 
+        ///<summary> The unique SID identifier of the Account. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> Information about the target App and the App reported by this Device. </summary> 
+        ///<summary> Information about the target App and the App reported by this Device. Contains the properties `target_sid`, `date_targeted`, `update_status` (one of `up-to-date`, `pending` and `error`), `update_error_code`, `reported_sid` and `date_reported`. </summary> 
         [JsonProperty("app")]
         public object App { get; private set; }
 
-        ///<summary> Object specifying whether application logging is enabled for this Device. </summary> 
+        ///<summary> Object specifying whether application logging is enabled for this Device. Contains the properties `enabled` and `date_expires`. </summary> 
         [JsonProperty("logging")]
         public object Logging { get; private set; }
 
-        ///<summary> The date that this Device was created. </summary> 
+        ///<summary> The date that this Device was created, given in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The date that this Device was last updated. </summary> 
+        ///<summary> The date that this Device was last updated, given in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
@@ -346,7 +346,7 @@ namespace Twilio.Rest.Microvisor.V1
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
-        ///<summary> The absolute URLs of related resources </summary> 
+        ///<summary> The absolute URLs of related resources. </summary> 
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
 
