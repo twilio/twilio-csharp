@@ -211,19 +211,19 @@ namespace Twilio.Rest.FrontlineApi.V1
         }
 
     
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string that we created to identify the User resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The string that identifies the resource's User </summary> 
+        ///<summary> The application-defined string that uniquely identifies the resource's User. This value is often a username or an email address, and is case-sensitive. </summary> 
         [JsonProperty("identity")]
         public string Identity { get; private set; }
 
-        ///<summary> The string that you assigned to describe the User </summary> 
+        ///<summary> The string that you assigned to describe the User. </summary> 
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
 
-        ///<summary> The avatar URL which will be shown in Frontline application </summary> 
+        ///<summary> The avatar URL which will be shown in Frontline application. </summary> 
         [JsonProperty("avatar")]
         public string Avatar { get; private set; }
 
@@ -231,11 +231,11 @@ namespace Twilio.Rest.FrontlineApi.V1
         [JsonProperty("state")]
         public UserResource.StateTypeEnum State { get; private set; }
 
-        ///<summary> Whether the User is available for new conversations </summary> 
+        ///<summary> Whether the User is available for new conversations. Defaults to `false` for new users. </summary> 
         [JsonProperty("is_available")]
         public bool? IsAvailable { get; private set; }
 
-        ///<summary> An absolute URL for this user. </summary> 
+        ///<summary> An absolute API resource URL for this user. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 

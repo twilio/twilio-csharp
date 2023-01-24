@@ -456,27 +456,27 @@ namespace Twilio.Rest.Events.V1
         }
 
     
-        ///<summary> Account SID. </summary> 
+        ///<summary> The unique SID identifier of the Account. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> A string that uniquely identifies this Subscription. </summary> 
+        ///<summary> A 34 character string that uniquely identifies this Subscription. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The date this Subscription was created </summary> 
+        ///<summary> The date that this Subscription was created, given in ISO 8601 format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The date this Subscription was updated </summary> 
+        ///<summary> The date that this Subscription was updated, given in ISO 8601 format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> Subscription description </summary> 
+        ///<summary> A human readable description for the Subscription </summary> 
         [JsonProperty("description")]
         public string Description { get; private set; }
 
-        ///<summary> Sink SID. </summary> 
+        ///<summary> The SID of the sink that events selected by this subscription should be sent to. Sink must be active for the subscription to be created. </summary> 
         [JsonProperty("sink_sid")]
         public string SinkSid { get; private set; }
 
@@ -484,7 +484,7 @@ namespace Twilio.Rest.Events.V1
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
-        ///<summary> Nested resource URLs. </summary> 
+        ///<summary> Contains a dictionary of URL links to nested resources of this Subscription. </summary> 
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
 

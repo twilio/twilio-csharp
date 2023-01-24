@@ -499,51 +499,51 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         }
 
     
-        ///<summary> A string that uniquely identifies this Device. </summary> 
+        ///<summary> Contains a 34 character string that uniquely identifies this Device resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> URL of this Device. </summary> 
+        ///<summary> Contains an absolute URL for this Device resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
-        ///<summary> A unique, addressable name of this Device. </summary> 
+        ///<summary> Contains a unique and addressable name of this Device, assigned by the developer, up to 128 characters long. </summary> 
         [JsonProperty("unique_name")]
         public string UniqueName { get; private set; }
 
-        ///<summary> A human readable description for this Device </summary> 
+        ///<summary> Contains a human readable descriptive text for this Device, up to 256 characters long </summary> 
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
 
-        ///<summary> The unique identifier of the Fleet. </summary> 
+        ///<summary> Specifies the unique string identifier of the Fleet that the given Device belongs to. </summary> 
         [JsonProperty("fleet_sid")]
         public string FleetSid { get; private set; }
 
-        ///<summary> Device enabled flag. </summary> 
+        ///<summary> Contains a boolean flag indicating whether the device is enabled or not, blocks device connectivity if set to false. </summary> 
         [JsonProperty("enabled")]
         public bool? Enabled { get; private set; }
 
-        ///<summary> The unique SID that identifies this Account. </summary> 
+        ///<summary> Specifies the unique string identifier of the Account responsible for this Device. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> An identifier of the Device user. </summary> 
+        ///<summary> Contains an arbitrary string identifier representing a human user associated with this Device, assigned by the developer, up to 256 characters long. </summary> 
         [JsonProperty("identity")]
         public string Identity { get; private set; }
 
-        ///<summary> The unique SID of the Deployment group. </summary> 
+        ///<summary> Specifies the unique string identifier of the Deployment group that this Device is associated with. </summary> 
         [JsonProperty("deployment_sid")]
         public string DeploymentSid { get; private set; }
 
-        ///<summary> The date this Device was created. </summary> 
+        ///<summary> Specifies the date this Device was created, given in UTC ISO 8601 format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The date this Device was updated. </summary> 
+        ///<summary> Specifies the date this Device was last updated, given in UTC ISO 8601 format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> The date this Device was authenticated. </summary> 
+        ///<summary> Specifies the date this Device was last authenticated, given in UTC ISO 8601 format. </summary> 
         [JsonProperty("date_authenticated")]
         public DateTime? DateAuthenticated { get; private set; }
 

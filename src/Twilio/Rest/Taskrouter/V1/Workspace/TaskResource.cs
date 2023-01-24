@@ -558,11 +558,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         }
 
     
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Task resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The number of seconds since the Task was created </summary> 
+        ///<summary> The number of seconds since the Task was created. </summary> 
         [JsonProperty("age")]
         public int? Age { get; private set; }
 
@@ -570,75 +570,75 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         [JsonProperty("assignment_status")]
         public TaskResource.StatusEnum AssignmentStatus { get; private set; }
 
-        ///<summary> The JSON string with custom attributes of the work </summary> 
+        ///<summary> The JSON string with custom attributes of the work. **Note** If this property has been assigned a value, it will only be displayed in FETCH action that returns a single resource. Otherwise, it will be null. </summary> 
         [JsonProperty("attributes")]
         public string Attributes { get; private set; }
 
-        ///<summary> An object that contains the addon data for all installed addons </summary> 
+        ///<summary> An object that contains the [addon](https://www.twilio.com/docs/taskrouter/marketplace) data for all installed addons. </summary> 
         [JsonProperty("addons")]
         public string Addons { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was created </summary> 
+        ///<summary> The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was last updated </summary> 
+        ///<summary> The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the Task entered the TaskQueue. </summary> 
+        ///<summary> The date and time in GMT when the Task entered the TaskQueue, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("task_queue_entered_date")]
         public DateTime? TaskQueueEnteredDate { get; private set; }
 
-        ///<summary> Retrieve the list of all Tasks in the Workspace with the specified priority </summary> 
+        ///<summary> The current priority score of the Task as assigned to a Worker by the workflow. Tasks with higher priority values will be assigned before Tasks with lower values. </summary> 
         [JsonProperty("priority")]
         public int? Priority { get; private set; }
 
-        ///<summary> The reason the Task was canceled or completed </summary> 
+        ///<summary> The reason the Task was canceled or completed, if applicable. </summary> 
         [JsonProperty("reason")]
         public string Reason { get; private set; }
 
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string that we created to identify the Task resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The SID of the TaskQueue </summary> 
+        ///<summary> The SID of the TaskQueue. </summary> 
         [JsonProperty("task_queue_sid")]
         public string TaskQueueSid { get; private set; }
 
-        ///<summary> The friendly name of the TaskQueue </summary> 
+        ///<summary> The friendly name of the TaskQueue. </summary> 
         [JsonProperty("task_queue_friendly_name")]
         public string TaskQueueFriendlyName { get; private set; }
 
-        ///<summary> The SID of the TaskChannel </summary> 
+        ///<summary> The SID of the TaskChannel. </summary> 
         [JsonProperty("task_channel_sid")]
         public string TaskChannelSid { get; private set; }
 
-        ///<summary> The unique name of the TaskChannel </summary> 
+        ///<summary> The unique name of the TaskChannel. </summary> 
         [JsonProperty("task_channel_unique_name")]
         public string TaskChannelUniqueName { get; private set; }
 
-        ///<summary> The amount of time in seconds that the Task can live before being assigned </summary> 
+        ///<summary> The amount of time in seconds that the Task can live before being assigned. </summary> 
         [JsonProperty("timeout")]
         public int? Timeout { get; private set; }
 
-        ///<summary> The SID of the Workflow that is controlling the Task </summary> 
+        ///<summary> The SID of the Workflow that is controlling the Task. </summary> 
         [JsonProperty("workflow_sid")]
         public string WorkflowSid { get; private set; }
 
-        ///<summary> The friendly name of the Workflow that is controlling the Task </summary> 
+        ///<summary> The friendly name of the Workflow that is controlling the Task. </summary> 
         [JsonProperty("workflow_friendly_name")]
         public string WorkflowFriendlyName { get; private set; }
 
-        ///<summary> The SID of the Workspace that contains the Task </summary> 
+        ///<summary> The SID of the Workspace that contains the Task. </summary> 
         [JsonProperty("workspace_sid")]
         public string WorkspaceSid { get; private set; }
 
-        ///<summary> The absolute URL of the Task resource </summary> 
+        ///<summary> The absolute URL of the Task resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
-        ///<summary> The URLs of related resources </summary> 
+        ///<summary> The URLs of related resources. </summary> 
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
 

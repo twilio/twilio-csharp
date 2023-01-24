@@ -568,55 +568,55 @@ namespace Twilio.Rest.Verify.V2
         }
 
     
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string that we created to identify the Service resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Service resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The string that you assigned to describe the verification service </summary> 
+        ///<summary> The string that you assigned to describe the verification service. **This value should not contain PII.** </summary> 
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
 
-        ///<summary> The length of the verification code </summary> 
+        ///<summary> The length of the verification code to generate. </summary> 
         [JsonProperty("code_length")]
         public int? CodeLength { get; private set; }
 
-        ///<summary> Whether to perform a lookup with each verification </summary> 
+        ///<summary> Whether to perform a lookup with each verification started and return info about the phone number. </summary> 
         [JsonProperty("lookup_enabled")]
         public bool? LookupEnabled { get; private set; }
 
-        ///<summary> Whether to pass PSD2 transaction parameters when starting a verification </summary> 
+        ///<summary> Whether to pass PSD2 transaction parameters when starting a verification. </summary> 
         [JsonProperty("psd2_enabled")]
         public bool? Psd2Enabled { get; private set; }
 
-        ///<summary> Whether to skip sending SMS verifications to landlines </summary> 
+        ///<summary> Whether to skip sending SMS verifications to landlines. Requires `lookup_enabled`. </summary> 
         [JsonProperty("skip_sms_to_landlines")]
         public bool? SkipSmsToLandlines { get; private set; }
 
-        ///<summary> Whether to ask the user to press a number before delivering the verify code in a phone call </summary> 
+        ///<summary> Whether to ask the user to press a number before delivering the verify code in a phone call. </summary> 
         [JsonProperty("dtmf_input_required")]
         public bool? DtmfInputRequired { get; private set; }
 
-        ///<summary> The name of an alternative text-to-speech service to use in phone calls </summary> 
+        ///<summary> The name of an alternative text-to-speech service to use in phone calls. Applies only to TTS languages. </summary> 
         [JsonProperty("tts_name")]
         public string TtsName { get; private set; }
 
-        ///<summary> Whether to add a security warning at the end of an SMS. </summary> 
+        ///<summary> Whether to add a security warning at the end of an SMS verification body. Disabled by default and applies only to SMS. Example SMS body: `Your AppName verification code is: 1234. Don’t share this code with anyone; our employees will never ask for the code` </summary> 
         [JsonProperty("do_not_share_warning_enabled")]
         public bool? DoNotShareWarningEnabled { get; private set; }
 
-        ///<summary> Whether to allow sending verifications with a custom code. </summary> 
+        ///<summary> Whether to allow sending verifications with a custom code instead of a randomly generated one. Not available for all customers. </summary> 
         [JsonProperty("custom_code_enabled")]
         public bool? CustomCodeEnabled { get; private set; }
 
-        ///<summary> The service level configuration of factor push type. </summary> 
+        ///<summary> Configurations for the Push factors (channel) created under this Service. </summary> 
         [JsonProperty("push")]
         public object Push { get; private set; }
 
-        ///<summary> The service level configuration of factor TOTP type. </summary> 
+        ///<summary> Configurations for the TOTP factors (channel) created under this Service. </summary> 
         [JsonProperty("totp")]
         public object Totp { get; private set; }
 
@@ -624,19 +624,19 @@ namespace Twilio.Rest.Verify.V2
         [JsonProperty("default_template_sid")]
         public string DefaultTemplateSid { get; private set; }
 
-        ///<summary> The RFC 2822 date and time in GMT when the resource was created </summary> 
+        ///<summary> The date and time in GMT when the resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The RFC 2822 date and time in GMT when the resource was last updated </summary> 
+        ///<summary> The date and time in GMT when the resource was last updated specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> The absolute URL of the resource </summary> 
+        ///<summary> The absolute URL of the resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
-        ///<summary> The URLs of related resources </summary> 
+        ///<summary> The URLs of related resources. </summary> 
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
 

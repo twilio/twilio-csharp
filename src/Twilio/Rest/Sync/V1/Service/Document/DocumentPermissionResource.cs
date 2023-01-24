@@ -424,35 +424,35 @@ namespace Twilio.Rest.Sync.V1.Service.Document
         }
 
     
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Document Permission resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The SID of the Sync Service that the resource is associated with </summary> 
+        ///<summary> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) the resource is associated with. </summary> 
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
 
-        ///<summary> The Sync Document SID </summary> 
+        ///<summary> The SID of the Sync Document to which the Document Permission applies. </summary> 
         [JsonProperty("document_sid")]
         public string DocumentSid { get; private set; }
 
-        ///<summary> The identity of the user to whom the Sync Document Permission applies </summary> 
+        ///<summary> The application-defined string that uniquely identifies the resource's User within the Service to an FPA token. </summary> 
         [JsonProperty("identity")]
         public string Identity { get; private set; }
 
-        ///<summary> Read access </summary> 
+        ///<summary> Whether the identity can read the Sync Document. </summary> 
         [JsonProperty("read")]
         public bool? _Read { get; private set; }
 
-        ///<summary> Write access </summary> 
+        ///<summary> Whether the identity can update the Sync Document. </summary> 
         [JsonProperty("write")]
         public bool? Write { get; private set; }
 
-        ///<summary> Manage access </summary> 
+        ///<summary> Whether the identity can delete the Sync Document. </summary> 
         [JsonProperty("manage")]
         public bool? Manage { get; private set; }
 
-        ///<summary> The absolute URL of the Sync Document Permission resource </summary> 
+        ///<summary> The absolute URL of the Sync Document Permission resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 

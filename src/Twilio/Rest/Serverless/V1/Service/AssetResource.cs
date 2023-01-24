@@ -467,35 +467,35 @@ namespace Twilio.Rest.Serverless.V1.Service
         }
 
     
-        ///<summary> The unique string that identifies the Asset resource </summary> 
+        ///<summary> The unique string that we created to identify the Asset resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The SID of the Account that created the Asset resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Asset resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The SID of the Service that the Asset resource is associated with </summary> 
+        ///<summary> The SID of the Service that the Asset resource is associated with. </summary> 
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
 
-        ///<summary> The string that you assigned to describe the Asset resource </summary> 
+        ///<summary> The string that you assigned to describe the Asset resource. It can be a maximum of 255 characters. </summary> 
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the Asset resource was created </summary> 
+        ///<summary> The date and time in GMT when the Asset resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the Asset resource was last updated </summary> 
+        ///<summary> The date and time in GMT when the Asset resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> The absolute URL of the Asset resource </summary> 
+        ///<summary> The absolute URL of the Asset resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
-        ///<summary> The URLs of the Asset resource's nested resources </summary> 
+        ///<summary> The URLs of the Asset resource's nested resources. </summary> 
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
 

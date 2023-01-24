@@ -471,7 +471,7 @@ namespace Twilio.Rest.Events.V1.Subscription
         }
 
     
-        ///<summary> Account SID. </summary> 
+        ///<summary> The unique SID identifier of the Account. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
@@ -483,7 +483,7 @@ namespace Twilio.Rest.Events.V1.Subscription
         [JsonProperty("schema_version")]
         public int? SchemaVersion { get; private set; }
 
-        ///<summary> Subscription SID. </summary> 
+        ///<summary> The unique SID identifier of the Subscription. </summary> 
         [JsonProperty("subscription_sid")]
         public string SubscriptionSid { get; private set; }
 

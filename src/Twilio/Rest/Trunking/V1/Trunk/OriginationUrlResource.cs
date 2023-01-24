@@ -499,47 +499,47 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         }
 
     
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the OriginationUrl resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string that we created to identify the OriginationUrl resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The SID of the Trunk that owns the Origination URL </summary> 
+        ///<summary> The SID of the Trunk that owns the Origination URL. </summary> 
         [JsonProperty("trunk_sid")]
         public string TrunkSid { get; private set; }
 
-        ///<summary> The value that determines the relative load the URI should receive compared to others with the same priority </summary> 
+        ///<summary> The value that determines the relative share of the load the URI should receive compared to other URIs with the same priority. Can be an integer from 1 to 65535, inclusive, and the default is 10. URLs with higher values receive more load than those with lower ones with the same priority. </summary> 
         [JsonProperty("weight")]
         public int? Weight { get; private set; }
 
-        ///<summary> Whether the URL is enabled </summary> 
+        ///<summary> Whether the URL is enabled. The default is `true`. </summary> 
         [JsonProperty("enabled")]
         public bool? Enabled { get; private set; }
 
-        ///<summary> The SIP address you want Twilio to route your Origination calls to </summary> 
+        ///<summary> The SIP address you want Twilio to route your Origination calls to. This must be a `sip:` schema. </summary> 
         [JsonProperty("sip_url")]
         public Uri SipUrl { get; private set; }
 
-        ///<summary> The string that you assigned to describe the resource </summary> 
+        ///<summary> The string that you assigned to describe the resource. </summary> 
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
 
-        ///<summary> The relative importance of the URI </summary> 
+        ///<summary> The relative importance of the URI. Can be an integer from 0 to 65535, inclusive, and the default is 10. The lowest number represents the most important URI. </summary> 
         [JsonProperty("priority")]
         public int? Priority { get; private set; }
 
-        ///<summary> The RFC 2822 date and time in GMT when the resource was created </summary> 
+        ///<summary> The date and time in GMT when the resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The RFC 2822 date and time in GMT when the resource was last updated </summary> 
+        ///<summary> The date and time in GMT when the resource was last updated specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> The absolute URL of the resource </summary> 
+        ///<summary> The absolute URL of the resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 

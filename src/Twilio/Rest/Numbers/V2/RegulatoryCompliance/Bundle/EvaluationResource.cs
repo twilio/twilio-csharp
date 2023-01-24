@@ -326,19 +326,19 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
         }
 
     
-        ///<summary> The unique string that identifies the Evaluation resource </summary> 
+        ///<summary> The unique string that identifies the Evaluation resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Bundle resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The unique string of a regulation </summary> 
+        ///<summary> The unique string of a regulation that is associated to the Bundle resource. </summary> 
         [JsonProperty("regulation_sid")]
         public string RegulationSid { get; private set; }
 
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string that we created to identify the Bundle resource. </summary> 
         [JsonProperty("bundle_sid")]
         public string BundleSid { get; private set; }
 
@@ -346,7 +346,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
         [JsonProperty("status")]
         public EvaluationResource.StatusEnum Status { get; private set; }
 
-        ///<summary> The results of the Evaluation resource </summary> 
+        ///<summary> The results of the Evaluation which includes the valid and invalid attributes. </summary> 
         [JsonProperty("results")]
         public List<object> Results { get; private set; }
 

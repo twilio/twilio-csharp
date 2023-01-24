@@ -418,43 +418,43 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         }
 
     
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string that we created to identify the Invite resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Invite resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The SID of the Channel the new resource belongs to </summary> 
+        ///<summary> The SID of the [Channel](https://www.twilio.com/docs/chat/channels) the Invite resource belongs to. </summary> 
         [JsonProperty("channel_sid")]
         public string ChannelSid { get; private set; }
 
-        ///<summary> The SID of the Service that the resource is associated with </summary> 
+        ///<summary> The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) the Invite resource is associated with. </summary> 
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
 
-        ///<summary> The string that identifies the resource's User </summary> 
+        ///<summary> The application-defined string that uniquely identifies the resource's [User](https://www.twilio.com/docs/chat/rest/user-resource) within the [Service](https://www.twilio.com/docs/chat/rest/service-resource). See [access tokens](https://www.twilio.com/docs/chat/create-tokens) for more info. </summary> 
         [JsonProperty("identity")]
         public string Identity { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was created </summary> 
+        ///<summary> The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was last updated </summary> 
+        ///<summary> The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> The SID of the Role assigned to the member </summary> 
+        ///<summary> The SID of the [Role](https://www.twilio.com/docs/chat/rest/role-resource) assigned to the resource. </summary> 
         [JsonProperty("role_sid")]
         public string RoleSid { get; private set; }
 
-        ///<summary> The identity of the User that created the invite </summary> 
+        ///<summary> The `identity` of the User that created the invite. </summary> 
         [JsonProperty("created_by")]
         public string CreatedBy { get; private set; }
 
-        ///<summary> The absolute URL of the Invite resource </summary> 
+        ///<summary> The absolute URL of the Invite resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 

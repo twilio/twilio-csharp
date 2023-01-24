@@ -343,15 +343,15 @@ namespace Twilio.Rest.Conversations.V1.Service
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The unique ID of the Account responsible for this binding. </summary> 
+        ///<summary> The unique ID of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this binding. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The SID of the Conversation Service that the resource is associated with. </summary> 
+        ///<summary> The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Binding resource is associated with. </summary> 
         [JsonProperty("chat_service_sid")]
         public string ChatServiceSid { get; private set; }
 
-        ///<summary> The SID of the Credential for the binding. </summary> 
+        ///<summary> The SID of the [Credential](https://www.twilio.com/docs/conversations/api/credential-resource) for the binding. See [push notification configuration](https://www.twilio.com/docs/chat/push-notification-configuration) for more info. </summary> 
         [JsonProperty("credential_sid")]
         public string CredentialSid { get; private set; }
 
@@ -363,11 +363,11 @@ namespace Twilio.Rest.Conversations.V1.Service
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> The unique endpoint identifier for the Binding. </summary> 
+        ///<summary> The unique endpoint identifier for the Binding. The format of this value depends on the `binding_type`. </summary> 
         [JsonProperty("endpoint")]
         public string Endpoint { get; private set; }
 
-        ///<summary> The identity of Conversation User associated with this binding. </summary> 
+        ///<summary> The application-defined string that uniquely identifies the [Conversation User](https://www.twilio.com/docs/conversations/api/user-resource) within the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource). See [access tokens](https://www.twilio.com/docs/conversations/create-tokens) for more info. </summary> 
         [JsonProperty("identity")]
         public string Identity { get; private set; }
 
@@ -375,11 +375,11 @@ namespace Twilio.Rest.Conversations.V1.Service
         [JsonProperty("binding_type")]
         public BindingResource.BindingTypeEnum BindingType { get; private set; }
 
-        ///<summary> The Conversation message types the binding is subscribed to. </summary> 
+        ///<summary> The [Conversation message types](https://www.twilio.com/docs/chat/push-notification-configuration#push-types) the binding is subscribed to. </summary> 
         [JsonProperty("message_types")]
         public List<string> MessageTypes { get; private set; }
 
-        ///<summary> An absolute URL for this binding. </summary> 
+        ///<summary> An absolute API resource URL for this binding. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 

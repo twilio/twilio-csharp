@@ -139,7 +139,7 @@ namespace Twilio.Rest.Studio.V2
         }
 
     
-        ///<summary> Boolean if the flow definition is valid </summary> 
+        ///<summary> Boolean if the flow definition is valid. </summary> 
         [JsonProperty("valid")]
         public bool? Valid { get; private set; }
 

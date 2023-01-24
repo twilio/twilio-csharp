@@ -234,23 +234,23 @@ namespace Twilio.Rest.Trusthub.V1
         }
 
     
-        ///<summary> The unique string that identifies the End-User Type resource </summary> 
+        ///<summary> The unique string that identifies the End-User Type resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> A human-readable description of the End-User Type resource </summary> 
+        ///<summary> A human-readable description that is assigned to describe the End-User Type resource. Examples can include first name, last name, email, business name, etc </summary> 
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
 
-        ///<summary> A machine-readable description of the End-User Type resource </summary> 
+        ///<summary> A machine-readable description of the End-User Type resource. Examples can include first_name, last_name, email, business_name, etc. </summary> 
         [JsonProperty("machine_name")]
         public string MachineName { get; private set; }
 
-        ///<summary> The required information for creating an End-User. </summary> 
+        ///<summary> The required information for creating an End-User. The required fields will change as regulatory needs change and will differ for businesses and individuals. </summary> 
         [JsonProperty("fields")]
         public List<object> Fields { get; private set; }
 
-        ///<summary> The absolute URL of the End-User Type resource </summary> 
+        ///<summary> The absolute URL of the End-User Type resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 

@@ -197,23 +197,23 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
         }
 
     
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the TaskActions resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The SID of the Assistant that is the parent of the Task associated with the resource </summary> 
+        ///<summary> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the Task associated with the resource. </summary> 
         [JsonProperty("assistant_sid")]
         public string AssistantSid { get; private set; }
 
-        ///<summary> The SID of the Task associated with the resource </summary> 
+        ///<summary> The SID of the [Task](https://www.twilio.com/docs/autopilot/api/task) associated with the resource. </summary> 
         [JsonProperty("task_sid")]
         public string TaskSid { get; private set; }
 
-        ///<summary> The absolute URL of the TaskActions resource </summary> 
+        ///<summary> The absolute URL of the TaskActions resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
-        ///<summary> The JSON string that specifies the actions that instruct the Assistant on how to perform the task </summary> 
+        ///<summary> The JSON string that specifies the [actions](https://www.twilio.com/docs/autopilot/actions) that instruct the Assistant on how to perform the task. </summary> 
         [JsonProperty("data")]
         public object Data { get; private set; }
 

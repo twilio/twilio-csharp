@@ -234,31 +234,31 @@ namespace Twilio.Rest.Preview.Marketplace
         }
 
     
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string that we created to identify the AvailableAddOn resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The string that you assigned to describe the resource </summary> 
+        ///<summary> The string that you assigned to describe the resource. </summary> 
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
 
-        ///<summary> A short description of the Add-on's functionality </summary> 
+        ///<summary> A short description of the Add-on's functionality. </summary> 
         [JsonProperty("description")]
         public string Description { get; private set; }
 
-        ///<summary> How customers are charged for using this Add-on </summary> 
+        ///<summary> How customers are charged for using this Add-on. </summary> 
         [JsonProperty("pricing_type")]
         public string PricingType { get; private set; }
 
-        ///<summary> The JSON object with the configuration that must be provided when installing a given Add-on </summary> 
+        ///<summary> The JSON object with the configuration that must be provided when installing a given Add-on. </summary> 
         [JsonProperty("configuration_schema")]
         public object ConfigurationSchema { get; private set; }
 
-        ///<summary> The absolute URL of the resource </summary> 
+        ///<summary> The absolute URL of the resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
-        ///<summary> The URLs of related resources </summary> 
+        ///<summary> The URLs of related resources. </summary> 
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
 

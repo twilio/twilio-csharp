@@ -122,31 +122,31 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Workflow
         }
 
     
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Workflow resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The age of the longest waiting Task </summary> 
+        ///<summary> The age of the longest waiting Task. </summary> 
         [JsonProperty("longest_task_waiting_age")]
         public int? LongestTaskWaitingAge { get; private set; }
 
-        ///<summary> The SID of the longest waiting Task </summary> 
+        ///<summary> The SID of the longest waiting Task. </summary> 
         [JsonProperty("longest_task_waiting_sid")]
         public string LongestTaskWaitingSid { get; private set; }
 
-        ///<summary> The number of Tasks by priority </summary> 
+        ///<summary> The number of Tasks by priority. For example: `{\"0\": \"10\", \"99\": \"5\"}` shows 10 Tasks at priority 0 and 5 at priority 99. </summary> 
         [JsonProperty("tasks_by_priority")]
         public object TasksByPriority { get; private set; }
 
-        ///<summary> The number of Tasks by their current status </summary> 
+        ///<summary> The number of Tasks by their current status. For example: `{\"pending\": \"1\", \"reserved\": \"3\", \"assigned\": \"2\", \"completed\": \"5\"}`. </summary> 
         [JsonProperty("tasks_by_status")]
         public object TasksByStatus { get; private set; }
 
-        ///<summary> The total number of Tasks </summary> 
+        ///<summary> The total number of Tasks. </summary> 
         [JsonProperty("total_tasks")]
         public int? TotalTasks { get; private set; }
 
-        ///<summary> Returns the list of Tasks that are being controlled by the Workflow with the specified SID value </summary> 
+        ///<summary> Returns the list of Tasks that are being controlled by the Workflow with the specified SID value. </summary> 
         [JsonProperty("workflow_sid")]
         public string WorkflowSid { get; private set; }
 
@@ -154,7 +154,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Workflow
         [JsonProperty("workspace_sid")]
         public string WorkspaceSid { get; private set; }
 
-        ///<summary> The absolute URL of the Workflow statistics resource </summary> 
+        ///<summary> The absolute URL of the Workflow statistics resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 

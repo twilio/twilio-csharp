@@ -652,87 +652,87 @@ namespace Twilio.Rest.Chat.V1
         }
 
     
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string that we created to identify the Service resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the Service resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The string that you assigned to describe the resource </summary> 
+        ///<summary> The string that you assigned to describe the resource. </summary> 
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
 
-        ///<summary> The RFC 2822 date and time in GMT when the resource was created </summary> 
+        ///<summary> The date and time in GMT when the resource was created specified in [RFC 2822](http://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The RFC 2822 date and time in GMT when the resource was last updated </summary> 
+        ///<summary> The date and time in GMT when the resource was last updated specified in [RFC 2822](http://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> The service role assigned to users when they are added to the service </summary> 
+        ///<summary> The service role assigned to users when they are added to the service. See the [Roles endpoint](https://www.twilio.com/docs/chat/api/roles) for more details. </summary> 
         [JsonProperty("default_service_role_sid")]
         public string DefaultServiceRoleSid { get; private set; }
 
-        ///<summary> The channel role assigned to users when they are added to a channel </summary> 
+        ///<summary> The channel role assigned to users when they are added to a channel. See the [Roles endpoint](https://www.twilio.com/docs/chat/api/roles) for more details. </summary> 
         [JsonProperty("default_channel_role_sid")]
         public string DefaultChannelRoleSid { get; private set; }
 
-        ///<summary> The channel role assigned to a channel creator when they join a new channel </summary> 
+        ///<summary> The channel role assigned to a channel creator when they join a new channel. See the [Roles endpoint](https://www.twilio.com/docs/chat/api/roles) for more details. </summary> 
         [JsonProperty("default_channel_creator_role_sid")]
         public string DefaultChannelCreatorRoleSid { get; private set; }
 
-        ///<summary> Whether the Message Consumption Horizon feature is enabled </summary> 
+        ///<summary> Whether the [Message Consumption Horizon](https://www.twilio.com/docs/chat/consumption-horizon) feature is enabled. The default is `true`. </summary> 
         [JsonProperty("read_status_enabled")]
         public bool? ReadStatusEnabled { get; private set; }
 
-        ///<summary> Whether the Reachability Indicator feature is enabled for this Service instance </summary> 
+        ///<summary> Whether the [Reachability Indicator](https://www.twilio.com/docs/chat/reachability-indicator) is enabled for this Service instance. The default is `false`. </summary> 
         [JsonProperty("reachability_enabled")]
         public bool? ReachabilityEnabled { get; private set; }
 
-        ///<summary> How long in seconds to wait before assuming the user is no longer typing </summary> 
+        ///<summary> How long in seconds after a `started typing` event until clients should assume that user is no longer typing, even if no `ended typing` message was received.  The default is 5 seconds. </summary> 
         [JsonProperty("typing_indicator_timeout")]
         public int? TypingIndicatorTimeout { get; private set; }
 
-        ///<summary> DEPRECATED </summary> 
+        ///<summary> DEPRECATED. The interval in seconds between consumption reports submission batches from client endpoints. </summary> 
         [JsonProperty("consumption_report_interval")]
         public int? ConsumptionReportInterval { get; private set; }
 
-        ///<summary> An object that describes the limits of the service instance </summary> 
+        ///<summary> An object that describes the limits of the service instance. The `limits` object contains  `channel_members` to describe the members/channel limit and `user_channels` to describe the channels/user limit. `channel_members` can be 1,000 or less, with a default of 250. `user_channels` can be 1,000 or less, with a default value of 100. </summary> 
         [JsonProperty("limits")]
         public object Limits { get; private set; }
 
-        ///<summary> An object that contains information about the webhooks configured for this service </summary> 
+        ///<summary> An object that contains information about the webhooks configured for this service. </summary> 
         [JsonProperty("webhooks")]
         public object Webhooks { get; private set; }
 
-        ///<summary> The webhook URL for pre-event webhooks </summary> 
+        ///<summary> The URL for pre-event webhooks, which are called by using the `webhook_method`. See [Webhook Events](https://www.twilio.com/docs/api/chat/webhooks) for more details. </summary> 
         [JsonProperty("pre_webhook_url")]
         public string PreWebhookUrl { get; private set; }
 
-        ///<summary> The URL for post-event webhooks </summary> 
+        ///<summary> The URL for post-event webhooks, which are called by using the `webhook_method`. See [Webhook Events](https://www.twilio.com/docs/api/chat/webhooks) for more details. </summary> 
         [JsonProperty("post_webhook_url")]
         public string PostWebhookUrl { get; private set; }
 
-        ///<summary> The HTTP method  to use for both PRE and POST webhooks </summary> 
+        ///<summary> The HTTP method to use for calls to the `pre_webhook_url` and `post_webhook_url` webhooks.  Can be: `POST` or `GET` and the default is `POST`. See [Webhook Events](https://www.twilio.com/docs/chat/webhook-events) for more details. </summary> 
         [JsonProperty("webhook_method")]
         public string WebhookMethod { get; private set; }
 
-        ///<summary> The list of WebHook events that are enabled for this Service instance </summary> 
+        ///<summary> The list of WebHook events that are enabled for this Service instance. See [Webhook Events](https://www.twilio.com/docs/chat/webhook-events) for more details. </summary> 
         [JsonProperty("webhook_filters")]
         public List<string> WebhookFilters { get; private set; }
 
-        ///<summary> The notification configuration for the Service instance </summary> 
+        ///<summary> The notification configuration for the Service instance. See [Push Notification Configuration](https://www.twilio.com/docs/chat/push-notification-configuration) for more information. </summary> 
         [JsonProperty("notifications")]
         public object Notifications { get; private set; }
 
-        ///<summary> The absolute URL of the Service resource </summary> 
+        ///<summary> The absolute URL of the Service resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
-        ///<summary> The absolute URLs of the Service's Channels, Roles, and Users </summary> 
+        ///<summary> The absolute URLs of the Service's [Channels](https://www.twilio.com/docs/chat/api/channels), [Roles](https://www.twilio.com/docs/chat/api/roles), and [Users](https://www.twilio.com/docs/chat/api/users). </summary> 
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
 

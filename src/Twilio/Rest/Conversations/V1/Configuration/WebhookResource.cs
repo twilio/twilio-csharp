@@ -217,7 +217,7 @@ namespace Twilio.Rest.Conversations.V1.Configuration
         }
 
     
-        ///<summary> The unique ID of the Account responsible for this conversation. </summary> 
+        ///<summary> The unique ID of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this conversation. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
@@ -225,7 +225,7 @@ namespace Twilio.Rest.Conversations.V1.Configuration
         [JsonProperty("method")]
         public WebhookResource.MethodEnum Method { get; private set; }
 
-        ///<summary> The list of webhook event triggers that are enabled for this Service. </summary> 
+        ///<summary> The list of webhook event triggers that are enabled for this Service: `onMessageAdded`, `onMessageUpdated`, `onMessageRemoved`, `onConversationUpdated`, `onConversationRemoved`, `onParticipantAdded`, `onParticipantUpdated`, `onParticipantRemoved` </summary> 
         [JsonProperty("filters")]
         public List<string> Filters { get; private set; }
 
@@ -241,7 +241,7 @@ namespace Twilio.Rest.Conversations.V1.Configuration
         [JsonProperty("target")]
         public WebhookResource.TargetEnum Target { get; private set; }
 
-        ///<summary> An absolute URL for this webhook. </summary> 
+        ///<summary> An absolute API resource API resource URL for this webhook. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 

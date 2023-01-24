@@ -475,35 +475,35 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         }
 
     
-        ///<summary> A string that uniquely identifies this Deployment. </summary> 
+        ///<summary> Contains a 34 character string that uniquely identifies this Deployment resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> URL of this Deployment. </summary> 
+        ///<summary> Contains an absolute URL for this Deployment resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
-        ///<summary> A human readable description for this Deployment </summary> 
+        ///<summary> Contains a human readable descriptive text for this Deployment, up to 64 characters long </summary> 
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
 
-        ///<summary> The unique identifier of the Fleet. </summary> 
+        ///<summary> Specifies the unique string identifier of the Fleet that the given Deployment belongs to. </summary> 
         [JsonProperty("fleet_sid")]
         public string FleetSid { get; private set; }
 
-        ///<summary> The unique SID that identifies this Account. </summary> 
+        ///<summary> Specifies the unique string identifier of the Account responsible for this Deployment. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The unique identifier of the Sync service instance. </summary> 
+        ///<summary> Specifies the unique string identifier of the Twilio Sync service instance linked to and accessible by this Deployment. </summary> 
         [JsonProperty("sync_service_sid")]
         public string SyncServiceSid { get; private set; }
 
-        ///<summary> The date this Deployment was created. </summary> 
+        ///<summary> Specifies the date this Deployment was created, given in UTC ISO 8601 format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The date this Deployment was updated. </summary> 
+        ///<summary> Specifies the date this Deployment was last updated, given in UTC ISO 8601 format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 

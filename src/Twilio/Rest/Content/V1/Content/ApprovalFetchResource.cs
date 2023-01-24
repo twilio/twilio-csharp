@@ -114,19 +114,19 @@ namespace Twilio.Rest.Content.V1.Content
         }
 
     
-        ///<summary> The unique string that identifies the Content resource </summary> 
+        ///<summary> The unique string that that we created to identify the Content resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The SID of the Account that created the Content resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/usage/api/account) that created Content resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> Contains the whatsapp approval information for the Content resource </summary> 
+        ///<summary> Contains the whatsapp approval information for the Content resource, with fields such as approval status, rejection reason, and category, amongst others. </summary> 
         [JsonProperty("whatsapp")]
         public object Whatsapp { get; private set; }
 
-        ///<summary> The URL of the resource, relative to `https://content.twilio.com` </summary> 
+        ///<summary> The URL of the resource, relative to `https://content.twilio.com`. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 

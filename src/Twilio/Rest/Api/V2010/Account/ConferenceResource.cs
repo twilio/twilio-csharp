@@ -404,31 +404,31 @@ namespace Twilio.Rest.Api.V2010.Account
         }
 
     
-        ///<summary> The SID of the Account that created this resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created this Conference resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The RFC 2822 date and time in GMT that this resource was created </summary> 
+        ///<summary> The date and time in GMT that this resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The RFC 2822 date and time in GMT that this resource was last updated </summary> 
+        ///<summary> The date and time in GMT that this resource was last updated, specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> The API version used to create this conference </summary> 
+        ///<summary> The API version used to create this conference. </summary> 
         [JsonProperty("api_version")]
         public string ApiVersion { get; private set; }
 
-        ///<summary> A string that you assigned to describe this conference room </summary> 
+        ///<summary> A string that you assigned to describe this conference room. </summary> 
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
 
-        ///<summary> A string that represents the Twilio Region where the conference was mixed </summary> 
+        ///<summary> A string that represents the Twilio Region where the conference audio was mixed. May be `us1`, `ie1`,  `de1`, `sg1`, `br1`, `au1`, and `jp1`. Basic conference audio will always be mixed in `us1`. Global Conference audio will be mixed nearest to the majority of participants. </summary> 
         [JsonProperty("region")]
         public string Region { get; private set; }
 
-        ///<summary> The unique string that identifies this resource </summary> 
+        ///<summary> The unique string that that we created to identify this Conference resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
@@ -436,11 +436,11 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonProperty("status")]
         public ConferenceResource.StatusEnum Status { get; private set; }
 
-        ///<summary> The URI of this resource, relative to `https://api.twilio.com` </summary> 
+        ///<summary> The URI of this resource, relative to `https://api.twilio.com`. </summary> 
         [JsonProperty("uri")]
         public string Uri { get; private set; }
 
-        ///<summary> A list of related resources identified by their relative URIs </summary> 
+        ///<summary> A list of related resources identified by their URIs relative to `https://api.twilio.com`. </summary> 
         [JsonProperty("subresource_uris")]
         public Dictionary<string, string> SubresourceUris { get; private set; }
 
@@ -448,7 +448,7 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonProperty("reason_conference_ended")]
         public ConferenceResource.ReasonConferenceEndedEnum ReasonConferenceEnded { get; private set; }
 
-        ///<summary> The call SID that caused the conference to end </summary> 
+        ///<summary> The call SID that caused the conference to end. </summary> 
         [JsonProperty("call_sid_ending_conference")]
         public string CallSidEndingConference { get; private set; }
 

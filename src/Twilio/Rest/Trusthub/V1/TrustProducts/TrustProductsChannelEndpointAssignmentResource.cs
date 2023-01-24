@@ -401,31 +401,31 @@ namespace Twilio.Rest.Trusthub.V1.TrustProducts
         }
 
     
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string that we created to identify the Item Assignment resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The unique string that identifies the CustomerProfile resource. </summary> 
+        ///<summary> The unique string that we created to identify the CustomerProfile resource. </summary> 
         [JsonProperty("trust_product_sid")]
         public string TrustProductSid { get; private set; }
 
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Item Assignment resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The type of channel endpoint </summary> 
+        ///<summary> The type of channel endpoint. eg: phone-number </summary> 
         [JsonProperty("channel_endpoint_type")]
         public string ChannelEndpointType { get; private set; }
 
-        ///<summary> The sid of an channel endpoint </summary> 
+        ///<summary> The SID of an channel endpoint </summary> 
         [JsonProperty("channel_endpoint_sid")]
         public string ChannelEndpointSid { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was created </summary> 
+        ///<summary> The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The absolute URL of the Identity resource </summary> 
+        ///<summary> The absolute URL of the Identity resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 

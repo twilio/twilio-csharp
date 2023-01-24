@@ -190,23 +190,23 @@ namespace Twilio.Rest.Routes.V2
         }
 
     
-        ///<summary> The SIP Trunk </summary> 
+        ///<summary> The absolute URL of the SIP Trunk </summary> 
         [JsonProperty("sip_trunk_domain")]
         public string SipTrunkDomain { get; private set; }
 
-        ///<summary> The absolute URL of the resource </summary> 
+        ///<summary> The absolute URL of the resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
-        ///<summary> A string that uniquely identifies the Inbound Processing Region assignments for this SIP Trunk. </summary> 
+        ///<summary> A 34 character string that uniquely identifies the Inbound Processing Region assignments for this SIP Trunk. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> Account Sid. </summary> 
+        ///<summary> The unique SID identifier of the Account. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> A human readable description of the Inbound Processing Region assignments for this SIP Trunk. </summary> 
+        ///<summary> A human readable description of the Inbound Processing Region assignments for this SIP Trunk, up to 64 characters. </summary> 
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
 
@@ -214,11 +214,11 @@ namespace Twilio.Rest.Routes.V2
         [JsonProperty("voice_region")]
         public string VoiceRegion { get; private set; }
 
-        ///<summary> The date that this SIP Trunk was assigned an Inbound Processing Region. </summary> 
+        ///<summary> The date that this SIP Trunk was assigned an Inbound Processing Region, given in ISO 8601 format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The date that the Inbound Processing Region was updated for this SIP Trunk. </summary> 
+        ///<summary> The date that the Inbound Processing Region was updated for this SIP Trunk, given in ISO 8601 format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 

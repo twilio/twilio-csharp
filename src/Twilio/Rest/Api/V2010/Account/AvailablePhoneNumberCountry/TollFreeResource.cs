@@ -253,53 +253,53 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         }
 
     
-        ///<summary> A formatted version of the phone number </summary> 
+        ///<summary> A formatted version of the phone number. </summary> 
         [JsonProperty("friendly_name")]
         [JsonConverter(typeof(PhoneNumberConverter))]
         public Types.PhoneNumber FriendlyName { get; private set; }
 
-        ///<summary> The phone number in E.164 format </summary> 
+        ///<summary> The phone number in [E.164](https://www.twilio.com/docs/glossary/what-e164) format, which consists of a + followed by the country code and subscriber number. </summary> 
         [JsonProperty("phone_number")]
         [JsonConverter(typeof(PhoneNumberConverter))]
         public Types.PhoneNumber PhoneNumber { get; private set; }
 
-        ///<summary> The LATA of this phone number </summary> 
+        ///<summary> The [LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area) of this phone number. Available for only phone numbers from the US and Canada. </summary> 
         [JsonProperty("lata")]
         public string Lata { get; private set; }
 
-        ///<summary> The locality or city of this phone number's location </summary> 
+        ///<summary> The locality or city of this phone number's location. </summary> 
         [JsonProperty("locality")]
         public string Locality { get; private set; }
 
-        ///<summary> The rate center of this phone number </summary> 
+        ///<summary> The [rate center](https://en.wikipedia.org/wiki/Telephone_exchange) of this phone number. Available for only phone numbers from the US and Canada. </summary> 
         [JsonProperty("rate_center")]
         public string RateCenter { get; private set; }
 
-        ///<summary> The latitude of this phone number's location </summary> 
+        ///<summary> The latitude of this phone number's location. Available for only phone numbers from the US and Canada. </summary> 
         [JsonProperty("latitude")]
         public decimal? Latitude { get; private set; }
 
-        ///<summary> The longitude of this phone number's location </summary> 
+        ///<summary> The longitude of this phone number's location. Available for only phone numbers from the US and Canada. </summary> 
         [JsonProperty("longitude")]
         public decimal? Longitude { get; private set; }
 
-        ///<summary> The two-letter state or province abbreviation of this phone number's location </summary> 
+        ///<summary> The two-letter state or province abbreviation of this phone number's location. Available for only phone numbers from the US and Canada. </summary> 
         [JsonProperty("region")]
         public string Region { get; private set; }
 
-        ///<summary> The postal or ZIP code of this phone number's location </summary> 
+        ///<summary> The postal or ZIP code of this phone number's location. Available for only phone numbers from the US and Canada. </summary> 
         [JsonProperty("postal_code")]
         public string PostalCode { get; private set; }
 
-        ///<summary> The ISO country code of this phone number </summary> 
+        ///<summary> The [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of this phone number. </summary> 
         [JsonProperty("iso_country")]
         public string IsoCountry { get; private set; }
 
-        ///<summary> The type of Address resource the phone number requires </summary> 
+        ///<summary> The type of [Address](https://www.twilio.com/docs/usage/api/address) resource the phone number requires. Can be: `none`, `any`, `local`, or `foreign`. `none` means no address is required. `any` means an address is required, but it can be anywhere in the world. `local` means an address in the phone number's country is required. `foreign` means an address outside of the phone number's country is required. </summary> 
         [JsonProperty("address_requirements")]
         public string AddressRequirements { get; private set; }
 
-        ///<summary> Whether the phone number is new to the Twilio platform </summary> 
+        ///<summary> Whether the phone number is new to the Twilio platform. Can be: `true` or `false`. </summary> 
         [JsonProperty("beta")]
         public bool? Beta { get; private set; }
 

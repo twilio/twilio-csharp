@@ -389,40 +389,40 @@ namespace Twilio.Rest.Messaging.V1.Service
         }
 
     
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string that we created to identify the PhoneNumber resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the PhoneNumber resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The SID of the Service that the resource is associated with </summary> 
+        ///<summary> The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) the resource is associated with. </summary> 
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was created </summary> 
+        ///<summary> The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was last updated </summary> 
+        ///<summary> The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> The phone number in E.164 format </summary> 
+        ///<summary> The phone number in [E.164](https://www.twilio.com/docs/glossary/what-e164) format, which consists of a + followed by the country code and subscriber number. </summary> 
         [JsonProperty("phone_number")]
         [JsonConverter(typeof(PhoneNumberConverter))]
         public Types.PhoneNumber PhoneNumber { get; private set; }
 
-        ///<summary> The 2-character ISO Country Code of the number </summary> 
+        ///<summary> The 2-character [ISO Country Code](https://www.iso.org/iso-3166-country-codes.html) of the number. </summary> 
         [JsonProperty("country_code")]
         public string CountryCode { get; private set; }
 
-        ///<summary> An array of values that describe whether the number can receive calls or messages </summary> 
+        ///<summary> An array of values that describe whether the number can receive calls or messages. Can be: `Voice`, `SMS`, and `MMS`. </summary> 
         [JsonProperty("capabilities")]
         public List<string> Capabilities { get; private set; }
 
-        ///<summary> The absolute URL of the PhoneNumber resource </summary> 
+        ///<summary> The absolute URL of the PhoneNumber resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 

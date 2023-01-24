@@ -258,59 +258,59 @@ namespace Twilio.Rest.Monitor.V1
         }
 
     
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Event resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The SID of the actor that caused the event, if available </summary> 
+        ///<summary> The SID of the actor that caused the event, if available. Can be `null`. </summary> 
         [JsonProperty("actor_sid")]
         public string ActorSid { get; private set; }
 
-        ///<summary> The type of actor that caused the event </summary> 
+        ///<summary> The type of actor that caused the event. Can be: `user` for a change made by a logged-in user in the Twilio Console, `account` for an event caused by an API request by an authenticating Account, `twilio-admin` for an event caused by a Twilio employee, and so on. </summary> 
         [JsonProperty("actor_type")]
         public string ActorType { get; private set; }
 
-        ///<summary> A description of the event </summary> 
+        ///<summary> A description of the event. Can be `null`. </summary> 
         [JsonProperty("description")]
         public string Description { get; private set; }
 
-        ///<summary> A JSON string that represents an object with additional data about the event </summary> 
+        ///<summary> An object with additional data about the event. The  contents depend on `event_type`. For example, event-types of the form `RESOURCE.updated`, this value contains a `resource_properties` dictionary that describes the previous and updated properties of the resource. </summary> 
         [JsonProperty("event_data")]
         public object EventData { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the event was recorded </summary> 
+        ///<summary> The date and time in GMT when the event was recorded specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("event_date")]
         public DateTime? EventDate { get; private set; }
 
-        ///<summary> The event's type </summary> 
+        ///<summary> The event's type. Event-types are typically in the form: `RESOURCE_TYPE.ACTION`, where `RESOURCE_TYPE` is the type of resource that was affected and `ACTION` is what happened to it. For example, `phone-number.created`. For a full list of all event-types, see the [Monitor Event Types](https://www.twilio.com/docs/usage/monitor-events#event-types). </summary> 
         [JsonProperty("event_type")]
         public string EventType { get; private set; }
 
-        ///<summary> The SID of the resource that was affected </summary> 
+        ///<summary> The SID of the resource that was affected. </summary> 
         [JsonProperty("resource_sid")]
         public string ResourceSid { get; private set; }
 
-        ///<summary> The type of resource that was affected </summary> 
+        ///<summary> The type of resource that was affected. For a full list of all resource-types, see the [Monitor Event Types](https://www.twilio.com/docs/usage/monitor-events#event-types). </summary> 
         [JsonProperty("resource_type")]
         public string ResourceType { get; private set; }
 
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string that we created to identify the Event resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The originating system or interface that caused the event </summary> 
+        ///<summary> The originating system or interface that caused the event.  Can be: `web` for events caused by user action in the Twilio Console, `api` for events caused by a request to our API, or   `twilio` for events caused by an automated or internal Twilio system. </summary> 
         [JsonProperty("source")]
         public string Source { get; private set; }
 
-        ///<summary> The IP address of the source </summary> 
+        ///<summary> The IP address of the source, if the source is outside the Twilio cloud. This value is `null` for events with `source` of `twilio` </summary> 
         [JsonProperty("source_ip_address")]
         public string SourceIpAddress { get; private set; }
 
-        ///<summary> The absolute URL of the resource that was affected </summary> 
+        ///<summary> The absolute URL of the resource that was affected. Can be `null`. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
-        ///<summary> The absolute URLs of related resources </summary> 
+        ///<summary> The absolute URLs of related resources. </summary> 
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
 

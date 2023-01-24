@@ -563,87 +563,87 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         }
 
     
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the SipDomain resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The API version used to process the call </summary> 
+        ///<summary> The API version used to process the call. </summary> 
         [JsonProperty("api_version")]
         public string ApiVersion { get; private set; }
 
-        ///<summary> The types of authentication mapped to the domain </summary> 
+        ///<summary> The types of authentication you have mapped to your domain. Can be: `IP_ACL` and `CREDENTIAL_LIST`. If you have both defined for your domain, both will be returned in a comma delimited string. If `auth_type` is not defined, the domain will not be able to receive any traffic. </summary> 
         [JsonProperty("auth_type")]
         public string AuthType { get; private set; }
 
-        ///<summary> The RFC 2822 date and time in GMT that the resource was created </summary> 
+        ///<summary> The date and time in GMT that the resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The RFC 2822 date and time in GMT that the resource was last updated </summary> 
+        ///<summary> The date and time in GMT that the resource was last updated specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> The unique address on Twilio to route SIP traffic </summary> 
+        ///<summary> The unique address you reserve on Twilio to which you route your SIP traffic. Domain names can contain letters, digits, and \"-\" and must end with `sip.twilio.com`. </summary> 
         [JsonProperty("domain_name")]
         public string DomainName { get; private set; }
 
-        ///<summary> The string that you assigned to describe the resource </summary> 
+        ///<summary> The string that you assigned to describe the resource. </summary> 
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
 
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string that that we created to identify the SipDomain resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The URI of the resource, relative to `https://api.twilio.com` </summary> 
+        ///<summary> The URI of the resource, relative to `https://api.twilio.com`. </summary> 
         [JsonProperty("uri")]
         public string Uri { get; private set; }
 
-        ///<summary> The HTTP method used with voice_fallback_url </summary> 
+        ///<summary> The HTTP method we use to call `voice_fallback_url`. Can be: `GET` or `POST`. </summary> 
         [JsonProperty("voice_fallback_method")]
         public Twilio.Http.HttpMethod VoiceFallbackMethod { get; private set; }
 
-        ///<summary> The URL we call when an error occurs while executing TwiML </summary> 
+        ///<summary> The URL that we call when an error occurs while retrieving or executing the TwiML requested from `voice_url`. </summary> 
         [JsonProperty("voice_fallback_url")]
         public Uri VoiceFallbackUrl { get; private set; }
 
-        ///<summary> The HTTP method to use with voice_url </summary> 
+        ///<summary> The HTTP method we use to call `voice_url`. Can be: `GET` or `POST`. </summary> 
         [JsonProperty("voice_method")]
         public Twilio.Http.HttpMethod VoiceMethod { get; private set; }
 
-        ///<summary> The HTTP method we use to call voice_status_callback_url </summary> 
+        ///<summary> The HTTP method we use to call `voice_status_callback_url`. Either `GET` or `POST`. </summary> 
         [JsonProperty("voice_status_callback_method")]
         public Twilio.Http.HttpMethod VoiceStatusCallbackMethod { get; private set; }
 
-        ///<summary> The URL that we call with status updates </summary> 
+        ///<summary> The URL that we call to pass status parameters (such as call ended) to your application. </summary> 
         [JsonProperty("voice_status_callback_url")]
         public Uri VoiceStatusCallbackUrl { get; private set; }
 
-        ///<summary> The URL we call when receiving a call </summary> 
+        ///<summary> The URL we call using the `voice_method` when the domain receives a call. </summary> 
         [JsonProperty("voice_url")]
         public Uri VoiceUrl { get; private set; }
 
-        ///<summary> A list mapping resources associated with the SIP Domain resource </summary> 
+        ///<summary> A list of mapping resources associated with the SIP Domain resource identified by their relative URIs. </summary> 
         [JsonProperty("subresource_uris")]
         public Dictionary<string, string> SubresourceUris { get; private set; }
 
-        ///<summary> Whether SIP registration is allowed </summary> 
+        ///<summary> Whether to allow SIP Endpoints to register with the domain to receive calls. </summary> 
         [JsonProperty("sip_registration")]
         public bool? SipRegistration { get; private set; }
 
-        ///<summary> Whether emergency calling is enabled for the domain. </summary> 
+        ///<summary> Whether emergency calling is enabled for the domain. If enabled, allows emergency calls on the domain from phone numbers with validated addresses. </summary> 
         [JsonProperty("emergency_calling_enabled")]
         public bool? EmergencyCallingEnabled { get; private set; }
 
-        ///<summary> Whether secure SIP is enabled for the domain </summary> 
+        ///<summary> Whether secure SIP is enabled for the domain. If enabled, TLS will be enforced and SRTP will be negotiated on all incoming calls to this sip domain. </summary> 
         [JsonProperty("secure")]
         public bool? Secure { get; private set; }
 
-        ///<summary> The SID of the BYOC Trunk resource. </summary> 
+        ///<summary> The SID of the BYOC Trunk(Bring Your Own Carrier) resource that the Sip Domain will be associated with. </summary> 
         [JsonProperty("byoc_trunk_sid")]
         public string ByocTrunkSid { get; private set; }
 
-        ///<summary> Whether an emergency caller sid is configured for the domain. </summary> 
+        ///<summary> Whether an emergency caller sid is configured for the domain. If present, this phone number will be used as the callback for the emergency call. </summary> 
         [JsonProperty("emergency_caller_sid")]
         public string EmergencyCallerSid { get; private set; }
 

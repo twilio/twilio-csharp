@@ -272,11 +272,11 @@ namespace Twilio.Rest.Conversations.V1.Conversation.Message
         }
 
     
-        ///<summary> The unique ID of the Account responsible for this participant. </summary> 
+        ///<summary> The unique ID of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this participant. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The unique ID of the Conversation for this message. </summary> 
+        ///<summary> The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this message. </summary> 
         [JsonProperty("conversation_sid")]
         public string ConversationSid { get; private set; }
 
@@ -284,11 +284,11 @@ namespace Twilio.Rest.Conversations.V1.Conversation.Message
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The SID of the message the delivery receipt belongs to </summary> 
+        ///<summary> The SID of the message within a [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) the delivery receipt belongs to </summary> 
         [JsonProperty("message_sid")]
         public string MessageSid { get; private set; }
 
-        ///<summary> A messaging channel-specific identifier for the message delivered to participant </summary> 
+        ///<summary> A messaging channel-specific identifier for the message delivered to participant e.g. `SMxx` for SMS, `WAxx` for Whatsapp etc.  </summary> 
         [JsonProperty("channel_message_sid")]
         public string ChannelMessageSid { get; private set; }
 
@@ -300,7 +300,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation.Message
         [JsonProperty("status")]
         public DeliveryReceiptResource.DeliveryStatusEnum Status { get; private set; }
 
-        ///<summary> The message [delivery error code](https://www.twilio.com/docs/sms/api/message-resource#delivery-related-errors) for a `failed` status </summary> 
+        ///<summary> The message [delivery error code](https://www.twilio.com/docs/sms/api/message-resource#delivery-related-errors) for a `failed` status,  </summary> 
         [JsonProperty("error_code")]
         public int? ErrorCode { get; private set; }
 
@@ -308,11 +308,11 @@ namespace Twilio.Rest.Conversations.V1.Conversation.Message
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The date that this resource was last updated. </summary> 
+        ///<summary> The date that this resource was last updated. `null` if the delivery receipt has not been updated. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> An absolute URL for this delivery receipt. </summary> 
+        ///<summary> An absolute API resource URL for this delivery receipt. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 

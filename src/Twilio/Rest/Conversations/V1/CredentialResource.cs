@@ -506,11 +506,11 @@ namespace Twilio.Rest.Conversations.V1
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The unique ID of the Account responsible for this credential. </summary> 
+        ///<summary> The unique ID of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this credential. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The human-readable name of this credential. </summary> 
+        ///<summary> The human-readable name of this credential, limited to 64 characters. Optional. </summary> 
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
 
@@ -518,7 +518,7 @@ namespace Twilio.Rest.Conversations.V1
         [JsonProperty("type")]
         public CredentialResource.PushTypeEnum Type { get; private set; }
 
-        ///<summary> [APN only] Whether to send the credential to sandbox APNs. </summary> 
+        ///<summary> [APN only] Whether to send the credential to sandbox APNs. Can be `true` to send to sandbox APNs or `false` to send to production. </summary> 
         [JsonProperty("sandbox")]
         public string Sandbox { get; private set; }
 
@@ -530,7 +530,7 @@ namespace Twilio.Rest.Conversations.V1
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> An absolute URL for this credential. </summary> 
+        ///<summary> An absolute API resource URL for this credential. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 

@@ -414,39 +414,39 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
         }
 
     
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Field resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The RFC 2822 date and time in GMT when the resource was created </summary> 
+        ///<summary> The date and time in GMT when the resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The RFC 2822 date and time in GMT when the resource was last updated </summary> 
+        ///<summary> The date and time in GMT when the resource was last updated specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> The Field Type of the field </summary> 
+        ///<summary> The Field Type of the field. Can be: a [Built-in Field Type](https://www.twilio.com/docs/autopilot/built-in-field-types), the unique_name, or the SID of a custom Field Type. </summary> 
         [JsonProperty("field_type")]
         public string FieldType { get; private set; }
 
-        ///<summary> The SID of the [Task](https://www.twilio.com/docs/autopilot/api/task) resource associated with this Field </summary> 
+        ///<summary> The SID of the [Task](https://www.twilio.com/docs/autopilot/api/task) resource associated with this Field. </summary> 
         [JsonProperty("task_sid")]
         public string TaskSid { get; private set; }
 
-        ///<summary> The SID of the Assistant that is the parent of the Task associated with the resource </summary> 
+        ///<summary> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the Task associated with the resource. </summary> 
         [JsonProperty("assistant_sid")]
         public string AssistantSid { get; private set; }
 
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string that we created to identify the Field resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> An application-defined string that uniquely identifies the resource </summary> 
+        ///<summary> An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource. </summary> 
         [JsonProperty("unique_name")]
         public string UniqueName { get; private set; }
 
-        ///<summary> The absolute URL of the Field resource </summary> 
+        ///<summary> The absolute URL of the Field resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 

@@ -444,35 +444,35 @@ namespace Twilio.Rest.Supersim.V1
         }
 
     
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Fleet resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string that we created to identify the Fleet resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> An application-defined string that uniquely identifies the resource </summary> 
+        ///<summary> An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource. </summary> 
         [JsonProperty("unique_name")]
         public string UniqueName { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was created </summary> 
+        ///<summary> The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was last updated </summary> 
+        ///<summary> The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> The absolute URL of the Fleet resource </summary> 
+        ///<summary> The absolute URL of the Fleet resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
-        ///<summary> Defines whether SIMs in the Fleet are capable of using data connectivity </summary> 
+        ///<summary> Defines whether SIMs in the Fleet are capable of using 2G/3G/4G/LTE/CAT-M data connectivity. Defaults to `true`. </summary> 
         [JsonProperty("data_enabled")]
         public bool? DataEnabled { get; private set; }
 
-        ///<summary> The total data usage (download and upload combined) in Megabytes that each Super SIM assigned to the Fleet can consume </summary> 
+        ///<summary> The total data usage (download and upload combined) in Megabytes that each Super SIM assigned to the Fleet can consume during a billing period (normally one month). Value must be between 1MB (1) and 2TB (2,000,000). Defaults to 1GB (1,000). </summary> 
         [JsonProperty("data_limit")]
         public int? DataLimit { get; private set; }
 
@@ -480,27 +480,27 @@ namespace Twilio.Rest.Supersim.V1
         [JsonProperty("data_metering")]
         public FleetResource.DataMeteringEnum DataMetering { get; private set; }
 
-        ///<summary> Defines whether SIMs in the Fleet are capable of sending and receiving machine-to-machine SMS via Commands </summary> 
+        ///<summary> Defines whether SIMs in the Fleet are capable of sending and receiving machine-to-machine SMS via Commands. Defaults to `true`. </summary> 
         [JsonProperty("sms_commands_enabled")]
         public bool? SmsCommandsEnabled { get; private set; }
 
-        ///<summary> The URL that will receive a webhook when a Super SIM in the Fleet is used to send an SMS from your device to the SMS Commands number </summary> 
+        ///<summary> The URL that will receive a webhook when a Super SIM in the Fleet is used to send an SMS from your device to the SMS Commands number. Your server should respond with an HTTP status code in the 200 range; any response body will be ignored. </summary> 
         [JsonProperty("sms_commands_url")]
         public Uri SmsCommandsUrl { get; private set; }
 
-        ///<summary> A string representing the HTTP method to use when making a request to `sms_commands_url` </summary> 
+        ///<summary> A string representing the HTTP method to use when making a request to `sms_commands_url`. Can be one of `POST` or `GET`. Defaults to `POST`. </summary> 
         [JsonProperty("sms_commands_method")]
         public Twilio.Http.HttpMethod SmsCommandsMethod { get; private set; }
 
-        ///<summary> The SID of the Network Access Profile of the Fleet </summary> 
+        ///<summary> The SID of the Network Access Profile that controls which cellular networks the Fleet's SIMs can connect to. </summary> 
         [JsonProperty("network_access_profile_sid")]
         public string NetworkAccessProfileSid { get; private set; }
 
-        ///<summary> The URL that will receive a webhook when a Super SIM in the Fleet is used to send an IP Command from your device </summary> 
+        ///<summary> The URL that will receive a webhook when a Super SIM in the Fleet is used to send an IP Command from your device to a special IP address. Your server should respond with an HTTP status code in the 200 range; any response body will be ignored. </summary> 
         [JsonProperty("ip_commands_url")]
         public Uri IpCommandsUrl { get; private set; }
 
-        ///<summary> A string representing the HTTP method to use when making a request to `ip_commands_url` </summary> 
+        ///<summary> A string representing the HTTP method to use when making a request to `ip_commands_url`. Can be one of `POST` or `GET`. Defaults to `POST`. </summary> 
         [JsonProperty("ip_commands_method")]
         public Twilio.Http.HttpMethod IpCommandsMethod { get; private set; }
 

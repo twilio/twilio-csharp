@@ -603,27 +603,27 @@ namespace Twilio.Rest.FlexApi.V1
         }
 
     
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Flex Flow resource and owns this Workflow. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was created </summary> 
+        ///<summary> The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was last updated </summary> 
+        ///<summary> The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string that we created to identify the Flex Flow resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The string that you assigned to describe the resource </summary> 
+        ///<summary> The string that you assigned to describe the resource. </summary> 
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
 
-        ///<summary> The SID of the chat service </summary> 
+        ///<summary> The SID of the chat service. </summary> 
         [JsonProperty("chat_service_sid")]
         public string ChatServiceSid { get; private set; }
 
@@ -631,11 +631,11 @@ namespace Twilio.Rest.FlexApi.V1
         [JsonProperty("channel_type")]
         public FlexFlowResource.ChannelTypeEnum ChannelType { get; private set; }
 
-        ///<summary> The channel contact's Identity </summary> 
+        ///<summary> The channel contact's Identity. </summary> 
         [JsonProperty("contact_identity")]
         public string ContactIdentity { get; private set; }
 
-        ///<summary> Whether the Flex Flow is enabled </summary> 
+        ///<summary> Whether the Flex Flow is enabled. </summary> 
         [JsonProperty("enabled")]
         public bool? Enabled { get; private set; }
 
@@ -643,19 +643,19 @@ namespace Twilio.Rest.FlexApi.V1
         [JsonProperty("integration_type")]
         public FlexFlowResource.IntegrationTypeEnum IntegrationType { get; private set; }
 
-        ///<summary> An object that contains specific parameters for the integration </summary> 
+        ///<summary> An object that contains specific parameters for the integration. </summary> 
         [JsonProperty("integration")]
         public object Integration { get; private set; }
 
-        ///<summary> Re-use this chat channel for future interactions with a contact </summary> 
+        ///<summary> When enabled, Flex will keep the chat channel active so that it may be used for subsequent interactions with a contact identity. Defaults to `false`. </summary> 
         [JsonProperty("long_lived")]
         public bool? LongLived { get; private set; }
 
-        ///<summary> Remove active Proxy sessions if the corresponding Task is deleted. </summary> 
+        ///<summary> When enabled, the Messaging Channel Janitor will remove active Proxy sessions if the associated Task is deleted outside of the Flex UI. Defaults to `false`. </summary> 
         [JsonProperty("janitor_enabled")]
         public bool? JanitorEnabled { get; private set; }
 
-        ///<summary> The absolute URL of the Flex Flow resource </summary> 
+        ///<summary> The absolute URL of the Flex Flow resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 

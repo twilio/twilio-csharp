@@ -124,23 +124,23 @@ namespace Twilio.Rest.Serverless.V1.Service.Function.FunctionVersion
         }
 
     
-        ///<summary> The unique string that identifies the Function Version resource </summary> 
+        ///<summary> The unique string that we created to identify the Function Version resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The SID of the Account that created the Function Version resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Function Version resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The SID of the Service that the Function Version resource is associated with </summary> 
+        ///<summary> The SID of the Service that the Function Version resource is associated with. </summary> 
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
 
-        ///<summary> The SID of the Function that is the parent of the Function Version </summary> 
+        ///<summary> The SID of the Function that is the parent of the Function Version. </summary> 
         [JsonProperty("function_sid")]
         public string FunctionSid { get; private set; }
 
-        ///<summary> The content of the Function Version resource </summary> 
+        ///<summary> The content of the Function Version resource. </summary> 
         [JsonProperty("content")]
         public string Content { get; private set; }
 

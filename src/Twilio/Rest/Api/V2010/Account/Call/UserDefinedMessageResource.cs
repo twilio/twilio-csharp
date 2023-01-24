@@ -131,19 +131,19 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
 
     
-        ///<summary> Account SID. </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created User Defined Message. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> Call SID. </summary> 
+        ///<summary> The SID of the [Call](https://www.twilio.com/docs/voice/api/call-resource) the User Defined Message is associated with. </summary> 
         [JsonProperty("call_sid")]
         public string CallSid { get; private set; }
 
-        ///<summary> User Defined Message SID. </summary> 
+        ///<summary> The SID that uniquely identifies this User Defined Message. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The date this User Defined Message was created. </summary> 
+        ///<summary> The date that this User Defined Message was created, given in RFC 2822 format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 

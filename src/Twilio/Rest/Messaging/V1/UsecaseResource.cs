@@ -109,7 +109,7 @@ namespace Twilio.Rest.Messaging.V1
         }
 
     
-        ///<summary> Human readable Messaging Service Use Case details </summary> 
+        ///<summary> Human readable use case details (usecase, description and purpose) of Messaging Service Use Cases. </summary> 
         [JsonProperty("usecases")]
         public List<object> Usecases { get; private set; }
 

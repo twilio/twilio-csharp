@@ -487,23 +487,23 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         }
 
     
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the ModelBuild resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The RFC 2822 date and time in GMT when the resource was created </summary> 
+        ///<summary> The date and time in GMT when the resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The RFC 2822 date and time in GMT when the resource was last updated </summary> 
+        ///<summary> The date and time in GMT when the resource was last updated specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> The SID of the Assistant that is the parent of the resource </summary> 
+        ///<summary> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resource. </summary> 
         [JsonProperty("assistant_sid")]
         public string AssistantSid { get; private set; }
 
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string that we created to identify the ModelBuild resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
@@ -511,19 +511,19 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         [JsonProperty("status")]
         public ModelBuildResource.StatusEnum Status { get; private set; }
 
-        ///<summary> An application-defined string that uniquely identifies the resource </summary> 
+        ///<summary> An application-defined string that uniquely identifies the resource. It can be used as an alternative to the `sid` in the URL path to address the resource. </summary> 
         [JsonProperty("unique_name")]
         public string UniqueName { get; private set; }
 
-        ///<summary> The absolute URL of the ModelBuild resource </summary> 
+        ///<summary> The absolute URL of the ModelBuild resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
-        ///<summary> The time in seconds it took to build the model </summary> 
+        ///<summary> The time in seconds it took to build the model. </summary> 
         [JsonProperty("build_duration")]
         public int? BuildDuration { get; private set; }
 
-        ///<summary> More information about why the model build failed, if `status` is `failed` </summary> 
+        ///<summary> If the `status` for the model build is `failed`, this value is a code to more information about the failure. This value will be null for all other statuses. See [error code dictionary](https://www.twilio.com/docs/api/errors) for a description of the error. </summary> 
         [JsonProperty("error_code")]
         public int? ErrorCode { get; private set; }
 

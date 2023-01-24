@@ -492,31 +492,31 @@ namespace Twilio.Rest.Autopilot.V1
         }
 
     
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Assistant resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The RFC 2822 date and time in GMT when the resource was created </summary> 
+        ///<summary> The date and time in GMT when the resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The RFC 2822 date and time in GMT when the resource was last updated </summary> 
+        ///<summary> The date and time in GMT when the resource was last updated specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> The string that you assigned to describe the resource </summary> 
+        ///<summary> The string that you assigned to describe the resource. It is not unique and can be up to 255 characters long. </summary> 
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
 
-        ///<summary> Reserved </summary> 
+        ///<summary> Reserved. </summary> 
         [JsonProperty("latest_model_build_sid")]
         public string LatestModelBuildSid { get; private set; }
 
-        ///<summary> A list of the URLs of the Assistant's related resources </summary> 
+        ///<summary> A list of the URLs of the Assistant's related resources. </summary> 
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
 
-        ///<summary> Whether queries should be logged and kept after training </summary> 
+        ///<summary> Whether queries should be logged and kept after training. Can be: `true` or `false` and defaults to `true`. If `true`, queries are stored for 30 days, and then deleted. If `false`, no queries are stored. </summary> 
         [JsonProperty("log_queries")]
         public bool? LogQueries { get; private set; }
 
@@ -524,27 +524,27 @@ namespace Twilio.Rest.Autopilot.V1
         [JsonProperty("development_stage")]
         public string DevelopmentStage { get; private set; }
 
-        ///<summary> Whether model needs to be rebuilt </summary> 
+        ///<summary> Whether model needs to be rebuilt. </summary> 
         [JsonProperty("needs_model_build")]
         public bool? NeedsModelBuild { get; private set; }
 
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string that we created to identify the Assistant resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> An application-defined string that uniquely identifies the resource </summary> 
+        ///<summary> An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource. It can be up to 64 characters long. </summary> 
         [JsonProperty("unique_name")]
         public string UniqueName { get; private set; }
 
-        ///<summary> The absolute URL of the Assistant resource </summary> 
+        ///<summary> The absolute URL of the Assistant resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
-        ///<summary> Reserved </summary> 
+        ///<summary> Reserved. </summary> 
         [JsonProperty("callback_url")]
         public Uri CallbackUrl { get; private set; }
 
-        ///<summary> Reserved </summary> 
+        ///<summary> Reserved. </summary> 
         [JsonProperty("callback_events")]
         public string CallbackEvents { get; private set; }
 

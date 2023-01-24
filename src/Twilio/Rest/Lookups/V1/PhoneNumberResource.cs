@@ -126,32 +126,32 @@ namespace Twilio.Rest.Lookups.V1
         }
 
     
-        ///<summary> The name of the phone number's owner </summary> 
+        ///<summary> The name of the phone number's owner. If `null`, that information was not available. </summary> 
         [JsonProperty("caller_name")]
         public object CallerName { get; private set; }
 
-        ///<summary> The ISO country code for the phone number </summary> 
+        ///<summary> The [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) for the phone number. </summary> 
         [JsonProperty("country_code")]
         public string CountryCode { get; private set; }
 
-        ///<summary> The phone number in E.164 format </summary> 
+        ///<summary> The phone number in [E.164](https://www.twilio.com/docs/glossary/what-e164) format, which consists of a + followed by the country code and subscriber number. </summary> 
         [JsonProperty("phone_number")]
         [JsonConverter(typeof(PhoneNumberConverter))]
         public Types.PhoneNumber PhoneNumber { get; private set; }
 
-        ///<summary> The phone number, in national format </summary> 
+        ///<summary> The phone number, in national format. </summary> 
         [JsonProperty("national_format")]
         public string NationalFormat { get; private set; }
 
-        ///<summary> The telecom company that provides the phone number </summary> 
+        ///<summary> The telecom company that provides the phone number. </summary> 
         [JsonProperty("carrier")]
         public object Carrier { get; private set; }
 
-        ///<summary> A JSON string with the results of the Add-ons you specified </summary> 
+        ///<summary> A JSON string with the results of the Add-ons you specified in the `add_ons` parameters. For the format of the object, see [Using Add-ons](https://www.twilio.com/docs/add-ons). </summary> 
         [JsonProperty("add_ons")]
         public object AddOns { get; private set; }
 
-        ///<summary> The absolute URL of the resource </summary> 
+        ///<summary> The absolute URL of the resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 

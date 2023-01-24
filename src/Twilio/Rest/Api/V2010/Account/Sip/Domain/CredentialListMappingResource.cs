@@ -414,15 +414,15 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The date that this resource was created, given as GMT in RFC 2822 format. </summary> 
+        ///<summary> The date that this resource was created, given as GMT in [RFC 2822](https://www.php.net/manual/en/class.datetime.php#datetime.constants.rfc2822) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The date that this resource was last updated, given as GMT in RFC 2822 format. </summary> 
+        ///<summary> The date that this resource was last updated, given as GMT in [RFC 2822](https://www.php.net/manual/en/class.datetime.php#datetime.constants.rfc2822) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> The unique string that identifies the SipDomain resource. </summary> 
+        ///<summary> The unique string that is created to identify the SipDomain resource. </summary> 
         [JsonProperty("domain_sid")]
         public string DomainSid { get; private set; }
 
@@ -434,7 +434,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The URI for this resource, relative to https://api.twilio.com </summary> 
+        ///<summary> The URI for this resource, relative to `https://api.twilio.com` </summary> 
         [JsonProperty("uri")]
         public string Uri { get; private set; }
 

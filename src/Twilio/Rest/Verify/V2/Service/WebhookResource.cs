@@ -538,23 +538,23 @@ namespace Twilio.Rest.Verify.V2.Service
         }
 
     
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string that we created to identify the Webhook resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> Service Sid. </summary> 
+        ///<summary> The unique SID identifier of the Service. </summary> 
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
 
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Service resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The string that you assigned to describe the webhook </summary> 
+        ///<summary> The string that you assigned to describe the webhook. **This value should not contain PII.** </summary> 
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
 
-        ///<summary> The array of events that this Webhook is subscribed to. </summary> 
+        ///<summary> The array of events that this Webhook is subscribed to. Possible event types: `*, factor.deleted, factor.created, factor.verified, challenge.approved, challenge.denied` </summary> 
         [JsonProperty("event_types")]
         public List<string> EventTypes { get; private set; }
 
@@ -574,15 +574,15 @@ namespace Twilio.Rest.Verify.V2.Service
         [JsonProperty("webhook_method")]
         public WebhookResource.MethodsEnum WebhookMethod { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was created </summary> 
+        ///<summary> The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was last updated </summary> 
+        ///<summary> The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> The absolute URL of the Webhook resource </summary> 
+        ///<summary> The absolute URL of the Webhook resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 

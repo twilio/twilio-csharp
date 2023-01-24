@@ -302,27 +302,27 @@ namespace Twilio.Rest.Microvisor.V1
         }
 
     
-        ///<summary> A string that uniquely identifies this App. </summary> 
+        ///<summary> A 34-character string that uniquely identifies this App. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The Account SID. </summary> 
+        ///<summary> The unique SID identifier of the Account. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> App manifest hash represented as hash_algorithm:hash_value. </summary> 
+        ///<summary> App manifest hash represented as `hash_algorithm:hash_value`. </summary> 
         [JsonProperty("hash")]
         public string Hash { get; private set; }
 
-        ///<summary> An developer-defined string that uniquely identifies the App. </summary> 
+        ///<summary> A developer-defined string that uniquely identifies the App. This value must be unique for all Apps on this Account. The `unique_name` value may be used as an alternative to the `sid` in the URL path to address the resource. </summary> 
         [JsonProperty("unique_name")]
         public string UniqueName { get; private set; }
 
-        ///<summary> The date that this App was created. </summary> 
+        ///<summary> The date that this App was created, given in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The date that this App was last updated. </summary> 
+        ///<summary> The date that this App was last updated, given in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
