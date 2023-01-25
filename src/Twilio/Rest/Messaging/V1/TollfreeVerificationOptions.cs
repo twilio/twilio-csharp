@@ -94,6 +94,9 @@ namespace Twilio.Rest.Messaging.V1
         ///<summary> The phone number of the contact for the business or organization using the Tollfree number. </summary> 
         public Types.PhoneNumber BusinessContactPhone { get; set; }
 
+        ///<summary> An optional external reference ID supplied by customer and echoed back on status retrieval. </summary> 
+        public string ExternalReferenceId { get; set; }
+
 
         /// <summary> Construct a new CreateTollfreeVerificationOptions </summary>
         /// <param name="businessName"> The name of the business or organization using the Tollfree number. </param>
@@ -213,6 +216,10 @@ namespace Twilio.Rest.Messaging.V1
             if (BusinessContactPhone != null)
             {
                 p.Add(new KeyValuePair<string, string>("BusinessContactPhone", BusinessContactPhone.ToString()));
+            }
+            if (ExternalReferenceId != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ExternalReferenceId", ExternalReferenceId));
             }
             return p;
         }

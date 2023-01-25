@@ -12,16 +12,36 @@ namespace Twilio.Tests.TwiML
 {
 
     [TestFixture]
-    public class HangupTest : TwilioTest
+    public class ApplicationTest : TwilioTest
     {
         [Test]
         public void TestEmptyElement()
         {
-            var elem = new Hangup();
+            var elem = new Application();
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Hangup></Hangup>",
+                "<Application></Application>",
+                elem.ToString()
+            );
+        }
+
+        [Test]
+        public void TestElementWithParams()
+        {
+            var elem = new Application(
+                "application_sid",
+                new Uri("https://example.com"),
+                Twilio.Http.HttpMethod.Get,
+                Promoter.ListOfOne(Application.EventEnum.Initiated),
+                new Uri("https://example.com"),
+                Twilio.Http.HttpMethod.Get,
+                "customer_id",
+                true
+            );
+            Assert.AreEqual(
+                "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
+                "<Application url=\"https://example.com\" method=\"GET\" statusCallbackEvent=\"initiated\" statusCallback=\"https://example.com\" statusCallbackMethod=\"GET\" customerId=\"customer_id\" copyParentTo=\"true\">application_sid</Application>",
                 elem.ToString()
             );
         }
@@ -29,13 +49,13 @@ namespace Twilio.Tests.TwiML
         [Test]
         public void TestElementWithExtraAttributes()
         {
-            var elem = new Hangup();
+            var elem = new Application();
             elem.SetOption("newParam1", "value");
             elem.SetOption("newParam2", 1);
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Hangup newParam1=\"value\" newParam2=\"1\"></Hangup>",
+                "<Application newParam1=\"value\" newParam2=\"1\"></Application>",
                 elem.ToString()
             );
         }
@@ -43,15 +63,18 @@ namespace Twilio.Tests.TwiML
         [Test]
         public void TestElementWithChildren()
         {
-            var elem = new Hangup();
+            var elem = new Application();
+
+            elem.ApplicationSid("sid");
 
             elem.Parameter("name", "value");
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Hangup>" + Environment.NewLine +
+                "<Application>" + Environment.NewLine +
+                "  <ApplicationSid>sid</ApplicationSid>" + Environment.NewLine +
                 "  <Parameter name=\"name\" value=\"value\"></Parameter>" + Environment.NewLine +
-                "</Hangup>",
+                "</Application>",
                 elem.ToString()
             );
         }
@@ -59,13 +82,13 @@ namespace Twilio.Tests.TwiML
         [Test]
         public void TestElementWithTextNode()
         {
-            var elem = new Hangup();
+            var elem = new Application();
 
             elem.AddText("Here is the content");
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Hangup>Here is the content</Hangup>",
+                "<Application>Here is the content</Application>",
                 elem.ToString()
             );
         }
@@ -73,14 +96,14 @@ namespace Twilio.Tests.TwiML
         [Test]
         public void TestAllowGenericChildNodes()
         {
-            var elem = new Hangup();
+            var elem = new Application();
             elem.AddChild("generic-tag").AddText("Content").SetOption("tag", true);
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Hangup>" + Environment.NewLine +
+                "<Application>" + Environment.NewLine +
                 "  <generic-tag tag=\"True\">Content</generic-tag>" + Environment.NewLine +
-                "</Hangup>",
+                "</Application>",
                 elem.ToString()
             );
         }
@@ -88,17 +111,17 @@ namespace Twilio.Tests.TwiML
         [Test]
         public void TestAllowGenericChildrenOfChildNodes()
         {
-            var elem = new Hangup();
-            var child = new Parameter();
+            var elem = new Application();
+            var child = new ApplicationSid();
             elem.Nest(child).AddChild("generic-tag").SetOption("tag", true).AddText("Content");
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Hangup>" + Environment.NewLine +
-                "  <Parameter>" + Environment.NewLine +
+                "<Application>" + Environment.NewLine +
+                "  <ApplicationSid>" + Environment.NewLine +
                 "    <generic-tag tag=\"True\">Content</generic-tag>" + Environment.NewLine +
-                "  </Parameter>" + Environment.NewLine +
-                "</Hangup>",
+                "  </ApplicationSid>" + Environment.NewLine +
+                "</Application>",
                 elem.ToString()
             );
         }
@@ -106,14 +129,14 @@ namespace Twilio.Tests.TwiML
         [Test]
         public void TestMixedContent()
         {
-            var elem = new Hangup();
+            var elem = new Application();
             elem.AddText("before")
                 .AddChild("Child").AddText("content");
             elem.AddText("after");
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Hangup>before<Child>content</Child>after</Hangup>",
+                "<Application>before<Child>content</Child>after</Application>",
                 elem.ToString()
             );
         }

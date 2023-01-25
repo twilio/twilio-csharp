@@ -76,6 +76,9 @@ namespace Twilio.Rest.Api.V2010.Account
         ///<summary> A descriptive string that you create to describe the new application. It can be up to 64 characters long. </summary> 
         public string FriendlyName { get; set; }
 
+        ///<summary> Whether to allow other Twilio accounts to dial this applicaton using Dial verb. Can be: `true` or `false`. </summary> 
+        public bool? PublicApplicationConnectEnabled { get; set; }
+
 
 
         
@@ -143,6 +146,10 @@ namespace Twilio.Rest.Api.V2010.Account
             if (FriendlyName != null)
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+            }
+            if (PublicApplicationConnectEnabled != null)
+            {
+                p.Add(new KeyValuePair<string, string>("PublicApplicationConnectEnabled", PublicApplicationConnectEnabled.Value.ToString().ToLower()));
             }
             return p;
         }
@@ -301,6 +308,9 @@ namespace Twilio.Rest.Api.V2010.Account
         ///<summary> The URL we should call using a POST method to send message status information to your application. </summary> 
         public Uri MessageStatusCallback { get; set; }
 
+        ///<summary> Whether to allow other Twilio accounts to dial this applicaton using Dial verb. Can be: `true` or `false`. </summary> 
+        public bool? PublicApplicationConnectEnabled { get; set; }
+
 
 
         /// <summary> Construct a new UpdateApplicationOptions </summary>
@@ -375,6 +385,10 @@ namespace Twilio.Rest.Api.V2010.Account
             if (MessageStatusCallback != null)
             {
                 p.Add(new KeyValuePair<string, string>("MessageStatusCallback", Serializers.Url(MessageStatusCallback)));
+            }
+            if (PublicApplicationConnectEnabled != null)
+            {
+                p.Add(new KeyValuePair<string, string>("PublicApplicationConnectEnabled", PublicApplicationConnectEnabled.Value.ToString().ToLower()));
             }
             return p;
         }

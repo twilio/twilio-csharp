@@ -104,7 +104,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <summary> Create a new Verification using a Service </summary>
         /// <param name="pathServiceSid"> The SID of the verification [Service](https://www.twilio.com/docs/verify/api/service) to create the resource under. </param>
         /// <param name="to"> The phone number or [email](https://www.twilio.com/docs/verify/email) to verify. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164). </param>
-        /// <param name="channel"> The verification method to use. One of: [`email`](https://www.twilio.com/docs/verify/email), `sms`, `whatsapp`, `call`, or `sna`. </param>
+        /// <param name="channel"> The verification method to use. One of: [`email`](https://www.twilio.com/docs/verify/email), `sms`, `whatsapp`, `call`, `sna` or `auto`. </param>
         /// <param name="customFriendlyName"> A custom user defined friendly name that overwrites the existing one in the verification message </param>
         /// <param name="customMessage"> The text of a custom message to use for the verification. </param>
         /// <param name="sendDigits"> The digits to send after a phone call is answered, for example, to dial an extension. For more information, see the Programmable Voice documentation of [sendDigits](https://www.twilio.com/docs/voice/twiml/number#attributes-sendDigits). </param>
@@ -117,6 +117,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="appHash"> Your [App Hash](https://developers.google.com/identity/sms-retriever/verify#computing_your_apps_hash_string) to be appended at the end of your verification SMS body. Applies only to SMS. Example SMS body: `<#> Your AppName verification code is: 1234 He42w354ol9`. </param>
         /// <param name="templateSid"> The message [template](https://www.twilio.com/docs/verify/api/templates). If provided, will override the default template for the Service. SMS and Voice channels only. </param>
         /// <param name="templateCustomSubstitutions"> A stringified JSON object in which the keys are the template's special variables and the values are the variables substitutions. </param>
+        /// <param name="deviceIp"> The IP address of the client's device. If provided, it has to be a valid IPv4 or IPv6 address. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Verification </returns>
         public static VerificationResource Create(
@@ -135,9 +136,10 @@ namespace Twilio.Rest.Verify.V2.Service
                                           string appHash = null,
                                           string templateSid = null,
                                           string templateCustomSubstitutions = null,
+                                          string deviceIp = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new CreateVerificationOptions(pathServiceSid, to, channel){  CustomFriendlyName = customFriendlyName, CustomMessage = customMessage, SendDigits = sendDigits, Locale = locale, CustomCode = customCode, Amount = amount, Payee = payee, RateLimits = rateLimits, ChannelConfiguration = channelConfiguration, AppHash = appHash, TemplateSid = templateSid, TemplateCustomSubstitutions = templateCustomSubstitutions };
+            var options = new CreateVerificationOptions(pathServiceSid, to, channel){  CustomFriendlyName = customFriendlyName, CustomMessage = customMessage, SendDigits = sendDigits, Locale = locale, CustomCode = customCode, Amount = amount, Payee = payee, RateLimits = rateLimits, ChannelConfiguration = channelConfiguration, AppHash = appHash, TemplateSid = templateSid, TemplateCustomSubstitutions = templateCustomSubstitutions, DeviceIp = deviceIp };
             return Create(options, client);
         }
 
@@ -145,7 +147,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <summary> Create a new Verification using a Service </summary>
         /// <param name="pathServiceSid"> The SID of the verification [Service](https://www.twilio.com/docs/verify/api/service) to create the resource under. </param>
         /// <param name="to"> The phone number or [email](https://www.twilio.com/docs/verify/email) to verify. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164). </param>
-        /// <param name="channel"> The verification method to use. One of: [`email`](https://www.twilio.com/docs/verify/email), `sms`, `whatsapp`, `call`, or `sna`. </param>
+        /// <param name="channel"> The verification method to use. One of: [`email`](https://www.twilio.com/docs/verify/email), `sms`, `whatsapp`, `call`, `sna` or `auto`. </param>
         /// <param name="customFriendlyName"> A custom user defined friendly name that overwrites the existing one in the verification message </param>
         /// <param name="customMessage"> The text of a custom message to use for the verification. </param>
         /// <param name="sendDigits"> The digits to send after a phone call is answered, for example, to dial an extension. For more information, see the Programmable Voice documentation of [sendDigits](https://www.twilio.com/docs/voice/twiml/number#attributes-sendDigits). </param>
@@ -158,6 +160,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="appHash"> Your [App Hash](https://developers.google.com/identity/sms-retriever/verify#computing_your_apps_hash_string) to be appended at the end of your verification SMS body. Applies only to SMS. Example SMS body: `<#> Your AppName verification code is: 1234 He42w354ol9`. </param>
         /// <param name="templateSid"> The message [template](https://www.twilio.com/docs/verify/api/templates). If provided, will override the default template for the Service. SMS and Voice channels only. </param>
         /// <param name="templateCustomSubstitutions"> A stringified JSON object in which the keys are the template's special variables and the values are the variables substitutions. </param>
+        /// <param name="deviceIp"> The IP address of the client's device. If provided, it has to be a valid IPv4 or IPv6 address. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Verification </returns>
         public static async System.Threading.Tasks.Task<VerificationResource> CreateAsync(
@@ -176,9 +179,10 @@ namespace Twilio.Rest.Verify.V2.Service
                                                                                   string appHash = null,
                                                                                   string templateSid = null,
                                                                                   string templateCustomSubstitutions = null,
+                                                                                  string deviceIp = null,
                                                                                   ITwilioRestClient client = null)
         {
-        var options = new CreateVerificationOptions(pathServiceSid, to, channel){  CustomFriendlyName = customFriendlyName, CustomMessage = customMessage, SendDigits = sendDigits, Locale = locale, CustomCode = customCode, Amount = amount, Payee = payee, RateLimits = rateLimits, ChannelConfiguration = channelConfiguration, AppHash = appHash, TemplateSid = templateSid, TemplateCustomSubstitutions = templateCustomSubstitutions };
+        var options = new CreateVerificationOptions(pathServiceSid, to, channel){  CustomFriendlyName = customFriendlyName, CustomMessage = customMessage, SendDigits = sendDigits, Locale = locale, CustomCode = customCode, Amount = amount, Payee = payee, RateLimits = rateLimits, ChannelConfiguration = channelConfiguration, AppHash = appHash, TemplateSid = templateSid, TemplateCustomSubstitutions = templateCustomSubstitutions, DeviceIp = deviceIp };
             return await CreateAsync(options, client);
         }
         #endif

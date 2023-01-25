@@ -90,6 +90,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="smsStatusCallback"> The URL we should call using a POST method to send status information about SMS messages sent by the application. </param>
         /// <param name="messageStatusCallback"> The URL we should call using a POST method to send message status information to your application. </param>
         /// <param name="friendlyName"> A descriptive string that you create to describe the new application. It can be up to 64 characters long. </param>
+        /// <param name="publicApplicationConnectEnabled"> Whether to allow other Twilio accounts to dial this applicaton using Dial verb. Can be: `true` or `false`. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Application </returns>
         public static ApplicationResource Create(
@@ -109,9 +110,10 @@ namespace Twilio.Rest.Api.V2010.Account
                                           Uri smsStatusCallback = null,
                                           Uri messageStatusCallback = null,
                                           string friendlyName = null,
+                                          bool? publicApplicationConnectEnabled = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new CreateApplicationOptions(){  PathAccountSid = pathAccountSid, ApiVersion = apiVersion, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceFallbackMethod = voiceFallbackMethod, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, VoiceCallerIdLookup = voiceCallerIdLookup, SmsUrl = smsUrl, SmsMethod = smsMethod, SmsFallbackUrl = smsFallbackUrl, SmsFallbackMethod = smsFallbackMethod, SmsStatusCallback = smsStatusCallback, MessageStatusCallback = messageStatusCallback, FriendlyName = friendlyName };
+            var options = new CreateApplicationOptions(){  PathAccountSid = pathAccountSid, ApiVersion = apiVersion, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceFallbackMethod = voiceFallbackMethod, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, VoiceCallerIdLookup = voiceCallerIdLookup, SmsUrl = smsUrl, SmsMethod = smsMethod, SmsFallbackUrl = smsFallbackUrl, SmsFallbackMethod = smsFallbackMethod, SmsStatusCallback = smsStatusCallback, MessageStatusCallback = messageStatusCallback, FriendlyName = friendlyName, PublicApplicationConnectEnabled = publicApplicationConnectEnabled };
             return Create(options, client);
         }
 
@@ -133,6 +135,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="smsStatusCallback"> The URL we should call using a POST method to send status information about SMS messages sent by the application. </param>
         /// <param name="messageStatusCallback"> The URL we should call using a POST method to send message status information to your application. </param>
         /// <param name="friendlyName"> A descriptive string that you create to describe the new application. It can be up to 64 characters long. </param>
+        /// <param name="publicApplicationConnectEnabled"> Whether to allow other Twilio accounts to dial this applicaton using Dial verb. Can be: `true` or `false`. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Application </returns>
         public static async System.Threading.Tasks.Task<ApplicationResource> CreateAsync(
@@ -152,9 +155,10 @@ namespace Twilio.Rest.Api.V2010.Account
                                                                                   Uri smsStatusCallback = null,
                                                                                   Uri messageStatusCallback = null,
                                                                                   string friendlyName = null,
+                                                                                  bool? publicApplicationConnectEnabled = null,
                                                                                   ITwilioRestClient client = null)
         {
-        var options = new CreateApplicationOptions(){  PathAccountSid = pathAccountSid, ApiVersion = apiVersion, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceFallbackMethod = voiceFallbackMethod, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, VoiceCallerIdLookup = voiceCallerIdLookup, SmsUrl = smsUrl, SmsMethod = smsMethod, SmsFallbackUrl = smsFallbackUrl, SmsFallbackMethod = smsFallbackMethod, SmsStatusCallback = smsStatusCallback, MessageStatusCallback = messageStatusCallback, FriendlyName = friendlyName };
+        var options = new CreateApplicationOptions(){  PathAccountSid = pathAccountSid, ApiVersion = apiVersion, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceFallbackMethod = voiceFallbackMethod, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, VoiceCallerIdLookup = voiceCallerIdLookup, SmsUrl = smsUrl, SmsMethod = smsMethod, SmsFallbackUrl = smsFallbackUrl, SmsFallbackMethod = smsFallbackMethod, SmsStatusCallback = smsStatusCallback, MessageStatusCallback = messageStatusCallback, FriendlyName = friendlyName, PublicApplicationConnectEnabled = publicApplicationConnectEnabled };
             return await CreateAsync(options, client);
         }
         #endif
@@ -493,6 +497,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="smsFallbackMethod"> The HTTP method we should use to call `sms_fallback_url`. Can be: `GET` or `POST`. </param>
         /// <param name="smsStatusCallback"> Same as message_status_callback: The URL we should call using a POST method to send status information about SMS messages sent by the application. Deprecated, included for backwards compatibility. </param>
         /// <param name="messageStatusCallback"> The URL we should call using a POST method to send message status information to your application. </param>
+        /// <param name="publicApplicationConnectEnabled"> Whether to allow other Twilio accounts to dial this applicaton using Dial verb. Can be: `true` or `false`. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Application </returns>
         public static ApplicationResource Update(
@@ -513,9 +518,10 @@ namespace Twilio.Rest.Api.V2010.Account
                                           Twilio.Http.HttpMethod smsFallbackMethod = null,
                                           Uri smsStatusCallback = null,
                                           Uri messageStatusCallback = null,
+                                          bool? publicApplicationConnectEnabled = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new UpdateApplicationOptions(pathSid){ PathAccountSid = pathAccountSid, FriendlyName = friendlyName, ApiVersion = apiVersion, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceFallbackMethod = voiceFallbackMethod, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, VoiceCallerIdLookup = voiceCallerIdLookup, SmsUrl = smsUrl, SmsMethod = smsMethod, SmsFallbackUrl = smsFallbackUrl, SmsFallbackMethod = smsFallbackMethod, SmsStatusCallback = smsStatusCallback, MessageStatusCallback = messageStatusCallback };
+            var options = new UpdateApplicationOptions(pathSid){ PathAccountSid = pathAccountSid, FriendlyName = friendlyName, ApiVersion = apiVersion, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceFallbackMethod = voiceFallbackMethod, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, VoiceCallerIdLookup = voiceCallerIdLookup, SmsUrl = smsUrl, SmsMethod = smsMethod, SmsFallbackUrl = smsFallbackUrl, SmsFallbackMethod = smsFallbackMethod, SmsStatusCallback = smsStatusCallback, MessageStatusCallback = messageStatusCallback, PublicApplicationConnectEnabled = publicApplicationConnectEnabled };
             return Update(options, client);
         }
 
@@ -538,6 +544,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="smsFallbackMethod"> The HTTP method we should use to call `sms_fallback_url`. Can be: `GET` or `POST`. </param>
         /// <param name="smsStatusCallback"> Same as message_status_callback: The URL we should call using a POST method to send status information about SMS messages sent by the application. Deprecated, included for backwards compatibility. </param>
         /// <param name="messageStatusCallback"> The URL we should call using a POST method to send message status information to your application. </param>
+        /// <param name="publicApplicationConnectEnabled"> Whether to allow other Twilio accounts to dial this applicaton using Dial verb. Can be: `true` or `false`. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Application </returns>
         public static async System.Threading.Tasks.Task<ApplicationResource> UpdateAsync(
@@ -558,9 +565,10 @@ namespace Twilio.Rest.Api.V2010.Account
                                                                               Twilio.Http.HttpMethod smsFallbackMethod = null,
                                                                               Uri smsStatusCallback = null,
                                                                               Uri messageStatusCallback = null,
+                                                                              bool? publicApplicationConnectEnabled = null,
                                                                               ITwilioRestClient client = null)
         {
-            var options = new UpdateApplicationOptions(pathSid){ PathAccountSid = pathAccountSid, FriendlyName = friendlyName, ApiVersion = apiVersion, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceFallbackMethod = voiceFallbackMethod, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, VoiceCallerIdLookup = voiceCallerIdLookup, SmsUrl = smsUrl, SmsMethod = smsMethod, SmsFallbackUrl = smsFallbackUrl, SmsFallbackMethod = smsFallbackMethod, SmsStatusCallback = smsStatusCallback, MessageStatusCallback = messageStatusCallback };
+            var options = new UpdateApplicationOptions(pathSid){ PathAccountSid = pathAccountSid, FriendlyName = friendlyName, ApiVersion = apiVersion, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceFallbackMethod = voiceFallbackMethod, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, VoiceCallerIdLookup = voiceCallerIdLookup, SmsUrl = smsUrl, SmsMethod = smsMethod, SmsFallbackUrl = smsFallbackUrl, SmsFallbackMethod = smsFallbackMethod, SmsStatusCallback = smsStatusCallback, MessageStatusCallback = messageStatusCallback, PublicApplicationConnectEnabled = publicApplicationConnectEnabled };
             return await UpdateAsync(options, client);
         }
         #endif
@@ -662,6 +670,10 @@ namespace Twilio.Rest.Api.V2010.Account
         ///<summary> The URL we call when the phone number assigned to this application receives a call. </summary> 
         [JsonProperty("voice_url")]
         public Uri VoiceUrl { get; private set; }
+
+        ///<summary> Whether to allow other Twilio accounts to dial this applicaton using Dial verb. Can be: `true` or `false`. </summary> 
+        [JsonProperty("public_application_connect_enabled")]
+        public bool? PublicApplicationConnectEnabled { get; private set; }
 
 
 

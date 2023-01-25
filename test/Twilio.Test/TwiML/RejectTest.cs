@@ -52,6 +52,22 @@ namespace Twilio.Tests.TwiML
         }
 
         [Test]
+        public void TestElementWithChildren()
+        {
+            var elem = new Reject();
+
+            elem.Parameter("name", "value");
+
+            Assert.AreEqual(
+                "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
+                "<Reject>" + Environment.NewLine +
+                "  <Parameter name=\"name\" value=\"value\"></Parameter>" + Environment.NewLine +
+                "</Reject>",
+                elem.ToString()
+            );
+        }
+
+        [Test]
         public void TestElementWithTextNode()
         {
             var elem = new Reject();
@@ -75,6 +91,24 @@ namespace Twilio.Tests.TwiML
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
                 "<Reject>" + Environment.NewLine +
                 "  <generic-tag tag=\"True\">Content</generic-tag>" + Environment.NewLine +
+                "</Reject>",
+                elem.ToString()
+            );
+        }
+
+        [Test]
+        public void TestAllowGenericChildrenOfChildNodes()
+        {
+            var elem = new Reject();
+            var child = new Parameter();
+            elem.Nest(child).AddChild("generic-tag").SetOption("tag", true).AddText("Content");
+
+            Assert.AreEqual(
+                "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
+                "<Reject>" + Environment.NewLine +
+                "  <Parameter>" + Environment.NewLine +
+                "    <generic-tag tag=\"True\">Content</generic-tag>" + Environment.NewLine +
+                "  </Parameter>" + Environment.NewLine +
                 "</Reject>",
                 elem.ToString()
             );

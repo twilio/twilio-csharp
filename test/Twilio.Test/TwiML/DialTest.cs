@@ -172,6 +172,17 @@ namespace Twilio.Tests.TwiML
                 1
             );
 
+            elem.Application(
+                "application_sid",
+                new Uri("https://example.com"),
+                Twilio.Http.HttpMethod.Get,
+                Promoter.ListOfOne(Application.EventEnum.Initiated),
+                new Uri("https://example.com"),
+                Twilio.Http.HttpMethod.Get,
+                "customer_id",
+                true
+            );
+
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
                 "<Dial>" + Environment.NewLine +
@@ -181,6 +192,7 @@ namespace Twilio.Tests.TwiML
                 "  <Queue url=\"https://example.com\" method=\"GET\" reservationSid=\"reservation_sid\" postWorkActivitySid=\"post_work_activity_sid\">name</Queue>" + Environment.NewLine +
                 "  <Sim>DEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</Sim>" + Environment.NewLine +
                 "  <Sip username=\"username\" password=\"password\" url=\"https://example.com\" method=\"GET\" statusCallbackEvent=\"initiated\" statusCallback=\"https://example.com\" statusCallbackMethod=\"GET\" machineDetection=\"machine_detection\" amdStatusCallbackMethod=\"GET\" amdStatusCallback=\"amd_status_callback\" machineDetectionTimeout=\"1\" machineDetectionSpeechThreshold=\"1\" machineDetectionSpeechEndThreshold=\"1\" machineDetectionSilenceTimeout=\"1\">https://example.com</Sip>" + Environment.NewLine +
+                "  <Application url=\"https://example.com\" method=\"GET\" statusCallbackEvent=\"initiated\" statusCallback=\"https://example.com\" statusCallbackMethod=\"GET\" customerId=\"customer_id\" copyParentTo=\"true\">application_sid</Application>" + Environment.NewLine +
                 "</Dial>",
                 elem.ToString()
             );

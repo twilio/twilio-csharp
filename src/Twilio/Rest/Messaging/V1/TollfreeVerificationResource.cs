@@ -125,6 +125,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="businessContactLastName"> The last name of the contact for the business or organization using the Tollfree number. </param>
         /// <param name="businessContactEmail"> The email address of the contact for the business or organization using the Tollfree number. </param>
         /// <param name="businessContactPhone"> The phone number of the contact for the business or organization using the Tollfree number. </param>
+        /// <param name="externalReferenceId"> An optional external reference ID supplied by customer and echoed back on status retrieval. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of TollfreeVerification </returns>
         public static TollfreeVerificationResource Create(
@@ -150,9 +151,10 @@ namespace Twilio.Rest.Messaging.V1
                                           string businessContactLastName = null,
                                           string businessContactEmail = null,
                                           Types.PhoneNumber businessContactPhone = null,
+                                          string externalReferenceId = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new CreateTollfreeVerificationOptions(businessName, businessWebsite, notificationEmail, useCaseCategories, useCaseSummary, productionMessageSample, optInImageUrls, optInType, messageVolume, tollfreePhoneNumberSid){  CustomerProfileSid = customerProfileSid, BusinessStreetAddress = businessStreetAddress, BusinessStreetAddress2 = businessStreetAddress2, BusinessCity = businessCity, BusinessStateProvinceRegion = businessStateProvinceRegion, BusinessPostalCode = businessPostalCode, BusinessCountry = businessCountry, AdditionalInformation = additionalInformation, BusinessContactFirstName = businessContactFirstName, BusinessContactLastName = businessContactLastName, BusinessContactEmail = businessContactEmail, BusinessContactPhone = businessContactPhone };
+            var options = new CreateTollfreeVerificationOptions(businessName, businessWebsite, notificationEmail, useCaseCategories, useCaseSummary, productionMessageSample, optInImageUrls, optInType, messageVolume, tollfreePhoneNumberSid){  CustomerProfileSid = customerProfileSid, BusinessStreetAddress = businessStreetAddress, BusinessStreetAddress2 = businessStreetAddress2, BusinessCity = businessCity, BusinessStateProvinceRegion = businessStateProvinceRegion, BusinessPostalCode = businessPostalCode, BusinessCountry = businessCountry, AdditionalInformation = additionalInformation, BusinessContactFirstName = businessContactFirstName, BusinessContactLastName = businessContactLastName, BusinessContactEmail = businessContactEmail, BusinessContactPhone = businessContactPhone, ExternalReferenceId = externalReferenceId };
             return Create(options, client);
         }
 
@@ -180,6 +182,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="businessContactLastName"> The last name of the contact for the business or organization using the Tollfree number. </param>
         /// <param name="businessContactEmail"> The email address of the contact for the business or organization using the Tollfree number. </param>
         /// <param name="businessContactPhone"> The phone number of the contact for the business or organization using the Tollfree number. </param>
+        /// <param name="externalReferenceId"> An optional external reference ID supplied by customer and echoed back on status retrieval. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TollfreeVerification </returns>
         public static async System.Threading.Tasks.Task<TollfreeVerificationResource> CreateAsync(
@@ -205,9 +208,10 @@ namespace Twilio.Rest.Messaging.V1
                                                                                   string businessContactLastName = null,
                                                                                   string businessContactEmail = null,
                                                                                   Types.PhoneNumber businessContactPhone = null,
+                                                                                  string externalReferenceId = null,
                                                                                   ITwilioRestClient client = null)
         {
-        var options = new CreateTollfreeVerificationOptions(businessName, businessWebsite, notificationEmail, useCaseCategories, useCaseSummary, productionMessageSample, optInImageUrls, optInType, messageVolume, tollfreePhoneNumberSid){  CustomerProfileSid = customerProfileSid, BusinessStreetAddress = businessStreetAddress, BusinessStreetAddress2 = businessStreetAddress2, BusinessCity = businessCity, BusinessStateProvinceRegion = businessStateProvinceRegion, BusinessPostalCode = businessPostalCode, BusinessCountry = businessCountry, AdditionalInformation = additionalInformation, BusinessContactFirstName = businessContactFirstName, BusinessContactLastName = businessContactLastName, BusinessContactEmail = businessContactEmail, BusinessContactPhone = businessContactPhone };
+        var options = new CreateTollfreeVerificationOptions(businessName, businessWebsite, notificationEmail, useCaseCategories, useCaseSummary, productionMessageSample, optInImageUrls, optInType, messageVolume, tollfreePhoneNumberSid){  CustomerProfileSid = customerProfileSid, BusinessStreetAddress = businessStreetAddress, BusinessStreetAddress2 = businessStreetAddress2, BusinessCity = businessCity, BusinessStateProvinceRegion = businessStateProvinceRegion, BusinessPostalCode = businessPostalCode, BusinessCountry = businessCountry, AdditionalInformation = additionalInformation, BusinessContactFirstName = businessContactFirstName, BusinessContactLastName = businessContactLastName, BusinessContactEmail = businessContactEmail, BusinessContactPhone = businessContactPhone, ExternalReferenceId = externalReferenceId };
             return await CreateAsync(options, client);
         }
         #endif
@@ -695,6 +699,10 @@ namespace Twilio.Rest.Messaging.V1
         ///<summary> The URLs of the documents associated with the Tollfree Verification resource. </summary> 
         [JsonProperty("resource_links")]
         public object ResourceLinks { get; private set; }
+
+        ///<summary> An optional external reference ID supplied by customer and echoed back on status retrieval. </summary> 
+        [JsonProperty("external_reference_id")]
+        public string ExternalReferenceId { get; private set; }
 
 
 
