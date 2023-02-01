@@ -353,19 +353,19 @@ namespace Twilio.Rest.Supersim.V1
         }
 
     
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string that we created to identify the SMS Command resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the SMS Command resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The SID of the SIM that this SMS Command was sent to or from </summary> 
+        ///<summary> The SID of the [SIM](https://www.twilio.com/docs/iot/supersim/api/sim-resource) that this SMS Command was sent to or from. </summary> 
         [JsonProperty("sim_sid")]
         public string SimSid { get; private set; }
 
-        ///<summary> The message body of the SMS Command sent to or from the SIM </summary> 
+        ///<summary> The message body of the SMS Command sent to or from the SIM. For text mode messages, this can be up to 160 characters. </summary> 
         [JsonProperty("payload")]
         public string Payload { get; private set; }
 
@@ -377,15 +377,15 @@ namespace Twilio.Rest.Supersim.V1
         [JsonProperty("direction")]
         public SmsCommandResource.DirectionEnum Direction { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was created </summary> 
+        ///<summary> The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was last updated </summary> 
+        ///<summary> The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> The absolute URL of the SMS Command resource </summary> 
+        ///<summary> The absolute URL of the SMS Command resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 

@@ -550,7 +550,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
-        ///<summary> The communication channel the sample was captured. It can be: voice, sms, chat, alexa, google-assistant, or slack. If not included the value will be null </summary> 
+        ///<summary> The communication channel the sample was captured. It can be: *voice*, *sms*, *chat*, *alexa*, *google-assistant*, or *slack*. If not included the value will be null </summary> 
         [JsonProperty("source_channel")]
         public string SourceChannel { get; private set; }
 

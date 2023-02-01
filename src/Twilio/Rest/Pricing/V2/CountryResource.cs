@@ -234,27 +234,27 @@ namespace Twilio.Rest.Pricing.V2
         }
 
     
-        ///<summary> The name of the country </summary> 
+        ///<summary> The name of the country. </summary> 
         [JsonProperty("country")]
         public string Country { get; private set; }
 
-        ///<summary> The ISO country code </summary> 
+        ///<summary> The [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). </summary> 
         [JsonProperty("iso_country")]
         public string IsoCountry { get; private set; }
 
-        ///<summary> The list of TerminatingPrefixPrice records </summary> 
+        ///<summary> The list of [TerminatingPrefixPrice](https://www.twilio.com/docs/voice/pricing#outbound-prefix-price-with-origin) records. </summary> 
         [JsonProperty("terminating_prefix_prices")]
         public List<OutboundPrefixPriceWithOrigin> TerminatingPrefixPrices { get; private set; }
 
-        ///<summary> The list of OriginatingCallPrice records </summary> 
+        ///<summary> The list of [OriginatingCallPrice](https://www.twilio.com/docs/voice/pricing#inbound-call-price) records. </summary> 
         [JsonProperty("originating_call_prices")]
         public List<InboundCallPrice> OriginatingCallPrices { get; private set; }
 
-        ///<summary> The currency in which prices are measured, in ISO 4127 format (e.g. usd, eur, jpy) </summary> 
+        ///<summary> The currency in which prices are measured, specified in [ISO 4127](https://www.iso.org/iso/home/standards/currency_codes.htm) format (e.g. `usd`, `eur`, `jpy`). </summary> 
         [JsonProperty("price_unit")]
         public string PriceUnit { get; private set; }
 
-        ///<summary> The absolute URL of the resource </summary> 
+        ///<summary> The absolute URL of the resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 

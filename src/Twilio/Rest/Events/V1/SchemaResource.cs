@@ -114,7 +114,7 @@ namespace Twilio.Rest.Events.V1
         }
 
     
-        ///<summary> Schema Identifier. </summary> 
+        ///<summary> The unique identifier of the schema. Each schema can have multiple versions, that share the same id. </summary> 
         [JsonProperty("id")]
         public string Id { get; private set; }
 
@@ -122,15 +122,15 @@ namespace Twilio.Rest.Events.V1
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
-        ///<summary> Nested resource URLs. </summary> 
+        ///<summary> Contains a dictionary of URL links to nested resources of this schema. </summary> 
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
 
-        ///<summary> The date that the latest schema version was created. </summary> 
+        ///<summary> The date that the latest schema version was created, given in ISO 8601 format. </summary> 
         [JsonProperty("latest_version_date_created")]
         public DateTime? LatestVersionDateCreated { get; private set; }
 
-        ///<summary> Latest schema version. </summary> 
+        ///<summary> The latest version published of this schema. </summary> 
         [JsonProperty("latest_version")]
         public int? LatestVersion { get; private set; }
 

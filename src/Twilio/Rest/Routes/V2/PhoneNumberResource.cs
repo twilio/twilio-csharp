@@ -190,23 +190,23 @@ namespace Twilio.Rest.Routes.V2
         }
 
     
-        ///<summary> The phone number </summary> 
+        ///<summary> The phone number in E.164 format </summary> 
         [JsonProperty("phone_number")]
         public string PhoneNumber { get; private set; }
 
-        ///<summary> The absolute URL of the resource </summary> 
+        ///<summary> The absolute URL of the resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
-        ///<summary> A string that uniquely identifies the Inbound Processing Region assignments for this phone number. </summary> 
+        ///<summary> A 34 character string that uniquely identifies the Inbound Processing Region assignments for this phone number. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> Account Sid. </summary> 
+        ///<summary> The unique SID identifier of the Account. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> A human readable description of the Inbound Processing Region assignments for this phone number. </summary> 
+        ///<summary> A human readable description of the Inbound Processing Region assignments for this phone number, up to 64 characters. </summary> 
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
 
@@ -214,11 +214,11 @@ namespace Twilio.Rest.Routes.V2
         [JsonProperty("voice_region")]
         public string VoiceRegion { get; private set; }
 
-        ///<summary> The date that this phone number was assigned an Inbound Processing Region. </summary> 
+        ///<summary> The date that this phone number was assigned an Inbound Processing Region, given in ISO 8601 format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The date that the Inbound Processing Region was updated for this phone number. </summary> 
+        ///<summary> The date that the Inbound Processing Region was updated for this phone number, given in ISO 8601 format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 

@@ -559,19 +559,19 @@ namespace Twilio.Rest.Conversations.V1
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The unique ID of the Account the address belongs to. </summary> 
+        ///<summary> The unique ID of the [Account](https://www.twilio.com/docs/iam/api/account) the address belongs to </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> Type of Address. </summary> 
+        ///<summary> Type of Address, value can be `whatsapp` or `sms`. </summary> 
         [JsonProperty("type")]
         public string Type { get; private set; }
 
-        ///<summary> The unique address to be configured. </summary> 
+        ///<summary> The unique address to be configured. The address can be a whatsapp address or phone number </summary> 
         [JsonProperty("address")]
         public string Address { get; private set; }
 
-        ///<summary> The human-readable name of this configuration. </summary> 
+        ///<summary> The human-readable name of this configuration, limited to 256 characters. Optional. </summary> 
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
 
@@ -587,7 +587,7 @@ namespace Twilio.Rest.Conversations.V1
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> An absolute URL for this address configuration. </summary> 
+        ///<summary> An absolute API resource URL for this address configuration. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 

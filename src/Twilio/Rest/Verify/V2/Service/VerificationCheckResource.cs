@@ -153,19 +153,19 @@ namespace Twilio.Rest.Verify.V2.Service
         }
 
     
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string that we created to identify the VerificationCheck resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The SID of the Service that the resource is associated with </summary> 
+        ///<summary> The SID of the [Service](https://www.twilio.com/docs/verify/api/service) the resource is associated with. </summary> 
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
 
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the VerificationCheck resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The phone number or email being verified </summary> 
+        ///<summary> The phone number or [email](https://www.twilio.com/docs/verify/email) being verified. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164). </summary> 
         [JsonProperty("to")]
         public string To { get; private set; }
 
@@ -173,31 +173,31 @@ namespace Twilio.Rest.Verify.V2.Service
         [JsonProperty("channel")]
         public VerificationCheckResource.ChannelEnum Channel { get; private set; }
 
-        ///<summary> The status of the verification resource </summary> 
+        ///<summary> The status of the verification. Can be: `pending`, `approved`, or `canceled`. </summary> 
         [JsonProperty("status")]
         public string Status { get; private set; }
 
-        ///<summary> Whether the verification was successful </summary> 
+        ///<summary> Use \"status\" instead. Legacy property indicating whether the verification was successful. </summary> 
         [JsonProperty("valid")]
         public bool? Valid { get; private set; }
 
-        ///<summary> The amount of the associated PSD2 compliant transaction. </summary> 
+        ///<summary> The amount of the associated PSD2 compliant transaction. Requires the PSD2 Service flag enabled. </summary> 
         [JsonProperty("amount")]
         public string Amount { get; private set; }
 
-        ///<summary> The payee of the associated PSD2 compliant transaction </summary> 
+        ///<summary> The payee of the associated PSD2 compliant transaction. Requires the PSD2 Service flag enabled. </summary> 
         [JsonProperty("payee")]
         public string Payee { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the Verification Check resource was created </summary> 
+        ///<summary> The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time in GMT when the Verification Check resource was created. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the Verification Check resource was last updated </summary> 
+        ///<summary> The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time in GMT when the Verification Check resource was last updated. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> List of error codes as a result of attempting a verification using the `sna` channel. </summary> 
+        ///<summary> List of error codes as a result of attempting a verification using the `sna` channel. The error codes are chronologically ordered, from the first attempt to the latest attempt. This will be an empty list if no errors occured or `null` if the last channel used wasn't `sna`. </summary> 
         [JsonProperty("sna_attempts_error_codes")]
         public List<object> SnaAttemptsErrorCodes { get; private set; }
 

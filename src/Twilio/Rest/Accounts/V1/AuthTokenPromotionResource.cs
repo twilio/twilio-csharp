@@ -111,19 +111,19 @@ namespace Twilio.Rest.Accounts.V1
         }
 
     
-        ///<summary> The SID of the Account that the secondary Auth Token was created for </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that the secondary Auth Token was created for. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The promoted Auth Token </summary> 
+        ///<summary> The promoted Auth Token that must be used to authenticate future API requests. </summary> 
         [JsonProperty("auth_token")]
         public string AuthToken { get; private set; }
 
-        ///<summary> The ISO 8601 formatted date and time in UTC when the resource was created </summary> 
+        ///<summary> The date and time in UTC when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The ISO 8601 formatted date and time in UTC when the resource was last updated </summary> 
+        ///<summary> The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 

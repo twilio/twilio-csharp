@@ -564,51 +564,51 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         }
 
     
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string that we created to identify the Member resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Member resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The SID of the Channel for the member </summary> 
+        ///<summary> The SID of the [Channel](https://www.twilio.com/docs/chat/channels) the Member resource belongs to. </summary> 
         [JsonProperty("channel_sid")]
         public string ChannelSid { get; private set; }
 
-        ///<summary> The SID of the Service that the resource is associated with </summary> 
+        ///<summary> The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) the Member resource is associated with. </summary> 
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
 
-        ///<summary> The string that identifies the resource's User </summary> 
+        ///<summary> The application-defined string that uniquely identifies the resource's [User](https://www.twilio.com/docs/chat/rest/user-resource) within the [Service](https://www.twilio.com/docs/chat/rest/service-resource). See [access tokens](https://www.twilio.com/docs/chat/create-tokens) for more info. </summary> 
         [JsonProperty("identity")]
         public string Identity { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was created </summary> 
+        ///<summary> The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was last updated </summary> 
+        ///<summary> The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> The SID of the Role assigned to the member </summary> 
+        ///<summary> The SID of the [Role](https://www.twilio.com/docs/chat/rest/role-resource) assigned to the member. </summary> 
         [JsonProperty("role_sid")]
         public string RoleSid { get; private set; }
 
-        ///<summary> The index of the last Message that the Member has read within the Channel </summary> 
+        ///<summary> The index of the last [Message](https://www.twilio.com/docs/chat/rest/message-resource) in the [Channel](https://www.twilio.com/docs/chat/channels) that the Member has read. </summary> 
         [JsonProperty("last_consumed_message_index")]
         public int? LastConsumedMessageIndex { get; private set; }
 
-        ///<summary> The ISO 8601 based timestamp string that represents the datetime of the last Message read event for the Member within the Channel </summary> 
+        ///<summary> The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp of the last [Message](https://www.twilio.com/docs/chat/rest/message-resource) read event for the Member within the [Channel](https://www.twilio.com/docs/chat/channels). </summary> 
         [JsonProperty("last_consumption_timestamp")]
         public DateTime? LastConsumptionTimestamp { get; private set; }
 
-        ///<summary> The absolute URL of the Member resource </summary> 
+        ///<summary> The absolute URL of the Member resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
-        ///<summary> The JSON string that stores application-specific data </summary> 
+        ///<summary> The JSON string that stores application-specific data. If attributes have not been set, `{}` is returned. </summary> 
         [JsonProperty("attributes")]
         public string Attributes { get; private set; }
 

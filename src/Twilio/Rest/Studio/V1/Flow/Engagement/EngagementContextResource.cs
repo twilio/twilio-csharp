@@ -119,23 +119,23 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement
         }
 
     
-        ///<summary> Account SID </summary> 
+        ///<summary> The SID of the Account. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> Flow state </summary> 
+        ///<summary> As your flow executes, we save the state in what's called the Flow Context. Any data in the flow context can be accessed by your widgets as variables, either in configuration fields or in text areas as variable substitution. </summary> 
         [JsonProperty("context")]
         public object Context { get; private set; }
 
-        ///<summary> Engagement SID </summary> 
+        ///<summary> The SID of the Engagement. </summary> 
         [JsonProperty("engagement_sid")]
         public string EngagementSid { get; private set; }
 
-        ///<summary> Flow SID </summary> 
+        ///<summary> The SID of the Flow. </summary> 
         [JsonProperty("flow_sid")]
         public string FlowSid { get; private set; }
 
-        ///<summary> The URL of the resource </summary> 
+        ///<summary> The URL of the resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 

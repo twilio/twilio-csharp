@@ -475,7 +475,7 @@ namespace Twilio.Rest.Api.V2010.Account
         }
 
     
-        ///<summary> The RFC 2822 date and time in GMT that this resource was last updated </summary> 
+        ///<summary> The date and time in GMT that this resource was last updated, specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
@@ -483,31 +483,31 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonProperty("current_size")]
         public int? CurrentSize { get; private set; }
 
-        ///<summary> A string that you assigned to describe this resource </summary> 
+        ///<summary> A string that you assigned to describe this resource. </summary> 
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
 
-        ///<summary> The URI of this resource, relative to `https://api.twilio.com` </summary> 
+        ///<summary> The URI of this resource, relative to `https://api.twilio.com`. </summary> 
         [JsonProperty("uri")]
         public string Uri { get; private set; }
 
-        ///<summary> The SID of the Account that created this resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created this Queue resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> Average wait time of members in the queue </summary> 
+        ///<summary>  The average wait time in seconds of the members in this queue. This is calculated at the time of the request. </summary> 
         [JsonProperty("average_wait_time")]
         public int? AverageWaitTime { get; private set; }
 
-        ///<summary> The unique string that identifies this resource </summary> 
+        ///<summary> The unique string that that we created to identify this Queue resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The RFC 2822 date and time in GMT that this resource was created </summary> 
+        ///<summary> The date and time in GMT that this resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The max number of calls allowed in the queue </summary> 
+        ///<summary>  The maximum number of calls that can be in the queue. The default is 100 and the maximum is 5000. </summary> 
         [JsonProperty("max_size")]
         public int? MaxSize { get; private set; }
 

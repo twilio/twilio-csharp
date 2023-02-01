@@ -248,7 +248,7 @@ namespace Twilio.Rest.Verify.V2
         }
 
     
-        ///<summary> The unique string that identifies the resource. </summary> 
+        ///<summary> The unique string that we created to identify the SafeList resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 

@@ -547,67 +547,67 @@ namespace Twilio.Rest.Api.V2010.Account
         }
 
     
-        ///<summary> The SID of the Account that is responsible for the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that is responsible for the Address resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The city in which the address is located </summary> 
+        ///<summary> The city in which the address is located. </summary> 
         [JsonProperty("city")]
         public string City { get; private set; }
 
-        ///<summary> The name associated with the address </summary> 
+        ///<summary> The name associated with the address.This property has a maximum length of 16 4-byte characters, or 21 3-byte characters. </summary> 
         [JsonProperty("customer_name")]
         public string CustomerName { get; private set; }
 
-        ///<summary> The RFC 2822 date and time in GMT that the resource was created </summary> 
+        ///<summary> The date and time in GMT that the resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The RFC 2822 date and time in GMT that the resource was last updated </summary> 
+        ///<summary> The date and time in GMT that the resource was last updated specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> The string that you assigned to describe the resource </summary> 
+        ///<summary> The string that you assigned to describe the resource. </summary> 
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
 
-        ///<summary> The ISO country code of the address </summary> 
+        ///<summary> The ISO country code of the address. </summary> 
         [JsonProperty("iso_country")]
         public string IsoCountry { get; private set; }
 
-        ///<summary> The postal code of the address </summary> 
+        ///<summary> The postal code of the address. </summary> 
         [JsonProperty("postal_code")]
         public string PostalCode { get; private set; }
 
-        ///<summary> The state or region of the address </summary> 
+        ///<summary> The state or region of the address. </summary> 
         [JsonProperty("region")]
         public string Region { get; private set; }
 
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string that that we created to identify the Address resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The number and street address of the address </summary> 
+        ///<summary> The number and street address of the address. </summary> 
         [JsonProperty("street")]
         public string Street { get; private set; }
 
-        ///<summary> The URI of the resource, relative to `https://api.twilio.com` </summary> 
+        ///<summary> The URI of the resource, relative to `https://api.twilio.com`. </summary> 
         [JsonProperty("uri")]
         public string Uri { get; private set; }
 
-        ///<summary> Whether emergency calling has been enabled on this number </summary> 
+        ///<summary> Whether emergency calling has been enabled on this number. </summary> 
         [JsonProperty("emergency_enabled")]
         public bool? EmergencyEnabled { get; private set; }
 
-        ///<summary> Whether the address has been validated to comply with local regulation </summary> 
+        ///<summary> Whether the address has been validated to comply with local regulation. In countries that require valid addresses, an invalid address will not be accepted. `true` indicates the Address has been validated. `false` indicate the country doesn't require validation or the Address is not valid. </summary> 
         [JsonProperty("validated")]
         public bool? Validated { get; private set; }
 
-        ///<summary> Whether the address has been verified to comply with regulation </summary> 
+        ///<summary> Whether the address has been verified to comply with regulation. In countries that require valid addresses, an invalid address will not be accepted. `true` indicates the Address has been verified. `false` indicate the country doesn't require verified or the Address is not valid. </summary> 
         [JsonProperty("verified")]
         public bool? Verified { get; private set; }
 
-        ///<summary> The additional number and street address of the address </summary> 
+        ///<summary> The additional number and street address of the address. </summary> 
         [JsonProperty("street_secondary")]
         public string StreetSecondary { get; private set; }
 

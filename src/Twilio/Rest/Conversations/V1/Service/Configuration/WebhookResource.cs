@@ -211,7 +211,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Configuration
         }
 
     
-        ///<summary> The unique ID of the Account responsible for this service. </summary> 
+        ///<summary> The unique ID of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this service. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
@@ -227,7 +227,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Configuration
         [JsonProperty("post_webhook_url")]
         public Uri PostWebhookUrl { get; private set; }
 
-        ///<summary> The list of events that your configured webhook targets will receive. Events not configured here will not fire. </summary> 
+        ///<summary> The list of events that your configured webhook targets will receive. Events not configured here will not fire. Possible values are `onParticipantAdd`, `onParticipantAdded`, `onDeliveryUpdated`, `onConversationUpdated`, `onConversationRemove`, `onParticipantRemove`, `onConversationUpdate`, `onMessageAdd`, `onMessageRemoved`, `onParticipantUpdated`, `onConversationAdded`, `onMessageAdded`, `onConversationAdd`, `onConversationRemoved`, `onParticipantUpdate`, `onMessageRemove`, `onMessageUpdated`, `onParticipantRemoved`, `onMessageUpdate` or `onConversationStateUpdated`. </summary> 
         [JsonProperty("filters")]
         public List<string> Filters { get; private set; }
 
@@ -235,7 +235,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Configuration
         [JsonProperty("method")]
         public WebhookResource.MethodEnum Method { get; private set; }
 
-        ///<summary> An absolute URL for this webhook. </summary> 
+        ///<summary> An absolute API resource URL for this webhook. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 

@@ -445,7 +445,7 @@ namespace Twilio.Rest.Video.V1
         }
 
     
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Composition resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
@@ -453,43 +453,43 @@ namespace Twilio.Rest.Video.V1
         [JsonProperty("status")]
         public CompositionResource.StatusEnum Status { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was created </summary> 
+        ///<summary> The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> Date when the media processing task finished </summary> 
+        ///<summary> The date and time in GMT when the composition's media processing task finished, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_completed")]
         public DateTime? DateCompleted { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the composition generated media was deleted </summary> 
+        ///<summary> The date and time in GMT when the composition generated media was deleted, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_deleted")]
         public DateTime? DateDeleted { get; private set; }
 
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string that we created to identify the Composition resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The SID of the Group Room that generated the audio and video tracks used in the composition </summary> 
+        ///<summary> The SID of the Group Room that generated the audio and video tracks used in the composition. All media sources included in a composition must belong to the same Group Room. </summary> 
         [JsonProperty("room_sid")]
         public string RoomSid { get; private set; }
 
-        ///<summary> The array of track names to include in the composition </summary> 
+        ///<summary> The array of track names to include in the composition. The composition includes all audio sources specified in `audio_sources` except those specified in `audio_sources_excluded`. The track names in this property can include an asterisk as a wild card character, which matches zero or more characters in a track name. For example, `student*` includes tracks named `student` as well as `studentTeam`. </summary> 
         [JsonProperty("audio_sources")]
         public List<string> AudioSources { get; private set; }
 
-        ///<summary> The array of track names to exclude from the composition </summary> 
+        ///<summary> The array of track names to exclude from the composition. The composition includes all audio sources specified in `audio_sources` except for those specified in `audio_sources_excluded`. The track names in this property can include an asterisk as a wild card character, which matches zero or more characters in a track name. For example, `student*` excludes `student` as well as `studentTeam`. This parameter can also be empty. </summary> 
         [JsonProperty("audio_sources_excluded")]
         public List<string> AudioSourcesExcluded { get; private set; }
 
-        ///<summary> An object that describes the video layout of the composition </summary> 
+        ///<summary> An object that describes the video layout of the composition in terms of regions. See [Specifying Video Layouts](https://www.twilio.com/docs/video/api/compositions-resource#specifying-video-layouts) for more info. </summary> 
         [JsonProperty("video_layout")]
         public object VideoLayout { get; private set; }
 
-        ///<summary> The dimensions of the video image in pixels expressed as columns (width) and rows (height) </summary> 
+        ///<summary> The dimensions of the video image in pixels expressed as columns (width) and rows (height). The string's format is `{width}x{height}`, such as `640x480`. </summary> 
         [JsonProperty("resolution")]
         public string Resolution { get; private set; }
 
-        ///<summary> Whether to remove intervals with no media </summary> 
+        ///<summary> Whether to remove intervals with no media, as specified in the POST request that created the composition. Compositions with `trim` enabled are shorter when the Room is created and no Participant joins for a while as well as if all the Participants leave the room and join later, because those gaps will be removed. See [Specifying Video Layouts](https://www.twilio.com/docs/video/api/compositions-resource#specifying-video-layouts) for more info. </summary> 
         [JsonProperty("trim")]
         public bool? Trim { get; private set; }
 
@@ -497,35 +497,35 @@ namespace Twilio.Rest.Video.V1
         [JsonProperty("format")]
         public CompositionResource.FormatEnum Format { get; private set; }
 
-        ///<summary> The average bit rate of the composition's media </summary> 
+        ///<summary> The average bit rate of the composition's media. </summary> 
         [JsonProperty("bitrate")]
         public int? Bitrate { get; private set; }
 
-        ///<summary> The size of the composed media file in bytes </summary> 
+        ///<summary> The size of the composed media file in bytes. </summary> 
         [JsonProperty("size")]
         public long? Size { get; private set; }
 
-        ///<summary> The duration of the composition's media file in seconds </summary> 
+        ///<summary> The duration of the composition's media file in seconds. </summary> 
         [JsonProperty("duration")]
         public int? Duration { get; private set; }
 
-        ///<summary> The URL of the media file associated with the composition when stored externally </summary> 
+        ///<summary> The URL of the media file associated with the composition when stored externally. See [External S3 Compositions](/docs/video/api/external-s3-compositions) for more details. </summary> 
         [JsonProperty("media_external_location")]
         public Uri MediaExternalLocation { get; private set; }
 
-        ///<summary> The URL called to send status information on every composition event. </summary> 
+        ///<summary> The URL called using the `status_callback_method` to send status information on every composition event. </summary> 
         [JsonProperty("status_callback")]
         public Uri StatusCallback { get; private set; }
 
-        ///<summary> The HTTP method used to call `status_callback` </summary> 
+        ///<summary> The HTTP method used to call `status_callback`. Can be: `POST` or `GET`, defaults to `POST`. </summary> 
         [JsonProperty("status_callback_method")]
         public Twilio.Http.HttpMethod StatusCallbackMethod { get; private set; }
 
-        ///<summary> The absolute URL of the resource </summary> 
+        ///<summary> The absolute URL of the resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
-        ///<summary> The URL of the media file associated with the composition </summary> 
+        ///<summary> The URL of the media file associated with the composition. </summary> 
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
 

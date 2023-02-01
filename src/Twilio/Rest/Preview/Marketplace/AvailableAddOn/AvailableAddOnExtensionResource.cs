@@ -245,27 +245,27 @@ namespace Twilio.Rest.Preview.Marketplace.AvailableAddOn
         }
 
     
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string that we created to identify the AvailableAddOnExtension resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The SID of the AvailableAddOn resource to which this extension applies </summary> 
+        ///<summary> The SID of the AvailableAddOn resource to which this extension applies. </summary> 
         [JsonProperty("available_add_on_sid")]
         public string AvailableAddOnSid { get; private set; }
 
-        ///<summary> The string that you assigned to describe the resource </summary> 
+        ///<summary> The string that you assigned to describe the resource. </summary> 
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
 
-        ///<summary> The name of the Extension's Product </summary> 
+        ///<summary> The name of the Product this Extension is used within. </summary> 
         [JsonProperty("product_name")]
         public string ProductName { get; private set; }
 
-        ///<summary> An application-defined string that uniquely identifies the resource </summary> 
+        ///<summary> An application-defined string that uniquely identifies the resource. </summary> 
         [JsonProperty("unique_name")]
         public string UniqueName { get; private set; }
 
-        ///<summary> The absolute URL of the resource </summary> 
+        ///<summary> The absolute URL of the resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 

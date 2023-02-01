@@ -1,6 +1,39 @@
 twilio-csharp Changelog
 =======================
 
+[2023-01-25] Version 6.2.2
+--------------------------
+**Library - Docs**
+- [PR #666](https://github.com/twilio/twilio-csharp/pull/666): use long property descriptions if available. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+**Api**
+- Add `public_application_connect_enabled` param to Application resource
+
+**Messaging**
+- Add new tollfree verification API property (ExternalReferenceId)]
+
+**Verify**
+- Add `device_ip` parameter and channel `auto` for sna/sms orchestration
+
+**Twiml**
+- Add support for `<Application>` noun and `<ApplicationSid>` noun, nested `<Parameter>` to `<Hangup>` and `<Leave>` verb
+
+
+[2023-01-11] Version 6.2.1
+--------------------------
+**Library - Fix**
+- [PR #663](https://github.com/twilio/twilio-csharp/pull/663): fixed header params with postfix before and after in name. Thanks to [@sbansla](https://github.com/sbansla)!
+
+**Conversations**
+- Add support for creating Multi-Channel Rich Content Messages
+
+**Lookups**
+- Changed the no data message for match postal code from `no_data` to `data_not_available` in identity match package
+
+**Messaging**
+- Add update/edit tollfree verification API
+
+
 [2022-12-14] Version 6.2.0
 --------------------------
 **Library - Fix**

@@ -238,23 +238,23 @@ namespace Twilio.Rest.Events.V1
         }
 
     
-        ///<summary> The Event Type identifier. </summary> 
+        ///<summary> A string that uniquely identifies this Event Type. </summary> 
         [JsonProperty("type")]
         public string Type { get; private set; }
 
-        ///<summary> The Schema identifier for this Event Type. </summary> 
+        ///<summary> A string that uniquely identifies the Schema this Event Type adheres to. </summary> 
         [JsonProperty("schema_id")]
         public string SchemaId { get; private set; }
 
-        ///<summary> The date this Event Type was created. </summary> 
+        ///<summary> The date that this Event Type was created, given in ISO 8601 format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The date this Event Type was updated. </summary> 
+        ///<summary> The date that this Event Type was updated, given in ISO 8601 format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> Event Type description. </summary> 
+        ///<summary> A human readable description for this Event Type. </summary> 
         [JsonProperty("description")]
         public string Description { get; private set; }
 

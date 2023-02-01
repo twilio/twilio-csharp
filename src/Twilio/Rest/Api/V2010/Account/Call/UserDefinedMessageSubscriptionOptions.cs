@@ -40,7 +40,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         ///<summary> A unique string value to identify API call. This should be a unique string value per API call and can be a randomly generated. </summary> 
         public string IdempotencyKey { get; set; }
 
-        ///<summary> The HTTP method Twilio will use when requesting the above `Url`. Either `GET` or `POST`. </summary> 
+        ///<summary> The HTTP method Twilio will use when requesting the above `Url`. Either `GET` or `POST`. Default is `POST`. </summary> 
         public Twilio.Http.HttpMethod Method { get; set; }
 
 

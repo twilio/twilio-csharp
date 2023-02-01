@@ -195,19 +195,19 @@ namespace Twilio.Rest.Chat.V1.Service.User
         }
 
     
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the User Channel resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The SID of the Service that the resource is associated with </summary> 
+        ///<summary> The SID of the [Service](https://www.twilio.com/docs/api/chat/rest/services) the resource is associated with. </summary> 
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
 
-        ///<summary> The SID of the Channel the resource belongs to </summary> 
+        ///<summary> The SID of the [Channel](https://www.twilio.com/docs/api/chat/rest/channels) the resource belongs to. </summary> 
         [JsonProperty("channel_sid")]
         public string ChannelSid { get; private set; }
 
-        ///<summary> The SID of the User as a Member in the Channel </summary> 
+        ///<summary> The SID of a [Member](https://www.twilio.com/docs/api/chat/rest/members) that represents the User on the Channel. </summary> 
         [JsonProperty("member_sid")]
         public string MemberSid { get; private set; }
 
@@ -215,15 +215,15 @@ namespace Twilio.Rest.Chat.V1.Service.User
         [JsonProperty("status")]
         public UserChannelResource.ChannelStatusEnum Status { get; private set; }
 
-        ///<summary> The index of the last Message in the Channel the Member has read </summary> 
+        ///<summary> The index of the last [Message](https://www.twilio.com/docs/api/chat/rest/messages) in the [Channel](https://www.twilio.com/docs/api/chat/rest/channels) that the Member has read. </summary> 
         [JsonProperty("last_consumed_message_index")]
         public int? LastConsumedMessageIndex { get; private set; }
 
-        ///<summary> The number of unread Messages in the Channel for the User </summary> 
+        ///<summary> The number of unread Messages in the Channel for the User. Note that retrieving messages on a client endpoint does not mean that messages are consumed or read. See [Consumption Horizon feature](/docs/api/chat/guides/consumption-horizon) to learn how to mark messages as consumed. </summary> 
         [JsonProperty("unread_messages_count")]
         public int? UnreadMessagesCount { get; private set; }
 
-        ///<summary> Absolute URLs to access the Members, Messages , Invites and, if it exists, the last Message for the Channel </summary> 
+        ///<summary> The absolute URLs of the [Members](https://www.twilio.com/docs/chat/api/members), [Messages](https://www.twilio.com/docs/chat/api/messages) , [Invites](https://www.twilio.com/docs/chat/api/invites) and, if it exists, the last [Message](https://www.twilio.com/docs/chat/api/messages) for the Channel. </summary> 
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
 

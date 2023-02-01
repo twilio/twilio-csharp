@@ -220,27 +220,27 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
 
     
-        ///<summary> The unique sid that identifies this account </summary> 
+        ///<summary> The unique id of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The date this resource was created </summary> 
+        ///<summary> The date that this resource was created, given in [RFC 2822](https://www.php.net/manual/en/class.datetime.php#datetime.constants.rfc2822) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The date this resource was last updated </summary> 
+        ///<summary> The date that this resource was last updated, given in [RFC 2822](https://www.php.net/manual/en/class.datetime.php#datetime.constants.rfc2822) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> Issues experienced during the call </summary> 
+        ///<summary> A list of issues experienced during the call. The issues can be: `imperfect-audio`, `dropped-call`, `incorrect-caller-id`, `post-dial-delay`, `digits-not-captured`, `audio-latency`, `unsolicited-call`, or `one-way-audio`. </summary> 
         [JsonProperty("issues")]
         public List<FeedbackResource.IssuesEnum> Issues { get; private set; }
 
-        ///<summary> 1 to 5 quality score </summary> 
+        ///<summary> `1` to `5` quality score where `1` represents imperfect experience and `5` represents a perfect call. </summary> 
         [JsonProperty("quality_score")]
         public int? QualityScore { get; private set; }
 
-        ///<summary> A string that uniquely identifies this feedback resource </summary> 
+        ///<summary> A 34 character string that uniquely identifies this resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 

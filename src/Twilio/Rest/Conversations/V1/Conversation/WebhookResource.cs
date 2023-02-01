@@ -536,23 +536,23 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The unique ID of the Account responsible for this conversation. </summary> 
+        ///<summary> The unique ID of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this conversation. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The unique ID of the Conversation for this webhook. </summary> 
+        ///<summary> The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this webhook. </summary> 
         [JsonProperty("conversation_sid")]
         public string ConversationSid { get; private set; }
 
-        ///<summary> The target of this webhook. </summary> 
+        ///<summary> The target of this webhook: `webhook`, `studio`, `trigger` </summary> 
         [JsonProperty("target")]
         public string Target { get; private set; }
 
-        ///<summary> An absolute URL for this webhook. </summary> 
+        ///<summary> An absolute API resource URL for this webhook. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
-        ///<summary> The configuration of this webhook. </summary> 
+        ///<summary> The configuration of this webhook. Is defined based on target. </summary> 
         [JsonProperty("configuration")]
         public object Configuration { get; private set; }
 

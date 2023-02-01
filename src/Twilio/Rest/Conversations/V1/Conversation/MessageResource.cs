@@ -105,6 +105,8 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// <param name="dateUpdated"> The date that this resource was last updated. `null` if the message has not been edited. </param>
         /// <param name="attributes"> A string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \\\"{}\\\" will be returned. </param>
         /// <param name="mediaSid"> The Media SID to be attached to the new Message. </param>
+        /// <param name="contentSid"> The unique ID of the multi-channel [Rich Content](https://www.twilio.com/docs/content-api) template, required for template-generated messages.  **Note** that if this field is set, `Body` and `MediaSid` parameters are ignored. </param>
+        /// <param name="contentVariables"> A structurally valid JSON string that contains values to resolve Rich Content template variables. </param>
         /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Message </returns>
@@ -116,10 +118,12 @@ namespace Twilio.Rest.Conversations.V1.Conversation
                                           DateTime? dateUpdated = null,
                                           string attributes = null,
                                           string mediaSid = null,
+                                          string contentSid = null,
+                                          string contentVariables = null,
                                           MessageResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new CreateMessageOptions(pathConversationSid){  Author = author, Body = body, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes, MediaSid = mediaSid, XTwilioWebhookEnabled = xTwilioWebhookEnabled };
+            var options = new CreateMessageOptions(pathConversationSid){  Author = author, Body = body, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes, MediaSid = mediaSid, ContentSid = contentSid, ContentVariables = contentVariables, XTwilioWebhookEnabled = xTwilioWebhookEnabled };
             return Create(options, client);
         }
 
@@ -132,6 +136,8 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// <param name="dateUpdated"> The date that this resource was last updated. `null` if the message has not been edited. </param>
         /// <param name="attributes"> A string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \\\"{}\\\" will be returned. </param>
         /// <param name="mediaSid"> The Media SID to be attached to the new Message. </param>
+        /// <param name="contentSid"> The unique ID of the multi-channel [Rich Content](https://www.twilio.com/docs/content-api) template, required for template-generated messages.  **Note** that if this field is set, `Body` and `MediaSid` parameters are ignored. </param>
+        /// <param name="contentVariables"> A structurally valid JSON string that contains values to resolve Rich Content template variables. </param>
         /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Message </returns>
@@ -143,10 +149,12 @@ namespace Twilio.Rest.Conversations.V1.Conversation
                                                                                   DateTime? dateUpdated = null,
                                                                                   string attributes = null,
                                                                                   string mediaSid = null,
+                                                                                  string contentSid = null,
+                                                                                  string contentVariables = null,
                                                                                   MessageResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
                                                                                   ITwilioRestClient client = null)
         {
-        var options = new CreateMessageOptions(pathConversationSid){  Author = author, Body = body, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes, MediaSid = mediaSid, XTwilioWebhookEnabled = xTwilioWebhookEnabled };
+        var options = new CreateMessageOptions(pathConversationSid){  Author = author, Body = body, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes, MediaSid = mediaSid, ContentSid = contentSid, ContentVariables = contentVariables, XTwilioWebhookEnabled = xTwilioWebhookEnabled };
             return await CreateAsync(options, client);
         }
         #endif
@@ -541,11 +549,11 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         }
 
     
-        ///<summary> The unique ID of the Account responsible for this message. </summary> 
+        ///<summary> The unique ID of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this message. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The unique ID of the Conversation for this message. </summary> 
+        ///<summary> The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this message. </summary> 
         [JsonProperty("conversation_sid")]
         public string ConversationSid { get; private set; }
 
@@ -553,27 +561,27 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The index of the message within the Conversation. </summary> 
+        ///<summary> The index of the message within the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource).  Indices may skip numbers, but will always be in order of when the message was received. </summary> 
         [JsonProperty("index")]
         public int? Index { get; private set; }
 
-        ///<summary> The channel specific identifier of the message's author. </summary> 
+        ///<summary> The channel specific identifier of the message's author. Defaults to `system`. </summary> 
         [JsonProperty("author")]
         public string Author { get; private set; }
 
-        ///<summary> The content of the message. </summary> 
+        ///<summary> The content of the message, can be up to 1,600 characters long. </summary> 
         [JsonProperty("body")]
         public string Body { get; private set; }
 
-        ///<summary> An array of objects that describe the Message's media if attached, otherwise, null. </summary> 
+        ///<summary> An array of objects that describe the Message's media, if the message contains media. Each object contains these fields: `content_type` with the MIME type of the media, `filename` with the name of the media, `sid` with the SID of the Media resource, and `size` with the media object's file size in bytes. If the Message has no media, this value is `null`. </summary> 
         [JsonProperty("media")]
         public List<object> Media { get; private set; }
 
-        ///<summary> A string metadata field you can use to store any data you wish. </summary> 
+        ///<summary> A string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \"{}\" will be returned. </summary> 
         [JsonProperty("attributes")]
         public string Attributes { get; private set; }
 
-        ///<summary> The unique ID of messages's author participant. </summary> 
+        ///<summary> The unique ID of messages's author participant. Null in case of `system` sent message. </summary> 
         [JsonProperty("participant_sid")]
         public string ParticipantSid { get; private set; }
 
@@ -581,11 +589,11 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The date that this resource was last updated. </summary> 
+        ///<summary> The date that this resource was last updated. `null` if the message has not been edited. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> An absolute API URL for this message. </summary> 
+        ///<summary> An absolute API resource API URL for this message. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
@@ -593,9 +601,13 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         [JsonProperty("delivery")]
         public object Delivery { get; private set; }
 
-        ///<summary> Absolute URL to access the receipts of this message. </summary> 
+        ///<summary> Contains an absolute API resource URL to access the delivery & read receipts of this message. </summary> 
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
+
+        ///<summary> The unique ID of the multi-channel [Rich Content](https://www.twilio.com/docs/content-api) template. </summary> 
+        [JsonProperty("content_sid")]
+        public string ContentSid { get; private set; }
 
 
 

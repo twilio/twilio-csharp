@@ -127,11 +127,11 @@ namespace Twilio.Rest.Sync.V1.Service.SyncStream
         }
 
     
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string that we created to identify the Stream Message resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> Stream Message body </summary> 
+        ///<summary> An arbitrary, schema-less object that contains the Stream Message body. Can be up to 4 KiB in length. </summary> 
         [JsonProperty("data")]
         public object Data { get; private set; }
 

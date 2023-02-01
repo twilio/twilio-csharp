@@ -512,63 +512,63 @@ namespace Twilio.Rest.Voice.V1
         }
 
     
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the BYOC Trunk resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string that that we created to identify the BYOC Trunk resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The string that you assigned to describe the resource </summary> 
+        ///<summary> The string that you assigned to describe the resource. </summary> 
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
 
-        ///<summary> The URL we call when receiving a call </summary> 
+        ///<summary> The URL we call using the `voice_method` when the BYOC Trunk receives a call. </summary> 
         [JsonProperty("voice_url")]
         public Uri VoiceUrl { get; private set; }
 
-        ///<summary> The HTTP method to use with voice_url </summary> 
+        ///<summary> The HTTP method we use to call `voice_url`. Can be: `GET` or `POST`. </summary> 
         [JsonProperty("voice_method")]
         public Twilio.Http.HttpMethod VoiceMethod { get; private set; }
 
-        ///<summary> The URL we call when an error occurs while executing TwiML </summary> 
+        ///<summary> The URL that we call when an error occurs while retrieving or executing the TwiML requested from `voice_url`. </summary> 
         [JsonProperty("voice_fallback_url")]
         public Uri VoiceFallbackUrl { get; private set; }
 
-        ///<summary> The HTTP method used with voice_fallback_url </summary> 
+        ///<summary> The HTTP method we use to call `voice_fallback_url`. Can be: `GET` or `POST`. </summary> 
         [JsonProperty("voice_fallback_method")]
         public Twilio.Http.HttpMethod VoiceFallbackMethod { get; private set; }
 
-        ///<summary> The URL that we call with status updates </summary> 
+        ///<summary> The URL that we call to pass status parameters (such as call ended) to your application. </summary> 
         [JsonProperty("status_callback_url")]
         public Uri StatusCallbackUrl { get; private set; }
 
-        ///<summary> The HTTP method we use to call status_callback_url </summary> 
+        ///<summary> The HTTP method we use to call `status_callback_url`. Either `GET` or `POST`. </summary> 
         [JsonProperty("status_callback_method")]
         public Twilio.Http.HttpMethod StatusCallbackMethod { get; private set; }
 
-        ///<summary> Whether Caller ID Name (CNAM) lookup is enabled for the trunk </summary> 
+        ///<summary> Whether Caller ID Name (CNAM) lookup is enabled for the trunk. If enabled, all inbound calls to the BYOC Trunk from the United States and Canada automatically perform a CNAM Lookup and display Caller ID data on your phone. See [CNAM Lookups](https://www.twilio.com/docs/sip-trunking#CNAM) for more information. </summary> 
         [JsonProperty("cnam_lookup_enabled")]
         public bool? CnamLookupEnabled { get; private set; }
 
-        ///<summary> Origination Connection Policy (to your Carrier) </summary> 
+        ///<summary> The SID of the Connection Policy that Twilio will use when routing traffic to your communications infrastructure. </summary> 
         [JsonProperty("connection_policy_sid")]
         public string ConnectionPolicySid { get; private set; }
 
-        ///<summary> The SID of the SIP Domain that should be used in the `From` header of originating calls </summary> 
+        ///<summary> The SID of the SIP Domain that should be used in the `From` header of originating calls sent to your SIP infrastructure. If your SIP infrastructure allows users to \"call back\" an incoming call, configure this with a [SIP Domain](https://www.twilio.com/docs/voice/api/sending-sip) to ensure proper routing. If not configured, the from domain will default to \"sip.twilio.com\". </summary> 
         [JsonProperty("from_domain_sid")]
         public string FromDomainSid { get; private set; }
 
-        ///<summary> The RFC 2822 date and time in GMT that the resource was created </summary> 
+        ///<summary> The date and time in GMT that the resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The RFC 2822 date and time in GMT that the resource was last updated </summary> 
+        ///<summary> The date and time in GMT that the resource was last updated specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> The absolute URL of the resource </summary> 
+        ///<summary> The absolute URL of the resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 

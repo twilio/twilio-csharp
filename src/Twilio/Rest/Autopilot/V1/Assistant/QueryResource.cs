@@ -499,55 +499,55 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         }
 
     
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Query resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The RFC 2822 date and time in GMT when the resource was created </summary> 
+        ///<summary> The date and time in GMT when the resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The RFC 2822 date and time in GMT when the resource was last updated </summary> 
+        ///<summary> The date and time in GMT when the resource was last updated specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> The natural language analysis results that include the Task recognized and a list of identified Fields </summary> 
+        ///<summary> The natural language analysis results that include the [Task](https://www.twilio.com/docs/autopilot/api/task) recognized and a list of identified [Fields](https://www.twilio.com/docs/autopilot/api/task-field). </summary> 
         [JsonProperty("results")]
         public object Results { get; private set; }
 
-        ///<summary> The ISO language-country string that specifies the language used by the Query </summary> 
+        ///<summary> The [ISO language-country](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html) string that specifies the language used by the Query. For example: `en-US`. </summary> 
         [JsonProperty("language")]
         public string Language { get; private set; }
 
-        ///<summary> The SID of the [Model Build](https://www.twilio.com/docs/autopilot/api/model-build) queried </summary> 
+        ///<summary> The SID of the [Model Build](https://www.twilio.com/docs/autopilot/api/model-build) queried. </summary> 
         [JsonProperty("model_build_sid")]
         public string ModelBuildSid { get; private set; }
 
-        ///<summary> The end-user's natural language input </summary> 
+        ///<summary> The end-user's natural language input. </summary> 
         [JsonProperty("query")]
         public string Query { get; private set; }
 
-        ///<summary> The SID of an optional reference to the Sample created from the query </summary> 
+        ///<summary> The SID of an optional reference to the [Sample](https://www.twilio.com/docs/autopilot/api/task-sample) created from the query. </summary> 
         [JsonProperty("sample_sid")]
         public string SampleSid { get; private set; }
 
-        ///<summary> The SID of the Assistant that is the parent of the resource </summary> 
+        ///<summary> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resource. </summary> 
         [JsonProperty("assistant_sid")]
         public string AssistantSid { get; private set; }
 
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string that we created to identify the Query resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The status of the Query </summary> 
+        ///<summary> The status of the Query. Can be: `pending-review`, `reviewed`, or `discarded` </summary> 
         [JsonProperty("status")]
         public string Status { get; private set; }
 
-        ///<summary> The absolute URL of the Query resource </summary> 
+        ///<summary> The absolute URL of the Query resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
-        ///<summary> The communication channel from where the end-user input came </summary> 
+        ///<summary> The communication channel from where the end-user input came. </summary> 
         [JsonProperty("source_channel")]
         public string SourceChannel { get; private set; }
 

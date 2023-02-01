@@ -364,15 +364,15 @@ namespace Twilio.Rest.Insights.V1.Conference
         [JsonProperty("label")]
         public string Label { get; private set; }
 
-        ///<summary> Conference SID. </summary> 
+        ///<summary> The unique SID identifier of the Conference. </summary> 
         [JsonProperty("conference_sid")]
         public string ConferenceSid { get; private set; }
 
-        ///<summary> Unique SID identifier of the call. </summary> 
+        ///<summary> Unique SID identifier of the call that generated the Participant resource. </summary> 
         [JsonProperty("call_sid")]
         public string CallSid { get; private set; }
 
-        ///<summary> Account SID. </summary> 
+        ///<summary> The unique SID identifier of the Account. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
@@ -392,7 +392,7 @@ namespace Twilio.Rest.Insights.V1.Conference
         [JsonProperty("call_status")]
         public ConferenceParticipantResource.CallStatusEnum CallStatus { get; private set; }
 
-        ///<summary> ISO alpha-2 country code of the participant. </summary> 
+        ///<summary> ISO alpha-2 country code of the participant based on caller ID or called number. </summary> 
         [JsonProperty("country_code")]
         public string CountryCode { get; private set; }
 
@@ -412,11 +412,11 @@ namespace Twilio.Rest.Insights.V1.Conference
         [JsonProperty("duration_seconds")]
         public int? DurationSeconds { get; private set; }
 
-        ///<summary> Estimated time in queue at call creation. </summary> 
+        ///<summary> Add Participant API only. Estimated time in queue at call creation. </summary> 
         [JsonProperty("outbound_queue_length")]
         public int? OutboundQueueLength { get; private set; }
 
-        ///<summary> Actual time in queue (seconds). </summary> 
+        ///<summary> Add Participant API only. Actual time in queue in seconds. </summary> 
         [JsonProperty("outbound_time_in_queue")]
         public int? OutboundTimeInQueue { get; private set; }
 
@@ -452,11 +452,11 @@ namespace Twilio.Rest.Insights.V1.Conference
         [JsonProperty("properties")]
         public object Properties { get; private set; }
 
-        ///<summary> Object containing information of actions taken by participants. Nested resource URLs. </summary> 
+        ///<summary> Object containing information of actions taken by participants. Contains a dictionary of URL links to nested resources of this Conference Participant. </summary> 
         [JsonProperty("events")]
         public object Events { get; private set; }
 
-        ///<summary> Object. Contains participant quality metrics. </summary> 
+        ///<summary> Object. Contains participant call quality metrics. </summary> 
         [JsonProperty("metrics")]
         public object Metrics { get; private set; }
 

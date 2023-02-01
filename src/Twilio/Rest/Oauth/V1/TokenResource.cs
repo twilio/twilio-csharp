@@ -143,11 +143,11 @@ namespace Twilio.Rest.Oauth.V1
         }
 
     
-        ///<summary> Token which carries the necessary information to access a Twilio resource directly </summary> 
+        ///<summary> Token which carries the necessary information to access a Twilio resource directly. </summary> 
         [JsonProperty("access_token")]
         public string AccessToken { get; private set; }
 
-        ///<summary> Token which carries the information necessary to get a new access token </summary> 
+        ///<summary> Token which carries the information necessary to get a new access token. </summary> 
         [JsonProperty("refresh_token")]
         public string RefreshToken { get; private set; }
 
@@ -155,11 +155,11 @@ namespace Twilio.Rest.Oauth.V1
         [JsonProperty("id_token")]
         public string IdToken { get; private set; }
 
-        ///<summary> The RFC 2822 date and time in GMT when the refresh token expires </summary> 
+        ///<summary> The date and time in GMT when the refresh token expires in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("refresh_token_expires_at")]
         public DateTime? RefreshTokenExpiresAt { get; private set; }
 
-        ///<summary> The RFC 2822 date and time in GMT when the access token expires </summary> 
+        ///<summary> The date and time in GMT when the refresh token expires in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("access_token_expires_at")]
         public DateTime? AccessTokenExpiresAt { get; private set; }
 

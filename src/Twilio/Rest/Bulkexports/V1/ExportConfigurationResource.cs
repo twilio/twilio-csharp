@@ -194,15 +194,15 @@ namespace Twilio.Rest.Bulkexports.V1
         }
 
     
-        ///<summary> Whether files are automatically generated </summary> 
+        ///<summary> If true, Twilio will automatically generate every day's file when the day is over. </summary> 
         [JsonProperty("enabled")]
         public bool? Enabled { get; private set; }
 
-        ///<summary> URL targeted at export </summary> 
+        ///<summary> Stores the URL destination for the method specified in webhook_method. </summary> 
         [JsonProperty("webhook_url")]
         public Uri WebhookUrl { get; private set; }
 
-        ///<summary> Whether to GET or POST to the webhook url </summary> 
+        ///<summary> Sets whether Twilio should call a webhook URL when the automatic generation is complete, using GET or POST. The actual destination is set in the webhook_url </summary> 
         [JsonProperty("webhook_method")]
         public string WebhookMethod { get; private set; }
 

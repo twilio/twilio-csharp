@@ -117,7 +117,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         }
 
     
-        ///<summary> Human readable A2P Use Case details </summary> 
+        ///<summary> Human readable name, code, description and post_approval_required (indicates whether or not post approval is required for this Use Case) of A2P Campaign Use Cases. </summary> 
         [JsonProperty("us_app_to_person_usecases")]
         public List<object> UsAppToPersonUsecases { get; private set; }
 

@@ -127,11 +127,11 @@ namespace Twilio.Rest.FlexApi.V2
         }
 
     
-        ///<summary> The unique string representing the Conversation resource created </summary> 
+        ///<summary> The unique string representing the [Conversation resource](https://www.twilio.com/docs/conversations/api/conversation-resource) created. </summary> 
         [JsonProperty("conversation_sid")]
         public string ConversationSid { get; private set; }
 
-        ///<summary> The unique string representing the User created </summary> 
+        ///<summary> The unique string representing the User created and should be authorized to participate in the Conversation. For more details, see [User Identity & Access Tokens](https://www.twilio.com/docs/conversations/identity). </summary> 
         [JsonProperty("identity")]
         public string Identity { get; private set; }
 

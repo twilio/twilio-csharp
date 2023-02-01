@@ -23,13 +23,13 @@ using Twilio.Converters;
 
 namespace Twilio.Rest.FlexApi.V1
 {
-    /// <summary> This is used by Flex UI and Quality Management to fetch the Flex Insights roles for the user </summary>
-    public class FetchUserRolesOptions : IOptions<UserRolesResource>
+
+    /// <summary> To obtain session details for fetching reports and dashboards </summary>
+    public class CreateInsightsSessionOptions : IOptions<InsightsSessionResource>
     {
-    
+        
         ///<summary> The Token HTTP request header </summary> 
         public string Token { get; set; }
-
 
 
 
@@ -54,7 +54,5 @@ namespace Twilio.Rest.FlexApi.V1
     }
 
     }
-
-
 }
 

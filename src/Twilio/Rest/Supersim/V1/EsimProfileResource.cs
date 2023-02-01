@@ -337,19 +337,19 @@ namespace Twilio.Rest.Supersim.V1
         }
 
     
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string that we created to identify the eSIM Profile resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The SID of the Account to which the eSIM Profile resource belongs </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) to which the eSIM Profile resource belongs. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The ICCID associated with the Sim resource </summary> 
+        ///<summary> The [ICCID](https://en.wikipedia.org/wiki/Subscriber_identity_module#ICCID) associated with the Sim resource. </summary> 
         [JsonProperty("iccid")]
         public string Iccid { get; private set; }
 
-        ///<summary> The SID of the Sim resource that this eSIM Profile controls </summary> 
+        ///<summary> The SID of the [Sim](https://www.twilio.com/docs/wireless/api/sim-resource) resource that this eSIM Profile controls. </summary> 
         [JsonProperty("sim_sid")]
         public string SimSid { get; private set; }
 
@@ -357,31 +357,31 @@ namespace Twilio.Rest.Supersim.V1
         [JsonProperty("status")]
         public EsimProfileResource.StatusEnum Status { get; private set; }
 
-        ///<summary> Identifier of the eUICC that can claim the eSIM Profile </summary> 
+        ///<summary> Identifier of the eUICC that can claim the eSIM Profile. </summary> 
         [JsonProperty("eid")]
         public string Eid { get; private set; }
 
-        ///<summary> Address of the SM-DP+ server from which the Profile will be downloaded </summary> 
+        ///<summary> Address of the SM-DP+ server from which the Profile will be downloaded. The URL will appear once the eSIM Profile reaches the status `available`. </summary> 
         [JsonProperty("smdp_plus_address")]
         public Uri SmdpPlusAddress { get; private set; }
 
-        ///<summary> Code indicating the failure if the download of the SIM Profile failed and the eSIM Profile is in `failed` state </summary> 
+        ///<summary> Code indicating the failure if the download of the SIM Profile failed and the eSIM Profile is in `failed` state. </summary> 
         [JsonProperty("error_code")]
         public string ErrorCode { get; private set; }
 
-        ///<summary> Error message describing the failure if the download of the SIM Profile failed and the eSIM Profile is in `failed` state </summary> 
+        ///<summary> Error message describing the failure if the download of the SIM Profile failed and the eSIM Profile is in `failed` state. </summary> 
         [JsonProperty("error_message")]
         public string ErrorMessage { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was created </summary> 
+        ///<summary> The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was last updated </summary> 
+        ///<summary> The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> The absolute URL of the eSIM Profile resource </summary> 
+        ///<summary> The absolute URL of the eSIM Profile resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 

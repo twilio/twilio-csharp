@@ -58,6 +58,29 @@ namespace Twilio.TwiML.Voice
         }
 
         /// <summary>
+        /// Create a new <Parameter/> element and append it as a child of this element.
+        /// </summary>
+        /// <param name="name"> The name of the custom parameter </param>
+        /// <param name="value"> The value of the custom parameter </param>
+        public Reject Parameter(string name = null, string value = null)
+        {
+            var newChild = new Parameter(name, value);
+            this.Append(newChild);
+            return this;
+        }
+
+        /// <summary>
+        /// Append a <Parameter/> element as a child of this element
+        /// </summary>
+        /// <param name="parameter"> A Parameter instance. </param>
+        [System.Obsolete("This method is deprecated, use .Append() instead.")]
+        public Reject Parameter(Parameter parameter)
+        {
+            this.Append(parameter);
+            return this;
+        }
+
+        /// <summary>
         /// Append a child TwiML element to this element returning this element to allow chaining.
         /// </summary>
         /// <param name="childElem"> Child TwiML element to add </param>

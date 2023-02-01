@@ -437,19 +437,19 @@ namespace Twilio.Rest.Supersim.V1
         }
 
     
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string that identifies the Sim resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> An application-defined string that uniquely identifies the resource </summary> 
+        ///<summary> An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource. </summary> 
         [JsonProperty("unique_name")]
         public string UniqueName { get; private set; }
 
-        ///<summary> The SID of the Account that the Super SIM belongs to </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that the Super SIM belongs to. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The ICCID associated with the SIM </summary> 
+        ///<summary> The [ICCID](https://en.wikipedia.org/wiki/Subscriber_identity_module#ICCID) associated with the SIM. </summary> 
         [JsonProperty("iccid")]
         public string Iccid { get; private set; }
 
@@ -457,19 +457,19 @@ namespace Twilio.Rest.Supersim.V1
         [JsonProperty("status")]
         public SimResource.StatusEnum Status { get; private set; }
 
-        ///<summary> The unique ID of the Fleet configured for this SIM </summary> 
+        ///<summary> The unique ID of the Fleet configured for this SIM. </summary> 
         [JsonProperty("fleet_sid")]
         public string FleetSid { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was created </summary> 
+        ///<summary> The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was last updated </summary> 
+        ///<summary> The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> The absolute URL of the Sim Resource </summary> 
+        ///<summary> The absolute URL of the Sim Resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 

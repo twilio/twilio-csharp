@@ -496,23 +496,23 @@ namespace Twilio.Rest.Studio.V2.Flow
         }
 
     
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string that we created to identify the Execution resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Execution resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The SID of the Flow </summary> 
+        ///<summary> The SID of the Flow. </summary> 
         [JsonProperty("flow_sid")]
         public string FlowSid { get; private set; }
 
-        ///<summary> The phone number, SIP address or Client identifier that triggered the Execution </summary> 
+        ///<summary> The phone number, SIP address or Client identifier that triggered the Execution. Phone numbers are in E.164 format (e.g. +16175551212). SIP addresses are formatted as `name@company.com`. Client identifiers are formatted `client:name`. </summary> 
         [JsonProperty("contact_channel_address")]
         public string ContactChannelAddress { get; private set; }
 
-        ///<summary> The current state of the flow </summary> 
+        ///<summary> The current state of the Flow's Execution. As a flow executes, we save its state in this context. We save data that your widgets can access as variables in configuration fields or in text areas as variable substitution. </summary> 
         [JsonProperty("context")]
         public object Context { get; private set; }
 
@@ -520,19 +520,19 @@ namespace Twilio.Rest.Studio.V2.Flow
         [JsonProperty("status")]
         public ExecutionResource.StatusEnum Status { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was created </summary> 
+        ///<summary> The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was last updated </summary> 
+        ///<summary> The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> The absolute URL of the resource </summary> 
+        ///<summary> The absolute URL of the resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
-        ///<summary> Nested resource URLs </summary> 
+        ///<summary> The URLs of nested resources. </summary> 
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
 

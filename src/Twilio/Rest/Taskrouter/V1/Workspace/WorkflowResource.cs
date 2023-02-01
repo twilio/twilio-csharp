@@ -507,55 +507,55 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         }
 
     
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Workflow resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The URL that we call when a task managed by the Workflow is assigned to a Worker </summary> 
+        ///<summary> The URL that we call when a task managed by the Workflow is assigned to a Worker. See Assignment Callback URL for more information. </summary> 
         [JsonProperty("assignment_callback_url")]
         public Uri AssignmentCallbackUrl { get; private set; }
 
-        ///<summary> A JSON string that contains the Workflow's configuration </summary> 
+        ///<summary> A JSON string that contains the Workflow's configuration. See [Configuring Workflows](https://www.twilio.com/docs/taskrouter/workflow-configuration) for more information. </summary> 
         [JsonProperty("configuration")]
         public string Configuration { get; private set; }
 
-        ///<summary> The RFC 2822 date and time in GMT when the resource was created </summary> 
+        ///<summary> The date and time in GMT when the resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The RFC 2822 date and time in GMT when the resource was last updated </summary> 
+        ///<summary> The date and time in GMT when the resource was last updated specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> The MIME type of the document </summary> 
+        ///<summary> The MIME type of the document. </summary> 
         [JsonProperty("document_content_type")]
         public string DocumentContentType { get; private set; }
 
-        ///<summary> The URL that we call when a call to the `assignment_callback_url` fails </summary> 
+        ///<summary> The URL that we call when a call to the `assignment_callback_url` fails. </summary> 
         [JsonProperty("fallback_assignment_callback_url")]
         public Uri FallbackAssignmentCallbackUrl { get; private set; }
 
-        ///<summary> The string that you assigned to describe the Workflow resource </summary> 
+        ///<summary> The string that you assigned to describe the Workflow resource. For example, `Customer Support` or `2014 Election Campaign`. </summary> 
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
 
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string that we created to identify the Workflow resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> How long TaskRouter will wait for a confirmation response from your application after it assigns a Task to a Worker </summary> 
+        ///<summary> How long TaskRouter will wait for a confirmation response from your application after it assigns a Task to a Worker. Can be up to `86,400` (24 hours) and the default is `120`. </summary> 
         [JsonProperty("task_reservation_timeout")]
         public int? TaskReservationTimeout { get; private set; }
 
-        ///<summary> The SID of the Workspace that contains the Workflow </summary> 
+        ///<summary> The SID of the Workspace that contains the Workflow. </summary> 
         [JsonProperty("workspace_sid")]
         public string WorkspaceSid { get; private set; }
 
-        ///<summary> The absolute URL of the Workflow resource </summary> 
+        ///<summary> The absolute URL of the Workflow resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
-        ///<summary> The URLs of related resources </summary> 
+        ///<summary> The URLs of related resources. </summary> 
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
 

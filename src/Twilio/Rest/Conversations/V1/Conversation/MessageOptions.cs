@@ -52,6 +52,12 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         ///<summary> The Media SID to be attached to the new Message. </summary> 
         public string MediaSid { get; set; }
 
+        ///<summary> The unique ID of the multi-channel [Rich Content](https://www.twilio.com/docs/content-api) template, required for template-generated messages.  **Note** that if this field is set, `Body` and `MediaSid` parameters are ignored. </summary> 
+        public string ContentSid { get; set; }
+
+        ///<summary> A structurally valid JSON string that contains values to resolve Rich Content template variables. </summary> 
+        public string ContentVariables { get; set; }
+
 
         /// <summary> Construct a new CreateConversationMessageOptions </summary>
         /// <param name="pathConversationSid"> The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this message. </param>
@@ -89,6 +95,14 @@ namespace Twilio.Rest.Conversations.V1.Conversation
             if (MediaSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("MediaSid", MediaSid));
+            }
+            if (ContentSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ContentSid", ContentSid));
+            }
+            if (ContentVariables != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ContentVariables", ContentVariables));
             }
             return p;
         }

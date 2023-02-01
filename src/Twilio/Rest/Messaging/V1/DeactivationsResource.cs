@@ -112,7 +112,7 @@ namespace Twilio.Rest.Messaging.V1
         }
 
     
-        ///<summary> Redirect url to the list of deactivated numbers. </summary> 
+        ///<summary> Returns an authenticated url that redirects to a file containing the deactivated numbers for the requested day. This url is valid for up to two minutes. </summary> 
         [JsonProperty("redirect_to")]
         public Uri RedirectTo { get; private set; }
 

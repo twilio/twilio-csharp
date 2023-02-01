@@ -234,19 +234,19 @@ namespace Twilio.Rest.Trusthub.V1
         }
 
     
-        ///<summary> The unique string that identifies the Policy resource </summary> 
+        ///<summary> The unique string that identifies the Policy resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> A human-readable description of the Policy resource </summary> 
+        ///<summary> A human-readable description that is assigned to describe the Policy resource. Examples can include Primary Customer profile policy </summary> 
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
 
-        ///<summary> The sid of a Policy object that dictates requirements </summary> 
+        ///<summary> The SID of an object that holds the policy information </summary> 
         [JsonProperty("requirements")]
         public object Requirements { get; private set; }
 
-        ///<summary> The absolute URL of the Policy resource </summary> 
+        ///<summary> The absolute URL of the Policy resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 

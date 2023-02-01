@@ -440,11 +440,11 @@ namespace Twilio.Rest.Preview.HostedNumbers
         }
 
     
-        ///<summary> AuthorizationDocument sid. </summary> 
+        ///<summary> A 34 character string that uniquely identifies this AuthorizationDocument. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> Address sid. </summary> 
+        ///<summary> A 34 character string that uniquely identifies the Address resource that is associated with this AuthorizationDocument. </summary> 
         [JsonProperty("address_sid")]
         public string AddressSid { get; private set; }
 
@@ -452,19 +452,19 @@ namespace Twilio.Rest.Preview.HostedNumbers
         [JsonProperty("status")]
         public AuthorizationDocumentResource.StatusEnum Status { get; private set; }
 
-        ///<summary> Email. </summary> 
+        ///<summary> Email that this AuthorizationDocument will be sent to for signing. </summary> 
         [JsonProperty("email")]
         public string Email { get; private set; }
 
-        ///<summary> A list of emails. </summary> 
+        ///<summary> Email recipients who will be informed when an Authorization Document has been sent and signed. </summary> 
         [JsonProperty("cc_emails")]
         public List<string> CcEmails { get; private set; }
 
-        ///<summary> The date this AuthorizationDocument was created. </summary> 
+        ///<summary> The date this resource was created, given as [GMT RFC 2822](http://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The date this AuthorizationDocument was updated. </summary> 
+        ///<summary> The date that this resource was updated, given as [GMT RFC 2822](http://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 

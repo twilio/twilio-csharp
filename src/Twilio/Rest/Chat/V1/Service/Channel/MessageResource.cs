@@ -522,55 +522,55 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
         }
 
     
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string that we created to identify the Message resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the Message resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The JSON string that stores application-specific data </summary> 
+        ///<summary> The JSON string that stores application-specific data. **Note** If this property has been assigned a value, it's only  displayed in a FETCH action that returns a single resource; otherwise, it's null. If the attributes have not been set, `{}` is returned. </summary> 
         [JsonProperty("attributes")]
         public string Attributes { get; private set; }
 
-        ///<summary> The SID of the Service that the resource is associated with </summary> 
+        ///<summary> The SID of the [Service](https://www.twilio.com/docs/api/chat/rest/services) the resource is associated with. </summary> 
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
 
-        ///<summary> The SID of the Channel that the message was sent to </summary> 
+        ///<summary> The SID of the [Channel](https://www.twilio.com/docs/chat/api/channels) that the message was sent to. </summary> 
         [JsonProperty("to")]
         public string To { get; private set; }
 
-        ///<summary> The unique ID of the Channel the Message resource belongs to </summary> 
+        ///<summary> The unique ID of the [Channel](https://www.twilio.com/docs/api/chat/rest/channels) the Message resource belongs to. </summary> 
         [JsonProperty("channel_sid")]
         public string ChannelSid { get; private set; }
 
-        ///<summary> The RFC 2822 date and time in GMT when the resource was created </summary> 
+        ///<summary> The date and time in GMT when the resource was created specified in [RFC 2822](http://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The RFC 2822 date and time in GMT when the resource was last updated </summary> 
+        ///<summary> The date and time in GMT when the resource was last updated specified in [RFC 2822](http://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> Whether the message has been edited since  it was created </summary> 
+        ///<summary> Whether the message has been edited since it was created. </summary> 
         [JsonProperty("was_edited")]
         public bool? WasEdited { get; private set; }
 
-        ///<summary> The identity of the message's author </summary> 
+        ///<summary> The [identity](https://www.twilio.com/docs/api/chat/guides/identity) of the message's author. The default value is `system`. </summary> 
         [JsonProperty("from")]
         public string From { get; private set; }
 
-        ///<summary> The content of the message </summary> 
+        ///<summary> The content of the message. </summary> 
         [JsonProperty("body")]
         public string Body { get; private set; }
 
-        ///<summary> The index of the message within the Channel </summary> 
+        ///<summary> The index of the message within the [Channel](https://www.twilio.com/docs/chat/api/channels). </summary> 
         [JsonProperty("index")]
         public int? Index { get; private set; }
 
-        ///<summary> The absolute URL of the Message resource </summary> 
+        ///<summary> The absolute URL of the Message resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 

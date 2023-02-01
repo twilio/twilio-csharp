@@ -344,55 +344,55 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         }
 
     
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Worker resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The total number of Tasks assigned to Worker for the TaskChannel type </summary> 
+        ///<summary> The total number of Tasks assigned to Worker for the TaskChannel type. </summary> 
         [JsonProperty("assigned_tasks")]
         public int? AssignedTasks { get; private set; }
 
-        ///<summary> Whether the Worker should receive Tasks of the TaskChannel type </summary> 
+        ///<summary> Whether the Worker should receive Tasks of the TaskChannel type. </summary> 
         [JsonProperty("available")]
         public bool? Available { get; private set; }
 
-        ///<summary> The current available capacity between 0 to 100 for the TaskChannel </summary> 
+        ///<summary> The current percentage of capacity the TaskChannel has available. Can be a number between `0` and `100`. A value of `0` indicates that TaskChannel has no capacity available and a value of `100` means the  Worker is available to receive any Tasks of this TaskChannel type. </summary> 
         [JsonProperty("available_capacity_percentage")]
         public int? AvailableCapacityPercentage { get; private set; }
 
-        ///<summary> The current configured capacity for the WorkerChannel </summary> 
+        ///<summary> The current configured capacity for the WorkerChannel. TaskRouter will not create any reservations after the assigned Tasks for the Worker reaches the value. </summary> 
         [JsonProperty("configured_capacity")]
         public int? ConfiguredCapacity { get; private set; }
 
-        ///<summary> The RFC 2822 date and time in GMT when the resource was created </summary> 
+        ///<summary> The date and time in GMT when the resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The RFC 2822 date and time in GMT when the resource was last updated </summary> 
+        ///<summary> The date and time in GMT when the resource was last updated specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string that we created to identify the WorkerChannel resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The SID of the TaskChannel </summary> 
+        ///<summary> The SID of the TaskChannel. </summary> 
         [JsonProperty("task_channel_sid")]
         public string TaskChannelSid { get; private set; }
 
-        ///<summary> The unique name of the TaskChannel, such as 'voice' or 'sms' </summary> 
+        ///<summary> The unique name of the TaskChannel, such as `voice` or `sms`. </summary> 
         [JsonProperty("task_channel_unique_name")]
         public string TaskChannelUniqueName { get; private set; }
 
-        ///<summary> The SID of the Worker that contains the WorkerChannel </summary> 
+        ///<summary> The SID of the Worker that contains the WorkerChannel. </summary> 
         [JsonProperty("worker_sid")]
         public string WorkerSid { get; private set; }
 
-        ///<summary> The SID of the Workspace that contains the WorkerChannel </summary> 
+        ///<summary> The SID of the Workspace that contains the WorkerChannel. </summary> 
         [JsonProperty("workspace_sid")]
         public string WorkspaceSid { get; private set; }
 
-        ///<summary> The absolute URL of the WorkerChannel resource </summary> 
+        ///<summary> The absolute URL of the WorkerChannel resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 

@@ -506,7 +506,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The unique id that identifies the credential list that includes this credential </summary> 
+        ///<summary> The unique id that identifies the credential list that includes this credential. </summary> 
         [JsonProperty("credential_list_sid")]
         public string CredentialListSid { get; private set; }
 
@@ -514,15 +514,15 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
         [JsonProperty("username")]
         public string Username { get; private set; }
 
-        ///<summary> The date that this resource was created, given as GMT in RFC 2822 format. </summary> 
+        ///<summary> The date that this resource was created, given as GMT in [RFC 2822](https://www.php.net/manual/en/class.datetime.php#datetime.constants.rfc2822) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The date that this resource was last updated, given as GMT in RFC 2822 format. </summary> 
+        ///<summary> The date that this resource was last updated, given as GMT in [RFC 2822](https://www.php.net/manual/en/class.datetime.php#datetime.constants.rfc2822) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> The URI for this resource, relative to https://api.twilio.com </summary> 
+        ///<summary> The URI for this resource, relative to `https://api.twilio.com` </summary> 
         [JsonProperty("uri")]
         public string Uri { get; private set; }
 

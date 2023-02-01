@@ -109,23 +109,23 @@ namespace Twilio.Rest.Oauth.V1
         }
 
     
-        ///<summary> The user sid </summary> 
+        ///<summary> The URL of the party that will create the token and sign it with its private key. </summary> 
         [JsonProperty("user_sid")]
         public string UserSid { get; private set; }
 
-        ///<summary> The first name of the end-user </summary> 
+        ///<summary> The first name of the end-user. </summary> 
         [JsonProperty("first_name")]
         public string FirstName { get; private set; }
 
-        ///<summary> The last name of the end-user </summary> 
+        ///<summary> The last name of the end-user. </summary> 
         [JsonProperty("last_name")]
         public string LastName { get; private set; }
 
-        ///<summary> The friendly name of the end-user </summary> 
+        ///<summary> The friendly name of the end-user. </summary> 
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
 
-        ///<summary> The end-user's preferred email address </summary> 
+        ///<summary> The end-user's preferred email address. </summary> 
         [JsonProperty("email")]
         public string Email { get; private set; }
 

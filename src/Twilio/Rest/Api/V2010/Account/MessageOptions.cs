@@ -323,15 +323,6 @@ namespace Twilio.Rest.Api.V2010.Account
                 {
                     p.Add(new KeyValuePair<string, string>("DateSent>", Serializers.DateTimeIso8601(DateSentAfter)));
                 }
-
-            }
-            if (DateSentBefore != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DateSent<", Serializers.DateTimeIso8601(DateSentBefore)));
-            }
-            if (DateSentAfter != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DateSent>", Serializers.DateTimeIso8601(DateSentAfter)));
             }
             if (PageSize != null)
             {

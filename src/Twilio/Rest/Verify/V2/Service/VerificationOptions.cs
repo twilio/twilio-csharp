@@ -34,7 +34,7 @@ namespace Twilio.Rest.Verify.V2.Service
         ///<summary> The phone number or [email](https://www.twilio.com/docs/verify/email) to verify. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164). </summary> 
         public string To { get; }
 
-        ///<summary> The verification method to use. One of: [`email`](https://www.twilio.com/docs/verify/email), `sms`, `whatsapp`, `call`, or `sna`. </summary> 
+        ///<summary> The verification method to use. One of: [`email`](https://www.twilio.com/docs/verify/email), `sms`, `whatsapp`, `call`, `sna` or `auto`. </summary> 
         public string Channel { get; }
 
         ///<summary> A custom user defined friendly name that overwrites the existing one in the verification message </summary> 
@@ -46,7 +46,7 @@ namespace Twilio.Rest.Verify.V2.Service
         ///<summary> The digits to send after a phone call is answered, for example, to dial an extension. For more information, see the Programmable Voice documentation of [sendDigits](https://www.twilio.com/docs/voice/twiml/number#attributes-sendDigits). </summary> 
         public string SendDigits { get; set; }
 
-        ///<summary> Locale will automatically resolve based on phone number country code for SMS, WhatsApp and call channel verifications. This parameter will override the automatic locale. [See supported languages and more information here](https://www.twilio.com/docs/verify/supported-languages). </summary> 
+        ///<summary> Locale will automatically resolve based on phone number country code for SMS, WhatsApp, and call channel verifications. It will fallback to English or the template’s default translation if the selected translation is not available. This parameter will override the automatic locale resolution. [See supported languages and more information here](https://www.twilio.com/docs/verify/supported-languages). </summary> 
         public string Locale { get; set; }
 
         ///<summary> A pre-generated code to use for verification. The code can be between 4 and 10 characters, inclusive. </summary> 
@@ -73,11 +73,14 @@ namespace Twilio.Rest.Verify.V2.Service
         ///<summary> A stringified JSON object in which the keys are the template's special variables and the values are the variables substitutions. </summary> 
         public string TemplateCustomSubstitutions { get; set; }
 
+        ///<summary> The IP address of the client's device. If provided, it has to be a valid IPv4 or IPv6 address. </summary> 
+        public string DeviceIp { get; set; }
+
 
         /// <summary> Construct a new CreateVerificationOptions </summary>
         /// <param name="pathServiceSid"> The SID of the verification [Service](https://www.twilio.com/docs/verify/api/service) to create the resource under. </param>
         /// <param name="to"> The phone number or [email](https://www.twilio.com/docs/verify/email) to verify. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164). </param>
-        /// <param name="channel"> The verification method to use. One of: [`email`](https://www.twilio.com/docs/verify/email), `sms`, `whatsapp`, `call`, or `sna`. </param>
+        /// <param name="channel"> The verification method to use. One of: [`email`](https://www.twilio.com/docs/verify/email), `sms`, `whatsapp`, `call`, `sna` or `auto`. </param>
         public CreateVerificationOptions(string pathServiceSid, string to, string channel)
         {
             PathServiceSid = pathServiceSid;
@@ -146,6 +149,10 @@ namespace Twilio.Rest.Verify.V2.Service
             if (TemplateCustomSubstitutions != null)
             {
                 p.Add(new KeyValuePair<string, string>("TemplateCustomSubstitutions", TemplateCustomSubstitutions));
+            }
+            if (DeviceIp != null)
+            {
+                p.Add(new KeyValuePair<string, string>("DeviceIp", DeviceIp));
             }
             return p;
         }

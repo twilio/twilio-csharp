@@ -122,59 +122,59 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         }
 
     
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the TaskQueue resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The number of current Workers by Activity </summary> 
+        ///<summary> The number of current Workers by Activity. </summary> 
         [JsonProperty("activity_statistics")]
         public List<object> ActivityStatistics { get; private set; }
 
-        ///<summary> The age of the longest waiting Task </summary> 
+        ///<summary> The age of the longest waiting Task. </summary> 
         [JsonProperty("longest_task_waiting_age")]
         public int? LongestTaskWaitingAge { get; private set; }
 
-        ///<summary> The SID of the longest waiting Task </summary> 
+        ///<summary> The SID of the longest waiting Task. </summary> 
         [JsonProperty("longest_task_waiting_sid")]
         public string LongestTaskWaitingSid { get; private set; }
 
-        ///<summary> The relative age in the TaskQueue for the longest waiting Task. </summary> 
+        ///<summary> The relative age in the TaskQueue for the longest waiting Task. Calculation is based on the time when the Task entered the TaskQueue. </summary> 
         [JsonProperty("longest_relative_task_age_in_queue")]
         public int? LongestRelativeTaskAgeInQueue { get; private set; }
 
-        ///<summary> The SID of the Task waiting in the TaskQueue the longest. </summary> 
+        ///<summary> The Task SID of the Task waiting in the TaskQueue the longest. Calculation is based on the time when the Task entered the TaskQueue. </summary> 
         [JsonProperty("longest_relative_task_sid_in_queue")]
         public string LongestRelativeTaskSidInQueue { get; private set; }
 
-        ///<summary> The SID of the TaskQueue from which these statistics were calculated </summary> 
+        ///<summary> The SID of the TaskQueue from which these statistics were calculated. </summary> 
         [JsonProperty("task_queue_sid")]
         public string TaskQueueSid { get; private set; }
 
-        ///<summary> The number of Tasks by priority </summary> 
+        ///<summary> The number of Tasks by priority. For example: `{\"0\": \"10\", \"99\": \"5\"}` shows 10 Tasks at priority 0 and 5 at priority 99. </summary> 
         [JsonProperty("tasks_by_priority")]
         public object TasksByPriority { get; private set; }
 
-        ///<summary> The number of Tasks by their current status </summary> 
+        ///<summary> The number of Tasks by their current status. For example: `{\"pending\": \"1\", \"reserved\": \"3\", \"assigned\": \"2\", \"completed\": \"5\"}`. </summary> 
         [JsonProperty("tasks_by_status")]
         public object TasksByStatus { get; private set; }
 
-        ///<summary> The total number of Workers available for Tasks in the TaskQueue </summary> 
+        ///<summary> The total number of Workers available for Tasks in the TaskQueue. </summary> 
         [JsonProperty("total_available_workers")]
         public int? TotalAvailableWorkers { get; private set; }
 
-        ///<summary> The total number of Workers eligible for Tasks in the TaskQueue, independent of their Activity state </summary> 
+        ///<summary> The total number of Workers eligible for Tasks in the TaskQueue, independent of their Activity state. </summary> 
         [JsonProperty("total_eligible_workers")]
         public int? TotalEligibleWorkers { get; private set; }
 
-        ///<summary> The total number of Tasks </summary> 
+        ///<summary> The total number of Tasks. </summary> 
         [JsonProperty("total_tasks")]
         public int? TotalTasks { get; private set; }
 
-        ///<summary> The SID of the Workspace that contains the TaskQueue </summary> 
+        ///<summary> The SID of the Workspace that contains the TaskQueue. </summary> 
         [JsonProperty("workspace_sid")]
         public string WorkspaceSid { get; private set; }
 
-        ///<summary> The absolute URL of the TaskQueue statistics resource </summary> 
+        ///<summary> The absolute URL of the TaskQueue statistics resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 

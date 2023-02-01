@@ -264,19 +264,19 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
         }
 
     
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string that we created to identify the Bundle resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Bundle resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The unique string of a regulation </summary> 
+        ///<summary> The unique string of a regulation that is associated to the Bundle resource. </summary> 
         [JsonProperty("regulation_sid")]
         public string RegulationSid { get; private set; }
 
-        ///<summary> The string that you assigned to describe the resource </summary> 
+        ///<summary> The string that you assigned to describe the resource. </summary> 
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
 
@@ -284,23 +284,23 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
         [JsonProperty("status")]
         public BundleCopyResource.StatusEnum Status { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource will be valid until </summary> 
+        ///<summary> The date and time in GMT in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format when the resource will be valid until. </summary> 
         [JsonProperty("valid_until")]
         public DateTime? ValidUntil { get; private set; }
 
-        ///<summary> The email address </summary> 
+        ///<summary> The email address that will receive updates when the Bundle resource changes status. </summary> 
         [JsonProperty("email")]
         public string Email { get; private set; }
 
-        ///<summary> The URL we call to inform your application of status changes </summary> 
+        ///<summary> The URL we call to inform your application of status changes. </summary> 
         [JsonProperty("status_callback")]
         public Uri StatusCallback { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was created </summary> 
+        ///<summary> The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was last updated </summary> 
+        ///<summary> The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 

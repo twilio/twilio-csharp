@@ -493,31 +493,31 @@ namespace Twilio.Rest.Wireless.V1
         }
 
     
-        ///<summary> The unique string that identifies the Sim resource </summary> 
+        ///<summary> The unique string that we created to identify the Sim resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> An application-defined string that uniquely identifies the resource </summary> 
+        ///<summary> An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource. </summary> 
         [JsonProperty("unique_name")]
         public string UniqueName { get; private set; }
 
-        ///<summary> The SID of the Account to which the Sim resource belongs </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) to which the Sim resource belongs. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The SID of the RatePlan resource to which the Sim resource is assigned. </summary> 
+        ///<summary> The SID of the [RatePlan resource](https://www.twilio.com/docs/wireless/api/rateplan-resource) to which the Sim resource is assigned. </summary> 
         [JsonProperty("rate_plan_sid")]
         public string RatePlanSid { get; private set; }
 
-        ///<summary> The string that you assigned to describe the Sim resource </summary> 
+        ///<summary> The string that you assigned to describe the Sim resource. </summary> 
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
 
-        ///<summary> The ICCID associated with the SIM </summary> 
+        ///<summary> The [ICCID](https://en.wikipedia.org/wiki/SIM_card#ICCID) associated with the SIM. </summary> 
         [JsonProperty("iccid")]
         public string Iccid { get; private set; }
 
-        ///<summary> Deprecated </summary> 
+        ///<summary> Deprecated. </summary> 
         [JsonProperty("e_id")]
         public string EId { get; private set; }
 
@@ -529,63 +529,63 @@ namespace Twilio.Rest.Wireless.V1
         [JsonProperty("reset_status")]
         public SimResource.ResetStatusEnum ResetStatus { get; private set; }
 
-        ///<summary> The URL we call when the SIM originates a machine-to-machine Command </summary> 
+        ///<summary> The URL we call using the `commands_callback_method` when the SIM originates a machine-to-machine [Command](https://www.twilio.com/docs/wireless/api/command-resource). Your server should respond with an HTTP status code in the 200 range; any response body will be ignored. </summary> 
         [JsonProperty("commands_callback_url")]
         public Uri CommandsCallbackUrl { get; private set; }
 
-        ///<summary> The HTTP method we use to call commands_callback_url </summary> 
+        ///<summary> The HTTP method we use to call `commands_callback_url`.  Can be: `POST` or `GET`. Default is `POST`. </summary> 
         [JsonProperty("commands_callback_method")]
         public Twilio.Http.HttpMethod CommandsCallbackMethod { get; private set; }
 
-        ///<summary> Deprecated </summary> 
+        ///<summary> Deprecated. </summary> 
         [JsonProperty("sms_fallback_method")]
         public Twilio.Http.HttpMethod SmsFallbackMethod { get; private set; }
 
-        ///<summary> Deprecated </summary> 
+        ///<summary> Deprecated. </summary> 
         [JsonProperty("sms_fallback_url")]
         public Uri SmsFallbackUrl { get; private set; }
 
-        ///<summary> Deprecated </summary> 
+        ///<summary> Deprecated. </summary> 
         [JsonProperty("sms_method")]
         public Twilio.Http.HttpMethod SmsMethod { get; private set; }
 
-        ///<summary> Deprecated </summary> 
+        ///<summary> Deprecated. </summary> 
         [JsonProperty("sms_url")]
         public Uri SmsUrl { get; private set; }
 
-        ///<summary> Deprecated. The HTTP method we use to call voice_fallback_url </summary> 
+        ///<summary> Deprecated. The HTTP method we use to call `voice_fallback_url`. Can be: `GET` or `POST`. Default is `POST`. </summary> 
         [JsonProperty("voice_fallback_method")]
         public Twilio.Http.HttpMethod VoiceFallbackMethod { get; private set; }
 
-        ///<summary> Deprecated. The URL we call when an error occurs while retrieving or executing the TwiML requested from voice_url </summary> 
+        ///<summary> Deprecated. The URL we call using the `voice_fallback_method` when an error occurs while retrieving or executing the TwiML requested from `voice_url`. </summary> 
         [JsonProperty("voice_fallback_url")]
         public Uri VoiceFallbackUrl { get; private set; }
 
-        ///<summary> Deprecated. The HTTP method we use to call voice_url </summary> 
+        ///<summary> Deprecated. The HTTP method we use to call `voice_url`. Can be: `GET` or `POST`. Default is `POST`. </summary> 
         [JsonProperty("voice_method")]
         public Twilio.Http.HttpMethod VoiceMethod { get; private set; }
 
-        ///<summary> Deprecated. The URL we call when the SIM-connected device makes a voice call </summary> 
+        ///<summary> Deprecated. The URL we call using the `voice_method` when the SIM-connected device makes a voice call. </summary> 
         [JsonProperty("voice_url")]
         public Uri VoiceUrl { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was created </summary> 
+        ///<summary> The date and time in GMT when the resource was created specified in [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the Sim resource was last updated </summary> 
+        ///<summary> The date and time in GMT when the Sim resource was last updated specified in [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> The absolute URL of the resource </summary> 
+        ///<summary> The absolute URL of the resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
-        ///<summary> The URLs of related subresources </summary> 
+        ///<summary> The URLs of related subresources. </summary> 
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
 
-        ///<summary> Deprecated </summary> 
+        ///<summary> Deprecated. </summary> 
         [JsonProperty("ip_address")]
         public string IpAddress { get; private set; }
 

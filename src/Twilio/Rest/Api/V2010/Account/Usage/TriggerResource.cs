@@ -796,39 +796,39 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         }
 
     
-        ///<summary> The SID of the Account that this trigger monitors </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that the trigger monitors. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The API version used to create the resource </summary> 
+        ///<summary> The API version used to create the resource. </summary> 
         [JsonProperty("api_version")]
         public string ApiVersion { get; private set; }
 
-        ///<summary> The HTTP method we use to call callback_url </summary> 
+        ///<summary> The HTTP method we use to call `callback_url`. Can be: `GET` or `POST`. </summary> 
         [JsonProperty("callback_method")]
         public Twilio.Http.HttpMethod CallbackMethod { get; private set; }
 
-        ///<summary> he URL we call when the trigger fires </summary> 
+        ///<summary> The URL we call using the `callback_method` when the trigger fires. </summary> 
         [JsonProperty("callback_url")]
         public Uri CallbackUrl { get; private set; }
 
-        ///<summary> The current value of the field the trigger is watching </summary> 
+        ///<summary> The current value of the field the trigger is watching. </summary> 
         [JsonProperty("current_value")]
         public string CurrentValue { get; private set; }
 
-        ///<summary> The RFC 2822 date and time in GMT that the resource was created </summary> 
+        ///<summary> The date and time in GMT that the resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The RFC 2822 date and time in GMT that the trigger was last fired </summary> 
+        ///<summary> The date and time in GMT that the trigger was last fired specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_fired")]
         public DateTime? DateFired { get; private set; }
 
-        ///<summary> The RFC 2822 date and time in GMT that the resource was last updated </summary> 
+        ///<summary> The date and time in GMT that the resource was last updated specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> The string that you assigned to describe the trigger </summary> 
+        ///<summary> The string that you assigned to describe the trigger. </summary> 
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
 
@@ -836,7 +836,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         [JsonProperty("recurring")]
         public TriggerResource.RecurringEnum Recurring { get; private set; }
 
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string that that we created to identify the UsageTrigger resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
@@ -844,11 +844,11 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         [JsonProperty("trigger_by")]
         public TriggerResource.TriggerFieldEnum TriggerBy { get; private set; }
 
-        ///<summary> The value at which the trigger will fire </summary> 
+        ///<summary> The value at which the trigger will fire.  Must be a positive, numeric value. </summary> 
         [JsonProperty("trigger_value")]
         public string TriggerValue { get; private set; }
 
-        ///<summary> The URI of the resource, relative to `https://api.twilio.com` </summary> 
+        ///<summary> The URI of the resource, relative to `https://api.twilio.com`. </summary> 
         [JsonProperty("uri")]
         public string Uri { get; private set; }
 
@@ -856,7 +856,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         [JsonProperty("usage_category")]
         public TriggerResource.UsageCategoryEnum UsageCategory { get; private set; }
 
-        ///<summary> The URI of the UsageRecord resource this trigger watches </summary> 
+        ///<summary> The URI of the [UsageRecord](https://www.twilio.com/docs/usage/api/usage-record) resource this trigger watches, relative to `https://api.twilio.com`. </summary> 
         [JsonProperty("usage_record_uri")]
         public string UsageRecordUri { get; private set; }
 

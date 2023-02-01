@@ -467,31 +467,31 @@ namespace Twilio.Rest.Proxy.V1.Service
         }
 
     
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string that we created to identify the ShortCode resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the ShortCode resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The SID of the resource's parent Service </summary> 
+        ///<summary> The SID of the ShortCode resource's parent [Service](https://www.twilio.com/docs/proxy/api/service) resource. </summary> 
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was created </summary> 
+        ///<summary> The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time in GMT when the resource was created. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was last updated </summary> 
+        ///<summary> The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time in GMT when the resource was last updated. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> The short code's number </summary> 
+        ///<summary> The short code's number. </summary> 
         [JsonProperty("short_code")]
         public string ShortCode { get; private set; }
 
-        ///<summary> The ISO Country Code </summary> 
+        ///<summary> The ISO Country Code for the short code. </summary> 
         [JsonProperty("iso_country")]
         public string IsoCountry { get; private set; }
 
@@ -499,11 +499,11 @@ namespace Twilio.Rest.Proxy.V1.Service
         [JsonProperty("capabilities")]
         public PhoneNumberCapabilities Capabilities { get; private set; }
 
-        ///<summary> The absolute URL of the ShortCode resource </summary> 
+        ///<summary> The absolute URL of the ShortCode resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
-        ///<summary> Whether the short code should be reserved for manual assignment to participants only </summary> 
+        ///<summary> Whether the short code should be reserved and not be assigned to a participant using proxy pool logic. See [Reserved Phone Numbers](https://www.twilio.com/docs/proxy/reserved-phone-numbers) for more information. </summary> 
         [JsonProperty("is_reserved")]
         public bool? IsReserved { get; private set; }
 
