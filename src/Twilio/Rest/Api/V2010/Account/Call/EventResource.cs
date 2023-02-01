@@ -181,11 +181,11 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
 
     
-        ///<summary> Call Request. </summary> 
+        ///<summary> Contains a dictionary representing the request of the call. </summary> 
         [JsonProperty("request")]
         public object Request { get; private set; }
 
-        ///<summary> Call Response with Events. </summary> 
+        ///<summary> Contains a dictionary representing the call response, including a list of the call events. </summary> 
         [JsonProperty("response")]
         public object Response { get; private set; }
 

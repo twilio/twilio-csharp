@@ -119,11 +119,11 @@ namespace Twilio.Rest.Messaging.V1
         }
 
     
-        ///<summary> The unique string that identifies a US A2P Compliance resource </summary> 
+        ///<summary> The unique string that identifies a US A2P Compliance resource `QE2c6890da8086d771620e9b13fadeba0b`. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that the Campaign belongs to. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
@@ -131,11 +131,11 @@ namespace Twilio.Rest.Messaging.V1
         [JsonProperty("campaign_id")]
         public string CampaignId { get; private set; }
 
-        ///<summary> The SID of the Messaging Service the resource is associated with </summary> 
+        ///<summary> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) that the resource is associated with. </summary> 
         [JsonProperty("messaging_service_sid")]
         public string MessagingServiceSid { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was created </summary> 
+        ///<summary> The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 

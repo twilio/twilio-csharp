@@ -410,47 +410,47 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         }
 
     
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string that that we created to identify the resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The SID of the Phone Number that installed this Add-on </summary> 
+        ///<summary> The SID of the Phone Number to which the Add-on is assigned. </summary> 
         [JsonProperty("resource_sid")]
         public string ResourceSid { get; private set; }
 
-        ///<summary> The string that you assigned to describe the resource </summary> 
+        ///<summary> The string that you assigned to describe the resource. </summary> 
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
 
-        ///<summary> A short description of the Add-on functionality </summary> 
+        ///<summary> A short description of the functionality that the Add-on provides. </summary> 
         [JsonProperty("description")]
         public string Description { get; private set; }
 
-        ///<summary> A JSON string that represents the current configuration </summary> 
+        ///<summary> A JSON string that represents the current configuration of this Add-on installation. </summary> 
         [JsonProperty("configuration")]
         public object Configuration { get; private set; }
 
-        ///<summary> An application-defined string that uniquely identifies the resource </summary> 
+        ///<summary> An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource. </summary> 
         [JsonProperty("unique_name")]
         public string UniqueName { get; private set; }
 
-        ///<summary> The RFC 2822 date and time in GMT that the resource was created </summary> 
+        ///<summary> The date and time in GMT that the resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The RFC 2822 date and time in GMT that the resource was last updated </summary> 
+        ///<summary> The date and time in GMT that the resource was last updated specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> The URI of the resource, relative to `https://api.twilio.com` </summary> 
+        ///<summary> The URI of the resource, relative to `https://api.twilio.com`. </summary> 
         [JsonProperty("uri")]
         public string Uri { get; private set; }
 
-        ///<summary> A list of related resources identified by their relative URIs </summary> 
+        ///<summary> A list of related resources identified by their relative URIs. </summary> 
         [JsonProperty("subresource_uris")]
         public Dictionary<string, string> SubresourceUris { get; private set; }
 

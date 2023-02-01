@@ -401,23 +401,23 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
         }
 
     
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string that we created to identify the MessageInteraction resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The SID of the resource's parent Session </summary> 
+        ///<summary> The SID of the parent [Session](https://www.twilio.com/docs/proxy/api/session) resource. </summary> 
         [JsonProperty("session_sid")]
         public string SessionSid { get; private set; }
 
-        ///<summary> The SID of the resource's parent Service </summary> 
+        ///<summary> The SID of the parent [Service](https://www.twilio.com/docs/proxy/api/service) resource. </summary> 
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
 
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the MessageInteraction resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> A JSON string that includes the message body sent to the participant </summary> 
+        ///<summary> A JSON string that includes the message body sent to the participant. (e.g. `{\"body\": \"hello\"}`) </summary> 
         [JsonProperty("data")]
         public string Data { get; private set; }
 
@@ -425,15 +425,15 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
         [JsonProperty("type")]
         public MessageInteractionResource.TypeEnum Type { get; private set; }
 
-        ///<summary> The SID of the Participant resource </summary> 
+        ///<summary> The SID of the [Participant](https://www.twilio.com/docs/proxy/api/participant) resource. </summary> 
         [JsonProperty("participant_sid")]
         public string ParticipantSid { get; private set; }
 
-        ///<summary> Always empty for Message Interactions </summary> 
+        ///<summary> Always empty for created Message Interactions. </summary> 
         [JsonProperty("inbound_participant_sid")]
         public string InboundParticipantSid { get; private set; }
 
-        ///<summary> Always empty for Message Interactions </summary> 
+        ///<summary> Always empty for created Message Interactions. </summary> 
         [JsonProperty("inbound_resource_sid")]
         public string InboundResourceSid { get; private set; }
 
@@ -441,19 +441,19 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
         [JsonProperty("inbound_resource_status")]
         public MessageInteractionResource.ResourceStatusEnum InboundResourceStatus { get; private set; }
 
-        ///<summary> Always empty for Message Interactions </summary> 
+        ///<summary> Always empty for created Message Interactions. </summary> 
         [JsonProperty("inbound_resource_type")]
         public string InboundResourceType { get; private set; }
 
-        ///<summary> Always empty for Message Interactions </summary> 
+        ///<summary> Always empty for created Message Interactions. </summary> 
         [JsonProperty("inbound_resource_url")]
         public Uri InboundResourceUrl { get; private set; }
 
-        ///<summary> The SID of the outbound Participant resource </summary> 
+        ///<summary> The SID of the outbound [Participant](https://www.twilio.com/docs/proxy/api/participant) resource. </summary> 
         [JsonProperty("outbound_participant_sid")]
         public string OutboundParticipantSid { get; private set; }
 
-        ///<summary> The SID of the outbound Message resource </summary> 
+        ///<summary> The SID of the outbound [Message](https://www.twilio.com/docs/sms/api/message-resource) resource. </summary> 
         [JsonProperty("outbound_resource_sid")]
         public string OutboundResourceSid { get; private set; }
 
@@ -461,23 +461,23 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
         [JsonProperty("outbound_resource_status")]
         public MessageInteractionResource.ResourceStatusEnum OutboundResourceStatus { get; private set; }
 
-        ///<summary> The outbound resource type </summary> 
+        ///<summary> The outbound resource type. This value is always `Message`. </summary> 
         [JsonProperty("outbound_resource_type")]
         public string OutboundResourceType { get; private set; }
 
-        ///<summary> The URL of the Twilio message resource </summary> 
+        ///<summary> The URL of the Twilio message resource. </summary> 
         [JsonProperty("outbound_resource_url")]
         public Uri OutboundResourceUrl { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was created </summary> 
+        ///<summary> The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time in GMT when the resource was created. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was last updated </summary> 
+        ///<summary> The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time in GMT when the resource was last updated. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> The absolute URL of the MessageInteraction resource </summary> 
+        ///<summary> The absolute URL of the MessageInteraction resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 

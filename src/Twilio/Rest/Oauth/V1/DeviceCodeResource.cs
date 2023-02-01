@@ -123,27 +123,27 @@ namespace Twilio.Rest.Oauth.V1
         }
 
     
-        ///<summary> The device verification code </summary> 
+        ///<summary> The device verification code. </summary> 
         [JsonProperty("device_code")]
         public string DeviceCode { get; private set; }
 
-        ///<summary> The verification code for the end user </summary> 
+        ///<summary> The verification code which end user uses to verify authorization request. </summary> 
         [JsonProperty("user_code")]
         public string UserCode { get; private set; }
 
-        ///<summary> The URI that the end user visits to verify request </summary> 
+        ///<summary> The URI that the end user visits to verify authorization request. </summary> 
         [JsonProperty("verification_uri")]
         public string VerificationUri { get; private set; }
 
-        ///<summary> he URI with user_code that the end-user alternatively visits to verify request </summary> 
+        ///<summary> The URI with user_code that the end-user alternatively visits to verify authorization request. </summary> 
         [JsonProperty("verification_uri_complete")]
         public string VerificationUriComplete { get; private set; }
 
-        ///<summary> The expiration time of the device_code and user_code in seconds </summary> 
+        ///<summary> The expiration time of the device_code and user_code in seconds. </summary> 
         [JsonProperty("expires_in")]
         public long? ExpiresIn { get; private set; }
 
-        ///<summary> The minimum amount of time in seconds that the client should wait between polling requests to the token endpoint </summary> 
+        ///<summary> The minimum amount of time in seconds that the client should wait between polling requests to the token endpoint. </summary> 
         [JsonProperty("interval")]
         public int? Interval { get; private set; }
 

@@ -706,15 +706,15 @@ namespace Twilio.Rest.Api.V2010.Account
         }
 
     
-        ///<summary> The unique string that identifies this resource </summary> 
+        ///<summary> The unique string that we created to identify this Call resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The RFC 2822 date and time in GMT that this resource was created </summary> 
+        ///<summary> The date and time in GMT that this resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The RFC 2822 date and time in GMT that this resource was last updated </summary> 
+        ///<summary> The date and time in GMT that this resource was last updated, specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
@@ -722,23 +722,23 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonProperty("parent_call_sid")]
         public string ParentCallSid { get; private set; }
 
-        ///<summary> The SID of the Account that created this resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created this Call resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The phone number, SIP address or Client identifier that received this call. Phone numbers are in E.164 format (e.g., +16175551212). SIP addresses are formatted as `name@company.com`. Client identifiers are formatted `client:name`. </summary> 
+        ///<summary> The phone number, SIP address, Client identifier or SIM SID that received this call. Phone numbers are in [E.164](https://www.twilio.com/docs/glossary/what-e164) format (e.g., +16175551212). SIP addresses are formatted as `name@company.com`. Client identifiers are formatted `client:name`. SIM SIDs are formatted as `sim:sid`. </summary> 
         [JsonProperty("to")]
         public string To { get; private set; }
 
-        ///<summary> The phone number, SIP address or Client identifier that received this call. Formatted for display. </summary> 
+        ///<summary> The phone number, SIP address or Client identifier that received this call. Formatted for display. Non-North American phone numbers are in [E.164](https://www.twilio.com/docs/glossary/what-e164) format (e.g., +442071838750). </summary> 
         [JsonProperty("to_formatted")]
         public string ToFormatted { get; private set; }
 
-        ///<summary> The phone number, SIP address or Client identifier that made this call. Phone numbers are in E.164 format (e.g., +16175551212). SIP addresses are formatted as `name@company.com`. Client identifiers are formatted `client:name`. </summary> 
+        ///<summary> The phone number, SIP address, Client identifier or SIM SID that made this call. Phone numbers are in [E.164](https://www.twilio.com/docs/glossary/what-e164) format (e.g., +16175551212). SIP addresses are formatted as `name@company.com`. Client identifiers are formatted `client:name`. SIM SIDs are formatted as `sim:sid`. </summary> 
         [JsonProperty("from")]
         public string From { get; private set; }
 
-        ///<summary> The calling phone number, SIP address, or Client identifier formatted for display. </summary> 
+        ///<summary> The calling phone number, SIP address, or Client identifier formatted for display. Non-North American phone numbers are in [E.164](https://www.twilio.com/docs/glossary/what-e164) format (e.g., +442071838750). </summary> 
         [JsonProperty("from_formatted")]
         public string FromFormatted { get; private set; }
 
@@ -750,15 +750,15 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonProperty("status")]
         public CallResource.StatusEnum Status { get; private set; }
 
-        ///<summary> The start time of the call. Null if the call has not yet been dialed. </summary> 
+        ///<summary> The start time of the call, given as GMT in [RFC 2822](https://www.php.net/manual/en/class.datetime.php#datetime.constants.rfc2822) format. Empty if the call has not yet been dialed. </summary> 
         [JsonProperty("start_time")]
         public DateTime? StartTime { get; private set; }
 
-        ///<summary> The end time of the call. Null if the call did not complete successfully. </summary> 
+        ///<summary> The time the call ended, given as GMT in [RFC 2822](https://www.php.net/manual/en/class.datetime.php#datetime.constants.rfc2822) format. Empty if the call did not complete successfully. </summary> 
         [JsonProperty("end_time")]
         public DateTime? EndTime { get; private set; }
 
-        ///<summary> The length of the call in seconds. </summary> 
+        ///<summary> The length of the call in seconds. This value is empty for busy, failed, unanswered, or ongoing calls. </summary> 
         [JsonProperty("duration")]
         public string Duration { get; private set; }
 
@@ -766,11 +766,11 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonProperty("price")]
         public string Price { get; private set; }
 
-        ///<summary> The currency in which `Price` is measured. </summary> 
+        ///<summary> The currency in which `Price` is measured, in [ISO 4127](https://www.iso.org/iso/home/standards/currency_codes.htm) format (e.g., `USD`, `EUR`, `JPY`). Always capitalized for calls. </summary> 
         [JsonProperty("price_unit")]
         public string PriceUnit { get; private set; }
 
-        ///<summary> A string describing the direction of the call. `inbound` for inbound calls, `outbound-api` for calls initiated via the REST API or `outbound-dial` for calls initiated by a `Dial` verb. </summary> 
+        ///<summary> A string describing the direction of the call. Can be: `inbound` for inbound calls, `outbound-api` for calls initiated via the REST API or `outbound-dial` for calls initiated by a `<Dial>` verb. Using [Elastic SIP Trunking](https://www.twilio.com/docs/sip-trunking), the values can be [`trunking-terminating`](https://www.twilio.com/docs/sip-trunking#termination) for outgoing calls from your communications infrastructure to the PSTN or [`trunking-originating`](https://www.twilio.com/docs/sip-trunking#origination) for incoming calls to your communications infrastructure from the PSTN. </summary> 
         [JsonProperty("direction")]
         public string Direction { get; private set; }
 
@@ -778,7 +778,7 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonProperty("answered_by")]
         public string AnsweredBy { get; private set; }
 
-        ///<summary> The API Version used to create the call </summary> 
+        ///<summary> The API version used to create the call. </summary> 
         [JsonProperty("api_version")]
         public string ApiVersion { get; private set; }
 
@@ -798,15 +798,15 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonProperty("queue_time")]
         public string QueueTime { get; private set; }
 
-        ///<summary> The (optional) unique identifier of the trunk resource that was used for this call. </summary> 
+        ///<summary> The unique identifier of the trunk resource that was used for this call. The field is empty if the call was not made using a SIP trunk or if the call is not terminated. </summary> 
         [JsonProperty("trunk_sid")]
         public string TrunkSid { get; private set; }
 
-        ///<summary> The URI of this resource, relative to `https://api.twilio.com` </summary> 
+        ///<summary> The URI of this resource, relative to `https://api.twilio.com`. </summary> 
         [JsonProperty("uri")]
         public string Uri { get; private set; }
 
-        ///<summary> A list of related subresources identified by their relative URIs </summary> 
+        ///<summary> A list of subresources available to this call, identified by their URIs relative to `https://api.twilio.com`. </summary> 
         [JsonProperty("subresource_uris")]
         public Dictionary<string, string> SubresourceUris { get; private set; }
 

@@ -623,15 +623,15 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         }
 
     
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the TaskReservation resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was created </summary> 
+        ///<summary> The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was last updated </summary> 
+        ///<summary> The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
@@ -639,19 +639,19 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         [JsonProperty("reservation_status")]
         public ReservationResource.StatusEnum ReservationStatus { get; private set; }
 
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string that we created to identify the TaskReservation resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The SID of the reserved Task resource </summary> 
+        ///<summary> The SID of the reserved Task resource. </summary> 
         [JsonProperty("task_sid")]
         public string TaskSid { get; private set; }
 
-        ///<summary> The friendly_name of the Worker that is reserved </summary> 
+        ///<summary> The `friendly_name` of the Worker that is reserved. </summary> 
         [JsonProperty("worker_name")]
         public string WorkerName { get; private set; }
 
-        ///<summary> The SID of the reserved Worker resource </summary> 
+        ///<summary> The SID of the reserved Worker resource. </summary> 
         [JsonProperty("worker_sid")]
         public string WorkerSid { get; private set; }
 
@@ -659,11 +659,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         [JsonProperty("workspace_sid")]
         public string WorkspaceSid { get; private set; }
 
-        ///<summary> The absolute URL of the TaskReservation reservation </summary> 
+        ///<summary> The absolute URL of the TaskReservation reservation. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
-        ///<summary> The URLs of related resources </summary> 
+        ///<summary> The URLs of related resources. </summary> 
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
 

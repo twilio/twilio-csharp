@@ -26,15 +26,15 @@ using Twilio.Http;
 
 namespace Twilio.Rest.FlexApi.V1
 {
-    public class UserRolesResource : Resource
+    public class InsightsSettingsCommentResource : Resource
     {
     
 
         
-        private static Request BuildFetchRequest(FetchUserRolesOptions options, ITwilioRestClient client)
+        private static Request BuildFetchRequest(FetchInsightsSettingsCommentOptions options, ITwilioRestClient client)
         {
             
-            string path = "/v1/Insights/UserRoles";
+            string path = "/v1/Insights/QM/Settings/CommentTags";
 
 
             return new Request(
@@ -46,11 +46,11 @@ namespace Twilio.Rest.FlexApi.V1
             );
         }
 
-        /// <summary> This is used by Flex UI and Quality Management to fetch the Flex Insights roles for the user </summary>
-        /// <param name="options"> Fetch UserRoles parameters </param>
+        /// <summary> To get the Comment Settings for an Account </summary>
+        /// <param name="options"> Fetch InsightsSettingsComment parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of UserRoles </returns>
-        public static UserRolesResource Fetch(FetchUserRolesOptions options, ITwilioRestClient client = null)
+        /// <returns> A single instance of InsightsSettingsComment </returns>
+        public static InsightsSettingsCommentResource Fetch(FetchInsightsSettingsCommentOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildFetchRequest(options, client));
@@ -58,11 +58,11 @@ namespace Twilio.Rest.FlexApi.V1
         }
 
         #if !NET35
-        /// <summary> This is used by Flex UI and Quality Management to fetch the Flex Insights roles for the user </summary>
-        /// <param name="options"> Fetch UserRoles parameters </param>
+        /// <summary> To get the Comment Settings for an Account </summary>
+        /// <param name="options"> Fetch InsightsSettingsComment parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of UserRoles </returns>
-        public static async System.Threading.Tasks.Task<UserRolesResource> FetchAsync(FetchUserRolesOptions options,
+        /// <returns> Task that resolves to A single instance of InsightsSettingsComment </returns>
+        public static async System.Threading.Tasks.Task<InsightsSettingsCommentResource> FetchAsync(FetchInsightsSettingsCommentOptions options,
                                                                                              ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -70,40 +70,40 @@ namespace Twilio.Rest.FlexApi.V1
             return FromJson(response.Content);
         }
         #endif
-        /// <summary> This is used by Flex UI and Quality Management to fetch the Flex Insights roles for the user </summary>
+        /// <summary> To get the Comment Settings for an Account </summary>
         /// <param name="token"> The Token HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of UserRoles </returns>
-        public static UserRolesResource Fetch(
+        /// <returns> A single instance of InsightsSettingsComment </returns>
+        public static InsightsSettingsCommentResource Fetch(
                                          string token = null, 
                                          ITwilioRestClient client = null)
         {
-            var options = new FetchUserRolesOptions(){ Token = token };
+            var options = new FetchInsightsSettingsCommentOptions(){ Token = token };
             return Fetch(options, client);
         }
 
         #if !NET35
-        /// <summary> This is used by Flex UI and Quality Management to fetch the Flex Insights roles for the user </summary>
+        /// <summary> To get the Comment Settings for an Account </summary>
         /// <param name="token"> The Token HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of UserRoles </returns>
-        public static async System.Threading.Tasks.Task<UserRolesResource> FetchAsync(string token = null, ITwilioRestClient client = null)
+        /// <returns> Task that resolves to A single instance of InsightsSettingsComment </returns>
+        public static async System.Threading.Tasks.Task<InsightsSettingsCommentResource> FetchAsync(string token = null, ITwilioRestClient client = null)
         {
-            var options = new FetchUserRolesOptions(){ Token = token };
+            var options = new FetchInsightsSettingsCommentOptions(){ Token = token };
             return await FetchAsync(options, client);
         }
         #endif
     
         /// <summary>
-        /// Converts a JSON string into a UserRolesResource object
+        /// Converts a JSON string into a InsightsSettingsCommentResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> UserRolesResource object represented by the provided JSON </returns>
-        public static UserRolesResource FromJson(string json)
+        /// <returns> InsightsSettingsCommentResource object represented by the provided JSON </returns>
+        public static InsightsSettingsCommentResource FromJson(string json)
         {
             try
             {
-                return JsonConvert.DeserializeObject<UserRolesResource>(json);
+                return JsonConvert.DeserializeObject<InsightsSettingsCommentResource>(json);
             }
             catch (JsonException e)
             {
@@ -112,9 +112,13 @@ namespace Twilio.Rest.FlexApi.V1
         }
 
     
-        ///<summary> Flex Insights roles for the user </summary> 
-        [JsonProperty("roles")]
-        public List<string> Roles { get; private set; }
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Flex Insights resource and owns this resource. </summary> 
+        [JsonProperty("account_sid")]
+        public string AccountSid { get; private set; }
+
+        ///<summary> The comments </summary> 
+        [JsonProperty("comments")]
+        public object Comments { get; private set; }
 
         ///<summary> The url </summary> 
         [JsonProperty("url")]
@@ -122,7 +126,7 @@ namespace Twilio.Rest.FlexApi.V1
 
 
 
-        private UserRolesResource() {
+        private InsightsSettingsCommentResource() {
 
         }
     }

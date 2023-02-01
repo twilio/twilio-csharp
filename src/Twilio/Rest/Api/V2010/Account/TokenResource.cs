@@ -121,31 +121,31 @@ namespace Twilio.Rest.Api.V2010.Account
         }
 
     
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Token resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The RFC 2822 date and time in GMT that the resource was created </summary> 
+        ///<summary> The date and time in GMT that the resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The RFC 2822 date and time in GMT that the resource was last updated </summary> 
+        ///<summary> The date and time in GMT that the resource was last updated specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> An array representing the ephemeral credentials </summary> 
+        ///<summary> An array representing the ephemeral credentials and the STUN and TURN server URIs. </summary> 
         [JsonProperty("ice_servers")]
         public List<IceServer> IceServers { get; private set; }
 
-        ///<summary> The temporary password used for authenticating </summary> 
+        ///<summary> The temporary password that the username will use when authenticating with Twilio. </summary> 
         [JsonProperty("password")]
         public string Password { get; private set; }
 
-        ///<summary> The duration in seconds the credentials are valid </summary> 
+        ///<summary> The duration in seconds for which the username and password are valid. </summary> 
         [JsonProperty("ttl")]
         public string Ttl { get; private set; }
 
-        ///<summary> The temporary username that uniquely identifies a Token </summary> 
+        ///<summary> The temporary username that uniquely identifies a Token. </summary> 
         [JsonProperty("username")]
         public string Username { get; private set; }
 

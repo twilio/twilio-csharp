@@ -130,11 +130,11 @@ namespace Twilio.Rest.Verify.V2
         [JsonProperty("form_type")]
         public FormResource.FormTypesEnum FormType { get; private set; }
 
-        ///<summary> Object that contains the available forms for this type. </summary> 
+        ///<summary> Object that contains the available forms for this type. This available forms are given in the standard [JSON Schema](https://json-schema.org/) format </summary> 
         [JsonProperty("forms")]
         public object Forms { get; private set; }
 
-        ///<summary> Additional information for the available forms for this type. </summary> 
+        ///<summary> Additional information for the available forms for this type. E.g. The separator string used for `binding` in a Factor push. </summary> 
         [JsonProperty("form_meta")]
         public object FormMeta { get; private set; }
 

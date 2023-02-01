@@ -134,27 +134,27 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Workflow
         }
 
     
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Workflow resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> An object that contains the cumulative statistics for the Workflow </summary> 
+        ///<summary> An object that contains the cumulative statistics for the Workflow. </summary> 
         [JsonProperty("cumulative")]
         public object Cumulative { get; private set; }
 
-        ///<summary> An object that contains the real-time statistics for the Workflow </summary> 
+        ///<summary> An object that contains the real-time statistics for the Workflow. </summary> 
         [JsonProperty("realtime")]
         public object Realtime { get; private set; }
 
-        ///<summary> Returns the list of Tasks that are being controlled by the Workflow with the specified SID value </summary> 
+        ///<summary> Returns the list of Tasks that are being controlled by the Workflow with the specified SID value. </summary> 
         [JsonProperty("workflow_sid")]
         public string WorkflowSid { get; private set; }
 
-        ///<summary> The SID of the Workspace that contains the Workflow </summary> 
+        ///<summary> The SID of the Workspace that contains the Workflow. </summary> 
         [JsonProperty("workspace_sid")]
         public string WorkspaceSid { get; private set; }
 
-        ///<summary> The absolute URL of the Workflow statistics resource </summary> 
+        ///<summary> The absolute URL of the Workflow statistics resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 

@@ -289,71 +289,71 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         }
 
     
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Event resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The SID of the resource that triggered the event </summary> 
+        ///<summary> The SID of the resource that triggered the event. </summary> 
         [JsonProperty("actor_sid")]
         public string ActorSid { get; private set; }
 
-        ///<summary> The type of resource that triggered the event </summary> 
+        ///<summary> The type of resource that triggered the event. </summary> 
         [JsonProperty("actor_type")]
         public string ActorType { get; private set; }
 
-        ///<summary> The absolute URL of the resource that triggered the event </summary> 
+        ///<summary> The absolute URL of the resource that triggered the event. </summary> 
         [JsonProperty("actor_url")]
         public Uri ActorUrl { get; private set; }
 
-        ///<summary> A description of the event </summary> 
+        ///<summary> A description of the event. </summary> 
         [JsonProperty("description")]
         public string Description { get; private set; }
 
-        ///<summary> Data about the event </summary> 
+        ///<summary> Data about the event. For more information, see [Event types](https://www.twilio.com/docs/taskrouter/api/event#event-types). </summary> 
         [JsonProperty("event_data")]
         public object EventData { get; private set; }
 
-        ///<summary> The time the event was sent </summary> 
+        ///<summary> The time the event was sent, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("event_date")]
         public DateTime? EventDate { get; private set; }
 
-        ///<summary> The time the event was sent in milliseconds </summary> 
+        ///<summary> The time the event was sent in milliseconds. </summary> 
         [JsonProperty("event_date_ms")]
         public long? EventDateMs { get; private set; }
 
-        ///<summary> The identifier for the event </summary> 
+        ///<summary> The identifier for the event. </summary> 
         [JsonProperty("event_type")]
         public string EventType { get; private set; }
 
-        ///<summary> The SID of the object the event is most relevant to </summary> 
+        ///<summary> The SID of the object the event is most relevant to, such as a TaskSid, ReservationSid, or a  WorkerSid. </summary> 
         [JsonProperty("resource_sid")]
         public string ResourceSid { get; private set; }
 
-        ///<summary> The type of object the event is most relevant to </summary> 
+        ///<summary> The type of object the event is most relevant to, such as a Task, Reservation, or a Worker). </summary> 
         [JsonProperty("resource_type")]
         public string ResourceType { get; private set; }
 
-        ///<summary> The URL of the resource the event is most relevant to </summary> 
+        ///<summary> The URL of the resource the event is most relevant to. </summary> 
         [JsonProperty("resource_url")]
         public Uri ResourceUrl { get; private set; }
 
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string that we created to identify the Event resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> Where the Event originated </summary> 
+        ///<summary> Where the Event originated. </summary> 
         [JsonProperty("source")]
         public string Source { get; private set; }
 
-        ///<summary> The IP from which the Event originated </summary> 
+        ///<summary> The IP from which the Event originated. </summary> 
         [JsonProperty("source_ip_address")]
         public string SourceIpAddress { get; private set; }
 
-        ///<summary> The absolute URL of the Event resource </summary> 
+        ///<summary> The absolute URL of the Event resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
-        ///<summary> The SID of the Workspace that contains the Event </summary> 
+        ///<summary> The SID of the Workspace that contains the Event. </summary> 
         [JsonProperty("workspace_sid")]
         public string WorkspaceSid { get; private set; }
 

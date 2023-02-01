@@ -426,7 +426,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> The Field Type of this field. It can be any Built-in Field Type or unique_name or the Field Type sid of a custom Field Type. </summary> 
+        ///<summary> The Field Type of this field. It can be any [Built-in Field Type](https://www.twilio.com/docs/assistant/api/built-in-field-types) or the unique_name or sid of a custom Field Type. </summary> 
         [JsonProperty("field_type")]
         public string FieldType { get; private set; }
 

@@ -186,19 +186,19 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         }
 
     
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the StyleSheet resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The SID of the Assistant that is the parent of the resource </summary> 
+        ///<summary> The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resource. </summary> 
         [JsonProperty("assistant_sid")]
         public string AssistantSid { get; private set; }
 
-        ///<summary> The absolute URL of the StyleSheet resource </summary> 
+        ///<summary> The absolute URL of the StyleSheet resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
-        ///<summary> The JSON string that describes the style sheet object </summary> 
+        ///<summary> The JSON string that describes the style sheet object. </summary> 
         [JsonProperty("data")]
         public object Data { get; private set; }
 

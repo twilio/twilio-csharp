@@ -444,39 +444,39 @@ namespace Twilio.Rest.Preview.DeployedDevices
         }
 
     
-        ///<summary> A string that uniquely identifies this Fleet. </summary> 
+        ///<summary> Contains a 34 character string that uniquely identifies this Fleet resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> URL of this Fleet. </summary> 
+        ///<summary> Contains an absolute URL for this Fleet resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
-        ///<summary> A unique, addressable name of this Fleet. </summary> 
+        ///<summary> Contains a unique and addressable name of this Fleet, e.g. 'default', up to 128 characters long. </summary> 
         [JsonProperty("unique_name")]
         public string UniqueName { get; private set; }
 
-        ///<summary> A human readable description for this Fleet. </summary> 
+        ///<summary> Contains a human readable descriptive text for this Fleet, up to 256 characters long. </summary> 
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
 
-        ///<summary> The unique SID that identifies this Account. </summary> 
+        ///<summary> Speicifies the unique string identifier of the Account responsible for this Fleet. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The unique SID that identifies this Fleet's default Deployment. </summary> 
+        ///<summary> Contains the string identifier of the automatically provisioned default Deployment of this Fleet. </summary> 
         [JsonProperty("default_deployment_sid")]
         public string DefaultDeploymentSid { get; private set; }
 
-        ///<summary> The date this Fleet was created. </summary> 
+        ///<summary> Specifies the date this Fleet was created, given in UTC ISO 8601 format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The date this Fleet was updated. </summary> 
+        ///<summary> Specifies the date this Fleet was last updated, given in UTC ISO 8601 format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> Nested resource URLs. </summary> 
+        ///<summary> Contains a dictionary of URL links to nested resources of this Fleet. </summary> 
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
 

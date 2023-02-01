@@ -246,23 +246,23 @@ namespace Twilio.Rest.Supersim.V1
         }
 
     
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string that we created to identify the Network resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> A human readable identifier of this resource </summary> 
+        ///<summary> A human readable identifier of this resource. </summary> 
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
 
-        ///<summary> The absolute URL of the Network resource </summary> 
+        ///<summary> The absolute URL of the Network resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
-        ///<summary> The ISO country code of the Network resource </summary> 
+        ///<summary> The [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the Network resource. </summary> 
         [JsonProperty("iso_country")]
         public string IsoCountry { get; private set; }
 
-        ///<summary> The MCC/MNCs included in the Network resource </summary> 
+        ///<summary> Array of objects identifying the [MCC-MNCs](https://en.wikipedia.org/wiki/Mobile_country_code) that are included in the Network resource. </summary> 
         [JsonProperty("identifiers")]
         public List<object> Identifiers { get; private set; }
 

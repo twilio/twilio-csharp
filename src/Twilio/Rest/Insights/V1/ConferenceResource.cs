@@ -359,27 +359,27 @@ namespace Twilio.Rest.Insights.V1
         }
 
     
-        ///<summary> Conference SID. </summary> 
+        ///<summary> The unique SID identifier of the Conference. </summary> 
         [JsonProperty("conference_sid")]
         public string ConferenceSid { get; private set; }
 
-        ///<summary> Account SID. </summary> 
+        ///<summary> The unique SID identifier of the Account. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> Custom label for the conference. </summary> 
+        ///<summary> Custom label for the conference resource, up to 64 characters. </summary> 
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
 
-        ///<summary> Conference creation date/time. </summary> 
+        ///<summary> Conference creation date and time in ISO 8601 format. </summary> 
         [JsonProperty("create_time")]
         public DateTime? CreateTime { get; private set; }
 
-        ///<summary> Timestamp in ISO 8601 format when the conference started. </summary> 
+        ///<summary> Timestamp in ISO 8601 format when the conference started. Conferences do not start until at least two participants join, at least one of whom has startConferenceOnEnter=true. </summary> 
         [JsonProperty("start_time")]
         public DateTime? StartTime { get; private set; }
 
-        ///<summary> Conference end date/time. </summary> 
+        ///<summary> Conference end date and time in ISO 8601 format. </summary> 
         [JsonProperty("end_time")]
         public DateTime? EndTime { get; private set; }
 
@@ -387,7 +387,7 @@ namespace Twilio.Rest.Insights.V1
         [JsonProperty("duration_seconds")]
         public int? DurationSeconds { get; private set; }
 
-        ///<summary> Duration of the conference in seconds. </summary> 
+        ///<summary> Duration of the between conference start event and conference end event in seconds. </summary> 
         [JsonProperty("connect_duration_seconds")]
         public int? ConnectDurationSeconds { get; private set; }
 
@@ -395,15 +395,15 @@ namespace Twilio.Rest.Insights.V1
         [JsonProperty("status")]
         public ConferenceResource.ConferenceStatusEnum Status { get; private set; }
 
-        ///<summary> Max participants specified in config. </summary> 
+        ///<summary> Maximum number of concurrent participants as specified by the configuration. </summary> 
         [JsonProperty("max_participants")]
         public int? MaxParticipants { get; private set; }
 
-        ///<summary> Actual maximum concurrent participants. </summary> 
+        ///<summary> Actual maximum number of concurrent participants in the conference. </summary> 
         [JsonProperty("max_concurrent_participants")]
         public int? MaxConcurrentParticipants { get; private set; }
 
-        ///<summary> Unique conference participants. </summary> 
+        ///<summary> Unique conference participants based on caller ID. </summary> 
         [JsonProperty("unique_participants")]
         public int? UniqueParticipants { get; private set; }
 
@@ -411,7 +411,7 @@ namespace Twilio.Rest.Insights.V1
         [JsonProperty("end_reason")]
         public ConferenceResource.ConferenceEndReasonEnum EndReason { get; private set; }
 
-        ///<summary> Call SID that ended the conference. </summary> 
+        ///<summary> Call SID of the participant whose actions ended the conference. </summary> 
         [JsonProperty("ended_by")]
         public string EndedBy { get; private set; }
 
@@ -423,19 +423,19 @@ namespace Twilio.Rest.Insights.V1
         [JsonProperty("mixer_region_requested")]
         public ConferenceResource.RegionEnum MixerRegionRequested { get; private set; }
 
-        ///<summary> Boolean. Indicates whether recording was enabled. </summary> 
+        ///<summary> Boolean. Indicates whether recording was enabled at the conference mixer. </summary> 
         [JsonProperty("recording_enabled")]
         public bool? RecordingEnabled { get; private set; }
 
-        ///<summary> Potential issues detected during the conference. </summary> 
+        ///<summary> Potential issues detected by Twilio during the conference. </summary> 
         [JsonProperty("detected_issues")]
         public object DetectedIssues { get; private set; }
 
-        ///<summary> Tags for detected conference conditions and participant behaviors. </summary> 
+        ///<summary> Tags for detected conference conditions and participant behaviors which may be of interest. </summary> 
         [JsonProperty("tags")]
         public List<ConferenceResource.TagEnum> Tags { get; private set; }
 
-        ///<summary> Object. Contains details about conference tags. </summary> 
+        ///<summary> Object. Contains details about conference tags including severity. </summary> 
         [JsonProperty("tag_info")]
         public object TagInfo { get; private set; }
 
@@ -447,7 +447,7 @@ namespace Twilio.Rest.Insights.V1
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
-        ///<summary> Nested resource URLs. </summary> 
+        ///<summary> Contains a dictionary of URL links to nested resources of this Conference. </summary> 
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
 

@@ -492,19 +492,19 @@ namespace Twilio.Rest.Trusthub.V1
         }
 
     
-        ///<summary> The unique string that identifies the resource. </summary> 
+        ///<summary> The unique string that we created to identify the Customer-Profile resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Customer-Profile resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The unique string of a policy. </summary> 
+        ///<summary> The unique string of a policy that is associated to the Customer-Profile resource. </summary> 
         [JsonProperty("policy_sid")]
         public string PolicySid { get; private set; }
 
-        ///<summary> The string that you assigned to describe the resource </summary> 
+        ///<summary> The string that you assigned to describe the resource. </summary> 
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
 
@@ -512,11 +512,11 @@ namespace Twilio.Rest.Trusthub.V1
         [JsonProperty("status")]
         public TrustProductsResource.StatusEnum Status { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource will be valid until. </summary> 
+        ///<summary> The date and time in GMT in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format when the resource will be valid until. </summary> 
         [JsonProperty("valid_until")]
         public DateTime? ValidUntil { get; private set; }
 
-        ///<summary> The email address </summary> 
+        ///<summary> The email address that will receive updates when the Customer-Profile resource changes status. </summary> 
         [JsonProperty("email")]
         public string Email { get; private set; }
 
@@ -524,19 +524,19 @@ namespace Twilio.Rest.Trusthub.V1
         [JsonProperty("status_callback")]
         public Uri StatusCallback { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was created </summary> 
+        ///<summary> The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was last updated </summary> 
+        ///<summary> The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> The absolute URL of the Customer-Profile resource </summary> 
+        ///<summary> The absolute URL of the Customer-Profile resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
-        ///<summary> The URLs of the Assigned Items of the Customer-Profile resource </summary> 
+        ///<summary> The URLs of the Assigned Items of the Customer-Profile resource. </summary> 
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
 

@@ -484,67 +484,67 @@ namespace Twilio.Rest.Wireless.V1
         }
 
     
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string that we created to identify the RatePlan resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> An application-defined string that uniquely identifies the resource </summary> 
+        ///<summary> An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource. </summary> 
         [JsonProperty("unique_name")]
         public string UniqueName { get; private set; }
 
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the RatePlan resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The string that you assigned to describe the resource </summary> 
+        ///<summary> The string that you assigned to describe the resource. </summary> 
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
 
-        ///<summary> Whether SIMs can use GPRS/3G/4G/LTE data connectivity </summary> 
+        ///<summary> Whether SIMs can use GPRS/3G/4G/LTE data connectivity. </summary> 
         [JsonProperty("data_enabled")]
         public bool? DataEnabled { get; private set; }
 
-        ///<summary> The model used to meter data usage </summary> 
+        ///<summary> The model used to meter data usage. Can be: `payg` and `quota-1`, `quota-10`, and `quota-50`. Learn more about the available [data metering models](https://www.twilio.com/docs/wireless/api/rateplan-resource#payg-vs-quota-data-plans). </summary> 
         [JsonProperty("data_metering")]
         public string DataMetering { get; private set; }
 
-        ///<summary> The total data usage in Megabytes that the Network allows during one month on the home network </summary> 
+        ///<summary> The total data usage (download and upload combined) in Megabytes that the Network allows during one month on the home network (T-Mobile USA). The metering period begins the day of activation and ends on the same day in the following month. Can be up to 2TB. </summary> 
         [JsonProperty("data_limit")]
         public int? DataLimit { get; private set; }
 
-        ///<summary> Whether SIMs can make, send, and receive SMS using Commands </summary> 
+        ///<summary> Whether SIMs can make, send, and receive SMS using [Commands](https://www.twilio.com/docs/wireless/api/command-resource). </summary> 
         [JsonProperty("messaging_enabled")]
         public bool? MessagingEnabled { get; private set; }
 
-        ///<summary> Deprecated. Whether SIMs can make and receive voice calls </summary> 
+        ///<summary> Deprecated. Whether SIMs can make and receive voice calls. </summary> 
         [JsonProperty("voice_enabled")]
         public bool? VoiceEnabled { get; private set; }
 
-        ///<summary> Whether SIMs can roam on networks other than the home network in the United States </summary> 
+        ///<summary> Whether SIMs can roam on networks other than the home network (T-Mobile USA) in the United States. See [national roaming](https://www.twilio.com/docs/wireless/api/rateplan-resource#national-roaming). </summary> 
         [JsonProperty("national_roaming_enabled")]
         public bool? NationalRoamingEnabled { get; private set; }
 
-        ///<summary> The total data usage in Megabytes that the Network allows during one month on non-home networks in the United States </summary> 
+        ///<summary> The total data usage (download and upload combined) in Megabytes that the Network allows during one month on non-home networks in the United States. The metering period begins the day of activation and ends on the same day in the following month. Can be up to 2TB. </summary> 
         [JsonProperty("national_roaming_data_limit")]
         public int? NationalRoamingDataLimit { get; private set; }
 
-        ///<summary> The services that SIMs capable of using GPRS/3G/4G/LTE data connectivity can use outside of the United States </summary> 
+        ///<summary> The list of services that SIMs capable of using GPRS/3G/4G/LTE data connectivity can use outside of the United States. Can contain: `data` and `messaging`. </summary> 
         [JsonProperty("international_roaming")]
         public List<string> InternationalRoaming { get; private set; }
 
-        ///<summary> The total data usage (download and upload combined) in Megabytes that the Network allows during one month when roaming outside the United States </summary> 
+        ///<summary> The total data usage (download and upload combined) in Megabytes that the Network allows during one month when roaming outside the United States. Can be up to 2TB. </summary> 
         [JsonProperty("international_roaming_data_limit")]
         public int? InternationalRoamingDataLimit { get; private set; }
 
-        ///<summary> The date when the resource was created, given as GMT in ISO 8601 format </summary> 
+        ///<summary> The date and time in GMT when the resource was created specified in [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The date when the resource was last updated, given as GMT in ISO 8601 format </summary> 
+        ///<summary> The date and time in GMT when the resource was last updated specified in [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> The absolute URL of the resource </summary> 
+        ///<summary> The absolute URL of the resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 

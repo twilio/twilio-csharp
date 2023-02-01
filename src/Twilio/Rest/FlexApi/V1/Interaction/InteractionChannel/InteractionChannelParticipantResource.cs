@@ -375,7 +375,7 @@ namespace Twilio.Rest.FlexApi.V1.Interaction.InteractionChannel
         }
 
     
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string created by Twilio to identify an Interaction Channel Participant resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 

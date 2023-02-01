@@ -525,35 +525,35 @@ namespace Twilio.Rest.Proxy.V1.Service
         }
 
     
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string that we created to identify the Session resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The SID of the resource's parent Service </summary> 
+        ///<summary> The SID of the [Service](https://www.twilio.com/docs/proxy/api/service) the session is associated with. </summary> 
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
 
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Session resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The ISO 8601 date when the Session started </summary> 
+        ///<summary> The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date when the Session started. </summary> 
         [JsonProperty("date_started")]
         public DateTime? DateStarted { get; private set; }
 
-        ///<summary> The ISO 8601 date when the Session ended </summary> 
+        ///<summary> The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date when the Session ended. </summary> 
         [JsonProperty("date_ended")]
         public DateTime? DateEnded { get; private set; }
 
-        ///<summary> The ISO 8601 date when the Session last had an interaction </summary> 
+        ///<summary> The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date when the Session last had an interaction. </summary> 
         [JsonProperty("date_last_interaction")]
         public DateTime? DateLastInteraction { get; private set; }
 
-        ///<summary> The ISO 8601 date when the Session should expire </summary> 
+        ///<summary> The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date when the Session should expire. If this is value is present, it overrides the `ttl` value. </summary> 
         [JsonProperty("date_expiry")]
         public DateTime? DateExpiry { get; private set; }
 
-        ///<summary> An application-defined string that uniquely identifies the resource </summary> 
+        ///<summary> An application-defined string that uniquely identifies the resource. This value must be 191 characters or fewer in length and be unique. Supports UTF-8 characters. **This value should not have PII.** </summary> 
         [JsonProperty("unique_name")]
         public string UniqueName { get; private set; }
 
@@ -561,11 +561,11 @@ namespace Twilio.Rest.Proxy.V1.Service
         [JsonProperty("status")]
         public SessionResource.StatusEnum Status { get; private set; }
 
-        ///<summary> The reason the Session ended </summary> 
+        ///<summary> The reason the Session ended. </summary> 
         [JsonProperty("closed_reason")]
         public string ClosedReason { get; private set; }
 
-        ///<summary> When the session will expire </summary> 
+        ///<summary> The time, in seconds, when the session will expire. The time is measured from the last Session create or the Session's last Interaction. </summary> 
         [JsonProperty("ttl")]
         public int? Ttl { get; private set; }
 
@@ -573,19 +573,19 @@ namespace Twilio.Rest.Proxy.V1.Service
         [JsonProperty("mode")]
         public SessionResource.ModeEnum Mode { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was created </summary> 
+        ///<summary> The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time in GMT when the resource was created. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was last updated </summary> 
+        ///<summary> The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time in GMT when the resource was last updated. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> The absolute URL of the Session resource </summary> 
+        ///<summary> The absolute URL of the Session resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
-        ///<summary> The URLs of resources related to the Session </summary> 
+        ///<summary> The URLs of resources related to the Session. </summary> 
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
 

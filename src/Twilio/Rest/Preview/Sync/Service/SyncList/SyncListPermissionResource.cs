@@ -424,35 +424,35 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         }
 
     
-        ///<summary> Twilio Account SID. </summary> 
+        ///<summary> The unique SID identifier of the Twilio Account. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> Sync Service Instance SID. </summary> 
+        ///<summary> The unique SID identifier of the Sync Service Instance. </summary> 
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
 
-        ///<summary> Sync List SID. </summary> 
+        ///<summary> The unique SID identifier of the Sync List to which the Permission applies. </summary> 
         [JsonProperty("list_sid")]
         public string ListSid { get; private set; }
 
-        ///<summary> Identity of the user to whom the Sync List Permission applies. </summary> 
+        ///<summary> Arbitrary string identifier representing a human user associated with an FPA token, assigned by the developer. </summary> 
         [JsonProperty("identity")]
         public string Identity { get; private set; }
 
-        ///<summary> Read access. </summary> 
+        ///<summary> Boolean flag specifying whether the identity can read the Sync List and its Items. </summary> 
         [JsonProperty("read")]
         public bool? _Read { get; private set; }
 
-        ///<summary> Write access. </summary> 
+        ///<summary> Boolean flag specifying whether the identity can create, update and delete Items of the Sync List. </summary> 
         [JsonProperty("write")]
         public bool? Write { get; private set; }
 
-        ///<summary> Manage access. </summary> 
+        ///<summary> Boolean flag specifying whether the identity can delete the Sync List. </summary> 
         [JsonProperty("manage")]
         public bool? Manage { get; private set; }
 
-        ///<summary> URL of this Sync List Permission. </summary> 
+        ///<summary> Contains an absolute URL for this Sync List Permission. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 

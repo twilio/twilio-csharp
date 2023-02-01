@@ -488,59 +488,59 @@ namespace Twilio.Rest.Sync.V1
         }
 
     
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string that we created to identify the Service resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> An application-defined string that uniquely identifies the resource </summary> 
+        ///<summary> An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource. It is a read-only property, it cannot be assigned using REST API. </summary> 
         [JsonProperty("unique_name")]
         public string UniqueName { get; private set; }
 
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Service resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The string that you assigned to describe the resource </summary> 
+        ///<summary> The string that you assigned to describe the resource. </summary> 
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was created </summary> 
+        ///<summary> The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was last updated </summary> 
+        ///<summary> The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> The absolute URL of the Service resource </summary> 
+        ///<summary> The absolute URL of the Service resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
-        ///<summary> The URL we call when Sync objects are manipulated </summary> 
+        ///<summary> The URL we call when Sync objects are manipulated. </summary> 
         [JsonProperty("webhook_url")]
         public Uri WebhookUrl { get; private set; }
 
-        ///<summary> Whether the Service instance should call webhook_url when the REST API is used to update Sync objects </summary> 
+        ///<summary> Whether the Service instance should call `webhook_url` when the REST API is used to update Sync objects. The default is `false`. </summary> 
         [JsonProperty("webhooks_from_rest_enabled")]
         public bool? WebhooksFromRestEnabled { get; private set; }
 
-        ///<summary> Whether the service instance calls webhook_url when client endpoints connect to Sync </summary> 
+        ///<summary> Whether the service instance calls `webhook_url` when client endpoints connect to Sync. The default is `false`. </summary> 
         [JsonProperty("reachability_webhooks_enabled")]
         public bool? ReachabilityWebhooksEnabled { get; private set; }
 
-        ///<summary> Whether token identities in the Service must be granted access to Sync objects by using the Permissions resource </summary> 
+        ///<summary> Whether token identities in the Service must be granted access to Sync objects by using the [Permissions](https://www.twilio.com/docs/sync/api/sync-permissions) resource. It is disabled (false) by default. </summary> 
         [JsonProperty("acl_enabled")]
         public bool? AclEnabled { get; private set; }
 
-        ///<summary> Whether every endpoint_disconnected event occurs after a configurable delay </summary> 
+        ///<summary> Whether every `endpoint_disconnected` event should occur after a configurable delay. The default is `false`, where the `endpoint_disconnected` event occurs immediately after disconnection. When `true`, intervening reconnections can prevent the `endpoint_disconnected` event. </summary> 
         [JsonProperty("reachability_debouncing_enabled")]
         public bool? ReachabilityDebouncingEnabled { get; private set; }
 
-        ///<summary> The reachability event delay in milliseconds </summary> 
+        ///<summary> The reachability event delay in milliseconds if `reachability_debouncing_enabled` = `true`.  Must be between 1,000 and 30,000 and defaults to 5,000. This is the number of milliseconds after the last running client disconnects, and a Sync identity is declared offline, before `webhook_url` is called, if all endpoints remain offline. A reconnection from the same identity by any endpoint during this interval prevents the reachability event from occurring. </summary> 
         [JsonProperty("reachability_debouncing_window")]
         public int? ReachabilityDebouncingWindow { get; private set; }
 
-        ///<summary> The URLs of related resources </summary> 
+        ///<summary> The URLs of related resources. </summary> 
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
 

@@ -282,35 +282,35 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         }
 
     
-        ///<summary> The unique string that identifies the Log resource </summary> 
+        ///<summary> The unique string that we created to identify the Log resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The SID of the Account that created the Log resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Log resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The SID of the Service that the Log resource is associated with </summary> 
+        ///<summary> The SID of the Service that the Log resource is associated with. </summary> 
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
 
-        ///<summary> The SID of the environment in which the log occurred </summary> 
+        ///<summary> The SID of the environment in which the log occurred. </summary> 
         [JsonProperty("environment_sid")]
         public string EnvironmentSid { get; private set; }
 
-        ///<summary> The SID of the build that corresponds to the log </summary> 
+        ///<summary> The SID of the build that corresponds to the log. </summary> 
         [JsonProperty("build_sid")]
         public string BuildSid { get; private set; }
 
-        ///<summary> The SID of the deployment that corresponds to the log </summary> 
+        ///<summary> The SID of the deployment that corresponds to the log. </summary> 
         [JsonProperty("deployment_sid")]
         public string DeploymentSid { get; private set; }
 
-        ///<summary> The SID of the function whose invocation produced the log </summary> 
+        ///<summary> The SID of the function whose invocation produced the log. </summary> 
         [JsonProperty("function_sid")]
         public string FunctionSid { get; private set; }
 
-        ///<summary> The SID of the request associated with the log </summary> 
+        ///<summary> The SID of the request associated with the log. </summary> 
         [JsonProperty("request_sid")]
         public string RequestSid { get; private set; }
 
@@ -318,15 +318,15 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         [JsonProperty("level")]
         public LogResource.LevelEnum Level { get; private set; }
 
-        ///<summary> The log message </summary> 
+        ///<summary> The log message. </summary> 
         [JsonProperty("message")]
         public string Message { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the Log resource was created </summary> 
+        ///<summary> The date and time in GMT when the Log resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The absolute URL of the Log resource </summary> 
+        ///<summary> The absolute URL of the Log resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 

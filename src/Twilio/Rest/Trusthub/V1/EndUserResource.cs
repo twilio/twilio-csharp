@@ -452,35 +452,35 @@ namespace Twilio.Rest.Trusthub.V1
         }
 
     
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string created by Twilio to identify the End User resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the End User resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The string that you assigned to describe the resource </summary> 
+        ///<summary> The string that you assigned to describe the resource. </summary> 
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
 
-        ///<summary> The type of end user of the Bundle resource </summary> 
+        ///<summary> The type of end user of the Bundle resource - can be `individual` or `business`. </summary> 
         [JsonProperty("type")]
         public string Type { get; private set; }
 
-        ///<summary> The set of parameters that compose the End Users resource </summary> 
+        ///<summary> The set of parameters that are the attributes of the End Users resource which are listed in the End User Types. </summary> 
         [JsonProperty("attributes")]
         public object Attributes { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was created </summary> 
+        ///<summary> The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was last updated </summary> 
+        ///<summary> The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> The absolute URL of the End User resource </summary> 
+        ///<summary> The absolute URL of the End User resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 

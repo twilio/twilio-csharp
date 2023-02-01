@@ -175,67 +175,67 @@ namespace Twilio.Rest.Wireless.V1.Sim
         }
 
     
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string that we created to identify the DataSession resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The SID of the Sim resource that the Data Session is for </summary> 
+        ///<summary> The SID of the [Sim resource](https://www.twilio.com/docs/wireless/api/sim-resource) that the Data Session is for. </summary> 
         [JsonProperty("sim_sid")]
         public string SimSid { get; private set; }
 
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the DataSession resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The generation of wireless technology that the device was using </summary> 
+        ///<summary> The generation of wireless technology that the device was using. </summary> 
         [JsonProperty("radio_link")]
         public string RadioLink { get; private set; }
 
-        ///<summary> The 'mobile country code' is the unique ID of the home country where the Data Session took place </summary> 
+        ///<summary> The 'mobile country code' is the unique ID of the home country where the Data Session took place. See: [MCC/MNC lookup](http://mcc-mnc.com/). </summary> 
         [JsonProperty("operator_mcc")]
         public string OperatorMcc { get; private set; }
 
-        ///<summary> The 'mobile network code' is the unique ID specific to the mobile operator network where the Data Session took place </summary> 
+        ///<summary> The 'mobile network code' is the unique ID specific to the mobile operator network where the Data Session took place. </summary> 
         [JsonProperty("operator_mnc")]
         public string OperatorMnc { get; private set; }
 
-        ///<summary> The three letter country code representing where the device's Data Session took place </summary> 
+        ///<summary> The three letter country code representing where the device's Data Session took place. This is determined by looking up the `operator_mcc`. </summary> 
         [JsonProperty("operator_country")]
         public string OperatorCountry { get; private set; }
 
-        ///<summary> The friendly name of the mobile operator network that the SIM-connected device is attached to </summary> 
+        ///<summary> The friendly name of the mobile operator network that the [SIM](https://www.twilio.com/docs/wireless/api/sim-resource)-connected device is attached to. This is determined by looking up the `operator_mnc`. </summary> 
         [JsonProperty("operator_name")]
         public string OperatorName { get; private set; }
 
-        ///<summary> The unique ID of the cellular tower that the device was attached to at the moment when the Data Session was last updated </summary> 
+        ///<summary> The unique ID of the cellular tower that the device was attached to at the moment when the Data Session was last updated. </summary> 
         [JsonProperty("cell_id")]
         public string CellId { get; private set; }
 
-        ///<summary> An object with the estimated location where the device's Data Session took place </summary> 
+        ///<summary> An object that describes the estimated location in latitude and longitude where the device's Data Session took place. The location is derived from the `cell_id` when the Data Session was last updated. See [Cell Location Estimate Object](https://www.twilio.com/docs/wireless/api/datasession-resource#cell-location-estimate-object).  </summary> 
         [JsonProperty("cell_location_estimate")]
         public object CellLocationEstimate { get; private set; }
 
-        ///<summary> The number of packets uploaded by the device between the start time and when the Data Session was last updated </summary> 
+        ///<summary> The number of packets uploaded by the device between the `start` time and when the Data Session was last updated. </summary> 
         [JsonProperty("packets_uploaded")]
         public int? PacketsUploaded { get; private set; }
 
-        ///<summary> The number of packets downloaded by the device between the start time and when the Data Session was last updated </summary> 
+        ///<summary> The number of packets downloaded by the device between the `start` time and when the Data Session was last updated. </summary> 
         [JsonProperty("packets_downloaded")]
         public int? PacketsDownloaded { get; private set; }
 
-        ///<summary> The date that the resource was last updated, given as GMT in ISO 8601 format </summary> 
+        ///<summary> The date that the resource was last updated, given as GMT in [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) format. </summary> 
         [JsonProperty("last_updated")]
         public DateTime? LastUpdated { get; private set; }
 
-        ///<summary> The date that the Data Session started, given as GMT in ISO 8601 format </summary> 
+        ///<summary> The date that the Data Session started, given as GMT in [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) format. </summary> 
         [JsonProperty("start")]
         public DateTime? Start { get; private set; }
 
-        ///<summary> The date that the record ended, given as GMT in ISO 8601 format </summary> 
+        ///<summary> The date that the record ended, given as GMT in [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) format. </summary> 
         [JsonProperty("end")]
         public DateTime? End { get; private set; }
 
-        ///<summary> The unique ID of the device using the SIM to connect </summary> 
+        ///<summary> The 'international mobile equipment identity' is the unique ID of the device using the SIM to connect. An IMEI is a 15-digit string: 14 digits for the device identifier plus a check digit calculated using the Luhn formula. </summary> 
         [JsonProperty("imei")]
         public string Imei { get; private set; }
 

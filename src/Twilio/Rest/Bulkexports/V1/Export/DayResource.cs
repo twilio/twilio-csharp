@@ -249,15 +249,15 @@ namespace Twilio.Rest.Bulkexports.V1.Export
         [JsonProperty("redirect_to")]
         public Uri RedirectTo { get; private set; }
 
-        ///<summary> The date of the data in the file </summary> 
+        ///<summary> The ISO 8601 format date of the resources in the file, for a UTC day </summary> 
         [JsonProperty("day")]
         public string Day { get; private set; }
 
-        ///<summary> Size of the file in bytes </summary> 
+        ///<summary> The size of the day's data file in bytes </summary> 
         [JsonProperty("size")]
         public int? Size { get; private set; }
 
-        ///<summary> The date when resource is created </summary> 
+        ///<summary> The ISO 8601 format date when resources is created </summary> 
         [JsonProperty("create_date")]
         public string CreateDate { get; private set; }
 

@@ -523,31 +523,31 @@ namespace Twilio.Rest.Trunking.V1
         }
 
     
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Trunk resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The unique address you reserve on Twilio to which you route your SIP traffic </summary> 
+        ///<summary> The unique address you reserve on Twilio to which you route your SIP traffic. Domain names can contain letters, digits, and `-` and must end with `pstn.twilio.com`. See [Termination Settings](https://www.twilio.com/docs/sip-trunking#termination) for more information. </summary> 
         [JsonProperty("domain_name")]
         public string DomainName { get; private set; }
 
-        ///<summary> The HTTP method we use to call the disaster_recovery_url </summary> 
+        ///<summary> The HTTP method we use to call the `disaster_recovery_url`. Can be: `GET` or `POST`. </summary> 
         [JsonProperty("disaster_recovery_method")]
         public Twilio.Http.HttpMethod DisasterRecoveryMethod { get; private set; }
 
-        ///<summary> The HTTP URL that we call if an error occurs while sending SIP traffic towards your configured Origination URL </summary> 
+        ///<summary> The URL we call using the `disaster_recovery_method` if an error occurs while sending SIP traffic towards the configured Origination URL. We retrieve TwiML from this URL and execute the instructions like any other normal TwiML call. See [Disaster Recovery](https://www.twilio.com/docs/sip-trunking#disaster-recovery) for more information. </summary> 
         [JsonProperty("disaster_recovery_url")]
         public Uri DisasterRecoveryUrl { get; private set; }
 
-        ///<summary> The string that you assigned to describe the resource </summary> 
+        ///<summary> The string that you assigned to describe the resource. </summary> 
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
 
-        ///<summary> Whether Secure Trunking is enabled for the trunk </summary> 
+        ///<summary> Whether Secure Trunking is enabled for the trunk. If enabled, all calls going through the trunk will be secure using SRTP for media and TLS for signaling. If disabled, then RTP will be used for media. See [Secure Trunking](https://www.twilio.com/docs/sip-trunking#securetrunking) for more information. </summary> 
         [JsonProperty("secure")]
         public bool? Secure { get; private set; }
 
-        ///<summary> The recording settings for the trunk </summary> 
+        ///<summary> The recording settings for the trunk. Can be: `do-not-record`, `record-from-ringing`, `record-from-answer`. If set to `record-from-ringing` or `record-from-answer`, all calls going through the trunk will be recorded. The only way to change recording parameters is on a sub-resource of a Trunk after it has been created. e.g.`/Trunks/[Trunk_SID]/Recording -XPOST -d'Mode=record-from-answer'`. See [Recording](https://www.twilio.com/docs/sip-trunking#recording) for more information. </summary> 
         [JsonProperty("recording")]
         public object Recording { get; private set; }
 
@@ -559,35 +559,35 @@ namespace Twilio.Rest.Trunking.V1
         [JsonProperty("transfer_caller_id")]
         public TrunkResource.TransferCallerIdEnum TransferCallerId { get; private set; }
 
-        ///<summary> Whether Caller ID Name (CNAM) lookup is enabled for the trunk </summary> 
+        ///<summary> Whether Caller ID Name (CNAM) lookup is enabled for the trunk. If enabled, all inbound calls to the SIP Trunk from the United States and Canada automatically perform a CNAM Lookup and display Caller ID data on your phone. See [CNAM Lookups](https://www.twilio.com/docs/sip-trunking#CNAM) for more information. </summary> 
         [JsonProperty("cnam_lookup_enabled")]
         public bool? CnamLookupEnabled { get; private set; }
 
-        ///<summary> The types of authentication mapped to the domain </summary> 
+        ///<summary> The types of authentication mapped to the domain. Can be: `IP_ACL` and `CREDENTIAL_LIST`. If both are mapped, the values are returned in a comma delimited list. If empty, the domain will not receive any traffic. </summary> 
         [JsonProperty("auth_type")]
         public string AuthType { get; private set; }
 
-        ///<summary> Reserved </summary> 
+        ///<summary> Reserved. </summary> 
         [JsonProperty("auth_type_set")]
         public List<string> AuthTypeSet { get; private set; }
 
-        ///<summary> The RFC 2822 date and time in GMT when the resource was created </summary> 
+        ///<summary> The date and time in GMT when the resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The RFC 2822 date and time in GMT when the resource was last updated </summary> 
+        ///<summary> The date and time in GMT when the resource was last updated specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string that we created to identify the Trunk resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The absolute URL of the resource </summary> 
+        ///<summary> The absolute URL of the resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
-        ///<summary> The URLs of related resources </summary> 
+        ///<summary> The URLs of related resources. </summary> 
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
 

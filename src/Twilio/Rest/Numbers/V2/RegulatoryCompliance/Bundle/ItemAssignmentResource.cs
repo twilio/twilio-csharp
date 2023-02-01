@@ -389,27 +389,27 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
         }
 
     
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string that we created to identify the Item Assignment resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The unique string that identifies the Bundle resource. </summary> 
+        ///<summary> The unique string that we created to identify the Bundle resource. </summary> 
         [JsonProperty("bundle_sid")]
         public string BundleSid { get; private set; }
 
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Item Assignment resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The sid of an object bag </summary> 
+        ///<summary> The SID of an object bag that holds information of the different items. </summary> 
         [JsonProperty("object_sid")]
         public string ObjectSid { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was created </summary> 
+        ///<summary> The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The absolute URL of the Identity resource </summary> 
+        ///<summary> The absolute URL of the Identity resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 

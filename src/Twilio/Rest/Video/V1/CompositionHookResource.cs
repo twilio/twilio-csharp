@@ -541,47 +541,47 @@ namespace Twilio.Rest.Video.V1
         }
 
     
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the CompositionHook resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The string that you assigned to describe the resource </summary> 
+        ///<summary> The string that you assigned to describe the resource. Can be up to 100 characters long and must be unique within the account. </summary> 
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
 
-        ///<summary> Whether the CompositionHook is active </summary> 
+        ///<summary> Whether the CompositionHook is active. When `true`, the CompositionHook is triggered for every completed Group Room on the account. When `false`, the CompositionHook is never triggered. </summary> 
         [JsonProperty("enabled")]
         public bool? Enabled { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was created </summary> 
+        ///<summary> The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was last updated </summary> 
+        ///<summary> The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string that we created to identify the CompositionHook resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The array of track names to include in the compositions created by the composition hook </summary> 
+        ///<summary> The array of track names to include in the compositions created by the composition hook. A composition triggered by the composition hook includes all audio sources specified in `audio_sources` except those specified in `audio_sources_excluded`. The track names in this property can include an asterisk as a wild card character, which matches zero or more characters in a track name. For example, `student*` includes tracks named `student` as well as `studentTeam`. Please, be aware that either video_layout or audio_sources have to be provided to get a valid creation request </summary> 
         [JsonProperty("audio_sources")]
         public List<string> AudioSources { get; private set; }
 
-        ///<summary> The array of track names to exclude from the compositions created by the composition hook </summary> 
+        ///<summary> The array of track names to exclude from the compositions created by the composition hook. A composition triggered by the composition hook includes all audio sources specified in `audio_sources` except for those specified in `audio_sources_excluded`. The track names in this property can include an asterisk as a wild card character, which matches zero or more characters in a track name. For example, `student*` excludes `student` as well as `studentTeam`. This parameter can also be empty. </summary> 
         [JsonProperty("audio_sources_excluded")]
         public List<string> AudioSourcesExcluded { get; private set; }
 
-        ///<summary> A JSON object that describes the video layout of the Composition </summary> 
+        ///<summary> A JSON object that describes the video layout of the composition in terms of regions as specified in the HTTP POST request that created the CompositionHook resource. See [POST Parameters](https://www.twilio.com/docs/video/api/compositions-resource#http-post-parameters) for more information. Please, be aware that either video_layout or audio_sources have to be provided to get a valid creation request </summary> 
         [JsonProperty("video_layout")]
         public object VideoLayout { get; private set; }
 
-        ///<summary> The dimensions of the video image in pixels expressed as columns (width) and rows (height) </summary> 
+        ///<summary> The dimensions of the video image in pixels expressed as columns (width) and rows (height). The string's format is `{width}x{height}`, such as `640x480`. </summary> 
         [JsonProperty("resolution")]
         public string Resolution { get; private set; }
 
-        ///<summary> Whether intervals with no media are clipped </summary> 
+        ///<summary> Whether intervals with no media are clipped, as specified in the POST request that created the CompositionHook resource. Compositions with `trim` enabled are shorter when the Room is created and no Participant joins for a while as well as if all the Participants leave the room and join later, because those gaps will be removed. See [Specifying Video Layouts](https://www.twilio.com/docs/video/api/compositions-resource#specifying-video-layouts) for more info. </summary> 
         [JsonProperty("trim")]
         public bool? Trim { get; private set; }
 
@@ -589,15 +589,15 @@ namespace Twilio.Rest.Video.V1
         [JsonProperty("format")]
         public CompositionHookResource.FormatEnum Format { get; private set; }
 
-        ///<summary> The URL to send status information to your application </summary> 
+        ///<summary> The URL we call using the `status_callback_method` to send status information to your application. </summary> 
         [JsonProperty("status_callback")]
         public Uri StatusCallback { get; private set; }
 
-        ///<summary> The HTTP method we should use to call status_callback </summary> 
+        ///<summary> The HTTP method we should use to call `status_callback`. Can be `POST` or `GET` and defaults to `POST`. </summary> 
         [JsonProperty("status_callback_method")]
         public Twilio.Http.HttpMethod StatusCallbackMethod { get; private set; }
 
-        ///<summary> The absolute URL of the resource </summary> 
+        ///<summary> The absolute URL of the resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 

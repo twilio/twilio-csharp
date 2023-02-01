@@ -351,23 +351,23 @@ namespace Twilio.Rest.Api.V2010.Account
         }
 
     
-        ///<summary> The SID of the Account that created this resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created this ShortCode resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The API version used to start a new TwiML session </summary> 
+        ///<summary> The API version used to start a new TwiML session when an SMS message is sent to this short code. </summary> 
         [JsonProperty("api_version")]
         public string ApiVersion { get; private set; }
 
-        ///<summary> The RFC 2822 date and time in GMT that this resource was created </summary> 
+        ///<summary> The date and time in GMT that this resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The RFC 2822 date and time in GMT that this resource was last updated </summary> 
+        ///<summary> The date and time in GMT that this resource was last updated, specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> A string that you assigned to describe this resource </summary> 
+        ///<summary> A string that you assigned to describe this resource. By default, the `FriendlyName` is the short code. </summary> 
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
 
@@ -375,27 +375,27 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonProperty("short_code")]
         public string ShortCode { get; private set; }
 
-        ///<summary> The unique string that identifies this resource </summary> 
+        ///<summary> The unique string that that we created to identify this ShortCode resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> HTTP method we use to call the sms_fallback_url </summary> 
+        ///<summary> The HTTP method we use to call the `sms_fallback_url`. Can be: `GET` or `POST`. </summary> 
         [JsonProperty("sms_fallback_method")]
         public Twilio.Http.HttpMethod SmsFallbackMethod { get; private set; }
 
-        ///<summary> URL Twilio will request if an error occurs in executing TwiML </summary> 
+        ///<summary> The URL that we call if an error occurs while retrieving or executing the TwiML from `sms_url`. </summary> 
         [JsonProperty("sms_fallback_url")]
         public Uri SmsFallbackUrl { get; private set; }
 
-        ///<summary> HTTP method to use when requesting the sms url </summary> 
+        ///<summary> The HTTP method we use to call the `sms_url`. Can be: `GET` or `POST`. </summary> 
         [JsonProperty("sms_method")]
         public Twilio.Http.HttpMethod SmsMethod { get; private set; }
 
-        ///<summary> URL we call when receiving an incoming SMS message to this short code </summary> 
+        ///<summary> The URL we call when receiving an incoming SMS message to this short code. </summary> 
         [JsonProperty("sms_url")]
         public Uri SmsUrl { get; private set; }
 
-        ///<summary> The URI of this resource, relative to `https://api.twilio.com` </summary> 
+        ///<summary> The URI of this resource, relative to `https://api.twilio.com`. </summary> 
         [JsonProperty("uri")]
         public string Uri { get; private set; }
 

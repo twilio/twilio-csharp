@@ -23,13 +23,13 @@ using Twilio.Converters;
 
 namespace Twilio.Rest.FlexApi.V1
 {
-
-    /// <summary> To obtain session details for fetching reports and dashboards </summary>
-    public class CreateGoodDataOptions : IOptions<GoodDataResource>
+    /// <summary> To get the Comment Settings for an Account </summary>
+    public class FetchInsightsSettingsCommentOptions : IOptions<InsightsSettingsCommentResource>
     {
-        
+    
         ///<summary> The Token HTTP request header </summary> 
         public string Token { get; set; }
+
 
 
 
@@ -54,5 +54,7 @@ namespace Twilio.Rest.FlexApi.V1
     }
 
     }
+
+
 }
 

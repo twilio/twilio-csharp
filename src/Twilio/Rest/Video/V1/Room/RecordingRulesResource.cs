@@ -190,15 +190,15 @@ namespace Twilio.Rest.Video.V1.Room
         [JsonProperty("room_sid")]
         public string RoomSid { get; private set; }
 
-        ///<summary> A collection of recording Rules that describe how to include or exclude matching tracks for recording </summary> 
+        ///<summary> A collection of Recording Rules that describe how to include or exclude matching tracks for recording </summary> 
         [JsonProperty("rules")]
         public List<RecordingRule> Rules { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was created </summary> 
+        ///<summary> The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was last updated </summary> 
+        ///<summary> The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 

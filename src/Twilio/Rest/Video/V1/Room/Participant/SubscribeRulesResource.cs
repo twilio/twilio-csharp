@@ -197,7 +197,7 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         }
 
     
-        ///<summary> The SID of the Participant resource for the Subscribe Rules </summary> 
+        ///<summary> The SID of the Participant resource for the Subscribe Rules. </summary> 
         [JsonProperty("participant_sid")]
         public string ParticipantSid { get; private set; }
 
@@ -205,15 +205,15 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         [JsonProperty("room_sid")]
         public string RoomSid { get; private set; }
 
-        ///<summary> A collection of Subscribe Rules that describe how to include or exclude matching tracks </summary> 
+        ///<summary> A collection of Subscribe Rules that describe how to include or exclude matching tracks. See the [Specifying Subscribe Rules](https://www.twilio.com/docs/video/api/track-subscriptions#specifying-sr) section for further information. </summary> 
         [JsonProperty("rules")]
         public List<SubscribeRule> Rules { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was created </summary> 
+        ///<summary> The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was last updated </summary> 
+        ///<summary> The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 

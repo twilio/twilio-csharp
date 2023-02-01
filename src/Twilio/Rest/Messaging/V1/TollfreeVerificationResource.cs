@@ -125,6 +125,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="businessContactLastName"> The last name of the contact for the business or organization using the Tollfree number. </param>
         /// <param name="businessContactEmail"> The email address of the contact for the business or organization using the Tollfree number. </param>
         /// <param name="businessContactPhone"> The phone number of the contact for the business or organization using the Tollfree number. </param>
+        /// <param name="externalReferenceId"> An optional external reference ID supplied by customer and echoed back on status retrieval. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of TollfreeVerification </returns>
         public static TollfreeVerificationResource Create(
@@ -150,9 +151,10 @@ namespace Twilio.Rest.Messaging.V1
                                           string businessContactLastName = null,
                                           string businessContactEmail = null,
                                           Types.PhoneNumber businessContactPhone = null,
+                                          string externalReferenceId = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new CreateTollfreeVerificationOptions(businessName, businessWebsite, notificationEmail, useCaseCategories, useCaseSummary, productionMessageSample, optInImageUrls, optInType, messageVolume, tollfreePhoneNumberSid){  CustomerProfileSid = customerProfileSid, BusinessStreetAddress = businessStreetAddress, BusinessStreetAddress2 = businessStreetAddress2, BusinessCity = businessCity, BusinessStateProvinceRegion = businessStateProvinceRegion, BusinessPostalCode = businessPostalCode, BusinessCountry = businessCountry, AdditionalInformation = additionalInformation, BusinessContactFirstName = businessContactFirstName, BusinessContactLastName = businessContactLastName, BusinessContactEmail = businessContactEmail, BusinessContactPhone = businessContactPhone };
+            var options = new CreateTollfreeVerificationOptions(businessName, businessWebsite, notificationEmail, useCaseCategories, useCaseSummary, productionMessageSample, optInImageUrls, optInType, messageVolume, tollfreePhoneNumberSid){  CustomerProfileSid = customerProfileSid, BusinessStreetAddress = businessStreetAddress, BusinessStreetAddress2 = businessStreetAddress2, BusinessCity = businessCity, BusinessStateProvinceRegion = businessStateProvinceRegion, BusinessPostalCode = businessPostalCode, BusinessCountry = businessCountry, AdditionalInformation = additionalInformation, BusinessContactFirstName = businessContactFirstName, BusinessContactLastName = businessContactLastName, BusinessContactEmail = businessContactEmail, BusinessContactPhone = businessContactPhone, ExternalReferenceId = externalReferenceId };
             return Create(options, client);
         }
 
@@ -180,6 +182,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="businessContactLastName"> The last name of the contact for the business or organization using the Tollfree number. </param>
         /// <param name="businessContactEmail"> The email address of the contact for the business or organization using the Tollfree number. </param>
         /// <param name="businessContactPhone"> The phone number of the contact for the business or organization using the Tollfree number. </param>
+        /// <param name="externalReferenceId"> An optional external reference ID supplied by customer and echoed back on status retrieval. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TollfreeVerification </returns>
         public static async System.Threading.Tasks.Task<TollfreeVerificationResource> CreateAsync(
@@ -205,9 +208,10 @@ namespace Twilio.Rest.Messaging.V1
                                                                                   string businessContactLastName = null,
                                                                                   string businessContactEmail = null,
                                                                                   Types.PhoneNumber businessContactPhone = null,
+                                                                                  string externalReferenceId = null,
                                                                                   ITwilioRestClient client = null)
         {
-        var options = new CreateTollfreeVerificationOptions(businessName, businessWebsite, notificationEmail, useCaseCategories, useCaseSummary, productionMessageSample, optInImageUrls, optInType, messageVolume, tollfreePhoneNumberSid){  CustomerProfileSid = customerProfileSid, BusinessStreetAddress = businessStreetAddress, BusinessStreetAddress2 = businessStreetAddress2, BusinessCity = businessCity, BusinessStateProvinceRegion = businessStateProvinceRegion, BusinessPostalCode = businessPostalCode, BusinessCountry = businessCountry, AdditionalInformation = additionalInformation, BusinessContactFirstName = businessContactFirstName, BusinessContactLastName = businessContactLastName, BusinessContactEmail = businessContactEmail, BusinessContactPhone = businessContactPhone };
+        var options = new CreateTollfreeVerificationOptions(businessName, businessWebsite, notificationEmail, useCaseCategories, useCaseSummary, productionMessageSample, optInImageUrls, optInType, messageVolume, tollfreePhoneNumberSid){  CustomerProfileSid = customerProfileSid, BusinessStreetAddress = businessStreetAddress, BusinessStreetAddress2 = businessStreetAddress2, BusinessCity = businessCity, BusinessStateProvinceRegion = businessStateProvinceRegion, BusinessPostalCode = businessPostalCode, BusinessCountry = businessCountry, AdditionalInformation = additionalInformation, BusinessContactFirstName = businessContactFirstName, BusinessContactLastName = businessContactLastName, BusinessContactEmail = businessContactEmail, BusinessContactPhone = businessContactPhone, ExternalReferenceId = externalReferenceId };
             return await CreateAsync(options, client);
         }
         #endif
@@ -571,100 +575,100 @@ namespace Twilio.Rest.Messaging.V1
         }
 
     
-        ///<summary> Tollfree Verification Sid </summary> 
+        ///<summary> The unique string to identify Tollfree Verification. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Tollfree Verification resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> Customer's Profile Bundle BundleSid </summary> 
+        ///<summary> Customer's Profile Bundle BundleSid. </summary> 
         [JsonProperty("customer_profile_sid")]
         public string CustomerProfileSid { get; private set; }
 
-        ///<summary> Tollfree TrustProduct Bundle BundleSid </summary> 
+        ///<summary> Tollfree TrustProduct Bundle BundleSid. </summary> 
         [JsonProperty("trust_product_sid")]
         public string TrustProductSid { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was created </summary> 
+        ///<summary> The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was last updated </summary> 
+        ///<summary> The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> The SID of the Regulated Item </summary> 
+        ///<summary> The SID of the Regulated Item. </summary> 
         [JsonProperty("regulated_item_sid")]
         public string RegulatedItemSid { get; private set; }
 
-        ///<summary> The name of the business or organization using the Tollfree number </summary> 
+        ///<summary> The name of the business or organization using the Tollfree number. </summary> 
         [JsonProperty("business_name")]
         public string BusinessName { get; private set; }
 
-        ///<summary> The address of the business or organization using the Tollfree number </summary> 
+        ///<summary> The address of the business or organization using the Tollfree number. </summary> 
         [JsonProperty("business_street_address")]
         public string BusinessStreetAddress { get; private set; }
 
-        ///<summary> The address of the business or organization using the Tollfree number </summary> 
+        ///<summary> The address of the business or organization using the Tollfree number. </summary> 
         [JsonProperty("business_street_address2")]
         public string BusinessStreetAddress2 { get; private set; }
 
-        ///<summary> The city of the business or organization using the Tollfree number </summary> 
+        ///<summary> The city of the business or organization using the Tollfree number. </summary> 
         [JsonProperty("business_city")]
         public string BusinessCity { get; private set; }
 
-        ///<summary> The state/province/region of the business or organization using the Tollfree number </summary> 
+        ///<summary> The state/province/region of the business or organization using the Tollfree number. </summary> 
         [JsonProperty("business_state_province_region")]
         public string BusinessStateProvinceRegion { get; private set; }
 
-        ///<summary> The postal code of the business or organization using the Tollfree number </summary> 
+        ///<summary> The postal code of the business or organization using the Tollfree number. </summary> 
         [JsonProperty("business_postal_code")]
         public string BusinessPostalCode { get; private set; }
 
-        ///<summary> The country of the business or organization using the Tollfree number </summary> 
+        ///<summary> The country of the business or organization using the Tollfree number. </summary> 
         [JsonProperty("business_country")]
         public string BusinessCountry { get; private set; }
 
-        ///<summary> The website of the business or organization using the Tollfree number </summary> 
+        ///<summary> The website of the business or organization using the Tollfree number. </summary> 
         [JsonProperty("business_website")]
         public string BusinessWebsite { get; private set; }
 
-        ///<summary> The first name of the contact for the business or organization using the Tollfree number </summary> 
+        ///<summary> The first name of the contact for the business or organization using the Tollfree number. </summary> 
         [JsonProperty("business_contact_first_name")]
         public string BusinessContactFirstName { get; private set; }
 
-        ///<summary> The last name of the contact for the business or organization using the Tollfree number </summary> 
+        ///<summary> The last name of the contact for the business or organization using the Tollfree number. </summary> 
         [JsonProperty("business_contact_last_name")]
         public string BusinessContactLastName { get; private set; }
 
-        ///<summary> The email address of the contact for the business or organization using the Tollfree number </summary> 
+        ///<summary> The email address of the contact for the business or organization using the Tollfree number. </summary> 
         [JsonProperty("business_contact_email")]
         public string BusinessContactEmail { get; private set; }
 
-        ///<summary> The phone number of the contact for the business or organization using the Tollfree number </summary> 
+        ///<summary> The phone number of the contact for the business or organization using the Tollfree number. </summary> 
         [JsonProperty("business_contact_phone")]
         [JsonConverter(typeof(PhoneNumberConverter))]
         public Types.PhoneNumber BusinessContactPhone { get; private set; }
 
-        ///<summary> The email address to receive the notification about the verification result.  </summary> 
+        ///<summary> The email address to receive the notification about the verification result. . </summary> 
         [JsonProperty("notification_email")]
         public string NotificationEmail { get; private set; }
 
-        ///<summary> The category of the use case for the Tollfree Number. List as many are applicable. </summary> 
+        ///<summary> The category of the use case for the Tollfree Number. List as many are applicable.. </summary> 
         [JsonProperty("use_case_categories")]
         public List<string> UseCaseCategories { get; private set; }
 
-        ///<summary> Further explaination on how messaging is used by the business or organization </summary> 
+        ///<summary> Use this to further explain how messaging is used by the business or organization. </summary> 
         [JsonProperty("use_case_summary")]
         public string UseCaseSummary { get; private set; }
 
-        ///<summary> An example of message content, i.e. a sample message </summary> 
+        ///<summary> An example of message content, i.e. a sample message. </summary> 
         [JsonProperty("production_message_sample")]
         public string ProductionMessageSample { get; private set; }
 
-        ///<summary> Link to an image that shows the opt-in workflow. Multiple images allowed and must be a publicly hosted URL </summary> 
+        ///<summary> Link to an image that shows the opt-in workflow. Multiple images allowed and must be a publicly hosted URL. </summary> 
         [JsonProperty("opt_in_image_urls")]
         public List<string> OptInImageUrls { get; private set; }
 
@@ -672,15 +676,15 @@ namespace Twilio.Rest.Messaging.V1
         [JsonProperty("opt_in_type")]
         public TollfreeVerificationResource.OptInTypeEnum OptInType { get; private set; }
 
-        ///<summary> Estimate monthly volume of messages from the Tollfree Number </summary> 
+        ///<summary> Estimate monthly volume of messages from the Tollfree Number. </summary> 
         [JsonProperty("message_volume")]
         public string MessageVolume { get; private set; }
 
-        ///<summary> Additional information to be provided for verification </summary> 
+        ///<summary> Additional information to be provided for verification. </summary> 
         [JsonProperty("additional_information")]
         public string AdditionalInformation { get; private set; }
 
-        ///<summary> The SID of the Phone Number associated with the Tollfree Verification </summary> 
+        ///<summary> The SID of the Phone Number associated with the Tollfree Verification. </summary> 
         [JsonProperty("tollfree_phone_number_sid")]
         public string TollfreePhoneNumberSid { get; private set; }
 
@@ -688,13 +692,17 @@ namespace Twilio.Rest.Messaging.V1
         [JsonProperty("status")]
         public TollfreeVerificationResource.StatusEnum Status { get; private set; }
 
-        ///<summary> The absolute URL of the Tollfree Verification </summary> 
+        ///<summary> The absolute URL of the Tollfree Verification resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
-        ///<summary> The URLs of the documents associated with the Tollfree Verification resource </summary> 
+        ///<summary> The URLs of the documents associated with the Tollfree Verification resource. </summary> 
         [JsonProperty("resource_links")]
         public object ResourceLinks { get; private set; }
+
+        ///<summary> An optional external reference ID supplied by customer and echoed back on status retrieval. </summary> 
+        [JsonProperty("external_reference_id")]
+        public string ExternalReferenceId { get; private set; }
 
 
 

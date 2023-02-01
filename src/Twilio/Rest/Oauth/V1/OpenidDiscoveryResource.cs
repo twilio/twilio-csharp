@@ -109,51 +109,51 @@ namespace Twilio.Rest.Oauth.V1
         }
 
     
-        ///<summary> The issuer URL </summary> 
+        ///<summary> The URL of the party that will create the token and sign it with its private key. </summary> 
         [JsonProperty("issuer")]
         public Uri Issuer { get; private set; }
 
-        ///<summary> The URL of authorization endpoint </summary> 
+        ///<summary> The endpoint that validates all authorization requests. </summary> 
         [JsonProperty("authorization_endpoint")]
         public Uri AuthorizationEndpoint { get; private set; }
 
-        ///<summary> The URL of device code authorization endpoint </summary> 
+        ///<summary> The endpoint that validates all device code related authorization requests. </summary> 
         [JsonProperty("device_authorization_endpoint")]
         public Uri DeviceAuthorizationEndpoint { get; private set; }
 
-        ///<summary> The URL of token endpoint </summary> 
+        ///<summary> The URL of the token endpoint. After a client has received an authorization code, that code is presented to the token endpoint and exchanged for an identity token, an access token, and a refresh token. </summary> 
         [JsonProperty("token_endpoint")]
         public Uri TokenEndpoint { get; private set; }
 
-        ///<summary> The URL of user info endpoint </summary> 
+        ///<summary> The URL of the user info endpoint, which returns user profile information to a client. Keep in mind that the user info endpoint returns only the information that has been requested. </summary> 
         [JsonProperty("userinfo_endpoint")]
         public Uri UserinfoEndpoint { get; private set; }
 
-        ///<summary> The URL of revocation endpoint </summary> 
+        ///<summary> The endpoint used to revoke access or refresh tokens issued by the authorization server. </summary> 
         [JsonProperty("revocation_endpoint")]
         public Uri RevocationEndpoint { get; private set; }
 
-        ///<summary> The URL of public JWK endpoint </summary> 
+        ///<summary> The URL of your JSON Web Key Set. This set is a collection of JSON Web Keys, a standard method for representing cryptographic keys in a JSON structure. </summary> 
         [JsonProperty("jwk_uri")]
         public Uri JwkUri { get; private set; }
 
-        ///<summary> List of response type supported for identity token </summary> 
+        ///<summary> A collection of response type supported by authorization server. </summary> 
         [JsonProperty("response_type_supported")]
         public List<string> ResponseTypeSupported { get; private set; }
 
-        ///<summary> List of subject supported for identity token </summary> 
+        ///<summary> A collection of subject by authorization server. </summary> 
         [JsonProperty("subject_type_supported")]
         public List<string> SubjectTypeSupported { get; private set; }
 
-        ///<summary> List of JWS signing algorithms supported for identity token </summary> 
+        ///<summary> A collection of JWS signing algorithms supported by authorization server to sign identity token. </summary> 
         [JsonProperty("id_token_signing_alg_values_supported")]
         public List<string> IdTokenSigningAlgValuesSupported { get; private set; }
 
-        ///<summary> List of scopes supported identity token </summary> 
+        ///<summary> A collection of scopes supported by authorization server for identity token </summary> 
         [JsonProperty("scopes_supported")]
         public List<string> ScopesSupported { get; private set; }
 
-        ///<summary> List of claims supported for identity token </summary> 
+        ///<summary> A collection of claims supported by authorization server for identity token </summary> 
         [JsonProperty("claims_supported")]
         public List<string> ClaimsSupported { get; private set; }
 

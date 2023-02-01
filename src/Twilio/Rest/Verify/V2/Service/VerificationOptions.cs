@@ -34,7 +34,7 @@ namespace Twilio.Rest.Verify.V2.Service
         ///<summary> The phone number or [email](https://www.twilio.com/docs/verify/email) to verify. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164). </summary> 
         public string To { get; }
 
-        ///<summary> The verification method to use. One of: [`email`](https://www.twilio.com/docs/verify/email), `sms`, `whatsapp`, `call`, or `sna`. </summary> 
+        ///<summary> The verification method to use. One of: [`email`](https://www.twilio.com/docs/verify/email), `sms`, `whatsapp`, `call`, `sna` or `auto`. </summary> 
         public string Channel { get; }
 
         ///<summary> A custom user defined friendly name that overwrites the existing one in the verification message </summary> 
@@ -73,11 +73,14 @@ namespace Twilio.Rest.Verify.V2.Service
         ///<summary> A stringified JSON object in which the keys are the template's special variables and the values are the variables substitutions. </summary> 
         public string TemplateCustomSubstitutions { get; set; }
 
+        ///<summary> The IP address of the client's device. If provided, it has to be a valid IPv4 or IPv6 address. </summary> 
+        public string DeviceIp { get; set; }
+
 
         /// <summary> Construct a new CreateVerificationOptions </summary>
         /// <param name="pathServiceSid"> The SID of the verification [Service](https://www.twilio.com/docs/verify/api/service) to create the resource under. </param>
         /// <param name="to"> The phone number or [email](https://www.twilio.com/docs/verify/email) to verify. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164). </param>
-        /// <param name="channel"> The verification method to use. One of: [`email`](https://www.twilio.com/docs/verify/email), `sms`, `whatsapp`, `call`, or `sna`. </param>
+        /// <param name="channel"> The verification method to use. One of: [`email`](https://www.twilio.com/docs/verify/email), `sms`, `whatsapp`, `call`, `sna` or `auto`. </param>
         public CreateVerificationOptions(string pathServiceSid, string to, string channel)
         {
             PathServiceSid = pathServiceSid;
@@ -146,6 +149,10 @@ namespace Twilio.Rest.Verify.V2.Service
             if (TemplateCustomSubstitutions != null)
             {
                 p.Add(new KeyValuePair<string, string>("TemplateCustomSubstitutions", TemplateCustomSubstitutions));
+            }
+            if (DeviceIp != null)
+            {
+                p.Add(new KeyValuePair<string, string>("DeviceIp", DeviceIp));
             }
             return p;
         }

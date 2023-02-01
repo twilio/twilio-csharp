@@ -195,35 +195,35 @@ namespace Twilio.Rest.Video.V1
         }
 
     
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the RecordingSettings resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The string that you assigned to describe the resource </summary> 
+        ///<summary> The string that you assigned to describe the resource and show the user in the console </summary> 
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
 
-        ///<summary> The SID of the stored Credential resource </summary> 
+        ///<summary> The SID of the stored Credential resource. </summary> 
         [JsonProperty("aws_credentials_sid")]
         public string AwsCredentialsSid { get; private set; }
 
-        ///<summary> The URL of the AWS S3 bucket where the recordings are stored </summary> 
+        ///<summary> The URL of the AWS S3 bucket where the recordings are stored. We only support DNS-compliant URLs like `https://documentation-example-twilio-bucket/recordings`, where `recordings` is the path in which you want the recordings to be stored. This URL accepts only URI-valid characters, as described in the <a href='https://tools.ietf.org/html/rfc3986#section-2'>RFC 3986</a>. </summary> 
         [JsonProperty("aws_s3_url")]
         public Uri AwsS3Url { get; private set; }
 
-        ///<summary> Whether all recordings are written to the aws_s3_url </summary> 
+        ///<summary> Whether all recordings are written to the `aws_s3_url`. When `false`, all recordings are stored in our cloud. </summary> 
         [JsonProperty("aws_storage_enabled")]
         public bool? AwsStorageEnabled { get; private set; }
 
-        ///<summary> The SID of the Public Key resource used for encryption </summary> 
+        ///<summary> The SID of the Public Key resource used for encryption. </summary> 
         [JsonProperty("encryption_key_sid")]
         public string EncryptionKeySid { get; private set; }
 
-        ///<summary> Whether all recordings are stored in an encrypted form </summary> 
+        ///<summary> Whether all recordings are stored in an encrypted form. The default is `false`. </summary> 
         [JsonProperty("encryption_enabled")]
         public bool? EncryptionEnabled { get; private set; }
 
-        ///<summary> The absolute URL of the resource </summary> 
+        ///<summary> The absolute URL of the resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 

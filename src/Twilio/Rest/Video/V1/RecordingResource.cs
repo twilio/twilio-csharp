@@ -383,7 +383,7 @@ namespace Twilio.Rest.Video.V1
         }
 
     
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Recording resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
@@ -391,23 +391,23 @@ namespace Twilio.Rest.Video.V1
         [JsonProperty("status")]
         public RecordingResource.StatusEnum Status { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was created </summary> 
+        ///<summary> The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string that we created to identify the Recording resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The SID of the recording source </summary> 
+        ///<summary> The SID of the recording source. For a Room Recording, this value is a `track_sid`. </summary> 
         [JsonProperty("source_sid")]
         public string SourceSid { get; private set; }
 
-        ///<summary> The size of the recorded track, in bytes </summary> 
+        ///<summary> The size of the recorded track, in bytes. </summary> 
         [JsonProperty("size")]
         public long? Size { get; private set; }
 
-        ///<summary> The absolute URL of the resource </summary> 
+        ///<summary> The absolute URL of the resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
@@ -415,7 +415,7 @@ namespace Twilio.Rest.Video.V1
         [JsonProperty("type")]
         public RecordingResource.TypeEnum Type { get; private set; }
 
-        ///<summary> The duration of the recording in seconds </summary> 
+        ///<summary> The duration of the recording in seconds rounded to the nearest second. Sub-second tracks have a `Duration` property of 1 second </summary> 
         [JsonProperty("duration")]
         public int? Duration { get; private set; }
 
@@ -427,31 +427,31 @@ namespace Twilio.Rest.Video.V1
         [JsonProperty("codec")]
         public RecordingResource.CodecEnum Codec { get; private set; }
 
-        ///<summary> A list of SIDs related to the recording </summary> 
+        ///<summary> A list of SIDs related to the recording. Includes the `room_sid` and `participant_sid`. </summary> 
         [JsonProperty("grouping_sids")]
         public object GroupingSids { get; private set; }
 
-        ///<summary> The name that was given to the source track of the recording </summary> 
+        ///<summary> The name that was given to the source track of the recording. If no name is given, the `source_sid` is used. </summary> 
         [JsonProperty("track_name")]
         public string TrackName { get; private set; }
 
-        ///<summary> The number of milliseconds between a point in time that is common to all rooms in a group and when the source room of the recording started </summary> 
+        ///<summary> The time in milliseconds elapsed between an arbitrary point in time, common to all group rooms, and the moment when the source room of this track started. This information provides a synchronization mechanism for recordings belonging to the same room. </summary> 
         [JsonProperty("offset")]
         public long? Offset { get; private set; }
 
-        ///<summary> The URL of the media file associated with the recording when stored externally </summary> 
+        ///<summary> The URL of the media file associated with the recording when stored externally. See [External S3 Recordings](/docs/video/api/external-s3-recordings) for more details. </summary> 
         [JsonProperty("media_external_location")]
         public Uri MediaExternalLocation { get; private set; }
 
-        ///<summary> The URL called to send status information on every recording event. </summary> 
+        ///<summary> The URL called using the `status_callback_method` to send status information on every recording event. </summary> 
         [JsonProperty("status_callback")]
         public Uri StatusCallback { get; private set; }
 
-        ///<summary> The HTTP method used to call `status_callback` </summary> 
+        ///<summary> The HTTP method used to call `status_callback`. Can be: `POST` or `GET`, defaults to `POST`. </summary> 
         [JsonProperty("status_callback_method")]
         public Twilio.Http.HttpMethod StatusCallbackMethod { get; private set; }
 
-        ///<summary> The URLs of related resources </summary> 
+        ///<summary> The URLs of related resources. </summary> 
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
 

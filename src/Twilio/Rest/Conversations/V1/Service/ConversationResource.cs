@@ -567,15 +567,15 @@ namespace Twilio.Rest.Conversations.V1.Service
         }
 
     
-        ///<summary> The unique ID of the Account responsible for this conversation. </summary> 
+        ///<summary> The unique ID of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this conversation. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The unique ID of the Conversation Service this conversation belongs to. </summary> 
+        ///<summary> The unique ID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) this conversation belongs to. </summary> 
         [JsonProperty("chat_service_sid")]
         public string ChatServiceSid { get; private set; }
 
-        ///<summary> The unique ID of the Messaging Service this conversation belongs to. </summary> 
+        ///<summary> The unique ID of the [Messaging Service](https://www.twilio.com/docs/sms/services/api) this conversation belongs to. </summary> 
         [JsonProperty("messaging_service_sid")]
         public string MessagingServiceSid { get; private set; }
 
@@ -583,15 +583,15 @@ namespace Twilio.Rest.Conversations.V1.Service
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The human-readable name of this conversation. </summary> 
+        ///<summary> The human-readable name of this conversation, limited to 256 characters. Optional. </summary> 
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
 
-        ///<summary> An application-defined string that uniquely identifies the resource </summary> 
+        ///<summary> An application-defined string that uniquely identifies the resource. It can be used to address the resource in place of the resource's `sid` in the URL. </summary> 
         [JsonProperty("unique_name")]
         public string UniqueName { get; private set; }
 
-        ///<summary> An optional string metadata field you can use to store any data you wish. </summary> 
+        ///<summary> An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \"{}\" will be returned. </summary> 
         [JsonProperty("attributes")]
         public string Attributes { get; private set; }
 
@@ -607,15 +607,15 @@ namespace Twilio.Rest.Conversations.V1.Service
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> Timer date values for this conversation. </summary> 
+        ///<summary> Timer date values representing state update for this conversation. </summary> 
         [JsonProperty("timers")]
         public object Timers { get; private set; }
 
-        ///<summary> An absolute URL for this conversation. </summary> 
+        ///<summary> An absolute API resource URL for this conversation. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
-        ///<summary> Absolute URLs to access the participants, messages and webhooks of this conversation. </summary> 
+        ///<summary> Contains absolute URLs to access the [participants](https://www.twilio.com/docs/conversations/api/conversation-participant-resource), [messages](https://www.twilio.com/docs/conversations/api/conversation-message-resource) and [webhooks](https://www.twilio.com/docs/conversations/api/conversation-scoped-webhook-resource) of this conversation. </summary> 
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
 

@@ -467,31 +467,31 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         }
 
     
-        ///<summary> The unique sid that identifies this account </summary> 
+        ///<summary> The unique id of the [Account](https://www.twilio.com/docs/iam/api/account) that owns this resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The date this resource was created </summary> 
+        ///<summary> The date that this resource was created, given as GMT in [RFC 2822](https://www.php.net/manual/en/class.datetime.php#datetime.constants.rfc2822) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The date this resource was last updated </summary> 
+        ///<summary> The date that this resource was last updated, given as GMT in [RFC 2822](https://www.php.net/manual/en/class.datetime.php#datetime.constants.rfc2822) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> Human readable descriptive text </summary> 
+        ///<summary> A human readable descriptive text that describes the CredentialList, up to 64 characters long. </summary> 
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
 
-        ///<summary> A string that uniquely identifies this credential </summary> 
+        ///<summary> A 34 character string that uniquely identifies this resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The list of credentials associated with this credential list. </summary> 
+        ///<summary> A list of credentials associated with this credential list. </summary> 
         [JsonProperty("subresource_uris")]
         public Dictionary<string, string> SubresourceUris { get; private set; }
 
-        ///<summary> The URI for this resource </summary> 
+        ///<summary> The URI for this resource, relative to `https://api.twilio.com`. </summary> 
         [JsonProperty("uri")]
         public string Uri { get; private set; }
 

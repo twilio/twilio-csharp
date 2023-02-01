@@ -258,43 +258,43 @@ namespace Twilio.Rest.Api.V2010.Account
         }
 
     
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the AuthorizedConnectApp resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The company name set for the Connect App </summary> 
+        ///<summary> The company name set for the Connect App. </summary> 
         [JsonProperty("connect_app_company_name")]
         public string ConnectAppCompanyName { get; private set; }
 
-        ///<summary> A detailed description of the app </summary> 
+        ///<summary> A detailed description of the Connect App. </summary> 
         [JsonProperty("connect_app_description")]
         public string ConnectAppDescription { get; private set; }
 
-        ///<summary> The name of the Connect App </summary> 
+        ///<summary> The name of the Connect App. </summary> 
         [JsonProperty("connect_app_friendly_name")]
         public string ConnectAppFriendlyName { get; private set; }
 
-        ///<summary> The public URL for the Connect App </summary> 
+        ///<summary> The public URL for the Connect App. </summary> 
         [JsonProperty("connect_app_homepage_url")]
         public Uri ConnectAppHomepageUrl { get; private set; }
 
-        ///<summary> The SID that we assigned to the Connect App </summary> 
+        ///<summary> The SID that we assigned to the Connect App. </summary> 
         [JsonProperty("connect_app_sid")]
         public string ConnectAppSid { get; private set; }
 
-        ///<summary> The RFC 2822 date and time in GMT that the resource was created </summary> 
+        ///<summary> The date and time in GMT that the resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The RFC 2822 date and time in GMT that the resource was last updated </summary> 
+        ///<summary> The date and time in GMT that the resource was last updated specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> Permissions authorized to the app </summary> 
+        ///<summary> The set of permissions that you authorized for the Connect App.  Can be: `get-all` or `post-all`. </summary> 
         [JsonProperty("permissions")]
         public List<AuthorizedConnectAppResource.PermissionEnum> Permissions { get; private set; }
 
-        ///<summary> The URI of the resource, relative to `https://api.twilio.com` </summary> 
+        ///<summary> The URI of the resource, relative to `https://api.twilio.com`. </summary> 
         [JsonProperty("uri")]
         public string Uri { get; private set; }
 

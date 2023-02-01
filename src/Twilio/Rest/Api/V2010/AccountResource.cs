@@ -411,23 +411,23 @@ namespace Twilio.Rest.Api.V2010
         }
 
     
-        ///<summary> The authorization token for this account </summary> 
+        ///<summary> The authorization token for this account. This token should be kept a secret, so no sharing. </summary> 
         [JsonProperty("auth_token")]
         public string AuthToken { get; private set; }
 
-        ///<summary> The date this account was created </summary> 
+        ///<summary> The date that this account was created, in GMT in RFC 2822 format </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The date this account was last updated </summary> 
+        ///<summary> The date that this account was last updated, in GMT in RFC 2822 format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> A human readable description of this account </summary> 
+        ///<summary> A human readable description of this account, up to 64 characters long. By default the FriendlyName is your email address. </summary> 
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
 
-        ///<summary> The unique 34 character id representing the parent of this account </summary> 
+        ///<summary> The unique 34 character id that represents the parent of this account. The OwnerAccountSid of a parent account is it's own sid. </summary> 
         [JsonProperty("owner_account_sid")]
         public string OwnerAccountSid { get; private set; }
 
@@ -439,7 +439,7 @@ namespace Twilio.Rest.Api.V2010
         [JsonProperty("status")]
         public AccountResource.StatusEnum Status { get; private set; }
 
-        ///<summary> Account Instance Subresources </summary> 
+        ///<summary> A Map of various subresources available for the given Account Instance </summary> 
         [JsonProperty("subresource_uris")]
         public Dictionary<string, string> SubresourceUris { get; private set; }
 

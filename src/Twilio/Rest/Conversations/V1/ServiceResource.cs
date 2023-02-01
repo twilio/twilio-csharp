@@ -368,7 +368,7 @@ namespace Twilio.Rest.Conversations.V1
         }
 
     
-        ///<summary> The unique ID of the Account responsible for this service. </summary> 
+        ///<summary> The unique ID of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this service. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
@@ -376,7 +376,7 @@ namespace Twilio.Rest.Conversations.V1
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The human-readable name of this service. </summary> 
+        ///<summary> The human-readable name of this service, limited to 256 characters. Optional. </summary> 
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
 
@@ -388,11 +388,11 @@ namespace Twilio.Rest.Conversations.V1
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> An absolute URL for this service. </summary> 
+        ///<summary> An absolute API resource URL for this service. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
-        ///<summary> Absolute URLs to access the conversations, users, roles, bindings and configuration of this service. </summary> 
+        ///<summary> Contains absolute API resource URLs to access conversations, users, roles, bindings and configuration of this service. </summary> 
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
 

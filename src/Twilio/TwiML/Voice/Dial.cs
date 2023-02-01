@@ -659,6 +659,52 @@ namespace Twilio.TwiML.Voice
         }
 
         /// <summary>
+        /// Create a new <Application/> element and append it as a child of this element.
+        /// </summary>
+        /// <param name="applicationSid"> Application sid, the body of the TwiML Element. </param>
+        /// <param name="url"> TwiML URL </param>
+        /// <param name="method"> TwiML URL Method </param>
+        /// <param name="statusCallbackEvent"> Events to trigger status callback </param>
+        /// <param name="statusCallback"> Status Callback URL </param>
+        /// <param name="statusCallbackMethod"> Status Callback URL Method </param>
+        /// <param name="customerId"> Identity of the customer calling application </param>
+        /// <param name="copyParentTo"> Copy parent call To field to called application side, otherwise use the application sid
+        ///                    as To field </param>
+        public Dial Application(string applicationSid = null,
+                                Uri url = null,
+                                Twilio.Http.HttpMethod method = null,
+                                List<Application.EventEnum> statusCallbackEvent = null,
+                                Uri statusCallback = null,
+                                Twilio.Http.HttpMethod statusCallbackMethod = null,
+                                string customerId = null,
+                                bool? copyParentTo = null)
+        {
+            var newChild = new Application(
+                applicationSid,
+                url,
+                method,
+                statusCallbackEvent,
+                statusCallback,
+                statusCallbackMethod,
+                customerId,
+                copyParentTo
+            );
+            this.Append(newChild);
+            return this;
+        }
+
+        /// <summary>
+        /// Append a <Application/> element as a child of this element
+        /// </summary>
+        /// <param name="application"> A Application instance. </param>
+        [System.Obsolete("This method is deprecated, use .Append() instead.")]
+        public Dial Application(Application application)
+        {
+            this.Append(application);
+            return this;
+        }
+
+        /// <summary>
         /// Append a child TwiML element to this element returning this element to allow chaining.
         /// </summary>
         /// <param name="childElem"> Child TwiML element to add </param>

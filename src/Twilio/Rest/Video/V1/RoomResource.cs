@@ -486,7 +486,7 @@ namespace Twilio.Rest.Video.V1
         }
 
     
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string that we created to identify the Room resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
@@ -494,39 +494,39 @@ namespace Twilio.Rest.Video.V1
         [JsonProperty("status")]
         public RoomResource.RoomStatusEnum Status { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was created </summary> 
+        ///<summary> The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The ISO 8601 date and time in GMT when the resource was last updated </summary> 
+        ///<summary> The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> The SID of the Account that created the resource </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Room resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> Enable Twilio's Network Traversal TURN service </summary> 
+        ///<summary> Deprecated, now always considered to be true. </summary> 
         [JsonProperty("enable_turn")]
         public bool? EnableTurn { get; private set; }
 
-        ///<summary> An application-defined string that uniquely identifies the resource </summary> 
+        ///<summary> An application-defined string that uniquely identifies the resource. It can be used as a `room_sid` in place of the resource's `sid` in the URL to address the resource, assuming it does not contain any [reserved characters](https://tools.ietf.org/html/rfc3986#section-2.2) that would need to be URL encoded. This value is unique for `in-progress` rooms. SDK clients can use this name to connect to the room. REST API clients can use this name in place of the Room SID to interact with the room as long as the room is `in-progress`. </summary> 
         [JsonProperty("unique_name")]
         public string UniqueName { get; private set; }
 
-        ///<summary> The URL to send status information to your application </summary> 
+        ///<summary> The URL we call using the `status_callback_method` to send status information to your application on every room event. See [Status Callbacks](https://www.twilio.com/docs/video/api/status-callbacks) for more info. </summary> 
         [JsonProperty("status_callback")]
         public Uri StatusCallback { get; private set; }
 
-        ///<summary> The HTTP method we use to call status_callback </summary> 
+        ///<summary> The HTTP method we use to call `status_callback`. Can be `POST` or `GET` and defaults to `POST`. </summary> 
         [JsonProperty("status_callback_method")]
         public Twilio.Http.HttpMethod StatusCallbackMethod { get; private set; }
 
-        ///<summary> The UTC end time of the room in UTC ISO 8601 format </summary> 
+        ///<summary> The UTC end time of the room in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#UTC) format. </summary> 
         [JsonProperty("end_time")]
         public DateTime? EndTime { get; private set; }
 
-        ///<summary> The duration of the room in seconds </summary> 
+        ///<summary> The duration of the room in seconds. </summary> 
         [JsonProperty("duration")]
         public int? Duration { get; private set; }
 
@@ -534,39 +534,39 @@ namespace Twilio.Rest.Video.V1
         [JsonProperty("type")]
         public RoomResource.RoomTypeEnum Type { get; private set; }
 
-        ///<summary> The maximum number of concurrent Participants allowed in the room </summary> 
+        ///<summary> The maximum number of concurrent Participants allowed in the room.  </summary> 
         [JsonProperty("max_participants")]
         public int? MaxParticipants { get; private set; }
 
-        ///<summary> The maximum number of seconds a Participant can be connected to the room </summary> 
+        ///<summary> The maximum number of seconds a Participant can be connected to the room. The maximum possible value is 86400 seconds (24 hours). The default is 14400 seconds (4 hours). </summary> 
         [JsonProperty("max_participant_duration")]
         public int? MaxParticipantDuration { get; private set; }
 
-        ///<summary> The maximum number of published tracks allowed in the room at the same time </summary> 
+        ///<summary> The maximum number of published audio, video, and data tracks all participants combined are allowed to publish in the room at the same time. Check [Programmable Video Limits](https://www.twilio.com/docs/video/programmable-video-limits) for more details. If it is set to 0 it means unconstrained. </summary> 
         [JsonProperty("max_concurrent_published_tracks")]
         public int? MaxConcurrentPublishedTracks { get; private set; }
 
-        ///<summary> Whether to start recording when Participants connect </summary> 
+        ///<summary> Whether to start recording when Participants connect. ***This feature is not available in `peer-to-peer` rooms.*** </summary> 
         [JsonProperty("record_participants_on_connect")]
         public bool? RecordParticipantsOnConnect { get; private set; }
 
-        ///<summary> An array of the video codecs that are supported when publishing a track in the room </summary> 
+        ///<summary> An array of the video codecs that are supported when publishing a track in the room.  Can be: `VP8` and `H264`.  ***This feature is not available in `peer-to-peer` rooms*** </summary> 
         [JsonProperty("video_codecs")]
         public List<RoomResource.VideoCodecEnum> VideoCodecs { get; private set; }
 
-        ///<summary> The region for the media server in Group Rooms </summary> 
+        ///<summary> The region for the media server in Group Rooms.  Can be: one of the [available Media Regions](https://www.twilio.com/docs/video/ip-address-whitelisting#media-servers). ***This feature is not available in `peer-to-peer` rooms.*** </summary> 
         [JsonProperty("media_region")]
         public string MediaRegion { get; private set; }
 
-        ///<summary> Indicates whether the room will only contain audio track participants for group rooms. </summary> 
+        ///<summary> When set to true, indicates that the participants in the room will only publish audio. No video tracks will be allowed. Group rooms only. </summary> 
         [JsonProperty("audio_only")]
         public bool? AudioOnly { get; private set; }
 
-        ///<summary> The time a room will remain active after last participant leaves. </summary> 
+        ///<summary> Specifies how long (in minutes) a room will remain active after last participant leaves. Can be configured when creating a room via REST API. For Ad-Hoc rooms this value cannot be changed. </summary> 
         [JsonProperty("empty_room_timeout")]
         public int? EmptyRoomTimeout { get; private set; }
 
-        ///<summary> The time a room will remain active when no one joins. </summary> 
+        ///<summary> Specifies how long (in minutes) a room will remain active if no one joins. Can be configured when creating a room via REST API. For Ad-Hoc rooms this value cannot be changed. </summary> 
         [JsonProperty("unused_room_timeout")]
         public int? UnusedRoomTimeout { get; private set; }
 
@@ -574,11 +574,11 @@ namespace Twilio.Rest.Video.V1
         [JsonProperty("large_room")]
         public bool? LargeRoom { get; private set; }
 
-        ///<summary> The absolute URL of the resource </summary> 
+        ///<summary> The absolute URL of the resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
-        ///<summary> The URLs of related resources </summary> 
+        ///<summary> The URLs of related resources. </summary> 
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
 

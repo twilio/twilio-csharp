@@ -141,19 +141,19 @@ namespace Twilio.Rest.Verify.V2
         }
 
     
-        ///<summary> Total of attempts made. </summary> 
+        ///<summary> Total of attempts made according to the provided filters </summary> 
         [JsonProperty("total_attempts")]
         public int? TotalAttempts { get; private set; }
 
-        ///<summary> Total of attempts confirmed by the end user. </summary> 
+        ///<summary> Total of  attempts made that were confirmed by the end user, according to the provided filters. </summary> 
         [JsonProperty("total_converted")]
         public int? TotalConverted { get; private set; }
 
-        ///<summary> Total of attempts made that were not confirmed by the end user. </summary> 
+        ///<summary> Total of attempts made that were not confirmed by the end user, according to the provided filters. </summary> 
         [JsonProperty("total_unconverted")]
         public int? TotalUnconverted { get; private set; }
 
-        ///<summary> Percentage of the confirmed messages over the total. </summary> 
+        ///<summary> Percentage of the confirmed messages over the total, defined by (total_converted/total_attempts)*100.  </summary> 
         [JsonProperty("conversion_rate_percentage")]
         public decimal? ConversionRatePercentage { get; private set; }
 

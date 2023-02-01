@@ -122,7 +122,7 @@ namespace Twilio.Rest.Bulkexports.V1
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
-        ///<summary> Nested resource URLs. </summary> 
+        ///<summary> Contains a dictionary of URL links to nested resources of this Export. </summary> 
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
 

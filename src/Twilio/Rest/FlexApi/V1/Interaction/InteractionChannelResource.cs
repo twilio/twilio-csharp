@@ -373,11 +373,11 @@ namespace Twilio.Rest.FlexApi.V1.Interaction
         }
 
     
-        ///<summary> The unique string that identifies the resource </summary> 
+        ///<summary> The unique string created by Twilio to identify an Interaction Channel resource, prefixed with UO. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The unique string that identifies the resource. </summary> 
+        ///<summary> The unique string created by Twilio to identify an Interaction resource, prefixed with KD. </summary> 
         [JsonProperty("interaction_sid")]
         public string InteractionSid { get; private set; }
 
