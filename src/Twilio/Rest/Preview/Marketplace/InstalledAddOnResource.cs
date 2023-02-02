@@ -285,8 +285,8 @@ namespace Twilio.Rest.Preview.Marketplace
         #endif
         /// <summary> Retrieve a list of Add-ons currently installed on this Account. </summary>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of InstalledAddOn </returns>
         public static ResourceSet<InstalledAddOnResource> Read(
                                                      int? pageSize = null,
@@ -300,8 +300,8 @@ namespace Twilio.Rest.Preview.Marketplace
         #if !NET35
         /// <summary> Retrieve a list of Add-ons currently installed on this Account. </summary>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InstalledAddOn </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<InstalledAddOnResource>> ReadAsync(
                                                                                              int? pageSize = null,

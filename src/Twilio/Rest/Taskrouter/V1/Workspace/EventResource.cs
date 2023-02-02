@@ -158,8 +158,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="taskChannel"> The TaskChannel with the Events to read. Returns only the Events that pertain to the specified TaskChannel. </param>
         /// <param name="sid"> The SID of the Event resource to read. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Event </returns>
         public static ResourceSet<EventResource> Read(
                                                      string pathWorkspaceSid,
@@ -197,8 +197,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="taskChannel"> The TaskChannel with the Events to read. Returns only the Events that pertain to the specified TaskChannel. </param>
         /// <param name="sid"> The SID of the Event resource to read. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Event </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<EventResource>> ReadAsync(
                                                                                              string pathWorkspaceSid,

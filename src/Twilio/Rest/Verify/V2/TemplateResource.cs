@@ -75,8 +75,8 @@ namespace Twilio.Rest.Verify.V2
         /// <summary> List all the available templates for a given Account. </summary>
         /// <param name="friendlyName"> String filter used to query templates with a given friendly name </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Template </returns>
         public static ResourceSet<TemplateResource> Read(
                                                      string friendlyName = null,
@@ -92,8 +92,8 @@ namespace Twilio.Rest.Verify.V2
         /// <summary> List all the available templates for a given Account. </summary>
         /// <param name="friendlyName"> String filter used to query templates with a given friendly name </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Template </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<TemplateResource>> ReadAsync(
                                                                                              string friendlyName = null,

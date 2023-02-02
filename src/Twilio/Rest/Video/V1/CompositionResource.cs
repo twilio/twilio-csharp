@@ -338,8 +338,8 @@ namespace Twilio.Rest.Video.V1
         /// <param name="dateCreatedBefore"> Read only Composition resources created before this ISO 8601 date-time with time zone. </param>
         /// <param name="roomSid"> Read only Composition resources with this Room SID. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Composition </returns>
         public static ResourceSet<CompositionResource> Read(
                                                      CompositionResource.StatusEnum status = null,
@@ -361,8 +361,8 @@ namespace Twilio.Rest.Video.V1
         /// <param name="dateCreatedBefore"> Read only Composition resources created before this ISO 8601 date-time with time zone. </param>
         /// <param name="roomSid"> Read only Composition resources with this Room SID. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Composition </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<CompositionResource>> ReadAsync(
                                                                                              CompositionResource.StatusEnum status = null,

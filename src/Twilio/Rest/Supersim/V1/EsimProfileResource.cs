@@ -233,8 +233,8 @@ namespace Twilio.Rest.Supersim.V1
         /// <param name="simSid"> Find the eSIM Profile resource related to a [Sim](https://www.twilio.com/docs/wireless/api/sim-resource) resource by providing the SIM SID. Will always return an array with either 1 or 0 records. </param>
         /// <param name="status"> List the eSIM Profiles that are in a given status. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of EsimProfile </returns>
         public static ResourceSet<EsimProfileResource> Read(
                                                      string eid = null,
@@ -254,8 +254,8 @@ namespace Twilio.Rest.Supersim.V1
         /// <param name="simSid"> Find the eSIM Profile resource related to a [Sim](https://www.twilio.com/docs/wireless/api/sim-resource) resource by providing the SIM SID. Will always return an array with either 1 or 0 records. </param>
         /// <param name="status"> List the eSIM Profiles that are in a given status. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of EsimProfile </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<EsimProfileResource>> ReadAsync(
                                                                                              string eid = null,

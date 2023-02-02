@@ -342,8 +342,8 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         /// <param name="from">  </param>
         /// <param name="bounds">  </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncMapItem </returns>
         public static ResourceSet<SyncMapItemResource> Read(
                                                      string pathServiceSid,
@@ -367,8 +367,8 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         /// <param name="from">  </param>
         /// <param name="bounds">  </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncMapItem </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<SyncMapItemResource>> ReadAsync(
                                                                                              string pathServiceSid,

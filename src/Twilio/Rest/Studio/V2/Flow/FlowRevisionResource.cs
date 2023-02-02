@@ -160,8 +160,8 @@ namespace Twilio.Rest.Studio.V2.Flow
         /// <summary> Retrieve a list of all Flows revisions. </summary>
         /// <param name="pathSid"> The SID of the Flow resource to fetch. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of FlowRevision </returns>
         public static ResourceSet<FlowRevisionResource> Read(
                                                      string pathSid,
@@ -177,8 +177,8 @@ namespace Twilio.Rest.Studio.V2.Flow
         /// <summary> Retrieve a list of all Flows revisions. </summary>
         /// <param name="pathSid"> The SID of the Flow resource to fetch. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of FlowRevision </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<FlowRevisionResource>> ReadAsync(
                                                                                              string pathSid,

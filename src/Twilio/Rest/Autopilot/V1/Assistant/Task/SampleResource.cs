@@ -318,8 +318,8 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
         /// <param name="pathTaskSid"> The SID of the [Task](https://www.twilio.com/docs/autopilot/api/task) associated with the Sample resources to read. </param>
         /// <param name="language"> The [ISO language-country](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html) string that specifies the language used for the sample. For example: `en-US`. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Sample </returns>
         public static ResourceSet<SampleResource> Read(
                                                      string pathAssistantSid,
@@ -339,8 +339,8 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
         /// <param name="pathTaskSid"> The SID of the [Task](https://www.twilio.com/docs/autopilot/api/task) associated with the Sample resources to read. </param>
         /// <param name="language"> The [ISO language-country](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html) string that specifies the language used for the sample. For example: `en-US`. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Sample </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<SampleResource>> ReadAsync(
                                                                                              string pathAssistantSid,

@@ -147,8 +147,8 @@ namespace Twilio.Rest.Events.V1.Schema
         /// <summary> Retrieve a paginated list of versions of the schema. </summary>
         /// <param name="pathId"> The unique identifier of the schema. Each schema can have multiple versions, that share the same id. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SchemaVersion </returns>
         public static ResourceSet<SchemaVersionResource> Read(
                                                      string pathId,
@@ -164,8 +164,8 @@ namespace Twilio.Rest.Events.V1.Schema
         /// <summary> Retrieve a paginated list of versions of the schema. </summary>
         /// <param name="pathId"> The unique identifier of the schema. Each schema can have multiple versions, that share the same id. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SchemaVersion </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<SchemaVersionResource>> ReadAsync(
                                                                                              string pathId,
