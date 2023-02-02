@@ -21,8 +21,8 @@ namespace Twilio.TwiML
         /// <summary>
         /// Attribute names to be transformed on the generated xml
         /// </summary>
-        private static Dictionary<string, string> AttributeNameMapper = new Dictionary<string, string> {{"for_", "for"}};
-        
+        private static Dictionary<string, string> AttributeNameMapper = new Dictionary<string, string> { { "for_", "for" } };
+
         /// <summary>
         /// Generate XElement from TwiML object
         /// </summary>
@@ -31,7 +31,7 @@ namespace Twilio.TwiML
         {
             var elem = new XElement(TagName, GetElementBody());
 
-            foreach(var attr in GetElementAttributes())
+            foreach (var attr in GetElementAttributes())
             {
                 string transformedAttr = attr.Name.LocalName;
                 if (AttributeNameMapper.TryGetValue(attr.Name.LocalName, out transformedAttr))
@@ -74,36 +74,53 @@ namespace Twilio.TwiML
             return document;
         }
 
+        /// <summary>
+        /// Write TwiML to TextWriter as XML.
+        /// </summary>
+        /// <param name="textWriter">TextWriter to write XML string to.</param>
         public void Save(TextWriter textWriter)
         {
             Save(textWriter, SaveOptions.None);
         }
 
-        public void Save(TextWriter textWriter, SaveOptions options)
+        /// <summary>
+        /// Write TwiML to TextWriter as XML.
+        /// </summary>
+        /// <param name="textWriter">TextWriter to write XML string to.</param>
+        /// <param name="formattingOptions">Change generated string format.</param>
+        public void Save(TextWriter textWriter, SaveOptions formattingOptions)
         {
-            var ws = GetXmlWriterSettings(options);
+            var ws = GetXmlWriterSettings(formattingOptions);
             using (var writer = XmlWriter.Create(textWriter, ws))
-                Save(writer, options);
+                Save(writer);
         }
 
+        /// <summary>
+        /// Write TwiML to Stream as XML.
+        /// </summary>
+        /// <param name="stream">Stream to write XML string to.</param>
         public void Save(Stream stream)
         {
             Save(stream, SaveOptions.None);
         }
 
-        public void Save(Stream stream, SaveOptions options)
+        /// <summary>
+        /// Write TwiML to Stream as XML.
+        /// </summary>
+        /// <param name="stream">Stream to write XML string to.</param>
+        /// <param name="formattingOptions">Change generated string format.</param>
+        public void Save(Stream stream, SaveOptions formattingOptions)
         {
-            var ws = GetXmlWriterSettings(options);
+            var ws = GetXmlWriterSettings(formattingOptions);
             using (var writer = XmlWriter.Create(stream, ws))
-                Save(writer, options);
+                Save(writer);
         }
 
+        /// <summary>
+        /// Write TwiML to XmlWriter as XML. Configure the XmlWriter before invoking Save.
+        /// </summary>
+        /// <param name="writer">XmlWriter to write XML string to.</param>
         public void Save(XmlWriter writer)
-        {
-            Save(writer, SaveOptions.None);
-        }
-        
-        public void Save(XmlWriter writer, SaveOptions options)
         {
             writer.WriteStartDocument();
             WriteContent(writer);
@@ -111,6 +128,10 @@ namespace Twilio.TwiML
             writer.Flush();
         }
 
+        /// <summary>
+        /// Write the Element, Attributes, and inner XML of this TwiML object.
+        /// </summary>
+        /// <param name="writer">XmlWriter to write XML string to.</param>
         protected virtual void WriteContent(XmlWriter writer)
         {
             writer.WriteStartElement(null, TagName, null);
@@ -173,14 +194,29 @@ namespace Twilio.TwiML
         }
 
 #if !NET35
+        /// <summary>
+        /// Write TwiML to TextWriter as XML.
+        /// </summary>
+        /// <param name="textWriter">TextWriter to write XML string to.</param>
+        /// <param name="cancellationToken">A cancellation token.</param>
         public Task SaveAsync(TextWriter textWriter, CancellationToken cancellationToken)
         {
             return SaveAsync(textWriter, SaveOptions.None, cancellationToken);
         }
-        
-        public async Task SaveAsync(TextWriter textWriter, SaveOptions options, CancellationToken cancellationToken)
+
+        /// <summary>
+        /// Write TwiML to TextWriter as XML.
+        /// </summary>
+        /// <param name="textWriter">TextWriter to write XML string to.</param>
+        /// <param name="formattingOptions">Change generated string format.</param>
+        /// <param name="cancellationToken">A cancellation token.</param>
+        public async Task SaveAsync(
+            TextWriter textWriter, SaveOptions
+            formattingOptions,
+            CancellationToken cancellationToken
+        )
         {
-            var ws = GetXmlWriterSettings(options);
+            var ws = GetXmlWriterSettings(formattingOptions);
             ws.Async = true;
             var writer = XmlWriter.Create(textWriter, ws);
 #if NET6_0_OR_GREATER
@@ -194,14 +230,25 @@ namespace Twilio.TwiML
             }
         }
 
+        /// <summary>
+        /// Write TwiML to Stream as XML.
+        /// </summary>
+        /// <param name="stream">Stream to write XML string to.</param>
+        /// <param name="cancellationToken">A cancellation token.</param>
         public Task SaveAsync(Stream stream, CancellationToken cancellationToken)
         {
             return SaveAsync(stream, SaveOptions.None, cancellationToken);
         }
-        
-        public async Task SaveAsync(Stream stream, SaveOptions options, CancellationToken cancellationToken)
+
+        /// <summary>
+        /// Write TwiML to Stream as XML.
+        /// </summary>
+        /// <param name="stream">Stream to write XML string to.</param>
+        /// <param name="formattingOptions">Change generated string format.</param>
+        /// <param name="cancellationToken">A cancellation token.</param>
+        public async Task SaveAsync(Stream stream, SaveOptions formattingOptions, CancellationToken cancellationToken)
         {
-            var ws = GetXmlWriterSettings(options);
+            var ws = GetXmlWriterSettings(formattingOptions);
             ws.Async = true;
             var writer = XmlWriter.Create(stream, ws);
 #if NET6_0_OR_GREATER
@@ -215,6 +262,11 @@ namespace Twilio.TwiML
             }
         }
 
+        /// <summary>
+        /// Write TwiML to XmlWriter as XML. Configure the XmlWriter before invoking Save.
+        /// </summary>
+        /// <param name="writer">XmlWriter to write XML string to.</param>
+        /// <param name="cancellationToken">A cancellation token.</param>
         public async Task SaveAsync(XmlWriter writer, CancellationToken cancellationToken)
         {
             await writer.WriteStartDocumentAsync().ConfigureAwait(false);
@@ -223,6 +275,11 @@ namespace Twilio.TwiML
             await writer.FlushAsync().ConfigureAwait(false);
         }
 
+        /// <summary>
+        /// Write the Element, Attributes, and inner XML of this TwiML object.
+        /// </summary>
+        /// <param name="writer">XmlWriter to write XML string to.</param>
+        /// <param name="cancellationToken">A cancellation token.</param>
         protected virtual async Task WriteXml(XmlWriter writer, CancellationToken cancellationToken)
         {
             cancellationToken.ThrowIfCancellationRequested();
@@ -292,6 +349,7 @@ namespace Twilio.TwiML
         {
             XmlWriterSettings settings = new XmlWriterSettings();
             settings.Encoding = Encoding.UTF8;
+           
             if ((saveOptions & SaveOptions.DisableFormatting) == 0) settings.Indent = true;
 #if !NET35
             if ((saveOptions & SaveOptions.OmitDuplicateNamespaces) != 0)
@@ -301,7 +359,7 @@ namespace Twilio.TwiML
         }
 
         /// <summary>
-        /// Generate XML string from TwiML object
+        /// Generate XML string from TwiML object.
         /// </summary>
         public override string ToString()
         {
@@ -309,9 +367,9 @@ namespace Twilio.TwiML
         }
 
         /// <summary>
-        /// Generate XML string from TwiML object
+        /// Generate XML string from TwiML object.
         /// </summary>
-        /// <param name="formattingOptions"> Change generated string format. </param>
+        /// <param name="formattingOptions">Change generated string format.</param>
         public string ToString(SaveOptions formattingOptions)
         {
             using (var writer = new Utf8StringWriter())
