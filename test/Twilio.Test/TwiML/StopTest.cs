@@ -21,7 +21,7 @@ namespace Twilio.Tests.TwiML
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Stop></Stop>",
+                "<Stop />",
                 elem.ToString()
             );
         }
@@ -35,7 +35,7 @@ namespace Twilio.Tests.TwiML
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Stop newParam1=\"value\" newParam2=\"1\"></Stop>",
+                "<Stop newParam1=\"value\" newParam2=\"1\" />",
                 elem.ToString()
             );
         }
@@ -51,7 +51,7 @@ namespace Twilio.Tests.TwiML
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
                 "<Stop>" + Environment.NewLine +
                 "  <Stream>" + Environment.NewLine +
-                "    <Parameter></Parameter>" + Environment.NewLine +
+                "    <Parameter />" + Environment.NewLine +
                 "  </Stream>" + Environment.NewLine +
                 "</Stop>",
                 elem.ToString()
@@ -77,8 +77,8 @@ namespace Twilio.Tests.TwiML
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
                 "<Stop>" + Environment.NewLine +
-                "  <Stream name=\"name\" connectorName=\"connector_name\" url=\"url\" track=\"inbound_track\" statusCallback=\"status_callback\" statusCallbackMethod=\"GET\"></Stream>" + Environment.NewLine +
-                "  <Siprec name=\"name\" connectorName=\"connector_name\" track=\"inbound_track\"></Siprec>" + Environment.NewLine +
+                "  <Stream name=\"name\" connectorName=\"connector_name\" url=\"url\" track=\"inbound_track\" statusCallback=\"status_callback\" statusCallbackMethod=\"GET\" />" + Environment.NewLine +
+                "  <Siprec name=\"name\" connectorName=\"connector_name\" track=\"inbound_track\" />" + Environment.NewLine +
                 "</Stop>",
                 elem.ToString()
             );

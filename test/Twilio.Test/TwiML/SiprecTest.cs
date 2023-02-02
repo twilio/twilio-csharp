@@ -21,7 +21,7 @@ namespace Twilio.Tests.TwiML
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Siprec></Siprec>",
+                "<Siprec />",
                 elem.ToString()
             );
         }
@@ -32,7 +32,7 @@ namespace Twilio.Tests.TwiML
             var elem = new Siprec("name", "connector_name", Siprec.TrackEnum.InboundTrack);
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Siprec name=\"name\" connectorName=\"connector_name\" track=\"inbound_track\"></Siprec>",
+                "<Siprec name=\"name\" connectorName=\"connector_name\" track=\"inbound_track\" />",
                 elem.ToString()
             );
         }
@@ -46,7 +46,7 @@ namespace Twilio.Tests.TwiML
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Siprec newParam1=\"value\" newParam2=\"1\"></Siprec>",
+                "<Siprec newParam1=\"value\" newParam2=\"1\" />",
                 elem.ToString()
             );
         }
@@ -61,7 +61,7 @@ namespace Twilio.Tests.TwiML
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
                 "<Siprec>" + Environment.NewLine +
-                "  <Parameter name=\"name\" value=\"value\"></Parameter>" + Environment.NewLine +
+                "  <Parameter name=\"name\" value=\"value\" />" + Environment.NewLine +
                 "</Siprec>",
                 elem.ToString()
             );

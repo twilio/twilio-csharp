@@ -21,7 +21,7 @@ namespace Twilio.Tests.TwiML
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Pause></Pause>",
+                "<Pause />",
                 elem.ToString()
             );
         }
@@ -32,7 +32,7 @@ namespace Twilio.Tests.TwiML
             var elem = new Pause(1);
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Pause length=\"1\"></Pause>",
+                "<Pause length=\"1\" />",
                 elem.ToString()
             );
         }
@@ -46,7 +46,7 @@ namespace Twilio.Tests.TwiML
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Pause newParam1=\"value\" newParam2=\"1\"></Pause>",
+                "<Pause newParam1=\"value\" newParam2=\"1\" />",
                 elem.ToString()
             );
         }

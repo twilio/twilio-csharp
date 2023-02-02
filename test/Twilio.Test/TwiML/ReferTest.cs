@@ -21,7 +21,7 @@ namespace Twilio.Tests.TwiML
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Refer></Refer>",
+                "<Refer />",
                 elem.ToString()
             );
         }
@@ -32,7 +32,7 @@ namespace Twilio.Tests.TwiML
             var elem = new Refer(new Uri("https://example.com"), Twilio.Http.HttpMethod.Get);
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Refer action=\"https://example.com\" method=\"GET\"></Refer>",
+                "<Refer action=\"https://example.com\" method=\"GET\" />",
                 elem.ToString()
             );
         }
@@ -46,7 +46,7 @@ namespace Twilio.Tests.TwiML
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Refer newParam1=\"value\" newParam2=\"1\"></Refer>",
+                "<Refer newParam1=\"value\" newParam2=\"1\" />",
                 elem.ToString()
             );
         }

@@ -327,7 +327,7 @@ namespace Twilio.TwiML.Voice
         /// <summary>
         /// Return the attributes of the TwiML tag
         /// </summary>
-        protected override List<XAttribute> GetElementAttributes()
+        protected override IEnumerable<XAttribute> GetElementAttributes()
         {
             var attributes = new List<XAttribute>();
             if (this.Input != null)

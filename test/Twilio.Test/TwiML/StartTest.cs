@@ -21,7 +21,7 @@ namespace Twilio.Tests.TwiML
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Start></Start>",
+                "<Start />",
                 elem.ToString()
             );
         }
@@ -32,7 +32,7 @@ namespace Twilio.Tests.TwiML
             var elem = new Start(new Uri("https://example.com"), Twilio.Http.HttpMethod.Get);
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Start action=\"https://example.com\" method=\"GET\"></Start>",
+                "<Start action=\"https://example.com\" method=\"GET\" />",
                 elem.ToString()
             );
         }
@@ -46,7 +46,7 @@ namespace Twilio.Tests.TwiML
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Start newParam1=\"value\" newParam2=\"1\"></Start>",
+                "<Start newParam1=\"value\" newParam2=\"1\" />",
                 elem.ToString()
             );
         }
@@ -62,7 +62,7 @@ namespace Twilio.Tests.TwiML
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
                 "<Start>" + Environment.NewLine +
                 "  <Stream>" + Environment.NewLine +
-                "    <Parameter></Parameter>" + Environment.NewLine +
+                "    <Parameter />" + Environment.NewLine +
                 "  </Stream>" + Environment.NewLine +
                 "</Start>",
                 elem.ToString()
@@ -88,8 +88,8 @@ namespace Twilio.Tests.TwiML
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
                 "<Start>" + Environment.NewLine +
-                "  <Stream name=\"name\" connectorName=\"connector_name\" url=\"url\" track=\"inbound_track\" statusCallback=\"status_callback\" statusCallbackMethod=\"GET\"></Stream>" + Environment.NewLine +
-                "  <Siprec name=\"name\" connectorName=\"connector_name\" track=\"inbound_track\"></Siprec>" + Environment.NewLine +
+                "  <Stream name=\"name\" connectorName=\"connector_name\" url=\"url\" track=\"inbound_track\" statusCallback=\"status_callback\" statusCallbackMethod=\"GET\" />" + Environment.NewLine +
+                "  <Siprec name=\"name\" connectorName=\"connector_name\" track=\"inbound_track\" />" + Environment.NewLine +
                 "</Start>",
                 elem.ToString()
             );

@@ -21,7 +21,7 @@ namespace Twilio.Tests.TwiML
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Prompt></Prompt>",
+                "<Prompt />",
                 elem.ToString()
             );
         }
@@ -38,7 +38,7 @@ namespace Twilio.Tests.TwiML
             );
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Prompt for=\"payment-card-number\" errorType=\"timeout\" cardType=\"visa\" attempt=\"1\" requireMatchingInputs=\"true\"></Prompt>",
+                "<Prompt for=\"payment-card-number\" errorType=\"timeout\" cardType=\"visa\" attempt=\"1\" requireMatchingInputs=\"true\" />",
                 elem.ToString()
             );
         }
@@ -52,7 +52,7 @@ namespace Twilio.Tests.TwiML
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Prompt newParam1=\"value\" newParam2=\"1\"></Prompt>",
+                "<Prompt newParam1=\"value\" newParam2=\"1\" />",
                 elem.ToString()
             );
         }
@@ -68,7 +68,7 @@ namespace Twilio.Tests.TwiML
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
                 "<Prompt>" + Environment.NewLine +
                 "  <Say>" + Environment.NewLine +
-                "    <break></break>" + Environment.NewLine +
+                "    <break />" + Environment.NewLine +
                 "  </Say>" + Environment.NewLine +
                 "</Prompt>",
                 elem.ToString()
@@ -91,7 +91,7 @@ namespace Twilio.Tests.TwiML
                 "<Prompt>" + Environment.NewLine +
                 "  <Say voice=\"man\" loop=\"1\" language=\"arb\">message</Say>" + Environment.NewLine +
                 "  <Play loop=\"1\" digits=\"digits\">https://example.com</Play>" + Environment.NewLine +
-                "  <Pause length=\"1\"></Pause>" + Environment.NewLine +
+                "  <Pause length=\"1\" />" + Environment.NewLine +
                 "</Prompt>",
                 elem.ToString()
             );

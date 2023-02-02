@@ -22,7 +22,7 @@ namespace Twilio.Tests.TwiML
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Response></Response>",
+                "<Response />",
                 elem.ToString()
             );
         }
@@ -36,7 +36,7 @@ namespace Twilio.Tests.TwiML
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Response newParam1=\"value\" newParam2=\"1\"></Response>",
+                "<Response newParam1=\"value\" newParam2=\"1\" />",
                 elem.ToString()
             );
         }
@@ -52,7 +52,7 @@ namespace Twilio.Tests.TwiML
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
                 "<Response>" + Environment.NewLine +
                 "  <Connect>" + Environment.NewLine +
-                "    <Room></Room>" + Environment.NewLine +
+                "    <Room />" + Environment.NewLine +
                 "  </Connect>" + Environment.NewLine +
                 "</Response>",
                 elem.ToString()
@@ -204,26 +204,26 @@ namespace Twilio.Tests.TwiML
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
                 "<Response>" + Environment.NewLine +
-                "  <Connect action=\"https://example.com\" method=\"GET\"></Connect>" + Environment.NewLine +
+                "  <Connect action=\"https://example.com\" method=\"GET\" />" + Environment.NewLine +
                 "  <Dial action=\"https://example.com\" method=\"GET\" timeout=\"1\" hangupOnStar=\"true\" timeLimit=\"1\" callerId=\"caller_id\" record=\"do-not-record\" trim=\"trim-silence\" recordingStatusCallback=\"https://example.com\" recordingStatusCallbackMethod=\"GET\" recordingStatusCallbackEvent=\"in-progress\" answerOnBridge=\"true\" ringTone=\"at\" recordingTrack=\"both\" sequential=\"true\" referUrl=\"https://example.com\" referMethod=\"GET\">number</Dial>" + Environment.NewLine +
-                "  <Echo></Echo>" + Environment.NewLine +
+                "  <Echo />" + Environment.NewLine +
                 "  <Enqueue action=\"https://example.com\" maxQueueSize=\"1\" method=\"GET\" waitUrl=\"https://example.com\" waitUrlMethod=\"GET\" workflowSid=\"workflow_sid\">name</Enqueue>" + Environment.NewLine +
-                "  <Gather input=\"dtmf\" action=\"https://example.com\" method=\"GET\" timeout=\"1\" speechTimeout=\"speech_timeout\" maxSpeechTime=\"1\" profanityFilter=\"true\" finishOnKey=\"finish_on_key\" numDigits=\"1\" partialResultCallback=\"https://example.com\" partialResultCallbackMethod=\"GET\" language=\"af-ZA\" hints=\"hints\" bargeIn=\"true\" debug=\"true\" actionOnEmptyResult=\"true\" speechModel=\"default\" enhanced=\"true\"></Gather>" + Environment.NewLine +
-                "  <Hangup></Hangup>" + Environment.NewLine +
-                "  <Leave></Leave>" + Environment.NewLine +
-                "  <Pause length=\"1\"></Pause>" + Environment.NewLine +
+                "  <Gather input=\"dtmf\" action=\"https://example.com\" method=\"GET\" timeout=\"1\" speechTimeout=\"speech_timeout\" maxSpeechTime=\"1\" profanityFilter=\"true\" finishOnKey=\"finish_on_key\" numDigits=\"1\" partialResultCallback=\"https://example.com\" partialResultCallbackMethod=\"GET\" language=\"af-ZA\" hints=\"hints\" bargeIn=\"true\" debug=\"true\" actionOnEmptyResult=\"true\" speechModel=\"default\" enhanced=\"true\" />" + Environment.NewLine +
+                "  <Hangup />" + Environment.NewLine +
+                "  <Leave />" + Environment.NewLine +
+                "  <Pause length=\"1\" />" + Environment.NewLine +
                 "  <Play loop=\"1\" digits=\"digits\">https://example.com</Play>" + Environment.NewLine +
                 "  <Queue url=\"https://example.com\" method=\"GET\" reservationSid=\"reservation_sid\" postWorkActivitySid=\"post_work_activity_sid\">name</Queue>" + Environment.NewLine +
-                "  <Record action=\"https://example.com\" method=\"GET\" timeout=\"1\" finishOnKey=\"finish_on_key\" maxLength=\"1\" playBeep=\"true\" trim=\"trim-silence\" recordingStatusCallback=\"https://example.com\" recordingStatusCallbackMethod=\"GET\" recordingStatusCallbackEvent=\"in-progress\" transcribe=\"true\" transcribeCallback=\"https://example.com\"></Record>" + Environment.NewLine +
+                "  <Record action=\"https://example.com\" method=\"GET\" timeout=\"1\" finishOnKey=\"finish_on_key\" maxLength=\"1\" playBeep=\"true\" trim=\"trim-silence\" recordingStatusCallback=\"https://example.com\" recordingStatusCallbackMethod=\"GET\" recordingStatusCallbackEvent=\"in-progress\" transcribe=\"true\" transcribeCallback=\"https://example.com\" />" + Environment.NewLine +
                 "  <Redirect method=\"GET\">https://example.com</Redirect>" + Environment.NewLine +
-                "  <Reject reason=\"rejected\"></Reject>" + Environment.NewLine +
+                "  <Reject reason=\"rejected\" />" + Environment.NewLine +
                 "  <Say voice=\"man\" loop=\"1\" language=\"arb\">message</Say>" + Environment.NewLine +
                 "  <Sms to=\"+15558675310\" from=\"+15017122661\" action=\"https://example.com\" method=\"GET\" statusCallback=\"https://example.com\">message</Sms>" + Environment.NewLine +
-                "  <Pay input=\"dtmf\" action=\"https://example.com\" bankAccountType=\"consumer-checking\" statusCallback=\"https://example.com\" statusCallbackMethod=\"GET\" timeout=\"1\" maxAttempts=\"1\" securityCode=\"true\" postalCode=\"postal_code\" minPostalCodeLength=\"1\" paymentConnector=\"payment_connector\" paymentMethod=\"ach-debit\" tokenType=\"one-time\" chargeAmount=\"charge_amount\" currency=\"currency\" description=\"description\" validCardTypes=\"visa\" language=\"de-DE\"></Pay>" + Environment.NewLine +
-                "  <Prompt for=\"payment-card-number\" errorType=\"timeout\" cardType=\"visa\" attempt=\"1\" requireMatchingInputs=\"true\"></Prompt>" + Environment.NewLine +
-                "  <Start action=\"https://example.com\" method=\"GET\"></Start>" + Environment.NewLine +
-                "  <Stop></Stop>" + Environment.NewLine +
-                "  <Refer action=\"https://example.com\" method=\"GET\"></Refer>" + Environment.NewLine +
+                "  <Pay input=\"dtmf\" action=\"https://example.com\" bankAccountType=\"consumer-checking\" statusCallback=\"https://example.com\" statusCallbackMethod=\"GET\" timeout=\"1\" maxAttempts=\"1\" securityCode=\"true\" postalCode=\"postal_code\" minPostalCodeLength=\"1\" paymentConnector=\"payment_connector\" paymentMethod=\"ach-debit\" tokenType=\"one-time\" chargeAmount=\"charge_amount\" currency=\"currency\" description=\"description\" validCardTypes=\"visa\" language=\"de-DE\" />" + Environment.NewLine +
+                "  <Prompt for=\"payment-card-number\" errorType=\"timeout\" cardType=\"visa\" attempt=\"1\" requireMatchingInputs=\"true\" />" + Environment.NewLine +
+                "  <Start action=\"https://example.com\" method=\"GET\" />" + Environment.NewLine +
+                "  <Stop />" + Environment.NewLine +
+                "  <Refer action=\"https://example.com\" method=\"GET\" />" + Environment.NewLine +
                 "</Response>",
                 elem.ToString()
             );

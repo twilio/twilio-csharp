@@ -21,7 +21,7 @@ namespace Twilio.Tests.TwiML
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Dial></Dial>",
+                "<Dial />",
                 elem.ToString()
             );
         }
@@ -65,7 +65,7 @@ namespace Twilio.Tests.TwiML
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Dial newParam1=\"value\" newParam2=\"1\"></Dial>",
+                "<Dial newParam1=\"value\" newParam2=\"1\" />",
                 elem.ToString()
             );
         }
@@ -81,7 +81,7 @@ namespace Twilio.Tests.TwiML
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
                 "<Dial>" + Environment.NewLine +
                 "  <Client>" + Environment.NewLine +
-                "    <Identity></Identity>" + Environment.NewLine +
+                "    <Identity />" + Environment.NewLine +
                 "  </Client>" + Environment.NewLine +
                 "</Dial>",
                 elem.ToString()

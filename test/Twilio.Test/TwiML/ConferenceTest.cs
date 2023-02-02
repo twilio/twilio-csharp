@@ -21,7 +21,7 @@ namespace Twilio.Tests.TwiML
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Conference></Conference>",
+                "<Conference />",
                 elem.ToString()
             );
         }
@@ -68,7 +68,7 @@ namespace Twilio.Tests.TwiML
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Conference newParam1=\"value\" newParam2=\"1\"></Conference>",
+                "<Conference newParam1=\"value\" newParam2=\"1\" />",
                 elem.ToString()
             );
         }

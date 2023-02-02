@@ -22,7 +22,7 @@ namespace Twilio.Tests.TwiML
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Response></Response>",
+                "<Response />",
                 elem.ToString()
             );
         }
@@ -36,7 +36,7 @@ namespace Twilio.Tests.TwiML
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Response newParam1=\"value\" newParam2=\"1\"></Response>",
+                "<Response newParam1=\"value\" newParam2=\"1\" />",
                 elem.ToString()
             );
         }
@@ -57,7 +57,7 @@ namespace Twilio.Tests.TwiML
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
                 "<Response>" + Environment.NewLine +
-                "  <Receive action=\"https://example.com\" method=\"GET\" mediaType=\"application/pdf\" pageSize=\"letter\" storeMedia=\"true\"></Receive>" + Environment.NewLine +
+                "  <Receive action=\"https://example.com\" method=\"GET\" mediaType=\"application/pdf\" pageSize=\"letter\" storeMedia=\"true\" />" + Environment.NewLine +
                 "</Response>",
                 elem.ToString()
             );

@@ -21,7 +21,7 @@ namespace Twilio.Tests.TwiML
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<s></s>",
+                "<s />",
                 elem.ToString()
             );
         }
@@ -46,7 +46,7 @@ namespace Twilio.Tests.TwiML
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<s newParam1=\"value\" newParam2=\"1\"></s>",
+                "<s newParam1=\"value\" newParam2=\"1\" />",
                 elem.ToString()
             );
         }
@@ -75,7 +75,7 @@ namespace Twilio.Tests.TwiML
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
                 "<s>" + Environment.NewLine +
-                "  <break strength=\"none\" time=\"time\"></break>" + Environment.NewLine +
+                "  <break strength=\"none\" time=\"time\" />" + Environment.NewLine +
                 "  <emphasis level=\"strong\">words</emphasis>" + Environment.NewLine +
                 "  <lang xml:lang=\"arb\">words</lang>" + Environment.NewLine +
                 "  <phoneme alphabet=\"ipa\" ph=\"ph\">words</phoneme>" + Environment.NewLine +

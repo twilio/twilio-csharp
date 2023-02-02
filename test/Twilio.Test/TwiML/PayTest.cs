@@ -21,7 +21,7 @@ namespace Twilio.Tests.TwiML
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Pay></Pay>",
+                "<Pay />",
                 elem.ToString()
             );
         }
@@ -51,7 +51,7 @@ namespace Twilio.Tests.TwiML
             );
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Pay input=\"dtmf\" action=\"https://example.com\" bankAccountType=\"consumer-checking\" statusCallback=\"https://example.com\" statusCallbackMethod=\"GET\" timeout=\"1\" maxAttempts=\"1\" securityCode=\"true\" postalCode=\"postal_code\" minPostalCodeLength=\"1\" paymentConnector=\"payment_connector\" paymentMethod=\"ach-debit\" tokenType=\"one-time\" chargeAmount=\"charge_amount\" currency=\"currency\" description=\"description\" validCardTypes=\"visa\" language=\"de-DE\"></Pay>",
+                "<Pay input=\"dtmf\" action=\"https://example.com\" bankAccountType=\"consumer-checking\" statusCallback=\"https://example.com\" statusCallbackMethod=\"GET\" timeout=\"1\" maxAttempts=\"1\" securityCode=\"true\" postalCode=\"postal_code\" minPostalCodeLength=\"1\" paymentConnector=\"payment_connector\" paymentMethod=\"ach-debit\" tokenType=\"one-time\" chargeAmount=\"charge_amount\" currency=\"currency\" description=\"description\" validCardTypes=\"visa\" language=\"de-DE\" />",
                 elem.ToString()
             );
         }
@@ -65,7 +65,7 @@ namespace Twilio.Tests.TwiML
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Pay newParam1=\"value\" newParam2=\"1\"></Pay>",
+                "<Pay newParam1=\"value\" newParam2=\"1\" />",
                 elem.ToString()
             );
         }
@@ -81,7 +81,7 @@ namespace Twilio.Tests.TwiML
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
                 "<Pay>" + Environment.NewLine +
                 "  <Prompt>" + Environment.NewLine +
-                "    <Say></Say>" + Environment.NewLine +
+                "    <Say />" + Environment.NewLine +
                 "  </Prompt>" + Environment.NewLine +
                 "</Pay>",
                 elem.ToString()
@@ -106,8 +106,8 @@ namespace Twilio.Tests.TwiML
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
                 "<Pay>" + Environment.NewLine +
-                "  <Prompt for=\"payment-card-number\" errorType=\"timeout\" cardType=\"visa\" attempt=\"1\" requireMatchingInputs=\"true\"></Prompt>" + Environment.NewLine +
-                "  <Parameter name=\"name\" value=\"value\"></Parameter>" + Environment.NewLine +
+                "  <Prompt for=\"payment-card-number\" errorType=\"timeout\" cardType=\"visa\" attempt=\"1\" requireMatchingInputs=\"true\" />" + Environment.NewLine +
+                "  <Parameter name=\"name\" value=\"value\" />" + Environment.NewLine +
                 "</Pay>",
                 elem.ToString()
             );

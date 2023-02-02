@@ -21,7 +21,7 @@ namespace Twilio.Tests.TwiML
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Receive></Receive>",
+                "<Receive />",
                 elem.ToString()
             );
         }
@@ -38,7 +38,7 @@ namespace Twilio.Tests.TwiML
             );
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Receive action=\"https://example.com\" method=\"GET\" mediaType=\"application/pdf\" pageSize=\"letter\" storeMedia=\"true\"></Receive>",
+                "<Receive action=\"https://example.com\" method=\"GET\" mediaType=\"application/pdf\" pageSize=\"letter\" storeMedia=\"true\" />",
                 elem.ToString()
             );
         }
@@ -52,7 +52,7 @@ namespace Twilio.Tests.TwiML
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Receive newParam1=\"value\" newParam2=\"1\"></Receive>",
+                "<Receive newParam1=\"value\" newParam2=\"1\" />",
                 elem.ToString()
             );
         }

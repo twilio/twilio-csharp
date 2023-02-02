@@ -21,7 +21,7 @@ namespace Twilio.Tests.TwiML
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<VirtualAgent></VirtualAgent>",
+                "<VirtualAgent />",
                 elem.ToString()
             );
         }
@@ -38,7 +38,7 @@ namespace Twilio.Tests.TwiML
             );
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<VirtualAgent connectorName=\"connector_name\" language=\"language\" sentimentAnalysis=\"true\" statusCallback=\"status_callback\" statusCallbackMethod=\"GET\"></VirtualAgent>",
+                "<VirtualAgent connectorName=\"connector_name\" language=\"language\" sentimentAnalysis=\"true\" statusCallback=\"status_callback\" statusCallbackMethod=\"GET\" />",
                 elem.ToString()
             );
         }
@@ -52,7 +52,7 @@ namespace Twilio.Tests.TwiML
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<VirtualAgent newParam1=\"value\" newParam2=\"1\"></VirtualAgent>",
+                "<VirtualAgent newParam1=\"value\" newParam2=\"1\" />",
                 elem.ToString()
             );
         }
@@ -69,8 +69,8 @@ namespace Twilio.Tests.TwiML
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
                 "<VirtualAgent>" + Environment.NewLine +
-                "  <Config name=\"name\" value=\"value\"></Config>" + Environment.NewLine +
-                "  <Parameter name=\"name\" value=\"value\"></Parameter>" + Environment.NewLine +
+                "  <Config name=\"name\" value=\"value\" />" + Environment.NewLine +
+                "  <Parameter name=\"name\" value=\"value\" />" + Environment.NewLine +
                 "</VirtualAgent>",
                 elem.ToString()
             );

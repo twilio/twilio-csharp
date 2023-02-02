@@ -21,7 +21,7 @@ namespace Twilio.Tests.TwiML
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Autopilot></Autopilot>",
+                "<Autopilot />",
                 elem.ToString()
             );
         }
@@ -46,7 +46,7 @@ namespace Twilio.Tests.TwiML
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Autopilot newParam1=\"value\" newParam2=\"1\"></Autopilot>",
+                "<Autopilot newParam1=\"value\" newParam2=\"1\" />",
                 elem.ToString()
             );
         }

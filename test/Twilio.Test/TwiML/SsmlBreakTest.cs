@@ -21,7 +21,7 @@ namespace Twilio.Tests.TwiML
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<break></break>",
+                "<break />",
                 elem.ToString()
             );
         }
@@ -32,7 +32,7 @@ namespace Twilio.Tests.TwiML
             var elem = new SsmlBreak(SsmlBreak.StrengthEnum.None, "time");
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<break strength=\"none\" time=\"time\"></break>",
+                "<break strength=\"none\" time=\"time\" />",
                 elem.ToString()
             );
         }
@@ -46,7 +46,7 @@ namespace Twilio.Tests.TwiML
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<break newParam1=\"value\" newParam2=\"1\"></break>",
+                "<break newParam1=\"value\" newParam2=\"1\" />",
                 elem.ToString()
             );
         }

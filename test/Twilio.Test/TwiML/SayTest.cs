@@ -21,7 +21,7 @@ namespace Twilio.Tests.TwiML
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Say></Say>",
+                "<Say />",
                 elem.ToString()
             );
         }
@@ -46,7 +46,7 @@ namespace Twilio.Tests.TwiML
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Say newParam1=\"value\" newParam2=\"1\"></Say>",
+                "<Say newParam1=\"value\" newParam2=\"1\" />",
                 elem.ToString()
             );
         }
@@ -79,7 +79,7 @@ namespace Twilio.Tests.TwiML
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
                 "<Say>" + Environment.NewLine +
-                "  <break strength=\"none\" time=\"time\"></break>" + Environment.NewLine +
+                "  <break strength=\"none\" time=\"time\" />" + Environment.NewLine +
                 "  <emphasis level=\"strong\">words</emphasis>" + Environment.NewLine +
                 "  <lang xml:lang=\"arb\">words</lang>" + Environment.NewLine +
                 "  <p>words</p>" + Environment.NewLine +

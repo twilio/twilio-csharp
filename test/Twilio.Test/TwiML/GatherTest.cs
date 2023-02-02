@@ -21,7 +21,7 @@ namespace Twilio.Tests.TwiML
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Gather></Gather>",
+                "<Gather />",
                 elem.ToString()
             );
         }
@@ -51,7 +51,7 @@ namespace Twilio.Tests.TwiML
             );
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Gather input=\"dtmf\" action=\"https://example.com\" method=\"GET\" timeout=\"1\" speechTimeout=\"speech_timeout\" maxSpeechTime=\"1\" profanityFilter=\"true\" finishOnKey=\"finish_on_key\" numDigits=\"1\" partialResultCallback=\"https://example.com\" partialResultCallbackMethod=\"GET\" language=\"af-ZA\" hints=\"hints\" bargeIn=\"true\" debug=\"true\" actionOnEmptyResult=\"true\" speechModel=\"default\" enhanced=\"true\"></Gather>",
+                "<Gather input=\"dtmf\" action=\"https://example.com\" method=\"GET\" timeout=\"1\" speechTimeout=\"speech_timeout\" maxSpeechTime=\"1\" profanityFilter=\"true\" finishOnKey=\"finish_on_key\" numDigits=\"1\" partialResultCallback=\"https://example.com\" partialResultCallbackMethod=\"GET\" language=\"af-ZA\" hints=\"hints\" bargeIn=\"true\" debug=\"true\" actionOnEmptyResult=\"true\" speechModel=\"default\" enhanced=\"true\" />",
                 elem.ToString()
             );
         }
@@ -65,7 +65,7 @@ namespace Twilio.Tests.TwiML
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Gather newParam1=\"value\" newParam2=\"1\"></Gather>",
+                "<Gather newParam1=\"value\" newParam2=\"1\" />",
                 elem.ToString()
             );
         }
@@ -81,7 +81,7 @@ namespace Twilio.Tests.TwiML
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
                 "<Gather>" + Environment.NewLine +
                 "  <Say>" + Environment.NewLine +
-                "    <break></break>" + Environment.NewLine +
+                "    <break />" + Environment.NewLine +
                 "  </Say>" + Environment.NewLine +
                 "</Gather>",
                 elem.ToString()
@@ -103,7 +103,7 @@ namespace Twilio.Tests.TwiML
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
                 "<Gather>" + Environment.NewLine +
                 "  <Say voice=\"man\" loop=\"1\" language=\"arb\">message</Say>" + Environment.NewLine +
-                "  <Pause length=\"1\"></Pause>" + Environment.NewLine +
+                "  <Pause length=\"1\" />" + Environment.NewLine +
                 "  <Play loop=\"1\" digits=\"digits\">https://example.com</Play>" + Environment.NewLine +
                 "</Gather>",
                 elem.ToString()

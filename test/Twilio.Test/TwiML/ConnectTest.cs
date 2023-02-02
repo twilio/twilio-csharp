@@ -21,7 +21,7 @@ namespace Twilio.Tests.TwiML
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Connect></Connect>",
+                "<Connect />",
                 elem.ToString()
             );
         }
@@ -32,7 +32,7 @@ namespace Twilio.Tests.TwiML
             var elem = new Connect(new Uri("https://example.com"), Twilio.Http.HttpMethod.Get);
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Connect action=\"https://example.com\" method=\"GET\"></Connect>",
+                "<Connect action=\"https://example.com\" method=\"GET\" />",
                 elem.ToString()
             );
         }
@@ -46,7 +46,7 @@ namespace Twilio.Tests.TwiML
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Connect newParam1=\"value\" newParam2=\"1\"></Connect>",
+                "<Connect newParam1=\"value\" newParam2=\"1\" />",
                 elem.ToString()
             );
         }
@@ -99,9 +99,9 @@ namespace Twilio.Tests.TwiML
                 "<Connect>" + Environment.NewLine +
                 "  <Room participantIdentity=\"participant_identity\">name</Room>" + Environment.NewLine +
                 "  <Autopilot>name</Autopilot>" + Environment.NewLine +
-                "  <Stream name=\"name\" connectorName=\"connector_name\" url=\"url\" track=\"inbound_track\" statusCallback=\"status_callback\" statusCallbackMethod=\"GET\"></Stream>" + Environment.NewLine +
-                "  <VirtualAgent connectorName=\"connector_name\" language=\"language\" sentimentAnalysis=\"true\" statusCallback=\"status_callback\" statusCallbackMethod=\"GET\"></VirtualAgent>" + Environment.NewLine +
-                "  <Conversation serviceInstanceSid=\"service_instance_sid\" inboundAutocreation=\"true\" routingAssignmentTimeout=\"1\" inboundTimeout=\"1\" url=\"https://example.com\" method=\"GET\" record=\"do-not-record\" trim=\"trim-silence\" recordingStatusCallback=\"https://example.com\" recordingStatusCallbackMethod=\"GET\" recordingStatusCallbackEvent=\"in-progress\" statusCallback=\"https://example.com\" statusCallbackMethod=\"GET\" statusCallbackEvent=\"call-initiated\"></Conversation>" + Environment.NewLine +
+                "  <Stream name=\"name\" connectorName=\"connector_name\" url=\"url\" track=\"inbound_track\" statusCallback=\"status_callback\" statusCallbackMethod=\"GET\" />" + Environment.NewLine +
+                "  <VirtualAgent connectorName=\"connector_name\" language=\"language\" sentimentAnalysis=\"true\" statusCallback=\"status_callback\" statusCallbackMethod=\"GET\" />" + Environment.NewLine +
+                "  <Conversation serviceInstanceSid=\"service_instance_sid\" inboundAutocreation=\"true\" routingAssignmentTimeout=\"1\" inboundTimeout=\"1\" url=\"https://example.com\" method=\"GET\" record=\"do-not-record\" trim=\"trim-silence\" recordingStatusCallback=\"https://example.com\" recordingStatusCallbackMethod=\"GET\" recordingStatusCallbackEvent=\"in-progress\" statusCallback=\"https://example.com\" statusCallbackMethod=\"GET\" statusCallbackEvent=\"call-initiated\" />" + Environment.NewLine +
                 "</Connect>",
                 elem.ToString()
             );

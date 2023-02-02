@@ -21,7 +21,7 @@ namespace Twilio.Tests.TwiML
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Hangup></Hangup>",
+                "<Hangup />",
                 elem.ToString()
             );
         }
@@ -35,7 +35,7 @@ namespace Twilio.Tests.TwiML
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Hangup newParam1=\"value\" newParam2=\"1\"></Hangup>",
+                "<Hangup newParam1=\"value\" newParam2=\"1\" />",
                 elem.ToString()
             );
         }
@@ -50,7 +50,7 @@ namespace Twilio.Tests.TwiML
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
                 "<Hangup>" + Environment.NewLine +
-                "  <Parameter name=\"name\" value=\"value\"></Parameter>" + Environment.NewLine +
+                "  <Parameter name=\"name\" value=\"value\" />" + Environment.NewLine +
                 "</Hangup>",
                 elem.ToString()
             );

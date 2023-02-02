@@ -21,7 +21,7 @@ namespace Twilio.Tests.TwiML
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Number></Number>",
+                "<Number />",
                 elem.ToString()
             );
         }
@@ -62,7 +62,7 @@ namespace Twilio.Tests.TwiML
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Number newParam1=\"value\" newParam2=\"1\"></Number>",
+                "<Number newParam1=\"value\" newParam2=\"1\" />",
                 elem.ToString()
             );
         }
