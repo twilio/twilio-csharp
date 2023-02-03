@@ -46,9 +46,9 @@ namespace Twilio.Security
         public bool Validate(string url, IDictionary<string, string> parameters, string expected)
         {
             if (string.IsNullOrEmpty(url))
-                throw new ArgumentException("Parameter 'url' cannot be null or empty.");
+                throw new ArgumentException("Parameter 'url' cannot be null or empty.", nameof(url));
             if (string.IsNullOrEmpty(expected))
-                throw new ArgumentException("Parameter 'expected' cannot be null or empty.");
+                throw new ArgumentException("Parameter 'expected' cannot be null or empty.", nameof(url));
 
 #if NET6_0_OR_GREATER
             {
@@ -100,15 +100,16 @@ namespace Twilio.Security
             {
                 b.Append(key).Append(parameters[key] ?? "");
             }
+
             return b;
         }
 
         public bool Validate(string url, string body, string expected)
         {
             if (string.IsNullOrEmpty(url))
-                throw new ArgumentException("Parameter 'url' cannot be null or empty.");
+                throw new ArgumentException("Parameter 'url' cannot be null or empty.", nameof(url));
             if (string.IsNullOrEmpty(expected))
-                throw new ArgumentException("Parameter 'expected' cannot be null or empty.");
+                throw new ArgumentException("Parameter 'expected' cannot be null or empty.", nameof(expected));
 
             var paramString = new Uri(url, UriKind.Absolute).Query.TrimStart('?');
             var bodyHash = "";
@@ -126,11 +127,14 @@ namespace Twilio.Security
 
         public static bool ValidateBody(string rawBody, string expected)
         {
-            // TODO: In future, use net6's one-shot methods.
-            // See: https://github.com/twilio/twilio-csharp/issues/466#issuecomment-1028091370
+#if NET6_0_OR_GREATER
+            {
+                var signature = SHA256.HashData(Encoding.UTF8.GetBytes(rawBody));
+#else
             using (var sha = SHA256.Create())
             {
                 var signature = sha.ComputeHash(Encoding.UTF8.GetBytes(rawBody));
+#endif
                 return SecureCompare(BitConverter.ToString(signature).Replace("-", "").ToLower(), expected);
             }
         }
@@ -148,8 +152,6 @@ namespace Twilio.Security
 
         private string GetValidationSignature(string urlWithParameters, Func<byte[], byte[]> computeHash)
         {
-            // TODO: In future, use net6's one-shot methods.
-            // See: https://github.com/twilio/twilio-csharp/issues/466#issuecomment-1028091370
             var hash = computeHash(Encoding.UTF8.GetBytes(urlWithParameters));
             return Convert.ToBase64String(hash);
         }
