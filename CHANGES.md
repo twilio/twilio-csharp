@@ -1,6 +1,13 @@
 twilio-csharp Changelog
 =======================
 
+[2023-02-08] Version 6.2.3
+--------------------------
+**Lookups**
+- Add `disposable_phone_number_risk` package to the lookup response
+- Add `sms_pumping_risk` package to the lookup response
+
+
 [2023-01-25] Version 6.2.2
 --------------------------
 **Library - Docs**

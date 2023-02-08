@@ -23,15 +23,24 @@ using Twilio.Converters;
 
 namespace Twilio.Rest.FlexApi.V1
 {
-
-    /// <summary> To obtain session details for fetching reports and dashboards </summary>
-    public class CreateInsightsSessionOptions : IOptions<InsightsSessionResource>
+    /// <summary> To get the Segments of an Account </summary>
+    public class FetchInsightsSegmentsOptions : IOptions<InsightsSegmentsResource>
     {
-        
-        ///<summary> The Authorization HTTP request header </summary> 
-        public string Authorization { get; set; }
+    
+        ///<summary> To unique id of the segment </summary> 
+        public string PathSegmentId { get; }
+
+        ///<summary> The Token HTTP request header </summary> 
+        public string Token { get; set; }
 
 
+
+        /// <summary> Construct a new FetchInsightsSegmentsOptions </summary>
+        /// <param name="pathSegmentId"> To unique id of the segment </param>
+        public FetchInsightsSegmentsOptions(string pathSegmentId)
+        {
+            PathSegmentId = pathSegmentId;
+        }
 
         
         /// <summary> Generate the necessary parameters </summary>
@@ -46,13 +55,15 @@ namespace Twilio.Rest.FlexApi.V1
     public List<KeyValuePair<string, string>> GetHeaderParams()
     {
         var p = new List<KeyValuePair<string, string>>();
-        if (Authorization != null)
+        if (Token != null)
         {
-            p.Add(new KeyValuePair<string, string>("Authorization", Authorization));
+            p.Add(new KeyValuePair<string, string>("Token", Token));
         }
         return p;
     }
 
     }
+
+
 }
 

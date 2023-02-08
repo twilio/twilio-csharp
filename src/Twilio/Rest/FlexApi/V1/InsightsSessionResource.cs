@@ -72,27 +72,27 @@ namespace Twilio.Rest.FlexApi.V1
         #endif
 
         /// <summary> To obtain session details for fetching reports and dashboards </summary>
-        /// <param name="token"> The Token HTTP request header </param>
+        /// <param name="authorization"> The Authorization HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of InsightsSession </returns>
         public static InsightsSessionResource Create(
-                                          string token = null,
+                                          string authorization = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new CreateInsightsSessionOptions(){  Token = token };
+            var options = new CreateInsightsSessionOptions(){  Authorization = authorization };
             return Create(options, client);
         }
 
         #if !NET35
         /// <summary> To obtain session details for fetching reports and dashboards </summary>
-        /// <param name="token"> The Token HTTP request header </param>
+        /// <param name="authorization"> The Authorization HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InsightsSession </returns>
         public static async System.Threading.Tasks.Task<InsightsSessionResource> CreateAsync(
-                                                                                  string token = null,
+                                                                                  string authorization = null,
                                                                                   ITwilioRestClient client = null)
         {
-        var options = new CreateInsightsSessionOptions(){  Token = token };
+        var options = new CreateInsightsSessionOptions(){  Authorization = authorization };
             return await CreateAsync(options, client);
         }
         #endif

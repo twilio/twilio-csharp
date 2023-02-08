@@ -113,7 +113,7 @@ namespace Twilio.Rest.Supersim.V1
         ///<summary> The SID or unique name of the Sim resource that SMS Command was sent to or from. </summary> 
         public string Sim { get; set; }
 
-        ///<summary> The status of the SMS Command. Can be: `queued`, `sent`, `delivered`, `received` or `failed`. See the [SMS Command Status Values](https://www.twilio.com/docs/wireless/api/smscommand-resource#status-values) for a description of each. </summary> 
+        ///<summary> The status of the SMS Command. Can be: `queued`, `sent`, `delivered`, `received` or `failed`. See the [SMS Command Status Values](https://www.twilio.com/docs/iot/supersim/api/smscommand-resource#status-values) for a description of each. </summary> 
         public SmsCommandResource.StatusEnum Status { get; set; }
 
         ///<summary> The direction of the SMS Command. Can be `to_sim` or `from_sim`. The value of `to_sim` is synonymous with the term `mobile terminated`, and `from_sim` is synonymous with the term `mobile originated`. </summary> 

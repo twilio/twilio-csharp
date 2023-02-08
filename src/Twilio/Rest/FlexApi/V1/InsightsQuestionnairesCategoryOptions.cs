@@ -109,6 +109,42 @@ namespace Twilio.Rest.FlexApi.V1
     }
 
 
+    /// <summary> To get all the categories </summary>
+    public class ReadInsightsQuestionnairesCategoryOptions : ReadOptions<InsightsQuestionnairesCategoryResource>
+    {
+    
+        ///<summary> The Token HTTP request header </summary> 
+        public string Token { get; set; }
+
+
+
+
+        
+        /// <summary> Generate the necessary parameters </summary>
+        public  override List<KeyValuePair<string, string>> GetParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+
+            if (PageSize != null)
+            {
+                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+            }
+            return p;
+        }
+        
+    /// <summary> Generate the necessary header parameters </summary>
+    public List<KeyValuePair<string, string>> GetHeaderParams()
+    {
+        var p = new List<KeyValuePair<string, string>>();
+        if (Token != null)
+        {
+            p.Add(new KeyValuePair<string, string>("Token", Token));
+        }
+        return p;
+    }
+
+    }
+
     /// <summary> To update the category for Questions </summary>
     public class UpdateInsightsQuestionnairesCategoryOptions : IOptions<InsightsQuestionnairesCategoryResource>
     {
