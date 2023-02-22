@@ -353,6 +353,78 @@ namespace Twilio.Rest.Microvisor.V1
             return Page<AccountSecretResource>.FromJson("secrets", response.Content);
         }
 
+        
+        private static Request BuildUpdateRequest(UpdateAccountSecretOptions options, ITwilioRestClient client)
+        {
+            
+            string path = "/v1/Secrets/{Key}";
+
+            string PathKey = options.PathKey;
+            path = path.Replace("{"+"Key"+"}", PathKey);
+
+            return new Request(
+                HttpMethod.Post,
+                Rest.Domain.Microvisor,
+                path,
+                postParams: options.GetParams(),
+                headerParams: null
+            );
+        }
+
+        /// <summary> Update a secret for an Account. </summary>
+        /// <param name="options"> Update AccountSecret parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of AccountSecret </returns>
+        public static AccountSecretResource Update(UpdateAccountSecretOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
+        }
+
+        /// <summary> Update a secret for an Account. </summary>
+        /// <param name="options"> Update AccountSecret parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of AccountSecret </returns>
+        #if !NET35
+        public static async System.Threading.Tasks.Task<AccountSecretResource> UpdateAsync(UpdateAccountSecretOptions options,
+                                                                                                          ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
+        }
+        #endif
+
+        /// <summary> Update a secret for an Account. </summary>
+        /// <param name="pathKey"> The secret key; up to 100 characters. </param>
+        /// <param name="value"> The secret value; up to 4096 characters. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of AccountSecret </returns>
+        public static AccountSecretResource Update(
+                                          string pathKey,
+                                          string value,
+                                          ITwilioRestClient client = null)
+        {
+            var options = new UpdateAccountSecretOptions(pathKey, value){  };
+            return Update(options, client);
+        }
+
+        #if !NET35
+        /// <summary> Update a secret for an Account. </summary>
+        /// <param name="pathKey"> The secret key; up to 100 characters. </param>
+        /// <param name="value"> The secret value; up to 4096 characters. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of AccountSecret </returns>
+        public static async System.Threading.Tasks.Task<AccountSecretResource> UpdateAsync(
+                                                                              string pathKey,
+                                                                              string value,
+                                                                              ITwilioRestClient client = null)
+        {
+            var options = new UpdateAccountSecretOptions(pathKey, value){  };
+            return await UpdateAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a AccountSecretResource object

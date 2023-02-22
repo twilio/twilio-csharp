@@ -17,7 +17,7 @@ using System;
 using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
-
+using System.Linq;
 
 
 
@@ -64,6 +64,49 @@ namespace Twilio.Rest.FlexApi.V1
 
     }
 
+
+    /// <summary> To get segments for given reservation Ids </summary>
+    public class ReadInsightsSegmentsOptions : ReadOptions<InsightsSegmentsResource>
+    {
+    
+        ///<summary> The Token HTTP request header </summary> 
+        public string Token { get; set; }
+
+        ///<summary> The list of reservation Ids </summary> 
+        public List<string> ReservationId { get; set; }
+
+
+
+
+        
+        /// <summary> Generate the necessary parameters </summary>
+        public  override List<KeyValuePair<string, string>> GetParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+
+            if (ReservationId != null)
+            {
+                p.AddRange(ReservationId.Select(ReservationId => new KeyValuePair<string, string>("ReservationId", ReservationId)));
+            }
+            if (PageSize != null)
+            {
+                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+            }
+            return p;
+        }
+        
+    /// <summary> Generate the necessary header parameters </summary>
+    public List<KeyValuePair<string, string>> GetHeaderParams()
+    {
+        var p = new List<KeyValuePair<string, string>>();
+        if (Token != null)
+        {
+            p.Add(new KeyValuePair<string, string>("Token", Token));
+        }
+        return p;
+    }
+
+    }
 
 }
 

@@ -457,6 +457,10 @@ namespace Twilio.Rest.FlexApi.V1
         [JsonProperty("usage")]
         public int? Usage { get; private set; }
 
+        ///<summary> Set of answers for the question </summary> 
+        [JsonProperty("answer_set")]
+        public object AnswerSet { get; private set; }
+
         ///<summary> The url </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }

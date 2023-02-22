@@ -98,6 +98,134 @@ namespace Twilio.Rest.FlexApi.V1
             return await FetchAsync(options, client);
         }
         #endif
+        
+        private static Request BuildReadRequest(ReadInsightsSegmentsOptions options, ITwilioRestClient client)
+        {
+            
+            string path = "/v1/Insights/Segments";
+
+
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.FlexApi,
+                path,
+                queryParams: options.GetParams(),
+                headerParams: options.GetHeaderParams()
+            );
+        }
+        /// <summary> To get segments for given reservation Ids </summary>
+        /// <param name="options"> Read InsightsSegments parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of InsightsSegments </returns>
+        public static ResourceSet<InsightsSegmentsResource> Read(ReadInsightsSegmentsOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<InsightsSegmentsResource>.FromJson("segments", response.Content);
+            return new ResourceSet<InsightsSegmentsResource>(page, options, client);
+        }
+
+        #if !NET35
+        /// <summary> To get segments for given reservation Ids </summary>
+        /// <param name="options"> Read InsightsSegments parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of InsightsSegments </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<InsightsSegmentsResource>> ReadAsync(ReadInsightsSegmentsOptions options,
+                                                                                             ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<InsightsSegmentsResource>.FromJson("segments", response.Content);
+            return new ResourceSet<InsightsSegmentsResource>(page, options, client);
+        }
+        #endif
+        /// <summary> To get segments for given reservation Ids </summary>
+        /// <param name="token"> The Token HTTP request header </param>
+        /// <param name="reservationId"> The list of reservation Ids </param>
+        /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
+        /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of InsightsSegments </returns>
+        public static ResourceSet<InsightsSegmentsResource> Read(
+                                                     string token = null,
+                                                     List<string> reservationId = null,
+                                                     int? pageSize = null,
+                                                     long? limit = null,
+                                                     ITwilioRestClient client = null)
+        {
+            var options = new ReadInsightsSegmentsOptions(){ Token = token, ReservationId = reservationId, PageSize = pageSize, Limit = limit};
+            return Read(options, client);
+        }
+
+        #if !NET35
+        /// <summary> To get segments for given reservation Ids </summary>
+        /// <param name="token"> The Token HTTP request header </param>
+        /// <param name="reservationId"> The list of reservation Ids </param>
+        /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
+        /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of InsightsSegments </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<InsightsSegmentsResource>> ReadAsync(
+                                                                                             string token = null,
+                                                                                             List<string> reservationId = null,
+                                                                                             int? pageSize = null,
+                                                                                             long? limit = null,
+                                                                                             ITwilioRestClient client = null)
+        {
+            var options = new ReadInsightsSegmentsOptions(){ Token = token, ReservationId = reservationId, PageSize = pageSize, Limit = limit};
+            return await ReadAsync(options, client);
+        }
+        #endif
+
+        
+        /// <summary> Fetch the target page of records </summary>
+        /// <param name="targetUrl"> API-generated URL for the requested results page </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> The target page of records </returns>
+        public static Page<InsightsSegmentsResource> GetPage(string targetUrl, ITwilioRestClient client)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+
+            var request = new Request(
+                HttpMethod.Get,
+                targetUrl
+            );
+
+            var response = client.Request(request);
+            return Page<InsightsSegmentsResource>.FromJson("segments", response.Content);
+        }
+
+        /// <summary> Fetch the next page of records </summary>
+        /// <param name="page"> current page of records </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> The next page of records </returns>
+        public static Page<InsightsSegmentsResource> NextPage(Page<InsightsSegmentsResource> page, ITwilioRestClient client)
+        {
+            var request = new Request(
+                HttpMethod.Get,
+                page.GetNextPageUrl(Rest.Domain.Api)
+            );
+
+            var response = client.Request(request);
+            return Page<InsightsSegmentsResource>.FromJson("segments", response.Content);
+        }
+
+        /// <summary> Fetch the previous page of records </summary>
+        /// <param name="page"> current page of records </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> The previous page of records </returns>
+        public static Page<InsightsSegmentsResource> PreviousPage(Page<InsightsSegmentsResource> page, ITwilioRestClient client)
+        {
+            var request = new Request(
+                HttpMethod.Get,
+                page.GetPreviousPageUrl(Rest.Domain.Api)
+            );
+
+            var response = client.Request(request);
+            return Page<InsightsSegmentsResource>.FromJson("segments", response.Content);
+        }
+
     
         /// <summary>
         /// Converts a JSON string into a InsightsSegmentsResource object
@@ -189,9 +317,9 @@ namespace Twilio.Rest.FlexApi.V1
         [JsonProperty("segment_recording_offset")]
         public string SegmentRecordingOffset { get; private set; }
 
-        ///<summary> The link for the conversation. </summary> 
+        ///<summary> The media identifiers of the conversation. </summary> 
         [JsonProperty("media")]
-        public string Media { get; private set; }
+        public object Media { get; private set; }
 
         ///<summary> The type of the assessment. </summary> 
         [JsonProperty("assessment_type")]

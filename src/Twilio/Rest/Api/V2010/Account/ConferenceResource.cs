@@ -420,7 +420,7 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonProperty("api_version")]
         public string ApiVersion { get; private set; }
 
-        ///<summary> A string that you assigned to describe this conference room. </summary> 
+        ///<summary> A string that you assigned to describe this conference room. Maxiumum length is 128 characters. </summary> 
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
 

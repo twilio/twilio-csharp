@@ -31,13 +31,13 @@ namespace Twilio.Rest.Microvisor.V1
         ///<summary> The config key; up to 100 characters. </summary> 
         public string Key { get; }
 
-        ///<summary> The config value;  up to 4096 characters. </summary> 
+        ///<summary> The config value; up to 4096 characters. </summary> 
         public string Value { get; }
 
 
         /// <summary> Construct a new CreateAccountConfigOptions </summary>
         /// <param name="key"> The config key; up to 100 characters. </param>
-        /// <param name="value"> The config value;  up to 4096 characters. </param>
+        /// <param name="value"> The config value; up to 4096 characters. </param>
         public CreateAccountConfigOptions(string key, string value)
         {
             Key = key;
@@ -143,6 +143,44 @@ namespace Twilio.Rest.Microvisor.V1
         
 
     }
+
+    /// <summary> Update a config for an Account. </summary>
+    public class UpdateAccountConfigOptions : IOptions<AccountConfigResource>
+    {
+    
+        ///<summary> The config key; up to 100 characters. </summary> 
+        public string PathKey { get; }
+
+        ///<summary> The config value; up to 4096 characters. </summary> 
+        public string Value { get; }
+
+
+
+        /// <summary> Construct a new UpdateAccountConfigOptions </summary>
+        /// <param name="pathKey"> The config key; up to 100 characters. </param>
+        /// <param name="value"> The config value; up to 4096 characters. </param>
+        public UpdateAccountConfigOptions(string pathKey, string value)
+        {
+            PathKey = pathKey;
+            Value = value;
+        }
+
+        
+        /// <summary> Generate the necessary parameters </summary>
+        public  List<KeyValuePair<string, string>> GetParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+
+            if (Value != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Value", Value));
+            }
+            return p;
+        }
+        
+
+    }
+
 
 }
 

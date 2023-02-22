@@ -168,5 +168,48 @@ namespace Twilio.Rest.Microvisor.V1.Device
 
     }
 
+    /// <summary> Update a secret for a Microvisor Device. </summary>
+    public class UpdateDeviceSecretOptions : IOptions<DeviceSecretResource>
+    {
+    
+        ///<summary> A 34-character string that uniquely identifies the Device. </summary> 
+        public string PathDeviceSid { get; }
+
+        ///<summary> The secret key; up to 100 characters. </summary> 
+        public string PathKey { get; }
+
+        ///<summary> The secret value; up to 4096 characters. </summary> 
+        public string Value { get; }
+
+
+
+        /// <summary> Construct a new UpdateDeviceSecretOptions </summary>
+        /// <param name="pathDeviceSid"> A 34-character string that uniquely identifies the Device. </param>
+        /// <param name="pathKey"> The secret key; up to 100 characters. </param>
+        /// <param name="value"> The secret value; up to 4096 characters. </param>
+        public UpdateDeviceSecretOptions(string pathDeviceSid, string pathKey, string value)
+        {
+            PathDeviceSid = pathDeviceSid;
+            PathKey = pathKey;
+            Value = value;
+        }
+
+        
+        /// <summary> Generate the necessary parameters </summary>
+        public  List<KeyValuePair<string, string>> GetParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+
+            if (Value != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Value", Value));
+            }
+            return p;
+        }
+        
+
+    }
+
+
 }
 

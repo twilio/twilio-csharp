@@ -374,6 +374,84 @@ namespace Twilio.Rest.Microvisor.V1.Device
             return Page<DeviceConfigResource>.FromJson("configs", response.Content);
         }
 
+        
+        private static Request BuildUpdateRequest(UpdateDeviceConfigOptions options, ITwilioRestClient client)
+        {
+            
+            string path = "/v1/Devices/{DeviceSid}/Configs/{Key}";
+
+            string PathDeviceSid = options.PathDeviceSid;
+            path = path.Replace("{"+"DeviceSid"+"}", PathDeviceSid);
+            string PathKey = options.PathKey;
+            path = path.Replace("{"+"Key"+"}", PathKey);
+
+            return new Request(
+                HttpMethod.Post,
+                Rest.Domain.Microvisor,
+                path,
+                postParams: options.GetParams(),
+                headerParams: null
+            );
+        }
+
+        /// <summary> Update a config for a Microvisor Device. </summary>
+        /// <param name="options"> Update DeviceConfig parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of DeviceConfig </returns>
+        public static DeviceConfigResource Update(UpdateDeviceConfigOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
+        }
+
+        /// <summary> Update a config for a Microvisor Device. </summary>
+        /// <param name="options"> Update DeviceConfig parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of DeviceConfig </returns>
+        #if !NET35
+        public static async System.Threading.Tasks.Task<DeviceConfigResource> UpdateAsync(UpdateDeviceConfigOptions options,
+                                                                                                          ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
+        }
+        #endif
+
+        /// <summary> Update a config for a Microvisor Device. </summary>
+        /// <param name="pathDeviceSid"> A 34-character string that uniquely identifies the Device. </param>
+        /// <param name="pathKey"> The config key; up to 100 characters. </param>
+        /// <param name="value"> The config value; up to 4096 characters. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of DeviceConfig </returns>
+        public static DeviceConfigResource Update(
+                                          string pathDeviceSid,
+                                          string pathKey,
+                                          string value,
+                                          ITwilioRestClient client = null)
+        {
+            var options = new UpdateDeviceConfigOptions(pathDeviceSid, pathKey, value){  };
+            return Update(options, client);
+        }
+
+        #if !NET35
+        /// <summary> Update a config for a Microvisor Device. </summary>
+        /// <param name="pathDeviceSid"> A 34-character string that uniquely identifies the Device. </param>
+        /// <param name="pathKey"> The config key; up to 100 characters. </param>
+        /// <param name="value"> The config value; up to 4096 characters. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of DeviceConfig </returns>
+        public static async System.Threading.Tasks.Task<DeviceConfigResource> UpdateAsync(
+                                                                              string pathDeviceSid,
+                                                                              string pathKey,
+                                                                              string value,
+                                                                              ITwilioRestClient client = null)
+        {
+            var options = new UpdateDeviceConfigOptions(pathDeviceSid, pathKey, value){  };
+            return await UpdateAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a DeviceConfigResource object

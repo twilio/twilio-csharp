@@ -374,6 +374,84 @@ namespace Twilio.Rest.Microvisor.V1.Device
             return Page<DeviceSecretResource>.FromJson("secrets", response.Content);
         }
 
+        
+        private static Request BuildUpdateRequest(UpdateDeviceSecretOptions options, ITwilioRestClient client)
+        {
+            
+            string path = "/v1/Devices/{DeviceSid}/Secrets/{Key}";
+
+            string PathDeviceSid = options.PathDeviceSid;
+            path = path.Replace("{"+"DeviceSid"+"}", PathDeviceSid);
+            string PathKey = options.PathKey;
+            path = path.Replace("{"+"Key"+"}", PathKey);
+
+            return new Request(
+                HttpMethod.Post,
+                Rest.Domain.Microvisor,
+                path,
+                postParams: options.GetParams(),
+                headerParams: null
+            );
+        }
+
+        /// <summary> Update a secret for a Microvisor Device. </summary>
+        /// <param name="options"> Update DeviceSecret parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of DeviceSecret </returns>
+        public static DeviceSecretResource Update(UpdateDeviceSecretOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
+        }
+
+        /// <summary> Update a secret for a Microvisor Device. </summary>
+        /// <param name="options"> Update DeviceSecret parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of DeviceSecret </returns>
+        #if !NET35
+        public static async System.Threading.Tasks.Task<DeviceSecretResource> UpdateAsync(UpdateDeviceSecretOptions options,
+                                                                                                          ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
+        }
+        #endif
+
+        /// <summary> Update a secret for a Microvisor Device. </summary>
+        /// <param name="pathDeviceSid"> A 34-character string that uniquely identifies the Device. </param>
+        /// <param name="pathKey"> The secret key; up to 100 characters. </param>
+        /// <param name="value"> The secret value; up to 4096 characters. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of DeviceSecret </returns>
+        public static DeviceSecretResource Update(
+                                          string pathDeviceSid,
+                                          string pathKey,
+                                          string value,
+                                          ITwilioRestClient client = null)
+        {
+            var options = new UpdateDeviceSecretOptions(pathDeviceSid, pathKey, value){  };
+            return Update(options, client);
+        }
+
+        #if !NET35
+        /// <summary> Update a secret for a Microvisor Device. </summary>
+        /// <param name="pathDeviceSid"> A 34-character string that uniquely identifies the Device. </param>
+        /// <param name="pathKey"> The secret key; up to 100 characters. </param>
+        /// <param name="value"> The secret value; up to 4096 characters. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of DeviceSecret </returns>
+        public static async System.Threading.Tasks.Task<DeviceSecretResource> UpdateAsync(
+                                                                              string pathDeviceSid,
+                                                                              string pathKey,
+                                                                              string value,
+                                                                              ITwilioRestClient client = null)
+        {
+            var options = new UpdateDeviceSecretOptions(pathDeviceSid, pathKey, value){  };
+            return await UpdateAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a DeviceSecretResource object

@@ -28,7 +28,74 @@ namespace Twilio.Rest.FlexApi.V1
     public class CreateAssessmentsOptions : IOptions<AssessmentsResource>
     {
         
+        ///<summary> The id of the category  </summary> 
+        public string CategoryId { get; }
 
+        ///<summary> The name of the category </summary> 
+        public string CategoryName { get; }
+
+        ///<summary> Segment Id of the conversation </summary> 
+        public string SegmentId { get; }
+
+        ///<summary> Name of the user assessing conversation </summary> 
+        public string UserName { get; }
+
+        ///<summary> Email of the user assessing conversation </summary> 
+        public string UserEmail { get; }
+
+        ///<summary> The id of the Agent </summary> 
+        public string AgentId { get; }
+
+        ///<summary> The offset of the conversation. </summary> 
+        public decimal? Offset { get; }
+
+        ///<summary> The question Id selected for assessment </summary> 
+        public string MetricId { get; }
+
+        ///<summary> The question name of the assessment </summary> 
+        public string MetricName { get; }
+
+        ///<summary> The answer text selected by user </summary> 
+        public string AnswerText { get; }
+
+        ///<summary> The id of the answer selected by user </summary> 
+        public string AnswerId { get; }
+
+        ///<summary> Questionnaire Id of the associated question </summary> 
+        public string QuestionnaireId { get; }
+
+        ///<summary> The Token HTTP request header </summary> 
+        public string Token { get; set; }
+
+
+        /// <summary> Construct a new CreateInsightsAssessmentsOptions </summary>
+        /// <param name="categoryId"> The id of the category  </param>
+        /// <param name="categoryName"> The name of the category </param>
+        /// <param name="segmentId"> Segment Id of the conversation </param>
+        /// <param name="userName"> Name of the user assessing conversation </param>
+        /// <param name="userEmail"> Email of the user assessing conversation </param>
+        /// <param name="agentId"> The id of the Agent </param>
+        /// <param name="offset"> The offset of the conversation. </param>
+        /// <param name="metricId"> The question Id selected for assessment </param>
+        /// <param name="metricName"> The question name of the assessment </param>
+        /// <param name="answerText"> The answer text selected by user </param>
+        /// <param name="answerId"> The id of the answer selected by user </param>
+        /// <param name="questionnaireId"> Questionnaire Id of the associated question </param>
+        public CreateAssessmentsOptions(string categoryId, string categoryName, string segmentId, string userName, string userEmail, string agentId, decimal? offset, string metricId, string metricName, string answerText, string answerId, string questionnaireId)
+        {
+            CategoryId = categoryId;
+            CategoryName = categoryName;
+            SegmentId = segmentId;
+            UserName = userName;
+            UserEmail = userEmail;
+            AgentId = agentId;
+            Offset = offset;
+            MetricId = metricId;
+            MetricName = metricName;
+            AnswerText = answerText;
+            AnswerId = answerId;
+            QuestionnaireId = questionnaireId;
+        }
 
         
         /// <summary> Generate the necessary parameters </summary>
@@ -36,10 +103,137 @@ namespace Twilio.Rest.FlexApi.V1
         {
             var p = new List<KeyValuePair<string, string>>();
 
+            if (CategoryId != null)
+            {
+                p.Add(new KeyValuePair<string, string>("CategoryId", CategoryId));
+            }
+            if (CategoryName != null)
+            {
+                p.Add(new KeyValuePair<string, string>("CategoryName", CategoryName));
+            }
+            if (SegmentId != null)
+            {
+                p.Add(new KeyValuePair<string, string>("SegmentId", SegmentId));
+            }
+            if (UserName != null)
+            {
+                p.Add(new KeyValuePair<string, string>("UserName", UserName));
+            }
+            if (UserEmail != null)
+            {
+                p.Add(new KeyValuePair<string, string>("UserEmail", UserEmail));
+            }
+            if (AgentId != null)
+            {
+                p.Add(new KeyValuePair<string, string>("AgentId", AgentId));
+            }
+            if (Offset != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Offset", Offset.Value.ToString()));
+            }
+            if (MetricId != null)
+            {
+                p.Add(new KeyValuePair<string, string>("MetricId", MetricId));
+            }
+            if (MetricName != null)
+            {
+                p.Add(new KeyValuePair<string, string>("MetricName", MetricName));
+            }
+            if (AnswerText != null)
+            {
+                p.Add(new KeyValuePair<string, string>("AnswerText", AnswerText));
+            }
+            if (AnswerId != null)
+            {
+                p.Add(new KeyValuePair<string, string>("AnswerId", AnswerId));
+            }
+            if (QuestionnaireId != null)
+            {
+                p.Add(new KeyValuePair<string, string>("QuestionnaireId", QuestionnaireId));
+            }
             return p;
         }
         
+    /// <summary> Generate the necessary header parameters </summary>
+    public List<KeyValuePair<string, string>> GetHeaderParams()
+    {
+        var p = new List<KeyValuePair<string, string>>();
+        if (Token != null)
+        {
+            p.Add(new KeyValuePair<string, string>("Token", Token));
+        }
+        return p;
+    }
 
     }
+    /// <summary> Update a specific Assessment assessed earlier </summary>
+    public class UpdateAssessmentsOptions : IOptions<AssessmentsResource>
+    {
+    
+        ///<summary> The id of the assessment to be modified </summary> 
+        public string PathAssessmentId { get; }
+
+        ///<summary> The offset of the conversation </summary> 
+        public decimal? Offset { get; }
+
+        ///<summary> The answer text selected by user </summary> 
+        public string AnswerText { get; }
+
+        ///<summary> The id of the answer selected by user </summary> 
+        public string AnswerId { get; }
+
+        ///<summary> The Token HTTP request header </summary> 
+        public string Token { get; set; }
+
+
+
+        /// <summary> Construct a new UpdateInsightsAssessmentsOptions </summary>
+        /// <param name="pathAssessmentId"> The id of the assessment to be modified </param>
+        /// <param name="offset"> The offset of the conversation </param>
+        /// <param name="answerText"> The answer text selected by user </param>
+        /// <param name="answerId"> The id of the answer selected by user </param>
+        public UpdateAssessmentsOptions(string pathAssessmentId, decimal? offset, string answerText, string answerId)
+        {
+            PathAssessmentId = pathAssessmentId;
+            Offset = offset;
+            AnswerText = answerText;
+            AnswerId = answerId;
+        }
+
+        
+        /// <summary> Generate the necessary parameters </summary>
+        public  List<KeyValuePair<string, string>> GetParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+
+            if (Offset != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Offset", Offset.Value.ToString()));
+            }
+            if (AnswerText != null)
+            {
+                p.Add(new KeyValuePair<string, string>("AnswerText", AnswerText));
+            }
+            if (AnswerId != null)
+            {
+                p.Add(new KeyValuePair<string, string>("AnswerId", AnswerId));
+            }
+            return p;
+        }
+        
+    /// <summary> Generate the necessary header parameters </summary>
+    public List<KeyValuePair<string, string>> GetHeaderParams()
+    {
+        var p = new List<KeyValuePair<string, string>>();
+        if (Token != null)
+        {
+            p.Add(new KeyValuePair<string, string>("Token", Token));
+        }
+        return p;
+    }
+
+    }
+
+
 }
 

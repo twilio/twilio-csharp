@@ -144,5 +144,43 @@ namespace Twilio.Rest.Microvisor.V1
 
     }
 
+    /// <summary> Update a secret for an Account. </summary>
+    public class UpdateAccountSecretOptions : IOptions<AccountSecretResource>
+    {
+    
+        ///<summary> The secret key; up to 100 characters. </summary> 
+        public string PathKey { get; }
+
+        ///<summary> The secret value; up to 4096 characters. </summary> 
+        public string Value { get; }
+
+
+
+        /// <summary> Construct a new UpdateAccountSecretOptions </summary>
+        /// <param name="pathKey"> The secret key; up to 100 characters. </param>
+        /// <param name="value"> The secret value; up to 4096 characters. </param>
+        public UpdateAccountSecretOptions(string pathKey, string value)
+        {
+            PathKey = pathKey;
+            Value = value;
+        }
+
+        
+        /// <summary> Generate the necessary parameters </summary>
+        public  List<KeyValuePair<string, string>> GetParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+
+            if (Value != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Value", Value));
+            }
+            return p;
+        }
+        
+
+    }
+
+
 }
 

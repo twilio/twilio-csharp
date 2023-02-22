@@ -73,7 +73,7 @@ namespace Twilio.Rest.Microvisor.V1
 
         /// <summary> Create a config for an Account. </summary>
         /// <param name="key"> The config key; up to 100 characters. </param>
-        /// <param name="value"> The config value;  up to 4096 characters. </param>
+        /// <param name="value"> The config value; up to 4096 characters. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of AccountConfig </returns>
         public static AccountConfigResource Create(
@@ -88,7 +88,7 @@ namespace Twilio.Rest.Microvisor.V1
         #if !NET35
         /// <summary> Create a config for an Account. </summary>
         /// <param name="key"> The config key; up to 100 characters. </param>
-        /// <param name="value"> The config value;  up to 4096 characters. </param>
+        /// <param name="value"> The config value; up to 4096 characters. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AccountConfig </returns>
         public static async System.Threading.Tasks.Task<AccountConfigResource> CreateAsync(
@@ -353,6 +353,78 @@ namespace Twilio.Rest.Microvisor.V1
             return Page<AccountConfigResource>.FromJson("configs", response.Content);
         }
 
+        
+        private static Request BuildUpdateRequest(UpdateAccountConfigOptions options, ITwilioRestClient client)
+        {
+            
+            string path = "/v1/Configs/{Key}";
+
+            string PathKey = options.PathKey;
+            path = path.Replace("{"+"Key"+"}", PathKey);
+
+            return new Request(
+                HttpMethod.Post,
+                Rest.Domain.Microvisor,
+                path,
+                postParams: options.GetParams(),
+                headerParams: null
+            );
+        }
+
+        /// <summary> Update a config for an Account. </summary>
+        /// <param name="options"> Update AccountConfig parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of AccountConfig </returns>
+        public static AccountConfigResource Update(UpdateAccountConfigOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
+        }
+
+        /// <summary> Update a config for an Account. </summary>
+        /// <param name="options"> Update AccountConfig parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of AccountConfig </returns>
+        #if !NET35
+        public static async System.Threading.Tasks.Task<AccountConfigResource> UpdateAsync(UpdateAccountConfigOptions options,
+                                                                                                          ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
+        }
+        #endif
+
+        /// <summary> Update a config for an Account. </summary>
+        /// <param name="pathKey"> The config key; up to 100 characters. </param>
+        /// <param name="value"> The config value; up to 4096 characters. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of AccountConfig </returns>
+        public static AccountConfigResource Update(
+                                          string pathKey,
+                                          string value,
+                                          ITwilioRestClient client = null)
+        {
+            var options = new UpdateAccountConfigOptions(pathKey, value){  };
+            return Update(options, client);
+        }
+
+        #if !NET35
+        /// <summary> Update a config for an Account. </summary>
+        /// <param name="pathKey"> The config key; up to 100 characters. </param>
+        /// <param name="value"> The config value; up to 4096 characters. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of AccountConfig </returns>
+        public static async System.Threading.Tasks.Task<AccountConfigResource> UpdateAsync(
+                                                                              string pathKey,
+                                                                              string value,
+                                                                              ITwilioRestClient client = null)
+        {
+            var options = new UpdateAccountConfigOptions(pathKey, value){  };
+            return await UpdateAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a AccountConfigResource object
