@@ -74,22 +74,22 @@ namespace Twilio.Rest.FlexApi.V1
         /// <summary> To create a question for a Category </summary>
         /// <param name="categoryId"> The ID of the category </param>
         /// <param name="question"> The question. </param>
-        /// <param name="description"> The description for the question. </param>
         /// <param name="answerSetId"> The answer_set for the question. </param>
         /// <param name="allowNa"> The flag to enable for disable NA for answer. </param>
+        /// <param name="description"> The description for the question. </param>
         /// <param name="token"> The Token HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of InsightsQuestionnairesQuestion </returns>
         public static InsightsQuestionnairesQuestionResource Create(
                                           string categoryId,
                                           string question,
-                                          string description,
                                           string answerSetId,
                                           bool? allowNa,
+                                          string description = null,
                                           string token = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new CreateInsightsQuestionnairesQuestionOptions(categoryId, question, description, answerSetId, allowNa){  Token = token };
+            var options = new CreateInsightsQuestionnairesQuestionOptions(categoryId, question, answerSetId, allowNa){  Description = description, Token = token };
             return Create(options, client);
         }
 
@@ -97,22 +97,22 @@ namespace Twilio.Rest.FlexApi.V1
         /// <summary> To create a question for a Category </summary>
         /// <param name="categoryId"> The ID of the category </param>
         /// <param name="question"> The question. </param>
-        /// <param name="description"> The description for the question. </param>
         /// <param name="answerSetId"> The answer_set for the question. </param>
         /// <param name="allowNa"> The flag to enable for disable NA for answer. </param>
+        /// <param name="description"> The description for the question. </param>
         /// <param name="token"> The Token HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InsightsQuestionnairesQuestion </returns>
         public static async System.Threading.Tasks.Task<InsightsQuestionnairesQuestionResource> CreateAsync(
                                                                                   string categoryId,
                                                                                   string question,
-                                                                                  string description,
                                                                                   string answerSetId,
                                                                                   bool? allowNa,
+                                                                                  string description = null,
                                                                                   string token = null,
                                                                                   ITwilioRestClient client = null)
         {
-        var options = new CreateInsightsQuestionnairesQuestionOptions(categoryId, question, description, answerSetId, allowNa){  Token = token };
+        var options = new CreateInsightsQuestionnairesQuestionOptions(categoryId, question, answerSetId, allowNa){  Description = description, Token = token };
             return await CreateAsync(options, client);
         }
         #endif

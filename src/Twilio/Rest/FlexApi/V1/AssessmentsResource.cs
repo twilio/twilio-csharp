@@ -145,6 +145,134 @@ namespace Twilio.Rest.FlexApi.V1
         }
         #endif
         
+        private static Request BuildReadRequest(ReadAssessmentsOptions options, ITwilioRestClient client)
+        {
+            
+            string path = "/v1/Insights/QM/Assessments";
+
+
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.FlexApi,
+                path,
+                queryParams: options.GetParams(),
+                headerParams: options.GetHeaderParams()
+            );
+        }
+        /// <summary> Get assessments done for a conversation by logged in user </summary>
+        /// <param name="options"> Read Assessments parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Assessments </returns>
+        public static ResourceSet<AssessmentsResource> Read(ReadAssessmentsOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<AssessmentsResource>.FromJson("assessments", response.Content);
+            return new ResourceSet<AssessmentsResource>(page, options, client);
+        }
+
+        #if !NET35
+        /// <summary> Get assessments done for a conversation by logged in user </summary>
+        /// <param name="options"> Read Assessments parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Assessments </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<AssessmentsResource>> ReadAsync(ReadAssessmentsOptions options,
+                                                                                             ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<AssessmentsResource>.FromJson("assessments", response.Content);
+            return new ResourceSet<AssessmentsResource>(page, options, client);
+        }
+        #endif
+        /// <summary> Get assessments done for a conversation by logged in user </summary>
+        /// <param name="token"> The Token HTTP request header </param>
+        /// <param name="segmentId"> The id of the segment. </param>
+        /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
+        /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Assessments </returns>
+        public static ResourceSet<AssessmentsResource> Read(
+                                                     string token = null,
+                                                     string segmentId = null,
+                                                     int? pageSize = null,
+                                                     long? limit = null,
+                                                     ITwilioRestClient client = null)
+        {
+            var options = new ReadAssessmentsOptions(){ Token = token, SegmentId = segmentId, PageSize = pageSize, Limit = limit};
+            return Read(options, client);
+        }
+
+        #if !NET35
+        /// <summary> Get assessments done for a conversation by logged in user </summary>
+        /// <param name="token"> The Token HTTP request header </param>
+        /// <param name="segmentId"> The id of the segment. </param>
+        /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
+        /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Assessments </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<AssessmentsResource>> ReadAsync(
+                                                                                             string token = null,
+                                                                                             string segmentId = null,
+                                                                                             int? pageSize = null,
+                                                                                             long? limit = null,
+                                                                                             ITwilioRestClient client = null)
+        {
+            var options = new ReadAssessmentsOptions(){ Token = token, SegmentId = segmentId, PageSize = pageSize, Limit = limit};
+            return await ReadAsync(options, client);
+        }
+        #endif
+
+        
+        /// <summary> Fetch the target page of records </summary>
+        /// <param name="targetUrl"> API-generated URL for the requested results page </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> The target page of records </returns>
+        public static Page<AssessmentsResource> GetPage(string targetUrl, ITwilioRestClient client)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+
+            var request = new Request(
+                HttpMethod.Get,
+                targetUrl
+            );
+
+            var response = client.Request(request);
+            return Page<AssessmentsResource>.FromJson("assessments", response.Content);
+        }
+
+        /// <summary> Fetch the next page of records </summary>
+        /// <param name="page"> current page of records </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> The next page of records </returns>
+        public static Page<AssessmentsResource> NextPage(Page<AssessmentsResource> page, ITwilioRestClient client)
+        {
+            var request = new Request(
+                HttpMethod.Get,
+                page.GetNextPageUrl(Rest.Domain.Api)
+            );
+
+            var response = client.Request(request);
+            return Page<AssessmentsResource>.FromJson("assessments", response.Content);
+        }
+
+        /// <summary> Fetch the previous page of records </summary>
+        /// <param name="page"> current page of records </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> The previous page of records </returns>
+        public static Page<AssessmentsResource> PreviousPage(Page<AssessmentsResource> page, ITwilioRestClient client)
+        {
+            var request = new Request(
+                HttpMethod.Get,
+                page.GetPreviousPageUrl(Rest.Domain.Api)
+            );
+
+            var response = client.Request(request);
+            return Page<AssessmentsResource>.FromJson("assessments", response.Content);
+        }
+
+        
         private static Request BuildUpdateRequest(UpdateAssessmentsOptions options, ITwilioRestClient client)
         {
             

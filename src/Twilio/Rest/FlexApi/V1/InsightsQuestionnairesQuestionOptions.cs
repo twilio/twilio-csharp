@@ -34,9 +34,6 @@ namespace Twilio.Rest.FlexApi.V1
         ///<summary> The question. </summary> 
         public string Question { get; }
 
-        ///<summary> The description for the question. </summary> 
-        public string Description { get; }
-
         ///<summary> The answer_set for the question. </summary> 
         public string AnswerSetId { get; }
 
@@ -46,18 +43,19 @@ namespace Twilio.Rest.FlexApi.V1
         ///<summary> The Token HTTP request header </summary> 
         public string Token { get; set; }
 
+        ///<summary> The description for the question. </summary> 
+        public string Description { get; set; }
+
 
         /// <summary> Construct a new CreateInsightsQuestionnairesQuestionOptions </summary>
         /// <param name="categoryId"> The ID of the category </param>
         /// <param name="question"> The question. </param>
-        /// <param name="description"> The description for the question. </param>
         /// <param name="answerSetId"> The answer_set for the question. </param>
         /// <param name="allowNa"> The flag to enable for disable NA for answer. </param>
-        public CreateInsightsQuestionnairesQuestionOptions(string categoryId, string question, string description, string answerSetId, bool? allowNa)
+        public CreateInsightsQuestionnairesQuestionOptions(string categoryId, string question, string answerSetId, bool? allowNa)
         {
             CategoryId = categoryId;
             Question = question;
-            Description = description;
             AnswerSetId = answerSetId;
             AllowNa = allowNa;
         }
@@ -76,10 +74,6 @@ namespace Twilio.Rest.FlexApi.V1
             {
                 p.Add(new KeyValuePair<string, string>("Question", Question));
             }
-            if (Description != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Description", Description));
-            }
             if (AnswerSetId != null)
             {
                 p.Add(new KeyValuePair<string, string>("AnswerSetId", AnswerSetId));
@@ -87,6 +81,10 @@ namespace Twilio.Rest.FlexApi.V1
             if (AllowNa != null)
             {
                 p.Add(new KeyValuePair<string, string>("AllowNa", AllowNa.Value.ToString().ToLower()));
+            }
+            if (Description != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Description", Description));
             }
             return p;
         }

@@ -166,6 +166,49 @@ namespace Twilio.Rest.FlexApi.V1
     }
 
     }
+    /// <summary> Get assessments done for a conversation by logged in user </summary>
+    public class ReadAssessmentsOptions : ReadOptions<AssessmentsResource>
+    {
+    
+        ///<summary> The Token HTTP request header </summary> 
+        public string Token { get; set; }
+
+        ///<summary> The id of the segment. </summary> 
+        public string SegmentId { get; set; }
+
+
+
+
+        
+        /// <summary> Generate the necessary parameters </summary>
+        public  override List<KeyValuePair<string, string>> GetParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+
+            if (SegmentId != null)
+            {
+                p.Add(new KeyValuePair<string, string>("SegmentId", SegmentId));
+            }
+            if (PageSize != null)
+            {
+                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+            }
+            return p;
+        }
+        
+    /// <summary> Generate the necessary header parameters </summary>
+    public List<KeyValuePair<string, string>> GetHeaderParams()
+    {
+        var p = new List<KeyValuePair<string, string>>();
+        if (Token != null)
+        {
+            p.Add(new KeyValuePair<string, string>("Token", Token));
+        }
+        return p;
+    }
+
+    }
+
     /// <summary> Update a specific Assessment assessed earlier </summary>
     public class UpdateAssessmentsOptions : IOptions<AssessmentsResource>
     {
