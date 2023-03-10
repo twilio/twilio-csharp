@@ -169,8 +169,16 @@ namespace Twilio.TwiML
         /// <summary>
         /// Generate XML string from TwiML object
         /// </summary>
+        public override string ToString()
+        {
+            return ToString(SaveOptions.None);
+        } 
+
+        /// <summary>
+        /// Generate XML string from TwiML object
+        /// </summary>
         /// <param name="formattingOptions"> Change generated string format. </param>
-        public string ToString(SaveOptions formattingOptions = SaveOptions.None)
+        public string ToString(SaveOptions formattingOptions)
         {
             var document = this.ToXDocument();
             var writer = new Utf8StringWriter();
