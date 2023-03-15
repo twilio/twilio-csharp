@@ -82,6 +82,7 @@ jobs:
       - name: Publish package to NuGet
         run: |
           make release
+          dotnet nuget sign foo.nupkg --certificate-fingerprint 34bb5309a34488f8bac21af3169716293da2299e5ed24a07992fc557867ab809
           dotnet nuget push **/*.nupkg -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json
 
       - name: Submit metric to Datadog
