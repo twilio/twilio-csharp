@@ -1,6 +1,21 @@
 twilio-csharp Changelog
 =======================
 
+[2023-03-22] Version 6.3.0
+--------------------------
+**Library - Chore**
+- [PR #673](https://github.com/twilio/twilio-csharp/pull/673): Add step to sign nuget packages before publishing. Thanks to [@AsabuHere](https://github.com/AsabuHere)!
+
+**Api**
+- Revert Corrected the data type for `friendly_name` in Available Phone Number Local, Mobile and TollFree resources
+- Corrected the data type for `friendly_name` in Available Phone Number Local, Mobile and TollFree resources **(breaking change)**
+
+**Messaging**
+- Add `linkshortening_messaging_service` resource
+- Add new endpoint for GetDomainConfigByMessagingServiceSid
+- Remove `validated` parameter and add `cert_in_validation` parameter to Link Shortening API **(breaking change)**
+
+
 [2023-03-09] Version 6.2.5
 --------------------------
 **Api**

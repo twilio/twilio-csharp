@@ -282,9 +282,9 @@ namespace Twilio.Rest.Messaging.V1
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
-        ///<summary> Boolean value indicating whether certificate has been validated </summary> 
-        [JsonProperty("validated")]
-        public bool? Validated { get; private set; }
+        ///<summary> Optional JSON field describing the status and upload date of a new certificate in the process of validation </summary> 
+        [JsonProperty("cert_in_validation")]
+        public object CertInValidation { get; private set; }
 
 
 
