@@ -78,11 +78,17 @@ jobs:
 
       - name: Build and Push image
         run: make docker-build docker-push
+      
+      - name: import certificate
+        run: |
+         New-Item -ItemType directory -Path certificate
+         Set-Content -Path certificate\certificate.txt -Value '${{ secrets.CODE_SIGNING_CERTIFICATE }}'
+         certutil -decode certificate\certificate.txt certificate\certificate.pfx
 
       - name: Publish package to NuGet
         run: |
           make release
-          dotnet nuget sign **/*.nupkg --certificate-path .github/nuget/TwilioCLISigningCertificate.pfx --certificate-password ${{ secrets.CERTIFICATE_PASSWORD }} --timestamper http://timestamp.digicert.com
+          dotnet nuget sign **/*.nupkg --certificate-path certificate\certificate.pfx --certificate-password ${{ secrets.CERTIFICATE_PASSWORD }} --timestamper http://timestamp.digicert.com
           dotnet nuget push **/*.nupkg -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json
 
       - name: Submit metric to Datadog
