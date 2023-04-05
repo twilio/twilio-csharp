@@ -192,6 +192,15 @@ namespace Twilio.Rest.Conversations.V1
     public class ReadConversationOptions : ReadOptions<ConversationResource>
     {
     
+        ///<summary> Start date in ISO8601 format for sorting and filtering list of Conversations. </summary> 
+        public string StartDate { get; set; }
+
+        ///<summary> End date in ISO8601 format for sorting and filtering list of Conversations. </summary> 
+        public string EndDate { get; set; }
+
+        ///<summary> State for sorting and filtering list of Conversations. Can be `active`, `inactive` or `closed` </summary> 
+        public ConversationResource.StateEnum State { get; set; }
+
 
 
 
@@ -201,6 +210,18 @@ namespace Twilio.Rest.Conversations.V1
         {
             var p = new List<KeyValuePair<string, string>>();
 
+            if (StartDate != null)
+            {
+                p.Add(new KeyValuePair<string, string>("StartDate", StartDate));
+            }
+            if (EndDate != null)
+            {
+                p.Add(new KeyValuePair<string, string>("EndDate", EndDate));
+            }
+            if (State != null)
+            {
+                p.Add(new KeyValuePair<string, string>("State", State.ToString()));
+            }
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));

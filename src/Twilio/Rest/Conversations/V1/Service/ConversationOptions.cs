@@ -214,6 +214,15 @@ namespace Twilio.Rest.Conversations.V1.Service
         ///<summary> The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Conversation resource is associated with. </summary> 
         public string PathChatServiceSid { get; }
 
+        ///<summary> Start date in ISO8601 format for sorting and filtering list of Conversations. </summary> 
+        public string StartDate { get; set; }
+
+        ///<summary> End date in ISO8601 format for sorting and filtering list of Conversations. </summary> 
+        public string EndDate { get; set; }
+
+        ///<summary> State for sorting and filtering list of Conversations. Can be `active`, `inactive` or `closed` </summary> 
+        public ConversationResource.StateEnum State { get; set; }
+
 
 
         /// <summary> Construct a new ListServiceConversationOptions </summary>
@@ -229,6 +238,18 @@ namespace Twilio.Rest.Conversations.V1.Service
         {
             var p = new List<KeyValuePair<string, string>>();
 
+            if (StartDate != null)
+            {
+                p.Add(new KeyValuePair<string, string>("StartDate", StartDate));
+            }
+            if (EndDate != null)
+            {
+                p.Add(new KeyValuePair<string, string>("EndDate", EndDate));
+            }
+            if (State != null)
+            {
+                p.Add(new KeyValuePair<string, string>("State", State.ToString()));
+            }
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));

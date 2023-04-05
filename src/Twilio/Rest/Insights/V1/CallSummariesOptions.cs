@@ -81,6 +81,9 @@ namespace Twilio.Rest.Insights.V1
         
         public bool? AbnormalSession { get; set; }
 
+        
+        public CallSummariesResource.AnsweredByEnum AnsweredBy { get; set; }
+
 
 
 
@@ -161,6 +164,10 @@ namespace Twilio.Rest.Insights.V1
             if (AbnormalSession != null)
             {
                 p.Add(new KeyValuePair<string, string>("AbnormalSession", AbnormalSession.Value.ToString().ToLower()));
+            }
+            if (AnsweredBy != null)
+            {
+                p.Add(new KeyValuePair<string, string>("AnsweredBy", AnsweredBy.ToString()));
             }
             if (PageSize != null)
             {
