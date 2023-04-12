@@ -17,11 +17,12 @@ More documentation for this library can be found [here][libdocs].
 
 ### Migrate from earlier versions
 
-See the migration guide [here][migrating]. Also, if you were using the `Twilio.Mvc` package, that has been replaced by the [Twilio.AspNet.Mvc][aspnet] package which is compatible with this version of the library.
+See the migration guide [here](./UPGRADE.md). Also, if you were using the `Twilio.Mvc` package, that has been replaced by the [Twilio.AspNet.Mvc][aspnet] package which is compatible with this version of the library.
 
 ### TLS 1.2 Requirements
 
 New accounts and subaccounts are now required to use TLS 1.2 when accessing the REST API. ["Upgrade Required" errors](https://www.twilio.com/docs/api/errors/20426) indicate that TLS 1.0/1.1 is being used. With .NET, you can enable TLS 1.2 using this setting:
+
 ```csharp
 System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 ```
@@ -38,17 +39,22 @@ The best and easiest way to add the Twilio libraries to your .NET project is to 
 
 From within Visual Studio, you can use the NuGet GUI to search for and install the Twilio NuGet package. Or, as a shortcut, simply type the following command into the Package Manager Console:
 
-    Install-Package Twilio
+```shell
+Install-Package Twilio
+```
 
 ### With .NET Core Command Line Tools
 
 If you are building with the .NET Core command line tools, then you can run the following command from within your project directory:
 
-    dotnet add package Twilio
+```shell
+dotnet add package Twilio
+```
 
 ## Sample usage
 
 The examples below show how to have your application initiate and outbound phone call and send an SMS message using the Twilio .NET helper library:
+
 ```csharp
 TwilioClient.Init("ACCOUNT_SID", "AUTH_TOKEN");
 
@@ -79,6 +85,7 @@ TwilioClient.SetEdge("sydney");
 This will result in the `hostname` transforming from `api.twilio.com` to `api.sydney.au1.twilio.com`.
 
 ## Enable debug logging
+
 There are two ways to enable debug logging in the default HTTP client. You can create an environment variable called `TWILIO_LOG_LEVEL` and set it to `debug` or you can set the LogLevel variable on the client as debug:
 
 ```csharp
@@ -131,29 +138,31 @@ Console.WriteLine(response);
 
 ## Use a custom HTTP Client
 
-To use a custom HTTP client with this helper library, please see the [Twilio documentation](https://www.twilio.com/docs/libraries/csharp-dotnet/custom-http-clients-dot-net-framework).
+To use a custom HTTP client with this helper library, please see the [advanced example of how to do so](./advanced-examples/custom-http-client.md).
 
 ## Docker Image
 
 The `Dockerfile` present in this repository and its respective `twilio/twilio-csharp` Docker image are used by Twilio for testing purposes.
 
 You could use the docker image for building and running tests:
+
 ```bash
 docker build -t twiliobuild .
 ```
 
 Bash:
+
 ```bash
 docker run -it --rm -v $(pwd):/twilio twiliobuild
 make test
 ```
 
 Powershell:
+
 ```pwsh
 docker run -it --rm -v ${PWD}:/twilio twiliobuild
 make test
 ```
-
 
 ## Get support
 
@@ -165,5 +174,4 @@ If you've instead found a bug in the library or would like new features added, g
 [apidocs]: https://www.twilio.com/docs/api
 [twiml]: https://www.twilio.com/docs/api/twiml
 [libdocs]: https://www.twilio.com/docs/libraries/reference/twilio-csharp/
-[migrating]: https://www.twilio.com/docs/libraries/csharp-dotnet/usage-guide
 [aspnet]: https://github.com/twilio/twilio-aspnet
