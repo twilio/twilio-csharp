@@ -192,10 +192,10 @@ namespace Twilio.Rest.Conversations.V1
     public class ReadConversationOptions : ReadOptions<ConversationResource>
     {
     
-        ///<summary> Start date in ISO8601 format for sorting and filtering list of Conversations. </summary> 
+        ///<summary> Start date or time in ISO8601 format for filtering list of Conversations. If a date is provided, the start time of the date is used (YYYY-MM-DDT00:00:00Z). Can be combined with other filters. </summary> 
         public string StartDate { get; set; }
 
-        ///<summary> End date in ISO8601 format for sorting and filtering list of Conversations. </summary> 
+        ///<summary> End date or time in ISO8601 format for filtering list of Conversations. If a date is provided, the end time of the date is used (YYYY-MM-DDT23:59:59Z). Can be combined with other filters. </summary> 
         public string EndDate { get; set; }
 
         ///<summary> State for sorting and filtering list of Conversations. Can be `active`, `inactive` or `closed` </summary> 

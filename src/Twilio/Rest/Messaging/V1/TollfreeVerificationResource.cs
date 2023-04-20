@@ -696,6 +696,14 @@ namespace Twilio.Rest.Messaging.V1
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
+        ///<summary> The rejection reason given when a Tollfree Verification has been rejected. </summary> 
+        [JsonProperty("rejection_reason")]
+        public string RejectionReason { get; private set; }
+
+        ///<summary> The error code given when a Tollfree Verification has been rejected. </summary> 
+        [JsonProperty("error_code")]
+        public int? ErrorCode { get; private set; }
+
         ///<summary> The URLs of the documents associated with the Tollfree Verification resource. </summary> 
         [JsonProperty("resource_links")]
         public object ResourceLinks { get; private set; }

@@ -17,7 +17,7 @@ using System;
 using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
-using System.Linq;
+
 
 
 
@@ -59,27 +59,19 @@ namespace Twilio.Rest.Messaging.V1
         ///<summary> Unique string used to identify the domain that this config should be associated with. </summary> 
         public string PathDomainSid { get; }
 
-        ///<summary> A list of messagingServiceSids (with prefix MG) </summary> 
-        public List<string> MessagingServiceSids { get; }
-
         ///<summary> Any requests we receive to this domain that do not match an existing shortened message will be redirected to the fallback url. These will likely be either expired messages, random misdirected traffic, or intentional scraping. </summary> 
         public Uri FallbackUrl { get; set; }
 
         ///<summary> URL to receive click events to your webhook whenever the recipients click on the shortened links </summary> 
         public Uri CallbackUrl { get; set; }
 
-        ///<summary> An action type for messaging_service_sids operation (ADD, DELETE, REPLACE) </summary> 
-        public string MessagingServiceSidsAction { get; set; }
-
 
 
         /// <summary> Construct a new UpdateDomainConfigOptions </summary>
         /// <param name="pathDomainSid"> Unique string used to identify the domain that this config should be associated with. </param>
-        /// <param name="messagingServiceSids"> A list of messagingServiceSids (with prefix MG) </param>
-        public UpdateDomainConfigOptions(string pathDomainSid, List<string> messagingServiceSids)
+        public UpdateDomainConfigOptions(string pathDomainSid)
         {
             PathDomainSid = pathDomainSid;
-            MessagingServiceSids = messagingServiceSids;
         }
 
         
@@ -88,10 +80,6 @@ namespace Twilio.Rest.Messaging.V1
         {
             var p = new List<KeyValuePair<string, string>>();
 
-            if (MessagingServiceSids != null)
-            {
-                p.AddRange(MessagingServiceSids.Select(MessagingServiceSids => new KeyValuePair<string, string>("MessagingServiceSids", MessagingServiceSids)));
-            }
             if (FallbackUrl != null)
             {
                 p.Add(new KeyValuePair<string, string>("FallbackUrl", Serializers.Url(FallbackUrl)));
@@ -99,10 +87,6 @@ namespace Twilio.Rest.Messaging.V1
             if (CallbackUrl != null)
             {
                 p.Add(new KeyValuePair<string, string>("CallbackUrl", Serializers.Url(CallbackUrl)));
-            }
-            if (MessagingServiceSidsAction != null)
-            {
-                p.Add(new KeyValuePair<string, string>("MessagingServiceSidsAction", MessagingServiceSidsAction));
             }
             return p;
         }

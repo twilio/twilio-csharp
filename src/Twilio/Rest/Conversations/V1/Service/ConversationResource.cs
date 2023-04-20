@@ -354,8 +354,8 @@ namespace Twilio.Rest.Conversations.V1.Service
         #endif
         /// <summary> Retrieve a list of conversations in your service </summary>
         /// <param name="pathChatServiceSid"> The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Conversation resource is associated with. </param>
-        /// <param name="startDate"> Start date in ISO8601 format for sorting and filtering list of Conversations. </param>
-        /// <param name="endDate"> End date in ISO8601 format for sorting and filtering list of Conversations. </param>
+        /// <param name="startDate"> Start date or time in ISO8601 format for filtering list of Conversations. If a date is provided, the start time of the date is used (YYYY-MM-DDT00:00:00Z). Can be combined with other filters. </param>
+        /// <param name="endDate"> End date or time in ISO8601 format for filtering list of Conversations. If a date is provided, the end time of the date is used (YYYY-MM-DDT23:59:59Z). Can be combined with other filters. </param>
         /// <param name="state"> State for sorting and filtering list of Conversations. Can be `active`, `inactive` or `closed` </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="limit"> Record limit </param>
@@ -377,8 +377,8 @@ namespace Twilio.Rest.Conversations.V1.Service
         #if !NET35
         /// <summary> Retrieve a list of conversations in your service </summary>
         /// <param name="pathChatServiceSid"> The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Conversation resource is associated with. </param>
-        /// <param name="startDate"> Start date in ISO8601 format for sorting and filtering list of Conversations. </param>
-        /// <param name="endDate"> End date in ISO8601 format for sorting and filtering list of Conversations. </param>
+        /// <param name="startDate"> Start date or time in ISO8601 format for filtering list of Conversations. If a date is provided, the start time of the date is used (YYYY-MM-DDT00:00:00Z). Can be combined with other filters. </param>
+        /// <param name="endDate"> End date or time in ISO8601 format for filtering list of Conversations. If a date is provided, the end time of the date is used (YYYY-MM-DDT23:59:59Z). Can be combined with other filters. </param>
         /// <param name="state"> State for sorting and filtering list of Conversations. Can be `active`, `inactive` or `closed` </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="limit"> Record limit </param>
