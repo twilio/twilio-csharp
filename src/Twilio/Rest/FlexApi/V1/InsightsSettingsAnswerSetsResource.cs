@@ -34,7 +34,7 @@ namespace Twilio.Rest.FlexApi.V1
         private static Request BuildFetchRequest(FetchInsightsSettingsAnswerSetsOptions options, ITwilioRestClient client)
         {
             
-            string path = "/v1/Insights/QM/Settings/AnswerSets";
+            string path = "/v1/Insights/QualityManagement/Settings/AnswerSets";
 
 
             return new Request(

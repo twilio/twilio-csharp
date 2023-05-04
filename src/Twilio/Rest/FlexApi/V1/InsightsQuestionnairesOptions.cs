@@ -40,8 +40,8 @@ namespace Twilio.Rest.FlexApi.V1
         ///<summary> The flag to enable or disable questionnaire </summary> 
         public bool? Active { get; set; }
 
-        ///<summary> The list of questions ids under a questionnaire </summary> 
-        public List<string> QuestionIds { get; set; }
+        ///<summary> The list of questions sids under a questionnaire </summary> 
+        public List<string> QuestionSids { get; set; }
 
 
         /// <summary> Construct a new CreateInsightsQuestionnairesOptions </summary>
@@ -49,7 +49,7 @@ namespace Twilio.Rest.FlexApi.V1
         public CreateInsightsQuestionnairesOptions(string name)
         {
             Name = name;
-            QuestionIds = new List<string>();
+            QuestionSids = new List<string>();
         }
 
         
@@ -70,9 +70,9 @@ namespace Twilio.Rest.FlexApi.V1
             {
                 p.Add(new KeyValuePair<string, string>("Active", Active.Value.ToString().ToLower()));
             }
-            if (QuestionIds != null)
+            if (QuestionSids != null)
             {
-                p.AddRange(QuestionIds.Select(QuestionIds => new KeyValuePair<string, string>("QuestionIds", QuestionIds)));
+                p.AddRange(QuestionSids.Select(QuestionSids => new KeyValuePair<string, string>("QuestionSids", QuestionSids)));
             }
             return p;
         }
@@ -93,8 +93,8 @@ namespace Twilio.Rest.FlexApi.V1
     public class DeleteInsightsQuestionnairesOptions : IOptions<InsightsQuestionnairesResource>
     {
         
-        ///<summary> The unique ID of the questionnaire </summary> 
-        public string PathId { get; }
+        ///<summary> The SID of the questionnaire </summary> 
+        public string PathQuestionnaireSid { get; }
 
         ///<summary> The Token HTTP request header </summary> 
         public string Token { get; set; }
@@ -102,10 +102,10 @@ namespace Twilio.Rest.FlexApi.V1
 
 
         /// <summary> Construct a new DeleteInsightsQuestionnairesOptions </summary>
-        /// <param name="pathId"> The unique ID of the questionnaire </param>
-        public DeleteInsightsQuestionnairesOptions(string pathId)
+        /// <param name="pathQuestionnaireSid"> The SID of the questionnaire </param>
+        public DeleteInsightsQuestionnairesOptions(string pathQuestionnaireSid)
         {
-            PathId = pathId;
+            PathQuestionnaireSid = pathQuestionnaireSid;
         }
 
         
@@ -135,8 +135,8 @@ namespace Twilio.Rest.FlexApi.V1
     public class FetchInsightsQuestionnairesOptions : IOptions<InsightsQuestionnairesResource>
     {
     
-        ///<summary> The unique ID of the questionnaire </summary> 
-        public string PathId { get; }
+        ///<summary> The SID of the questionnaire </summary> 
+        public string PathQuestionnaireSid { get; }
 
         ///<summary> The Token HTTP request header </summary> 
         public string Token { get; set; }
@@ -144,10 +144,10 @@ namespace Twilio.Rest.FlexApi.V1
 
 
         /// <summary> Construct a new FetchInsightsQuestionnairesOptions </summary>
-        /// <param name="pathId"> The unique ID of the questionnaire </param>
-        public FetchInsightsQuestionnairesOptions(string pathId)
+        /// <param name="pathQuestionnaireSid"> The SID of the questionnaire </param>
+        public FetchInsightsQuestionnairesOptions(string pathQuestionnaireSid)
         {
-            PathId = pathId;
+            PathQuestionnaireSid = pathQuestionnaireSid;
         }
 
         
@@ -220,8 +220,8 @@ namespace Twilio.Rest.FlexApi.V1
     public class UpdateInsightsQuestionnairesOptions : IOptions<InsightsQuestionnairesResource>
     {
     
-        ///<summary> The unique ID of the questionnaire </summary> 
-        public string PathId { get; }
+        ///<summary> The SID of the questionnaire </summary> 
+        public string PathQuestionnaireSid { get; }
 
         ///<summary> The flag to enable or disable questionnaire </summary> 
         public bool? Active { get; }
@@ -235,19 +235,19 @@ namespace Twilio.Rest.FlexApi.V1
         ///<summary> The description of this questionnaire </summary> 
         public string Description { get; set; }
 
-        ///<summary> The list of questions ids under a questionnaire </summary> 
-        public List<string> QuestionIds { get; set; }
+        ///<summary> The list of questions sids under a questionnaire </summary> 
+        public List<string> QuestionSids { get; set; }
 
 
 
         /// <summary> Construct a new UpdateInsightsQuestionnairesOptions </summary>
-        /// <param name="pathId"> The unique ID of the questionnaire </param>
+        /// <param name="pathQuestionnaireSid"> The SID of the questionnaire </param>
         /// <param name="active"> The flag to enable or disable questionnaire </param>
-        public UpdateInsightsQuestionnairesOptions(string pathId, bool? active)
+        public UpdateInsightsQuestionnairesOptions(string pathQuestionnaireSid, bool? active)
         {
-            PathId = pathId;
+            PathQuestionnaireSid = pathQuestionnaireSid;
             Active = active;
-            QuestionIds = new List<string>();
+            QuestionSids = new List<string>();
         }
 
         
@@ -268,9 +268,9 @@ namespace Twilio.Rest.FlexApi.V1
             {
                 p.Add(new KeyValuePair<string, string>("Description", Description));
             }
-            if (QuestionIds != null)
+            if (QuestionSids != null)
             {
-                p.AddRange(QuestionIds.Select(QuestionIds => new KeyValuePair<string, string>("QuestionIds", QuestionIds)));
+                p.AddRange(QuestionSids.Select(QuestionSids => new KeyValuePair<string, string>("QuestionSids", QuestionSids)));
             }
             return p;
         }

@@ -34,7 +34,7 @@ namespace Twilio.Rest.FlexApi.V1
         private static Request BuildCreateRequest(CreateInsightsAssessmentsCommentOptions options, ITwilioRestClient client)
         {
             
-            string path = "/v1/Insights/QM/Assessments/Comments";
+            string path = "/v1/Insights/QualityManagement/Assessments/Comments";
 
 
             return new Request(
@@ -132,7 +132,7 @@ namespace Twilio.Rest.FlexApi.V1
         private static Request BuildReadRequest(ReadInsightsAssessmentsCommentOptions options, ITwilioRestClient client)
         {
             
-            string path = "/v1/Insights/QM/Assessments/Comments";
+            string path = "/v1/Insights/QualityManagement/Assessments/Comments";
 
 
             return new Request(
@@ -283,9 +283,9 @@ namespace Twilio.Rest.FlexApi.V1
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The unique ID of the assessment. </summary> 
-        [JsonProperty("assessment_id")]
-        public string AssessmentId { get; private set; }
+        ///<summary> The SID of the assessment. </summary> 
+        [JsonProperty("assessment_sid")]
+        public string AssessmentSid { get; private set; }
 
         ///<summary> The comment added for assessment. </summary> 
         [JsonProperty("comment")]

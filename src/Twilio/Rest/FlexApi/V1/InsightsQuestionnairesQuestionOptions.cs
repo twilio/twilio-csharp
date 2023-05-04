@@ -28,8 +28,8 @@ namespace Twilio.Rest.FlexApi.V1
     public class CreateInsightsQuestionnairesQuestionOptions : IOptions<InsightsQuestionnairesQuestionResource>
     {
         
-        ///<summary> The ID of the category </summary> 
-        public string CategoryId { get; }
+        ///<summary> The SID of the category </summary> 
+        public string CategorySid { get; }
 
         ///<summary> The question. </summary> 
         public string Question { get; }
@@ -48,13 +48,13 @@ namespace Twilio.Rest.FlexApi.V1
 
 
         /// <summary> Construct a new CreateInsightsQuestionnairesQuestionOptions </summary>
-        /// <param name="categoryId"> The ID of the category </param>
+        /// <param name="categorySid"> The SID of the category </param>
         /// <param name="question"> The question. </param>
         /// <param name="answerSetId"> The answer_set for the question. </param>
         /// <param name="allowNa"> The flag to enable for disable NA for answer. </param>
-        public CreateInsightsQuestionnairesQuestionOptions(string categoryId, string question, string answerSetId, bool? allowNa)
+        public CreateInsightsQuestionnairesQuestionOptions(string categorySid, string question, string answerSetId, bool? allowNa)
         {
-            CategoryId = categoryId;
+            CategorySid = categorySid;
             Question = question;
             AnswerSetId = answerSetId;
             AllowNa = allowNa;
@@ -66,9 +66,9 @@ namespace Twilio.Rest.FlexApi.V1
         {
             var p = new List<KeyValuePair<string, string>>();
 
-            if (CategoryId != null)
+            if (CategorySid != null)
             {
-                p.Add(new KeyValuePair<string, string>("CategoryId", CategoryId));
+                p.Add(new KeyValuePair<string, string>("CategorySid", CategorySid));
             }
             if (Question != null)
             {
@@ -105,8 +105,8 @@ namespace Twilio.Rest.FlexApi.V1
     public class DeleteInsightsQuestionnairesQuestionOptions : IOptions<InsightsQuestionnairesQuestionResource>
     {
         
-        ///<summary> The unique ID of the question </summary> 
-        public string PathQuestionId { get; }
+        ///<summary> The SID of the question </summary> 
+        public string PathQuestionSid { get; }
 
         ///<summary> The Token HTTP request header </summary> 
         public string Token { get; set; }
@@ -114,10 +114,10 @@ namespace Twilio.Rest.FlexApi.V1
 
 
         /// <summary> Construct a new DeleteInsightsQuestionnairesQuestionOptions </summary>
-        /// <param name="pathQuestionId"> The unique ID of the question </param>
-        public DeleteInsightsQuestionnairesQuestionOptions(string pathQuestionId)
+        /// <param name="pathQuestionSid"> The SID of the question </param>
+        public DeleteInsightsQuestionnairesQuestionOptions(string pathQuestionSid)
         {
-            PathQuestionId = pathQuestionId;
+            PathQuestionSid = pathQuestionSid;
         }
 
         
@@ -150,8 +150,8 @@ namespace Twilio.Rest.FlexApi.V1
         ///<summary> The Token HTTP request header </summary> 
         public string Token { get; set; }
 
-        ///<summary> The list of category IDs </summary> 
-        public List<string> CategoryId { get; set; }
+        ///<summary> The list of category SIDs </summary> 
+        public List<string> CategorySid { get; set; }
 
 
 
@@ -162,9 +162,9 @@ namespace Twilio.Rest.FlexApi.V1
         {
             var p = new List<KeyValuePair<string, string>>();
 
-            if (CategoryId != null)
+            if (CategorySid != null)
             {
-                p.AddRange(CategoryId.Select(CategoryId => new KeyValuePair<string, string>("CategoryId", CategoryId)));
+                p.AddRange(CategorySid.Select(CategorySid => new KeyValuePair<string, string>("CategorySid", CategorySid)));
             }
             if (PageSize != null)
             {
@@ -190,8 +190,8 @@ namespace Twilio.Rest.FlexApi.V1
     public class UpdateInsightsQuestionnairesQuestionOptions : IOptions<InsightsQuestionnairesQuestionResource>
     {
     
-        ///<summary> The unique ID of the question </summary> 
-        public string PathQuestionId { get; }
+        ///<summary> The SID of the question </summary> 
+        public string PathQuestionSid { get; }
 
         ///<summary> The flag to enable for disable NA for answer. </summary> 
         public bool? AllowNa { get; }
@@ -199,8 +199,8 @@ namespace Twilio.Rest.FlexApi.V1
         ///<summary> The Token HTTP request header </summary> 
         public string Token { get; set; }
 
-        ///<summary> The ID of the category </summary> 
-        public string CategoryId { get; set; }
+        ///<summary> The SID of the category </summary> 
+        public string CategorySid { get; set; }
 
         ///<summary> The question. </summary> 
         public string Question { get; set; }
@@ -214,11 +214,11 @@ namespace Twilio.Rest.FlexApi.V1
 
 
         /// <summary> Construct a new UpdateInsightsQuestionnairesQuestionOptions </summary>
-        /// <param name="pathQuestionId"> The unique ID of the question </param>
+        /// <param name="pathQuestionSid"> The SID of the question </param>
         /// <param name="allowNa"> The flag to enable for disable NA for answer. </param>
-        public UpdateInsightsQuestionnairesQuestionOptions(string pathQuestionId, bool? allowNa)
+        public UpdateInsightsQuestionnairesQuestionOptions(string pathQuestionSid, bool? allowNa)
         {
-            PathQuestionId = pathQuestionId;
+            PathQuestionSid = pathQuestionSid;
             AllowNa = allowNa;
         }
 
@@ -232,9 +232,9 @@ namespace Twilio.Rest.FlexApi.V1
             {
                 p.Add(new KeyValuePair<string, string>("AllowNa", AllowNa.Value.ToString().ToLower()));
             }
-            if (CategoryId != null)
+            if (CategorySid != null)
             {
-                p.Add(new KeyValuePair<string, string>("CategoryId", CategoryId));
+                p.Add(new KeyValuePair<string, string>("CategorySid", CategorySid));
             }
             if (Question != null)
             {

@@ -71,8 +71,8 @@ namespace Twilio.Rest.FlexApi.V1
     public class DeleteInsightsQuestionnairesCategoryOptions : IOptions<InsightsQuestionnairesCategoryResource>
     {
         
-        ///<summary> The ID of the category to be deleted </summary> 
-        public string PathCategoryId { get; }
+        ///<summary> The SID of the category to be deleted </summary> 
+        public string PathCategorySid { get; }
 
         ///<summary> The Token HTTP request header </summary> 
         public string Token { get; set; }
@@ -80,10 +80,10 @@ namespace Twilio.Rest.FlexApi.V1
 
 
         /// <summary> Construct a new DeleteInsightsQuestionnairesCategoryOptions </summary>
-        /// <param name="pathCategoryId"> The ID of the category to be deleted </param>
-        public DeleteInsightsQuestionnairesCategoryOptions(string pathCategoryId)
+        /// <param name="pathCategorySid"> The SID of the category to be deleted </param>
+        public DeleteInsightsQuestionnairesCategoryOptions(string pathCategorySid)
         {
-            PathCategoryId = pathCategoryId;
+            PathCategorySid = pathCategorySid;
         }
 
         
@@ -149,8 +149,8 @@ namespace Twilio.Rest.FlexApi.V1
     public class UpdateInsightsQuestionnairesCategoryOptions : IOptions<InsightsQuestionnairesCategoryResource>
     {
     
-        ///<summary> The ID of the category to be update </summary> 
-        public string PathCategoryId { get; }
+        ///<summary> The SID of the category to be updated </summary> 
+        public string PathCategorySid { get; }
 
         ///<summary> The name of this category. </summary> 
         public string Name { get; }
@@ -161,11 +161,11 @@ namespace Twilio.Rest.FlexApi.V1
 
 
         /// <summary> Construct a new UpdateInsightsQuestionnairesCategoryOptions </summary>
-        /// <param name="pathCategoryId"> The ID of the category to be update </param>
+        /// <param name="pathCategorySid"> The SID of the category to be updated </param>
         /// <param name="name"> The name of this category. </param>
-        public UpdateInsightsQuestionnairesCategoryOptions(string pathCategoryId, string name)
+        public UpdateInsightsQuestionnairesCategoryOptions(string pathCategorySid, string name)
         {
-            PathCategoryId = pathCategoryId;
+            PathCategorySid = pathCategorySid;
             Name = name;
         }
 

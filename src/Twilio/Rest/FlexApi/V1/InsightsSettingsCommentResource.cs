@@ -34,7 +34,7 @@ namespace Twilio.Rest.FlexApi.V1
         private static Request BuildFetchRequest(FetchInsightsSettingsCommentOptions options, ITwilioRestClient client)
         {
             
-            string path = "/v1/Insights/QM/Settings/CommentTags";
+            string path = "/v1/Insights/QualityManagement/Settings/CommentTags";
 
 
             return new Request(

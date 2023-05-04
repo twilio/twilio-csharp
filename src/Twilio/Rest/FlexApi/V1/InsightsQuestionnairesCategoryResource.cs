@@ -34,7 +34,7 @@ namespace Twilio.Rest.FlexApi.V1
         private static Request BuildCreateRequest(CreateInsightsQuestionnairesCategoryOptions options, ITwilioRestClient client)
         {
             
-            string path = "/v1/Insights/QM/Categories";
+            string path = "/v1/Insights/QualityManagement/Categories";
 
 
             return new Request(
@@ -108,10 +108,10 @@ namespace Twilio.Rest.FlexApi.V1
         private static Request BuildDeleteRequest(DeleteInsightsQuestionnairesCategoryOptions options, ITwilioRestClient client)
         {
             
-            string path = "/v1/Insights/QM/Categories/{CategoryId}";
+            string path = "/v1/Insights/QualityManagement/Categories/{CategorySid}";
 
-            string PathCategoryId = options.PathCategoryId;
-            path = path.Replace("{"+"CategoryId"+"}", PathCategoryId);
+            string PathCategorySid = options.PathCategorySid;
+            path = path.Replace("{"+"CategorySid"+"}", PathCategorySid);
 
             return new Request(
                 HttpMethod.Delete,
@@ -148,25 +148,25 @@ namespace Twilio.Rest.FlexApi.V1
         #endif
 
         /// <summary> delete </summary>
-        /// <param name="pathCategoryId"> The ID of the category to be deleted </param>
+        /// <param name="pathCategorySid"> The SID of the category to be deleted </param>
         /// <param name="token"> The Token HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of InsightsQuestionnairesCategory </returns>
-        public static bool Delete(string pathCategoryId, string token = null, ITwilioRestClient client = null)
+        public static bool Delete(string pathCategorySid, string token = null, ITwilioRestClient client = null)
         {
-            var options = new DeleteInsightsQuestionnairesCategoryOptions(pathCategoryId)      { Token = token }   ;
+            var options = new DeleteInsightsQuestionnairesCategoryOptions(pathCategorySid)      { Token = token }   ;
             return Delete(options, client);
         }
 
         #if !NET35
         /// <summary> delete </summary>
-        /// <param name="pathCategoryId"> The ID of the category to be deleted </param>
+        /// <param name="pathCategorySid"> The SID of the category to be deleted </param>
         /// <param name="token"> The Token HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InsightsQuestionnairesCategory </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathCategoryId, string token = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathCategorySid, string token = null, ITwilioRestClient client = null)
         {
-            var options = new DeleteInsightsQuestionnairesCategoryOptions(pathCategoryId)  { Token = token };
+            var options = new DeleteInsightsQuestionnairesCategoryOptions(pathCategorySid)  { Token = token };
             return await DeleteAsync(options, client);
         }
         #endif
@@ -174,7 +174,7 @@ namespace Twilio.Rest.FlexApi.V1
         private static Request BuildReadRequest(ReadInsightsQuestionnairesCategoryOptions options, ITwilioRestClient client)
         {
             
-            string path = "/v1/Insights/QM/Categories";
+            string path = "/v1/Insights/QualityManagement/Categories";
 
 
             return new Request(
@@ -298,10 +298,10 @@ namespace Twilio.Rest.FlexApi.V1
         private static Request BuildUpdateRequest(UpdateInsightsQuestionnairesCategoryOptions options, ITwilioRestClient client)
         {
             
-            string path = "/v1/Insights/QM/Categories/{CategoryId}";
+            string path = "/v1/Insights/QualityManagement/Categories/{CategorySid}";
 
-            string PathCategoryId = options.PathCategoryId;
-            path = path.Replace("{"+"CategoryId"+"}", PathCategoryId);
+            string PathCategorySid = options.PathCategorySid;
+            path = path.Replace("{"+"CategorySid"+"}", PathCategorySid);
 
             return new Request(
                 HttpMethod.Post,
@@ -338,35 +338,35 @@ namespace Twilio.Rest.FlexApi.V1
         #endif
 
         /// <summary> To update the category for Questions </summary>
-        /// <param name="pathCategoryId"> The ID of the category to be update </param>
+        /// <param name="pathCategorySid"> The SID of the category to be updated </param>
         /// <param name="name"> The name of this category. </param>
         /// <param name="token"> The Token HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of InsightsQuestionnairesCategory </returns>
         public static InsightsQuestionnairesCategoryResource Update(
-                                          string pathCategoryId,
+                                          string pathCategorySid,
                                           string name,
                                           string token = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new UpdateInsightsQuestionnairesCategoryOptions(pathCategoryId, name){ Token = token };
+            var options = new UpdateInsightsQuestionnairesCategoryOptions(pathCategorySid, name){ Token = token };
             return Update(options, client);
         }
 
         #if !NET35
         /// <summary> To update the category for Questions </summary>
-        /// <param name="pathCategoryId"> The ID of the category to be update </param>
+        /// <param name="pathCategorySid"> The SID of the category to be updated </param>
         /// <param name="name"> The name of this category. </param>
         /// <param name="token"> The Token HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InsightsQuestionnairesCategory </returns>
         public static async System.Threading.Tasks.Task<InsightsQuestionnairesCategoryResource> UpdateAsync(
-                                                                              string pathCategoryId,
+                                                                              string pathCategorySid,
                                                                               string name,
                                                                               string token = null,
                                                                               ITwilioRestClient client = null)
         {
-            var options = new UpdateInsightsQuestionnairesCategoryOptions(pathCategoryId, name){ Token = token };
+            var options = new UpdateInsightsQuestionnairesCategoryOptions(pathCategorySid, name){ Token = token };
             return await UpdateAsync(options, client);
         }
         #endif
@@ -393,9 +393,9 @@ namespace Twilio.Rest.FlexApi.V1
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The unique ID for the category </summary> 
-        [JsonProperty("category_id")]
-        public string CategoryId { get; private set; }
+        ///<summary> The SID of the category </summary> 
+        [JsonProperty("category_sid")]
+        public string CategorySid { get; private set; }
 
         ///<summary> The name of this category. </summary> 
         [JsonProperty("name")]
