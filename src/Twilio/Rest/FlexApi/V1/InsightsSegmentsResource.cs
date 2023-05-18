@@ -73,7 +73,7 @@ namespace Twilio.Rest.FlexApi.V1
         }
         #endif
         /// <summary> To get segments for given reservation Ids </summary>
-        /// <param name="token"> The Token HTTP request header </param>
+        /// <param name="authorization"> The Authorization HTTP request header </param>
         /// <param name="segmentId"> To unique id of the segment </param>
         /// <param name="reservationId"> The list of reservation Ids </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
@@ -81,20 +81,20 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of InsightsSegments </returns>
         public static ResourceSet<InsightsSegmentsResource> Read(
-                                                     string token = null,
+                                                     string authorization = null,
                                                      string segmentId = null,
                                                      List<string> reservationId = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
                                                      ITwilioRestClient client = null)
         {
-            var options = new ReadInsightsSegmentsOptions(){ Token = token, SegmentId = segmentId, ReservationId = reservationId, PageSize = pageSize, Limit = limit};
+            var options = new ReadInsightsSegmentsOptions(){ Authorization = authorization, SegmentId = segmentId, ReservationId = reservationId, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
         #if !NET35
         /// <summary> To get segments for given reservation Ids </summary>
-        /// <param name="token"> The Token HTTP request header </param>
+        /// <param name="authorization"> The Authorization HTTP request header </param>
         /// <param name="segmentId"> To unique id of the segment </param>
         /// <param name="reservationId"> The list of reservation Ids </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
@@ -102,14 +102,14 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InsightsSegments </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<InsightsSegmentsResource>> ReadAsync(
-                                                                                             string token = null,
+                                                                                             string authorization = null,
                                                                                              string segmentId = null,
                                                                                              List<string> reservationId = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
                                                                                              ITwilioRestClient client = null)
         {
-            var options = new ReadInsightsSegmentsOptions(){ Token = token, SegmentId = segmentId, ReservationId = reservationId, PageSize = pageSize, Limit = limit};
+            var options = new ReadInsightsSegmentsOptions(){ Authorization = authorization, SegmentId = segmentId, ReservationId = reservationId, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

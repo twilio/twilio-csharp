@@ -65,6 +65,12 @@ namespace Twilio.Rest.Messaging.V1
         ///<summary> URL to receive click events to your webhook whenever the recipients click on the shortened links </summary> 
         public Uri CallbackUrl { get; set; }
 
+        ///<summary> Boolean field to set customer delivery preference when there is a failure in linkShortening service </summary> 
+        public bool? ContinueOnFailure { get; set; }
+
+        ///<summary> Customer's choice to send links with/without \\\"https://\\\" attached to shortened url. If true, messages will not be sent with https:// at the beginning of the url. If false, messages will be sent with https:// at the beginning of the url. False is the default behavior if it is not specified. </summary> 
+        public bool? DisableHttps { get; set; }
+
 
 
         /// <summary> Construct a new UpdateDomainConfigOptions </summary>
@@ -87,6 +93,14 @@ namespace Twilio.Rest.Messaging.V1
             if (CallbackUrl != null)
             {
                 p.Add(new KeyValuePair<string, string>("CallbackUrl", Serializers.Url(CallbackUrl)));
+            }
+            if (ContinueOnFailure != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ContinueOnFailure", ContinueOnFailure.Value.ToString().ToLower()));
+            }
+            if (DisableHttps != null)
+            {
+                p.Add(new KeyValuePair<string, string>("DisableHttps", DisableHttps.Value.ToString().ToLower()));
             }
             return p;
         }

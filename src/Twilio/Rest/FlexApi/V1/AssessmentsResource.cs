@@ -75,8 +75,6 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="categorySid"> The SID of the category  </param>
         /// <param name="categoryName"> The name of the category </param>
         /// <param name="segmentId"> Segment Id of the conversation </param>
-        /// <param name="userName"> Name of the user assessing conversation </param>
-        /// <param name="userEmail"> Email of the user assessing conversation </param>
         /// <param name="agentId"> The id of the Agent </param>
         /// <param name="offset"> The offset of the conversation. </param>
         /// <param name="metricId"> The question SID selected for assessment </param>
@@ -84,15 +82,13 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="answerText"> The answer text selected by user </param>
         /// <param name="answerId"> The id of the answer selected by user </param>
         /// <param name="questionnaireSid"> Questionnaire SID of the associated question </param>
-        /// <param name="token"> The Token HTTP request header </param>
+        /// <param name="authorization"> The Authorization HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Assessments </returns>
         public static AssessmentsResource Create(
                                           string categorySid,
                                           string categoryName,
                                           string segmentId,
-                                          string userName,
-                                          string userEmail,
                                           string agentId,
                                           decimal? offset,
                                           string metricId,
@@ -100,10 +96,10 @@ namespace Twilio.Rest.FlexApi.V1
                                           string answerText,
                                           string answerId,
                                           string questionnaireSid,
-                                          string token = null,
+                                          string authorization = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new CreateAssessmentsOptions(categorySid, categoryName, segmentId, userName, userEmail, agentId, offset, metricId, metricName, answerText, answerId, questionnaireSid){  Token = token };
+            var options = new CreateAssessmentsOptions(categorySid, categoryName, segmentId, agentId, offset, metricId, metricName, answerText, answerId, questionnaireSid){  Authorization = authorization };
             return Create(options, client);
         }
 
@@ -112,8 +108,6 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="categorySid"> The SID of the category  </param>
         /// <param name="categoryName"> The name of the category </param>
         /// <param name="segmentId"> Segment Id of the conversation </param>
-        /// <param name="userName"> Name of the user assessing conversation </param>
-        /// <param name="userEmail"> Email of the user assessing conversation </param>
         /// <param name="agentId"> The id of the Agent </param>
         /// <param name="offset"> The offset of the conversation. </param>
         /// <param name="metricId"> The question SID selected for assessment </param>
@@ -121,15 +115,13 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="answerText"> The answer text selected by user </param>
         /// <param name="answerId"> The id of the answer selected by user </param>
         /// <param name="questionnaireSid"> Questionnaire SID of the associated question </param>
-        /// <param name="token"> The Token HTTP request header </param>
+        /// <param name="authorization"> The Authorization HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Assessments </returns>
         public static async System.Threading.Tasks.Task<AssessmentsResource> CreateAsync(
                                                                                   string categorySid,
                                                                                   string categoryName,
                                                                                   string segmentId,
-                                                                                  string userName,
-                                                                                  string userEmail,
                                                                                   string agentId,
                                                                                   decimal? offset,
                                                                                   string metricId,
@@ -137,10 +129,10 @@ namespace Twilio.Rest.FlexApi.V1
                                                                                   string answerText,
                                                                                   string answerId,
                                                                                   string questionnaireSid,
-                                                                                  string token = null,
+                                                                                  string authorization = null,
                                                                                   ITwilioRestClient client = null)
         {
-        var options = new CreateAssessmentsOptions(categorySid, categoryName, segmentId, userName, userEmail, agentId, offset, metricId, metricName, answerText, answerId, questionnaireSid){  Token = token };
+        var options = new CreateAssessmentsOptions(categorySid, categoryName, segmentId, agentId, offset, metricId, metricName, answerText, answerId, questionnaireSid){  Authorization = authorization };
             return await CreateAsync(options, client);
         }
         #endif
@@ -187,39 +179,39 @@ namespace Twilio.Rest.FlexApi.V1
         }
         #endif
         /// <summary> Get assessments done for a conversation by logged in user </summary>
-        /// <param name="token"> The Token HTTP request header </param>
+        /// <param name="authorization"> The Authorization HTTP request header </param>
         /// <param name="segmentId"> The id of the segment. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Assessments </returns>
         public static ResourceSet<AssessmentsResource> Read(
-                                                     string token = null,
+                                                     string authorization = null,
                                                      string segmentId = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
                                                      ITwilioRestClient client = null)
         {
-            var options = new ReadAssessmentsOptions(){ Token = token, SegmentId = segmentId, PageSize = pageSize, Limit = limit};
+            var options = new ReadAssessmentsOptions(){ Authorization = authorization, SegmentId = segmentId, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
         #if !NET35
         /// <summary> Get assessments done for a conversation by logged in user </summary>
-        /// <param name="token"> The Token HTTP request header </param>
+        /// <param name="authorization"> The Authorization HTTP request header </param>
         /// <param name="segmentId"> The id of the segment. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Assessments </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<AssessmentsResource>> ReadAsync(
-                                                                                             string token = null,
+                                                                                             string authorization = null,
                                                                                              string segmentId = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
                                                                                              ITwilioRestClient client = null)
         {
-            var options = new ReadAssessmentsOptions(){ Token = token, SegmentId = segmentId, PageSize = pageSize, Limit = limit};
+            var options = new ReadAssessmentsOptions(){ Authorization = authorization, SegmentId = segmentId, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
@@ -320,7 +312,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="offset"> The offset of the conversation </param>
         /// <param name="answerText"> The answer text selected by user </param>
         /// <param name="answerId"> The id of the answer selected by user </param>
-        /// <param name="token"> The Token HTTP request header </param>
+        /// <param name="authorization"> The Authorization HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Assessments </returns>
         public static AssessmentsResource Update(
@@ -328,10 +320,10 @@ namespace Twilio.Rest.FlexApi.V1
                                           decimal? offset,
                                           string answerText,
                                           string answerId,
-                                          string token = null,
+                                          string authorization = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new UpdateAssessmentsOptions(pathAssessmentSid, offset, answerText, answerId){ Token = token };
+            var options = new UpdateAssessmentsOptions(pathAssessmentSid, offset, answerText, answerId){ Authorization = authorization };
             return Update(options, client);
         }
 
@@ -341,7 +333,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="offset"> The offset of the conversation </param>
         /// <param name="answerText"> The answer text selected by user </param>
         /// <param name="answerId"> The id of the answer selected by user </param>
-        /// <param name="token"> The Token HTTP request header </param>
+        /// <param name="authorization"> The Authorization HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Assessments </returns>
         public static async System.Threading.Tasks.Task<AssessmentsResource> UpdateAsync(
@@ -349,10 +341,10 @@ namespace Twilio.Rest.FlexApi.V1
                                                                               decimal? offset,
                                                                               string answerText,
                                                                               string answerId,
-                                                                              string token = null,
+                                                                              string authorization = null,
                                                                               ITwilioRestClient client = null)
         {
-            var options = new UpdateAssessmentsOptions(pathAssessmentSid, offset, answerText, answerId){ Token = token };
+            var options = new UpdateAssessmentsOptions(pathAssessmentSid, offset, answerText, answerId){ Authorization = authorization };
             return await UpdateAsync(options, client);
         }
         #endif

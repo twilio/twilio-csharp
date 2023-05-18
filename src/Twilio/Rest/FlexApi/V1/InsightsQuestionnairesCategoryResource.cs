@@ -73,30 +73,30 @@ namespace Twilio.Rest.FlexApi.V1
 
         /// <summary> To create a category for Questions </summary>
         /// <param name="name"> The name of this category. </param>
-        /// <param name="token"> The Token HTTP request header </param>
+        /// <param name="authorization"> The Authorization HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of InsightsQuestionnairesCategory </returns>
         public static InsightsQuestionnairesCategoryResource Create(
                                           string name,
-                                          string token = null,
+                                          string authorization = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new CreateInsightsQuestionnairesCategoryOptions(name){  Token = token };
+            var options = new CreateInsightsQuestionnairesCategoryOptions(name){  Authorization = authorization };
             return Create(options, client);
         }
 
         #if !NET35
         /// <summary> To create a category for Questions </summary>
         /// <param name="name"> The name of this category. </param>
-        /// <param name="token"> The Token HTTP request header </param>
+        /// <param name="authorization"> The Authorization HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InsightsQuestionnairesCategory </returns>
         public static async System.Threading.Tasks.Task<InsightsQuestionnairesCategoryResource> CreateAsync(
                                                                                   string name,
-                                                                                  string token = null,
+                                                                                  string authorization = null,
                                                                                   ITwilioRestClient client = null)
         {
-        var options = new CreateInsightsQuestionnairesCategoryOptions(name){  Token = token };
+        var options = new CreateInsightsQuestionnairesCategoryOptions(name){  Authorization = authorization };
             return await CreateAsync(options, client);
         }
         #endif
@@ -149,24 +149,24 @@ namespace Twilio.Rest.FlexApi.V1
 
         /// <summary> delete </summary>
         /// <param name="pathCategorySid"> The SID of the category to be deleted </param>
-        /// <param name="token"> The Token HTTP request header </param>
+        /// <param name="authorization"> The Authorization HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of InsightsQuestionnairesCategory </returns>
-        public static bool Delete(string pathCategorySid, string token = null, ITwilioRestClient client = null)
+        public static bool Delete(string pathCategorySid, string authorization = null, ITwilioRestClient client = null)
         {
-            var options = new DeleteInsightsQuestionnairesCategoryOptions(pathCategorySid)      { Token = token }   ;
+            var options = new DeleteInsightsQuestionnairesCategoryOptions(pathCategorySid)      { Authorization = authorization }   ;
             return Delete(options, client);
         }
 
         #if !NET35
         /// <summary> delete </summary>
         /// <param name="pathCategorySid"> The SID of the category to be deleted </param>
-        /// <param name="token"> The Token HTTP request header </param>
+        /// <param name="authorization"> The Authorization HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InsightsQuestionnairesCategory </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathCategorySid, string token = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathCategorySid, string authorization = null, ITwilioRestClient client = null)
         {
-            var options = new DeleteInsightsQuestionnairesCategoryOptions(pathCategorySid)  { Token = token };
+            var options = new DeleteInsightsQuestionnairesCategoryOptions(pathCategorySid)  { Authorization = authorization };
             return await DeleteAsync(options, client);
         }
         #endif
@@ -213,35 +213,35 @@ namespace Twilio.Rest.FlexApi.V1
         }
         #endif
         /// <summary> To get all the categories </summary>
-        /// <param name="token"> The Token HTTP request header </param>
+        /// <param name="authorization"> The Authorization HTTP request header </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of InsightsQuestionnairesCategory </returns>
         public static ResourceSet<InsightsQuestionnairesCategoryResource> Read(
-                                                     string token = null,
+                                                     string authorization = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
                                                      ITwilioRestClient client = null)
         {
-            var options = new ReadInsightsQuestionnairesCategoryOptions(){ Token = token, PageSize = pageSize, Limit = limit};
+            var options = new ReadInsightsQuestionnairesCategoryOptions(){ Authorization = authorization, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
         #if !NET35
         /// <summary> To get all the categories </summary>
-        /// <param name="token"> The Token HTTP request header </param>
+        /// <param name="authorization"> The Authorization HTTP request header </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InsightsQuestionnairesCategory </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<InsightsQuestionnairesCategoryResource>> ReadAsync(
-                                                                                             string token = null,
+                                                                                             string authorization = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
                                                                                              ITwilioRestClient client = null)
         {
-            var options = new ReadInsightsQuestionnairesCategoryOptions(){ Token = token, PageSize = pageSize, Limit = limit};
+            var options = new ReadInsightsQuestionnairesCategoryOptions(){ Authorization = authorization, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
@@ -340,16 +340,16 @@ namespace Twilio.Rest.FlexApi.V1
         /// <summary> To update the category for Questions </summary>
         /// <param name="pathCategorySid"> The SID of the category to be updated </param>
         /// <param name="name"> The name of this category. </param>
-        /// <param name="token"> The Token HTTP request header </param>
+        /// <param name="authorization"> The Authorization HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of InsightsQuestionnairesCategory </returns>
         public static InsightsQuestionnairesCategoryResource Update(
                                           string pathCategorySid,
                                           string name,
-                                          string token = null,
+                                          string authorization = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new UpdateInsightsQuestionnairesCategoryOptions(pathCategorySid, name){ Token = token };
+            var options = new UpdateInsightsQuestionnairesCategoryOptions(pathCategorySid, name){ Authorization = authorization };
             return Update(options, client);
         }
 
@@ -357,16 +357,16 @@ namespace Twilio.Rest.FlexApi.V1
         /// <summary> To update the category for Questions </summary>
         /// <param name="pathCategorySid"> The SID of the category to be updated </param>
         /// <param name="name"> The name of this category. </param>
-        /// <param name="token"> The Token HTTP request header </param>
+        /// <param name="authorization"> The Authorization HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InsightsQuestionnairesCategory </returns>
         public static async System.Threading.Tasks.Task<InsightsQuestionnairesCategoryResource> UpdateAsync(
                                                                               string pathCategorySid,
                                                                               string name,
-                                                                              string token = null,
+                                                                              string authorization = null,
                                                                               ITwilioRestClient client = null)
         {
-            var options = new UpdateInsightsQuestionnairesCategoryOptions(pathCategorySid, name){ Token = token };
+            var options = new UpdateInsightsQuestionnairesCategoryOptions(pathCategorySid, name){ Authorization = authorization };
             return await UpdateAsync(options, client);
         }
         #endif
