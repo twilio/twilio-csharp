@@ -37,12 +37,6 @@ namespace Twilio.Rest.FlexApi.V1
         ///<summary> Segment Id of the conversation </summary> 
         public string SegmentId { get; }
 
-        ///<summary> Name of the user assessing conversation </summary> 
-        public string UserName { get; }
-
-        ///<summary> Email of the user assessing conversation </summary> 
-        public string UserEmail { get; }
-
         ///<summary> The id of the Agent </summary> 
         public string AgentId { get; }
 
@@ -64,16 +58,14 @@ namespace Twilio.Rest.FlexApi.V1
         ///<summary> Questionnaire SID of the associated question </summary> 
         public string QuestionnaireSid { get; }
 
-        ///<summary> The Token HTTP request header </summary> 
-        public string Token { get; set; }
+        ///<summary> The Authorization HTTP request header </summary> 
+        public string Authorization { get; set; }
 
 
         /// <summary> Construct a new CreateInsightsAssessmentsOptions </summary>
         /// <param name="categorySid"> The SID of the category  </param>
         /// <param name="categoryName"> The name of the category </param>
         /// <param name="segmentId"> Segment Id of the conversation </param>
-        /// <param name="userName"> Name of the user assessing conversation </param>
-        /// <param name="userEmail"> Email of the user assessing conversation </param>
         /// <param name="agentId"> The id of the Agent </param>
         /// <param name="offset"> The offset of the conversation. </param>
         /// <param name="metricId"> The question SID selected for assessment </param>
@@ -81,13 +73,11 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="answerText"> The answer text selected by user </param>
         /// <param name="answerId"> The id of the answer selected by user </param>
         /// <param name="questionnaireSid"> Questionnaire SID of the associated question </param>
-        public CreateAssessmentsOptions(string categorySid, string categoryName, string segmentId, string userName, string userEmail, string agentId, decimal? offset, string metricId, string metricName, string answerText, string answerId, string questionnaireSid)
+        public CreateAssessmentsOptions(string categorySid, string categoryName, string segmentId, string agentId, decimal? offset, string metricId, string metricName, string answerText, string answerId, string questionnaireSid)
         {
             CategorySid = categorySid;
             CategoryName = categoryName;
             SegmentId = segmentId;
-            UserName = userName;
-            UserEmail = userEmail;
             AgentId = agentId;
             Offset = offset;
             MetricId = metricId;
@@ -114,14 +104,6 @@ namespace Twilio.Rest.FlexApi.V1
             if (SegmentId != null)
             {
                 p.Add(new KeyValuePair<string, string>("SegmentId", SegmentId));
-            }
-            if (UserName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("UserName", UserName));
-            }
-            if (UserEmail != null)
-            {
-                p.Add(new KeyValuePair<string, string>("UserEmail", UserEmail));
             }
             if (AgentId != null)
             {
@@ -158,9 +140,9 @@ namespace Twilio.Rest.FlexApi.V1
     public List<KeyValuePair<string, string>> GetHeaderParams()
     {
         var p = new List<KeyValuePair<string, string>>();
-        if (Token != null)
+        if (Authorization != null)
         {
-            p.Add(new KeyValuePair<string, string>("Token", Token));
+            p.Add(new KeyValuePair<string, string>("Authorization", Authorization));
         }
         return p;
     }
@@ -170,8 +152,8 @@ namespace Twilio.Rest.FlexApi.V1
     public class ReadAssessmentsOptions : ReadOptions<AssessmentsResource>
     {
     
-        ///<summary> The Token HTTP request header </summary> 
-        public string Token { get; set; }
+        ///<summary> The Authorization HTTP request header </summary> 
+        public string Authorization { get; set; }
 
         ///<summary> The id of the segment. </summary> 
         public string SegmentId { get; set; }
@@ -200,9 +182,9 @@ namespace Twilio.Rest.FlexApi.V1
     public List<KeyValuePair<string, string>> GetHeaderParams()
     {
         var p = new List<KeyValuePair<string, string>>();
-        if (Token != null)
+        if (Authorization != null)
         {
-            p.Add(new KeyValuePair<string, string>("Token", Token));
+            p.Add(new KeyValuePair<string, string>("Authorization", Authorization));
         }
         return p;
     }
@@ -225,8 +207,8 @@ namespace Twilio.Rest.FlexApi.V1
         ///<summary> The id of the answer selected by user </summary> 
         public string AnswerId { get; }
 
-        ///<summary> The Token HTTP request header </summary> 
-        public string Token { get; set; }
+        ///<summary> The Authorization HTTP request header </summary> 
+        public string Authorization { get; set; }
 
 
 
@@ -268,9 +250,9 @@ namespace Twilio.Rest.FlexApi.V1
     public List<KeyValuePair<string, string>> GetHeaderParams()
     {
         var p = new List<KeyValuePair<string, string>>();
-        if (Token != null)
+        if (Authorization != null)
         {
-            p.Add(new KeyValuePair<string, string>("Token", Token));
+            p.Add(new KeyValuePair<string, string>("Authorization", Authorization));
         }
         return p;
     }

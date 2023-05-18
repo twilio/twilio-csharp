@@ -73,39 +73,39 @@ namespace Twilio.Rest.FlexApi.V1
         }
         #endif
         /// <summary> To get conversation with segment id </summary>
-        /// <param name="token"> The Token HTTP request header </param>
+        /// <param name="authorization"> The Authorization HTTP request header </param>
         /// <param name="segmentId"> Unique Id of the segment for which conversation details needs to be fetched </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of InsightsConversations </returns>
         public static ResourceSet<InsightsConversationsResource> Read(
-                                                     string token = null,
+                                                     string authorization = null,
                                                      string segmentId = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
                                                      ITwilioRestClient client = null)
         {
-            var options = new ReadInsightsConversationsOptions(){ Token = token, SegmentId = segmentId, PageSize = pageSize, Limit = limit};
+            var options = new ReadInsightsConversationsOptions(){ Authorization = authorization, SegmentId = segmentId, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
         #if !NET35
         /// <summary> To get conversation with segment id </summary>
-        /// <param name="token"> The Token HTTP request header </param>
+        /// <param name="authorization"> The Authorization HTTP request header </param>
         /// <param name="segmentId"> Unique Id of the segment for which conversation details needs to be fetched </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InsightsConversations </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<InsightsConversationsResource>> ReadAsync(
-                                                                                             string token = null,
+                                                                                             string authorization = null,
                                                                                              string segmentId = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
                                                                                              ITwilioRestClient client = null)
         {
-            var options = new ReadInsightsConversationsOptions(){ Token = token, SegmentId = segmentId, PageSize = pageSize, Limit = limit};
+            var options = new ReadInsightsConversationsOptions(){ Authorization = authorization, SegmentId = segmentId, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

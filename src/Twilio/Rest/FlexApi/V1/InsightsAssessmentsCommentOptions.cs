@@ -40,20 +40,14 @@ namespace Twilio.Rest.FlexApi.V1
         ///<summary> The id of the segment. </summary> 
         public string SegmentId { get; }
 
-        ///<summary> The name of the user. </summary> 
-        public string UserName { get; }
-
-        ///<summary> The email id of the user. </summary> 
-        public string UserEmail { get; }
-
         ///<summary> The id of the agent. </summary> 
         public string AgentId { get; }
 
         ///<summary> The offset </summary> 
         public decimal? Offset { get; }
 
-        ///<summary> The Token HTTP request header </summary> 
-        public string Token { get; set; }
+        ///<summary> The Authorization HTTP request header </summary> 
+        public string Authorization { get; set; }
 
 
         /// <summary> Construct a new CreateInsightsAssessmentsCommentOptions </summary>
@@ -61,18 +55,14 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="categoryName"> The name of the category </param>
         /// <param name="comment"> The Assessment comment. </param>
         /// <param name="segmentId"> The id of the segment. </param>
-        /// <param name="userName"> The name of the user. </param>
-        /// <param name="userEmail"> The email id of the user. </param>
         /// <param name="agentId"> The id of the agent. </param>
         /// <param name="offset"> The offset </param>
-        public CreateInsightsAssessmentsCommentOptions(string categoryId, string categoryName, string comment, string segmentId, string userName, string userEmail, string agentId, decimal? offset)
+        public CreateInsightsAssessmentsCommentOptions(string categoryId, string categoryName, string comment, string segmentId, string agentId, decimal? offset)
         {
             CategoryId = categoryId;
             CategoryName = categoryName;
             Comment = comment;
             SegmentId = segmentId;
-            UserName = userName;
-            UserEmail = userEmail;
             AgentId = agentId;
             Offset = offset;
         }
@@ -99,14 +89,6 @@ namespace Twilio.Rest.FlexApi.V1
             {
                 p.Add(new KeyValuePair<string, string>("SegmentId", SegmentId));
             }
-            if (UserName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("UserName", UserName));
-            }
-            if (UserEmail != null)
-            {
-                p.Add(new KeyValuePair<string, string>("UserEmail", UserEmail));
-            }
             if (AgentId != null)
             {
                 p.Add(new KeyValuePair<string, string>("AgentId", AgentId));
@@ -122,9 +104,9 @@ namespace Twilio.Rest.FlexApi.V1
     public List<KeyValuePair<string, string>> GetHeaderParams()
     {
         var p = new List<KeyValuePair<string, string>>();
-        if (Token != null)
+        if (Authorization != null)
         {
-            p.Add(new KeyValuePair<string, string>("Token", Token));
+            p.Add(new KeyValuePair<string, string>("Authorization", Authorization));
         }
         return p;
     }
@@ -134,8 +116,8 @@ namespace Twilio.Rest.FlexApi.V1
     public class ReadInsightsAssessmentsCommentOptions : ReadOptions<InsightsAssessmentsCommentResource>
     {
     
-        ///<summary> The Token HTTP request header </summary> 
-        public string Token { get; set; }
+        ///<summary> The Authorization HTTP request header </summary> 
+        public string Authorization { get; set; }
 
         ///<summary> The id of the segment. </summary> 
         public string SegmentId { get; set; }
@@ -171,9 +153,9 @@ namespace Twilio.Rest.FlexApi.V1
     public List<KeyValuePair<string, string>> GetHeaderParams()
     {
         var p = new List<KeyValuePair<string, string>>();
-        if (Token != null)
+        if (Authorization != null)
         {
-            p.Add(new KeyValuePair<string, string>("Token", Token));
+            p.Add(new KeyValuePair<string, string>("Authorization", Authorization));
         }
         return p;
     }

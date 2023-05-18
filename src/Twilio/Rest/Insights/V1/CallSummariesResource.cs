@@ -183,6 +183,10 @@ namespace Twilio.Rest.Insights.V1
         /// <param name="subaccount">  </param>
         /// <param name="abnormalSession">  </param>
         /// <param name="answeredBy">  </param>
+        /// <param name="connectivityIssues">  </param>
+        /// <param name="qualityIssues">  </param>
+        /// <param name="spam">  </param>
+        /// <param name="callScores">  </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -207,11 +211,15 @@ namespace Twilio.Rest.Insights.V1
                                                      string subaccount = null,
                                                      bool? abnormalSession = null,
                                                      CallSummariesResource.AnsweredByEnum answeredBy = null,
+                                                     string connectivityIssues = null,
+                                                     string qualityIssues = null,
+                                                     bool? spam = null,
+                                                     string callScores = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
                                                      ITwilioRestClient client = null)
         {
-            var options = new ReadCallSummariesOptions(){ From = from, To = to, FromCarrier = fromCarrier, ToCarrier = toCarrier, FromCountryCode = fromCountryCode, ToCountryCode = toCountryCode, Branded = branded, VerifiedCaller = verifiedCaller, HasTag = hasTag, StartTime = startTime, EndTime = endTime, CallType = callType, CallState = callState, Direction = direction, ProcessingState = processingState, SortBy = sortBy, Subaccount = subaccount, AbnormalSession = abnormalSession, AnsweredBy = answeredBy, PageSize = pageSize, Limit = limit};
+            var options = new ReadCallSummariesOptions(){ From = from, To = to, FromCarrier = fromCarrier, ToCarrier = toCarrier, FromCountryCode = fromCountryCode, ToCountryCode = toCountryCode, Branded = branded, VerifiedCaller = verifiedCaller, HasTag = hasTag, StartTime = startTime, EndTime = endTime, CallType = callType, CallState = callState, Direction = direction, ProcessingState = processingState, SortBy = sortBy, Subaccount = subaccount, AbnormalSession = abnormalSession, AnsweredBy = answeredBy, ConnectivityIssues = connectivityIssues, QualityIssues = qualityIssues, Spam = spam, CallScores = callScores, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -236,6 +244,10 @@ namespace Twilio.Rest.Insights.V1
         /// <param name="subaccount">  </param>
         /// <param name="abnormalSession">  </param>
         /// <param name="answeredBy">  </param>
+        /// <param name="connectivityIssues">  </param>
+        /// <param name="qualityIssues">  </param>
+        /// <param name="spam">  </param>
+        /// <param name="callScores">  </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -260,11 +272,15 @@ namespace Twilio.Rest.Insights.V1
                                                                                              string subaccount = null,
                                                                                              bool? abnormalSession = null,
                                                                                              CallSummariesResource.AnsweredByEnum answeredBy = null,
+                                                                                             string connectivityIssues = null,
+                                                                                             string qualityIssues = null,
+                                                                                             bool? spam = null,
+                                                                                             string callScores = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
                                                                                              ITwilioRestClient client = null)
         {
-            var options = new ReadCallSummariesOptions(){ From = from, To = to, FromCarrier = fromCarrier, ToCarrier = toCarrier, FromCountryCode = fromCountryCode, ToCountryCode = toCountryCode, Branded = branded, VerifiedCaller = verifiedCaller, HasTag = hasTag, StartTime = startTime, EndTime = endTime, CallType = callType, CallState = callState, Direction = direction, ProcessingState = processingState, SortBy = sortBy, Subaccount = subaccount, AbnormalSession = abnormalSession, AnsweredBy = answeredBy, PageSize = pageSize, Limit = limit};
+            var options = new ReadCallSummariesOptions(){ From = from, To = to, FromCarrier = fromCarrier, ToCarrier = toCarrier, FromCountryCode = fromCountryCode, ToCountryCode = toCountryCode, Branded = branded, VerifiedCaller = verifiedCaller, HasTag = hasTag, StartTime = startTime, EndTime = endTime, CallType = callType, CallState = callState, Direction = direction, ProcessingState = processingState, SortBy = sortBy, Subaccount = subaccount, AbnormalSession = abnormalSession, AnsweredBy = answeredBy, ConnectivityIssues = connectivityIssues, QualityIssues = qualityIssues, Spam = spam, CallScores = callScores, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

@@ -31,8 +31,8 @@ namespace Twilio.Rest.FlexApi.V1
         ///<summary> The name of this category. </summary> 
         public string Name { get; }
 
-        ///<summary> The Token HTTP request header </summary> 
-        public string Token { get; set; }
+        ///<summary> The Authorization HTTP request header </summary> 
+        public string Authorization { get; set; }
 
 
         /// <summary> Construct a new CreateInsightsQuestionnairesCategoryOptions </summary>
@@ -59,9 +59,9 @@ namespace Twilio.Rest.FlexApi.V1
     public List<KeyValuePair<string, string>> GetHeaderParams()
     {
         var p = new List<KeyValuePair<string, string>>();
-        if (Token != null)
+        if (Authorization != null)
         {
-            p.Add(new KeyValuePair<string, string>("Token", Token));
+            p.Add(new KeyValuePair<string, string>("Authorization", Authorization));
         }
         return p;
     }
@@ -74,8 +74,8 @@ namespace Twilio.Rest.FlexApi.V1
         ///<summary> The SID of the category to be deleted </summary> 
         public string PathCategorySid { get; }
 
-        ///<summary> The Token HTTP request header </summary> 
-        public string Token { get; set; }
+        ///<summary> The Authorization HTTP request header </summary> 
+        public string Authorization { get; set; }
 
 
 
@@ -99,9 +99,9 @@ namespace Twilio.Rest.FlexApi.V1
     public List<KeyValuePair<string, string>> GetHeaderParams()
     {
         var p = new List<KeyValuePair<string, string>>();
-        if (Token != null)
+        if (Authorization != null)
         {
-            p.Add(new KeyValuePair<string, string>("Token", Token));
+            p.Add(new KeyValuePair<string, string>("Authorization", Authorization));
         }
         return p;
     }
@@ -113,8 +113,8 @@ namespace Twilio.Rest.FlexApi.V1
     public class ReadInsightsQuestionnairesCategoryOptions : ReadOptions<InsightsQuestionnairesCategoryResource>
     {
     
-        ///<summary> The Token HTTP request header </summary> 
-        public string Token { get; set; }
+        ///<summary> The Authorization HTTP request header </summary> 
+        public string Authorization { get; set; }
 
 
 
@@ -136,9 +136,9 @@ namespace Twilio.Rest.FlexApi.V1
     public List<KeyValuePair<string, string>> GetHeaderParams()
     {
         var p = new List<KeyValuePair<string, string>>();
-        if (Token != null)
+        if (Authorization != null)
         {
-            p.Add(new KeyValuePair<string, string>("Token", Token));
+            p.Add(new KeyValuePair<string, string>("Authorization", Authorization));
         }
         return p;
     }
@@ -155,8 +155,8 @@ namespace Twilio.Rest.FlexApi.V1
         ///<summary> The name of this category. </summary> 
         public string Name { get; }
 
-        ///<summary> The Token HTTP request header </summary> 
-        public string Token { get; set; }
+        ///<summary> The Authorization HTTP request header </summary> 
+        public string Authorization { get; set; }
 
 
 
@@ -186,9 +186,9 @@ namespace Twilio.Rest.FlexApi.V1
     public List<KeyValuePair<string, string>> GetHeaderParams()
     {
         var p = new List<KeyValuePair<string, string>>();
-        if (Token != null)
+        if (Authorization != null)
         {
-            p.Add(new KeyValuePair<string, string>("Token", Token));
+            p.Add(new KeyValuePair<string, string>("Authorization", Authorization));
         }
         return p;
     }

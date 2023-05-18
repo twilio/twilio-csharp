@@ -76,7 +76,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="description"> The description of this questionnaire </param>
         /// <param name="active"> The flag to enable or disable questionnaire </param>
         /// <param name="questionSids"> The list of questions sids under a questionnaire </param>
-        /// <param name="token"> The Token HTTP request header </param>
+        /// <param name="authorization"> The Authorization HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of InsightsQuestionnaires </returns>
         public static InsightsQuestionnairesResource Create(
@@ -84,10 +84,10 @@ namespace Twilio.Rest.FlexApi.V1
                                           string description = null,
                                           bool? active = null,
                                           List<string> questionSids = null,
-                                          string token = null,
+                                          string authorization = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new CreateInsightsQuestionnairesOptions(name){  Description = description, Active = active, QuestionSids = questionSids, Token = token };
+            var options = new CreateInsightsQuestionnairesOptions(name){  Description = description, Active = active, QuestionSids = questionSids, Authorization = authorization };
             return Create(options, client);
         }
 
@@ -97,7 +97,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="description"> The description of this questionnaire </param>
         /// <param name="active"> The flag to enable or disable questionnaire </param>
         /// <param name="questionSids"> The list of questions sids under a questionnaire </param>
-        /// <param name="token"> The Token HTTP request header </param>
+        /// <param name="authorization"> The Authorization HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InsightsQuestionnaires </returns>
         public static async System.Threading.Tasks.Task<InsightsQuestionnairesResource> CreateAsync(
@@ -105,10 +105,10 @@ namespace Twilio.Rest.FlexApi.V1
                                                                                   string description = null,
                                                                                   bool? active = null,
                                                                                   List<string> questionSids = null,
-                                                                                  string token = null,
+                                                                                  string authorization = null,
                                                                                   ITwilioRestClient client = null)
         {
-        var options = new CreateInsightsQuestionnairesOptions(name){  Description = description, Active = active, QuestionSids = questionSids, Token = token };
+        var options = new CreateInsightsQuestionnairesOptions(name){  Description = description, Active = active, QuestionSids = questionSids, Authorization = authorization };
             return await CreateAsync(options, client);
         }
         #endif
@@ -161,24 +161,24 @@ namespace Twilio.Rest.FlexApi.V1
 
         /// <summary> To delete the questionnaire </summary>
         /// <param name="pathQuestionnaireSid"> The SID of the questionnaire </param>
-        /// <param name="token"> The Token HTTP request header </param>
+        /// <param name="authorization"> The Authorization HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of InsightsQuestionnaires </returns>
-        public static bool Delete(string pathQuestionnaireSid, string token = null, ITwilioRestClient client = null)
+        public static bool Delete(string pathQuestionnaireSid, string authorization = null, ITwilioRestClient client = null)
         {
-            var options = new DeleteInsightsQuestionnairesOptions(pathQuestionnaireSid)      { Token = token }   ;
+            var options = new DeleteInsightsQuestionnairesOptions(pathQuestionnaireSid)      { Authorization = authorization }   ;
             return Delete(options, client);
         }
 
         #if !NET35
         /// <summary> To delete the questionnaire </summary>
         /// <param name="pathQuestionnaireSid"> The SID of the questionnaire </param>
-        /// <param name="token"> The Token HTTP request header </param>
+        /// <param name="authorization"> The Authorization HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InsightsQuestionnaires </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathQuestionnaireSid, string token = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathQuestionnaireSid, string authorization = null, ITwilioRestClient client = null)
         {
-            var options = new DeleteInsightsQuestionnairesOptions(pathQuestionnaireSid)  { Token = token };
+            var options = new DeleteInsightsQuestionnairesOptions(pathQuestionnaireSid)  { Authorization = authorization };
             return await DeleteAsync(options, client);
         }
         #endif
@@ -226,27 +226,27 @@ namespace Twilio.Rest.FlexApi.V1
         #endif
         /// <summary> To get the Questionnaire Detail </summary>
         /// <param name="pathQuestionnaireSid"> The SID of the questionnaire </param>
-        /// <param name="token"> The Token HTTP request header </param>
+        /// <param name="authorization"> The Authorization HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of InsightsQuestionnaires </returns>
         public static InsightsQuestionnairesResource Fetch(
                                          string pathQuestionnaireSid, 
-                                         string token = null, 
+                                         string authorization = null, 
                                          ITwilioRestClient client = null)
         {
-            var options = new FetchInsightsQuestionnairesOptions(pathQuestionnaireSid){ Token = token };
+            var options = new FetchInsightsQuestionnairesOptions(pathQuestionnaireSid){ Authorization = authorization };
             return Fetch(options, client);
         }
 
         #if !NET35
         /// <summary> To get the Questionnaire Detail </summary>
         /// <param name="pathQuestionnaireSid"> The SID of the questionnaire </param>
-        /// <param name="token"> The Token HTTP request header </param>
+        /// <param name="authorization"> The Authorization HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InsightsQuestionnaires </returns>
-        public static async System.Threading.Tasks.Task<InsightsQuestionnairesResource> FetchAsync(string pathQuestionnaireSid, string token = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<InsightsQuestionnairesResource> FetchAsync(string pathQuestionnaireSid, string authorization = null, ITwilioRestClient client = null)
         {
-            var options = new FetchInsightsQuestionnairesOptions(pathQuestionnaireSid){ Token = token };
+            var options = new FetchInsightsQuestionnairesOptions(pathQuestionnaireSid){ Authorization = authorization };
             return await FetchAsync(options, client);
         }
         #endif
@@ -293,39 +293,39 @@ namespace Twilio.Rest.FlexApi.V1
         }
         #endif
         /// <summary> To get all questionnaires with questions </summary>
-        /// <param name="token"> The Token HTTP request header </param>
+        /// <param name="authorization"> The Authorization HTTP request header </param>
         /// <param name="includeInactive"> Flag indicating whether to include inactive questionnaires or not </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of InsightsQuestionnaires </returns>
         public static ResourceSet<InsightsQuestionnairesResource> Read(
-                                                     string token = null,
+                                                     string authorization = null,
                                                      bool? includeInactive = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
                                                      ITwilioRestClient client = null)
         {
-            var options = new ReadInsightsQuestionnairesOptions(){ Token = token, IncludeInactive = includeInactive, PageSize = pageSize, Limit = limit};
+            var options = new ReadInsightsQuestionnairesOptions(){ Authorization = authorization, IncludeInactive = includeInactive, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
         #if !NET35
         /// <summary> To get all questionnaires with questions </summary>
-        /// <param name="token"> The Token HTTP request header </param>
+        /// <param name="authorization"> The Authorization HTTP request header </param>
         /// <param name="includeInactive"> Flag indicating whether to include inactive questionnaires or not </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InsightsQuestionnaires </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<InsightsQuestionnairesResource>> ReadAsync(
-                                                                                             string token = null,
+                                                                                             string authorization = null,
                                                                                              bool? includeInactive = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
                                                                                              ITwilioRestClient client = null)
         {
-            var options = new ReadInsightsQuestionnairesOptions(){ Token = token, IncludeInactive = includeInactive, PageSize = pageSize, Limit = limit};
+            var options = new ReadInsightsQuestionnairesOptions(){ Authorization = authorization, IncludeInactive = includeInactive, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
@@ -427,7 +427,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="name"> The name of this questionnaire </param>
         /// <param name="description"> The description of this questionnaire </param>
         /// <param name="questionSids"> The list of questions sids under a questionnaire </param>
-        /// <param name="token"> The Token HTTP request header </param>
+        /// <param name="authorization"> The Authorization HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of InsightsQuestionnaires </returns>
         public static InsightsQuestionnairesResource Update(
@@ -436,10 +436,10 @@ namespace Twilio.Rest.FlexApi.V1
                                           string name = null,
                                           string description = null,
                                           List<string> questionSids = null,
-                                          string token = null,
+                                          string authorization = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new UpdateInsightsQuestionnairesOptions(pathQuestionnaireSid, active){ Name = name, Description = description, QuestionSids = questionSids, Token = token };
+            var options = new UpdateInsightsQuestionnairesOptions(pathQuestionnaireSid, active){ Name = name, Description = description, QuestionSids = questionSids, Authorization = authorization };
             return Update(options, client);
         }
 
@@ -450,7 +450,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="name"> The name of this questionnaire </param>
         /// <param name="description"> The description of this questionnaire </param>
         /// <param name="questionSids"> The list of questions sids under a questionnaire </param>
-        /// <param name="token"> The Token HTTP request header </param>
+        /// <param name="authorization"> The Authorization HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InsightsQuestionnaires </returns>
         public static async System.Threading.Tasks.Task<InsightsQuestionnairesResource> UpdateAsync(
@@ -459,10 +459,10 @@ namespace Twilio.Rest.FlexApi.V1
                                                                               string name = null,
                                                                               string description = null,
                                                                               List<string> questionSids = null,
-                                                                              string token = null,
+                                                                              string authorization = null,
                                                                               ITwilioRestClient client = null)
         {
-            var options = new UpdateInsightsQuestionnairesOptions(pathQuestionnaireSid, active){ Name = name, Description = description, QuestionSids = questionSids, Token = token };
+            var options = new UpdateInsightsQuestionnairesOptions(pathQuestionnaireSid, active){ Name = name, Description = description, QuestionSids = questionSids, Authorization = authorization };
             return await UpdateAsync(options, client);
         }
         #endif

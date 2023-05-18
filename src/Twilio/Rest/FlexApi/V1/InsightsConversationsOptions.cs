@@ -27,8 +27,8 @@ namespace Twilio.Rest.FlexApi.V1
     public class ReadInsightsConversationsOptions : ReadOptions<InsightsConversationsResource>
     {
     
-        ///<summary> The Token HTTP request header </summary> 
-        public string Token { get; set; }
+        ///<summary> The Authorization HTTP request header </summary> 
+        public string Authorization { get; set; }
 
         ///<summary> Unique Id of the segment for which conversation details needs to be fetched </summary> 
         public string SegmentId { get; set; }
@@ -57,9 +57,9 @@ namespace Twilio.Rest.FlexApi.V1
     public List<KeyValuePair<string, string>> GetHeaderParams()
     {
         var p = new List<KeyValuePair<string, string>>();
-        if (Token != null)
+        if (Authorization != null)
         {
-            p.Add(new KeyValuePair<string, string>("Token", Token));
+            p.Add(new KeyValuePair<string, string>("Authorization", Authorization));
         }
         return p;
     }

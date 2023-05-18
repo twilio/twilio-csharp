@@ -71,25 +71,25 @@ namespace Twilio.Rest.FlexApi.V1
         }
         #endif
         /// <summary> To get the Comment Settings for an Account </summary>
-        /// <param name="token"> The Token HTTP request header </param>
+        /// <param name="authorization"> The Authorization HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of InsightsSettingsComment </returns>
         public static InsightsSettingsCommentResource Fetch(
-                                         string token = null, 
+                                         string authorization = null, 
                                          ITwilioRestClient client = null)
         {
-            var options = new FetchInsightsSettingsCommentOptions(){ Token = token };
+            var options = new FetchInsightsSettingsCommentOptions(){ Authorization = authorization };
             return Fetch(options, client);
         }
 
         #if !NET35
         /// <summary> To get the Comment Settings for an Account </summary>
-        /// <param name="token"> The Token HTTP request header </param>
+        /// <param name="authorization"> The Authorization HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InsightsSettingsComment </returns>
-        public static async System.Threading.Tasks.Task<InsightsSettingsCommentResource> FetchAsync(string token = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<InsightsSettingsCommentResource> FetchAsync(string authorization = null, ITwilioRestClient client = null)
         {
-            var options = new FetchInsightsSettingsCommentOptions(){ Token = token };
+            var options = new FetchInsightsSettingsCommentOptions(){ Authorization = authorization };
             return await FetchAsync(options, client);
         }
         #endif

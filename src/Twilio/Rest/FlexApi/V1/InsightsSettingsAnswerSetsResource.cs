@@ -71,25 +71,25 @@ namespace Twilio.Rest.FlexApi.V1
         }
         #endif
         /// <summary> To get the Answer Set Settings for an Account </summary>
-        /// <param name="token"> The Token HTTP request header </param>
+        /// <param name="authorization"> The Authorization HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of InsightsSettingsAnswerSets </returns>
         public static InsightsSettingsAnswerSetsResource Fetch(
-                                         string token = null, 
+                                         string authorization = null, 
                                          ITwilioRestClient client = null)
         {
-            var options = new FetchInsightsSettingsAnswerSetsOptions(){ Token = token };
+            var options = new FetchInsightsSettingsAnswerSetsOptions(){ Authorization = authorization };
             return Fetch(options, client);
         }
 
         #if !NET35
         /// <summary> To get the Answer Set Settings for an Account </summary>
-        /// <param name="token"> The Token HTTP request header </param>
+        /// <param name="authorization"> The Authorization HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InsightsSettingsAnswerSets </returns>
-        public static async System.Threading.Tasks.Task<InsightsSettingsAnswerSetsResource> FetchAsync(string token = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<InsightsSettingsAnswerSetsResource> FetchAsync(string authorization = null, ITwilioRestClient client = null)
         {
-            var options = new FetchInsightsSettingsAnswerSetsOptions(){ Token = token };
+            var options = new FetchInsightsSettingsAnswerSetsOptions(){ Authorization = authorization };
             return await FetchAsync(options, client);
         }
         #endif
