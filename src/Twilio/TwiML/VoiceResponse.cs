@@ -84,7 +84,7 @@ namespace Twilio.TwiML
                                   Dial.TrimEnum trim = null,
                                   Uri recordingStatusCallback = null,
                                   Twilio.Http.HttpMethod recordingStatusCallbackMethod = null,
-                                  List<Dial.RecordingEventEnum> recordingStatusCallbackEvent = null,
+                                  IEnumerable<Dial.RecordingEventEnum> recordingStatusCallbackEvent = null,
                                   bool? answerOnBridge = null,
                                   Dial.RingToneEnum ringTone = null,
                                   Dial.RecordingTrackEnum recordingTrack = null,
@@ -204,7 +204,7 @@ namespace Twilio.TwiML
         /// <param name="actionOnEmptyResult"> Force webhook to the action URL event if there is no input </param>
         /// <param name="speechModel"> Specify the model that is best suited for your use case </param>
         /// <param name="enhanced"> Use enhanced speech model </param>
-        public VoiceResponse Gather(List<Gather.InputEnum> input = null,
+        public VoiceResponse Gather(IEnumerable<Gather.InputEnum> input = null,
                                     Uri action = null,
                                     Twilio.Http.HttpMethod method = null,
                                     int? timeout = null,
@@ -400,7 +400,7 @@ namespace Twilio.TwiML
                                     Record.TrimEnum trim = null,
                                     Uri recordingStatusCallback = null,
                                     Twilio.Http.HttpMethod recordingStatusCallbackMethod = null,
-                                    List<Record.RecordingEventEnum> recordingStatusCallbackEvent = null,
+                                    IEnumerable<Record.RecordingEventEnum> recordingStatusCallbackEvent = null,
                                     bool? transcribe = null,
                                     Uri transcribeCallback = null)
         {
@@ -577,7 +577,7 @@ namespace Twilio.TwiML
                                  string chargeAmount = null,
                                  string currency = null,
                                  string description = null,
-                                 List<Pay.ValidCardTypesEnum> validCardTypes = null,
+                                 IEnumerable<Pay.ValidCardTypesEnum> validCardTypes = null,
                                  Pay.LanguageEnum language = null)
         {
             var newChild = new Pay(
@@ -625,9 +625,9 @@ namespace Twilio.TwiML
         /// <param name="requireMatchingInputs"> Require customer to input requested information twice and verify matching.
         ///                             </param>
         public VoiceResponse Prompt(Prompt.ForEnum for_ = null,
-                                    List<Prompt.ErrorTypeEnum> errorType = null,
-                                    List<Prompt.CardTypeEnum> cardType = null,
-                                    List<int> attempt = null,
+                                    IEnumerable<Prompt.ErrorTypeEnum> errorType = null,
+                                    IEnumerable<Prompt.CardTypeEnum> cardType = null,
+                                    IEnumerable<int> attempt = null,
                                     bool? requireMatchingInputs = null)
         {
             var newChild = new Prompt(for_, errorType, cardType, attempt, requireMatchingInputs);
