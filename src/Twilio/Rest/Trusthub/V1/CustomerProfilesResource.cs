@@ -304,8 +304,8 @@ namespace Twilio.Rest.Trusthub.V1
         /// <param name="friendlyName"> The string that you assigned to describe the resource. </param>
         /// <param name="policySid"> The unique string of a policy that is associated to the Customer-Profile resource. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of CustomerProfiles </returns>
         public static ResourceSet<CustomerProfilesResource> Read(
                                                      CustomerProfilesResource.StatusEnum status = null,
@@ -325,8 +325,8 @@ namespace Twilio.Rest.Trusthub.V1
         /// <param name="friendlyName"> The string that you assigned to describe the resource. </param>
         /// <param name="policySid"> The unique string of a policy that is associated to the Customer-Profile resource. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CustomerProfiles </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<CustomerProfilesResource>> ReadAsync(
                                                                                              CustomerProfilesResource.StatusEnum status = null,

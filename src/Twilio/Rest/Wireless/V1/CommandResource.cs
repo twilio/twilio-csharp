@@ -356,8 +356,8 @@ namespace Twilio.Rest.Wireless.V1
         /// <param name="direction"> Only return Commands with this direction value. </param>
         /// <param name="transport"> Only return Commands with this transport value. Can be: `sms` or `ip`. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Command </returns>
         public static ResourceSet<CommandResource> Read(
                                                      string sim = null,
@@ -379,8 +379,8 @@ namespace Twilio.Rest.Wireless.V1
         /// <param name="direction"> Only return Commands with this direction value. </param>
         /// <param name="transport"> Only return Commands with this transport value. Can be: `sms` or `ip`. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Command </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<CommandResource>> ReadAsync(
                                                                                              string sim = null,

@@ -317,8 +317,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         /// <param name="pathIpAccessControlListSid"> The IpAccessControlList Sid that identifies the IpAddress resources to read. </param>
         /// <param name="pathAccountSid"> The unique id of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this resource. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of IpAddress </returns>
         public static ResourceSet<IpAddressResource> Read(
                                                      string pathIpAccessControlListSid,
@@ -336,8 +336,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         /// <param name="pathIpAccessControlListSid"> The IpAccessControlList Sid that identifies the IpAddress resources to read. </param>
         /// <param name="pathAccountSid"> The unique id of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this resource. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IpAddress </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<IpAddressResource>> ReadAsync(
                                                                                              string pathIpAccessControlListSid,

@@ -89,7 +89,9 @@ namespace Twilio.TwiML.Voice
             public static readonly VoiceEnum PollyVitoria = new VoiceEnum("Polly.Vitoria");
             public static readonly VoiceEnum PollyZeina = new VoiceEnum("Polly.Zeina");
             public static readonly VoiceEnum PollyZhiyu = new VoiceEnum("Polly.Zhiyu");
+            public static readonly VoiceEnum PollyAdrianoNeural = new VoiceEnum("Polly.Adriano-Neural");
             public static readonly VoiceEnum PollyAmyNeural = new VoiceEnum("Polly.Amy-Neural");
+            public static readonly VoiceEnum PollyAndresNeural = new VoiceEnum("Polly.Andres-Neural");
             public static readonly VoiceEnum PollyAriaNeural = new VoiceEnum("Polly.Aria-Neural");
             public static readonly VoiceEnum PollyArletNeural = new VoiceEnum("Polly.Arlet-Neural");
             public static readonly VoiceEnum PollyArthurNeural = new VoiceEnum("Polly.Arthur-Neural");
@@ -111,6 +113,7 @@ namespace Twilio.TwiML.Voice
             public static readonly VoiceEnum PollyJoeyNeural = new VoiceEnum("Polly.Joey-Neural");
             public static readonly VoiceEnum PollyJustinNeural = new VoiceEnum("Polly.Justin-Neural");
             public static readonly VoiceEnum PollyKajalNeural = new VoiceEnum("Polly.Kajal-Neural");
+            public static readonly VoiceEnum PollyKazuhaNeural = new VoiceEnum("Polly.Kazuha-Neural");
             public static readonly VoiceEnum PollyKendraNeural = new VoiceEnum("Polly.Kendra-Neural");
             public static readonly VoiceEnum PollyKevinNeural = new VoiceEnum("Polly.Kevin-Neural");
             public static readonly VoiceEnum PollyKimberlyNeural = new VoiceEnum("Polly.Kimberly-Neural");
@@ -124,10 +127,16 @@ namespace Twilio.TwiML.Voice
             public static readonly VoiceEnum PollyOlaNeural = new VoiceEnum("Polly.Ola-Neural");
             public static readonly VoiceEnum PollyOliviaNeural = new VoiceEnum("Polly.Olivia-Neural");
             public static readonly VoiceEnum PollyPedroNeural = new VoiceEnum("Polly.Pedro-Neural");
+            public static readonly VoiceEnum PollyRemiNeural = new VoiceEnum("Polly.Remi-Neural");
+            public static readonly VoiceEnum PollyRuthNeural = new VoiceEnum("Polly.Ruth-Neural");
             public static readonly VoiceEnum PollySalliNeural = new VoiceEnum("Polly.Salli-Neural");
             public static readonly VoiceEnum PollySeoyeonNeural = new VoiceEnum("Polly.Seoyeon-Neural");
+            public static readonly VoiceEnum PollySergioNeural = new VoiceEnum("Polly.Sergio-Neural");
+            public static readonly VoiceEnum PollyStephenNeural = new VoiceEnum("Polly.Stephen-Neural");
             public static readonly VoiceEnum PollySuviNeural = new VoiceEnum("Polly.Suvi-Neural");
             public static readonly VoiceEnum PollyTakumiNeural = new VoiceEnum("Polly.Takumi-Neural");
+            public static readonly VoiceEnum PollyTomokoNeural = new VoiceEnum("Polly.Tomoko-Neural");
+            public static readonly VoiceEnum PollyThiagoNeural = new VoiceEnum("Polly.Thiago-Neural");
             public static readonly VoiceEnum PollyVickiNeural = new VoiceEnum("Polly.Vicki-Neural");
             public static readonly VoiceEnum PollyVitoriaNeural = new VoiceEnum("Polly.Vitoria-Neural");
             public static readonly VoiceEnum PollyZhiyuNeural = new VoiceEnum("Polly.Zhiyu-Neural");

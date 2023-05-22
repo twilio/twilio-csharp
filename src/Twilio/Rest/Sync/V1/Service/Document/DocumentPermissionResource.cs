@@ -231,8 +231,8 @@ namespace Twilio.Rest.Sync.V1.Service.Document
         /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Document Permission resources to read. </param>
         /// <param name="pathDocumentSid"> The SID of the Sync Document with the Document Permission resources to read. Can be the Document resource's `sid` or its `unique_name`. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of DocumentPermission </returns>
         public static ResourceSet<DocumentPermissionResource> Read(
                                                      string pathServiceSid,
@@ -250,8 +250,8 @@ namespace Twilio.Rest.Sync.V1.Service.Document
         /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Document Permission resources to read. </param>
         /// <param name="pathDocumentSid"> The SID of the Sync Document with the Document Permission resources to read. Can be the Document resource's `sid` or its `unique_name`. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of DocumentPermission </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<DocumentPermissionResource>> ReadAsync(
                                                                                              string pathServiceSid,

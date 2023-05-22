@@ -77,8 +77,8 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions.Country
         /// <summary> Fetch the high-risk special services prefixes from the country resource corresponding to the [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) </summary>
         /// <param name="pathIsoCode"> The [ISO 3166-1 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) to identify the country permissions from which high-risk special service number prefixes are fetched </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of HighriskSpecialPrefix </returns>
         public static ResourceSet<HighriskSpecialPrefixResource> Read(
                                                      string pathIsoCode,
@@ -94,8 +94,8 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions.Country
         /// <summary> Fetch the high-risk special services prefixes from the country resource corresponding to the [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) </summary>
         /// <param name="pathIsoCode"> The [ISO 3166-1 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) to identify the country permissions from which high-risk special service number prefixes are fetched </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of HighriskSpecialPrefix </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<HighriskSpecialPrefixResource>> ReadAsync(
                                                                                              string pathIsoCode,

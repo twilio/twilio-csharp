@@ -169,8 +169,8 @@ namespace Twilio.Rest.Serverless.V1.Service.Asset
         /// <param name="pathServiceSid"> The SID of the Service to read the Asset Version resource from. </param>
         /// <param name="pathAssetSid"> The SID of the Asset resource that is the parent of the Asset Version resources to read. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of AssetVersion </returns>
         public static ResourceSet<AssetVersionResource> Read(
                                                      string pathServiceSid,
@@ -188,8 +188,8 @@ namespace Twilio.Rest.Serverless.V1.Service.Asset
         /// <param name="pathServiceSid"> The SID of the Service to read the Asset Version resource from. </param>
         /// <param name="pathAssetSid"> The SID of the Asset resource that is the parent of the Asset Version resources to read. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AssetVersion </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<AssetVersionResource>> ReadAsync(
                                                                                              string pathServiceSid,

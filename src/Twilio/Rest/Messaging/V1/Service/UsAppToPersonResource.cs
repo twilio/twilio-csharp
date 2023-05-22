@@ -339,8 +339,8 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <summary> read </summary>
         /// <param name="pathMessagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) to fetch the resource from. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of UsAppToPerson </returns>
         public static ResourceSet<UsAppToPersonResource> Read(
                                                      string pathMessagingServiceSid,
@@ -356,8 +356,8 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <summary> read </summary>
         /// <param name="pathMessagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) to fetch the resource from. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of UsAppToPerson </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<UsAppToPersonResource>> ReadAsync(
                                                                                              string pathMessagingServiceSid,
@@ -461,7 +461,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         [JsonProperty("message_samples")]
         public List<string> MessageSamples { get; private set; }
 
-        ///<summary> A2P Campaign Use Case. Examples: [ 2FA, EMERGENCY, MARKETING, STARTER...]. STARTER campaign use cases can only be created by STARTER Brands, and there can only be one STARTER campaign created per STARTER Brand. </summary> 
+        ///<summary> A2P Campaign Use Case. Examples: [ 2FA, EMERGENCY, MARKETING, SOLE_PROPRIETOR...]. SOLE_PROPRIETOR campaign use cases can only be created by SOLE_PROPRIETOR Brands, and there can only be one SOLE_PROPRIETOR campaign created per SOLE_PROPRIETOR Brand. </summary> 
         [JsonProperty("us_app_to_person_usecase")]
         public string UsAppToPersonUsecase { get; private set; }
 

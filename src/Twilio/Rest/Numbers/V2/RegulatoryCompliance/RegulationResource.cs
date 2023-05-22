@@ -155,8 +155,8 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         /// <param name="isoCountry"> The ISO country code of the phone number's country. </param>
         /// <param name="numberType"> The type of phone number that the regulatory requiremnt is restricting. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Regulation </returns>
         public static ResourceSet<RegulationResource> Read(
                                                      RegulationResource.EndUserTypeEnum endUserType = null,
@@ -176,8 +176,8 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         /// <param name="isoCountry"> The ISO country code of the phone number's country. </param>
         /// <param name="numberType"> The type of phone number that the regulatory requiremnt is restricting. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Regulation </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<RegulationResource>> ReadAsync(
                                                                                              RegulationResource.EndUserTypeEnum endUserType = null,

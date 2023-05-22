@@ -149,8 +149,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="friendlyName"> The string that identifies the ShortCode resources to read. </param>
         /// <param name="shortCode"> Only show the ShortCode resources that match this pattern. You can specify partial numbers and use '*' as a wildcard for any digit. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of ShortCode </returns>
         public static ResourceSet<ShortCodeResource> Read(
                                                      string pathAccountSid = null,
@@ -170,8 +170,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="friendlyName"> The string that identifies the ShortCode resources to read. </param>
         /// <param name="shortCode"> Only show the ShortCode resources that match this pattern. You can specify partial numbers and use '*' as a wildcard for any digit. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ShortCode </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<ShortCodeResource>> ReadAsync(
                                                                                              string pathAccountSid = null,

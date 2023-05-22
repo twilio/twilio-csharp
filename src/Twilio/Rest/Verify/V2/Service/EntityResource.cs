@@ -291,8 +291,8 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <summary> Retrieve a list of all Entities for a Service. </summary>
         /// <param name="pathServiceSid"> The unique SID identifier of the Service. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Entity </returns>
         public static ResourceSet<EntityResource> Read(
                                                      string pathServiceSid,
@@ -308,8 +308,8 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <summary> Retrieve a list of all Entities for a Service. </summary>
         /// <param name="pathServiceSid"> The unique SID identifier of the Service. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Entity </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<EntityResource>> ReadAsync(
                                                                                              string pathServiceSid,

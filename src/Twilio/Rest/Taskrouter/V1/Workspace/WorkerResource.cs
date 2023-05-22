@@ -309,8 +309,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="taskQueueSid"> The SID of the TaskQueue that the Workers to read are eligible for. </param>
         /// <param name="ordering"> Sorting parameter for Workers </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Worker </returns>
         public static ResourceSet<WorkerResource> Read(
                                                      string pathWorkspaceSid,
@@ -342,8 +342,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="taskQueueSid"> The SID of the TaskQueue that the Workers to read are eligible for. </param>
         /// <param name="ordering"> Sorting parameter for Workers </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Worker </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<WorkerResource>> ReadAsync(
                                                                                              string pathWorkspaceSid,

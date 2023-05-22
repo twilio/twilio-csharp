@@ -347,8 +347,8 @@ namespace Twilio.Rest.Chat.V2.Service
         /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to read the Channel resources from. </param>
         /// <param name="type"> The visibility of the Channels to read. Can be: `public` or `private` and defaults to `public`. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Channel </returns>
         public static ResourceSet<ChannelResource> Read(
                                                      string pathServiceSid,
@@ -366,8 +366,8 @@ namespace Twilio.Rest.Chat.V2.Service
         /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to read the Channel resources from. </param>
         /// <param name="type"> The visibility of the Channels to read. Can be: `public` or `private` and defaults to `public`. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Channel </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<ChannelResource>> ReadAsync(
                                                                                              string pathServiceSid,

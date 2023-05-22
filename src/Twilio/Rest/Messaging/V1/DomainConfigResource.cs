@@ -140,42 +140,42 @@ namespace Twilio.Rest.Messaging.V1
 
         /// <summary> update </summary>
         /// <param name="pathDomainSid"> Unique string used to identify the domain that this config should be associated with. </param>
-        /// <param name="messagingServiceSids"> A list of messagingServiceSids (with prefix MG) </param>
         /// <param name="fallbackUrl"> Any requests we receive to this domain that do not match an existing shortened message will be redirected to the fallback url. These will likely be either expired messages, random misdirected traffic, or intentional scraping. </param>
         /// <param name="callbackUrl"> URL to receive click events to your webhook whenever the recipients click on the shortened links </param>
-        /// <param name="messagingServiceSidsAction"> An action type for messaging_service_sids operation (ADD, DELETE, REPLACE) </param>
+        /// <param name="continueOnFailure"> Boolean field to set customer delivery preference when there is a failure in linkShortening service </param>
+        /// <param name="disableHttps"> Customer's choice to send links with/without \\\"https://\\\" attached to shortened url. If true, messages will not be sent with https:// at the beginning of the url. If false, messages will be sent with https:// at the beginning of the url. False is the default behavior if it is not specified. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of DomainConfig </returns>
         public static DomainConfigResource Update(
                                           string pathDomainSid,
-                                          List<string> messagingServiceSids,
                                           Uri fallbackUrl = null,
                                           Uri callbackUrl = null,
-                                          string messagingServiceSidsAction = null,
+                                          bool? continueOnFailure = null,
+                                          bool? disableHttps = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new UpdateDomainConfigOptions(pathDomainSid, messagingServiceSids){ FallbackUrl = fallbackUrl, CallbackUrl = callbackUrl, MessagingServiceSidsAction = messagingServiceSidsAction };
+            var options = new UpdateDomainConfigOptions(pathDomainSid){ FallbackUrl = fallbackUrl, CallbackUrl = callbackUrl, ContinueOnFailure = continueOnFailure, DisableHttps = disableHttps };
             return Update(options, client);
         }
 
         #if !NET35
         /// <summary> update </summary>
         /// <param name="pathDomainSid"> Unique string used to identify the domain that this config should be associated with. </param>
-        /// <param name="messagingServiceSids"> A list of messagingServiceSids (with prefix MG) </param>
         /// <param name="fallbackUrl"> Any requests we receive to this domain that do not match an existing shortened message will be redirected to the fallback url. These will likely be either expired messages, random misdirected traffic, or intentional scraping. </param>
         /// <param name="callbackUrl"> URL to receive click events to your webhook whenever the recipients click on the shortened links </param>
-        /// <param name="messagingServiceSidsAction"> An action type for messaging_service_sids operation (ADD, DELETE, REPLACE) </param>
+        /// <param name="continueOnFailure"> Boolean field to set customer delivery preference when there is a failure in linkShortening service </param>
+        /// <param name="disableHttps"> Customer's choice to send links with/without \\\"https://\\\" attached to shortened url. If true, messages will not be sent with https:// at the beginning of the url. If false, messages will be sent with https:// at the beginning of the url. False is the default behavior if it is not specified. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of DomainConfig </returns>
         public static async System.Threading.Tasks.Task<DomainConfigResource> UpdateAsync(
                                                                               string pathDomainSid,
-                                                                              List<string> messagingServiceSids,
                                                                               Uri fallbackUrl = null,
                                                                               Uri callbackUrl = null,
-                                                                              string messagingServiceSidsAction = null,
+                                                                              bool? continueOnFailure = null,
+                                                                              bool? disableHttps = null,
                                                                               ITwilioRestClient client = null)
         {
-            var options = new UpdateDomainConfigOptions(pathDomainSid, messagingServiceSids){ FallbackUrl = fallbackUrl, CallbackUrl = callbackUrl, MessagingServiceSidsAction = messagingServiceSidsAction };
+            var options = new UpdateDomainConfigOptions(pathDomainSid){ FallbackUrl = fallbackUrl, CallbackUrl = callbackUrl, ContinueOnFailure = continueOnFailure, DisableHttps = disableHttps };
             return await UpdateAsync(options, client);
         }
         #endif
@@ -206,10 +206,6 @@ namespace Twilio.Rest.Messaging.V1
         [JsonProperty("config_sid")]
         public string ConfigSid { get; private set; }
 
-        ///<summary> A list of messagingServiceSids (with prefix MG). </summary> 
-        [JsonProperty("messaging_service_sids")]
-        public List<string> MessagingServiceSids { get; private set; }
-
         ///<summary> Any requests we receive to this domain that do not match an existing shortened message will be redirected to the fallback url. These will likely be either expired messages, random misdirected traffic, or intentional scraping. </summary> 
         [JsonProperty("fallback_url")]
         public Uri FallbackUrl { get; private set; }
@@ -217,6 +213,10 @@ namespace Twilio.Rest.Messaging.V1
         ///<summary> URL to receive click events to your webhook whenever the recipients click on the shortened links. </summary> 
         [JsonProperty("callback_url")]
         public Uri CallbackUrl { get; private set; }
+
+        ///<summary> Boolean field to set customer delivery preference when there is a failure in linkShortening service </summary> 
+        [JsonProperty("continue_on_failure")]
+        public bool? ContinueOnFailure { get; private set; }
 
         ///<summary> Date this Domain Config was created. </summary> 
         [JsonProperty("date_created")]
@@ -229,6 +229,10 @@ namespace Twilio.Rest.Messaging.V1
         ///<summary> The url </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
+
+        ///<summary> Customer's choice to send links with/without \"https://\" attached to shortened url. If true, messages will not be sent with https:// at the beginning of the url. If false, messages will be sent with https:// at the beginning of the url. False is the default behavior if it is not specified. </summary> 
+        [JsonProperty("disable_https")]
+        public bool? DisableHttps { get; private set; }
 
 
 

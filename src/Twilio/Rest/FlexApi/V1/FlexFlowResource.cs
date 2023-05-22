@@ -369,8 +369,8 @@ namespace Twilio.Rest.FlexApi.V1
         /// <summary> read </summary>
         /// <param name="friendlyName"> The `friendly_name` of the Flex Flow resources to read. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of FlexFlow </returns>
         public static ResourceSet<FlexFlowResource> Read(
                                                      string friendlyName = null,
@@ -386,8 +386,8 @@ namespace Twilio.Rest.FlexApi.V1
         /// <summary> read </summary>
         /// <param name="friendlyName"> The `friendly_name` of the Flex Flow resources to read. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of FlexFlow </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<FlexFlowResource>> ReadAsync(
                                                                                              string friendlyName = null,

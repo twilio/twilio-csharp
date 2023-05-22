@@ -72,7 +72,7 @@ namespace Twilio.Rest.Verify.V2
         #endif
 
         /// <summary> Create a new Verification Service. </summary>
-        /// <param name="friendlyName"> A descriptive string that you create to describe the verification service. It can be up to 30 characters long. **This value should not contain PII.** </param>
+        /// <param name="friendlyName"> A descriptive string that you create to describe the verification service. It can be up to 32 characters long. **This value should not contain PII.** </param>
         /// <param name="codeLength"> The length of the verification code to generate. Must be an integer value between 4 and 10, inclusive. </param>
         /// <param name="lookupEnabled"> Whether to perform a lookup with each verification started and return info about the phone number. </param>
         /// <param name="skipSmsToLandlines"> Whether to skip sending SMS verifications to landlines. Requires `lookup_enabled`. </param>
@@ -117,7 +117,7 @@ namespace Twilio.Rest.Verify.V2
 
         #if !NET35
         /// <summary> Create a new Verification Service. </summary>
-        /// <param name="friendlyName"> A descriptive string that you create to describe the verification service. It can be up to 30 characters long. **This value should not contain PII.** </param>
+        /// <param name="friendlyName"> A descriptive string that you create to describe the verification service. It can be up to 32 characters long. **This value should not contain PII.** </param>
         /// <param name="codeLength"> The length of the verification code to generate. Must be an integer value between 4 and 10, inclusive. </param>
         /// <param name="lookupEnabled"> Whether to perform a lookup with each verification started and return info about the phone number. </param>
         /// <param name="skipSmsToLandlines"> Whether to skip sending SMS verifications to landlines. Requires `lookup_enabled`. </param>
@@ -337,8 +337,8 @@ namespace Twilio.Rest.Verify.V2
         #endif
         /// <summary> Retrieve a list of all Verification Services for an account. </summary>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns>
         public static ResourceSet<ServiceResource> Read(
                                                      int? pageSize = null,
@@ -352,8 +352,8 @@ namespace Twilio.Rest.Verify.V2
         #if !NET35
         /// <summary> Retrieve a list of all Verification Services for an account. </summary>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<ServiceResource>> ReadAsync(
                                                                                              int? pageSize = null,
@@ -458,7 +458,7 @@ namespace Twilio.Rest.Verify.V2
 
         /// <summary> Update a specific Verification Service. </summary>
         /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Service resource to update. </param>
-        /// <param name="friendlyName"> A descriptive string that you create to describe the verification service. It can be up to 30 characters long. **This value should not contain PII.** </param>
+        /// <param name="friendlyName"> A descriptive string that you create to describe the verification service. It can be up to 32 characters long. **This value should not contain PII.** </param>
         /// <param name="codeLength"> The length of the verification code to generate. Must be an integer value between 4 and 10, inclusive. </param>
         /// <param name="lookupEnabled"> Whether to perform a lookup with each verification started and return info about the phone number. </param>
         /// <param name="skipSmsToLandlines"> Whether to skip sending SMS verifications to landlines. Requires `lookup_enabled`. </param>
@@ -505,7 +505,7 @@ namespace Twilio.Rest.Verify.V2
         #if !NET35
         /// <summary> Update a specific Verification Service. </summary>
         /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Service resource to update. </param>
-        /// <param name="friendlyName"> A descriptive string that you create to describe the verification service. It can be up to 30 characters long. **This value should not contain PII.** </param>
+        /// <param name="friendlyName"> A descriptive string that you create to describe the verification service. It can be up to 32 characters long. **This value should not contain PII.** </param>
         /// <param name="codeLength"> The length of the verification code to generate. Must be an integer value between 4 and 10, inclusive. </param>
         /// <param name="lookupEnabled"> Whether to perform a lookup with each verification started and return info about the phone number. </param>
         /// <param name="skipSmsToLandlines"> Whether to skip sending SMS verifications to landlines. Requires `lookup_enabled`. </param>
@@ -576,7 +576,7 @@ namespace Twilio.Rest.Verify.V2
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The string that you assigned to describe the verification service. **This value should not contain PII.** </summary> 
+        ///<summary> The string that you assigned to describe the verification service. It can be up to 32 characters long. **This value should not contain PII.** </summary> 
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
 

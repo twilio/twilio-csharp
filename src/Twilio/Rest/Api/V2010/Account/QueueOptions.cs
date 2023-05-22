@@ -34,7 +34,7 @@ namespace Twilio.Rest.Api.V2010.Account
         ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource. </summary> 
         public string PathAccountSid { get; set; }
 
-        ///<summary> The maximum number of calls allowed to be in the queue. The default is 100. The maximum is 5000. </summary> 
+        ///<summary> The maximum number of calls allowed to be in the queue. The default is 1000. The maximum is 5000. </summary> 
         public int? MaxSize { get; set; }
 
 
@@ -167,7 +167,7 @@ namespace Twilio.Rest.Api.V2010.Account
         ///<summary> A descriptive string that you created to describe this resource. It can be up to 64 characters long. </summary> 
         public string FriendlyName { get; set; }
 
-        ///<summary> The maximum number of calls allowed to be in the queue. The default is 100. The maximum is 5000. </summary> 
+        ///<summary> The maximum number of calls allowed to be in the queue. The default is 1000. The maximum is 5000. </summary> 
         public int? MaxSize { get; set; }
 
 

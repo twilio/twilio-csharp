@@ -295,8 +295,8 @@ namespace Twilio.Rest.Events.V1.Subscription
         /// <summary> Retrieve a list of all Subscribed Event types for a Subscription. </summary>
         /// <param name="pathSubscriptionSid"> The unique SID identifier of the Subscription. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SubscribedEvent </returns>
         public static ResourceSet<SubscribedEventResource> Read(
                                                      string pathSubscriptionSid,
@@ -312,8 +312,8 @@ namespace Twilio.Rest.Events.V1.Subscription
         /// <summary> Retrieve a list of all Subscribed Event types for a Subscription. </summary>
         /// <param name="pathSubscriptionSid"> The unique SID identifier of the Subscription. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SubscribedEvent </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<SubscribedEventResource>> ReadAsync(
                                                                                              string pathSubscriptionSid,

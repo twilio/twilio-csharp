@@ -216,6 +216,10 @@ namespace Twilio.Rest.Lookups.V2
         [JsonProperty("identity_match")]
         public object IdentityMatch { get; private set; }
 
+        ///<summary> An object that contains information on if a phone number has been currently or previously blocked by Verify Fraud Guard for receiving malicious SMS pumping traffic as well as other signals associated with risky carriers and low conversion rates. </summary> 
+        [JsonProperty("sms_pumping_risk")]
+        public object SmsPumpingRisk { get; private set; }
+
         ///<summary> The absolute URL of the resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }

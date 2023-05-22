@@ -326,8 +326,8 @@ namespace Twilio.Rest.Video.V1
         /// <param name="dateCreatedBefore"> Read only CompositionHook resources created before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) datetime with time zone. </param>
         /// <param name="friendlyName"> Read only CompositionHook resources with friendly names that match this string. The match is not case sensitive and can include asterisk `*` characters as wildcard match. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of CompositionHook </returns>
         public static ResourceSet<CompositionHookResource> Read(
                                                      bool? enabled = null,
@@ -349,8 +349,8 @@ namespace Twilio.Rest.Video.V1
         /// <param name="dateCreatedBefore"> Read only CompositionHook resources created before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) datetime with time zone. </param>
         /// <param name="friendlyName"> Read only CompositionHook resources with friendly names that match this string. The match is not case sensitive and can include asterisk `*` characters as wildcard match. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CompositionHook </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<CompositionHookResource>> ReadAsync(
                                                                                              bool? enabled = null,

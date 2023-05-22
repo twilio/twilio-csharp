@@ -245,8 +245,8 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         /// <param name="pathRecordingSid"> The SID of the [Recording](https://www.twilio.com/docs/voice/api/recording) that created the transcriptions to read. </param>
         /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Transcription resources to read. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Transcription </returns>
         public static ResourceSet<TranscriptionResource> Read(
                                                      string pathRecordingSid,
@@ -264,8 +264,8 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         /// <param name="pathRecordingSid"> The SID of the [Recording](https://www.twilio.com/docs/voice/api/recording) that created the transcriptions to read. </param>
         /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Transcription resources to read. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Transcription </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<TranscriptionResource>> ReadAsync(
                                                                                              string pathRecordingSid,

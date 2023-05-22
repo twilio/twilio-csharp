@@ -209,8 +209,8 @@ namespace Twilio.Rest.Supersim.V1
         #endif
         /// <summary> Retrieve a list of Network Access Profiles from your account. </summary>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of NetworkAccessProfile </returns>
         public static ResourceSet<NetworkAccessProfileResource> Read(
                                                      int? pageSize = null,
@@ -224,8 +224,8 @@ namespace Twilio.Rest.Supersim.V1
         #if !NET35
         /// <summary> Retrieve a list of Network Access Profiles from your account. </summary>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of NetworkAccessProfile </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<NetworkAccessProfileResource>> ReadAsync(
                                                                                              int? pageSize = null,

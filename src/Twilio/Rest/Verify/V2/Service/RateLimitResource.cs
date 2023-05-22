@@ -295,8 +295,8 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <summary> Retrieve a list of all Rate Limits for a service. </summary>
         /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/verify/api/service) the resource is associated with. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of RateLimit </returns>
         public static ResourceSet<RateLimitResource> Read(
                                                      string pathServiceSid,
@@ -312,8 +312,8 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <summary> Retrieve a list of all Rate Limits for a service. </summary>
         /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/verify/api/service) the resource is associated with. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of RateLimit </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<RateLimitResource>> ReadAsync(
                                                                                              string pathServiceSid,

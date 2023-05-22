@@ -313,8 +313,8 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
         /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
         /// <param name="pathTaskSid"> The unique ID of the Task associated with this Field. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Field </returns>
         public static ResourceSet<FieldResource> Read(
                                                      string pathAssistantSid,
@@ -332,8 +332,8 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
         /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
         /// <param name="pathTaskSid"> The unique ID of the Task associated with this Field. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Field </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<FieldResource>> ReadAsync(
                                                                                              string pathAssistantSid,

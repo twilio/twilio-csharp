@@ -309,8 +309,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// <param name="pathDomainSid"> A 34 character string that uniquely identifies the SIP Domain that includes the resource to read. </param>
         /// <param name="pathAccountSid"> The unique id of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this resource. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of CredentialListMapping </returns>
         public static ResourceSet<CredentialListMappingResource> Read(
                                                      string pathDomainSid,
@@ -328,8 +328,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// <param name="pathDomainSid"> A 34 character string that uniquely identifies the SIP Domain that includes the resource to read. </param>
         /// <param name="pathAccountSid"> The unique id of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this resource. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CredentialListMapping </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<CredentialListMappingResource>> ReadAsync(
                                                                                              string pathDomainSid,

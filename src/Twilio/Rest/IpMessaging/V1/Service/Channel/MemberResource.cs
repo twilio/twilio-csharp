@@ -314,8 +314,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         /// <param name="pathChannelSid">  </param>
         /// <param name="identity">  </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Member </returns>
         public static ResourceSet<MemberResource> Read(
                                                      string pathServiceSid,
@@ -335,8 +335,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         /// <param name="pathChannelSid">  </param>
         /// <param name="identity">  </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Member </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<MemberResource>> ReadAsync(
                                                                                              string pathServiceSid,

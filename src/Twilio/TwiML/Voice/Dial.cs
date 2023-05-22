@@ -175,7 +175,7 @@ namespace Twilio.TwiML.Voice
         /// <summary>
         /// Recording status callback events
         /// </summary>
-        public List<Dial.RecordingEventEnum> RecordingStatusCallbackEvent { get; set; }
+        public IEnumerable<Dial.RecordingEventEnum> RecordingStatusCallbackEvent { get; set; }
         /// <summary>
         /// Preserve the ringing behavior of the inbound call until the Dialed call picks up
         /// </summary>
@@ -236,7 +236,7 @@ namespace Twilio.TwiML.Voice
                     Dial.TrimEnum trim = null,
                     Uri recordingStatusCallback = null,
                     Twilio.Http.HttpMethod recordingStatusCallbackMethod = null,
-                    List<Dial.RecordingEventEnum> recordingStatusCallbackEvent = null,
+                    IEnumerable<Dial.RecordingEventEnum> recordingStatusCallbackEvent = null,
                     bool? answerOnBridge = null,
                     Dial.RingToneEnum ringTone = null,
                     Dial.RecordingTrackEnum recordingTrack = null,
@@ -361,7 +361,7 @@ namespace Twilio.TwiML.Voice
         public Dial Client(string identity = null,
                            Uri url = null,
                            Twilio.Http.HttpMethod method = null,
-                           List<Client.EventEnum> statusCallbackEvent = null,
+                           IEnumerable<Client.EventEnum> statusCallbackEvent = null,
                            Uri statusCallback = null,
                            Twilio.Http.HttpMethod statusCallbackMethod = null)
         {
@@ -424,12 +424,12 @@ namespace Twilio.TwiML.Voice
                                Conference.RegionEnum region = null,
                                string coach = null,
                                Conference.TrimEnum trim = null,
-                               List<Conference.EventEnum> statusCallbackEvent = null,
+                               IEnumerable<Conference.EventEnum> statusCallbackEvent = null,
                                Uri statusCallback = null,
                                Twilio.Http.HttpMethod statusCallbackMethod = null,
                                Uri recordingStatusCallback = null,
                                Twilio.Http.HttpMethod recordingStatusCallbackMethod = null,
-                               List<Conference.RecordingEventEnum> recordingStatusCallbackEvent = null,
+                               IEnumerable<Conference.RecordingEventEnum> recordingStatusCallbackEvent = null,
                                Uri eventCallbackUrl = null,
                                Conference.JitterBufferSizeEnum jitterBufferSize = null,
                                string participantLabel = null)
@@ -495,7 +495,7 @@ namespace Twilio.TwiML.Voice
                            string sendDigits = null,
                            Uri url = null,
                            Twilio.Http.HttpMethod method = null,
-                           List<Number.EventEnum> statusCallbackEvent = null,
+                           IEnumerable<Number.EventEnum> statusCallbackEvent = null,
                            Uri statusCallback = null,
                            Twilio.Http.HttpMethod statusCallbackMethod = null,
                            string byoc = null,
@@ -615,7 +615,7 @@ namespace Twilio.TwiML.Voice
                         string password = null,
                         Uri url = null,
                         Twilio.Http.HttpMethod method = null,
-                        List<Sip.EventEnum> statusCallbackEvent = null,
+                        IEnumerable<Sip.EventEnum> statusCallbackEvent = null,
                         Uri statusCallback = null,
                         Twilio.Http.HttpMethod statusCallbackMethod = null,
                         string machineDetection = null,
@@ -673,7 +673,7 @@ namespace Twilio.TwiML.Voice
         public Dial Application(string applicationSid = null,
                                 Uri url = null,
                                 Twilio.Http.HttpMethod method = null,
-                                List<Application.EventEnum> statusCallbackEvent = null,
+                                IEnumerable<Application.EventEnum> statusCallbackEvent = null,
                                 Uri statusCallback = null,
                                 Twilio.Http.HttpMethod statusCallbackMethod = null,
                                 string customerId = null,

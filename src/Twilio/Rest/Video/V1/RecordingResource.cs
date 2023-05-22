@@ -270,8 +270,8 @@ namespace Twilio.Rest.Video.V1
         /// <param name="dateCreatedBefore"> Read only recordings that started before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date-time with time zone, given as `YYYY-MM-DDThh:mm:ss+|-hh:mm` or `YYYY-MM-DDThh:mm:ssZ`. </param>
         /// <param name="mediaType"> Read only recordings that have this media type. Can be either `audio` or `video`. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Recording </returns>
         public static ResourceSet<RecordingResource> Read(
                                                      RecordingResource.StatusEnum status = null,
@@ -297,8 +297,8 @@ namespace Twilio.Rest.Video.V1
         /// <param name="dateCreatedBefore"> Read only recordings that started before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date-time with time zone, given as `YYYY-MM-DDThh:mm:ss+|-hh:mm` or `YYYY-MM-DDThh:mm:ssZ`. </param>
         /// <param name="mediaType"> Read only recordings that have this media type. Can be either `audio` or `video`. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Recording </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<RecordingResource>> ReadAsync(
                                                                                              RecordingResource.StatusEnum status = null,

@@ -145,8 +145,8 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
         /// <param name="highRiskSpecialNumbersEnabled"> Filter to retrieve the country permissions with dialing to high-risk special service numbers enabled. Can be: `true` or `false` </param>
         /// <param name="highRiskTollfraudNumbersEnabled"> Filter to retrieve the country permissions with dialing to high-risk [toll fraud](https://www.twilio.com/learn/voice-and-video/toll-fraud) numbers enabled. Can be: `true` or `false`. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Country </returns>
         public static ResourceSet<CountryResource> Read(
                                                      string isoCode = null,
@@ -172,8 +172,8 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
         /// <param name="highRiskSpecialNumbersEnabled"> Filter to retrieve the country permissions with dialing to high-risk special service numbers enabled. Can be: `true` or `false` </param>
         /// <param name="highRiskTollfraudNumbersEnabled"> Filter to retrieve the country permissions with dialing to high-risk [toll fraud](https://www.twilio.com/learn/voice-and-video/toll-fraud) numbers enabled. Can be: `true` or `false`. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Country </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<CountryResource>> ReadAsync(
                                                                                              string isoCode = null,

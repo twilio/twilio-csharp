@@ -34,7 +34,7 @@ namespace Twilio.Rest.FlexApi.V1
         private static Request BuildCreateRequest(CreateInsightsQuestionnairesQuestionOptions options, ITwilioRestClient client)
         {
             
-            string path = "/v1/Insights/QM/Questions";
+            string path = "/v1/Insights/QualityManagement/Questions";
 
 
             return new Request(
@@ -72,47 +72,47 @@ namespace Twilio.Rest.FlexApi.V1
         #endif
 
         /// <summary> To create a question for a Category </summary>
-        /// <param name="categoryId"> The ID of the category </param>
+        /// <param name="categorySid"> The SID of the category </param>
         /// <param name="question"> The question. </param>
-        /// <param name="description"> The description for the question. </param>
         /// <param name="answerSetId"> The answer_set for the question. </param>
         /// <param name="allowNa"> The flag to enable for disable NA for answer. </param>
-        /// <param name="token"> The Token HTTP request header </param>
+        /// <param name="description"> The description for the question. </param>
+        /// <param name="authorization"> The Authorization HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of InsightsQuestionnairesQuestion </returns>
         public static InsightsQuestionnairesQuestionResource Create(
-                                          string categoryId,
+                                          string categorySid,
                                           string question,
-                                          string description,
                                           string answerSetId,
                                           bool? allowNa,
-                                          string token = null,
+                                          string description = null,
+                                          string authorization = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new CreateInsightsQuestionnairesQuestionOptions(categoryId, question, description, answerSetId, allowNa){  Token = token };
+            var options = new CreateInsightsQuestionnairesQuestionOptions(categorySid, question, answerSetId, allowNa){  Description = description, Authorization = authorization };
             return Create(options, client);
         }
 
         #if !NET35
         /// <summary> To create a question for a Category </summary>
-        /// <param name="categoryId"> The ID of the category </param>
+        /// <param name="categorySid"> The SID of the category </param>
         /// <param name="question"> The question. </param>
-        /// <param name="description"> The description for the question. </param>
         /// <param name="answerSetId"> The answer_set for the question. </param>
         /// <param name="allowNa"> The flag to enable for disable NA for answer. </param>
-        /// <param name="token"> The Token HTTP request header </param>
+        /// <param name="description"> The description for the question. </param>
+        /// <param name="authorization"> The Authorization HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InsightsQuestionnairesQuestion </returns>
         public static async System.Threading.Tasks.Task<InsightsQuestionnairesQuestionResource> CreateAsync(
-                                                                                  string categoryId,
+                                                                                  string categorySid,
                                                                                   string question,
-                                                                                  string description,
                                                                                   string answerSetId,
                                                                                   bool? allowNa,
-                                                                                  string token = null,
+                                                                                  string description = null,
+                                                                                  string authorization = null,
                                                                                   ITwilioRestClient client = null)
         {
-        var options = new CreateInsightsQuestionnairesQuestionOptions(categoryId, question, description, answerSetId, allowNa){  Token = token };
+        var options = new CreateInsightsQuestionnairesQuestionOptions(categorySid, question, answerSetId, allowNa){  Description = description, Authorization = authorization };
             return await CreateAsync(options, client);
         }
         #endif
@@ -124,10 +124,10 @@ namespace Twilio.Rest.FlexApi.V1
         private static Request BuildDeleteRequest(DeleteInsightsQuestionnairesQuestionOptions options, ITwilioRestClient client)
         {
             
-            string path = "/v1/Insights/QM/Questions/{QuestionId}";
+            string path = "/v1/Insights/QualityManagement/Questions/{QuestionSid}";
 
-            string PathQuestionId = options.PathQuestionId;
-            path = path.Replace("{"+"QuestionId"+"}", PathQuestionId);
+            string PathQuestionSid = options.PathQuestionSid;
+            path = path.Replace("{"+"QuestionSid"+"}", PathQuestionSid);
 
             return new Request(
                 HttpMethod.Delete,
@@ -164,36 +164,164 @@ namespace Twilio.Rest.FlexApi.V1
         #endif
 
         /// <summary> delete </summary>
-        /// <param name="pathQuestionId"> The unique ID of the question </param>
-        /// <param name="token"> The Token HTTP request header </param>
+        /// <param name="pathQuestionSid"> The SID of the question </param>
+        /// <param name="authorization"> The Authorization HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of InsightsQuestionnairesQuestion </returns>
-        public static bool Delete(string pathQuestionId, string token = null, ITwilioRestClient client = null)
+        public static bool Delete(string pathQuestionSid, string authorization = null, ITwilioRestClient client = null)
         {
-            var options = new DeleteInsightsQuestionnairesQuestionOptions(pathQuestionId)      { Token = token }   ;
+            var options = new DeleteInsightsQuestionnairesQuestionOptions(pathQuestionSid)      { Authorization = authorization }   ;
             return Delete(options, client);
         }
 
         #if !NET35
         /// <summary> delete </summary>
-        /// <param name="pathQuestionId"> The unique ID of the question </param>
-        /// <param name="token"> The Token HTTP request header </param>
+        /// <param name="pathQuestionSid"> The SID of the question </param>
+        /// <param name="authorization"> The Authorization HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InsightsQuestionnairesQuestion </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathQuestionId, string token = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathQuestionSid, string authorization = null, ITwilioRestClient client = null)
         {
-            var options = new DeleteInsightsQuestionnairesQuestionOptions(pathQuestionId)  { Token = token };
+            var options = new DeleteInsightsQuestionnairesQuestionOptions(pathQuestionSid)  { Authorization = authorization };
             return await DeleteAsync(options, client);
         }
         #endif
         
+        private static Request BuildReadRequest(ReadInsightsQuestionnairesQuestionOptions options, ITwilioRestClient client)
+        {
+            
+            string path = "/v1/Insights/QualityManagement/Questions";
+
+
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.FlexApi,
+                path,
+                queryParams: options.GetParams(),
+                headerParams: options.GetHeaderParams()
+            );
+        }
+        /// <summary> To get all the question for the given categories </summary>
+        /// <param name="options"> Read InsightsQuestionnairesQuestion parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of InsightsQuestionnairesQuestion </returns>
+        public static ResourceSet<InsightsQuestionnairesQuestionResource> Read(ReadInsightsQuestionnairesQuestionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<InsightsQuestionnairesQuestionResource>.FromJson("questions", response.Content);
+            return new ResourceSet<InsightsQuestionnairesQuestionResource>(page, options, client);
+        }
+
+        #if !NET35
+        /// <summary> To get all the question for the given categories </summary>
+        /// <param name="options"> Read InsightsQuestionnairesQuestion parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of InsightsQuestionnairesQuestion </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<InsightsQuestionnairesQuestionResource>> ReadAsync(ReadInsightsQuestionnairesQuestionOptions options,
+                                                                                             ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<InsightsQuestionnairesQuestionResource>.FromJson("questions", response.Content);
+            return new ResourceSet<InsightsQuestionnairesQuestionResource>(page, options, client);
+        }
+        #endif
+        /// <summary> To get all the question for the given categories </summary>
+        /// <param name="authorization"> The Authorization HTTP request header </param>
+        /// <param name="categorySid"> The list of category SIDs </param>
+        /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
+        /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of InsightsQuestionnairesQuestion </returns>
+        public static ResourceSet<InsightsQuestionnairesQuestionResource> Read(
+                                                     string authorization = null,
+                                                     List<string> categorySid = null,
+                                                     int? pageSize = null,
+                                                     long? limit = null,
+                                                     ITwilioRestClient client = null)
+        {
+            var options = new ReadInsightsQuestionnairesQuestionOptions(){ Authorization = authorization, CategorySid = categorySid, PageSize = pageSize, Limit = limit};
+            return Read(options, client);
+        }
+
+        #if !NET35
+        /// <summary> To get all the question for the given categories </summary>
+        /// <param name="authorization"> The Authorization HTTP request header </param>
+        /// <param name="categorySid"> The list of category SIDs </param>
+        /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
+        /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of InsightsQuestionnairesQuestion </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<InsightsQuestionnairesQuestionResource>> ReadAsync(
+                                                                                             string authorization = null,
+                                                                                             List<string> categorySid = null,
+                                                                                             int? pageSize = null,
+                                                                                             long? limit = null,
+                                                                                             ITwilioRestClient client = null)
+        {
+            var options = new ReadInsightsQuestionnairesQuestionOptions(){ Authorization = authorization, CategorySid = categorySid, PageSize = pageSize, Limit = limit};
+            return await ReadAsync(options, client);
+        }
+        #endif
+
+        
+        /// <summary> Fetch the target page of records </summary>
+        /// <param name="targetUrl"> API-generated URL for the requested results page </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> The target page of records </returns>
+        public static Page<InsightsQuestionnairesQuestionResource> GetPage(string targetUrl, ITwilioRestClient client)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+
+            var request = new Request(
+                HttpMethod.Get,
+                targetUrl
+            );
+
+            var response = client.Request(request);
+            return Page<InsightsQuestionnairesQuestionResource>.FromJson("questions", response.Content);
+        }
+
+        /// <summary> Fetch the next page of records </summary>
+        /// <param name="page"> current page of records </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> The next page of records </returns>
+        public static Page<InsightsQuestionnairesQuestionResource> NextPage(Page<InsightsQuestionnairesQuestionResource> page, ITwilioRestClient client)
+        {
+            var request = new Request(
+                HttpMethod.Get,
+                page.GetNextPageUrl(Rest.Domain.Api)
+            );
+
+            var response = client.Request(request);
+            return Page<InsightsQuestionnairesQuestionResource>.FromJson("questions", response.Content);
+        }
+
+        /// <summary> Fetch the previous page of records </summary>
+        /// <param name="page"> current page of records </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> The previous page of records </returns>
+        public static Page<InsightsQuestionnairesQuestionResource> PreviousPage(Page<InsightsQuestionnairesQuestionResource> page, ITwilioRestClient client)
+        {
+            var request = new Request(
+                HttpMethod.Get,
+                page.GetPreviousPageUrl(Rest.Domain.Api)
+            );
+
+            var response = client.Request(request);
+            return Page<InsightsQuestionnairesQuestionResource>.FromJson("questions", response.Content);
+        }
+
+        
         private static Request BuildUpdateRequest(UpdateInsightsQuestionnairesQuestionOptions options, ITwilioRestClient client)
         {
             
-            string path = "/v1/Insights/QM/Questions/{QuestionId}";
+            string path = "/v1/Insights/QualityManagement/Questions/{QuestionSid}";
 
-            string PathQuestionId = options.PathQuestionId;
-            path = path.Replace("{"+"QuestionId"+"}", PathQuestionId);
+            string PathQuestionSid = options.PathQuestionSid;
+            path = path.Replace("{"+"QuestionSid"+"}", PathQuestionSid);
 
             return new Request(
                 HttpMethod.Post,
@@ -230,51 +358,51 @@ namespace Twilio.Rest.FlexApi.V1
         #endif
 
         /// <summary> To update the question </summary>
-        /// <param name="pathQuestionId"> The unique ID of the question </param>
+        /// <param name="pathQuestionSid"> The SID of the question </param>
+        /// <param name="allowNa"> The flag to enable for disable NA for answer. </param>
+        /// <param name="categorySid"> The SID of the category </param>
         /// <param name="question"> The question. </param>
         /// <param name="description"> The description for the question. </param>
         /// <param name="answerSetId"> The answer_set for the question. </param>
-        /// <param name="allowNa"> The flag to enable for disable NA for answer. </param>
-        /// <param name="categoryId"> The ID of the category </param>
-        /// <param name="token"> The Token HTTP request header </param>
+        /// <param name="authorization"> The Authorization HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of InsightsQuestionnairesQuestion </returns>
         public static InsightsQuestionnairesQuestionResource Update(
-                                          string pathQuestionId,
-                                          string question,
-                                          string description,
-                                          string answerSetId,
+                                          string pathQuestionSid,
                                           bool? allowNa,
-                                          string categoryId = null,
-                                          string token = null,
+                                          string categorySid = null,
+                                          string question = null,
+                                          string description = null,
+                                          string answerSetId = null,
+                                          string authorization = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new UpdateInsightsQuestionnairesQuestionOptions(pathQuestionId, question, description, answerSetId, allowNa){ CategoryId = categoryId, Token = token };
+            var options = new UpdateInsightsQuestionnairesQuestionOptions(pathQuestionSid, allowNa){ CategorySid = categorySid, Question = question, Description = description, AnswerSetId = answerSetId, Authorization = authorization };
             return Update(options, client);
         }
 
         #if !NET35
         /// <summary> To update the question </summary>
-        /// <param name="pathQuestionId"> The unique ID of the question </param>
+        /// <param name="pathQuestionSid"> The SID of the question </param>
+        /// <param name="allowNa"> The flag to enable for disable NA for answer. </param>
+        /// <param name="categorySid"> The SID of the category </param>
         /// <param name="question"> The question. </param>
         /// <param name="description"> The description for the question. </param>
         /// <param name="answerSetId"> The answer_set for the question. </param>
-        /// <param name="allowNa"> The flag to enable for disable NA for answer. </param>
-        /// <param name="categoryId"> The ID of the category </param>
-        /// <param name="token"> The Token HTTP request header </param>
+        /// <param name="authorization"> The Authorization HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InsightsQuestionnairesQuestion </returns>
         public static async System.Threading.Tasks.Task<InsightsQuestionnairesQuestionResource> UpdateAsync(
-                                                                              string pathQuestionId,
-                                                                              string question,
-                                                                              string description,
-                                                                              string answerSetId,
+                                                                              string pathQuestionSid,
                                                                               bool? allowNa,
-                                                                              string categoryId = null,
-                                                                              string token = null,
+                                                                              string categorySid = null,
+                                                                              string question = null,
+                                                                              string description = null,
+                                                                              string answerSetId = null,
+                                                                              string authorization = null,
                                                                               ITwilioRestClient client = null)
         {
-            var options = new UpdateInsightsQuestionnairesQuestionOptions(pathQuestionId, question, description, answerSetId, allowNa){ CategoryId = categoryId, Token = token };
+            var options = new UpdateInsightsQuestionnairesQuestionOptions(pathQuestionSid, allowNa){ CategorySid = categorySid, Question = question, Description = description, AnswerSetId = answerSetId, Authorization = authorization };
             return await UpdateAsync(options, client);
         }
         #endif
@@ -301,9 +429,9 @@ namespace Twilio.Rest.FlexApi.V1
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The unique ID of the question </summary> 
-        [JsonProperty("question_id")]
-        public string QuestionId { get; private set; }
+        ///<summary> The SID of the question </summary> 
+        [JsonProperty("question_sid")]
+        public string QuestionSid { get; private set; }
 
         ///<summary> The question. </summary> 
         [JsonProperty("question")]
@@ -324,6 +452,14 @@ namespace Twilio.Rest.FlexApi.V1
         ///<summary> The flag  to enable for disable NA for answer. </summary> 
         [JsonProperty("allow_na")]
         public bool? AllowNa { get; private set; }
+
+        ///<summary> Integer value that tells a particular question is used by how many questionnaires </summary> 
+        [JsonProperty("usage")]
+        public int? Usage { get; private set; }
+
+        ///<summary> Set of answers for the question </summary> 
+        [JsonProperty("answer_set")]
+        public object AnswerSet { get; private set; }
 
         ///<summary> The url </summary> 
         [JsonProperty("url")]

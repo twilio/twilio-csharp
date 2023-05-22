@@ -142,8 +142,8 @@ namespace Twilio.Rest.Supersim.V1
         /// <param name="mcc"> The 'mobile country code' of a country. Network resources with this `mcc` in their `identifiers` will be read. </param>
         /// <param name="mnc"> The 'mobile network code' of a mobile operator network. Network resources with this `mnc` in their `identifiers` will be read. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Network </returns>
         public static ResourceSet<NetworkResource> Read(
                                                      string isoCountry = null,
@@ -163,8 +163,8 @@ namespace Twilio.Rest.Supersim.V1
         /// <param name="mcc"> The 'mobile country code' of a country. Network resources with this `mcc` in their `identifiers` will be read. </param>
         /// <param name="mnc"> The 'mobile network code' of a mobile operator network. Network resources with this `mnc` in their `identifiers` will be read. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Network </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<NetworkResource>> ReadAsync(
                                                                                              string isoCountry = null,

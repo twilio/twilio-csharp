@@ -308,8 +308,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Workflow to read. </param>
         /// <param name="friendlyName"> The `friendly_name` of the Workflow resources to read. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Workflow </returns>
         public static ResourceSet<WorkflowResource> Read(
                                                      string pathWorkspaceSid,
@@ -327,8 +327,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Workflow to read. </param>
         /// <param name="friendlyName"> The `friendly_name` of the Workflow resources to read. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Workflow </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<WorkflowResource>> ReadAsync(
                                                                                              string pathWorkspaceSid,

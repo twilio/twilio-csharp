@@ -71,25 +71,25 @@ namespace Twilio.Rest.FlexApi.V1
         }
         #endif
         /// <summary> This is used by Flex UI and Quality Management to fetch the Flex Insights roles for the user </summary>
-        /// <param name="token"> The Token HTTP request header </param>
+        /// <param name="authorization"> The Authorization HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of InsightsUserRoles </returns>
         public static InsightsUserRolesResource Fetch(
-                                         string token = null, 
+                                         string authorization = null, 
                                          ITwilioRestClient client = null)
         {
-            var options = new FetchInsightsUserRolesOptions(){ Token = token };
+            var options = new FetchInsightsUserRolesOptions(){ Authorization = authorization };
             return Fetch(options, client);
         }
 
         #if !NET35
         /// <summary> This is used by Flex UI and Quality Management to fetch the Flex Insights roles for the user </summary>
-        /// <param name="token"> The Token HTTP request header </param>
+        /// <param name="authorization"> The Authorization HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InsightsUserRoles </returns>
-        public static async System.Threading.Tasks.Task<InsightsUserRolesResource> FetchAsync(string token = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<InsightsUserRolesResource> FetchAsync(string authorization = null, ITwilioRestClient client = null)
         {
-            var options = new FetchInsightsUserRolesOptions(){ Token = token };
+            var options = new FetchInsightsUserRolesOptions(){ Authorization = authorization };
             return await FetchAsync(options, client);
         }
         #endif

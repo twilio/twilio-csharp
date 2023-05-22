@@ -307,8 +307,8 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// <param name="status"> The status of the resources to read. Can be: `pending-review`, `reviewed`, or `discarded` </param>
         /// <param name="dialogueSid"> The SID of the [Dialogue](https://www.twilio.com/docs/autopilot/api/dialogue). </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Query </returns>
         public static ResourceSet<QueryResource> Read(
                                                      string pathAssistantSid,
@@ -332,8 +332,8 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// <param name="status"> The status of the resources to read. Can be: `pending-review`, `reviewed`, or `discarded` </param>
         /// <param name="dialogueSid"> The SID of the [Dialogue](https://www.twilio.com/docs/autopilot/api/dialogue). </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Query </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<QueryResource>> ReadAsync(
                                                                                              string pathAssistantSid,
