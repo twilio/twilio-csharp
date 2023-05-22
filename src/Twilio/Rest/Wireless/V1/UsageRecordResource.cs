@@ -90,8 +90,8 @@ namespace Twilio.Rest.Wireless.V1
         /// <param name="start"> Only include usage that has occurred on or after this date. Format is [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html). </param>
         /// <param name="granularity"> How to summarize the usage by time. Can be: `daily`, `hourly`, or `all`. A value of `all` returns one Usage Record that describes the usage for the entire period. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of UsageRecord </returns>
         public static ResourceSet<UsageRecordResource> Read(
                                                      DateTime? end = null,
@@ -111,8 +111,8 @@ namespace Twilio.Rest.Wireless.V1
         /// <param name="start"> Only include usage that has occurred on or after this date. Format is [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html). </param>
         /// <param name="granularity"> How to summarize the usage by time. Can be: `daily`, `hourly`, or `all`. A value of `all` returns one Usage Record that describes the usage for the entire period. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of UsageRecord </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<UsageRecordResource>> ReadAsync(
                                                                                              DateTime? end = null,

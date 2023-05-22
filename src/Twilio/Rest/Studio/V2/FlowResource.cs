@@ -298,8 +298,8 @@ namespace Twilio.Rest.Studio.V2
         #endif
         /// <summary> Retrieve a list of all Flows. </summary>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Flow </returns>
         public static ResourceSet<FlowResource> Read(
                                                      int? pageSize = null,
@@ -313,8 +313,8 @@ namespace Twilio.Rest.Studio.V2
         #if !NET35
         /// <summary> Retrieve a list of all Flows. </summary>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Flow </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<FlowResource>> ReadAsync(
                                                                                              int? pageSize = null,

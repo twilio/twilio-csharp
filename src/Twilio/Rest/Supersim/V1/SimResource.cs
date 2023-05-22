@@ -241,8 +241,8 @@ namespace Twilio.Rest.Supersim.V1
         /// <param name="fleet"> The SID or unique name of the Fleet to which a list of Sims are assigned. </param>
         /// <param name="iccid"> The [ICCID](https://en.wikipedia.org/wiki/Subscriber_identity_module#ICCID) associated with a Super SIM to filter the list by. Passing this parameter will always return a list containing zero or one SIMs. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Sim </returns>
         public static ResourceSet<SimResource> Read(
                                                      SimResource.StatusEnum status = null,
@@ -262,8 +262,8 @@ namespace Twilio.Rest.Supersim.V1
         /// <param name="fleet"> The SID or unique name of the Fleet to which a list of Sims are assigned. </param>
         /// <param name="iccid"> The [ICCID](https://en.wikipedia.org/wiki/Subscriber_identity_module#ICCID) associated with a Super SIM to filter the list by. Passing this parameter will always return a list containing zero or one SIMs. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Sim </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<SimResource>> ReadAsync(
                                                                                              SimResource.StatusEnum status = null,

@@ -61,6 +61,9 @@ namespace Twilio.Rest.Conversations.V1
         ///<summary> For type `studio`, number of times to retry the webhook request </summary> 
         public int? AutoCreationStudioRetryCount { get; set; }
 
+        ///<summary> An ISO 3166-1 alpha-2n country code which the address belongs to. This is currently only applicable to short code addresses. </summary> 
+        public string AddressCountry { get; set; }
+
 
         /// <summary> Construct a new CreateConfigurationAddressOptions </summary>
         /// <param name="type">  </param>
@@ -121,6 +124,10 @@ namespace Twilio.Rest.Conversations.V1
             if (AutoCreationStudioRetryCount != null)
             {
                 p.Add(new KeyValuePair<string, string>("AutoCreation.StudioRetryCount", AutoCreationStudioRetryCount.ToString()));
+            }
+            if (AddressCountry != null)
+            {
+                p.Add(new KeyValuePair<string, string>("AddressCountry", AddressCountry));
             }
             return p;
         }

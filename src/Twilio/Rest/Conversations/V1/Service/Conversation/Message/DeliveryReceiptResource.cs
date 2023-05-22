@@ -179,8 +179,8 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation.Message
         /// <param name="pathConversationSid"> The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this message. </param>
         /// <param name="pathMessageSid"> The SID of the message within a [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) the delivery receipt belongs to. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of DeliveryReceipt </returns>
         public static ResourceSet<DeliveryReceiptResource> Read(
                                                      string pathChatServiceSid,
@@ -200,8 +200,8 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation.Message
         /// <param name="pathConversationSid"> The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this message. </param>
         /// <param name="pathMessageSid"> The SID of the message within a [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) the delivery receipt belongs to. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of DeliveryReceipt </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<DeliveryReceiptResource>> ReadAsync(
                                                                                              string pathChatServiceSid,

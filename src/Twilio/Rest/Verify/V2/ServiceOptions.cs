@@ -28,7 +28,7 @@ namespace Twilio.Rest.Verify.V2
     public class CreateServiceOptions : IOptions<ServiceResource>
     {
         
-        ///<summary> A descriptive string that you create to describe the verification service. It can be up to 30 characters long. **This value should not contain PII.** </summary> 
+        ///<summary> A descriptive string that you create to describe the verification service. It can be up to 32 characters long. **This value should not contain PII.** </summary> 
         public string FriendlyName { get; }
 
         ///<summary> The length of the verification code to generate. Must be an integer value between 4 and 10, inclusive. </summary> 
@@ -81,7 +81,7 @@ namespace Twilio.Rest.Verify.V2
 
 
         /// <summary> Construct a new CreateServiceOptions </summary>
-        /// <param name="friendlyName"> A descriptive string that you create to describe the verification service. It can be up to 30 characters long. **This value should not contain PII.** </param>
+        /// <param name="friendlyName"> A descriptive string that you create to describe the verification service. It can be up to 32 characters long. **This value should not contain PII.** </param>
         public CreateServiceOptions(string friendlyName)
         {
             FriendlyName = friendlyName;
@@ -254,7 +254,7 @@ namespace Twilio.Rest.Verify.V2
         ///<summary> The Twilio-provided string that uniquely identifies the Service resource to update. </summary> 
         public string PathSid { get; }
 
-        ///<summary> A descriptive string that you create to describe the verification service. It can be up to 30 characters long. **This value should not contain PII.** </summary> 
+        ///<summary> A descriptive string that you create to describe the verification service. It can be up to 32 characters long. **This value should not contain PII.** </summary> 
         public string FriendlyName { get; set; }
 
         ///<summary> The length of the verification code to generate. Must be an integer value between 4 and 10, inclusive. </summary> 

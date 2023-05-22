@@ -175,8 +175,8 @@ namespace Twilio.Rest.Verify.V2
         /// <param name="verificationSid"> Filter used to return all the Verification Attempts of a single verification. Only attempts of the provided verification SID will be returned. </param>
         /// <param name="status"> Filter used to query Verification Attempts by conversion status. Valid values are `UNCONVERTED`, for attempts that were not converted, and `CONVERTED`, for attempts that were confirmed. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of VerificationAttempt </returns>
         public static ResourceSet<VerificationAttemptResource> Read(
                                                      DateTime? dateCreatedAfter = null,
@@ -206,8 +206,8 @@ namespace Twilio.Rest.Verify.V2
         /// <param name="verificationSid"> Filter used to return all the Verification Attempts of a single verification. Only attempts of the provided verification SID will be returned. </param>
         /// <param name="status"> Filter used to query Verification Attempts by conversion status. Valid values are `UNCONVERTED`, for attempts that were not converted, and `CONVERTED`, for attempts that were confirmed. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of VerificationAttempt </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<VerificationAttemptResource>> ReadAsync(
                                                                                              DateTime? dateCreatedAfter = null,

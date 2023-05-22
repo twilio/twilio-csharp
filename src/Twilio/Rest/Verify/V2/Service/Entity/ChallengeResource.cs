@@ -310,8 +310,8 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// <param name="status"> The Status of the Challenges to fetch. One of `pending`, `expired`, `approved` or `denied`. </param>
         /// <param name="order"> The desired sort order of the Challenges list. One of `asc` or `desc` for ascending and descending respectively. Defaults to `asc`. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Challenge </returns>
         public static ResourceSet<ChallengeResource> Read(
                                                      string pathServiceSid,
@@ -335,8 +335,8 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// <param name="status"> The Status of the Challenges to fetch. One of `pending`, `expired`, `approved` or `denied`. </param>
         /// <param name="order"> The desired sort order of the Challenges list. One of `asc` or `desc` for ascending and descending respectively. Defaults to `asc`. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Challenge </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<ChallengeResource>> ReadAsync(
                                                                                              string pathServiceSid,

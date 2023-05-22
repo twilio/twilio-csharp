@@ -312,8 +312,8 @@ namespace Twilio.Rest.Events.V1
         /// <param name="inUse"> A boolean query parameter filtering the results to return sinks used/not used by a subscription. </param>
         /// <param name="status"> A String query parameter filtering the results by status `initialized`, `validating`, `active` or `failed`. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Sink </returns>
         public static ResourceSet<SinkResource> Read(
                                                      bool? inUse = null,
@@ -331,8 +331,8 @@ namespace Twilio.Rest.Events.V1
         /// <param name="inUse"> A boolean query parameter filtering the results to return sinks used/not used by a subscription. </param>
         /// <param name="status"> A String query parameter filtering the results by status `initialized`, `validating`, `active` or `failed`. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Sink </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<SinkResource>> ReadAsync(
                                                                                              bool? inUse = null,

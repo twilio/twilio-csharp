@@ -34,7 +34,7 @@ namespace Twilio.Rest.Messaging.V1
         ///<summary> A2P Messaging Profile Bundle Sid. </summary> 
         public string A2PProfileBundleSid { get; }
 
-        ///<summary> Type of brand being created. One of: \\\"STANDARD\\\", \\\"STARTER\\\". STARTER is for low volume, starter use cases. STANDARD is for all other use cases. </summary> 
+        ///<summary> Type of brand being created. One of: \\\"STANDARD\\\", \\\"SOLE_PROPRIETOR\\\". SOLE_PROPRIETOR is for low volume, SOLE_PROPRIETOR use cases. STANDARD is for all other use cases. </summary> 
         public string BrandType { get; set; }
 
         ///<summary> A boolean that specifies whether brand should be a mock or not. If true, brand will be registered as a mock brand. Defaults to false if no value is provided. </summary> 

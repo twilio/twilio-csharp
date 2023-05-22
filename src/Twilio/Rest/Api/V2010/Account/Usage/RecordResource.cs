@@ -337,8 +337,8 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// <param name="endDate"> Only include usage that occurred on or before this date. Specify the date in GMT and format as `YYYY-MM-DD`.  You can also specify offsets from the current date, such as: `+30days`, which will set the end date to 30 days from the current date. </param>
         /// <param name="includeSubaccounts"> Whether to include usage from the master account and all its subaccounts. Can be: `true` (the default) to include usage from the master account and all subaccounts or `false` to retrieve usage from only the specified account. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Record </returns>
         public static ResourceSet<RecordResource> Read(
                                                      string pathAccountSid = null,
@@ -362,8 +362,8 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// <param name="endDate"> Only include usage that occurred on or before this date. Specify the date in GMT and format as `YYYY-MM-DD`.  You can also specify offsets from the current date, such as: `+30days`, which will set the end date to 30 days from the current date. </param>
         /// <param name="includeSubaccounts"> Whether to include usage from the master account and all its subaccounts. Can be: `true` (the default) to include usage from the master account and all subaccounts or `false` to retrieve usage from only the specified account. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Record </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<RecordResource>> ReadAsync(
                                                                                              string pathAccountSid = null,

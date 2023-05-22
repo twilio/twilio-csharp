@@ -250,8 +250,8 @@ namespace Twilio.Rest.Supersim.V1
         /// <summary> Retrieve a list of Fleets from your account. </summary>
         /// <param name="networkAccessProfile"> The SID or unique name of the Network Access Profile that controls which cellular networks the Fleet's SIMs can connect to. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Fleet </returns>
         public static ResourceSet<FleetResource> Read(
                                                      string networkAccessProfile = null,
@@ -267,8 +267,8 @@ namespace Twilio.Rest.Supersim.V1
         /// <summary> Retrieve a list of Fleets from your account. </summary>
         /// <param name="networkAccessProfile"> The SID or unique name of the Network Access Profile that controls which cellular networks the Fleet's SIMs can connect to. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Fleet </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<FleetResource>> ReadAsync(
                                                                                              string networkAccessProfile = null,

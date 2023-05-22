@@ -17,7 +17,7 @@ using System;
 using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
-
+using System.Linq;
 
 
 
@@ -28,14 +28,11 @@ namespace Twilio.Rest.FlexApi.V1
     public class CreateInsightsQuestionnairesQuestionOptions : IOptions<InsightsQuestionnairesQuestionResource>
     {
         
-        ///<summary> The ID of the category </summary> 
-        public string CategoryId { get; }
+        ///<summary> The SID of the category </summary> 
+        public string CategorySid { get; }
 
         ///<summary> The question. </summary> 
         public string Question { get; }
-
-        ///<summary> The description for the question. </summary> 
-        public string Description { get; }
 
         ///<summary> The answer_set for the question. </summary> 
         public string AnswerSetId { get; }
@@ -43,21 +40,22 @@ namespace Twilio.Rest.FlexApi.V1
         ///<summary> The flag to enable for disable NA for answer. </summary> 
         public bool? AllowNa { get; }
 
-        ///<summary> The Token HTTP request header </summary> 
-        public string Token { get; set; }
+        ///<summary> The Authorization HTTP request header </summary> 
+        public string Authorization { get; set; }
+
+        ///<summary> The description for the question. </summary> 
+        public string Description { get; set; }
 
 
         /// <summary> Construct a new CreateInsightsQuestionnairesQuestionOptions </summary>
-        /// <param name="categoryId"> The ID of the category </param>
+        /// <param name="categorySid"> The SID of the category </param>
         /// <param name="question"> The question. </param>
-        /// <param name="description"> The description for the question. </param>
         /// <param name="answerSetId"> The answer_set for the question. </param>
         /// <param name="allowNa"> The flag to enable for disable NA for answer. </param>
-        public CreateInsightsQuestionnairesQuestionOptions(string categoryId, string question, string description, string answerSetId, bool? allowNa)
+        public CreateInsightsQuestionnairesQuestionOptions(string categorySid, string question, string answerSetId, bool? allowNa)
         {
-            CategoryId = categoryId;
+            CategorySid = categorySid;
             Question = question;
-            Description = description;
             AnswerSetId = answerSetId;
             AllowNa = allowNa;
         }
@@ -68,17 +66,13 @@ namespace Twilio.Rest.FlexApi.V1
         {
             var p = new List<KeyValuePair<string, string>>();
 
-            if (CategoryId != null)
+            if (CategorySid != null)
             {
-                p.Add(new KeyValuePair<string, string>("CategoryId", CategoryId));
+                p.Add(new KeyValuePair<string, string>("CategorySid", CategorySid));
             }
             if (Question != null)
             {
                 p.Add(new KeyValuePair<string, string>("Question", Question));
-            }
-            if (Description != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Description", Description));
             }
             if (AnswerSetId != null)
             {
@@ -88,6 +82,10 @@ namespace Twilio.Rest.FlexApi.V1
             {
                 p.Add(new KeyValuePair<string, string>("AllowNa", AllowNa.Value.ToString().ToLower()));
             }
+            if (Description != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Description", Description));
+            }
             return p;
         }
         
@@ -95,9 +93,9 @@ namespace Twilio.Rest.FlexApi.V1
     public List<KeyValuePair<string, string>> GetHeaderParams()
     {
         var p = new List<KeyValuePair<string, string>>();
-        if (Token != null)
+        if (Authorization != null)
         {
-            p.Add(new KeyValuePair<string, string>("Token", Token));
+            p.Add(new KeyValuePair<string, string>("Authorization", Authorization));
         }
         return p;
     }
@@ -107,19 +105,19 @@ namespace Twilio.Rest.FlexApi.V1
     public class DeleteInsightsQuestionnairesQuestionOptions : IOptions<InsightsQuestionnairesQuestionResource>
     {
         
-        ///<summary> The unique ID of the question </summary> 
-        public string PathQuestionId { get; }
+        ///<summary> The SID of the question </summary> 
+        public string PathQuestionSid { get; }
 
-        ///<summary> The Token HTTP request header </summary> 
-        public string Token { get; set; }
+        ///<summary> The Authorization HTTP request header </summary> 
+        public string Authorization { get; set; }
 
 
 
         /// <summary> Construct a new DeleteInsightsQuestionnairesQuestionOptions </summary>
-        /// <param name="pathQuestionId"> The unique ID of the question </param>
-        public DeleteInsightsQuestionnairesQuestionOptions(string pathQuestionId)
+        /// <param name="pathQuestionSid"> The SID of the question </param>
+        public DeleteInsightsQuestionnairesQuestionOptions(string pathQuestionSid)
         {
-            PathQuestionId = pathQuestionId;
+            PathQuestionSid = pathQuestionSid;
         }
 
         
@@ -135,9 +133,9 @@ namespace Twilio.Rest.FlexApi.V1
     public List<KeyValuePair<string, string>> GetHeaderParams()
     {
         var p = new List<KeyValuePair<string, string>>();
-        if (Token != null)
+        if (Authorization != null)
         {
-            p.Add(new KeyValuePair<string, string>("Token", Token));
+            p.Add(new KeyValuePair<string, string>("Authorization", Authorization));
         }
         return p;
     }
@@ -145,45 +143,82 @@ namespace Twilio.Rest.FlexApi.V1
     }
 
 
+    /// <summary> To get all the question for the given categories </summary>
+    public class ReadInsightsQuestionnairesQuestionOptions : ReadOptions<InsightsQuestionnairesQuestionResource>
+    {
+    
+        ///<summary> The Authorization HTTP request header </summary> 
+        public string Authorization { get; set; }
+
+        ///<summary> The list of category SIDs </summary> 
+        public List<string> CategorySid { get; set; }
+
+
+
+
+        
+        /// <summary> Generate the necessary parameters </summary>
+        public  override List<KeyValuePair<string, string>> GetParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+
+            if (CategorySid != null)
+            {
+                p.AddRange(CategorySid.Select(CategorySid => new KeyValuePair<string, string>("CategorySid", CategorySid)));
+            }
+            if (PageSize != null)
+            {
+                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+            }
+            return p;
+        }
+        
+    /// <summary> Generate the necessary header parameters </summary>
+    public List<KeyValuePair<string, string>> GetHeaderParams()
+    {
+        var p = new List<KeyValuePair<string, string>>();
+        if (Authorization != null)
+        {
+            p.Add(new KeyValuePair<string, string>("Authorization", Authorization));
+        }
+        return p;
+    }
+
+    }
+
     /// <summary> To update the question </summary>
     public class UpdateInsightsQuestionnairesQuestionOptions : IOptions<InsightsQuestionnairesQuestionResource>
     {
     
-        ///<summary> The unique ID of the question </summary> 
-        public string PathQuestionId { get; }
-
-        ///<summary> The question. </summary> 
-        public string Question { get; }
-
-        ///<summary> The description for the question. </summary> 
-        public string Description { get; }
-
-        ///<summary> The answer_set for the question. </summary> 
-        public string AnswerSetId { get; }
+        ///<summary> The SID of the question </summary> 
+        public string PathQuestionSid { get; }
 
         ///<summary> The flag to enable for disable NA for answer. </summary> 
         public bool? AllowNa { get; }
 
-        ///<summary> The Token HTTP request header </summary> 
-        public string Token { get; set; }
+        ///<summary> The Authorization HTTP request header </summary> 
+        public string Authorization { get; set; }
 
-        ///<summary> The ID of the category </summary> 
-        public string CategoryId { get; set; }
+        ///<summary> The SID of the category </summary> 
+        public string CategorySid { get; set; }
+
+        ///<summary> The question. </summary> 
+        public string Question { get; set; }
+
+        ///<summary> The description for the question. </summary> 
+        public string Description { get; set; }
+
+        ///<summary> The answer_set for the question. </summary> 
+        public string AnswerSetId { get; set; }
 
 
 
         /// <summary> Construct a new UpdateInsightsQuestionnairesQuestionOptions </summary>
-        /// <param name="pathQuestionId"> The unique ID of the question </param>
-        /// <param name="question"> The question. </param>
-        /// <param name="description"> The description for the question. </param>
-        /// <param name="answerSetId"> The answer_set for the question. </param>
+        /// <param name="pathQuestionSid"> The SID of the question </param>
         /// <param name="allowNa"> The flag to enable for disable NA for answer. </param>
-        public UpdateInsightsQuestionnairesQuestionOptions(string pathQuestionId, string question, string description, string answerSetId, bool? allowNa)
+        public UpdateInsightsQuestionnairesQuestionOptions(string pathQuestionSid, bool? allowNa)
         {
-            PathQuestionId = pathQuestionId;
-            Question = question;
-            Description = description;
-            AnswerSetId = answerSetId;
+            PathQuestionSid = pathQuestionSid;
             AllowNa = allowNa;
         }
 
@@ -193,6 +228,14 @@ namespace Twilio.Rest.FlexApi.V1
         {
             var p = new List<KeyValuePair<string, string>>();
 
+            if (AllowNa != null)
+            {
+                p.Add(new KeyValuePair<string, string>("AllowNa", AllowNa.Value.ToString().ToLower()));
+            }
+            if (CategorySid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("CategorySid", CategorySid));
+            }
             if (Question != null)
             {
                 p.Add(new KeyValuePair<string, string>("Question", Question));
@@ -205,14 +248,6 @@ namespace Twilio.Rest.FlexApi.V1
             {
                 p.Add(new KeyValuePair<string, string>("AnswerSetId", AnswerSetId));
             }
-            if (AllowNa != null)
-            {
-                p.Add(new KeyValuePair<string, string>("AllowNa", AllowNa.Value.ToString().ToLower()));
-            }
-            if (CategoryId != null)
-            {
-                p.Add(new KeyValuePair<string, string>("CategoryId", CategoryId));
-            }
             return p;
         }
         
@@ -220,9 +255,9 @@ namespace Twilio.Rest.FlexApi.V1
     public List<KeyValuePair<string, string>> GetHeaderParams()
     {
         var p = new List<KeyValuePair<string, string>>();
-        if (Token != null)
+        if (Authorization != null)
         {
-            p.Add(new KeyValuePair<string, string>("Token", Token));
+            p.Add(new KeyValuePair<string, string>("Authorization", Authorization));
         }
         return p;
     }

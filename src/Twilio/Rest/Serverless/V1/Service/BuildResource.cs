@@ -333,8 +333,8 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// <summary> Retrieve a list of all Builds. </summary>
         /// <param name="pathServiceSid"> The SID of the Service to read the Build resources from. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Build </returns>
         public static ResourceSet<BuildResource> Read(
                                                      string pathServiceSid,
@@ -350,8 +350,8 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// <summary> Retrieve a list of all Builds. </summary>
         /// <param name="pathServiceSid"> The SID of the Service to read the Build resources from. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Build </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<BuildResource>> ReadAsync(
                                                                                              string pathServiceSid,

@@ -172,8 +172,8 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         /// <param name="startDate"> The date/time (in GMT, ISO 8601) after which the Log resources must have been created. Defaults to 1 day prior to current date/time. </param>
         /// <param name="endDate"> The date/time (in GMT, ISO 8601) before which the Log resources must have been created. Defaults to current date/time. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Log </returns>
         public static ResourceSet<LogResource> Read(
                                                      string pathServiceSid,
@@ -197,8 +197,8 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         /// <param name="startDate"> The date/time (in GMT, ISO 8601) after which the Log resources must have been created. Defaults to 1 day prior to current date/time. </param>
         /// <param name="endDate"> The date/time (in GMT, ISO 8601) before which the Log resources must have been created. Defaults to current date/time. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Log </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<LogResource>> ReadAsync(
                                                                                              string pathServiceSid,

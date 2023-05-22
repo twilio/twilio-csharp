@@ -264,8 +264,8 @@ namespace Twilio.Rest.Media.V1
         /// <param name="order"> The sort order of the list by `date_created`. Can be: `asc` (ascending) or `desc` (descending) with `desc` as the default. </param>
         /// <param name="status"> Status to filter by, with possible values `started`, `ended` or `failed`. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of MediaProcessor </returns>
         public static ResourceSet<MediaProcessorResource> Read(
                                                      MediaProcessorResource.OrderEnum order = null,
@@ -283,8 +283,8 @@ namespace Twilio.Rest.Media.V1
         /// <param name="order"> The sort order of the list by `date_created`. Can be: `asc` (ascending) or `desc` (descending) with `desc` as the default. </param>
         /// <param name="status"> Status to filter by, with possible values `started`, `ended` or `failed`. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of MediaProcessor </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<MediaProcessorResource>> ReadAsync(
                                                                                              MediaProcessorResource.OrderEnum order = null,

@@ -375,8 +375,8 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <param name="friendlyName"> A human readable description of this resource, up to 64 characters. </param>
         /// <param name="uniqueName"> Provides a unique and addressable name to be assigned to this HostedNumberOrder, assigned by the developer, to be optionally used in addition to SID. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of HostedNumberOrder </returns>
         public static ResourceSet<HostedNumberOrderResource> Read(
                                                      HostedNumberOrderResource.StatusEnum status = null,
@@ -400,8 +400,8 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <param name="friendlyName"> A human readable description of this resource, up to 64 characters. </param>
         /// <param name="uniqueName"> Provides a unique and addressable name to be assigned to this HostedNumberOrder, assigned by the developer, to be optionally used in addition to SID. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of HostedNumberOrder </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<HostedNumberOrderResource>> ReadAsync(
                                                                                              HostedNumberOrderResource.StatusEnum status = null,

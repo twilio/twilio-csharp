@@ -91,16 +91,18 @@ namespace Twilio.Rest.Supersim.V1
         /// <summary> Order an eSIM Profile. </summary>
         /// <param name="callbackUrl"> The URL we should call using the `callback_method` when the status of the eSIM Profile changes. At this stage of the eSIM Profile pilot, the a request to the URL will only be called when the ESimProfile resource changes from `reserving` to `available`. </param>
         /// <param name="callbackMethod"> The HTTP method we should use to call `callback_url`. Can be: `GET` or `POST` and the default is POST. </param>
+        /// <param name="generateMatchingId"> When set to `true`, a value for `Eid` does not need to be provided. Instead, when the eSIM profile is reserved, a matching ID will be generated and returned via the `matching_id` property. This identifies the specific eSIM profile that can be used by any capable device to claim and download the profile. </param>
         /// <param name="eid"> Identifier of the eUICC that will claim the eSIM Profile. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of EsimProfile </returns>
         public static EsimProfileResource Create(
                                           string callbackUrl = null,
                                           Twilio.Http.HttpMethod callbackMethod = null,
+                                          bool? generateMatchingId = null,
                                           string eid = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new CreateEsimProfileOptions(){  CallbackUrl = callbackUrl, CallbackMethod = callbackMethod, Eid = eid };
+            var options = new CreateEsimProfileOptions(){  CallbackUrl = callbackUrl, CallbackMethod = callbackMethod, GenerateMatchingId = generateMatchingId, Eid = eid };
             return Create(options, client);
         }
 
@@ -108,16 +110,18 @@ namespace Twilio.Rest.Supersim.V1
         /// <summary> Order an eSIM Profile. </summary>
         /// <param name="callbackUrl"> The URL we should call using the `callback_method` when the status of the eSIM Profile changes. At this stage of the eSIM Profile pilot, the a request to the URL will only be called when the ESimProfile resource changes from `reserving` to `available`. </param>
         /// <param name="callbackMethod"> The HTTP method we should use to call `callback_url`. Can be: `GET` or `POST` and the default is POST. </param>
+        /// <param name="generateMatchingId"> When set to `true`, a value for `Eid` does not need to be provided. Instead, when the eSIM profile is reserved, a matching ID will be generated and returned via the `matching_id` property. This identifies the specific eSIM profile that can be used by any capable device to claim and download the profile. </param>
         /// <param name="eid"> Identifier of the eUICC that will claim the eSIM Profile. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of EsimProfile </returns>
         public static async System.Threading.Tasks.Task<EsimProfileResource> CreateAsync(
                                                                                   string callbackUrl = null,
                                                                                   Twilio.Http.HttpMethod callbackMethod = null,
+                                                                                  bool? generateMatchingId = null,
                                                                                   string eid = null,
                                                                                   ITwilioRestClient client = null)
         {
-        var options = new CreateEsimProfileOptions(){  CallbackUrl = callbackUrl, CallbackMethod = callbackMethod, Eid = eid };
+        var options = new CreateEsimProfileOptions(){  CallbackUrl = callbackUrl, CallbackMethod = callbackMethod, GenerateMatchingId = generateMatchingId, Eid = eid };
             return await CreateAsync(options, client);
         }
         #endif
@@ -233,8 +237,8 @@ namespace Twilio.Rest.Supersim.V1
         /// <param name="simSid"> Find the eSIM Profile resource related to a [Sim](https://www.twilio.com/docs/wireless/api/sim-resource) resource by providing the SIM SID. Will always return an array with either 1 or 0 records. </param>
         /// <param name="status"> List the eSIM Profiles that are in a given status. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of EsimProfile </returns>
         public static ResourceSet<EsimProfileResource> Read(
                                                      string eid = null,
@@ -254,8 +258,8 @@ namespace Twilio.Rest.Supersim.V1
         /// <param name="simSid"> Find the eSIM Profile resource related to a [Sim](https://www.twilio.com/docs/wireless/api/sim-resource) resource by providing the SIM SID. Will always return an array with either 1 or 0 records. </param>
         /// <param name="status"> List the eSIM Profiles that are in a given status. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of EsimProfile </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<EsimProfileResource>> ReadAsync(
                                                                                              string eid = null,
@@ -364,6 +368,14 @@ namespace Twilio.Rest.Supersim.V1
         ///<summary> Address of the SM-DP+ server from which the Profile will be downloaded. The URL will appear once the eSIM Profile reaches the status `available`. </summary> 
         [JsonProperty("smdp_plus_address")]
         public Uri SmdpPlusAddress { get; private set; }
+
+        ///<summary> Unique identifier of the eSIM profile that can be used to identify and download the eSIM profile from the SM-DP+ server. Populated if `generate_matching_id` is set to `true` when creating the eSIM profile reservation. </summary> 
+        [JsonProperty("matching_id")]
+        public string MatchingId { get; private set; }
+
+        ///<summary> Combined machine-readable activation code for acquiring an eSIM Profile with the Activation Code download method. Can be used in a QR code to download an eSIM profile. </summary> 
+        [JsonProperty("activation_code")]
+        public string ActivationCode { get; private set; }
 
         ///<summary> Code indicating the failure if the download of the SIM Profile failed and the eSIM Profile is in `failed` state. </summary> 
         [JsonProperty("error_code")]

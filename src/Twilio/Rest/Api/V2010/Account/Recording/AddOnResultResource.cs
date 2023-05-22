@@ -250,8 +250,8 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         /// <param name="pathReferenceSid"> The SID of the recording to which the result to read belongs. </param>
         /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Recording AddOnResult resources to read. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of AddOnResult </returns>
         public static ResourceSet<AddOnResultResource> Read(
                                                      string pathReferenceSid,
@@ -269,8 +269,8 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         /// <param name="pathReferenceSid"> The SID of the recording to which the result to read belongs. </param>
         /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Recording AddOnResult resources to read. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AddOnResult </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<AddOnResultResource>> ReadAsync(
                                                                                              string pathReferenceSid,

@@ -195,10 +195,10 @@ namespace Twilio.TwiML.Voice
                                     Conversation.TrimEnum trim = null,
                                     Uri recordingStatusCallback = null,
                                     Twilio.Http.HttpMethod recordingStatusCallbackMethod = null,
-                                    List<Conversation.RecordingEventEnum> recordingStatusCallbackEvent = null,
+                                    IEnumerable<Conversation.RecordingEventEnum> recordingStatusCallbackEvent = null,
                                     Uri statusCallback = null,
                                     Twilio.Http.HttpMethod statusCallbackMethod = null,
-                                    List<Conversation.EventEnum> statusCallbackEvent = null)
+                                    IEnumerable<Conversation.EventEnum> statusCallbackEvent = null)
         {
             var newChild = new Conversation(
                 serviceInstanceSid,
