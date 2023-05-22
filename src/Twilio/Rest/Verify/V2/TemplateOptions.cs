@@ -27,7 +27,7 @@ namespace Twilio.Rest.Verify.V2
     public class ReadTemplateOptions : ReadOptions<TemplateResource>
     {
     
-        ///<summary> String filter used to query templates with a given friendly name </summary> 
+        ///<summary> String filter used to query templates with a given friendly name. </summary> 
         public string FriendlyName { get; set; }
 
 

@@ -1,6 +1,84 @@
 twilio-csharp Changelog
 =======================
 
+[2023-05-18] Version 6.6.1
+--------------------------
+**Conversations**
+- Added  `AddressCountry` parameter to Address Configuration endpoint, to support regional short code addresses
+- Added query parameters `start_date`, `end_date` and `state` in list Conversations resource for filtering
+
+**Insights**
+- Added annotations parameters to list summary api
+
+**Messaging**
+- Add GET domainByMessagingService endpoint to linkShortening service
+- Add `disable_https` to link shortening domain_config properties
+
+**Numbers**
+- Add bulk_eligibility api under version `/v1`.
+
+
+[2023-05-04] Version 6.6.0
+--------------------------
+**Conversations**
+- Remove `start_date`, `end_date` and `state` query parameters from list operation on Conversations resource **(breaking change)**
+
+**Twiml**
+- Add support for new Amazon Polly voices (Q1 2023) for `Say` verb
+
+
+[2023-04-19] Version 6.5.0
+--------------------------
+**Library - Docs**
+- [PR #679](https://github.com/twilio/twilio-csharp/pull/679): consolidate. Thanks to [@stern-shawn](https://github.com/stern-shawn)!
+
+**Messaging**
+- Remove `messaging_service_sids` and `messaging_service_sid_action` from domain config endpoint **(breaking change)**
+- Add error_code and rejection_reason properties to tollfree verification API response
+
+**Numbers**
+- Added the new Eligibility API under version `/v1`.
+
+
+[2023-04-05] Version 6.4.0
+--------------------------
+**Library - Chore**
+- [PR #675](https://github.com/twilio/twilio-csharp/pull/675): Add code signing certificate hash to secrets and decode it for use. Thanks to [@AsabuHere](https://github.com/AsabuHere)!
+
+**Library - Fix**
+- [PR #674](https://github.com/twilio/twilio-csharp/pull/674): Adding timestamper url for nuget package signing. Thanks to [@AsabuHere](https://github.com/AsabuHere)!
+
+**Conversations**
+- Expose query parameters `start_date`, `end_date` and `state` in list operation on Conversations resource for sorting and filtering
+
+**Insights**
+- Added answered by filter in Call Summaries
+
+**Lookups**
+- Remove `disposable_phone_number_risk` package **(breaking change)**
+
+**Messaging**
+- Add support for `SOLE_PROPRIETOR` brand type and `SOLE_PROPRIETOR` campaign use case.
+- New Sole Proprietor Brands should be created with `SOLE_PROPRIETOR` brand type. Brand registration requests with `STARTER` brand type will be rejected.
+- New Sole Proprietor Campaigns should be created with `SOLE_PROPRIETOR` campaign use case. Campaign registration requests with `STARTER` campaign use case will be rejected.
+- Add Brand Registrations OTP API
+
+
+[2023-03-22] Version 6.3.0
+--------------------------
+**Library - Chore**
+- [PR #673](https://github.com/twilio/twilio-csharp/pull/673): Add step to sign nuget packages before publishing. Thanks to [@AsabuHere](https://github.com/AsabuHere)!
+
+**Api**
+- Revert Corrected the data type for `friendly_name` in Available Phone Number Local, Mobile and TollFree resources
+- Corrected the data type for `friendly_name` in Available Phone Number Local, Mobile and TollFree resources **(breaking change)**
+
+**Messaging**
+- Add `linkshortening_messaging_service` resource
+- Add new endpoint for GetDomainConfigByMessagingServiceSid
+- Remove `validated` parameter and add `cert_in_validation` parameter to Link Shortening API **(breaking change)**
+
+
 [2023-03-09] Version 6.2.5
 --------------------------
 **Api**
@@ -2976,6 +3054,4 @@ The newest version of the `twilio-csharp` helper library!
 
 This version brings a host of changes to update and modernize the `twilio-csharp` helper library. It is auto-generated to produce a more consistent and correct product.
 
-- [Migration Guide](https://www.twilio.com/docs/libraries/csharp/migrating-your-csharp-dot-net-application-twilio-sdk-4x-5x)
 - [Full API Documentation](https://twilio.github.io/twilio-csharp/)
-- [General Documentation](https://www.twilio.com/docs/libraries/csharp)

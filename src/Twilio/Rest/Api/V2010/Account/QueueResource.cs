@@ -76,7 +76,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary> Create a queue </summary>
         /// <param name="friendlyName"> A descriptive string that you created to describe this resource. It can be up to 64 characters long. </param>
         /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource. </param>
-        /// <param name="maxSize"> The maximum number of calls allowed to be in the queue. The default is 100. The maximum is 5000. </param>
+        /// <param name="maxSize"> The maximum number of calls allowed to be in the queue. The default is 1000. The maximum is 5000. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Queue </returns>
         public static QueueResource Create(
@@ -93,7 +93,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary> Create a queue </summary>
         /// <param name="friendlyName"> A descriptive string that you created to describe this resource. It can be up to 64 characters long. </param>
         /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource. </param>
-        /// <param name="maxSize"> The maximum number of calls allowed to be in the queue. The default is 100. The maximum is 5000. </param>
+        /// <param name="maxSize"> The maximum number of calls allowed to be in the queue. The default is 1000. The maximum is 5000. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Queue </returns>
         public static async System.Threading.Tasks.Task<QueueResource> CreateAsync(
@@ -423,7 +423,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Queue resource to update </param>
         /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Queue resource to update. </param>
         /// <param name="friendlyName"> A descriptive string that you created to describe this resource. It can be up to 64 characters long. </param>
-        /// <param name="maxSize"> The maximum number of calls allowed to be in the queue. The default is 100. The maximum is 5000. </param>
+        /// <param name="maxSize"> The maximum number of calls allowed to be in the queue. The default is 1000. The maximum is 5000. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Queue </returns>
         public static QueueResource Update(
@@ -442,7 +442,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Queue resource to update </param>
         /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Queue resource to update. </param>
         /// <param name="friendlyName"> A descriptive string that you created to describe this resource. It can be up to 64 characters long. </param>
-        /// <param name="maxSize"> The maximum number of calls allowed to be in the queue. The default is 100. The maximum is 5000. </param>
+        /// <param name="maxSize"> The maximum number of calls allowed to be in the queue. The default is 1000. The maximum is 5000. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Queue </returns>
         public static async System.Threading.Tasks.Task<QueueResource> UpdateAsync(
@@ -507,7 +507,7 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary>  The maximum number of calls that can be in the queue. The default is 100 and the maximum is 5000. </summary> 
+        ///<summary>  The maximum number of calls that can be in the queue. The default is 1000 and the maximum is 5000. </summary> 
         [JsonProperty("max_size")]
         public int? MaxSize { get; private set; }
 

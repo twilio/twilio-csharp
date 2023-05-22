@@ -123,7 +123,7 @@ namespace Twilio.TwiML.Voice
         /// <summary>
         /// Recording status callback events
         /// </summary>
-        public List<Conversation.RecordingEventEnum> RecordingStatusCallbackEvent { get; set; }
+        public IEnumerable<Conversation.RecordingEventEnum> RecordingStatusCallbackEvent { get; set; }
         /// <summary>
         /// Status callback URL
         /// </summary>
@@ -135,7 +135,7 @@ namespace Twilio.TwiML.Voice
         /// <summary>
         /// Events to call status callback URL
         /// </summary>
-        public List<Conversation.EventEnum> StatusCallbackEvent { get; set; }
+        public IEnumerable<Conversation.EventEnum> StatusCallbackEvent { get; set; }
 
         /// <summary>
         /// Create a new Conversation
@@ -164,10 +164,10 @@ namespace Twilio.TwiML.Voice
                             Conversation.TrimEnum trim = null,
                             Uri recordingStatusCallback = null,
                             Twilio.Http.HttpMethod recordingStatusCallbackMethod = null,
-                            List<Conversation.RecordingEventEnum> recordingStatusCallbackEvent = null,
+                            IEnumerable<Conversation.RecordingEventEnum> recordingStatusCallbackEvent = null,
                             Uri statusCallback = null,
                             Twilio.Http.HttpMethod statusCallbackMethod = null,
-                            List<Conversation.EventEnum> statusCallbackEvent = null) : base("Conversation")
+                            IEnumerable<Conversation.EventEnum> statusCallbackEvent = null) : base("Conversation")
         {
             this.ServiceInstanceSid = serviceInstanceSid;
             this.InboundAutocreation = inboundAutocreation;

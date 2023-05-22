@@ -86,7 +86,7 @@ namespace Twilio.TwiML.Voice
         /// <summary>
         /// Recording status callback events
         /// </summary>
-        public List<Record.RecordingEventEnum> RecordingStatusCallbackEvent { get; set; }
+        public IEnumerable<Record.RecordingEventEnum> RecordingStatusCallbackEvent { get; set; }
         /// <summary>
         /// Transcribe the recording
         /// </summary>
@@ -120,7 +120,7 @@ namespace Twilio.TwiML.Voice
                       Record.TrimEnum trim = null,
                       Uri recordingStatusCallback = null,
                       Twilio.Http.HttpMethod recordingStatusCallbackMethod = null,
-                      List<Record.RecordingEventEnum> recordingStatusCallbackEvent = null,
+                      IEnumerable<Record.RecordingEventEnum> recordingStatusCallbackEvent = null,
                       bool? transcribe = null,
                       Uri transcribeCallback = null) : base("Record")
         {

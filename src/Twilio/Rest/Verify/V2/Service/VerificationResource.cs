@@ -117,7 +117,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="appHash"> Your [App Hash](https://developers.google.com/identity/sms-retriever/verify#computing_your_apps_hash_string) to be appended at the end of your verification SMS body. Applies only to SMS. Example SMS body: `<#> Your AppName verification code is: 1234 He42w354ol9`. </param>
         /// <param name="templateSid"> The message [template](https://www.twilio.com/docs/verify/api/templates). If provided, will override the default template for the Service. SMS and Voice channels only. </param>
         /// <param name="templateCustomSubstitutions"> A stringified JSON object in which the keys are the template's special variables and the values are the variables substitutions. </param>
-        /// <param name="deviceIp"> The IP address of the client's device. If provided, it has to be a valid IPv4 or IPv6 address. </param>
+        /// <param name="deviceIp"> Strongly encouraged if using the auto channel. The IP address of the client's device. If provided, it has to be a valid IPv4 or IPv6 address. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Verification </returns>
         public static VerificationResource Create(
@@ -160,7 +160,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="appHash"> Your [App Hash](https://developers.google.com/identity/sms-retriever/verify#computing_your_apps_hash_string) to be appended at the end of your verification SMS body. Applies only to SMS. Example SMS body: `<#> Your AppName verification code is: 1234 He42w354ol9`. </param>
         /// <param name="templateSid"> The message [template](https://www.twilio.com/docs/verify/api/templates). If provided, will override the default template for the Service. SMS and Voice channels only. </param>
         /// <param name="templateCustomSubstitutions"> A stringified JSON object in which the keys are the template's special variables and the values are the variables substitutions. </param>
-        /// <param name="deviceIp"> The IP address of the client's device. If provided, it has to be a valid IPv4 or IPv6 address. </param>
+        /// <param name="deviceIp"> Strongly encouraged if using the auto channel. The IP address of the client's device. If provided, it has to be a valid IPv4 or IPv6 address. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Verification </returns>
         public static async System.Threading.Tasks.Task<VerificationResource> CreateAsync(

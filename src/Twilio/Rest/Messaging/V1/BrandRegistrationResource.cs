@@ -121,7 +121,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <summary> create </summary>
         /// <param name="customerProfileBundleSid"> Customer Profile Bundle Sid. </param>
         /// <param name="a2PProfileBundleSid"> A2P Messaging Profile Bundle Sid. </param>
-        /// <param name="brandType"> Type of brand being created. One of: \\\"STANDARD\\\", \\\"STARTER\\\". STARTER is for low volume, starter use cases. STANDARD is for all other use cases. </param>
+        /// <param name="brandType"> Type of brand being created. One of: \\\"STANDARD\\\", \\\"SOLE_PROPRIETOR\\\". SOLE_PROPRIETOR is for low volume, SOLE_PROPRIETOR use cases. STANDARD is for all other use cases. </param>
         /// <param name="mock"> A boolean that specifies whether brand should be a mock or not. If true, brand will be registered as a mock brand. Defaults to false if no value is provided. </param>
         /// <param name="skipAutomaticSecVet"> A flag to disable automatic secondary vetting for brands which it would otherwise be done. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -142,7 +142,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <summary> create </summary>
         /// <param name="customerProfileBundleSid"> Customer Profile Bundle Sid. </param>
         /// <param name="a2PProfileBundleSid"> A2P Messaging Profile Bundle Sid. </param>
-        /// <param name="brandType"> Type of brand being created. One of: \\\"STANDARD\\\", \\\"STARTER\\\". STARTER is for low volume, starter use cases. STANDARD is for all other use cases. </param>
+        /// <param name="brandType"> Type of brand being created. One of: \\\"STANDARD\\\", \\\"SOLE_PROPRIETOR\\\". SOLE_PROPRIETOR is for low volume, SOLE_PROPRIETOR use cases. STANDARD is for all other use cases. </param>
         /// <param name="mock"> A boolean that specifies whether brand should be a mock or not. If true, brand will be registered as a mock brand. Defaults to false if no value is provided. </param>
         /// <param name="skipAutomaticSecVet"> A flag to disable automatic secondary vetting for brands which it would otherwise be done. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -455,7 +455,7 @@ namespace Twilio.Rest.Messaging.V1
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> Type of brand. One of: \"STANDARD\", \"STARTER\". STARTER is for the low volume, STARTER campaign use case. There can only be one STARTER campaign created per STARTER brand. STANDARD is for all other campaign use cases. Multiple campaign use cases can be created per STANDARD brand. </summary> 
+        ///<summary> Type of brand. One of: \"STANDARD\", \"SOLE_PROPRIETOR\". SOLE_PROPRIETOR is for the low volume, SOLE_PROPRIETOR campaign use case. There can only be one SOLE_PROPRIETOR campaign created per SOLE_PROPRIETOR brand. STANDARD is for all other campaign use cases. Multiple campaign use cases can be created per STANDARD brand. </summary> 
         [JsonProperty("brand_type")]
         public string BrandType { get; private set; }
 

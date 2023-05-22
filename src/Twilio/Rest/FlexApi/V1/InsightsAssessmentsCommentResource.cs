@@ -34,7 +34,7 @@ namespace Twilio.Rest.FlexApi.V1
         private static Request BuildCreateRequest(CreateInsightsAssessmentsCommentOptions options, ITwilioRestClient client)
         {
             
-            string path = "/v1/Insights/QM/Assessments/Comments";
+            string path = "/v1/Insights/QualityManagement/Assessments/Comments";
 
 
             return new Request(
@@ -76,11 +76,9 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="categoryName"> The name of the category </param>
         /// <param name="comment"> The Assessment comment. </param>
         /// <param name="segmentId"> The id of the segment. </param>
-        /// <param name="userName"> The name of the user. </param>
-        /// <param name="userEmail"> The email id of the user. </param>
         /// <param name="agentId"> The id of the agent. </param>
         /// <param name="offset"> The offset </param>
-        /// <param name="token"> The Token HTTP request header </param>
+        /// <param name="authorization"> The Authorization HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of InsightsAssessmentsComment </returns>
         public static InsightsAssessmentsCommentResource Create(
@@ -88,14 +86,12 @@ namespace Twilio.Rest.FlexApi.V1
                                           string categoryName,
                                           string comment,
                                           string segmentId,
-                                          string userName,
-                                          string userEmail,
                                           string agentId,
                                           decimal? offset,
-                                          string token = null,
+                                          string authorization = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new CreateInsightsAssessmentsCommentOptions(categoryId, categoryName, comment, segmentId, userName, userEmail, agentId, offset){  Token = token };
+            var options = new CreateInsightsAssessmentsCommentOptions(categoryId, categoryName, comment, segmentId, agentId, offset){  Authorization = authorization };
             return Create(options, client);
         }
 
@@ -105,11 +101,9 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="categoryName"> The name of the category </param>
         /// <param name="comment"> The Assessment comment. </param>
         /// <param name="segmentId"> The id of the segment. </param>
-        /// <param name="userName"> The name of the user. </param>
-        /// <param name="userEmail"> The email id of the user. </param>
         /// <param name="agentId"> The id of the agent. </param>
         /// <param name="offset"> The offset </param>
-        /// <param name="token"> The Token HTTP request header </param>
+        /// <param name="authorization"> The Authorization HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InsightsAssessmentsComment </returns>
         public static async System.Threading.Tasks.Task<InsightsAssessmentsCommentResource> CreateAsync(
@@ -117,14 +111,12 @@ namespace Twilio.Rest.FlexApi.V1
                                                                                   string categoryName,
                                                                                   string comment,
                                                                                   string segmentId,
-                                                                                  string userName,
-                                                                                  string userEmail,
                                                                                   string agentId,
                                                                                   decimal? offset,
-                                                                                  string token = null,
+                                                                                  string authorization = null,
                                                                                   ITwilioRestClient client = null)
         {
-        var options = new CreateInsightsAssessmentsCommentOptions(categoryId, categoryName, comment, segmentId, userName, userEmail, agentId, offset){  Token = token };
+        var options = new CreateInsightsAssessmentsCommentOptions(categoryId, categoryName, comment, segmentId, agentId, offset){  Authorization = authorization };
             return await CreateAsync(options, client);
         }
         #endif
@@ -132,7 +124,7 @@ namespace Twilio.Rest.FlexApi.V1
         private static Request BuildReadRequest(ReadInsightsAssessmentsCommentOptions options, ITwilioRestClient client)
         {
             
-            string path = "/v1/Insights/QM/Assessments/Comments";
+            string path = "/v1/Insights/QualityManagement/Assessments/Comments";
 
 
             return new Request(
@@ -171,7 +163,7 @@ namespace Twilio.Rest.FlexApi.V1
         }
         #endif
         /// <summary> To create a comment assessment for a conversation </summary>
-        /// <param name="token"> The Token HTTP request header </param>
+        /// <param name="authorization"> The Authorization HTTP request header </param>
         /// <param name="segmentId"> The id of the segment. </param>
         /// <param name="agentId"> The id of the agent. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
@@ -179,20 +171,20 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of InsightsAssessmentsComment </returns>
         public static ResourceSet<InsightsAssessmentsCommentResource> Read(
-                                                     string token = null,
+                                                     string authorization = null,
                                                      string segmentId = null,
                                                      string agentId = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
                                                      ITwilioRestClient client = null)
         {
-            var options = new ReadInsightsAssessmentsCommentOptions(){ Token = token, SegmentId = segmentId, AgentId = agentId, PageSize = pageSize, Limit = limit};
+            var options = new ReadInsightsAssessmentsCommentOptions(){ Authorization = authorization, SegmentId = segmentId, AgentId = agentId, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
         #if !NET35
         /// <summary> To create a comment assessment for a conversation </summary>
-        /// <param name="token"> The Token HTTP request header </param>
+        /// <param name="authorization"> The Authorization HTTP request header </param>
         /// <param name="segmentId"> The id of the segment. </param>
         /// <param name="agentId"> The id of the agent. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
@@ -200,14 +192,14 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InsightsAssessmentsComment </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<InsightsAssessmentsCommentResource>> ReadAsync(
-                                                                                             string token = null,
+                                                                                             string authorization = null,
                                                                                              string segmentId = null,
                                                                                              string agentId = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
                                                                                              ITwilioRestClient client = null)
         {
-            var options = new ReadInsightsAssessmentsCommentOptions(){ Token = token, SegmentId = segmentId, AgentId = agentId, PageSize = pageSize, Limit = limit};
+            var options = new ReadInsightsAssessmentsCommentOptions(){ Authorization = authorization, SegmentId = segmentId, AgentId = agentId, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
@@ -283,9 +275,9 @@ namespace Twilio.Rest.FlexApi.V1
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The unique ID of the assessment. </summary> 
-        [JsonProperty("assessment_id")]
-        public string AssessmentId { get; private set; }
+        ///<summary> The SID of the assessment. </summary> 
+        [JsonProperty("assessment_sid")]
+        public string AssessmentSid { get; private set; }
 
         ///<summary> The comment added for assessment. </summary> 
         [JsonProperty("comment")]

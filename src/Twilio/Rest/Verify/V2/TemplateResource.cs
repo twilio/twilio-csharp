@@ -73,7 +73,7 @@ namespace Twilio.Rest.Verify.V2
         }
         #endif
         /// <summary> List all the available templates for a given Account. </summary>
-        /// <param name="friendlyName"> String filter used to query templates with a given friendly name </param>
+        /// <param name="friendlyName"> String filter used to query templates with a given friendly name. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -90,7 +90,7 @@ namespace Twilio.Rest.Verify.V2
 
         #if !NET35
         /// <summary> List all the available templates for a given Account. </summary>
-        /// <param name="friendlyName"> String filter used to query templates with a given friendly name </param>
+        /// <param name="friendlyName"> String filter used to query templates with a given friendly name. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -181,11 +181,11 @@ namespace Twilio.Rest.Verify.V2
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> A descriptive string that you create to describe a Template. </summary> 
+        ///<summary> A descriptive string that you create to describe a Template. It can be up to 32 characters long. </summary> 
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
 
-        ///<summary> A list of channels that support the Template. Can include: sms, voice </summary> 
+        ///<summary> A list of channels that support the Template. Can include: sms, voice. </summary> 
         [JsonProperty("channels")]
         public List<string> Channels { get; private set; }
 
