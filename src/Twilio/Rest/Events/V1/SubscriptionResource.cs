@@ -282,8 +282,8 @@ namespace Twilio.Rest.Events.V1
         /// <summary> Retrieve a paginated list of Subscriptions belonging to the account used to make the request. </summary>
         /// <param name="sinkSid"> The SID of the sink that the list of Subscriptions should be filtered by. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Subscription </returns>
         public static ResourceSet<SubscriptionResource> Read(
                                                      string sinkSid = null,
@@ -299,8 +299,8 @@ namespace Twilio.Rest.Events.V1
         /// <summary> Retrieve a paginated list of Subscriptions belonging to the account used to make the request. </summary>
         /// <param name="sinkSid"> The SID of the sink that the list of Subscriptions should be filtered by. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Subscription </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<SubscriptionResource>> ReadAsync(
                                                                                              string sinkSid = null,

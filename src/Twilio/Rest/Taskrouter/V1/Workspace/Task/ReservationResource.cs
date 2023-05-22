@@ -220,8 +220,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         /// <param name="reservationStatus"> Returns the list of reservations for a task with a specified ReservationStatus.  Can be: `pending`, `accepted`, `rejected`, or `timeout`. </param>
         /// <param name="workerSid"> The SID of the reserved Worker resource to read. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Reservation </returns>
         public static ResourceSet<ReservationResource> Read(
                                                      string pathWorkspaceSid,
@@ -243,8 +243,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         /// <param name="reservationStatus"> Returns the list of reservations for a task with a specified ReservationStatus.  Can be: `pending`, `accepted`, `rejected`, or `timeout`. </param>
         /// <param name="workerSid"> The SID of the reserved Worker resource to read. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Reservation </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<ReservationResource>> ReadAsync(
                                                                                              string pathWorkspaceSid,

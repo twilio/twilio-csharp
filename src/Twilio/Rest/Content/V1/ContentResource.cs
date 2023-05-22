@@ -207,8 +207,8 @@ namespace Twilio.Rest.Content.V1
         #endif
         /// <summary> Retrieve a list of Contents belonging to the account used to make the request </summary>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Content </returns>
         public static ResourceSet<ContentResource> Read(
                                                      int? pageSize = null,
@@ -222,8 +222,8 @@ namespace Twilio.Rest.Content.V1
         #if !NET35
         /// <summary> Retrieve a list of Contents belonging to the account used to make the request </summary>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Content </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<ContentResource>> ReadAsync(
                                                                                              int? pageSize = null,

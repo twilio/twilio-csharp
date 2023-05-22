@@ -155,8 +155,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <param name="pathWorkspaceSid"> The SID of the Workspace with the WorkerChannels to read. </param>
         /// <param name="pathWorkerSid"> The SID of the Worker with the WorkerChannels to read. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of WorkerChannel </returns>
         public static ResourceSet<WorkerChannelResource> Read(
                                                      string pathWorkspaceSid,
@@ -174,8 +174,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <param name="pathWorkspaceSid"> The SID of the Workspace with the WorkerChannels to read. </param>
         /// <param name="pathWorkerSid"> The SID of the Worker with the WorkerChannels to read. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of WorkerChannel </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<WorkerChannelResource>> ReadAsync(
                                                                                              string pathWorkspaceSid,

@@ -264,8 +264,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="conferenceSid"> The Conference SID that identifies the conference associated with the recording to read. </param>
         /// <param name="includeSoftDeleted"> A boolean parameter indicating whether to retrieve soft deleted recordings or not. Recordings metadata are kept after deletion for a retention period of 40 days. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Recording </returns>
         public static ResourceSet<RecordingResource> Read(
                                                      string pathAccountSid = null,
@@ -293,8 +293,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="conferenceSid"> The Conference SID that identifies the conference associated with the recording to read. </param>
         /// <param name="includeSoftDeleted"> A boolean parameter indicating whether to retrieve soft deleted recordings or not. Recordings metadata are kept after deletion for a retention period of 40 days. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Recording </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<RecordingResource>> ReadAsync(
                                                                                              string pathAccountSid = null,

@@ -509,8 +509,8 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <param name="hold"> Whether to return only participants that are on hold. Can be: `true` or `false`. </param>
         /// <param name="coaching"> Whether to return only participants who are coaching another call. Can be: `true` or `false`. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Participant </returns>
         public static ResourceSet<ParticipantResource> Read(
                                                      string pathConferenceSid,
@@ -534,8 +534,8 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <param name="hold"> Whether to return only participants that are on hold. Can be: `true` or `false`. </param>
         /// <param name="coaching"> Whether to return only participants who are coaching another call. Can be: `true` or `false`. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Participant </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<ParticipantResource>> ReadAsync(
                                                                                              string pathConferenceSid,

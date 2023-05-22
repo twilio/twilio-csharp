@@ -34,7 +34,7 @@ namespace Twilio.Tests.TwiML
                 "send_digits",
                 new Uri("https://example.com"),
                 Twilio.Http.HttpMethod.Get,
-                Promoter.ListOfOne(Number.EventEnum.Initiated),
+                new[] {Number.EventEnum.Initiated},
                 new Uri("https://example.com"),
                 Twilio.Http.HttpMethod.Get,
                 "BYXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",

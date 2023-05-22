@@ -31,8 +31,8 @@ namespace Twilio.Rest.FlexApi.V1
         ///<summary> The name of this category. </summary> 
         public string Name { get; }
 
-        ///<summary> The Token HTTP request header </summary> 
-        public string Token { get; set; }
+        ///<summary> The Authorization HTTP request header </summary> 
+        public string Authorization { get; set; }
 
 
         /// <summary> Construct a new CreateInsightsQuestionnairesCategoryOptions </summary>
@@ -59,9 +59,9 @@ namespace Twilio.Rest.FlexApi.V1
     public List<KeyValuePair<string, string>> GetHeaderParams()
     {
         var p = new List<KeyValuePair<string, string>>();
-        if (Token != null)
+        if (Authorization != null)
         {
-            p.Add(new KeyValuePair<string, string>("Token", Token));
+            p.Add(new KeyValuePair<string, string>("Authorization", Authorization));
         }
         return p;
     }
@@ -71,19 +71,19 @@ namespace Twilio.Rest.FlexApi.V1
     public class DeleteInsightsQuestionnairesCategoryOptions : IOptions<InsightsQuestionnairesCategoryResource>
     {
         
-        ///<summary> The ID of the category to be deleted </summary> 
-        public string PathCategoryId { get; }
+        ///<summary> The SID of the category to be deleted </summary> 
+        public string PathCategorySid { get; }
 
-        ///<summary> The Token HTTP request header </summary> 
-        public string Token { get; set; }
+        ///<summary> The Authorization HTTP request header </summary> 
+        public string Authorization { get; set; }
 
 
 
         /// <summary> Construct a new DeleteInsightsQuestionnairesCategoryOptions </summary>
-        /// <param name="pathCategoryId"> The ID of the category to be deleted </param>
-        public DeleteInsightsQuestionnairesCategoryOptions(string pathCategoryId)
+        /// <param name="pathCategorySid"> The SID of the category to be deleted </param>
+        public DeleteInsightsQuestionnairesCategoryOptions(string pathCategorySid)
         {
-            PathCategoryId = pathCategoryId;
+            PathCategorySid = pathCategorySid;
         }
 
         
@@ -99,9 +99,9 @@ namespace Twilio.Rest.FlexApi.V1
     public List<KeyValuePair<string, string>> GetHeaderParams()
     {
         var p = new List<KeyValuePair<string, string>>();
-        if (Token != null)
+        if (Authorization != null)
         {
-            p.Add(new KeyValuePair<string, string>("Token", Token));
+            p.Add(new KeyValuePair<string, string>("Authorization", Authorization));
         }
         return p;
     }
@@ -109,27 +109,63 @@ namespace Twilio.Rest.FlexApi.V1
     }
 
 
+    /// <summary> To get all the categories </summary>
+    public class ReadInsightsQuestionnairesCategoryOptions : ReadOptions<InsightsQuestionnairesCategoryResource>
+    {
+    
+        ///<summary> The Authorization HTTP request header </summary> 
+        public string Authorization { get; set; }
+
+
+
+
+        
+        /// <summary> Generate the necessary parameters </summary>
+        public  override List<KeyValuePair<string, string>> GetParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+
+            if (PageSize != null)
+            {
+                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+            }
+            return p;
+        }
+        
+    /// <summary> Generate the necessary header parameters </summary>
+    public List<KeyValuePair<string, string>> GetHeaderParams()
+    {
+        var p = new List<KeyValuePair<string, string>>();
+        if (Authorization != null)
+        {
+            p.Add(new KeyValuePair<string, string>("Authorization", Authorization));
+        }
+        return p;
+    }
+
+    }
+
     /// <summary> To update the category for Questions </summary>
     public class UpdateInsightsQuestionnairesCategoryOptions : IOptions<InsightsQuestionnairesCategoryResource>
     {
     
-        ///<summary> The ID of the category to be update </summary> 
-        public string PathCategoryId { get; }
+        ///<summary> The SID of the category to be updated </summary> 
+        public string PathCategorySid { get; }
 
         ///<summary> The name of this category. </summary> 
         public string Name { get; }
 
-        ///<summary> The Token HTTP request header </summary> 
-        public string Token { get; set; }
+        ///<summary> The Authorization HTTP request header </summary> 
+        public string Authorization { get; set; }
 
 
 
         /// <summary> Construct a new UpdateInsightsQuestionnairesCategoryOptions </summary>
-        /// <param name="pathCategoryId"> The ID of the category to be update </param>
+        /// <param name="pathCategorySid"> The SID of the category to be updated </param>
         /// <param name="name"> The name of this category. </param>
-        public UpdateInsightsQuestionnairesCategoryOptions(string pathCategoryId, string name)
+        public UpdateInsightsQuestionnairesCategoryOptions(string pathCategorySid, string name)
         {
-            PathCategoryId = pathCategoryId;
+            PathCategorySid = pathCategorySid;
             Name = name;
         }
 
@@ -150,9 +186,9 @@ namespace Twilio.Rest.FlexApi.V1
     public List<KeyValuePair<string, string>> GetHeaderParams()
     {
         var p = new List<KeyValuePair<string, string>>();
-        if (Token != null)
+        if (Authorization != null)
         {
-            p.Add(new KeyValuePair<string, string>("Token", Token));
+            p.Add(new KeyValuePair<string, string>("Authorization", Authorization));
         }
         return p;
     }

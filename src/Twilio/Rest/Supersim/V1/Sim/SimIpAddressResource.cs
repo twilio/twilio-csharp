@@ -90,8 +90,8 @@ namespace Twilio.Rest.Supersim.V1.Sim
         /// <summary> Retrieve a list of IP Addresses for the given Super SIM. </summary>
         /// <param name="pathSimSid"> The SID of the Super SIM to list IP Addresses for. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SimIpAddress </returns>
         public static ResourceSet<SimIpAddressResource> Read(
                                                      string pathSimSid,
@@ -107,8 +107,8 @@ namespace Twilio.Rest.Supersim.V1.Sim
         /// <summary> Retrieve a list of IP Addresses for the given Super SIM. </summary>
         /// <param name="pathSimSid"> The SID of the Super SIM to list IP Addresses for. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SimIpAddress </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<SimIpAddressResource>> ReadAsync(
                                                                                              string pathSimSid,

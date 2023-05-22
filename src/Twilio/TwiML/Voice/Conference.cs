@@ -179,7 +179,7 @@ namespace Twilio.TwiML.Voice
         /// <summary>
         /// Events to call status callback URL
         /// </summary>
-        public List<Conference.EventEnum> StatusCallbackEvent { get; set; }
+        public IEnumerable<Conference.EventEnum> StatusCallbackEvent { get; set; }
         /// <summary>
         /// Status callback URL
         /// </summary>
@@ -199,7 +199,7 @@ namespace Twilio.TwiML.Voice
         /// <summary>
         /// Recording status callback events
         /// </summary>
-        public List<Conference.RecordingEventEnum> RecordingStatusCallbackEvent { get; set; }
+        public IEnumerable<Conference.RecordingEventEnum> RecordingStatusCallbackEvent { get; set; }
         /// <summary>
         /// Event callback URL
         /// </summary>
@@ -249,12 +249,12 @@ namespace Twilio.TwiML.Voice
                           Conference.RegionEnum region = null,
                           string coach = null,
                           Conference.TrimEnum trim = null,
-                          List<Conference.EventEnum> statusCallbackEvent = null,
+                          IEnumerable<Conference.EventEnum> statusCallbackEvent = null,
                           Uri statusCallback = null,
                           Twilio.Http.HttpMethod statusCallbackMethod = null,
                           Uri recordingStatusCallback = null,
                           Twilio.Http.HttpMethod recordingStatusCallbackMethod = null,
-                          List<Conference.RecordingEventEnum> recordingStatusCallbackEvent = null,
+                          IEnumerable<Conference.RecordingEventEnum> recordingStatusCallbackEvent = null,
                           Uri eventCallbackUrl = null,
                           Conference.JitterBufferSizeEnum jitterBufferSize = null,
                           string participantLabel = null) : base("Conference")

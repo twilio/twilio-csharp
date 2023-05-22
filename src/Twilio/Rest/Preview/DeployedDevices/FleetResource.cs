@@ -273,8 +273,8 @@ namespace Twilio.Rest.Preview.DeployedDevices
         #endif
         /// <summary> Retrieve a list of all Fleets belonging to your account. </summary>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Fleet </returns>
         public static ResourceSet<FleetResource> Read(
                                                      int? pageSize = null,
@@ -288,8 +288,8 @@ namespace Twilio.Rest.Preview.DeployedDevices
         #if !NET35
         /// <summary> Retrieve a list of all Fleets belonging to your account. </summary>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Fleet </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<FleetResource>> ReadAsync(
                                                                                              int? pageSize = null,

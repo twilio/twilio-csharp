@@ -297,8 +297,8 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
         /// <param name="pathSessionSid"> The SID of the parent [Session](https://www.twilio.com/docs/proxy/api/session) to read the resources from. </param>
         /// <param name="pathParticipantSid"> The SID of the [Participant](https://www.twilio.com/docs/proxy/api/participant) to read the resources from. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of MessageInteraction </returns>
         public static ResourceSet<MessageInteractionResource> Read(
                                                      string pathServiceSid,
@@ -318,8 +318,8 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
         /// <param name="pathSessionSid"> The SID of the parent [Session](https://www.twilio.com/docs/proxy/api/session) to read the resources from. </param>
         /// <param name="pathParticipantSid"> The SID of the [Participant](https://www.twilio.com/docs/proxy/api/participant) to read the resources from. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of MessageInteraction </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<MessageInteractionResource>> ReadAsync(
                                                                                              string pathServiceSid,

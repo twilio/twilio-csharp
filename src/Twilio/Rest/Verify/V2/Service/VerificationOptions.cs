@@ -73,7 +73,7 @@ namespace Twilio.Rest.Verify.V2.Service
         ///<summary> A stringified JSON object in which the keys are the template's special variables and the values are the variables substitutions. </summary> 
         public string TemplateCustomSubstitutions { get; set; }
 
-        ///<summary> The IP address of the client's device. If provided, it has to be a valid IPv4 or IPv6 address. </summary> 
+        ///<summary> Strongly encouraged if using the auto channel. The IP address of the client's device. If provided, it has to be a valid IPv4 or IPv6 address. </summary> 
         public string DeviceIp { get; set; }
 
 

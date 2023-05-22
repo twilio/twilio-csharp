@@ -122,6 +122,7 @@ namespace Twilio.Rest.Conversations.V1
         /// <param name="autoCreationWebhookFilters"> The list of events, firing webhook event for this Conversation. Values can be any of the following: `onMessageAdded`, `onMessageUpdated`, `onMessageRemoved`, `onConversationUpdated`, `onConversationStateUpdated`, `onConversationRemoved`, `onParticipantAdded`, `onParticipantUpdated`, `onParticipantRemoved`, `onDeliveryUpdated` </param>
         /// <param name="autoCreationStudioFlowSid"> For type `studio`, the studio flow SID where the webhook should be sent to. </param>
         /// <param name="autoCreationStudioRetryCount"> For type `studio`, number of times to retry the webhook request </param>
+        /// <param name="addressCountry"> An ISO 3166-1 alpha-2n country code which the address belongs to. This is currently only applicable to short code addresses. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of AddressConfiguration </returns>
         public static AddressConfigurationResource Create(
@@ -136,9 +137,10 @@ namespace Twilio.Rest.Conversations.V1
                                           List<string> autoCreationWebhookFilters = null,
                                           string autoCreationStudioFlowSid = null,
                                           int? autoCreationStudioRetryCount = null,
+                                          string addressCountry = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new CreateAddressConfigurationOptions(type, address){  FriendlyName = friendlyName, AutoCreationEnabled = autoCreationEnabled, AutoCreationType = autoCreationType, AutoCreationConversationServiceSid = autoCreationConversationServiceSid, AutoCreationWebhookUrl = autoCreationWebhookUrl, AutoCreationWebhookMethod = autoCreationWebhookMethod, AutoCreationWebhookFilters = autoCreationWebhookFilters, AutoCreationStudioFlowSid = autoCreationStudioFlowSid, AutoCreationStudioRetryCount = autoCreationStudioRetryCount };
+            var options = new CreateAddressConfigurationOptions(type, address){  FriendlyName = friendlyName, AutoCreationEnabled = autoCreationEnabled, AutoCreationType = autoCreationType, AutoCreationConversationServiceSid = autoCreationConversationServiceSid, AutoCreationWebhookUrl = autoCreationWebhookUrl, AutoCreationWebhookMethod = autoCreationWebhookMethod, AutoCreationWebhookFilters = autoCreationWebhookFilters, AutoCreationStudioFlowSid = autoCreationStudioFlowSid, AutoCreationStudioRetryCount = autoCreationStudioRetryCount, AddressCountry = addressCountry };
             return Create(options, client);
         }
 
@@ -155,6 +157,7 @@ namespace Twilio.Rest.Conversations.V1
         /// <param name="autoCreationWebhookFilters"> The list of events, firing webhook event for this Conversation. Values can be any of the following: `onMessageAdded`, `onMessageUpdated`, `onMessageRemoved`, `onConversationUpdated`, `onConversationStateUpdated`, `onConversationRemoved`, `onParticipantAdded`, `onParticipantUpdated`, `onParticipantRemoved`, `onDeliveryUpdated` </param>
         /// <param name="autoCreationStudioFlowSid"> For type `studio`, the studio flow SID where the webhook should be sent to. </param>
         /// <param name="autoCreationStudioRetryCount"> For type `studio`, number of times to retry the webhook request </param>
+        /// <param name="addressCountry"> An ISO 3166-1 alpha-2n country code which the address belongs to. This is currently only applicable to short code addresses. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AddressConfiguration </returns>
         public static async System.Threading.Tasks.Task<AddressConfigurationResource> CreateAsync(
@@ -169,9 +172,10 @@ namespace Twilio.Rest.Conversations.V1
                                                                                   List<string> autoCreationWebhookFilters = null,
                                                                                   string autoCreationStudioFlowSid = null,
                                                                                   int? autoCreationStudioRetryCount = null,
+                                                                                  string addressCountry = null,
                                                                                   ITwilioRestClient client = null)
         {
-        var options = new CreateAddressConfigurationOptions(type, address){  FriendlyName = friendlyName, AutoCreationEnabled = autoCreationEnabled, AutoCreationType = autoCreationType, AutoCreationConversationServiceSid = autoCreationConversationServiceSid, AutoCreationWebhookUrl = autoCreationWebhookUrl, AutoCreationWebhookMethod = autoCreationWebhookMethod, AutoCreationWebhookFilters = autoCreationWebhookFilters, AutoCreationStudioFlowSid = autoCreationStudioFlowSid, AutoCreationStudioRetryCount = autoCreationStudioRetryCount };
+        var options = new CreateAddressConfigurationOptions(type, address){  FriendlyName = friendlyName, AutoCreationEnabled = autoCreationEnabled, AutoCreationType = autoCreationType, AutoCreationConversationServiceSid = autoCreationConversationServiceSid, AutoCreationWebhookUrl = autoCreationWebhookUrl, AutoCreationWebhookMethod = autoCreationWebhookMethod, AutoCreationWebhookFilters = autoCreationWebhookFilters, AutoCreationStudioFlowSid = autoCreationStudioFlowSid, AutoCreationStudioRetryCount = autoCreationStudioRetryCount, AddressCountry = addressCountry };
             return await CreateAsync(options, client);
         }
         #endif
@@ -353,8 +357,8 @@ namespace Twilio.Rest.Conversations.V1
         /// <summary> Retrieve a list of address configurations for an account </summary>
         /// <param name="type"> Filter the address configurations by its type. This value can be one of: `whatsapp`, `sms`. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of AddressConfiguration </returns>
         public static ResourceSet<AddressConfigurationResource> Read(
                                                      string type = null,
@@ -370,8 +374,8 @@ namespace Twilio.Rest.Conversations.V1
         /// <summary> Retrieve a list of address configurations for an account </summary>
         /// <param name="type"> Filter the address configurations by its type. This value can be one of: `whatsapp`, `sms`. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AddressConfiguration </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<AddressConfigurationResource>> ReadAsync(
                                                                                              string type = null,
@@ -590,6 +594,10 @@ namespace Twilio.Rest.Conversations.V1
         ///<summary> An absolute API resource URL for this address configuration. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
+
+        ///<summary> An ISO 3166-1 alpha-2n country code which the address belongs to. This is currently only applicable to short code addresses. </summary> 
+        [JsonProperty("address_country")]
+        public string AddressCountry { get; private set; }
 
 
 

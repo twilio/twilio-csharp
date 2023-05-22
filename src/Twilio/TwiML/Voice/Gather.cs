@@ -193,7 +193,7 @@ namespace Twilio.TwiML.Voice
         /// <summary>
         /// Input type Twilio should accept
         /// </summary>
-        public List<Gather.InputEnum> Input { get; set; }
+        public IEnumerable<Gather.InputEnum> Input { get; set; }
         /// <summary>
         /// Action URL
         /// </summary>
@@ -285,7 +285,7 @@ namespace Twilio.TwiML.Voice
         /// <param name="actionOnEmptyResult"> Force webhook to the action URL event if there is no input </param>
         /// <param name="speechModel"> Specify the model that is best suited for your use case </param>
         /// <param name="enhanced"> Use enhanced speech model </param>
-        public Gather(List<Gather.InputEnum> input = null,
+        public Gather(IEnumerable<Gather.InputEnum> input = null,
                       Uri action = null,
                       Twilio.Http.HttpMethod method = null,
                       int? timeout = null,

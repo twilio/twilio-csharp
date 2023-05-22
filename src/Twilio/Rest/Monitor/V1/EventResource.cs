@@ -145,8 +145,8 @@ namespace Twilio.Rest.Monitor.V1
         /// <param name="startDate"> Only include events that occurred on or after this date. Specify the date in GMT and [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </param>
         /// <param name="endDate"> Only include events that occurred on or before this date. Specify the date in GMT and [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Event </returns>
         public static ResourceSet<EventResource> Read(
                                                      string actorSid = null,
@@ -172,8 +172,8 @@ namespace Twilio.Rest.Monitor.V1
         /// <param name="startDate"> Only include events that occurred on or after this date. Specify the date in GMT and [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </param>
         /// <param name="endDate"> Only include events that occurred on or before this date. Specify the date in GMT and [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Event </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<EventResource>> ReadAsync(
                                                                                              string actorSid = null,

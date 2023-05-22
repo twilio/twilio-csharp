@@ -34,6 +34,9 @@ namespace Twilio.Rest.Supersim.V1
         ///<summary> The HTTP method we should use to call `callback_url`. Can be: `GET` or `POST` and the default is POST. </summary> 
         public Twilio.Http.HttpMethod CallbackMethod { get; set; }
 
+        ///<summary> When set to `true`, a value for `Eid` does not need to be provided. Instead, when the eSIM profile is reserved, a matching ID will be generated and returned via the `matching_id` property. This identifies the specific eSIM profile that can be used by any capable device to claim and download the profile. </summary> 
+        public bool? GenerateMatchingId { get; set; }
+
         ///<summary> Identifier of the eUICC that will claim the eSIM Profile. </summary> 
         public string Eid { get; set; }
 
@@ -52,6 +55,10 @@ namespace Twilio.Rest.Supersim.V1
             if (CallbackMethod != null)
             {
                 p.Add(new KeyValuePair<string, string>("CallbackMethod", CallbackMethod.ToString()));
+            }
+            if (GenerateMatchingId != null)
+            {
+                p.Add(new KeyValuePair<string, string>("GenerateMatchingId", GenerateMatchingId.Value.ToString().ToLower()));
             }
             if (Eid != null)
             {

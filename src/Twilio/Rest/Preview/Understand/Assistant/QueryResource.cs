@@ -310,8 +310,8 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// <param name="modelBuild"> The Model Build Sid or unique name of the Model Build to be queried. </param>
         /// <param name="status"> A string that described the query status. The values can be: pending_review, reviewed, discarded </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Query </returns>
         public static ResourceSet<QueryResource> Read(
                                                      string pathAssistantSid,
@@ -333,8 +333,8 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// <param name="modelBuild"> The Model Build Sid or unique name of the Model Build to be queried. </param>
         /// <param name="status"> A string that described the query status. The values can be: pending_review, reviewed, discarded </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Query </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<QueryResource>> ReadAsync(
                                                                                              string pathAssistantSid,

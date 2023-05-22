@@ -109,8 +109,8 @@ namespace Twilio.Rest.Supersim.V1
         /// <param name="startTime"> Only include usage that occurred at or after this time, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. Default is one month before the `end_time`. </param>
         /// <param name="endTime"> Only include usage that occurred before this time (exclusive), specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. Default is the current time. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of UsageRecord </returns>
         public static ResourceSet<UsageRecordResource> Read(
                                                      string sim = null,
@@ -140,8 +140,8 @@ namespace Twilio.Rest.Supersim.V1
         /// <param name="startTime"> Only include usage that occurred at or after this time, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. Default is one month before the `end_time`. </param>
         /// <param name="endTime"> Only include usage that occurred before this time (exclusive), specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. Default is the current time. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of UsageRecord </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<UsageRecordResource>> ReadAsync(
                                                                                              string sim = null,

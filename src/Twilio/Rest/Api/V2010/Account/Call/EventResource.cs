@@ -80,8 +80,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <param name="pathCallSid"> The unique SID identifier of the Call. </param>
         /// <param name="pathAccountSid"> The unique SID identifier of the Account. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Event </returns>
         public static ResourceSet<EventResource> Read(
                                                      string pathCallSid,
@@ -99,8 +99,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <param name="pathCallSid"> The unique SID identifier of the Call. </param>
         /// <param name="pathAccountSid"> The unique SID identifier of the Account. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Event </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<EventResource>> ReadAsync(
                                                                                              string pathCallSid,

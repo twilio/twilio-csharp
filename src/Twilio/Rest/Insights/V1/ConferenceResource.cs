@@ -234,8 +234,8 @@ namespace Twilio.Rest.Insights.V1
         /// <param name="detectedIssues"> Potential configuration, behavior, or performance issues detected during the conference. </param>
         /// <param name="endReason"> Conference end reason; e.g. last participant left, modified by API, etc. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Conference </returns>
         public static ResourceSet<ConferenceResource> Read(
                                                      string conferenceSid = null,
@@ -269,8 +269,8 @@ namespace Twilio.Rest.Insights.V1
         /// <param name="detectedIssues"> Potential configuration, behavior, or performance issues detected during the conference. </param>
         /// <param name="endReason"> Conference end reason; e.g. last participant left, modified by API, etc. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Conference </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<ConferenceResource>> ReadAsync(
                                                                                              string conferenceSid = null,

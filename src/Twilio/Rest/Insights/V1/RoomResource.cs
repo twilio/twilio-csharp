@@ -267,8 +267,8 @@ namespace Twilio.Rest.Insights.V1
         /// <param name="createdAfter"> Only read rooms that started on or after this ISO 8601 timestamp. </param>
         /// <param name="createdBefore"> Only read rooms that started before this ISO 8601 timestamp. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Room </returns>
         public static ResourceSet<RoomResource> Read(
                                                      List<RoomResource.RoomTypeEnum> roomType = null,
@@ -292,8 +292,8 @@ namespace Twilio.Rest.Insights.V1
         /// <param name="createdAfter"> Only read rooms that started on or after this ISO 8601 timestamp. </param>
         /// <param name="createdBefore"> Only read rooms that started before this ISO 8601 timestamp. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Room </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<RoomResource>> ReadAsync(
                                                                                              List<RoomResource.RoomTypeEnum> roomType = null,

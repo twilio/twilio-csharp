@@ -234,8 +234,8 @@ namespace Twilio.Rest.Api.V2010
         /// <param name="friendlyName"> Only return the Account resources with friendly names that exactly match this name. </param>
         /// <param name="status"> Only return Account resources with the given status. Can be `closed`, `suspended` or `active`. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Account </returns>
         public static ResourceSet<AccountResource> Read(
                                                      string friendlyName = null,
@@ -253,8 +253,8 @@ namespace Twilio.Rest.Api.V2010
         /// <param name="friendlyName"> Only return the Account resources with friendly names that exactly match this name. </param>
         /// <param name="status"> Only return Account resources with the given status. Can be `closed`, `suspended` or `active`. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
         /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Account </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<AccountResource>> ReadAsync(
                                                                                              string friendlyName = null,
