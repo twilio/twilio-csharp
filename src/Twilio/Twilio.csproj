@@ -8,8 +8,7 @@
     <AssemblyTitle>Twilio</AssemblyTitle>
     <NeutralLanguage>en-US</NeutralLanguage>
     <VersionPrefix>6.6.1</VersionPrefix>
-    <VersionSuffix>
-    </VersionSuffix>
+    <VersionSuffix></VersionSuffix>
     <Authors>Twilio</Authors>
     <NoWarn>$(NoWarn);CS1591</NoWarn>
     <GenerateAssemblyInfo>true</GenerateAssemblyInfo>

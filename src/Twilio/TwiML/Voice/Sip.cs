@@ -58,7 +58,7 @@ namespace Twilio.TwiML.Voice
         /// <summary>
         /// Status callback events
         /// </summary>
-        public List<Sip.EventEnum> StatusCallbackEvent { get; set; }
+        public IEnumerable<Sip.EventEnum> StatusCallbackEvent { get; set; }
         /// <summary>
         /// Status callback URL
         /// </summary>
@@ -120,7 +120,7 @@ namespace Twilio.TwiML.Voice
                    string password = null,
                    Uri url = null,
                    Twilio.Http.HttpMethod method = null,
-                   List<Sip.EventEnum> statusCallbackEvent = null,
+                   IEnumerable<Sip.EventEnum> statusCallbackEvent = null,
                    Uri statusCallback = null,
                    Twilio.Http.HttpMethod statusCallbackMethod = null,
                    string machineDetection = null,

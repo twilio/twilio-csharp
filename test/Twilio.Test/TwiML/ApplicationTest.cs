@@ -33,7 +33,7 @@ namespace Twilio.Tests.TwiML
                 "application_sid",
                 new Uri("https://example.com"),
                 Twilio.Http.HttpMethod.Get,
-                Promoter.ListOfOne(Application.EventEnum.Initiated),
+                new[] {Application.EventEnum.Initiated},
                 new Uri("https://example.com"),
                 Twilio.Http.HttpMethod.Get,
                 "customer_id",

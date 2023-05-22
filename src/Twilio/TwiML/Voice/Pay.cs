@@ -199,7 +199,7 @@ namespace Twilio.TwiML.Voice
         /// <summary>
         /// Comma separated accepted card types
         /// </summary>
-        public List<Pay.ValidCardTypesEnum> ValidCardTypes { get; set; }
+        public IEnumerable<Pay.ValidCardTypesEnum> ValidCardTypes { get; set; }
         /// <summary>
         /// Language to use
         /// </summary>
@@ -244,7 +244,7 @@ namespace Twilio.TwiML.Voice
                    string chargeAmount = null,
                    string currency = null,
                    string description = null,
-                   List<Pay.ValidCardTypesEnum> validCardTypes = null,
+                   IEnumerable<Pay.ValidCardTypesEnum> validCardTypes = null,
                    Pay.LanguageEnum language = null) : base("Pay")
         {
             this.Input = input;
@@ -358,9 +358,9 @@ namespace Twilio.TwiML.Voice
         /// <param name="requireMatchingInputs"> Require customer to input requested information twice and verify matching.
         ///                             </param>
         public Pay Prompt(Prompt.ForEnum for_ = null,
-                          List<Prompt.ErrorTypeEnum> errorType = null,
-                          List<Prompt.CardTypeEnum> cardType = null,
-                          List<int> attempt = null,
+                          IEnumerable<Prompt.ErrorTypeEnum> errorType = null,
+                          IEnumerable<Prompt.CardTypeEnum> cardType = null,
+                          IEnumerable<int> attempt = null,
                           bool? requireMatchingInputs = null)
         {
             var newChild = new Prompt(for_, errorType, cardType, attempt, requireMatchingInputs);
