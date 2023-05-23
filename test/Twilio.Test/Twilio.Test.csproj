@@ -6,7 +6,7 @@
     <RuntimeIdentifier Condition=" '$(TargetFramework)' == 'net462' ">win7-x86</RuntimeIdentifier>
     <RuntimeIdentifier Condition=" '$(TargetFramework)' == 'net35' ">win7-x86</RuntimeIdentifier>
     <IsPackable>false</IsPackable>
-	  <GenerateProgramFile>false</GenerateProgramFile>
+    <GenerateProgramFile>false</GenerateProgramFile>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="coverlet.msbuild" Version="3.2.0">
@@ -22,9 +22,12 @@
   <ItemGroup Condition=" '$(TargetFramework)' == 'net462' ">
     <Reference Include="System.Net" />
     <Reference Include="System.Net.Http" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.19.0" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Twilio\Twilio.csproj" />
+    <ProjectReference Include="..\..\src\Twilio\Twilio.csproj">
+      <SetTargetFramework Condition=" '$(TargetFramework)' == 'net462' ">TargetFramework=netstandard2.0</SetTargetFramework>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup Condition="($(TargetFramework.StartsWith('net3')) OR $(TargetFramework.StartsWith('net4'))) AND '$(MSBuildRuntimeType)' == 'Core' AND '$(OS)' != 'Windows_NT'">
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.0" PrivateAssets="All" />

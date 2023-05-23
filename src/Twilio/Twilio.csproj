@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup Label="NuGet">
-    <TargetFrameworks>netstandard2.0;net35;net462</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net35</TargetFrameworks>
     <IsPackable>true</IsPackable>
     <PackageId>Twilio</PackageId>
     <Description>Twilio REST API helper library</Description>
@@ -20,7 +20,6 @@
     <PackageLicenseUrl>https://github.com/twilio/twilio-csharp/blob/HEAD/LICENSE</PackageLicenseUrl>
     <RepositoryUrl>http://github.com/twilio/twilio-csharp</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <NetStandardImplicitPackageVersion Condition=" '$(TargetFramework)' == 'netstandard2.0' ">2.0.0</NetStandardImplicitPackageVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System.Xml.Linq" />
@@ -31,20 +30,13 @@
     <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.19.0" />
     <PackageReference Include="System.Collections.Specialized" Version="4.3.0" />
   </ItemGroup>
-  <ItemGroup Condition=" '$(TargetFramework)' == 'net462' ">
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.1.2" />
-    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="5.1.2" />
-    <Reference Include="System.Net" />
-    <Reference Include="System.Net.Http" />
-  </ItemGroup>
   <ItemGroup Condition=" '$(TargetFramework)' == 'net35' ">
     <Reference Include="System" />
     <Reference Include="System.Web" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="JWT" Version="1.3.4" />
   </ItemGroup>
-  <ItemGroup Condition="($(TargetFramework.StartsWith('net3')) OR $(TargetFramework.StartsWith('net4'))) AND '$(MSBuildRuntimeType)' == 'Core' AND '$(OS)' != 'Windows_NT'">
+  <ItemGroup Condition="$(TargetFramework.StartsWith('net3')) AND '$(MSBuildRuntimeType)' == 'Core' AND '$(OS)' != 'Windows_NT'">
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.0" PrivateAssets="All" />
     <PackageReference Include="jnm2.ReferenceAssemblies.net35" Version="1.0.1" PrivateAssets="All" />
   </ItemGroup>
