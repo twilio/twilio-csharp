@@ -6,7 +6,6 @@ namespace Twilio.Converters
     /// <summary>
     /// Promote objects
     /// </summary>
-    [Obsolete]
     public class Promoter
     {
         /// <summary>
@@ -14,7 +13,6 @@ namespace Twilio.Converters
         /// </summary>
         /// <param name="url">URL to convert</param>
         /// <returns>Converted Uri</returns>
-        [Obsolete]
         public static Uri UriFromString(string url)
         {
             return new Uri(url);
@@ -25,7 +23,6 @@ namespace Twilio.Converters
         /// </summary>
         /// <param name="one">single entry to promote</param>
         /// <returns>List of the single object</returns>
-        [Obsolete]
         public static List<T> ListOfOne<T>(T one)
         {
             return new List<T> {one};

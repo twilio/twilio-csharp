@@ -78,7 +78,7 @@ namespace Twilio.Tests.TwiML
                 Dial.TrimEnum.TrimSilence,
                 new Uri("https://example.com"),
                 Twilio.Http.HttpMethod.Get,
-                new[] {Dial.RecordingEventEnum.InProgress},
+                Promoter.ListOfOne(Dial.RecordingEventEnum.InProgress),
                 true,
                 Dial.RingToneEnum.At,
                 Dial.RecordingTrackEnum.Both,
@@ -100,7 +100,7 @@ namespace Twilio.Tests.TwiML
             );
 
             elem.Gather(
-                new[] {Gather.InputEnum.Dtmf},  
+                Promoter.ListOfOne(Gather.InputEnum.Dtmf),
                 new Uri("https://example.com"),
                 Twilio.Http.HttpMethod.Get,
                 1,
@@ -146,7 +146,7 @@ namespace Twilio.Tests.TwiML
                 Record.TrimEnum.TrimSilence,
                 new Uri("https://example.com"),
                 Twilio.Http.HttpMethod.Get,
-                new[] {Record.RecordingEventEnum.InProgress},
+                Promoter.ListOfOne(Record.RecordingEventEnum.InProgress),
                 true,
                 new Uri("https://example.com")
             );
@@ -183,15 +183,15 @@ namespace Twilio.Tests.TwiML
                 "charge_amount",
                 "currency",
                 "description",
-                new[] {Pay.ValidCardTypesEnum.Visa},
+                Promoter.ListOfOne(Pay.ValidCardTypesEnum.Visa),
                 Pay.LanguageEnum.DeDe
             );
 
             elem.Prompt(
                 Prompt.ForEnum.PaymentCardNumber,
-                new[] {Prompt.ErrorTypeEnum.Timeout},
-                new[] {Prompt.CardTypeEnum.Visa},
-                new[] {1},
+                Promoter.ListOfOne(Prompt.ErrorTypeEnum.Timeout),
+                Promoter.ListOfOne(Prompt.CardTypeEnum.Visa),
+                Promoter.ListOfOne(1),
                 true
             );
 
