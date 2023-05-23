@@ -111,9 +111,19 @@ namespace Twilio.Http
 
         private static string BuildLibraryVersion()
         {
-            var lastSpaceIndex = RuntimeInformation.FrameworkDescription.LastIndexOf(" ", StringComparison.Ordinal);
-            var platformVersionSb = new StringBuilder(RuntimeInformation.FrameworkDescription);
-            platformVersionSb[lastSpaceIndex] = '/';
+            var frameworkDescription = RuntimeInformation.FrameworkDescription;
+            var platformVersionSb = new StringBuilder(frameworkDescription);
+            
+            // Twilio runs CI tests on Mono, where the framework description looks like this:
+            // Mono 6.12.0.182 (tarball Tue Jun 14 22:35:00 UTC/2022)
+            // The following code removes the (tarball ...) part from the framework description.
+            if (frameworkDescription.StartsWith("Mono ", StringComparison.Ordinal))
+            {
+                var tarbalDateIndex = frameworkDescription.IndexOf(" (tarball");
+                platformVersionSb.Remove(tarbalDateIndex, frameworkDescription.Length - tarbalDateIndex);
+                frameworkDescription = platformVersionSb.ToString();
+            }
+            platformVersionSb[frameworkDescription.LastIndexOf(" ", StringComparison.Ordinal)] = '/';
 
             const string helperLibraryVersion = AssemblyInfomation.AssemblyInformationalVersion;
 
