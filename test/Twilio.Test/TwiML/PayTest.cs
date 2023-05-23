@@ -46,7 +46,7 @@ namespace Twilio.Tests.TwiML
                 "charge_amount",
                 "currency",
                 "description",
-                new[] {Pay.ValidCardTypesEnum.Visa},
+                Promoter.ListOfOne(Pay.ValidCardTypesEnum.Visa),
                 Pay.LanguageEnum.DeDe
             );
             Assert.AreEqual(
@@ -95,9 +95,9 @@ namespace Twilio.Tests.TwiML
 
             elem.Prompt(
                 Prompt.ForEnum.PaymentCardNumber,
-                new[] {Prompt.ErrorTypeEnum.Timeout},
-                new[] {Prompt.CardTypeEnum.Visa},
-                new[] {1},
+                Promoter.ListOfOne(Prompt.ErrorTypeEnum.Timeout),
+                Promoter.ListOfOne(Prompt.CardTypeEnum.Visa),
+                Promoter.ListOfOne(1),
                 true
             );
 

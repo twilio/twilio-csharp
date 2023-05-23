@@ -39,7 +39,7 @@ namespace Twilio.Tests.TwiML
                 Record.TrimEnum.TrimSilence,
                 new Uri("https://example.com"),
                 Twilio.Http.HttpMethod.Get,
-                new[] {Record.RecordingEventEnum.InProgress},
+                Promoter.ListOfOne(Record.RecordingEventEnum.InProgress),
                 true,
                 new Uri("https://example.com")
             );

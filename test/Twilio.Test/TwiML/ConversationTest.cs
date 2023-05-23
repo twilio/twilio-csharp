@@ -40,10 +40,10 @@ namespace Twilio.Tests.TwiML
                 Conversation.TrimEnum.TrimSilence,
                 new Uri("https://example.com"),
                 Twilio.Http.HttpMethod.Get,
-                new[] {Conversation.RecordingEventEnum.InProgress},
+                Promoter.ListOfOne(Conversation.RecordingEventEnum.InProgress),
                 new Uri("https://example.com"),
                 Twilio.Http.HttpMethod.Get,
-                new[] {Conversation.EventEnum.CallInitiated}
+                Promoter.ListOfOne(Conversation.EventEnum.CallInitiated)
             );
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
