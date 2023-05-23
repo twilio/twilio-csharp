@@ -35,7 +35,7 @@ namespace Twilio.Tests.TwiML
                 "password",
                 new Uri("https://example.com"),
                 Twilio.Http.HttpMethod.Get,
-                new[] {Sip.EventEnum.Initiated},
+                Promoter.ListOfOne(Sip.EventEnum.Initiated),
                 new Uri("https://example.com"),
                 Twilio.Http.HttpMethod.Get,
                 "machine_detection",
