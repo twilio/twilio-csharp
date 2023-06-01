@@ -50,7 +50,7 @@ namespace Twilio.TwiML.Voice
         /// <summary>
         /// Events to trigger status callback
         /// </summary>
-        public List<Application.EventEnum> StatusCallbackEvent { get; set; }
+        public IEnumerable<Application.EventEnum> StatusCallbackEvent { get; set; }
         /// <summary>
         /// Status Callback URL
         /// </summary>
@@ -83,7 +83,7 @@ namespace Twilio.TwiML.Voice
         public Application(string applicationSid = null,
                            Uri url = null,
                            Twilio.Http.HttpMethod method = null,
-                           List<Application.EventEnum> statusCallbackEvent = null,
+                           IEnumerable<Application.EventEnum> statusCallbackEvent = null,
                            Uri statusCallback = null,
                            Twilio.Http.HttpMethod statusCallbackMethod = null,
                            string customerId = null,

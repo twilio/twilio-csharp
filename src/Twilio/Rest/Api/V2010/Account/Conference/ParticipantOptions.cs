@@ -85,7 +85,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         ///<summary> Whether to record the conference the participant is joining. Can be: `true`, `false`, `record-from-start`, and `do-not-record`. The default value is `false`. </summary> 
         public string ConferenceRecord { get; set; }
 
-        ///<summary> Whether to trim leading and trailing silence from your recorded conference audio files. Can be: `trim-silence` or `do-not-trim` and defaults to `trim-silence`. </summary> 
+        ///<summary> Whether to trim leading and trailing silence from the conference recording. Can be: `trim-silence` or `do-not-trim` and defaults to `trim-silence`. </summary> 
         public string ConferenceTrim { get; set; }
 
         ///<summary> The URL we should call using the `conference_status_callback_method` when the conference events in `conference_status_callback_event` occur. Only the value set by the first participant to join the conference is used. Subsequent `conference_status_callback` values are ignored. </summary> 
@@ -171,6 +171,9 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
 
         ///<summary> The HTTP method we should use when calling the `amd_status_callback` URL. Can be: `GET` or `POST` and the default is `POST`. </summary> 
         public Twilio.Http.HttpMethod AmdStatusCallbackMethod { get; set; }
+
+        ///<summary> Whether to trim any leading and trailing silence from the participant recording. Can be: `trim-silence` or `do-not-trim` and the default is `trim-silence`. </summary> 
+        public string Trim { get; set; }
 
 
         /// <summary> Construct a new CreateParticipantOptions </summary>
@@ -377,6 +380,10 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             if (AmdStatusCallbackMethod != null)
             {
                 p.Add(new KeyValuePair<string, string>("AmdStatusCallbackMethod", AmdStatusCallbackMethod.ToString()));
+            }
+            if (Trim != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Trim", Trim));
             }
             return p;
         }

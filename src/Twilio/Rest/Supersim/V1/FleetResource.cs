@@ -472,7 +472,7 @@ namespace Twilio.Rest.Supersim.V1
         [JsonProperty("data_enabled")]
         public bool? DataEnabled { get; private set; }
 
-        ///<summary> The total data usage (download and upload combined) in Megabytes that each Super SIM assigned to the Fleet can consume during a billing period (normally one month). Value must be between 1MB (1) and 2TB (2,000,000). Defaults to 1GB (1,000). </summary> 
+        ///<summary> The total data usage (download and upload combined) in Megabytes that each Super SIM assigned to the Fleet can consume during a billing period (normally one month). Value must be between 1MB (1) and 2TB (2,000,000). Defaults to 250MB. </summary> 
         [JsonProperty("data_limit")]
         public int? DataLimit { get; private set; }
 
@@ -480,7 +480,7 @@ namespace Twilio.Rest.Supersim.V1
         [JsonProperty("data_metering")]
         public FleetResource.DataMeteringEnum DataMetering { get; private set; }
 
-        ///<summary> Defines whether SIMs in the Fleet are capable of sending and receiving machine-to-machine SMS via Commands. Defaults to `true`. </summary> 
+        ///<summary> Defines whether SIMs in the Fleet are capable of sending and receiving machine-to-machine SMS via Commands. Defaults to `false`. </summary> 
         [JsonProperty("sms_commands_enabled")]
         public bool? SmsCommandsEnabled { get; private set; }
 

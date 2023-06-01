@@ -1,6 +1,25 @@
 twilio-csharp Changelog
 =======================
 
+[2023-06-01] Version 6.7.0
+--------------------------
+**Library - Fix**
+- [PR #680](https://github.com/twilio/twilio-csharp/pull/680): revert the commit Use IEnumerable<T> instead of List<T> for TwiML enums via PR (#671). Thanks to [@AsabuHere](https://github.com/AsabuHere)!
+- [PR #672](https://github.com/twilio/twilio-csharp/pull/672): Add `ToString()` override to TwiML class. Thanks to [@Swimburger](https://github.com/Swimburger)!
+
+**Library - Feature**
+- [PR #671](https://github.com/twilio/twilio-csharp/pull/671): Use IEnumerable<T> instead of List<T> for TwiML enums. Thanks to [@Swimburger](https://github.com/Swimburger)!
+
+**Api**
+- Add `Trim` to create Conference Participant API
+
+**Intelligence**
+- First public beta release for Voice Intelligence APIs with client libraries
+
+**Messaging**
+- Add new `errors` attribute to us_app_to_person resource. This attribute will provide additional information about campaign registration errors.
+
+
 [2023-05-18] Version 6.6.1
 --------------------------
 **Conversations**

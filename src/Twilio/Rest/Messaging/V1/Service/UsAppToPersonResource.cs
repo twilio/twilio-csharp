@@ -533,6 +533,10 @@ namespace Twilio.Rest.Messaging.V1.Service
         [JsonProperty("mock")]
         public bool? Mock { get; private set; }
 
+        ///<summary> Details indicating why a campaign registration failed. These errors can indicate one or more fields that were incorrect or did not meet review requirements. </summary> 
+        [JsonProperty("errors")]
+        public List<object> Errors { get; private set; }
+
 
 
         private UsAppToPersonResource() {

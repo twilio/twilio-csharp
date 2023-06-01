@@ -83,15 +83,15 @@ namespace Twilio.TwiML.Voice
         /// <summary>
         /// Type of error
         /// </summary>
-        public List<Prompt.ErrorTypeEnum> ErrorType { get; set; }
+        public IEnumerable<Prompt.ErrorTypeEnum> ErrorType { get; set; }
         /// <summary>
         /// Type of the credit card
         /// </summary>
-        public List<Prompt.CardTypeEnum> CardType { get; set; }
+        public IEnumerable<Prompt.CardTypeEnum> CardType { get; set; }
         /// <summary>
         /// Current attempt count
         /// </summary>
-        public List<int> Attempt { get; set; }
+        public IEnumerable<int> Attempt { get; set; }
         /// <summary>
         /// Require customer to input requested information twice and verify matching.
         /// </summary>
@@ -107,9 +107,9 @@ namespace Twilio.TwiML.Voice
         /// <param name="requireMatchingInputs"> Require customer to input requested information twice and verify matching.
         ///                             </param>
         public Prompt(Prompt.ForEnum for_ = null,
-                      List<Prompt.ErrorTypeEnum> errorType = null,
-                      List<Prompt.CardTypeEnum> cardType = null,
-                      List<int> attempt = null,
+                      IEnumerable<Prompt.ErrorTypeEnum> errorType = null,
+                      IEnumerable<Prompt.CardTypeEnum> cardType = null,
+                      IEnumerable<int> attempt = null,
                       bool? requireMatchingInputs = null) : base("Prompt")
         {
             this.For_ = for_;
