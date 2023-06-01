@@ -6,7 +6,6 @@ using System.Net;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Text.RegularExpressions;
 using NUnit.Framework;
 using Twilio.Http;
 using HttpMethod = Twilio.Http.HttpMethod;
@@ -239,8 +238,10 @@ namespace Twilio.Tests.Http
             Assert.AreEqual("utf-8", internalRequest.Headers.AcceptEncoding.ToString());
 
             Assert.IsNotNull(internalRequest.Headers.UserAgent);
-            Regex rgx = new Regex(@"^twilio-csharp/[0-9.]+(-rc\.[0-9]+)?\s\(\w+\s\w+\)\s[.\s\w]+/[^\s]+$");
-            Assert.IsTrue(rgx.IsMatch(internalRequest.Headers.UserAgent.ToString()));
+            Assert.That(
+                internalRequest.Headers.UserAgent.ToString(), 
+                Does.Match(@"^twilio-csharp/[0-9.]+(-rc\.[0-9]+)?\s\(\w+\s\w+\)\s[.\s\w]+/[^\s]+$")
+            );
         }
 
         [Test]

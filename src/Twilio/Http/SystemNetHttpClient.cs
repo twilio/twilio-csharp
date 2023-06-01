@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Runtime.InteropServices;
+using System.Text;
 
 namespace Twilio.Http
 {
@@ -13,12 +14,7 @@ namespace Twilio.Http
     /// </summary>
     public class SystemNetHttpClient : HttpClient
     {
-#if NET451
-        private string PlatVersion = ".NET Framework 4.5.1+";
-#else
-        private string PlatVersion = RuntimeInformation.FrameworkDescription;
-#endif
-
+        private static readonly string LibraryVersion = BuildLibraryVersion();
         private readonly System.Net.Http.HttpClient _httpClient;
 
         /// <summary>
@@ -91,16 +87,47 @@ namespace Twilio.Http
             httpRequest.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             httpRequest.Headers.AcceptEncoding.Add(new StringWithQualityHeaderValue("utf-8"));
 
-            int lastSpaceIndex = PlatVersion.LastIndexOf(" ");
-            System.Text.StringBuilder PlatVersionSb= new System.Text.StringBuilder(PlatVersion);
-            PlatVersionSb[lastSpaceIndex] = '/';
+            var userAgent = LibraryVersion;
+            if (request.UserAgentExtensions != null)
+            {
+                var userAgentBuilder = new StringBuilder(userAgent);
+                foreach (var extension in request.UserAgentExtensions)
+                {
+                    userAgentBuilder.Append($" {extension}");
+                }
 
-            string helperLibVersion = AssemblyInfomation.AssemblyInformationalVersion;
+                userAgent = userAgentBuilder.ToString();
+            }
 
-            string osName = "Unknown";
-#if !NETSTANDARD1_4
-            osName = Environment.OSVersion.Platform.ToString();
-#else       
+            httpRequest.Headers.TryAddWithoutValidation("User-Agent", userAgent);
+
+            foreach (var header in request.HeaderParams)
+            {
+                httpRequest.Headers.TryAddWithoutValidation(header.Key, header.Value);
+            }
+
+            return httpRequest;
+        }
+
+        private static string BuildLibraryVersion()
+        {
+            var frameworkDescription = RuntimeInformation.FrameworkDescription;
+            var platformVersionSb = new StringBuilder(frameworkDescription);
+            
+            // Twilio runs CI tests on Mono, where the framework description looks like this:
+            // Mono 6.12.0.182 (tarball Tue Jun 14 22:35:00 UTC/2022)
+            // The following code removes the (tarball ...) part from the framework description.
+            if (frameworkDescription.StartsWith("Mono ", StringComparison.Ordinal))
+            {
+                var tarbalDateIndex = frameworkDescription.IndexOf(" (tarball");
+                platformVersionSb.Remove(tarbalDateIndex, frameworkDescription.Length - tarbalDateIndex);
+                frameworkDescription = platformVersionSb.ToString();
+            }
+            platformVersionSb[frameworkDescription.LastIndexOf(" ", StringComparison.Ordinal)] = '/';
+
+            const string helperLibraryVersion = AssemblyInfomation.AssemblyInformationalVersion;
+
+            var osName = "Unknown";
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
                 osName = "Windows";
@@ -113,32 +140,9 @@ namespace Twilio.Http
             {
                 osName = "Linux";
             }
-#endif
 
-            string osArch;
-#if !NET451
-            osArch = RuntimeInformation.OSArchitecture.ToString();
-#else
-            osArch = Environment.GetEnvironmentVariable("PROCESSOR_ARCHITECTURE") ?? "Unknown"; 
-#endif
-            var libraryVersion = String.Format("twilio-csharp/{0} ({1} {2}) {3}", helperLibVersion, osName, osArch, PlatVersionSb);
-
-            if (request.UserAgentExtensions != null)
-            {
-                foreach (var extension in request.UserAgentExtensions)
-                {
-                    libraryVersion += " " + extension;
-                }
-            }
-
-            httpRequest.Headers.TryAddWithoutValidation("User-Agent", libraryVersion);
-
-            foreach (var header in request.HeaderParams)
-            {
-                httpRequest.Headers.TryAddWithoutValidation(header.Key, header.Value);
-            }
-
-            return httpRequest;
+            var osArch = RuntimeInformation.OSArchitecture.ToString();
+            return $"twilio-csharp/{helperLibraryVersion} ({osName} {osArch}) {platformVersionSb}";
         }
     }
 }
