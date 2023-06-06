@@ -43,10 +43,11 @@ namespace Twilio.Tests.TwiML
             var elem = new SsmlLang();
             elem.SetOption("newParam1", "value");
             elem.SetOption("newParam2", 1);
+            elem.SetOption("xml:lang", "en");
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<lang newParam1=\"value\" newParam2=\"1\" />",
+                "<lang newParam1=\"value\" newParam2=\"1\" xml:lang=\"en\" />",
                 elem.ToString()
             );
         }

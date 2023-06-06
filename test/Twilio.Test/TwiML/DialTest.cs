@@ -62,10 +62,11 @@ namespace Twilio.Tests.TwiML
             var elem = new Dial();
             elem.SetOption("newParam1", "value");
             elem.SetOption("newParam2", 1);
+            elem.SetOption("xml:lang", "en");
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Dial newParam1=\"value\" newParam2=\"1\" />",
+                "<Dial newParam1=\"value\" newParam2=\"1\" xml:lang=\"en\" />",
                 elem.ToString()
             );
         }
