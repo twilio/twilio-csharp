@@ -79,9 +79,6 @@ namespace Twilio.Rest.Api.V2010.Account
         ///<summary> If set to True, Twilio will deliver the message as a single MMS message, regardless of the presence of media. </summary> 
         public bool? SendAsMms { get; set; }
 
-        ///<summary> The SID of the Content object returned at Content API content create time (https://www.twilio.com/docs/content-api/create-and-send-your-first-content-api-template#create-a-template). If this parameter is not specified, then the Content API will not be utilized. </summary> 
-        public string ContentSid { get; set; }
-
         ///<summary> Key-value pairs of variable names to substitution values, used alongside a content_sid. If not specified, Content API will default to the default variables defined at create time. </summary> 
         public string ContentVariables { get; set; }
 
@@ -96,6 +93,9 @@ namespace Twilio.Rest.Api.V2010.Account
 
         ///<summary> The URL of the media to send with the message. The media can be of type `gif`, `png`, and `jpeg` and will be formatted correctly on the recipient's device. The media size limit is 5MB for supported file types (JPEG, PNG, GIF) and 500KB for [other types](https://www.twilio.com/docs/sms/accepted-mime-types) of accepted media. To send more than one image in the message body, provide multiple `media_url` parameters in the POST request. You can include up to 10 `media_url` parameters per message. You can send images in an SMS message in only the US and Canada. </summary> 
         public List<Uri> MediaUrl { get; set; }
+
+        ///<summary> The SID of the Content object returned at Content API content create time (https://www.twilio.com/docs/content-api/create-and-send-your-first-content-api-template#create-a-template). If this parameter is not specified, then the Content API will not be utilized. </summary> 
+        public string ContentSid { get; set; }
 
 
         /// <summary> Construct a new CreateMessageOptions </summary>
@@ -177,10 +177,6 @@ namespace Twilio.Rest.Api.V2010.Account
             {
                 p.Add(new KeyValuePair<string, string>("SendAsMms", SendAsMms.Value.ToString().ToLower()));
             }
-            if (ContentSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ContentSid", ContentSid));
-            }
             if (ContentVariables != null)
             {
                 p.Add(new KeyValuePair<string, string>("ContentVariables", ContentVariables));
@@ -200,6 +196,10 @@ namespace Twilio.Rest.Api.V2010.Account
             if (MediaUrl != null)
             {
                 p.AddRange(MediaUrl.Select(MediaUrl => new KeyValuePair<string, string>("MediaUrl", Serializers.Url(MediaUrl))));
+            }
+            if (ContentSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ContentSid", ContentSid));
             }
             return p;
         }

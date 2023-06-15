@@ -85,16 +85,16 @@ namespace Twilio.Rest.Insights.V1
         public CallSummariesResource.AnsweredByEnum AnsweredBy { get; set; }
 
         
-        public string ConnectivityIssues { get; set; }
+        public string ConnectivityIssue { get; set; }
 
         
-        public string QualityIssues { get; set; }
+        public string QualityIssue { get; set; }
 
         
         public bool? Spam { get; set; }
 
         
-        public string CallScores { get; set; }
+        public string CallScore { get; set; }
 
 
 
@@ -181,21 +181,21 @@ namespace Twilio.Rest.Insights.V1
             {
                 p.Add(new KeyValuePair<string, string>("AnsweredBy", AnsweredBy.ToString()));
             }
-            if (ConnectivityIssues != null)
+            if (ConnectivityIssue != null)
             {
-                p.Add(new KeyValuePair<string, string>("ConnectivityIssues", ConnectivityIssues));
+                p.Add(new KeyValuePair<string, string>("ConnectivityIssue", ConnectivityIssue));
             }
-            if (QualityIssues != null)
+            if (QualityIssue != null)
             {
-                p.Add(new KeyValuePair<string, string>("QualityIssues", QualityIssues));
+                p.Add(new KeyValuePair<string, string>("QualityIssue", QualityIssue));
             }
             if (Spam != null)
             {
                 p.Add(new KeyValuePair<string, string>("Spam", Spam.Value.ToString().ToLower()));
             }
-            if (CallScores != null)
+            if (CallScore != null)
             {
-                p.Add(new KeyValuePair<string, string>("CallScores", CallScores));
+                p.Add(new KeyValuePair<string, string>("CallScore", CallScore));
             }
             if (PageSize != null)
             {
