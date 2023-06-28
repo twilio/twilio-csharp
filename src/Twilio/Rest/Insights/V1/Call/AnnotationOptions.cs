@@ -23,7 +23,7 @@ using Twilio.Converters;
 
 namespace Twilio.Rest.Insights.V1.Call
 {
-    /// <summary> Fetch a specific Annotation. </summary>
+    /// <summary> Get the Annotation for a specific Call. </summary>
     public class FetchAnnotationOptions : IOptions<AnnotationResource>
     {
     
@@ -52,7 +52,7 @@ namespace Twilio.Rest.Insights.V1.Call
     }
 
 
-    /// <summary> Create/Update the annotation for the call </summary>
+    /// <summary> Update an Annotation for a specific Call. </summary>
     public class UpdateAnnotationOptions : IOptions<AnnotationResource>
     {
     
@@ -65,19 +65,19 @@ namespace Twilio.Rest.Insights.V1.Call
         
         public AnnotationResource.ConnectivityIssueEnum ConnectivityIssue { get; set; }
 
-        ///<summary> Specify if the call had any subjective quality issues. Possible values, one or more of:  no_quality_issue, low_volume, choppy_robotic, echo, dtmf, latency, owa, static_noise. Use comma separated values to indicate multiple quality issues for the same call </summary> 
+        ///<summary> Specify if the call had any subjective quality issues. Possible values, one or more of `no_quality_issue`, `low_volume`, `choppy_robotic`, `echo`, `dtmf`, `latency`, `owa`, `static_noise`. Use comma separated values to indicate multiple quality issues for the same call. </summary> 
         public string QualityIssues { get; set; }
 
-        ///<summary> Specify if the call was a spam call. Use this to provide feedback on whether calls placed from your account were marked as spam, or if inbound calls received by your account were unwanted spam. Is of type Boolean: true, false. Use true if the call was a spam call. </summary> 
+        ///<summary> A boolean flag to indicate if the call was a spam call. Use this to provide feedback on whether calls placed from your account were marked as spam, or if inbound calls received by your account were unwanted spam. Use `true` if the call was a spam call. </summary> 
         public bool? Spam { get; set; }
 
         ///<summary> Specify the call score. This is of type integer. Use a range of 1-5 to indicate the call experience score, with the following mapping as a reference for rating the call [5: Excellent, 4: Good, 3 : Fair, 2 : Poor, 1: Bad]. </summary> 
         public int? CallScore { get; set; }
 
-        ///<summary> Specify any comments pertaining to the call. This of type string with a max limit of 100 characters. Twilio does not treat this field as PII, so don’t put any PII in here. </summary> 
+        ///<summary> Specify any comments pertaining to the call. `comment` has a maximum character limit of 100. Twilio does not treat this field as PII, so no PII should be included in the `comment`. </summary> 
         public string Comment { get; set; }
 
-        ///<summary> Associate this call with an incident or support ticket. This is of type string with a max limit of 100 characters. Twilio does not treat this field as PII, so don’t put any PII in here. </summary> 
+        ///<summary> Associate this call with an incident or support ticket. The `incident` parameter is of type string with a maximum character limit of 100. Twilio does not treat this field as PII, so no PII should be included in `incident`. </summary> 
         public string Incident { get; set; }
 
 

@@ -23,7 +23,7 @@ using Twilio.Converters;
 
 namespace Twilio.Rest.Insights.V1.Conference
 {
-    /// <summary> Fetch a specific Conference Participant Summary. </summary>
+    /// <summary> Get a specific Conference Participant Summary for a Conference. </summary>
     public class FetchConferenceParticipantOptions : IOptions<ConferenceParticipantResource>
     {
     
@@ -71,7 +71,7 @@ namespace Twilio.Rest.Insights.V1.Conference
     }
 
 
-    /// <summary> List Conference Participants. </summary>
+    /// <summary> Get a list of Conference Participants Summaries for a Conference. </summary>
     public class ReadConferenceParticipantOptions : ReadOptions<ConferenceParticipantResource>
     {
     

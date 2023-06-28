@@ -173,7 +173,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         ///<summary> The `friendly_name` of the Worker resources to read. </summary> 
         public string FriendlyName { get; set; }
 
-        ///<summary> Filter by Workers that would match an expression on a TaskQueue. This is helpful for debugging which Workers would match a potential queue. </summary> 
+        ///<summary> Filter by Workers that would match an expression. In addition to fields in the workers' attributes, the expression can include the following worker fields: `sid`, `friendly_name`, `activity_sid`, or `activity_name` </summary> 
         public string TargetWorkersExpression { get; set; }
 
         ///<summary> The `friendly_name` of the TaskQueue that the Workers to read are eligible for. </summary> 

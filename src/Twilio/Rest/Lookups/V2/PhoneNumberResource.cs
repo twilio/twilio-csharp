@@ -91,7 +91,7 @@ namespace Twilio.Rest.Lookups.V2
         #endif
         /// <summary> fetch </summary>
         /// <param name="pathPhoneNumber"> The phone number to lookup in E.164 or national format. Default country code is +1 (North America). </param>
-        /// <param name="fields"> A comma-separated list of fields to return. Possible values are caller_name, sim_swap, call_forwarding, live_activity, line_type_intelligence, identity_match. </param>
+        /// <param name="fields"> A comma-separated list of fields to return. Possible values are caller_name, sim_swap, call_forwarding, live_activity, line_type_intelligence, identity_match, reassigned_number. </param>
         /// <param name="countryCode"> The [country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) used if the phone number provided is in national format. </param>
         /// <param name="firstName"> User’s first name. This query parameter is only used (optionally) for identity_match package requests. </param>
         /// <param name="lastName"> User’s last name. This query parameter is only used (optionally) for identity_match package requests. </param>
@@ -103,6 +103,7 @@ namespace Twilio.Rest.Lookups.V2
         /// <param name="addressCountryCode"> User’s country, up to two characters. This query parameter is only used (optionally) for identity_match package requests. </param>
         /// <param name="nationalId"> User’s national ID, such as SSN or Passport ID. This query parameter is only used (optionally) for identity_match package requests. </param>
         /// <param name="dateOfBirth"> User’s date of birth, in YYYYMMDD format. This query parameter is only used (optionally) for identity_match package requests. </param>
+        /// <param name="lastVerifiedDate"> The date you obtained consent to call or text the end-user of the phone number or a date on which you are reasonably certain that the end-user could still be reached at that number. This query parameter is only used (optionally) for reassigned_number package requests. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of PhoneNumber </returns>
         public static PhoneNumberResource Fetch(
@@ -119,16 +120,17 @@ namespace Twilio.Rest.Lookups.V2
                                          string addressCountryCode = null, 
                                          string nationalId = null, 
                                          string dateOfBirth = null, 
+                                         string lastVerifiedDate = null, 
                                          ITwilioRestClient client = null)
         {
-            var options = new FetchPhoneNumberOptions(pathPhoneNumber){ Fields = fields,CountryCode = countryCode,FirstName = firstName,LastName = lastName,AddressLine1 = addressLine1,AddressLine2 = addressLine2,City = city,State = state,PostalCode = postalCode,AddressCountryCode = addressCountryCode,NationalId = nationalId,DateOfBirth = dateOfBirth };
+            var options = new FetchPhoneNumberOptions(pathPhoneNumber){ Fields = fields,CountryCode = countryCode,FirstName = firstName,LastName = lastName,AddressLine1 = addressLine1,AddressLine2 = addressLine2,City = city,State = state,PostalCode = postalCode,AddressCountryCode = addressCountryCode,NationalId = nationalId,DateOfBirth = dateOfBirth,LastVerifiedDate = lastVerifiedDate };
             return Fetch(options, client);
         }
 
         #if !NET35
         /// <summary> fetch </summary>
         /// <param name="pathPhoneNumber"> The phone number to lookup in E.164 or national format. Default country code is +1 (North America). </param>
-        /// <param name="fields"> A comma-separated list of fields to return. Possible values are caller_name, sim_swap, call_forwarding, live_activity, line_type_intelligence, identity_match. </param>
+        /// <param name="fields"> A comma-separated list of fields to return. Possible values are caller_name, sim_swap, call_forwarding, live_activity, line_type_intelligence, identity_match, reassigned_number. </param>
         /// <param name="countryCode"> The [country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) used if the phone number provided is in national format. </param>
         /// <param name="firstName"> User’s first name. This query parameter is only used (optionally) for identity_match package requests. </param>
         /// <param name="lastName"> User’s last name. This query parameter is only used (optionally) for identity_match package requests. </param>
@@ -140,11 +142,12 @@ namespace Twilio.Rest.Lookups.V2
         /// <param name="addressCountryCode"> User’s country, up to two characters. This query parameter is only used (optionally) for identity_match package requests. </param>
         /// <param name="nationalId"> User’s national ID, such as SSN or Passport ID. This query parameter is only used (optionally) for identity_match package requests. </param>
         /// <param name="dateOfBirth"> User’s date of birth, in YYYYMMDD format. This query parameter is only used (optionally) for identity_match package requests. </param>
+        /// <param name="lastVerifiedDate"> The date you obtained consent to call or text the end-user of the phone number or a date on which you are reasonably certain that the end-user could still be reached at that number. This query parameter is only used (optionally) for reassigned_number package requests. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PhoneNumber </returns>
-        public static async System.Threading.Tasks.Task<PhoneNumberResource> FetchAsync(string pathPhoneNumber, string fields = null, string countryCode = null, string firstName = null, string lastName = null, string addressLine1 = null, string addressLine2 = null, string city = null, string state = null, string postalCode = null, string addressCountryCode = null, string nationalId = null, string dateOfBirth = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<PhoneNumberResource> FetchAsync(string pathPhoneNumber, string fields = null, string countryCode = null, string firstName = null, string lastName = null, string addressLine1 = null, string addressLine2 = null, string city = null, string state = null, string postalCode = null, string addressCountryCode = null, string nationalId = null, string dateOfBirth = null, string lastVerifiedDate = null, ITwilioRestClient client = null)
         {
-            var options = new FetchPhoneNumberOptions(pathPhoneNumber){ Fields = fields,CountryCode = countryCode,FirstName = firstName,LastName = lastName,AddressLine1 = addressLine1,AddressLine2 = addressLine2,City = city,State = state,PostalCode = postalCode,AddressCountryCode = addressCountryCode,NationalId = nationalId,DateOfBirth = dateOfBirth };
+            var options = new FetchPhoneNumberOptions(pathPhoneNumber){ Fields = fields,CountryCode = countryCode,FirstName = firstName,LastName = lastName,AddressLine1 = addressLine1,AddressLine2 = addressLine2,City = city,State = state,PostalCode = postalCode,AddressCountryCode = addressCountryCode,NationalId = nationalId,DateOfBirth = dateOfBirth,LastVerifiedDate = lastVerifiedDate };
             return await FetchAsync(options, client);
         }
         #endif
@@ -215,6 +218,10 @@ namespace Twilio.Rest.Lookups.V2
         ///<summary> An object that contains identity match information. The result of comparing user-provided information including name, address, date of birth, national ID, against authoritative phone-based data sources </summary> 
         [JsonProperty("identity_match")]
         public object IdentityMatch { get; private set; }
+
+        ///<summary> An object that contains reassigned number information. Reassigned Numbers will return a phone number's reassignment status given a phone number and date </summary> 
+        [JsonProperty("reassigned_number")]
+        public object ReassignedNumber { get; private set; }
 
         ///<summary> An object that contains information on if a phone number has been currently or previously blocked by Verify Fraud Guard for receiving malicious SMS pumping traffic as well as other signals associated with risky carriers and low conversion rates. </summary> 
         [JsonProperty("sms_pumping_risk")]

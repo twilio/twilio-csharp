@@ -78,7 +78,7 @@ namespace Twilio.Rest.Insights.V1.Call
                 headerParams: null
             );
         }
-        /// <summary> read </summary>
+        /// <summary> Get a list of Call Metrics for a Call. </summary>
         /// <param name="options"> Read Metric parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Metric </returns>
@@ -91,7 +91,7 @@ namespace Twilio.Rest.Insights.V1.Call
         }
 
         #if !NET35
-        /// <summary> read </summary>
+        /// <summary> Get a list of Call Metrics for a Call. </summary>
         /// <param name="options"> Read Metric parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Metric </returns>
@@ -105,10 +105,10 @@ namespace Twilio.Rest.Insights.V1.Call
             return new ResourceSet<MetricResource>(page, options, client);
         }
         #endif
-        /// <summary> read </summary>
-        /// <param name="pathCallSid">  </param>
-        /// <param name="edge">  </param>
-        /// <param name="direction">  </param>
+        /// <summary> Get a list of Call Metrics for a Call. </summary>
+        /// <param name="pathCallSid"> The unique SID identifier of the Call. </param>
+        /// <param name="edge"> The Edge of this Metric. One of `unknown_edge`, `carrier_edge`, `sip_edge`, `sdk_edge` or `client_edge`. </param>
+        /// <param name="direction"> The Direction of this Metric. One of `unknown`, `inbound`, `outbound` or `both`. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -126,10 +126,10 @@ namespace Twilio.Rest.Insights.V1.Call
         }
 
         #if !NET35
-        /// <summary> read </summary>
-        /// <param name="pathCallSid">  </param>
-        /// <param name="edge">  </param>
-        /// <param name="direction">  </param>
+        /// <summary> Get a list of Call Metrics for a Call. </summary>
+        /// <param name="pathCallSid"> The unique SID identifier of the Call. </param>
+        /// <param name="edge"> The Edge of this Metric. One of `unknown_edge`, `carrier_edge`, `sip_edge`, `sdk_edge` or `client_edge`. </param>
+        /// <param name="direction"> The Direction of this Metric. One of `unknown`, `inbound`, `outbound` or `both`. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -214,15 +214,15 @@ namespace Twilio.Rest.Insights.V1.Call
         }
 
     
-        ///<summary> The timestamp </summary> 
+        ///<summary> Timestamp of metric sample. Samples are taken every 10 seconds and contain the metrics for the previous 10 seconds. </summary> 
         [JsonProperty("timestamp")]
         public string Timestamp { get; private set; }
 
-        ///<summary> The call_sid </summary> 
+        ///<summary> The unique SID identifier of the Call. </summary> 
         [JsonProperty("call_sid")]
         public string CallSid { get; private set; }
 
-        ///<summary> The account_sid </summary> 
+        ///<summary> The unique SID identifier of the Account. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
@@ -234,19 +234,19 @@ namespace Twilio.Rest.Insights.V1.Call
         [JsonProperty("direction")]
         public MetricResource.StreamDirectionEnum Direction { get; private set; }
 
-        ///<summary> The carrier_edge </summary> 
+        ///<summary> Contains metrics and properties for the Twilio media gateway of a PSTN call. </summary> 
         [JsonProperty("carrier_edge")]
         public object CarrierEdge { get; private set; }
 
-        ///<summary> The sip_edge </summary> 
+        ///<summary> Contains metrics and properties for the Twilio media gateway of a SIP Interface or Trunking call. </summary> 
         [JsonProperty("sip_edge")]
         public object SipEdge { get; private set; }
 
-        ///<summary> The sdk_edge </summary> 
+        ///<summary> Contains metrics and properties for the SDK sensor library for Client calls. </summary> 
         [JsonProperty("sdk_edge")]
         public object SdkEdge { get; private set; }
 
-        ///<summary> The client_edge </summary> 
+        ///<summary> Contains metrics and properties for the Twilio media gateway of a Client call. </summary> 
         [JsonProperty("client_edge")]
         public object ClientEdge { get; private set; }
 

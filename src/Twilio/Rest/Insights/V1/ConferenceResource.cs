@@ -133,7 +133,7 @@ namespace Twilio.Rest.Insights.V1
             );
         }
 
-        /// <summary> Fetch a specific Conference. </summary>
+        /// <summary> Get a specific Conference Summary. </summary>
         /// <param name="options"> Fetch Conference parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Conference </returns>
@@ -145,7 +145,7 @@ namespace Twilio.Rest.Insights.V1
         }
 
         #if !NET35
-        /// <summary> Fetch a specific Conference. </summary>
+        /// <summary> Get a specific Conference Summary. </summary>
         /// <param name="options"> Fetch Conference parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Conference </returns>
@@ -157,7 +157,7 @@ namespace Twilio.Rest.Insights.V1
             return FromJson(response.Content);
         }
         #endif
-        /// <summary> Fetch a specific Conference. </summary>
+        /// <summary> Get a specific Conference Summary. </summary>
         /// <param name="pathConferenceSid"> The unique SID identifier of the Conference. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Conference </returns>
@@ -170,7 +170,7 @@ namespace Twilio.Rest.Insights.V1
         }
 
         #if !NET35
-        /// <summary> Fetch a specific Conference. </summary>
+        /// <summary> Get a specific Conference Summary. </summary>
         /// <param name="pathConferenceSid"> The unique SID identifier of the Conference. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Conference </returns>
@@ -195,7 +195,7 @@ namespace Twilio.Rest.Insights.V1
                 headerParams: null
             );
         }
-        /// <summary> Retrieve a list of Conferences. </summary>
+        /// <summary> Get a list of Conference Summaries. </summary>
         /// <param name="options"> Read Conference parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Conference </returns>
@@ -208,7 +208,7 @@ namespace Twilio.Rest.Insights.V1
         }
 
         #if !NET35
-        /// <summary> Retrieve a list of Conferences. </summary>
+        /// <summary> Get a list of Conference Summaries. </summary>
         /// <param name="options"> Read Conference parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Conference </returns>
@@ -222,7 +222,7 @@ namespace Twilio.Rest.Insights.V1
             return new ResourceSet<ConferenceResource>(page, options, client);
         }
         #endif
-        /// <summary> Retrieve a list of Conferences. </summary>
+        /// <summary> Get a list of Conference Summaries. </summary>
         /// <param name="conferenceSid"> The SID of the conference. </param>
         /// <param name="friendlyName"> Custom label for the conference resource, up to 64 characters. </param>
         /// <param name="status"> Conference status. </param>
@@ -257,7 +257,7 @@ namespace Twilio.Rest.Insights.V1
         }
 
         #if !NET35
-        /// <summary> Retrieve a list of Conferences. </summary>
+        /// <summary> Get a list of Conference Summaries. </summary>
         /// <param name="conferenceSid"> The SID of the conference. </param>
         /// <param name="friendlyName"> Custom label for the conference resource, up to 64 characters. </param>
         /// <param name="status"> Conference status. </param>

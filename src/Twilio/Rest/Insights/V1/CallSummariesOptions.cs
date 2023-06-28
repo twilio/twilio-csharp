@@ -23,77 +23,77 @@ using Twilio.Converters;
 
 namespace Twilio.Rest.Insights.V1
 {
-    /// <summary> read </summary>
+    /// <summary> Get a list of Call Summaries. </summary>
     public class ReadCallSummariesOptions : ReadOptions<CallSummariesResource>
     {
     
-        
+        ///<summary> A calling party. Could be an E.164 number, a SIP URI, or a Twilio Client registered name. </summary> 
         public string From { get; set; }
 
-        
+        ///<summary> A called party. Could be an E.164 number, a SIP URI, or a Twilio Client registered name. </summary> 
         public string To { get; set; }
 
-        
+        ///<summary> An origination carrier. </summary> 
         public string FromCarrier { get; set; }
 
-        
+        ///<summary> A destination carrier. </summary> 
         public string ToCarrier { get; set; }
 
-        
+        ///<summary> A source country code based on phone number in From. </summary> 
         public string FromCountryCode { get; set; }
 
-        
+        ///<summary> A destination country code. Based on phone number in To. </summary> 
         public string ToCountryCode { get; set; }
 
-        
+        ///<summary> A boolean flag indicating whether or not the calls were branded using Twilio Branded Calls. </summary> 
         public bool? Branded { get; set; }
 
-        
+        ///<summary> A boolean flag indicating whether or not the caller was verified using SHAKEN/STIR. </summary> 
         public bool? VerifiedCaller { get; set; }
 
-        
+        ///<summary> A boolean flag indicating the presence of one or more [Voice Insights Call Tags](https://www.twilio.com/docs/voice/voice-insights/api/call/details-call-tags). </summary> 
         public bool? HasTag { get; set; }
 
-        
+        ///<summary> A Start time of the calls. xm (x minutes), xh (x hours), xd (x days), 1w, 30m, 3d, 4w or datetime-ISO. Defaults to 4h. </summary> 
         public string StartTime { get; set; }
 
-        
+        ///<summary> An End Time of the calls. xm (x minutes), xh (x hours), xd (x days), 1w, 30m, 3d, 4w or datetime-ISO. Defaults to 0m. </summary> 
         public string EndTime { get; set; }
 
-        
+        ///<summary> A Call Type of the calls. One of `carrier`, `sip`, `trunking` or `client`. </summary> 
         public string CallType { get; set; }
 
-        
+        ///<summary> A Call State of the calls. One of `ringing`, `completed`, `busy`, `fail`, `noanswer`, `canceled`, `answered`, `undialed`. </summary> 
         public string CallState { get; set; }
 
-        
+        ///<summary> A Direction of the calls. One of `outbound_api`, `outbound_dial`, `inbound`, `trunking_originating`, `trunking_terminating`. </summary> 
         public string Direction { get; set; }
 
-        
+        ///<summary> A Processing State of the Call Summaries. One of `completed`, `partial` or `all`. </summary> 
         public CallSummariesResource.ProcessingStateRequestEnum ProcessingState { get; set; }
 
-        
+        ///<summary> A Sort By criterion for the returned list of Call Summaries. One of `start_time` or `end_time`. </summary> 
         public CallSummariesResource.SortByEnum SortBy { get; set; }
 
-        
+        ///<summary> A unique SID identifier of a Subaccount. </summary> 
         public string Subaccount { get; set; }
 
-        
+        ///<summary> A boolean flag indicating an abnormal session where the last SIP response was not 200 OK. </summary> 
         public bool? AbnormalSession { get; set; }
 
-        
+        ///<summary> An Answered By value for the calls based on `Answering Machine Detection (AMD)`. One of `unknown`, `machine_start`, `machine_end_beep`, `machine_end_silence`, `machine_end_other`, `human` or `fax`. </summary> 
         public CallSummariesResource.AnsweredByEnum AnsweredBy { get; set; }
 
-        
+        ///<summary> A Connectivity Issue with the calls. One of `no_connectivity_issue`, `invalid_number`, `caller_id`, `dropped_call`, or `number_reachability`. </summary> 
         public string ConnectivityIssue { get; set; }
 
-        
+        ///<summary> A subjective Quality Issue with the calls. One of `no_quality_issue`, `low_volume`, `choppy_robotic`, `echo`, `dtmf`, `latency`, `owa`, `static_noise`. </summary> 
         public string QualityIssue { get; set; }
 
-        
+        ///<summary> A boolean flag indicating spam calls. </summary> 
         public bool? Spam { get; set; }
 
-        
+        ///<summary> A Call Score of the calls. Use a range of 1-5 to indicate the call experience score, with the following mapping as a reference for the rated call [5: Excellent, 4: Good, 3 : Fair, 2 : Poor, 1: Bad]. </summary> 
         public string CallScore { get; set; }
 
 
