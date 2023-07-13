@@ -41,6 +41,18 @@ namespace Twilio.Rest.Verify.V2.Service
             public static readonly StatusEnum Approved = new StatusEnum("approved");
 
         }
+        public sealed class RiskCheckEnum : StringEnum
+        {
+            private RiskCheckEnum(string value) : base(value) {}
+            public RiskCheckEnum() {}
+            public static implicit operator RiskCheckEnum(string value)
+            {
+                return new RiskCheckEnum(value);
+            }
+            public static readonly RiskCheckEnum Enable = new RiskCheckEnum("enable");
+            public static readonly RiskCheckEnum Disable = new RiskCheckEnum("disable");
+
+        }
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class ChannelEnum : StringEnum
         {
@@ -118,6 +130,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="templateSid"> The message [template](https://www.twilio.com/docs/verify/api/templates). If provided, will override the default template for the Service. SMS and Voice channels only. </param>
         /// <param name="templateCustomSubstitutions"> A stringified JSON object in which the keys are the template's special variables and the values are the variables substitutions. </param>
         /// <param name="deviceIp"> Strongly encouraged if using the auto channel. The IP address of the client's device. If provided, it has to be a valid IPv4 or IPv6 address. </param>
+        /// <param name="riskCheck">  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Verification </returns>
         public static VerificationResource Create(
@@ -137,9 +150,10 @@ namespace Twilio.Rest.Verify.V2.Service
                                           string templateSid = null,
                                           string templateCustomSubstitutions = null,
                                           string deviceIp = null,
+                                          VerificationResource.RiskCheckEnum riskCheck = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new CreateVerificationOptions(pathServiceSid, to, channel){  CustomFriendlyName = customFriendlyName, CustomMessage = customMessage, SendDigits = sendDigits, Locale = locale, CustomCode = customCode, Amount = amount, Payee = payee, RateLimits = rateLimits, ChannelConfiguration = channelConfiguration, AppHash = appHash, TemplateSid = templateSid, TemplateCustomSubstitutions = templateCustomSubstitutions, DeviceIp = deviceIp };
+            var options = new CreateVerificationOptions(pathServiceSid, to, channel){  CustomFriendlyName = customFriendlyName, CustomMessage = customMessage, SendDigits = sendDigits, Locale = locale, CustomCode = customCode, Amount = amount, Payee = payee, RateLimits = rateLimits, ChannelConfiguration = channelConfiguration, AppHash = appHash, TemplateSid = templateSid, TemplateCustomSubstitutions = templateCustomSubstitutions, DeviceIp = deviceIp, RiskCheck = riskCheck };
             return Create(options, client);
         }
 
@@ -161,6 +175,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="templateSid"> The message [template](https://www.twilio.com/docs/verify/api/templates). If provided, will override the default template for the Service. SMS and Voice channels only. </param>
         /// <param name="templateCustomSubstitutions"> A stringified JSON object in which the keys are the template's special variables and the values are the variables substitutions. </param>
         /// <param name="deviceIp"> Strongly encouraged if using the auto channel. The IP address of the client's device. If provided, it has to be a valid IPv4 or IPv6 address. </param>
+        /// <param name="riskCheck">  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Verification </returns>
         public static async System.Threading.Tasks.Task<VerificationResource> CreateAsync(
@@ -180,9 +195,10 @@ namespace Twilio.Rest.Verify.V2.Service
                                                                                   string templateSid = null,
                                                                                   string templateCustomSubstitutions = null,
                                                                                   string deviceIp = null,
+                                                                                  VerificationResource.RiskCheckEnum riskCheck = null,
                                                                                   ITwilioRestClient client = null)
         {
-        var options = new CreateVerificationOptions(pathServiceSid, to, channel){  CustomFriendlyName = customFriendlyName, CustomMessage = customMessage, SendDigits = sendDigits, Locale = locale, CustomCode = customCode, Amount = amount, Payee = payee, RateLimits = rateLimits, ChannelConfiguration = channelConfiguration, AppHash = appHash, TemplateSid = templateSid, TemplateCustomSubstitutions = templateCustomSubstitutions, DeviceIp = deviceIp };
+        var options = new CreateVerificationOptions(pathServiceSid, to, channel){  CustomFriendlyName = customFriendlyName, CustomMessage = customMessage, SendDigits = sendDigits, Locale = locale, CustomCode = customCode, Amount = amount, Payee = payee, RateLimits = rateLimits, ChannelConfiguration = channelConfiguration, AppHash = appHash, TemplateSid = templateSid, TemplateCustomSubstitutions = templateCustomSubstitutions, DeviceIp = deviceIp, RiskCheck = riskCheck };
             return await CreateAsync(options, client);
         }
         #endif

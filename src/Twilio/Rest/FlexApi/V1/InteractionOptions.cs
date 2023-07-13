@@ -34,6 +34,9 @@ namespace Twilio.Rest.FlexApi.V1
         ///<summary> The Interaction's routing logic. </summary> 
         public object Routing { get; }
 
+        ///<summary> The Interaction context sid is used for adding a context lookup sid </summary> 
+        public string InteractionContextSid { get; set; }
+
 
         /// <summary> Construct a new CreateInteractionOptions </summary>
         /// <param name="channel"> The Interaction's channel. </param>
@@ -57,6 +60,10 @@ namespace Twilio.Rest.FlexApi.V1
             if (Routing != null)
             {
                 p.Add(new KeyValuePair<string, string>("Routing", Serializers.JsonObject(Routing)));
+            }
+            if (InteractionContextSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("InteractionContextSid", InteractionContextSid));
             }
             return p;
         }

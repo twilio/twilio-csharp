@@ -37,6 +37,9 @@ namespace Twilio.Rest.Numbers.V2
         ///<summary> The contact phone number of the person authorized to sign the Authorization Document. </summary> 
         public Types.PhoneNumber ContactPhoneNumber { get; }
 
+        ///<summary> A list of HostedNumberOrder sids that this AuthorizationDocument will authorize for hosting phone number capabilities on Twilio's platform. </summary> 
+        public List<string> HostedNumberOrderSids { get; }
+
         ///<summary> The title of the person authorized to sign the Authorization Document for this phone number. </summary> 
         public string ContactTitle { get; set; }
 
@@ -48,11 +51,13 @@ namespace Twilio.Rest.Numbers.V2
         /// <param name="addressSid"> A 34 character string that uniquely identifies the Address resource that is associated with this AuthorizationDocument. </param>
         /// <param name="email"> Email that this AuthorizationDocument will be sent to for signing. </param>
         /// <param name="contactPhoneNumber"> The contact phone number of the person authorized to sign the Authorization Document. </param>
-        public CreateAuthorizationDocumentOptions(string addressSid, string email, Types.PhoneNumber contactPhoneNumber)
+        /// <param name="hostedNumberOrderSids"> A list of HostedNumberOrder sids that this AuthorizationDocument will authorize for hosting phone number capabilities on Twilio's platform. </param>
+        public CreateAuthorizationDocumentOptions(string addressSid, string email, Types.PhoneNumber contactPhoneNumber, List<string> hostedNumberOrderSids)
         {
             AddressSid = addressSid;
             Email = email;
             ContactPhoneNumber = contactPhoneNumber;
+            HostedNumberOrderSids = hostedNumberOrderSids;
             CcEmails = new List<string>();
         }
 
@@ -73,6 +78,10 @@ namespace Twilio.Rest.Numbers.V2
             if (ContactPhoneNumber != null)
             {
                 p.Add(new KeyValuePair<string, string>("ContactPhoneNumber", ContactPhoneNumber.ToString()));
+            }
+            if (HostedNumberOrderSids != null)
+            {
+                p.AddRange(HostedNumberOrderSids.Select(HostedNumberOrderSids => new KeyValuePair<string, string>("HostedNumberOrderSids", HostedNumberOrderSids)));
             }
             if (ContactTitle != null)
             {

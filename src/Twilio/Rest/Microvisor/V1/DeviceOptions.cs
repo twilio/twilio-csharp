@@ -91,6 +91,9 @@ namespace Twilio.Rest.Microvisor.V1
         ///<summary> A Boolean flag specifying whether to enable application logging. Logs will be enabled or extended for 24 hours. </summary> 
         public bool? LoggingEnabled { get; set; }
 
+        ///<summary> Set to true to restart the App running on the Device. </summary> 
+        public bool? RestartApp { get; set; }
+
 
 
         /// <summary> Construct a new UpdateDeviceOptions </summary>
@@ -117,6 +120,10 @@ namespace Twilio.Rest.Microvisor.V1
             if (LoggingEnabled != null)
             {
                 p.Add(new KeyValuePair<string, string>("LoggingEnabled", LoggingEnabled.Value.ToString().ToLower()));
+            }
+            if (RestartApp != null)
+            {
+                p.Add(new KeyValuePair<string, string>("RestartApp", RestartApp.Value.ToString().ToLower()));
             }
             return p;
         }

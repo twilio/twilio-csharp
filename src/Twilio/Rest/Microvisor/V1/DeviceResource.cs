@@ -263,6 +263,7 @@ namespace Twilio.Rest.Microvisor.V1
         /// <param name="uniqueName"> A unique and addressable name to be assigned to this Device by the developer. It may be used in place of the Device SID. </param>
         /// <param name="targetApp"> The SID or unique name of the App to be targeted to the Device. </param>
         /// <param name="loggingEnabled"> A Boolean flag specifying whether to enable application logging. Logs will be enabled or extended for 24 hours. </param>
+        /// <param name="restartApp"> Set to true to restart the App running on the Device. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Device </returns>
         public static DeviceResource Update(
@@ -270,9 +271,10 @@ namespace Twilio.Rest.Microvisor.V1
                                           string uniqueName = null,
                                           string targetApp = null,
                                           bool? loggingEnabled = null,
+                                          bool? restartApp = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new UpdateDeviceOptions(pathSid){ UniqueName = uniqueName, TargetApp = targetApp, LoggingEnabled = loggingEnabled };
+            var options = new UpdateDeviceOptions(pathSid){ UniqueName = uniqueName, TargetApp = targetApp, LoggingEnabled = loggingEnabled, RestartApp = restartApp };
             return Update(options, client);
         }
 
@@ -282,6 +284,7 @@ namespace Twilio.Rest.Microvisor.V1
         /// <param name="uniqueName"> A unique and addressable name to be assigned to this Device by the developer. It may be used in place of the Device SID. </param>
         /// <param name="targetApp"> The SID or unique name of the App to be targeted to the Device. </param>
         /// <param name="loggingEnabled"> A Boolean flag specifying whether to enable application logging. Logs will be enabled or extended for 24 hours. </param>
+        /// <param name="restartApp"> Set to true to restart the App running on the Device. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Device </returns>
         public static async System.Threading.Tasks.Task<DeviceResource> UpdateAsync(
@@ -289,9 +292,10 @@ namespace Twilio.Rest.Microvisor.V1
                                                                               string uniqueName = null,
                                                                               string targetApp = null,
                                                                               bool? loggingEnabled = null,
+                                                                              bool? restartApp = null,
                                                                               ITwilioRestClient client = null)
         {
-            var options = new UpdateDeviceOptions(pathSid){ UniqueName = uniqueName, TargetApp = targetApp, LoggingEnabled = loggingEnabled };
+            var options = new UpdateDeviceOptions(pathSid){ UniqueName = uniqueName, TargetApp = targetApp, LoggingEnabled = loggingEnabled, RestartApp = restartApp };
             return await UpdateAsync(options, client);
         }
         #endif

@@ -80,7 +80,7 @@ namespace Twilio.Tests.TwiML
         {
             var elem = new Prompt();
 
-            elem.Say("message", Say.VoiceEnum.Man, 1, Say.LanguageEnum.Arb);
+            elem.Say("message", Say.VoiceEnum.Man, 1, Say.LanguageEnum.AfZa);
 
             elem.Play(new Uri("https://example.com"), 1, "digits");
 
@@ -89,7 +89,7 @@ namespace Twilio.Tests.TwiML
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
                 "<Prompt>" + Environment.NewLine +
-                "  <Say voice=\"man\" loop=\"1\" language=\"arb\">message</Say>" + Environment.NewLine +
+                "  <Say voice=\"man\" loop=\"1\" language=\"af-ZA\">message</Say>" + Environment.NewLine +
                 "  <Play loop=\"1\" digits=\"digits\">https://example.com</Play>" + Environment.NewLine +
                 "  <Pause length=\"1\"></Pause>" + Environment.NewLine +
                 "</Prompt>",

@@ -29,10 +29,10 @@ namespace Twilio.Tests.TwiML
         [Test]
         public void TestElementWithParams()
         {
-            var elem = new Say("message", Say.VoiceEnum.Man, 1, Say.LanguageEnum.Arb);
+            var elem = new Say("message", Say.VoiceEnum.Man, 1, Say.LanguageEnum.AfZa);
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Say voice=\"man\" loop=\"1\" language=\"arb\">message</Say>",
+                "<Say voice=\"man\" loop=\"1\" language=\"af-ZA\">message</Say>",
                 elem.ToString()
             );
         }

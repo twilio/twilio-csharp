@@ -76,6 +76,9 @@ namespace Twilio.Rest.Verify.V2.Service
         ///<summary> Strongly encouraged if using the auto channel. The IP address of the client's device. If provided, it has to be a valid IPv4 or IPv6 address. </summary> 
         public string DeviceIp { get; set; }
 
+        
+        public VerificationResource.RiskCheckEnum RiskCheck { get; set; }
+
 
         /// <summary> Construct a new CreateVerificationOptions </summary>
         /// <param name="pathServiceSid"> The SID of the verification [Service](https://www.twilio.com/docs/verify/api/service) to create the resource under. </param>
@@ -153,6 +156,10 @@ namespace Twilio.Rest.Verify.V2.Service
             if (DeviceIp != null)
             {
                 p.Add(new KeyValuePair<string, string>("DeviceIp", DeviceIp));
+            }
+            if (RiskCheck != null)
+            {
+                p.Add(new KeyValuePair<string, string>("RiskCheck", RiskCheck.ToString()));
             }
             return p;
         }

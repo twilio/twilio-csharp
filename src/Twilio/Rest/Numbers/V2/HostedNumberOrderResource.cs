@@ -511,10 +511,6 @@ namespace Twilio.Rest.Numbers.V2
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> Whether the SMS capability will be hosted on our platform. Can be `true` of `false`. </summary> 
-        [JsonProperty("sms_capability")]
-        public bool? SmsCapability { get; private set; }
-
         ///<summary> The date that this resource was updated, given as [GMT RFC 2822](http://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }

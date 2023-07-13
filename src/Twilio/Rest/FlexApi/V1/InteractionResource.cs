@@ -74,14 +74,16 @@ namespace Twilio.Rest.FlexApi.V1
         /// <summary> Create a new Interaction. </summary>
         /// <param name="channel"> The Interaction's channel. </param>
         /// <param name="routing"> The Interaction's routing logic. </param>
+        /// <param name="interactionContextSid"> The Interaction context sid is used for adding a context lookup sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Interaction </returns>
         public static InteractionResource Create(
                                           object channel,
                                           object routing,
+                                          string interactionContextSid = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new CreateInteractionOptions(channel, routing){  };
+            var options = new CreateInteractionOptions(channel, routing){  InteractionContextSid = interactionContextSid };
             return Create(options, client);
         }
 
@@ -89,14 +91,16 @@ namespace Twilio.Rest.FlexApi.V1
         /// <summary> Create a new Interaction. </summary>
         /// <param name="channel"> The Interaction's channel. </param>
         /// <param name="routing"> The Interaction's routing logic. </param>
+        /// <param name="interactionContextSid"> The Interaction context sid is used for adding a context lookup sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Interaction </returns>
         public static async System.Threading.Tasks.Task<InteractionResource> CreateAsync(
                                                                                   object channel,
                                                                                   object routing,
+                                                                                  string interactionContextSid = null,
                                                                                   ITwilioRestClient client = null)
         {
-        var options = new CreateInteractionOptions(channel, routing){  };
+        var options = new CreateInteractionOptions(channel, routing){  InteractionContextSid = interactionContextSid };
             return await CreateAsync(options, client);
         }
         #endif
@@ -203,6 +207,10 @@ namespace Twilio.Rest.FlexApi.V1
         ///<summary> The links </summary> 
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
+
+        ///<summary> The interaction_context_sid </summary> 
+        [JsonProperty("interaction_context_sid")]
+        public string InteractionContextSid { get; private set; }
 
 
 

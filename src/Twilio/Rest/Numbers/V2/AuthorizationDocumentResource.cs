@@ -91,6 +91,7 @@ namespace Twilio.Rest.Numbers.V2
         /// <param name="addressSid"> A 34 character string that uniquely identifies the Address resource that is associated with this AuthorizationDocument. </param>
         /// <param name="email"> Email that this AuthorizationDocument will be sent to for signing. </param>
         /// <param name="contactPhoneNumber"> The contact phone number of the person authorized to sign the Authorization Document. </param>
+        /// <param name="hostedNumberOrderSids"> A list of HostedNumberOrder sids that this AuthorizationDocument will authorize for hosting phone number capabilities on Twilio's platform. </param>
         /// <param name="contactTitle"> The title of the person authorized to sign the Authorization Document for this phone number. </param>
         /// <param name="ccEmails"> Email recipients who will be informed when an Authorization Document has been sent and signed. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -99,11 +100,12 @@ namespace Twilio.Rest.Numbers.V2
                                           string addressSid,
                                           string email,
                                           Types.PhoneNumber contactPhoneNumber,
+                                          List<string> hostedNumberOrderSids,
                                           string contactTitle = null,
                                           List<string> ccEmails = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new CreateAuthorizationDocumentOptions(addressSid, email, contactPhoneNumber){  ContactTitle = contactTitle, CcEmails = ccEmails };
+            var options = new CreateAuthorizationDocumentOptions(addressSid, email, contactPhoneNumber, hostedNumberOrderSids){  ContactTitle = contactTitle, CcEmails = ccEmails };
             return Create(options, client);
         }
 
@@ -112,6 +114,7 @@ namespace Twilio.Rest.Numbers.V2
         /// <param name="addressSid"> A 34 character string that uniquely identifies the Address resource that is associated with this AuthorizationDocument. </param>
         /// <param name="email"> Email that this AuthorizationDocument will be sent to for signing. </param>
         /// <param name="contactPhoneNumber"> The contact phone number of the person authorized to sign the Authorization Document. </param>
+        /// <param name="hostedNumberOrderSids"> A list of HostedNumberOrder sids that this AuthorizationDocument will authorize for hosting phone number capabilities on Twilio's platform. </param>
         /// <param name="contactTitle"> The title of the person authorized to sign the Authorization Document for this phone number. </param>
         /// <param name="ccEmails"> Email recipients who will be informed when an Authorization Document has been sent and signed. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -120,11 +123,12 @@ namespace Twilio.Rest.Numbers.V2
                                                                                   string addressSid,
                                                                                   string email,
                                                                                   Types.PhoneNumber contactPhoneNumber,
+                                                                                  List<string> hostedNumberOrderSids,
                                                                                   string contactTitle = null,
                                                                                   List<string> ccEmails = null,
                                                                                   ITwilioRestClient client = null)
         {
-        var options = new CreateAuthorizationDocumentOptions(addressSid, email, contactPhoneNumber){  ContactTitle = contactTitle, CcEmails = ccEmails };
+        var options = new CreateAuthorizationDocumentOptions(addressSid, email, contactPhoneNumber, hostedNumberOrderSids){  ContactTitle = contactTitle, CcEmails = ccEmails };
             return await CreateAsync(options, client);
         }
         #endif
