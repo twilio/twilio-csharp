@@ -16,15 +16,15 @@ namespace Twilio.TwiML
         /// <summary>
         /// Tag name
         /// </summary>
-        private string TagName { get; }
+        private string TagName { get; set; }
         /// <summary>
         /// Children elements
         /// </summary>
-        private List<TwiML> Children { get; }
+        private List<TwiML> Children { get; set; }
         /// <summary>
         /// Additional tag attributes to set on the generated xml
         /// </summary>
-        private List<KeyValuePair<string,string>> Options { get; }
+        private List<KeyValuePair<string,string>> Options { get; set; }
         /// <summary>
         /// Attribute names to be transformed on the generated xml
         /// </summary>
