@@ -95,7 +95,7 @@ namespace Twilio.Rest.Numbers.V2
         /// <param name="addressSid"> Optional. A 34 character string that uniquely identifies the Address resource that represents the address of the owner of this phone number. </param>
         /// <param name="email"> Optional. Email of the owner of this phone number that is being hosted. </param>
         /// <param name="accountSid"> This defaults to the AccountSid of the authorization the user is using. This can be provided to specify a subaccount to add the HostedNumberOrder to. </param>
-        /// <param name="friendlyName"> A 64 character string that is a human readable text that describes this resource. </param>
+        /// <param name="friendlyName"> A 128 character string that is a human readable text that describes this resource. </param>
         /// <param name="ccEmails"> Optional. A list of emails that the LOA document for this HostedNumberOrder will be carbon copied to. </param>
         /// <param name="smsUrl"> The URL that Twilio should request when somebody sends an SMS to the phone number. This will be copied onto the IncomingPhoneNumber resource. </param>
         /// <param name="smsMethod"> The HTTP method that should be used to request the SmsUrl. Must be either `GET` or `POST`.  This will be copied onto the IncomingPhoneNumber resource. </param>
@@ -138,7 +138,7 @@ namespace Twilio.Rest.Numbers.V2
         /// <param name="addressSid"> Optional. A 34 character string that uniquely identifies the Address resource that represents the address of the owner of this phone number. </param>
         /// <param name="email"> Optional. Email of the owner of this phone number that is being hosted. </param>
         /// <param name="accountSid"> This defaults to the AccountSid of the authorization the user is using. This can be provided to specify a subaccount to add the HostedNumberOrder to. </param>
-        /// <param name="friendlyName"> A 64 character string that is a human readable text that describes this resource. </param>
+        /// <param name="friendlyName"> A 128 character string that is a human readable text that describes this resource. </param>
         /// <param name="ccEmails"> Optional. A list of emails that the LOA document for this HostedNumberOrder will be carbon copied to. </param>
         /// <param name="smsUrl"> The URL that Twilio should request when somebody sends an SMS to the phone number. This will be copied onto the IncomingPhoneNumber resource. </param>
         /// <param name="smsMethod"> The HTTP method that should be used to request the SmsUrl. Must be either `GET` or `POST`.  This will be copied onto the IncomingPhoneNumber resource. </param>
@@ -354,7 +354,7 @@ namespace Twilio.Rest.Numbers.V2
         /// <param name="smsCapability"> Whether the SMS capability will be hosted on our platform. Can be `true` of `false`. </param>
         /// <param name="phoneNumber"> An E164 formatted phone number hosted by this HostedNumberOrder. </param>
         /// <param name="incomingPhoneNumberSid"> A 34 character string that uniquely identifies the IncomingPhoneNumber resource created by this HostedNumberOrder. </param>
-        /// <param name="friendlyName"> A human readable description of this resource, up to 64 characters. </param>
+        /// <param name="friendlyName"> A human readable description of this resource, up to 128 characters. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -379,7 +379,7 @@ namespace Twilio.Rest.Numbers.V2
         /// <param name="smsCapability"> Whether the SMS capability will be hosted on our platform. Can be `true` of `false`. </param>
         /// <param name="phoneNumber"> An E164 formatted phone number hosted by this HostedNumberOrder. </param>
         /// <param name="incomingPhoneNumberSid"> A 34 character string that uniquely identifies the IncomingPhoneNumber resource created by this HostedNumberOrder. </param>
-        /// <param name="friendlyName"> A human readable description of this resource, up to 64 characters. </param>
+        /// <param name="friendlyName"> A human readable description of this resource, up to 128 characters. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -495,7 +495,7 @@ namespace Twilio.Rest.Numbers.V2
         [JsonProperty("capabilities")]
         public PhoneNumberCapabilities Capabilities { get; private set; }
 
-        ///<summary> A 64 character string that is a human-readable text that describes this resource. </summary> 
+        ///<summary> A 128 character string that is a human-readable text that describes this resource. </summary> 
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
 

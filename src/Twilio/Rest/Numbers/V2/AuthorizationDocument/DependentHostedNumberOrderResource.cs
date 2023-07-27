@@ -97,7 +97,7 @@ namespace Twilio.Rest.Numbers.V2.AuthorizationDocument
         /// <param name="status"> Status of an instance resource. It can hold one of the values: 1. opened 2. signing, 3. signed LOA, 4. canceled, 5. failed. See the section entitled [Status Values](https://www.twilio.com/docs/api/phone-numbers/hosted-number-authorization-documents#status-values) for more information on each of these statuses. </param>
         /// <param name="phoneNumber"> An E164 formatted phone number hosted by this HostedNumberOrder. </param>
         /// <param name="incomingPhoneNumberSid"> A 34 character string that uniquely identifies the IncomingPhoneNumber resource created by this HostedNumberOrder. </param>
-        /// <param name="friendlyName"> A human readable description of this resource, up to 64 characters. </param>
+        /// <param name="friendlyName"> A human readable description of this resource, up to 128 characters. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -122,7 +122,7 @@ namespace Twilio.Rest.Numbers.V2.AuthorizationDocument
         /// <param name="status"> Status of an instance resource. It can hold one of the values: 1. opened 2. signing, 3. signed LOA, 4. canceled, 5. failed. See the section entitled [Status Values](https://www.twilio.com/docs/api/phone-numbers/hosted-number-authorization-documents#status-values) for more information on each of these statuses. </param>
         /// <param name="phoneNumber"> An E164 formatted phone number hosted by this HostedNumberOrder. </param>
         /// <param name="incomingPhoneNumberSid"> A 34 character string that uniquely identifies the IncomingPhoneNumber resource created by this HostedNumberOrder. </param>
-        /// <param name="friendlyName"> A human readable description of this resource, up to 64 characters. </param>
+        /// <param name="friendlyName"> A human readable description of this resource, up to 128 characters. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -246,7 +246,7 @@ namespace Twilio.Rest.Numbers.V2.AuthorizationDocument
         [JsonProperty("capabilities")]
         public PhoneNumberCapabilities Capabilities { get; private set; }
 
-        ///<summary> A human readable description of this resource, up to 64 characters. </summary> 
+        ///<summary> A human readable description of this resource, up to 128 characters. </summary> 
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
 

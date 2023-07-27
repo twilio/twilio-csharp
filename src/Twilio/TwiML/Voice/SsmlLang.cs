@@ -47,6 +47,7 @@ namespace Twilio.TwiML.Voice
             public static readonly XmlLangEnum FiFi = new XmlLangEnum("fi-FI");
             public static readonly XmlLangEnum FrCa = new XmlLangEnum("fr-CA");
             public static readonly XmlLangEnum FrFr = new XmlLangEnum("fr-FR");
+            public static readonly XmlLangEnum HeIl = new XmlLangEnum("he-IL");
             public static readonly XmlLangEnum HiIn = new XmlLangEnum("hi-IN");
             public static readonly XmlLangEnum IsIs = new XmlLangEnum("is-IS");
             public static readonly XmlLangEnum ItIt = new XmlLangEnum("it-IT");

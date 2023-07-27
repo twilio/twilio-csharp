@@ -563,6 +563,7 @@ namespace Twilio.TwiML.Voice
             public static readonly LanguageEnum FrCa = new LanguageEnum("fr-CA");
             public static readonly LanguageEnum FrFr = new LanguageEnum("fr-FR");
             public static readonly LanguageEnum GuIn = new LanguageEnum("gu-IN");
+            public static readonly LanguageEnum HeIl = new LanguageEnum("he-IL");
             public static readonly LanguageEnum HiIn = new LanguageEnum("hi-IN");
             public static readonly LanguageEnum HuHu = new LanguageEnum("hu-HU");
             public static readonly LanguageEnum IdId = new LanguageEnum("id-ID");

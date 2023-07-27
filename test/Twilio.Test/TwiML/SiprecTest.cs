@@ -29,10 +29,16 @@ namespace Twilio.Tests.TwiML
         [Test]
         public void TestElementWithParams()
         {
-            var elem = new Siprec("name", "connector_name", Siprec.TrackEnum.InboundTrack);
+            var elem = new Siprec(
+                "name",
+                "connector_name",
+                Siprec.TrackEnum.InboundTrack,
+                "status_callback",
+                Siprec.StatusCallbackMethodEnum.Get
+            );
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Siprec name=\"name\" connectorName=\"connector_name\" track=\"inbound_track\"></Siprec>",
+                "<Siprec name=\"name\" connectorName=\"connector_name\" track=\"inbound_track\" statusCallback=\"status_callback\" statusCallbackMethod=\"GET\"></Siprec>",
                 elem.ToString()
             );
         }

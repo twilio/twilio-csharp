@@ -31,7 +31,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
     
 
         
-        /// <summary> Delete media from your account. Once delete, you will no longer be billed </summary>
+        /// <summary> Delete the Media resource. </summary>
         /// <param name="options"> Delete Media parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Media </returns>
@@ -56,7 +56,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
             );
         }
 
-        /// <summary> Delete media from your account. Once delete, you will no longer be billed </summary>
+        /// <summary> Delete the Media resource. </summary>
         /// <param name="options"> Delete Media parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Media </returns>
@@ -68,7 +68,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         }
 
         #if !NET35
-        /// <summary> Delete media from your account. Once delete, you will no longer be billed </summary>
+        /// <summary> Delete the Media resource. </summary>
         /// <param name="options"> Delete Media parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Media </returns>
@@ -81,10 +81,10 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         }
         #endif
 
-        /// <summary> Delete media from your account. Once delete, you will no longer be billed </summary>
-        /// <param name="pathMessageSid"> The SID of the Message resource that this Media resource belongs to. </param>
-        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Media resource to delete </param>
-        /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Media resource(s) to delete. </param>
+        /// <summary> Delete the Media resource. </summary>
+        /// <param name="pathMessageSid"> The SID of the Message resource that is associated with the Media resource. </param>
+        /// <param name="pathSid"> The unique identifier of the to-be-deleted Media resource. </param>
+        /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that is associated with the Media resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Media </returns>
         public static bool Delete(string pathMessageSid, string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
@@ -94,10 +94,10 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         }
 
         #if !NET35
-        /// <summary> Delete media from your account. Once delete, you will no longer be billed </summary>
-        /// <param name="pathMessageSid"> The SID of the Message resource that this Media resource belongs to. </param>
-        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Media resource to delete </param>
-        /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Media resource(s) to delete. </param>
+        /// <summary> Delete the Media resource. </summary>
+        /// <param name="pathMessageSid"> The SID of the Message resource that is associated with the Media resource. </param>
+        /// <param name="pathSid"> The unique identifier of the to-be-deleted Media resource. </param>
+        /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that is associated with the Media resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Media </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathMessageSid, string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
@@ -128,7 +128,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
             );
         }
 
-        /// <summary> Fetch a single media instance belonging to the account used to make the request </summary>
+        /// <summary> Fetch a single Media resource associated with a specific Message resource </summary>
         /// <param name="options"> Fetch Media parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Media </returns>
@@ -140,7 +140,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         }
 
         #if !NET35
-        /// <summary> Fetch a single media instance belonging to the account used to make the request </summary>
+        /// <summary> Fetch a single Media resource associated with a specific Message resource </summary>
         /// <param name="options"> Fetch Media parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Media </returns>
@@ -152,10 +152,10 @@ namespace Twilio.Rest.Api.V2010.Account.Message
             return FromJson(response.Content);
         }
         #endif
-        /// <summary> Fetch a single media instance belonging to the account used to make the request </summary>
-        /// <param name="pathMessageSid"> The SID of the Message resource that this Media resource belongs to. </param>
-        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Media resource to fetch </param>
-        /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Media resource(s) to fetch. </param>
+        /// <summary> Fetch a single Media resource associated with a specific Message resource </summary>
+        /// <param name="pathMessageSid"> The SID of the Message resource that is associated with the Media resource. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Media resource to fetch. </param>
+        /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) associated with the Media resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Media </returns>
         public static MediaResource Fetch(
@@ -169,10 +169,10 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         }
 
         #if !NET35
-        /// <summary> Fetch a single media instance belonging to the account used to make the request </summary>
-        /// <param name="pathMessageSid"> The SID of the Message resource that this Media resource belongs to. </param>
-        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Media resource to fetch </param>
-        /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Media resource(s) to fetch. </param>
+        /// <summary> Fetch a single Media resource associated with a specific Message resource </summary>
+        /// <param name="pathMessageSid"> The SID of the Message resource that is associated with the Media resource. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Media resource to fetch. </param>
+        /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) associated with the Media resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Media </returns>
         public static async System.Threading.Tasks.Task<MediaResource> FetchAsync(string pathMessageSid, string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
@@ -200,7 +200,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
                 headerParams: null
             );
         }
-        /// <summary> Retrieve a list of Media resources belonging to the account used to make the request </summary>
+        /// <summary> Read a list of Media resources associated with a specific Message resource </summary>
         /// <param name="options"> Read Media parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Media </returns>
@@ -213,7 +213,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         }
 
         #if !NET35
-        /// <summary> Retrieve a list of Media resources belonging to the account used to make the request </summary>
+        /// <summary> Read a list of Media resources associated with a specific Message resource </summary>
         /// <param name="options"> Read Media parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Media </returns>
@@ -227,12 +227,12 @@ namespace Twilio.Rest.Api.V2010.Account.Message
             return new ResourceSet<MediaResource>(page, options, client);
         }
         #endif
-        /// <summary> Retrieve a list of Media resources belonging to the account used to make the request </summary>
-        /// <param name="pathMessageSid"> The SID of the Message resource that this Media resource belongs to. </param>
-        /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Media resource(s) to read. </param>
-        /// <param name="dateCreatedBefore"> Only include media that was created on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read media that was created on this date. You can also specify an inequality, such as `StartTime<=YYYY-MM-DD`, to read media that was created on or before midnight of this date, and `StartTime>=YYYY-MM-DD` to read media that was created on or after midnight of this date. </param>
-        /// <param name="dateCreated"> Only include media that was created on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read media that was created on this date. You can also specify an inequality, such as `StartTime<=YYYY-MM-DD`, to read media that was created on or before midnight of this date, and `StartTime>=YYYY-MM-DD` to read media that was created on or after midnight of this date. </param>
-        /// <param name="dateCreatedAfter"> Only include media that was created on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read media that was created on this date. You can also specify an inequality, such as `StartTime<=YYYY-MM-DD`, to read media that was created on or before midnight of this date, and `StartTime>=YYYY-MM-DD` to read media that was created on or after midnight of this date. </param>
+        /// <summary> Read a list of Media resources associated with a specific Message resource </summary>
+        /// <param name="pathMessageSid"> The SID of the Message resource that is associated with the Media resources. </param>
+        /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that is associated with the Media resources. </param>
+        /// <param name="dateCreatedBefore"> Only include Media resources that were created on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read Media that were created on this date. You can also specify an inequality, such as `StartTime<=YYYY-MM-DD`, to read Media that were created on or before midnight of this date, and `StartTime>=YYYY-MM-DD` to read Media that were created on or after midnight of this date. </param>
+        /// <param name="dateCreated"> Only include Media resources that were created on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read Media that were created on this date. You can also specify an inequality, such as `StartTime<=YYYY-MM-DD`, to read Media that were created on or before midnight of this date, and `StartTime>=YYYY-MM-DD` to read Media that were created on or after midnight of this date. </param>
+        /// <param name="dateCreatedAfter"> Only include Media resources that were created on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read Media that were created on this date. You can also specify an inequality, such as `StartTime<=YYYY-MM-DD`, to read Media that were created on or before midnight of this date, and `StartTime>=YYYY-MM-DD` to read Media that were created on or after midnight of this date. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -252,12 +252,12 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         }
 
         #if !NET35
-        /// <summary> Retrieve a list of Media resources belonging to the account used to make the request </summary>
-        /// <param name="pathMessageSid"> The SID of the Message resource that this Media resource belongs to. </param>
-        /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Media resource(s) to read. </param>
-        /// <param name="dateCreatedBefore"> Only include media that was created on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read media that was created on this date. You can also specify an inequality, such as `StartTime<=YYYY-MM-DD`, to read media that was created on or before midnight of this date, and `StartTime>=YYYY-MM-DD` to read media that was created on or after midnight of this date. </param>
-        /// <param name="dateCreated"> Only include media that was created on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read media that was created on this date. You can also specify an inequality, such as `StartTime<=YYYY-MM-DD`, to read media that was created on or before midnight of this date, and `StartTime>=YYYY-MM-DD` to read media that was created on or after midnight of this date. </param>
-        /// <param name="dateCreatedAfter"> Only include media that was created on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read media that was created on this date. You can also specify an inequality, such as `StartTime<=YYYY-MM-DD`, to read media that was created on or before midnight of this date, and `StartTime>=YYYY-MM-DD` to read media that was created on or after midnight of this date. </param>
+        /// <summary> Read a list of Media resources associated with a specific Message resource </summary>
+        /// <param name="pathMessageSid"> The SID of the Message resource that is associated with the Media resources. </param>
+        /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that is associated with the Media resources. </param>
+        /// <param name="dateCreatedBefore"> Only include Media resources that were created on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read Media that were created on this date. You can also specify an inequality, such as `StartTime<=YYYY-MM-DD`, to read Media that were created on or before midnight of this date, and `StartTime>=YYYY-MM-DD` to read Media that were created on or after midnight of this date. </param>
+        /// <param name="dateCreated"> Only include Media resources that were created on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read Media that were created on this date. You can also specify an inequality, such as `StartTime<=YYYY-MM-DD`, to read Media that were created on or before midnight of this date, and `StartTime>=YYYY-MM-DD` to read Media that were created on or after midnight of this date. </param>
+        /// <param name="dateCreatedAfter"> Only include Media resources that were created on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read Media that were created on this date. You can also specify an inequality, such as `StartTime<=YYYY-MM-DD`, to read Media that were created on or before midnight of this date, and `StartTime>=YYYY-MM-DD` to read Media that were created on or after midnight of this date. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -344,31 +344,31 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         }
 
     
-        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created this Media resource. </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) associated with this Media resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The default [mime-type](https://en.wikipedia.org/wiki/Internet_media_type) of the media, for example `image/jpeg`, `image/png`, or `image/gif` </summary> 
+        ///<summary> The default [MIME type](https://en.wikipedia.org/wiki/Internet_media_type) of the media, for example `image/jpeg`, `image/png`, or `image/gif`. </summary> 
         [JsonProperty("content_type")]
         public string ContentType { get; private set; }
 
-        ///<summary> The date and time in GMT that this resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
+        ///<summary> The date and time in GMT when this Media resource was created, specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The date and time in GMT that this resource was last updated, specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
+        ///<summary> The date and time in GMT when this Media resource was last updated, specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> The SID of the resource that created the media. </summary> 
+        ///<summary> The SID of the Message resource that is associated with this Media resource. </summary> 
         [JsonProperty("parent_sid")]
         public string ParentSid { get; private set; }
 
-        ///<summary> The unique string that that we created to identify this Media resource. </summary> 
+        ///<summary> The unique string that identifies this Media resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The URI of this resource, relative to `https://api.twilio.com`. </summary> 
+        ///<summary> The URI of this Media resource, relative to `https://api.twilio.com`. </summary> 
         [JsonProperty("uri")]
         public string Uri { get; private set; }
 

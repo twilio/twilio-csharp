@@ -43,7 +43,7 @@ namespace Twilio.Rest.Numbers.V2
         ///<summary> This defaults to the AccountSid of the authorization the user is using. This can be provided to specify a subaccount to add the HostedNumberOrder to. </summary> 
         public string AccountSid { get; set; }
 
-        ///<summary> A 64 character string that is a human readable text that describes this resource. </summary> 
+        ///<summary> A 128 character string that is a human readable text that describes this resource. </summary> 
         public string FriendlyName { get; set; }
 
         ///<summary> Optional. A list of emails that the LOA document for this HostedNumberOrder will be carbon copied to. </summary> 
@@ -240,7 +240,7 @@ namespace Twilio.Rest.Numbers.V2
         ///<summary> A 34 character string that uniquely identifies the IncomingPhoneNumber resource created by this HostedNumberOrder. </summary> 
         public string IncomingPhoneNumberSid { get; set; }
 
-        ///<summary> A human readable description of this resource, up to 64 characters. </summary> 
+        ///<summary> A human readable description of this resource, up to 128 characters. </summary> 
         public string FriendlyName { get; set; }
 
 

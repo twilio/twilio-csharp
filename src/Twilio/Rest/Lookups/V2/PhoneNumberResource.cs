@@ -227,6 +227,10 @@ namespace Twilio.Rest.Lookups.V2
         [JsonProperty("sms_pumping_risk")]
         public object SmsPumpingRisk { get; private set; }
 
+        ///<summary> An object that contains information on if a mobile phone number could be a disposable or burner number. </summary> 
+        [JsonProperty("disposable_phone_number_risk")]
+        public object DisposablePhoneNumberRisk { get; private set; }
+
         ///<summary> The absolute URL of the resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }

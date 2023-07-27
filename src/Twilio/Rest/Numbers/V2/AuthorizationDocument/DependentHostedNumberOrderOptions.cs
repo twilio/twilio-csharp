@@ -39,7 +39,7 @@ namespace Twilio.Rest.Numbers.V2.AuthorizationDocument
         ///<summary> A 34 character string that uniquely identifies the IncomingPhoneNumber resource created by this HostedNumberOrder. </summary> 
         public string IncomingPhoneNumberSid { get; set; }
 
-        ///<summary> A human readable description of this resource, up to 64 characters. </summary> 
+        ///<summary> A human readable description of this resource, up to 128 characters. </summary> 
         public string FriendlyName { get; set; }
 
 

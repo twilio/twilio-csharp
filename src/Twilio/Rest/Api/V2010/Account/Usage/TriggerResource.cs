@@ -236,6 +236,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             public static readonly UsageCategoryEnum TrunkingRecordings = new UsageCategoryEnum("trunking-recordings");
             public static readonly UsageCategoryEnum TrunkingSecure = new UsageCategoryEnum("trunking-secure");
             public static readonly UsageCategoryEnum TrunkingTermination = new UsageCategoryEnum("trunking-termination");
+            public static readonly UsageCategoryEnum TtsGoogle = new UsageCategoryEnum("tts-google");
             public static readonly UsageCategoryEnum Turnmegabytes = new UsageCategoryEnum("turnmegabytes");
             public static readonly UsageCategoryEnum TurnmegabytesAustralia = new UsageCategoryEnum("turnmegabytes-australia");
             public static readonly UsageCategoryEnum TurnmegabytesBrasil = new UsageCategoryEnum("turnmegabytes-brasil");
@@ -257,6 +258,9 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             public static readonly UsageCategoryEnum VoiceInsightsPtsnInsightsOnDemandMinute = new UsageCategoryEnum("voice-insights-ptsn-insights-on-demand-minute");
             public static readonly UsageCategoryEnum VoiceInsightsSipInterfaceInsightsOnDemandMinute = new UsageCategoryEnum("voice-insights-sip-interface-insights-on-demand-minute");
             public static readonly UsageCategoryEnum VoiceInsightsSipTrunkingInsightsOnDemandMinute = new UsageCategoryEnum("voice-insights-sip-trunking-insights-on-demand-minute");
+            public static readonly UsageCategoryEnum VoiceIntelligence = new UsageCategoryEnum("voice-intelligence");
+            public static readonly UsageCategoryEnum VoiceIntelligenceTranscription = new UsageCategoryEnum("voice-intelligence-transcription");
+            public static readonly UsageCategoryEnum VoiceIntelligenceOperators = new UsageCategoryEnum("voice-intelligence-operators");
             public static readonly UsageCategoryEnum Wireless = new UsageCategoryEnum("wireless");
             public static readonly UsageCategoryEnum WirelessOrders = new UsageCategoryEnum("wireless-orders");
             public static readonly UsageCategoryEnum WirelessOrdersArtwork = new UsageCategoryEnum("wireless-orders-artwork");

@@ -221,6 +221,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
             public static readonly CategoryEnum TrunkingRecordings = new CategoryEnum("trunking-recordings");
             public static readonly CategoryEnum TrunkingSecure = new CategoryEnum("trunking-secure");
             public static readonly CategoryEnum TrunkingTermination = new CategoryEnum("trunking-termination");
+            public static readonly CategoryEnum TtsGoogle = new CategoryEnum("tts-google");
             public static readonly CategoryEnum Turnmegabytes = new CategoryEnum("turnmegabytes");
             public static readonly CategoryEnum TurnmegabytesAustralia = new CategoryEnum("turnmegabytes-australia");
             public static readonly CategoryEnum TurnmegabytesBrasil = new CategoryEnum("turnmegabytes-brasil");
@@ -242,6 +243,9 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
             public static readonly CategoryEnum VoiceInsightsPtsnInsightsOnDemandMinute = new CategoryEnum("voice-insights-ptsn-insights-on-demand-minute");
             public static readonly CategoryEnum VoiceInsightsSipInterfaceInsightsOnDemandMinute = new CategoryEnum("voice-insights-sip-interface-insights-on-demand-minute");
             public static readonly CategoryEnum VoiceInsightsSipTrunkingInsightsOnDemandMinute = new CategoryEnum("voice-insights-sip-trunking-insights-on-demand-minute");
+            public static readonly CategoryEnum VoiceIntelligence = new CategoryEnum("voice-intelligence");
+            public static readonly CategoryEnum VoiceIntelligenceTranscription = new CategoryEnum("voice-intelligence-transcription");
+            public static readonly CategoryEnum VoiceIntelligenceOperators = new CategoryEnum("voice-intelligence-operators");
             public static readonly CategoryEnum Wireless = new CategoryEnum("wireless");
             public static readonly CategoryEnum WirelessOrders = new CategoryEnum("wireless-orders");
             public static readonly CategoryEnum WirelessOrdersArtwork = new CategoryEnum("wireless-orders-artwork");

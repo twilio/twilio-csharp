@@ -31,6 +31,19 @@ namespace Twilio.TwiML.Voice
             public static readonly TrackEnum BothTracks = new TrackEnum("both_tracks");
         }
 
+        public sealed class StatusCallbackMethodEnum : StringEnum
+        {
+            private StatusCallbackMethodEnum(string value) : base(value) {}
+            public StatusCallbackMethodEnum() {}
+            public static implicit operator StatusCallbackMethodEnum(string value)
+            {
+                return new StatusCallbackMethodEnum(value);
+            }
+
+            public static readonly StatusCallbackMethodEnum Get = new StatusCallbackMethodEnum("GET");
+            public static readonly StatusCallbackMethodEnum Post = new StatusCallbackMethodEnum("POST");
+        }
+
         /// <summary>
         /// Friendly name given to SIPREC
         /// </summary>
@@ -43,6 +56,14 @@ namespace Twilio.TwiML.Voice
         /// Track to be streamed to remote service
         /// </summary>
         public Siprec.TrackEnum Track { get; set; }
+        /// <summary>
+        /// Status Callback URL
+        /// </summary>
+        public string StatusCallback { get; set; }
+        /// <summary>
+        /// Status Callback URL method
+        /// </summary>
+        public Siprec.StatusCallbackMethodEnum StatusCallbackMethod { get; set; }
 
         /// <summary>
         /// Create a new Siprec
@@ -50,11 +71,19 @@ namespace Twilio.TwiML.Voice
         /// <param name="name"> Friendly name given to SIPREC </param>
         /// <param name="connectorName"> Unique name for Connector </param>
         /// <param name="track"> Track to be streamed to remote service </param>
-        public Siprec(string name = null, string connectorName = null, Siprec.TrackEnum track = null) : base("Siprec")
+        /// <param name="statusCallback"> Status Callback URL </param>
+        /// <param name="statusCallbackMethod"> Status Callback URL method </param>
+        public Siprec(string name = null,
+                      string connectorName = null,
+                      Siprec.TrackEnum track = null,
+                      string statusCallback = null,
+                      Siprec.StatusCallbackMethodEnum statusCallbackMethod = null) : base("Siprec")
         {
             this.Name = name;
             this.ConnectorName = connectorName;
             this.Track = track;
+            this.StatusCallback = statusCallback;
+            this.StatusCallbackMethod = statusCallbackMethod;
         }
 
         /// <summary>
@@ -74,6 +103,14 @@ namespace Twilio.TwiML.Voice
             if (this.Track != null)
             {
                 attributes.Add(new XAttribute("track", this.Track.ToString()));
+            }
+            if (this.StatusCallback != null)
+            {
+                attributes.Add(new XAttribute("statusCallback", this.StatusCallback));
+            }
+            if (this.StatusCallbackMethod != null)
+            {
+                attributes.Add(new XAttribute("statusCallbackMethod", this.StatusCallbackMethod.ToString()));
             }
             return attributes;
         }
