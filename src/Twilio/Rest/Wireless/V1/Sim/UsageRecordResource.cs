@@ -88,7 +88,7 @@ namespace Twilio.Rest.Wireless.V1.Sim
         }
         #endif
         /// <summary> read </summary>
-        /// <param name="pathSimSid"> The SID of the [Sim resource](https://www.twilio.com/docs/wireless/api/sim-resource)  to read the usage from. </param>
+        /// <param name="pathSimSid"> The SID of the [Sim resource](https://www.twilio.com/docs/iot/wireless/api/sim-resource)  to read the usage from. </param>
         /// <param name="end"> Only include usage that occurred on or before this date, specified in [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html). The default is the current time. </param>
         /// <param name="start"> Only include usage that has occurred on or after this date, specified in [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html). The default is one month before the `end` parameter value. </param>
         /// <param name="granularity"> How to summarize the usage by time. Can be: `daily`, `hourly`, or `all`. The default is `all`. A value of `all` returns one Usage Record that describes the usage for the entire period. </param>
@@ -111,7 +111,7 @@ namespace Twilio.Rest.Wireless.V1.Sim
 
         #if !NET35
         /// <summary> read </summary>
-        /// <param name="pathSimSid"> The SID of the [Sim resource](https://www.twilio.com/docs/wireless/api/sim-resource)  to read the usage from. </param>
+        /// <param name="pathSimSid"> The SID of the [Sim resource](https://www.twilio.com/docs/iot/wireless/api/sim-resource)  to read the usage from. </param>
         /// <param name="end"> Only include usage that occurred on or before this date, specified in [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html). The default is the current time. </param>
         /// <param name="start"> Only include usage that has occurred on or after this date, specified in [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html). The default is one month before the `end` parameter value. </param>
         /// <param name="granularity"> How to summarize the usage by time. Can be: `daily`, `hourly`, or `all`. The default is `all`. A value of `all` returns one Usage Record that describes the usage for the entire period. </param>
@@ -200,7 +200,7 @@ namespace Twilio.Rest.Wireless.V1.Sim
         }
 
     
-        ///<summary> The SID of the [Sim resource](https://www.twilio.com/docs/wireless/api/sim-resource) that this Usage Record is for. </summary> 
+        ///<summary> The SID of the [Sim resource](https://www.twilio.com/docs/iot/wireless/api/sim-resource) that this Usage Record is for. </summary> 
         [JsonProperty("sim_sid")]
         public string SimSid { get; private set; }
 
@@ -212,11 +212,11 @@ namespace Twilio.Rest.Wireless.V1.Sim
         [JsonProperty("period")]
         public object Period { get; private set; }
 
-        ///<summary> An object that describes the SIM's usage of Commands during the specified period. See [Commands Usage Object](https://www.twilio.com/docs/wireless/api/sim-usagerecord-resource#commands-usage-object). </summary> 
+        ///<summary> An object that describes the SIM's usage of Commands during the specified period. See [Commands Usage Object](https://www.twilio.com/docs/iot/wireless/api/sim-usagerecord-resource#commands-usage-object). </summary> 
         [JsonProperty("commands")]
         public object Commands { get; private set; }
 
-        ///<summary> An object that describes the SIM's data usage during the specified period. See [Data Usage Object](https://www.twilio.com/docs/wireless/api/sim-usagerecord-resource#data-usage-object). </summary> 
+        ///<summary> An object that describes the SIM's data usage during the specified period. See [Data Usage Object](https://www.twilio.com/docs/iot/wireless/api/sim-usagerecord-resource#data-usage-object). </summary> 
         [JsonProperty("data")]
         public object Data { get; private set; }
 

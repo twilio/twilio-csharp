@@ -75,7 +75,7 @@ namespace Twilio.Rest.Wireless.V1.Sim
         }
         #endif
         /// <summary> read </summary>
-        /// <param name="pathSimSid"> The SID of the [Sim resource](https://www.twilio.com/docs/wireless/api/sim-resource) with the Data Sessions to read. </param>
+        /// <param name="pathSimSid"> The SID of the [Sim resource](https://www.twilio.com/docs/iot/wireless/api/sim-resource) with the Data Sessions to read. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -92,7 +92,7 @@ namespace Twilio.Rest.Wireless.V1.Sim
 
         #if !NET35
         /// <summary> read </summary>
-        /// <param name="pathSimSid"> The SID of the [Sim resource](https://www.twilio.com/docs/wireless/api/sim-resource) with the Data Sessions to read. </param>
+        /// <param name="pathSimSid"> The SID of the [Sim resource](https://www.twilio.com/docs/iot/wireless/api/sim-resource) with the Data Sessions to read. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -179,7 +179,7 @@ namespace Twilio.Rest.Wireless.V1.Sim
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The SID of the [Sim resource](https://www.twilio.com/docs/wireless/api/sim-resource) that the Data Session is for. </summary> 
+        ///<summary> The SID of the [Sim resource](https://www.twilio.com/docs/iot/wireless/api/sim-resource) that the Data Session is for. </summary> 
         [JsonProperty("sim_sid")]
         public string SimSid { get; private set; }
 
@@ -203,7 +203,7 @@ namespace Twilio.Rest.Wireless.V1.Sim
         [JsonProperty("operator_country")]
         public string OperatorCountry { get; private set; }
 
-        ///<summary> The friendly name of the mobile operator network that the [SIM](https://www.twilio.com/docs/wireless/api/sim-resource)-connected device is attached to. This is determined by looking up the `operator_mnc`. </summary> 
+        ///<summary> The friendly name of the mobile operator network that the [SIM](https://www.twilio.com/docs/iot/wireless/api/sim-resource)-connected device is attached to. This is determined by looking up the `operator_mnc`. </summary> 
         [JsonProperty("operator_name")]
         public string OperatorName { get; private set; }
 
@@ -211,7 +211,7 @@ namespace Twilio.Rest.Wireless.V1.Sim
         [JsonProperty("cell_id")]
         public string CellId { get; private set; }
 
-        ///<summary> An object that describes the estimated location in latitude and longitude where the device's Data Session took place. The location is derived from the `cell_id` when the Data Session was last updated. See [Cell Location Estimate Object](https://www.twilio.com/docs/wireless/api/datasession-resource#cell-location-estimate-object).  </summary> 
+        ///<summary> An object that describes the estimated location in latitude and longitude where the device's Data Session took place. The location is derived from the `cell_id` when the Data Session was last updated. See [Cell Location Estimate Object](https://www.twilio.com/docs/iot/wireless/api/datasession-resource#cell-location-estimate-object).  </summary> 
         [JsonProperty("cell_location_estimate")]
         public object CellLocationEstimate { get; private set; }
 

@@ -183,10 +183,11 @@ namespace Twilio.Rest.Insights.V1
         /// <param name="subaccount"> A unique SID identifier of a Subaccount. </param>
         /// <param name="abnormalSession"> A boolean flag indicating an abnormal session where the last SIP response was not 200 OK. </param>
         /// <param name="answeredBy"> An Answered By value for the calls based on `Answering Machine Detection (AMD)`. One of `unknown`, `machine_start`, `machine_end_beep`, `machine_end_silence`, `machine_end_other`, `human` or `fax`. </param>
-        /// <param name="connectivityIssue"> A Connectivity Issue with the calls. One of `no_connectivity_issue`, `invalid_number`, `caller_id`, `dropped_call`, or `number_reachability`. </param>
-        /// <param name="qualityIssue"> A subjective Quality Issue with the calls. One of `no_quality_issue`, `low_volume`, `choppy_robotic`, `echo`, `dtmf`, `latency`, `owa`, `static_noise`. </param>
-        /// <param name="spam"> A boolean flag indicating spam calls. </param>
-        /// <param name="callScore"> A Call Score of the calls. Use a range of 1-5 to indicate the call experience score, with the following mapping as a reference for the rated call [5: Excellent, 4: Good, 3 : Fair, 2 : Poor, 1: Bad]. </param>
+        /// <param name="answeredByAnnotation"> Either machine or human. </param>
+        /// <param name="connectivityIssueAnnotation"> A Connectivity Issue with the calls. One of `no_connectivity_issue`, `invalid_number`, `caller_id`, `dropped_call`, or `number_reachability`. </param>
+        /// <param name="qualityIssueAnnotation"> A subjective Quality Issue with the calls. One of `no_quality_issue`, `low_volume`, `choppy_robotic`, `echo`, `dtmf`, `latency`, `owa`, `static_noise`. </param>
+        /// <param name="spamAnnotation"> A boolean flag indicating spam calls. </param>
+        /// <param name="callScoreAnnotation"> A Call Score of the calls. Use a range of 1-5 to indicate the call experience score, with the following mapping as a reference for the rated call [5: Excellent, 4: Good, 3 : Fair, 2 : Poor, 1: Bad]. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -211,15 +212,16 @@ namespace Twilio.Rest.Insights.V1
                                                      string subaccount = null,
                                                      bool? abnormalSession = null,
                                                      CallSummariesResource.AnsweredByEnum answeredBy = null,
-                                                     string connectivityIssue = null,
-                                                     string qualityIssue = null,
-                                                     bool? spam = null,
-                                                     string callScore = null,
+                                                     string answeredByAnnotation = null,
+                                                     string connectivityIssueAnnotation = null,
+                                                     string qualityIssueAnnotation = null,
+                                                     bool? spamAnnotation = null,
+                                                     string callScoreAnnotation = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
                                                      ITwilioRestClient client = null)
         {
-            var options = new ReadCallSummariesOptions(){ From = from, To = to, FromCarrier = fromCarrier, ToCarrier = toCarrier, FromCountryCode = fromCountryCode, ToCountryCode = toCountryCode, Branded = branded, VerifiedCaller = verifiedCaller, HasTag = hasTag, StartTime = startTime, EndTime = endTime, CallType = callType, CallState = callState, Direction = direction, ProcessingState = processingState, SortBy = sortBy, Subaccount = subaccount, AbnormalSession = abnormalSession, AnsweredBy = answeredBy, ConnectivityIssue = connectivityIssue, QualityIssue = qualityIssue, Spam = spam, CallScore = callScore, PageSize = pageSize, Limit = limit};
+            var options = new ReadCallSummariesOptions(){ From = from, To = to, FromCarrier = fromCarrier, ToCarrier = toCarrier, FromCountryCode = fromCountryCode, ToCountryCode = toCountryCode, Branded = branded, VerifiedCaller = verifiedCaller, HasTag = hasTag, StartTime = startTime, EndTime = endTime, CallType = callType, CallState = callState, Direction = direction, ProcessingState = processingState, SortBy = sortBy, Subaccount = subaccount, AbnormalSession = abnormalSession, AnsweredBy = answeredBy, AnsweredByAnnotation = answeredByAnnotation, ConnectivityIssueAnnotation = connectivityIssueAnnotation, QualityIssueAnnotation = qualityIssueAnnotation, SpamAnnotation = spamAnnotation, CallScoreAnnotation = callScoreAnnotation, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -244,10 +246,11 @@ namespace Twilio.Rest.Insights.V1
         /// <param name="subaccount"> A unique SID identifier of a Subaccount. </param>
         /// <param name="abnormalSession"> A boolean flag indicating an abnormal session where the last SIP response was not 200 OK. </param>
         /// <param name="answeredBy"> An Answered By value for the calls based on `Answering Machine Detection (AMD)`. One of `unknown`, `machine_start`, `machine_end_beep`, `machine_end_silence`, `machine_end_other`, `human` or `fax`. </param>
-        /// <param name="connectivityIssue"> A Connectivity Issue with the calls. One of `no_connectivity_issue`, `invalid_number`, `caller_id`, `dropped_call`, or `number_reachability`. </param>
-        /// <param name="qualityIssue"> A subjective Quality Issue with the calls. One of `no_quality_issue`, `low_volume`, `choppy_robotic`, `echo`, `dtmf`, `latency`, `owa`, `static_noise`. </param>
-        /// <param name="spam"> A boolean flag indicating spam calls. </param>
-        /// <param name="callScore"> A Call Score of the calls. Use a range of 1-5 to indicate the call experience score, with the following mapping as a reference for the rated call [5: Excellent, 4: Good, 3 : Fair, 2 : Poor, 1: Bad]. </param>
+        /// <param name="answeredByAnnotation"> Either machine or human. </param>
+        /// <param name="connectivityIssueAnnotation"> A Connectivity Issue with the calls. One of `no_connectivity_issue`, `invalid_number`, `caller_id`, `dropped_call`, or `number_reachability`. </param>
+        /// <param name="qualityIssueAnnotation"> A subjective Quality Issue with the calls. One of `no_quality_issue`, `low_volume`, `choppy_robotic`, `echo`, `dtmf`, `latency`, `owa`, `static_noise`. </param>
+        /// <param name="spamAnnotation"> A boolean flag indicating spam calls. </param>
+        /// <param name="callScoreAnnotation"> A Call Score of the calls. Use a range of 1-5 to indicate the call experience score, with the following mapping as a reference for the rated call [5: Excellent, 4: Good, 3 : Fair, 2 : Poor, 1: Bad]. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -272,15 +275,16 @@ namespace Twilio.Rest.Insights.V1
                                                                                              string subaccount = null,
                                                                                              bool? abnormalSession = null,
                                                                                              CallSummariesResource.AnsweredByEnum answeredBy = null,
-                                                                                             string connectivityIssue = null,
-                                                                                             string qualityIssue = null,
-                                                                                             bool? spam = null,
-                                                                                             string callScore = null,
+                                                                                             string answeredByAnnotation = null,
+                                                                                             string connectivityIssueAnnotation = null,
+                                                                                             string qualityIssueAnnotation = null,
+                                                                                             bool? spamAnnotation = null,
+                                                                                             string callScoreAnnotation = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
                                                                                              ITwilioRestClient client = null)
         {
-            var options = new ReadCallSummariesOptions(){ From = from, To = to, FromCarrier = fromCarrier, ToCarrier = toCarrier, FromCountryCode = fromCountryCode, ToCountryCode = toCountryCode, Branded = branded, VerifiedCaller = verifiedCaller, HasTag = hasTag, StartTime = startTime, EndTime = endTime, CallType = callType, CallState = callState, Direction = direction, ProcessingState = processingState, SortBy = sortBy, Subaccount = subaccount, AbnormalSession = abnormalSession, AnsweredBy = answeredBy, ConnectivityIssue = connectivityIssue, QualityIssue = qualityIssue, Spam = spam, CallScore = callScore, PageSize = pageSize, Limit = limit};
+            var options = new ReadCallSummariesOptions(){ From = from, To = to, FromCarrier = fromCarrier, ToCarrier = toCarrier, FromCountryCode = fromCountryCode, ToCountryCode = toCountryCode, Branded = branded, VerifiedCaller = verifiedCaller, HasTag = hasTag, StartTime = startTime, EndTime = endTime, CallType = callType, CallState = callState, Direction = direction, ProcessingState = processingState, SortBy = sortBy, Subaccount = subaccount, AbnormalSession = abnormalSession, AnsweredBy = answeredBy, AnsweredByAnnotation = answeredByAnnotation, ConnectivityIssueAnnotation = connectivityIssueAnnotation, QualityIssueAnnotation = qualityIssueAnnotation, SpamAnnotation = spamAnnotation, CallScoreAnnotation = callScoreAnnotation, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

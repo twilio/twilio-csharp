@@ -39,7 +39,7 @@ namespace Twilio.Rest.Chat.V3
         
         public ChannelResource.ChannelTypeEnum Type { get; set; }
 
-        ///<summary> The unique ID of the [Messaging Service](https://www.twilio.com/docs/sms/services/api) this channel belongs to. </summary> 
+        ///<summary> The unique ID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) this channel belongs to. </summary> 
         public string MessagingServiceSid { get; set; }
 
 

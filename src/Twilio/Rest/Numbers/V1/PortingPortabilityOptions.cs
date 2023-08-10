@@ -30,6 +30,9 @@ namespace Twilio.Rest.Numbers.V1
         ///<summary> The phone number which portability is to be checked. Phone numbers are in E.164 format (e.g. +16175551212). </summary> 
         public Types.PhoneNumber PathPhoneNumber { get; }
 
+        ///<summary> The SID of the account where the phone number(s) will be ported. </summary> 
+        public string TargetAccountSid { get; set; }
+
 
 
         /// <summary> Construct a new FetchPortingPortabilityOptions </summary>
@@ -45,6 +48,10 @@ namespace Twilio.Rest.Numbers.V1
         {
             var p = new List<KeyValuePair<string, string>>();
 
+            if (TargetAccountSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("TargetAccountSid", TargetAccountSid));
+            }
             return p;
         }
         

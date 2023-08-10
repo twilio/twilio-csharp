@@ -43,7 +43,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         ///<summary> An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \\\"{}\\\" will be returned. </summary> 
         public string Attributes { get; set; }
 
-        ///<summary> The unique ID of the [Messaging Service](https://www.twilio.com/docs/sms/services/api) this conversation belongs to. </summary> 
+        ///<summary> The unique ID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) this conversation belongs to. </summary> 
         public string MessagingServiceSid { get; set; }
 
         ///<summary> The date that this resource was created. </summary> 
@@ -285,7 +285,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         ///<summary> An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \\\"{}\\\" will be returned. </summary> 
         public string Attributes { get; set; }
 
-        ///<summary> The unique ID of the [Messaging Service](https://www.twilio.com/docs/sms/services/api) this conversation belongs to. </summary> 
+        ///<summary> The unique ID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) this conversation belongs to. </summary> 
         public string MessagingServiceSid { get; set; }
 
         

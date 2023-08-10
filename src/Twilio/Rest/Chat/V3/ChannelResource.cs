@@ -104,7 +104,7 @@ namespace Twilio.Rest.Chat.V3
         /// <param name="pathServiceSid"> The unique SID identifier of the Service. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this Channel. </param>
         /// <param name="type">  </param>
-        /// <param name="messagingServiceSid"> The unique ID of the [Messaging Service](https://www.twilio.com/docs/sms/services/api) this channel belongs to. </param>
+        /// <param name="messagingServiceSid"> The unique ID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) this channel belongs to. </param>
         /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Channel </returns>
@@ -125,7 +125,7 @@ namespace Twilio.Rest.Chat.V3
         /// <param name="pathServiceSid"> The unique SID identifier of the Service. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this Channel. </param>
         /// <param name="type">  </param>
-        /// <param name="messagingServiceSid"> The unique ID of the [Messaging Service](https://www.twilio.com/docs/sms/services/api) this channel belongs to. </param>
+        /// <param name="messagingServiceSid"> The unique ID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) this channel belongs to. </param>
         /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Channel </returns>
@@ -208,7 +208,7 @@ namespace Twilio.Rest.Chat.V3
         [JsonProperty("messages_count")]
         public int? MessagesCount { get; private set; }
 
-        ///<summary> The unique ID of the [Messaging Service](https://www.twilio.com/docs/sms/services/api) this channel belongs to. </summary> 
+        ///<summary> The unique ID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) this channel belongs to. </summary> 
         [JsonProperty("messaging_service_sid")]
         public string MessagingServiceSid { get; private set; }
 

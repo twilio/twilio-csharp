@@ -84,17 +84,20 @@ namespace Twilio.Rest.Insights.V1
         ///<summary> An Answered By value for the calls based on `Answering Machine Detection (AMD)`. One of `unknown`, `machine_start`, `machine_end_beep`, `machine_end_silence`, `machine_end_other`, `human` or `fax`. </summary> 
         public CallSummariesResource.AnsweredByEnum AnsweredBy { get; set; }
 
+        ///<summary> Either machine or human. </summary> 
+        public string AnsweredByAnnotation { get; set; }
+
         ///<summary> A Connectivity Issue with the calls. One of `no_connectivity_issue`, `invalid_number`, `caller_id`, `dropped_call`, or `number_reachability`. </summary> 
-        public string ConnectivityIssue { get; set; }
+        public string ConnectivityIssueAnnotation { get; set; }
 
         ///<summary> A subjective Quality Issue with the calls. One of `no_quality_issue`, `low_volume`, `choppy_robotic`, `echo`, `dtmf`, `latency`, `owa`, `static_noise`. </summary> 
-        public string QualityIssue { get; set; }
+        public string QualityIssueAnnotation { get; set; }
 
         ///<summary> A boolean flag indicating spam calls. </summary> 
-        public bool? Spam { get; set; }
+        public bool? SpamAnnotation { get; set; }
 
         ///<summary> A Call Score of the calls. Use a range of 1-5 to indicate the call experience score, with the following mapping as a reference for the rated call [5: Excellent, 4: Good, 3 : Fair, 2 : Poor, 1: Bad]. </summary> 
-        public string CallScore { get; set; }
+        public string CallScoreAnnotation { get; set; }
 
 
 
@@ -181,21 +184,25 @@ namespace Twilio.Rest.Insights.V1
             {
                 p.Add(new KeyValuePair<string, string>("AnsweredBy", AnsweredBy.ToString()));
             }
-            if (ConnectivityIssue != null)
+            if (AnsweredByAnnotation != null)
             {
-                p.Add(new KeyValuePair<string, string>("ConnectivityIssue", ConnectivityIssue));
+                p.Add(new KeyValuePair<string, string>("AnsweredByAnnotation", AnsweredByAnnotation));
             }
-            if (QualityIssue != null)
+            if (ConnectivityIssueAnnotation != null)
             {
-                p.Add(new KeyValuePair<string, string>("QualityIssue", QualityIssue));
+                p.Add(new KeyValuePair<string, string>("ConnectivityIssueAnnotation", ConnectivityIssueAnnotation));
             }
-            if (Spam != null)
+            if (QualityIssueAnnotation != null)
             {
-                p.Add(new KeyValuePair<string, string>("Spam", Spam.Value.ToString().ToLower()));
+                p.Add(new KeyValuePair<string, string>("QualityIssueAnnotation", QualityIssueAnnotation));
             }
-            if (CallScore != null)
+            if (SpamAnnotation != null)
             {
-                p.Add(new KeyValuePair<string, string>("CallScore", CallScore));
+                p.Add(new KeyValuePair<string, string>("SpamAnnotation", SpamAnnotation.Value.ToString().ToLower()));
+            }
+            if (CallScoreAnnotation != null)
+            {
+                p.Add(new KeyValuePair<string, string>("CallScoreAnnotation", CallScoreAnnotation));
             }
             if (PageSize != null)
             {

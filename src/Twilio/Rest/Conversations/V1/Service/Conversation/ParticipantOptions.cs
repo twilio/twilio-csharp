@@ -186,7 +186,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         ///<summary> The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this participant. </summary> 
         public string PathConversationSid { get; }
 
-        ///<summary> A 34 character string that uniquely identifies this resource. </summary> 
+        ///<summary> A 34 character string that uniquely identifies this resource. Alternatively, you can pass a Participant's `identity` rather than the SID. </summary> 
         public string PathSid { get; }
 
 
@@ -194,7 +194,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         /// <summary> Construct a new FetchServiceConversationParticipantOptions </summary>
         /// <param name="pathChatServiceSid"> The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Participant resource is associated with. </param>
         /// <param name="pathConversationSid"> The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this participant. </param>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. Alternatively, you can pass a Participant's `identity` rather than the SID. </param>
         public FetchParticipantOptions(string pathChatServiceSid, string pathConversationSid, string pathSid)
         {
             PathChatServiceSid = pathChatServiceSid;

@@ -104,7 +104,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// <param name="friendlyName"> The human-readable name of this conversation, limited to 256 characters. Optional. </param>
         /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource. It can be used to address the resource in place of the resource's `sid` in the URL. </param>
         /// <param name="attributes"> An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \\\"{}\\\" will be returned. </param>
-        /// <param name="messagingServiceSid"> The unique ID of the [Messaging Service](https://www.twilio.com/docs/sms/services/api) this conversation belongs to. </param>
+        /// <param name="messagingServiceSid"> The unique ID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) this conversation belongs to. </param>
         /// <param name="dateCreated"> The date that this resource was created. </param>
         /// <param name="dateUpdated"> The date that this resource was last updated. </param>
         /// <param name="state">  </param>
@@ -137,7 +137,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// <param name="friendlyName"> The human-readable name of this conversation, limited to 256 characters. Optional. </param>
         /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource. It can be used to address the resource in place of the resource's `sid` in the URL. </param>
         /// <param name="attributes"> An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \\\"{}\\\" will be returned. </param>
-        /// <param name="messagingServiceSid"> The unique ID of the [Messaging Service](https://www.twilio.com/docs/sms/services/api) this conversation belongs to. </param>
+        /// <param name="messagingServiceSid"> The unique ID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) this conversation belongs to. </param>
         /// <param name="dateCreated"> The date that this resource was created. </param>
         /// <param name="dateUpdated"> The date that this resource was last updated. </param>
         /// <param name="state">  </param>
@@ -498,7 +498,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// <param name="dateCreated"> The date that this resource was created. </param>
         /// <param name="dateUpdated"> The date that this resource was last updated. </param>
         /// <param name="attributes"> An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \\\"{}\\\" will be returned. </param>
-        /// <param name="messagingServiceSid"> The unique ID of the [Messaging Service](https://www.twilio.com/docs/sms/services/api) this conversation belongs to. </param>
+        /// <param name="messagingServiceSid"> The unique ID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) this conversation belongs to. </param>
         /// <param name="state">  </param>
         /// <param name="timersInactive"> ISO8601 duration when conversation will be switched to `inactive` state. Minimum value for this timer is 1 minute. </param>
         /// <param name="timersClosed"> ISO8601 duration when conversation will be switched to `closed` state. Minimum value for this timer is 10 minutes. </param>
@@ -533,7 +533,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// <param name="dateCreated"> The date that this resource was created. </param>
         /// <param name="dateUpdated"> The date that this resource was last updated. </param>
         /// <param name="attributes"> An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \\\"{}\\\" will be returned. </param>
-        /// <param name="messagingServiceSid"> The unique ID of the [Messaging Service](https://www.twilio.com/docs/sms/services/api) this conversation belongs to. </param>
+        /// <param name="messagingServiceSid"> The unique ID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) this conversation belongs to. </param>
         /// <param name="state">  </param>
         /// <param name="timersInactive"> ISO8601 duration when conversation will be switched to `inactive` state. Minimum value for this timer is 1 minute. </param>
         /// <param name="timersClosed"> ISO8601 duration when conversation will be switched to `closed` state. Minimum value for this timer is 10 minutes. </param>
@@ -587,7 +587,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         [JsonProperty("chat_service_sid")]
         public string ChatServiceSid { get; private set; }
 
-        ///<summary> The unique ID of the [Messaging Service](https://www.twilio.com/docs/sms/services/api) this conversation belongs to. </summary> 
+        ///<summary> The unique ID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) this conversation belongs to. </summary> 
         [JsonProperty("messaging_service_sid")]
         public string MessagingServiceSid { get; private set; }
 

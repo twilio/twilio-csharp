@@ -202,11 +202,11 @@ namespace Twilio.Rest.Wireless.V1
         [JsonProperty("period")]
         public object Period { get; private set; }
 
-        ///<summary> An object that describes the aggregated Commands usage for all SIMs during the specified period. See [Commands Usage Object](https://www.twilio.com/docs/wireless/api/account-usagerecord-resource#commands-usage-object). </summary> 
+        ///<summary> An object that describes the aggregated Commands usage for all SIMs during the specified period. See [Commands Usage Object](https://www.twilio.com/docs/iot/wireless/api/account-usagerecord-resource#commands-usage-object). </summary> 
         [JsonProperty("commands")]
         public object Commands { get; private set; }
 
-        ///<summary> An object that describes the aggregated Data usage for all SIMs over the period. See [Data Usage Object](https://www.twilio.com/docs/wireless/api/account-usagerecord-resource#data-usage-object). </summary> 
+        ///<summary> An object that describes the aggregated Data usage for all SIMs over the period. See [Data Usage Object](https://www.twilio.com/docs/iot/wireless/api/account-usagerecord-resource#data-usage-object). </summary> 
         [JsonProperty("data")]
         public object Data { get; private set; }
 

@@ -91,7 +91,7 @@ namespace Twilio.Rest.Wireless.V1
         ///<summary> Only return Sim resources with this ICCID. This will return a list with a maximum size of 1. </summary> 
         public string Iccid { get; set; }
 
-        ///<summary> The SID or unique name of a [RatePlan resource](https://www.twilio.com/docs/wireless/api/rateplan-resource). Only return Sim resources assigned to this RatePlan resource. </summary> 
+        ///<summary> The SID or unique name of a [RatePlan resource](https://www.twilio.com/docs/iot/wireless/api/rateplan-resource). Only return Sim resources assigned to this RatePlan resource. </summary> 
         public string RatePlan { get; set; }
 
         ///<summary> Deprecated. </summary> 
@@ -158,7 +158,7 @@ namespace Twilio.Rest.Wireless.V1
         ///<summary> A descriptive string that you create to describe the Sim resource. It does not need to be unique. </summary> 
         public string FriendlyName { get; set; }
 
-        ///<summary> The SID or unique name of the [RatePlan resource](https://www.twilio.com/docs/wireless/api/rateplan-resource) to which the Sim resource should be assigned. </summary> 
+        ///<summary> The SID or unique name of the [RatePlan resource](https://www.twilio.com/docs/iot/wireless/api/rateplan-resource) to which the Sim resource should be assigned. </summary> 
         public string RatePlan { get; set; }
 
         
@@ -167,7 +167,7 @@ namespace Twilio.Rest.Wireless.V1
         ///<summary> The HTTP method we should use to call `commands_callback_url`. Can be: `POST` or `GET`. The default is `POST`. </summary> 
         public Twilio.Http.HttpMethod CommandsCallbackMethod { get; set; }
 
-        ///<summary> The URL we should call using the `commands_callback_method` when the SIM sends a [Command](https://www.twilio.com/docs/wireless/api/command-resource). Your server should respond with an HTTP status code in the 200 range; any response body is ignored. </summary> 
+        ///<summary> The URL we should call using the `commands_callback_method` when the SIM sends a [Command](https://www.twilio.com/docs/iot/wireless/api/command-resource). Your server should respond with an HTTP status code in the 200 range; any response body is ignored. </summary> 
         public Uri CommandsCallbackUrl { get; set; }
 
         ///<summary> The HTTP method we should use to call `sms_fallback_url`. Can be: `GET` or `POST`. Default is `POST`. </summary> 
@@ -179,7 +179,7 @@ namespace Twilio.Rest.Wireless.V1
         ///<summary> The HTTP method we should use to call `sms_url`. Can be: `GET` or `POST`. Default is `POST`. </summary> 
         public Twilio.Http.HttpMethod SmsMethod { get; set; }
 
-        ///<summary> The URL we should call using the `sms_method` when the SIM-connected device sends an SMS message that is not a [Command](https://www.twilio.com/docs/wireless/api/command-resource). </summary> 
+        ///<summary> The URL we should call using the `sms_method` when the SIM-connected device sends an SMS message that is not a [Command](https://www.twilio.com/docs/iot/wireless/api/command-resource). </summary> 
         public Uri SmsUrl { get; set; }
 
         ///<summary> Deprecated. </summary> 
@@ -197,7 +197,7 @@ namespace Twilio.Rest.Wireless.V1
         
         public SimResource.ResetStatusEnum ResetStatus { get; set; }
 
-        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) to which the Sim resource should belong. The Account SID can only be that of the requesting Account or that of a [Subaccount](https://www.twilio.com/docs/iam/api/subaccounts) of the requesting Account. Only valid when the Sim resource's status is `new`. For more information, see the [Move SIMs between Subaccounts documentation](https://www.twilio.com/docs/wireless/api/sim-resource#move-sims-between-subaccounts). </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) to which the Sim resource should belong. The Account SID can only be that of the requesting Account or that of a [Subaccount](https://www.twilio.com/docs/iam/api/subaccounts) of the requesting Account. Only valid when the Sim resource's status is `new`. For more information, see the [Move SIMs between Subaccounts documentation](https://www.twilio.com/docs/iot/wireless/api/sim-resource#move-sims-between-subaccounts). </summary> 
         public string AccountSid { get; set; }
 
 

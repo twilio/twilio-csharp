@@ -46,22 +46,22 @@ namespace Twilio.Rest.Messaging.V1
         ///<summary> The URL we should call to [pass status updates](https://www.twilio.com/docs/sms/api/message-resource#message-status-values) about message delivery. </summary> 
         public Uri StatusCallback { get; set; }
 
-        ///<summary> Whether to enable [Sticky Sender](https://www.twilio.com/docs/sms/services#sticky-sender) on the Service instance. </summary> 
+        ///<summary> Whether to enable [Sticky Sender](https://www.twilio.com/docs/messaging/services#sticky-sender) on the Service instance. </summary> 
         public bool? StickySender { get; set; }
 
-        ///<summary> Whether to enable the [MMS Converter](https://www.twilio.com/docs/sms/services#mms-converter) for messages sent through the Service instance. </summary> 
+        ///<summary> Whether to enable the [MMS Converter](https://www.twilio.com/docs/messaging/services#mms-converter) for messages sent through the Service instance. </summary> 
         public bool? MmsConverter { get; set; }
 
-        ///<summary> Whether to enable [Smart Encoding](https://www.twilio.com/docs/sms/services#smart-encoding) for messages sent through the Service instance. </summary> 
+        ///<summary> Whether to enable [Smart Encoding](https://www.twilio.com/docs/messaging/services#smart-encoding) for messages sent through the Service instance. </summary> 
         public bool? SmartEncoding { get; set; }
 
         
         public ServiceResource.ScanMessageContentEnum ScanMessageContent { get; set; }
 
-        ///<summary> Whether to enable [Fallback to Long Code](https://www.twilio.com/docs/sms/services#fallback-to-long-code) for messages sent through the Service instance. </summary> 
+        ///<summary> Whether to enable [Fallback to Long Code](https://www.twilio.com/docs/messaging/services#fallback-to-long-code) for messages sent through the Service instance. </summary> 
         public bool? FallbackToLongCode { get; set; }
 
-        ///<summary> Whether to enable [Area Code Geomatch](https://www.twilio.com/docs/sms/services#area-code-geomatch) on the Service Instance. </summary> 
+        ///<summary> Whether to enable [Area Code Geomatch](https://www.twilio.com/docs/messaging/services#area-code-geomatch) on the Service Instance. </summary> 
         public bool? AreaCodeGeomatch { get; set; }
 
         ///<summary> How long, in seconds, messages sent from the Service are valid. Can be an integer from `1` to `14,400`. </summary> 
@@ -265,22 +265,22 @@ namespace Twilio.Rest.Messaging.V1
         ///<summary> The URL we should call to [pass status updates](https://www.twilio.com/docs/sms/api/message-resource#message-status-values) about message delivery. </summary> 
         public Uri StatusCallback { get; set; }
 
-        ///<summary> Whether to enable [Sticky Sender](https://www.twilio.com/docs/sms/services#sticky-sender) on the Service instance. </summary> 
+        ///<summary> Whether to enable [Sticky Sender](https://www.twilio.com/docs/messaging/services#sticky-sender) on the Service instance. </summary> 
         public bool? StickySender { get; set; }
 
-        ///<summary> Whether to enable the [MMS Converter](https://www.twilio.com/docs/sms/services#mms-converter) for messages sent through the Service instance. </summary> 
+        ///<summary> Whether to enable the [MMS Converter](https://www.twilio.com/docs/messaging/services#mms-converter) for messages sent through the Service instance. </summary> 
         public bool? MmsConverter { get; set; }
 
-        ///<summary> Whether to enable [Smart Encoding](https://www.twilio.com/docs/sms/services#smart-encoding) for messages sent through the Service instance. </summary> 
+        ///<summary> Whether to enable [Smart Encoding](https://www.twilio.com/docs/messaging/services#smart-encoding) for messages sent through the Service instance. </summary> 
         public bool? SmartEncoding { get; set; }
 
         
         public ServiceResource.ScanMessageContentEnum ScanMessageContent { get; set; }
 
-        ///<summary> Whether to enable [Fallback to Long Code](https://www.twilio.com/docs/sms/services#fallback-to-long-code) for messages sent through the Service instance. </summary> 
+        ///<summary> Whether to enable [Fallback to Long Code](https://www.twilio.com/docs/messaging/services#fallback-to-long-code) for messages sent through the Service instance. </summary> 
         public bool? FallbackToLongCode { get; set; }
 
-        ///<summary> Whether to enable [Area Code Geomatch](https://www.twilio.com/docs/sms/services#area-code-geomatch) on the Service Instance. </summary> 
+        ///<summary> Whether to enable [Area Code Geomatch](https://www.twilio.com/docs/messaging/services#area-code-geomatch) on the Service Instance. </summary> 
         public bool? AreaCodeGeomatch { get; set; }
 
         ///<summary> How long, in seconds, messages sent from the Service are valid. Can be an integer from `1` to `14,400`. </summary> 

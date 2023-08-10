@@ -27,13 +27,13 @@ namespace Twilio.Rest.Wireless.V1.Sim
     public class ReadDataSessionOptions : ReadOptions<DataSessionResource>
     {
     
-        ///<summary> The SID of the [Sim resource](https://www.twilio.com/docs/wireless/api/sim-resource) with the Data Sessions to read. </summary> 
+        ///<summary> The SID of the [Sim resource](https://www.twilio.com/docs/iot/wireless/api/sim-resource) with the Data Sessions to read. </summary> 
         public string PathSimSid { get; }
 
 
 
         /// <summary> Construct a new ListDataSessionOptions </summary>
-        /// <param name="pathSimSid"> The SID of the [Sim resource](https://www.twilio.com/docs/wireless/api/sim-resource) with the Data Sessions to read. </param>
+        /// <param name="pathSimSid"> The SID of the [Sim resource](https://www.twilio.com/docs/iot/wireless/api/sim-resource) with the Data Sessions to read. </param>
         public ReadDataSessionOptions(string pathSimSid)
         {
             PathSimSid = pathSimSid;

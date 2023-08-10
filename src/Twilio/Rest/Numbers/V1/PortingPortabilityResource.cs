@@ -89,24 +89,27 @@ namespace Twilio.Rest.Numbers.V1
         #endif
         /// <summary> Allows to check if a single phone number can be ported to Twilio or not. </summary>
         /// <param name="pathPhoneNumber"> The phone number which portability is to be checked. Phone numbers are in E.164 format (e.g. +16175551212). </param>
+        /// <param name="targetAccountSid"> The SID of the account where the phone number(s) will be ported. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of PortingPortability </returns>
         public static PortingPortabilityResource Fetch(
                                          Types.PhoneNumber pathPhoneNumber, 
+                                         string targetAccountSid = null, 
                                          ITwilioRestClient client = null)
         {
-            var options = new FetchPortingPortabilityOptions(pathPhoneNumber){  };
+            var options = new FetchPortingPortabilityOptions(pathPhoneNumber){ TargetAccountSid = targetAccountSid };
             return Fetch(options, client);
         }
 
         #if !NET35
         /// <summary> Allows to check if a single phone number can be ported to Twilio or not. </summary>
         /// <param name="pathPhoneNumber"> The phone number which portability is to be checked. Phone numbers are in E.164 format (e.g. +16175551212). </param>
+        /// <param name="targetAccountSid"> The SID of the account where the phone number(s) will be ported. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PortingPortability </returns>
-        public static async System.Threading.Tasks.Task<PortingPortabilityResource> FetchAsync(Types.PhoneNumber pathPhoneNumber, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<PortingPortabilityResource> FetchAsync(Types.PhoneNumber pathPhoneNumber, string targetAccountSid = null, ITwilioRestClient client = null)
         {
-            var options = new FetchPortingPortabilityOptions(pathPhoneNumber){  };
+            var options = new FetchPortingPortabilityOptions(pathPhoneNumber){ TargetAccountSid = targetAccountSid };
             return await FetchAsync(options, client);
         }
         #endif
@@ -133,6 +136,10 @@ namespace Twilio.Rest.Numbers.V1
         [JsonProperty("phone_number")]
         [JsonConverter(typeof(PhoneNumberConverter))]
         public Types.PhoneNumber PhoneNumber { get; private set; }
+
+        ///<summary> The target account sid to which the number will be ported </summary> 
+        [JsonProperty("account_sid")]
+        public string AccountSid { get; private set; }
 
         ///<summary> Boolean flag specifying if phone number is portable or not. </summary> 
         [JsonProperty("portable")]
