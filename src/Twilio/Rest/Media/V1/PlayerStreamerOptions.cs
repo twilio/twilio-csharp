@@ -31,7 +31,7 @@ namespace Twilio.Rest.Media.V1
         ///<summary> Specifies whether the PlayerStreamer is configured to stream video. Defaults to `true`. </summary> 
         public bool? Video { get; set; }
 
-        ///<summary> The URL to which Twilio will send asynchronous webhook requests for every PlayerStreamer event. See [Status Callbacks](/docs/live/status-callbacks) for more details. </summary> 
+        ///<summary> The URL to which Twilio will send asynchronous webhook requests for every PlayerStreamer event. See [Status Callbacks](/docs/live/api/status-callbacks) for more details. </summary> 
         public Uri StatusCallback { get; set; }
 
         ///<summary> The HTTP method Twilio should use to call the `status_callback` URL. Can be `POST` or `GET` and the default is `POST`. </summary> 

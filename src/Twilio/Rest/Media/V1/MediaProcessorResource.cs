@@ -109,10 +109,10 @@ namespace Twilio.Rest.Media.V1
         #endif
 
         /// <summary> create </summary>
-        /// <param name="extension"> The [Media Extension](/docs/live/api/media-extensions-overview) name or URL. Ex: `video-composer-v2` </param>
-        /// <param name="extensionContext"> The context of the Media Extension, represented as a JSON dictionary. See the documentation for the specific [Media Extension](/docs/live/api/media-extensions-overview) you are using for more information about the context to send. </param>
-        /// <param name="extensionEnvironment"> User-defined environment variables for the Media Extension, represented as a JSON dictionary of key/value strings. See the documentation for the specific [Media Extension](/docs/live/api/media-extensions-overview) you are using for more information about whether you need to provide this. </param>
-        /// <param name="statusCallback"> The URL to which Twilio will send asynchronous webhook requests for every MediaProcessor event. See [Status Callbacks](/docs/live/status-callbacks) for details. </param>
+        /// <param name="extension"> The [Media Extension](/docs/live/media-extensions-overview) name or URL. Ex: `video-composer-v2` </param>
+        /// <param name="extensionContext"> The context of the Media Extension, represented as a JSON dictionary. See the documentation for the specific [Media Extension](/docs/live/media-extensions-overview) you are using for more information about the context to send. </param>
+        /// <param name="extensionEnvironment"> User-defined environment variables for the Media Extension, represented as a JSON dictionary of key/value strings. See the documentation for the specific [Media Extension](/docs/live/media-extensions-overview) you are using for more information about whether you need to provide this. </param>
+        /// <param name="statusCallback"> The URL to which Twilio will send asynchronous webhook requests for every MediaProcessor event. See [Status Callbacks](/docs/live/api/status-callbacks) for details. </param>
         /// <param name="statusCallbackMethod"> The HTTP method Twilio should use to call the `status_callback` URL. Can be `POST` or `GET` and the default is `POST`. </param>
         /// <param name="maxDuration"> The maximum time, in seconds, that the MediaProcessor can run before automatically ends. The default value is 300 seconds, and the maximum value is 90000 seconds. Once this maximum duration is reached, Twilio will end the MediaProcessor, regardless of whether media is still streaming. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -132,10 +132,10 @@ namespace Twilio.Rest.Media.V1
 
         #if !NET35
         /// <summary> create </summary>
-        /// <param name="extension"> The [Media Extension](/docs/live/api/media-extensions-overview) name or URL. Ex: `video-composer-v2` </param>
-        /// <param name="extensionContext"> The context of the Media Extension, represented as a JSON dictionary. See the documentation for the specific [Media Extension](/docs/live/api/media-extensions-overview) you are using for more information about the context to send. </param>
-        /// <param name="extensionEnvironment"> User-defined environment variables for the Media Extension, represented as a JSON dictionary of key/value strings. See the documentation for the specific [Media Extension](/docs/live/api/media-extensions-overview) you are using for more information about whether you need to provide this. </param>
-        /// <param name="statusCallback"> The URL to which Twilio will send asynchronous webhook requests for every MediaProcessor event. See [Status Callbacks](/docs/live/status-callbacks) for details. </param>
+        /// <param name="extension"> The [Media Extension](/docs/live/media-extensions-overview) name or URL. Ex: `video-composer-v2` </param>
+        /// <param name="extensionContext"> The context of the Media Extension, represented as a JSON dictionary. See the documentation for the specific [Media Extension](/docs/live/media-extensions-overview) you are using for more information about the context to send. </param>
+        /// <param name="extensionEnvironment"> User-defined environment variables for the Media Extension, represented as a JSON dictionary of key/value strings. See the documentation for the specific [Media Extension](/docs/live/media-extensions-overview) you are using for more information about whether you need to provide this. </param>
+        /// <param name="statusCallback"> The URL to which Twilio will send asynchronous webhook requests for every MediaProcessor event. See [Status Callbacks](/docs/live/api/status-callbacks) for details. </param>
         /// <param name="statusCallbackMethod"> The HTTP method Twilio should use to call the `status_callback` URL. Can be `POST` or `GET` and the default is `POST`. </param>
         /// <param name="maxDuration"> The maximum time, in seconds, that the MediaProcessor can run before automatically ends. The default value is 300 seconds, and the maximum value is 90000 seconds. Once this maximum duration is reached, Twilio will end the MediaProcessor, regardless of whether media is still streaming. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -453,11 +453,11 @@ namespace Twilio.Rest.Media.V1
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> The [Media Extension](/docs/live/api/media-extensions-overview) name or URL. Ex: `video-composer-v2` </summary> 
+        ///<summary> The [Media Extension](/docs/live/media-extensions-overview) name or URL. Ex: `video-composer-v2` </summary> 
         [JsonProperty("extension")]
         public string Extension { get; private set; }
 
-        ///<summary> The context of the Media Extension, represented as a JSON dictionary. See the documentation for the specific [Media Extension](/docs/live/api/media-extensions-overview) you are using for more information about the context to send. </summary> 
+        ///<summary> The context of the Media Extension, represented as a JSON dictionary. See the documentation for the specific [Media Extension](/docs/live/media-extensions-overview) you are using for more information about the context to send. </summary> 
         [JsonProperty("extension_context")]
         public string ExtensionContext { get; private set; }
 
@@ -473,7 +473,7 @@ namespace Twilio.Rest.Media.V1
         [JsonProperty("ended_reason")]
         public string EndedReason { get; private set; }
 
-        ///<summary> The URL to which Twilio will send asynchronous webhook requests for every MediaProcessor event. See [Status Callbacks](/docs/live/status-callbacks) for details. </summary> 
+        ///<summary> The URL to which Twilio will send asynchronous webhook requests for every MediaProcessor event. See [Status Callbacks](/docs/live/api/status-callbacks) for details. </summary> 
         [JsonProperty("status_callback")]
         public Uri StatusCallback { get; private set; }
 

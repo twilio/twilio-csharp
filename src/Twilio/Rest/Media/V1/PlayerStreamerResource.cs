@@ -126,7 +126,7 @@ namespace Twilio.Rest.Media.V1
 
         /// <summary> create </summary>
         /// <param name="video"> Specifies whether the PlayerStreamer is configured to stream video. Defaults to `true`. </param>
-        /// <param name="statusCallback"> The URL to which Twilio will send asynchronous webhook requests for every PlayerStreamer event. See [Status Callbacks](/docs/live/status-callbacks) for more details. </param>
+        /// <param name="statusCallback"> The URL to which Twilio will send asynchronous webhook requests for every PlayerStreamer event. See [Status Callbacks](/docs/live/api/status-callbacks) for more details. </param>
         /// <param name="statusCallbackMethod"> The HTTP method Twilio should use to call the `status_callback` URL. Can be `POST` or `GET` and the default is `POST`. </param>
         /// <param name="maxDuration"> The maximum time, in seconds, that the PlayerStreamer is active (`created` or `started`) before automatically ends. The default value is 300 seconds, and the maximum value is 90000 seconds. Once this maximum duration is reached, Twilio will end the PlayerStreamer, regardless of whether media is still streaming. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -145,7 +145,7 @@ namespace Twilio.Rest.Media.V1
         #if !NET35
         /// <summary> create </summary>
         /// <param name="video"> Specifies whether the PlayerStreamer is configured to stream video. Defaults to `true`. </param>
-        /// <param name="statusCallback"> The URL to which Twilio will send asynchronous webhook requests for every PlayerStreamer event. See [Status Callbacks](/docs/live/status-callbacks) for more details. </param>
+        /// <param name="statusCallback"> The URL to which Twilio will send asynchronous webhook requests for every PlayerStreamer event. See [Status Callbacks](/docs/live/api/status-callbacks) for more details. </param>
         /// <param name="statusCallbackMethod"> The HTTP method Twilio should use to call the `status_callback` URL. Can be `POST` or `GET` and the default is `POST`. </param>
         /// <param name="maxDuration"> The maximum time, in seconds, that the PlayerStreamer is active (`created` or `started`) before automatically ends. The default value is 300 seconds, and the maximum value is 90000 seconds. Once this maximum duration is reached, Twilio will end the PlayerStreamer, regardless of whether media is still streaming. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -477,7 +477,7 @@ namespace Twilio.Rest.Media.V1
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
-        ///<summary> The URL to which Twilio will send asynchronous webhook requests for every PlayerStreamer event. See [Status Callbacks](/docs/live/status-callbacks) for more details. </summary> 
+        ///<summary> The URL to which Twilio will send asynchronous webhook requests for every PlayerStreamer event. See [Status Callbacks](/docs/live/api/status-callbacks) for more details. </summary> 
         [JsonProperty("status_callback")]
         public Uri StatusCallback { get; private set; }
 

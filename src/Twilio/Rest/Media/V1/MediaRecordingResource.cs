@@ -406,7 +406,7 @@ namespace Twilio.Rest.Media.V1
         [JsonProperty("status")]
         public MediaRecordingResource.StatusEnum Status { get; private set; }
 
-        ///<summary> The URL to which Twilio will send asynchronous webhook requests for every MediaRecording event. See [Status Callbacks](/docs/live/status-callbacks) for more details. </summary> 
+        ///<summary> The URL to which Twilio will send asynchronous webhook requests for every MediaRecording event. See [Status Callbacks](/docs/live/api/status-callbacks) for more details. </summary> 
         [JsonProperty("status_callback")]
         public Uri StatusCallback { get; private set; }
 

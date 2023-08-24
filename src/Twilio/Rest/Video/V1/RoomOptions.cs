@@ -52,7 +52,7 @@ namespace Twilio.Rest.Video.V1
         ///<summary> An array of the video codecs that are supported when publishing a track in the room.  Can be: `VP8` and `H264`.  ***This feature is not available in `peer-to-peer` rooms*** </summary> 
         public List<RoomResource.VideoCodecEnum> VideoCodecs { get; set; }
 
-        ///<summary> The region for the media server in Group Rooms.  Can be: one of the [available Media Regions](https://www.twilio.com/docs/video/ip-address-whitelisting#group-rooms-media-servers). ***This feature is not available in `peer-to-peer` rooms.*** </summary> 
+        ///<summary> The region for the media server in Group Rooms.  Can be: one of the [available Media Regions](https://www.twilio.com/docs/video/ip-addresses#group-rooms-media-servers). ***This feature is not available in `peer-to-peer` rooms.*** </summary> 
         public string MediaRegion { get; set; }
 
         ///<summary> A collection of Recording Rules that describe how to include or exclude matching tracks for recording </summary> 

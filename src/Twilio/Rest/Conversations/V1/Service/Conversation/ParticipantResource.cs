@@ -90,13 +90,13 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         /// <summary> Add a new participant to the conversation in a specific service </summary>
         /// <param name="pathChatServiceSid"> The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Participant resource is associated with. </param>
         /// <param name="pathConversationSid"> The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this participant. </param>
-        /// <param name="identity"> A unique string identifier for the conversation participant as [Conversation User](https://www.twilio.com/docs/conversations/api/user-resource). This parameter is non-null if (and only if) the participant is using the Conversation SDK to communicate. Limited to 256 characters. </param>
-        /// <param name="messagingBindingAddress"> The address of the participant's device, e.g. a phone or WhatsApp number. Together with the Proxy address, this determines a participant uniquely. This field (with proxy_address) is only null when the participant is interacting from an SDK endpoint (see the 'identity' field). </param>
-        /// <param name="messagingBindingProxyAddress"> The address of the Twilio phone number (or WhatsApp number) that the participant is in contact with. This field, together with participant address, is only null when the participant is interacting from an SDK endpoint (see the 'identity' field). </param>
-        /// <param name="dateCreated"> The date that this resource was created. </param>
-        /// <param name="dateUpdated"> The date that this resource was last updated. </param>
-        /// <param name="attributes"> An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \\\"{}\\\" will be returned. </param>
-        /// <param name="messagingBindingProjectedAddress"> The address of the Twilio phone number that is used in Group MMS. Communication mask for the Conversation participant with Identity. </param>
+        /// <param name="identity"> A unique string identifier for the conversation participant as [Conversation User](https://www.twilio.com/docs/conversations/api/user-resource). This parameter is non-null if (and only if) the participant is using the [Conversation SDK](https://www.twilio.com/docs/conversations/sdk-overview) to communicate. Limited to 256 characters. </param>
+        /// <param name="messagingBindingAddress"> The address of the participant's device, e.g. a phone or WhatsApp number. Together with the Proxy address, this determines a participant uniquely. This field (with `proxy_address`) is only null when the participant is interacting from an SDK endpoint (see the `identity` field). </param>
+        /// <param name="messagingBindingProxyAddress"> The address of the Twilio phone number (or WhatsApp number) that the participant is in contact with. This field, together with participant address, is only null when the participant is interacting from an SDK endpoint (see the `identity` field). </param>
+        /// <param name="dateCreated"> The date on which this resource was created. </param>
+        /// <param name="dateUpdated"> The date on which this resource was last updated. </param>
+        /// <param name="attributes"> An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set `{}` will be returned. </param>
+        /// <param name="messagingBindingProjectedAddress"> The address of the Twilio phone number that is used in Group MMS. </param>
         /// <param name="roleSid"> The SID of a conversation-level [Role](https://www.twilio.com/docs/conversations/api/role-resource) to assign to the participant. </param>
         /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -123,13 +123,13 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         /// <summary> Add a new participant to the conversation in a specific service </summary>
         /// <param name="pathChatServiceSid"> The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Participant resource is associated with. </param>
         /// <param name="pathConversationSid"> The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this participant. </param>
-        /// <param name="identity"> A unique string identifier for the conversation participant as [Conversation User](https://www.twilio.com/docs/conversations/api/user-resource). This parameter is non-null if (and only if) the participant is using the Conversation SDK to communicate. Limited to 256 characters. </param>
-        /// <param name="messagingBindingAddress"> The address of the participant's device, e.g. a phone or WhatsApp number. Together with the Proxy address, this determines a participant uniquely. This field (with proxy_address) is only null when the participant is interacting from an SDK endpoint (see the 'identity' field). </param>
-        /// <param name="messagingBindingProxyAddress"> The address of the Twilio phone number (or WhatsApp number) that the participant is in contact with. This field, together with participant address, is only null when the participant is interacting from an SDK endpoint (see the 'identity' field). </param>
-        /// <param name="dateCreated"> The date that this resource was created. </param>
-        /// <param name="dateUpdated"> The date that this resource was last updated. </param>
-        /// <param name="attributes"> An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \\\"{}\\\" will be returned. </param>
-        /// <param name="messagingBindingProjectedAddress"> The address of the Twilio phone number that is used in Group MMS. Communication mask for the Conversation participant with Identity. </param>
+        /// <param name="identity"> A unique string identifier for the conversation participant as [Conversation User](https://www.twilio.com/docs/conversations/api/user-resource). This parameter is non-null if (and only if) the participant is using the [Conversation SDK](https://www.twilio.com/docs/conversations/sdk-overview) to communicate. Limited to 256 characters. </param>
+        /// <param name="messagingBindingAddress"> The address of the participant's device, e.g. a phone or WhatsApp number. Together with the Proxy address, this determines a participant uniquely. This field (with `proxy_address`) is only null when the participant is interacting from an SDK endpoint (see the `identity` field). </param>
+        /// <param name="messagingBindingProxyAddress"> The address of the Twilio phone number (or WhatsApp number) that the participant is in contact with. This field, together with participant address, is only null when the participant is interacting from an SDK endpoint (see the `identity` field). </param>
+        /// <param name="dateCreated"> The date on which this resource was created. </param>
+        /// <param name="dateUpdated"> The date on which this resource was last updated. </param>
+        /// <param name="attributes"> An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set `{}` will be returned. </param>
+        /// <param name="messagingBindingProjectedAddress"> The address of the Twilio phone number that is used in Group MMS. </param>
         /// <param name="roleSid"> The SID of a conversation-level [Role](https://www.twilio.com/docs/conversations/api/role-resource) to assign to the participant. </param>
         /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -488,10 +488,10 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         /// <param name="pathChatServiceSid"> The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Participant resource is associated with. </param>
         /// <param name="pathConversationSid"> The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this participant. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
-        /// <param name="dateCreated"> The date that this resource was created. </param>
-        /// <param name="dateUpdated"> The date that this resource was last updated. </param>
-        /// <param name="identity"> A unique string identifier for the conversation participant as [Conversation User](https://www.twilio.com/docs/conversations/api/user-resource). This parameter is non-null if (and only if) the participant is using the Conversation SDK to communicate. Limited to 256 characters. </param>
-        /// <param name="attributes"> An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \\\"{}\\\" will be returned. </param>
+        /// <param name="dateCreated"> The date on which this resource was created. </param>
+        /// <param name="dateUpdated"> The date on which this resource was last updated. </param>
+        /// <param name="identity"> A unique string identifier for the conversation participant as [Conversation User](https://www.twilio.com/docs/conversations/api/user-resource). This parameter is non-null if (and only if) the participant is using the [Conversation SDK](https://www.twilio.com/docs/conversations/sdk-overview) to communicate. Limited to 256 characters. </param>
+        /// <param name="attributes"> An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set `{}` will be returned. </param>
         /// <param name="roleSid"> The SID of a conversation-level [Role](https://www.twilio.com/docs/conversations/api/role-resource) to assign to the participant. </param>
         /// <param name="messagingBindingProxyAddress"> The address of the Twilio phone number that the participant is in contact with. 'null' value will remove it. </param>
         /// <param name="messagingBindingProjectedAddress"> The address of the Twilio phone number that is used in Group MMS. 'null' value will remove it. </param>
@@ -525,10 +525,10 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         /// <param name="pathChatServiceSid"> The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Participant resource is associated with. </param>
         /// <param name="pathConversationSid"> The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this participant. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
-        /// <param name="dateCreated"> The date that this resource was created. </param>
-        /// <param name="dateUpdated"> The date that this resource was last updated. </param>
-        /// <param name="identity"> A unique string identifier for the conversation participant as [Conversation User](https://www.twilio.com/docs/conversations/api/user-resource). This parameter is non-null if (and only if) the participant is using the Conversation SDK to communicate. Limited to 256 characters. </param>
-        /// <param name="attributes"> An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \\\"{}\\\" will be returned. </param>
+        /// <param name="dateCreated"> The date on which this resource was created. </param>
+        /// <param name="dateUpdated"> The date on which this resource was last updated. </param>
+        /// <param name="identity"> A unique string identifier for the conversation participant as [Conversation User](https://www.twilio.com/docs/conversations/api/user-resource). This parameter is non-null if (and only if) the participant is using the [Conversation SDK](https://www.twilio.com/docs/conversations/sdk-overview) to communicate. Limited to 256 characters. </param>
+        /// <param name="attributes"> An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set `{}` will be returned. </param>
         /// <param name="roleSid"> The SID of a conversation-level [Role](https://www.twilio.com/docs/conversations/api/role-resource) to assign to the participant. </param>
         /// <param name="messagingBindingProxyAddress"> The address of the Twilio phone number that the participant is in contact with. 'null' value will remove it. </param>
         /// <param name="messagingBindingProjectedAddress"> The address of the Twilio phone number that is used in Group MMS. 'null' value will remove it. </param>
@@ -592,11 +592,11 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> A unique string identifier for the conversation participant as [Conversation User](https://www.twilio.com/docs/conversations/api/user-resource). This parameter is non-null if (and only if) the participant is using the Conversation SDK to communicate. Limited to 256 characters. </summary> 
+        ///<summary> A unique string identifier for the conversation participant as [Conversation User](https://www.twilio.com/docs/conversations/api/user-resource). This parameter is non-null if (and only if) the participant is using the [Conversation SDK](https://www.twilio.com/docs/conversations/sdk-overview) to communicate. Limited to 256 characters. </summary> 
         [JsonProperty("identity")]
         public string Identity { get; private set; }
 
-        ///<summary> An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \"{}\" will be returned. </summary> 
+        ///<summary> An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set `{}` will be returned. </summary> 
         [JsonProperty("attributes")]
         public string Attributes { get; private set; }
 
@@ -608,11 +608,11 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         [JsonProperty("role_sid")]
         public string RoleSid { get; private set; }
 
-        ///<summary> The date that this resource was created. </summary> 
+        ///<summary> The date on which this resource was created. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The date that this resource was last updated. </summary> 
+        ///<summary> The date on which this resource was last updated. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
