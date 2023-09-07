@@ -48,10 +48,10 @@ namespace Twilio.Rest.Numbers.V2
         private static Request BuildFetchRequest(FetchBulkHostedNumberOrderOptions options, ITwilioRestClient client)
         {
             
-            string path = "/v2/HostedNumber/Orders/Bulk/{Sid}";
+            string path = "/v2/HostedNumber/Orders/Bulk/{BulkHostingSid}";
 
-            string PathSid = options.PathSid;
-            path = path.Replace("{"+"Sid"+"}", PathSid);
+            string PathBulkHostingSid = options.PathBulkHostingSid;
+            path = path.Replace("{"+"BulkHostingSid"+"}", PathBulkHostingSid);
 
             return new Request(
                 HttpMethod.Get,
@@ -87,28 +87,28 @@ namespace Twilio.Rest.Numbers.V2
         }
         #endif
         /// <summary> Fetch a specific BulkHostedNumberOrder. </summary>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this BulkHostedNumberOrder. </param>
+        /// <param name="pathBulkHostingSid"> A 34 character string that uniquely identifies this BulkHostedNumberOrder. </param>
         /// <param name="orderStatus"> Order status can be used for filtering on Hosted Number Order status values. To see a complete list of order statuses, please check 'https://www.twilio.com/docs/phone-numbers/hosted-numbers/hosted-numbers-api/hosted-number-order-resource#status-values'. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of BulkHostedNumberOrder </returns>
         public static BulkHostedNumberOrderResource Fetch(
-                                         string pathSid, 
+                                         string pathBulkHostingSid, 
                                          string orderStatus = null, 
                                          ITwilioRestClient client = null)
         {
-            var options = new FetchBulkHostedNumberOrderOptions(pathSid){ OrderStatus = orderStatus };
+            var options = new FetchBulkHostedNumberOrderOptions(pathBulkHostingSid){ OrderStatus = orderStatus };
             return Fetch(options, client);
         }
 
         #if !NET35
         /// <summary> Fetch a specific BulkHostedNumberOrder. </summary>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this BulkHostedNumberOrder. </param>
+        /// <param name="pathBulkHostingSid"> A 34 character string that uniquely identifies this BulkHostedNumberOrder. </param>
         /// <param name="orderStatus"> Order status can be used for filtering on Hosted Number Order status values. To see a complete list of order statuses, please check 'https://www.twilio.com/docs/phone-numbers/hosted-numbers/hosted-numbers-api/hosted-number-order-resource#status-values'. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of BulkHostedNumberOrder </returns>
-        public static async System.Threading.Tasks.Task<BulkHostedNumberOrderResource> FetchAsync(string pathSid, string orderStatus = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<BulkHostedNumberOrderResource> FetchAsync(string pathBulkHostingSid, string orderStatus = null, ITwilioRestClient client = null)
         {
-            var options = new FetchBulkHostedNumberOrderOptions(pathSid){ OrderStatus = orderStatus };
+            var options = new FetchBulkHostedNumberOrderOptions(pathBulkHostingSid){ OrderStatus = orderStatus };
             return await FetchAsync(options, client);
         }
         #endif
@@ -132,12 +132,8 @@ namespace Twilio.Rest.Numbers.V2
 
     
         ///<summary> A 34 character string that uniquely identifies this BulkHostedNumberOrder. </summary> 
-        [JsonProperty("sid")]
-        public string Sid { get; private set; }
-
-        ///<summary> A 34 character string that uniquely identifies the account. </summary> 
-        [JsonProperty("account_sid")]
-        public string AccountSid { get; private set; }
+        [JsonProperty("bulk_hosting_sid")]
+        public string BulkHostingSid { get; private set; }
 
         
         [JsonProperty("request_status")]

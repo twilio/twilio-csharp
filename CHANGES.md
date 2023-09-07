@@ -1,6 +1,28 @@
 twilio-csharp Changelog
 =======================
 
+[2023-09-07] Version 6.13.0
+---------------------------
+**Library - Fix**
+- [PR #687](https://github.com/twilio/twilio-csharp/pull/687): Update dotnet version. Thanks to [@kridai](https://github.com/kridai)!
+
+**Api**
+- Make message tagging parameters public **(breaking change)**
+
+**Flex**
+- Adding `agent_conv_end_methods` to Flex Configuration
+
+**Messaging**
+- Mark Mesasging Services fallback_to_long_code feature obsolete
+
+**Numbers**
+- Add Create Port In request api
+- Renaming sid for bulk_hosting_sid and remove account_sid response field in numbers/v2/BulkHostedNumberOrders **(breaking change)**
+
+**Pricing**
+- gate resources behind a beta_feature
+
+
 [2023-08-24] Version 6.12.0
 ---------------------------
 **Api**

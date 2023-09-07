@@ -306,6 +306,10 @@ namespace Twilio.Rest.FlexApi.V1
         [JsonProperty("flex_ui_status_report")]
         public object FlexUiStatusReport { get; private set; }
 
+        ///<summary> Agent conversation end methods. </summary> 
+        [JsonProperty("agent_conv_end_methods")]
+        public object AgentConvEndMethods { get; private set; }
+
 
 
         private ConfigurationResource() {
