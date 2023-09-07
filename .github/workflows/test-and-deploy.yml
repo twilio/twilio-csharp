@@ -27,7 +27,7 @@ jobs:
           dotnet-version: 7.0.103
 
       - name: Remove faulty SDK version
-        run: sudo rm -rf /usr/share/dotnet/sdk/7.0.2*
+        run: sudo rm -rf /usr/share/dotnet/sdk/7.0.4*
 
       - name: Build & Test
         run: make test
