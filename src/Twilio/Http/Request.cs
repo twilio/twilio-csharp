@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Twilio.Constant;
 using Twilio.Rest;
 
 #if !NET35
@@ -65,6 +66,16 @@ namespace Twilio.Http
         /// Header params
         /// </summary>
         public List<KeyValuePair<string, string>> HeaderParams { get; private set; }
+        
+        /// <summary>
+        /// Content Type
+        /// </summary>
+        public EnumConstants.ContentTypeEnum ContentType { get; set; }
+        
+        /// <summary>
+        /// Body
+        /// </summary>
+        public string Body { get; set; }
 
         /// <summary>
         /// Create a new Twilio request

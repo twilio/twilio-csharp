@@ -8,6 +8,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 using NUnit.Framework;
+using Twilio.Constant;
 using Twilio.Http;
 using HttpMethod = Twilio.Http.HttpMethod;
 
@@ -217,6 +218,25 @@ namespace Twilio.Tests.Http
 
             Assert.IsNotNull(internalRequest.Content);
             Assert.IsInstanceOf<FormUrlEncodedContent>(internalRequest.Content);
+        }
+        
+        [Test]
+        public void TestMakeRequestWithJsonBody()
+        {
+            this._mockHttp.Respond("https://api.twilio.com/v1/Resource.json", HttpStatusCode.OK);
+            
+            Request testRequest = new Request(HttpMethod.Post, "https://api.twilio.com/v1/Resource.json");
+            testRequest.ContentType = EnumConstants.ContentTypeEnum.JSON;
+            testRequest.Body = "{\"status\":\"awe\"}";
+
+            this.TwilioHttpClient.MakeRequest(testRequest);
+
+            HttpRequestMessage internalRequest = this._mockHttp.InternalRequest;
+
+            Assert.IsNotNull(internalRequest.Content);
+            Assert.IsInstanceOf<StringContent>(internalRequest.Content);
+            Assert.AreEqual("application/json", internalRequest.Content.Headers.ContentType.MediaType);
+            Assert.AreEqual("utf-8", internalRequest.Content.Headers.ContentType.CharSet);
         }
 
         [Test]
