@@ -102,8 +102,6 @@ namespace Twilio.Http
         /// <param name="postParams">Post data</param>
         /// <param name="edge">Twilio edge</param>
         /// <param name="headerParams">Custom header data</param>
-        /// <param name="contentType">Content Type</param>
-        /// <param name="body">Request Body</param>
         public Request(
             HttpMethod method,
             Domain domain,
@@ -112,9 +110,7 @@ namespace Twilio.Http
             List<KeyValuePair<string, string>> queryParams = null,
             List<KeyValuePair<string, string>> postParams = null,
             string edge = null,
-            List<KeyValuePair<string, string>> headerParams = null,
-            EnumConstants.ContentTypeEnum contentType = null,
-            string body = null
+            List<KeyValuePair<string, string>> headerParams = null
         )
         {
             Method = method;
@@ -125,9 +121,6 @@ namespace Twilio.Http
             QueryParams = queryParams ?? new List<KeyValuePair<string, string>>();
             PostParams = postParams ?? new List<KeyValuePair<string, string>>();
             HeaderParams = headerParams ?? new List<KeyValuePair<string, string>>();
-
-            ContentType = contentType;
-            Body = body;
         }
 
         /// <summary>
