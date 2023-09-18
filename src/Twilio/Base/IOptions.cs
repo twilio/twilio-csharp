@@ -14,7 +14,7 @@ namespace Twilio.Base
         /// </summary>
         ///
         /// <returns>List of parameters for the request</returns>
-        List<KeyValuePair<string, string>> GetParams();
+        // List<KeyValuePair<string, string>> GetParams();
     }
 
     /// <summary>
