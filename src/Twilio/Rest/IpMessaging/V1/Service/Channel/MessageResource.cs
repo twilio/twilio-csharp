@@ -29,6 +29,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
     public class MessageResource : Resource
     {
     
+
+    
         public sealed class OrderTypeEnum : StringEnum
         {
             private OrderTypeEnum(string value) : base(value) {}

@@ -29,6 +29,8 @@ namespace Twilio.Rest.Conversations.V1
     public class AddressConfigurationResource : Resource
     {
     
+
+    
         public sealed class MethodEnum : StringEnum
         {
             private MethodEnum(string value) : base(value) {}

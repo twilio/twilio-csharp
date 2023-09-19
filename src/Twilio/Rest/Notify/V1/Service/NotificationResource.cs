@@ -29,6 +29,8 @@ namespace Twilio.Rest.Notify.V1.Service
     public class NotificationResource : Resource
     {
     
+
+    
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class PriorityEnum : StringEnum
         {

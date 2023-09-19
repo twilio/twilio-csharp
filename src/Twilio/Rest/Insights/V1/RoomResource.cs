@@ -29,6 +29,8 @@ namespace Twilio.Rest.Insights.V1
     public class RoomResource : Resource
     {
     
+
+    
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class TwilioRealmEnum : StringEnum
         {

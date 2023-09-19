@@ -29,6 +29,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk
     public class RecordingResource : Resource
     {
     
+
+    
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class RecordingTrimEnum : StringEnum
         {

@@ -29,6 +29,8 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
     public class LocalResource : Resource
     {
     
+
+    
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class EmergencyStatusEnum : StringEnum
         {

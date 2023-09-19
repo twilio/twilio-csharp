@@ -29,6 +29,8 @@ namespace Twilio.Rest.Chat.V2.Service.User
     public class UserChannelResource : Resource
     {
     
+
+    
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class NotificationLevelEnum : StringEnum
         {

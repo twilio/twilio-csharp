@@ -30,6 +30,8 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
     {
     
 
+    
+
         
         private static Request BuildFetchRequest(FetchTaskStatisticsOptions options, ITwilioRestClient client)
         {

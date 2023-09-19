@@ -29,6 +29,8 @@ namespace Twilio.Rest.Numbers.V1
     public class PortingPortabilityResource : Resource
     {
     
+
+    
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class NumberTypeEnum : StringEnum
         {

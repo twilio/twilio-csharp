@@ -29,6 +29,8 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
     public class NewFactorResource : Resource
     {
     
+
+    
         public sealed class NotificationPlatformsEnum : StringEnum
         {
             private NotificationPlatformsEnum(string value) : base(value) {}

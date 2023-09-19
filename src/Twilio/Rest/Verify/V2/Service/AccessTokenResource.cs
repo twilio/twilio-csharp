@@ -29,6 +29,8 @@ namespace Twilio.Rest.Verify.V2.Service
     public class AccessTokenResource : Resource
     {
     
+
+    
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class FactorTypesEnum : StringEnum
         {

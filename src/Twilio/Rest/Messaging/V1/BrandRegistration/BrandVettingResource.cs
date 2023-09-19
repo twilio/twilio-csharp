@@ -29,6 +29,8 @@ namespace Twilio.Rest.Messaging.V1.BrandRegistration
     public class BrandVettingResource : Resource
     {
     
+
+    
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class VettingProviderEnum : StringEnum
         {

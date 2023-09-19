@@ -29,6 +29,8 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
     public class SyncListItemResource : Resource
     {
     
+
+    
         public sealed class QueryFromBoundTypeEnum : StringEnum
         {
             private QueryFromBoundTypeEnum(string value) : base(value) {}

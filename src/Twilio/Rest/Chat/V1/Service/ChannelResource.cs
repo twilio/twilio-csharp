@@ -29,6 +29,8 @@ namespace Twilio.Rest.Chat.V1.Service
     public class ChannelResource : Resource
     {
     
+
+    
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class ChannelTypeEnum : StringEnum
         {

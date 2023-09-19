@@ -29,6 +29,8 @@ namespace Twilio.Rest.Serverless.V1.Service.Build
     public class BuildStatusResource : Resource
     {
     
+
+    
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class StatusEnum : StringEnum
         {

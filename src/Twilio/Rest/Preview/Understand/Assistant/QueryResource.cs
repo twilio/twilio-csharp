@@ -30,6 +30,8 @@ namespace Twilio.Rest.Preview.Understand.Assistant
     {
     
 
+    
+
         
         private static Request BuildCreateRequest(CreateQueryOptions options, ITwilioRestClient client)
         {

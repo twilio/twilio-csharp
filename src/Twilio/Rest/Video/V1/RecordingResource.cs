@@ -29,6 +29,8 @@ namespace Twilio.Rest.Video.V1
     public class RecordingResource : Resource
     {
     
+
+    
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class StatusEnum : StringEnum
         {

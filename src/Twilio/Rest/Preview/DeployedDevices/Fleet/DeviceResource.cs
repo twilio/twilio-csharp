@@ -30,6 +30,8 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
     {
     
 
+    
+
         
         private static Request BuildCreateRequest(CreateDeviceOptions options, ITwilioRestClient client)
         {

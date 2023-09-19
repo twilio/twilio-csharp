@@ -29,6 +29,8 @@ namespace Twilio.Rest.Numbers.V2
     public class AuthorizationDocumentResource : Resource
     {
     
+
+    
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class StatusEnum : StringEnum
         {

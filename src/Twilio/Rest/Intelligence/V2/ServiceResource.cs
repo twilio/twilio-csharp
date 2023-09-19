@@ -29,6 +29,8 @@ namespace Twilio.Rest.Intelligence.V2
     public class ServiceResource : Resource
     {
     
+
+    
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class HttpMethodEnum : StringEnum
         {

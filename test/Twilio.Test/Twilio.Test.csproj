@@ -12,6 +12,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="NUnit" Version="3.6.0" />
     <PackageReference Include="NSubstitute" Version="2.0.0-rc" />
     <PackageReference Include="NUnit3TestAdapter" Version="3.17.0" />

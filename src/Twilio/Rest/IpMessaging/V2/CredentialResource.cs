@@ -29,6 +29,8 @@ namespace Twilio.Rest.IpMessaging.V2
     public class CredentialResource : Resource
     {
     
+
+    
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class PushServiceEnum : StringEnum
         {

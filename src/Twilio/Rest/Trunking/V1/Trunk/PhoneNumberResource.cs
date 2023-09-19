@@ -29,6 +29,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk
     public class PhoneNumberResource : Resource
     {
     
+
+    
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class AddressRequirementEnum : StringEnum
         {

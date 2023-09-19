@@ -30,6 +30,8 @@ namespace Twilio.Rest.Trusthub.V1.TrustProducts
     {
     
 
+    
+
         
         private static Request BuildCreateRequest(CreateTrustProductsEntityAssignmentsOptions options, ITwilioRestClient client)
         {

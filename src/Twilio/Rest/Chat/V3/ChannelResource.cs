@@ -29,6 +29,8 @@ namespace Twilio.Rest.Chat.V3
     public class ChannelResource : Resource
     {
     
+
+    
         public sealed class WebhookEnabledTypeEnum : StringEnum
         {
             private WebhookEnabledTypeEnum(string value) : base(value) {}

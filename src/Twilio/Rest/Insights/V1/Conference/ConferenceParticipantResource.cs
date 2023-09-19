@@ -29,6 +29,8 @@ namespace Twilio.Rest.Insights.V1.Conference
     public class ConferenceParticipantResource : Resource
     {
     
+
+    
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class CallStatusEnum : StringEnum
         {

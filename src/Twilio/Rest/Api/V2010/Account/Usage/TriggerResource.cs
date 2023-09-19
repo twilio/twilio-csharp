@@ -29,6 +29,8 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
     public class TriggerResource : Resource
     {
     
+
+    
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class RecurringEnum : StringEnum
         {

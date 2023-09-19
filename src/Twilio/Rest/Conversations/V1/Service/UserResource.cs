@@ -29,6 +29,8 @@ namespace Twilio.Rest.Conversations.V1.Service
     public class UserResource : Resource
     {
     
+
+    
         public sealed class WebhookEnabledTypeEnum : StringEnum
         {
             private WebhookEnabledTypeEnum(string value) : base(value) {}

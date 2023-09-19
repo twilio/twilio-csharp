@@ -30,6 +30,8 @@ namespace Twilio.Rest.Intelligence.V2.Transcript
     {
     
 
+    
+
         
         private static Request BuildReadRequest(ReadSentenceOptions options, ITwilioRestClient client)
         {

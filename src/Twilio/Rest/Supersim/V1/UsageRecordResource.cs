@@ -29,6 +29,8 @@ namespace Twilio.Rest.Supersim.V1
     public class UsageRecordResource : Resource
     {
     
+
+    
         public sealed class GroupEnum : StringEnum
         {
             private GroupEnum(string value) : base(value) {}

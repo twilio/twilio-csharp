@@ -29,6 +29,8 @@ namespace Twilio.Rest.Supersim.V1.Sim
     public class SimIpAddressResource : Resource
     {
     
+
+    
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class IpAddressVersionEnum : StringEnum
         {
