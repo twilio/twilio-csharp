@@ -30,6 +30,8 @@ namespace Twilio.Rest.Bulkexports.V1.Export
     {
     
 
+    
+
         
         private static Request BuildFetchRequest(FetchDayOptions options, ITwilioRestClient client)
         {

@@ -29,6 +29,8 @@ namespace Twilio.Rest.Messaging.V1
     public class ServiceResource : Resource
     {
     
+
+    
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class ScanMessageContentEnum : StringEnum
         {

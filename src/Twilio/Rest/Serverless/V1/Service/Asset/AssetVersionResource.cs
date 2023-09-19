@@ -29,6 +29,8 @@ namespace Twilio.Rest.Serverless.V1.Service.Asset
     public class AssetVersionResource : Resource
     {
     
+
+    
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class VisibilityEnum : StringEnum
         {

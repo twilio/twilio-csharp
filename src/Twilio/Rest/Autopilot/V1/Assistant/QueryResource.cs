@@ -30,6 +30,8 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
     {
     
 
+    
+
         
         private static Request BuildCreateRequest(CreateQueryOptions options, ITwilioRestClient client)
         {

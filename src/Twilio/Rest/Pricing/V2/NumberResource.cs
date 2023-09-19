@@ -30,6 +30,8 @@ namespace Twilio.Rest.Pricing.V2
     {
     
 
+    
+
         
         private static Request BuildFetchRequest(FetchNumberOptions options, ITwilioRestClient client)
         {

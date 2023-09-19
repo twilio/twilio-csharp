@@ -29,6 +29,8 @@ namespace Twilio.Rest.IpMessaging.V2.Service
     public class RoleResource : Resource
     {
     
+
+    
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class RoleTypeEnum : StringEnum
         {

@@ -30,6 +30,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
     {
     
 
+    
+
         
         private static Request BuildFetchRequest(FetchEventOptions options, ITwilioRestClient client)
         {

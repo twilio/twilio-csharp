@@ -29,6 +29,8 @@ namespace Twilio.Rest.Insights.V1.Call
     public class AnnotationResource : Resource
     {
     
+
+    
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class ConnectivityIssueEnum : StringEnum
         {

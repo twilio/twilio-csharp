@@ -29,6 +29,8 @@ namespace Twilio.Rest.Notify.V1
     public class CredentialResource : Resource
     {
     
+
+    
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class PushServiceEnum : StringEnum
         {

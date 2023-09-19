@@ -29,6 +29,8 @@ namespace Twilio.Rest.Api.V2010.Account.Message
     public class FeedbackResource : Resource
     {
     
+
+    
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class OutcomeEnum : StringEnum
         {

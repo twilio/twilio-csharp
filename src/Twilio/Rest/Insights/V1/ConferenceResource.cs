@@ -29,6 +29,8 @@ namespace Twilio.Rest.Insights.V1
     public class ConferenceResource : Resource
     {
     
+
+    
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class RegionEnum : StringEnum
         {

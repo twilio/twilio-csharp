@@ -29,6 +29,8 @@ namespace Twilio.Rest.Preview.HostedNumbers.AuthorizationDocument
     public class DependentHostedNumberOrderResource : Resource
     {
     
+
+    
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class StatusEnum : StringEnum
         {

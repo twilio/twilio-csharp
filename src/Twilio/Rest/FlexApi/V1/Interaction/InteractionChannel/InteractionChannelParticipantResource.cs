@@ -29,6 +29,8 @@ namespace Twilio.Rest.FlexApi.V1.Interaction.InteractionChannel
     public class InteractionChannelParticipantResource : Resource
     {
     
+
+    
         public sealed class StatusEnum : StringEnum
         {
             private StatusEnum(string value) : base(value) {}

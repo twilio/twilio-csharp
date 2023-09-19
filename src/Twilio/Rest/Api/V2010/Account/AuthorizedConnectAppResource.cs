@@ -29,6 +29,8 @@ namespace Twilio.Rest.Api.V2010.Account
     public class AuthorizedConnectAppResource : Resource
     {
     
+
+    
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class PermissionEnum : StringEnum
         {

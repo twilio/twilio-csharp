@@ -30,6 +30,8 @@ namespace Twilio.Rest.Sync.V1.Service.SyncStream
     {
     
 
+    
+
         
         private static Request BuildCreateRequest(CreateStreamMessageOptions options, ITwilioRestClient client)
         {

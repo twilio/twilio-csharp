@@ -30,6 +30,8 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
     {
     
 
+    
+
         
         private static Request BuildCreateRequest(CreateItemAssignmentOptions options, ITwilioRestClient client)
         {

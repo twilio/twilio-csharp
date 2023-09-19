@@ -29,6 +29,8 @@ namespace Twilio.Rest.Lookups.V2
     public class PhoneNumberResource : Resource
     {
     
+
+    
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class ValidationErrorEnum : StringEnum
         {

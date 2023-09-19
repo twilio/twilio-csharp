@@ -29,6 +29,8 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
     public class LogResource : Resource
     {
     
+
+    
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class LevelEnum : StringEnum
         {

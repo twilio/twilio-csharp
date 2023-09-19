@@ -29,6 +29,8 @@ namespace Twilio.Rest.IpMessaging.V2.Service
     public class ChannelResource : Resource
     {
     
+
+    
         public sealed class WebhookEnabledTypeEnum : StringEnum
         {
             private WebhookEnabledTypeEnum(string value) : base(value) {}

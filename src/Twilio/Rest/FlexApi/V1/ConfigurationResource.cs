@@ -29,6 +29,8 @@ namespace Twilio.Rest.FlexApi.V1
     public class ConfigurationResource : Resource
     {
     
+
+    
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class StatusEnum : StringEnum
         {

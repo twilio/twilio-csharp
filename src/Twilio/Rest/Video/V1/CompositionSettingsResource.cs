@@ -30,6 +30,8 @@ namespace Twilio.Rest.Video.V1
     {
     
 
+    
+
         
         private static Request BuildCreateRequest(CreateCompositionSettingsOptions options, ITwilioRestClient client)
         {

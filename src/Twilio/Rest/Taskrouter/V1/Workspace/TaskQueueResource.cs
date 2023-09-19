@@ -29,6 +29,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
     public class TaskQueueResource : Resource
     {
     
+
+    
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class TaskOrderEnum : StringEnum
         {

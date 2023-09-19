@@ -29,6 +29,8 @@ namespace Twilio.Rest.Notify.V1.Service
     public class BindingResource : Resource
     {
     
+
+    
         public sealed class BindingTypeEnum : StringEnum
         {
             private BindingTypeEnum(string value) : base(value) {}

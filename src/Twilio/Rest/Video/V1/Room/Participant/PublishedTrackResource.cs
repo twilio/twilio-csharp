@@ -29,6 +29,8 @@ namespace Twilio.Rest.Video.V1.Room.Participant
     public class PublishedTrackResource : Resource
     {
     
+
+    
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class KindEnum : StringEnum
         {

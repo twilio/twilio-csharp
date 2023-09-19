@@ -29,6 +29,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call
     public class StreamResource : Resource
     {
     
+
+    
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class StatusEnum : StringEnum
         {

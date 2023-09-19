@@ -29,6 +29,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call
     public class PaymentResource : Resource
     {
     
+
+    
         public sealed class StatusEnum : StringEnum
         {
             private StatusEnum(string value) : base(value) {}

@@ -29,6 +29,8 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
     public class RegulationResource : Resource
     {
     
+
+    
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class EndUserTypeEnum : StringEnum
         {

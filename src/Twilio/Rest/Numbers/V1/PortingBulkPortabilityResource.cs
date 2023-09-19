@@ -29,6 +29,8 @@ namespace Twilio.Rest.Numbers.V1
     public class PortingBulkPortabilityResource : Resource
     {
     
+
+    
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class StatusEnum : StringEnum
         {

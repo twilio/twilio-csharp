@@ -29,6 +29,8 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
     public class UserBindingResource : Resource
     {
     
+
+    
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class BindingTypeEnum : StringEnum
         {

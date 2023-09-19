@@ -29,6 +29,8 @@ namespace Twilio.Rest.Wireless.V1.Sim
     public class UsageRecordResource : Resource
     {
     
+
+    
         public sealed class GranularityEnum : StringEnum
         {
             private GranularityEnum(string value) : base(value) {}

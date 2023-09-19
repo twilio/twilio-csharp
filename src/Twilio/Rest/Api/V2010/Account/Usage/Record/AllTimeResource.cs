@@ -29,6 +29,8 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
     public class AllTimeResource : Resource
     {
     
+
+    
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class CategoryEnum : StringEnum
         {

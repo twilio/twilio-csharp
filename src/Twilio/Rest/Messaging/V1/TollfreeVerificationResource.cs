@@ -29,6 +29,8 @@ namespace Twilio.Rest.Messaging.V1
     public class TollfreeVerificationResource : Resource
     {
     
+
+    
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class StatusEnum : StringEnum
         {
