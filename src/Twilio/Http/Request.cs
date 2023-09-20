@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Twilio.Constant;
 using Twilio.Rest;
 
 #if !NET35
@@ -65,6 +66,16 @@ namespace Twilio.Http
         /// Header params
         /// </summary>
         public List<KeyValuePair<string, string>> HeaderParams { get; private set; }
+        
+        /// <summary>
+        /// Content Type
+        /// </summary>
+        public EnumConstants.ContentTypeEnum ContentType { get; set; }
+        
+        /// <summary>
+        /// Body
+        /// </summary>
+        public string Body { get; set; }
 
         /// <summary>
         /// Create a new Twilio request
@@ -91,6 +102,8 @@ namespace Twilio.Http
         /// <param name="postParams">Post data</param>
         /// <param name="edge">Twilio edge</param>
         /// <param name="headerParams">Custom header data</param>
+        /// <param name="contentType">Content Type</param>
+        /// <param name="body">Request Body</param>
         public Request(
             HttpMethod method,
             Domain domain,
@@ -99,7 +112,9 @@ namespace Twilio.Http
             List<KeyValuePair<string, string>> queryParams = null,
             List<KeyValuePair<string, string>> postParams = null,
             string edge = null,
-            List<KeyValuePair<string, string>> headerParams = null
+            List<KeyValuePair<string, string>> headerParams = null,
+            EnumConstants.ContentTypeEnum contentType = null,
+            string body = null
         )
         {
             Method = method;
@@ -110,6 +125,9 @@ namespace Twilio.Http
             QueryParams = queryParams ?? new List<KeyValuePair<string, string>>();
             PostParams = postParams ?? new List<KeyValuePair<string, string>>();
             HeaderParams = headerParams ?? new List<KeyValuePair<string, string>>();
+
+            ContentType = contentType;
+            Body = body;
         }
 
         /// <summary>
