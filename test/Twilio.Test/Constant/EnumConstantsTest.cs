@@ -11,7 +11,7 @@ namespace Twilio.Tests.Constant
         {
             var jsonContentType = EnumConstants.ContentTypeEnum.JSON;
             var formUrlEncodedType = EnumConstants.ContentTypeEnum.FORM_URLENCODED;
-          
+
             Assert.AreEqual("application/json", jsonContentType.ToString());
             Assert.AreEqual("application/x-www-form-urlencoded", formUrlEncodedType.ToString());
         }
