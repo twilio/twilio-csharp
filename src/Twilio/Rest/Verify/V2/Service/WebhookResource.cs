@@ -29,6 +29,8 @@ namespace Twilio.Rest.Verify.V2.Service
     public class WebhookResource : Resource
     {
     
+
+    
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class StatusEnum : StringEnum
         {

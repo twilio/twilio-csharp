@@ -29,6 +29,8 @@ namespace Twilio.Rest.Messaging.V1
     public class ServiceResource : Resource
     {
     
+
+    
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class ScanMessageContentEnum : StringEnum
         {
@@ -96,7 +98,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="mmsConverter"> Whether to enable the [MMS Converter](https://www.twilio.com/docs/messaging/services#mms-converter) for messages sent through the Service instance. </param>
         /// <param name="smartEncoding"> Whether to enable [Smart Encoding](https://www.twilio.com/docs/messaging/services#smart-encoding) for messages sent through the Service instance. </param>
         /// <param name="scanMessageContent">  </param>
-        /// <param name="fallbackToLongCode"> Whether to enable [Fallback to Long Code](https://www.twilio.com/docs/messaging/services#fallback-to-long-code) for messages sent through the Service instance. </param>
+        /// <param name="fallbackToLongCode"> [OBSOLETE] Former feature used to fallback to long code sender after certain short code message failures. </param>
         /// <param name="areaCodeGeomatch"> Whether to enable [Area Code Geomatch](https://www.twilio.com/docs/messaging/services#area-code-geomatch) on the Service Instance. </param>
         /// <param name="validityPeriod"> How long, in seconds, messages sent from the Service are valid. Can be an integer from `1` to `14,400`. </param>
         /// <param name="synchronousValidation"> Reserved. </param>
@@ -139,7 +141,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="mmsConverter"> Whether to enable the [MMS Converter](https://www.twilio.com/docs/messaging/services#mms-converter) for messages sent through the Service instance. </param>
         /// <param name="smartEncoding"> Whether to enable [Smart Encoding](https://www.twilio.com/docs/messaging/services#smart-encoding) for messages sent through the Service instance. </param>
         /// <param name="scanMessageContent">  </param>
-        /// <param name="fallbackToLongCode"> Whether to enable [Fallback to Long Code](https://www.twilio.com/docs/messaging/services#fallback-to-long-code) for messages sent through the Service instance. </param>
+        /// <param name="fallbackToLongCode"> [OBSOLETE] Former feature used to fallback to long code sender after certain short code message failures. </param>
         /// <param name="areaCodeGeomatch"> Whether to enable [Area Code Geomatch](https://www.twilio.com/docs/messaging/services#area-code-geomatch) on the Service Instance. </param>
         /// <param name="validityPeriod"> How long, in seconds, messages sent from the Service are valid. Can be an integer from `1` to `14,400`. </param>
         /// <param name="synchronousValidation"> Reserved. </param>
@@ -478,7 +480,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="mmsConverter"> Whether to enable the [MMS Converter](https://www.twilio.com/docs/messaging/services#mms-converter) for messages sent through the Service instance. </param>
         /// <param name="smartEncoding"> Whether to enable [Smart Encoding](https://www.twilio.com/docs/messaging/services#smart-encoding) for messages sent through the Service instance. </param>
         /// <param name="scanMessageContent">  </param>
-        /// <param name="fallbackToLongCode"> Whether to enable [Fallback to Long Code](https://www.twilio.com/docs/messaging/services#fallback-to-long-code) for messages sent through the Service instance. </param>
+        /// <param name="fallbackToLongCode"> [OBSOLETE] Former feature used to fallback to long code sender after certain short code message failures. </param>
         /// <param name="areaCodeGeomatch"> Whether to enable [Area Code Geomatch](https://www.twilio.com/docs/messaging/services#area-code-geomatch) on the Service Instance. </param>
         /// <param name="validityPeriod"> How long, in seconds, messages sent from the Service are valid. Can be an integer from `1` to `14,400`. </param>
         /// <param name="synchronousValidation"> Reserved. </param>
@@ -523,7 +525,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="mmsConverter"> Whether to enable the [MMS Converter](https://www.twilio.com/docs/messaging/services#mms-converter) for messages sent through the Service instance. </param>
         /// <param name="smartEncoding"> Whether to enable [Smart Encoding](https://www.twilio.com/docs/messaging/services#smart-encoding) for messages sent through the Service instance. </param>
         /// <param name="scanMessageContent">  </param>
-        /// <param name="fallbackToLongCode"> Whether to enable [Fallback to Long Code](https://www.twilio.com/docs/messaging/services#fallback-to-long-code) for messages sent through the Service instance. </param>
+        /// <param name="fallbackToLongCode"> [OBSOLETE] Former feature used to fallback to long code sender after certain short code message failures. </param>
         /// <param name="areaCodeGeomatch"> Whether to enable [Area Code Geomatch](https://www.twilio.com/docs/messaging/services#area-code-geomatch) on the Service Instance. </param>
         /// <param name="validityPeriod"> How long, in seconds, messages sent from the Service are valid. Can be an integer from `1` to `14,400`. </param>
         /// <param name="synchronousValidation"> Reserved. </param>
@@ -630,7 +632,7 @@ namespace Twilio.Rest.Messaging.V1
         [JsonProperty("scan_message_content")]
         public ServiceResource.ScanMessageContentEnum ScanMessageContent { get; private set; }
 
-        ///<summary> Whether to enable [Fallback to Long Code](https://www.twilio.com/docs/messaging/services#fallback-to-long-code) for messages sent through the Service instance. </summary> 
+        ///<summary> [OBSOLETE] Former feature used to fallback to long code sender after certain short code message failures. </summary> 
         [JsonProperty("fallback_to_long_code")]
         public bool? FallbackToLongCode { get; private set; }
 

@@ -29,6 +29,8 @@ namespace Twilio.Rest.FrontlineApi.V1
     public class UserResource : Resource
     {
     
+
+    
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class StateTypeEnum : StringEnum
         {

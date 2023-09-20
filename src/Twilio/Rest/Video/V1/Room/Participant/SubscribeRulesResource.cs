@@ -30,6 +30,8 @@ namespace Twilio.Rest.Video.V1.Room.Participant
     {
     
 
+    
+
         
         private static Request BuildFetchRequest(FetchSubscribeRulesOptions options, ITwilioRestClient client)
         {

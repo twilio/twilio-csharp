@@ -29,6 +29,8 @@ namespace Twilio.Rest.Supersim.V1
     public class SettingsUpdateResource : Resource
     {
     
+
+    
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class StatusEnum : StringEnum
         {

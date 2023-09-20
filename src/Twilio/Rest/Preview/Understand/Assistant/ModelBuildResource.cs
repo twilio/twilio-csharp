@@ -29,6 +29,8 @@ namespace Twilio.Rest.Preview.Understand.Assistant
     public class ModelBuildResource : Resource
     {
     
+
+    
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class StatusEnum : StringEnum
         {

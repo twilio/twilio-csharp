@@ -29,6 +29,8 @@ namespace Twilio.Rest.Insights.V1.Call
     public class EventResource : Resource
     {
     
+
+    
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class LevelEnum : StringEnum
         {

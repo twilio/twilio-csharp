@@ -29,6 +29,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service.User
     public class UserChannelResource : Resource
     {
     
+
+    
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class ChannelStatusEnum : StringEnum
         {

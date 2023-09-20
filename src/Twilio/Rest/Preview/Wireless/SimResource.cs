@@ -30,6 +30,8 @@ namespace Twilio.Rest.Preview.Wireless
     {
     
 
+    
+
         
         private static Request BuildFetchRequest(FetchSimOptions options, ITwilioRestClient client)
         {

@@ -30,6 +30,8 @@ namespace Twilio.Rest.Microvisor.V1.Device
     {
     
 
+    
+
         
         private static Request BuildCreateRequest(CreateDeviceConfigOptions options, ITwilioRestClient client)
         {

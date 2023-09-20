@@ -57,7 +57,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -105,7 +105,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -139,7 +139,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -180,7 +180,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  override List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -239,7 +239,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 

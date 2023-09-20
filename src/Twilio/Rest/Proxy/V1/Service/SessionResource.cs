@@ -29,6 +29,8 @@ namespace Twilio.Rest.Proxy.V1.Service
     public class SessionResource : Resource
     {
     
+
+    
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class StatusEnum : StringEnum
         {

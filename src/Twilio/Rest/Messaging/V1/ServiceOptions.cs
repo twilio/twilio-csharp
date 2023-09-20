@@ -58,7 +58,7 @@ namespace Twilio.Rest.Messaging.V1
         
         public ServiceResource.ScanMessageContentEnum ScanMessageContent { get; set; }
 
-        ///<summary> Whether to enable [Fallback to Long Code](https://www.twilio.com/docs/messaging/services#fallback-to-long-code) for messages sent through the Service instance. </summary> 
+        ///<summary> [OBSOLETE] Former feature used to fallback to long code sender after certain short code message failures. </summary> 
         public bool? FallbackToLongCode { get; set; }
 
         ///<summary> Whether to enable [Area Code Geomatch](https://www.twilio.com/docs/messaging/services#area-code-geomatch) on the Service Instance. </summary> 
@@ -86,7 +86,7 @@ namespace Twilio.Rest.Messaging.V1
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -177,7 +177,7 @@ namespace Twilio.Rest.Messaging.V1
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -206,7 +206,7 @@ namespace Twilio.Rest.Messaging.V1
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -226,7 +226,7 @@ namespace Twilio.Rest.Messaging.V1
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  override List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -277,7 +277,7 @@ namespace Twilio.Rest.Messaging.V1
         
         public ServiceResource.ScanMessageContentEnum ScanMessageContent { get; set; }
 
-        ///<summary> Whether to enable [Fallback to Long Code](https://www.twilio.com/docs/messaging/services#fallback-to-long-code) for messages sent through the Service instance. </summary> 
+        ///<summary> [OBSOLETE] Former feature used to fallback to long code sender after certain short code message failures. </summary> 
         public bool? FallbackToLongCode { get; set; }
 
         ///<summary> Whether to enable [Area Code Geomatch](https://www.twilio.com/docs/messaging/services#area-code-geomatch) on the Service Instance. </summary> 
@@ -306,7 +306,7 @@ namespace Twilio.Rest.Messaging.V1
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 

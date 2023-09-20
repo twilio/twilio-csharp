@@ -24,14 +24,14 @@ using Twilio.Converters;
 namespace Twilio.Rest.Api.V2010.Account.Message
 {
 
-    /// <summary> create </summary>
+    /// <summary> Create Message Feedback to confirm a tracked user action was performed by the recipient of the associated Message </summary>
     public class CreateFeedbackOptions : IOptions<FeedbackResource>
     {
         
-        ///<summary> The SID of the Message resource for which the feedback was provided. </summary> 
+        ///<summary> The SID of the Message resource for which to create MessageFeedback. </summary> 
         public string PathMessageSid { get; }
 
-        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource. </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) associated with the Message resource for which to create MessageFeedback. </summary> 
         public string PathAccountSid { get; set; }
 
         
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
 
 
         /// <summary> Construct a new CreateMessageFeedbackOptions </summary>
-        /// <param name="pathMessageSid"> The SID of the Message resource for which the feedback was provided. </param>
+        /// <param name="pathMessageSid"> The SID of the Message resource for which to create MessageFeedback. </param>
         public CreateFeedbackOptions(string pathMessageSid)
         {
             PathMessageSid = pathMessageSid;
@@ -47,7 +47,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 

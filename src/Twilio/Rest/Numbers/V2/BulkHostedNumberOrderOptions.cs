@@ -28,7 +28,7 @@ namespace Twilio.Rest.Numbers.V2
     {
     
         ///<summary> A 34 character string that uniquely identifies this BulkHostedNumberOrder. </summary> 
-        public string PathSid { get; }
+        public string PathBulkHostingSid { get; }
 
         ///<summary> Order status can be used for filtering on Hosted Number Order status values. To see a complete list of order statuses, please check 'https://www.twilio.com/docs/phone-numbers/hosted-numbers/hosted-numbers-api/hosted-number-order-resource#status-values'. </summary> 
         public string OrderStatus { get; set; }
@@ -36,15 +36,15 @@ namespace Twilio.Rest.Numbers.V2
 
 
         /// <summary> Construct a new FetchBulkHostedNumberOrderOptions </summary>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this BulkHostedNumberOrder. </param>
-        public FetchBulkHostedNumberOrderOptions(string pathSid)
+        /// <param name="pathBulkHostingSid"> A 34 character string that uniquely identifies this BulkHostedNumberOrder. </param>
+        public FetchBulkHostedNumberOrderOptions(string pathBulkHostingSid)
         {
-            PathSid = pathSid;
+            PathBulkHostingSid = pathBulkHostingSid;
         }
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 

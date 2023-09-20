@@ -29,6 +29,8 @@ namespace Twilio.Rest.Verify.V2
     public class VerificationAttemptsSummaryResource : Resource
     {
     
+
+    
         public sealed class ChannelsEnum : StringEnum
         {
             private ChannelsEnum(string value) : base(value) {}

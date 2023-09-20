@@ -29,6 +29,8 @@ namespace Twilio.Rest.Studio.V1
     public class FlowResource : Resource
     {
     
+
+    
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class StatusEnum : StringEnum
         {

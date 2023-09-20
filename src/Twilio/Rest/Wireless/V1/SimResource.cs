@@ -29,6 +29,8 @@ namespace Twilio.Rest.Wireless.V1
     public class SimResource : Resource
     {
     
+
+    
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class StatusEnum : StringEnum
         {

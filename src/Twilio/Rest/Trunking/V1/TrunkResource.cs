@@ -29,6 +29,8 @@ namespace Twilio.Rest.Trunking.V1
     public class TrunkResource : Resource
     {
     
+
+    
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class TransferSettingEnum : StringEnum
         {

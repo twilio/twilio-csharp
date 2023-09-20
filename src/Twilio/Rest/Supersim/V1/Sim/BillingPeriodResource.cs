@@ -29,6 +29,8 @@ namespace Twilio.Rest.Supersim.V1.Sim
     public class BillingPeriodResource : Resource
     {
     
+
+    
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class BpTypeEnum : StringEnum
         {

@@ -29,6 +29,8 @@ namespace Twilio.Rest.Events.V1
     public class SinkResource : Resource
     {
     
+
+    
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class StatusEnum : StringEnum
         {

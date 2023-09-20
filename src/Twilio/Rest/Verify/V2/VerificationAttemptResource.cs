@@ -29,6 +29,8 @@ namespace Twilio.Rest.Verify.V2
     public class VerificationAttemptResource : Resource
     {
     
+
+    
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class ChannelsEnum : StringEnum
         {

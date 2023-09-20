@@ -29,6 +29,8 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
     public class TranscriptionResource : Resource
     {
     
+
+    
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class StatusEnum : StringEnum
         {

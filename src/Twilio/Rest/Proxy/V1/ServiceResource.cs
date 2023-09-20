@@ -29,6 +29,8 @@ namespace Twilio.Rest.Proxy.V1
     public class ServiceResource : Resource
     {
     
+
+    
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class GeoMatchLevelEnum : StringEnum
         {

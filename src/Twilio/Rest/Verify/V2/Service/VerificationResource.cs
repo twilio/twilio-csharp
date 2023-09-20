@@ -29,6 +29,8 @@ namespace Twilio.Rest.Verify.V2.Service
     public class VerificationResource : Resource
     {
     
+
+    
         public sealed class StatusEnum : StringEnum
         {
             private StatusEnum(string value) : base(value) {}

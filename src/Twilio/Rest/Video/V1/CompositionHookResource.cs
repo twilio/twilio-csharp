@@ -29,6 +29,8 @@ namespace Twilio.Rest.Video.V1
     public class CompositionHookResource : Resource
     {
     
+
+    
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class FormatEnum : StringEnum
         {

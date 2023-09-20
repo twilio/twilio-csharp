@@ -29,6 +29,8 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
     public class YesterdayResource : Resource
     {
     
+
+    
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class CategoryEnum : StringEnum
         {

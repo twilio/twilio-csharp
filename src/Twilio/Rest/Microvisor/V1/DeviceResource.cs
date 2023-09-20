@@ -30,6 +30,8 @@ namespace Twilio.Rest.Microvisor.V1
     {
     
 
+    
+
         
         private static Request BuildFetchRequest(FetchDeviceOptions options, ITwilioRestClient client)
         {

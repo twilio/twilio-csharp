@@ -29,6 +29,8 @@ namespace Twilio.Rest.Api.V2010.Account.Address
     public class DependentPhoneNumberResource : Resource
     {
     
+
+    
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class EmergencyStatusEnum : StringEnum
         {

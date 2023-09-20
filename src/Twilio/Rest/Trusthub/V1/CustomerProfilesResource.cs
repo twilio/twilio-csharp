@@ -29,6 +29,8 @@ namespace Twilio.Rest.Trusthub.V1
     public class CustomerProfilesResource : Resource
     {
     
+
+    
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class StatusEnum : StringEnum
         {

@@ -30,6 +30,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeRegistratio
     {
     
 
+    
+
         
         private static Request BuildCreateRequest(CreateAuthRegistrationsCredentialListMappingOptions options, ITwilioRestClient client)
         {

@@ -29,6 +29,8 @@ namespace Twilio.Rest.FlexApi.V1
     public class ConfigurationResource : Resource
     {
     
+
+    
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class StatusEnum : StringEnum
         {
@@ -305,6 +307,10 @@ namespace Twilio.Rest.FlexApi.V1
         ///<summary> Configurable parameters for Flex UI Status report. </summary> 
         [JsonProperty("flex_ui_status_report")]
         public object FlexUiStatusReport { get; private set; }
+
+        ///<summary> Agent conversation end methods. </summary> 
+        [JsonProperty("agent_conv_end_methods")]
+        public object AgentConvEndMethods { get; private set; }
 
 
 

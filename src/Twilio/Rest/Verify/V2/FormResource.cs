@@ -29,6 +29,8 @@ namespace Twilio.Rest.Verify.V2
     public class FormResource : Resource
     {
     
+
+    
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class FormTypesEnum : StringEnum
         {

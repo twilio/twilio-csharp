@@ -30,6 +30,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
     {
     
 
+    
+
         
         private static Request BuildFetchRequest(FetchWorkerChannelOptions options, ITwilioRestClient client)
         {

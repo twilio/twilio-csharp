@@ -29,6 +29,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
     public class ReservationResource : Resource
     {
     
+
+    
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class StatusEnum : StringEnum
         {
