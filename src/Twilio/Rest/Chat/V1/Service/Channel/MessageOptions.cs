@@ -75,6 +75,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
             }
             return p;
         }
+
         
 
     }
@@ -112,6 +113,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
 
             return p;
         }
+
         
 
     }
@@ -151,6 +153,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
 
             return p;
         }
+
         
 
     }
@@ -196,6 +199,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
             }
             return p;
         }
+
         
 
     }
@@ -248,6 +252,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
             }
             return p;
         }
+
         
 
     }

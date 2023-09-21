@@ -54,6 +54,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
             }
             return p;
         }
+
         
 
     }
@@ -85,6 +86,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
             }
             return p;
         }
+
         
 
     }

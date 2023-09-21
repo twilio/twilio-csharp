@@ -88,7 +88,7 @@ namespace Twilio.Rest.Api.V2010.Account
         
         public MessageResource.RiskCheckEnum RiskCheck { get; set; }
 
-        ///<summary> The sender's Twilio phone number (in [E.164](https://en.wikipedia.org/wiki/E.164) format), [alphanumeric sender ID](https://www.twilio.com/docs/sms/send-messages#use-an-alphanumeric-sender-id), [Wireless SIM](https://www.twilio.com/docs/iot/wireless/programmable-wireless-send-machine-machine-sms-commands), [short code](https://www.twilio.com/docs/sms/api/short-code), or [channel address](https://www.twilio.com/docs/messaging/channels) (e.g., `whatsapp:+15554449999`). The value of the `from` parameter must be a sender that is hosted within Twilio and belong to the Account creating the Message. If you are using `messaging_service_sid`, this parameter can be empty (Twilio assigns a `from` value from the Messaging Service's Sender Pool) or you can provide a specific sender from your Sender Pool. </summary> 
+        ///<summary> The sender's Twilio phone number (in [E.164](https://en.wikipedia.org/wiki/E.164) format), [alphanumeric sender ID](https://www.twilio.com/docs/sms/send-messages#use-an-alphanumeric-sender-id), [Wireless SIM](https://www.twilio.com/docs/iot/wireless/programmable-wireless-send-machine-machine-sms-commands), [short code](https://www.twilio.com/docs/sms/api/short-code), or [channel address](https://www.twilio.com/docs/messaging/channels) (e.g., `whatsapp:+15554449999`). The value of the `from` parameter must be a sender that is hosted within Twilio and belongs to the Account creating the Message. If you are using `messaging_service_sid`, this parameter can be empty (Twilio assigns a `from` value from the Messaging Service's Sender Pool) or you can provide a specific sender from your Sender Pool. </summary> 
         public Types.PhoneNumber From { get; set; }
 
         ///<summary> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/services) you want to associate with the Message. When this parameter is provided and the `from` parameter is omitted, Twilio selects the optimal sender from the Messaging Service's Sender Pool. You may also provide a `from` parameter if you want to use a specific Sender from the Sender Pool. </summary> 
@@ -217,6 +217,7 @@ namespace Twilio.Rest.Api.V2010.Account
             }
             return p;
         }
+
         
 
     }
@@ -247,6 +248,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
             return p;
         }
+
         
 
     }
@@ -279,6 +281,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
             return p;
         }
+
         
 
     }
@@ -344,6 +347,7 @@ namespace Twilio.Rest.Api.V2010.Account
             }
             return p;
         }
+
         
 
     }
@@ -389,6 +393,7 @@ namespace Twilio.Rest.Api.V2010.Account
             }
             return p;
         }
+
         
 
     }
