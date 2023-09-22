@@ -38,6 +38,7 @@ namespace Twilio.Rest.Conversations.V1
 
             return p;
         }
+
         
 
     }
@@ -50,7 +51,7 @@ namespace Twilio.Rest.Conversations.V1
         ///<summary> The SID of the default [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) to use when creating a conversation. </summary> 
         public string DefaultChatServiceSid { get; set; }
 
-        ///<summary> The SID of the default [Messaging Service](https://www.twilio.com/docs/messaging/services/api) to use when creating a conversation. </summary> 
+        ///<summary> The SID of the default [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) to use when creating a conversation. </summary> 
         public string DefaultMessagingServiceSid { get; set; }
 
         ///<summary> Default ISO8601 duration when conversation will be switched to `inactive` state. Minimum value for this timer is 1 minute. </summary> 
@@ -86,6 +87,7 @@ namespace Twilio.Rest.Conversations.V1
             }
             return p;
         }
+
         
 
     }

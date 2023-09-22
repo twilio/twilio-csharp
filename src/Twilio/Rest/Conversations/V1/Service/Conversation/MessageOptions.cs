@@ -61,6 +61,9 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         ///<summary> A structurally valid JSON string that contains values to resolve Rich Content template variables. </summary> 
         public string ContentVariables { get; set; }
 
+        ///<summary> The subject of the message, can be up to 256 characters long. </summary> 
+        public string Subject { get; set; }
+
 
         /// <summary> Construct a new CreateServiceConversationMessageOptions </summary>
         /// <param name="pathChatServiceSid"> The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Participant resource is associated with. </param>
@@ -109,8 +112,13 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
             {
                 p.Add(new KeyValuePair<string, string>("ContentVariables", ContentVariables));
             }
+            if (Subject != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Subject", Subject));
+            }
             return p;
         }
+
         
     /// <summary> Generate the necessary header parameters </summary>
     public List<KeyValuePair<string, string>> GetHeaderParams()
@@ -161,6 +169,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
 
             return p;
         }
+
         
     /// <summary> Generate the necessary header parameters </summary>
     public List<KeyValuePair<string, string>> GetHeaderParams()
@@ -210,6 +219,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
 
             return p;
         }
+
         
 
     }
@@ -255,6 +265,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
             }
             return p;
         }
+
         
 
     }
@@ -289,6 +300,9 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
 
         ///<summary> A string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \\\"{}\\\" will be returned. </summary> 
         public string Attributes { get; set; }
+
+        ///<summary> The subject of the message, can be up to 256 characters long. </summary> 
+        public string Subject { get; set; }
 
 
 
@@ -329,8 +343,13 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
             {
                 p.Add(new KeyValuePair<string, string>("Attributes", Attributes));
             }
+            if (Subject != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Subject", Subject));
+            }
             return p;
         }
+
         
     /// <summary> Generate the necessary header parameters </summary>
     public List<KeyValuePair<string, string>> GetHeaderParams()
