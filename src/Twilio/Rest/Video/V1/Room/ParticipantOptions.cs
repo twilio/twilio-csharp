@@ -52,6 +52,7 @@ namespace Twilio.Rest.Video.V1.Room
 
             return p;
         }
+
         
 
     }
@@ -113,6 +114,7 @@ namespace Twilio.Rest.Video.V1.Room
             }
             return p;
         }
+
         
 
     }
@@ -153,6 +155,7 @@ namespace Twilio.Rest.Video.V1.Room
             }
             return p;
         }
+
         
 
     }

@@ -52,6 +52,7 @@ namespace Twilio.Rest.FlexApi.V1.Interaction
 
             return p;
         }
+
         
 
     }
@@ -85,6 +86,7 @@ namespace Twilio.Rest.FlexApi.V1.Interaction
             }
             return p;
         }
+
         
 
     }
@@ -100,9 +102,9 @@ namespace Twilio.Rest.FlexApi.V1.Interaction
         public string PathSid { get; }
 
         
-        public InteractionChannelResource.StatusEnum Status { get; }
+        public InteractionChannelResource.UpdateChannelStatusEnum Status { get; }
 
-        ///<summary> Optional. The state of associated tasks. If not specified, all tasks will be set to `wrapping`. </summary> 
+        ///<summary> It changes the state of associated tasks. Routing status is required, When the channel status is set to `inactive`. Allowed Value for routing status is `closed`. Otherwise Optional, if not specified, all tasks will be set to `wrapping`. </summary> 
         public object Routing { get; set; }
 
 
@@ -111,7 +113,7 @@ namespace Twilio.Rest.FlexApi.V1.Interaction
         /// <param name="pathInteractionSid"> The unique string created by Twilio to identify an Interaction resource, prefixed with KD. </param>
         /// <param name="pathSid"> The unique string created by Twilio to identify an Interaction Channel resource, prefixed with UO. </param>
         /// <param name="status">  </param>
-        public UpdateInteractionChannelOptions(string pathInteractionSid, string pathSid, InteractionChannelResource.StatusEnum status)
+        public UpdateInteractionChannelOptions(string pathInteractionSid, string pathSid, InteractionChannelResource.UpdateChannelStatusEnum status)
         {
             PathInteractionSid = pathInteractionSid;
             PathSid = pathSid;
@@ -134,6 +136,7 @@ namespace Twilio.Rest.FlexApi.V1.Interaction
             }
             return p;
         }
+
         
 
     }

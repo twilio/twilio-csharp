@@ -1,6 +1,30 @@
 twilio-csharp Changelog
 =======================
 
+[2023-09-21] Version 6.14.0
+---------------------------
+**Library - Chore**
+- [PR #699](https://github.com/twilio/twilio-csharp/pull/699): removing override from getparams. Thanks to [@sbansla](https://github.com/sbansla)!
+
+**Library - Fix**
+- [PR #695](https://github.com/twilio/twilio-csharp/pull/695): Added contentType and removed unused abstract function GetParam. Thanks to [@tiwarishubham635](https://github.com/tiwarishubham635)!
+
+**Library - Feature**
+- [PR #693](https://github.com/twilio/twilio-csharp/pull/693): Added Enum file for contentType. Thanks to [@tiwarishubham635](https://github.com/tiwarishubham635)!
+
+**Conversations**
+- Enable conversation email bindings, email address configurations and email message subjects
+
+**Flex**
+- Adding `console_errors_included` to Flex Configuration field `debugger_integrations`
+- Introducing new channel status as `inactive` in modify channel endpoint for leave functionality **(breaking change)**
+- Adding `citrix_voice_vdi` to Flex Configuration
+
+**Taskrouter**
+- Add Update Queues, Workers, Workflow Real Time Statistics API to flex-rt-data-api-v2 endpoint
+- Add Update Workspace Real Time Statistics API to flex-rt-data-api-v2 endpoint
+
+
 [2023-09-07] Version 6.13.0
 ---------------------------
 **Library - Fix**

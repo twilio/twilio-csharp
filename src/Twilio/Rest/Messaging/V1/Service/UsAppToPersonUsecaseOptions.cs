@@ -27,7 +27,7 @@ namespace Twilio.Rest.Messaging.V1.Service
     public class FetchUsAppToPersonUsecaseOptions : IOptions<UsAppToPersonUsecaseResource>
     {
     
-        ///<summary> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) to fetch the resource from. </summary> 
+        ///<summary> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) to fetch the resource from. </summary> 
         public string PathMessagingServiceSid { get; }
 
         ///<summary> The unique string to identify the A2P brand. </summary> 
@@ -36,7 +36,7 @@ namespace Twilio.Rest.Messaging.V1.Service
 
 
         /// <summary> Construct a new FetchUsAppToPersonUsecaseOptions </summary>
-        /// <param name="pathMessagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) to fetch the resource from. </param>
+        /// <param name="pathMessagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) to fetch the resource from. </param>
         public FetchUsAppToPersonUsecaseOptions(string pathMessagingServiceSid)
         {
             PathMessagingServiceSid = pathMessagingServiceSid;
@@ -54,6 +54,7 @@ namespace Twilio.Rest.Messaging.V1.Service
             }
             return p;
         }
+
         
 
     }

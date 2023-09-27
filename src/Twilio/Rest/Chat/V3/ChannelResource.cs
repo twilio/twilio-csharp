@@ -18,6 +18,7 @@ using System;
 using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Clients;
+using Twilio.Constant;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -106,7 +107,7 @@ namespace Twilio.Rest.Chat.V3
         /// <param name="pathServiceSid"> The unique SID identifier of the Service. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this Channel. </param>
         /// <param name="type">  </param>
-        /// <param name="messagingServiceSid"> The unique ID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) this channel belongs to. </param>
+        /// <param name="messagingServiceSid"> The unique ID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) this channel belongs to. </param>
         /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Channel </returns>
@@ -127,7 +128,7 @@ namespace Twilio.Rest.Chat.V3
         /// <param name="pathServiceSid"> The unique SID identifier of the Service. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this Channel. </param>
         /// <param name="type">  </param>
-        /// <param name="messagingServiceSid"> The unique ID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) this channel belongs to. </param>
+        /// <param name="messagingServiceSid"> The unique ID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) this channel belongs to. </param>
         /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Channel </returns>
@@ -160,6 +161,22 @@ namespace Twilio.Rest.Chat.V3
                 throw new ApiException(e.Message, e);
             }
         }
+        /// <summary>
+    /// Converts an object into a json string
+    /// </summary>
+    /// <param name="model"> C# model </param>
+    /// <returns> JSON string </returns>
+    public static string ToJson(object model)
+    {
+        try
+        {
+            return JsonConvert.SerializeObject(model);
+        }
+        catch (JsonException e)
+        {
+            throw new ApiException(e.Message, e);
+        }
+    }
 
     
         ///<summary> The unique string that we created to identify the Channel resource. </summary> 
@@ -210,7 +227,7 @@ namespace Twilio.Rest.Chat.V3
         [JsonProperty("messages_count")]
         public int? MessagesCount { get; private set; }
 
-        ///<summary> The unique ID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) this channel belongs to. </summary> 
+        ///<summary> The unique ID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) this channel belongs to. </summary> 
         [JsonProperty("messaging_service_sid")]
         public string MessagingServiceSid { get; private set; }
 

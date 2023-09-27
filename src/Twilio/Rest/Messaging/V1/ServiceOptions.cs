@@ -70,7 +70,7 @@ namespace Twilio.Rest.Messaging.V1
         ///<summary> Reserved. </summary> 
         public bool? SynchronousValidation { get; set; }
 
-        ///<summary> A string that describes the scenario in which the Messaging Service will be used. Examples: [notification, marketing, verification, poll ..]. </summary> 
+        ///<summary> A string that describes the scenario in which the Messaging Service will be used. Possible values are `notifications`, `marketing`, `verification`, `discussion`, `poll`, `undeclared`. </summary> 
         public string Usecase { get; set; }
 
         ///<summary> A boolean value that indicates either the webhook url configured on the phone number will be used or `inbound_request_url`/`fallback_url` url will be called when a message is received from the phone number. If this field is enabled then the webhook url defined on the phone number will override the `inbound_request_url`/`fallback_url` defined for the Messaging Service. </summary> 
@@ -156,6 +156,7 @@ namespace Twilio.Rest.Messaging.V1
             }
             return p;
         }
+
         
 
     }
@@ -183,6 +184,7 @@ namespace Twilio.Rest.Messaging.V1
 
             return p;
         }
+
         
 
     }
@@ -212,6 +214,7 @@ namespace Twilio.Rest.Messaging.V1
 
             return p;
         }
+
         
 
     }
@@ -236,6 +239,7 @@ namespace Twilio.Rest.Messaging.V1
             }
             return p;
         }
+
         
 
     }
@@ -289,7 +293,7 @@ namespace Twilio.Rest.Messaging.V1
         ///<summary> Reserved. </summary> 
         public bool? SynchronousValidation { get; set; }
 
-        ///<summary> A string that describes the scenario in which the Messaging Service will be used. Examples: [notification, marketing, verification, poll ..] </summary> 
+        ///<summary> A string that describes the scenario in which the Messaging Service will be used. Possible values are `notifications`, `marketing`, `verification`, `discussion`, `poll`, `undeclared`. </summary> 
         public string Usecase { get; set; }
 
         ///<summary> A boolean value that indicates either the webhook url configured on the phone number will be used or `inbound_request_url`/`fallback_url` url will be called when a message is received from the phone number. If this field is enabled then the webhook url defined on the phone number will override the `inbound_request_url`/`fallback_url` defined for the Messaging Service. </summary> 
@@ -376,6 +380,7 @@ namespace Twilio.Rest.Messaging.V1
             }
             return p;
         }
+
         
 
     }
