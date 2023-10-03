@@ -18,6 +18,7 @@ using System;
 using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Clients;
+using Twilio.Constant;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -102,7 +103,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="areaCodeGeomatch"> Whether to enable [Area Code Geomatch](https://www.twilio.com/docs/messaging/services#area-code-geomatch) on the Service Instance. </param>
         /// <param name="validityPeriod"> How long, in seconds, messages sent from the Service are valid. Can be an integer from `1` to `14,400`. </param>
         /// <param name="synchronousValidation"> Reserved. </param>
-        /// <param name="usecase"> A string that describes the scenario in which the Messaging Service will be used. Examples: [notification, marketing, verification, poll ..]. </param>
+        /// <param name="usecase"> A string that describes the scenario in which the Messaging Service will be used. Possible values are `notifications`, `marketing`, `verification`, `discussion`, `poll`, `undeclared`. </param>
         /// <param name="useInboundWebhookOnNumber"> A boolean value that indicates either the webhook url configured on the phone number will be used or `inbound_request_url`/`fallback_url` url will be called when a message is received from the phone number. If this field is enabled then the webhook url defined on the phone number will override the `inbound_request_url`/`fallback_url` defined for the Messaging Service. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns>
@@ -145,7 +146,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="areaCodeGeomatch"> Whether to enable [Area Code Geomatch](https://www.twilio.com/docs/messaging/services#area-code-geomatch) on the Service Instance. </param>
         /// <param name="validityPeriod"> How long, in seconds, messages sent from the Service are valid. Can be an integer from `1` to `14,400`. </param>
         /// <param name="synchronousValidation"> Reserved. </param>
-        /// <param name="usecase"> A string that describes the scenario in which the Messaging Service will be used. Examples: [notification, marketing, verification, poll ..]. </param>
+        /// <param name="usecase"> A string that describes the scenario in which the Messaging Service will be used. Possible values are `notifications`, `marketing`, `verification`, `discussion`, `poll`, `undeclared`. </param>
         /// <param name="useInboundWebhookOnNumber"> A boolean value that indicates either the webhook url configured on the phone number will be used or `inbound_request_url`/`fallback_url` url will be called when a message is received from the phone number. If this field is enabled then the webhook url defined on the phone number will override the `inbound_request_url`/`fallback_url` defined for the Messaging Service. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns>
@@ -484,7 +485,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="areaCodeGeomatch"> Whether to enable [Area Code Geomatch](https://www.twilio.com/docs/messaging/services#area-code-geomatch) on the Service Instance. </param>
         /// <param name="validityPeriod"> How long, in seconds, messages sent from the Service are valid. Can be an integer from `1` to `14,400`. </param>
         /// <param name="synchronousValidation"> Reserved. </param>
-        /// <param name="usecase"> A string that describes the scenario in which the Messaging Service will be used. Examples: [notification, marketing, verification, poll ..] </param>
+        /// <param name="usecase"> A string that describes the scenario in which the Messaging Service will be used. Possible values are `notifications`, `marketing`, `verification`, `discussion`, `poll`, `undeclared`. </param>
         /// <param name="useInboundWebhookOnNumber"> A boolean value that indicates either the webhook url configured on the phone number will be used or `inbound_request_url`/`fallback_url` url will be called when a message is received from the phone number. If this field is enabled then the webhook url defined on the phone number will override the `inbound_request_url`/`fallback_url` defined for the Messaging Service. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns>
@@ -529,7 +530,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="areaCodeGeomatch"> Whether to enable [Area Code Geomatch](https://www.twilio.com/docs/messaging/services#area-code-geomatch) on the Service Instance. </param>
         /// <param name="validityPeriod"> How long, in seconds, messages sent from the Service are valid. Can be an integer from `1` to `14,400`. </param>
         /// <param name="synchronousValidation"> Reserved. </param>
-        /// <param name="usecase"> A string that describes the scenario in which the Messaging Service will be used. Examples: [notification, marketing, verification, poll ..] </param>
+        /// <param name="usecase"> A string that describes the scenario in which the Messaging Service will be used. Possible values are `notifications`, `marketing`, `verification`, `discussion`, `poll`, `undeclared`. </param>
         /// <param name="useInboundWebhookOnNumber"> A boolean value that indicates either the webhook url configured on the phone number will be used or `inbound_request_url`/`fallback_url` url will be called when a message is received from the phone number. If this field is enabled then the webhook url defined on the phone number will override the `inbound_request_url`/`fallback_url` defined for the Messaging Service. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns>
@@ -574,6 +575,22 @@ namespace Twilio.Rest.Messaging.V1
                 throw new ApiException(e.Message, e);
             }
         }
+        /// <summary>
+    /// Converts an object into a json string
+    /// </summary>
+    /// <param name="model"> C# model </param>
+    /// <returns> JSON string </returns>
+    public static string ToJson(object model)
+    {
+        try
+        {
+            return JsonConvert.SerializeObject(model);
+        }
+        catch (JsonException e)
+        {
+            throw new ApiException(e.Message, e);
+        }
+    }
 
     
         ///<summary> The unique string that we created to identify the Service resource. </summary> 
@@ -656,7 +673,7 @@ namespace Twilio.Rest.Messaging.V1
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
 
-        ///<summary> A string that describes the scenario in which the Messaging Service will be used. Examples: [notification, marketing, verification, poll ..] </summary> 
+        ///<summary> A string that describes the scenario in which the Messaging Service will be used. Possible values are `notifications`, `marketing`, `verification`, `discussion`, `poll`, `undeclared`. </summary> 
         [JsonProperty("usecase")]
         public string Usecase { get; private set; }
 

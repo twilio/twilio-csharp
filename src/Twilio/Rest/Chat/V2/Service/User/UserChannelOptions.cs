@@ -60,6 +60,7 @@ namespace Twilio.Rest.Chat.V2.Service.User
 
             return p;
         }
+
         
     /// <summary> Generate the necessary header parameters </summary>
     public List<KeyValuePair<string, string>> GetHeaderParams()
@@ -109,6 +110,7 @@ namespace Twilio.Rest.Chat.V2.Service.User
 
             return p;
         }
+
         
 
     }
@@ -147,6 +149,7 @@ namespace Twilio.Rest.Chat.V2.Service.User
             }
             return p;
         }
+
         
 
     }
@@ -206,6 +209,7 @@ namespace Twilio.Rest.Chat.V2.Service.User
             }
             return p;
         }
+
         
 
     }

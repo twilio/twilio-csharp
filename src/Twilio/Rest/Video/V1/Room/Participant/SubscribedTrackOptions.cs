@@ -57,6 +57,7 @@ namespace Twilio.Rest.Video.V1.Room.Participant
 
             return p;
         }
+
         
 
     }
@@ -95,6 +96,7 @@ namespace Twilio.Rest.Video.V1.Room.Participant
             }
             return p;
         }
+
         
 
     }

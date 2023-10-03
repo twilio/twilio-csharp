@@ -70,6 +70,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
             }
             return p;
         }
+
         
 
     }
@@ -107,6 +108,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
 
             return p;
         }
+
         
 
     }
@@ -146,6 +148,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
 
             return p;
         }
+
         
 
     }
@@ -184,6 +187,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
             }
             return p;
         }
+
         
 
     }
