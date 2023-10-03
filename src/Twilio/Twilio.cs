@@ -184,8 +184,8 @@ namespace Twilio
         }
 
         /// <summary>
-        /// Validates that the Twilio Client can connect to api.twilio.com with
-        /// a new SSL certificate posted at api.twilio.com:8443
+        /// Test if your environment is impacted by a TLS or certificate change 
+        /// by sending an HTTP request to the test endpoint tls-test.twilio.com:443
         /// </summary>
         public static void ValidateSslCertificate()
         {
