@@ -204,9 +204,9 @@ namespace Twilio.Clients
         }
 
         /// <summary>
-        /// Test that this application can use updated SSL certificates on
-        /// api.twilio.com:8443. It's a bit easier to call this method from
-        /// TwilioClient.ValidateSslCertificate().
+        /// Test if your environment is impacted by a TLS or certificate change 
+        /// by sending an HTTP request to the test endpoint tls-test.twilio.com:443
+        /// It's a bit easier to call this method from TwilioClient.ValidateSslCertificate().
         /// </summary>
         public static void ValidateSslCertificate()
         {
