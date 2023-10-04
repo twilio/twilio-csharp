@@ -18,6 +18,7 @@ using System;
 using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Clients;
+using Twilio.Constant;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -104,11 +105,13 @@ namespace Twilio.Rest.Conversations.V1
         /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource. It can be used to address the resource in place of the resource's `sid` in the URL. </param>
         /// <param name="dateCreated"> The date that this resource was created. </param>
         /// <param name="dateUpdated"> The date that this resource was last updated. </param>
-        /// <param name="messagingServiceSid"> The unique ID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) this conversation belongs to. </param>
+        /// <param name="messagingServiceSid"> The unique ID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) this conversation belongs to. </param>
         /// <param name="attributes"> An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \\\"{}\\\" will be returned. </param>
         /// <param name="state">  </param>
         /// <param name="timersInactive"> ISO8601 duration when conversation will be switched to `inactive` state. Minimum value for this timer is 1 minute. </param>
         /// <param name="timersClosed"> ISO8601 duration when conversation will be switched to `closed` state. Minimum value for this timer is 10 minutes. </param>
+        /// <param name="bindingsEmailAddress"> The default email address that will be used when sending outbound emails in this conversation. </param>
+        /// <param name="bindingsEmailName"> The default name that will be used when sending outbound emails in this conversation. </param>
         /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Conversation </returns>
@@ -122,10 +125,12 @@ namespace Twilio.Rest.Conversations.V1
                                           ConversationResource.StateEnum state = null,
                                           string timersInactive = null,
                                           string timersClosed = null,
+                                          string bindingsEmailAddress = null,
+                                          string bindingsEmailName = null,
                                           ConversationResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new CreateConversationOptions(){  FriendlyName = friendlyName, UniqueName = uniqueName, DateCreated = dateCreated, DateUpdated = dateUpdated, MessagingServiceSid = messagingServiceSid, Attributes = attributes, State = state, TimersInactive = timersInactive, TimersClosed = timersClosed, XTwilioWebhookEnabled = xTwilioWebhookEnabled };
+            var options = new CreateConversationOptions(){  FriendlyName = friendlyName, UniqueName = uniqueName, DateCreated = dateCreated, DateUpdated = dateUpdated, MessagingServiceSid = messagingServiceSid, Attributes = attributes, State = state, TimersInactive = timersInactive, TimersClosed = timersClosed, BindingsEmailAddress = bindingsEmailAddress, BindingsEmailName = bindingsEmailName, XTwilioWebhookEnabled = xTwilioWebhookEnabled };
             return Create(options, client);
         }
 
@@ -135,11 +140,13 @@ namespace Twilio.Rest.Conversations.V1
         /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource. It can be used to address the resource in place of the resource's `sid` in the URL. </param>
         /// <param name="dateCreated"> The date that this resource was created. </param>
         /// <param name="dateUpdated"> The date that this resource was last updated. </param>
-        /// <param name="messagingServiceSid"> The unique ID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) this conversation belongs to. </param>
+        /// <param name="messagingServiceSid"> The unique ID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) this conversation belongs to. </param>
         /// <param name="attributes"> An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \\\"{}\\\" will be returned. </param>
         /// <param name="state">  </param>
         /// <param name="timersInactive"> ISO8601 duration when conversation will be switched to `inactive` state. Minimum value for this timer is 1 minute. </param>
         /// <param name="timersClosed"> ISO8601 duration when conversation will be switched to `closed` state. Minimum value for this timer is 10 minutes. </param>
+        /// <param name="bindingsEmailAddress"> The default email address that will be used when sending outbound emails in this conversation. </param>
+        /// <param name="bindingsEmailName"> The default name that will be used when sending outbound emails in this conversation. </param>
         /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Conversation </returns>
@@ -153,10 +160,12 @@ namespace Twilio.Rest.Conversations.V1
                                                                                   ConversationResource.StateEnum state = null,
                                                                                   string timersInactive = null,
                                                                                   string timersClosed = null,
+                                                                                  string bindingsEmailAddress = null,
+                                                                                  string bindingsEmailName = null,
                                                                                   ConversationResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
                                                                                   ITwilioRestClient client = null)
         {
-        var options = new CreateConversationOptions(){  FriendlyName = friendlyName, UniqueName = uniqueName, DateCreated = dateCreated, DateUpdated = dateUpdated, MessagingServiceSid = messagingServiceSid, Attributes = attributes, State = state, TimersInactive = timersInactive, TimersClosed = timersClosed, XTwilioWebhookEnabled = xTwilioWebhookEnabled };
+        var options = new CreateConversationOptions(){  FriendlyName = friendlyName, UniqueName = uniqueName, DateCreated = dateCreated, DateUpdated = dateUpdated, MessagingServiceSid = messagingServiceSid, Attributes = attributes, State = state, TimersInactive = timersInactive, TimersClosed = timersClosed, BindingsEmailAddress = bindingsEmailAddress, BindingsEmailName = bindingsEmailName, XTwilioWebhookEnabled = xTwilioWebhookEnabled };
             return await CreateAsync(options, client);
         }
         #endif
@@ -476,11 +485,13 @@ namespace Twilio.Rest.Conversations.V1
         /// <param name="dateCreated"> The date that this resource was created. </param>
         /// <param name="dateUpdated"> The date that this resource was last updated. </param>
         /// <param name="attributes"> An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \\\"{}\\\" will be returned. </param>
-        /// <param name="messagingServiceSid"> The unique ID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) this conversation belongs to. </param>
+        /// <param name="messagingServiceSid"> The unique ID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) this conversation belongs to. </param>
         /// <param name="state">  </param>
         /// <param name="timersInactive"> ISO8601 duration when conversation will be switched to `inactive` state. Minimum value for this timer is 1 minute. </param>
         /// <param name="timersClosed"> ISO8601 duration when conversation will be switched to `closed` state. Minimum value for this timer is 10 minutes. </param>
         /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource. It can be used to address the resource in place of the resource's `sid` in the URL. </param>
+        /// <param name="bindingsEmailAddress"> The default email address that will be used when sending outbound emails in this conversation. </param>
+        /// <param name="bindingsEmailName"> The default name that will be used when sending outbound emails in this conversation. </param>
         /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Conversation </returns>
@@ -495,10 +506,12 @@ namespace Twilio.Rest.Conversations.V1
                                           string timersInactive = null,
                                           string timersClosed = null,
                                           string uniqueName = null,
+                                          string bindingsEmailAddress = null,
+                                          string bindingsEmailName = null,
                                           ConversationResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new UpdateConversationOptions(pathSid){ FriendlyName = friendlyName, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes, MessagingServiceSid = messagingServiceSid, State = state, TimersInactive = timersInactive, TimersClosed = timersClosed, UniqueName = uniqueName, XTwilioWebhookEnabled = xTwilioWebhookEnabled };
+            var options = new UpdateConversationOptions(pathSid){ FriendlyName = friendlyName, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes, MessagingServiceSid = messagingServiceSid, State = state, TimersInactive = timersInactive, TimersClosed = timersClosed, UniqueName = uniqueName, BindingsEmailAddress = bindingsEmailAddress, BindingsEmailName = bindingsEmailName, XTwilioWebhookEnabled = xTwilioWebhookEnabled };
             return Update(options, client);
         }
 
@@ -509,11 +522,13 @@ namespace Twilio.Rest.Conversations.V1
         /// <param name="dateCreated"> The date that this resource was created. </param>
         /// <param name="dateUpdated"> The date that this resource was last updated. </param>
         /// <param name="attributes"> An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \\\"{}\\\" will be returned. </param>
-        /// <param name="messagingServiceSid"> The unique ID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) this conversation belongs to. </param>
+        /// <param name="messagingServiceSid"> The unique ID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) this conversation belongs to. </param>
         /// <param name="state">  </param>
         /// <param name="timersInactive"> ISO8601 duration when conversation will be switched to `inactive` state. Minimum value for this timer is 1 minute. </param>
         /// <param name="timersClosed"> ISO8601 duration when conversation will be switched to `closed` state. Minimum value for this timer is 10 minutes. </param>
         /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource. It can be used to address the resource in place of the resource's `sid` in the URL. </param>
+        /// <param name="bindingsEmailAddress"> The default email address that will be used when sending outbound emails in this conversation. </param>
+        /// <param name="bindingsEmailName"> The default name that will be used when sending outbound emails in this conversation. </param>
         /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Conversation </returns>
@@ -528,10 +543,12 @@ namespace Twilio.Rest.Conversations.V1
                                                                               string timersInactive = null,
                                                                               string timersClosed = null,
                                                                               string uniqueName = null,
+                                                                              string bindingsEmailAddress = null,
+                                                                              string bindingsEmailName = null,
                                                                               ConversationResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
                                                                               ITwilioRestClient client = null)
         {
-            var options = new UpdateConversationOptions(pathSid){ FriendlyName = friendlyName, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes, MessagingServiceSid = messagingServiceSid, State = state, TimersInactive = timersInactive, TimersClosed = timersClosed, UniqueName = uniqueName, XTwilioWebhookEnabled = xTwilioWebhookEnabled };
+            var options = new UpdateConversationOptions(pathSid){ FriendlyName = friendlyName, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes, MessagingServiceSid = messagingServiceSid, State = state, TimersInactive = timersInactive, TimersClosed = timersClosed, UniqueName = uniqueName, BindingsEmailAddress = bindingsEmailAddress, BindingsEmailName = bindingsEmailName, XTwilioWebhookEnabled = xTwilioWebhookEnabled };
             return await UpdateAsync(options, client);
         }
         #endif
@@ -552,6 +569,22 @@ namespace Twilio.Rest.Conversations.V1
                 throw new ApiException(e.Message, e);
             }
         }
+        /// <summary>
+    /// Converts an object into a json string
+    /// </summary>
+    /// <param name="model"> C# model </param>
+    /// <returns> JSON string </returns>
+    public static string ToJson(object model)
+    {
+        try
+        {
+            return JsonConvert.SerializeObject(model);
+        }
+        catch (JsonException e)
+        {
+            throw new ApiException(e.Message, e);
+        }
+    }
 
     
         ///<summary> The unique ID of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this conversation. </summary> 
@@ -562,7 +595,7 @@ namespace Twilio.Rest.Conversations.V1
         [JsonProperty("chat_service_sid")]
         public string ChatServiceSid { get; private set; }
 
-        ///<summary> The unique ID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) this conversation belongs to. </summary> 
+        ///<summary> The unique ID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) this conversation belongs to. </summary> 
         [JsonProperty("messaging_service_sid")]
         public string MessagingServiceSid { get; private set; }
 

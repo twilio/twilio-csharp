@@ -18,6 +18,7 @@ using System;
 using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Clients;
+using Twilio.Constant;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -466,6 +467,22 @@ namespace Twilio.Rest.Numbers.V2
                 throw new ApiException(e.Message, e);
             }
         }
+        /// <summary>
+    /// Converts an object into a json string
+    /// </summary>
+    /// <param name="model"> C# model </param>
+    /// <returns> JSON string </returns>
+    public static string ToJson(object model)
+    {
+        try
+        {
+            return JsonConvert.SerializeObject(model);
+        }
+        catch (JsonException e)
+        {
+            throw new ApiException(e.Message, e);
+        }
+    }
 
     
         ///<summary> A 34 character string that uniquely identifies this HostedNumberOrder. </summary> 
@@ -476,7 +493,7 @@ namespace Twilio.Rest.Numbers.V2
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> A 34 character string that uniquely identifies the [IncomingPhoneNumber](https://www.twilio.com/docs/api/rest/incoming-phone-numbers) resource that represents the phone number being hosted. </summary> 
+        ///<summary> A 34 character string that uniquely identifies the [IncomingPhoneNumber](https://www.twilio.com/docs/phone-numbers/api/incomingphonenumber-resource) resource that represents the phone number being hosted. </summary> 
         [JsonProperty("incoming_phone_number_sid")]
         public string IncomingPhoneNumberSid { get; private set; }
 
@@ -484,7 +501,7 @@ namespace Twilio.Rest.Numbers.V2
         [JsonProperty("address_sid")]
         public string AddressSid { get; private set; }
 
-        ///<summary> A 34 character string that uniquely identifies the [Authorization Document](https://www.twilio.com/docs/api/phone-numbers/hosted-number-authorization-documents) the user needs to sign. </summary> 
+        ///<summary> A 34 character string that uniquely identifies the [Authorization Document](https://www.twilio.com/docs/phone-numbers/hosted-numbers/hosted-numbers-api/authorization-document-resource) the user needs to sign. </summary> 
         [JsonProperty("signing_document_sid")]
         public string SigningDocumentSid { get; private set; }
 

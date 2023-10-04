@@ -43,7 +43,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         ///<summary> An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \\\"{}\\\" will be returned. </summary> 
         public string Attributes { get; set; }
 
-        ///<summary> The unique ID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) this conversation belongs to. </summary> 
+        ///<summary> The unique ID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) this conversation belongs to. </summary> 
         public string MessagingServiceSid { get; set; }
 
         ///<summary> The date that this resource was created. </summary> 
@@ -60,6 +60,12 @@ namespace Twilio.Rest.Conversations.V1.Service
 
         ///<summary> ISO8601 duration when conversation will be switched to `closed` state. Minimum value for this timer is 10 minutes. </summary> 
         public string TimersClosed { get; set; }
+
+        ///<summary> The default email address that will be used when sending outbound emails in this conversation. </summary> 
+        public string BindingsEmailAddress { get; set; }
+
+        ///<summary> The default name that will be used when sending outbound emails in this conversation. </summary> 
+        public string BindingsEmailName { get; set; }
 
 
         /// <summary> Construct a new CreateServiceConversationOptions </summary>
@@ -111,8 +117,17 @@ namespace Twilio.Rest.Conversations.V1.Service
             {
                 p.Add(new KeyValuePair<string, string>("Timers.Closed", TimersClosed));
             }
+            if (BindingsEmailAddress != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Bindings.Email.Address", BindingsEmailAddress));
+            }
+            if (BindingsEmailName != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Bindings.Email.Name", BindingsEmailName));
+            }
             return p;
         }
+
         
     /// <summary> Generate the necessary header parameters </summary>
     public List<KeyValuePair<string, string>> GetHeaderParams()
@@ -158,6 +173,7 @@ namespace Twilio.Rest.Conversations.V1.Service
 
             return p;
         }
+
         
     /// <summary> Generate the necessary header parameters </summary>
     public List<KeyValuePair<string, string>> GetHeaderParams()
@@ -202,6 +218,7 @@ namespace Twilio.Rest.Conversations.V1.Service
 
             return p;
         }
+
         
 
     }
@@ -256,6 +273,7 @@ namespace Twilio.Rest.Conversations.V1.Service
             }
             return p;
         }
+
         
 
     }
@@ -285,7 +303,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         ///<summary> An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \\\"{}\\\" will be returned. </summary> 
         public string Attributes { get; set; }
 
-        ///<summary> The unique ID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) this conversation belongs to. </summary> 
+        ///<summary> The unique ID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) this conversation belongs to. </summary> 
         public string MessagingServiceSid { get; set; }
 
         
@@ -299,6 +317,12 @@ namespace Twilio.Rest.Conversations.V1.Service
 
         ///<summary> An application-defined string that uniquely identifies the resource. It can be used to address the resource in place of the resource's `sid` in the URL. </summary> 
         public string UniqueName { get; set; }
+
+        ///<summary> The default email address that will be used when sending outbound emails in this conversation. </summary> 
+        public string BindingsEmailAddress { get; set; }
+
+        ///<summary> The default name that will be used when sending outbound emails in this conversation. </summary> 
+        public string BindingsEmailName { get; set; }
 
 
 
@@ -353,8 +377,17 @@ namespace Twilio.Rest.Conversations.V1.Service
             {
                 p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
             }
+            if (BindingsEmailAddress != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Bindings.Email.Address", BindingsEmailAddress));
+            }
+            if (BindingsEmailName != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Bindings.Email.Name", BindingsEmailName));
+            }
             return p;
         }
+
         
     /// <summary> Generate the necessary header parameters </summary>
     public List<KeyValuePair<string, string>> GetHeaderParams()

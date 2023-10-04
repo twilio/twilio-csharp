@@ -166,6 +166,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
             }
             return p;
         }
+
         
 
     }
@@ -193,6 +194,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
 
             return p;
         }
+
         
 
     }
@@ -222,6 +224,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
 
             return p;
         }
+
         
 
     }
@@ -281,6 +284,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
             }
             return p;
         }
+
         
 
     }
@@ -289,7 +293,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
     public class UpdateHostedNumberOrderOptions : IOptions<HostedNumberOrderResource>
     {
     
-        
+        ///<summary> A 34 character string that uniquely identifies this HostedNumberOrder. </summary> 
         public string PathSid { get; }
 
         ///<summary> A 64 character string that is a human readable text that describes this resource. </summary> 
@@ -325,7 +329,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
 
 
         /// <summary> Construct a new UpdateHostedNumbersHostedNumberOrderOptions </summary>
-        /// <param name="pathSid">  </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this HostedNumberOrder. </param>
         public UpdateHostedNumberOrderOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -380,6 +384,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
             }
             return p;
         }
+
         
 
     }

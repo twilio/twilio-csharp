@@ -70,6 +70,7 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
             }
             return p;
         }
+
         
 
     }
@@ -102,6 +103,7 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
 
             return p;
         }
+
         
 
     }
@@ -136,6 +138,7 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
 
             return p;
         }
+
         
 
     }
@@ -176,6 +179,7 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
             }
             return p;
         }
+
         
 
     }
@@ -223,6 +227,7 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
             }
             return p;
         }
+
         
 
     }
