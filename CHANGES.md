@@ -1,6 +1,10 @@
 twilio-csharp Changelog
 =======================
 
+[2023-10-05] Version 7.0.0-rc.0
+-------------------------------
+- Release Candidate preparation
+
 [2023-09-21] Version 6.14.0
 ---------------------------
 **Library - Chore**
