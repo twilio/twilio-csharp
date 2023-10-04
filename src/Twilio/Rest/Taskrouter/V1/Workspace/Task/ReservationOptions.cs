@@ -57,6 +57,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
 
             return p;
         }
+
         
 
     }
@@ -109,6 +110,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
             }
             return p;
         }
+
         
 
     }
@@ -524,6 +526,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
             }
             return p;
         }
+
         
     /// <summary> Generate the necessary header parameters </summary>
     public List<KeyValuePair<string, string>> GetHeaderParams()

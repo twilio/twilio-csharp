@@ -61,6 +61,7 @@ namespace Twilio.Rest.FlexApi.V1.Interaction.InteractionChannel
             }
             return p;
         }
+
         
 
     }
@@ -97,6 +98,7 @@ namespace Twilio.Rest.FlexApi.V1.Interaction.InteractionChannel
             }
             return p;
         }
+
         
 
     }

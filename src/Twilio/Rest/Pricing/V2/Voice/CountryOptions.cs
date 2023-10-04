@@ -47,6 +47,7 @@ namespace Twilio.Rest.Pricing.V2.Voice
 
             return p;
         }
+
         
 
     }
@@ -71,6 +72,7 @@ namespace Twilio.Rest.Pricing.V2.Voice
             }
             return p;
         }
+
         
 
     }

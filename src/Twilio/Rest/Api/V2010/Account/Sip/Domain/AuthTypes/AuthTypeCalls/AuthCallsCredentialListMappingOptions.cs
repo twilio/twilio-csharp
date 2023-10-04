@@ -59,6 +59,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeCalls
             }
             return p;
         }
+
         
 
     }
@@ -94,6 +95,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeCalls
 
             return p;
         }
+
         
 
     }
@@ -131,6 +133,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeCalls
 
             return p;
         }
+
         
 
     }
@@ -167,6 +170,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeCalls
             }
             return p;
         }
+
         
 
     }

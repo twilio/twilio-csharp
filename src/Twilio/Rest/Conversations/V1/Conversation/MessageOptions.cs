@@ -58,6 +58,9 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         ///<summary> A structurally valid JSON string that contains values to resolve Rich Content template variables. </summary> 
         public string ContentVariables { get; set; }
 
+        ///<summary> The subject of the message, can be up to 256 characters long. </summary> 
+        public string Subject { get; set; }
+
 
         /// <summary> Construct a new CreateConversationMessageOptions </summary>
         /// <param name="pathConversationSid"> The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this message. </param>
@@ -104,8 +107,13 @@ namespace Twilio.Rest.Conversations.V1.Conversation
             {
                 p.Add(new KeyValuePair<string, string>("ContentVariables", ContentVariables));
             }
+            if (Subject != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Subject", Subject));
+            }
             return p;
         }
+
         
     /// <summary> Generate the necessary header parameters </summary>
     public List<KeyValuePair<string, string>> GetHeaderParams()
@@ -151,6 +159,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
 
             return p;
         }
+
         
     /// <summary> Generate the necessary header parameters </summary>
     public List<KeyValuePair<string, string>> GetHeaderParams()
@@ -195,6 +204,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
 
             return p;
         }
+
         
 
     }
@@ -235,6 +245,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
             }
             return p;
         }
+
         
 
     }
@@ -266,6 +277,9 @@ namespace Twilio.Rest.Conversations.V1.Conversation
 
         ///<summary> A string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \\\"{}\\\" will be returned. </summary> 
         public string Attributes { get; set; }
+
+        ///<summary> The subject of the message, can be up to 256 characters long. </summary> 
+        public string Subject { get; set; }
 
 
 
@@ -304,8 +318,13 @@ namespace Twilio.Rest.Conversations.V1.Conversation
             {
                 p.Add(new KeyValuePair<string, string>("Attributes", Attributes));
             }
+            if (Subject != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Subject", Subject));
+            }
             return p;
         }
+
         
     /// <summary> Generate the necessary header parameters </summary>
     public List<KeyValuePair<string, string>> GetHeaderParams()
