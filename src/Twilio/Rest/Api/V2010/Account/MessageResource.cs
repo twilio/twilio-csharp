@@ -197,7 +197,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="sendAt"> The time that Twilio will send the message. Must be in ISO 8601 format. </param>
         /// <param name="sendAsMms"> If set to `true`, Twilio delivers the message as a single MMS message, regardless of the presence of media. </param>
         /// <param name="contentVariables"> For [Content Editor/API](https://www.twilio.com/docs/content) only: Key-value pairs of [Template variables](https://www.twilio.com/docs/content/using-variables-with-content-api) and their substitution values. `content_sid` parameter must also be provided. If values are not defined in the `content_variables` parameter, the [Template's default placeholder values](https://www.twilio.com/docs/content/content-api-resources#create-templates) are used. </param>
-        /// <param name="tags"> A string containing a JSON map of key value pairs of tags to be recorded as metadata for the message. The object may contain up to 10 tags. Keys and values can each be up to 128 characters in length. </param>
         /// <param name="riskCheck">  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Message </returns>
@@ -225,11 +224,10 @@ namespace Twilio.Rest.Api.V2010.Account
                                           DateTime? sendAt = null,
                                           bool? sendAsMms = null,
                                           string contentVariables = null,
-                                          string tags = null,
                                           MessageResource.RiskCheckEnum riskCheck = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new CreateMessageOptions(to){  PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, ContentSid = contentSid, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, Attempt = attempt, ValidityPeriod = validityPeriod, ForceDelivery = forceDelivery, ContentRetention = contentRetention, AddressRetention = addressRetention, SmartEncoded = smartEncoded, PersistentAction = persistentAction, ShortenUrls = shortenUrls, ScheduleType = scheduleType, SendAt = sendAt, SendAsMms = sendAsMms, ContentVariables = contentVariables, Tags = tags, RiskCheck = riskCheck };
+            var options = new CreateMessageOptions(to){  PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, ContentSid = contentSid, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, Attempt = attempt, ValidityPeriod = validityPeriod, ForceDelivery = forceDelivery, ContentRetention = contentRetention, AddressRetention = addressRetention, SmartEncoded = smartEncoded, PersistentAction = persistentAction, ShortenUrls = shortenUrls, ScheduleType = scheduleType, SendAt = sendAt, SendAsMms = sendAsMms, ContentVariables = contentVariables, RiskCheck = riskCheck };
             return Create(options, client);
         }
 
@@ -258,7 +256,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="sendAt"> The time that Twilio will send the message. Must be in ISO 8601 format. </param>
         /// <param name="sendAsMms"> If set to `true`, Twilio delivers the message as a single MMS message, regardless of the presence of media. </param>
         /// <param name="contentVariables"> For [Content Editor/API](https://www.twilio.com/docs/content) only: Key-value pairs of [Template variables](https://www.twilio.com/docs/content/using-variables-with-content-api) and their substitution values. `content_sid` parameter must also be provided. If values are not defined in the `content_variables` parameter, the [Template's default placeholder values](https://www.twilio.com/docs/content/content-api-resources#create-templates) are used. </param>
-        /// <param name="tags"> A string containing a JSON map of key value pairs of tags to be recorded as metadata for the message. The object may contain up to 10 tags. Keys and values can each be up to 128 characters in length. </param>
         /// <param name="riskCheck">  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Message </returns>
@@ -286,11 +283,10 @@ namespace Twilio.Rest.Api.V2010.Account
                                                                                   DateTime? sendAt = null,
                                                                                   bool? sendAsMms = null,
                                                                                   string contentVariables = null,
-                                                                                  string tags = null,
                                                                                   MessageResource.RiskCheckEnum riskCheck = null,
                                                                                   ITwilioRestClient client = null)
         {
-        var options = new CreateMessageOptions(to){  PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, ContentSid = contentSid, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, Attempt = attempt, ValidityPeriod = validityPeriod, ForceDelivery = forceDelivery, ContentRetention = contentRetention, AddressRetention = addressRetention, SmartEncoded = smartEncoded, PersistentAction = persistentAction, ShortenUrls = shortenUrls, ScheduleType = scheduleType, SendAt = sendAt, SendAsMms = sendAsMms, ContentVariables = contentVariables, Tags = tags, RiskCheck = riskCheck };
+        var options = new CreateMessageOptions(to){  PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, ContentSid = contentSid, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, Attempt = attempt, ValidityPeriod = validityPeriod, ForceDelivery = forceDelivery, ContentRetention = contentRetention, AddressRetention = addressRetention, SmartEncoded = smartEncoded, PersistentAction = persistentAction, ShortenUrls = shortenUrls, ScheduleType = scheduleType, SendAt = sendAt, SendAsMms = sendAsMms, ContentVariables = contentVariables, RiskCheck = riskCheck };
             return await CreateAsync(options, client);
         }
         #endif
@@ -484,9 +480,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) associated with the Message resources. </param>
         /// <param name="to"> Filter by recipient. For example: Set this `to` parameter to `+15558881111` to retrieve a list of Message resources with `to` properties of `+15558881111` </param>
         /// <param name="from"> Filter by sender. For example: Set this `from` parameter to `+15552229999` to retrieve a list of Message resources with `from` properties of `+15552229999` </param>
-        /// <param name="dateSentBefore"> Filter by Message `sent_date`. Accepts GMT dates in the following formats: `YYYY-MM-DD` (to find Messages with a specific `sent_date`), `<=YYYY-MM-DD` (to find Messages with `sent_date`s on and before a specific date), and `>=YYYY-MM-DD` (to find Messages with `sent_dates` on and after a specific date). </param>
         /// <param name="dateSent"> Filter by Message `sent_date`. Accepts GMT dates in the following formats: `YYYY-MM-DD` (to find Messages with a specific `sent_date`), `<=YYYY-MM-DD` (to find Messages with `sent_date`s on and before a specific date), and `>=YYYY-MM-DD` (to find Messages with `sent_dates` on and after a specific date). </param>
-        /// <param name="dateSentAfter"> Filter by Message `sent_date`. Accepts GMT dates in the following formats: `YYYY-MM-DD` (to find Messages with a specific `sent_date`), `<=YYYY-MM-DD` (to find Messages with `sent_date`s on and before a specific date), and `>=YYYY-MM-DD` (to find Messages with `sent_dates` on and after a specific date). </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -495,14 +489,12 @@ namespace Twilio.Rest.Api.V2010.Account
                                                      string pathAccountSid = null,
                                                      Types.PhoneNumber to = null,
                                                      Types.PhoneNumber from = null,
-                                                     DateTime? dateSentBefore = null,
                                                      DateTime? dateSent = null,
-                                                     DateTime? dateSentAfter = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
                                                      ITwilioRestClient client = null)
         {
-            var options = new ReadMessageOptions(){ PathAccountSid = pathAccountSid, To = to, From = from, DateSentBefore = dateSentBefore, DateSent = dateSent, DateSentAfter = dateSentAfter, PageSize = pageSize, Limit = limit};
+            var options = new ReadMessageOptions(){ PathAccountSid = pathAccountSid, To = to, From = from, DateSent = dateSent, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -511,9 +503,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) associated with the Message resources. </param>
         /// <param name="to"> Filter by recipient. For example: Set this `to` parameter to `+15558881111` to retrieve a list of Message resources with `to` properties of `+15558881111` </param>
         /// <param name="from"> Filter by sender. For example: Set this `from` parameter to `+15552229999` to retrieve a list of Message resources with `from` properties of `+15552229999` </param>
-        /// <param name="dateSentBefore"> Filter by Message `sent_date`. Accepts GMT dates in the following formats: `YYYY-MM-DD` (to find Messages with a specific `sent_date`), `<=YYYY-MM-DD` (to find Messages with `sent_date`s on and before a specific date), and `>=YYYY-MM-DD` (to find Messages with `sent_dates` on and after a specific date). </param>
         /// <param name="dateSent"> Filter by Message `sent_date`. Accepts GMT dates in the following formats: `YYYY-MM-DD` (to find Messages with a specific `sent_date`), `<=YYYY-MM-DD` (to find Messages with `sent_date`s on and before a specific date), and `>=YYYY-MM-DD` (to find Messages with `sent_dates` on and after a specific date). </param>
-        /// <param name="dateSentAfter"> Filter by Message `sent_date`. Accepts GMT dates in the following formats: `YYYY-MM-DD` (to find Messages with a specific `sent_date`), `<=YYYY-MM-DD` (to find Messages with `sent_date`s on and before a specific date), and `>=YYYY-MM-DD` (to find Messages with `sent_dates` on and after a specific date). </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -522,14 +512,12 @@ namespace Twilio.Rest.Api.V2010.Account
                                                                                              string pathAccountSid = null,
                                                                                              Types.PhoneNumber to = null,
                                                                                              Types.PhoneNumber from = null,
-                                                                                             DateTime? dateSentBefore = null,
                                                                                              DateTime? dateSent = null,
-                                                                                             DateTime? dateSentAfter = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
                                                                                              ITwilioRestClient client = null)
         {
-            var options = new ReadMessageOptions(){ PathAccountSid = pathAccountSid, To = to, From = from, DateSentBefore = dateSentBefore, DateSent = dateSent, DateSentAfter = dateSentAfter, PageSize = pageSize, Limit = limit};
+            var options = new ReadMessageOptions(){ PathAccountSid = pathAccountSid, To = to, From = from, DateSent = dateSent, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
@@ -779,10 +767,6 @@ namespace Twilio.Rest.Api.V2010.Account
         ///<summary> A list of related resources identified by their URIs relative to `https://api.twilio.com` </summary> 
         [JsonProperty("subresource_uris")]
         public Dictionary<string, string> SubresourceUris { get; private set; }
-
-        ///<summary> A string containing a JSON map of key value pairs of tags to be recorded as metadata for the message. </summary> 
-        [JsonProperty("tags")]
-        public object Tags { get; private set; }
 
 
 

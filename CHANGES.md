@@ -1,6 +1,80 @@
 twilio-csharp Changelog
 =======================
 
+[2023-09-21] Version 7.0.0.rc.1
+-------------------------------
+**Api**
+- Make message tagging parameters public **(breaking change)**
+- Add new property `RiskCheck` for SMS pumping protection feature only (public beta to be available soon): Include this parameter with a value of `disable` to skip any kind of risk check on the respective message request
+- Added `voice-intelligence`, `voice-intelligence-transcription` and `voice-intelligence-operators` to `usage_record` API.
+- Added `tts-google` to `usage_record` API.
+- Added `content_sid` as conditional parameter
+- Removed `content_sid` as optional field **(breaking change)**
+
+**Conversations**
+- Enable conversation email bindings, email address configurations and email message subjects
+
+**Insights**
+- Normalize annotations parameters in list summary api to be prefixed
+- Added `annotation` to list summary output
+
+**Flex**
+- Adding `console_errors_included` to Flex Configuration field `debugger_integrations`
+- Introducing new channel status as `inactive` in modify channel endpoint for leave functionality **(breaking change)**
+- Adding `citrix_voice_vdi` to Flex Configuration
+- Adding `agent_conv_end_methods` to Flex Configuration
+- Changing `sid<UO>` path param to `sid<UT>` in interaction channel participant update endpoint **(breaking change)**
+- Adding `interaction_context_sid` as optional parameter in Interactions API
+
+**Lookups**
+- Make message tagging parameters public **(breaking change)**
+- Introducing new channel status as `inactive` in modify channel endpoint for leave functionality **(breaking change)**
+- Renaming sid for bulk_hosting_sid and remove account_sid response field in numbers/v2/BulkHostedNumberOrders **(breaking change)**
+- Add new `disposable_phone_number_risk` package to the lookup response
+- Add `reassigned_number` package to the lookup response
+
+**Messaging**
+- Mark Mesasging Services fallback_to_long_code feature obsolete
+- Add Channel Sender api
+- Fixing country code docs and removing Zipwhip references
+- Making visiblity public for tollfree_verification API
+
+**Numbers**
+- Add Create Port In request api
+- Renaming sid for bulk_hosting_sid and remove account_sid response field in numbers/v2/BulkHostedNumberOrders **(breaking change)**
+- Request status changed in numbers/v2/BulkHostedNumberOrders **(breaking change)**
+- Add bulk hosting orders API under version `/v2
+- Change Bulk_hosted_sid from BHR to BH prefix in HNO and dependent under version `/v2` API's. **(breaking change)**
+- Added parameter target_account_sid to portability and account_sid to response body
+- Remove Sms capability property from HNO creation under version `/v2` of HNO API. **(breaking change)**
+- Update required properties in LOA creation under version `/v2` of Authorization document API. **(breaking change)**
+- Add hosted_number_order under version `/v2`.
+- Update properties in Porting and Bulk Porting APIs. **(breaking change)**
+- Added bulk Portability API under version `/v1`.
+- Added Portability API under version `/v1`.
+
+**Pricing**
+- gate resources behind a beta_feature
+
+**Taskrouter**
+- Add Update Queues, Workers, Workflow Real Time Statistics API to flex-rt-data-api-v2 endpoint
+- Add Update Workspace Real Time Statistics API to flex-rt-data-api-v2 endpoint
+- Add api to fetch task queue statistics for multiple TaskQueues
+
+**Twiml**
+- Add Google Voices and languages
+- Added support for he-il inside of ssm_lang.json that was missing
+- Added support for he-il language in say.json that was missing
+- Add `statusCallback` and `statusCallbackMethod` attributes to `<Siprec>`.
+
+**Verify**
+- Remove beta feature flag to list attempts API.
+- Remove beta feature flag to verifications summary attempts API.
+- Documentation of list attempts API was improved by correcting `date_created_after` and `date_created_before` expected date format.
+- Documentation was improved by correcting `date_created_after` and `date_created_before` expected date format parameter on attempts summary API.
+- Documentation was improved by adding `WHATSAPP` as optional valid parameter on attempts summary API.
+- Add `RiskCheck` optional parameter on Verification creation.
+
 [2023-09-21] Version 6.14.0
 ---------------------------
 **Library - Chore**

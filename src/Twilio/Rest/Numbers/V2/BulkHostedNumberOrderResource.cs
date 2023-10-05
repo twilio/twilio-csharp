@@ -48,6 +48,68 @@ namespace Twilio.Rest.Numbers.V2
         }
 
         
+        private static Request BuildCreateRequest(CreateBulkHostedNumberOrderOptions options, ITwilioRestClient client)
+        {
+            
+            string path = "/v2/HostedNumber/Orders/Bulk";
+
+
+            return new Request(
+                HttpMethod.Post,
+                Rest.Domain.Numbers,
+                path,
+                postParams: options.GetParams(),
+                headerParams: null
+            );
+        }
+
+        /// <summary> Host multiple phone numbers on Twilio's platform. </summary>
+        /// <param name="options"> Create BulkHostedNumberOrder parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of BulkHostedNumberOrder </returns>
+        public static BulkHostedNumberOrderResource Create(CreateBulkHostedNumberOrderOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            return FromJson(response.Content);
+        }
+
+        #if !NET35
+        /// <summary> Host multiple phone numbers on Twilio's platform. </summary>
+        /// <param name="options"> Create BulkHostedNumberOrder parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of BulkHostedNumberOrder </returns>
+        public static async System.Threading.Tasks.Task<BulkHostedNumberOrderResource> CreateAsync(CreateBulkHostedNumberOrderOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            return FromJson(response.Content);
+        }
+        #endif
+
+        /// <summary> Host multiple phone numbers on Twilio's platform. </summary>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of BulkHostedNumberOrder </returns>
+        public static BulkHostedNumberOrderResource Create(
+                                          ITwilioRestClient client = null)
+        {
+            var options = new CreateBulkHostedNumberOrderOptions(){  };
+            return Create(options, client);
+        }
+
+        #if !NET35
+        /// <summary> Host multiple phone numbers on Twilio's platform. </summary>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of BulkHostedNumberOrder </returns>
+        public static async System.Threading.Tasks.Task<BulkHostedNumberOrderResource> CreateAsync(
+                                                                                  ITwilioRestClient client = null)
+        {
+        var options = new CreateBulkHostedNumberOrderOptions(){  };
+            return await CreateAsync(options, client);
+        }
+        #endif
+        
         private static Request BuildFetchRequest(FetchBulkHostedNumberOrderOptions options, ITwilioRestClient client)
         {
             

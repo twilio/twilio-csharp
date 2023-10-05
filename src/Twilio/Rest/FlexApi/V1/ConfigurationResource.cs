@@ -110,6 +110,68 @@ namespace Twilio.Rest.FlexApi.V1
             return await FetchAsync(options, client);
         }
         #endif
+        
+        private static Request BuildUpdateRequest(UpdateConfigurationOptions options, ITwilioRestClient client)
+        {
+            
+            string path = "/v1/Configuration";
+
+
+            return new Request(
+                HttpMethod.Post,
+                Rest.Domain.FlexApi,
+                path,
+                postParams: options.GetParams(),
+                headerParams: null
+            );
+        }
+
+        /// <summary> update </summary>
+        /// <param name="options"> Update Configuration parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Configuration </returns>
+        public static ConfigurationResource Update(UpdateConfigurationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
+        }
+
+        /// <summary> update </summary>
+        /// <param name="options"> Update Configuration parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Configuration </returns>
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ConfigurationResource> UpdateAsync(UpdateConfigurationOptions options,
+                                                                                                          ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
+        }
+        #endif
+
+        /// <summary> update </summary>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Configuration </returns>
+        public static ConfigurationResource Update(
+                                          ITwilioRestClient client = null)
+        {
+            var options = new UpdateConfigurationOptions(){  };
+            return Update(options, client);
+        }
+
+        #if !NET35
+        /// <summary> update </summary>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Configuration </returns>
+        public static async System.Threading.Tasks.Task<ConfigurationResource> UpdateAsync(
+                                                                              ITwilioRestClient client = null)
+        {
+            var options = new UpdateConfigurationOptions(){  };
+            return await UpdateAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a ConfigurationResource object
@@ -328,10 +390,11 @@ namespace Twilio.Rest.FlexApi.V1
         ///<summary> Agent conversation end methods. </summary> 
         [JsonProperty("agent_conv_end_methods")]
         public object AgentConvEndMethods { get; private set; }
-        
+
         ///<summary> Citrix voice vdi configuration and settings. </summary> 
         [JsonProperty("citrix_voice_vdi")]
         public object CitrixVoiceVdi { get; private set; }
+
 
 
         private ConfigurationResource() {
