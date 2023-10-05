@@ -1,6 +1,19 @@
 twilio-csharp Changelog
 =======================
 
+[2023-10-05] Version 6.14.1
+---------------------------
+**Library - Fix**
+- [PR #705](https://github.com/twilio/twilio-csharp/pull/705): Update method comments to reflect new security testing method. Thanks to [@AsabuHere](https://github.com/AsabuHere)!
+- [PR #704](https://github.com/twilio/twilio-csharp/pull/704): [C# helper library] Changes in validate ssl certificate method with new url and port. Thanks to [@AsabuHere](https://github.com/AsabuHere)!
+
+**Library - Chore**
+- [PR #700](https://github.com/twilio/twilio-csharp/pull/700): twilio help changes. Thanks to [@kridai](https://github.com/kridai)!
+
+**Lookups**
+- Add test api support for Lookup v2
+
+
 [2023-09-21] Version 6.14.0
 ---------------------------
 **Library - Chore**

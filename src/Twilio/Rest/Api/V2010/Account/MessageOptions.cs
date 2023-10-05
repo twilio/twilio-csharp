@@ -82,9 +82,6 @@ namespace Twilio.Rest.Api.V2010.Account
         ///<summary> For [Content Editor/API](https://www.twilio.com/docs/content) only: Key-value pairs of [Template variables](https://www.twilio.com/docs/content/using-variables-with-content-api) and their substitution values. `content_sid` parameter must also be provided. If values are not defined in the `content_variables` parameter, the [Template's default placeholder values](https://www.twilio.com/docs/content/content-api-resources#create-templates) are used. </summary> 
         public string ContentVariables { get; set; }
 
-        ///<summary> A string containing a JSON map of key value pairs of tags to be recorded as metadata for the message. The object may contain up to 10 tags. Keys and values can each be up to 128 characters in length. </summary> 
-        public string Tags { get; set; }
-
         
         public MessageResource.RiskCheckEnum RiskCheck { get; set; }
 
@@ -186,10 +183,6 @@ namespace Twilio.Rest.Api.V2010.Account
             if (ContentVariables != null)
             {
                 p.Add(new KeyValuePair<string, string>("ContentVariables", ContentVariables));
-            }
-            if (Tags != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Tags", Tags));
             }
             if (RiskCheck != null)
             {
