@@ -1,7 +1,7 @@
 twilio-csharp Changelog
 =======================
 
-[2023-09-21] Version 7.0.0.rc.1
+[2023-10-05] Version 7.0.0.rc.1
 -------------------------------
 **Api**
 - Make message tagging parameters public **(breaking change)**
