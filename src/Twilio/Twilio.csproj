@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup Label="NuGet">
     <TargetFramework>net6.0</TargetFramework>
-    <OutputPath>bin/Release/net6.0/</OutputPath>
+    <OutputPath>bin/Release</OutputPath>
     <Nullable>enable</Nullable>
     <IsPackable>true</IsPackable>
     <PackageId>Twilio</PackageId>
