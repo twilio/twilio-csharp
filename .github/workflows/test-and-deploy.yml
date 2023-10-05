@@ -24,10 +24,10 @@ jobs:
       - name: Setup .NET Core SDK
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: 6.0.401
+          dotnet-version: 7.0.103
 
-#      - name: Remove faulty SDK version
-#        run: sudo rm -rf /usr/share/dotnet/sdk/7.0.4*
+      - name: Remove faulty SDK version
+        run: sudo rm -rf /usr/share/dotnet/sdk/7.0.4*
 
       - name: Build & Test
         run: make test
@@ -83,7 +83,10 @@ jobs:
       - name: Setup .NET Core SDK
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: 6.0.400
+          dotnet-version: 6.0.x
+
+      - name: Remove faulty SDK version
+        run: sudo rm -rf /usr/share/dotnet/sdk/7.0.4*
 
       - name: Login to Docker Hub
         uses: docker/login-action@v2
