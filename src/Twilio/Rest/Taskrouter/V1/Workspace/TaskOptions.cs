@@ -46,6 +46,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         ///<summary> A URL-encoded JSON string with the attributes of the new task. This value is passed to the Workflow's `assignment_callback_url` when the Task is assigned to a Worker. For example: `{ \\\"task_type\\\": \\\"call\\\", \\\"twilio_call_sid\\\": \\\"CAxxx\\\", \\\"customer_ticket_number\\\": \\\"12345\\\" }`. </summary> 
         public string Attributes { get; set; }
 
+        ///<summary> The virtual start time to assign the new task and override the default. When supplied, the new task will have this virtual start time. When not supplied, the new task will have the virtual start time equal to `date_created`. Value can't be in the future. </summary> 
+        public DateTime? VirtualStartTime { get; set; }
+
 
         /// <summary> Construct a new CreateTaskOptions </summary>
         /// <param name="pathWorkspaceSid"> The SID of the Workspace that the new Task belongs to. </param>
@@ -79,6 +82,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             if (Attributes != null)
             {
                 p.Add(new KeyValuePair<string, string>("Attributes", Attributes));
+            }
+            if (VirtualStartTime != null)
+            {
+                p.Add(new KeyValuePair<string, string>("VirtualStartTime", Serializers.DateTimeIso8601(VirtualStartTime)));
             }
             return p;
         }
@@ -197,7 +204,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         ///<summary> The attributes of the Tasks to read. Returns the Tasks that match the attributes specified in this parameter. </summary> 
         public string EvaluateTaskAttributes { get; set; }
 
-        ///<summary> How to order the returned Task resources. y default, Tasks are sorted by ascending DateCreated. This value is specified as: `Attribute:Order`, where `Attribute` can be either `Priority` or `DateCreated` and `Order` can be either `asc` or `desc`. For example, `Priority:desc` returns Tasks ordered in descending order of their Priority. Multiple sort orders can be specified in a comma-separated list such as `Priority:desc,DateCreated:asc`, which returns the Tasks in descending Priority order and ascending DateCreated Order. </summary> 
+        ///<summary> How to order the returned Task resources. By default, Tasks are sorted by ascending DateCreated. This value is specified as: `Attribute:Order`, where `Attribute` can be either `DateCreated`, `Priority`, or `VirtualStartTime` and `Order` can be either `asc` or `desc`. For example, `Priority:desc` returns Tasks ordered in descending order of their Priority. Pairings of sort orders can be specified in a comma-separated list such as `Priority:desc,DateCreated:asc`, which returns the Tasks in descending Priority order and ascending DateCreated Order. The only ordering pairing not allowed is DateCreated and VirtualStartTime. </summary> 
         public string Ordering { get; set; }
 
         ///<summary> Whether to read Tasks with addons. If `true`, returns only Tasks with addons. If `false`, returns only Tasks without addons. </summary> 
@@ -294,6 +301,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         ///<summary> When MultiTasking is enabled, specify the TaskChannel with the task to update. Can be the TaskChannel's SID or its `unique_name`, such as `voice`, `sms`, or `default`. </summary> 
         public string TaskChannel { get; set; }
 
+        ///<summary> The task's new virtual start time value. When supplied, the Task takes on the specified virtual start time. Value can't be in the future. </summary> 
+        public DateTime? VirtualStartTime { get; set; }
+
 
 
         /// <summary> Construct a new UpdateTaskOptions </summary>
@@ -330,6 +340,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             if (TaskChannel != null)
             {
                 p.Add(new KeyValuePair<string, string>("TaskChannel", TaskChannel));
+            }
+            if (VirtualStartTime != null)
+            {
+                p.Add(new KeyValuePair<string, string>("VirtualStartTime", Serializers.DateTimeIso8601(VirtualStartTime)));
             }
             return p;
         }

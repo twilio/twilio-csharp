@@ -79,7 +79,7 @@ namespace Twilio.Rest.Intelligence.V2.Transcript
         #endif
         /// <summary> Get all Transcript Sentences by TranscriptSid </summary>
         /// <param name="pathTranscriptSid"> The unique SID identifier of the Transcript. </param>
-        /// <param name="redacted"> Grant access to PII Redacted/Unredacted Sentences. The default is `true` to access redacted sentences. </param>
+        /// <param name="redacted"> Grant access to PII Redacted/Unredacted Sentences. If redaction is enabled, the default is `true` to access redacted sentences. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -98,7 +98,7 @@ namespace Twilio.Rest.Intelligence.V2.Transcript
         #if !NET35
         /// <summary> Get all Transcript Sentences by TranscriptSid </summary>
         /// <param name="pathTranscriptSid"> The unique SID identifier of the Transcript. </param>
-        /// <param name="redacted"> Grant access to PII Redacted/Unredacted Sentences. The default is `true` to access redacted sentences. </param>
+        /// <param name="redacted"> Grant access to PII Redacted/Unredacted Sentences. If redaction is enabled, the default is `true` to access redacted sentences. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>

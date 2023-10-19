@@ -175,6 +175,9 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         ///<summary> Whether to trim any leading and trailing silence from the participant recording. Can be: `trim-silence` or `do-not-trim` and the default is `trim-silence`. </summary> 
         public string Trim { get; set; }
 
+        ///<summary> A token string needed to invoke a forwarded call. A call_token is generated when an incoming call is received on a Twilio number. Pass an incoming call's call_token value to a forwarded call via the call_token parameter when creating a new call. A forwarded call should bear the same CallerID of the original incoming call. </summary> 
+        public string CallToken { get; set; }
+
 
         /// <summary> Construct a new CreateParticipantOptions </summary>
         /// <param name="pathConferenceSid"> The SID of the participant's conference. </param>
@@ -384,6 +387,10 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             if (Trim != null)
             {
                 p.Add(new KeyValuePair<string, string>("Trim", Trim));
+            }
+            if (CallToken != null)
+            {
+                p.Add(new KeyValuePair<string, string>("CallToken", CallToken));
             }
             return p;
         }
