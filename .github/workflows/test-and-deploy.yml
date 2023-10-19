@@ -45,40 +45,17 @@ jobs:
         run: |
           dotnet tool install --global dotnet-sonarscanner
           make cover
-          
-  import-certificate:
-    runs-on: windows-latest
-    steps:
-     - uses: actions/checkout@v2
-     - run: make install
-     - name: import-certificate
-       run: |
-        New-Item -ItemType directory -Path certificate
-        Set-Content -Path certificate\certificate.txt -Value '${{ secrets.CODE_SIGNING_CERTIFICATE }}'
-        certutil -decode certificate\certificate.txt certificate\certificate.pfx
-        
-     - name: Upload Artifact
-       uses: actions/upload-artifact@v3
-       with:
-         name: certificate.pfx
-         path: certificate\certificate.pfx
-         retention-days: 1
-         
+
   deploy:
     name: Deploy
     if: success() && github.ref_type == 'tag'
-    needs: [ test, import-certificate ]
+    needs: [ test ]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout twilio-csharp
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
-          
-      - name: Download code signing certificate
-        uses: actions/download-artifact@v3
-        with:
-          name: certificate.pfx
 
       - name: Setup .NET Core SDK
         uses: actions/setup-dotnet@v3
@@ -108,7 +85,6 @@ jobs:
       - name: Publish package to NuGet
         run: |
           make release
-          dotnet nuget sign **/*.nupkg --certificate-path certificate.pfx --certificate-password ${{ secrets.CERTIFICATE_PASSWORD }} --timestamper http://timestamp.digicert.com
           dotnet nuget push **/*.nupkg -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json
 
       - name: Submit metric to Datadog
