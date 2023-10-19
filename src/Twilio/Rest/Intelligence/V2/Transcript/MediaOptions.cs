@@ -30,7 +30,7 @@ namespace Twilio.Rest.Intelligence.V2.Transcript
         ///<summary> The unique SID identifier of the Transcript. </summary> 
         public string PathSid { get; }
 
-        ///<summary> Grant access to PII Redacted/Unredacted Media. The default is `true` to access redacted media. </summary> 
+        ///<summary> Grant access to PII Redacted/Unredacted Media. If redaction is enabled, the default is `true` to access redacted media. </summary> 
         public bool? Redacted { get; set; }
 
 

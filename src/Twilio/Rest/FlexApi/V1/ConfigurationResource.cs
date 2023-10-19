@@ -395,6 +395,10 @@ namespace Twilio.Rest.FlexApi.V1
         [JsonProperty("citrix_voice_vdi")]
         public object CitrixVoiceVdi { get; private set; }
 
+        ///<summary> Presence and presence ttl configuration </summary> 
+        [JsonProperty("offline_config")]
+        public object OfflineConfig { get; private set; }
+
 
 
         private ConfigurationResource() {

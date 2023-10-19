@@ -115,9 +115,6 @@ namespace Twilio.Rest.Intelligence.V2
         ///<summary> A 34 character string that uniquely identifies this Transcript. </summary> 
         public string PathSid { get; }
 
-        ///<summary> Grant access to PII Redacted/Unredacted Transcript. The default is `true` to access redacted Transcript. </summary> 
-        public bool? Redacted { get; set; }
-
 
 
         /// <summary> Construct a new FetchTranscriptOptions </summary>
@@ -133,10 +130,6 @@ namespace Twilio.Rest.Intelligence.V2
         {
             var p = new List<KeyValuePair<string, string>>();
 
-            if (Redacted != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Redacted", Redacted.Value.ToString().ToLower()));
-            }
             return p;
         }
 

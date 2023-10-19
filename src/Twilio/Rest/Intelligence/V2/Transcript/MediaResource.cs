@@ -77,7 +77,7 @@ namespace Twilio.Rest.Intelligence.V2.Transcript
         #endif
         /// <summary> Get download URLs for media if possible </summary>
         /// <param name="pathSid"> The unique SID identifier of the Transcript. </param>
-        /// <param name="redacted"> Grant access to PII Redacted/Unredacted Media. The default is `true` to access redacted media. </param>
+        /// <param name="redacted"> Grant access to PII Redacted/Unredacted Media. If redaction is enabled, the default is `true` to access redacted media. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Media </returns>
         public static MediaResource Fetch(
@@ -92,7 +92,7 @@ namespace Twilio.Rest.Intelligence.V2.Transcript
         #if !NET35
         /// <summary> Get download URLs for media if possible </summary>
         /// <param name="pathSid"> The unique SID identifier of the Transcript. </param>
-        /// <param name="redacted"> Grant access to PII Redacted/Unredacted Media. The default is `true` to access redacted media. </param>
+        /// <param name="redacted"> Grant access to PII Redacted/Unredacted Media. If redaction is enabled, the default is `true` to access redacted media. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Media </returns>
         public static async System.Threading.Tasks.Task<MediaResource> FetchAsync(string pathSid, bool? redacted = null, ITwilioRestClient client = null)

@@ -37,6 +37,7 @@ namespace Twilio.Rest
         public static readonly Domain IpMessaging = new Domain("ip-messaging");
         public static readonly Domain Lookups = new Domain("lookups");
         public static readonly Domain Media = new Domain("media");
+        public static readonly Domain PreviewMessaging = new Domain("preview.messaging");
         public static readonly Domain Messaging = new Domain("messaging");
         public static readonly Domain Microvisor = new Domain("microvisor");
         public static readonly Domain Monitor = new Domain("monitor");
@@ -58,7 +59,6 @@ namespace Twilio.Rest
         public static readonly Domain Video = new Domain("video");
         public static readonly Domain Voice = new Domain("voice");
         public static readonly Domain Wireless = new Domain("wireless");
-        public static readonly Domain PreviewMessaging = new Domain("preview.messaging");
     }
 
 }

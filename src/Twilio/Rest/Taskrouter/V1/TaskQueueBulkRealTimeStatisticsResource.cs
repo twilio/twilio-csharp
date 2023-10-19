@@ -144,9 +144,9 @@ namespace Twilio.Rest.Taskrouter.V1
         [JsonProperty("workspace_sid")]
         public string WorkspaceSid { get; private set; }
 
-        ///<summary> The TaskQueue RealTime Statistics for each requested TaskQueue SID, represented as a map of TaskQueue SID to the TaskQueue result, each result contains the following attributes: task_queue_sid: The SID of the TaskQueue from which these statistics were calculated, total_available_workers: The total number of Workers available for Tasks in the TaskQueue, total_eligible_workers: The total number of Workers eligible for Tasks in the TaskQueue, independent of their Activity state, total_tasks: The total number of Tasks, longest_task_waiting_age: The age of the longest waiting Task, longest_task_waiting_sid: The SID of the longest waiting Task, tasks_by_status: The number of Tasks by their current status, tasks_by_priority: The number of Tasks by priority, activity_statistics: The number of current Workers by Activity. </summary> 
+        ///<summary> The TaskQueue RealTime Statistics for each requested TaskQueue SID, represented as an array of TaskQueue results corresponding to the requested TaskQueue SIDs, each result contains the following attributes: task_queue_sid: The SID of the TaskQueue from which these statistics were calculated, total_available_workers: The total number of Workers available for Tasks in the TaskQueue, total_eligible_workers: The total number of Workers eligible for Tasks in the TaskQueue, independent of their Activity state, total_tasks: The total number of Tasks, longest_task_waiting_age: The age of the longest waiting Task, longest_task_waiting_sid: The SID of the longest waiting Task, tasks_by_status: The number of Tasks by their current status, tasks_by_priority: The number of Tasks by priority, activity_statistics: The number of current Workers by Activity. </summary> 
         [JsonProperty("task_queue_data")]
-        public object TaskQueueData { get; private set; }
+        public List<object> TaskQueueData { get; private set; }
 
         ///<summary> The number of TaskQueue statistics received in task_queue_data. </summary> 
         [JsonProperty("task_queue_response_count")]

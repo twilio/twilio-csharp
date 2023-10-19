@@ -33,7 +33,7 @@ namespace Twilio.Rest.Intelligence.V2.Transcript
         ///<summary> A 34 character string that identifies this Language Understanding operator sid. </summary> 
         public string PathOperatorSid { get; }
 
-        ///<summary> Grant access to PII redacted/unredacted Language Understanding operator. The default is True. </summary> 
+        ///<summary> Grant access to PII redacted/unredacted Language Understanding operator. If redaction is enabled, the default is True. </summary> 
         public bool? Redacted { get; set; }
 
 
@@ -72,7 +72,7 @@ namespace Twilio.Rest.Intelligence.V2.Transcript
         ///<summary> A 34 character string that uniquely identifies this Transcript. </summary> 
         public string PathTranscriptSid { get; }
 
-        ///<summary> Grant access to PII redacted/unredacted Language Understanding operator. The default is True. </summary> 
+        ///<summary> Grant access to PII redacted/unredacted Language Understanding operator. If redaction is enabled, the default is True. </summary> 
         public bool? Redacted { get; set; }
 
 

@@ -239,27 +239,24 @@ namespace Twilio.Rest.Intelligence.V2
         #endif
         /// <summary> Fetch a specific Transcript. </summary>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this Transcript. </param>
-        /// <param name="redacted"> Grant access to PII Redacted/Unredacted Transcript. The default is `true` to access redacted Transcript. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Transcript </returns>
         public static TranscriptResource Fetch(
                                          string pathSid, 
-                                         bool? redacted = null, 
                                          ITwilioRestClient client = null)
         {
-            var options = new FetchTranscriptOptions(pathSid){ Redacted = redacted };
+            var options = new FetchTranscriptOptions(pathSid){  };
             return Fetch(options, client);
         }
 
         #if !NET35
         /// <summary> Fetch a specific Transcript. </summary>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this Transcript. </param>
-        /// <param name="redacted"> Grant access to PII Redacted/Unredacted Transcript. The default is `true` to access redacted Transcript. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Transcript </returns>
-        public static async System.Threading.Tasks.Task<TranscriptResource> FetchAsync(string pathSid, bool? redacted = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<TranscriptResource> FetchAsync(string pathSid, ITwilioRestClient client = null)
         {
-            var options = new FetchTranscriptOptions(pathSid){ Redacted = redacted };
+            var options = new FetchTranscriptOptions(pathSid){  };
             return await FetchAsync(options, client);
         }
         #endif

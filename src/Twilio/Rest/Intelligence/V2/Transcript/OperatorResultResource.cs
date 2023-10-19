@@ -96,7 +96,7 @@ namespace Twilio.Rest.Intelligence.V2.Transcript
         /// <summary> Fetch a specific Operator Result for the given Transcript. </summary>
         /// <param name="pathTranscriptSid"> A 34 character string that uniquely identifies this Transcript. </param>
         /// <param name="pathOperatorSid"> A 34 character string that identifies this Language Understanding operator sid. </param>
-        /// <param name="redacted"> Grant access to PII redacted/unredacted Language Understanding operator. The default is True. </param>
+        /// <param name="redacted"> Grant access to PII redacted/unredacted Language Understanding operator. If redaction is enabled, the default is True. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of OperatorResult </returns>
         public static OperatorResultResource Fetch(
@@ -113,7 +113,7 @@ namespace Twilio.Rest.Intelligence.V2.Transcript
         /// <summary> Fetch a specific Operator Result for the given Transcript. </summary>
         /// <param name="pathTranscriptSid"> A 34 character string that uniquely identifies this Transcript. </param>
         /// <param name="pathOperatorSid"> A 34 character string that identifies this Language Understanding operator sid. </param>
-        /// <param name="redacted"> Grant access to PII redacted/unredacted Language Understanding operator. The default is True. </param>
+        /// <param name="redacted"> Grant access to PII redacted/unredacted Language Understanding operator. If redaction is enabled, the default is True. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of OperatorResult </returns>
         public static async System.Threading.Tasks.Task<OperatorResultResource> FetchAsync(string pathTranscriptSid, string pathOperatorSid, bool? redacted = null, ITwilioRestClient client = null)
@@ -168,7 +168,7 @@ namespace Twilio.Rest.Intelligence.V2.Transcript
         #endif
         /// <summary> Retrieve a list of Operator Results for the given Transcript. </summary>
         /// <param name="pathTranscriptSid"> A 34 character string that uniquely identifies this Transcript. </param>
-        /// <param name="redacted"> Grant access to PII redacted/unredacted Language Understanding operator. The default is True. </param>
+        /// <param name="redacted"> Grant access to PII redacted/unredacted Language Understanding operator. If redaction is enabled, the default is True. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -187,7 +187,7 @@ namespace Twilio.Rest.Intelligence.V2.Transcript
         #if !NET35
         /// <summary> Retrieve a list of Operator Results for the given Transcript. </summary>
         /// <param name="pathTranscriptSid"> A 34 character string that uniquely identifies this Transcript. </param>
-        /// <param name="redacted"> Grant access to PII redacted/unredacted Language Understanding operator. The default is True. </param>
+        /// <param name="redacted"> Grant access to PII redacted/unredacted Language Understanding operator. If redaction is enabled, the default is True. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>

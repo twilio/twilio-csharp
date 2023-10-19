@@ -1,6 +1,66 @@
 twilio-csharp Changelog
 =======================
 
+[2023-10-19] Version 7.0.0-rc.2
+-------------------------------
+**Library - Chore**
+- [PR #706](https://github.com/twilio/twilio-csharp/pull/706): Pull from main branch. Thanks to [@sbansla](https://github.com/sbansla)!
+- [PR #703](https://github.com/twilio/twilio-csharp/pull/703): Updating changes with main. Thanks to [@tiwarishubham635](https://github.com/tiwarishubham635)!
+- [PR #690](https://github.com/twilio/twilio-csharp/pull/690): Upgrade net6. Thanks to [@sbansla](https://github.com/sbansla)!
+- [PR #692](https://github.com/twilio/twilio-csharp/pull/692): Updated csharp rc version and changed Request constructor. Thanks to [@tiwarishubham635](https://github.com/tiwarishubham635)!
+- [PR #688](https://github.com/twilio/twilio-csharp/pull/688): added custom converters for nested objects. Thanks to [@sbansla](https://github.com/sbansla)!
+
+**Library - Fix**
+- [PR #697](https://github.com/twilio/twilio-csharp/pull/697): removed unused constructor. Thanks to [@tiwarishubham635](https://github.com/tiwarishubham635)!
+
+**Library - Feature**
+- [PR #686](https://github.com/twilio/twilio-csharp/pull/686): added json request body support in csharp. Thanks to [@tiwarishubham635](https://github.com/tiwarishubham635)!
+
+**Accounts**
+- Updated Safelist metadata to correct the docs.
+- Add Global SafeList API changes
+
+**Api**
+- Added optional parameter `CallToken` for create participant api
+- Make message tagging parameters public **(breaking change)**
+
+**Conversations**
+- Enable conversation email bindings, email address configurations and email message subjects
+
+**Flex**
+- Adding `offline_config` to Flex Configuration
+- Adding `console_errors_included` to Flex Configuration field `debugger_integrations`
+- Introducing new channel status as `inactive` in modify channel endpoint for leave functionality **(breaking change)**
+- Adding `citrix_voice_vdi` to Flex Configuration
+- Adding `agent_conv_end_methods` to Flex Configuration
+
+**Intelligence**
+- Deleted `redacted` parameter from fetching transcript in v2 **(breaking change)**
+
+**Lookups**
+- Add new `phone_number_quality_score` package to the lookup response
+- Remove `disposable_phone_number_risk` package **(breaking change)**
+- Add test api support for Lookup v2
+
+**Messaging**
+- Update US App To Person documentation with current `message_samples` requirements
+- Mark Mesasging Services fallback_to_long_code feature obsolete
+
+**Numbers**
+- Add Create Port In request api
+- Renaming sid for bulk_hosting_sid and remove account_sid response field in numbers/v2/BulkHostedNumberOrders **(breaking change)**
+
+**Pricing**
+- gate resources behind a beta_feature
+
+**Taskrouter**
+- Remove beta_feature check on task_queue_bulk_real_time_statistics endpoint
+- Add `virtual_start_time` property to tasks
+- Updating `task_queue_data` format from `map` to `array` in the response of bulk get endpoint of TaskQueue Real Time Statistics API **(breaking change)**
+- Add Update Queues, Workers, Workflow Real Time Statistics API to flex-rt-data-api-v2 endpoint
+- Add Update Workspace Real Time Statistics API to flex-rt-data-api-v2 endpoint
+
+
 [2023-10-05] Version 7.0.0-rc.1
 -------------------------------
 **Api**
