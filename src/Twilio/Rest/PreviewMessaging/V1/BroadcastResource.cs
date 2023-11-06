@@ -190,9 +190,9 @@ namespace Twilio.Rest.PreviewMessaging.V1
         [JsonProperty("execution_details")]
         public MessagingV1BroadcastExecutionDetails ExecutionDetails { get; private set; }
 
-        ///<summary> Path to a file detailing errors from Broadcast execution </summary> 
-        [JsonProperty("errors_file")]
-        public Uri ErrorsFile { get; private set; }
+        ///<summary> Path to a file detailing successful requests and errors from Broadcast execution </summary> 
+        [JsonProperty("results_file")]
+        public Uri ResultsFile { get; private set; }
 
         ///<summary> The Twilio error code </summary> 
         [JsonProperty("code")]

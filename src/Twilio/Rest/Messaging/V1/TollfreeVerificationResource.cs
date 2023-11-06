@@ -219,6 +219,74 @@ namespace Twilio.Rest.Messaging.V1
         }
         #endif
         
+        /// <summary> delete </summary>
+        /// <param name="options"> Delete TollfreeVerification parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of TollfreeVerification </returns>
+        private static Request BuildDeleteRequest(DeleteTollfreeVerificationOptions options, ITwilioRestClient client)
+        {
+            
+            string path = "/v1/Tollfree/Verifications/{Sid}";
+
+            string PathSid = options.PathSid;
+            path = path.Replace("{"+"Sid"+"}", PathSid);
+
+            return new Request(
+                HttpMethod.Delete,
+                Rest.Domain.Messaging,
+                path,
+                queryParams: options.GetParams(),
+                headerParams: null
+            );
+        }
+
+        /// <summary> delete </summary>
+        /// <param name="options"> Delete TollfreeVerification parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of TollfreeVerification </returns>
+        public static bool Delete(DeleteTollfreeVerificationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+        }
+
+        #if !NET35
+        /// <summary> delete </summary>
+        /// <param name="options"> Delete TollfreeVerification parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of TollfreeVerification </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteTollfreeVerificationOptions options,
+                                                                          ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+        }
+        #endif
+
+        /// <summary> delete </summary>
+        /// <param name="pathSid"> The unique string to identify Tollfree Verification. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of TollfreeVerification </returns>
+        public static bool Delete(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteTollfreeVerificationOptions(pathSid)     ;
+            return Delete(options, client);
+        }
+
+        #if !NET35
+        /// <summary> delete </summary>
+        /// <param name="pathSid"> The unique string to identify Tollfree Verification. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of TollfreeVerification </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteTollfreeVerificationOptions(pathSid) ;
+            return await DeleteAsync(options, client);
+        }
+        #endif
+        
         private static Request BuildFetchRequest(FetchTollfreeVerificationOptions options, ITwilioRestClient client)
         {
             

@@ -227,6 +227,36 @@ namespace Twilio.Rest.Messaging.V1
         
 
     }
+    /// <summary> delete </summary>
+    public class DeleteTollfreeVerificationOptions : IOptions<TollfreeVerificationResource>
+    {
+        
+        ///<summary> The unique string to identify Tollfree Verification. </summary> 
+        public string PathSid { get; }
+
+
+
+        /// <summary> Construct a new DeleteTollfreeVerificationOptions </summary>
+        /// <param name="pathSid"> The unique string to identify Tollfree Verification. </param>
+        public DeleteTollfreeVerificationOptions(string pathSid)
+        {
+            PathSid = pathSid;
+        }
+
+        
+        /// <summary> Generate the necessary parameters </summary>
+        public List<KeyValuePair<string, string>> GetParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+
+            return p;
+        }
+
+        
+
+    }
+
+
     /// <summary> fetch </summary>
     public class FetchTollfreeVerificationOptions : IOptions<TollfreeVerificationResource>
     {
