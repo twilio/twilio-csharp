@@ -23,7 +23,7 @@ jobs:
      - name: Upload Artifact
        uses: actions/upload-artifact@v3
        with:
-         name: certificate.pfx
+         name: certificate.cer
          path: certificate\certificate.cer
          retention-days: 1
          
