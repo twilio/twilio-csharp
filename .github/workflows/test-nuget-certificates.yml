@@ -32,10 +32,6 @@ jobs:
     steps:
      - uses: actions/checkout@v2
      - run: make install
-     - name: Download code signing certificate
-       uses: actions/download-artifact@v3
-       with:
-        name: certificate.pfx
      - name: gen-certificate
        run: |
         openssl pkcs12 -in certificate.pfx -out certificate.pem
