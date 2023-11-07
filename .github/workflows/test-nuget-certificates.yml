@@ -18,20 +18,24 @@ jobs:
        run: |
         New-Item -ItemType directory -Path certificate
         Set-Content -Path certificate\certificate.txt -Value '${{ secrets.CODE_SIGNING_CERTIFICATE }}'
-        certutil -decode certificate\certificate.txt certificate\certificate.cer
+        certutil -decode certificate\certificate.txt certificate\certificate.pfx
         
-     # - name: Upload Artifact
-     #   uses: actions/upload-artifact@v3
-     #   with:
-     #     name: certificate.cer
-     #     path: certificate\certificate.cer
-     #     retention-days: 1
+     - name: Upload Artifact
+       uses: actions/upload-artifact@v3
+       with:
+         name: certificate.pfx
+         path: certificate\certificate.pfx
+         retention-days: 1
   generate-certificate:
     runs-on: ubuntu-latest
     needs: [ import-certificate ]
     steps:
      - uses: actions/checkout@v2
      - run: make install
+     - name: Download code signing certificate
+       uses: actions/download-artifact@v3
+       with:
+          name: certificate.pfx
      - name: gen-certificate
        run: |
         openssl pkcs12 -in certificate.pfx -out certificate.pem
