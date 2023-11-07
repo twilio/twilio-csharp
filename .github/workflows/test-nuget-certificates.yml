@@ -28,6 +28,7 @@ jobs:
      #     retention-days: 1
   generate-certificate:
     runs-on: ubuntu-latest
+    needs: [ import-certificate ]
     steps:
      - uses: actions/checkout@v2
      - run: make install
