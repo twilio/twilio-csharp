@@ -18,8 +18,8 @@ jobs:
         New-Item -ItemType directory -Path certificate
         Set-Content -Path certificate\certificate.txt -Value '${{ secrets.CODE_SIGNING_CERTIFICATE }}'
         certutil -decode certificate\certificate.txt certificate\certificate.pfx
-        openssl pkcs12 -in certificate\certificate.pfx -out mycerts.crt -nokeys -clcerts
-        openssl x509 -inform pem -in mycerts.crt -outform der -out mycerts.cer
+        # openssl pkcs12 -in certificate\certificate.pfx -out mycerts.crt -nokeys -clcerts
+        # openssl x509 -inform pem -in mycerts.crt -outform der -out mycerts.cer
         
      - name: Upload Artifact
        uses: actions/upload-artifact@v3
