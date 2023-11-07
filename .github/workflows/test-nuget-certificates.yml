@@ -19,7 +19,6 @@ jobs:
         New-Item -ItemType directory -Path certificate
         Set-Content -Path certificate\certificate.txt -Value '${{ secrets.CODE_SIGNING_CERTIFICATE }}'
         certutil -decode certificate\certificate.txt certificate\certificate.pfx
-        Get-PfxCertificate -FilePath certificate\certificate.pfx | Export-Certificate -FilePath OutputCert.der -Type CERT
         
      - name: Upload Artifact
        uses: actions/upload-artifact@v3
