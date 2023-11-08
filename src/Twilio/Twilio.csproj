@@ -22,7 +22,6 @@
     <PackageLicenseUrl>https://github.com/twilio/twilio-csharp/blob/HEAD/LICENSE</PackageLicenseUrl>
     <RepositoryUrl>http://github.com/twilio/twilio-csharp</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.IdentityModel.JsonWebTokens" Version="6.15.0" />
