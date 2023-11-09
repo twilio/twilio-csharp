@@ -1,25 +1,7 @@
 twilio-csharp Changelog
 =======================
 
-[2023-11-06] Version 7.0.0-rc.3
--------------------------------
-**Flex**
-- Adding `provisioning_status` for Email Manager
-
-**Intelligence**
-- Add text-generation operator (for example conversation summary) results to existing OperatorResults collection.
-
-**Messaging**
-- Add DELETE support to Tollfree Verification resource
-
-**Serverless**
-- Add node18 as a valid Build runtime
-
-**Verify**
-- Update Verify TOTP maturity to GA.
-
-
-[2023-10-19] Version 7.0.0-rc.2
+[2023-11-06] Version 7.0.0-rc.2
 -------------------------------
 **Library - Chore**
 - [PR #706](https://github.com/twilio/twilio-csharp/pull/706): Pull from main branch. Thanks to [@sbansla](https://github.com/sbansla)!
@@ -46,6 +28,7 @@ twilio-csharp Changelog
 - Enable conversation email bindings, email address configurations and email message subjects
 
 **Flex**
+- Adding `provisioning_status` for Email Manager
 - Adding `offline_config` to Flex Configuration
 - Adding `console_errors_included` to Flex Configuration field `debugger_integrations`
 - Introducing new channel status as `inactive` in modify channel endpoint for leave functionality **(breaking change)**
@@ -53,6 +36,7 @@ twilio-csharp Changelog
 - Adding `agent_conv_end_methods` to Flex Configuration
 
 **Intelligence**
+- Add text-generation operator (for example conversation summary) results to existing OperatorResults collection.
 - Deleted `redacted` parameter from fetching transcript in v2 **(breaking change)**
 
 **Lookups**
@@ -61,6 +45,7 @@ twilio-csharp Changelog
 - Add test api support for Lookup v2
 
 **Messaging**
+- Add DELETE support to Tollfree Verification resource
 - Update US App To Person documentation with current `message_samples` requirements
 - Mark Mesasging Services fallback_to_long_code feature obsolete
 
@@ -71,13 +56,18 @@ twilio-csharp Changelog
 **Pricing**
 - gate resources behind a beta_feature
 
-**Taskrouter**
+**Serverless**
+- Add node18 as a valid Build runtime
+
+- **Taskrouter**
 - Remove beta_feature check on task_queue_bulk_real_time_statistics endpoint
 - Add `virtual_start_time` property to tasks
 - Updating `task_queue_data` format from `map` to `array` in the response of bulk get endpoint of TaskQueue Real Time Statistics API **(breaking change)**
 - Add Update Queues, Workers, Workflow Real Time Statistics API to flex-rt-data-api-v2 endpoint
 - Add Update Workspace Real Time Statistics API to flex-rt-data-api-v2 endpoint
 
+**Verify**
+- Update Verify TOTP maturity to GA.
 
 [2023-10-05] Version 7.0.0-rc.1
 -------------------------------
