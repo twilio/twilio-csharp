@@ -296,7 +296,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> The url </summary> 
+        ///<summary> The absolute URL of the ChannelSender resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
