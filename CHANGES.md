@@ -1,6 +1,12 @@
 twilio-csharp Changelog
 =======================
 
+[2023-12-05] Version 6.15.2
+---------------------------
+**Verify**
+- Add `VerifyEventSubscriptionEnabled` parameter to service create and update endpoints.
+
+
 [2023-11-17] Version 6.15.1
 ---------------------------
 **Api**

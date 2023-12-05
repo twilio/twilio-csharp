@@ -91,7 +91,7 @@ namespace Twilio.Rest.Intelligence.V2
         /// <summary> Create a new Service for the given Account </summary>
         /// <param name="uniqueName"> Provides a unique and addressable name to be assigned to this Service, assigned by the developer, to be optionally used in addition to SID. </param>
         /// <param name="autoTranscribe"> Instructs the Speech Recognition service to automatically transcribe all recordings made on the account. </param>
-        /// <param name="dataLogging"> Data logging allows Twilio to improve the quality of the speech recognition through using customer data to refine its speech recognition models. </param>
+        /// <param name="dataLogging"> Data logging allows Twilio to improve the quality of the speech recognition & language understanding services through using customer data to refine, fine tune and evaluate machine learning models. Note: Data logging cannot be activated via API, only via www.twilio.com, as it requires additional consent. </param>
         /// <param name="friendlyName"> A human readable description of this resource, up to 64 characters. </param>
         /// <param name="languageCode"> The default language code of the audio. </param>
         /// <param name="autoRedaction"> Instructs the Speech Recognition service to automatically redact PII from all transcripts made on this service. </param>
@@ -120,7 +120,7 @@ namespace Twilio.Rest.Intelligence.V2
         /// <summary> Create a new Service for the given Account </summary>
         /// <param name="uniqueName"> Provides a unique and addressable name to be assigned to this Service, assigned by the developer, to be optionally used in addition to SID. </param>
         /// <param name="autoTranscribe"> Instructs the Speech Recognition service to automatically transcribe all recordings made on the account. </param>
-        /// <param name="dataLogging"> Data logging allows Twilio to improve the quality of the speech recognition through using customer data to refine its speech recognition models. </param>
+        /// <param name="dataLogging"> Data logging allows Twilio to improve the quality of the speech recognition & language understanding services through using customer data to refine, fine tune and evaluate machine learning models. Note: Data logging cannot be activated via API, only via www.twilio.com, as it requires additional consent. </param>
         /// <param name="friendlyName"> A human readable description of this resource, up to 64 characters. </param>
         /// <param name="languageCode"> The default language code of the audio. </param>
         /// <param name="autoRedaction"> Instructs the Speech Recognition service to automatically redact PII from all transcripts made on this service. </param>
@@ -444,7 +444,7 @@ namespace Twilio.Rest.Intelligence.V2
         /// <summary> Update a specific Service. </summary>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this Service. </param>
         /// <param name="autoTranscribe"> Instructs the Speech Recognition service to automatically transcribe all recordings made on the account. </param>
-        /// <param name="dataLogging"> Data logging allows Twilio to improve the quality of the speech recognition through using customer data to refine its speech recognition models. </param>
+        /// <param name="dataLogging"> Data logging allows Twilio to improve the quality of the speech recognition & language understanding services through using customer data to refine, fine tune and evaluate machine learning models. Note: Data logging cannot be activated via API, only via www.twilio.com, as it requires additional consent. </param>
         /// <param name="friendlyName"> A human readable description of this resource, up to 64 characters. </param>
         /// <param name="languageCode"> The default language code of the audio. </param>
         /// <param name="uniqueName"> Provides a unique and addressable name to be assigned to this Service, assigned by the developer, to be optionally used in addition to SID. </param>
@@ -477,7 +477,7 @@ namespace Twilio.Rest.Intelligence.V2
         /// <summary> Update a specific Service. </summary>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this Service. </param>
         /// <param name="autoTranscribe"> Instructs the Speech Recognition service to automatically transcribe all recordings made on the account. </param>
-        /// <param name="dataLogging"> Data logging allows Twilio to improve the quality of the speech recognition through using customer data to refine its speech recognition models. </param>
+        /// <param name="dataLogging"> Data logging allows Twilio to improve the quality of the speech recognition & language understanding services through using customer data to refine, fine tune and evaluate machine learning models. Note: Data logging cannot be activated via API, only via www.twilio.com, as it requires additional consent. </param>
         /// <param name="friendlyName"> A human readable description of this resource, up to 64 characters. </param>
         /// <param name="languageCode"> The default language code of the audio. </param>
         /// <param name="uniqueName"> Provides a unique and addressable name to be assigned to this Service, assigned by the developer, to be optionally used in addition to SID. </param>
@@ -557,7 +557,7 @@ namespace Twilio.Rest.Intelligence.V2
         [JsonProperty("auto_transcribe")]
         public bool? AutoTranscribe { get; private set; }
 
-        ///<summary> Data logging allows Twilio to improve the quality of the speech recognition through using customer data to refine its speech recognition models. </summary> 
+        ///<summary> Data logging allows Twilio to improve the quality of the speech recognition & language understanding services through using customer data to refine, fine tune and evaluate machine learning models. Note: Data logging cannot be activated via API, only via www.twilio.com, as it requires additional consent. </summary> 
         [JsonProperty("data_logging")]
         public bool? DataLogging { get; private set; }
 

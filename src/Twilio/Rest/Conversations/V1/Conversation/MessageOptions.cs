@@ -52,7 +52,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         ///<summary> The Media SID to be attached to the new Message. </summary> 
         public string MediaSid { get; set; }
 
-        ///<summary> The unique ID of the multi-channel [Rich Content](https://www.twilio.com/docs/content-api) template, required for template-generated messages.  **Note** that if this field is set, `Body` and `MediaSid` parameters are ignored. </summary> 
+        ///<summary> The unique ID of the multi-channel [Rich Content](https://www.twilio.com/docs/content) template, required for template-generated messages.  **Note** that if this field is set, `Body` and `MediaSid` parameters are ignored. </summary> 
         public string ContentSid { get; set; }
 
         ///<summary> A structurally valid JSON string that contains values to resolve Rich Content template variables. </summary> 

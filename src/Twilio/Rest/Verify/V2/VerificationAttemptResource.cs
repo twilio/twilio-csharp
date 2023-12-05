@@ -345,7 +345,7 @@ namespace Twilio.Rest.Verify.V2
         [JsonProperty("channel")]
         public VerificationAttemptResource.ChannelsEnum Channel { get; private set; }
 
-        ///<summary> An object containing the charge for this verification attempt related to the channel costs and the currency used. The costs related to the succeeded verifications are not included. May not be immediately available. More information on pricing is available [here](https://www.twilio.com/verify/pricing). </summary> 
+        ///<summary> An object containing the charge for this verification attempt related to the channel costs and the currency used. The costs related to the succeeded verifications are not included. May not be immediately available. More information on pricing is available [here](https://www.twilio.com/en-us/verify/pricing). </summary> 
         [JsonProperty("price")]
         public object Price { get; private set; }
 

@@ -31,13 +31,13 @@ namespace Twilio.Rest.Proxy.V1.Service
         ///<summary> The SID of the parent [Service](https://www.twilio.com/docs/proxy/api/service) resource. </summary> 
         public string PathServiceSid { get; }
 
-        ///<summary> The SID of a Twilio [ShortCode](https://www.twilio.com/docs/sms/api/short-code) resource that represents the short code you would like to assign to your Proxy Service. </summary> 
+        ///<summary> The SID of a Twilio [ShortCode](https://www.twilio.com/en-us/messaging/channels/sms/short-codes) resource that represents the short code you would like to assign to your Proxy Service. </summary> 
         public string Sid { get; }
 
 
         /// <summary> Construct a new CreateShortCodeOptions </summary>
         /// <param name="pathServiceSid"> The SID of the parent [Service](https://www.twilio.com/docs/proxy/api/service) resource. </param>
-        /// <param name="sid"> The SID of a Twilio [ShortCode](https://www.twilio.com/docs/sms/api/short-code) resource that represents the short code you would like to assign to your Proxy Service. </param>
+        /// <param name="sid"> The SID of a Twilio [ShortCode](https://www.twilio.com/en-us/messaging/channels/sms/short-codes) resource that represents the short code you would like to assign to your Proxy Service. </param>
         public CreateShortCodeOptions(string pathServiceSid, string sid)
         {
             PathServiceSid = pathServiceSid;
