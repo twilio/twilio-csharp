@@ -43,9 +43,9 @@ jobs:
           TWILIO_FROM_NUMBER: ${{ secrets.TWILIO_FROM_NUMBER }}
           TWILIO_TO_NUMBER: ${{ secrets.TWILIO_TO_NUMBER }}
         run: |
-          dotnet tool install --global dotnet-sonarscanner
+          dotnet tool install --global dotnet-sonarscanner --version 5.5.3
           make cover
-          
+
   import-certificate:
     runs-on: windows-latest
     steps:
@@ -56,14 +56,15 @@ jobs:
         New-Item -ItemType directory -Path certificate
         Set-Content -Path certificate\certificate.txt -Value '${{ secrets.CODE_SIGNING_CERTIFICATE }}'
         certutil -decode certificate\certificate.txt certificate\certificate.pfx
-        
+
      - name: Upload Artifact
        uses: actions/upload-artifact@v3
        with:
          name: certificate.pfx
          path: certificate\certificate.pfx
          retention-days: 1
-         
+
+
   deploy:
     name: Deploy
     if: success() && github.ref_type == 'tag'
@@ -74,7 +75,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
-          
+
       - name: Download code signing certificate
         uses: actions/download-artifact@v3
         with:
