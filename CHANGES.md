@@ -1,6 +1,15 @@
 twilio-csharp Changelog
 =======================
 
+[2024-01-14] Version 6.16.1
+---------------------------
+**Library - Fix**
+- [PR #712](https://github.com/twilio/twilio-csharp/pull/712): pin sonarscanner version. Thanks to [@shrutiburman](https://github.com/shrutiburman)!
+
+**Push**
+- Migrated to new Push API V4 with Resilient Notification Delivery.
+
+
 [2023-12-14] Version 6.16.0
 ---------------------------
 **Api**
