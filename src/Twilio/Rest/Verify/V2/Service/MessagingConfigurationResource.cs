@@ -18,6 +18,7 @@ using System;
 using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Clients;
+using Twilio.Constant;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -28,6 +29,8 @@ namespace Twilio.Rest.Verify.V2.Service
 {
     public class MessagingConfigurationResource : Resource
     {
+    
+
     
 
         
@@ -76,7 +79,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <summary> Create a new MessagingConfiguration for a service. </summary>
         /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/verify/api/service) that the resource is associated with. </param>
         /// <param name="country"> The [ISO-3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the country this configuration will be applied to. If this is a global configuration, Country will take the value `all`. </param>
-        /// <param name="messagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/sms/services/api) to be used to send SMS to the country of this configuration. </param>
+        /// <param name="messagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) to be used to send SMS to the country of this configuration. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of MessagingConfiguration </returns>
         public static MessagingConfigurationResource Create(
@@ -93,7 +96,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <summary> Create a new MessagingConfiguration for a service. </summary>
         /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/verify/api/service) that the resource is associated with. </param>
         /// <param name="country"> The [ISO-3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the country this configuration will be applied to. If this is a global configuration, Country will take the value `all`. </param>
-        /// <param name="messagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/sms/services/api) to be used to send SMS to the country of this configuration. </param>
+        /// <param name="messagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) to be used to send SMS to the country of this configuration. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of MessagingConfiguration </returns>
         public static async System.Threading.Tasks.Task<MessagingConfigurationResource> CreateAsync(
@@ -422,7 +425,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <summary> Update a specific MessagingConfiguration </summary>
         /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/verify/api/service) that the resource is associated with. </param>
         /// <param name="pathCountry"> The [ISO-3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the country this configuration will be applied to. If this is a global configuration, Country will take the value `all`. </param>
-        /// <param name="messagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/sms/services/api) to be used to send SMS to the country of this configuration. </param>
+        /// <param name="messagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) to be used to send SMS to the country of this configuration. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of MessagingConfiguration </returns>
         public static MessagingConfigurationResource Update(
@@ -439,7 +442,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <summary> Update a specific MessagingConfiguration </summary>
         /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/verify/api/service) that the resource is associated with. </param>
         /// <param name="pathCountry"> The [ISO-3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the country this configuration will be applied to. If this is a global configuration, Country will take the value `all`. </param>
-        /// <param name="messagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/sms/services/api) to be used to send SMS to the country of this configuration. </param>
+        /// <param name="messagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) to be used to send SMS to the country of this configuration. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of MessagingConfiguration </returns>
         public static async System.Threading.Tasks.Task<MessagingConfigurationResource> UpdateAsync(
@@ -469,6 +472,22 @@ namespace Twilio.Rest.Verify.V2.Service
                 throw new ApiException(e.Message, e);
             }
         }
+        /// <summary>
+    /// Converts an object into a json string
+    /// </summary>
+    /// <param name="model"> C# model </param>
+    /// <returns> JSON string </returns>
+    public static string ToJson(object model)
+    {
+        try
+        {
+            return JsonConvert.SerializeObject(model);
+        }
+        catch (JsonException e)
+        {
+            throw new ApiException(e.Message, e);
+        }
+    }
 
     
         ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Service resource. </summary> 
@@ -483,7 +502,7 @@ namespace Twilio.Rest.Verify.V2.Service
         [JsonProperty("country")]
         public string Country { get; private set; }
 
-        ///<summary> The SID of the [Messaging Service](https://www.twilio.com/docs/sms/services/api) to be used to send SMS to the country of this configuration. </summary> 
+        ///<summary> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) to be used to send SMS to the country of this configuration. </summary> 
         [JsonProperty("messaging_service_sid")]
         public string MessagingServiceSid { get; private set; }
 

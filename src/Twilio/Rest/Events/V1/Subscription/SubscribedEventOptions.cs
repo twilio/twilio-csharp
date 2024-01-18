@@ -24,7 +24,7 @@ using Twilio.Converters;
 namespace Twilio.Rest.Events.V1.Subscription
 {
 
-    /// <summary> Create a new Subscribed Event type for the subscription </summary>
+    /// <summary> Add an event type to a Subscription. </summary>
     public class CreateSubscribedEventOptions : IOptions<SubscribedEventResource>
     {
         
@@ -34,7 +34,7 @@ namespace Twilio.Rest.Events.V1.Subscription
         ///<summary> Type of event being subscribed to. </summary> 
         public string Type { get; }
 
-        ///<summary> The schema version that the subscription should use. </summary> 
+        ///<summary> The schema version that the Subscription should use. </summary> 
         public int? SchemaVersion { get; set; }
 
 
@@ -49,7 +49,7 @@ namespace Twilio.Rest.Events.V1.Subscription
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -63,10 +63,11 @@ namespace Twilio.Rest.Events.V1.Subscription
             }
             return p;
         }
+
         
 
     }
-    /// <summary> Remove an event type from a subscription. </summary>
+    /// <summary> Remove an event type from a Subscription. </summary>
     public class DeleteSubscribedEventOptions : IOptions<SubscribedEventResource>
     {
         
@@ -89,12 +90,13 @@ namespace Twilio.Rest.Events.V1.Subscription
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
             return p;
         }
+
         
 
     }
@@ -123,12 +125,13 @@ namespace Twilio.Rest.Events.V1.Subscription
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
             return p;
         }
+
         
 
     }
@@ -152,7 +155,7 @@ namespace Twilio.Rest.Events.V1.Subscription
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  override List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -162,6 +165,7 @@ namespace Twilio.Rest.Events.V1.Subscription
             }
             return p;
         }
+
         
 
     }
@@ -176,7 +180,7 @@ namespace Twilio.Rest.Events.V1.Subscription
         ///<summary> Type of event being subscribed to. </summary> 
         public string PathType { get; }
 
-        ///<summary> The schema version that the subscription should use. </summary> 
+        ///<summary> The schema version that the Subscription should use. </summary> 
         public int? SchemaVersion { get; set; }
 
 
@@ -192,7 +196,7 @@ namespace Twilio.Rest.Events.V1.Subscription
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -202,6 +206,7 @@ namespace Twilio.Rest.Events.V1.Subscription
             }
             return p;
         }
+
         
 
     }

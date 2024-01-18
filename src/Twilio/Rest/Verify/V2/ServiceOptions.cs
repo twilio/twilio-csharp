@@ -79,6 +79,9 @@ namespace Twilio.Rest.Verify.V2
         ///<summary> The default message [template](https://www.twilio.com/docs/verify/api/templates). Will be used for all SMS verifications unless explicitly overriden. SMS channel only. </summary> 
         public string DefaultTemplateSid { get; set; }
 
+        ///<summary> Whether to allow verifications from the service to reach the stream-events sinks if configured </summary> 
+        public bool? VerifyEventSubscriptionEnabled { get; set; }
+
 
         /// <summary> Construct a new CreateServiceOptions </summary>
         /// <param name="friendlyName"> A descriptive string that you create to describe the verification service. It can be up to 32 characters long. **This value should not contain PII.** </param>
@@ -89,7 +92,7 @@ namespace Twilio.Rest.Verify.V2
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -161,8 +164,13 @@ namespace Twilio.Rest.Verify.V2
             {
                 p.Add(new KeyValuePair<string, string>("DefaultTemplateSid", DefaultTemplateSid));
             }
+            if (VerifyEventSubscriptionEnabled != null)
+            {
+                p.Add(new KeyValuePair<string, string>("VerifyEventSubscriptionEnabled", VerifyEventSubscriptionEnabled.Value.ToString().ToLower()));
+            }
             return p;
         }
+
         
 
     }
@@ -184,12 +192,13 @@ namespace Twilio.Rest.Verify.V2
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
             return p;
         }
+
         
 
     }
@@ -213,12 +222,13 @@ namespace Twilio.Rest.Verify.V2
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
             return p;
         }
+
         
 
     }
@@ -233,7 +243,7 @@ namespace Twilio.Rest.Verify.V2
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  override List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -243,6 +253,7 @@ namespace Twilio.Rest.Verify.V2
             }
             return p;
         }
+
         
 
     }
@@ -305,6 +316,9 @@ namespace Twilio.Rest.Verify.V2
         ///<summary> The default message [template](https://www.twilio.com/docs/verify/api/templates). Will be used for all SMS verifications unless explicitly overriden. SMS channel only. </summary> 
         public string DefaultTemplateSid { get; set; }
 
+        ///<summary> Whether to allow verifications from the service to reach the stream-events sinks if configured </summary> 
+        public bool? VerifyEventSubscriptionEnabled { get; set; }
+
 
 
         /// <summary> Construct a new UpdateServiceOptions </summary>
@@ -316,7 +330,7 @@ namespace Twilio.Rest.Verify.V2
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -388,8 +402,13 @@ namespace Twilio.Rest.Verify.V2
             {
                 p.Add(new KeyValuePair<string, string>("DefaultTemplateSid", DefaultTemplateSid));
             }
+            if (VerifyEventSubscriptionEnabled != null)
+            {
+                p.Add(new KeyValuePair<string, string>("VerifyEventSubscriptionEnabled", VerifyEventSubscriptionEnabled.Value.ToString().ToLower()));
+            }
             return p;
         }
+
         
 
     }

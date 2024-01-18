@@ -18,6 +18,7 @@ using System;
 using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Clients;
+using Twilio.Constant;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -28,6 +29,8 @@ namespace Twilio.Rest.Messaging.V1
 {
     public class ExternalCampaignResource : Resource
     {
+    
+
     
 
         
@@ -73,7 +76,7 @@ namespace Twilio.Rest.Messaging.V1
 
         /// <summary> create </summary>
         /// <param name="campaignId"> ID of the preregistered campaign. </param>
-        /// <param name="messagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) that the resource is associated with. </param>
+        /// <param name="messagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) that the resource is associated with. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of ExternalCampaign </returns>
         public static ExternalCampaignResource Create(
@@ -88,7 +91,7 @@ namespace Twilio.Rest.Messaging.V1
         #if !NET35
         /// <summary> create </summary>
         /// <param name="campaignId"> ID of the preregistered campaign. </param>
-        /// <param name="messagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) that the resource is associated with. </param>
+        /// <param name="messagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) that the resource is associated with. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ExternalCampaign </returns>
         public static async System.Threading.Tasks.Task<ExternalCampaignResource> CreateAsync(
@@ -117,6 +120,22 @@ namespace Twilio.Rest.Messaging.V1
                 throw new ApiException(e.Message, e);
             }
         }
+        /// <summary>
+    /// Converts an object into a json string
+    /// </summary>
+    /// <param name="model"> C# model </param>
+    /// <returns> JSON string </returns>
+    public static string ToJson(object model)
+    {
+        try
+        {
+            return JsonConvert.SerializeObject(model);
+        }
+        catch (JsonException e)
+        {
+            throw new ApiException(e.Message, e);
+        }
+    }
 
     
         ///<summary> The unique string that identifies a US A2P Compliance resource `QE2c6890da8086d771620e9b13fadeba0b`. </summary> 
@@ -131,7 +150,7 @@ namespace Twilio.Rest.Messaging.V1
         [JsonProperty("campaign_id")]
         public string CampaignId { get; private set; }
 
-        ///<summary> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) that the resource is associated with. </summary> 
+        ///<summary> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) that the resource is associated with. </summary> 
         [JsonProperty("messaging_service_sid")]
         public string MessagingServiceSid { get; private set; }
 

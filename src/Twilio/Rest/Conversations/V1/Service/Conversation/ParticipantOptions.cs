@@ -37,25 +37,25 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         ///<summary> The X-Twilio-Webhook-Enabled HTTP request header </summary> 
         public ParticipantResource.WebhookEnabledTypeEnum XTwilioWebhookEnabled { get; set; }
 
-        ///<summary> A unique string identifier for the conversation participant as [Conversation User](https://www.twilio.com/docs/conversations/api/user-resource). This parameter is non-null if (and only if) the participant is using the Conversation SDK to communicate. Limited to 256 characters. </summary> 
+        ///<summary> A unique string identifier for the conversation participant as [Conversation User](https://www.twilio.com/docs/conversations/api/user-resource). This parameter is non-null if (and only if) the participant is using the [Conversation SDK](https://www.twilio.com/docs/conversations/sdk-overview) to communicate. Limited to 256 characters. </summary> 
         public string Identity { get; set; }
 
-        ///<summary> The address of the participant's device, e.g. a phone or WhatsApp number. Together with the Proxy address, this determines a participant uniquely. This field (with proxy_address) is only null when the participant is interacting from an SDK endpoint (see the 'identity' field). </summary> 
+        ///<summary> The address of the participant's device, e.g. a phone or WhatsApp number. Together with the Proxy address, this determines a participant uniquely. This field (with `proxy_address`) is only null when the participant is interacting from an SDK endpoint (see the `identity` field). </summary> 
         public string MessagingBindingAddress { get; set; }
 
-        ///<summary> The address of the Twilio phone number (or WhatsApp number) that the participant is in contact with. This field, together with participant address, is only null when the participant is interacting from an SDK endpoint (see the 'identity' field). </summary> 
+        ///<summary> The address of the Twilio phone number (or WhatsApp number) that the participant is in contact with. This field, together with participant address, is only null when the participant is interacting from an SDK endpoint (see the `identity` field). </summary> 
         public string MessagingBindingProxyAddress { get; set; }
 
-        ///<summary> The date that this resource was created. </summary> 
+        ///<summary> The date on which this resource was created. </summary> 
         public DateTime? DateCreated { get; set; }
 
-        ///<summary> The date that this resource was last updated. </summary> 
+        ///<summary> The date on which this resource was last updated. </summary> 
         public DateTime? DateUpdated { get; set; }
 
-        ///<summary> An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \\\"{}\\\" will be returned. </summary> 
+        ///<summary> An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set `{}` will be returned. </summary> 
         public string Attributes { get; set; }
 
-        ///<summary> The address of the Twilio phone number that is used in Group MMS. Communication mask for the Conversation participant with Identity. </summary> 
+        ///<summary> The address of the Twilio phone number that is used in Group MMS. </summary> 
         public string MessagingBindingProjectedAddress { get; set; }
 
         ///<summary> The SID of a conversation-level [Role](https://www.twilio.com/docs/conversations/api/role-resource) to assign to the participant. </summary> 
@@ -73,7 +73,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -111,6 +111,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
             }
             return p;
         }
+
         
     /// <summary> Generate the necessary header parameters </summary>
     public List<KeyValuePair<string, string>> GetHeaderParams()
@@ -155,12 +156,13 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
             return p;
         }
+
         
     /// <summary> Generate the necessary header parameters </summary>
     public List<KeyValuePair<string, string>> GetHeaderParams()
@@ -186,7 +188,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         ///<summary> The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this participant. </summary> 
         public string PathConversationSid { get; }
 
-        ///<summary> A 34 character string that uniquely identifies this resource. </summary> 
+        ///<summary> A 34 character string that uniquely identifies this resource. Alternatively, you can pass a Participant's `identity` rather than the SID. </summary> 
         public string PathSid { get; }
 
 
@@ -194,7 +196,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         /// <summary> Construct a new FetchServiceConversationParticipantOptions </summary>
         /// <param name="pathChatServiceSid"> The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Participant resource is associated with. </param>
         /// <param name="pathConversationSid"> The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this participant. </param>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. Alternatively, you can pass a Participant's `identity` rather than the SID. </param>
         public FetchParticipantOptions(string pathChatServiceSid, string pathConversationSid, string pathSid)
         {
             PathChatServiceSid = pathChatServiceSid;
@@ -204,12 +206,13 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
             return p;
         }
+
         
 
     }
@@ -238,7 +241,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  override List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -248,6 +251,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
             }
             return p;
         }
+
         
 
     }
@@ -268,16 +272,16 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         ///<summary> The X-Twilio-Webhook-Enabled HTTP request header </summary> 
         public ParticipantResource.WebhookEnabledTypeEnum XTwilioWebhookEnabled { get; set; }
 
-        ///<summary> The date that this resource was created. </summary> 
+        ///<summary> The date on which this resource was created. </summary> 
         public DateTime? DateCreated { get; set; }
 
-        ///<summary> The date that this resource was last updated. </summary> 
+        ///<summary> The date on which this resource was last updated. </summary> 
         public DateTime? DateUpdated { get; set; }
 
-        ///<summary> A unique string identifier for the conversation participant as [Conversation User](https://www.twilio.com/docs/conversations/api/user-resource). This parameter is non-null if (and only if) the participant is using the Conversation SDK to communicate. Limited to 256 characters. </summary> 
+        ///<summary> A unique string identifier for the conversation participant as [Conversation User](https://www.twilio.com/docs/conversations/api/user-resource). This parameter is non-null if (and only if) the participant is using the [Conversation SDK](https://www.twilio.com/docs/conversations/sdk-overview) to communicate. Limited to 256 characters. </summary> 
         public string Identity { get; set; }
 
-        ///<summary> An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \\\"{}\\\" will be returned. </summary> 
+        ///<summary> An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set `{}` will be returned. </summary> 
         public string Attributes { get; set; }
 
         ///<summary> The SID of a conversation-level [Role](https://www.twilio.com/docs/conversations/api/role-resource) to assign to the participant. </summary> 
@@ -310,7 +314,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -352,6 +356,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
             }
             return p;
         }
+
         
     /// <summary> Generate the necessary header parameters </summary>
     public List<KeyValuePair<string, string>> GetHeaderParams()

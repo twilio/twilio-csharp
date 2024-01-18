@@ -23,23 +23,23 @@ using Twilio.Converters;
 
 namespace Twilio.Rest.Insights.V1.Call
 {
-    /// <summary> read </summary>
+    /// <summary> Get a list of Call Metrics for a Call. </summary>
     public class ReadMetricOptions : ReadOptions<MetricResource>
     {
     
-        
+        ///<summary> The unique SID identifier of the Call. </summary> 
         public string PathCallSid { get; }
 
-        
+        ///<summary> The Edge of this Metric. One of `unknown_edge`, `carrier_edge`, `sip_edge`, `sdk_edge` or `client_edge`. </summary> 
         public MetricResource.TwilioEdgeEnum Edge { get; set; }
 
-        
+        ///<summary> The Direction of this Metric. One of `unknown`, `inbound`, `outbound` or `both`. </summary> 
         public MetricResource.StreamDirectionEnum Direction { get; set; }
 
 
 
         /// <summary> Construct a new ListMetricOptions </summary>
-        /// <param name="pathCallSid">  </param>
+        /// <param name="pathCallSid"> The unique SID identifier of the Call. </param>
         public ReadMetricOptions(string pathCallSid)
         {
             PathCallSid = pathCallSid;
@@ -47,7 +47,7 @@ namespace Twilio.Rest.Insights.V1.Call
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  override List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -65,6 +65,7 @@ namespace Twilio.Rest.Insights.V1.Call
             }
             return p;
         }
+
         
 
     }

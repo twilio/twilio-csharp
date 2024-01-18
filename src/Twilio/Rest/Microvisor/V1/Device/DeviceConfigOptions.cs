@@ -51,7 +51,7 @@ namespace Twilio.Rest.Microvisor.V1.Device
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -65,6 +65,7 @@ namespace Twilio.Rest.Microvisor.V1.Device
             }
             return p;
         }
+
         
 
     }
@@ -91,12 +92,13 @@ namespace Twilio.Rest.Microvisor.V1.Device
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
             return p;
         }
+
         
 
     }
@@ -125,12 +127,13 @@ namespace Twilio.Rest.Microvisor.V1.Device
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
             return p;
         }
+
         
 
     }
@@ -154,7 +157,7 @@ namespace Twilio.Rest.Microvisor.V1.Device
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  override List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -164,6 +167,7 @@ namespace Twilio.Rest.Microvisor.V1.Device
             }
             return p;
         }
+
         
 
     }
@@ -196,7 +200,7 @@ namespace Twilio.Rest.Microvisor.V1.Device
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -206,6 +210,7 @@ namespace Twilio.Rest.Microvisor.V1.Device
             }
             return p;
         }
+
         
 
     }

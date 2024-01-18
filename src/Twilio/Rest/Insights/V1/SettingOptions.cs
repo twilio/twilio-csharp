@@ -23,11 +23,11 @@ using Twilio.Converters;
 
 namespace Twilio.Rest.Insights.V1
 {
-    /// <summary> fetch </summary>
+    /// <summary> Get the Voice Insights Settings. </summary>
     public class FetchSettingOptions : IOptions<SettingResource>
     {
     
-        
+        ///<summary> The unique SID identifier of the Subaccount. </summary> 
         public string SubaccountSid { get; set; }
 
 
@@ -35,7 +35,7 @@ namespace Twilio.Rest.Insights.V1
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -45,22 +45,23 @@ namespace Twilio.Rest.Insights.V1
             }
             return p;
         }
+
         
 
     }
 
 
-    /// <summary> update </summary>
+    /// <summary> Update a specific Voice Insights Setting. </summary>
     public class UpdateSettingOptions : IOptions<SettingResource>
     {
     
-        
+        ///<summary> A boolean flag to enable Advanced Features for Voice Insights. </summary> 
         public bool? AdvancedFeatures { get; set; }
 
-        
+        ///<summary> A boolean flag to enable Voice Trace. </summary> 
         public bool? VoiceTrace { get; set; }
 
-        
+        ///<summary> The unique SID identifier of the Subaccount. </summary> 
         public string SubaccountSid { get; set; }
 
 
@@ -68,7 +69,7 @@ namespace Twilio.Rest.Insights.V1
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -86,6 +87,7 @@ namespace Twilio.Rest.Insights.V1
             }
             return p;
         }
+
         
 
     }

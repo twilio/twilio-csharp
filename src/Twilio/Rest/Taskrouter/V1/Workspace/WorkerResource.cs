@@ -18,6 +18,7 @@ using System;
 using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Clients;
+using Twilio.Constant;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -28,6 +29,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 {
     public class WorkerResource : Resource
     {
+    
+
     
 
         
@@ -304,7 +307,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="activitySid"> The `activity_sid` of the Worker resources to read. </param>
         /// <param name="available"> Whether to return only Worker resources that are available or unavailable. Can be `true`, `1`, or `yes` to return Worker resources that are available, and `false`, or any value returns the Worker resources that are not available. </param>
         /// <param name="friendlyName"> The `friendly_name` of the Worker resources to read. </param>
-        /// <param name="targetWorkersExpression"> Filter by Workers that would match an expression on a TaskQueue. This is helpful for debugging which Workers would match a potential queue. </param>
+        /// <param name="targetWorkersExpression"> Filter by Workers that would match an expression. In addition to fields in the workers' attributes, the expression can include the following worker fields: `sid`, `friendly_name`, `activity_sid`, or `activity_name` </param>
         /// <param name="taskQueueName"> The `friendly_name` of the TaskQueue that the Workers to read are eligible for. </param>
         /// <param name="taskQueueSid"> The SID of the TaskQueue that the Workers to read are eligible for. </param>
         /// <param name="ordering"> Sorting parameter for Workers </param>
@@ -337,7 +340,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="activitySid"> The `activity_sid` of the Worker resources to read. </param>
         /// <param name="available"> Whether to return only Worker resources that are available or unavailable. Can be `true`, `1`, or `yes` to return Worker resources that are available, and `false`, or any value returns the Worker resources that are not available. </param>
         /// <param name="friendlyName"> The `friendly_name` of the Worker resources to read. </param>
-        /// <param name="targetWorkersExpression"> Filter by Workers that would match an expression on a TaskQueue. This is helpful for debugging which Workers would match a potential queue. </param>
+        /// <param name="targetWorkersExpression"> Filter by Workers that would match an expression. In addition to fields in the workers' attributes, the expression can include the following worker fields: `sid`, `friendly_name`, `activity_sid`, or `activity_name` </param>
         /// <param name="taskQueueName"> The `friendly_name` of the TaskQueue that the Workers to read are eligible for. </param>
         /// <param name="taskQueueSid"> The SID of the TaskQueue that the Workers to read are eligible for. </param>
         /// <param name="ordering"> Sorting parameter for Workers </param>
@@ -523,6 +526,22 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                 throw new ApiException(e.Message, e);
             }
         }
+        /// <summary>
+    /// Converts an object into a json string
+    /// </summary>
+    /// <param name="model"> C# model </param>
+    /// <returns> JSON string </returns>
+    public static string ToJson(object model)
+    {
+        try
+        {
+            return JsonConvert.SerializeObject(model);
+        }
+        catch (JsonException e)
+        {
+            throw new ApiException(e.Message, e);
+        }
+    }
 
     
         ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Worker resource. </summary> 

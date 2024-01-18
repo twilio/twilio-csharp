@@ -41,12 +41,13 @@ namespace Twilio.Rest.Verify.V2
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
             return p;
         }
+
         
 
     }
@@ -56,10 +57,10 @@ namespace Twilio.Rest.Verify.V2
     public class ReadVerificationAttemptOptions : ReadOptions<VerificationAttemptResource>
     {
     
-        ///<summary> Datetime filter used to query Verification Attempts created after this datetime. Given as GMT in RFC 2822 format. </summary> 
+        ///<summary> Datetime filter used to consider only Verification Attempts created after this datetime on the summary aggregation. Given as GMT in ISO 8601 formatted datetime string: yyyy-MM-dd'T'HH:mm:ss'Z. </summary> 
         public DateTime? DateCreatedAfter { get; set; }
 
-        ///<summary> Datetime filter used to query Verification Attempts created before this datetime. Given as GMT in RFC 2822 format. </summary> 
+        ///<summary> Datetime filter used to consider only Verification Attempts created before this datetime on the summary aggregation. Given as GMT in ISO 8601 formatted datetime string: yyyy-MM-dd'T'HH:mm:ss'Z. </summary> 
         public DateTime? DateCreatedBefore { get; set; }
 
         ///<summary> Destination of a verification. It is phone number in E.164 format. </summary> 
@@ -85,7 +86,7 @@ namespace Twilio.Rest.Verify.V2
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  override List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -127,6 +128,7 @@ namespace Twilio.Rest.Verify.V2
             }
             return p;
         }
+
         
 
     }

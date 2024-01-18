@@ -18,6 +18,7 @@ using System;
 using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Clients;
+using Twilio.Constant;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -28,6 +29,8 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
 {
     public class MessageResource : Resource
     {
+    
+
     
         public sealed class WebhookEnabledTypeEnum : StringEnum
         {
@@ -108,8 +111,9 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         /// <param name="dateUpdated"> The date that this resource was last updated. `null` if the message has not been edited. </param>
         /// <param name="attributes"> A string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \\\"{}\\\" will be returned. </param>
         /// <param name="mediaSid"> The Media SID to be attached to the new Message. </param>
-        /// <param name="contentSid"> The unique ID of the multi-channel [Rich Content](https://www.twilio.com/docs/content-api) template, required for template-generated messages.  **Note** that if this field is set, `Body` and `MediaSid` parameters are ignored. </param>
+        /// <param name="contentSid"> The unique ID of the multi-channel [Rich Content](https://www.twilio.com/docs/content) template, required for template-generated messages.  **Note** that if this field is set, `Body` and `MediaSid` parameters are ignored. </param>
         /// <param name="contentVariables"> A structurally valid JSON string that contains values to resolve Rich Content template variables. </param>
+        /// <param name="subject"> The subject of the message, can be up to 256 characters long. </param>
         /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Message </returns>
@@ -124,10 +128,11 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
                                           string mediaSid = null,
                                           string contentSid = null,
                                           string contentVariables = null,
+                                          string subject = null,
                                           MessageResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new CreateMessageOptions(pathChatServiceSid, pathConversationSid){  Author = author, Body = body, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes, MediaSid = mediaSid, ContentSid = contentSid, ContentVariables = contentVariables, XTwilioWebhookEnabled = xTwilioWebhookEnabled };
+            var options = new CreateMessageOptions(pathChatServiceSid, pathConversationSid){  Author = author, Body = body, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes, MediaSid = mediaSid, ContentSid = contentSid, ContentVariables = contentVariables, Subject = subject, XTwilioWebhookEnabled = xTwilioWebhookEnabled };
             return Create(options, client);
         }
 
@@ -141,8 +146,9 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         /// <param name="dateUpdated"> The date that this resource was last updated. `null` if the message has not been edited. </param>
         /// <param name="attributes"> A string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \\\"{}\\\" will be returned. </param>
         /// <param name="mediaSid"> The Media SID to be attached to the new Message. </param>
-        /// <param name="contentSid"> The unique ID of the multi-channel [Rich Content](https://www.twilio.com/docs/content-api) template, required for template-generated messages.  **Note** that if this field is set, `Body` and `MediaSid` parameters are ignored. </param>
+        /// <param name="contentSid"> The unique ID of the multi-channel [Rich Content](https://www.twilio.com/docs/content) template, required for template-generated messages.  **Note** that if this field is set, `Body` and `MediaSid` parameters are ignored. </param>
         /// <param name="contentVariables"> A structurally valid JSON string that contains values to resolve Rich Content template variables. </param>
+        /// <param name="subject"> The subject of the message, can be up to 256 characters long. </param>
         /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Message </returns>
@@ -157,10 +163,11 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
                                                                                   string mediaSid = null,
                                                                                   string contentSid = null,
                                                                                   string contentVariables = null,
+                                                                                  string subject = null,
                                                                                   MessageResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
                                                                                   ITwilioRestClient client = null)
         {
-        var options = new CreateMessageOptions(pathChatServiceSid, pathConversationSid){  Author = author, Body = body, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes, MediaSid = mediaSid, ContentSid = contentSid, ContentVariables = contentVariables, XTwilioWebhookEnabled = xTwilioWebhookEnabled };
+        var options = new CreateMessageOptions(pathChatServiceSid, pathConversationSid){  Author = author, Body = body, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes, MediaSid = mediaSid, ContentSid = contentSid, ContentVariables = contentVariables, Subject = subject, XTwilioWebhookEnabled = xTwilioWebhookEnabled };
             return await CreateAsync(options, client);
         }
         #endif
@@ -509,6 +516,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         /// <param name="dateCreated"> The date that this resource was created. </param>
         /// <param name="dateUpdated"> The date that this resource was last updated. `null` if the message has not been edited. </param>
         /// <param name="attributes"> A string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \\\"{}\\\" will be returned. </param>
+        /// <param name="subject"> The subject of the message, can be up to 256 characters long. </param>
         /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Message </returns>
@@ -521,10 +529,11 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
                                           DateTime? dateCreated = null,
                                           DateTime? dateUpdated = null,
                                           string attributes = null,
+                                          string subject = null,
                                           MessageResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new UpdateMessageOptions(pathChatServiceSid, pathConversationSid, pathSid){ Author = author, Body = body, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes, XTwilioWebhookEnabled = xTwilioWebhookEnabled };
+            var options = new UpdateMessageOptions(pathChatServiceSid, pathConversationSid, pathSid){ Author = author, Body = body, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes, Subject = subject, XTwilioWebhookEnabled = xTwilioWebhookEnabled };
             return Update(options, client);
         }
 
@@ -538,6 +547,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         /// <param name="dateCreated"> The date that this resource was created. </param>
         /// <param name="dateUpdated"> The date that this resource was last updated. `null` if the message has not been edited. </param>
         /// <param name="attributes"> A string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \\\"{}\\\" will be returned. </param>
+        /// <param name="subject"> The subject of the message, can be up to 256 characters long. </param>
         /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Message </returns>
@@ -550,10 +560,11 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
                                                                               DateTime? dateCreated = null,
                                                                               DateTime? dateUpdated = null,
                                                                               string attributes = null,
+                                                                              string subject = null,
                                                                               MessageResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
                                                                               ITwilioRestClient client = null)
         {
-            var options = new UpdateMessageOptions(pathChatServiceSid, pathConversationSid, pathSid){ Author = author, Body = body, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes, XTwilioWebhookEnabled = xTwilioWebhookEnabled };
+            var options = new UpdateMessageOptions(pathChatServiceSid, pathConversationSid, pathSid){ Author = author, Body = body, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes, Subject = subject, XTwilioWebhookEnabled = xTwilioWebhookEnabled };
             return await UpdateAsync(options, client);
         }
         #endif
@@ -574,6 +585,22 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
                 throw new ApiException(e.Message, e);
             }
         }
+        /// <summary>
+    /// Converts an object into a json string
+    /// </summary>
+    /// <param name="model"> C# model </param>
+    /// <returns> JSON string </returns>
+    public static string ToJson(object model)
+    {
+        try
+        {
+            return JsonConvert.SerializeObject(model);
+        }
+        catch (JsonException e)
+        {
+            throw new ApiException(e.Message, e);
+        }
+    }
 
     
         ///<summary> The unique ID of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this message. </summary> 
@@ -636,7 +663,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
 
-        ///<summary> The unique ID of the multi-channel [Rich Content](https://www.twilio.com/docs/content-api) template. </summary> 
+        ///<summary> The unique ID of the multi-channel [Rich Content](https://www.twilio.com/docs/content) template. </summary> 
         [JsonProperty("content_sid")]
         public string ContentSid { get; private set; }
 

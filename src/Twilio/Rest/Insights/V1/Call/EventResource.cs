@@ -18,6 +18,7 @@ using System;
 using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Clients;
+using Twilio.Constant;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -28,6 +29,8 @@ namespace Twilio.Rest.Insights.V1.Call
 {
     public class EventResource : Resource
     {
+    
+
     
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class LevelEnum : StringEnum
@@ -79,7 +82,7 @@ namespace Twilio.Rest.Insights.V1.Call
                 headerParams: null
             );
         }
-        /// <summary> read </summary>
+        /// <summary> Get a list of Call Insight Events for a Call. </summary>
         /// <param name="options"> Read Event parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Event </returns>
@@ -92,7 +95,7 @@ namespace Twilio.Rest.Insights.V1.Call
         }
 
         #if !NET35
-        /// <summary> read </summary>
+        /// <summary> Get a list of Call Insight Events for a Call. </summary>
         /// <param name="options"> Read Event parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Event </returns>
@@ -106,9 +109,9 @@ namespace Twilio.Rest.Insights.V1.Call
             return new ResourceSet<EventResource>(page, options, client);
         }
         #endif
-        /// <summary> read </summary>
-        /// <param name="pathCallSid">  </param>
-        /// <param name="edge">  </param>
+        /// <summary> Get a list of Call Insight Events for a Call. </summary>
+        /// <param name="pathCallSid"> The unique SID identifier of the Call. </param>
+        /// <param name="edge"> The Edge of this Event. One of `unknown_edge`, `carrier_edge`, `sip_edge`, `sdk_edge` or `client_edge`. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -125,9 +128,9 @@ namespace Twilio.Rest.Insights.V1.Call
         }
 
         #if !NET35
-        /// <summary> read </summary>
-        /// <param name="pathCallSid">  </param>
-        /// <param name="edge">  </param>
+        /// <summary> Get a list of Call Insight Events for a Call. </summary>
+        /// <param name="pathCallSid"> The unique SID identifier of the Call. </param>
+        /// <param name="edge"> The Edge of this Event. One of `unknown_edge`, `carrier_edge`, `sip_edge`, `sdk_edge` or `client_edge`. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -209,17 +212,33 @@ namespace Twilio.Rest.Insights.V1.Call
                 throw new ApiException(e.Message, e);
             }
         }
+        /// <summary>
+    /// Converts an object into a json string
+    /// </summary>
+    /// <param name="model"> C# model </param>
+    /// <returns> JSON string </returns>
+    public static string ToJson(object model)
+    {
+        try
+        {
+            return JsonConvert.SerializeObject(model);
+        }
+        catch (JsonException e)
+        {
+            throw new ApiException(e.Message, e);
+        }
+    }
 
     
-        ///<summary> The timestamp </summary> 
+        ///<summary> Event time. </summary> 
         [JsonProperty("timestamp")]
         public string Timestamp { get; private set; }
 
-        ///<summary> The call_sid </summary> 
+        ///<summary> The unique SID identifier of the Call. </summary> 
         [JsonProperty("call_sid")]
         public string CallSid { get; private set; }
 
-        ///<summary> The account_sid </summary> 
+        ///<summary> The unique SID identifier of the Account. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
@@ -227,7 +246,7 @@ namespace Twilio.Rest.Insights.V1.Call
         [JsonProperty("edge")]
         public EventResource.TwilioEdgeEnum Edge { get; private set; }
 
-        ///<summary> The group </summary> 
+        ///<summary> Event group. </summary> 
         [JsonProperty("group")]
         public string Group { get; private set; }
 
@@ -235,23 +254,23 @@ namespace Twilio.Rest.Insights.V1.Call
         [JsonProperty("level")]
         public EventResource.LevelEnum Level { get; private set; }
 
-        ///<summary> The name </summary> 
+        ///<summary> Event name. </summary> 
         [JsonProperty("name")]
         public string Name { get; private set; }
 
-        ///<summary> The carrier_edge </summary> 
+        ///<summary> Represents the connection between Twilio and our immediate carrier partners. The events here describe the call lifecycle as reported by Twilio's carrier media gateways. </summary> 
         [JsonProperty("carrier_edge")]
         public object CarrierEdge { get; private set; }
 
-        ///<summary> The sip_edge </summary> 
+        ///<summary> Represents the Twilio media gateway for SIP interface and SIP trunking calls. The events here describe the call lifecycle as reported by Twilio's public media gateways. </summary> 
         [JsonProperty("sip_edge")]
         public object SipEdge { get; private set; }
 
-        ///<summary> The sdk_edge </summary> 
+        ///<summary> Represents the Voice SDK running locally in the browser or in the Android/iOS application. The events here are emitted by the Voice SDK in response to certain call progress events, network changes, or call quality conditions. </summary> 
         [JsonProperty("sdk_edge")]
         public object SdkEdge { get; private set; }
 
-        ///<summary> The client_edge </summary> 
+        ///<summary> Represents the Twilio media gateway for Client calls. The events here describe the call lifecycle as reported by Twilio's Voice SDK media gateways. </summary> 
         [JsonProperty("client_edge")]
         public object ClientEdge { get; private set; }
 

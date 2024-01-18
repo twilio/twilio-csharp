@@ -18,6 +18,7 @@ using System;
 using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Clients;
+using Twilio.Constant;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -29,18 +30,8 @@ namespace Twilio.Rest.FlexApi.V1.Interaction
     public class InteractionChannelResource : Resource
     {
     
-        public sealed class StatusEnum : StringEnum
-        {
-            private StatusEnum(string value) : base(value) {}
-            public StatusEnum() {}
-            public static implicit operator StatusEnum(string value)
-            {
-                return new StatusEnum(value);
-            }
-            public static readonly StatusEnum Closed = new StatusEnum("closed");
-            public static readonly StatusEnum Wrapup = new StatusEnum("wrapup");
 
-        }
+    
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class TypeEnum : StringEnum
         {
@@ -60,6 +51,18 @@ namespace Twilio.Rest.FlexApi.V1.Interaction
             public static readonly TypeEnum Gbm = new TypeEnum("gbm");
 
         }
+        public sealed class UpdateChannelStatusEnum : StringEnum
+        {
+            private UpdateChannelStatusEnum(string value) : base(value) {}
+            public UpdateChannelStatusEnum() {}
+            public static implicit operator UpdateChannelStatusEnum(string value)
+            {
+                return new UpdateChannelStatusEnum(value);
+            }
+            public static readonly UpdateChannelStatusEnum Closed = new UpdateChannelStatusEnum("closed");
+            public static readonly UpdateChannelStatusEnum Inactive = new UpdateChannelStatusEnum("inactive");
+
+        }
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class ChannelStatusEnum : StringEnum
         {
@@ -73,6 +76,7 @@ namespace Twilio.Rest.FlexApi.V1.Interaction
             public static readonly ChannelStatusEnum Active = new ChannelStatusEnum("active");
             public static readonly ChannelStatusEnum Failed = new ChannelStatusEnum("failed");
             public static readonly ChannelStatusEnum Closed = new ChannelStatusEnum("closed");
+            public static readonly ChannelStatusEnum Inactive = new ChannelStatusEnum("inactive");
 
         }
 
@@ -321,13 +325,13 @@ namespace Twilio.Rest.FlexApi.V1.Interaction
         /// <param name="pathInteractionSid"> The unique string created by Twilio to identify an Interaction resource, prefixed with KD. </param>
         /// <param name="pathSid"> The unique string created by Twilio to identify an Interaction Channel resource, prefixed with UO. </param>
         /// <param name="status">  </param>
-        /// <param name="routing"> Optional. The state of associated tasks. If not specified, all tasks will be set to `wrapping`. </param>
+        /// <param name="routing"> It changes the state of associated tasks. Routing status is required, When the channel status is set to `inactive`. Allowed Value for routing status is `closed`. Otherwise Optional, if not specified, all tasks will be set to `wrapping`. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of InteractionChannel </returns>
         public static InteractionChannelResource Update(
                                           string pathInteractionSid,
                                           string pathSid,
-                                          InteractionChannelResource.StatusEnum status,
+                                          InteractionChannelResource.UpdateChannelStatusEnum status,
                                           object routing = null,
                                           ITwilioRestClient client = null)
         {
@@ -340,13 +344,13 @@ namespace Twilio.Rest.FlexApi.V1.Interaction
         /// <param name="pathInteractionSid"> The unique string created by Twilio to identify an Interaction resource, prefixed with KD. </param>
         /// <param name="pathSid"> The unique string created by Twilio to identify an Interaction Channel resource, prefixed with UO. </param>
         /// <param name="status">  </param>
-        /// <param name="routing"> Optional. The state of associated tasks. If not specified, all tasks will be set to `wrapping`. </param>
+        /// <param name="routing"> It changes the state of associated tasks. Routing status is required, When the channel status is set to `inactive`. Allowed Value for routing status is `closed`. Otherwise Optional, if not specified, all tasks will be set to `wrapping`. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InteractionChannel </returns>
         public static async System.Threading.Tasks.Task<InteractionChannelResource> UpdateAsync(
                                                                               string pathInteractionSid,
                                                                               string pathSid,
-                                                                              InteractionChannelResource.StatusEnum status,
+                                                                              InteractionChannelResource.UpdateChannelStatusEnum status,
                                                                               object routing = null,
                                                                               ITwilioRestClient client = null)
         {
@@ -371,6 +375,22 @@ namespace Twilio.Rest.FlexApi.V1.Interaction
                 throw new ApiException(e.Message, e);
             }
         }
+        /// <summary>
+    /// Converts an object into a json string
+    /// </summary>
+    /// <param name="model"> C# model </param>
+    /// <returns> JSON string </returns>
+    public static string ToJson(object model)
+    {
+        try
+        {
+            return JsonConvert.SerializeObject(model);
+        }
+        catch (JsonException e)
+        {
+            throw new ApiException(e.Message, e);
+        }
+    }
 
     
         ///<summary> The unique string created by Twilio to identify an Interaction Channel resource, prefixed with UO. </summary> 

@@ -655,7 +655,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -1473,6 +1473,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             }
             return p;
         }
+
         
 
     }
@@ -1507,7 +1508,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -1517,6 +1518,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             }
             return p;
         }
+
         
 
     }

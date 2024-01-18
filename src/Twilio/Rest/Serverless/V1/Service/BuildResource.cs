@@ -18,6 +18,7 @@ using System;
 using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Clients;
+using Twilio.Constant;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -28,6 +29,8 @@ namespace Twilio.Rest.Serverless.V1.Service
 {
     public class BuildResource : Resource
     {
+    
+
     
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class StatusEnum : StringEnum
@@ -57,6 +60,7 @@ namespace Twilio.Rest.Serverless.V1.Service
             public static readonly RuntimeEnum Node12 = new RuntimeEnum("node12");
             public static readonly RuntimeEnum Node14 = new RuntimeEnum("node14");
             public static readonly RuntimeEnum Node16 = new RuntimeEnum("node16");
+            public static readonly RuntimeEnum Node18 = new RuntimeEnum("node18");
 
         }
 
@@ -429,6 +433,22 @@ namespace Twilio.Rest.Serverless.V1.Service
                 throw new ApiException(e.Message, e);
             }
         }
+        /// <summary>
+    /// Converts an object into a json string
+    /// </summary>
+    /// <param name="model"> C# model </param>
+    /// <returns> JSON string </returns>
+    public static string ToJson(object model)
+    {
+        try
+        {
+            return JsonConvert.SerializeObject(model);
+        }
+        catch (JsonException e)
+        {
+            throw new ApiException(e.Message, e);
+        }
+    }
 
     
         ///<summary> The unique string that we created to identify the Build resource. </summary> 

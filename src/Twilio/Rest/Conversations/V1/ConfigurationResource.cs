@@ -18,6 +18,7 @@ using System;
 using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Clients;
+using Twilio.Constant;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -28,6 +29,8 @@ namespace Twilio.Rest.Conversations.V1
 {
     public class ConfigurationResource : Resource
     {
+    
+
     
 
         
@@ -133,7 +136,7 @@ namespace Twilio.Rest.Conversations.V1
 
         /// <summary> Update the global configuration of conversations on your account </summary>
         /// <param name="defaultChatServiceSid"> The SID of the default [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) to use when creating a conversation. </param>
-        /// <param name="defaultMessagingServiceSid"> The SID of the default [Messaging Service](https://www.twilio.com/docs/sms/services/api) to use when creating a conversation. </param>
+        /// <param name="defaultMessagingServiceSid"> The SID of the default [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) to use when creating a conversation. </param>
         /// <param name="defaultInactiveTimer"> Default ISO8601 duration when conversation will be switched to `inactive` state. Minimum value for this timer is 1 minute. </param>
         /// <param name="defaultClosedTimer"> Default ISO8601 duration when conversation will be switched to `closed` state. Minimum value for this timer is 10 minutes. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -152,7 +155,7 @@ namespace Twilio.Rest.Conversations.V1
         #if !NET35
         /// <summary> Update the global configuration of conversations on your account </summary>
         /// <param name="defaultChatServiceSid"> The SID of the default [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) to use when creating a conversation. </param>
-        /// <param name="defaultMessagingServiceSid"> The SID of the default [Messaging Service](https://www.twilio.com/docs/sms/services/api) to use when creating a conversation. </param>
+        /// <param name="defaultMessagingServiceSid"> The SID of the default [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) to use when creating a conversation. </param>
         /// <param name="defaultInactiveTimer"> Default ISO8601 duration when conversation will be switched to `inactive` state. Minimum value for this timer is 1 minute. </param>
         /// <param name="defaultClosedTimer"> Default ISO8601 duration when conversation will be switched to `closed` state. Minimum value for this timer is 10 minutes. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -185,6 +188,22 @@ namespace Twilio.Rest.Conversations.V1
                 throw new ApiException(e.Message, e);
             }
         }
+        /// <summary>
+    /// Converts an object into a json string
+    /// </summary>
+    /// <param name="model"> C# model </param>
+    /// <returns> JSON string </returns>
+    public static string ToJson(object model)
+    {
+        try
+        {
+            return JsonConvert.SerializeObject(model);
+        }
+        catch (JsonException e)
+        {
+            throw new ApiException(e.Message, e);
+        }
+    }
 
     
         ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this configuration. </summary> 
@@ -195,7 +214,7 @@ namespace Twilio.Rest.Conversations.V1
         [JsonProperty("default_chat_service_sid")]
         public string DefaultChatServiceSid { get; private set; }
 
-        ///<summary> The SID of the default [Messaging Service](https://www.twilio.com/docs/sms/services/api) used when creating a conversation. </summary> 
+        ///<summary> The SID of the default [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) used when creating a conversation. </summary> 
         [JsonProperty("default_messaging_service_sid")]
         public string DefaultMessagingServiceSid { get; private set; }
 

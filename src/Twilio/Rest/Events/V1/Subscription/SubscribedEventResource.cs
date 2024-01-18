@@ -18,6 +18,7 @@ using System;
 using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Clients;
+using Twilio.Constant;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -28,6 +29,8 @@ namespace Twilio.Rest.Events.V1.Subscription
 {
     public class SubscribedEventResource : Resource
     {
+    
+
     
 
         
@@ -48,7 +51,7 @@ namespace Twilio.Rest.Events.V1.Subscription
             );
         }
 
-        /// <summary> Create a new Subscribed Event type for the subscription </summary>
+        /// <summary> Add an event type to a Subscription. </summary>
         /// <param name="options"> Create SubscribedEvent parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SubscribedEvent </returns>
@@ -60,7 +63,7 @@ namespace Twilio.Rest.Events.V1.Subscription
         }
 
         #if !NET35
-        /// <summary> Create a new Subscribed Event type for the subscription </summary>
+        /// <summary> Add an event type to a Subscription. </summary>
         /// <param name="options"> Create SubscribedEvent parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SubscribedEvent </returns>
@@ -73,10 +76,10 @@ namespace Twilio.Rest.Events.V1.Subscription
         }
         #endif
 
-        /// <summary> Create a new Subscribed Event type for the subscription </summary>
+        /// <summary> Add an event type to a Subscription. </summary>
         /// <param name="pathSubscriptionSid"> The unique SID identifier of the Subscription. </param>
         /// <param name="type"> Type of event being subscribed to. </param>
-        /// <param name="schemaVersion"> The schema version that the subscription should use. </param>
+        /// <param name="schemaVersion"> The schema version that the Subscription should use. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SubscribedEvent </returns>
         public static SubscribedEventResource Create(
@@ -90,10 +93,10 @@ namespace Twilio.Rest.Events.V1.Subscription
         }
 
         #if !NET35
-        /// <summary> Create a new Subscribed Event type for the subscription </summary>
+        /// <summary> Add an event type to a Subscription. </summary>
         /// <param name="pathSubscriptionSid"> The unique SID identifier of the Subscription. </param>
         /// <param name="type"> Type of event being subscribed to. </param>
-        /// <param name="schemaVersion"> The schema version that the subscription should use. </param>
+        /// <param name="schemaVersion"> The schema version that the Subscription should use. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SubscribedEvent </returns>
         public static async System.Threading.Tasks.Task<SubscribedEventResource> CreateAsync(
@@ -107,7 +110,7 @@ namespace Twilio.Rest.Events.V1.Subscription
         }
         #endif
         
-        /// <summary> Remove an event type from a subscription. </summary>
+        /// <summary> Remove an event type from a Subscription. </summary>
         /// <param name="options"> Delete SubscribedEvent parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SubscribedEvent </returns>
@@ -130,7 +133,7 @@ namespace Twilio.Rest.Events.V1.Subscription
             );
         }
 
-        /// <summary> Remove an event type from a subscription. </summary>
+        /// <summary> Remove an event type from a Subscription. </summary>
         /// <param name="options"> Delete SubscribedEvent parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SubscribedEvent </returns>
@@ -142,7 +145,7 @@ namespace Twilio.Rest.Events.V1.Subscription
         }
 
         #if !NET35
-        /// <summary> Remove an event type from a subscription. </summary>
+        /// <summary> Remove an event type from a Subscription. </summary>
         /// <param name="options"> Delete SubscribedEvent parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SubscribedEvent </returns>
@@ -155,7 +158,7 @@ namespace Twilio.Rest.Events.V1.Subscription
         }
         #endif
 
-        /// <summary> Remove an event type from a subscription. </summary>
+        /// <summary> Remove an event type from a Subscription. </summary>
         /// <param name="pathSubscriptionSid"> The unique SID identifier of the Subscription. </param>
         /// <param name="pathType"> Type of event being subscribed to. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -167,7 +170,7 @@ namespace Twilio.Rest.Events.V1.Subscription
         }
 
         #if !NET35
-        /// <summary> Remove an event type from a subscription. </summary>
+        /// <summary> Remove an event type from a Subscription. </summary>
         /// <param name="pathSubscriptionSid"> The unique SID identifier of the Subscription. </param>
         /// <param name="pathType"> Type of event being subscribed to. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -422,7 +425,7 @@ namespace Twilio.Rest.Events.V1.Subscription
         /// <summary> Update an Event for a Subscription. </summary>
         /// <param name="pathSubscriptionSid"> The unique SID identifier of the Subscription. </param>
         /// <param name="pathType"> Type of event being subscribed to. </param>
-        /// <param name="schemaVersion"> The schema version that the subscription should use. </param>
+        /// <param name="schemaVersion"> The schema version that the Subscription should use. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SubscribedEvent </returns>
         public static SubscribedEventResource Update(
@@ -439,7 +442,7 @@ namespace Twilio.Rest.Events.V1.Subscription
         /// <summary> Update an Event for a Subscription. </summary>
         /// <param name="pathSubscriptionSid"> The unique SID identifier of the Subscription. </param>
         /// <param name="pathType"> Type of event being subscribed to. </param>
-        /// <param name="schemaVersion"> The schema version that the subscription should use. </param>
+        /// <param name="schemaVersion"> The schema version that the Subscription should use. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SubscribedEvent </returns>
         public static async System.Threading.Tasks.Task<SubscribedEventResource> UpdateAsync(
@@ -469,6 +472,22 @@ namespace Twilio.Rest.Events.V1.Subscription
                 throw new ApiException(e.Message, e);
             }
         }
+        /// <summary>
+    /// Converts an object into a json string
+    /// </summary>
+    /// <param name="model"> C# model </param>
+    /// <returns> JSON string </returns>
+    public static string ToJson(object model)
+    {
+        try
+        {
+            return JsonConvert.SerializeObject(model);
+        }
+        catch (JsonException e)
+        {
+            throw new ApiException(e.Message, e);
+        }
+    }
 
     
         ///<summary> The unique SID identifier of the Account. </summary> 
@@ -479,7 +498,7 @@ namespace Twilio.Rest.Events.V1.Subscription
         [JsonProperty("type")]
         public string Type { get; private set; }
 
-        ///<summary> The schema version that the subscription should use. </summary> 
+        ///<summary> The schema version that the Subscription should use. </summary> 
         [JsonProperty("schema_version")]
         public int? SchemaVersion { get; private set; }
 

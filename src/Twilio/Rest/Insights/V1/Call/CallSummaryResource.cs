@@ -18,6 +18,7 @@ using System;
 using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Clients;
+using Twilio.Constant;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -28,6 +29,8 @@ namespace Twilio.Rest.Insights.V1.Call
 {
     public class CallSummaryResource : Resource
     {
+    
+
     
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class ProcessingStateEnum : StringEnum
@@ -113,7 +116,7 @@ namespace Twilio.Rest.Insights.V1.Call
             );
         }
 
-        /// <summary> fetch </summary>
+        /// <summary> Get a specific Call Summary. </summary>
         /// <param name="options"> Fetch CallSummary parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of CallSummary </returns>
@@ -125,7 +128,7 @@ namespace Twilio.Rest.Insights.V1.Call
         }
 
         #if !NET35
-        /// <summary> fetch </summary>
+        /// <summary> Get a specific Call Summary. </summary>
         /// <param name="options"> Fetch CallSummary parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CallSummary </returns>
@@ -137,9 +140,9 @@ namespace Twilio.Rest.Insights.V1.Call
             return FromJson(response.Content);
         }
         #endif
-        /// <summary> fetch </summary>
-        /// <param name="pathCallSid">  </param>
-        /// <param name="processingState">  </param>
+        /// <summary> Get a specific Call Summary. </summary>
+        /// <param name="pathCallSid"> The unique SID identifier of the Call. </param>
+        /// <param name="processingState"> The Processing State of this Call Summary. One of `complete`, `partial` or `all`. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of CallSummary </returns>
         public static CallSummaryResource Fetch(
@@ -152,9 +155,9 @@ namespace Twilio.Rest.Insights.V1.Call
         }
 
         #if !NET35
-        /// <summary> fetch </summary>
-        /// <param name="pathCallSid">  </param>
-        /// <param name="processingState">  </param>
+        /// <summary> Get a specific Call Summary. </summary>
+        /// <param name="pathCallSid"> The unique SID identifier of the Call. </param>
+        /// <param name="processingState"> The Processing State of this Call Summary. One of `complete`, `partial` or `all`. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CallSummary </returns>
         public static async System.Threading.Tasks.Task<CallSummaryResource> FetchAsync(string pathCallSid, CallSummaryResource.ProcessingStateEnum processingState = null, ITwilioRestClient client = null)
@@ -180,13 +183,29 @@ namespace Twilio.Rest.Insights.V1.Call
                 throw new ApiException(e.Message, e);
             }
         }
+        /// <summary>
+    /// Converts an object into a json string
+    /// </summary>
+    /// <param name="model"> C# model </param>
+    /// <returns> JSON string </returns>
+    public static string ToJson(object model)
+    {
+        try
+        {
+            return JsonConvert.SerializeObject(model);
+        }
+        catch (JsonException e)
+        {
+            throw new ApiException(e.Message, e);
+        }
+    }
 
     
-        ///<summary> The account_sid </summary> 
+        ///<summary> The unique SID identifier of the Account. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The call_sid </summary> 
+        ///<summary> The unique SID identifier of the Call. </summary> 
         [JsonProperty("call_sid")]
         public string CallSid { get; private set; }
 
@@ -206,71 +225,71 @@ namespace Twilio.Rest.Insights.V1.Call
         [JsonProperty("processing_state")]
         public CallSummaryResource.ProcessingStateEnum ProcessingState { get; private set; }
 
-        ///<summary> The created_time </summary> 
+        ///<summary> The time at which the Call was created, given in ISO 8601 format. Can be different from `start_time` in the event of queueing due to CPS </summary> 
         [JsonProperty("created_time")]
         public DateTime? CreatedTime { get; private set; }
 
-        ///<summary> The start_time </summary> 
+        ///<summary> The time at which the Call was started, given in ISO 8601 format. </summary> 
         [JsonProperty("start_time")]
         public DateTime? StartTime { get; private set; }
 
-        ///<summary> The end_time </summary> 
+        ///<summary> The time at which the Call was ended, given in ISO 8601 format. </summary> 
         [JsonProperty("end_time")]
         public DateTime? EndTime { get; private set; }
 
-        ///<summary> The duration </summary> 
+        ///<summary> Duration between when the call was initiated and the call was ended </summary> 
         [JsonProperty("duration")]
         public int? Duration { get; private set; }
 
-        ///<summary> The connect_duration </summary> 
+        ///<summary> Duration between when the call was answered and when it ended </summary> 
         [JsonProperty("connect_duration")]
         public int? ConnectDuration { get; private set; }
 
-        ///<summary> The from </summary> 
+        ///<summary> The calling party. </summary> 
         [JsonProperty("from")]
         public object From { get; private set; }
 
-        ///<summary> The to </summary> 
+        ///<summary> The called party. </summary> 
         [JsonProperty("to")]
         public object To { get; private set; }
 
-        ///<summary> The carrier_edge </summary> 
+        ///<summary> Contains metrics and properties for the Twilio media gateway of a PSTN call. </summary> 
         [JsonProperty("carrier_edge")]
         public object CarrierEdge { get; private set; }
 
-        ///<summary> The client_edge </summary> 
+        ///<summary> Contains metrics and properties for the Twilio media gateway of a Client call. </summary> 
         [JsonProperty("client_edge")]
         public object ClientEdge { get; private set; }
 
-        ///<summary> The sdk_edge </summary> 
+        ///<summary> Contains metrics and properties for the SDK sensor library for Client calls. </summary> 
         [JsonProperty("sdk_edge")]
         public object SdkEdge { get; private set; }
 
-        ///<summary> The sip_edge </summary> 
+        ///<summary> Contains metrics and properties for the Twilio media gateway of a SIP Interface or Trunking call. </summary> 
         [JsonProperty("sip_edge")]
         public object SipEdge { get; private set; }
 
-        ///<summary> The tags </summary> 
+        ///<summary> Tags applied to calls by Voice Insights analysis indicating a condition that could result in subjective degradation of the call quality. </summary> 
         [JsonProperty("tags")]
         public List<string> Tags { get; private set; }
 
-        ///<summary> The url </summary> 
+        ///<summary> The URL of this resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
-        ///<summary> The attributes </summary> 
+        ///<summary> Attributes capturing call-flow-specific details. </summary> 
         [JsonProperty("attributes")]
         public object Attributes { get; private set; }
 
-        ///<summary> The properties </summary> 
+        ///<summary> Contains edge-agnostic call-level details. </summary> 
         [JsonProperty("properties")]
         public object Properties { get; private set; }
 
-        ///<summary> The trust </summary> 
+        ///<summary> Contains trusted communications details including Branded Call and verified caller ID. </summary> 
         [JsonProperty("trust")]
         public object Trust { get; private set; }
 
-        ///<summary> The annotation </summary> 
+        ///<summary> Programmatically labeled annotations for the Call. Developers can update the Call Summary records with Annotation during or after a Call. Annotations can be updated as long as the Call Summary record is addressable via the API. </summary> 
         [JsonProperty("annotation")]
         public object Annotation { get; private set; }
 

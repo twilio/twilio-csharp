@@ -28,7 +28,7 @@ namespace Twilio.Rest.Messaging.V1.Service
     public class CreateUsAppToPersonOptions : IOptions<UsAppToPersonResource>
     {
         
-        ///<summary> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) to create the resources from. </summary> 
+        ///<summary> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) to create the resources from. </summary> 
         public string PathMessagingServiceSid { get; }
 
         ///<summary> A2P Brand Registration SID </summary> 
@@ -40,7 +40,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         ///<summary> Required for all Campaigns. Details around how a consumer opts-in to their campaign, therefore giving consent to receive their messages. If multiple opt-in methods can be used for the same campaign, they must all be listed. 40 character minimum. 2048 character maximum. </summary> 
         public string MessageFlow { get; }
 
-        ///<summary> Message samples, at least 1 and up to 5 sample messages (at least 2 for sole proprietor), >=20 chars, <=1024 chars each. </summary> 
+        ///<summary> An array of sample message strings, min two and max five. Min length for each sample: 20 chars. Max length for each sample: 1024 chars. </summary> 
         public List<string> MessageSamples { get; }
 
         ///<summary> A2P Campaign Use Case. Examples: [ 2FA, EMERGENCY, MARKETING..] </summary> 
@@ -72,11 +72,11 @@ namespace Twilio.Rest.Messaging.V1.Service
 
 
         /// <summary> Construct a new CreateUsAppToPersonOptions </summary>
-        /// <param name="pathMessagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) to create the resources from. </param>
+        /// <param name="pathMessagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) to create the resources from. </param>
         /// <param name="brandRegistrationSid"> A2P Brand Registration SID </param>
         /// <param name="description"> A short description of what this SMS campaign does. Min length: 40 characters. Max length: 4096 characters. </param>
         /// <param name="messageFlow"> Required for all Campaigns. Details around how a consumer opts-in to their campaign, therefore giving consent to receive their messages. If multiple opt-in methods can be used for the same campaign, they must all be listed. 40 character minimum. 2048 character maximum. </param>
-        /// <param name="messageSamples"> Message samples, at least 1 and up to 5 sample messages (at least 2 for sole proprietor), >=20 chars, <=1024 chars each. </param>
+        /// <param name="messageSamples"> An array of sample message strings, min two and max five. Min length for each sample: 20 chars. Max length for each sample: 1024 chars. </param>
         /// <param name="usAppToPersonUsecase"> A2P Campaign Use Case. Examples: [ 2FA, EMERGENCY, MARKETING..] </param>
         /// <param name="hasEmbeddedLinks"> Indicates that this SMS campaign will send messages that contain links. </param>
         /// <param name="hasEmbeddedPhone"> Indicates that this SMS campaign will send messages that contain phone numbers. </param>
@@ -97,7 +97,7 @@ namespace Twilio.Rest.Messaging.V1.Service
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -155,6 +155,7 @@ namespace Twilio.Rest.Messaging.V1.Service
             }
             return p;
         }
+
         
 
     }
@@ -162,7 +163,7 @@ namespace Twilio.Rest.Messaging.V1.Service
     public class DeleteUsAppToPersonOptions : IOptions<UsAppToPersonResource>
     {
         
-        ///<summary> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) to delete the resource from. </summary> 
+        ///<summary> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) to delete the resource from. </summary> 
         public string PathMessagingServiceSid { get; }
 
         ///<summary> The SID of the US A2P Compliance resource to delete `QE2c6890da8086d771620e9b13fadeba0b`. </summary> 
@@ -171,7 +172,7 @@ namespace Twilio.Rest.Messaging.V1.Service
 
 
         /// <summary> Construct a new DeleteUsAppToPersonOptions </summary>
-        /// <param name="pathMessagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) to delete the resource from. </param>
+        /// <param name="pathMessagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) to delete the resource from. </param>
         /// <param name="pathSid"> The SID of the US A2P Compliance resource to delete `QE2c6890da8086d771620e9b13fadeba0b`. </param>
         public DeleteUsAppToPersonOptions(string pathMessagingServiceSid, string pathSid)
         {
@@ -181,12 +182,13 @@ namespace Twilio.Rest.Messaging.V1.Service
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
             return p;
         }
+
         
 
     }
@@ -196,7 +198,7 @@ namespace Twilio.Rest.Messaging.V1.Service
     public class FetchUsAppToPersonOptions : IOptions<UsAppToPersonResource>
     {
     
-        ///<summary> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) to fetch the resource from. </summary> 
+        ///<summary> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) to fetch the resource from. </summary> 
         public string PathMessagingServiceSid { get; }
 
         ///<summary> The SID of the US A2P Compliance resource to fetch `QE2c6890da8086d771620e9b13fadeba0b`. </summary> 
@@ -205,7 +207,7 @@ namespace Twilio.Rest.Messaging.V1.Service
 
 
         /// <summary> Construct a new FetchUsAppToPersonOptions </summary>
-        /// <param name="pathMessagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) to fetch the resource from. </param>
+        /// <param name="pathMessagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) to fetch the resource from. </param>
         /// <param name="pathSid"> The SID of the US A2P Compliance resource to fetch `QE2c6890da8086d771620e9b13fadeba0b`. </param>
         public FetchUsAppToPersonOptions(string pathMessagingServiceSid, string pathSid)
         {
@@ -215,12 +217,13 @@ namespace Twilio.Rest.Messaging.V1.Service
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
             return p;
         }
+
         
 
     }
@@ -230,13 +233,13 @@ namespace Twilio.Rest.Messaging.V1.Service
     public class ReadUsAppToPersonOptions : ReadOptions<UsAppToPersonResource>
     {
     
-        ///<summary> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) to fetch the resource from. </summary> 
+        ///<summary> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) to fetch the resource from. </summary> 
         public string PathMessagingServiceSid { get; }
 
 
 
         /// <summary> Construct a new ListUsAppToPersonOptions </summary>
-        /// <param name="pathMessagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) to fetch the resource from. </param>
+        /// <param name="pathMessagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) to fetch the resource from. </param>
         public ReadUsAppToPersonOptions(string pathMessagingServiceSid)
         {
             PathMessagingServiceSid = pathMessagingServiceSid;
@@ -244,7 +247,7 @@ namespace Twilio.Rest.Messaging.V1.Service
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  override List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -254,6 +257,7 @@ namespace Twilio.Rest.Messaging.V1.Service
             }
             return p;
         }
+
         
 
     }

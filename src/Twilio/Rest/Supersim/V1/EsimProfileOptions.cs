@@ -44,7 +44,7 @@ namespace Twilio.Rest.Supersim.V1
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -66,6 +66,7 @@ namespace Twilio.Rest.Supersim.V1
             }
             return p;
         }
+
         
 
     }
@@ -87,12 +88,13 @@ namespace Twilio.Rest.Supersim.V1
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
             return p;
         }
+
         
 
     }
@@ -105,7 +107,7 @@ namespace Twilio.Rest.Supersim.V1
         ///<summary> List the eSIM Profiles that have been associated with an EId. </summary> 
         public string Eid { get; set; }
 
-        ///<summary> Find the eSIM Profile resource related to a [Sim](https://www.twilio.com/docs/wireless/api/sim-resource) resource by providing the SIM SID. Will always return an array with either 1 or 0 records. </summary> 
+        ///<summary> Find the eSIM Profile resource related to a [Sim](https://www.twilio.com/docs/iot/supersim/api/sim-resource) resource by providing the SIM SID. Will always return an array with either 1 or 0 records. </summary> 
         public string SimSid { get; set; }
 
         ///<summary> List the eSIM Profiles that are in a given status. </summary> 
@@ -116,7 +118,7 @@ namespace Twilio.Rest.Supersim.V1
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  override List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -138,6 +140,7 @@ namespace Twilio.Rest.Supersim.V1
             }
             return p;
         }
+
         
 
     }

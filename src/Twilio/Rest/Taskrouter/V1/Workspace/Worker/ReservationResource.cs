@@ -18,6 +18,7 @@ using System;
 using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Clients;
+using Twilio.Constant;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -28,6 +29,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
 {
     public class ReservationResource : Resource
     {
+    
+
     
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class StatusEnum : StringEnum
@@ -393,6 +396,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <param name="postWorkActivitySid"> The new worker activity SID after executing a Conference instruction. </param>
         /// <param name="endConferenceOnCustomerExit"> Whether to end the conference when the customer leaves. </param>
         /// <param name="beepOnCustomerEntrance"> Whether to play a notification beep when the customer joins. </param>
+        /// <param name="jitterBufferSize"> The jitter buffer size for conference. Can be: `small`, `medium`, `large`, `off`. </param>
         /// <param name="ifMatch"> The If-Match HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Reservation </returns>
@@ -451,10 +455,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
                                           string postWorkActivitySid = null,
                                           bool? endConferenceOnCustomerExit = null,
                                           bool? beepOnCustomerEntrance = null,
+                                          string jitterBufferSize = null,
                                           string ifMatch = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new UpdateReservationOptions(pathWorkspaceSid, pathWorkerSid, pathSid){ ReservationStatus = reservationStatus, WorkerActivitySid = workerActivitySid, Instruction = instruction, DequeuePostWorkActivitySid = dequeuePostWorkActivitySid, DequeueFrom = dequeueFrom, DequeueRecord = dequeueRecord, DequeueTimeout = dequeueTimeout, DequeueTo = dequeueTo, DequeueStatusCallbackUrl = dequeueStatusCallbackUrl, CallFrom = callFrom, CallRecord = callRecord, CallTimeout = callTimeout, CallTo = callTo, CallUrl = callUrl, CallStatusCallbackUrl = callStatusCallbackUrl, CallAccept = callAccept, RedirectCallSid = redirectCallSid, RedirectAccept = redirectAccept, RedirectUrl = redirectUrl, To = to, From = from, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, StatusCallbackEvent = statusCallbackEvent, Timeout = timeout, Record = record, Muted = muted, Beep = beep, StartConferenceOnEnter = startConferenceOnEnter, EndConferenceOnExit = endConferenceOnExit, WaitUrl = waitUrl, WaitMethod = waitMethod, EarlyMedia = earlyMedia, MaxParticipants = maxParticipants, ConferenceStatusCallback = conferenceStatusCallback, ConferenceStatusCallbackMethod = conferenceStatusCallbackMethod, ConferenceStatusCallbackEvent = conferenceStatusCallbackEvent, ConferenceRecord = conferenceRecord, ConferenceTrim = conferenceTrim, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, ConferenceRecordingStatusCallback = conferenceRecordingStatusCallback, ConferenceRecordingStatusCallbackMethod = conferenceRecordingStatusCallbackMethod, Region = region, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword, DequeueStatusCallbackEvent = dequeueStatusCallbackEvent, PostWorkActivitySid = postWorkActivitySid, EndConferenceOnCustomerExit = endConferenceOnCustomerExit, BeepOnCustomerEntrance = beepOnCustomerEntrance, IfMatch = ifMatch };
+            var options = new UpdateReservationOptions(pathWorkspaceSid, pathWorkerSid, pathSid){ ReservationStatus = reservationStatus, WorkerActivitySid = workerActivitySid, Instruction = instruction, DequeuePostWorkActivitySid = dequeuePostWorkActivitySid, DequeueFrom = dequeueFrom, DequeueRecord = dequeueRecord, DequeueTimeout = dequeueTimeout, DequeueTo = dequeueTo, DequeueStatusCallbackUrl = dequeueStatusCallbackUrl, CallFrom = callFrom, CallRecord = callRecord, CallTimeout = callTimeout, CallTo = callTo, CallUrl = callUrl, CallStatusCallbackUrl = callStatusCallbackUrl, CallAccept = callAccept, RedirectCallSid = redirectCallSid, RedirectAccept = redirectAccept, RedirectUrl = redirectUrl, To = to, From = from, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, StatusCallbackEvent = statusCallbackEvent, Timeout = timeout, Record = record, Muted = muted, Beep = beep, StartConferenceOnEnter = startConferenceOnEnter, EndConferenceOnExit = endConferenceOnExit, WaitUrl = waitUrl, WaitMethod = waitMethod, EarlyMedia = earlyMedia, MaxParticipants = maxParticipants, ConferenceStatusCallback = conferenceStatusCallback, ConferenceStatusCallbackMethod = conferenceStatusCallbackMethod, ConferenceStatusCallbackEvent = conferenceStatusCallbackEvent, ConferenceRecord = conferenceRecord, ConferenceTrim = conferenceTrim, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, ConferenceRecordingStatusCallback = conferenceRecordingStatusCallback, ConferenceRecordingStatusCallbackMethod = conferenceRecordingStatusCallbackMethod, Region = region, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword, DequeueStatusCallbackEvent = dequeueStatusCallbackEvent, PostWorkActivitySid = postWorkActivitySid, EndConferenceOnCustomerExit = endConferenceOnCustomerExit, BeepOnCustomerEntrance = beepOnCustomerEntrance, JitterBufferSize = jitterBufferSize, IfMatch = ifMatch };
             return Update(options, client);
         }
 
@@ -514,6 +519,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <param name="postWorkActivitySid"> The new worker activity SID after executing a Conference instruction. </param>
         /// <param name="endConferenceOnCustomerExit"> Whether to end the conference when the customer leaves. </param>
         /// <param name="beepOnCustomerEntrance"> Whether to play a notification beep when the customer joins. </param>
+        /// <param name="jitterBufferSize"> The jitter buffer size for conference. Can be: `small`, `medium`, `large`, `off`. </param>
         /// <param name="ifMatch"> The If-Match HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Reservation </returns>
@@ -572,10 +578,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
                                                                               string postWorkActivitySid = null,
                                                                               bool? endConferenceOnCustomerExit = null,
                                                                               bool? beepOnCustomerEntrance = null,
+                                                                              string jitterBufferSize = null,
                                                                               string ifMatch = null,
                                                                               ITwilioRestClient client = null)
         {
-            var options = new UpdateReservationOptions(pathWorkspaceSid, pathWorkerSid, pathSid){ ReservationStatus = reservationStatus, WorkerActivitySid = workerActivitySid, Instruction = instruction, DequeuePostWorkActivitySid = dequeuePostWorkActivitySid, DequeueFrom = dequeueFrom, DequeueRecord = dequeueRecord, DequeueTimeout = dequeueTimeout, DequeueTo = dequeueTo, DequeueStatusCallbackUrl = dequeueStatusCallbackUrl, CallFrom = callFrom, CallRecord = callRecord, CallTimeout = callTimeout, CallTo = callTo, CallUrl = callUrl, CallStatusCallbackUrl = callStatusCallbackUrl, CallAccept = callAccept, RedirectCallSid = redirectCallSid, RedirectAccept = redirectAccept, RedirectUrl = redirectUrl, To = to, From = from, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, StatusCallbackEvent = statusCallbackEvent, Timeout = timeout, Record = record, Muted = muted, Beep = beep, StartConferenceOnEnter = startConferenceOnEnter, EndConferenceOnExit = endConferenceOnExit, WaitUrl = waitUrl, WaitMethod = waitMethod, EarlyMedia = earlyMedia, MaxParticipants = maxParticipants, ConferenceStatusCallback = conferenceStatusCallback, ConferenceStatusCallbackMethod = conferenceStatusCallbackMethod, ConferenceStatusCallbackEvent = conferenceStatusCallbackEvent, ConferenceRecord = conferenceRecord, ConferenceTrim = conferenceTrim, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, ConferenceRecordingStatusCallback = conferenceRecordingStatusCallback, ConferenceRecordingStatusCallbackMethod = conferenceRecordingStatusCallbackMethod, Region = region, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword, DequeueStatusCallbackEvent = dequeueStatusCallbackEvent, PostWorkActivitySid = postWorkActivitySid, EndConferenceOnCustomerExit = endConferenceOnCustomerExit, BeepOnCustomerEntrance = beepOnCustomerEntrance, IfMatch = ifMatch };
+            var options = new UpdateReservationOptions(pathWorkspaceSid, pathWorkerSid, pathSid){ ReservationStatus = reservationStatus, WorkerActivitySid = workerActivitySid, Instruction = instruction, DequeuePostWorkActivitySid = dequeuePostWorkActivitySid, DequeueFrom = dequeueFrom, DequeueRecord = dequeueRecord, DequeueTimeout = dequeueTimeout, DequeueTo = dequeueTo, DequeueStatusCallbackUrl = dequeueStatusCallbackUrl, CallFrom = callFrom, CallRecord = callRecord, CallTimeout = callTimeout, CallTo = callTo, CallUrl = callUrl, CallStatusCallbackUrl = callStatusCallbackUrl, CallAccept = callAccept, RedirectCallSid = redirectCallSid, RedirectAccept = redirectAccept, RedirectUrl = redirectUrl, To = to, From = from, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, StatusCallbackEvent = statusCallbackEvent, Timeout = timeout, Record = record, Muted = muted, Beep = beep, StartConferenceOnEnter = startConferenceOnEnter, EndConferenceOnExit = endConferenceOnExit, WaitUrl = waitUrl, WaitMethod = waitMethod, EarlyMedia = earlyMedia, MaxParticipants = maxParticipants, ConferenceStatusCallback = conferenceStatusCallback, ConferenceStatusCallbackMethod = conferenceStatusCallbackMethod, ConferenceStatusCallbackEvent = conferenceStatusCallbackEvent, ConferenceRecord = conferenceRecord, ConferenceTrim = conferenceTrim, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, ConferenceRecordingStatusCallback = conferenceRecordingStatusCallback, ConferenceRecordingStatusCallbackMethod = conferenceRecordingStatusCallbackMethod, Region = region, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword, DequeueStatusCallbackEvent = dequeueStatusCallbackEvent, PostWorkActivitySid = postWorkActivitySid, EndConferenceOnCustomerExit = endConferenceOnCustomerExit, BeepOnCustomerEntrance = beepOnCustomerEntrance, JitterBufferSize = jitterBufferSize, IfMatch = ifMatch };
             return await UpdateAsync(options, client);
         }
         #endif
@@ -596,6 +603,22 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
                 throw new ApiException(e.Message, e);
             }
         }
+        /// <summary>
+    /// Converts an object into a json string
+    /// </summary>
+    /// <param name="model"> C# model </param>
+    /// <returns> JSON string </returns>
+    public static string ToJson(object model)
+    {
+        try
+        {
+            return JsonConvert.SerializeObject(model);
+        }
+        catch (JsonException e)
+        {
+            throw new ApiException(e.Message, e);
+        }
+    }
 
     
         ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the WorkerReservation resource. </summary> 

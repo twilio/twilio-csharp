@@ -18,6 +18,7 @@ using System;
 using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Clients;
+using Twilio.Constant;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -28,6 +29,8 @@ namespace Twilio.Rest.Insights.V1.Call
 {
     public class AnnotationResource : Resource
     {
+    
+
     
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class ConnectivityIssueEnum : StringEnum
@@ -79,7 +82,7 @@ namespace Twilio.Rest.Insights.V1.Call
             );
         }
 
-        /// <summary> Fetch a specific Annotation. </summary>
+        /// <summary> Get the Annotation for a specific Call. </summary>
         /// <param name="options"> Fetch Annotation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Annotation </returns>
@@ -91,7 +94,7 @@ namespace Twilio.Rest.Insights.V1.Call
         }
 
         #if !NET35
-        /// <summary> Fetch a specific Annotation. </summary>
+        /// <summary> Get the Annotation for a specific Call. </summary>
         /// <param name="options"> Fetch Annotation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Annotation </returns>
@@ -103,7 +106,7 @@ namespace Twilio.Rest.Insights.V1.Call
             return FromJson(response.Content);
         }
         #endif
-        /// <summary> Fetch a specific Annotation. </summary>
+        /// <summary> Get the Annotation for a specific Call. </summary>
         /// <param name="pathCallSid"> The unique SID identifier of the Call. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Annotation </returns>
@@ -116,7 +119,7 @@ namespace Twilio.Rest.Insights.V1.Call
         }
 
         #if !NET35
-        /// <summary> Fetch a specific Annotation. </summary>
+        /// <summary> Get the Annotation for a specific Call. </summary>
         /// <param name="pathCallSid"> The unique SID identifier of the Call. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Annotation </returns>
@@ -144,7 +147,7 @@ namespace Twilio.Rest.Insights.V1.Call
             );
         }
 
-        /// <summary> Create/Update the annotation for the call </summary>
+        /// <summary> Update an Annotation for a specific Call. </summary>
         /// <param name="options"> Update Annotation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Annotation </returns>
@@ -155,7 +158,7 @@ namespace Twilio.Rest.Insights.V1.Call
             return FromJson(response.Content);
         }
 
-        /// <summary> Create/Update the annotation for the call </summary>
+        /// <summary> Update an Annotation for a specific Call. </summary>
         /// <param name="options"> Update Annotation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Annotation </returns>
@@ -169,15 +172,15 @@ namespace Twilio.Rest.Insights.V1.Call
         }
         #endif
 
-        /// <summary> Create/Update the annotation for the call </summary>
+        /// <summary> Update an Annotation for a specific Call. </summary>
         /// <param name="pathCallSid"> The unique string that Twilio created to identify this Call resource. It always starts with a CA. </param>
         /// <param name="answeredBy">  </param>
         /// <param name="connectivityIssue">  </param>
-        /// <param name="qualityIssues"> Specify if the call had any subjective quality issues. Possible values, one or more of:  no_quality_issue, low_volume, choppy_robotic, echo, dtmf, latency, owa, static_noise. Use comma separated values to indicate multiple quality issues for the same call </param>
-        /// <param name="spam"> Specify if the call was a spam call. Use this to provide feedback on whether calls placed from your account were marked as spam, or if inbound calls received by your account were unwanted spam. Is of type Boolean: true, false. Use true if the call was a spam call. </param>
+        /// <param name="qualityIssues"> Specify if the call had any subjective quality issues. Possible values, one or more of `no_quality_issue`, `low_volume`, `choppy_robotic`, `echo`, `dtmf`, `latency`, `owa`, `static_noise`. Use comma separated values to indicate multiple quality issues for the same call. </param>
+        /// <param name="spam"> A boolean flag to indicate if the call was a spam call. Use this to provide feedback on whether calls placed from your account were marked as spam, or if inbound calls received by your account were unwanted spam. Use `true` if the call was a spam call. </param>
         /// <param name="callScore"> Specify the call score. This is of type integer. Use a range of 1-5 to indicate the call experience score, with the following mapping as a reference for rating the call [5: Excellent, 4: Good, 3 : Fair, 2 : Poor, 1: Bad]. </param>
-        /// <param name="comment"> Specify any comments pertaining to the call. This of type string with a max limit of 100 characters. Twilio does not treat this field as PII, so don’t put any PII in here. </param>
-        /// <param name="incident"> Associate this call with an incident or support ticket. This is of type string with a max limit of 100 characters. Twilio does not treat this field as PII, so don’t put any PII in here. </param>
+        /// <param name="comment"> Specify any comments pertaining to the call. `comment` has a maximum character limit of 100. Twilio does not treat this field as PII, so no PII should be included in the `comment`. </param>
+        /// <param name="incident"> Associate this call with an incident or support ticket. The `incident` parameter is of type string with a maximum character limit of 100. Twilio does not treat this field as PII, so no PII should be included in `incident`. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Annotation </returns>
         public static AnnotationResource Update(
@@ -196,15 +199,15 @@ namespace Twilio.Rest.Insights.V1.Call
         }
 
         #if !NET35
-        /// <summary> Create/Update the annotation for the call </summary>
+        /// <summary> Update an Annotation for a specific Call. </summary>
         /// <param name="pathCallSid"> The unique string that Twilio created to identify this Call resource. It always starts with a CA. </param>
         /// <param name="answeredBy">  </param>
         /// <param name="connectivityIssue">  </param>
-        /// <param name="qualityIssues"> Specify if the call had any subjective quality issues. Possible values, one or more of:  no_quality_issue, low_volume, choppy_robotic, echo, dtmf, latency, owa, static_noise. Use comma separated values to indicate multiple quality issues for the same call </param>
-        /// <param name="spam"> Specify if the call was a spam call. Use this to provide feedback on whether calls placed from your account were marked as spam, or if inbound calls received by your account were unwanted spam. Is of type Boolean: true, false. Use true if the call was a spam call. </param>
+        /// <param name="qualityIssues"> Specify if the call had any subjective quality issues. Possible values, one or more of `no_quality_issue`, `low_volume`, `choppy_robotic`, `echo`, `dtmf`, `latency`, `owa`, `static_noise`. Use comma separated values to indicate multiple quality issues for the same call. </param>
+        /// <param name="spam"> A boolean flag to indicate if the call was a spam call. Use this to provide feedback on whether calls placed from your account were marked as spam, or if inbound calls received by your account were unwanted spam. Use `true` if the call was a spam call. </param>
         /// <param name="callScore"> Specify the call score. This is of type integer. Use a range of 1-5 to indicate the call experience score, with the following mapping as a reference for rating the call [5: Excellent, 4: Good, 3 : Fair, 2 : Poor, 1: Bad]. </param>
-        /// <param name="comment"> Specify any comments pertaining to the call. This of type string with a max limit of 100 characters. Twilio does not treat this field as PII, so don’t put any PII in here. </param>
-        /// <param name="incident"> Associate this call with an incident or support ticket. This is of type string with a max limit of 100 characters. Twilio does not treat this field as PII, so don’t put any PII in here. </param>
+        /// <param name="comment"> Specify any comments pertaining to the call. `comment` has a maximum character limit of 100. Twilio does not treat this field as PII, so no PII should be included in the `comment`. </param>
+        /// <param name="incident"> Associate this call with an incident or support ticket. The `incident` parameter is of type string with a maximum character limit of 100. Twilio does not treat this field as PII, so no PII should be included in `incident`. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Annotation </returns>
         public static async System.Threading.Tasks.Task<AnnotationResource> UpdateAsync(
@@ -239,6 +242,22 @@ namespace Twilio.Rest.Insights.V1.Call
                 throw new ApiException(e.Message, e);
             }
         }
+        /// <summary>
+    /// Converts an object into a json string
+    /// </summary>
+    /// <param name="model"> C# model </param>
+    /// <returns> JSON string </returns>
+    public static string ToJson(object model)
+    {
+        try
+        {
+            return JsonConvert.SerializeObject(model);
+        }
+        catch (JsonException e)
+        {
+            throw new ApiException(e.Message, e);
+        }
+    }
 
     
         ///<summary> The unique SID identifier of the Call. </summary> 
@@ -257,27 +276,27 @@ namespace Twilio.Rest.Insights.V1.Call
         [JsonProperty("connectivity_issue")]
         public AnnotationResource.ConnectivityIssueEnum ConnectivityIssue { get; private set; }
 
-        ///<summary> Specify if the call had any subjective quality issues. Possible values, one or more of:  no_quality_issue, low_volume, choppy_robotic, echo, dtmf, latency, owa, static_noise. Use comma separated values to indicate multiple quality issues for the same call </summary> 
+        ///<summary> Specifies if the call had any subjective quality issues. Possible values are one or more of `no_quality_issue`, `low_volume`, `choppy_robotic`, `echo`, `dtmf`, `latency`, `owa`, or `static_noise`. </summary> 
         [JsonProperty("quality_issues")]
         public List<string> QualityIssues { get; private set; }
 
-        ///<summary> Specify if the call was a spam call. Use this to provide feedback on whether calls placed from your account were marked as spam, or if inbound calls received by your account were unwanted spam. Is of type Boolean: true, false. Use true if the call was a spam call. </summary> 
+        ///<summary> Specifies if the call was a spam call. Use this to provide feedback on whether calls placed from your account were marked as spam, or if inbound calls received by your account were unwanted spam. Is of type Boolean: true, false. Use true if the call was a spam call. </summary> 
         [JsonProperty("spam")]
         public bool? Spam { get; private set; }
 
-        ///<summary> Specify the call score. This is of type integer. Use a range of 1-5 to indicate the call experience score, with the following mapping as a reference for rating the call [5: Excellent, 4: Good, 3 : Fair, 2 : Poor, 1: Bad]. </summary> 
+        ///<summary> Specifies the Call Score, if available. This is of type integer. Use a range of 1-5 to indicate the call experience score, with the following mapping as a reference for rating the call [5: Excellent, 4: Good, 3 : Fair, 2 : Poor, 1: Bad]. </summary> 
         [JsonProperty("call_score")]
         public int? CallScore { get; private set; }
 
-        ///<summary> Specify any comments pertaining to the call. This of type string with a max limit of 100 characters. Twilio does not treat this field as PII, so don’t put any PII in here. </summary> 
+        ///<summary> Specifies any comments pertaining to the call. Twilio does not treat this field as PII, so no PII should be included in comments. </summary> 
         [JsonProperty("comment")]
         public string Comment { get; private set; }
 
-        ///<summary> Associate this call with an incident or support ticket. This is of type string with a max limit of 100 characters. Twilio does not treat this field as PII, so don’t put any PII in here. </summary> 
+        ///<summary> Incident or support ticket associated with this call. The `incident` property is of type string with a maximum character limit of 100. Twilio does not treat this field as PII, so no PII should be included in `incident`. </summary> 
         [JsonProperty("incident")]
         public string Incident { get; private set; }
 
-        ///<summary> The URL of this resource. </summary> 
+        ///<summary> The url </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 

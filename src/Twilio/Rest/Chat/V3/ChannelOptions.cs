@@ -39,7 +39,7 @@ namespace Twilio.Rest.Chat.V3
         
         public ChannelResource.ChannelTypeEnum Type { get; set; }
 
-        ///<summary> The unique ID of the [Messaging Service](https://www.twilio.com/docs/sms/services/api) this channel belongs to. </summary> 
+        ///<summary> The unique ID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) this channel belongs to. </summary> 
         public string MessagingServiceSid { get; set; }
 
 
@@ -55,7 +55,7 @@ namespace Twilio.Rest.Chat.V3
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -69,6 +69,7 @@ namespace Twilio.Rest.Chat.V3
             }
             return p;
         }
+
         
     /// <summary> Generate the necessary header parameters </summary>
     public List<KeyValuePair<string, string>> GetHeaderParams()

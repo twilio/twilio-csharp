@@ -18,6 +18,7 @@ using System;
 using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Clients;
+using Twilio.Constant;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -28,6 +29,8 @@ namespace Twilio.Rest.Insights.V1.Room
 {
     public class ParticipantResource : Resource
     {
+    
+
     
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class TwilioRealmEnum : StringEnum
@@ -311,6 +314,22 @@ namespace Twilio.Rest.Insights.V1.Room
                 throw new ApiException(e.Message, e);
             }
         }
+        /// <summary>
+    /// Converts an object into a json string
+    /// </summary>
+    /// <param name="model"> C# model </param>
+    /// <returns> JSON string </returns>
+    public static string ToJson(object model)
+    {
+        try
+        {
+            return JsonConvert.SerializeObject(model);
+        }
+        catch (JsonException e)
+        {
+            throw new ApiException(e.Message, e);
+        }
+    }
 
     
         ///<summary> Unique identifier for the participant. </summary> 
@@ -349,7 +368,7 @@ namespace Twilio.Rest.Insights.V1.Room
         [JsonProperty("codecs")]
         public List<ParticipantResource.CodecEnum> Codecs { get; private set; }
 
-        ///<summary> Reason the participant left the room. See [the list of possible values here](https://www.twilio.com/docs/video/video-log-analyzer/video-log-analyzer-api#end_reason). </summary> 
+        ///<summary> Reason the participant left the room. See [the list of possible values here](https://www.twilio.com/docs/video/troubleshooting/video-log-analyzer-api#end_reason). </summary> 
         [JsonProperty("end_reason")]
         public string EndReason { get; private set; }
 
@@ -365,7 +384,7 @@ namespace Twilio.Rest.Insights.V1.Room
         [JsonProperty("media_region")]
         public ParticipantResource.TwilioRealmEnum MediaRegion { get; private set; }
 
-        ///<summary> Object containing information about the participant's data from the room. See [below](https://www.twilio.com/docs/video/video-log-analyzer/video-log-analyzer-api#properties) for more information. </summary> 
+        ///<summary> Object containing information about the participant's data from the room. See [below](https://www.twilio.com/docs/video/troubleshooting/video-log-analyzer-api#properties) for more information. </summary> 
         [JsonProperty("properties")]
         public object Properties { get; private set; }
 
@@ -373,7 +392,7 @@ namespace Twilio.Rest.Insights.V1.Room
         [JsonProperty("edge_location")]
         public ParticipantResource.EdgeLocationEnum EdgeLocation { get; private set; }
 
-        ///<summary> Object containing information about the SDK name and version. See [below](https://www.twilio.com/docs/video/video-log-analyzer/video-log-analyzer-api#publisher_info) for more information. </summary> 
+        ///<summary> Object containing information about the SDK name and version. See [below](https://www.twilio.com/docs/video/troubleshooting/video-log-analyzer-api#publisher_info) for more information. </summary> 
         [JsonProperty("publisher_info")]
         public object PublisherInfo { get; private set; }
 

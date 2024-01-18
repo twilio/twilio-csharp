@@ -41,12 +41,13 @@ namespace Twilio.Rest.Conversations.V1.Service.Configuration
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
             return p;
         }
+
         
 
     }
@@ -83,7 +84,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Configuration
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -105,6 +106,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Configuration
             }
             return p;
         }
+
         
 
     }

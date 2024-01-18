@@ -60,7 +60,7 @@ namespace Twilio.Rest.Supersim.V1
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -90,6 +90,7 @@ namespace Twilio.Rest.Supersim.V1
             }
             return p;
         }
+
         
 
     }
@@ -111,12 +112,13 @@ namespace Twilio.Rest.Supersim.V1
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
             return p;
         }
+
         
 
     }
@@ -132,7 +134,7 @@ namespace Twilio.Rest.Supersim.V1
         ///<summary> The ICCID of the Sim resource that IP Command was sent to or from. </summary> 
         public string SimIccid { get; set; }
 
-        ///<summary> The status of the IP Command. Can be: `queued`, `sent`, `received` or `failed`. See the [IP Command Status Values](https://www.twilio.com/docs/wireless/api/ipcommand-resource#status-values) for a description of each. </summary> 
+        ///<summary> The status of the IP Command. Can be: `queued`, `sent`, `received` or `failed`. See the [IP Command Status Values](https://www.twilio.com/docs/iot/supersim/api/ipcommand-resource#status-values) for a description of each. </summary> 
         public IpCommandResource.StatusEnum Status { get; set; }
 
         ///<summary> The direction of the IP Command. Can be `to_sim` or `from_sim`. The value of `to_sim` is synonymous with the term `mobile terminated`, and `from_sim` is synonymous with the term `mobile originated`. </summary> 
@@ -143,7 +145,7 @@ namespace Twilio.Rest.Supersim.V1
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  override List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -169,6 +171,7 @@ namespace Twilio.Rest.Supersim.V1
             }
             return p;
         }
+
         
 
     }

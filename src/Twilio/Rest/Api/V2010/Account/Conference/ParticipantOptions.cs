@@ -85,7 +85,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         ///<summary> Whether to record the conference the participant is joining. Can be: `true`, `false`, `record-from-start`, and `do-not-record`. The default value is `false`. </summary> 
         public string ConferenceRecord { get; set; }
 
-        ///<summary> Whether to trim leading and trailing silence from your recorded conference audio files. Can be: `trim-silence` or `do-not-trim` and defaults to `trim-silence`. </summary> 
+        ///<summary> Whether to trim leading and trailing silence from the conference recording. Can be: `trim-silence` or `do-not-trim` and defaults to `trim-silence`. </summary> 
         public string ConferenceTrim { get; set; }
 
         ///<summary> The URL we should call using the `conference_status_callback_method` when the conference events in `conference_status_callback_event` occur. Only the value set by the first participant to join the conference is used. Subsequent `conference_status_callback` values are ignored. </summary> 
@@ -151,7 +151,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         ///<summary> The maximum duration of the call in seconds. Constraints depend on account and configuration. </summary> 
         public int? TimeLimit { get; set; }
 
-        ///<summary> Whether to detect if a human, answering machine, or fax has picked up the call. Can be: `Enable` or `DetectMessageEnd`. Use `Enable` if you would like us to return `AnsweredBy` as soon as the called party is identified. Use `DetectMessageEnd`, if you would like to leave a message on an answering machine. If `send_digits` is provided, this parameter is ignored. For more information, see [Answering Machine Detection](https://www.twilio.com/docs/voice/answering-machine-detection). </summary> 
+        ///<summary> Whether to detect if a human, answering machine, or fax has picked up the call. Can be: `Enable` or `DetectMessageEnd`. Use `Enable` if you would like us to return `AnsweredBy` as soon as the called party is identified. Use `DetectMessageEnd`, if you would like to leave a message on an answering machine. For more information, see [Answering Machine Detection](https://www.twilio.com/docs/voice/answering-machine-detection). </summary> 
         public string MachineDetection { get; set; }
 
         ///<summary> The number of seconds that we should attempt to detect an answering machine before timing out and sending a voice request with `AnsweredBy` of `unknown`. The default timeout is 30 seconds. </summary> 
@@ -172,6 +172,12 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         ///<summary> The HTTP method we should use when calling the `amd_status_callback` URL. Can be: `GET` or `POST` and the default is `POST`. </summary> 
         public Twilio.Http.HttpMethod AmdStatusCallbackMethod { get; set; }
 
+        ///<summary> Whether to trim any leading and trailing silence from the participant recording. Can be: `trim-silence` or `do-not-trim` and the default is `trim-silence`. </summary> 
+        public string Trim { get; set; }
+
+        ///<summary> A token string needed to invoke a forwarded call. A call_token is generated when an incoming call is received on a Twilio number. Pass an incoming call's call_token value to a forwarded call via the call_token parameter when creating a new call. A forwarded call should bear the same CallerID of the original incoming call. </summary> 
+        public string CallToken { get; set; }
+
 
         /// <summary> Construct a new CreateParticipantOptions </summary>
         /// <param name="pathConferenceSid"> The SID of the participant's conference. </param>
@@ -190,7 +196,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -378,8 +384,17 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             {
                 p.Add(new KeyValuePair<string, string>("AmdStatusCallbackMethod", AmdStatusCallbackMethod.ToString()));
             }
+            if (Trim != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Trim", Trim));
+            }
+            if (CallToken != null)
+            {
+                p.Add(new KeyValuePair<string, string>("CallToken", CallToken));
+            }
             return p;
         }
+
         
 
     }
@@ -409,12 +424,13 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
             return p;
         }
+
         
 
     }
@@ -446,12 +462,13 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
             return p;
         }
+
         
 
     }
@@ -487,7 +504,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  override List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -509,6 +526,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             }
             return p;
         }
+
         
 
     }
@@ -575,7 +593,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -629,6 +647,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             }
             return p;
         }
+
         
 
     }

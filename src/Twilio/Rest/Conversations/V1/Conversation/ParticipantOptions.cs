@@ -68,7 +68,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -106,6 +106,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
             }
             return p;
         }
+
         
     /// <summary> Generate the necessary header parameters </summary>
     public List<KeyValuePair<string, string>> GetHeaderParams()
@@ -145,12 +146,13 @@ namespace Twilio.Rest.Conversations.V1.Conversation
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
             return p;
         }
+
         
     /// <summary> Generate the necessary header parameters </summary>
     public List<KeyValuePair<string, string>> GetHeaderParams()
@@ -173,14 +175,14 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         ///<summary> The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this participant. </summary> 
         public string PathConversationSid { get; }
 
-        ///<summary> A 34 character string that uniquely identifies this resource. </summary> 
+        ///<summary> A 34 character string that uniquely identifies this resource. Alternatively, you can pass a Participant's `identity` rather than the SID. </summary> 
         public string PathSid { get; }
 
 
 
         /// <summary> Construct a new FetchConversationParticipantOptions </summary>
         /// <param name="pathConversationSid"> The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this participant. </param>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. Alternatively, you can pass a Participant's `identity` rather than the SID. </param>
         public FetchParticipantOptions(string pathConversationSid, string pathSid)
         {
             PathConversationSid = pathConversationSid;
@@ -189,12 +191,13 @@ namespace Twilio.Rest.Conversations.V1.Conversation
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
             return p;
         }
+
         
 
     }
@@ -218,7 +221,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  override List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -228,6 +231,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
             }
             return p;
         }
+
         
 
     }
@@ -285,7 +289,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -327,6 +331,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
             }
             return p;
         }
+
         
     /// <summary> Generate the necessary header parameters </summary>
     public List<KeyValuePair<string, string>> GetHeaderParams()

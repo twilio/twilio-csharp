@@ -18,6 +18,7 @@ using System;
 using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Clients;
+using Twilio.Constant;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -28,6 +29,8 @@ namespace Twilio.Rest.Api.V2010.Account.Message
 {
     public class FeedbackResource : Resource
     {
+    
+
     
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class OutcomeEnum : StringEnum
@@ -63,7 +66,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
             );
         }
 
-        /// <summary> create </summary>
+        /// <summary> Create Message Feedback to confirm a tracked user action was performed by the recipient of the associated Message </summary>
         /// <param name="options"> Create Feedback parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Feedback </returns>
@@ -75,7 +78,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         }
 
         #if !NET35
-        /// <summary> create </summary>
+        /// <summary> Create Message Feedback to confirm a tracked user action was performed by the recipient of the associated Message </summary>
         /// <param name="options"> Create Feedback parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Feedback </returns>
@@ -88,9 +91,9 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         }
         #endif
 
-        /// <summary> create </summary>
-        /// <param name="pathMessageSid"> The SID of the Message resource for which the feedback was provided. </param>
-        /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource. </param>
+        /// <summary> Create Message Feedback to confirm a tracked user action was performed by the recipient of the associated Message </summary>
+        /// <param name="pathMessageSid"> The SID of the Message resource for which to create MessageFeedback. </param>
+        /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) associated with the Message resource for which to create MessageFeedback. </param>
         /// <param name="outcome">  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Feedback </returns>
@@ -105,9 +108,9 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         }
 
         #if !NET35
-        /// <summary> create </summary>
-        /// <param name="pathMessageSid"> The SID of the Message resource for which the feedback was provided. </param>
-        /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource. </param>
+        /// <summary> Create Message Feedback to confirm a tracked user action was performed by the recipient of the associated Message </summary>
+        /// <param name="pathMessageSid"> The SID of the Message resource for which to create MessageFeedback. </param>
+        /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) associated with the Message resource for which to create MessageFeedback. </param>
         /// <param name="outcome">  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Feedback </returns>
@@ -138,13 +141,29 @@ namespace Twilio.Rest.Api.V2010.Account.Message
                 throw new ApiException(e.Message, e);
             }
         }
+        /// <summary>
+    /// Converts an object into a json string
+    /// </summary>
+    /// <param name="model"> C# model </param>
+    /// <returns> JSON string </returns>
+    public static string ToJson(object model)
+    {
+        try
+        {
+            return JsonConvert.SerializeObject(model);
+        }
+        catch (JsonException e)
+        {
+            throw new ApiException(e.Message, e);
+        }
+    }
 
     
-        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the MessageFeedback resource. </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) associated with this MessageFeedback resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The SID of the Message resource for which the feedback was provided. </summary> 
+        ///<summary> The SID of the Message resource associated with this MessageFeedback resource. </summary> 
         [JsonProperty("message_sid")]
         public string MessageSid { get; private set; }
 
@@ -152,11 +171,11 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         [JsonProperty("outcome")]
         public FeedbackResource.OutcomeEnum Outcome { get; private set; }
 
-        ///<summary> The date and time in GMT that the resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
+        ///<summary> The date and time in GMT when this MessageFeedback resource was created, specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The date and time in GMT that the resource was last updated specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
+        ///<summary> The date and time in GMT when this MessageFeedback resource was last updated, specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 

@@ -72,13 +72,19 @@ namespace Twilio.Tests.TwiML
                 Stream.StatusCallbackMethodEnum.Get
             );
 
-            elem.Siprec("name", "connector_name", Siprec.TrackEnum.InboundTrack);
+            elem.Siprec(
+                "name",
+                "connector_name",
+                Siprec.TrackEnum.InboundTrack,
+                "status_callback",
+                Siprec.StatusCallbackMethodEnum.Get
+            );
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
                 "<Stop>" + Environment.NewLine +
                 "  <Stream name=\"name\" connectorName=\"connector_name\" url=\"url\" track=\"inbound_track\" statusCallback=\"status_callback\" statusCallbackMethod=\"GET\"></Stream>" + Environment.NewLine +
-                "  <Siprec name=\"name\" connectorName=\"connector_name\" track=\"inbound_track\"></Siprec>" + Environment.NewLine +
+                "  <Siprec name=\"name\" connectorName=\"connector_name\" track=\"inbound_track\" statusCallback=\"status_callback\" statusCallbackMethod=\"GET\"></Siprec>" + Environment.NewLine +
                 "</Stop>",
                 elem.ToString()
             );

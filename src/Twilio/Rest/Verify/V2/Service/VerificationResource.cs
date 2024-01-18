@@ -18,6 +18,7 @@ using System;
 using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Clients;
+using Twilio.Constant;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -29,6 +30,8 @@ namespace Twilio.Rest.Verify.V2.Service
     public class VerificationResource : Resource
     {
     
+
+    
         public sealed class StatusEnum : StringEnum
         {
             private StatusEnum(string value) : base(value) {}
@@ -39,6 +42,18 @@ namespace Twilio.Rest.Verify.V2.Service
             }
             public static readonly StatusEnum Canceled = new StatusEnum("canceled");
             public static readonly StatusEnum Approved = new StatusEnum("approved");
+
+        }
+        public sealed class RiskCheckEnum : StringEnum
+        {
+            private RiskCheckEnum(string value) : base(value) {}
+            public RiskCheckEnum() {}
+            public static implicit operator RiskCheckEnum(string value)
+            {
+                return new RiskCheckEnum(value);
+            }
+            public static readonly RiskCheckEnum Enable = new RiskCheckEnum("enable");
+            public static readonly RiskCheckEnum Disable = new RiskCheckEnum("disable");
 
         }
         [JsonConverter(typeof(StringEnumConverter))]
@@ -118,6 +133,8 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="templateSid"> The message [template](https://www.twilio.com/docs/verify/api/templates). If provided, will override the default template for the Service. SMS and Voice channels only. </param>
         /// <param name="templateCustomSubstitutions"> A stringified JSON object in which the keys are the template's special variables and the values are the variables substitutions. </param>
         /// <param name="deviceIp"> Strongly encouraged if using the auto channel. The IP address of the client's device. If provided, it has to be a valid IPv4 or IPv6 address. </param>
+        /// <param name="riskCheck">  </param>
+        /// <param name="tags"> A string containing a JSON map of key value pairs of tags to be recorded as metadata for the message. The object may contain up to 10 tags. Keys and values can each be up to 128 characters in length. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Verification </returns>
         public static VerificationResource Create(
@@ -137,9 +154,11 @@ namespace Twilio.Rest.Verify.V2.Service
                                           string templateSid = null,
                                           string templateCustomSubstitutions = null,
                                           string deviceIp = null,
+                                          VerificationResource.RiskCheckEnum riskCheck = null,
+                                          string tags = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new CreateVerificationOptions(pathServiceSid, to, channel){  CustomFriendlyName = customFriendlyName, CustomMessage = customMessage, SendDigits = sendDigits, Locale = locale, CustomCode = customCode, Amount = amount, Payee = payee, RateLimits = rateLimits, ChannelConfiguration = channelConfiguration, AppHash = appHash, TemplateSid = templateSid, TemplateCustomSubstitutions = templateCustomSubstitutions, DeviceIp = deviceIp };
+            var options = new CreateVerificationOptions(pathServiceSid, to, channel){  CustomFriendlyName = customFriendlyName, CustomMessage = customMessage, SendDigits = sendDigits, Locale = locale, CustomCode = customCode, Amount = amount, Payee = payee, RateLimits = rateLimits, ChannelConfiguration = channelConfiguration, AppHash = appHash, TemplateSid = templateSid, TemplateCustomSubstitutions = templateCustomSubstitutions, DeviceIp = deviceIp, RiskCheck = riskCheck, Tags = tags };
             return Create(options, client);
         }
 
@@ -161,6 +180,8 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="templateSid"> The message [template](https://www.twilio.com/docs/verify/api/templates). If provided, will override the default template for the Service. SMS and Voice channels only. </param>
         /// <param name="templateCustomSubstitutions"> A stringified JSON object in which the keys are the template's special variables and the values are the variables substitutions. </param>
         /// <param name="deviceIp"> Strongly encouraged if using the auto channel. The IP address of the client's device. If provided, it has to be a valid IPv4 or IPv6 address. </param>
+        /// <param name="riskCheck">  </param>
+        /// <param name="tags"> A string containing a JSON map of key value pairs of tags to be recorded as metadata for the message. The object may contain up to 10 tags. Keys and values can each be up to 128 characters in length. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Verification </returns>
         public static async System.Threading.Tasks.Task<VerificationResource> CreateAsync(
@@ -180,9 +201,11 @@ namespace Twilio.Rest.Verify.V2.Service
                                                                                   string templateSid = null,
                                                                                   string templateCustomSubstitutions = null,
                                                                                   string deviceIp = null,
+                                                                                  VerificationResource.RiskCheckEnum riskCheck = null,
+                                                                                  string tags = null,
                                                                                   ITwilioRestClient client = null)
         {
-        var options = new CreateVerificationOptions(pathServiceSid, to, channel){  CustomFriendlyName = customFriendlyName, CustomMessage = customMessage, SendDigits = sendDigits, Locale = locale, CustomCode = customCode, Amount = amount, Payee = payee, RateLimits = rateLimits, ChannelConfiguration = channelConfiguration, AppHash = appHash, TemplateSid = templateSid, TemplateCustomSubstitutions = templateCustomSubstitutions, DeviceIp = deviceIp };
+        var options = new CreateVerificationOptions(pathServiceSid, to, channel){  CustomFriendlyName = customFriendlyName, CustomMessage = customMessage, SendDigits = sendDigits, Locale = locale, CustomCode = customCode, Amount = amount, Payee = payee, RateLimits = rateLimits, ChannelConfiguration = channelConfiguration, AppHash = appHash, TemplateSid = templateSid, TemplateCustomSubstitutions = templateCustomSubstitutions, DeviceIp = deviceIp, RiskCheck = riskCheck, Tags = tags };
             return await CreateAsync(options, client);
         }
         #endif
@@ -351,6 +374,22 @@ namespace Twilio.Rest.Verify.V2.Service
                 throw new ApiException(e.Message, e);
             }
         }
+        /// <summary>
+    /// Converts an object into a json string
+    /// </summary>
+    /// <param name="model"> C# model </param>
+    /// <returns> JSON string </returns>
+    public static string ToJson(object model)
+    {
+        try
+        {
+            return JsonConvert.SerializeObject(model);
+        }
+        catch (JsonException e)
+        {
+            throw new ApiException(e.Message, e);
+        }
+    }
 
     
         ///<summary> The unique string that we created to identify the Verification resource. </summary> 

@@ -18,6 +18,7 @@ using System;
 using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Clients;
+using Twilio.Constant;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -28,6 +29,8 @@ namespace Twilio.Rest.Supersim.V1
 {
     public class IpCommandResource : Resource
     {
+    
+
     
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class StatusEnum : StringEnum
@@ -267,7 +270,7 @@ namespace Twilio.Rest.Supersim.V1
         /// <summary> Retrieve a list of IP Commands from your account. </summary>
         /// <param name="sim"> The SID or unique name of the Sim resource that IP Command was sent to or from. </param>
         /// <param name="simIccid"> The ICCID of the Sim resource that IP Command was sent to or from. </param>
-        /// <param name="status"> The status of the IP Command. Can be: `queued`, `sent`, `received` or `failed`. See the [IP Command Status Values](https://www.twilio.com/docs/wireless/api/ipcommand-resource#status-values) for a description of each. </param>
+        /// <param name="status"> The status of the IP Command. Can be: `queued`, `sent`, `received` or `failed`. See the [IP Command Status Values](https://www.twilio.com/docs/iot/supersim/api/ipcommand-resource#status-values) for a description of each. </param>
         /// <param name="direction"> The direction of the IP Command. Can be `to_sim` or `from_sim`. The value of `to_sim` is synonymous with the term `mobile terminated`, and `from_sim` is synonymous with the term `mobile originated`. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="limit"> Record limit </param>
@@ -290,7 +293,7 @@ namespace Twilio.Rest.Supersim.V1
         /// <summary> Retrieve a list of IP Commands from your account. </summary>
         /// <param name="sim"> The SID or unique name of the Sim resource that IP Command was sent to or from. </param>
         /// <param name="simIccid"> The ICCID of the Sim resource that IP Command was sent to or from. </param>
-        /// <param name="status"> The status of the IP Command. Can be: `queued`, `sent`, `received` or `failed`. See the [IP Command Status Values](https://www.twilio.com/docs/wireless/api/ipcommand-resource#status-values) for a description of each. </param>
+        /// <param name="status"> The status of the IP Command. Can be: `queued`, `sent`, `received` or `failed`. See the [IP Command Status Values](https://www.twilio.com/docs/iot/supersim/api/ipcommand-resource#status-values) for a description of each. </param>
         /// <param name="direction"> The direction of the IP Command. Can be `to_sim` or `from_sim`. The value of `to_sim` is synonymous with the term `mobile terminated`, and `from_sim` is synonymous with the term `mobile originated`. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="limit"> Record limit </param>
@@ -375,6 +378,22 @@ namespace Twilio.Rest.Supersim.V1
                 throw new ApiException(e.Message, e);
             }
         }
+        /// <summary>
+    /// Converts an object into a json string
+    /// </summary>
+    /// <param name="model"> C# model </param>
+    /// <returns> JSON string </returns>
+    public static string ToJson(object model)
+    {
+        try
+        {
+            return JsonConvert.SerializeObject(model);
+        }
+        catch (JsonException e)
+        {
+            throw new ApiException(e.Message, e);
+        }
+    }
 
     
         ///<summary> The unique string that we created to identify the IP Command resource. </summary> 

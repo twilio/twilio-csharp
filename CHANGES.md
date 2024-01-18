@@ -1,6 +1,277 @@
 twilio-csharp Changelog
 =======================
 
+[2024-01-14] Version 6.16.1
+---------------------------
+**Library - Fix**
+- [PR #712](https://github.com/twilio/twilio-csharp/pull/712): pin sonarscanner version. Thanks to [@shrutiburman](https://github.com/shrutiburman)!
+
+**Push**
+- Migrated to new Push API V4 with Resilient Notification Delivery.
+
+
+[2023-12-14] Version 6.16.0
+---------------------------
+**Api**
+- Updated service base url for connect apps and authorized connect apps APIs **(breaking change)**
+
+**Events**
+- Marked as GA
+
+**Insights**
+- decommission voice-qualitystats-endpoint role
+
+**Numbers**
+- Add Get Port In request api
+
+**Taskrouter**
+- Add `jitter_buffer_size` param in update reservation
+
+**Trusthub**
+- Add additional optional fields in compliance_tollfree_inquiry.json
+
+**Verify**
+- Remove `Tags` from Public Docs **(breaking change)**
+
+
+[2023-12-05] Version 6.15.2
+---------------------------
+**Verify**
+- Add `VerifyEventSubscriptionEnabled` parameter to service create and update endpoints.
+
+
+[2023-11-17] Version 6.15.1
+---------------------------
+**Api**
+- Update documentation to reflect RiskCheck GA
+
+**Flex**
+- Adding `provisioning_status` for Email Manager
+
+**Intelligence**
+- Add text-generation operator (for example conversation summary) results to existing OperatorResults collection.
+
+**Messaging**
+- Add tollfree edit_allowed and edit_reason fields
+- Update Phone Number, Short Code, Alpha Sender, US A2P and Channel Sender documentation
+- Add DELETE support to Tollfree Verification resource
+
+**Serverless**
+- Add node18 as a valid Build runtime
+
+**Taskrouter**
+- Add container attribute to task_queue_bulk_real_time_statistics endpoint
+
+**Trusthub**
+- Rename did to tollfree_phone_number in compliance_tollfree_inquiry.json
+- Add new optional field notification_email to compliance_tollfree_inquiry.json
+
+**Verify**
+- Add `Tags` optional parameter on Verification creation.
+- Update Verify TOTP maturity to GA.
+
+
+[2023-10-19] Version 6.15.0
+---------------------------
+**Accounts**
+- Updated Safelist metadata to correct the docs.
+- Add Global SafeList API changes
+
+**Api**
+- Added optional parameter `CallToken` for create participant api
+
+**Flex**
+- Adding `offline_config` to Flex Configuration
+
+**Intelligence**
+- Deleted `redacted` parameter from fetching transcript in v2 **(breaking change)**
+
+**Lookups**
+- Add new `phone_number_quality_score` package to the lookup response
+- Remove `disposable_phone_number_risk` package **(breaking change)**
+
+**Messaging**
+- Update US App To Person documentation with current `message_samples` requirements
+
+**Taskrouter**
+- Remove beta_feature check on task_queue_bulk_real_time_statistics endpoint
+- Add `virtual_start_time` property to tasks
+- Updating `task_queue_data` format from `map` to `array` in the response of bulk get endpoint of TaskQueue Real Time Statistics API **(breaking change)**
+
+
+[2023-10-05] Version 6.14.1
+---------------------------
+**Library - Fix**
+- [PR #705](https://github.com/twilio/twilio-csharp/pull/705): Update method comments to reflect new security testing method. Thanks to [@AsabuHere](https://github.com/AsabuHere)!
+- [PR #704](https://github.com/twilio/twilio-csharp/pull/704): [C# helper library] Changes in validate ssl certificate method with new url and port. Thanks to [@AsabuHere](https://github.com/AsabuHere)!
+
+**Library - Chore**
+- [PR #700](https://github.com/twilio/twilio-csharp/pull/700): twilio help changes. Thanks to [@kridai](https://github.com/kridai)!
+
+**Lookups**
+- Add test api support for Lookup v2
+
+
+[2023-09-21] Version 6.14.0
+---------------------------
+**Library - Chore**
+- [PR #699](https://github.com/twilio/twilio-csharp/pull/699): removing override from getparams. Thanks to [@sbansla](https://github.com/sbansla)!
+
+**Library - Fix**
+- [PR #695](https://github.com/twilio/twilio-csharp/pull/695): Added contentType and removed unused abstract function GetParam. Thanks to [@tiwarishubham635](https://github.com/tiwarishubham635)!
+
+**Library - Feature**
+- [PR #693](https://github.com/twilio/twilio-csharp/pull/693): Added Enum file for contentType. Thanks to [@tiwarishubham635](https://github.com/tiwarishubham635)!
+
+**Conversations**
+- Enable conversation email bindings, email address configurations and email message subjects
+
+**Flex**
+- Adding `console_errors_included` to Flex Configuration field `debugger_integrations`
+- Introducing new channel status as `inactive` in modify channel endpoint for leave functionality **(breaking change)**
+- Adding `citrix_voice_vdi` to Flex Configuration
+
+**Taskrouter**
+- Add Update Queues, Workers, Workflow Real Time Statistics API to flex-rt-data-api-v2 endpoint
+- Add Update Workspace Real Time Statistics API to flex-rt-data-api-v2 endpoint
+
+
+[2023-09-07] Version 6.13.0
+---------------------------
+**Library - Fix**
+- [PR #687](https://github.com/twilio/twilio-csharp/pull/687): Update dotnet version. Thanks to [@kridai](https://github.com/kridai)!
+
+**Api**
+- Make message tagging parameters public **(breaking change)**
+
+**Flex**
+- Adding `agent_conv_end_methods` to Flex Configuration
+
+**Messaging**
+- Mark Mesasging Services fallback_to_long_code feature obsolete
+
+**Numbers**
+- Add Create Port In request api
+- Renaming sid for bulk_hosting_sid and remove account_sid response field in numbers/v2/BulkHostedNumberOrders **(breaking change)**
+
+**Pricing**
+- gate resources behind a beta_feature
+
+
+[2023-08-24] Version 6.12.0
+---------------------------
+**Api**
+- Add new property `RiskCheck` for SMS pumping protection feature only (public beta to be available soon): Include this parameter with a value of `disable` to skip any kind of risk check on the respective message request
+
+**Flex**
+- Changing `sid<UO>` path param to `sid<UT>` in interaction channel participant update endpoint **(breaking change)**
+
+**Messaging**
+- Add Channel Sender api
+- Fixing country code docs and removing Zipwhip references
+
+**Numbers**
+- Request status changed in numbers/v2/BulkHostedNumberOrders **(breaking change)**
+- Add bulk hosting orders API under version `/v2
+
+
+[2023-08-10] Version 6.11.0
+---------------------------
+**Insights**
+- Normalize annotations parameters in list summary api to be prefixed
+
+**Numbers**
+- Change Bulk_hosted_sid from BHR to BH prefix in HNO and dependent under version `/v2` API's. **(breaking change)**
+- Added parameter target_account_sid to portability and account_sid to response body
+
+**Verify**
+- Remove beta feature flag to list attempts API.
+- Remove beta feature flag to verifications summary attempts API.
+
+
+[2023-07-27] Version 6.10.1
+---------------------------
+**Api**
+- Added `voice-intelligence`, `voice-intelligence-transcription` and `voice-intelligence-operators` to `usage_record` API.
+- Added `tts-google` to `usage_record` API.
+
+**Lookups**
+- Add new `disposable_phone_number_risk` package to the lookup response
+
+**Verify**
+- Documentation of list attempts API was improved by correcting `date_created_after` and `date_created_before` expected date format.
+- Documentation was improved by correcting `date_created_after` and `date_created_before` expected date format parameter on attempts summary API.
+- Documentation was improved by adding `WHATSAPP` as optional valid parameter on attempts summary API.
+
+**Twiml**
+- Added support for he-il inside of ssm_lang.json that was missing
+- Added support for he-il language in say.json that was missing
+- Add `statusCallback` and `statusCallbackMethod` attributes to `<Siprec>`.
+
+
+[2023-07-13] Version 6.10.0
+---------------------------
+**Flex**
+- Adding `interaction_context_sid` as optional parameter in Interactions API
+
+**Messaging**
+- Making visiblity public for tollfree_verification API
+
+**Numbers**
+- Remove Sms capability property from HNO creation under version `/v2` of HNO API. **(breaking change)**
+- Update required properties in LOA creation under version `/v2` of Authorization document API. **(breaking change)**
+
+**Taskrouter**
+- Add api to fetch task queue statistics for multiple TaskQueues
+
+**Verify**
+- Add `RiskCheck` optional parameter on Verification creation.
+
+**Twiml**
+- Add Google Voices and languages
+
+
+[2023-06-28] Version 6.9.0
+--------------------------
+**Lookups**
+- Add `reassigned_number` package to the lookup response
+
+**Numbers**
+- Add hosted_number_order under version `/v2`.
+- Update properties in Porting and Bulk Porting APIs. **(breaking change)**
+- Added bulk Portability API under version `/v1`.
+- Added Portability API under version `/v1`.
+
+
+[2023-06-15] Version 6.8.0
+--------------------------
+**Api**
+- Added `content_sid` as conditional parameter
+- Removed `content_sid` as optional field **(breaking change)**
+
+**Insights**
+- Added `annotation` to list summary output
+
+
+[2023-06-01] Version 6.7.0
+--------------------------
+**Library - Fix**
+- [PR #680](https://github.com/twilio/twilio-csharp/pull/680): revert the commit Use IEnumerable<T> instead of List<T> for TwiML enums via PR (#671). Thanks to [@AsabuHere](https://github.com/AsabuHere)!
+- [PR #672](https://github.com/twilio/twilio-csharp/pull/672): Add `ToString()` override to TwiML class. Thanks to [@Swimburger](https://github.com/Swimburger)!
+
+**Library - Feature**
+- [PR #671](https://github.com/twilio/twilio-csharp/pull/671): Use IEnumerable<T> instead of List<T> for TwiML enums. Thanks to [@Swimburger](https://github.com/Swimburger)!
+
+**Api**
+- Add `Trim` to create Conference Participant API
+
+**Intelligence**
+- First public beta release for Voice Intelligence APIs with client libraries
+
+**Messaging**
+- Add new `errors` attribute to us_app_to_person resource. This attribute will provide additional information about campaign registration errors.
+
+
 [2023-05-18] Version 6.6.1
 --------------------------
 **Conversations**

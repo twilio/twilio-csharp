@@ -54,12 +54,13 @@ namespace Twilio.Rest.Chat.V2.Service.User
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
             return p;
         }
+
         
     /// <summary> Generate the necessary header parameters </summary>
     public List<KeyValuePair<string, string>> GetHeaderParams()
@@ -103,12 +104,13 @@ namespace Twilio.Rest.Chat.V2.Service.User
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
             return p;
         }
+
         
 
     }
@@ -137,7 +139,7 @@ namespace Twilio.Rest.Chat.V2.Service.User
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  override List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -147,6 +149,7 @@ namespace Twilio.Rest.Chat.V2.Service.User
             }
             return p;
         }
+
         
 
     }
@@ -188,7 +191,7 @@ namespace Twilio.Rest.Chat.V2.Service.User
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -206,6 +209,7 @@ namespace Twilio.Rest.Chat.V2.Service.User
             }
             return p;
         }
+
         
 
     }

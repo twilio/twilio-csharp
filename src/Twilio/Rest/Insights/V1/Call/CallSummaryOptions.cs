@@ -23,20 +23,20 @@ using Twilio.Converters;
 
 namespace Twilio.Rest.Insights.V1.Call
 {
-    /// <summary> fetch </summary>
+    /// <summary> Get a specific Call Summary. </summary>
     public class FetchCallSummaryOptions : IOptions<CallSummaryResource>
     {
     
-        
+        ///<summary> The unique SID identifier of the Call. </summary> 
         public string PathCallSid { get; }
 
-        
+        ///<summary> The Processing State of this Call Summary. One of `complete`, `partial` or `all`. </summary> 
         public CallSummaryResource.ProcessingStateEnum ProcessingState { get; set; }
 
 
 
         /// <summary> Construct a new FetchSummaryOptions </summary>
-        /// <param name="pathCallSid">  </param>
+        /// <param name="pathCallSid"> The unique SID identifier of the Call. </param>
         public FetchCallSummaryOptions(string pathCallSid)
         {
             PathCallSid = pathCallSid;
@@ -44,7 +44,7 @@ namespace Twilio.Rest.Insights.V1.Call
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -54,6 +54,7 @@ namespace Twilio.Rest.Insights.V1.Call
             }
             return p;
         }
+
         
 
     }

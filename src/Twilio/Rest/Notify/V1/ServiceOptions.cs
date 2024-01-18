@@ -37,7 +37,7 @@ namespace Twilio.Rest.Notify.V1
         ///<summary> The SID of the [Credential](https://www.twilio.com/docs/notify/api/credential-resource) to use for GCM Bindings. </summary> 
         public string GcmCredentialSid { get; set; }
 
-        ///<summary> The SID of the [Messaging Service](https://www.twilio.com/docs/sms/send-messages#messaging-services) to use for SMS Bindings. This parameter must be set in order to send SMS notifications. </summary> 
+        ///<summary> The SID of the [Messaging Service](https://www.twilio.com/docs/sms/quickstart#messaging-services) to use for SMS Bindings. This parameter must be set in order to send SMS notifications. </summary> 
         public string MessagingServiceSid { get; set; }
 
         ///<summary> Deprecated. </summary> 
@@ -74,7 +74,7 @@ namespace Twilio.Rest.Notify.V1
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -136,6 +136,7 @@ namespace Twilio.Rest.Notify.V1
             }
             return p;
         }
+
         
 
     }
@@ -157,12 +158,13 @@ namespace Twilio.Rest.Notify.V1
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
             return p;
         }
+
         
 
     }
@@ -186,12 +188,13 @@ namespace Twilio.Rest.Notify.V1
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
             return p;
         }
+
         
 
     }
@@ -209,7 +212,7 @@ namespace Twilio.Rest.Notify.V1
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  override List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -223,6 +226,7 @@ namespace Twilio.Rest.Notify.V1
             }
             return p;
         }
+
         
 
     }
@@ -243,7 +247,7 @@ namespace Twilio.Rest.Notify.V1
         ///<summary> The SID of the [Credential](https://www.twilio.com/docs/notify/api/credential-resource) to use for GCM Bindings. </summary> 
         public string GcmCredentialSid { get; set; }
 
-        ///<summary> The SID of the [Messaging Service](https://www.twilio.com/docs/sms/send-messages#messaging-services) to use for SMS Bindings. This parameter must be set in order to send SMS notifications. </summary> 
+        ///<summary> The SID of the [Messaging Service](https://www.twilio.com/docs/sms/quickstart#messaging-services) to use for SMS Bindings. This parameter must be set in order to send SMS notifications. </summary> 
         public string MessagingServiceSid { get; set; }
 
         ///<summary> Deprecated. </summary> 
@@ -287,7 +291,7 @@ namespace Twilio.Rest.Notify.V1
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -349,6 +353,7 @@ namespace Twilio.Rest.Notify.V1
             }
             return p;
         }
+
         
 
     }

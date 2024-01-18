@@ -27,7 +27,7 @@ namespace Twilio.Rest.Wireless.V1.Sim
     public class ReadUsageRecordOptions : ReadOptions<UsageRecordResource>
     {
     
-        ///<summary> The SID of the [Sim resource](https://www.twilio.com/docs/wireless/api/sim-resource)  to read the usage from. </summary> 
+        ///<summary> The SID of the [Sim resource](https://www.twilio.com/docs/iot/wireless/api/sim-resource)  to read the usage from. </summary> 
         public string PathSimSid { get; }
 
         ///<summary> Only include usage that occurred on or before this date, specified in [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html). The default is the current time. </summary> 
@@ -42,7 +42,7 @@ namespace Twilio.Rest.Wireless.V1.Sim
 
 
         /// <summary> Construct a new ListUsageRecordOptions </summary>
-        /// <param name="pathSimSid"> The SID of the [Sim resource](https://www.twilio.com/docs/wireless/api/sim-resource)  to read the usage from. </param>
+        /// <param name="pathSimSid"> The SID of the [Sim resource](https://www.twilio.com/docs/iot/wireless/api/sim-resource)  to read the usage from. </param>
         public ReadUsageRecordOptions(string pathSimSid)
         {
             PathSimSid = pathSimSid;
@@ -50,7 +50,7 @@ namespace Twilio.Rest.Wireless.V1.Sim
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  override List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -72,6 +72,7 @@ namespace Twilio.Rest.Wireless.V1.Sim
             }
             return p;
         }
+
         
 
     }

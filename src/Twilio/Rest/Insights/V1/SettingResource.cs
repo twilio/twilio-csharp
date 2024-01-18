@@ -18,6 +18,7 @@ using System;
 using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Clients;
+using Twilio.Constant;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -28,6 +29,8 @@ namespace Twilio.Rest.Insights.V1
 {
     public class SettingResource : Resource
     {
+    
+
     
 
         
@@ -46,7 +49,7 @@ namespace Twilio.Rest.Insights.V1
             );
         }
 
-        /// <summary> fetch </summary>
+        /// <summary> Get the Voice Insights Settings. </summary>
         /// <param name="options"> Fetch Setting parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Setting </returns>
@@ -58,7 +61,7 @@ namespace Twilio.Rest.Insights.V1
         }
 
         #if !NET35
-        /// <summary> fetch </summary>
+        /// <summary> Get the Voice Insights Settings. </summary>
         /// <param name="options"> Fetch Setting parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Setting </returns>
@@ -70,8 +73,8 @@ namespace Twilio.Rest.Insights.V1
             return FromJson(response.Content);
         }
         #endif
-        /// <summary> fetch </summary>
-        /// <param name="subaccountSid">  </param>
+        /// <summary> Get the Voice Insights Settings. </summary>
+        /// <param name="subaccountSid"> The unique SID identifier of the Subaccount. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Setting </returns>
         public static SettingResource Fetch(
@@ -83,8 +86,8 @@ namespace Twilio.Rest.Insights.V1
         }
 
         #if !NET35
-        /// <summary> fetch </summary>
-        /// <param name="subaccountSid">  </param>
+        /// <summary> Get the Voice Insights Settings. </summary>
+        /// <param name="subaccountSid"> The unique SID identifier of the Subaccount. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Setting </returns>
         public static async System.Threading.Tasks.Task<SettingResource> FetchAsync(string subaccountSid = null, ITwilioRestClient client = null)
@@ -109,7 +112,7 @@ namespace Twilio.Rest.Insights.V1
             );
         }
 
-        /// <summary> update </summary>
+        /// <summary> Update a specific Voice Insights Setting. </summary>
         /// <param name="options"> Update Setting parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Setting </returns>
@@ -120,7 +123,7 @@ namespace Twilio.Rest.Insights.V1
             return FromJson(response.Content);
         }
 
-        /// <summary> update </summary>
+        /// <summary> Update a specific Voice Insights Setting. </summary>
         /// <param name="options"> Update Setting parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Setting </returns>
@@ -134,10 +137,10 @@ namespace Twilio.Rest.Insights.V1
         }
         #endif
 
-        /// <summary> update </summary>
-        /// <param name="advancedFeatures">  </param>
-        /// <param name="voiceTrace">  </param>
-        /// <param name="subaccountSid">  </param>
+        /// <summary> Update a specific Voice Insights Setting. </summary>
+        /// <param name="advancedFeatures"> A boolean flag to enable Advanced Features for Voice Insights. </param>
+        /// <param name="voiceTrace"> A boolean flag to enable Voice Trace. </param>
+        /// <param name="subaccountSid"> The unique SID identifier of the Subaccount. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Setting </returns>
         public static SettingResource Update(
@@ -151,10 +154,10 @@ namespace Twilio.Rest.Insights.V1
         }
 
         #if !NET35
-        /// <summary> update </summary>
-        /// <param name="advancedFeatures">  </param>
-        /// <param name="voiceTrace">  </param>
-        /// <param name="subaccountSid">  </param>
+        /// <summary> Update a specific Voice Insights Setting. </summary>
+        /// <param name="advancedFeatures"> A boolean flag to enable Advanced Features for Voice Insights. </param>
+        /// <param name="voiceTrace"> A boolean flag to enable Voice Trace. </param>
+        /// <param name="subaccountSid"> The unique SID identifier of the Subaccount. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Setting </returns>
         public static async System.Threading.Tasks.Task<SettingResource> UpdateAsync(
@@ -184,21 +187,37 @@ namespace Twilio.Rest.Insights.V1
                 throw new ApiException(e.Message, e);
             }
         }
+        /// <summary>
+    /// Converts an object into a json string
+    /// </summary>
+    /// <param name="model"> C# model </param>
+    /// <returns> JSON string </returns>
+    public static string ToJson(object model)
+    {
+        try
+        {
+            return JsonConvert.SerializeObject(model);
+        }
+        catch (JsonException e)
+        {
+            throw new ApiException(e.Message, e);
+        }
+    }
 
     
-        ///<summary> The account_sid </summary> 
+        ///<summary> The unique SID identifier of the Account. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The advanced_features </summary> 
+        ///<summary> A boolean flag indicating whether Advanced Features for Voice Insights are enabled. </summary> 
         [JsonProperty("advanced_features")]
         public bool? AdvancedFeatures { get; private set; }
 
-        ///<summary> The voice_trace </summary> 
+        ///<summary> A boolean flag indicating whether Voice Trace is enabled. </summary> 
         [JsonProperty("voice_trace")]
         public bool? VoiceTrace { get; private set; }
 
-        ///<summary> The url </summary> 
+        ///<summary> The URL of this resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 

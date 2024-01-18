@@ -18,6 +18,7 @@ using System;
 using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Clients;
+using Twilio.Constant;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -28,6 +29,8 @@ namespace Twilio.Rest.Wireless.V1
 {
     public class RatePlanResource : Resource
     {
+    
+
     
 
         
@@ -76,12 +79,12 @@ namespace Twilio.Rest.Wireless.V1
         /// <param name="friendlyName"> A descriptive string that you create to describe the resource. It does not have to be unique. </param>
         /// <param name="dataEnabled"> Whether SIMs can use GPRS/3G/4G/LTE data connectivity. </param>
         /// <param name="dataLimit"> The total data usage (download and upload combined) in Megabytes that the Network allows during one month on the home network (T-Mobile USA). The metering period begins the day of activation and ends on the same day in the following month. Can be up to 2TB and the default value is `1000`. </param>
-        /// <param name="dataMetering"> The model used to meter data usage. Can be: `payg` and `quota-1`, `quota-10`, and `quota-50`. Learn more about the available [data metering models](https://www.twilio.com/docs/wireless/api/rateplan-resource#payg-vs-quota-data-plans). </param>
-        /// <param name="messagingEnabled"> Whether SIMs can make, send, and receive SMS using [Commands](https://www.twilio.com/docs/wireless/api/command-resource). </param>
+        /// <param name="dataMetering"> The model used to meter data usage. Can be: `payg` and `quota-1`, `quota-10`, and `quota-50`. Learn more about the available [data metering models](https://www.twilio.com/docs/iot/wireless/api/rateplan-resource#payg-vs-quota-data-plans). </param>
+        /// <param name="messagingEnabled"> Whether SIMs can make, send, and receive SMS using [Commands](https://www.twilio.com/docs/iot/wireless/api/command-resource). </param>
         /// <param name="voiceEnabled"> Deprecated. </param>
-        /// <param name="nationalRoamingEnabled"> Whether SIMs can roam on networks other than the home network (T-Mobile USA) in the United States. See [national roaming](https://www.twilio.com/docs/wireless/api/rateplan-resource#national-roaming). </param>
+        /// <param name="nationalRoamingEnabled"> Whether SIMs can roam on networks other than the home network (T-Mobile USA) in the United States. See [national roaming](https://www.twilio.com/docs/iot/wireless/api/rateplan-resource#national-roaming). </param>
         /// <param name="internationalRoaming"> The list of services that SIMs capable of using GPRS/3G/4G/LTE data connectivity can use outside of the United States. Can contain: `data` and `messaging`. </param>
-        /// <param name="nationalRoamingDataLimit"> The total data usage (download and upload combined) in Megabytes that the Network allows during one month on non-home networks in the United States. The metering period begins the day of activation and ends on the same day in the following month. Can be up to 2TB. See [national roaming](https://www.twilio.com/docs/wireless/api/rateplan-resource#national-roaming) for more info. </param>
+        /// <param name="nationalRoamingDataLimit"> The total data usage (download and upload combined) in Megabytes that the Network allows during one month on non-home networks in the United States. The metering period begins the day of activation and ends on the same day in the following month. Can be up to 2TB. See [national roaming](https://www.twilio.com/docs/iot/wireless/api/rateplan-resource#national-roaming) for more info. </param>
         /// <param name="internationalRoamingDataLimit"> The total data usage (download and upload combined) in Megabytes that the Network allows during one month when roaming outside the United States. Can be up to 2TB. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of RatePlan </returns>
@@ -109,12 +112,12 @@ namespace Twilio.Rest.Wireless.V1
         /// <param name="friendlyName"> A descriptive string that you create to describe the resource. It does not have to be unique. </param>
         /// <param name="dataEnabled"> Whether SIMs can use GPRS/3G/4G/LTE data connectivity. </param>
         /// <param name="dataLimit"> The total data usage (download and upload combined) in Megabytes that the Network allows during one month on the home network (T-Mobile USA). The metering period begins the day of activation and ends on the same day in the following month. Can be up to 2TB and the default value is `1000`. </param>
-        /// <param name="dataMetering"> The model used to meter data usage. Can be: `payg` and `quota-1`, `quota-10`, and `quota-50`. Learn more about the available [data metering models](https://www.twilio.com/docs/wireless/api/rateplan-resource#payg-vs-quota-data-plans). </param>
-        /// <param name="messagingEnabled"> Whether SIMs can make, send, and receive SMS using [Commands](https://www.twilio.com/docs/wireless/api/command-resource). </param>
+        /// <param name="dataMetering"> The model used to meter data usage. Can be: `payg` and `quota-1`, `quota-10`, and `quota-50`. Learn more about the available [data metering models](https://www.twilio.com/docs/iot/wireless/api/rateplan-resource#payg-vs-quota-data-plans). </param>
+        /// <param name="messagingEnabled"> Whether SIMs can make, send, and receive SMS using [Commands](https://www.twilio.com/docs/iot/wireless/api/command-resource). </param>
         /// <param name="voiceEnabled"> Deprecated. </param>
-        /// <param name="nationalRoamingEnabled"> Whether SIMs can roam on networks other than the home network (T-Mobile USA) in the United States. See [national roaming](https://www.twilio.com/docs/wireless/api/rateplan-resource#national-roaming). </param>
+        /// <param name="nationalRoamingEnabled"> Whether SIMs can roam on networks other than the home network (T-Mobile USA) in the United States. See [national roaming](https://www.twilio.com/docs/iot/wireless/api/rateplan-resource#national-roaming). </param>
         /// <param name="internationalRoaming"> The list of services that SIMs capable of using GPRS/3G/4G/LTE data connectivity can use outside of the United States. Can contain: `data` and `messaging`. </param>
-        /// <param name="nationalRoamingDataLimit"> The total data usage (download and upload combined) in Megabytes that the Network allows during one month on non-home networks in the United States. The metering period begins the day of activation and ends on the same day in the following month. Can be up to 2TB. See [national roaming](https://www.twilio.com/docs/wireless/api/rateplan-resource#national-roaming) for more info. </param>
+        /// <param name="nationalRoamingDataLimit"> The total data usage (download and upload combined) in Megabytes that the Network allows during one month on non-home networks in the United States. The metering period begins the day of activation and ends on the same day in the following month. Can be up to 2TB. See [national roaming](https://www.twilio.com/docs/iot/wireless/api/rateplan-resource#national-roaming) for more info. </param>
         /// <param name="internationalRoamingDataLimit"> The total data usage (download and upload combined) in Megabytes that the Network allows during one month when roaming outside the United States. Can be up to 2TB. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of RatePlan </returns>
@@ -482,6 +485,22 @@ namespace Twilio.Rest.Wireless.V1
                 throw new ApiException(e.Message, e);
             }
         }
+        /// <summary>
+    /// Converts an object into a json string
+    /// </summary>
+    /// <param name="model"> C# model </param>
+    /// <returns> JSON string </returns>
+    public static string ToJson(object model)
+    {
+        try
+        {
+            return JsonConvert.SerializeObject(model);
+        }
+        catch (JsonException e)
+        {
+            throw new ApiException(e.Message, e);
+        }
+    }
 
     
         ///<summary> The unique string that we created to identify the RatePlan resource. </summary> 
@@ -504,7 +523,7 @@ namespace Twilio.Rest.Wireless.V1
         [JsonProperty("data_enabled")]
         public bool? DataEnabled { get; private set; }
 
-        ///<summary> The model used to meter data usage. Can be: `payg` and `quota-1`, `quota-10`, and `quota-50`. Learn more about the available [data metering models](https://www.twilio.com/docs/wireless/api/rateplan-resource#payg-vs-quota-data-plans). </summary> 
+        ///<summary> The model used to meter data usage. Can be: `payg` and `quota-1`, `quota-10`, and `quota-50`. Learn more about the available [data metering models](https://www.twilio.com/docs/iot/wireless/api/rateplan-resource#payg-vs-quota-data-plans). </summary> 
         [JsonProperty("data_metering")]
         public string DataMetering { get; private set; }
 
@@ -512,7 +531,7 @@ namespace Twilio.Rest.Wireless.V1
         [JsonProperty("data_limit")]
         public int? DataLimit { get; private set; }
 
-        ///<summary> Whether SIMs can make, send, and receive SMS using [Commands](https://www.twilio.com/docs/wireless/api/command-resource). </summary> 
+        ///<summary> Whether SIMs can make, send, and receive SMS using [Commands](https://www.twilio.com/docs/iot/wireless/api/command-resource). </summary> 
         [JsonProperty("messaging_enabled")]
         public bool? MessagingEnabled { get; private set; }
 
@@ -520,7 +539,7 @@ namespace Twilio.Rest.Wireless.V1
         [JsonProperty("voice_enabled")]
         public bool? VoiceEnabled { get; private set; }
 
-        ///<summary> Whether SIMs can roam on networks other than the home network (T-Mobile USA) in the United States. See [national roaming](https://www.twilio.com/docs/wireless/api/rateplan-resource#national-roaming). </summary> 
+        ///<summary> Whether SIMs can roam on networks other than the home network (T-Mobile USA) in the United States. See [national roaming](https://www.twilio.com/docs/iot/wireless/api/rateplan-resource#national-roaming). </summary> 
         [JsonProperty("national_roaming_enabled")]
         public bool? NationalRoamingEnabled { get; private set; }
 

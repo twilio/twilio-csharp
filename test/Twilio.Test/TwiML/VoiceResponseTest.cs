@@ -100,7 +100,7 @@ namespace Twilio.Tests.TwiML
             );
 
             elem.Gather(
-                new[] {Gather.InputEnum.Dtmf},  
+                new[] {Gather.InputEnum.Dtmf},
                 new Uri("https://example.com"),
                 Twilio.Http.HttpMethod.Get,
                 1,
@@ -155,7 +155,7 @@ namespace Twilio.Tests.TwiML
 
             elem.Reject(Reject.ReasonEnum.Rejected);
 
-            elem.Say("message", Say.VoiceEnum.Man, 1, Say.LanguageEnum.Arb);
+            elem.Say("message", Say.VoiceEnum.Man, 1, Say.LanguageEnum.AfZa);
 
             elem.Sms(
                 "message",
@@ -217,7 +217,7 @@ namespace Twilio.Tests.TwiML
                 "  <Record action=\"https://example.com\" method=\"GET\" timeout=\"1\" finishOnKey=\"finish_on_key\" maxLength=\"1\" playBeep=\"true\" trim=\"trim-silence\" recordingStatusCallback=\"https://example.com\" recordingStatusCallbackMethod=\"GET\" recordingStatusCallbackEvent=\"in-progress\" transcribe=\"true\" transcribeCallback=\"https://example.com\"></Record>" + Environment.NewLine +
                 "  <Redirect method=\"GET\">https://example.com</Redirect>" + Environment.NewLine +
                 "  <Reject reason=\"rejected\"></Reject>" + Environment.NewLine +
-                "  <Say voice=\"man\" loop=\"1\" language=\"arb\">message</Say>" + Environment.NewLine +
+                "  <Say voice=\"man\" loop=\"1\" language=\"af-ZA\">message</Say>" + Environment.NewLine +
                 "  <Sms to=\"+15558675310\" from=\"+15017122661\" action=\"https://example.com\" method=\"GET\" statusCallback=\"https://example.com\">message</Sms>" + Environment.NewLine +
                 "  <Pay input=\"dtmf\" action=\"https://example.com\" bankAccountType=\"consumer-checking\" statusCallback=\"https://example.com\" statusCallbackMethod=\"GET\" timeout=\"1\" maxAttempts=\"1\" securityCode=\"true\" postalCode=\"postal_code\" minPostalCodeLength=\"1\" paymentConnector=\"payment_connector\" paymentMethod=\"ach-debit\" tokenType=\"one-time\" chargeAmount=\"charge_amount\" currency=\"currency\" description=\"description\" validCardTypes=\"visa\" language=\"de-DE\"></Pay>" + Environment.NewLine +
                 "  <Prompt for=\"payment-card-number\" errorType=\"timeout\" cardType=\"visa\" attempt=\"1\" requireMatchingInputs=\"true\"></Prompt>" + Environment.NewLine +

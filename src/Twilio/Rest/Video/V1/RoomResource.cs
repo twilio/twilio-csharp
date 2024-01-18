@@ -18,6 +18,7 @@ using System;
 using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Clients;
+using Twilio.Constant;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -28,6 +29,8 @@ namespace Twilio.Rest.Video.V1
 {
     public class RoomResource : Resource
     {
+    
+
     
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class VideoCodecEnum : StringEnum
@@ -122,7 +125,7 @@ namespace Twilio.Rest.Video.V1
         /// <param name="maxParticipants"> The maximum number of concurrent Participants allowed in the room. Peer-to-peer rooms can have up to 10 Participants. Small Group rooms can have up to 4 Participants. Group rooms can have up to 50 Participants. </param>
         /// <param name="recordParticipantsOnConnect"> Whether to start recording when Participants connect. ***This feature is not available in `peer-to-peer` rooms.*** </param>
         /// <param name="videoCodecs"> An array of the video codecs that are supported when publishing a track in the room.  Can be: `VP8` and `H264`.  ***This feature is not available in `peer-to-peer` rooms*** </param>
-        /// <param name="mediaRegion"> The region for the media server in Group Rooms.  Can be: one of the [available Media Regions](https://www.twilio.com/docs/video/ip-address-whitelisting#group-rooms-media-servers). ***This feature is not available in `peer-to-peer` rooms.*** </param>
+        /// <param name="mediaRegion"> The region for the media server in Group Rooms.  Can be: one of the [available Media Regions](https://www.twilio.com/docs/video/ip-addresses#group-rooms-media-servers). ***This feature is not available in `peer-to-peer` rooms.*** </param>
         /// <param name="recordingRules"> A collection of Recording Rules that describe how to include or exclude matching tracks for recording </param>
         /// <param name="audioOnly"> When set to true, indicates that the participants in the room will only publish audio. No video tracks will be allowed. Group rooms only. </param>
         /// <param name="maxParticipantDuration"> The maximum number of seconds a Participant can be connected to the room. The maximum possible value is 86400 seconds (24 hours). The default is 14400 seconds (4 hours). </param>
@@ -163,7 +166,7 @@ namespace Twilio.Rest.Video.V1
         /// <param name="maxParticipants"> The maximum number of concurrent Participants allowed in the room. Peer-to-peer rooms can have up to 10 Participants. Small Group rooms can have up to 4 Participants. Group rooms can have up to 50 Participants. </param>
         /// <param name="recordParticipantsOnConnect"> Whether to start recording when Participants connect. ***This feature is not available in `peer-to-peer` rooms.*** </param>
         /// <param name="videoCodecs"> An array of the video codecs that are supported when publishing a track in the room.  Can be: `VP8` and `H264`.  ***This feature is not available in `peer-to-peer` rooms*** </param>
-        /// <param name="mediaRegion"> The region for the media server in Group Rooms.  Can be: one of the [available Media Regions](https://www.twilio.com/docs/video/ip-address-whitelisting#group-rooms-media-servers). ***This feature is not available in `peer-to-peer` rooms.*** </param>
+        /// <param name="mediaRegion"> The region for the media server in Group Rooms.  Can be: one of the [available Media Regions](https://www.twilio.com/docs/video/ip-addresses#group-rooms-media-servers). ***This feature is not available in `peer-to-peer` rooms.*** </param>
         /// <param name="recordingRules"> A collection of Recording Rules that describe how to include or exclude matching tracks for recording </param>
         /// <param name="audioOnly"> When set to true, indicates that the participants in the room will only publish audio. No video tracks will be allowed. Group rooms only. </param>
         /// <param name="maxParticipantDuration"> The maximum number of seconds a Participant can be connected to the room. The maximum possible value is 86400 seconds (24 hours). The default is 14400 seconds (4 hours). </param>
@@ -484,6 +487,22 @@ namespace Twilio.Rest.Video.V1
                 throw new ApiException(e.Message, e);
             }
         }
+        /// <summary>
+    /// Converts an object into a json string
+    /// </summary>
+    /// <param name="model"> C# model </param>
+    /// <returns> JSON string </returns>
+    public static string ToJson(object model)
+    {
+        try
+        {
+            return JsonConvert.SerializeObject(model);
+        }
+        catch (JsonException e)
+        {
+            throw new ApiException(e.Message, e);
+        }
+    }
 
     
         ///<summary> The unique string that we created to identify the Room resource. </summary> 
@@ -554,7 +573,7 @@ namespace Twilio.Rest.Video.V1
         [JsonProperty("video_codecs")]
         public List<RoomResource.VideoCodecEnum> VideoCodecs { get; private set; }
 
-        ///<summary> The region for the media server in Group Rooms.  Can be: one of the [available Media Regions](https://www.twilio.com/docs/video/ip-address-whitelisting#media-servers). ***This feature is not available in `peer-to-peer` rooms.*** </summary> 
+        ///<summary> The region for the media server in Group Rooms.  Can be: one of the [available Media Regions](https://www.twilio.com/docs/video/ip-addresses#media-servers). ***This feature is not available in `peer-to-peer` rooms.*** </summary> 
         [JsonProperty("media_region")]
         public string MediaRegion { get; private set; }
 

@@ -52,11 +52,14 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         ///<summary> The Media SID to be attached to the new Message. </summary> 
         public string MediaSid { get; set; }
 
-        ///<summary> The unique ID of the multi-channel [Rich Content](https://www.twilio.com/docs/content-api) template, required for template-generated messages.  **Note** that if this field is set, `Body` and `MediaSid` parameters are ignored. </summary> 
+        ///<summary> The unique ID of the multi-channel [Rich Content](https://www.twilio.com/docs/content) template, required for template-generated messages.  **Note** that if this field is set, `Body` and `MediaSid` parameters are ignored. </summary> 
         public string ContentSid { get; set; }
 
         ///<summary> A structurally valid JSON string that contains values to resolve Rich Content template variables. </summary> 
         public string ContentVariables { get; set; }
+
+        ///<summary> The subject of the message, can be up to 256 characters long. </summary> 
+        public string Subject { get; set; }
 
 
         /// <summary> Construct a new CreateConversationMessageOptions </summary>
@@ -68,7 +71,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -104,8 +107,13 @@ namespace Twilio.Rest.Conversations.V1.Conversation
             {
                 p.Add(new KeyValuePair<string, string>("ContentVariables", ContentVariables));
             }
+            if (Subject != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Subject", Subject));
+            }
             return p;
         }
+
         
     /// <summary> Generate the necessary header parameters </summary>
     public List<KeyValuePair<string, string>> GetHeaderParams()
@@ -145,12 +153,13 @@ namespace Twilio.Rest.Conversations.V1.Conversation
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
             return p;
         }
+
         
     /// <summary> Generate the necessary header parameters </summary>
     public List<KeyValuePair<string, string>> GetHeaderParams()
@@ -189,12 +198,13 @@ namespace Twilio.Rest.Conversations.V1.Conversation
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
             return p;
         }
+
         
 
     }
@@ -221,7 +231,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  override List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -235,6 +245,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
             }
             return p;
         }
+
         
 
     }
@@ -267,6 +278,9 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         ///<summary> A string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \\\"{}\\\" will be returned. </summary> 
         public string Attributes { get; set; }
 
+        ///<summary> The subject of the message, can be up to 256 characters long. </summary> 
+        public string Subject { get; set; }
+
 
 
         /// <summary> Construct a new UpdateConversationMessageOptions </summary>
@@ -280,7 +294,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -304,8 +318,13 @@ namespace Twilio.Rest.Conversations.V1.Conversation
             {
                 p.Add(new KeyValuePair<string, string>("Attributes", Attributes));
             }
+            if (Subject != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Subject", Subject));
+            }
             return p;
         }
+
         
     /// <summary> Generate the necessary header parameters </summary>
     public List<KeyValuePair<string, string>> GetHeaderParams()

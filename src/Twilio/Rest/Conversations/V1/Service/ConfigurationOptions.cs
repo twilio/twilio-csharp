@@ -41,12 +41,13 @@ namespace Twilio.Rest.Conversations.V1.Service
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
             return p;
         }
+
         
 
     }
@@ -59,16 +60,16 @@ namespace Twilio.Rest.Conversations.V1.Service
         ///<summary> The SID of the Service configuration resource to update. </summary> 
         public string PathChatServiceSid { get; }
 
-        ///<summary> The conversation-level role assigned to a conversation creator when they join a new conversation. See the [Conversation Role](https://www.twilio.com/docs/conversations/api/role-resource) for more info about roles. </summary> 
+        ///<summary> The conversation-level role assigned to a conversation creator when they join a new conversation. See [Conversation Role](https://www.twilio.com/docs/conversations/api/role-resource) for more info about roles. </summary> 
         public string DefaultConversationCreatorRoleSid { get; set; }
 
-        ///<summary> The conversation-level role assigned to users when they are added to a conversation. See the [Conversation Role](https://www.twilio.com/docs/conversations/api/role-resource) for more info about roles. </summary> 
+        ///<summary> The conversation-level role assigned to users when they are added to a conversation. See [Conversation Role](https://www.twilio.com/docs/conversations/api/role-resource) for more info about roles. </summary> 
         public string DefaultConversationRoleSid { get; set; }
 
-        ///<summary> The service-level role assigned to users when they are added to the service. See the [Conversation Role](https://www.twilio.com/docs/conversations/api/role-resource) for more info about roles. </summary> 
+        ///<summary> The service-level role assigned to users when they are added to the service. See [Conversation Role](https://www.twilio.com/docs/conversations/api/role-resource) for more info about roles. </summary> 
         public string DefaultChatServiceRoleSid { get; set; }
 
-        ///<summary> Whether the [Reachability Indicator](https://www.twilio.com/docs/chat/reachability-indicator) is enabled for this Conversations Service. The default is `false`. </summary> 
+        ///<summary> Whether the [Reachability Indicator](https://www.twilio.com/docs/conversations/reachability) is enabled for this Conversations Service. The default is `false`. </summary> 
         public bool? ReachabilityEnabled { get; set; }
 
 
@@ -82,7 +83,7 @@ namespace Twilio.Rest.Conversations.V1.Service
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -104,6 +105,7 @@ namespace Twilio.Rest.Conversations.V1.Service
             }
             return p;
         }
+
         
 
     }

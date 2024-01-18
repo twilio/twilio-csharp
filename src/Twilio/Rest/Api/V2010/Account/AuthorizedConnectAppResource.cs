@@ -18,6 +18,7 @@ using System;
 using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Clients;
+using Twilio.Constant;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -28,6 +29,8 @@ namespace Twilio.Rest.Api.V2010.Account
 {
     public class AuthorizedConnectAppResource : Resource
     {
+    
+
     
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class PermissionEnum : StringEnum
@@ -256,6 +259,22 @@ namespace Twilio.Rest.Api.V2010.Account
                 throw new ApiException(e.Message, e);
             }
         }
+        /// <summary>
+    /// Converts an object into a json string
+    /// </summary>
+    /// <param name="model"> C# model </param>
+    /// <returns> JSON string </returns>
+    public static string ToJson(object model)
+    {
+        try
+        {
+            return JsonConvert.SerializeObject(model);
+        }
+        catch (JsonException e)
+        {
+            throw new ApiException(e.Message, e);
+        }
+    }
 
     
         ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the AuthorizedConnectApp resource. </summary> 
@@ -281,14 +300,6 @@ namespace Twilio.Rest.Api.V2010.Account
         ///<summary> The SID that we assigned to the Connect App. </summary> 
         [JsonProperty("connect_app_sid")]
         public string ConnectAppSid { get; private set; }
-
-        ///<summary> The date and time in GMT that the resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
-        [JsonProperty("date_created")]
-        public DateTime? DateCreated { get; private set; }
-
-        ///<summary> The date and time in GMT that the resource was last updated specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
-        [JsonProperty("date_updated")]
-        public DateTime? DateUpdated { get; private set; }
 
         ///<summary> The set of permissions that you authorized for the Connect App.  Can be: `get-all` or `post-all`. </summary> 
         [JsonProperty("permissions")]

@@ -18,6 +18,7 @@ using System;
 using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Clients;
+using Twilio.Constant;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -28,6 +29,8 @@ namespace Twilio.Rest.Conversations.V1.Conversation
 {
     public class ParticipantResource : Resource
     {
+    
+
     
         public sealed class WebhookEnabledTypeEnum : StringEnum
         {
@@ -266,7 +269,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         #endif
         /// <summary> Fetch a participant of the conversation </summary>
         /// <param name="pathConversationSid"> The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this participant. </param>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. Alternatively, you can pass a Participant's `identity` rather than the SID. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Participant </returns>
         public static ParticipantResource Fetch(
@@ -281,7 +284,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         #if !NET35
         /// <summary> Fetch a participant of the conversation </summary>
         /// <param name="pathConversationSid"> The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this participant. </param>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. Alternatively, you can pass a Participant's `identity` rather than the SID. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Participant </returns>
         public static async System.Threading.Tasks.Task<ParticipantResource> FetchAsync(string pathConversationSid, string pathSid, ITwilioRestClient client = null)
@@ -547,6 +550,22 @@ namespace Twilio.Rest.Conversations.V1.Conversation
                 throw new ApiException(e.Message, e);
             }
         }
+        /// <summary>
+    /// Converts an object into a json string
+    /// </summary>
+    /// <param name="model"> C# model </param>
+    /// <returns> JSON string </returns>
+    public static string ToJson(object model)
+    {
+        try
+        {
+            return JsonConvert.SerializeObject(model);
+        }
+        catch (JsonException e)
+        {
+            throw new ApiException(e.Message, e);
+        }
+    }
 
     
         ///<summary> The unique ID of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this participant. </summary> 

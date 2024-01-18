@@ -60,9 +60,15 @@ namespace Twilio.TwiML.Voice
         /// <param name="name"> Friendly name given to SIPREC </param>
         /// <param name="connectorName"> Unique name for Connector </param>
         /// <param name="track"> Track to be streamed to remote service </param>
-        public Stop Siprec(string name = null, string connectorName = null, Siprec.TrackEnum track = null)
+        /// <param name="statusCallback"> Status Callback URL </param>
+        /// <param name="statusCallbackMethod"> Status Callback URL method </param>
+        public Stop Siprec(string name = null,
+                           string connectorName = null,
+                           Siprec.TrackEnum track = null,
+                           string statusCallback = null,
+                           Siprec.StatusCallbackMethodEnum statusCallbackMethod = null)
         {
-            var newChild = new Siprec(name, connectorName, track);
+            var newChild = new Siprec(name, connectorName, track, statusCallback, statusCallbackMethod);
             this.Append(newChild);
             return this;
         }

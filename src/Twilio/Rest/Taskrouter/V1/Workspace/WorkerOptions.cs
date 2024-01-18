@@ -52,7 +52,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -70,6 +70,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             }
             return p;
         }
+
         
 
     }
@@ -99,12 +100,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
             return p;
         }
+
         
     /// <summary> Generate the necessary header parameters </summary>
     public List<KeyValuePair<string, string>> GetHeaderParams()
@@ -143,12 +145,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
             return p;
         }
+
         
 
     }
@@ -173,7 +176,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         ///<summary> The `friendly_name` of the Worker resources to read. </summary> 
         public string FriendlyName { get; set; }
 
-        ///<summary> Filter by Workers that would match an expression on a TaskQueue. This is helpful for debugging which Workers would match a potential queue. </summary> 
+        ///<summary> Filter by Workers that would match an expression. In addition to fields in the workers' attributes, the expression can include the following worker fields: `sid`, `friendly_name`, `activity_sid`, or `activity_name` </summary> 
         public string TargetWorkersExpression { get; set; }
 
         ///<summary> The `friendly_name` of the TaskQueue that the Workers to read are eligible for. </summary> 
@@ -196,7 +199,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  override List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -238,6 +241,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             }
             return p;
         }
+
         
 
     }
@@ -280,7 +284,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -302,6 +306,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             }
             return p;
         }
+
         
     /// <summary> Generate the necessary header parameters </summary>
     public List<KeyValuePair<string, string>> GetHeaderParams()

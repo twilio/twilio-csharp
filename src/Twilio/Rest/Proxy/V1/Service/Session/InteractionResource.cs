@@ -18,6 +18,7 @@ using System;
 using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Clients;
+using Twilio.Constant;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -28,6 +29,8 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
 {
     public class InteractionResource : Resource
     {
+    
+
     
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class TypeEnum : StringEnum
@@ -376,6 +379,22 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
                 throw new ApiException(e.Message, e);
             }
         }
+        /// <summary>
+    /// Converts an object into a json string
+    /// </summary>
+    /// <param name="model"> C# model </param>
+    /// <returns> JSON string </returns>
+    public static string ToJson(object model)
+    {
+        try
+        {
+            return JsonConvert.SerializeObject(model);
+        }
+        catch (JsonException e)
+        {
+            throw new ApiException(e.Message, e);
+        }
+    }
 
     
         ///<summary> The unique string that we created to identify the Interaction resource. </summary> 
@@ -406,7 +425,7 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         [JsonProperty("inbound_participant_sid")]
         public string InboundParticipantSid { get; private set; }
 
-        ///<summary> The SID of the inbound resource; either the [Call](https://www.twilio.com/docs/voice/api/call-resource) or [Message](https://www.twilio.com/docs/sms/api/message. </summary> 
+        ///<summary> The SID of the inbound resource; either the [Call](https://www.twilio.com/docs/voice/api/call-resource) or [Message](https://www.twilio.com/docs/sms/api/message-resource). </summary> 
         [JsonProperty("inbound_resource_sid")]
         public string InboundResourceSid { get; private set; }
 

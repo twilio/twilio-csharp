@@ -18,6 +18,7 @@ using System;
 using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Clients;
+using Twilio.Constant;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -28,6 +29,8 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
 {
     public class SyncListItemResource : Resource
     {
+    
+
     
         public sealed class QueryFromBoundTypeEnum : StringEnum
         {
@@ -558,6 +561,22 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
                 throw new ApiException(e.Message, e);
             }
         }
+        /// <summary>
+    /// Converts an object into a json string
+    /// </summary>
+    /// <param name="model"> C# model </param>
+    /// <returns> JSON string </returns>
+    public static string ToJson(object model)
+    {
+        try
+        {
+            return JsonConvert.SerializeObject(model);
+        }
+        catch (JsonException e)
+        {
+            throw new ApiException(e.Message, e);
+        }
+    }
 
     
         ///<summary> The automatically generated index of the List Item. The `index` values of the List Items in a Sync List can have gaps in their sequence. </summary> 

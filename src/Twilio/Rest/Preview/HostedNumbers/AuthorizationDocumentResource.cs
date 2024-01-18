@@ -18,6 +18,7 @@ using System;
 using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Clients;
+using Twilio.Constant;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -28,6 +29,8 @@ namespace Twilio.Rest.Preview.HostedNumbers
 {
     public class AuthorizationDocumentResource : Resource
     {
+    
+
     
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class StatusEnum : StringEnum
@@ -241,7 +244,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
         #endif
         /// <summary> Retrieve a list of AuthorizationDocuments belonging to the account initiating the request. </summary>
         /// <param name="email"> Email that this AuthorizationDocument will be sent to for signing. </param>
-        /// <param name="status"> Status of an instance resource. It can hold one of the values: 1. opened 2. signing, 3. signed LOA, 4. canceled, 5. failed. See the section entitled [Status Values](https://www.twilio.com/docs/api/phone-numbers/hosted-number-authorization-documents#status-values) for more information on each of these statuses. </param>
+        /// <param name="status"> Status of an instance resource. It can hold one of the values: 1. opened 2. signing, 3. signed LOA, 4. canceled, 5. failed. See the section entitled [Status Values](https://www.twilio.com/docs/phone-numbers/hosted-numbers/hosted-numbers-api/authorization-document-resource#status-values) for more information on each of these statuses. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -260,7 +263,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
         #if !NET35
         /// <summary> Retrieve a list of AuthorizationDocuments belonging to the account initiating the request. </summary>
         /// <param name="email"> Email that this AuthorizationDocument will be sent to for signing. </param>
-        /// <param name="status"> Status of an instance resource. It can hold one of the values: 1. opened 2. signing, 3. signed LOA, 4. canceled, 5. failed. See the section entitled [Status Values](https://www.twilio.com/docs/api/phone-numbers/hosted-number-authorization-documents#status-values) for more information on each of these statuses. </param>
+        /// <param name="status"> Status of an instance resource. It can hold one of the values: 1. opened 2. signing, 3. signed LOA, 4. canceled, 5. failed. See the section entitled [Status Values](https://www.twilio.com/docs/phone-numbers/hosted-numbers/hosted-numbers-api/authorization-document-resource#status-values) for more information on each of these statuses. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -369,7 +372,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
         #endif
 
         /// <summary> Updates a specific AuthorizationDocument. </summary>
-        /// <param name="pathSid">  </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this AuthorizationDocument. </param>
         /// <param name="hostedNumberOrderSids"> A list of HostedNumberOrder sids that this AuthorizationDocument will authorize for hosting phone number capabilities on Twilio's platform. </param>
         /// <param name="addressSid"> A 34 character string that uniquely identifies the Address resource that is associated with this AuthorizationDocument. </param>
         /// <param name="email"> Email that this AuthorizationDocument will be sent to for signing. </param>
@@ -396,7 +399,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
 
         #if !NET35
         /// <summary> Updates a specific AuthorizationDocument. </summary>
-        /// <param name="pathSid">  </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this AuthorizationDocument. </param>
         /// <param name="hostedNumberOrderSids"> A list of HostedNumberOrder sids that this AuthorizationDocument will authorize for hosting phone number capabilities on Twilio's platform. </param>
         /// <param name="addressSid"> A 34 character string that uniquely identifies the Address resource that is associated with this AuthorizationDocument. </param>
         /// <param name="email"> Email that this AuthorizationDocument will be sent to for signing. </param>
@@ -438,6 +441,22 @@ namespace Twilio.Rest.Preview.HostedNumbers
                 throw new ApiException(e.Message, e);
             }
         }
+        /// <summary>
+    /// Converts an object into a json string
+    /// </summary>
+    /// <param name="model"> C# model </param>
+    /// <returns> JSON string </returns>
+    public static string ToJson(object model)
+    {
+        try
+        {
+            return JsonConvert.SerializeObject(model);
+        }
+        catch (JsonException e)
+        {
+            throw new ApiException(e.Message, e);
+        }
+    }
 
     
         ///<summary> A 34 character string that uniquely identifies this AuthorizationDocument. </summary> 

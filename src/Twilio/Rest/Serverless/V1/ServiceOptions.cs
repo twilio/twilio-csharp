@@ -52,7 +52,7 @@ namespace Twilio.Rest.Serverless.V1
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -74,6 +74,7 @@ namespace Twilio.Rest.Serverless.V1
             }
             return p;
         }
+
         
 
     }
@@ -95,12 +96,13 @@ namespace Twilio.Rest.Serverless.V1
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
             return p;
         }
+
         
 
     }
@@ -124,12 +126,13 @@ namespace Twilio.Rest.Serverless.V1
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
             return p;
         }
+
         
 
     }
@@ -144,7 +147,7 @@ namespace Twilio.Rest.Serverless.V1
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  override List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -154,6 +157,7 @@ namespace Twilio.Rest.Serverless.V1
             }
             return p;
         }
+
         
 
     }
@@ -185,7 +189,7 @@ namespace Twilio.Rest.Serverless.V1
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -203,6 +207,7 @@ namespace Twilio.Rest.Serverless.V1
             }
             return p;
         }
+
         
 
     }

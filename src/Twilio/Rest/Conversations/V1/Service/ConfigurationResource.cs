@@ -18,6 +18,7 @@ using System;
 using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Clients;
+using Twilio.Constant;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -28,6 +29,8 @@ namespace Twilio.Rest.Conversations.V1.Service
 {
     public class ConfigurationResource : Resource
     {
+    
+
     
 
         
@@ -140,10 +143,10 @@ namespace Twilio.Rest.Conversations.V1.Service
 
         /// <summary> Update configuration settings of a conversation service </summary>
         /// <param name="pathChatServiceSid"> The SID of the Service configuration resource to update. </param>
-        /// <param name="defaultConversationCreatorRoleSid"> The conversation-level role assigned to a conversation creator when they join a new conversation. See the [Conversation Role](https://www.twilio.com/docs/conversations/api/role-resource) for more info about roles. </param>
-        /// <param name="defaultConversationRoleSid"> The conversation-level role assigned to users when they are added to a conversation. See the [Conversation Role](https://www.twilio.com/docs/conversations/api/role-resource) for more info about roles. </param>
-        /// <param name="defaultChatServiceRoleSid"> The service-level role assigned to users when they are added to the service. See the [Conversation Role](https://www.twilio.com/docs/conversations/api/role-resource) for more info about roles. </param>
-        /// <param name="reachabilityEnabled"> Whether the [Reachability Indicator](https://www.twilio.com/docs/chat/reachability-indicator) is enabled for this Conversations Service. The default is `false`. </param>
+        /// <param name="defaultConversationCreatorRoleSid"> The conversation-level role assigned to a conversation creator when they join a new conversation. See [Conversation Role](https://www.twilio.com/docs/conversations/api/role-resource) for more info about roles. </param>
+        /// <param name="defaultConversationRoleSid"> The conversation-level role assigned to users when they are added to a conversation. See [Conversation Role](https://www.twilio.com/docs/conversations/api/role-resource) for more info about roles. </param>
+        /// <param name="defaultChatServiceRoleSid"> The service-level role assigned to users when they are added to the service. See [Conversation Role](https://www.twilio.com/docs/conversations/api/role-resource) for more info about roles. </param>
+        /// <param name="reachabilityEnabled"> Whether the [Reachability Indicator](https://www.twilio.com/docs/conversations/reachability) is enabled for this Conversations Service. The default is `false`. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Configuration </returns>
         public static ConfigurationResource Update(
@@ -161,10 +164,10 @@ namespace Twilio.Rest.Conversations.V1.Service
         #if !NET35
         /// <summary> Update configuration settings of a conversation service </summary>
         /// <param name="pathChatServiceSid"> The SID of the Service configuration resource to update. </param>
-        /// <param name="defaultConversationCreatorRoleSid"> The conversation-level role assigned to a conversation creator when they join a new conversation. See the [Conversation Role](https://www.twilio.com/docs/conversations/api/role-resource) for more info about roles. </param>
-        /// <param name="defaultConversationRoleSid"> The conversation-level role assigned to users when they are added to a conversation. See the [Conversation Role](https://www.twilio.com/docs/conversations/api/role-resource) for more info about roles. </param>
-        /// <param name="defaultChatServiceRoleSid"> The service-level role assigned to users when they are added to the service. See the [Conversation Role](https://www.twilio.com/docs/conversations/api/role-resource) for more info about roles. </param>
-        /// <param name="reachabilityEnabled"> Whether the [Reachability Indicator](https://www.twilio.com/docs/chat/reachability-indicator) is enabled for this Conversations Service. The default is `false`. </param>
+        /// <param name="defaultConversationCreatorRoleSid"> The conversation-level role assigned to a conversation creator when they join a new conversation. See [Conversation Role](https://www.twilio.com/docs/conversations/api/role-resource) for more info about roles. </param>
+        /// <param name="defaultConversationRoleSid"> The conversation-level role assigned to users when they are added to a conversation. See [Conversation Role](https://www.twilio.com/docs/conversations/api/role-resource) for more info about roles. </param>
+        /// <param name="defaultChatServiceRoleSid"> The service-level role assigned to users when they are added to the service. See [Conversation Role](https://www.twilio.com/docs/conversations/api/role-resource) for more info about roles. </param>
+        /// <param name="reachabilityEnabled"> Whether the [Reachability Indicator](https://www.twilio.com/docs/conversations/reachability) is enabled for this Conversations Service. The default is `false`. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Configuration </returns>
         public static async System.Threading.Tasks.Task<ConfigurationResource> UpdateAsync(
@@ -196,21 +199,37 @@ namespace Twilio.Rest.Conversations.V1.Service
                 throw new ApiException(e.Message, e);
             }
         }
+        /// <summary>
+    /// Converts an object into a json string
+    /// </summary>
+    /// <param name="model"> C# model </param>
+    /// <returns> JSON string </returns>
+    public static string ToJson(object model)
+    {
+        try
+        {
+            return JsonConvert.SerializeObject(model);
+        }
+        catch (JsonException e)
+        {
+            throw new ApiException(e.Message, e);
+        }
+    }
 
     
         ///<summary> The unique string that we created to identify the Service configuration resource. </summary> 
         [JsonProperty("chat_service_sid")]
         public string ChatServiceSid { get; private set; }
 
-        ///<summary> The conversation-level role assigned to a conversation creator user when they join a new conversation. See the [Conversation Role](https://www.twilio.com/docs/conversations/api/role-resource) for more info about roles. </summary> 
+        ///<summary> The conversation-level role assigned to a conversation creator when they join a new conversation. See [Conversation Role](https://www.twilio.com/docs/conversations/api/role-resource) for more info about roles. </summary> 
         [JsonProperty("default_conversation_creator_role_sid")]
         public string DefaultConversationCreatorRoleSid { get; private set; }
 
-        ///<summary> The conversation-level role assigned to users when they are added to a conversation. See the [Conversation Role](https://www.twilio.com/docs/conversations/api/role-resource) for more info about roles. </summary> 
+        ///<summary> The conversation-level role assigned to users when they are added to a conversation. See [Conversation Role](https://www.twilio.com/docs/conversations/api/role-resource) for more info about roles. </summary> 
         [JsonProperty("default_conversation_role_sid")]
         public string DefaultConversationRoleSid { get; private set; }
 
-        ///<summary> The service-level role assigned to users when they are added to the service. See the [Conversation Role](https://www.twilio.com/docs/conversations/api/role-resource) for more info about roles. </summary> 
+        ///<summary> The service-level role assigned to users when they are added to the service. See [Conversation Role](https://www.twilio.com/docs/conversations/api/role-resource) for more info about roles. </summary> 
         [JsonProperty("default_chat_service_role_sid")]
         public string DefaultChatServiceRoleSid { get; private set; }
 
@@ -222,7 +241,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
 
-        ///<summary> Whether the [Reachability Indicator](https://www.twilio.com/docs/chat/reachability-indicator) is enabled for this Conversations Service. The default is `false`. </summary> 
+        ///<summary> Whether the [Reachability Indicator](https://www.twilio.com/docs/conversations/reachability) is enabled for this Conversations Service. The default is `false`. </summary> 
         [JsonProperty("reachability_enabled")]
         public bool? ReachabilityEnabled { get; private set; }
 

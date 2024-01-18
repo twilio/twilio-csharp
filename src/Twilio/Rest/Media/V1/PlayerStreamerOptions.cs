@@ -31,7 +31,7 @@ namespace Twilio.Rest.Media.V1
         ///<summary> Specifies whether the PlayerStreamer is configured to stream video. Defaults to `true`. </summary> 
         public bool? Video { get; set; }
 
-        ///<summary> The URL to which Twilio will send asynchronous webhook requests for every PlayerStreamer event. See [Status Callbacks](/docs/live/status-callbacks) for more details. </summary> 
+        ///<summary> The URL to which Twilio will send asynchronous webhook requests for every PlayerStreamer event. See [Status Callbacks](/docs/live/api/status-callbacks) for more details. </summary> 
         public Uri StatusCallback { get; set; }
 
         ///<summary> The HTTP method Twilio should use to call the `status_callback` URL. Can be `POST` or `GET` and the default is `POST`. </summary> 
@@ -44,7 +44,7 @@ namespace Twilio.Rest.Media.V1
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -66,6 +66,7 @@ namespace Twilio.Rest.Media.V1
             }
             return p;
         }
+
         
 
     }
@@ -87,12 +88,13 @@ namespace Twilio.Rest.Media.V1
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
             return p;
         }
+
         
 
     }
@@ -113,7 +115,7 @@ namespace Twilio.Rest.Media.V1
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  override List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -131,6 +133,7 @@ namespace Twilio.Rest.Media.V1
             }
             return p;
         }
+
         
 
     }
@@ -158,7 +161,7 @@ namespace Twilio.Rest.Media.V1
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -168,6 +171,7 @@ namespace Twilio.Rest.Media.V1
             }
             return p;
         }
+
         
 
     }

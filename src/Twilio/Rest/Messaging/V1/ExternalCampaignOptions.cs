@@ -31,13 +31,13 @@ namespace Twilio.Rest.Messaging.V1
         ///<summary> ID of the preregistered campaign. </summary> 
         public string CampaignId { get; }
 
-        ///<summary> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) that the resource is associated with. </summary> 
+        ///<summary> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) that the resource is associated with. </summary> 
         public string MessagingServiceSid { get; }
 
 
         /// <summary> Construct a new CreateExternalCampaignOptions </summary>
         /// <param name="campaignId"> ID of the preregistered campaign. </param>
-        /// <param name="messagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) that the resource is associated with. </param>
+        /// <param name="messagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) that the resource is associated with. </param>
         public CreateExternalCampaignOptions(string campaignId, string messagingServiceSid)
         {
             CampaignId = campaignId;
@@ -46,7 +46,7 @@ namespace Twilio.Rest.Messaging.V1
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -60,6 +60,7 @@ namespace Twilio.Rest.Messaging.V1
             }
             return p;
         }
+
         
 
     }

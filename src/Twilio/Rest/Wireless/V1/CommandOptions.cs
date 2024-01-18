@@ -31,7 +31,7 @@ namespace Twilio.Rest.Wireless.V1
         ///<summary> The message body of the Command. Can be plain text in text mode or a Base64 encoded byte string in binary mode. </summary> 
         public string Command { get; }
 
-        ///<summary> The `sid` or `unique_name` of the [SIM](https://www.twilio.com/docs/wireless/api/sim-resource) to send the Command to. </summary> 
+        ///<summary> The `sid` or `unique_name` of the [SIM](https://www.twilio.com/docs/iot/wireless/api/sim-resource) to send the Command to. </summary> 
         public string Sim { get; set; }
 
         ///<summary> The HTTP method we use to call `callback_url`. Can be: `POST` or `GET`, and the default is `POST`. </summary> 
@@ -59,7 +59,7 @@ namespace Twilio.Rest.Wireless.V1
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -93,6 +93,7 @@ namespace Twilio.Rest.Wireless.V1
             }
             return p;
         }
+
         
 
     }
@@ -114,12 +115,13 @@ namespace Twilio.Rest.Wireless.V1
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
             return p;
         }
+
         
 
     }
@@ -143,12 +145,13 @@ namespace Twilio.Rest.Wireless.V1
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
             return p;
         }
+
         
 
     }
@@ -158,7 +161,7 @@ namespace Twilio.Rest.Wireless.V1
     public class ReadCommandOptions : ReadOptions<CommandResource>
     {
     
-        ///<summary> The `sid` or `unique_name` of the [Sim resources](https://www.twilio.com/docs/wireless/api/sim-resource) to read. </summary> 
+        ///<summary> The `sid` or `unique_name` of the [Sim resources](https://www.twilio.com/docs/iot/wireless/api/sim-resource) to read. </summary> 
         public string Sim { get; set; }
 
         ///<summary> The status of the resources to read. Can be: `queued`, `sent`, `delivered`, `received`, or `failed`. </summary> 
@@ -175,7 +178,7 @@ namespace Twilio.Rest.Wireless.V1
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  override List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -201,6 +204,7 @@ namespace Twilio.Rest.Wireless.V1
             }
             return p;
         }
+
         
 
     }

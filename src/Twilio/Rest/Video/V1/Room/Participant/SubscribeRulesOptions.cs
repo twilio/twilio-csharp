@@ -46,12 +46,13 @@ namespace Twilio.Rest.Video.V1.Room.Participant
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
             return p;
         }
+
         
 
     }
@@ -83,7 +84,7 @@ namespace Twilio.Rest.Video.V1.Room.Participant
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -93,6 +94,7 @@ namespace Twilio.Rest.Video.V1.Room.Participant
             }
             return p;
         }
+
         
 
     }

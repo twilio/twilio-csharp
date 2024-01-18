@@ -46,7 +46,7 @@ namespace Twilio.Rest.Proxy.V1
         ///<summary> The URL we call on each interaction. If we receive a 403 status, we block the interaction; otherwise the interaction continues. </summary> 
         public Uri InterceptCallbackUrl { get; set; }
 
-        ///<summary> The URL we should call when an inbound call or SMS action occurs on a closed or non-existent Session. If your server (or a Twilio [function](https://www.twilio.com/functions)) responds with valid [TwiML](https://www.twilio.com/docs/voice/twiml), we will process it. This means it is possible, for example, to play a message for a call, send an automated text message response, or redirect a call to another Phone Number. See [Out-of-Session Callback Response Guide](https://www.twilio.com/docs/proxy/out-session-callback-response-guide) for more information. </summary> 
+        ///<summary> The URL we should call when an inbound call or SMS action occurs on a closed or non-existent Session. If your server (or a Twilio [function](https://www.twilio.com/en-us/serverless/functions)) responds with valid [TwiML](https://www.twilio.com/docs/voice/twiml), we will process it. This means it is possible, for example, to play a message for a call, send an automated text message response, or redirect a call to another Phone Number. See [Out-of-Session Callback Response Guide](https://www.twilio.com/docs/proxy/out-session-callback-response-guide) for more information. </summary> 
         public Uri OutOfSessionCallbackUrl { get; set; }
 
         ///<summary> The SID of the Chat Service Instance managed by Proxy Service. The Chat Service enables Proxy to forward SMS and channel messages to this chat instance. This is a one-to-one relationship. </summary> 
@@ -62,7 +62,7 @@ namespace Twilio.Rest.Proxy.V1
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -100,6 +100,7 @@ namespace Twilio.Rest.Proxy.V1
             }
             return p;
         }
+
         
 
     }
@@ -121,12 +122,13 @@ namespace Twilio.Rest.Proxy.V1
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
             return p;
         }
+
         
 
     }
@@ -150,12 +152,13 @@ namespace Twilio.Rest.Proxy.V1
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
             return p;
         }
+
         
 
     }
@@ -170,7 +173,7 @@ namespace Twilio.Rest.Proxy.V1
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  override List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -180,6 +183,7 @@ namespace Twilio.Rest.Proxy.V1
             }
             return p;
         }
+
         
 
     }
@@ -209,7 +213,7 @@ namespace Twilio.Rest.Proxy.V1
         ///<summary> The URL we call on each interaction. If we receive a 403 status, we block the interaction; otherwise the interaction continues. </summary> 
         public Uri InterceptCallbackUrl { get; set; }
 
-        ///<summary> The URL we should call when an inbound call or SMS action occurs on a closed or non-existent Session. If your server (or a Twilio [function](https://www.twilio.com/functions)) responds with valid [TwiML](https://www.twilio.com/docs/voice/twiml), we will process it. This means it is possible, for example, to play a message for a call, send an automated text message response, or redirect a call to another Phone Number. See [Out-of-Session Callback Response Guide](https://www.twilio.com/docs/proxy/out-session-callback-response-guide) for more information. </summary> 
+        ///<summary> The URL we should call when an inbound call or SMS action occurs on a closed or non-existent Session. If your server (or a Twilio [function](https://www.twilio.com/en-us/serverless/functions)) responds with valid [TwiML](https://www.twilio.com/docs/voice/twiml), we will process it. This means it is possible, for example, to play a message for a call, send an automated text message response, or redirect a call to another Phone Number. See [Out-of-Session Callback Response Guide](https://www.twilio.com/docs/proxy/out-session-callback-response-guide) for more information. </summary> 
         public Uri OutOfSessionCallbackUrl { get; set; }
 
         ///<summary> The SID of the Chat Service Instance managed by Proxy Service. The Chat Service enables Proxy to forward SMS and channel messages to this chat instance. This is a one-to-one relationship. </summary> 
@@ -226,7 +230,7 @@ namespace Twilio.Rest.Proxy.V1
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -264,6 +268,7 @@ namespace Twilio.Rest.Proxy.V1
             }
             return p;
         }
+
         
 
     }

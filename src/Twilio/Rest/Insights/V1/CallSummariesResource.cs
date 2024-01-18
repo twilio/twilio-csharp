@@ -18,6 +18,7 @@ using System;
 using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Clients;
+using Twilio.Constant;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -28,6 +29,8 @@ namespace Twilio.Rest.Insights.V1
 {
     public class CallSummariesResource : Resource
     {
+    
+
     
         public sealed class ProcessingStateRequestEnum : StringEnum
         {
@@ -136,7 +139,7 @@ namespace Twilio.Rest.Insights.V1
                 headerParams: null
             );
         }
-        /// <summary> read </summary>
+        /// <summary> Get a list of Call Summaries. </summary>
         /// <param name="options"> Read CallSummaries parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of CallSummaries </returns>
@@ -149,7 +152,7 @@ namespace Twilio.Rest.Insights.V1
         }
 
         #if !NET35
-        /// <summary> read </summary>
+        /// <summary> Get a list of Call Summaries. </summary>
         /// <param name="options"> Read CallSummaries parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CallSummaries </returns>
@@ -163,30 +166,31 @@ namespace Twilio.Rest.Insights.V1
             return new ResourceSet<CallSummariesResource>(page, options, client);
         }
         #endif
-        /// <summary> read </summary>
-        /// <param name="from">  </param>
-        /// <param name="to">  </param>
-        /// <param name="fromCarrier">  </param>
-        /// <param name="toCarrier">  </param>
-        /// <param name="fromCountryCode">  </param>
-        /// <param name="toCountryCode">  </param>
-        /// <param name="branded">  </param>
-        /// <param name="verifiedCaller">  </param>
-        /// <param name="hasTag">  </param>
-        /// <param name="startTime">  </param>
-        /// <param name="endTime">  </param>
-        /// <param name="callType">  </param>
-        /// <param name="callState">  </param>
-        /// <param name="direction">  </param>
-        /// <param name="processingState">  </param>
-        /// <param name="sortBy">  </param>
-        /// <param name="subaccount">  </param>
-        /// <param name="abnormalSession">  </param>
-        /// <param name="answeredBy">  </param>
-        /// <param name="connectivityIssues">  </param>
-        /// <param name="qualityIssues">  </param>
-        /// <param name="spam">  </param>
-        /// <param name="callScores">  </param>
+        /// <summary> Get a list of Call Summaries. </summary>
+        /// <param name="from"> A calling party. Could be an E.164 number, a SIP URI, or a Twilio Client registered name. </param>
+        /// <param name="to"> A called party. Could be an E.164 number, a SIP URI, or a Twilio Client registered name. </param>
+        /// <param name="fromCarrier"> An origination carrier. </param>
+        /// <param name="toCarrier"> A destination carrier. </param>
+        /// <param name="fromCountryCode"> A source country code based on phone number in From. </param>
+        /// <param name="toCountryCode"> A destination country code. Based on phone number in To. </param>
+        /// <param name="branded"> A boolean flag indicating whether or not the calls were branded using Twilio Branded Calls. </param>
+        /// <param name="verifiedCaller"> A boolean flag indicating whether or not the caller was verified using SHAKEN/STIR. </param>
+        /// <param name="hasTag"> A boolean flag indicating the presence of one or more [Voice Insights Call Tags](https://www.twilio.com/docs/voice/voice-insights/api/call/details-call-tags). </param>
+        /// <param name="startTime"> A Start time of the calls. xm (x minutes), xh (x hours), xd (x days), 1w, 30m, 3d, 4w or datetime-ISO. Defaults to 4h. </param>
+        /// <param name="endTime"> An End Time of the calls. xm (x minutes), xh (x hours), xd (x days), 1w, 30m, 3d, 4w or datetime-ISO. Defaults to 0m. </param>
+        /// <param name="callType"> A Call Type of the calls. One of `carrier`, `sip`, `trunking` or `client`. </param>
+        /// <param name="callState"> A Call State of the calls. One of `ringing`, `completed`, `busy`, `fail`, `noanswer`, `canceled`, `answered`, `undialed`. </param>
+        /// <param name="direction"> A Direction of the calls. One of `outbound_api`, `outbound_dial`, `inbound`, `trunking_originating`, `trunking_terminating`. </param>
+        /// <param name="processingState"> A Processing State of the Call Summaries. One of `completed`, `partial` or `all`. </param>
+        /// <param name="sortBy"> A Sort By criterion for the returned list of Call Summaries. One of `start_time` or `end_time`. </param>
+        /// <param name="subaccount"> A unique SID identifier of a Subaccount. </param>
+        /// <param name="abnormalSession"> A boolean flag indicating an abnormal session where the last SIP response was not 200 OK. </param>
+        /// <param name="answeredBy"> An Answered By value for the calls based on `Answering Machine Detection (AMD)`. One of `unknown`, `machine_start`, `machine_end_beep`, `machine_end_silence`, `machine_end_other`, `human` or `fax`. </param>
+        /// <param name="answeredByAnnotation"> Either machine or human. </param>
+        /// <param name="connectivityIssueAnnotation"> A Connectivity Issue with the calls. One of `no_connectivity_issue`, `invalid_number`, `caller_id`, `dropped_call`, or `number_reachability`. </param>
+        /// <param name="qualityIssueAnnotation"> A subjective Quality Issue with the calls. One of `no_quality_issue`, `low_volume`, `choppy_robotic`, `echo`, `dtmf`, `latency`, `owa`, `static_noise`. </param>
+        /// <param name="spamAnnotation"> A boolean flag indicating spam calls. </param>
+        /// <param name="callScoreAnnotation"> A Call Score of the calls. Use a range of 1-5 to indicate the call experience score, with the following mapping as a reference for the rated call [5: Excellent, 4: Good, 3 : Fair, 2 : Poor, 1: Bad]. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -211,43 +215,45 @@ namespace Twilio.Rest.Insights.V1
                                                      string subaccount = null,
                                                      bool? abnormalSession = null,
                                                      CallSummariesResource.AnsweredByEnum answeredBy = null,
-                                                     string connectivityIssues = null,
-                                                     string qualityIssues = null,
-                                                     bool? spam = null,
-                                                     string callScores = null,
+                                                     string answeredByAnnotation = null,
+                                                     string connectivityIssueAnnotation = null,
+                                                     string qualityIssueAnnotation = null,
+                                                     bool? spamAnnotation = null,
+                                                     string callScoreAnnotation = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
                                                      ITwilioRestClient client = null)
         {
-            var options = new ReadCallSummariesOptions(){ From = from, To = to, FromCarrier = fromCarrier, ToCarrier = toCarrier, FromCountryCode = fromCountryCode, ToCountryCode = toCountryCode, Branded = branded, VerifiedCaller = verifiedCaller, HasTag = hasTag, StartTime = startTime, EndTime = endTime, CallType = callType, CallState = callState, Direction = direction, ProcessingState = processingState, SortBy = sortBy, Subaccount = subaccount, AbnormalSession = abnormalSession, AnsweredBy = answeredBy, ConnectivityIssues = connectivityIssues, QualityIssues = qualityIssues, Spam = spam, CallScores = callScores, PageSize = pageSize, Limit = limit};
+            var options = new ReadCallSummariesOptions(){ From = from, To = to, FromCarrier = fromCarrier, ToCarrier = toCarrier, FromCountryCode = fromCountryCode, ToCountryCode = toCountryCode, Branded = branded, VerifiedCaller = verifiedCaller, HasTag = hasTag, StartTime = startTime, EndTime = endTime, CallType = callType, CallState = callState, Direction = direction, ProcessingState = processingState, SortBy = sortBy, Subaccount = subaccount, AbnormalSession = abnormalSession, AnsweredBy = answeredBy, AnsweredByAnnotation = answeredByAnnotation, ConnectivityIssueAnnotation = connectivityIssueAnnotation, QualityIssueAnnotation = qualityIssueAnnotation, SpamAnnotation = spamAnnotation, CallScoreAnnotation = callScoreAnnotation, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
         #if !NET35
-        /// <summary> read </summary>
-        /// <param name="from">  </param>
-        /// <param name="to">  </param>
-        /// <param name="fromCarrier">  </param>
-        /// <param name="toCarrier">  </param>
-        /// <param name="fromCountryCode">  </param>
-        /// <param name="toCountryCode">  </param>
-        /// <param name="branded">  </param>
-        /// <param name="verifiedCaller">  </param>
-        /// <param name="hasTag">  </param>
-        /// <param name="startTime">  </param>
-        /// <param name="endTime">  </param>
-        /// <param name="callType">  </param>
-        /// <param name="callState">  </param>
-        /// <param name="direction">  </param>
-        /// <param name="processingState">  </param>
-        /// <param name="sortBy">  </param>
-        /// <param name="subaccount">  </param>
-        /// <param name="abnormalSession">  </param>
-        /// <param name="answeredBy">  </param>
-        /// <param name="connectivityIssues">  </param>
-        /// <param name="qualityIssues">  </param>
-        /// <param name="spam">  </param>
-        /// <param name="callScores">  </param>
+        /// <summary> Get a list of Call Summaries. </summary>
+        /// <param name="from"> A calling party. Could be an E.164 number, a SIP URI, or a Twilio Client registered name. </param>
+        /// <param name="to"> A called party. Could be an E.164 number, a SIP URI, or a Twilio Client registered name. </param>
+        /// <param name="fromCarrier"> An origination carrier. </param>
+        /// <param name="toCarrier"> A destination carrier. </param>
+        /// <param name="fromCountryCode"> A source country code based on phone number in From. </param>
+        /// <param name="toCountryCode"> A destination country code. Based on phone number in To. </param>
+        /// <param name="branded"> A boolean flag indicating whether or not the calls were branded using Twilio Branded Calls. </param>
+        /// <param name="verifiedCaller"> A boolean flag indicating whether or not the caller was verified using SHAKEN/STIR. </param>
+        /// <param name="hasTag"> A boolean flag indicating the presence of one or more [Voice Insights Call Tags](https://www.twilio.com/docs/voice/voice-insights/api/call/details-call-tags). </param>
+        /// <param name="startTime"> A Start time of the calls. xm (x minutes), xh (x hours), xd (x days), 1w, 30m, 3d, 4w or datetime-ISO. Defaults to 4h. </param>
+        /// <param name="endTime"> An End Time of the calls. xm (x minutes), xh (x hours), xd (x days), 1w, 30m, 3d, 4w or datetime-ISO. Defaults to 0m. </param>
+        /// <param name="callType"> A Call Type of the calls. One of `carrier`, `sip`, `trunking` or `client`. </param>
+        /// <param name="callState"> A Call State of the calls. One of `ringing`, `completed`, `busy`, `fail`, `noanswer`, `canceled`, `answered`, `undialed`. </param>
+        /// <param name="direction"> A Direction of the calls. One of `outbound_api`, `outbound_dial`, `inbound`, `trunking_originating`, `trunking_terminating`. </param>
+        /// <param name="processingState"> A Processing State of the Call Summaries. One of `completed`, `partial` or `all`. </param>
+        /// <param name="sortBy"> A Sort By criterion for the returned list of Call Summaries. One of `start_time` or `end_time`. </param>
+        /// <param name="subaccount"> A unique SID identifier of a Subaccount. </param>
+        /// <param name="abnormalSession"> A boolean flag indicating an abnormal session where the last SIP response was not 200 OK. </param>
+        /// <param name="answeredBy"> An Answered By value for the calls based on `Answering Machine Detection (AMD)`. One of `unknown`, `machine_start`, `machine_end_beep`, `machine_end_silence`, `machine_end_other`, `human` or `fax`. </param>
+        /// <param name="answeredByAnnotation"> Either machine or human. </param>
+        /// <param name="connectivityIssueAnnotation"> A Connectivity Issue with the calls. One of `no_connectivity_issue`, `invalid_number`, `caller_id`, `dropped_call`, or `number_reachability`. </param>
+        /// <param name="qualityIssueAnnotation"> A subjective Quality Issue with the calls. One of `no_quality_issue`, `low_volume`, `choppy_robotic`, `echo`, `dtmf`, `latency`, `owa`, `static_noise`. </param>
+        /// <param name="spamAnnotation"> A boolean flag indicating spam calls. </param>
+        /// <param name="callScoreAnnotation"> A Call Score of the calls. Use a range of 1-5 to indicate the call experience score, with the following mapping as a reference for the rated call [5: Excellent, 4: Good, 3 : Fair, 2 : Poor, 1: Bad]. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -272,15 +278,16 @@ namespace Twilio.Rest.Insights.V1
                                                                                              string subaccount = null,
                                                                                              bool? abnormalSession = null,
                                                                                              CallSummariesResource.AnsweredByEnum answeredBy = null,
-                                                                                             string connectivityIssues = null,
-                                                                                             string qualityIssues = null,
-                                                                                             bool? spam = null,
-                                                                                             string callScores = null,
+                                                                                             string answeredByAnnotation = null,
+                                                                                             string connectivityIssueAnnotation = null,
+                                                                                             string qualityIssueAnnotation = null,
+                                                                                             bool? spamAnnotation = null,
+                                                                                             string callScoreAnnotation = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
                                                                                              ITwilioRestClient client = null)
         {
-            var options = new ReadCallSummariesOptions(){ From = from, To = to, FromCarrier = fromCarrier, ToCarrier = toCarrier, FromCountryCode = fromCountryCode, ToCountryCode = toCountryCode, Branded = branded, VerifiedCaller = verifiedCaller, HasTag = hasTag, StartTime = startTime, EndTime = endTime, CallType = callType, CallState = callState, Direction = direction, ProcessingState = processingState, SortBy = sortBy, Subaccount = subaccount, AbnormalSession = abnormalSession, AnsweredBy = answeredBy, ConnectivityIssues = connectivityIssues, QualityIssues = qualityIssues, Spam = spam, CallScores = callScores, PageSize = pageSize, Limit = limit};
+            var options = new ReadCallSummariesOptions(){ From = from, To = to, FromCarrier = fromCarrier, ToCarrier = toCarrier, FromCountryCode = fromCountryCode, ToCountryCode = toCountryCode, Branded = branded, VerifiedCaller = verifiedCaller, HasTag = hasTag, StartTime = startTime, EndTime = endTime, CallType = callType, CallState = callState, Direction = direction, ProcessingState = processingState, SortBy = sortBy, Subaccount = subaccount, AbnormalSession = abnormalSession, AnsweredBy = answeredBy, AnsweredByAnnotation = answeredByAnnotation, ConnectivityIssueAnnotation = connectivityIssueAnnotation, QualityIssueAnnotation = qualityIssueAnnotation, SpamAnnotation = spamAnnotation, CallScoreAnnotation = callScoreAnnotation, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
@@ -350,13 +357,29 @@ namespace Twilio.Rest.Insights.V1
                 throw new ApiException(e.Message, e);
             }
         }
+        /// <summary>
+    /// Converts an object into a json string
+    /// </summary>
+    /// <param name="model"> C# model </param>
+    /// <returns> JSON string </returns>
+    public static string ToJson(object model)
+    {
+        try
+        {
+            return JsonConvert.SerializeObject(model);
+        }
+        catch (JsonException e)
+        {
+            throw new ApiException(e.Message, e);
+        }
+    }
 
     
-        ///<summary> The account_sid </summary> 
+        ///<summary> The unique SID identifier of the Account. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The call_sid </summary> 
+        ///<summary> The unique SID identifier of the Call. </summary> 
         [JsonProperty("call_sid")]
         public string CallSid { get; private set; }
 
@@ -376,69 +399,73 @@ namespace Twilio.Rest.Insights.V1
         [JsonProperty("processing_state")]
         public CallSummariesResource.ProcessingStateEnum ProcessingState { get; private set; }
 
-        ///<summary> The created_time </summary> 
+        ///<summary> The time at which the Call was created, given in ISO 8601 format. Can be different from `start_time` in the event of queueing due to CPS </summary> 
         [JsonProperty("created_time")]
         public DateTime? CreatedTime { get; private set; }
 
-        ///<summary> The start_time </summary> 
+        ///<summary> The time at which the Call was started, given in ISO 8601 format. </summary> 
         [JsonProperty("start_time")]
         public DateTime? StartTime { get; private set; }
 
-        ///<summary> The end_time </summary> 
+        ///<summary> The time at which the Call was ended, given in ISO 8601 format. </summary> 
         [JsonProperty("end_time")]
         public DateTime? EndTime { get; private set; }
 
-        ///<summary> The duration </summary> 
+        ///<summary> Duration between when the call was initiated and the call was ended </summary> 
         [JsonProperty("duration")]
         public int? Duration { get; private set; }
 
-        ///<summary> The connect_duration </summary> 
+        ///<summary> Duration between when the call was answered and when it ended </summary> 
         [JsonProperty("connect_duration")]
         public int? ConnectDuration { get; private set; }
 
-        ///<summary> The from </summary> 
+        ///<summary> The calling party. </summary> 
         [JsonProperty("from")]
         public object From { get; private set; }
 
-        ///<summary> The to </summary> 
+        ///<summary> The called party. </summary> 
         [JsonProperty("to")]
         public object To { get; private set; }
 
-        ///<summary> The carrier_edge </summary> 
+        ///<summary> Contains metrics and properties for the Twilio media gateway of a PSTN call. </summary> 
         [JsonProperty("carrier_edge")]
         public object CarrierEdge { get; private set; }
 
-        ///<summary> The client_edge </summary> 
+        ///<summary> Contains metrics and properties for the Twilio media gateway of a Client call. </summary> 
         [JsonProperty("client_edge")]
         public object ClientEdge { get; private set; }
 
-        ///<summary> The sdk_edge </summary> 
+        ///<summary> Contains metrics and properties for the SDK sensor library for Client calls. </summary> 
         [JsonProperty("sdk_edge")]
         public object SdkEdge { get; private set; }
 
-        ///<summary> The sip_edge </summary> 
+        ///<summary> Contains metrics and properties for the Twilio media gateway of a SIP Interface or Trunking call. </summary> 
         [JsonProperty("sip_edge")]
         public object SipEdge { get; private set; }
 
-        ///<summary> The tags </summary> 
+        ///<summary> Tags applied to calls by Voice Insights analysis indicating a condition that could result in subjective degradation of the call quality. </summary> 
         [JsonProperty("tags")]
         public List<string> Tags { get; private set; }
 
-        ///<summary> The url </summary> 
+        ///<summary> The URL of this resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
-        ///<summary> The attributes </summary> 
+        ///<summary> Attributes capturing call-flow-specific details. </summary> 
         [JsonProperty("attributes")]
         public object Attributes { get; private set; }
 
-        ///<summary> The properties </summary> 
+        ///<summary> Contains edge-agnostic call-level details. </summary> 
         [JsonProperty("properties")]
         public object Properties { get; private set; }
 
-        ///<summary> The trust </summary> 
+        ///<summary> Contains trusted communications details including Branded Call and verified caller ID. </summary> 
         [JsonProperty("trust")]
         public object Trust { get; private set; }
+
+        ///<summary> The annotation </summary> 
+        [JsonProperty("annotation")]
+        public object Annotation { get; private set; }
 
 
 

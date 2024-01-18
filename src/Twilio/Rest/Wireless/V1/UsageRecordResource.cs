@@ -18,6 +18,7 @@ using System;
 using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Clients;
+using Twilio.Constant;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -28,6 +29,8 @@ namespace Twilio.Rest.Wireless.V1
 {
     public class UsageRecordResource : Resource
     {
+    
+
     
         public sealed class GranularityEnum : StringEnum
         {
@@ -192,6 +195,22 @@ namespace Twilio.Rest.Wireless.V1
                 throw new ApiException(e.Message, e);
             }
         }
+        /// <summary>
+    /// Converts an object into a json string
+    /// </summary>
+    /// <param name="model"> C# model </param>
+    /// <returns> JSON string </returns>
+    public static string ToJson(object model)
+    {
+        try
+        {
+            return JsonConvert.SerializeObject(model);
+        }
+        catch (JsonException e)
+        {
+            throw new ApiException(e.Message, e);
+        }
+    }
 
     
         ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the AccountUsageRecord resource. </summary> 
@@ -202,11 +221,11 @@ namespace Twilio.Rest.Wireless.V1
         [JsonProperty("period")]
         public object Period { get; private set; }
 
-        ///<summary> An object that describes the aggregated Commands usage for all SIMs during the specified period. See [Commands Usage Object](https://www.twilio.com/docs/wireless/api/account-usagerecord-resource#commands-usage-object). </summary> 
+        ///<summary> An object that describes the aggregated Commands usage for all SIMs during the specified period. See [Commands Usage Object](https://www.twilio.com/docs/iot/wireless/api/account-usagerecord-resource#commands-usage-object). </summary> 
         [JsonProperty("commands")]
         public object Commands { get; private set; }
 
-        ///<summary> An object that describes the aggregated Data usage for all SIMs over the period. See [Data Usage Object](https://www.twilio.com/docs/wireless/api/account-usagerecord-resource#data-usage-object). </summary> 
+        ///<summary> An object that describes the aggregated Data usage for all SIMs over the period. See [Data Usage Object](https://www.twilio.com/docs/iot/wireless/api/account-usagerecord-resource#data-usage-object). </summary> 
         [JsonProperty("data")]
         public object Data { get; private set; }
 

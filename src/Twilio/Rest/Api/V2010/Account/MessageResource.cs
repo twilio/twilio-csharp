@@ -18,6 +18,7 @@ using System;
 using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Clients;
+using Twilio.Constant;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -28,6 +29,8 @@ namespace Twilio.Rest.Api.V2010.Account
 {
     public class MessageResource : Resource
     {
+    
+
     
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class StatusEnum : StringEnum
@@ -62,6 +65,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 return new ContentRetentionEnum(value);
             }
             public static readonly ContentRetentionEnum Retain = new ContentRetentionEnum("retain");
+            public static readonly ContentRetentionEnum Discard = new ContentRetentionEnum("discard");
 
         }
         [JsonConverter(typeof(StringEnumConverter))]
@@ -90,6 +94,18 @@ namespace Twilio.Rest.Api.V2010.Account
             public static readonly ScheduleTypeEnum Fixed = new ScheduleTypeEnum("fixed");
 
         }
+        public sealed class RiskCheckEnum : StringEnum
+        {
+            private RiskCheckEnum(string value) : base(value) {}
+            public RiskCheckEnum() {}
+            public static implicit operator RiskCheckEnum(string value)
+            {
+                return new RiskCheckEnum(value);
+            }
+            public static readonly RiskCheckEnum Enable = new RiskCheckEnum("enable");
+            public static readonly RiskCheckEnum Disable = new RiskCheckEnum("disable");
+
+        }
         public sealed class AddressRetentionEnum : StringEnum
         {
             private AddressRetentionEnum(string value) : base(value) {}
@@ -99,6 +115,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 return new AddressRetentionEnum(value);
             }
             public static readonly AddressRetentionEnum Retain = new AddressRetentionEnum("retain");
+            public static readonly AddressRetentionEnum Obfuscate = new AddressRetentionEnum("obfuscate");
 
         }
         public sealed class UpdateStatusEnum : StringEnum
@@ -131,7 +148,7 @@ namespace Twilio.Rest.Api.V2010.Account
             );
         }
 
-        /// <summary> Send a message from the account used to make the request </summary>
+        /// <summary> Send a message </summary>
         /// <param name="options"> Create Message parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Message </returns>
@@ -143,7 +160,7 @@ namespace Twilio.Rest.Api.V2010.Account
         }
 
         #if !NET35
-        /// <summary> Send a message from the account used to make the request </summary>
+        /// <summary> Send a message </summary>
         /// <param name="options"> Create Message parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Message </returns>
@@ -156,30 +173,31 @@ namespace Twilio.Rest.Api.V2010.Account
         }
         #endif
 
-        /// <summary> Send a message from the account used to make the request </summary>
-        /// <param name="to"> The destination phone number in [E.164](https://www.twilio.com/docs/glossary/what-e164) format for SMS/MMS or [Channel user address](https://www.twilio.com/docs/sms/channels#channel-addresses) for other 3rd-party channels. </param>
-        /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource. </param>
-        /// <param name="from"> A Twilio phone number in [E.164](https://www.twilio.com/docs/glossary/what-e164) format, an [alphanumeric sender ID](https://www.twilio.com/docs/sms/send-messages#use-an-alphanumeric-sender-id), or a [Channel Endpoint address](https://www.twilio.com/docs/sms/channels#channel-addresses) that is enabled for the type of message you want to send. Phone numbers or [short codes](https://www.twilio.com/docs/sms/api/short-code) purchased from Twilio also work here. You cannot, for example, spoof messages from a private cell phone number. If you are using `messaging_service_sid`, this parameter must be empty. </param>
-        /// <param name="messagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/sms/services#send-a-message-with-copilot) you want to associate with the Message. Set this parameter to use the [Messaging Service Settings and Copilot Features](https://www.twilio.com/console/sms/services) you have configured and leave the `from` parameter empty. When only this parameter is set, Twilio will use your enabled Copilot Features to select the `from` phone number for delivery. </param>
-        /// <param name="body"> The text of the message you want to send. Can be up to 1,600 characters in length. </param>
-        /// <param name="mediaUrl"> The URL of the media to send with the message. The media can be of type `gif`, `png`, and `jpeg` and will be formatted correctly on the recipient's device. The media size limit is 5MB for supported file types (JPEG, PNG, GIF) and 500KB for [other types](https://www.twilio.com/docs/sms/accepted-mime-types) of accepted media. To send more than one image in the message body, provide multiple `media_url` parameters in the POST request. You can include up to 10 `media_url` parameters per message. You can send images in an SMS message in only the US and Canada. </param>
-        /// <param name="statusCallback"> The URL we should call using the `status_callback_method` to send status information to your application. If specified, we POST these message status changes to the URL: `queued`, `failed`, `sent`, `delivered`, or `undelivered`. Twilio will POST its [standard request parameters](https://www.twilio.com/docs/sms/twiml#request-parameters) as well as some additional parameters including `MessageSid`, `MessageStatus`, and `ErrorCode`. If you include this parameter with the `messaging_service_sid`, we use this URL instead of the Status Callback URL of the [Messaging Service](https://www.twilio.com/docs/sms/services/api). URLs must contain a valid hostname and underscores are not allowed. </param>
-        /// <param name="applicationSid"> The SID of the application that should receive message status. We POST a `message_sid` parameter and a `message_status` parameter with a value of `sent` or `failed` to the [application](https://www.twilio.com/docs/usage/api/applications)'s `message_status_callback`. If a `status_callback` parameter is also passed, it will be ignored and the application's `message_status_callback` parameter will be used. </param>
-        /// <param name="maxPrice"> The maximum total price in US dollars that you will pay for the message to be delivered. Can be a decimal value that has up to 4 decimal places. All messages are queued for delivery and the message cost is checked before the message is sent. If the cost exceeds `max_price`, the message will fail and a status of `Failed` is sent to the status callback. If `MaxPrice` is not set, the message cost is not checked. </param>
-        /// <param name="provideFeedback"> Whether to confirm delivery of the message. Set this value to `true` if you are sending messages that have a trackable user action and you intend to confirm delivery of the message using the [Message Feedback API](https://www.twilio.com/docs/sms/api/message-feedback-resource). This parameter is `false` by default. </param>
-        /// <param name="attempt"> Total number of attempts made ( including this ) to send out the message regardless of the provider used </param>
-        /// <param name="validityPeriod"> How long in seconds the message can remain in our outgoing message queue. After this period elapses, the message fails and we call your status callback. Can be between 1 and the default value of 14,400 seconds. After a message has been accepted by a carrier, however, we cannot guarantee that the message will not be queued after this period. We recommend that this value be at least 5 seconds. </param>
+        /// <summary> Send a message </summary>
+        /// <param name="to"> The recipient's phone number in [E.164](https://www.twilio.com/docs/glossary/what-e164) format (for SMS/MMS) or [channel address](https://www.twilio.com/docs/messaging/channels), e.g. `whatsapp:+15552229999`. </param>
+        /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) creating the Message resource. </param>
+        /// <param name="from"> The sender's Twilio phone number (in [E.164](https://en.wikipedia.org/wiki/E.164) format), [alphanumeric sender ID](https://www.twilio.com/docs/sms/quickstart), [Wireless SIM](https://www.twilio.com/docs/iot/wireless/programmable-wireless-send-machine-machine-sms-commands), [short code](https://www.twilio.com/en-us/messaging/channels/sms/short-codes), or [channel address](https://www.twilio.com/docs/messaging/channels) (e.g., `whatsapp:+15554449999`). The value of the `from` parameter must be a sender that is hosted within Twilio and belongs to the Account creating the Message. If you are using `messaging_service_sid`, this parameter can be empty (Twilio assigns a `from` value from the Messaging Service's Sender Pool) or you can provide a specific sender from your Sender Pool. </param>
+        /// <param name="messagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/services) you want to associate with the Message. When this parameter is provided and the `from` parameter is omitted, Twilio selects the optimal sender from the Messaging Service's Sender Pool. You may also provide a `from` parameter if you want to use a specific Sender from the Sender Pool. </param>
+        /// <param name="body"> The text content of the outgoing message. Can be up to 1,600 characters in length. SMS only: If the `body` contains more than 160 [GSM-7](https://www.twilio.com/docs/glossary/what-is-gsm-7-character-encoding) characters (or 70 [UCS-2](https://www.twilio.com/docs/glossary/what-is-ucs-2-character-encoding) characters), the message is segmented and charged accordingly. For long `body` text, consider using the [send_as_mms parameter](https://www.twilio.com/blog/mms-for-long-text-messages). </param>
+        /// <param name="mediaUrl"> The URL of media to include in the Message content. `jpeg`, `jpg`, `gif`, and `png` file types are fully supported by Twilio and content is formatted for delivery on destination devices. The media size limit is 5 MB for supported file types (`jpeg`, `jpg`, `png`, `gif`) and 500 KB for [other types](https://www.twilio.com/docs/messaging/guides/accepted-mime-types) of accepted media. To send more than one image in the message, provide multiple `media_url` parameters in the POST request. You can include up to ten `media_url` parameters per message. [International](https://support.twilio.com/hc/en-us/articles/223179808-Sending-and-receiving-MMS-messages) and [carrier](https://support.twilio.com/hc/en-us/articles/223133707-Is-MMS-supported-for-all-carriers-in-US-and-Canada-) limits apply. </param>
+        /// <param name="contentSid"> For [Content Editor/API](https://www.twilio.com/docs/content) only: The SID of the Content Template to be used with the Message, e.g., `HXXXXXXXXXXXXXXXXXXXXXXXXXXXXX`. If this parameter is not provided, a Content Template is not used. Find the SID in the Console on the Content Editor page. For Content API users, the SID is found in Twilio's response when [creating the Template](https://www.twilio.com/docs/content/content-api-resources#create-templates) or by [fetching your Templates](https://www.twilio.com/docs/content/content-api-resources#fetch-all-content-resources). </param>
+        /// <param name="statusCallback"> The URL of the endpoint to which Twilio sends [Message status callback requests](https://www.twilio.com/docs/sms/api/message-resource#twilios-request-to-the-statuscallback-url). URL must contain a valid hostname and underscores are not allowed. If you include this parameter with the `messaging_service_sid`, Twilio uses this URL instead of the Status Callback URL of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource).  </param>
+        /// <param name="applicationSid"> The SID of the associated [TwiML Application](https://www.twilio.com/docs/usage/api/applications). If this parameter is provided, the `status_callback` parameter of this request is ignored; [Message status callback requests](https://www.twilio.com/docs/sms/api/message-resource#twilios-request-to-the-statuscallback-url) are sent to the TwiML App's `message_status_callback` URL. </param>
+        /// <param name="maxPrice"> The maximum price in US dollars that you are willing to pay for this Message's delivery. The value can have up to four decimal places. When the `max_price` parameter is provided, the cost of a message is checked before it is sent. If the cost exceeds `max_price`, the message is not sent and the Message `status` is `failed`. </param>
+        /// <param name="provideFeedback"> Boolean indicating whether or not you intend to provide delivery confirmation feedback to Twilio (used in conjunction with the [Message Feedback subresource](https://www.twilio.com/docs/sms/api/message-feedback-resource)). Default value is `false`. </param>
+        /// <param name="attempt"> Total number of attempts made (including this request) to send the message regardless of the provider used </param>
+        /// <param name="validityPeriod"> The maximum length in seconds that the Message can remain in Twilio's outgoing message queue. If a queued Message exceeds the `validity_period`, the Message is not sent. Accepted values are integers from `1` to `14400`. Default value is `14400`. A `validity_period` greater than `5` is recommended. [Learn more about the validity period](https://www.twilio.com/blog/take-more-control-of-outbound-messages-using-validity-period-html) </param>
         /// <param name="forceDelivery"> Reserved </param>
         /// <param name="contentRetention">  </param>
         /// <param name="addressRetention">  </param>
         /// <param name="smartEncoded"> Whether to detect Unicode characters that have a similar GSM-7 character and replace them. Can be: `true` or `false`. </param>
-        /// <param name="persistentAction"> Rich actions for Channels Messages. </param>
-        /// <param name="shortenUrls"> Determines the usage of Click Tracking. Setting it to `true` will instruct Twilio to replace all links in the Message with a shortened version based on the associated Domain Sid and track clicks on them. If this parameter is not set on an API call, we will use the value set on the Messaging Service. If this parameter is not set and the value is not configured on the Messaging Service used this will default to `false`. </param>
+        /// <param name="persistentAction"> Rich actions for non-SMS/MMS channels. Used for [sending location in WhatsApp messages](https://www.twilio.com/docs/whatsapp/message-features#location-messages-with-whatsapp). </param>
+        /// <param name="shortenUrls"> For Messaging Services with [Link Shortening configured](https://www.twilio.com/docs/messaging/features/link-shortening) only: A Boolean indicating whether or not Twilio should shorten links in the `body` of the Message. Default value is `false`. If `true`, the `messaging_service_sid` parameter must also be provided. </param>
         /// <param name="scheduleType">  </param>
         /// <param name="sendAt"> The time that Twilio will send the message. Must be in ISO 8601 format. </param>
-        /// <param name="sendAsMms"> If set to True, Twilio will deliver the message as a single MMS message, regardless of the presence of media. </param>
-        /// <param name="contentSid"> The SID of the Content object returned at Content API content create time (https://www.twilio.com/docs/content-api/create-and-send-your-first-content-api-template#create-a-template). If this parameter is not specified, then the Content API will not be utilized. </param>
-        /// <param name="contentVariables"> Key-value pairs of variable names to substitution values, used alongside a content_sid. If not specified, Content API will default to the default variables defined at create time. </param>
+        /// <param name="sendAsMms"> If set to `true`, Twilio delivers the message as a single MMS message, regardless of the presence of media. </param>
+        /// <param name="contentVariables"> For [Content Editor/API](https://www.twilio.com/docs/content) only: Key-value pairs of [Template variables](https://www.twilio.com/docs/content/using-variables-with-content-api) and their substitution values. `content_sid` parameter must also be provided. If values are not defined in the `content_variables` parameter, the [Template's default placeholder values](https://www.twilio.com/docs/content/content-api-resources#create-templates) are used. </param>
+        /// <param name="riskCheck">  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Message </returns>
         public static MessageResource Create(
@@ -189,6 +207,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                           string messagingServiceSid = null,
                                           string body = null,
                                           List<Uri> mediaUrl = null,
+                                          string contentSid = null,
                                           Uri statusCallback = null,
                                           string applicationSid = null,
                                           decimal? maxPrice = null,
@@ -204,39 +223,40 @@ namespace Twilio.Rest.Api.V2010.Account
                                           MessageResource.ScheduleTypeEnum scheduleType = null,
                                           DateTime? sendAt = null,
                                           bool? sendAsMms = null,
-                                          string contentSid = null,
                                           string contentVariables = null,
+                                          MessageResource.RiskCheckEnum riskCheck = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new CreateMessageOptions(to){  PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, Attempt = attempt, ValidityPeriod = validityPeriod, ForceDelivery = forceDelivery, ContentRetention = contentRetention, AddressRetention = addressRetention, SmartEncoded = smartEncoded, PersistentAction = persistentAction, ShortenUrls = shortenUrls, ScheduleType = scheduleType, SendAt = sendAt, SendAsMms = sendAsMms, ContentSid = contentSid, ContentVariables = contentVariables };
+            var options = new CreateMessageOptions(to){  PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, ContentSid = contentSid, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, Attempt = attempt, ValidityPeriod = validityPeriod, ForceDelivery = forceDelivery, ContentRetention = contentRetention, AddressRetention = addressRetention, SmartEncoded = smartEncoded, PersistentAction = persistentAction, ShortenUrls = shortenUrls, ScheduleType = scheduleType, SendAt = sendAt, SendAsMms = sendAsMms, ContentVariables = contentVariables, RiskCheck = riskCheck };
             return Create(options, client);
         }
 
         #if !NET35
-        /// <summary> Send a message from the account used to make the request </summary>
-        /// <param name="to"> The destination phone number in [E.164](https://www.twilio.com/docs/glossary/what-e164) format for SMS/MMS or [Channel user address](https://www.twilio.com/docs/sms/channels#channel-addresses) for other 3rd-party channels. </param>
-        /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource. </param>
-        /// <param name="from"> A Twilio phone number in [E.164](https://www.twilio.com/docs/glossary/what-e164) format, an [alphanumeric sender ID](https://www.twilio.com/docs/sms/send-messages#use-an-alphanumeric-sender-id), or a [Channel Endpoint address](https://www.twilio.com/docs/sms/channels#channel-addresses) that is enabled for the type of message you want to send. Phone numbers or [short codes](https://www.twilio.com/docs/sms/api/short-code) purchased from Twilio also work here. You cannot, for example, spoof messages from a private cell phone number. If you are using `messaging_service_sid`, this parameter must be empty. </param>
-        /// <param name="messagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/sms/services#send-a-message-with-copilot) you want to associate with the Message. Set this parameter to use the [Messaging Service Settings and Copilot Features](https://www.twilio.com/console/sms/services) you have configured and leave the `from` parameter empty. When only this parameter is set, Twilio will use your enabled Copilot Features to select the `from` phone number for delivery. </param>
-        /// <param name="body"> The text of the message you want to send. Can be up to 1,600 characters in length. </param>
-        /// <param name="mediaUrl"> The URL of the media to send with the message. The media can be of type `gif`, `png`, and `jpeg` and will be formatted correctly on the recipient's device. The media size limit is 5MB for supported file types (JPEG, PNG, GIF) and 500KB for [other types](https://www.twilio.com/docs/sms/accepted-mime-types) of accepted media. To send more than one image in the message body, provide multiple `media_url` parameters in the POST request. You can include up to 10 `media_url` parameters per message. You can send images in an SMS message in only the US and Canada. </param>
-        /// <param name="statusCallback"> The URL we should call using the `status_callback_method` to send status information to your application. If specified, we POST these message status changes to the URL: `queued`, `failed`, `sent`, `delivered`, or `undelivered`. Twilio will POST its [standard request parameters](https://www.twilio.com/docs/sms/twiml#request-parameters) as well as some additional parameters including `MessageSid`, `MessageStatus`, and `ErrorCode`. If you include this parameter with the `messaging_service_sid`, we use this URL instead of the Status Callback URL of the [Messaging Service](https://www.twilio.com/docs/sms/services/api). URLs must contain a valid hostname and underscores are not allowed. </param>
-        /// <param name="applicationSid"> The SID of the application that should receive message status. We POST a `message_sid` parameter and a `message_status` parameter with a value of `sent` or `failed` to the [application](https://www.twilio.com/docs/usage/api/applications)'s `message_status_callback`. If a `status_callback` parameter is also passed, it will be ignored and the application's `message_status_callback` parameter will be used. </param>
-        /// <param name="maxPrice"> The maximum total price in US dollars that you will pay for the message to be delivered. Can be a decimal value that has up to 4 decimal places. All messages are queued for delivery and the message cost is checked before the message is sent. If the cost exceeds `max_price`, the message will fail and a status of `Failed` is sent to the status callback. If `MaxPrice` is not set, the message cost is not checked. </param>
-        /// <param name="provideFeedback"> Whether to confirm delivery of the message. Set this value to `true` if you are sending messages that have a trackable user action and you intend to confirm delivery of the message using the [Message Feedback API](https://www.twilio.com/docs/sms/api/message-feedback-resource). This parameter is `false` by default. </param>
-        /// <param name="attempt"> Total number of attempts made ( including this ) to send out the message regardless of the provider used </param>
-        /// <param name="validityPeriod"> How long in seconds the message can remain in our outgoing message queue. After this period elapses, the message fails and we call your status callback. Can be between 1 and the default value of 14,400 seconds. After a message has been accepted by a carrier, however, we cannot guarantee that the message will not be queued after this period. We recommend that this value be at least 5 seconds. </param>
+        /// <summary> Send a message </summary>
+        /// <param name="to"> The recipient's phone number in [E.164](https://www.twilio.com/docs/glossary/what-e164) format (for SMS/MMS) or [channel address](https://www.twilio.com/docs/messaging/channels), e.g. `whatsapp:+15552229999`. </param>
+        /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) creating the Message resource. </param>
+        /// <param name="from"> The sender's Twilio phone number (in [E.164](https://en.wikipedia.org/wiki/E.164) format), [alphanumeric sender ID](https://www.twilio.com/docs/sms/quickstart), [Wireless SIM](https://www.twilio.com/docs/iot/wireless/programmable-wireless-send-machine-machine-sms-commands), [short code](https://www.twilio.com/en-us/messaging/channels/sms/short-codes), or [channel address](https://www.twilio.com/docs/messaging/channels) (e.g., `whatsapp:+15554449999`). The value of the `from` parameter must be a sender that is hosted within Twilio and belongs to the Account creating the Message. If you are using `messaging_service_sid`, this parameter can be empty (Twilio assigns a `from` value from the Messaging Service's Sender Pool) or you can provide a specific sender from your Sender Pool. </param>
+        /// <param name="messagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/services) you want to associate with the Message. When this parameter is provided and the `from` parameter is omitted, Twilio selects the optimal sender from the Messaging Service's Sender Pool. You may also provide a `from` parameter if you want to use a specific Sender from the Sender Pool. </param>
+        /// <param name="body"> The text content of the outgoing message. Can be up to 1,600 characters in length. SMS only: If the `body` contains more than 160 [GSM-7](https://www.twilio.com/docs/glossary/what-is-gsm-7-character-encoding) characters (or 70 [UCS-2](https://www.twilio.com/docs/glossary/what-is-ucs-2-character-encoding) characters), the message is segmented and charged accordingly. For long `body` text, consider using the [send_as_mms parameter](https://www.twilio.com/blog/mms-for-long-text-messages). </param>
+        /// <param name="mediaUrl"> The URL of media to include in the Message content. `jpeg`, `jpg`, `gif`, and `png` file types are fully supported by Twilio and content is formatted for delivery on destination devices. The media size limit is 5 MB for supported file types (`jpeg`, `jpg`, `png`, `gif`) and 500 KB for [other types](https://www.twilio.com/docs/messaging/guides/accepted-mime-types) of accepted media. To send more than one image in the message, provide multiple `media_url` parameters in the POST request. You can include up to ten `media_url` parameters per message. [International](https://support.twilio.com/hc/en-us/articles/223179808-Sending-and-receiving-MMS-messages) and [carrier](https://support.twilio.com/hc/en-us/articles/223133707-Is-MMS-supported-for-all-carriers-in-US-and-Canada-) limits apply. </param>
+        /// <param name="contentSid"> For [Content Editor/API](https://www.twilio.com/docs/content) only: The SID of the Content Template to be used with the Message, e.g., `HXXXXXXXXXXXXXXXXXXXXXXXXXXXXX`. If this parameter is not provided, a Content Template is not used. Find the SID in the Console on the Content Editor page. For Content API users, the SID is found in Twilio's response when [creating the Template](https://www.twilio.com/docs/content/content-api-resources#create-templates) or by [fetching your Templates](https://www.twilio.com/docs/content/content-api-resources#fetch-all-content-resources). </param>
+        /// <param name="statusCallback"> The URL of the endpoint to which Twilio sends [Message status callback requests](https://www.twilio.com/docs/sms/api/message-resource#twilios-request-to-the-statuscallback-url). URL must contain a valid hostname and underscores are not allowed. If you include this parameter with the `messaging_service_sid`, Twilio uses this URL instead of the Status Callback URL of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource).  </param>
+        /// <param name="applicationSid"> The SID of the associated [TwiML Application](https://www.twilio.com/docs/usage/api/applications). If this parameter is provided, the `status_callback` parameter of this request is ignored; [Message status callback requests](https://www.twilio.com/docs/sms/api/message-resource#twilios-request-to-the-statuscallback-url) are sent to the TwiML App's `message_status_callback` URL. </param>
+        /// <param name="maxPrice"> The maximum price in US dollars that you are willing to pay for this Message's delivery. The value can have up to four decimal places. When the `max_price` parameter is provided, the cost of a message is checked before it is sent. If the cost exceeds `max_price`, the message is not sent and the Message `status` is `failed`. </param>
+        /// <param name="provideFeedback"> Boolean indicating whether or not you intend to provide delivery confirmation feedback to Twilio (used in conjunction with the [Message Feedback subresource](https://www.twilio.com/docs/sms/api/message-feedback-resource)). Default value is `false`. </param>
+        /// <param name="attempt"> Total number of attempts made (including this request) to send the message regardless of the provider used </param>
+        /// <param name="validityPeriod"> The maximum length in seconds that the Message can remain in Twilio's outgoing message queue. If a queued Message exceeds the `validity_period`, the Message is not sent. Accepted values are integers from `1` to `14400`. Default value is `14400`. A `validity_period` greater than `5` is recommended. [Learn more about the validity period](https://www.twilio.com/blog/take-more-control-of-outbound-messages-using-validity-period-html) </param>
         /// <param name="forceDelivery"> Reserved </param>
         /// <param name="contentRetention">  </param>
         /// <param name="addressRetention">  </param>
         /// <param name="smartEncoded"> Whether to detect Unicode characters that have a similar GSM-7 character and replace them. Can be: `true` or `false`. </param>
-        /// <param name="persistentAction"> Rich actions for Channels Messages. </param>
-        /// <param name="shortenUrls"> Determines the usage of Click Tracking. Setting it to `true` will instruct Twilio to replace all links in the Message with a shortened version based on the associated Domain Sid and track clicks on them. If this parameter is not set on an API call, we will use the value set on the Messaging Service. If this parameter is not set and the value is not configured on the Messaging Service used this will default to `false`. </param>
+        /// <param name="persistentAction"> Rich actions for non-SMS/MMS channels. Used for [sending location in WhatsApp messages](https://www.twilio.com/docs/whatsapp/message-features#location-messages-with-whatsapp). </param>
+        /// <param name="shortenUrls"> For Messaging Services with [Link Shortening configured](https://www.twilio.com/docs/messaging/features/link-shortening) only: A Boolean indicating whether or not Twilio should shorten links in the `body` of the Message. Default value is `false`. If `true`, the `messaging_service_sid` parameter must also be provided. </param>
         /// <param name="scheduleType">  </param>
         /// <param name="sendAt"> The time that Twilio will send the message. Must be in ISO 8601 format. </param>
-        /// <param name="sendAsMms"> If set to True, Twilio will deliver the message as a single MMS message, regardless of the presence of media. </param>
-        /// <param name="contentSid"> The SID of the Content object returned at Content API content create time (https://www.twilio.com/docs/content-api/create-and-send-your-first-content-api-template#create-a-template). If this parameter is not specified, then the Content API will not be utilized. </param>
-        /// <param name="contentVariables"> Key-value pairs of variable names to substitution values, used alongside a content_sid. If not specified, Content API will default to the default variables defined at create time. </param>
+        /// <param name="sendAsMms"> If set to `true`, Twilio delivers the message as a single MMS message, regardless of the presence of media. </param>
+        /// <param name="contentVariables"> For [Content Editor/API](https://www.twilio.com/docs/content) only: Key-value pairs of [Template variables](https://www.twilio.com/docs/content/using-variables-with-content-api) and their substitution values. `content_sid` parameter must also be provided. If values are not defined in the `content_variables` parameter, the [Template's default placeholder values](https://www.twilio.com/docs/content/content-api-resources#create-templates) are used. </param>
+        /// <param name="riskCheck">  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Message </returns>
         public static async System.Threading.Tasks.Task<MessageResource> CreateAsync(
@@ -246,6 +266,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                                                                   string messagingServiceSid = null,
                                                                                   string body = null,
                                                                                   List<Uri> mediaUrl = null,
+                                                                                  string contentSid = null,
                                                                                   Uri statusCallback = null,
                                                                                   string applicationSid = null,
                                                                                   decimal? maxPrice = null,
@@ -261,16 +282,16 @@ namespace Twilio.Rest.Api.V2010.Account
                                                                                   MessageResource.ScheduleTypeEnum scheduleType = null,
                                                                                   DateTime? sendAt = null,
                                                                                   bool? sendAsMms = null,
-                                                                                  string contentSid = null,
                                                                                   string contentVariables = null,
+                                                                                  MessageResource.RiskCheckEnum riskCheck = null,
                                                                                   ITwilioRestClient client = null)
         {
-        var options = new CreateMessageOptions(to){  PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, Attempt = attempt, ValidityPeriod = validityPeriod, ForceDelivery = forceDelivery, ContentRetention = contentRetention, AddressRetention = addressRetention, SmartEncoded = smartEncoded, PersistentAction = persistentAction, ShortenUrls = shortenUrls, ScheduleType = scheduleType, SendAt = sendAt, SendAsMms = sendAsMms, ContentSid = contentSid, ContentVariables = contentVariables };
+        var options = new CreateMessageOptions(to){  PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, ContentSid = contentSid, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, Attempt = attempt, ValidityPeriod = validityPeriod, ForceDelivery = forceDelivery, ContentRetention = contentRetention, AddressRetention = addressRetention, SmartEncoded = smartEncoded, PersistentAction = persistentAction, ShortenUrls = shortenUrls, ScheduleType = scheduleType, SendAt = sendAt, SendAsMms = sendAsMms, ContentVariables = contentVariables, RiskCheck = riskCheck };
             return await CreateAsync(options, client);
         }
         #endif
         
-        /// <summary> Deletes a message record from your account </summary>
+        /// <summary> Deletes a Message resource from your account </summary>
         /// <param name="options"> Delete Message parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Message </returns>
@@ -293,7 +314,7 @@ namespace Twilio.Rest.Api.V2010.Account
             );
         }
 
-        /// <summary> Deletes a message record from your account </summary>
+        /// <summary> Deletes a Message resource from your account </summary>
         /// <param name="options"> Delete Message parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Message </returns>
@@ -305,7 +326,7 @@ namespace Twilio.Rest.Api.V2010.Account
         }
 
         #if !NET35
-        /// <summary> Deletes a message record from your account </summary>
+        /// <summary> Deletes a Message resource from your account </summary>
         /// <param name="options"> Delete Message parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Message </returns>
@@ -318,9 +339,9 @@ namespace Twilio.Rest.Api.V2010.Account
         }
         #endif
 
-        /// <summary> Deletes a message record from your account </summary>
-        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Message resource to delete. </param>
-        /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Message resources to delete. </param>
+        /// <summary> Deletes a Message resource from your account </summary>
+        /// <param name="pathSid"> The SID of the Message resource you wish to delete </param>
+        /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) associated with the Message resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Message </returns>
         public static bool Delete(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
@@ -330,9 +351,9 @@ namespace Twilio.Rest.Api.V2010.Account
         }
 
         #if !NET35
-        /// <summary> Deletes a message record from your account </summary>
-        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Message resource to delete. </param>
-        /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Message resources to delete. </param>
+        /// <summary> Deletes a Message resource from your account </summary>
+        /// <param name="pathSid"> The SID of the Message resource you wish to delete </param>
+        /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) associated with the Message resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Message </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
@@ -361,7 +382,7 @@ namespace Twilio.Rest.Api.V2010.Account
             );
         }
 
-        /// <summary> Fetch a message belonging to the account used to make the request </summary>
+        /// <summary> Fetch a specific Message </summary>
         /// <param name="options"> Fetch Message parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Message </returns>
@@ -373,7 +394,7 @@ namespace Twilio.Rest.Api.V2010.Account
         }
 
         #if !NET35
-        /// <summary> Fetch a message belonging to the account used to make the request </summary>
+        /// <summary> Fetch a specific Message </summary>
         /// <param name="options"> Fetch Message parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Message </returns>
@@ -385,9 +406,9 @@ namespace Twilio.Rest.Api.V2010.Account
             return FromJson(response.Content);
         }
         #endif
-        /// <summary> Fetch a message belonging to the account used to make the request </summary>
-        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Message resource to fetch. </param>
-        /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Message resource to fetch. </param>
+        /// <summary> Fetch a specific Message </summary>
+        /// <param name="pathSid"> The SID of the Message resource to be fetched </param>
+        /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) associated with the Message resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Message </returns>
         public static MessageResource Fetch(
@@ -400,9 +421,9 @@ namespace Twilio.Rest.Api.V2010.Account
         }
 
         #if !NET35
-        /// <summary> Fetch a message belonging to the account used to make the request </summary>
-        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Message resource to fetch. </param>
-        /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Message resource to fetch. </param>
+        /// <summary> Fetch a specific Message </summary>
+        /// <param name="pathSid"> The SID of the Message resource to be fetched </param>
+        /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) associated with the Message resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Message </returns>
         public static async System.Threading.Tasks.Task<MessageResource> FetchAsync(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
@@ -428,7 +449,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 headerParams: null
             );
         }
-        /// <summary> Retrieve a list of messages belonging to the account used to make the request </summary>
+        /// <summary> Retrieve a list of Message resources associated with a Twilio Account </summary>
         /// <param name="options"> Read Message parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Message </returns>
@@ -441,7 +462,7 @@ namespace Twilio.Rest.Api.V2010.Account
         }
 
         #if !NET35
-        /// <summary> Retrieve a list of messages belonging to the account used to make the request </summary>
+        /// <summary> Retrieve a list of Message resources associated with a Twilio Account </summary>
         /// <param name="options"> Read Message parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Message </returns>
@@ -455,13 +476,13 @@ namespace Twilio.Rest.Api.V2010.Account
             return new ResourceSet<MessageResource>(page, options, client);
         }
         #endif
-        /// <summary> Retrieve a list of messages belonging to the account used to make the request </summary>
-        /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Message resources to read. </param>
-        /// <param name="to"> Read messages sent to only this phone number. </param>
-        /// <param name="from"> Read messages sent from only this phone number or alphanumeric sender ID. </param>
-        /// <param name="dateSentBefore"> The date of the messages to show. Specify a date as `YYYY-MM-DD` in GMT to read only messages sent on this date. For example: `2009-07-06`. You can also specify an inequality, such as `DateSent<=YYYY-MM-DD`, to read messages sent on or before midnight on a date, and `DateSent>=YYYY-MM-DD` to read messages sent on or after midnight on a date. </param>
-        /// <param name="dateSent"> The date of the messages to show. Specify a date as `YYYY-MM-DD` in GMT to read only messages sent on this date. For example: `2009-07-06`. You can also specify an inequality, such as `DateSent<=YYYY-MM-DD`, to read messages sent on or before midnight on a date, and `DateSent>=YYYY-MM-DD` to read messages sent on or after midnight on a date. </param>
-        /// <param name="dateSentAfter"> The date of the messages to show. Specify a date as `YYYY-MM-DD` in GMT to read only messages sent on this date. For example: `2009-07-06`. You can also specify an inequality, such as `DateSent<=YYYY-MM-DD`, to read messages sent on or before midnight on a date, and `DateSent>=YYYY-MM-DD` to read messages sent on or after midnight on a date. </param>
+        /// <summary> Retrieve a list of Message resources associated with a Twilio Account </summary>
+        /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) associated with the Message resources. </param>
+        /// <param name="to"> Filter by recipient. For example: Set this `to` parameter to `+15558881111` to retrieve a list of Message resources with `to` properties of `+15558881111` </param>
+        /// <param name="from"> Filter by sender. For example: Set this `from` parameter to `+15552229999` to retrieve a list of Message resources with `from` properties of `+15552229999` </param>
+        /// <param name="dateSentBefore"> Filter by Message `sent_date`. Accepts GMT dates in the following formats: `YYYY-MM-DD` (to find Messages with a specific `sent_date`), `<=YYYY-MM-DD` (to find Messages with `sent_date`s on and before a specific date), and `>=YYYY-MM-DD` (to find Messages with `sent_dates` on and after a specific date). </param>
+        /// <param name="dateSent"> Filter by Message `sent_date`. Accepts GMT dates in the following formats: `YYYY-MM-DD` (to find Messages with a specific `sent_date`), `<=YYYY-MM-DD` (to find Messages with `sent_date`s on and before a specific date), and `>=YYYY-MM-DD` (to find Messages with `sent_dates` on and after a specific date). </param>
+        /// <param name="dateSentAfter"> Filter by Message `sent_date`. Accepts GMT dates in the following formats: `YYYY-MM-DD` (to find Messages with a specific `sent_date`), `<=YYYY-MM-DD` (to find Messages with `sent_date`s on and before a specific date), and `>=YYYY-MM-DD` (to find Messages with `sent_dates` on and after a specific date). </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -482,13 +503,13 @@ namespace Twilio.Rest.Api.V2010.Account
         }
 
         #if !NET35
-        /// <summary> Retrieve a list of messages belonging to the account used to make the request </summary>
-        /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Message resources to read. </param>
-        /// <param name="to"> Read messages sent to only this phone number. </param>
-        /// <param name="from"> Read messages sent from only this phone number or alphanumeric sender ID. </param>
-        /// <param name="dateSentBefore"> The date of the messages to show. Specify a date as `YYYY-MM-DD` in GMT to read only messages sent on this date. For example: `2009-07-06`. You can also specify an inequality, such as `DateSent<=YYYY-MM-DD`, to read messages sent on or before midnight on a date, and `DateSent>=YYYY-MM-DD` to read messages sent on or after midnight on a date. </param>
-        /// <param name="dateSent"> The date of the messages to show. Specify a date as `YYYY-MM-DD` in GMT to read only messages sent on this date. For example: `2009-07-06`. You can also specify an inequality, such as `DateSent<=YYYY-MM-DD`, to read messages sent on or before midnight on a date, and `DateSent>=YYYY-MM-DD` to read messages sent on or after midnight on a date. </param>
-        /// <param name="dateSentAfter"> The date of the messages to show. Specify a date as `YYYY-MM-DD` in GMT to read only messages sent on this date. For example: `2009-07-06`. You can also specify an inequality, such as `DateSent<=YYYY-MM-DD`, to read messages sent on or before midnight on a date, and `DateSent>=YYYY-MM-DD` to read messages sent on or after midnight on a date. </param>
+        /// <summary> Retrieve a list of Message resources associated with a Twilio Account </summary>
+        /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) associated with the Message resources. </param>
+        /// <param name="to"> Filter by recipient. For example: Set this `to` parameter to `+15558881111` to retrieve a list of Message resources with `to` properties of `+15558881111` </param>
+        /// <param name="from"> Filter by sender. For example: Set this `from` parameter to `+15552229999` to retrieve a list of Message resources with `from` properties of `+15552229999` </param>
+        /// <param name="dateSentBefore"> Filter by Message `sent_date`. Accepts GMT dates in the following formats: `YYYY-MM-DD` (to find Messages with a specific `sent_date`), `<=YYYY-MM-DD` (to find Messages with `sent_date`s on and before a specific date), and `>=YYYY-MM-DD` (to find Messages with `sent_dates` on and after a specific date). </param>
+        /// <param name="dateSent"> Filter by Message `sent_date`. Accepts GMT dates in the following formats: `YYYY-MM-DD` (to find Messages with a specific `sent_date`), `<=YYYY-MM-DD` (to find Messages with `sent_date`s on and before a specific date), and `>=YYYY-MM-DD` (to find Messages with `sent_dates` on and after a specific date). </param>
+        /// <param name="dateSentAfter"> Filter by Message `sent_date`. Accepts GMT dates in the following formats: `YYYY-MM-DD` (to find Messages with a specific `sent_date`), `<=YYYY-MM-DD` (to find Messages with `sent_date`s on and before a specific date), and `>=YYYY-MM-DD` (to find Messages with `sent_dates` on and after a specific date). </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -577,7 +598,7 @@ namespace Twilio.Rest.Api.V2010.Account
             );
         }
 
-        /// <summary> To redact a message-body from a post-flight message record, post to the message instance resource with an empty body </summary>
+        /// <summary> Update a Message resource (used to redact Message `body` text and to cancel not-yet-sent messages) </summary>
         /// <param name="options"> Update Message parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Message </returns>
@@ -588,7 +609,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return FromJson(response.Content);
         }
 
-        /// <summary> To redact a message-body from a post-flight message record, post to the message instance resource with an empty body </summary>
+        /// <summary> Update a Message resource (used to redact Message `body` text and to cancel not-yet-sent messages) </summary>
         /// <param name="options"> Update Message parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Message </returns>
@@ -602,10 +623,10 @@ namespace Twilio.Rest.Api.V2010.Account
         }
         #endif
 
-        /// <summary> To redact a message-body from a post-flight message record, post to the message instance resource with an empty body </summary>
-        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Message resource to update. </param>
+        /// <summary> Update a Message resource (used to redact Message `body` text and to cancel not-yet-sent messages) </summary>
+        /// <param name="pathSid"> The SID of the Message resource to be updated </param>
         /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Message resources to update. </param>
-        /// <param name="body"> The text of the message you want to send. Can be up to 1,600 characters long. </param>
+        /// <param name="body"> The new `body` of the Message resource. To redact the text content of a Message, this parameter's value must be an empty string </param>
         /// <param name="status">  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Message </returns>
@@ -621,10 +642,10 @@ namespace Twilio.Rest.Api.V2010.Account
         }
 
         #if !NET35
-        /// <summary> To redact a message-body from a post-flight message record, post to the message instance resource with an empty body </summary>
-        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Message resource to update. </param>
+        /// <summary> Update a Message resource (used to redact Message `body` text and to cancel not-yet-sent messages) </summary>
+        /// <param name="pathSid"> The SID of the Message resource to be updated </param>
         /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Message resources to update. </param>
-        /// <param name="body"> The text of the message you want to send. Can be up to 1,600 characters long. </param>
+        /// <param name="body"> The new `body` of the Message resource. To redact the text content of a Message, this parameter's value must be an empty string </param>
         /// <param name="status">  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Message </returns>
@@ -656,13 +677,29 @@ namespace Twilio.Rest.Api.V2010.Account
                 throw new ApiException(e.Message, e);
             }
         }
+        /// <summary>
+    /// Converts an object into a json string
+    /// </summary>
+    /// <param name="model"> C# model </param>
+    /// <returns> JSON string </returns>
+    public static string ToJson(object model)
+    {
+        try
+        {
+            return JsonConvert.SerializeObject(model);
+        }
+        catch (JsonException e)
+        {
+            throw new ApiException(e.Message, e);
+        }
+    }
 
     
-        ///<summary> The message text. Can be up to 1,600 characters long. </summary> 
+        ///<summary> The text content of the message </summary> 
         [JsonProperty("body")]
         public string Body { get; private set; }
 
-        ///<summary> The number of segments that make up the complete message. A message body that is too large to be sent in a single SMS message is segmented and charged as multiple messages. Inbound messages over 160 characters are reassembled when the message is received. Note: When using a Messaging Service to send messages, `num_segments` will always be 0 in Twilio's response to your API request. </summary> 
+        ///<summary> The number of segments that make up the complete message. SMS message bodies that exceed the [character limit](https://www.twilio.com/docs/glossary/what-sms-character-limit) are segmented and charged as multiple messages. Note: For messages sent via a Messaging Service, `num_segments` is initially `0`, since a sender hasn't yet been assigned. </summary> 
         [JsonProperty("num_segments")]
         public string NumSegments { get; private set; }
 
@@ -670,36 +707,36 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonProperty("direction")]
         public MessageResource.DirectionEnum Direction { get; private set; }
 
-        ///<summary> The phone number (in [E.164](https://en.wikipedia.org/wiki/E.164) format), [alphanumeric sender ID](https://www.twilio.com/docs/sms/send-messages#use-an-alphanumeric-sender-id), or [Wireless SIM](https://www.twilio.com/docs/wireless/tutorials/communications-guides/how-to-send-and-receive-text-messages) that initiated the message. For incoming messages, this will be the number of the sending phone. For outgoing messages, this value will be one of your Twilio phone numbers or the alphanumeric sender ID used. </summary> 
+        ///<summary> The sender's phone number (in [E.164](https://en.wikipedia.org/wiki/E.164) format), [alphanumeric sender ID](https://www.twilio.com/docs/sms/quickstart), [Wireless SIM](https://www.twilio.com/docs/iot/wireless/programmable-wireless-send-machine-machine-sms-commands), [short code](https://www.twilio.com/en-us/messaging/channels/sms/short-codes), or  [channel address](https://www.twilio.com/docs/messaging/channels) (e.g., `whatsapp:+15554449999`). For incoming messages, this is the number or channel address of the sender. For outgoing messages, this value is a Twilio phone number, alphanumeric sender ID, short code, or channel address from which the message is sent. </summary> 
         [JsonProperty("from")]
         [JsonConverter(typeof(PhoneNumberConverter))]
         public Types.PhoneNumber From { get; private set; }
 
-        ///<summary> The phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format that received the message. For incoming messages, this will be one of your Twilio phone numbers. For outgoing messages, this will be the sending phone. </summary> 
+        ///<summary> The recipient's phone number (in [E.164](https://en.wikipedia.org/wiki/E.164) format) or [channel address](https://www.twilio.com/docs/messaging/channels) (e.g. `whatsapp:+15552229999`) </summary> 
         [JsonProperty("to")]
         public string To { get; private set; }
 
-        ///<summary> The date and time in GMT that the resource was last updated specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
+        ///<summary> The [RFC 2822](https://datatracker.ietf.org/doc/html/rfc2822#section-3.3) timestamp (in GMT) of when the Message resource was last updated </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> The amount billed for the message, in the currency specified by `price_unit`.  Note that your account is charged for each segment we send to the handset. Populated after the message has been sent. May not be immediately available. </summary> 
+        ///<summary> The amount billed for the message in the currency specified by `price_unit`. The `price` is populated after the message has been sent/received, and may not be immediately availalble. View the [Pricing page](https://www.twilio.com/en-us/pricing) for more details. </summary> 
         [JsonProperty("price")]
         public string Price { get; private set; }
 
-        ///<summary> The description of the `error_code` if your message `status` is `failed` or `undelivered`. If the message was successful, this value is null. </summary> 
+        ///<summary> The description of the `error_code` if the Message `status` is `failed` or `undelivered`. If no error was encountered, the value is `null`. </summary> 
         [JsonProperty("error_message")]
         public string ErrorMessage { get; private set; }
 
-        ///<summary> The URI of the resource, relative to `https://api.twilio.com`. </summary> 
+        ///<summary> The URI of the Message resource, relative to `https://api.twilio.com`. </summary> 
         [JsonProperty("uri")]
         public string Uri { get; private set; }
 
-        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that sent the message that created the resource. </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) associated with the Message resource </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The number of media files associated with the message. A message can send up to 10 media files. </summary> 
+        ///<summary> The number of media files associated with the Message resource. </summary> 
         [JsonProperty("num_media")]
         public string NumMedia { get; private set; }
 
@@ -707,23 +744,23 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonProperty("status")]
         public MessageResource.StatusEnum Status { get; private set; }
 
-        ///<summary> The SID of the [Messaging Service](https://www.twilio.com/docs/sms/services/api) used with the message. The value is null if a Messaging Service was not used. </summary> 
+        ///<summary> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) associated with the Message resource. The value is `null` if a Messaging Service was not used. </summary> 
         [JsonProperty("messaging_service_sid")]
         public string MessagingServiceSid { get; private set; }
 
-        ///<summary> The unique string that that we created to identify the Message resource. </summary> 
+        ///<summary> The unique, Twilio-provided string that identifies the Message resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The date and time in GMT that the resource was sent specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. For outgoing messages, this is when we sent the message. For incoming messages, this is when we made the HTTP request to your application.  </summary> 
+        ///<summary> The [RFC 2822](https://datatracker.ietf.org/doc/html/rfc2822#section-3.3) timestamp (in GMT) of when the Message was sent. For an outgoing message, this is when Twilio sent the message. For an incoming message, this is when Twilio sent the HTTP request to your incoming message webhook URL. </summary> 
         [JsonProperty("date_sent")]
         public DateTime? DateSent { get; private set; }
 
-        ///<summary> The date and time in GMT that the resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
+        ///<summary> The [RFC 2822](https://datatracker.ietf.org/doc/html/rfc2822#section-3.3) timestamp (in GMT) of when the Message resource was created </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The error code returned if your message `status` is `failed` or `undelivered`. The error_code provides more information about the failure. If the message was successful, this value is null. </summary> 
+        ///<summary> The [error code](https://www.twilio.com/docs/api/errors) returned if the Message `status` is `failed` or `undelivered`. If no error was encountered, the value is `null`. </summary> 
         [JsonProperty("error_code")]
         public int? ErrorCode { get; private set; }
 
@@ -731,7 +768,7 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonProperty("price_unit")]
         public string PriceUnit { get; private set; }
 
-        ///<summary> The API version used to process the message. </summary> 
+        ///<summary> The API version used to process the Message </summary> 
         [JsonProperty("api_version")]
         public string ApiVersion { get; private set; }
 

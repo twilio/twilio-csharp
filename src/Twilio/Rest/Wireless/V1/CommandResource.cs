@@ -18,6 +18,7 @@ using System;
 using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Clients;
+using Twilio.Constant;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -28,6 +29,8 @@ namespace Twilio.Rest.Wireless.V1
 {
     public class CommandResource : Resource
     {
+    
+
     
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class StatusEnum : StringEnum
@@ -128,7 +131,7 @@ namespace Twilio.Rest.Wireless.V1
 
         /// <summary> Send a Command to a Sim. </summary>
         /// <param name="command"> The message body of the Command. Can be plain text in text mode or a Base64 encoded byte string in binary mode. </param>
-        /// <param name="sim"> The `sid` or `unique_name` of the [SIM](https://www.twilio.com/docs/wireless/api/sim-resource) to send the Command to. </param>
+        /// <param name="sim"> The `sid` or `unique_name` of the [SIM](https://www.twilio.com/docs/iot/wireless/api/sim-resource) to send the Command to. </param>
         /// <param name="callbackMethod"> The HTTP method we use to call `callback_url`. Can be: `POST` or `GET`, and the default is `POST`. </param>
         /// <param name="callbackUrl"> The URL we call using the `callback_url` when the Command has finished sending, whether the command was delivered or it failed. </param>
         /// <param name="commandMode">  </param>
@@ -153,7 +156,7 @@ namespace Twilio.Rest.Wireless.V1
         #if !NET35
         /// <summary> Send a Command to a Sim. </summary>
         /// <param name="command"> The message body of the Command. Can be plain text in text mode or a Base64 encoded byte string in binary mode. </param>
-        /// <param name="sim"> The `sid` or `unique_name` of the [SIM](https://www.twilio.com/docs/wireless/api/sim-resource) to send the Command to. </param>
+        /// <param name="sim"> The `sid` or `unique_name` of the [SIM](https://www.twilio.com/docs/iot/wireless/api/sim-resource) to send the Command to. </param>
         /// <param name="callbackMethod"> The HTTP method we use to call `callback_url`. Can be: `POST` or `GET`, and the default is `POST`. </param>
         /// <param name="callbackUrl"> The URL we call using the `callback_url` when the Command has finished sending, whether the command was delivered or it failed. </param>
         /// <param name="commandMode">  </param>
@@ -351,7 +354,7 @@ namespace Twilio.Rest.Wireless.V1
         }
         #endif
         /// <summary> Retrieve a list of Commands from your account. </summary>
-        /// <param name="sim"> The `sid` or `unique_name` of the [Sim resources](https://www.twilio.com/docs/wireless/api/sim-resource) to read. </param>
+        /// <param name="sim"> The `sid` or `unique_name` of the [Sim resources](https://www.twilio.com/docs/iot/wireless/api/sim-resource) to read. </param>
         /// <param name="status"> The status of the resources to read. Can be: `queued`, `sent`, `delivered`, `received`, or `failed`. </param>
         /// <param name="direction"> Only return Commands with this direction value. </param>
         /// <param name="transport"> Only return Commands with this transport value. Can be: `sms` or `ip`. </param>
@@ -374,7 +377,7 @@ namespace Twilio.Rest.Wireless.V1
 
         #if !NET35
         /// <summary> Retrieve a list of Commands from your account. </summary>
-        /// <param name="sim"> The `sid` or `unique_name` of the [Sim resources](https://www.twilio.com/docs/wireless/api/sim-resource) to read. </param>
+        /// <param name="sim"> The `sid` or `unique_name` of the [Sim resources](https://www.twilio.com/docs/iot/wireless/api/sim-resource) to read. </param>
         /// <param name="status"> The status of the resources to read. Can be: `queued`, `sent`, `delivered`, `received`, or `failed`. </param>
         /// <param name="direction"> Only return Commands with this direction value. </param>
         /// <param name="transport"> Only return Commands with this transport value. Can be: `sms` or `ip`. </param>
@@ -461,6 +464,22 @@ namespace Twilio.Rest.Wireless.V1
                 throw new ApiException(e.Message, e);
             }
         }
+        /// <summary>
+    /// Converts an object into a json string
+    /// </summary>
+    /// <param name="model"> C# model </param>
+    /// <returns> JSON string </returns>
+    public static string ToJson(object model)
+    {
+        try
+        {
+            return JsonConvert.SerializeObject(model);
+        }
+        catch (JsonException e)
+        {
+            throw new ApiException(e.Message, e);
+        }
+    }
 
     
         ///<summary> The unique string that we created to identify the Command resource. </summary> 
@@ -471,7 +490,7 @@ namespace Twilio.Rest.Wireless.V1
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The SID of the [Sim resource](https://www.twilio.com/docs/wireless/api/sim-resource) that the Command was sent to or from. </summary> 
+        ///<summary> The SID of the [Sim resource](https://www.twilio.com/docs/iot/wireless/api/sim-resource) that the Command was sent to or from. </summary> 
         [JsonProperty("sim_sid")]
         public string SimSid { get; private set; }
 

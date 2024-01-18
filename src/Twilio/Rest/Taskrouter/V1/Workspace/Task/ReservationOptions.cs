@@ -51,12 +51,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
             return p;
         }
+
         
 
     }
@@ -91,7 +92,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  override List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -109,6 +110,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
             }
             return p;
         }
+
         
 
     }
@@ -288,6 +290,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         ///<summary> Whether to play a notification beep when the customer joins. </summary> 
         public bool? BeepOnCustomerEntrance { get; set; }
 
+        ///<summary> The jitter buffer size for conference. Can be: `small`, `medium`, `large`, `off`. </summary> 
+        public string JitterBufferSize { get; set; }
+
 
 
         /// <summary> Construct a new UpdateTaskReservationOptions </summary>
@@ -306,7 +311,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -522,8 +527,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
             {
                 p.Add(new KeyValuePair<string, string>("BeepOnCustomerEntrance", BeepOnCustomerEntrance.Value.ToString().ToLower()));
             }
+            if (JitterBufferSize != null)
+            {
+                p.Add(new KeyValuePair<string, string>("JitterBufferSize", JitterBufferSize));
+            }
             return p;
         }
+
         
     /// <summary> Generate the necessary header parameters </summary>
     public List<KeyValuePair<string, string>> GetHeaderParams()

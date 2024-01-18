@@ -18,6 +18,7 @@ using System;
 using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Clients;
+using Twilio.Constant;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -28,6 +29,8 @@ namespace Twilio.Rest.Messaging.V1.Service
 {
     public class UsAppToPersonResource : Resource
     {
+    
+
     
 
         
@@ -74,11 +77,11 @@ namespace Twilio.Rest.Messaging.V1.Service
         #endif
 
         /// <summary> create </summary>
-        /// <param name="pathMessagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) to create the resources from. </param>
+        /// <param name="pathMessagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) to create the resources from. </param>
         /// <param name="brandRegistrationSid"> A2P Brand Registration SID </param>
         /// <param name="description"> A short description of what this SMS campaign does. Min length: 40 characters. Max length: 4096 characters. </param>
         /// <param name="messageFlow"> Required for all Campaigns. Details around how a consumer opts-in to their campaign, therefore giving consent to receive their messages. If multiple opt-in methods can be used for the same campaign, they must all be listed. 40 character minimum. 2048 character maximum. </param>
-        /// <param name="messageSamples"> Message samples, at least 1 and up to 5 sample messages (at least 2 for sole proprietor), >=20 chars, <=1024 chars each. </param>
+        /// <param name="messageSamples"> An array of sample message strings, min two and max five. Min length for each sample: 20 chars. Max length for each sample: 1024 chars. </param>
         /// <param name="usAppToPersonUsecase"> A2P Campaign Use Case. Examples: [ 2FA, EMERGENCY, MARKETING..] </param>
         /// <param name="hasEmbeddedLinks"> Indicates that this SMS campaign will send messages that contain links. </param>
         /// <param name="hasEmbeddedPhone"> Indicates that this SMS campaign will send messages that contain phone numbers. </param>
@@ -113,11 +116,11 @@ namespace Twilio.Rest.Messaging.V1.Service
 
         #if !NET35
         /// <summary> create </summary>
-        /// <param name="pathMessagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) to create the resources from. </param>
+        /// <param name="pathMessagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) to create the resources from. </param>
         /// <param name="brandRegistrationSid"> A2P Brand Registration SID </param>
         /// <param name="description"> A short description of what this SMS campaign does. Min length: 40 characters. Max length: 4096 characters. </param>
         /// <param name="messageFlow"> Required for all Campaigns. Details around how a consumer opts-in to their campaign, therefore giving consent to receive their messages. If multiple opt-in methods can be used for the same campaign, they must all be listed. 40 character minimum. 2048 character maximum. </param>
-        /// <param name="messageSamples"> Message samples, at least 1 and up to 5 sample messages (at least 2 for sole proprietor), >=20 chars, <=1024 chars each. </param>
+        /// <param name="messageSamples"> An array of sample message strings, min two and max five. Min length for each sample: 20 chars. Max length for each sample: 1024 chars. </param>
         /// <param name="usAppToPersonUsecase"> A2P Campaign Use Case. Examples: [ 2FA, EMERGENCY, MARKETING..] </param>
         /// <param name="hasEmbeddedLinks"> Indicates that this SMS campaign will send messages that contain links. </param>
         /// <param name="hasEmbeddedPhone"> Indicates that this SMS campaign will send messages that contain phone numbers. </param>
@@ -200,7 +203,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         #endif
 
         /// <summary> delete </summary>
-        /// <param name="pathMessagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) to delete the resource from. </param>
+        /// <param name="pathMessagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) to delete the resource from. </param>
         /// <param name="pathSid"> The SID of the US A2P Compliance resource to delete `QE2c6890da8086d771620e9b13fadeba0b`. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of UsAppToPerson </returns>
@@ -212,7 +215,7 @@ namespace Twilio.Rest.Messaging.V1.Service
 
         #if !NET35
         /// <summary> delete </summary>
-        /// <param name="pathMessagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) to delete the resource from. </param>
+        /// <param name="pathMessagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) to delete the resource from. </param>
         /// <param name="pathSid"> The SID of the US A2P Compliance resource to delete `QE2c6890da8086d771620e9b13fadeba0b`. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of UsAppToPerson </returns>
@@ -267,7 +270,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         }
         #endif
         /// <summary> fetch </summary>
-        /// <param name="pathMessagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) to fetch the resource from. </param>
+        /// <param name="pathMessagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) to fetch the resource from. </param>
         /// <param name="pathSid"> The SID of the US A2P Compliance resource to fetch `QE2c6890da8086d771620e9b13fadeba0b`. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of UsAppToPerson </returns>
@@ -282,7 +285,7 @@ namespace Twilio.Rest.Messaging.V1.Service
 
         #if !NET35
         /// <summary> fetch </summary>
-        /// <param name="pathMessagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) to fetch the resource from. </param>
+        /// <param name="pathMessagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) to fetch the resource from. </param>
         /// <param name="pathSid"> The SID of the US A2P Compliance resource to fetch `QE2c6890da8086d771620e9b13fadeba0b`. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of UsAppToPerson </returns>
@@ -337,7 +340,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         }
         #endif
         /// <summary> read </summary>
-        /// <param name="pathMessagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) to fetch the resource from. </param>
+        /// <param name="pathMessagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) to fetch the resource from. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -354,7 +357,7 @@ namespace Twilio.Rest.Messaging.V1.Service
 
         #if !NET35
         /// <summary> read </summary>
-        /// <param name="pathMessagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) to fetch the resource from. </param>
+        /// <param name="pathMessagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) to fetch the resource from. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -435,6 +438,22 @@ namespace Twilio.Rest.Messaging.V1.Service
                 throw new ApiException(e.Message, e);
             }
         }
+        /// <summary>
+    /// Converts an object into a json string
+    /// </summary>
+    /// <param name="model"> C# model </param>
+    /// <returns> JSON string </returns>
+    public static string ToJson(object model)
+    {
+        try
+        {
+            return JsonConvert.SerializeObject(model);
+        }
+        catch (JsonException e)
+        {
+            throw new ApiException(e.Message, e);
+        }
+    }
 
     
         ///<summary> The unique string that identifies a US A2P Compliance resource `QE2c6890da8086d771620e9b13fadeba0b`. </summary> 
@@ -449,7 +468,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         [JsonProperty("brand_registration_sid")]
         public string BrandRegistrationSid { get; private set; }
 
-        ///<summary> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) that the resource is associated with. </summary> 
+        ///<summary> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) that the resource is associated with. </summary> 
         [JsonProperty("messaging_service_sid")]
         public string MessagingServiceSid { get; private set; }
 
@@ -457,7 +476,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         [JsonProperty("description")]
         public string Description { get; private set; }
 
-        ///<summary> Message samples, at least 1 and up to 5 sample messages (at least 2 for starter/sole proprietor), >=20 chars, <=1024 chars each. </summary> 
+        ///<summary> An array of sample message strings, min two and max five. Min length for each sample: 20 chars. Max length for each sample: 1024 chars. </summary> 
         [JsonProperty("message_samples")]
         public List<string> MessageSamples { get; private set; }
 
@@ -532,6 +551,10 @@ namespace Twilio.Rest.Messaging.V1.Service
         ///<summary> A boolean that specifies whether campaign is a mock or not. Mock campaigns will be automatically created if using a mock brand. Mock campaigns should only be used for testing purposes. </summary> 
         [JsonProperty("mock")]
         public bool? Mock { get; private set; }
+
+        ///<summary> Details indicating why a campaign registration failed. These errors can indicate one or more fields that were incorrect or did not meet review requirements. </summary> 
+        [JsonProperty("errors")]
+        public List<object> Errors { get; private set; }
 
 
 

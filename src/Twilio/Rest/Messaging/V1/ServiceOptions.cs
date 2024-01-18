@@ -46,22 +46,22 @@ namespace Twilio.Rest.Messaging.V1
         ///<summary> The URL we should call to [pass status updates](https://www.twilio.com/docs/sms/api/message-resource#message-status-values) about message delivery. </summary> 
         public Uri StatusCallback { get; set; }
 
-        ///<summary> Whether to enable [Sticky Sender](https://www.twilio.com/docs/sms/services#sticky-sender) on the Service instance. </summary> 
+        ///<summary> Whether to enable [Sticky Sender](https://www.twilio.com/docs/messaging/services#sticky-sender) on the Service instance. </summary> 
         public bool? StickySender { get; set; }
 
-        ///<summary> Whether to enable the [MMS Converter](https://www.twilio.com/docs/sms/services#mms-converter) for messages sent through the Service instance. </summary> 
+        ///<summary> Whether to enable the [MMS Converter](https://www.twilio.com/docs/messaging/services#mms-converter) for messages sent through the Service instance. </summary> 
         public bool? MmsConverter { get; set; }
 
-        ///<summary> Whether to enable [Smart Encoding](https://www.twilio.com/docs/sms/services#smart-encoding) for messages sent through the Service instance. </summary> 
+        ///<summary> Whether to enable [Smart Encoding](https://www.twilio.com/docs/messaging/services#smart-encoding) for messages sent through the Service instance. </summary> 
         public bool? SmartEncoding { get; set; }
 
         
         public ServiceResource.ScanMessageContentEnum ScanMessageContent { get; set; }
 
-        ///<summary> Whether to enable [Fallback to Long Code](https://www.twilio.com/docs/sms/services#fallback-to-long-code) for messages sent through the Service instance. </summary> 
+        ///<summary> [OBSOLETE] Former feature used to fallback to long code sender after certain short code message failures. </summary> 
         public bool? FallbackToLongCode { get; set; }
 
-        ///<summary> Whether to enable [Area Code Geomatch](https://www.twilio.com/docs/sms/services#area-code-geomatch) on the Service Instance. </summary> 
+        ///<summary> Whether to enable [Area Code Geomatch](https://www.twilio.com/docs/messaging/services#area-code-geomatch) on the Service Instance. </summary> 
         public bool? AreaCodeGeomatch { get; set; }
 
         ///<summary> How long, in seconds, messages sent from the Service are valid. Can be an integer from `1` to `14,400`. </summary> 
@@ -70,7 +70,7 @@ namespace Twilio.Rest.Messaging.V1
         ///<summary> Reserved. </summary> 
         public bool? SynchronousValidation { get; set; }
 
-        ///<summary> A string that describes the scenario in which the Messaging Service will be used. Examples: [notification, marketing, verification, poll ..]. </summary> 
+        ///<summary> A string that describes the scenario in which the Messaging Service will be used. Possible values are `notifications`, `marketing`, `verification`, `discussion`, `poll`, `undeclared`. </summary> 
         public string Usecase { get; set; }
 
         ///<summary> A boolean value that indicates either the webhook url configured on the phone number will be used or `inbound_request_url`/`fallback_url` url will be called when a message is received from the phone number. If this field is enabled then the webhook url defined on the phone number will override the `inbound_request_url`/`fallback_url` defined for the Messaging Service. </summary> 
@@ -86,7 +86,7 @@ namespace Twilio.Rest.Messaging.V1
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -156,6 +156,7 @@ namespace Twilio.Rest.Messaging.V1
             }
             return p;
         }
+
         
 
     }
@@ -177,12 +178,13 @@ namespace Twilio.Rest.Messaging.V1
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
             return p;
         }
+
         
 
     }
@@ -206,12 +208,13 @@ namespace Twilio.Rest.Messaging.V1
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
             return p;
         }
+
         
 
     }
@@ -226,7 +229,7 @@ namespace Twilio.Rest.Messaging.V1
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  override List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -236,6 +239,7 @@ namespace Twilio.Rest.Messaging.V1
             }
             return p;
         }
+
         
 
     }
@@ -265,22 +269,22 @@ namespace Twilio.Rest.Messaging.V1
         ///<summary> The URL we should call to [pass status updates](https://www.twilio.com/docs/sms/api/message-resource#message-status-values) about message delivery. </summary> 
         public Uri StatusCallback { get; set; }
 
-        ///<summary> Whether to enable [Sticky Sender](https://www.twilio.com/docs/sms/services#sticky-sender) on the Service instance. </summary> 
+        ///<summary> Whether to enable [Sticky Sender](https://www.twilio.com/docs/messaging/services#sticky-sender) on the Service instance. </summary> 
         public bool? StickySender { get; set; }
 
-        ///<summary> Whether to enable the [MMS Converter](https://www.twilio.com/docs/sms/services#mms-converter) for messages sent through the Service instance. </summary> 
+        ///<summary> Whether to enable the [MMS Converter](https://www.twilio.com/docs/messaging/services#mms-converter) for messages sent through the Service instance. </summary> 
         public bool? MmsConverter { get; set; }
 
-        ///<summary> Whether to enable [Smart Encoding](https://www.twilio.com/docs/sms/services#smart-encoding) for messages sent through the Service instance. </summary> 
+        ///<summary> Whether to enable [Smart Encoding](https://www.twilio.com/docs/messaging/services#smart-encoding) for messages sent through the Service instance. </summary> 
         public bool? SmartEncoding { get; set; }
 
         
         public ServiceResource.ScanMessageContentEnum ScanMessageContent { get; set; }
 
-        ///<summary> Whether to enable [Fallback to Long Code](https://www.twilio.com/docs/sms/services#fallback-to-long-code) for messages sent through the Service instance. </summary> 
+        ///<summary> [OBSOLETE] Former feature used to fallback to long code sender after certain short code message failures. </summary> 
         public bool? FallbackToLongCode { get; set; }
 
-        ///<summary> Whether to enable [Area Code Geomatch](https://www.twilio.com/docs/sms/services#area-code-geomatch) on the Service Instance. </summary> 
+        ///<summary> Whether to enable [Area Code Geomatch](https://www.twilio.com/docs/messaging/services#area-code-geomatch) on the Service Instance. </summary> 
         public bool? AreaCodeGeomatch { get; set; }
 
         ///<summary> How long, in seconds, messages sent from the Service are valid. Can be an integer from `1` to `14,400`. </summary> 
@@ -289,7 +293,7 @@ namespace Twilio.Rest.Messaging.V1
         ///<summary> Reserved. </summary> 
         public bool? SynchronousValidation { get; set; }
 
-        ///<summary> A string that describes the scenario in which the Messaging Service will be used. Examples: [notification, marketing, verification, poll ..] </summary> 
+        ///<summary> A string that describes the scenario in which the Messaging Service will be used. Possible values are `notifications`, `marketing`, `verification`, `discussion`, `poll`, `undeclared`. </summary> 
         public string Usecase { get; set; }
 
         ///<summary> A boolean value that indicates either the webhook url configured on the phone number will be used or `inbound_request_url`/`fallback_url` url will be called when a message is received from the phone number. If this field is enabled then the webhook url defined on the phone number will override the `inbound_request_url`/`fallback_url` defined for the Messaging Service. </summary> 
@@ -306,7 +310,7 @@ namespace Twilio.Rest.Messaging.V1
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -376,6 +380,7 @@ namespace Twilio.Rest.Messaging.V1
             }
             return p;
         }
+
         
 
     }

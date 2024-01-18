@@ -23,7 +23,7 @@ using Twilio.Converters;
 
 namespace Twilio.Rest.Insights.V1.Conference
 {
-    /// <summary> Fetch a specific Conference Participant Summary. </summary>
+    /// <summary> Get a specific Conference Participant Summary for a Conference. </summary>
     public class FetchConferenceParticipantOptions : IOptions<ConferenceParticipantResource>
     {
     
@@ -52,7 +52,7 @@ namespace Twilio.Rest.Insights.V1.Conference
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -66,12 +66,13 @@ namespace Twilio.Rest.Insights.V1.Conference
             }
             return p;
         }
+
         
 
     }
 
 
-    /// <summary> List Conference Participants. </summary>
+    /// <summary> Get a list of Conference Participants Summaries for a Conference. </summary>
     public class ReadConferenceParticipantOptions : ReadOptions<ConferenceParticipantResource>
     {
     
@@ -98,7 +99,7 @@ namespace Twilio.Rest.Insights.V1.Conference
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  override List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -120,6 +121,7 @@ namespace Twilio.Rest.Insights.V1.Conference
             }
             return p;
         }
+
         
 
     }

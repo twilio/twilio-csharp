@@ -18,6 +18,7 @@ using System;
 using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Clients;
+using Twilio.Constant;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -28,6 +29,8 @@ namespace Twilio.Rest.Wireless.V1
 {
     public class SimResource : Resource
     {
+    
+
     
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class StatusEnum : StringEnum
@@ -239,7 +242,7 @@ namespace Twilio.Rest.Wireless.V1
         /// <summary> Retrieve a list of Sim resources on your Account. </summary>
         /// <param name="status"> Only return Sim resources with this status. </param>
         /// <param name="iccid"> Only return Sim resources with this ICCID. This will return a list with a maximum size of 1. </param>
-        /// <param name="ratePlan"> The SID or unique name of a [RatePlan resource](https://www.twilio.com/docs/wireless/api/rateplan-resource). Only return Sim resources assigned to this RatePlan resource. </param>
+        /// <param name="ratePlan"> The SID or unique name of a [RatePlan resource](https://www.twilio.com/docs/iot/wireless/api/rateplan-resource). Only return Sim resources assigned to this RatePlan resource. </param>
         /// <param name="eId"> Deprecated. </param>
         /// <param name="simRegistrationCode"> Only return Sim resources with this registration code. This will return a list with a maximum size of 1. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
@@ -264,7 +267,7 @@ namespace Twilio.Rest.Wireless.V1
         /// <summary> Retrieve a list of Sim resources on your Account. </summary>
         /// <param name="status"> Only return Sim resources with this status. </param>
         /// <param name="iccid"> Only return Sim resources with this ICCID. This will return a list with a maximum size of 1. </param>
-        /// <param name="ratePlan"> The SID or unique name of a [RatePlan resource](https://www.twilio.com/docs/wireless/api/rateplan-resource). Only return Sim resources assigned to this RatePlan resource. </param>
+        /// <param name="ratePlan"> The SID or unique name of a [RatePlan resource](https://www.twilio.com/docs/iot/wireless/api/rateplan-resource). Only return Sim resources assigned to this RatePlan resource. </param>
         /// <param name="eId"> Deprecated. </param>
         /// <param name="simRegistrationCode"> Only return Sim resources with this registration code. This will return a list with a maximum size of 1. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
@@ -383,20 +386,20 @@ namespace Twilio.Rest.Wireless.V1
         /// <param name="callbackMethod"> The HTTP method we should use to call `callback_url`. Can be: `POST` or `GET`. The default is `POST`. </param>
         /// <param name="callbackUrl"> The URL we should call using the `callback_url` when the SIM has finished updating. When the SIM transitions from `new` to `ready` or from any status to `deactivated`, we call this URL when the status changes to an intermediate status (`ready` or `deactivated`) and again when the status changes to its final status (`active` or `canceled`). </param>
         /// <param name="friendlyName"> A descriptive string that you create to describe the Sim resource. It does not need to be unique. </param>
-        /// <param name="ratePlan"> The SID or unique name of the [RatePlan resource](https://www.twilio.com/docs/wireless/api/rateplan-resource) to which the Sim resource should be assigned. </param>
+        /// <param name="ratePlan"> The SID or unique name of the [RatePlan resource](https://www.twilio.com/docs/iot/wireless/api/rateplan-resource) to which the Sim resource should be assigned. </param>
         /// <param name="status">  </param>
         /// <param name="commandsCallbackMethod"> The HTTP method we should use to call `commands_callback_url`. Can be: `POST` or `GET`. The default is `POST`. </param>
-        /// <param name="commandsCallbackUrl"> The URL we should call using the `commands_callback_method` when the SIM sends a [Command](https://www.twilio.com/docs/wireless/api/command-resource). Your server should respond with an HTTP status code in the 200 range; any response body is ignored. </param>
+        /// <param name="commandsCallbackUrl"> The URL we should call using the `commands_callback_method` when the SIM sends a [Command](https://www.twilio.com/docs/iot/wireless/api/command-resource). Your server should respond with an HTTP status code in the 200 range; any response body is ignored. </param>
         /// <param name="smsFallbackMethod"> The HTTP method we should use to call `sms_fallback_url`. Can be: `GET` or `POST`. Default is `POST`. </param>
         /// <param name="smsFallbackUrl"> The URL we should call using the `sms_fallback_method` when an error occurs while retrieving or executing the TwiML requested from `sms_url`. </param>
         /// <param name="smsMethod"> The HTTP method we should use to call `sms_url`. Can be: `GET` or `POST`. Default is `POST`. </param>
-        /// <param name="smsUrl"> The URL we should call using the `sms_method` when the SIM-connected device sends an SMS message that is not a [Command](https://www.twilio.com/docs/wireless/api/command-resource). </param>
+        /// <param name="smsUrl"> The URL we should call using the `sms_method` when the SIM-connected device sends an SMS message that is not a [Command](https://www.twilio.com/docs/iot/wireless/api/command-resource). </param>
         /// <param name="voiceFallbackMethod"> Deprecated. </param>
         /// <param name="voiceFallbackUrl"> Deprecated. </param>
         /// <param name="voiceMethod"> Deprecated. </param>
         /// <param name="voiceUrl"> Deprecated. </param>
         /// <param name="resetStatus">  </param>
-        /// <param name="accountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) to which the Sim resource should belong. The Account SID can only be that of the requesting Account or that of a [Subaccount](https://www.twilio.com/docs/iam/api/subaccounts) of the requesting Account. Only valid when the Sim resource's status is `new`. For more information, see the [Move SIMs between Subaccounts documentation](https://www.twilio.com/docs/wireless/api/sim-resource#move-sims-between-subaccounts). </param>
+        /// <param name="accountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) to which the Sim resource should belong. The Account SID can only be that of the requesting Account or that of a [Subaccount](https://www.twilio.com/docs/iam/api/subaccounts) of the requesting Account. Only valid when the Sim resource's status is `new`. For more information, see the [Move SIMs between Subaccounts documentation](https://www.twilio.com/docs/iot/wireless/api/sim-resource#move-sims-between-subaccounts). </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Sim </returns>
         public static SimResource Update(
@@ -432,20 +435,20 @@ namespace Twilio.Rest.Wireless.V1
         /// <param name="callbackMethod"> The HTTP method we should use to call `callback_url`. Can be: `POST` or `GET`. The default is `POST`. </param>
         /// <param name="callbackUrl"> The URL we should call using the `callback_url` when the SIM has finished updating. When the SIM transitions from `new` to `ready` or from any status to `deactivated`, we call this URL when the status changes to an intermediate status (`ready` or `deactivated`) and again when the status changes to its final status (`active` or `canceled`). </param>
         /// <param name="friendlyName"> A descriptive string that you create to describe the Sim resource. It does not need to be unique. </param>
-        /// <param name="ratePlan"> The SID or unique name of the [RatePlan resource](https://www.twilio.com/docs/wireless/api/rateplan-resource) to which the Sim resource should be assigned. </param>
+        /// <param name="ratePlan"> The SID or unique name of the [RatePlan resource](https://www.twilio.com/docs/iot/wireless/api/rateplan-resource) to which the Sim resource should be assigned. </param>
         /// <param name="status">  </param>
         /// <param name="commandsCallbackMethod"> The HTTP method we should use to call `commands_callback_url`. Can be: `POST` or `GET`. The default is `POST`. </param>
-        /// <param name="commandsCallbackUrl"> The URL we should call using the `commands_callback_method` when the SIM sends a [Command](https://www.twilio.com/docs/wireless/api/command-resource). Your server should respond with an HTTP status code in the 200 range; any response body is ignored. </param>
+        /// <param name="commandsCallbackUrl"> The URL we should call using the `commands_callback_method` when the SIM sends a [Command](https://www.twilio.com/docs/iot/wireless/api/command-resource). Your server should respond with an HTTP status code in the 200 range; any response body is ignored. </param>
         /// <param name="smsFallbackMethod"> The HTTP method we should use to call `sms_fallback_url`. Can be: `GET` or `POST`. Default is `POST`. </param>
         /// <param name="smsFallbackUrl"> The URL we should call using the `sms_fallback_method` when an error occurs while retrieving or executing the TwiML requested from `sms_url`. </param>
         /// <param name="smsMethod"> The HTTP method we should use to call `sms_url`. Can be: `GET` or `POST`. Default is `POST`. </param>
-        /// <param name="smsUrl"> The URL we should call using the `sms_method` when the SIM-connected device sends an SMS message that is not a [Command](https://www.twilio.com/docs/wireless/api/command-resource). </param>
+        /// <param name="smsUrl"> The URL we should call using the `sms_method` when the SIM-connected device sends an SMS message that is not a [Command](https://www.twilio.com/docs/iot/wireless/api/command-resource). </param>
         /// <param name="voiceFallbackMethod"> Deprecated. </param>
         /// <param name="voiceFallbackUrl"> Deprecated. </param>
         /// <param name="voiceMethod"> Deprecated. </param>
         /// <param name="voiceUrl"> Deprecated. </param>
         /// <param name="resetStatus">  </param>
-        /// <param name="accountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) to which the Sim resource should belong. The Account SID can only be that of the requesting Account or that of a [Subaccount](https://www.twilio.com/docs/iam/api/subaccounts) of the requesting Account. Only valid when the Sim resource's status is `new`. For more information, see the [Move SIMs between Subaccounts documentation](https://www.twilio.com/docs/wireless/api/sim-resource#move-sims-between-subaccounts). </param>
+        /// <param name="accountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) to which the Sim resource should belong. The Account SID can only be that of the requesting Account or that of a [Subaccount](https://www.twilio.com/docs/iam/api/subaccounts) of the requesting Account. Only valid when the Sim resource's status is `new`. For more information, see the [Move SIMs between Subaccounts documentation](https://www.twilio.com/docs/iot/wireless/api/sim-resource#move-sims-between-subaccounts). </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Sim </returns>
         public static async System.Threading.Tasks.Task<SimResource> UpdateAsync(
@@ -491,6 +494,22 @@ namespace Twilio.Rest.Wireless.V1
                 throw new ApiException(e.Message, e);
             }
         }
+        /// <summary>
+    /// Converts an object into a json string
+    /// </summary>
+    /// <param name="model"> C# model </param>
+    /// <returns> JSON string </returns>
+    public static string ToJson(object model)
+    {
+        try
+        {
+            return JsonConvert.SerializeObject(model);
+        }
+        catch (JsonException e)
+        {
+            throw new ApiException(e.Message, e);
+        }
+    }
 
     
         ///<summary> The unique string that we created to identify the Sim resource. </summary> 
@@ -505,7 +524,7 @@ namespace Twilio.Rest.Wireless.V1
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The SID of the [RatePlan resource](https://www.twilio.com/docs/wireless/api/rateplan-resource) to which the Sim resource is assigned. </summary> 
+        ///<summary> The SID of the [RatePlan resource](https://www.twilio.com/docs/iot/wireless/api/rateplan-resource) to which the Sim resource is assigned. </summary> 
         [JsonProperty("rate_plan_sid")]
         public string RatePlanSid { get; private set; }
 
@@ -529,7 +548,7 @@ namespace Twilio.Rest.Wireless.V1
         [JsonProperty("reset_status")]
         public SimResource.ResetStatusEnum ResetStatus { get; private set; }
 
-        ///<summary> The URL we call using the `commands_callback_method` when the SIM originates a machine-to-machine [Command](https://www.twilio.com/docs/wireless/api/command-resource). Your server should respond with an HTTP status code in the 200 range; any response body will be ignored. </summary> 
+        ///<summary> The URL we call using the `commands_callback_method` when the SIM originates a machine-to-machine [Command](https://www.twilio.com/docs/iot/wireless/api/command-resource). Your server should respond with an HTTP status code in the 200 range; any response body will be ignored. </summary> 
         [JsonProperty("commands_callback_url")]
         public Uri CommandsCallbackUrl { get; private set; }
 

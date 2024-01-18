@@ -41,12 +41,13 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
             return p;
         }
+
         
 
     }
@@ -71,7 +72,7 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
         ///<summary> Filter to retrieve the country permissions with dialing to high-risk special service numbers enabled. Can be: `true` or `false` </summary> 
         public bool? HighRiskSpecialNumbersEnabled { get; set; }
 
-        ///<summary> Filter to retrieve the country permissions with dialing to high-risk [toll fraud](https://www.twilio.com/learn/voice-and-video/toll-fraud) numbers enabled. Can be: `true` or `false`. </summary> 
+        ///<summary> Filter to retrieve the country permissions with dialing to high-risk [toll fraud](https://www.twilio.com/blog/how-to-protect-your-account-from-toll-fraud-with-voice-dialing-geo-permissions-html) numbers enabled. Can be: `true` or `false`. </summary> 
         public bool? HighRiskTollfraudNumbersEnabled { get; set; }
 
 
@@ -79,7 +80,7 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
 
         
         /// <summary> Generate the necessary parameters </summary>
-        public  override List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
@@ -113,6 +114,7 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
             }
             return p;
         }
+
         
 
     }

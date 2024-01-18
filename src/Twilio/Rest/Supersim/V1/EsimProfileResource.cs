@@ -18,6 +18,7 @@ using System;
 using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Clients;
+using Twilio.Constant;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -28,6 +29,8 @@ namespace Twilio.Rest.Supersim.V1
 {
     public class EsimProfileResource : Resource
     {
+    
+
     
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class StatusEnum : StringEnum
@@ -234,7 +237,7 @@ namespace Twilio.Rest.Supersim.V1
         #endif
         /// <summary> Retrieve a list of eSIM Profiles. </summary>
         /// <param name="eid"> List the eSIM Profiles that have been associated with an EId. </param>
-        /// <param name="simSid"> Find the eSIM Profile resource related to a [Sim](https://www.twilio.com/docs/wireless/api/sim-resource) resource by providing the SIM SID. Will always return an array with either 1 or 0 records. </param>
+        /// <param name="simSid"> Find the eSIM Profile resource related to a [Sim](https://www.twilio.com/docs/iot/supersim/api/sim-resource) resource by providing the SIM SID. Will always return an array with either 1 or 0 records. </param>
         /// <param name="status"> List the eSIM Profiles that are in a given status. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="limit"> Record limit </param>
@@ -255,7 +258,7 @@ namespace Twilio.Rest.Supersim.V1
         #if !NET35
         /// <summary> Retrieve a list of eSIM Profiles. </summary>
         /// <param name="eid"> List the eSIM Profiles that have been associated with an EId. </param>
-        /// <param name="simSid"> Find the eSIM Profile resource related to a [Sim](https://www.twilio.com/docs/wireless/api/sim-resource) resource by providing the SIM SID. Will always return an array with either 1 or 0 records. </param>
+        /// <param name="simSid"> Find the eSIM Profile resource related to a [Sim](https://www.twilio.com/docs/iot/supersim/api/sim-resource) resource by providing the SIM SID. Will always return an array with either 1 or 0 records. </param>
         /// <param name="status"> List the eSIM Profiles that are in a given status. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="limit"> Record limit </param>
@@ -339,6 +342,22 @@ namespace Twilio.Rest.Supersim.V1
                 throw new ApiException(e.Message, e);
             }
         }
+        /// <summary>
+    /// Converts an object into a json string
+    /// </summary>
+    /// <param name="model"> C# model </param>
+    /// <returns> JSON string </returns>
+    public static string ToJson(object model)
+    {
+        try
+        {
+            return JsonConvert.SerializeObject(model);
+        }
+        catch (JsonException e)
+        {
+            throw new ApiException(e.Message, e);
+        }
+    }
 
     
         ///<summary> The unique string that we created to identify the eSIM Profile resource. </summary> 
@@ -353,7 +372,7 @@ namespace Twilio.Rest.Supersim.V1
         [JsonProperty("iccid")]
         public string Iccid { get; private set; }
 
-        ///<summary> The SID of the [Sim](https://www.twilio.com/docs/wireless/api/sim-resource) resource that this eSIM Profile controls. </summary> 
+        ///<summary> The SID of the [Sim](https://www.twilio.com/docs/iot/supersim/api/sim-resource) resource that this eSIM Profile controls. </summary> 
         [JsonProperty("sim_sid")]
         public string SimSid { get; private set; }
 
