@@ -335,10 +335,6 @@ namespace Twilio.Rest.Intelligence.V2.Transcript
         [JsonProperty("extract_results")]
         public object ExtractResults { get; private set; }
 
-        ///<summary> Output of a text generation operator for example Conversation Sumamary. </summary> 
-        [JsonProperty("text_generation_results")]
-        public object TextGenerationResults { get; private set; }
-
         ///<summary> A 34 character string that uniquely identifies this Transcript. </summary> 
         [JsonProperty("transcript_sid")]
         public string TranscriptSid { get; private set; }

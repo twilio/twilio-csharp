@@ -60,7 +60,6 @@ namespace Twilio.Rest.Serverless.V1.Service
             public static readonly RuntimeEnum Node12 = new RuntimeEnum("node12");
             public static readonly RuntimeEnum Node14 = new RuntimeEnum("node14");
             public static readonly RuntimeEnum Node16 = new RuntimeEnum("node16");
-            public static readonly RuntimeEnum Node18 = new RuntimeEnum("node18");
 
         }
 

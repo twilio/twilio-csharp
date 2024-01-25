@@ -296,7 +296,7 @@ namespace Twilio.Rest.Insights.V1.Call
         [JsonProperty("incident")]
         public string Incident { get; private set; }
 
-        ///<summary> The url </summary> 
+        ///<summary> The URL of this resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 

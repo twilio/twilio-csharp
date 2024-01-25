@@ -78,7 +78,7 @@ namespace Twilio.Rest.Proxy.V1.Service
 
         /// <summary> Add a Short Code to the Proxy Number Pool for the Service. </summary>
         /// <param name="pathServiceSid"> The SID of the parent [Service](https://www.twilio.com/docs/proxy/api/service) resource. </param>
-        /// <param name="sid"> The SID of a Twilio [ShortCode](https://www.twilio.com/en-us/messaging/channels/sms/short-codes) resource that represents the short code you would like to assign to your Proxy Service. </param>
+        /// <param name="sid"> The SID of a Twilio [ShortCode](https://www.twilio.com/docs/sms/api/short-code) resource that represents the short code you would like to assign to your Proxy Service. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of ShortCode </returns>
         public static ShortCodeResource Create(
@@ -93,7 +93,7 @@ namespace Twilio.Rest.Proxy.V1.Service
         #if !NET35
         /// <summary> Add a Short Code to the Proxy Number Pool for the Service. </summary>
         /// <param name="pathServiceSid"> The SID of the parent [Service](https://www.twilio.com/docs/proxy/api/service) resource. </param>
-        /// <param name="sid"> The SID of a Twilio [ShortCode](https://www.twilio.com/en-us/messaging/channels/sms/short-codes) resource that represents the short code you would like to assign to your Proxy Service. </param>
+        /// <param name="sid"> The SID of a Twilio [ShortCode](https://www.twilio.com/docs/sms/api/short-code) resource that represents the short code you would like to assign to your Proxy Service. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ShortCode </returns>
         public static async System.Threading.Tasks.Task<ShortCodeResource> CreateAsync(

@@ -24,7 +24,7 @@ using Twilio.Converters;
 namespace Twilio.Rest.Events.V1.Subscription
 {
 
-    /// <summary> Add an event type to a Subscription. </summary>
+    /// <summary> Create a new Subscribed Event type for the subscription </summary>
     public class CreateSubscribedEventOptions : IOptions<SubscribedEventResource>
     {
         
@@ -34,7 +34,7 @@ namespace Twilio.Rest.Events.V1.Subscription
         ///<summary> Type of event being subscribed to. </summary> 
         public string Type { get; }
 
-        ///<summary> The schema version that the Subscription should use. </summary> 
+        ///<summary> The schema version that the subscription should use. </summary> 
         public int? SchemaVersion { get; set; }
 
 
@@ -67,7 +67,7 @@ namespace Twilio.Rest.Events.V1.Subscription
         
 
     }
-    /// <summary> Remove an event type from a Subscription. </summary>
+    /// <summary> Remove an event type from a subscription. </summary>
     public class DeleteSubscribedEventOptions : IOptions<SubscribedEventResource>
     {
         
@@ -180,7 +180,7 @@ namespace Twilio.Rest.Events.V1.Subscription
         ///<summary> Type of event being subscribed to. </summary> 
         public string PathType { get; }
 
-        ///<summary> The schema version that the Subscription should use. </summary> 
+        ///<summary> The schema version that the subscription should use. </summary> 
         public int? SchemaVersion { get; set; }
 
 

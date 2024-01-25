@@ -425,7 +425,7 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         [JsonProperty("inbound_participant_sid")]
         public string InboundParticipantSid { get; private set; }
 
-        ///<summary> The SID of the inbound resource; either the [Call](https://www.twilio.com/docs/voice/api/call-resource) or [Message](https://www.twilio.com/docs/sms/api/message-resource). </summary> 
+        ///<summary> The SID of the inbound resource; either the [Call](https://www.twilio.com/docs/voice/api/call-resource) or [Message](https://www.twilio.com/docs/sms/api/message. </summary> 
         [JsonProperty("inbound_resource_sid")]
         public string InboundResourceSid { get; private set; }
 
