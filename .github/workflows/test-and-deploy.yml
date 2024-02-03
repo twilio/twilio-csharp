@@ -43,7 +43,8 @@ jobs:
           TWILIO_FROM_NUMBER: ${{ secrets.TWILIO_FROM_NUMBER }}
           TWILIO_TO_NUMBER: ${{ secrets.TWILIO_TO_NUMBER }}
         run: |
-          dotnet tool install --global dotnet-sonarscanner --version 5.5.3
+          # dotnet tool install --global dotnet-sonarscanner --version 5.5.3
+          dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner --version 4.8.0
           make cover
 
   code-signing:
