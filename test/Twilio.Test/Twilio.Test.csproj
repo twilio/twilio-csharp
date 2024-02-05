@@ -23,6 +23,10 @@
     <Reference Include="System.Net" />
     <Reference Include="System.Net.Http" />
   </ItemGroup>
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net472' ">
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\Twilio\Twilio.csproj" />
   </ItemGroup>
