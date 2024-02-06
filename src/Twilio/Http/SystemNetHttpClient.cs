@@ -15,6 +15,8 @@ namespace Twilio.Http
     {
 #if NET451
         private string PlatVersion = ".NET Framework 4.5.1+";
+#elif NET472
+        private string PlatVersion = ".NET Framework 4.7.2+";
 #else
         private string PlatVersion = RuntimeInformation.FrameworkDescription;
 #endif
