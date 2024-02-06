@@ -11,7 +11,7 @@ install:
 
 test:
 	dotnet build -c Release
-	dotnet test -c Release --filter TestCategory!="ClusterTest"
+	dotnet test --logger "console;verbosity=detailed" -c Release --filter TestCategory!="ClusterTest"
 
 test-docker:
 	docker build -t twilio/twilio-csharp .
