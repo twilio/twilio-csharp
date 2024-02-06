@@ -241,8 +241,7 @@ namespace Twilio.Tests.Http
             Assert.IsNotNull(internalRequest.Headers.UserAgent);
             Regex rgx = new Regex(@"^twilio-csharp/[0-9.]+(-rc\.[0-9]+)?\s\(\w+\s\w+\)\s[.\s\w]+/[^\s]+$");
             // debug statements
-            System.Console.WriteLine("Regex ------------------------------------------ " + rgx);
-            System.Console.WriteLine("internalRequest.Headers.UserAgent.ToString() ------------------------------------------ " + internalRequest.Headers.UserAgent.ToString());
+            Assert.AreEqual("abc", internalRequest.Headers.UserAgent.ToString());
             Assert.IsTrue(rgx.IsMatch(internalRequest.Headers.UserAgent.ToString()));
         }
 
