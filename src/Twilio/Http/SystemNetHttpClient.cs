@@ -13,9 +13,7 @@ namespace Twilio.Http
     /// </summary>
     public class SystemNetHttpClient : HttpClient
     {
-#if NET451
-        private string PlatVersion = ".NET Framework 4.5.1+";
-#elif NET472
+#if NET472
         private string PlatVersion = ".NET Framework 4.7.2+";
 #else
         private string PlatVersion = RuntimeInformation.FrameworkDescription;
@@ -118,7 +116,7 @@ namespace Twilio.Http
 #endif
 
             string osArch;
-#if !NET451
+#if !NET472
             osArch = RuntimeInformation.OSArchitecture.ToString();
 #else
             osArch = Environment.GetEnvironmentVariable("PROCESSOR_ARCHITECTURE") ?? "Unknown"; 
