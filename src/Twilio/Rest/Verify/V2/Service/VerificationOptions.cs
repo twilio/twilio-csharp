@@ -79,6 +79,9 @@ namespace Twilio.Rest.Verify.V2.Service
         
         public VerificationResource.RiskCheckEnum RiskCheck { get; set; }
 
+        ///<summary> A string containing a JSON map of key value pairs of tags to be recorded as metadata for the message. The object may contain up to 10 tags. Keys and values can each be up to 128 characters in length. </summary> 
+        public string Tags { get; set; }
+
 
         /// <summary> Construct a new CreateVerificationOptions </summary>
         /// <param name="pathServiceSid"> The SID of the verification [Service](https://www.twilio.com/docs/verify/api/service) to create the resource under. </param>
@@ -160,6 +163,10 @@ namespace Twilio.Rest.Verify.V2.Service
             if (RiskCheck != null)
             {
                 p.Add(new KeyValuePair<string, string>("RiskCheck", RiskCheck.ToString()));
+            }
+            if (Tags != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Tags", Tags));
             }
             return p;
         }

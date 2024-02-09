@@ -349,7 +349,7 @@ namespace Twilio.Rest.Content.V1
         [JsonProperty("variables")]
         public object Variables { get; private set; }
 
-        ///<summary> The [Content types](https://www.twilio.com/docs/content-api/content-types-overview) (e.g. twilio/text) for this Content resource. </summary> 
+        ///<summary> The [Content types](https://www.twilio.com/docs/content/content-types-overview) (e.g. twilio/text) for this Content resource. </summary> 
         [JsonProperty("types")]
         public object Types { get; private set; }
 

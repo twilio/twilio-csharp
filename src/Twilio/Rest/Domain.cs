@@ -24,7 +24,6 @@ namespace Twilio.Rest
 
         public static readonly Domain Accounts = new Domain("accounts");
         public static readonly Domain Api = new Domain("api");
-        public static readonly Domain Autopilot = new Domain("autopilot");
         public static readonly Domain Bulkexports = new Domain("bulkexports");
         public static readonly Domain Chat = new Domain("chat");
         public static readonly Domain Content = new Domain("content");
@@ -42,7 +41,6 @@ namespace Twilio.Rest
         public static readonly Domain Monitor = new Domain("monitor");
         public static readonly Domain Notify = new Domain("notify");
         public static readonly Domain Numbers = new Domain("numbers");
-        public static readonly Domain Oauth = new Domain("oauth");
         public static readonly Domain Preview = new Domain("preview");
         public static readonly Domain Pricing = new Domain("pricing");
         public static readonly Domain Proxy = new Domain("proxy");

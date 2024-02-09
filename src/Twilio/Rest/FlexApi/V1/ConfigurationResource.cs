@@ -213,6 +213,10 @@ namespace Twilio.Rest.FlexApi.V1
         [JsonProperty("flex_service_instance_sid")]
         public string FlexServiceInstanceSid { get; private set; }
 
+        ///<summary> The SID of the Flex instance. </summary> 
+        [JsonProperty("flex_instance_sid")]
+        public string FlexInstanceSid { get; private set; }
+
         ///<summary> The primary language of the Flex UI. </summary> 
         [JsonProperty("ui_language")]
         public string UiLanguage { get; private set; }
@@ -332,6 +336,10 @@ namespace Twilio.Rest.FlexApi.V1
         ///<summary> Citrix voice vdi configuration and settings. </summary> 
         [JsonProperty("citrix_voice_vdi")]
         public object CitrixVoiceVdi { get; private set; }
+
+        ///<summary> Presence and presence ttl configuration </summary> 
+        [JsonProperty("offline_config")]
+        public object OfflineConfig { get; private set; }
 
 
 
