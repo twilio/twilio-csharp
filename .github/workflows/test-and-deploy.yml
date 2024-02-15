@@ -25,14 +25,14 @@ jobs:
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: 7.0.103
-
+          
+      - name: Get installed dotnet version
+        run: dotnet --version
+          
       - uses: actions/setup-java@v4
         with:
           distribution: 'zulu'
           java-version: '17'
-
-      - name: Remove faulty SDK version
-        run: sudo rm -rf /usr/share/dotnet/sdk/7.0.4*
 
       - name: Build & Test
         run: make test
