@@ -27,7 +27,7 @@ RUN apt-get update \
     && wget https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb \
     && dpkg -i packages-microsoft-prod.deb  \
     && wget http://se.archive.ubuntu.com/ubuntu/pool/main/libp/libpng/libpng12-0_1.2.54-1ubuntu1_amd64.deb \
-    && dpkg -i libpng12-0_1.2.54-1ubuntu1_amd64.deb \
+    && dpkg -i --force-all libpng12-0_1.2.54-1ubuntu1_amd64.deb \
     && apt-get update \
     && apt-get install -y \
         dotnet-sdk-8.0 \
