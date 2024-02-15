@@ -11,7 +11,6 @@ RUN apt-get update \
         gnupg \
         libc6 \
         libgcc-s1 \
-        libgcc1 \
         libgssapi-krb5-2 \
         libicu70 \
         liblttng-ust1 \
