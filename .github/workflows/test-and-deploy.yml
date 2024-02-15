@@ -110,6 +110,8 @@ jobs:
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: 7.0.103
+      - name: Get installed dotnet version
+        run: dotnet --version
 
       - name: Set up certificate
         run: |
@@ -160,8 +162,9 @@ jobs:
       - name: Signing using Nuget
         run: |
           dotnet pack -c Release
-          nuget sign **/*.nupkg -Timestamper http://timestamp.digicert.com -outputdirectory .\NugetSigned -CertificateFingerprint ${{ secrets.SM_CODE_SIGNING_CERT_SHA1_HASH }} -HashAlgorithm SHA256 -Verbosity detailed -Overwrite
-          nuget push **/*.nupkg -ApiKey ${{ secrets.NUGET_API_KEY }} -Source https://api.nuget.org/v3/index.json
+          ls twilio-csharp/src/Twilio/bin/Release
+          nuget sign */bin/Release/*.nupkg -Timestamper http://timestamp.digicert.com -outputdirectory .\NugetSigned -CertificateFingerprint ${{ secrets.SM_CODE_SIGNING_CERT_SHA1_HASH }} -HashAlgorithm SHA256 -Verbosity detailed -Overwrite
+          nuget push */bin/Release/*.nupkg -ApiKey ${{ secrets.NUGET_API_KEY }} -Source https://api.nuget.org/v3/index.json
 
   notify-on-failure:
     name: Slack notify on failure
