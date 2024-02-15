@@ -161,6 +161,7 @@ jobs:
 
       - name: Signing using Nuget
         run: |
+          dotnet build -c Release
           dotnet pack -c Release
           ls twilio-csharp/src/Twilio/bin/Release
           nuget sign */bin/Release/*.nupkg -Timestamper http://timestamp.digicert.com -outputdirectory .\NugetSigned -CertificateFingerprint ${{ secrets.SM_CODE_SIGNING_CERT_SHA1_HASH }} -HashAlgorithm SHA256 -Verbosity detailed -Overwrite
