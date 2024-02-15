@@ -96,7 +96,7 @@ jobs:
     runs-on: windows-latest
     needs: [ deploy ]
     steps:
-      - name: Checkout sendgrid-csharp
+      - name: Checkout twilio-csharp
         uses: actions/checkout@v2
 
       - name: Setup .NET Core SDK
