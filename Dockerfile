@@ -29,6 +29,7 @@ RUN apt-get update \
     && apt-get install -y \
         dotnet-sdk-3.1 \
         dotnet-sdk-6.0 \
+        dotnet-sdk-8.0 \
         mono-complete \
     && rm -rf /var/lib/apt/lists/*
 
