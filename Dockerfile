@@ -26,12 +26,13 @@ RUN apt-get update \
     && apt-add-repository 'deb https://download.mono-project.com/repo/ubuntu stable-xenial main' \
     && wget https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb \
     && dpkg -i packages-microsoft-prod.deb  \
-    && wget http://se.archive.ubuntu.com/ubuntu/pool/main/libp/libpng/libpng12-0_1.2.54-1ubuntu1_amd64.deb \
-    && dpkg -i --force-all libpng12-0_1.2.54-1ubuntu1_amd64.deb \
+    #&& add-apt-repository ppa:linuxuprising/libpng12 \
+    #&& apt-get update \
+    #&& apt install libpng12-0 \
     && apt-get update \
     && apt-get install -y \
         dotnet-sdk-8.0 \
-        mono-complete \
+        #mono-complete \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /twilio
