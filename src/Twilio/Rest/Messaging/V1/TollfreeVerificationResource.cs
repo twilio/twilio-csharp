@@ -544,6 +544,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="businessContactLastName"> The last name of the contact for the business or organization using the Tollfree number. </param>
         /// <param name="businessContactEmail"> The email address of the contact for the business or organization using the Tollfree number. </param>
         /// <param name="businessContactPhone"> The phone number of the contact for the business or organization using the Tollfree number. </param>
+        /// <param name="editReason"> Describe why the verification is being edited. If the verification was rejected because of a technical issue, such as the website being down, and the issue has been resolved this parameter should be set to something similar to 'Website fixed'. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of TollfreeVerification </returns>
         public static TollfreeVerificationResource Update(
@@ -568,9 +569,10 @@ namespace Twilio.Rest.Messaging.V1
                                           string businessContactLastName = null,
                                           string businessContactEmail = null,
                                           Types.PhoneNumber businessContactPhone = null,
+                                          string editReason = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new UpdateTollfreeVerificationOptions(pathSid){ BusinessName = businessName, BusinessWebsite = businessWebsite, NotificationEmail = notificationEmail, UseCaseCategories = useCaseCategories, UseCaseSummary = useCaseSummary, ProductionMessageSample = productionMessageSample, OptInImageUrls = optInImageUrls, OptInType = optInType, MessageVolume = messageVolume, BusinessStreetAddress = businessStreetAddress, BusinessStreetAddress2 = businessStreetAddress2, BusinessCity = businessCity, BusinessStateProvinceRegion = businessStateProvinceRegion, BusinessPostalCode = businessPostalCode, BusinessCountry = businessCountry, AdditionalInformation = additionalInformation, BusinessContactFirstName = businessContactFirstName, BusinessContactLastName = businessContactLastName, BusinessContactEmail = businessContactEmail, BusinessContactPhone = businessContactPhone };
+            var options = new UpdateTollfreeVerificationOptions(pathSid){ BusinessName = businessName, BusinessWebsite = businessWebsite, NotificationEmail = notificationEmail, UseCaseCategories = useCaseCategories, UseCaseSummary = useCaseSummary, ProductionMessageSample = productionMessageSample, OptInImageUrls = optInImageUrls, OptInType = optInType, MessageVolume = messageVolume, BusinessStreetAddress = businessStreetAddress, BusinessStreetAddress2 = businessStreetAddress2, BusinessCity = businessCity, BusinessStateProvinceRegion = businessStateProvinceRegion, BusinessPostalCode = businessPostalCode, BusinessCountry = businessCountry, AdditionalInformation = additionalInformation, BusinessContactFirstName = businessContactFirstName, BusinessContactLastName = businessContactLastName, BusinessContactEmail = businessContactEmail, BusinessContactPhone = businessContactPhone, EditReason = editReason };
             return Update(options, client);
         }
 
@@ -597,6 +599,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="businessContactLastName"> The last name of the contact for the business or organization using the Tollfree number. </param>
         /// <param name="businessContactEmail"> The email address of the contact for the business or organization using the Tollfree number. </param>
         /// <param name="businessContactPhone"> The phone number of the contact for the business or organization using the Tollfree number. </param>
+        /// <param name="editReason"> Describe why the verification is being edited. If the verification was rejected because of a technical issue, such as the website being down, and the issue has been resolved this parameter should be set to something similar to 'Website fixed'. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TollfreeVerification </returns>
         public static async System.Threading.Tasks.Task<TollfreeVerificationResource> UpdateAsync(
@@ -621,9 +624,10 @@ namespace Twilio.Rest.Messaging.V1
                                                                               string businessContactLastName = null,
                                                                               string businessContactEmail = null,
                                                                               Types.PhoneNumber businessContactPhone = null,
+                                                                              string editReason = null,
                                                                               ITwilioRestClient client = null)
         {
-            var options = new UpdateTollfreeVerificationOptions(pathSid){ BusinessName = businessName, BusinessWebsite = businessWebsite, NotificationEmail = notificationEmail, UseCaseCategories = useCaseCategories, UseCaseSummary = useCaseSummary, ProductionMessageSample = productionMessageSample, OptInImageUrls = optInImageUrls, OptInType = optInType, MessageVolume = messageVolume, BusinessStreetAddress = businessStreetAddress, BusinessStreetAddress2 = businessStreetAddress2, BusinessCity = businessCity, BusinessStateProvinceRegion = businessStateProvinceRegion, BusinessPostalCode = businessPostalCode, BusinessCountry = businessCountry, AdditionalInformation = additionalInformation, BusinessContactFirstName = businessContactFirstName, BusinessContactLastName = businessContactLastName, BusinessContactEmail = businessContactEmail, BusinessContactPhone = businessContactPhone };
+            var options = new UpdateTollfreeVerificationOptions(pathSid){ BusinessName = businessName, BusinessWebsite = businessWebsite, NotificationEmail = notificationEmail, UseCaseCategories = useCaseCategories, UseCaseSummary = useCaseSummary, ProductionMessageSample = productionMessageSample, OptInImageUrls = optInImageUrls, OptInType = optInType, MessageVolume = messageVolume, BusinessStreetAddress = businessStreetAddress, BusinessStreetAddress2 = businessStreetAddress2, BusinessCity = businessCity, BusinessStateProvinceRegion = businessStateProvinceRegion, BusinessPostalCode = businessPostalCode, BusinessCountry = businessCountry, AdditionalInformation = additionalInformation, BusinessContactFirstName = businessContactFirstName, BusinessContactLastName = businessContactLastName, BusinessContactEmail = businessContactEmail, BusinessContactPhone = businessContactPhone, EditReason = editReason };
             return await UpdateAsync(options, client);
         }
         #endif
@@ -794,6 +798,10 @@ namespace Twilio.Rest.Messaging.V1
         ///<summary> The date and time when the ability to edit a rejected verification expires. </summary> 
         [JsonProperty("edit_expiration")]
         public DateTime? EditExpiration { get; private set; }
+
+        ///<summary> If a rejected verification is allowed to be edited/resubmitted. Some rejection reasons allow editing and some do not. </summary> 
+        [JsonProperty("edit_allowed")]
+        public bool? EditAllowed { get; private set; }
 
         ///<summary> The URLs of the documents associated with the Tollfree Verification resource. </summary> 
         [JsonProperty("resource_links")]

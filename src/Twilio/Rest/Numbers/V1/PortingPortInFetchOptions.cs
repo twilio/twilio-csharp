@@ -23,12 +23,21 @@ using Twilio.Converters;
 
 namespace Twilio.Rest.Numbers.V1
 {
-
-    /// <summary> Allows to create a new port in request </summary>
-    public class CreatePortingPortInOptions : IOptions<PortingPortInResource>
+    /// <summary> Fetch a port in request by SID </summary>
+    public class FetchPortingPortInFetchOptions : IOptions<PortingPortInFetchResource>
     {
-        
+    
+        ///<summary> The SID of the Port In request. This is a unique identifier of the port in request. </summary> 
+        public string PathPortInRequestSid { get; }
 
+
+
+        /// <summary> Construct a new FetchPortingPortInFetchOptions </summary>
+        /// <param name="pathPortInRequestSid"> The SID of the Port In request. This is a unique identifier of the port in request. </param>
+        public FetchPortingPortInFetchOptions(string pathPortInRequestSid)
+        {
+            PathPortInRequestSid = pathPortInRequestSid;
+        }
 
         
         /// <summary> Generate the necessary parameters </summary>
@@ -42,5 +51,7 @@ namespace Twilio.Rest.Numbers.V1
         
 
     }
+
+
 }
 

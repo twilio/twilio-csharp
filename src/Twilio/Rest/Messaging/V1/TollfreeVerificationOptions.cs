@@ -392,6 +392,9 @@ namespace Twilio.Rest.Messaging.V1
         ///<summary> The phone number of the contact for the business or organization using the Tollfree number. </summary> 
         public Types.PhoneNumber BusinessContactPhone { get; set; }
 
+        ///<summary> Describe why the verification is being edited. If the verification was rejected because of a technical issue, such as the website being down, and the issue has been resolved this parameter should be set to something similar to 'Website fixed'. </summary> 
+        public string EditReason { get; set; }
+
 
 
         /// <summary> Construct a new UpdateTollfreeVerificationOptions </summary>
@@ -488,6 +491,10 @@ namespace Twilio.Rest.Messaging.V1
             if (BusinessContactPhone != null)
             {
                 p.Add(new KeyValuePair<string, string>("BusinessContactPhone", BusinessContactPhone.ToString()));
+            }
+            if (EditReason != null)
+            {
+                p.Add(new KeyValuePair<string, string>("EditReason", EditReason));
             }
             return p;
         }

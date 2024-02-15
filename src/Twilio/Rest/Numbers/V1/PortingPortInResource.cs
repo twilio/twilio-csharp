@@ -49,7 +49,7 @@ namespace Twilio.Rest.Numbers.V1
             );
         }
 
-        /// <summary> Allows to create a port in request  </summary>
+        /// <summary> Allows to create a new port in request </summary>
         /// <param name="options"> Create PortingPortIn parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of PortingPortIn </returns>
@@ -61,7 +61,7 @@ namespace Twilio.Rest.Numbers.V1
         }
 
         #if !NET35
-        /// <summary> Allows to create a port in request  </summary>
+        /// <summary> Allows to create a new port in request </summary>
         /// <param name="options"> Create PortingPortIn parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PortingPortIn </returns>
@@ -74,7 +74,7 @@ namespace Twilio.Rest.Numbers.V1
         }
         #endif
 
-        /// <summary> Allows to create a port in request  </summary>
+        /// <summary> Allows to create a new port in request </summary>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of PortingPortIn </returns>
         public static PortingPortInResource Create(
@@ -85,7 +85,7 @@ namespace Twilio.Rest.Numbers.V1
         }
 
         #if !NET35
-        /// <summary> Allows to create a port in request  </summary>
+        /// <summary> Allows to create a new port in request </summary>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PortingPortIn </returns>
         public static async System.Threading.Tasks.Task<PortingPortInResource> CreateAsync(
@@ -130,7 +130,7 @@ namespace Twilio.Rest.Numbers.V1
     }
 
     
-        ///<summary> The SID of the Port In request, It is the request identifier </summary> 
+        ///<summary> The SID of the Port In request. This is a unique identifier of the port in request. </summary> 
         [JsonProperty("port_in_request_sid")]
         public string PortInRequestSid { get; private set; }
 

@@ -17,7 +17,7 @@ using System;
 using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
-
+using System.Linq;
 
 
 
@@ -29,14 +29,78 @@ namespace Twilio.Rest.Trusthub.V1
     {
         
         ///<summary> The Tollfree phone number to be verified </summary> 
-        public Types.PhoneNumber Did { get; }
+        public Types.PhoneNumber TollfreePhoneNumber { get; }
+
+        ///<summary> The email address to receive the notification about the verification result. </summary> 
+        public string NotificationEmail { get; }
+
+        ///<summary> The name of the business or organization using the Tollfree number. </summary> 
+        public string BusinessName { get; set; }
+
+        ///<summary> The website of the business or organization using the Tollfree number. </summary> 
+        public string BusinessWebsite { get; set; }
+
+        ///<summary> The category of the use case for the Tollfree Number. List as many are applicable.. </summary> 
+        public List<string> UseCaseCategories { get; set; }
+
+        ///<summary> Use this to further explain how messaging is used by the business or organization. </summary> 
+        public string UseCaseSummary { get; set; }
+
+        ///<summary> An example of message content, i.e. a sample message. </summary> 
+        public string ProductionMessageSample { get; set; }
+
+        ///<summary> Link to an image that shows the opt-in workflow. Multiple images allowed and must be a publicly hosted URL. </summary> 
+        public List<string> OptInImageUrls { get; set; }
+
+        
+        public ComplianceTollfreeInquiriesResource.OptInTypeEnum OptInType { get; set; }
+
+        ///<summary> Estimate monthly volume of messages from the Tollfree Number. </summary> 
+        public string MessageVolume { get; set; }
+
+        ///<summary> The address of the business or organization using the Tollfree number. </summary> 
+        public string BusinessStreetAddress { get; set; }
+
+        ///<summary> The address of the business or organization using the Tollfree number. </summary> 
+        public string BusinessStreetAddress2 { get; set; }
+
+        ///<summary> The city of the business or organization using the Tollfree number. </summary> 
+        public string BusinessCity { get; set; }
+
+        ///<summary> The state/province/region of the business or organization using the Tollfree number. </summary> 
+        public string BusinessStateProvinceRegion { get; set; }
+
+        ///<summary> The postal code of the business or organization using the Tollfree number. </summary> 
+        public string BusinessPostalCode { get; set; }
+
+        ///<summary> The country of the business or organization using the Tollfree number. </summary> 
+        public string BusinessCountry { get; set; }
+
+        ///<summary> Additional information to be provided for verification. </summary> 
+        public string AdditionalInformation { get; set; }
+
+        ///<summary> The first name of the contact for the business or organization using the Tollfree number. </summary> 
+        public string BusinessContactFirstName { get; set; }
+
+        ///<summary> The last name of the contact for the business or organization using the Tollfree number. </summary> 
+        public string BusinessContactLastName { get; set; }
+
+        ///<summary> The email address of the contact for the business or organization using the Tollfree number. </summary> 
+        public string BusinessContactEmail { get; set; }
+
+        ///<summary> The phone number of the contact for the business or organization using the Tollfree number. </summary> 
+        public Types.PhoneNumber BusinessContactPhone { get; set; }
 
 
         /// <summary> Construct a new CreateComplianceTollfreeInquiryOptions </summary>
-        /// <param name="did"> The Tollfree phone number to be verified </param>
-        public CreateComplianceTollfreeInquiriesOptions(Types.PhoneNumber did)
+        /// <param name="tollfreePhoneNumber"> The Tollfree phone number to be verified </param>
+        /// <param name="notificationEmail"> The email address to receive the notification about the verification result. </param>
+        public CreateComplianceTollfreeInquiriesOptions(Types.PhoneNumber tollfreePhoneNumber, string notificationEmail)
         {
-            Did = did;
+            TollfreePhoneNumber = tollfreePhoneNumber;
+            NotificationEmail = notificationEmail;
+            UseCaseCategories = new List<string>();
+            OptInImageUrls = new List<string>();
         }
 
         
@@ -45,9 +109,89 @@ namespace Twilio.Rest.Trusthub.V1
         {
             var p = new List<KeyValuePair<string, string>>();
 
-            if (Did != null)
+            if (TollfreePhoneNumber != null)
             {
-                p.Add(new KeyValuePair<string, string>("Did", Did.ToString()));
+                p.Add(new KeyValuePair<string, string>("TollfreePhoneNumber", TollfreePhoneNumber.ToString()));
+            }
+            if (NotificationEmail != null)
+            {
+                p.Add(new KeyValuePair<string, string>("NotificationEmail", NotificationEmail));
+            }
+            if (BusinessName != null)
+            {
+                p.Add(new KeyValuePair<string, string>("BusinessName", BusinessName));
+            }
+            if (BusinessWebsite != null)
+            {
+                p.Add(new KeyValuePair<string, string>("BusinessWebsite", BusinessWebsite));
+            }
+            if (UseCaseCategories != null)
+            {
+                p.AddRange(UseCaseCategories.Select(UseCaseCategories => new KeyValuePair<string, string>("UseCaseCategories", UseCaseCategories)));
+            }
+            if (UseCaseSummary != null)
+            {
+                p.Add(new KeyValuePair<string, string>("UseCaseSummary", UseCaseSummary));
+            }
+            if (ProductionMessageSample != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ProductionMessageSample", ProductionMessageSample));
+            }
+            if (OptInImageUrls != null)
+            {
+                p.AddRange(OptInImageUrls.Select(OptInImageUrls => new KeyValuePair<string, string>("OptInImageUrls", OptInImageUrls)));
+            }
+            if (OptInType != null)
+            {
+                p.Add(new KeyValuePair<string, string>("OptInType", OptInType.ToString()));
+            }
+            if (MessageVolume != null)
+            {
+                p.Add(new KeyValuePair<string, string>("MessageVolume", MessageVolume));
+            }
+            if (BusinessStreetAddress != null)
+            {
+                p.Add(new KeyValuePair<string, string>("BusinessStreetAddress", BusinessStreetAddress));
+            }
+            if (BusinessStreetAddress2 != null)
+            {
+                p.Add(new KeyValuePair<string, string>("BusinessStreetAddress2", BusinessStreetAddress2));
+            }
+            if (BusinessCity != null)
+            {
+                p.Add(new KeyValuePair<string, string>("BusinessCity", BusinessCity));
+            }
+            if (BusinessStateProvinceRegion != null)
+            {
+                p.Add(new KeyValuePair<string, string>("BusinessStateProvinceRegion", BusinessStateProvinceRegion));
+            }
+            if (BusinessPostalCode != null)
+            {
+                p.Add(new KeyValuePair<string, string>("BusinessPostalCode", BusinessPostalCode));
+            }
+            if (BusinessCountry != null)
+            {
+                p.Add(new KeyValuePair<string, string>("BusinessCountry", BusinessCountry));
+            }
+            if (AdditionalInformation != null)
+            {
+                p.Add(new KeyValuePair<string, string>("AdditionalInformation", AdditionalInformation));
+            }
+            if (BusinessContactFirstName != null)
+            {
+                p.Add(new KeyValuePair<string, string>("BusinessContactFirstName", BusinessContactFirstName));
+            }
+            if (BusinessContactLastName != null)
+            {
+                p.Add(new KeyValuePair<string, string>("BusinessContactLastName", BusinessContactLastName));
+            }
+            if (BusinessContactEmail != null)
+            {
+                p.Add(new KeyValuePair<string, string>("BusinessContactEmail", BusinessContactEmail));
+            }
+            if (BusinessContactPhone != null)
+            {
+                p.Add(new KeyValuePair<string, string>("BusinessContactPhone", BusinessContactPhone.ToString()));
             }
             return p;
         }
@@ -55,44 +199,5 @@ namespace Twilio.Rest.Trusthub.V1
         
 
     }
-    /// <summary> Resume a specific Compliance Tollfree Verification Inquiry that has expired, or re-open a rejected Compliance Tollfree Verification Inquiry for editing. </summary>
-    public class UpdateComplianceTollfreeInquiriesOptions : IOptions<ComplianceTollfreeInquiriesResource>
-    {
-    
-        ///<summary> The unique TolfreeId matching the Compliance Tollfree Verification Inquiry that should be resumed or resubmitted. This value will have been returned by the initial Compliance Tollfree Verification Inquiry creation call. </summary> 
-        public string PathTollfreeId { get; }
-
-        ///<summary> The Tollfree phone number to be verified </summary> 
-        public Types.PhoneNumber Did { get; }
-
-
-
-        /// <summary> Construct a new UpdateComplianceTollfreeInquiryOptions </summary>
-        /// <param name="pathTollfreeId"> The unique TolfreeId matching the Compliance Tollfree Verification Inquiry that should be resumed or resubmitted. This value will have been returned by the initial Compliance Tollfree Verification Inquiry creation call. </param>
-        /// <param name="did"> The Tollfree phone number to be verified </param>
-        public UpdateComplianceTollfreeInquiriesOptions(string pathTollfreeId, Types.PhoneNumber did)
-        {
-            PathTollfreeId = pathTollfreeId;
-            Did = did;
-        }
-
-        
-        /// <summary> Generate the necessary parameters </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-
-            if (Did != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Did", Did.ToString()));
-            }
-            return p;
-        }
-
-        
-
-    }
-
-
 }
 

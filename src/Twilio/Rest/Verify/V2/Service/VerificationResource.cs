@@ -134,6 +134,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="templateCustomSubstitutions"> A stringified JSON object in which the keys are the template's special variables and the values are the variables substitutions. </param>
         /// <param name="deviceIp"> Strongly encouraged if using the auto channel. The IP address of the client's device. If provided, it has to be a valid IPv4 or IPv6 address. </param>
         /// <param name="riskCheck">  </param>
+        /// <param name="tags"> A string containing a JSON map of key value pairs of tags to be recorded as metadata for the message. The object may contain up to 10 tags. Keys and values can each be up to 128 characters in length. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Verification </returns>
         public static VerificationResource Create(
@@ -154,9 +155,10 @@ namespace Twilio.Rest.Verify.V2.Service
                                           string templateCustomSubstitutions = null,
                                           string deviceIp = null,
                                           VerificationResource.RiskCheckEnum riskCheck = null,
+                                          string tags = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new CreateVerificationOptions(pathServiceSid, to, channel){  CustomFriendlyName = customFriendlyName, CustomMessage = customMessage, SendDigits = sendDigits, Locale = locale, CustomCode = customCode, Amount = amount, Payee = payee, RateLimits = rateLimits, ChannelConfiguration = channelConfiguration, AppHash = appHash, TemplateSid = templateSid, TemplateCustomSubstitutions = templateCustomSubstitutions, DeviceIp = deviceIp, RiskCheck = riskCheck };
+            var options = new CreateVerificationOptions(pathServiceSid, to, channel){  CustomFriendlyName = customFriendlyName, CustomMessage = customMessage, SendDigits = sendDigits, Locale = locale, CustomCode = customCode, Amount = amount, Payee = payee, RateLimits = rateLimits, ChannelConfiguration = channelConfiguration, AppHash = appHash, TemplateSid = templateSid, TemplateCustomSubstitutions = templateCustomSubstitutions, DeviceIp = deviceIp, RiskCheck = riskCheck, Tags = tags };
             return Create(options, client);
         }
 
@@ -179,6 +181,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="templateCustomSubstitutions"> A stringified JSON object in which the keys are the template's special variables and the values are the variables substitutions. </param>
         /// <param name="deviceIp"> Strongly encouraged if using the auto channel. The IP address of the client's device. If provided, it has to be a valid IPv4 or IPv6 address. </param>
         /// <param name="riskCheck">  </param>
+        /// <param name="tags"> A string containing a JSON map of key value pairs of tags to be recorded as metadata for the message. The object may contain up to 10 tags. Keys and values can each be up to 128 characters in length. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Verification </returns>
         public static async System.Threading.Tasks.Task<VerificationResource> CreateAsync(
@@ -199,9 +202,10 @@ namespace Twilio.Rest.Verify.V2.Service
                                                                                   string templateCustomSubstitutions = null,
                                                                                   string deviceIp = null,
                                                                                   VerificationResource.RiskCheckEnum riskCheck = null,
+                                                                                  string tags = null,
                                                                                   ITwilioRestClient client = null)
         {
-        var options = new CreateVerificationOptions(pathServiceSid, to, channel){  CustomFriendlyName = customFriendlyName, CustomMessage = customMessage, SendDigits = sendDigits, Locale = locale, CustomCode = customCode, Amount = amount, Payee = payee, RateLimits = rateLimits, ChannelConfiguration = channelConfiguration, AppHash = appHash, TemplateSid = templateSid, TemplateCustomSubstitutions = templateCustomSubstitutions, DeviceIp = deviceIp, RiskCheck = riskCheck };
+        var options = new CreateVerificationOptions(pathServiceSid, to, channel){  CustomFriendlyName = customFriendlyName, CustomMessage = customMessage, SendDigits = sendDigits, Locale = locale, CustomCode = customCode, Amount = amount, Payee = payee, RateLimits = rateLimits, ChannelConfiguration = channelConfiguration, AppHash = appHash, TemplateSid = templateSid, TemplateCustomSubstitutions = templateCustomSubstitutions, DeviceIp = deviceIp, RiskCheck = riskCheck, Tags = tags };
             return await CreateAsync(options, client);
         }
         #endif

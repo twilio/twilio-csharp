@@ -78,7 +78,7 @@ namespace Twilio.Rest.Notify.V1
         /// <param name="friendlyName"> A descriptive string that you create to describe the resource. It can be up to 64 characters long. </param>
         /// <param name="apnCredentialSid"> The SID of the [Credential](https://www.twilio.com/docs/notify/api/credential-resource) to use for APN Bindings. </param>
         /// <param name="gcmCredentialSid"> The SID of the [Credential](https://www.twilio.com/docs/notify/api/credential-resource) to use for GCM Bindings. </param>
-        /// <param name="messagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/sms/send-messages#messaging-services) to use for SMS Bindings. This parameter must be set in order to send SMS notifications. </param>
+        /// <param name="messagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/sms/quickstart#messaging-services) to use for SMS Bindings. This parameter must be set in order to send SMS notifications. </param>
         /// <param name="facebookMessengerPageId"> Deprecated. </param>
         /// <param name="defaultApnNotificationProtocolVersion"> The protocol version to use for sending APNS notifications. Can be overridden on a Binding by Binding basis when creating a [Binding](https://www.twilio.com/docs/notify/api/binding-resource) resource. </param>
         /// <param name="defaultGcmNotificationProtocolVersion"> The protocol version to use for sending GCM notifications. Can be overridden on a Binding by Binding basis when creating a [Binding](https://www.twilio.com/docs/notify/api/binding-resource) resource. </param>
@@ -117,7 +117,7 @@ namespace Twilio.Rest.Notify.V1
         /// <param name="friendlyName"> A descriptive string that you create to describe the resource. It can be up to 64 characters long. </param>
         /// <param name="apnCredentialSid"> The SID of the [Credential](https://www.twilio.com/docs/notify/api/credential-resource) to use for APN Bindings. </param>
         /// <param name="gcmCredentialSid"> The SID of the [Credential](https://www.twilio.com/docs/notify/api/credential-resource) to use for GCM Bindings. </param>
-        /// <param name="messagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/sms/send-messages#messaging-services) to use for SMS Bindings. This parameter must be set in order to send SMS notifications. </param>
+        /// <param name="messagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/sms/quickstart#messaging-services) to use for SMS Bindings. This parameter must be set in order to send SMS notifications. </param>
         /// <param name="facebookMessengerPageId"> Deprecated. </param>
         /// <param name="defaultApnNotificationProtocolVersion"> The protocol version to use for sending APNS notifications. Can be overridden on a Binding by Binding basis when creating a [Binding](https://www.twilio.com/docs/notify/api/binding-resource) resource. </param>
         /// <param name="defaultGcmNotificationProtocolVersion"> The protocol version to use for sending GCM notifications. Can be overridden on a Binding by Binding basis when creating a [Binding](https://www.twilio.com/docs/notify/api/binding-resource) resource. </param>
@@ -456,7 +456,7 @@ namespace Twilio.Rest.Notify.V1
         /// <param name="friendlyName"> A descriptive string that you create to describe the resource. It can be up to 64 characters long. </param>
         /// <param name="apnCredentialSid"> The SID of the [Credential](https://www.twilio.com/docs/notify/api/credential-resource) to use for APN Bindings. </param>
         /// <param name="gcmCredentialSid"> The SID of the [Credential](https://www.twilio.com/docs/notify/api/credential-resource) to use for GCM Bindings. </param>
-        /// <param name="messagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/sms/send-messages#messaging-services) to use for SMS Bindings. This parameter must be set in order to send SMS notifications. </param>
+        /// <param name="messagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/sms/quickstart#messaging-services) to use for SMS Bindings. This parameter must be set in order to send SMS notifications. </param>
         /// <param name="facebookMessengerPageId"> Deprecated. </param>
         /// <param name="defaultApnNotificationProtocolVersion"> The protocol version to use for sending APNS notifications. Can be overridden on a Binding by Binding basis when creating a [Binding](https://www.twilio.com/docs/notify/api/binding-resource) resource. </param>
         /// <param name="defaultGcmNotificationProtocolVersion"> The protocol version to use for sending GCM notifications. Can be overridden on a Binding by Binding basis when creating a [Binding](https://www.twilio.com/docs/notify/api/binding-resource) resource. </param>
@@ -497,7 +497,7 @@ namespace Twilio.Rest.Notify.V1
         /// <param name="friendlyName"> A descriptive string that you create to describe the resource. It can be up to 64 characters long. </param>
         /// <param name="apnCredentialSid"> The SID of the [Credential](https://www.twilio.com/docs/notify/api/credential-resource) to use for APN Bindings. </param>
         /// <param name="gcmCredentialSid"> The SID of the [Credential](https://www.twilio.com/docs/notify/api/credential-resource) to use for GCM Bindings. </param>
-        /// <param name="messagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/sms/send-messages#messaging-services) to use for SMS Bindings. This parameter must be set in order to send SMS notifications. </param>
+        /// <param name="messagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/sms/quickstart#messaging-services) to use for SMS Bindings. This parameter must be set in order to send SMS notifications. </param>
         /// <param name="facebookMessengerPageId"> Deprecated. </param>
         /// <param name="defaultApnNotificationProtocolVersion"> The protocol version to use for sending APNS notifications. Can be overridden on a Binding by Binding basis when creating a [Binding](https://www.twilio.com/docs/notify/api/binding-resource) resource. </param>
         /// <param name="defaultGcmNotificationProtocolVersion"> The protocol version to use for sending GCM notifications. Can be overridden on a Binding by Binding basis when creating a [Binding](https://www.twilio.com/docs/notify/api/binding-resource) resource. </param>
@@ -599,7 +599,7 @@ namespace Twilio.Rest.Notify.V1
         [JsonProperty("fcm_credential_sid")]
         public string FcmCredentialSid { get; private set; }
 
-        ///<summary> The SID of the [Messaging Service](https://www.twilio.com/docs/sms/send-messages#messaging-services) to use for SMS Bindings. In order to send SMS notifications this parameter has to be set. </summary> 
+        ///<summary> The SID of the [Messaging Service](https://www.twilio.com/docs/sms/quickstart#messaging-services) to use for SMS Bindings. In order to send SMS notifications this parameter has to be set. </summary> 
         [JsonProperty("messaging_service_sid")]
         public string MessagingServiceSid { get; private set; }
 
