@@ -33,11 +33,11 @@ namespace Twilio.Rest.PreviewMessaging.V1
         public class MessagingV1Message
         {
             [JsonConverter(typeof(PhoneNumberConverter))]
-            [JsonProperty("to")]
+            [JsonProperty("To")]
             private Types.PhoneNumber To {get; set;}
-            [JsonProperty("body")]
+            [JsonProperty("Body")]
             private string Body {get; set;}
-            [JsonProperty("content_variables")]
+            [JsonProperty("ContentVariables")]
             private Dictionary<string, string> ContentVariables {get; set;}
             public MessagingV1Message() { }
             public class Builder
@@ -69,40 +69,40 @@ namespace Twilio.Rest.PreviewMessaging.V1
         }
         public class CreateMessagesRequest
         {
-            [JsonProperty("messages")]
+            [JsonProperty("Messages")]
             private List<MessagingV1Message> Messages {get; set;}
             [JsonConverter(typeof(PhoneNumberConverter))]
-            [JsonProperty("from")]
+            [JsonProperty("From")]
             private Types.PhoneNumber From {get; set;}
-            [JsonProperty("messaging_service_sid")]
+            [JsonProperty("MessagingServiceSid")]
             private string MessagingServiceSid {get; set;}
-            [JsonProperty("body")]
+            [JsonProperty("Body")]
             private string Body {get; set;}
-            [JsonProperty("content_sid")]
+            [JsonProperty("ContentSid")]
             private string ContentSid {get; set;}
-            [JsonProperty("media_url")]
+            [JsonProperty("MediaUrl")]
             private List<Uri> MediaUrl {get; set;}
-            [JsonProperty("status_callback")]
+            [JsonProperty("StatusCallback")]
             private Uri StatusCallback {get; set;}
-            [JsonProperty("validity_period")]
+            [JsonProperty("ValidityPeriod")]
             private int? ValidityPeriod {get; set;}
-            [JsonProperty("send_at")]
+            [JsonProperty("SendAt")]
             private string SendAt {get; set;}
-            [JsonProperty("schedule_type")]
+            [JsonProperty("ScheduleType")]
             private string ScheduleType {get; set;}
-            [JsonProperty("shorten_urls")]
+            [JsonProperty("ShortenUrls")]
             private bool? ShortenUrls {get; set;}
-            [JsonProperty("send_as_mms")]
+            [JsonProperty("SendAsMms")]
             private bool? SendAsMms {get; set;}
-            [JsonProperty("max_price")]
+            [JsonProperty("MaxPrice")]
             private decimal? MaxPrice {get; set;}
-            [JsonProperty("attempt")]
+            [JsonProperty("Attempt")]
             private int? Attempt {get; set;}
-            [JsonProperty("smart_encoded")]
+            [JsonProperty("SmartEncoded")]
             private bool? SmartEncoded {get; set;}
-            [JsonProperty("force_delivery")]
+            [JsonProperty("ForceDelivery")]
             private bool? ForceDelivery {get; set;}
-            [JsonProperty("application_sid")]
+            [JsonProperty("ApplicationSid")]
             private string ApplicationSid {get; set;}
             public CreateMessagesRequest() { }
             public class Builder
