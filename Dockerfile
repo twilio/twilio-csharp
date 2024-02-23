@@ -1,7 +1,7 @@
-FROM ubuntu:22.04
+FROM ubuntu:16.04
 
 # Below dependecies are added from Dependencies menetion at
-# https://learn.microsoft.com/en-us/dotnet/core/install/linux-ubuntu-2204
+# https://learn.microsoft.com/en-us/dotnet/core/install/linux-ubuntu-1604
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
         apt-transport-https \
@@ -10,11 +10,12 @@ RUN apt-get update \
         dirmngr \
         gnupg \
         libc6 \
-        libgcc-s1 \
+        libcurl3 \
+        libgcc1 \
         libgssapi-krb5-2 \
-        libicu70 \
-        liblttng-ust1 \
-        libssl3 \
+        libicu55 \
+        liblttng-ust0 \
+        libssl1.0.2 \
         libstdc++6 \
         libunwind8 \
         libuuid1 \
@@ -26,13 +27,10 @@ RUN apt-get update \
     && apt-add-repository 'deb https://download.mono-project.com/repo/ubuntu stable-xenial main' \
     && wget https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb \
     && dpkg -i packages-microsoft-prod.deb  \
-    #&& add-apt-repository ppa:linuxuprising/libpng12 \
-    #&& apt-get update \
-    #&& apt install libpng12-0 \
     && apt-get update \
     && apt-get install -y \
-        dotnet-sdk-8.0 \
-        #mono-complete \
+        dotnet-sdk-6.0 \
+        mono-complete \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /twilio
