@@ -34,7 +34,7 @@ namespace Twilio.Rest.Intelligence.V2
         ///<summary> Instructs the Speech Recognition service to automatically transcribe all recordings made on the account. </summary> 
         public bool? AutoTranscribe { get; set; }
 
-        ///<summary> Data logging allows Twilio to improve the quality of the speech recognition & language understanding services through using customer data to refine, fine tune and evaluate machine learning models. Note: Data logging cannot be activated via API, only via www.twilio.com, as it requires additional consent. </summary> 
+        ///<summary> Data logging allows Twilio to improve the quality of the speech recognition through using customer data to refine its speech recognition models. </summary> 
         public bool? DataLogging { get; set; }
 
         ///<summary> A human readable description of this resource, up to 64 characters. </summary> 
@@ -208,7 +208,7 @@ namespace Twilio.Rest.Intelligence.V2
         ///<summary> Instructs the Speech Recognition service to automatically transcribe all recordings made on the account. </summary> 
         public bool? AutoTranscribe { get; set; }
 
-        ///<summary> Data logging allows Twilio to improve the quality of the speech recognition & language understanding services through using customer data to refine, fine tune and evaluate machine learning models. Note: Data logging cannot be activated via API, only via www.twilio.com, as it requires additional consent. </summary> 
+        ///<summary> Data logging allows Twilio to improve the quality of the speech recognition through using customer data to refine its speech recognition models. </summary> 
         public bool? DataLogging { get; set; }
 
         ///<summary> A human readable description of this resource, up to 64 characters. </summary> 

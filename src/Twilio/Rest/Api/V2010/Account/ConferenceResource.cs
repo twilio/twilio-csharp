@@ -190,12 +190,8 @@ namespace Twilio.Rest.Api.V2010.Account
         #endif
         /// <summary> Retrieve a list of conferences belonging to the account used to make the request </summary>
         /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Conference resource(s) to read. </param>
-        /// <param name="dateCreatedBefore"> The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that started on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify  conferences that started on or after midnight on a date, use `>=YYYY-MM-DD`. </param>
         /// <param name="dateCreated"> The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that started on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify  conferences that started on or after midnight on a date, use `>=YYYY-MM-DD`. </param>
-        /// <param name="dateCreatedAfter"> The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that started on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify  conferences that started on or after midnight on a date, use `>=YYYY-MM-DD`. </param>
-        /// <param name="dateUpdatedBefore"> The `date_updated` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that were last updated on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify conferences that were last updated on or after midnight on a given date, use  `>=YYYY-MM-DD`. </param>
         /// <param name="dateUpdated"> The `date_updated` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that were last updated on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify conferences that were last updated on or after midnight on a given date, use  `>=YYYY-MM-DD`. </param>
-        /// <param name="dateUpdatedAfter"> The `date_updated` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that were last updated on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify conferences that were last updated on or after midnight on a given date, use  `>=YYYY-MM-DD`. </param>
         /// <param name="friendlyName"> The string that identifies the Conference resources to read. </param>
         /// <param name="status"> The status of the resources to read. Can be: `init`, `in-progress`, or `completed`. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
@@ -204,31 +200,23 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <returns> A single instance of Conference </returns>
         public static ResourceSet<ConferenceResource> Read(
                                                      string pathAccountSid = null,
-                                                     DateTime? dateCreatedBefore = null,
                                                      DateTime? dateCreated = null,
-                                                     DateTime? dateCreatedAfter = null,
-                                                     DateTime? dateUpdatedBefore = null,
                                                      DateTime? dateUpdated = null,
-                                                     DateTime? dateUpdatedAfter = null,
                                                      string friendlyName = null,
                                                      ConferenceResource.StatusEnum status = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
                                                      ITwilioRestClient client = null)
         {
-            var options = new ReadConferenceOptions(){ PathAccountSid = pathAccountSid, DateCreatedBefore = dateCreatedBefore, DateCreated = dateCreated, DateCreatedAfter = dateCreatedAfter, DateUpdatedBefore = dateUpdatedBefore, DateUpdated = dateUpdated, DateUpdatedAfter = dateUpdatedAfter, FriendlyName = friendlyName, Status = status, PageSize = pageSize, Limit = limit};
+            var options = new ReadConferenceOptions(){ PathAccountSid = pathAccountSid, DateCreated = dateCreated, DateUpdated = dateUpdated, FriendlyName = friendlyName, Status = status, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
         #if !NET35
         /// <summary> Retrieve a list of conferences belonging to the account used to make the request </summary>
         /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Conference resource(s) to read. </param>
-        /// <param name="dateCreatedBefore"> The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that started on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify  conferences that started on or after midnight on a date, use `>=YYYY-MM-DD`. </param>
         /// <param name="dateCreated"> The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that started on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify  conferences that started on or after midnight on a date, use `>=YYYY-MM-DD`. </param>
-        /// <param name="dateCreatedAfter"> The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that started on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify  conferences that started on or after midnight on a date, use `>=YYYY-MM-DD`. </param>
-        /// <param name="dateUpdatedBefore"> The `date_updated` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that were last updated on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify conferences that were last updated on or after midnight on a given date, use  `>=YYYY-MM-DD`. </param>
         /// <param name="dateUpdated"> The `date_updated` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that were last updated on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify conferences that were last updated on or after midnight on a given date, use  `>=YYYY-MM-DD`. </param>
-        /// <param name="dateUpdatedAfter"> The `date_updated` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that were last updated on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify conferences that were last updated on or after midnight on a given date, use  `>=YYYY-MM-DD`. </param>
         /// <param name="friendlyName"> The string that identifies the Conference resources to read. </param>
         /// <param name="status"> The status of the resources to read. Can be: `init`, `in-progress`, or `completed`. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
@@ -237,19 +225,15 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <returns> Task that resolves to A single instance of Conference </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<ConferenceResource>> ReadAsync(
                                                                                              string pathAccountSid = null,
-                                                                                             DateTime? dateCreatedBefore = null,
                                                                                              DateTime? dateCreated = null,
-                                                                                             DateTime? dateCreatedAfter = null,
-                                                                                             DateTime? dateUpdatedBefore = null,
                                                                                              DateTime? dateUpdated = null,
-                                                                                             DateTime? dateUpdatedAfter = null,
                                                                                              string friendlyName = null,
                                                                                              ConferenceResource.StatusEnum status = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
                                                                                              ITwilioRestClient client = null)
         {
-            var options = new ReadConferenceOptions(){ PathAccountSid = pathAccountSid, DateCreatedBefore = dateCreatedBefore, DateCreated = dateCreated, DateCreatedAfter = dateCreatedAfter, DateUpdatedBefore = dateUpdatedBefore, DateUpdated = dateUpdated, DateUpdatedAfter = dateUpdatedAfter, FriendlyName = friendlyName, Status = status, PageSize = pageSize, Limit = limit};
+            var options = new ReadConferenceOptions(){ PathAccountSid = pathAccountSid, DateCreated = dateCreated, DateUpdated = dateUpdated, FriendlyName = friendlyName, Status = status, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

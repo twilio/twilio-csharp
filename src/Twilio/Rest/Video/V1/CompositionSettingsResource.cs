@@ -78,7 +78,7 @@ namespace Twilio.Rest.Video.V1
         /// <param name="friendlyName"> A descriptive string that you create to describe the resource and show to the user in the console </param>
         /// <param name="awsCredentialsSid"> The SID of the stored Credential resource. </param>
         /// <param name="encryptionKeySid"> The SID of the Public Key resource to use for encryption. </param>
-        /// <param name="awsS3Url"> The URL of the AWS S3 bucket where the compositions should be stored. We only support DNS-compliant URLs like `https://documentation-example-twilio-bucket/compositions`, where `compositions` is the path in which you want the compositions to be stored. This URL accepts only URI-valid characters, as described in the [RFC 3986](https://tools.ietf.org/html/rfc3986#section-2). </param>
+        /// <param name="awsS3Url"> The URL of the AWS S3 bucket where the compositions should be stored. We only support DNS-compliant URLs like `https://documentation-example-twilio-bucket/compositions`, where `compositions` is the path in which you want the compositions to be stored. This URL accepts only URI-valid characters, as described in the <a href='https://tools.ietf.org/html/rfc3986#section-2'>RFC 3986</a>. </param>
         /// <param name="awsStorageEnabled"> Whether all compositions should be written to the `aws_s3_url`. When `false`, all compositions are stored in our cloud. </param>
         /// <param name="encryptionEnabled"> Whether all compositions should be stored in an encrypted form. The default is `false`. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -101,7 +101,7 @@ namespace Twilio.Rest.Video.V1
         /// <param name="friendlyName"> A descriptive string that you create to describe the resource and show to the user in the console </param>
         /// <param name="awsCredentialsSid"> The SID of the stored Credential resource. </param>
         /// <param name="encryptionKeySid"> The SID of the Public Key resource to use for encryption. </param>
-        /// <param name="awsS3Url"> The URL of the AWS S3 bucket where the compositions should be stored. We only support DNS-compliant URLs like `https://documentation-example-twilio-bucket/compositions`, where `compositions` is the path in which you want the compositions to be stored. This URL accepts only URI-valid characters, as described in the [RFC 3986](https://tools.ietf.org/html/rfc3986#section-2). </param>
+        /// <param name="awsS3Url"> The URL of the AWS S3 bucket where the compositions should be stored. We only support DNS-compliant URLs like `https://documentation-example-twilio-bucket/compositions`, where `compositions` is the path in which you want the compositions to be stored. This URL accepts only URI-valid characters, as described in the <a href='https://tools.ietf.org/html/rfc3986#section-2'>RFC 3986</a>. </param>
         /// <param name="awsStorageEnabled"> Whether all compositions should be written to the `aws_s3_url`. When `false`, all compositions are stored in our cloud. </param>
         /// <param name="encryptionEnabled"> Whether all compositions should be stored in an encrypted form. The default is `false`. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -226,7 +226,7 @@ namespace Twilio.Rest.Video.V1
         [JsonProperty("aws_credentials_sid")]
         public string AwsCredentialsSid { get; private set; }
 
-        ///<summary> The URL of the AWS S3 bucket where the compositions are stored. We only support DNS-compliant URLs like `https://documentation-example-twilio-bucket/compositions`, where `compositions` is the path in which you want the compositions to be stored. This URL accepts only URI-valid characters, as described in the [RFC 3986](https://tools.ietf.org/html/rfc3986#section-2). </summary> 
+        ///<summary> The URL of the AWS S3 bucket where the compositions are stored. We only support DNS-compliant URLs like `https://documentation-example-twilio-bucket/compositions`, where `compositions` is the path in which you want the compositions to be stored. This URL accepts only URI-valid characters, as described in the <a href='https://tools.ietf.org/html/rfc3986#section-2'>RFC 3986</a>. </summary> 
         [JsonProperty("aws_s3_url")]
         public Uri AwsS3Url { get; private set; }
 

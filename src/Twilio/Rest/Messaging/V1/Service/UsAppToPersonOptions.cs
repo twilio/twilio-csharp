@@ -70,15 +70,6 @@ namespace Twilio.Rest.Messaging.V1.Service
         ///<summary> End users should be able to text in a keyword to receive help. Those keywords must be provided as part of the campaign registration request. This field is required if managing help keywords yourself (i.e. not using Twilio's Default or Advanced Opt Out features). Values must be alphanumeric. 255 character maximum. </summary> 
         public List<string> HelpKeywords { get; set; }
 
-        ///<summary> A boolean that specifies whether campaign has Subscriber Optin or not. </summary> 
-        public bool? SubscriberOptIn { get; set; }
-
-        ///<summary> A boolean that specifies whether campaign is age gated or not. </summary> 
-        public bool? AgeGated { get; set; }
-
-        ///<summary> A boolean that specifies whether campaign allows direct lending or not. </summary> 
-        public bool? DirectLending { get; set; }
-
 
         /// <summary> Construct a new CreateUsAppToPersonOptions </summary>
         /// <param name="pathMessagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) to create the resources from. </param>
@@ -161,18 +152,6 @@ namespace Twilio.Rest.Messaging.V1.Service
             if (HelpKeywords != null)
             {
                 p.AddRange(HelpKeywords.Select(HelpKeywords => new KeyValuePair<string, string>("HelpKeywords", HelpKeywords)));
-            }
-            if (SubscriberOptIn != null)
-            {
-                p.Add(new KeyValuePair<string, string>("SubscriberOptIn", SubscriberOptIn.Value.ToString().ToLower()));
-            }
-            if (AgeGated != null)
-            {
-                p.Add(new KeyValuePair<string, string>("AgeGated", AgeGated.Value.ToString().ToLower()));
-            }
-            if (DirectLending != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DirectLending", DirectLending.Value.ToString().ToLower()));
             }
             return p;
         }
@@ -282,104 +261,6 @@ namespace Twilio.Rest.Messaging.V1.Service
         
 
     }
-
-    /// <summary> update </summary>
-    public class UpdateUsAppToPersonOptions : IOptions<UsAppToPersonResource>
-    {
-    
-        ///<summary> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) to update the resource from. </summary> 
-        public string PathMessagingServiceSid { get; }
-
-        ///<summary> The SID of the US A2P Compliance resource to update `QE2c6890da8086d771620e9b13fadeba0b`. </summary> 
-        public string PathSid { get; }
-
-        ///<summary> Indicates that this SMS campaign will send messages that contain links. </summary> 
-        public bool? HasEmbeddedLinks { get; }
-
-        ///<summary> Indicates that this SMS campaign will send messages that contain phone numbers. </summary> 
-        public bool? HasEmbeddedPhone { get; }
-
-        ///<summary> An array of sample message strings, min two and max five. Min length for each sample: 20 chars. Max length for each sample: 1024 chars. </summary> 
-        public List<string> MessageSamples { get; }
-
-        ///<summary> Required for all Campaigns. Details around how a consumer opts-in to their campaign, therefore giving consent to receive their messages. If multiple opt-in methods can be used for the same campaign, they must all be listed. 40 character minimum. 2048 character maximum. </summary> 
-        public string MessageFlow { get; }
-
-        ///<summary> A short description of what this SMS campaign does. Min length: 40 characters. Max length: 4096 characters. </summary> 
-        public string Description { get; }
-
-        ///<summary> A boolean that specifies whether campaign requires age gate for federally legal content. </summary> 
-        public bool? AgeGated { get; }
-
-        ///<summary> A boolean that specifies whether campaign allows direct lending or not. </summary> 
-        public bool? DirectLending { get; }
-
-
-
-        /// <summary> Construct a new UpdateUsAppToPersonOptions </summary>
-        /// <param name="pathMessagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) to update the resource from. </param>
-        /// <param name="pathSid"> The SID of the US A2P Compliance resource to update `QE2c6890da8086d771620e9b13fadeba0b`. </param>
-        /// <param name="hasEmbeddedLinks"> Indicates that this SMS campaign will send messages that contain links. </param>
-        /// <param name="hasEmbeddedPhone"> Indicates that this SMS campaign will send messages that contain phone numbers. </param>
-        /// <param name="messageSamples"> An array of sample message strings, min two and max five. Min length for each sample: 20 chars. Max length for each sample: 1024 chars. </param>
-        /// <param name="messageFlow"> Required for all Campaigns. Details around how a consumer opts-in to their campaign, therefore giving consent to receive their messages. If multiple opt-in methods can be used for the same campaign, they must all be listed. 40 character minimum. 2048 character maximum. </param>
-        /// <param name="description"> A short description of what this SMS campaign does. Min length: 40 characters. Max length: 4096 characters. </param>
-        /// <param name="ageGated"> A boolean that specifies whether campaign requires age gate for federally legal content. </param>
-        /// <param name="directLending"> A boolean that specifies whether campaign allows direct lending or not. </param>
-        public UpdateUsAppToPersonOptions(string pathMessagingServiceSid, string pathSid, bool? hasEmbeddedLinks, bool? hasEmbeddedPhone, List<string> messageSamples, string messageFlow, string description, bool? ageGated, bool? directLending)
-        {
-            PathMessagingServiceSid = pathMessagingServiceSid;
-            PathSid = pathSid;
-            HasEmbeddedLinks = hasEmbeddedLinks;
-            HasEmbeddedPhone = hasEmbeddedPhone;
-            MessageSamples = messageSamples;
-            MessageFlow = messageFlow;
-            Description = description;
-            AgeGated = ageGated;
-            DirectLending = directLending;
-        }
-
-        
-        /// <summary> Generate the necessary parameters </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-
-            if (HasEmbeddedLinks != null)
-            {
-                p.Add(new KeyValuePair<string, string>("HasEmbeddedLinks", HasEmbeddedLinks.Value.ToString().ToLower()));
-            }
-            if (HasEmbeddedPhone != null)
-            {
-                p.Add(new KeyValuePair<string, string>("HasEmbeddedPhone", HasEmbeddedPhone.Value.ToString().ToLower()));
-            }
-            if (MessageSamples != null)
-            {
-                p.AddRange(MessageSamples.Select(MessageSamples => new KeyValuePair<string, string>("MessageSamples", MessageSamples)));
-            }
-            if (MessageFlow != null)
-            {
-                p.Add(new KeyValuePair<string, string>("MessageFlow", MessageFlow));
-            }
-            if (Description != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Description", Description));
-            }
-            if (AgeGated != null)
-            {
-                p.Add(new KeyValuePair<string, string>("AgeGated", AgeGated.Value.ToString().ToLower()));
-            }
-            if (DirectLending != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DirectLending", DirectLending.Value.ToString().ToLower()));
-            }
-            return p;
-        }
-
-        
-
-    }
-
 
 }
 

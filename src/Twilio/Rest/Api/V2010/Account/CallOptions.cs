@@ -388,20 +388,8 @@ namespace Twilio.Rest.Api.V2010.Account
         ///<summary> Only include calls that started on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read only calls that started on this date. You can also specify an inequality, such as `StartTime<=YYYY-MM-DD`, to read calls that started on or before midnight of this date, and `StartTime>=YYYY-MM-DD` to read calls that started on or after midnight of this date. </summary> 
         public DateTime? StartTime { get; set; }
 
-        ///<summary> Only include calls that started on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read only calls that started on this date. You can also specify an inequality, such as `StartTime<=YYYY-MM-DD`, to read calls that started on or before midnight of this date, and `StartTime>=YYYY-MM-DD` to read calls that started on or after midnight of this date. </summary> 
-        public DateTime? StartTimeBefore { get; set; }
-
-        ///<summary> Only include calls that started on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read only calls that started on this date. You can also specify an inequality, such as `StartTime<=YYYY-MM-DD`, to read calls that started on or before midnight of this date, and `StartTime>=YYYY-MM-DD` to read calls that started on or after midnight of this date. </summary> 
-        public DateTime? StartTimeAfter { get; set; }
-
         ///<summary> Only include calls that ended on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read only calls that ended on this date. You can also specify an inequality, such as `EndTime<=YYYY-MM-DD`, to read calls that ended on or before midnight of this date, and `EndTime>=YYYY-MM-DD` to read calls that ended on or after midnight of this date. </summary> 
         public DateTime? EndTime { get; set; }
-
-        ///<summary> Only include calls that ended on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read only calls that ended on this date. You can also specify an inequality, such as `EndTime<=YYYY-MM-DD`, to read calls that ended on or before midnight of this date, and `EndTime>=YYYY-MM-DD` to read calls that ended on or after midnight of this date. </summary> 
-        public DateTime? EndTimeBefore { get; set; }
-
-        ///<summary> Only include calls that ended on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read only calls that ended on this date. You can also specify an inequality, such as `EndTime<=YYYY-MM-DD`, to read calls that ended on or before midnight of this date, and `EndTime>=YYYY-MM-DD` to read calls that ended on or after midnight of this date. </summary> 
-        public DateTime? EndTimeAfter { get; set; }
 
 
 
@@ -432,31 +420,9 @@ namespace Twilio.Rest.Api.V2010.Account
             {
                 p.Add(new KeyValuePair<string, string>("StartTime", Serializers.DateTimeIso8601(StartTime)));
             }
-            else
-            {
-                if (StartTimeBefore != null)
-                {
-                    p.Add(new KeyValuePair<string, string>("StartTime<", Serializers.DateTimeIso8601(StartTimeBefore)));
-                }
-                if (StartTimeAfter != null)
-                {
-                    p.Add(new KeyValuePair<string, string>("StartTime>", Serializers.DateTimeIso8601(StartTimeAfter)));
-                }
-            }
             if (EndTime != null)
             {
                 p.Add(new KeyValuePair<string, string>("EndTime", Serializers.DateTimeIso8601(EndTime)));
-            }
-            else
-            {
-                if (EndTimeBefore != null)
-                {
-                    p.Add(new KeyValuePair<string, string>("EndTime<", Serializers.DateTimeIso8601(EndTimeBefore)));
-                }
-                if (EndTimeAfter != null)
-                {
-                    p.Add(new KeyValuePair<string, string>("EndTime>", Serializers.DateTimeIso8601(EndTimeAfter)));
-                }
             }
             if (PageSize != null)
             {
