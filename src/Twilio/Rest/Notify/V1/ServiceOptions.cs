@@ -37,7 +37,7 @@ namespace Twilio.Rest.Notify.V1
         ///<summary> The SID of the [Credential](https://www.twilio.com/docs/notify/api/credential-resource) to use for GCM Bindings. </summary> 
         public string GcmCredentialSid { get; set; }
 
-        ///<summary> The SID of the [Messaging Service](https://www.twilio.com/docs/sms/quickstart#messaging-services) to use for SMS Bindings. This parameter must be set in order to send SMS notifications. </summary> 
+        ///<summary> The SID of the [Messaging Service](https://www.twilio.com/docs/sms/send-messages#messaging-services) to use for SMS Bindings. This parameter must be set in order to send SMS notifications. </summary> 
         public string MessagingServiceSid { get; set; }
 
         ///<summary> Deprecated. </summary> 
@@ -247,7 +247,7 @@ namespace Twilio.Rest.Notify.V1
         ///<summary> The SID of the [Credential](https://www.twilio.com/docs/notify/api/credential-resource) to use for GCM Bindings. </summary> 
         public string GcmCredentialSid { get; set; }
 
-        ///<summary> The SID of the [Messaging Service](https://www.twilio.com/docs/sms/quickstart#messaging-services) to use for SMS Bindings. This parameter must be set in order to send SMS notifications. </summary> 
+        ///<summary> The SID of the [Messaging Service](https://www.twilio.com/docs/sms/send-messages#messaging-services) to use for SMS Bindings. This parameter must be set in order to send SMS notifications. </summary> 
         public string MessagingServiceSid { get; set; }
 
         ///<summary> Deprecated. </summary> 

@@ -51,5 +51,26 @@ namespace Twilio.Rest.FlexApi.V1
     }
 
 
+    /// <summary> update </summary>
+    public class UpdateConfigurationOptions : IOptions<ConfigurationResource>
+    {
+    
+
+
+
+        
+        /// <summary> Generate the necessary parameters </summary>
+        public List<KeyValuePair<string, string>> GetParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+
+            return p;
+        }
+
+        
+
+    }
+
+
 }
 

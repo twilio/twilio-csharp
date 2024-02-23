@@ -237,7 +237,7 @@ namespace Twilio.Rest.Supersim.V1
         #endif
         /// <summary> Retrieve a list of eSIM Profiles. </summary>
         /// <param name="eid"> List the eSIM Profiles that have been associated with an EId. </param>
-        /// <param name="simSid"> Find the eSIM Profile resource related to a [Sim](https://www.twilio.com/docs/iot/supersim/api/sim-resource) resource by providing the SIM SID. Will always return an array with either 1 or 0 records. </param>
+        /// <param name="simSid"> Find the eSIM Profile resource related to a [Sim](https://www.twilio.com/docs/iot/wireless/api/sim-resource) resource by providing the SIM SID. Will always return an array with either 1 or 0 records. </param>
         /// <param name="status"> List the eSIM Profiles that are in a given status. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="limit"> Record limit </param>
@@ -258,7 +258,7 @@ namespace Twilio.Rest.Supersim.V1
         #if !NET35
         /// <summary> Retrieve a list of eSIM Profiles. </summary>
         /// <param name="eid"> List the eSIM Profiles that have been associated with an EId. </param>
-        /// <param name="simSid"> Find the eSIM Profile resource related to a [Sim](https://www.twilio.com/docs/iot/supersim/api/sim-resource) resource by providing the SIM SID. Will always return an array with either 1 or 0 records. </param>
+        /// <param name="simSid"> Find the eSIM Profile resource related to a [Sim](https://www.twilio.com/docs/iot/wireless/api/sim-resource) resource by providing the SIM SID. Will always return an array with either 1 or 0 records. </param>
         /// <param name="status"> List the eSIM Profiles that are in a given status. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="limit"> Record limit </param>
@@ -372,7 +372,7 @@ namespace Twilio.Rest.Supersim.V1
         [JsonProperty("iccid")]
         public string Iccid { get; private set; }
 
-        ///<summary> The SID of the [Sim](https://www.twilio.com/docs/iot/supersim/api/sim-resource) resource that this eSIM Profile controls. </summary> 
+        ///<summary> The SID of the [Sim](https://www.twilio.com/docs/iot/wireless/api/sim-resource) resource that this eSIM Profile controls. </summary> 
         [JsonProperty("sim_sid")]
         public string SimSid { get; private set; }
 

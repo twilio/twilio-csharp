@@ -5,6 +5,8 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Runtime.InteropServices;
+using System.Text;
+using Twilio.Constant;
 
 namespace Twilio.Http
 {
@@ -61,7 +63,14 @@ namespace Twilio.Http
             var httpRequest = BuildHttpRequest(request);
             if (!Equals(request.Method, HttpMethod.Get))
             {
-                httpRequest.Content = new FormUrlEncodedContent(request.PostParams);
+                if (request.ContentType == null)
+                    request.ContentType = EnumConstants.ContentTypeEnum.FORM_URLENCODED;
+
+                if (Equals(request.ContentType, EnumConstants.ContentTypeEnum.JSON))
+                    httpRequest.Content = new StringContent(request.Body, Encoding.UTF8, "application/json");
+                
+                else if(Equals(request.ContentType, EnumConstants.ContentTypeEnum.FORM_URLENCODED))
+                    httpRequest.Content = new FormUrlEncodedContent(request.PostParams);
             }
 
             this.LastRequest = request;

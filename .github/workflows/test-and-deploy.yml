@@ -24,15 +24,18 @@ jobs:
       - name: Setup .NET Core SDK
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: 7.0.103
-
+          global-json-file: global.json
+          
+#      - name: Remove dotnet 7 and 8
+#        run: sudo rm -rf /usr/share/dotnet/sdk/{7*,8*}
+      
+      - name: Get installed dotnet version
+        run: dotnet --version
+          
       - uses: actions/setup-java@v4
         with:
           distribution: 'zulu'
           java-version: '17'
-
-      - name: Remove faulty SDK version
-        run: sudo rm -rf /usr/share/dotnet/sdk/7.0.4*
 
       - name: Build & Test
         run: make test
@@ -65,7 +68,15 @@ jobs:
       - name: Setup .NET Core SDK
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '3.1.x'
+          global-json-file: global.json
+
+      # actions/setup-dotnet@v3 will install .net6, .net7 and .net8 by default it will use latest version.
+      # if any latest version of .net is released, delete that as well.
+#      - name: Remove dotnet 7 and 8
+#        run: sudo rm -rf /usr/share/dotnet/sdk/{7*,8*}
+
+      - name: Get installed dotnet version
+        run: dotnet --version
 
       - name: Login to Docker Hub
         uses: docker/login-action@v2
@@ -102,7 +113,13 @@ jobs:
       - name: Setup .NET Core SDK
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '3.1.x'
+          global-json-file: global.json
+
+#      - name: Remove dotnet 7 and 8
+#        run: sudo rm -rf /usr/share/dotnet/sdk/7* /usr/share/dotnet/sdk/8*
+
+      - name: Get installed dotnet version
+        run: dotnet --version
 
       - name: Set up certificate
         run: |
@@ -152,6 +169,7 @@ jobs:
 
       - name: Signing using Nuget
         run: |
+          dotnet build -c Release
           dotnet pack -c Release
           nuget sign **/*.nupkg -Timestamper http://timestamp.digicert.com -outputdirectory .\NugetSigned -CertificateFingerprint ${{ secrets.SM_CODE_SIGNING_CERT_SHA1_HASH }} -HashAlgorithm SHA256 -Verbosity detailed -Overwrite
           nuget push **/*.nupkg -ApiKey ${{ secrets.NUGET_API_KEY }} -Source https://api.nuget.org/v3/index.json
