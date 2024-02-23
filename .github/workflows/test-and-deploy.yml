@@ -115,8 +115,11 @@ jobs:
         with:
           dotnet-version: 7.0.103
 
+      - name: Display installed dotnet versions
+        run: ls /usr/share/dotnet/sdk/
+
       - name: Remove dotnet 7 and 8
-        run: sudo rm -rf /usr/share/dotnet/sdk/{7*,8*}
+        run: sudo rm -rf /usr/share/dotnet/sdk/7* /usr/share/dotnet/sdk/8*
 
       - name: Get installed dotnet version
         run: dotnet --version
