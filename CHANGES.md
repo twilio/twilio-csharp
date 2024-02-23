@@ -1,6 +1,193 @@
 twilio-csharp Changelog
 =======================
 
+[2024-02-09] Version 6.18.0
+---------------------------
+**Library - Chore**
+- [PR #718](https://github.com/twilio/twilio-csharp/pull/718): added code-signing-workflow. Thanks to [@tiwarishubham635](https://github.com/tiwarishubham635)!
+- [PR #719](https://github.com/twilio/twilio-csharp/pull/719): disable cluster test. Thanks to [@sbansla](https://github.com/sbansla)!
+- [PR #717](https://github.com/twilio/twilio-csharp/pull/717): setup java17 in test workflow. Thanks to [@tiwarishubham635](https://github.com/tiwarishubham635)!
+
+**Api**
+- Updated service base url for connect apps and authorized connect apps APIs **(breaking change)**
+- Update documentation to reflect RiskCheck GA
+- Added optional parameter `CallToken` for create participant api
+
+**Events**
+- Marked as GA
+
+**Flex**
+- Adding `flex_instance_sid` to Flex Configuration
+- Adding `provisioning_status` for Email Manager
+- Adding `offline_config` to Flex Configuration
+
+**Insights**
+- add flag to restrict access to unapid customers
+- decommission voice-qualitystats-endpoint role
+
+**Intelligence**
+- Add text-generation operator (for example conversation summary) results to existing OperatorResults collection.
+
+**Lookups**
+- Remove `carrier` field from `sms_pumping_risk` and leave `carrier_risk_category` **(breaking change)**
+- Remove carrier information from call forwarding package **(breaking change)**
+
+**Messaging**
+- Add update instance endpoints to us_app_to_person api
+- Add tollfree edit_allowed and edit_reason fields
+- Update Phone Number, Short Code, Alpha Sender, US A2P and Channel Sender documentation
+- Add DELETE support to Tollfree Verification resource
+
+**Numbers**
+- Add Get Port In request api
+
+**Push**
+- Migrated to new Push API V4 with Resilient Notification Delivery.
+
+**Serverless**
+- Add node18 as a valid Build runtime
+
+**Taskrouter**
+- Add `jitter_buffer_size` param in update reservation
+- Add container attribute to task_queue_bulk_real_time_statistics endpoint
+- Remove beta_feature check on task_queue_bulk_real_time_statistics endpoint
+
+**Trusthub**
+- Add optional field NotificationEmail to the POST /v1/ComplianceInquiries/Customers/Initialize API
+- Add additional optional fields in compliance_tollfree_inquiry.json
+- Rename did to tollfree_phone_number in compliance_tollfree_inquiry.json
+- Add new optional field notification_email to compliance_tollfree_inquiry.json
+
+**Verify**
+- `Tags` property added again to Public Docs **(breaking change)**
+- Remove `Tags` from Public Docs **(breaking change)**
+- Add `VerifyEventSubscriptionEnabled` parameter to service create and update endpoints.
+- Add `Tags` optional parameter on Verification creation.
+- Update Verify TOTP maturity to GA.
+
+
+[2024-01-25] Version 6.17.0
+---------------------------
+**Oauth**
+- updated openid discovery endpoint uri **(breaking change)**
+- Added device code authorization endpoint
+- added oauth JWKS endpoint
+- Get userinfo resource
+- OpenID discovery resource
+- Add new API for token endpoint
+
+
+[2024-01-14] Version 6.16.1
+---------------------------
+**Library - Fix**
+- [PR #712](https://github.com/twilio/twilio-csharp/pull/712): pin sonarscanner version. Thanks to [@shrutiburman](https://github.com/shrutiburman)!
+
+**Push**
+- Migrated to new Push API V4 with Resilient Notification Delivery.
+
+
+[2023-12-14] Version 6.16.0
+---------------------------
+**Api**
+- Updated service base url for connect apps and authorized connect apps APIs **(breaking change)**
+
+**Events**
+- Marked as GA
+
+**Insights**
+- decommission voice-qualitystats-endpoint role
+
+**Numbers**
+- Add Get Port In request api
+
+**Taskrouter**
+- Add `jitter_buffer_size` param in update reservation
+
+**Trusthub**
+- Add additional optional fields in compliance_tollfree_inquiry.json
+
+**Verify**
+- Remove `Tags` from Public Docs **(breaking change)**
+
+
+[2023-12-05] Version 6.15.2
+---------------------------
+**Verify**
+- Add `VerifyEventSubscriptionEnabled` parameter to service create and update endpoints.
+
+
+[2023-11-17] Version 6.15.1
+---------------------------
+**Api**
+- Update documentation to reflect RiskCheck GA
+
+**Flex**
+- Adding `provisioning_status` for Email Manager
+
+**Intelligence**
+- Add text-generation operator (for example conversation summary) results to existing OperatorResults collection.
+
+**Messaging**
+- Add tollfree edit_allowed and edit_reason fields
+- Update Phone Number, Short Code, Alpha Sender, US A2P and Channel Sender documentation
+- Add DELETE support to Tollfree Verification resource
+
+**Serverless**
+- Add node18 as a valid Build runtime
+
+**Taskrouter**
+- Add container attribute to task_queue_bulk_real_time_statistics endpoint
+
+**Trusthub**
+- Rename did to tollfree_phone_number in compliance_tollfree_inquiry.json
+- Add new optional field notification_email to compliance_tollfree_inquiry.json
+
+**Verify**
+- Add `Tags` optional parameter on Verification creation.
+- Update Verify TOTP maturity to GA.
+
+
+[2023-10-19] Version 6.15.0
+---------------------------
+**Accounts**
+- Updated Safelist metadata to correct the docs.
+- Add Global SafeList API changes
+
+**Api**
+- Added optional parameter `CallToken` for create participant api
+
+**Flex**
+- Adding `offline_config` to Flex Configuration
+
+**Intelligence**
+- Deleted `redacted` parameter from fetching transcript in v2 **(breaking change)**
+
+**Lookups**
+- Add new `phone_number_quality_score` package to the lookup response
+- Remove `disposable_phone_number_risk` package **(breaking change)**
+
+**Messaging**
+- Update US App To Person documentation with current `message_samples` requirements
+
+**Taskrouter**
+- Remove beta_feature check on task_queue_bulk_real_time_statistics endpoint
+- Add `virtual_start_time` property to tasks
+- Updating `task_queue_data` format from `map` to `array` in the response of bulk get endpoint of TaskQueue Real Time Statistics API **(breaking change)**
+
+
+[2023-10-05] Version 6.14.1
+---------------------------
+**Library - Fix**
+- [PR #705](https://github.com/twilio/twilio-csharp/pull/705): Update method comments to reflect new security testing method. Thanks to [@AsabuHere](https://github.com/AsabuHere)!
+- [PR #704](https://github.com/twilio/twilio-csharp/pull/704): [C# helper library] Changes in validate ssl certificate method with new url and port. Thanks to [@AsabuHere](https://github.com/AsabuHere)!
+
+**Library - Chore**
+- [PR #700](https://github.com/twilio/twilio-csharp/pull/700): twilio help changes. Thanks to [@kridai](https://github.com/kridai)!
+
+**Lookups**
+- Add test api support for Lookup v2
+
+
 [2023-09-21] Version 6.14.0
 ---------------------------
 **Library - Chore**
@@ -23,6 +210,7 @@ twilio-csharp Changelog
 **Taskrouter**
 - Add Update Queues, Workers, Workflow Real Time Statistics API to flex-rt-data-api-v2 endpoint
 - Add Update Workspace Real Time Statistics API to flex-rt-data-api-v2 endpoint
+
 
 [2023-09-07] Version 6.13.0
 ---------------------------

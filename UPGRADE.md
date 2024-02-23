@@ -2,8 +2,8 @@
 
 _`MAJOR` version bumps will have upgrade notes posted here._
 
-[2023-10-XX] 6.x.x to 7.x.x
---------------------------------
+[2024-02-XX] 6.x.x to 7.x.x
+----------------------------
 ### Overview
 
 #### Twilio Csharp Helper Library’s major version 7.0.0 is now available. 
