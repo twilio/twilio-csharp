@@ -10,6 +10,8 @@
     <AssemblyTitle>Twilio</AssemblyTitle>
     <NeutralLanguage>en-US</NeutralLanguage>
     <VersionPrefix>6.18.0</VersionPrefix>
+    <VersionSuffix>
+    </VersionSuffix>
     <Authors>Twilio</Authors>
     <NoWarn>CS1587;CS1591;CS1570;CS1573;CS1572;CS8618;CS8603;CS8625;CS8604;CS8765</NoWarn>
     <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
