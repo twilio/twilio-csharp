@@ -1,6 +1,10 @@
 twilio-csharp Changelog
 =======================
+[2023-11-06] Version 7.0.0-rc.3
+ -  building using .net 6
 
+-------------------------------
+**Library - Chore**
 [2023-11-06] Version 7.0.0-rc.2
 -------------------------------
 **Library - Chore**
