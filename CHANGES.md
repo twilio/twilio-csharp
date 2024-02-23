@@ -1,6 +1,9 @@
 twilio-csharp Changelog
 =======================
 
+[2023-11-06] Version 7.0.0-rc.4
+-  Docker push
+
 [2023-09-21] Version 6.14.0
 ---------------------------
 **Library - Chore**
