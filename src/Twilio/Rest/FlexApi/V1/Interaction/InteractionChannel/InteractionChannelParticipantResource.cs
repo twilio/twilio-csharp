@@ -111,6 +111,7 @@ namespace Twilio.Rest.FlexApi.V1.Interaction.InteractionChannel
         /// <param name="pathChannelSid"> The Channel Sid for the new Channel Participant. </param>
         /// <param name="type">  </param>
         /// <param name="mediaProperties"> JSON representing the Media Properties for the new Participant. </param>
+        /// <param name="routingProperties"> Object representing the Routing Properties for the new Participant. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of InteractionChannelParticipant </returns>
         public static InteractionChannelParticipantResource Create(
@@ -118,9 +119,10 @@ namespace Twilio.Rest.FlexApi.V1.Interaction.InteractionChannel
                                           string pathChannelSid,
                                           InteractionChannelParticipantResource.TypeEnum type,
                                           object mediaProperties,
+                                          object routingProperties = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new CreateInteractionChannelParticipantOptions(pathInteractionSid, pathChannelSid, type, mediaProperties){  };
+            var options = new CreateInteractionChannelParticipantOptions(pathInteractionSid, pathChannelSid, type, mediaProperties){  RoutingProperties = routingProperties };
             return Create(options, client);
         }
 
@@ -130,6 +132,7 @@ namespace Twilio.Rest.FlexApi.V1.Interaction.InteractionChannel
         /// <param name="pathChannelSid"> The Channel Sid for the new Channel Participant. </param>
         /// <param name="type">  </param>
         /// <param name="mediaProperties"> JSON representing the Media Properties for the new Participant. </param>
+        /// <param name="routingProperties"> Object representing the Routing Properties for the new Participant. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InteractionChannelParticipant </returns>
         public static async System.Threading.Tasks.Task<InteractionChannelParticipantResource> CreateAsync(
@@ -137,9 +140,10 @@ namespace Twilio.Rest.FlexApi.V1.Interaction.InteractionChannel
                                                                                   string pathChannelSid,
                                                                                   InteractionChannelParticipantResource.TypeEnum type,
                                                                                   object mediaProperties,
+                                                                                  object routingProperties = null,
                                                                                   ITwilioRestClient client = null)
         {
-        var options = new CreateInteractionChannelParticipantOptions(pathInteractionSid, pathChannelSid, type, mediaProperties){  };
+        var options = new CreateInteractionChannelParticipantOptions(pathInteractionSid, pathChannelSid, type, mediaProperties){  RoutingProperties = routingProperties };
             return await CreateAsync(options, client);
         }
         #endif
@@ -413,6 +417,10 @@ namespace Twilio.Rest.FlexApi.V1.Interaction.InteractionChannel
         ///<summary> The url </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
+
+        ///<summary> The Participant's routing properties. </summary> 
+        [JsonProperty("routing_properties")]
+        public object RoutingProperties { get; private set; }
 
 
 

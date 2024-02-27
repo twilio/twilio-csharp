@@ -58,7 +58,9 @@ namespace Twilio.Rest.Numbers.V2
                 HttpMethod.Post,
                 Rest.Domain.Numbers,
                 path,
-                postParams: options.GetParams(),
+                
+                contentType: EnumConstants.ContentTypeEnum.JSON,
+                body: options.GetBody(),
                 headerParams: null
             );
         }

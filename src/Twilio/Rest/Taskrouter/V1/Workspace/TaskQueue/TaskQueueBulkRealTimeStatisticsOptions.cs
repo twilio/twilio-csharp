@@ -31,6 +31,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         ///<summary> The unique SID identifier of the Workspace. </summary> 
         public string PathWorkspaceSid { get; }
 
+        
+        public object Body { get; set; }
+
 
         /// <summary> Construct a new CreateTaskQueueBulkRealTimeStatisticsOptions </summary>
         /// <param name="pathWorkspaceSid"> The unique SID identifier of the Workspace. </param>
@@ -40,14 +43,17 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         }
 
         
-        /// <summary> Generate the necessary parameters </summary>
-        public List<KeyValuePair<string, string>> GetParams()
+        /// <summary> Generate the request body </summary>
+        public string GetBody()
         {
-            var p = new List<KeyValuePair<string, string>>();
+            string body = "";
 
-            return p;
+            if (Body != null)
+            {
+                body = TaskQueueBulkRealTimeStatisticsResource.ToJson(Body);
+            }
+            return body;
         }
-
         
 
     }

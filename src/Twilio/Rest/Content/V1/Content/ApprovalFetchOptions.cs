@@ -32,7 +32,7 @@ namespace Twilio.Rest.Content.V1.Content
 
 
 
-        /// <summary> Construct a new FetchApprovalFetchOptions </summary>
+        /// <summary> Construct a new FetchApprovalOptions </summary>
         /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Content resource whose approval information to fetch. </param>
         public FetchApprovalFetchOptions(string pathSid)
         {

@@ -91,7 +91,7 @@ namespace Twilio.Rest.Messaging.V1
         ///<summary> The email address of the contact for the business or organization using the Tollfree number. </summary> 
         public string BusinessContactEmail { get; set; }
 
-        ///<summary> The phone number of the contact for the business or organization using the Tollfree number. </summary> 
+        ///<summary> The E.164 formatted phone number of the contact for the business or organization using the Tollfree number. </summary> 
         public Types.PhoneNumber BusinessContactPhone { get; set; }
 
         ///<summary> An optional external reference ID supplied by customer and echoed back on status retrieval. </summary> 
@@ -389,7 +389,7 @@ namespace Twilio.Rest.Messaging.V1
         ///<summary> The email address of the contact for the business or organization using the Tollfree number. </summary> 
         public string BusinessContactEmail { get; set; }
 
-        ///<summary> The phone number of the contact for the business or organization using the Tollfree number. </summary> 
+        ///<summary> The E.164 formatted phone number of the contact for the business or organization using the Tollfree number. </summary> 
         public Types.PhoneNumber BusinessContactPhone { get; set; }
 
         ///<summary> Describe why the verification is being edited. If the verification was rejected because of a technical issue, such as the website being down, and the issue has been resolved this parameter should be set to something similar to 'Website fixed'. </summary> 

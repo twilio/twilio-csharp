@@ -301,14 +301,6 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonProperty("connect_app_sid")]
         public string ConnectAppSid { get; private set; }
 
-        ///<summary> The date and time in GMT that the resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
-        [JsonProperty("date_created")]
-        public DateTime? DateCreated { get; private set; }
-
-        ///<summary> The date and time in GMT that the resource was last updated specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
-        [JsonProperty("date_updated")]
-        public DateTime? DateUpdated { get; private set; }
-
         ///<summary> The set of permissions that you authorized for the Connect App.  Can be: `get-all` or `post-all`. </summary> 
         [JsonProperty("permissions")]
         public List<AuthorizedConnectAppResource.PermissionEnum> Permissions { get; private set; }

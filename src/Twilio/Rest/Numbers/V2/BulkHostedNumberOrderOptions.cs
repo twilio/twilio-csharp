@@ -28,17 +28,23 @@ namespace Twilio.Rest.Numbers.V2
     public class CreateBulkHostedNumberOrderOptions : IOptions<BulkHostedNumberOrderResource>
     {
         
+        
+        public object Body { get; set; }
+
 
 
         
-        /// <summary> Generate the necessary parameters </summary>
-        public List<KeyValuePair<string, string>> GetParams()
+        /// <summary> Generate the request body </summary>
+        public string GetBody()
         {
-            var p = new List<KeyValuePair<string, string>>();
+            string body = "";
 
-            return p;
+            if (Body != null)
+            {
+                body = BulkHostedNumberOrderResource.ToJson(Body);
+            }
+            return body;
         }
-
         
 
     }

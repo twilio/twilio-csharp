@@ -24,21 +24,27 @@ using Twilio.Converters;
 namespace Twilio.Rest.Numbers.V1
 {
 
-    /// <summary> Allows to create a port in request  </summary>
+    /// <summary> Allows to create a new port in request </summary>
     public class CreatePortingPortInOptions : IOptions<PortingPortInResource>
     {
         
+        
+        public object Body { get; set; }
+
 
 
         
-        /// <summary> Generate the necessary parameters </summary>
-        public List<KeyValuePair<string, string>> GetParams()
+        /// <summary> Generate the request body </summary>
+        public string GetBody()
         {
-            var p = new List<KeyValuePair<string, string>>();
+            string body = "";
 
-            return p;
+            if (Body != null)
+            {
+                body = PortingPortInResource.ToJson(Body);
+            }
+            return body;
         }
-
         
 
     }

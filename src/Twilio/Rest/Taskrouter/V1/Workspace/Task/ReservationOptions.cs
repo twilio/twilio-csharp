@@ -290,6 +290,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         ///<summary> Whether to play a notification beep when the customer joins. </summary> 
         public bool? BeepOnCustomerEntrance { get; set; }
 
+        ///<summary> The jitter buffer size for conference. Can be: `small`, `medium`, `large`, `off`. </summary> 
+        public string JitterBufferSize { get; set; }
+
 
 
         /// <summary> Construct a new UpdateTaskReservationOptions </summary>
@@ -523,6 +526,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
             if (BeepOnCustomerEntrance != null)
             {
                 p.Add(new KeyValuePair<string, string>("BeepOnCustomerEntrance", BeepOnCustomerEntrance.Value.ToString().ToLower()));
+            }
+            if (JitterBufferSize != null)
+            {
+                p.Add(new KeyValuePair<string, string>("JitterBufferSize", JitterBufferSize));
             }
             return p;
         }

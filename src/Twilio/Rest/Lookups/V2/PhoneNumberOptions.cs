@@ -30,7 +30,7 @@ namespace Twilio.Rest.Lookups.V2
         ///<summary> The phone number to lookup in E.164 or national format. Default country code is +1 (North America). </summary> 
         public string PathPhoneNumber { get; }
 
-        ///<summary> A comma-separated list of fields to return. Possible values are caller_name, sim_swap, call_forwarding, live_activity, line_type_intelligence, identity_match, reassigned_number. </summary> 
+        ///<summary> A comma-separated list of fields to return. Possible values are validation, caller_name, sim_swap, call_forwarding, line_status, line_type_intelligence, identity_match, reassigned_number, sms_pumping_risk, phone_number_quality_score. </summary> 
         public string Fields { get; set; }
 
         ///<summary> The [country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) used if the phone number provided is in national format. </summary> 
