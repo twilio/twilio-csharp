@@ -55,6 +55,9 @@ namespace Twilio.Rest.FlexApi.V1
     public class UpdateConfigurationOptions : IOptions<ConfigurationResource>
     {
     
+        
+        public object Body { get; set; }
+
 
 
 
@@ -64,6 +67,10 @@ namespace Twilio.Rest.FlexApi.V1
         {
             var p = new List<KeyValuePair<string, string>>();
 
+            if (Body != null)
+            {
+                p.Add(new KeyValuePair<string, string>("body", Serializers.JsonObject(Body)));
+            }
             return p;
         }
 

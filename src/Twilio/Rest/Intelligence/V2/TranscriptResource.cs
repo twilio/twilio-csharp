@@ -475,7 +475,7 @@ namespace Twilio.Rest.Intelligence.V2
         [JsonProperty("channel")]
         public object Channel { get; private set; }
 
-        ///<summary> Data logging allows Twilio to improve the quality of the speech recognition through using customer data to refine its speech recognition models. </summary> 
+        ///<summary> Data logging allows Twilio to improve the quality of the speech recognition & language understanding services through using customer data to refine, fine tune and evaluate machine learning models. Note: Data logging cannot be activated via API, only via www.twilio.com, as it requires additional consent. </summary> 
         [JsonProperty("data_logging")]
         public bool? DataLogging { get; private set; }
 

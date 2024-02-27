@@ -37,8 +37,8 @@ namespace Twilio.Rest.Trusthub.V1
         
         public ComplianceRegistrationInquiriesResource.BusinessIdentityTypeEnum BusinessIdentityType { get; set; }
 
-        ///<summary> The authority that registered the business </summary> 
-        public string BusinessRegistrationAuthority { get; set; }
+        
+        public ComplianceRegistrationInquiriesResource.BusinessRegistrationAuthorityEnum BusinessRegistrationAuthority { get; set; }
 
         ///<summary> he name of the business or organization using the Tollfree number. </summary> 
         public string BusinessLegalName { get; set; }
@@ -118,6 +118,24 @@ namespace Twilio.Rest.Trusthub.V1
         ///<summary> The verification document to upload </summary> 
         public string File { get; set; }
 
+        ///<summary> The first name of the Individual User. </summary> 
+        public string FirstName { get; set; }
+
+        ///<summary> The last name of the Individual User. </summary> 
+        public string LastName { get; set; }
+
+        ///<summary> The date of birth of the Individual User. </summary> 
+        public string DateOfBirth { get; set; }
+
+        ///<summary> The email address of the Individual User. </summary> 
+        public string IndividualEmail { get; set; }
+
+        ///<summary> The phone number of the Individual User. </summary> 
+        public string IndividualPhone { get; set; }
+
+        ///<summary> Indicates if the inquiry is being started from an ISV embedded component. </summary> 
+        public bool? IsIsvEmbed { get; set; }
+
 
         /// <summary> Construct a new CreateComplianceRegistrationOptions </summary>
         /// <param name="endUserType">  </param>
@@ -148,7 +166,7 @@ namespace Twilio.Rest.Trusthub.V1
             }
             if (BusinessRegistrationAuthority != null)
             {
-                p.Add(new KeyValuePair<string, string>("BusinessRegistrationAuthority", BusinessRegistrationAuthority));
+                p.Add(new KeyValuePair<string, string>("BusinessRegistrationAuthority", BusinessRegistrationAuthority.ToString()));
             }
             if (BusinessLegalName != null)
             {
@@ -253,6 +271,30 @@ namespace Twilio.Rest.Trusthub.V1
             if (File != null)
             {
                 p.Add(new KeyValuePair<string, string>("File", File));
+            }
+            if (FirstName != null)
+            {
+                p.Add(new KeyValuePair<string, string>("FirstName", FirstName));
+            }
+            if (LastName != null)
+            {
+                p.Add(new KeyValuePair<string, string>("LastName", LastName));
+            }
+            if (DateOfBirth != null)
+            {
+                p.Add(new KeyValuePair<string, string>("DateOfBirth", DateOfBirth));
+            }
+            if (IndividualEmail != null)
+            {
+                p.Add(new KeyValuePair<string, string>("IndividualEmail", IndividualEmail));
+            }
+            if (IndividualPhone != null)
+            {
+                p.Add(new KeyValuePair<string, string>("IndividualPhone", IndividualPhone));
+            }
+            if (IsIsvEmbed != null)
+            {
+                p.Add(new KeyValuePair<string, string>("IsIsvEmbed", IsIsvEmbed.Value.ToString().ToLower()));
             }
             return p;
         }

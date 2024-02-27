@@ -127,7 +127,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="businessContactFirstName"> The first name of the contact for the business or organization using the Tollfree number. </param>
         /// <param name="businessContactLastName"> The last name of the contact for the business or organization using the Tollfree number. </param>
         /// <param name="businessContactEmail"> The email address of the contact for the business or organization using the Tollfree number. </param>
-        /// <param name="businessContactPhone"> The phone number of the contact for the business or organization using the Tollfree number. </param>
+        /// <param name="businessContactPhone"> The E.164 formatted phone number of the contact for the business or organization using the Tollfree number. </param>
         /// <param name="externalReferenceId"> An optional external reference ID supplied by customer and echoed back on status retrieval. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of TollfreeVerification </returns>
@@ -184,7 +184,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="businessContactFirstName"> The first name of the contact for the business or organization using the Tollfree number. </param>
         /// <param name="businessContactLastName"> The last name of the contact for the business or organization using the Tollfree number. </param>
         /// <param name="businessContactEmail"> The email address of the contact for the business or organization using the Tollfree number. </param>
-        /// <param name="businessContactPhone"> The phone number of the contact for the business or organization using the Tollfree number. </param>
+        /// <param name="businessContactPhone"> The E.164 formatted phone number of the contact for the business or organization using the Tollfree number. </param>
         /// <param name="externalReferenceId"> An optional external reference ID supplied by customer and echoed back on status retrieval. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TollfreeVerification </returns>
@@ -543,7 +543,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="businessContactFirstName"> The first name of the contact for the business or organization using the Tollfree number. </param>
         /// <param name="businessContactLastName"> The last name of the contact for the business or organization using the Tollfree number. </param>
         /// <param name="businessContactEmail"> The email address of the contact for the business or organization using the Tollfree number. </param>
-        /// <param name="businessContactPhone"> The phone number of the contact for the business or organization using the Tollfree number. </param>
+        /// <param name="businessContactPhone"> The E.164 formatted phone number of the contact for the business or organization using the Tollfree number. </param>
         /// <param name="editReason"> Describe why the verification is being edited. If the verification was rejected because of a technical issue, such as the website being down, and the issue has been resolved this parameter should be set to something similar to 'Website fixed'. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of TollfreeVerification </returns>
@@ -598,7 +598,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="businessContactFirstName"> The first name of the contact for the business or organization using the Tollfree number. </param>
         /// <param name="businessContactLastName"> The last name of the contact for the business or organization using the Tollfree number. </param>
         /// <param name="businessContactEmail"> The email address of the contact for the business or organization using the Tollfree number. </param>
-        /// <param name="businessContactPhone"> The phone number of the contact for the business or organization using the Tollfree number. </param>
+        /// <param name="businessContactPhone"> The E.164 formatted phone number of the contact for the business or organization using the Tollfree number. </param>
         /// <param name="editReason"> Describe why the verification is being edited. If the verification was rejected because of a technical issue, such as the website being down, and the issue has been resolved this parameter should be set to something similar to 'Website fixed'. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TollfreeVerification </returns>
@@ -738,7 +738,7 @@ namespace Twilio.Rest.Messaging.V1
         [JsonProperty("business_contact_email")]
         public string BusinessContactEmail { get; private set; }
 
-        ///<summary> The phone number of the contact for the business or organization using the Tollfree number. </summary> 
+        ///<summary> The E.164 formatted phone number of the contact for the business or organization using the Tollfree number. </summary> 
         [JsonProperty("business_contact_phone")]
         [JsonConverter(typeof(PhoneNumberConverter))]
         public Types.PhoneNumber BusinessContactPhone { get; private set; }
@@ -802,6 +802,10 @@ namespace Twilio.Rest.Messaging.V1
         ///<summary> If a rejected verification is allowed to be edited/resubmitted. Some rejection reasons allow editing and some do not. </summary> 
         [JsonProperty("edit_allowed")]
         public bool? EditAllowed { get; private set; }
+
+        ///<summary> A list of rejection reasons and codes describing why a Tollfree Verification has been rejected. </summary> 
+        [JsonProperty("rejection_reasons")]
+        public List<object> RejectionReasons { get; private set; }
 
         ///<summary> The URLs of the documents associated with the Tollfree Verification resource. </summary> 
         [JsonProperty("resource_links")]

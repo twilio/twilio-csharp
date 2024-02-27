@@ -94,7 +94,7 @@ namespace Twilio.Rest.Lookups.V2
         #endif
         /// <summary> fetch </summary>
         /// <param name="pathPhoneNumber"> The phone number to lookup in E.164 or national format. Default country code is +1 (North America). </param>
-        /// <param name="fields"> A comma-separated list of fields to return. Possible values are caller_name, sim_swap, call_forwarding, live_activity, line_type_intelligence, identity_match, reassigned_number. </param>
+        /// <param name="fields"> A comma-separated list of fields to return. Possible values are validation, caller_name, sim_swap, call_forwarding, line_status, line_type_intelligence, identity_match, reassigned_number, sms_pumping_risk, phone_number_quality_score. </param>
         /// <param name="countryCode"> The [country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) used if the phone number provided is in national format. </param>
         /// <param name="firstName"> User’s first name. This query parameter is only used (optionally) for identity_match package requests. </param>
         /// <param name="lastName"> User’s last name. This query parameter is only used (optionally) for identity_match package requests. </param>
@@ -133,7 +133,7 @@ namespace Twilio.Rest.Lookups.V2
         #if !NET35
         /// <summary> fetch </summary>
         /// <param name="pathPhoneNumber"> The phone number to lookup in E.164 or national format. Default country code is +1 (North America). </param>
-        /// <param name="fields"> A comma-separated list of fields to return. Possible values are caller_name, sim_swap, call_forwarding, live_activity, line_type_intelligence, identity_match, reassigned_number. </param>
+        /// <param name="fields"> A comma-separated list of fields to return. Possible values are validation, caller_name, sim_swap, call_forwarding, line_status, line_type_intelligence, identity_match, reassigned_number, sms_pumping_risk, phone_number_quality_score. </param>
         /// <param name="countryCode"> The [country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) used if the phone number provided is in national format. </param>
         /// <param name="firstName"> User’s first name. This query parameter is only used (optionally) for identity_match package requests. </param>
         /// <param name="lastName"> User’s last name. This query parameter is only used (optionally) for identity_match package requests. </param>
@@ -226,9 +226,9 @@ namespace Twilio.Rest.Lookups.V2
         [JsonProperty("call_forwarding")]
         public object CallForwarding { get; private set; }
 
-        ///<summary> An object that contains live activity information for a mobile phone number. </summary> 
-        [JsonProperty("live_activity")]
-        public object LiveActivity { get; private set; }
+        ///<summary> An object that contains line status information for a mobile phone number. </summary> 
+        [JsonProperty("line_status")]
+        public object LineStatus { get; private set; }
 
         ///<summary> An object that contains line type information including the carrier name, mobile country code, and mobile network code. </summary> 
         [JsonProperty("line_type_intelligence")]

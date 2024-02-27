@@ -91,6 +91,9 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <param name="optInKeywords"> If end users can text in a keyword to start receiving messages from this campaign, those keywords must be provided. This field is required if end users can text in a keyword to start receiving messages from this campaign. Values must be alphanumeric. 255 character maximum. </param>
         /// <param name="optOutKeywords"> End users should be able to text in a keyword to stop receiving messages from this campaign. Those keywords must be provided. This field is required if managing opt out keywords yourself (i.e. not using Twilio's Default or Advanced Opt Out features). Values must be alphanumeric. 255 character maximum. </param>
         /// <param name="helpKeywords"> End users should be able to text in a keyword to receive help. Those keywords must be provided as part of the campaign registration request. This field is required if managing help keywords yourself (i.e. not using Twilio's Default or Advanced Opt Out features). Values must be alphanumeric. 255 character maximum. </param>
+        /// <param name="subscriberOptIn"> A boolean that specifies whether campaign has Subscriber Optin or not. </param>
+        /// <param name="ageGated"> A boolean that specifies whether campaign is age gated or not. </param>
+        /// <param name="directLending"> A boolean that specifies whether campaign allows direct lending or not. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of UsAppToPerson </returns>
         public static UsAppToPersonResource Create(
@@ -108,9 +111,12 @@ namespace Twilio.Rest.Messaging.V1.Service
                                           List<string> optInKeywords = null,
                                           List<string> optOutKeywords = null,
                                           List<string> helpKeywords = null,
+                                          bool? subscriberOptIn = null,
+                                          bool? ageGated = null,
+                                          bool? directLending = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new CreateUsAppToPersonOptions(pathMessagingServiceSid, brandRegistrationSid, description, messageFlow, messageSamples, usAppToPersonUsecase, hasEmbeddedLinks, hasEmbeddedPhone){  OptInMessage = optInMessage, OptOutMessage = optOutMessage, HelpMessage = helpMessage, OptInKeywords = optInKeywords, OptOutKeywords = optOutKeywords, HelpKeywords = helpKeywords };
+            var options = new CreateUsAppToPersonOptions(pathMessagingServiceSid, brandRegistrationSid, description, messageFlow, messageSamples, usAppToPersonUsecase, hasEmbeddedLinks, hasEmbeddedPhone){  OptInMessage = optInMessage, OptOutMessage = optOutMessage, HelpMessage = helpMessage, OptInKeywords = optInKeywords, OptOutKeywords = optOutKeywords, HelpKeywords = helpKeywords, SubscriberOptIn = subscriberOptIn, AgeGated = ageGated, DirectLending = directLending };
             return Create(options, client);
         }
 
@@ -130,6 +136,9 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <param name="optInKeywords"> If end users can text in a keyword to start receiving messages from this campaign, those keywords must be provided. This field is required if end users can text in a keyword to start receiving messages from this campaign. Values must be alphanumeric. 255 character maximum. </param>
         /// <param name="optOutKeywords"> End users should be able to text in a keyword to stop receiving messages from this campaign. Those keywords must be provided. This field is required if managing opt out keywords yourself (i.e. not using Twilio's Default or Advanced Opt Out features). Values must be alphanumeric. 255 character maximum. </param>
         /// <param name="helpKeywords"> End users should be able to text in a keyword to receive help. Those keywords must be provided as part of the campaign registration request. This field is required if managing help keywords yourself (i.e. not using Twilio's Default or Advanced Opt Out features). Values must be alphanumeric. 255 character maximum. </param>
+        /// <param name="subscriberOptIn"> A boolean that specifies whether campaign has Subscriber Optin or not. </param>
+        /// <param name="ageGated"> A boolean that specifies whether campaign is age gated or not. </param>
+        /// <param name="directLending"> A boolean that specifies whether campaign allows direct lending or not. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of UsAppToPerson </returns>
         public static async System.Threading.Tasks.Task<UsAppToPersonResource> CreateAsync(
@@ -147,9 +156,12 @@ namespace Twilio.Rest.Messaging.V1.Service
                                                                                   List<string> optInKeywords = null,
                                                                                   List<string> optOutKeywords = null,
                                                                                   List<string> helpKeywords = null,
+                                                                                  bool? subscriberOptIn = null,
+                                                                                  bool? ageGated = null,
+                                                                                  bool? directLending = null,
                                                                                   ITwilioRestClient client = null)
         {
-        var options = new CreateUsAppToPersonOptions(pathMessagingServiceSid, brandRegistrationSid, description, messageFlow, messageSamples, usAppToPersonUsecase, hasEmbeddedLinks, hasEmbeddedPhone){  OptInMessage = optInMessage, OptOutMessage = optOutMessage, HelpMessage = helpMessage, OptInKeywords = optInKeywords, OptOutKeywords = optOutKeywords, HelpKeywords = helpKeywords };
+        var options = new CreateUsAppToPersonOptions(pathMessagingServiceSid, brandRegistrationSid, description, messageFlow, messageSamples, usAppToPersonUsecase, hasEmbeddedLinks, hasEmbeddedPhone){  OptInMessage = optInMessage, OptOutMessage = optOutMessage, HelpMessage = helpMessage, OptInKeywords = optInKeywords, OptOutKeywords = optOutKeywords, HelpKeywords = helpKeywords, SubscriberOptIn = subscriberOptIn, AgeGated = ageGated, DirectLending = directLending };
             return await CreateAsync(options, client);
         }
         #endif
@@ -421,6 +433,108 @@ namespace Twilio.Rest.Messaging.V1.Service
             return Page<UsAppToPersonResource>.FromJson("compliance", response.Content);
         }
 
+        
+        private static Request BuildUpdateRequest(UpdateUsAppToPersonOptions options, ITwilioRestClient client)
+        {
+            
+            string path = "/v1/Services/{MessagingServiceSid}/Compliance/Usa2p/{Sid}";
+
+            string PathMessagingServiceSid = options.PathMessagingServiceSid;
+            path = path.Replace("{"+"MessagingServiceSid"+"}", PathMessagingServiceSid);
+            string PathSid = options.PathSid;
+            path = path.Replace("{"+"Sid"+"}", PathSid);
+
+            return new Request(
+                HttpMethod.Post,
+                Rest.Domain.Messaging,
+                path,
+                postParams: options.GetParams(),
+                headerParams: null
+            );
+        }
+
+        /// <summary> update </summary>
+        /// <param name="options"> Update UsAppToPerson parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of UsAppToPerson </returns>
+        public static UsAppToPersonResource Update(UpdateUsAppToPersonOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
+        }
+
+        /// <summary> update </summary>
+        /// <param name="options"> Update UsAppToPerson parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of UsAppToPerson </returns>
+        #if !NET35
+        public static async System.Threading.Tasks.Task<UsAppToPersonResource> UpdateAsync(UpdateUsAppToPersonOptions options,
+                                                                                                          ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
+        }
+        #endif
+
+        /// <summary> update </summary>
+        /// <param name="pathMessagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) to update the resource from. </param>
+        /// <param name="pathSid"> The SID of the US A2P Compliance resource to update `QE2c6890da8086d771620e9b13fadeba0b`. </param>
+        /// <param name="hasEmbeddedLinks"> Indicates that this SMS campaign will send messages that contain links. </param>
+        /// <param name="hasEmbeddedPhone"> Indicates that this SMS campaign will send messages that contain phone numbers. </param>
+        /// <param name="messageSamples"> An array of sample message strings, min two and max five. Min length for each sample: 20 chars. Max length for each sample: 1024 chars. </param>
+        /// <param name="messageFlow"> Required for all Campaigns. Details around how a consumer opts-in to their campaign, therefore giving consent to receive their messages. If multiple opt-in methods can be used for the same campaign, they must all be listed. 40 character minimum. 2048 character maximum. </param>
+        /// <param name="description"> A short description of what this SMS campaign does. Min length: 40 characters. Max length: 4096 characters. </param>
+        /// <param name="ageGated"> A boolean that specifies whether campaign requires age gate for federally legal content. </param>
+        /// <param name="directLending"> A boolean that specifies whether campaign allows direct lending or not. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of UsAppToPerson </returns>
+        public static UsAppToPersonResource Update(
+                                          string pathMessagingServiceSid,
+                                          string pathSid,
+                                          bool? hasEmbeddedLinks,
+                                          bool? hasEmbeddedPhone,
+                                          List<string> messageSamples,
+                                          string messageFlow,
+                                          string description,
+                                          bool? ageGated,
+                                          bool? directLending,
+                                          ITwilioRestClient client = null)
+        {
+            var options = new UpdateUsAppToPersonOptions(pathMessagingServiceSid, pathSid, hasEmbeddedLinks, hasEmbeddedPhone, messageSamples, messageFlow, description, ageGated, directLending){  };
+            return Update(options, client);
+        }
+
+        #if !NET35
+        /// <summary> update </summary>
+        /// <param name="pathMessagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) to update the resource from. </param>
+        /// <param name="pathSid"> The SID of the US A2P Compliance resource to update `QE2c6890da8086d771620e9b13fadeba0b`. </param>
+        /// <param name="hasEmbeddedLinks"> Indicates that this SMS campaign will send messages that contain links. </param>
+        /// <param name="hasEmbeddedPhone"> Indicates that this SMS campaign will send messages that contain phone numbers. </param>
+        /// <param name="messageSamples"> An array of sample message strings, min two and max five. Min length for each sample: 20 chars. Max length for each sample: 1024 chars. </param>
+        /// <param name="messageFlow"> Required for all Campaigns. Details around how a consumer opts-in to their campaign, therefore giving consent to receive their messages. If multiple opt-in methods can be used for the same campaign, they must all be listed. 40 character minimum. 2048 character maximum. </param>
+        /// <param name="description"> A short description of what this SMS campaign does. Min length: 40 characters. Max length: 4096 characters. </param>
+        /// <param name="ageGated"> A boolean that specifies whether campaign requires age gate for federally legal content. </param>
+        /// <param name="directLending"> A boolean that specifies whether campaign allows direct lending or not. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of UsAppToPerson </returns>
+        public static async System.Threading.Tasks.Task<UsAppToPersonResource> UpdateAsync(
+                                                                              string pathMessagingServiceSid,
+                                                                              string pathSid,
+                                                                              bool? hasEmbeddedLinks,
+                                                                              bool? hasEmbeddedPhone,
+                                                                              List<string> messageSamples,
+                                                                              string messageFlow,
+                                                                              string description,
+                                                                              bool? ageGated,
+                                                                              bool? directLending,
+                                                                              ITwilioRestClient client = null)
+        {
+            var options = new UpdateUsAppToPersonOptions(pathMessagingServiceSid, pathSid, hasEmbeddedLinks, hasEmbeddedPhone, messageSamples, messageFlow, description, ageGated, directLending){  };
+            return await UpdateAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a UsAppToPersonResource object
@@ -491,6 +605,18 @@ namespace Twilio.Rest.Messaging.V1.Service
         ///<summary> Indicates that this SMS campaign will send messages that contain phone numbers. </summary> 
         [JsonProperty("has_embedded_phone")]
         public bool? HasEmbeddedPhone { get; private set; }
+
+        ///<summary> A boolean that specifies whether campaign has Subscriber Optin or not. </summary> 
+        [JsonProperty("subscriber_opt_in")]
+        public bool? SubscriberOptIn { get; private set; }
+
+        ///<summary> A boolean that specifies whether campaign is age gated or not. </summary> 
+        [JsonProperty("age_gated")]
+        public bool? AgeGated { get; private set; }
+
+        ///<summary> A boolean that specifies whether campaign allows direct lending or not. </summary> 
+        [JsonProperty("direct_lending")]
+        public bool? DirectLending { get; private set; }
 
         ///<summary> Campaign status. Examples: IN_PROGRESS, VERIFIED, FAILED. </summary> 
         [JsonProperty("campaign_status")]

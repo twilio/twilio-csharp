@@ -22,7 +22,7 @@ using Twilio.Constant;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
-
+using Twilio.Types;
 
 
 namespace Twilio.Rest.Content.V1
@@ -30,9 +30,764 @@ namespace Twilio.Rest.Content.V1
     public class ContentResource : Resource
     {
     
+        public class TwilioText
+        {
+            [JsonProperty("body")]
+            private string Body {get; set;}
+            public TwilioText() { }
+            public class Builder
+            {
+                private TwilioText _twilioText = new TwilioText();
+                public Builder()
+                {
+                }
+                public Builder WithBody(string body)
+                {
+                    _twilioText.Body= body;
+                    return this;
+                }
+                public TwilioText Build()
+                {
+                    return _twilioText;
+                }
+            }
+        }
+        public class TwilioMedia
+        {
+            [JsonProperty("body")]
+            private string Body {get; set;}
+            [JsonProperty("media")]
+            private List<string> Media {get; set;}
+            public TwilioMedia() { }
+            public class Builder
+            {
+                private TwilioMedia _twilioMedia = new TwilioMedia();
+                public Builder()
+                {
+                }
+                public Builder WithBody(string body)
+                {
+                    _twilioMedia.Body= body;
+                    return this;
+                }
+                public Builder WithMedia(List<string> media)
+                {
+                    _twilioMedia.Media= media;
+                    return this;
+                }
+                public TwilioMedia Build()
+                {
+                    return _twilioMedia;
+                }
+            }
+        }
+        public class TwilioLocation
+        {
+            [JsonProperty("latitude")]
+            private decimal? Latitude {get; set;}
+            [JsonProperty("longitude")]
+            private decimal? Longitude {get; set;}
+            [JsonProperty("label")]
+            private string Label {get; set;}
+            public TwilioLocation() { }
+            public class Builder
+            {
+                private TwilioLocation _twilioLocation = new TwilioLocation();
+                public Builder()
+                {
+                }
+                public Builder WithLatitude(decimal? latitude)
+                {
+                    _twilioLocation.Latitude= latitude;
+                    return this;
+                }
+                public Builder WithLongitude(decimal? longitude)
+                {
+                    _twilioLocation.Longitude= longitude;
+                    return this;
+                }
+                public Builder WithLabel(string label)
+                {
+                    _twilioLocation.Label= label;
+                    return this;
+                }
+                public TwilioLocation Build()
+                {
+                    return _twilioLocation;
+                }
+            }
+        }
+        public class ListItem
+        {
+            [JsonProperty("id")]
+            private string Id {get; set;}
+            [JsonProperty("item")]
+            private string Item {get; set;}
+            [JsonProperty("description")]
+            private string Description {get; set;}
+            public ListItem() { }
+            public class Builder
+            {
+                private ListItem _listItem = new ListItem();
+                public Builder()
+                {
+                }
+                public Builder WithId(string id)
+                {
+                    _listItem.Id= id;
+                    return this;
+                }
+                public Builder WithItem(string item)
+                {
+                    _listItem.Item= item;
+                    return this;
+                }
+                public Builder WithDescription(string description)
+                {
+                    _listItem.Description= description;
+                    return this;
+                }
+                public ListItem Build()
+                {
+                    return _listItem;
+                }
+            }
+        }
+        public class TwilioListPicker
+        {
+            [JsonProperty("body")]
+            private string Body {get; set;}
+            [JsonProperty("button")]
+            private string Button {get; set;}
+            [JsonProperty("items")]
+            private List<ListItem> Items {get; set;}
+            public TwilioListPicker() { }
+            public class Builder
+            {
+                private TwilioListPicker _twilioListPicker = new TwilioListPicker();
+                public Builder()
+                {
+                }
+                public Builder WithBody(string body)
+                {
+                    _twilioListPicker.Body= body;
+                    return this;
+                }
+                public Builder WithButton(string button)
+                {
+                    _twilioListPicker.Button= button;
+                    return this;
+                }
+                public Builder WithItems(List<ListItem> items)
+                {
+                    _twilioListPicker.Items= items;
+                    return this;
+                }
+                public TwilioListPicker Build()
+                {
+                    return _twilioListPicker;
+                }
+            }
+        }
+        public class CallToActionAction
+        {
+            [JsonConverter(typeof(StringEnumConverter))]
+            [JsonProperty("type")]
+            private ContentResource.CallToActionActionType Type {get; set;}
+            [JsonProperty("title")]
+            private string Title {get; set;}
+            [JsonProperty("url")]
+            private string Url {get; set;}
+            [JsonProperty("phone")]
+            private string Phone {get; set;}
+            [JsonProperty("id")]
+            private string Id {get; set;}
+            public CallToActionAction() { }
+            public class Builder
+            {
+                private CallToActionAction _callToActionAction = new CallToActionAction();
+                public Builder()
+                {
+                }
+                public Builder WithType(ContentResource.CallToActionActionType type)
+                {
+                    _callToActionAction.Type= type;
+                    return this;
+                }
+                public Builder WithTitle(string title)
+                {
+                    _callToActionAction.Title= title;
+                    return this;
+                }
+                public Builder WithUrl(string url)
+                {
+                    _callToActionAction.Url= url;
+                    return this;
+                }
+                public Builder WithPhone(string phone)
+                {
+                    _callToActionAction.Phone= phone;
+                    return this;
+                }
+                public Builder WithId(string id)
+                {
+                    _callToActionAction.Id= id;
+                    return this;
+                }
+                public CallToActionAction Build()
+                {
+                    return _callToActionAction;
+                }
+            }
+        }
+        public class TwilioCallToAction
+        {
+            [JsonProperty("body")]
+            private string Body {get; set;}
+            [JsonProperty("actions")]
+            private List<CallToActionAction> Actions {get; set;}
+            public TwilioCallToAction() { }
+            public class Builder
+            {
+                private TwilioCallToAction _twilioCallToAction = new TwilioCallToAction();
+                public Builder()
+                {
+                }
+                public Builder WithBody(string body)
+                {
+                    _twilioCallToAction.Body= body;
+                    return this;
+                }
+                public Builder WithActions(List<CallToActionAction> actions)
+                {
+                    _twilioCallToAction.Actions= actions;
+                    return this;
+                }
+                public TwilioCallToAction Build()
+                {
+                    return _twilioCallToAction;
+                }
+            }
+        }
+        public class QuickReplyAction
+        {
+            [JsonConverter(typeof(StringEnumConverter))]
+            [JsonProperty("type")]
+            private ContentResource.QuickReplyActionType Type {get; set;}
+            [JsonProperty("title")]
+            private string Title {get; set;}
+            [JsonProperty("id")]
+            private string Id {get; set;}
+            public QuickReplyAction() { }
+            public class Builder
+            {
+                private QuickReplyAction _quickReplyAction = new QuickReplyAction();
+                public Builder()
+                {
+                }
+                public Builder WithType(ContentResource.QuickReplyActionType type)
+                {
+                    _quickReplyAction.Type= type;
+                    return this;
+                }
+                public Builder WithTitle(string title)
+                {
+                    _quickReplyAction.Title= title;
+                    return this;
+                }
+                public Builder WithId(string id)
+                {
+                    _quickReplyAction.Id= id;
+                    return this;
+                }
+                public QuickReplyAction Build()
+                {
+                    return _quickReplyAction;
+                }
+            }
+        }
+        public class TwilioQuickReply
+        {
+            [JsonProperty("body")]
+            private string Body {get; set;}
+            [JsonProperty("actions")]
+            private List<QuickReplyAction> Actions {get; set;}
+            public TwilioQuickReply() { }
+            public class Builder
+            {
+                private TwilioQuickReply _twilioQuickReply = new TwilioQuickReply();
+                public Builder()
+                {
+                }
+                public Builder WithBody(string body)
+                {
+                    _twilioQuickReply.Body= body;
+                    return this;
+                }
+                public Builder WithActions(List<QuickReplyAction> actions)
+                {
+                    _twilioQuickReply.Actions= actions;
+                    return this;
+                }
+                public TwilioQuickReply Build()
+                {
+                    return _twilioQuickReply;
+                }
+            }
+        }
+        public class CardAction
+        {
+            [JsonConverter(typeof(StringEnumConverter))]
+            [JsonProperty("type")]
+            private ContentResource.CardActionType Type {get; set;}
+            [JsonProperty("title")]
+            private string Title {get; set;}
+            [JsonProperty("url")]
+            private string Url {get; set;}
+            [JsonProperty("phone")]
+            private string Phone {get; set;}
+            [JsonProperty("id")]
+            private string Id {get; set;}
+            public CardAction() { }
+            public class Builder
+            {
+                private CardAction _cardAction = new CardAction();
+                public Builder()
+                {
+                }
+                public Builder WithType(ContentResource.CardActionType type)
+                {
+                    _cardAction.Type= type;
+                    return this;
+                }
+                public Builder WithTitle(string title)
+                {
+                    _cardAction.Title= title;
+                    return this;
+                }
+                public Builder WithUrl(string url)
+                {
+                    _cardAction.Url= url;
+                    return this;
+                }
+                public Builder WithPhone(string phone)
+                {
+                    _cardAction.Phone= phone;
+                    return this;
+                }
+                public Builder WithId(string id)
+                {
+                    _cardAction.Id= id;
+                    return this;
+                }
+                public CardAction Build()
+                {
+                    return _cardAction;
+                }
+            }
+        }
+        public class TwilioCard
+        {
+            [JsonProperty("title")]
+            private string Title {get; set;}
+            [JsonProperty("subtitle")]
+            private string Subtitle {get; set;}
+            [JsonProperty("media")]
+            private List<string> Media {get; set;}
+            [JsonProperty("actions")]
+            private List<CardAction> Actions {get; set;}
+            public TwilioCard() { }
+            public class Builder
+            {
+                private TwilioCard _twilioCard = new TwilioCard();
+                public Builder()
+                {
+                }
+                public Builder WithTitle(string title)
+                {
+                    _twilioCard.Title= title;
+                    return this;
+                }
+                public Builder WithSubtitle(string subtitle)
+                {
+                    _twilioCard.Subtitle= subtitle;
+                    return this;
+                }
+                public Builder WithMedia(List<string> media)
+                {
+                    _twilioCard.Media= media;
+                    return this;
+                }
+                public Builder WithActions(List<CardAction> actions)
+                {
+                    _twilioCard.Actions= actions;
+                    return this;
+                }
+                public TwilioCard Build()
+                {
+                    return _twilioCard;
+                }
+            }
+        }
+        public class WhatsappCard
+        {
+            [JsonProperty("body")]
+            private string Body {get; set;}
+            [JsonProperty("footer")]
+            private string Footer {get; set;}
+            [JsonProperty("media")]
+            private List<string> Media {get; set;}
+            [JsonProperty("header_text")]
+            private string HeaderText {get; set;}
+            [JsonProperty("actions")]
+            private List<CardAction> Actions {get; set;}
+            public WhatsappCard() { }
+            public class Builder
+            {
+                private WhatsappCard _whatsappCard = new WhatsappCard();
+                public Builder()
+                {
+                }
+                public Builder WithBody(string body)
+                {
+                    _whatsappCard.Body= body;
+                    return this;
+                }
+                public Builder WithFooter(string footer)
+                {
+                    _whatsappCard.Footer= footer;
+                    return this;
+                }
+                public Builder WithMedia(List<string> media)
+                {
+                    _whatsappCard.Media= media;
+                    return this;
+                }
+                public Builder WithHeaderText(string headerText)
+                {
+                    _whatsappCard.HeaderText= headerText;
+                    return this;
+                }
+                public Builder WithActions(List<CardAction> actions)
+                {
+                    _whatsappCard.Actions= actions;
+                    return this;
+                }
+                public WhatsappCard Build()
+                {
+                    return _whatsappCard;
+                }
+            }
+        }
+        public class AuthenticationAction
+        {
+            [JsonConverter(typeof(StringEnumConverter))]
+            [JsonProperty("type")]
+            private ContentResource.AuthenticationActionType Type {get; set;}
+            [JsonProperty("copy_code_text")]
+            private string CopyCodeText {get; set;}
+            public AuthenticationAction() { }
+            public class Builder
+            {
+                private AuthenticationAction _authenticationAction = new AuthenticationAction();
+                public Builder()
+                {
+                }
+                public Builder WithType(ContentResource.AuthenticationActionType type)
+                {
+                    _authenticationAction.Type= type;
+                    return this;
+                }
+                public Builder WithCopyCodeText(string copyCodeText)
+                {
+                    _authenticationAction.CopyCodeText= copyCodeText;
+                    return this;
+                }
+                public AuthenticationAction Build()
+                {
+                    return _authenticationAction;
+                }
+            }
+        }
+        public class WhatsappAuthentication
+        {
+            [JsonProperty("add_security_recommendation")]
+            private bool? AddSecurityRecommendation {get; set;}
+            [JsonProperty("code_expiration_minutes")]
+            private decimal? CodeExpirationMinutes {get; set;}
+            [JsonProperty("actions")]
+            private List<AuthenticationAction> Actions {get; set;}
+            public WhatsappAuthentication() { }
+            public class Builder
+            {
+                private WhatsappAuthentication _whatsappAuthentication = new WhatsappAuthentication();
+                public Builder()
+                {
+                }
+                public Builder WithAddSecurityRecommendation(bool? addSecurityRecommendation)
+                {
+                    _whatsappAuthentication.AddSecurityRecommendation= addSecurityRecommendation;
+                    return this;
+                }
+                public Builder WithCodeExpirationMinutes(decimal? codeExpirationMinutes)
+                {
+                    _whatsappAuthentication.CodeExpirationMinutes= codeExpirationMinutes;
+                    return this;
+                }
+                public Builder WithActions(List<AuthenticationAction> actions)
+                {
+                    _whatsappAuthentication.Actions= actions;
+                    return this;
+                }
+                public WhatsappAuthentication Build()
+                {
+                    return _whatsappAuthentication;
+                }
+            }
+        }
+        public class Types
+        {
+            [JsonProperty("twilio/text")]
+            private TwilioText TwilioText {get; set;}
+            [JsonProperty("twilio/media")]
+            private TwilioMedia TwilioMedia {get; set;}
+            [JsonProperty("twilio/location")]
+            private TwilioLocation TwilioLocation {get; set;}
+            [JsonProperty("twilio/list-picker")]
+            private TwilioListPicker TwilioListPicker {get; set;}
+            [JsonProperty("twilio/call-to-action")]
+            private TwilioCallToAction TwilioCallToAction {get; set;}
+            [JsonProperty("twilio/quick-reply")]
+            private TwilioQuickReply TwilioQuickReply {get; set;}
+            [JsonProperty("twilio/card")]
+            private TwilioCard TwilioCard {get; set;}
+            [JsonProperty("whatsapp/card")]
+            private WhatsappCard WhatsappCard {get; set;}
+            [JsonProperty("whatsapp/authentication")]
+            private WhatsappAuthentication WhatsappAuthentication {get; set;}
+            public Types() { }
+            public class Builder
+            {
+                private Types _types = new Types();
+                public Builder()
+                {
+                }
+                public Builder WithTwilioText(TwilioText twilioText)
+                {
+                    _types.TwilioText= twilioText;
+                    return this;
+                }
+                public Builder WithTwilioMedia(TwilioMedia twilioMedia)
+                {
+                    _types.TwilioMedia= twilioMedia;
+                    return this;
+                }
+                public Builder WithTwilioLocation(TwilioLocation twilioLocation)
+                {
+                    _types.TwilioLocation= twilioLocation;
+                    return this;
+                }
+                public Builder WithTwilioListPicker(TwilioListPicker twilioListPicker)
+                {
+                    _types.TwilioListPicker= twilioListPicker;
+                    return this;
+                }
+                public Builder WithTwilioCallToAction(TwilioCallToAction twilioCallToAction)
+                {
+                    _types.TwilioCallToAction= twilioCallToAction;
+                    return this;
+                }
+                public Builder WithTwilioQuickReply(TwilioQuickReply twilioQuickReply)
+                {
+                    _types.TwilioQuickReply= twilioQuickReply;
+                    return this;
+                }
+                public Builder WithTwilioCard(TwilioCard twilioCard)
+                {
+                    _types.TwilioCard= twilioCard;
+                    return this;
+                }
+                public Builder WithWhatsappCard(WhatsappCard whatsappCard)
+                {
+                    _types.WhatsappCard= whatsappCard;
+                    return this;
+                }
+                public Builder WithWhatsappAuthentication(WhatsappAuthentication whatsappAuthentication)
+                {
+                    _types.WhatsappAuthentication= whatsappAuthentication;
+                    return this;
+                }
+                public Types Build()
+                {
+                    return _types;
+                }
+            }
+        }
+        public class ContentCreateRequest
+        {
+            [JsonProperty("friendly_name")]
+            private string FriendlyName {get; set;}
+            [JsonProperty("variables")]
+            private Dictionary<string, string> Variables {get; set;}
+            [JsonProperty("language")]
+            private string Language {get; set;}
+            [JsonProperty("types")]
+            private Types Types {get; set;}
+            public ContentCreateRequest() { }
+            public class Builder
+            {
+                private ContentCreateRequest _contentCreateRequest = new ContentCreateRequest();
+                public Builder()
+                {
+                }
+                public Builder WithFriendlyName(string friendlyName)
+                {
+                    _contentCreateRequest.FriendlyName= friendlyName;
+                    return this;
+                }
+                public Builder WithVariables(Dictionary<string, string> variables)
+                {
+                    _contentCreateRequest.Variables= variables;
+                    return this;
+                }
+                public Builder WithLanguage(string language)
+                {
+                    _contentCreateRequest.Language= language;
+                    return this;
+                }
+                public Builder WithTypes(Types types)
+                {
+                    _contentCreateRequest.Types= types;
+                    return this;
+                }
+                public ContentCreateRequest Build()
+                {
+                    return _contentCreateRequest;
+                }
+            }
+        }
 
     
+        [JsonConverter(typeof(StringEnumConverter))]
+        public sealed class AuthenticationActionType : StringEnum
+        {
+            private AuthenticationActionType(string value) : base(value) {}
+            public AuthenticationActionType() {}
+            public static implicit operator AuthenticationActionType(string value)
+            {
+                return new AuthenticationActionType(value);
+            }
+            public static readonly AuthenticationActionType CopyCode = new AuthenticationActionType("COPY_CODE");
 
+        }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public sealed class CardActionType : StringEnum
+        {
+            private CardActionType(string value) : base(value) {}
+            public CardActionType() {}
+            public static implicit operator CardActionType(string value)
+            {
+                return new CardActionType(value);
+            }
+            public static readonly CardActionType Url = new CardActionType("URL");
+            public static readonly CardActionType PhoneNumber = new CardActionType("PHONE_NUMBER");
+            public static readonly CardActionType QuickReply = new CardActionType("QUICK_REPLY");
+
+        }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public sealed class QuickReplyActionType : StringEnum
+        {
+            private QuickReplyActionType(string value) : base(value) {}
+            public QuickReplyActionType() {}
+            public static implicit operator QuickReplyActionType(string value)
+            {
+                return new QuickReplyActionType(value);
+            }
+            public static readonly QuickReplyActionType QuickReply = new QuickReplyActionType("QUICK_REPLY");
+
+        }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public sealed class CallToActionActionType : StringEnum
+        {
+            private CallToActionActionType(string value) : base(value) {}
+            public CallToActionActionType() {}
+            public static implicit operator CallToActionActionType(string value)
+            {
+                return new CallToActionActionType(value);
+            }
+            public static readonly CallToActionActionType Url = new CallToActionActionType("URL");
+            public static readonly CallToActionActionType PhoneNumber = new CallToActionActionType("PHONE_NUMBER");
+
+        }
+
+        
+        private static Request BuildCreateRequest(CreateContentOptions options, ITwilioRestClient client)
+        {
+            
+            string path = "/v1/Content";
+
+
+            return new Request(
+                HttpMethod.Post,
+                Rest.Domain.Content,
+                path,
+                
+                contentType: EnumConstants.ContentTypeEnum.JSON,
+                body: options.GetBody(),
+                headerParams: null
+            );
+        }
+
+        /// <summary> Create a Content resource </summary>
+        /// <param name="options"> Create Content parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Content </returns>
+        public static ContentResource Create(CreateContentOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            return FromJson(response.Content);
+        }
+
+        #if !NET35
+        /// <summary> Create a Content resource </summary>
+        /// <param name="options"> Create Content parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Content </returns>
+        public static async System.Threading.Tasks.Task<ContentResource> CreateAsync(CreateContentOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            return FromJson(response.Content);
+        }
+        #endif
+
+        /// <summary> Create a Content resource </summary>
+        /// <param name="contentCreateRequest">  </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Content </returns>
+        public static ContentResource Create(
+                                          ContentResource.ContentCreateRequest contentCreateRequest,
+                                          ITwilioRestClient client = null)
+        {
+            var options = new CreateContentOptions(contentCreateRequest){  };
+            return Create(options, client);
+        }
+
+        #if !NET35
+        /// <summary> Create a Content resource </summary>
+        /// <param name="contentCreateRequest">  </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Content </returns>
+        public static async System.Threading.Tasks.Task<ContentResource> CreateAsync(
+                                                                                  ContentResource.ContentCreateRequest contentCreateRequest,
+                                                                                  ITwilioRestClient client = null)
+        {
+        var options = new CreateContentOptions(contentCreateRequest){  };
+            return await CreateAsync(options, client);
+        }
+        #endif
         
         /// <summary> Deletes a Content resource </summary>
         /// <param name="options"> Delete Content parameters </param>
@@ -351,7 +1106,7 @@ namespace Twilio.Rest.Content.V1
 
         ///<summary> The [Content types](https://www.twilio.com/docs/content-api/content-types-overview) (e.g. twilio/text) for this Content resource. </summary> 
         [JsonProperty("types")]
-        public object Types { get; private set; }
+        public object _Types { get; private set; }
 
         ///<summary> The URL of the resource, relative to `https://content.twilio.com`. </summary> 
         [JsonProperty("url")]

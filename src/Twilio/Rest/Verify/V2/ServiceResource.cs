@@ -92,6 +92,7 @@ namespace Twilio.Rest.Verify.V2
         /// <param name="totpCodeLength"> Optional configuration for the TOTP factors. Number of digits for generated TOTP codes. Must be between 3 and 8, inclusive. Defaults to 6 </param>
         /// <param name="totpSkew"> Optional configuration for the TOTP factors. The number of time-steps, past and future, that are valid for validation of TOTP codes. Must be between 0 and 2, inclusive. Defaults to 1 </param>
         /// <param name="defaultTemplateSid"> The default message [template](https://www.twilio.com/docs/verify/api/templates). Will be used for all SMS verifications unless explicitly overriden. SMS channel only. </param>
+        /// <param name="verifyEventSubscriptionEnabled"> Whether to allow verifications from the service to reach the stream-events sinks if configured </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns>
         public static ServiceResource Create(
@@ -112,9 +113,10 @@ namespace Twilio.Rest.Verify.V2
                                           int? totpCodeLength = null,
                                           int? totpSkew = null,
                                           string defaultTemplateSid = null,
+                                          bool? verifyEventSubscriptionEnabled = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new CreateServiceOptions(friendlyName){  CodeLength = codeLength, LookupEnabled = lookupEnabled, SkipSmsToLandlines = skipSmsToLandlines, DtmfInputRequired = dtmfInputRequired, TtsName = ttsName, Psd2Enabled = psd2Enabled, DoNotShareWarningEnabled = doNotShareWarningEnabled, CustomCodeEnabled = customCodeEnabled, PushIncludeDate = pushIncludeDate, PushApnCredentialSid = pushApnCredentialSid, PushFcmCredentialSid = pushFcmCredentialSid, TotpIssuer = totpIssuer, TotpTimeStep = totpTimeStep, TotpCodeLength = totpCodeLength, TotpSkew = totpSkew, DefaultTemplateSid = defaultTemplateSid };
+            var options = new CreateServiceOptions(friendlyName){  CodeLength = codeLength, LookupEnabled = lookupEnabled, SkipSmsToLandlines = skipSmsToLandlines, DtmfInputRequired = dtmfInputRequired, TtsName = ttsName, Psd2Enabled = psd2Enabled, DoNotShareWarningEnabled = doNotShareWarningEnabled, CustomCodeEnabled = customCodeEnabled, PushIncludeDate = pushIncludeDate, PushApnCredentialSid = pushApnCredentialSid, PushFcmCredentialSid = pushFcmCredentialSid, TotpIssuer = totpIssuer, TotpTimeStep = totpTimeStep, TotpCodeLength = totpCodeLength, TotpSkew = totpSkew, DefaultTemplateSid = defaultTemplateSid, VerifyEventSubscriptionEnabled = verifyEventSubscriptionEnabled };
             return Create(options, client);
         }
 
@@ -137,6 +139,7 @@ namespace Twilio.Rest.Verify.V2
         /// <param name="totpCodeLength"> Optional configuration for the TOTP factors. Number of digits for generated TOTP codes. Must be between 3 and 8, inclusive. Defaults to 6 </param>
         /// <param name="totpSkew"> Optional configuration for the TOTP factors. The number of time-steps, past and future, that are valid for validation of TOTP codes. Must be between 0 and 2, inclusive. Defaults to 1 </param>
         /// <param name="defaultTemplateSid"> The default message [template](https://www.twilio.com/docs/verify/api/templates). Will be used for all SMS verifications unless explicitly overriden. SMS channel only. </param>
+        /// <param name="verifyEventSubscriptionEnabled"> Whether to allow verifications from the service to reach the stream-events sinks if configured </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns>
         public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(
@@ -157,9 +160,10 @@ namespace Twilio.Rest.Verify.V2
                                                                                   int? totpCodeLength = null,
                                                                                   int? totpSkew = null,
                                                                                   string defaultTemplateSid = null,
+                                                                                  bool? verifyEventSubscriptionEnabled = null,
                                                                                   ITwilioRestClient client = null)
         {
-        var options = new CreateServiceOptions(friendlyName){  CodeLength = codeLength, LookupEnabled = lookupEnabled, SkipSmsToLandlines = skipSmsToLandlines, DtmfInputRequired = dtmfInputRequired, TtsName = ttsName, Psd2Enabled = psd2Enabled, DoNotShareWarningEnabled = doNotShareWarningEnabled, CustomCodeEnabled = customCodeEnabled, PushIncludeDate = pushIncludeDate, PushApnCredentialSid = pushApnCredentialSid, PushFcmCredentialSid = pushFcmCredentialSid, TotpIssuer = totpIssuer, TotpTimeStep = totpTimeStep, TotpCodeLength = totpCodeLength, TotpSkew = totpSkew, DefaultTemplateSid = defaultTemplateSid };
+        var options = new CreateServiceOptions(friendlyName){  CodeLength = codeLength, LookupEnabled = lookupEnabled, SkipSmsToLandlines = skipSmsToLandlines, DtmfInputRequired = dtmfInputRequired, TtsName = ttsName, Psd2Enabled = psd2Enabled, DoNotShareWarningEnabled = doNotShareWarningEnabled, CustomCodeEnabled = customCodeEnabled, PushIncludeDate = pushIncludeDate, PushApnCredentialSid = pushApnCredentialSid, PushFcmCredentialSid = pushFcmCredentialSid, TotpIssuer = totpIssuer, TotpTimeStep = totpTimeStep, TotpCodeLength = totpCodeLength, TotpSkew = totpSkew, DefaultTemplateSid = defaultTemplateSid, VerifyEventSubscriptionEnabled = verifyEventSubscriptionEnabled };
             return await CreateAsync(options, client);
         }
         #endif
@@ -478,6 +482,7 @@ namespace Twilio.Rest.Verify.V2
         /// <param name="totpCodeLength"> Optional configuration for the TOTP factors. Number of digits for generated TOTP codes. Must be between 3 and 8, inclusive. Defaults to 6 </param>
         /// <param name="totpSkew"> Optional configuration for the TOTP factors. The number of time-steps, past and future, that are valid for validation of TOTP codes. Must be between 0 and 2, inclusive. Defaults to 1 </param>
         /// <param name="defaultTemplateSid"> The default message [template](https://www.twilio.com/docs/verify/api/templates). Will be used for all SMS verifications unless explicitly overriden. SMS channel only. </param>
+        /// <param name="verifyEventSubscriptionEnabled"> Whether to allow verifications from the service to reach the stream-events sinks if configured </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns>
         public static ServiceResource Update(
@@ -499,9 +504,10 @@ namespace Twilio.Rest.Verify.V2
                                           int? totpCodeLength = null,
                                           int? totpSkew = null,
                                           string defaultTemplateSid = null,
+                                          bool? verifyEventSubscriptionEnabled = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new UpdateServiceOptions(pathSid){ FriendlyName = friendlyName, CodeLength = codeLength, LookupEnabled = lookupEnabled, SkipSmsToLandlines = skipSmsToLandlines, DtmfInputRequired = dtmfInputRequired, TtsName = ttsName, Psd2Enabled = psd2Enabled, DoNotShareWarningEnabled = doNotShareWarningEnabled, CustomCodeEnabled = customCodeEnabled, PushIncludeDate = pushIncludeDate, PushApnCredentialSid = pushApnCredentialSid, PushFcmCredentialSid = pushFcmCredentialSid, TotpIssuer = totpIssuer, TotpTimeStep = totpTimeStep, TotpCodeLength = totpCodeLength, TotpSkew = totpSkew, DefaultTemplateSid = defaultTemplateSid };
+            var options = new UpdateServiceOptions(pathSid){ FriendlyName = friendlyName, CodeLength = codeLength, LookupEnabled = lookupEnabled, SkipSmsToLandlines = skipSmsToLandlines, DtmfInputRequired = dtmfInputRequired, TtsName = ttsName, Psd2Enabled = psd2Enabled, DoNotShareWarningEnabled = doNotShareWarningEnabled, CustomCodeEnabled = customCodeEnabled, PushIncludeDate = pushIncludeDate, PushApnCredentialSid = pushApnCredentialSid, PushFcmCredentialSid = pushFcmCredentialSid, TotpIssuer = totpIssuer, TotpTimeStep = totpTimeStep, TotpCodeLength = totpCodeLength, TotpSkew = totpSkew, DefaultTemplateSid = defaultTemplateSid, VerifyEventSubscriptionEnabled = verifyEventSubscriptionEnabled };
             return Update(options, client);
         }
 
@@ -525,6 +531,7 @@ namespace Twilio.Rest.Verify.V2
         /// <param name="totpCodeLength"> Optional configuration for the TOTP factors. Number of digits for generated TOTP codes. Must be between 3 and 8, inclusive. Defaults to 6 </param>
         /// <param name="totpSkew"> Optional configuration for the TOTP factors. The number of time-steps, past and future, that are valid for validation of TOTP codes. Must be between 0 and 2, inclusive. Defaults to 1 </param>
         /// <param name="defaultTemplateSid"> The default message [template](https://www.twilio.com/docs/verify/api/templates). Will be used for all SMS verifications unless explicitly overriden. SMS channel only. </param>
+        /// <param name="verifyEventSubscriptionEnabled"> Whether to allow verifications from the service to reach the stream-events sinks if configured </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns>
         public static async System.Threading.Tasks.Task<ServiceResource> UpdateAsync(
@@ -546,9 +553,10 @@ namespace Twilio.Rest.Verify.V2
                                                                               int? totpCodeLength = null,
                                                                               int? totpSkew = null,
                                                                               string defaultTemplateSid = null,
+                                                                              bool? verifyEventSubscriptionEnabled = null,
                                                                               ITwilioRestClient client = null)
         {
-            var options = new UpdateServiceOptions(pathSid){ FriendlyName = friendlyName, CodeLength = codeLength, LookupEnabled = lookupEnabled, SkipSmsToLandlines = skipSmsToLandlines, DtmfInputRequired = dtmfInputRequired, TtsName = ttsName, Psd2Enabled = psd2Enabled, DoNotShareWarningEnabled = doNotShareWarningEnabled, CustomCodeEnabled = customCodeEnabled, PushIncludeDate = pushIncludeDate, PushApnCredentialSid = pushApnCredentialSid, PushFcmCredentialSid = pushFcmCredentialSid, TotpIssuer = totpIssuer, TotpTimeStep = totpTimeStep, TotpCodeLength = totpCodeLength, TotpSkew = totpSkew, DefaultTemplateSid = defaultTemplateSid };
+            var options = new UpdateServiceOptions(pathSid){ FriendlyName = friendlyName, CodeLength = codeLength, LookupEnabled = lookupEnabled, SkipSmsToLandlines = skipSmsToLandlines, DtmfInputRequired = dtmfInputRequired, TtsName = ttsName, Psd2Enabled = psd2Enabled, DoNotShareWarningEnabled = doNotShareWarningEnabled, CustomCodeEnabled = customCodeEnabled, PushIncludeDate = pushIncludeDate, PushApnCredentialSid = pushApnCredentialSid, PushFcmCredentialSid = pushFcmCredentialSid, TotpIssuer = totpIssuer, TotpTimeStep = totpTimeStep, TotpCodeLength = totpCodeLength, TotpSkew = totpSkew, DefaultTemplateSid = defaultTemplateSid, VerifyEventSubscriptionEnabled = verifyEventSubscriptionEnabled };
             return await UpdateAsync(options, client);
         }
         #endif
@@ -642,6 +650,10 @@ namespace Twilio.Rest.Verify.V2
         ///<summary> The default_template_sid </summary> 
         [JsonProperty("default_template_sid")]
         public string DefaultTemplateSid { get; private set; }
+
+        ///<summary> Whether to allow verifications from the service to reach the stream-events sinks if configured </summary> 
+        [JsonProperty("verify_event_subscription_enabled")]
+        public bool? VerifyEventSubscriptionEnabled { get; private set; }
 
         ///<summary> The date and time in GMT when the resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_created")]

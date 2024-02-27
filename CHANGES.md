@@ -1,6 +1,41 @@
 twilio-csharp Changelog
 =======================
 
+[2024-02-27] Version 7.0.0
+--------------------------
+**Note:** This release contains breaking changes, check our [upgrade guide](./UPGRADE.md#2024-02-XX-6xx-to-7xx) for detailed migration notes.
+
+**Library - Chore**
+- [PR #730](https://github.com/twilio/twilio-csharp/pull/730): add VersionSuffix to csproj file. Thanks to [@sbansla](https://github.com/sbansla)!
+- [PR #727](https://github.com/twilio/twilio-csharp/pull/727): cluster tests enabled. Thanks to [@sbansla](https://github.com/sbansla)!
+- [PR #725](https://github.com/twilio/twilio-csharp/pull/725): corrected repo name in code-signing workflow. Thanks to [@tiwarishubham635](https://github.com/tiwarishubham635)!
+- [PR #722](https://github.com/twilio/twilio-csharp/pull/722): corrected nuget push command. Thanks to [@tiwarishubham635](https://github.com/tiwarishubham635)!
+
+**Library - Feature**
+- [PR #728](https://github.com/twilio/twilio-csharp/pull/728): MVR Ready. Thanks to [@sbansla](https://github.com/sbansla)! **(breaking change)**
+
+**Api**
+- remove feedback and feedback summary from call resource
+
+**Flex**
+- Adding `routing_properties` to Interactions Channels Participant
+
+**Lookups**
+- Add new `line_status` package to the lookup response
+- Remove `live_activity` package from the lookup response **(breaking change)**
+
+**Messaging**
+- Add tollfree multiple rejection reasons response array
+
+**Trusthub**
+- Add ENUM for businessRegistrationAuthority in compliance_registration. **(breaking change)**
+- Add new field in isIsvEmbed in compliance_registration.
+- Add additional optional fields in compliance_registration for Individual business type.
+
+**Twiml**
+- Add support for new Amazon Polly and Google voices (Q1 2024) for `Say` verb
+
+
 [2024-02-09] Version 6.18.0
 ---------------------------
 **Library - Chore**

@@ -22,7 +22,7 @@ using Twilio.Constant;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
-
+using Twilio.Types;
 
 
 namespace Twilio.Rest.Trusthub.V1
@@ -32,6 +32,21 @@ namespace Twilio.Rest.Trusthub.V1
     
 
     
+        public sealed class OptInTypeEnum : StringEnum
+        {
+            private OptInTypeEnum(string value) : base(value) {}
+            public OptInTypeEnum() {}
+            public static implicit operator OptInTypeEnum(string value)
+            {
+                return new OptInTypeEnum(value);
+            }
+            public static readonly OptInTypeEnum Verbal = new OptInTypeEnum("VERBAL");
+            public static readonly OptInTypeEnum WebForm = new OptInTypeEnum("WEB_FORM");
+            public static readonly OptInTypeEnum PaperForm = new OptInTypeEnum("PAPER_FORM");
+            public static readonly OptInTypeEnum ViaText = new OptInTypeEnum("VIA_TEXT");
+            public static readonly OptInTypeEnum MobileQrCode = new OptInTypeEnum("MOBILE_QR_CODE");
+
+        }
 
         
         private static Request BuildCreateRequest(CreateComplianceTollfreeInquiriesOptions options, ITwilioRestClient client)
@@ -76,30 +91,106 @@ namespace Twilio.Rest.Trusthub.V1
 
         /// <summary> Create a new Compliance Tollfree Verification Inquiry for the authenticated account. This is necessary to start a new embedded session. </summary>
         /// <param name="tollfreePhoneNumber"> The Tollfree phone number to be verified </param>
-        /// <param name="notificationEmail"> The notification email to be triggered when verification status is changed </param>
+        /// <param name="notificationEmail"> The email address to receive the notification about the verification result. </param>
+        /// <param name="businessName"> The name of the business or organization using the Tollfree number. </param>
+        /// <param name="businessWebsite"> The website of the business or organization using the Tollfree number. </param>
+        /// <param name="useCaseCategories"> The category of the use case for the Tollfree Number. List as many are applicable.. </param>
+        /// <param name="useCaseSummary"> Use this to further explain how messaging is used by the business or organization. </param>
+        /// <param name="productionMessageSample"> An example of message content, i.e. a sample message. </param>
+        /// <param name="optInImageUrls"> Link to an image that shows the opt-in workflow. Multiple images allowed and must be a publicly hosted URL. </param>
+        /// <param name="optInType">  </param>
+        /// <param name="messageVolume"> Estimate monthly volume of messages from the Tollfree Number. </param>
+        /// <param name="businessStreetAddress"> The address of the business or organization using the Tollfree number. </param>
+        /// <param name="businessStreetAddress2"> The address of the business or organization using the Tollfree number. </param>
+        /// <param name="businessCity"> The city of the business or organization using the Tollfree number. </param>
+        /// <param name="businessStateProvinceRegion"> The state/province/region of the business or organization using the Tollfree number. </param>
+        /// <param name="businessPostalCode"> The postal code of the business or organization using the Tollfree number. </param>
+        /// <param name="businessCountry"> The country of the business or organization using the Tollfree number. </param>
+        /// <param name="additionalInformation"> Additional information to be provided for verification. </param>
+        /// <param name="businessContactFirstName"> The first name of the contact for the business or organization using the Tollfree number. </param>
+        /// <param name="businessContactLastName"> The last name of the contact for the business or organization using the Tollfree number. </param>
+        /// <param name="businessContactEmail"> The email address of the contact for the business or organization using the Tollfree number. </param>
+        /// <param name="businessContactPhone"> The phone number of the contact for the business or organization using the Tollfree number. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of ComplianceTollfreeInquiries </returns>
         public static ComplianceTollfreeInquiriesResource Create(
                                           Types.PhoneNumber tollfreePhoneNumber,
                                           string notificationEmail,
+                                          string businessName = null,
+                                          string businessWebsite = null,
+                                          List<string> useCaseCategories = null,
+                                          string useCaseSummary = null,
+                                          string productionMessageSample = null,
+                                          List<string> optInImageUrls = null,
+                                          ComplianceTollfreeInquiriesResource.OptInTypeEnum optInType = null,
+                                          string messageVolume = null,
+                                          string businessStreetAddress = null,
+                                          string businessStreetAddress2 = null,
+                                          string businessCity = null,
+                                          string businessStateProvinceRegion = null,
+                                          string businessPostalCode = null,
+                                          string businessCountry = null,
+                                          string additionalInformation = null,
+                                          string businessContactFirstName = null,
+                                          string businessContactLastName = null,
+                                          string businessContactEmail = null,
+                                          Types.PhoneNumber businessContactPhone = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new CreateComplianceTollfreeInquiriesOptions(tollfreePhoneNumber, notificationEmail){  };
+            var options = new CreateComplianceTollfreeInquiriesOptions(tollfreePhoneNumber, notificationEmail){  BusinessName = businessName, BusinessWebsite = businessWebsite, UseCaseCategories = useCaseCategories, UseCaseSummary = useCaseSummary, ProductionMessageSample = productionMessageSample, OptInImageUrls = optInImageUrls, OptInType = optInType, MessageVolume = messageVolume, BusinessStreetAddress = businessStreetAddress, BusinessStreetAddress2 = businessStreetAddress2, BusinessCity = businessCity, BusinessStateProvinceRegion = businessStateProvinceRegion, BusinessPostalCode = businessPostalCode, BusinessCountry = businessCountry, AdditionalInformation = additionalInformation, BusinessContactFirstName = businessContactFirstName, BusinessContactLastName = businessContactLastName, BusinessContactEmail = businessContactEmail, BusinessContactPhone = businessContactPhone };
             return Create(options, client);
         }
 
         #if !NET35
         /// <summary> Create a new Compliance Tollfree Verification Inquiry for the authenticated account. This is necessary to start a new embedded session. </summary>
         /// <param name="tollfreePhoneNumber"> The Tollfree phone number to be verified </param>
-        /// <param name="notificationEmail"> The notification email to be triggered when verification status is changed </param>
+        /// <param name="notificationEmail"> The email address to receive the notification about the verification result. </param>
+        /// <param name="businessName"> The name of the business or organization using the Tollfree number. </param>
+        /// <param name="businessWebsite"> The website of the business or organization using the Tollfree number. </param>
+        /// <param name="useCaseCategories"> The category of the use case for the Tollfree Number. List as many are applicable.. </param>
+        /// <param name="useCaseSummary"> Use this to further explain how messaging is used by the business or organization. </param>
+        /// <param name="productionMessageSample"> An example of message content, i.e. a sample message. </param>
+        /// <param name="optInImageUrls"> Link to an image that shows the opt-in workflow. Multiple images allowed and must be a publicly hosted URL. </param>
+        /// <param name="optInType">  </param>
+        /// <param name="messageVolume"> Estimate monthly volume of messages from the Tollfree Number. </param>
+        /// <param name="businessStreetAddress"> The address of the business or organization using the Tollfree number. </param>
+        /// <param name="businessStreetAddress2"> The address of the business or organization using the Tollfree number. </param>
+        /// <param name="businessCity"> The city of the business or organization using the Tollfree number. </param>
+        /// <param name="businessStateProvinceRegion"> The state/province/region of the business or organization using the Tollfree number. </param>
+        /// <param name="businessPostalCode"> The postal code of the business or organization using the Tollfree number. </param>
+        /// <param name="businessCountry"> The country of the business or organization using the Tollfree number. </param>
+        /// <param name="additionalInformation"> Additional information to be provided for verification. </param>
+        /// <param name="businessContactFirstName"> The first name of the contact for the business or organization using the Tollfree number. </param>
+        /// <param name="businessContactLastName"> The last name of the contact for the business or organization using the Tollfree number. </param>
+        /// <param name="businessContactEmail"> The email address of the contact for the business or organization using the Tollfree number. </param>
+        /// <param name="businessContactPhone"> The phone number of the contact for the business or organization using the Tollfree number. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ComplianceTollfreeInquiries </returns>
         public static async System.Threading.Tasks.Task<ComplianceTollfreeInquiriesResource> CreateAsync(
                                                                                   Types.PhoneNumber tollfreePhoneNumber,
                                                                                   string notificationEmail,
+                                                                                  string businessName = null,
+                                                                                  string businessWebsite = null,
+                                                                                  List<string> useCaseCategories = null,
+                                                                                  string useCaseSummary = null,
+                                                                                  string productionMessageSample = null,
+                                                                                  List<string> optInImageUrls = null,
+                                                                                  ComplianceTollfreeInquiriesResource.OptInTypeEnum optInType = null,
+                                                                                  string messageVolume = null,
+                                                                                  string businessStreetAddress = null,
+                                                                                  string businessStreetAddress2 = null,
+                                                                                  string businessCity = null,
+                                                                                  string businessStateProvinceRegion = null,
+                                                                                  string businessPostalCode = null,
+                                                                                  string businessCountry = null,
+                                                                                  string additionalInformation = null,
+                                                                                  string businessContactFirstName = null,
+                                                                                  string businessContactLastName = null,
+                                                                                  string businessContactEmail = null,
+                                                                                  Types.PhoneNumber businessContactPhone = null,
                                                                                   ITwilioRestClient client = null)
         {
-        var options = new CreateComplianceTollfreeInquiriesOptions(tollfreePhoneNumber, notificationEmail){  };
+        var options = new CreateComplianceTollfreeInquiriesOptions(tollfreePhoneNumber, notificationEmail){  BusinessName = businessName, BusinessWebsite = businessWebsite, UseCaseCategories = useCaseCategories, UseCaseSummary = useCaseSummary, ProductionMessageSample = productionMessageSample, OptInImageUrls = optInImageUrls, OptInType = optInType, MessageVolume = messageVolume, BusinessStreetAddress = businessStreetAddress, BusinessStreetAddress2 = businessStreetAddress2, BusinessCity = businessCity, BusinessStateProvinceRegion = businessStateProvinceRegion, BusinessPostalCode = businessPostalCode, BusinessCountry = businessCountry, AdditionalInformation = additionalInformation, BusinessContactFirstName = businessContactFirstName, BusinessContactLastName = businessContactLastName, BusinessContactEmail = businessContactEmail, BusinessContactPhone = businessContactPhone };
             return await CreateAsync(options, client);
         }
         #endif

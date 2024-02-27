@@ -46,6 +46,21 @@ namespace Twilio.Rest.Trusthub.V1
             public static readonly PhoneNumberTypeEnum TollFree = new PhoneNumberTypeEnum("toll-free");
 
         }
+        public sealed class BusinessRegistrationAuthorityEnum : StringEnum
+        {
+            private BusinessRegistrationAuthorityEnum(string value) : base(value) {}
+            public BusinessRegistrationAuthorityEnum() {}
+            public static implicit operator BusinessRegistrationAuthorityEnum(string value)
+            {
+                return new BusinessRegistrationAuthorityEnum(value);
+            }
+            public static readonly BusinessRegistrationAuthorityEnum UkCrn = new BusinessRegistrationAuthorityEnum("UK:CRN");
+            public static readonly BusinessRegistrationAuthorityEnum UsEin = new BusinessRegistrationAuthorityEnum("US:EIN");
+            public static readonly BusinessRegistrationAuthorityEnum CaCbn = new BusinessRegistrationAuthorityEnum("CA:CBN");
+            public static readonly BusinessRegistrationAuthorityEnum AuAcn = new BusinessRegistrationAuthorityEnum("AU:ACN");
+            public static readonly BusinessRegistrationAuthorityEnum Other = new BusinessRegistrationAuthorityEnum("Other");
+
+        }
         public sealed class EndUserTypeEnum : StringEnum
         {
             private EndUserTypeEnum(string value) : base(value) {}
@@ -117,7 +132,7 @@ namespace Twilio.Rest.Trusthub.V1
         /// <param name="endUserType">  </param>
         /// <param name="phoneNumberType">  </param>
         /// <param name="businessIdentityType">  </param>
-        /// <param name="businessRegistrationAuthority"> The authority that registered the business </param>
+        /// <param name="businessRegistrationAuthority">  </param>
         /// <param name="businessLegalName"> he name of the business or organization using the Tollfree number. </param>
         /// <param name="notificationEmail"> he email address to receive the notification about the verification result. </param>
         /// <param name="acceptedNotificationReceipt"> The email address to receive the notification about the verification result. </param>
@@ -144,13 +159,19 @@ namespace Twilio.Rest.Trusthub.V1
         /// <param name="useAddressAsEmergencyAddress"> Use the business address as the emergency address </param>
         /// <param name="fileName"> The name of the verification document to upload </param>
         /// <param name="file"> The verification document to upload </param>
+        /// <param name="firstName"> The first name of the Individual User. </param>
+        /// <param name="lastName"> The last name of the Individual User. </param>
+        /// <param name="dateOfBirth"> The date of birth of the Individual User. </param>
+        /// <param name="individualEmail"> The email address of the Individual User. </param>
+        /// <param name="individualPhone"> The phone number of the Individual User. </param>
+        /// <param name="isIsvEmbed"> Indicates if the inquiry is being started from an ISV embedded component. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of ComplianceRegistrationInquiries </returns>
         public static ComplianceRegistrationInquiriesResource Create(
                                           ComplianceRegistrationInquiriesResource.EndUserTypeEnum endUserType,
                                           ComplianceRegistrationInquiriesResource.PhoneNumberTypeEnum phoneNumberType,
                                           ComplianceRegistrationInquiriesResource.BusinessIdentityTypeEnum businessIdentityType = null,
-                                          string businessRegistrationAuthority = null,
+                                          ComplianceRegistrationInquiriesResource.BusinessRegistrationAuthorityEnum businessRegistrationAuthority = null,
                                           string businessLegalName = null,
                                           string notificationEmail = null,
                                           bool? acceptedNotificationReceipt = null,
@@ -177,9 +198,15 @@ namespace Twilio.Rest.Trusthub.V1
                                           bool? useAddressAsEmergencyAddress = null,
                                           string fileName = null,
                                           string file = null,
+                                          string firstName = null,
+                                          string lastName = null,
+                                          string dateOfBirth = null,
+                                          string individualEmail = null,
+                                          string individualPhone = null,
+                                          bool? isIsvEmbed = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new CreateComplianceRegistrationInquiriesOptions(endUserType, phoneNumberType){  BusinessIdentityType = businessIdentityType, BusinessRegistrationAuthority = businessRegistrationAuthority, BusinessLegalName = businessLegalName, NotificationEmail = notificationEmail, AcceptedNotificationReceipt = acceptedNotificationReceipt, BusinessRegistrationNumber = businessRegistrationNumber, BusinessWebsiteUrl = businessWebsiteUrl, FriendlyName = friendlyName, AuthorizedRepresentative1FirstName = authorizedRepresentative1FirstName, AuthorizedRepresentative1LastName = authorizedRepresentative1LastName, AuthorizedRepresentative1Phone = authorizedRepresentative1Phone, AuthorizedRepresentative1Email = authorizedRepresentative1Email, AuthorizedRepresentative1DateOfBirth = authorizedRepresentative1DateOfBirth, AddressStreet = addressStreet, AddressStreetSecondary = addressStreetSecondary, AddressCity = addressCity, AddressSubdivision = addressSubdivision, AddressPostalCode = addressPostalCode, AddressCountryCode = addressCountryCode, EmergencyAddressStreet = emergencyAddressStreet, EmergencyAddressStreetSecondary = emergencyAddressStreetSecondary, EmergencyAddressCity = emergencyAddressCity, EmergencyAddressSubdivision = emergencyAddressSubdivision, EmergencyAddressPostalCode = emergencyAddressPostalCode, EmergencyAddressCountryCode = emergencyAddressCountryCode, UseAddressAsEmergencyAddress = useAddressAsEmergencyAddress, FileName = fileName, File = file };
+            var options = new CreateComplianceRegistrationInquiriesOptions(endUserType, phoneNumberType){  BusinessIdentityType = businessIdentityType, BusinessRegistrationAuthority = businessRegistrationAuthority, BusinessLegalName = businessLegalName, NotificationEmail = notificationEmail, AcceptedNotificationReceipt = acceptedNotificationReceipt, BusinessRegistrationNumber = businessRegistrationNumber, BusinessWebsiteUrl = businessWebsiteUrl, FriendlyName = friendlyName, AuthorizedRepresentative1FirstName = authorizedRepresentative1FirstName, AuthorizedRepresentative1LastName = authorizedRepresentative1LastName, AuthorizedRepresentative1Phone = authorizedRepresentative1Phone, AuthorizedRepresentative1Email = authorizedRepresentative1Email, AuthorizedRepresentative1DateOfBirth = authorizedRepresentative1DateOfBirth, AddressStreet = addressStreet, AddressStreetSecondary = addressStreetSecondary, AddressCity = addressCity, AddressSubdivision = addressSubdivision, AddressPostalCode = addressPostalCode, AddressCountryCode = addressCountryCode, EmergencyAddressStreet = emergencyAddressStreet, EmergencyAddressStreetSecondary = emergencyAddressStreetSecondary, EmergencyAddressCity = emergencyAddressCity, EmergencyAddressSubdivision = emergencyAddressSubdivision, EmergencyAddressPostalCode = emergencyAddressPostalCode, EmergencyAddressCountryCode = emergencyAddressCountryCode, UseAddressAsEmergencyAddress = useAddressAsEmergencyAddress, FileName = fileName, File = file, FirstName = firstName, LastName = lastName, DateOfBirth = dateOfBirth, IndividualEmail = individualEmail, IndividualPhone = individualPhone, IsIsvEmbed = isIsvEmbed };
             return Create(options, client);
         }
 
@@ -188,7 +215,7 @@ namespace Twilio.Rest.Trusthub.V1
         /// <param name="endUserType">  </param>
         /// <param name="phoneNumberType">  </param>
         /// <param name="businessIdentityType">  </param>
-        /// <param name="businessRegistrationAuthority"> The authority that registered the business </param>
+        /// <param name="businessRegistrationAuthority">  </param>
         /// <param name="businessLegalName"> he name of the business or organization using the Tollfree number. </param>
         /// <param name="notificationEmail"> he email address to receive the notification about the verification result. </param>
         /// <param name="acceptedNotificationReceipt"> The email address to receive the notification about the verification result. </param>
@@ -215,13 +242,19 @@ namespace Twilio.Rest.Trusthub.V1
         /// <param name="useAddressAsEmergencyAddress"> Use the business address as the emergency address </param>
         /// <param name="fileName"> The name of the verification document to upload </param>
         /// <param name="file"> The verification document to upload </param>
+        /// <param name="firstName"> The first name of the Individual User. </param>
+        /// <param name="lastName"> The last name of the Individual User. </param>
+        /// <param name="dateOfBirth"> The date of birth of the Individual User. </param>
+        /// <param name="individualEmail"> The email address of the Individual User. </param>
+        /// <param name="individualPhone"> The phone number of the Individual User. </param>
+        /// <param name="isIsvEmbed"> Indicates if the inquiry is being started from an ISV embedded component. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ComplianceRegistrationInquiries </returns>
         public static async System.Threading.Tasks.Task<ComplianceRegistrationInquiriesResource> CreateAsync(
                                                                                   ComplianceRegistrationInquiriesResource.EndUserTypeEnum endUserType,
                                                                                   ComplianceRegistrationInquiriesResource.PhoneNumberTypeEnum phoneNumberType,
                                                                                   ComplianceRegistrationInquiriesResource.BusinessIdentityTypeEnum businessIdentityType = null,
-                                                                                  string businessRegistrationAuthority = null,
+                                                                                  ComplianceRegistrationInquiriesResource.BusinessRegistrationAuthorityEnum businessRegistrationAuthority = null,
                                                                                   string businessLegalName = null,
                                                                                   string notificationEmail = null,
                                                                                   bool? acceptedNotificationReceipt = null,
@@ -248,9 +281,15 @@ namespace Twilio.Rest.Trusthub.V1
                                                                                   bool? useAddressAsEmergencyAddress = null,
                                                                                   string fileName = null,
                                                                                   string file = null,
+                                                                                  string firstName = null,
+                                                                                  string lastName = null,
+                                                                                  string dateOfBirth = null,
+                                                                                  string individualEmail = null,
+                                                                                  string individualPhone = null,
+                                                                                  bool? isIsvEmbed = null,
                                                                                   ITwilioRestClient client = null)
         {
-        var options = new CreateComplianceRegistrationInquiriesOptions(endUserType, phoneNumberType){  BusinessIdentityType = businessIdentityType, BusinessRegistrationAuthority = businessRegistrationAuthority, BusinessLegalName = businessLegalName, NotificationEmail = notificationEmail, AcceptedNotificationReceipt = acceptedNotificationReceipt, BusinessRegistrationNumber = businessRegistrationNumber, BusinessWebsiteUrl = businessWebsiteUrl, FriendlyName = friendlyName, AuthorizedRepresentative1FirstName = authorizedRepresentative1FirstName, AuthorizedRepresentative1LastName = authorizedRepresentative1LastName, AuthorizedRepresentative1Phone = authorizedRepresentative1Phone, AuthorizedRepresentative1Email = authorizedRepresentative1Email, AuthorizedRepresentative1DateOfBirth = authorizedRepresentative1DateOfBirth, AddressStreet = addressStreet, AddressStreetSecondary = addressStreetSecondary, AddressCity = addressCity, AddressSubdivision = addressSubdivision, AddressPostalCode = addressPostalCode, AddressCountryCode = addressCountryCode, EmergencyAddressStreet = emergencyAddressStreet, EmergencyAddressStreetSecondary = emergencyAddressStreetSecondary, EmergencyAddressCity = emergencyAddressCity, EmergencyAddressSubdivision = emergencyAddressSubdivision, EmergencyAddressPostalCode = emergencyAddressPostalCode, EmergencyAddressCountryCode = emergencyAddressCountryCode, UseAddressAsEmergencyAddress = useAddressAsEmergencyAddress, FileName = fileName, File = file };
+        var options = new CreateComplianceRegistrationInquiriesOptions(endUserType, phoneNumberType){  BusinessIdentityType = businessIdentityType, BusinessRegistrationAuthority = businessRegistrationAuthority, BusinessLegalName = businessLegalName, NotificationEmail = notificationEmail, AcceptedNotificationReceipt = acceptedNotificationReceipt, BusinessRegistrationNumber = businessRegistrationNumber, BusinessWebsiteUrl = businessWebsiteUrl, FriendlyName = friendlyName, AuthorizedRepresentative1FirstName = authorizedRepresentative1FirstName, AuthorizedRepresentative1LastName = authorizedRepresentative1LastName, AuthorizedRepresentative1Phone = authorizedRepresentative1Phone, AuthorizedRepresentative1Email = authorizedRepresentative1Email, AuthorizedRepresentative1DateOfBirth = authorizedRepresentative1DateOfBirth, AddressStreet = addressStreet, AddressStreetSecondary = addressStreetSecondary, AddressCity = addressCity, AddressSubdivision = addressSubdivision, AddressPostalCode = addressPostalCode, AddressCountryCode = addressCountryCode, EmergencyAddressStreet = emergencyAddressStreet, EmergencyAddressStreetSecondary = emergencyAddressStreetSecondary, EmergencyAddressCity = emergencyAddressCity, EmergencyAddressSubdivision = emergencyAddressSubdivision, EmergencyAddressPostalCode = emergencyAddressPostalCode, EmergencyAddressCountryCode = emergencyAddressCountryCode, UseAddressAsEmergencyAddress = useAddressAsEmergencyAddress, FileName = fileName, File = file, FirstName = firstName, LastName = lastName, DateOfBirth = dateOfBirth, IndividualEmail = individualEmail, IndividualPhone = individualPhone, IsIsvEmbed = isIsvEmbed };
             return await CreateAsync(options, client);
         }
         #endif
