@@ -15,6 +15,9 @@ namespace Twilio.Http
     /// </summary>
     public class SystemNetHttpClient : HttpClient
     {
+#if NET462
+        private string PlatVersion = ".NET Framework 4.6.2+";
+#else
         private string PlatVersion = RuntimeInformation.FrameworkDescription;
 
         private readonly System.Net.Http.HttpClient _httpClient;
@@ -106,7 +109,11 @@ namespace Twilio.Http
             osName = Environment.OSVersion.Platform.ToString();
 
             string osArch;
+#if !NET462
             osArch = RuntimeInformation.OSArchitecture.ToString();
+#else
+            osArch = Environment.GetEnvironmentVariable("PROCESSOR_ARCHITECTURE") ?? "Unknown"; 
+#endif
             var libraryVersion = String.Format("twilio-csharp/{0} ({1} {2}) {3}", helperLibVersion, osName, osArch, PlatVersionSb);
 
             if (request.UserAgentExtensions != null)
