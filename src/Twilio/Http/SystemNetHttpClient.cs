@@ -107,29 +107,10 @@ namespace Twilio.Http
             string helperLibVersion = AssemblyInfomation.AssemblyInformationalVersion;
 
             string osName = "Unknown";
-#if !NETSTANDARD1_4
             osName = Environment.OSVersion.Platform.ToString();
-#else       
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                osName = "Windows";
-            }
-            else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-            {
-                osName = "MacOS";
-            }
-            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-            {
-                osName = "Linux";
-            }
-#endif
 
             string osArch;
-#if !NET451
             osArch = RuntimeInformation.OSArchitecture.ToString();
-#else
-            osArch = Environment.GetEnvironmentVariable("PROCESSOR_ARCHITECTURE") ?? "Unknown"; 
-#endif
             var libraryVersion = String.Format("twilio-csharp/{0} ({1} {2}) {3}", helperLibVersion, osName, osArch, PlatVersionSb);
 
             if (request.UserAgentExtensions != null)
