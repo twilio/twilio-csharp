@@ -15,11 +15,7 @@ namespace Twilio.Http
     /// </summary>
     public class SystemNetHttpClient : HttpClient
     {
-#if NET451
-        private string PlatVersion = ".NET Framework 4.5.1+";
-#else
         private string PlatVersion = RuntimeInformation.FrameworkDescription;
-#endif
 
         private readonly System.Net.Http.HttpClient _httpClient;
 
