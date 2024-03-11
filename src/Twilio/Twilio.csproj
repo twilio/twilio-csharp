@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup Label="NuGet">
-    <TargetFrameworks>net6.0;netstandard2.1;net462</TargetFrameworks>
+    <TargetFrameworks>net6.0;netstandard2.1;net462;net35</TargetFrameworks>
     <IsPackable>true</IsPackable>
     <PackageId>Twilio</PackageId>
     <Description>Twilio REST API helper library</Description>
