@@ -2,7 +2,6 @@
   <PropertyGroup Label="NuGet">
     <TargetFrameworks>net6.0;netstandard2.1;net35;net462</TargetFrameworks>
     <OutputPath>bin/Release</OutputPath>
-    <Nullable>enable</Nullable>
     <IsPackable>true</IsPackable>
     <PackageId>Twilio</PackageId>
     <Description>Twilio REST API helper library</Description>
