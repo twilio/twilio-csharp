@@ -486,9 +486,13 @@ namespace Twilio.Rest.Messaging.V1
         [JsonProperty("tcr_id")]
         public string TcrId { get; private set; }
 
-        ///<summary> A reason why brand registration has failed. Only applicable when status is FAILED. </summary> 
+        ///<summary> DEPRECATED. A reason why brand registration has failed. Only applicable when status is FAILED. </summary> 
         [JsonProperty("failure_reason")]
         public string FailureReason { get; private set; }
+
+        ///<summary> A list of errors that occurred during the brand registration process. </summary> 
+        [JsonProperty("errors")]
+        public List<object> Errors { get; private set; }
 
         ///<summary> The absolute URL of the Brand Registration resource. </summary> 
         [JsonProperty("url")]
@@ -498,7 +502,7 @@ namespace Twilio.Rest.Messaging.V1
         [JsonProperty("brand_score")]
         public int? BrandScore { get; private set; }
 
-        ///<summary> Feedback on how to improve brand score </summary> 
+        ///<summary> DEPRECATED. Feedback on how to improve brand score </summary> 
         [JsonProperty("brand_feedback")]
         public List<BrandRegistrationResource.BrandFeedbackEnum> BrandFeedback { get; private set; }
 

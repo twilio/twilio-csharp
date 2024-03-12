@@ -39,7 +39,7 @@ namespace Twilio.Rest.Lookups.V1
             
             string path = "/v1/PhoneNumbers/{PhoneNumber}";
 
-            string PathPhoneNumber = options.PathPhoneNumber.ToString();
+            string PathPhoneNumber = options.PathPhoneNumber;
             path = path.Replace("{"+"PhoneNumber"+"}", PathPhoneNumber);
 
             return new Request(
@@ -84,7 +84,7 @@ namespace Twilio.Rest.Lookups.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of PhoneNumber </returns>
         public static PhoneNumberResource Fetch(
-                                         Types.PhoneNumber pathPhoneNumber, 
+                                         string pathPhoneNumber, 
                                          string countryCode = null, 
                                          List<string> type = null, 
                                          List<string> addOns = null, 
@@ -104,7 +104,7 @@ namespace Twilio.Rest.Lookups.V1
         /// <param name="addOnsData"> Data specific to the add-on you would like to invoke. The content and format of this value depends on the add-on. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PhoneNumber </returns>
-        public static async System.Threading.Tasks.Task<PhoneNumberResource> FetchAsync(Types.PhoneNumber pathPhoneNumber, string countryCode = null, List<string> type = null, List<string> addOns = null, Dictionary<string, object> addOnsData = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<PhoneNumberResource> FetchAsync(string pathPhoneNumber, string countryCode = null, List<string> type = null, List<string> addOns = null, Dictionary<string, object> addOnsData = null, ITwilioRestClient client = null)
         {
             var options = new FetchPhoneNumberOptions(pathPhoneNumber){ CountryCode = countryCode,Type = type,AddOns = addOns,AddOnsData = addOnsData };
             return await FetchAsync(options, client);

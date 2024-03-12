@@ -136,6 +136,12 @@ namespace Twilio.Rest.Trusthub.V1
         ///<summary> Indicates if the inquiry is being started from an ISV embedded component. </summary> 
         public bool? IsIsvEmbed { get; set; }
 
+        ///<summary> Indicates if the isv registering for self or tenant. </summary> 
+        public string IsvRegisteringForSelfOrTenant { get; set; }
+
+        ///<summary> The url we call to inform you of bundle changes. </summary> 
+        public string StatusCallbackUrl { get; set; }
+
 
         /// <summary> Construct a new CreateComplianceRegistrationOptions </summary>
         /// <param name="endUserType">  </param>
@@ -295,6 +301,14 @@ namespace Twilio.Rest.Trusthub.V1
             if (IsIsvEmbed != null)
             {
                 p.Add(new KeyValuePair<string, string>("IsIsvEmbed", IsIsvEmbed.Value.ToString().ToLower()));
+            }
+            if (IsvRegisteringForSelfOrTenant != null)
+            {
+                p.Add(new KeyValuePair<string, string>("IsvRegisteringForSelfOrTenant", IsvRegisteringForSelfOrTenant));
+            }
+            if (StatusCallbackUrl != null)
+            {
+                p.Add(new KeyValuePair<string, string>("StatusCallbackUrl", StatusCallbackUrl));
             }
             return p;
         }
