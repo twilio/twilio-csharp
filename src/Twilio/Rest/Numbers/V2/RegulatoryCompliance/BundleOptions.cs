@@ -190,6 +190,12 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         ///<summary> Date to filter Bundles having their `valid_until_date` before or after the specified date. Can be `ValidUntilDate>=` or `ValidUntilDate<=`. Both can be used in conjunction as well. [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) is the acceptable date format. </summary> 
         public DateTime? ValidUntilDate { get; set; }
 
+        ///<summary> Date to filter Bundles having their `valid_until_date` before or after the specified date. Can be `ValidUntilDate>=` or `ValidUntilDate<=`. Both can be used in conjunction as well. [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) is the acceptable date format. </summary> 
+        public DateTime? ValidUntilDateBefore { get; set; }
+
+        ///<summary> Date to filter Bundles having their `valid_until_date` before or after the specified date. Can be `ValidUntilDate>=` or `ValidUntilDate<=`. Both can be used in conjunction as well. [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) is the acceptable date format. </summary> 
+        public DateTime? ValidUntilDateAfter { get; set; }
+
 
 
 
@@ -234,6 +240,17 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
             if (ValidUntilDate != null)
             {
                 p.Add(new KeyValuePair<string, string>("ValidUntilDate", Serializers.DateTimeIso8601(ValidUntilDate)));
+            }
+            else
+            {
+                if (ValidUntilDateBefore != null)
+                {
+                    p.Add(new KeyValuePair<string, string>("ValidUntilDate<", Serializers.DateTimeIso8601(ValidUntilDateBefore)));
+                }
+                if (ValidUntilDateAfter != null)
+                {
+                    p.Add(new KeyValuePair<string, string>("ValidUntilDate>", Serializers.DateTimeIso8601(ValidUntilDateAfter)));
+                }
             }
             if (PageSize != null)
             {

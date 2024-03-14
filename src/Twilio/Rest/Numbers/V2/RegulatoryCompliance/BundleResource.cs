@@ -360,7 +360,9 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         /// <param name="hasValidUntilDate"> Indicates that the Bundle is a valid Bundle until a specified expiration date. </param>
         /// <param name="sortBy"> Can be `valid-until` or `date-updated`. Defaults to `date-created`. </param>
         /// <param name="sortDirection"> Default is `DESC`. Can be `ASC` or `DESC`. </param>
+        /// <param name="validUntilDateBefore"> Date to filter Bundles having their `valid_until_date` before or after the specified date. Can be `ValidUntilDate>=` or `ValidUntilDate<=`. Both can be used in conjunction as well. [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) is the acceptable date format. </param>
         /// <param name="validUntilDate"> Date to filter Bundles having their `valid_until_date` before or after the specified date. Can be `ValidUntilDate>=` or `ValidUntilDate<=`. Both can be used in conjunction as well. [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) is the acceptable date format. </param>
+        /// <param name="validUntilDateAfter"> Date to filter Bundles having their `valid_until_date` before or after the specified date. Can be `ValidUntilDate>=` or `ValidUntilDate<=`. Both can be used in conjunction as well. [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) is the acceptable date format. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -374,12 +376,14 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
                                                      bool? hasValidUntilDate = null,
                                                      BundleResource.SortByEnum sortBy = null,
                                                      BundleResource.SortDirectionEnum sortDirection = null,
+                                                     DateTime? validUntilDateBefore = null,
                                                      DateTime? validUntilDate = null,
+                                                     DateTime? validUntilDateAfter = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
                                                      ITwilioRestClient client = null)
         {
-            var options = new ReadBundleOptions(){ Status = status, FriendlyName = friendlyName, RegulationSid = regulationSid, IsoCountry = isoCountry, NumberType = numberType, HasValidUntilDate = hasValidUntilDate, SortBy = sortBy, SortDirection = sortDirection, ValidUntilDate = validUntilDate, PageSize = pageSize, Limit = limit};
+            var options = new ReadBundleOptions(){ Status = status, FriendlyName = friendlyName, RegulationSid = regulationSid, IsoCountry = isoCountry, NumberType = numberType, HasValidUntilDate = hasValidUntilDate, SortBy = sortBy, SortDirection = sortDirection, ValidUntilDateBefore = validUntilDateBefore, ValidUntilDate = validUntilDate, ValidUntilDateAfter = validUntilDateAfter, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -393,7 +397,9 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         /// <param name="hasValidUntilDate"> Indicates that the Bundle is a valid Bundle until a specified expiration date. </param>
         /// <param name="sortBy"> Can be `valid-until` or `date-updated`. Defaults to `date-created`. </param>
         /// <param name="sortDirection"> Default is `DESC`. Can be `ASC` or `DESC`. </param>
+        /// <param name="validUntilDateBefore"> Date to filter Bundles having their `valid_until_date` before or after the specified date. Can be `ValidUntilDate>=` or `ValidUntilDate<=`. Both can be used in conjunction as well. [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) is the acceptable date format. </param>
         /// <param name="validUntilDate"> Date to filter Bundles having their `valid_until_date` before or after the specified date. Can be `ValidUntilDate>=` or `ValidUntilDate<=`. Both can be used in conjunction as well. [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) is the acceptable date format. </param>
+        /// <param name="validUntilDateAfter"> Date to filter Bundles having their `valid_until_date` before or after the specified date. Can be `ValidUntilDate>=` or `ValidUntilDate<=`. Both can be used in conjunction as well. [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) is the acceptable date format. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -407,12 +413,14 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
                                                                                              bool? hasValidUntilDate = null,
                                                                                              BundleResource.SortByEnum sortBy = null,
                                                                                              BundleResource.SortDirectionEnum sortDirection = null,
+                                                                                             DateTime? validUntilDateBefore = null,
                                                                                              DateTime? validUntilDate = null,
+                                                                                             DateTime? validUntilDateAfter = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
                                                                                              ITwilioRestClient client = null)
         {
-            var options = new ReadBundleOptions(){ Status = status, FriendlyName = friendlyName, RegulationSid = regulationSid, IsoCountry = isoCountry, NumberType = numberType, HasValidUntilDate = hasValidUntilDate, SortBy = sortBy, SortDirection = sortDirection, ValidUntilDate = validUntilDate, PageSize = pageSize, Limit = limit};
+            var options = new ReadBundleOptions(){ Status = status, FriendlyName = friendlyName, RegulationSid = regulationSid, IsoCountry = isoCountry, NumberType = numberType, HasValidUntilDate = hasValidUntilDate, SortBy = sortBy, SortDirection = sortDirection, ValidUntilDateBefore = validUntilDateBefore, ValidUntilDate = validUntilDate, ValidUntilDateAfter = validUntilDateAfter, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

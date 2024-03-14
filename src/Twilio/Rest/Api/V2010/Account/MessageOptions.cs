@@ -296,6 +296,12 @@ namespace Twilio.Rest.Api.V2010.Account
         ///<summary> Filter by Message `sent_date`. Accepts GMT dates in the following formats: `YYYY-MM-DD` (to find Messages with a specific `sent_date`), `<=YYYY-MM-DD` (to find Messages with `sent_date`s on and before a specific date), and `>=YYYY-MM-DD` (to find Messages with `sent_dates` on and after a specific date). </summary> 
         public DateTime? DateSent { get; set; }
 
+        ///<summary> Filter by Message `sent_date`. Accepts GMT dates in the following formats: `YYYY-MM-DD` (to find Messages with a specific `sent_date`), `<=YYYY-MM-DD` (to find Messages with `sent_date`s on and before a specific date), and `>=YYYY-MM-DD` (to find Messages with `sent_dates` on and after a specific date). </summary> 
+        public DateTime? DateSentBefore { get; set; }
+
+        ///<summary> Filter by Message `sent_date`. Accepts GMT dates in the following formats: `YYYY-MM-DD` (to find Messages with a specific `sent_date`), `<=YYYY-MM-DD` (to find Messages with `sent_date`s on and before a specific date), and `>=YYYY-MM-DD` (to find Messages with `sent_dates` on and after a specific date). </summary> 
+        public DateTime? DateSentAfter { get; set; }
+
 
 
 
@@ -316,6 +322,17 @@ namespace Twilio.Rest.Api.V2010.Account
             if (DateSent != null)
             {
                 p.Add(new KeyValuePair<string, string>("DateSent", Serializers.DateTimeIso8601(DateSent)));
+            }
+            else
+            {
+                if (DateSentBefore != null)
+                {
+                    p.Add(new KeyValuePair<string, string>("DateSent<", Serializers.DateTimeIso8601(DateSentBefore)));
+                }
+                if (DateSentAfter != null)
+                {
+                    p.Add(new KeyValuePair<string, string>("DateSent>", Serializers.DateTimeIso8601(DateSentAfter)));
+                }
             }
             if (PageSize != null)
             {

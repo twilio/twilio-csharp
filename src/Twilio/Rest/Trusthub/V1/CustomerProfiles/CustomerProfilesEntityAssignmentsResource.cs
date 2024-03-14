@@ -293,34 +293,38 @@ namespace Twilio.Rest.Trusthub.V1.CustomerProfiles
         #endif
         /// <summary> Retrieve a list of all Assigned Items for an account. </summary>
         /// <param name="pathCustomerProfileSid"> The unique string that we created to identify the CustomerProfile resource. </param>
+        /// <param name="objectType"> A string to filter the results by (EndUserType or SupportingDocumentType) machine-name. This is useful when you want to retrieve the entity-assignment of a specific end-user or supporting document. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of CustomerProfilesEntityAssignments </returns>
         public static ResourceSet<CustomerProfilesEntityAssignmentsResource> Read(
                                                      string pathCustomerProfileSid,
+                                                     string objectType = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
                                                      ITwilioRestClient client = null)
         {
-            var options = new ReadCustomerProfilesEntityAssignmentsOptions(pathCustomerProfileSid){ PageSize = pageSize, Limit = limit};
+            var options = new ReadCustomerProfilesEntityAssignmentsOptions(pathCustomerProfileSid){ ObjectType = objectType, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
         #if !NET35
         /// <summary> Retrieve a list of all Assigned Items for an account. </summary>
         /// <param name="pathCustomerProfileSid"> The unique string that we created to identify the CustomerProfile resource. </param>
+        /// <param name="objectType"> A string to filter the results by (EndUserType or SupportingDocumentType) machine-name. This is useful when you want to retrieve the entity-assignment of a specific end-user or supporting document. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CustomerProfilesEntityAssignments </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<CustomerProfilesEntityAssignmentsResource>> ReadAsync(
                                                                                              string pathCustomerProfileSid,
+                                                                                             string objectType = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
                                                                                              ITwilioRestClient client = null)
         {
-            var options = new ReadCustomerProfilesEntityAssignmentsOptions(pathCustomerProfileSid){ PageSize = pageSize, Limit = limit};
+            var options = new ReadCustomerProfilesEntityAssignmentsOptions(pathCustomerProfileSid){ ObjectType = objectType, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

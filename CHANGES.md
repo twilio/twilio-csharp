@@ -1,6 +1,12 @@
 twilio-csharp Changelog
 =======================
 
+[2024-03-14] Version 7.0.2
+--------------------------
+**Oauth**
+- Add new APIs for vendor authorize and token endpoints
+
+
 [2024-03-12] Version 7.0.1
 --------------------------
 **Library - Fix**

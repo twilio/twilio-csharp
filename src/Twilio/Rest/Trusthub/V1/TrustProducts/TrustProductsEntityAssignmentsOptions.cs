@@ -137,6 +137,9 @@ namespace Twilio.Rest.Trusthub.V1.TrustProducts
         ///<summary> The unique string that we created to identify the TrustProduct resource. </summary> 
         public string PathTrustProductSid { get; }
 
+        ///<summary> A string to filter the results by (EndUserType or SupportingDocumentType) machine-name. This is useful when you want to retrieve the entity-assignment of a specific end-user or supporting document. </summary> 
+        public string ObjectType { get; set; }
+
 
 
         /// <summary> Construct a new ListTrustProductEntityAssignmentOptions </summary>
@@ -152,6 +155,10 @@ namespace Twilio.Rest.Trusthub.V1.TrustProducts
         {
             var p = new List<KeyValuePair<string, string>>();
 
+            if (ObjectType != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ObjectType", ObjectType));
+            }
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
