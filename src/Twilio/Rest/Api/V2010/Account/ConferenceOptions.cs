@@ -66,8 +66,20 @@ namespace Twilio.Rest.Api.V2010.Account
         ///<summary> The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that started on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify  conferences that started on or after midnight on a date, use `>=YYYY-MM-DD`. </summary> 
         public DateTime? DateCreated { get; set; }
 
+        ///<summary> The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that started on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify  conferences that started on or after midnight on a date, use `>=YYYY-MM-DD`. </summary> 
+        public DateTime? DateCreatedBefore { get; set; }
+
+        ///<summary> The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that started on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify  conferences that started on or after midnight on a date, use `>=YYYY-MM-DD`. </summary> 
+        public DateTime? DateCreatedAfter { get; set; }
+
         ///<summary> The `date_updated` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that were last updated on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify conferences that were last updated on or after midnight on a given date, use  `>=YYYY-MM-DD`. </summary> 
         public DateTime? DateUpdated { get; set; }
+
+        ///<summary> The `date_updated` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that were last updated on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify conferences that were last updated on or after midnight on a given date, use  `>=YYYY-MM-DD`. </summary> 
+        public DateTime? DateUpdatedBefore { get; set; }
+
+        ///<summary> The `date_updated` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that were last updated on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify conferences that were last updated on or after midnight on a given date, use  `>=YYYY-MM-DD`. </summary> 
+        public DateTime? DateUpdatedAfter { get; set; }
 
         ///<summary> The string that identifies the Conference resources to read. </summary> 
         public string FriendlyName { get; set; }
@@ -88,9 +100,31 @@ namespace Twilio.Rest.Api.V2010.Account
             {
                 p.Add(new KeyValuePair<string, string>("DateCreated", DateCreated.Value.ToString("yyyy-MM-dd")));
             }
+            else
+            {
+                if (DateCreatedBefore != null)
+                {
+                    p.Add(new KeyValuePair<string, string>("DateCreated<", DateCreatedBefore.Value.ToString("yyyy-MM-dd")));
+                }
+                if (DateCreatedAfter != null)
+                {
+                    p.Add(new KeyValuePair<string, string>("DateCreated>", DateCreatedAfter.Value.ToString("yyyy-MM-dd")));
+                }
+            }
             if (DateUpdated != null)
             {
                 p.Add(new KeyValuePair<string, string>("DateUpdated", DateUpdated.Value.ToString("yyyy-MM-dd")));
+            }
+            else
+            {
+                if (DateUpdatedBefore != null)
+                {
+                    p.Add(new KeyValuePair<string, string>("DateUpdated<", DateUpdatedBefore.Value.ToString("yyyy-MM-dd")));
+                }
+                if (DateUpdatedAfter != null)
+                {
+                    p.Add(new KeyValuePair<string, string>("DateUpdated>", DateUpdatedAfter.Value.ToString("yyyy-MM-dd")));
+                }
             }
             if (FriendlyName != null)
             {

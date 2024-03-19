@@ -28,7 +28,7 @@ namespace Twilio.Rest.Lookups.V1
     {
     
         ///<summary> The phone number to lookup in [E.164](https://www.twilio.com/docs/glossary/what-e164) format, which consists of a + followed by the country code and subscriber number. </summary> 
-        public Types.PhoneNumber PathPhoneNumber { get; }
+        public string PathPhoneNumber { get; }
 
         ///<summary> The [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the phone number to fetch. This is used to specify the country when the phone number is provided in a national format. </summary> 
         public string CountryCode { get; set; }
@@ -46,7 +46,7 @@ namespace Twilio.Rest.Lookups.V1
 
         /// <summary> Construct a new FetchPhoneNumberOptions </summary>
         /// <param name="pathPhoneNumber"> The phone number to lookup in [E.164](https://www.twilio.com/docs/glossary/what-e164) format, which consists of a + followed by the country code and subscriber number. </param>
-        public FetchPhoneNumberOptions(Types.PhoneNumber pathPhoneNumber)
+        public FetchPhoneNumberOptions(string pathPhoneNumber)
         {
             PathPhoneNumber = pathPhoneNumber;
             Type = new List<string>();

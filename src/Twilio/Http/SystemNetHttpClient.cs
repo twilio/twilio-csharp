@@ -15,8 +15,8 @@ namespace Twilio.Http
     /// </summary>
     public class SystemNetHttpClient : HttpClient
     {
-#if NET451
-        private string PlatVersion = ".NET Framework 4.5.1+";
+#if NET462
+        private string PlatVersion = ".NET Framework 4.6.2+";
 #else
         private string PlatVersion = RuntimeInformation.FrameworkDescription;
 #endif
@@ -107,25 +107,10 @@ namespace Twilio.Http
             string helperLibVersion = AssemblyInfomation.AssemblyInformationalVersion;
 
             string osName = "Unknown";
-#if !NETSTANDARD1_4
             osName = Environment.OSVersion.Platform.ToString();
-#else       
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                osName = "Windows";
-            }
-            else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-            {
-                osName = "MacOS";
-            }
-            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-            {
-                osName = "Linux";
-            }
-#endif
 
             string osArch;
-#if !NET451
+#if !NET462
             osArch = RuntimeInformation.OSArchitecture.ToString();
 #else
             osArch = Environment.GetEnvironmentVariable("PROCESSOR_ARCHITECTURE") ?? "Unknown"; 

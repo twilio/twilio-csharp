@@ -1,6 +1,44 @@
 twilio-csharp Changelog
 =======================
 
+[2024-03-14] Version 7.0.2
+--------------------------
+**Oauth**
+- Add new APIs for vendor authorize and token endpoints
+
+
+[2024-03-12] Version 7.0.1
+--------------------------
+**Library - Fix**
+- [PR #738](https://github.com/twilio/twilio-csharp/pull/738): adding support for net35 net462 and netstandard2.1. Thanks to [@sbansla](https://github.com/sbansla)!
+
+**Library - Chore**
+- [PR #735](https://github.com/twilio/twilio-csharp/pull/735): skipping duplicate nuget push. Thanks to [@tiwarishubham635](https://github.com/tiwarishubham635)!
+
+**Api**
+- Correct precedence documentation for application_sid vs status_callback in message creation
+- Mark MaxPrice as deprecated
+
+**Flex**
+- Making `plugins` visibility to public
+
+**Messaging**
+- Add new `errors` attribute to the Brand Registration resource.
+- Mark `brand_feedback` attribute as deprecated.
+- Mark `failure_reason` attribute as deprecated.
+- The new `errors` attribute is expected to provide additional information about Brand registration failures and feedback (if any has been provided by The Campaign Registry). Consumers should use this attribute instead of `brand_feedback` and `failure_reason`.
+
+**Numbers**
+- Correcting mount_name for porting port in fetch API
+
+**Trusthub**
+- Add new field in statusCallbackUrl in compliance_registration.
+- Add new field in isvRegisteringForSelfOrTenant in compliance_registration.
+
+**Twiml**
+- Expanded description of Action parameter for Message verb
+
+
 [2024-02-27] Version 7.0.0
 --------------------------
 **Note:** This release contains breaking changes, check our [upgrade guide](./UPGRADE.md#2024-02-XX-6xx-to-7xx) for detailed migration notes.

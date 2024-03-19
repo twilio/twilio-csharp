@@ -429,6 +429,120 @@ namespace Twilio.Rest.Content.V1
                 }
             }
         }
+        public class CatalogItem
+        {
+            [JsonProperty("id")]
+            private string Id {get; set;}
+            [JsonProperty("section_title")]
+            private string SectionTitle {get; set;}
+            [JsonProperty("name")]
+            private string Name {get; set;}
+            [JsonProperty("media_url")]
+            private string MediaUrl {get; set;}
+            [JsonProperty("price")]
+            private decimal? Price {get; set;}
+            [JsonProperty("description")]
+            private string Description {get; set;}
+            public CatalogItem() { }
+            public class Builder
+            {
+                private CatalogItem _catalogItem = new CatalogItem();
+                public Builder()
+                {
+                }
+                public Builder WithId(string id)
+                {
+                    _catalogItem.Id= id;
+                    return this;
+                }
+                public Builder WithSectionTitle(string sectionTitle)
+                {
+                    _catalogItem.SectionTitle= sectionTitle;
+                    return this;
+                }
+                public Builder WithName(string name)
+                {
+                    _catalogItem.Name= name;
+                    return this;
+                }
+                public Builder WithMediaUrl(string mediaUrl)
+                {
+                    _catalogItem.MediaUrl= mediaUrl;
+                    return this;
+                }
+                public Builder WithPrice(decimal? price)
+                {
+                    _catalogItem.Price= price;
+                    return this;
+                }
+                public Builder WithDescription(string description)
+                {
+                    _catalogItem.Description= description;
+                    return this;
+                }
+                public CatalogItem Build()
+                {
+                    return _catalogItem;
+                }
+            }
+        }
+        public class TwilioCatalog
+        {
+            [JsonProperty("title")]
+            private string Title {get; set;}
+            [JsonProperty("body")]
+            private string Body {get; set;}
+            [JsonProperty("subtitle")]
+            private string Subtitle {get; set;}
+            [JsonProperty("id")]
+            private string Id {get; set;}
+            [JsonProperty("items")]
+            private List<CatalogItem> Items {get; set;}
+            [JsonProperty("dynamic_items")]
+            private string DynamicItems {get; set;}
+            public TwilioCatalog() { }
+            public class Builder
+            {
+                private TwilioCatalog _twilioCatalog = new TwilioCatalog();
+                public Builder()
+                {
+                }
+                public Builder WithTitle(string title)
+                {
+                    _twilioCatalog.Title= title;
+                    return this;
+                }
+                public Builder WithBody(string body)
+                {
+                    _twilioCatalog.Body= body;
+                    return this;
+                }
+                public Builder WithSubtitle(string subtitle)
+                {
+                    _twilioCatalog.Subtitle= subtitle;
+                    return this;
+                }
+                public Builder WithId(string id)
+                {
+                    _twilioCatalog.Id= id;
+                    return this;
+                }
+                public Builder WithItems(List<CatalogItem> items)
+                {
+                    _twilioCatalog.Items= items;
+                    return this;
+                }
+                public Builder WithDynamicItems(string dynamicItems)
+                {
+                    _twilioCatalog.DynamicItems= dynamicItems;
+                    return this;
+                }
+                public TwilioCatalog Build()
+                {
+                    return _twilioCatalog;
+                }
+            }
+        }
         public class WhatsappCard
         {
             [JsonProperty("body")]
@@ -561,6 +675,8 @@ namespace Twilio.Rest.Content.V1
             private TwilioQuickReply TwilioQuickReply {get; set;}
             [JsonProperty("twilio/card")]
             private TwilioCard TwilioCard {get; set;}
+            [JsonProperty("twilio/catalog")]
+            private TwilioCatalog TwilioCatalog {get; set;}
             [JsonProperty("whatsapp/card")]
             private WhatsappCard WhatsappCard {get; set;}
             [JsonProperty("whatsapp/authentication")]
@@ -605,6 +721,11 @@ namespace Twilio.Rest.Content.V1
                 public Builder WithTwilioCard(TwilioCard twilioCard)
                 {
                     _types.TwilioCard= twilioCard;
+                    return this;
+                }
+                public Builder WithTwilioCatalog(TwilioCatalog twilioCatalog)
+                {
+                    _types.TwilioCatalog= twilioCatalog;
                     return this;
                 }
                 public Builder WithWhatsappCard(WhatsappCard whatsappCard)
