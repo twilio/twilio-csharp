@@ -58,6 +58,8 @@ namespace Twilio.Tests.TwiML
 
             elem.Room("name", "participant_identity");
 
+            elem.Autopilot("name");
+
             elem.Stream(
                 "name",
                 "connector_name",
@@ -96,6 +98,7 @@ namespace Twilio.Tests.TwiML
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
                 "<Connect>" + Environment.NewLine +
                 "  <Room participantIdentity=\"participant_identity\">name</Room>" + Environment.NewLine +
+                "  <Autopilot>name</Autopilot>" + Environment.NewLine +
                 "  <Stream name=\"name\" connectorName=\"connector_name\" url=\"url\" track=\"inbound_track\" statusCallback=\"status_callback\" statusCallbackMethod=\"GET\"></Stream>" + Environment.NewLine +
                 "  <VirtualAgent connectorName=\"connector_name\" language=\"language\" sentimentAnalysis=\"true\" statusCallback=\"status_callback\" statusCallbackMethod=\"GET\"></VirtualAgent>" + Environment.NewLine +
                 "  <Conversation serviceInstanceSid=\"service_instance_sid\" inboundAutocreation=\"true\" routingAssignmentTimeout=\"1\" inboundTimeout=\"1\" url=\"https://example.com\" method=\"GET\" record=\"do-not-record\" trim=\"trim-silence\" recordingStatusCallback=\"https://example.com\" recordingStatusCallbackMethod=\"GET\" recordingStatusCallbackEvent=\"in-progress\" statusCallback=\"https://example.com\" statusCallbackMethod=\"GET\" statusCallbackEvent=\"call-initiated\"></Conversation>" + Environment.NewLine +

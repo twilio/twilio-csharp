@@ -142,6 +142,9 @@ namespace Twilio.Rest.Trusthub.V1
         ///<summary> The url we call to inform you of bundle changes. </summary> 
         public string StatusCallbackUrl { get; set; }
 
+        ///<summary> Theme id for styling the inquiry form. </summary> 
+        public string ThemeSetId { get; set; }
+
 
         /// <summary> Construct a new CreateComplianceRegistrationOptions </summary>
         /// <param name="endUserType">  </param>
@@ -310,11 +313,59 @@ namespace Twilio.Rest.Trusthub.V1
             {
                 p.Add(new KeyValuePair<string, string>("StatusCallbackUrl", StatusCallbackUrl));
             }
+            if (ThemeSetId != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ThemeSetId", ThemeSetId));
+            }
             return p;
         }
 
         
 
     }
+    /// <summary> Resume a specific Regulatory Compliance Inquiry that has expired, or re-open a rejected Compliance Inquiry for editing. </summary>
+    public class UpdateComplianceRegistrationInquiriesOptions : IOptions<ComplianceRegistrationInquiriesResource>
+    {
+    
+        ///<summary> The unique RegistrationId matching the Regulatory Compliance Inquiry that should be resumed or resubmitted. This value will have been returned by the initial Regulatory Compliance Inquiry creation call. </summary> 
+        public string PathRegistrationId { get; }
+
+        ///<summary> Indicates if the inquiry is being started from an ISV embedded component. </summary> 
+        public bool? IsIsvEmbed { get; set; }
+
+        ///<summary> Theme id for styling the inquiry form. </summary> 
+        public string ThemeSetId { get; set; }
+
+
+
+        /// <summary> Construct a new UpdateComplianceRegistrationOptions </summary>
+        /// <param name="pathRegistrationId"> The unique RegistrationId matching the Regulatory Compliance Inquiry that should be resumed or resubmitted. This value will have been returned by the initial Regulatory Compliance Inquiry creation call. </param>
+        public UpdateComplianceRegistrationInquiriesOptions(string pathRegistrationId)
+        {
+            PathRegistrationId = pathRegistrationId;
+        }
+
+        
+        /// <summary> Generate the necessary parameters </summary>
+        public List<KeyValuePair<string, string>> GetParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+
+            if (IsIsvEmbed != null)
+            {
+                p.Add(new KeyValuePair<string, string>("IsIsvEmbed", IsIsvEmbed.Value.ToString().ToLower()));
+            }
+            if (ThemeSetId != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ThemeSetId", ThemeSetId));
+            }
+            return p;
+        }
+
+        
+
+    }
+
+
 }
 

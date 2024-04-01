@@ -161,6 +161,10 @@ namespace Twilio.Rest.Numbers.V1
         [JsonProperty("target_port_in_time_range_end")]
         public string TargetPortInTimeRangeEnd { get; private set; }
 
+        ///<summary> The status of the port in request. The possible values are: In progress, Completed, Expired, In review, Waiting for Signature, Action Required, and Canceled. </summary> 
+        [JsonProperty("port_in_request_status")]
+        public string PortInRequestStatus { get; private set; }
+
         ///<summary> The information for the losing carrier.  </summary> 
         [JsonProperty("losing_carrier_information")]
         public object LosingCarrierInformation { get; private set; }

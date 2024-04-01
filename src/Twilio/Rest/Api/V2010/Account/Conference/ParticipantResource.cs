@@ -826,6 +826,10 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         [JsonProperty("status")]
         public ParticipantResource.StatusEnum Status { get; private set; }
 
+        ///<summary> The wait time in milliseconds before participant's call is placed. Only available in the response to a create participant request. </summary> 
+        [JsonProperty("queue_time")]
+        public string QueueTime { get; private set; }
+
         ///<summary> The URI of the resource, relative to `https://api.twilio.com`. </summary> 
         [JsonProperty("uri")]
         public string Uri { get; private set; }

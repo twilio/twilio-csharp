@@ -29,18 +29,18 @@ namespace Twilio.Rest.Content.V1.Content
     {
         
         
-        public string PathSid { get; }
+        public string PathContentSid { get; }
 
         
         public ApprovalCreateResource.ContentApprovalRequest ContentApprovalRequest { get; }
 
 
         /// <summary> Construct a new CreateContentApprovalRequestOptions </summary>
-        /// <param name="pathSid">  </param>
+        /// <param name="pathContentSid">  </param>
         /// <param name="contentApprovalRequest">  </param>
-        public CreateApprovalCreateOptions(string pathSid, ApprovalCreateResource.ContentApprovalRequest contentApprovalRequest)
+        public CreateApprovalCreateOptions(string pathContentSid, ApprovalCreateResource.ContentApprovalRequest contentApprovalRequest)
         {
-            PathSid = pathSid;
+            PathContentSid = pathContentSid;
             ContentApprovalRequest = contentApprovalRequest;
         }
 

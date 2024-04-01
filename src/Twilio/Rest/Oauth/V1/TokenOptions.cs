@@ -35,7 +35,7 @@ namespace Twilio.Rest.Oauth.V1
         public string ClientId { get; }
 
         ///<summary> The credential for confidential OAuth App. </summary> 
-        public string ClientSecret { get; }
+        public string ClientSecret { get; set; }
 
         ///<summary> JWT token related to the authorization code grant type. </summary> 
         public string Code { get; set; }
@@ -46,16 +46,20 @@ namespace Twilio.Rest.Oauth.V1
         ///<summary> The targeted audience uri </summary> 
         public string Audience { get; set; }
 
+        ///<summary> JWT token related to refresh access token. </summary> 
+        public string RefreshToken { get; set; }
+
+        ///<summary> The scope of token </summary> 
+        public string Scope { get; set; }
+
 
         /// <summary> Construct a new CreateTokenOptions </summary>
         /// <param name="grantType"> Grant type is a credential representing resource owner's authorization which can be used by client to obtain access token. </param>
         /// <param name="clientId"> A 34 character string that uniquely identifies this OAuth App. </param>
-        /// <param name="clientSecret"> The credential for confidential OAuth App. </param>
-        public CreateTokenOptions(string grantType, string clientId, string clientSecret)
+        public CreateTokenOptions(string grantType, string clientId)
         {
             GrantType = grantType;
             ClientId = clientId;
-            ClientSecret = clientSecret;
         }
 
         
@@ -87,6 +91,14 @@ namespace Twilio.Rest.Oauth.V1
             if (Audience != null)
             {
                 p.Add(new KeyValuePair<string, string>("Audience", Audience));
+            }
+            if (RefreshToken != null)
+            {
+                p.Add(new KeyValuePair<string, string>("RefreshToken", RefreshToken));
+            }
+            if (Scope != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Scope", Scope));
             }
             return p;
         }

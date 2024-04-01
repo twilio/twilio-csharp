@@ -66,10 +66,10 @@ namespace Twilio.Rest.Content.V1.Content
         private static Request BuildCreateRequest(CreateApprovalCreateOptions options, ITwilioRestClient client)
         {
             
-            string path = "/v1/Content/{Sid}/ApprovalRequests/whatsapp";
+            string path = "/v1/Content/{ContentSid}/ApprovalRequests/whatsapp";
 
-            string PathSid = options.PathSid;
-            path = path.Replace("{"+"Sid"+"}", PathSid);
+            string PathContentSid = options.PathContentSid;
+            path = path.Replace("{"+"ContentSid"+"}", PathContentSid);
 
             return new Request(
                 HttpMethod.Post,
@@ -108,31 +108,31 @@ namespace Twilio.Rest.Content.V1.Content
         #endif
 
         /// <summary> create </summary>
-        /// <param name="pathSid">  </param>
+        /// <param name="pathContentSid">  </param>
         /// <param name="contentApprovalRequest">  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of ApprovalCreate </returns>
         public static ApprovalCreateResource Create(
-                                          string pathSid,
+                                          string pathContentSid,
                                           ApprovalCreateResource.ContentApprovalRequest contentApprovalRequest,
                                           ITwilioRestClient client = null)
         {
-            var options = new CreateApprovalCreateOptions(pathSid, contentApprovalRequest){  };
+            var options = new CreateApprovalCreateOptions(pathContentSid, contentApprovalRequest){  };
             return Create(options, client);
         }
 
         #if !NET35
         /// <summary> create </summary>
-        /// <param name="pathSid">  </param>
+        /// <param name="pathContentSid">  </param>
         /// <param name="contentApprovalRequest">  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ApprovalCreate </returns>
         public static async System.Threading.Tasks.Task<ApprovalCreateResource> CreateAsync(
-                                                                                  string pathSid,
+                                                                                  string pathContentSid,
                                                                                   ApprovalCreateResource.ContentApprovalRequest contentApprovalRequest,
                                                                                   ITwilioRestClient client = null)
         {
-        var options = new CreateApprovalCreateOptions(pathSid, contentApprovalRequest){  };
+        var options = new CreateApprovalCreateOptions(pathContentSid, contentApprovalRequest){  };
             return await CreateAsync(options, client);
         }
         #endif

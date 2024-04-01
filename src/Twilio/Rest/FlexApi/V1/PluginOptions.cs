@@ -40,6 +40,12 @@ namespace Twilio.Rest.FlexApi.V1
         ///<summary> A descriptive string that you create to describe the plugin resource. It can be up to 500 characters long </summary> 
         public string Description { get; set; }
 
+        ///<summary> The version of Flex Plugins CLI used to create this plugin </summary> 
+        public string CliVersion { get; set; }
+
+        ///<summary> The validation status of the plugin, indicating whether it has been validated </summary> 
+        public string ValidateStatus { get; set; }
+
 
         /// <summary> Construct a new CreatePluginOptions </summary>
         /// <param name="uniqueName"> The Flex Plugin's unique name. </param>
@@ -65,6 +71,14 @@ namespace Twilio.Rest.FlexApi.V1
             if (Description != null)
             {
                 p.Add(new KeyValuePair<string, string>("Description", Description));
+            }
+            if (CliVersion != null)
+            {
+                p.Add(new KeyValuePair<string, string>("CliVersion", CliVersion));
+            }
+            if (ValidateStatus != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ValidateStatus", ValidateStatus));
             }
             return p;
         }

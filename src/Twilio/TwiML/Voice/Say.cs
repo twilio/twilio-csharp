@@ -223,6 +223,10 @@ namespace Twilio.TwiML.Voice
             public static readonly VoiceEnum GoogleFrFrWavenetD = new VoiceEnum("Google.fr-FR-Wavenet-D");
             public static readonly VoiceEnum GoogleFrFrWavenetE = new VoiceEnum("Google.fr-FR-Wavenet-E");
             public static readonly VoiceEnum GoogleGlEsStandardA = new VoiceEnum("Google.gl-ES-Standard-A");
+            public static readonly VoiceEnum GoogleGuInStandardC = new VoiceEnum("Google.gu-IN-Standard-C");
+            public static readonly VoiceEnum GoogleGuInStandardD = new VoiceEnum("Google.gu-IN-Standard-D");
+            public static readonly VoiceEnum GoogleGuInWavenetC = new VoiceEnum("Google.gu-IN-Wavenet-C");
+            public static readonly VoiceEnum GoogleGuInWavenetD = new VoiceEnum("Google.gu-IN-Wavenet-D");
             public static readonly VoiceEnum GoogleHeIlStandardA = new VoiceEnum("Google.he-IL-Standard-A");
             public static readonly VoiceEnum GoogleHeIlStandardB = new VoiceEnum("Google.he-IL-Standard-B");
             public static readonly VoiceEnum GoogleHeIlStandardC = new VoiceEnum("Google.he-IL-Standard-C");
@@ -527,6 +531,7 @@ namespace Twilio.TwiML.Voice
             public static readonly VoiceEnum PollyLupeNeural = new VoiceEnum("Polly.Lupe-Neural");
             public static readonly VoiceEnum PollyMatthewNeural = new VoiceEnum("Polly.Matthew-Neural");
             public static readonly VoiceEnum PollyMiaNeural = new VoiceEnum("Polly.Mia-Neural");
+            public static readonly VoiceEnum PollyNiamhNeural = new VoiceEnum("Polly.Niamh-Neural");
             public static readonly VoiceEnum PollyOlaNeural = new VoiceEnum("Polly.Ola-Neural");
             public static readonly VoiceEnum PollyOliviaNeural = new VoiceEnum("Polly.Olivia-Neural");
             public static readonly VoiceEnum PollyPedroNeural = new VoiceEnum("Polly.Pedro-Neural");
@@ -535,6 +540,7 @@ namespace Twilio.TwiML.Voice
             public static readonly VoiceEnum PollySalliNeural = new VoiceEnum("Polly.Salli-Neural");
             public static readonly VoiceEnum PollySeoyeonNeural = new VoiceEnum("Polly.Seoyeon-Neural");
             public static readonly VoiceEnum PollySergioNeural = new VoiceEnum("Polly.Sergio-Neural");
+            public static readonly VoiceEnum PollySofieNeural = new VoiceEnum("Polly.Sofie-Neural");
             public static readonly VoiceEnum PollyStephenNeural = new VoiceEnum("Polly.Stephen-Neural");
             public static readonly VoiceEnum PollySuviNeural = new VoiceEnum("Polly.Suvi-Neural");
             public static readonly VoiceEnum PollyTakumiNeural = new VoiceEnum("Polly.Takumi-Neural");
@@ -575,6 +581,7 @@ namespace Twilio.TwiML.Voice
             public static readonly LanguageEnum EnCa = new LanguageEnum("en-CA");
             public static readonly LanguageEnum EnGb = new LanguageEnum("en-GB");
             public static readonly LanguageEnum EnGbWls = new LanguageEnum("en-GB-WLS");
+            public static readonly LanguageEnum EnIe = new LanguageEnum("en-IE");
             public static readonly LanguageEnum EnIn = new LanguageEnum("en-IN");
             public static readonly LanguageEnum EnNz = new LanguageEnum("en-NZ");
             public static readonly LanguageEnum EnUs = new LanguageEnum("en-US");

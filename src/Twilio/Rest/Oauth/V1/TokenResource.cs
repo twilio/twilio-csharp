@@ -81,18 +81,22 @@ namespace Twilio.Rest.Oauth.V1
         /// <param name="code"> JWT token related to the authorization code grant type. </param>
         /// <param name="redirectUri"> The redirect uri </param>
         /// <param name="audience"> The targeted audience uri </param>
+        /// <param name="refreshToken"> JWT token related to refresh access token. </param>
+        /// <param name="scope"> The scope of token </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Token </returns>
         public static TokenResource Create(
                                           string grantType,
                                           string clientId,
-                                          string clientSecret,
+                                          string clientSecret = null,
                                           string code = null,
                                           string redirectUri = null,
                                           string audience = null,
+                                          string refreshToken = null,
+                                          string scope = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new CreateTokenOptions(grantType, clientId, clientSecret){  Code = code, RedirectUri = redirectUri, Audience = audience };
+            var options = new CreateTokenOptions(grantType, clientId){  ClientSecret = clientSecret, Code = code, RedirectUri = redirectUri, Audience = audience, RefreshToken = refreshToken, Scope = scope };
             return Create(options, client);
         }
 
@@ -104,18 +108,22 @@ namespace Twilio.Rest.Oauth.V1
         /// <param name="code"> JWT token related to the authorization code grant type. </param>
         /// <param name="redirectUri"> The redirect uri </param>
         /// <param name="audience"> The targeted audience uri </param>
+        /// <param name="refreshToken"> JWT token related to refresh access token. </param>
+        /// <param name="scope"> The scope of token </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Token </returns>
         public static async System.Threading.Tasks.Task<TokenResource> CreateAsync(
                                                                                   string grantType,
                                                                                   string clientId,
-                                                                                  string clientSecret,
+                                                                                  string clientSecret = null,
                                                                                   string code = null,
                                                                                   string redirectUri = null,
                                                                                   string audience = null,
+                                                                                  string refreshToken = null,
+                                                                                  string scope = null,
                                                                                   ITwilioRestClient client = null)
         {
-        var options = new CreateTokenOptions(grantType, clientId, clientSecret){  Code = code, RedirectUri = redirectUri, Audience = audience };
+        var options = new CreateTokenOptions(grantType, clientId){  ClientSecret = clientSecret, Code = code, RedirectUri = redirectUri, Audience = audience, RefreshToken = refreshToken, Scope = scope };
             return await CreateAsync(options, client);
         }
         #endif
@@ -172,7 +180,7 @@ namespace Twilio.Rest.Oauth.V1
 
         ///<summary> The expires_in </summary> 
         [JsonProperty("expires_in")]
-        public DateTime? ExpiresIn { get; private set; }
+        public long? ExpiresIn { get; private set; }
 
 
 

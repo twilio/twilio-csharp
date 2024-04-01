@@ -167,6 +167,7 @@ namespace Twilio.Rest.Trusthub.V1
         /// <param name="isIsvEmbed"> Indicates if the inquiry is being started from an ISV embedded component. </param>
         /// <param name="isvRegisteringForSelfOrTenant"> Indicates if the isv registering for self or tenant. </param>
         /// <param name="statusCallbackUrl"> The url we call to inform you of bundle changes. </param>
+        /// <param name="themeSetId"> Theme id for styling the inquiry form. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of ComplianceRegistrationInquiries </returns>
         public static ComplianceRegistrationInquiriesResource Create(
@@ -208,9 +209,10 @@ namespace Twilio.Rest.Trusthub.V1
                                           bool? isIsvEmbed = null,
                                           string isvRegisteringForSelfOrTenant = null,
                                           string statusCallbackUrl = null,
+                                          string themeSetId = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new CreateComplianceRegistrationInquiriesOptions(endUserType, phoneNumberType){  BusinessIdentityType = businessIdentityType, BusinessRegistrationAuthority = businessRegistrationAuthority, BusinessLegalName = businessLegalName, NotificationEmail = notificationEmail, AcceptedNotificationReceipt = acceptedNotificationReceipt, BusinessRegistrationNumber = businessRegistrationNumber, BusinessWebsiteUrl = businessWebsiteUrl, FriendlyName = friendlyName, AuthorizedRepresentative1FirstName = authorizedRepresentative1FirstName, AuthorizedRepresentative1LastName = authorizedRepresentative1LastName, AuthorizedRepresentative1Phone = authorizedRepresentative1Phone, AuthorizedRepresentative1Email = authorizedRepresentative1Email, AuthorizedRepresentative1DateOfBirth = authorizedRepresentative1DateOfBirth, AddressStreet = addressStreet, AddressStreetSecondary = addressStreetSecondary, AddressCity = addressCity, AddressSubdivision = addressSubdivision, AddressPostalCode = addressPostalCode, AddressCountryCode = addressCountryCode, EmergencyAddressStreet = emergencyAddressStreet, EmergencyAddressStreetSecondary = emergencyAddressStreetSecondary, EmergencyAddressCity = emergencyAddressCity, EmergencyAddressSubdivision = emergencyAddressSubdivision, EmergencyAddressPostalCode = emergencyAddressPostalCode, EmergencyAddressCountryCode = emergencyAddressCountryCode, UseAddressAsEmergencyAddress = useAddressAsEmergencyAddress, FileName = fileName, File = file, FirstName = firstName, LastName = lastName, DateOfBirth = dateOfBirth, IndividualEmail = individualEmail, IndividualPhone = individualPhone, IsIsvEmbed = isIsvEmbed, IsvRegisteringForSelfOrTenant = isvRegisteringForSelfOrTenant, StatusCallbackUrl = statusCallbackUrl };
+            var options = new CreateComplianceRegistrationInquiriesOptions(endUserType, phoneNumberType){  BusinessIdentityType = businessIdentityType, BusinessRegistrationAuthority = businessRegistrationAuthority, BusinessLegalName = businessLegalName, NotificationEmail = notificationEmail, AcceptedNotificationReceipt = acceptedNotificationReceipt, BusinessRegistrationNumber = businessRegistrationNumber, BusinessWebsiteUrl = businessWebsiteUrl, FriendlyName = friendlyName, AuthorizedRepresentative1FirstName = authorizedRepresentative1FirstName, AuthorizedRepresentative1LastName = authorizedRepresentative1LastName, AuthorizedRepresentative1Phone = authorizedRepresentative1Phone, AuthorizedRepresentative1Email = authorizedRepresentative1Email, AuthorizedRepresentative1DateOfBirth = authorizedRepresentative1DateOfBirth, AddressStreet = addressStreet, AddressStreetSecondary = addressStreetSecondary, AddressCity = addressCity, AddressSubdivision = addressSubdivision, AddressPostalCode = addressPostalCode, AddressCountryCode = addressCountryCode, EmergencyAddressStreet = emergencyAddressStreet, EmergencyAddressStreetSecondary = emergencyAddressStreetSecondary, EmergencyAddressCity = emergencyAddressCity, EmergencyAddressSubdivision = emergencyAddressSubdivision, EmergencyAddressPostalCode = emergencyAddressPostalCode, EmergencyAddressCountryCode = emergencyAddressCountryCode, UseAddressAsEmergencyAddress = useAddressAsEmergencyAddress, FileName = fileName, File = file, FirstName = firstName, LastName = lastName, DateOfBirth = dateOfBirth, IndividualEmail = individualEmail, IndividualPhone = individualPhone, IsIsvEmbed = isIsvEmbed, IsvRegisteringForSelfOrTenant = isvRegisteringForSelfOrTenant, StatusCallbackUrl = statusCallbackUrl, ThemeSetId = themeSetId };
             return Create(options, client);
         }
 
@@ -254,6 +256,7 @@ namespace Twilio.Rest.Trusthub.V1
         /// <param name="isIsvEmbed"> Indicates if the inquiry is being started from an ISV embedded component. </param>
         /// <param name="isvRegisteringForSelfOrTenant"> Indicates if the isv registering for self or tenant. </param>
         /// <param name="statusCallbackUrl"> The url we call to inform you of bundle changes. </param>
+        /// <param name="themeSetId"> Theme id for styling the inquiry form. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ComplianceRegistrationInquiries </returns>
         public static async System.Threading.Tasks.Task<ComplianceRegistrationInquiriesResource> CreateAsync(
@@ -295,10 +298,87 @@ namespace Twilio.Rest.Trusthub.V1
                                                                                   bool? isIsvEmbed = null,
                                                                                   string isvRegisteringForSelfOrTenant = null,
                                                                                   string statusCallbackUrl = null,
+                                                                                  string themeSetId = null,
                                                                                   ITwilioRestClient client = null)
         {
-        var options = new CreateComplianceRegistrationInquiriesOptions(endUserType, phoneNumberType){  BusinessIdentityType = businessIdentityType, BusinessRegistrationAuthority = businessRegistrationAuthority, BusinessLegalName = businessLegalName, NotificationEmail = notificationEmail, AcceptedNotificationReceipt = acceptedNotificationReceipt, BusinessRegistrationNumber = businessRegistrationNumber, BusinessWebsiteUrl = businessWebsiteUrl, FriendlyName = friendlyName, AuthorizedRepresentative1FirstName = authorizedRepresentative1FirstName, AuthorizedRepresentative1LastName = authorizedRepresentative1LastName, AuthorizedRepresentative1Phone = authorizedRepresentative1Phone, AuthorizedRepresentative1Email = authorizedRepresentative1Email, AuthorizedRepresentative1DateOfBirth = authorizedRepresentative1DateOfBirth, AddressStreet = addressStreet, AddressStreetSecondary = addressStreetSecondary, AddressCity = addressCity, AddressSubdivision = addressSubdivision, AddressPostalCode = addressPostalCode, AddressCountryCode = addressCountryCode, EmergencyAddressStreet = emergencyAddressStreet, EmergencyAddressStreetSecondary = emergencyAddressStreetSecondary, EmergencyAddressCity = emergencyAddressCity, EmergencyAddressSubdivision = emergencyAddressSubdivision, EmergencyAddressPostalCode = emergencyAddressPostalCode, EmergencyAddressCountryCode = emergencyAddressCountryCode, UseAddressAsEmergencyAddress = useAddressAsEmergencyAddress, FileName = fileName, File = file, FirstName = firstName, LastName = lastName, DateOfBirth = dateOfBirth, IndividualEmail = individualEmail, IndividualPhone = individualPhone, IsIsvEmbed = isIsvEmbed, IsvRegisteringForSelfOrTenant = isvRegisteringForSelfOrTenant, StatusCallbackUrl = statusCallbackUrl };
+        var options = new CreateComplianceRegistrationInquiriesOptions(endUserType, phoneNumberType){  BusinessIdentityType = businessIdentityType, BusinessRegistrationAuthority = businessRegistrationAuthority, BusinessLegalName = businessLegalName, NotificationEmail = notificationEmail, AcceptedNotificationReceipt = acceptedNotificationReceipt, BusinessRegistrationNumber = businessRegistrationNumber, BusinessWebsiteUrl = businessWebsiteUrl, FriendlyName = friendlyName, AuthorizedRepresentative1FirstName = authorizedRepresentative1FirstName, AuthorizedRepresentative1LastName = authorizedRepresentative1LastName, AuthorizedRepresentative1Phone = authorizedRepresentative1Phone, AuthorizedRepresentative1Email = authorizedRepresentative1Email, AuthorizedRepresentative1DateOfBirth = authorizedRepresentative1DateOfBirth, AddressStreet = addressStreet, AddressStreetSecondary = addressStreetSecondary, AddressCity = addressCity, AddressSubdivision = addressSubdivision, AddressPostalCode = addressPostalCode, AddressCountryCode = addressCountryCode, EmergencyAddressStreet = emergencyAddressStreet, EmergencyAddressStreetSecondary = emergencyAddressStreetSecondary, EmergencyAddressCity = emergencyAddressCity, EmergencyAddressSubdivision = emergencyAddressSubdivision, EmergencyAddressPostalCode = emergencyAddressPostalCode, EmergencyAddressCountryCode = emergencyAddressCountryCode, UseAddressAsEmergencyAddress = useAddressAsEmergencyAddress, FileName = fileName, File = file, FirstName = firstName, LastName = lastName, DateOfBirth = dateOfBirth, IndividualEmail = individualEmail, IndividualPhone = individualPhone, IsIsvEmbed = isIsvEmbed, IsvRegisteringForSelfOrTenant = isvRegisteringForSelfOrTenant, StatusCallbackUrl = statusCallbackUrl, ThemeSetId = themeSetId };
             return await CreateAsync(options, client);
+        }
+        #endif
+        
+        private static Request BuildUpdateRequest(UpdateComplianceRegistrationInquiriesOptions options, ITwilioRestClient client)
+        {
+            
+            string path = "/v1/ComplianceInquiries/Registration/{RegistrationId}/RegulatoryCompliance/GB/Initialize";
+
+            string PathRegistrationId = options.PathRegistrationId;
+            path = path.Replace("{"+"RegistrationId"+"}", PathRegistrationId);
+
+            return new Request(
+                HttpMethod.Post,
+                Rest.Domain.Trusthub,
+                path,
+                postParams: options.GetParams(),
+                headerParams: null
+            );
+        }
+
+        /// <summary> Resume a specific Regulatory Compliance Inquiry that has expired, or re-open a rejected Compliance Inquiry for editing. </summary>
+        /// <param name="options"> Update ComplianceRegistrationInquiries parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of ComplianceRegistrationInquiries </returns>
+        public static ComplianceRegistrationInquiriesResource Update(UpdateComplianceRegistrationInquiriesOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
+        }
+
+        /// <summary> Resume a specific Regulatory Compliance Inquiry that has expired, or re-open a rejected Compliance Inquiry for editing. </summary>
+        /// <param name="options"> Update ComplianceRegistrationInquiries parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of ComplianceRegistrationInquiries </returns>
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ComplianceRegistrationInquiriesResource> UpdateAsync(UpdateComplianceRegistrationInquiriesOptions options,
+                                                                                                          ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
+        }
+        #endif
+
+        /// <summary> Resume a specific Regulatory Compliance Inquiry that has expired, or re-open a rejected Compliance Inquiry for editing. </summary>
+        /// <param name="pathRegistrationId"> The unique RegistrationId matching the Regulatory Compliance Inquiry that should be resumed or resubmitted. This value will have been returned by the initial Regulatory Compliance Inquiry creation call. </param>
+        /// <param name="isIsvEmbed"> Indicates if the inquiry is being started from an ISV embedded component. </param>
+        /// <param name="themeSetId"> Theme id for styling the inquiry form. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of ComplianceRegistrationInquiries </returns>
+        public static ComplianceRegistrationInquiriesResource Update(
+                                          string pathRegistrationId,
+                                          bool? isIsvEmbed = null,
+                                          string themeSetId = null,
+                                          ITwilioRestClient client = null)
+        {
+            var options = new UpdateComplianceRegistrationInquiriesOptions(pathRegistrationId){ IsIsvEmbed = isIsvEmbed, ThemeSetId = themeSetId };
+            return Update(options, client);
+        }
+
+        #if !NET35
+        /// <summary> Resume a specific Regulatory Compliance Inquiry that has expired, or re-open a rejected Compliance Inquiry for editing. </summary>
+        /// <param name="pathRegistrationId"> The unique RegistrationId matching the Regulatory Compliance Inquiry that should be resumed or resubmitted. This value will have been returned by the initial Regulatory Compliance Inquiry creation call. </param>
+        /// <param name="isIsvEmbed"> Indicates if the inquiry is being started from an ISV embedded component. </param>
+        /// <param name="themeSetId"> Theme id for styling the inquiry form. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of ComplianceRegistrationInquiries </returns>
+        public static async System.Threading.Tasks.Task<ComplianceRegistrationInquiriesResource> UpdateAsync(
+                                                                              string pathRegistrationId,
+                                                                              bool? isIsvEmbed = null,
+                                                                              string themeSetId = null,
+                                                                              ITwilioRestClient client = null)
+        {
+            var options = new UpdateComplianceRegistrationInquiriesOptions(pathRegistrationId){ IsIsvEmbed = isIsvEmbed, ThemeSetId = themeSetId };
+            return await UpdateAsync(options, client);
         }
         #endif
     
