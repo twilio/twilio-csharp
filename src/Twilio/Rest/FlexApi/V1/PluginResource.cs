@@ -78,8 +78,6 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="uniqueName"> The Flex Plugin's unique name. </param>
         /// <param name="friendlyName"> The Flex Plugin's friendly name. </param>
         /// <param name="description"> A descriptive string that you create to describe the plugin resource. It can be up to 500 characters long </param>
-        /// <param name="cliVersion"> The version of Flex Plugins CLI used to create this plugin </param>
-        /// <param name="validateStatus"> The validation status of the plugin, indicating whether it has been validated </param>
         /// <param name="flexMetadata"> The Flex-Metadata HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Plugin </returns>
@@ -87,12 +85,10 @@ namespace Twilio.Rest.FlexApi.V1
                                           string uniqueName,
                                           string friendlyName = null,
                                           string description = null,
-                                          string cliVersion = null,
-                                          string validateStatus = null,
                                           string flexMetadata = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new CreatePluginOptions(uniqueName){  FriendlyName = friendlyName, Description = description, CliVersion = cliVersion, ValidateStatus = validateStatus, FlexMetadata = flexMetadata };
+            var options = new CreatePluginOptions(uniqueName){  FriendlyName = friendlyName, Description = description, FlexMetadata = flexMetadata };
             return Create(options, client);
         }
 
@@ -101,8 +97,6 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="uniqueName"> The Flex Plugin's unique name. </param>
         /// <param name="friendlyName"> The Flex Plugin's friendly name. </param>
         /// <param name="description"> A descriptive string that you create to describe the plugin resource. It can be up to 500 characters long </param>
-        /// <param name="cliVersion"> The version of Flex Plugins CLI used to create this plugin </param>
-        /// <param name="validateStatus"> The validation status of the plugin, indicating whether it has been validated </param>
         /// <param name="flexMetadata"> The Flex-Metadata HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Plugin </returns>
@@ -110,12 +104,10 @@ namespace Twilio.Rest.FlexApi.V1
                                                                                   string uniqueName,
                                                                                   string friendlyName = null,
                                                                                   string description = null,
-                                                                                  string cliVersion = null,
-                                                                                  string validateStatus = null,
                                                                                   string flexMetadata = null,
                                                                                   ITwilioRestClient client = null)
         {
-        var options = new CreatePluginOptions(uniqueName){  FriendlyName = friendlyName, Description = description, CliVersion = cliVersion, ValidateStatus = validateStatus, FlexMetadata = flexMetadata };
+        var options = new CreatePluginOptions(uniqueName){  FriendlyName = friendlyName, Description = description, FlexMetadata = flexMetadata };
             return await CreateAsync(options, client);
         }
         #endif

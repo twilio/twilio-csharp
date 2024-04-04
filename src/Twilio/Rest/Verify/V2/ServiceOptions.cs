@@ -79,6 +79,12 @@ namespace Twilio.Rest.Verify.V2
         ///<summary> The default message [template](https://www.twilio.com/docs/verify/api/templates). Will be used for all SMS verifications unless explicitly overriden. SMS channel only. </summary> 
         public string DefaultTemplateSid { get; set; }
 
+        ///<summary> The SID of the Messaging Service containing WhatsApp Sender(s) that Verify will use to send WhatsApp messages to your users. </summary> 
+        public string WhatsappMsgServiceSid { get; set; }
+
+        ///<summary> The number to use as the WhatsApp Sender that Verify will use to send WhatsApp messages to your users.This WhatsApp Sender must be associated with a Messaging Service SID. </summary> 
+        public string WhatsappFrom { get; set; }
+
         ///<summary> Whether to allow verifications from the service to reach the stream-events sinks if configured </summary> 
         public bool? VerifyEventSubscriptionEnabled { get; set; }
 
@@ -163,6 +169,14 @@ namespace Twilio.Rest.Verify.V2
             if (DefaultTemplateSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("DefaultTemplateSid", DefaultTemplateSid));
+            }
+            if (WhatsappMsgServiceSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Whatsapp.MsgServiceSid", WhatsappMsgServiceSid));
+            }
+            if (WhatsappFrom != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Whatsapp.From", WhatsappFrom));
             }
             if (VerifyEventSubscriptionEnabled != null)
             {
@@ -316,6 +330,12 @@ namespace Twilio.Rest.Verify.V2
         ///<summary> The default message [template](https://www.twilio.com/docs/verify/api/templates). Will be used for all SMS verifications unless explicitly overriden. SMS channel only. </summary> 
         public string DefaultTemplateSid { get; set; }
 
+        ///<summary> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/services) to associate with the Verification Service. </summary> 
+        public string WhatsappMsgServiceSid { get; set; }
+
+        ///<summary> The WhatsApp number to use as the sender of the verification messages. This number must be associated with the WhatsApp Message Service. </summary> 
+        public string WhatsappFrom { get; set; }
+
         ///<summary> Whether to allow verifications from the service to reach the stream-events sinks if configured </summary> 
         public bool? VerifyEventSubscriptionEnabled { get; set; }
 
@@ -401,6 +421,14 @@ namespace Twilio.Rest.Verify.V2
             if (DefaultTemplateSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("DefaultTemplateSid", DefaultTemplateSid));
+            }
+            if (WhatsappMsgServiceSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Whatsapp.MsgServiceSid", WhatsappMsgServiceSid));
+            }
+            if (WhatsappFrom != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Whatsapp.From", WhatsappFrom));
             }
             if (VerifyEventSubscriptionEnabled != null)
             {

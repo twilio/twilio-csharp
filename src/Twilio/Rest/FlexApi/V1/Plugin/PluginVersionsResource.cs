@@ -82,6 +82,8 @@ namespace Twilio.Rest.FlexApi.V1.Plugin
         /// <param name="pluginUrl"> The URL of the Flex Plugin Version bundle </param>
         /// <param name="changelog"> The changelog of the Flex Plugin Version. </param>
         /// <param name="_private"> Whether this Flex Plugin Version requires authorization. </param>
+        /// <param name="cliVersion"> The version of Flex Plugins CLI used to create this plugin </param>
+        /// <param name="validateStatus"> The validation status of the plugin, indicating whether it has been validated </param>
         /// <param name="flexMetadata"> The Flex-Metadata HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of PluginVersions </returns>
@@ -91,10 +93,12 @@ namespace Twilio.Rest.FlexApi.V1.Plugin
                                           Uri pluginUrl,
                                           string changelog = null,
                                           bool? _private = null,
+                                          string cliVersion = null,
+                                          string validateStatus = null,
                                           string flexMetadata = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new CreatePluginVersionsOptions(pathPluginSid, version, pluginUrl){  Changelog = changelog, Private = _private, FlexMetadata = flexMetadata };
+            var options = new CreatePluginVersionsOptions(pathPluginSid, version, pluginUrl){  Changelog = changelog, Private = _private, CliVersion = cliVersion, ValidateStatus = validateStatus, FlexMetadata = flexMetadata };
             return Create(options, client);
         }
 
@@ -105,6 +109,8 @@ namespace Twilio.Rest.FlexApi.V1.Plugin
         /// <param name="pluginUrl"> The URL of the Flex Plugin Version bundle </param>
         /// <param name="changelog"> The changelog of the Flex Plugin Version. </param>
         /// <param name="_private"> Whether this Flex Plugin Version requires authorization. </param>
+        /// <param name="cliVersion"> The version of Flex Plugins CLI used to create this plugin </param>
+        /// <param name="validateStatus"> The validation status of the plugin, indicating whether it has been validated </param>
         /// <param name="flexMetadata"> The Flex-Metadata HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PluginVersions </returns>
@@ -114,10 +120,12 @@ namespace Twilio.Rest.FlexApi.V1.Plugin
                                                                                   Uri pluginUrl,
                                                                                   string changelog = null,
                                                                                   bool? _private = null,
+                                                                                  string cliVersion = null,
+                                                                                  string validateStatus = null,
                                                                                   string flexMetadata = null,
                                                                                   ITwilioRestClient client = null)
         {
-        var options = new CreatePluginVersionsOptions(pathPluginSid, version, pluginUrl){  Changelog = changelog, Private = _private, FlexMetadata = flexMetadata };
+        var options = new CreatePluginVersionsOptions(pathPluginSid, version, pluginUrl){  Changelog = changelog, Private = _private, CliVersion = cliVersion, ValidateStatus = validateStatus, FlexMetadata = flexMetadata };
             return await CreateAsync(options, client);
         }
         #endif

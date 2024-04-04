@@ -92,6 +92,8 @@ namespace Twilio.Rest.Verify.V2
         /// <param name="totpCodeLength"> Optional configuration for the TOTP factors. Number of digits for generated TOTP codes. Must be between 3 and 8, inclusive. Defaults to 6 </param>
         /// <param name="totpSkew"> Optional configuration for the TOTP factors. The number of time-steps, past and future, that are valid for validation of TOTP codes. Must be between 0 and 2, inclusive. Defaults to 1 </param>
         /// <param name="defaultTemplateSid"> The default message [template](https://www.twilio.com/docs/verify/api/templates). Will be used for all SMS verifications unless explicitly overriden. SMS channel only. </param>
+        /// <param name="whatsappMsgServiceSid"> The SID of the Messaging Service containing WhatsApp Sender(s) that Verify will use to send WhatsApp messages to your users. </param>
+        /// <param name="whatsappFrom"> The number to use as the WhatsApp Sender that Verify will use to send WhatsApp messages to your users.This WhatsApp Sender must be associated with a Messaging Service SID. </param>
         /// <param name="verifyEventSubscriptionEnabled"> Whether to allow verifications from the service to reach the stream-events sinks if configured </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns>
@@ -113,10 +115,12 @@ namespace Twilio.Rest.Verify.V2
                                           int? totpCodeLength = null,
                                           int? totpSkew = null,
                                           string defaultTemplateSid = null,
+                                          string whatsappMsgServiceSid = null,
+                                          string whatsappFrom = null,
                                           bool? verifyEventSubscriptionEnabled = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new CreateServiceOptions(friendlyName){  CodeLength = codeLength, LookupEnabled = lookupEnabled, SkipSmsToLandlines = skipSmsToLandlines, DtmfInputRequired = dtmfInputRequired, TtsName = ttsName, Psd2Enabled = psd2Enabled, DoNotShareWarningEnabled = doNotShareWarningEnabled, CustomCodeEnabled = customCodeEnabled, PushIncludeDate = pushIncludeDate, PushApnCredentialSid = pushApnCredentialSid, PushFcmCredentialSid = pushFcmCredentialSid, TotpIssuer = totpIssuer, TotpTimeStep = totpTimeStep, TotpCodeLength = totpCodeLength, TotpSkew = totpSkew, DefaultTemplateSid = defaultTemplateSid, VerifyEventSubscriptionEnabled = verifyEventSubscriptionEnabled };
+            var options = new CreateServiceOptions(friendlyName){  CodeLength = codeLength, LookupEnabled = lookupEnabled, SkipSmsToLandlines = skipSmsToLandlines, DtmfInputRequired = dtmfInputRequired, TtsName = ttsName, Psd2Enabled = psd2Enabled, DoNotShareWarningEnabled = doNotShareWarningEnabled, CustomCodeEnabled = customCodeEnabled, PushIncludeDate = pushIncludeDate, PushApnCredentialSid = pushApnCredentialSid, PushFcmCredentialSid = pushFcmCredentialSid, TotpIssuer = totpIssuer, TotpTimeStep = totpTimeStep, TotpCodeLength = totpCodeLength, TotpSkew = totpSkew, DefaultTemplateSid = defaultTemplateSid, WhatsappMsgServiceSid = whatsappMsgServiceSid, WhatsappFrom = whatsappFrom, VerifyEventSubscriptionEnabled = verifyEventSubscriptionEnabled };
             return Create(options, client);
         }
 
@@ -139,6 +143,8 @@ namespace Twilio.Rest.Verify.V2
         /// <param name="totpCodeLength"> Optional configuration for the TOTP factors. Number of digits for generated TOTP codes. Must be between 3 and 8, inclusive. Defaults to 6 </param>
         /// <param name="totpSkew"> Optional configuration for the TOTP factors. The number of time-steps, past and future, that are valid for validation of TOTP codes. Must be between 0 and 2, inclusive. Defaults to 1 </param>
         /// <param name="defaultTemplateSid"> The default message [template](https://www.twilio.com/docs/verify/api/templates). Will be used for all SMS verifications unless explicitly overriden. SMS channel only. </param>
+        /// <param name="whatsappMsgServiceSid"> The SID of the Messaging Service containing WhatsApp Sender(s) that Verify will use to send WhatsApp messages to your users. </param>
+        /// <param name="whatsappFrom"> The number to use as the WhatsApp Sender that Verify will use to send WhatsApp messages to your users.This WhatsApp Sender must be associated with a Messaging Service SID. </param>
         /// <param name="verifyEventSubscriptionEnabled"> Whether to allow verifications from the service to reach the stream-events sinks if configured </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns>
@@ -160,10 +166,12 @@ namespace Twilio.Rest.Verify.V2
                                                                                   int? totpCodeLength = null,
                                                                                   int? totpSkew = null,
                                                                                   string defaultTemplateSid = null,
+                                                                                  string whatsappMsgServiceSid = null,
+                                                                                  string whatsappFrom = null,
                                                                                   bool? verifyEventSubscriptionEnabled = null,
                                                                                   ITwilioRestClient client = null)
         {
-        var options = new CreateServiceOptions(friendlyName){  CodeLength = codeLength, LookupEnabled = lookupEnabled, SkipSmsToLandlines = skipSmsToLandlines, DtmfInputRequired = dtmfInputRequired, TtsName = ttsName, Psd2Enabled = psd2Enabled, DoNotShareWarningEnabled = doNotShareWarningEnabled, CustomCodeEnabled = customCodeEnabled, PushIncludeDate = pushIncludeDate, PushApnCredentialSid = pushApnCredentialSid, PushFcmCredentialSid = pushFcmCredentialSid, TotpIssuer = totpIssuer, TotpTimeStep = totpTimeStep, TotpCodeLength = totpCodeLength, TotpSkew = totpSkew, DefaultTemplateSid = defaultTemplateSid, VerifyEventSubscriptionEnabled = verifyEventSubscriptionEnabled };
+        var options = new CreateServiceOptions(friendlyName){  CodeLength = codeLength, LookupEnabled = lookupEnabled, SkipSmsToLandlines = skipSmsToLandlines, DtmfInputRequired = dtmfInputRequired, TtsName = ttsName, Psd2Enabled = psd2Enabled, DoNotShareWarningEnabled = doNotShareWarningEnabled, CustomCodeEnabled = customCodeEnabled, PushIncludeDate = pushIncludeDate, PushApnCredentialSid = pushApnCredentialSid, PushFcmCredentialSid = pushFcmCredentialSid, TotpIssuer = totpIssuer, TotpTimeStep = totpTimeStep, TotpCodeLength = totpCodeLength, TotpSkew = totpSkew, DefaultTemplateSid = defaultTemplateSid, WhatsappMsgServiceSid = whatsappMsgServiceSid, WhatsappFrom = whatsappFrom, VerifyEventSubscriptionEnabled = verifyEventSubscriptionEnabled };
             return await CreateAsync(options, client);
         }
         #endif
@@ -482,6 +490,8 @@ namespace Twilio.Rest.Verify.V2
         /// <param name="totpCodeLength"> Optional configuration for the TOTP factors. Number of digits for generated TOTP codes. Must be between 3 and 8, inclusive. Defaults to 6 </param>
         /// <param name="totpSkew"> Optional configuration for the TOTP factors. The number of time-steps, past and future, that are valid for validation of TOTP codes. Must be between 0 and 2, inclusive. Defaults to 1 </param>
         /// <param name="defaultTemplateSid"> The default message [template](https://www.twilio.com/docs/verify/api/templates). Will be used for all SMS verifications unless explicitly overriden. SMS channel only. </param>
+        /// <param name="whatsappMsgServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/services) to associate with the Verification Service. </param>
+        /// <param name="whatsappFrom"> The WhatsApp number to use as the sender of the verification messages. This number must be associated with the WhatsApp Message Service. </param>
         /// <param name="verifyEventSubscriptionEnabled"> Whether to allow verifications from the service to reach the stream-events sinks if configured </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns>
@@ -504,10 +514,12 @@ namespace Twilio.Rest.Verify.V2
                                           int? totpCodeLength = null,
                                           int? totpSkew = null,
                                           string defaultTemplateSid = null,
+                                          string whatsappMsgServiceSid = null,
+                                          string whatsappFrom = null,
                                           bool? verifyEventSubscriptionEnabled = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new UpdateServiceOptions(pathSid){ FriendlyName = friendlyName, CodeLength = codeLength, LookupEnabled = lookupEnabled, SkipSmsToLandlines = skipSmsToLandlines, DtmfInputRequired = dtmfInputRequired, TtsName = ttsName, Psd2Enabled = psd2Enabled, DoNotShareWarningEnabled = doNotShareWarningEnabled, CustomCodeEnabled = customCodeEnabled, PushIncludeDate = pushIncludeDate, PushApnCredentialSid = pushApnCredentialSid, PushFcmCredentialSid = pushFcmCredentialSid, TotpIssuer = totpIssuer, TotpTimeStep = totpTimeStep, TotpCodeLength = totpCodeLength, TotpSkew = totpSkew, DefaultTemplateSid = defaultTemplateSid, VerifyEventSubscriptionEnabled = verifyEventSubscriptionEnabled };
+            var options = new UpdateServiceOptions(pathSid){ FriendlyName = friendlyName, CodeLength = codeLength, LookupEnabled = lookupEnabled, SkipSmsToLandlines = skipSmsToLandlines, DtmfInputRequired = dtmfInputRequired, TtsName = ttsName, Psd2Enabled = psd2Enabled, DoNotShareWarningEnabled = doNotShareWarningEnabled, CustomCodeEnabled = customCodeEnabled, PushIncludeDate = pushIncludeDate, PushApnCredentialSid = pushApnCredentialSid, PushFcmCredentialSid = pushFcmCredentialSid, TotpIssuer = totpIssuer, TotpTimeStep = totpTimeStep, TotpCodeLength = totpCodeLength, TotpSkew = totpSkew, DefaultTemplateSid = defaultTemplateSid, WhatsappMsgServiceSid = whatsappMsgServiceSid, WhatsappFrom = whatsappFrom, VerifyEventSubscriptionEnabled = verifyEventSubscriptionEnabled };
             return Update(options, client);
         }
 
@@ -531,6 +543,8 @@ namespace Twilio.Rest.Verify.V2
         /// <param name="totpCodeLength"> Optional configuration for the TOTP factors. Number of digits for generated TOTP codes. Must be between 3 and 8, inclusive. Defaults to 6 </param>
         /// <param name="totpSkew"> Optional configuration for the TOTP factors. The number of time-steps, past and future, that are valid for validation of TOTP codes. Must be between 0 and 2, inclusive. Defaults to 1 </param>
         /// <param name="defaultTemplateSid"> The default message [template](https://www.twilio.com/docs/verify/api/templates). Will be used for all SMS verifications unless explicitly overriden. SMS channel only. </param>
+        /// <param name="whatsappMsgServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/services) to associate with the Verification Service. </param>
+        /// <param name="whatsappFrom"> The WhatsApp number to use as the sender of the verification messages. This number must be associated with the WhatsApp Message Service. </param>
         /// <param name="verifyEventSubscriptionEnabled"> Whether to allow verifications from the service to reach the stream-events sinks if configured </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns>
@@ -553,10 +567,12 @@ namespace Twilio.Rest.Verify.V2
                                                                               int? totpCodeLength = null,
                                                                               int? totpSkew = null,
                                                                               string defaultTemplateSid = null,
+                                                                              string whatsappMsgServiceSid = null,
+                                                                              string whatsappFrom = null,
                                                                               bool? verifyEventSubscriptionEnabled = null,
                                                                               ITwilioRestClient client = null)
         {
-            var options = new UpdateServiceOptions(pathSid){ FriendlyName = friendlyName, CodeLength = codeLength, LookupEnabled = lookupEnabled, SkipSmsToLandlines = skipSmsToLandlines, DtmfInputRequired = dtmfInputRequired, TtsName = ttsName, Psd2Enabled = psd2Enabled, DoNotShareWarningEnabled = doNotShareWarningEnabled, CustomCodeEnabled = customCodeEnabled, PushIncludeDate = pushIncludeDate, PushApnCredentialSid = pushApnCredentialSid, PushFcmCredentialSid = pushFcmCredentialSid, TotpIssuer = totpIssuer, TotpTimeStep = totpTimeStep, TotpCodeLength = totpCodeLength, TotpSkew = totpSkew, DefaultTemplateSid = defaultTemplateSid, VerifyEventSubscriptionEnabled = verifyEventSubscriptionEnabled };
+            var options = new UpdateServiceOptions(pathSid){ FriendlyName = friendlyName, CodeLength = codeLength, LookupEnabled = lookupEnabled, SkipSmsToLandlines = skipSmsToLandlines, DtmfInputRequired = dtmfInputRequired, TtsName = ttsName, Psd2Enabled = psd2Enabled, DoNotShareWarningEnabled = doNotShareWarningEnabled, CustomCodeEnabled = customCodeEnabled, PushIncludeDate = pushIncludeDate, PushApnCredentialSid = pushApnCredentialSid, PushFcmCredentialSid = pushFcmCredentialSid, TotpIssuer = totpIssuer, TotpTimeStep = totpTimeStep, TotpCodeLength = totpCodeLength, TotpSkew = totpSkew, DefaultTemplateSid = defaultTemplateSid, WhatsappMsgServiceSid = whatsappMsgServiceSid, WhatsappFrom = whatsappFrom, VerifyEventSubscriptionEnabled = verifyEventSubscriptionEnabled };
             return await UpdateAsync(options, client);
         }
         #endif
@@ -650,6 +666,10 @@ namespace Twilio.Rest.Verify.V2
         ///<summary> The default_template_sid </summary> 
         [JsonProperty("default_template_sid")]
         public string DefaultTemplateSid { get; private set; }
+
+        ///<summary> The whatsapp </summary> 
+        [JsonProperty("whatsapp")]
+        public object Whatsapp { get; private set; }
 
         ///<summary> Whether to allow verifications from the service to reach the stream-events sinks if configured </summary> 
         [JsonProperty("verify_event_subscription_enabled")]

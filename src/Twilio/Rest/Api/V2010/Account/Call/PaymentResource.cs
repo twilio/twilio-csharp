@@ -66,6 +66,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             }
             public static readonly TokenTypeEnum OneTime = new TokenTypeEnum("one-time");
             public static readonly TokenTypeEnum Reusable = new TokenTypeEnum("reusable");
+            public static readonly TokenTypeEnum PaymentMethod = new TokenTypeEnum("payment-method");
 
         }
         public sealed class BankAccountTypeEnum : StringEnum

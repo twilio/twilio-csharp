@@ -46,6 +46,12 @@ namespace Twilio.Rest.FlexApi.V1.Plugin
         ///<summary> Whether this Flex Plugin Version requires authorization. </summary> 
         public bool? Private { get; set; }
 
+        ///<summary> The version of Flex Plugins CLI used to create this plugin </summary> 
+        public string CliVersion { get; set; }
+
+        ///<summary> The validation status of the plugin, indicating whether it has been validated </summary> 
+        public string ValidateStatus { get; set; }
+
 
         /// <summary> Construct a new CreatePluginVersionOptions </summary>
         /// <param name="pathPluginSid"> The SID of the Flex Plugin the resource to belongs to. </param>
@@ -79,6 +85,14 @@ namespace Twilio.Rest.FlexApi.V1.Plugin
             if (Private != null)
             {
                 p.Add(new KeyValuePair<string, string>("Private", Private.Value.ToString().ToLower()));
+            }
+            if (CliVersion != null)
+            {
+                p.Add(new KeyValuePair<string, string>("CliVersion", CliVersion));
+            }
+            if (ValidateStatus != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ValidateStatus", ValidateStatus));
             }
             return p;
         }
