@@ -117,12 +117,12 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
         /// <summary> Create a Stream </summary>
         /// <param name="pathCallSid"> The SID of the [Call](https://www.twilio.com/docs/voice/api/call-resource) the Stream resource is associated with. </param>
-        /// <param name="url"> Relative or absolute url where WebSocket connection will be established. </param>
+        /// <param name="url"> Relative or absolute URL where WebSocket connection will be established. </param>
         /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created this Stream resource. </param>
-        /// <param name="name"> The user-specified name of this Stream, if one was given when the Stream was created. This may be used to stop the Stream. </param>
+        /// <param name="name"> The user-specified name of this Stream, if one was given when the Stream was created. This can be used to stop the Stream. </param>
         /// <param name="track">  </param>
-        /// <param name="statusCallback"> Absolute URL of the status callback. </param>
-        /// <param name="statusCallbackMethod"> The http method for the status_callback (one of GET, POST). </param>
+        /// <param name="statusCallback"> Absolute URL to which Twilio sends status callback HTTP requests. </param>
+        /// <param name="statusCallbackMethod"> The HTTP method Twilio uses when sending `status_callback` requests. Possible values are `GET` and `POST`. Default is `POST`. </param>
         /// <param name="parameter1Name"> Parameter name </param>
         /// <param name="parameter1Value"> Parameter value </param>
         /// <param name="parameter2Name"> Parameter name </param>
@@ -538,12 +538,12 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         #if !NET35
         /// <summary> Create a Stream </summary>
         /// <param name="pathCallSid"> The SID of the [Call](https://www.twilio.com/docs/voice/api/call-resource) the Stream resource is associated with. </param>
-        /// <param name="url"> Relative or absolute url where WebSocket connection will be established. </param>
+        /// <param name="url"> Relative or absolute URL where WebSocket connection will be established. </param>
         /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created this Stream resource. </param>
-        /// <param name="name"> The user-specified name of this Stream, if one was given when the Stream was created. This may be used to stop the Stream. </param>
+        /// <param name="name"> The user-specified name of this Stream, if one was given when the Stream was created. This can be used to stop the Stream. </param>
         /// <param name="track">  </param>
-        /// <param name="statusCallback"> Absolute URL of the status callback. </param>
-        /// <param name="statusCallbackMethod"> The http method for the status_callback (one of GET, POST). </param>
+        /// <param name="statusCallback"> Absolute URL to which Twilio sends status callback HTTP requests. </param>
+        /// <param name="statusCallbackMethod"> The HTTP method Twilio uses when sending `status_callback` requests. Possible values are `GET` and `POST`. Default is `POST`. </param>
         /// <param name="parameter1Name"> Parameter name </param>
         /// <param name="parameter1Value"> Parameter value </param>
         /// <param name="parameter2Name"> Parameter name </param>
@@ -1005,7 +1005,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
         /// <summary> Stop a Stream using either the SID of the Stream resource or the `name` used when creating the resource </summary>
         /// <param name="pathCallSid"> The SID of the [Call](https://www.twilio.com/docs/voice/api/call-resource) the Stream resource is associated with. </param>
-        /// <param name="pathSid"> The SID of the Stream resource, or the `name` used when creating the resource </param>
+        /// <param name="pathSid"> The SID or the `name` of the Stream resource to be stopped </param>
         /// <param name="status">  </param>
         /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created this Stream resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -1024,7 +1024,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         #if !NET35
         /// <summary> Stop a Stream using either the SID of the Stream resource or the `name` used when creating the resource </summary>
         /// <param name="pathCallSid"> The SID of the [Call](https://www.twilio.com/docs/voice/api/call-resource) the Stream resource is associated with. </param>
-        /// <param name="pathSid"> The SID of the Stream resource, or the `name` used when creating the resource </param>
+        /// <param name="pathSid"> The SID or the `name` of the Stream resource to be stopped </param>
         /// <param name="status">  </param>
         /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created this Stream resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -1087,7 +1087,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         [JsonProperty("call_sid")]
         public string CallSid { get; private set; }
 
-        ///<summary> The user-specified name of this Stream, if one was given when the Stream was created. This may be used to stop the Stream. </summary> 
+        ///<summary> The user-specified name of this Stream, if one was given when the Stream was created. This can be used to stop the Stream. </summary> 
         [JsonProperty("name")]
         public string Name { get; private set; }
 

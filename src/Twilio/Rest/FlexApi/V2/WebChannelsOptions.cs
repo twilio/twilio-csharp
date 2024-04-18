@@ -31,6 +31,9 @@ namespace Twilio.Rest.FlexApi.V2
         ///<summary> The SID of the Conversations Address. See [Address Configuration Resource](https://www.twilio.com/docs/conversations/api/address-configuration-resource) for configuration details. When a conversation is created on the Flex backend, the callback URL will be set to the corresponding Studio Flow SID or webhook URL in your address configuration. </summary> 
         public string AddressSid { get; }
 
+        ///<summary> The Ui-Version HTTP request header </summary> 
+        public string UiVersion { get; set; }
+
         ///<summary> The Conversation's friendly name. See the [Conversation resource](https://www.twilio.com/docs/conversations/api/conversation-resource) for an example. </summary> 
         public string ChatFriendlyName { get; set; }
 
@@ -74,6 +77,16 @@ namespace Twilio.Rest.FlexApi.V2
         }
 
         
+    /// <summary> Generate the necessary header parameters </summary>
+    public List<KeyValuePair<string, string>> GetHeaderParams()
+    {
+        var p = new List<KeyValuePair<string, string>>();
+        if (UiVersion != null)
+        {
+            p.Add(new KeyValuePair<string, string>("Ui-Version", UiVersion));
+        }
+        return p;
+    }
 
     }
 }

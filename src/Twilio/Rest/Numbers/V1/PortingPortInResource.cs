@@ -97,6 +97,74 @@ namespace Twilio.Rest.Numbers.V1
             return await CreateAsync(options, client);
         }
         #endif
+        
+        /// <summary> Allows to cancel a port in request by SID </summary>
+        /// <param name="options"> Delete PortingPortIn parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of PortingPortIn </returns>
+        private static Request BuildDeleteRequest(DeletePortingPortInOptions options, ITwilioRestClient client)
+        {
+            
+            string path = "/v1/Porting/PortIn/{PortInRequestSid}";
+
+            string PathPortInRequestSid = options.PathPortInRequestSid;
+            path = path.Replace("{"+"PortInRequestSid"+"}", PathPortInRequestSid);
+
+            return new Request(
+                HttpMethod.Delete,
+                Rest.Domain.Numbers,
+                path,
+                queryParams: options.GetParams(),
+                headerParams: null
+            );
+        }
+
+        /// <summary> Allows to cancel a port in request by SID </summary>
+        /// <param name="options"> Delete PortingPortIn parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of PortingPortIn </returns>
+        public static bool Delete(DeletePortingPortInOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+        }
+
+        #if !NET35
+        /// <summary> Allows to cancel a port in request by SID </summary>
+        /// <param name="options"> Delete PortingPortIn parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of PortingPortIn </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeletePortingPortInOptions options,
+                                                                          ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+        }
+        #endif
+
+        /// <summary> Allows to cancel a port in request by SID </summary>
+        /// <param name="pathPortInRequestSid"> The SID of the Port In request. This is a unique identifier of the port in request. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of PortingPortIn </returns>
+        public static bool Delete(string pathPortInRequestSid, ITwilioRestClient client = null)
+        {
+            var options = new DeletePortingPortInOptions(pathPortInRequestSid)     ;
+            return Delete(options, client);
+        }
+
+        #if !NET35
+        /// <summary> Allows to cancel a port in request by SID </summary>
+        /// <param name="pathPortInRequestSid"> The SID of the Port In request. This is a unique identifier of the port in request. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of PortingPortIn </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathPortInRequestSid, ITwilioRestClient client = null)
+        {
+            var options = new DeletePortingPortInOptions(pathPortInRequestSid) ;
+            return await DeleteAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a PortingPortInResource object

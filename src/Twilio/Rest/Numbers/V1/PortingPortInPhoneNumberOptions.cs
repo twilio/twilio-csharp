@@ -23,45 +23,25 @@ using Twilio.Converters;
 
 namespace Twilio.Rest.Numbers.V1
 {
-
-    /// <summary> Allows to create a new port in request </summary>
-    public class CreatePortingPortInOptions : IOptions<PortingPortInResource>
-    {
-        
-        
-        public object Body { get; set; }
-
-
-
-        
-        /// <summary> Generate the request body </summary>
-        public string GetBody()
-        {
-            string body = "";
-
-            if (Body != null)
-            {
-                body = PortingPortInResource.ToJson(Body);
-            }
-            return body;
-        }
-        
-
-    }
-    /// <summary> Allows to cancel a port in request by SID </summary>
-    public class DeletePortingPortInOptions : IOptions<PortingPortInResource>
+    /// <summary> Allows to cancel a port in request phone number by SID </summary>
+    public class DeletePortingPortInPhoneNumberOptions : IOptions<PortingPortInPhoneNumberResource>
     {
         
         ///<summary> The SID of the Port In request. This is a unique identifier of the port in request. </summary> 
         public string PathPortInRequestSid { get; }
 
+        ///<summary> The SID of the Port In request phone number. This is a unique identifier of the phone number. </summary> 
+        public string PathPhoneNumberSid { get; }
 
 
-        /// <summary> Construct a new DeletePortingPortInOptions </summary>
+
+        /// <summary> Construct a new DeletePortingPortInPhoneNumberOptions </summary>
         /// <param name="pathPortInRequestSid"> The SID of the Port In request. This is a unique identifier of the port in request. </param>
-        public DeletePortingPortInOptions(string pathPortInRequestSid)
+        /// <param name="pathPhoneNumberSid"> The SID of the Port In request phone number. This is a unique identifier of the phone number. </param>
+        public DeletePortingPortInPhoneNumberOptions(string pathPortInRequestSid, string pathPhoneNumberSid)
         {
             PathPortInRequestSid = pathPortInRequestSid;
+            PathPhoneNumberSid = pathPhoneNumberSid;
         }
 
         
