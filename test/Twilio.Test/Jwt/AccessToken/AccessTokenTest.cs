@@ -195,6 +195,25 @@ namespace Twilio.Tests.Jwt.AccessToken
         }
         
         [Test]
+        public void TestCheckTaskRouter()
+        {
+            var taskRouterGrant = new TaskRouterGrant
+            {
+                WorkspaceSid = "WSxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+                WorkerSid = "WKxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+                Role = "worker"
+            };
+    
+            Assert.IsNotNull(taskRouterGrant);
+            Assert.AreEqual("task_router", taskRouterGrant.Key);
+            var taskRouterPayload = (Dictionary<string, string>)(taskRouterGrant.Payload);
+            Assert.AreEqual(3, taskRouterPayload.Count);
+            Assert.AreEqual("WSxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", taskRouterPayload["workspace_sid"]);
+            Assert.AreEqual("WKxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", taskRouterPayload["worker_sid"]);
+            Assert.AreEqual("worker", taskRouterPayload["role"]);
+        }
+        
+        [Test]
         public void TestCreateTaskRouterGrant()
         {
             var grants = new HashSet<IGrant>
