@@ -13,12 +13,12 @@ namespace Twilio.Jwt.AccessToken
         public string WorkspaceSid { get; set; }
         
         /// <summary>
-        /// Worker ID
+        /// Worker SID
         /// </summary>
         public string WorkerSid { get; set; }
         
         /// <summary>
-        /// Role SID
+        /// Role
         /// </summary>
         public string Role { get; set; }
 
