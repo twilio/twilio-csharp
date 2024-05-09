@@ -193,6 +193,41 @@ namespace Twilio.Tests.Jwt.AccessToken
             var decodedParams = ToDict(outgoing)["params"];
             Assert.AreEqual("bar", ToDict(decodedParams)["foo"]);
         }
+        
+        [Test]
+        public void TestCreateTaskRouterGrant()
+        {
+            var grants = new HashSet<IGrant>
+            {
+                {
+                    new TaskRouterGrant
+                    {
+                        WorkspaceSid = "WSxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+                        WorkerSid = "WKxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+                        Role = "worker"
+                    }
+                }
+            };
+            var token = new TestToken("AC456", "SK123", Secret, grants: grants).ToJwt();
+            Assert.IsNotNull(token);
+            Assert.IsNotEmpty(token);
+
+            var decoded = new DecodedJwt(token, Secret);
+            var payload = decoded.Payload;
+            Assert.IsNotNull(payload);
+
+            Assert.AreEqual("SK123", payload["iss"]);
+            Assert.AreEqual("AC456", payload["sub"]);
+            Assert.Greater(Convert.ToInt64(payload["exp"]), BaseJwt.ConvertToUnixTimestamp(DateTime.UtcNow));
+
+            var decodedGrants = ToDict(payload["grants"]);
+            Assert.AreEqual(1, decodedGrants.Count);
+
+            var decodedCg = ToDict(decodedGrants["task_router"]);
+            Assert.AreEqual("WSxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", decodedCg["workspace_sid"]);
+            Assert.AreEqual("WKxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", decodedCg["worker_sid"]);
+            Assert.AreEqual("worker", decodedCg["role"]);
+        }
 
         [Test]
         public void TestCreateChatGrant()
