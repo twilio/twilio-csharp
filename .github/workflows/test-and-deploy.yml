@@ -52,6 +52,9 @@ jobs:
           TWILIO_TO_NUMBER: ${{ secrets.TWILIO_TO_NUMBER }}
         run: |
           dotnet tool install --global dotnet-sonarscanner
+          cd test/Twilio.Test
+          dotnet add package coverlet.msbuild --version 6.0.2
+          cd ../..
           make cover
 
   deploy:
