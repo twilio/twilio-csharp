@@ -2,7 +2,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <RootNamespace>Twilio.Tests</RootNamespace>
-    <TargetFramework>net462</TargetFramework>
+    <TargetFrameworks>net462;net6.0</TargetFrameworks>
     <IsPackable>false</IsPackable>
     <NoWarn>$(NoWarn);CS1591</NoWarn>
     <NoWarn>$(NoWarn);CS1587</NoWarn>
@@ -15,6 +15,7 @@
     </PackageReference>
     <PackageReference Include="Microsoft.TestPlatform" Version="17.0.0" />
     <PackageReference Include="MSTest.TestAdapter" Version="2.2.8" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="NSubstitute" Version="4.2.2" />
     <PackageReference Include="NUnitLite" Version="3.13.2" />
   </ItemGroup>
