@@ -2,7 +2,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <RootNamespace>Twilio.Tests</RootNamespace>
-    <TargetFrameworks>net6.0;net462</TargetFrameworks>
+    <TargetFramework>net462</TargetFramework>
     <IsPackable>false</IsPackable>
     <NoWarn>$(NoWarn);CS1591</NoWarn>
     <NoWarn>$(NoWarn);CS1587</NoWarn>
