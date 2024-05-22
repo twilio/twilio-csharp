@@ -23,7 +23,11 @@
     <RepositoryType>git</RepositoryType>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <NetStandardImplicitPackageVersion Condition=" '$(TargetFramework)' == 'netstandard2.1' ">2.1.0</NetStandardImplicitPackageVersion>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
+  <ItemGroup>
+    <None Include="../../README.md" Pack="true" PackagePath="\"/>
+  </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Xml.Linq" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
