@@ -193,6 +193,14 @@ namespace Twilio.Tests.Jwt.AccessToken
             var decodedParams = ToDict(outgoing)["params"];
             Assert.AreEqual("bar", ToDict(decodedParams)["foo"]);
         }
+
+        [Test]
+        public void TestTaskRouterProperties()
+        {
+            var taskRouterGrant = new TaskRouterGrant();
+            taskRouterGrant.WorkspaceSid = "WSxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
+            Assert.AreEqual("WSxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", taskRouterGrant.WorkspaceSid);
+        }
         
         [Test]
         public void TestCheckTaskRouter()
