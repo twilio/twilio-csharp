@@ -261,7 +261,7 @@ namespace Twilio.Rest.FlexApi.V1
 
         ///<summary> The URL where the Flex instance is hosted. </summary> 
         [JsonProperty("runtime_domain")]
-        public Uri RuntimeDomain { get; private set; }
+        public string RuntimeDomain { get; private set; }
 
         ///<summary> The SID of the Messaging service instance. </summary> 
         [JsonProperty("messaging_service_instance_sid")]
@@ -305,7 +305,7 @@ namespace Twilio.Rest.FlexApi.V1
 
         ///<summary> The call recording webhook URL. </summary> 
         [JsonProperty("call_recording_webhook_url")]
-        public Uri CallRecordingWebhookUrl { get; private set; }
+        public string CallRecordingWebhookUrl { get; private set; }
 
         ///<summary> Whether CRM is present for Flex. </summary> 
         [JsonProperty("crm_enabled")]
@@ -317,11 +317,11 @@ namespace Twilio.Rest.FlexApi.V1
 
         ///<summary> The CRM Callback URL. </summary> 
         [JsonProperty("crm_callback_url")]
-        public Uri CrmCallbackUrl { get; private set; }
+        public string CrmCallbackUrl { get; private set; }
 
         ///<summary> The CRM Fallback URL. </summary> 
         [JsonProperty("crm_fallback_url")]
-        public Uri CrmFallbackUrl { get; private set; }
+        public string CrmFallbackUrl { get; private set; }
 
         ///<summary> An object that contains the CRM attributes. </summary> 
         [JsonProperty("crm_attributes")]
@@ -377,7 +377,7 @@ namespace Twilio.Rest.FlexApi.V1
 
         ///<summary> URL to redirect to in case drilldown is enabled. </summary> 
         [JsonProperty("flex_url")]
-        public Uri FlexUrl { get; private set; }
+        public string FlexUrl { get; private set; }
 
         ///<summary> Settings for different limits for Flex Conversations channels attachments. </summary> 
         [JsonProperty("channel_configs")]

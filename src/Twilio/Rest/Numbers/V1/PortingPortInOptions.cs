@@ -78,5 +78,35 @@ namespace Twilio.Rest.Numbers.V1
     }
 
 
+    /// <summary> Fetch a port in request by SID </summary>
+    public class FetchPortingPortInOptions : IOptions<PortingPortInResource>
+    {
+    
+        ///<summary> The SID of the Port In request. This is a unique identifier of the port in request. </summary> 
+        public string PathPortInRequestSid { get; }
+
+
+
+        /// <summary> Construct a new FetchPortingPortInOptions </summary>
+        /// <param name="pathPortInRequestSid"> The SID of the Port In request. This is a unique identifier of the port in request. </param>
+        public FetchPortingPortInOptions(string pathPortInRequestSid)
+        {
+            PathPortInRequestSid = pathPortInRequestSid;
+        }
+
+        
+        /// <summary> Generate the necessary parameters </summary>
+        public List<KeyValuePair<string, string>> GetParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+
+            return p;
+        }
+
+        
+
+    }
+
+
 }
 

@@ -91,6 +91,9 @@ namespace Twilio.Rest.Trusthub.V1
         ///<summary> The phone number of the contact for the business or organization using the Tollfree number. </summary> 
         public Types.PhoneNumber BusinessContactPhone { get; set; }
 
+        ///<summary> Theme id for styling the inquiry form. </summary> 
+        public string ThemeSetId { get; set; }
+
 
         /// <summary> Construct a new CreateComplianceTollfreeInquiryOptions </summary>
         /// <param name="tollfreePhoneNumber"> The Tollfree phone number to be verified </param>
@@ -192,6 +195,10 @@ namespace Twilio.Rest.Trusthub.V1
             if (BusinessContactPhone != null)
             {
                 p.Add(new KeyValuePair<string, string>("BusinessContactPhone", BusinessContactPhone.ToString()));
+            }
+            if (ThemeSetId != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ThemeSetId", ThemeSetId));
             }
             return p;
         }

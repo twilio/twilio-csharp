@@ -685,10 +685,6 @@ namespace Twilio.Rest.Messaging.V1
         [JsonProperty("use_inbound_webhook_on_number")]
         public bool? UseInboundWebhookOnNumber { get; private set; }
 
-        ///<summary> A list of Sending Windows, which indicate defined time ranges in which a message can be sent, in the UTC time zone. Each window is defined by two strings, labeled \"start_time\" and \"end_time\". </summary> 
-        [JsonProperty("sending_windows")]
-        public object SendingWindows { get; private set; }
-
 
 
         private ServiceResource() {

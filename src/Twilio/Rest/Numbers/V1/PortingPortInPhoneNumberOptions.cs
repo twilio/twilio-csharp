@@ -58,5 +58,40 @@ namespace Twilio.Rest.Numbers.V1
     }
 
 
+    /// <summary> Fetch a phone number by port in request SID and phone number SID </summary>
+    public class FetchPortingPortInPhoneNumberOptions : IOptions<PortingPortInPhoneNumberResource>
+    {
+    
+        ///<summary> The SID of the Port In request. This is a unique identifier of the port in request. </summary> 
+        public string PathPortInRequestSid { get; }
+
+        ///<summary> The SID of the Phone number. This is a unique identifier of the phone number. </summary> 
+        public string PathPhoneNumberSid { get; }
+
+
+
+        /// <summary> Construct a new FetchPortingPortInPhoneNumberOptions </summary>
+        /// <param name="pathPortInRequestSid"> The SID of the Port In request. This is a unique identifier of the port in request. </param>
+        /// <param name="pathPhoneNumberSid"> The SID of the Phone number. This is a unique identifier of the phone number. </param>
+        public FetchPortingPortInPhoneNumberOptions(string pathPortInRequestSid, string pathPhoneNumberSid)
+        {
+            PathPortInRequestSid = pathPortInRequestSid;
+            PathPhoneNumberSid = pathPhoneNumberSid;
+        }
+
+        
+        /// <summary> Generate the necessary parameters </summary>
+        public List<KeyValuePair<string, string>> GetParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+
+            return p;
+        }
+
+        
+
+    }
+
+
 }
 

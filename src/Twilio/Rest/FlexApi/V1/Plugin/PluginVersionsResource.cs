@@ -391,13 +391,17 @@ namespace Twilio.Rest.FlexApi.V1.Plugin
         [JsonProperty("changelog")]
         public string Changelog { get; private set; }
 
-        ///<summary> Whether to inject credentials while accessing this Plugin Version. The default value is false. </summary> 
+        ///<summary> Whether the Flex Plugin Version is validated. The default value is false. </summary> 
         [JsonProperty("private")]
         public bool? Private { get; private set; }
 
         ///<summary> Whether the Flex Plugin Version is archived. The default value is false. </summary> 
         [JsonProperty("archived")]
         public bool? Archived { get; private set; }
+
+        ///<summary> The validated </summary> 
+        [JsonProperty("validated")]
+        public bool? Validated { get; private set; }
 
         ///<summary> The date and time in GMT when the Flex Plugin Version was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_created")]

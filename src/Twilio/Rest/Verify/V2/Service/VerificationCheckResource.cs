@@ -192,7 +192,7 @@ namespace Twilio.Rest.Verify.V2.Service
         [JsonProperty("channel")]
         public VerificationCheckResource.ChannelEnum Channel { get; private set; }
 
-        ///<summary> The status of the verification. Can be: `pending`, `approved`, or `canceled`. </summary> 
+        ///<summary> The status of the verification. Can be: `pending`, `approved`, `canceled`, `max_attempts_reached`, `deleted`, `failed` or `expired`. </summary> 
         [JsonProperty("status")]
         public string Status { get; private set; }
 
