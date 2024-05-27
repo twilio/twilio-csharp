@@ -8,6 +8,7 @@
     <NoWarn>$(NoWarn);CS1591</NoWarn>
     <NoWarn>$(NoWarn);CS1587</NoWarn>
     <NoWarn>CS8765CS1587;CS1591;CS1570;CS1573;CS1572;CS8618;CS8603;CS8625;CS8604;CS8765</NoWarn>
+    <SonarQubeTestProject>true</SonarQubeTestProject>
 
   </PropertyGroup>
   <ItemGroup>
