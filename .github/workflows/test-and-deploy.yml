@@ -54,7 +54,7 @@ jobs:
           dotnet tool install --global dotnet-sonarscanner
           make cover
 
-  test-snoarscan:
+  test-sonarscan:
     name: Test-SonarScan
     runs-on: ubuntu-latest
     timeout-minutes: 20
@@ -70,6 +70,7 @@ jobs:
           sonarOrganization: twilio
           # Optional command arguments to dotnet test
           dotnetTestArguments: --no-build /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=../lcov
+          dotnetBuildArguments: Twilio.sln > buildsonar.log
           sonarHostname: https://sonarcloud.io
           # Optional extra command arguments the the SonarScanner 'begin' command
           sonarBeginArguments: /d:sonar.language="cs" /d:sonar.exclusions=src/Twilio/Rest/**/*.*,test/Twilio.Test/**/*.* /d:sonar.cs.opencover.reportsPaths="test/lcov.opencover.xml"
