@@ -24,6 +24,7 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <NetStandardImplicitPackageVersion Condition=" '$(TargetFramework)' == 'netstandard2.1' ">2.1.0</NetStandardImplicitPackageVersion>
     <PackageReadmeFile>README.md</PackageReadmeFile>
+    <SonarQubeTestProject>false</SonarQubeTestProject>
   </PropertyGroup>
   <ItemGroup>
     <None Include="../../README.md" Pack="true" PackagePath="\"/>
