@@ -744,7 +744,7 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonProperty("status")]
         public MessageResource.StatusEnum Status { get; private set; }
 
-        ///<summary> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) associated with the Message resource. The value is `null` if a Messaging Service was not used. </summary> 
+        ///<summary> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) associated with the Message resource. A unique default value is assigned if a Messaging Service is not used. </summary> 
         [JsonProperty("messaging_service_sid")]
         public string MessagingServiceSid { get; private set; }
 

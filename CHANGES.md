@@ -1,6 +1,52 @@
 twilio-csharp Changelog
 =======================
 
+[2024-05-24] Version 7.1.0
+--------------------------
+**Library - Docs**
+- [PR #746](https://github.com/twilio/twilio-csharp/pull/746): adding readme to nuget. Thanks to [@tiwarishubham635](https://github.com/tiwarishubham635)!
+
+**Library - Fix**
+- [PR #744](https://github.com/twilio/twilio-csharp/pull/744): updating jwt version. Thanks to [@tiwarishubham635](https://github.com/tiwarishubham635)!
+
+**Api**
+- Add ie1 as supported region for UserDefinedMessage and UserDefinedMessageSubscription.
+
+**Flex**
+- Adding validated field to `plugin_versions`
+- Corrected the data type for `runtime_domain`, `call_recording_webhook_url`, `crm_callback_url`, `crm_fallback_url`, `flex_url` in Flex Configuration
+- Making `routing` optional in Create Interactions endpoint
+
+**Intelligence**
+- Expose operator authoring apis to public visibility
+- Deleted `language_code` parameter from updating service in v2 **(breaking change)**
+- Add read_only_attached_operator_sids to v2 services
+
+**Numbers**
+- Add API endpoint for GET Porting Webhook Configurations By Account SID
+- Remove bulk portability api under version `/v1`. **(breaking change)**
+- Removed porting_port_in_fetch.json files and move the content into porting_port_in.json files
+- Add API endpoint to deleting Webhook Configurations
+- Add Get Phone Number by Port in request SID and Phone Number SID api
+- Add Create Porting webhook configuration API
+- Added bundle_sid and losing_carrier_information fields to Create PortInRequest api to support Japan porting
+
+**Taskrouter**
+- Add back `routing_target` property to tasks
+- Add back `ignore_capacity` property to tasks
+- Removing `routing_target` property to tasks due to revert
+- Removing `ignore_capacity` property to tasks due to revert
+- Add `routing_target` property to tasks
+- Add `ignore_capacity` property to tasks
+
+**Trusthub**
+- Add new field errors to bundle as part of public API response in customer_profile.json and trust_product.json **(breaking change)**
+- Add themeSetId field in compliance_tollfree_inquiry.
+
+**Verify**
+- Update `friendly_name` description on service docs
+
+
 [2024-04-18] Version 7.0.5
 --------------------------
 **Flex**

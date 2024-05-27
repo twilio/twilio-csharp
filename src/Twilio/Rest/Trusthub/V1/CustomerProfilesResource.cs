@@ -559,6 +559,10 @@ namespace Twilio.Rest.Trusthub.V1
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
 
+        ///<summary> The error codes associated with the rejection of the Customer-Profile. </summary> 
+        [JsonProperty("errors")]
+        public List<object> Errors { get; private set; }
+
 
 
         private CustomerProfilesResource() {

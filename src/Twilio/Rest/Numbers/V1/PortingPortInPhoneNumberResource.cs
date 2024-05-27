@@ -105,6 +105,76 @@ namespace Twilio.Rest.Numbers.V1
             return await DeleteAsync(options, client);
         }
         #endif
+        
+        private static Request BuildFetchRequest(FetchPortingPortInPhoneNumberOptions options, ITwilioRestClient client)
+        {
+            
+            string path = "/v1/Porting/PortIn/{PortInRequestSid}/PhoneNumber/{PhoneNumberSid}";
+
+            string PathPortInRequestSid = options.PathPortInRequestSid;
+            path = path.Replace("{"+"PortInRequestSid"+"}", PathPortInRequestSid);
+            string PathPhoneNumberSid = options.PathPhoneNumberSid;
+            path = path.Replace("{"+"PhoneNumberSid"+"}", PathPhoneNumberSid);
+
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.Numbers,
+                path,
+                queryParams: options.GetParams(),
+                headerParams: null
+            );
+        }
+
+        /// <summary> Fetch a phone number by port in request SID and phone number SID </summary>
+        /// <param name="options"> Fetch PortingPortInPhoneNumber parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of PortingPortInPhoneNumber </returns>
+        public static PortingPortInPhoneNumberResource Fetch(FetchPortingPortInPhoneNumberOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            return FromJson(response.Content);
+        }
+
+        #if !NET35
+        /// <summary> Fetch a phone number by port in request SID and phone number SID </summary>
+        /// <param name="options"> Fetch PortingPortInPhoneNumber parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of PortingPortInPhoneNumber </returns>
+        public static async System.Threading.Tasks.Task<PortingPortInPhoneNumberResource> FetchAsync(FetchPortingPortInPhoneNumberOptions options,
+                                                                                             ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            return FromJson(response.Content);
+        }
+        #endif
+        /// <summary> Fetch a phone number by port in request SID and phone number SID </summary>
+        /// <param name="pathPortInRequestSid"> The SID of the Port In request. This is a unique identifier of the port in request. </param>
+        /// <param name="pathPhoneNumberSid"> The SID of the Phone number. This is a unique identifier of the phone number. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of PortingPortInPhoneNumber </returns>
+        public static PortingPortInPhoneNumberResource Fetch(
+                                         string pathPortInRequestSid, 
+                                         string pathPhoneNumberSid, 
+                                         ITwilioRestClient client = null)
+        {
+            var options = new FetchPortingPortInPhoneNumberOptions(pathPortInRequestSid, pathPhoneNumberSid){  };
+            return Fetch(options, client);
+        }
+
+        #if !NET35
+        /// <summary> Fetch a phone number by port in request SID and phone number SID </summary>
+        /// <param name="pathPortInRequestSid"> The SID of the Port In request. This is a unique identifier of the port in request. </param>
+        /// <param name="pathPhoneNumberSid"> The SID of the Phone number. This is a unique identifier of the phone number. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of PortingPortInPhoneNumber </returns>
+        public static async System.Threading.Tasks.Task<PortingPortInPhoneNumberResource> FetchAsync(string pathPortInRequestSid, string pathPhoneNumberSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchPortingPortInPhoneNumberOptions(pathPortInRequestSid, pathPhoneNumberSid){  };
+            return await FetchAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a PortingPortInPhoneNumberResource object
@@ -140,6 +210,63 @@ namespace Twilio.Rest.Numbers.V1
     }
 
     
+        ///<summary> The SID of the Port In request. This is a unique identifier of the port in request. </summary> 
+        [JsonProperty("port_in_request_sid")]
+        public string PortInRequestSid { get; private set; }
+
+        ///<summary> The SID of the Port In request phone number. This is a unique identifier of the phone number. </summary> 
+        [JsonProperty("phone_number_sid")]
+        public string PhoneNumberSid { get; private set; }
+
+        ///<summary> The url </summary> 
+        [JsonProperty("url")]
+        public Uri Url { get; private set; }
+
+        ///<summary> The SID of the account that the phone number belongs to. </summary> 
+        [JsonProperty("account_sid")]
+        public string AccountSid { get; private set; }
+
+        ///<summary> The type of the phone number. </summary> 
+        [JsonProperty("phone_number_type")]
+        public string PhoneNumberType { get; private set; }
+
+        ///<summary> The date when the phone number was created. </summary> 
+        [JsonProperty("date_created")]
+        public DateTime? DateCreated { get; private set; }
+
+        ///<summary> The country of the phone number. </summary> 
+        [JsonProperty("country")]
+        public string Country { get; private set; }
+
+        ///<summary> The phone number is missing required fields. </summary> 
+        [JsonProperty("missing_required_fields")]
+        public bool? MissingRequiredFields { get; private set; }
+
+        ///<summary> The timestamp when the status was last updated. </summary> 
+        [JsonProperty("status_last_time_updated_timestamp")]
+        public DateTime? StatusLastTimeUpdatedTimestamp { get; private set; }
+
+        ///<summary> The phone number. </summary> 
+        [JsonProperty("phone_number")]
+        [JsonConverter(typeof(PhoneNumberConverter))]
+        public Types.PhoneNumber PhoneNumber { get; private set; }
+
+        ///<summary> The phone number is portable. </summary> 
+        [JsonProperty("portable")]
+        public bool? Portable { get; private set; }
+
+        ///<summary> The reason why the phone number is not portable. </summary> 
+        [JsonProperty("not_portability_reason")]
+        public string NotPortabilityReason { get; private set; }
+
+        ///<summary> The code of the reason why the phone number is not portable. </summary> 
+        [JsonProperty("not_portability_reason_code")]
+        public string NotPortabilityReasonCode { get; private set; }
+
+        ///<summary> The status of the phone number in the port in request. </summary> 
+        [JsonProperty("port_in_phone_number_status")]
+        public string PortInPhoneNumberStatus { get; private set; }
+
 
 
         private PortingPortInPhoneNumberResource() {

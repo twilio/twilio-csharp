@@ -82,11 +82,11 @@ namespace Twilio.Rest.FlexApi.V1
         /// <returns> A single instance of Interaction </returns>
         public static InteractionResource Create(
                                           object channel,
-                                          object routing,
+                                          object routing = null,
                                           string interactionContextSid = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new CreateInteractionOptions(channel, routing){  InteractionContextSid = interactionContextSid };
+            var options = new CreateInteractionOptions(channel){  Routing = routing, InteractionContextSid = interactionContextSid };
             return Create(options, client);
         }
 
@@ -99,11 +99,11 @@ namespace Twilio.Rest.FlexApi.V1
         /// <returns> Task that resolves to A single instance of Interaction </returns>
         public static async System.Threading.Tasks.Task<InteractionResource> CreateAsync(
                                                                                   object channel,
-                                                                                  object routing,
+                                                                                  object routing = null,
                                                                                   string interactionContextSid = null,
                                                                                   ITwilioRestClient client = null)
         {
-        var options = new CreateInteractionOptions(channel, routing){  InteractionContextSid = interactionContextSid };
+        var options = new CreateInteractionOptions(channel){  Routing = routing, InteractionContextSid = interactionContextSid };
             return await CreateAsync(options, client);
         }
         #endif

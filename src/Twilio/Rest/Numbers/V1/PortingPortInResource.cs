@@ -165,6 +165,71 @@ namespace Twilio.Rest.Numbers.V1
             return await DeleteAsync(options, client);
         }
         #endif
+        
+        private static Request BuildFetchRequest(FetchPortingPortInOptions options, ITwilioRestClient client)
+        {
+            
+            string path = "/v1/Porting/PortIn/{PortInRequestSid}";
+
+            string PathPortInRequestSid = options.PathPortInRequestSid;
+            path = path.Replace("{"+"PortInRequestSid"+"}", PathPortInRequestSid);
+
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.Numbers,
+                path,
+                queryParams: options.GetParams(),
+                headerParams: null
+            );
+        }
+
+        /// <summary> Fetch a port in request by SID </summary>
+        /// <param name="options"> Fetch PortingPortIn parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of PortingPortIn </returns>
+        public static PortingPortInResource Fetch(FetchPortingPortInOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            return FromJson(response.Content);
+        }
+
+        #if !NET35
+        /// <summary> Fetch a port in request by SID </summary>
+        /// <param name="options"> Fetch PortingPortIn parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of PortingPortIn </returns>
+        public static async System.Threading.Tasks.Task<PortingPortInResource> FetchAsync(FetchPortingPortInOptions options,
+                                                                                             ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            return FromJson(response.Content);
+        }
+        #endif
+        /// <summary> Fetch a port in request by SID </summary>
+        /// <param name="pathPortInRequestSid"> The SID of the Port In request. This is a unique identifier of the port in request. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of PortingPortIn </returns>
+        public static PortingPortInResource Fetch(
+                                         string pathPortInRequestSid, 
+                                         ITwilioRestClient client = null)
+        {
+            var options = new FetchPortingPortInOptions(pathPortInRequestSid){  };
+            return Fetch(options, client);
+        }
+
+        #if !NET35
+        /// <summary> Fetch a port in request by SID </summary>
+        /// <param name="pathPortInRequestSid"> The SID of the Port In request. This is a unique identifier of the port in request. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of PortingPortIn </returns>
+        public static async System.Threading.Tasks.Task<PortingPortInResource> FetchAsync(string pathPortInRequestSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchPortingPortInOptions(pathPortInRequestSid){  };
+            return await FetchAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a PortingPortInResource object
@@ -204,9 +269,45 @@ namespace Twilio.Rest.Numbers.V1
         [JsonProperty("port_in_request_sid")]
         public string PortInRequestSid { get; private set; }
 
-        ///<summary> The url </summary> 
+        ///<summary> The URL of this Port In request </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
+
+        ///<summary> The Account SID that the numbers will be added to after they are ported into Twilio. </summary> 
+        [JsonProperty("account_sid")]
+        public string AccountSid { get; private set; }
+
+        ///<summary> List of emails for getting notifications about the LOA signing process. Allowed Max 10 emails. </summary> 
+        [JsonProperty("notification_emails")]
+        public List<string> NotificationEmails { get; private set; }
+
+        ///<summary> Minimum number of days in the future (at least 2 days) needs to be established with the Ops team for validation. </summary> 
+        [JsonProperty("target_port_in_date")]
+        public DateTime? TargetPortInDate { get; private set; }
+
+        ///<summary> Minimum hour in the future needs to be established with the Ops team for validation. </summary> 
+        [JsonProperty("target_port_in_time_range_start")]
+        public string TargetPortInTimeRangeStart { get; private set; }
+
+        ///<summary> Maximum hour in the future needs to be established with the Ops team for validation. </summary> 
+        [JsonProperty("target_port_in_time_range_end")]
+        public string TargetPortInTimeRangeEnd { get; private set; }
+
+        ///<summary> The status of the port in request. The possible values are: In progress, Completed, Expired, In review, Waiting for Signature, Action Required, and Canceled. </summary> 
+        [JsonProperty("port_in_request_status")]
+        public string PortInRequestStatus { get; private set; }
+
+        ///<summary> The information for the losing carrier.  </summary> 
+        [JsonProperty("losing_carrier_information")]
+        public object LosingCarrierInformation { get; private set; }
+
+        ///<summary> The list of phone numbers to Port in. Phone numbers are in E.164 format (e.g. +16175551212). </summary> 
+        [JsonProperty("phone_numbers")]
+        public List<object> PhoneNumbers { get; private set; }
+
+        ///<summary> The list of documents SID referencing a utility bills </summary> 
+        [JsonProperty("documents")]
+        public List<string> Documents { get; private set; }
 
 
 
