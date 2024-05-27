@@ -70,7 +70,7 @@ jobs:
           sonarOrganization: twilio
           # Optional command arguments to dotnet test
           dotnetTestArguments: --no-build /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=../lcov
-          dotnetBuildArguments: Twilio.sln
+          dotnetBuildArguments: ./Twilio.sln
           sonarHostname: https://sonarcloud.io
           # Optional extra command arguments the the SonarScanner 'begin' command
           sonarBeginArguments: /d:sonar.language="cs" /d:sonar.exclusions=src/Twilio/Rest/**/*.*,test/Twilio.Test/**/*.* /d:sonar.cs.opencover.reportsPaths="test/lcov.opencover.xml"
