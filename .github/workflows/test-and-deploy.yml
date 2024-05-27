@@ -54,7 +54,12 @@ jobs:
           dotnet tool install --global dotnet-sonarscanner
           make cover
 
-      - name: SonarScanner for .NET 8 with pull request decoration support
+  test-snoarscan:
+    name: Test-SonarScan
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: SonarScanner for .NET 6 with pull request decoration support
         uses: highbyte/sonarscan-dotnet@v2.1.5
         with:
           # The key of the SonarQube project
@@ -65,8 +70,9 @@ jobs:
           sonarOrganization: twilio
           # Optional command arguments to dotnet test
           dotnetTestArguments: --no-build /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=../lcov
+          sonarHostname: https://sonarcloud.io
           # Optional extra command arguments the the SonarScanner 'begin' command
-          sonarBeginArguments: /d:sonar.host.url=https://sonarcloud.io /d:sonar.language="cs" /d:sonar.exclusions=src/Twilio/Rest/**/*.*,test/Twilio.Test/**/*.* /d:sonar.cs.opencover.reportsPaths="test/lcov.opencover.xml"
+          sonarBeginArguments: /d:sonar.language="cs" /d:sonar.exclusions=src/Twilio/Rest/**/*.*,test/Twilio.Test/**/*.* /d:sonar.cs.opencover.reportsPaths="test/lcov.opencover.xml"
         
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
