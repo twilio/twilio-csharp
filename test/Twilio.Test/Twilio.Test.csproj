@@ -8,11 +8,9 @@
     <NoWarn>$(NoWarn);CS1591</NoWarn>
     <NoWarn>$(NoWarn);CS1587</NoWarn>
     <NoWarn>CS8765CS1587;CS1591;CS1570;CS1573;CS1572;CS8618;CS8603;CS8625;CS8604;CS8765</NoWarn>
-    <GenerateProgramFile>false</GenerateProgramFile>
 
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
     <PackageReference Include="coverlet.collector" Version="6.0.2">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
