@@ -37,10 +37,10 @@ docker-push:
 	docker push twilio/twilio-csharp:${CURRENT_TAG}
 
 cover:
-	dotnet sonarscanner begin /k:"$(PROJECT_NAME)" /o:"twilio" /d:sonar.host.url=https://sonarcloud.io /d:sonar.login="${SONAR_TOKEN}"  /d:sonar.language="cs" $(SONAR_SOURCES) /d:sonar.cs.opencover.reportsPaths="test/lcov.opencover.xml" /d:"sonar.verbose=true"
+	dotnet sonarscanner begin /k:"$(PROJECT_NAME)" /o:"twilio" /d:sonar.host.url=https://sonarcloud.io /d:sonar.login="${SONAR_TOKEN}"  /d:sonar.language="cs" $(SONAR_SOURCES) /d:sonar.cs.opencover.reportsPaths="test/lcov.opencover.xml"
 	# Write to a log file since the logs for build with sonar analyzer are pretty beefy and travis has a limit on the number of log lines
 	dotnet build Twilio.sln > buildsonar.log
-	dotnet test test/Twilio.Test/Twilio.Test.csproj --no-build /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=../lcov
+	dotnet test test/Twilio.Test/Twilio.Test.csproj --no-build /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=../lcov --collect:"XPlat Code Coverage"
 	dotnet sonarscanner end /d:sonar.login="${SONAR_TOKEN}"
 
 cache:
