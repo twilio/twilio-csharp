@@ -54,36 +54,6 @@ jobs:
           dotnet tool install --global dotnet-sonarscanner
           make cover
 
-  test-sonarscan:
-    name: Test-SonarScan
-    runs-on: ubuntu-latest
-    timeout-minutes: 20
-    steps:
-      - name: SonarScanner for .NET 6 with pull request decoration support
-        uses: highbyte/sonarscan-dotnet@v2.1.5
-        with:
-          # The key of the SonarQube project
-          sonarProjectKey: twilio_twilio-csharp
-          # The name of the SonarQube project
-          sonarProjectName: twilio_twilio-csharp
-          # The name of the SonarQube organization in SonarCloud. For hosted SonarQube, skip this setting.
-          sonarOrganization: twilio
-          # Optional command arguments to dotnet test
-          dotnetTestArguments: --no-build /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=../lcov
-          dotnetBuildArguments: ./Twilio.sln
-          sonarHostname: https://sonarcloud.io
-          # Optional extra command arguments the the SonarScanner 'begin' command
-          sonarBeginArguments: /d:sonar.language="cs" /d:sonar.exclusions=src/Twilio/Rest/**/*.*,test/Twilio.Test/**/*.* /d:sonar.cs.opencover.reportsPaths="test/lcov.opencover.xml"
-        
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          TWILIO_ACCOUNT_SID: ${{ secrets.TWILIO_ACCOUNT_SID }}
-          TWILIO_API_KEY: ${{ secrets.TWILIO_CLUSTER_TEST_API_KEY }}
-          TWILIO_API_SECRET: ${{ secrets.TWILIO_CLUSTER_TEST_API_KEY_SECRET }}
-          TWILIO_FROM_NUMBER: ${{ secrets.TWILIO_FROM_NUMBER }}
-          TWILIO_TO_NUMBER: ${{ secrets.TWILIO_TO_NUMBER }}
-
   deploy:
     name: Deploy
     if: success() && github.ref_type == 'tag'
