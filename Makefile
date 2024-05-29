@@ -1,6 +1,6 @@
 .PHONY: clean test test-docker install release docs
 PROJECT_NAME ?= twilio_twilio-csharp
-SONAR_SOURCES ?= /d:sonar.exclusions=src/Twilio/Rest/**/*.*,test/Twilio.Test/**/*.*
+SONAR_SOURCES ?= /d:sonar.exclusions=src/Twilio/Rest/**/*.*,src/Twilio/JWT/TaskRouterGrant.cs,test/Twilio.Test/**/*.*
 
 clean:
 	dotnet clean
