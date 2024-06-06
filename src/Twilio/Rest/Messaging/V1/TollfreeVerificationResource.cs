@@ -61,6 +61,7 @@ namespace Twilio.Rest.Messaging.V1
             public static readonly OptInTypeEnum PaperForm = new OptInTypeEnum("PAPER_FORM");
             public static readonly OptInTypeEnum ViaText = new OptInTypeEnum("VIA_TEXT");
             public static readonly OptInTypeEnum MobileQrCode = new OptInTypeEnum("MOBILE_QR_CODE");
+            public static readonly OptInTypeEnum Import = new OptInTypeEnum("IMPORT");
 
         }
 
@@ -329,7 +330,7 @@ namespace Twilio.Rest.Messaging.V1
         }
         #endif
         /// <summary> fetch </summary>
-        /// <param name="pathSid"> The unique string to identify Tollfree Verification. </param>
+        /// <param name="pathSid"> A unique string identifying a Tollfree Verification. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of TollfreeVerification </returns>
         public static TollfreeVerificationResource Fetch(
@@ -342,7 +343,7 @@ namespace Twilio.Rest.Messaging.V1
 
         #if !NET35
         /// <summary> fetch </summary>
-        /// <param name="pathSid"> The unique string to identify Tollfree Verification. </param>
+        /// <param name="pathSid"> A unique string identifying a Tollfree Verification. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TollfreeVerification </returns>
         public static async System.Threading.Tasks.Task<TollfreeVerificationResource> FetchAsync(string pathSid, ITwilioRestClient client = null)
@@ -396,6 +397,8 @@ namespace Twilio.Rest.Messaging.V1
         /// <summary> read </summary>
         /// <param name="tollfreePhoneNumberSid"> The SID of the Phone Number associated with the Tollfree Verification. </param>
         /// <param name="status"> The compliance status of the Tollfree Verification record. </param>
+        /// <param name="externalReferenceId"> Customer supplied reference id for the Tollfree Verification record. </param>
+        /// <param name="includeSubAccounts"> Whether to include Tollfree Verifications from sub accounts in list response. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -403,11 +406,13 @@ namespace Twilio.Rest.Messaging.V1
         public static ResourceSet<TollfreeVerificationResource> Read(
                                                      string tollfreePhoneNumberSid = null,
                                                      TollfreeVerificationResource.StatusEnum status = null,
+                                                     string externalReferenceId = null,
+                                                     bool? includeSubAccounts = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
                                                      ITwilioRestClient client = null)
         {
-            var options = new ReadTollfreeVerificationOptions(){ TollfreePhoneNumberSid = tollfreePhoneNumberSid, Status = status, PageSize = pageSize, Limit = limit};
+            var options = new ReadTollfreeVerificationOptions(){ TollfreePhoneNumberSid = tollfreePhoneNumberSid, Status = status, ExternalReferenceId = externalReferenceId, IncludeSubAccounts = includeSubAccounts, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -415,6 +420,8 @@ namespace Twilio.Rest.Messaging.V1
         /// <summary> read </summary>
         /// <param name="tollfreePhoneNumberSid"> The SID of the Phone Number associated with the Tollfree Verification. </param>
         /// <param name="status"> The compliance status of the Tollfree Verification record. </param>
+        /// <param name="externalReferenceId"> Customer supplied reference id for the Tollfree Verification record. </param>
+        /// <param name="includeSubAccounts"> Whether to include Tollfree Verifications from sub accounts in list response. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -422,11 +429,13 @@ namespace Twilio.Rest.Messaging.V1
         public static async System.Threading.Tasks.Task<ResourceSet<TollfreeVerificationResource>> ReadAsync(
                                                                                              string tollfreePhoneNumberSid = null,
                                                                                              TollfreeVerificationResource.StatusEnum status = null,
+                                                                                             string externalReferenceId = null,
+                                                                                             bool? includeSubAccounts = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
                                                                                              ITwilioRestClient client = null)
         {
-            var options = new ReadTollfreeVerificationOptions(){ TollfreePhoneNumberSid = tollfreePhoneNumberSid, Status = status, PageSize = pageSize, Limit = limit};
+            var options = new ReadTollfreeVerificationOptions(){ TollfreePhoneNumberSid = tollfreePhoneNumberSid, Status = status, ExternalReferenceId = externalReferenceId, IncludeSubAccounts = includeSubAccounts, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

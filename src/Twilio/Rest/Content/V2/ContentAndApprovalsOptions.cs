@@ -17,7 +17,7 @@ using System;
 using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
-
+using System.Linq;
 
 
 
@@ -27,6 +27,33 @@ namespace Twilio.Rest.Content.V2
     public class ReadContentAndApprovalsOptions : ReadOptions<ContentAndApprovalsResource>
     {
     
+        ///<summary> Whether to sort by ascending or descending date updated </summary> 
+        public string SortByDate { get; set; }
+
+        ///<summary> Whether to sort by ascending or descending content name </summary> 
+        public string SortByContentName { get; set; }
+
+        ///<summary> Filter by >=[date-time] </summary> 
+        public DateTime? DateCreatedAfter { get; set; }
+
+        ///<summary> Filter by <=[date-time] </summary> 
+        public DateTime? DateCreatedBefore { get; set; }
+
+        ///<summary> Filter by Regex Pattern in content name </summary> 
+        public string ContentName { get; set; }
+
+        ///<summary> Filter by Regex Pattern in template content </summary> 
+        public string Content { get; set; }
+
+        ///<summary> Filter by array of valid language(s) </summary> 
+        public List<string> Language { get; set; }
+
+        ///<summary> Filter by array of contentType(s) </summary> 
+        public List<string> ContentType { get; set; }
+
+        ///<summary> Filter by array of ChannelEligibility(s), where ChannelEligibility=<channel>:<status> </summary> 
+        public List<string> ChannelEligibility { get; set; }
+
 
 
 
@@ -39,6 +66,42 @@ namespace Twilio.Rest.Content.V2
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+            }
+            if (SortByDate != null)
+            {
+                p.Add(new KeyValuePair<string, string>("SortByDate", SortByDate));
+            }
+            if (SortByContentName != null)
+            {
+                p.Add(new KeyValuePair<string, string>("SortByContentName", SortByContentName));
+            }
+            if (DateCreatedAfter != null)
+            {
+                p.Add(new KeyValuePair<string, string>("DateCreatedAfter", Serializers.DateTimeIso8601(DateCreatedAfter)));
+            }
+            if (DateCreatedBefore != null)
+            {
+                p.Add(new KeyValuePair<string, string>("DateCreatedBefore", Serializers.DateTimeIso8601(DateCreatedBefore)));
+            }
+            if (ContentName != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ContentName", ContentName));
+            }
+            if (Content != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Content", Content));
+            }
+            if (Language != null)
+            {
+                p.AddRange(Language.Select(Language => new KeyValuePair<string, string>("Language", Language)));
+            }
+            if (ContentType != null)
+            {
+                p.AddRange(ContentType.Select(ContentType => new KeyValuePair<string, string>("ContentType", ContentType)));
+            }
+            if (ChannelEligibility != null)
+            {
+                p.AddRange(ChannelEligibility.Select(ChannelEligibility => new KeyValuePair<string, string>("ChannelEligibility", ChannelEligibility)));
             }
             return p;
         }

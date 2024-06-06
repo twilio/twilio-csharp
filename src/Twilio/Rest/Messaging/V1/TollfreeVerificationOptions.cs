@@ -261,13 +261,13 @@ namespace Twilio.Rest.Messaging.V1
     public class FetchTollfreeVerificationOptions : IOptions<TollfreeVerificationResource>
     {
     
-        ///<summary> The unique string to identify Tollfree Verification. </summary> 
+        ///<summary> A unique string identifying a Tollfree Verification. </summary> 
         public string PathSid { get; }
 
 
 
         /// <summary> Construct a new FetchTollfreeVerificationOptions </summary>
-        /// <param name="pathSid"> The unique string to identify Tollfree Verification. </param>
+        /// <param name="pathSid"> A unique string identifying a Tollfree Verification. </param>
         public FetchTollfreeVerificationOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -297,6 +297,12 @@ namespace Twilio.Rest.Messaging.V1
         ///<summary> The compliance status of the Tollfree Verification record. </summary> 
         public TollfreeVerificationResource.StatusEnum Status { get; set; }
 
+        ///<summary> Customer supplied reference id for the Tollfree Verification record. </summary> 
+        public string ExternalReferenceId { get; set; }
+
+        ///<summary> Whether to include Tollfree Verifications from sub accounts in list response. </summary> 
+        public bool? IncludeSubAccounts { get; set; }
+
 
 
 
@@ -313,6 +319,14 @@ namespace Twilio.Rest.Messaging.V1
             if (Status != null)
             {
                 p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
+            }
+            if (ExternalReferenceId != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ExternalReferenceId", ExternalReferenceId));
+            }
+            if (IncludeSubAccounts != null)
+            {
+                p.Add(new KeyValuePair<string, string>("IncludeSubAccounts", IncludeSubAccounts.Value.ToString().ToLower()));
             }
             if (PageSize != null)
             {

@@ -77,30 +77,66 @@ namespace Twilio.Rest.Content.V2
         #endif
         /// <summary> Retrieve a list of Contents with approval statuses belonging to the account used to make the request </summary>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
+        /// <param name="sortByDate"> Whether to sort by ascending or descending date updated </param>
+        /// <param name="sortByContentName"> Whether to sort by ascending or descending content name </param>
+        /// <param name="dateCreatedAfter"> Filter by >=[date-time] </param>
+        /// <param name="dateCreatedBefore"> Filter by <=[date-time] </param>
+        /// <param name="contentName"> Filter by Regex Pattern in content name </param>
+        /// <param name="content"> Filter by Regex Pattern in template content </param>
+        /// <param name="language"> Filter by array of valid language(s) </param>
+        /// <param name="contentType"> Filter by array of contentType(s) </param>
+        /// <param name="channelEligibility"> Filter by array of ChannelEligibility(s), where ChannelEligibility=<channel>:<status> </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of ContentAndApprovals </returns>
         public static ResourceSet<ContentAndApprovalsResource> Read(
                                                      int? pageSize = null,
+                                                     string sortByDate = null,
+                                                     string sortByContentName = null,
+                                                     DateTime? dateCreatedAfter = null,
+                                                     DateTime? dateCreatedBefore = null,
+                                                     string contentName = null,
+                                                     string content = null,
+                                                     List<string> language = null,
+                                                     List<string> contentType = null,
+                                                     List<string> channelEligibility = null,
                                                      long? limit = null,
                                                      ITwilioRestClient client = null)
         {
-            var options = new ReadContentAndApprovalsOptions(){ PageSize = pageSize, Limit = limit};
+            var options = new ReadContentAndApprovalsOptions(){ PageSize = pageSize, SortByDate = sortByDate, SortByContentName = sortByContentName, DateCreatedAfter = dateCreatedAfter, DateCreatedBefore = dateCreatedBefore, ContentName = contentName, Content = content, Language = language, ContentType = contentType, ChannelEligibility = channelEligibility, Limit = limit};
             return Read(options, client);
         }
 
         #if !NET35
         /// <summary> Retrieve a list of Contents with approval statuses belonging to the account used to make the request </summary>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
+        /// <param name="sortByDate"> Whether to sort by ascending or descending date updated </param>
+        /// <param name="sortByContentName"> Whether to sort by ascending or descending content name </param>
+        /// <param name="dateCreatedAfter"> Filter by >=[date-time] </param>
+        /// <param name="dateCreatedBefore"> Filter by <=[date-time] </param>
+        /// <param name="contentName"> Filter by Regex Pattern in content name </param>
+        /// <param name="content"> Filter by Regex Pattern in template content </param>
+        /// <param name="language"> Filter by array of valid language(s) </param>
+        /// <param name="contentType"> Filter by array of contentType(s) </param>
+        /// <param name="channelEligibility"> Filter by array of ChannelEligibility(s), where ChannelEligibility=<channel>:<status> </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ContentAndApprovals </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<ContentAndApprovalsResource>> ReadAsync(
                                                                                              int? pageSize = null,
+                                                                                             string sortByDate = null,
+                                                                                             string sortByContentName = null,
+                                                                                             DateTime? dateCreatedAfter = null,
+                                                                                             DateTime? dateCreatedBefore = null,
+                                                                                             string contentName = null,
+                                                                                             string content = null,
+                                                                                             List<string> language = null,
+                                                                                             List<string> contentType = null,
+                                                                                             List<string> channelEligibility = null,
                                                                                              long? limit = null,
                                                                                              ITwilioRestClient client = null)
         {
-            var options = new ReadContentAndApprovalsOptions(){ PageSize = pageSize, Limit = limit};
+            var options = new ReadContentAndApprovalsOptions(){ PageSize = pageSize, SortByDate = sortByDate, SortByContentName = sortByContentName, DateCreatedAfter = dateCreatedAfter, DateCreatedBefore = dateCreatedBefore, ContentName = contentName, Content = content, Language = language, ContentType = contentType, ChannelEligibility = channelEligibility, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
