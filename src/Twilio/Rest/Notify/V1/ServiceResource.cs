@@ -44,6 +44,7 @@ namespace Twilio.Rest.Notify.V1
                 HttpMethod.Post,
                 Rest.Domain.Notify,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -421,6 +422,7 @@ namespace Twilio.Rest.Notify.V1
                 HttpMethod.Post,
                 Rest.Domain.Notify,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );

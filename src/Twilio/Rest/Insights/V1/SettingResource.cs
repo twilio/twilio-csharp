@@ -107,6 +107,7 @@ namespace Twilio.Rest.Insights.V1
                 HttpMethod.Post,
                 Rest.Domain.Insights,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );

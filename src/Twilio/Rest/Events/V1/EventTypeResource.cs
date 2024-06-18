@@ -277,6 +277,14 @@ namespace Twilio.Rest.Events.V1
         [JsonProperty("description")]
         public string Description { get; private set; }
 
+        ///<summary> A string that describes how this Event Type can be used. For example: `available`, `deprecated`, `restricted`, `discontinued`. When the status is `available`, the Event Type can be used normally. </summary> 
+        [JsonProperty("status")]
+        public string Status { get; private set; }
+
+        ///<summary> The URL to the documentation or to the most relevant Twilio Changelog entry of this Event Type. </summary> 
+        [JsonProperty("documentation_url")]
+        public string DocumentationUrl { get; private set; }
+
         ///<summary> The URL of this resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }

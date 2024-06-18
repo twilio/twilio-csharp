@@ -333,6 +333,7 @@ namespace Twilio.Rest.Preview.Sync.Service.Document
                 HttpMethod.Post,
                 Rest.Domain.Preview,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );

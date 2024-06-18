@@ -46,6 +46,7 @@ namespace Twilio.Rest.Events.V1.Subscription
                 HttpMethod.Post,
                 Rest.Domain.Events,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -392,6 +393,7 @@ namespace Twilio.Rest.Events.V1.Subscription
                 HttpMethod.Post,
                 Rest.Domain.Events,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );

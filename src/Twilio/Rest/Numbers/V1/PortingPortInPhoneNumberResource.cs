@@ -243,8 +243,8 @@ namespace Twilio.Rest.Numbers.V1
         public bool? MissingRequiredFields { get; private set; }
 
         ///<summary> The timestamp when the status was last updated. </summary> 
-        [JsonProperty("status_last_time_updated_timestamp")]
-        public DateTime? StatusLastTimeUpdatedTimestamp { get; private set; }
+        [JsonProperty("last_updated")]
+        public DateTime? LastUpdated { get; private set; }
 
         ///<summary> The phone number. </summary> 
         [JsonProperty("phone_number")]
@@ -261,11 +261,23 @@ namespace Twilio.Rest.Numbers.V1
 
         ///<summary> The code of the reason why the phone number is not portable. </summary> 
         [JsonProperty("not_portability_reason_code")]
-        public string NotPortabilityReasonCode { get; private set; }
+        public int? NotPortabilityReasonCode { get; private set; }
 
         ///<summary> The status of the phone number in the port in request. </summary> 
         [JsonProperty("port_in_phone_number_status")]
         public string PortInPhoneNumberStatus { get; private set; }
+
+        ///<summary> The pin required for the losing carrier to port out the phone number. </summary> 
+        [JsonProperty("port_out_pin")]
+        public int? PortOutPin { get; private set; }
+
+        ///<summary> The rejection reason returned by the vendor. </summary> 
+        [JsonProperty("rejection_reason")]
+        public string RejectionReason { get; private set; }
+
+        ///<summary> The rejection reason code returned by the vendor. </summary> 
+        [JsonProperty("rejection_reason_code")]
+        public int? RejectionReasonCode { get; private set; }
 
 
 

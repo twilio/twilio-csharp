@@ -77,6 +77,7 @@ namespace Twilio.Rest.Serverless.V1.Service
                 HttpMethod.Post,
                 Rest.Domain.Serverless,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );

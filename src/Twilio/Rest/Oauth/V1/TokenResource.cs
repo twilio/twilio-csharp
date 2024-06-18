@@ -44,6 +44,7 @@ namespace Twilio.Rest.Oauth.V1
                 HttpMethod.Post,
                 Rest.Domain.Oauth,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );

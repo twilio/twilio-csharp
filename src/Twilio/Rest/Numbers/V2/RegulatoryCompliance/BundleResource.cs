@@ -97,6 +97,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
                 HttpMethod.Post,
                 Rest.Domain.Numbers,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -486,6 +487,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
                 HttpMethod.Post,
                 Rest.Domain.Numbers,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );

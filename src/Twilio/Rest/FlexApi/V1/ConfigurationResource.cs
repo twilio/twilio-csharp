@@ -121,7 +121,9 @@ namespace Twilio.Rest.FlexApi.V1
                 HttpMethod.Post,
                 Rest.Domain.FlexApi,
                 path,
-                postParams: options.GetParams(),
+
+                contentType: EnumConstants.ContentTypeEnum.JSON,
+                body: options.GetBody(),
                 headerParams: null
             );
         }

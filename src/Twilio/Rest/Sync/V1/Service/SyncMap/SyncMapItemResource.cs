@@ -72,6 +72,7 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
                 HttpMethod.Post,
                 Rest.Domain.Sync,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -465,6 +466,7 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
                 HttpMethod.Post,
                 Rest.Domain.Sync,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: options.GetHeaderParams()
             );

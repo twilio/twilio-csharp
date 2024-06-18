@@ -231,6 +231,7 @@ namespace Twilio.Rest.Microvisor.V1
                 HttpMethod.Post,
                 Rest.Domain.Microvisor,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );

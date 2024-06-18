@@ -59,6 +59,7 @@ namespace Twilio.Rest.Intelligence.V2
                 HttpMethod.Post,
                 Rest.Domain.Intelligence,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -396,6 +397,7 @@ namespace Twilio.Rest.Intelligence.V2
                 HttpMethod.Post,
                 Rest.Domain.Intelligence,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: options.GetHeaderParams()
             );

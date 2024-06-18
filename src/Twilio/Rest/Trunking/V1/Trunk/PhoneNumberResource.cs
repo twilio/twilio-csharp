@@ -61,6 +61,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
                 HttpMethod.Post,
                 Rest.Domain.Trunking,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );

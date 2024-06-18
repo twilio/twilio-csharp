@@ -257,6 +257,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
                 HttpMethod.Post,
                 Rest.Domain.Taskrouter,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );

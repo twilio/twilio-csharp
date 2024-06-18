@@ -46,6 +46,7 @@ namespace Twilio.Rest.Bulkexports.V1.Export
                 HttpMethod.Post,
                 Rest.Domain.Bulkexports,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );

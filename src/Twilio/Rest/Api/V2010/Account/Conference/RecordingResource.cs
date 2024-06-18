@@ -380,6 +380,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
                 HttpMethod.Post,
                 Rest.Domain.Api,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );

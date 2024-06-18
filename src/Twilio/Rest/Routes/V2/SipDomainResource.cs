@@ -111,6 +111,7 @@ namespace Twilio.Rest.Routes.V2
                 HttpMethod.Post,
                 Rest.Domain.Routes,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );

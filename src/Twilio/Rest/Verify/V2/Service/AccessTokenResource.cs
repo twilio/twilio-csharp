@@ -58,6 +58,7 @@ namespace Twilio.Rest.Verify.V2.Service
                 HttpMethod.Post,
                 Rest.Domain.Verify,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );

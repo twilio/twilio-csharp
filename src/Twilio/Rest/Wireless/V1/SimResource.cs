@@ -350,6 +350,7 @@ namespace Twilio.Rest.Wireless.V1
                 HttpMethod.Post,
                 Rest.Domain.Wireless,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );

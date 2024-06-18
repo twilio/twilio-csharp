@@ -44,7 +44,7 @@ namespace Twilio.Rest.Numbers.V1
                 HttpMethod.Post,
                 Rest.Domain.Numbers,
                 path,
-                
+
                 contentType: EnumConstants.ContentTypeEnum.JSON,
                 body: options.GetBody(),
                 headerParams: null
@@ -308,6 +308,10 @@ namespace Twilio.Rest.Numbers.V1
         ///<summary> The list of documents SID referencing a utility bills </summary> 
         [JsonProperty("documents")]
         public List<string> Documents { get; private set; }
+
+        ///<summary> The date_created </summary> 
+        [JsonProperty("date_created")]
+        public DateTime? DateCreated { get; private set; }
 
 
 

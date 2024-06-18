@@ -46,6 +46,7 @@ namespace Twilio.Rest.Supersim.V1.NetworkAccessProfile
                 HttpMethod.Post,
                 Rest.Domain.Supersim,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );

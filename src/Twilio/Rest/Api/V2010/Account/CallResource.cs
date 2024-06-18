@@ -77,6 +77,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 HttpMethod.Post,
                 Rest.Domain.Api,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -595,6 +596,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 HttpMethod.Post,
                 Rest.Domain.Api,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -781,7 +783,7 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonProperty("duration")]
         public string Duration { get; private set; }
 
-        ///<summary> The charge for this call, in the currency associated with the account. Populated after the call is completed. May not be immediately available. </summary> 
+        ///<summary> The charge for this call, in the currency associated with the account. Populated after the call is completed. May not be immediately available. The price associated with a call only reflects the charge for connectivity.  Charges for other call-related features such as Answering Machine Detection, Text-To-Speech, and SIP REFER are not included in this value. </summary> 
         [JsonProperty("price")]
         public string Price { get; private set; }
 

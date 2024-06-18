@@ -72,6 +72,7 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
                 HttpMethod.Post,
                 Rest.Domain.Chat,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: options.GetHeaderParams()
             );
@@ -469,6 +470,7 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
                 HttpMethod.Post,
                 Rest.Domain.Chat,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: options.GetHeaderParams()
             );

@@ -111,6 +111,7 @@ namespace Twilio.Rest.Video.V1.Room
                 HttpMethod.Post,
                 Rest.Domain.Video,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );

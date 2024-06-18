@@ -94,6 +94,9 @@ namespace Twilio.Rest.Trusthub.V1
         ///<summary> Theme id for styling the inquiry form. </summary> 
         public string ThemeSetId { get; set; }
 
+        ///<summary> Skip the messaging use case screen of the inquiry form. </summary> 
+        public bool? SkipMessagingUseCase { get; set; }
+
 
         /// <summary> Construct a new CreateComplianceTollfreeInquiryOptions </summary>
         /// <param name="tollfreePhoneNumber"> The Tollfree phone number to be verified </param>
@@ -199,6 +202,10 @@ namespace Twilio.Rest.Trusthub.V1
             if (ThemeSetId != null)
             {
                 p.Add(new KeyValuePair<string, string>("ThemeSetId", ThemeSetId));
+            }
+            if (SkipMessagingUseCase != null)
+            {
+                p.Add(new KeyValuePair<string, string>("SkipMessagingUseCase", SkipMessagingUseCase.Value.ToString().ToLower()));
             }
             return p;
         }

@@ -46,6 +46,7 @@ namespace Twilio.Rest.Microvisor.V1.Device
                 HttpMethod.Post,
                 Rest.Domain.Microvisor,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -392,6 +393,7 @@ namespace Twilio.Rest.Microvisor.V1.Device
                 HttpMethod.Post,
                 Rest.Domain.Microvisor,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );

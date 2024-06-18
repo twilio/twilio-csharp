@@ -96,6 +96,7 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
                 HttpMethod.Post,
                 Rest.Domain.Proxy,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );

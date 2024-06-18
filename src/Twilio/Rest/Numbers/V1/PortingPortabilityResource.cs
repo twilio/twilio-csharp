@@ -184,14 +184,6 @@ namespace Twilio.Rest.Numbers.V1
         [JsonProperty("country")]
         public string Country { get; private set; }
 
-        ///<summary> Current messaging carrier of the phone number </summary> 
-        [JsonProperty("messaging_carrier")]
-        public string MessagingCarrier { get; private set; }
-
-        ///<summary> Current voice carrier of the phone number </summary> 
-        [JsonProperty("voice_carrier")]
-        public string VoiceCarrier { get; private set; }
-
         ///<summary> This is the url of the request that you're trying to reach out to locate the resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }

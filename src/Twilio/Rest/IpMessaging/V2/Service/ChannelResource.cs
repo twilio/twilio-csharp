@@ -71,6 +71,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service
                 HttpMethod.Post,
                 Rest.Domain.IpMessaging,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: options.GetHeaderParams()
             );
@@ -447,6 +448,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service
                 HttpMethod.Post,
                 Rest.Domain.IpMessaging,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: options.GetHeaderParams()
             );

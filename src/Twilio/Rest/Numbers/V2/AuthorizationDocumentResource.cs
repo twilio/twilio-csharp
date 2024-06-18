@@ -60,6 +60,7 @@ namespace Twilio.Rest.Numbers.V2
                 HttpMethod.Post,
                 Rest.Domain.Numbers,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );

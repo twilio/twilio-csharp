@@ -46,6 +46,7 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
                 HttpMethod.Post,
                 Rest.Domain.Preview,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -400,6 +401,7 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
                 HttpMethod.Post,
                 Rest.Domain.Preview,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );

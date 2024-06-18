@@ -98,6 +98,7 @@ namespace Twilio.Rest.Trusthub.V1
                 HttpMethod.Post,
                 Rest.Domain.Trusthub,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -318,6 +319,7 @@ namespace Twilio.Rest.Trusthub.V1
                 HttpMethod.Post,
                 Rest.Domain.Trusthub,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );

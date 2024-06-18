@@ -62,18 +62,17 @@ namespace Twilio.Rest.FlexApi.V1
 
 
         
-        /// <summary> Generate the necessary parameters </summary>
-        public List<KeyValuePair<string, string>> GetParams()
+        /// <summary> Generate the request body </summary>
+        public string GetBody()
         {
-            var p = new List<KeyValuePair<string, string>>();
+            string body = "";
 
             if (Body != null)
             {
-                p.Add(new KeyValuePair<string, string>("body", Serializers.JsonObject(Body)));
+                body = ConfigurationResource.ToJson(Body);
             }
-            return p;
+            return body;
         }
-
         
 
     }

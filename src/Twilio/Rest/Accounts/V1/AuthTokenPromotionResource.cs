@@ -44,6 +44,7 @@ namespace Twilio.Rest.Accounts.V1
                 HttpMethod.Post,
                 Rest.Domain.Accounts,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );

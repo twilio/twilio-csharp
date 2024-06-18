@@ -58,6 +58,7 @@ namespace Twilio.Rest.Messaging.V1.BrandRegistration
                 HttpMethod.Post,
                 Rest.Domain.Messaging,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );

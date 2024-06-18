@@ -72,6 +72,7 @@ namespace Twilio.Rest.Proxy.V1
                 HttpMethod.Post,
                 Rest.Domain.Proxy,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -421,6 +422,7 @@ namespace Twilio.Rest.Proxy.V1
                 HttpMethod.Post,
                 Rest.Domain.Proxy,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );

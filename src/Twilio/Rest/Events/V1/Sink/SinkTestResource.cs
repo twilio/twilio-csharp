@@ -46,6 +46,7 @@ namespace Twilio.Rest.Events.V1.Sink
                 HttpMethod.Post,
                 Rest.Domain.Events,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );

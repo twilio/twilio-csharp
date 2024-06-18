@@ -104,6 +104,7 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
                 HttpMethod.Post,
                 Rest.Domain.Voice,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );

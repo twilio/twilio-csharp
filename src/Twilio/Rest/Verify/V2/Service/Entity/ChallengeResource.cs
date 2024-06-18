@@ -102,6 +102,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
                 HttpMethod.Post,
                 Rest.Domain.Verify,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -421,6 +422,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
                 HttpMethod.Post,
                 Rest.Domain.Verify,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );

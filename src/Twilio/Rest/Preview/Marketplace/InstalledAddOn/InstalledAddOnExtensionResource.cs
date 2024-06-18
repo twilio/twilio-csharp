@@ -244,6 +244,7 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
                 HttpMethod.Post,
                 Rest.Domain.Preview,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );

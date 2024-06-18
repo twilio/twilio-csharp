@@ -447,7 +447,7 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonProperty("status")]
         public RecordingResource.StatusEnum Status { get; private set; }
 
-        ///<summary> The number of channels in the final recording file. Can be: `1` or `2`. You can split a call with two legs into two separate recording channels if you record using [TwiML Dial](https://www.twilio.com/docs/voice/twiml/dial#record) or the [Outbound Rest API](https://www.twilio.com/docs/voice/make-calls#manage-your-outbound-call). </summary> 
+        ///<summary> The number of channels in the final recording file. Can be: `1` or `2`. </summary> 
         [JsonProperty("channels")]
         public int? Channels { get; private set; }
 
