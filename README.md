@@ -58,18 +58,28 @@ The examples below show how to have your application initiate and outbound phone
 ```csharp
 TwilioClient.Init("ACCOUNT_SID", "AUTH_TOKEN");
 
-var call = CallResource.Create(
+try {
+    var call = CallResource.Create(
     new PhoneNumber("+11234567890"),
     from: new PhoneNumber("+10987654321"),
-    url: new Uri("https://my.twiml.here")
-);
+    url: new Uri("https://my.twiml.here"));
+} catch (ApiException e) {
+    Console.WriteLine(e.Message);
+    Console.WriteLine($"Twilio Error {e.Code} - {e.MoreInfo}");
+}
+
 Console.WriteLine(call.Sid);
 
-var message = MessageResource.Create(
+try {
+    var message = MessageResource.Create(
     new PhoneNumber("+11234567890"),
     from: new PhoneNumber("+10987654321"),
-    body: "Hello World!"
-);
+    body: "Hello World!");
+ } catch (ApiException e) {
+    Console.WriteLine(e.Message);
+    Console.WriteLine($"Twilio Error {e.Code} - {e.MoreInfo}");
+ }
+
 Console.WriteLine(message.Sid);
 ```
 
