@@ -32,7 +32,7 @@ namespace Twilio.Rest.Marketplace.V1
 
 
 
-        /// <summary> Construct a new FetchMarketplaceModuleDataManagementOptions </summary>
+        /// <summary> Construct a new FetchModuleDataManagementOptions </summary>
         /// <param name="pathSid">  </param>
         public FetchModuleDataManagementOptions(string pathSid)
         {
@@ -77,7 +77,7 @@ namespace Twilio.Rest.Marketplace.V1
 
 
 
-        /// <summary> Construct a new UpdateMarketplaceModuleDataManagementOptions </summary>
+        /// <summary> Construct a new UpdateModuleDataManagementOptions </summary>
         /// <param name="pathSid">  </param>
         public UpdateModuleDataManagementOptions(string pathSid)
         {

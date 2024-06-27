@@ -35,7 +35,7 @@ namespace Twilio.Rest.Marketplace.V1.InstalledAddOn
 
 
 
-        /// <summary> Construct a new FetchMarketplaceInstalledAddOnExtensionOptions </summary>
+        /// <summary> Construct a new FetchInstalledAddOnExtensionOptions </summary>
         /// <param name="pathInstalledAddOnSid"> The SID of the InstalledAddOn resource with the extension to fetch. </param>
         /// <param name="pathSid"> The SID of the InstalledAddOn Extension resource to fetch. </param>
         public FetchInstalledAddOnExtensionOptions(string pathInstalledAddOnSid, string pathSid)
@@ -67,7 +67,7 @@ namespace Twilio.Rest.Marketplace.V1.InstalledAddOn
 
 
 
-        /// <summary> Construct a new ListMarketplaceInstalledAddOnExtensionOptions </summary>
+        /// <summary> Construct a new ListInstalledAddOnExtensionOptions </summary>
         /// <param name="pathInstalledAddOnSid"> The SID of the InstalledAddOn resource with the extensions to read. </param>
         public ReadInstalledAddOnExtensionOptions(string pathInstalledAddOnSid)
         {
@@ -106,7 +106,7 @@ namespace Twilio.Rest.Marketplace.V1.InstalledAddOn
 
 
 
-        /// <summary> Construct a new UpdateMarketplaceInstalledAddOnExtensionOptions </summary>
+        /// <summary> Construct a new UpdateInstalledAddOnExtensionOptions </summary>
         /// <param name="pathInstalledAddOnSid"> The SID of the InstalledAddOn resource with the extension to update. </param>
         /// <param name="pathSid"> The SID of the InstalledAddOn Extension resource to update. </param>
         /// <param name="enabled"> Whether the Extension should be invoked. </param>

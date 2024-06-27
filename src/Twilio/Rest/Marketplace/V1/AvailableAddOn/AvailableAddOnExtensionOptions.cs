@@ -35,7 +35,7 @@ namespace Twilio.Rest.Marketplace.V1.AvailableAddOn
 
 
 
-        /// <summary> Construct a new FetchMarketplaceAvailableAddOnExtensionOptions </summary>
+        /// <summary> Construct a new FetchAvailableAddOnExtensionOptions </summary>
         /// <param name="pathAvailableAddOnSid"> The SID of the AvailableAddOn resource with the extension to fetch. </param>
         /// <param name="pathSid"> The SID of the AvailableAddOn Extension resource to fetch. </param>
         public FetchAvailableAddOnExtensionOptions(string pathAvailableAddOnSid, string pathSid)
@@ -67,7 +67,7 @@ namespace Twilio.Rest.Marketplace.V1.AvailableAddOn
 
 
 
-        /// <summary> Construct a new ListMarketplaceAvailableAddOnExtensionOptions </summary>
+        /// <summary> Construct a new ListAvailableAddOnExtensionOptions </summary>
         /// <param name="pathAvailableAddOnSid"> The SID of the AvailableAddOn resource with the extensions to read. </param>
         public ReadAvailableAddOnExtensionOptions(string pathAvailableAddOnSid)
         {

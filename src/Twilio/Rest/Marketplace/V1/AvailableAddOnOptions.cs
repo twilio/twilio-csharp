@@ -32,7 +32,7 @@ namespace Twilio.Rest.Marketplace.V1
 
 
 
-        /// <summary> Construct a new FetchMarketplaceAvailableAddOnOptions </summary>
+        /// <summary> Construct a new FetchAvailableAddOnOptions </summary>
         /// <param name="pathSid"> The SID of the AvailableAddOn resource to fetch. </param>
         public FetchAvailableAddOnOptions(string pathSid)
         {

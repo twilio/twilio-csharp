@@ -32,16 +32,16 @@ namespace Twilio.Rest.Marketplace.V1.InstalledAddOn
         public string PathInstalledAddOnSid { get; }
 
         
-        public InstalledAddOnUsageResource.CreateMarketplaceBillingUsageRequest CreateMarketplaceBillingUsageRequest { get; }
+        public InstalledAddOnUsageResource.CreateBillingUsageRequest CreateBillingUsageRequest { get; }
 
 
-        /// <summary> Construct a new CreateMarketplaceBillingUsageOptions </summary>
+        /// <summary> Construct a new CreateBillingUsageOptions </summary>
         /// <param name="pathInstalledAddOnSid">  </param>
-        /// <param name="createMarketplaceBillingUsageRequest">  </param>
-        public CreateInstalledAddOnUsageOptions(string pathInstalledAddOnSid, InstalledAddOnUsageResource.CreateMarketplaceBillingUsageRequest createMarketplaceBillingUsageRequest)
+        /// <param name="createBillingUsageRequest">  </param>
+        public CreateInstalledAddOnUsageOptions(string pathInstalledAddOnSid, InstalledAddOnUsageResource.CreateBillingUsageRequest createBillingUsageRequest)
         {
             PathInstalledAddOnSid = pathInstalledAddOnSid;
-            CreateMarketplaceBillingUsageRequest = createMarketplaceBillingUsageRequest;
+            CreateBillingUsageRequest = createBillingUsageRequest;
         }
 
         
@@ -50,9 +50,9 @@ namespace Twilio.Rest.Marketplace.V1.InstalledAddOn
         {
             string body = "";
 
-            if (CreateMarketplaceBillingUsageRequest != null)
+            if (CreateBillingUsageRequest != null)
             {
-                body = InstalledAddOnUsageResource.ToJson(CreateMarketplaceBillingUsageRequest);
+                body = InstalledAddOnUsageResource.ToJson(CreateBillingUsageRequest);
             }
             return body;
         }

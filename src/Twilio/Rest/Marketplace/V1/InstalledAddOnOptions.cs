@@ -41,7 +41,7 @@ namespace Twilio.Rest.Marketplace.V1
         public string UniqueName { get; set; }
 
 
-        /// <summary> Construct a new CreateMarketplaceInstalledAddOnOptions </summary>
+        /// <summary> Construct a new CreateInstalledAddOnOptions </summary>
         /// <param name="availableAddOnSid"> The SID of the AvaliableAddOn to install. </param>
         /// <param name="acceptTermsOfService"> Whether the Terms of Service were accepted. </param>
         public CreateInstalledAddOnOptions(string availableAddOnSid, bool? acceptTermsOfService)
@@ -87,7 +87,7 @@ namespace Twilio.Rest.Marketplace.V1
 
 
 
-        /// <summary> Construct a new DeleteMarketplaceInstalledAddOnOptions </summary>
+        /// <summary> Construct a new DeleteInstalledAddOnOptions </summary>
         /// <param name="pathSid"> The SID of the InstalledAddOn resource to delete. </param>
         public DeleteInstalledAddOnOptions(string pathSid)
         {
@@ -117,7 +117,7 @@ namespace Twilio.Rest.Marketplace.V1
 
 
 
-        /// <summary> Construct a new FetchMarketplaceInstalledAddOnOptions </summary>
+        /// <summary> Construct a new FetchInstalledAddOnOptions </summary>
         /// <param name="pathSid"> The SID of the InstalledAddOn resource to fetch. </param>
         public FetchInstalledAddOnOptions(string pathSid)
         {
@@ -177,7 +177,7 @@ namespace Twilio.Rest.Marketplace.V1
 
 
 
-        /// <summary> Construct a new UpdateMarketplaceInstalledAddOnOptions </summary>
+        /// <summary> Construct a new UpdateInstalledAddOnOptions </summary>
         /// <param name="pathSid"> The SID of the InstalledAddOn resource to update. </param>
         public UpdateInstalledAddOnOptions(string pathSid)
         {
