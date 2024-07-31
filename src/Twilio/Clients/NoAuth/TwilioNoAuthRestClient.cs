@@ -54,11 +54,9 @@ namespace Twilio.Clients.NoAuth
         /// Constructor for a TwilioRestClient
         /// </summary>
         ///
-        /// <param name="accessToken">access token for requests</param>
-        /// <param name="accountSid">account sid to make requests for</param>
-        /// <param name="region">region to make requests for</param>
-        /// <param name="httpClient">http client used to make the requests</param>
-        /// <param name="edge">edge to make requests for</param>
+        /// <param name="region">Region to make requests for</param>
+        /// <param name="httpClient">HTTP client used to make the requests</param>
+        /// <param name="edge">Edge to make requests for</param>
         public TwilioNoAuthRestClient(
             string region = null,
             NoAuthHttpClient httpClient = null,

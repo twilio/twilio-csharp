@@ -36,6 +36,20 @@ namespace Twilio
         }
 
         /// <summary>
+        /// Set the logging level
+        /// </summary>
+        /// <param name="loglevel">log level</param>
+        public static void SetLogLevel(string loglevel)
+        {
+            if (loglevel != _logLevel)
+            {
+                Invalidate();
+            }
+
+            _logLevel = loglevel;
+        }
+
+        /// <summary>
         /// Set the rest client
         /// </summary>
         /// <param name="restClient">Rest Client to use</param>
