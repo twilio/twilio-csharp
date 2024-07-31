@@ -73,6 +73,8 @@ var message = MessageResource.Create(
 Console.WriteLine(message.Sid);
 ```
 
+Examples on how to make rest calls with bearer token authentication is added [here][examples/BearerTokenAuthentication.md]
+
 ## Specify Region and/or Edge
 
 To take advantage of Twilio's [Global Infrastructure](https://www.twilio.com/docs/global-infrastructure), specify the target Region and/or Edge for the client:
@@ -82,7 +84,7 @@ TwilioClient.SetRegion("au1");
 TwilioClient.SetEdge("sydney");
 ```
 
-This will result in the `hostname` transforming from `api.twilio.com` to `api.sydney.au1.twilio.com`.
+This will result in the `hostname` transforming from `api.twilio.com` to `api.sydney.au1.twilio.com`. Use appropriate client depending on the type of authentication used
 
 ## Enable debug logging
 
