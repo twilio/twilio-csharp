@@ -73,7 +73,7 @@ var message = MessageResource.Create(
 Console.WriteLine(message.Sid);
 ```
 
-Examples on how to make rest calls with bearer token authentication is added [here][[[examples/BearerTokenAuthentication.md](https://github.com/twilio/twilio-csharp/blob/orgs_api_uptake/examples/BearerTokenAuthentication.md)](https://github.com/twilio/twilio-csharp/blob/orgs_api_uptake/examples/BearerTokenAuthentication.md)]
+Examples on how to make rest calls with bearer token authentication is added [here](https://github.com/twilio/twilio-csharp/blob/orgs_api_uptake/examples/BearerTokenAuthentication.md)
 
 ## Specify Region and/or Edge
 
