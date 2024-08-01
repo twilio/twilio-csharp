@@ -113,7 +113,6 @@ namespace Twilio.Clients.BearerToken
         /// <returns>response of the request</returns>
         public Response Request(BearerTokenRequest request)
         {
-            _accessToken = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkFjTlFMbXpUWThMVGM1UTdxX3dzciJ9.eyJodHRwOi8vdHdpbGlvL3ZhbGlkcmVnaW9ucyI6InVzMSIsImh0dHA6Ly90d2lsaW8vYWN0Ijp7InN1YiI6Ik9SNjRhZGVkYzBmNGRjOTliOTExMzMwNWY3MjU2NzdiNDcifSwiaHR0cDovL3R3aWxpby9zdWIiOiJPUTg1NzZmZDAyNGViMmY5NGMzMjlkZDVkNzcyNTRmYTM1IiwiaHR0cDovL3R3aWxpby90eXAiOiJ2bmQudHdpbGlvLm9hdXRoLmF0K2p3dDsiLCJpc3MiOiJodHRwczovL2FwaS50d2lsaW8uYXV0aDBhcHAuY29tLyIsInN1YiI6IlV0MU02U3EzOXdWWFBSYVJBbkZJQWRndHRsUjZTY2xBQGNsaWVudHMiLCJhdWQiOiJodHRwczovL2FwaS50d2lsaW8uY29tL3YyL29yZ2FuaXphdGlvbnMiLCJpYXQiOjE3MjA1NjE2NTcsImV4cCI6MTcyMDY0ODA1NywiZ3R5IjoiY2xpZW50LWNyZWRlbnRpYWxzIiwiYXpwIjoiVXQxTTZTcTM5d1ZYUFJhUkFuRklBZGd0dGxSNlNjbEEifQ.2VAM_jnH9wW1HLsLk48i53TkIzadWX27nKnaof0wvwb7z8fSzdsFLa2B3yGfH1MDMPF5VvN0-P7CJB5gB8gqmTlmCQ4hrctogxWeEIkdahFZY5lrlMWZ_MQvous5mkgZ2C3CRWUJR3VyBNM3oKEuOgwNYq9MHMLdCkfRdNN7dfrJLwhCxd96trEPpB2luKJ1S3EXXqleBcAwxsOdTHQodz4VygVrHhDCjn5di3Z3kl3TQ-ogf8Mq0vE0MMzJ-a-c0TqEJfkg5yoZMcp8rU-hedbfjnTuIQnnrVvc-ukwWG2Q8kTpfs2C8jUEhThIz_dcAszGU4O08U9zsAmcPedaUA";
             if ((_accessToken == null )|| tokenExpired(_accessToken)) {
             throw new ApiConnectionException("Token expired");
 //                lock (lockObject){
