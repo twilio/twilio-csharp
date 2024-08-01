@@ -29,6 +29,11 @@
     <None Include="../../README.md" Pack="true" PackagePath="\"/>
   </ItemGroup>
   <ItemGroup>
+  <Reference Include="System.Web.Extensions">
+    <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v3.5\System.Web.Extensions.dll</HintPath>
+  </Reference>
+  </ItemGroup>
+  <ItemGroup>
     <Reference Include="System.Xml.Linq" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>

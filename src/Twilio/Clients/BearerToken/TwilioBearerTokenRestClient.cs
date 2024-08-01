@@ -1,14 +1,14 @@
-﻿
-using System;
+﻿using System;
 using System.Net;
 using System.Linq;
 using Newtonsoft.Json;
 using Twilio.Exceptions;
 using Twilio.Http.BearerToken;
 using Twilio.Jwt;
-
+using Twilio.Clients;
 
 #if !NET35
+using System.IdentityModel.Tokens.Jwt;
 using System.Threading.Tasks;
 #endif
 
@@ -16,6 +16,9 @@ using Twilio.Http;
 using Twilio.Http.BearerToken;
 #if NET35
 using Twilio.Http.Net35;
+using System.Collections.Generic;
+using System.Text;
+using System.Web.Script.Serialization;
 #endif
 
 
@@ -88,6 +91,21 @@ namespace Twilio.Clients.BearerToken
         }
 
         /// <summary>
+        /// Check if an access token is expired or not. Use the System.IdentityModel.Tokens.Jwt; for versions other
+        /// than net35 and use redirect to custom function if net35
+        /// </summary>
+        ///
+        /// <param name="accessToken">access token for which expiry have to be checked</param>
+        /// <returns>true if expired, false otherwise</returns>
+        public bool tokenExpired(String accessToken){
+            #if NET35
+            return IsTokenExpired(accessToken);
+            #else
+            return isTokenExpired(accessToken);
+            #endif
+        }
+
+        /// <summary>
         /// Make a request to the Twilio API
         /// </summary>
         ///
@@ -95,15 +113,14 @@ namespace Twilio.Clients.BearerToken
         /// <returns>response of the request</returns>
         public Response Request(BearerTokenRequest request)
         {
-
-            if (_accessToken == null ){
-            //|| isTokenExpired(_accessToken)) {
-                lock (lockObject){
-                    if (_accessToken == null){
-                     //|| isTokenExpired(_accessToken)) {
-                        _accessToken = _tokenManager.fetchAccessToken();
-                    }
-                }
+            _accessToken = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkFjTlFMbXpUWThMVGM1UTdxX3dzciJ9.eyJodHRwOi8vdHdpbGlvL3ZhbGlkcmVnaW9ucyI6InVzMSIsImh0dHA6Ly90d2lsaW8vYWN0Ijp7InN1YiI6Ik9SNjRhZGVkYzBmNGRjOTliOTExMzMwNWY3MjU2NzdiNDcifSwiaHR0cDovL3R3aWxpby9zdWIiOiJPUTg1NzZmZDAyNGViMmY5NGMzMjlkZDVkNzcyNTRmYTM1IiwiaHR0cDovL3R3aWxpby90eXAiOiJ2bmQudHdpbGlvLm9hdXRoLmF0K2p3dDsiLCJpc3MiOiJodHRwczovL2FwaS50d2lsaW8uYXV0aDBhcHAuY29tLyIsInN1YiI6IlV0MU02U3EzOXdWWFBSYVJBbkZJQWRndHRsUjZTY2xBQGNsaWVudHMiLCJhdWQiOiJodHRwczovL2FwaS50d2lsaW8uY29tL3YyL29yZ2FuaXphdGlvbnMiLCJpYXQiOjE3MjA1NjE2NTcsImV4cCI6MTcyMDY0ODA1NywiZ3R5IjoiY2xpZW50LWNyZWRlbnRpYWxzIiwiYXpwIjoiVXQxTTZTcTM5d1ZYUFJhUkFuRklBZGd0dGxSNlNjbEEifQ.2VAM_jnH9wW1HLsLk48i53TkIzadWX27nKnaof0wvwb7z8fSzdsFLa2B3yGfH1MDMPF5VvN0-P7CJB5gB8gqmTlmCQ4hrctogxWeEIkdahFZY5lrlMWZ_MQvous5mkgZ2C3CRWUJR3VyBNM3oKEuOgwNYq9MHMLdCkfRdNN7dfrJLwhCxd96trEPpB2luKJ1S3EXXqleBcAwxsOdTHQodz4VygVrHhDCjn5di3Z3kl3TQ-ogf8Mq0vE0MMzJ-a-c0TqEJfkg5yoZMcp8rU-hedbfjnTuIQnnrVvc-ukwWG2Q8kTpfs2C8jUEhThIz_dcAszGU4O08U9zsAmcPedaUA";
+            if ((_accessToken == null )|| tokenExpired(_accessToken)) {
+            throw new ApiConnectionException("Token expired");
+//                lock (lockObject){
+//                    if ((_accessToken == null) || tokenExpired(_accessToken)) {
+//                        _accessToken = _tokenManager.fetchAccessToken();
+//                    }
+//                }
             }
             request.SetAuth(_accessToken);
 
@@ -139,21 +156,78 @@ namespace Twilio.Clients.BearerToken
             return ProcessResponse(response);
         }
 
-        /// <summary>
-        /// To check if token is expired or not
-        /// </summary>
-        ///
-        /// <param name="token">token to validate</param>
-        /// <returns>True if token is not expired, false otherwise</returns>
-//        public bool isTokenExpired(String token) {
-//
-//            var tokenHandler = new JwtSecurityTokenHandler();
-//            var jwtToken = tokenHandler.ReadJwtToken(token);
-//            var expirationTime = jwtToken.Payload.Exp.HasValue
-//                        ? DateTimeOffset.FromUnixTimeSeconds(jwtToken.Payload.Exp.Value)
-//                        : DateTimeOffset.MinValue;
-//           return expirationTime <= DateTimeOffset.UtcNow;
-//        }
+#if NET35
+    public static bool IsTokenExpired(string token)
+        {
+            try
+            {
+                // Split the token into its components
+                var parts = token.Split('.');
+                if (parts.Length != 3)
+                    throw new ArgumentException("Malformed token received");
+
+                // Decode the payload (the second part of the JWT)
+                string payload = Base64UrlEncoder.Decode(parts[1]);
+
+                // Parse the payload JSON
+                var serializer = new JavaScriptSerializer();
+                var payloadData = serializer.Deserialize<Dictionary<string, object>>(payload);
+
+                // Check the 'exp' claim
+                if (payloadData.TryGetValue("exp", out object expObj))
+                {
+                    if (long.TryParse(expObj.ToString(), out long exp))
+                    {
+                        DateTime expirationDate = UnixTimeStampToDateTime(exp);
+                        return DateTime.UtcNow > expirationDate;
+                    }
+                }
+
+                // If 'exp' claim is missing or not a valid timestamp, consider the token expired
+                throw new ApiConnectionException("token expired 1");
+                return true;
+            }
+            catch (Exception ex)
+            {
+                // Handle exceptions (e.g., malformed token or invalid JSON)
+                Console.WriteLine($"Error checking token expiration: {ex.Message}");
+                throw new ApiConnectionException("token expired 2");
+                return true; // Consider as expired if there's an error
+            }
+        }
+
+        private static DateTime UnixTimeStampToDateTime(long unixTimeStamp)
+        {
+            // Unix timestamp is seconds past epoch
+            var epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+            return epoch.AddSeconds(unixTimeStamp);
+        }
+#endif
+
+#if !NET35
+        public bool isTokenExpired(string token){
+            var handler = new JwtSecurityTokenHandler();
+            try{
+                var jwtToken = handler.ReadJwtToken(token);
+                var exp = jwtToken.Payload.Exp;
+                if (exp.HasValue)
+                    {
+                        var expirationDate = DateTimeOffset.FromUnixTimeSeconds(exp.Value).UtcDateTime;
+                        return DateTime.UtcNow > expirationDate;
+                    }
+                else
+                {
+                    return true; // Assuming token is expired if exp claim is missing
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error reading token: {ex.Message}");
+
+                return true; // Treat as expired if there is an error
+            }
+        }
+#endif
 
 #if !NET35
         /// <summary>
