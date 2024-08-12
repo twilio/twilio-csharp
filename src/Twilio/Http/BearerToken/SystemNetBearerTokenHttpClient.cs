@@ -101,6 +101,7 @@ namespace Twilio.Http.BearerToken
             httpRequest.Headers.Authorization = new AuthenticationHeaderValue("Bearer", authBytes);
 
             httpRequest.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            httpRequest.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/scim+json"));
             httpRequest.Headers.AcceptEncoding.Add(new StringWithQualityHeaderValue("utf-8"));
 
             int lastSpaceIndex = PlatVersion.LastIndexOf(" ");

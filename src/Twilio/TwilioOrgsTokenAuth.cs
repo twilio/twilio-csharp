@@ -16,6 +16,7 @@ namespace Twilio
         private static TwilioBearerTokenRestClient _restClient;
         private static string _logLevel;
         private static TokenManager _tokenManager;
+        private static ClientProperties clientProperties;
 
         private TwilioOrgsTokenAuthClient() { }
 
@@ -74,7 +75,7 @@ namespace Twilio
             {
                 Invalidate();
             }
-
+            ClientProperties.SetRegion(region);
             _region = region;
         }
 
@@ -88,7 +89,7 @@ namespace Twilio
             {
                 Invalidate();
             }
-
+            ClientProperties.SetEdge(edge);
             _edge = edge;
         }
 
@@ -102,7 +103,7 @@ namespace Twilio
             {
                 Invalidate();
             }
-
+            ClientProperties.SetLogLevel(_logLevel);
             _logLevel = loglevel;
         }
 
