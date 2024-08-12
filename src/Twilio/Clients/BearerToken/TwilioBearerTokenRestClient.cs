@@ -279,7 +279,7 @@ namespace Twilio.Clients.BearerToken
             {
                 throw new ApiConnectionException("Connection Error: No response received.");
             }
-            throw new ApiConnectionException("response.StatusCode" + response.StatusCode);
+
 
             if (response.StatusCode >= HttpStatusCode.OK && response.StatusCode < HttpStatusCode.BadRequest)
             {
@@ -298,11 +298,11 @@ namespace Twilio.Clients.BearerToken
             {
                 throw new ApiException("Api Error: " + response.StatusCode + " - " + (response.Content ?? "[no content]"));
             }
-//"Unable to make request with, "
+
             throw new ApiException(
                 restException.Code,
                 (int)response.StatusCode,
-                restException.Message ?? response.StatusCode.ToString(),
+                restException.Message ?? "Unable to make request, " + response.StatusCode,
                 restException.MoreInfo,
                 restException.Details
             );

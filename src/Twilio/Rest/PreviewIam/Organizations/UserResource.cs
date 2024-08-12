@@ -690,7 +690,7 @@ namespace Twilio.Rest.PreviewIam.Organizations
             }
             catch (JsonException e)
             {
-                 throw new ApiException(e.Message, e);
+                throw new ApiException(e.Message, e);
             }
         }
         /// <summary>
