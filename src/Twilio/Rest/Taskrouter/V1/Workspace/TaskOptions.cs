@@ -52,7 +52,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         ///<summary> A SID of a Worker, Queue, or Workflow to route a Task to </summary> 
         public string RoutingTarget { get; set; }
 
-        ///<summary> A boolean indicating if a new task should respect a worker's capacity during assignment </summary> 
+        ///<summary> A boolean that indicates if the Task should respect a Worker's capacity and availability during assignment. This field can only be used when the `RoutingTarget` field is set to a Worker SID. By setting `IgnoreCapacity` to a value of `true`, `1`, or `yes`, the Task will be routed to the Worker without respecting their capacity and availability. Any other value will enforce the Worker's capacity and availability. The default value of `IgnoreCapacity` is `true` when the `RoutingTarget` is set to a Worker SID.  </summary> 
         public string IgnoreCapacity { get; set; }
 
         ///<summary> The SID of the TaskQueue in which the Task belongs </summary> 

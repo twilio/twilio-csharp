@@ -93,7 +93,7 @@ namespace Twilio.Rest.Numbers.V1
         #endif
 
         /// <summary> Allows the client to delete a webhook configuration. </summary>
-        /// <param name="pathWebhookType"> The of the webhook type of the configuration to be deleted </param>
+        /// <param name="pathWebhookType"> The webhook type for the configuration to be delete. `PORT_IN`, `PORT_OUT` </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of PortingWebhookConfigurationDelete </returns>
         public static bool Delete(PortingWebhookConfigurationDeleteResource.WebhookTypeEnum pathWebhookType, ITwilioRestClient client = null)
@@ -104,7 +104,7 @@ namespace Twilio.Rest.Numbers.V1
 
         #if !NET35
         /// <summary> Allows the client to delete a webhook configuration. </summary>
-        /// <param name="pathWebhookType"> The of the webhook type of the configuration to be deleted </param>
+        /// <param name="pathWebhookType"> The webhook type for the configuration to be delete. `PORT_IN`, `PORT_OUT` </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PortingWebhookConfigurationDelete </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(PortingWebhookConfigurationDeleteResource.WebhookTypeEnum pathWebhookType, ITwilioRestClient client = null)

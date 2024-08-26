@@ -80,6 +80,7 @@ namespace Twilio.Rest.Intelligence.V2.Transcript
         /// <summary> Get all Transcript Sentences by TranscriptSid </summary>
         /// <param name="pathTranscriptSid"> The unique SID identifier of the Transcript. </param>
         /// <param name="redacted"> Grant access to PII Redacted/Unredacted Sentences. If redaction is enabled, the default is `true` to access redacted sentences. </param>
+        /// <param name="wordTimestamps"> Returns word level timestamps information, if word_timestamps is enabled. The default is `false`. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -87,11 +88,12 @@ namespace Twilio.Rest.Intelligence.V2.Transcript
         public static ResourceSet<SentenceResource> Read(
                                                      string pathTranscriptSid,
                                                      bool? redacted = null,
+                                                     bool? wordTimestamps = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
                                                      ITwilioRestClient client = null)
         {
-            var options = new ReadSentenceOptions(pathTranscriptSid){ Redacted = redacted, PageSize = pageSize, Limit = limit};
+            var options = new ReadSentenceOptions(pathTranscriptSid){ Redacted = redacted, WordTimestamps = wordTimestamps, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -99,6 +101,7 @@ namespace Twilio.Rest.Intelligence.V2.Transcript
         /// <summary> Get all Transcript Sentences by TranscriptSid </summary>
         /// <param name="pathTranscriptSid"> The unique SID identifier of the Transcript. </param>
         /// <param name="redacted"> Grant access to PII Redacted/Unredacted Sentences. If redaction is enabled, the default is `true` to access redacted sentences. </param>
+        /// <param name="wordTimestamps"> Returns word level timestamps information, if word_timestamps is enabled. The default is `false`. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -106,11 +109,12 @@ namespace Twilio.Rest.Intelligence.V2.Transcript
         public static async System.Threading.Tasks.Task<ResourceSet<SentenceResource>> ReadAsync(
                                                                                              string pathTranscriptSid,
                                                                                              bool? redacted = null,
+                                                                                             bool? wordTimestamps = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
                                                                                              ITwilioRestClient client = null)
         {
-            var options = new ReadSentenceOptions(pathTranscriptSid){ Redacted = redacted, PageSize = pageSize, Limit = limit};
+            var options = new ReadSentenceOptions(pathTranscriptSid){ Redacted = redacted, WordTimestamps = wordTimestamps, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
@@ -225,6 +229,10 @@ namespace Twilio.Rest.Intelligence.V2.Transcript
         ///<summary> The confidence </summary> 
         [JsonProperty("confidence")]
         public decimal? Confidence { get; private set; }
+
+        ///<summary> Detailed information for each of the words of the given Sentence. </summary> 
+        [JsonProperty("words")]
+        public List<object> Words { get; private set; }
 
 
 

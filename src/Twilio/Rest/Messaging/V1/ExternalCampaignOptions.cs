@@ -34,6 +34,9 @@ namespace Twilio.Rest.Messaging.V1
         ///<summary> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) that the resource is associated with. </summary> 
         public string MessagingServiceSid { get; }
 
+        ///<summary> Customers should use this flag during the ERC registration process to indicate to Twilio that the campaign being registered is undergoing CNP migration. It is important for the user to first trigger the CNP migration process for said campaign in their CSP portal and have Twilio accept the sharing request, before making this api call. </summary> 
+        public bool? CnpMigration { get; set; }
+
 
         /// <summary> Construct a new CreateExternalCampaignOptions </summary>
         /// <param name="campaignId"> ID of the preregistered campaign. </param>
@@ -57,6 +60,10 @@ namespace Twilio.Rest.Messaging.V1
             if (MessagingServiceSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("MessagingServiceSid", MessagingServiceSid));
+            }
+            if (CnpMigration != null)
+            {
+                p.Add(new KeyValuePair<string, string>("CnpMigration", CnpMigration.Value.ToString().ToLower()));
             }
             return p;
         }

@@ -103,6 +103,105 @@ namespace Twilio.Rest.FlexApi.V2
             return await FetchAsync(options, client);
         }
         #endif
+        
+        private static Request BuildUpdateRequest(UpdateFlexUserOptions options, ITwilioRestClient client)
+        {
+            
+            string path = "/v2/Instances/{InstanceSid}/Users/{FlexUserSid}";
+
+            string PathInstanceSid = options.PathInstanceSid;
+            path = path.Replace("{"+"InstanceSid"+"}", PathInstanceSid);
+            string PathFlexUserSid = options.PathFlexUserSid;
+            path = path.Replace("{"+"FlexUserSid"+"}", PathFlexUserSid);
+
+            return new Request(
+                HttpMethod.Post,
+                Rest.Domain.FlexApi,
+                path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
+                postParams: options.GetParams(),
+                headerParams: null
+            );
+        }
+
+        /// <summary> Update flex user for the given flex user sid </summary>
+        /// <param name="options"> Update FlexUser parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of FlexUser </returns>
+        public static FlexUserResource Update(UpdateFlexUserOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
+        }
+
+        /// <summary> Update flex user for the given flex user sid </summary>
+        /// <param name="options"> Update FlexUser parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of FlexUser </returns>
+        #if !NET35
+        public static async System.Threading.Tasks.Task<FlexUserResource> UpdateAsync(UpdateFlexUserOptions options,
+                                                                                                          ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
+        }
+        #endif
+
+        /// <summary> Update flex user for the given flex user sid </summary>
+        /// <param name="pathInstanceSid"> The unique ID created by Twilio to identify a Flex instance. </param>
+        /// <param name="pathFlexUserSid"> The unique id for the flex user. </param>
+        /// <param name="firstName"> First name of the User. </param>
+        /// <param name="lastName"> Last name of the User. </param>
+        /// <param name="email"> Email of the User. </param>
+        /// <param name="friendlyName"> Friendly name of the User. </param>
+        /// <param name="userSid"> The unique SID identifier of the Twilio Unified User. </param>
+        /// <param name="locale"> The locale preference of the user. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of FlexUser </returns>
+        public static FlexUserResource Update(
+                                          string pathInstanceSid,
+                                          string pathFlexUserSid,
+                                          string firstName = null,
+                                          string lastName = null,
+                                          string email = null,
+                                          string friendlyName = null,
+                                          string userSid = null,
+                                          string locale = null,
+                                          ITwilioRestClient client = null)
+        {
+            var options = new UpdateFlexUserOptions(pathInstanceSid, pathFlexUserSid){ FirstName = firstName, LastName = lastName, Email = email, FriendlyName = friendlyName, UserSid = userSid, Locale = locale };
+            return Update(options, client);
+        }
+
+        #if !NET35
+        /// <summary> Update flex user for the given flex user sid </summary>
+        /// <param name="pathInstanceSid"> The unique ID created by Twilio to identify a Flex instance. </param>
+        /// <param name="pathFlexUserSid"> The unique id for the flex user. </param>
+        /// <param name="firstName"> First name of the User. </param>
+        /// <param name="lastName"> Last name of the User. </param>
+        /// <param name="email"> Email of the User. </param>
+        /// <param name="friendlyName"> Friendly name of the User. </param>
+        /// <param name="userSid"> The unique SID identifier of the Twilio Unified User. </param>
+        /// <param name="locale"> The locale preference of the user. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of FlexUser </returns>
+        public static async System.Threading.Tasks.Task<FlexUserResource> UpdateAsync(
+                                                                              string pathInstanceSid,
+                                                                              string pathFlexUserSid,
+                                                                              string firstName = null,
+                                                                              string lastName = null,
+                                                                              string email = null,
+                                                                              string friendlyName = null,
+                                                                              string userSid = null,
+                                                                              string locale = null,
+                                                                              ITwilioRestClient client = null)
+        {
+            var options = new UpdateFlexUserOptions(pathInstanceSid, pathFlexUserSid){ FirstName = firstName, LastName = lastName, Email = email, FriendlyName = friendlyName, UserSid = userSid, Locale = locale };
+            return await UpdateAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a FlexUserResource object
@@ -185,6 +284,14 @@ namespace Twilio.Rest.FlexApi.V2
         ///<summary> Friendly name of the User. </summary> 
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
+
+        ///<summary> The locale preference of the user. </summary> 
+        [JsonProperty("locale")]
+        public string Locale { get; private set; }
+
+        ///<summary> The roles of the user. </summary> 
+        [JsonProperty("roles")]
+        public List<string> Roles { get; private set; }
 
         ///<summary> The date that this user was created, given in ISO 8601 format. </summary> 
         [JsonProperty("created_date")]

@@ -48,5 +48,43 @@ namespace Twilio.Rest.Numbers.V1
         
 
     }
+    /// <summary> Synchronous operation to retrieve configurations for the customer. </summary>
+    public class ReadSigningRequestConfigurationOptions : ReadOptions<SigningRequestConfigurationResource>
+    {
+    
+        ///<summary> The country ISO code to apply this configuration, this is an optional field, Example: US, MX </summary> 
+        public string Country { get; set; }
+
+        ///<summary> The product or service for which is requesting the signature, this is an optional field, Example: Porting, Hosting </summary> 
+        public string Product { get; set; }
+
+
+
+
+        
+        /// <summary> Generate the necessary parameters </summary>
+        public List<KeyValuePair<string, string>> GetParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+
+            if (Country != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Country", Country));
+            }
+            if (Product != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Product", Product));
+            }
+            if (PageSize != null)
+            {
+                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+            }
+            return p;
+        }
+
+        
+
+    }
+
 }
 

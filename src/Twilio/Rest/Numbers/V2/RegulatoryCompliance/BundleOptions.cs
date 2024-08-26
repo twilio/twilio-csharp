@@ -49,6 +49,9 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         ///<summary> The type of phone number of the Bundle's ownership request. Can be `local`, `mobile`, `national`, or `toll free`. </summary> 
         public string NumberType { get; set; }
 
+        ///<summary> Indicates that Bundle is a Test Bundle and will be Auto-Rejected </summary> 
+        public bool? IsTest { get; set; }
+
 
         /// <summary> Construct a new CreateBundleOptions </summary>
         /// <param name="friendlyName"> The string that you assigned to describe the resource. </param>
@@ -92,6 +95,10 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
             if (NumberType != null)
             {
                 p.Add(new KeyValuePair<string, string>("NumberType", NumberType));
+            }
+            if (IsTest != null)
+            {
+                p.Add(new KeyValuePair<string, string>("IsTest", IsTest.Value.ToString().ToLower()));
             }
             return p;
         }

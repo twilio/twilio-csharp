@@ -726,7 +726,7 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonProperty("price")]
         public string Price { get; private set; }
 
-        ///<summary> The description of the `error_code` if the Message `status` is `failed` or `undelivered`. If no error was encountered, the value is `null`. </summary> 
+        ///<summary> The description of the `error_code` if the Message `status` is `failed` or `undelivered`. If no error was encountered, the value is `null`. The value returned in this field for a specific error cause is subject to change as Twilio improves errors. Users should not use the `error_code` and `error_message` fields programmatically. </summary> 
         [JsonProperty("error_message")]
         public string ErrorMessage { get; private set; }
 
@@ -762,7 +762,7 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
-        ///<summary> The [error code](https://www.twilio.com/docs/api/errors) returned if the Message `status` is `failed` or `undelivered`. If no error was encountered, the value is `null`. </summary> 
+        ///<summary> The [error code](https://www.twilio.com/docs/api/errors) returned if the Message `status` is `failed` or `undelivered`. If no error was encountered, the value is `null`. The value returned in this field for a specific error cause is subject to change as Twilio improves errors. Users should not use the `error_code` and `error_message` fields programmatically. </summary> 
         [JsonProperty("error_code")]
         public int? ErrorCode { get; private set; }
 

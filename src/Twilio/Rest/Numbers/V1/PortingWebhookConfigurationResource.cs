@@ -51,7 +51,7 @@ namespace Twilio.Rest.Numbers.V1
             );
         }
 
-        /// <summary> Allows to create a new webhook configuration </summary>
+        /// <summary> Create a Webhook Configuration </summary>
         /// <param name="options"> Create PortingWebhookConfiguration parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of PortingWebhookConfiguration </returns>
@@ -63,7 +63,7 @@ namespace Twilio.Rest.Numbers.V1
         }
 
         #if !NET35
-        /// <summary> Allows to create a new webhook configuration </summary>
+        /// <summary> Create a Webhook Configuration </summary>
         /// <param name="options"> Create PortingWebhookConfiguration parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PortingWebhookConfiguration </returns>
@@ -76,7 +76,7 @@ namespace Twilio.Rest.Numbers.V1
         }
         #endif
 
-        /// <summary> Allows to create a new webhook configuration </summary>
+        /// <summary> Create a Webhook Configuration </summary>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of PortingWebhookConfiguration </returns>
         public static PortingWebhookConfigurationResource Create(
@@ -87,7 +87,7 @@ namespace Twilio.Rest.Numbers.V1
         }
 
         #if !NET35
-        /// <summary> Allows to create a new webhook configuration </summary>
+        /// <summary> Create a Webhook Configuration </summary>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PortingWebhookConfiguration </returns>
         public static async System.Threading.Tasks.Task<PortingWebhookConfigurationResource> CreateAsync(
@@ -136,15 +136,15 @@ namespace Twilio.Rest.Numbers.V1
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
-        ///<summary> Webhook URL to send a request when a port in request or port in phone number event happens </summary> 
+        ///<summary> The complete webhook url that will be called when a notification event for port in request or port in phone number happens </summary> 
         [JsonProperty("port_in_target_url")]
         public Uri PortInTargetUrl { get; private set; }
 
-        ///<summary> Webhook URL to send a request when a port out phone number event happens </summary> 
+        ///<summary> The complete webhook url that will be called when a notification event for a port out phone number happens. </summary> 
         [JsonProperty("port_out_target_url")]
         public Uri PortOutTargetUrl { get; private set; }
 
-        ///<summary> List of notification events to send a request to the webhook URL </summary> 
+        ///<summary> A list to filter what notification events to receive for this account and its sub accounts. If it is an empty list, then it means that there are no filters for the notifications events to send in each webhook and all events will get sent. </summary> 
         [JsonProperty("notifications_of")]
         public List<string> NotificationsOf { get; private set; }
 

@@ -23,17 +23,17 @@ using Twilio.Converters;
 
 namespace Twilio.Rest.Marketplace.V1
 {
-    /// <summary> fetch </summary>
+    /// <summary> This endpoint returns the data of a given Listing. To find a Listing's SID, use the [Available Add-ons resource](/docs/marketplace/api/available-add-ons) or view its Listing details page in the Console by visiting the [Catalog](https://console.twilio.com/us1/develop/add-ons/catalog) or the [My Listings tab](https://console.twilio.com/us1/develop/add-ons/publish/my-listings) and selecting the Listing. </summary>
     public class FetchModuleDataManagementOptions : IOptions<ModuleDataManagementResource>
     {
     
-        
+        ///<summary> The unique identifier of a Listing. </summary> 
         public string PathSid { get; }
 
 
 
         /// <summary> Construct a new FetchModuleDataManagementOptions </summary>
-        /// <param name="pathSid">  </param>
+        /// <param name="pathSid"> The unique identifier of a Listing. </param>
         public FetchModuleDataManagementOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -75,6 +75,9 @@ namespace Twilio.Rest.Marketplace.V1
         
         public string Support { get; set; }
 
+        
+        public string Configuration { get; set; }
+
 
 
         /// <summary> Construct a new UpdateModuleDataManagementOptions </summary>
@@ -109,6 +112,10 @@ namespace Twilio.Rest.Marketplace.V1
             if (Support != null)
             {
                 p.Add(new KeyValuePair<string, string>("Support", Support));
+            }
+            if (Configuration != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Configuration", Configuration));
             }
             return p;
         }

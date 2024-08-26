@@ -24,7 +24,7 @@ using Twilio.Converters;
 namespace Twilio.Rest.Numbers.V1
 {
 
-    /// <summary> Allows to create a new webhook configuration </summary>
+    /// <summary> Create a Webhook Configuration </summary>
     public class CreatePortingWebhookConfigurationOptions : IOptions<PortingWebhookConfigurationResource>
     {
         

@@ -30,54 +30,54 @@ namespace Twilio.Rest.Marketplace.V1.InstalledAddOn
     public class InstalledAddOnUsageResource : Resource
     {
     
-        public class CreateBillingUsageRequestBillableItems
+        public class MarketplaceV1InstalledAddOnInstalledAddOnUsageBillableItems
         {
             [JsonProperty("quantity")]
             private decimal? Quantity {get; set;}
             [JsonProperty("sid")]
             private string Sid {get; set;}
-            public CreateBillingUsageRequestBillableItems() { }
+            public MarketplaceV1InstalledAddOnInstalledAddOnUsageBillableItems() { }
             public class Builder
             {
-                private CreateBillingUsageRequestBillableItems _createBillingUsageRequestBillableItems = new CreateBillingUsageRequestBillableItems();
+                private MarketplaceV1InstalledAddOnInstalledAddOnUsageBillableItems _marketplaceV1InstalledAddOnInstalledAddOnUsageBillableItems = new MarketplaceV1InstalledAddOnInstalledAddOnUsageBillableItems();
                 public Builder()
                 {
                 }
                 public Builder WithQuantity(decimal? quantity)
                 {
-                    _createBillingUsageRequestBillableItems.Quantity= quantity;
+                    _marketplaceV1InstalledAddOnInstalledAddOnUsageBillableItems.Quantity= quantity;
                     return this;
                 }
                 public Builder WithSid(string sid)
                 {
-                    _createBillingUsageRequestBillableItems.Sid= sid;
+                    _marketplaceV1InstalledAddOnInstalledAddOnUsageBillableItems.Sid= sid;
                     return this;
                 }
-                public CreateBillingUsageRequestBillableItems Build()
+                public MarketplaceV1InstalledAddOnInstalledAddOnUsageBillableItems Build()
                 {
-                    return _createBillingUsageRequestBillableItems;
+                    return _marketplaceV1InstalledAddOnInstalledAddOnUsageBillableItems;
                 }
             }
         }
-        public class CreateBillingUsageRequest
+        public class MarketplaceV1InstalledAddOnInstalledAddOnUsage
         {
             [JsonProperty("billable_items")]
-            private List<CreateBillingUsageRequestBillableItems> BillableItems {get; set;}
-            public CreateBillingUsageRequest() { }
+            private List<MarketplaceV1InstalledAddOnInstalledAddOnUsageBillableItems> BillableItems {get; set;}
+            public MarketplaceV1InstalledAddOnInstalledAddOnUsage() { }
             public class Builder
             {
-                private CreateBillingUsageRequest _createBillingUsageRequest = new CreateBillingUsageRequest();
+                private MarketplaceV1InstalledAddOnInstalledAddOnUsage _marketplaceV1InstalledAddOnInstalledAddOnUsage = new MarketplaceV1InstalledAddOnInstalledAddOnUsage();
                 public Builder()
                 {
                 }
-                public Builder WithBillableItems(List<CreateBillingUsageRequestBillableItems> billableItems)
+                public Builder WithBillableItems(List<MarketplaceV1InstalledAddOnInstalledAddOnUsageBillableItems> billableItems)
                 {
-                    _createBillingUsageRequest.BillableItems= billableItems;
+                    _marketplaceV1InstalledAddOnInstalledAddOnUsage.BillableItems= billableItems;
                     return this;
                 }
-                public CreateBillingUsageRequest Build()
+                public MarketplaceV1InstalledAddOnInstalledAddOnUsage Build()
                 {
-                    return _createBillingUsageRequest;
+                    return _marketplaceV1InstalledAddOnInstalledAddOnUsage;
                 }
             }
         }
@@ -167,30 +167,30 @@ namespace Twilio.Rest.Marketplace.V1.InstalledAddOn
 
         /// <summary> create </summary>
         /// <param name="pathInstalledAddOnSid">  </param>
-        /// <param name="createBillingUsageRequest">  </param>
+        /// <param name="marketplaceV1InstalledAddOnInstalledAddOnUsage">  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of InstalledAddOnUsage </returns>
         public static InstalledAddOnUsageResource Create(
                                           string pathInstalledAddOnSid,
-                                          InstalledAddOnUsageResource.CreateBillingUsageRequest createBillingUsageRequest,
+                                          InstalledAddOnUsageResource.MarketplaceV1InstalledAddOnInstalledAddOnUsage marketplaceV1InstalledAddOnInstalledAddOnUsage,
                                           ITwilioRestClient client = null)
         {
-            var options = new CreateInstalledAddOnUsageOptions(pathInstalledAddOnSid, createBillingUsageRequest){  };
+            var options = new CreateInstalledAddOnUsageOptions(pathInstalledAddOnSid, marketplaceV1InstalledAddOnInstalledAddOnUsage){  };
             return Create(options, client);
         }
 
         #if !NET35
         /// <summary> create </summary>
         /// <param name="pathInstalledAddOnSid">  </param>
-        /// <param name="createBillingUsageRequest">  </param>
+        /// <param name="marketplaceV1InstalledAddOnInstalledAddOnUsage">  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InstalledAddOnUsage </returns>
         public static async System.Threading.Tasks.Task<InstalledAddOnUsageResource> CreateAsync(
                                                                                   string pathInstalledAddOnSid,
-                                                                                  InstalledAddOnUsageResource.CreateBillingUsageRequest createBillingUsageRequest,
+                                                                                  InstalledAddOnUsageResource.MarketplaceV1InstalledAddOnInstalledAddOnUsage marketplaceV1InstalledAddOnInstalledAddOnUsage,
                                                                                   ITwilioRestClient client = null)
         {
-        var options = new CreateInstalledAddOnUsageOptions(pathInstalledAddOnSid, createBillingUsageRequest){  };
+        var options = new CreateInstalledAddOnUsageOptions(pathInstalledAddOnSid, marketplaceV1InstalledAddOnInstalledAddOnUsage){  };
             return await CreateAsync(options, client);
         }
         #endif

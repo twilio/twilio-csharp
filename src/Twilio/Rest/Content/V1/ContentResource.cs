@@ -543,6 +543,129 @@ namespace Twilio.Rest.Content.V1
                 }
             }
         }
+        public class CarouselAction
+        {
+            [JsonConverter(typeof(StringEnumConverter))]
+            [JsonProperty("type")]
+            private ContentResource.CarouselActionType Type {get; set;}
+            [JsonProperty("title")]
+            private string Title {get; set;}
+            [JsonProperty("url")]
+            private string Url {get; set;}
+            [JsonProperty("phone")]
+            private string Phone {get; set;}
+            [JsonProperty("id")]
+            private string Id {get; set;}
+            public CarouselAction() { }
+            public class Builder
+            {
+                private CarouselAction _carouselAction = new CarouselAction();
+                public Builder()
+                {
+                }
+                public Builder WithType(ContentResource.CarouselActionType type)
+                {
+                    _carouselAction.Type= type;
+                    return this;
+                }
+                public Builder WithTitle(string title)
+                {
+                    _carouselAction.Title= title;
+                    return this;
+                }
+                public Builder WithUrl(string url)
+                {
+                    _carouselAction.Url= url;
+                    return this;
+                }
+                public Builder WithPhone(string phone)
+                {
+                    _carouselAction.Phone= phone;
+                    return this;
+                }
+                public Builder WithId(string id)
+                {
+                    _carouselAction.Id= id;
+                    return this;
+                }
+                public CarouselAction Build()
+                {
+                    return _carouselAction;
+                }
+            }
+        }
+        public class CarouselCard
+        {
+            [JsonProperty("title")]
+            private string Title {get; set;}
+            [JsonProperty("body")]
+            private string Body {get; set;}
+            [JsonProperty("media")]
+            private string Media {get; set;}
+            [JsonProperty("actions")]
+            private List<CarouselAction> Actions {get; set;}
+            public CarouselCard() { }
+            public class Builder
+            {
+                private CarouselCard _carouselCard = new CarouselCard();
+                public Builder()
+                {
+                }
+                public Builder WithTitle(string title)
+                {
+                    _carouselCard.Title= title;
+                    return this;
+                }
+                public Builder WithBody(string body)
+                {
+                    _carouselCard.Body= body;
+                    return this;
+                }
+                public Builder WithMedia(string media)
+                {
+                    _carouselCard.Media= media;
+                    return this;
+                }
+                public Builder WithActions(List<CarouselAction> actions)
+                {
+                    _carouselCard.Actions= actions;
+                    return this;
+                }
+                public CarouselCard Build()
+                {
+                    return _carouselCard;
+                }
+            }
+        }
+        public class TwilioCarousel
+        {
+            [JsonProperty("body")]
+            private string Body {get; set;}
+            [JsonProperty("cards")]
+            private List<CarouselCard> Cards {get; set;}
+            public TwilioCarousel() { }
+            public class Builder
+            {
+                private TwilioCarousel _twilioCarousel = new TwilioCarousel();
+                public Builder()
+                {
+                }
+                public Builder WithBody(string body)
+                {
+                    _twilioCarousel.Body= body;
+                    return this;
+                }
+                public Builder WithCards(List<CarouselCard> cards)
+                {
+                    _twilioCarousel.Cards= cards;
+                    return this;
+                }
+                public TwilioCarousel Build()
+                {
+                    return _twilioCarousel;
+                }
+            }
+        }
         public class WhatsappCard
         {
             [JsonProperty("body")]
@@ -677,6 +800,8 @@ namespace Twilio.Rest.Content.V1
             private TwilioCard TwilioCard {get; set;}
             [JsonProperty("twilio/catalog")]
             private TwilioCatalog TwilioCatalog {get; set;}
+            [JsonProperty("twilio/carousel")]
+            private TwilioCarousel TwilioCarousel {get; set;}
             [JsonProperty("whatsapp/card")]
             private WhatsappCard WhatsappCard {get; set;}
             [JsonProperty("whatsapp/authentication")]
@@ -726,6 +851,11 @@ namespace Twilio.Rest.Content.V1
                 public Builder WithTwilioCatalog(TwilioCatalog twilioCatalog)
                 {
                     _types.TwilioCatalog= twilioCatalog;
+                    return this;
+                }
+                public Builder WithTwilioCarousel(TwilioCarousel twilioCarousel)
+                {
+                    _types.TwilioCarousel= twilioCarousel;
                     return this;
                 }
                 public Builder WithWhatsappCard(WhatsappCard whatsappCard)
@@ -789,6 +919,20 @@ namespace Twilio.Rest.Content.V1
         }
 
     
+        [JsonConverter(typeof(StringEnumConverter))]
+        public sealed class CarouselActionType : StringEnum
+        {
+            private CarouselActionType(string value) : base(value) {}
+            public CarouselActionType() {}
+            public static implicit operator CarouselActionType(string value)
+            {
+                return new CarouselActionType(value);
+            }
+            public static readonly CarouselActionType Url = new CarouselActionType("URL");
+            public static readonly CarouselActionType PhoneNumber = new CarouselActionType("PHONE_NUMBER");
+            public static readonly CarouselActionType QuickReply = new CarouselActionType("QUICK_REPLY");
+
+        }
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class AuthenticationActionType : StringEnum
         {

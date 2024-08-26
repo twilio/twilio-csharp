@@ -273,23 +273,23 @@ namespace Twilio.Rest.Numbers.V1
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
-        ///<summary> The Account SID that the numbers will be added to after they are ported into Twilio. </summary> 
+        ///<summary> Account Sid or subaccount where the phone number(s) will be Ported </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> List of emails for getting notifications about the LOA signing process. Allowed Max 10 emails. </summary> 
+        ///<summary> Additional emails to send a copy of the signed LOA to. </summary> 
         [JsonProperty("notification_emails")]
         public List<string> NotificationEmails { get; private set; }
 
-        ///<summary> Minimum number of days in the future (at least 2 days) needs to be established with the Ops team for validation. </summary> 
+        ///<summary> Target date to port the number. We cannot guarantee that this date will be honored by the other carriers, please work with Ops to get a confirmation of the firm order commitment (FOC) date. Expected format is ISO Local Date, example: ‘2011-12-03`. This date must be at least 7 days in the future for US ports and 10 days in the future for Japanese ports. (This value is only available for custom porting customers.) </summary> 
         [JsonProperty("target_port_in_date")]
         public DateTime? TargetPortInDate { get; private set; }
 
-        ///<summary> Minimum hour in the future needs to be established with the Ops team for validation. </summary> 
+        ///<summary> The earliest time that the port should occur on the target port in date. Expected format is ISO Offset Time, example: ‘10:15:00-08:00'. (This value is only available for custom porting customers.) </summary> 
         [JsonProperty("target_port_in_time_range_start")]
         public string TargetPortInTimeRangeStart { get; private set; }
 
-        ///<summary> Maximum hour in the future needs to be established with the Ops team for validation. </summary> 
+        ///<summary> The latest time that the port should occur on the target port in date. Expected format is ISO Offset Time, example: ‘10:15:00-08:00'.  (This value is only available for custom porting customers.) </summary> 
         [JsonProperty("target_port_in_time_range_end")]
         public string TargetPortInTimeRangeEnd { get; private set; }
 
@@ -297,15 +297,15 @@ namespace Twilio.Rest.Numbers.V1
         [JsonProperty("port_in_request_status")]
         public string PortInRequestStatus { get; private set; }
 
-        ///<summary> The information for the losing carrier.  </summary> 
+        ///<summary> Details regarding the customer’s information with the losing carrier. These values will be used to generate the letter of authorization and should match the losing carrier’s data as closely as possible to ensure the port is accepted. </summary> 
         [JsonProperty("losing_carrier_information")]
         public object LosingCarrierInformation { get; private set; }
 
-        ///<summary> The list of phone numbers to Port in. Phone numbers are in E.164 format (e.g. +16175551212). </summary> 
+        ///<summary> The phone_numbers </summary> 
         [JsonProperty("phone_numbers")]
         public List<object> PhoneNumbers { get; private set; }
 
-        ///<summary> The list of documents SID referencing a utility bills </summary> 
+        ///<summary> List of document SIDs for all phone numbers included in the port in request. At least one document SID referring to a document of the type Utility Bill is required. </summary> 
         [JsonProperty("documents")]
         public List<string> Documents { get; private set; }
 

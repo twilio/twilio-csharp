@@ -27,13 +27,13 @@ namespace Twilio.Rest.Numbers.V1
     public class DeletePortingWebhookConfigurationDeleteOptions : IOptions<PortingWebhookConfigurationDeleteResource>
     {
         
-        ///<summary> The of the webhook type of the configuration to be deleted </summary> 
+        ///<summary> The webhook type for the configuration to be delete. `PORT_IN`, `PORT_OUT` </summary> 
         public PortingWebhookConfigurationDeleteResource.WebhookTypeEnum PathWebhookType { get; }
 
 
 
         /// <summary> Construct a new DeletePortingWebhookConfigurationDeleteOptions </summary>
-        /// <param name="pathWebhookType"> The of the webhook type of the configuration to be deleted </param>
+        /// <param name="pathWebhookType"> The webhook type for the configuration to be delete. `PORT_IN`, `PORT_OUT` </param>
         public DeletePortingWebhookConfigurationDeleteOptions(PortingWebhookConfigurationDeleteResource.WebhookTypeEnum pathWebhookType)
         {
             PathWebhookType = pathWebhookType;
