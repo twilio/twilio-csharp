@@ -14,6 +14,7 @@ namespace Twilio
         private static string _edge;
         private static TwilioNoAuthRestClient _restClient;
         private static string _logLevel;
+        private static ClientProperties clientProperties;
 
         private TwilioNoAuthClient() { }
 
@@ -28,25 +29,14 @@ namespace Twilio
                 return _restClient;
             }
 
+            if(_region == null && ClientProperties.region != null) _region = ClientProperties.region;
+            if(_edge == null && ClientProperties.edge != null) _edge = ClientProperties.edge;
+            if(_logLevel == null && ClientProperties.logLevel != null) _logLevel = ClientProperties.logLevel;
             _restClient = new TwilioNoAuthRestClient(region: _region, edge: _edge)
             {
                 LogLevel = _logLevel
             };
             return _restClient;
-        }
-
-        /// <summary>
-        /// Set the logging level
-        /// </summary>
-        /// <param name="loglevel">log level</param>
-        public static void SetLogLevel(string loglevel)
-        {
-            if (loglevel != _logLevel)
-            {
-                Invalidate();
-            }
-
-            _logLevel = loglevel;
         }
 
         /// <summary>
