@@ -1,4 +1,5 @@
 using Twilio.Clients;
+using Twilio.Clients.NoAuth;
 using Twilio.Clients.BearerToken;
 using Twilio.Exceptions;
 using Twilio.Http.BearerToken;
@@ -14,9 +15,9 @@ namespace Twilio
         private static string _region;
         private static string _edge;
         private static TwilioBearerTokenRestClient _restClient;
+        private static TwilioNoAuthRestClient _noAuthRestClient;
         private static string _logLevel;
         private static TokenManager _tokenManager;
-        private static ClientProperties clientProperties;
 
         private TwilioOrgsTokenAuthClient() { }
 
@@ -75,7 +76,6 @@ namespace Twilio
             {
                 Invalidate();
             }
-            ClientProperties.SetRegion(region);
             _region = region;
         }
 
@@ -89,7 +89,6 @@ namespace Twilio
             {
                 Invalidate();
             }
-            ClientProperties.SetEdge(edge);
             _edge = edge;
         }
 
@@ -103,7 +102,6 @@ namespace Twilio
             {
                 Invalidate();
             }
-            ClientProperties.SetLogLevel(_logLevel);
             _logLevel = loglevel;
         }
 
@@ -130,6 +128,25 @@ namespace Twilio
                 LogLevel = _logLevel
             };
             return _restClient;
+        }
+
+
+        /// <summary>
+        /// Get the noauth rest client
+        /// </summary>
+        /// <returns>The not auth rest client</returns>
+        public static TwilioNoAuthRestClient GetNoAuthRestClient()
+        {
+            if (_noAuthRestClient != null)
+            {
+                return _noAuthRestClient;
+            }
+
+            _noAuthRestClient = new TwilioNoAuthRestClient(region: _region, edge: _edge)
+            {
+                LogLevel = _logLevel
+            };
+            return _noAuthRestClient;
         }
 
         /// <summary>

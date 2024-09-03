@@ -59,7 +59,7 @@ namespace Twilio.Rest.PreviewIam.Organizations
         /// <returns> A single instance of Token </returns>
         public static TokenResource Create(CreateTokenOptions options, TwilioNoAuthRestClient client = null)
         {
-            client = client ?? TwilioNoAuthClient.GetRestClient();
+            client = client ?? TwilioOrgsTokenAuthClient.GetNoAuthRestClient();
             var response = client.Request(BuildCreateRequest(options, client));
             return FromJson(response.Content);
         }
@@ -71,7 +71,7 @@ namespace Twilio.Rest.PreviewIam.Organizations
         /// <returns> Task that resolves to A single instance of Token </returns>
         public static async System.Threading.Tasks.Task<TokenResource> CreateAsync(CreateTokenOptions options, TwilioNoAuthRestClient client = null)
         {
-            client = client ?? TwilioNoAuthClient.GetRestClient();
+            client = client ?? TwilioOrgsTokenAuthClient.GetNoAuthRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
             return FromJson(response.Content);
         }
