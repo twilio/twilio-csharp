@@ -18,7 +18,7 @@ namespace Twilio.Base.BearerToken
         /// </summary>
         public bool AutoPaging { get; set; }
 
-        private readonly TwilioBearerTokenRestClient _client;
+        private readonly TwilioOrgsTokenRestClient _client;
         private readonly ReadOptions<T> _options;
         private readonly long _pageLimit;
 
@@ -34,7 +34,7 @@ namespace Twilio.Base.BearerToken
         /// <param name="page">Page of resources</param>
         /// <param name="options">Read options</param>
         /// <param name="client">Client to make requests</param>
-        public BearerTokenResourceSet(Page<T> page, ReadOptions<T> options, TwilioBearerTokenRestClient client)
+        public BearerTokenResourceSet(Page<T> page, ReadOptions<T> options, TwilioOrgsTokenRestClient client)
         {
             _page = page;
             _options = options;
@@ -113,9 +113,9 @@ namespace Twilio.Base.BearerToken
         private static MethodInfo GetNextPage()
         {
 #if !NET35
-            return typeof(T).GetRuntimeMethod("NextPage", new[]{ typeof(Page<T>), typeof(TwilioBearerTokenRestClient) });
+            return typeof(T).GetRuntimeMethod("NextPage", new[]{ typeof(Page<T>), typeof(TwilioOrgsTokenRestClient) });
 #else
-            return typeof(T).GetMethod("NextPage", new[]{ typeof(Page<T>), typeof(TwilioBearerTokenRestClient) });
+            return typeof(T).GetMethod("NextPage", new[]{ typeof(Page<T>), typeof(TwilioOrgsTokenRestClient) });
 #endif
         }
     }

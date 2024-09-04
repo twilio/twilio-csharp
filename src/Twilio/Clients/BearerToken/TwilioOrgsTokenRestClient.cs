@@ -27,7 +27,7 @@ namespace Twilio.Clients.BearerToken
     /// <summary>
     /// Implementation of a TwilioRestClient.
     /// </summary>
-    public class TwilioBearerTokenRestClient
+    public class TwilioOrgsTokenRestClient
     {
         /// <summary>
         /// Client to make HTTP requests
@@ -75,7 +75,7 @@ namespace Twilio.Clients.BearerToken
         /// <param name="region">region to make requests for</param>
         /// <param name="httpClient">http client used to make the requests</param>
         /// <param name="edge">edge to make requests for</param>
-        public TwilioBearerTokenRestClient(
+        public TwilioOrgsTokenRestClient(
             TokenManager tokenManager,
             string region = null,
             BearerTokenHttpClient httpClient = null,

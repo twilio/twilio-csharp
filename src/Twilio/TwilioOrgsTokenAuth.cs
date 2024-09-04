@@ -14,7 +14,7 @@ namespace Twilio
         private static string _accessToken;
         private static string _region;
         private static string _edge;
-        private static TwilioBearerTokenRestClient _restClient;
+        private static TwilioOrgsTokenRestClient _restClient;
         private static TwilioNoAuthRestClient _noAuthRestClient;
         private static string _logLevel;
         private static TokenManager _tokenManager;
@@ -75,6 +75,7 @@ namespace Twilio
             if (region != _region)
             {
                 Invalidate();
+                InvalidateNoAuthClient();
             }
             _region = region;
         }
@@ -88,6 +89,7 @@ namespace Twilio
             if (edge != _edge)
             {
                 Invalidate();
+                InvalidateNoAuthClient();
             }
             _edge = edge;
         }
@@ -101,6 +103,7 @@ namespace Twilio
             if (loglevel != _logLevel)
             {
                 Invalidate();
+                InvalidateNoAuthClient();
             }
             _logLevel = loglevel;
         }
@@ -109,7 +112,7 @@ namespace Twilio
         /// Get the rest client
         /// </summary>
         /// <returns>The rest client</returns>
-        public static TwilioBearerTokenRestClient GetRestClient()
+        public static TwilioOrgsTokenRestClient GetRestClient()
         {
             if (_restClient != null)
             {
@@ -123,7 +126,7 @@ namespace Twilio
                 );
             }
 
-            _restClient = new TwilioBearerTokenRestClient(_tokenManager, region: _region, edge: _edge)
+            _restClient = new TwilioOrgsTokenRestClient(_tokenManager, region: _region, edge: _edge)
             {
                 LogLevel = _logLevel
             };
@@ -153,7 +156,7 @@ namespace Twilio
         /// Set the rest client
         /// </summary>
         /// <param name="restClient">Rest Client to use</param>
-        public static void SetRestClient(TwilioBearerTokenRestClient restClient)
+        public static void SetRestClient(TwilioOrgsTokenRestClient restClient)
         {
             _restClient = restClient;
         }
@@ -164,6 +167,14 @@ namespace Twilio
         public static void Invalidate()
         {
             _restClient = null;
+        }
+
+        /// <summary>
+        /// Clear out the Rest Client
+        /// </summary>
+        public static void InvalidateNoAuthClient()
+        {
+            _noAuthRestClient = null;
         }
 
         /// <summary>
