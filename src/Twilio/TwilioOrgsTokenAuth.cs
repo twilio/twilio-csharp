@@ -18,6 +18,8 @@ namespace Twilio
         private static TwilioNoAuthRestClient _noAuthRestClient;
         private static string _logLevel;
         private static TokenManager _tokenManager;
+        private static string _clientId;
+        private static string _clientSecret;
 
         private TwilioOrgsTokenAuthClient() { }
 
@@ -26,8 +28,9 @@ namespace Twilio
         /// </summary>
         public static void Init(string clientId, string clientSecret)
         {
-            validateCredentials(clientId, clientSecret);
-            _tokenManager = new OrgsTokenManager(clientId, clientSecret);
+            SetClientId(clientId);
+            SetClientSecret(clientSecret);
+            SetTokenManager(new OrgsTokenManager(clientId, clientSecret));
         }
 
 
@@ -41,24 +44,66 @@ namespace Twilio
                                string refreshToken = null,
                                string scope = null)
         {
-            validateCredentials(clientId, clientSecret);
-            _tokenManager = new OrgsTokenManager(clientId, clientSecret, code, redirectUri, audience, refreshToken, scope);
+            SetClientId(clientId);
+            SetClientSecret(clientSecret);
+            SetTokenManager(new OrgsTokenManager(clientId, clientSecret, code, redirectUri, audience, refreshToken, scope));
         }
 
+        /// <summary>
+        /// Set the token manager
+        /// </summary>
+        /// <param name="tokenManager">token manager</param>
+        public static void SetTokenManager(TokenManager tokenManager)
+        {
+            if (tokenManager == null)
+            {
+                throw new AuthenticationException("Token Manager  can not be null");
+            }
+
+            if (tokenManager != _tokenManager)
+            {
+                Invalidate();
+            }
+
+            _tokenManager = tokenManager;
+        }
 
         /// <summary>
-        /// Validate grant type, client id and client secret and verify none of them are null
+        /// Set the client id
         /// </summary>
-        public static void validateCredentials(string clientId, string clientSecret)
+        /// <param name="clientId">client id of the organisation</param>
+        public static void SetClientId(string clientId)
         {
             if (clientId == null)
             {
-                throw new AuthenticationException("clientId can not be null");
+                throw new AuthenticationException("Client Id  can not be null");
             }
+
+            if (clientId != _clientId)
+            {
+                Invalidate();
+            }
+
+            _clientId = clientId;
+        }
+
+        /// <summary>
+        /// Set the client secret
+        /// </summary>
+        /// <param name="clientSecret">client secret of the organisation</param>
+        public static void SetClientSecret(string clientSecret)
+        {
             if (clientSecret == null)
             {
-                throw new AuthenticationException("clientSecret can not be null");
+                throw new AuthenticationException("Client Secret  can not be null");
             }
+
+            if (clientSecret != _clientSecret)
+            {
+                Invalidate();
+            }
+
+            _clientSecret = clientSecret;
         }
 
         /// <summary>
