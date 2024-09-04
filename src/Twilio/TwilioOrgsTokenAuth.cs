@@ -24,37 +24,33 @@ namespace Twilio
         /// <summary>
         /// Initialize base client with username and password
         /// </summary>
-        public static void Init(string grantType, string clientId, string clientSecret)
+        public static void Init(string clientId, string clientSecret)
         {
-            validateCredentials(grantType, clientId, clientSecret);
-            _tokenManager = new OrgsTokenManager(grantType, clientId, clientSecret);
+            validateCredentials(clientId, clientSecret);
+            _tokenManager = new OrgsTokenManager(clientId, clientSecret);
         }
 
 
         /// <summary>
         /// Initialize base client
         /// </summary>
-        public static void Init(string grantType, string clientId, string clientSecret,
+        public static void Init(string clientId, string clientSecret,
                                string code = null,
                                string redirectUri = null,
                                string audience = null,
                                string refreshToken = null,
                                string scope = null)
         {
-            validateCredentials(grantType, clientId, clientSecret);
-            _tokenManager = new OrgsTokenManager(grantType, clientId, clientSecret, code, redirectUri, audience, refreshToken, scope);
+            validateCredentials(clientId, clientSecret);
+            _tokenManager = new OrgsTokenManager(clientId, clientSecret, code, redirectUri, audience, refreshToken, scope);
         }
 
 
         /// <summary>
         /// Validate grant type, client id and client secret and verify none of them are null
         /// </summary>
-        public static void validateCredentials(string grantType, string clientId, string clientSecret)
+        public static void validateCredentials(string clientId, string clientSecret)
         {
-            if (grantType == null)
-            {
-                throw new AuthenticationException("grantType can not be null");
-            }
             if (clientId == null)
             {
                 throw new AuthenticationException("clientId can not be null");
@@ -63,7 +59,6 @@ namespace Twilio
             {
                 throw new AuthenticationException("clientSecret can not be null");
             }
-
         }
 
         /// <summary>

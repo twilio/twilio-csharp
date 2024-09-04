@@ -21,7 +21,6 @@ namespace Twilio.Http.BearerToken{
 
         /// Constructor for a OrgsTokenManager
         public OrgsTokenManager(
-            string grantType,
             string clientId,
             string clientSecret,
             string code = null,
@@ -30,7 +29,7 @@ namespace Twilio.Http.BearerToken{
             string refreshToken = null,
             string scope = null
         ){
-            GrantType = grantType;
+            GrantType = "client_credentials";
             ClientId = clientId;
             ClientSecret = clientSecret;
             Code = code;
