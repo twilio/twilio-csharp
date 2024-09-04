@@ -11,7 +11,7 @@ namespace Twilio.Base.BearerToken
     /// </summary>
     ///
     /// <typeparam name="T">Resource Type</typeparam>
-    public class BearerTokenResourceSet<T> : IEnumerable<T> where T : Resource
+    public class TokenResourceSet<T> : IEnumerable<T> where T : Resource
     {
         /// <summary>
         /// Automatically iterate through pages of results
@@ -34,7 +34,7 @@ namespace Twilio.Base.BearerToken
         /// <param name="page">Page of resources</param>
         /// <param name="options">Read options</param>
         /// <param name="client">Client to make requests</param>
-        public BearerTokenResourceSet(Page<T> page, ReadOptions<T> options, TwilioOrgsTokenRestClient client)
+        public TokenResourceSet(Page<T> page, ReadOptions<T> options, TwilioOrgsTokenRestClient client)
         {
             _page = page;
             _options = options;
