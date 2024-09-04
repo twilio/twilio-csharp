@@ -37,7 +37,7 @@ namespace Twilio.Http.BearerToken
         /// </summary>
         /// <param name="request">Twilio request</param>
         /// <returns>Twilio response</returns>
-        public override Response MakeRequest(BearerTokenRequest request)
+        public override Response MakeRequest(TokenRequest request)
         {
             try
             {
@@ -58,7 +58,7 @@ namespace Twilio.Http.BearerToken
         /// </summary>
         /// <param name="request">Twilio response</param>
         /// <returns>Task that resolves to the response</returns>
-        public override async Task<Response> MakeRequestAsync(BearerTokenRequest request)
+        public override async Task<Response> MakeRequestAsync(TokenRequest request)
         {
             var httpRequest = BuildHttpRequest(request);
             if (!Equals(request.Method, HttpMethod.Get))
@@ -90,7 +90,7 @@ namespace Twilio.Http.BearerToken
             return response;
         }
 
-        private HttpRequestMessage BuildHttpRequest(BearerTokenRequest request)
+        private HttpRequestMessage BuildHttpRequest(TokenRequest request)
         {
             var httpRequest = new HttpRequestMessage(
                 new System.Net.Http.HttpMethod(request.Method.ToString()),

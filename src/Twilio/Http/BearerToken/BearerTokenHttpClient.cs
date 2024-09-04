@@ -10,7 +10,7 @@ namespace Twilio.Http.BearerToken
         /// <summary>
         /// The last request made by this client
         /// </summary>
-        public BearerTokenRequest LastRequest { get; protected set; }
+        public TokenRequest LastRequest { get; protected set; }
 
         /// <summary>
         /// The last response received by this client
@@ -24,7 +24,7 @@ namespace Twilio.Http.BearerToken
         /// <param name="request">request to make</param>
         /// <exception>throws exception on network or connection errors.</exception>
         /// <returns>response of the request</returns>
-        public abstract Response MakeRequest(BearerTokenRequest request);
+        public abstract Response MakeRequest(TokenRequest request);
 
 #if !NET35
         /// <summary>
@@ -34,7 +34,7 @@ namespace Twilio.Http.BearerToken
         /// <param name="request">request to make</param>
         /// <exception>throws exception on network or connection errors.</exception>
         /// <returns>response of the request</returns>
-        public abstract System.Threading.Tasks.Task<Response> MakeRequestAsync(BearerTokenRequest request);
+        public abstract System.Threading.Tasks.Task<Response> MakeRequestAsync(TokenRequest request);
 #endif
 
     }

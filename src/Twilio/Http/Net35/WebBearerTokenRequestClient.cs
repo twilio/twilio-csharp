@@ -23,7 +23,7 @@ namespace Twilio.Http.Net35
         /// </summary>
         /// <param name="request">Twilio request</param>
         /// <returns>Twilio response</returns>
-        public override Response MakeRequest(BearerTokenRequest request)
+        public override Response MakeRequest(TokenRequest request)
         {
 
             IHttpWebRequestWrapper httpRequest = BuildHttpRequest(request);
@@ -60,7 +60,7 @@ namespace Twilio.Http.Net35
             return reader.ReadToEnd();
         }
 
-        private IHttpWebRequestWrapper BuildHttpRequest(BearerTokenRequest request)
+        private IHttpWebRequestWrapper BuildHttpRequest(TokenRequest request)
         {
             IHttpWebRequestWrapper httpRequest = this.factory.Create(request.ConstructUrl());
 

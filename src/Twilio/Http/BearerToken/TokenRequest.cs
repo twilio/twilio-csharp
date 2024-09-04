@@ -16,7 +16,7 @@ namespace Twilio.Http.BearerToken
     /// <summary>
     /// Twilio request object with bearer token authentication
     /// </summary>
-    public class BearerTokenRequest
+    public class TokenRequest
     {
         private static readonly string DEFAULT_REGION = "us1";
 
@@ -77,7 +77,7 @@ namespace Twilio.Http.BearerToken
         /// </summary>
         /// <param name="method">HTTP Method</param>
         /// <param name="url">Request URL</param>
-        public BearerTokenRequest(HttpMethod method, string url)
+        public TokenRequest(HttpMethod method, string url)
         {
             Method = method;
             Uri = new Uri(url);
@@ -99,7 +99,7 @@ namespace Twilio.Http.BearerToken
         /// <param name="headerParams">Custom header data</param>
         /// <param name="contentType">Content Type</param>
         /// <param name="body">Request Body</param>
-        public BearerTokenRequest(
+        public TokenRequest(
             HttpMethod method,
             Domain domain,
             string uri,

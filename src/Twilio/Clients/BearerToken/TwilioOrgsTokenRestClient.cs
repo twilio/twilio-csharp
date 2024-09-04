@@ -111,7 +111,7 @@ namespace Twilio.Clients.BearerToken
         ///
         /// <param name="request">request to make</param>
         /// <returns>response of the request</returns>
-        public Response Request(BearerTokenRequest request)
+        public Response Request(TokenRequest request)
         {
             if ((_accessToken == null )|| tokenExpired(_accessToken)) {
                 lock (lockObject){
@@ -234,7 +234,7 @@ namespace Twilio.Clients.BearerToken
         ///
         /// <param name="request">request to make</param>
         /// <returns>Task that resolves to the response of the request</returns>
-        public async Task<Response> RequestAsync(BearerTokenRequest request)
+        public async Task<Response> RequestAsync(TokenRequest request)
         {
             request.SetAuth(_accessToken);
 
@@ -327,7 +327,7 @@ namespace Twilio.Clients.BearerToken
         /// <param name="client">HTTP Client to use for testing the request</param>
         public static void ValidateSslCertificate(BearerTokenHttpClient client)
         {
-            BearerTokenRequest request = new BearerTokenRequest("GET", "tls-test", ":443/", null);
+            TokenRequest request = new TokenRequest("GET", "tls-test", ":443/", null);
 
             try
             {
@@ -361,7 +361,7 @@ namespace Twilio.Clients.BearerToken
         /// </summary>
         ///
         /// <param name="request">HTTP request</param>
-        private static void LogRequest(BearerTokenRequest request)
+        private static void LogRequest(TokenRequest request)
         {
             Console.WriteLine("-- BEGIN Twilio API Request --");
             Console.WriteLine("request.method: " + request.Method);
