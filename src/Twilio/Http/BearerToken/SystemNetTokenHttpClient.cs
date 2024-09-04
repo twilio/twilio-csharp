@@ -13,7 +13,7 @@ namespace Twilio.Http.BearerToken
     /// <summary>
     /// Sample client to make HTTP requests
     /// </summary>
-    public class SystemNetBearerTokenHttpClient : BearerTokenHttpClient
+    public class SystemNetTokenHttpClient : TokenHttpClient
     {
 #if NET462
         private string PlatVersion = ".NET Framework 4.6.2+";
@@ -27,7 +27,7 @@ namespace Twilio.Http.BearerToken
         /// Create new HttpClient
         /// </summary>
         /// <param name="httpClient">HTTP client to use</param>
-        public SystemNetBearerTokenHttpClient(System.Net.Http.HttpClient httpClient = null)
+        public SystemNetTokenHttpClient(System.Net.Http.HttpClient httpClient = null)
         {
             _httpClient = httpClient ?? new System.Net.Http.HttpClient(new HttpClientHandler() { AllowAutoRedirect = false });
         }

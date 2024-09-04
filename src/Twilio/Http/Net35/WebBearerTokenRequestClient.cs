@@ -8,7 +8,7 @@ namespace Twilio.Http.Net35
     /// <summary>
     /// Sample client to make requests
     /// </summary>
-    public class WebBearerTokenRequestClient : BearerTokenHttpClient
+    public class WebBearerTokenRequestClient : TokenHttpClient
     {
         private const string PlatVersion = ".NET/3.5";
         private HttpWebRequestFactory factory;

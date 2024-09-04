@@ -5,7 +5,7 @@ namespace Twilio.Http.BearerToken
     /// <summary>
     /// Base http client used to make Twilio requests
     /// </summary>
-    public abstract class BearerTokenHttpClient
+    public abstract class TokenHttpClient
     {
         /// <summary>
         /// The last request made by this client

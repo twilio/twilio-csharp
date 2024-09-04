@@ -32,7 +32,7 @@ namespace Twilio.Clients.BearerToken
         /// <summary>
         /// Client to make HTTP requests
         /// </summary>
-        public BearerTokenHttpClient HttpClient { get; }
+        public TokenHttpClient HttpClient { get; }
 
         /// <summary>
         /// Twilio region to make requests to
@@ -78,7 +78,7 @@ namespace Twilio.Clients.BearerToken
         public TwilioOrgsTokenRestClient(
             TokenManager tokenManager,
             string region = null,
-            BearerTokenHttpClient httpClient = null,
+            TokenHttpClient httpClient = null,
             string edge = null
         )
         {
@@ -262,12 +262,12 @@ namespace Twilio.Clients.BearerToken
             return ProcessResponse(response);
         }
 
-        private static BearerTokenHttpClient DefaultClient()
+        private static TokenHttpClient DefaultClient()
         {
-            return new SystemNetBearerTokenHttpClient();
+            return new SystemNetTokenHttpClient();
         }
 #else
-        private static BearerTokenHttpClient DefaultClient()
+        private static TokenHttpClient DefaultClient()
         {
             return new WebBearerTokenRequestClient();
         }
@@ -325,7 +325,7 @@ namespace Twilio.Clients.BearerToken
         /// </summary>
         ///
         /// <param name="client">HTTP Client to use for testing the request</param>
-        public static void ValidateSslCertificate(BearerTokenHttpClient client)
+        public static void ValidateSslCertificate(TokenHttpClient client)
         {
             TokenRequest request = new TokenRequest("GET", "tls-test", ":443/", null);
 
