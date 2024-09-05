@@ -1,6 +1,16 @@
 twilio-csharp Changelog
 =======================
 
+[2024-09-05] Version 7.3.0
+--------------------------
+**Iam**
+- updated library_visibility public for new public apikeys
+
+**Numbers**
+- Add new field in Error Codes for Regulatory Compliance.
+- Change typing of Port In Request date_created field to date_time instead of date **(breaking change)**
+
+
 [2024-08-26] Version 7.2.3
 --------------------------
 **Library - Fix**

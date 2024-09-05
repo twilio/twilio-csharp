@@ -31,6 +31,7 @@ namespace Twilio.Rest
         public static readonly Domain Events = new Domain("events");
         public static readonly Domain FlexApi = new Domain("flex-api");
         public static readonly Domain FrontlineApi = new Domain("frontline-api");
+        public static readonly Domain Iam = new Domain("iam");
         public static readonly Domain Insights = new Domain("insights");
         public static readonly Domain Intelligence = new Domain("intelligence");
         public static readonly Domain IpMessaging = new Domain("ip-messaging");
