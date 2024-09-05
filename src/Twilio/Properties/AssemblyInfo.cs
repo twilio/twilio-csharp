@@ -10,5 +10,5 @@ using System.Runtime.CompilerServices;
 
 internal class AssemblyInfomation
 {
-    public const string AssemblyInformationalVersion = "7.2.3";
+    public const string AssemblyInformationalVersion = "7.3.0";
 }
