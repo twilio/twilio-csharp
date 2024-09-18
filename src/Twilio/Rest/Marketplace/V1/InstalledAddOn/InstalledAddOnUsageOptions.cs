@@ -24,11 +24,11 @@ using Twilio.Converters;
 namespace Twilio.Rest.Marketplace.V1.InstalledAddOn
 {
 
-    /// <summary> create </summary>
+    /// <summary> Allows Twilio Marketplace publishers to manually report customer usage on No-code Partner Listings that they own. </summary>
     public class CreateInstalledAddOnUsageOptions : IOptions<InstalledAddOnUsageResource>
     {
         
-        
+        ///<summary> Customer Installation SID to report usage on. </summary> 
         public string PathInstalledAddOnSid { get; }
 
         
@@ -36,7 +36,7 @@ namespace Twilio.Rest.Marketplace.V1.InstalledAddOn
 
 
         /// <summary> Construct a new CreateBillingUsageOptions </summary>
-        /// <param name="pathInstalledAddOnSid">  </param>
+        /// <param name="pathInstalledAddOnSid"> Customer Installation SID to report usage on. </param>
         /// <param name="marketplaceV1InstalledAddOnInstalledAddOnUsage">  </param>
         public CreateInstalledAddOnUsageOptions(string pathInstalledAddOnSid, InstalledAddOnUsageResource.MarketplaceV1InstalledAddOnInstalledAddOnUsage marketplaceV1InstalledAddOnInstalledAddOnUsage)
         {

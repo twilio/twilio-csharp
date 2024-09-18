@@ -97,7 +97,7 @@ namespace Twilio.Rest.Numbers.V2
         /// <summary> Creates a new clone of the Bundle in target Account. It will internally create clones of all the bundle items (identities and documents) of the original bundle </summary>
         /// <param name="pathBundleSid"> The unique string that identifies the Bundle to be cloned. </param>
         /// <param name="targetAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) where the bundle needs to be cloned. </param>
-        /// <param name="moveToDraft"> This is to determine whether the cloned bundle needs to be in draft state or not. </param>
+        /// <param name="moveToDraft"> If set to true, the cloned bundle will be in the DRAFT state, else it will be twilio-approved </param>
         /// <param name="friendlyName"> The string that you assigned to describe the cloned bundle. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of BundleClone </returns>
@@ -116,7 +116,7 @@ namespace Twilio.Rest.Numbers.V2
         /// <summary> Creates a new clone of the Bundle in target Account. It will internally create clones of all the bundle items (identities and documents) of the original bundle </summary>
         /// <param name="pathBundleSid"> The unique string that identifies the Bundle to be cloned. </param>
         /// <param name="targetAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) where the bundle needs to be cloned. </param>
-        /// <param name="moveToDraft"> This is to determine whether the cloned bundle needs to be in draft state or not. </param>
+        /// <param name="moveToDraft"> If set to true, the cloned bundle will be in the DRAFT state, else it will be twilio-approved </param>
         /// <param name="friendlyName"> The string that you assigned to describe the cloned bundle. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of BundleClone </returns>

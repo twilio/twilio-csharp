@@ -36,6 +36,8 @@ namespace Twilio.Rest.Marketplace.V1.InstalledAddOn
             private decimal? Quantity {get; set;}
             [JsonProperty("sid")]
             private string Sid {get; set;}
+            [JsonProperty("submitted")]
+            private bool? Submitted {get; set;}
             public MarketplaceV1InstalledAddOnInstalledAddOnUsageBillableItems() { }
             public class Builder
             {
@@ -53,6 +55,11 @@ namespace Twilio.Rest.Marketplace.V1.InstalledAddOn
                     _marketplaceV1InstalledAddOnInstalledAddOnUsageBillableItems.Sid= sid;
                     return this;
                 }
+                public Builder WithSubmitted(bool? submitted)
+                {
+                    _marketplaceV1InstalledAddOnInstalledAddOnUsageBillableItems.Submitted= submitted;
+                    return this;
+                }
                 public MarketplaceV1InstalledAddOnInstalledAddOnUsageBillableItems Build()
                 {
                     return _marketplaceV1InstalledAddOnInstalledAddOnUsageBillableItems;
@@ -61,6 +68,8 @@ namespace Twilio.Rest.Marketplace.V1.InstalledAddOn
         }
         public class MarketplaceV1InstalledAddOnInstalledAddOnUsage
         {
+            [JsonProperty("total_submitted")]
+            private decimal? TotalSubmitted {get; set;}
             [JsonProperty("billable_items")]
             private List<MarketplaceV1InstalledAddOnInstalledAddOnUsageBillableItems> BillableItems {get; set;}
             public MarketplaceV1InstalledAddOnInstalledAddOnUsage() { }
@@ -70,6 +79,11 @@ namespace Twilio.Rest.Marketplace.V1.InstalledAddOn
                 public Builder()
                 {
                 }
+                public Builder WithTotalSubmitted(decimal? totalSubmitted)
+                {
+                    _marketplaceV1InstalledAddOnInstalledAddOnUsage.TotalSubmitted= totalSubmitted;
+                    return this;
+                }
                 public Builder WithBillableItems(List<MarketplaceV1InstalledAddOnInstalledAddOnUsageBillableItems> billableItems)
                 {
                     _marketplaceV1InstalledAddOnInstalledAddOnUsage.BillableItems= billableItems;
@@ -78,42 +92,6 @@ namespace Twilio.Rest.Marketplace.V1.InstalledAddOn
                 public MarketplaceV1InstalledAddOnInstalledAddOnUsage Build()
                 {
                     return _marketplaceV1InstalledAddOnInstalledAddOnUsage;
-                }
-            }
-        }
-        public class MarketplaceV1InstalledAddOnBillingUsageResponseBillableItems
-        {
-            [JsonProperty("quantity")]
-            private decimal? Quantity {get; set;}
-            [JsonProperty("sid")]
-            private string Sid {get; set;}
-            [JsonProperty("submitted")]
-            private bool? Submitted {get; set;}
-            public MarketplaceV1InstalledAddOnBillingUsageResponseBillableItems() { }
-            public class Builder
-            {
-                private MarketplaceV1InstalledAddOnBillingUsageResponseBillableItems _marketplaceV1InstalledAddOnBillingUsageResponseBillableItems = new MarketplaceV1InstalledAddOnBillingUsageResponseBillableItems();
-                public Builder()
-                {
-                }
-                public Builder WithQuantity(decimal? quantity)
-                {
-                    _marketplaceV1InstalledAddOnBillingUsageResponseBillableItems.Quantity= quantity;
-                    return this;
-                }
-                public Builder WithSid(string sid)
-                {
-                    _marketplaceV1InstalledAddOnBillingUsageResponseBillableItems.Sid= sid;
-                    return this;
-                }
-                public Builder WithSubmitted(bool? submitted)
-                {
-                    _marketplaceV1InstalledAddOnBillingUsageResponseBillableItems.Submitted= submitted;
-                    return this;
-                }
-                public MarketplaceV1InstalledAddOnBillingUsageResponseBillableItems Build()
-                {
-                    return _marketplaceV1InstalledAddOnBillingUsageResponseBillableItems;
                 }
             }
         }
@@ -140,7 +118,7 @@ namespace Twilio.Rest.Marketplace.V1.InstalledAddOn
             );
         }
 
-        /// <summary> create </summary>
+        /// <summary> Allows Twilio Marketplace publishers to manually report customer usage on No-code Partner Listings that they own. </summary>
         /// <param name="options"> Create InstalledAddOnUsage parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of InstalledAddOnUsage </returns>
@@ -152,7 +130,7 @@ namespace Twilio.Rest.Marketplace.V1.InstalledAddOn
         }
 
         #if !NET35
-        /// <summary> create </summary>
+        /// <summary> Allows Twilio Marketplace publishers to manually report customer usage on No-code Partner Listings that they own. </summary>
         /// <param name="options"> Create InstalledAddOnUsage parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InstalledAddOnUsage </returns>
@@ -165,8 +143,8 @@ namespace Twilio.Rest.Marketplace.V1.InstalledAddOn
         }
         #endif
 
-        /// <summary> create </summary>
-        /// <param name="pathInstalledAddOnSid">  </param>
+        /// <summary> Allows Twilio Marketplace publishers to manually report customer usage on No-code Partner Listings that they own. </summary>
+        /// <param name="pathInstalledAddOnSid"> Customer Installation SID to report usage on. </param>
         /// <param name="marketplaceV1InstalledAddOnInstalledAddOnUsage">  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of InstalledAddOnUsage </returns>
@@ -180,8 +158,8 @@ namespace Twilio.Rest.Marketplace.V1.InstalledAddOn
         }
 
         #if !NET35
-        /// <summary> create </summary>
-        /// <param name="pathInstalledAddOnSid">  </param>
+        /// <summary> Allows Twilio Marketplace publishers to manually report customer usage on No-code Partner Listings that they own. </summary>
+        /// <param name="pathInstalledAddOnSid"> Customer Installation SID to report usage on. </param>
         /// <param name="marketplaceV1InstalledAddOnInstalledAddOnUsage">  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InstalledAddOnUsage </returns>
@@ -229,13 +207,13 @@ namespace Twilio.Rest.Marketplace.V1.InstalledAddOn
     }
 
     
-        ///<summary> The billable_items </summary> 
-        [JsonProperty("billable_items")]
-        public List<MarketplaceV1InstalledAddOnBillingUsageResponseBillableItems> BillableItems { get; private set; }
-
-        ///<summary> Represents the total quantity submitted. </summary> 
+        ///<summary> Total amount in local currency that was billed in this request. Aggregates all billable_items that were successfully submitted. </summary> 
         [JsonProperty("total_submitted")]
         public decimal? TotalSubmitted { get; private set; }
+
+        ///<summary> The billable_items </summary> 
+        [JsonProperty("billable_items")]
+        public List<MarketplaceV1InstalledAddOnInstalledAddOnUsageBillableItems> BillableItems { get; }
 
 
 
