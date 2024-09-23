@@ -1,4 +1,4 @@
-using Twilio.Rest.PreviewIam.Organizations;
+using Twilio.Rest.PreviewIam.V1;
 using Twilio.Exceptions;
 using System;
 

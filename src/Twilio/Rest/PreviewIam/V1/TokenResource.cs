@@ -28,7 +28,7 @@ using Twilio.Clients.NoAuth;
 using Twilio.Http.NoAuth;
 
 
-namespace Twilio.Rest.PreviewIam.Organizations
+namespace Twilio.Rest.PreviewIam.V1
 {
     public class TokenResource : Resource
     {

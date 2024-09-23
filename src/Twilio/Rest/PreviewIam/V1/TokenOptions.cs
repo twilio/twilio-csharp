@@ -21,7 +21,7 @@ using Twilio.Converters;
 
 
 
-namespace Twilio.Rest.PreviewIam.Organizations
+namespace Twilio.Rest.PreviewIam.V1
 {
 
     /// <summary> create </summary>
