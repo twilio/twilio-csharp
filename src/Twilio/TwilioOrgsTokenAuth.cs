@@ -3,12 +3,15 @@ using Twilio.Clients.NoAuth;
 using Twilio.Clients.BearerToken;
 using Twilio.Exceptions;
 using Twilio.Http.BearerToken;
+using Twilio.Annotations;
+
 
 namespace Twilio
 {
     /// <summary>
     /// Default Twilio Client for bearer token authentication
     /// </summary>
+    [Beta]
     public class TwilioOrgsTokenAuthClient
     {
         private static string _accessToken;
