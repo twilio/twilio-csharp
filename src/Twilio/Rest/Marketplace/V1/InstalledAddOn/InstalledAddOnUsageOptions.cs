@@ -24,24 +24,24 @@ using Twilio.Converters;
 namespace Twilio.Rest.Marketplace.V1.InstalledAddOn
 {
 
-    /// <summary> create </summary>
+    /// <summary> Allows Twilio Marketplace publishers to manually report customer usage on No-code Partner Listings that they own. </summary>
     public class CreateInstalledAddOnUsageOptions : IOptions<InstalledAddOnUsageResource>
     {
         
-        
+        ///<summary> Customer Installation SID to report usage on. </summary> 
         public string PathInstalledAddOnSid { get; }
 
         
-        public InstalledAddOnUsageResource.CreateBillingUsageRequest CreateBillingUsageRequest { get; }
+        public InstalledAddOnUsageResource.MarketplaceV1InstalledAddOnInstalledAddOnUsage MarketplaceV1InstalledAddOnInstalledAddOnUsage { get; }
 
 
         /// <summary> Construct a new CreateBillingUsageOptions </summary>
-        /// <param name="pathInstalledAddOnSid">  </param>
-        /// <param name="createBillingUsageRequest">  </param>
-        public CreateInstalledAddOnUsageOptions(string pathInstalledAddOnSid, InstalledAddOnUsageResource.CreateBillingUsageRequest createBillingUsageRequest)
+        /// <param name="pathInstalledAddOnSid"> Customer Installation SID to report usage on. </param>
+        /// <param name="marketplaceV1InstalledAddOnInstalledAddOnUsage">  </param>
+        public CreateInstalledAddOnUsageOptions(string pathInstalledAddOnSid, InstalledAddOnUsageResource.MarketplaceV1InstalledAddOnInstalledAddOnUsage marketplaceV1InstalledAddOnInstalledAddOnUsage)
         {
             PathInstalledAddOnSid = pathInstalledAddOnSid;
-            CreateBillingUsageRequest = createBillingUsageRequest;
+            MarketplaceV1InstalledAddOnInstalledAddOnUsage = marketplaceV1InstalledAddOnInstalledAddOnUsage;
         }
 
         
@@ -50,9 +50,9 @@ namespace Twilio.Rest.Marketplace.V1.InstalledAddOn
         {
             string body = "";
 
-            if (CreateBillingUsageRequest != null)
+            if (MarketplaceV1InstalledAddOnInstalledAddOnUsage != null)
             {
-                body = InstalledAddOnUsageResource.ToJson(CreateBillingUsageRequest);
+                body = InstalledAddOnUsageResource.ToJson(MarketplaceV1InstalledAddOnInstalledAddOnUsage);
             }
             return body;
         }

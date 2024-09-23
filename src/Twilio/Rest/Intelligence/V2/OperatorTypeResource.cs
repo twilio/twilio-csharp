@@ -57,8 +57,9 @@ namespace Twilio.Rest.Intelligence.V2
             }
             public static readonly AvailabilityEnum Internal = new AvailabilityEnum("internal");
             public static readonly AvailabilityEnum Beta = new AvailabilityEnum("beta");
-            public static readonly AvailabilityEnum Public = new AvailabilityEnum("public");
+            public static readonly AvailabilityEnum GeneralAvailability = new AvailabilityEnum("general-availability");
             public static readonly AvailabilityEnum Retired = new AvailabilityEnum("retired");
+            public static readonly AvailabilityEnum Deprecated = new AvailabilityEnum("deprecated");
 
         }
         [JsonConverter(typeof(StringEnumConverter))]
@@ -120,7 +121,7 @@ namespace Twilio.Rest.Intelligence.V2
         }
         #endif
         /// <summary> Fetch a specific Operator Type. </summary>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this Operator Type. </param>
+        /// <param name="pathSid"> Either a 34 character string that uniquely identifies this Operator Type or the unique name that references an Operator Type. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of OperatorType </returns>
         public static OperatorTypeResource Fetch(
@@ -133,7 +134,7 @@ namespace Twilio.Rest.Intelligence.V2
 
         #if !NET35
         /// <summary> Fetch a specific Operator Type. </summary>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this Operator Type. </param>
+        /// <param name="pathSid"> Either a 34 character string that uniquely identifies this Operator Type or the unique name that references an Operator Type. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of OperatorType </returns>
         public static async System.Threading.Tasks.Task<OperatorTypeResource> FetchAsync(string pathSid, ITwilioRestClient client = null)

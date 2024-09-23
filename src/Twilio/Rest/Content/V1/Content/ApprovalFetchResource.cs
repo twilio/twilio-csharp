@@ -37,10 +37,10 @@ namespace Twilio.Rest.Content.V1.Content
         private static Request BuildFetchRequest(FetchApprovalFetchOptions options, ITwilioRestClient client)
         {
             
-            string path = "/v1/Content/{ContentSid}/ApprovalRequests";
+            string path = "/v1/Content/{Sid}/ApprovalRequests";
 
-            string PathContentSid = options.PathContentSid;
-            path = path.Replace("{"+"ContentSid"+"}", PathContentSid);
+            string PathSid = options.PathSid;
+            path = path.Replace("{"+"Sid"+"}", PathSid);
 
             return new Request(
                 HttpMethod.Get,
@@ -76,25 +76,25 @@ namespace Twilio.Rest.Content.V1.Content
         }
         #endif
         /// <summary> Fetch a Content resource's approval status by its unique Content Sid </summary>
-        /// <param name="pathContentSid"> The Twilio-provided string that uniquely identifies the Content resource whose approval information to fetch. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Content resource whose approval information to fetch. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of ApprovalFetch </returns>
         public static ApprovalFetchResource Fetch(
-                                         string pathContentSid, 
+                                         string pathSid, 
                                          ITwilioRestClient client = null)
         {
-            var options = new FetchApprovalFetchOptions(pathContentSid){  };
+            var options = new FetchApprovalFetchOptions(pathSid){  };
             return Fetch(options, client);
         }
 
         #if !NET35
         /// <summary> Fetch a Content resource's approval status by its unique Content Sid </summary>
-        /// <param name="pathContentSid"> The Twilio-provided string that uniquely identifies the Content resource whose approval information to fetch. </param>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Content resource whose approval information to fetch. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ApprovalFetch </returns>
-        public static async System.Threading.Tasks.Task<ApprovalFetchResource> FetchAsync(string pathContentSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ApprovalFetchResource> FetchAsync(string pathSid, ITwilioRestClient client = null)
         {
-            var options = new FetchApprovalFetchOptions(pathContentSid){  };
+            var options = new FetchApprovalFetchOptions(pathSid){  };
             return await FetchAsync(options, client);
         }
         #endif

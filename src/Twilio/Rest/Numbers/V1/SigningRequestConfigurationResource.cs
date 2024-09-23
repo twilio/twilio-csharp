@@ -97,6 +97,134 @@ namespace Twilio.Rest.Numbers.V1
             return await CreateAsync(options, client);
         }
         #endif
+        
+        private static Request BuildReadRequest(ReadSigningRequestConfigurationOptions options, ITwilioRestClient client)
+        {
+            
+            string path = "/v1/SigningRequest/Configuration";
+
+
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.Numbers,
+                path,
+                queryParams: options.GetParams(),
+                headerParams: null
+            );
+        }
+        /// <summary> Synchronous operation to retrieve configurations for the customer. </summary>
+        /// <param name="options"> Read SigningRequestConfiguration parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of SigningRequestConfiguration </returns>
+        public static ResourceSet<SigningRequestConfigurationResource> Read(ReadSigningRequestConfigurationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<SigningRequestConfigurationResource>.FromJson("configurations", response.Content);
+            return new ResourceSet<SigningRequestConfigurationResource>(page, options, client);
+        }
+
+        #if !NET35
+        /// <summary> Synchronous operation to retrieve configurations for the customer. </summary>
+        /// <param name="options"> Read SigningRequestConfiguration parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of SigningRequestConfiguration </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<SigningRequestConfigurationResource>> ReadAsync(ReadSigningRequestConfigurationOptions options,
+                                                                                             ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<SigningRequestConfigurationResource>.FromJson("configurations", response.Content);
+            return new ResourceSet<SigningRequestConfigurationResource>(page, options, client);
+        }
+        #endif
+        /// <summary> Synchronous operation to retrieve configurations for the customer. </summary>
+        /// <param name="country"> The country ISO code to apply this configuration, this is an optional field, Example: US, MX </param>
+        /// <param name="product"> The product or service for which is requesting the signature, this is an optional field, Example: Porting, Hosting </param>
+        /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
+        /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of SigningRequestConfiguration </returns>
+        public static ResourceSet<SigningRequestConfigurationResource> Read(
+                                                     string country = null,
+                                                     string product = null,
+                                                     int? pageSize = null,
+                                                     long? limit = null,
+                                                     ITwilioRestClient client = null)
+        {
+            var options = new ReadSigningRequestConfigurationOptions(){ Country = country, Product = product, PageSize = pageSize, Limit = limit};
+            return Read(options, client);
+        }
+
+        #if !NET35
+        /// <summary> Synchronous operation to retrieve configurations for the customer. </summary>
+        /// <param name="country"> The country ISO code to apply this configuration, this is an optional field, Example: US, MX </param>
+        /// <param name="product"> The product or service for which is requesting the signature, this is an optional field, Example: Porting, Hosting </param>
+        /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
+        /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of SigningRequestConfiguration </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<SigningRequestConfigurationResource>> ReadAsync(
+                                                                                             string country = null,
+                                                                                             string product = null,
+                                                                                             int? pageSize = null,
+                                                                                             long? limit = null,
+                                                                                             ITwilioRestClient client = null)
+        {
+            var options = new ReadSigningRequestConfigurationOptions(){ Country = country, Product = product, PageSize = pageSize, Limit = limit};
+            return await ReadAsync(options, client);
+        }
+        #endif
+
+        
+        /// <summary> Fetch the target page of records </summary>
+        /// <param name="targetUrl"> API-generated URL for the requested results page </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> The target page of records </returns>
+        public static Page<SigningRequestConfigurationResource> GetPage(string targetUrl, ITwilioRestClient client)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+
+            var request = new Request(
+                HttpMethod.Get,
+                targetUrl
+            );
+
+            var response = client.Request(request);
+            return Page<SigningRequestConfigurationResource>.FromJson("configurations", response.Content);
+        }
+
+        /// <summary> Fetch the next page of records </summary>
+        /// <param name="page"> current page of records </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> The next page of records </returns>
+        public static Page<SigningRequestConfigurationResource> NextPage(Page<SigningRequestConfigurationResource> page, ITwilioRestClient client)
+        {
+            var request = new Request(
+                HttpMethod.Get,
+                page.GetNextPageUrl(Rest.Domain.Api)
+            );
+
+            var response = client.Request(request);
+            return Page<SigningRequestConfigurationResource>.FromJson("configurations", response.Content);
+        }
+
+        /// <summary> Fetch the previous page of records </summary>
+        /// <param name="page"> current page of records </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> The previous page of records </returns>
+        public static Page<SigningRequestConfigurationResource> PreviousPage(Page<SigningRequestConfigurationResource> page, ITwilioRestClient client)
+        {
+            var request = new Request(
+                HttpMethod.Get,
+                page.GetPreviousPageUrl(Rest.Domain.Api)
+            );
+
+            var response = client.Request(request);
+            return Page<SigningRequestConfigurationResource>.FromJson("configurations", response.Content);
+        }
+
     
         /// <summary>
         /// Converts a JSON string into a SigningRequestConfigurationResource object

@@ -27,14 +27,14 @@ using Twilio.Http;
 
 namespace Twilio.Rest.Numbers.V1
 {
-    public class WebhookResource : Resource
+    public class PortingWebhookConfigurationFetchResource : Resource
     {
     
 
     
 
         
-        private static Request BuildFetchRequest(FetchWebhookOptions options, ITwilioRestClient client)
+        private static Request BuildFetchRequest(FetchPortingWebhookConfigurationFetchOptions options, ITwilioRestClient client)
         {
             
             string path = "/v1/Porting/Configuration/Webhook";
@@ -50,10 +50,10 @@ namespace Twilio.Rest.Numbers.V1
         }
 
         /// <summary> Allows to fetch the webhook configuration </summary>
-        /// <param name="options"> Fetch Webhook parameters </param>
+        /// <param name="options"> Fetch PortingWebhookConfigurationFetch parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Webhook </returns>
-        public static WebhookResource Fetch(FetchWebhookOptions options, ITwilioRestClient client = null)
+        /// <returns> A single instance of PortingWebhookConfigurationFetch </returns>
+        public static PortingWebhookConfigurationFetchResource Fetch(FetchPortingWebhookConfigurationFetchOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildFetchRequest(options, client));
@@ -62,10 +62,10 @@ namespace Twilio.Rest.Numbers.V1
 
         #if !NET35
         /// <summary> Allows to fetch the webhook configuration </summary>
-        /// <param name="options"> Fetch Webhook parameters </param>
+        /// <param name="options"> Fetch PortingWebhookConfigurationFetch parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Webhook </returns>
-        public static async System.Threading.Tasks.Task<WebhookResource> FetchAsync(FetchWebhookOptions options,
+        /// <returns> Task that resolves to A single instance of PortingWebhookConfigurationFetch </returns>
+        public static async System.Threading.Tasks.Task<PortingWebhookConfigurationFetchResource> FetchAsync(FetchPortingWebhookConfigurationFetchOptions options,
                                                                                              ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -75,35 +75,35 @@ namespace Twilio.Rest.Numbers.V1
         #endif
         /// <summary> Allows to fetch the webhook configuration </summary>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Webhook </returns>
-        public static WebhookResource Fetch(
+        /// <returns> A single instance of PortingWebhookConfigurationFetch </returns>
+        public static PortingWebhookConfigurationFetchResource Fetch(
                                          ITwilioRestClient client = null)
         {
-            var options = new FetchWebhookOptions(){  };
+            var options = new FetchPortingWebhookConfigurationFetchOptions(){  };
             return Fetch(options, client);
         }
 
         #if !NET35
         /// <summary> Allows to fetch the webhook configuration </summary>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Webhook </returns>
-        public static async System.Threading.Tasks.Task<WebhookResource> FetchAsync(ITwilioRestClient client = null)
+        /// <returns> Task that resolves to A single instance of PortingWebhookConfigurationFetch </returns>
+        public static async System.Threading.Tasks.Task<PortingWebhookConfigurationFetchResource> FetchAsync(ITwilioRestClient client = null)
         {
-            var options = new FetchWebhookOptions(){  };
+            var options = new FetchPortingWebhookConfigurationFetchOptions(){  };
             return await FetchAsync(options, client);
         }
         #endif
     
         /// <summary>
-        /// Converts a JSON string into a WebhookResource object
+        /// Converts a JSON string into a PortingWebhookConfigurationFetchResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> WebhookResource object represented by the provided JSON </returns>
-        public static WebhookResource FromJson(string json)
+        /// <returns> PortingWebhookConfigurationFetchResource object represented by the provided JSON </returns>
+        public static PortingWebhookConfigurationFetchResource FromJson(string json)
         {
             try
             {
-                return JsonConvert.DeserializeObject<WebhookResource>(json);
+                return JsonConvert.DeserializeObject<PortingWebhookConfigurationFetchResource>(json);
             }
             catch (JsonException e)
             {
@@ -132,15 +132,15 @@ namespace Twilio.Rest.Numbers.V1
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
-        ///<summary> Webhook URL to send a request when a port in request or port in phone number event happens </summary> 
+        ///<summary> The complete webhook url that will be called when a notification event for port in request or port in phone number happens </summary> 
         [JsonProperty("port_in_target_url")]
         public Uri PortInTargetUrl { get; private set; }
 
-        ///<summary> Webhook URL to send a request when a port out phone number event happens </summary> 
+        ///<summary> The complete webhook url that will be called when a notification event for a port out phone number happens. </summary> 
         [JsonProperty("port_out_target_url")]
         public Uri PortOutTargetUrl { get; private set; }
 
-        ///<summary> List of notification events to send a request to the webhook URL </summary> 
+        ///<summary> A list to filter what notification events to receive for this account and its sub accounts. If it is an empty list, then it means that there are no filters for the notifications events to send in each webhook and all events will get sent. </summary> 
         [JsonProperty("notifications_of")]
         public List<string> NotificationsOf { get; private set; }
 
@@ -154,7 +154,7 @@ namespace Twilio.Rest.Numbers.V1
 
 
 
-        private WebhookResource() {
+        private PortingWebhookConfigurationFetchResource() {
 
         }
     }

@@ -28,15 +28,15 @@ namespace Twilio.Rest.Content.V1.Content
     {
     
         ///<summary> The Twilio-provided string that uniquely identifies the Content resource whose approval information to fetch. </summary> 
-        public string PathContentSid { get; }
+        public string PathSid { get; }
 
 
 
-        /// <summary> Construct a new FetchApprovalOptions </summary>
-        /// <param name="pathContentSid"> The Twilio-provided string that uniquely identifies the Content resource whose approval information to fetch. </param>
-        public FetchApprovalFetchOptions(string pathContentSid)
+        /// <summary> Construct a new FetchApprovalFetchOptions </summary>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Content resource whose approval information to fetch. </param>
+        public FetchApprovalFetchOptions(string pathSid)
         {
-            PathContentSid = pathContentSid;
+            PathSid = pathSid;
         }
 
         

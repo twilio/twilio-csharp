@@ -103,7 +103,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="attributes"> A URL-encoded JSON string with the attributes of the new task. This value is passed to the Workflow's `assignment_callback_url` when the Task is assigned to a Worker. For example: `{ \\\"task_type\\\": \\\"call\\\", \\\"twilio_call_sid\\\": \\\"CAxxx\\\", \\\"customer_ticket_number\\\": \\\"12345\\\" }`. </param>
         /// <param name="virtualStartTime"> The virtual start time to assign the new task and override the default. When supplied, the new task will have this virtual start time. When not supplied, the new task will have the virtual start time equal to `date_created`. Value can't be in the future. </param>
         /// <param name="routingTarget"> A SID of a Worker, Queue, or Workflow to route a Task to </param>
-        /// <param name="ignoreCapacity"> A boolean indicating if a new task should respect a worker's capacity during assignment </param>
+        /// <param name="ignoreCapacity"> A boolean that indicates if the Task should respect a Worker's capacity and availability during assignment. This field can only be used when the `RoutingTarget` field is set to a Worker SID. By setting `IgnoreCapacity` to a value of `true`, `1`, or `yes`, the Task will be routed to the Worker without respecting their capacity and availability. Any other value will enforce the Worker's capacity and availability. The default value of `IgnoreCapacity` is `true` when the `RoutingTarget` is set to a Worker SID.  </param>
         /// <param name="taskQueueSid"> The SID of the TaskQueue in which the Task belongs </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Task </returns>
@@ -134,7 +134,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="attributes"> A URL-encoded JSON string with the attributes of the new task. This value is passed to the Workflow's `assignment_callback_url` when the Task is assigned to a Worker. For example: `{ \\\"task_type\\\": \\\"call\\\", \\\"twilio_call_sid\\\": \\\"CAxxx\\\", \\\"customer_ticket_number\\\": \\\"12345\\\" }`. </param>
         /// <param name="virtualStartTime"> The virtual start time to assign the new task and override the default. When supplied, the new task will have this virtual start time. When not supplied, the new task will have the virtual start time equal to `date_created`. Value can't be in the future. </param>
         /// <param name="routingTarget"> A SID of a Worker, Queue, or Workflow to route a Task to </param>
-        /// <param name="ignoreCapacity"> A boolean indicating if a new task should respect a worker's capacity during assignment </param>
+        /// <param name="ignoreCapacity"> A boolean that indicates if the Task should respect a Worker's capacity and availability during assignment. This field can only be used when the `RoutingTarget` field is set to a Worker SID. By setting `IgnoreCapacity` to a value of `true`, `1`, or `yes`, the Task will be routed to the Worker without respecting their capacity and availability. Any other value will enforce the Worker's capacity and availability. The default value of `IgnoreCapacity` is `true` when the `RoutingTarget` is set to a Worker SID.  </param>
         /// <param name="taskQueueSid"> The SID of the TaskQueue in which the Task belongs </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Task </returns>
@@ -691,7 +691,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         [JsonProperty("virtual_start_time")]
         public DateTime? VirtualStartTime { get; private set; }
 
-        ///<summary> A boolean indicating if a new task should respect a worker's capacity during assignment </summary> 
+        ///<summary> A boolean that indicates if the Task should respect a Worker's capacity and availability during assignment. This field can only be used when the `RoutingTarget` field is set to a Worker SID. By setting `IgnoreCapacity` to a value of `true`, `1`, or `yes`, the Task will be routed to the Worker without respecting their capacity and availability. Any other value will enforce the Worker's capacity and availability. The default value of `IgnoreCapacity` is `true` when the `RoutingTarget` is set to a Worker SID.  </summary> 
         [JsonProperty("ignore_capacity")]
         public bool? IgnoreCapacity { get; private set; }
 

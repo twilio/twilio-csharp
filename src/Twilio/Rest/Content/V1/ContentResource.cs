@@ -200,8 +200,8 @@ namespace Twilio.Rest.Content.V1
             private string Url {get; set;}
             [JsonProperty("phone")]
             private string Phone {get; set;}
-            [JsonProperty("id")]
-            private string Id {get; set;}
+            [JsonProperty("code")]
+            private string Code {get; set;}
             public CallToActionAction() { }
             public class Builder
             {
@@ -229,9 +229,9 @@ namespace Twilio.Rest.Content.V1
                     _callToActionAction.Phone= phone;
                     return this;
                 }
-                public Builder WithId(string id)
+                public Builder WithCode(string code)
                 {
-                    _callToActionAction.Id= id;
+                    _callToActionAction.Code= code;
                     return this;
                 }
                 public CallToActionAction Build()
@@ -348,6 +348,8 @@ namespace Twilio.Rest.Content.V1
             private string Phone {get; set;}
             [JsonProperty("id")]
             private string Id {get; set;}
+            [JsonProperty("code")]
+            private string Code {get; set;}
             public CardAction() { }
             public class Builder
             {
@@ -378,6 +380,11 @@ namespace Twilio.Rest.Content.V1
                 public Builder WithId(string id)
                 {
                     _cardAction.Id= id;
+                    return this;
+                }
+                public Builder WithCode(string code)
+                {
+                    _cardAction.Code= code;
                     return this;
                 }
                 public CardAction Build()
@@ -543,6 +550,308 @@ namespace Twilio.Rest.Content.V1
                 }
             }
         }
+        public class CarouselAction
+        {
+            [JsonConverter(typeof(StringEnumConverter))]
+            [JsonProperty("type")]
+            private ContentResource.CarouselActionType Type {get; set;}
+            [JsonProperty("title")]
+            private string Title {get; set;}
+            [JsonProperty("url")]
+            private string Url {get; set;}
+            [JsonProperty("phone")]
+            private string Phone {get; set;}
+            [JsonProperty("id")]
+            private string Id {get; set;}
+            public CarouselAction() { }
+            public class Builder
+            {
+                private CarouselAction _carouselAction = new CarouselAction();
+                public Builder()
+                {
+                }
+                public Builder WithType(ContentResource.CarouselActionType type)
+                {
+                    _carouselAction.Type= type;
+                    return this;
+                }
+                public Builder WithTitle(string title)
+                {
+                    _carouselAction.Title= title;
+                    return this;
+                }
+                public Builder WithUrl(string url)
+                {
+                    _carouselAction.Url= url;
+                    return this;
+                }
+                public Builder WithPhone(string phone)
+                {
+                    _carouselAction.Phone= phone;
+                    return this;
+                }
+                public Builder WithId(string id)
+                {
+                    _carouselAction.Id= id;
+                    return this;
+                }
+                public CarouselAction Build()
+                {
+                    return _carouselAction;
+                }
+            }
+        }
+        public class CarouselCard
+        {
+            [JsonProperty("title")]
+            private string Title {get; set;}
+            [JsonProperty("body")]
+            private string Body {get; set;}
+            [JsonProperty("media")]
+            private string Media {get; set;}
+            [JsonProperty("actions")]
+            private List<CarouselAction> Actions {get; set;}
+            public CarouselCard() { }
+            public class Builder
+            {
+                private CarouselCard _carouselCard = new CarouselCard();
+                public Builder()
+                {
+                }
+                public Builder WithTitle(string title)
+                {
+                    _carouselCard.Title= title;
+                    return this;
+                }
+                public Builder WithBody(string body)
+                {
+                    _carouselCard.Body= body;
+                    return this;
+                }
+                public Builder WithMedia(string media)
+                {
+                    _carouselCard.Media= media;
+                    return this;
+                }
+                public Builder WithActions(List<CarouselAction> actions)
+                {
+                    _carouselCard.Actions= actions;
+                    return this;
+                }
+                public CarouselCard Build()
+                {
+                    return _carouselCard;
+                }
+            }
+        }
+        public class TwilioCarousel
+        {
+            [JsonProperty("body")]
+            private string Body {get; set;}
+            [JsonProperty("cards")]
+            private List<CarouselCard> Cards {get; set;}
+            public TwilioCarousel() { }
+            public class Builder
+            {
+                private TwilioCarousel _twilioCarousel = new TwilioCarousel();
+                public Builder()
+                {
+                }
+                public Builder WithBody(string body)
+                {
+                    _twilioCarousel.Body= body;
+                    return this;
+                }
+                public Builder WithCards(List<CarouselCard> cards)
+                {
+                    _twilioCarousel.Cards= cards;
+                    return this;
+                }
+                public TwilioCarousel Build()
+                {
+                    return _twilioCarousel;
+                }
+            }
+        }
+        public class FlowsPageComponentSelectItem
+        {
+            [JsonProperty("id")]
+            private string Id {get; set;}
+            [JsonProperty("title")]
+            private string Title {get; set;}
+            public FlowsPageComponentSelectItem() { }
+            public class Builder
+            {
+                private FlowsPageComponentSelectItem _flowsPageComponentSelectItem = new FlowsPageComponentSelectItem();
+                public Builder()
+                {
+                }
+                public Builder WithId(string id)
+                {
+                    _flowsPageComponentSelectItem.Id= id;
+                    return this;
+                }
+                public Builder WithTitle(string title)
+                {
+                    _flowsPageComponentSelectItem.Title= title;
+                    return this;
+                }
+                public FlowsPageComponentSelectItem Build()
+                {
+                    return _flowsPageComponentSelectItem;
+                }
+            }
+        }
+        public class FlowsPageComponent
+        {
+            [JsonProperty("label")]
+            private string Label {get; set;}
+            [JsonProperty("type")]
+            private string Type {get; set;}
+            [JsonProperty("text")]
+            private string Text {get; set;}
+            [JsonProperty("options")]
+            private List<FlowsPageComponentSelectItem> Options {get; set;}
+            public FlowsPageComponent() { }
+            public class Builder
+            {
+                private FlowsPageComponent _flowsPageComponent = new FlowsPageComponent();
+                public Builder()
+                {
+                }
+                public Builder WithLabel(string label)
+                {
+                    _flowsPageComponent.Label= label;
+                    return this;
+                }
+                public Builder WithType(string type)
+                {
+                    _flowsPageComponent.Type= type;
+                    return this;
+                }
+                public Builder WithText(string text)
+                {
+                    _flowsPageComponent.Text= text;
+                    return this;
+                }
+                public Builder WithOptions(List<FlowsPageComponentSelectItem> options)
+                {
+                    _flowsPageComponent.Options= options;
+                    return this;
+                }
+                public FlowsPageComponent Build()
+                {
+                    return _flowsPageComponent;
+                }
+            }
+        }
+        public class FlowsPage
+        {
+            [JsonProperty("id")]
+            private string Id {get; set;}
+            [JsonProperty("next_page_id")]
+            private string NextPageId {get; set;}
+            [JsonProperty("title")]
+            private string Title {get; set;}
+            [JsonProperty("subtitle")]
+            private string Subtitle {get; set;}
+            [JsonProperty("layout")]
+            private List<FlowsPageComponent> Layout {get; set;}
+            public FlowsPage() { }
+            public class Builder
+            {
+                private FlowsPage _flowsPage = new FlowsPage();
+                public Builder()
+                {
+                }
+                public Builder WithId(string id)
+                {
+                    _flowsPage.Id= id;
+                    return this;
+                }
+                public Builder WithNextPageId(string nextPageId)
+                {
+                    _flowsPage.NextPageId= nextPageId;
+                    return this;
+                }
+                public Builder WithTitle(string title)
+                {
+                    _flowsPage.Title= title;
+                    return this;
+                }
+                public Builder WithSubtitle(string subtitle)
+                {
+                    _flowsPage.Subtitle= subtitle;
+                    return this;
+                }
+                public Builder WithLayout(List<FlowsPageComponent> layout)
+                {
+                    _flowsPage.Layout= layout;
+                    return this;
+                }
+                public FlowsPage Build()
+                {
+                    return _flowsPage;
+                }
+            }
+        }
+        public class TwilioFlows
+        {
+            [JsonProperty("body")]
+            private string Body {get; set;}
+            [JsonProperty("button_text")]
+            private string ButtonText {get; set;}
+            [JsonProperty("subtitle")]
+            private string Subtitle {get; set;}
+            [JsonProperty("media_url")]
+            private string MediaUrl {get; set;}
+            [JsonProperty("pages")]
+            private List<FlowsPage> Pages {get; set;}
+            [JsonProperty("type")]
+            private string Type {get; set;}
+            public TwilioFlows() { }
+            public class Builder
+            {
+                private TwilioFlows _twilioFlows = new TwilioFlows();
+                public Builder()
+                {
+                }
+                public Builder WithBody(string body)
+                {
+                    _twilioFlows.Body= body;
+                    return this;
+                }
+                public Builder WithButtonText(string buttonText)
+                {
+                    _twilioFlows.ButtonText= buttonText;
+                    return this;
+                }
+                public Builder WithSubtitle(string subtitle)
+                {
+                    _twilioFlows.Subtitle= subtitle;
+                    return this;
+                }
+                public Builder WithMediaUrl(string mediaUrl)
+                {
+                    _twilioFlows.MediaUrl= mediaUrl;
+                    return this;
+                }
+                public Builder WithPages(List<FlowsPage> pages)
+                {
+                    _twilioFlows.Pages= pages;
+                    return this;
+                }
+                public Builder WithType(string type)
+                {
+                    _twilioFlows.Type= type;
+                    return this;
+                }
+                public TwilioFlows Build()
+                {
+                    return _twilioFlows;
+                }
+            }
+        }
         public class WhatsappCard
         {
             [JsonProperty("body")]
@@ -677,6 +986,10 @@ namespace Twilio.Rest.Content.V1
             private TwilioCard TwilioCard {get; set;}
             [JsonProperty("twilio/catalog")]
             private TwilioCatalog TwilioCatalog {get; set;}
+            [JsonProperty("twilio/carousel")]
+            private TwilioCarousel TwilioCarousel {get; set;}
+            [JsonProperty("twilio/flows")]
+            private TwilioFlows TwilioFlows {get; set;}
             [JsonProperty("whatsapp/card")]
             private WhatsappCard WhatsappCard {get; set;}
             [JsonProperty("whatsapp/authentication")]
@@ -726,6 +1039,16 @@ namespace Twilio.Rest.Content.V1
                 public Builder WithTwilioCatalog(TwilioCatalog twilioCatalog)
                 {
                     _types.TwilioCatalog= twilioCatalog;
+                    return this;
+                }
+                public Builder WithTwilioCarousel(TwilioCarousel twilioCarousel)
+                {
+                    _types.TwilioCarousel= twilioCarousel;
+                    return this;
+                }
+                public Builder WithTwilioFlows(TwilioFlows twilioFlows)
+                {
+                    _types.TwilioFlows= twilioFlows;
                     return this;
                 }
                 public Builder WithWhatsappCard(WhatsappCard whatsappCard)
@@ -790,6 +1113,20 @@ namespace Twilio.Rest.Content.V1
 
     
         [JsonConverter(typeof(StringEnumConverter))]
+        public sealed class CarouselActionType : StringEnum
+        {
+            private CarouselActionType(string value) : base(value) {}
+            public CarouselActionType() {}
+            public static implicit operator CarouselActionType(string value)
+            {
+                return new CarouselActionType(value);
+            }
+            public static readonly CarouselActionType Url = new CarouselActionType("URL");
+            public static readonly CarouselActionType PhoneNumber = new CarouselActionType("PHONE_NUMBER");
+            public static readonly CarouselActionType QuickReply = new CarouselActionType("QUICK_REPLY");
+
+        }
+        [JsonConverter(typeof(StringEnumConverter))]
         public sealed class AuthenticationActionType : StringEnum
         {
             private AuthenticationActionType(string value) : base(value) {}
@@ -813,6 +1150,8 @@ namespace Twilio.Rest.Content.V1
             public static readonly CardActionType Url = new CardActionType("URL");
             public static readonly CardActionType PhoneNumber = new CardActionType("PHONE_NUMBER");
             public static readonly CardActionType QuickReply = new CardActionType("QUICK_REPLY");
+            public static readonly CardActionType CopyCode = new CardActionType("COPY_CODE");
+            public static readonly CardActionType VoiceCall = new CardActionType("VOICE_CALL");
 
         }
         [JsonConverter(typeof(StringEnumConverter))]
@@ -838,6 +1177,8 @@ namespace Twilio.Rest.Content.V1
             }
             public static readonly CallToActionActionType Url = new CallToActionActionType("URL");
             public static readonly CallToActionActionType PhoneNumber = new CallToActionActionType("PHONE_NUMBER");
+            public static readonly CallToActionActionType CopyCode = new CallToActionActionType("COPY_CODE");
+            public static readonly CallToActionActionType VoiceCall = new CallToActionActionType("VOICE_CALL");
 
         }
 

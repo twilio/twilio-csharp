@@ -177,7 +177,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         [JsonProperty("tasks_by_status")]
         public object TasksByStatus { get; private set; }
 
-        ///<summary> The total number of Workers available for Tasks in the TaskQueue. </summary> 
+        ///<summary> The total number of Workers in the TaskQueue with an `available` status. Workers with an `available` status may already have active interactions or may have none. </summary> 
         [JsonProperty("total_available_workers")]
         public int? TotalAvailableWorkers { get; private set; }
 

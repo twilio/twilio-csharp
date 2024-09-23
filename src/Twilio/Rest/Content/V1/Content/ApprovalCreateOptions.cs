@@ -35,7 +35,7 @@ namespace Twilio.Rest.Content.V1.Content
         public ApprovalCreateResource.ContentApprovalRequest ContentApprovalRequest { get; }
 
 
-        /// <summary> Construct a new CreateContentApprovalRequestOptions </summary>
+        /// <summary> Construct a new CreateApprovalCreateOptions </summary>
         /// <param name="pathContentSid">  </param>
         /// <param name="contentApprovalRequest">  </param>
         public CreateApprovalCreateOptions(string pathContentSid, ApprovalCreateResource.ContentApprovalRequest contentApprovalRequest)

@@ -27,13 +27,13 @@ namespace Twilio.Rest.Intelligence.V2
     public class FetchOperatorTypeOptions : IOptions<OperatorTypeResource>
     {
     
-        ///<summary> A 34 character string that uniquely identifies this Operator Type. </summary> 
+        ///<summary> Either a 34 character string that uniquely identifies this Operator Type or the unique name that references an Operator Type. </summary> 
         public string PathSid { get; }
 
 
 
         /// <summary> Construct a new FetchOperatorTypeOptions </summary>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this Operator Type. </param>
+        /// <param name="pathSid"> Either a 34 character string that uniquely identifies this Operator Type or the unique name that references an Operator Type. </param>
         public FetchOperatorTypeOptions(string pathSid)
         {
             PathSid = pathSid;

@@ -51,7 +51,7 @@ namespace Twilio.Rest.Marketplace.V1
             );
         }
 
-        /// <summary> fetch </summary>
+        /// <summary> This endpoint returns the data of a given Listing. To find a Listing's SID, use the [Available Add-ons resource](/docs/marketplace/api/available-add-ons) or view its Listing details page in the Console by visiting the [Catalog](https://console.twilio.com/us1/develop/add-ons/catalog) or the [My Listings tab](https://console.twilio.com/us1/develop/add-ons/publish/my-listings) and selecting the Listing. </summary>
         /// <param name="options"> Fetch ModuleDataManagement parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of ModuleDataManagement </returns>
@@ -63,7 +63,7 @@ namespace Twilio.Rest.Marketplace.V1
         }
 
         #if !NET35
-        /// <summary> fetch </summary>
+        /// <summary> This endpoint returns the data of a given Listing. To find a Listing's SID, use the [Available Add-ons resource](/docs/marketplace/api/available-add-ons) or view its Listing details page in the Console by visiting the [Catalog](https://console.twilio.com/us1/develop/add-ons/catalog) or the [My Listings tab](https://console.twilio.com/us1/develop/add-ons/publish/my-listings) and selecting the Listing. </summary>
         /// <param name="options"> Fetch ModuleDataManagement parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ModuleDataManagement </returns>
@@ -75,8 +75,8 @@ namespace Twilio.Rest.Marketplace.V1
             return FromJson(response.Content);
         }
         #endif
-        /// <summary> fetch </summary>
-        /// <param name="pathSid">  </param>
+        /// <summary> This endpoint returns the data of a given Listing. To find a Listing's SID, use the [Available Add-ons resource](/docs/marketplace/api/available-add-ons) or view its Listing details page in the Console by visiting the [Catalog](https://console.twilio.com/us1/develop/add-ons/catalog) or the [My Listings tab](https://console.twilio.com/us1/develop/add-ons/publish/my-listings) and selecting the Listing. </summary>
+        /// <param name="pathSid"> The unique identifier of a Listing. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of ModuleDataManagement </returns>
         public static ModuleDataManagementResource Fetch(
@@ -88,8 +88,8 @@ namespace Twilio.Rest.Marketplace.V1
         }
 
         #if !NET35
-        /// <summary> fetch </summary>
-        /// <param name="pathSid">  </param>
+        /// <summary> This endpoint returns the data of a given Listing. To find a Listing's SID, use the [Available Add-ons resource](/docs/marketplace/api/available-add-ons) or view its Listing details page in the Console by visiting the [Catalog](https://console.twilio.com/us1/develop/add-ons/catalog) or the [My Listings tab](https://console.twilio.com/us1/develop/add-ons/publish/my-listings) and selecting the Listing. </summary>
+        /// <param name="pathSid"> The unique identifier of a Listing. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ModuleDataManagement </returns>
         public static async System.Threading.Tasks.Task<ModuleDataManagementResource> FetchAsync(string pathSid, ITwilioRestClient client = null)
@@ -117,7 +117,7 @@ namespace Twilio.Rest.Marketplace.V1
             );
         }
 
-        /// <summary> update </summary>
+        /// <summary> This endpoint updates the data of a given Listing. To find a Listing's SID, use the [Available Add-ons resource](https://www.twilio.com/docs/marketplace/api/available-add-ons) or view its Listing details page in the Console by visiting the [Catalog](https://console.twilio.com/us1/develop/add-ons/catalog) or the [My Listings tab](https://console.twilio.com/us1/develop/add-ons/publish/my-listings) and selecting the Listing. Only Listing owners are allowed to update the Listing. </summary>
         /// <param name="options"> Update ModuleDataManagement parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of ModuleDataManagement </returns>
@@ -128,7 +128,7 @@ namespace Twilio.Rest.Marketplace.V1
             return FromJson(response.Content);
         }
 
-        /// <summary> update </summary>
+        /// <summary> This endpoint updates the data of a given Listing. To find a Listing's SID, use the [Available Add-ons resource](https://www.twilio.com/docs/marketplace/api/available-add-ons) or view its Listing details page in the Console by visiting the [Catalog](https://console.twilio.com/us1/develop/add-ons/catalog) or the [My Listings tab](https://console.twilio.com/us1/develop/add-ons/publish/my-listings) and selecting the Listing. Only Listing owners are allowed to update the Listing. </summary>
         /// <param name="options"> Update ModuleDataManagement parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ModuleDataManagement </returns>
@@ -142,13 +142,15 @@ namespace Twilio.Rest.Marketplace.V1
         }
         #endif
 
-        /// <summary> update </summary>
-        /// <param name="pathSid">  </param>
-        /// <param name="moduleInfo">  </param>
-        /// <param name="description">  </param>
-        /// <param name="documentation">  </param>
-        /// <param name="policies">  </param>
-        /// <param name="support">  </param>
+        /// <summary> This endpoint updates the data of a given Listing. To find a Listing's SID, use the [Available Add-ons resource](https://www.twilio.com/docs/marketplace/api/available-add-ons) or view its Listing details page in the Console by visiting the [Catalog](https://console.twilio.com/us1/develop/add-ons/catalog) or the [My Listings tab](https://console.twilio.com/us1/develop/add-ons/publish/my-listings) and selecting the Listing. Only Listing owners are allowed to update the Listing. </summary>
+        /// <param name="pathSid"> SID that uniquely identifies the Listing. </param>
+        /// <param name="moduleInfo"> A JSON object containing essential attributes that define a Listing. </param>
+        /// <param name="description"> A JSON object describing the Listing. You can define the main body of the description, highlight key features or aspects of the Listing, and provide code samples for developers if applicable. </param>
+        /// <param name="documentation"> A JSON object for providing comprehensive information, instructions, and resources related to the Listing. </param>
+        /// <param name="policies"> A JSON object describing the Listing's privacy and legal policies. The maximum file size for Policies is 5MB. </param>
+        /// <param name="support"> A JSON object containing information on how Marketplace users can obtain support for the Listing. Use this parameter to provide details such as contact information and support description. </param>
+        /// <param name="configuration"> A JSON object for providing Listing-specific configuration. Contains button setup, notification URL, and more. </param>
+        /// <param name="pricing"> A JSON object for providing Listing's purchase options. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of ModuleDataManagement </returns>
         public static ModuleDataManagementResource Update(
@@ -158,20 +160,24 @@ namespace Twilio.Rest.Marketplace.V1
                                           string documentation = null,
                                           string policies = null,
                                           string support = null,
+                                          string configuration = null,
+                                          string pricing = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new UpdateModuleDataManagementOptions(pathSid){ ModuleInfo = moduleInfo, Description = description, Documentation = documentation, Policies = policies, Support = support };
+            var options = new UpdateModuleDataManagementOptions(pathSid){ ModuleInfo = moduleInfo, Description = description, Documentation = documentation, Policies = policies, Support = support, Configuration = configuration, Pricing = pricing };
             return Update(options, client);
         }
 
         #if !NET35
-        /// <summary> update </summary>
-        /// <param name="pathSid">  </param>
-        /// <param name="moduleInfo">  </param>
-        /// <param name="description">  </param>
-        /// <param name="documentation">  </param>
-        /// <param name="policies">  </param>
-        /// <param name="support">  </param>
+        /// <summary> This endpoint updates the data of a given Listing. To find a Listing's SID, use the [Available Add-ons resource](https://www.twilio.com/docs/marketplace/api/available-add-ons) or view its Listing details page in the Console by visiting the [Catalog](https://console.twilio.com/us1/develop/add-ons/catalog) or the [My Listings tab](https://console.twilio.com/us1/develop/add-ons/publish/my-listings) and selecting the Listing. Only Listing owners are allowed to update the Listing. </summary>
+        /// <param name="pathSid"> SID that uniquely identifies the Listing. </param>
+        /// <param name="moduleInfo"> A JSON object containing essential attributes that define a Listing. </param>
+        /// <param name="description"> A JSON object describing the Listing. You can define the main body of the description, highlight key features or aspects of the Listing, and provide code samples for developers if applicable. </param>
+        /// <param name="documentation"> A JSON object for providing comprehensive information, instructions, and resources related to the Listing. </param>
+        /// <param name="policies"> A JSON object describing the Listing's privacy and legal policies. The maximum file size for Policies is 5MB. </param>
+        /// <param name="support"> A JSON object containing information on how Marketplace users can obtain support for the Listing. Use this parameter to provide details such as contact information and support description. </param>
+        /// <param name="configuration"> A JSON object for providing Listing-specific configuration. Contains button setup, notification URL, and more. </param>
+        /// <param name="pricing"> A JSON object for providing Listing's purchase options. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ModuleDataManagement </returns>
         public static async System.Threading.Tasks.Task<ModuleDataManagementResource> UpdateAsync(
@@ -181,9 +187,11 @@ namespace Twilio.Rest.Marketplace.V1
                                                                               string documentation = null,
                                                                               string policies = null,
                                                                               string support = null,
+                                                                              string configuration = null,
+                                                                              string pricing = null,
                                                                               ITwilioRestClient client = null)
         {
-            var options = new UpdateModuleDataManagementOptions(pathSid){ ModuleInfo = moduleInfo, Description = description, Documentation = documentation, Policies = policies, Support = support };
+            var options = new UpdateModuleDataManagementOptions(pathSid){ ModuleInfo = moduleInfo, Description = description, Documentation = documentation, Policies = policies, Support = support, Configuration = configuration, Pricing = pricing };
             return await UpdateAsync(options, client);
         }
         #endif
@@ -222,33 +230,41 @@ namespace Twilio.Rest.Marketplace.V1
     }
 
     
-        ///<summary> The url </summary> 
+        ///<summary> URL to query the subresource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
-        ///<summary> The sid </summary> 
+        ///<summary> ModuleSid that identifies this Listing. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The description </summary> 
+        ///<summary> A JSON object describing the module and is displayed under the Description tab of the Module detail page. You can define the main body of the description, highlight key features or aspects of the module and if applicable, provide code samples for developers </summary> 
         [JsonProperty("description")]
         public object Description { get; private set; }
 
-        ///<summary> The support </summary> 
+        ///<summary> A JSON object containing information on how customers can obtain support for the module. Use this parameter to provide details such as contact information and support description. </summary> 
         [JsonProperty("support")]
         public object Support { get; private set; }
 
-        ///<summary> The policies </summary> 
+        ///<summary> A JSON object describing the module's privacy and legal policies and is displayed under the Policies tab of the Module detail page. The maximum file size for Policies is 5MB </summary> 
         [JsonProperty("policies")]
         public object Policies { get; private set; }
 
-        ///<summary> The module_info </summary> 
+        ///<summary> A JSON object containing essential attributes that define a module. This information is presented on the Module detail page in the Twilio Marketplace Catalog. You can pass the following attributes in the JSON object </summary> 
         [JsonProperty("module_info")]
         public object ModuleInfo { get; private set; }
 
-        ///<summary> The documentation </summary> 
+        ///<summary> A JSON object for providing comprehensive information, instructions, and resources related to the module </summary> 
         [JsonProperty("documentation")]
         public object Documentation { get; private set; }
+
+        ///<summary> A JSON object for providing listing specific configuration. Contains button setup, notification url, among others. </summary> 
+        [JsonProperty("configuration")]
+        public object Configuration { get; private set; }
+
+        ///<summary> A JSON object for providing Listing specific pricing information. </summary> 
+        [JsonProperty("pricing")]
+        public object Pricing { get; private set; }
 
 
 

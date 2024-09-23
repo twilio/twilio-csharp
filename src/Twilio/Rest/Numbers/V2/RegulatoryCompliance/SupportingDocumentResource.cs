@@ -514,6 +514,10 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         [JsonProperty("failure_reason")]
         public string FailureReason { get; private set; }
 
+        ///<summary> A list of errors that occurred during the registering RC Bundle </summary> 
+        [JsonProperty("errors")]
+        public List<object> Errors { get; private set; }
+
         ///<summary> The type of the Supporting Document. </summary> 
         [JsonProperty("type")]
         public string Type { get; private set; }
