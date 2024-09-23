@@ -3,6 +3,7 @@ using System.Reflection;
 using System.Collections.Generic;
 using Twilio.Clients;
 using Twilio.Clients.BearerToken;
+using Twilio.Annotations;
 
 namespace Twilio.Base.BearerToken
 {

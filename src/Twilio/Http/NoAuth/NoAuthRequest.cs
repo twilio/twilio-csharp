@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Twilio.Constant;
 using Twilio.Rest;
+using Twilio.Annotations;
 
 #if !NET35
 using System.Net;

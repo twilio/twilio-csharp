@@ -1,3 +1,5 @@
+using Twilio.Annotations;
+
 namespace Twilio.Http.BearerToken
 {
     /// <summary>

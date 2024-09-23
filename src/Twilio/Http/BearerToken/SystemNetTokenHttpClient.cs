@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Runtime.InteropServices;
 using System.Text;
 using Twilio.Constant;
+using Twilio.Annotations;
 
 namespace Twilio.Http.BearerToken
 {

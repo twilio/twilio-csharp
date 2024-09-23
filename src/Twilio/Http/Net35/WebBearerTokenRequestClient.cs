@@ -1,6 +1,7 @@
 #if NET35
 using System.IO;
 using Twilio.Http.BearerToken;
+using Twilio.Annotations;
 
 namespace Twilio.Http.Net35
 {

@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using Twilio.Exceptions;
 using Twilio.Http.BearerToken;
 using Twilio.Jwt;
+using Twilio.Annotations;
 
 
 #if !NET35

@@ -6,6 +6,7 @@ using Twilio.Exceptions;
 using Twilio.Http.BearerToken;
 using Twilio.Jwt;
 using Twilio.Clients;
+using Twilio.Annotations;
 
 #if !NET35
 using System.IdentityModel.Tokens.Jwt;

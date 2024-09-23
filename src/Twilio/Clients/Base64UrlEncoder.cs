@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Web.Script.Serialization;
+using Twilio.Annotations;
 
 namespace Twilio.Clients{
 

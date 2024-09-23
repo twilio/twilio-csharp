@@ -1,6 +1,7 @@
 using Twilio.Rest.PreviewIam.V1;
 using Twilio.Exceptions;
 using System;
+using Twilio.Annotations;
 
 namespace Twilio.Http.BearerToken{
 
