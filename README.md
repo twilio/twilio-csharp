@@ -142,6 +142,14 @@ Console.WriteLine(response);
 
 To use a custom HTTP client with this helper library, please see the [advanced example of how to do so](./advanced-examples/custom-http-client.md).
 
+## Annotations
+
+### Beta
+Features marked with the `[Beta]` attribute are in a beta stage and may undergo changes in future releases. Use these features with caution as they may not be stable.
+
+### Preview
+Features marked with the `[Preview]` attribute are in a preview stage and are intended for evaluation purposes. They are subject to change and should not be used in production without thorough testing.
+
 ## Docker Image
 
 The `Dockerfile` present in this repository and its respective `twilio/twilio-csharp` Docker image are used by Twilio for testing purposes.
