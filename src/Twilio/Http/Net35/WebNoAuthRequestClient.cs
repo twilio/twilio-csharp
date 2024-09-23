@@ -8,6 +8,7 @@ namespace Twilio.Http.Net35
     /// <summary>
     /// Sample client to make requests
     /// </summary>
+    [Beta]
     public class WebNoAuthRequestClient : NoAuthHttpClient
     {
         private const string PlatVersion = ".NET/3.5";

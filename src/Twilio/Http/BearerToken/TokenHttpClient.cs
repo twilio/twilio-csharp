@@ -5,6 +5,7 @@ namespace Twilio.Http.BearerToken
     /// <summary>
     /// Base http client used to make Twilio requests
     /// </summary>
+    [Beta]
     public abstract class TokenHttpClient
     {
         /// <summary>

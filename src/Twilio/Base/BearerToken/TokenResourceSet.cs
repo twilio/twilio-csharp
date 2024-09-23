@@ -11,6 +11,7 @@ namespace Twilio.Base.BearerToken
     /// </summary>
     ///
     /// <typeparam name="T">Resource Type</typeparam>
+    [Beta]
     public class TokenResourceSet<T> : IEnumerable<T> where T : Resource
     {
         /// <summary>

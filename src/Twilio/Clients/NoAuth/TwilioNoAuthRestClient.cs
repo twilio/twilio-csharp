@@ -23,6 +23,7 @@ namespace Twilio.Clients.NoAuth
     /// <summary>
     /// Implementation of a TwilioRestClient.
     /// </summary>
+    [Beta]
     public class TwilioNoAuthRestClient
     {
         /// <summary>

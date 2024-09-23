@@ -6,6 +6,7 @@ using System.Web.Script.Serialization;
 
 namespace Twilio.Clients{
 
+    [Beta]
     public abstract class Base64UrlEncoder
     {
         public static string Decode(string base64Url)

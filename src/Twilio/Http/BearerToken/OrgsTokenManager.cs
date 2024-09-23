@@ -7,6 +7,7 @@ namespace Twilio.Http.BearerToken{
 /// <summary>
     /// Implementation of a Token Manager
     /// </summary>
+    [Beta]
     public class OrgsTokenManager : TokenManager
     {
 

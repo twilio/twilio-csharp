@@ -3,6 +3,7 @@ namespace Twilio.Http.BearerToken
     /// <summary>
     /// Interface for a Token Manager
     /// </summary>
+    [Beta]
     public interface TokenManager
     {
 

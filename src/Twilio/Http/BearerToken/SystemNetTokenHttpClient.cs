@@ -13,6 +13,7 @@ namespace Twilio.Http.BearerToken
     /// <summary>
     /// Sample client to make HTTP requests
     /// </summary>
+    [Beta]
     public class SystemNetTokenHttpClient : TokenHttpClient
     {
 #if NET462
