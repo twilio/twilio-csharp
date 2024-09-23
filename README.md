@@ -73,6 +73,8 @@ var message = MessageResource.Create(
 Console.WriteLine(message.Sid);
 ```
 
+Examples on how to make rest calls with bearer token authentication is added [here](https://github.com/twilio/twilio-csharp/blob/orgs_api_uptake/examples/BearerTokenAuthentication.md)
+
 ## Specify Region and/or Edge
 
 To take advantage of Twilio's [Global Infrastructure](https://www.twilio.com/docs/global-infrastructure), specify the target Region and/or Edge for the client:
@@ -82,7 +84,7 @@ TwilioClient.SetRegion("au1");
 TwilioClient.SetEdge("sydney");
 ```
 
-This will result in the `hostname` transforming from `api.twilio.com` to `api.sydney.au1.twilio.com`.
+This will result in the `hostname` transforming from `api.twilio.com` to `api.sydney.au1.twilio.com`. Use appropriate client depending on the type of authentication used
 
 ## Enable debug logging
 
@@ -139,6 +141,14 @@ Console.WriteLine(response);
 ## Use a custom HTTP Client
 
 To use a custom HTTP client with this helper library, please see the [advanced example of how to do so](./advanced-examples/custom-http-client.md).
+
+## Annotations
+
+### Beta
+Features marked with the `[Beta]` attribute are in a beta stage and may undergo changes in future releases. Use these features with caution as they may not be stable.
+
+### Preview
+Features marked with the `[Preview]` attribute are in a preview stage and are intended for evaluation purposes. They are subject to change and should not be used in production without thorough testing.
 
 ## Docker Image
 

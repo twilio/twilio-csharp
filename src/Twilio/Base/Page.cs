@@ -125,36 +125,43 @@ namespace Twilio.Base
             var parsedRecords = records.Children().Select(
                 record => JsonConvert.DeserializeObject<T>(record.ToString())
             ).ToList();
+            
+            if(root["uri"] != null){
+                var uriNode = root["uri"];
+                if (uriNode != null)
+                {
+                    JToken pageSize;
+                    JToken firstPageUri;
+                    JToken nextPageUri;
+                    JToken previousPageUri;
 
-            var uriNode = root["uri"];
-            if (uriNode != null)
-            {
-                JToken pageSize;
-                JToken firstPageUri;
-                JToken nextPageUri;
-                JToken previousPageUri;
-
-                // v2010 API
-                return new Page<T>(
-                    parsedRecords,
-                    root.TryGetValue("page_size", out pageSize) ? root["page_size"].Value<int>() : parsedRecords.Count,
-                    uri: uriNode.Value<string>(),
-                    firstPageUri: root.TryGetValue("first_page_uri", out firstPageUri) ? root["first_page_uri"].Value<string>() : null,
-                    nextPageUri: root.TryGetValue("next_page_uri", out nextPageUri) ? root["next_page_uri"].Value<string>() : null,
-                    previousPageUri: root.TryGetValue("previous_page_uri", out previousPageUri) ? root["previous_page_uri"].Value<string>() : null
-                );
+                    // v2010 API
+                    return new Page<T>(
+                        parsedRecords,
+                        root.TryGetValue("page_size", out pageSize) ? root["page_size"].Value<int>() : parsedRecords.Count,
+                        uri: uriNode.Value<string>(),
+                        firstPageUri: root.TryGetValue("first_page_uri", out firstPageUri) ? root["first_page_uri"].Value<string>() : null,
+                        nextPageUri: root.TryGetValue("next_page_uri", out nextPageUri) ? root["next_page_uri"].Value<string>() : null,
+                        previousPageUri: root.TryGetValue("previous_page_uri", out previousPageUri) ? root["previous_page_uri"].Value<string>() : null
+                    );
+                }
             }
 
             // next-gen API
-            var meta = root["meta"];
-            return new Page<T>(
-                parsedRecords,
-                meta["page_size"].Value<int>(),
-                url: meta["url"].Value<string>(),
-                firstPageUrl: meta["first_page_url"].Value<string>(),
-                nextPageUrl: meta["next_page_url"].Value<string>(),
-                previousPageUrl: meta["previous_page_url"].Value<string>()
-            );
+            if(root["meta"] != null){
+                var meta = root["meta"];
+                return new Page<T>(
+                    parsedRecords,
+                    meta["page_size"].Value<int>(),
+                    url: meta["url"].Value<string>(),
+                    firstPageUrl: meta["first_page_url"].Value<string>(),
+                    nextPageUrl: meta["next_page_url"].Value<string>(),
+                    previousPageUrl: meta["previous_page_url"].Value<string>()
+                );
+            }
+
+            return new Page<T>(parsedRecords, 0, null, null, null, null);
+
         }
     }
 }
