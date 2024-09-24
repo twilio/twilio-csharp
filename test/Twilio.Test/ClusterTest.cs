@@ -17,6 +17,9 @@ namespace Twilio.Tests
         private string  apiKey;
         string  toNumber;
         string  fromNumber;
+        string orgsSid;
+        string clientId;
+        string clientSecret;
         [SetUp]
         [Category("ClusterTest")]
         public void SetUp()
