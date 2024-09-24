@@ -26,7 +26,11 @@ namespace Twilio.Tests
             apiKey = Environment.GetEnvironmentVariable("TWILIO_API_KEY");
             toNumber = Environment.GetEnvironmentVariable("TWILIO_TO_NUMBER");
             fromNumber = Environment.GetEnvironmentVariable("TWILIO_FROM_NUMBER");
+            orgsSid = Environment.GetEnvironmentVariable("TWILIO_ORG_SID");
+            clientId = Environment.GetEnvironmentVariable("TWILIO_ORGS_CLIENT_ID");
+            clientSecret = Environment.GetEnvironmentVariable("TWILIO_ORGS_CLIENT_SECRET");
             TwilioClient.Init(username:apiKey,password:secret,accountSid:accountSid);
+            TwilioOrgsTokenAuthClient.Init(clientId, clientSecret);
         }
         
 
@@ -120,6 +124,19 @@ namespace Twilio.Tests
 
             Assert.True(SubscriptionResource.Delete(subscription.Sid));
             Assert.True(SinkResource.Delete(sink.Sid));
+
+        }
+
+        [Test]
+        [Category("ClusterTest")]
+        public void TestFetchingOrgsAccounts()
+        {
+             Twilio.Base.BearerToken.TokenResourceSet<Twilio.Rest.PreviewIam.Organizations.AccountResource> accountList = null;
+             accountList = Twilio.Rest.PreviewIam.Organizations.AccountResource.Read(pathOrganizationSid: orgsSid);
+             Assert.IsNotNull(accountList.ElementAt(0).FriendlyName);
+
+             var userList = UserResource.Read(pathOrganizationSid: PathOrganizationSid);
+             Assert.IsNotNull(userList.ElementAt(0).Id);
 
         }
     }
