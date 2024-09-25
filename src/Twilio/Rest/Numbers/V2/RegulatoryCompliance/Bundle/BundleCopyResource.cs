@@ -25,6 +25,8 @@ using Twilio.Http;
 using Twilio.Types;
 
 
+
+
 namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
 {
     public class BundleCopyResource : Resource
@@ -85,8 +87,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
         /// <param name="options"> Create BundleCopy parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of BundleCopy </returns>
-        public static async System.Threading.Tasks.Task<BundleCopyResource> CreateAsync(CreateBundleCopyOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<BundleCopyResource> CreateAsync(CreateBundleCopyOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -102,7 +103,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
         public static BundleCopyResource Create(
                                           string pathBundleSid,
                                           string friendlyName = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateBundleCopyOptions(pathBundleSid){  FriendlyName = friendlyName };
             return Create(options, client);
@@ -117,7 +118,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
         public static async System.Threading.Tasks.Task<BundleCopyResource> CreateAsync(
                                                                                   string pathBundleSid,
                                                                                   string friendlyName = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateBundleCopyOptions(pathBundleSid){  FriendlyName = friendlyName };
             return await CreateAsync(options, client);
@@ -157,8 +158,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
         /// <param name="options"> Read BundleCopy parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of BundleCopy </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<BundleCopyResource>> ReadAsync(ReadBundleCopyOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<BundleCopyResource>> ReadAsync(ReadBundleCopyOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -177,7 +177,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
                                                      string pathBundleSid,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadBundleCopyOptions(pathBundleSid){ PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -194,7 +194,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
                                                                                              string pathBundleSid,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadBundleCopyOptions(pathBundleSid){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

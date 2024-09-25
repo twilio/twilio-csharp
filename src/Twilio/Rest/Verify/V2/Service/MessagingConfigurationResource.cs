@@ -25,6 +25,8 @@ using Twilio.Http;
 
 
 
+
+
 namespace Twilio.Rest.Verify.V2.Service
 {
     public class MessagingConfigurationResource : Resource
@@ -68,8 +70,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="options"> Create MessagingConfiguration parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of MessagingConfiguration </returns>
-        public static async System.Threading.Tasks.Task<MessagingConfigurationResource> CreateAsync(CreateMessagingConfigurationOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<MessagingConfigurationResource> CreateAsync(CreateMessagingConfigurationOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -87,7 +88,7 @@ namespace Twilio.Rest.Verify.V2.Service
                                           string pathServiceSid,
                                           string country,
                                           string messagingServiceSid,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateMessagingConfigurationOptions(pathServiceSid, country, messagingServiceSid){  };
             return Create(options, client);
@@ -104,7 +105,7 @@ namespace Twilio.Rest.Verify.V2.Service
                                                                                   string pathServiceSid,
                                                                                   string country,
                                                                                   string messagingServiceSid,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateMessagingConfigurationOptions(pathServiceSid, country, messagingServiceSid){  };
             return await CreateAsync(options, client);
@@ -151,7 +152,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of MessagingConfiguration </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteMessagingConfigurationOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -218,8 +219,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="options"> Fetch MessagingConfiguration parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of MessagingConfiguration </returns>
-        public static async System.Threading.Tasks.Task<MessagingConfigurationResource> FetchAsync(FetchMessagingConfigurationOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<MessagingConfigurationResource> FetchAsync(FetchMessagingConfigurationOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -234,7 +234,7 @@ namespace Twilio.Rest.Verify.V2.Service
         public static MessagingConfigurationResource Fetch(
                                          string pathServiceSid, 
                                          string pathCountry, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchMessagingConfigurationOptions(pathServiceSid, pathCountry){  };
             return Fetch(options, client);
@@ -286,8 +286,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="options"> Read MessagingConfiguration parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of MessagingConfiguration </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<MessagingConfigurationResource>> ReadAsync(ReadMessagingConfigurationOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<MessagingConfigurationResource>> ReadAsync(ReadMessagingConfigurationOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -306,7 +305,7 @@ namespace Twilio.Rest.Verify.V2.Service
                                                      string pathServiceSid,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadMessagingConfigurationOptions(pathServiceSid){ PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -323,7 +322,7 @@ namespace Twilio.Rest.Verify.V2.Service
                                                                                              string pathServiceSid,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadMessagingConfigurationOptions(pathServiceSid){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -416,7 +415,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <returns> Task that resolves to A single instance of MessagingConfiguration </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<MessagingConfigurationResource> UpdateAsync(UpdateMessagingConfigurationOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -434,7 +433,7 @@ namespace Twilio.Rest.Verify.V2.Service
                                           string pathServiceSid,
                                           string pathCountry,
                                           string messagingServiceSid,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateMessagingConfigurationOptions(pathServiceSid, pathCountry, messagingServiceSid){  };
             return Update(options, client);
@@ -451,7 +450,7 @@ namespace Twilio.Rest.Verify.V2.Service
                                                                               string pathServiceSid,
                                                                               string pathCountry,
                                                                               string messagingServiceSid,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateMessagingConfigurationOptions(pathServiceSid, pathCountry, messagingServiceSid){  };
             return await UpdateAsync(options, client);

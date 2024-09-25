@@ -25,6 +25,8 @@ using Twilio.Http;
 using Twilio.Types;
 
 
+
+
 namespace Twilio.Rest.Verify.V2
 {
     public class VerificationAttemptResource : Resource
@@ -95,8 +97,7 @@ namespace Twilio.Rest.Verify.V2
         /// <param name="options"> Fetch VerificationAttempt parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of VerificationAttempt </returns>
-        public static async System.Threading.Tasks.Task<VerificationAttemptResource> FetchAsync(FetchVerificationAttemptOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<VerificationAttemptResource> FetchAsync(FetchVerificationAttemptOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -109,7 +110,7 @@ namespace Twilio.Rest.Verify.V2
         /// <returns> A single instance of VerificationAttempt </returns>
         public static VerificationAttemptResource Fetch(
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchVerificationAttemptOptions(pathSid){  };
             return Fetch(options, client);
@@ -158,8 +159,7 @@ namespace Twilio.Rest.Verify.V2
         /// <param name="options"> Read VerificationAttempt parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of VerificationAttempt </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<VerificationAttemptResource>> ReadAsync(ReadVerificationAttemptOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<VerificationAttemptResource>> ReadAsync(ReadVerificationAttemptOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -192,7 +192,7 @@ namespace Twilio.Rest.Verify.V2
                                                      VerificationAttemptResource.ConversionStatusEnum status = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadVerificationAttemptOptions(){ DateCreatedAfter = dateCreatedAfter, DateCreatedBefore = dateCreatedBefore, ChannelDataTo = channelDataTo, Country = country, Channel = channel, VerifyServiceSid = verifyServiceSid, VerificationSid = verificationSid, Status = status, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -223,7 +223,7 @@ namespace Twilio.Rest.Verify.V2
                                                                                              VerificationAttemptResource.ConversionStatusEnum status = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadVerificationAttemptOptions(){ DateCreatedAfter = dateCreatedAfter, DateCreatedBefore = dateCreatedBefore, ChannelDataTo = channelDataTo, Country = country, Channel = channel, VerifyServiceSid = verifyServiceSid, VerificationSid = verificationSid, Status = status, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

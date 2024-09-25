@@ -24,6 +24,9 @@ using Twilio.Exceptions;
 using Twilio.Http;
 
 
+using Twilio.Clients.NoAuth;
+using Twilio.Http.NoAuth;
+
 
 namespace Twilio.Rest.Oauth.V1
 {
@@ -34,13 +37,13 @@ namespace Twilio.Rest.Oauth.V1
     
 
         
-        private static Request BuildFetchRequest(FetchAuthorizeOptions options, ITwilioRestClient client)
+        private static NoAuthRequest BuildFetchRequest(FetchAuthorizeOptions options, TwilioNoAuthRestClient client)
         {
             
             string path = "/v1/authorize";
 
 
-            return new Request(
+            return new NoAuthRequest(
                 HttpMethod.Get,
                 Rest.Domain.Oauth,
                 path,
@@ -53,9 +56,9 @@ namespace Twilio.Rest.Oauth.V1
         /// <param name="options"> Fetch Authorize parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Authorize </returns>
-        public static AuthorizeResource Fetch(FetchAuthorizeOptions options, ITwilioRestClient client = null)
+        public static AuthorizeResource Fetch(FetchAuthorizeOptions options, TwilioNoAuthRestClient client = null)
         {
-            client = client ?? TwilioClient.GetRestClient();
+            client = client ?? TwilioOrgsTokenAuthClient.GetNoAuthRestClient();
             var response = client.Request(BuildFetchRequest(options, client));
             return FromJson(response.Content);
         }
@@ -65,10 +68,9 @@ namespace Twilio.Rest.Oauth.V1
         /// <param name="options"> Fetch Authorize parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Authorize </returns>
-        public static async System.Threading.Tasks.Task<AuthorizeResource> FetchAsync(FetchAuthorizeOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AuthorizeResource> FetchAsync(FetchAuthorizeOptions options, TwilioNoAuthRestClient client = null)
         {
-            client = client ?? TwilioClient.GetRestClient();
+            client = client ?? TwilioOrgsTokenAuthClient.GetNoAuthRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
             return FromJson(response.Content);
         }
@@ -87,7 +89,7 @@ namespace Twilio.Rest.Oauth.V1
                                          string redirectUri = null, 
                                          string scope = null, 
                                          string state = null, 
-                                         ITwilioRestClient client = null)
+                                        TwilioNoAuthRestClient client = null)
         {
             var options = new FetchAuthorizeOptions(){ ResponseType = responseType,ClientId = clientId,RedirectUri = redirectUri,Scope = scope,State = state };
             return Fetch(options, client);
@@ -102,7 +104,7 @@ namespace Twilio.Rest.Oauth.V1
         /// <param name="state"> An opaque value which can be used to maintain state between the request and callback </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Authorize </returns>
-        public static async System.Threading.Tasks.Task<AuthorizeResource> FetchAsync(string responseType = null, string clientId = null, string redirectUri = null, string scope = null, string state = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AuthorizeResource> FetchAsync(string responseType = null, string clientId = null, string redirectUri = null, string scope = null, string state = null, TwilioNoAuthRestClient client = null)
         {
             var options = new FetchAuthorizeOptions(){ ResponseType = responseType,ClientId = clientId,RedirectUri = redirectUri,Scope = scope,State = state };
             return await FetchAsync(options, client);

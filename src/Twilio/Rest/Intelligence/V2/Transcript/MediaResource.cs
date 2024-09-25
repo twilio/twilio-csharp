@@ -25,6 +25,8 @@ using Twilio.Http;
 
 
 
+
+
 namespace Twilio.Rest.Intelligence.V2.Transcript
 {
     public class MediaResource : Resource
@@ -67,8 +69,7 @@ namespace Twilio.Rest.Intelligence.V2.Transcript
         /// <param name="options"> Fetch Media parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Media </returns>
-        public static async System.Threading.Tasks.Task<MediaResource> FetchAsync(FetchMediaOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<MediaResource> FetchAsync(FetchMediaOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -83,7 +84,7 @@ namespace Twilio.Rest.Intelligence.V2.Transcript
         public static MediaResource Fetch(
                                          string pathSid, 
                                          bool? redacted = null, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchMediaOptions(pathSid){ Redacted = redacted };
             return Fetch(options, client);

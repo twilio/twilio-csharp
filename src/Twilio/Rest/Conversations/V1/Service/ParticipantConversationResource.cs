@@ -25,6 +25,8 @@ using Twilio.Http;
 using Twilio.Types;
 
 
+
+
 namespace Twilio.Rest.Conversations.V1.Service
 {
     public class ParticipantConversationResource : Resource
@@ -81,8 +83,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// <param name="options"> Read ParticipantConversation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ParticipantConversation </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<ParticipantConversationResource>> ReadAsync(ReadParticipantConversationOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<ParticipantConversationResource>> ReadAsync(ReadParticipantConversationOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -105,7 +106,7 @@ namespace Twilio.Rest.Conversations.V1.Service
                                                      string address = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadParticipantConversationOptions(pathChatServiceSid){ Identity = identity, Address = address, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -126,7 +127,7 @@ namespace Twilio.Rest.Conversations.V1.Service
                                                                                              string address = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadParticipantConversationOptions(pathChatServiceSid){ Identity = identity, Address = address, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

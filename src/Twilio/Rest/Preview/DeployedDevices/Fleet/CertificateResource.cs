@@ -25,6 +25,8 @@ using Twilio.Http;
 
 
 
+
+
 namespace Twilio.Rest.Preview.DeployedDevices.Fleet
 {
     public class CertificateResource : Resource
@@ -68,8 +70,7 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// <param name="options"> Create Certificate parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Certificate </returns>
-        public static async System.Threading.Tasks.Task<CertificateResource> CreateAsync(CreateCertificateOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<CertificateResource> CreateAsync(CreateCertificateOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -89,7 +90,7 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
                                           string certificateData,
                                           string friendlyName = null,
                                           string deviceSid = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateCertificateOptions(pathFleetSid, certificateData){  FriendlyName = friendlyName, DeviceSid = deviceSid };
             return Create(options, client);
@@ -108,7 +109,7 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
                                                                                   string certificateData,
                                                                                   string friendlyName = null,
                                                                                   string deviceSid = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateCertificateOptions(pathFleetSid, certificateData){  FriendlyName = friendlyName, DeviceSid = deviceSid };
             return await CreateAsync(options, client);
@@ -155,7 +156,7 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Certificate </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteCertificateOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -222,8 +223,7 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// <param name="options"> Fetch Certificate parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Certificate </returns>
-        public static async System.Threading.Tasks.Task<CertificateResource> FetchAsync(FetchCertificateOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<CertificateResource> FetchAsync(FetchCertificateOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -238,7 +238,7 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         public static CertificateResource Fetch(
                                          string pathFleetSid, 
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchCertificateOptions(pathFleetSid, pathSid){  };
             return Fetch(options, client);
@@ -290,8 +290,7 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// <param name="options"> Read Certificate parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Certificate </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<CertificateResource>> ReadAsync(ReadCertificateOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<CertificateResource>> ReadAsync(ReadCertificateOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -312,7 +311,7 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
                                                      string deviceSid = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadCertificateOptions(pathFleetSid){ DeviceSid = deviceSid, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -331,7 +330,7 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
                                                                                              string deviceSid = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadCertificateOptions(pathFleetSid){ DeviceSid = deviceSid, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -424,7 +423,7 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// <returns> Task that resolves to A single instance of Certificate </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<CertificateResource> UpdateAsync(UpdateCertificateOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -444,7 +443,7 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
                                           string pathSid,
                                           string friendlyName = null,
                                           string deviceSid = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateCertificateOptions(pathFleetSid, pathSid){ FriendlyName = friendlyName, DeviceSid = deviceSid };
             return Update(options, client);
@@ -463,7 +462,7 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
                                                                               string pathSid,
                                                                               string friendlyName = null,
                                                                               string deviceSid = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateCertificateOptions(pathFleetSid, pathSid){ FriendlyName = friendlyName, DeviceSid = deviceSid };
             return await UpdateAsync(options, client);

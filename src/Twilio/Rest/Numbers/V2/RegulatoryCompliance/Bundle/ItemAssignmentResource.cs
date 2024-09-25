@@ -25,6 +25,8 @@ using Twilio.Http;
 
 
 
+
+
 namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
 {
     public class ItemAssignmentResource : Resource
@@ -68,8 +70,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
         /// <param name="options"> Create ItemAssignment parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ItemAssignment </returns>
-        public static async System.Threading.Tasks.Task<ItemAssignmentResource> CreateAsync(CreateItemAssignmentOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ItemAssignmentResource> CreateAsync(CreateItemAssignmentOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -85,7 +86,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
         public static ItemAssignmentResource Create(
                                           string pathBundleSid,
                                           string objectSid,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateItemAssignmentOptions(pathBundleSid, objectSid){  };
             return Create(options, client);
@@ -100,7 +101,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
         public static async System.Threading.Tasks.Task<ItemAssignmentResource> CreateAsync(
                                                                                   string pathBundleSid,
                                                                                   string objectSid,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateItemAssignmentOptions(pathBundleSid, objectSid){  };
             return await CreateAsync(options, client);
@@ -147,7 +148,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ItemAssignment </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteItemAssignmentOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -214,8 +215,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
         /// <param name="options"> Fetch ItemAssignment parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ItemAssignment </returns>
-        public static async System.Threading.Tasks.Task<ItemAssignmentResource> FetchAsync(FetchItemAssignmentOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ItemAssignmentResource> FetchAsync(FetchItemAssignmentOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -230,7 +230,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
         public static ItemAssignmentResource Fetch(
                                          string pathBundleSid, 
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchItemAssignmentOptions(pathBundleSid, pathSid){  };
             return Fetch(options, client);
@@ -282,8 +282,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
         /// <param name="options"> Read ItemAssignment parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ItemAssignment </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<ItemAssignmentResource>> ReadAsync(ReadItemAssignmentOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<ItemAssignmentResource>> ReadAsync(ReadItemAssignmentOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -302,7 +301,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
                                                      string pathBundleSid,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadItemAssignmentOptions(pathBundleSid){ PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -319,7 +318,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
                                                                                              string pathBundleSid,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadItemAssignmentOptions(pathBundleSid){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

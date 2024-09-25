@@ -25,6 +25,8 @@ using Twilio.Http;
 
 
 
+
+
 namespace Twilio.Rest.Api.V2010.Account.Queue
 {
     public class MemberResource : Resource
@@ -71,8 +73,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         /// <param name="options"> Fetch Member parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Member </returns>
-        public static async System.Threading.Tasks.Task<MemberResource> FetchAsync(FetchMemberOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<MemberResource> FetchAsync(FetchMemberOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -89,7 +90,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
                                          string pathQueueSid, 
                                          string pathCallSid, 
                                          string pathAccountSid = null, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchMemberOptions(pathQueueSid, pathCallSid){ PathAccountSid = pathAccountSid };
             return Fetch(options, client);
@@ -144,8 +145,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         /// <param name="options"> Read Member parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Member </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<MemberResource>> ReadAsync(ReadMemberOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<MemberResource>> ReadAsync(ReadMemberOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -166,7 +166,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
                                                      string pathAccountSid = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadMemberOptions(pathQueueSid){ PathAccountSid = pathAccountSid, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -185,7 +185,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
                                                                                              string pathAccountSid = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadMemberOptions(pathQueueSid){ PathAccountSid = pathAccountSid, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -280,7 +280,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         /// <returns> Task that resolves to A single instance of Member </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<MemberResource> UpdateAsync(UpdateMemberOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -302,7 +302,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
                                           Uri url,
                                           string pathAccountSid = null,
                                           Twilio.Http.HttpMethod method = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateMemberOptions(pathQueueSid, pathCallSid, url){ PathAccountSid = pathAccountSid, Method = method };
             return Update(options, client);
@@ -323,7 +323,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
                                                                               Uri url,
                                                                               string pathAccountSid = null,
                                                                               Twilio.Http.HttpMethod method = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateMemberOptions(pathQueueSid, pathCallSid, url){ PathAccountSid = pathAccountSid, Method = method };
             return await UpdateAsync(options, client);

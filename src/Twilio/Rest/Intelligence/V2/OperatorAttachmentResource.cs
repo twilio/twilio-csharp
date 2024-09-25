@@ -25,6 +25,8 @@ using Twilio.Http;
 
 
 
+
+
 namespace Twilio.Rest.Intelligence.V2
 {
     public class OperatorAttachmentResource : Resource
@@ -70,8 +72,7 @@ namespace Twilio.Rest.Intelligence.V2
         /// <param name="options"> Create OperatorAttachment parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of OperatorAttachment </returns>
-        public static async System.Threading.Tasks.Task<OperatorAttachmentResource> CreateAsync(CreateOperatorAttachmentOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<OperatorAttachmentResource> CreateAsync(CreateOperatorAttachmentOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -87,7 +88,7 @@ namespace Twilio.Rest.Intelligence.V2
         public static OperatorAttachmentResource Create(
                                           string pathServiceSid,
                                           string pathOperatorSid,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateOperatorAttachmentOptions(pathServiceSid, pathOperatorSid){  };
             return Create(options, client);
@@ -102,7 +103,7 @@ namespace Twilio.Rest.Intelligence.V2
         public static async System.Threading.Tasks.Task<OperatorAttachmentResource> CreateAsync(
                                                                                   string pathServiceSid,
                                                                                   string pathOperatorSid,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateOperatorAttachmentOptions(pathServiceSid, pathOperatorSid){  };
             return await CreateAsync(options, client);
@@ -149,7 +150,7 @@ namespace Twilio.Rest.Intelligence.V2
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of OperatorAttachment </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteOperatorAttachmentOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));

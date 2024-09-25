@@ -25,6 +25,8 @@ using Twilio.Http;
 using Twilio.Types;
 
 
+
+
 namespace Twilio.Rest.Api.V2010.Account
 {
     public class AuthorizedConnectAppResource : Resource
@@ -82,8 +84,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="options"> Fetch AuthorizedConnectApp parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AuthorizedConnectApp </returns>
-        public static async System.Threading.Tasks.Task<AuthorizedConnectAppResource> FetchAsync(FetchAuthorizedConnectAppOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AuthorizedConnectAppResource> FetchAsync(FetchAuthorizedConnectAppOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -98,7 +99,7 @@ namespace Twilio.Rest.Api.V2010.Account
         public static AuthorizedConnectAppResource Fetch(
                                          string pathConnectAppSid, 
                                          string pathAccountSid = null, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchAuthorizedConnectAppOptions(pathConnectAppSid){ PathAccountSid = pathAccountSid };
             return Fetch(options, client);
@@ -150,8 +151,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="options"> Read AuthorizedConnectApp parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AuthorizedConnectApp </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<AuthorizedConnectAppResource>> ReadAsync(ReadAuthorizedConnectAppOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<AuthorizedConnectAppResource>> ReadAsync(ReadAuthorizedConnectAppOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -170,7 +170,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                                      string pathAccountSid = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadAuthorizedConnectAppOptions(){ PathAccountSid = pathAccountSid, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -187,7 +187,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                                                                              string pathAccountSid = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadAuthorizedConnectAppOptions(){ PathAccountSid = pathAccountSid, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

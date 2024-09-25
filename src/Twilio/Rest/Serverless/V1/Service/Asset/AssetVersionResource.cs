@@ -25,6 +25,8 @@ using Twilio.Http;
 using Twilio.Types;
 
 
+
+
 namespace Twilio.Rest.Serverless.V1.Service.Asset
 {
     public class AssetVersionResource : Resource
@@ -85,8 +87,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Asset
         /// <param name="options"> Fetch AssetVersion parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AssetVersion </returns>
-        public static async System.Threading.Tasks.Task<AssetVersionResource> FetchAsync(FetchAssetVersionOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AssetVersionResource> FetchAsync(FetchAssetVersionOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -103,7 +104,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Asset
                                          string pathServiceSid, 
                                          string pathAssetSid, 
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchAssetVersionOptions(pathServiceSid, pathAssetSid, pathSid){  };
             return Fetch(options, client);
@@ -158,8 +159,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Asset
         /// <param name="options"> Read AssetVersion parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AssetVersion </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<AssetVersionResource>> ReadAsync(ReadAssetVersionOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<AssetVersionResource>> ReadAsync(ReadAssetVersionOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -180,7 +180,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Asset
                                                      string pathAssetSid,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadAssetVersionOptions(pathServiceSid, pathAssetSid){ PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -199,7 +199,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Asset
                                                                                              string pathAssetSid,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadAssetVersionOptions(pathServiceSid, pathAssetSid){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

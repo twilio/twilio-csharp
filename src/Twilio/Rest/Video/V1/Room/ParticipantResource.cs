@@ -25,6 +25,8 @@ using Twilio.Http;
 using Twilio.Types;
 
 
+
+
 namespace Twilio.Rest.Video.V1.Room
 {
     public class ParticipantResource : Resource
@@ -82,8 +84,7 @@ namespace Twilio.Rest.Video.V1.Room
         /// <param name="options"> Fetch Participant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Participant </returns>
-        public static async System.Threading.Tasks.Task<ParticipantResource> FetchAsync(FetchParticipantOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ParticipantResource> FetchAsync(FetchParticipantOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -98,7 +99,7 @@ namespace Twilio.Rest.Video.V1.Room
         public static ParticipantResource Fetch(
                                          string pathRoomSid, 
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchParticipantOptions(pathRoomSid, pathSid){  };
             return Fetch(options, client);
@@ -150,8 +151,7 @@ namespace Twilio.Rest.Video.V1.Room
         /// <param name="options"> Read Participant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Participant </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<ParticipantResource>> ReadAsync(ReadParticipantOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<ParticipantResource>> ReadAsync(ReadParticipantOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -178,7 +178,7 @@ namespace Twilio.Rest.Video.V1.Room
                                                      DateTime? dateCreatedBefore = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadParticipantOptions(pathRoomSid){ Status = status, Identity = identity, DateCreatedAfter = dateCreatedAfter, DateCreatedBefore = dateCreatedBefore, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -203,7 +203,7 @@ namespace Twilio.Rest.Video.V1.Room
                                                                                              DateTime? dateCreatedBefore = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadParticipantOptions(pathRoomSid){ Status = status, Identity = identity, DateCreatedAfter = dateCreatedAfter, DateCreatedBefore = dateCreatedBefore, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -296,7 +296,7 @@ namespace Twilio.Rest.Video.V1.Room
         /// <returns> Task that resolves to A single instance of Participant </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<ParticipantResource> UpdateAsync(UpdateParticipantOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -314,7 +314,7 @@ namespace Twilio.Rest.Video.V1.Room
                                           string pathRoomSid,
                                           string pathSid,
                                           ParticipantResource.StatusEnum status = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateParticipantOptions(pathRoomSid, pathSid){ Status = status };
             return Update(options, client);
@@ -331,7 +331,7 @@ namespace Twilio.Rest.Video.V1.Room
                                                                               string pathRoomSid,
                                                                               string pathSid,
                                                                               ParticipantResource.StatusEnum status = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateParticipantOptions(pathRoomSid, pathSid){ Status = status };
             return await UpdateAsync(options, client);

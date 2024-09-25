@@ -25,6 +25,8 @@ using Twilio.Http;
 using Twilio.Types;
 
 
+
+
 namespace Twilio.Rest.Intelligence.V2
 {
     public class TranscriptResource : Resource
@@ -82,8 +84,7 @@ namespace Twilio.Rest.Intelligence.V2
         /// <param name="options"> Create Transcript parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Transcript </returns>
-        public static async System.Threading.Tasks.Task<TranscriptResource> CreateAsync(CreateTranscriptOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<TranscriptResource> CreateAsync(CreateTranscriptOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -103,7 +104,7 @@ namespace Twilio.Rest.Intelligence.V2
                                           object channel,
                                           string customerKey = null,
                                           DateTime? mediaStartTime = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateTranscriptOptions(serviceSid, channel){  CustomerKey = customerKey, MediaStartTime = mediaStartTime };
             return Create(options, client);
@@ -122,7 +123,7 @@ namespace Twilio.Rest.Intelligence.V2
                                                                                   object channel,
                                                                                   string customerKey = null,
                                                                                   DateTime? mediaStartTime = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateTranscriptOptions(serviceSid, channel){  CustomerKey = customerKey, MediaStartTime = mediaStartTime };
             return await CreateAsync(options, client);
@@ -167,7 +168,7 @@ namespace Twilio.Rest.Intelligence.V2
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Transcript </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteTranscriptOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -230,8 +231,7 @@ namespace Twilio.Rest.Intelligence.V2
         /// <param name="options"> Fetch Transcript parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Transcript </returns>
-        public static async System.Threading.Tasks.Task<TranscriptResource> FetchAsync(FetchTranscriptOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<TranscriptResource> FetchAsync(FetchTranscriptOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -244,7 +244,7 @@ namespace Twilio.Rest.Intelligence.V2
         /// <returns> A single instance of Transcript </returns>
         public static TranscriptResource Fetch(
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchTranscriptOptions(pathSid){  };
             return Fetch(options, client);
@@ -293,8 +293,7 @@ namespace Twilio.Rest.Intelligence.V2
         /// <param name="options"> Read Transcript parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Transcript </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<TranscriptResource>> ReadAsync(ReadTranscriptOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<TranscriptResource>> ReadAsync(ReadTranscriptOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -327,7 +326,7 @@ namespace Twilio.Rest.Intelligence.V2
                                                      string sourceSid = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadTranscriptOptions(){ ServiceSid = serviceSid, BeforeStartTime = beforeStartTime, AfterStartTime = afterStartTime, BeforeDateCreated = beforeDateCreated, AfterDateCreated = afterDateCreated, Status = status, LanguageCode = languageCode, SourceSid = sourceSid, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -358,7 +357,7 @@ namespace Twilio.Rest.Intelligence.V2
                                                                                              string sourceSid = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadTranscriptOptions(){ ServiceSid = serviceSid, BeforeStartTime = beforeStartTime, AfterStartTime = afterStartTime, BeforeDateCreated = beforeDateCreated, AfterDateCreated = afterDateCreated, Status = status, LanguageCode = languageCode, SourceSid = sourceSid, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

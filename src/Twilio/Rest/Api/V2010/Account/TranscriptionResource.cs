@@ -25,6 +25,8 @@ using Twilio.Http;
 using Twilio.Types;
 
 
+
+
 namespace Twilio.Rest.Api.V2010.Account
 {
     public class TranscriptionResource : Resource
@@ -88,7 +90,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Transcription </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteTranscriptionOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -155,8 +157,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="options"> Fetch Transcription parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Transcription </returns>
-        public static async System.Threading.Tasks.Task<TranscriptionResource> FetchAsync(FetchTranscriptionOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<TranscriptionResource> FetchAsync(FetchTranscriptionOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -171,7 +172,7 @@ namespace Twilio.Rest.Api.V2010.Account
         public static TranscriptionResource Fetch(
                                          string pathSid, 
                                          string pathAccountSid = null, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchTranscriptionOptions(pathSid){ PathAccountSid = pathAccountSid };
             return Fetch(options, client);
@@ -223,8 +224,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="options"> Read Transcription parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Transcription </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<TranscriptionResource>> ReadAsync(ReadTranscriptionOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<TranscriptionResource>> ReadAsync(ReadTranscriptionOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -243,7 +243,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                                      string pathAccountSid = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadTranscriptionOptions(){ PathAccountSid = pathAccountSid, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -260,7 +260,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                                                                              string pathAccountSid = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadTranscriptionOptions(){ PathAccountSid = pathAccountSid, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

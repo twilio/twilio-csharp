@@ -25,6 +25,8 @@ using Twilio.Http;
 
 
 
+
+
 namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
 {
     public class PayloadResource : Resource
@@ -78,7 +80,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Payload </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeletePayloadOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -153,8 +155,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
         /// <param name="options"> Fetch Payload parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Payload </returns>
-        public static async System.Threading.Tasks.Task<PayloadResource> FetchAsync(FetchPayloadOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<PayloadResource> FetchAsync(FetchPayloadOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -173,7 +174,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
                                          string pathAddOnResultSid, 
                                          string pathSid, 
                                          string pathAccountSid = null, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchPayloadOptions(pathReferenceSid, pathAddOnResultSid, pathSid){ PathAccountSid = pathAccountSid };
             return Fetch(options, client);
@@ -231,8 +232,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
         /// <param name="options"> Read Payload parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Payload </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<PayloadResource>> ReadAsync(ReadPayloadOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<PayloadResource>> ReadAsync(ReadPayloadOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -255,7 +255,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
                                                      string pathAccountSid = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadPayloadOptions(pathReferenceSid, pathAddOnResultSid){ PathAccountSid = pathAccountSid, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -276,7 +276,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
                                                                                              string pathAccountSid = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadPayloadOptions(pathReferenceSid, pathAddOnResultSid){ PathAccountSid = pathAccountSid, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

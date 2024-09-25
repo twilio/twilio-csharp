@@ -25,6 +25,8 @@ using Twilio.Http;
 using Twilio.Types;
 
 
+
+
 namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
 {
     public class RegulationResource : Resource
@@ -80,8 +82,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         /// <param name="options"> Fetch Regulation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Regulation </returns>
-        public static async System.Threading.Tasks.Task<RegulationResource> FetchAsync(FetchRegulationOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<RegulationResource> FetchAsync(FetchRegulationOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -96,7 +97,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         public static RegulationResource Fetch(
                                          string pathSid, 
                                          bool? includeConstraints = null, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchRegulationOptions(pathSid){ IncludeConstraints = includeConstraints };
             return Fetch(options, client);
@@ -146,8 +147,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         /// <param name="options"> Read Regulation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Regulation </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<RegulationResource>> ReadAsync(ReadRegulationOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<RegulationResource>> ReadAsync(ReadRegulationOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -172,7 +172,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
                                                      bool? includeConstraints = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadRegulationOptions(){ EndUserType = endUserType, IsoCountry = isoCountry, NumberType = numberType, IncludeConstraints = includeConstraints, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -195,7 +195,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
                                                                                              bool? includeConstraints = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadRegulationOptions(){ EndUserType = endUserType, IsoCountry = isoCountry, NumberType = numberType, IncludeConstraints = includeConstraints, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

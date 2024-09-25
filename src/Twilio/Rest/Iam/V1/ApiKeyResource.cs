@@ -25,6 +25,8 @@ using Twilio.Http;
 
 
 
+
+
 namespace Twilio.Rest.Iam.V1
 {
     public class ApiKeyResource : Resource
@@ -72,7 +74,7 @@ namespace Twilio.Rest.Iam.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ApiKey </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteApiKeyOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -135,8 +137,7 @@ namespace Twilio.Rest.Iam.V1
         /// <param name="options"> Fetch ApiKey parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ApiKey </returns>
-        public static async System.Threading.Tasks.Task<ApiKeyResource> FetchAsync(FetchApiKeyOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ApiKeyResource> FetchAsync(FetchApiKeyOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -149,7 +150,7 @@ namespace Twilio.Rest.Iam.V1
         /// <returns> A single instance of ApiKey </returns>
         public static ApiKeyResource Fetch(
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchApiKeyOptions(pathSid){  };
             return Fetch(options, client);
@@ -202,7 +203,7 @@ namespace Twilio.Rest.Iam.V1
         /// <returns> Task that resolves to A single instance of ApiKey </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<ApiKeyResource> UpdateAsync(UpdateApiKeyOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -220,7 +221,7 @@ namespace Twilio.Rest.Iam.V1
                                           string pathSid,
                                           string friendlyName = null,
                                           object policy = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateApiKeyOptions(pathSid){ FriendlyName = friendlyName, Policy = policy };
             return Update(options, client);
@@ -237,7 +238,7 @@ namespace Twilio.Rest.Iam.V1
                                                                               string pathSid,
                                                                               string friendlyName = null,
                                                                               object policy = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateApiKeyOptions(pathSid){ FriendlyName = friendlyName, Policy = policy };
             return await UpdateAsync(options, client);

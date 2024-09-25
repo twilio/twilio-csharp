@@ -25,6 +25,8 @@ using Twilio.Http;
 
 
 
+
+
 namespace Twilio.Rest.Verify.V2.Service.RateLimit
 {
     public class BucketResource : Resource
@@ -70,8 +72,7 @@ namespace Twilio.Rest.Verify.V2.Service.RateLimit
         /// <param name="options"> Create Bucket parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Bucket </returns>
-        public static async System.Threading.Tasks.Task<BucketResource> CreateAsync(CreateBucketOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<BucketResource> CreateAsync(CreateBucketOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -91,7 +92,7 @@ namespace Twilio.Rest.Verify.V2.Service.RateLimit
                                           string pathRateLimitSid,
                                           int? max,
                                           int? interval,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateBucketOptions(pathServiceSid, pathRateLimitSid, max, interval){  };
             return Create(options, client);
@@ -110,7 +111,7 @@ namespace Twilio.Rest.Verify.V2.Service.RateLimit
                                                                                   string pathRateLimitSid,
                                                                                   int? max,
                                                                                   int? interval,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateBucketOptions(pathServiceSid, pathRateLimitSid, max, interval){  };
             return await CreateAsync(options, client);
@@ -159,7 +160,7 @@ namespace Twilio.Rest.Verify.V2.Service.RateLimit
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Bucket </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteBucketOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -230,8 +231,7 @@ namespace Twilio.Rest.Verify.V2.Service.RateLimit
         /// <param name="options"> Fetch Bucket parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Bucket </returns>
-        public static async System.Threading.Tasks.Task<BucketResource> FetchAsync(FetchBucketOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<BucketResource> FetchAsync(FetchBucketOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -248,7 +248,7 @@ namespace Twilio.Rest.Verify.V2.Service.RateLimit
                                          string pathServiceSid, 
                                          string pathRateLimitSid, 
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchBucketOptions(pathServiceSid, pathRateLimitSid, pathSid){  };
             return Fetch(options, client);
@@ -303,8 +303,7 @@ namespace Twilio.Rest.Verify.V2.Service.RateLimit
         /// <param name="options"> Read Bucket parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Bucket </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<BucketResource>> ReadAsync(ReadBucketOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<BucketResource>> ReadAsync(ReadBucketOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -325,7 +324,7 @@ namespace Twilio.Rest.Verify.V2.Service.RateLimit
                                                      string pathRateLimitSid,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadBucketOptions(pathServiceSid, pathRateLimitSid){ PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -344,7 +343,7 @@ namespace Twilio.Rest.Verify.V2.Service.RateLimit
                                                                                              string pathRateLimitSid,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadBucketOptions(pathServiceSid, pathRateLimitSid){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -439,7 +438,7 @@ namespace Twilio.Rest.Verify.V2.Service.RateLimit
         /// <returns> Task that resolves to A single instance of Bucket </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<BucketResource> UpdateAsync(UpdateBucketOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -461,7 +460,7 @@ namespace Twilio.Rest.Verify.V2.Service.RateLimit
                                           string pathSid,
                                           int? max = null,
                                           int? interval = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateBucketOptions(pathServiceSid, pathRateLimitSid, pathSid){ Max = max, Interval = interval };
             return Update(options, client);
@@ -482,7 +481,7 @@ namespace Twilio.Rest.Verify.V2.Service.RateLimit
                                                                               string pathSid,
                                                                               int? max = null,
                                                                               int? interval = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateBucketOptions(pathServiceSid, pathRateLimitSid, pathSid){ Max = max, Interval = interval };
             return await UpdateAsync(options, client);

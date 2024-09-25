@@ -213,7 +213,7 @@ namespace Twilio.Rest.Verify.V2
             return p;
         }
 
-        
+    
 
     }
 
@@ -243,7 +243,7 @@ namespace Twilio.Rest.Verify.V2
             return p;
         }
 
-        
+    
 
     }
 
@@ -268,7 +268,7 @@ namespace Twilio.Rest.Verify.V2
             return p;
         }
 
-        
+    
 
     }
 

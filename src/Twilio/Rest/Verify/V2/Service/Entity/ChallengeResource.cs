@@ -25,6 +25,8 @@ using Twilio.Http;
 using Twilio.Types;
 
 
+
+
 namespace Twilio.Rest.Verify.V2.Service.Entity
 {
     public class ChallengeResource : Resource
@@ -124,8 +126,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// <param name="options"> Create Challenge parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Challenge </returns>
-        public static async System.Threading.Tasks.Task<ChallengeResource> CreateAsync(CreateChallengeOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ChallengeResource> CreateAsync(CreateChallengeOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -153,7 +154,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
                                           List<object> detailsFields = null,
                                           object hiddenDetails = null,
                                           string authPayload = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateChallengeOptions(pathServiceSid, pathIdentity, factorSid){  ExpirationDate = expirationDate, DetailsMessage = detailsMessage, DetailsFields = detailsFields, HiddenDetails = hiddenDetails, AuthPayload = authPayload };
             return Create(options, client);
@@ -180,7 +181,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
                                                                                   List<object> detailsFields = null,
                                                                                   object hiddenDetails = null,
                                                                                   string authPayload = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateChallengeOptions(pathServiceSid, pathIdentity, factorSid){  ExpirationDate = expirationDate, DetailsMessage = detailsMessage, DetailsFields = detailsFields, HiddenDetails = hiddenDetails, AuthPayload = authPayload };
             return await CreateAsync(options, client);
@@ -224,8 +225,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// <param name="options"> Fetch Challenge parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Challenge </returns>
-        public static async System.Threading.Tasks.Task<ChallengeResource> FetchAsync(FetchChallengeOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ChallengeResource> FetchAsync(FetchChallengeOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -242,7 +242,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
                                          string pathServiceSid, 
                                          string pathIdentity, 
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchChallengeOptions(pathServiceSid, pathIdentity, pathSid){  };
             return Fetch(options, client);
@@ -297,8 +297,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// <param name="options"> Read Challenge parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Challenge </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<ChallengeResource>> ReadAsync(ReadChallengeOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<ChallengeResource>> ReadAsync(ReadChallengeOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -325,7 +324,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
                                                      ChallengeResource.ListOrdersEnum order = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadChallengeOptions(pathServiceSid, pathIdentity){ FactorSid = factorSid, Status = status, Order = order, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -350,7 +349,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
                                                                                              ChallengeResource.ListOrdersEnum order = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadChallengeOptions(pathServiceSid, pathIdentity){ FactorSid = factorSid, Status = status, Order = order, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -445,7 +444,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// <returns> Task that resolves to A single instance of Challenge </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<ChallengeResource> UpdateAsync(UpdateChallengeOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -467,7 +466,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
                                           string pathSid,
                                           string authPayload = null,
                                           object metadata = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateChallengeOptions(pathServiceSid, pathIdentity, pathSid){ AuthPayload = authPayload, Metadata = metadata };
             return Update(options, client);
@@ -488,7 +487,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
                                                                               string pathSid,
                                                                               string authPayload = null,
                                                                               object metadata = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateChallengeOptions(pathServiceSid, pathIdentity, pathSid){ AuthPayload = authPayload, Metadata = metadata };
             return await UpdateAsync(options, client);

@@ -25,6 +25,8 @@ using Twilio.Http;
 using Twilio.Types;
 
 
+
+
 namespace Twilio.Rest.Messaging.V1
 {
     public class TollfreeVerificationResource : Resource
@@ -98,8 +100,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="options"> Create TollfreeVerification parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TollfreeVerification </returns>
-        public static async System.Threading.Tasks.Task<TollfreeVerificationResource> CreateAsync(CreateTollfreeVerificationOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<TollfreeVerificationResource> CreateAsync(CreateTollfreeVerificationOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -157,7 +158,7 @@ namespace Twilio.Rest.Messaging.V1
                                           string businessContactEmail = null,
                                           Types.PhoneNumber businessContactPhone = null,
                                           string externalReferenceId = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateTollfreeVerificationOptions(businessName, businessWebsite, notificationEmail, useCaseCategories, useCaseSummary, productionMessageSample, optInImageUrls, optInType, messageVolume, tollfreePhoneNumberSid){  CustomerProfileSid = customerProfileSid, BusinessStreetAddress = businessStreetAddress, BusinessStreetAddress2 = businessStreetAddress2, BusinessCity = businessCity, BusinessStateProvinceRegion = businessStateProvinceRegion, BusinessPostalCode = businessPostalCode, BusinessCountry = businessCountry, AdditionalInformation = additionalInformation, BusinessContactFirstName = businessContactFirstName, BusinessContactLastName = businessContactLastName, BusinessContactEmail = businessContactEmail, BusinessContactPhone = businessContactPhone, ExternalReferenceId = externalReferenceId };
             return Create(options, client);
@@ -214,7 +215,7 @@ namespace Twilio.Rest.Messaging.V1
                                                                                   string businessContactEmail = null,
                                                                                   Types.PhoneNumber businessContactPhone = null,
                                                                                   string externalReferenceId = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateTollfreeVerificationOptions(businessName, businessWebsite, notificationEmail, useCaseCategories, useCaseSummary, productionMessageSample, optInImageUrls, optInType, messageVolume, tollfreePhoneNumberSid){  CustomerProfileSid = customerProfileSid, BusinessStreetAddress = businessStreetAddress, BusinessStreetAddress2 = businessStreetAddress2, BusinessCity = businessCity, BusinessStateProvinceRegion = businessStateProvinceRegion, BusinessPostalCode = businessPostalCode, BusinessCountry = businessCountry, AdditionalInformation = additionalInformation, BusinessContactFirstName = businessContactFirstName, BusinessContactLastName = businessContactLastName, BusinessContactEmail = businessContactEmail, BusinessContactPhone = businessContactPhone, ExternalReferenceId = externalReferenceId };
             return await CreateAsync(options, client);
@@ -259,7 +260,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TollfreeVerification </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteTollfreeVerificationOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -322,8 +323,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="options"> Fetch TollfreeVerification parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TollfreeVerification </returns>
-        public static async System.Threading.Tasks.Task<TollfreeVerificationResource> FetchAsync(FetchTollfreeVerificationOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<TollfreeVerificationResource> FetchAsync(FetchTollfreeVerificationOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -336,7 +336,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <returns> A single instance of TollfreeVerification </returns>
         public static TollfreeVerificationResource Fetch(
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchTollfreeVerificationOptions(pathSid){  };
             return Fetch(options, client);
@@ -385,8 +385,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="options"> Read TollfreeVerification parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TollfreeVerification </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<TollfreeVerificationResource>> ReadAsync(ReadTollfreeVerificationOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<TollfreeVerificationResource>> ReadAsync(ReadTollfreeVerificationOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -411,7 +410,7 @@ namespace Twilio.Rest.Messaging.V1
                                                      bool? includeSubAccounts = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadTollfreeVerificationOptions(){ TollfreePhoneNumberSid = tollfreePhoneNumberSid, Status = status, ExternalReferenceId = externalReferenceId, IncludeSubAccounts = includeSubAccounts, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -434,7 +433,7 @@ namespace Twilio.Rest.Messaging.V1
                                                                                              bool? includeSubAccounts = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadTollfreeVerificationOptions(){ TollfreePhoneNumberSid = tollfreePhoneNumberSid, Status = status, ExternalReferenceId = externalReferenceId, IncludeSubAccounts = includeSubAccounts, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -525,7 +524,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <returns> Task that resolves to A single instance of TollfreeVerification </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<TollfreeVerificationResource> UpdateAsync(UpdateTollfreeVerificationOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -581,7 +580,7 @@ namespace Twilio.Rest.Messaging.V1
                                           string businessContactEmail = null,
                                           Types.PhoneNumber businessContactPhone = null,
                                           string editReason = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateTollfreeVerificationOptions(pathSid){ BusinessName = businessName, BusinessWebsite = businessWebsite, NotificationEmail = notificationEmail, UseCaseCategories = useCaseCategories, UseCaseSummary = useCaseSummary, ProductionMessageSample = productionMessageSample, OptInImageUrls = optInImageUrls, OptInType = optInType, MessageVolume = messageVolume, BusinessStreetAddress = businessStreetAddress, BusinessStreetAddress2 = businessStreetAddress2, BusinessCity = businessCity, BusinessStateProvinceRegion = businessStateProvinceRegion, BusinessPostalCode = businessPostalCode, BusinessCountry = businessCountry, AdditionalInformation = additionalInformation, BusinessContactFirstName = businessContactFirstName, BusinessContactLastName = businessContactLastName, BusinessContactEmail = businessContactEmail, BusinessContactPhone = businessContactPhone, EditReason = editReason };
             return Update(options, client);
@@ -636,7 +635,7 @@ namespace Twilio.Rest.Messaging.V1
                                                                               string businessContactEmail = null,
                                                                               Types.PhoneNumber businessContactPhone = null,
                                                                               string editReason = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateTollfreeVerificationOptions(pathSid){ BusinessName = businessName, BusinessWebsite = businessWebsite, NotificationEmail = notificationEmail, UseCaseCategories = useCaseCategories, UseCaseSummary = useCaseSummary, ProductionMessageSample = productionMessageSample, OptInImageUrls = optInImageUrls, OptInType = optInType, MessageVolume = messageVolume, BusinessStreetAddress = businessStreetAddress, BusinessStreetAddress2 = businessStreetAddress2, BusinessCity = businessCity, BusinessStateProvinceRegion = businessStateProvinceRegion, BusinessPostalCode = businessPostalCode, BusinessCountry = businessCountry, AdditionalInformation = additionalInformation, BusinessContactFirstName = businessContactFirstName, BusinessContactLastName = businessContactLastName, BusinessContactEmail = businessContactEmail, BusinessContactPhone = businessContactPhone, EditReason = editReason };
             return await UpdateAsync(options, client);

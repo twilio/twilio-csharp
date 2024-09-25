@@ -25,6 +25,8 @@ using Twilio.Http;
 using Twilio.Types;
 
 
+
+
 namespace Twilio.Rest.Intelligence.V2
 {
     public class CustomOperatorResource : Resource
@@ -81,8 +83,7 @@ namespace Twilio.Rest.Intelligence.V2
         /// <param name="options"> Create CustomOperator parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CustomOperator </returns>
-        public static async System.Threading.Tasks.Task<CustomOperatorResource> CreateAsync(CreateCustomOperatorOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<CustomOperatorResource> CreateAsync(CreateCustomOperatorOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -100,7 +101,7 @@ namespace Twilio.Rest.Intelligence.V2
                                           string friendlyName,
                                           string operatorType,
                                           object config,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateCustomOperatorOptions(friendlyName, operatorType, config){  };
             return Create(options, client);
@@ -117,7 +118,7 @@ namespace Twilio.Rest.Intelligence.V2
                                                                                   string friendlyName,
                                                                                   string operatorType,
                                                                                   object config,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateCustomOperatorOptions(friendlyName, operatorType, config){  };
             return await CreateAsync(options, client);
@@ -162,7 +163,7 @@ namespace Twilio.Rest.Intelligence.V2
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CustomOperator </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteCustomOperatorOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -225,8 +226,7 @@ namespace Twilio.Rest.Intelligence.V2
         /// <param name="options"> Fetch CustomOperator parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CustomOperator </returns>
-        public static async System.Threading.Tasks.Task<CustomOperatorResource> FetchAsync(FetchCustomOperatorOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<CustomOperatorResource> FetchAsync(FetchCustomOperatorOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -239,7 +239,7 @@ namespace Twilio.Rest.Intelligence.V2
         /// <returns> A single instance of CustomOperator </returns>
         public static CustomOperatorResource Fetch(
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchCustomOperatorOptions(pathSid){  };
             return Fetch(options, client);
@@ -288,8 +288,7 @@ namespace Twilio.Rest.Intelligence.V2
         /// <param name="options"> Read CustomOperator parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CustomOperator </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<CustomOperatorResource>> ReadAsync(ReadCustomOperatorOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<CustomOperatorResource>> ReadAsync(ReadCustomOperatorOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -310,7 +309,7 @@ namespace Twilio.Rest.Intelligence.V2
                                                      string languageCode = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadCustomOperatorOptions(){ Availability = availability, LanguageCode = languageCode, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -329,7 +328,7 @@ namespace Twilio.Rest.Intelligence.V2
                                                                                              string languageCode = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadCustomOperatorOptions(){ Availability = availability, LanguageCode = languageCode, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -420,7 +419,7 @@ namespace Twilio.Rest.Intelligence.V2
         /// <returns> Task that resolves to A single instance of CustomOperator </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<CustomOperatorResource> UpdateAsync(UpdateCustomOperatorOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -440,7 +439,7 @@ namespace Twilio.Rest.Intelligence.V2
                                           string friendlyName,
                                           object config,
                                           string ifMatch = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateCustomOperatorOptions(pathSid, friendlyName, config){ IfMatch = ifMatch };
             return Update(options, client);
@@ -459,7 +458,7 @@ namespace Twilio.Rest.Intelligence.V2
                                                                               string friendlyName,
                                                                               object config,
                                                                               string ifMatch = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateCustomOperatorOptions(pathSid, friendlyName, config){ IfMatch = ifMatch };
             return await UpdateAsync(options, client);

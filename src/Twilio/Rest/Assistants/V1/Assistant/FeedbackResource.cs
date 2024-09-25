@@ -25,6 +25,8 @@ using Twilio.Http;
 
 
 
+
+
 namespace Twilio.Rest.Assistants.V1.Assistant
 {
     public class FeedbackResource : Resource
@@ -112,8 +114,7 @@ namespace Twilio.Rest.Assistants.V1.Assistant
         /// <param name="options"> Create Feedback parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Feedback </returns>
-        public static async System.Threading.Tasks.Task<FeedbackResource> CreateAsync(CreateFeedbackOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<FeedbackResource> CreateAsync(CreateFeedbackOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -129,7 +130,7 @@ namespace Twilio.Rest.Assistants.V1.Assistant
         public static FeedbackResource Create(
                                           string pathId,
                                           FeedbackResource.AssistantsV1ServiceCreateFeedbackRequest assistantsV1ServiceCreateFeedbackRequest,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateFeedbackOptions(pathId, assistantsV1ServiceCreateFeedbackRequest){  };
             return Create(options, client);
@@ -144,7 +145,7 @@ namespace Twilio.Rest.Assistants.V1.Assistant
         public static async System.Threading.Tasks.Task<FeedbackResource> CreateAsync(
                                                                                   string pathId,
                                                                                   FeedbackResource.AssistantsV1ServiceCreateFeedbackRequest assistantsV1ServiceCreateFeedbackRequest,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateFeedbackOptions(pathId, assistantsV1ServiceCreateFeedbackRequest){  };
             return await CreateAsync(options, client);
@@ -184,8 +185,7 @@ namespace Twilio.Rest.Assistants.V1.Assistant
         /// <param name="options"> Read Feedback parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Feedback </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<FeedbackResource>> ReadAsync(ReadFeedbackOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<FeedbackResource>> ReadAsync(ReadFeedbackOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -204,7 +204,7 @@ namespace Twilio.Rest.Assistants.V1.Assistant
                                                      string pathId,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadFeedbackOptions(pathId){ PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -221,7 +221,7 @@ namespace Twilio.Rest.Assistants.V1.Assistant
                                                                                              string pathId,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadFeedbackOptions(pathId){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

@@ -25,6 +25,8 @@ using Twilio.Http;
 
 
 
+
+
 namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
 {
     public class TaskQueuesStatisticsResource : Resource
@@ -67,8 +69,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         /// <param name="options"> Read TaskQueuesStatistics parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TaskQueuesStatistics </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<TaskQueuesStatisticsResource>> ReadAsync(ReadTaskQueuesStatisticsOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<TaskQueuesStatisticsResource>> ReadAsync(ReadTaskQueuesStatisticsOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -99,7 +100,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
                                                      string splitByWaitTime = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadTaskQueuesStatisticsOptions(pathWorkspaceSid){ EndDate = endDate, FriendlyName = friendlyName, Minutes = minutes, StartDate = startDate, TaskChannel = taskChannel, SplitByWaitTime = splitByWaitTime, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -128,7 +129,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
                                                                                              string splitByWaitTime = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadTaskQueuesStatisticsOptions(pathWorkspaceSid){ EndDate = endDate, FriendlyName = friendlyName, Minutes = minutes, StartDate = startDate, TaskChannel = taskChannel, SplitByWaitTime = splitByWaitTime, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

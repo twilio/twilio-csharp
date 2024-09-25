@@ -25,6 +25,8 @@ using Twilio.Http;
 
 
 
+
+
 namespace Twilio.Rest.Taskrouter.V1.Workspace.Workflow
 {
     public class WorkflowRealTimeStatisticsResource : Resource
@@ -69,8 +71,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Workflow
         /// <param name="options"> Fetch WorkflowRealTimeStatistics parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of WorkflowRealTimeStatistics </returns>
-        public static async System.Threading.Tasks.Task<WorkflowRealTimeStatisticsResource> FetchAsync(FetchWorkflowRealTimeStatisticsOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<WorkflowRealTimeStatisticsResource> FetchAsync(FetchWorkflowRealTimeStatisticsOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -87,7 +88,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Workflow
                                          string pathWorkspaceSid, 
                                          string pathWorkflowSid, 
                                          string taskChannel = null, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchWorkflowRealTimeStatisticsOptions(pathWorkspaceSid, pathWorkflowSid){ TaskChannel = taskChannel };
             return Fetch(options, client);

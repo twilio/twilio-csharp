@@ -25,6 +25,8 @@ using Twilio.Http;
 
 
 
+
+
 namespace Twilio.Rest.Chat.V1.Service.Channel
 {
     public class InviteResource : Resource
@@ -70,8 +72,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
         /// <param name="options"> Create Invite parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Invite </returns>
-        public static async System.Threading.Tasks.Task<InviteResource> CreateAsync(CreateInviteOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<InviteResource> CreateAsync(CreateInviteOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -91,7 +92,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
                                           string pathChannelSid,
                                           string identity,
                                           string roleSid = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateInviteOptions(pathServiceSid, pathChannelSid, identity){  RoleSid = roleSid };
             return Create(options, client);
@@ -110,7 +111,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
                                                                                   string pathChannelSid,
                                                                                   string identity,
                                                                                   string roleSid = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateInviteOptions(pathServiceSid, pathChannelSid, identity){  RoleSid = roleSid };
             return await CreateAsync(options, client);
@@ -159,7 +160,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Invite </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteInviteOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -230,8 +231,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
         /// <param name="options"> Fetch Invite parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Invite </returns>
-        public static async System.Threading.Tasks.Task<InviteResource> FetchAsync(FetchInviteOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<InviteResource> FetchAsync(FetchInviteOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -248,7 +248,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
                                          string pathServiceSid, 
                                          string pathChannelSid, 
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchInviteOptions(pathServiceSid, pathChannelSid, pathSid){  };
             return Fetch(options, client);
@@ -303,8 +303,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
         /// <param name="options"> Read Invite parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Invite </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<InviteResource>> ReadAsync(ReadInviteOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<InviteResource>> ReadAsync(ReadInviteOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -327,7 +326,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
                                                      List<string> identity = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadInviteOptions(pathServiceSid, pathChannelSid){ Identity = identity, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -348,7 +347,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
                                                                                              List<string> identity = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadInviteOptions(pathServiceSid, pathChannelSid){ Identity = identity, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

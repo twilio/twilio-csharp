@@ -55,7 +55,7 @@ namespace Twilio.Rest.Intelligence.V2.Transcript
             return p;
         }
 
-        
+    
 
     }
 

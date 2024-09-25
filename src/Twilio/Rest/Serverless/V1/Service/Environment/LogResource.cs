@@ -25,6 +25,8 @@ using Twilio.Http;
 using Twilio.Types;
 
 
+
+
 namespace Twilio.Rest.Serverless.V1.Service.Environment
 {
     public class LogResource : Resource
@@ -85,8 +87,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         /// <param name="options"> Fetch Log parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Log </returns>
-        public static async System.Threading.Tasks.Task<LogResource> FetchAsync(FetchLogOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<LogResource> FetchAsync(FetchLogOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -103,7 +104,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
                                          string pathServiceSid, 
                                          string pathEnvironmentSid, 
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchLogOptions(pathServiceSid, pathEnvironmentSid, pathSid){  };
             return Fetch(options, client);
@@ -158,8 +159,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         /// <param name="options"> Read Log parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Log </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<LogResource>> ReadAsync(ReadLogOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<LogResource>> ReadAsync(ReadLogOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -186,7 +186,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
                                                      DateTime? endDate = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadLogOptions(pathServiceSid, pathEnvironmentSid){ FunctionSid = functionSid, StartDate = startDate, EndDate = endDate, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -211,7 +211,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
                                                                                              DateTime? endDate = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadLogOptions(pathServiceSid, pathEnvironmentSid){ FunctionSid = functionSid, StartDate = startDate, EndDate = endDate, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

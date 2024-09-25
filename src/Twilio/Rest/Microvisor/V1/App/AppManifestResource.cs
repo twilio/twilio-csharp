@@ -25,6 +25,8 @@ using Twilio.Http;
 
 
 
+
+
 namespace Twilio.Rest.Microvisor.V1.App
 {
     public class AppManifestResource : Resource
@@ -67,8 +69,7 @@ namespace Twilio.Rest.Microvisor.V1.App
         /// <param name="options"> Fetch AppManifest parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AppManifest </returns>
-        public static async System.Threading.Tasks.Task<AppManifestResource> FetchAsync(FetchAppManifestOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AppManifestResource> FetchAsync(FetchAppManifestOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -81,7 +82,7 @@ namespace Twilio.Rest.Microvisor.V1.App
         /// <returns> A single instance of AppManifest </returns>
         public static AppManifestResource Fetch(
                                          string pathAppSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchAppManifestOptions(pathAppSid){  };
             return Fetch(options, client);

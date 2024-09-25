@@ -25,6 +25,8 @@ using Twilio.Http;
 using Twilio.Types;
 
 
+
+
 namespace Twilio.Rest.Conversations.V1.Service
 {
     public class BindingResource : Resource
@@ -88,7 +90,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Binding </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteBindingOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -155,8 +157,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// <param name="options"> Fetch Binding parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Binding </returns>
-        public static async System.Threading.Tasks.Task<BindingResource> FetchAsync(FetchBindingOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<BindingResource> FetchAsync(FetchBindingOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -171,7 +172,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         public static BindingResource Fetch(
                                          string pathChatServiceSid, 
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchBindingOptions(pathChatServiceSid, pathSid){  };
             return Fetch(options, client);
@@ -223,8 +224,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// <param name="options"> Read Binding parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Binding </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<BindingResource>> ReadAsync(ReadBindingOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<BindingResource>> ReadAsync(ReadBindingOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -247,7 +247,7 @@ namespace Twilio.Rest.Conversations.V1.Service
                                                      List<string> identity = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadBindingOptions(pathChatServiceSid){ BindingType = bindingType, Identity = identity, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -268,7 +268,7 @@ namespace Twilio.Rest.Conversations.V1.Service
                                                                                              List<string> identity = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadBindingOptions(pathChatServiceSid){ BindingType = bindingType, Identity = identity, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

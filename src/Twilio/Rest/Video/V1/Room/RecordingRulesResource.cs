@@ -25,6 +25,8 @@ using Twilio.Http;
 using Twilio.Types;
 
 
+
+
 namespace Twilio.Rest.Video.V1.Room
 {
     public class RecordingRulesResource : Resource
@@ -67,8 +69,7 @@ namespace Twilio.Rest.Video.V1.Room
         /// <param name="options"> Fetch RecordingRules parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of RecordingRules </returns>
-        public static async System.Threading.Tasks.Task<RecordingRulesResource> FetchAsync(FetchRecordingRulesOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<RecordingRulesResource> FetchAsync(FetchRecordingRulesOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -81,7 +82,7 @@ namespace Twilio.Rest.Video.V1.Room
         /// <returns> A single instance of RecordingRules </returns>
         public static RecordingRulesResource Fetch(
                                          string pathRoomSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchRecordingRulesOptions(pathRoomSid){  };
             return Fetch(options, client);
@@ -134,7 +135,7 @@ namespace Twilio.Rest.Video.V1.Room
         /// <returns> Task that resolves to A single instance of RecordingRules </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<RecordingRulesResource> UpdateAsync(UpdateRecordingRulesOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -150,7 +151,7 @@ namespace Twilio.Rest.Video.V1.Room
         public static RecordingRulesResource Update(
                                           string pathRoomSid,
                                           object rules = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateRecordingRulesOptions(pathRoomSid){ Rules = rules };
             return Update(options, client);
@@ -165,7 +166,7 @@ namespace Twilio.Rest.Video.V1.Room
         public static async System.Threading.Tasks.Task<RecordingRulesResource> UpdateAsync(
                                                                               string pathRoomSid,
                                                                               object rules = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateRecordingRulesOptions(pathRoomSid){ Rules = rules };
             return await UpdateAsync(options, client);

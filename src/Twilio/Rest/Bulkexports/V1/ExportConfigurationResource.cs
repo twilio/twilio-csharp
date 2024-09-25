@@ -25,6 +25,8 @@ using Twilio.Http;
 
 
 
+
+
 namespace Twilio.Rest.Bulkexports.V1
 {
     public class ExportConfigurationResource : Resource
@@ -67,8 +69,7 @@ namespace Twilio.Rest.Bulkexports.V1
         /// <param name="options"> Fetch ExportConfiguration parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ExportConfiguration </returns>
-        public static async System.Threading.Tasks.Task<ExportConfigurationResource> FetchAsync(FetchExportConfigurationOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ExportConfigurationResource> FetchAsync(FetchExportConfigurationOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -81,7 +82,7 @@ namespace Twilio.Rest.Bulkexports.V1
         /// <returns> A single instance of ExportConfiguration </returns>
         public static ExportConfigurationResource Fetch(
                                          string pathResourceType, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchExportConfigurationOptions(pathResourceType){  };
             return Fetch(options, client);
@@ -134,7 +135,7 @@ namespace Twilio.Rest.Bulkexports.V1
         /// <returns> Task that resolves to A single instance of ExportConfiguration </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<ExportConfigurationResource> UpdateAsync(UpdateExportConfigurationOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -154,7 +155,7 @@ namespace Twilio.Rest.Bulkexports.V1
                                           bool? enabled = null,
                                           Uri webhookUrl = null,
                                           string webhookMethod = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateExportConfigurationOptions(pathResourceType){ Enabled = enabled, WebhookUrl = webhookUrl, WebhookMethod = webhookMethod };
             return Update(options, client);
@@ -173,7 +174,7 @@ namespace Twilio.Rest.Bulkexports.V1
                                                                               bool? enabled = null,
                                                                               Uri webhookUrl = null,
                                                                               string webhookMethod = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateExportConfigurationOptions(pathResourceType){ Enabled = enabled, WebhookUrl = webhookUrl, WebhookMethod = webhookMethod };
             return await UpdateAsync(options, client);

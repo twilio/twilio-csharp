@@ -25,6 +25,8 @@ using Twilio.Http;
 using Twilio.Types;
 
 
+
+
 namespace Twilio.Rest.Api.V2010.Account.Recording
 {
     public class AddOnResultResource : Resource
@@ -95,7 +97,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AddOnResult </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteAddOnResultOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -166,8 +168,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         /// <param name="options"> Fetch AddOnResult parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AddOnResult </returns>
-        public static async System.Threading.Tasks.Task<AddOnResultResource> FetchAsync(FetchAddOnResultOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AddOnResultResource> FetchAsync(FetchAddOnResultOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -184,7 +185,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
                                          string pathReferenceSid, 
                                          string pathSid, 
                                          string pathAccountSid = null, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchAddOnResultOptions(pathReferenceSid, pathSid){ PathAccountSid = pathAccountSid };
             return Fetch(options, client);
@@ -239,8 +240,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         /// <param name="options"> Read AddOnResult parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AddOnResult </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<AddOnResultResource>> ReadAsync(ReadAddOnResultOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<AddOnResultResource>> ReadAsync(ReadAddOnResultOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -261,7 +261,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
                                                      string pathAccountSid = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadAddOnResultOptions(pathReferenceSid){ PathAccountSid = pathAccountSid, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -280,7 +280,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
                                                                                              string pathAccountSid = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadAddOnResultOptions(pathReferenceSid){ PathAccountSid = pathAccountSid, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

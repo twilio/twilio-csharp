@@ -25,6 +25,8 @@ using Twilio.Http;
 
 
 
+
+
 namespace Twilio.Rest.Intelligence.V2
 {
     public class OperatorAttachmentsResource : Resource
@@ -67,8 +69,7 @@ namespace Twilio.Rest.Intelligence.V2
         /// <param name="options"> Fetch OperatorAttachments parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of OperatorAttachments </returns>
-        public static async System.Threading.Tasks.Task<OperatorAttachmentsResource> FetchAsync(FetchOperatorAttachmentsOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<OperatorAttachmentsResource> FetchAsync(FetchOperatorAttachmentsOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -81,7 +82,7 @@ namespace Twilio.Rest.Intelligence.V2
         /// <returns> A single instance of OperatorAttachments </returns>
         public static OperatorAttachmentsResource Fetch(
                                          string pathServiceSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchOperatorAttachmentsOptions(pathServiceSid){  };
             return Fetch(options, client);

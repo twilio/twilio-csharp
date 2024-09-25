@@ -25,6 +25,8 @@ using Twilio.Http;
 
 
 
+
+
 namespace Twilio.Rest.Voice.V1
 {
     public class ConnectionPolicyResource : Resource
@@ -66,8 +68,7 @@ namespace Twilio.Rest.Voice.V1
         /// <param name="options"> Create ConnectionPolicy parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ConnectionPolicy </returns>
-        public static async System.Threading.Tasks.Task<ConnectionPolicyResource> CreateAsync(CreateConnectionPolicyOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ConnectionPolicyResource> CreateAsync(CreateConnectionPolicyOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -81,7 +82,7 @@ namespace Twilio.Rest.Voice.V1
         /// <returns> A single instance of ConnectionPolicy </returns>
         public static ConnectionPolicyResource Create(
                                           string friendlyName = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateConnectionPolicyOptions(){  FriendlyName = friendlyName };
             return Create(options, client);
@@ -94,7 +95,7 @@ namespace Twilio.Rest.Voice.V1
         /// <returns> Task that resolves to A single instance of ConnectionPolicy </returns>
         public static async System.Threading.Tasks.Task<ConnectionPolicyResource> CreateAsync(
                                                                                   string friendlyName = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateConnectionPolicyOptions(){  FriendlyName = friendlyName };
             return await CreateAsync(options, client);
@@ -139,7 +140,7 @@ namespace Twilio.Rest.Voice.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ConnectionPolicy </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteConnectionPolicyOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -202,8 +203,7 @@ namespace Twilio.Rest.Voice.V1
         /// <param name="options"> Fetch ConnectionPolicy parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ConnectionPolicy </returns>
-        public static async System.Threading.Tasks.Task<ConnectionPolicyResource> FetchAsync(FetchConnectionPolicyOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ConnectionPolicyResource> FetchAsync(FetchConnectionPolicyOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -216,7 +216,7 @@ namespace Twilio.Rest.Voice.V1
         /// <returns> A single instance of ConnectionPolicy </returns>
         public static ConnectionPolicyResource Fetch(
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchConnectionPolicyOptions(pathSid){  };
             return Fetch(options, client);
@@ -265,8 +265,7 @@ namespace Twilio.Rest.Voice.V1
         /// <param name="options"> Read ConnectionPolicy parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ConnectionPolicy </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<ConnectionPolicyResource>> ReadAsync(ReadConnectionPolicyOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<ConnectionPolicyResource>> ReadAsync(ReadConnectionPolicyOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -283,7 +282,7 @@ namespace Twilio.Rest.Voice.V1
         public static ResourceSet<ConnectionPolicyResource> Read(
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadConnectionPolicyOptions(){ PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -298,7 +297,7 @@ namespace Twilio.Rest.Voice.V1
         public static async System.Threading.Tasks.Task<ResourceSet<ConnectionPolicyResource>> ReadAsync(
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadConnectionPolicyOptions(){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -389,7 +388,7 @@ namespace Twilio.Rest.Voice.V1
         /// <returns> Task that resolves to A single instance of ConnectionPolicy </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<ConnectionPolicyResource> UpdateAsync(UpdateConnectionPolicyOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -405,7 +404,7 @@ namespace Twilio.Rest.Voice.V1
         public static ConnectionPolicyResource Update(
                                           string pathSid,
                                           string friendlyName = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateConnectionPolicyOptions(pathSid){ FriendlyName = friendlyName };
             return Update(options, client);
@@ -420,7 +419,7 @@ namespace Twilio.Rest.Voice.V1
         public static async System.Threading.Tasks.Task<ConnectionPolicyResource> UpdateAsync(
                                                                               string pathSid,
                                                                               string friendlyName = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateConnectionPolicyOptions(pathSid){ FriendlyName = friendlyName };
             return await UpdateAsync(options, client);

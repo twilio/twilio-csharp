@@ -25,6 +25,8 @@ using Twilio.Http;
 
 
 
+
+
 namespace Twilio.Rest.Sync.V1.Service
 {
     public class SyncMapResource : Resource
@@ -68,8 +70,7 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <param name="options"> Create SyncMap parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncMap </returns>
-        public static async System.Threading.Tasks.Task<SyncMapResource> CreateAsync(CreateSyncMapOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SyncMapResource> CreateAsync(CreateSyncMapOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -89,7 +90,7 @@ namespace Twilio.Rest.Sync.V1.Service
                                           string uniqueName = null,
                                           int? ttl = null,
                                           int? collectionTtl = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateSyncMapOptions(pathServiceSid){  UniqueName = uniqueName, Ttl = ttl, CollectionTtl = collectionTtl };
             return Create(options, client);
@@ -108,7 +109,7 @@ namespace Twilio.Rest.Sync.V1.Service
                                                                                   string uniqueName = null,
                                                                                   int? ttl = null,
                                                                                   int? collectionTtl = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateSyncMapOptions(pathServiceSid){  UniqueName = uniqueName, Ttl = ttl, CollectionTtl = collectionTtl };
             return await CreateAsync(options, client);
@@ -155,7 +156,7 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncMap </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteSyncMapOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -222,8 +223,7 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <param name="options"> Fetch SyncMap parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncMap </returns>
-        public static async System.Threading.Tasks.Task<SyncMapResource> FetchAsync(FetchSyncMapOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SyncMapResource> FetchAsync(FetchSyncMapOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -238,7 +238,7 @@ namespace Twilio.Rest.Sync.V1.Service
         public static SyncMapResource Fetch(
                                          string pathServiceSid, 
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchSyncMapOptions(pathServiceSid, pathSid){  };
             return Fetch(options, client);
@@ -290,8 +290,7 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <param name="options"> Read SyncMap parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncMap </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<SyncMapResource>> ReadAsync(ReadSyncMapOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<SyncMapResource>> ReadAsync(ReadSyncMapOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -310,7 +309,7 @@ namespace Twilio.Rest.Sync.V1.Service
                                                      string pathServiceSid,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadSyncMapOptions(pathServiceSid){ PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -327,7 +326,7 @@ namespace Twilio.Rest.Sync.V1.Service
                                                                                              string pathServiceSid,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadSyncMapOptions(pathServiceSid){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -420,7 +419,7 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <returns> Task that resolves to A single instance of SyncMap </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<SyncMapResource> UpdateAsync(UpdateSyncMapOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -440,7 +439,7 @@ namespace Twilio.Rest.Sync.V1.Service
                                           string pathSid,
                                           int? ttl = null,
                                           int? collectionTtl = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateSyncMapOptions(pathServiceSid, pathSid){ Ttl = ttl, CollectionTtl = collectionTtl };
             return Update(options, client);
@@ -459,7 +458,7 @@ namespace Twilio.Rest.Sync.V1.Service
                                                                               string pathSid,
                                                                               int? ttl = null,
                                                                               int? collectionTtl = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateSyncMapOptions(pathServiceSid, pathSid){ Ttl = ttl, CollectionTtl = collectionTtl };
             return await UpdateAsync(options, client);

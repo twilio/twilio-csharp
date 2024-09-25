@@ -25,6 +25,8 @@ using Twilio.Http;
 
 
 
+
+
 namespace Twilio.Rest.Api.V2010.Account.Call
 {
     public class NotificationResource : Resource
@@ -71,8 +73,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <param name="options"> Fetch Notification parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Notification </returns>
-        public static async System.Threading.Tasks.Task<NotificationResource> FetchAsync(FetchNotificationOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<NotificationResource> FetchAsync(FetchNotificationOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -89,7 +90,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
                                          string pathCallSid, 
                                          string pathSid, 
                                          string pathAccountSid = null, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchNotificationOptions(pathCallSid, pathSid){ PathAccountSid = pathAccountSid };
             return Fetch(options, client);
@@ -144,8 +145,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <param name="options"> Read Notification parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Notification </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<NotificationResource>> ReadAsync(ReadNotificationOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<NotificationResource>> ReadAsync(ReadNotificationOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -174,7 +174,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
                                                      DateTime? messageDateAfter = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadNotificationOptions(pathCallSid){ PathAccountSid = pathAccountSid, Log = log, MessageDateBefore = messageDateBefore, MessageDate = messageDate, MessageDateAfter = messageDateAfter, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -201,7 +201,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
                                                                                              DateTime? messageDateAfter = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadNotificationOptions(pathCallSid){ PathAccountSid = pathAccountSid, Log = log, MessageDateBefore = messageDateBefore, MessageDate = messageDate, MessageDateAfter = messageDateAfter, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

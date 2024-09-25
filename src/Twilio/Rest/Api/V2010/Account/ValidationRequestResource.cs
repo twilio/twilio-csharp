@@ -25,6 +25,8 @@ using Twilio.Http;
 
 
 
+
+
 namespace Twilio.Rest.Api.V2010.Account
 {
     public class ValidationRequestResource : Resource
@@ -68,8 +70,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="options"> Create ValidationRequest parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ValidationRequest </returns>
-        public static async System.Threading.Tasks.Task<ValidationRequestResource> CreateAsync(CreateValidationRequestOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ValidationRequestResource> CreateAsync(CreateValidationRequestOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -95,7 +96,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                           string extension = null,
                                           Uri statusCallback = null,
                                           Twilio.Http.HttpMethod statusCallbackMethod = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateValidationRequestOptions(phoneNumber){  PathAccountSid = pathAccountSid, FriendlyName = friendlyName, CallDelay = callDelay, Extension = extension, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod };
             return Create(options, client);
@@ -120,7 +121,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                                                                   string extension = null,
                                                                                   Uri statusCallback = null,
                                                                                   Twilio.Http.HttpMethod statusCallbackMethod = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateValidationRequestOptions(phoneNumber){  PathAccountSid = pathAccountSid, FriendlyName = friendlyName, CallDelay = callDelay, Extension = extension, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod };
             return await CreateAsync(options, client);

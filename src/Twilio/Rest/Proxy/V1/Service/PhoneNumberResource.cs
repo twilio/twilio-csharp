@@ -25,6 +25,8 @@ using Twilio.Http;
 using Twilio.Types;
 
 
+
+
 namespace Twilio.Rest.Proxy.V1.Service
 {
     public class PhoneNumberResource : Resource
@@ -68,8 +70,7 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// <param name="options"> Create PhoneNumber parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PhoneNumber </returns>
-        public static async System.Threading.Tasks.Task<PhoneNumberResource> CreateAsync(CreatePhoneNumberOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<PhoneNumberResource> CreateAsync(CreatePhoneNumberOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -89,7 +90,7 @@ namespace Twilio.Rest.Proxy.V1.Service
                                           string sid = null,
                                           Types.PhoneNumber phoneNumber = null,
                                           bool? isReserved = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreatePhoneNumberOptions(pathServiceSid){  Sid = sid, PhoneNumber = phoneNumber, IsReserved = isReserved };
             return Create(options, client);
@@ -108,7 +109,7 @@ namespace Twilio.Rest.Proxy.V1.Service
                                                                                   string sid = null,
                                                                                   Types.PhoneNumber phoneNumber = null,
                                                                                   bool? isReserved = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreatePhoneNumberOptions(pathServiceSid){  Sid = sid, PhoneNumber = phoneNumber, IsReserved = isReserved };
             return await CreateAsync(options, client);
@@ -155,7 +156,7 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PhoneNumber </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeletePhoneNumberOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -222,8 +223,7 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// <param name="options"> Fetch PhoneNumber parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PhoneNumber </returns>
-        public static async System.Threading.Tasks.Task<PhoneNumberResource> FetchAsync(FetchPhoneNumberOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<PhoneNumberResource> FetchAsync(FetchPhoneNumberOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -238,7 +238,7 @@ namespace Twilio.Rest.Proxy.V1.Service
         public static PhoneNumberResource Fetch(
                                          string pathServiceSid, 
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchPhoneNumberOptions(pathServiceSid, pathSid){  };
             return Fetch(options, client);
@@ -290,8 +290,7 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// <param name="options"> Read PhoneNumber parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PhoneNumber </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<PhoneNumberResource>> ReadAsync(ReadPhoneNumberOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<PhoneNumberResource>> ReadAsync(ReadPhoneNumberOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -310,7 +309,7 @@ namespace Twilio.Rest.Proxy.V1.Service
                                                      string pathServiceSid,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadPhoneNumberOptions(pathServiceSid){ PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -327,7 +326,7 @@ namespace Twilio.Rest.Proxy.V1.Service
                                                                                              string pathServiceSid,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadPhoneNumberOptions(pathServiceSid){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -420,7 +419,7 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// <returns> Task that resolves to A single instance of PhoneNumber </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<PhoneNumberResource> UpdateAsync(UpdatePhoneNumberOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -438,7 +437,7 @@ namespace Twilio.Rest.Proxy.V1.Service
                                           string pathServiceSid,
                                           string pathSid,
                                           bool? isReserved = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdatePhoneNumberOptions(pathServiceSid, pathSid){ IsReserved = isReserved };
             return Update(options, client);
@@ -455,7 +454,7 @@ namespace Twilio.Rest.Proxy.V1.Service
                                                                               string pathServiceSid,
                                                                               string pathSid,
                                                                               bool? isReserved = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdatePhoneNumberOptions(pathServiceSid, pathSid){ IsReserved = isReserved };
             return await UpdateAsync(options, client);

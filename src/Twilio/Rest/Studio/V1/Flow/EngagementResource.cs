@@ -25,6 +25,8 @@ using Twilio.Http;
 using Twilio.Types;
 
 
+
+
 namespace Twilio.Rest.Studio.V1.Flow
 {
     public class EngagementResource : Resource
@@ -81,8 +83,7 @@ namespace Twilio.Rest.Studio.V1.Flow
         /// <param name="options"> Create Engagement parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Engagement </returns>
-        public static async System.Threading.Tasks.Task<EngagementResource> CreateAsync(CreateEngagementOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<EngagementResource> CreateAsync(CreateEngagementOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -102,7 +103,7 @@ namespace Twilio.Rest.Studio.V1.Flow
                                           Types.PhoneNumber to,
                                           Types.PhoneNumber from,
                                           object parameters = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateEngagementOptions(pathFlowSid, to, from){  Parameters = parameters };
             return Create(options, client);
@@ -121,7 +122,7 @@ namespace Twilio.Rest.Studio.V1.Flow
                                                                                   Types.PhoneNumber to,
                                                                                   Types.PhoneNumber from,
                                                                                   object parameters = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateEngagementOptions(pathFlowSid, to, from){  Parameters = parameters };
             return await CreateAsync(options, client);
@@ -168,7 +169,7 @@ namespace Twilio.Rest.Studio.V1.Flow
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Engagement </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteEngagementOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -235,8 +236,7 @@ namespace Twilio.Rest.Studio.V1.Flow
         /// <param name="options"> Fetch Engagement parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Engagement </returns>
-        public static async System.Threading.Tasks.Task<EngagementResource> FetchAsync(FetchEngagementOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<EngagementResource> FetchAsync(FetchEngagementOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -251,7 +251,7 @@ namespace Twilio.Rest.Studio.V1.Flow
         public static EngagementResource Fetch(
                                          string pathFlowSid, 
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchEngagementOptions(pathFlowSid, pathSid){  };
             return Fetch(options, client);
@@ -303,8 +303,7 @@ namespace Twilio.Rest.Studio.V1.Flow
         /// <param name="options"> Read Engagement parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Engagement </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<EngagementResource>> ReadAsync(ReadEngagementOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<EngagementResource>> ReadAsync(ReadEngagementOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -323,7 +322,7 @@ namespace Twilio.Rest.Studio.V1.Flow
                                                      string pathFlowSid,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadEngagementOptions(pathFlowSid){ PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -340,7 +339,7 @@ namespace Twilio.Rest.Studio.V1.Flow
                                                                                              string pathFlowSid,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadEngagementOptions(pathFlowSid){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

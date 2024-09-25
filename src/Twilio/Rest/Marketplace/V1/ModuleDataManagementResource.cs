@@ -25,6 +25,8 @@ using Twilio.Http;
 
 
 
+
+
 namespace Twilio.Rest.Marketplace.V1
 {
     public class ModuleDataManagementResource : Resource
@@ -67,8 +69,7 @@ namespace Twilio.Rest.Marketplace.V1
         /// <param name="options"> Fetch ModuleDataManagement parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ModuleDataManagement </returns>
-        public static async System.Threading.Tasks.Task<ModuleDataManagementResource> FetchAsync(FetchModuleDataManagementOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ModuleDataManagementResource> FetchAsync(FetchModuleDataManagementOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -81,7 +82,7 @@ namespace Twilio.Rest.Marketplace.V1
         /// <returns> A single instance of ModuleDataManagement </returns>
         public static ModuleDataManagementResource Fetch(
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchModuleDataManagementOptions(pathSid){  };
             return Fetch(options, client);
@@ -134,7 +135,7 @@ namespace Twilio.Rest.Marketplace.V1
         /// <returns> Task that resolves to A single instance of ModuleDataManagement </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<ModuleDataManagementResource> UpdateAsync(UpdateModuleDataManagementOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -162,7 +163,7 @@ namespace Twilio.Rest.Marketplace.V1
                                           string support = null,
                                           string configuration = null,
                                           string pricing = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateModuleDataManagementOptions(pathSid){ ModuleInfo = moduleInfo, Description = description, Documentation = documentation, Policies = policies, Support = support, Configuration = configuration, Pricing = pricing };
             return Update(options, client);
@@ -189,7 +190,7 @@ namespace Twilio.Rest.Marketplace.V1
                                                                               string support = null,
                                                                               string configuration = null,
                                                                               string pricing = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateModuleDataManagementOptions(pathSid){ ModuleInfo = moduleInfo, Description = description, Documentation = documentation, Policies = policies, Support = support, Configuration = configuration, Pricing = pricing };
             return await UpdateAsync(options, client);

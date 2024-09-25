@@ -25,6 +25,8 @@ using Twilio.Http;
 
 
 
+
+
 namespace Twilio.Rest.Messaging.V1.Service
 {
     public class UsAppToPersonResource : Resource
@@ -68,8 +70,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <param name="options"> Create UsAppToPerson parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of UsAppToPerson </returns>
-        public static async System.Threading.Tasks.Task<UsAppToPersonResource> CreateAsync(CreateUsAppToPersonOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<UsAppToPersonResource> CreateAsync(CreateUsAppToPersonOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -115,7 +116,7 @@ namespace Twilio.Rest.Messaging.V1.Service
                                           bool? subscriberOptIn = null,
                                           bool? ageGated = null,
                                           bool? directLending = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateUsAppToPersonOptions(pathMessagingServiceSid, brandRegistrationSid, description, messageFlow, messageSamples, usAppToPersonUsecase, hasEmbeddedLinks, hasEmbeddedPhone){  OptInMessage = optInMessage, OptOutMessage = optOutMessage, HelpMessage = helpMessage, OptInKeywords = optInKeywords, OptOutKeywords = optOutKeywords, HelpKeywords = helpKeywords, SubscriberOptIn = subscriberOptIn, AgeGated = ageGated, DirectLending = directLending };
             return Create(options, client);
@@ -160,7 +161,7 @@ namespace Twilio.Rest.Messaging.V1.Service
                                                                                   bool? subscriberOptIn = null,
                                                                                   bool? ageGated = null,
                                                                                   bool? directLending = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateUsAppToPersonOptions(pathMessagingServiceSid, brandRegistrationSid, description, messageFlow, messageSamples, usAppToPersonUsecase, hasEmbeddedLinks, hasEmbeddedPhone){  OptInMessage = optInMessage, OptOutMessage = optOutMessage, HelpMessage = helpMessage, OptInKeywords = optInKeywords, OptOutKeywords = optOutKeywords, HelpKeywords = helpKeywords, SubscriberOptIn = subscriberOptIn, AgeGated = ageGated, DirectLending = directLending };
             return await CreateAsync(options, client);
@@ -207,7 +208,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of UsAppToPerson </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteUsAppToPersonOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -274,8 +275,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <param name="options"> Fetch UsAppToPerson parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of UsAppToPerson </returns>
-        public static async System.Threading.Tasks.Task<UsAppToPersonResource> FetchAsync(FetchUsAppToPersonOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<UsAppToPersonResource> FetchAsync(FetchUsAppToPersonOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -290,7 +290,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         public static UsAppToPersonResource Fetch(
                                          string pathMessagingServiceSid, 
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchUsAppToPersonOptions(pathMessagingServiceSid, pathSid){  };
             return Fetch(options, client);
@@ -342,8 +342,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <param name="options"> Read UsAppToPerson parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of UsAppToPerson </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<UsAppToPersonResource>> ReadAsync(ReadUsAppToPersonOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<UsAppToPersonResource>> ReadAsync(ReadUsAppToPersonOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -362,7 +361,7 @@ namespace Twilio.Rest.Messaging.V1.Service
                                                      string pathMessagingServiceSid,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadUsAppToPersonOptions(pathMessagingServiceSid){ PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -379,7 +378,7 @@ namespace Twilio.Rest.Messaging.V1.Service
                                                                                              string pathMessagingServiceSid,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadUsAppToPersonOptions(pathMessagingServiceSid){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -472,7 +471,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <returns> Task that resolves to A single instance of UsAppToPerson </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<UsAppToPersonResource> UpdateAsync(UpdateUsAppToPersonOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -502,7 +501,7 @@ namespace Twilio.Rest.Messaging.V1.Service
                                           string description,
                                           bool? ageGated,
                                           bool? directLending,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateUsAppToPersonOptions(pathMessagingServiceSid, pathSid, hasEmbeddedLinks, hasEmbeddedPhone, messageSamples, messageFlow, description, ageGated, directLending){  };
             return Update(options, client);
@@ -531,7 +530,7 @@ namespace Twilio.Rest.Messaging.V1.Service
                                                                               string description,
                                                                               bool? ageGated,
                                                                               bool? directLending,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateUsAppToPersonOptions(pathMessagingServiceSid, pathSid, hasEmbeddedLinks, hasEmbeddedPhone, messageSamples, messageFlow, description, ageGated, directLending){  };
             return await UpdateAsync(options, client);

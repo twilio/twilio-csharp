@@ -53,7 +53,7 @@ namespace Twilio.Rest.Events.V1.Schema
             return p;
         }
 
-        
+    
 
     }
 
@@ -87,7 +87,7 @@ namespace Twilio.Rest.Events.V1.Schema
             return p;
         }
 
-        
+    
 
     }
 

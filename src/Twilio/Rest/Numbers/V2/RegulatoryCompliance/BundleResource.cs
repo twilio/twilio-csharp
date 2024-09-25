@@ -25,6 +25,8 @@ using Twilio.Http;
 using Twilio.Types;
 
 
+
+
 namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
 {
     public class BundleResource : Resource
@@ -119,8 +121,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         /// <param name="options"> Create Bundle parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Bundle </returns>
-        public static async System.Threading.Tasks.Task<BundleResource> CreateAsync(CreateBundleOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<BundleResource> CreateAsync(CreateBundleOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -148,7 +149,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
                                           BundleResource.EndUserTypeEnum endUserType = null,
                                           string numberType = null,
                                           bool? isTest = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateBundleOptions(friendlyName, email){  StatusCallback = statusCallback, RegulationSid = regulationSid, IsoCountry = isoCountry, EndUserType = endUserType, NumberType = numberType, IsTest = isTest };
             return Create(options, client);
@@ -175,7 +176,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
                                                                                   BundleResource.EndUserTypeEnum endUserType = null,
                                                                                   string numberType = null,
                                                                                   bool? isTest = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateBundleOptions(friendlyName, email){  StatusCallback = statusCallback, RegulationSid = regulationSid, IsoCountry = isoCountry, EndUserType = endUserType, NumberType = numberType, IsTest = isTest };
             return await CreateAsync(options, client);
@@ -220,7 +221,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Bundle </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteBundleOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -283,8 +284,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         /// <param name="options"> Fetch Bundle parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Bundle </returns>
-        public static async System.Threading.Tasks.Task<BundleResource> FetchAsync(FetchBundleOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<BundleResource> FetchAsync(FetchBundleOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -297,7 +297,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         /// <returns> A single instance of Bundle </returns>
         public static BundleResource Fetch(
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchBundleOptions(pathSid){  };
             return Fetch(options, client);
@@ -346,8 +346,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         /// <param name="options"> Read Bundle parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Bundle </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<BundleResource>> ReadAsync(ReadBundleOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<BundleResource>> ReadAsync(ReadBundleOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -386,7 +385,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
                                                      DateTime? validUntilDateAfter = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadBundleOptions(){ Status = status, FriendlyName = friendlyName, RegulationSid = regulationSid, IsoCountry = isoCountry, NumberType = numberType, HasValidUntilDate = hasValidUntilDate, SortBy = sortBy, SortDirection = sortDirection, ValidUntilDateBefore = validUntilDateBefore, ValidUntilDate = validUntilDate, ValidUntilDateAfter = validUntilDateAfter, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -423,7 +422,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
                                                                                              DateTime? validUntilDateAfter = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadBundleOptions(){ Status = status, FriendlyName = friendlyName, RegulationSid = regulationSid, IsoCountry = isoCountry, NumberType = numberType, HasValidUntilDate = hasValidUntilDate, SortBy = sortBy, SortDirection = sortDirection, ValidUntilDateBefore = validUntilDateBefore, ValidUntilDate = validUntilDate, ValidUntilDateAfter = validUntilDateAfter, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -514,7 +513,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         /// <returns> Task that resolves to A single instance of Bundle </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<BundleResource> UpdateAsync(UpdateBundleOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -536,7 +535,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
                                           Uri statusCallback = null,
                                           string friendlyName = null,
                                           string email = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateBundleOptions(pathSid){ Status = status, StatusCallback = statusCallback, FriendlyName = friendlyName, Email = email };
             return Update(options, client);
@@ -557,7 +556,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
                                                                               Uri statusCallback = null,
                                                                               string friendlyName = null,
                                                                               string email = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateBundleOptions(pathSid){ Status = status, StatusCallback = statusCallback, FriendlyName = friendlyName, Email = email };
             return await UpdateAsync(options, client);

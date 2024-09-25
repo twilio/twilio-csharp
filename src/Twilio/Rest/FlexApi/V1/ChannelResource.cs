@@ -25,6 +25,8 @@ using Twilio.Http;
 
 
 
+
+
 namespace Twilio.Rest.FlexApi.V1
 {
     public class ChannelResource : Resource
@@ -66,8 +68,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="options"> Create Channel parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Channel </returns>
-        public static async System.Threading.Tasks.Task<ChannelResource> CreateAsync(CreateChannelOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ChannelResource> CreateAsync(CreateChannelOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -99,7 +100,7 @@ namespace Twilio.Rest.FlexApi.V1
                                           string taskSid = null,
                                           string taskAttributes = null,
                                           bool? longLived = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateChannelOptions(flexFlowSid, identity, chatUserFriendlyName, chatFriendlyName){  Target = target, ChatUniqueName = chatUniqueName, PreEngagementData = preEngagementData, TaskSid = taskSid, TaskAttributes = taskAttributes, LongLived = longLived };
             return Create(options, client);
@@ -130,7 +131,7 @@ namespace Twilio.Rest.FlexApi.V1
                                                                                   string taskSid = null,
                                                                                   string taskAttributes = null,
                                                                                   bool? longLived = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateChannelOptions(flexFlowSid, identity, chatUserFriendlyName, chatFriendlyName){  Target = target, ChatUniqueName = chatUniqueName, PreEngagementData = preEngagementData, TaskSid = taskSid, TaskAttributes = taskAttributes, LongLived = longLived };
             return await CreateAsync(options, client);
@@ -175,7 +176,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Channel </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteChannelOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -238,8 +239,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="options"> Fetch Channel parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Channel </returns>
-        public static async System.Threading.Tasks.Task<ChannelResource> FetchAsync(FetchChannelOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ChannelResource> FetchAsync(FetchChannelOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -252,7 +252,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <returns> A single instance of Channel </returns>
         public static ChannelResource Fetch(
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchChannelOptions(pathSid){  };
             return Fetch(options, client);
@@ -301,8 +301,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="options"> Read Channel parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Channel </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<ChannelResource>> ReadAsync(ReadChannelOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<ChannelResource>> ReadAsync(ReadChannelOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -319,7 +318,7 @@ namespace Twilio.Rest.FlexApi.V1
         public static ResourceSet<ChannelResource> Read(
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadChannelOptions(){ PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -334,7 +333,7 @@ namespace Twilio.Rest.FlexApi.V1
         public static async System.Threading.Tasks.Task<ResourceSet<ChannelResource>> ReadAsync(
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadChannelOptions(){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

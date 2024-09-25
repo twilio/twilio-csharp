@@ -25,6 +25,8 @@ using Twilio.Http;
 using Twilio.Types;
 
 
+
+
 namespace Twilio.Rest.Iam.V1
 {
     public class NewApiKeyResource : Resource
@@ -77,8 +79,7 @@ namespace Twilio.Rest.Iam.V1
         /// <param name="options"> Create NewApiKey parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of NewApiKey </returns>
-        public static async System.Threading.Tasks.Task<NewApiKeyResource> CreateAsync(CreateNewApiKeyOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<NewApiKeyResource> CreateAsync(CreateNewApiKeyOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -98,7 +99,7 @@ namespace Twilio.Rest.Iam.V1
                                           string friendlyName = null,
                                           NewApiKeyResource.KeytypeEnum keyType = null,
                                           object policy = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateNewApiKeyOptions(accountSid){  FriendlyName = friendlyName, KeyType = keyType, Policy = policy };
             return Create(options, client);
@@ -117,7 +118,7 @@ namespace Twilio.Rest.Iam.V1
                                                                                   string friendlyName = null,
                                                                                   NewApiKeyResource.KeytypeEnum keyType = null,
                                                                                   object policy = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateNewApiKeyOptions(accountSid){  FriendlyName = friendlyName, KeyType = keyType, Policy = policy };
             return await CreateAsync(options, client);

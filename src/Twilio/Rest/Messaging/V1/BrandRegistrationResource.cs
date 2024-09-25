@@ -25,6 +25,8 @@ using Twilio.Http;
 using Twilio.Types;
 
 
+
+
 namespace Twilio.Rest.Messaging.V1
 {
     public class BrandRegistrationResource : Resource
@@ -113,8 +115,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="options"> Create BrandRegistration parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of BrandRegistration </returns>
-        public static async System.Threading.Tasks.Task<BrandRegistrationResource> CreateAsync(CreateBrandRegistrationOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<BrandRegistrationResource> CreateAsync(CreateBrandRegistrationOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -136,7 +137,7 @@ namespace Twilio.Rest.Messaging.V1
                                           string brandType = null,
                                           bool? mock = null,
                                           bool? skipAutomaticSecVet = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateBrandRegistrationOptions(customerProfileBundleSid, a2PProfileBundleSid){  BrandType = brandType, Mock = mock, SkipAutomaticSecVet = skipAutomaticSecVet };
             return Create(options, client);
@@ -157,7 +158,7 @@ namespace Twilio.Rest.Messaging.V1
                                                                                   string brandType = null,
                                                                                   bool? mock = null,
                                                                                   bool? skipAutomaticSecVet = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateBrandRegistrationOptions(customerProfileBundleSid, a2PProfileBundleSid){  BrandType = brandType, Mock = mock, SkipAutomaticSecVet = skipAutomaticSecVet };
             return await CreateAsync(options, client);
@@ -197,8 +198,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="options"> Fetch BrandRegistration parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of BrandRegistration </returns>
-        public static async System.Threading.Tasks.Task<BrandRegistrationResource> FetchAsync(FetchBrandRegistrationOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<BrandRegistrationResource> FetchAsync(FetchBrandRegistrationOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -211,7 +211,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <returns> A single instance of BrandRegistration </returns>
         public static BrandRegistrationResource Fetch(
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchBrandRegistrationOptions(pathSid){  };
             return Fetch(options, client);
@@ -260,8 +260,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="options"> Read BrandRegistration parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of BrandRegistration </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<BrandRegistrationResource>> ReadAsync(ReadBrandRegistrationOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<BrandRegistrationResource>> ReadAsync(ReadBrandRegistrationOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -278,7 +277,7 @@ namespace Twilio.Rest.Messaging.V1
         public static ResourceSet<BrandRegistrationResource> Read(
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadBrandRegistrationOptions(){ PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -293,7 +292,7 @@ namespace Twilio.Rest.Messaging.V1
         public static async System.Threading.Tasks.Task<ResourceSet<BrandRegistrationResource>> ReadAsync(
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadBrandRegistrationOptions(){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -384,7 +383,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <returns> Task that resolves to A single instance of BrandRegistration </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<BrandRegistrationResource> UpdateAsync(UpdateBrandRegistrationOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -398,7 +397,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <returns> A single instance of BrandRegistration </returns>
         public static BrandRegistrationResource Update(
                                           string pathSid,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateBrandRegistrationOptions(pathSid){  };
             return Update(options, client);
@@ -411,7 +410,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <returns> Task that resolves to A single instance of BrandRegistration </returns>
         public static async System.Threading.Tasks.Task<BrandRegistrationResource> UpdateAsync(
                                                                               string pathSid,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateBrandRegistrationOptions(pathSid){  };
             return await UpdateAsync(options, client);

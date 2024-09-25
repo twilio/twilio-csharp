@@ -25,6 +25,8 @@ using Twilio.Http;
 using Twilio.Types;
 
 
+
+
 namespace Twilio.Rest.Trusthub.V1
 {
     public class ComplianceTollfreeInquiriesResource : Resource
@@ -81,8 +83,7 @@ namespace Twilio.Rest.Trusthub.V1
         /// <param name="options"> Create ComplianceTollfreeInquiries parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ComplianceTollfreeInquiries </returns>
-        public static async System.Threading.Tasks.Task<ComplianceTollfreeInquiriesResource> CreateAsync(CreateComplianceTollfreeInquiriesOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ComplianceTollfreeInquiriesResource> CreateAsync(CreateComplianceTollfreeInquiriesOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -140,7 +141,7 @@ namespace Twilio.Rest.Trusthub.V1
                                           Types.PhoneNumber businessContactPhone = null,
                                           string themeSetId = null,
                                           bool? skipMessagingUseCase = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateComplianceTollfreeInquiriesOptions(tollfreePhoneNumber, notificationEmail){  BusinessName = businessName, BusinessWebsite = businessWebsite, UseCaseCategories = useCaseCategories, UseCaseSummary = useCaseSummary, ProductionMessageSample = productionMessageSample, OptInImageUrls = optInImageUrls, OptInType = optInType, MessageVolume = messageVolume, BusinessStreetAddress = businessStreetAddress, BusinessStreetAddress2 = businessStreetAddress2, BusinessCity = businessCity, BusinessStateProvinceRegion = businessStateProvinceRegion, BusinessPostalCode = businessPostalCode, BusinessCountry = businessCountry, AdditionalInformation = additionalInformation, BusinessContactFirstName = businessContactFirstName, BusinessContactLastName = businessContactLastName, BusinessContactEmail = businessContactEmail, BusinessContactPhone = businessContactPhone, ThemeSetId = themeSetId, SkipMessagingUseCase = skipMessagingUseCase };
             return Create(options, client);
@@ -197,7 +198,7 @@ namespace Twilio.Rest.Trusthub.V1
                                                                                   Types.PhoneNumber businessContactPhone = null,
                                                                                   string themeSetId = null,
                                                                                   bool? skipMessagingUseCase = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateComplianceTollfreeInquiriesOptions(tollfreePhoneNumber, notificationEmail){  BusinessName = businessName, BusinessWebsite = businessWebsite, UseCaseCategories = useCaseCategories, UseCaseSummary = useCaseSummary, ProductionMessageSample = productionMessageSample, OptInImageUrls = optInImageUrls, OptInType = optInType, MessageVolume = messageVolume, BusinessStreetAddress = businessStreetAddress, BusinessStreetAddress2 = businessStreetAddress2, BusinessCity = businessCity, BusinessStateProvinceRegion = businessStateProvinceRegion, BusinessPostalCode = businessPostalCode, BusinessCountry = businessCountry, AdditionalInformation = additionalInformation, BusinessContactFirstName = businessContactFirstName, BusinessContactLastName = businessContactLastName, BusinessContactEmail = businessContactEmail, BusinessContactPhone = businessContactPhone, ThemeSetId = themeSetId, SkipMessagingUseCase = skipMessagingUseCase };
             return await CreateAsync(options, client);

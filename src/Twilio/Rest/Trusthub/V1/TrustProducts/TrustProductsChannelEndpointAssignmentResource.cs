@@ -25,6 +25,8 @@ using Twilio.Http;
 
 
 
+
+
 namespace Twilio.Rest.Trusthub.V1.TrustProducts
 {
     public class TrustProductsChannelEndpointAssignmentResource : Resource
@@ -68,8 +70,7 @@ namespace Twilio.Rest.Trusthub.V1.TrustProducts
         /// <param name="options"> Create TrustProductsChannelEndpointAssignment parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TrustProductsChannelEndpointAssignment </returns>
-        public static async System.Threading.Tasks.Task<TrustProductsChannelEndpointAssignmentResource> CreateAsync(CreateTrustProductsChannelEndpointAssignmentOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<TrustProductsChannelEndpointAssignmentResource> CreateAsync(CreateTrustProductsChannelEndpointAssignmentOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -87,7 +88,7 @@ namespace Twilio.Rest.Trusthub.V1.TrustProducts
                                           string pathTrustProductSid,
                                           string channelEndpointType,
                                           string channelEndpointSid,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateTrustProductsChannelEndpointAssignmentOptions(pathTrustProductSid, channelEndpointType, channelEndpointSid){  };
             return Create(options, client);
@@ -104,7 +105,7 @@ namespace Twilio.Rest.Trusthub.V1.TrustProducts
                                                                                   string pathTrustProductSid,
                                                                                   string channelEndpointType,
                                                                                   string channelEndpointSid,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateTrustProductsChannelEndpointAssignmentOptions(pathTrustProductSid, channelEndpointType, channelEndpointSid){  };
             return await CreateAsync(options, client);
@@ -151,7 +152,7 @@ namespace Twilio.Rest.Trusthub.V1.TrustProducts
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TrustProductsChannelEndpointAssignment </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteTrustProductsChannelEndpointAssignmentOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -218,8 +219,7 @@ namespace Twilio.Rest.Trusthub.V1.TrustProducts
         /// <param name="options"> Fetch TrustProductsChannelEndpointAssignment parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TrustProductsChannelEndpointAssignment </returns>
-        public static async System.Threading.Tasks.Task<TrustProductsChannelEndpointAssignmentResource> FetchAsync(FetchTrustProductsChannelEndpointAssignmentOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<TrustProductsChannelEndpointAssignmentResource> FetchAsync(FetchTrustProductsChannelEndpointAssignmentOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -234,7 +234,7 @@ namespace Twilio.Rest.Trusthub.V1.TrustProducts
         public static TrustProductsChannelEndpointAssignmentResource Fetch(
                                          string pathTrustProductSid, 
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchTrustProductsChannelEndpointAssignmentOptions(pathTrustProductSid, pathSid){  };
             return Fetch(options, client);
@@ -286,8 +286,7 @@ namespace Twilio.Rest.Trusthub.V1.TrustProducts
         /// <param name="options"> Read TrustProductsChannelEndpointAssignment parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TrustProductsChannelEndpointAssignment </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<TrustProductsChannelEndpointAssignmentResource>> ReadAsync(ReadTrustProductsChannelEndpointAssignmentOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<TrustProductsChannelEndpointAssignmentResource>> ReadAsync(ReadTrustProductsChannelEndpointAssignmentOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -310,7 +309,7 @@ namespace Twilio.Rest.Trusthub.V1.TrustProducts
                                                      string channelEndpointSids = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadTrustProductsChannelEndpointAssignmentOptions(pathTrustProductSid){ ChannelEndpointSid = channelEndpointSid, ChannelEndpointSids = channelEndpointSids, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -331,7 +330,7 @@ namespace Twilio.Rest.Trusthub.V1.TrustProducts
                                                                                              string channelEndpointSids = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadTrustProductsChannelEndpointAssignmentOptions(pathTrustProductSid){ ChannelEndpointSid = channelEndpointSid, ChannelEndpointSids = channelEndpointSids, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

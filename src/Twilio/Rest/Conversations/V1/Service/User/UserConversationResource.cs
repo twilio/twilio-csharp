@@ -25,6 +25,8 @@ using Twilio.Http;
 using Twilio.Types;
 
 
+
+
 namespace Twilio.Rest.Conversations.V1.Service.User
 {
     public class UserConversationResource : Resource
@@ -103,7 +105,7 @@ namespace Twilio.Rest.Conversations.V1.Service.User
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of UserConversation </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteUserConversationOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -174,8 +176,7 @@ namespace Twilio.Rest.Conversations.V1.Service.User
         /// <param name="options"> Fetch UserConversation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of UserConversation </returns>
-        public static async System.Threading.Tasks.Task<UserConversationResource> FetchAsync(FetchUserConversationOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<UserConversationResource> FetchAsync(FetchUserConversationOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -192,7 +193,7 @@ namespace Twilio.Rest.Conversations.V1.Service.User
                                          string pathChatServiceSid, 
                                          string pathUserSid, 
                                          string pathConversationSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchUserConversationOptions(pathChatServiceSid, pathUserSid, pathConversationSid){  };
             return Fetch(options, client);
@@ -247,8 +248,7 @@ namespace Twilio.Rest.Conversations.V1.Service.User
         /// <param name="options"> Read UserConversation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of UserConversation </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<UserConversationResource>> ReadAsync(ReadUserConversationOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<UserConversationResource>> ReadAsync(ReadUserConversationOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -269,7 +269,7 @@ namespace Twilio.Rest.Conversations.V1.Service.User
                                                      string pathUserSid,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadUserConversationOptions(pathChatServiceSid, pathUserSid){ PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -288,7 +288,7 @@ namespace Twilio.Rest.Conversations.V1.Service.User
                                                                                              string pathUserSid,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadUserConversationOptions(pathChatServiceSid, pathUserSid){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -383,7 +383,7 @@ namespace Twilio.Rest.Conversations.V1.Service.User
         /// <returns> Task that resolves to A single instance of UserConversation </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<UserConversationResource> UpdateAsync(UpdateUserConversationOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -407,7 +407,7 @@ namespace Twilio.Rest.Conversations.V1.Service.User
                                           UserConversationResource.NotificationLevelEnum notificationLevel = null,
                                           DateTime? lastReadTimestamp = null,
                                           int? lastReadMessageIndex = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateUserConversationOptions(pathChatServiceSid, pathUserSid, pathConversationSid){ NotificationLevel = notificationLevel, LastReadTimestamp = lastReadTimestamp, LastReadMessageIndex = lastReadMessageIndex };
             return Update(options, client);
@@ -430,7 +430,7 @@ namespace Twilio.Rest.Conversations.V1.Service.User
                                                                               UserConversationResource.NotificationLevelEnum notificationLevel = null,
                                                                               DateTime? lastReadTimestamp = null,
                                                                               int? lastReadMessageIndex = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateUserConversationOptions(pathChatServiceSid, pathUserSid, pathConversationSid){ NotificationLevel = notificationLevel, LastReadTimestamp = lastReadTimestamp, LastReadMessageIndex = lastReadMessageIndex };
             return await UpdateAsync(options, client);

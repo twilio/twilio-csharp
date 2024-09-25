@@ -25,6 +25,8 @@ using Twilio.Http;
 
 
 
+
+
 namespace Twilio.Rest.Assistants.V1.Session
 {
     public class MessageResource : Resource
@@ -67,8 +69,7 @@ namespace Twilio.Rest.Assistants.V1.Session
         /// <param name="options"> Read Message parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Message </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<MessageResource>> ReadAsync(ReadMessageOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<MessageResource>> ReadAsync(ReadMessageOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -87,7 +88,7 @@ namespace Twilio.Rest.Assistants.V1.Session
                                                      string pathSessionId,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadMessageOptions(pathSessionId){ PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -104,7 +105,7 @@ namespace Twilio.Rest.Assistants.V1.Session
                                                                                              string pathSessionId,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadMessageOptions(pathSessionId){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

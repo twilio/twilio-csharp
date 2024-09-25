@@ -25,6 +25,8 @@ using Twilio.Http;
 
 
 
+
+
 namespace Twilio.Rest.Preview.Wireless
 {
     public class SimResource : Resource
@@ -67,8 +69,7 @@ namespace Twilio.Rest.Preview.Wireless
         /// <param name="options"> Fetch Sim parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Sim </returns>
-        public static async System.Threading.Tasks.Task<SimResource> FetchAsync(FetchSimOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SimResource> FetchAsync(FetchSimOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -81,7 +82,7 @@ namespace Twilio.Rest.Preview.Wireless
         /// <returns> A single instance of Sim </returns>
         public static SimResource Fetch(
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchSimOptions(pathSid){  };
             return Fetch(options, client);
@@ -130,8 +131,7 @@ namespace Twilio.Rest.Preview.Wireless
         /// <param name="options"> Read Sim parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Sim </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<SimResource>> ReadAsync(ReadSimOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<SimResource>> ReadAsync(ReadSimOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -158,7 +158,7 @@ namespace Twilio.Rest.Preview.Wireless
                                                      string simRegistrationCode = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadSimOptions(){ Status = status, Iccid = iccid, RatePlan = ratePlan, EId = eId, SimRegistrationCode = simRegistrationCode, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -183,7 +183,7 @@ namespace Twilio.Rest.Preview.Wireless
                                                                                              string simRegistrationCode = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadSimOptions(){ Status = status, Iccid = iccid, RatePlan = ratePlan, EId = eId, SimRegistrationCode = simRegistrationCode, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -274,7 +274,7 @@ namespace Twilio.Rest.Preview.Wireless
         /// <returns> Task that resolves to A single instance of Sim </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<SimResource> UpdateAsync(UpdateSimOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -320,7 +320,7 @@ namespace Twilio.Rest.Preview.Wireless
                                           Uri voiceFallbackUrl = null,
                                           Twilio.Http.HttpMethod voiceMethod = null,
                                           Uri voiceUrl = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateSimOptions(pathSid){ UniqueName = uniqueName, CallbackMethod = callbackMethod, CallbackUrl = callbackUrl, FriendlyName = friendlyName, RatePlan = ratePlan, Status = status, CommandsCallbackMethod = commandsCallbackMethod, CommandsCallbackUrl = commandsCallbackUrl, SmsFallbackMethod = smsFallbackMethod, SmsFallbackUrl = smsFallbackUrl, SmsMethod = smsMethod, SmsUrl = smsUrl, VoiceFallbackMethod = voiceFallbackMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceMethod = voiceMethod, VoiceUrl = voiceUrl };
             return Update(options, client);
@@ -365,7 +365,7 @@ namespace Twilio.Rest.Preview.Wireless
                                                                               Uri voiceFallbackUrl = null,
                                                                               Twilio.Http.HttpMethod voiceMethod = null,
                                                                               Uri voiceUrl = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateSimOptions(pathSid){ UniqueName = uniqueName, CallbackMethod = callbackMethod, CallbackUrl = callbackUrl, FriendlyName = friendlyName, RatePlan = ratePlan, Status = status, CommandsCallbackMethod = commandsCallbackMethod, CommandsCallbackUrl = commandsCallbackUrl, SmsFallbackMethod = smsFallbackMethod, SmsFallbackUrl = smsFallbackUrl, SmsMethod = smsMethod, SmsUrl = smsUrl, VoiceFallbackMethod = voiceFallbackMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceMethod = voiceMethod, VoiceUrl = voiceUrl };
             return await UpdateAsync(options, client);

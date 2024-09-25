@@ -25,6 +25,8 @@ using Twilio.Http;
 
 
 
+
+
 namespace Twilio.Rest.Accounts.V1
 {
     public class SafelistResource : Resource
@@ -66,8 +68,7 @@ namespace Twilio.Rest.Accounts.V1
         /// <param name="options"> Create Safelist parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Safelist </returns>
-        public static async System.Threading.Tasks.Task<SafelistResource> CreateAsync(CreateSafelistOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SafelistResource> CreateAsync(CreateSafelistOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -81,7 +82,7 @@ namespace Twilio.Rest.Accounts.V1
         /// <returns> A single instance of Safelist </returns>
         public static SafelistResource Create(
                                           string phoneNumber,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateSafelistOptions(phoneNumber){  };
             return Create(options, client);
@@ -94,7 +95,7 @@ namespace Twilio.Rest.Accounts.V1
         /// <returns> Task that resolves to A single instance of Safelist </returns>
         public static async System.Threading.Tasks.Task<SafelistResource> CreateAsync(
                                                                                   string phoneNumber,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateSafelistOptions(phoneNumber){  };
             return await CreateAsync(options, client);
@@ -137,7 +138,7 @@ namespace Twilio.Rest.Accounts.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Safelist </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteSafelistOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -196,8 +197,7 @@ namespace Twilio.Rest.Accounts.V1
         /// <param name="options"> Fetch Safelist parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Safelist </returns>
-        public static async System.Threading.Tasks.Task<SafelistResource> FetchAsync(FetchSafelistOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SafelistResource> FetchAsync(FetchSafelistOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -210,7 +210,7 @@ namespace Twilio.Rest.Accounts.V1
         /// <returns> A single instance of Safelist </returns>
         public static SafelistResource Fetch(
                                          string phoneNumber = null, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchSafelistOptions(){ PhoneNumber = phoneNumber };
             return Fetch(options, client);

@@ -25,6 +25,8 @@ using Twilio.Http;
 
 
 
+
+
 namespace Twilio.Rest.Assistants.V1
 {
     public class ToolResource : Resource
@@ -208,6 +210,84 @@ namespace Twilio.Rest.Assistants.V1
                 }
             }
         }
+        public class AssistantsV1ServicePolicy
+        {
+            [JsonProperty("id")]
+            private string Id {get; set;}
+            [JsonProperty("name")]
+            private string Name {get; set;}
+            [JsonProperty("description")]
+            private string Description {get; set;}
+            [JsonProperty("account_sid")]
+            private string AccountSid {get; set;}
+            [JsonProperty("user_sid")]
+            private string UserSid {get; set;}
+            [JsonProperty("type")]
+            private string Type {get; set;}
+            [JsonProperty("policy_details")]
+            private object PolicyDetails {get; set;}
+            [JsonProperty("date_created")]
+            private DateTime? DateCreated {get; set;}
+            [JsonProperty("date_updated")]
+            private DateTime? DateUpdated {get; set;}
+            public AssistantsV1ServicePolicy() { }
+            public class Builder
+            {
+                private AssistantsV1ServicePolicy _assistantsV1ServicePolicy = new AssistantsV1ServicePolicy();
+                public Builder()
+                {
+                }
+                public Builder WithId(string id)
+                {
+                    _assistantsV1ServicePolicy.Id= id;
+                    return this;
+                }
+                public Builder WithName(string name)
+                {
+                    _assistantsV1ServicePolicy.Name= name;
+                    return this;
+                }
+                public Builder WithDescription(string description)
+                {
+                    _assistantsV1ServicePolicy.Description= description;
+                    return this;
+                }
+                public Builder WithAccountSid(string accountSid)
+                {
+                    _assistantsV1ServicePolicy.AccountSid= accountSid;
+                    return this;
+                }
+                public Builder WithUserSid(string userSid)
+                {
+                    _assistantsV1ServicePolicy.UserSid= userSid;
+                    return this;
+                }
+                public Builder WithType(string type)
+                {
+                    _assistantsV1ServicePolicy.Type= type;
+                    return this;
+                }
+                public Builder WithPolicyDetails(object policyDetails)
+                {
+                    _assistantsV1ServicePolicy.PolicyDetails= policyDetails;
+                    return this;
+                }
+                public Builder WithDateCreated(DateTime? dateCreated)
+                {
+                    _assistantsV1ServicePolicy.DateCreated= dateCreated;
+                    return this;
+                }
+                public Builder WithDateUpdated(DateTime? dateUpdated)
+                {
+                    _assistantsV1ServicePolicy.DateUpdated= dateUpdated;
+                    return this;
+                }
+                public AssistantsV1ServicePolicy Build()
+                {
+                    return _assistantsV1ServicePolicy;
+                }
+            }
+        }
 
     
 
@@ -245,8 +325,7 @@ namespace Twilio.Rest.Assistants.V1
         /// <param name="options"> Create Tool parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Tool </returns>
-        public static async System.Threading.Tasks.Task<ToolResource> CreateAsync(CreateToolOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ToolResource> CreateAsync(CreateToolOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -260,7 +339,7 @@ namespace Twilio.Rest.Assistants.V1
         /// <returns> A single instance of Tool </returns>
         public static ToolResource Create(
                                           ToolResource.AssistantsV1ServiceCreateToolRequest assistantsV1ServiceCreateToolRequest,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateToolOptions(assistantsV1ServiceCreateToolRequest){  };
             return Create(options, client);
@@ -273,7 +352,7 @@ namespace Twilio.Rest.Assistants.V1
         /// <returns> Task that resolves to A single instance of Tool </returns>
         public static async System.Threading.Tasks.Task<ToolResource> CreateAsync(
                                                                                   ToolResource.AssistantsV1ServiceCreateToolRequest assistantsV1ServiceCreateToolRequest,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateToolOptions(assistantsV1ServiceCreateToolRequest){  };
             return await CreateAsync(options, client);
@@ -318,7 +397,7 @@ namespace Twilio.Rest.Assistants.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Tool </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteToolOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -345,6 +424,70 @@ namespace Twilio.Rest.Assistants.V1
         {
             var options = new DeleteToolOptions(pathId) ;
             return await DeleteAsync(options, client);
+        }
+        #endif
+        
+        private static Request BuildFetchRequest(FetchToolOptions options, ITwilioRestClient client)
+        {
+            
+            string path = "/v1/Tools/{id}";
+
+            string PathId = options.PathId;
+            path = path.Replace("{"+"Id"+"}", PathId);
+
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.Assistants,
+                path,
+                queryParams: options.GetParams(),
+                headerParams: null
+            );
+        }
+
+        /// <summary> Get tool </summary>
+        /// <param name="options"> Fetch Tool parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Tool </returns>
+        public static ToolResource Fetch(FetchToolOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            return FromJson(response.Content);
+        }
+
+        #if !NET35
+        /// <summary> Get tool </summary>
+        /// <param name="options"> Fetch Tool parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Tool </returns>
+        public static async System.Threading.Tasks.Task<ToolResource> FetchAsync(FetchToolOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            return FromJson(response.Content);
+        }
+        #endif
+        /// <summary> Get tool </summary>
+        /// <param name="pathId">  </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Tool </returns>
+        public static ToolResource Fetch(
+                                         string pathId, 
+                                        ITwilioRestClient client = null)
+        {
+            var options = new FetchToolOptions(pathId){  };
+            return Fetch(options, client);
+        }
+
+        #if !NET35
+        /// <summary> Get tool </summary>
+        /// <param name="pathId">  </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Tool </returns>
+        public static async System.Threading.Tasks.Task<ToolResource> FetchAsync(string pathId, ITwilioRestClient client = null)
+        {
+            var options = new FetchToolOptions(pathId){  };
+            return await FetchAsync(options, client);
         }
         #endif
         
@@ -379,8 +522,7 @@ namespace Twilio.Rest.Assistants.V1
         /// <param name="options"> Read Tool parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Tool </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<ToolResource>> ReadAsync(ReadToolOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<ToolResource>> ReadAsync(ReadToolOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -399,7 +541,7 @@ namespace Twilio.Rest.Assistants.V1
                                                      string assistantId = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadToolOptions(){ AssistantId = assistantId, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -416,7 +558,7 @@ namespace Twilio.Rest.Assistants.V1
                                                                                              string assistantId = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadToolOptions(){ AssistantId = assistantId, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -508,7 +650,7 @@ namespace Twilio.Rest.Assistants.V1
         /// <returns> Task that resolves to A single instance of Tool </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<ToolResource> UpdateAsync(UpdateToolOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -522,7 +664,7 @@ namespace Twilio.Rest.Assistants.V1
         /// <returns> A single instance of Tool </returns>
         public static ToolResource Update(
                                           string pathId,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateToolOptions(pathId){  };
             return Update(options, client);
@@ -535,7 +677,7 @@ namespace Twilio.Rest.Assistants.V1
         /// <returns> Task that resolves to A single instance of Tool </returns>
         public static async System.Threading.Tasks.Task<ToolResource> UpdateAsync(
                                                                               string pathId,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateToolOptions(pathId){  };
             return await UpdateAsync(options, client);
@@ -608,6 +750,10 @@ namespace Twilio.Rest.Assistants.V1
         [JsonProperty("type")]
         public string Type { get; }
 
+        ///<summary> The url of the tool resource. </summary> 
+        [JsonProperty("url")]
+        public string Url { get; private set; }
+
         ///<summary> The date and time in GMT when the Tool was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; }
@@ -615,6 +761,10 @@ namespace Twilio.Rest.Assistants.V1
         ///<summary> The date and time in GMT when the Tool was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; }
+
+        ///<summary> The Policies associated with the tool. </summary> 
+        [JsonProperty("policies")]
+        public List<AssistantsV1ServicePolicy> Policies { get; private set; }
 
 
 

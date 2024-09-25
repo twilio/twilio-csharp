@@ -25,6 +25,8 @@ using Twilio.Http;
 
 
 
+
+
 namespace Twilio.Rest.Api.V2010.Account
 {
     public class KeyResource : Resource
@@ -74,7 +76,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Key </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteKeyOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -141,8 +143,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="options"> Fetch Key parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Key </returns>
-        public static async System.Threading.Tasks.Task<KeyResource> FetchAsync(FetchKeyOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<KeyResource> FetchAsync(FetchKeyOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -157,7 +158,7 @@ namespace Twilio.Rest.Api.V2010.Account
         public static KeyResource Fetch(
                                          string pathSid, 
                                          string pathAccountSid = null, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchKeyOptions(pathSid){ PathAccountSid = pathAccountSid };
             return Fetch(options, client);
@@ -209,8 +210,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="options"> Read Key parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Key </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<KeyResource>> ReadAsync(ReadKeyOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<KeyResource>> ReadAsync(ReadKeyOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -229,7 +229,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                                      string pathAccountSid = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadKeyOptions(){ PathAccountSid = pathAccountSid, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -246,7 +246,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                                                                              string pathAccountSid = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadKeyOptions(){ PathAccountSid = pathAccountSid, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -339,7 +339,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <returns> Task that resolves to A single instance of Key </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<KeyResource> UpdateAsync(UpdateKeyOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -357,7 +357,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                           string pathSid,
                                           string pathAccountSid = null,
                                           string friendlyName = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateKeyOptions(pathSid){ PathAccountSid = pathAccountSid, FriendlyName = friendlyName };
             return Update(options, client);
@@ -374,7 +374,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                                                               string pathSid,
                                                                               string pathAccountSid = null,
                                                                               string friendlyName = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateKeyOptions(pathSid){ PathAccountSid = pathAccountSid, FriendlyName = friendlyName };
             return await UpdateAsync(options, client);

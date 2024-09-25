@@ -25,6 +25,8 @@ using Twilio.Http;
 using Twilio.Types;
 
 
+
+
 namespace Twilio.Rest.Events.V1
 {
     public class SinkResource : Resource
@@ -95,8 +97,7 @@ namespace Twilio.Rest.Events.V1
         /// <param name="options"> Create Sink parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Sink </returns>
-        public static async System.Threading.Tasks.Task<SinkResource> CreateAsync(CreateSinkOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SinkResource> CreateAsync(CreateSinkOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -114,7 +115,7 @@ namespace Twilio.Rest.Events.V1
                                           string description,
                                           object sinkConfiguration,
                                           SinkResource.SinkTypeEnum sinkType,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateSinkOptions(description, sinkConfiguration, sinkType){  };
             return Create(options, client);
@@ -131,7 +132,7 @@ namespace Twilio.Rest.Events.V1
                                                                                   string description,
                                                                                   object sinkConfiguration,
                                                                                   SinkResource.SinkTypeEnum sinkType,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateSinkOptions(description, sinkConfiguration, sinkType){  };
             return await CreateAsync(options, client);
@@ -176,7 +177,7 @@ namespace Twilio.Rest.Events.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Sink </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteSinkOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -239,8 +240,7 @@ namespace Twilio.Rest.Events.V1
         /// <param name="options"> Fetch Sink parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Sink </returns>
-        public static async System.Threading.Tasks.Task<SinkResource> FetchAsync(FetchSinkOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SinkResource> FetchAsync(FetchSinkOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -253,7 +253,7 @@ namespace Twilio.Rest.Events.V1
         /// <returns> A single instance of Sink </returns>
         public static SinkResource Fetch(
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchSinkOptions(pathSid){  };
             return Fetch(options, client);
@@ -302,8 +302,7 @@ namespace Twilio.Rest.Events.V1
         /// <param name="options"> Read Sink parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Sink </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<SinkResource>> ReadAsync(ReadSinkOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<SinkResource>> ReadAsync(ReadSinkOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -324,7 +323,7 @@ namespace Twilio.Rest.Events.V1
                                                      string status = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadSinkOptions(){ InUse = inUse, Status = status, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -343,7 +342,7 @@ namespace Twilio.Rest.Events.V1
                                                                                              string status = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadSinkOptions(){ InUse = inUse, Status = status, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -434,7 +433,7 @@ namespace Twilio.Rest.Events.V1
         /// <returns> Task that resolves to A single instance of Sink </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<SinkResource> UpdateAsync(UpdateSinkOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -450,7 +449,7 @@ namespace Twilio.Rest.Events.V1
         public static SinkResource Update(
                                           string pathSid,
                                           string description,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateSinkOptions(pathSid, description){  };
             return Update(options, client);
@@ -465,7 +464,7 @@ namespace Twilio.Rest.Events.V1
         public static async System.Threading.Tasks.Task<SinkResource> UpdateAsync(
                                                                               string pathSid,
                                                                               string description,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateSinkOptions(pathSid, description){  };
             return await UpdateAsync(options, client);

@@ -52,7 +52,7 @@ namespace Twilio.Rest.Assistants.V1.Session
             return p;
         }
 
-        
+    
 
     }
 

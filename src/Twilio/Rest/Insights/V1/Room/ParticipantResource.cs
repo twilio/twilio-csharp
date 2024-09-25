@@ -25,6 +25,8 @@ using Twilio.Http;
 using Twilio.Types;
 
 
+
+
 namespace Twilio.Rest.Insights.V1.Room
 {
     public class ParticipantResource : Resource
@@ -137,8 +139,7 @@ namespace Twilio.Rest.Insights.V1.Room
         /// <param name="options"> Fetch Participant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Participant </returns>
-        public static async System.Threading.Tasks.Task<ParticipantResource> FetchAsync(FetchParticipantOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ParticipantResource> FetchAsync(FetchParticipantOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -153,7 +154,7 @@ namespace Twilio.Rest.Insights.V1.Room
         public static ParticipantResource Fetch(
                                          string pathRoomSid, 
                                          string pathParticipantSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchParticipantOptions(pathRoomSid, pathParticipantSid){  };
             return Fetch(options, client);
@@ -205,8 +206,7 @@ namespace Twilio.Rest.Insights.V1.Room
         /// <param name="options"> Read Participant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Participant </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<ParticipantResource>> ReadAsync(ReadParticipantOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<ParticipantResource>> ReadAsync(ReadParticipantOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -225,7 +225,7 @@ namespace Twilio.Rest.Insights.V1.Room
                                                      string pathRoomSid,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadParticipantOptions(pathRoomSid){ PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -242,7 +242,7 @@ namespace Twilio.Rest.Insights.V1.Room
                                                                                              string pathRoomSid,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadParticipantOptions(pathRoomSid){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

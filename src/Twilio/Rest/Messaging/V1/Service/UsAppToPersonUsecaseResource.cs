@@ -25,6 +25,8 @@ using Twilio.Http;
 
 
 
+
+
 namespace Twilio.Rest.Messaging.V1.Service
 {
     public class UsAppToPersonUsecaseResource : Resource
@@ -67,8 +69,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <param name="options"> Fetch UsAppToPersonUsecase parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of UsAppToPersonUsecase </returns>
-        public static async System.Threading.Tasks.Task<UsAppToPersonUsecaseResource> FetchAsync(FetchUsAppToPersonUsecaseOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<UsAppToPersonUsecaseResource> FetchAsync(FetchUsAppToPersonUsecaseOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -83,7 +84,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         public static UsAppToPersonUsecaseResource Fetch(
                                          string pathMessagingServiceSid, 
                                          string brandRegistrationSid = null, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchUsAppToPersonUsecaseOptions(pathMessagingServiceSid){ BrandRegistrationSid = brandRegistrationSid };
             return Fetch(options, client);

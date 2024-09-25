@@ -25,6 +25,8 @@ using Twilio.Http;
 using Twilio.Types;
 
 
+
+
 namespace Twilio.Rest.Trusthub.V1
 {
     public class SupportingDocumentResource : Resource
@@ -83,8 +85,7 @@ namespace Twilio.Rest.Trusthub.V1
         /// <param name="options"> Create SupportingDocument parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SupportingDocument </returns>
-        public static async System.Threading.Tasks.Task<SupportingDocumentResource> CreateAsync(CreateSupportingDocumentOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SupportingDocumentResource> CreateAsync(CreateSupportingDocumentOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -102,7 +103,7 @@ namespace Twilio.Rest.Trusthub.V1
                                           string friendlyName,
                                           string type,
                                           object attributes = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateSupportingDocumentOptions(friendlyName, type){  Attributes = attributes };
             return Create(options, client);
@@ -119,7 +120,7 @@ namespace Twilio.Rest.Trusthub.V1
                                                                                   string friendlyName,
                                                                                   string type,
                                                                                   object attributes = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateSupportingDocumentOptions(friendlyName, type){  Attributes = attributes };
             return await CreateAsync(options, client);
@@ -164,7 +165,7 @@ namespace Twilio.Rest.Trusthub.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SupportingDocument </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteSupportingDocumentOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -227,8 +228,7 @@ namespace Twilio.Rest.Trusthub.V1
         /// <param name="options"> Fetch SupportingDocument parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SupportingDocument </returns>
-        public static async System.Threading.Tasks.Task<SupportingDocumentResource> FetchAsync(FetchSupportingDocumentOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SupportingDocumentResource> FetchAsync(FetchSupportingDocumentOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -241,7 +241,7 @@ namespace Twilio.Rest.Trusthub.V1
         /// <returns> A single instance of SupportingDocument </returns>
         public static SupportingDocumentResource Fetch(
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchSupportingDocumentOptions(pathSid){  };
             return Fetch(options, client);
@@ -290,8 +290,7 @@ namespace Twilio.Rest.Trusthub.V1
         /// <param name="options"> Read SupportingDocument parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SupportingDocument </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<SupportingDocumentResource>> ReadAsync(ReadSupportingDocumentOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<SupportingDocumentResource>> ReadAsync(ReadSupportingDocumentOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -308,7 +307,7 @@ namespace Twilio.Rest.Trusthub.V1
         public static ResourceSet<SupportingDocumentResource> Read(
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadSupportingDocumentOptions(){ PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -323,7 +322,7 @@ namespace Twilio.Rest.Trusthub.V1
         public static async System.Threading.Tasks.Task<ResourceSet<SupportingDocumentResource>> ReadAsync(
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadSupportingDocumentOptions(){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -414,7 +413,7 @@ namespace Twilio.Rest.Trusthub.V1
         /// <returns> Task that resolves to A single instance of SupportingDocument </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<SupportingDocumentResource> UpdateAsync(UpdateSupportingDocumentOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -432,7 +431,7 @@ namespace Twilio.Rest.Trusthub.V1
                                           string pathSid,
                                           string friendlyName = null,
                                           object attributes = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateSupportingDocumentOptions(pathSid){ FriendlyName = friendlyName, Attributes = attributes };
             return Update(options, client);
@@ -449,7 +448,7 @@ namespace Twilio.Rest.Trusthub.V1
                                                                               string pathSid,
                                                                               string friendlyName = null,
                                                                               object attributes = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateSupportingDocumentOptions(pathSid){ FriendlyName = friendlyName, Attributes = attributes };
             return await UpdateAsync(options, client);

@@ -25,6 +25,8 @@ using Twilio.Http;
 
 
 
+
+
 namespace Twilio.Rest.Taskrouter.V1.Workspace
 {
     public class WorkspaceCumulativeStatisticsResource : Resource
@@ -67,8 +69,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="options"> Fetch WorkspaceCumulativeStatistics parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of WorkspaceCumulativeStatistics </returns>
-        public static async System.Threading.Tasks.Task<WorkspaceCumulativeStatisticsResource> FetchAsync(FetchWorkspaceCumulativeStatisticsOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<WorkspaceCumulativeStatisticsResource> FetchAsync(FetchWorkspaceCumulativeStatisticsOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -91,7 +92,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                                          DateTime? startDate = null, 
                                          string taskChannel = null, 
                                          string splitByWaitTime = null, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchWorkspaceCumulativeStatisticsOptions(pathWorkspaceSid){ EndDate = endDate,Minutes = minutes,StartDate = startDate,TaskChannel = taskChannel,SplitByWaitTime = splitByWaitTime };
             return Fetch(options, client);

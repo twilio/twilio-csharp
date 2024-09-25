@@ -25,6 +25,8 @@ using Twilio.Http;
 using Twilio.Types;
 
 
+
+
 namespace Twilio.Rest.Numbers.V2
 {
     public class BundleCloneResource : Resource
@@ -85,8 +87,7 @@ namespace Twilio.Rest.Numbers.V2
         /// <param name="options"> Create BundleClone parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of BundleClone </returns>
-        public static async System.Threading.Tasks.Task<BundleCloneResource> CreateAsync(CreateBundleCloneOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<BundleCloneResource> CreateAsync(CreateBundleCloneOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -106,7 +107,7 @@ namespace Twilio.Rest.Numbers.V2
                                           string targetAccountSid,
                                           bool? moveToDraft = null,
                                           string friendlyName = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateBundleCloneOptions(pathBundleSid, targetAccountSid){  MoveToDraft = moveToDraft, FriendlyName = friendlyName };
             return Create(options, client);
@@ -125,7 +126,7 @@ namespace Twilio.Rest.Numbers.V2
                                                                                   string targetAccountSid,
                                                                                   bool? moveToDraft = null,
                                                                                   string friendlyName = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateBundleCloneOptions(pathBundleSid, targetAccountSid){  MoveToDraft = moveToDraft, FriendlyName = friendlyName };
             return await CreateAsync(options, client);

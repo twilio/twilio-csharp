@@ -25,6 +25,8 @@ using Twilio.Http;
 
 
 
+
+
 namespace Twilio.Rest.Bulkexports.V1
 {
     public class ExportResource : Resource
@@ -67,8 +69,7 @@ namespace Twilio.Rest.Bulkexports.V1
         /// <param name="options"> Fetch Export parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Export </returns>
-        public static async System.Threading.Tasks.Task<ExportResource> FetchAsync(FetchExportOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ExportResource> FetchAsync(FetchExportOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -81,7 +82,7 @@ namespace Twilio.Rest.Bulkexports.V1
         /// <returns> A single instance of Export </returns>
         public static ExportResource Fetch(
                                          string pathResourceType, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchExportOptions(pathResourceType){  };
             return Fetch(options, client);

@@ -25,6 +25,8 @@ using Twilio.Http;
 
 
 
+
+
 namespace Twilio.Rest.Taskrouter.V1.Workspace
 {
     public class TaskChannelResource : Resource
@@ -68,8 +70,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="options"> Create TaskChannel parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TaskChannel </returns>
-        public static async System.Threading.Tasks.Task<TaskChannelResource> CreateAsync(CreateTaskChannelOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<TaskChannelResource> CreateAsync(CreateTaskChannelOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -89,7 +90,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                                           string friendlyName,
                                           string uniqueName,
                                           bool? channelOptimizedRouting = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateTaskChannelOptions(pathWorkspaceSid, friendlyName, uniqueName){  ChannelOptimizedRouting = channelOptimizedRouting };
             return Create(options, client);
@@ -108,7 +109,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                                                                                   string friendlyName,
                                                                                   string uniqueName,
                                                                                   bool? channelOptimizedRouting = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateTaskChannelOptions(pathWorkspaceSid, friendlyName, uniqueName){  ChannelOptimizedRouting = channelOptimizedRouting };
             return await CreateAsync(options, client);
@@ -155,7 +156,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TaskChannel </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteTaskChannelOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -222,8 +223,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="options"> Fetch TaskChannel parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TaskChannel </returns>
-        public static async System.Threading.Tasks.Task<TaskChannelResource> FetchAsync(FetchTaskChannelOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<TaskChannelResource> FetchAsync(FetchTaskChannelOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -238,7 +238,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         public static TaskChannelResource Fetch(
                                          string pathWorkspaceSid, 
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchTaskChannelOptions(pathWorkspaceSid, pathSid){  };
             return Fetch(options, client);
@@ -290,8 +290,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="options"> Read TaskChannel parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TaskChannel </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<TaskChannelResource>> ReadAsync(ReadTaskChannelOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<TaskChannelResource>> ReadAsync(ReadTaskChannelOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -310,7 +309,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                                                      string pathWorkspaceSid,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadTaskChannelOptions(pathWorkspaceSid){ PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -327,7 +326,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                                                                                              string pathWorkspaceSid,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadTaskChannelOptions(pathWorkspaceSid){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -420,7 +419,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <returns> Task that resolves to A single instance of TaskChannel </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<TaskChannelResource> UpdateAsync(UpdateTaskChannelOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -440,7 +439,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                                           string pathSid,
                                           string friendlyName = null,
                                           bool? channelOptimizedRouting = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateTaskChannelOptions(pathWorkspaceSid, pathSid){ FriendlyName = friendlyName, ChannelOptimizedRouting = channelOptimizedRouting };
             return Update(options, client);
@@ -459,7 +458,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                                                                               string pathSid,
                                                                               string friendlyName = null,
                                                                               bool? channelOptimizedRouting = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateTaskChannelOptions(pathWorkspaceSid, pathSid){ FriendlyName = friendlyName, ChannelOptimizedRouting = channelOptimizedRouting };
             return await UpdateAsync(options, client);

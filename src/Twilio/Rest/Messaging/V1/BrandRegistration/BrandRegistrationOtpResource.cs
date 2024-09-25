@@ -25,6 +25,8 @@ using Twilio.Http;
 
 
 
+
+
 namespace Twilio.Rest.Messaging.V1.BrandRegistration
 {
     public class BrandRegistrationOtpResource : Resource
@@ -68,8 +70,7 @@ namespace Twilio.Rest.Messaging.V1.BrandRegistration
         /// <param name="options"> Create BrandRegistrationOtp parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of BrandRegistrationOtp </returns>
-        public static async System.Threading.Tasks.Task<BrandRegistrationOtpResource> CreateAsync(CreateBrandRegistrationOtpOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<BrandRegistrationOtpResource> CreateAsync(CreateBrandRegistrationOtpOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -83,7 +84,7 @@ namespace Twilio.Rest.Messaging.V1.BrandRegistration
         /// <returns> A single instance of BrandRegistrationOtp </returns>
         public static BrandRegistrationOtpResource Create(
                                           string pathBrandRegistrationSid,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateBrandRegistrationOtpOptions(pathBrandRegistrationSid){  };
             return Create(options, client);
@@ -96,7 +97,7 @@ namespace Twilio.Rest.Messaging.V1.BrandRegistration
         /// <returns> Task that resolves to A single instance of BrandRegistrationOtp </returns>
         public static async System.Threading.Tasks.Task<BrandRegistrationOtpResource> CreateAsync(
                                                                                   string pathBrandRegistrationSid,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateBrandRegistrationOtpOptions(pathBrandRegistrationSid){  };
             return await CreateAsync(options, client);

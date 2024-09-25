@@ -25,6 +25,8 @@ using Twilio.Http;
 
 
 
+
+
 namespace Twilio.Rest.FlexApi.V1
 {
     public class PluginVersionArchiveResource : Resource
@@ -71,7 +73,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <returns> Task that resolves to A single instance of PluginVersionArchive </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<PluginVersionArchiveResource> UpdateAsync(UpdatePluginVersionArchiveOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -89,7 +91,7 @@ namespace Twilio.Rest.FlexApi.V1
                                           string pathPluginSid,
                                           string pathSid,
                                           string flexMetadata = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdatePluginVersionArchiveOptions(pathPluginSid, pathSid){ FlexMetadata = flexMetadata };
             return Update(options, client);
@@ -106,7 +108,7 @@ namespace Twilio.Rest.FlexApi.V1
                                                                               string pathPluginSid,
                                                                               string pathSid,
                                                                               string flexMetadata = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdatePluginVersionArchiveOptions(pathPluginSid, pathSid){ FlexMetadata = flexMetadata };
             return await UpdateAsync(options, client);

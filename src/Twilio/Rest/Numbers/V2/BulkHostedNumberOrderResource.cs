@@ -25,6 +25,8 @@ using Twilio.Http;
 using Twilio.Types;
 
 
+
+
 namespace Twilio.Rest.Numbers.V2
 {
     public class BulkHostedNumberOrderResource : Resource
@@ -81,8 +83,7 @@ namespace Twilio.Rest.Numbers.V2
         /// <param name="options"> Create BulkHostedNumberOrder parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of BulkHostedNumberOrder </returns>
-        public static async System.Threading.Tasks.Task<BulkHostedNumberOrderResource> CreateAsync(CreateBulkHostedNumberOrderOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<BulkHostedNumberOrderResource> CreateAsync(CreateBulkHostedNumberOrderOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -94,7 +95,7 @@ namespace Twilio.Rest.Numbers.V2
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of BulkHostedNumberOrder </returns>
         public static BulkHostedNumberOrderResource Create(
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateBulkHostedNumberOrderOptions(){  };
             return Create(options, client);
@@ -105,7 +106,7 @@ namespace Twilio.Rest.Numbers.V2
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of BulkHostedNumberOrder </returns>
         public static async System.Threading.Tasks.Task<BulkHostedNumberOrderResource> CreateAsync(
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateBulkHostedNumberOrderOptions(){  };
             return await CreateAsync(options, client);
@@ -145,8 +146,7 @@ namespace Twilio.Rest.Numbers.V2
         /// <param name="options"> Fetch BulkHostedNumberOrder parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of BulkHostedNumberOrder </returns>
-        public static async System.Threading.Tasks.Task<BulkHostedNumberOrderResource> FetchAsync(FetchBulkHostedNumberOrderOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<BulkHostedNumberOrderResource> FetchAsync(FetchBulkHostedNumberOrderOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -161,7 +161,7 @@ namespace Twilio.Rest.Numbers.V2
         public static BulkHostedNumberOrderResource Fetch(
                                          string pathBulkHostingSid, 
                                          string orderStatus = null, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchBulkHostedNumberOrderOptions(pathBulkHostingSid){ OrderStatus = orderStatus };
             return Fetch(options, client);

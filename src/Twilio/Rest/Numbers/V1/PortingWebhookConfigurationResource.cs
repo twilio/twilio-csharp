@@ -25,6 +25,8 @@ using Twilio.Http;
 
 
 
+
+
 namespace Twilio.Rest.Numbers.V1
 {
     public class PortingWebhookConfigurationResource : Resource
@@ -67,8 +69,7 @@ namespace Twilio.Rest.Numbers.V1
         /// <param name="options"> Create PortingWebhookConfiguration parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PortingWebhookConfiguration </returns>
-        public static async System.Threading.Tasks.Task<PortingWebhookConfigurationResource> CreateAsync(CreatePortingWebhookConfigurationOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<PortingWebhookConfigurationResource> CreateAsync(CreatePortingWebhookConfigurationOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -80,7 +81,7 @@ namespace Twilio.Rest.Numbers.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of PortingWebhookConfiguration </returns>
         public static PortingWebhookConfigurationResource Create(
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreatePortingWebhookConfigurationOptions(){  };
             return Create(options, client);
@@ -91,7 +92,7 @@ namespace Twilio.Rest.Numbers.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PortingWebhookConfiguration </returns>
         public static async System.Threading.Tasks.Task<PortingWebhookConfigurationResource> CreateAsync(
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreatePortingWebhookConfigurationOptions(){  };
             return await CreateAsync(options, client);

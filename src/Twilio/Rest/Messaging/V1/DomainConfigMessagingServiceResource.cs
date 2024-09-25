@@ -25,6 +25,8 @@ using Twilio.Http;
 
 
 
+
+
 namespace Twilio.Rest.Messaging.V1
 {
     public class DomainConfigMessagingServiceResource : Resource
@@ -67,8 +69,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="options"> Fetch DomainConfigMessagingService parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of DomainConfigMessagingService </returns>
-        public static async System.Threading.Tasks.Task<DomainConfigMessagingServiceResource> FetchAsync(FetchDomainConfigMessagingServiceOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<DomainConfigMessagingServiceResource> FetchAsync(FetchDomainConfigMessagingServiceOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -81,7 +82,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <returns> A single instance of DomainConfigMessagingService </returns>
         public static DomainConfigMessagingServiceResource Fetch(
                                          string pathMessagingServiceSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchDomainConfigMessagingServiceOptions(pathMessagingServiceSid){  };
             return Fetch(options, client);

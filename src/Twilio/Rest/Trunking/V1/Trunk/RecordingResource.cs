@@ -25,6 +25,8 @@ using Twilio.Http;
 using Twilio.Types;
 
 
+
+
 namespace Twilio.Rest.Trunking.V1.Trunk
 {
     public class RecordingResource : Resource
@@ -96,8 +98,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <param name="options"> Fetch Recording parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Recording </returns>
-        public static async System.Threading.Tasks.Task<RecordingResource> FetchAsync(FetchRecordingOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<RecordingResource> FetchAsync(FetchRecordingOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -110,7 +111,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <returns> A single instance of Recording </returns>
         public static RecordingResource Fetch(
                                          string pathTrunkSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchRecordingOptions(pathTrunkSid){  };
             return Fetch(options, client);
@@ -163,7 +164,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <returns> Task that resolves to A single instance of Recording </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<RecordingResource> UpdateAsync(UpdateRecordingOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -181,7 +182,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
                                           string pathTrunkSid,
                                           RecordingResource.RecordingModeEnum mode = null,
                                           RecordingResource.RecordingTrimEnum trim = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateRecordingOptions(pathTrunkSid){ Mode = mode, Trim = trim };
             return Update(options, client);
@@ -198,7 +199,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
                                                                               string pathTrunkSid,
                                                                               RecordingResource.RecordingModeEnum mode = null,
                                                                               RecordingResource.RecordingTrimEnum trim = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateRecordingOptions(pathTrunkSid){ Mode = mode, Trim = trim };
             return await UpdateAsync(options, client);

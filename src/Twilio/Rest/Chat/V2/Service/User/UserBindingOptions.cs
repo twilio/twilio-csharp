@@ -58,7 +58,7 @@ namespace Twilio.Rest.Chat.V2.Service.User
             return p;
         }
 
-        
+    
 
     }
 
@@ -98,7 +98,7 @@ namespace Twilio.Rest.Chat.V2.Service.User
             return p;
         }
 
-        
+    
 
     }
 
@@ -145,7 +145,7 @@ namespace Twilio.Rest.Chat.V2.Service.User
             return p;
         }
 
-        
+    
 
     }
 
