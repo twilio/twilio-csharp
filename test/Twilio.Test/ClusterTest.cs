@@ -6,6 +6,7 @@ using Twilio.Rest.Api.V2010.Account;
 using Twilio.Rest.Chat.V2;
 using Twilio.Rest.Chat.V2.Service;
 using Twilio.Rest.Events.V1;
+using Twilio.Rest.PreviewIam;
 using System.Linq;
 namespace Twilio.Tests 
 {
