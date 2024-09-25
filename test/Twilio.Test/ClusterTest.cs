@@ -139,7 +139,7 @@ namespace Twilio.Tests
              accountList = Twilio.Rest.PreviewIam.Organizations.AccountResource.Read(orgsSid);
              Assert.IsNotNull(accountList.ElementAt(0).FriendlyName);
 
-             var userList = UserResource.Read(pathOrganizationSid: orgsSid);
+             var userList = UserResource.Read(orgsSid);
              Assert.IsNotNull(userList);
 
         }
