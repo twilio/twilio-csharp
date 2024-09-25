@@ -25,6 +25,8 @@ using Twilio.Http;
 
 
 
+
+
 namespace Twilio.Rest.FlexApi.V1
 {
     public class InsightsSettingsAnswerSetsResource : Resource
@@ -65,8 +67,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="options"> Fetch InsightsSettingsAnswerSets parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InsightsSettingsAnswerSets </returns>
-        public static async System.Threading.Tasks.Task<InsightsSettingsAnswerSetsResource> FetchAsync(FetchInsightsSettingsAnswerSetsOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<InsightsSettingsAnswerSetsResource> FetchAsync(FetchInsightsSettingsAnswerSetsOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -79,7 +80,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <returns> A single instance of InsightsSettingsAnswerSets </returns>
         public static InsightsSettingsAnswerSetsResource Fetch(
                                          string authorization = null, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchInsightsSettingsAnswerSetsOptions(){ Authorization = authorization };
             return Fetch(options, client);

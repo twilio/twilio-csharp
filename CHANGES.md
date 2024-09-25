@@ -1,6 +1,20 @@
 twilio-csharp Changelog
 =======================
 
+[2024-09-25] Version 7.4.0
+--------------------------
+**Library - Feature**
+- [PR #759](https://github.com/twilio/twilio-csharp/pull/759): Adding helper libraries for organization api and support for bearer token auth and no auth rest calls. Thanks to [@AsabuHere](https://github.com/AsabuHere)!
+
+**Accounts**
+- Update docs and mounts.
+- Change library visibility to public
+- Enable consent and contact bulk upsert APIs in prod.
+
+**Serverless**
+- Add is_plugin parameter in deployments api to check if it is plugins deployment
+
+
 [2024-09-18] Version 7.3.1
 --------------------------
 **Intelligence**

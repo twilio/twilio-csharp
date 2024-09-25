@@ -25,6 +25,8 @@ using Twilio.Http;
 using Twilio.Types;
 
 
+
+
 namespace Twilio.Rest.Conversations.V1.Service.Configuration
 {
     public class WebhookResource : Resource
@@ -80,8 +82,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Configuration
         /// <param name="options"> Fetch Webhook parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Webhook </returns>
-        public static async System.Threading.Tasks.Task<WebhookResource> FetchAsync(FetchWebhookOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<WebhookResource> FetchAsync(FetchWebhookOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -94,7 +95,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Configuration
         /// <returns> A single instance of Webhook </returns>
         public static WebhookResource Fetch(
                                          string pathChatServiceSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchWebhookOptions(pathChatServiceSid){  };
             return Fetch(options, client);
@@ -147,7 +148,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Configuration
         /// <returns> Task that resolves to A single instance of Webhook </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<WebhookResource> UpdateAsync(UpdateWebhookOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -169,7 +170,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Configuration
                                           Uri postWebhookUrl = null,
                                           List<string> filters = null,
                                           string method = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateWebhookOptions(pathChatServiceSid){ PreWebhookUrl = preWebhookUrl, PostWebhookUrl = postWebhookUrl, Filters = filters, Method = method };
             return Update(options, client);
@@ -190,7 +191,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Configuration
                                                                               Uri postWebhookUrl = null,
                                                                               List<string> filters = null,
                                                                               string method = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateWebhookOptions(pathChatServiceSid){ PreWebhookUrl = preWebhookUrl, PostWebhookUrl = postWebhookUrl, Filters = filters, Method = method };
             return await UpdateAsync(options, client);

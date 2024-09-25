@@ -24,6 +24,9 @@ using Twilio.Exceptions;
 using Twilio.Http;
 
 
+using Twilio.Clients.NoAuth;
+using Twilio.Http.NoAuth;
+
 
 namespace Twilio.Rest.Oauth.V1
 {
@@ -34,13 +37,13 @@ namespace Twilio.Rest.Oauth.V1
     
 
         
-        private static Request BuildCreateRequest(CreateTokenOptions options, ITwilioRestClient client)
+        private static NoAuthRequest BuildCreateRequest(CreateTokenOptions options, TwilioNoAuthRestClient client)
         {
             
             string path = "/v1/token";
 
 
-            return new Request(
+            return new NoAuthRequest(
                 HttpMethod.Post,
                 Rest.Domain.Oauth,
                 path,
@@ -54,9 +57,9 @@ namespace Twilio.Rest.Oauth.V1
         /// <param name="options"> Create Token parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Token </returns>
-        public static TokenResource Create(CreateTokenOptions options, ITwilioRestClient client = null)
+        public static TokenResource Create(CreateTokenOptions options, TwilioNoAuthRestClient client = null)
         {
-            client = client ?? TwilioClient.GetRestClient();
+            client = client ?? TwilioOrgsTokenAuthClient.GetNoAuthRestClient();
             var response = client.Request(BuildCreateRequest(options, client));
             return FromJson(response.Content);
         }
@@ -66,10 +69,9 @@ namespace Twilio.Rest.Oauth.V1
         /// <param name="options"> Create Token parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Token </returns>
-        public static async System.Threading.Tasks.Task<TokenResource> CreateAsync(CreateTokenOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<TokenResource> CreateAsync(CreateTokenOptions options, TwilioNoAuthRestClient client = null)
         {
-            client = client ?? TwilioClient.GetRestClient();
+            client = client ?? TwilioOrgsTokenAuthClient.GetNoAuthRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
             return FromJson(response.Content);
         }
@@ -95,7 +97,7 @@ namespace Twilio.Rest.Oauth.V1
                                           string audience = null,
                                           string refreshToken = null,
                                           string scope = null,
-                                          ITwilioRestClient client = null)
+                                            TwilioNoAuthRestClient client = null)
         {
             var options = new CreateTokenOptions(grantType, clientId){  ClientSecret = clientSecret, Code = code, RedirectUri = redirectUri, Audience = audience, RefreshToken = refreshToken, Scope = scope };
             return Create(options, client);
@@ -122,7 +124,7 @@ namespace Twilio.Rest.Oauth.V1
                                                                                   string audience = null,
                                                                                   string refreshToken = null,
                                                                                   string scope = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    TwilioNoAuthRestClient client = null)
         {
         var options = new CreateTokenOptions(grantType, clientId){  ClientSecret = clientSecret, Code = code, RedirectUri = redirectUri, Audience = audience, RefreshToken = refreshToken, Scope = scope };
             return await CreateAsync(options, client);

@@ -195,7 +195,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
             return p;
         }
 
-        
+    
 
     }
 
@@ -225,7 +225,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
             return p;
         }
 
-        
+    
 
     }
 
@@ -285,7 +285,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
             return p;
         }
 
-        
+    
 
     }
 

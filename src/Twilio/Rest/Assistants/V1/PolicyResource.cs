@@ -25,6 +25,8 @@ using Twilio.Http;
 
 
 
+
+
 namespace Twilio.Rest.Assistants.V1
 {
     public class PolicyResource : Resource
@@ -65,8 +67,7 @@ namespace Twilio.Rest.Assistants.V1
         /// <param name="options"> Read Policy parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Policy </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<PolicyResource>> ReadAsync(ReadPolicyOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<PolicyResource>> ReadAsync(ReadPolicyOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -87,7 +88,7 @@ namespace Twilio.Rest.Assistants.V1
                                                      string knowledgeId = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadPolicyOptions(){ ToolId = toolId, KnowledgeId = knowledgeId, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -106,7 +107,7 @@ namespace Twilio.Rest.Assistants.V1
                                                                                              string knowledgeId = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadPolicyOptions(){ ToolId = toolId, KnowledgeId = knowledgeId, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

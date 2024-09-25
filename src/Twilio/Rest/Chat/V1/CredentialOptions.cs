@@ -122,7 +122,7 @@ namespace Twilio.Rest.Chat.V1
             return p;
         }
 
-        
+    
 
     }
 
@@ -152,7 +152,7 @@ namespace Twilio.Rest.Chat.V1
             return p;
         }
 
-        
+    
 
     }
 
@@ -177,7 +177,7 @@ namespace Twilio.Rest.Chat.V1
             return p;
         }
 
-        
+    
 
     }
 

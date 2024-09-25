@@ -25,6 +25,8 @@ using Twilio.Http;
 
 
 
+
+
 namespace Twilio.Rest.Lookups.V1
 {
     public class PhoneNumberResource : Resource
@@ -67,8 +69,7 @@ namespace Twilio.Rest.Lookups.V1
         /// <param name="options"> Fetch PhoneNumber parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PhoneNumber </returns>
-        public static async System.Threading.Tasks.Task<PhoneNumberResource> FetchAsync(FetchPhoneNumberOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<PhoneNumberResource> FetchAsync(FetchPhoneNumberOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -89,7 +90,7 @@ namespace Twilio.Rest.Lookups.V1
                                          List<string> type = null, 
                                          List<string> addOns = null, 
                                          Dictionary<string, object> addOnsData = null, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchPhoneNumberOptions(pathPhoneNumber){ CountryCode = countryCode,Type = type,AddOns = addOns,AddOnsData = addOnsData };
             return Fetch(options, client);

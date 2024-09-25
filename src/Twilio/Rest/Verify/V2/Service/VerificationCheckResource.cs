@@ -25,6 +25,8 @@ using Twilio.Http;
 using Twilio.Types;
 
 
+
+
 namespace Twilio.Rest.Verify.V2.Service
 {
     public class VerificationCheckResource : Resource
@@ -84,8 +86,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="options"> Create VerificationCheck parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of VerificationCheck </returns>
-        public static async System.Threading.Tasks.Task<VerificationCheckResource> CreateAsync(CreateVerificationCheckOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<VerificationCheckResource> CreateAsync(CreateVerificationCheckOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -109,7 +110,7 @@ namespace Twilio.Rest.Verify.V2.Service
                                           string verificationSid = null,
                                           string amount = null,
                                           string payee = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateVerificationCheckOptions(pathServiceSid){  Code = code, To = to, VerificationSid = verificationSid, Amount = amount, Payee = payee };
             return Create(options, client);
@@ -132,7 +133,7 @@ namespace Twilio.Rest.Verify.V2.Service
                                                                                   string verificationSid = null,
                                                                                   string amount = null,
                                                                                   string payee = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateVerificationCheckOptions(pathServiceSid){  Code = code, To = to, VerificationSid = verificationSid, Amount = amount, Payee = payee };
             return await CreateAsync(options, client);

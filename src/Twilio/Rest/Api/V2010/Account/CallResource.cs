@@ -25,6 +25,8 @@ using Twilio.Http;
 using Twilio.Types;
 
 
+
+
 namespace Twilio.Rest.Api.V2010.Account
 {
     public class CallResource : Resource
@@ -99,8 +101,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="options"> Create Call parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Call </returns>
-        public static async System.Threading.Tasks.Task<CallResource> CreateAsync(CreateCallOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<CallResource> CreateAsync(CreateCallOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -184,7 +185,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                           string callToken = null,
                                           string recordingTrack = null,
                                           int? timeLimit = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateCallOptions(to, from){  PathAccountSid = pathAccountSid, Url = url, Twiml = twiml, ApplicationSid = applicationSid, Method = method, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StatusCallbackEvent = statusCallbackEvent, StatusCallbackMethod = statusCallbackMethod, SendDigits = sendDigits, Timeout = timeout, Record = record, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword, MachineDetection = machineDetection, MachineDetectionTimeout = machineDetectionTimeout, RecordingStatusCallbackEvent = recordingStatusCallbackEvent, Trim = trim, CallerId = callerId, MachineDetectionSpeechThreshold = machineDetectionSpeechThreshold, MachineDetectionSpeechEndThreshold = machineDetectionSpeechEndThreshold, MachineDetectionSilenceTimeout = machineDetectionSilenceTimeout, AsyncAmd = asyncAmd, AsyncAmdStatusCallback = asyncAmdStatusCallback, AsyncAmdStatusCallbackMethod = asyncAmdStatusCallbackMethod, Byoc = byoc, CallReason = callReason, CallToken = callToken, RecordingTrack = recordingTrack, TimeLimit = timeLimit };
             return Create(options, client);
@@ -267,7 +268,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                                                                   string callToken = null,
                                                                                   string recordingTrack = null,
                                                                                   int? timeLimit = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateCallOptions(to, from){  PathAccountSid = pathAccountSid, Url = url, Twiml = twiml, ApplicationSid = applicationSid, Method = method, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StatusCallbackEvent = statusCallbackEvent, StatusCallbackMethod = statusCallbackMethod, SendDigits = sendDigits, Timeout = timeout, Record = record, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword, MachineDetection = machineDetection, MachineDetectionTimeout = machineDetectionTimeout, RecordingStatusCallbackEvent = recordingStatusCallbackEvent, Trim = trim, CallerId = callerId, MachineDetectionSpeechThreshold = machineDetectionSpeechThreshold, MachineDetectionSpeechEndThreshold = machineDetectionSpeechEndThreshold, MachineDetectionSilenceTimeout = machineDetectionSilenceTimeout, AsyncAmd = asyncAmd, AsyncAmdStatusCallback = asyncAmdStatusCallback, AsyncAmdStatusCallbackMethod = asyncAmdStatusCallbackMethod, Byoc = byoc, CallReason = callReason, CallToken = callToken, RecordingTrack = recordingTrack, TimeLimit = timeLimit };
             return await CreateAsync(options, client);
@@ -314,7 +315,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Call </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteCallOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -381,8 +382,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="options"> Fetch Call parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Call </returns>
-        public static async System.Threading.Tasks.Task<CallResource> FetchAsync(FetchCallOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<CallResource> FetchAsync(FetchCallOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -397,7 +397,7 @@ namespace Twilio.Rest.Api.V2010.Account
         public static CallResource Fetch(
                                          string pathSid, 
                                          string pathAccountSid = null, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchCallOptions(pathSid){ PathAccountSid = pathAccountSid };
             return Fetch(options, client);
@@ -449,8 +449,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="options"> Read Call parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Call </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<CallResource>> ReadAsync(ReadCallOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<CallResource>> ReadAsync(ReadCallOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -489,7 +488,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                                      DateTime? endTimeAfter = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadCallOptions(){ PathAccountSid = pathAccountSid, To = to, From = from, ParentCallSid = parentCallSid, Status = status, StartTimeBefore = startTimeBefore, StartTime = startTime, StartTimeAfter = startTimeAfter, EndTimeBefore = endTimeBefore, EndTime = endTime, EndTimeAfter = endTimeAfter, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -526,7 +525,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                                                                              DateTime? endTimeAfter = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadCallOptions(){ PathAccountSid = pathAccountSid, To = to, From = from, ParentCallSid = parentCallSid, Status = status, StartTimeBefore = startTimeBefore, StartTime = startTime, StartTimeAfter = startTimeAfter, EndTimeBefore = endTimeBefore, EndTime = endTime, EndTimeAfter = endTimeAfter, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -619,7 +618,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <returns> Task that resolves to A single instance of Call </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<CallResource> UpdateAsync(UpdateCallOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -653,7 +652,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                           Twilio.Http.HttpMethod statusCallbackMethod = null,
                                           Types.Twiml twiml = null,
                                           int? timeLimit = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateCallOptions(pathSid){ PathAccountSid = pathAccountSid, Url = url, Method = method, Status = status, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, Twiml = twiml, TimeLimit = timeLimit };
             return Update(options, client);
@@ -686,7 +685,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                                                               Twilio.Http.HttpMethod statusCallbackMethod = null,
                                                                               Types.Twiml twiml = null,
                                                                               int? timeLimit = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateCallOptions(pathSid){ PathAccountSid = pathAccountSid, Url = url, Method = method, Status = status, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, Twiml = twiml, TimeLimit = timeLimit };
             return await UpdateAsync(options, client);

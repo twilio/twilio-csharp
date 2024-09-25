@@ -25,6 +25,8 @@ using Twilio.Http;
 using Twilio.Types;
 
 
+
+
 namespace Twilio.Rest.Chat.V1.Service.User
 {
     public class UserChannelResource : Resource
@@ -83,8 +85,7 @@ namespace Twilio.Rest.Chat.V1.Service.User
         /// <param name="options"> Read UserChannel parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of UserChannel </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<UserChannelResource>> ReadAsync(ReadUserChannelOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<UserChannelResource>> ReadAsync(ReadUserChannelOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -105,7 +106,7 @@ namespace Twilio.Rest.Chat.V1.Service.User
                                                      string pathUserSid,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadUserChannelOptions(pathServiceSid, pathUserSid){ PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -124,7 +125,7 @@ namespace Twilio.Rest.Chat.V1.Service.User
                                                                                              string pathUserSid,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadUserChannelOptions(pathServiceSid, pathUserSid){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

@@ -25,6 +25,8 @@ using Twilio.Http;
 using Twilio.Types;
 
 
+
+
 namespace Twilio.Rest.Proxy.V1.Service.Session
 {
     public class InteractionResource : Resource
@@ -122,7 +124,7 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Interaction </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteInteractionOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -193,8 +195,7 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         /// <param name="options"> Fetch Interaction parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Interaction </returns>
-        public static async System.Threading.Tasks.Task<InteractionResource> FetchAsync(FetchInteractionOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<InteractionResource> FetchAsync(FetchInteractionOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -211,7 +212,7 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
                                          string pathServiceSid, 
                                          string pathSessionSid, 
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchInteractionOptions(pathServiceSid, pathSessionSid, pathSid){  };
             return Fetch(options, client);
@@ -266,8 +267,7 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         /// <param name="options"> Read Interaction parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Interaction </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<InteractionResource>> ReadAsync(ReadInteractionOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<InteractionResource>> ReadAsync(ReadInteractionOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -288,7 +288,7 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
                                                      string pathSessionSid,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadInteractionOptions(pathServiceSid, pathSessionSid){ PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -307,7 +307,7 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
                                                                                              string pathSessionSid,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadInteractionOptions(pathServiceSid, pathSessionSid){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

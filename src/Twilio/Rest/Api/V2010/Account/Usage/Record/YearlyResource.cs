@@ -25,6 +25,8 @@ using Twilio.Http;
 using Twilio.Types;
 
 
+
+
 namespace Twilio.Rest.Api.V2010.Account.Usage.Record
 {
     public class YearlyResource : Resource
@@ -327,8 +329,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
         /// <param name="options"> Read Yearly parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Yearly </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<YearlyResource>> ReadAsync(ReadYearlyOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<YearlyResource>> ReadAsync(ReadYearlyOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -355,7 +356,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
                                                      bool? includeSubaccounts = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadYearlyOptions(){ PathAccountSid = pathAccountSid, Category = category, StartDate = startDate, EndDate = endDate, IncludeSubaccounts = includeSubaccounts, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -380,7 +381,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
                                                                                              bool? includeSubaccounts = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadYearlyOptions(){ PathAccountSid = pathAccountSid, Category = category, StartDate = startDate, EndDate = endDate, IncludeSubaccounts = includeSubaccounts, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

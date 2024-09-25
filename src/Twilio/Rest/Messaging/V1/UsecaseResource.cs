@@ -25,6 +25,8 @@ using Twilio.Http;
 
 
 
+
+
 namespace Twilio.Rest.Messaging.V1
 {
     public class UsecaseResource : Resource
@@ -65,8 +67,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="options"> Fetch Usecase parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Usecase </returns>
-        public static async System.Threading.Tasks.Task<UsecaseResource> FetchAsync(FetchUsecaseOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<UsecaseResource> FetchAsync(FetchUsecaseOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -77,7 +78,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Usecase </returns>
         public static UsecaseResource Fetch(
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchUsecaseOptions(){  };
             return Fetch(options, client);

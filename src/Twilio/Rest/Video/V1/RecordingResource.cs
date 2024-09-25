@@ -25,6 +25,8 @@ using Twilio.Http;
 using Twilio.Types;
 
 
+
+
 namespace Twilio.Rest.Video.V1
 {
     public class RecordingResource : Resource
@@ -129,7 +131,7 @@ namespace Twilio.Rest.Video.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Recording </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteRecordingOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -192,8 +194,7 @@ namespace Twilio.Rest.Video.V1
         /// <param name="options"> Fetch Recording parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Recording </returns>
-        public static async System.Threading.Tasks.Task<RecordingResource> FetchAsync(FetchRecordingOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<RecordingResource> FetchAsync(FetchRecordingOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -206,7 +207,7 @@ namespace Twilio.Rest.Video.V1
         /// <returns> A single instance of Recording </returns>
         public static RecordingResource Fetch(
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchRecordingOptions(pathSid){  };
             return Fetch(options, client);
@@ -255,8 +256,7 @@ namespace Twilio.Rest.Video.V1
         /// <param name="options"> Read Recording parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Recording </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<RecordingResource>> ReadAsync(ReadRecordingOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<RecordingResource>> ReadAsync(ReadRecordingOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -285,7 +285,7 @@ namespace Twilio.Rest.Video.V1
                                                      RecordingResource.TypeEnum mediaType = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadRecordingOptions(){ Status = status, SourceSid = sourceSid, GroupingSid = groupingSid, DateCreatedAfter = dateCreatedAfter, DateCreatedBefore = dateCreatedBefore, MediaType = mediaType, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -312,7 +312,7 @@ namespace Twilio.Rest.Video.V1
                                                                                              RecordingResource.TypeEnum mediaType = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadRecordingOptions(){ Status = status, SourceSid = sourceSid, GroupingSid = groupingSid, DateCreatedAfter = dateCreatedAfter, DateCreatedBefore = dateCreatedBefore, MediaType = mediaType, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

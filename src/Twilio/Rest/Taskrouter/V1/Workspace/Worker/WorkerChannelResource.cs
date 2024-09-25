@@ -25,6 +25,8 @@ using Twilio.Http;
 
 
 
+
+
 namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
 {
     public class WorkerChannelResource : Resource
@@ -71,8 +73,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <param name="options"> Fetch WorkerChannel parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of WorkerChannel </returns>
-        public static async System.Threading.Tasks.Task<WorkerChannelResource> FetchAsync(FetchWorkerChannelOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<WorkerChannelResource> FetchAsync(FetchWorkerChannelOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -89,7 +90,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
                                          string pathWorkspaceSid, 
                                          string pathWorkerSid, 
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchWorkerChannelOptions(pathWorkspaceSid, pathWorkerSid, pathSid){  };
             return Fetch(options, client);
@@ -144,8 +145,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <param name="options"> Read WorkerChannel parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of WorkerChannel </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<WorkerChannelResource>> ReadAsync(ReadWorkerChannelOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<WorkerChannelResource>> ReadAsync(ReadWorkerChannelOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -166,7 +166,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
                                                      string pathWorkerSid,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadWorkerChannelOptions(pathWorkspaceSid, pathWorkerSid){ PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -185,7 +185,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
                                                                                              string pathWorkerSid,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadWorkerChannelOptions(pathWorkspaceSid, pathWorkerSid){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -280,7 +280,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <returns> Task that resolves to A single instance of WorkerChannel </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<WorkerChannelResource> UpdateAsync(UpdateWorkerChannelOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -302,7 +302,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
                                           string pathSid,
                                           int? capacity = null,
                                           bool? available = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateWorkerChannelOptions(pathWorkspaceSid, pathWorkerSid, pathSid){ Capacity = capacity, Available = available };
             return Update(options, client);
@@ -323,7 +323,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
                                                                               string pathSid,
                                                                               int? capacity = null,
                                                                               bool? available = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateWorkerChannelOptions(pathWorkspaceSid, pathWorkerSid, pathSid){ Capacity = capacity, Available = available };
             return await UpdateAsync(options, client);

@@ -25,6 +25,8 @@ using Twilio.Http;
 using Twilio.Types;
 
 
+
+
 namespace Twilio.Rest.Api.V2010.Account
 {
     public class RecordingResource : Resource
@@ -110,7 +112,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Recording </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteRecordingOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -177,8 +179,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="options"> Fetch Recording parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Recording </returns>
-        public static async System.Threading.Tasks.Task<RecordingResource> FetchAsync(FetchRecordingOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<RecordingResource> FetchAsync(FetchRecordingOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -195,7 +196,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                          string pathSid, 
                                          string pathAccountSid = null, 
                                          bool? includeSoftDeleted = null, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchRecordingOptions(pathSid){ PathAccountSid = pathAccountSid,IncludeSoftDeleted = includeSoftDeleted };
             return Fetch(options, client);
@@ -248,8 +249,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="options"> Read Recording parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Recording </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<RecordingResource>> ReadAsync(ReadRecordingOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<RecordingResource>> ReadAsync(ReadRecordingOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -280,7 +280,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                                      bool? includeSoftDeleted = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadRecordingOptions(){ PathAccountSid = pathAccountSid, DateCreatedBefore = dateCreatedBefore, DateCreated = dateCreated, DateCreatedAfter = dateCreatedAfter, CallSid = callSid, ConferenceSid = conferenceSid, IncludeSoftDeleted = includeSoftDeleted, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -309,7 +309,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                                                                              bool? includeSoftDeleted = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadRecordingOptions(){ PathAccountSid = pathAccountSid, DateCreatedBefore = dateCreatedBefore, DateCreated = dateCreated, DateCreatedAfter = dateCreatedAfter, CallSid = callSid, ConferenceSid = conferenceSid, IncludeSoftDeleted = includeSoftDeleted, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

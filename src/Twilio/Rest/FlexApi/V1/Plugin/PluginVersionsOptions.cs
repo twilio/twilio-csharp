@@ -143,7 +143,7 @@ namespace Twilio.Rest.FlexApi.V1.Plugin
             return p;
         }
 
-        
+    
     /// <summary> Generate the necessary header parameters </summary>
     public List<KeyValuePair<string, string>> GetHeaderParams()
     {
@@ -190,7 +190,7 @@ namespace Twilio.Rest.FlexApi.V1.Plugin
             return p;
         }
 
-        
+    
     /// <summary> Generate the necessary header parameters </summary>
     public List<KeyValuePair<string, string>> GetHeaderParams()
     {

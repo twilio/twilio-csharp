@@ -25,6 +25,8 @@ using Twilio.Http;
 using Twilio.Types;
 
 
+
+
 namespace Twilio.Rest.Chat.V2.Service.User
 {
     public class UserBindingResource : Resource
@@ -90,7 +92,7 @@ namespace Twilio.Rest.Chat.V2.Service.User
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of UserBinding </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteUserBindingOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -161,8 +163,7 @@ namespace Twilio.Rest.Chat.V2.Service.User
         /// <param name="options"> Fetch UserBinding parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of UserBinding </returns>
-        public static async System.Threading.Tasks.Task<UserBindingResource> FetchAsync(FetchUserBindingOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<UserBindingResource> FetchAsync(FetchUserBindingOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -179,7 +180,7 @@ namespace Twilio.Rest.Chat.V2.Service.User
                                          string pathServiceSid, 
                                          string pathUserSid, 
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchUserBindingOptions(pathServiceSid, pathUserSid, pathSid){  };
             return Fetch(options, client);
@@ -234,8 +235,7 @@ namespace Twilio.Rest.Chat.V2.Service.User
         /// <param name="options"> Read UserBinding parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of UserBinding </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<UserBindingResource>> ReadAsync(ReadUserBindingOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<UserBindingResource>> ReadAsync(ReadUserBindingOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -258,7 +258,7 @@ namespace Twilio.Rest.Chat.V2.Service.User
                                                      List<UserBindingResource.BindingTypeEnum> bindingType = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadUserBindingOptions(pathServiceSid, pathUserSid){ BindingType = bindingType, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -279,7 +279,7 @@ namespace Twilio.Rest.Chat.V2.Service.User
                                                                                              List<UserBindingResource.BindingTypeEnum> bindingType = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadUserBindingOptions(pathServiceSid, pathUserSid){ BindingType = bindingType, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

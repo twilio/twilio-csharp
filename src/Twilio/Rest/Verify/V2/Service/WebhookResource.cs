@@ -25,6 +25,8 @@ using Twilio.Http;
 using Twilio.Types;
 
 
+
+
 namespace Twilio.Rest.Verify.V2.Service
 {
     public class WebhookResource : Resource
@@ -107,8 +109,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="options"> Create Webhook parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Webhook </returns>
-        public static async System.Threading.Tasks.Task<WebhookResource> CreateAsync(CreateWebhookOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<WebhookResource> CreateAsync(CreateWebhookOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -132,7 +133,7 @@ namespace Twilio.Rest.Verify.V2.Service
                                           string webhookUrl,
                                           WebhookResource.StatusEnum status = null,
                                           WebhookResource.VersionEnum version = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateWebhookOptions(pathServiceSid, friendlyName, eventTypes, webhookUrl){  Status = status, Version = version };
             return Create(options, client);
@@ -155,7 +156,7 @@ namespace Twilio.Rest.Verify.V2.Service
                                                                                   string webhookUrl,
                                                                                   WebhookResource.StatusEnum status = null,
                                                                                   WebhookResource.VersionEnum version = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateWebhookOptions(pathServiceSid, friendlyName, eventTypes, webhookUrl){  Status = status, Version = version };
             return await CreateAsync(options, client);
@@ -202,7 +203,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Webhook </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteWebhookOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -269,8 +270,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="options"> Fetch Webhook parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Webhook </returns>
-        public static async System.Threading.Tasks.Task<WebhookResource> FetchAsync(FetchWebhookOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<WebhookResource> FetchAsync(FetchWebhookOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -285,7 +285,7 @@ namespace Twilio.Rest.Verify.V2.Service
         public static WebhookResource Fetch(
                                          string pathServiceSid, 
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchWebhookOptions(pathServiceSid, pathSid){  };
             return Fetch(options, client);
@@ -337,8 +337,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="options"> Read Webhook parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Webhook </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<WebhookResource>> ReadAsync(ReadWebhookOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<WebhookResource>> ReadAsync(ReadWebhookOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -357,7 +356,7 @@ namespace Twilio.Rest.Verify.V2.Service
                                                      string pathServiceSid,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadWebhookOptions(pathServiceSid){ PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -374,7 +373,7 @@ namespace Twilio.Rest.Verify.V2.Service
                                                                                              string pathServiceSid,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadWebhookOptions(pathServiceSid){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -467,7 +466,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <returns> Task that resolves to A single instance of Webhook </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<WebhookResource> UpdateAsync(UpdateWebhookOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -493,7 +492,7 @@ namespace Twilio.Rest.Verify.V2.Service
                                           string webhookUrl = null,
                                           WebhookResource.StatusEnum status = null,
                                           WebhookResource.VersionEnum version = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateWebhookOptions(pathServiceSid, pathSid){ FriendlyName = friendlyName, EventTypes = eventTypes, WebhookUrl = webhookUrl, Status = status, Version = version };
             return Update(options, client);
@@ -518,7 +517,7 @@ namespace Twilio.Rest.Verify.V2.Service
                                                                               string webhookUrl = null,
                                                                               WebhookResource.StatusEnum status = null,
                                                                               WebhookResource.VersionEnum version = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateWebhookOptions(pathServiceSid, pathSid){ FriendlyName = friendlyName, EventTypes = eventTypes, WebhookUrl = webhookUrl, Status = status, Version = version };
             return await UpdateAsync(options, client);

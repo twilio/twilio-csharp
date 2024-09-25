@@ -25,6 +25,8 @@ using Twilio.Http;
 
 
 
+
+
 namespace Twilio.Rest.FlexApi.V1.Plugin
 {
     public class PluginVersionsResource : Resource
@@ -68,8 +70,7 @@ namespace Twilio.Rest.FlexApi.V1.Plugin
         /// <param name="options"> Create PluginVersions parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PluginVersions </returns>
-        public static async System.Threading.Tasks.Task<PluginVersionsResource> CreateAsync(CreatePluginVersionsOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<PluginVersionsResource> CreateAsync(CreatePluginVersionsOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -97,7 +98,7 @@ namespace Twilio.Rest.FlexApi.V1.Plugin
                                           string cliVersion = null,
                                           string validateStatus = null,
                                           string flexMetadata = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreatePluginVersionsOptions(pathPluginSid, version, pluginUrl){  Changelog = changelog, Private = _private, CliVersion = cliVersion, ValidateStatus = validateStatus, FlexMetadata = flexMetadata };
             return Create(options, client);
@@ -124,7 +125,7 @@ namespace Twilio.Rest.FlexApi.V1.Plugin
                                                                                   string cliVersion = null,
                                                                                   string validateStatus = null,
                                                                                   string flexMetadata = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreatePluginVersionsOptions(pathPluginSid, version, pluginUrl){  Changelog = changelog, Private = _private, CliVersion = cliVersion, ValidateStatus = validateStatus, FlexMetadata = flexMetadata };
             return await CreateAsync(options, client);
@@ -166,8 +167,7 @@ namespace Twilio.Rest.FlexApi.V1.Plugin
         /// <param name="options"> Fetch PluginVersions parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PluginVersions </returns>
-        public static async System.Threading.Tasks.Task<PluginVersionsResource> FetchAsync(FetchPluginVersionsOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<PluginVersionsResource> FetchAsync(FetchPluginVersionsOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -184,7 +184,7 @@ namespace Twilio.Rest.FlexApi.V1.Plugin
                                          string pathPluginSid, 
                                          string pathSid, 
                                          string flexMetadata = null, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchPluginVersionsOptions(pathPluginSid, pathSid){ FlexMetadata = flexMetadata };
             return Fetch(options, client);
@@ -237,8 +237,7 @@ namespace Twilio.Rest.FlexApi.V1.Plugin
         /// <param name="options"> Read PluginVersions parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PluginVersions </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<PluginVersionsResource>> ReadAsync(ReadPluginVersionsOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<PluginVersionsResource>> ReadAsync(ReadPluginVersionsOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -259,7 +258,7 @@ namespace Twilio.Rest.FlexApi.V1.Plugin
                                                      string flexMetadata = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadPluginVersionsOptions(pathPluginSid){ FlexMetadata = flexMetadata, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -278,7 +277,7 @@ namespace Twilio.Rest.FlexApi.V1.Plugin
                                                                                              string flexMetadata = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadPluginVersionsOptions(pathPluginSid){ FlexMetadata = flexMetadata, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

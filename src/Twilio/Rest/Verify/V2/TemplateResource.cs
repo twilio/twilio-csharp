@@ -25,6 +25,8 @@ using Twilio.Http;
 
 
 
+
+
 namespace Twilio.Rest.Verify.V2
 {
     public class TemplateResource : Resource
@@ -65,8 +67,7 @@ namespace Twilio.Rest.Verify.V2
         /// <param name="options"> Read Template parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Template </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<TemplateResource>> ReadAsync(ReadTemplateOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<TemplateResource>> ReadAsync(ReadTemplateOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -85,7 +86,7 @@ namespace Twilio.Rest.Verify.V2
                                                      string friendlyName = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadTemplateOptions(){ FriendlyName = friendlyName, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -102,7 +103,7 @@ namespace Twilio.Rest.Verify.V2
                                                                                              string friendlyName = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadTemplateOptions(){ FriendlyName = friendlyName, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

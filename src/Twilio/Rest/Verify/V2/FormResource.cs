@@ -25,6 +25,8 @@ using Twilio.Http;
 using Twilio.Types;
 
 
+
+
 namespace Twilio.Rest.Verify.V2
 {
     public class FormResource : Resource
@@ -79,8 +81,7 @@ namespace Twilio.Rest.Verify.V2
         /// <param name="options"> Fetch Form parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Form </returns>
-        public static async System.Threading.Tasks.Task<FormResource> FetchAsync(FetchFormOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<FormResource> FetchAsync(FetchFormOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -93,7 +94,7 @@ namespace Twilio.Rest.Verify.V2
         /// <returns> A single instance of Form </returns>
         public static FormResource Fetch(
                                          FormResource.FormTypesEnum pathFormType, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchFormOptions(pathFormType){  };
             return Fetch(options, client);

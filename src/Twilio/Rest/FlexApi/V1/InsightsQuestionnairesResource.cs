@@ -25,6 +25,8 @@ using Twilio.Http;
 
 
 
+
+
 namespace Twilio.Rest.FlexApi.V1
 {
     public class InsightsQuestionnairesResource : Resource
@@ -66,8 +68,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="options"> Create InsightsQuestionnaires parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InsightsQuestionnaires </returns>
-        public static async System.Threading.Tasks.Task<InsightsQuestionnairesResource> CreateAsync(CreateInsightsQuestionnairesOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<InsightsQuestionnairesResource> CreateAsync(CreateInsightsQuestionnairesOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -89,7 +90,7 @@ namespace Twilio.Rest.FlexApi.V1
                                           bool? active = null,
                                           List<string> questionSids = null,
                                           string authorization = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateInsightsQuestionnairesOptions(name){  Description = description, Active = active, QuestionSids = questionSids, Authorization = authorization };
             return Create(options, client);
@@ -110,7 +111,7 @@ namespace Twilio.Rest.FlexApi.V1
                                                                                   bool? active = null,
                                                                                   List<string> questionSids = null,
                                                                                   string authorization = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateInsightsQuestionnairesOptions(name){  Description = description, Active = active, QuestionSids = questionSids, Authorization = authorization };
             return await CreateAsync(options, client);
@@ -155,7 +156,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InsightsQuestionnaires </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteInsightsQuestionnairesOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -220,8 +221,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="options"> Fetch InsightsQuestionnaires parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InsightsQuestionnaires </returns>
-        public static async System.Threading.Tasks.Task<InsightsQuestionnairesResource> FetchAsync(FetchInsightsQuestionnairesOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<InsightsQuestionnairesResource> FetchAsync(FetchInsightsQuestionnairesOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -236,7 +236,7 @@ namespace Twilio.Rest.FlexApi.V1
         public static InsightsQuestionnairesResource Fetch(
                                          string pathQuestionnaireSid, 
                                          string authorization = null, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchInsightsQuestionnairesOptions(pathQuestionnaireSid){ Authorization = authorization };
             return Fetch(options, client);
@@ -286,8 +286,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="options"> Read InsightsQuestionnaires parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InsightsQuestionnaires </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<InsightsQuestionnairesResource>> ReadAsync(ReadInsightsQuestionnairesOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<InsightsQuestionnairesResource>> ReadAsync(ReadInsightsQuestionnairesOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -308,7 +307,7 @@ namespace Twilio.Rest.FlexApi.V1
                                                      bool? includeInactive = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadInsightsQuestionnairesOptions(){ Authorization = authorization, IncludeInactive = includeInactive, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -327,7 +326,7 @@ namespace Twilio.Rest.FlexApi.V1
                                                                                              bool? includeInactive = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadInsightsQuestionnairesOptions(){ Authorization = authorization, IncludeInactive = includeInactive, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -418,7 +417,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <returns> Task that resolves to A single instance of InsightsQuestionnaires </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<InsightsQuestionnairesResource> UpdateAsync(UpdateInsightsQuestionnairesOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -442,7 +441,7 @@ namespace Twilio.Rest.FlexApi.V1
                                           string description = null,
                                           List<string> questionSids = null,
                                           string authorization = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateInsightsQuestionnairesOptions(pathQuestionnaireSid, active){ Name = name, Description = description, QuestionSids = questionSids, Authorization = authorization };
             return Update(options, client);
@@ -465,7 +464,7 @@ namespace Twilio.Rest.FlexApi.V1
                                                                               string description = null,
                                                                               List<string> questionSids = null,
                                                                               string authorization = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateInsightsQuestionnairesOptions(pathQuestionnaireSid, active){ Name = name, Description = description, QuestionSids = questionSids, Authorization = authorization };
             return await UpdateAsync(options, client);

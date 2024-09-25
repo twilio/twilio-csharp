@@ -25,6 +25,8 @@ using Twilio.Http;
 
 
 
+
+
 namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
 {
     public class TaskQueueBulkRealTimeStatisticsResource : Resource
@@ -69,8 +71,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         /// <param name="options"> Create TaskQueueBulkRealTimeStatistics parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TaskQueueBulkRealTimeStatistics </returns>
-        public static async System.Threading.Tasks.Task<TaskQueueBulkRealTimeStatisticsResource> CreateAsync(CreateTaskQueueBulkRealTimeStatisticsOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<TaskQueueBulkRealTimeStatisticsResource> CreateAsync(CreateTaskQueueBulkRealTimeStatisticsOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -84,7 +85,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         /// <returns> A single instance of TaskQueueBulkRealTimeStatistics </returns>
         public static TaskQueueBulkRealTimeStatisticsResource Create(
                                           string pathWorkspaceSid,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateTaskQueueBulkRealTimeStatisticsOptions(pathWorkspaceSid){  };
             return Create(options, client);
@@ -97,7 +98,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         /// <returns> Task that resolves to A single instance of TaskQueueBulkRealTimeStatistics </returns>
         public static async System.Threading.Tasks.Task<TaskQueueBulkRealTimeStatisticsResource> CreateAsync(
                                                                                   string pathWorkspaceSid,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateTaskQueueBulkRealTimeStatisticsOptions(pathWorkspaceSid){  };
             return await CreateAsync(options, client);

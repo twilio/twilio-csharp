@@ -25,6 +25,8 @@ using Twilio.Http;
 
 
 
+
+
 namespace Twilio.Rest.Voice.V1
 {
     public class SourceIpMappingResource : Resource
@@ -66,8 +68,7 @@ namespace Twilio.Rest.Voice.V1
         /// <param name="options"> Create SourceIpMapping parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SourceIpMapping </returns>
-        public static async System.Threading.Tasks.Task<SourceIpMappingResource> CreateAsync(CreateSourceIpMappingOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SourceIpMappingResource> CreateAsync(CreateSourceIpMappingOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -83,7 +84,7 @@ namespace Twilio.Rest.Voice.V1
         public static SourceIpMappingResource Create(
                                           string ipRecordSid,
                                           string sipDomainSid,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateSourceIpMappingOptions(ipRecordSid, sipDomainSid){  };
             return Create(options, client);
@@ -98,7 +99,7 @@ namespace Twilio.Rest.Voice.V1
         public static async System.Threading.Tasks.Task<SourceIpMappingResource> CreateAsync(
                                                                                   string ipRecordSid,
                                                                                   string sipDomainSid,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateSourceIpMappingOptions(ipRecordSid, sipDomainSid){  };
             return await CreateAsync(options, client);
@@ -143,7 +144,7 @@ namespace Twilio.Rest.Voice.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SourceIpMapping </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteSourceIpMappingOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -206,8 +207,7 @@ namespace Twilio.Rest.Voice.V1
         /// <param name="options"> Fetch SourceIpMapping parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SourceIpMapping </returns>
-        public static async System.Threading.Tasks.Task<SourceIpMappingResource> FetchAsync(FetchSourceIpMappingOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SourceIpMappingResource> FetchAsync(FetchSourceIpMappingOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -220,7 +220,7 @@ namespace Twilio.Rest.Voice.V1
         /// <returns> A single instance of SourceIpMapping </returns>
         public static SourceIpMappingResource Fetch(
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchSourceIpMappingOptions(pathSid){  };
             return Fetch(options, client);
@@ -269,8 +269,7 @@ namespace Twilio.Rest.Voice.V1
         /// <param name="options"> Read SourceIpMapping parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SourceIpMapping </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<SourceIpMappingResource>> ReadAsync(ReadSourceIpMappingOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<SourceIpMappingResource>> ReadAsync(ReadSourceIpMappingOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -287,7 +286,7 @@ namespace Twilio.Rest.Voice.V1
         public static ResourceSet<SourceIpMappingResource> Read(
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadSourceIpMappingOptions(){ PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -302,7 +301,7 @@ namespace Twilio.Rest.Voice.V1
         public static async System.Threading.Tasks.Task<ResourceSet<SourceIpMappingResource>> ReadAsync(
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadSourceIpMappingOptions(){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -393,7 +392,7 @@ namespace Twilio.Rest.Voice.V1
         /// <returns> Task that resolves to A single instance of SourceIpMapping </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<SourceIpMappingResource> UpdateAsync(UpdateSourceIpMappingOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -409,7 +408,7 @@ namespace Twilio.Rest.Voice.V1
         public static SourceIpMappingResource Update(
                                           string pathSid,
                                           string sipDomainSid,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateSourceIpMappingOptions(pathSid, sipDomainSid){  };
             return Update(options, client);
@@ -424,7 +423,7 @@ namespace Twilio.Rest.Voice.V1
         public static async System.Threading.Tasks.Task<SourceIpMappingResource> UpdateAsync(
                                                                               string pathSid,
                                                                               string sipDomainSid,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateSourceIpMappingOptions(pathSid, sipDomainSid){  };
             return await UpdateAsync(options, client);

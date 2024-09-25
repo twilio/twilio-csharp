@@ -25,6 +25,8 @@ using Twilio.Http;
 
 
 
+
+
 namespace Twilio.Rest.Events.V1
 {
     public class EventTypeResource : Resource
@@ -67,8 +69,7 @@ namespace Twilio.Rest.Events.V1
         /// <param name="options"> Fetch EventType parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of EventType </returns>
-        public static async System.Threading.Tasks.Task<EventTypeResource> FetchAsync(FetchEventTypeOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<EventTypeResource> FetchAsync(FetchEventTypeOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -81,7 +82,7 @@ namespace Twilio.Rest.Events.V1
         /// <returns> A single instance of EventType </returns>
         public static EventTypeResource Fetch(
                                          string pathType, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchEventTypeOptions(pathType){  };
             return Fetch(options, client);
@@ -130,8 +131,7 @@ namespace Twilio.Rest.Events.V1
         /// <param name="options"> Read EventType parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of EventType </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<EventTypeResource>> ReadAsync(ReadEventTypeOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<EventTypeResource>> ReadAsync(ReadEventTypeOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -150,7 +150,7 @@ namespace Twilio.Rest.Events.V1
                                                      string schemaId = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadEventTypeOptions(){ SchemaId = schemaId, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -167,7 +167,7 @@ namespace Twilio.Rest.Events.V1
                                                                                              string schemaId = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadEventTypeOptions(){ SchemaId = schemaId, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

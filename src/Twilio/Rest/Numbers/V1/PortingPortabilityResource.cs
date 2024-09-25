@@ -25,6 +25,8 @@ using Twilio.Http;
 using Twilio.Types;
 
 
+
+
 namespace Twilio.Rest.Numbers.V1
 {
     public class PortingPortabilityResource : Resource
@@ -82,8 +84,7 @@ namespace Twilio.Rest.Numbers.V1
         /// <param name="options"> Fetch PortingPortability parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PortingPortability </returns>
-        public static async System.Threading.Tasks.Task<PortingPortabilityResource> FetchAsync(FetchPortingPortabilityOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<PortingPortabilityResource> FetchAsync(FetchPortingPortabilityOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -98,7 +99,7 @@ namespace Twilio.Rest.Numbers.V1
         public static PortingPortabilityResource Fetch(
                                          Types.PhoneNumber pathPhoneNumber, 
                                          string targetAccountSid = null, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchPortingPortabilityOptions(pathPhoneNumber){ TargetAccountSid = targetAccountSid };
             return Fetch(options, client);

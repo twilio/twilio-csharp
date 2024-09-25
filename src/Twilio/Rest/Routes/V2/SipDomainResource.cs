@@ -25,6 +25,8 @@ using Twilio.Http;
 
 
 
+
+
 namespace Twilio.Rest.Routes.V2
 {
     public class SipDomainResource : Resource
@@ -67,8 +69,7 @@ namespace Twilio.Rest.Routes.V2
         /// <param name="options"> Fetch SipDomain parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SipDomain </returns>
-        public static async System.Threading.Tasks.Task<SipDomainResource> FetchAsync(FetchSipDomainOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SipDomainResource> FetchAsync(FetchSipDomainOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -81,7 +82,7 @@ namespace Twilio.Rest.Routes.V2
         /// <returns> A single instance of SipDomain </returns>
         public static SipDomainResource Fetch(
                                          string pathSipDomain, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchSipDomainOptions(pathSipDomain){  };
             return Fetch(options, client);
@@ -134,7 +135,7 @@ namespace Twilio.Rest.Routes.V2
         /// <returns> Task that resolves to A single instance of SipDomain </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<SipDomainResource> UpdateAsync(UpdateSipDomainOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -152,7 +153,7 @@ namespace Twilio.Rest.Routes.V2
                                           string pathSipDomain,
                                           string voiceRegion = null,
                                           string friendlyName = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateSipDomainOptions(pathSipDomain){ VoiceRegion = voiceRegion, FriendlyName = friendlyName };
             return Update(options, client);
@@ -169,7 +170,7 @@ namespace Twilio.Rest.Routes.V2
                                                                               string pathSipDomain,
                                                                               string voiceRegion = null,
                                                                               string friendlyName = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateSipDomainOptions(pathSipDomain){ VoiceRegion = voiceRegion, FriendlyName = friendlyName };
             return await UpdateAsync(options, client);

@@ -25,6 +25,8 @@ using Twilio.Http;
 using Twilio.Types;
 
 
+
+
 namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
 {
     public class ReservationResource : Resource
@@ -134,8 +136,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         /// <param name="options"> Fetch Reservation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Reservation </returns>
-        public static async System.Threading.Tasks.Task<ReservationResource> FetchAsync(FetchReservationOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ReservationResource> FetchAsync(FetchReservationOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -152,7 +153,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
                                          string pathWorkspaceSid, 
                                          string pathTaskSid, 
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchReservationOptions(pathWorkspaceSid, pathTaskSid, pathSid){  };
             return Fetch(options, client);
@@ -207,8 +208,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         /// <param name="options"> Read Reservation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Reservation </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<ReservationResource>> ReadAsync(ReadReservationOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<ReservationResource>> ReadAsync(ReadReservationOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -233,7 +233,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
                                                      string workerSid = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadReservationOptions(pathWorkspaceSid, pathTaskSid){ ReservationStatus = reservationStatus, WorkerSid = workerSid, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -256,7 +256,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
                                                                                              string workerSid = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadReservationOptions(pathWorkspaceSid, pathTaskSid){ ReservationStatus = reservationStatus, WorkerSid = workerSid, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -351,7 +351,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         /// <returns> Task that resolves to A single instance of Reservation </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<ReservationResource> UpdateAsync(UpdateReservationOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -479,7 +479,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
                                           bool? beepOnCustomerEntrance = null,
                                           string jitterBufferSize = null,
                                           string ifMatch = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateReservationOptions(pathWorkspaceSid, pathTaskSid, pathSid){ ReservationStatus = reservationStatus, WorkerActivitySid = workerActivitySid, Instruction = instruction, DequeuePostWorkActivitySid = dequeuePostWorkActivitySid, DequeueFrom = dequeueFrom, DequeueRecord = dequeueRecord, DequeueTimeout = dequeueTimeout, DequeueTo = dequeueTo, DequeueStatusCallbackUrl = dequeueStatusCallbackUrl, CallFrom = callFrom, CallRecord = callRecord, CallTimeout = callTimeout, CallTo = callTo, CallUrl = callUrl, CallStatusCallbackUrl = callStatusCallbackUrl, CallAccept = callAccept, RedirectCallSid = redirectCallSid, RedirectAccept = redirectAccept, RedirectUrl = redirectUrl, To = to, From = from, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, StatusCallbackEvent = statusCallbackEvent, Timeout = timeout, Record = record, Muted = muted, Beep = beep, StartConferenceOnEnter = startConferenceOnEnter, EndConferenceOnExit = endConferenceOnExit, WaitUrl = waitUrl, WaitMethod = waitMethod, EarlyMedia = earlyMedia, MaxParticipants = maxParticipants, ConferenceStatusCallback = conferenceStatusCallback, ConferenceStatusCallbackMethod = conferenceStatusCallbackMethod, ConferenceStatusCallbackEvent = conferenceStatusCallbackEvent, ConferenceRecord = conferenceRecord, ConferenceTrim = conferenceTrim, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, ConferenceRecordingStatusCallback = conferenceRecordingStatusCallback, ConferenceRecordingStatusCallbackMethod = conferenceRecordingStatusCallbackMethod, Region = region, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword, DequeueStatusCallbackEvent = dequeueStatusCallbackEvent, PostWorkActivitySid = postWorkActivitySid, SupervisorMode = supervisorMode, Supervisor = supervisor, EndConferenceOnCustomerExit = endConferenceOnCustomerExit, BeepOnCustomerEntrance = beepOnCustomerEntrance, JitterBufferSize = jitterBufferSize, IfMatch = ifMatch };
             return Update(options, client);
@@ -606,7 +606,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
                                                                               bool? beepOnCustomerEntrance = null,
                                                                               string jitterBufferSize = null,
                                                                               string ifMatch = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateReservationOptions(pathWorkspaceSid, pathTaskSid, pathSid){ ReservationStatus = reservationStatus, WorkerActivitySid = workerActivitySid, Instruction = instruction, DequeuePostWorkActivitySid = dequeuePostWorkActivitySid, DequeueFrom = dequeueFrom, DequeueRecord = dequeueRecord, DequeueTimeout = dequeueTimeout, DequeueTo = dequeueTo, DequeueStatusCallbackUrl = dequeueStatusCallbackUrl, CallFrom = callFrom, CallRecord = callRecord, CallTimeout = callTimeout, CallTo = callTo, CallUrl = callUrl, CallStatusCallbackUrl = callStatusCallbackUrl, CallAccept = callAccept, RedirectCallSid = redirectCallSid, RedirectAccept = redirectAccept, RedirectUrl = redirectUrl, To = to, From = from, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, StatusCallbackEvent = statusCallbackEvent, Timeout = timeout, Record = record, Muted = muted, Beep = beep, StartConferenceOnEnter = startConferenceOnEnter, EndConferenceOnExit = endConferenceOnExit, WaitUrl = waitUrl, WaitMethod = waitMethod, EarlyMedia = earlyMedia, MaxParticipants = maxParticipants, ConferenceStatusCallback = conferenceStatusCallback, ConferenceStatusCallbackMethod = conferenceStatusCallbackMethod, ConferenceStatusCallbackEvent = conferenceStatusCallbackEvent, ConferenceRecord = conferenceRecord, ConferenceTrim = conferenceTrim, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, ConferenceRecordingStatusCallback = conferenceRecordingStatusCallback, ConferenceRecordingStatusCallbackMethod = conferenceRecordingStatusCallbackMethod, Region = region, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword, DequeueStatusCallbackEvent = dequeueStatusCallbackEvent, PostWorkActivitySid = postWorkActivitySid, SupervisorMode = supervisorMode, Supervisor = supervisor, EndConferenceOnCustomerExit = endConferenceOnCustomerExit, BeepOnCustomerEntrance = beepOnCustomerEntrance, JitterBufferSize = jitterBufferSize, IfMatch = ifMatch };
             return await UpdateAsync(options, client);

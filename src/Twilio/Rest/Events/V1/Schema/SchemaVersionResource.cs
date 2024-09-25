@@ -25,6 +25,8 @@ using Twilio.Http;
 
 
 
+
+
 namespace Twilio.Rest.Events.V1.Schema
 {
     public class SchemaVersionResource : Resource
@@ -69,8 +71,7 @@ namespace Twilio.Rest.Events.V1.Schema
         /// <param name="options"> Fetch SchemaVersion parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SchemaVersion </returns>
-        public static async System.Threading.Tasks.Task<SchemaVersionResource> FetchAsync(FetchSchemaVersionOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SchemaVersionResource> FetchAsync(FetchSchemaVersionOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -85,7 +86,7 @@ namespace Twilio.Rest.Events.V1.Schema
         public static SchemaVersionResource Fetch(
                                          string pathId, 
                                          int? pathSchemaVersion, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchSchemaVersionOptions(pathId, pathSchemaVersion){  };
             return Fetch(options, client);
@@ -137,8 +138,7 @@ namespace Twilio.Rest.Events.V1.Schema
         /// <param name="options"> Read SchemaVersion parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SchemaVersion </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<SchemaVersionResource>> ReadAsync(ReadSchemaVersionOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<SchemaVersionResource>> ReadAsync(ReadSchemaVersionOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -157,7 +157,7 @@ namespace Twilio.Rest.Events.V1.Schema
                                                      string pathId,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadSchemaVersionOptions(pathId){ PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -174,7 +174,7 @@ namespace Twilio.Rest.Events.V1.Schema
                                                                                              string pathId,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadSchemaVersionOptions(pathId){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

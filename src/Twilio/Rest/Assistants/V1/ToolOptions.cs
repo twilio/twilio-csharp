@@ -79,7 +79,37 @@ namespace Twilio.Rest.Assistants.V1
             return p;
         }
 
+    
+
+    }
+
+
+    /// <summary> Get tool </summary>
+    public class FetchToolOptions : IOptions<ToolResource>
+    {
+    
         
+        public string PathId { get; }
+
+
+
+        /// <summary> Construct a new FetchToolOptions </summary>
+        /// <param name="pathId">  </param>
+        public FetchToolOptions(string pathId)
+        {
+            PathId = pathId;
+        }
+
+        
+        /// <summary> Generate the necessary parameters </summary>
+        public List<KeyValuePair<string, string>> GetParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+
+            return p;
+        }
+
+    
 
     }
 
@@ -111,7 +141,7 @@ namespace Twilio.Rest.Assistants.V1
             return p;
         }
 
-        
+    
 
     }
 

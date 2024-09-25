@@ -25,6 +25,8 @@ using Twilio.Http;
 using Twilio.Types;
 
 
+
+
 namespace Twilio.Rest.Video.V1
 {
     public class CompositionResource : Resource
@@ -95,8 +97,7 @@ namespace Twilio.Rest.Video.V1
         /// <param name="options"> Create Composition parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Composition </returns>
-        public static async System.Threading.Tasks.Task<CompositionResource> CreateAsync(CreateCompositionOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<CompositionResource> CreateAsync(CreateCompositionOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -126,7 +127,7 @@ namespace Twilio.Rest.Video.V1
                                           Uri statusCallback = null,
                                           Twilio.Http.HttpMethod statusCallbackMethod = null,
                                           bool? trim = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateCompositionOptions(roomSid){  VideoLayout = videoLayout, AudioSources = audioSources, AudioSourcesExcluded = audioSourcesExcluded, Resolution = resolution, Format = format, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, Trim = trim };
             return Create(options, client);
@@ -155,7 +156,7 @@ namespace Twilio.Rest.Video.V1
                                                                                   Uri statusCallback = null,
                                                                                   Twilio.Http.HttpMethod statusCallbackMethod = null,
                                                                                   bool? trim = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateCompositionOptions(roomSid){  VideoLayout = videoLayout, AudioSources = audioSources, AudioSourcesExcluded = audioSourcesExcluded, Resolution = resolution, Format = format, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, Trim = trim };
             return await CreateAsync(options, client);
@@ -200,7 +201,7 @@ namespace Twilio.Rest.Video.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Composition </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteCompositionOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -263,8 +264,7 @@ namespace Twilio.Rest.Video.V1
         /// <param name="options"> Fetch Composition parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Composition </returns>
-        public static async System.Threading.Tasks.Task<CompositionResource> FetchAsync(FetchCompositionOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<CompositionResource> FetchAsync(FetchCompositionOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -277,7 +277,7 @@ namespace Twilio.Rest.Video.V1
         /// <returns> A single instance of Composition </returns>
         public static CompositionResource Fetch(
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchCompositionOptions(pathSid){  };
             return Fetch(options, client);
@@ -326,8 +326,7 @@ namespace Twilio.Rest.Video.V1
         /// <param name="options"> Read Composition parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Composition </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<CompositionResource>> ReadAsync(ReadCompositionOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<CompositionResource>> ReadAsync(ReadCompositionOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -352,7 +351,7 @@ namespace Twilio.Rest.Video.V1
                                                      string roomSid = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadCompositionOptions(){ Status = status, DateCreatedAfter = dateCreatedAfter, DateCreatedBefore = dateCreatedBefore, RoomSid = roomSid, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -375,7 +374,7 @@ namespace Twilio.Rest.Video.V1
                                                                                              string roomSid = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadCompositionOptions(){ Status = status, DateCreatedAfter = dateCreatedAfter, DateCreatedBefore = dateCreatedBefore, RoomSid = roomSid, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

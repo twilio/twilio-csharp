@@ -25,6 +25,8 @@ using Twilio.Http;
 
 
 
+
+
 namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult.Payload
 {
     public class DataResource : Resource
@@ -73,8 +75,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult.Payload
         /// <param name="options"> Fetch Data parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Data </returns>
-        public static async System.Threading.Tasks.Task<DataResource> FetchAsync(FetchDataOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<DataResource> FetchAsync(FetchDataOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -93,7 +94,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult.Payload
                                          string pathAddOnResultSid, 
                                          string pathPayloadSid, 
                                          string pathAccountSid = null, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchDataOptions(pathReferenceSid, pathAddOnResultSid, pathPayloadSid){ PathAccountSid = pathAccountSid };
             return Fetch(options, client);

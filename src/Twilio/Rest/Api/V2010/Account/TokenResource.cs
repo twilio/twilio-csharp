@@ -25,6 +25,8 @@ using Twilio.Http;
 using Twilio.Types;
 
 
+
+
 namespace Twilio.Rest.Api.V2010.Account
 {
     public class TokenResource : Resource
@@ -68,8 +70,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="options"> Create Token parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Token </returns>
-        public static async System.Threading.Tasks.Task<TokenResource> CreateAsync(CreateTokenOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<TokenResource> CreateAsync(CreateTokenOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -85,7 +86,7 @@ namespace Twilio.Rest.Api.V2010.Account
         public static TokenResource Create(
                                           string pathAccountSid = null,
                                           int? ttl = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateTokenOptions(){  PathAccountSid = pathAccountSid, Ttl = ttl };
             return Create(options, client);
@@ -100,7 +101,7 @@ namespace Twilio.Rest.Api.V2010.Account
         public static async System.Threading.Tasks.Task<TokenResource> CreateAsync(
                                                                                   string pathAccountSid = null,
                                                                                   int? ttl = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateTokenOptions(){  PathAccountSid = pathAccountSid, Ttl = ttl };
             return await CreateAsync(options, client);

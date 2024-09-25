@@ -25,6 +25,8 @@ using Twilio.Http;
 
 
 
+
+
 namespace Twilio.Rest.Numbers.V1
 {
     public class PortingPortInPhoneNumberResource : Resource
@@ -74,7 +76,7 @@ namespace Twilio.Rest.Numbers.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PortingPortInPhoneNumber </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeletePortingPortInPhoneNumberOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -141,8 +143,7 @@ namespace Twilio.Rest.Numbers.V1
         /// <param name="options"> Fetch PortingPortInPhoneNumber parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PortingPortInPhoneNumber </returns>
-        public static async System.Threading.Tasks.Task<PortingPortInPhoneNumberResource> FetchAsync(FetchPortingPortInPhoneNumberOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<PortingPortInPhoneNumberResource> FetchAsync(FetchPortingPortInPhoneNumberOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -157,7 +158,7 @@ namespace Twilio.Rest.Numbers.V1
         public static PortingPortInPhoneNumberResource Fetch(
                                          string pathPortInRequestSid, 
                                          string pathPhoneNumberSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchPortingPortInPhoneNumberOptions(pathPortInRequestSid, pathPhoneNumberSid){  };
             return Fetch(options, client);

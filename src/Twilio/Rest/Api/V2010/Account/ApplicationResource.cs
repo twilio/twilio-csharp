@@ -25,6 +25,8 @@ using Twilio.Http;
 
 
 
+
+
 namespace Twilio.Rest.Api.V2010.Account
 {
     public class ApplicationResource : Resource
@@ -68,8 +70,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="options"> Create Application parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Application </returns>
-        public static async System.Threading.Tasks.Task<ApplicationResource> CreateAsync(CreateApplicationOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ApplicationResource> CreateAsync(CreateApplicationOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -115,7 +116,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                           Uri messageStatusCallback = null,
                                           string friendlyName = null,
                                           bool? publicApplicationConnectEnabled = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateApplicationOptions(){  PathAccountSid = pathAccountSid, ApiVersion = apiVersion, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceFallbackMethod = voiceFallbackMethod, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, VoiceCallerIdLookup = voiceCallerIdLookup, SmsUrl = smsUrl, SmsMethod = smsMethod, SmsFallbackUrl = smsFallbackUrl, SmsFallbackMethod = smsFallbackMethod, SmsStatusCallback = smsStatusCallback, MessageStatusCallback = messageStatusCallback, FriendlyName = friendlyName, PublicApplicationConnectEnabled = publicApplicationConnectEnabled };
             return Create(options, client);
@@ -160,7 +161,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                                                                   Uri messageStatusCallback = null,
                                                                                   string friendlyName = null,
                                                                                   bool? publicApplicationConnectEnabled = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateApplicationOptions(){  PathAccountSid = pathAccountSid, ApiVersion = apiVersion, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceFallbackMethod = voiceFallbackMethod, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, VoiceCallerIdLookup = voiceCallerIdLookup, SmsUrl = smsUrl, SmsMethod = smsMethod, SmsFallbackUrl = smsFallbackUrl, SmsFallbackMethod = smsFallbackMethod, SmsStatusCallback = smsStatusCallback, MessageStatusCallback = messageStatusCallback, FriendlyName = friendlyName, PublicApplicationConnectEnabled = publicApplicationConnectEnabled };
             return await CreateAsync(options, client);
@@ -207,7 +208,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Application </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteApplicationOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -274,8 +275,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="options"> Fetch Application parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Application </returns>
-        public static async System.Threading.Tasks.Task<ApplicationResource> FetchAsync(FetchApplicationOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ApplicationResource> FetchAsync(FetchApplicationOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -290,7 +290,7 @@ namespace Twilio.Rest.Api.V2010.Account
         public static ApplicationResource Fetch(
                                          string pathSid, 
                                          string pathAccountSid = null, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchApplicationOptions(pathSid){ PathAccountSid = pathAccountSid };
             return Fetch(options, client);
@@ -342,8 +342,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="options"> Read Application parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Application </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<ApplicationResource>> ReadAsync(ReadApplicationOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<ApplicationResource>> ReadAsync(ReadApplicationOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -364,7 +363,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                                      string friendlyName = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadApplicationOptions(){ PathAccountSid = pathAccountSid, FriendlyName = friendlyName, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -383,7 +382,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                                                                              string friendlyName = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadApplicationOptions(){ PathAccountSid = pathAccountSid, FriendlyName = friendlyName, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -476,7 +475,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <returns> Task that resolves to A single instance of Application </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<ApplicationResource> UpdateAsync(UpdateApplicationOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -524,7 +523,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                           Uri smsStatusCallback = null,
                                           Uri messageStatusCallback = null,
                                           bool? publicApplicationConnectEnabled = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateApplicationOptions(pathSid){ PathAccountSid = pathAccountSid, FriendlyName = friendlyName, ApiVersion = apiVersion, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceFallbackMethod = voiceFallbackMethod, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, VoiceCallerIdLookup = voiceCallerIdLookup, SmsUrl = smsUrl, SmsMethod = smsMethod, SmsFallbackUrl = smsFallbackUrl, SmsFallbackMethod = smsFallbackMethod, SmsStatusCallback = smsStatusCallback, MessageStatusCallback = messageStatusCallback, PublicApplicationConnectEnabled = publicApplicationConnectEnabled };
             return Update(options, client);
@@ -571,7 +570,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                                                               Uri smsStatusCallback = null,
                                                                               Uri messageStatusCallback = null,
                                                                               bool? publicApplicationConnectEnabled = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateApplicationOptions(pathSid){ PathAccountSid = pathAccountSid, FriendlyName = friendlyName, ApiVersion = apiVersion, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceFallbackMethod = voiceFallbackMethod, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, VoiceCallerIdLookup = voiceCallerIdLookup, SmsUrl = smsUrl, SmsMethod = smsMethod, SmsFallbackUrl = smsFallbackUrl, SmsFallbackMethod = smsFallbackMethod, SmsStatusCallback = smsStatusCallback, MessageStatusCallback = messageStatusCallback, PublicApplicationConnectEnabled = publicApplicationConnectEnabled };
             return await UpdateAsync(options, client);

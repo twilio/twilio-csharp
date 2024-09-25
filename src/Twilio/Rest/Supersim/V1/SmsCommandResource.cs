@@ -25,6 +25,8 @@ using Twilio.Http;
 using Twilio.Types;
 
 
+
+
 namespace Twilio.Rest.Supersim.V1
 {
     public class SmsCommandResource : Resource
@@ -95,8 +97,7 @@ namespace Twilio.Rest.Supersim.V1
         /// <param name="options"> Create SmsCommand parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SmsCommand </returns>
-        public static async System.Threading.Tasks.Task<SmsCommandResource> CreateAsync(CreateSmsCommandOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SmsCommandResource> CreateAsync(CreateSmsCommandOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -116,7 +117,7 @@ namespace Twilio.Rest.Supersim.V1
                                           string payload,
                                           Twilio.Http.HttpMethod callbackMethod = null,
                                           Uri callbackUrl = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateSmsCommandOptions(sim, payload){  CallbackMethod = callbackMethod, CallbackUrl = callbackUrl };
             return Create(options, client);
@@ -135,7 +136,7 @@ namespace Twilio.Rest.Supersim.V1
                                                                                   string payload,
                                                                                   Twilio.Http.HttpMethod callbackMethod = null,
                                                                                   Uri callbackUrl = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateSmsCommandOptions(sim, payload){  CallbackMethod = callbackMethod, CallbackUrl = callbackUrl };
             return await CreateAsync(options, client);
@@ -175,8 +176,7 @@ namespace Twilio.Rest.Supersim.V1
         /// <param name="options"> Fetch SmsCommand parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SmsCommand </returns>
-        public static async System.Threading.Tasks.Task<SmsCommandResource> FetchAsync(FetchSmsCommandOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SmsCommandResource> FetchAsync(FetchSmsCommandOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -189,7 +189,7 @@ namespace Twilio.Rest.Supersim.V1
         /// <returns> A single instance of SmsCommand </returns>
         public static SmsCommandResource Fetch(
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchSmsCommandOptions(pathSid){  };
             return Fetch(options, client);
@@ -238,8 +238,7 @@ namespace Twilio.Rest.Supersim.V1
         /// <param name="options"> Read SmsCommand parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SmsCommand </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<SmsCommandResource>> ReadAsync(ReadSmsCommandOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<SmsCommandResource>> ReadAsync(ReadSmsCommandOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -262,7 +261,7 @@ namespace Twilio.Rest.Supersim.V1
                                                      SmsCommandResource.DirectionEnum direction = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadSmsCommandOptions(){ Sim = sim, Status = status, Direction = direction, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -283,7 +282,7 @@ namespace Twilio.Rest.Supersim.V1
                                                                                              SmsCommandResource.DirectionEnum direction = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadSmsCommandOptions(){ Sim = sim, Status = status, Direction = direction, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

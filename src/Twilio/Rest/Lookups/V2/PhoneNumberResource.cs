@@ -25,6 +25,8 @@ using Twilio.Http;
 using Twilio.Types;
 
 
+
+
 namespace Twilio.Rest.Lookups.V2
 {
     public class PhoneNumberResource : Resource
@@ -84,8 +86,7 @@ namespace Twilio.Rest.Lookups.V2
         /// <param name="options"> Fetch PhoneNumber parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PhoneNumber </returns>
-        public static async System.Threading.Tasks.Task<PhoneNumberResource> FetchAsync(FetchPhoneNumberOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<PhoneNumberResource> FetchAsync(FetchPhoneNumberOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -126,7 +127,7 @@ namespace Twilio.Rest.Lookups.V2
                                          string dateOfBirth = null, 
                                          string lastVerifiedDate = null, 
                                          string verificationSid = null, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchPhoneNumberOptions(pathPhoneNumber){ Fields = fields,CountryCode = countryCode,FirstName = firstName,LastName = lastName,AddressLine1 = addressLine1,AddressLine2 = addressLine2,City = city,State = state,PostalCode = postalCode,AddressCountryCode = addressCountryCode,NationalId = nationalId,DateOfBirth = dateOfBirth,LastVerifiedDate = lastVerifiedDate,VerificationSid = verificationSid };
             return Fetch(options, client);

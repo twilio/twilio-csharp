@@ -25,6 +25,8 @@ using Twilio.Http;
 
 
 
+
+
 namespace Twilio.Rest.Events.V1
 {
     public class SubscriptionResource : Resource
@@ -66,8 +68,7 @@ namespace Twilio.Rest.Events.V1
         /// <param name="options"> Create Subscription parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Subscription </returns>
-        public static async System.Threading.Tasks.Task<SubscriptionResource> CreateAsync(CreateSubscriptionOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SubscriptionResource> CreateAsync(CreateSubscriptionOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -85,7 +86,7 @@ namespace Twilio.Rest.Events.V1
                                           string description,
                                           string sinkSid,
                                           List<object> types,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateSubscriptionOptions(description, sinkSid, types){  };
             return Create(options, client);
@@ -102,7 +103,7 @@ namespace Twilio.Rest.Events.V1
                                                                                   string description,
                                                                                   string sinkSid,
                                                                                   List<object> types,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateSubscriptionOptions(description, sinkSid, types){  };
             return await CreateAsync(options, client);
@@ -147,7 +148,7 @@ namespace Twilio.Rest.Events.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Subscription </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteSubscriptionOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -210,8 +211,7 @@ namespace Twilio.Rest.Events.V1
         /// <param name="options"> Fetch Subscription parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Subscription </returns>
-        public static async System.Threading.Tasks.Task<SubscriptionResource> FetchAsync(FetchSubscriptionOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SubscriptionResource> FetchAsync(FetchSubscriptionOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -224,7 +224,7 @@ namespace Twilio.Rest.Events.V1
         /// <returns> A single instance of Subscription </returns>
         public static SubscriptionResource Fetch(
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchSubscriptionOptions(pathSid){  };
             return Fetch(options, client);
@@ -273,8 +273,7 @@ namespace Twilio.Rest.Events.V1
         /// <param name="options"> Read Subscription parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Subscription </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<SubscriptionResource>> ReadAsync(ReadSubscriptionOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<SubscriptionResource>> ReadAsync(ReadSubscriptionOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -293,7 +292,7 @@ namespace Twilio.Rest.Events.V1
                                                      string sinkSid = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadSubscriptionOptions(){ SinkSid = sinkSid, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -310,7 +309,7 @@ namespace Twilio.Rest.Events.V1
                                                                                              string sinkSid = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadSubscriptionOptions(){ SinkSid = sinkSid, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -401,7 +400,7 @@ namespace Twilio.Rest.Events.V1
         /// <returns> Task that resolves to A single instance of Subscription </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<SubscriptionResource> UpdateAsync(UpdateSubscriptionOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -419,7 +418,7 @@ namespace Twilio.Rest.Events.V1
                                           string pathSid,
                                           string description = null,
                                           string sinkSid = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateSubscriptionOptions(pathSid){ Description = description, SinkSid = sinkSid };
             return Update(options, client);
@@ -436,7 +435,7 @@ namespace Twilio.Rest.Events.V1
                                                                               string pathSid,
                                                                               string description = null,
                                                                               string sinkSid = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateSubscriptionOptions(pathSid){ Description = description, SinkSid = sinkSid };
             return await UpdateAsync(options, client);

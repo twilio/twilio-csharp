@@ -25,6 +25,8 @@ using Twilio.Http;
 
 
 
+
+
 namespace Twilio.Rest.Assistants.V1.Knowledge
 {
     public class ChunkResource : Resource
@@ -67,8 +69,7 @@ namespace Twilio.Rest.Assistants.V1.Knowledge
         /// <param name="options"> Read Chunk parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Chunk </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<ChunkResource>> ReadAsync(ReadChunkOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<ChunkResource>> ReadAsync(ReadChunkOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -87,7 +88,7 @@ namespace Twilio.Rest.Assistants.V1.Knowledge
                                                      string pathId,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadChunkOptions(pathId){ PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -104,7 +105,7 @@ namespace Twilio.Rest.Assistants.V1.Knowledge
                                                                                              string pathId,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadChunkOptions(pathId){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

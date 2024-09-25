@@ -25,6 +25,8 @@ using Twilio.Http;
 
 
 
+
+
 namespace Twilio.Rest.FlexApi.V1
 {
     public class PluginConfigurationResource : Resource
@@ -66,8 +68,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="options"> Create PluginConfiguration parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PluginConfiguration </returns>
-        public static async System.Threading.Tasks.Task<PluginConfigurationResource> CreateAsync(CreatePluginConfigurationOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<PluginConfigurationResource> CreateAsync(CreatePluginConfigurationOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -87,7 +88,7 @@ namespace Twilio.Rest.FlexApi.V1
                                           List<object> plugins = null,
                                           string description = null,
                                           string flexMetadata = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreatePluginConfigurationOptions(name){  Plugins = plugins, Description = description, FlexMetadata = flexMetadata };
             return Create(options, client);
@@ -106,7 +107,7 @@ namespace Twilio.Rest.FlexApi.V1
                                                                                   List<object> plugins = null,
                                                                                   string description = null,
                                                                                   string flexMetadata = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreatePluginConfigurationOptions(name){  Plugins = plugins, Description = description, FlexMetadata = flexMetadata };
             return await CreateAsync(options, client);
@@ -146,8 +147,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="options"> Fetch PluginConfiguration parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PluginConfiguration </returns>
-        public static async System.Threading.Tasks.Task<PluginConfigurationResource> FetchAsync(FetchPluginConfigurationOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<PluginConfigurationResource> FetchAsync(FetchPluginConfigurationOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -162,7 +162,7 @@ namespace Twilio.Rest.FlexApi.V1
         public static PluginConfigurationResource Fetch(
                                          string pathSid, 
                                          string flexMetadata = null, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchPluginConfigurationOptions(pathSid){ FlexMetadata = flexMetadata };
             return Fetch(options, client);
@@ -212,8 +212,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="options"> Read PluginConfiguration parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PluginConfiguration </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<PluginConfigurationResource>> ReadAsync(ReadPluginConfigurationOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<PluginConfigurationResource>> ReadAsync(ReadPluginConfigurationOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -232,7 +231,7 @@ namespace Twilio.Rest.FlexApi.V1
                                                      string flexMetadata = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadPluginConfigurationOptions(){ FlexMetadata = flexMetadata, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -249,7 +248,7 @@ namespace Twilio.Rest.FlexApi.V1
                                                                                              string flexMetadata = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadPluginConfigurationOptions(){ FlexMetadata = flexMetadata, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

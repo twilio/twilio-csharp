@@ -79,7 +79,7 @@ namespace Twilio.Rest.Assistants.V1
             return p;
         }
 
-        
+    
 
     }
 
@@ -109,7 +109,7 @@ namespace Twilio.Rest.Assistants.V1
             return p;
         }
 
-        
+    
 
     }
 
@@ -134,7 +134,7 @@ namespace Twilio.Rest.Assistants.V1
             return p;
         }
 
-        
+    
 
     }
 

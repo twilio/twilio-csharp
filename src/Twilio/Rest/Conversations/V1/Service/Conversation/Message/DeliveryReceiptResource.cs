@@ -25,6 +25,8 @@ using Twilio.Http;
 using Twilio.Types;
 
 
+
+
 namespace Twilio.Rest.Conversations.V1.Service.Conversation.Message
 {
     public class DeliveryReceiptResource : Resource
@@ -89,8 +91,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation.Message
         /// <param name="options"> Fetch DeliveryReceipt parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of DeliveryReceipt </returns>
-        public static async System.Threading.Tasks.Task<DeliveryReceiptResource> FetchAsync(FetchDeliveryReceiptOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<DeliveryReceiptResource> FetchAsync(FetchDeliveryReceiptOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -109,7 +110,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation.Message
                                          string pathConversationSid, 
                                          string pathMessageSid, 
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchDeliveryReceiptOptions(pathChatServiceSid, pathConversationSid, pathMessageSid, pathSid){  };
             return Fetch(options, client);
@@ -167,8 +168,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation.Message
         /// <param name="options"> Read DeliveryReceipt parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of DeliveryReceipt </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<DeliveryReceiptResource>> ReadAsync(ReadDeliveryReceiptOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<DeliveryReceiptResource>> ReadAsync(ReadDeliveryReceiptOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -191,7 +191,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation.Message
                                                      string pathMessageSid,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadDeliveryReceiptOptions(pathChatServiceSid, pathConversationSid, pathMessageSid){ PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -212,7 +212,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation.Message
                                                                                              string pathMessageSid,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadDeliveryReceiptOptions(pathChatServiceSid, pathConversationSid, pathMessageSid){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

@@ -25,6 +25,8 @@ using Twilio.Http;
 
 
 
+
+
 namespace Twilio.Rest.Assistants.V1
 {
     public class AssistantResource : Resource
@@ -211,6 +213,8 @@ namespace Twilio.Rest.Assistants.V1
             private string Status {get; set;}
             [JsonProperty("type")]
             private string Type {get; set;}
+            [JsonProperty("url")]
+            private string Url {get; set;}
             [JsonProperty("date_created")]
             private DateTime? DateCreated {get; set;}
             [JsonProperty("date_updated")]
@@ -257,6 +261,11 @@ namespace Twilio.Rest.Assistants.V1
                     _assistantsV1ServiceKnowledge.Type= type;
                     return this;
                 }
+                public Builder WithUrl(string url)
+                {
+                    _assistantsV1ServiceKnowledge.Url= url;
+                    return this;
+                }
                 public Builder WithDateCreated(DateTime? dateCreated)
                 {
                     _assistantsV1ServiceKnowledge.DateCreated= dateCreated;
@@ -291,6 +300,8 @@ namespace Twilio.Rest.Assistants.V1
             private bool? RequiresAuth {get; set;}
             [JsonProperty("type")]
             private string Type {get; set;}
+            [JsonProperty("url")]
+            private string Url {get; set;}
             [JsonProperty("date_created")]
             private DateTime? DateCreated {get; set;}
             [JsonProperty("date_updated")]
@@ -340,6 +351,11 @@ namespace Twilio.Rest.Assistants.V1
                 public Builder WithType(string type)
                 {
                     _assistantsV1ServiceTool.Type= type;
+                    return this;
+                }
+                public Builder WithUrl(string url)
+                {
+                    _assistantsV1ServiceTool.Url= url;
                     return this;
                 }
                 public Builder WithDateCreated(DateTime? dateCreated)
@@ -395,8 +411,7 @@ namespace Twilio.Rest.Assistants.V1
         /// <param name="options"> Create Assistant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Assistant </returns>
-        public static async System.Threading.Tasks.Task<AssistantResource> CreateAsync(CreateAssistantOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AssistantResource> CreateAsync(CreateAssistantOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -410,7 +425,7 @@ namespace Twilio.Rest.Assistants.V1
         /// <returns> A single instance of Assistant </returns>
         public static AssistantResource Create(
                                           AssistantResource.AssistantsV1ServiceCreateAssistantRequest assistantsV1ServiceCreateAssistantRequest,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateAssistantOptions(assistantsV1ServiceCreateAssistantRequest){  };
             return Create(options, client);
@@ -423,7 +438,7 @@ namespace Twilio.Rest.Assistants.V1
         /// <returns> Task that resolves to A single instance of Assistant </returns>
         public static async System.Threading.Tasks.Task<AssistantResource> CreateAsync(
                                                                                   AssistantResource.AssistantsV1ServiceCreateAssistantRequest assistantsV1ServiceCreateAssistantRequest,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateAssistantOptions(assistantsV1ServiceCreateAssistantRequest){  };
             return await CreateAsync(options, client);
@@ -468,7 +483,7 @@ namespace Twilio.Rest.Assistants.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Assistant </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteAssistantOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -531,8 +546,7 @@ namespace Twilio.Rest.Assistants.V1
         /// <param name="options"> Fetch Assistant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Assistant </returns>
-        public static async System.Threading.Tasks.Task<AssistantResource> FetchAsync(FetchAssistantOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AssistantResource> FetchAsync(FetchAssistantOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -545,7 +559,7 @@ namespace Twilio.Rest.Assistants.V1
         /// <returns> A single instance of Assistant </returns>
         public static AssistantResource Fetch(
                                          string pathId, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchAssistantOptions(pathId){  };
             return Fetch(options, client);
@@ -594,8 +608,7 @@ namespace Twilio.Rest.Assistants.V1
         /// <param name="options"> Read Assistant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Assistant </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<AssistantResource>> ReadAsync(ReadAssistantOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<AssistantResource>> ReadAsync(ReadAssistantOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -612,7 +625,7 @@ namespace Twilio.Rest.Assistants.V1
         public static ResourceSet<AssistantResource> Read(
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadAssistantOptions(){ PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -627,7 +640,7 @@ namespace Twilio.Rest.Assistants.V1
         public static async System.Threading.Tasks.Task<ResourceSet<AssistantResource>> ReadAsync(
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadAssistantOptions(){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -719,7 +732,7 @@ namespace Twilio.Rest.Assistants.V1
         /// <returns> Task that resolves to A single instance of Assistant </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<AssistantResource> UpdateAsync(UpdateAssistantOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -733,7 +746,7 @@ namespace Twilio.Rest.Assistants.V1
         /// <returns> A single instance of Assistant </returns>
         public static AssistantResource Update(
                                           string pathId,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateAssistantOptions(pathId){  };
             return Update(options, client);
@@ -746,7 +759,7 @@ namespace Twilio.Rest.Assistants.V1
         /// <returns> Task that resolves to A single instance of Assistant </returns>
         public static async System.Threading.Tasks.Task<AssistantResource> UpdateAsync(
                                                                               string pathId,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateAssistantOptions(pathId){  };
             return await UpdateAsync(options, client);
@@ -810,6 +823,10 @@ namespace Twilio.Rest.Assistants.V1
         ///<summary> The owner/company of the assistant. </summary> 
         [JsonProperty("owner")]
         public string Owner { get; }
+
+        ///<summary> The url of the assistant resource. </summary> 
+        [JsonProperty("url")]
+        public string Url { get; private set; }
 
         ///<summary> The personality prompt to be used for assistant. </summary> 
         [JsonProperty("personality_prompt")]

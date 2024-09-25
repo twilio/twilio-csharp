@@ -25,6 +25,8 @@ using Twilio.Http;
 using Twilio.Types;
 
 
+
+
 namespace Twilio.Rest.Trusthub.V1
 {
     public class TrustProductsResource : Resource
@@ -82,8 +84,7 @@ namespace Twilio.Rest.Trusthub.V1
         /// <param name="options"> Create TrustProducts parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TrustProducts </returns>
-        public static async System.Threading.Tasks.Task<TrustProductsResource> CreateAsync(CreateTrustProductsOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<TrustProductsResource> CreateAsync(CreateTrustProductsOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -103,7 +104,7 @@ namespace Twilio.Rest.Trusthub.V1
                                           string email,
                                           string policySid,
                                           Uri statusCallback = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateTrustProductsOptions(friendlyName, email, policySid){  StatusCallback = statusCallback };
             return Create(options, client);
@@ -122,7 +123,7 @@ namespace Twilio.Rest.Trusthub.V1
                                                                                   string email,
                                                                                   string policySid,
                                                                                   Uri statusCallback = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateTrustProductsOptions(friendlyName, email, policySid){  StatusCallback = statusCallback };
             return await CreateAsync(options, client);
@@ -167,7 +168,7 @@ namespace Twilio.Rest.Trusthub.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TrustProducts </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteTrustProductsOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -230,8 +231,7 @@ namespace Twilio.Rest.Trusthub.V1
         /// <param name="options"> Fetch TrustProducts parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TrustProducts </returns>
-        public static async System.Threading.Tasks.Task<TrustProductsResource> FetchAsync(FetchTrustProductsOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<TrustProductsResource> FetchAsync(FetchTrustProductsOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -244,7 +244,7 @@ namespace Twilio.Rest.Trusthub.V1
         /// <returns> A single instance of TrustProducts </returns>
         public static TrustProductsResource Fetch(
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchTrustProductsOptions(pathSid){  };
             return Fetch(options, client);
@@ -293,8 +293,7 @@ namespace Twilio.Rest.Trusthub.V1
         /// <param name="options"> Read TrustProducts parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TrustProducts </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<TrustProductsResource>> ReadAsync(ReadTrustProductsOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<TrustProductsResource>> ReadAsync(ReadTrustProductsOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -317,7 +316,7 @@ namespace Twilio.Rest.Trusthub.V1
                                                      string policySid = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadTrustProductsOptions(){ Status = status, FriendlyName = friendlyName, PolicySid = policySid, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -338,7 +337,7 @@ namespace Twilio.Rest.Trusthub.V1
                                                                                              string policySid = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadTrustProductsOptions(){ Status = status, FriendlyName = friendlyName, PolicySid = policySid, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -429,7 +428,7 @@ namespace Twilio.Rest.Trusthub.V1
         /// <returns> Task that resolves to A single instance of TrustProducts </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<TrustProductsResource> UpdateAsync(UpdateTrustProductsOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -451,7 +450,7 @@ namespace Twilio.Rest.Trusthub.V1
                                           Uri statusCallback = null,
                                           string friendlyName = null,
                                           string email = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateTrustProductsOptions(pathSid){ Status = status, StatusCallback = statusCallback, FriendlyName = friendlyName, Email = email };
             return Update(options, client);
@@ -472,7 +471,7 @@ namespace Twilio.Rest.Trusthub.V1
                                                                               Uri statusCallback = null,
                                                                               string friendlyName = null,
                                                                               string email = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateTrustProductsOptions(pathSid){ Status = status, StatusCallback = statusCallback, FriendlyName = friendlyName, Email = email };
             return await UpdateAsync(options, client);

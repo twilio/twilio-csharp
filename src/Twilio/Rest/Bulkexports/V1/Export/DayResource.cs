@@ -25,6 +25,8 @@ using Twilio.Http;
 
 
 
+
+
 namespace Twilio.Rest.Bulkexports.V1.Export
 {
     public class DayResource : Resource
@@ -69,8 +71,7 @@ namespace Twilio.Rest.Bulkexports.V1.Export
         /// <param name="options"> Fetch Day parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Day </returns>
-        public static async System.Threading.Tasks.Task<DayResource> FetchAsync(FetchDayOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<DayResource> FetchAsync(FetchDayOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -85,7 +86,7 @@ namespace Twilio.Rest.Bulkexports.V1.Export
         public static DayResource Fetch(
                                          string pathResourceType, 
                                          string pathDay, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchDayOptions(pathResourceType, pathDay){  };
             return Fetch(options, client);
@@ -137,8 +138,7 @@ namespace Twilio.Rest.Bulkexports.V1.Export
         /// <param name="options"> Read Day parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Day </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<DayResource>> ReadAsync(ReadDayOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<DayResource>> ReadAsync(ReadDayOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -157,7 +157,7 @@ namespace Twilio.Rest.Bulkexports.V1.Export
                                                      string pathResourceType,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadDayOptions(pathResourceType){ PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -174,7 +174,7 @@ namespace Twilio.Rest.Bulkexports.V1.Export
                                                                                              string pathResourceType,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadDayOptions(pathResourceType){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

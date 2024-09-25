@@ -25,6 +25,8 @@ using Twilio.Http;
 using Twilio.Types;
 
 
+
+
 namespace Twilio.Rest.FlexApi.V1.Interaction
 {
     public class InteractionChannelResource : Resource
@@ -116,8 +118,7 @@ namespace Twilio.Rest.FlexApi.V1.Interaction
         /// <param name="options"> Fetch InteractionChannel parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InteractionChannel </returns>
-        public static async System.Threading.Tasks.Task<InteractionChannelResource> FetchAsync(FetchInteractionChannelOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<InteractionChannelResource> FetchAsync(FetchInteractionChannelOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -132,7 +133,7 @@ namespace Twilio.Rest.FlexApi.V1.Interaction
         public static InteractionChannelResource Fetch(
                                          string pathInteractionSid, 
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchInteractionChannelOptions(pathInteractionSid, pathSid){  };
             return Fetch(options, client);
@@ -184,8 +185,7 @@ namespace Twilio.Rest.FlexApi.V1.Interaction
         /// <param name="options"> Read InteractionChannel parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InteractionChannel </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<InteractionChannelResource>> ReadAsync(ReadInteractionChannelOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<InteractionChannelResource>> ReadAsync(ReadInteractionChannelOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -204,7 +204,7 @@ namespace Twilio.Rest.FlexApi.V1.Interaction
                                                      string pathInteractionSid,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadInteractionChannelOptions(pathInteractionSid){ PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -221,7 +221,7 @@ namespace Twilio.Rest.FlexApi.V1.Interaction
                                                                                              string pathInteractionSid,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadInteractionChannelOptions(pathInteractionSid){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -314,7 +314,7 @@ namespace Twilio.Rest.FlexApi.V1.Interaction
         /// <returns> Task that resolves to A single instance of InteractionChannel </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<InteractionChannelResource> UpdateAsync(UpdateInteractionChannelOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -334,7 +334,7 @@ namespace Twilio.Rest.FlexApi.V1.Interaction
                                           string pathSid,
                                           InteractionChannelResource.UpdateChannelStatusEnum status,
                                           object routing = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateInteractionChannelOptions(pathInteractionSid, pathSid, status){ Routing = routing };
             return Update(options, client);
@@ -353,7 +353,7 @@ namespace Twilio.Rest.FlexApi.V1.Interaction
                                                                               string pathSid,
                                                                               InteractionChannelResource.UpdateChannelStatusEnum status,
                                                                               object routing = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateInteractionChannelOptions(pathInteractionSid, pathSid, status){ Routing = routing };
             return await UpdateAsync(options, client);

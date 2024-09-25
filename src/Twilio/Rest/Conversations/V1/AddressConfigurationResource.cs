@@ -25,6 +25,8 @@ using Twilio.Http;
 using Twilio.Types;
 
 
+
+
 namespace Twilio.Rest.Conversations.V1
 {
     public class AddressConfigurationResource : Resource
@@ -106,8 +108,7 @@ namespace Twilio.Rest.Conversations.V1
         /// <param name="options"> Create AddressConfiguration parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AddressConfiguration </returns>
-        public static async System.Threading.Tasks.Task<AddressConfigurationResource> CreateAsync(CreateAddressConfigurationOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AddressConfigurationResource> CreateAsync(CreateAddressConfigurationOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -143,7 +144,7 @@ namespace Twilio.Rest.Conversations.V1
                                           string autoCreationStudioFlowSid = null,
                                           int? autoCreationStudioRetryCount = null,
                                           string addressCountry = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateAddressConfigurationOptions(type, address){  FriendlyName = friendlyName, AutoCreationEnabled = autoCreationEnabled, AutoCreationType = autoCreationType, AutoCreationConversationServiceSid = autoCreationConversationServiceSid, AutoCreationWebhookUrl = autoCreationWebhookUrl, AutoCreationWebhookMethod = autoCreationWebhookMethod, AutoCreationWebhookFilters = autoCreationWebhookFilters, AutoCreationStudioFlowSid = autoCreationStudioFlowSid, AutoCreationStudioRetryCount = autoCreationStudioRetryCount, AddressCountry = addressCountry };
             return Create(options, client);
@@ -178,7 +179,7 @@ namespace Twilio.Rest.Conversations.V1
                                                                                   string autoCreationStudioFlowSid = null,
                                                                                   int? autoCreationStudioRetryCount = null,
                                                                                   string addressCountry = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateAddressConfigurationOptions(type, address){  FriendlyName = friendlyName, AutoCreationEnabled = autoCreationEnabled, AutoCreationType = autoCreationType, AutoCreationConversationServiceSid = autoCreationConversationServiceSid, AutoCreationWebhookUrl = autoCreationWebhookUrl, AutoCreationWebhookMethod = autoCreationWebhookMethod, AutoCreationWebhookFilters = autoCreationWebhookFilters, AutoCreationStudioFlowSid = autoCreationStudioFlowSid, AutoCreationStudioRetryCount = autoCreationStudioRetryCount, AddressCountry = addressCountry };
             return await CreateAsync(options, client);
@@ -223,7 +224,7 @@ namespace Twilio.Rest.Conversations.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AddressConfiguration </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteAddressConfigurationOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -286,8 +287,7 @@ namespace Twilio.Rest.Conversations.V1
         /// <param name="options"> Fetch AddressConfiguration parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AddressConfiguration </returns>
-        public static async System.Threading.Tasks.Task<AddressConfigurationResource> FetchAsync(FetchAddressConfigurationOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AddressConfigurationResource> FetchAsync(FetchAddressConfigurationOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -300,7 +300,7 @@ namespace Twilio.Rest.Conversations.V1
         /// <returns> A single instance of AddressConfiguration </returns>
         public static AddressConfigurationResource Fetch(
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchAddressConfigurationOptions(pathSid){  };
             return Fetch(options, client);
@@ -349,8 +349,7 @@ namespace Twilio.Rest.Conversations.V1
         /// <param name="options"> Read AddressConfiguration parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AddressConfiguration </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<AddressConfigurationResource>> ReadAsync(ReadAddressConfigurationOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<AddressConfigurationResource>> ReadAsync(ReadAddressConfigurationOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -369,7 +368,7 @@ namespace Twilio.Rest.Conversations.V1
                                                      string type = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadAddressConfigurationOptions(){ Type = type, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -386,7 +385,7 @@ namespace Twilio.Rest.Conversations.V1
                                                                                              string type = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadAddressConfigurationOptions(){ Type = type, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -477,7 +476,7 @@ namespace Twilio.Rest.Conversations.V1
         /// <returns> Task that resolves to A single instance of AddressConfiguration </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<AddressConfigurationResource> UpdateAsync(UpdateAddressConfigurationOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -509,7 +508,7 @@ namespace Twilio.Rest.Conversations.V1
                                           List<string> autoCreationWebhookFilters = null,
                                           string autoCreationStudioFlowSid = null,
                                           int? autoCreationStudioRetryCount = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateAddressConfigurationOptions(pathSid){ FriendlyName = friendlyName, AutoCreationEnabled = autoCreationEnabled, AutoCreationType = autoCreationType, AutoCreationConversationServiceSid = autoCreationConversationServiceSid, AutoCreationWebhookUrl = autoCreationWebhookUrl, AutoCreationWebhookMethod = autoCreationWebhookMethod, AutoCreationWebhookFilters = autoCreationWebhookFilters, AutoCreationStudioFlowSid = autoCreationStudioFlowSid, AutoCreationStudioRetryCount = autoCreationStudioRetryCount };
             return Update(options, client);
@@ -540,7 +539,7 @@ namespace Twilio.Rest.Conversations.V1
                                                                               List<string> autoCreationWebhookFilters = null,
                                                                               string autoCreationStudioFlowSid = null,
                                                                               int? autoCreationStudioRetryCount = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateAddressConfigurationOptions(pathSid){ FriendlyName = friendlyName, AutoCreationEnabled = autoCreationEnabled, AutoCreationType = autoCreationType, AutoCreationConversationServiceSid = autoCreationConversationServiceSid, AutoCreationWebhookUrl = autoCreationWebhookUrl, AutoCreationWebhookMethod = autoCreationWebhookMethod, AutoCreationWebhookFilters = autoCreationWebhookFilters, AutoCreationStudioFlowSid = autoCreationStudioFlowSid, AutoCreationStudioRetryCount = autoCreationStudioRetryCount };
             return await UpdateAsync(options, client);

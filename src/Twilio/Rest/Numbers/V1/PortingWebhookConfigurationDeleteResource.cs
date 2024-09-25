@@ -25,6 +25,8 @@ using Twilio.Http;
 using Twilio.Types;
 
 
+
+
 namespace Twilio.Rest.Numbers.V1
 {
     public class PortingWebhookConfigurationDeleteResource : Resource
@@ -84,7 +86,7 @@ namespace Twilio.Rest.Numbers.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PortingWebhookConfigurationDelete </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeletePortingWebhookConfigurationDeleteOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));

@@ -25,6 +25,8 @@ using Twilio.Http;
 
 
 
+
+
 namespace Twilio.Rest.Api.V2010.Account
 {
     public class BalanceResource : Resource
@@ -67,8 +69,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="options"> Fetch Balance parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Balance </returns>
-        public static async System.Threading.Tasks.Task<BalanceResource> FetchAsync(FetchBalanceOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<BalanceResource> FetchAsync(FetchBalanceOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -81,7 +82,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <returns> A single instance of Balance </returns>
         public static BalanceResource Fetch(
                                          string pathAccountSid = null, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchBalanceOptions(){ PathAccountSid = pathAccountSid };
             return Fetch(options, client);

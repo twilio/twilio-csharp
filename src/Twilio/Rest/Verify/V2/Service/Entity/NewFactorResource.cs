@@ -25,6 +25,8 @@ using Twilio.Http;
 using Twilio.Types;
 
 
+
+
 namespace Twilio.Rest.Verify.V2.Service.Entity
 {
     public class NewFactorResource : Resource
@@ -122,8 +124,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// <param name="options"> Create NewFactor parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of NewFactor </returns>
-        public static async System.Threading.Tasks.Task<NewFactorResource> CreateAsync(CreateNewFactorOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<NewFactorResource> CreateAsync(CreateNewFactorOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -167,7 +168,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
                                           int? configCodeLength = null,
                                           NewFactorResource.TotpAlgorithmsEnum configAlg = null,
                                           object metadata = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateNewFactorOptions(pathServiceSid, pathIdentity, friendlyName, factorType){  BindingAlg = bindingAlg, BindingPublicKey = bindingPublicKey, ConfigAppId = configAppId, ConfigNotificationPlatform = configNotificationPlatform, ConfigNotificationToken = configNotificationToken, ConfigSdkVersion = configSdkVersion, BindingSecret = bindingSecret, ConfigTimeStep = configTimeStep, ConfigSkew = configSkew, ConfigCodeLength = configCodeLength, ConfigAlg = configAlg, Metadata = metadata };
             return Create(options, client);
@@ -210,7 +211,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
                                                                                   int? configCodeLength = null,
                                                                                   NewFactorResource.TotpAlgorithmsEnum configAlg = null,
                                                                                   object metadata = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateNewFactorOptions(pathServiceSid, pathIdentity, friendlyName, factorType){  BindingAlg = bindingAlg, BindingPublicKey = bindingPublicKey, ConfigAppId = configAppId, ConfigNotificationPlatform = configNotificationPlatform, ConfigNotificationToken = configNotificationToken, ConfigSdkVersion = configSdkVersion, BindingSecret = bindingSecret, ConfigTimeStep = configTimeStep, ConfigSkew = configSkew, ConfigCodeLength = configCodeLength, ConfigAlg = configAlg, Metadata = metadata };
             return await CreateAsync(options, client);

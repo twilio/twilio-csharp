@@ -25,6 +25,8 @@ using Twilio.Http;
 using Twilio.Types;
 
 
+
+
 namespace Twilio.Rest.Preview.HostedNumbers
 {
     public class AuthorizationDocumentResource : Resource
@@ -82,8 +84,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <param name="options"> Create AuthorizationDocument parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AuthorizationDocument </returns>
-        public static async System.Threading.Tasks.Task<AuthorizationDocumentResource> CreateAsync(CreateAuthorizationDocumentOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AuthorizationDocumentResource> CreateAsync(CreateAuthorizationDocumentOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -107,7 +108,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
                                           string contactTitle,
                                           string contactPhoneNumber,
                                           List<string> ccEmails = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateAuthorizationDocumentOptions(hostedNumberOrderSids, addressSid, email, contactTitle, contactPhoneNumber){  CcEmails = ccEmails };
             return Create(options, client);
@@ -130,7 +131,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
                                                                                   string contactTitle,
                                                                                   string contactPhoneNumber,
                                                                                   List<string> ccEmails = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateAuthorizationDocumentOptions(hostedNumberOrderSids, addressSid, email, contactTitle, contactPhoneNumber){  CcEmails = ccEmails };
             return await CreateAsync(options, client);
@@ -170,8 +171,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <param name="options"> Fetch AuthorizationDocument parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AuthorizationDocument </returns>
-        public static async System.Threading.Tasks.Task<AuthorizationDocumentResource> FetchAsync(FetchAuthorizationDocumentOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AuthorizationDocumentResource> FetchAsync(FetchAuthorizationDocumentOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -184,7 +184,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <returns> A single instance of AuthorizationDocument </returns>
         public static AuthorizationDocumentResource Fetch(
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchAuthorizationDocumentOptions(pathSid){  };
             return Fetch(options, client);
@@ -233,8 +233,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <param name="options"> Read AuthorizationDocument parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AuthorizationDocument </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<AuthorizationDocumentResource>> ReadAsync(ReadAuthorizationDocumentOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<AuthorizationDocumentResource>> ReadAsync(ReadAuthorizationDocumentOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -255,7 +254,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
                                                      AuthorizationDocumentResource.StatusEnum status = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadAuthorizationDocumentOptions(){ Email = email, Status = status, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -274,7 +273,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
                                                                                              AuthorizationDocumentResource.StatusEnum status = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadAuthorizationDocumentOptions(){ Email = email, Status = status, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -365,7 +364,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <returns> Task that resolves to A single instance of AuthorizationDocument </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<AuthorizationDocumentResource> UpdateAsync(UpdateAuthorizationDocumentOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -393,7 +392,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
                                           AuthorizationDocumentResource.StatusEnum status = null,
                                           string contactTitle = null,
                                           string contactPhoneNumber = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateAuthorizationDocumentOptions(pathSid){ HostedNumberOrderSids = hostedNumberOrderSids, AddressSid = addressSid, Email = email, CcEmails = ccEmails, Status = status, ContactTitle = contactTitle, ContactPhoneNumber = contactPhoneNumber };
             return Update(options, client);
@@ -420,7 +419,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
                                                                               AuthorizationDocumentResource.StatusEnum status = null,
                                                                               string contactTitle = null,
                                                                               string contactPhoneNumber = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateAuthorizationDocumentOptions(pathSid){ HostedNumberOrderSids = hostedNumberOrderSids, AddressSid = addressSid, Email = email, CcEmails = ccEmails, Status = status, ContactTitle = contactTitle, ContactPhoneNumber = contactPhoneNumber };
             return await UpdateAsync(options, client);

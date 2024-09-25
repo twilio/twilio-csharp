@@ -25,6 +25,8 @@ using Twilio.Http;
 
 
 
+
+
 namespace Twilio.Rest.Insights.V1
 {
     public class CallResource : Resource
@@ -67,8 +69,7 @@ namespace Twilio.Rest.Insights.V1
         /// <param name="options"> Fetch Call parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Call </returns>
-        public static async System.Threading.Tasks.Task<CallResource> FetchAsync(FetchCallOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<CallResource> FetchAsync(FetchCallOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -81,7 +82,7 @@ namespace Twilio.Rest.Insights.V1
         /// <returns> A single instance of Call </returns>
         public static CallResource Fetch(
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchCallOptions(pathSid){  };
             return Fetch(options, client);

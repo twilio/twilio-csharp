@@ -25,6 +25,8 @@ using Twilio.Http;
 
 
 
+
+
 namespace Twilio.Rest.Assistants.V1
 {
     public class KnowledgeResource : Resource
@@ -224,8 +226,7 @@ namespace Twilio.Rest.Assistants.V1
         /// <param name="options"> Create Knowledge parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Knowledge </returns>
-        public static async System.Threading.Tasks.Task<KnowledgeResource> CreateAsync(CreateKnowledgeOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<KnowledgeResource> CreateAsync(CreateKnowledgeOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -239,7 +240,7 @@ namespace Twilio.Rest.Assistants.V1
         /// <returns> A single instance of Knowledge </returns>
         public static KnowledgeResource Create(
                                           KnowledgeResource.AssistantsV1ServiceCreateKnowledgeRequest assistantsV1ServiceCreateKnowledgeRequest,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateKnowledgeOptions(assistantsV1ServiceCreateKnowledgeRequest){  };
             return Create(options, client);
@@ -252,7 +253,7 @@ namespace Twilio.Rest.Assistants.V1
         /// <returns> Task that resolves to A single instance of Knowledge </returns>
         public static async System.Threading.Tasks.Task<KnowledgeResource> CreateAsync(
                                                                                   KnowledgeResource.AssistantsV1ServiceCreateKnowledgeRequest assistantsV1ServiceCreateKnowledgeRequest,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateKnowledgeOptions(assistantsV1ServiceCreateKnowledgeRequest){  };
             return await CreateAsync(options, client);
@@ -297,7 +298,7 @@ namespace Twilio.Rest.Assistants.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Knowledge </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteKnowledgeOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -360,8 +361,7 @@ namespace Twilio.Rest.Assistants.V1
         /// <param name="options"> Fetch Knowledge parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Knowledge </returns>
-        public static async System.Threading.Tasks.Task<KnowledgeResource> FetchAsync(FetchKnowledgeOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<KnowledgeResource> FetchAsync(FetchKnowledgeOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -374,7 +374,7 @@ namespace Twilio.Rest.Assistants.V1
         /// <returns> A single instance of Knowledge </returns>
         public static KnowledgeResource Fetch(
                                          string pathId, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchKnowledgeOptions(pathId){  };
             return Fetch(options, client);
@@ -423,8 +423,7 @@ namespace Twilio.Rest.Assistants.V1
         /// <param name="options"> Read Knowledge parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Knowledge </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<KnowledgeResource>> ReadAsync(ReadKnowledgeOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<KnowledgeResource>> ReadAsync(ReadKnowledgeOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -443,7 +442,7 @@ namespace Twilio.Rest.Assistants.V1
                                                      string assistantId = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadKnowledgeOptions(){ AssistantId = assistantId, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -460,7 +459,7 @@ namespace Twilio.Rest.Assistants.V1
                                                                                              string assistantId = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadKnowledgeOptions(){ AssistantId = assistantId, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -552,7 +551,7 @@ namespace Twilio.Rest.Assistants.V1
         /// <returns> Task that resolves to A single instance of Knowledge </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<KnowledgeResource> UpdateAsync(UpdateKnowledgeOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -566,7 +565,7 @@ namespace Twilio.Rest.Assistants.V1
         /// <returns> A single instance of Knowledge </returns>
         public static KnowledgeResource Update(
                                           string pathId,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateKnowledgeOptions(pathId){  };
             return Update(options, client);
@@ -579,7 +578,7 @@ namespace Twilio.Rest.Assistants.V1
         /// <returns> Task that resolves to A single instance of Knowledge </returns>
         public static async System.Threading.Tasks.Task<KnowledgeResource> UpdateAsync(
                                                                               string pathId,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateKnowledgeOptions(pathId){  };
             return await UpdateAsync(options, client);
@@ -647,6 +646,10 @@ namespace Twilio.Rest.Assistants.V1
         ///<summary> The type of knowledge source ('Web', 'Database', 'Text', 'File') </summary> 
         [JsonProperty("type")]
         public string Type { get; private set; }
+
+        ///<summary> The url of the knowledge resource. </summary> 
+        [JsonProperty("url")]
+        public string Url { get; private set; }
 
         ///<summary> The date and time in GMT when the Knowledge was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_created")]

@@ -25,6 +25,8 @@ using Twilio.Http;
 using Twilio.Types;
 
 
+
+
 namespace Twilio.Rest.Content.V1
 {
     public class ContentResource : Resource
@@ -1216,8 +1218,7 @@ namespace Twilio.Rest.Content.V1
         /// <param name="options"> Create Content parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Content </returns>
-        public static async System.Threading.Tasks.Task<ContentResource> CreateAsync(CreateContentOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ContentResource> CreateAsync(CreateContentOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -1231,7 +1232,7 @@ namespace Twilio.Rest.Content.V1
         /// <returns> A single instance of Content </returns>
         public static ContentResource Create(
                                           ContentResource.ContentCreateRequest contentCreateRequest,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateContentOptions(contentCreateRequest){  };
             return Create(options, client);
@@ -1244,7 +1245,7 @@ namespace Twilio.Rest.Content.V1
         /// <returns> Task that resolves to A single instance of Content </returns>
         public static async System.Threading.Tasks.Task<ContentResource> CreateAsync(
                                                                                   ContentResource.ContentCreateRequest contentCreateRequest,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateContentOptions(contentCreateRequest){  };
             return await CreateAsync(options, client);
@@ -1289,7 +1290,7 @@ namespace Twilio.Rest.Content.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Content </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteContentOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -1352,8 +1353,7 @@ namespace Twilio.Rest.Content.V1
         /// <param name="options"> Fetch Content parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Content </returns>
-        public static async System.Threading.Tasks.Task<ContentResource> FetchAsync(FetchContentOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ContentResource> FetchAsync(FetchContentOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -1366,7 +1366,7 @@ namespace Twilio.Rest.Content.V1
         /// <returns> A single instance of Content </returns>
         public static ContentResource Fetch(
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchContentOptions(pathSid){  };
             return Fetch(options, client);
@@ -1415,8 +1415,7 @@ namespace Twilio.Rest.Content.V1
         /// <param name="options"> Read Content parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Content </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<ContentResource>> ReadAsync(ReadContentOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<ContentResource>> ReadAsync(ReadContentOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -1433,7 +1432,7 @@ namespace Twilio.Rest.Content.V1
         public static ResourceSet<ContentResource> Read(
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadContentOptions(){ PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -1448,7 +1447,7 @@ namespace Twilio.Rest.Content.V1
         public static async System.Threading.Tasks.Task<ResourceSet<ContentResource>> ReadAsync(
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadContentOptions(){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

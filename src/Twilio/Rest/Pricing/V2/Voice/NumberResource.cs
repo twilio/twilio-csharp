@@ -25,6 +25,8 @@ using Twilio.Http;
 using Twilio.Types;
 
 
+
+
 namespace Twilio.Rest.Pricing.V2.Voice
 {
     public class NumberResource : Resource
@@ -67,8 +69,7 @@ namespace Twilio.Rest.Pricing.V2.Voice
         /// <param name="options"> Fetch Number parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Number </returns>
-        public static async System.Threading.Tasks.Task<NumberResource> FetchAsync(FetchNumberOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<NumberResource> FetchAsync(FetchNumberOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -83,7 +84,7 @@ namespace Twilio.Rest.Pricing.V2.Voice
         public static NumberResource Fetch(
                                          Types.PhoneNumber pathDestinationNumber, 
                                          Types.PhoneNumber originationNumber = null, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchNumberOptions(pathDestinationNumber){ OriginationNumber = originationNumber };
             return Fetch(options, client);

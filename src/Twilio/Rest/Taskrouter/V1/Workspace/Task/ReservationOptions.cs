@@ -58,7 +58,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
             return p;
         }
 
-        
+    
 
     }
 
@@ -111,7 +111,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
             return p;
         }
 
-        
+    
 
     }
 

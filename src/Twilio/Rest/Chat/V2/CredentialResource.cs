@@ -25,6 +25,8 @@ using Twilio.Http;
 using Twilio.Types;
 
 
+
+
 namespace Twilio.Rest.Chat.V2
 {
     public class CredentialResource : Resource
@@ -80,8 +82,7 @@ namespace Twilio.Rest.Chat.V2
         /// <param name="options"> Create Credential parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Credential </returns>
-        public static async System.Threading.Tasks.Task<CredentialResource> CreateAsync(CreateCredentialOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<CredentialResource> CreateAsync(CreateCredentialOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -107,7 +108,7 @@ namespace Twilio.Rest.Chat.V2
                                           bool? sandbox = null,
                                           string apiKey = null,
                                           string secret = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateCredentialOptions(type){  FriendlyName = friendlyName, Certificate = certificate, PrivateKey = privateKey, Sandbox = sandbox, ApiKey = apiKey, Secret = secret };
             return Create(options, client);
@@ -132,7 +133,7 @@ namespace Twilio.Rest.Chat.V2
                                                                                   bool? sandbox = null,
                                                                                   string apiKey = null,
                                                                                   string secret = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateCredentialOptions(type){  FriendlyName = friendlyName, Certificate = certificate, PrivateKey = privateKey, Sandbox = sandbox, ApiKey = apiKey, Secret = secret };
             return await CreateAsync(options, client);
@@ -177,7 +178,7 @@ namespace Twilio.Rest.Chat.V2
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Credential </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteCredentialOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -240,8 +241,7 @@ namespace Twilio.Rest.Chat.V2
         /// <param name="options"> Fetch Credential parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Credential </returns>
-        public static async System.Threading.Tasks.Task<CredentialResource> FetchAsync(FetchCredentialOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<CredentialResource> FetchAsync(FetchCredentialOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -254,7 +254,7 @@ namespace Twilio.Rest.Chat.V2
         /// <returns> A single instance of Credential </returns>
         public static CredentialResource Fetch(
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchCredentialOptions(pathSid){  };
             return Fetch(options, client);
@@ -303,8 +303,7 @@ namespace Twilio.Rest.Chat.V2
         /// <param name="options"> Read Credential parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Credential </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<CredentialResource>> ReadAsync(ReadCredentialOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<CredentialResource>> ReadAsync(ReadCredentialOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -321,7 +320,7 @@ namespace Twilio.Rest.Chat.V2
         public static ResourceSet<CredentialResource> Read(
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadCredentialOptions(){ PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -336,7 +335,7 @@ namespace Twilio.Rest.Chat.V2
         public static async System.Threading.Tasks.Task<ResourceSet<CredentialResource>> ReadAsync(
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadCredentialOptions(){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -427,7 +426,7 @@ namespace Twilio.Rest.Chat.V2
         /// <returns> Task that resolves to A single instance of Credential </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<CredentialResource> UpdateAsync(UpdateCredentialOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -453,7 +452,7 @@ namespace Twilio.Rest.Chat.V2
                                           bool? sandbox = null,
                                           string apiKey = null,
                                           string secret = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateCredentialOptions(pathSid){ FriendlyName = friendlyName, Certificate = certificate, PrivateKey = privateKey, Sandbox = sandbox, ApiKey = apiKey, Secret = secret };
             return Update(options, client);
@@ -478,7 +477,7 @@ namespace Twilio.Rest.Chat.V2
                                                                               bool? sandbox = null,
                                                                               string apiKey = null,
                                                                               string secret = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateCredentialOptions(pathSid){ FriendlyName = friendlyName, Certificate = certificate, PrivateKey = privateKey, Sandbox = sandbox, ApiKey = apiKey, Secret = secret };
             return await UpdateAsync(options, client);

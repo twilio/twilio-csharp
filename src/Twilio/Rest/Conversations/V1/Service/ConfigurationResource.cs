@@ -25,6 +25,8 @@ using Twilio.Http;
 
 
 
+
+
 namespace Twilio.Rest.Conversations.V1.Service
 {
     public class ConfigurationResource : Resource
@@ -67,8 +69,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// <param name="options"> Fetch Configuration parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Configuration </returns>
-        public static async System.Threading.Tasks.Task<ConfigurationResource> FetchAsync(FetchConfigurationOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ConfigurationResource> FetchAsync(FetchConfigurationOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -81,7 +82,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// <returns> A single instance of Configuration </returns>
         public static ConfigurationResource Fetch(
                                          string pathChatServiceSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchConfigurationOptions(pathChatServiceSid){  };
             return Fetch(options, client);
@@ -134,7 +135,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// <returns> Task that resolves to A single instance of Configuration </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<ConfigurationResource> UpdateAsync(UpdateConfigurationOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -156,7 +157,7 @@ namespace Twilio.Rest.Conversations.V1.Service
                                           string defaultConversationRoleSid = null,
                                           string defaultChatServiceRoleSid = null,
                                           bool? reachabilityEnabled = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateConfigurationOptions(pathChatServiceSid){ DefaultConversationCreatorRoleSid = defaultConversationCreatorRoleSid, DefaultConversationRoleSid = defaultConversationRoleSid, DefaultChatServiceRoleSid = defaultChatServiceRoleSid, ReachabilityEnabled = reachabilityEnabled };
             return Update(options, client);
@@ -177,7 +178,7 @@ namespace Twilio.Rest.Conversations.V1.Service
                                                                               string defaultConversationRoleSid = null,
                                                                               string defaultChatServiceRoleSid = null,
                                                                               bool? reachabilityEnabled = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateConfigurationOptions(pathChatServiceSid){ DefaultConversationCreatorRoleSid = defaultConversationCreatorRoleSid, DefaultConversationRoleSid = defaultConversationRoleSid, DefaultChatServiceRoleSid = defaultChatServiceRoleSid, ReachabilityEnabled = reachabilityEnabled };
             return await UpdateAsync(options, client);

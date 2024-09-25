@@ -25,6 +25,8 @@ using Twilio.Http;
 
 
 
+
+
 namespace Twilio.Rest.Studio.V1.Flow.Engagement
 {
     public class StepResource : Resource
@@ -71,8 +73,7 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement
         /// <param name="options"> Fetch Step parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Step </returns>
-        public static async System.Threading.Tasks.Task<StepResource> FetchAsync(FetchStepOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<StepResource> FetchAsync(FetchStepOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -89,7 +90,7 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement
                                          string pathFlowSid, 
                                          string pathEngagementSid, 
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchStepOptions(pathFlowSid, pathEngagementSid, pathSid){  };
             return Fetch(options, client);
@@ -144,8 +145,7 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement
         /// <param name="options"> Read Step parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Step </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<StepResource>> ReadAsync(ReadStepOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<StepResource>> ReadAsync(ReadStepOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -166,7 +166,7 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement
                                                      string pathEngagementSid,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadStepOptions(pathFlowSid, pathEngagementSid){ PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -185,7 +185,7 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement
                                                                                              string pathEngagementSid,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadStepOptions(pathFlowSid, pathEngagementSid){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

@@ -25,6 +25,8 @@ using Twilio.Http;
 
 
 
+
+
 namespace Twilio.Rest.Assistants.V1
 {
     public class SessionResource : Resource
@@ -67,8 +69,7 @@ namespace Twilio.Rest.Assistants.V1
         /// <param name="options"> Fetch Session parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Session </returns>
-        public static async System.Threading.Tasks.Task<SessionResource> FetchAsync(FetchSessionOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SessionResource> FetchAsync(FetchSessionOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -81,7 +82,7 @@ namespace Twilio.Rest.Assistants.V1
         /// <returns> A single instance of Session </returns>
         public static SessionResource Fetch(
                                          string pathId, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchSessionOptions(pathId){  };
             return Fetch(options, client);
@@ -130,8 +131,7 @@ namespace Twilio.Rest.Assistants.V1
         /// <param name="options"> Read Session parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Session </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<SessionResource>> ReadAsync(ReadSessionOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<SessionResource>> ReadAsync(ReadSessionOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -148,7 +148,7 @@ namespace Twilio.Rest.Assistants.V1
         public static ResourceSet<SessionResource> Read(
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadSessionOptions(){ PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -163,7 +163,7 @@ namespace Twilio.Rest.Assistants.V1
         public static async System.Threading.Tasks.Task<ResourceSet<SessionResource>> ReadAsync(
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadSessionOptions(){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

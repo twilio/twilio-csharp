@@ -25,6 +25,8 @@ using Twilio.Http;
 using Twilio.Types;
 
 
+
+
 namespace Twilio.Rest.Studio.V2.Flow
 {
     public class FlowRevisionResource : Resource
@@ -82,8 +84,7 @@ namespace Twilio.Rest.Studio.V2.Flow
         /// <param name="options"> Fetch FlowRevision parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of FlowRevision </returns>
-        public static async System.Threading.Tasks.Task<FlowRevisionResource> FetchAsync(FetchFlowRevisionOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<FlowRevisionResource> FetchAsync(FetchFlowRevisionOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -98,7 +99,7 @@ namespace Twilio.Rest.Studio.V2.Flow
         public static FlowRevisionResource Fetch(
                                          string pathSid, 
                                          string pathRevision, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchFlowRevisionOptions(pathSid, pathRevision){  };
             return Fetch(options, client);
@@ -150,8 +151,7 @@ namespace Twilio.Rest.Studio.V2.Flow
         /// <param name="options"> Read FlowRevision parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of FlowRevision </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<FlowRevisionResource>> ReadAsync(ReadFlowRevisionOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<FlowRevisionResource>> ReadAsync(ReadFlowRevisionOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -170,7 +170,7 @@ namespace Twilio.Rest.Studio.V2.Flow
                                                      string pathSid,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadFlowRevisionOptions(pathSid){ PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -187,7 +187,7 @@ namespace Twilio.Rest.Studio.V2.Flow
                                                                                              string pathSid,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadFlowRevisionOptions(pathSid){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

@@ -25,6 +25,8 @@ using Twilio.Http;
 using Twilio.Types;
 
 
+
+
 namespace Twilio.Rest.Verify.V2
 {
     public class VerificationAttemptsSummaryResource : Resource
@@ -79,8 +81,7 @@ namespace Twilio.Rest.Verify.V2
         /// <param name="options"> Fetch VerificationAttemptsSummary parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of VerificationAttemptsSummary </returns>
-        public static async System.Threading.Tasks.Task<VerificationAttemptsSummaryResource> FetchAsync(FetchVerificationAttemptsSummaryOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<VerificationAttemptsSummaryResource> FetchAsync(FetchVerificationAttemptsSummaryOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -103,7 +104,7 @@ namespace Twilio.Rest.Verify.V2
                                          string country = null, 
                                          VerificationAttemptsSummaryResource.ChannelsEnum channel = null, 
                                          string destinationPrefix = null, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchVerificationAttemptsSummaryOptions(){ VerifyServiceSid = verifyServiceSid,DateCreatedAfter = dateCreatedAfter,DateCreatedBefore = dateCreatedBefore,Country = country,Channel = channel,DestinationPrefix = destinationPrefix };
             return Fetch(options, client);

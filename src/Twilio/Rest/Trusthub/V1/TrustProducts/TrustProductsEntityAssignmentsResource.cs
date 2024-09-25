@@ -25,6 +25,8 @@ using Twilio.Http;
 
 
 
+
+
 namespace Twilio.Rest.Trusthub.V1.TrustProducts
 {
     public class TrustProductsEntityAssignmentsResource : Resource
@@ -68,8 +70,7 @@ namespace Twilio.Rest.Trusthub.V1.TrustProducts
         /// <param name="options"> Create TrustProductsEntityAssignments parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TrustProductsEntityAssignments </returns>
-        public static async System.Threading.Tasks.Task<TrustProductsEntityAssignmentsResource> CreateAsync(CreateTrustProductsEntityAssignmentsOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<TrustProductsEntityAssignmentsResource> CreateAsync(CreateTrustProductsEntityAssignmentsOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -85,7 +86,7 @@ namespace Twilio.Rest.Trusthub.V1.TrustProducts
         public static TrustProductsEntityAssignmentsResource Create(
                                           string pathTrustProductSid,
                                           string objectSid,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateTrustProductsEntityAssignmentsOptions(pathTrustProductSid, objectSid){  };
             return Create(options, client);
@@ -100,7 +101,7 @@ namespace Twilio.Rest.Trusthub.V1.TrustProducts
         public static async System.Threading.Tasks.Task<TrustProductsEntityAssignmentsResource> CreateAsync(
                                                                                   string pathTrustProductSid,
                                                                                   string objectSid,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateTrustProductsEntityAssignmentsOptions(pathTrustProductSid, objectSid){  };
             return await CreateAsync(options, client);
@@ -147,7 +148,7 @@ namespace Twilio.Rest.Trusthub.V1.TrustProducts
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TrustProductsEntityAssignments </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteTrustProductsEntityAssignmentsOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -214,8 +215,7 @@ namespace Twilio.Rest.Trusthub.V1.TrustProducts
         /// <param name="options"> Fetch TrustProductsEntityAssignments parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TrustProductsEntityAssignments </returns>
-        public static async System.Threading.Tasks.Task<TrustProductsEntityAssignmentsResource> FetchAsync(FetchTrustProductsEntityAssignmentsOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<TrustProductsEntityAssignmentsResource> FetchAsync(FetchTrustProductsEntityAssignmentsOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -230,7 +230,7 @@ namespace Twilio.Rest.Trusthub.V1.TrustProducts
         public static TrustProductsEntityAssignmentsResource Fetch(
                                          string pathTrustProductSid, 
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchTrustProductsEntityAssignmentsOptions(pathTrustProductSid, pathSid){  };
             return Fetch(options, client);
@@ -282,8 +282,7 @@ namespace Twilio.Rest.Trusthub.V1.TrustProducts
         /// <param name="options"> Read TrustProductsEntityAssignments parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TrustProductsEntityAssignments </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<TrustProductsEntityAssignmentsResource>> ReadAsync(ReadTrustProductsEntityAssignmentsOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<TrustProductsEntityAssignmentsResource>> ReadAsync(ReadTrustProductsEntityAssignmentsOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -304,7 +303,7 @@ namespace Twilio.Rest.Trusthub.V1.TrustProducts
                                                      string objectType = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadTrustProductsEntityAssignmentsOptions(pathTrustProductSid){ ObjectType = objectType, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -323,7 +322,7 @@ namespace Twilio.Rest.Trusthub.V1.TrustProducts
                                                                                              string objectType = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadTrustProductsEntityAssignmentsOptions(pathTrustProductSid){ ObjectType = objectType, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

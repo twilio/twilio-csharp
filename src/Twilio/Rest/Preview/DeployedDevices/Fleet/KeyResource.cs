@@ -25,6 +25,8 @@ using Twilio.Http;
 
 
 
+
+
 namespace Twilio.Rest.Preview.DeployedDevices.Fleet
 {
     public class KeyResource : Resource
@@ -68,8 +70,7 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// <param name="options"> Create Key parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Key </returns>
-        public static async System.Threading.Tasks.Task<KeyResource> CreateAsync(CreateKeyOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<KeyResource> CreateAsync(CreateKeyOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -87,7 +88,7 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
                                           string pathFleetSid,
                                           string friendlyName = null,
                                           string deviceSid = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateKeyOptions(pathFleetSid){  FriendlyName = friendlyName, DeviceSid = deviceSid };
             return Create(options, client);
@@ -104,7 +105,7 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
                                                                                   string pathFleetSid,
                                                                                   string friendlyName = null,
                                                                                   string deviceSid = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateKeyOptions(pathFleetSid){  FriendlyName = friendlyName, DeviceSid = deviceSid };
             return await CreateAsync(options, client);
@@ -151,7 +152,7 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Key </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteKeyOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -218,8 +219,7 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// <param name="options"> Fetch Key parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Key </returns>
-        public static async System.Threading.Tasks.Task<KeyResource> FetchAsync(FetchKeyOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<KeyResource> FetchAsync(FetchKeyOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -234,7 +234,7 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         public static KeyResource Fetch(
                                          string pathFleetSid, 
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchKeyOptions(pathFleetSid, pathSid){  };
             return Fetch(options, client);
@@ -286,8 +286,7 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// <param name="options"> Read Key parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Key </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<KeyResource>> ReadAsync(ReadKeyOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<KeyResource>> ReadAsync(ReadKeyOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -308,7 +307,7 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
                                                      string deviceSid = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadKeyOptions(pathFleetSid){ DeviceSid = deviceSid, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -327,7 +326,7 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
                                                                                              string deviceSid = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadKeyOptions(pathFleetSid){ DeviceSid = deviceSid, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -420,7 +419,7 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// <returns> Task that resolves to A single instance of Key </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<KeyResource> UpdateAsync(UpdateKeyOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -440,7 +439,7 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
                                           string pathSid,
                                           string friendlyName = null,
                                           string deviceSid = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateKeyOptions(pathFleetSid, pathSid){ FriendlyName = friendlyName, DeviceSid = deviceSid };
             return Update(options, client);
@@ -459,7 +458,7 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
                                                                               string pathSid,
                                                                               string friendlyName = null,
                                                                               string deviceSid = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateKeyOptions(pathFleetSid, pathSid){ FriendlyName = friendlyName, DeviceSid = deviceSid };
             return await UpdateAsync(options, client);

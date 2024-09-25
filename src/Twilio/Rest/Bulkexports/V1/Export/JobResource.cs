@@ -25,6 +25,8 @@ using Twilio.Http;
 
 
 
+
+
 namespace Twilio.Rest.Bulkexports.V1.Export
 {
     public class JobResource : Resource
@@ -72,7 +74,7 @@ namespace Twilio.Rest.Bulkexports.V1.Export
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Job </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteJobOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -135,8 +137,7 @@ namespace Twilio.Rest.Bulkexports.V1.Export
         /// <param name="options"> Fetch Job parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Job </returns>
-        public static async System.Threading.Tasks.Task<JobResource> FetchAsync(FetchJobOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<JobResource> FetchAsync(FetchJobOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -149,7 +150,7 @@ namespace Twilio.Rest.Bulkexports.V1.Export
         /// <returns> A single instance of Job </returns>
         public static JobResource Fetch(
                                          string pathJobSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchJobOptions(pathJobSid){  };
             return Fetch(options, client);

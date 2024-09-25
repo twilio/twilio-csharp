@@ -25,6 +25,8 @@ using Twilio.Http;
 using Twilio.Types;
 
 
+
+
 namespace Twilio.Rest.FlexApi.V1
 {
     public class WebChannelResource : Resource
@@ -77,8 +79,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="options"> Create WebChannel parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of WebChannel </returns>
-        public static async System.Threading.Tasks.Task<WebChannelResource> CreateAsync(CreateWebChannelOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<WebChannelResource> CreateAsync(CreateWebChannelOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -102,7 +103,7 @@ namespace Twilio.Rest.FlexApi.V1
                                           string chatFriendlyName,
                                           string chatUniqueName = null,
                                           string preEngagementData = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateWebChannelOptions(flexFlowSid, identity, customerFriendlyName, chatFriendlyName){  ChatUniqueName = chatUniqueName, PreEngagementData = preEngagementData };
             return Create(options, client);
@@ -125,7 +126,7 @@ namespace Twilio.Rest.FlexApi.V1
                                                                                   string chatFriendlyName,
                                                                                   string chatUniqueName = null,
                                                                                   string preEngagementData = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateWebChannelOptions(flexFlowSid, identity, customerFriendlyName, chatFriendlyName){  ChatUniqueName = chatUniqueName, PreEngagementData = preEngagementData };
             return await CreateAsync(options, client);
@@ -170,7 +171,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of WebChannel </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteWebChannelOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -233,8 +234,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="options"> Fetch WebChannel parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of WebChannel </returns>
-        public static async System.Threading.Tasks.Task<WebChannelResource> FetchAsync(FetchWebChannelOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<WebChannelResource> FetchAsync(FetchWebChannelOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -247,7 +247,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <returns> A single instance of WebChannel </returns>
         public static WebChannelResource Fetch(
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchWebChannelOptions(pathSid){  };
             return Fetch(options, client);
@@ -296,8 +296,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="options"> Read WebChannel parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of WebChannel </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<WebChannelResource>> ReadAsync(ReadWebChannelOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<WebChannelResource>> ReadAsync(ReadWebChannelOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -314,7 +313,7 @@ namespace Twilio.Rest.FlexApi.V1
         public static ResourceSet<WebChannelResource> Read(
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadWebChannelOptions(){ PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -329,7 +328,7 @@ namespace Twilio.Rest.FlexApi.V1
         public static async System.Threading.Tasks.Task<ResourceSet<WebChannelResource>> ReadAsync(
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadWebChannelOptions(){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -420,7 +419,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <returns> Task that resolves to A single instance of WebChannel </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<WebChannelResource> UpdateAsync(UpdateWebChannelOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -438,7 +437,7 @@ namespace Twilio.Rest.FlexApi.V1
                                           string pathSid,
                                           WebChannelResource.ChatStatusEnum chatStatus = null,
                                           string postEngagementData = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateWebChannelOptions(pathSid){ ChatStatus = chatStatus, PostEngagementData = postEngagementData };
             return Update(options, client);
@@ -455,7 +454,7 @@ namespace Twilio.Rest.FlexApi.V1
                                                                               string pathSid,
                                                                               WebChannelResource.ChatStatusEnum chatStatus = null,
                                                                               string postEngagementData = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateWebChannelOptions(pathSid){ ChatStatus = chatStatus, PostEngagementData = postEngagementData };
             return await UpdateAsync(options, client);

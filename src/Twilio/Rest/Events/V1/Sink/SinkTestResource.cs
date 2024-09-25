@@ -25,6 +25,8 @@ using Twilio.Http;
 
 
 
+
+
 namespace Twilio.Rest.Events.V1.Sink
 {
     public class SinkTestResource : Resource
@@ -68,8 +70,7 @@ namespace Twilio.Rest.Events.V1.Sink
         /// <param name="options"> Create SinkTest parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SinkTest </returns>
-        public static async System.Threading.Tasks.Task<SinkTestResource> CreateAsync(CreateSinkTestOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SinkTestResource> CreateAsync(CreateSinkTestOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -83,7 +84,7 @@ namespace Twilio.Rest.Events.V1.Sink
         /// <returns> A single instance of SinkTest </returns>
         public static SinkTestResource Create(
                                           string pathSid,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateSinkTestOptions(pathSid){  };
             return Create(options, client);
@@ -96,7 +97,7 @@ namespace Twilio.Rest.Events.V1.Sink
         /// <returns> Task that resolves to A single instance of SinkTest </returns>
         public static async System.Threading.Tasks.Task<SinkTestResource> CreateAsync(
                                                                                   string pathSid,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateSinkTestOptions(pathSid){  };
             return await CreateAsync(options, client);

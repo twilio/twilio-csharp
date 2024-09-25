@@ -25,6 +25,8 @@ using Twilio.Http;
 using Twilio.Types;
 
 
+
+
 namespace Twilio.Rest.Trusthub.V1.CustomerProfiles
 {
     public class CustomerProfilesEvaluationsResource : Resource
@@ -81,8 +83,7 @@ namespace Twilio.Rest.Trusthub.V1.CustomerProfiles
         /// <param name="options"> Create CustomerProfilesEvaluations parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CustomerProfilesEvaluations </returns>
-        public static async System.Threading.Tasks.Task<CustomerProfilesEvaluationsResource> CreateAsync(CreateCustomerProfilesEvaluationsOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<CustomerProfilesEvaluationsResource> CreateAsync(CreateCustomerProfilesEvaluationsOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -98,7 +99,7 @@ namespace Twilio.Rest.Trusthub.V1.CustomerProfiles
         public static CustomerProfilesEvaluationsResource Create(
                                           string pathCustomerProfileSid,
                                           string policySid,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateCustomerProfilesEvaluationsOptions(pathCustomerProfileSid, policySid){  };
             return Create(options, client);
@@ -113,7 +114,7 @@ namespace Twilio.Rest.Trusthub.V1.CustomerProfiles
         public static async System.Threading.Tasks.Task<CustomerProfilesEvaluationsResource> CreateAsync(
                                                                                   string pathCustomerProfileSid,
                                                                                   string policySid,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateCustomerProfilesEvaluationsOptions(pathCustomerProfileSid, policySid){  };
             return await CreateAsync(options, client);
@@ -155,8 +156,7 @@ namespace Twilio.Rest.Trusthub.V1.CustomerProfiles
         /// <param name="options"> Fetch CustomerProfilesEvaluations parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CustomerProfilesEvaluations </returns>
-        public static async System.Threading.Tasks.Task<CustomerProfilesEvaluationsResource> FetchAsync(FetchCustomerProfilesEvaluationsOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<CustomerProfilesEvaluationsResource> FetchAsync(FetchCustomerProfilesEvaluationsOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -171,7 +171,7 @@ namespace Twilio.Rest.Trusthub.V1.CustomerProfiles
         public static CustomerProfilesEvaluationsResource Fetch(
                                          string pathCustomerProfileSid, 
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchCustomerProfilesEvaluationsOptions(pathCustomerProfileSid, pathSid){  };
             return Fetch(options, client);
@@ -223,8 +223,7 @@ namespace Twilio.Rest.Trusthub.V1.CustomerProfiles
         /// <param name="options"> Read CustomerProfilesEvaluations parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CustomerProfilesEvaluations </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<CustomerProfilesEvaluationsResource>> ReadAsync(ReadCustomerProfilesEvaluationsOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<CustomerProfilesEvaluationsResource>> ReadAsync(ReadCustomerProfilesEvaluationsOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -243,7 +242,7 @@ namespace Twilio.Rest.Trusthub.V1.CustomerProfiles
                                                      string pathCustomerProfileSid,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadCustomerProfilesEvaluationsOptions(pathCustomerProfileSid){ PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -260,7 +259,7 @@ namespace Twilio.Rest.Trusthub.V1.CustomerProfiles
                                                                                              string pathCustomerProfileSid,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadCustomerProfilesEvaluationsOptions(pathCustomerProfileSid){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

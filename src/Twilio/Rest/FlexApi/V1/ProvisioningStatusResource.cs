@@ -25,6 +25,8 @@ using Twilio.Http;
 using Twilio.Types;
 
 
+
+
 namespace Twilio.Rest.FlexApi.V1
 {
     public class ProvisioningStatusResource : Resource
@@ -80,8 +82,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="options"> Fetch ProvisioningStatus parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ProvisioningStatus </returns>
-        public static async System.Threading.Tasks.Task<ProvisioningStatusResource> FetchAsync(FetchProvisioningStatusOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ProvisioningStatusResource> FetchAsync(FetchProvisioningStatusOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -92,7 +93,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of ProvisioningStatus </returns>
         public static ProvisioningStatusResource Fetch(
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchProvisioningStatusOptions(){  };
             return Fetch(options, client);

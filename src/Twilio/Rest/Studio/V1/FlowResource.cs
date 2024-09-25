@@ -25,6 +25,8 @@ using Twilio.Http;
 using Twilio.Types;
 
 
+
+
 namespace Twilio.Rest.Studio.V1
 {
     public class FlowResource : Resource
@@ -85,7 +87,7 @@ namespace Twilio.Rest.Studio.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Flow </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteFlowOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -148,8 +150,7 @@ namespace Twilio.Rest.Studio.V1
         /// <param name="options"> Fetch Flow parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Flow </returns>
-        public static async System.Threading.Tasks.Task<FlowResource> FetchAsync(FetchFlowOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<FlowResource> FetchAsync(FetchFlowOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -162,7 +163,7 @@ namespace Twilio.Rest.Studio.V1
         /// <returns> A single instance of Flow </returns>
         public static FlowResource Fetch(
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchFlowOptions(pathSid){  };
             return Fetch(options, client);
@@ -211,8 +212,7 @@ namespace Twilio.Rest.Studio.V1
         /// <param name="options"> Read Flow parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Flow </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<FlowResource>> ReadAsync(ReadFlowOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<FlowResource>> ReadAsync(ReadFlowOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -229,7 +229,7 @@ namespace Twilio.Rest.Studio.V1
         public static ResourceSet<FlowResource> Read(
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadFlowOptions(){ PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -244,7 +244,7 @@ namespace Twilio.Rest.Studio.V1
         public static async System.Threading.Tasks.Task<ResourceSet<FlowResource>> ReadAsync(
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadFlowOptions(){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
