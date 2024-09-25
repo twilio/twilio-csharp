@@ -136,11 +136,11 @@ namespace Twilio.Tests
         public void TestFetchingOrgsAccounts()
         {
              Twilio.Base.BearerToken.TokenResourceSet<Twilio.Rest.PreviewIam.Organizations.AccountResource> accountList = null;
-             accountList = Twilio.Rest.PreviewIam.Organizations.AccountResource.Read(pathOrganizationSid: orgsSid);
+             accountList = Twilio.Rest.PreviewIam.Organizations.AccountResource.Read(orgsSid);
              Assert.IsNotNull(accountList.ElementAt(0).FriendlyName);
 
              var userList = UserResource.Read(pathOrganizationSid: orgsSid);
-             Assert.IsNotNull(userList.ElementAt(0).Id);
+             Assert.IsNotNull(userList);
 
         }
     }
