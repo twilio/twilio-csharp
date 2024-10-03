@@ -94,14 +94,16 @@ namespace Twilio.Rest.Numbers.V1
         /// <summary> Check if a single phone number can be ported to Twilio </summary>
         /// <param name="pathPhoneNumber"> Phone number to check portability in e164 format. </param>
         /// <param name="targetAccountSid"> Account Sid to which the number will be ported. This can be used to determine if a sub account already has the number in its inventory or a different sub account. If this is not provided, the authenticated account will be assumed to be the target account. </param>
+        /// <param name="addressSid"> Address Sid of customer to which the number will be ported. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of PortingPortability </returns>
         public static PortingPortabilityResource Fetch(
                                          Types.PhoneNumber pathPhoneNumber, 
                                          string targetAccountSid = null, 
+                                         string addressSid = null, 
                                         ITwilioRestClient client = null)
         {
-            var options = new FetchPortingPortabilityOptions(pathPhoneNumber){ TargetAccountSid = targetAccountSid };
+            var options = new FetchPortingPortabilityOptions(pathPhoneNumber){ TargetAccountSid = targetAccountSid,AddressSid = addressSid };
             return Fetch(options, client);
         }
 
@@ -109,11 +111,12 @@ namespace Twilio.Rest.Numbers.V1
         /// <summary> Check if a single phone number can be ported to Twilio </summary>
         /// <param name="pathPhoneNumber"> Phone number to check portability in e164 format. </param>
         /// <param name="targetAccountSid"> Account Sid to which the number will be ported. This can be used to determine if a sub account already has the number in its inventory or a different sub account. If this is not provided, the authenticated account will be assumed to be the target account. </param>
+        /// <param name="addressSid"> Address Sid of customer to which the number will be ported. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PortingPortability </returns>
-        public static async System.Threading.Tasks.Task<PortingPortabilityResource> FetchAsync(Types.PhoneNumber pathPhoneNumber, string targetAccountSid = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<PortingPortabilityResource> FetchAsync(Types.PhoneNumber pathPhoneNumber, string targetAccountSid = null, string addressSid = null, ITwilioRestClient client = null)
         {
-            var options = new FetchPortingPortabilityOptions(pathPhoneNumber){ TargetAccountSid = targetAccountSid };
+            var options = new FetchPortingPortabilityOptions(pathPhoneNumber){ TargetAccountSid = targetAccountSid,AddressSid = addressSid };
             return await FetchAsync(options, client);
         }
         #endif

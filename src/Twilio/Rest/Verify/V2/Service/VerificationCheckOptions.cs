@@ -46,6 +46,9 @@ namespace Twilio.Rest.Verify.V2.Service
         ///<summary> The payee of the associated PSD2 compliant transaction. Requires the PSD2 Service flag enabled. </summary> 
         public string Payee { get; set; }
 
+        ///<summary> A sna client token received in sna url invocation response needs to be passed in Verification Check request and should match to get successful response. </summary> 
+        public string SnaClientToken { get; set; }
+
 
         /// <summary> Construct a new CreateVerificationCheckOptions </summary>
         /// <param name="pathServiceSid"> The SID of the verification [Service](https://www.twilio.com/docs/verify/api/service) to create the resource under. </param>
@@ -79,6 +82,10 @@ namespace Twilio.Rest.Verify.V2.Service
             if (Payee != null)
             {
                 p.Add(new KeyValuePair<string, string>("Payee", Payee));
+            }
+            if (SnaClientToken != null)
+            {
+                p.Add(new KeyValuePair<string, string>("SnaClientToken", SnaClientToken));
             }
             return p;
         }

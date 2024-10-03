@@ -46,7 +46,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         ///<summary> A URL-encoded JSON string with the attributes of the new task. This value is passed to the Workflow's `assignment_callback_url` when the Task is assigned to a Worker. For example: `{ \\\"task_type\\\": \\\"call\\\", \\\"twilio_call_sid\\\": \\\"CAxxx\\\", \\\"customer_ticket_number\\\": \\\"12345\\\" }`. </summary> 
         public string Attributes { get; set; }
 
-        ///<summary> The virtual start time to assign the new task and override the default. When supplied, the new task will have this virtual start time. When not supplied, the new task will have the virtual start time equal to `date_created`. Value can't be in the future. </summary> 
+        ///<summary> The virtual start time to assign the new task and override the default. When supplied, the new task will have this virtual start time. When not supplied, the new task will have the virtual start time equal to `date_created`. Value can't be in the future or before the year of 1900. </summary> 
         public DateTime? VirtualStartTime { get; set; }
 
         ///<summary> A SID of a Worker, Queue, or Workflow to route a Task to </summary> 
@@ -329,7 +329,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         ///<summary> When MultiTasking is enabled, specify the TaskChannel with the task to update. Can be the TaskChannel's SID or its `unique_name`, such as `voice`, `sms`, or `default`. </summary> 
         public string TaskChannel { get; set; }
 
-        ///<summary> The task's new virtual start time value. When supplied, the Task takes on the specified virtual start time. Value can't be in the future. </summary> 
+        ///<summary> The task's new virtual start time value. When supplied, the Task takes on the specified virtual start time. Value can't be in the future or before the year of 1900. </summary> 
         public DateTime? VirtualStartTime { get; set; }
 
 

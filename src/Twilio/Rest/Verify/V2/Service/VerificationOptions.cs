@@ -76,6 +76,9 @@ namespace Twilio.Rest.Verify.V2.Service
         ///<summary> Strongly encouraged if using the auto channel. The IP address of the client's device. If provided, it has to be a valid IPv4 or IPv6 address. </summary> 
         public string DeviceIp { get; set; }
 
+        ///<summary> An optional Boolean value to indicate the requirement of sna client token in the SNA URL invocation response for added security. This token must match in the Verification Check request to confirm phone number verification. </summary> 
+        public bool? EnableSnaClientToken { get; set; }
+
         
         public VerificationResource.RiskCheckEnum RiskCheck { get; set; }
 
@@ -159,6 +162,10 @@ namespace Twilio.Rest.Verify.V2.Service
             if (DeviceIp != null)
             {
                 p.Add(new KeyValuePair<string, string>("DeviceIp", DeviceIp));
+            }
+            if (EnableSnaClientToken != null)
+            {
+                p.Add(new KeyValuePair<string, string>("EnableSnaClientToken", EnableSnaClientToken.Value.ToString().ToLower()));
             }
             if (RiskCheck != null)
             {

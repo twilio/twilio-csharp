@@ -33,6 +33,9 @@ namespace Twilio.Rest.Numbers.V1
         ///<summary> Account Sid to which the number will be ported. This can be used to determine if a sub account already has the number in its inventory or a different sub account. If this is not provided, the authenticated account will be assumed to be the target account. </summary> 
         public string TargetAccountSid { get; set; }
 
+        ///<summary> Address Sid of customer to which the number will be ported. </summary> 
+        public string AddressSid { get; set; }
+
 
 
         /// <summary> Construct a new FetchPortingPortabilityOptions </summary>
@@ -51,6 +54,10 @@ namespace Twilio.Rest.Numbers.V1
             if (TargetAccountSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("TargetAccountSid", TargetAccountSid));
+            }
+            if (AddressSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("AddressSid", AddressSid));
             }
             return p;
         }
