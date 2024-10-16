@@ -21,7 +21,7 @@ namespace Twilio.Credential
             {
                 throw new AuthenticationException("ClientId or ClientSecret cannot be null");
             }
-            grantType = "client_credentials";
+            this.grantType = "client_credentials";
             this.clientId = clientId;
             this.clientSecret = clientSecret;
             tokenManager = null;
