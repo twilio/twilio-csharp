@@ -62,6 +62,11 @@ namespace Twilio.AuthStrategies
             return token == that.token && tokenManager.Equals(that.tokenManager);
         }
 
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(token, tokenManager);
+        }
+
 
         public bool tokenExpired(String accessToken){
             #if NET35

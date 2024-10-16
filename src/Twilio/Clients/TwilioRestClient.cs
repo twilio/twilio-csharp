@@ -125,7 +125,7 @@ namespace Twilio.Clients
             catch (Exception clientException)
             {
                 throw new ApiConnectionException(
-                    "Connection Error1: " + request.Method + request.ConstructUrl(),
+                    "Connection Error: " + request.Method + request.ConstructUrl(),
                     clientException
                 );
             }
