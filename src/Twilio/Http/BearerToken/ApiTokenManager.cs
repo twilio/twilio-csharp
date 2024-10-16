@@ -3,13 +3,14 @@ using Twilio.Exceptions;
 using System;
 using Twilio.Annotations;
 
+
 namespace Twilio.Http.BearerToken{
 
     /// <summary>
     /// Implementation of a Token Manager
     /// </summary>
     [Beta]
-    public class OrgsTokenManager : TokenManager
+    public class ApiTokenManager : TokenManager
     {
 
         public string GrantType { get; }
@@ -21,8 +22,8 @@ namespace Twilio.Http.BearerToken{
         public string RefreshToken { get; set; }
         public string Scope { get; set; }
 
-        /// Constructor for a OrgsTokenManager
-        public OrgsTokenManager(
+        /// Constructor for a ApiTokenManager
+        public ApiTokenManager(
             string clientId,
             string clientSecret,
             string code = null,
