@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Twilio.Constant;
 using Twilio.Rest;
+using Twilio.AuthStrategies;
 
 #if !NET35
 using System.Net;
@@ -38,6 +39,11 @@ namespace Twilio.Http
         public string Password { get; set; }
 
         /// <summary>
+        /// Auth Strategy
+        /// </summary>
+        public AuthStrategy AuthStrategy { get; set; }
+
+        /// <summary>
         /// Twilio region
         /// </summary>
         public string Region { get; set; }
@@ -66,12 +72,12 @@ namespace Twilio.Http
         /// Header params
         /// </summary>
         public List<KeyValuePair<string, string>> HeaderParams { get; private set; }
-        
+
         /// <summary>
         /// Content Type
         /// </summary>
         public EnumConstants.ContentTypeEnum ContentType { get; set; }
-        
+
         /// <summary>
         /// Body
         /// </summary>
@@ -185,6 +191,19 @@ namespace Twilio.Http
         {
             Username = username;
             Password = password;
+            AuthStrategy = null;
+        }
+
+        /// <summary>
+        /// Set auth for the request
+        /// </summary>
+        /// <param name="username">Auth username</param>
+        /// <param name="password">Auth password</param>
+        public void SetAuth(AuthStrategy authStrategy)
+        {
+            AuthStrategy = authStrategy;
+            Username = null;
+            Password = null;
         }
 
         private static string EncodeParameters(IEnumerable<KeyValuePair<string, string>> data)

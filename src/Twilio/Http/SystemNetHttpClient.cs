@@ -94,8 +94,14 @@ namespace Twilio.Http
                 request.ConstructUrl()
             );
 
-            var authBytes = Authentication(request.Username, request.Password);
-            httpRequest.Headers.Authorization = new AuthenticationHeaderValue("Basic", authBytes);
+            if(request.Username != null && request.Password != null){
+                var authBytes = Authentication(request.Username, request.Password);
+                httpRequest.Headers.Authorization = new AuthenticationHeaderValue("Basic", authBytes);
+            }
+            else if(request.AuthStrategy != null && request.AuthStrategy.RequiresAuthentication()){
+                string authHeader = request.AuthStrategy.GetAuthString();
+                httpRequest.Headers.Add("Authorization", authHeader);
+            }
 
             httpRequest.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             httpRequest.Headers.AcceptEncoding.Add(new StringWithQualityHeaderValue("utf-8"));

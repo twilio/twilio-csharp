@@ -3,6 +3,7 @@ using System;
 using System.Net;
 using Newtonsoft.Json;
 using Twilio.Exceptions;
+using Twilio.AuthStrategies;
 
 #if !NET35
 using System.Threading.Tasks;
@@ -51,6 +52,7 @@ namespace Twilio.Clients
         public string LogLevel { get; set; } = Environment.GetEnvironmentVariable("TWILIO_LOG_LEVEL");
         private readonly string _username;
         private readonly string _password;
+        private readonly AuthStrategy _authstrategy;
 
         /// <summary>
         /// Constructor for a TwilioRestClient
@@ -68,11 +70,13 @@ namespace Twilio.Clients
             string accountSid = null,
             string region = null,
             HttpClient httpClient = null,
-            string edge = null
+            string edge = null,
+            AuthStrategy authstrategy = null
         )
         {
             _username = username;
             _password = password;
+            _authstrategy = authstrategy;
 
             AccountSid = accountSid ?? username;
             HttpClient = httpClient ?? DefaultClient();
@@ -89,7 +93,13 @@ namespace Twilio.Clients
         /// <returns>response of the request</returns>
         public Response Request(Request request)
         {
-            request.SetAuth(_username, _password);
+
+            if(_username != null && _password != null){
+                request.SetAuth(_username, _password);
+            }
+            else if(_authstrategy != null){
+                request.SetAuth(_authstrategy);
+            }
 
             if (LogLevel == "debug")
                 LogRequest(request);
@@ -102,7 +112,6 @@ namespace Twilio.Clients
 
             if (UserAgentExtensions != null)
                 request.UserAgentExtensions = UserAgentExtensions;
-
             Response response;
             try
             {
@@ -132,7 +141,12 @@ namespace Twilio.Clients
         /// <returns>Task that resolves to the response of the request</returns>
         public async Task<Response> RequestAsync(Request request)
         {
-            request.SetAuth(_username, _password);
+            if(_username != null && _password != null){
+                request.SetAuth(_username, _password);
+            }
+            else if(_authstrategy != null){
+                request.SetAuth(_authstrategy);
+            }
 
             if (Region != null)
                 request.Region = Region;

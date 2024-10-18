@@ -14,7 +14,7 @@ namespace Twilio.Http.NoAuth
     /// <summary>
     /// Sample client to make HTTP requests
     /// </summary>
-    [Beta]
+    [Deprecated]
     public class SystemNetNoAuthHttpClient : NoAuthHttpClient
     {
 #if NET462

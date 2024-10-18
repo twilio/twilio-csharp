@@ -17,7 +17,7 @@ namespace Twilio.Http.BearerToken
     /// <summary>
     /// Twilio request object with bearer token authentication
     /// </summary>
-    [Beta]
+    [Deprecated]
     public class TokenRequest
     {
         private static readonly string DEFAULT_REGION = "us1";
