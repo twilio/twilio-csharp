@@ -64,7 +64,10 @@ namespace Twilio.AuthStrategies
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(token, tokenManager);
+           int hash = 17;
+           hash = hash * 31 + (token != null ? token.GetHashCode() : 0);
+           hash = hash * 31 + (tokenManager != null ? tokenManager.GetHashCode() : 0);
+           return hash;
         }
 
 
