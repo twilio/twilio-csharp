@@ -28,7 +28,7 @@ namespace Twilio.Clients.BearerToken
     /// <summary>
     /// Implementation of a TwilioRestClient.
     /// </summary>
-    [Beta]
+    [Deprecated]
     public class TwilioOrgsTokenRestClient
     {
         /// <summary>

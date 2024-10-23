@@ -6,7 +6,7 @@ namespace Twilio.Http.NoAuth
     /// <summary>
     /// Base http client used to make Twilio requests
     /// </summary>
-    [Beta]
+    [Deprecated]
     public abstract class NoAuthHttpClient
     {
         /// <summary>
