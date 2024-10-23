@@ -147,6 +147,9 @@ To use a custom HTTP client with this helper library, please see the [advanced e
 ### Beta
 Features marked with the `[Beta]` attribute are in a beta stage and may undergo changes in future releases. Use these features with caution as they may not be stable.
 
+### Deprecated
+Features marked with the `[Deprecated]` attribute are deprecated and are not encouraged to use
+
 ### Preview
 Features marked with the `[Preview]` attribute are in a preview stage and are intended for evaluation purposes. They are subject to change and should not be used in production without thorough testing.
 
