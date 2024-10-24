@@ -25,8 +25,6 @@ using Twilio.Http;
 using Twilio.Types;
 
 
-
-
 namespace Twilio.Rest.Sync.V1.Service.SyncList
 {
     public class SyncListItemResource : Resource

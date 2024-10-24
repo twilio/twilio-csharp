@@ -25,8 +25,6 @@ using Twilio.Http;
 
 
 
-
-
 namespace Twilio.Rest.Trunking.V1.Trunk
 {
     public class IpAccessControlListResource : Resource

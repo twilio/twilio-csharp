@@ -25,8 +25,6 @@ using Twilio.Http;
 using Twilio.Types;
 
 
-
-
 namespace Twilio.Rest.Messaging.V1
 {
     public class BrandRegistrationResource : Resource

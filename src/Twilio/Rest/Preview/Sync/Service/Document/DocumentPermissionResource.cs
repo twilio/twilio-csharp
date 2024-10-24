@@ -25,8 +25,6 @@ using Twilio.Http;
 
 
 
-
-
 namespace Twilio.Rest.Preview.Sync.Service.Document
 {
     public class DocumentPermissionResource : Resource

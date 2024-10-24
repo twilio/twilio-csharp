@@ -25,8 +25,6 @@ using Twilio.Http;
 
 
 
-
-
 namespace Twilio.Rest.Content.V2
 {
     public class ContentAndApprovalsResource : Resource

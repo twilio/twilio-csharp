@@ -25,8 +25,6 @@ using Twilio.Http;
 using Twilio.Types;
 
 
-
-
 namespace Twilio.Rest.Video.V1
 {
     public class CompositionHookResource : Resource

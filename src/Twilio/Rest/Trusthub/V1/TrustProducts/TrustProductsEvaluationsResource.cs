@@ -25,8 +25,6 @@ using Twilio.Http;
 using Twilio.Types;
 
 
-
-
 namespace Twilio.Rest.Trusthub.V1.TrustProducts
 {
     public class TrustProductsEvaluationsResource : Resource

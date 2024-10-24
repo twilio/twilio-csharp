@@ -25,8 +25,6 @@ using Twilio.Http;
 using Twilio.Types;
 
 
-
-
 namespace Twilio.Rest.IpMessaging.V1
 {
     public class CredentialResource : Resource

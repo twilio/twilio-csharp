@@ -25,8 +25,6 @@ using Twilio.Http;
 
 
 
-
-
 namespace Twilio.Rest.Assistants.V1.Knowledge
 {
     public class KnowledgeStatusResource : Resource

@@ -25,8 +25,6 @@ using Twilio.Http;
 
 
 
-
-
 namespace Twilio.Rest.Monitor.V1
 {
     public class AlertResource : Resource

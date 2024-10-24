@@ -23,10 +23,6 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-using Twilio.Base.BearerToken;
-using Twilio.Clients.BearerToken;
-using Twilio.Http.BearerToken;
-
 
 
 namespace Twilio.Rest.PreviewIam.Organizations
@@ -238,7 +234,7 @@ namespace Twilio.Rest.PreviewIam.Organizations
     
 
         
-        private static TokenRequest BuildCreateRequest(CreateUserOptions options, TwilioOrgsTokenRestClient client)
+        private static Request BuildCreateRequest(CreateUserOptions options, ITwilioRestClient client)
         {
             
             string path = "/Organizations/{OrganizationSid}/scim/Users";
@@ -246,7 +242,7 @@ namespace Twilio.Rest.PreviewIam.Organizations
             string PathOrganizationSid = options.PathOrganizationSid.ToString();
             path = path.Replace("{"+"OrganizationSid"+"}", PathOrganizationSid);
 
-            return new TokenRequest(
+            return new Request(
                 HttpMethod.Post,
                 Rest.Domain.PreviewIam,
                 path,
@@ -261,9 +257,9 @@ namespace Twilio.Rest.PreviewIam.Organizations
         /// <param name="options"> Create User parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of User </returns>
-        public static UserResource Create(CreateUserOptions options, TwilioOrgsTokenRestClient client = null)
+        public static UserResource Create(CreateUserOptions options, ITwilioRestClient client = null)
         {
-            client = client ?? TwilioOrgsTokenAuthClient.GetRestClient();
+            client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildCreateRequest(options, client));
             return FromJson(response.Content);
         }
@@ -273,9 +269,9 @@ namespace Twilio.Rest.PreviewIam.Organizations
         /// <param name="options"> Create User parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of User </returns>
-        public static async System.Threading.Tasks.Task<UserResource> CreateAsync(CreateUserOptions options, TwilioOrgsTokenRestClient client = null)
+        public static async System.Threading.Tasks.Task<UserResource> CreateAsync(CreateUserOptions options, ITwilioRestClient client = null)
         {
-            client = client ?? TwilioOrgsTokenAuthClient.GetRestClient();
+            client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
             return FromJson(response.Content);
         }
@@ -289,7 +285,7 @@ namespace Twilio.Rest.PreviewIam.Organizations
         public static UserResource Create(
                                           string pathOrganizationSid,
                                           UserResource.ScimUser scimUser,
-                                            TwilioOrgsTokenRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateUserOptions(pathOrganizationSid, scimUser){  };
             return Create(options, client);
@@ -304,7 +300,7 @@ namespace Twilio.Rest.PreviewIam.Organizations
         public static async System.Threading.Tasks.Task<UserResource> CreateAsync(
                                                                                   string pathOrganizationSid,
                                                                                   UserResource.ScimUser scimUser,
-                                                                                    TwilioOrgsTokenRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateUserOptions(pathOrganizationSid, scimUser){  };
             return await CreateAsync(options, client);
@@ -315,7 +311,7 @@ namespace Twilio.Rest.PreviewIam.Organizations
         /// <param name="options"> Delete User parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of User </returns>
-        private static TokenRequest BuildDeleteRequest(DeleteUserOptions options, TwilioOrgsTokenRestClient client)
+        private static Request BuildDeleteRequest(DeleteUserOptions options, ITwilioRestClient client)
         {
             
             string path = "/Organizations/{OrganizationSid}/scim/Users/{UserSid}";
@@ -325,7 +321,7 @@ namespace Twilio.Rest.PreviewIam.Organizations
             string PathUserSid = options.PathUserSid.ToString();
             path = path.Replace("{"+"UserSid"+"}", PathUserSid);
 
-            return new TokenRequest(
+            return new Request(
                 HttpMethod.Delete,
                 Rest.Domain.PreviewIam,
                 path,
@@ -338,9 +334,9 @@ namespace Twilio.Rest.PreviewIam.Organizations
         /// <param name="options"> Delete User parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of User </returns>
-        public static bool Delete(DeleteUserOptions options, TwilioOrgsTokenRestClient client = null)
+        public static bool Delete(DeleteUserOptions options, ITwilioRestClient client = null)
         {
-            client = client ?? TwilioOrgsTokenAuthClient.GetRestClient();
+            client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
@@ -351,9 +347,9 @@ namespace Twilio.Rest.PreviewIam.Organizations
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of User </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteUserOptions options,
-                                                                        TwilioOrgsTokenRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
-            client = client ?? TwilioOrgsTokenAuthClient.GetRestClient();
+            client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
@@ -364,7 +360,7 @@ namespace Twilio.Rest.PreviewIam.Organizations
         /// <param name="pathUserSid">  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of User </returns>
-        public static bool Delete(string pathOrganizationSid, string pathUserSid, TwilioOrgsTokenRestClient client = null)
+        public static bool Delete(string pathOrganizationSid, string pathUserSid, ITwilioRestClient client = null)
         {
             var options = new DeleteUserOptions(pathOrganizationSid, pathUserSid)        ;
             return Delete(options, client);
@@ -376,14 +372,14 @@ namespace Twilio.Rest.PreviewIam.Organizations
         /// <param name="pathUserSid">  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of User </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathOrganizationSid, string pathUserSid, TwilioOrgsTokenRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathOrganizationSid, string pathUserSid, ITwilioRestClient client = null)
         {
             var options = new DeleteUserOptions(pathOrganizationSid, pathUserSid) ;
             return await DeleteAsync(options, client);
         }
         #endif
         
-        private static TokenRequest BuildFetchRequest(FetchUserOptions options, TwilioOrgsTokenRestClient client)
+        private static Request BuildFetchRequest(FetchUserOptions options, ITwilioRestClient client)
         {
             
             string path = "/Organizations/{OrganizationSid}/scim/Users/{UserSid}";
@@ -393,7 +389,7 @@ namespace Twilio.Rest.PreviewIam.Organizations
             string PathUserSid = options.PathUserSid.ToString();
             path = path.Replace("{"+"UserSid"+"}", PathUserSid);
 
-            return new TokenRequest(
+            return new Request(
                 HttpMethod.Get,
                 Rest.Domain.PreviewIam,
                 path,
@@ -406,9 +402,9 @@ namespace Twilio.Rest.PreviewIam.Organizations
         /// <param name="options"> Fetch User parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of User </returns>
-        public static UserResource Fetch(FetchUserOptions options, TwilioOrgsTokenRestClient client = null)
+        public static UserResource Fetch(FetchUserOptions options, ITwilioRestClient client = null)
         {
-            client = client ?? TwilioOrgsTokenAuthClient.GetRestClient();
+            client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildFetchRequest(options, client));
             return FromJson(response.Content);
         }
@@ -418,9 +414,9 @@ namespace Twilio.Rest.PreviewIam.Organizations
         /// <param name="options"> Fetch User parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of User </returns>
-        public static async System.Threading.Tasks.Task<UserResource> FetchAsync(FetchUserOptions options, TwilioOrgsTokenRestClient client = null)
+        public static async System.Threading.Tasks.Task<UserResource> FetchAsync(FetchUserOptions options, ITwilioRestClient client = null)
         {
-            client = client ?? TwilioOrgsTokenAuthClient.GetRestClient();
+            client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
             return FromJson(response.Content);
         }
@@ -433,7 +429,7 @@ namespace Twilio.Rest.PreviewIam.Organizations
         public static UserResource Fetch(
                                          string pathOrganizationSid, 
                                          string pathUserSid, 
-                                        TwilioOrgsTokenRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchUserOptions(pathOrganizationSid, pathUserSid){  };
             return Fetch(options, client);
@@ -445,14 +441,14 @@ namespace Twilio.Rest.PreviewIam.Organizations
         /// <param name="pathUserSid">  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of User </returns>
-        public static async System.Threading.Tasks.Task<UserResource> FetchAsync(string pathOrganizationSid, string pathUserSid, TwilioOrgsTokenRestClient client = null)
+        public static async System.Threading.Tasks.Task<UserResource> FetchAsync(string pathOrganizationSid, string pathUserSid, ITwilioRestClient client = null)
         {
             var options = new FetchUserOptions(pathOrganizationSid, pathUserSid){  };
             return await FetchAsync(options, client);
         }
         #endif
         
-        private static TokenRequest BuildReadRequest(ReadUserOptions options, TwilioOrgsTokenRestClient client)
+        private static Request BuildReadRequest(ReadUserOptions options, ITwilioRestClient client)
         {
             
             string path = "/Organizations/{OrganizationSid}/scim/Users";
@@ -460,7 +456,7 @@ namespace Twilio.Rest.PreviewIam.Organizations
             string PathOrganizationSid = options.PathOrganizationSid.ToString();
             path = path.Replace("{"+"OrganizationSid"+"}", PathOrganizationSid);
 
-            return new TokenRequest(
+            return new Request(
                 HttpMethod.Get,
                 Rest.Domain.PreviewIam,
                 path,
@@ -472,12 +468,12 @@ namespace Twilio.Rest.PreviewIam.Organizations
         /// <param name="options"> Read User parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of User </returns>
-        public static TokenResourceSet<UserResource> Read(ReadUserOptions options, TwilioOrgsTokenRestClient client = null)
+        public static ResourceSet<UserResource> Read(ReadUserOptions options, ITwilioRestClient client = null)
         {
-            client = client ?? TwilioOrgsTokenAuthClient.GetRestClient();
+            client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
             var page = Page<UserResource>.FromJson("Resources", response.Content);
-            return new TokenResourceSet<UserResource>(page, options, client);
+            return new ResourceSet<UserResource>(page, options, client);
         }
 
         #if !NET35
@@ -485,13 +481,13 @@ namespace Twilio.Rest.PreviewIam.Organizations
         /// <param name="options"> Read User parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of User </returns>
-        public static async System.Threading.Tasks.Task<TokenResourceSet<UserResource>> ReadAsync(ReadUserOptions options, TwilioOrgsTokenRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<UserResource>> ReadAsync(ReadUserOptions options, ITwilioRestClient client = null)
         {
-            client = client ?? TwilioOrgsTokenAuthClient.GetRestClient();
+            client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
 
             var page = Page<UserResource>.FromJson("Resources", response.Content);
-            return new TokenResourceSet<UserResource>(page, options, client);
+            return new ResourceSet<UserResource>(page, options, client);
         }
         #endif
         /// <summary> read </summary>
@@ -500,11 +496,11 @@ namespace Twilio.Rest.PreviewIam.Organizations
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of User </returns>
-        public static TokenResourceSet<UserResource> Read(
+        public static ResourceSet<UserResource> Read(
                                                      string pathOrganizationSid,
                                                      string filter = null,
                                                      long? limit = null,
-                                                    TwilioOrgsTokenRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadUserOptions(pathOrganizationSid){ Filter = filter, Limit = limit};
             return Read(options, client);
@@ -517,11 +513,11 @@ namespace Twilio.Rest.PreviewIam.Organizations
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of User </returns>
-        public static async System.Threading.Tasks.Task<TokenResourceSet<UserResource>> ReadAsync(
+        public static async System.Threading.Tasks.Task<ResourceSet<UserResource>> ReadAsync(
                                                                                              string pathOrganizationSid,
                                                                                              string filter = null,
                                                                                              long? limit = null,
-                                                                                            TwilioOrgsTokenRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadUserOptions(pathOrganizationSid){ Filter = filter, Limit = limit};
             return await ReadAsync(options, client);
@@ -533,11 +529,11 @@ namespace Twilio.Rest.PreviewIam.Organizations
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The target page of records </returns>
-        public static Page<UserResource> GetPage(string targetUrl, TwilioOrgsTokenRestClient client)
+        public static Page<UserResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
-            client = client ?? TwilioOrgsTokenAuthClient.GetRestClient();
+            client = client ?? TwilioClient.GetRestClient();
 
-            var request = new TokenRequest(
+            var request = new Request(
                 HttpMethod.Get,
                 targetUrl
             );
@@ -550,9 +546,9 @@ namespace Twilio.Rest.PreviewIam.Organizations
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The next page of records </returns>
-        public static Page<UserResource> NextPage(Page<UserResource> page, TwilioOrgsTokenRestClient client)
+        public static Page<UserResource> NextPage(Page<UserResource> page, ITwilioRestClient client)
         {
-            var request = new TokenRequest(
+            var request = new Request(
                 HttpMethod.Get,
                 page.GetNextPageUrl(Rest.Domain.Api)
             );
@@ -565,9 +561,9 @@ namespace Twilio.Rest.PreviewIam.Organizations
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The previous page of records </returns>
-        public static Page<UserResource> PreviousPage(Page<UserResource> page, TwilioOrgsTokenRestClient client)
+        public static Page<UserResource> PreviousPage(Page<UserResource> page, ITwilioRestClient client)
         {
-            var request = new TokenRequest(
+            var request = new Request(
                 HttpMethod.Get,
                 page.GetPreviousPageUrl(Rest.Domain.Api)
             );
@@ -577,7 +573,7 @@ namespace Twilio.Rest.PreviewIam.Organizations
         }
 
         
-        private static TokenRequest BuildUpdateRequest(UpdateUserOptions options, TwilioOrgsTokenRestClient client)
+        private static Request BuildUpdateRequest(UpdateUserOptions options, ITwilioRestClient client)
         {
             
             string path = "/Organizations/{OrganizationSid}/scim/Users/{UserSid}";
@@ -587,7 +583,7 @@ namespace Twilio.Rest.PreviewIam.Organizations
             string PathUserSid = options.PathUserSid.ToString();
             path = path.Replace("{"+"UserSid"+"}", PathUserSid);
 
-            return new TokenRequest(
+            return new Request(
                 HttpMethod.Put,
                 Rest.Domain.PreviewIam,
                 path,
@@ -602,9 +598,9 @@ namespace Twilio.Rest.PreviewIam.Organizations
         /// <param name="options"> Update User parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of User </returns>
-        public static UserResource Update(UpdateUserOptions options, TwilioOrgsTokenRestClient client = null)
+        public static UserResource Update(UpdateUserOptions options, ITwilioRestClient client = null)
         {
-            client = client ?? TwilioOrgsTokenAuthClient.GetRestClient();
+            client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildUpdateRequest(options, client));
             return FromJson(response.Content);
         }
@@ -615,9 +611,9 @@ namespace Twilio.Rest.PreviewIam.Organizations
         /// <returns> Task that resolves to A single instance of User </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<UserResource> UpdateAsync(UpdateUserOptions options,
-                                                                                                    TwilioOrgsTokenRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
-            client = client ?? TwilioOrgsTokenAuthClient.GetRestClient();
+            client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
             return FromJson(response.Content);
         }
@@ -635,7 +631,7 @@ namespace Twilio.Rest.PreviewIam.Organizations
                                           string pathUserSid,
                                           UserResource.ScimUser scimUser,
                                           string ifMatch = null,
-                                            TwilioOrgsTokenRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateUserOptions(pathOrganizationSid, pathUserSid, scimUser){ IfMatch = ifMatch };
             return Update(options, client);
@@ -654,7 +650,7 @@ namespace Twilio.Rest.PreviewIam.Organizations
                                                                               string pathUserSid,
                                                                               UserResource.ScimUser scimUser,
                                                                               string ifMatch = null,
-                                                                                TwilioOrgsTokenRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateUserOptions(pathOrganizationSid, pathUserSid, scimUser){ IfMatch = ifMatch };
             return await UpdateAsync(options, client);

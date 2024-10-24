@@ -25,8 +25,6 @@ using Twilio.Http;
 
 
 
-
-
 namespace Twilio.Rest.Serverless.V1
 {
     public class ServiceResource : Resource

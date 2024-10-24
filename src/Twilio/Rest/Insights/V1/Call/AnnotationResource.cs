@@ -25,8 +25,6 @@ using Twilio.Http;
 using Twilio.Types;
 
 
-
-
 namespace Twilio.Rest.Insights.V1.Call
 {
     public class AnnotationResource : Resource

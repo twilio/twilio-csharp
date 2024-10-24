@@ -25,8 +25,6 @@ using Twilio.Http;
 
 
 
-
-
 namespace Twilio.Rest.Numbers.V1
 {
     public class PortingPortInPhoneNumberResource : Resource

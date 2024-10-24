@@ -25,8 +25,6 @@ using Twilio.Http;
 
 
 
-
-
 namespace Twilio.Rest.Events.V1.Schema
 {
     public class SchemaVersionResource : Resource

@@ -25,8 +25,6 @@ using Twilio.Http;
 
 
 
-
-
 namespace Twilio.Rest.Microvisor.V1.App
 {
     public class AppManifestResource : Resource

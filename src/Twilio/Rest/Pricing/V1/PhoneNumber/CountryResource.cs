@@ -25,8 +25,6 @@ using Twilio.Http;
 using Twilio.Types;
 
 
-
-
 namespace Twilio.Rest.Pricing.V1.PhoneNumber
 {
     public class CountryResource : Resource

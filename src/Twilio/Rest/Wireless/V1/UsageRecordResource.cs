@@ -25,8 +25,6 @@ using Twilio.Http;
 using Twilio.Types;
 
 
-
-
 namespace Twilio.Rest.Wireless.V1
 {
     public class UsageRecordResource : Resource

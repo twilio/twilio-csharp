@@ -25,8 +25,6 @@ using Twilio.Http;
 using Twilio.Types;
 
 
-
-
 namespace Twilio.Rest.Lookups.V2
 {
     public class PhoneNumberResource : Resource

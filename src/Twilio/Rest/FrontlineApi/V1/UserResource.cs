@@ -25,8 +25,6 @@ using Twilio.Http;
 using Twilio.Types;
 
 
-
-
 namespace Twilio.Rest.FrontlineApi.V1
 {
     public class UserResource : Resource

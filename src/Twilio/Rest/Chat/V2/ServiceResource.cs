@@ -25,8 +25,6 @@ using Twilio.Http;
 
 
 
-
-
 namespace Twilio.Rest.Chat.V2
 {
     public class ServiceResource : Resource

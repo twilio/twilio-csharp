@@ -25,8 +25,6 @@ using Twilio.Http;
 using Twilio.Types;
 
 
-
-
 namespace Twilio.Rest.Intelligence.V2
 {
     public class TranscriptResource : Resource

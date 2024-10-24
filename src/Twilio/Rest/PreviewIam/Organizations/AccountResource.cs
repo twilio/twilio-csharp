@@ -23,10 +23,6 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Types;
-using Twilio.Base.BearerToken;
-using Twilio.Clients.BearerToken;
-using Twilio.Http.BearerToken;
-
 
 
 namespace Twilio.Rest.PreviewIam.Organizations
@@ -53,7 +49,7 @@ namespace Twilio.Rest.PreviewIam.Organizations
         }
 
         
-        private static TokenRequest BuildFetchRequest(FetchAccountOptions options, TwilioOrgsTokenRestClient client)
+        private static Request BuildFetchRequest(FetchAccountOptions options, ITwilioRestClient client)
         {
             
             string path = "/Organizations/{OrganizationSid}/Accounts/{AccountSid}";
@@ -63,7 +59,7 @@ namespace Twilio.Rest.PreviewIam.Organizations
             string PathAccountSid = options.PathAccountSid.ToString();
             path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
 
-            return new TokenRequest(
+            return new Request(
                 HttpMethod.Get,
                 Rest.Domain.PreviewIam,
                 path,
@@ -76,9 +72,9 @@ namespace Twilio.Rest.PreviewIam.Organizations
         /// <param name="options"> Fetch Account parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Account </returns>
-        public static AccountResource Fetch(FetchAccountOptions options, TwilioOrgsTokenRestClient client = null)
+        public static AccountResource Fetch(FetchAccountOptions options, ITwilioRestClient client = null)
         {
-            client = client ?? TwilioOrgsTokenAuthClient.GetRestClient();
+            client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildFetchRequest(options, client));
             return FromJson(response.Content);
         }
@@ -88,9 +84,9 @@ namespace Twilio.Rest.PreviewIam.Organizations
         /// <param name="options"> Fetch Account parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Account </returns>
-        public static async System.Threading.Tasks.Task<AccountResource> FetchAsync(FetchAccountOptions options, TwilioOrgsTokenRestClient client = null)
+        public static async System.Threading.Tasks.Task<AccountResource> FetchAsync(FetchAccountOptions options, ITwilioRestClient client = null)
         {
-            client = client ?? TwilioOrgsTokenAuthClient.GetRestClient();
+            client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
             return FromJson(response.Content);
         }
@@ -103,7 +99,7 @@ namespace Twilio.Rest.PreviewIam.Organizations
         public static AccountResource Fetch(
                                          string pathOrganizationSid, 
                                          string pathAccountSid, 
-                                        TwilioOrgsTokenRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchAccountOptions(pathOrganizationSid, pathAccountSid){  };
             return Fetch(options, client);
@@ -115,14 +111,14 @@ namespace Twilio.Rest.PreviewIam.Organizations
         /// <param name="pathAccountSid">  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Account </returns>
-        public static async System.Threading.Tasks.Task<AccountResource> FetchAsync(string pathOrganizationSid, string pathAccountSid, TwilioOrgsTokenRestClient client = null)
+        public static async System.Threading.Tasks.Task<AccountResource> FetchAsync(string pathOrganizationSid, string pathAccountSid, ITwilioRestClient client = null)
         {
             var options = new FetchAccountOptions(pathOrganizationSid, pathAccountSid){  };
             return await FetchAsync(options, client);
         }
         #endif
         
-        private static TokenRequest BuildReadRequest(ReadAccountOptions options, TwilioOrgsTokenRestClient client)
+        private static Request BuildReadRequest(ReadAccountOptions options, ITwilioRestClient client)
         {
             
             string path = "/Organizations/{OrganizationSid}/Accounts";
@@ -130,7 +126,7 @@ namespace Twilio.Rest.PreviewIam.Organizations
             string PathOrganizationSid = options.PathOrganizationSid.ToString();
             path = path.Replace("{"+"OrganizationSid"+"}", PathOrganizationSid);
 
-            return new TokenRequest(
+            return new Request(
                 HttpMethod.Get,
                 Rest.Domain.PreviewIam,
                 path,
@@ -142,12 +138,12 @@ namespace Twilio.Rest.PreviewIam.Organizations
         /// <param name="options"> Read Account parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Account </returns>
-        public static TokenResourceSet<AccountResource> Read(ReadAccountOptions options, TwilioOrgsTokenRestClient client = null)
+        public static ResourceSet<AccountResource> Read(ReadAccountOptions options, ITwilioRestClient client = null)
         {
-            client = client ?? TwilioOrgsTokenAuthClient.GetRestClient();
+            client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
             var page = Page<AccountResource>.FromJson("content", response.Content);
-            return new TokenResourceSet<AccountResource>(page, options, client);
+            return new ResourceSet<AccountResource>(page, options, client);
         }
 
         #if !NET35
@@ -155,13 +151,13 @@ namespace Twilio.Rest.PreviewIam.Organizations
         /// <param name="options"> Read Account parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Account </returns>
-        public static async System.Threading.Tasks.Task<TokenResourceSet<AccountResource>> ReadAsync(ReadAccountOptions options, TwilioOrgsTokenRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<AccountResource>> ReadAsync(ReadAccountOptions options, ITwilioRestClient client = null)
         {
-            client = client ?? TwilioOrgsTokenAuthClient.GetRestClient();
+            client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
 
             var page = Page<AccountResource>.FromJson("content", response.Content);
-            return new TokenResourceSet<AccountResource>(page, options, client);
+            return new ResourceSet<AccountResource>(page, options, client);
         }
         #endif
         /// <summary> read </summary>
@@ -170,11 +166,11 @@ namespace Twilio.Rest.PreviewIam.Organizations
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Account </returns>
-        public static TokenResourceSet<AccountResource> Read(
+        public static ResourceSet<AccountResource> Read(
                                                      string pathOrganizationSid,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                    TwilioOrgsTokenRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadAccountOptions(pathOrganizationSid){ PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -187,11 +183,11 @@ namespace Twilio.Rest.PreviewIam.Organizations
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Account </returns>
-        public static async System.Threading.Tasks.Task<TokenResourceSet<AccountResource>> ReadAsync(
+        public static async System.Threading.Tasks.Task<ResourceSet<AccountResource>> ReadAsync(
                                                                                              string pathOrganizationSid,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            TwilioOrgsTokenRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadAccountOptions(pathOrganizationSid){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -203,11 +199,11 @@ namespace Twilio.Rest.PreviewIam.Organizations
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The target page of records </returns>
-        public static Page<AccountResource> GetPage(string targetUrl, TwilioOrgsTokenRestClient client)
+        public static Page<AccountResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
-            client = client ?? TwilioOrgsTokenAuthClient.GetRestClient();
+            client = client ?? TwilioClient.GetRestClient();
 
-            var request = new TokenRequest(
+            var request = new Request(
                 HttpMethod.Get,
                 targetUrl
             );
@@ -220,9 +216,9 @@ namespace Twilio.Rest.PreviewIam.Organizations
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The next page of records </returns>
-        public static Page<AccountResource> NextPage(Page<AccountResource> page, TwilioOrgsTokenRestClient client)
+        public static Page<AccountResource> NextPage(Page<AccountResource> page, ITwilioRestClient client)
         {
-            var request = new TokenRequest(
+            var request = new Request(
                 HttpMethod.Get,
                 page.GetNextPageUrl(Rest.Domain.Api)
             );
@@ -235,9 +231,9 @@ namespace Twilio.Rest.PreviewIam.Organizations
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The previous page of records </returns>
-        public static Page<AccountResource> PreviousPage(Page<AccountResource> page, TwilioOrgsTokenRestClient client)
+        public static Page<AccountResource> PreviousPage(Page<AccountResource> page, ITwilioRestClient client)
         {
-            var request = new TokenRequest(
+            var request = new Request(
                 HttpMethod.Get,
                 page.GetPreviousPageUrl(Rest.Domain.Api)
             );

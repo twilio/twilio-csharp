@@ -25,8 +25,6 @@ using Twilio.Http;
 using Twilio.Types;
 
 
-
-
 namespace Twilio.Rest.Pricing.V2.Voice
 {
     public class NumberResource : Resource

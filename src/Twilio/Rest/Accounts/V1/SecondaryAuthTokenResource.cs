@@ -25,8 +25,6 @@ using Twilio.Http;
 
 
 
-
-
 namespace Twilio.Rest.Accounts.V1
 {
     public class SecondaryAuthTokenResource : Resource

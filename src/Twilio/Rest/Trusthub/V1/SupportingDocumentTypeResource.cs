@@ -25,8 +25,6 @@ using Twilio.Http;
 
 
 
-
-
 namespace Twilio.Rest.Trusthub.V1
 {
     public class SupportingDocumentTypeResource : Resource

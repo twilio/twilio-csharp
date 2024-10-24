@@ -25,8 +25,6 @@ using Twilio.Http;
 
 
 
-
-
 namespace Twilio.Rest.Preview.Wireless
 {
     public class RatePlanResource : Resource

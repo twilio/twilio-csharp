@@ -25,8 +25,6 @@ using Twilio.Http;
 using Twilio.Types;
 
 
-
-
 namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
 {
     public class LocalResource : Resource

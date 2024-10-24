@@ -25,8 +25,6 @@ using Twilio.Http;
 
 
 
-
-
 namespace Twilio.Rest.Studio.V1.Flow.Engagement.Step
 {
     public class StepContextResource : Resource

@@ -25,8 +25,6 @@ using Twilio.Http;
 
 
 
-
-
 namespace Twilio.Rest.Verify.V2
 {
     public class TemplateResource : Resource

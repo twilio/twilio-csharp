@@ -25,8 +25,6 @@ using Twilio.Http;
 
 
 
-
-
 namespace Twilio.Rest.Events.V1
 {
     public class EventTypeResource : Resource

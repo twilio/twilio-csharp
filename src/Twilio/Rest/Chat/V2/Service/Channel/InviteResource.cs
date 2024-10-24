@@ -25,8 +25,6 @@ using Twilio.Http;
 
 
 
-
-
 namespace Twilio.Rest.Chat.V2.Service.Channel
 {
     public class InviteResource : Resource

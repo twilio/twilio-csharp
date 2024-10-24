@@ -25,8 +25,6 @@ using Twilio.Http;
 using Twilio.Types;
 
 
-
-
 namespace Twilio.Rest.Numbers.V2
 {
     public class BundleCloneResource : Resource

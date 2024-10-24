@@ -1,6 +1,17 @@
 twilio-csharp Changelog
 =======================
 
+[2024-10-24] Version 7.6.0
+--------------------------
+**Library - Feature**
+- [PR #765](https://github.com/twilio/twilio-csharp/pull/765): Updating documents and examples for Public OAuth feature uptake. Thanks to [@AsabuHere](https://github.com/AsabuHere)!
+- [PR #764](https://github.com/twilio/twilio-csharp/pull/764): Modfiying cluster tests for public OAuth in C#. Thanks to [@AsabuHere](https://github.com/AsabuHere)!
+- [PR #762](https://github.com/twilio/twilio-csharp/pull/762): Public OAuth uptake for C# libraries. Thanks to [@AsabuHere](https://github.com/AsabuHere)!
+
+**Conversations**
+- Expose ConversationWithParticipants resource that allows creating a conversation with participants
+
+
 [2024-10-17] Version 7.5.1
 --------------------------
 **Api**

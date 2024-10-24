@@ -25,8 +25,6 @@ using Twilio.Http;
 
 
 
-
-
 namespace Twilio.Rest.Api.V2010.Account.Queue
 {
     public class MemberResource : Resource

@@ -25,8 +25,6 @@ using Twilio.Http;
 
 
 
-
-
 namespace Twilio.Rest.Messaging.V1
 {
     public class DomainConfigMessagingServiceResource : Resource

@@ -25,8 +25,6 @@ using Twilio.Http;
 
 
 
-
-
 namespace Twilio.Rest.FlexApi.V2
 {
     public class FlexUserResource : Resource

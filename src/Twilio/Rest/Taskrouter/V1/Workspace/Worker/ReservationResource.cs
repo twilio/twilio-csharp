@@ -25,8 +25,6 @@ using Twilio.Http;
 using Twilio.Types;
 
 
-
-
 namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
 {
     public class ReservationResource : Resource

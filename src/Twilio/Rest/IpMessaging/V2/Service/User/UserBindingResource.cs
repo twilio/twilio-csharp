@@ -25,8 +25,6 @@ using Twilio.Http;
 using Twilio.Types;
 
 
-
-
 namespace Twilio.Rest.IpMessaging.V2.Service.User
 {
     public class UserBindingResource : Resource

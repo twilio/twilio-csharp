@@ -25,8 +25,6 @@ using Twilio.Http;
 using Twilio.Types;
 
 
-
-
 namespace Twilio.Rest.Serverless.V1.Service.Build
 {
     public class BuildStatusResource : Resource

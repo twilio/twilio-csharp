@@ -25,8 +25,6 @@ using Twilio.Http;
 
 
 
-
-
 namespace Twilio.Rest.Routes.V2
 {
     public class TrunkResource : Resource

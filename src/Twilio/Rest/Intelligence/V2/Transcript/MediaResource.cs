@@ -25,8 +25,6 @@ using Twilio.Http;
 
 
 
-
-
 namespace Twilio.Rest.Intelligence.V2.Transcript
 {
     public class MediaResource : Resource

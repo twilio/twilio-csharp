@@ -25,8 +25,6 @@ using Twilio.Http;
 
 
 
-
-
 namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
 {
     public class AssignedAddOnResource : Resource

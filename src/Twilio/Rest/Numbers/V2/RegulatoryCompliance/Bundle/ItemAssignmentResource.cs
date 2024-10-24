@@ -25,8 +25,6 @@ using Twilio.Http;
 
 
 
-
-
 namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
 {
     public class ItemAssignmentResource : Resource

@@ -25,8 +25,6 @@ using Twilio.Http;
 
 
 
-
-
 namespace Twilio.Rest.Serverless.V1.Service.Function.FunctionVersion
 {
     public class FunctionVersionContentResource : Resource

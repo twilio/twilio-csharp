@@ -25,8 +25,6 @@ using Twilio.Http;
 
 
 
-
-
 namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
 {
     public class IpAddressResource : Resource

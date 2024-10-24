@@ -25,8 +25,6 @@ using Twilio.Http;
 
 
 
-
-
 namespace Twilio.Rest.Assistants.V1.Session
 {
     public class MessageResource : Resource

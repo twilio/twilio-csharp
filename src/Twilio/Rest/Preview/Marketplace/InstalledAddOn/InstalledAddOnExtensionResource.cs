@@ -25,8 +25,6 @@ using Twilio.Http;
 
 
 
-
-
 namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
 {
     public class InstalledAddOnExtensionResource : Resource

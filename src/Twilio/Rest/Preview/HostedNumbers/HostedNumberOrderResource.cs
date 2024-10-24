@@ -25,8 +25,6 @@ using Twilio.Http;
 using Twilio.Types;
 
 
-
-
 namespace Twilio.Rest.Preview.HostedNumbers
 {
     public class HostedNumberOrderResource : Resource

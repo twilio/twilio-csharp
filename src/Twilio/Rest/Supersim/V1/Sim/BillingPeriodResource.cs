@@ -25,8 +25,6 @@ using Twilio.Http;
 using Twilio.Types;
 
 
-
-
 namespace Twilio.Rest.Supersim.V1.Sim
 {
     public class BillingPeriodResource : Resource

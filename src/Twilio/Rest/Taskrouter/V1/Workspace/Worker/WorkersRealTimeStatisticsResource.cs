@@ -25,8 +25,6 @@ using Twilio.Http;
 
 
 
-
-
 namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
 {
     public class WorkersRealTimeStatisticsResource : Resource

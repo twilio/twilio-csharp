@@ -25,8 +25,6 @@ using Twilio.Http;
 using Twilio.Types;
 
 
-
-
 namespace Twilio.Rest.Trunking.V1.Trunk
 {
     public class RecordingResource : Resource

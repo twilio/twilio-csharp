@@ -25,8 +25,6 @@ using Twilio.Http;
 using Twilio.Types;
 
 
-
-
 namespace Twilio.Rest.Supersim.V1
 {
     public class EsimProfileResource : Resource

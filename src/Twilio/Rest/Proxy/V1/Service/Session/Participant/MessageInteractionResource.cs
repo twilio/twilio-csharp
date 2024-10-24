@@ -25,8 +25,6 @@ using Twilio.Http;
 using Twilio.Types;
 
 
-
-
 namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
 {
     public class MessageInteractionResource : Resource

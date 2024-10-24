@@ -25,8 +25,6 @@ using Twilio.Http;
 using Twilio.Types;
 
 
-
-
 namespace Twilio.Rest.Verify.V2.Service.Entity
 {
     public class NewFactorResource : Resource
