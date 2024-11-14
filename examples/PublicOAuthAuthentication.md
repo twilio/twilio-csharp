@@ -10,6 +10,11 @@ class Program
     {
         CredentialProvider credentialProvider = new ClientCredentialProvider(CLIENT_ID, CLIENT_SECRET);
         TwilioClient.Init(credentialProvider, ACCOUNT_SID);
+
+        /*
+         * Or use the following if accountSid is not required as a path parameter for an API or when setting accountSid in the API.
+           TwilioClient.init(new ClientCredentialProvider(CLIENT_ID, CLIENT_SECRET));
+         */
         
         FetchMessageOptions fm = new FetchMessageOptions(MESSAGE_SID);
         MessageResource m = MessageResource.Fetch(fm);
