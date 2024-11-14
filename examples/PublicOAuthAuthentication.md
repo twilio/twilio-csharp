@@ -8,7 +8,6 @@ class Program
 {
     static void Main(string[] args)
     {
-    
         CredentialProvider credentialProvider = new ClientCredentialProvider(CLIENT_ID, CLIENT_SECRET);
         TwilioClient.Init(credentialProvider, ACCOUNT_SID);
         
