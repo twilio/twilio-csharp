@@ -72,8 +72,11 @@ var message = MessageResource.Create(
 );
 Console.WriteLine(message.Sid);
 ```
+## OAuth Feature for Twilio APIs
+We are introducing Client Credentials Flow-based OAuth 2.0 authentication. This feature is currently in beta and its implementation is subject to change.
 
-Examples on how to make rest calls with bearer token authentication is added [here](https://github.com/twilio/twilio-csharp/blob/orgs_api_uptake/examples/BearerTokenAuthentication.md)
+API examples [here](https://github.com/twilio/twilio-csharp/blob/main/examples/PublicOAuthAuthentication.md)
+Organisation API examples [here](https://github.com/twilio/twilio-csharp/blob/main/examples/BearerTokenAuthentication.md)
 
 ## Specify Region and/or Edge
 
