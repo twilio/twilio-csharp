@@ -103,6 +103,8 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             public static readonly UsageCategoryEnum GroupRoomsParticipantMinutes = new UsageCategoryEnum("group-rooms-participant-minutes");
             public static readonly UsageCategoryEnum GroupRoomsRecordedMinutes = new UsageCategoryEnum("group-rooms-recorded-minutes");
             public static readonly UsageCategoryEnum ImpV1Usage = new UsageCategoryEnum("imp-v1-usage");
+            public static readonly UsageCategoryEnum IvrVirtualAgentCustomVoices = new UsageCategoryEnum("ivr-virtual-agent-custom-voices");
+            public static readonly UsageCategoryEnum IvrVirtualAgentGenai = new UsageCategoryEnum("ivr-virtual-agent-genai");
             public static readonly UsageCategoryEnum Lookups = new UsageCategoryEnum("lookups");
             public static readonly UsageCategoryEnum Marketplace = new UsageCategoryEnum("marketplace");
             public static readonly UsageCategoryEnum MarketplaceAlgorithmiaNamedEntityRecognition = new UsageCategoryEnum("marketplace-algorithmia-named-entity-recognition");

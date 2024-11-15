@@ -67,7 +67,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         ///<summary> The default name that will be used when sending outbound emails in this conversation. </summary> 
         public string BindingsEmailName { get; set; }
 
-        ///<summary> The participant to be added to the conversation in JSON format. The parameters are as in [Participant Resource](https://www.twilio.com/docs/conversations/api/conversation-participant-resource). The maximum number of participants that can be added in a single request is 10. </summary> 
+        ///<summary> The participant to be added to the conversation in JSON format. The JSON object attributes are as parameters in [Participant Resource](https://www.twilio.com/docs/conversations/api/conversation-participant-resource). The maximum number of participants that can be added in a single request is 10. </summary> 
         public List<string> Participant { get; set; }
 
 

@@ -87,6 +87,7 @@ namespace Twilio.Rest.Insights.V1
             public static readonly TagEnum HighLatency = new TagEnum("high_latency");
             public static readonly TagEnum LowMos = new TagEnum("low_mos");
             public static readonly TagEnum DetectedSilence = new TagEnum("detected_silence");
+            public static readonly TagEnum NoConcurrentParticipants = new TagEnum("no_concurrent_participants");
         }
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class ConferenceStatusEnum : StringEnum

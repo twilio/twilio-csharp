@@ -1,6 +1,20 @@
 twilio-csharp Changelog
 =======================
 
+[2024-11-15] Version 7.7.0
+--------------------------
+**Library - Feature**
+- [PR #769](https://github.com/twilio/twilio-csharp/pull/769): Adding example for using public OAuth. Thanks to [@AsabuHere](https://github.com/AsabuHere)!
+
+**Api**
+- Added `ivr-virtual-agent-custom-voices` and `ivr-virtual-agent-genai` to `usage_record` API.
+- Add open-api file tag to realtime_transcriptions
+
+**Taskrouter**
+- Add `api-tag` property to workers reservation
+- Add `api-tag` property to task reservation
+
+
 [2024-10-24] Version 7.6.0
 --------------------------
 **Library - Feature**

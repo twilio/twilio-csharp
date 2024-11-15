@@ -1179,6 +1179,7 @@ namespace Twilio.Rest.Content.V1
             public static readonly CallToActionActionType PhoneNumber = new CallToActionActionType("PHONE_NUMBER");
             public static readonly CallToActionActionType CopyCode = new CallToActionActionType("COPY_CODE");
             public static readonly CallToActionActionType VoiceCall = new CallToActionActionType("VOICE_CALL");
+            public static readonly CallToActionActionType VoiceCallRequest = new CallToActionActionType("VOICE_CALL_REQUEST");
 
         }
 
