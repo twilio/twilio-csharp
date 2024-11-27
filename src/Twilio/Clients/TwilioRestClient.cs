@@ -101,7 +101,7 @@ namespace Twilio.Clients
             string region = null,
             HttpClient httpClient = null,
             string edge = null,
-            AuthStrategy authstrategy = null
+            AuthStrategy authstrategy
         )
         {
             _username = username;
