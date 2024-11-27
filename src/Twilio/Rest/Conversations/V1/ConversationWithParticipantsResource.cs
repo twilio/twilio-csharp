@@ -112,7 +112,7 @@ namespace Twilio.Rest.Conversations.V1
         /// <param name="timersClosed"> ISO8601 duration when conversation will be switched to `closed` state. Minimum value for this timer is 10 minutes. </param>
         /// <param name="bindingsEmailAddress"> The default email address that will be used when sending outbound emails in this conversation. </param>
         /// <param name="bindingsEmailName"> The default name that will be used when sending outbound emails in this conversation. </param>
-        /// <param name="participant"> The participant to be added to the conversation in JSON format. The parameters are as in [Participant Resource](https://www.twilio.com/docs/conversations/api/conversation-participant-resource). The maximum number of participants that can be added in a single request is 10. </param>
+        /// <param name="participant"> The participant to be added to the conversation in JSON format. The JSON object attributes are as parameters in [Participant Resource](https://www.twilio.com/docs/conversations/api/conversation-participant-resource). The maximum number of participants that can be added in a single request is 10. </param>
         /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of ConversationWithParticipants </returns>
@@ -149,7 +149,7 @@ namespace Twilio.Rest.Conversations.V1
         /// <param name="timersClosed"> ISO8601 duration when conversation will be switched to `closed` state. Minimum value for this timer is 10 minutes. </param>
         /// <param name="bindingsEmailAddress"> The default email address that will be used when sending outbound emails in this conversation. </param>
         /// <param name="bindingsEmailName"> The default name that will be used when sending outbound emails in this conversation. </param>
-        /// <param name="participant"> The participant to be added to the conversation in JSON format. The parameters are as in [Participant Resource](https://www.twilio.com/docs/conversations/api/conversation-participant-resource). The maximum number of participants that can be added in a single request is 10. </param>
+        /// <param name="participant"> The participant to be added to the conversation in JSON format. The JSON object attributes are as parameters in [Participant Resource](https://www.twilio.com/docs/conversations/api/conversation-participant-resource). The maximum number of participants that can be added in a single request is 10. </param>
         /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ConversationWithParticipants </returns>

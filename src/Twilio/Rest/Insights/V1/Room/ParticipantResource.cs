@@ -51,6 +51,8 @@ namespace Twilio.Rest.Insights.V1.Room
             public static readonly TwilioRealmEnum In1 = new TwilioRealmEnum("in1");
             public static readonly TwilioRealmEnum De1 = new TwilioRealmEnum("de1");
             public static readonly TwilioRealmEnum Gll = new TwilioRealmEnum("gll");
+            public static readonly TwilioRealmEnum StageUs1 = new TwilioRealmEnum("stage_us1");
+            public static readonly TwilioRealmEnum DevUs1 = new TwilioRealmEnum("dev_us1");
 
         }
         [JsonConverter(typeof(StringEnumConverter))]
@@ -99,6 +101,7 @@ namespace Twilio.Rest.Insights.V1.Room
             public static readonly CodecEnum Vp8 = new CodecEnum("VP8");
             public static readonly CodecEnum H264 = new CodecEnum("H264");
             public static readonly CodecEnum Vp9 = new CodecEnum("VP9");
+            public static readonly CodecEnum Opus = new CodecEnum("opus");
         }
 
         
