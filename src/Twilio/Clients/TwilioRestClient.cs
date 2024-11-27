@@ -97,11 +97,11 @@ namespace Twilio.Clients
         public TwilioRestClient(
             string username,
             string password,
+            AuthStrategy authstrategy,
             string accountSid = null,
             string region = null,
             HttpClient httpClient = null,
-            string edge = null,
-            AuthStrategy authstrategy
+            string edge = null
         )
         {
             _username = username;
