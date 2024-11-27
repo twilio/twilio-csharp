@@ -204,7 +204,7 @@ namespace Twilio
             }
 
             AuthStrategy noauthstrategy = new NoAuthStrategy();
-           _noAuthRestClient = new TwilioRestClient(_username, _password, accountSid: _accountSid, region: _region, edge: _edge, authstrategy: noauthstrategy)
+           _noAuthRestClient = new TwilioRestClient(_username, _password, authstrategy: noauthstrategy, accountSid: _accountSid, region: _region, edge: _edge)
            {
                LogLevel = _logLevel
            };
@@ -240,7 +240,7 @@ namespace Twilio
             }
             else if(_credentialProvider != null){
                 AuthStrategy authstrategy = _credentialProvider.ToAuthStrategy();
-               _restClient = new TwilioRestClient(_username, _password, accountSid: _accountSid, region: _region, edge: _edge, authstrategy: _credentialProvider.ToAuthStrategy())
+               _restClient = new TwilioRestClient(_username, _password, authstrategy: _credentialProvider.ToAuthStrategy(), accountSid: _accountSid, region: _region, edge: _edge)
                {
                    LogLevel = _logLevel
                };

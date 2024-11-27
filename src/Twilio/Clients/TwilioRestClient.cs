@@ -70,8 +70,38 @@ namespace Twilio.Clients
             string accountSid = null,
             string region = null,
             HttpClient httpClient = null,
-            string edge = null,
-            AuthStrategy authstrategy = null
+            string edge = null
+        )
+        {
+            _username = username;
+            _password = password;
+
+            AccountSid = accountSid ?? username;
+            HttpClient = httpClient ?? DefaultClient();
+
+            Region = region;
+            Edge = edge;
+        }
+
+        /// <summary>
+        /// Constructor for a TwilioRestClient
+        /// </summary>
+        ///
+        /// <param name="username">username for requests</param>
+        /// <param name="password">password for requests</param>
+        /// <param name="accountSid">account sid to make requests for</param>
+        /// <param name="region">region to make requests for</param>
+        /// <param name="httpClient">http client used to make the requests</param>
+        /// <param name="edge">edge to make requests for</param>
+        /// <param name="authstrategy">authentication strategy that will be used to make requests for</param>
+        public TwilioRestClient(
+            string username,
+            string password,
+            AuthStrategy authstrategy,
+            string accountSid = null,
+            string region = null,
+            HttpClient httpClient = null,
+            string edge = null
         )
         {
             _username = username;
