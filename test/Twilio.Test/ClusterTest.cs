@@ -21,6 +21,10 @@ namespace Twilio.Tests
         string orgsSid;
         string clientId;
         string clientSecret;
+        string oAuthClientId;
+        string oAuthClientSecret;
+        string oAuthMessageId;
+        
         [SetUp]
         [Category("ClusterTest")]
         public void SetUp()
