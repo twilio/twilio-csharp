@@ -8,6 +8,7 @@ using Twilio.Rest.Chat.V2.Service;
 using Twilio.Rest.Events.V1;
 using Twilio.Rest.PreviewIam;
 using System.Linq;
+using Twilio.Credential;
 namespace Twilio.Tests 
 {
     [TestFixture]
