@@ -104,7 +104,8 @@ namespace Twilio.Tests.TwiML
                 true,
                 "speech_model",
                 "hints",
-                true
+                true,
+                "intelligence_service"
             );
 
             Assert.AreEqual(
@@ -112,7 +113,7 @@ namespace Twilio.Tests.TwiML
                 "<Start>" + Environment.NewLine +
                 "  <Stream name=\"name\" connectorName=\"connector_name\" url=\"url\" track=\"inbound_track\" statusCallback=\"status_callback\" statusCallbackMethod=\"GET\"></Stream>" + Environment.NewLine +
                 "  <Siprec name=\"name\" connectorName=\"connector_name\" track=\"inbound_track\" statusCallback=\"status_callback\" statusCallbackMethod=\"GET\"></Siprec>" + Environment.NewLine +
-                "  <Transcription name=\"name\" track=\"inbound_track\" statusCallbackUrl=\"status_callback_url\" statusCallbackMethod=\"GET\" inboundTrackLabel=\"inbound_track_label\" outboundTrackLabel=\"outbound_track_label\" partialResults=\"true\" languageCode=\"language_code\" transcriptionEngine=\"transcription_engine\" profanityFilter=\"true\" speechModel=\"speech_model\" hints=\"hints\" enableAutomaticPunctuation=\"true\"></Transcription>" + Environment.NewLine +
+                "  <Transcription name=\"name\" track=\"inbound_track\" statusCallbackUrl=\"status_callback_url\" statusCallbackMethod=\"GET\" inboundTrackLabel=\"inbound_track_label\" outboundTrackLabel=\"outbound_track_label\" partialResults=\"true\" languageCode=\"language_code\" transcriptionEngine=\"transcription_engine\" profanityFilter=\"true\" speechModel=\"speech_model\" hints=\"hints\" enableAutomaticPunctuation=\"true\" intelligenceService=\"intelligence_service\"></Transcription>" + Environment.NewLine +
                 "</Start>",
                 elem.ToString()
             );

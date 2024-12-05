@@ -12,16 +12,16 @@ namespace Twilio.Tests.TwiML
 {
 
     [TestFixture]
-    public class TranscriptionTest : TwilioTest
+    public class ConversationRelayTest : TwilioTest
     {
         [Test]
         public void TestEmptyElement()
         {
-            var elem = new Transcription();
+            var elem = new ConversationRelay();
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Transcription></Transcription>",
+                "<ConversationRelay></ConversationRelay>",
                 elem.ToString()
             );
         }
@@ -29,25 +29,27 @@ namespace Twilio.Tests.TwiML
         [Test]
         public void TestElementWithParams()
         {
-            var elem = new Transcription(
-                "name",
-                Transcription.TrackEnum.InboundTrack,
-                "status_callback_url",
-                Transcription.StatusCallbackMethodEnum.Get,
-                "inbound_track_label",
-                "outbound_track_label",
-                true,
-                "language_code",
-                "transcription_engine",
-                true,
+            var elem = new ConversationRelay(
+                "url",
+                "language",
+                "tts_language",
+                "transcription_language",
+                "tts_provider",
+                "voice",
+                "transcription_provider",
                 "speech_model",
-                "hints",
                 true,
-                "intelligence_service"
+                true,
+                "welcome_greeting",
+                true,
+                true,
+                true,
+                true,
+                true
             );
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Transcription name=\"name\" track=\"inbound_track\" statusCallbackUrl=\"status_callback_url\" statusCallbackMethod=\"GET\" inboundTrackLabel=\"inbound_track_label\" outboundTrackLabel=\"outbound_track_label\" partialResults=\"true\" languageCode=\"language_code\" transcriptionEngine=\"transcription_engine\" profanityFilter=\"true\" speechModel=\"speech_model\" hints=\"hints\" enableAutomaticPunctuation=\"true\" intelligenceService=\"intelligence_service\"></Transcription>",
+                "<ConversationRelay url=\"url\" language=\"language\" ttsLanguage=\"tts_language\" transcriptionLanguage=\"transcription_language\" ttsProvider=\"tts_provider\" voice=\"voice\" transcriptionProvider=\"transcription_provider\" speechModel=\"speech_model\" profanityFilter=\"true\" dtmfDetection=\"true\" welcomeGreeting=\"welcome_greeting\" partialPrompts=\"true\" interruptible=\"true\" interruptByDtmf=\"true\" welcomeGreetingInterruptible=\"true\" debug=\"true\"></ConversationRelay>",
                 elem.ToString()
             );
         }
@@ -55,13 +57,13 @@ namespace Twilio.Tests.TwiML
         [Test]
         public void TestElementWithExtraAttributes()
         {
-            var elem = new Transcription();
+            var elem = new ConversationRelay();
             elem.SetOption("newParam1", "value");
             elem.SetOption("newParam2", 1);
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Transcription newParam1=\"value\" newParam2=\"1\"></Transcription>",
+                "<ConversationRelay newParam1=\"value\" newParam2=\"1\"></ConversationRelay>",
                 elem.ToString()
             );
         }
@@ -69,18 +71,18 @@ namespace Twilio.Tests.TwiML
         [Test]
         public void TestElementWithChildren()
         {
-            var elem = new Transcription();
+            var elem = new ConversationRelay();
 
-            elem.Config("name", "value");
+            elem.Language("code", "tts_provider", "voice", "transcription_provider", "speech_model");
 
             elem.Parameter("name", "value");
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Transcription>" + Environment.NewLine +
-                "  <Config name=\"name\" value=\"value\"></Config>" + Environment.NewLine +
+                "<ConversationRelay>" + Environment.NewLine +
+                "  <Language code=\"code\" ttsProvider=\"tts_provider\" voice=\"voice\" transcriptionProvider=\"transcription_provider\" speechModel=\"speech_model\"></Language>" + Environment.NewLine +
                 "  <Parameter name=\"name\" value=\"value\"></Parameter>" + Environment.NewLine +
-                "</Transcription>",
+                "</ConversationRelay>",
                 elem.ToString()
             );
         }
@@ -88,13 +90,13 @@ namespace Twilio.Tests.TwiML
         [Test]
         public void TestElementWithTextNode()
         {
-            var elem = new Transcription();
+            var elem = new ConversationRelay();
 
             elem.AddText("Here is the content");
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Transcription>Here is the content</Transcription>",
+                "<ConversationRelay>Here is the content</ConversationRelay>",
                 elem.ToString()
             );
         }
@@ -102,14 +104,14 @@ namespace Twilio.Tests.TwiML
         [Test]
         public void TestAllowGenericChildNodes()
         {
-            var elem = new Transcription();
+            var elem = new ConversationRelay();
             elem.AddChild("generic-tag").AddText("Content").SetOption("tag", true);
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Transcription>" + Environment.NewLine +
+                "<ConversationRelay>" + Environment.NewLine +
                 "  <generic-tag tag=\"True\">Content</generic-tag>" + Environment.NewLine +
-                "</Transcription>",
+                "</ConversationRelay>",
                 elem.ToString()
             );
         }
@@ -117,17 +119,17 @@ namespace Twilio.Tests.TwiML
         [Test]
         public void TestAllowGenericChildrenOfChildNodes()
         {
-            var elem = new Transcription();
-            var child = new Config();
+            var elem = new ConversationRelay();
+            var child = new Language();
             elem.Nest(child).AddChild("generic-tag").SetOption("tag", true).AddText("Content");
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Transcription>" + Environment.NewLine +
-                "  <Config>" + Environment.NewLine +
+                "<ConversationRelay>" + Environment.NewLine +
+                "  <Language>" + Environment.NewLine +
                 "    <generic-tag tag=\"True\">Content</generic-tag>" + Environment.NewLine +
-                "  </Config>" + Environment.NewLine +
-                "</Transcription>",
+                "  </Language>" + Environment.NewLine +
+                "</ConversationRelay>",
                 elem.ToString()
             );
         }
@@ -135,14 +137,14 @@ namespace Twilio.Tests.TwiML
         [Test]
         public void TestMixedContent()
         {
-            var elem = new Transcription();
+            var elem = new ConversationRelay();
             elem.AddText("before")
                 .AddChild("Child").AddText("content");
             elem.AddText("after");
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Transcription>before<Child>content</Child>after</Transcription>",
+                "<ConversationRelay>before<Child>content</Child>after</ConversationRelay>",
                 elem.ToString()
             );
         }

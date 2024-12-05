@@ -133,6 +133,7 @@ namespace Twilio.TwiML.Voice
         /// <param name="speechModel"> Speech Model used by the transcription engine </param>
         /// <param name="hints"> Hints to be provided to the transcription engine </param>
         /// <param name="enableAutomaticPunctuation"> Enable Automatic Punctuation </param>
+        /// <param name="intelligenceService"> The SID or the unique name of the Intelligence Service to be used </param>
         public Start Transcription(string name = null,
                                    Transcription.TrackEnum track = null,
                                    string statusCallbackUrl = null,
@@ -145,7 +146,8 @@ namespace Twilio.TwiML.Voice
                                    bool? profanityFilter = null,
                                    string speechModel = null,
                                    string hints = null,
-                                   bool? enableAutomaticPunctuation = null)
+                                   bool? enableAutomaticPunctuation = null,
+                                   string intelligenceService = null)
         {
             var newChild = new Transcription(
                 name,
@@ -160,7 +162,8 @@ namespace Twilio.TwiML.Voice
                 profanityFilter,
                 speechModel,
                 hints,
-                enableAutomaticPunctuation
+                enableAutomaticPunctuation,
+                intelligenceService
             );
             this.Append(newChild);
             return this;

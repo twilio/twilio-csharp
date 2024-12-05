@@ -286,5 +286,58 @@ namespace Twilio.Rest.Numbers.V2
 
     }
 
+    /// <summary> Updates a specific HostedNumberOrder. </summary>
+    public class UpdateHostedNumberOrderOptions : IOptions<HostedNumberOrderResource>
+    {
+    
+        ///<summary> The SID of the HostedNumberOrder resource to update. </summary> 
+        public string PathSid { get; }
+
+        
+        public HostedNumberOrderResource.StatusEnum Status { get; }
+
+        ///<summary> The number of seconds to wait before initiating the ownership verification call. Can be a value between 0 and 60, inclusive. </summary> 
+        public int? VerificationCallDelay { get; set; }
+
+        ///<summary> The numerical extension to dial when making the ownership verification call. </summary> 
+        public string VerificationCallExtension { get; set; }
+
+
+
+        /// <summary> Construct a new UpdateHostedNumberOrderOptions </summary>
+        /// <param name="pathSid"> The SID of the HostedNumberOrder resource to update. </param>
+        /// <param name="status">  </param>
+        public UpdateHostedNumberOrderOptions(string pathSid, HostedNumberOrderResource.StatusEnum status)
+        {
+            PathSid = pathSid;
+            Status = status;
+        }
+
+        
+        /// <summary> Generate the necessary parameters </summary>
+        public List<KeyValuePair<string, string>> GetParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+
+            if (Status != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
+            }
+            if (VerificationCallDelay != null)
+            {
+                p.Add(new KeyValuePair<string, string>("VerificationCallDelay", VerificationCallDelay.ToString()));
+            }
+            if (VerificationCallExtension != null)
+            {
+                p.Add(new KeyValuePair<string, string>("VerificationCallExtension", VerificationCallExtension));
+            }
+            return p;
+        }
+
+        
+
+    }
+
+
 }
 

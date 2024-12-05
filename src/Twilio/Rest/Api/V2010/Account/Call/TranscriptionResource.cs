@@ -131,6 +131,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <param name="speechModel"> Recognition model used by the transcription engine, among those supported by the provider </param>
         /// <param name="hints"> A Phrase contains words and phrase \\\"hints\\\" so that the speech recognition engine is more likely to recognize them. </param>
         /// <param name="enableAutomaticPunctuation"> The provider will add punctuation to recognition result </param>
+        /// <param name="intelligenceService"> The SID or the unique name of the [IntelligentService](https://www.twilio.com/docs/voice/intelligence/api/service-resource) to process the transcription. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Transcription </returns>
         public static TranscriptionResource Create(
@@ -149,9 +150,10 @@ namespace Twilio.Rest.Api.V2010.Account.Call
                                           string speechModel = null,
                                           string hints = null,
                                           bool? enableAutomaticPunctuation = null,
+                                          string intelligenceService = null,
                                             ITwilioRestClient client = null)
         {
-            var options = new CreateTranscriptionOptions(pathCallSid){  PathAccountSid = pathAccountSid, Name = name, Track = track, StatusCallbackUrl = statusCallbackUrl, StatusCallbackMethod = statusCallbackMethod, InboundTrackLabel = inboundTrackLabel, OutboundTrackLabel = outboundTrackLabel, PartialResults = partialResults, LanguageCode = languageCode, TranscriptionEngine = transcriptionEngine, ProfanityFilter = profanityFilter, SpeechModel = speechModel, Hints = hints, EnableAutomaticPunctuation = enableAutomaticPunctuation };
+            var options = new CreateTranscriptionOptions(pathCallSid){  PathAccountSid = pathAccountSid, Name = name, Track = track, StatusCallbackUrl = statusCallbackUrl, StatusCallbackMethod = statusCallbackMethod, InboundTrackLabel = inboundTrackLabel, OutboundTrackLabel = outboundTrackLabel, PartialResults = partialResults, LanguageCode = languageCode, TranscriptionEngine = transcriptionEngine, ProfanityFilter = profanityFilter, SpeechModel = speechModel, Hints = hints, EnableAutomaticPunctuation = enableAutomaticPunctuation, IntelligenceService = intelligenceService };
             return Create(options, client);
         }
 
@@ -172,6 +174,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <param name="speechModel"> Recognition model used by the transcription engine, among those supported by the provider </param>
         /// <param name="hints"> A Phrase contains words and phrase \\\"hints\\\" so that the speech recognition engine is more likely to recognize them. </param>
         /// <param name="enableAutomaticPunctuation"> The provider will add punctuation to recognition result </param>
+        /// <param name="intelligenceService"> The SID or the unique name of the [IntelligentService](https://www.twilio.com/docs/voice/intelligence/api/service-resource) to process the transcription. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Transcription </returns>
         public static async System.Threading.Tasks.Task<TranscriptionResource> CreateAsync(
@@ -190,9 +193,10 @@ namespace Twilio.Rest.Api.V2010.Account.Call
                                                                                   string speechModel = null,
                                                                                   string hints = null,
                                                                                   bool? enableAutomaticPunctuation = null,
+                                                                                  string intelligenceService = null,
                                                                                     ITwilioRestClient client = null)
         {
-        var options = new CreateTranscriptionOptions(pathCallSid){  PathAccountSid = pathAccountSid, Name = name, Track = track, StatusCallbackUrl = statusCallbackUrl, StatusCallbackMethod = statusCallbackMethod, InboundTrackLabel = inboundTrackLabel, OutboundTrackLabel = outboundTrackLabel, PartialResults = partialResults, LanguageCode = languageCode, TranscriptionEngine = transcriptionEngine, ProfanityFilter = profanityFilter, SpeechModel = speechModel, Hints = hints, EnableAutomaticPunctuation = enableAutomaticPunctuation };
+        var options = new CreateTranscriptionOptions(pathCallSid){  PathAccountSid = pathAccountSid, Name = name, Track = track, StatusCallbackUrl = statusCallbackUrl, StatusCallbackMethod = statusCallbackMethod, InboundTrackLabel = inboundTrackLabel, OutboundTrackLabel = outboundTrackLabel, PartialResults = partialResults, LanguageCode = languageCode, TranscriptionEngine = transcriptionEngine, ProfanityFilter = profanityFilter, SpeechModel = speechModel, Hints = hints, EnableAutomaticPunctuation = enableAutomaticPunctuation, IntelligenceService = intelligenceService };
             return await CreateAsync(options, client);
         }
         #endif

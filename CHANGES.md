@@ -1,6 +1,28 @@
 twilio-csharp Changelog
 =======================
 
+[2024-12-05] Version 7.8.0
+--------------------------
+**Library - Fix**
+- [PR #770](https://github.com/twilio/twilio-csharp/pull/770): Update TwilioRestClient.cs to add overloaded method in rest client. Thanks to [@AsabuHere](https://github.com/AsabuHere)!
+
+**Library - Feature**
+- [PR #767](https://github.com/twilio/twilio-csharp/pull/767): Adding test cases for public oauth uptake. Thanks to [@AsabuHere](https://github.com/AsabuHere)!
+
+**Api**
+- Add optional parameter `intelligence_service` to `transcription`
+- Updated `phone_number_sid` to be populated for sip trunking terminating calls.
+
+**Numbers**
+- Add Update Hosted Number Order V2 API endpoint
+- Update Port in docs
+
+**Twiml**
+- Add optional parameter `intelligence_service` to `<Transcription>`
+- Add support for new `<ConversationRelay>` and `<Assistant>` noun
+- Add `events` attribute to `<Dial>` verb
+
+
 [2024-11-15] Version 7.7.0
 --------------------------
 **Library - Feature**

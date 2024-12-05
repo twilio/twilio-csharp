@@ -96,6 +96,10 @@ namespace Twilio.TwiML.Voice
         /// Enable Automatic Punctuation
         /// </summary>
         public bool? EnableAutomaticPunctuation { get; set; }
+        /// <summary>
+        /// The SID or the unique name of the Intelligence Service to be used
+        /// </summary>
+        public string IntelligenceService { get; set; }
 
         /// <summary>
         /// Create a new Transcription
@@ -113,6 +117,7 @@ namespace Twilio.TwiML.Voice
         /// <param name="speechModel"> Speech Model used by the transcription engine </param>
         /// <param name="hints"> Hints to be provided to the transcription engine </param>
         /// <param name="enableAutomaticPunctuation"> Enable Automatic Punctuation </param>
+        /// <param name="intelligenceService"> The SID or the unique name of the Intelligence Service to be used </param>
         public Transcription(string name = null,
                              Transcription.TrackEnum track = null,
                              string statusCallbackUrl = null,
@@ -125,7 +130,8 @@ namespace Twilio.TwiML.Voice
                              bool? profanityFilter = null,
                              string speechModel = null,
                              string hints = null,
-                             bool? enableAutomaticPunctuation = null) : base("Transcription")
+                             bool? enableAutomaticPunctuation = null,
+                             string intelligenceService = null) : base("Transcription")
         {
             this.Name = name;
             this.Track = track;
@@ -140,6 +146,7 @@ namespace Twilio.TwiML.Voice
             this.SpeechModel = speechModel;
             this.Hints = hints;
             this.EnableAutomaticPunctuation = enableAutomaticPunctuation;
+            this.IntelligenceService = intelligenceService;
         }
 
         /// <summary>
@@ -199,6 +206,10 @@ namespace Twilio.TwiML.Voice
             if (this.EnableAutomaticPunctuation != null)
             {
                 attributes.Add(new XAttribute("enableAutomaticPunctuation", this.EnableAutomaticPunctuation.Value.ToString().ToLower()));
+            }
+            if (this.IntelligenceService != null)
+            {
+                attributes.Add(new XAttribute("intelligenceService", this.IntelligenceService));
             }
             return attributes;
         }

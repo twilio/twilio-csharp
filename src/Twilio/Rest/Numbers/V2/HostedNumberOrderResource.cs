@@ -42,12 +42,25 @@ namespace Twilio.Rest.Numbers.V2
                 return new StatusEnum(value);
             }
             public static readonly StatusEnum Received = new StatusEnum("received");
+            public static readonly StatusEnum PendingVerification = new StatusEnum("pending-verification");
             public static readonly StatusEnum Verified = new StatusEnum("verified");
             public static readonly StatusEnum PendingLoa = new StatusEnum("pending-loa");
             public static readonly StatusEnum CarrierProcessing = new StatusEnum("carrier-processing");
             public static readonly StatusEnum Completed = new StatusEnum("completed");
             public static readonly StatusEnum Failed = new StatusEnum("failed");
             public static readonly StatusEnum ActionRequired = new StatusEnum("action-required");
+
+        }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public sealed class VerificationTypeEnum : StringEnum
+        {
+            private VerificationTypeEnum(string value) : base(value) {}
+            public VerificationTypeEnum() {}
+            public static implicit operator VerificationTypeEnum(string value)
+            {
+                return new VerificationTypeEnum(value);
+            }
+            public static readonly VerificationTypeEnum PhoneCall = new VerificationTypeEnum("phone-call");
 
         }
 
@@ -448,6 +461,87 @@ namespace Twilio.Rest.Numbers.V2
             return Page<HostedNumberOrderResource>.FromJson("items", response.Content);
         }
 
+        
+        private static Request BuildUpdateRequest(UpdateHostedNumberOrderOptions options, ITwilioRestClient client)
+        {
+            
+            string path = "/v2/HostedNumber/Orders/{Sid}";
+
+            string PathSid = options.PathSid;
+            path = path.Replace("{"+"Sid"+"}", PathSid);
+
+            return new Request(
+                HttpMethod.Post,
+                Rest.Domain.Numbers,
+                path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
+                postParams: options.GetParams(),
+                headerParams: null
+            );
+        }
+
+        /// <summary> Updates a specific HostedNumberOrder. </summary>
+        /// <param name="options"> Update HostedNumberOrder parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of HostedNumberOrder </returns>
+        public static HostedNumberOrderResource Update(UpdateHostedNumberOrderOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
+        }
+
+        /// <summary> Updates a specific HostedNumberOrder. </summary>
+        /// <param name="options"> Update HostedNumberOrder parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of HostedNumberOrder </returns>
+        #if !NET35
+        public static async System.Threading.Tasks.Task<HostedNumberOrderResource> UpdateAsync(UpdateHostedNumberOrderOptions options,
+                                                                                                    ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
+        }
+        #endif
+
+        /// <summary> Updates a specific HostedNumberOrder. </summary>
+        /// <param name="pathSid"> The SID of the HostedNumberOrder resource to update. </param>
+        /// <param name="status">  </param>
+        /// <param name="verificationCallDelay"> The number of seconds to wait before initiating the ownership verification call. Can be a value between 0 and 60, inclusive. </param>
+        /// <param name="verificationCallExtension"> The numerical extension to dial when making the ownership verification call. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of HostedNumberOrder </returns>
+        public static HostedNumberOrderResource Update(
+                                          string pathSid,
+                                          HostedNumberOrderResource.StatusEnum status,
+                                          int? verificationCallDelay = null,
+                                          string verificationCallExtension = null,
+                                            ITwilioRestClient client = null)
+        {
+            var options = new UpdateHostedNumberOrderOptions(pathSid, status){ VerificationCallDelay = verificationCallDelay, VerificationCallExtension = verificationCallExtension };
+            return Update(options, client);
+        }
+
+        #if !NET35
+        /// <summary> Updates a specific HostedNumberOrder. </summary>
+        /// <param name="pathSid"> The SID of the HostedNumberOrder resource to update. </param>
+        /// <param name="status">  </param>
+        /// <param name="verificationCallDelay"> The number of seconds to wait before initiating the ownership verification call. Can be a value between 0 and 60, inclusive. </param>
+        /// <param name="verificationCallExtension"> The numerical extension to dial when making the ownership verification call. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of HostedNumberOrder </returns>
+        public static async System.Threading.Tasks.Task<HostedNumberOrderResource> UpdateAsync(
+                                                                              string pathSid,
+                                                                              HostedNumberOrderResource.StatusEnum status,
+                                                                              int? verificationCallDelay = null,
+                                                                              string verificationCallExtension = null,
+                                                                                ITwilioRestClient client = null)
+        {
+            var options = new UpdateHostedNumberOrderOptions(pathSid, status){ VerificationCallDelay = verificationCallDelay, VerificationCallExtension = verificationCallExtension };
+            return await UpdateAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a HostedNumberOrderResource object
@@ -560,6 +654,30 @@ namespace Twilio.Rest.Numbers.V2
         ///<summary> The next step you need to take to complete the hosted number order and request it successfully. </summary> 
         [JsonProperty("next_step")]
         public string NextStep { get; private set; }
+
+        ///<summary> The number of attempts made to verify ownership via a call for the hosted phone number. </summary> 
+        [JsonProperty("verification_attempts")]
+        public int? VerificationAttempts { get; private set; }
+
+        ///<summary> The Call SIDs that identify the calls placed to verify ownership. </summary> 
+        [JsonProperty("verification_call_sids")]
+        public List<string> VerificationCallSids { get; private set; }
+
+        ///<summary> The number of seconds to wait before initiating the ownership verification call. Can be a value between 0 and 60, inclusive. </summary> 
+        [JsonProperty("verification_call_delay")]
+        public int? VerificationCallDelay { get; private set; }
+
+        ///<summary> The numerical extension to dial when making the ownership verification call. </summary> 
+        [JsonProperty("verification_call_extension")]
+        public string VerificationCallExtension { get; private set; }
+
+        ///<summary> The digits the user must pass in the ownership verification call. </summary> 
+        [JsonProperty("verification_code")]
+        public string VerificationCode { get; private set; }
+
+        
+        [JsonProperty("verification_type")]
+        public HostedNumberOrderResource.VerificationTypeEnum VerificationType { get; private set; }
 
 
 
