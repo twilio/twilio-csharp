@@ -673,45 +673,12 @@ namespace Twilio.Rest.Content.V1
                 }
             }
         }
-        public class FlowsPageComponentSelectItem
-        {
-            [JsonProperty("id")]
-            private string Id {get; set;}
-            [JsonProperty("title")]
-            private string Title {get; set;}
-            public FlowsPageComponentSelectItem() { }
-            public class Builder
-            {
-                private FlowsPageComponentSelectItem _flowsPageComponentSelectItem = new FlowsPageComponentSelectItem();
-                public Builder()
-                {
-                }
-                public Builder WithId(string id)
-                {
-                    _flowsPageComponentSelectItem.Id= id;
-                    return this;
-                }
-                public Builder WithTitle(string title)
-                {
-                    _flowsPageComponentSelectItem.Title= title;
-                    return this;
-                }
-                public FlowsPageComponentSelectItem Build()
-                {
-                    return _flowsPageComponentSelectItem;
-                }
-            }
-        }
         public class FlowsPageComponent
         {
             [JsonProperty("label")]
             private string Label {get; set;}
             [JsonProperty("type")]
             private string Type {get; set;}
-            [JsonProperty("text")]
-            private string Text {get; set;}
-            [JsonProperty("options")]
-            private List<FlowsPageComponentSelectItem> Options {get; set;}
             public FlowsPageComponent() { }
             public class Builder
             {
@@ -727,16 +694,6 @@ namespace Twilio.Rest.Content.V1
                 public Builder WithType(string type)
                 {
                     _flowsPageComponent.Type= type;
-                    return this;
-                }
-                public Builder WithText(string text)
-                {
-                    _flowsPageComponent.Text= text;
-                    return this;
-                }
-                public Builder WithOptions(List<FlowsPageComponentSelectItem> options)
-                {
-                    _flowsPageComponent.Options= options;
                     return this;
                 }
                 public FlowsPageComponent Build()

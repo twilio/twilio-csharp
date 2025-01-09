@@ -213,6 +213,8 @@ namespace Twilio.Rest.Assistants.V1
             private string Type {get; set;}
             [JsonProperty("url")]
             private string Url {get; set;}
+            [JsonProperty("embedding_model")]
+            private string EmbeddingModel {get; set;}
             [JsonProperty("date_created")]
             private DateTime? DateCreated {get; set;}
             [JsonProperty("date_updated")]
@@ -262,6 +264,11 @@ namespace Twilio.Rest.Assistants.V1
                 public Builder WithUrl(string url)
                 {
                     _assistantsV1ServiceKnowledge.Url= url;
+                    return this;
+                }
+                public Builder WithEmbeddingModel(string embeddingModel)
+                {
+                    _assistantsV1ServiceKnowledge.EmbeddingModel= embeddingModel;
                     return this;
                 }
                 public Builder WithDateCreated(DateTime? dateCreated)

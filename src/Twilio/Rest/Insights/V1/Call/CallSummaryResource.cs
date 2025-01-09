@@ -95,6 +95,7 @@ namespace Twilio.Rest.Insights.V1.Call
             public static readonly CallTypeEnum Sip = new CallTypeEnum("sip");
             public static readonly CallTypeEnum Trunking = new CallTypeEnum("trunking");
             public static readonly CallTypeEnum Client = new CallTypeEnum("client");
+            public static readonly CallTypeEnum Whatsapp = new CallTypeEnum("whatsapp");
 
         }
 

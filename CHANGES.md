@@ -1,6 +1,12 @@
 twilio-csharp Changelog
 =======================
 
+[2025-01-09] Version 7.8.1
+--------------------------
+**Numbers**
+- Change beta feature flag to use v2/BulkHostedNumberOrders
+
+
 [2024-12-05] Version 7.8.0
 --------------------------
 **Library - Fix**

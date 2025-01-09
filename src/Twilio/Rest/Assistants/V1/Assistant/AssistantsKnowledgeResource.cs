@@ -345,7 +345,7 @@ namespace Twilio.Rest.Assistants.V1.Assistant
 
         ///<summary> The description of knowledge. </summary> 
         [JsonProperty("id")]
-        public string Id { get; private set; }
+        public string Id { get; }
 
         ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Knowledge resource. </summary> 
         [JsonProperty("account_sid")]
@@ -357,7 +357,7 @@ namespace Twilio.Rest.Assistants.V1.Assistant
 
         ///<summary> The name of the knowledge source. </summary> 
         [JsonProperty("name")]
-        public string Name { get; private set; }
+        public string Name { get; }
 
         ///<summary> The status of processing the knowledge source ('QUEUED', 'PROCESSING', 'COMPLETED', 'FAILED') </summary> 
         [JsonProperty("status")]
@@ -365,19 +365,23 @@ namespace Twilio.Rest.Assistants.V1.Assistant
 
         ///<summary> The type of knowledge source ('Web', 'Database', 'Text', 'File') </summary> 
         [JsonProperty("type")]
-        public string Type { get; private set; }
+        public string Type { get; }
 
         ///<summary> The url of the knowledge resource. </summary> 
         [JsonProperty("url")]
         public string Url { get; private set; }
 
+        ///<summary> The embedding model to be used for the knowledge source. </summary> 
+        [JsonProperty("embedding_model")]
+        public string EmbeddingModel { get; private set; }
+
         ///<summary> The date and time in GMT when the Knowledge was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_created")]
-        public DateTime? DateCreated { get; private set; }
+        public DateTime? DateCreated { get; }
 
         ///<summary> The date and time in GMT when the Knowledge was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_updated")]
-        public DateTime? DateUpdated { get; private set; }
+        public DateTime? DateUpdated { get; }
 
 
 
