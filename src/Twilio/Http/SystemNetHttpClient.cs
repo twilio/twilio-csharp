@@ -58,7 +58,7 @@ namespace Twilio.Http
         /// </summary>
         /// <param name="request">Twilio response</param>
         /// <returns>Task that resolves to the response</returns>
-        public override async Task<Response> MakeRequestAsync(Request request)
+        public override async Task<Response> MakeRequestAsync(Request request, CancellationToken cancellationToken = default)
         {
             var httpRequest = BuildHttpRequest(request);
             if (!Equals(request.Method, HttpMethod.Get))
@@ -76,13 +76,13 @@ namespace Twilio.Http
             this.LastRequest = request;
             this.LastResponse = null;
 
-            var httpResponse = await _httpClient.SendAsync(httpRequest).ConfigureAwait(false);
-            var reader = new StreamReader(await httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false));
+            var httpResponse = await _httpClient.SendAsync(httpRequest, cancellationToken).ConfigureAwait(false);
+            var reader = new StreamReader(await httpResponse.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false));
 
             // Create and return a new Response. Keep a reference to the last
             // response for debugging, but don't return it as it may be shared
             // among threads.
-            var response = new Response(httpResponse.StatusCode, await reader.ReadToEndAsync().ConfigureAwait(false), httpResponse.Headers);
+            var response = new Response(httpResponse.StatusCode, await reader.ReadToEndAsync(cancellationToken).ConfigureAwait(false), httpResponse.Headers);
             this.LastResponse = response;
             return response;
         }
