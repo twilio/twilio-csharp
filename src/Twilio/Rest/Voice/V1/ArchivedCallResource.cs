@@ -73,11 +73,12 @@ namespace Twilio.Rest.Voice.V1
         /// <param name="options"> Delete ArchivedCall parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ArchivedCall </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteArchivedCallOptions options,
-                                                                        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteArchivedCallOptions options, 
+                                                                        ITwilioRestClient client = null,
+                                                                        CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client), cancellationToken);
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
@@ -102,7 +103,7 @@ namespace Twilio.Rest.Voice.V1
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DateTime? pathDate, string pathSid, ITwilioRestClient client = null)
         {
             var options = new DeleteArchivedCallOptions(pathDate, pathSid) ;
-            return await DeleteAsync(options, client);
+            return await DeleteAsync(options, client, cancellationToken);
         }
         #endif
     

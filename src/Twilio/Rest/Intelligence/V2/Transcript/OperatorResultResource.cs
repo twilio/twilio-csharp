@@ -85,10 +85,10 @@ namespace Twilio.Rest.Intelligence.V2.Transcript
         /// <param name="options"> Fetch OperatorResult parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of OperatorResult </returns>
-        public static async System.Threading.Tasks.Task<OperatorResultResource> FetchAsync(FetchOperatorResultOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<OperatorResultResource> FetchAsync(FetchOperatorResultOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -118,7 +118,7 @@ namespace Twilio.Rest.Intelligence.V2.Transcript
         public static async System.Threading.Tasks.Task<OperatorResultResource> FetchAsync(string pathTranscriptSid, string pathOperatorSid, bool? redacted = null, ITwilioRestClient client = null)
         {
             var options = new FetchOperatorResultOptions(pathTranscriptSid, pathOperatorSid){ Redacted = redacted };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -155,10 +155,10 @@ namespace Twilio.Rest.Intelligence.V2.Transcript
         /// <param name="options"> Read OperatorResult parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of OperatorResult </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<OperatorResultResource>> ReadAsync(ReadOperatorResultOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<OperatorResultResource>> ReadAsync(ReadOperatorResultOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
 
             var page = Page<OperatorResultResource>.FromJson("operator_results", response.Content);
             return new ResourceSet<OperatorResultResource>(page, options, client);
@@ -198,7 +198,7 @@ namespace Twilio.Rest.Intelligence.V2.Transcript
                                                                                             ITwilioRestClient client = null)
         {
             var options = new ReadOperatorResultOptions(pathTranscriptSid){ Redacted = redacted, PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
+            return await ReadAsync(options, client, cancellationToken);
         }
         #endif
 

@@ -89,11 +89,12 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
         /// <param name="options"> Delete UserBinding parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of UserBinding </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteUserBindingOptions options,
-                                                                        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteUserBindingOptions options, 
+                                                                        ITwilioRestClient client = null,
+                                                                        CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client), cancellationToken);
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
@@ -120,7 +121,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, string pathUserSid, string pathSid, ITwilioRestClient client = null)
         {
             var options = new DeleteUserBindingOptions(pathServiceSid, pathUserSid, pathSid) ;
-            return await DeleteAsync(options, client);
+            return await DeleteAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -161,10 +162,10 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
         /// <param name="options"> Fetch UserBinding parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of UserBinding </returns>
-        public static async System.Threading.Tasks.Task<UserBindingResource> FetchAsync(FetchUserBindingOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<UserBindingResource> FetchAsync(FetchUserBindingOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -194,7 +195,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
         public static async System.Threading.Tasks.Task<UserBindingResource> FetchAsync(string pathServiceSid, string pathUserSid, string pathSid, ITwilioRestClient client = null)
         {
             var options = new FetchUserBindingOptions(pathServiceSid, pathUserSid, pathSid){  };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -233,10 +234,10 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
         /// <param name="options"> Read UserBinding parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of UserBinding </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<UserBindingResource>> ReadAsync(ReadUserBindingOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<UserBindingResource>> ReadAsync(ReadUserBindingOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
 
             var page = Page<UserBindingResource>.FromJson("bindings", response.Content);
             return new ResourceSet<UserBindingResource>(page, options, client);
@@ -280,7 +281,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
                                                                                             ITwilioRestClient client = null)
         {
             var options = new ReadUserBindingOptions(pathServiceSid, pathUserSid){ BindingType = bindingType, PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
+            return await ReadAsync(options, client, cancellationToken);
         }
         #endif
 

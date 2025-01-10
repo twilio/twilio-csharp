@@ -83,10 +83,10 @@ namespace Twilio.Rest.Trusthub.V1
         /// <param name="options"> Create SupportingDocument parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SupportingDocument </returns>
-        public static async System.Threading.Tasks.Task<SupportingDocumentResource> CreateAsync(CreateSupportingDocumentOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SupportingDocumentResource> CreateAsync(CreateSupportingDocumentOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -121,7 +121,7 @@ namespace Twilio.Rest.Trusthub.V1
                                                                                     ITwilioRestClient client = null)
         {
         var options = new CreateSupportingDocumentOptions(friendlyName, type){  Attributes = attributes };
-            return await CreateAsync(options, client);
+            return await CreateAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -162,11 +162,12 @@ namespace Twilio.Rest.Trusthub.V1
         /// <param name="options"> Delete SupportingDocument parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SupportingDocument </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteSupportingDocumentOptions options,
-                                                                        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteSupportingDocumentOptions options, 
+                                                                        ITwilioRestClient client = null,
+                                                                        CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client), cancellationToken);
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
@@ -186,10 +187,10 @@ namespace Twilio.Rest.Trusthub.V1
         /// <param name="pathSid"> The unique string created by Twilio to identify the Supporting Document resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SupportingDocument </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             var options = new DeleteSupportingDocumentOptions(pathSid) ;
-            return await DeleteAsync(options, client);
+            return await DeleteAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -226,10 +227,10 @@ namespace Twilio.Rest.Trusthub.V1
         /// <param name="options"> Fetch SupportingDocument parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SupportingDocument </returns>
-        public static async System.Threading.Tasks.Task<SupportingDocumentResource> FetchAsync(FetchSupportingDocumentOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SupportingDocumentResource> FetchAsync(FetchSupportingDocumentOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -250,10 +251,10 @@ namespace Twilio.Rest.Trusthub.V1
         /// <param name="pathSid"> The unique string created by Twilio to identify the Supporting Document resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SupportingDocument </returns>
-        public static async System.Threading.Tasks.Task<SupportingDocumentResource> FetchAsync(string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SupportingDocumentResource> FetchAsync(string pathSid, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             var options = new FetchSupportingDocumentOptions(pathSid){  };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -288,10 +289,10 @@ namespace Twilio.Rest.Trusthub.V1
         /// <param name="options"> Read SupportingDocument parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SupportingDocument </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<SupportingDocumentResource>> ReadAsync(ReadSupportingDocumentOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<SupportingDocumentResource>> ReadAsync(ReadSupportingDocumentOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
 
             var page = Page<SupportingDocumentResource>.FromJson("results", response.Content);
             return new ResourceSet<SupportingDocumentResource>(page, options, client);
@@ -323,7 +324,7 @@ namespace Twilio.Rest.Trusthub.V1
                                                                                             ITwilioRestClient client = null)
         {
             var options = new ReadSupportingDocumentOptions(){ PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
+            return await ReadAsync(options, client, cancellationToken);
         }
         #endif
 
@@ -410,11 +411,12 @@ namespace Twilio.Rest.Trusthub.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SupportingDocument </returns>
         #if !NET35
-        public static async System.Threading.Tasks.Task<SupportingDocumentResource> UpdateAsync(UpdateSupportingDocumentOptions options,
-                                                                                                    ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SupportingDocumentResource> UpdateAsync(UpdateSupportingDocumentOptions options, 
+                                                                                                    ITwilioRestClient client = null,
+                                                                                                    CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -449,7 +451,7 @@ namespace Twilio.Rest.Trusthub.V1
                                                                                 ITwilioRestClient client = null)
         {
             var options = new UpdateSupportingDocumentOptions(pathSid){ FriendlyName = friendlyName, Attributes = attributes };
-            return await UpdateAsync(options, client);
+            return await UpdateAsync(options, client, cancellationToken);
         }
         #endif
     

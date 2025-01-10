@@ -67,10 +67,10 @@ namespace Twilio.Rest.Marketplace.V1
         /// <param name="options"> Fetch ModuleDataManagement parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ModuleDataManagement </returns>
-        public static async System.Threading.Tasks.Task<ModuleDataManagementResource> FetchAsync(FetchModuleDataManagementOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ModuleDataManagementResource> FetchAsync(FetchModuleDataManagementOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -91,10 +91,10 @@ namespace Twilio.Rest.Marketplace.V1
         /// <param name="pathSid"> The unique identifier of a Listing. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ModuleDataManagement </returns>
-        public static async System.Threading.Tasks.Task<ModuleDataManagementResource> FetchAsync(string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ModuleDataManagementResource> FetchAsync(string pathSid, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             var options = new FetchModuleDataManagementOptions(pathSid){  };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -132,11 +132,12 @@ namespace Twilio.Rest.Marketplace.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ModuleDataManagement </returns>
         #if !NET35
-        public static async System.Threading.Tasks.Task<ModuleDataManagementResource> UpdateAsync(UpdateModuleDataManagementOptions options,
-                                                                                                    ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ModuleDataManagementResource> UpdateAsync(UpdateModuleDataManagementOptions options, 
+                                                                                                    ITwilioRestClient client = null,
+                                                                                                    CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -191,7 +192,7 @@ namespace Twilio.Rest.Marketplace.V1
                                                                                 ITwilioRestClient client = null)
         {
             var options = new UpdateModuleDataManagementOptions(pathSid){ ModuleInfo = moduleInfo, Description = description, Documentation = documentation, Policies = policies, Support = support, Configuration = configuration, Pricing = pricing };
-            return await UpdateAsync(options, client);
+            return await UpdateAsync(options, client, cancellationToken);
         }
         #endif
     

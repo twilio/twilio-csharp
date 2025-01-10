@@ -65,10 +65,10 @@ namespace Twilio.Rest.Insights.V1
         /// <param name="options"> Fetch Setting parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Setting </returns>
-        public static async System.Threading.Tasks.Task<SettingResource> FetchAsync(FetchSettingOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SettingResource> FetchAsync(FetchSettingOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -92,7 +92,7 @@ namespace Twilio.Rest.Insights.V1
         public static async System.Threading.Tasks.Task<SettingResource> FetchAsync(string subaccountSid = null, ITwilioRestClient client = null)
         {
             var options = new FetchSettingOptions(){ SubaccountSid = subaccountSid };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -128,11 +128,12 @@ namespace Twilio.Rest.Insights.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Setting </returns>
         #if !NET35
-        public static async System.Threading.Tasks.Task<SettingResource> UpdateAsync(UpdateSettingOptions options,
-                                                                                                    ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SettingResource> UpdateAsync(UpdateSettingOptions options, 
+                                                                                                    ITwilioRestClient client = null,
+                                                                                                    CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -167,7 +168,7 @@ namespace Twilio.Rest.Insights.V1
                                                                                 ITwilioRestClient client = null)
         {
             var options = new UpdateSettingOptions(){ AdvancedFeatures = advancedFeatures, VoiceTrace = voiceTrace, SubaccountSid = subaccountSid };
-            return await UpdateAsync(options, client);
+            return await UpdateAsync(options, client, cancellationToken);
         }
         #endif
     

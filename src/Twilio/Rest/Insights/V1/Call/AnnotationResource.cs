@@ -98,10 +98,10 @@ namespace Twilio.Rest.Insights.V1.Call
         /// <param name="options"> Fetch Annotation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Annotation </returns>
-        public static async System.Threading.Tasks.Task<AnnotationResource> FetchAsync(FetchAnnotationOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AnnotationResource> FetchAsync(FetchAnnotationOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -122,10 +122,10 @@ namespace Twilio.Rest.Insights.V1.Call
         /// <param name="pathCallSid"> The unique SID identifier of the Call. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Annotation </returns>
-        public static async System.Threading.Tasks.Task<AnnotationResource> FetchAsync(string pathCallSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AnnotationResource> FetchAsync(string pathCallSid, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             var options = new FetchAnnotationOptions(pathCallSid){  };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -163,11 +163,12 @@ namespace Twilio.Rest.Insights.V1.Call
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Annotation </returns>
         #if !NET35
-        public static async System.Threading.Tasks.Task<AnnotationResource> UpdateAsync(UpdateAnnotationOptions options,
-                                                                                                    ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AnnotationResource> UpdateAsync(UpdateAnnotationOptions options, 
+                                                                                                    ITwilioRestClient client = null,
+                                                                                                    CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -222,7 +223,7 @@ namespace Twilio.Rest.Insights.V1.Call
                                                                                 ITwilioRestClient client = null)
         {
             var options = new UpdateAnnotationOptions(pathCallSid){ AnsweredBy = answeredBy, ConnectivityIssue = connectivityIssue, QualityIssues = qualityIssues, Spam = spam, CallScore = callScore, Comment = comment, Incident = incident };
-            return await UpdateAsync(options, client);
+            return await UpdateAsync(options, client, cancellationToken);
         }
         #endif
     

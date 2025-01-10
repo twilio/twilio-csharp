@@ -65,10 +65,10 @@ namespace Twilio.Rest.Content.V2
         /// <param name="options"> Read ContentAndApprovals parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ContentAndApprovals </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<ContentAndApprovalsResource>> ReadAsync(ReadContentAndApprovalsOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<ContentAndApprovalsResource>> ReadAsync(ReadContentAndApprovalsOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
 
             var page = Page<ContentAndApprovalsResource>.FromJson("contents", response.Content);
             return new ResourceSet<ContentAndApprovalsResource>(page, options, client);
@@ -136,7 +136,7 @@ namespace Twilio.Rest.Content.V2
                                                                                             ITwilioRestClient client = null)
         {
             var options = new ReadContentAndApprovalsOptions(){ PageSize = pageSize, SortByDate = sortByDate, SortByContentName = sortByContentName, DateCreatedAfter = dateCreatedAfter, DateCreatedBefore = dateCreatedBefore, ContentName = contentName, Content = content, Language = language, ContentType = contentType, ChannelEligibility = channelEligibility, Limit = limit};
-            return await ReadAsync(options, client);
+            return await ReadAsync(options, client, cancellationToken);
         }
         #endif
 

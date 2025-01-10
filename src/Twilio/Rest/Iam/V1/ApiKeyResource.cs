@@ -71,11 +71,12 @@ namespace Twilio.Rest.Iam.V1
         /// <param name="options"> Delete ApiKey parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ApiKey </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteApiKeyOptions options,
-                                                                        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteApiKeyOptions options, 
+                                                                        ITwilioRestClient client = null,
+                                                                        CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client), cancellationToken);
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
@@ -95,10 +96,10 @@ namespace Twilio.Rest.Iam.V1
         /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Key resource to delete. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ApiKey </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             var options = new DeleteApiKeyOptions(pathSid) ;
-            return await DeleteAsync(options, client);
+            return await DeleteAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -135,10 +136,10 @@ namespace Twilio.Rest.Iam.V1
         /// <param name="options"> Fetch ApiKey parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ApiKey </returns>
-        public static async System.Threading.Tasks.Task<ApiKeyResource> FetchAsync(FetchApiKeyOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ApiKeyResource> FetchAsync(FetchApiKeyOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -159,10 +160,10 @@ namespace Twilio.Rest.Iam.V1
         /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Key resource to fetch. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ApiKey </returns>
-        public static async System.Threading.Tasks.Task<ApiKeyResource> FetchAsync(string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ApiKeyResource> FetchAsync(string pathSid, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             var options = new FetchApiKeyOptions(pathSid){  };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -200,11 +201,12 @@ namespace Twilio.Rest.Iam.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ApiKey </returns>
         #if !NET35
-        public static async System.Threading.Tasks.Task<ApiKeyResource> UpdateAsync(UpdateApiKeyOptions options,
-                                                                                                    ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ApiKeyResource> UpdateAsync(UpdateApiKeyOptions options, 
+                                                                                                    ITwilioRestClient client = null,
+                                                                                                    CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -239,7 +241,7 @@ namespace Twilio.Rest.Iam.V1
                                                                                 ITwilioRestClient client = null)
         {
             var options = new UpdateApiKeyOptions(pathSid){ FriendlyName = friendlyName, Policy = policy };
-            return await UpdateAsync(options, client);
+            return await UpdateAsync(options, client, cancellationToken);
         }
         #endif
     

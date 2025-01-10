@@ -66,10 +66,10 @@ namespace Twilio.Rest.Verify.V2
         /// <param name="options"> Create Safelist parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Safelist </returns>
-        public static async System.Threading.Tasks.Task<SafelistResource> CreateAsync(CreateSafelistOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SafelistResource> CreateAsync(CreateSafelistOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -96,7 +96,7 @@ namespace Twilio.Rest.Verify.V2
                                                                                     ITwilioRestClient client = null)
         {
         var options = new CreateSafelistOptions(phoneNumber){  };
-            return await CreateAsync(options, client);
+            return await CreateAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -137,11 +137,12 @@ namespace Twilio.Rest.Verify.V2
         /// <param name="options"> Delete Safelist parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Safelist </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteSafelistOptions options,
-                                                                        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteSafelistOptions options, 
+                                                                        ITwilioRestClient client = null,
+                                                                        CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client), cancellationToken);
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
@@ -161,10 +162,10 @@ namespace Twilio.Rest.Verify.V2
         /// <param name="pathPhoneNumber"> The phone number to be removed from SafeList. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164). </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Safelist </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathPhoneNumber, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathPhoneNumber, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             var options = new DeleteSafelistOptions(pathPhoneNumber) ;
-            return await DeleteAsync(options, client);
+            return await DeleteAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -201,10 +202,10 @@ namespace Twilio.Rest.Verify.V2
         /// <param name="options"> Fetch Safelist parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Safelist </returns>
-        public static async System.Threading.Tasks.Task<SafelistResource> FetchAsync(FetchSafelistOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SafelistResource> FetchAsync(FetchSafelistOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -225,10 +226,10 @@ namespace Twilio.Rest.Verify.V2
         /// <param name="pathPhoneNumber"> The phone number to be fetched from SafeList. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164). </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Safelist </returns>
-        public static async System.Threading.Tasks.Task<SafelistResource> FetchAsync(string pathPhoneNumber, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SafelistResource> FetchAsync(string pathPhoneNumber, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             var options = new FetchSafelistOptions(pathPhoneNumber){  };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
     

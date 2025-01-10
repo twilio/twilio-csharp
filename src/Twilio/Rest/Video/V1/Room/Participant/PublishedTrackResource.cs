@@ -85,10 +85,10 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         /// <param name="options"> Fetch PublishedTrack parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PublishedTrack </returns>
-        public static async System.Threading.Tasks.Task<PublishedTrackResource> FetchAsync(FetchPublishedTrackOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<PublishedTrackResource> FetchAsync(FetchPublishedTrackOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -118,7 +118,7 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         public static async System.Threading.Tasks.Task<PublishedTrackResource> FetchAsync(string pathRoomSid, string pathParticipantSid, string pathSid, ITwilioRestClient client = null)
         {
             var options = new FetchPublishedTrackOptions(pathRoomSid, pathParticipantSid, pathSid){  };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -157,10 +157,10 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         /// <param name="options"> Read PublishedTrack parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PublishedTrack </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<PublishedTrackResource>> ReadAsync(ReadPublishedTrackOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<PublishedTrackResource>> ReadAsync(ReadPublishedTrackOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
 
             var page = Page<PublishedTrackResource>.FromJson("published_tracks", response.Content);
             return new ResourceSet<PublishedTrackResource>(page, options, client);
@@ -200,7 +200,7 @@ namespace Twilio.Rest.Video.V1.Room.Participant
                                                                                             ITwilioRestClient client = null)
         {
             var options = new ReadPublishedTrackOptions(pathRoomSid, pathParticipantSid){ PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
+            return await ReadAsync(options, client, cancellationToken);
         }
         #endif
 

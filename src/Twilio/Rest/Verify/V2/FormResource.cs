@@ -79,10 +79,10 @@ namespace Twilio.Rest.Verify.V2
         /// <param name="options"> Fetch Form parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Form </returns>
-        public static async System.Threading.Tasks.Task<FormResource> FetchAsync(FetchFormOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<FormResource> FetchAsync(FetchFormOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -106,7 +106,7 @@ namespace Twilio.Rest.Verify.V2
         public static async System.Threading.Tasks.Task<FormResource> FetchAsync(FormResource.FormTypesEnum pathFormType, ITwilioRestClient client = null)
         {
             var options = new FetchFormOptions(pathFormType){  };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
     

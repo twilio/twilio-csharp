@@ -80,10 +80,10 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="options"> Fetch ProvisioningStatus parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ProvisioningStatus </returns>
-        public static async System.Threading.Tasks.Task<ProvisioningStatusResource> FetchAsync(FetchProvisioningStatusOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ProvisioningStatusResource> FetchAsync(FetchProvisioningStatusOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -101,10 +101,10 @@ namespace Twilio.Rest.FlexApi.V1
         /// <summary> fetch </summary>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ProvisioningStatus </returns>
-        public static async System.Threading.Tasks.Task<ProvisioningStatusResource> FetchAsync(ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ProvisioningStatusResource> FetchAsync(ITwilioRestClient client = null, CancellationToken cancellationToken = default)
         {
             var options = new FetchProvisioningStatusOptions(){  };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
     

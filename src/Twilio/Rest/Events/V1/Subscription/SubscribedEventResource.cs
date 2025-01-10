@@ -68,10 +68,10 @@ namespace Twilio.Rest.Events.V1.Subscription
         /// <param name="options"> Create SubscribedEvent parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SubscribedEvent </returns>
-        public static async System.Threading.Tasks.Task<SubscribedEventResource> CreateAsync(CreateSubscribedEventOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SubscribedEventResource> CreateAsync(CreateSubscribedEventOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -106,7 +106,7 @@ namespace Twilio.Rest.Events.V1.Subscription
                                                                                     ITwilioRestClient client = null)
         {
         var options = new CreateSubscribedEventOptions(pathSubscriptionSid, type){  SchemaVersion = schemaVersion };
-            return await CreateAsync(options, client);
+            return await CreateAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -149,11 +149,12 @@ namespace Twilio.Rest.Events.V1.Subscription
         /// <param name="options"> Delete SubscribedEvent parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SubscribedEvent </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteSubscribedEventOptions options,
-                                                                        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteSubscribedEventOptions options, 
+                                                                        ITwilioRestClient client = null,
+                                                                        CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client), cancellationToken);
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
@@ -178,7 +179,7 @@ namespace Twilio.Rest.Events.V1.Subscription
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSubscriptionSid, string pathType, ITwilioRestClient client = null)
         {
             var options = new DeleteSubscribedEventOptions(pathSubscriptionSid, pathType) ;
-            return await DeleteAsync(options, client);
+            return await DeleteAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -217,10 +218,10 @@ namespace Twilio.Rest.Events.V1.Subscription
         /// <param name="options"> Fetch SubscribedEvent parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SubscribedEvent </returns>
-        public static async System.Threading.Tasks.Task<SubscribedEventResource> FetchAsync(FetchSubscribedEventOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SubscribedEventResource> FetchAsync(FetchSubscribedEventOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -247,7 +248,7 @@ namespace Twilio.Rest.Events.V1.Subscription
         public static async System.Threading.Tasks.Task<SubscribedEventResource> FetchAsync(string pathSubscriptionSid, string pathType, ITwilioRestClient client = null)
         {
             var options = new FetchSubscribedEventOptions(pathSubscriptionSid, pathType){  };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -284,10 +285,10 @@ namespace Twilio.Rest.Events.V1.Subscription
         /// <param name="options"> Read SubscribedEvent parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SubscribedEvent </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<SubscribedEventResource>> ReadAsync(ReadSubscribedEventOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<SubscribedEventResource>> ReadAsync(ReadSubscribedEventOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
 
             var page = Page<SubscribedEventResource>.FromJson("types", response.Content);
             return new ResourceSet<SubscribedEventResource>(page, options, client);
@@ -323,7 +324,7 @@ namespace Twilio.Rest.Events.V1.Subscription
                                                                                             ITwilioRestClient client = null)
         {
             var options = new ReadSubscribedEventOptions(pathSubscriptionSid){ PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
+            return await ReadAsync(options, client, cancellationToken);
         }
         #endif
 
@@ -412,11 +413,12 @@ namespace Twilio.Rest.Events.V1.Subscription
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SubscribedEvent </returns>
         #if !NET35
-        public static async System.Threading.Tasks.Task<SubscribedEventResource> UpdateAsync(UpdateSubscribedEventOptions options,
-                                                                                                    ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SubscribedEventResource> UpdateAsync(UpdateSubscribedEventOptions options, 
+                                                                                                    ITwilioRestClient client = null,
+                                                                                                    CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -451,7 +453,7 @@ namespace Twilio.Rest.Events.V1.Subscription
                                                                                 ITwilioRestClient client = null)
         {
             var options = new UpdateSubscribedEventOptions(pathSubscriptionSid, pathType){ SchemaVersion = schemaVersion };
-            return await UpdateAsync(options, client);
+            return await UpdateAsync(options, client, cancellationToken);
         }
         #endif
     

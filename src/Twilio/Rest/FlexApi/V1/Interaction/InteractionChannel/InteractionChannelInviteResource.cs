@@ -70,10 +70,10 @@ namespace Twilio.Rest.FlexApi.V1.Interaction.InteractionChannel
         /// <param name="options"> Create InteractionChannelInvite parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InteractionChannelInvite </returns>
-        public static async System.Threading.Tasks.Task<InteractionChannelInviteResource> CreateAsync(CreateInteractionChannelInviteOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<InteractionChannelInviteResource> CreateAsync(CreateInteractionChannelInviteOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -108,7 +108,7 @@ namespace Twilio.Rest.FlexApi.V1.Interaction.InteractionChannel
                                                                                     ITwilioRestClient client = null)
         {
         var options = new CreateInteractionChannelInviteOptions(pathInteractionSid, pathChannelSid, routing){  };
-            return await CreateAsync(options, client);
+            return await CreateAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -147,10 +147,10 @@ namespace Twilio.Rest.FlexApi.V1.Interaction.InteractionChannel
         /// <param name="options"> Read InteractionChannelInvite parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InteractionChannelInvite </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<InteractionChannelInviteResource>> ReadAsync(ReadInteractionChannelInviteOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<InteractionChannelInviteResource>> ReadAsync(ReadInteractionChannelInviteOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
 
             var page = Page<InteractionChannelInviteResource>.FromJson("invites", response.Content);
             return new ResourceSet<InteractionChannelInviteResource>(page, options, client);
@@ -190,7 +190,7 @@ namespace Twilio.Rest.FlexApi.V1.Interaction.InteractionChannel
                                                                                             ITwilioRestClient client = null)
         {
             var options = new ReadInteractionChannelInviteOptions(pathInteractionSid, pathChannelSid){ PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
+            return await ReadAsync(options, client, cancellationToken);
         }
         #endif
 

@@ -70,10 +70,10 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         /// <param name="options"> Create Variable parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Variable </returns>
-        public static async System.Threading.Tasks.Task<VariableResource> CreateAsync(CreateVariableOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<VariableResource> CreateAsync(CreateVariableOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -112,7 +112,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
                                                                                     ITwilioRestClient client = null)
         {
         var options = new CreateVariableOptions(pathServiceSid, pathEnvironmentSid, key, value){  };
-            return await CreateAsync(options, client);
+            return await CreateAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -157,11 +157,12 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         /// <param name="options"> Delete Variable parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Variable </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteVariableOptions options,
-                                                                        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteVariableOptions options, 
+                                                                        ITwilioRestClient client = null,
+                                                                        CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client), cancellationToken);
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
@@ -188,7 +189,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, string pathEnvironmentSid, string pathSid, ITwilioRestClient client = null)
         {
             var options = new DeleteVariableOptions(pathServiceSid, pathEnvironmentSid, pathSid) ;
-            return await DeleteAsync(options, client);
+            return await DeleteAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -229,10 +230,10 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         /// <param name="options"> Fetch Variable parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Variable </returns>
-        public static async System.Threading.Tasks.Task<VariableResource> FetchAsync(FetchVariableOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<VariableResource> FetchAsync(FetchVariableOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -262,7 +263,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         public static async System.Threading.Tasks.Task<VariableResource> FetchAsync(string pathServiceSid, string pathEnvironmentSid, string pathSid, ITwilioRestClient client = null)
         {
             var options = new FetchVariableOptions(pathServiceSid, pathEnvironmentSid, pathSid){  };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -301,10 +302,10 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         /// <param name="options"> Read Variable parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Variable </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<VariableResource>> ReadAsync(ReadVariableOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<VariableResource>> ReadAsync(ReadVariableOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
 
             var page = Page<VariableResource>.FromJson("variables", response.Content);
             return new ResourceSet<VariableResource>(page, options, client);
@@ -344,7 +345,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
                                                                                             ITwilioRestClient client = null)
         {
             var options = new ReadVariableOptions(pathServiceSid, pathEnvironmentSid){ PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
+            return await ReadAsync(options, client, cancellationToken);
         }
         #endif
 
@@ -435,11 +436,12 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Variable </returns>
         #if !NET35
-        public static async System.Threading.Tasks.Task<VariableResource> UpdateAsync(UpdateVariableOptions options,
-                                                                                                    ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<VariableResource> UpdateAsync(UpdateVariableOptions options, 
+                                                                                                    ITwilioRestClient client = null,
+                                                                                                    CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -482,7 +484,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
                                                                                 ITwilioRestClient client = null)
         {
             var options = new UpdateVariableOptions(pathServiceSid, pathEnvironmentSid, pathSid){ Key = key, Value = value };
-            return await UpdateAsync(options, client);
+            return await UpdateAsync(options, client, cancellationToken);
         }
         #endif
     

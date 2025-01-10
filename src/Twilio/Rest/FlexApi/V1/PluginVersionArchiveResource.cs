@@ -70,11 +70,12 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PluginVersionArchive </returns>
         #if !NET35
-        public static async System.Threading.Tasks.Task<PluginVersionArchiveResource> UpdateAsync(UpdatePluginVersionArchiveOptions options,
-                                                                                                    ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<PluginVersionArchiveResource> UpdateAsync(UpdatePluginVersionArchiveOptions options, 
+                                                                                                    ITwilioRestClient client = null,
+                                                                                                    CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -109,7 +110,7 @@ namespace Twilio.Rest.FlexApi.V1
                                                                                 ITwilioRestClient client = null)
         {
             var options = new UpdatePluginVersionArchiveOptions(pathPluginSid, pathSid){ FlexMetadata = flexMetadata };
-            return await UpdateAsync(options, client);
+            return await UpdateAsync(options, client, cancellationToken);
         }
         #endif
     

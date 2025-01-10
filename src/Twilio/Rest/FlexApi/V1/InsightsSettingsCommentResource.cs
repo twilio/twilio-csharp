@@ -65,10 +65,10 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="options"> Fetch InsightsSettingsComment parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InsightsSettingsComment </returns>
-        public static async System.Threading.Tasks.Task<InsightsSettingsCommentResource> FetchAsync(FetchInsightsSettingsCommentOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<InsightsSettingsCommentResource> FetchAsync(FetchInsightsSettingsCommentOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -92,7 +92,7 @@ namespace Twilio.Rest.FlexApi.V1
         public static async System.Threading.Tasks.Task<InsightsSettingsCommentResource> FetchAsync(string authorization = null, ITwilioRestClient client = null)
         {
             var options = new FetchInsightsSettingsCommentOptions(){ Authorization = authorization };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
     

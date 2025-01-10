@@ -68,10 +68,10 @@ namespace Twilio.Rest.Events.V1.Sink
         /// <param name="options"> Create SinkValidate parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SinkValidate </returns>
-        public static async System.Threading.Tasks.Task<SinkValidateResource> CreateAsync(CreateSinkValidateOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SinkValidateResource> CreateAsync(CreateSinkValidateOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -102,7 +102,7 @@ namespace Twilio.Rest.Events.V1.Sink
                                                                                     ITwilioRestClient client = null)
         {
         var options = new CreateSinkValidateOptions(pathSid, testId){  };
-            return await CreateAsync(options, client);
+            return await CreateAsync(options, client, cancellationToken);
         }
         #endif
     

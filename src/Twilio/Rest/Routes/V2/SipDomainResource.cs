@@ -67,10 +67,10 @@ namespace Twilio.Rest.Routes.V2
         /// <param name="options"> Fetch SipDomain parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SipDomain </returns>
-        public static async System.Threading.Tasks.Task<SipDomainResource> FetchAsync(FetchSipDomainOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SipDomainResource> FetchAsync(FetchSipDomainOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -91,10 +91,10 @@ namespace Twilio.Rest.Routes.V2
         /// <param name="pathSipDomain">  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SipDomain </returns>
-        public static async System.Threading.Tasks.Task<SipDomainResource> FetchAsync(string pathSipDomain, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SipDomainResource> FetchAsync(string pathSipDomain, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             var options = new FetchSipDomainOptions(pathSipDomain){  };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -132,11 +132,12 @@ namespace Twilio.Rest.Routes.V2
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SipDomain </returns>
         #if !NET35
-        public static async System.Threading.Tasks.Task<SipDomainResource> UpdateAsync(UpdateSipDomainOptions options,
-                                                                                                    ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SipDomainResource> UpdateAsync(UpdateSipDomainOptions options, 
+                                                                                                    ITwilioRestClient client = null,
+                                                                                                    CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -171,7 +172,7 @@ namespace Twilio.Rest.Routes.V2
                                                                                 ITwilioRestClient client = null)
         {
             var options = new UpdateSipDomainOptions(pathSipDomain){ VoiceRegion = voiceRegion, FriendlyName = friendlyName };
-            return await UpdateAsync(options, client);
+            return await UpdateAsync(options, client, cancellationToken);
         }
         #endif
     

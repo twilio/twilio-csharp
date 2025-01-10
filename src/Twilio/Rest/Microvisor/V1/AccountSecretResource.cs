@@ -66,10 +66,10 @@ namespace Twilio.Rest.Microvisor.V1
         /// <param name="options"> Create AccountSecret parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AccountSecret </returns>
-        public static async System.Threading.Tasks.Task<AccountSecretResource> CreateAsync(CreateAccountSecretOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AccountSecretResource> CreateAsync(CreateAccountSecretOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -100,7 +100,7 @@ namespace Twilio.Rest.Microvisor.V1
                                                                                     ITwilioRestClient client = null)
         {
         var options = new CreateAccountSecretOptions(key, value){  };
-            return await CreateAsync(options, client);
+            return await CreateAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -141,11 +141,12 @@ namespace Twilio.Rest.Microvisor.V1
         /// <param name="options"> Delete AccountSecret parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AccountSecret </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteAccountSecretOptions options,
-                                                                        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteAccountSecretOptions options, 
+                                                                        ITwilioRestClient client = null,
+                                                                        CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client), cancellationToken);
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
@@ -165,10 +166,10 @@ namespace Twilio.Rest.Microvisor.V1
         /// <param name="pathKey"> The secret key; up to 100 characters. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AccountSecret </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathKey, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathKey, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             var options = new DeleteAccountSecretOptions(pathKey) ;
-            return await DeleteAsync(options, client);
+            return await DeleteAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -205,10 +206,10 @@ namespace Twilio.Rest.Microvisor.V1
         /// <param name="options"> Fetch AccountSecret parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AccountSecret </returns>
-        public static async System.Threading.Tasks.Task<AccountSecretResource> FetchAsync(FetchAccountSecretOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AccountSecretResource> FetchAsync(FetchAccountSecretOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -229,10 +230,10 @@ namespace Twilio.Rest.Microvisor.V1
         /// <param name="pathKey"> The secret key; up to 100 characters. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AccountSecret </returns>
-        public static async System.Threading.Tasks.Task<AccountSecretResource> FetchAsync(string pathKey, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AccountSecretResource> FetchAsync(string pathKey, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             var options = new FetchAccountSecretOptions(pathKey){  };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -267,10 +268,10 @@ namespace Twilio.Rest.Microvisor.V1
         /// <param name="options"> Read AccountSecret parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AccountSecret </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<AccountSecretResource>> ReadAsync(ReadAccountSecretOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<AccountSecretResource>> ReadAsync(ReadAccountSecretOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
 
             var page = Page<AccountSecretResource>.FromJson("secrets", response.Content);
             return new ResourceSet<AccountSecretResource>(page, options, client);
@@ -302,7 +303,7 @@ namespace Twilio.Rest.Microvisor.V1
                                                                                             ITwilioRestClient client = null)
         {
             var options = new ReadAccountSecretOptions(){ PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
+            return await ReadAsync(options, client, cancellationToken);
         }
         #endif
 
@@ -389,11 +390,12 @@ namespace Twilio.Rest.Microvisor.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AccountSecret </returns>
         #if !NET35
-        public static async System.Threading.Tasks.Task<AccountSecretResource> UpdateAsync(UpdateAccountSecretOptions options,
-                                                                                                    ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AccountSecretResource> UpdateAsync(UpdateAccountSecretOptions options, 
+                                                                                                    ITwilioRestClient client = null,
+                                                                                                    CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -424,7 +426,7 @@ namespace Twilio.Rest.Microvisor.V1
                                                                                 ITwilioRestClient client = null)
         {
             var options = new UpdateAccountSecretOptions(pathKey, value){  };
-            return await UpdateAsync(options, client);
+            return await UpdateAsync(options, client, cancellationToken);
         }
         #endif
     

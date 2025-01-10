@@ -105,10 +105,10 @@ namespace Twilio.Rest.PreviewIam.Organizations
         /// <param name="options"> Create RoleAssignment parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of RoleAssignment </returns>
-        public static async System.Threading.Tasks.Task<RoleAssignmentResource> CreateAsync(CreateRoleAssignmentOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<RoleAssignmentResource> CreateAsync(CreateRoleAssignmentOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -139,7 +139,7 @@ namespace Twilio.Rest.PreviewIam.Organizations
                                                                                     ITwilioRestClient client = null)
         {
         var options = new CreateRoleAssignmentOptions(pathOrganizationSid, publicApiCreateRoleAssignmentRequest){  };
-            return await CreateAsync(options, client);
+            return await CreateAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -182,11 +182,12 @@ namespace Twilio.Rest.PreviewIam.Organizations
         /// <param name="options"> Delete RoleAssignment parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of RoleAssignment </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteRoleAssignmentOptions options,
-                                                                        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteRoleAssignmentOptions options, 
+                                                                        ITwilioRestClient client = null,
+                                                                        CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client), cancellationToken);
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
@@ -211,7 +212,7 @@ namespace Twilio.Rest.PreviewIam.Organizations
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathOrganizationSid, string pathRoleAssignmentSid, ITwilioRestClient client = null)
         {
             var options = new DeleteRoleAssignmentOptions(pathOrganizationSid, pathRoleAssignmentSid) ;
-            return await DeleteAsync(options, client);
+            return await DeleteAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -248,10 +249,10 @@ namespace Twilio.Rest.PreviewIam.Organizations
         /// <param name="options"> Read RoleAssignment parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of RoleAssignment </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<RoleAssignmentResource>> ReadAsync(ReadRoleAssignmentOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<RoleAssignmentResource>> ReadAsync(ReadRoleAssignmentOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
 
             var page = Page<RoleAssignmentResource>.FromJson("content", response.Content);
             return new ResourceSet<RoleAssignmentResource>(page, options, client);
@@ -295,7 +296,7 @@ namespace Twilio.Rest.PreviewIam.Organizations
                                                                                             ITwilioRestClient client = null)
         {
             var options = new ReadRoleAssignmentOptions(pathOrganizationSid){ PageSize = pageSize, Identity = identity, Scope = scope, Limit = limit};
-            return await ReadAsync(options, client);
+            return await ReadAsync(options, client, cancellationToken);
         }
         #endif
 

@@ -97,10 +97,10 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="options"> Create FlexFlow parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of FlexFlow </returns>
-        public static async System.Threading.Tasks.Task<FlexFlowResource> CreateAsync(CreateFlexFlowOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<FlexFlowResource> CreateAsync(CreateFlexFlowOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -191,7 +191,7 @@ namespace Twilio.Rest.FlexApi.V1
                                                                                     ITwilioRestClient client = null)
         {
         var options = new CreateFlexFlowOptions(friendlyName, chatServiceSid, channelType){  ContactIdentity = contactIdentity, Enabled = enabled, IntegrationType = integrationType, IntegrationFlowSid = integrationFlowSid, IntegrationUrl = integrationUrl, IntegrationWorkspaceSid = integrationWorkspaceSid, IntegrationWorkflowSid = integrationWorkflowSid, IntegrationChannel = integrationChannel, IntegrationTimeout = integrationTimeout, IntegrationPriority = integrationPriority, IntegrationCreationOnMessage = integrationCreationOnMessage, LongLived = longLived, JanitorEnabled = janitorEnabled, IntegrationRetryCount = integrationRetryCount };
-            return await CreateAsync(options, client);
+            return await CreateAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -232,11 +232,12 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="options"> Delete FlexFlow parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of FlexFlow </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteFlexFlowOptions options,
-                                                                        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteFlexFlowOptions options, 
+                                                                        ITwilioRestClient client = null,
+                                                                        CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client), cancellationToken);
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
@@ -256,10 +257,10 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="pathSid"> The SID of the Flex Flow resource to delete. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of FlexFlow </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             var options = new DeleteFlexFlowOptions(pathSid) ;
-            return await DeleteAsync(options, client);
+            return await DeleteAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -296,10 +297,10 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="options"> Fetch FlexFlow parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of FlexFlow </returns>
-        public static async System.Threading.Tasks.Task<FlexFlowResource> FetchAsync(FetchFlexFlowOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<FlexFlowResource> FetchAsync(FetchFlexFlowOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -320,10 +321,10 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="pathSid"> The SID of the Flex Flow resource to fetch. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of FlexFlow </returns>
-        public static async System.Threading.Tasks.Task<FlexFlowResource> FetchAsync(string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<FlexFlowResource> FetchAsync(string pathSid, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             var options = new FetchFlexFlowOptions(pathSid){  };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -358,10 +359,10 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="options"> Read FlexFlow parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of FlexFlow </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<FlexFlowResource>> ReadAsync(ReadFlexFlowOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<FlexFlowResource>> ReadAsync(ReadFlexFlowOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
 
             var page = Page<FlexFlowResource>.FromJson("flex_flows", response.Content);
             return new ResourceSet<FlexFlowResource>(page, options, client);
@@ -397,7 +398,7 @@ namespace Twilio.Rest.FlexApi.V1
                                                                                             ITwilioRestClient client = null)
         {
             var options = new ReadFlexFlowOptions(){ FriendlyName = friendlyName, PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
+            return await ReadAsync(options, client, cancellationToken);
         }
         #endif
 
@@ -484,11 +485,12 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of FlexFlow </returns>
         #if !NET35
-        public static async System.Threading.Tasks.Task<FlexFlowResource> UpdateAsync(UpdateFlexFlowOptions options,
-                                                                                                    ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<FlexFlowResource> UpdateAsync(UpdateFlexFlowOptions options, 
+                                                                                                    ITwilioRestClient client = null,
+                                                                                                    CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -583,7 +585,7 @@ namespace Twilio.Rest.FlexApi.V1
                                                                                 ITwilioRestClient client = null)
         {
             var options = new UpdateFlexFlowOptions(pathSid){ FriendlyName = friendlyName, ChatServiceSid = chatServiceSid, ChannelType = channelType, ContactIdentity = contactIdentity, Enabled = enabled, IntegrationType = integrationType, IntegrationFlowSid = integrationFlowSid, IntegrationUrl = integrationUrl, IntegrationWorkspaceSid = integrationWorkspaceSid, IntegrationWorkflowSid = integrationWorkflowSid, IntegrationChannel = integrationChannel, IntegrationTimeout = integrationTimeout, IntegrationPriority = integrationPriority, IntegrationCreationOnMessage = integrationCreationOnMessage, LongLived = longLived, JanitorEnabled = janitorEnabled, IntegrationRetryCount = integrationRetryCount };
-            return await UpdateAsync(options, client);
+            return await UpdateAsync(options, client, cancellationToken);
         }
         #endif
     

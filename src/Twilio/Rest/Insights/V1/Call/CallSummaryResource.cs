@@ -133,10 +133,10 @@ namespace Twilio.Rest.Insights.V1.Call
         /// <param name="options"> Fetch CallSummary parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CallSummary </returns>
-        public static async System.Threading.Tasks.Task<CallSummaryResource> FetchAsync(FetchCallSummaryOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<CallSummaryResource> FetchAsync(FetchCallSummaryOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -163,7 +163,7 @@ namespace Twilio.Rest.Insights.V1.Call
         public static async System.Threading.Tasks.Task<CallSummaryResource> FetchAsync(string pathCallSid, CallSummaryResource.ProcessingStateEnum processingState = null, ITwilioRestClient client = null)
         {
             var options = new FetchCallSummaryOptions(pathCallSid){ ProcessingState = processingState };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
     

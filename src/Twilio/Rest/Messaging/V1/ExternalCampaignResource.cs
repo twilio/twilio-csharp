@@ -66,10 +66,10 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="options"> Create ExternalCampaign parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ExternalCampaign </returns>
-        public static async System.Threading.Tasks.Task<ExternalCampaignResource> CreateAsync(CreateExternalCampaignOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ExternalCampaignResource> CreateAsync(CreateExternalCampaignOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -104,7 +104,7 @@ namespace Twilio.Rest.Messaging.V1
                                                                                     ITwilioRestClient client = null)
         {
         var options = new CreateExternalCampaignOptions(campaignId, messagingServiceSid){  CnpMigration = cnpMigration };
-            return await CreateAsync(options, client);
+            return await CreateAsync(options, client, cancellationToken);
         }
         #endif
     

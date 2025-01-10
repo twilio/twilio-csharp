@@ -83,11 +83,12 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Anonymize </returns>
         #if !NET35
-        public static async System.Threading.Tasks.Task<AnonymizeResource> UpdateAsync(UpdateAnonymizeOptions options,
-                                                                                                    ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AnonymizeResource> UpdateAsync(UpdateAnonymizeOptions options, 
+                                                                                                    ITwilioRestClient client = null,
+                                                                                                    CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -118,7 +119,7 @@ namespace Twilio.Rest.Video.V1.Room.Participant
                                                                                 ITwilioRestClient client = null)
         {
             var options = new UpdateAnonymizeOptions(pathRoomSid, pathSid){  };
-            return await UpdateAsync(options, client);
+            return await UpdateAsync(options, client, cancellationToken);
         }
         #endif
     

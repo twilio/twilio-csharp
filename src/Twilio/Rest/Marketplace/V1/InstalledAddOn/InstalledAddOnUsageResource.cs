@@ -134,10 +134,10 @@ namespace Twilio.Rest.Marketplace.V1.InstalledAddOn
         /// <param name="options"> Create InstalledAddOnUsage parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InstalledAddOnUsage </returns>
-        public static async System.Threading.Tasks.Task<InstalledAddOnUsageResource> CreateAsync(CreateInstalledAddOnUsageOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<InstalledAddOnUsageResource> CreateAsync(CreateInstalledAddOnUsageOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -168,7 +168,7 @@ namespace Twilio.Rest.Marketplace.V1.InstalledAddOn
                                                                                     ITwilioRestClient client = null)
         {
         var options = new CreateInstalledAddOnUsageOptions(pathInstalledAddOnSid, marketplaceV1InstalledAddOnInstalledAddOnUsage){  };
-            return await CreateAsync(options, client);
+            return await CreateAsync(options, client, cancellationToken);
         }
         #endif
     

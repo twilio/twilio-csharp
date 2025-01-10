@@ -67,10 +67,10 @@ namespace Twilio.Rest.Intelligence.V2
         /// <param name="options"> Fetch OperatorAttachments parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of OperatorAttachments </returns>
-        public static async System.Threading.Tasks.Task<OperatorAttachmentsResource> FetchAsync(FetchOperatorAttachmentsOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<OperatorAttachmentsResource> FetchAsync(FetchOperatorAttachmentsOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -91,10 +91,10 @@ namespace Twilio.Rest.Intelligence.V2
         /// <param name="pathServiceSid"> The unique SID identifier of the Service. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of OperatorAttachments </returns>
-        public static async System.Threading.Tasks.Task<OperatorAttachmentsResource> FetchAsync(string pathServiceSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<OperatorAttachmentsResource> FetchAsync(string pathServiceSid, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             var options = new FetchOperatorAttachmentsOptions(pathServiceSid){  };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
     

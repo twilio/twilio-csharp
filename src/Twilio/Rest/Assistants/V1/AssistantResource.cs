@@ -416,10 +416,10 @@ namespace Twilio.Rest.Assistants.V1
         /// <param name="options"> Create Assistant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Assistant </returns>
-        public static async System.Threading.Tasks.Task<AssistantResource> CreateAsync(CreateAssistantOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AssistantResource> CreateAsync(CreateAssistantOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -446,7 +446,7 @@ namespace Twilio.Rest.Assistants.V1
                                                                                     ITwilioRestClient client = null)
         {
         var options = new CreateAssistantOptions(assistantsV1ServiceCreateAssistantRequest){  };
-            return await CreateAsync(options, client);
+            return await CreateAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -487,11 +487,12 @@ namespace Twilio.Rest.Assistants.V1
         /// <param name="options"> Delete Assistant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Assistant </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteAssistantOptions options,
-                                                                        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteAssistantOptions options, 
+                                                                        ITwilioRestClient client = null,
+                                                                        CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client), cancellationToken);
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
@@ -511,10 +512,10 @@ namespace Twilio.Rest.Assistants.V1
         /// <param name="pathId">  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Assistant </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathId, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathId, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             var options = new DeleteAssistantOptions(pathId) ;
-            return await DeleteAsync(options, client);
+            return await DeleteAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -551,10 +552,10 @@ namespace Twilio.Rest.Assistants.V1
         /// <param name="options"> Fetch Assistant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Assistant </returns>
-        public static async System.Threading.Tasks.Task<AssistantResource> FetchAsync(FetchAssistantOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AssistantResource> FetchAsync(FetchAssistantOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -575,10 +576,10 @@ namespace Twilio.Rest.Assistants.V1
         /// <param name="pathId">  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Assistant </returns>
-        public static async System.Threading.Tasks.Task<AssistantResource> FetchAsync(string pathId, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AssistantResource> FetchAsync(string pathId, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             var options = new FetchAssistantOptions(pathId){  };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -613,10 +614,10 @@ namespace Twilio.Rest.Assistants.V1
         /// <param name="options"> Read Assistant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Assistant </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<AssistantResource>> ReadAsync(ReadAssistantOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<AssistantResource>> ReadAsync(ReadAssistantOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
 
             var page = Page<AssistantResource>.FromJson("assistants", response.Content);
             return new ResourceSet<AssistantResource>(page, options, client);
@@ -648,7 +649,7 @@ namespace Twilio.Rest.Assistants.V1
                                                                                             ITwilioRestClient client = null)
         {
             var options = new ReadAssistantOptions(){ PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
+            return await ReadAsync(options, client, cancellationToken);
         }
         #endif
 
@@ -736,11 +737,12 @@ namespace Twilio.Rest.Assistants.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Assistant </returns>
         #if !NET35
-        public static async System.Threading.Tasks.Task<AssistantResource> UpdateAsync(UpdateAssistantOptions options,
-                                                                                                    ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AssistantResource> UpdateAsync(UpdateAssistantOptions options, 
+                                                                                                    ITwilioRestClient client = null,
+                                                                                                    CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -767,7 +769,7 @@ namespace Twilio.Rest.Assistants.V1
                                                                                 ITwilioRestClient client = null)
         {
             var options = new UpdateAssistantOptions(pathId){  };
-            return await UpdateAsync(options, client);
+            return await UpdateAsync(options, client, cancellationToken);
         }
         #endif
     

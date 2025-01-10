@@ -66,10 +66,10 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="options"> Create InsightsQuestionnairesCategory parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InsightsQuestionnairesCategory </returns>
-        public static async System.Threading.Tasks.Task<InsightsQuestionnairesCategoryResource> CreateAsync(CreateInsightsQuestionnairesCategoryOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<InsightsQuestionnairesCategoryResource> CreateAsync(CreateInsightsQuestionnairesCategoryOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -100,7 +100,7 @@ namespace Twilio.Rest.FlexApi.V1
                                                                                     ITwilioRestClient client = null)
         {
         var options = new CreateInsightsQuestionnairesCategoryOptions(name){  Authorization = authorization };
-            return await CreateAsync(options, client);
+            return await CreateAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -141,11 +141,12 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="options"> Delete InsightsQuestionnairesCategory parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InsightsQuestionnairesCategory </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteInsightsQuestionnairesCategoryOptions options,
-                                                                        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteInsightsQuestionnairesCategoryOptions options, 
+                                                                        ITwilioRestClient client = null,
+                                                                        CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client), cancellationToken);
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
@@ -170,7 +171,7 @@ namespace Twilio.Rest.FlexApi.V1
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathCategorySid, string authorization = null, ITwilioRestClient client = null)
         {
             var options = new DeleteInsightsQuestionnairesCategoryOptions(pathCategorySid)  { Authorization = authorization };
-            return await DeleteAsync(options, client);
+            return await DeleteAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -205,10 +206,10 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="options"> Read InsightsQuestionnairesCategory parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InsightsQuestionnairesCategory </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<InsightsQuestionnairesCategoryResource>> ReadAsync(ReadInsightsQuestionnairesCategoryOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<InsightsQuestionnairesCategoryResource>> ReadAsync(ReadInsightsQuestionnairesCategoryOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
 
             var page = Page<InsightsQuestionnairesCategoryResource>.FromJson("categories", response.Content);
             return new ResourceSet<InsightsQuestionnairesCategoryResource>(page, options, client);
@@ -244,7 +245,7 @@ namespace Twilio.Rest.FlexApi.V1
                                                                                             ITwilioRestClient client = null)
         {
             var options = new ReadInsightsQuestionnairesCategoryOptions(){ Authorization = authorization, PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
+            return await ReadAsync(options, client, cancellationToken);
         }
         #endif
 
@@ -331,11 +332,12 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InsightsQuestionnairesCategory </returns>
         #if !NET35
-        public static async System.Threading.Tasks.Task<InsightsQuestionnairesCategoryResource> UpdateAsync(UpdateInsightsQuestionnairesCategoryOptions options,
-                                                                                                    ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<InsightsQuestionnairesCategoryResource> UpdateAsync(UpdateInsightsQuestionnairesCategoryOptions options, 
+                                                                                                    ITwilioRestClient client = null,
+                                                                                                    CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -370,7 +372,7 @@ namespace Twilio.Rest.FlexApi.V1
                                                                                 ITwilioRestClient client = null)
         {
             var options = new UpdateInsightsQuestionnairesCategoryOptions(pathCategorySid, name){ Authorization = authorization };
-            return await UpdateAsync(options, client);
+            return await UpdateAsync(options, client, cancellationToken);
         }
         #endif
     

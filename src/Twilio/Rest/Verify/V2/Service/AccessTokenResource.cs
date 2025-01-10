@@ -80,10 +80,10 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="options"> Create AccessToken parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AccessToken </returns>
-        public static async System.Threading.Tasks.Task<AccessTokenResource> CreateAsync(CreateAccessTokenOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AccessTokenResource> CreateAsync(CreateAccessTokenOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -126,7 +126,7 @@ namespace Twilio.Rest.Verify.V2.Service
                                                                                     ITwilioRestClient client = null)
         {
         var options = new CreateAccessTokenOptions(pathServiceSid, identity, factorType){  FactorFriendlyName = factorFriendlyName, Ttl = ttl };
-            return await CreateAsync(options, client);
+            return await CreateAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -165,10 +165,10 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="options"> Fetch AccessToken parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AccessToken </returns>
-        public static async System.Threading.Tasks.Task<AccessTokenResource> FetchAsync(FetchAccessTokenOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AccessTokenResource> FetchAsync(FetchAccessTokenOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -195,7 +195,7 @@ namespace Twilio.Rest.Verify.V2.Service
         public static async System.Threading.Tasks.Task<AccessTokenResource> FetchAsync(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
         {
             var options = new FetchAccessTokenOptions(pathServiceSid, pathSid){  };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
     

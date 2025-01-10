@@ -67,10 +67,10 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <param name="options"> Fetch UsAppToPersonUsecase parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of UsAppToPersonUsecase </returns>
-        public static async System.Threading.Tasks.Task<UsAppToPersonUsecaseResource> FetchAsync(FetchUsAppToPersonUsecaseOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<UsAppToPersonUsecaseResource> FetchAsync(FetchUsAppToPersonUsecaseOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -97,7 +97,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         public static async System.Threading.Tasks.Task<UsAppToPersonUsecaseResource> FetchAsync(string pathMessagingServiceSid, string brandRegistrationSid = null, ITwilioRestClient client = null)
         {
             var options = new FetchUsAppToPersonUsecaseOptions(pathMessagingServiceSid){ BrandRegistrationSid = brandRegistrationSid };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
     

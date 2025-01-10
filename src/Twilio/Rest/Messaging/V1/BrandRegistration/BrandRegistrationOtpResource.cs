@@ -68,10 +68,10 @@ namespace Twilio.Rest.Messaging.V1.BrandRegistration
         /// <param name="options"> Create BrandRegistrationOtp parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of BrandRegistrationOtp </returns>
-        public static async System.Threading.Tasks.Task<BrandRegistrationOtpResource> CreateAsync(CreateBrandRegistrationOtpOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<BrandRegistrationOtpResource> CreateAsync(CreateBrandRegistrationOtpOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -98,7 +98,7 @@ namespace Twilio.Rest.Messaging.V1.BrandRegistration
                                                                                     ITwilioRestClient client = null)
         {
         var options = new CreateBrandRegistrationOtpOptions(pathBrandRegistrationSid){  };
-            return await CreateAsync(options, client);
+            return await CreateAsync(options, client, cancellationToken);
         }
         #endif
     

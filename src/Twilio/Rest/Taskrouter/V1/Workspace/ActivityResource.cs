@@ -68,10 +68,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="options"> Create Activity parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Activity </returns>
-        public static async System.Threading.Tasks.Task<ActivityResource> CreateAsync(CreateActivityOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ActivityResource> CreateAsync(CreateActivityOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -106,7 +106,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                                                                                     ITwilioRestClient client = null)
         {
         var options = new CreateActivityOptions(pathWorkspaceSid, friendlyName){  Available = available };
-            return await CreateAsync(options, client);
+            return await CreateAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -149,11 +149,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="options"> Delete Activity parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Activity </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteActivityOptions options,
-                                                                        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteActivityOptions options, 
+                                                                        ITwilioRestClient client = null,
+                                                                        CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client), cancellationToken);
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
@@ -178,7 +179,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathWorkspaceSid, string pathSid, ITwilioRestClient client = null)
         {
             var options = new DeleteActivityOptions(pathWorkspaceSid, pathSid) ;
-            return await DeleteAsync(options, client);
+            return await DeleteAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -217,10 +218,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="options"> Fetch Activity parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Activity </returns>
-        public static async System.Threading.Tasks.Task<ActivityResource> FetchAsync(FetchActivityOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ActivityResource> FetchAsync(FetchActivityOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -247,7 +248,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         public static async System.Threading.Tasks.Task<ActivityResource> FetchAsync(string pathWorkspaceSid, string pathSid, ITwilioRestClient client = null)
         {
             var options = new FetchActivityOptions(pathWorkspaceSid, pathSid){  };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -284,10 +285,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="options"> Read Activity parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Activity </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<ActivityResource>> ReadAsync(ReadActivityOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<ActivityResource>> ReadAsync(ReadActivityOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
 
             var page = Page<ActivityResource>.FromJson("activities", response.Content);
             return new ResourceSet<ActivityResource>(page, options, client);
@@ -331,7 +332,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                                                                                             ITwilioRestClient client = null)
         {
             var options = new ReadActivityOptions(pathWorkspaceSid){ FriendlyName = friendlyName, Available = available, PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
+            return await ReadAsync(options, client, cancellationToken);
         }
         #endif
 
@@ -420,11 +421,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Activity </returns>
         #if !NET35
-        public static async System.Threading.Tasks.Task<ActivityResource> UpdateAsync(UpdateActivityOptions options,
-                                                                                                    ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ActivityResource> UpdateAsync(UpdateActivityOptions options, 
+                                                                                                    ITwilioRestClient client = null,
+                                                                                                    CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -459,7 +461,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                                                                                 ITwilioRestClient client = null)
         {
             var options = new UpdateActivityOptions(pathWorkspaceSid, pathSid){ FriendlyName = friendlyName };
-            return await UpdateAsync(options, client);
+            return await UpdateAsync(options, client, cancellationToken);
         }
         #endif
     

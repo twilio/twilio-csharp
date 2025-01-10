@@ -67,10 +67,10 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="options"> Fetch LinkshorteningMessagingServiceDomainAssociation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of LinkshorteningMessagingServiceDomainAssociation </returns>
-        public static async System.Threading.Tasks.Task<LinkshorteningMessagingServiceDomainAssociationResource> FetchAsync(FetchLinkshorteningMessagingServiceDomainAssociationOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<LinkshorteningMessagingServiceDomainAssociationResource> FetchAsync(FetchLinkshorteningMessagingServiceDomainAssociationOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -91,10 +91,10 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="pathMessagingServiceSid"> Unique string used to identify the Messaging service that this domain should be associated with. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of LinkshorteningMessagingServiceDomainAssociation </returns>
-        public static async System.Threading.Tasks.Task<LinkshorteningMessagingServiceDomainAssociationResource> FetchAsync(string pathMessagingServiceSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<LinkshorteningMessagingServiceDomainAssociationResource> FetchAsync(string pathMessagingServiceSid, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             var options = new FetchLinkshorteningMessagingServiceDomainAssociationOptions(pathMessagingServiceSid){  };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
     

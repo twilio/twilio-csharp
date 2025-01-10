@@ -65,10 +65,10 @@ namespace Twilio.Rest.PreviewIam.V1
         /// <param name="options"> Fetch Authorize parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Authorize </returns>
-        public static async System.Threading.Tasks.Task<AuthorizeResource> FetchAsync(FetchAuthorizeOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AuthorizeResource> FetchAsync(FetchAuthorizeOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetNoAuthRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -104,7 +104,7 @@ namespace Twilio.Rest.PreviewIam.V1
         public static async System.Threading.Tasks.Task<AuthorizeResource> FetchAsync(string responseType = null, string clientId = null, string redirectUri = null, string scope = null, string state = null, ITwilioRestClient client = null)
         {
             var options = new FetchAuthorizeOptions(){ ResponseType = responseType,ClientId = clientId,RedirectUri = redirectUri,Scope = scope,State = state };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
     

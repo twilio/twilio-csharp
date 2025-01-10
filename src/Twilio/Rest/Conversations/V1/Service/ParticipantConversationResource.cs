@@ -81,10 +81,10 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// <param name="options"> Read ParticipantConversation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ParticipantConversation </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<ParticipantConversationResource>> ReadAsync(ReadParticipantConversationOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<ParticipantConversationResource>> ReadAsync(ReadParticipantConversationOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
 
             var page = Page<ParticipantConversationResource>.FromJson("conversations", response.Content);
             return new ResourceSet<ParticipantConversationResource>(page, options, client);
@@ -128,7 +128,7 @@ namespace Twilio.Rest.Conversations.V1.Service
                                                                                             ITwilioRestClient client = null)
         {
             var options = new ReadParticipantConversationOptions(pathChatServiceSid){ Identity = identity, Address = address, PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
+            return await ReadAsync(options, client, cancellationToken);
         }
         #endif
 

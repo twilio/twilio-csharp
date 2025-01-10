@@ -81,10 +81,10 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
         /// <param name="options"> Create Evaluation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Evaluation </returns>
-        public static async System.Threading.Tasks.Task<EvaluationResource> CreateAsync(CreateEvaluationOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<EvaluationResource> CreateAsync(CreateEvaluationOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -111,7 +111,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
                                                                                     ITwilioRestClient client = null)
         {
         var options = new CreateEvaluationOptions(pathBundleSid){  };
-            return await CreateAsync(options, client);
+            return await CreateAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -150,10 +150,10 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
         /// <param name="options"> Fetch Evaluation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Evaluation </returns>
-        public static async System.Threading.Tasks.Task<EvaluationResource> FetchAsync(FetchEvaluationOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<EvaluationResource> FetchAsync(FetchEvaluationOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -180,7 +180,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
         public static async System.Threading.Tasks.Task<EvaluationResource> FetchAsync(string pathBundleSid, string pathSid, ITwilioRestClient client = null)
         {
             var options = new FetchEvaluationOptions(pathBundleSid, pathSid){  };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -217,10 +217,10 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
         /// <param name="options"> Read Evaluation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Evaluation </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<EvaluationResource>> ReadAsync(ReadEvaluationOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<EvaluationResource>> ReadAsync(ReadEvaluationOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
 
             var page = Page<EvaluationResource>.FromJson("results", response.Content);
             return new ResourceSet<EvaluationResource>(page, options, client);
@@ -256,7 +256,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
                                                                                             ITwilioRestClient client = null)
         {
             var options = new ReadEvaluationOptions(pathBundleSid){ PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
+            return await ReadAsync(options, client, cancellationToken);
         }
         #endif
 

@@ -162,10 +162,10 @@ namespace Twilio.Rest.Insights.V1.Conference
         /// <param name="options"> Fetch ConferenceParticipant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ConferenceParticipant </returns>
-        public static async System.Threading.Tasks.Task<ConferenceParticipantResource> FetchAsync(FetchConferenceParticipantOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ConferenceParticipantResource> FetchAsync(FetchConferenceParticipantOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -198,7 +198,7 @@ namespace Twilio.Rest.Insights.V1.Conference
         public static async System.Threading.Tasks.Task<ConferenceParticipantResource> FetchAsync(string pathConferenceSid, string pathParticipantSid, string events = null, string metrics = null, ITwilioRestClient client = null)
         {
             var options = new FetchConferenceParticipantOptions(pathConferenceSid, pathParticipantSid){ Events = events,Metrics = metrics };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -235,10 +235,10 @@ namespace Twilio.Rest.Insights.V1.Conference
         /// <param name="options"> Read ConferenceParticipant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ConferenceParticipant </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<ConferenceParticipantResource>> ReadAsync(ReadConferenceParticipantOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<ConferenceParticipantResource>> ReadAsync(ReadConferenceParticipantOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
 
             var page = Page<ConferenceParticipantResource>.FromJson("participants", response.Content);
             return new ResourceSet<ConferenceParticipantResource>(page, options, client);
@@ -286,7 +286,7 @@ namespace Twilio.Rest.Insights.V1.Conference
                                                                                             ITwilioRestClient client = null)
         {
             var options = new ReadConferenceParticipantOptions(pathConferenceSid){ ParticipantSid = participantSid, Label = label, Events = events, PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
+            return await ReadAsync(options, client, cancellationToken);
         }
         #endif
 

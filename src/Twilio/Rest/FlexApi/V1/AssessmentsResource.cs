@@ -66,10 +66,10 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="options"> Create Assessments parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Assessments </returns>
-        public static async System.Threading.Tasks.Task<AssessmentsResource> CreateAsync(CreateAssessmentsOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AssessmentsResource> CreateAsync(CreateAssessmentsOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -136,7 +136,7 @@ namespace Twilio.Rest.FlexApi.V1
                                                                                     ITwilioRestClient client = null)
         {
         var options = new CreateAssessmentsOptions(categorySid, categoryName, segmentId, agentId, offset, metricId, metricName, answerText, answerId, questionnaireSid){  Authorization = authorization };
-            return await CreateAsync(options, client);
+            return await CreateAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -171,10 +171,10 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="options"> Read Assessments parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Assessments </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<AssessmentsResource>> ReadAsync(ReadAssessmentsOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<AssessmentsResource>> ReadAsync(ReadAssessmentsOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
 
             var page = Page<AssessmentsResource>.FromJson("assessments", response.Content);
             return new ResourceSet<AssessmentsResource>(page, options, client);
@@ -214,7 +214,7 @@ namespace Twilio.Rest.FlexApi.V1
                                                                                             ITwilioRestClient client = null)
         {
             var options = new ReadAssessmentsOptions(){ Authorization = authorization, SegmentId = segmentId, PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
+            return await ReadAsync(options, client, cancellationToken);
         }
         #endif
 
@@ -301,11 +301,12 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Assessments </returns>
         #if !NET35
-        public static async System.Threading.Tasks.Task<AssessmentsResource> UpdateAsync(UpdateAssessmentsOptions options,
-                                                                                                    ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AssessmentsResource> UpdateAsync(UpdateAssessmentsOptions options, 
+                                                                                                    ITwilioRestClient client = null,
+                                                                                                    CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -348,7 +349,7 @@ namespace Twilio.Rest.FlexApi.V1
                                                                                 ITwilioRestClient client = null)
         {
             var options = new UpdateAssessmentsOptions(pathAssessmentSid, offset, answerText, answerId){ Authorization = authorization };
-            return await UpdateAsync(options, client);
+            return await UpdateAsync(options, client, cancellationToken);
         }
         #endif
     

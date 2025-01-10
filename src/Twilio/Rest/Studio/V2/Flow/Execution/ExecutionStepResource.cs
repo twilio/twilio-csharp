@@ -71,10 +71,10 @@ namespace Twilio.Rest.Studio.V2.Flow.Execution
         /// <param name="options"> Fetch ExecutionStep parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ExecutionStep </returns>
-        public static async System.Threading.Tasks.Task<ExecutionStepResource> FetchAsync(FetchExecutionStepOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ExecutionStepResource> FetchAsync(FetchExecutionStepOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -104,7 +104,7 @@ namespace Twilio.Rest.Studio.V2.Flow.Execution
         public static async System.Threading.Tasks.Task<ExecutionStepResource> FetchAsync(string pathFlowSid, string pathExecutionSid, string pathSid, ITwilioRestClient client = null)
         {
             var options = new FetchExecutionStepOptions(pathFlowSid, pathExecutionSid, pathSid){  };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -143,10 +143,10 @@ namespace Twilio.Rest.Studio.V2.Flow.Execution
         /// <param name="options"> Read ExecutionStep parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ExecutionStep </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<ExecutionStepResource>> ReadAsync(ReadExecutionStepOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<ExecutionStepResource>> ReadAsync(ReadExecutionStepOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
 
             var page = Page<ExecutionStepResource>.FromJson("steps", response.Content);
             return new ResourceSet<ExecutionStepResource>(page, options, client);
@@ -186,7 +186,7 @@ namespace Twilio.Rest.Studio.V2.Flow.Execution
                                                                                             ITwilioRestClient client = null)
         {
             var options = new ReadExecutionStepOptions(pathFlowSid, pathExecutionSid){ PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
+            return await ReadAsync(options, client, cancellationToken);
         }
         #endif
 

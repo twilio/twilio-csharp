@@ -87,11 +87,12 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// <param name="options"> Delete Binding parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Binding </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteBindingOptions options,
-                                                                        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteBindingOptions options, 
+                                                                        ITwilioRestClient client = null,
+                                                                        CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client), cancellationToken);
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
@@ -116,7 +117,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathChatServiceSid, string pathSid, ITwilioRestClient client = null)
         {
             var options = new DeleteBindingOptions(pathChatServiceSid, pathSid) ;
-            return await DeleteAsync(options, client);
+            return await DeleteAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -155,10 +156,10 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// <param name="options"> Fetch Binding parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Binding </returns>
-        public static async System.Threading.Tasks.Task<BindingResource> FetchAsync(FetchBindingOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<BindingResource> FetchAsync(FetchBindingOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -185,7 +186,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         public static async System.Threading.Tasks.Task<BindingResource> FetchAsync(string pathChatServiceSid, string pathSid, ITwilioRestClient client = null)
         {
             var options = new FetchBindingOptions(pathChatServiceSid, pathSid){  };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -222,10 +223,10 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// <param name="options"> Read Binding parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Binding </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<BindingResource>> ReadAsync(ReadBindingOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<BindingResource>> ReadAsync(ReadBindingOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
 
             var page = Page<BindingResource>.FromJson("bindings", response.Content);
             return new ResourceSet<BindingResource>(page, options, client);
@@ -269,7 +270,7 @@ namespace Twilio.Rest.Conversations.V1.Service
                                                                                             ITwilioRestClient client = null)
         {
             var options = new ReadBindingOptions(pathChatServiceSid){ BindingType = bindingType, Identity = identity, PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
+            return await ReadAsync(options, client, cancellationToken);
         }
         #endif
 

@@ -73,11 +73,12 @@ namespace Twilio.Rest.Numbers.V1
         /// <param name="options"> Delete PortingPortInPhoneNumber parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PortingPortInPhoneNumber </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeletePortingPortInPhoneNumberOptions options,
-                                                                        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeletePortingPortInPhoneNumberOptions options, 
+                                                                        ITwilioRestClient client = null,
+                                                                        CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client), cancellationToken);
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
@@ -102,7 +103,7 @@ namespace Twilio.Rest.Numbers.V1
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathPortInRequestSid, string pathPhoneNumberSid, ITwilioRestClient client = null)
         {
             var options = new DeletePortingPortInPhoneNumberOptions(pathPortInRequestSid, pathPhoneNumberSid) ;
-            return await DeleteAsync(options, client);
+            return await DeleteAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -141,10 +142,10 @@ namespace Twilio.Rest.Numbers.V1
         /// <param name="options"> Fetch PortingPortInPhoneNumber parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PortingPortInPhoneNumber </returns>
-        public static async System.Threading.Tasks.Task<PortingPortInPhoneNumberResource> FetchAsync(FetchPortingPortInPhoneNumberOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<PortingPortInPhoneNumberResource> FetchAsync(FetchPortingPortInPhoneNumberOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -171,7 +172,7 @@ namespace Twilio.Rest.Numbers.V1
         public static async System.Threading.Tasks.Task<PortingPortInPhoneNumberResource> FetchAsync(string pathPortInRequestSid, string pathPhoneNumberSid, ITwilioRestClient client = null)
         {
             var options = new FetchPortingPortInPhoneNumberOptions(pathPortInRequestSid, pathPhoneNumberSid){  };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
     

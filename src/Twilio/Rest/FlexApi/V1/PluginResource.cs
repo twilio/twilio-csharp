@@ -66,10 +66,10 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="options"> Create Plugin parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Plugin </returns>
-        public static async System.Threading.Tasks.Task<PluginResource> CreateAsync(CreatePluginOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<PluginResource> CreateAsync(CreatePluginOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -108,7 +108,7 @@ namespace Twilio.Rest.FlexApi.V1
                                                                                     ITwilioRestClient client = null)
         {
         var options = new CreatePluginOptions(uniqueName){  FriendlyName = friendlyName, Description = description, FlexMetadata = flexMetadata };
-            return await CreateAsync(options, client);
+            return await CreateAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -145,10 +145,10 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="options"> Fetch Plugin parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Plugin </returns>
-        public static async System.Threading.Tasks.Task<PluginResource> FetchAsync(FetchPluginOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<PluginResource> FetchAsync(FetchPluginOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -175,7 +175,7 @@ namespace Twilio.Rest.FlexApi.V1
         public static async System.Threading.Tasks.Task<PluginResource> FetchAsync(string pathSid, string flexMetadata = null, ITwilioRestClient client = null)
         {
             var options = new FetchPluginOptions(pathSid){ FlexMetadata = flexMetadata };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -210,10 +210,10 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="options"> Read Plugin parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Plugin </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<PluginResource>> ReadAsync(ReadPluginOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<PluginResource>> ReadAsync(ReadPluginOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
 
             var page = Page<PluginResource>.FromJson("plugins", response.Content);
             return new ResourceSet<PluginResource>(page, options, client);
@@ -249,7 +249,7 @@ namespace Twilio.Rest.FlexApi.V1
                                                                                             ITwilioRestClient client = null)
         {
             var options = new ReadPluginOptions(){ FlexMetadata = flexMetadata, PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
+            return await ReadAsync(options, client, cancellationToken);
         }
         #endif
 
@@ -336,11 +336,12 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Plugin </returns>
         #if !NET35
-        public static async System.Threading.Tasks.Task<PluginResource> UpdateAsync(UpdatePluginOptions options,
-                                                                                                    ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<PluginResource> UpdateAsync(UpdatePluginOptions options, 
+                                                                                                    ITwilioRestClient client = null,
+                                                                                                    CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -379,7 +380,7 @@ namespace Twilio.Rest.FlexApi.V1
                                                                                 ITwilioRestClient client = null)
         {
             var options = new UpdatePluginOptions(pathSid){ FriendlyName = friendlyName, Description = description, FlexMetadata = flexMetadata };
-            return await UpdateAsync(options, client);
+            return await UpdateAsync(options, client, cancellationToken);
         }
         #endif
     

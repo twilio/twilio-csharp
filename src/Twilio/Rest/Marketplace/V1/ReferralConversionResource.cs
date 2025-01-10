@@ -89,10 +89,10 @@ namespace Twilio.Rest.Marketplace.V1
         /// <param name="options"> Create ReferralConversion parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ReferralConversion </returns>
-        public static async System.Threading.Tasks.Task<ReferralConversionResource> CreateAsync(CreateReferralConversionOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ReferralConversionResource> CreateAsync(CreateReferralConversionOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -119,7 +119,7 @@ namespace Twilio.Rest.Marketplace.V1
                                                                                     ITwilioRestClient client = null)
         {
         var options = new CreateReferralConversionOptions(createReferralConversionRequest){  };
-            return await CreateAsync(options, client);
+            return await CreateAsync(options, client, cancellationToken);
         }
         #endif
     

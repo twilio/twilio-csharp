@@ -65,10 +65,10 @@ namespace Twilio.Rest.Verify.V2
         /// <param name="options"> Read Template parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Template </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<TemplateResource>> ReadAsync(ReadTemplateOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<TemplateResource>> ReadAsync(ReadTemplateOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
 
             var page = Page<TemplateResource>.FromJson("templates", response.Content);
             return new ResourceSet<TemplateResource>(page, options, client);
@@ -104,7 +104,7 @@ namespace Twilio.Rest.Verify.V2
                                                                                             ITwilioRestClient client = null)
         {
             var options = new ReadTemplateOptions(){ FriendlyName = friendlyName, PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
+            return await ReadAsync(options, client, cancellationToken);
         }
         #endif
 

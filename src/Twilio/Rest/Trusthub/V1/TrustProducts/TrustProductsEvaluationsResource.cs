@@ -81,10 +81,10 @@ namespace Twilio.Rest.Trusthub.V1.TrustProducts
         /// <param name="options"> Create TrustProductsEvaluations parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TrustProductsEvaluations </returns>
-        public static async System.Threading.Tasks.Task<TrustProductsEvaluationsResource> CreateAsync(CreateTrustProductsEvaluationsOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<TrustProductsEvaluationsResource> CreateAsync(CreateTrustProductsEvaluationsOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -115,7 +115,7 @@ namespace Twilio.Rest.Trusthub.V1.TrustProducts
                                                                                     ITwilioRestClient client = null)
         {
         var options = new CreateTrustProductsEvaluationsOptions(pathTrustProductSid, policySid){  };
-            return await CreateAsync(options, client);
+            return await CreateAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -154,10 +154,10 @@ namespace Twilio.Rest.Trusthub.V1.TrustProducts
         /// <param name="options"> Fetch TrustProductsEvaluations parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TrustProductsEvaluations </returns>
-        public static async System.Threading.Tasks.Task<TrustProductsEvaluationsResource> FetchAsync(FetchTrustProductsEvaluationsOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<TrustProductsEvaluationsResource> FetchAsync(FetchTrustProductsEvaluationsOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -184,7 +184,7 @@ namespace Twilio.Rest.Trusthub.V1.TrustProducts
         public static async System.Threading.Tasks.Task<TrustProductsEvaluationsResource> FetchAsync(string pathTrustProductSid, string pathSid, ITwilioRestClient client = null)
         {
             var options = new FetchTrustProductsEvaluationsOptions(pathTrustProductSid, pathSid){  };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -221,10 +221,10 @@ namespace Twilio.Rest.Trusthub.V1.TrustProducts
         /// <param name="options"> Read TrustProductsEvaluations parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TrustProductsEvaluations </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<TrustProductsEvaluationsResource>> ReadAsync(ReadTrustProductsEvaluationsOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<TrustProductsEvaluationsResource>> ReadAsync(ReadTrustProductsEvaluationsOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
 
             var page = Page<TrustProductsEvaluationsResource>.FromJson("results", response.Content);
             return new ResourceSet<TrustProductsEvaluationsResource>(page, options, client);
@@ -260,7 +260,7 @@ namespace Twilio.Rest.Trusthub.V1.TrustProducts
                                                                                             ITwilioRestClient client = null)
         {
             var options = new ReadTrustProductsEvaluationsOptions(pathTrustProductSid){ PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
+            return await ReadAsync(options, client, cancellationToken);
         }
         #endif
 

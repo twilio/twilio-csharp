@@ -99,10 +99,10 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// <param name="options"> Create Build parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Build </returns>
-        public static async System.Threading.Tasks.Task<BuildResource> CreateAsync(CreateBuildOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<BuildResource> CreateAsync(CreateBuildOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -145,7 +145,7 @@ namespace Twilio.Rest.Serverless.V1.Service
                                                                                     ITwilioRestClient client = null)
         {
         var options = new CreateBuildOptions(pathServiceSid){  AssetVersions = assetVersions, FunctionVersions = functionVersions, Dependencies = dependencies, Runtime = runtime };
-            return await CreateAsync(options, client);
+            return await CreateAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -188,11 +188,12 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// <param name="options"> Delete Build parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Build </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteBuildOptions options,
-                                                                        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteBuildOptions options, 
+                                                                        ITwilioRestClient client = null,
+                                                                        CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client), cancellationToken);
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
@@ -217,7 +218,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
         {
             var options = new DeleteBuildOptions(pathServiceSid, pathSid) ;
-            return await DeleteAsync(options, client);
+            return await DeleteAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -256,10 +257,10 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// <param name="options"> Fetch Build parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Build </returns>
-        public static async System.Threading.Tasks.Task<BuildResource> FetchAsync(FetchBuildOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<BuildResource> FetchAsync(FetchBuildOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -286,7 +287,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         public static async System.Threading.Tasks.Task<BuildResource> FetchAsync(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
         {
             var options = new FetchBuildOptions(pathServiceSid, pathSid){  };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -323,10 +324,10 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// <param name="options"> Read Build parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Build </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<BuildResource>> ReadAsync(ReadBuildOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<BuildResource>> ReadAsync(ReadBuildOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
 
             var page = Page<BuildResource>.FromJson("builds", response.Content);
             return new ResourceSet<BuildResource>(page, options, client);
@@ -362,7 +363,7 @@ namespace Twilio.Rest.Serverless.V1.Service
                                                                                             ITwilioRestClient client = null)
         {
             var options = new ReadBuildOptions(pathServiceSid){ PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
+            return await ReadAsync(options, client, cancellationToken);
         }
         #endif
 

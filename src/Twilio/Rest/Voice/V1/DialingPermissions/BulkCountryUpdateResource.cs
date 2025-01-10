@@ -66,10 +66,10 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
         /// <param name="options"> Create BulkCountryUpdate parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of BulkCountryUpdate </returns>
-        public static async System.Threading.Tasks.Task<BulkCountryUpdateResource> CreateAsync(CreateBulkCountryUpdateOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<BulkCountryUpdateResource> CreateAsync(CreateBulkCountryUpdateOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -96,7 +96,7 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
                                                                                     ITwilioRestClient client = null)
         {
         var options = new CreateBulkCountryUpdateOptions(updateRequest){  };
-            return await CreateAsync(options, client);
+            return await CreateAsync(options, client, cancellationToken);
         }
         #endif
     

@@ -67,10 +67,10 @@ namespace Twilio.Rest.Numbers.V1
         /// <param name="options"> Create Eligibility parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Eligibility </returns>
-        public static async System.Threading.Tasks.Task<EligibilityResource> CreateAsync(CreateEligibilityOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<EligibilityResource> CreateAsync(CreateEligibilityOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -90,10 +90,11 @@ namespace Twilio.Rest.Numbers.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Eligibility </returns>
         public static async System.Threading.Tasks.Task<EligibilityResource> CreateAsync(
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null,
+                                                                                    CancellationToken cancellationToken = default)
         {
         var options = new CreateEligibilityOptions(){  };
-            return await CreateAsync(options, client);
+            return await CreateAsync(options, client, cancellationToken);
         }
         #endif
     

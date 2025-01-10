@@ -98,10 +98,10 @@ namespace Twilio.Rest.Content.V1.Content
         /// <param name="options"> Create ApprovalCreate parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ApprovalCreate </returns>
-        public static async System.Threading.Tasks.Task<ApprovalCreateResource> CreateAsync(CreateApprovalCreateOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ApprovalCreateResource> CreateAsync(CreateApprovalCreateOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -132,7 +132,7 @@ namespace Twilio.Rest.Content.V1.Content
                                                                                     ITwilioRestClient client = null)
         {
         var options = new CreateApprovalCreateOptions(pathContentSid, contentApprovalRequest){  };
-            return await CreateAsync(options, client);
+            return await CreateAsync(options, client, cancellationToken);
         }
         #endif
     

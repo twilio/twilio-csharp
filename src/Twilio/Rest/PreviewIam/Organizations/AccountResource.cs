@@ -84,10 +84,10 @@ namespace Twilio.Rest.PreviewIam.Organizations
         /// <param name="options"> Fetch Account parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Account </returns>
-        public static async System.Threading.Tasks.Task<AccountResource> FetchAsync(FetchAccountOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AccountResource> FetchAsync(FetchAccountOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -114,7 +114,7 @@ namespace Twilio.Rest.PreviewIam.Organizations
         public static async System.Threading.Tasks.Task<AccountResource> FetchAsync(string pathOrganizationSid, string pathAccountSid, ITwilioRestClient client = null)
         {
             var options = new FetchAccountOptions(pathOrganizationSid, pathAccountSid){  };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -151,10 +151,10 @@ namespace Twilio.Rest.PreviewIam.Organizations
         /// <param name="options"> Read Account parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Account </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<AccountResource>> ReadAsync(ReadAccountOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<AccountResource>> ReadAsync(ReadAccountOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
 
             var page = Page<AccountResource>.FromJson("content", response.Content);
             return new ResourceSet<AccountResource>(page, options, client);
@@ -190,7 +190,7 @@ namespace Twilio.Rest.PreviewIam.Organizations
                                                                                             ITwilioRestClient client = null)
         {
             var options = new ReadAccountOptions(pathOrganizationSid){ PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
+            return await ReadAsync(options, client, cancellationToken);
         }
         #endif
 

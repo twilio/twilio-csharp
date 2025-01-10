@@ -71,11 +71,12 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="options"> Delete DomainCerts parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of DomainCerts </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteDomainCertsOptions options,
-                                                                        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteDomainCertsOptions options, 
+                                                                        ITwilioRestClient client = null,
+                                                                        CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client), cancellationToken);
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
@@ -95,10 +96,10 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="pathDomainSid"> Unique string used to identify the domain that this certificate should be associated with. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of DomainCerts </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathDomainSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathDomainSid, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             var options = new DeleteDomainCertsOptions(pathDomainSid) ;
-            return await DeleteAsync(options, client);
+            return await DeleteAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -135,10 +136,10 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="options"> Fetch DomainCerts parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of DomainCerts </returns>
-        public static async System.Threading.Tasks.Task<DomainCertsResource> FetchAsync(FetchDomainCertsOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<DomainCertsResource> FetchAsync(FetchDomainCertsOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -159,10 +160,10 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="pathDomainSid"> Unique string used to identify the domain that this certificate should be associated with. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of DomainCerts </returns>
-        public static async System.Threading.Tasks.Task<DomainCertsResource> FetchAsync(string pathDomainSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<DomainCertsResource> FetchAsync(string pathDomainSid, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             var options = new FetchDomainCertsOptions(pathDomainSid){  };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -200,11 +201,12 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of DomainCerts </returns>
         #if !NET35
-        public static async System.Threading.Tasks.Task<DomainCertsResource> UpdateAsync(UpdateDomainCertsOptions options,
-                                                                                                    ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<DomainCertsResource> UpdateAsync(UpdateDomainCertsOptions options, 
+                                                                                                    ITwilioRestClient client = null,
+                                                                                                    CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -235,7 +237,7 @@ namespace Twilio.Rest.Messaging.V1
                                                                                 ITwilioRestClient client = null)
         {
             var options = new UpdateDomainCertsOptions(pathDomainSid, tlsCert){  };
-            return await UpdateAsync(options, client);
+            return await UpdateAsync(options, client, cancellationToken);
         }
         #endif
     

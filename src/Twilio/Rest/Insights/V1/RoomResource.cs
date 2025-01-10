@@ -193,10 +193,10 @@ namespace Twilio.Rest.Insights.V1
         /// <param name="options"> Fetch Room parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Room </returns>
-        public static async System.Threading.Tasks.Task<RoomResource> FetchAsync(FetchRoomOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<RoomResource> FetchAsync(FetchRoomOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -217,10 +217,10 @@ namespace Twilio.Rest.Insights.V1
         /// <param name="pathRoomSid"> The SID of the Room resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Room </returns>
-        public static async System.Threading.Tasks.Task<RoomResource> FetchAsync(string pathRoomSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<RoomResource> FetchAsync(string pathRoomSid, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             var options = new FetchRoomOptions(pathRoomSid){  };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -255,10 +255,10 @@ namespace Twilio.Rest.Insights.V1
         /// <param name="options"> Read Room parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Room </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<RoomResource>> ReadAsync(ReadRoomOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<RoomResource>> ReadAsync(ReadRoomOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
 
             var page = Page<RoomResource>.FromJson("rooms", response.Content);
             return new ResourceSet<RoomResource>(page, options, client);
@@ -310,7 +310,7 @@ namespace Twilio.Rest.Insights.V1
                                                                                             ITwilioRestClient client = null)
         {
             var options = new ReadRoomOptions(){ RoomType = roomType, Codec = codec, RoomName = roomName, CreatedAfter = createdAfter, CreatedBefore = createdBefore, PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
+            return await ReadAsync(options, client, cancellationToken);
         }
         #endif
 

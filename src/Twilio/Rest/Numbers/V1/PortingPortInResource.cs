@@ -67,10 +67,10 @@ namespace Twilio.Rest.Numbers.V1
         /// <param name="options"> Create PortingPortIn parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PortingPortIn </returns>
-        public static async System.Threading.Tasks.Task<PortingPortInResource> CreateAsync(CreatePortingPortInOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<PortingPortInResource> CreateAsync(CreatePortingPortInOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -90,10 +90,11 @@ namespace Twilio.Rest.Numbers.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PortingPortIn </returns>
         public static async System.Threading.Tasks.Task<PortingPortInResource> CreateAsync(
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null,
+                                                                                    CancellationToken cancellationToken = default)
         {
         var options = new CreatePortingPortInOptions(){  };
-            return await CreateAsync(options, client);
+            return await CreateAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -134,11 +135,12 @@ namespace Twilio.Rest.Numbers.V1
         /// <param name="options"> Delete PortingPortIn parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PortingPortIn </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeletePortingPortInOptions options,
-                                                                        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeletePortingPortInOptions options, 
+                                                                        ITwilioRestClient client = null,
+                                                                        CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client), cancellationToken);
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
@@ -158,10 +160,10 @@ namespace Twilio.Rest.Numbers.V1
         /// <param name="pathPortInRequestSid"> The SID of the Port In request. This is a unique identifier of the port in request. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PortingPortIn </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathPortInRequestSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathPortInRequestSid, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             var options = new DeletePortingPortInOptions(pathPortInRequestSid) ;
-            return await DeleteAsync(options, client);
+            return await DeleteAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -198,10 +200,10 @@ namespace Twilio.Rest.Numbers.V1
         /// <param name="options"> Fetch PortingPortIn parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PortingPortIn </returns>
-        public static async System.Threading.Tasks.Task<PortingPortInResource> FetchAsync(FetchPortingPortInOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<PortingPortInResource> FetchAsync(FetchPortingPortInOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -222,10 +224,10 @@ namespace Twilio.Rest.Numbers.V1
         /// <param name="pathPortInRequestSid"> The SID of the Port In request. This is a unique identifier of the port in request. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PortingPortIn </returns>
-        public static async System.Threading.Tasks.Task<PortingPortInResource> FetchAsync(string pathPortInRequestSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<PortingPortInResource> FetchAsync(string pathPortInRequestSid, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             var options = new FetchPortingPortInOptions(pathPortInRequestSid){  };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
     

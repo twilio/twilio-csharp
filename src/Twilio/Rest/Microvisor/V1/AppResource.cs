@@ -71,11 +71,12 @@ namespace Twilio.Rest.Microvisor.V1
         /// <param name="options"> Delete App parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of App </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteAppOptions options,
-                                                                        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteAppOptions options, 
+                                                                        ITwilioRestClient client = null,
+                                                                        CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client), cancellationToken);
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
@@ -95,10 +96,10 @@ namespace Twilio.Rest.Microvisor.V1
         /// <param name="pathSid"> A 34-character string that uniquely identifies this App. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of App </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             var options = new DeleteAppOptions(pathSid) ;
-            return await DeleteAsync(options, client);
+            return await DeleteAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -135,10 +136,10 @@ namespace Twilio.Rest.Microvisor.V1
         /// <param name="options"> Fetch App parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of App </returns>
-        public static async System.Threading.Tasks.Task<AppResource> FetchAsync(FetchAppOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AppResource> FetchAsync(FetchAppOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -159,10 +160,10 @@ namespace Twilio.Rest.Microvisor.V1
         /// <param name="pathSid"> A 34-character string that uniquely identifies this App. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of App </returns>
-        public static async System.Threading.Tasks.Task<AppResource> FetchAsync(string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AppResource> FetchAsync(string pathSid, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             var options = new FetchAppOptions(pathSid){  };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -197,10 +198,10 @@ namespace Twilio.Rest.Microvisor.V1
         /// <param name="options"> Read App parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of App </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<AppResource>> ReadAsync(ReadAppOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<AppResource>> ReadAsync(ReadAppOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
 
             var page = Page<AppResource>.FromJson("apps", response.Content);
             return new ResourceSet<AppResource>(page, options, client);
@@ -232,7 +233,7 @@ namespace Twilio.Rest.Microvisor.V1
                                                                                             ITwilioRestClient client = null)
         {
             var options = new ReadAppOptions(){ PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
+            return await ReadAsync(options, client, cancellationToken);
         }
         #endif
 
