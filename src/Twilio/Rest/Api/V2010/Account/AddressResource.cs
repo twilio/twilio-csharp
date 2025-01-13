@@ -102,7 +102,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                           bool? emergencyEnabled = null,
                                           bool? autoCorrectAddress = null,
                                           string streetSecondary = null,
-                                            ITwilioRestClient client = null, System.Threading.CancellationToken cancellationToken = default)
+                                          ITwilioRestClient client = null)
         {
             var options = new CreateAddressOptions(customerName, street, city, region, postalCode, isoCountry){  PathAccountSid = pathAccountSid, FriendlyName = friendlyName, EmergencyEnabled = emergencyEnabled, AutoCorrectAddress = autoCorrectAddress, StreetSecondary = streetSecondary };
             return Create(options, client);
