@@ -67,7 +67,7 @@ namespace Twilio.Rest.Trusthub.V1
         /// <param name="options"> Fetch EndUserType parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of EndUserType </returns>
-        public static async System.Threading.Tasks.Task<EndUserTypeResource> FetchAsync(FetchEndUserTypeOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<EndUserTypeResource> FetchAsync(FetchEndUserTypeOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
@@ -91,7 +91,7 @@ namespace Twilio.Rest.Trusthub.V1
         /// <param name="pathSid"> The unique string that identifies the End-User Type resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of EndUserType </returns>
-        public static async System.Threading.Tasks.Task<EndUserTypeResource> FetchAsync(string pathSid, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<EndUserTypeResource> FetchAsync(string pathSid, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchEndUserTypeOptions(pathSid){  };
             return await FetchAsync(options, client, cancellationToken);
@@ -129,7 +129,7 @@ namespace Twilio.Rest.Trusthub.V1
         /// <param name="options"> Read EndUserType parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of EndUserType </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<EndUserTypeResource>> ReadAsync(ReadEndUserTypeOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<ResourceSet<EndUserTypeResource>> ReadAsync(ReadEndUserTypeOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
@@ -161,7 +161,7 @@ namespace Twilio.Rest.Trusthub.V1
         public static async System.Threading.Tasks.Task<ResourceSet<EndUserTypeResource>> ReadAsync(
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadEndUserTypeOptions(){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client, cancellationToken);

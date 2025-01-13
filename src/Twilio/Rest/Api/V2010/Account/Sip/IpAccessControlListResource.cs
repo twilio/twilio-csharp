@@ -68,7 +68,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <param name="options"> Create IpAccessControlList parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IpAccessControlList </returns>
-        public static async System.Threading.Tasks.Task<IpAccessControlListResource> CreateAsync(CreateIpAccessControlListOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<IpAccessControlListResource> CreateAsync(CreateIpAccessControlListOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
@@ -99,7 +99,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         public static async System.Threading.Tasks.Task<IpAccessControlListResource> CreateAsync(
                                                                                   string friendlyName,
                                                                                   string pathAccountSid = null,
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateIpAccessControlListOptions(friendlyName){  PathAccountSid = pathAccountSid };
             return await CreateAsync(options, client, cancellationToken);
@@ -147,7 +147,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <returns> Task that resolves to A single instance of IpAccessControlList </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteIpAccessControlListOptions options, 
                                                                         ITwilioRestClient client = null,
-                                                                        CancellationToken cancellationToken = default)
+                                                                        System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client), cancellationToken);
@@ -172,7 +172,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <param name="pathAccountSid"> The unique id of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IpAccessControlList </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new DeleteIpAccessControlListOptions(pathSid)  { PathAccountSid = pathAccountSid };
             return await DeleteAsync(options, client, cancellationToken);
@@ -214,7 +214,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <param name="options"> Fetch IpAccessControlList parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IpAccessControlList </returns>
-        public static async System.Threading.Tasks.Task<IpAccessControlListResource> FetchAsync(FetchIpAccessControlListOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<IpAccessControlListResource> FetchAsync(FetchIpAccessControlListOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
@@ -241,7 +241,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <param name="pathAccountSid"> The unique id of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IpAccessControlList </returns>
-        public static async System.Threading.Tasks.Task<IpAccessControlListResource> FetchAsync(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<IpAccessControlListResource> FetchAsync(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchIpAccessControlListOptions(pathSid){ PathAccountSid = pathAccountSid };
             return await FetchAsync(options, client, cancellationToken);
@@ -281,7 +281,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <param name="options"> Read IpAccessControlList parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IpAccessControlList </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<IpAccessControlListResource>> ReadAsync(ReadIpAccessControlListOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<ResourceSet<IpAccessControlListResource>> ReadAsync(ReadIpAccessControlListOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
@@ -317,7 +317,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
                                                                                              string pathAccountSid = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadIpAccessControlListOptions(){ PathAccountSid = pathAccountSid, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client, cancellationToken);
@@ -411,7 +411,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         #if !NET35
         public static async System.Threading.Tasks.Task<IpAccessControlListResource> UpdateAsync(UpdateIpAccessControlListOptions options, 
                                                                                                     ITwilioRestClient client = null,
-                                                                                                    CancellationToken cancellationToken = default)
+                                                                                                    System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client), cancellationToken);
@@ -446,7 +446,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
                                                                               string pathSid,
                                                                               string friendlyName,
                                                                               string pathAccountSid = null,
-                                                                                ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new UpdateIpAccessControlListOptions(pathSid, friendlyName){ PathAccountSid = pathAccountSid };
             return await UpdateAsync(options, client, cancellationToken);

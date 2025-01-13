@@ -132,7 +132,7 @@ namespace Twilio.Rest.Video.V1.Room
         /// <returns> Task that resolves to A single instance of RoomRecording </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteRoomRecordingOptions options, 
                                                                         ITwilioRestClient client = null,
-                                                                        CancellationToken cancellationToken = default)
+                                                                        System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client), cancellationToken);
@@ -157,7 +157,7 @@ namespace Twilio.Rest.Video.V1.Room
         /// <param name="pathSid"> The SID of the RoomRecording resource to delete. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of RoomRecording </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathRoomSid, string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathRoomSid, string pathSid, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new DeleteRoomRecordingOptions(pathRoomSid, pathSid) ;
             return await DeleteAsync(options, client, cancellationToken);
@@ -199,7 +199,7 @@ namespace Twilio.Rest.Video.V1.Room
         /// <param name="options"> Fetch RoomRecording parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of RoomRecording </returns>
-        public static async System.Threading.Tasks.Task<RoomRecordingResource> FetchAsync(FetchRoomRecordingOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<RoomRecordingResource> FetchAsync(FetchRoomRecordingOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
@@ -226,7 +226,7 @@ namespace Twilio.Rest.Video.V1.Room
         /// <param name="pathSid"> The SID of the RoomRecording resource to fetch. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of RoomRecording </returns>
-        public static async System.Threading.Tasks.Task<RoomRecordingResource> FetchAsync(string pathRoomSid, string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<RoomRecordingResource> FetchAsync(string pathRoomSid, string pathSid, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchRoomRecordingOptions(pathRoomSid, pathSid){  };
             return await FetchAsync(options, client, cancellationToken);
@@ -266,7 +266,7 @@ namespace Twilio.Rest.Video.V1.Room
         /// <param name="options"> Read RoomRecording parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of RoomRecording </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<RoomRecordingResource>> ReadAsync(ReadRoomRecordingOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<ResourceSet<RoomRecordingResource>> ReadAsync(ReadRoomRecordingOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
@@ -318,7 +318,7 @@ namespace Twilio.Rest.Video.V1.Room
                                                                                              DateTime? dateCreatedBefore = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadRoomRecordingOptions(pathRoomSid){ Status = status, SourceSid = sourceSid, DateCreatedAfter = dateCreatedAfter, DateCreatedBefore = dateCreatedBefore, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client, cancellationToken);

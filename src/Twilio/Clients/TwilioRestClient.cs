@@ -169,7 +169,7 @@ namespace Twilio.Clients
         ///
         /// <param name="request">request to make</param>
         /// <returns>Task that resolves to the response of the request</returns>
-        public async Task<Response> RequestAsync(Request request,  CancellationToken cancellationToken = default)
+        public async Task<Response> RequestAsync(Request request,  System.Threading.CancellationToken cancellationToken = default)
         {
             if(_username != null && _password != null){
                 request.SetAuth(_username, _password);

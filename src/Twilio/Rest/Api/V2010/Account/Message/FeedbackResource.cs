@@ -83,7 +83,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         /// <param name="options"> Create Feedback parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Feedback </returns>
-        public static async System.Threading.Tasks.Task<FeedbackResource> CreateAsync(CreateFeedbackOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<FeedbackResource> CreateAsync(CreateFeedbackOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
@@ -118,7 +118,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
                                                                                   string pathMessageSid,
                                                                                   string pathAccountSid = null,
                                                                                   FeedbackResource.OutcomeEnum outcome = null,
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateFeedbackOptions(pathMessageSid){  PathAccountSid = pathAccountSid, Outcome = outcome };
             return await CreateAsync(options, client, cancellationToken);

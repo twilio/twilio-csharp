@@ -85,7 +85,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
         /// <param name="options"> Create ReplaceItems parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ReplaceItems </returns>
-        public static async System.Threading.Tasks.Task<ReplaceItemsResource> CreateAsync(CreateReplaceItemsOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<ReplaceItemsResource> CreateAsync(CreateReplaceItemsOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
@@ -116,7 +116,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
         public static async System.Threading.Tasks.Task<ReplaceItemsResource> CreateAsync(
                                                                                   string pathBundleSid,
                                                                                   string fromBundleSid,
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateReplaceItemsOptions(pathBundleSid, fromBundleSid){  };
             return await CreateAsync(options, client, cancellationToken);

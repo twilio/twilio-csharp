@@ -83,7 +83,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Build
         /// <param name="options"> Fetch BuildStatus parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of BuildStatus </returns>
-        public static async System.Threading.Tasks.Task<BuildStatusResource> FetchAsync(FetchBuildStatusOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<BuildStatusResource> FetchAsync(FetchBuildStatusOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
@@ -110,7 +110,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Build
         /// <param name="pathSid"> The SID of the Build resource to fetch. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of BuildStatus </returns>
-        public static async System.Threading.Tasks.Task<BuildStatusResource> FetchAsync(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<BuildStatusResource> FetchAsync(string pathServiceSid, string pathSid, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchBuildStatusOptions(pathServiceSid, pathSid){  };
             return await FetchAsync(options, client, cancellationToken);

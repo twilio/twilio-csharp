@@ -80,7 +80,7 @@ namespace Twilio.Rest.Studio.V2
         #if !NET35
         public static async System.Threading.Tasks.Task<FlowValidateResource> UpdateAsync(UpdateFlowValidateOptions options, 
                                                                                                     ITwilioRestClient client = null,
-                                                                                                    CancellationToken cancellationToken = default)
+                                                                                                    System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client), cancellationToken);
@@ -119,7 +119,7 @@ namespace Twilio.Rest.Studio.V2
                                                                               FlowValidateResource.StatusEnum status,
                                                                               object definition,
                                                                               string commitMessage = null,
-                                                                                ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new UpdateFlowValidateOptions(friendlyName, status, definition){ CommitMessage = commitMessage };
             return await UpdateAsync(options, client, cancellationToken);

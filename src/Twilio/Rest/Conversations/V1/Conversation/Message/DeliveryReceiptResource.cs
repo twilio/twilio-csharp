@@ -87,7 +87,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation.Message
         /// <param name="options"> Fetch DeliveryReceipt parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of DeliveryReceipt </returns>
-        public static async System.Threading.Tasks.Task<DeliveryReceiptResource> FetchAsync(FetchDeliveryReceiptOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<DeliveryReceiptResource> FetchAsync(FetchDeliveryReceiptOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
@@ -117,7 +117,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation.Message
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of DeliveryReceipt </returns>
-        public static async System.Threading.Tasks.Task<DeliveryReceiptResource> FetchAsync(string pathConversationSid, string pathMessageSid, string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<DeliveryReceiptResource> FetchAsync(string pathConversationSid, string pathMessageSid, string pathSid, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchDeliveryReceiptOptions(pathConversationSid, pathMessageSid, pathSid){  };
             return await FetchAsync(options, client, cancellationToken);
@@ -159,7 +159,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation.Message
         /// <param name="options"> Read DeliveryReceipt parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of DeliveryReceipt </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<DeliveryReceiptResource>> ReadAsync(ReadDeliveryReceiptOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<ResourceSet<DeliveryReceiptResource>> ReadAsync(ReadDeliveryReceiptOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
@@ -199,7 +199,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation.Message
                                                                                              string pathMessageSid,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadDeliveryReceiptOptions(pathConversationSid, pathMessageSid){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client, cancellationToken);

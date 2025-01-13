@@ -70,7 +70,7 @@ namespace Twilio.Rest.Intelligence.V2
         /// <param name="options"> Create OperatorAttachment parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of OperatorAttachment </returns>
-        public static async System.Threading.Tasks.Task<OperatorAttachmentResource> CreateAsync(CreateOperatorAttachmentOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<OperatorAttachmentResource> CreateAsync(CreateOperatorAttachmentOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
@@ -101,7 +101,7 @@ namespace Twilio.Rest.Intelligence.V2
         public static async System.Threading.Tasks.Task<OperatorAttachmentResource> CreateAsync(
                                                                                   string pathServiceSid,
                                                                                   string pathOperatorSid,
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateOperatorAttachmentOptions(pathServiceSid, pathOperatorSid){  };
             return await CreateAsync(options, client, cancellationToken);
@@ -149,7 +149,7 @@ namespace Twilio.Rest.Intelligence.V2
         /// <returns> Task that resolves to A single instance of OperatorAttachment </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteOperatorAttachmentOptions options, 
                                                                         ITwilioRestClient client = null,
-                                                                        CancellationToken cancellationToken = default)
+                                                                        System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client), cancellationToken);
@@ -174,7 +174,7 @@ namespace Twilio.Rest.Intelligence.V2
         /// <param name="pathOperatorSid"> The unique SID identifier of the Operator. Allows both Custom and Pre-built Operators. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of OperatorAttachment </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, string pathOperatorSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, string pathOperatorSid, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new DeleteOperatorAttachmentOptions(pathServiceSid, pathOperatorSid) ;
             return await DeleteAsync(options, client, cancellationToken);

@@ -329,7 +329,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
         /// <param name="options"> Read Today parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Today </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<TodayResource>> ReadAsync(ReadTodayOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<ResourceSet<TodayResource>> ReadAsync(ReadTodayOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
@@ -381,7 +381,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
                                                                                              bool? includeSubaccounts = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadTodayOptions(){ PathAccountSid = pathAccountSid, Category = category, StartDate = startDate, EndDate = endDate, IncludeSubaccounts = includeSubaccounts, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client, cancellationToken);

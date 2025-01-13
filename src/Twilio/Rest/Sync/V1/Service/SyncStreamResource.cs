@@ -68,7 +68,7 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <param name="options"> Create SyncStream parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncStream </returns>
-        public static async System.Threading.Tasks.Task<SyncStreamResource> CreateAsync(CreateSyncStreamOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<SyncStreamResource> CreateAsync(CreateSyncStreamOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
@@ -103,7 +103,7 @@ namespace Twilio.Rest.Sync.V1.Service
                                                                                   string pathServiceSid,
                                                                                   string uniqueName = null,
                                                                                   int? ttl = null,
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateSyncStreamOptions(pathServiceSid){  UniqueName = uniqueName, Ttl = ttl };
             return await CreateAsync(options, client, cancellationToken);
@@ -151,7 +151,7 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <returns> Task that resolves to A single instance of SyncStream </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteSyncStreamOptions options, 
                                                                         ITwilioRestClient client = null,
-                                                                        CancellationToken cancellationToken = default)
+                                                                        System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client), cancellationToken);
@@ -176,7 +176,7 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <param name="pathSid"> The SID of the Stream resource to delete. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncStream </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, string pathSid, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new DeleteSyncStreamOptions(pathServiceSid, pathSid) ;
             return await DeleteAsync(options, client, cancellationToken);
@@ -218,7 +218,7 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <param name="options"> Fetch SyncStream parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncStream </returns>
-        public static async System.Threading.Tasks.Task<SyncStreamResource> FetchAsync(FetchSyncStreamOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<SyncStreamResource> FetchAsync(FetchSyncStreamOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
@@ -245,7 +245,7 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <param name="pathSid"> The SID of the Stream resource to fetch. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncStream </returns>
-        public static async System.Threading.Tasks.Task<SyncStreamResource> FetchAsync(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SyncStreamResource> FetchAsync(string pathServiceSid, string pathSid, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchSyncStreamOptions(pathServiceSid, pathSid){  };
             return await FetchAsync(options, client, cancellationToken);
@@ -285,7 +285,7 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <param name="options"> Read SyncStream parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncStream </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<SyncStreamResource>> ReadAsync(ReadSyncStreamOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<ResourceSet<SyncStreamResource>> ReadAsync(ReadSyncStreamOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
@@ -321,7 +321,7 @@ namespace Twilio.Rest.Sync.V1.Service
                                                                                              string pathServiceSid,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadSyncStreamOptions(pathServiceSid){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client, cancellationToken);
@@ -415,7 +415,7 @@ namespace Twilio.Rest.Sync.V1.Service
         #if !NET35
         public static async System.Threading.Tasks.Task<SyncStreamResource> UpdateAsync(UpdateSyncStreamOptions options, 
                                                                                                     ITwilioRestClient client = null,
-                                                                                                    CancellationToken cancellationToken = default)
+                                                                                                    System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client), cancellationToken);
@@ -450,7 +450,7 @@ namespace Twilio.Rest.Sync.V1.Service
                                                                               string pathServiceSid,
                                                                               string pathSid,
                                                                               int? ttl = null,
-                                                                                ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new UpdateSyncStreamOptions(pathServiceSid, pathSid){ Ttl = ttl };
             return await UpdateAsync(options, client, cancellationToken);

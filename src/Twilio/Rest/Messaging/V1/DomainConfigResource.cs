@@ -67,7 +67,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="options"> Fetch DomainConfig parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of DomainConfig </returns>
-        public static async System.Threading.Tasks.Task<DomainConfigResource> FetchAsync(FetchDomainConfigOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<DomainConfigResource> FetchAsync(FetchDomainConfigOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
@@ -91,7 +91,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="pathDomainSid"> Unique string used to identify the domain that this config should be associated with. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of DomainConfig </returns>
-        public static async System.Threading.Tasks.Task<DomainConfigResource> FetchAsync(string pathDomainSid, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<DomainConfigResource> FetchAsync(string pathDomainSid, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchDomainConfigOptions(pathDomainSid){  };
             return await FetchAsync(options, client, cancellationToken);
@@ -134,7 +134,7 @@ namespace Twilio.Rest.Messaging.V1
         #if !NET35
         public static async System.Threading.Tasks.Task<DomainConfigResource> UpdateAsync(UpdateDomainConfigOptions options, 
                                                                                                     ITwilioRestClient client = null,
-                                                                                                    CancellationToken cancellationToken = default)
+                                                                                                    System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client), cancellationToken);
@@ -177,7 +177,7 @@ namespace Twilio.Rest.Messaging.V1
                                                                               Uri callbackUrl = null,
                                                                               bool? continueOnFailure = null,
                                                                               bool? disableHttps = null,
-                                                                                ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new UpdateDomainConfigOptions(pathDomainSid){ FallbackUrl = fallbackUrl, CallbackUrl = callbackUrl, ContinueOnFailure = continueOnFailure, DisableHttps = disableHttps };
             return await UpdateAsync(options, client, cancellationToken);

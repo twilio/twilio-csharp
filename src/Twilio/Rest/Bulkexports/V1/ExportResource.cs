@@ -67,7 +67,7 @@ namespace Twilio.Rest.Bulkexports.V1
         /// <param name="options"> Fetch Export parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Export </returns>
-        public static async System.Threading.Tasks.Task<ExportResource> FetchAsync(FetchExportOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<ExportResource> FetchAsync(FetchExportOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
@@ -91,7 +91,7 @@ namespace Twilio.Rest.Bulkexports.V1
         /// <param name="pathResourceType"> The type of communication – Messages, Calls, Conferences, and Participants </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Export </returns>
-        public static async System.Threading.Tasks.Task<ExportResource> FetchAsync(string pathResourceType, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<ExportResource> FetchAsync(string pathResourceType, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchExportOptions(pathResourceType){  };
             return await FetchAsync(options, client, cancellationToken);

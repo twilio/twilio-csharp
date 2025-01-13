@@ -113,7 +113,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="options"> Create BrandRegistration parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of BrandRegistration </returns>
-        public static async System.Threading.Tasks.Task<BrandRegistrationResource> CreateAsync(CreateBrandRegistrationOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<BrandRegistrationResource> CreateAsync(CreateBrandRegistrationOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
@@ -156,7 +156,7 @@ namespace Twilio.Rest.Messaging.V1
                                                                                   string brandType = null,
                                                                                   bool? mock = null,
                                                                                   bool? skipAutomaticSecVet = null,
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateBrandRegistrationOptions(customerProfileBundleSid, a2PProfileBundleSid){  BrandType = brandType, Mock = mock, SkipAutomaticSecVet = skipAutomaticSecVet };
             return await CreateAsync(options, client, cancellationToken);
@@ -196,7 +196,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="options"> Fetch BrandRegistration parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of BrandRegistration </returns>
-        public static async System.Threading.Tasks.Task<BrandRegistrationResource> FetchAsync(FetchBrandRegistrationOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<BrandRegistrationResource> FetchAsync(FetchBrandRegistrationOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
@@ -220,7 +220,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="pathSid"> The SID of the Brand Registration resource to fetch. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of BrandRegistration </returns>
-        public static async System.Threading.Tasks.Task<BrandRegistrationResource> FetchAsync(string pathSid, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<BrandRegistrationResource> FetchAsync(string pathSid, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchBrandRegistrationOptions(pathSid){  };
             return await FetchAsync(options, client, cancellationToken);
@@ -258,7 +258,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="options"> Read BrandRegistration parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of BrandRegistration </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<BrandRegistrationResource>> ReadAsync(ReadBrandRegistrationOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<ResourceSet<BrandRegistrationResource>> ReadAsync(ReadBrandRegistrationOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
@@ -290,7 +290,7 @@ namespace Twilio.Rest.Messaging.V1
         public static async System.Threading.Tasks.Task<ResourceSet<BrandRegistrationResource>> ReadAsync(
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadBrandRegistrationOptions(){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client, cancellationToken);
@@ -382,7 +382,7 @@ namespace Twilio.Rest.Messaging.V1
         #if !NET35
         public static async System.Threading.Tasks.Task<BrandRegistrationResource> UpdateAsync(UpdateBrandRegistrationOptions options, 
                                                                                                     ITwilioRestClient client = null,
-                                                                                                    CancellationToken cancellationToken = default)
+                                                                                                    System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client), cancellationToken);
@@ -409,7 +409,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <returns> Task that resolves to A single instance of BrandRegistration </returns>
         public static async System.Threading.Tasks.Task<BrandRegistrationResource> UpdateAsync(
                                                                               string pathSid,
-                                                                                ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new UpdateBrandRegistrationOptions(pathSid){  };
             return await UpdateAsync(options, client, cancellationToken);

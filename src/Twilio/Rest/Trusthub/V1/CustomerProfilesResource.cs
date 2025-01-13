@@ -82,7 +82,7 @@ namespace Twilio.Rest.Trusthub.V1
         /// <param name="options"> Create CustomerProfiles parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CustomerProfiles </returns>
-        public static async System.Threading.Tasks.Task<CustomerProfilesResource> CreateAsync(CreateCustomerProfilesOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<CustomerProfilesResource> CreateAsync(CreateCustomerProfilesOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
@@ -121,7 +121,7 @@ namespace Twilio.Rest.Trusthub.V1
                                                                                   string email,
                                                                                   string policySid,
                                                                                   Uri statusCallback = null,
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateCustomerProfilesOptions(friendlyName, email, policySid){  StatusCallback = statusCallback };
             return await CreateAsync(options, client, cancellationToken);
@@ -167,7 +167,7 @@ namespace Twilio.Rest.Trusthub.V1
         /// <returns> Task that resolves to A single instance of CustomerProfiles </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteCustomerProfilesOptions options, 
                                                                         ITwilioRestClient client = null,
-                                                                        CancellationToken cancellationToken = default)
+                                                                        System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client), cancellationToken);
@@ -190,7 +190,7 @@ namespace Twilio.Rest.Trusthub.V1
         /// <param name="pathSid"> The unique string that we created to identify the Customer-Profile resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CustomerProfiles </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new DeleteCustomerProfilesOptions(pathSid) ;
             return await DeleteAsync(options, client, cancellationToken);
@@ -230,7 +230,7 @@ namespace Twilio.Rest.Trusthub.V1
         /// <param name="options"> Fetch CustomerProfiles parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CustomerProfiles </returns>
-        public static async System.Threading.Tasks.Task<CustomerProfilesResource> FetchAsync(FetchCustomerProfilesOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<CustomerProfilesResource> FetchAsync(FetchCustomerProfilesOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
@@ -254,7 +254,7 @@ namespace Twilio.Rest.Trusthub.V1
         /// <param name="pathSid"> The unique string that we created to identify the Customer-Profile resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CustomerProfiles </returns>
-        public static async System.Threading.Tasks.Task<CustomerProfilesResource> FetchAsync(string pathSid, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<CustomerProfilesResource> FetchAsync(string pathSid, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchCustomerProfilesOptions(pathSid){  };
             return await FetchAsync(options, client, cancellationToken);
@@ -292,7 +292,7 @@ namespace Twilio.Rest.Trusthub.V1
         /// <param name="options"> Read CustomerProfiles parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CustomerProfiles </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<CustomerProfilesResource>> ReadAsync(ReadCustomerProfilesOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<ResourceSet<CustomerProfilesResource>> ReadAsync(ReadCustomerProfilesOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
@@ -336,7 +336,7 @@ namespace Twilio.Rest.Trusthub.V1
                                                                                              string policySid = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadCustomerProfilesOptions(){ Status = status, FriendlyName = friendlyName, PolicySid = policySid, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client, cancellationToken);
@@ -428,7 +428,7 @@ namespace Twilio.Rest.Trusthub.V1
         #if !NET35
         public static async System.Threading.Tasks.Task<CustomerProfilesResource> UpdateAsync(UpdateCustomerProfilesOptions options, 
                                                                                                     ITwilioRestClient client = null,
-                                                                                                    CancellationToken cancellationToken = default)
+                                                                                                    System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client), cancellationToken);
@@ -471,7 +471,7 @@ namespace Twilio.Rest.Trusthub.V1
                                                                               Uri statusCallback = null,
                                                                               string friendlyName = null,
                                                                               string email = null,
-                                                                                ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new UpdateCustomerProfilesOptions(pathSid){ Status = status, StatusCallback = statusCallback, FriendlyName = friendlyName, Email = email };
             return await UpdateAsync(options, client, cancellationToken);

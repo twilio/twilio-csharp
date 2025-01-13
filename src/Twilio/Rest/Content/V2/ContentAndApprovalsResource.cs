@@ -65,7 +65,7 @@ namespace Twilio.Rest.Content.V2
         /// <param name="options"> Read ContentAndApprovals parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ContentAndApprovals </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<ContentAndApprovalsResource>> ReadAsync(ReadContentAndApprovalsOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<ResourceSet<ContentAndApprovalsResource>> ReadAsync(ReadContentAndApprovalsOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
@@ -133,7 +133,7 @@ namespace Twilio.Rest.Content.V2
                                                                                              List<string> contentType = null,
                                                                                              List<string> channelEligibility = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null, System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadContentAndApprovalsOptions(){ PageSize = pageSize, SortByDate = sortByDate, SortByContentName = sortByContentName, DateCreatedAfter = dateCreatedAfter, DateCreatedBefore = dateCreatedBefore, ContentName = contentName, Content = content, Language = language, ContentType = contentType, ChannelEligibility = channelEligibility, Limit = limit};
             return await ReadAsync(options, client, cancellationToken);

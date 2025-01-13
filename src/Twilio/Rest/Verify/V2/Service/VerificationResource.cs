@@ -108,7 +108,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="options"> Create Verification parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Verification </returns>
-        public static async System.Threading.Tasks.Task<VerificationResource> CreateAsync(CreateVerificationOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<VerificationResource> CreateAsync(CreateVerificationOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
@@ -207,7 +207,7 @@ namespace Twilio.Rest.Verify.V2.Service
                                                                                   bool? enableSnaClientToken = null,
                                                                                   VerificationResource.RiskCheckEnum riskCheck = null,
                                                                                   string tags = null,
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateVerificationOptions(pathServiceSid, to, channel){  CustomFriendlyName = customFriendlyName, CustomMessage = customMessage, SendDigits = sendDigits, Locale = locale, CustomCode = customCode, Amount = amount, Payee = payee, RateLimits = rateLimits, ChannelConfiguration = channelConfiguration, AppHash = appHash, TemplateSid = templateSid, TemplateCustomSubstitutions = templateCustomSubstitutions, DeviceIp = deviceIp, EnableSnaClientToken = enableSnaClientToken, RiskCheck = riskCheck, Tags = tags };
             return await CreateAsync(options, client, cancellationToken);
@@ -249,7 +249,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="options"> Fetch Verification parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Verification </returns>
-        public static async System.Threading.Tasks.Task<VerificationResource> FetchAsync(FetchVerificationOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<VerificationResource> FetchAsync(FetchVerificationOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
@@ -276,7 +276,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Verification resource to fetch. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Verification </returns>
-        public static async System.Threading.Tasks.Task<VerificationResource> FetchAsync(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<VerificationResource> FetchAsync(string pathServiceSid, string pathSid, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchVerificationOptions(pathServiceSid, pathSid){  };
             return await FetchAsync(options, client, cancellationToken);
@@ -321,7 +321,7 @@ namespace Twilio.Rest.Verify.V2.Service
         #if !NET35
         public static async System.Threading.Tasks.Task<VerificationResource> UpdateAsync(UpdateVerificationOptions options, 
                                                                                                     ITwilioRestClient client = null,
-                                                                                                    CancellationToken cancellationToken = default)
+                                                                                                    System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client), cancellationToken);
@@ -356,7 +356,7 @@ namespace Twilio.Rest.Verify.V2.Service
                                                                               string pathServiceSid,
                                                                               string pathSid,
                                                                               VerificationResource.StatusEnum status,
-                                                                                ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new UpdateVerificationOptions(pathServiceSid, pathSid, status){  };
             return await UpdateAsync(options, client, cancellationToken);

@@ -65,7 +65,7 @@ namespace Twilio.Rest.Content.V1
         /// <param name="options"> Read LegacyContent parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of LegacyContent </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<LegacyContentResource>> ReadAsync(ReadLegacyContentOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<ResourceSet<LegacyContentResource>> ReadAsync(ReadLegacyContentOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
@@ -97,7 +97,7 @@ namespace Twilio.Rest.Content.V1
         public static async System.Threading.Tasks.Task<ResourceSet<LegacyContentResource>> ReadAsync(
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadLegacyContentOptions(){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client, cancellationToken);

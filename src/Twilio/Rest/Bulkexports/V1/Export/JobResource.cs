@@ -73,7 +73,7 @@ namespace Twilio.Rest.Bulkexports.V1.Export
         /// <returns> Task that resolves to A single instance of Job </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteJobOptions options, 
                                                                         ITwilioRestClient client = null,
-                                                                        CancellationToken cancellationToken = default)
+                                                                        System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client), cancellationToken);
@@ -96,7 +96,7 @@ namespace Twilio.Rest.Bulkexports.V1.Export
         /// <param name="pathJobSid"> The unique string that that we created to identify the Bulk Export job </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Job </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathJobSid, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathJobSid, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new DeleteJobOptions(pathJobSid) ;
             return await DeleteAsync(options, client, cancellationToken);
@@ -136,7 +136,7 @@ namespace Twilio.Rest.Bulkexports.V1.Export
         /// <param name="options"> Fetch Job parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Job </returns>
-        public static async System.Threading.Tasks.Task<JobResource> FetchAsync(FetchJobOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<JobResource> FetchAsync(FetchJobOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
@@ -160,7 +160,7 @@ namespace Twilio.Rest.Bulkexports.V1.Export
         /// <param name="pathJobSid"> The unique string that that we created to identify the Bulk Export job </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Job </returns>
-        public static async System.Threading.Tasks.Task<JobResource> FetchAsync(string pathJobSid, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<JobResource> FetchAsync(string pathJobSid, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchJobOptions(pathJobSid){  };
             return await FetchAsync(options, client, cancellationToken);

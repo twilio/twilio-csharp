@@ -82,7 +82,7 @@ namespace Twilio.Rest.Intelligence.V2
         /// <param name="options"> Create Transcript parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Transcript </returns>
-        public static async System.Threading.Tasks.Task<TranscriptResource> CreateAsync(CreateTranscriptOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<TranscriptResource> CreateAsync(CreateTranscriptOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
@@ -121,7 +121,7 @@ namespace Twilio.Rest.Intelligence.V2
                                                                                   object channel,
                                                                                   string customerKey = null,
                                                                                   DateTime? mediaStartTime = null,
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateTranscriptOptions(serviceSid, channel){  CustomerKey = customerKey, MediaStartTime = mediaStartTime };
             return await CreateAsync(options, client, cancellationToken);
@@ -167,7 +167,7 @@ namespace Twilio.Rest.Intelligence.V2
         /// <returns> Task that resolves to A single instance of Transcript </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteTranscriptOptions options, 
                                                                         ITwilioRestClient client = null,
-                                                                        CancellationToken cancellationToken = default)
+                                                                        System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client), cancellationToken);
@@ -190,7 +190,7 @@ namespace Twilio.Rest.Intelligence.V2
         /// <param name="pathSid"> A 34 character string that uniquely identifies this Transcript. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Transcript </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new DeleteTranscriptOptions(pathSid) ;
             return await DeleteAsync(options, client, cancellationToken);
@@ -230,7 +230,7 @@ namespace Twilio.Rest.Intelligence.V2
         /// <param name="options"> Fetch Transcript parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Transcript </returns>
-        public static async System.Threading.Tasks.Task<TranscriptResource> FetchAsync(FetchTranscriptOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<TranscriptResource> FetchAsync(FetchTranscriptOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
@@ -254,7 +254,7 @@ namespace Twilio.Rest.Intelligence.V2
         /// <param name="pathSid"> A 34 character string that uniquely identifies this Transcript. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Transcript </returns>
-        public static async System.Threading.Tasks.Task<TranscriptResource> FetchAsync(string pathSid, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<TranscriptResource> FetchAsync(string pathSid, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchTranscriptOptions(pathSid){  };
             return await FetchAsync(options, client, cancellationToken);
@@ -292,7 +292,7 @@ namespace Twilio.Rest.Intelligence.V2
         /// <param name="options"> Read Transcript parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Transcript </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<TranscriptResource>> ReadAsync(ReadTranscriptOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<ResourceSet<TranscriptResource>> ReadAsync(ReadTranscriptOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
@@ -356,7 +356,7 @@ namespace Twilio.Rest.Intelligence.V2
                                                                                              string sourceSid = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadTranscriptOptions(){ ServiceSid = serviceSid, BeforeStartTime = beforeStartTime, AfterStartTime = afterStartTime, BeforeDateCreated = beforeDateCreated, AfterDateCreated = afterDateCreated, Status = status, LanguageCode = languageCode, SourceSid = sourceSid, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client, cancellationToken);

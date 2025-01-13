@@ -72,7 +72,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity.Challenge
         /// <param name="options"> Create Notification parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Notification </returns>
-        public static async System.Threading.Tasks.Task<NotificationResource> CreateAsync(CreateNotificationOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<NotificationResource> CreateAsync(CreateNotificationOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
@@ -111,7 +111,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity.Challenge
                                                                                   string pathIdentity,
                                                                                   string pathChallengeSid,
                                                                                   int? ttl = null,
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateNotificationOptions(pathServiceSid, pathIdentity, pathChallengeSid){  Ttl = ttl };
             return await CreateAsync(options, client, cancellationToken);

@@ -82,7 +82,7 @@ namespace Twilio.Rest.Intelligence.V2
         /// <param name="options"> Fetch PrebuiltOperator parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PrebuiltOperator </returns>
-        public static async System.Threading.Tasks.Task<PrebuiltOperatorResource> FetchAsync(FetchPrebuiltOperatorOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<PrebuiltOperatorResource> FetchAsync(FetchPrebuiltOperatorOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
@@ -106,7 +106,7 @@ namespace Twilio.Rest.Intelligence.V2
         /// <param name="pathSid"> A 34 character string that uniquely identifies this Pre-built Operator. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PrebuiltOperator </returns>
-        public static async System.Threading.Tasks.Task<PrebuiltOperatorResource> FetchAsync(string pathSid, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<PrebuiltOperatorResource> FetchAsync(string pathSid, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchPrebuiltOperatorOptions(pathSid){  };
             return await FetchAsync(options, client, cancellationToken);
@@ -144,7 +144,7 @@ namespace Twilio.Rest.Intelligence.V2
         /// <param name="options"> Read PrebuiltOperator parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PrebuiltOperator </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<PrebuiltOperatorResource>> ReadAsync(ReadPrebuiltOperatorOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<ResourceSet<PrebuiltOperatorResource>> ReadAsync(ReadPrebuiltOperatorOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
@@ -184,7 +184,7 @@ namespace Twilio.Rest.Intelligence.V2
                                                                                              string languageCode = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadPrebuiltOperatorOptions(){ Availability = availability, LanguageCode = languageCode, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client, cancellationToken);

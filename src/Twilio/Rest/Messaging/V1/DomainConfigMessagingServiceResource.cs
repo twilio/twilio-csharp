@@ -67,7 +67,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="options"> Fetch DomainConfigMessagingService parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of DomainConfigMessagingService </returns>
-        public static async System.Threading.Tasks.Task<DomainConfigMessagingServiceResource> FetchAsync(FetchDomainConfigMessagingServiceOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<DomainConfigMessagingServiceResource> FetchAsync(FetchDomainConfigMessagingServiceOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
@@ -91,7 +91,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="pathMessagingServiceSid"> Unique string used to identify the Messaging service that this domain should be associated with. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of DomainConfigMessagingService </returns>
-        public static async System.Threading.Tasks.Task<DomainConfigMessagingServiceResource> FetchAsync(string pathMessagingServiceSid, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<DomainConfigMessagingServiceResource> FetchAsync(string pathMessagingServiceSid, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchDomainConfigMessagingServiceOptions(pathMessagingServiceSid){  };
             return await FetchAsync(options, client, cancellationToken);

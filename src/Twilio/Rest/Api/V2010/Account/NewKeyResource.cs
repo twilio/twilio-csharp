@@ -68,7 +68,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="options"> Create NewKey parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of NewKey </returns>
-        public static async System.Threading.Tasks.Task<NewKeyResource> CreateAsync(CreateNewKeyOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<NewKeyResource> CreateAsync(CreateNewKeyOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
@@ -99,7 +99,7 @@ namespace Twilio.Rest.Api.V2010.Account
         public static async System.Threading.Tasks.Task<NewKeyResource> CreateAsync(
                                                                                   string pathAccountSid = null,
                                                                                   string friendlyName = null,
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateNewKeyOptions(){  PathAccountSid = pathAccountSid, FriendlyName = friendlyName };
             return await CreateAsync(options, client, cancellationToken);

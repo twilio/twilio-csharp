@@ -70,7 +70,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeRegistratio
         /// <param name="options"> Create AuthRegistrationsCredentialListMapping parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AuthRegistrationsCredentialListMapping </returns>
-        public static async System.Threading.Tasks.Task<AuthRegistrationsCredentialListMappingResource> CreateAsync(CreateAuthRegistrationsCredentialListMappingOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<AuthRegistrationsCredentialListMappingResource> CreateAsync(CreateAuthRegistrationsCredentialListMappingOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
@@ -105,7 +105,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeRegistratio
                                                                                   string pathDomainSid,
                                                                                   string credentialListSid,
                                                                                   string pathAccountSid = null,
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateAuthRegistrationsCredentialListMappingOptions(pathDomainSid, credentialListSid){  PathAccountSid = pathAccountSid };
             return await CreateAsync(options, client, cancellationToken);
@@ -155,7 +155,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeRegistratio
         /// <returns> Task that resolves to A single instance of AuthRegistrationsCredentialListMapping </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteAuthRegistrationsCredentialListMappingOptions options, 
                                                                         ITwilioRestClient client = null,
-                                                                        CancellationToken cancellationToken = default)
+                                                                        System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client), cancellationToken);
@@ -182,7 +182,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeRegistratio
         /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the CredentialListMapping resources to delete. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AuthRegistrationsCredentialListMapping </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathDomainSid, string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathDomainSid, string pathSid, string pathAccountSid = null, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new DeleteAuthRegistrationsCredentialListMappingOptions(pathDomainSid, pathSid)  { PathAccountSid = pathAccountSid };
             return await DeleteAsync(options, client, cancellationToken);
@@ -226,7 +226,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeRegistratio
         /// <param name="options"> Fetch AuthRegistrationsCredentialListMapping parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AuthRegistrationsCredentialListMapping </returns>
-        public static async System.Threading.Tasks.Task<AuthRegistrationsCredentialListMappingResource> FetchAsync(FetchAuthRegistrationsCredentialListMappingOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<AuthRegistrationsCredentialListMappingResource> FetchAsync(FetchAuthRegistrationsCredentialListMappingOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
@@ -256,7 +256,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeRegistratio
         /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the CredentialListMapping resource to fetch. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AuthRegistrationsCredentialListMapping </returns>
-        public static async System.Threading.Tasks.Task<AuthRegistrationsCredentialListMappingResource> FetchAsync(string pathDomainSid, string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AuthRegistrationsCredentialListMappingResource> FetchAsync(string pathDomainSid, string pathSid, string pathAccountSid = null, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchAuthRegistrationsCredentialListMappingOptions(pathDomainSid, pathSid){ PathAccountSid = pathAccountSid };
             return await FetchAsync(options, client, cancellationToken);
@@ -298,7 +298,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeRegistratio
         /// <param name="options"> Read AuthRegistrationsCredentialListMapping parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AuthRegistrationsCredentialListMapping </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<AuthRegistrationsCredentialListMappingResource>> ReadAsync(ReadAuthRegistrationsCredentialListMappingOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<ResourceSet<AuthRegistrationsCredentialListMappingResource>> ReadAsync(ReadAuthRegistrationsCredentialListMappingOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
@@ -338,7 +338,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeRegistratio
                                                                                              string pathAccountSid = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadAuthRegistrationsCredentialListMappingOptions(pathDomainSid){ PathAccountSid = pathAccountSid, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client, cancellationToken);

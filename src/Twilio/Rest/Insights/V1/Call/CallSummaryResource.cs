@@ -133,7 +133,7 @@ namespace Twilio.Rest.Insights.V1.Call
         /// <param name="options"> Fetch CallSummary parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CallSummary </returns>
-        public static async System.Threading.Tasks.Task<CallSummaryResource> FetchAsync(FetchCallSummaryOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<CallSummaryResource> FetchAsync(FetchCallSummaryOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
@@ -160,7 +160,7 @@ namespace Twilio.Rest.Insights.V1.Call
         /// <param name="processingState"> The Processing State of this Call Summary. One of `complete`, `partial` or `all`. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CallSummary </returns>
-        public static async System.Threading.Tasks.Task<CallSummaryResource> FetchAsync(string pathCallSid, CallSummaryResource.ProcessingStateEnum processingState = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<CallSummaryResource> FetchAsync(string pathCallSid, CallSummaryResource.ProcessingStateEnum processingState = null, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchCallSummaryOptions(pathCallSid){ ProcessingState = processingState };
             return await FetchAsync(options, client, cancellationToken);

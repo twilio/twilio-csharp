@@ -69,7 +69,7 @@ namespace Twilio.Rest.Bulkexports.V1.Export
         /// <param name="options"> Fetch Day parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Day </returns>
-        public static async System.Threading.Tasks.Task<DayResource> FetchAsync(FetchDayOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<DayResource> FetchAsync(FetchDayOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
@@ -96,7 +96,7 @@ namespace Twilio.Rest.Bulkexports.V1.Export
         /// <param name="pathDay"> The ISO 8601 format date of the resources in the file, for a UTC day </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Day </returns>
-        public static async System.Threading.Tasks.Task<DayResource> FetchAsync(string pathResourceType, string pathDay, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<DayResource> FetchAsync(string pathResourceType, string pathDay, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchDayOptions(pathResourceType, pathDay){  };
             return await FetchAsync(options, client, cancellationToken);
@@ -136,7 +136,7 @@ namespace Twilio.Rest.Bulkexports.V1.Export
         /// <param name="options"> Read Day parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Day </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<DayResource>> ReadAsync(ReadDayOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<ResourceSet<DayResource>> ReadAsync(ReadDayOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
@@ -172,7 +172,7 @@ namespace Twilio.Rest.Bulkexports.V1.Export
                                                                                              string pathResourceType,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadDayOptions(pathResourceType){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client, cancellationToken);

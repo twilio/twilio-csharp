@@ -68,7 +68,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="options"> Create Address parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Address </returns>
-        public static async System.Threading.Tasks.Task<AddressResource> CreateAsync(CreateAddressOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<AddressResource> CreateAsync(CreateAddressOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
@@ -102,7 +102,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                           bool? emergencyEnabled = null,
                                           bool? autoCorrectAddress = null,
                                           string streetSecondary = null,
-                                            ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null, System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new CreateAddressOptions(customerName, street, city, region, postalCode, isoCountry){  PathAccountSid = pathAccountSid, FriendlyName = friendlyName, EmergencyEnabled = emergencyEnabled, AutoCorrectAddress = autoCorrectAddress, StreetSecondary = streetSecondary };
             return Create(options, client);
@@ -135,7 +135,8 @@ namespace Twilio.Rest.Api.V2010.Account
                                                                                   bool? emergencyEnabled = null,
                                                                                   bool? autoCorrectAddress = null,
                                                                                   string streetSecondary = null,
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null,
+                                                                                    System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateAddressOptions(customerName, street, city, region, postalCode, isoCountry){  PathAccountSid = pathAccountSid, FriendlyName = friendlyName, EmergencyEnabled = emergencyEnabled, AutoCorrectAddress = autoCorrectAddress, StreetSecondary = streetSecondary };
             return await CreateAsync(options, client, cancellationToken);
@@ -183,7 +184,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <returns> Task that resolves to A single instance of Address </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteAddressOptions options, 
                                                                         ITwilioRestClient client = null,
-                                                                        CancellationToken cancellationToken = default)
+                                                                        System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client), cancellationToken);
@@ -196,7 +197,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that is responsible for the Address resource to delete. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Address </returns>
-        public static bool Delete(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
+        public static bool Delete(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null, System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new DeleteAddressOptions(pathSid)      { PathAccountSid = pathAccountSid }   ;
             return Delete(options, client);
@@ -208,7 +209,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that is responsible for the Address resource to delete. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Address </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null,
+                                                                                    System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new DeleteAddressOptions(pathSid)  { PathAccountSid = pathAccountSid };
             return await DeleteAsync(options, client, cancellationToken);
@@ -250,7 +252,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="options"> Fetch Address parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Address </returns>
-        public static async System.Threading.Tasks.Task<AddressResource> FetchAsync(FetchAddressOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<AddressResource> FetchAsync(FetchAddressOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
@@ -265,7 +267,7 @@ namespace Twilio.Rest.Api.V2010.Account
         public static AddressResource Fetch(
                                          string pathSid, 
                                          string pathAccountSid = null, 
-                                        ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null, System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchAddressOptions(pathSid){ PathAccountSid = pathAccountSid };
             return Fetch(options, client);
@@ -277,7 +279,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that is responsible for the Address resource to fetch. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Address </returns>
-        public static async System.Threading.Tasks.Task<AddressResource> FetchAsync(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AddressResource> FetchAsync(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null,
+                                                                                    System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchAddressOptions(pathSid){ PathAccountSid = pathAccountSid };
             return await FetchAsync(options, client, cancellationToken);
@@ -317,7 +320,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="options"> Read Address parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Address </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<AddressResource>> ReadAsync(ReadAddressOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<ResourceSet<AddressResource>> ReadAsync(ReadAddressOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
@@ -342,7 +345,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                                      string isoCountry = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                    ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null, System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadAddressOptions(){ PathAccountSid = pathAccountSid, CustomerName = customerName, FriendlyName = friendlyName, IsoCountry = isoCountry, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -365,7 +368,8 @@ namespace Twilio.Rest.Api.V2010.Account
                                                                                              string isoCountry = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null,
+                                                                                    System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadAddressOptions(){ PathAccountSid = pathAccountSid, CustomerName = customerName, FriendlyName = friendlyName, IsoCountry = isoCountry, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client, cancellationToken);
@@ -377,7 +381,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The target page of records </returns>
-        public static Page<AddressResource> GetPage(string targetUrl, ITwilioRestClient client)
+        public static Page<AddressResource> GetPage(string targetUrl, ITwilioRestClient client, System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
 
@@ -459,7 +463,7 @@ namespace Twilio.Rest.Api.V2010.Account
         #if !NET35
         public static async System.Threading.Tasks.Task<AddressResource> UpdateAsync(UpdateAddressOptions options, 
                                                                                                     ITwilioRestClient client = null,
-                                                                                                    CancellationToken cancellationToken = default)
+                                                                                                    System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client), cancellationToken);
@@ -493,7 +497,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                           bool? emergencyEnabled = null,
                                           bool? autoCorrectAddress = null,
                                           string streetSecondary = null,
-                                            ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null, System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new UpdateAddressOptions(pathSid){ PathAccountSid = pathAccountSid, FriendlyName = friendlyName, CustomerName = customerName, Street = street, City = city, Region = region, PostalCode = postalCode, EmergencyEnabled = emergencyEnabled, AutoCorrectAddress = autoCorrectAddress, StreetSecondary = streetSecondary };
             return Update(options, client);
@@ -526,7 +530,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                                                               bool? emergencyEnabled = null,
                                                                               bool? autoCorrectAddress = null,
                                                                               string streetSecondary = null,
-                                                                                ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null, System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new UpdateAddressOptions(pathSid){ PathAccountSid = pathAccountSid, FriendlyName = friendlyName, CustomerName = customerName, Street = street, City = city, Region = region, PostalCode = postalCode, EmergencyEnabled = emergencyEnabled, AutoCorrectAddress = autoCorrectAddress, StreetSecondary = streetSecondary };
             return await UpdateAsync(options, client, cancellationToken);

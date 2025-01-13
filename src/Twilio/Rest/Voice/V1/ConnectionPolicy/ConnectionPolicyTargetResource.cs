@@ -68,7 +68,7 @@ namespace Twilio.Rest.Voice.V1.ConnectionPolicy
         /// <param name="options"> Create ConnectionPolicyTarget parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ConnectionPolicyTarget </returns>
-        public static async System.Threading.Tasks.Task<ConnectionPolicyTargetResource> CreateAsync(CreateConnectionPolicyTargetOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<ConnectionPolicyTargetResource> CreateAsync(CreateConnectionPolicyTargetOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
@@ -115,7 +115,7 @@ namespace Twilio.Rest.Voice.V1.ConnectionPolicy
                                                                                   int? priority = null,
                                                                                   int? weight = null,
                                                                                   bool? enabled = null,
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateConnectionPolicyTargetOptions(pathConnectionPolicySid, target){  FriendlyName = friendlyName, Priority = priority, Weight = weight, Enabled = enabled };
             return await CreateAsync(options, client, cancellationToken);
@@ -163,7 +163,7 @@ namespace Twilio.Rest.Voice.V1.ConnectionPolicy
         /// <returns> Task that resolves to A single instance of ConnectionPolicyTarget </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteConnectionPolicyTargetOptions options, 
                                                                         ITwilioRestClient client = null,
-                                                                        CancellationToken cancellationToken = default)
+                                                                        System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client), cancellationToken);
@@ -188,7 +188,7 @@ namespace Twilio.Rest.Voice.V1.ConnectionPolicy
         /// <param name="pathSid"> The unique string that we created to identify the Target resource to delete. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ConnectionPolicyTarget </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathConnectionPolicySid, string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathConnectionPolicySid, string pathSid, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new DeleteConnectionPolicyTargetOptions(pathConnectionPolicySid, pathSid) ;
             return await DeleteAsync(options, client, cancellationToken);
@@ -230,7 +230,7 @@ namespace Twilio.Rest.Voice.V1.ConnectionPolicy
         /// <param name="options"> Fetch ConnectionPolicyTarget parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ConnectionPolicyTarget </returns>
-        public static async System.Threading.Tasks.Task<ConnectionPolicyTargetResource> FetchAsync(FetchConnectionPolicyTargetOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<ConnectionPolicyTargetResource> FetchAsync(FetchConnectionPolicyTargetOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
@@ -257,7 +257,7 @@ namespace Twilio.Rest.Voice.V1.ConnectionPolicy
         /// <param name="pathSid"> The unique string that we created to identify the Target resource to fetch. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ConnectionPolicyTarget </returns>
-        public static async System.Threading.Tasks.Task<ConnectionPolicyTargetResource> FetchAsync(string pathConnectionPolicySid, string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ConnectionPolicyTargetResource> FetchAsync(string pathConnectionPolicySid, string pathSid, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchConnectionPolicyTargetOptions(pathConnectionPolicySid, pathSid){  };
             return await FetchAsync(options, client, cancellationToken);
@@ -297,7 +297,7 @@ namespace Twilio.Rest.Voice.V1.ConnectionPolicy
         /// <param name="options"> Read ConnectionPolicyTarget parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ConnectionPolicyTarget </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<ConnectionPolicyTargetResource>> ReadAsync(ReadConnectionPolicyTargetOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<ResourceSet<ConnectionPolicyTargetResource>> ReadAsync(ReadConnectionPolicyTargetOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
@@ -333,7 +333,7 @@ namespace Twilio.Rest.Voice.V1.ConnectionPolicy
                                                                                              string pathConnectionPolicySid,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadConnectionPolicyTargetOptions(pathConnectionPolicySid){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client, cancellationToken);
@@ -427,7 +427,7 @@ namespace Twilio.Rest.Voice.V1.ConnectionPolicy
         #if !NET35
         public static async System.Threading.Tasks.Task<ConnectionPolicyTargetResource> UpdateAsync(UpdateConnectionPolicyTargetOptions options, 
                                                                                                     ITwilioRestClient client = null,
-                                                                                                    CancellationToken cancellationToken = default)
+                                                                                                    System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client), cancellationToken);
@@ -478,7 +478,7 @@ namespace Twilio.Rest.Voice.V1.ConnectionPolicy
                                                                               int? priority = null,
                                                                               int? weight = null,
                                                                               bool? enabled = null,
-                                                                                ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new UpdateConnectionPolicyTargetOptions(pathConnectionPolicySid, pathSid){ FriendlyName = friendlyName, Target = target, Priority = priority, Weight = weight, Enabled = enabled };
             return await UpdateAsync(options, client, cancellationToken);

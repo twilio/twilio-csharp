@@ -85,7 +85,7 @@ namespace Twilio.Rest.Numbers.V2
         /// <param name="options"> Create BundleClone parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of BundleClone </returns>
-        public static async System.Threading.Tasks.Task<BundleCloneResource> CreateAsync(CreateBundleCloneOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<BundleCloneResource> CreateAsync(CreateBundleCloneOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
@@ -124,7 +124,7 @@ namespace Twilio.Rest.Numbers.V2
                                                                                   string targetAccountSid,
                                                                                   bool? moveToDraft = null,
                                                                                   string friendlyName = null,
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateBundleCloneOptions(pathBundleSid, targetAccountSid){  MoveToDraft = moveToDraft, FriendlyName = friendlyName };
             return await CreateAsync(options, client, cancellationToken);

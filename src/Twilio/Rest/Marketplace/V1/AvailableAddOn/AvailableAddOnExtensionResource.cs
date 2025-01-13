@@ -69,7 +69,7 @@ namespace Twilio.Rest.Marketplace.V1.AvailableAddOn
         /// <param name="options"> Fetch AvailableAddOnExtension parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AvailableAddOnExtension </returns>
-        public static async System.Threading.Tasks.Task<AvailableAddOnExtensionResource> FetchAsync(FetchAvailableAddOnExtensionOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<AvailableAddOnExtensionResource> FetchAsync(FetchAvailableAddOnExtensionOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
@@ -96,7 +96,7 @@ namespace Twilio.Rest.Marketplace.V1.AvailableAddOn
         /// <param name="pathSid"> The SID of the AvailableAddOn Extension resource to fetch. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AvailableAddOnExtension </returns>
-        public static async System.Threading.Tasks.Task<AvailableAddOnExtensionResource> FetchAsync(string pathAvailableAddOnSid, string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AvailableAddOnExtensionResource> FetchAsync(string pathAvailableAddOnSid, string pathSid, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchAvailableAddOnExtensionOptions(pathAvailableAddOnSid, pathSid){  };
             return await FetchAsync(options, client, cancellationToken);
@@ -136,7 +136,7 @@ namespace Twilio.Rest.Marketplace.V1.AvailableAddOn
         /// <param name="options"> Read AvailableAddOnExtension parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AvailableAddOnExtension </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<AvailableAddOnExtensionResource>> ReadAsync(ReadAvailableAddOnExtensionOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<ResourceSet<AvailableAddOnExtensionResource>> ReadAsync(ReadAvailableAddOnExtensionOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
@@ -172,7 +172,7 @@ namespace Twilio.Rest.Marketplace.V1.AvailableAddOn
                                                                                              string pathAvailableAddOnSid,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadAvailableAddOnExtensionOptions(pathAvailableAddOnSid){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client, cancellationToken);

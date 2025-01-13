@@ -73,7 +73,7 @@ namespace Twilio.Rest.Microvisor.V1
         /// <returns> Task that resolves to A single instance of App </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteAppOptions options, 
                                                                         ITwilioRestClient client = null,
-                                                                        CancellationToken cancellationToken = default)
+                                                                        System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client), cancellationToken);
@@ -96,7 +96,7 @@ namespace Twilio.Rest.Microvisor.V1
         /// <param name="pathSid"> A 34-character string that uniquely identifies this App. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of App </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new DeleteAppOptions(pathSid) ;
             return await DeleteAsync(options, client, cancellationToken);
@@ -136,7 +136,7 @@ namespace Twilio.Rest.Microvisor.V1
         /// <param name="options"> Fetch App parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of App </returns>
-        public static async System.Threading.Tasks.Task<AppResource> FetchAsync(FetchAppOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<AppResource> FetchAsync(FetchAppOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
@@ -160,7 +160,7 @@ namespace Twilio.Rest.Microvisor.V1
         /// <param name="pathSid"> A 34-character string that uniquely identifies this App. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of App </returns>
-        public static async System.Threading.Tasks.Task<AppResource> FetchAsync(string pathSid, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<AppResource> FetchAsync(string pathSid, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchAppOptions(pathSid){  };
             return await FetchAsync(options, client, cancellationToken);
@@ -198,7 +198,7 @@ namespace Twilio.Rest.Microvisor.V1
         /// <param name="options"> Read App parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of App </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<AppResource>> ReadAsync(ReadAppOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<ResourceSet<AppResource>> ReadAsync(ReadAppOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
@@ -230,7 +230,7 @@ namespace Twilio.Rest.Microvisor.V1
         public static async System.Threading.Tasks.Task<ResourceSet<AppResource>> ReadAsync(
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadAppOptions(){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client, cancellationToken);

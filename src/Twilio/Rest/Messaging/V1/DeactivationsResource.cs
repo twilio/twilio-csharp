@@ -65,7 +65,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="options"> Fetch Deactivations parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Deactivations </returns>
-        public static async System.Threading.Tasks.Task<DeactivationsResource> FetchAsync(FetchDeactivationsOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<DeactivationsResource> FetchAsync(FetchDeactivationsOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
@@ -89,7 +89,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="date"> The request will return a list of all United States Phone Numbers that were deactivated on the day specified by this parameter. This date should be specified in YYYY-MM-DD format. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Deactivations </returns>
-        public static async System.Threading.Tasks.Task<DeactivationsResource> FetchAsync(DateTime? date = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<DeactivationsResource> FetchAsync(DateTime? date = null, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchDeactivationsOptions(){ Date = date };
             return await FetchAsync(options, client, cancellationToken);

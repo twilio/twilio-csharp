@@ -77,7 +77,7 @@ namespace Twilio.Rest.Iam.V1
         /// <param name="options"> Create Key parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Key </returns>
-        public static async System.Threading.Tasks.Task<KeyResource> CreateAsync(CreateKeyOptions options, ITwilioRestClient client = null, CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<KeyResource> CreateAsync(CreateKeyOptions options, ITwilioRestClient client = null, System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
@@ -117,7 +117,7 @@ namespace Twilio.Rest.Iam.V1
                                                                                   KeyResource.KeytypeEnum keyType = null,
                                                                                   object policy = null,
                                                                                   ITwilioRestClient client = null,
-                                                                                  CancellationToken cancellationToken = default)
+                                                                                  System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateKeyOptions(accountSid){  FriendlyName = friendlyName, KeyType = keyType, Policy = policy };
             return await CreateAsync(options, client, cancellationToken);

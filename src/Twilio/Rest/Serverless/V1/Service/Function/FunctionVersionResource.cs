@@ -85,7 +85,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
         /// <param name="options"> Fetch FunctionVersion parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of FunctionVersion </returns>
-        public static async System.Threading.Tasks.Task<FunctionVersionResource> FetchAsync(FetchFunctionVersionOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<FunctionVersionResource> FetchAsync(FetchFunctionVersionOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
@@ -115,7 +115,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
         /// <param name="pathSid"> The SID of the Function Version resource to fetch. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of FunctionVersion </returns>
-        public static async System.Threading.Tasks.Task<FunctionVersionResource> FetchAsync(string pathServiceSid, string pathFunctionSid, string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<FunctionVersionResource> FetchAsync(string pathServiceSid, string pathFunctionSid, string pathSid, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchFunctionVersionOptions(pathServiceSid, pathFunctionSid, pathSid){  };
             return await FetchAsync(options, client, cancellationToken);
@@ -157,7 +157,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
         /// <param name="options"> Read FunctionVersion parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of FunctionVersion </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<FunctionVersionResource>> ReadAsync(ReadFunctionVersionOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<ResourceSet<FunctionVersionResource>> ReadAsync(ReadFunctionVersionOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
@@ -197,7 +197,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
                                                                                              string pathFunctionSid,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadFunctionVersionOptions(pathServiceSid, pathFunctionSid){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client, cancellationToken);

@@ -66,7 +66,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="options"> Create PluginRelease parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PluginRelease </returns>
-        public static async System.Threading.Tasks.Task<PluginReleaseResource> CreateAsync(CreatePluginReleaseOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<PluginReleaseResource> CreateAsync(CreatePluginReleaseOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
@@ -97,7 +97,7 @@ namespace Twilio.Rest.FlexApi.V1
         public static async System.Threading.Tasks.Task<PluginReleaseResource> CreateAsync(
                                                                                   string configurationId,
                                                                                   string flexMetadata = null,
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreatePluginReleaseOptions(configurationId){  FlexMetadata = flexMetadata };
             return await CreateAsync(options, client, cancellationToken);
@@ -137,7 +137,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="options"> Fetch PluginRelease parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PluginRelease </returns>
-        public static async System.Threading.Tasks.Task<PluginReleaseResource> FetchAsync(FetchPluginReleaseOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<PluginReleaseResource> FetchAsync(FetchPluginReleaseOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
@@ -164,7 +164,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="flexMetadata"> The Flex-Metadata HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PluginRelease </returns>
-        public static async System.Threading.Tasks.Task<PluginReleaseResource> FetchAsync(string pathSid, string flexMetadata = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<PluginReleaseResource> FetchAsync(string pathSid, string flexMetadata = null, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchPluginReleaseOptions(pathSid){ FlexMetadata = flexMetadata };
             return await FetchAsync(options, client, cancellationToken);
@@ -202,7 +202,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="options"> Read PluginRelease parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PluginRelease </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<PluginReleaseResource>> ReadAsync(ReadPluginReleaseOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<ResourceSet<PluginReleaseResource>> ReadAsync(ReadPluginReleaseOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
@@ -238,7 +238,7 @@ namespace Twilio.Rest.FlexApi.V1
                                                                                              string flexMetadata = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadPluginReleaseOptions(){ FlexMetadata = flexMetadata, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client, cancellationToken);

@@ -269,7 +269,7 @@ namespace Twilio.Rest.PreviewIam.Organizations
         /// <param name="options"> Create User parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of User </returns>
-        public static async System.Threading.Tasks.Task<UserResource> CreateAsync(CreateUserOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<UserResource> CreateAsync(CreateUserOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
@@ -300,7 +300,7 @@ namespace Twilio.Rest.PreviewIam.Organizations
         public static async System.Threading.Tasks.Task<UserResource> CreateAsync(
                                                                                   string pathOrganizationSid,
                                                                                   UserResource.ScimUser scimUser,
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateUserOptions(pathOrganizationSid, scimUser){  };
             return await CreateAsync(options, client, cancellationToken);
@@ -348,7 +348,7 @@ namespace Twilio.Rest.PreviewIam.Organizations
         /// <returns> Task that resolves to A single instance of User </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteUserOptions options, 
                                                                         ITwilioRestClient client = null,
-                                                                        CancellationToken cancellationToken = default)
+                                                                        System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client), cancellationToken);
@@ -373,7 +373,7 @@ namespace Twilio.Rest.PreviewIam.Organizations
         /// <param name="pathUserSid">  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of User </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathOrganizationSid, string pathUserSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathOrganizationSid, string pathUserSid, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new DeleteUserOptions(pathOrganizationSid, pathUserSid) ;
             return await DeleteAsync(options, client, cancellationToken);
@@ -415,7 +415,7 @@ namespace Twilio.Rest.PreviewIam.Organizations
         /// <param name="options"> Fetch User parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of User </returns>
-        public static async System.Threading.Tasks.Task<UserResource> FetchAsync(FetchUserOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<UserResource> FetchAsync(FetchUserOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
@@ -442,7 +442,7 @@ namespace Twilio.Rest.PreviewIam.Organizations
         /// <param name="pathUserSid">  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of User </returns>
-        public static async System.Threading.Tasks.Task<UserResource> FetchAsync(string pathOrganizationSid, string pathUserSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<UserResource> FetchAsync(string pathOrganizationSid, string pathUserSid, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchUserOptions(pathOrganizationSid, pathUserSid){  };
             return await FetchAsync(options, client, cancellationToken);
@@ -482,7 +482,7 @@ namespace Twilio.Rest.PreviewIam.Organizations
         /// <param name="options"> Read User parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of User </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<UserResource>> ReadAsync(ReadUserOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<ResourceSet<UserResource>> ReadAsync(ReadUserOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
@@ -518,7 +518,7 @@ namespace Twilio.Rest.PreviewIam.Organizations
                                                                                              string pathOrganizationSid,
                                                                                              string filter = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadUserOptions(pathOrganizationSid){ Filter = filter, Limit = limit};
             return await ReadAsync(options, client, cancellationToken);
@@ -613,7 +613,7 @@ namespace Twilio.Rest.PreviewIam.Organizations
         #if !NET35
         public static async System.Threading.Tasks.Task<UserResource> UpdateAsync(UpdateUserOptions options, 
                                                                                                     ITwilioRestClient client = null,
-                                                                                                    CancellationToken cancellationToken = default)
+                                                                                                    System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client), cancellationToken);
@@ -652,7 +652,7 @@ namespace Twilio.Rest.PreviewIam.Organizations
                                                                               string pathUserSid,
                                                                               UserResource.ScimUser scimUser,
                                                                               string ifMatch = null,
-                                                                                ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new UpdateUserOptions(pathOrganizationSid, pathUserSid, scimUser){ IfMatch = ifMatch };
             return await UpdateAsync(options, client, cancellationToken);

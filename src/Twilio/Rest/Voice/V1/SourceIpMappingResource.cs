@@ -66,7 +66,7 @@ namespace Twilio.Rest.Voice.V1
         /// <param name="options"> Create SourceIpMapping parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SourceIpMapping </returns>
-        public static async System.Threading.Tasks.Task<SourceIpMappingResource> CreateAsync(CreateSourceIpMappingOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<SourceIpMappingResource> CreateAsync(CreateSourceIpMappingOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
@@ -97,7 +97,7 @@ namespace Twilio.Rest.Voice.V1
         public static async System.Threading.Tasks.Task<SourceIpMappingResource> CreateAsync(
                                                                                   string ipRecordSid,
                                                                                   string sipDomainSid,
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateSourceIpMappingOptions(ipRecordSid, sipDomainSid){  };
             return await CreateAsync(options, client, cancellationToken);
@@ -143,7 +143,7 @@ namespace Twilio.Rest.Voice.V1
         /// <returns> Task that resolves to A single instance of SourceIpMapping </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteSourceIpMappingOptions options, 
                                                                         ITwilioRestClient client = null,
-                                                                        CancellationToken cancellationToken = default)
+                                                                        System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client), cancellationToken);
@@ -166,7 +166,7 @@ namespace Twilio.Rest.Voice.V1
         /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the IP Record resource to delete. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SourceIpMapping </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new DeleteSourceIpMappingOptions(pathSid) ;
             return await DeleteAsync(options, client, cancellationToken);
@@ -206,7 +206,7 @@ namespace Twilio.Rest.Voice.V1
         /// <param name="options"> Fetch SourceIpMapping parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SourceIpMapping </returns>
-        public static async System.Threading.Tasks.Task<SourceIpMappingResource> FetchAsync(FetchSourceIpMappingOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<SourceIpMappingResource> FetchAsync(FetchSourceIpMappingOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
@@ -230,7 +230,7 @@ namespace Twilio.Rest.Voice.V1
         /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the IP Record resource to fetch. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SourceIpMapping </returns>
-        public static async System.Threading.Tasks.Task<SourceIpMappingResource> FetchAsync(string pathSid, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<SourceIpMappingResource> FetchAsync(string pathSid, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchSourceIpMappingOptions(pathSid){  };
             return await FetchAsync(options, client, cancellationToken);
@@ -268,7 +268,7 @@ namespace Twilio.Rest.Voice.V1
         /// <param name="options"> Read SourceIpMapping parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SourceIpMapping </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<SourceIpMappingResource>> ReadAsync(ReadSourceIpMappingOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<ResourceSet<SourceIpMappingResource>> ReadAsync(ReadSourceIpMappingOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
@@ -300,7 +300,7 @@ namespace Twilio.Rest.Voice.V1
         public static async System.Threading.Tasks.Task<ResourceSet<SourceIpMappingResource>> ReadAsync(
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadSourceIpMappingOptions(){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client, cancellationToken);
@@ -392,7 +392,7 @@ namespace Twilio.Rest.Voice.V1
         #if !NET35
         public static async System.Threading.Tasks.Task<SourceIpMappingResource> UpdateAsync(UpdateSourceIpMappingOptions options, 
                                                                                                     ITwilioRestClient client = null,
-                                                                                                    CancellationToken cancellationToken = default)
+                                                                                                    System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client), cancellationToken);
@@ -423,7 +423,7 @@ namespace Twilio.Rest.Voice.V1
         public static async System.Threading.Tasks.Task<SourceIpMappingResource> UpdateAsync(
                                                                               string pathSid,
                                                                               string sipDomainSid,
-                                                                                ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new UpdateSourceIpMappingOptions(pathSid, sipDomainSid){  };
             return await UpdateAsync(options, client, cancellationToken);

@@ -71,7 +71,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Function.FunctionVersion
         /// <param name="options"> Fetch FunctionVersionContent parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of FunctionVersionContent </returns>
-        public static async System.Threading.Tasks.Task<FunctionVersionContentResource> FetchAsync(FetchFunctionVersionContentOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<FunctionVersionContentResource> FetchAsync(FetchFunctionVersionContentOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
@@ -101,7 +101,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Function.FunctionVersion
         /// <param name="pathSid"> The SID of the Function Version content to fetch. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of FunctionVersionContent </returns>
-        public static async System.Threading.Tasks.Task<FunctionVersionContentResource> FetchAsync(string pathServiceSid, string pathFunctionSid, string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<FunctionVersionContentResource> FetchAsync(string pathServiceSid, string pathFunctionSid, string pathSid, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchFunctionVersionContentOptions(pathServiceSid, pathFunctionSid, pathSid){  };
             return await FetchAsync(options, client, cancellationToken);

@@ -69,7 +69,7 @@ namespace Twilio.Rest.FlexApi.V1.PluginConfiguration
         /// <param name="options"> Fetch ConfiguredPlugin parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ConfiguredPlugin </returns>
-        public static async System.Threading.Tasks.Task<ConfiguredPluginResource> FetchAsync(FetchConfiguredPluginOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<ConfiguredPluginResource> FetchAsync(FetchConfiguredPluginOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
@@ -99,7 +99,7 @@ namespace Twilio.Rest.FlexApi.V1.PluginConfiguration
         /// <param name="flexMetadata"> The Flex-Metadata HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ConfiguredPlugin </returns>
-        public static async System.Threading.Tasks.Task<ConfiguredPluginResource> FetchAsync(string pathConfigurationSid, string pathPluginSid, string flexMetadata = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ConfiguredPluginResource> FetchAsync(string pathConfigurationSid, string pathPluginSid, string flexMetadata = null, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchConfiguredPluginOptions(pathConfigurationSid, pathPluginSid){ FlexMetadata = flexMetadata };
             return await FetchAsync(options, client, cancellationToken);
@@ -139,7 +139,7 @@ namespace Twilio.Rest.FlexApi.V1.PluginConfiguration
         /// <param name="options"> Read ConfiguredPlugin parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ConfiguredPlugin </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<ConfiguredPluginResource>> ReadAsync(ReadConfiguredPluginOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<ResourceSet<ConfiguredPluginResource>> ReadAsync(ReadConfiguredPluginOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
@@ -179,7 +179,7 @@ namespace Twilio.Rest.FlexApi.V1.PluginConfiguration
                                                                                              string flexMetadata = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadConfiguredPluginOptions(pathConfigurationSid){ FlexMetadata = flexMetadata, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client, cancellationToken);

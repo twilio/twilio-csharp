@@ -116,7 +116,7 @@ namespace Twilio.Rest.FlexApi.V1.Interaction
         /// <param name="options"> Fetch InteractionChannel parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InteractionChannel </returns>
-        public static async System.Threading.Tasks.Task<InteractionChannelResource> FetchAsync(FetchInteractionChannelOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<InteractionChannelResource> FetchAsync(FetchInteractionChannelOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
@@ -143,7 +143,7 @@ namespace Twilio.Rest.FlexApi.V1.Interaction
         /// <param name="pathSid"> The unique string created by Twilio to identify an Interaction Channel resource, prefixed with UO. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InteractionChannel </returns>
-        public static async System.Threading.Tasks.Task<InteractionChannelResource> FetchAsync(string pathInteractionSid, string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<InteractionChannelResource> FetchAsync(string pathInteractionSid, string pathSid, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchInteractionChannelOptions(pathInteractionSid, pathSid){  };
             return await FetchAsync(options, client, cancellationToken);
@@ -183,7 +183,7 @@ namespace Twilio.Rest.FlexApi.V1.Interaction
         /// <param name="options"> Read InteractionChannel parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InteractionChannel </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<InteractionChannelResource>> ReadAsync(ReadInteractionChannelOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<ResourceSet<InteractionChannelResource>> ReadAsync(ReadInteractionChannelOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
@@ -219,7 +219,7 @@ namespace Twilio.Rest.FlexApi.V1.Interaction
                                                                                              string pathInteractionSid,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadInteractionChannelOptions(pathInteractionSid){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client, cancellationToken);
@@ -313,7 +313,7 @@ namespace Twilio.Rest.FlexApi.V1.Interaction
         #if !NET35
         public static async System.Threading.Tasks.Task<InteractionChannelResource> UpdateAsync(UpdateInteractionChannelOptions options, 
                                                                                                     ITwilioRestClient client = null,
-                                                                                                    CancellationToken cancellationToken = default)
+                                                                                                    System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client), cancellationToken);
@@ -352,7 +352,7 @@ namespace Twilio.Rest.FlexApi.V1.Interaction
                                                                               string pathSid,
                                                                               InteractionChannelResource.UpdateChannelStatusEnum status,
                                                                               object routing = null,
-                                                                                ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new UpdateInteractionChannelOptions(pathInteractionSid, pathSid, status){ Routing = routing };
             return await UpdateAsync(options, client, cancellationToken);

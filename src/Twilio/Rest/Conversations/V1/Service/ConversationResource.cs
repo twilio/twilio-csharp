@@ -94,7 +94,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// <param name="options"> Create Conversation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Conversation </returns>
-        public static async System.Threading.Tasks.Task<ConversationResource> CreateAsync(CreateConversationOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<ConversationResource> CreateAsync(CreateConversationOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
@@ -169,7 +169,7 @@ namespace Twilio.Rest.Conversations.V1.Service
                                                                                   string bindingsEmailAddress = null,
                                                                                   string bindingsEmailName = null,
                                                                                   ConversationResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateConversationOptions(pathChatServiceSid){  FriendlyName = friendlyName, UniqueName = uniqueName, Attributes = attributes, MessagingServiceSid = messagingServiceSid, DateCreated = dateCreated, DateUpdated = dateUpdated, State = state, TimersInactive = timersInactive, TimersClosed = timersClosed, BindingsEmailAddress = bindingsEmailAddress, BindingsEmailName = bindingsEmailName, XTwilioWebhookEnabled = xTwilioWebhookEnabled };
             return await CreateAsync(options, client, cancellationToken);
@@ -217,7 +217,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// <returns> Task that resolves to A single instance of Conversation </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteConversationOptions options, 
                                                                         ITwilioRestClient client = null,
-                                                                        CancellationToken cancellationToken = default)
+                                                                        System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client), cancellationToken);
@@ -244,7 +244,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Conversation </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathChatServiceSid, string pathSid, ConversationResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathChatServiceSid, string pathSid, ConversationResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new DeleteConversationOptions(pathChatServiceSid, pathSid)  { XTwilioWebhookEnabled = xTwilioWebhookEnabled };
             return await DeleteAsync(options, client, cancellationToken);
@@ -286,7 +286,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// <param name="options"> Fetch Conversation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Conversation </returns>
-        public static async System.Threading.Tasks.Task<ConversationResource> FetchAsync(FetchConversationOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<ConversationResource> FetchAsync(FetchConversationOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
@@ -313,7 +313,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. Can also be the `unique_name` of the Conversation. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Conversation </returns>
-        public static async System.Threading.Tasks.Task<ConversationResource> FetchAsync(string pathChatServiceSid, string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ConversationResource> FetchAsync(string pathChatServiceSid, string pathSid, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchConversationOptions(pathChatServiceSid, pathSid){  };
             return await FetchAsync(options, client, cancellationToken);
@@ -353,7 +353,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// <param name="options"> Read Conversation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Conversation </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<ConversationResource>> ReadAsync(ReadConversationOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<ResourceSet<ConversationResource>> ReadAsync(ReadConversationOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
@@ -401,7 +401,7 @@ namespace Twilio.Rest.Conversations.V1.Service
                                                                                              ConversationResource.StateEnum state = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadConversationOptions(pathChatServiceSid){ StartDate = startDate, EndDate = endDate, State = state, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client, cancellationToken);
@@ -495,7 +495,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         #if !NET35
         public static async System.Threading.Tasks.Task<ConversationResource> UpdateAsync(UpdateConversationOptions options, 
                                                                                                     ITwilioRestClient client = null,
-                                                                                                    CancellationToken cancellationToken = default)
+                                                                                                    System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client), cancellationToken);
@@ -574,7 +574,7 @@ namespace Twilio.Rest.Conversations.V1.Service
                                                                               string bindingsEmailAddress = null,
                                                                               string bindingsEmailName = null,
                                                                               ConversationResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
-                                                                                ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new UpdateConversationOptions(pathChatServiceSid, pathSid){ FriendlyName = friendlyName, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes, MessagingServiceSid = messagingServiceSid, State = state, TimersInactive = timersInactive, TimersClosed = timersClosed, UniqueName = uniqueName, BindingsEmailAddress = bindingsEmailAddress, BindingsEmailName = bindingsEmailName, XTwilioWebhookEnabled = xTwilioWebhookEnabled };
             return await UpdateAsync(options, client, cancellationToken);

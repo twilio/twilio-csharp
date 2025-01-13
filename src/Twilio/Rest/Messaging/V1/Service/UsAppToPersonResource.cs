@@ -68,7 +68,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <param name="options"> Create UsAppToPerson parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of UsAppToPerson </returns>
-        public static async System.Threading.Tasks.Task<UsAppToPersonResource> CreateAsync(CreateUsAppToPersonOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<UsAppToPersonResource> CreateAsync(CreateUsAppToPersonOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
@@ -159,7 +159,7 @@ namespace Twilio.Rest.Messaging.V1.Service
                                                                                   bool? subscriberOptIn = null,
                                                                                   bool? ageGated = null,
                                                                                   bool? directLending = null,
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null, System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateUsAppToPersonOptions(pathMessagingServiceSid, brandRegistrationSid, description, messageFlow, messageSamples, usAppToPersonUsecase, hasEmbeddedLinks, hasEmbeddedPhone){  OptInMessage = optInMessage, OptOutMessage = optOutMessage, HelpMessage = helpMessage, OptInKeywords = optInKeywords, OptOutKeywords = optOutKeywords, HelpKeywords = helpKeywords, SubscriberOptIn = subscriberOptIn, AgeGated = ageGated, DirectLending = directLending };
             return await CreateAsync(options, client, cancellationToken);
@@ -207,7 +207,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <returns> Task that resolves to A single instance of UsAppToPerson </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteUsAppToPersonOptions options, 
                                                                         ITwilioRestClient client = null,
-                                                                        CancellationToken cancellationToken = default)
+                                                                        System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client), cancellationToken);
@@ -232,7 +232,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <param name="pathSid"> The SID of the US A2P Compliance resource to delete `QE2c6890da8086d771620e9b13fadeba0b`. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of UsAppToPerson </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathMessagingServiceSid, string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathMessagingServiceSid, string pathSid, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new DeleteUsAppToPersonOptions(pathMessagingServiceSid, pathSid) ;
             return await DeleteAsync(options, client, cancellationToken);
@@ -274,7 +274,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <param name="options"> Fetch UsAppToPerson parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of UsAppToPerson </returns>
-        public static async System.Threading.Tasks.Task<UsAppToPersonResource> FetchAsync(FetchUsAppToPersonOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<UsAppToPersonResource> FetchAsync(FetchUsAppToPersonOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
@@ -301,7 +301,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <param name="pathSid"> The SID of the US A2P Compliance resource to fetch `QE2c6890da8086d771620e9b13fadeba0b`. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of UsAppToPerson </returns>
-        public static async System.Threading.Tasks.Task<UsAppToPersonResource> FetchAsync(string pathMessagingServiceSid, string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<UsAppToPersonResource> FetchAsync(string pathMessagingServiceSid, string pathSid, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchUsAppToPersonOptions(pathMessagingServiceSid, pathSid){  };
             return await FetchAsync(options, client, cancellationToken);
@@ -341,7 +341,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <param name="options"> Read UsAppToPerson parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of UsAppToPerson </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<UsAppToPersonResource>> ReadAsync(ReadUsAppToPersonOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<ResourceSet<UsAppToPersonResource>> ReadAsync(ReadUsAppToPersonOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
@@ -377,7 +377,7 @@ namespace Twilio.Rest.Messaging.V1.Service
                                                                                              string pathMessagingServiceSid,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadUsAppToPersonOptions(pathMessagingServiceSid){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client, cancellationToken);
@@ -471,7 +471,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         #if !NET35
         public static async System.Threading.Tasks.Task<UsAppToPersonResource> UpdateAsync(UpdateUsAppToPersonOptions options, 
                                                                                                     ITwilioRestClient client = null,
-                                                                                                    CancellationToken cancellationToken = default)
+                                                                                                    System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client), cancellationToken);
@@ -530,7 +530,7 @@ namespace Twilio.Rest.Messaging.V1.Service
                                                                               string description,
                                                                               bool? ageGated,
                                                                               bool? directLending,
-                                                                                ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null, System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new UpdateUsAppToPersonOptions(pathMessagingServiceSid, pathSid, hasEmbeddedLinks, hasEmbeddedPhone, messageSamples, messageFlow, description, ageGated, directLending){  };
             return await UpdateAsync(options, client, cancellationToken);

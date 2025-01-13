@@ -65,7 +65,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="options"> Read InsightsConversations parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InsightsConversations </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<InsightsConversationsResource>> ReadAsync(ReadInsightsConversationsOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<ResourceSet<InsightsConversationsResource>> ReadAsync(ReadInsightsConversationsOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
@@ -105,7 +105,7 @@ namespace Twilio.Rest.FlexApi.V1
                                                                                              string segmentId = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadInsightsConversationsOptions(){ Authorization = authorization, SegmentId = segmentId, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client, cancellationToken);

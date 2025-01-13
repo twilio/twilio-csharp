@@ -83,7 +83,7 @@ namespace Twilio.Rest.Supersim.V1
         /// <param name="options"> Create EsimProfile parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of EsimProfile </returns>
-        public static async System.Threading.Tasks.Task<EsimProfileResource> CreateAsync(CreateEsimProfileOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<EsimProfileResource> CreateAsync(CreateEsimProfileOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
@@ -122,7 +122,7 @@ namespace Twilio.Rest.Supersim.V1
                                                                                   Twilio.Http.HttpMethod callbackMethod = null,
                                                                                   bool? generateMatchingId = null,
                                                                                   string eid = null,
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateEsimProfileOptions(){  CallbackUrl = callbackUrl, CallbackMethod = callbackMethod, GenerateMatchingId = generateMatchingId, Eid = eid };
             return await CreateAsync(options, client, cancellationToken);
@@ -162,7 +162,7 @@ namespace Twilio.Rest.Supersim.V1
         /// <param name="options"> Fetch EsimProfile parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of EsimProfile </returns>
-        public static async System.Threading.Tasks.Task<EsimProfileResource> FetchAsync(FetchEsimProfileOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<EsimProfileResource> FetchAsync(FetchEsimProfileOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
@@ -186,7 +186,7 @@ namespace Twilio.Rest.Supersim.V1
         /// <param name="pathSid"> The SID of the eSIM Profile resource to fetch. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of EsimProfile </returns>
-        public static async System.Threading.Tasks.Task<EsimProfileResource> FetchAsync(string pathSid, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<EsimProfileResource> FetchAsync(string pathSid, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchEsimProfileOptions(pathSid){  };
             return await FetchAsync(options, client, cancellationToken);
@@ -224,7 +224,7 @@ namespace Twilio.Rest.Supersim.V1
         /// <param name="options"> Read EsimProfile parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of EsimProfile </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<EsimProfileResource>> ReadAsync(ReadEsimProfileOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<ResourceSet<EsimProfileResource>> ReadAsync(ReadEsimProfileOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
@@ -268,7 +268,7 @@ namespace Twilio.Rest.Supersim.V1
                                                                                              EsimProfileResource.StatusEnum status = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadEsimProfileOptions(){ Eid = eid, SimSid = simSid, Status = status, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client, cancellationToken);

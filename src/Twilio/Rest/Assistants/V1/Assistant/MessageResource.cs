@@ -119,7 +119,7 @@ namespace Twilio.Rest.Assistants.V1.Assistant
         /// <param name="options"> Create Message parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Message </returns>
-        public static async System.Threading.Tasks.Task<MessageResource> CreateAsync(CreateMessageOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<MessageResource> CreateAsync(CreateMessageOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
@@ -150,7 +150,7 @@ namespace Twilio.Rest.Assistants.V1.Assistant
         public static async System.Threading.Tasks.Task<MessageResource> CreateAsync(
                                                                                   string pathId,
                                                                                   MessageResource.AssistantsV1ServiceAssistantSendMessageRequest assistantsV1ServiceAssistantSendMessageRequest,
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateMessageOptions(pathId, assistantsV1ServiceAssistantSendMessageRequest){  };
             return await CreateAsync(options, client, cancellationToken);

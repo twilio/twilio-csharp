@@ -91,7 +91,7 @@ namespace Twilio.Rest.Conversations.V1.Configuration
         /// <param name="options"> Fetch Webhook parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Webhook </returns>
-        public static async System.Threading.Tasks.Task<WebhookResource> FetchAsync(FetchWebhookOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<WebhookResource> FetchAsync(FetchWebhookOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
@@ -112,7 +112,7 @@ namespace Twilio.Rest.Conversations.V1.Configuration
         /// <summary> fetch </summary>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Webhook </returns>
-        public static async System.Threading.Tasks.Task<WebhookResource> FetchAsync(ITwilioRestClient client = null, CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<WebhookResource> FetchAsync(ITwilioRestClient client = null, System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchWebhookOptions(){  };
             return await FetchAsync(options, client, cancellationToken);
@@ -153,7 +153,7 @@ namespace Twilio.Rest.Conversations.V1.Configuration
         #if !NET35
         public static async System.Threading.Tasks.Task<WebhookResource> UpdateAsync(UpdateWebhookOptions options, 
                                                                                                     ITwilioRestClient client = null,
-                                                                                                    CancellationToken cancellationToken = default)
+                                                                                                    System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client), cancellationToken);
@@ -196,7 +196,7 @@ namespace Twilio.Rest.Conversations.V1.Configuration
                                                                               string preWebhookUrl = null,
                                                                               string postWebhookUrl = null,
                                                                               WebhookResource.TargetEnum target = null,
-                                                                                ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null, System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new UpdateWebhookOptions(){ Method = method, Filters = filters, PreWebhookUrl = preWebhookUrl, PostWebhookUrl = postWebhookUrl, Target = target };
             return await UpdateAsync(options, client, cancellationToken);

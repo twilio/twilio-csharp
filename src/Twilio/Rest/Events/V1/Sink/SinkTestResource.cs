@@ -68,7 +68,7 @@ namespace Twilio.Rest.Events.V1.Sink
         /// <param name="options"> Create SinkTest parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SinkTest </returns>
-        public static async System.Threading.Tasks.Task<SinkTestResource> CreateAsync(CreateSinkTestOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<SinkTestResource> CreateAsync(CreateSinkTestOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
@@ -95,7 +95,7 @@ namespace Twilio.Rest.Events.V1.Sink
         /// <returns> Task that resolves to A single instance of SinkTest </returns>
         public static async System.Threading.Tasks.Task<SinkTestResource> CreateAsync(
                                                                                   string pathSid,
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateSinkTestOptions(pathSid){  };
             return await CreateAsync(options, client, cancellationToken);

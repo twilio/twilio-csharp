@@ -68,7 +68,7 @@ namespace Twilio.Rest.Accounts.V1
         #if !NET35
         public static async System.Threading.Tasks.Task<AuthTokenPromotionResource> UpdateAsync(UpdateAuthTokenPromotionOptions options, 
                                                                                                     ITwilioRestClient client = null,
-                                                                                                    CancellationToken cancellationToken = default)
+                                                                                                    System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client), cancellationToken);
@@ -92,7 +92,7 @@ namespace Twilio.Rest.Accounts.V1
         /// <returns> Task that resolves to A single instance of AuthTokenPromotion </returns>
         public static async System.Threading.Tasks.Task<AuthTokenPromotionResource> UpdateAsync(
                                                                                 ITwilioRestClient client = null,
-                                                                                CancellationToken cancellationToken = default)
+                                                                                System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new UpdateAuthTokenPromotionOptions(){  };
             return await UpdateAsync(options, client, cancellationToken);

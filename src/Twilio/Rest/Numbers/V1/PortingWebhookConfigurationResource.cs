@@ -67,7 +67,7 @@ namespace Twilio.Rest.Numbers.V1
         /// <param name="options"> Create PortingWebhookConfiguration parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PortingWebhookConfiguration </returns>
-        public static async System.Threading.Tasks.Task<PortingWebhookConfigurationResource> CreateAsync(CreatePortingWebhookConfigurationOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<PortingWebhookConfigurationResource> CreateAsync(CreatePortingWebhookConfigurationOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
@@ -91,7 +91,7 @@ namespace Twilio.Rest.Numbers.V1
         /// <returns> Task that resolves to A single instance of PortingWebhookConfiguration </returns>
         public static async System.Threading.Tasks.Task<PortingWebhookConfigurationResource> CreateAsync(
                                                                                     ITwilioRestClient client = null,
-                                                                                    CancellationToken cancellationToken = default)
+                                                                                    System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreatePortingWebhookConfigurationOptions(){  };
             return await CreateAsync(options, client, cancellationToken);

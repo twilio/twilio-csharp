@@ -68,7 +68,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="options"> Create TaskChannel parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TaskChannel </returns>
-        public static async System.Threading.Tasks.Task<TaskChannelResource> CreateAsync(CreateTaskChannelOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<TaskChannelResource> CreateAsync(CreateTaskChannelOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
@@ -107,7 +107,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                                                                                   string friendlyName,
                                                                                   string uniqueName,
                                                                                   bool? channelOptimizedRouting = null,
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateTaskChannelOptions(pathWorkspaceSid, friendlyName, uniqueName){  ChannelOptimizedRouting = channelOptimizedRouting };
             return await CreateAsync(options, client, cancellationToken);
@@ -155,7 +155,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <returns> Task that resolves to A single instance of TaskChannel </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteTaskChannelOptions options, 
                                                                         ITwilioRestClient client = null,
-                                                                        CancellationToken cancellationToken = default)
+                                                                        System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client), cancellationToken);
@@ -180,7 +180,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="pathSid"> The SID of the Task Channel resource to delete. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TaskChannel </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathWorkspaceSid, string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathWorkspaceSid, string pathSid, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new DeleteTaskChannelOptions(pathWorkspaceSid, pathSid) ;
             return await DeleteAsync(options, client, cancellationToken);
@@ -222,7 +222,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="options"> Fetch TaskChannel parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TaskChannel </returns>
-        public static async System.Threading.Tasks.Task<TaskChannelResource> FetchAsync(FetchTaskChannelOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<TaskChannelResource> FetchAsync(FetchTaskChannelOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
@@ -249,7 +249,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="pathSid"> The SID of the Task Channel resource to fetch. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TaskChannel </returns>
-        public static async System.Threading.Tasks.Task<TaskChannelResource> FetchAsync(string pathWorkspaceSid, string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<TaskChannelResource> FetchAsync(string pathWorkspaceSid, string pathSid, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchTaskChannelOptions(pathWorkspaceSid, pathSid){  };
             return await FetchAsync(options, client, cancellationToken);
@@ -289,7 +289,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="options"> Read TaskChannel parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TaskChannel </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<TaskChannelResource>> ReadAsync(ReadTaskChannelOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<ResourceSet<TaskChannelResource>> ReadAsync(ReadTaskChannelOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
@@ -325,7 +325,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                                                                                              string pathWorkspaceSid,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadTaskChannelOptions(pathWorkspaceSid){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client, cancellationToken);
@@ -419,7 +419,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         #if !NET35
         public static async System.Threading.Tasks.Task<TaskChannelResource> UpdateAsync(UpdateTaskChannelOptions options, 
                                                                                                     ITwilioRestClient client = null,
-                                                                                                    CancellationToken cancellationToken = default)
+                                                                                                    System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client), cancellationToken);
@@ -458,7 +458,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                                                                               string pathSid,
                                                                               string friendlyName = null,
                                                                               bool? channelOptimizedRouting = null,
-                                                                                ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new UpdateTaskChannelOptions(pathWorkspaceSid, pathSid){ FriendlyName = friendlyName, ChannelOptimizedRouting = channelOptimizedRouting };
             return await UpdateAsync(options, client, cancellationToken);

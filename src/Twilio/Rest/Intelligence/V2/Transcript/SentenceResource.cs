@@ -67,7 +67,7 @@ namespace Twilio.Rest.Intelligence.V2.Transcript
         /// <param name="options"> Read Sentence parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Sentence </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<SentenceResource>> ReadAsync(ReadSentenceOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<ResourceSet<SentenceResource>> ReadAsync(ReadSentenceOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
@@ -111,7 +111,7 @@ namespace Twilio.Rest.Intelligence.V2.Transcript
                                                                                              bool? wordTimestamps = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadSentenceOptions(pathTranscriptSid){ Redacted = redacted, WordTimestamps = wordTimestamps, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client, cancellationToken);

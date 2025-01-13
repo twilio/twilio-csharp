@@ -67,7 +67,7 @@ namespace Twilio.Rest.Numbers.V1
         /// <param name="options"> Create BulkEligibility parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of BulkEligibility </returns>
-        public static async System.Threading.Tasks.Task<BulkEligibilityResource> CreateAsync(CreateBulkEligibilityOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<BulkEligibilityResource> CreateAsync(CreateBulkEligibilityOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
@@ -91,7 +91,7 @@ namespace Twilio.Rest.Numbers.V1
         /// <returns> Task that resolves to A single instance of BulkEligibility </returns>
         public static async System.Threading.Tasks.Task<BulkEligibilityResource> CreateAsync(
                                                                                     ITwilioRestClient client = null,
-                                                                                    CancellationToken cancellationToken = default)
+                                                                                    System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateBulkEligibilityOptions(){  };
             return await CreateAsync(options, client, cancellationToken);
@@ -131,7 +131,7 @@ namespace Twilio.Rest.Numbers.V1
         /// <param name="options"> Fetch BulkEligibility parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of BulkEligibility </returns>
-        public static async System.Threading.Tasks.Task<BulkEligibilityResource> FetchAsync(FetchBulkEligibilityOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<BulkEligibilityResource> FetchAsync(FetchBulkEligibilityOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
@@ -155,7 +155,7 @@ namespace Twilio.Rest.Numbers.V1
         /// <param name="pathRequestId"> The SID of the bulk eligibility check that you want to know about. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of BulkEligibility </returns>
-        public static async System.Threading.Tasks.Task<BulkEligibilityResource> FetchAsync(string pathRequestId, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<BulkEligibilityResource> FetchAsync(string pathRequestId, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchBulkEligibilityOptions(pathRequestId){  };
             return await FetchAsync(options, client, cancellationToken);

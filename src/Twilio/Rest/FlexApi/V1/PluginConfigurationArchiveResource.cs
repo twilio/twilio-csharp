@@ -70,7 +70,7 @@ namespace Twilio.Rest.FlexApi.V1
         #if !NET35
         public static async System.Threading.Tasks.Task<PluginConfigurationArchiveResource> UpdateAsync(UpdatePluginConfigurationArchiveOptions options, 
                                                                                                     ITwilioRestClient client = null,
-                                                                                                    CancellationToken cancellationToken = default)
+                                                                                                    System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client), cancellationToken);
@@ -101,7 +101,7 @@ namespace Twilio.Rest.FlexApi.V1
         public static async System.Threading.Tasks.Task<PluginConfigurationArchiveResource> UpdateAsync(
                                                                               string pathSid,
                                                                               string flexMetadata = null,
-                                                                                ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new UpdatePluginConfigurationArchiveOptions(pathSid){ FlexMetadata = flexMetadata };
             return await UpdateAsync(options, client, cancellationToken);

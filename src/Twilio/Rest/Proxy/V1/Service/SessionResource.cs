@@ -98,7 +98,7 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// <param name="options"> Create Session parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Session </returns>
-        public static async System.Threading.Tasks.Task<SessionResource> CreateAsync(CreateSessionOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<SessionResource> CreateAsync(CreateSessionOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
@@ -149,7 +149,7 @@ namespace Twilio.Rest.Proxy.V1.Service
                                                                                   SessionResource.ModeEnum mode = null,
                                                                                   SessionResource.StatusEnum status = null,
                                                                                   List<object> participants = null,
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null, System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateSessionOptions(pathServiceSid){  UniqueName = uniqueName, DateExpiry = dateExpiry, Ttl = ttl, Mode = mode, Status = status, Participants = participants };
             return await CreateAsync(options, client, cancellationToken);
@@ -197,7 +197,7 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// <returns> Task that resolves to A single instance of Session </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteSessionOptions options, 
                                                                         ITwilioRestClient client = null,
-                                                                        CancellationToken cancellationToken = default)
+                                                                        System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client), cancellationToken);
@@ -222,7 +222,7 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Session resource to delete. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Session </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, string pathSid, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new DeleteSessionOptions(pathServiceSid, pathSid) ;
             return await DeleteAsync(options, client, cancellationToken);
@@ -264,7 +264,7 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// <param name="options"> Fetch Session parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Session </returns>
-        public static async System.Threading.Tasks.Task<SessionResource> FetchAsync(FetchSessionOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<SessionResource> FetchAsync(FetchSessionOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
@@ -291,7 +291,7 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Session resource to fetch. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Session </returns>
-        public static async System.Threading.Tasks.Task<SessionResource> FetchAsync(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SessionResource> FetchAsync(string pathServiceSid, string pathSid, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchSessionOptions(pathServiceSid, pathSid){  };
             return await FetchAsync(options, client, cancellationToken);
@@ -331,7 +331,7 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// <param name="options"> Read Session parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Session </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<SessionResource>> ReadAsync(ReadSessionOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<ResourceSet<SessionResource>> ReadAsync(ReadSessionOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
@@ -367,7 +367,7 @@ namespace Twilio.Rest.Proxy.V1.Service
                                                                                              string pathServiceSid,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadSessionOptions(pathServiceSid){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client, cancellationToken);
@@ -461,7 +461,7 @@ namespace Twilio.Rest.Proxy.V1.Service
         #if !NET35
         public static async System.Threading.Tasks.Task<SessionResource> UpdateAsync(UpdateSessionOptions options, 
                                                                                                     ITwilioRestClient client = null,
-                                                                                                    CancellationToken cancellationToken = default)
+                                                                                                    System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client), cancellationToken);
@@ -504,7 +504,7 @@ namespace Twilio.Rest.Proxy.V1.Service
                                                                               DateTime? dateExpiry = null,
                                                                               int? ttl = null,
                                                                               SessionResource.StatusEnum status = null,
-                                                                                ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new UpdateSessionOptions(pathServiceSid, pathSid){ DateExpiry = dateExpiry, Ttl = ttl, Status = status };
             return await UpdateAsync(options, client, cancellationToken);

@@ -70,7 +70,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         /// <param name="options"> Create Deployment parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Deployment </returns>
-        public static async System.Threading.Tasks.Task<DeploymentResource> CreateAsync(CreateDeploymentOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<DeploymentResource> CreateAsync(CreateDeploymentOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
@@ -109,7 +109,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
                                                                                   string pathEnvironmentSid,
                                                                                   string buildSid = null,
                                                                                   bool? isPlugin = null,
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateDeploymentOptions(pathServiceSid, pathEnvironmentSid){  BuildSid = buildSid, IsPlugin = isPlugin };
             return await CreateAsync(options, client, cancellationToken);
@@ -153,7 +153,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         /// <param name="options"> Fetch Deployment parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Deployment </returns>
-        public static async System.Threading.Tasks.Task<DeploymentResource> FetchAsync(FetchDeploymentOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<DeploymentResource> FetchAsync(FetchDeploymentOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
@@ -183,7 +183,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         /// <param name="pathSid"> The SID that identifies the Deployment resource to fetch. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Deployment </returns>
-        public static async System.Threading.Tasks.Task<DeploymentResource> FetchAsync(string pathServiceSid, string pathEnvironmentSid, string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<DeploymentResource> FetchAsync(string pathServiceSid, string pathEnvironmentSid, string pathSid, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchDeploymentOptions(pathServiceSid, pathEnvironmentSid, pathSid){  };
             return await FetchAsync(options, client, cancellationToken);
@@ -225,7 +225,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         /// <param name="options"> Read Deployment parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Deployment </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<DeploymentResource>> ReadAsync(ReadDeploymentOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<ResourceSet<DeploymentResource>> ReadAsync(ReadDeploymentOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
@@ -265,7 +265,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
                                                                                              string pathEnvironmentSid,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadDeploymentOptions(pathServiceSid, pathEnvironmentSid){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client, cancellationToken);

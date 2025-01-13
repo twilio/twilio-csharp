@@ -67,7 +67,7 @@ namespace Twilio.Rest.Numbers.V1
         /// <param name="options"> Create SigningRequestConfiguration parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SigningRequestConfiguration </returns>
-        public static async System.Threading.Tasks.Task<SigningRequestConfigurationResource> CreateAsync(CreateSigningRequestConfigurationOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<SigningRequestConfigurationResource> CreateAsync(CreateSigningRequestConfigurationOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
@@ -91,7 +91,7 @@ namespace Twilio.Rest.Numbers.V1
         /// <returns> Task that resolves to A single instance of SigningRequestConfiguration </returns>
         public static async System.Threading.Tasks.Task<SigningRequestConfigurationResource> CreateAsync(
                                                                                     ITwilioRestClient client = null,
-                                                                                    CancellationToken cancellationToken = default)
+                                                                                    System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateSigningRequestConfigurationOptions(){  };
             return await CreateAsync(options, client, cancellationToken);
@@ -129,7 +129,7 @@ namespace Twilio.Rest.Numbers.V1
         /// <param name="options"> Read SigningRequestConfiguration parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SigningRequestConfiguration </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<SigningRequestConfigurationResource>> ReadAsync(ReadSigningRequestConfigurationOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<ResourceSet<SigningRequestConfigurationResource>> ReadAsync(ReadSigningRequestConfigurationOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
@@ -169,7 +169,7 @@ namespace Twilio.Rest.Numbers.V1
                                                                                              string product = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadSigningRequestConfigurationOptions(){ Country = country, Product = product, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client, cancellationToken);

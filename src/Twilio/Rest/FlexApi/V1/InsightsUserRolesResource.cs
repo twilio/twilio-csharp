@@ -65,7 +65,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="options"> Fetch InsightsUserRoles parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InsightsUserRoles </returns>
-        public static async System.Threading.Tasks.Task<InsightsUserRolesResource> FetchAsync(FetchInsightsUserRolesOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<InsightsUserRolesResource> FetchAsync(FetchInsightsUserRolesOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
@@ -89,7 +89,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="authorization"> The Authorization HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InsightsUserRoles </returns>
-        public static async System.Threading.Tasks.Task<InsightsUserRolesResource> FetchAsync(string authorization = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<InsightsUserRolesResource> FetchAsync(string authorization = null, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchInsightsUserRolesOptions(){ Authorization = authorization };
             return await FetchAsync(options, client, cancellationToken);

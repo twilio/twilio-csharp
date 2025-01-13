@@ -95,7 +95,7 @@ namespace Twilio.Rest.Events.V1
         /// <param name="options"> Create Sink parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Sink </returns>
-        public static async System.Threading.Tasks.Task<SinkResource> CreateAsync(CreateSinkOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<SinkResource> CreateAsync(CreateSinkOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
@@ -130,7 +130,7 @@ namespace Twilio.Rest.Events.V1
                                                                                   string description,
                                                                                   object sinkConfiguration,
                                                                                   SinkResource.SinkTypeEnum sinkType,
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateSinkOptions(description, sinkConfiguration, sinkType){  };
             return await CreateAsync(options, client, cancellationToken);
@@ -176,7 +176,7 @@ namespace Twilio.Rest.Events.V1
         /// <returns> Task that resolves to A single instance of Sink </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteSinkOptions options, 
                                                                         ITwilioRestClient client = null,
-                                                                        CancellationToken cancellationToken = default)
+                                                                        System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client), cancellationToken);
@@ -199,7 +199,7 @@ namespace Twilio.Rest.Events.V1
         /// <param name="pathSid"> A 34 character string that uniquely identifies this Sink. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Sink </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new DeleteSinkOptions(pathSid) ;
             return await DeleteAsync(options, client, cancellationToken);
@@ -239,7 +239,7 @@ namespace Twilio.Rest.Events.V1
         /// <param name="options"> Fetch Sink parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Sink </returns>
-        public static async System.Threading.Tasks.Task<SinkResource> FetchAsync(FetchSinkOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<SinkResource> FetchAsync(FetchSinkOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
@@ -263,7 +263,7 @@ namespace Twilio.Rest.Events.V1
         /// <param name="pathSid"> A 34 character string that uniquely identifies this Sink. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Sink </returns>
-        public static async System.Threading.Tasks.Task<SinkResource> FetchAsync(string pathSid, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<SinkResource> FetchAsync(string pathSid, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchSinkOptions(pathSid){  };
             return await FetchAsync(options, client, cancellationToken);
@@ -301,7 +301,7 @@ namespace Twilio.Rest.Events.V1
         /// <param name="options"> Read Sink parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Sink </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<SinkResource>> ReadAsync(ReadSinkOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<ResourceSet<SinkResource>> ReadAsync(ReadSinkOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
@@ -341,7 +341,7 @@ namespace Twilio.Rest.Events.V1
                                                                                              string status = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadSinkOptions(){ InUse = inUse, Status = status, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client, cancellationToken);
@@ -433,7 +433,7 @@ namespace Twilio.Rest.Events.V1
         #if !NET35
         public static async System.Threading.Tasks.Task<SinkResource> UpdateAsync(UpdateSinkOptions options, 
                                                                                                     ITwilioRestClient client = null,
-                                                                                                    CancellationToken cancellationToken = default)
+                                                                                                    System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client), cancellationToken);
@@ -464,7 +464,7 @@ namespace Twilio.Rest.Events.V1
         public static async System.Threading.Tasks.Task<SinkResource> UpdateAsync(
                                                                               string pathSid,
                                                                               string description,
-                                                                                ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new UpdateSinkOptions(pathSid, description){  };
             return await UpdateAsync(options, client, cancellationToken);

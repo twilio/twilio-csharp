@@ -120,7 +120,7 @@ namespace Twilio.Rest.Trusthub.V1
         /// <param name="options"> Create ComplianceRegistrationInquiries parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ComplianceRegistrationInquiries </returns>
-        public static async System.Threading.Tasks.Task<ComplianceRegistrationInquiriesResource> CreateAsync(CreateComplianceRegistrationInquiriesOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<ComplianceRegistrationInquiriesResource> CreateAsync(CreateComplianceRegistrationInquiriesOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
@@ -299,7 +299,7 @@ namespace Twilio.Rest.Trusthub.V1
                                                                                   string isvRegisteringForSelfOrTenant = null,
                                                                                   string statusCallbackUrl = null,
                                                                                   string themeSetId = null,
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateComplianceRegistrationInquiriesOptions(endUserType, phoneNumberType){  BusinessIdentityType = businessIdentityType, BusinessRegistrationAuthority = businessRegistrationAuthority, BusinessLegalName = businessLegalName, NotificationEmail = notificationEmail, AcceptedNotificationReceipt = acceptedNotificationReceipt, BusinessRegistrationNumber = businessRegistrationNumber, BusinessWebsiteUrl = businessWebsiteUrl, FriendlyName = friendlyName, AuthorizedRepresentative1FirstName = authorizedRepresentative1FirstName, AuthorizedRepresentative1LastName = authorizedRepresentative1LastName, AuthorizedRepresentative1Phone = authorizedRepresentative1Phone, AuthorizedRepresentative1Email = authorizedRepresentative1Email, AuthorizedRepresentative1DateOfBirth = authorizedRepresentative1DateOfBirth, AddressStreet = addressStreet, AddressStreetSecondary = addressStreetSecondary, AddressCity = addressCity, AddressSubdivision = addressSubdivision, AddressPostalCode = addressPostalCode, AddressCountryCode = addressCountryCode, EmergencyAddressStreet = emergencyAddressStreet, EmergencyAddressStreetSecondary = emergencyAddressStreetSecondary, EmergencyAddressCity = emergencyAddressCity, EmergencyAddressSubdivision = emergencyAddressSubdivision, EmergencyAddressPostalCode = emergencyAddressPostalCode, EmergencyAddressCountryCode = emergencyAddressCountryCode, UseAddressAsEmergencyAddress = useAddressAsEmergencyAddress, FileName = fileName, File = file, FirstName = firstName, LastName = lastName, DateOfBirth = dateOfBirth, IndividualEmail = individualEmail, IndividualPhone = individualPhone, IsIsvEmbed = isIsvEmbed, IsvRegisteringForSelfOrTenant = isvRegisteringForSelfOrTenant, StatusCallbackUrl = statusCallbackUrl, ThemeSetId = themeSetId };
             return await CreateAsync(options, client, cancellationToken);
@@ -342,7 +342,7 @@ namespace Twilio.Rest.Trusthub.V1
         #if !NET35
         public static async System.Threading.Tasks.Task<ComplianceRegistrationInquiriesResource> UpdateAsync(UpdateComplianceRegistrationInquiriesOptions options, 
                                                                                                     ITwilioRestClient client = null,
-                                                                                                    CancellationToken cancellationToken = default)
+                                                                                                    System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client), cancellationToken);
@@ -377,7 +377,7 @@ namespace Twilio.Rest.Trusthub.V1
                                                                               string pathRegistrationId,
                                                                               bool? isIsvEmbed = null,
                                                                               string themeSetId = null,
-                                                                                ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new UpdateComplianceRegistrationInquiriesOptions(pathRegistrationId){ IsIsvEmbed = isIsvEmbed, ThemeSetId = themeSetId };
             return await UpdateAsync(options, client, cancellationToken);

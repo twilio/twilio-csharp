@@ -107,7 +107,7 @@ namespace Twilio.Rest.Supersim.V1
         /// <param name="options"> Create IpCommand parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IpCommand </returns>
-        public static async System.Threading.Tasks.Task<IpCommandResource> CreateAsync(CreateIpCommandOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<IpCommandResource> CreateAsync(CreateIpCommandOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
@@ -154,7 +154,7 @@ namespace Twilio.Rest.Supersim.V1
                                                                                   IpCommandResource.PayloadTypeEnum payloadType = null,
                                                                                   Uri callbackUrl = null,
                                                                                   Twilio.Http.HttpMethod callbackMethod = null,
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateIpCommandOptions(sim, payload, devicePort){  PayloadType = payloadType, CallbackUrl = callbackUrl, CallbackMethod = callbackMethod };
             return await CreateAsync(options, client, cancellationToken);
@@ -194,7 +194,7 @@ namespace Twilio.Rest.Supersim.V1
         /// <param name="options"> Fetch IpCommand parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IpCommand </returns>
-        public static async System.Threading.Tasks.Task<IpCommandResource> FetchAsync(FetchIpCommandOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<IpCommandResource> FetchAsync(FetchIpCommandOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
@@ -218,7 +218,7 @@ namespace Twilio.Rest.Supersim.V1
         /// <param name="pathSid"> The SID of the IP Command resource to fetch. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IpCommand </returns>
-        public static async System.Threading.Tasks.Task<IpCommandResource> FetchAsync(string pathSid, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<IpCommandResource> FetchAsync(string pathSid, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchIpCommandOptions(pathSid){  };
             return await FetchAsync(options, client, cancellationToken);
@@ -256,7 +256,7 @@ namespace Twilio.Rest.Supersim.V1
         /// <param name="options"> Read IpCommand parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IpCommand </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<IpCommandResource>> ReadAsync(ReadIpCommandOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<ResourceSet<IpCommandResource>> ReadAsync(ReadIpCommandOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
@@ -304,7 +304,7 @@ namespace Twilio.Rest.Supersim.V1
                                                                                              IpCommandResource.DirectionEnum direction = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadIpCommandOptions(){ Sim = sim, SimIccid = simIccid, Status = status, Direction = direction, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client, cancellationToken);

@@ -69,7 +69,7 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         /// <param name="options"> Fetch SubscribeRules parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SubscribeRules </returns>
-        public static async System.Threading.Tasks.Task<SubscribeRulesResource> FetchAsync(FetchSubscribeRulesOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<SubscribeRulesResource> FetchAsync(FetchSubscribeRulesOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
@@ -96,7 +96,7 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         /// <param name="pathParticipantSid"> The SID of the Participant resource with the subscribe rules to fetch. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SubscribeRules </returns>
-        public static async System.Threading.Tasks.Task<SubscribeRulesResource> FetchAsync(string pathRoomSid, string pathParticipantSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SubscribeRulesResource> FetchAsync(string pathRoomSid, string pathParticipantSid, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchSubscribeRulesOptions(pathRoomSid, pathParticipantSid){  };
             return await FetchAsync(options, client, cancellationToken);
@@ -141,7 +141,7 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         #if !NET35
         public static async System.Threading.Tasks.Task<SubscribeRulesResource> UpdateAsync(UpdateSubscribeRulesOptions options, 
                                                                                                     ITwilioRestClient client = null,
-                                                                                                    CancellationToken cancellationToken = default)
+                                                                                                    System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client), cancellationToken);
@@ -176,7 +176,7 @@ namespace Twilio.Rest.Video.V1.Room.Participant
                                                                               string pathRoomSid,
                                                                               string pathParticipantSid,
                                                                               object rules = null,
-                                                                                ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new UpdateSubscribeRulesOptions(pathRoomSid, pathParticipantSid){ Rules = rules };
             return await UpdateAsync(options, client, cancellationToken);

@@ -84,7 +84,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="options"> Create VerificationCheck parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of VerificationCheck </returns>
-        public static async System.Threading.Tasks.Task<VerificationCheckResource> CreateAsync(CreateVerificationCheckOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<VerificationCheckResource> CreateAsync(CreateVerificationCheckOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
@@ -135,7 +135,7 @@ namespace Twilio.Rest.Verify.V2.Service
                                                                                   string amount = null,
                                                                                   string payee = null,
                                                                                   string snaClientToken = null,
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateVerificationCheckOptions(pathServiceSid){  Code = code, To = to, VerificationSid = verificationSid, Amount = amount, Payee = payee, SnaClientToken = snaClientToken };
             return await CreateAsync(options, client, cancellationToken);

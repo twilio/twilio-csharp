@@ -67,7 +67,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="options"> Fetch Balance parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Balance </returns>
-        public static async System.Threading.Tasks.Task<BalanceResource> FetchAsync(FetchBalanceOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<BalanceResource> FetchAsync(FetchBalanceOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
@@ -91,7 +91,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="pathAccountSid"> The unique SID identifier of the Account. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Balance </returns>
-        public static async System.Threading.Tasks.Task<BalanceResource> FetchAsync(string pathAccountSid = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<BalanceResource> FetchAsync(string pathAccountSid = null, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchBalanceOptions(){ PathAccountSid = pathAccountSid };
             return await FetchAsync(options, client, cancellationToken);

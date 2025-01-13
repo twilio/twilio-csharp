@@ -94,7 +94,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// <param name="options"> Create ConversationWithParticipants parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ConversationWithParticipants </returns>
-        public static async System.Threading.Tasks.Task<ConversationWithParticipantsResource> CreateAsync(CreateConversationWithParticipantsOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<ConversationWithParticipantsResource> CreateAsync(CreateConversationWithParticipantsOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
@@ -173,7 +173,7 @@ namespace Twilio.Rest.Conversations.V1.Service
                                                                                   string bindingsEmailName = null,
                                                                                   List<string> participant = null,
                                                                                   ConversationWithParticipantsResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null, System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateConversationWithParticipantsOptions(pathChatServiceSid){  FriendlyName = friendlyName, UniqueName = uniqueName, DateCreated = dateCreated, DateUpdated = dateUpdated, MessagingServiceSid = messagingServiceSid, Attributes = attributes, State = state, TimersInactive = timersInactive, TimersClosed = timersClosed, BindingsEmailAddress = bindingsEmailAddress, BindingsEmailName = bindingsEmailName, Participant = participant, XTwilioWebhookEnabled = xTwilioWebhookEnabled };
             return await CreateAsync(options, client, cancellationToken);

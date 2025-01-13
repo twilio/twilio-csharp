@@ -79,7 +79,7 @@ namespace Twilio.Rest.Video.V1
         /// <param name="options"> Create CompositionHook parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CompositionHook </returns>
-        public static async System.Threading.Tasks.Task<CompositionHookResource> CreateAsync(CreateCompositionHookOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<CompositionHookResource> CreateAsync(CreateCompositionHookOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
@@ -142,7 +142,7 @@ namespace Twilio.Rest.Video.V1
                                                                                   Uri statusCallback = null,
                                                                                   Twilio.Http.HttpMethod statusCallbackMethod = null,
                                                                                   bool? trim = null,
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null, System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateCompositionHookOptions(friendlyName){  Enabled = enabled, VideoLayout = videoLayout, AudioSources = audioSources, AudioSourcesExcluded = audioSourcesExcluded, Resolution = resolution, Format = format, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, Trim = trim };
             return await CreateAsync(options, client, cancellationToken);
@@ -188,7 +188,7 @@ namespace Twilio.Rest.Video.V1
         /// <returns> Task that resolves to A single instance of CompositionHook </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteCompositionHookOptions options, 
                                                                         ITwilioRestClient client = null,
-                                                                        CancellationToken cancellationToken = default)
+                                                                        System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client), cancellationToken);
@@ -211,7 +211,7 @@ namespace Twilio.Rest.Video.V1
         /// <param name="pathSid"> The SID of the CompositionHook resource to delete. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CompositionHook </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new DeleteCompositionHookOptions(pathSid) ;
             return await DeleteAsync(options, client, cancellationToken);
@@ -251,7 +251,7 @@ namespace Twilio.Rest.Video.V1
         /// <param name="options"> Fetch CompositionHook parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CompositionHook </returns>
-        public static async System.Threading.Tasks.Task<CompositionHookResource> FetchAsync(FetchCompositionHookOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<CompositionHookResource> FetchAsync(FetchCompositionHookOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
@@ -275,7 +275,7 @@ namespace Twilio.Rest.Video.V1
         /// <param name="pathSid"> The SID of the CompositionHook resource to fetch. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CompositionHook </returns>
-        public static async System.Threading.Tasks.Task<CompositionHookResource> FetchAsync(string pathSid, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<CompositionHookResource> FetchAsync(string pathSid, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchCompositionHookOptions(pathSid){  };
             return await FetchAsync(options, client, cancellationToken);
@@ -313,7 +313,7 @@ namespace Twilio.Rest.Video.V1
         /// <param name="options"> Read CompositionHook parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CompositionHook </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<CompositionHookResource>> ReadAsync(ReadCompositionHookOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<ResourceSet<CompositionHookResource>> ReadAsync(ReadCompositionHookOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
@@ -361,7 +361,7 @@ namespace Twilio.Rest.Video.V1
                                                                                              string friendlyName = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadCompositionHookOptions(){ Enabled = enabled, DateCreatedAfter = dateCreatedAfter, DateCreatedBefore = dateCreatedBefore, FriendlyName = friendlyName, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client, cancellationToken);
@@ -453,7 +453,7 @@ namespace Twilio.Rest.Video.V1
         #if !NET35
         public static async System.Threading.Tasks.Task<CompositionHookResource> UpdateAsync(UpdateCompositionHookOptions options, 
                                                                                                     ITwilioRestClient client = null,
-                                                                                                    CancellationToken cancellationToken = default)
+                                                                                                    System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client), cancellationToken);
@@ -520,7 +520,7 @@ namespace Twilio.Rest.Video.V1
                                                                               string resolution = null,
                                                                               Uri statusCallback = null,
                                                                               Twilio.Http.HttpMethod statusCallbackMethod = null,
-                                                                                ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null, System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new UpdateCompositionHookOptions(pathSid, friendlyName){ Enabled = enabled, VideoLayout = videoLayout, AudioSources = audioSources, AudioSourcesExcluded = audioSourcesExcluded, Trim = trim, Format = format, Resolution = resolution, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod };
             return await UpdateAsync(options, client, cancellationToken);

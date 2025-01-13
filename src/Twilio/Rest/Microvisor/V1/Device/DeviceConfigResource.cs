@@ -68,7 +68,7 @@ namespace Twilio.Rest.Microvisor.V1.Device
         /// <param name="options"> Create DeviceConfig parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of DeviceConfig </returns>
-        public static async System.Threading.Tasks.Task<DeviceConfigResource> CreateAsync(CreateDeviceConfigOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<DeviceConfigResource> CreateAsync(CreateDeviceConfigOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
@@ -103,7 +103,7 @@ namespace Twilio.Rest.Microvisor.V1.Device
                                                                                   string pathDeviceSid,
                                                                                   string key,
                                                                                   string value,
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateDeviceConfigOptions(pathDeviceSid, key, value){  };
             return await CreateAsync(options, client, cancellationToken);
@@ -151,7 +151,7 @@ namespace Twilio.Rest.Microvisor.V1.Device
         /// <returns> Task that resolves to A single instance of DeviceConfig </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteDeviceConfigOptions options, 
                                                                         ITwilioRestClient client = null,
-                                                                        CancellationToken cancellationToken = default)
+                                                                        System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client), cancellationToken);
@@ -176,7 +176,7 @@ namespace Twilio.Rest.Microvisor.V1.Device
         /// <param name="pathKey"> The config key; up to 100 characters. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of DeviceConfig </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathDeviceSid, string pathKey, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathDeviceSid, string pathKey, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new DeleteDeviceConfigOptions(pathDeviceSid, pathKey) ;
             return await DeleteAsync(options, client, cancellationToken);
@@ -218,7 +218,7 @@ namespace Twilio.Rest.Microvisor.V1.Device
         /// <param name="options"> Fetch DeviceConfig parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of DeviceConfig </returns>
-        public static async System.Threading.Tasks.Task<DeviceConfigResource> FetchAsync(FetchDeviceConfigOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<DeviceConfigResource> FetchAsync(FetchDeviceConfigOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
@@ -245,7 +245,7 @@ namespace Twilio.Rest.Microvisor.V1.Device
         /// <param name="pathKey"> The config key; up to 100 characters. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of DeviceConfig </returns>
-        public static async System.Threading.Tasks.Task<DeviceConfigResource> FetchAsync(string pathDeviceSid, string pathKey, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<DeviceConfigResource> FetchAsync(string pathDeviceSid, string pathKey, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchDeviceConfigOptions(pathDeviceSid, pathKey){  };
             return await FetchAsync(options, client, cancellationToken);
@@ -285,7 +285,7 @@ namespace Twilio.Rest.Microvisor.V1.Device
         /// <param name="options"> Read DeviceConfig parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of DeviceConfig </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<DeviceConfigResource>> ReadAsync(ReadDeviceConfigOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<ResourceSet<DeviceConfigResource>> ReadAsync(ReadDeviceConfigOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
@@ -321,7 +321,7 @@ namespace Twilio.Rest.Microvisor.V1.Device
                                                                                              string pathDeviceSid,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadDeviceConfigOptions(pathDeviceSid){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client, cancellationToken);
@@ -415,7 +415,7 @@ namespace Twilio.Rest.Microvisor.V1.Device
         #if !NET35
         public static async System.Threading.Tasks.Task<DeviceConfigResource> UpdateAsync(UpdateDeviceConfigOptions options, 
                                                                                                     ITwilioRestClient client = null,
-                                                                                                    CancellationToken cancellationToken = default)
+                                                                                                    System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client), cancellationToken);
@@ -450,7 +450,7 @@ namespace Twilio.Rest.Microvisor.V1.Device
                                                                               string pathDeviceSid,
                                                                               string pathKey,
                                                                               string value,
-                                                                                ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new UpdateDeviceConfigOptions(pathDeviceSid, pathKey, value){  };
             return await UpdateAsync(options, client, cancellationToken);

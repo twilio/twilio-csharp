@@ -67,7 +67,7 @@ namespace Twilio.Rest.Content.V1.Content
         /// <param name="options"> Fetch ApprovalFetch parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ApprovalFetch </returns>
-        public static async System.Threading.Tasks.Task<ApprovalFetchResource> FetchAsync(FetchApprovalFetchOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<ApprovalFetchResource> FetchAsync(FetchApprovalFetchOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
@@ -91,7 +91,7 @@ namespace Twilio.Rest.Content.V1.Content
         /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Content resource whose approval information to fetch. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ApprovalFetch </returns>
-        public static async System.Threading.Tasks.Task<ApprovalFetchResource> FetchAsync(string pathSid, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<ApprovalFetchResource> FetchAsync(string pathSid, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchApprovalFetchOptions(pathSid){  };
             return await FetchAsync(options, client, cancellationToken);

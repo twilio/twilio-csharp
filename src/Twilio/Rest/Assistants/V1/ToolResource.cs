@@ -323,7 +323,7 @@ namespace Twilio.Rest.Assistants.V1
         /// <param name="options"> Create Tool parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Tool </returns>
-        public static async System.Threading.Tasks.Task<ToolResource> CreateAsync(CreateToolOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<ToolResource> CreateAsync(CreateToolOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
@@ -350,7 +350,7 @@ namespace Twilio.Rest.Assistants.V1
         /// <returns> Task that resolves to A single instance of Tool </returns>
         public static async System.Threading.Tasks.Task<ToolResource> CreateAsync(
                                                                                   ToolResource.AssistantsV1ServiceCreateToolRequest assistantsV1ServiceCreateToolRequest,
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateToolOptions(assistantsV1ServiceCreateToolRequest){  };
             return await CreateAsync(options, client, cancellationToken);
@@ -396,7 +396,7 @@ namespace Twilio.Rest.Assistants.V1
         /// <returns> Task that resolves to A single instance of Tool </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteToolOptions options, 
                                                                         ITwilioRestClient client = null,
-                                                                        CancellationToken cancellationToken = default)
+                                                                        System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client), cancellationToken);
@@ -419,7 +419,7 @@ namespace Twilio.Rest.Assistants.V1
         /// <param name="pathId"> The tool ID. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Tool </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathId, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathId, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new DeleteToolOptions(pathId) ;
             return await DeleteAsync(options, client, cancellationToken);
@@ -459,7 +459,7 @@ namespace Twilio.Rest.Assistants.V1
         /// <param name="options"> Fetch Tool parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Tool </returns>
-        public static async System.Threading.Tasks.Task<ToolResource> FetchAsync(FetchToolOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<ToolResource> FetchAsync(FetchToolOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
@@ -483,7 +483,7 @@ namespace Twilio.Rest.Assistants.V1
         /// <param name="pathId">  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Tool </returns>
-        public static async System.Threading.Tasks.Task<ToolResource> FetchAsync(string pathId, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<ToolResource> FetchAsync(string pathId, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchToolOptions(pathId){  };
             return await FetchAsync(options, client, cancellationToken);
@@ -521,7 +521,7 @@ namespace Twilio.Rest.Assistants.V1
         /// <param name="options"> Read Tool parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Tool </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<ToolResource>> ReadAsync(ReadToolOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<ResourceSet<ToolResource>> ReadAsync(ReadToolOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
@@ -557,7 +557,7 @@ namespace Twilio.Rest.Assistants.V1
                                                                                              string assistantId = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadToolOptions(){ AssistantId = assistantId, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client, cancellationToken);
@@ -650,7 +650,7 @@ namespace Twilio.Rest.Assistants.V1
         #if !NET35
         public static async System.Threading.Tasks.Task<ToolResource> UpdateAsync(UpdateToolOptions options, 
                                                                                                     ITwilioRestClient client = null,
-                                                                                                    CancellationToken cancellationToken = default)
+                                                                                                    System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client), cancellationToken);
@@ -677,7 +677,7 @@ namespace Twilio.Rest.Assistants.V1
         /// <returns> Task that resolves to A single instance of Tool </returns>
         public static async System.Threading.Tasks.Task<ToolResource> UpdateAsync(
                                                                               string pathId,
-                                                                                ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new UpdateToolOptions(pathId){  };
             return await UpdateAsync(options, client, cancellationToken);

@@ -124,7 +124,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// <param name="options"> Create Challenge parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Challenge </returns>
-        public static async System.Threading.Tasks.Task<ChallengeResource> CreateAsync(CreateChallengeOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<ChallengeResource> CreateAsync(CreateChallengeOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
@@ -179,7 +179,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
                                                                                   List<object> detailsFields = null,
                                                                                   object hiddenDetails = null,
                                                                                   string authPayload = null,
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null, System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateChallengeOptions(pathServiceSid, pathIdentity, factorSid){  ExpirationDate = expirationDate, DetailsMessage = detailsMessage, DetailsFields = detailsFields, HiddenDetails = hiddenDetails, AuthPayload = authPayload };
             return await CreateAsync(options, client, cancellationToken);
@@ -223,7 +223,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// <param name="options"> Fetch Challenge parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Challenge </returns>
-        public static async System.Threading.Tasks.Task<ChallengeResource> FetchAsync(FetchChallengeOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<ChallengeResource> FetchAsync(FetchChallengeOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
@@ -253,7 +253,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// <param name="pathSid"> A 34 character string that uniquely identifies this Challenge. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Challenge </returns>
-        public static async System.Threading.Tasks.Task<ChallengeResource> FetchAsync(string pathServiceSid, string pathIdentity, string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ChallengeResource> FetchAsync(string pathServiceSid, string pathIdentity, string pathSid, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchChallengeOptions(pathServiceSid, pathIdentity, pathSid){  };
             return await FetchAsync(options, client, cancellationToken);
@@ -295,7 +295,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// <param name="options"> Read Challenge parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Challenge </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<ChallengeResource>> ReadAsync(ReadChallengeOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<ResourceSet<ChallengeResource>> ReadAsync(ReadChallengeOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
@@ -347,7 +347,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
                                                                                              ChallengeResource.ListOrdersEnum order = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadChallengeOptions(pathServiceSid, pathIdentity){ FactorSid = factorSid, Status = status, Order = order, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client, cancellationToken);
@@ -443,7 +443,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         #if !NET35
         public static async System.Threading.Tasks.Task<ChallengeResource> UpdateAsync(UpdateChallengeOptions options, 
                                                                                                     ITwilioRestClient client = null,
-                                                                                                    CancellationToken cancellationToken = default)
+                                                                                                    System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client), cancellationToken);
@@ -486,7 +486,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
                                                                               string pathSid,
                                                                               string authPayload = null,
                                                                               object metadata = null,
-                                                                                ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new UpdateChallengeOptions(pathServiceSid, pathIdentity, pathSid){ AuthPayload = authPayload, Metadata = metadata };
             return await UpdateAsync(options, client, cancellationToken);

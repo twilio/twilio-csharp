@@ -66,7 +66,7 @@ namespace Twilio.Rest.Voice.V1
         /// <param name="options"> Create IpRecord parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IpRecord </returns>
-        public static async System.Threading.Tasks.Task<IpRecordResource> CreateAsync(CreateIpRecordOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<IpRecordResource> CreateAsync(CreateIpRecordOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
@@ -101,7 +101,7 @@ namespace Twilio.Rest.Voice.V1
                                                                                   string ipAddress,
                                                                                   string friendlyName = null,
                                                                                   int? cidrPrefixLength = null,
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateIpRecordOptions(ipAddress){  FriendlyName = friendlyName, CidrPrefixLength = cidrPrefixLength };
             return await CreateAsync(options, client, cancellationToken);
@@ -147,7 +147,7 @@ namespace Twilio.Rest.Voice.V1
         /// <returns> Task that resolves to A single instance of IpRecord </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteIpRecordOptions options, 
                                                                         ITwilioRestClient client = null,
-                                                                        CancellationToken cancellationToken = default)
+                                                                        System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client), cancellationToken);
@@ -170,7 +170,7 @@ namespace Twilio.Rest.Voice.V1
         /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the IP Record resource to delete. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IpRecord </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new DeleteIpRecordOptions(pathSid) ;
             return await DeleteAsync(options, client, cancellationToken);
@@ -210,7 +210,7 @@ namespace Twilio.Rest.Voice.V1
         /// <param name="options"> Fetch IpRecord parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IpRecord </returns>
-        public static async System.Threading.Tasks.Task<IpRecordResource> FetchAsync(FetchIpRecordOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<IpRecordResource> FetchAsync(FetchIpRecordOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
@@ -234,7 +234,7 @@ namespace Twilio.Rest.Voice.V1
         /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the IP Record resource to fetch. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IpRecord </returns>
-        public static async System.Threading.Tasks.Task<IpRecordResource> FetchAsync(string pathSid, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<IpRecordResource> FetchAsync(string pathSid, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchIpRecordOptions(pathSid){  };
             return await FetchAsync(options, client, cancellationToken);
@@ -272,7 +272,7 @@ namespace Twilio.Rest.Voice.V1
         /// <param name="options"> Read IpRecord parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IpRecord </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<IpRecordResource>> ReadAsync(ReadIpRecordOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<ResourceSet<IpRecordResource>> ReadAsync(ReadIpRecordOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
@@ -304,7 +304,7 @@ namespace Twilio.Rest.Voice.V1
         public static async System.Threading.Tasks.Task<ResourceSet<IpRecordResource>> ReadAsync(
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadIpRecordOptions(){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client, cancellationToken);
@@ -396,7 +396,7 @@ namespace Twilio.Rest.Voice.V1
         #if !NET35
         public static async System.Threading.Tasks.Task<IpRecordResource> UpdateAsync(UpdateIpRecordOptions options, 
                                                                                                     ITwilioRestClient client = null,
-                                                                                                    CancellationToken cancellationToken = default)
+                                                                                                    System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client), cancellationToken);
@@ -427,7 +427,7 @@ namespace Twilio.Rest.Voice.V1
         public static async System.Threading.Tasks.Task<IpRecordResource> UpdateAsync(
                                                                               string pathSid,
                                                                               string friendlyName = null,
-                                                                                ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new UpdateIpRecordOptions(pathSid){ FriendlyName = friendlyName };
             return await UpdateAsync(options, client, cancellationToken);

@@ -67,7 +67,7 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions.Country
         /// <param name="options"> Read HighriskSpecialPrefix parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of HighriskSpecialPrefix </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<HighriskSpecialPrefixResource>> ReadAsync(ReadHighriskSpecialPrefixOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<ResourceSet<HighriskSpecialPrefixResource>> ReadAsync(ReadHighriskSpecialPrefixOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
@@ -103,7 +103,7 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions.Country
                                                                                              string pathIsoCode,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadHighriskSpecialPrefixOptions(pathIsoCode){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client, cancellationToken);

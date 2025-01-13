@@ -66,7 +66,7 @@ namespace Twilio.Rest.Microvisor.V1
         /// <param name="options"> Create AccountConfig parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AccountConfig </returns>
-        public static async System.Threading.Tasks.Task<AccountConfigResource> CreateAsync(CreateAccountConfigOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<AccountConfigResource> CreateAsync(CreateAccountConfigOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
@@ -97,7 +97,7 @@ namespace Twilio.Rest.Microvisor.V1
         public static async System.Threading.Tasks.Task<AccountConfigResource> CreateAsync(
                                                                                   string key,
                                                                                   string value,
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateAccountConfigOptions(key, value){  };
             return await CreateAsync(options, client, cancellationToken);
@@ -143,7 +143,7 @@ namespace Twilio.Rest.Microvisor.V1
         /// <returns> Task that resolves to A single instance of AccountConfig </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteAccountConfigOptions options, 
                                                                         ITwilioRestClient client = null,
-                                                                        CancellationToken cancellationToken = default)
+                                                                        System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client), cancellationToken);
@@ -166,7 +166,7 @@ namespace Twilio.Rest.Microvisor.V1
         /// <param name="pathKey"> The config key; up to 100 characters. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AccountConfig </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathKey, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathKey, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new DeleteAccountConfigOptions(pathKey) ;
             return await DeleteAsync(options, client, cancellationToken);
@@ -206,7 +206,7 @@ namespace Twilio.Rest.Microvisor.V1
         /// <param name="options"> Fetch AccountConfig parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AccountConfig </returns>
-        public static async System.Threading.Tasks.Task<AccountConfigResource> FetchAsync(FetchAccountConfigOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<AccountConfigResource> FetchAsync(FetchAccountConfigOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
@@ -230,7 +230,7 @@ namespace Twilio.Rest.Microvisor.V1
         /// <param name="pathKey"> The config key; up to 100 characters. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AccountConfig </returns>
-        public static async System.Threading.Tasks.Task<AccountConfigResource> FetchAsync(string pathKey, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<AccountConfigResource> FetchAsync(string pathKey, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchAccountConfigOptions(pathKey){  };
             return await FetchAsync(options, client, cancellationToken);
@@ -268,7 +268,7 @@ namespace Twilio.Rest.Microvisor.V1
         /// <param name="options"> Read AccountConfig parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AccountConfig </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<AccountConfigResource>> ReadAsync(ReadAccountConfigOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<ResourceSet<AccountConfigResource>> ReadAsync(ReadAccountConfigOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
@@ -300,7 +300,7 @@ namespace Twilio.Rest.Microvisor.V1
         public static async System.Threading.Tasks.Task<ResourceSet<AccountConfigResource>> ReadAsync(
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadAccountConfigOptions(){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client, cancellationToken);
@@ -392,7 +392,7 @@ namespace Twilio.Rest.Microvisor.V1
         #if !NET35
         public static async System.Threading.Tasks.Task<AccountConfigResource> UpdateAsync(UpdateAccountConfigOptions options, 
                                                                                                     ITwilioRestClient client = null,
-                                                                                                    CancellationToken cancellationToken = default)
+                                                                                                    System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client), cancellationToken);
@@ -423,7 +423,7 @@ namespace Twilio.Rest.Microvisor.V1
         public static async System.Threading.Tasks.Task<AccountConfigResource> UpdateAsync(
                                                                               string pathKey,
                                                                               string value,
-                                                                                ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new UpdateAccountConfigOptions(pathKey, value){  };
             return await UpdateAsync(options, client, cancellationToken);

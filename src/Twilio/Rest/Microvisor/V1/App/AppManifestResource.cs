@@ -67,7 +67,7 @@ namespace Twilio.Rest.Microvisor.V1.App
         /// <param name="options"> Fetch AppManifest parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AppManifest </returns>
-        public static async System.Threading.Tasks.Task<AppManifestResource> FetchAsync(FetchAppManifestOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<AppManifestResource> FetchAsync(FetchAppManifestOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
@@ -91,7 +91,7 @@ namespace Twilio.Rest.Microvisor.V1.App
         /// <param name="pathAppSid"> A 34-character string that uniquely identifies this App. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AppManifest </returns>
-        public static async System.Threading.Tasks.Task<AppManifestResource> FetchAsync(string pathAppSid, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<AppManifestResource> FetchAsync(string pathAppSid, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchAppManifestOptions(pathAppSid){  };
             return await FetchAsync(options, client, cancellationToken);

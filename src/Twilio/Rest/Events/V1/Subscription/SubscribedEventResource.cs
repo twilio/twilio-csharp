@@ -68,7 +68,7 @@ namespace Twilio.Rest.Events.V1.Subscription
         /// <param name="options"> Create SubscribedEvent parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SubscribedEvent </returns>
-        public static async System.Threading.Tasks.Task<SubscribedEventResource> CreateAsync(CreateSubscribedEventOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<SubscribedEventResource> CreateAsync(CreateSubscribedEventOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
@@ -103,7 +103,7 @@ namespace Twilio.Rest.Events.V1.Subscription
                                                                                   string pathSubscriptionSid,
                                                                                   string type,
                                                                                   int? schemaVersion = null,
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateSubscribedEventOptions(pathSubscriptionSid, type){  SchemaVersion = schemaVersion };
             return await CreateAsync(options, client, cancellationToken);
@@ -151,7 +151,7 @@ namespace Twilio.Rest.Events.V1.Subscription
         /// <returns> Task that resolves to A single instance of SubscribedEvent </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteSubscribedEventOptions options, 
                                                                         ITwilioRestClient client = null,
-                                                                        CancellationToken cancellationToken = default)
+                                                                        System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client), cancellationToken);
@@ -176,7 +176,7 @@ namespace Twilio.Rest.Events.V1.Subscription
         /// <param name="pathType"> Type of event being subscribed to. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SubscribedEvent </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSubscriptionSid, string pathType, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSubscriptionSid, string pathType, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new DeleteSubscribedEventOptions(pathSubscriptionSid, pathType) ;
             return await DeleteAsync(options, client, cancellationToken);
@@ -218,7 +218,7 @@ namespace Twilio.Rest.Events.V1.Subscription
         /// <param name="options"> Fetch SubscribedEvent parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SubscribedEvent </returns>
-        public static async System.Threading.Tasks.Task<SubscribedEventResource> FetchAsync(FetchSubscribedEventOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<SubscribedEventResource> FetchAsync(FetchSubscribedEventOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
@@ -245,7 +245,7 @@ namespace Twilio.Rest.Events.V1.Subscription
         /// <param name="pathType"> Type of event being subscribed to. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SubscribedEvent </returns>
-        public static async System.Threading.Tasks.Task<SubscribedEventResource> FetchAsync(string pathSubscriptionSid, string pathType, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SubscribedEventResource> FetchAsync(string pathSubscriptionSid, string pathType, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchSubscribedEventOptions(pathSubscriptionSid, pathType){  };
             return await FetchAsync(options, client, cancellationToken);
@@ -285,7 +285,7 @@ namespace Twilio.Rest.Events.V1.Subscription
         /// <param name="options"> Read SubscribedEvent parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SubscribedEvent </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<SubscribedEventResource>> ReadAsync(ReadSubscribedEventOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<ResourceSet<SubscribedEventResource>> ReadAsync(ReadSubscribedEventOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
@@ -321,7 +321,7 @@ namespace Twilio.Rest.Events.V1.Subscription
                                                                                              string pathSubscriptionSid,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadSubscribedEventOptions(pathSubscriptionSid){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client, cancellationToken);
@@ -415,7 +415,7 @@ namespace Twilio.Rest.Events.V1.Subscription
         #if !NET35
         public static async System.Threading.Tasks.Task<SubscribedEventResource> UpdateAsync(UpdateSubscribedEventOptions options, 
                                                                                                     ITwilioRestClient client = null,
-                                                                                                    CancellationToken cancellationToken = default)
+                                                                                                    System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client), cancellationToken);
@@ -450,7 +450,7 @@ namespace Twilio.Rest.Events.V1.Subscription
                                                                               string pathSubscriptionSid,
                                                                               string pathType,
                                                                               int? schemaVersion = null,
-                                                                                ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new UpdateSubscribedEventOptions(pathSubscriptionSid, pathType){ SchemaVersion = schemaVersion };
             return await UpdateAsync(options, client, cancellationToken);

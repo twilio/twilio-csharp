@@ -66,7 +66,7 @@ namespace Twilio.Rest.Video.V1
         /// <param name="options"> Create CompositionSettings parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CompositionSettings </returns>
-        public static async System.Threading.Tasks.Task<CompositionSettingsResource> CreateAsync(CreateCompositionSettingsOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<CompositionSettingsResource> CreateAsync(CreateCompositionSettingsOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
@@ -113,7 +113,7 @@ namespace Twilio.Rest.Video.V1
                                                                                   Uri awsS3Url = null,
                                                                                   bool? awsStorageEnabled = null,
                                                                                   bool? encryptionEnabled = null,
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateCompositionSettingsOptions(friendlyName){  AwsCredentialsSid = awsCredentialsSid, EncryptionKeySid = encryptionKeySid, AwsS3Url = awsS3Url, AwsStorageEnabled = awsStorageEnabled, EncryptionEnabled = encryptionEnabled };
             return await CreateAsync(options, client, cancellationToken);
@@ -151,7 +151,7 @@ namespace Twilio.Rest.Video.V1
         /// <param name="options"> Fetch CompositionSettings parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CompositionSettings </returns>
-        public static async System.Threading.Tasks.Task<CompositionSettingsResource> FetchAsync(FetchCompositionSettingsOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<CompositionSettingsResource> FetchAsync(FetchCompositionSettingsOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
@@ -172,7 +172,7 @@ namespace Twilio.Rest.Video.V1
         /// <summary> fetch </summary>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CompositionSettings </returns>
-        public static async System.Threading.Tasks.Task<CompositionSettingsResource> FetchAsync(ITwilioRestClient client = null, CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<CompositionSettingsResource> FetchAsync(ITwilioRestClient client = null, System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchCompositionSettingsOptions(){  };
             return await FetchAsync(options, client, cancellationToken);

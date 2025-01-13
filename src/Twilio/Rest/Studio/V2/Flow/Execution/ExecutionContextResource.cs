@@ -69,7 +69,7 @@ namespace Twilio.Rest.Studio.V2.Flow.Execution
         /// <param name="options"> Fetch ExecutionContext parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ExecutionContext </returns>
-        public static async System.Threading.Tasks.Task<ExecutionContextResource> FetchAsync(FetchExecutionContextOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<ExecutionContextResource> FetchAsync(FetchExecutionContextOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
@@ -96,7 +96,7 @@ namespace Twilio.Rest.Studio.V2.Flow.Execution
         /// <param name="pathExecutionSid"> The SID of the Execution context to fetch. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ExecutionContext </returns>
-        public static async System.Threading.Tasks.Task<ExecutionContextResource> FetchAsync(string pathFlowSid, string pathExecutionSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ExecutionContextResource> FetchAsync(string pathFlowSid, string pathExecutionSid, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchExecutionContextOptions(pathFlowSid, pathExecutionSid){  };
             return await FetchAsync(options, client, cancellationToken);

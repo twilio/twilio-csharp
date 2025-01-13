@@ -66,7 +66,7 @@ namespace Twilio.Rest.Accounts.V1
         /// <param name="options"> Create SecondaryAuthToken parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SecondaryAuthToken </returns>
-        public static async System.Threading.Tasks.Task<SecondaryAuthTokenResource> CreateAsync(CreateSecondaryAuthTokenOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<SecondaryAuthTokenResource> CreateAsync(CreateSecondaryAuthTokenOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
@@ -90,7 +90,7 @@ namespace Twilio.Rest.Accounts.V1
         /// <returns> Task that resolves to A single instance of SecondaryAuthToken </returns>
         public static async System.Threading.Tasks.Task<SecondaryAuthTokenResource> CreateAsync(
                                                                                     ITwilioRestClient client = null,
-                                                                                    CancellationToken cancellationToken = default)
+                                                                                    System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateSecondaryAuthTokenOptions(){  };
             return await CreateAsync(options, client, cancellationToken);
@@ -134,7 +134,7 @@ namespace Twilio.Rest.Accounts.V1
         /// <returns> Task that resolves to A single instance of SecondaryAuthToken </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteSecondaryAuthTokenOptions options, 
                                                                         ITwilioRestClient client = null,
-                                                                        CancellationToken cancellationToken = default)
+                                                                        System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client), cancellationToken);
@@ -155,7 +155,7 @@ namespace Twilio.Rest.Accounts.V1
         /// <summary> Delete the secondary Auth Token from your account </summary>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SecondaryAuthToken </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(ITwilioRestClient client = null, CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(ITwilioRestClient client = null, System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new DeleteSecondaryAuthTokenOptions() ;
             return await DeleteAsync(options, client, cancellationToken);

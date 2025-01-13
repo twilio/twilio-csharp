@@ -80,7 +80,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         /// <param name="options"> Fetch Regulation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Regulation </returns>
-        public static async System.Threading.Tasks.Task<RegulationResource> FetchAsync(FetchRegulationOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<RegulationResource> FetchAsync(FetchRegulationOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
@@ -107,7 +107,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         /// <param name="includeConstraints"> A boolean parameter indicating whether to include constraints or not for supporting end user, documents and their fields </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Regulation </returns>
-        public static async System.Threading.Tasks.Task<RegulationResource> FetchAsync(string pathSid, bool? includeConstraints = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<RegulationResource> FetchAsync(string pathSid, bool? includeConstraints = null, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchRegulationOptions(pathSid){ IncludeConstraints = includeConstraints };
             return await FetchAsync(options, client, cancellationToken);
@@ -145,7 +145,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         /// <param name="options"> Read Regulation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Regulation </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<RegulationResource>> ReadAsync(ReadRegulationOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<ResourceSet<RegulationResource>> ReadAsync(ReadRegulationOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
@@ -193,7 +193,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
                                                                                              bool? includeConstraints = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadRegulationOptions(){ EndUserType = endUserType, IsoCountry = isoCountry, NumberType = numberType, IncludeConstraints = includeConstraints, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client, cancellationToken);

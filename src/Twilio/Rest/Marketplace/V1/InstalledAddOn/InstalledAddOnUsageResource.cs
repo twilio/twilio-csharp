@@ -134,7 +134,7 @@ namespace Twilio.Rest.Marketplace.V1.InstalledAddOn
         /// <param name="options"> Create InstalledAddOnUsage parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InstalledAddOnUsage </returns>
-        public static async System.Threading.Tasks.Task<InstalledAddOnUsageResource> CreateAsync(CreateInstalledAddOnUsageOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<InstalledAddOnUsageResource> CreateAsync(CreateInstalledAddOnUsageOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
@@ -165,7 +165,7 @@ namespace Twilio.Rest.Marketplace.V1.InstalledAddOn
         public static async System.Threading.Tasks.Task<InstalledAddOnUsageResource> CreateAsync(
                                                                                   string pathInstalledAddOnSid,
                                                                                   InstalledAddOnUsageResource.MarketplaceV1InstalledAddOnInstalledAddOnUsage marketplaceV1InstalledAddOnInstalledAddOnUsage,
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateInstalledAddOnUsageOptions(pathInstalledAddOnSid, marketplaceV1InstalledAddOnInstalledAddOnUsage){  };
             return await CreateAsync(options, client, cancellationToken);

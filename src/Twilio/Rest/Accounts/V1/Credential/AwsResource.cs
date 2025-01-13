@@ -66,7 +66,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
         /// <param name="options"> Create Aws parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Aws </returns>
-        public static async System.Threading.Tasks.Task<AwsResource> CreateAsync(CreateAwsOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<AwsResource> CreateAsync(CreateAwsOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
@@ -101,7 +101,8 @@ namespace Twilio.Rest.Accounts.V1.Credential
                                                                                   string credentials,
                                                                                   string friendlyName = null,
                                                                                   string accountSid = null,
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null,
+                                                                                    System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateAwsOptions(credentials){  FriendlyName = friendlyName, AccountSid = accountSid };
             return await CreateAsync(options, client, cancellationToken);
@@ -147,7 +148,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
         /// <returns> Task that resolves to A single instance of Aws </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteAwsOptions options, 
                                                                         ITwilioRestClient client = null,
-                                                                        CancellationToken cancellationToken = default)
+                                                                        System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client), cancellationToken);
@@ -170,7 +171,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
         /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the AWS resource to delete. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Aws </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new DeleteAwsOptions(pathSid) ;
             return await DeleteAsync(options, client, cancellationToken);
@@ -210,7 +211,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
         /// <param name="options"> Fetch Aws parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Aws </returns>
-        public static async System.Threading.Tasks.Task<AwsResource> FetchAsync(FetchAwsOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<AwsResource> FetchAsync(FetchAwsOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
@@ -234,7 +235,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
         /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the AWS resource to fetch. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Aws </returns>
-        public static async System.Threading.Tasks.Task<AwsResource> FetchAsync(string pathSid, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<AwsResource> FetchAsync(string pathSid, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchAwsOptions(pathSid){  };
             return await FetchAsync(options, client, cancellationToken);
@@ -272,7 +273,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
         /// <param name="options"> Read Aws parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Aws </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<AwsResource>> ReadAsync(ReadAwsOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<ResourceSet<AwsResource>> ReadAsync(ReadAwsOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
@@ -304,7 +305,8 @@ namespace Twilio.Rest.Accounts.V1.Credential
         public static async System.Threading.Tasks.Task<ResourceSet<AwsResource>> ReadAsync(
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null,
+                                                                                    System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadAwsOptions(){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client, cancellationToken);
@@ -396,7 +398,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
         #if !NET35
         public static async System.Threading.Tasks.Task<AwsResource> UpdateAsync(UpdateAwsOptions options, 
                                                                                                     ITwilioRestClient client = null,
-                                                                                                    CancellationToken cancellationToken = default)
+                                                                                                    System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client), cancellationToken);
@@ -427,7 +429,8 @@ namespace Twilio.Rest.Accounts.V1.Credential
         public static async System.Threading.Tasks.Task<AwsResource> UpdateAsync(
                                                                               string pathSid,
                                                                               string friendlyName = null,
-                                                                                ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null,
+                                                                                    System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new UpdateAwsOptions(pathSid){ FriendlyName = friendlyName };
             return await UpdateAsync(options, client, cancellationToken);

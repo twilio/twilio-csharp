@@ -70,7 +70,7 @@ namespace Twilio.Rest.Messaging.V1
         #if !NET35
         public static async System.Threading.Tasks.Task<RequestManagedCertResource> UpdateAsync(UpdateRequestManagedCertOptions options, 
                                                                                                     ITwilioRestClient client = null,
-                                                                                                    CancellationToken cancellationToken = default)
+                                                                                                    System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client), cancellationToken);
@@ -97,7 +97,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <returns> Task that resolves to A single instance of RequestManagedCert </returns>
         public static async System.Threading.Tasks.Task<RequestManagedCertResource> UpdateAsync(
                                                                               string pathDomainSid,
-                                                                                ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new UpdateRequestManagedCertOptions(pathDomainSid){  };
             return await UpdateAsync(options, client, cancellationToken);

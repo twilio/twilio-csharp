@@ -58,7 +58,7 @@ namespace Twilio.Http
         /// </summary>
         /// <param name="request">Twilio response</param>
         /// <returns>Task that resolves to the response</returns>
-        public override async Task<Response> MakeRequestAsync(Request request, CancellationToken cancellationToken = default)
+        public override async Task<Response> MakeRequestAsync(Request request, System.Threading.CancellationToken cancellationToken = default)
         {
             var httpRequest = BuildHttpRequest(request);
             if (!Equals(request.Method, HttpMethod.Get))
@@ -82,7 +82,7 @@ namespace Twilio.Http
             // Create and return a new Response. Keep a reference to the last
             // response for debugging, but don't return it as it may be shared
             // among threads.
-            var response = new Response(httpResponse.StatusCode, await reader.ReadToEndAsync(cancellationToken).ConfigureAwait(false), httpResponse.Headers);
+            var response = new Response(httpResponse.StatusCode, await reader.ReadToEndAsync().ConfigureAwait(false), httpResponse.Headers);
             this.LastResponse = response;
             return response;
         }

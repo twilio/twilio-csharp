@@ -79,7 +79,7 @@ namespace Twilio.Rest.Studio.V2
         /// <param name="options"> Create Flow parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Flow </returns>
-        public static async System.Threading.Tasks.Task<FlowResource> CreateAsync(CreateFlowOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<FlowResource> CreateAsync(CreateFlowOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
@@ -118,7 +118,7 @@ namespace Twilio.Rest.Studio.V2
                                                                                   FlowResource.StatusEnum status,
                                                                                   object definition,
                                                                                   string commitMessage = null,
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateFlowOptions(friendlyName, status, definition){  CommitMessage = commitMessage };
             return await CreateAsync(options, client, cancellationToken);
@@ -164,7 +164,7 @@ namespace Twilio.Rest.Studio.V2
         /// <returns> Task that resolves to A single instance of Flow </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteFlowOptions options, 
                                                                         ITwilioRestClient client = null,
-                                                                        CancellationToken cancellationToken = default)
+                                                                        System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client), cancellationToken);
@@ -187,7 +187,7 @@ namespace Twilio.Rest.Studio.V2
         /// <param name="pathSid"> The SID of the Flow resource to delete. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Flow </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new DeleteFlowOptions(pathSid) ;
             return await DeleteAsync(options, client, cancellationToken);
@@ -227,7 +227,7 @@ namespace Twilio.Rest.Studio.V2
         /// <param name="options"> Fetch Flow parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Flow </returns>
-        public static async System.Threading.Tasks.Task<FlowResource> FetchAsync(FetchFlowOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<FlowResource> FetchAsync(FetchFlowOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
@@ -251,7 +251,7 @@ namespace Twilio.Rest.Studio.V2
         /// <param name="pathSid"> The SID of the Flow resource to fetch. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Flow </returns>
-        public static async System.Threading.Tasks.Task<FlowResource> FetchAsync(string pathSid, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<FlowResource> FetchAsync(string pathSid, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchFlowOptions(pathSid){  };
             return await FetchAsync(options, client, cancellationToken);
@@ -289,7 +289,7 @@ namespace Twilio.Rest.Studio.V2
         /// <param name="options"> Read Flow parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Flow </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<FlowResource>> ReadAsync(ReadFlowOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<ResourceSet<FlowResource>> ReadAsync(ReadFlowOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
@@ -321,7 +321,7 @@ namespace Twilio.Rest.Studio.V2
         public static async System.Threading.Tasks.Task<ResourceSet<FlowResource>> ReadAsync(
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadFlowOptions(){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client, cancellationToken);
@@ -413,7 +413,7 @@ namespace Twilio.Rest.Studio.V2
         #if !NET35
         public static async System.Threading.Tasks.Task<FlowResource> UpdateAsync(UpdateFlowOptions options, 
                                                                                                     ITwilioRestClient client = null,
-                                                                                                    CancellationToken cancellationToken = default)
+                                                                                                    System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client), cancellationToken);
@@ -456,7 +456,7 @@ namespace Twilio.Rest.Studio.V2
                                                                               string friendlyName = null,
                                                                               object definition = null,
                                                                               string commitMessage = null,
-                                                                                ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new UpdateFlowOptions(pathSid, status){ FriendlyName = friendlyName, Definition = definition, CommitMessage = commitMessage };
             return await UpdateAsync(options, client, cancellationToken);

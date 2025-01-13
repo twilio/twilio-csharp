@@ -67,7 +67,7 @@ namespace Twilio.Rest.Events.V1
         /// <param name="options"> Fetch Schema parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Schema </returns>
-        public static async System.Threading.Tasks.Task<SchemaResource> FetchAsync(FetchSchemaOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<SchemaResource> FetchAsync(FetchSchemaOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
@@ -91,7 +91,7 @@ namespace Twilio.Rest.Events.V1
         /// <param name="pathId"> The unique identifier of the schema. Each schema can have multiple versions, that share the same id. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Schema </returns>
-        public static async System.Threading.Tasks.Task<SchemaResource> FetchAsync(string pathId, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<SchemaResource> FetchAsync(string pathId, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchSchemaOptions(pathId){  };
             return await FetchAsync(options, client, cancellationToken);

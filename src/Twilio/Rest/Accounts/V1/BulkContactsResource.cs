@@ -66,7 +66,7 @@ namespace Twilio.Rest.Accounts.V1
         /// <param name="options"> Create BulkContacts parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of BulkContacts </returns>
-        public static async System.Threading.Tasks.Task<BulkContactsResource> CreateAsync(CreateBulkContactsOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<BulkContactsResource> CreateAsync(CreateBulkContactsOptions options, ITwilioRestClient client = null, System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
@@ -93,7 +93,8 @@ namespace Twilio.Rest.Accounts.V1
         /// <returns> Task that resolves to A single instance of BulkContacts </returns>
         public static async System.Threading.Tasks.Task<BulkContactsResource> CreateAsync(
                                                                                   List<object> items,
-                                                                                    ITwilioRestClient client = null)
+                                                                                  ITwilioRestClient client = null,
+                                                                                  System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateBulkContactsOptions(items){  };
             return await CreateAsync(options, client, cancellationToken);

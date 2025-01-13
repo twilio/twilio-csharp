@@ -1174,7 +1174,7 @@ namespace Twilio.Rest.Content.V1
         /// <param name="options"> Create Content parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Content </returns>
-        public static async System.Threading.Tasks.Task<ContentResource> CreateAsync(CreateContentOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<ContentResource> CreateAsync(CreateContentOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
@@ -1201,7 +1201,7 @@ namespace Twilio.Rest.Content.V1
         /// <returns> Task that resolves to A single instance of Content </returns>
         public static async System.Threading.Tasks.Task<ContentResource> CreateAsync(
                                                                                   ContentResource.ContentCreateRequest contentCreateRequest,
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateContentOptions(contentCreateRequest){  };
             return await CreateAsync(options, client, cancellationToken);
@@ -1247,7 +1247,7 @@ namespace Twilio.Rest.Content.V1
         /// <returns> Task that resolves to A single instance of Content </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteContentOptions options, 
                                                                         ITwilioRestClient client = null,
-                                                                        CancellationToken cancellationToken = default)
+                                                                        System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client), cancellationToken);
@@ -1270,7 +1270,7 @@ namespace Twilio.Rest.Content.V1
         /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Content resource to fetch. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Content </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new DeleteContentOptions(pathSid) ;
             return await DeleteAsync(options, client, cancellationToken);
@@ -1310,7 +1310,7 @@ namespace Twilio.Rest.Content.V1
         /// <param name="options"> Fetch Content parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Content </returns>
-        public static async System.Threading.Tasks.Task<ContentResource> FetchAsync(FetchContentOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<ContentResource> FetchAsync(FetchContentOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
@@ -1334,7 +1334,7 @@ namespace Twilio.Rest.Content.V1
         /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Content resource to fetch. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Content </returns>
-        public static async System.Threading.Tasks.Task<ContentResource> FetchAsync(string pathSid, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<ContentResource> FetchAsync(string pathSid, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchContentOptions(pathSid){  };
             return await FetchAsync(options, client, cancellationToken);
@@ -1372,7 +1372,7 @@ namespace Twilio.Rest.Content.V1
         /// <param name="options"> Read Content parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Content </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<ContentResource>> ReadAsync(ReadContentOptions options, ITwilioRestClient client = null,  CancellationToken cancellationToken = default)
+        public static async System.Threading.Tasks.Task<ResourceSet<ContentResource>> ReadAsync(ReadContentOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
@@ -1404,7 +1404,7 @@ namespace Twilio.Rest.Content.V1
         public static async System.Threading.Tasks.Task<ResourceSet<ContentResource>> ReadAsync(
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadContentOptions(){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client, cancellationToken);
