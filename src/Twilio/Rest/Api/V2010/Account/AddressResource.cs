@@ -381,7 +381,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The target page of records </returns>
-        public static Page<AddressResource> GetPage(string targetUrl, ITwilioRestClient client, System.Threading.CancellationToken cancellationToken = default)
+        public static Page<AddressResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
 
