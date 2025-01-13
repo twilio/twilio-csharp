@@ -73,7 +73,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         ///<summary> The provider will add punctuation to recognition result </summary> 
         public bool? EnableAutomaticPunctuation { get; set; }
 
-        ///<summary> The SID or the unique name of the [Voice Intelligence Service](https://www.twilio.com/docs/voice/intelligence/api/service-resource) to process the transcription. </summary> 
+        ///<summary> The SID of the [Voice Intelligence Service](https://www.twilio.com/docs/voice/intelligence/api/service-resource) for persisting transcripts and running post-call Language Operators . </summary> 
         public string IntelligenceService { get; set; }
 
 

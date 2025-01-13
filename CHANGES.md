@@ -1,6 +1,12 @@
 twilio-csharp Changelog
 =======================
 
+[2025-01-13] Version 7.8.2
+--------------------------
+**Messaging**
+- Adds validity period Default value in service resource documentation
+
+
 [2025-01-09] Version 7.8.1
 --------------------------
 **Numbers**
