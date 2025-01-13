@@ -82,7 +82,7 @@ namespace Twilio.Http.BearerToken
             this.LastResponse = null;
 
             var httpResponse = await _httpClient.SendAsync(httpRequest, cancellationToken).ConfigureAwait(false);
-            var reader = new StreamReader(await httpResponse.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false));
+            var reader = new StreamReader(await httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false));
 
             // Create and return a new Response. Keep a reference to the last
             // response for debugging, but don't return it as it may be shared
